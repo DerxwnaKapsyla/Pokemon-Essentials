@@ -87,7 +87,7 @@ NO_SIGNPOSTS = []
 # * The maximum length, in characters, that the player's name can be.
 #===============================================================================
 INITIAL_MONEY        = 3000
-MAX_MONEY            = 999_999
+MAX_MONEY            = 9_999_999
 MAX_COINS            = 99_999
 MAX_PLAYER_NAME_SIZE = 10
 
@@ -201,7 +201,7 @@ REGION_MAP_EXTRAS = [
 def pbStorageCreator
   return _INTL("Bill")
 end
-NUM_STORAGE_BOXES = 30
+NUM_STORAGE_BOXES = 48
 
 #===============================================================================
 # * Whether the Pokédex list shown is the one for the player's current region
@@ -341,6 +341,7 @@ RUSTLE_NORMAL_ANIMATION_ID   = 1
 RUSTLE_VIGOROUS_ANIMATION_ID = 5
 RUSTLE_SHINY_ANIMATION_ID    = 6
 PLANT_SPARKLE_ANIMATION_ID   = 7
+PUDDLE_ANIMATION_ID          = 8 # Derx: For Boonzeet's Efficent Puddles
 
 #===============================================================================
 # * An array of available languages in the game, and their corresponding

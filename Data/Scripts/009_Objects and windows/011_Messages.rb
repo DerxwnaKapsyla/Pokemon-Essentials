@@ -338,7 +338,14 @@ module InterpreterMixin
       $MapFactory.getMap(mapid,false).need_refresh = true
     end
   end
-
+# ------------ Derx: Changes to allow setting an event's self switch on or from a different map  
+# Sets another event's self switch on a different map (eg. pbSetSelfSwitch(420,15,"A",true) ).
+# To be used in a script event command.
+	def pbSetSelfSwitch2(map,event,swtch,value)
+		 $game_self_switches[[map,event,swtch]]=value
+		 $game_map.need_refresh = true
+	 end  
+# ------------ Derx: End of Cross-Map Self Switch Setting
   # Must use this approach to share the methods because the methods already
   # defined in a class override those defined in an included module
   CustomEventCommands=<<_END_
@@ -951,7 +958,38 @@ def pbDisplayCoinsWindow(msgwindow,goldwindow)
   coinwindow.z=msgwindow.z
   return coinwindow
 end
-
+# ------------ Derx: Allows a name to be shown alongside Text Boxes
+# Display a name along with the text box
+def Kernel.pbMessageWithName(name, message,commands=nil,cmdIfCancel=0,skin=nil,defaultCmd=0,&block)
+  ret=0
+  msgwindow=Kernel.pbCreateMessageWindow(nil,skin)
+  namewindow=Window_AdvancedTextPokemon.new(name)
+  namewindow.setSkin("Graphics/Windowskins/goldskin")
+  namewindow.resizeToFit(namewindow.text,Graphics.width)
+  namewindow.width=10 if namewindow.width<=10
+  if msgwindow.y==0
+    namewindow.y=Graphics.height-namewindow.height
+  else
+    if $game_variables[105]==1
+      namewindow.y=92
+    else
+      namewindow.y=228
+    end
+  end
+  if commands
+    ret=Kernel.pbMessageDisplay(msgwindow,message,true,
+       proc {|msgwindow|
+          next Kernel.pbShowCommands(msgwindow,commands,cmdIfCancel,defaultCmd,&block)
+    },&block)
+  else
+    Kernel.pbMessageDisplay(msgwindow,message,&block)
+  end
+  Kernel.pbDisposeMessageWindow(msgwindow)
+  namewindow.dispose
+  Input.update
+  return ret
+end
+# ------------ Derx: End of Named Text Box chanegs
 
 
 #===============================================================================
@@ -1248,6 +1286,18 @@ def pbMessageDisplay(msgwindow,message,letterbyletter=true,commandProc=nil)
       msgwindow.resume if msgwindow.busy?
       break if !msgwindow.busy?
     end
+# ------------ Derx: Skip Text Dialogue 
+    if Input.press?(Input::B)
+      msgwindow.textspeed=-999
+      msgwindow.update
+      if msgwindow.busy?
+        pbPlayDecisionSE() if msgwindow.pausing?
+        msgwindow.resume
+      else
+        break if signWaitCount==0
+      end
+    end
+# ------------ Derx: End of Skip Text Dialogue changes    
     if Input.trigger?(Input::C) || Input.trigger?(Input::B)
       if msgwindow.busy?
         pbPlayDecisionSE if msgwindow.pausing?

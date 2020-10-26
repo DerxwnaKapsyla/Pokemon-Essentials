@@ -5,8 +5,9 @@ module PBGrowthRates
   Parabolic = MediumSlow = 3
   Fast                   = 4
   Slow                   = 5
+  MissingNo              = 6 # Derx: Necessary for the MissingNo EXP Track
 
-  def self.maxValue; return 5; end
+  def self.maxValue; return 6; end
 end
 
 
@@ -85,6 +86,21 @@ module PBExperience
      640000, 664301, 689210,  714733,  740880,  767656,  795070,  823128,  851840,  881211,
      911250, 941963, 973360, 1005446, 1038230, 1071718, 1105920, 1140841, 1176490, 1212873,
      1250000]
+# ------------ Derx: MissingNo's unique EXP Table
+  # MissingNo
+  @PBExpTable[PBGrowthRates::MissingNo] = [
+     -1,0,10,20,30,40,50,60,70,80,90,
+     100,110,120,130,140,150,160,170,180,190,
+     200,210,220,230,240,250,260,270,280,290,
+     300,310,320,330,340,350,360,370,380,390,
+     400,410,420,430,440,450,460,470,480,490,
+     500,510,520,530,540,550,560,570,580,590,
+     600,610,620,630,640,650,660,670,680,690,
+     700,710,720,730,740,750,760,770,780,790,
+     800,810,820,830,840,850,860,870,880,890,
+     900,910,920,930,940,950,960,970,980,428750,
+     428751]
+# ------------ Derx: End of MissingNo's unique EXP table
 
   # Returns the maximum level a Pokémon can attain. If you want to make it vary,
   # here's where you put your formulae. Note that this is also called by the

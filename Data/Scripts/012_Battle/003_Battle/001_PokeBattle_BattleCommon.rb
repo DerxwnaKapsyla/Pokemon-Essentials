@@ -101,6 +101,13 @@ module PokeBattle_BattleCommon
       @scene.pbThrowAndDeflect(ball,1)
       pbDisplay(_INTL("The Trainer blocked your Poké Ball! Don't be a thief!"))
       return
+# --------- Derx: For Special Wild Battles, to prevent Pokemon from being caught      
+    else
+      if $game_switches[107] # Pokemon can't be caught switch
+        pbDisplay(_INTL("It dodged the thrown Ball! This Pokémon can't be caught!"))
+        return
+      end
+# --------- Derx: End of Special Wild Battle handlers 
     end
     # Calculate the number of shakes (4=capture)
     pkmn = battler.pokemon
@@ -125,6 +132,7 @@ module PokeBattle_BattleCommon
       BallHandlers.onFailCatch(ball,self,battler)
     when 4
       pbDisplayBrief(_INTL("Gotcha! {1} was caught!",pkmn.name))
+      # Derx: Look into changing this for the loopable version I made
       @scene.pbThrowSuccess   # Play capture success jingle
       pbRemoveFromParty(battler.index,battler.pokemonIndex)
       # Gain Exp

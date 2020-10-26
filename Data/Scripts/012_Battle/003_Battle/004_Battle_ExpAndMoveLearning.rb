@@ -206,6 +206,7 @@ class PokeBattle_Battle
       pkmn.calcStats
       battler.pbUpdate(false) if battler
       @scene.pbRefreshOne(battler.index) if battler
+      pbSEPlay("Pkmn move learnt") # Derx: Official game accuracy change
       pbDisplayPaused(_INTL("{1} grew to Lv. {2}!",pkmn.name,curLevel))
       @scene.pbLevelUp(pkmn,battler,oldTotalHP,oldAttack,oldDefense,
                                     oldSpAtk,oldSpDef,oldSpeed)

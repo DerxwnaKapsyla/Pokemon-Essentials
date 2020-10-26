@@ -121,6 +121,26 @@ def pbLoadTrainer(trainerid,trainername,partyid=0)
     success = true
     break
   end
+#---- Derx: Used for the Doppelganger Trainer fight
+  if isConst?(trainerid,PBTrainers,:DEBUG)
+    partytoload=$Trainer.party
+    party=[]
+    for i in partytoload
+      j=i.clone
+      j.iv=i.iv.clone
+      j.ev=i.ev.clone
+      j.hp=j.totalhp
+      j.status=0
+      for k in j.moves
+        k.pp=k.totalpp
+      end
+      j.calcStats
+      party.push(j)
+    end
+    opponent=PokeBattle_Trainer.new($Trainer.name)
+    success=true
+  end
+#--------------- Source: Rot8er_ConeX
   return success ? [opponent,items,party,loseText] : nil
 end
 

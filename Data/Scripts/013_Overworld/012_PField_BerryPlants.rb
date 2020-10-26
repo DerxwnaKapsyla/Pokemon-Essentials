@@ -500,8 +500,10 @@ def pbBerryPlant
       end
       $PokemonBag.pbStoreItem(berry,berrycount)
       if berrycount>1
+        pbSEPlay("Berry Pluck") # Derx: Official Game Functionality
         pbMessage(_INTL("You picked the {1} \\c[1]{2}\\c[0].\\wtnp[30]",berrycount,itemname))
       else
+        pbSEPlay("Berry Pluck") # Derx: Official Game Functionality
         pbMessage(_INTL("You picked the \\c[1]{1}\\c[0].\\wtnp[30]",itemname))
       end
       pocket = pbGetPocket(berry)
@@ -564,8 +566,10 @@ def pbPickBerry(berry,qty=1)
     end
     $PokemonBag.pbStoreItem(berry,qty)
     if qty>1
+      pbSEPlay("Berry Pluck") # Derx: Official Game Functionality
       pbMessage(_INTL("You picked the {1} \\c[1]{2}\\c[0].\\wtnp[30]",qty,itemname))
     else
+      pbSEPlay("Berry Pluck") # Derx: Official Game Functionality
       pbMessage(_INTL("You picked the \\c[1]{1}\\c[0].\\wtnp[30]",itemname))
     end
     pocket = pbGetPocket(berry)

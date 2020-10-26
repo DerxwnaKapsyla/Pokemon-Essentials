@@ -367,9 +367,11 @@ def pbChangeLevel(pkmn,newlevel,scene)
     pkmn.calcStats
     scene.pbRefresh
     if scene.is_a?(PokemonPartyScreen)
-      scene.pbDisplay(_INTL("{1} grew to Lv. {2}!",pkmn.name,pkmn.level))
+      Kernel.pbMessage(_INTL("{1} grew to Lv. {2}! \\se[Pkmn move learnt]",pkmn.name,pkmn.level)) {scene.pbUpdate} # Derx: Official Game Emulation
+#      scene.pbDisplay(_INTL("{1} grew to Lv. {2}! \se[Pkmn move learnt]",pkmn.name,pkmn.level)) 
     else
-      pbMessage(_INTL("{1} grew to Lv. {2}!",pkmn.name,pkmn.level))
+      Kernel.pbMessage(_INTL("{1} grew to Lv. {2}! \\se[Pkmn move learnt]",pkmn.name,pkmn.level)) {scene.pbUpdate} # Derx: Official Game Emulation
+#      pbMessage(_INTL("{1} grew to Lv. {2}! \se[Pkmn move learnt]",pkmn.name,pkmn.level))
     end
     attackdiff  = pkmn.attack-attackdiff
     defensediff = pkmn.defense-defensediff

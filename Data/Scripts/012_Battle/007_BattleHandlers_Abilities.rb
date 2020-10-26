@@ -1982,6 +1982,31 @@ BattleHandlers::EOREffectAbility.add(:MOODY,
   }
 )
 
+# ------- Derx: Haywire Ability
+BattleHandlers::EOREffectAbility.add(:HAYWIRE,
+  proc { |ability,battler,battle|
+    randomUp = []; randomDown = []
+    PBStats.eachBattleStat do |s|
+      randomUp.push(s) if battler.pbCanRaiseStatStage?(s,battler)
+      randomDown.push(s) if battler.pbCanLowerStatStage?(s,battler)
+    end
+    next if randomUp.length==0 && randomDown.length==0
+    battle.pbShowAbilitySplash(battler)
+    if randomUp.length>0
+      r = battle.pbRandom(randomUp.length)
+      battler.pbRaiseStatStageByAbility(randomUp[r],6,battler,false)
+      randomDown.delete(randomUp[r])
+    end
+    if randomDown.length>0
+      r = battle.pbRandom(randomDown.length)
+      battler.pbLowerStatStageByAbility(randomDown[r],6,battler,false)
+    end
+    battle.pbHideAbilitySplash(battler)
+    battler.pbItemStatRestoreCheck if randomDown.length>0
+  }
+)
+# ------- Derx: End of Haywire Ability
+
 BattleHandlers::EOREffectAbility.add(:SPEEDBOOST,
   proc { |ability,battler,battle|
     # A Pokémon's turnCount is 0 if it became active after the beginning of a

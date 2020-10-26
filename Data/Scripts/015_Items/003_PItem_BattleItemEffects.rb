@@ -288,6 +288,7 @@ ItemHandlers::UseInBattle.add(:GUARDSPEC,proc { |item,battler,battle|
 
 ItemHandlers::UseInBattle.add(:POKEDOLL,proc { |item,battler,battle|
   battle.decision = 3
+  pbSEPlay("Battle Flee") # Derx: Official Game Emulation
   battle.pbDisplayPaused(_INTL("You got away safely!"))
 })
 

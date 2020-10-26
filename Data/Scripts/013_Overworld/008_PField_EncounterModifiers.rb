@@ -30,6 +30,18 @@ Events.onWildPokemonCreate += proc { |_sender, e|
   end
 }
 
+# --- Derx: Utilized Special Wild Battles to give Pokemon unique moves
+# Make all wild Pokémon have a certain unique move depending on the variable set.
+Events.onWildPokemonCreate+=proc {|sender,e|
+   pokemon=e[0]
+   case $game_variables[108] # Unique Move Variable
+     when 1 # Fury Attack Dunsparce
+       pokemon.makeMale # To keep the gender consistent
+       pokemon.pbLearnMove(:FURYATTACK)
+   end
+}
+# --- Derx: End of Unique Move handler
+
 # This is the basis of a trainer modifier.  It works both for trainers loaded
 # when you battle them, and for partner trainers when they are registered.
 # Note that you can only modify a partner trainer's Pokémon, and not the trainer

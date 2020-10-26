@@ -612,8 +612,22 @@ class PokeBattle_Battle
   def pbThisEx(idxBattler,idxParty)
     party = pbParty(idxBattler)
     if opposes?(idxBattler)
-      return _INTL("The opposing {1}",party[idxParty].name) if trainerBattle?
-      return _INTL("The wild {1}",party[idxParty].name)
+# --------- Derx: Special Battle Handlers
+      if $game_switches[107] # Can't be captured
+        if $game_variables[107]==1 # Territorial Pokemon
+          return _INTL("The territorial {1}",party[pokemonindex].name)
+        elsif $game_variables[107]==2 # Aggressive Pokemon
+          return _INTL("The aggressive {1}",party[pokemonindex].name)
+        elsif $game_variables[107]==3 # Lifrana's
+          return _INTL("Lifrana's {1}",party[pokemonindex].name)
+        else $game_variables[107]==4 # Trainer's
+          return _INTL("A trainer's {1}",party[pokemonindex].name)
+        end      
+      else
+# --------- Derx: End of Special Battle Handlers      
+        return _INTL("The opposing {1}",party[idxParty].name) if trainerBattle?
+        return _INTL("The wild {1}",party[idxParty].name)
+      end
     end
     return _INTL("The ally {1}",party[idxParty].name) if !pbOwnedByPlayer?(idxBattler)
     return party[idxParty].name

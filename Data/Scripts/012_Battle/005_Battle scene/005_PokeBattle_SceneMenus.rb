@@ -107,7 +107,7 @@ class CommandMenuDisplay < BattleMenuBase
   MODES = [
      [0,2,1,3],   # 0 = Regular battle
      [0,2,1,9],   # 1 = Regular battle with "Cancel" instead of "Run"
-     [0,2,1,4],   # 2 = Regular battle with "Call" instead of "Run"
+     [0,2,1,3],   # 2 = Regular battle with "Call" instead of "Run" # Derx: I'm not using call in this game. The "4" was changed to a "3"
      [5,7,6,3],   # 3 = Safari Zone
      [0,8,1,3]    # 4 = Bug Catching Contest
   ]

@@ -912,7 +912,7 @@ class PokeBattle_Pokemon
     @obtainMode   = 0   # Met
     @obtainMode   = 4 if $game_switches && $game_switches[FATEFUL_ENCOUNTER_SWITCH]
     @hatchedMap   = 0
-    @timeReceived = pbGetTimeNow.to_i
+    @timeReceived = Time.now # Derx: Change made for Unreal Time System, formerly: pbGetTimeNow.to_i
     self.level    = level
     calcStats
     @hp           = @totalhp

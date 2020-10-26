@@ -78,7 +78,8 @@ class PokeBattle_Battler
       arrStatTexts = [
          _INTL("{1}'s {2} raised its {3}!",pbThis,cause,PBStats.getName(stat)),
          _INTL("{1}'s {2} sharply raised its {3}!",pbThis,cause,PBStats.getName(stat)),
-         _INTL("{1}'s {2} drastically raised its {3}!",pbThis,cause,PBStats.getName(stat))]
+         # Derx: This line may need adjustment to account for MissingNo's Haywire
+         _INTL("{1}'s {2} drastically raised its {3}!",pbThis,cause,PBStats.getName(stat))] 
     else
       arrStatTexts = [
          _INTL("{1}'s {2} raised {3}'s {4}!",user.pbThis,cause,pbThis(true),PBStats.getName(stat)),

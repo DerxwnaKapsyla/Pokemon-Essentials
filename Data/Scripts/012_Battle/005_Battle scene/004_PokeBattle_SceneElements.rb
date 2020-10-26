@@ -222,6 +222,8 @@ class PokemonDataBox < SpriteWrapper
     end
     pbDrawTextPositions(self.bitmap,textPos)
     # Draw Pokémon's level
+    # Derx: The MissingNo battle handling needs to go here
+    # https://pastebin.com/vidkVGMY
     imagePos.push(["Graphics/Pictures/Battle/overlay_lv",@spriteBaseX+140,16])
     pbDrawNumber(@battler.level,self.bitmap,@spriteBaseX+162,16)
     # Draw shiny icon
@@ -326,7 +328,7 @@ class PokemonDataBox < SpriteWrapper
       if @expFlash==0
         pbSEStop
         @expFlash = Graphics.frame_rate/5
-        pbSEPlay("Exp full")
+        pbSEPlay("Pkmn exp full")
         self.flash(Color.new(64,200,248,192),@expFlash)
         for i in @sprites
           i[1].flash(Color.new(64,200,248,192),@expFlash) if !i[1].disposed?

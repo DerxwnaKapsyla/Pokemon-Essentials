@@ -83,6 +83,25 @@ class Game_Screen
   #-----------------------------------------------------------------------------
   def weather(type, power, duration)
     @weather_type_target = type
+# ------- Derx: Changes to make the Weather play audio while it's going on
+	if @weather_type_target == 0 # None
+		 pbBGSFade(duration)
+	elsif @weather_type_target == 1 # Rain
+		 pbBGSPlay("Rain.ogg")
+	elsif @weather_type_target == 2 # Storm
+		 pbBGSPlay("Storm.ogg")
+	elsif @weather_type_target == 3 # Snow
+		 pbBGSPlay("Snow")
+	elsif @weather_type_target == 4 # Sandstorm
+		 pbBGSPlay("Blizzard")
+	elsif @weather_type_target == 5 # Sandstorm
+		 pbBGSPlay("Darude Sandstorm")
+	elsif @weather_type_target == 6 # Sandstorm
+		 pbBGSPlay("HeavyStorm.ogg")
+	elsif @weather_type_target == 7 # Sunny
+		 pbBGSPlay("Sunny")
+	end
+# ------- Derx: End of Weather Changes
     if @weather_type_target!=0
       @weather_type = @weather_type_target
     end

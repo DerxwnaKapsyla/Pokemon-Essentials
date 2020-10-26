@@ -869,19 +869,21 @@ class PokemonEntryScene
     addBackgroundPlane(@sprites,"background","Naming/bg_2",@viewport)
     case subject
     when 1   # Player
-      meta=pbGetMetadata(0,MetadataPlayerA+$PokemonGlobal.playerID)
-      if meta
-        @sprites["shadow"]=IconSprite.new(0,0,@viewport)
-        @sprites["shadow"].setBitmap("Graphics/Pictures/Naming/icon_shadow")
-        @sprites["shadow"].x=33*2
-        @sprites["shadow"].y=32*2
-        filename=pbGetPlayerCharset(meta,1,nil,true)
-        @sprites["subject"]=TrainerWalkingCharSprite.new(filename,@viewport)
-        charwidth=@sprites["subject"].bitmap.width
-        charheight=@sprites["subject"].bitmap.height
-        @sprites["subject"].x = 44*2 - charwidth/8
-        @sprites["subject"].y = 38*2 - charheight/4
-      end
+# ------------ Derx: Removes the player icon from the naming screen at the start
+#      meta=pbGetMetadata(0,MetadataPlayerA+$PokemonGlobal.playerID)
+#      if meta
+#        @sprites["shadow"]=IconSprite.new(0,0,@viewport)
+#        @sprites["shadow"].setBitmap("Graphics/Pictures/Naming/icon_shadow")
+#        @sprites["shadow"].x=33*2
+#        @sprites["shadow"].y=32*2
+#        filename=pbGetPlayerCharset(meta,1,nil,true)
+#        @sprites["subject"]=TrainerWalkingCharSprite.new(filename,@viewport)
+#        charwidth=@sprites["subject"].bitmap.width
+#        charheight=@sprites["subject"].bitmap.height
+#        @sprites["subject"].x = 44*2 - charwidth/8
+#        @sprites["subject"].y = 38*2 - charheight/4
+#      end
+# ------------ Derx: End of Intro Changes irt Player Name
     when 2   # Pokémon
       if pokemon
         @sprites["shadow"]=IconSprite.new(0,0,@viewport)
@@ -1147,19 +1149,21 @@ class PokemonEntryScene2
     @sprites["bg"].setBitmap("Graphics/Pictures/Naming/bg")
     case subject
     when 1   # Player
-      meta=pbGetMetadata(0,MetadataPlayerA+$PokemonGlobal.playerID)
-      if meta
-        @sprites["shadow"]=IconSprite.new(0,0,@viewport)
-        @sprites["shadow"].setBitmap("Graphics/Pictures/Naming/icon_shadow")
-        @sprites["shadow"].x=33*2
-        @sprites["shadow"].y=32*2
-        filename=pbGetPlayerCharset(meta,1,nil,true)
-        @sprites["subject"]=TrainerWalkingCharSprite.new(filename,@viewport)
-        charwidth=@sprites["subject"].bitmap.width
-        charheight=@sprites["subject"].bitmap.height
-        @sprites["subject"].x = 44*2 - charwidth/8
-        @sprites["subject"].y = 38*2 - charheight/4
-      end
+# ------------ Derx: Removes the player icon from the naming screen at the start
+#      meta=pbGetMetadata(0,MetadataPlayerA+$PokemonGlobal.playerID)
+#      if meta
+#        @sprites["shadow"]=IconSprite.new(0,0,@viewport)
+#        @sprites["shadow"].setBitmap("Graphics/Pictures/Naming/icon_shadow")
+#        @sprites["shadow"].x=33*2
+#        @sprites["shadow"].y=32*2
+#        filename=pbGetPlayerCharset(meta,1,nil,true)
+#        @sprites["subject"]=TrainerWalkingCharSprite.new(filename,@viewport)
+#        charwidth=@sprites["subject"].bitmap.width
+#        charheight=@sprites["subject"].bitmap.height
+#        @sprites["subject"].x = 44*2 - charwidth/8
+#        @sprites["subject"].y = 38*2 - charheight/4
+#      end
+# ------------ Derx: End of Intro Changes irt Player Name
     when 2   # Pokémon
       if pokemon
         @sprites["shadow"]=IconSprite.new(0,0,@viewport)

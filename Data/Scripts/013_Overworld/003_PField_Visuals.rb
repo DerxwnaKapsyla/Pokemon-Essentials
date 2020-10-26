@@ -640,10 +640,20 @@ def pbStartOver(gameover=false)
   pbHealAll
   if $PokemonGlobal.pokecenterMapId && $PokemonGlobal.pokecenterMapId>=0
     if gameover
-      pbMessage(_INTL("\\w[]\\wm\\c[8]\\l[3]After the unfortunate defeat, you scurry back to a Pokémon Center."))
+# Derx: Yozora Gym changes, though I may just end up scrapping the image display in the corner
+      $game_screen.pictures[1].erase        # Needed for Yozora Gym
+      pbToneChangeAll(Tone.new(0,0,0,0),1)  # Needed for Yozora Gym
+      pbMessage(_INTL("\\w[]\\wm\\c[0]\\l[3]After the unfortunate defeat, you scurry back to a Pokémon Center."))
+    elsif $game_switches[109]
+      $game_screen.pictures[1].erase        # Needed for Yozora Gym
+      pbToneChangeAll(Tone.new(0,0,0,0),1)  # Needed for Yozora Gym
+      pbMessage(_INTL("\\w[]\\wm\\c[0]\\l[3]You scurry back to the nearest safe spot to let your exhausted Pokémon recover from harm..."))
     else
-      pbMessage(_INTL("\\w[]\\wm\\c[8]\\l[3]You scurry back to a Pokémon Center, protecting your exhausted Pokémon from any further harm..."))
+      $game_screen.pictures[1].erase        # Needed for Yozora Gym
+      pbToneChangeAll(Tone.new(0,0,0,0),1)  # Needed for Yozora Gym
+      pbMessage(_INTL("\\w[]\\wm\\c[0]\\l[3]You scurry back to a Pokémon Center, protecting your exhausted Pokémon from any further harm..."))
     end
+# Derx: End of Yozora Gym changes
     pbCancelVehicles
     pbRemoveDependencies
     $game_switches[STARTING_OVER_SWITCH] = true
@@ -663,9 +673,19 @@ def pbStartOver(gameover=false)
       return
     end
     if gameover
-      pbMessage(_INTL("\\w[]\\wm\\c[8]\\l[3]After the unfortunate defeat, you scurry back home."))
+# Derx: Yozora Gym changes
+      $game_screen.pictures[1].erase        # Needed for Yozora Gym
+      pbToneChangeAll(Tone.new(0,0,0,0),1)  # Needed for Yozora Gym
+      pbMessage(_INTL("\\w[]\\wm\\c[0]\\l[3]After the unfortunate defeat, you scurry back home."))
+    elsif $game_switches[109]
+      $game_screen.pictures[1].erase        # Needed for Yozora Gym
+      pbToneChangeAll(Tone.new(0,0,0,0),1)  # Needed for Yozora Gym
+      pbMessage(_INTL("\\w[]\\wm\\c[0]\\l[3]You scurry back to the nearest safe spot to let your exhausted Pokémon recover from harm..."))
     else
-      pbMessage(_INTL("\\w[]\\wm\\c[8]\\l[3]You scurry back home, protecting your exhausted Pokémon from any further harm..."))
+      $game_screen.pictures[1].erase        # Needed for Yozora Gym
+      pbToneChangeAll(Tone.new(0,0,0,0),1)  # Needed for Yozora Gym
+# Derx: End of Yozora Gym changes
+      pbMessage(_INTL("\\w[]\\wm\\c[0]\\l[3]You scurry back home, protecting your exhausted Pokémon from any further harm..."))
     end
     if homedata
       pbCancelVehicles

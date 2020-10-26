@@ -403,6 +403,16 @@ def pbDayCareGenerateEgg
   $Trainer.party[$Trainer.party.length] = egg
 end
 
+# Derx: Used in the Egg Incubator
+def pbHatchAll
+  for egg in $Trainer.party
+    if egg.egg?
+      egg.eggsteps=0
+      pbHatch(egg)
+    end
+  end
+end
+# Derx: End of Egg Incubator changes
 
 
 #===============================================================================
