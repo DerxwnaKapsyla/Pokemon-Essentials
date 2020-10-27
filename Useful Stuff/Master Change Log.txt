@@ -441,6 +441,8 @@ October 26th, 2020:
 * Made the music in the intro fade out quicker when transitioning into the player's bedroom
 * Added in a (temporary) icon for the quest journal in the Pokegear
 * Fixed a bug in vanilla Essentials where the exp full ding didn't play
+October 27th, 2020:
+* Officially ported the project to Github
 
 Tomorrow's mapping plans:
 - Map out Kouskille Woods
@@ -456,7 +458,6 @@ To be done Eventually:
 - Work on the Surf/Good Rod/Super Rod encounters for Pharos City, Yozora Island, and Route 3
 - Adjust the AI on Gym Leaders, Alyssia, and EB Commanders
 - Fix the flight points for towns to rectify Teleport locations
-- Get graphics for Fairy Type
 - Rename "D" to Delta, rename "J" to Iota
 - Work on revised Battle Transitions for the important NPCs
 - Fill out the TM on Yozora Island
@@ -469,7 +470,6 @@ also do something about text overflow in journal
 - Revise the lore, bring down the time scale from 500 years to 50~100 (All Teleporter Relay NPCs need to be adjusted)
 - Make sure ALL Teleporter Relays are set to use 4 badges instead of 5
 - Add in some sort of sidequest that involves the variants of Floette and bringing them to the Graveyard Zone in PokeIsland Park, which will allow you to get Eternal Flower Floette
-- Utilize the Reborn sea-wall tiles used in Reborn City for the foundation and formation of Chusei City (Chusei will be an elevated city)
 - Get the Battle Tent tiles and add them to a tileset; it'll serve as the tents for the Undersea Exploration Areas (Safari Zone replacement)
 
 Add buildings of some kind to the sea routes between Central Yitria and Chusei City, and Kortalan City and Charamada Island. These houses act as spots where the player can descend into the Zirconial Ocean, and eventually find ruins that contain big loot, rare Pokemon, including potential Legendaries. Tie some sidequest chains to these areas. Alternatively or also, make it so it works like the Safari Zone and have the Scuba Gear you're wearing have a step/breath counter. When it runs to 0, add a notification that says "WARNING: Tank oxygen levels running low. The estimated oxygen levels remaining are just enough to return to the surface. Please return now." or something like that.
@@ -528,13 +528,6 @@ Klink
 Golett
 
 
-Grunt 1- Clefairy, Staryu
-Grunt 2- Staryu, Bronzor, Bronzor
-Grunt 3- Magnemite, Magnemite
-Grunt 4- Solosis, Unown, Clefairy
-D- Whismur, Eevee, Solosis, Staryu
-
-
 Bugs present in Public Demo 1:
 https://i.imgur.com/wao8EmO.png - Typo: "usualy" > "usually"
 - Look into revising the dude in Yozora Gym who gives ou the time remote to explain how the Time Remote works
@@ -563,41 +556,3 @@ https://i.imgur.com/wao8EmO.png - Typo: "usualy" > "usually"
 
 Spacing issues:
 - https://i.imgur.com/FMN9JeF.png
-
-
-
-
-
-
-
-For custom battle transitions, search for:
-
-  if $game_map && $game_map.map_id==56
-    pbCommonEvent(4)
-    return true
-  end
-
-# If you want to add a custom battle intro animation, copy the following alias
-# line and method into a new script section. Change the name of the alias part
-# ("__over1__") in your copied code in both places. Then add in your custom
-# transition code in the place shown.
-# Note that $game_temp.background_bitmap contains an image of the current game
-# screen.
-# When the custom animation has finished, the screen should have faded to black
-# somehow.
-
-alias __over1__pbBattleAnimationOverride pbBattleAnimationOverride
-
-def pbBattleAnimationOverride(viewport,battletype=0,foe=nil)
-  # The following example runs a common event that ought to do a custom
-  # animation if some condition is true:
-  #
-  # if $game_map && $game_map.map_id==20   # If on map 20
-  #   pbCommonEvent(20)
-  #   return true                          # Note that the battle animation is done
-  # end
-  #
-  # The following line needs to call the aliased method if the custom transition
-  # animation was NOT shown.
-  return __over1__pbBattleAnimationOverride(viewport,battletype,foe)
-end
