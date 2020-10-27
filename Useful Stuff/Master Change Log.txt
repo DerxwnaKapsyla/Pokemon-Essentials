@@ -1,0 +1,603 @@
+Yitria Resurrection
+Master Change Log
+
+THIS CHANGE LOG DOCUMENTS EVERYTHING DONE TO THE GAME IN EVERY CAPACITY.
+IF I HAVE LEFT THIS IN, IT IS AN ACCIDENT, BUT OTHERWISE FEEL FREE TO LOOK OVER MY WORK HABITS!
+
+IT WILL CONTAIN _MASSIVE_ SPOILERS. READ AT YOUR OWN RISK.
+
+== Development Build 1 ==
+Up until April 23rd, 2017:
+* Maps, Slight eventing, tileset modifications
+April 23rd, 2017:
+* Implementation of Kiedisticelixer's Controlable Text Input Settings
+	(https://reliccastle.com/resources/7/)
+	- Negated as of updating to Version 17
+April 28th, 2017:
+* Added Deo's Day/Night Tones
+	(https://reliccastle.com/resources/50/)
+April 29th, 2017:
+* Added MissingNo and Hibaktol
+* Added the placeholder code for Haywire
+May 12th, 2017:
+* Added code that will split up the level display for AI and Player Pokemon
+May 15-19thth, 2017:
+* Added code that made it so MissingNo had its own EXP Track (called "MissingNo")
+* Changed MissingNo's evolution (temporarily) so that it evolves to Hibaktol with a Fire Stone
+* Added a handler so that it displays the fluctuating level only when the switch for it is enabled (Switch 97: MissingNo fight)
+* Added Hibaktol's sprite
+* Added placeholder icons for MissingNo and Hibaktol
+October 2017:
+* Some small text things
+* Finished up the cutscene in the Player's house
+* A few warps within Pharos City
+October 13th, 2017:
+* Updated to Essentials v17.1
+* Added in the Map Exporter Script
+* Added in the Speed Up script, made by Klein
+	(http://pokemonfangames.com/r-speedup-in-debug-10)
+* Modified the speed script to use the R key instead of the F key
+October 14th, 2017:
+* Added in Marty152's Side Stair tutorial
+	(https://www.pokecommunity.com/showthread.php?t=398998)
+* Mapped out Route 1
+* Mapped out Route 2
+October 15th, 2017:
+* Mapped out Veiskille City
+* Added some tiles to the Outside tileset
+* Mapped out Route 3
+October 16th, 2017:
+* Mapped out Yozora Island
+* Mapped out Seashift Tunnel
+* Made modifications to the Outside Tileset to allow the Nugget bridge to work as an elevated bridge
+* Added portholes to the cave tileset
+* Wired up Seashift Tunnel's warps
+October 17th, 2017
+* Added tiles to the Pokemon Center tileset
+* Remapped the base Pokemon Center design
+* Added over the Weather Sound tutorial
+* Added in the Thunder sound effects to play during Stormy weather
+October 18th, 2017
+* Added the Relay Receptionist to the Pharos City Pokemon Center
+October 20th, 2017:
+* Against all odds, the Teleporter system is functioning thanks to Mej71
+	* FUTURE CHANGES TO IT WILL REQUIRE A COMPLETLY NEW SAVE GAME. REMEMBER THAT.
+	* THIS IS WHY YOUR PERSONAL COPY HAS "Yozoraaa" AS THE NAME OF THE LOCATION.
+* All Pokemon Centers have been "finshed"... except for Charamada Peak and Kaiyomi Island...
+January 4th, 2018:
+* Added NPCs to Pharos City's Harbor
+* Added NPCs to the second floor of Pharos City's library
+* Added the start of the cutscene in the Library
+January 8th, 2018:
+* Added some placeholder sprites for Alyssia
+* Added in a potential track for Alyssia's theme
+* Added in a bunch of placeholder Trainer Types for the future
+* Added in Marin's Easy Questing Interface
+	(https://reliccastle.com/resources/62/)
+January 9th to the 15th:
+* A bunch of small things that I can't entirely remember
+* Mapped out Kaiyomi Island (East, west, Northwest, and Shrine)
+* Modified the teleporter script so all locations were set to false except for Pharos City
+* Some additions to the outside tileset
+* Added the entrance to the Sandbox Zone in Pharos City
+* Did more work on the Pre-Starter Segment of the game
+* Finished the Intro Cutscene. Needs a tad bit more polish probably.
+* Fixed some tileset permissions, I guess
+* Added the Route 26 theme to the game. Get the source and add it to the credits later.
+* I can't remember anything else for this time period I've been lazy about documenting.
+May 22nd, 2018:
+* Added a new journal entry and revised a few older ones.
+* Added a journal entry clear for when you do the library event.
+* Did more of the library event.
+* Removed capitalization on Hawthorne during the Starter Selection scene.
+May 23rd, 2018: 
+* Added some code that would enable the creation of name boxes during for text boxes.
+* Begun reworking some early bits of dialogue to account for name boxes.
+* Added a text box skin for the Name Box from Mr. Gela's Windowskin Pack
+	(https://reliccastle.com/resources/196/)
+* Removed existing turbo script and replaced it with Marin's fast-forward script
+	()
+* Added in the first Rival Battle and the scene before it.
+May 24th, 2018: 
+* Started work on the scene to follow the Rival Battle
+* Added some code that disables the Trainer Card before you're supposed to get it
+* Finished the introduction segment of the game
+* Changed the Lucky Egg with a Super Potion in Prof. Hawthorne's Lab
+May 25th, 2018:
+* Made changes to code in PokeBattle_Battler to account for variations on Territorial Pokemon
+* Made changes to code in PokeBattle_Battle to account for variations on Territorial Pokemon
+May 26th, 2018:
+* Added Gen 6 Pokemon, Items, Abilities, etc. to the game
+* Added Gen 6+7 cries to the game
+May 27th, 2018:
+* Added a theme for Caves
+* Removed the Shadow Type from the game
+* Tweaked the scene with the Players sibling and the Player's dad some
+* Started work on the Sidequest "A Cherished Gift"
+May 28th, 2018:
+* Added code to allow to custom movepools on event encounters (Do a search for Fury Attack Dunsparce if need to be found)
+May 29th, 2018"
+* Finished the Sidequest "A Cherished Gift"
+May 30th, 2018:
+* A few other misc things, I can't remember what
+May 31st, 2018:
+* Added some NPCs across Pharos City
+* Mapped out the Hawthorne Household
+* Put together an escelator warp
+* Added the Escelator soundbyte
+* Added in NPCs to the Storytime event
+Between May 3st and June 2nd:
+* A bunch of small changes that I can't remember the specifics of, mostly involving npc dialogue
+* Added encounters to Route 1 and 2
+* Added music to more locations
+June 3rd, 2018:
+* Finished up Pharos City for Demo 1
+* Added trainers to Route 1 and 2
+* Evented the Enigma Brigade grunt on Route 2
+* Mapped out and evented the Route 2 rest house
+June 4th and 5th, 2018:
+* Added several tiles to the Factory tileset
+* Mapped out the first floor of Veiskille Gym
+* Mapped out the second floor of Veiskille Gym
+* Added preliminary events to Veiskille Gym
+* Added some new graphics to the game, some from Pokemon Reborn
+June 7th, 2018:
+* Finished wiring up the mechanics of Veiskille Gym
+June 8th, 2018:
+* Added the trainer entry for Lazarus
+* Added music tracks to the game for Gym Leaders, Elite 4, and Champion
+June 9th, 2018:
+* Added the trainer entries for the Veiskille Gym Trainers
+June 10th, 2018:
+* Finished up Veiskille Gym
+* Placed the preliminary NPC events across Veiskille City
+* Drafted up a new sidequest for Veiskille City (Missing reward info)
+Between June 11th and June 17th:
+* Added various NPCs across Veiskille City
+* Added a script that makes more "realistic" random movements, similar to the actual Pokemon games
+* Added the sidequest info for Treasured Memento to the quest log script section
+June 18th & 19th:
+* Mapped out the hosues in Veiskille City
+* Evented up the Veiskille Pokeball Emporeum for all future releases
+* Mapped out the Veiskille Apartments
+* Added placeholder NPC locations
+* Added custom tiles to the Interior tileset, courtesy of Ulithium Dragon
+* Elevators set up inside the Veiskille Apartments
+September 12th, 2018:
+* Set up the Passcode System in Pokemon Centers
+September 14th, 2018:
+* Added the Doppelganger Script by Rot8er_ConeX
+* Tweaked the intro event
+* Added the code for the Outfit Swap, thanks to Dakota from Safari Zone
+September 15th, 2018
+* Added in the outfit sprites for Red down to Orin.
+	* Orin is still incomplete, Renko and Maribel need their surf/fish sprites set up properly
+	* Still missing the Winter Placeholders. Probably willl use Gen 4 Dawn/Lucas Sprites
+* Removed the coloration on the title screen based on the player's selected gender
+September 16th, 2018:
+* Added Lifrana's sprite to the game
+September 18th, 2018:
+* Finished putting together the first objective of the "Grains of Sand" sidequest chain.
+* Added Lifrana's overworld sprite to the game
+* Replaced the placeholders for Lifrana with her actual sprite
+September 19th, 2018:
+* Put some more work into the Treasured Memento sidequest.
+	* Still need to work on the trainer battle against the thief on Route 3.
+* Finished the Treasured Memento sidequest
+* Fixed up the Outfit Swap mechanic (very hackily but it works)
+* Added encounters to Route 3
+September 20th, 2018:
+* Added encounters to Seashift Tunnel
+* Added Cave Theme (02) to the BGM folder
+* Added metadata to Seashift Tunnel so it shows up properly on Town Maps
+* Added placeholder events to Route 3 and Seashift Tunnel for trainers
+February 7th, 2019:
+* Fixed the exit warp for the Rest Stop on Route 2
+* Added NPCs to Veiskille Pokemon Center
+February 10th, 2019:
+* Added trainers and NPCS to Route 3
+February 11th, 2019:
+* Added trainers to Seashift Tunnel (Missing dialogue for Hiker Ralph)
+* Added items to Seashift Tunnel
+February 12th, 2019:
+* Added an NPC to Veiskille City Pokemon Center that gives you the Old Rod
+February 14th, 2019:
+* Mapped out Yozora Gym
+* Did heavy modification to the Mansion tileset
+* Wired up the warps and mechanics of Yozora Gym
+* Mapped out the first floor of Yozora Observatory
+February 18th, 2019
+* Finished the title and spash screens
+February 23rd, 2019:
+* Mapped out all floors of the Observatory
+March 8th, 2019:
+* Added NPCs to Yozora Island
+* Mapped out the Name Rater's house on Yozora Island
+March 9th, 2019:
+* Slightly tweaked the events surrounding the Sandbox Zone/Pandora's Box
+March 10th, 2019:
+* Added in assets from the Missing Sound Effects resource (Done by DerxwnaKapsyla (hi))
+March 11th, 2019:
+* Added trainers to Yozora Gym
+* Added the hex Maniac trainer class
+* Set up the battle definition for Matthew
+* Set up most of Matthew's fight, pre- and post-fight.
+March 12th, 2019:
+* Added title screen music (Mound of Life, Touhou Puppet Play ~ Gensokyo Scenario (Unofficial))
+* Replaced the generic trainer battle theme (Battle! Trainer (Kanto) ~ HgSs)
+March 16th, 2019:
+* Added an Intro theme for Alyssia (Demystify Feast from Gensokyo Scenario Unofficial by てんちょー/Tencho)
+* Added an Intro theme for the Hex Maniac and Channeler Trainer Classes
+* Added an Intro theme for the Aroma Lady trainer class
+March 17th, 2019:
+* Added sa script made by Nuru Yuri that would allow trainer intro themes to be determined by BGM, tweaked it so that it would work with trainer classes
+May 24th and 25th: 
+* Various music tweaks, added in the remaining Trainer Intros for Demo 1
+* Made every trainer have their intro theme properly
+* Finished up the segment after Matthew's gym fight and when he returns to the Gym after the Observatory
+May 26th, 2019:
+* Fixed a bug with Yozora Gym and being defeated inside it
+* Finished up the Enigma Brigade event at the Observatory
+* Added the rival fight against Alyssia
+* Added NPCs to the Observatory that show up after the EB Event
+* Set up the mart for Yozora Island
+* tweaked the Teleporter Relay NPCs in Yozora and Veiskille (even though they won't be in use yet.)
+* Added the changing rooms to Yozora Mart
+* Added houses and NPCs to the houses on Yozora Island
+May 27th, 2019:
+* Added the NPCs to Yozora PokeCenter/Mart
+* Added a temporary catch-all icon for the Town Map indicator
+	- Search for "      @sprites["player"].setBitmap("Graphics/Pictures/mapPlayer")" to replace it.
+* Added Ambient Cries by Vendily
+* Added in placeholders for the Protag variants
+* Added a Vs transition for Matthew
+* Replaced Lazarus's Voltorb with a Klink
+* Tweaked the Alyssia fight in Hawthorne's lab to replace Ember with Tackle, and removed Howl
+* Added a Rock Smash Rock to Route 2
+* Fixed a typo on Route 2 Rest House
+* Houses for Yozora Island now function properly
+* Fixed the fisherman in Veiskille Center
+* Fixed tile passability settings in the Pokemon Center tileset
+* Prices for the Region Specialties were locally adjusted
+* Fixed the trigger for the Alyssia fight so it can't activate before clearing the Observatory
+* Changed some of Intro Oak's dialogue; replaced indocrinate with induct
+* Mother now heals you if you talk to her after getting your starter
+* Revised all instances of Hawthorne to be Hawthorn. Maybe.
+* Adjusted Lazarus'sPorygon to remove Conversion and Conversion 2
+* Set up Old Rod encounters for Pharos City, Yozora Island, and Route 3
+May 28th, 2019:
+* Added in Efficent Water Puddle Animations by Boonzeet
+* Removed the ability to change the fonts
+* Set default font to FrLg's font
+* Set default text speed to Fast
+* Tweaked a hiker's dialogue in Seashift Tunnel
+May 29th, 2019:
+* Looped the tracks for Pharos City, Professor's Lab, and Route 1
+* Fixed instances of "Pokemon" in the Intro Dialogue and an NPC in Veiskille City
+* Replaced instances of "Chaotic Infinity Conglomeration" with "Infinity Conglomeration" in the Intro Dialogue and an NPC in Veiskille City
+* Removed "Mom:" from the mother's dialogue at the start of the game
+* Fixed a spacing issue with the Mother'd dialogue at the start of the game
+* More instances of "Hawthorne" replaced with "Hawthorn"
+* Fixed a spacing issue with the book about the Great Schism
+* Significantly overhauled part of the dialogue between Lifrana and Jerimiah
+* Made the player's house turn off the Starting Over flag if they wipe and return there without going to a Pokemon Center
+- Changed the Teleporter Relay to use Four badges instead of five
+- Begun the process of implying that the game takes place an indeterminate time since RBY, but definitely over 50 years ago.
+- Revised the Veiskille Mart NPC to say Veiskille City.
+- Removed the direction lock on an NPC in Veiskille City.
+May 30th, 2019:
+* Revised more instances of "Hawthorne" to "Hawthorn"
+* Wired up the Teleporter in Yozora Gym
+* Added the modern Exp. Share to the game, replaced the one you get from the Aide with this one
+* Set location metadata for all places missing it
+* Made all conveyor belts in Yozora Gym consistent and fixed up
+* Gave the stairs in the Factory Tileset their proper terrain tag
+* Added an impassable door to Lazarus's room until I can figure out what I'm going to do with it
+* Tweked the Sandbox Proprietor to say over 50 years instead of over 500 years
+* Wired up the elevator in professor Hawthorn's lab
+* Fixed a black void on Yozora Island
+* Updated the door sounds on Yozora Island
+* Added the Journal Updated notification for the sidequest npc in Veiskille City
+* Modified Alyssia's move route after the second rival battle
+* Added the cash register sound byte to the mart script
+* Modified the Evolution scene to make it so the intro ME for Evolution starts when the scene starts
+* Modified the Evolution scene so that the Pokemon's cry is played if evolution is cancled
+* Added a sound effect to learning a move from overworld leveling up
+* Added a sound effect for leveling up via Rare Candy
+* Added a sound effect for leveling up in battle
+* Raised the volume on the Rock Smash SE
+* Lowered the volume of the EB Commander theme
+* Added the Skip Text function, made by Amethyst
+* Raised the volume on Alyssia's arrival theme
+* Lowered the volume on all trainer encounter themes
+* Lowered the volume on the puddle sound effect
+* Lowered the volume on Alyssia's battle theme
+* Lowered the volume on the generic trainer battle theme
+* Lowered the volume of the ambient cries
+* Looped Alyssia's appearance theme
+* Looped the Pokemon Center theme
+* Looped the track for Veiskille City
+* Looped the theme for Route 3
+* Looped the Pokemon Gym theme
+* Looped the Cave 2 Theme
+* Looped the Cave 1 theme
+* Looped the Vs. Gym Leader theme
+* Looped the Vs. Trainer theme
+* Looped the Vs. Wild Pokemon theme
+May 31st, 2019:
+* Fixed the warp in Seashift Tunnel that leads to Yozora Island
+* Fixed the first floor of the Observatory so it no longer shows your reflection in the void
+* Fixed up parts of the intro; replaced instances of "Pokemon" with "Pokémon", slightly tweaked the timeline lore, and a typo with "Intelligence".
+* Begun fixing instances of Jerimiah to Jeremiah. Hopefully I got them all!
+* Fixed instances of interrupting being typo'd
+* Fixed sound byte for learning moves in battle
+* Made sure the Starting Over flag gets disabled if you havent visited a Pokemon Center and your last heal spot was the Dunsparce Cave.
+* Fixed typos in Alyssia's dialogue in Hawthorn's Lab
+* Added an icon for the Exp. share 2.0
+* Removed Sonicboom from first gym trainer in Yozora Gym
+* Removed Psywave off everyone except D's Staryu
+* Fixed passability settings on tiles in the Pokemon Center tileset
+* Fixed the shop not properly displaying when items get sold
+* Lowered the audio of the encounter themes again. (if this is still too loud im going to explode)
+* Turned on the setting that enabled new battle mechanics
+* Turned on the setting that enabled Critical Capture
+* Turned on the setting that enabled Capture Experience
+* Turned on the setting that properly enabled Gen 6 Exp. Share
+- Gave Oran Berries to every starter
+- Fixed the Treecko ball giving out Chikorita instead
+* Added Journal Entries for the second and third gym, as well as the first Enigma Brigade event
+June 1st, 2019:
+* Renamed Umisheru Village to Kaigara Village
+* Added mystery gift entries to the game     \______ Might not be working  \________ Isn't working because
+* Added deliverymen to all Pokemon Centers   /           Free Shrugs!      /         HTTPS is fucked, man.
+
+== Development Build 2 ==
+June 18th, 2019:
+* Fixed the typo on the hiker in Seashift Tunnel
+* Tweaked the Time Remote npc in Yozora Gym
+* Fixed the typo in Morgan's dialogue that says "foosteps"
+* Removed the Vending Machines from all Pokemon Centers aside from Charamada Peak and Kaiyomi Island
+* Made the Vending Machine near Pharos Harbor inaccessable until you beat Kousen Gym
+* Modified the AI Oak scene to indicate that this isn't the real Oak, but instead an AI made in his likeness
+* Modified the AI Oak scene to make note of Puppets not being everywhere in the world
+* Made it so the player starts with a Potion immediately instead of needing to access a PC to withdraw it
+* Added Rocks to Pharos Beach to make it less empty
+* Fixed a missing word in an NPC in Pharos Pokemon Center
+June 19th, 2019:
+* Additions to the outside tileset
+* Mapped out Fotia Village
+June 20th, 2019:
+* Fixed a bunch of typos
+* Mapped out the gatehouses leading out of Veiskille City
+* Added the Unreal Time System by FL
+* éTypos!
+* Added in a Hidden Power Checker NPC in Veiskille Apartments
+* Added in several additional hidden items across the various Demo 1 maps
+June 21st, 2019:
+* Mapped out Route 4
+* Mapped out the shack on Route 4
+Between June 22nd and June 28th:
+* Mapped out Kousen City, needs revising
+* Added some events to Kousen City
+October 30th, 2019:
+* Modified the time between Ambient Overworld Cries
+October 31st, 2019:
+* Made a dedicated tileset for Chusei City
+November 1st, 2019:
+* Mapped out Chusei City
+* Mapped out Mendacium City
+November 2nd, 2019:
+* Mapped out Kaigara Village
+* Fixed the bridge in Kousen City
+* Revised some lore about Seashift Tunnel
+November 3rd, 2019:
+* Wired up some warps in the Veiskille Gatehouses
+* Did some tileset priority tweaks
+* Mapped out Route 7
+* Set up a prefab event for Overworld-Style Wild Encounters
+	* This will likely be used for Wild Battles that take place on ocean routes
+November 4th, 2019:
+* Set the metadata for several maps
+November 5th, 2019
+* Mapped out Route 7
+November 6th, 2019:
+* Added te Offline Wonder Trade Script by Black Eternity
+* Mapped out F2 of Pandora's Box
+* Renamed instances of "D" to Delta
+* Fixed line break issues in Teleporter Relay NPC
+* Turned the Teleporter Relay Explanation into a Common Event
+November 8th & 9th, 2019:
+* Set up the functionality for Custom Pre-Battle Transitions via Common Events
+	* Alyssia's Pre-Battle Transition has been added to the game
+* Tweaked a few lines of code to get the Custom Pre-Battle Transitions to work
+	* Changed "for i in 1..50" to "for i in 1..100" under "class Spriteset_Global"
+	* In Messages, "def pbCommonEvents" has been rewritten. The change of code is here: https://pastebin.com/SrBTdBBw
+November 10th, 2019:
+* Changed the method in which the Day/Night icon displays in Yozora Gym
+November 12th, 2019:
+* Added in the graphics for Matthew's Vs. Transition and appended it to the Gym Battle event
+* Fixed a bug with Yozora Observatory where the right event tile didn't properly update the Journal
+* Added in the transition for Alyssia's second battle
+* Fixed an issue with Alyssia's move route after the Observatory event
+* Fixed an issue with Alyssia's Encounter music playing after she disappears
+January 14th, 2020:
+* Added in graphics for the Fairy type, courtesy of Vendilly and AmethystRain
+
+--- Essentials V18.1.dev update ---
+October 17th, 2020:
+* Updated to Essentials v18.1.dev - Currently keeping up to date
+Between October 17th and October 21st:
+* Added in sprites for Gen 7 Pokemon, taken from two big resource packs:
+	* Battle Sprites taken from the "DS-Style Gen VII and Beyond Pokemon Sprite Repository" on Pokecommunity, converted by myself - https://www.pokecommunity.com/showthread.php?t=368703
+	* Icon Sprites taken from the "v17.2 Gen 6-8 PBS Files and Sprites v5" repository on Relic Castle, with some additions from the above resource pack by myself - https://reliccastle.com/resources/383/
+Between October 21st and October 23rd:
+* Revised the sprites for Gen 6 Pokemon, taken from two big resource packs:
+	* Battle Sprites taken from the "DS-Style Gen VII and Beyond Pokemon Sprite Repository" on Pokecommunity, converted by myself - https://www.pokecommunity.com/showthread.php?t=368703
+	* Icon Sprites taken from the "v17.2 Gen 6-8 PBS Files and Sprites v5" repository on Relic Castle, with some additions from the above resource pack by myself - https://reliccastle.com/resources/383/
+October 25th, 2020:
+* Added in changes from v18.1.dev made on 10/23 (Fixed events vanishing instead of becoming your partner trainer)
+October 26th, 2020:
+* Made it so the Player A icon didn't show up for Cursor Mode when starting a new game
+* Made the music in the intro fade out quicker when transitioning into the player's bedroom
+* Added in a (temporary) icon for the quest journal in the Pokegear
+* Fixed a bug in vanilla Essentials where the exp full ding didn't play
+
+Tomorrow's mapping plans:
+- Map out Kouskille Woods
+
+To be done Eventually:
+* Get the documentation done
+- Get the script for footprints in the sand
+- tweak the font used for "Yitria Resurrection" on the title screen
+- maybe change the splash screen music again, idk
+- change the graphic used on the continue screen (to what, idk yet)
+- potentially tweak the intro scene again (mostly involving the oak segment. it could be made much prettier looking with enough effort.)
+- Get proper graphics for EVERYBODY
+- Work on the Surf/Good Rod/Super Rod encounters for Pharos City, Yozora Island, and Route 3
+- Adjust the AI on Gym Leaders, Alyssia, and EB Commanders
+- Fix the flight points for towns to rectify Teleport locations
+- Get graphics for Fairy Type
+- Rename "D" to Delta, rename "J" to Iota
+- Work on revised Battle Transitions for the important NPCs
+- Fill out the TM on Yozora Island
+- Add in Liquid Revive
+- Add in a theme for Trading
+
+make sure observatry events updaer journal properly
+also do something about text overflow in journal
+
+- Revise the lore, bring down the time scale from 500 years to 50~100 (All Teleporter Relay NPCs need to be adjusted)
+- Make sure ALL Teleporter Relays are set to use 4 badges instead of 5
+- Add in some sort of sidequest that involves the variants of Floette and bringing them to the Graveyard Zone in PokeIsland Park, which will allow you to get Eternal Flower Floette
+- Utilize the Reborn sea-wall tiles used in Reborn City for the foundation and formation of Chusei City (Chusei will be an elevated city)
+- Get the Battle Tent tiles and add them to a tileset; it'll serve as the tents for the Undersea Exploration Areas (Safari Zone replacement)
+
+Add buildings of some kind to the sea routes between Central Yitria and Chusei City, and Kortalan City and Charamada Island. These houses act as spots where the player can descend into the Zirconial Ocean, and eventually find ruins that contain big loot, rare Pokemon, including potential Legendaries. Tie some sidequest chains to these areas. Alternatively or also, make it so it works like the Safari Zone and have the Scuba Gear you're wearing have a step/breath counter. When it runs to 0, add a notification that says "WARNING: Tank oxygen levels running low. The estimated oxygen levels remaining are just enough to return to the surface. Please return now." or something like that.
+
+
+- The Ferry Captain will be held captive at the Weather Instute while the Enigma Brigade is there, which prevents the player from accessing the ferry that'll let them cross to Western Yitria. Once you rescue the captain, they will be grateful, tell the player they will be at their shack and if they need a trip to Western Yitria, they can hit them up.
+- 
+
+
+REMMEBER TO MANUALLY SET UP EACH TRAINER'S PRE-BATTLE THEME; USE THE HEX MANIAC IN YOZORA GYM AS REFERENCE
+- Audio.bgm_play("Audio\BGM\filename")
+
+
+https://reliccastle.com/resources/180/
+https://reliccastle.com/resources/184/
+https://reliccastle.com/resources/249/
+https://reliccastle.com/resources/250/
+
+
+Trainer classes and Pre-Battle Themes in D1:
+Android > None
+Aroma Lady > Lass (rse)
+Astronomer > None
+Bird Keeper > Cooltrainer (rse)
+Bug Catcher > Boy (frlg)
+Burglar > Bad Guy (frlg)
+Camper > Youngster (rse)
+Engineer > Hiker (rse)
+Fisherman > Hiker (rse)
+Hiker > Hiker (rse)
+Lass > Girl (frlg)
+Mysterious > None
+Ruin Maniac > Hiker (rse)
+Scientist > Psychic (rse)
+Supernerd > Psychic (rse)
+Youngster > Youngster (rse)
+Enigma Grunt > Team Galactic (dppt)
+
+
+Clefairy
+Jigglypuff
+Magnemite
+Voltorb
+Staryu
+Eevee
+Porygon
+Slowpoke
+Unown
+Whismur
+Bronzor
+Yanma
+Swinub
+Rotom
+Solosis
+Klink
+Golett
+
+
+Grunt 1- Clefairy, Staryu
+Grunt 2- Staryu, Bronzor, Bronzor
+Grunt 3- Magnemite, Magnemite
+Grunt 4- Solosis, Unown, Clefairy
+D- Whismur, Eevee, Solosis, Staryu
+
+
+Bugs present in Public Demo 1:
+https://i.imgur.com/wao8EmO.png - Typo: "usualy" > "usually"
+- Look into revising the dude in Yozora Gym who gives ou the time remote to explain how the Time Remote works
+	3:10 PM] Geizt: I mean, you could just have him say 'yeah, when it plays a sound, hit the Alt key on the remote. The alt stands for 'alternate'. etc etc'
+- More issues of Pokemon not having the ascented e in it; Watch this person's VoD and keep an eye out, the jot them here later:
+	https://www.twitch.tv/videos/435094228
+- Mother says "foosteps" instead of "footsteps"
+- Make the vending machines in Pharos, Veiskille, and Yozora inaccessable/non-functional until you reach Kousen
+- Revise the Oak scene so instead of saying that he is an AI, have it say that he is an AI desgned in the likeness of Professor Oak to assist trainers registering for the league.
+- Revise the oak scene to mention that Puppets aren't widespread in all parts of the world, or something to that effect
+- Revise the dialogue on Morgan's dresser, it still says Maru
+- Have your sibling give you a Potion when you go downstairs at the start of the game
+- Add rocks/npcs to Pharos Beach, maybe
+- https://i.imgur.com/tHHgEFE.png
+- Put in more hidden items in locations
+- Check on the journal entry for your dad when given to you by Morgan
+- Add a Hidden Power checker in Veiskille or Yozora somewhere
+
+éTypos:
+- Scientist waiting on bench in Pharos City; "Pokeball"
+- Hawthorn's dialogue when you get your starter; "Pokeball" (Even though I revised Pokemon...)
+- Hawthorn's dialogue when you get the Trainer Essentials
+- NPC in Pharos Mart, says "Potions or Pokeballs"
+- Route 1, Youngster Jimmy; "Pokeballs"
+= 
+
+Spacing issues:
+- https://i.imgur.com/FMN9JeF.png
+
+
+
+
+
+
+
+For custom battle transitions, search for:
+
+  if $game_map && $game_map.map_id==56
+    pbCommonEvent(4)
+    return true
+  end
+
+# If you want to add a custom battle intro animation, copy the following alias
+# line and method into a new script section. Change the name of the alias part
+# ("__over1__") in your copied code in both places. Then add in your custom
+# transition code in the place shown.
+# Note that $game_temp.background_bitmap contains an image of the current game
+# screen.
+# When the custom animation has finished, the screen should have faded to black
+# somehow.
+
+alias __over1__pbBattleAnimationOverride pbBattleAnimationOverride
+
+def pbBattleAnimationOverride(viewport,battletype=0,foe=nil)
+  # The following example runs a common event that ought to do a custom
+  # animation if some condition is true:
+  #
+  # if $game_map && $game_map.map_id==20   # If on map 20
+  #   pbCommonEvent(20)
+  #   return true                          # Note that the battle animation is done
+  # end
+  #
+  # The following line needs to call the aliased method if the custom transition
+  # animation was NOT shown.
+  return __over1__pbBattleAnimationOverride(viewport,battletype,foe)
+end

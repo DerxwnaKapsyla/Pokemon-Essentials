@@ -1,117 +1,199 @@
 ﻿# See the documentation on the wiki to learn how to edit this file.
 #-------------------------------
-[CAMPER,Liam]
-LoseText = "A very good battle, indeed!"
+[SCIENTIST,Debug]
+LoseText= "..."
+Pokemon = BULBASAUR,1
+Pokemon = BULBASAUR,1
+Pokemon = BULBASAUR,1
+Pokemon = BULBASAUR,1
+Pokemon = BULBASAUR,1
+Pokemon = BULBASAUR,1
+#-------------------------------
+[APPRENTICE,Alyssia]
+LoseText= "Beginner's luck, but good job \\PN!"
+Pokemon = HOUNDOUR,5
+	Item = ORANBERRY
+	Moves = LEER,TACKLE
+#-------------------------------
+[YOUNGSTER,Jimmy]
+LoseText= "Now I have no Pokémon."
+Pokemon = SENTRET,3
+#==============================
+[YOUNGSTER,Danny]
+LoseText= "So much for them being stronger based on when they're active."
+Pokemon = ZIGZAGOON,3
+Pokemon = HOOTHOOT,4
+#==============================
+[CAMPER,Tom]
+LoseText= "Good thing there's a Pokémon Center near by..."
+Pokemon = VULPIX,5
+Pokemon = SANDSHREW,5
+#==============================
+[MYSTERIOUS,Individual]
+LoseText= "This definitely wasn't supposed to happen!"
+Pokemon = STARYU,6
+	Moves = TACKLE,HARDEN,WATERGUN
+#==============================
+[RUINMANIAC,Arnold]
+LoseText= "Oh, it seems the artifact I was examining was just a rock..."
+Pokemon = GEODUDE,3
+Pokemon = GEODUDE,3
+#==============================
+[ANDROID,Lazarus]
+LoseText= "Concluding evaluation. Results: exemplary. Battle control terminated."
+Pokemon = KLINK,8
+	Moves = VICEGRIP,CHARGE,THUNDERSHOCK,HIDDENPOWER
+	Ability = 2
+Pokemon = PORYGON,10
+	Moves = TACKLE,SHARPEN,PSYBEAM,HIDDENPOWER
+	Ability = 0
+#==============================
+[ENGINEER,Granger]
+LoseText= "Perhaps I should have been more focused on the battle."
+Pokemon = CASTFORM,7
+#==============================
+[ENGINEER,Jamison]
+LoseText= "I was having a nice break too."
+Pokemon = GRIMER,6
+Pokemon = MAGNEMITE,7
+#==============================
+[ENGINEER,Paul]
+LoseText= "Alright, looks good. Head on in."
+Pokemon = VOLTORB,6
+	Moves = TACKLE,LIGHTSCREEN,THUNDERSHOCK
+#==============================
+[BURGLAR,Horton]
+LoseText= "This heist wasn't worth it anyway!"
+Pokemon = SPINARAK,8
+Pokemon = KOFFING,9
+#==============================
+[AROMALADY,Delila]
+LoseText= "The scent of defeat, so bittersweet..."
+Pokemon = BUDEW,8
+Pokemon = ODDISH,9
+Pokemon = ODDISH,10
+#==============================
+[LASS,Lily]
+LoseText= "And so you pass!"
+Pokemon = SENTRET,8
+Pokemon = PIDOVE,10
+#==============================
+[FISHERMAN,Bernard]
+LoseText= "For a moment, I thought I had a tug..."
+Pokemon = MAGIKARP,10
+Pokemon = MAGIKARP,10
+Pokemon = MAGIKARP,10
+#==============================
+[FISHERMAN,Philip]
+LoseText= "A loss is fine too!"
+Pokemon = QWILFISH,11
+#==============================
+[FISHERMAN,Justin]
+LoseText= "Yeah, it's pretty great!"
+Pokemon = GOLDEEN,9
+Pokemon = GOLDEEN,10
+#==============================
+[HIKER,Marco]
+LoseText= "And as expected with battles, someone has to lose."
 Pokemon = DIGLETT,10
-Pokemon = BONSLY,11
-#-------------------------------
-[LEADER_Brock,Brock]
-Items = FULLRESTORE,FULLRESTORE
-LoseText = "Very good."
+Pokemon = ARON,11
+#==============================
+[HIKER,Hammond]
+LoseText= "And much like mountains, I still get defeated even in caves!"
+Pokemon = GEODUDE,11
+Pokemon = MACHOP,11
 Pokemon = GEODUDE,12
-    Gender = male
-    Moves = DEFENSECURL,HEADSMASH,ROCKPOLISH,ROCKTHROW
-    Ability = 0
-    IV = 20
-Pokemon = ONIX,14
-    Name = Rocky
-    Gender = male
-    Shiny = yes
-    Moves = HEADSMASH,ROCKTHROW,RAGE,ROCKTOMB
-    Ability = 0
-    Item = SITRUSBERRY
-    IV = 20
-    Ball = 19
-#-------------------------------
-[TEAMROCKET_M,Grunt,1]
-LoseText = "You're too good for me!"
-Pokemon = WEEPINBELL,21
-    Shadow = yes
-#-------------------------------
-[TEAMROCKET_F,Grunt,1]
-LoseText = "You're too good for me!"
-Pokemon = BURMY,19
-Pokemon = WINGULL,19
-Pokemon = ELECTABUZZ,20
-    Shadow = yes
-#-------------------------------
-[YOUNGSTER,Ben]
-LoseText = "Aww, I lost."
-Pokemon = RATTATA,11
-Pokemon = EKANS,11
-#-------------------------------
-[CAMPER,Jeff]
-LoseText = "A very good battle, indeed!"
-Pokemon = SPEAROW,16
-Pokemon = SENTRET,16
-#-------------------------------
-[CAMPER,Jeff,1]
-LoseText = "You beat me again!"
-Pokemon = FEAROW,29
-Pokemon = FURRET,29
-#-------------------------------
-[PICNICKER,Susie]
-LoseText = "Defeated! Oh my!"
-Pokemon = MEOWTH,18
-#-------------------------------
-[PICNICKER,Susie,1]
-LoseText = "Defeated! Oh my!"
-Pokemon = PERSIAN,32
-#-------------------------------
-[HIKER,Ford]
-LoseText = "You're too good for me!"
-Pokemon = MACHOP,19
-#-------------------------------
-[FISHERMAN,Andrew]
-LoseText = "Washed out!"
-Pokemon = MAGIKARP,14
-Pokemon = MAGIKARP,18
-#-------------------------------
-[BEAUTY,Bridget]
-LoseText = "My Skitty!"
-Pokemon = SKITTY,18
-#-------------------------------
-[LASS,Crissy]
-LoseText = "You didn't have to win so convincingly!"
-Pokemon = PLUSLE,17
-Pokemon = MINUN,17
-#-------------------------------
-[COOLCOUPLE,Alice & Bob]
-LoseText = "Our teamwork failed!"
-Pokemon = TURTWIG,19
-Pokemon = CHIMCHAR,19
-#-------------------------------
-[POKEMONTRAINER_Brendan,Brendan]
-Pokemon = MARSHTOMP,19
-#-------------------------------
-[SWIMMER2_F,Ariel]
-LoseText = "Washed out!"
-Pokemon = STARYU,15
-Pokemon = GOLDEEN,11
-#-------------------------------
-[RIVAL1,Blue]
-LoseText = "Not too shabby."
-Pokemon = PIDGEOTTO,17
-Pokemon = RATTATA,15
-Pokemon = BULBASAUR,18
-#-------------------------------
-[RIVAL1,Blue,1]
-LoseText = "Not too shabby."
-Pokemon = PIDGEOTTO,17
-Pokemon = RATTATA,15
-Pokemon = CHARMANDER,18
-#-------------------------------
-[RIVAL1,Blue,2]
-LoseText = "Not too shabby."
-Pokemon = PIDGEOTTO,17
-Pokemon = RATTATA,15
-Pokemon = SQUIRTLE,18
-#-------------------------------
-[CHAMPION,Blue]
-LoseText = "A good battle indeed!"
-Pokemon = VENUSAUR,63
-    Item = SITRUSBERRY
-Pokemon = CHARIZARD,63
-    Item = SITRUSBERRY
-Pokemon = BLASTOISE,63
-    Item = SITRUSBERRY
+#==============================
+[HIKER,Ralph]
+LoseText= "This is a mountain flipped inside out!"
+Pokemon = SPINARAK,13
+#==============================
+[BIRDKEEPER,Phil]
+LoseText= "The hunter became the hunted!"
+Pokemon = HOOTHOOT,12
+Pokemon = MURKROW,14
+#==============================
+[BUGCATCHER,Marius]
+LoseText= "No, not my night crawlers!"
+Pokemon = SPINARAK,12
+Pokemon = SPINARAK,12
+Pokemon = SPINARAK,12
+#==============================
+[BIRDKEEPER,Afin]
+LoseText= "Ack! My Zubats got grounded!"
+Pokemon = ZUBAT,13
+Pokemon = HOOTHOOT,13
+Pokemon = ZUBAT,14
+#==============================
+[SUPERNERD,Seymour]
+LoseText= Wait, what do you mean that Jigglypuff didn't come from the moon? It evolves from a Moon Stone!"
+Pokemon = JIGGLYPUFF,13
+Pokemon = CLEFAIRY,13
+#==============================
+[HEXMANIAC,Layla]
+LoseText= "Did the spirits not hear me...?"
+Pokemon = GASTLY,14
+Pokemon = MISDREAVUS,15
+Pokemon = SHUPPET,14
+#==============================
+[SCIENTIST,Clayton]
+LoseText= "I'm also the best at admitting defeat!"
+Pokemon = CLEFAIRY,14
+Pokemon = MUNNA,15
+Pokemon = CLEFABLE,16
+	Moves = AMNESIA,DOUBLESLAP,SING,METRONOME
+#==============================
+[ASTRONOMER,Matthew]
+LoseText= "The night holds no power over you, well done!"
+Pokemon = MEOWTH,16
+Pokemon = MURKROW,16
+Pokemon = UMBREON,17
+#==============================
+[ENIGMAGRUNT_F,Recruit]
+LoseText= "The price of knowledge is steep..."
+Pokemon = CLEFAIRY,18
+Pokemon = STARYU,18
+	Moves = TACKLE,HARDEN,WATERGUN,SWIFT
+#==============================
+[ENIGMAGRUNT_M,Recruit]
+LoseText= "You can't stop us from acquiring knowledge!"
+Pokemon = SOLOSIS,18
+	Moves = REFLECT,ROLLOUT,HIDDENPOWER,LIGHTSCREEN
+Pokemon = UNOWN,20
+Pokemon = CLEFAIRY,19
+#==============================
+[ENIGMAGRUNT_M,Recruit,1]
+LoseText= "And it looks as if I can't stop you!"
+Pokemon = MAGNEMITE,20
+	Moves = LIGHTSCREEN,THUNDERWAVE,THUNDERSHOCK,TACKLE
+Pokemon = MAGNEMITE,21
+	Moves = LIGHTSCREEN,THUNDERWAVE,THUNDERSHOCK,SONICBOOM
+#==============================
+[ENIGMAGRUNT_F,Recruit,1]
+LoseText= "Oh, my mistake. You aren't staff, you're here to be a nuisance!"
+Pokemon = STARYU,21
+	Moves = WATERGUN,SWIFT,CONFUSERAY,HARDEN
+Pokemon = BRONZOR,21
+	Moves = CONFUSION,HYPNOSIS,CONFUSERAY,IRONDEFENSE
+Pokemon = BRONZOR,22
+	Moves = CONFUSION,HYPNOSIS,CONFUSERAY,IRONDEFENSE
+#==============================
+[ENIGMACOMM_1,Delta,0]
+LoseText= "I see, quite interesting...!"
+Items = XDEFENSE,SUPERPOTION
+Pokemon = WHISMUR,22
+	Moves = STOMP,SCREECH,SUPERSONIC,HOWL
+Pokemon = EEVEE,21
+	Moves = SWIFT,BITE,SANDATTACK,QUICKATTACK
+Pokemon = SOLOSIS,22
+	Moves = REFLECT,ROLLOUT,HIDDENPOWER,CHARM
+Pokemon = STARYU,24
+	Moves = PSYWAVE,WATERGUN,SWIFT,MINIMIZE
+#==============================
+[APPRENTICE,Alyssia,1]
+LoseText= "W-Well, you've certainly gotten stronger!"
+Items = POTION,XATTACK
+Pokemon = ARON,21
+Pokemon = HOUNDOUR,23
+Pokemon = MANKEY,21
+#============================== End of Demo 1
