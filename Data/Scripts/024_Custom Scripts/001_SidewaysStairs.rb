@@ -19,7 +19,7 @@ PluginManager.register({
 # Config
 #-------------------------------------------------------------------------------
 module PBTerrain
-  StairLeft       = 19  # Set these to the terrain tags you'd like to use
+  StairLeft       = 21  # Set these to the terrain tags you'd like to use
   StairRight      = 20
 end
 

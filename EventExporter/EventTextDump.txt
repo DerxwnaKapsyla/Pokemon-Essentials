@@ -8004,6 +8004,7 @@ Direction Fix
 Trigger: Action Button
 
 List of Event Commands:
+@>Text: They seem to be engaged in a conversation.
 @>
 
 Page #2
@@ -8222,6 +8223,7 @@ Direction Fix
 Trigger: Action Button
 
 List of Event Commands:
+@>Text: They seem to be engaged in a conversation.
 @>
 
 Page #2
@@ -13293,7 +13295,7 @@ Move Animation
 Trigger: Action Button
 
 List of Event Commands:
-@>Script: Kernel.pbSetPokemonCenter
+@>Script: pbSetPokemonCenter
 @>Text: \rHello, and welcome to the Pokémon Center.
 @>Text: \rWe restore your tired Pokémon to full health.
 @>Text: \rWould you like to rest your Pokémon?
@@ -13306,7 +13308,6 @@ List of Event Commands:
   :              : $>Turn Left
   :              : $>Wait: 2 frame(s)
  @>Wait for Move's Completion
- @>Script: pbSetSelfSwitch(3,"A",true)
  @>Control Variables: [0006: Poké Center healing ball count] = 0
  @>Script: count=$Trainer.pokemonCount
  :       : for i in 1..count
@@ -13314,18 +13315,18 @@ List of Event Commands:
  :       :   pbSEPlay("Battle ball shake")
  :       :   pbWait(16)
  :       : end
- @>Set Move Route: [Healing balls (L)]
+ @>Set Move Route: [Healing balls]
   :              : $>Stop Animation ON
  @>Play ME: 'Pkmn healing', 100, 100
  @>Wait: 58 frame(s)
  @>Control Variables: [0006: Poké Center healing ball count] = 0
- @>Set Move Route: [Healing balls (L)]
+ @>Set Move Route: []
   :              : $>Stop Animation OFF
  @>Set Move Route: This event
   :              : $>Wait: 15 frame(s)
   :              : $>Turn Down
  @>Wait for Move's Completion
- @>Conditional Branch: Script: Kernel.pbPokerus?
+ @>Conditional Branch: Script: pbPokerus?
   @>Text: \rYour Pokémon may be infected by PokeRus.
   @>Text: \rLittle is known about the PokeRus except that they 
    :    : are microscopic life-forms that attach to Pokémon.
@@ -13349,7 +13350,6 @@ List of Event Commands:
  @>Text: \rWe hope to see you again!
  @>
 : Branch End
-@>Script: pbSetSelfSwitch(3,"A",false)
 @>
 
 Page #2
@@ -13374,19 +13374,18 @@ List of Event Commands:
  :              : $>Turn Left
  :              : $>Wait: 2 frame(s)
 @>Wait for Move's Completion
-@>Script: pbSetSelfSwitch(3,"A",true)
 @>Control Variables: [0006: Poké Center healing ball count] = 0
 @>Script: for i in 1..$Trainer.pokemonCount
 :       :   pbSet(6,i)
 :       :   pbSEPlay("Battle ball shake")
 :       :   pbWait(16)
 :       : end
-@>Set Move Route: [Healing balls (L)]
+@>Set Move Route: []
  :              : $>Stop Animation ON
 @>Play ME: 'Pkmn healing', 100, 100
 @>Wait: 58 frame(s)
 @>Control Variables: [0006: Poké Center healing ball count] = 0
-@>Set Move Route: [Healing balls (L)]
+@>Set Move Route: []
  :              : $>Stop Animation OFF
 @>Set Move Route: This event
  :              : $>Wait: 15 frame(s)
@@ -13399,7 +13398,6 @@ List of Event Commands:
  :              : $>Graphic: "NPC 16', 0, 2, 0
 @>Wait for Move's Completion
 @>Text: \rWe hope you excel!
-@>Script: pbSetSelfSwitch(3,"A",false)
 @>Control Switches: [0001: Starting over] = OFF
 @>
 
@@ -13453,7 +13451,7 @@ List of Event Commands:
 
 #------------------------------------------------------------------------------
 Event ID: 003
-Event Name: Healing balls (L)
+Event Name: Healing balls
 (X,Y): (011,012)
 
 Page #1
@@ -13473,7 +13471,6 @@ List of Event Commands:
 Page #2
 Conditions
 Variable 0006: Poké Center healing ball count is 1 or above
-Self Switch A is ON
 
 Graphic: Healing balls 1
 
@@ -13490,7 +13487,6 @@ List of Event Commands:
 Page #3
 Conditions
 Variable 0006: Poké Center healing ball count is 2 or above
-Self Switch A is ON
 
 Graphic: Healing balls 1
 
@@ -13507,7 +13503,6 @@ List of Event Commands:
 Page #4
 Conditions
 Variable 0006: Poké Center healing ball count is 3 or above
-Self Switch A is ON
 
 Graphic: Healing balls 1
 
@@ -13524,7 +13519,6 @@ List of Event Commands:
 Page #5
 Conditions
 Variable 0006: Poké Center healing ball count is 4 or above
-Self Switch A is ON
 
 Graphic: Healing balls 2
 
@@ -13541,7 +13535,6 @@ List of Event Commands:
 Page #6
 Conditions
 Variable 0006: Poké Center healing ball count is 5 or above
-Self Switch A is ON
 
 Graphic: Healing balls 2
 
@@ -13558,7 +13551,6 @@ List of Event Commands:
 Page #7
 Conditions
 Variable 0006: Poké Center healing ball count is 6 or above
-Self Switch A is ON
 
 Graphic: Healing balls 2
 
@@ -17843,7 +17835,7 @@ Move Animation
 Trigger: Action Button
 
 List of Event Commands:
-@>Script: Kernel.pbSetPokemonCenter
+@>Script: pbSetPokemonCenter
 @>Text: \rHello, and welcome to the Pokémon Center.
 @>Text: \rWe restore your tired Pokémon to full health.
 @>Text: \rWould you like to rest your Pokémon?
@@ -17856,7 +17848,6 @@ List of Event Commands:
   :              : $>Turn Left
   :              : $>Wait: 2 frame(s)
  @>Wait for Move's Completion
- @>Script: pbSetSelfSwitch(3,"A",true)
  @>Control Variables: [0006: Poké Center healing ball count] = 0
  @>Script: count=$Trainer.pokemonCount
  :       : for i in 1..count
@@ -17864,18 +17855,18 @@ List of Event Commands:
  :       :   pbSEPlay("Battle ball shake")
  :       :   pbWait(16)
  :       : end
- @>Set Move Route: [Healing balls (L)]
+ @>Set Move Route: [Healing balls]
   :              : $>Stop Animation ON
  @>Play ME: 'Pkmn healing', 100, 100
  @>Wait: 58 frame(s)
  @>Control Variables: [0006: Poké Center healing ball count] = 0
- @>Set Move Route: [Healing balls (L)]
+ @>Set Move Route: []
   :              : $>Stop Animation OFF
  @>Set Move Route: This event
   :              : $>Wait: 15 frame(s)
   :              : $>Turn Down
  @>Wait for Move's Completion
- @>Conditional Branch: Script: Kernel.pbPokerus?
+ @>Conditional Branch: Script: pbPokerus?
   @>Text: \rYour Pokémon may be infected by PokeRus.
   @>Text: \rLittle is known about the PokeRus except that they 
    :    : are microscopic life-forms that attach to Pokémon.
@@ -17899,7 +17890,6 @@ List of Event Commands:
  @>Text: \rWe hope to see you again!
  @>
 : Branch End
-@>Script: pbSetSelfSwitch(3,"A",false)
 @>
 
 Page #2
@@ -17917,7 +17907,6 @@ Move Animation
 Trigger: Autorun
 
 List of Event Commands:
-@>Erase Picture: 1
 @>Text: \rFirst, you should restore your Pokémon to full 
  :    : health.
 @>Recover All: Entire Party
@@ -17925,19 +17914,18 @@ List of Event Commands:
  :              : $>Turn Left
  :              : $>Wait: 2 frame(s)
 @>Wait for Move's Completion
-@>Script: pbSetSelfSwitch(3,"A",true)
 @>Control Variables: [0006: Poké Center healing ball count] = 0
 @>Script: for i in 1..$Trainer.pokemonCount
 :       :   pbSet(6,i)
 :       :   pbSEPlay("Battle ball shake")
 :       :   pbWait(16)
 :       : end
-@>Set Move Route: [Healing balls (L)]
+@>Set Move Route: []
  :              : $>Stop Animation ON
 @>Play ME: 'Pkmn healing', 100, 100
 @>Wait: 58 frame(s)
 @>Control Variables: [0006: Poké Center healing ball count] = 0
-@>Set Move Route: [Healing balls (L)]
+@>Set Move Route: []
  :              : $>Stop Animation OFF
 @>Set Move Route: This event
  :              : $>Wait: 15 frame(s)
@@ -17950,7 +17938,6 @@ List of Event Commands:
  :              : $>Graphic: "NPC 16', 0, 2, 0
 @>Wait for Move's Completion
 @>Text: \rWe hope you excel!
-@>Script: pbSetSelfSwitch(3,"A",false)
 @>Control Switches: [0001: Starting over] = OFF
 @>
 
@@ -18004,7 +17991,7 @@ List of Event Commands:
 
 #------------------------------------------------------------------------------
 Event ID: 003
-Event Name: Healing balls (L)
+Event Name: Healing balls
 (X,Y): (011,012)
 
 Page #1
@@ -18024,7 +18011,6 @@ List of Event Commands:
 Page #2
 Conditions
 Variable 0006: Poké Center healing ball count is 1 or above
-Self Switch A is ON
 
 Graphic: Healing balls 1
 
@@ -18041,7 +18027,6 @@ List of Event Commands:
 Page #3
 Conditions
 Variable 0006: Poké Center healing ball count is 2 or above
-Self Switch A is ON
 
 Graphic: Healing balls 1
 
@@ -18058,7 +18043,6 @@ List of Event Commands:
 Page #4
 Conditions
 Variable 0006: Poké Center healing ball count is 3 or above
-Self Switch A is ON
 
 Graphic: Healing balls 1
 
@@ -18075,7 +18059,6 @@ List of Event Commands:
 Page #5
 Conditions
 Variable 0006: Poké Center healing ball count is 4 or above
-Self Switch A is ON
 
 Graphic: Healing balls 2
 
@@ -18092,7 +18075,6 @@ List of Event Commands:
 Page #6
 Conditions
 Variable 0006: Poké Center healing ball count is 5 or above
-Self Switch A is ON
 
 Graphic: Healing balls 2
 
@@ -18109,7 +18091,6 @@ List of Event Commands:
 Page #7
 Conditions
 Variable 0006: Poké Center healing ball count is 6 or above
-Self Switch A is ON
 
 Graphic: Healing balls 2
 
@@ -23595,7 +23576,7 @@ Move Animation
 Trigger: Action Button
 
 List of Event Commands:
-@>Script: Kernel.pbSetPokemonCenter
+@>Script: pbSetPokemonCenter
 @>Text: \rHello, and welcome to the Pokémon Center.
 @>Text: \rWe restore your tired Pokémon to full health.
 @>Text: \rWould you like to rest your Pokémon?
@@ -23608,7 +23589,6 @@ List of Event Commands:
   :              : $>Turn Left
   :              : $>Wait: 2 frame(s)
  @>Wait for Move's Completion
- @>Script: pbSetSelfSwitch(3,"A",true)
  @>Control Variables: [0006: Poké Center healing ball count] = 0
  @>Script: count=$Trainer.pokemonCount
  :       : for i in 1..count
@@ -23616,18 +23596,18 @@ List of Event Commands:
  :       :   pbSEPlay("Battle ball shake")
  :       :   pbWait(16)
  :       : end
- @>Set Move Route: [Healing balls (L)]
+ @>Set Move Route: [Healing balls]
   :              : $>Stop Animation ON
  @>Play ME: 'Pkmn healing', 100, 100
  @>Wait: 58 frame(s)
  @>Control Variables: [0006: Poké Center healing ball count] = 0
- @>Set Move Route: [Healing balls (L)]
+ @>Set Move Route: [Changing Room]
   :              : $>Stop Animation OFF
  @>Set Move Route: This event
   :              : $>Wait: 15 frame(s)
   :              : $>Turn Down
  @>Wait for Move's Completion
- @>Conditional Branch: Script: Kernel.pbPokerus?
+ @>Conditional Branch: Script: pbPokerus?
   @>Text: \rYour Pokémon may be infected by PokeRus.
   @>Text: \rLittle is known about the PokeRus except that they 
    :    : are microscopic life-forms that attach to Pokémon.
@@ -23651,7 +23631,6 @@ List of Event Commands:
  @>Text: \rWe hope to see you again!
  @>
 : Branch End
-@>Script: pbSetSelfSwitch(3,"A",false)
 @>
 
 Page #2
@@ -23676,19 +23655,18 @@ List of Event Commands:
  :              : $>Turn Left
  :              : $>Wait: 2 frame(s)
 @>Wait for Move's Completion
-@>Script: pbSetSelfSwitch(3,"A",true)
 @>Control Variables: [0006: Poké Center healing ball count] = 0
 @>Script: for i in 1..$Trainer.pokemonCount
 :       :   pbSet(6,i)
 :       :   pbSEPlay("Battle ball shake")
 :       :   pbWait(16)
 :       : end
-@>Set Move Route: [Healing balls (L)]
+@>Set Move Route: [Changing Room]
  :              : $>Stop Animation ON
 @>Play ME: 'Pkmn healing', 100, 100
 @>Wait: 58 frame(s)
 @>Control Variables: [0006: Poké Center healing ball count] = 0
-@>Set Move Route: [Healing balls (L)]
+@>Set Move Route: [Changing Room]
  :              : $>Stop Animation OFF
 @>Set Move Route: This event
  :              : $>Wait: 15 frame(s)
@@ -23701,7 +23679,6 @@ List of Event Commands:
  :              : $>Graphic: "NPC 16', 0, 2, 0
 @>Wait for Move's Completion
 @>Text: \rWe hope you excel!
-@>Script: pbSetSelfSwitch(3,"A",false)
 @>Control Switches: [0001: Starting over] = OFF
 @>
 
@@ -23884,7 +23861,7 @@ List of Event Commands:
 
 #------------------------------------------------------------------------------
 Event ID: 003
-Event Name: Healing balls (L)
+Event Name: Healing balls
 (X,Y): (011,012)
 
 Page #1
@@ -23904,7 +23881,6 @@ List of Event Commands:
 Page #2
 Conditions
 Variable 0006: Poké Center healing ball count is 1 or above
-Self Switch A is ON
 
 Graphic: Healing balls 1
 
@@ -23921,7 +23897,6 @@ List of Event Commands:
 Page #3
 Conditions
 Variable 0006: Poké Center healing ball count is 2 or above
-Self Switch A is ON
 
 Graphic: Healing balls 1
 
@@ -23938,7 +23913,6 @@ List of Event Commands:
 Page #4
 Conditions
 Variable 0006: Poké Center healing ball count is 3 or above
-Self Switch A is ON
 
 Graphic: Healing balls 1
 
@@ -23955,7 +23929,6 @@ List of Event Commands:
 Page #5
 Conditions
 Variable 0006: Poké Center healing ball count is 4 or above
-Self Switch A is ON
 
 Graphic: Healing balls 2
 
@@ -23972,7 +23945,6 @@ List of Event Commands:
 Page #6
 Conditions
 Variable 0006: Poké Center healing ball count is 5 or above
-Self Switch A is ON
 
 Graphic: Healing balls 2
 
@@ -23989,7 +23961,6 @@ List of Event Commands:
 Page #7
 Conditions
 Variable 0006: Poké Center healing ball count is 6 or above
-Self Switch A is ON
 
 Graphic: Healing balls 2
 
@@ -45947,11 +45918,11 @@ List of Event Commands:
  :       : "You are now one with the night, challenger. Congratulations!")
  @>Script: Kernel.pbMessageWithName("Matthew",
  :       : "It gives me great honor to present you with\\^")
- @>Play SE: 'SlotsCoin', 80, 100
+ @>Play SE: 'Slots coin', 80, 100
  @>Wait: 20 frame(s)
- @>Play SE: 'SlotsCoin', 80, 100
+ @>Play SE: 'Slots coin', 80, 100
  @>Wait: 20 frame(s)
- @>Play SE: 'SlotsCoin', 80, 100
+ @>Play SE: 'Slots coin', 80, 100
  @>Wait: 20 frame(s)
  @>Script: Kernel.pbMessageWithName("Matthew",
  :       : "Oh, excuse me for a moment.")
@@ -47488,7 +47459,7 @@ List of Event Commands:
 @>Text: My husband managed to find this one particular TV show he likes.
 @>Text: Now he can't get enough of it! Even if it sometimes cuts into our day...
 @>Text: But that's okay, because I'm starting to like it as well honestly. The season
- :    : season is when things really picked up!
+ :    : is when things really picked up!
 @>
 
 #------------------------------------------------------------------------------
@@ -54534,12 +54505,12 @@ List of Event Commands:
   : Branch End
   @>
  : When [No]
-  @>Text: I see.\nDo come visit again.
+  @>Text: I see. Do come visit again.
   @>
  : Branch End
  @>
 : When [No]
- @>Text: I see.\nDo come visit again.
+ @>Text: I see. Do come visit again.
  @>
 : Branch End
 @>
