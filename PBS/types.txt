@@ -4,59 +4,59 @@
 Name = Normal
 InternalName = NORMAL
 Weaknesses = FIGHTING
-Immunities = GHOST
+Immunities = GHOST,GHOST18
 #-------------------------------
 [1]
 Name = Fighting
 InternalName = FIGHTING
-Weaknesses = FLYING,PSYCHIC,FAIRY
-Resistances = ROCK,BUG,DARK
+Weaknesses = FLYING,PSYCHIC,FLYING18,REASON18
+Resistances = BUG,DARK,ROCK,DARK18
 #-------------------------------
 [2]
 Name = Flying
 InternalName = FLYING
-Weaknesses = ROCK,ELECTRIC,ICE
-Resistances = FIGHTING,BUG,GRASS
+Weaknesses = ELECTRIC,ICE,ROCK,STEEL18,WIND18,ICE18
+Resistances = BUG,FIGHTING,GRASS,DREAM18,BEAST18,NATURE18
 Immunities = GROUND
 #-------------------------------
 [3]
 Name = Poison
 InternalName = POISON
-Weaknesses = GROUND,PSYCHIC
-Resistances = FIGHTING,POISON,BUG,GRASS,FAIRY
+Weaknesses = GROUND,PSYCHIC,EARTH18,REASON18
+Resistances = BUG,FIGHTING,GRASS,POISON,MIASMA18,NATURE18,FAITH18,HEART18
 #-------------------------------
 [4]
 Name = Ground
 InternalName = GROUND
-Weaknesses = WATER,GRASS,ICE
-Resistances = POISON,ROCK
-Immunities = ELECTRIC
+Weaknesses = GRASS,ICE,WATER,WATER18,NATURE18,ICE18
+Resistances = POISON,ROCK,MIASMA18
+Immunities = ELECTRIC,WIND18
 #-------------------------------
 [5]
 Name = Rock
 InternalName = ROCK
-Weaknesses = FIGHTING,GROUND,STEEL,WATER,GRASS
-Resistances = NORMAL,FLYING,POISON,FIRE
+Weaknesses = FIGHTING,GRASS,GROUND,STEEL,WATER,GRASS,STEEL18,WATER18,EARTH18,NATURE18,DREAM18
+Resistances = FIRE,FLYING,NORMAL,POISON,FLYING18,MIASMA18,FIRE18
 #-------------------------------
 [6]
 Name = Bug
 InternalName = BUG
-Weaknesses = FLYING,ROCK,FIRE
-Resistances = FIGHTING,GROUND,GRASS
+Weaknesses = FIRE,FLYING,ROCK,FLYING18,FIRE18
+Resistances = FIGHTING,GRASS,GROUND,EARTH18,NATURE18
 #-------------------------------
 [7]
 Name = Ghost
 InternalName = GHOST
-Weaknesses = GHOST,DARK
-Resistances = POISON,BUG
-Immunities = NORMAL,FIGHTING
+Weaknesses = DARK,GHOST,GHOST18,BEAST18
+Resistances = BUG,POISON,MIASMA18
+Immunities = FIGHTING,NORMAL,DARK18,ILLUSION18
 #-------------------------------
 [8]
 Name = Steel
 InternalName = STEEL
-Weaknesses = FIGHTING,GROUND,FIRE
-Resistances = NORMAL,FLYING,ROCK,BUG,STEEL,GRASS,PSYCHIC,ICE,DRAGON,FAIRY
-Immunities = POISON
+Weaknesses = FIGHTING,FIRE,GROUND,DREAM18,EARTH18
+Resistances = BUG,DARK,DRAGON,FLYING,GHOST,GRASS,ICE,NORMAL,PSYCHIC,ROCK,STEEL,FLYING18,STEEL18
+Immunities = POISON,MIASMA18
 #-------------------------------
 [9]
 Name = ???
@@ -67,63 +67,165 @@ IsPseudoType = true
 Name = Fire
 InternalName = FIRE
 IsSpecialType = true
-Weaknesses = GROUND,ROCK,WATER
-Resistances = BUG,STEEL,FIRE,GRASS,ICE,FAIRY
+Weaknesses = GROUND,ROCK,WATER,EARTH18,WATER18
+Resistances = BUG,FIRE,GRASS,ICE,STEEL,STEEL18,FIRE18,NATURE18
 #-------------------------------
 [11]
 Name = Water
 InternalName = WATER
 IsSpecialType = true
-Weaknesses = GRASS,ELECTRIC
-Resistances = STEEL,FIRE,WATER,ICE
+Weaknesses = ELECTRIC,GRASS,MIASMA18,WIND18,NATURE18
+Resistances = FIRE,ICE,STEEL,WATER,STEEL18,FIRE18,WATER18,ICE18
 #-------------------------------
 [12]
 Name = Grass
 InternalName = GRASS
 IsSpecialType = true
-Weaknesses = FLYING,POISON,BUG,FIRE,ICE
-Resistances = GROUND,WATER,GRASS,ELECTRIC
+Weaknesses = BUG,FIRE,FLYING,ICE,POISON,FLYING18,FIRE18,MIASMA18,ICE18
+Resistances = ELECTRIC,GRASS,GROUND,WATER,BEAST18,EARTH18,WATER18,WIND18,NATURE18
 #-------------------------------
 [13]
 Name = Electric
 InternalName = ELECTRIC
 IsSpecialType = true
-Weaknesses = GROUND
-Resistances = FLYING,STEEL,ELECTRIC
+Weaknesses = GROUND,EARTH18
+Resistances = ELECTRIC,FLYING,STEEL,FLYING18
 #-------------------------------
 [14]
 Name = Psychic
 InternalName = PSYCHIC
 IsSpecialType = true
-Weaknesses = BUG,GHOST,DARK
-Resistances = FIGHTING,PSYCHIC
+Weaknesses = BUG,DARK,GHOST,GHOST18,DARK18,HEART18
+Resistances = FIGHTING,PSYCHIC,DREAM18,MIASMA18,FAITH18
 #-------------------------------
 [15]
 Name = Ice
 InternalName = ICE
 IsSpecialType = true
-Weaknesses = FIGHTING,ROCK,STEEL,FIRE
-Resistances = ICE
+Weaknesses = FIGHTING,FIRE,ROCK,STEEL,STEEL18,FIRE18
+Resistances = ICE,ICE18
 #-------------------------------
 [16]
 Name = Dragon
 InternalName = DRAGON
 IsSpecialType = true
-Weaknesses = ICE,DRAGON,FAIRY
-Resistances = FIRE,WATER,GRASS,ELECTRIC
+Weaknesses = DRAGON,ICE,ICE18,FAITH18,REASON18
+Resistances = ELECTRIC,FIRE,GRASS,WATER,FIRE18,WATER18,NATURE18
 #-------------------------------
 [17]
 Name = Dark
 InternalName = DARK
 IsSpecialType = true
-Weaknesses = FIGHTING,BUG,FAIRY
-Resistances = GHOST,DARK
-Immunities = PSYCHIC
-#-------------------------------
-[18]
-Name = Fairy
-InternalName = FAIRY
-IsSpecialType = true
-Weaknesses = POISON,STEEL
-Resistances = FIGHTING,BUG,DARK
-Immunities = DRAGON
+Weaknesses = BUG,FIGHTING,STEEL18,FAITH18,HEART18
+Resistances = DARK,GHOST,DREAM18
+Immunities = PSYCHIC,GHOST18
+
+# ------ Derx: I have no plans to add Fairy Type to the engine. If you want to add Fairy
+# ------ you will have to add it manually as ID 18.
+# ------ 
+
+[20]
+Name=Illusion
+InternalName=ILLUSION18
+Immunities=GHOST18,GHOST
+
+[21]
+Name=Dark
+InternalName=DARK18
+Resistances=DREAM18,DARK18,ILLUSION18,DARK
+Weaknesses=STEEL18,FAITH18,HEART18,FIGHTING,BUG
+Immunities=GHOST18,GHOST
+
+[22]
+Name=Flying
+InternalName=FLYING18
+Resistances=DREAM18,BEAST18,NATURE18,GRASS,FIGHTING,BUG
+Weaknesses=STEEL18,WIND18,ICE18,ELECTRIC,ICE,ROCK,STEEL
+Immunities=EARTH18,GROUND
+
+[23]
+Name=Miasma
+InternalName=MIASMA18
+Resistances=MIASMA18,NATURE18,FAITH18,HEART18,GRASS,FIGHTING,POISON,BUG
+Weaknesses=EARTH18,REASON18,GROUND,PSYCHIC
+
+[24]
+Name=Earth
+InternalName=EARTH18
+Resistances=MIASMA18,FIRE18,POISON,ROCK
+Weaknesses=WATER18,NATURE18,WATER,GRASS,ICE
+Immunities=WIND18,ELECTRIC
+
+[25]
+Name=Beast
+InternalName=BEAST18
+Resistances=GHOST18,EARTH18,GHOST
+Weaknesses=FLYING18,FIRE18,WATER18,FIRE,WATER,FLYING
+
+[26]
+Name=Dream
+InternalName=DREAM18
+Resistances=DREAM18,HEART18,ILLUSION18,NORMAL
+Weaknesses=DARK18,REASON18,PSYCHIC,DARK
+
+[27]
+Name=Ghost
+InternalName=GHOST18
+Resistances=MIASMA18,REASON18,POISON,PSYCHIC
+Weaknesses=GHOST18,BEAST18,GHOST
+Immunities=DARK18,ILLUSION18,FIGHTING,NORMAL
+
+[28]
+Name=Steel
+InternalName=STEEL18
+Resistances=FLYING18,STEEL18,REASON18,FLYING,PSYCHIC,BUG,DRAGON,STEEL
+Weaknesses=DREAM18,EARTH18,FIRE18,FIGHTING,GROUND,FIRE
+Immunities=MIASMA18,POISON
+
+[29]
+Name=Fire
+InternalName=FIRE18
+Resistances=STEEL18,FIRE18,NATURE18,FIRE,GRASS,STEEL,ICE
+Weaknesses=EARTH18,WATER18,WATER,GROUND,ROCK
+
+[30]
+Name=Water
+InternalName=WATER18
+Resistances=STEEL18,FIRE18,WATER18,ICE18,FIRE,WATER,ICE,STEEL
+Weaknesses=MIASMA18,WIND18,NATURE18,ELECTRIC,GRASS,POISON
+
+[31]
+Name=Nature
+InternalName=NATURE18
+Resistances=BEAST18,WATER18,WIND18,NATURE18,EARTH18,WATER,ELECTRIC,GRASS,GROUND
+Weaknesses=FLYING18,FIRE18,MIASMA18,ICE18,FIRE,FLYING,POISON
+
+[32]
+Name=Wind
+InternalName=WIND18
+Resistances=FLYING18,WIND18,FLYING
+Weaknesses=EARTH18,GROUND
+
+[33]
+Name=Reason
+InternalName=REASON18
+Resistances=DREAM18,MIASMA18,FAITH18,POISON
+Weaknesses=GHOST18,DARK18,HEART18,BUG,GHOST,DARK
+
+[34]
+Name=Ice
+InternalName=ICE18
+Resistances=ICE18,ICE
+Weaknesses=STEEL18,FIRE18,FIRE,ROCK,STEEL
+
+[35]
+Name=Faith
+InternalName=FAITH18
+Resistances=FIRE18,WATER18,WIND18,HEART18,WATER,FIRE,ELECTRIC
+Weaknesses=BEAST18,REASON18,PSYCHIC
+
+[36]
+Name=Heart
+InternalName=HEART18
+Resistances=GHOST18,DARK18,REASON18,HEART18,GHOST,PSYCHIC
+Weaknesses=DREAM18,FAITH18

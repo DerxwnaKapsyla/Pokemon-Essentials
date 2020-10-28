@@ -1,8 +1,8 @@
 # Backgrounds to show in credits. Found in Graphics/Titles/ folder
 CreditsBackgroundList = ["credits1","credits2","credits3","credits4","credits5"]
-CreditsMusic          = "Credits"
-CreditsScrollSpeed    = 2
-CreditsFrequency      = 9   # Number of seconds per credits slide
+CreditsMusic          = "W-012. Hourai Illusion ~ Far East.ogg"
+CreditsScrollSpeed    = 0.6
+CreditsFrequency      = 8   # Number of seconds per credits slide
 CREDITS_OUTLINE       = Color.new(0,0,128, 255)
 CREDITS_SHADOW        = Color.new(0,0,0, 100)
 CREDITS_FILL          = Color.new(255,255,255, 255)
@@ -49,21 +49,166 @@ class Scene_Credits
 #Start Editing
 CREDIT=<<_END_
 
-Your credits go here.
+CREDIT=<<_END_
 
-Your credits go here.
+--- Touhoumon Development Kit ---
+Credits
 
-Your credits go here.
 
-Your credits go here.
 
-Your credits go here.
+--- Game Director ---
+DerxwnaKapsyla
 
+
+
+--- Art Director ---
+DerxwnaKapsyla
+
+
+
+--- World Director ---
+DerxwnaKapsyla
+
+
+
+--- Lead Programmer ---
+DerxwnaKapsyla
+
+
+
+--- Music Composition ---
+Mr. Unknown<s>a-TTTempo
+Uda-Shi<s>KecleonTencho
+brawlman9876<s>Jesslejohn
+Magnius<s>DerxwnaKapsyla
+Junichi Masuda<s>Go Ichinose
+Hitomo Sato<s>Mark DiAngelo
+ZUN
+
+
+
+--- Sound Effects & Cries ---
+Go Ichinose
+Morikazu Aoki
+a-TTTempo
+Uda-Shi
+KecleonTencho
+Reimufate
+
+
+
+--- Game Designers ---
+DerxwnaKapsyla
+
+
+
+--- Scenario Plot ---
+DerxwnaKapsyla
+
+
+
+--- Scenario ---
+DerxwnaKapsyla
+
+
+
+
+--- Map Designers ---
+DerxwnaKapsyla
+
+
+
+--- Pokedex Text ---
+Agastya
+DerxwnaKapsyla
+
+
+
+--- Environment and Tool Programmers ---
+Maralis: Pokextractor Tools
+Maruno: Pokemon Essentials
+
+
+
+--- Touhoumon Designers ---
+HemoglobinA1C
+Stuffman
+Agastya
+EXSariel
+DoesntKnowHowToPlay
+Masa
+Reimufate
+DerxwnaKapsyla
+
+
+--- Original Designs for the Touhoumon ---
+Team Shanghai Alice
+
+
+
+--- Beta Testers ---
+:wacko:
+
+
+
+--- Artwork ---
+HemoglobinA1C<s>Maralis
+Kasael<s>Stuffman
+Spyro<s>Irakuy
+Love_Albatross<s>SoulfulLex
+zero_breaker<s>Reimufate
+Uda-shi<s>KecleonTensho
+
+
+
+
+--- Programmer ---
+DerxwnaKapsyla
+
+--- Custom Scripts ---
 {INSERTS_PLUGIN_CREDITS_DO_NOT_REMOVE}
-"Pokémon Essentials" was created by:
-Flameguru
-Poccil (Peter O.)
-Maruno
+FL: Trainer Intro Music script, HMs as Items script
+derFischae: HMs as Items script, Misc. Bug fixes for V17.2
+Bulbasarlv15: HMs as Items script
+Nuru Yuri: FmodEx Script
+KleinStudio: Map Exporter, Mosaic Transformation Animation
+Marin: Toggleable turbo script
+Vendily: Ambient Pokemon cries
+Marty152: Sideways Stairs script
+AmethystRain: Skip Text script
+Boonzeet: Efficent water puddles script
+SoulfulLex: Various misc improvements
+(Unknown): Name tags above text boxes
+
+--- Producers ---
+ChaoticInfinity Development
+
+
+
+--- Executive Director and Producer ---
+DerxwnaKapsyla
+
+
+
+--- Special Thanks ---
+HemoglobinA1C: Developing Touhou Puppet Play
+Maralis: Developing the Pokéxtractor Tools
+Kasael: Spriting Overworlds and Battle Sprites
+Agastya: Localization of Touhoumon 1.812 and Developer of Touhoumon Purple
+EX Sariel: Localization of Touhoumon 1.812
+DoesntKnowHowToPlay: Developer of Touhoumon Unnamed
+AmethystRain & Reborn Dev Team: Permission to use graphical assets
+Reimufate: Developer of Touhoumon Reimufate Version
+FocasLens & Fantasy Puppet Theater: GNE-YnK- Asset Collection Pack
+The Dirty Cog Crew: Emotional support and motivation throughout the years
+
+
+
+--- Special Thanks ---
+Flameguru: Initial development of Pokémon Essentials
+Poccil (Peter O.): Developing Pokémon Essentials
+Maruno: Picking up Pokémon Essentials
+The "Pokémon Essentials" Development Team
 
 With contributions from:
 AvatarMonkeyKirby<s>Marin
@@ -81,6 +226,19 @@ and everyone else who helped out
 
 
 
+--- Special Thanks ---
+Enterbrain: Developers and Producers of "RPG Maker XP"
+GameFreak: Developers of "Pokémon"
+ZUN: Head Developer of "Touhou Project"
+
+
+
+And YOU...
+
+
+
+
+
 "RPG Maker XP" by:
 Enterbrain
 
@@ -92,6 +250,17 @@ Affiliated with Game Freak
 This is a non-profit fan-made game.
 No copyright infringements intended.
 Please support the official games!
+
+Touhoumon Development Kit
+2011-2020<s>DerxwnaKapsyla
+2012-2020<s>ChaoticInfinity Development
+Based on Pokémon Essentials
+
+
+Pokémon Essentials
+2007-2010<s>Peter O.
+2011-2017<s>Maruno
+Based on work by Flameguru
 
 _END_
 #Stop Editing

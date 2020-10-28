@@ -125,7 +125,7 @@ module PokeBattle_BattleCommon
       BallHandlers.onFailCatch(ball,self,battler)
     when 4
       pbDisplayBrief(_INTL("Gotcha! {1} was caught!",pkmn.name))
-      @scene.pbThrowSuccess   # Play capture success jingle
+      @scene.pbThrowSuccess   # Play capture success jingle # Derx: Study the capture jingle code and tweak it.
       pbRemoveFromParty(battler.index,battler.pokemonIndex)
       # Gain Exp
       if GAIN_EXP_FOR_CAPTURE

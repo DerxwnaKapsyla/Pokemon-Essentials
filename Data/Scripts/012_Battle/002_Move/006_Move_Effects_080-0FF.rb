@@ -1160,6 +1160,9 @@ class PokeBattle_Move_0AF < PokeBattle_Move
        "05C",   # Mimic
        "05D",   # Sketch
        "069",   # Transform
+	   # ------ Derx: Added in Recollection to Copycat's blacklist
+	   "999",	# Recollection - Change the function code for Recollection
+	   # ------ Derx: End of Copycat's blacklist modifications
        # Counter moves
        "071",   # Counter
        "072",   # Mirror Coat
@@ -1478,6 +1481,9 @@ class PokeBattle_Move_0B5 < PokeBattle_Move
        "05C",   # Mimic
        "05D",   # Sketch
        "069",   # Transform
+	   # ------ Derx: Added in Recollection to Assist's blacklist
+	   "999",	# Recollection - Change the function code for Recollection
+	   # ------ Derx: End of Assist's blacklist modifications
        # Counter moves
        "071",   # Counter
        "072",   # Mirror Coat
@@ -1601,6 +1607,9 @@ class PokeBattle_Move_0B6 < PokeBattle_Move
        "05C",   # Mimic
        "05D",   # Sketch
        "069",   # Transform
+	   # ------ Derx: Added in Recollection to Metronome's blacklist
+	   "999",	# Recollection - Change the function code for Recollection
+	   # ------ Derx: End of Metronome's blacklist modifications
        # Counter moves
        "071",   # Counter
        "072",   # Mirror Coat
@@ -1858,6 +1867,9 @@ class PokeBattle_Move_0BC < PokeBattle_Move
        "05C",   # Mimic
        "05D",   # Sketch
        "069",   # Transform
+	   # ------ Derx: Added in Recollection to Encore's blacklist
+	   "999",	# Recollection - Change the function code for Recollection
+	   # ------ Derx: End of Encore's blacklist modifications	   
        # Moves that call other moves (see also below)
        "0AE"    # Mirror Move
     ]

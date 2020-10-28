@@ -14,9 +14,24 @@ module PBEggGroups
   Water2       = 12
   Ditto        = 13
   Dragon       = 14
+# ------ Derx: Touhoumon Egg Groups
+  MonsterP     = 15
+  Water4P      = 16
+  BugP         = 17
+  FlyingP      = 18
+  FieldP       = 19
+  FairyP       = 20
+  PlantP       = 21
+  HumanshapeP  = 22
+  Water6P      = 23
+  MineralP     = 24
+  ChaosP       = 25
+  Water5P      = 26
+  DragonP      = 27
+# ------ Derx: End of Touhoumon Egg Groups
 
-  def self.maxValue; 14; end
-  def self.getCount; 15; end
+  def self.maxValue; 27; end # Derx: Changed from 14
+  def self.getCount; 28; end # Derx: Changed from 15
 
   def self.getName(id)
     id = getID(PBEggGroups,id)
@@ -35,7 +50,22 @@ module PBEggGroups
       _INTL("Amorphous"),
       _INTL("Water 2"),
       _INTL("Ditto"),
-      _INTL("Dragon")
+      _INTL("Dragon"),
+# ------ Derx: Internal names for the Touhoumon Egg Groups
+       _INTL("Monster*"),
+       _INTL("Water 4*"),
+       _INTL("Bug*"),
+       _INTL("Flying*"),
+       _INTL("Field*"),
+       _INTL("Fairy*"),
+       _INTL("Plant*"),
+       _INTL("Humanshape*"),
+       _INTL("Water 6*"),
+       _INTL("Mineral*"),
+       _INTL("Chaos*"),
+       _INTL("Water 5*"),
+       _INTL("Dragon*")
+# ------ Derx: End of Internal Names for the Touhoumon Egg Groups
     ]
     return names[id]
   end

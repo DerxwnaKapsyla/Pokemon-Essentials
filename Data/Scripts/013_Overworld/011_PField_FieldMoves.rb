@@ -995,3 +995,45 @@ HiddenMoveHandlers::UseMove.add(:WATERFALL,proc { |move,pokemon|
   pbAscendWaterfall
   next true
 })
+
+#-----------------------------------------------------
+# Duplicates by Derxwna
+#-----------------------------------------------------
+# --- Derx: Required for Touhoumon Field Move compatability
+# --- Cut handler
+HiddenMoveHandlers::CanUseMove.copy(:CUT,:CUT18)
+HiddenMoveHandlers::UseMove.copy(:CUT,:CUT18)
+# --- Dig handler
+HiddenMoveHandlers::CanUseMove.copy(:DIG,:DIG18)
+HiddenMoveHandlers::UseMove.copy(:DIG,:DIG18)
+# --- Shadow Dive handler
+HiddenMoveHandlers::CanUseMove.copy(:DIVE,:SHADOWDIVE18)
+HiddenMoveHandlers::UseMove.copy(:DIVE,:SHADOWDIVE18)
+# --- Flash handler
+HiddenMoveHandlers::CanUseMove.copy(:FLASH,:FLASH18)
+HiddenMoveHandlers::UseMove.copy(:FLASH,:FLASH18)
+# --- Fly handler
+HiddenMoveHandlers::CanUseMove.copy(:FLY,:FLY18)
+HiddenMoveHandlers::UseMove.copy(:FLY,:FLY18)
+# --- Headbutt handler
+HiddenMoveHandlers::CanUseMove.copy(:HEADBUTT,:HEADBUTT18)
+HiddenMoveHandlers::UseMove.copy(:HEADBUTT,:HEADBUTT18)
+# --- Rock Smash handler
+HiddenMoveHandlers::CanUseMove.copy(:ROCKSMASH,:ROCKSMASH18)
+HiddenMoveHandlers::UseMove.copy(:ROCKSMASH,:ROCKSMASH18)
+# --- Strength handler
+HiddenMoveHandlers::CanUseMove.copy(:STRENGTH,:STRENGTH18)
+HiddenMoveHandlers::UseMove.copy(:STRENGTH,:STRENGTH18)
+# --- Surf handler
+HiddenMoveHandlers::CanUseMove.copy(:SURF,:SURF18)
+HiddenMoveHandlers::UseMove.copy(:SURF,:SURF18)
+# --- Nature Power handler
+HiddenMoveHandlers::CanUseMove.copy(:SWEETSCENT,:NATUREPOWER18)
+HiddenMoveHandlers::UseMove.copy(:SWEETSCENT,:NATUREPOWER18)
+# --- Teleport handler
+HiddenMoveHandlers::CanUseMove.copy(:TELEPORT,:TELEPORT18)
+HiddenMoveHandlers::UseMove.copy(:TELEPORT,:TELEPORT18)
+# --- Waterfall handler
+HiddenMoveHandlers::CanUseMove.copy(:WATERFALL,:WATERFALL18)
+HiddenMoveHandlers::UseMove.copy(:WATERFALL,:WATERFALL18)
+# --- Derx: End of Touhoumon Field Move compatability

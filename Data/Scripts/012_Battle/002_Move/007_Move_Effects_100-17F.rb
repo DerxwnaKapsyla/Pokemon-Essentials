@@ -2293,6 +2293,9 @@ class PokeBattle_Move_16B < PokeBattle_Move
        "05C",   # Mimic
        "05D",   # Sketch
        "069",   # Transform
+	   # ------ Derx: Added in Recollection to Copycat's blacklist
+	   "999",	# Recollection - Change the function code for Recollection
+	   # ------ Derx: End of Copycat's blacklist modifications
        # Moves that call other moves
        "0AE",   # Mirror Move
        "0AF",   # Copycat

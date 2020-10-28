@@ -58,7 +58,7 @@ TIME_SHADING = true
 #===============================================================================
 POISON_IN_FIELD         = true
 POISON_FAINT_IN_FIELD   = false
-FISHING_AUTO_HOOK       = false
+FISHING_AUTO_HOOK       = true # Derx: Changed from False
 DIVING_SURFACE_ANYWHERE = false
 NEW_BERRY_PLANTS        = true
 INFINITE_TMS            = true
@@ -87,8 +87,8 @@ NO_SIGNPOSTS = []
 # * The maximum length, in characters, that the player's name can be.
 #===============================================================================
 INITIAL_MONEY        = 3000
-MAX_MONEY            = 999_999
-MAX_COINS            = 99_999
+MAX_MONEY            = 9_999_999 # Derx: Changed from 999,999
+MAX_COINS            = 999_999 # Derx: Changed from 99,999
 MAX_PLAYER_NAME_SIZE = 10
 
 #===============================================================================
@@ -153,7 +153,7 @@ MOVE_CATEGORY_PER_MOVE    = true
 NEWEST_BATTLE_MECHANICS   = true
 SCALED_EXP_FORMULA        = true
 SPLIT_EXP_BETWEEN_GAINERS = false
-ENABLE_CRITICAL_CAPTURES  = false
+ENABLE_CRITICAL_CAPTURES  = true # Derx: Changed from false
 GAIN_EXP_FOR_CAPTURE      = true
 MEGA_RINGS                = [:MEGARING, :MEGABRACELET, :MEGACUFF, :MEGACHARM]
 
@@ -201,7 +201,7 @@ REGION_MAP_EXTRAS = [
 def pbStorageCreator
   return _INTL("Bill")
 end
-NUM_STORAGE_BOXES = 30
+NUM_STORAGE_BOXES = 48 # Derx: Changed from 32
 
 #===============================================================================
 # * Whether the Pokédex list shown is the one for the player's current region
