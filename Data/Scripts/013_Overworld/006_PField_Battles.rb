@@ -553,6 +553,7 @@ def pbAfterBattle(decision,canLose)
     end
   end
   Events.onEndBattle.trigger(nil,decision,canLose)
+  $game_player.straighten
 end
 
 Events.onEndBattle += proc { |_sender,e|
