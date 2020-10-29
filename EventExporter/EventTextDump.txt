@@ -52263,6 +52263,43 @@ List of Event Commands:
 @>
 
 #------------------------------------------------------------------------------
+Event ID: 013
+Event Name: EV013
+(X,Y): (026,011)
+
+Page #1
+Conditions
+None
+
+Graphic: Object ball
+
+Autonomous Movement
+Type: Fixed
+Speed: 3: Slow
+Freq: 3: Low
+Options Enabled
+Move Animation
+Trigger: Action Button
+
+List of Event Commands:
+@>Text: Is your choice the Grass Quill Pokémon, Rowlet?
+@>Show Choices: Yes, No
+(When Cancel: Choice 2)
+: When [Yes]
+ @>Script: p=PokeBattle_Pokemon.new(:ROWLET,5,
+ :       :    $Trainer)
+ :       : p.setItem(:ORANBERRY)
+ :       : p.calcStats
+ @>Script: Kernel.pbAddPokemon(p)
+ @>Control Switches: [0102: Starter Chosen] = ON
+ @>Control Self Switch: A =ON
+ @>
+: When [No]
+ @>
+: Branch End
+@>
+
+#------------------------------------------------------------------------------
 
 #==============================================================================
 Map ID: 143
