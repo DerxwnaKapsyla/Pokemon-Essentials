@@ -261,12 +261,14 @@ class PokeBattle_Move_10D < PokeBattle_Move
   def ignoresSubstitute?(user); return true; end
 
   def pbTarget(user)
-    return PBTargets::NearFoe if user.pbHasType?(:GHOST)
+    return PBTargets::NearFoe if (user.pbHasType?(:GHOST) || 
+								  user.pbHasType?(:GHOST18)) # Derx: Added a check for Touhoumon Ghost with Curse
     super
   end
 
   def pbMoveFailed?(user,targets)
-    return false if user.pbHasType?(:GHOST)
+    return false if (user.pbHasType?(:GHOST) || 
+					 user.pbHasType?(:GHOST18)) # Derx: Added a check for Touhoumon Ghost with Curse
     if !user.pbCanLowerStatStage?(PBStats::SPEED,user,self) &&
        !user.pbCanRaiseStatStage?(PBStats::ATTACK,user,self) &&
        !user.pbCanRaiseStatStage?(PBStats::DEFENSE,user,self)
@@ -277,7 +279,8 @@ class PokeBattle_Move_10D < PokeBattle_Move
   end
 
   def pbFailsAgainstTarget?(user,target)
-    if user.pbHasType?(:GHOST) && target.effects[PBEffects::Curse]
+    if (user.pbHasType?(:GHOST) || 
+		user.pbHasType?(:GHOST18)) && target.effects[PBEffects::Curse] # Derx: Added a check for Touhoumon Ghost with Curse
       @battle.pbDisplay(_INTL("But it failed!"))
       return true
     end
@@ -285,7 +288,8 @@ class PokeBattle_Move_10D < PokeBattle_Move
   end
 
   def pbEffectGeneral(user)
-    return if user.pbHasType?(:GHOST)
+    return if (user.pbHasType?(:GHOST) ||
+			   user.pbHasType?(:GHOST18)) # Derx: Added a check for Touhoumon Ghost with Curse
     # Non-Ghost effect
     if user.pbCanLowerStatStage?(PBStats::SPEED,user,self)
       user.pbLowerStatStage(PBStats::SPEED,1,user)
@@ -302,7 +306,8 @@ class PokeBattle_Move_10D < PokeBattle_Move
   end
 
   def pbEffectAgainstTarget(user,target)
-    return if !user.pbHasType?(:GHOST)
+    return if !(user.pbHasType?(:GHOST) ||
+				user.pbHasType?(:GHOST18)) # Derx: Added a check for Touhoumon Ghost with Curse
     # Ghost effect
     @battle.pbDisplay(_INTL("{1} cut its own HP and laid a curse on {2}!",user.pbThis,target.pbThis(true)))
     target.effects[PBEffects::Curse] = true
@@ -311,7 +316,8 @@ class PokeBattle_Move_10D < PokeBattle_Move
   end
 
   def pbShowAnimation(id,user,targets,hitNum=0,showAnimation=true)
-    hitNum = 1 if !user.pbHasType?(:GHOST)   # Non-Ghost anim
+    hitNum = 1 if !user.pbHasType?(:GHOST) || # Non-Ghost anim
+				user.pbHasType?(:GHOST18))    # Derx: Added a check for Touhoumon Ghost with Curse
     super
   end
 end

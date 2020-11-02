@@ -2303,7 +2303,7 @@ class PokeBattle_AI
       end
     #---------------------------------------------------------------------------
     when "10D"
-      if user.pbHasType?(:GHOST)
+      if (user.pbHasType?(:GHOST) || user.pbHasType?(:GHOST10)) # Derx: Added a check for Touhoumon Ghost to Curse
         if target.effects[PBEffects::Curse]
           score -= 90
         elsif user.hp<=user.totalhp/2
