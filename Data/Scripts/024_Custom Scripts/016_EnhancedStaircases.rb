@@ -470,12 +470,15 @@ class Game_Character
     end
     stair_update
     if on_middle_of_stair?
-      @old_move_speed ||= @move_speed
+      if @old_move_speed.nil? || @new_move_speed != self.move_speed_real
+        @old_move_speed = self.move_speed_real
+      end
       ptgrs = Math.sqrt((@stair_end_x - @stair_start_x) ** 2 + (@stair_end_y - @stair_start_y) ** 2)
       fraction = (@stair_end_x - @stair_start_x).abs / ptgrs * 0.85
-      @move_speed = fraction * @old_move_speed
+      @new_move_speed = fraction * @old_move_speed
+      self.move_speed_real = @new_move_speed
     else
-      @move_speed = @old_move_speed if @old_move_speed
+      self.move_speed_real = @old_move_speed if @old_move_speed
       @old_move_speed = nil
     end
   end
