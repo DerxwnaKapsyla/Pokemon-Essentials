@@ -163,10 +163,52 @@ class PokeBattle_Battle
       foeParty = pbParty(1)
       case foeParty.length
       when 1
-        pbDisplayPaused(_INTL("Oh! A wild {1} appeared!",foeParty[0].name))
+# ------- Derx: Special Wild Battle Handler
+		if $game_switches[107] # Can't catch Pokemon
+			if $game_variables[107]==1 # Territorial Pokemon
+				pbDisplayPaused(_INTL("The territorial {1} attacked!",foeParty[0].name))
+			elsif $game_variables[107]==2 # Aggressive Pokemon
+				pbDisplayPaused(_INTL("The aggressive {1} attacked!",foeParty[0].name))
+			elsif $game_variables[107]==3 # Lifrana's Pokemon
+				pbDisplayPaused(_INTL("Lifrana's {1} attacked!",foeParty[0].name))
+			elsif $game_variables[107]==2 # Trainer's Pokemon
+				pbDisplayPaused(_INTL("A trainer's {1} attacked!",foeParty[0].name))
+			end
+        else
+			pbDisplayPaused(_INTL("Oh! A wild {1} appeared!",foeParty[0].name))
+# ------- Derx: Used for the "Make Any Pokemon Shiny" passcode
+			if $game_switches[31]==true
+				$game_switches[31]=false
+			end
+# ------- Derx: End of the "Make Any Pokemon Shiny" passcode handler
+		end
+# ------- Derx: End of Special Wild Battle Handler		
       when 2
-        pbDisplayPaused(_INTL("Oh! A wild {1} and {2} appeared!",foeParty[0].name,
-           foeParty[1].name))
+# ------- Derx: Special Wild Battle Handler
+		if $game_switches[107] # Can't catch Pokemon
+			if $game_variables[107]==1 # Territorial Pokemon
+				pbDisplayPaused(_INTL("The territorial {1} and {2} attacked!",foeParty[0].name,
+				foeParty[1].name))
+			elsif $game_variables[107]==2 # Aggressive Pokemon
+				pbDisplayPaused(_INTL("The aggressive {1} and {2} attacked!",foeParty[0].name,
+				foeParty[1].name))
+			elsif $game_variables[107]==3 # Lifrana's Pokemon
+				pbDisplayPaused(_INTL("Lifrana's {1} and {2} attacked!",foeParty[0].name,
+				foeParty[1].name))
+			elsif $game_variables[107]==2 # Trainer's Pokemon
+				pbDisplayPaused(_INTL("A trainer's {1} and {2} attacked!",foeParty[0].name,
+				foeParty[1].name))
+			end
+        else
+			pbDisplayPaused(_INTL("Oh! A wild {1} and {2} appeared!",foeParty[0].name,
+			foeParty[1].name))
+# ------- Derx: Used for the "Make Any Pokemon Shiny" passcode
+			if $game_switches[31]==true
+				$game_switches[31]=false
+			end
+# ------- Derx: End of the "Make Any Pokemon Shiny" passcode handler
+		end
+# ------- Derx: End of Special Wild Battle Handler					
       when 3
         pbDisplayPaused(_INTL("Oh! A wild {1}, {2} and {3} appeared!",foeParty[0].name,
            foeParty[1].name,foeParty[2].name))
