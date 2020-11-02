@@ -38596,6 +38596,89 @@ List of Event Commands:
 @>
 
 #------------------------------------------------------------------------------
+Event ID: 084
+Event Name: Hidden Power Checker
+(X,Y): (035,058)
+
+Page #1
+Conditions
+None
+
+Graphic: trchar028
+
+Autonomous Movement
+Type: Fixed
+Speed: 3: Slow
+Freq: 3: Low
+Options Enabled
+Move Animation
+Trigger: Action Button
+
+List of Event Commands:
+@>Conditional Branch: Self Switch A == ON
+ @>Text: Ah, you've returned!
+ @>
+: Else
+ @>Text: Ah, say not a word! I know exactly why you're
+  :    : here!
+ @>Text: No doubt you've heard that I'm capable of discerning your
+  :    : Pokémon's hidden potential.
+ @>Control Self Switch: A =ON
+ @>
+: Branch End
+@>Text: I take it you've come to have your Pokémon's 
+ :    : Hidden Power identified?
+@>Show Choices: Yes, No
+(When Cancel: Choice 2)
+: When [Yes]
+ @>Label: PokeSelect
+ @>Text: Bring out the Pokémon whose Hidden Power I
+  :    : should decypher!
+ @>Script: pbChoosePokemon(1,3)
+ @>Conditional Branch: Variable [0001: Temp Pokemon Choice] < 0
+  @>Text: What, are you afraid of this knowledge? Knowledge
+   :    : is power, after all!
+  @>Text: If you desire my services at any point, I shall be here
+   :    : waiting!
+  @>
+ : Else
+  @>Conditional Branch: Script: pbGetPokemon(1).egg?
+   @>Text: ... I may be able to tell a Pokémon's Hidden Power,
+    :    : but I'm not a psychic, you know. I can't do anything
+    :    : with an egg!
+   @>Jump to Label: PokeSelect
+   @>
+  : Else
+   @>
+  : Branch End
+  @>Script: pkmn=pbGetPokemon(1)
+  :       : potential=pbHiddenPower(pkmn)
+  @>Script: Kernel.pbMessage(_INTL(
+  :       : "{1}'s Hidden Power is {2}.", 
+  :       : pkmn.name,
+  :       : PBTypes.getName(potential[0])))
+  @>Text: Would you like me to check another Pokémon?
+  @>Show Choices: Yes, No
+  (When Cancel: Choice 2)
+  : When [Yes]
+   @>Jump to Label: PokeSelect
+   @>
+  : When [No]
+   @>Text: If you desire my services at any point, I shall be here
+    :    : waiting!
+   @>
+  : Branch End
+  @>
+ : Branch End
+ @>
+: When [No]
+ @>Text: If you desire my services at any point, I shall be here
+  :    : waiting!
+ @>
+: Branch End
+@>
+
+#------------------------------------------------------------------------------
 
 #==============================================================================
 Map ID: 095
@@ -44326,7 +44409,7 @@ List of Event Commands:
    @>
   : Branch End
   @>Script: pkmn=pbGetPokemon(1)
-  :       : potential=pbHiddenPower(pkmn.iv)
+  :       : potential=pbHiddenPower(pkmn)
   @>Script: Kernel.pbMessage(_INTL(
   :       : "{1}'s Hidden Power is {2}.", 
   :       : pkmn.name,
