@@ -190,14 +190,14 @@ class PokeBattle_Battler
         return lowerCase ? _INTL("the opposing {1}",name) : _INTL("The opposing {1}",name)
       else
 		# ------------ Derx: This section denotes Special Battles (Territorial, Lifrana, etc)
-		if $game_switches[107] # Special Battle
-			if $game_variables[107]==1 # Territorial Pokemon, used for Pokemon that are standing their ground, and as such cannot be caught for cinematic reasons
+		if $game_switches[102] # Special Battle
+			if $game_variables[102]==1 # Territorial Pokemon, used for Pokemon that are standing their ground, and as such cannot be caught for cinematic reasons
 				return lowerCase ? _INTL("the territorial {1}",name) : _INTL("The territorial {1}",name)
-			elsif $game_variables[107]==2 # Aggressive Pokemon, used for Pokemon that are angry and, as such, will knock Pokeballs away
+			elsif $game_variables[102]==2 # Aggressive Pokemon, used for Pokemon that are angry and, as such, will knock Pokeballs away
 				return lowerCase ? _INTL("the aggressive {1}",name) : _INTL("The aggressive {1}",name)
-			elsif $game_variables[107]==3 # Lifrana's Pokemon, used for Pokemon that are found in Kortalan Gym, as they belong to Lifrana, and capturing them would count as stealing them
+			elsif $game_variables[102]==3 # Lifrana's Pokemon, used for Pokemon that are found in Kortalan Gym, as they belong to Lifrana, and capturing them would count as stealing them
 				return lowerCase ? _INTL("Lifrana's {1}",name) : _INTL("Lifrana's {1}",name)
-			else $game_variables[107]==4 # Trainer's Pokemon, used for Pokemon in the Worldwide Mainframe, as these Pokemon belong to others, and capturing them would count as stealing them
+			else $game_variables[102]==4 # Trainer's Pokemon, used for Pokemon in the Worldwide Mainframe, as these Pokemon belong to others, and capturing them would count as stealing them
 				return lowerCase ? _INTL("a trainer's {1}",name) : _INTL("A trainer's {1}",name)
 			end
 		# ------------ Derx: End of Special Battle changes
