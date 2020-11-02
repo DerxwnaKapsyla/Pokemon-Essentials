@@ -73,7 +73,8 @@ class PokeBattle_AI
        !battler.pbDirectOpposing.fainted? && skill>=PBTrainerAI.highSkill
       opp = battler.pbDirectOpposing
       if opp.effects[PBEffects::HyperBeam]>0 ||
-         (opp.hasActiveAbility?(:TRUANT) && opp.effects[PBEffects::Truant])
+         ((opp.hasActiveAbility?(:TRUANT) ||
+		   opp.hasActiveAbility?(:FRETFUL)) && opp.effects[PBEffects::Truant]) # Derx: Added a check for Fretful
         shouldSwitch = false if pbAIRandom(100)<80
       end
     end
@@ -102,7 +103,8 @@ class PokeBattle_AI
           if spikes>0
             spikesDmg = [8,6,4][spikes-1]
             if pkmn.hp<=pkmn.totalhp/spikesDmg
-              next if !pkmn.hasType?(:FLYING) && !pkmn.hasActiveAbility?(:LEVITATE)
+              next if !(pkmn.hasType?(:FLYING) ||
+					   (pkmn.hasType?(:FLYING18)) && !pkmn.hasActiveAbility?(:LEVITATE) # Derx: Added an AI check for Touhoumon Flying
             end
           end
         end

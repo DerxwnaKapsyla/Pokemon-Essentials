@@ -225,7 +225,8 @@ class PokeBattle_Battler
     # Obedience check
     return false if !pbObedienceCheck?(choice)
     # Truant
-    if hasActiveAbility?(:TRUANT)
+    if (hasActiveAbility?(:TRUANT) || 
+		hasActiveAbility?(:FRETFUL)) # Derx: Addition of Truant for obedience checks
       @effects[PBEffects::Truant] = !@effects[PBEffects::Truant]
       if !@effects[PBEffects::Truant]   # True means loafing, but was just inverted
         @battle.pbShowAbilitySplash(self)
@@ -415,7 +416,8 @@ class PokeBattle_Battler
       return false
     end
     # Airborne-based immunity to Ground moves
-    if move.damagingMove? && isConst?(move.calcType,PBTypes,:GROUND) &&
+    if move.damagingMove? && (isConst?(move.calcType,PBTypes,:GROUND) ||
+							 isConst?(move.calcType,PBTypes,:EARTH18)) && # Derx: Added an Airborne-based immunity check for Touhoumon Earth
        target.airborne? && !move.hitsFlyingTargets?
       if target.hasActiveAbility?(:LEVITATE) && !@battle.moldBreaker
         @battle.pbShowAbilitySplash(target)

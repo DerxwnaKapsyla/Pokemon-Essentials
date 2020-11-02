@@ -609,7 +609,8 @@ BattleHandlers::MoveImmunityTargetAbility.add(:BULLETPROOF,
 BattleHandlers::MoveImmunityTargetAbility.add(:FLASHFIRE,
   proc { |ability,user,target,move,type,battle|
     next false if user.index==target.index
-    next false if !isConst?(type,PBTypes,:FIRE)
+    next false if !(isConst?(type,PBTypes,:FIRE) ||
+					isConst?(type,PBTypes,:FIRE18)) # Derx: Added a check for Touhoumon Fire
     battle.pbShowAbilitySplash(target)
     if !target.effects[PBEffects::FlashFire]
       target.effects[PBEffects::FlashFire] = true
@@ -693,11 +694,27 @@ BattleHandlers::MoveImmunityTargetAbility.add(:VOLTABSORB,
   }
 )
 
+# ------ Derx: Added a check to Volt Absorb for Touhoumon Wind 
+BattleHandlers::MoveImmunityTargetAbility.add(:VOLTABSORB,
+  proc { |ability,user,target,move,type,battle|
+    next pbBattleMoveImmunityHealAbility(user,target,move,type,:WIND18,battle)
+  }
+)
+# ------ Derx: End of Volt Absorb changes
+
 BattleHandlers::MoveImmunityTargetAbility.add(:WATERABSORB,
   proc { |ability,user,target,move,type,battle|
     next pbBattleMoveImmunityHealAbility(user,target,move,type,:WATER,battle)
   }
 )
+
+# ------ Derx: Added a check to Water Absorb for Touhoumon Water
+BattleHandlers::MoveImmunityTargetAbility.add(:WATERABSORB,
+  proc { |ability,user,target,move,type,battle|
+    next pbBattleMoveImmunityHealAbility(user,target,move,type,:WATER18,battle)
+  }
+)
+# ------ DerxL End of Water Absorb changes
 
 BattleHandlers::MoveImmunityTargetAbility.copy(:WATERABSORB,:DRYSKIN)
 
@@ -715,6 +732,10 @@ BattleHandlers::MoveImmunityTargetAbility.add(:WONDERGUARD,
     next true
   }
 )
+
+# ------ Derx: Added in a duplicate of Wonder Guard for Play Ghost
+BattleHandlers::MoveImmunityTargetAbility.copy(:WONDERGUARD,:PLAYGHOST)
+# ------ Derx: End of Play Ghost addition
 
 #===============================================================================
 # MoveBaseTypeModifierAbility handlers

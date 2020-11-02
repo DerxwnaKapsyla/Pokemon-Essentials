@@ -484,6 +484,7 @@ class PokeBattle_Battler
     return false if @effects[PBEffects::SmackDown]
     return false if @battle.field.effects[PBEffects::Gravity] > 0
     return true if pbHasType?(:FLYING)
+	return true if pbHasType?(:FLYING18) # Derx: Added an Airborne check for Touhoumon Flying
     return true if hasActiveAbility?(:LEVITATE) && !@battle.moldBreaker
     return true if hasActiveItem?(:AIRBALLOON)
     return true if @effects[PBEffects::MagnetRise] > 0

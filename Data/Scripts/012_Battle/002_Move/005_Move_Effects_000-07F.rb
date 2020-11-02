@@ -2010,6 +2010,7 @@ class PokeBattle_Move_063 < PokeBattle_Move
   def pbFailsAgainstTarget?(user,target)
     if target.unstoppableAbility? ||
        isConst?(target.ability, PBAbilities, :TRUANT) ||   # For some reason
+	   isConst?(target.ability, PBAbilities, :FRETFUL) ||   # Derx: IDK why Maruno but, fuck it, another Fretful change here too
        isConst?(target.ability, PBAbilities, :SIMPLE)
       @battle.pbDisplay(_INTL("But it failed!"))
       return true
@@ -2045,6 +2046,7 @@ class PokeBattle_Move_064 < PokeBattle_Move
   def pbFailsAgainstTarget?(user,target)
     if target.unstoppableAbility? ||
        isConst?(target.ability, PBAbilities, :TRUANT) ||   # For some reason
+	   isConst?(target.ability, PBAbilities, :FRETFUL) ||   # Derx: IDK why Maruno but, fuck it, another Fretful change here too
        isConst?(target.ability, PBAbilities, :INSOMNIA)
       @battle.pbDisplay(_INTL("But it failed!"))
       return true
@@ -2088,7 +2090,8 @@ class PokeBattle_Move_065 < PokeBattle_Move
        isConst?(target.ability, PBAbilities, :POWEROFALCHEMY) ||
        isConst?(target.ability, PBAbilities, :RECEIVER) ||
        isConst?(target.ability, PBAbilities, :TRACE) ||
-       isConst?(target.ability, PBAbilities, :WONDERGUARD)
+       isConst?(target.ability, PBAbilities, :WONDERGUARD) ||
+	   isConst?(target.ability, PBAbilities, :PLAYGHOST) # Derx: Added a check for Play Ghost
       @battle.pbDisplay(_INTL("But it failed!"))
       return true
     end
@@ -2130,7 +2133,8 @@ class PokeBattle_Move_066 < PokeBattle_Move
   end
 
   def pbFailsAgainstTarget?(user,target)
-    if target.unstoppableAbility? || isConst?(target.ability, PBAbilities, :TRUANT)
+    if target.unstoppableAbility? || (isConst?(target.ability, PBAbilities, :TRUANT) ||
+									  isConst?(target.ability, PBAbilities, :FRETFUL)) # Derx: Added in a check for Fretful
       @battle.pbDisplay(_INTL("But it failed!"))
       return true
     end
@@ -2166,7 +2170,8 @@ class PokeBattle_Move_067 < PokeBattle_Move
       @battle.pbDisplay(_INTL("But it failed!"))
       return true
     end
-    if user.ungainableAbility? || isConst?(user.ability, PBAbilities, :WONDERGUARD)
+    if user.ungainableAbility? || (isConst?(user.ability, PBAbilities, :WONDERGUARD) ||
+								   isConst?(user.ability, PBAbilities, :PLAYGHOST)) # Derx: Added a check for Play Ghost
       @battle.pbDisplay(_INTL("But it failed!"))
       return true
     end
@@ -2183,7 +2188,8 @@ class PokeBattle_Move_067 < PokeBattle_Move
       @battle.pbDisplay(_INTL("But it failed!"))
       return true
     end
-    if target.ungainableAbility? || isConst?(target.ability, PBAbilities, :WONDERGUARD)
+    if target.ungainableAbility? || (isConst?(target.ability, PBAbilities, :WONDERGUARD) ||
+									 isConst?(target.ability, PBAbilities, :PLAYGHOST)) # Derx: Added a check for Play Ghost
       @battle.pbDisplay(_INTL("But it failed!"))
       return true
     end

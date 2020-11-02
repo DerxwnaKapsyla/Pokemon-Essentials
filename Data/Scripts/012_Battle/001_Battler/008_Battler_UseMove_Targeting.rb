@@ -132,8 +132,10 @@ class PokeBattle_Battler
     end
     # Lightning Rod
     targets = pbChangeTargetByAbility(:LIGHTNINGROD,:ELECTRIC,move,user,targets,priority,nearOnly)
+	targets = pbChangeTargetByAbility(:LIGHTNINGROD,:WIND18,move,user,targets,priority,nearOnly) # Derx: Added a check for Touhoumon Wind and Lightning Rod
     # Storm Drain
     targets = pbChangeTargetByAbility(:STORMDRAIN,:WATER,move,user,targets,priority,nearOnly)
+#	targets = pbChangeTargetByAbility(:STORMDRAIN,:WATER18,move,user,targets,priority,nearOnly) # Derx: Added a check for Touhoumon Water and Storm Drain (Not canon but, shrug!)
     return targets
   end
 

@@ -1395,7 +1395,8 @@ class PokeBattle_AI
         if isConst?(target.ability,PBAbilities,:MULTITYPE) ||
            isConst?(target.ability,PBAbilities,:RKSSYSTEM) ||
            isConst?(target.ability,PBAbilities,:SIMPLE) ||
-           isConst?(target.ability,PBAbilities,:TRUANT)
+           isConst?(target.ability,PBAbilities,:TRUANT) ||
+		   isConst?(target.ability,PBAbilities,:FRETFUL) # Derx: Added in a check for Fretful
           score -= 90
         end
       end
@@ -1407,7 +1408,8 @@ class PokeBattle_AI
         if isConst?(target.ability,PBAbilities,:INSOMNIA) ||
            isConst?(target.ability,PBAbilities,:MULTITYPE) ||
            isConst?(target.ability,PBAbilities,:RKSSYSTEM) ||
-           isConst?(target.ability,PBAbilities,:TRUANT)
+           isConst?(target.ability,PBAbilities,:TRUANT) ||
+		   isConst?(target.ability,PBAbilities,:FRETFUL) # Derx: Added in a check for Fretful
           score -= 90
         end
       end
@@ -1426,6 +1428,7 @@ class PokeBattle_AI
            isConst?(target.ability,PBAbilities,:RKSSYSTEM) ||
            isConst?(target.ability,PBAbilities,:TRACE) ||
            isConst?(target.ability,PBAbilities,:WONDERGUARD) ||
+		   isConst?(target.ability,PBAbilities,:PLAYGHOST) || # Derx: Added in a check for Play Ghost
            isConst?(target.ability,PBAbilities,:ZENMODE)
           score -= 90
         end
@@ -1434,6 +1437,11 @@ class PokeBattle_AI
         if isConst?(target.ability,PBAbilities,:TRUANT) &&
            user.opposes?(target)
           score -= 90
+		# Derx: Added in a check for Fretful
+		elsif isConst?(target.ability,PBAbilities,:FRETFUL) &&
+           user.opposes?(target)
+          score -= 90
+		# Derx: End of Fretful check
         elsif isConst?(target.ability,PBAbilities,:SLOWSTART) &&
            user.opposes?(target)
           score -= 90
@@ -1449,6 +1457,7 @@ class PokeBattle_AI
            isConst?(target.ability,PBAbilities,:MULTITYPE) ||
            isConst?(target.ability,PBAbilities,:RKSSYSTEM) ||
            isConst?(target.ability,PBAbilities,:TRUANT) ||
+		   isConst?(target.ability,PBAbilities,:FRETFUL) || # Derx: Added in a check for Fretful
            isConst?(user.ability,PBAbilities,:FLOWERGIFT) ||
            isConst?(user.ability,PBAbilities,:FORECAST) ||
            isConst?(user.ability,PBAbilities,:ILLUSION) ||
@@ -1463,6 +1472,11 @@ class PokeBattle_AI
           if isConst?(user.ability,PBAbilities,:TRUANT) &&
              user.opposes?(target)
             score += 90
+		  # Derx: Added in a check for Fretful
+		  elsif isConst?(user.ability,PBAbilities,:FRETFUL) &&
+             user.opposes?(target)
+            score += 90
+		  # Derx: End of Fretful check
           elsif isConst?(user.ability,PBAbilities,:SLOWSTART) &&
              user.opposes?(target)
             score += 90
@@ -1479,10 +1493,12 @@ class PokeBattle_AI
            isConst?(user.ability,PBAbilities,:MULTITYPE) ||
            isConst?(user.ability,PBAbilities,:RKSSYSTEM) ||
            isConst?(user.ability,PBAbilities,:WONDERGUARD) ||
+		   isConst?(user.ability,PBAbilities,:PLAYGHOST) || # Derx: Added in a check for Play Ghost
            isConst?(target.ability,PBAbilities,:ILLUSION) ||
            isConst?(target.ability,PBAbilities,:MULTITYPE) ||
            isConst?(target.ability,PBAbilities,:RKSSYSTEM) ||
-           isConst?(target.ability,PBAbilities,:WONDERGUARD)
+           isConst?(target.ability,PBAbilities,:WONDERGUARD) ||
+		   isConst?(target.ability,PBAbilities,:PLAYGHOST) # Derx: Added in a check for Play Ghost
           score -= 90
         end
       end
@@ -1490,6 +1506,11 @@ class PokeBattle_AI
         if isConst?(target.ability,PBAbilities,:TRUANT) &&
            user.opposes?(target)
           score -= 90
+		# Derx: Added in a check for Fretful
+		elsif isConst?(target.ability,PBAbilities,:FRETFUL) &&
+           user.opposes?(target)
+          score -= 90
+		# Derx: End of check for Fretful
         elsif isConst?(target.ability,PBAbilities,:SLOWSTART) &&
           user.opposes?(target)
           score -= 90
@@ -1505,6 +1526,7 @@ class PokeBattle_AI
         score -= 90 if isConst?(target.ability,PBAbilities,:RKSSYSTEM)
         score -= 90 if isConst?(target.ability,PBAbilities,:SLOWSTART)
         score -= 90 if isConst?(target.ability,PBAbilities,:TRUANT)
+		score -= 90 if isConst?(target.ability,PBAbilities,:FRETFUL)
       end
     #---------------------------------------------------------------------------
     when "069"
@@ -2402,6 +2424,7 @@ class PokeBattle_AI
         score -= 20 if user.effects[PBEffects::MagnetRise]>0
         score -= 20 if user.effects[PBEffects::Telekinesis]>0
         score -= 20 if user.pbHasType?(:FLYING)
+		score -= 20 if user.pbHasType?(:FLYING18) # Derx: Added a check for Touhoumon Flying
         score -= 20 if user.hasActiveAbility?(:LEVITATE)
         score -= 20 if user.hasActiveItem?(:AIRBALLOON)
         score += 20 if target.effects[PBEffects::SkyDrop]>=0
@@ -2435,6 +2458,7 @@ class PokeBattle_AI
         score += 20 if target.effects[PBEffects::Telekinesis]>0
         score += 20 if target.inTwoTurnAttack?("0C9","0CC")   # Fly, Bounce
         score += 20 if target.pbHasType?(:FLYING)
+		score += 20 if target.pbHasType?(:FLYING) # Derx: Added a check for Touhoumon Flying
         score += 20 if target.hasActiveAbility?(:LEVITATE)
         score += 20 if target.hasActiveItem?(:AIRBALLOON)
       end

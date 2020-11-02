@@ -31,7 +31,8 @@ class PokeBattle_Battle
       next unless pbCanChooseMove?(b.index,@choices[b.index][1],false)
       next if b.status==PBStatuses::SLEEP || b.status==PBStatuses::FROZEN
       next if b.effects[PBEffects::SkyDrop]>=0
-      next if b.hasActiveAbility?(:TRUANT) && b.effects[PBEffects::Truant]
+      next if (b.hasActiveAbility?(:TRUANT) ||
+			   b.hasActiveAbility?(:FRETFUL)) && b.effects[PBEffects::Truant]
       # Mega Evolve
       if !wildBattle? || !b.opposes?
         owner = pbGetOwnerIndexFromBattlerIndex(b.index)

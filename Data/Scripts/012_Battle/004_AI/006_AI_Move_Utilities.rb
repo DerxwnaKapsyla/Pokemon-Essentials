@@ -96,17 +96,29 @@ class PokeBattle_AI
     if skill>=PBTrainerAI.mediumSkill
       if isConst?(move.type,PBTypes,:GROUND)
         return true if target.airborne? && !move.hitsFlyingTargets?
+      if isConst?(move.type,PBTypes,:EARTH18) # Derx: Added in a check for Touhoumon Earth
+        return true if target.airborne? && !move.hitsFlyingTargets?
       elsif isConst?(move.type,PBTypes,:FIRE)
+        return true if target.hasActiveAbility?(:FLASHFIRE)
+      elsif isConst?(move.type,PBTypes,:FIRE18) # Derx: Added in a check for Touhoumon Fire
         return true if target.hasActiveAbility?(:FLASHFIRE)
       elsif isConst?(move.type,PBTypes,:WATER)
         return true if target.hasActiveAbility?([:DRYSKIN,:STORMDRAIN,:WATERABSORB])
+      elsif isConst?(move.type,PBTypes,:WATER18) # Derx: Added in a check for Touhoumon Water
+        return true if target.hasActiveAbility?([:WATERABSORB]) # Derx: Feel free to add back in :DRYSKIN and :STORMDRAIN
       elsif isConst?(move.type,PBTypes,:GRASS)
         return true if target.hasActiveAbility?(:SAPSIPPER)
+#      elsif isConst?(move.type,PBTypes,:NATURE18) # Derx: Added in a check for Touhoumon Nature
+#        return true if target.hasActiveAbility?(:SAPSIPPER)
       elsif isConst?(move.type,PBTypes,:ELECTRIC)
         return true if target.hasActiveAbility?([:LIGHTNINGROD,:MOTORDRIVE,:VOLTABSORB])
+      elsif isConst?(move.type,PBTypes,:WIND18) # Derx: Added in a check for Touhoumon Wind
+        return true if target.hasActiveAbility?([:LIGHTNINGROD,:VOLTABSORB]) # Derx: Feel free to add back in :MOTORDRIVE if you want, I guess!
       end
       return true if PBTypes.notVeryEffective?(typeMod) &&
                      target.hasActiveAbility?(:WONDERGUARD)
+      return true if PBTypes.notVeryEffective?(typeMod) &&
+                     target.hasActiveAbility?(:PLAYGHOST) # Derx: Added in a check for Play Ghost
       return true if move.damagingMove? && user.index!=target.index && !target.opposes?(user) &&
                      target.hasActiveAbility?(:TELEPATHY)
       return true if move.canMagicCoat? && target.hasActiveAbility?(:MAGICBOUNCE) &&
@@ -115,6 +127,7 @@ class PokeBattle_AI
       return true if move.bombMove? && target.hasActiveAbility?(:BULLETPROOF)
       if move.powderMove?
         return true if target.pbHasType?(:GRASS)
+		# return true if target.pbHasType?(:NATURE18) # Derx: Added in a check for Touhoumon Nature - Not official
         return true if target.hasActiveAbility?(:OVERCOAT)
         return true if target.hasActiveItem?(:SAFETYGOGGLES)
       end
@@ -122,6 +135,8 @@ class PokeBattle_AI
                      !move.ignoresSubstitute?(user) && user.index!=target.index
       return true if NEWEST_BATTLE_MECHANICS && user.hasActiveAbility?(:PRANKSTER) &&
                      target.pbHasType?(:DARK) && target.opposes?(user)
+      return true if NEWEST_BATTLE_MECHANICS && user.hasActiveAbility?(:PRANKSTER) &&
+                     target.pbHasType?(:DARK18) && target.opposes?(user) # Derx: Added in a check for Touhoumon Dark
       return true if move.priority>0 && @battle.field.terrain==PBBattleTerrains::Psychic &&
                      target.affectedByTerrain? && target.opposes?(user)
     end
