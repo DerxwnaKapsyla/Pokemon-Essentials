@@ -2,20 +2,9 @@
 # Burns the user. (Rage 1.8)
 ################################################################################
 class PokeBattle_Move_500 < PokeBattle_Move
-  def pbEffect(attacker,opponent,hitnum=0,alltargets=nil,showanimation=true)
-    return super(attacker,opponent,hitnum) if @basedamage>0
-    return -1 if !attacker.pbCanBurnFromFireMove?(self,true)
-    pbShowAnimation(@id,attacker,opponent,hitnum,alltargets,showanimation)
-    attacker.pbBurn(attacker)
-    @battle.pbDisplay(_INTL("{1} was burned!",opponent.pbThis))
-    return 0
-  end
- 
-  def pbAdditionalEffect(attacker,opponent)
-    return false if !attacker.pbCanBurn?(false)
-    attacker.pbBurn(attacker)
-    @battle.pbDisplay(_INTL("{1} was burned!",attacker.pbThis))
-    return true
+  def pbAdditionalEffect(user,targets)
+    return if !user.pbCanBurn?(user,true)
+    user.pbBurn(user,_INTL("{1} was burned!",user.pbThis))
   end
 end
  
@@ -54,8 +43,6 @@ end
 ################################################################################
 # User copies the foe's stats and moves, but doesn't become them. (Recollection)
 ################################################################################
-# Derx: THIS NEEDS OVERHAULING SO IT ISN'T PIGGYBACKING OFF OF TRANSFORM
-# FIX THIS AT SOME POINT.
 class PokeBattle_Move_504 < PokeBattle_Move
   def pbMoveFailed?(user,targets)
     if user.effects[PBEffects::Transform]
@@ -80,7 +67,6 @@ class PokeBattle_Move_504 < PokeBattle_Move
 
   def pbShowAnimation(id,user,targets,hitNum=0,showAnimation=true)
     super
-    @battle.scene.pbChangePokemon(user,targets[0].pokemon)
   end
 end
 

@@ -9,10 +9,6 @@ class IntroEventScene < EventScene
     @splash = splash
     @pic = addImage(0,0,"")
     @pic.setOpacity(0,0)    # set opacity to 0 after waiting 0 frames
-    # ------ Derx: Necessary for Splash Screen highlights
-    @pic1=addImage(0,0,"") # flashing Pokemon/character highlights
-    @pic1.setOpacity(0,0)
-    # ------ Derx: End of section for Splash Screen highlights
     @pic2 = addImage(0,0,"")   # flashing "Press Enter" picture
     @pic2.setOpacity(0,0)
     @index = 0
@@ -54,6 +50,7 @@ class IntroEventScene < EventScene
   end
 
   def openSplash(_scene,*args)
+#    pbBGMPlay("U-005. Reincarnation (Title).ogg") # Derx: Touhoumon Intro Theme
     onUpdate.clear
     onCTrigger.clear
     @pic.name = "Graphics/Titles/"+@splash
