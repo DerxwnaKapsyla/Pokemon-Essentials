@@ -2179,7 +2179,11 @@ class PokeBattle_AI
     #---------------------------------------------------------------------------
     when "0FF"
       if @battle.pbCheckGlobalAbility(:AIRLOCK) ||
-         @battle.pbCheckGlobalAbility(:CLOUDNINE)
+         @battle.pbCheckGlobalAbility(:CLOUDNINE) || 
+		# Derx: Added in Hisouten and Unconcious
+		 @battle.pbCheckGlobalAbility(:HISOUTEN) ||
+         @battle.pbCheckGlobalAbility(:UNCONCIOUS)
+		# Derx: End of Hisouten and Unconcious addition
         score -= 90
       elsif @battle.pbWeather==PBWeather::Sun
         score -= 90

@@ -655,7 +655,7 @@ class PokeBattle_Battle
 
   # Returns the effective weather (note that weather effects can be negated)
   def pbWeather
-    eachBattler { |b| return PBWeather::None if b.hasActiveAbility?([:CLOUDNINE,:AIRLOCK]) }
+    eachBattler { |b| return PBWeather::None if b.hasActiveAbility?([:CLOUDNINE,:AIRLOCK,:HISOUTEN,:UNCONCIOUS]) } # Derx: Added in Hisouten and Unconcious
     return @field.weather
   end
 

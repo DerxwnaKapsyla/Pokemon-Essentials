@@ -168,6 +168,10 @@ BattleHandlers::StatusImmunityAbility.add(:MAGMAARMOR,
   }
 )
 
+# ------ Derx: Added in a duplicate of Magma Armor for Fire Veil
+BattleHandlers::StatusImmunityAbility.copy(:MAGMAARMOR,:FIREVEIL)
+# ------ Derx: End of Fire Veil addition
+
 BattleHandlers::StatusImmunityAbility.add(:WATERVEIL,
   proc { |ability,battler,status|
     next true if status==PBStatuses::BURN
@@ -1444,6 +1448,10 @@ BattleHandlers::TargetAbilityOnHit.add(:EFFECTSPORE,
   }
 )
 
+# ------ Derx: Added in duplicates of Effect Spore for Infectious
+BattleHandlers::TargetAbilityOnHit.copy(:EFFECTSPORE,:INFECTIOUS)
+# ------ Derx: End of Infectious addition
+
 BattleHandlers::TargetAbilityOnHit.add(:FLAMEBODY,
   proc { |ability,user,target,move,battle|
     next if !move.pbContactMove?(user)
@@ -1520,6 +1528,48 @@ BattleHandlers::TargetAbilityOnHit.add(:IRONBARBS,
 
 BattleHandlers::TargetAbilityOnHit.copy(:IRONBARBS,:ROUGHSKIN)
 
+# ------ Derx: Addition of Doll Wall ability
+BattleHandlers::TargetAbilityOnHit.add(:DOLLWALL,
+  proc { |ability,user,target,move,battle|
+    next if !move.pbContactMove?(user)
+    battle.pbShowAbilitySplash(target)
+    if user.takesIndirectDamage?(PokeBattle_SceneConstants::USE_ABILITY_SPLASH) &&
+       user.affectedByContactEffect?(PokeBattle_SceneConstants::USE_ABILITY_SPLASH)
+      battle.scene.pbDamageAnimation(user)
+      user.pbReduceHP(user.totalhp/16,false)
+      if PokeBattle_SceneConstants::USE_ABILITY_SPLASH
+        battle.pbDisplay(_INTL("{1} is hurt!",user.pbThis))
+      else
+        battle.pbDisplay(_INTL("{1} is hurt by {2}'s {3}!",user.pbThis,
+           target.pbThis(true),target.abilityName))
+      end
+    end
+    battle.pbHideAbilitySplash(target)
+  }
+)
+# ------ Derx: End of Doll Wall addition
+
+# ------ Derx: Addition of Retribution ability
+BattleHandlers::TargetAbilityOnHit.add(:RETRIBUTION,
+  proc { |ability,user,target,move,battle|
+    next if !move.pbContactMove?(user)
+    battle.pbShowAbilitySplash(target)
+    if user.takesIndirectDamage?(PokeBattle_SceneConstants::USE_ABILITY_SPLASH) &&
+       user.affectedByContactEffect?(PokeBattle_SceneConstants::USE_ABILITY_SPLASH)
+      battle.scene.pbDamageAnimation(user)
+      user.pbReduceHP((user.pbReduceHP(900)).floor)
+      if PokeBattle_SceneConstants::USE_ABILITY_SPLASH
+        battle.pbDisplay(_INTL("{1} is hurt!",user.pbThis))
+      else
+        battle.pbDisplay(_INTL("{1} was not prepared for {2}'s {3}!",user.pbThis,
+           target.pbThis(true),target.abilityName))
+      end
+    end
+    battle.pbHideAbilitySplash(target)
+  }
+)
+# ------ Derx: End of Retribution addition
+
 BattleHandlers::TargetAbilityOnHit.add(:JUSTIFIED,
   proc { |ability,user,target,move,battle|
     next if !isConst?(move.calcType,PBTypes,:DARK)
@@ -1568,6 +1618,10 @@ BattleHandlers::TargetAbilityOnHit.add(:POISONPOINT,
     battle.pbHideAbilitySplash(target)
   }
 )
+
+# ------ Derx: Added in duplicates of Poison Point for Poison Body
+BattleHandlers::TargetAbilityOnHit.copy(:POISONPOINT,:POISONBODY)
+# ------ Derx: End of Poison Body addition
 
 BattleHandlers::TargetAbilityOnHit.add(:RATTLED,
   proc { |ability,user,target,move,battle|
@@ -1681,7 +1735,7 @@ BattleHandlers::UserAbilityEndOfMove.add(:MAGICIAN,
       next if b.item==0
       next if b.unlosableItem?(b.item) || user.unlosableItem?(b.item)
       battle.pbShowAbilitySplash(user)
-      if b.hasActiveAbility?(:STICKYHOLD)
+      if (b.hasActiveAbility?(:STICKYHOLD) || b.hasActiveAbility?(:COLLECTOR)) # Derx: Added in a Collector Check for Magician
         battle.pbShowAbilitySplash(b) if user.opposes?(b)
         if PokeBattle_SceneConstants::USE_ABILITY_SPLASH
           battle.pbDisplay(_INTL("{1}'s item cannot be stolen!",b.pbThis))
@@ -1720,6 +1774,25 @@ BattleHandlers::UserAbilityEndOfMove.add(:MOXIE,
   }
 )
 
+# ------ Derx: Ability Addition: Gehaburn
+BattleHandlers::UserAbilityEndOfMove.add(:GEHABURN,
+  proc { |ability,user,targets,move,battle|
+    next if battle.pbAllFainted?(user.idxOpposingSide)
+    numFainted = 0
+    targets.each { |b| numFainted += 1 if b.damageState.fainted }
+    next if numFainted==0 || !user.pbCanRaiseStatStage?(PBStats::ATTACK,user)
+    if PokeBattle_SceneConstants::USE_ABILITY_SPLASH
+      battle.pbDisplay(_INTL("{1} drew power by defeating {2}!",user.pbThis,
+         b.pbThis(true)))
+    else
+      battle.pbDisplay(_INTL("{1} drew power from {2} by defeating {3}!",user.pbThis,
+         user.abilityName,b.pbThis(true)))
+    end
+    user.pbRaiseStatStageByAbility(PBStats::ATTACK,numFainted,user)
+  }
+)
+# ------ Derx: End of Gehaburn addition
+
 #===============================================================================
 # TargetAbilityAfterMoveUse handlers
 #===============================================================================
@@ -1747,6 +1820,10 @@ BattleHandlers::TargetAbilityAfterMoveUse.add(:COLORCHANGE,
   }
 )
 
+# ------ Derx: Added in duplicates of Effect Spore for Infectious
+BattleHandlers::TargetAbilityAfterMoveUse.copy(:COLORCHANGE,:MYSTERIOUS)
+# ------ Derx: End of Infectious addition
+
 BattleHandlers::TargetAbilityAfterMoveUse.add(:PICKPOCKET,
   proc { |ability,target,user,move,switched,battle|
     # NOTE: According to Bulbapedia, this can still trigger to steal the user's
@@ -1759,7 +1836,7 @@ BattleHandlers::TargetAbilityAfterMoveUse.add(:PICKPOCKET,
     next if target.item>0 || user.item==0
     next if user.unlosableItem?(user.item) || target.unlosableItem?(user.item)
     battle.pbShowAbilitySplash(target)
-    if user.hasActiveAbility?(:STICKYHOLD)
+    if (user.hasActiveAbility?(:STICKYHOLD) || user.hasActiveAbility?(:COLLECTOR)) # Derx: Added in a Collector Check for Pickpocket
       battle.pbShowAbilitySplash(user) if target.opposes?(user)
       if PokeBattle_SceneConstants::USE_ABILITY_SPLASH
         battle.pbDisplay(_INTL("{1}'s item cannot be stolen!",user.pbThis))
@@ -2086,6 +2163,10 @@ BattleHandlers::AbilityOnSwitchIn.add(:AIRLOCK,
 )
 
 BattleHandlers::AbilityOnSwitchIn.copy(:AIRLOCK,:CLOUDNINE)
+# ------ Derx: Added in duplicates for Hisouten and Unconcious
+BattleHandlers::AbilityOnSwitchIn.copy(:AIRLOCK,:HISOUTEN)
+BattleHandlers::AbilityOnSwitchIn.copy(:AIRLOCK,:UNCONCIOUS)
+# ------ Derx: End of Hisouten and Unconcious addition
 
 BattleHandlers::AbilityOnSwitchIn.add(:ANTICIPATION,
   proc { |ability,battler,battle|
@@ -2362,6 +2443,16 @@ BattleHandlers::AbilityOnSwitchIn.add(:SLOWSTART,
     battle.pbHideAbilitySplash(battler)
   }
 )
+
+# ------ Derx: Lucid Dreaming message
+BattleHandlers::AbilityOnSwitchIn.add(:LUCIDDREAMING,
+  proc { |ability,battler,battle|
+    battle.pbShowAbilitySplash(battler)
+    battle.pbDisplay(_INTL("{1} is a sleepwalker!",battler.pbThis))
+    battle.pbHideAbilitySplash(battler)
+  }
+)
+# ------ Derx: End of Lucid Dreaming message
 
 BattleHandlers::AbilityOnSwitchIn.add(:SNOWWARNING,
   proc { |ability,battler,battle|
