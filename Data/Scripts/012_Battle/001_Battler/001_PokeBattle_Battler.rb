@@ -189,7 +189,21 @@ class PokeBattle_Battler
       if @battle.trainerBattle?
         return lowerCase ? _INTL("the opposing {1}",name) : _INTL("The opposing {1}",name)
       else
-        return lowerCase ? _INTL("the wild {1}",name) : _INTL("The wild {1}",name)
+		# ------------ Derx: This section denotes Special Battles (Territorial, Lifrana, etc)
+		if $game_switches[107] # Special Battle
+			if $game_variables[107]==1 # Territorial Pokemon, used for Pokemon that are standing their ground, and as such cannot be caught for cinematic reasons
+				return lowerCase ? _INTL("the territorial {1}",name) : _INTL("The territorial {1}",name)
+			elsif $game_variables[107]==2 # Aggressive Pokemon, used for Pokemon that are angry and, as such, will knock Pokeballs away
+				return lowerCase ? _INTL("the aggressive {1}",name) : _INTL("The aggressive {1}",name)
+			elsif $game_variables[107]==3 # Lifrana's Pokemon, used for Pokemon that are found in Kortalan Gym, as they belong to Lifrana, and capturing them would count as stealing them
+				return lowerCase ? _INTL("Lifrana's {1}",name) : _INTL("Lifrana's {1}",name)
+			else $game_variables[107]==4 # Trainer's Pokemon, used for Pokemon in the Worldwide Mainframe, as these Pokemon belong to others, and capturing them would count as stealing them
+				return lowerCase ? _INTL("a trainer's {1}",name) : _INTL("A trainer's {1}",name)
+			end
+		# ------------ Derx: End of Special Battle changes
+		else
+			return lowerCase ? _INTL("the wild {1}",name) : _INTL("The wild {1}",name)
+		end
       end
     elsif !pbOwnedByPlayer?
       return lowerCase ? _INTL("the ally {1}",name) : _INTL("The ally {1}",name)
