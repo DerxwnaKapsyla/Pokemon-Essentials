@@ -338,6 +338,16 @@ module InterpreterMixin
       $MapFactory.getMap(mapid,false).need_refresh = true
     end
   end
+  
+# ------ Derx: Changes to allow setting an event's self switch on or from a different map 
+# Sets another event's self switch on a different map.
+# Example: pbSetSelfSwitch(420,15,"A",true) 
+# To be used in a script event command.
+	def pbSetSelfSwitch2(map,event,swtch,value)
+		 $game_self_switches[[map,event,swtch]]=value
+		 $game_map.need_refresh = true
+	 end  
+# ------ Derx: End of Cross-Map Self Switch Setting
 
   # Must use this approach to share the methods because the methods already
   # defined in a class override those defined in an included module
@@ -951,7 +961,38 @@ def pbDisplayCoinsWindow(msgwindow,goldwindow)
   coinwindow.z=msgwindow.z
   return coinwindow
 end
-
+# ------ Derx: Allows a name to be shown alongside Text Boxes
+# Display a name along with the text box
+def Kernel.pbMessageWithName(name, message,commands=nil,cmdIfCancel=0,skin=nil,defaultCmd=0,&block)
+  ret=0
+  msgwindow=Kernel.pbCreateMessageWindow(nil,skin)
+  namewindow=Window_AdvancedTextPokemon.new(name)
+  namewindow.setSkin("Graphics/Windowskins/goldskin")
+  namewindow.resizeToFit(namewindow.text,Graphics.width)
+  namewindow.width=10 if namewindow.width<=10
+  if msgwindow.y==0
+    namewindow.y=Graphics.height-namewindow.height
+  else
+    if $game_variables[105]==1
+      namewindow.y=92
+    else
+      namewindow.y=228
+    end
+  end
+  if commands
+    ret=Kernel.pbMessageDisplay(msgwindow,message,true,
+       proc {|msgwindow|
+          next Kernel.pbShowCommands(msgwindow,commands,cmdIfCancel,defaultCmd,&block)
+    },&block)
+  else
+    Kernel.pbMessageDisplay(msgwindow,message,&block)
+  end
+  Kernel.pbDisposeMessageWindow(msgwindow)
+  namewindow.dispose
+  Input.update
+  return ret
+end
+# ------ Derx: End of Named Text Box chanegs
 
 
 #===============================================================================
@@ -1248,6 +1289,20 @@ def pbMessageDisplay(msgwindow,message,letterbyletter=true,commandProc=nil)
       msgwindow.resume if msgwindow.busy?
       break if !msgwindow.busy?
     end
+# ------ Derx: Skip Text Dialogue 
+# ------ Script provided by Amethyst
+# ------ (https://reliccastle.com/resources/290/)
+    if Input.press?(Input::B)
+      msgwindow.textspeed=-999
+      msgwindow.update
+      if msgwindow.busy?
+        pbPlayDecisionSE() if msgwindow.pausing?
+        msgwindow.resume
+      else
+        break if signWaitCount==0
+      end
+	end
+# ------ Derx: End of Skip Text Dialogue changes
     if Input.trigger?(Input::C) || Input.trigger?(Input::B)
       if msgwindow.busy?
         pbPlayDecisionSE if msgwindow.pausing?
@@ -1313,6 +1368,24 @@ def pbMessage(message,commands=nil,cmdIfCancel=0,skin=nil,defaultCmd=0,&block)
   return ret
 end
 
+# ------ Derx: A copy of the above def to allow the alternative pbShowCommands to work
+def pbMessageAlt(message,commands=nil,cmdIfCancel=0,skin=nil,defaultCmd=0,&block)
+  ret=0
+  msgwindow=pbCreateMessageWindow(nil,skin)
+  if commands
+    ret=pbMessageDisplay(msgwindow,message,true,
+       proc {|msgwindow|
+          next pbShowCommandsWithIcon(msgwindow,commands,cmdIfCancel,defaultCmd,&block)
+    },&block)
+  else
+    pbMessageDisplay(msgwindow,message,&block)
+  end
+  pbDisposeMessageWindow(msgwindow)
+  Input.update
+  return ret
+end
+# ------ Derx: End of def copying
+
 def pbConfirmMessage(message,&block)
   return (pbMessage(message,[_INTL("Yes"),_INTL("No")],2,&block)==0)
 end
@@ -1366,6 +1439,44 @@ def pbShowCommands(msgwindow,commands=nil,cmdIfCancel=0,defaultCmd=0)
   Input.update
   return ret
 end
+
+# ------ Derx: A copy of the above Def to display icons in Choice Selection Boxes
+def pbShowCommandsWithIcon(msgwindow,commands=nil,cmdIfCancel=0,defaultCmd=0)
+  return 0 if !commands
+    cmdwindow=Window_AdvancedCommandPokemonEx.new(commands)
+    cmdwindow.z=99999
+    cmdwindow.visible=true
+    cmdwindow.resizeToFit(cmdwindow.commands)
+    pbPositionNearMsgWindow(cmdwindow,msgwindow,:right)
+    cmdwindow.index=defaultCmd
+    command=0
+    loop do
+      Graphics.update
+      Input.update
+      cmdwindow.update
+      msgwindow.update if msgwindow
+      yield if block_given?
+      if Input.trigger?(Input::B)
+        if cmdIfCancel>0
+          command=cmdIfCancel-1
+          break
+        elsif cmdIfCancel<0
+          command=cmdIfCancel
+          break
+        end
+      end
+      if Input.trigger?(Input::C)
+        command=cmdwindow.index
+        break
+      end
+      pbUpdateSceneMap
+    end
+    ret=command
+    cmdwindow.dispose
+    Input.update
+  return ret
+end
+# ------ Derx: End of def copying for icons in Choice Selection Boxes
 
 def pbShowCommandsWithHelp(msgwindow,commands,help,cmdIfCancel=0,defaultCmd=0)
   msgwin=msgwindow

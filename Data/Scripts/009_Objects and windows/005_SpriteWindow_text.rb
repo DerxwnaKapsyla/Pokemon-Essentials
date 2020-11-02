@@ -1073,9 +1073,17 @@ class Window_DrawableCommand < SpriteWindow_SelectableEx
     refresh
   end
 
+# ------ Derx: More required changes to get icons to display in the Choice Selection Box
+# Since this is a raw edit, I'm commenting out the code before replacing it
+# ----------------------------
+#  def textWidth(bitmap,text)
+#    return tmpbitmap.text_size(i).width
+#  end
+# ----------------------------
   def textWidth(bitmap,text)
     return bitmap.text_size(text).width
   end
+# ------ Derx: End of more required changes
 
   def getAutoDims(commands,dims,width=nil)
     rowMax = ((commands.length + self.columns - 1) / self.columns).to_i
@@ -1086,7 +1094,8 @@ class Window_DrawableCommand < SpriteWindow_SelectableEx
       tmpbitmap = BitmapWrapper.new(1,1)
       pbSetSystemFont(tmpbitmap)
       for i in commands
-        width = [width,tmpbitmap.text_size(i).width].max
+        width = [width,textWidth(tmpbitmap,i)].max # Derx: Required change for Icons in Choice Selection Boxes
+#		width = [width,tmpbitmap.text_size(i).width].max # Derx:  This was the original line. Commented out just to be safe.
       end
       # one 16 to allow cursor
       width += 16+16+SpriteWindow_Base::TEXTPADDING

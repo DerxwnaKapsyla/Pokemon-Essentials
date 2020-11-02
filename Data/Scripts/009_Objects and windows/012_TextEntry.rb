@@ -898,11 +898,25 @@ class PokemonEntryScene
         @sprites["gender"].bitmap.clear
         pbSetSystemFont(@sprites["gender"].bitmap)
         textpos=[]
-        if pokemon.male?
-          textpos.push([_INTL("♂"),0,0,false,Color.new(0,128,248),Color.new(168,184,184)])
-        elsif pokemon.female?
-          textpos.push([_INTL("♀"),0,0,false,Color.new(248,24,24),Color.new(168,184,184)])
-        end
+# ------ Derx: Required changes to display the Yin/Yang icons for the Puppets on the Text Entry screen				
+		if pokemon.species<494
+			if pokemon.isMale?
+				textpos.push([_INTL("♂"),0,0,false,Color.new(0,128,248),Color.new(168,184,184)])
+			elsif pokemon.isFemale?
+				textpos.push([_INTL("♀"),0,0,false,Color.new(248,24,24),Color.new(168,184,184)])
+			end
+		else
+			if pokemon.isMale?
+				pbDrawImagePositions(overlay,[
+					[sprintf("Graphics/Pictures/Thmn icons/gendermale"),174,67,0,0,-1,-1]
+				])
+			elsif pokemon.isFemale?
+				pbDrawImagePositions(overlay,[
+					[sprintf("Graphics/Pictures/Thmn icons/genderfemale"),174,67,0,0,-1,-1]
+				])
+			end
+		end
+# ------ Derx: End of Yin/Yang icon display on the Text Entry screen				
         pbDrawTextPositions(@sprites["gender"].bitmap,textpos)
       end
     when 3   # NPC
@@ -1176,12 +1190,24 @@ class PokemonEntryScene2
         @sprites["gender"].bitmap.clear
         pbSetSystemFont(@sprites["gender"].bitmap)
         textpos=[]
-        if pokemon.male?
-          textpos.push([_INTL("♂"),0,0,false,Color.new(0,128,248),Color.new(168,184,184)])
-        elsif pokemon.female?
-          textpos.push([_INTL("♀"),0,0,false,Color.new(248,24,24),Color.new(168,184,184)])
-        end
-        pbDrawTextPositions(@sprites["gender"].bitmap,textpos)
+# ------ Derx: Required changes to display the Yin/Yang icons for the Puppets on the Text Entry screen				
+		imagepos=[]
+		if pokemon.species<494
+			if pokemon.isMale?
+				textpos.push([_INTL("♂"),0,0,false,Color.new(0,128,248),Color.new(168,184,184)])
+			elsif pokemon.isFemale?
+				textpos.push([_INTL("♀"),0,0,false,Color.new(248,24,24),Color.new(168,184,184)])
+			end
+		pbDrawTextPositions(@sprites["gender"].bitmap,textpos)
+		else
+			if pokemon.isMale?
+				imagepos.push(["Graphics/Pictures/Thmn icons/gendermale",0,0,0,0,-1,-1])
+			elsif pokemon.isFemale?
+				imagepos.push(["Graphics/Pictures/Thmn icons/genderfemale",0,0,0,0,-1,-1])
+			end
+		pbDrawImagePositions(@sprites["gender"].bitmap,imagepos)
+		end
+# ------ Derx: End of Yin/Yang icon display on the Text Entry screen	
       end
     when 3   # NPC
       @sprites["shadow"]=IconSprite.new(0,0,@viewport)
