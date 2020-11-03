@@ -109,7 +109,7 @@ class PokeBattle_Battler
   def pbEndTurn(_choice)
     @lastRoundMoved = @battle.turnCount   # Done something this round
     if @effects[PBEffects::ChoiceBand]<0 &&
-       hasActiveItem?([:CHOICEBAND,:CHOICESPECS,:CHOICESCARF])
+       hasActiveItem?([:CHOICEBAND,:CHOICESPECS,:CHOICESCARF,:BLOOMERS,:POWERRIBBON]) # Derx: Added in checks for Bloomers and Power Ribbon
       if @lastMoveUsed>=0 && pbHasMove?(@lastMoveUsed)
         @effects[PBEffects::ChoiceBand] = @lastMoveUsed
       elsif @lastRegularMoveUsed>=0 && pbHasMove?(@lastRegularMoveUsed)

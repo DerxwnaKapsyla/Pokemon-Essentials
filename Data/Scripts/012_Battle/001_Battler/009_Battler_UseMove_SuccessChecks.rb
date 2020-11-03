@@ -42,7 +42,7 @@ class PokeBattle_Battler
     end
     # Choice Band
     if @effects[PBEffects::ChoiceBand]>=0
-      if hasActiveItem?([:CHOICEBAND,:CHOICESPECS,:CHOICESCARF]) &&
+      if hasActiveItem?([:CHOICEBAND,:CHOICESPECS,:CHOICESCARF,:BLOOMERS,:POWERRIBBON]) && # Derx: Added in a check for Bloomers and Power Ribbon
          pbHasMove?(@effects[PBEffects::ChoiceBand])
         if move.id!=@effects[PBEffects::ChoiceBand]
           if showMessages

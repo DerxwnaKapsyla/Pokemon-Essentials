@@ -161,7 +161,7 @@ class PokeBattle_AI
         end
       end
     #---------------------------------------------------------------------------
-    when "016"
+    when "016" # Derx: Figure out how Diva's code would be implemented here
       canattract = true
       agender = user.gender
       ogender = target.gender
@@ -2115,7 +2115,8 @@ class PokeBattle_AI
       elsif skill>=PBTrainerAI.highSkill && target.hasActiveAbility?(:STICKYHOLD)
         score -= 90
       elsif user.hasActiveItem?([:FLAMEORB,:TOXICORB,:STICKYBARB,:IRONBALL,
-                                 :CHOICEBAND,:CHOICESCARF,:CHOICESPECS])
+                                 :CHOICEBAND,:CHOICESCARF,:CHOICESPECS,
+								 :BLOOMERS,:POWERRIBBON]) # Derx: Added in checks for Bloomers and Power Ribbon
         score += 50
       elsif user.item==0 && target.item!=0
         score -= 30 if pbGetMoveData(user.lastMoveUsed,MOVE_FUNCTION_CODE)=="0F2"   # Trick/Switcheroo
@@ -2126,7 +2127,8 @@ class PokeBattle_AI
         score -= 90
       else
         if user.hasActiveItem?([:FLAMEORB,:TOXICORB,:STICKYBARB,:IRONBALL,
-                                :CHOICEBAND,:CHOICESCARF,:CHOICESPECS])
+                                :CHOICEBAND,:CHOICESCARF,:CHOICESPECS,
+								 :BLOOMERS,:POWERRIBBON]) # Derx: Added in checks for Bloomers and Power Ribbon
           score += 50
         else
           score -= 80

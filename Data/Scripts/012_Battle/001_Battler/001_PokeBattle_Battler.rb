@@ -517,7 +517,7 @@ class PokeBattle_Battler
 
   def takesSandstormDamage?
     return false if !takesIndirectDamage?
-    return false if pbHasType?(:GROUND) || pbHasType?(:ROCK) || pbHasType?(:STEEL)
+    return false if pbHasType?(:GROUND) || pbHasType?(:ROCK) || pbHasType?(:STEEL) || pbHasType?(:EARTH18) || pbHasType?(:BEAST18) || pbHasType?(:STEEL18) # Derx: Added in Type Interactions with Sand Force
     return false if inTwoTurnAttack?("0CA","0CB")   # Dig, Dive
     return false if hasActiveAbility?([:OVERCOAT,:SANDFORCE,:SANDRUSH,:SANDVEIL])
     return false if hasActiveItem?(:SAFETYGOGGLES)

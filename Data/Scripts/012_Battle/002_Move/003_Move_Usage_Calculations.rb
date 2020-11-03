@@ -462,7 +462,8 @@ class PokeBattle_Move
   # Additional effect chance
   #=============================================================================
   def pbAdditionalEffectChance(user,target,effectChance=0)
-    return 0 if target.hasActiveAbility?(:SHIELDDUST) && !@battle.moldBreaker
+    return 0 if (target.hasActiveAbility?(:SHIELDDUST) ||
+				 target.hasActiveAbility?(:ADVENT)) && !@battle.moldBreaker # Derx: Added a check for Advent
     ret = (effectChance>0) ? effectChance : @addlEffect
     if NEWEST_BATTLE_MECHANICS || @function!="0A4"   # Secret Power
       ret *= 2 if user.hasActiveAbility?(:SERENEGRACE) ||
@@ -476,7 +477,8 @@ class PokeBattle_Move
   #       not here.
   def pbFlinchChance(user,target)
     return 0 if flinchingMove?
-    return 0 if target.hasActiveAbility?(:SHIELDDUST) && !@battle.moldBreaker
+    return 0 if (target.hasActiveAbility?(:SHIELDDUST) ||
+				 target.hasActiveAbility?(:ADVENT)) && !@battle.moldBreaker # Derx: Added a check for Advent
     ret = 0
     if user.hasActiveAbility?(:STENCH,true)
       ret = 10

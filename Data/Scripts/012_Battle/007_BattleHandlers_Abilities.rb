@@ -168,9 +168,7 @@ BattleHandlers::StatusImmunityAbility.add(:MAGMAARMOR,
   }
 )
 
-# ------ Derx: Added in a duplicate of Magma Armor for Fire Veil
-BattleHandlers::StatusImmunityAbility.copy(:MAGMAARMOR,:FIREVEIL)
-# ------ Derx: End of Fire Veil addition
+BattleHandlers::StatusImmunityAbility.copy(:MAGMAARMOR,:FIREVEIL) # Derx: Added in a duplicate handler for Fire Veil from Magma Armor
 
 BattleHandlers::StatusImmunityAbility.add(:WATERVEIL,
   proc { |ability,battler,status|
@@ -309,6 +307,8 @@ BattleHandlers::StatusCureAbility.add(:MAGMAARMOR,
   }
 )
 
+BattleHandlers::StatusCureAbility.copy(:MAGMARMOR,:FIREVEIL) # Derx: Added in a duplicate handler for Fire Veil from Magma Armor
+
 BattleHandlers::StatusCureAbility.add(:OBLIVIOUS,
   proc { |ability,battler|
     next if battler.effects[PBEffects::Attract]<0 &&
@@ -401,7 +401,7 @@ BattleHandlers::StatLossImmunityAbility.add(:CLEARBODY,
   }
 )
 
-BattleHandlers::StatLossImmunityAbility.copy(:CLEARBODY,:WHITESMOKE)
+BattleHandlers::StatLossImmunityAbility.copy(:CLEARBODY,:WHITESMOKE,:HAKUREIMIKO,:BARRIER) # Derx: Added in duplicate checks for Hakurei Miko and Barrier
 
 BattleHandlers::StatLossImmunityAbility.add(:FLOWERVEIL,
   proc { |ability,battler,stat,battle,showMessages|
@@ -435,6 +435,8 @@ BattleHandlers::StatLossImmunityAbility.add(:HYPERCUTTER,
     next true
   }
 )
+
+BattleHandlers::StatLossImmunityAbility.copy(:HYPERCUTTER,:HISTRENGTH) # Derx: Added in duplicate checks for Hi Strength
 
 BattleHandlers::StatLossImmunityAbility.add(:KEENEYE,
   proc { |ability,battler,stat,battle,showMessages|
@@ -639,6 +641,14 @@ BattleHandlers::MoveImmunityTargetAbility.add(:LIGHTNINGROD,
   }
 )
 
+# ------ Derx: Added Lightning Rod interactions with Touhoumon Wind
+BattleHandlers::MoveImmunityTargetAbility.add(:LIGHTNINGROD,
+  proc { |ability,user,target,move,type,battle|
+    next pbBattleMoveImmunityStatAbility(user,target,move,type,:WIND18,PBStats::SPATK,1,battle)
+  }
+)
+# ------ Derx: End of Lightning Rod interactions
+
 BattleHandlers::MoveImmunityTargetAbility.add(:MOTORDRIVE,
   proc { |ability,user,target,move,type,battle|
     next pbBattleMoveImmunityStatAbility(user,target,move,type,:ELECTRIC,PBStats::SPEED,1,battle)
@@ -672,13 +682,21 @@ BattleHandlers::MoveImmunityTargetAbility.add(:STORMDRAIN,
   }
 )
 
+# ------ Derx: Made it so Storm Drain works with Touhoumon Water
+BattleHandlers::MoveImmunityTargetAbility.add(:STORMDRAIN,
+  proc { |ability,user,target,move,type,battle|
+    next pbBattleMoveImmunityStatAbility(user,target,move,type,:WATER18,PBStats::SPATK,1,battle)
+  }
+)
+# ------ Derx: End of Storm Drain interactions
+
 BattleHandlers::MoveImmunityTargetAbility.add(:TELEPATHY,
   proc { |ability,user,target,move,type,battle|
     next false if move.statusMove?
     next false if user.index==target.index || target.opposes?(user)
     battle.pbShowAbilitySplash(target)
     if PokeBattle_SceneConstants::USE_ABILITY_SPLASH
-      battle.pbDisplay(_INTL("{1} avoids attacks by its ally Pokémon!",target.pbThis(true)))
+      battle.pbDisplay(_INTL("{1} avoids attacks by its ally!",target.pbThis(true))) # Derx: Removing excplict references to Pokemon
     else
       battle.pbDisplay(_INTL("{1} avoids attacks by its ally Pokémon with {2}!",
          target.pbThis,target.abilityName))
@@ -733,9 +751,7 @@ BattleHandlers::MoveImmunityTargetAbility.add(:WONDERGUARD,
   }
 )
 
-# ------ Derx: Added in a duplicate of Wonder Guard for Play Ghost
-BattleHandlers::MoveImmunityTargetAbility.copy(:WONDERGUARD,:PLAYGHOST)
-# ------ Derx: End of Play Ghost addition
+BattleHandlers::MoveImmunityTargetAbility.copy(:WONDERGUARD,:PLAYGHOST) # Derx: Added in a duplicate handler for Play Ghost from Wonder Guard
 
 #===============================================================================
 # MoveBaseTypeModifierAbility handlers
@@ -796,6 +812,8 @@ BattleHandlers::AccuracyCalcUserAbility.add(:COMPOUNDEYES,
     mods[ACC_MULT] *= 1.3
   }
 )
+
+BattleHandlers::AccuracyCalcUserAbility.copy(:COMPOUNDEYES,:FOCUS) # Derx: Added in a duplicate handler for Focus from Compound Eyes
 
 BattleHandlers::AccuracyCalcUserAbility.add(:HUSTLE,
   proc { |ability,mods,user,target,move,type|
@@ -875,6 +893,14 @@ BattleHandlers::AccuracyCalcTargetAbility.add(:STORMDRAIN,
   }
 )
 
+# ------ Derx: Made it so Storm Drain works with Touhoumon Water
+BattleHandlers::AccuracyCalcTargetAbility.add(:STORMDRAIN,
+  proc { |ability,mods,user,target,move,type|
+    mods[BASE_ACC] = 0 if isConst?(type,PBTypes,:WATER18)
+  }
+)
+# ------ Derx: End of Storm Drain interactions
+
 BattleHandlers::AccuracyCalcTargetAbility.add(:TANGLEDFEET,
   proc { |ability,mods,user,target,move,type|
     mods[ACC_MULT] /= 2 if target.effects[PBEffects::Confusion]>0
@@ -946,6 +972,16 @@ BattleHandlers::DamageCalcUserAbility.add(:FLASHFIRE,
     end
   }
 )
+
+# ------ Derx: Made it so Touhoumon Fire interacts with Flash Fire
+BattleHandlers::DamageCalcUserAbility.add(:FLASHFIRE,
+  proc { |ability,user,target,move,mults,baseDmg,type|
+    if user.effects[PBEffects::FlashFire] && isConst?(type,PBTypes,:FIRE18)
+      mults[ATK_MULT] *= 1.5
+    end
+  }
+)
+# ------ Derx: End of Flash Fire interaction
 
 BattleHandlers::DamageCalcUserAbility.add(:FLOWERGIFT,
   proc { |ability,user,target,move,mults,baseDmg,type|
@@ -1177,6 +1213,16 @@ BattleHandlers::DamageCalcTargetAbility.add(:DRYSKIN,
   }
 )
 
+# ------ Derx: Adding in interaction with Dry Skin for Touhoumon Fire
+BattleHandlers::DamageCalcTargetAbility.add(:DRYSKIN,
+  proc { |ability,user,target,move,mults,baseDmg,type|
+    if isConst?(type,PBTypes,:FIRE18)
+      mults[BASE_DMG_MULT] *= 1.25
+    end
+  }
+)
+# ------ Derx: End of Dry Skin changes
+
 BattleHandlers::DamageCalcTargetAbility.add(:FILTER,
   proc { |ability,user,target,move,mults,baseDmg,type|
     if PBTypes.superEffective?(target.damageState.typeMod)
@@ -1320,7 +1366,8 @@ BattleHandlers::CriticalCalcTargetAbility.add(:BATTLEARMOR,
   }
 )
 
-BattleHandlers::CriticalCalcTargetAbility.copy(:BATTLEARMOR,:SHELLARMOR)
+BattleHandlers::CriticalCalcTargetAbility.copy(:BATTLEARMOR,:SHELLARMOR,:GUARDARMOR) # Derx: Added in a duplicate handler for Guard Armor from Battle Armor
+
 
 #===============================================================================
 # TargetAbilityOnHit handlers
@@ -1469,9 +1516,7 @@ BattleHandlers::TargetAbilityOnHit.add(:EFFECTSPORE,
   }
 )
 
-# ------ Derx: Added in duplicates of Effect Spore for Infectious
-BattleHandlers::TargetAbilityOnHit.copy(:EFFECTSPORE,:INFECTIOUS)
-# ------ Derx: End of Infectious addition
+BattleHandlers::TargetAbilityOnHit.copy(:EFFECTSPORE,:INFECTIOUS) # Derx: Added in a duplicate handler for Infectious from Effect Spore
 
 BattleHandlers::TargetAbilityOnHit.add(:FLAMEBODY,
   proc { |ability,user,target,move,battle|
@@ -1640,9 +1685,7 @@ BattleHandlers::TargetAbilityOnHit.add(:POISONPOINT,
   }
 )
 
-# ------ Derx: Added in duplicates of Poison Point for Poison Body
-BattleHandlers::TargetAbilityOnHit.copy(:POISONPOINT,:POISONBODY)
-# ------ Derx: End of Poison Body addition
+BattleHandlers::TargetAbilityOnHit.copy(:POISONPOINT,:POISONBODY) # Derx: Added in a duplicate handler for Poison Body from Poison Point
 
 BattleHandlers::TargetAbilityOnHit.add(:RATTLED,
   proc { |ability,user,target,move,battle|
@@ -1706,7 +1749,8 @@ BattleHandlers::UserAbilityOnHit.add(:POISONTOUCH,
     next if !move.contactMove?
     next if battle.pbRandom(100)>=30
     battle.pbShowAbilitySplash(user)
-    if target.hasActiveAbility?(:SHIELDDUST) && !battle.moldBreaker
+    if (target.hasActiveAbility?(:SHIELDDUST) ||
+		target.hasActiveAbility?(:ADVENT)) && !battle.moldBreaker # Derx: Added a check for Advent
       battle.pbShowAbilitySplash(target)
       if !PokeBattle_SceneConstants::USE_ABILITY_SPLASH
         battle.pbDisplay(_INTL("{1} is unaffected!",target.pbThis))
@@ -1841,9 +1885,7 @@ BattleHandlers::TargetAbilityAfterMoveUse.add(:COLORCHANGE,
   }
 )
 
-# ------ Derx: Added in duplicates of Effect Spore for Infectious
-BattleHandlers::TargetAbilityAfterMoveUse.copy(:COLORCHANGE,:MYSTERIOUS)
-# ------ Derx: End of Infectious addition
+BattleHandlers::TargetAbilityAfterMoveUse.copy(:COLORCHANGE,:MYSTERIOUS) # Derx: Added in a duplicate handler for Infectious from Effect Spore
 
 BattleHandlers::TargetAbilityAfterMoveUse.add(:PICKPOCKET,
   proc { |ability,target,user,move,switched,battle|
@@ -2184,10 +2226,7 @@ BattleHandlers::AbilityOnSwitchIn.add(:AIRLOCK,
 )
 
 BattleHandlers::AbilityOnSwitchIn.copy(:AIRLOCK,:CLOUDNINE)
-# ------ Derx: Added in duplicates for Hisouten and Unconcious
-BattleHandlers::AbilityOnSwitchIn.copy(:AIRLOCK,:HISOUTEN)
-BattleHandlers::AbilityOnSwitchIn.copy(:AIRLOCK,:UNCONCIOUS)
-# ------ Derx: End of Hisouten and Unconcious addition
+BattleHandlers::AbilityOnSwitchIn.copy(:AIRLOCK,:HISOUTEN,:UNCONCIOUS) # Derx: Added in a duplicate handler for Hisouten and Unconcious from Air Lock
 
 BattleHandlers::AbilityOnSwitchIn.add(:ANTICIPATION,
   proc { |ability,battler,battle|

@@ -89,13 +89,26 @@ class PokeBattle_Battler
       if !(user && user.hasActiveAbility?(:CORROSION))
         hasImmuneType |= pbHasType?(:POISON)
         hasImmuneType |= pbHasType?(:STEEL)
+		# ------ Derx: Added in immunity checks for Touhoumon Steel and Touhoumon Miasma
+		hasImmuneType |= pbHasType?(:STEEL18)
+		hasImmuneType |= pbHasType?(:MIASMA18)
+		# ------ Derx: End of Immunity Checks for Steel and Miasma
       end
     when PBStatuses::BURN
       hasImmuneType |= pbHasType?(:FIRE)
+	  # ------ Derx: Added in immunity checks for Touhoumon Fire
+	  hasImmuneType |= pbHasType?(:FIRE18)
+	  # ------ Derx: End of Immunity Checks for Fire
     when PBStatuses::PARALYSIS
       hasImmuneType |= pbHasType?(:ELECTRIC) && NEWEST_BATTLE_MECHANICS
+	  # ------ Derx: Added in immunity checks for Touhoumon Wind
+	  hasImmuneType |= pbHasType?(:WIND18) && NEWEST_BATTLE_MECHANICS
+	  # ------ Derx: End of Immunity Checks for Wind
     when PBStatuses::FROZEN
       hasImmuneType |= pbHasType?(:ICE)
+	  # ------ Derx: Added in immunity checks for Touhoumon Ice
+	  hasImmuneType |= pbHasType?(:ICE18)
+	  # ------ Derx: End of Immunity Checks for Ice
     end
     if hasImmuneType
       @battle.pbDisplay(_INTL("It doesn't affect {1}...",pbThis(true))) if showMessages
@@ -185,11 +198,21 @@ class PokeBattle_Battler
       if !(target && target.hasActiveAbility?(:CORROSION))
         hasImmuneType |= pbHasType?(:POISON)
         hasImmuneType |= pbHasType?(:STEEL)
+		# ------ Derx: Added in immunity checks for Touhoumon Steel and Touhoumon Miasma
+		hasImmuneType |= pbHasType?(:STEEL18)
+		hasImmuneType |= pbHasType?(:MIASMA18)
+		# ------ Derx: End of Immunity Checks for Steel and Miasma
       end
     when PBStatuses::BURN
       hasImmuneType |= pbHasType?(:FIRE)
+	  # ------ Derx: Added in immunity checks for Touhoumon Fire
+	  hasImmuneType |= pbHasType?(:FIRE18)
+	  # ------ Derx: End of Immunity Checks for Fire
     when PBStatuses::PARALYSIS
       hasImmuneType |= pbHasType?(:ELECTRIC) && NEWEST_BATTLE_MECHANICS
+	  # ------ Derx: Added in immunity checks for Touhoumon Wind
+	  hasImmuneType |= pbHasType?(:WIND18) && NEWEST_BATTLE_MECHANICS
+	  # ------ Derx: End of Immunity Checks for Wind
     end
     return false if hasImmuneType
     # Ability immunity
@@ -510,6 +533,13 @@ class PokeBattle_Battler
     end
     agender = user.gender
     ogender = gender
+# ------ Derx: Special Addition: Diva - Allows anyone with Diva to successfully use Attract on any gender
+# ------ This code is commented out because I'm not 100% sure if I want to use it.
+# ------ Feel free to use if you want!
+#    if attacker.hasWorkingAbility(:DIVA)
+#          return true
+#    end
+# ------ Derx: End of Diva addition
     if agender==2 || ogender==2 || agender==ogender
       @battle.pbDisplay(_INTL("{1} is unaffected!",pbThis)) if showMessages
       return false

@@ -345,6 +345,10 @@ class PokemonEncounters
       else   # Ignore ability effects if an item effect applies
         if isConst?(firstPkmn.ability,PBAbilities,:STENCH)
           encount = encount/2
+		# ------- Derx: Added in checks for Jealousy to the encounter modifiers
+		elsif isConst?(firstPkmn.ability,PBAbilities,:JEALOUSY)
+          encount = encount/2
+		# ------ Derx: End of Jealousy addition
         elsif isConst?(firstPkmn.ability,PBAbilities,:WHITESMOKE)
           encount = encount/2
         elsif isConst?(firstPkmn.ability,PBAbilities,:QUICKFEET)

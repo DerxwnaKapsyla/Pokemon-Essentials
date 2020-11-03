@@ -378,7 +378,7 @@ class PokeBattle_Battle
     # Toxic Spikes
     if battler.pbOwnSide.effects[PBEffects::ToxicSpikes]>0 && !battler.fainted? &&
        !battler.airborne?
-      if battler.pbHasType?(:POISON)
+      if battler.pbHasType?([:POISON,:MIASMA18]) # Derx: Added in a check for Touhoumon Miasma
         battler.pbOwnSide.effects[PBEffects::ToxicSpikes] = 0
         pbDisplay(_INTL("{1} absorbed the poison spikes!",battler.pbThis))
       elsif battler.pbCanPoison?(nil,false)

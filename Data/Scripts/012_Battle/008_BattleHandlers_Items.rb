@@ -489,6 +489,8 @@ BattleHandlers::DamageCalcUserItem.add(:CHOICEBAND,
   }
 )
 
+BattleHandlers::DamageCalcUserItem.copy(:CHOICEBAND,:BLOOMERS,:POWERRIBBON) # Derx: Added in a duplicate handler for Bloomers and Power Ribbon
+
 BattleHandlers::DamageCalcUserItem.add(:CHOICESPECS,
   proc { |item,user,target,move,mults,baseDmg,type|
     mults[BASE_DMG_MULT] *= 1.5 if move.specialMove?
@@ -972,6 +974,15 @@ BattleHandlers::CriticalCalcUserItem.add(:LUCKYPUNCH,
     next c+2 if user.isSpecies?(:CHANSEY)
   }
 )
+
+# ------ Derx: Item Addition: Nyuudou Fist
+BattleHandlers::CriticalCalcUserItem.add(:NYUUDOUFIST,
+  proc { |item,user,target,c|
+    next c+2 if (user.isSpecies?(:CICHIRIN) ||
+				 user.isSpecies?(:ICHIRIN))
+  }
+)
+# ------- Derx: End of Nyuudou Fist addition
 
 BattleHandlers::CriticalCalcUserItem.add(:RAZORCLAW,
   proc { |item,user,target,c|

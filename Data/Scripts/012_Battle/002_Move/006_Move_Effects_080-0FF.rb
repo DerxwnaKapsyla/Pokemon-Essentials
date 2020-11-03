@@ -3481,7 +3481,7 @@ class PokeBattle_Move_0F7 < PokeBattle_Move
               :GRASSMEMORY,:GROUNDMEMORY,:ICEMEMORY,:POISONMEMORY,
               :PSYCHICMEMORY,:ROCKMEMORY,:STEELMEMORY,:WATERMEMORY
              ],
-       40 => [:EVIOLITE,:ICYROCK,:LUCKYPUNCH
+       40 => [:EVIOLITE,:ICYROCK,:LUCKYPUNCH,NYUUDOUFIST # Derx: Added Nyuudou Fist
              ],
        30 => [:ABSORBBULB,:ADRENALINEORB,:AMULETCOIN,:BINDINGBAND,:BLACKBELT,
               :BLACKGLASSES,:BLACKSLUDGE,:BOTTLECAP,:CELLBATTERY,:CHARCOAL,
@@ -3542,6 +3542,7 @@ class PokeBattle_Move_0F7 < PokeBattle_Move
               :MUSCLEBAND,:POWERHERB,:QUICKPOWDER,:REAPERCLOTH,:REDCARD,
               :RINGTARGET,:SHEDSHELL,:SILKSCARF,:SILVERPOWDER,:SMOOTHROCK,
               :SOFTSAND,:SOOTHEBELL,:WHITEHERB,:WIDELENS,:WISEGLASSES,:ZOOMLENS,
+			  :BLOOMERS,:POWERRIBBON, # Derx: Added in checks for Bloomers and Choice Band
               # Terrain seeds
               :ELECTRICSEED,:GRASSYSEED,:MISTYSEED,:PSYCHICSEED,
               # Nectar
@@ -3605,6 +3606,7 @@ class PokeBattle_Move_0F7 < PokeBattle_Move
   def pbEffectAgainstTarget(user,target)
     return if target.damageState.substitute
     return if target.hasActiveAbility?(:SHIELDDUST) && !@battle.moldBreaker
+	return if target.hasActiveAbility?(:ADVENT) && !@battle.moldBreaker # Derx: Added a check for Advent
     if isConst?(user.item,PBItems,:POISONBARB)
       target.pbPoison(user) if target.pbCanPoison?(user,false,self)
     elsif isConst?(user.item,PBItems,:TOXICORB)

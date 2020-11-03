@@ -105,7 +105,7 @@ class PokeBattle_AI
       elsif isConst?(move.type,PBTypes,:WATER)
         return true if target.hasActiveAbility?([:DRYSKIN,:STORMDRAIN,:WATERABSORB])
       elsif isConst?(move.type,PBTypes,:WATER18) # Derx: Added in a check for Touhoumon Water
-        return true if target.hasActiveAbility?([:WATERABSORB]) # Derx: Feel free to add back in :DRYSKIN and :STORMDRAIN
+        return true if target.hasActiveAbility?([:DRYSKIN,:STORMDRAIN,:WATERABSORB])
       elsif isConst?(move.type,PBTypes,:GRASS)
         return true if target.hasActiveAbility?(:SAPSIPPER)
 #      elsif isConst?(move.type,PBTypes,:NATURE18) # Derx: Added in a check for Touhoumon Nature
@@ -113,7 +113,7 @@ class PokeBattle_AI
       elsif isConst?(move.type,PBTypes,:ELECTRIC)
         return true if target.hasActiveAbility?([:LIGHTNINGROD,:MOTORDRIVE,:VOLTABSORB])
       elsif isConst?(move.type,PBTypes,:WIND18) # Derx: Added in a check for Touhoumon Wind
-        return true if target.hasActiveAbility?([:LIGHTNINGROD,:VOLTABSORB]) # Derx: Feel free to add back in :MOTORDRIVE if you want, I guess!
+        return true if target.hasActiveAbility?([:LIGHTNINGROD,:MOTORDRIVE,:VOLTABSORB])
       end
       return true if PBTypes.notVeryEffective?(typeMod) &&
                      target.hasActiveAbility?(:WONDERGUARD)

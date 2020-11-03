@@ -72,7 +72,8 @@ class PokeBattle_Battler
         next if b.status!=PBStatuses::FROZEN
         # NOTE: Non-Fire-type moves that thaw the user will also thaw the
         #       target (in Gen 6+).
-        if isConst?(move.calcType,PBTypes,:FIRE) ||
+        if (isConst?(move.calcType,PBTypes,:FIRE) ||
+			isConst?(move.calcType,PBTypes,:FIRE18)) || # Derx: Added in a check for Touhoumon Fire
            (NEWEST_BATTLE_MECHANICS && move.thawsUser?)
           b.pbCureStatus
         end

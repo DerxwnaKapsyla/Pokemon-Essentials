@@ -221,7 +221,8 @@ Events.onStepTaken += proc { |_sender,_e|
     egg.eggsteps -= 1
     for i in $Trainer.pokemonParty
       next if !isConst?(i.ability,PBAbilities,:FLAMEBODY) &&
-              !isConst?(i.ability,PBAbilities,:MAGMAARMOR)
+              !isConst?(i.ability,PBAbilities,:MAGMAARMOR) &&
+			  !isConst?(i.ability,PBAbilities,:MAGMAARMOR) # Derx: Added a check for Magma Armor
       egg.eggsteps -= 1
       break
     end

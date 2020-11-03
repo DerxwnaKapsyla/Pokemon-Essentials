@@ -193,7 +193,7 @@ class PokeBattle_AI
         score -= 80 if miss
       end
       # Pick a good move for the Choice items
-      if user.hasActiveItem?([:CHOICEBAND,:CHOICESPECS,:CHOICESCARF])
+      if user.hasActiveItem?([:CHOICEBAND,:CHOICESPECS,:CHOICESCARF,:BLOOMERS,:POWERRIBBON]) # Derx: Added in checks for Bloomers and Power Ribbon
         if move.baseDamage>=60;     score += 60
         elsif move.damagingMove?;   score += 30
         elsif move.function=="0F2"; score += 70   # Trick
@@ -267,6 +267,7 @@ class PokeBattle_AI
     if skill>=PBTrainerAI.mediumSkill
       if !target.hasActiveAbility?(:INNERFOCUS) &&
           !target.hasActiveAbility?(:SHIELDDUST) &&
+		  !target.hasActiveAbility?(:ADVENT) && # Derx: Added a check for Advent
           target.effects[PBEffects::Substitute]==0
         canFlinch = false
         if move.canKingsRock? && user.hasActiveItem?([:KINGSROCK,:RAZORFANG])
