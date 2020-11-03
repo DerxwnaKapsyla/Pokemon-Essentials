@@ -807,6 +807,111 @@ BattleHandlers::DamageCalcUserItem.add(:WISEGLASSES,
   }
 )
 
+# ------ Derx: Addition of Touhoumon's Type Boosting Costumes
+# Beast Type - Bunny Suit
+BattleHandlers::DamageCalcUserItem.add(:BUNNYSUIT,
+  proc { |item,user,target,move,mults,baseDmg,type|
+    mults[BASE_DMG_MULT] *= 1.2 if isConst?(type,PBTypes,:BEAST18)
+  }
+)
+# Steel Type - Maid Costume
+BattleHandlers::DamageCalcUserItem.add(:MAIDCOSTUME,
+  proc { |item,user,target,move,mults,baseDmg,type|
+    mults[BASE_DMG_MULT] *= 1.2 if isConst?(type,PBTypes,:STEEL18)
+  }
+)
+# Earth Type - Gym Sweater
+BattleHandlers::DamageCalcUserItem.add(:SWEATER,
+  proc { |item,user,target,move,mults,baseDmg,type|
+    mults[BASE_DMG_MULT] *= 1.2 if isConst?(type,PBTypes,:EARTH18)
+  }
+)
+# Nature Type - Camouflage
+BattleHandlers::DamageCalcUserItem.add(:CAMOUFLAGE,
+  proc { |item,user,target,move,mults,baseDmg,type|
+    mults[BASE_DMG_MULT] *= 1.2 if isConst?(type,PBTypes,:NATURE18)
+  }
+)
+# Heart Type - School Blazer
+BattleHandlers::DamageCalcUserItem.add(:BLAZER,
+  proc { |item,user,target,move,mults,baseDmg,type|
+    mults[BASE_DMG_MULT] *= 1.2 if isConst?(type,PBTypes,:HEART18)
+  }
+)
+# Dark Type - Dominatrix/Mistress Attire
+BattleHandlers::DamageCalcUserItem.add(:MISTRESS,
+  proc { |item,user,target,move,mults,baseDmg,type|
+    mults[BASE_DMG_MULT] *= 1.2 if isConst?(type,PBTypes,:DARK18)
+  }
+)
+# Miasma Type - Ninja Outfit
+BattleHandlers::DamageCalcUserItem.add(:NINJA,
+  proc { |item,user,target,move,mults,baseDmg,type|
+    mults[BASE_DMG_MULT] *= 1.2 if isConst?(type,PBTypes,:MIASMA18)
+  }
+)
+# Miasma Type - Nurse Uniform
+BattleHandlers::DamageCalcUserItem.add(:NURSE,
+  proc { |item,user,target,move,mults,baseDmg,type|
+    mults[BASE_DMG_MULT] *= 1.2 if isConst?(type,PBTypes,:MIASMA18)
+  }
+)
+# Water Type - School Swimsuit
+BattleHandlers::DamageCalcUserItem.add(:SWIMSUIT,
+  proc { |item,user,target,move,mults,baseDmg,type|
+    mults[BASE_DMG_MULT] *= 1.2 if isConst?(type,PBTypes,:WATER18)
+  }
+)
+# Flying Type - Airline Uniform
+BattleHandlers::DamageCalcUserItem.add(:STEWARDESS,
+  proc { |item,user,target,move,mults,baseDmg,type|
+    mults[BASE_DMG_MULT] *= 1.2 if isConst?(type,PBTypes,:FLYING18)
+  }
+)
+# Ice Type - Thick Fur
+BattleHandlers::DamageCalcUserItem.add(:THICKFUR,
+  proc { |item,user,target,move,mults,baseDmg,type|
+    mults[BASE_DMG_MULT] *= 1.2 if isConst?(type,PBTypes,:ICE18)
+  }
+)
+# Ghost Type - Kimono
+BattleHandlers::DamageCalcUserItem.add(:KIMONO,
+  proc { |item,user,target,move,mults,baseDmg,type|
+    mults[BASE_DMG_MULT] *= 1.2 if isConst?(type,PBTypes,:GHOST18)
+  }
+)
+# Reason Type - Witch Costume
+BattleHandlers::DamageCalcUserItem.add(:WITCH,
+  proc { |item,user,target,move,mults,baseDmg,type|
+    mults[BASE_DMG_MULT] *= 1.2 if isConst?(type,PBTypes,:REASON18)
+  }
+)
+# Fire Type - Gothic Lolita
+BattleHandlers::DamageCalcUserItem.add(:GOTHIC,
+  proc { |item,user,target,move,mults,baseDmg,type|
+    mults[BASE_DMG_MULT] *= 1.2 if isConst?(type,PBTypes,:FIRE18)
+  }
+)
+# Illusion Type - Bridal Gown
+BattleHandlers::DamageCalcUserItem.add(:BRIDALGOWN,
+  proc { |item,user,target,move,mults,baseDmg,type|
+    mults[BASE_DMG_MULT] *= 1.2 if isConst?(type,PBTypes,:ILLUSION18)
+  }
+)
+# Faith Type - Shrine Maiden Attire
+BattleHandlers::DamageCalcUserItem.add(:PRIESTESS,
+  proc { |item,user,target,move,mults,baseDmg,type|
+    mults[BASE_DMG_MULT] *= 1.2 if isConst?(type,PBTypes,:FAITH18)
+  }
+)
+# Dream Type - China Dress
+BattleHandlers::DamageCalcUserItem.add(:CHINADRESS,
+  proc { |item,user,target,move,mults,baseDmg,type|
+    mults[BASE_DMG_MULT] *= 1.2 if isConst?(type,PBTypes,:DREAM18)
+  }
+)
+# ------ Derx: End of Touhoumon's Type Boosting Costumes
+
 #===============================================================================
 # DamageCalcTargetItem handlers
 #===============================================================================

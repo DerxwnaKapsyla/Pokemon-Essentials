@@ -39,31 +39,33 @@ class PokeBattle_Move
     end
     # Foresight
     if user.hasActiveAbility?(:SCRAPPY) || target.effects[PBEffects::Foresight]
-      ret = PBTypeEffectiveness::NORMAL_EFFECTIVE_ONE if isConst?(defType,PBTypes,:GHOST) &&
+      ret = PBTypeEffectiveness::NORMAL_EFFECTIVE_ONE if isConst?(defType,PBTypes,:GHOST) || 
+														  isConst?(defType,PBTypes,:GHOST18)) && # Derx: Made it so Touhoumon Dark is affected by Foresight and Scrappy
                                                          PBTypes.ineffective?(moveType,defType)
     end
     # Miracle Eye
     if target.effects[PBEffects::MiracleEye]
-      ret = PBTypeEffectiveness::NORMAL_EFFECTIVE_ONE if isConst?(defType,PBTypes,:DARK) &&
+      ret = PBTypeEffectiveness::NORMAL_EFFECTIVE_ONE if (isConst?(defType,PBTypes,:DARK) && 
                                                          PBTypes.ineffective?(moveType,defType)
     end
     # Delta Stream's weather
     if @battle.pbWeather==PBWeather::StrongWinds
-      ret = PBTypeEffectiveness::NORMAL_EFFECTIVE_ONE if isConst?(defType,PBTypes,:FLYING) &&
+      ret = PBTypeEffectiveness::NORMAL_EFFECTIVE_ONE if (isConst?(defType,PBTypes,:FLYING) ||
+														  isConst?(defType,PBTypes,:FLYING18)) && # Derx: Made it so Touhoumon Flying can benefit from Strong Winds
                                                          PBTypes.superEffective?(moveType,defType)
     end
     # Grounded Flying-type Pokémon become susceptible to Ground moves
     if !target.airborne?
-      ret = PBTypeEffectiveness::NORMAL_EFFECTIVE_ONE if isConst?(defType,PBTypes,:FLYING) &&
-                                                         isConst?(moveType,PBTypes,:GROUND)
+      ret = PBTypeEffectiveness::NORMAL_EFFECTIVE_ONE if (isConst?(defType,PBTypes,:FLYING) || isConst?(defType,PBTypes,:FLYING18)) && # Derx: Made it so both Flying types are
+                                                         (isConst?(moveType,PBTypes,:GROUND) || isConst?(moveType,PBTypes,:EARTH18))   # Derx: affected by Ground/Earth when grounded... hopefully
     end
     return ret
   end
 
   def pbCalcTypeMod(moveType,user,target)
     return PBTypeEffectiveness::NORMAL_EFFECTIVE if moveType<0
-    return PBTypeEffectiveness::NORMAL_EFFECTIVE if isConst?(moveType,PBTypes,:GROUND) &&
-       target.pbHasType?(:FLYING) && target.hasActiveItem?(:IRONBALL)
+    return PBTypeEffectiveness::NORMAL_EFFECTIVE if (isConst?(moveType,PBTypes,:GROUND) || isConst?(moveType,PBTypes,:EARTH18)) && # Derx: Made it so when both Flying types hold the Iron Ball
+       (target.pbHasType?(:FLYING) || target.pbHasType?(:FLYING18)) && target.hasActiveItem?(:IRONBALL)							   # Derx: they can both be hit by Earth and Ground moves. Hopefully.
     # Determine types
     tTypes = target.pbTypes(true)
     # Get effectivenesses
@@ -311,11 +313,12 @@ class PokeBattle_Move
     if user.effects[PBEffects::HelpingHand] && !self.is_a?(PokeBattle_Confusion)
       multipliers[BASE_DMG_MULT] *= 1.5
     end
-    if user.effects[PBEffects::Charge]>0 && isConst?(type,PBTypes,:ELECTRIC)
+    if user.effects[PBEffects::Charge]>0 && (isConst?(type,PBTypes,:ELECTRIC)
+											 isConst?(type,PBTypes,:WIND18)) # Derx: Made it so the Charge effect also works with Wind-Type moves
       multipliers[BASE_DMG_MULT] *= 2
     end
     # Mud Sport
-    if isConst?(type,PBTypes,:ELECTRIC)
+    if (isConst?(type,PBTypes,:ELECTRIC) || isConst?(type,PBTypes,:WIND18)) # Derx: Made it so the Mud Sport affects the Wind Type
       @battle.eachBattler do |b|
         next if !b.effects[PBEffects::MudSport]
         multipliers[BASE_DMG_MULT] /= 3
@@ -326,7 +329,7 @@ class PokeBattle_Move
       end
     end
     # Water Sport
-    if isConst?(type,PBTypes,:FIRE)
+    if (isConst?(type,PBTypes,:FIRE) || isConst?(type,PBTypes,:FIRE18)) # Derx: Made it so the Water Sport affects Touhoumon's Fire Type
       @battle.eachBattler do |b|
         next if !b.effects[PBEffects::WaterSport]
         multipliers[BASE_DMG_MULT] /= 3
@@ -340,15 +343,15 @@ class PokeBattle_Move
     if user.affectedByTerrain?
       case @battle.field.terrain
       when PBBattleTerrains::Electric
-        if isConst?(type,PBTypes,:ELECTRIC)
+        if isConst?(type,PBTypes,:ELECTRIC) || isConst?(type,PBTypes,:WIND18) # Derx: Added interactions to Electric Terrain for the Wind Type
           multipliers[BASE_DMG_MULT] *= 1.5
         end
       when PBBattleTerrains::Grassy
-        if isConst?(type,PBTypes,:GRASS)
+        if isConst?(type,PBTypes,:GRASS) || isConst?(type,PBTypes,:NATURE18) # Derx: Added interactions to Grass Terrain for the Nature Type
           multipliers[BASE_DMG_MULT] *= 1.5
         end
       when PBBattleTerrains::Psychic
-        if isConst?(type,PBTypes,:PSYCHIC)
+        if isConst?(type,PBTypes,:PSYCHIC) || isConst?(type,PBTypes,:REASON18) # Derx: Added interactions to Psychic Terrain for the Reason Type
           multipliers[BASE_DMG_MULT] *= 1.5
         end
       end
@@ -381,19 +384,19 @@ class PokeBattle_Move
     # Weather
     case @battle.pbWeather
     when PBWeather::Sun, PBWeather::HarshSun
-      if isConst?(type,PBTypes,:FIRE)
+      if isConst?(type,PBTypes,:FIRE) || isConst?(type,PBTypes,:FIRE18) # Derx: Added interactions to Sunny Weather for Touhoumon's Fire Type
         multipliers[FINAL_DMG_MULT] *= 1.5
-      elsif isConst?(type,PBTypes,:WATER)
+      elsif isConst?(type,PBTypes,:WATER) || isConst?(type,PBTypes,:WATER18) # Derx: Added interactions to Sunny Weather for Touhoumon's Water Type
         multipliers[FINAL_DMG_MULT] /= 2
       end
     when PBWeather::Rain, PBWeather::HeavyRain
-      if isConst?(type,PBTypes,:FIRE)
+      if isConst?(type,PBTypes,:FIRE) || isConst?(type,PBTypes,:FIRE18) # Derx: Added interactions to Rainy Weather for Touhoumon's Fire Type
         multipliers[FINAL_DMG_MULT] /= 2
-      elsif isConst?(type,PBTypes,:WATER)
+      elsif isConst?(type,PBTypes,:WATER) || isConst?(type,PBTypes,:WATER18) # Derx: Added interactions to Rainy Weather for Touhoumon's Water Type
         multipliers[FINAL_DMG_MULT] *= 1.5
       end
     when PBWeather::Sandstorm
-      if target.pbHasType?(:ROCK) && specialMove? && @function!="122"   # Psyshock
+      if (target.pbHasType?(:ROCK) || target.pbHasType?(:ROCK)) && specialMove? && @function!="122"   # Psyshock # Derx: Added interaction for Beast Types in Sandstorms
         multipliers[DEF_MULT] *= 1.5
       end
     end

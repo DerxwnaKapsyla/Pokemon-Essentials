@@ -1078,7 +1078,12 @@ BattleHandlers::DamageCalcUserAbility.add(:SANDFORCE,
     if user.battle.pbWeather==PBWeather::Sandstorm &&
        (isConst?(type,PBTypes,:ROCK) ||
        isConst?(type,PBTypes,:GROUND) ||
-       isConst?(type,PBTypes,:STEEL))
+       isConst?(type,PBTypes,:STEEL) ||
+	   # ------ Derx: Adding in Sandforce interactions with Touhoumon types
+       isConst?(type,PBTypes,:EARTH18) ||
+       isConst?(type,PBTypes,:BEAST18) ||
+       isConst?(type,PBTypes,:STEEL18))
+	   # ------ Derx: End of Sand Force changes
       mults[BASE_DMG_MULT] *= 1.3
     end
   }
@@ -1269,6 +1274,14 @@ BattleHandlers::DamageCalcTargetAbility.add(:HEATPROOF,
   }
 )
 
+# ------ Derx: Adding in interactions between Heatproof and Touhoumon Fire
+BattleHandlers::DamageCalcTargetAbility.add(:HEATPROOF,
+  proc { |ability,user,target,move,mults,baseDmg,type|
+    mults[BASE_DMG_MULT] /= 2 if isConst?(type,PBTypes,:FIRE18)
+  }
+)
+# ------ Derx: End of Heatproof interaction changes
+
 BattleHandlers::DamageCalcTargetAbility.add(:MARVELSCALE,
   proc { |ability,user,target,move,mults,baseDmg,type|
     if target.pbHasAnyStatus? && move.physicalMove?
@@ -1287,15 +1300,18 @@ BattleHandlers::DamageCalcTargetAbility.add(:MULTISCALE,
 
 BattleHandlers::DamageCalcTargetAbility.add(:THICKFAT,
   proc { |ability,user,target,move,mults,baseDmg,type|
-    if isConst?(type,PBTypes,:FIRE) || isConst?(type,PBTypes,:ICE)
+    if isConst?(type,PBTypes,:FIRE) || isConst?(type,PBTypes,:ICE) ||
+			   (type,PBTypes,:FIRE18) || isConst?(type,PBTypes,:ICE18) # Derx: Adding in interactions between Thick Fat and Touhoumon Fire/Ice
       mults[BASE_DMG_MULT] /= 2
     end
   }
 )
 
+BattleHandlers::DamageCalcTargetAbility.copy(:THICKFAT,:ICEWALL) # Derx: Added in a duplicate handler for Wall of Ice from Thick Fat
+
 BattleHandlers::DamageCalcTargetAbility.add(:WATERBUBBLE,
   proc { |ability,user,target,move,mults,baseDmg,type|
-    if isConst?(type,PBTypes,:FIRE)
+    if isConst?(type,PBTypes,:FIRE) || isConst?(type,PBTypes,:FIRE18) # Derx: Adding in interactions between Water Bubble and Touhoumon Fire
       mults[FINAL_DMG_MULT] /= 2
     end
   }
