@@ -11,6 +11,7 @@ end
 
 
 class PokemonTemp
+  attr_accessor :encounterTriggered
   attr_accessor :encounterType
   attr_accessor :evolutionLevels
 
@@ -260,6 +261,7 @@ def pbWildBattleCore(*args)
     $Trainer.party.each { |pkmn| playerParty.push(pkmn) }
     playerPartyStarts.push(playerParty.length)
     ally.party.each { |pkmn| playerParty.push(pkmn) }
+    setBattleRule("double") if !$PokemonTemp.battleRules["size"]
   end
   # Create the battle scene (the visual side of it)
   scene = pbNewBattleScene
@@ -400,6 +402,7 @@ def pbTrainerBattleCore(*args)
     $Trainer.party.each { |pkmn| playerParty.push(pkmn) }
     playerPartyStarts.push(playerParty.length)
     ally.party.each { |pkmn| playerParty.push(pkmn) }
+    setBattleRule("double") if !$PokemonTemp.battleRules["size"]
   end
   # Create the battle scene (the visual side of it)
   scene = pbNewBattleScene
