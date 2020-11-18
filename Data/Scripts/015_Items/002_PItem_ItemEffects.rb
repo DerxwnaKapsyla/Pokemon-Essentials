@@ -852,7 +852,7 @@ ItemHandlers::UseOnPokemon.add(:GRACIDEA,proc { |item,pkmn,scene|
     next false
   end
   if pkmn.fainted?
-    scene.pbDisplay(_INTL("This can't be used on the fainted Pokémon."))
+    scene.pbDisplay(_INTL("This can't be used while they're fainted.")) # Derx: Removing excplict references to Pokemon
     next false
   end
   pkmn.setForm(1) {
@@ -868,7 +868,7 @@ ItemHandlers::UseOnPokemon.add(:REDNECTAR,proc { |item,pkmn,scene|
     next false
   end
   if pkmn.fainted?
-    scene.pbDisplay(_INTL("This can't be used on the fainted Pokémon."))
+    scene.pbDisplay(_INTL("This can't be used while they're fainted.")) # Derx: Removing excplict references to Pokemon
   end
   pkmn.setForm(0) {
     scene.pbRefresh
@@ -883,7 +883,7 @@ ItemHandlers::UseOnPokemon.add(:YELLOWNECTAR,proc { |item,pkmn,scene|
     next false
   end
   if pkmn.fainted?
-    scene.pbDisplay(_INTL("This can't be used on the fainted Pokémon."))
+    scene.pbDisplay(_INTL("This can't be used while they're fainted.")) # Derx: Removing excplict references to Pokemon
   end
   pkmn.setForm(1) {
     scene.pbRefresh
@@ -898,7 +898,7 @@ ItemHandlers::UseOnPokemon.add(:PINKNECTAR,proc { |item,pkmn,scene|
     next false
   end
   if pkmn.fainted?
-    scene.pbDisplay(_INTL("This can't be used on the fainted Pokémon."))
+    scene.pbDisplay(_INTL("This can't be used while they're fainted.")) # Derx: Removing excplict references to Pokemon
   end
   pkmn.setForm(2) {
     scene.pbRefresh
@@ -913,7 +913,7 @@ ItemHandlers::UseOnPokemon.add(:PURPLENECTAR,proc { |item,pkmn,scene|
     next false
   end
   if pkmn.fainted?
-    scene.pbDisplay(_INTL("This can't be used on the fainted Pokémon."))
+    scene.pbDisplay(_INTL("This can't be used while they're fainted.")) # Derx: Removing excplict references to Pokemon
   end
   pkmn.setForm(3) {
     scene.pbRefresh
@@ -930,7 +930,7 @@ ItemHandlers::UseOnPokemon.add(:REVEALGLASS,proc { |item,pkmn,scene|
     next false
   end
   if pkmn.fainted?
-    scene.pbDisplay(_INTL("This can't be used on the fainted Pokémon."))
+    scene.pbDisplay(_INTL("This can't be used while they're fainted.")) # Derx: Removing excplict references to Pokemon
     next false
   end
   newForm = (pkmn.form==0) ? 1 : 0
@@ -947,7 +947,7 @@ ItemHandlers::UseOnPokemon.add(:PRISONBOTTLE,proc { |item,pkmn,scene|
     next false
   end
   if pkmn.fainted?
-    scene.pbDisplay(_INTL("This can't be used on the fainted Pokémon."))
+    scene.pbDisplay(_INTL("This can't be used while they're fainted.")) # Derx: Removing excplict references to Pokemon
   end
   newForm = (pkmn.form==0) ? 1 : 0
   pkmn.setForm(newForm) {
@@ -963,12 +963,12 @@ ItemHandlers::UseOnPokemon.add(:DNASPLICERS,proc { |item,pkmn,scene|
     next false
   end
   if pkmn.fainted?
-    scene.pbDisplay(_INTL("This can't be used on the fainted Pokémon."))
+    scene.pbDisplay(_INTL("This can't be used while they're fainted.")) # Derx: Removing excplict references to Pokemon
     next false
   end
   # Fusing
   if pkmn.fused==nil
-    chosen = scene.pbChoosePokemon(_INTL("Fuse with which Pokémon?"))
+    chosen = scene.pbChoosePokemon(_INTL("Fuse with which party member?")) # Derx: Removing excplict references to Pokemon
     next false if chosen<0
     poke2 = $Trainer.party[chosen]
     if pkmn==poke2
@@ -978,11 +978,11 @@ ItemHandlers::UseOnPokemon.add(:DNASPLICERS,proc { |item,pkmn,scene|
       scene.pbDisplay(_INTL("It cannot be fused with an Egg."))
       next false
     elsif poke2.fainted?
-      scene.pbDisplay(_INTL("It cannot be fused with that fainted Pokémon."))
+      scene.pbDisplay(_INTL("It cannot be fused with a fainted party member.")) # Derx: Removing excplict references to Pokemon
       next false
     elsif !poke2.isSpecies?(:RESHIRAM) &&
           !poke2.isSpecies?(:ZEKROM)
-      scene.pbDisplay(_INTL("It cannot be fused with that Pokémon."))
+      scene.pbDisplay(_INTL("It cannot be fused with that party member.")) # Derx: Removing excplict references to Pokemon
       next false
     end
     newForm = 0
@@ -998,7 +998,7 @@ ItemHandlers::UseOnPokemon.add(:DNASPLICERS,proc { |item,pkmn,scene|
   end
   # Unfusing
   if $Trainer.party.length>=6
-    scene.pbDisplay(_INTL("You have no room to separate the Pokémon."))
+    scene.pbDisplay(_INTL("You have no room to separate the fusion.")) # Derx: Removing excplict references to Pokemon
     next false
   end
   pkmn.setForm(0) {
@@ -1016,12 +1016,12 @@ ItemHandlers::UseOnPokemon.add(:NSOLARIZER,proc { |item,pkmn,scene|
     next false
   end
   if pkmn.fainted?
-    scene.pbDisplay(_INTL("This can't be used on the fainted Pokémon."))
+    scene.pbDisplay(_INTL("This can't be used while they're fainted.")) # Derx: Removing excplict references to Pokemon
     next false
   end
   # Fusing
   if pkmn.fused==nil
-    chosen = scene.pbChoosePokemon(_INTL("Fuse with which Pokémon?"))
+    chosen = scene.pbChoosePokemon(_INTL("Fuse with which party member?")) # Derx: Removing excplict references to Pokemon
     next false if chosen<0
     poke2 = $Trainer.party[chosen]
     if pkmn==poke2
@@ -1031,10 +1031,10 @@ ItemHandlers::UseOnPokemon.add(:NSOLARIZER,proc { |item,pkmn,scene|
       scene.pbDisplay(_INTL("It cannot be fused with an Egg."))
       next false
     elsif poke2.fainted?
-      scene.pbDisplay(_INTL("It cannot be fused with that fainted Pokémon."))
+      scene.pbDisplay(_INTL("It cannot be fused with a fainted party member.")) # Derx: Removing excplict references to Pokemon
       next false
     elsif !poke2.isSpecies?(:SOLGALEO)
-      scene.pbDisplay(_INTL("It cannot be fused with that Pokémon."))
+      scene.pbDisplay(_INTL("It cannot be fused with that party member.")) # Derx: Removing excplict references to Pokemon
       next false
     end
     pkmn.setForm(1) {
@@ -1047,7 +1047,7 @@ ItemHandlers::UseOnPokemon.add(:NSOLARIZER,proc { |item,pkmn,scene|
   end
   # Unfusing
   if $Trainer.party.length>=6
-    scene.pbDisplay(_INTL("You have no room to separate the Pokémon."))
+    scene.pbDisplay(_INTL("You have no room to separate the fusion.")) # Derx: Removing excplict references to Pokemon
     next false
   end
   pkmn.setForm(0) {
@@ -1065,12 +1065,12 @@ ItemHandlers::UseOnPokemon.add(:NLUNARIZER,proc { |item,pkmn,scene|
     next false
   end
   if pkmn.fainted?
-    scene.pbDisplay(_INTL("This can't be used on the fainted Pokémon."))
+    scene.pbDisplay(_INTL("This can't be used on a fainted party member.")) # Derx: Removing excplict references to Pokemon
     next false
   end
   # Fusing
   if pkmn.fused==nil
-    chosen = scene.pbChoosePokemon(_INTL("Fuse with which Pokémon?"))
+    chosen = scene.pbChoosePokemon(_INTL("Fuse with which party member?")) # Derx: Removing excplict references to Pokemon
     next false if chosen<0
     poke2 = $Trainer.party[chosen]
     if pkmn==poke2
@@ -1080,10 +1080,10 @@ ItemHandlers::UseOnPokemon.add(:NLUNARIZER,proc { |item,pkmn,scene|
       scene.pbDisplay(_INTL("It cannot be fused with an Egg."))
       next false
     elsif poke2.fainted?
-      scene.pbDisplay(_INTL("It cannot be fused with that fainted Pokémon."))
+      scene.pbDisplay(_INTL("It cannot be fused with a fainted party member.")) # Derx: Removing excplict references to Pokemon
       next false
     elsif !poke2.isSpecies?(:LUNALA)
-      scene.pbDisplay(_INTL("It cannot be fused with that Pokémon."))
+      scene.pbDisplay(_INTL("It cannot be fused with that party member.")) # Derx: Removing excplict references to Pokemon
       next false
     end
     pkmn.setForm(2) {
@@ -1096,7 +1096,7 @@ ItemHandlers::UseOnPokemon.add(:NLUNARIZER,proc { |item,pkmn,scene|
   end
   # Unfusing
   if $Trainer.party.length>=6
-    scene.pbDisplay(_INTL("You have no room to separate the Pokémon."))
+    scene.pbDisplay(_INTL("You have no room to separate the fusion.")) # Derx: Removing excplict references to Pokemon
     next false
   end
   pkmn.setForm(0) {
