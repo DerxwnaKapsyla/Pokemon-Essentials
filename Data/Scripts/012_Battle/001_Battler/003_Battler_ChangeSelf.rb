@@ -36,6 +36,14 @@ class PokeBattle_Battler
       @battle.pbDisplay(_INTL("{1} sucked up the liquid ooze!",pbThis))
       @battle.pbHideAbilitySplash(target)
       pbItemHPHealCheck
+	# ------ Derx: Addition of Strange Mist
+	elsif target.hasActiveAbility?(:STRANGEMIST)
+      @battle.pbShowAbilitySplash(target)
+      pbReduceHP(amt)
+      @battle.pbDisplay(_INTL("{1} sucked up the strange mist!",pbThis))
+      @battle.pbHideAbilitySplash(target)
+      pbItemHPHealCheck
+	# ------ Derx: End of Strange Mist addition
     else
       msg = _INTL("{1} had its energy drained!",target.pbThis) if !msg || msg==""
       @battle.pbDisplay(msg)

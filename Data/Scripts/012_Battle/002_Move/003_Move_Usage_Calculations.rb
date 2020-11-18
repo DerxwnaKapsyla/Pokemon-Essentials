@@ -396,7 +396,7 @@ class PokeBattle_Move
         multipliers[FINAL_DMG_MULT] *= 1.5
       end
     when PBWeather::Sandstorm
-      if (target.pbHasType?(:ROCK) || target.pbHasType?(:ROCK)) && specialMove? && @function!="122"   # Psyshock # Derx: Added interaction for Beast Types in Sandstorms
+      if (target.pbHasType?(:ROCK) || target.pbHasType?(:BEAST18)) && specialMove? && @function!="122"   # Psyshock # Derx: Added interaction for Beast Types in Sandstorms
         multipliers[DEF_MULT] *= 1.5
       end
     end

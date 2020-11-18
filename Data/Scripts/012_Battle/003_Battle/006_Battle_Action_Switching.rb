@@ -17,8 +17,8 @@ class PokeBattle_Battle
     end
     if !pbIsOwner?(idxBattler,idxParty)
       owner = pbGetOwnerFromPartyIndex(idxBattler,idxParty)
-      partyScene.pbDisplay(_INTL("You can't switch {1}'s Pokémon with one of yours!",
-        owner.name)) if partyScene
+      partyScene.pbDisplay(_INTL("You can't switch {1}'s active party member with one of yours!",
+        owner.name)) if partyScene # Derx: Removing excplict references to Pokemon
       return false
     end
     if party[idxParty].fainted?
@@ -64,7 +64,8 @@ class PokeBattle_Battle
       end
     end
     # Other certain switching effects
-    return true if NEWEST_BATTLE_MECHANICS && battler.pbHasType?(:GHOST)
+    return true if NEWEST_BATTLE_MECHANICS && (battler.pbHasType?(:GHOST) ||
+											   battler.pbHasType?(:GHOST18)) # Derx: Should make it so that Touhoumon Ghost can interact with switching out
     # Other certain trapping effects
     if battler.effects[PBEffects::Trapping]>0 ||
        battler.effects[PBEffects::MeanLook]>=0 ||
@@ -171,7 +172,7 @@ class PokeBattle_Battle
             if isConst?(enemyParty[idxPartyNew].ability,PBAbilities,:ILLUSION)
               idxPartyForName = pbLastInTeam(idxBattler)
             end
-            if pbDisplayConfirm(_INTL("{1} is about to send in {2}. Will you switch your Pokémon?",
+            if pbDisplayConfirm(_INTL("{1} is about to send in {2}. Will you switch your active party member?", # Derx: Removing excplict references to Pokemon
                opponent.fullname,enemyParty[idxPartyForName].name))
               idxPlayerPartyNew = pbSwitchInBetween(0,false,true)
               if idxPlayerPartyNew>=0
@@ -189,7 +190,7 @@ class PokeBattle_Battle
           switched.push(idxBattler)
         else   # Player's Pokémon has fainted in a wild battle
           switch = false
-          if !pbDisplayConfirm(_INTL("Use next Pokémon?"))
+          if !pbDisplayConfirm(_INTL("Continue battling?")) # Derx: Removing excplict references to Pokemon
             switch = (pbRun(idxBattler,true)<=0)
           else
             switch = true

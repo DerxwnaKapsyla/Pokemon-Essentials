@@ -101,6 +101,12 @@ module PokeBattle_BattleCommon
       @scene.pbThrowAndDeflect(ball,1)
       pbDisplay(_INTL("The Trainer blocked your Poké Ball! Don't be a thief!"))
       return
+	# --------- Derx: For Special Wild Battles, to prevent Pokemon from being caught
+    elsif $game_switches[102] # Pokemon can't be caught switch
+       pbDisplay(_INTL("It dodged the thrown Ball! It looks like it's refusing to be caught! We have to knock it out!"))
+       return
+#     end # Derx: This end might be necessary. Idk. Check later. Pretty sure it isn't.
+	# --------- Derx: End of Special Wild Battle handlers
     end
     # Calculate the number of shakes (4=capture)
     pkmn = battler.pokemon
@@ -112,7 +118,7 @@ module PokeBattle_BattleCommon
     # Outcome message
     case numShakes
     when 0
-      pbDisplay(_INTL("Oh no! The Pokémon broke free!"))
+      pbDisplay(_INTL("Oh no! The {1} broke free!",pokemon.name)) # Derx: Removing excplict references to Pokemon
       BallHandlers.onFailCatch(ball,self,battler)
     when 1
       pbDisplay(_INTL("Aww! It appeared to be caught!"))

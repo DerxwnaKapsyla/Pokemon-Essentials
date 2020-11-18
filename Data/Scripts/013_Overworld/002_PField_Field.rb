@@ -1165,7 +1165,8 @@ end
 def pbFishing(hasEncounter,rodType=1)
   speedup = ($Trainer.firstPokemon &&
             (isConst?($Trainer.firstPokemon.ability,PBAbilities,:STICKYHOLD) ||
-            isConst?($Trainer.firstPokemon.ability,PBAbilities,:SUCTIONCUPS)))
+            isConst?($Trainer.firstPokemon.ability,PBAbilities,:SUCTIONCUPS) ||
+			isConst?($Trainer.firstPokemon.ability,PBAbilities,:COLLECTOR))) # Derx: Not in Vanilla 1.8, but hey. Added a check for Collector to fishing hooking!
   biteChance = 20+(25*rodType)   # 45, 70, 95
   biteChance *= 1.5 if speedup   # 67.5, 100, 100
   hookChance = 100

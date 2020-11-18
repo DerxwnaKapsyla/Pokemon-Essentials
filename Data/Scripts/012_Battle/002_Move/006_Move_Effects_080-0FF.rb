@@ -1161,7 +1161,7 @@ class PokeBattle_Move_0AF < PokeBattle_Move
        "05D",   # Sketch
        "069",   # Transform
 	   # ------ Derx: Added in Recollection to Copycat's blacklist
-	   "999",	# Recollection - Change the function code for Recollection
+	   "504",	# Recollection - Change the function code for Recollection
 	   # ------ Derx: End of Copycat's blacklist modifications
        # Counter moves
        "071",   # Counter
@@ -1482,7 +1482,7 @@ class PokeBattle_Move_0B5 < PokeBattle_Move
        "05D",   # Sketch
        "069",   # Transform
 	   # ------ Derx: Added in Recollection to Assist's blacklist
-	   "999",	# Recollection - Change the function code for Recollection
+	   "504",	# Recollection - Change the function code for Recollection
 	   # ------ Derx: End of Assist's blacklist modifications
        # Counter moves
        "071",   # Counter
@@ -1608,7 +1608,7 @@ class PokeBattle_Move_0B6 < PokeBattle_Move
        "05D",   # Sketch
        "069",   # Transform
 	   # ------ Derx: Added in Recollection to Metronome's blacklist
-	   "999",	# Recollection - Change the function code for Recollection
+	   "504",	# Recollection - Change the function code for Recollection
 	   # ------ Derx: End of Metronome's blacklist modifications
        # Counter moves
        "071",   # Counter
@@ -1868,7 +1868,7 @@ class PokeBattle_Move_0BC < PokeBattle_Move
        "05D",   # Sketch
        "069",   # Transform
 	   # ------ Derx: Added in Recollection to Encore's blacklist
-	   "999",	# Recollection - Change the function code for Recollection
+	   "504",	# Recollection - Change the function code for Recollection
 	   # ------ Derx: End of Encore's blacklist modifications	   
        # Moves that call other moves (see also below)
        "0AE"    # Mirror Move
@@ -2906,7 +2906,7 @@ class PokeBattle_Move_0E5 < PokeBattle_Move
 
   def pbShowAnimation(id,user,targets,hitNum=0,showAnimation=true)
     super
-    @battle.pbDisplay(_INTL("All Pokémon that hear the song will faint in three turns!"))
+    @battle.pbDisplay(_INTL("Everyone on the field that heard the song will faint in three turns!")) # Derx: Removing excplict references to Pokemon
   end
 end
 
@@ -3011,6 +3011,17 @@ class PokeBattle_Move_0EB < PokeBattle_Move
       end
       @battle.pbHideAbilitySplash(target)
       return true
+	# ------ Derx: Addition of Gatekeeper, a clone of Suction Cups
+	elsif target.hasActiveAbility?(:GATEKEEPER) && !@battle.moldBreaker
+      @battle.pbShowAbilitySplash(target)
+      if PokeBattle_SceneConstants::USE_ABILITY_SPLASH
+        @battle.pbDisplay(_INTL("{1} stood resolute!",target.pbThis))
+      else
+        @battle.pbDisplay(_INTL("{1} stood resolute like a {2}!",target.pbThis,target.abilityName))
+      end
+      @battle.pbHideAbilitySplash(target)
+      return true
+	# ------ Derx: End of Gatekeeper addition
     end
     if target.effects[PBEffects::Ingrain]
       @battle.pbDisplay(_INTL("{1} anchored itself with its roots!",target.pbThis))
@@ -3086,7 +3097,8 @@ class PokeBattle_Move_0EC < PokeBattle_Move
       next if b.fainted? || b.damageState.unaffected || b.damageState.substitute
       next if switchedBattlers.include?(b.index)
       next if b.effects[PBEffects::Ingrain]
-      next if b.hasActiveAbility?(:SUCTIONCUPS) && !@battle.moldBreaker
+      next if (b.hasActiveAbility?(:SUCTIONCUPS)
+			   b.hasActiveAbility?(:GATEKEEPER)) && !@battle.moldBreaker # Derx: Addition of Gatekeeper
       newPkmn = @battle.pbGetReplacementPokemonIndex(b.index,true)   # Random
       next if newPkmn<0
       @battle.pbRecallAndReplace(b.index,newPkmn)
@@ -3221,6 +3233,7 @@ class PokeBattle_Move_0F0 < PokeBattle_Move
     return if target.damageState.unaffected || target.damageState.substitute
     return if target.item==0 || target.unlosableItem?(target.item)
     return if target.hasActiveAbility?(:STICKYHOLD) && !@battle.moldBreaker
+	return if target.hasActiveAbility?(:COLLECTOR) && !@battle.moldBreaker # Derx: Added checks for Collector to prevent Item loss
     itemName = target.itemName
     target.pbRemoveItem(false)
     @battle.pbDisplay(_INTL("{1} dropped its {2}!",target.pbThis,itemName))
@@ -3242,6 +3255,7 @@ class PokeBattle_Move_0F1 < PokeBattle_Move
     return if target.unlosableItem?(target.item)
     return if user.unlosableItem?(target.item)
     return if target.hasActiveAbility?(:STICKYHOLD) && !@battle.moldBreaker
+	return if target.hasActiveAbility?(:COLLECTOR) && !@battle.moldBreaker # Derx: Added checks for Collector to prevent Item loss
     itemName = target.itemName
     user.item = target.item
     # Permanently steal the item from wild Pokémon
@@ -3285,6 +3299,7 @@ class PokeBattle_Move_0F2 < PokeBattle_Move
       return true
     end
     if target.hasActiveAbility?(:STICKYHOLD) && !@battle.moldBreaker
+	if target.hasActiveAbility?(:COLLECTOR) && !@battle.moldBreaker # Derx: Added checks for Collector to prevent Item loss
       @battle.pbShowAbilitySplash(target)
       if PokeBattle_SceneConstants::USE_ABILITY_SPLASH
         @battle.pbDisplay(_INTL("But it failed to affect {1}!",target.pbThis(true)))
@@ -3379,6 +3394,7 @@ class PokeBattle_Move_0F4 < PokeBattle_Move
     return if target.damageState.unaffected || target.damageState.substitute
     return if target.item==0 || !pbIsBerry?(target.item)
     return if target.hasActiveAbility?(:STICKYHOLD) && !@battle.moldBreaker
+	return if target.hasActiveAbility?(:COLLECTOR) && !@battle.moldBreaker # Derx: Added checks for Collector to prevent Item loss
     item = target.item
     itemName = target.itemName
     target.pbRemoveItem
@@ -3457,7 +3473,9 @@ class PokeBattle_Move_0F7 < PokeBattle_Move
               :DRACOPLATE,:DREADPLATE,:EARTHPLATE,:FISTPLATE,:FLAMEPLATE,
               :ICICLEPLATE,:INSECTPLATE,:IRONPLATE,:MEADOWPLATE,:MINDPLATE,
               :PIXIEPLATE,:SKYPLATE,:SPLASHPLATE,:SPOOKYPLATE,:STONEPLATE,
-              :TOXICPLATE,:ZAPPLATE
+              :TOXICPLATE,:ZAPPLATE,
+			  # ------ Derx: Touhoumon Items with Value 90
+			  :DARKRIBBON,:KUSANAGI
              ],
        80 => [:ASSAULTVEST,:DAWNSTONE,:DUSKSTONE,:ELECTIRIZER,:MAGMARIZER,
               :ODDKEYSTONE,:OVALSTONE,:PROTECTOR,:QUICKCLAW,:RAZORCLAW,:SACHET,
@@ -3481,7 +3499,9 @@ class PokeBattle_Move_0F7 < PokeBattle_Move
               :GRASSMEMORY,:GROUNDMEMORY,:ICEMEMORY,:POISONMEMORY,
               :PSYCHICMEMORY,:ROCKMEMORY,:STEELMEMORY,:WATERMEMORY
              ],
-       40 => [:EVIOLITE,:ICYROCK,:LUCKYPUNCH,NYUUDOUFIST # Derx: Added Nyuudou Fist
+       40 => [:EVIOLITE,:ICYROCK,:LUCKYPUNCH,
+			  # ------ Derx: Touhoumon Items with Value 40
+			  :NYUUDOUFIST
              ],
        30 => [:ABSORBBULB,:ADRENALINEORB,:AMULETCOIN,:BINDINGBAND,:BLACKBELT,
               :BLACKGLASSES,:BLACKSLUDGE,:BOTTLECAP,:CELLBATTERY,:CHARCOAL,
@@ -3530,7 +3550,9 @@ class PokeBattle_Move_0F7 < PokeBattle_Move
               :BALMMUSHROOM,:BIGMUSHROOM,:BIGNUGGET,:BIGPEARL,:COMETSHARD,
               :NUGGET,:PEARL,:PEARLSTRING,:RELICBAND,:RELICCOPPER,:RELICCROWN,
               :RELICGOLD,:RELICSILVER,:RELICSTATUE,:RELICVASE,:STARDUST,
-              :STARPIECE,:STRANGESOUVENIR,:TINYMUSHROOM
+              :STARPIECE,:STRANGESOUVENIR,:TINYMUSHROOM,
+			  # ------ Derx: Touhoumon items with Valuye 30
+			  :MIRROROFYATA,:ICEBALL
              ],
        20 => [# Wings
               :CLEVERWING,:GENIUSWING,:HEALTHWING,:MUSCLEWING,:PRETTYWING,
@@ -3542,7 +3564,6 @@ class PokeBattle_Move_0F7 < PokeBattle_Move
               :MUSCLEBAND,:POWERHERB,:QUICKPOWDER,:REAPERCLOTH,:REDCARD,
               :RINGTARGET,:SHEDSHELL,:SILKSCARF,:SILVERPOWDER,:SMOOTHROCK,
               :SOFTSAND,:SOOTHEBELL,:WHITEHERB,:WIDELENS,:WISEGLASSES,:ZOOMLENS,
-			  :BLOOMERS,:POWERRIBBON, # Derx: Added in checks for Bloomers and Choice Band
               # Terrain seeds
               :ELECTRICSEED,:GRASSYSEED,:MISTYSEED,:PSYCHICSEED,
               # Nectar
@@ -3551,7 +3572,9 @@ class PokeBattle_Move_0F7 < PokeBattle_Move
               :FULLINCENSE,:LAXINCENSE,:LUCKINCENSE,:ODDINCENSE,:PUREINCENSE,
               :ROCKINCENSE,:ROSEINCENSE,:SEAINCENSE,:WAVEINCENSE,
               # Scarves
-              :BLUESCARF,:GREENSCARF,:PINKSCARF,:REDSCARF,:YELLOWSCARF
+              :BLUESCARF,:GREENSCARF,:PINKSCARF,:REDSCARF,:YELLOWSCARF,
+			  # ------ Derx: Touhoumon Items with Value 10
+			  :BLOOMERS,:POWERRIBBON,:FOCUSRIBBON
              ]
     }
   end
@@ -3615,6 +3638,10 @@ class PokeBattle_Move_0F7 < PokeBattle_Move
       target.pbBurn(user) if target.pbCanBurn?(user,false,self)
     elsif isConst?(user.item,PBItems,:LIGHTBALL)
       target.pbParalyze(user) if target.pbCanParalyze?(user,false,self)
+	# ------ Derx: Added in functionality for Ice Ball being flung, freezing the target
+    elsif isConst?(user.item,PBItems,:ICEBALL)
+      target.pbParalyze(user) if target.pbCanFreeze?(user,false,self)
+	# ------ Derx: End of Ice Ball addition
     elsif isConst?(user.item,PBItems,:KINGSROCK) ||
           isConst?(user.item,PBItems,:RAZORFANG)
       target.pbFlinch(user)
@@ -3666,7 +3693,7 @@ class PokeBattle_Move_0F9 < PokeBattle_Move
       @battle.pbDisplay(_INTL("The area returned to normal!"))
     else
       @battle.field.effects[PBEffects::MagicRoom] = 5
-      @battle.pbDisplay(_INTL("It created a bizarre area in which Pokémon's held items lose their effects!"))
+      @battle.pbDisplay(_INTL("It created a bizarre area in which held items lose their effects!")) # Derx: Removing excplict references to Pokemon
     end
   end
 

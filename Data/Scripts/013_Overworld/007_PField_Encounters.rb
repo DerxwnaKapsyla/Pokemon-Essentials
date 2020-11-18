@@ -360,6 +360,10 @@ class PokemonEncounters
           encount = encount/2 if $game_screen.weather_type==PBFieldWeather::Sandstorm
         elsif isConst?(firstPkmn.ability,PBAbilities,:SWARM)
           encount = encount*1.5
+		# ------ Derx: Added in Diva, a clone of Swarm.
+        elsif isConst?(firstPkmn.ability,PBAbilities,:DIVA)
+          encount = encount*1.5
+		# ------ Derx: End of Diva's addition
         elsif isConst?(firstPkmn.ability,PBAbilities,:ILLUMINATE)
           encount = encount*2
         elsif isConst?(firstPkmn.ability,PBAbilities,:ARENATRAP)

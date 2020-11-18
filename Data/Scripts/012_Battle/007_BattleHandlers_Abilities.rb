@@ -401,7 +401,7 @@ BattleHandlers::StatLossImmunityAbility.add(:CLEARBODY,
   }
 )
 
-BattleHandlers::StatLossImmunityAbility.copy(:CLEARBODY,:WHITESMOKE,:HAKUREIMIKO,:BARRIER) # Derx: Added in duplicate checks for Hakurei Miko and Barrier
+BattleHandlers::StatLossImmunityAbility.copy(:CLEARBODY,:WHITESMOKE,:HAKUREIMIKO,:BARRIER) # Derx: Added in duplicate checks for Hakurei Miko and Magic Barrier
 
 BattleHandlers::StatLossImmunityAbility.add(:FLOWERVEIL,
   proc { |ability,battler,stat,battle,showMessages|
@@ -945,7 +945,9 @@ BattleHandlers::DamageCalcUserAbility.add(:ANALYTIC,
 
 BattleHandlers::DamageCalcUserAbility.add(:BLAZE,
   proc { |ability,user,target,move,mults,baseDmg,type|
-    if user.hp<=user.totalhp/3 && isConst?(type,PBTypes,:FIRE)
+    if user.hp<=user.totalhp/3 && 
+		(isConst?(type,PBTypes,:FIRE) ||
+		 isConst?(type,PBTypes,:FIRE18)) # Derx: Made it so Blaze interacts with Touhoumon Fire
       mults[ATK_MULT] *= 1.5
     end
   }
@@ -1006,7 +1008,7 @@ BattleHandlers::DamageCalcUserAbility.add(:HUGEPOWER,
   }
 )
 
-BattleHandlers::DamageCalcUserAbility.copy(:HUGEPOWER,:PUREPOWER)
+BattleHandlers::DamageCalcUserAbility.copy(:HUGEPOWER,:PUREPOWER,:UNZAN) # Derx: Added in a duplicate handler for Unzan from Huge Power
 
 BattleHandlers::DamageCalcUserAbility.add(:HUSTLE,
   proc { |ability,user,target,move,mults,baseDmg,type|
@@ -1049,7 +1051,9 @@ BattleHandlers::DamageCalcUserAbility.add(:NEUROFORCE,
 
 BattleHandlers::DamageCalcUserAbility.add(:OVERGROW,
   proc { |ability,user,target,move,mults,baseDmg,type|
-    if user.hp<=user.totalhp/3 && isConst?(type,PBTypes,:GRASS)
+    if user.hp<=user.totalhp/3 && 
+		(isConst?(type,PBTypes,:GRASS) ||
+		 isConst?(type,PBTypes,:NATURE18)) # Derx: Added in interactions for Overgrow and Nature
       mults[ATK_MULT] *= 1.5
     end
   }
@@ -1144,6 +1148,16 @@ BattleHandlers::DamageCalcUserAbility.add(:SWARM,
   }
 )
 
+# ------ Derx: Added in Inner Power, a clone of Swarm; affects the Dream Type
+BattleHandlers::DamageCalcUserAbility.add(:INNERPOWER,
+  proc { |ability,user,target,move,mults,baseDmg,type|
+    if user.hp<=user.totalhp/3 && isConst?(type,PBTypes,:DREAM18)
+      mults[ATK_MULT] *= 1.5
+    end
+  }
+)
+# ------ Derx: End of Inner Power's addition
+
 BattleHandlers::DamageCalcUserAbility.add(:TECHNICIAN,
   proc { |ability,user,target,move,mults,baseDmg,type|
     if user.index!=target.index && move.id>0 && baseDmg*mults[BASE_DMG_MULT]<=60
@@ -1160,7 +1174,9 @@ BattleHandlers::DamageCalcUserAbility.add(:TINTEDLENS,
 
 BattleHandlers::DamageCalcUserAbility.add(:TORRENT,
   proc { |ability,user,target,move,mults,baseDmg,type|
-    if user.hp<=user.totalhp/3 && isConst?(type,PBTypes,:WATER)
+    if user.hp<=user.totalhp/3 && 
+		(isConst?(type,PBTypes,:WATER) ||
+		 isConst?(type,PBTypes,:WATER18)) # Derx: Made it so Torrent interacts with Touhoumon Water
       mults[ATK_MULT] *= 1.5
     end
   }
@@ -1289,6 +1305,16 @@ BattleHandlers::DamageCalcTargetAbility.add(:MARVELSCALE,
     end
   }
 )
+
+# ------ Derx: Addition of Spring Charm, a clone of Marvel Scale
+BattleHandlers::DamageCalcTargetAbility.add(:SPRINGCHARM,
+  proc { |ability,user,target,move,mults,baseDmg,type|
+    if target.pbHasAnyStatus? && move.physicalMove?
+      mults[DEF_MULT] *= 1.5
+    end
+  }
+)
+# ------ Derx: End of Spring Charm addition
 
 BattleHandlers::DamageCalcTargetAbility.add(:MULTISCALE,
   proc { |ability,user,target,move,mults,baseDmg,type|
@@ -2214,6 +2240,9 @@ BattleHandlers::TrappingTargetAbility.add(:ARENATRAP,
   }
 )
 
+# Derx: Renamed 1.8 Shadow Tag to Piercing Stare so it doesn't work like Pokemon's Shadow Tag.
+BattleHandlers::TrappingTargetAbility.copy(:ARENATRAP,:PIERCINGSTARE) # Derx: Added in a duplicate handler for Piercing Stare from Arena Trap 
+
 BattleHandlers::TrappingTargetAbility.add(:MAGNETPULL,
   proc { |ability,switcher,bearer,battle|
     next true if switcher.pbHasType?(:STEEL)
@@ -2590,7 +2619,8 @@ BattleHandlers::AbilityChangeOnBattlerFainting.add(:POWEROFALCHEMY,
        isConst?(fainted.ability, PBAbilities, :POWEROFALCHEMY) ||
        isConst?(fainted.ability, PBAbilities, :RECEIVER) ||
        isConst?(fainted.ability, PBAbilities, :TRACE) ||
-       isConst?(fainted.ability, PBAbilities, :WONDERGUARD)
+       isConst?(fainted.ability, PBAbilities, :WONDERGUARD) ||
+	   isConst?(fainted.ability, PBAbilities, :PLAYGHOST) # Derx: Added in a check for Play Ghost
     battle.pbShowAbilitySplash(battler,true)
     battler.ability = fainted.ability
     battle.pbReplaceAbilitySplash(battler)

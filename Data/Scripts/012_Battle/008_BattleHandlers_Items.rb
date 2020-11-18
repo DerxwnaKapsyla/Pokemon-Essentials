@@ -511,6 +511,16 @@ BattleHandlers::DamageCalcUserItem.add(:DEEPSEATOOTH,
   }
 )
 
+# ------ Derx: Addition of Kusanagi, a stat boosting item for Rinnosuke
+BattleHandlers::DamageCalcUserItem.add(:KUSANAGI,
+  proc { |item,user,target,move,mults,baseDmg,type|
+    if user.isSpecies?(:RINNOSUKE) && move.physicalMove?
+      mults[ATK_MULT] *= 2
+    end
+  }
+)
+# ------ Derx: End of Kusanagi's addition
+
 BattleHandlers::DamageCalcUserItem.add(:DRAGONFANG,
   proc { |item,user,target,move,mults,baseDmg,type|
     mults[BASE_DMG_MULT] *= 1.2 if isConst?(type,PBTypes,:DRAGON)
@@ -619,6 +629,16 @@ BattleHandlers::DamageCalcUserItem.add(:LIGHTBALL,
     end
   }
 )
+
+# ------ Derx: Addition of Ice Ball, a stat boosting item for CCirno
+BattleHandlers::DamageCalcUserItem.add(:ICEBALL,
+  proc { |item,user,target,move,mults,baseDmg,type|
+    if user.isSpecies?(:CCIRNO)
+      mults[ATK_MULT] *= 2
+    end
+  }
+)
+# ------ Derx: End of Ice Ball addition
 
 BattleHandlers::DamageCalcUserItem.add(:LUSTROUSORB,
   proc { |item,user,target,move,mults,baseDmg,type|
@@ -786,6 +806,16 @@ BattleHandlers::DamageCalcUserItem.add(:THICKCLUB,
     end
   }
 )
+
+# ------ Derx: Addition of Dark Ribbon, a boosting item for CHina and Hina
+BattleHandlers::DamageCalcUserItem.add(:DARKRIBBON,
+  proc { |item,user,target,move,mults,baseDmg,type|
+    if (user.isSpecies?(:CHINA) || user.isSpecies?(:HINA)) && move.physicalMove?
+      mults[ATK_MULT] *= 2
+    end
+  }
+)
+# ------ Derx: End of Dark Ribbon's addition
 
 BattleHandlers::DamageCalcUserItem.add(:TWISTEDSPOON,
   proc { |item,user,target,move,mults,baseDmg,type|
@@ -968,6 +998,16 @@ BattleHandlers::DamageCalcTargetItem.add(:DEEPSEASCALE,
     end
   }
 )
+
+# ------ Derx: Addition of Mirror of Yata, a stat bosoting item for Rinnosuke
+BattleHandlers::DamageCalcTargetItem.add(:YATAMIRROR,
+  proc { |item,user,target,move,mults,baseDmg,type|
+    if target.isSpecies?(:RINNOSUKE) && move.physicalMove?
+      mults[DEF_MULT] *= 2
+    end
+  }
+)
+# ------ Derx: End of Mirror of Yata addition
 
 BattleHandlers::DamageCalcTargetItem.add(:EVIOLITE,
   proc { |item,user,target,move,mults,baseDmg,type|

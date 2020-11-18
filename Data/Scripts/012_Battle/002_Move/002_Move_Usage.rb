@@ -201,6 +201,11 @@ class PokeBattle_Move
         elsif target.hasActiveItem?(:FOCUSBAND) && @battle.pbRandom(100)<10
           target.damageState.focusBand = true
           damage -= 1
+		# ------ Derx: Addition of Focus Ribbon, a clone of Focus Band
+        elsif target.hasActiveItem?(:FOCUSRIBBON) && @battle.pbRandom(100)<10
+          target.damageState.focusBand = true
+          damage -= 1
+		# ------ Derx: End of Focus Ribbon addition
         end
       end
     end

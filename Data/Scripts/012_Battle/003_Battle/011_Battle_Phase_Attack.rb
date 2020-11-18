@@ -32,7 +32,7 @@ class PokeBattle_Battle
       next if b.status==PBStatuses::SLEEP || b.status==PBStatuses::FROZEN
       next if b.effects[PBEffects::SkyDrop]>=0
       next if (b.hasActiveAbility?(:TRUANT) ||
-			   b.hasActiveAbility?(:FRETFUL)) && b.effects[PBEffects::Truant]
+			   b.hasActiveAbility?(:FRETFUL)) && b.effects[PBEffects::Truant] # Derx: Addition of Fretful to Truant checks
       # Mega Evolve
       if !wildBattle? || !b.opposes?
         owner = pbGetOwnerIndexFromBattlerIndex(b.index)

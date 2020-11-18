@@ -342,7 +342,8 @@ class PokeBattle_Battler
     if move.damagingMove?
       case @battle.pbWeather
       when PBWeather::HeavyRain
-        if isConst?(move.calcType,PBTypes,:FIRE)
+        if (isConst?(move.calcType,PBTypes,:FIRE) ||
+			isConst?(move.calcType,PBTypes,:FIRE18)) # Derx: Added in a check for Heavy Rain and Touhoumon Fire
           @battle.pbDisplay(_INTL("The Fire-type attack fizzled out in the heavy rain!"))
           user.lastMoveFailed = true
           pbCancelMoves
@@ -350,7 +351,8 @@ class PokeBattle_Battler
           return
         end
       when PBWeather::HarshSun
-        if isConst?(move.calcType,PBTypes,:WATER)
+        if (isConst?(move.calcType,PBTypes,:WATER) || 
+			isConst?(move.calcType,PBTypes,:WATER18)) # Derx: Added in a check for Harsh Sun and Touhoumon Water
           @battle.pbDisplay(_INTL("The Water-type attack evaporated in the harsh sunlight!"))
           user.lastMoveFailed = true
           pbCancelMoves

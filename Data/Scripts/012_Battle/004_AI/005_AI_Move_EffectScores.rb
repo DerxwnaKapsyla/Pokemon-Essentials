@@ -21,6 +21,7 @@ class PokeBattle_AI
         end
         if skill>=PBTrainerAI.highSkill
           score -= 30 if target.hasActiveAbility?(:MARVELSCALE)
+		  score -= 30 if target.hasActiveAbility?(:SPRINGCHARM) # Derx: Added in an AI check for Spring Charm
         end
         if skill>=PBTrainerAI.bestSkill
           if target.pbHasMoveFunction?("011","0B4")   # Snore, Sleep Talk
@@ -40,6 +41,7 @@ class PokeBattle_AI
         score += 30
         if skill>=PBTrainerAI.highSkill
           score -= 30 if target.hasActiveAbility?(:MARVELSCALE)
+		  score -= 30 if target.hasActiveAbility?(:SPRINGCHARM) # Derx: Added in an AI check for Spring Charm
         end
         if skill>=PBTrainerAI.bestSkill
           if target.pbHasMoveFunction?("011","0B4")   # Snore, Sleep Talk
@@ -59,7 +61,7 @@ class PokeBattle_AI
         if skill>=PBTrainerAI.highSkill
           score += 10 if pbRoughStat(target,PBStats::DEFENSE,skill)>100
           score += 10 if pbRoughStat(target,PBStats::SPDEF,skill)>100
-          score -= 40 if target.hasActiveAbility?([:GUTS,:MARVELSCALE,:TOXICBOOST])
+          score -= 40 if target.hasActiveAbility?([:GUTS,:MARVELSCALE,:TOXICBOOST,:SPRINGCHARM]) # Derx: Added in an AI check for Spring Charm
         end
       else
         if skill>=PBTrainerAI.mediumSkill
@@ -83,7 +85,7 @@ class PokeBattle_AI
           end
         end
         if skill>=PBTrainerAI.highSkill
-          score -= 40 if target.hasActiveAbility?([:GUTS,:MARVELSCALE,:QUICKFEET])
+          score -= 40 if target.hasActiveAbility?([:GUTS,:MARVELSCALE,:QUICKFEET,:SPRINGHARM]) # Derx: Added in an AI check for Spring Charm
         end
       else
         if skill>=PBTrainerAI.mediumSkill
@@ -95,7 +97,7 @@ class PokeBattle_AI
       if target.pbCanBurn?(user,false)
         score += 30
         if skill>=PBTrainerAI.highSkill
-          score -= 40 if target.hasActiveAbility?([:GUTS,:MARVELSCALE,:QUICKFEET,:FLAREBOOST])
+          score -= 40 if target.hasActiveAbility?([:GUTS,:MARVELSCALE,:QUICKFEET,:FLAREBOOST,:SPRINGCHARM]) # Derx: Added in an AI check for Spring Charm
         end
       else
         if skill>=PBTrainerAI.mediumSkill
@@ -108,6 +110,7 @@ class PokeBattle_AI
         score += 30
         if skill>=PBTrainerAI.highSkill
           score -= 20 if target.hasActiveAbility?(:MARVELSCALE)
+		  score -= 20 if target.hasActiveAbility?(:SPRINGCHARM) # Derx: Added in an AI check for Spring Charm
         end
       else
         if skill>=PBTrainerAI.mediumSkill
@@ -2043,7 +2046,8 @@ class PokeBattle_AI
     #---------------------------------------------------------------------------
     when "0EB"
       if target.effects[PBEffects::Ingrain] ||
-         (skill>=PBTrainerAI.highSkill && target.hasActiveAbility?(:SUCTIONCUPS))
+         (skill>=PBTrainerAI.highSkill && (target.hasActiveAbility?(:SUCTIONCUPS) ||
+										   target.hasActiveAbility?(:GATEKEEPER)) # Derx: Addition of Gate Keeper for AI Checks
         score -= 90
       else
         ch = 0
@@ -2060,7 +2064,8 @@ class PokeBattle_AI
     #---------------------------------------------------------------------------
     when "0EC"
       if !target.effects[PBEffects::Ingrain] &&
-         !(skill>=PBTrainerAI.highSkill && target.hasActiveAbility?(:SUCTIONCUPS))
+         !(skill>=PBTrainerAI.highSkill && (target.hasActiveAbility?(:SUCTIONCUPS) ||
+										    target.hasActiveAbility?(:GATEKEEPER)) # Derx: Addition of Gate Keeper for AI Checks
         score += 40 if target.pbOwnSide.effects[PBEffects::Spikes]>0
         score += 40 if target.pbOwnSide.effects[PBEffects::ToxicSpikes]>0
         score += 40 if target.pbOwnSide.effects[PBEffects::StealthRock]
@@ -2112,7 +2117,8 @@ class PokeBattle_AI
     when "0F2"
       if user.item==0 && target.item==0
         score -= 90
-      elsif skill>=PBTrainerAI.highSkill && target.hasActiveAbility?(:STICKYHOLD)
+      elsif skill>=PBTrainerAI.highSkill && (target.hasActiveAbility?(:STICKYHOLD) ||
+											 target.hasActiveAbility?(:COLLECTOR)) # Derx: Added check for Collector to prevent Item loss
         score -= 90
       elsif user.hasActiveItem?([:FLAMEORB,:TOXICORB,:STICKYBARB,:IRONBALL,
                                  :CHOICEBAND,:CHOICESCARF,:CHOICESPECS,
@@ -2188,7 +2194,7 @@ class PokeBattle_AI
           end
         end
         if skill>=PBTrainerAI.highSkill
-          score -= 40 if target.hasActiveAbility?([:GUTS,:MARVELSCALE,:QUICKFEET])
+          score -= 40 if target.hasActiveAbility?([:GUTS,:MARVELSCALE,:QUICKFEET,:SPRINGCHARM]) # Derx: Added in AI checks for Spring Check
         end
       end
     #---------------------------------------------------------------------------
@@ -2197,7 +2203,7 @@ class PokeBattle_AI
       if target.pbCanBurn?(user,false)
         score += 30
         if skill>=PBTrainerAI.highSkill
-          score -= 40 if target.hasActiveAbility?([:GUTS,:MARVELSCALE,:QUICKFEET,:FLAREBOOST])
+          score -= 40 if target.hasActiveAbility?([:GUTS,:MARVELSCALE,:QUICKFEET,:FLAREBOOST,:SPRINGCHARM]) # Derx: Added in AI checks for Spring Check
         end
       end
     #---------------------------------------------------------------------------
@@ -2213,20 +2219,26 @@ class PokeBattle_AI
         score -= 90
       else
         user.eachMove do |m|
-          next if !m.damagingMove? || !isConst?(m.type,PBTypes,:FIRE)
+          next if !m.damagingMove? || !(isConst?(m.type,PBTypes,:FIRE) ||
+									    isConst?(m.type,PBTypes,:FIRE18)) # Derx: Addition of Touhoumon Fire to Sunny Day AI checks
           score += 20
         end
       end
     #---------------------------------------------------------------------------
     when "100"
       if @battle.pbCheckGlobalAbility(:AIRLOCK) ||
-         @battle.pbCheckGlobalAbility(:CLOUDNINE)
+         @battle.pbCheckGlobalAbility(:CLOUDNINE) || 
+		# Derx: Added in Hisouten and Unconcious
+		 @battle.pbCheckGlobalAbility(:HISOUTEN) ||
+         @battle.pbCheckGlobalAbility(:UNCONCIOUS)
+		# Derx: End of Hisouten and Unconcious addition
         score -= 90
       elsif @battle.pbWeather==PBWeather::Rain
         score -= 90
       else
         user.eachMove do |m|
-          next if !m.damagingMove? || !isConst?(m.type,PBTypes,:WATER)
+          next if !m.damagingMove? || !(isConst?(m.type,PBTypes,:WATER) ||
+										isConst?(m.type,PBTypes,:WATER18)) # Derx: Addition of Touhoumon Water to Rain Dance AI checks
           score += 20
         end
       end
@@ -2434,6 +2446,7 @@ class PokeBattle_AI
         score += 20 if target.effects[PBEffects::Telekinesis]>0
         score += 20 if target.inTwoTurnAttack?("0C9","0CC","0CE")   # Fly, Bounce, Sky Drop
         score += 20 if target.pbHasType?(:FLYING)
+		score += 20 if target.pbHasType?(:FLYING18) # Derx: Added a check for Touhoumon Flying
         score += 20 if target.hasActiveAbility?(:LEVITATE)
         score += 20 if target.hasActiveItem?(:AIRBALLOON)
       end
@@ -2460,7 +2473,7 @@ class PokeBattle_AI
         score += 20 if target.effects[PBEffects::Telekinesis]>0
         score += 20 if target.inTwoTurnAttack?("0C9","0CC")   # Fly, Bounce
         score += 20 if target.pbHasType?(:FLYING)
-		score += 20 if target.pbHasType?(:FLYING) # Derx: Added a check for Touhoumon Flying
+		score += 20 if target.pbHasType?(:FLYING18) # Derx: Added a check for Touhoumon Flying
         score += 20 if target.hasActiveAbility?(:LEVITATE)
         score += 20 if target.hasActiveItem?(:AIRBALLOON)
       end
@@ -2504,7 +2517,7 @@ class PokeBattle_AI
           end
         end
         if skill>=PBTrainerAI.highSkill
-          score -= 40 if target.hasActiveAbility?([:GUTS,:MARVELSCALE,:QUICKFEET])
+          score -= 40 if target.hasActiveAbility?([:GUTS,:MARVELSCALE,:QUICKFEET,:SPRINGCHARM]) # Derx: Added in AI checks for Spring Check
         end
       end
     #---------------------------------------------------------------------------
@@ -2513,7 +2526,7 @@ class PokeBattle_AI
       if target.pbCanBurn?(user,false)
         score += 30
         if skill>=PBTrainerAI.highSkill
-          score -= 40 if target.hasActiveAbility?([:GUTS,:MARVELSCALE,:QUICKFEET,:FLAREBOOST])
+          score -= 40 if target.hasActiveAbility?([:GUTS,:MARVELSCALE,:QUICKFEET,:FLAREBOOST,:SPRINGCHARM]) # Derx: Added in AI checks for Spring Check
         end
       end
     #---------------------------------------------------------------------------
@@ -2523,6 +2536,7 @@ class PokeBattle_AI
         score += 30
         if skill>=PBTrainerAI.highSkill
           score -= 20 if target.hasActiveAbility?(:MARVELSCALE)
+		  score -= 20 if target.hasActiveAbility?(:SPRINGCHARM) # Derx: Added in AI checks for Spring Check
         end
       end
     #---------------------------------------------------------------------------
@@ -2602,6 +2616,7 @@ class PokeBattle_AI
         score += 30
         if skill>=PBTrainerAI.highSkill
           score -= 20 if target.hasActiveAbility?(:MARVELSCALE)
+		  score -= 20 if target.hasActiveAbility?(:SPRINGCHARM) # Derx: Added in AI checks for Spring Check
         end
       end
     #---------------------------------------------------------------------------
@@ -2864,7 +2879,7 @@ class PokeBattle_AI
           if skill>=PBTrainerAI.highSkill
             score += 10 if pbRoughStat(target,PBStats::DEFENSE,skill)>100
             score += 10 if pbRoughStat(target,PBStats::SPDEF,skill)>100
-            score -= 40 if target.hasActiveAbility?([:GUTS,:MARVELSCALE,:TOXICBOOST])
+            score -= 40 if target.hasActiveAbility?([:GUTS,:MARVELSCALE,:TOXICBOOST,:SPRINGCHARM]) # Derx: Added in AI checks for Spring Check
           end
         end
         if target.pbCanLowerStatStage?(PBStats::SPEED,user)

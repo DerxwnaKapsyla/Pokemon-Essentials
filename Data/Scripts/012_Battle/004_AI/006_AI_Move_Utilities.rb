@@ -386,13 +386,13 @@ class PokeBattle_AI
     # Helping Hand - n/a
     # Charge
     if skill>=PBTrainerAI.mediumSkill
-      if user.effects[PBEffects::Charge]>0 && isConst?(type,PBTypes,:ELECTRIC)
+      if user.effects[PBEffects::Charge]>0 && (isConst?(type,PBTypes,:ELECTRIC) || isConst?(type,PBTypes,:WIND18)) # Derx: Added in an interaction check for Charge and Wind
         multipliers[BASE_DMG_MULT] *= 2
       end
     end
     # Mud Sport and Water Sport
     if skill>=PBTrainerAI.mediumSkill
-      if isConst?(type,PBTypes,:ELECTRIC)
+      if (isConst?(type,PBTypes,:ELECTRIC) || isConst?(type,PBTypes,:WIND18)) # Derx: Added in an interaction check for Wind and Mud Sport
         @battle.eachBattler do |b|
           next if !b.effects[PBEffects::MudSport]
           multipliers[BASE_DMG_MULT] /= 3
@@ -402,7 +402,7 @@ class PokeBattle_AI
           multipliers[BASE_DMG_MULT] /= 3
         end
       end
-      if isConst?(type,PBTypes,:FIRE)
+      if (isConst?(type,PBTypes,:FIRE) || isConst?(type,PBTypes,:FIRE18)) # Derx: Added in an interaction check for Touhoumon Fire and Water Sport
         @battle.eachBattler do |b|
           next if !b.effects[PBEffects::WaterSport]
           multipliers[BASE_DMG_MULT] /= 3
@@ -459,19 +459,25 @@ class PokeBattle_AI
     if skill>=PBTrainerAI.mediumSkill
       case @battle.pbWeather
       when PBWeather::Sun, PBWeather::HarshSun
-        if isConst?(type,PBTypes,:FIRE)
+        if (isConst?(type,PBTypes,:FIRE) ||
+			isConst?(type,PBTypes,:FIRE18)) # Derx: Added in a check for Touhoumon Fire and Harsh Sun
           multipliers[FINAL_DMG_MULT] *= 1.5
-        elsif isConst?(type,PBTypes,:WATER)
+        elsif (isConst?(type,PBTypes,:WATER)
+			   isConst?(type,PBTypes,:WATER18)) # Derx: Added in a check for Touhoumon Water and Harsh Sun
           multipliers[FINAL_DMG_MULT] /= 2
         end
       when PBWeather::Rain, PBWeather::HeavyRain
-        if isConst?(type,PBTypes,:FIRE)
+        if (isConst?(type,PBTypes,:FIRE) ||
+			isConst?(type,PBTypes,:FIRE18)) # Derx: Added in a check for Touhoumon Fire and Heavy Rain
           multipliers[FINAL_DMG_MULT] /= 2
-        elsif isConst?(type,PBTypes,:WATER)
+        elsif (isConst?(type,PBTypes,:WATER)
+			   isConst?(type,PBTypes,:WATER18)) # Derx: Added in a check for Touhoumon Water and Heavy Rain
           multipliers[FINAL_DMG_MULT] *= 1.5
         end
       when PBWeather::Sandstorm
-        if target.pbHasType?(:ROCK) && move.specialMove?(type) && move.function!="122"   # Psyshock
+        if (target.pbHasType?(:ROCK) ||
+			target.pbHasType?(:BEAST18)) && # Derx: Added in a check for Beast and Sandstorm
+			move.specialMove?(type) && move.function!="122"   # Psyshock
           multipliers[DEF_MULT] *= 1.5
         end
       end
