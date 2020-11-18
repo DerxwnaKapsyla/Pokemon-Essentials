@@ -59,14 +59,14 @@ def pbDayCareDeposit(index)
     $PokemonGlobal.daycareEggSteps = 0
     return
   end
-  raise _INTL("No room to deposit a Pokémon")
+  raise _INTL("No room to deposit") # Derx: Removing excplict references to Pokemon
 end
 
 def pbDayCareWithdraw(index)
   if !$PokemonGlobal.daycare[index][0]
-    raise _INTL("There's no Pokémon here...")
+    raise _INTL("There's nothing here...") # Derx: Removing excplict references to Pokemon
   elsif $Trainer.party.length>=6
-    raise _INTL("Can't store the Pokémon...")
+    raise _INTL("Can't store them...") # Derx: Removing excplict references to Pokemon
   else
     $Trainer.party[$Trainer.party.length] = $PokemonGlobal.daycare[index][0]
     $PokemonGlobal.daycare[index][0] = nil
@@ -75,29 +75,35 @@ def pbDayCareWithdraw(index)
   end
 end
 
+# ------ Derx: Has been tweaked to allow Icons to show up in the choice selection box
 def pbDayCareChoose(text,variable)
-  count = pbDayCareDeposited
+  count=pbDayCareDeposited
   if count==0
-    raise _INTL("There's no Pokémon here...")
+    raise _INTL("There's nothing here...") # Derx: Neutralization of Terminology
   elsif count==1
-    $game_variables[variable] = ($PokemonGlobal.daycare[0][0]) ? 0 : 1
+    $game_variables[variable]=$PokemonGlobal.daycare[0][0] ? 0 : 1
   else
-    choices = []
+    choices=[]
     for i in 0...2
-      pokemon = $PokemonGlobal.daycare[i][0]
-      if pokemon.male?
-        choices.push(_ISPRINTF("{1:s} (♂, Lv.{2:d})",pokemon.name,pokemon.level))
-      elsif pokemon.female?
-        choices.push(_ISPRINTF("{1:s} (♀, Lv.{2:d})",pokemon.name,pokemon.level))
+      pokemon=$PokemonGlobal.daycare[i][0]
+      if pokemon.isMale? && pokemon.species>=494
+        choices.push(_ISPRINTF("<c3=585850,a8b8b8>{1:s} (<icon=yin>, Lv{2:d})</c3>",pokemon.name,pokemon.level))
+      elsif pokemon.isFemale? && pokemon.species>=494
+        choices.push(_ISPRINTF("<c3=585850,a8b8b8>{1:s} (<icon=yang>, Lv{2:d})</c3>",pokemon.name,pokemon.level))
+      elsif pokemon.isMale?
+        choices.push(_ISPRINTF("<c3=585850,a8b8b8>{1:s} (</c3><c3=0080f8,a8b8b8>♂</c3><c3=585850,a8b8b8>, Lv{2:d})</c3>",pokemon.name,pokemon.level))
+      elsif pokemon.isFemale?
+        choices.push(_ISPRINTF("<c3=585850,a8b8b8>{1:s} (</c3><c3=f81818,a8b8b8>♀</c3><c3=585850,a8b8b8> Lv{2:d})</c3>",pokemon.name,pokemon.level))
       else
-        choices.push(_ISPRINTF("{1:s} (Lv.{2:d})",pokemon.name,pokemon.level))
+        choices.push(_ISPRINTF("<c3=585850,a8b8b8>{1:s} (Lv{2:d})</c3>",pokemon.name,pokemon.level))
       end
     end
-    choices.push(_INTL("CANCEL"))
-    command = pbMessage(text,choices,choices.length)
-    $game_variables[variable] = (command==2) ? -1 : command
+    choices.push(_INTL("<c3=585850,a8b8b8>CANCEL</c3>"))
+    command=Kernel.pbMessageAlt(text,choices,choices.length) # Derx: Edited so it takes advantage of the ability to display icons
+    $game_variables[variable]=(command==2) ? -1 : command
   end
 end
+# ------ Derx: End of tweaks to the Day Care Choice selection box
 
 
 
@@ -403,7 +409,16 @@ def pbDayCareGenerateEgg
   $Trainer.party[$Trainer.party.length] = egg
 end
 
-
+# ------ Derx: Handling to hatch all eggs in the player's party without taking a step
+def pbHatchAll
+  for egg in $Trainer.party
+    if egg.egg?
+      egg.eggsteps=0
+      pbHatch(egg)
+    end
+  end
+end
+# ------ Derx: End of Egg Hatching improvments
 
 #===============================================================================
 # Code that happens every step the player takes.

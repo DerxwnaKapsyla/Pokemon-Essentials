@@ -321,11 +321,12 @@ class PokeBattle_Battle
     # Introduce Shadow Pokémon
     if battler.opposes? && battler.shadowPokemon?
       pbCommonAnimation("Shadow",battler)
-      pbDisplay(_INTL("Oh!\nA Shadow Pokémon!"))
+      pbDisplay(_INTL("Oh!\nThey're cloaked in a shadowy aura!")) # Derx: Removing excplict references to Pokemon; Not too fond of this line, but it'll do!
     end
     # Record money-doubling effect of Amulet Coin/Luck Incense
     if !battler.opposes? && (isConst?(battler.item,PBItems,:AMULETCOIN) ||
-                             isConst?(battler.item,PBItems,:LUCKINCENSE))
+                             isConst?(battler.item,PBItems,:LUCKINCENSE) ||
+							 isConst?(battler.item,PBItems,:DONATIONBOX)) # Derx: Added in the Donation Box
       @field.effects[PBEffects::AmuletCoin] = true
     end
     # Update battlers' participants (who will gain Exp/EVs when a battler faints)

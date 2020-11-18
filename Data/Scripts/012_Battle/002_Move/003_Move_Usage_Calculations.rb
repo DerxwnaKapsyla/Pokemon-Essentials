@@ -39,7 +39,7 @@ class PokeBattle_Move
     end
     # Foresight
     if user.hasActiveAbility?(:SCRAPPY) || target.effects[PBEffects::Foresight]
-      ret = PBTypeEffectiveness::NORMAL_EFFECTIVE_ONE if isConst?(defType,PBTypes,:GHOST) || 
+      ret = PBTypeEffectiveness::NORMAL_EFFECTIVE_ONE if (isConst?(defType,PBTypes,:GHOST) || 
 														  isConst?(defType,PBTypes,:GHOST18)) && # Derx: Made it so Touhoumon Dark is affected by Foresight and Scrappy
                                                          PBTypes.ineffective?(moveType,defType)
     end
@@ -384,19 +384,25 @@ class PokeBattle_Move
     # Weather
     case @battle.pbWeather
     when PBWeather::Sun, PBWeather::HarshSun
-      if isConst?(type,PBTypes,:FIRE) || isConst?(type,PBTypes,:FIRE18) # Derx: Added interactions to Sunny Weather for Touhoumon's Fire Type
+      if (isConst?(type,PBTypes,:FIRE) || 
+		 isConst?(type,PBTypes,:FIRE18)) # Derx: Added interactions to Sunny Weather for Touhoumon's Fire Type
         multipliers[FINAL_DMG_MULT] *= 1.5
-      elsif isConst?(type,PBTypes,:WATER) || isConst?(type,PBTypes,:WATER18) # Derx: Added interactions to Sunny Weather for Touhoumon's Water Type
+      elsif (isConst?(type,PBTypes,:WATER) || 
+			isConst?(type,PBTypes,:WATER18)) # Derx: Added interactions to Sunny Weather for Touhoumon's Water Type
         multipliers[FINAL_DMG_MULT] /= 2
       end
     when PBWeather::Rain, PBWeather::HeavyRain
-      if isConst?(type,PBTypes,:FIRE) || isConst?(type,PBTypes,:FIRE18) # Derx: Added interactions to Rainy Weather for Touhoumon's Fire Type
+      if (isConst?(type,PBTypes,:FIRE) ||
+		 isConst?(type,PBTypes,:FIRE18)) # Derx: Added interactions to Rainy Weather for Touhoumon's Fire Type
         multipliers[FINAL_DMG_MULT] /= 2
-      elsif isConst?(type,PBTypes,:WATER) || isConst?(type,PBTypes,:WATER18) # Derx: Added interactions to Rainy Weather for Touhoumon's Water Type
+      elsif (isConst?(type,PBTypes,:WATER) ||
+			isConst?(type,PBTypes,:WATER18)) # Derx: Added interactions to Rainy Weather for Touhoumon's Water Type
         multipliers[FINAL_DMG_MULT] *= 1.5
       end
     when PBWeather::Sandstorm
-      if (target.pbHasType?(:ROCK) || target.pbHasType?(:BEAST18)) && specialMove? && @function!="122"   # Psyshock # Derx: Added interaction for Beast Types in Sandstorms
+      if (target.pbHasType?(:ROCK) ||
+		  target.pbHasType?(:BEAST18)) && # Derx: Added interaction for Beast Types in Sandstorms
+		  specialMove? && @function!="122"   # Psyshock 
         multipliers[DEF_MULT] *= 1.5
       end
     end

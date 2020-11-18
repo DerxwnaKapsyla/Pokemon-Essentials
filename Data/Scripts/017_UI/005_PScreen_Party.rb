@@ -1045,7 +1045,7 @@ class PokemonPartyScreen
         pbRefreshSingle(pkmnid)
       elsif cmdSummary>=0 && command==cmdSummary
         @scene.pbSummary(pkmnid) {
-          @scene.pbSetHelpText((@party.length>1) ? _INTL("Choose a Pokémon.") : _INTL("Choose Pokémon or cancel."))
+          @scene.pbSetHelpText((@party.length>1) ? _INTL("Choose a party member.") : _INTL("Choose party member or cancel.")) # Derx: Removing excplict references to Pokemon
         }
       end
     end
@@ -1063,14 +1063,14 @@ class PokemonPartyScreen
     end
     ret = -1
     @scene.pbStartScene(@party,
-       (@party.length>1) ? _INTL("Choose a Pokémon.") : _INTL("Choose Pokémon or cancel."),annot)
+       (@party.length>1) ? _INTL("Choose a party member.") : _INTL("Choose party member or cancel."),annot) # Derx: Removing excplict references to Pokemon
     loop do
       @scene.pbSetHelpText(
-         (@party.length>1) ? _INTL("Choose a Pokémon.") : _INTL("Choose Pokémon or cancel."))
+         (@party.length>1) ? _INTL("Choose a party member.") : _INTL("Choose party member or cancel.")) # Derx: Removing excplict references to Pokemon
       pkmnid = @scene.pbChoosePokemon
       break if pkmnid<0
       if !eligibility[pkmnid] && !allowIneligible
-        pbDisplay(_INTL("This Pokémon can't be chosen."))
+        pbDisplay(_INTL("This one can't be chosen.")) # Derx: Removing excplict references to Pokemon
       else
         ret = pkmnid
         break
@@ -1091,14 +1091,14 @@ class PokemonPartyScreen
     end
     ret = -1
     @scene.pbStartScene(@party,
-       (@party.length>1) ? _INTL("Choose a Pokémon.") : _INTL("Choose Pokémon or cancel."),annot)
+       (@party.length>1) ? _INTL("Choose a party member.") : _INTL("Choose party member or cancel."),annot) # Derx: Removing excplict references to Pokemon
     loop do
       @scene.pbSetHelpText(
-         (@party.length>1) ? _INTL("Choose a Pokémon.") : _INTL("Choose Pokémon or cancel."))
+         (@party.length>1) ? _INTL("Choose a party member.") : _INTL("Choose party member or cancel.")) # Derx: Removing excplict references to Pokemon
       pkmnid = @scene.pbChoosePokemon
       break if pkmnid<0
       if !eligibility[pkmnid] && !allowIneligible
-        pbDisplay(_INTL("This Pokémon can't be chosen."))
+        pbDisplay(_INTL("This one can't be chosen."))
       else
         ret = pkmnid
         break
@@ -1110,9 +1110,9 @@ class PokemonPartyScreen
 
   def pbPokemonScreen
     @scene.pbStartScene(@party,
-       (@party.length>1) ? _INTL("Choose a Pokémon.") : _INTL("Choose Pokémon or cancel."),nil)
+       (@party.length>1) ? _INTL("Choose a party member.") : _INTL("Choose party member or cancel."),nil) # Derx: Removing excplict references to Pokemon
     loop do
-      @scene.pbSetHelpText((@party.length>1) ? _INTL("Choose a Pokémon.") : _INTL("Choose Pokémon or cancel."))
+      @scene.pbSetHelpText((@party.length>1) ? _INTL("Choose a party member.") : _INTL("Choose party member or cancel.")) # Derx: Removing excplict references to Pokemon
       pkmnid = @scene.pbChoosePokemon(false,-1,1)
       break if (pkmnid.is_a?(Numeric) && pkmnid<0) || (pkmnid.is_a?(Array) && pkmnid[1]<0)
       if pkmnid.is_a?(Array) && pkmnid[0]==1   # Switch
@@ -1165,7 +1165,7 @@ class PokemonPartyScreen
               pbDisplay(_INTL("Not enough HP..."))
               break
             end
-            @scene.pbSetHelpText(_INTL("Use on which Pokémon?"))
+            @scene.pbSetHelpText(_INTL("Use on which party member?")) # Derx: Removing excplict references to Pokemon
             oldpkmnid = pkmnid
             loop do
               @scene.pbPreSelect(oldpkmnid)
@@ -1202,7 +1202,7 @@ class PokemonPartyScreen
                   return [pkmn,pkmn.moves[i].id]
                 end
                 @scene.pbStartScene(@party,
-                   (@party.length>1) ? _INTL("Choose a Pokémon.") : _INTL("Choose Pokémon or cancel."))
+                   (@party.length>1) ? _INTL("Choose a party member.") : _INTL("Choose party member or cancel.")) # Derx: Removing excplict references to Pokemon
                 break
               end
               return [pkmn,pkmn.moves[i].id]
@@ -1215,7 +1215,7 @@ class PokemonPartyScreen
       next if havecommand
       if cmdSummary>=0 && command==cmdSummary
         @scene.pbSummary(pkmnid) {
-          @scene.pbSetHelpText((@party.length>1) ? _INTL("Choose a Pokémon.") : _INTL("Choose Pokémon or cancel."))
+          @scene.pbSetHelpText((@party.length>1) ? _INTL("Choose a party member.") : _INTL("Choose party member or cancel.")) # Derx: Removing excplict references to Pokemon
         }
       elsif cmdDebug>=0 && command==cmdDebug
         pbPokemonDebug(pkmn,pkmnid)
@@ -1233,7 +1233,7 @@ class PokemonPartyScreen
         when 0   # Read
           pbFadeOutIn {
             pbDisplayMail(pkmn.mail,pkmn)
-            @scene.pbSetHelpText((@party.length>1) ? _INTL("Choose a Pokémon.") : _INTL("Choose Pokémon or cancel."))
+            @scene.pbSetHelpText((@party.length>1) ? _INTL("Choose a party member.") : _INTL("Choose party member or cancel.")) # Derx: Removing excplict references to Pokemon
           }
         when 1   # Take
           if pbTakeItemFromPokemon(pkmn,self)
@@ -1255,7 +1255,7 @@ class PokemonPartyScreen
         command = @scene.pbShowCommands(_INTL("Do what with an item?"),itemcommands)
         if cmdUseItem>=0 && command==cmdUseItem   # Use
           item = @scene.pbUseItem($PokemonBag,pkmn) {
-            @scene.pbSetHelpText((@party.length>1) ? _INTL("Choose a Pokémon.") : _INTL("Choose Pokémon or cancel."))
+            @scene.pbSetHelpText((@party.length>1) ? _INTL("Choose a party member.") : _INTL("Choose party member or cancel.")) # Derx: Removing excplict references to Pokemon
           }
           if item>0
             pbUseItemOnPokemon(item,pkmn,self)
@@ -1263,7 +1263,7 @@ class PokemonPartyScreen
           end
         elsif cmdGiveItem>=0 && command==cmdGiveItem   # Give
           item = @scene.pbChooseItem($PokemonBag) {
-            @scene.pbSetHelpText((@party.length>1) ? _INTL("Choose a Pokémon.") : _INTL("Choose Pokémon or cancel."))
+            @scene.pbSetHelpText((@party.length>1) ? _INTL("Choose a party member.") : _INTL("Choose party member or cancel.")) # Derx: Removing excplict references to Pokemon
           }
           if item>0
             if pbGiveItemToPokemon(item,pkmn,self,pkmnid)

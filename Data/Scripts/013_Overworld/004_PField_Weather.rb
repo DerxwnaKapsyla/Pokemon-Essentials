@@ -242,7 +242,17 @@ module RPG
       # Storm flashes
       if @type==PBFieldWeather::Storm
         rnd = rand(300)
-        @viewport.flash(Color.new(255,255,255,230),rnd*20) if rnd<4
+        if rnd<4
+          @viewport.flash(Color.new(255,255,255,230),rnd*20)
+# ------ Derx: When raining, play some thunder!
+          if rand(50)<25
+            pbSEPlay("OWThunder1")
+          elsif rand(50)>30
+            pbSEPlay("OWThunder2")
+          else
+            return
+        end
+# ------ Derx: End of Thunder during Rain changes
       end
       @viewport.update
       return if @type==PBFieldWeather::None || @type==PBFieldWeather::Sun

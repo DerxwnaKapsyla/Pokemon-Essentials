@@ -661,6 +661,14 @@ BattleHandlers::MoveImmunityTargetAbility.add(:SAPSIPPER,
   }
 )
 
+# ------ Derx: Added Sap Sipper interactions with Nature Type
+BattleHandlers::MoveImmunityTargetAbility.add(:SAPSIPPER,
+  proc { |ability,user,target,move,type,battle|
+    next pbBattleMoveImmunityStatAbility(user,target,move,type,:NATURE18,PBStats::ATTACK,1,battle)
+  }
+)
+# ------ Derx: End of Sap Sipper interactions
+
 BattleHandlers::MoveImmunityTargetAbility.add(:SOUNDPROOF,
   proc { |ability,user,target,move,type,battle|
     next false if !move.soundMove?
@@ -2115,6 +2123,8 @@ BattleHandlers::EORHealingAbility.add(:SHEDSKIN,
     battle.pbHideAbilitySplash(battler)
   }
 )
+
+BattleHandlers::EORHealingAbility.copy(:SHEDSKIN,:MAINTENANCE) # Derx: Added in a duplicate handler for Maintenance from Shed Skin
 
 #===============================================================================
 # EOREffectAbility handlers

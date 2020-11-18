@@ -527,6 +527,7 @@ class PokeBattle_Battler
   def takesHailDamage?
     return false if !takesIndirectDamage?
     return false if pbHasType?(:ICE)
+	return false if pbHasType?(:ICE18) # Derx: Makes it so Touhoumon Ice doesn't take damage from Hail
     return false if inTwoTurnAttack?("0CA","0CB")   # Dig, Dive
     return false if hasActiveAbility?([:OVERCOAT,:ICEBODY,:SNOWCLOAK])
     return false if hasActiveItem?(:SAFETYGOGGLES)

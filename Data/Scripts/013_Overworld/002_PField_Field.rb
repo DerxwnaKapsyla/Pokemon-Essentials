@@ -303,7 +303,7 @@ Events.onStepTakenTransferPossible += proc { |_sender,e|
 
 def pbCheckAllFainted
   if pbAllFainted
-    pbMessage(_INTL("You have no more Pokémon that can fight!\1"))
+    pbMessage(_INTL("You have no more party members that can fight!\1")) # Derx: Removing excplict references to Pokemon
     pbMessage(_INTL("You blacked out!"))
     pbBGMFade(1.0)
     pbBGSFade(1.0)
@@ -1191,12 +1191,12 @@ def pbFishing(hasEncounter,rodType=1)
       if !pbWaitForInput(msgWindow,message+_INTL("\r\nOh! A bite!"),frames)
         pbFishingEnd
         $game_player.setDefaultCharName(nil,oldpattern)
-        pbMessageDisplay(msgWindow,_INTL("The Pokémon got away..."))
+        pbMessageDisplay(msgWindow,_INTL("They got away...")) # Derx: Removing excplict references to Pokemon
         break
       end
       if FISHING_AUTO_HOOK || rand(100)<hookChance
         pbFishingEnd
-        pbMessageDisplay(msgWindow,_INTL("Landed a Pokémon!")) if !FISHING_AUTO_HOOK
+        pbMessageDisplay(msgWindow,_INTL("Landed something!")) if !FISHING_AUTO_HOOK # Derx: Removing excplict references to Pokemon
         $game_player.setDefaultCharName(nil,oldpattern)
         ret = true
         break

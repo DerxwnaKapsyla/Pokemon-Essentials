@@ -438,7 +438,7 @@ class PokeBattle_SafariZone
         case cmd
         when 0   # Ball
           if pbBoxesFull?
-            pbDisplay(_INTL("The boxes are full! You can't catch any more Pokémon!"))
+            pbDisplay(_INTL("The boxes are full! You can't catch anything else!")) # Derx: Removing excplict references to Pokemon
             next
           end
           @ballCount -= 1

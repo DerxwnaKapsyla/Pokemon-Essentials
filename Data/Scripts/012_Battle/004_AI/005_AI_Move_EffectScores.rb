@@ -1946,14 +1946,16 @@ class PokeBattle_AI
     when "0DC"
       if target.effects[PBEffects::LeechSeed]>=0
         score -= 90
-      elsif skill>=PBTrainerAI.mediumSkill && target.pbHasType?(:GRASS)
+      elsif skill>=PBTrainerAI.mediumSkill && (target.pbHasType?(:GRASS)
+											   target.pbHasType?(:NATURE18)) # Derx: Added an AI check for Nature invovling Leech Seed
         score -= 90
       else
         score += 60 if user.turnCount==0
       end
     #---------------------------------------------------------------------------
     when "0DD"
-      if skill>=PBTrainerAI.highSkill && target.hasActiveAbility?(:LIQUIDOOZE)
+      if skill>=PBTrainerAI.highSkill && (target.hasActiveAbility?(:LIQUIDOOZE)
+										  target.hasActiveAbility?(:STRANGEMIST)) # Derx: Added in AI checks for Strange Mist
         score -= 70
       else
         score += 20 if user.hp<=user.totalhp/2
@@ -1962,7 +1964,8 @@ class PokeBattle_AI
     when "0DE"
       if !target.asleep?
         score -= 100
-      elsif skill>=PBTrainerAI.highSkill && target.hasActiveAbility?(:LIQUIDOOZE)
+      elsif skill>=PBTrainerAI.highSkill && (target.hasActiveAbility?(:LIQUIDOOZE)
+										  target.hasActiveAbility?(:STRANGEMIST)) # Derx: Added in AI checks for Strange Mist
         score -= 70
       else
         score += 20 if user.hp<=user.totalhp/2
@@ -2245,7 +2248,11 @@ class PokeBattle_AI
     #---------------------------------------------------------------------------
     when "101"
       if @battle.pbCheckGlobalAbility(:AIRLOCK) ||
-         @battle.pbCheckGlobalAbility(:CLOUDNINE)
+         @battle.pbCheckGlobalAbility(:CLOUDNINE) || 
+		# Derx: Added in Hisouten and Unconcious
+		 @battle.pbCheckGlobalAbility(:HISOUTEN) ||
+         @battle.pbCheckGlobalAbility(:UNCONCIOUS)
+		# Derx: End of Hisouten and Unconcious addition
         score -= 90
       elsif @battle.pbWeather==PBWeather::Sandstorm
         score -= 90
@@ -2253,7 +2260,11 @@ class PokeBattle_AI
     #---------------------------------------------------------------------------
     when "102"
       if @battle.pbCheckGlobalAbility(:AIRLOCK) ||
-         @battle.pbCheckGlobalAbility(:CLOUDNINE)
+         @battle.pbCheckGlobalAbility(:CLOUDNINE) || 
+		# Derx: Added in Hisouten and Unconcious
+		 @battle.pbCheckGlobalAbility(:HISOUTEN) ||
+         @battle.pbCheckGlobalAbility(:UNCONCIOUS)
+		# Derx: End of Hisouten and Unconcious addition
         score -= 90
       elsif @battle.pbWeather==PBWeather::Hail
         score -= 90
@@ -2586,7 +2597,11 @@ class PokeBattle_AI
     when "131"
       score += 20   # Shadow moves are more preferable
       if @battle.pbCheckGlobalAbility(:AIRLOCK) ||
-         @battle.pbCheckGlobalAbility(:CLOUDNINE)
+         @battle.pbCheckGlobalAbility(:CLOUDNINE) || 
+		# Derx: Added in Hisouten and Unconcious
+		 @battle.pbCheckGlobalAbility(:HISOUTEN) ||
+         @battle.pbCheckGlobalAbility(:UNCONCIOUS)
+		# Derx: End of Hisouten and Unconcious addition
         score -= 90
       elsif @battle.pbWeather==PBWeather::ShadowSky
         score -= 90
@@ -2834,7 +2849,8 @@ class PokeBattle_AI
       end
     #---------------------------------------------------------------------------
     when "14F"
-      if skill>=PBTrainerAI.highSkill && target.hasActiveAbility?(:LIQUIDOOZE)
+      if skill>=PBTrainerAI.highSkill && (target.hasActiveAbility?(:LIQUIDOOZE)
+										  target.hasActiveAbility?(:STRANGEMIST)) # Derx: Added in AI checks for Strange Mist
         score -= 80
       else
         score += 40 if user.hp<=user.totalhp/2
@@ -3113,6 +3129,16 @@ class PokeBattle_AI
     #---------------------------------------------------------------------------
     when "175"
       score += 30 if target.effects[PBEffects::Minimize]
+    #---------------------------------------------------------------------------
+	# Derx: Addition of Cursed Stab to the AI's checks
+	# Works similarly to Giga Drain's function code ("0DD")
+    when "505"
+      if skill>=PBTrainerAI.highSkill && (target.hasActiveAbility?(:LIQUIDOOZE)
+										  target.hasActiveAbility?(:STRANGEMIST)) # Derx: Added in AI checks for Strange Mist
+        score -= 70
+      else
+        score += 20 if user.hp<=user.totalhp/2
+      end
     #---------------------------------------------------------------------------
     end
     return score

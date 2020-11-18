@@ -214,12 +214,25 @@ class PokemonDataBox < SpriteWrapper
     nameOffset = nameWidth-116 if nameWidth>116
     textPos.push([@battler.name,@spriteBaseX+8-nameOffset,6,false,NAME_BASE_COLOR,NAME_SHADOW_COLOR])
     # Draw Pokémon's gender symbol
-    case @battler.displayGender
-    when 0   # Male
-      textPos.push([_INTL("♂"),@spriteBaseX+126,6,false,MALE_BASE_COLOR,MALE_SHADOW_COLOR])
-    when 1   # Female
-      textPos.push([_INTL("♀"),@spriteBaseX+126,6,false,FEMALE_BASE_COLOR,FEMALE_SHADOW_COLOR])
+	# ------ Derx: Code used to display the Male/Female symbols for Pokemon and Yin/Yang symbols for Puppets
+	if @battler.species<494
+		case @battler.displayGender
+		when 0   # Male
+			textPos.push([_INTL("♂"),@spriteBaseX+126,6,false,MALE_BASE_COLOR,MALE_SHADOW_COLOR])
+		when 1   # Female
+			textPos.push([_INTL("♀"),@spriteBaseX+126,6,false,FEMALE_BASE_COLOR,FEMALE_SHADOW_COLOR])
+		end
+	else
+		case @battler.displayGender  
+		when 0 # Yang
+			imagepos=[([sprintf("Graphics/Pictures/Thmn Icons/gendermale"),@spriteBaseX+126,10,0,0,-1,-1])]
+			pbDrawImagePositions(self.bitmap,imagepos)
+		when 1 # Yin
+			imagepos=[([sprintf("Graphics/Pictures/Thmn Icons/genderfemale"),@spriteBaseX+126,10,0,0,-1,-1])]
+			pbDrawImagePositions(self.bitmap,imagepos)
+		end
     end
+# ------Derx: End of changes to Yin/Yang icon display
     pbDrawTextPositions(self.bitmap,textPos)
     # Draw Pokémon's level
     imagePos.push(["Graphics/Pictures/Battle/overlay_lv",@spriteBaseX+140,16])

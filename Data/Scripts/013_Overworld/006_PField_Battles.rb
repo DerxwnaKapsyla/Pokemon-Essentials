@@ -624,27 +624,27 @@ def pbPickup(pkmn)
      :ULTRABALL,
      :REVIVE,
      :RARECANDY,
-     :SUNSTONE,
-     :MOONSTONE,
-     :HEARTSCALE,
+     :ETHER,
      :FULLRESTORE,
      :MAXREVIVE,
      :PPUP,
-     :MAXELIXIR
+     :MAXELIXIR,
+     :GREENUFO,
+     :BLUEUFO
   )
   # Rare items to find (2 items from this list are added to the pool)
   pickupListRare = pbDynamicItemList(
-     :HYPERPOTION,
+     :REDUFO,
      :NUGGET,
      :KINGSROCK,
      :FULLRESTORE,
-     :ETHER,
      :IRONBALL,
-     :DESTINYKNOT,
+     :LUCKYEGG,
+     :PRISMSCALE,
      :ELIXIR,
-     :DESTINYKNOT,
+     :PRISMSCALE,
      :LEFTOVERS,
-     :DESTINYKNOT
+     :PRISMSCALE
   )
   return if pickupList.length<18
   return if pickupListRare.length<11

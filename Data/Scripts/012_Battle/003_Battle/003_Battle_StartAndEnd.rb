@@ -461,7 +461,7 @@ class PokeBattle_Battle
       PBDebug.log("***Player lost***") if @decision==2
       PBDebug.log("***Player drew with opponent***") if @decision==5
       if @internalBattle
-        pbDisplayPaused(_INTL("You have no more Pokémon that can fight!"))
+        pbDisplayPaused(_INTL("You have no more party members that can fight!")) # Derx: Removing excplict references to Pokemon
         if trainerBattle?
           case @opponent.length
           when 1

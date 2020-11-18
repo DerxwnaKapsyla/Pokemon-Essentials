@@ -255,7 +255,7 @@ def pbChoosePokemon(variableNumber,nameVarNumber,ableProc=nil,allowIneligible=fa
     if ableProc
       chosen=screen.pbChooseAblePokemon(ableProc,allowIneligible)
     else
-      screen.pbStartScene(_INTL("Choose a Pokémon."),false)
+      screen.pbStartScene(_INTL("Choose a party member."),false) # Derx: Removing excplict references to Pokemon
       chosen = screen.pbChoosePokemon
       screen.pbEndScene
     end
@@ -285,7 +285,7 @@ def pbChooseTradablePokemon(variableNumber,nameVarNumber,ableProc=nil,allowIneli
     if ableProc
       chosen=screen.pbChooseTradablePokemon(ableProc,allowIneligible)
     else
-      screen.pbStartScene(_INTL("Choose a Pokémon."),false)
+      screen.pbStartScene(_INTL("Choose a party member."),false) # Derx: Removing excplict references to Pokemon
       chosen = screen.pbChoosePokemon
       screen.pbEndScene
     end

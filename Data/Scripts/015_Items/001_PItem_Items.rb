@@ -691,7 +691,7 @@ def pbUseItem(bag,item,bagscene=nil)
     return 0 if machine==nil
     movename = PBMoves.getName(machine)
     pbMessage(_INTL("\\se[PC access]You booted up {1}.\1",PBItems.getName(item)))
-    if !pbConfirmMessage(_INTL("Do you want to teach {1} to a Pokémon?",movename))
+    if !pbConfirmMessage(_INTL("Do you want to teach {1} to a party member?",movename)) # Derx: Removing excplict references to Pokemon
       return 0
     elsif pbMoveTutorChoose(machine,nil,true)
       bag.pbDeleteItem(item) if pbIsTechnicalMachine?(item) && !INFINITE_TMS
@@ -715,9 +715,9 @@ def pbUseItem(bag,item,bagscene=nil)
     pbFadeOutIn {
       scene = PokemonParty_Scene.new
       screen = PokemonPartyScreen.new(scene,$Trainer.party)
-      screen.pbStartScene(_INTL("Use on which Pokémon?"),false,annot)
+      screen.pbStartScene(_INTL("Use on which party member?"),false,annot) # Derx: Removing excplict references to Pokemon
       loop do
-        scene.pbSetHelpText(_INTL("Use on which Pokémon?"))
+        scene.pbSetHelpText(_INTL("Use on which party member?")) # Derx: Removing excplict references to Pokemon
         chosen = screen.pbChoosePokemon
         if chosen<0
           ret = false
@@ -842,7 +842,7 @@ def pbGiveItemToPokemon(item,pkmn,scene,pkmnid=0)
         if !$PokemonBag.pbStoreItem(item)
           raise _INTL("Could't re-store deleted item in Bag somehow")
         end
-        scene.pbDisplay(_INTL("The Bag is full. The Pokémon's item could not be removed."))
+        scene.pbDisplay(_INTL("The Bag is full. The item could not be removed.")) # Derx: Removing excplict references to Pokemon
       else
         if pbIsMail?(item)
           if pbWriteMail(item,pkmn,pkmnid,scene)
@@ -877,7 +877,7 @@ def pbTakeItemFromPokemon(pkmn,scene)
   if !pkmn.hasItem?
     scene.pbDisplay(_INTL("{1} isn't holding anything.",pkmn.name))
   elsif !$PokemonBag.pbCanStore?(pkmn.item)
-    scene.pbDisplay(_INTL("The Bag is full. The Pokémon's item could not be removed."))
+    scene.pbDisplay(_INTL("The Bag is full. The item could not be removed.")) # Derx: Removing excplict references to Pokemon
   elsif pkmn.mail
     if scene.pbConfirm(_INTL("Save the removed mail in your PC?"))
       if !pbMoveToMailbox(pkmn)

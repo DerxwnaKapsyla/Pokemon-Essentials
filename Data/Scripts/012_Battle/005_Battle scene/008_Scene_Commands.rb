@@ -9,7 +9,7 @@ class PokeBattle_Scene
        _INTL("What will\n{1} do?",@battle.battlers[idxBattler].name),
        _INTL("Fight"),
        _INTL("Bag"),
-       _INTL("Pokémon"),
+       _INTL("Party"), # Derx: Removing excplict references to Pokemon
        (shadowTrainer) ? _INTL("Call") : (firstAction) ? _INTL("Run") : _INTL("Cancel")
     ]
     ret = pbCommandMenuEx(idxBattler,cmds,(shadowTrainer) ? 2 : (firstAction) ? 0 : 1)
@@ -150,11 +150,11 @@ class PokeBattle_Scene
     # Start party screen
     scene = PokemonParty_Scene.new
     switchScreen = PokemonPartyScreen.new(scene,modParty)
-    switchScreen.pbStartScene(_INTL("Choose a Pokémon."),@battle.pbNumPositions(0,0))
+    switchScreen.pbStartScene(_INTL("Choose a party member."),@battle.pbNumPositions(0,0)) # Derx: Removing excplict references to Pokemon
     # Loop while in party screen
     loop do
       # Select a Pokémon
-      scene.pbSetHelpText(_INTL("Choose a Pokémon."))
+      scene.pbSetHelpText(_INTL("Choose a party member.")) # Derx: Removing excplict references to Pokemon
       idxParty = switchScreen.pbChoosePokemon
       if idxParty<0
         next if !canCancel
@@ -254,12 +254,12 @@ class PokeBattle_Scene
         # Start party screen
         pkmnScene = PokemonParty_Scene.new
         pkmnScreen = PokemonPartyScreen.new(pkmnScene,modParty)
-        pkmnScreen.pbStartScene(_INTL("Use on which Pokémon?"),@battle.pbNumPositions(0,0))
+        pkmnScreen.pbStartScene(_INTL("Use on which party member?"),@battle.pbNumPositions(0,0)) # Derx: Removing excplict references to Pokemon
         idxParty = -1
         # Loop while in party screen
         loop do
           # Select a Pokémon
-          pkmnScene.pbSetHelpText(_INTL("Use on which Pokémon?"))
+          pkmnScene.pbSetHelpText(_INTL("Use on which party member?")) # Derx: Removing excplict references to Pokemon
           idxParty = pkmnScreen.pbChoosePokemon
           break if idxParty<0
           idxPartyRet = -1

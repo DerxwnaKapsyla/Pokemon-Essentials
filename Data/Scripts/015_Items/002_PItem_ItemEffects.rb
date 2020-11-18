@@ -143,7 +143,7 @@ Events.onStepTaken += proc {
 
 ItemHandlers::UseInField.add(:BLACKFLUTE,proc { |item|
   pbUseItemMessage(item)
-  pbMessage(_INTL("Wild Pokémon will be repelled."))
+  pbMessage(_INTL("Wild Pokémon and Puppets will be repelled.")) # Derx: Removing excplict references to Pokemon... kinda. This one is awkward.
   $PokemonMap.blackFluteUsed = true
   $PokemonMap.whiteFluteUsed = false
   next 1
@@ -151,7 +151,7 @@ ItemHandlers::UseInField.add(:BLACKFLUTE,proc { |item|
 
 ItemHandlers::UseInField.add(:WHITEFLUTE,proc { |item|
   pbUseItemMessage(item)
-  pbMessage(_INTL("Wild Pokémon will be lured."))
+  pbMessage(_INTL("Wild Pokémon and Puppets will be lured.")) # Derx: Removing excplict references to Pokemon... kinda. This one is awkward.
   $PokemonMap.blackFluteUsed = false
   $PokemonMap.whiteFluteUsed = true
   next 1
@@ -307,6 +307,15 @@ ItemHandlers::UseInField.add(:ITEMFINDER,proc { |item|
       when 8; $game_player.turn_up
       end
       pbWait(Graphics.frame_rate*3/10)
+# ------ Derx: Added in sound effects to the Item Finder
+# ------ They may not be in the SE folder yet. Remember to add them!
+       pbSEPlay("SlotsCoin")
+       pbWait(30)
+       pbSEPlay("SlotsCoin")
+       pbWait(30)
+       pbSEPlay("SlotsCoin")
+       pbWait(10)
+# ------ Derx: End of the Item Finder's sound effects
       pbMessage(_INTL("Huh? The {1}'s responding!\1",PBItems.getName(item)))
       pbMessage(_INTL("There's an item buried around here!"))
     end

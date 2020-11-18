@@ -35,7 +35,8 @@ class PokeBattle_AI
     end
     # Foresight
     if user.hasActiveAbility?(:SCRAPPY) || target.effects[PBEffects::Foresight]
-      ret = PBTypeEffectiveness::NORMAL_EFFECTIVE_ONE if isConst?(defType,PBTypes,:GHOST) &&
+      ret = PBTypeEffectiveness::NORMAL_EFFECTIVE_ONE if (isConst?(defType,PBTypes,:GHOST) || 
+														  isConst?(defType,PBTypes,:GHOST18)) && # Derx: Made it so Touhoumon Dark is affected by Foresight and Scrappy
                                                          PBTypes.ineffective?(moveType,defType)
     end
     # Miracle Eye
@@ -45,21 +46,22 @@ class PokeBattle_AI
     end
     # Delta Stream's weather
     if @battle.pbWeather==PBWeather::StrongWinds
-      ret = PBTypeEffectiveness::NORMAL_EFFECTIVE_ONE if isConst?(defType,PBTypes,:FLYING) &&
+      ret = PBTypeEffectiveness::NORMAL_EFFECTIVE_ONE if (isConst?(defType,PBTypes,:FLYING) ||
+														  isConst?(defType,PBTypes,:FLYING18)) && # Derx: Made it so Touhoumon Flying can benefit from Strong Winds
                                                          PBTypes.superEffective?(moveType,defType)
     end
     # Grounded Flying-type Pokémon become susceptible to Ground moves
     if !target.airborne?
-      ret = PBTypeEffectiveness::NORMAL_EFFECTIVE_ONE if isConst?(defType,PBTypes,:FLYING) &&
-                                                         isConst?(moveType,PBTypes,:GROUND)
+      ret = PBTypeEffectiveness::NORMAL_EFFECTIVE_ONE if (isConst?(defType,PBTypes,:FLYING) || isConst?(defType,PBTypes,:FLYING18)) && # Derx: Made it so both Flying types are
+                                                         (isConst?(moveType,PBTypes,:GROUND) || isConst?(moveType,PBTypes,:EARTH18))   # Derx: affected by Ground/Earth when grounded... hopefully
     end
     return ret
   end
 
   def pbCalcTypeMod(moveType,user,target)
     return PBTypeEffectiveness::NORMAL_EFFECTIVE if moveType<0
-    return PBTypeEffectiveness::NORMAL_EFFECTIVE if isConst?(moveType,PBTypes,:GROUND) &&
-       target.pbHasType?(:FLYING) && target.hasActiveItem?(:IRONBALL)
+    return PBTypeEffectiveness::NORMAL_EFFECTIVE if (isConst?(moveType,PBTypes,:GROUND) || isConst?(moveType,PBTypes,:EARTH18)) && # Derx: Made it so when both Flying types hold the Iron Ball
+       (target.pbHasType?(:FLYING) || target.pbHasType?(:FLYING18)) && target.hasActiveItem?(:IRONBALL)							   # Derx: they can both be hit by Earth and Ground moves. Hopefully.
     # Determine types
     tTypes = target.pbTypes(true)
     # Get effectivenesses
@@ -108,8 +110,8 @@ class PokeBattle_AI
         return true if target.hasActiveAbility?([:DRYSKIN,:STORMDRAIN,:WATERABSORB])
       elsif isConst?(move.type,PBTypes,:GRASS)
         return true if target.hasActiveAbility?(:SAPSIPPER)
-#      elsif isConst?(move.type,PBTypes,:NATURE18) # Derx: Added in a check for Touhoumon Nature
-#        return true if target.hasActiveAbility?(:SAPSIPPER)
+      elsif isConst?(move.type,PBTypes,:NATURE18) # Derx: Added in a check for Touhoumon Nature
+        return true if target.hasActiveAbility?(:SAPSIPPER)
       elsif isConst?(move.type,PBTypes,:ELECTRIC)
         return true if target.hasActiveAbility?([:LIGHTNINGROD,:MOTORDRIVE,:VOLTABSORB])
       elsif isConst?(move.type,PBTypes,:WIND18) # Derx: Added in a check for Touhoumon Wind
@@ -417,15 +419,15 @@ class PokeBattle_AI
     if user.affectedByTerrain? && skill>=PBTrainerAI.mediumSkill
       case @battle.field.terrain
       when PBBattleTerrains::Electric
-        if isConst?(type,PBTypes,:ELECTRIC)
+        if isConst?(type,PBTypes,:ELECTRIC) || isConst?(type,PBTypes,:WIND18) # Derx: Added interactions to Electric Terrain for the Wind Type
           multipliers[BASE_DMG_MULT] *= 1.5
         end
       when PBBattleTerrains::Grassy
-        if isConst?(type,PBTypes,:GRASS)
+        if isConst?(type,PBTypes,:GRASS) || isConst?(type,PBTypes,:NATURE18) # Derx: Added interactions to Grass Terrain for the Nature Type
           multipliers[BASE_DMG_MULT] *= 1.5
         end
       when PBBattleTerrains::Psychic
-        if isConst?(type,PBTypes,:PSYCHIC)
+        if isConst?(type,PBTypes,:PSYCHIC) || isConst?(type,PBTypes,:REASON18) # Derx: Added interactions to Psychic Terrain for the Reason Type
           multipliers[BASE_DMG_MULT] *= 1.5
         end
       end
@@ -681,7 +683,8 @@ class PokeBattle_AI
     if skill>=PBTrainerAI.highSkill
       if move.function=="006"   # Toxic
         modifiers[BASE_ACC] = 0 if NEWEST_BATTLE_MECHANICS && move.statusMove? &&
-                                   user.pbHasType?(:POISON)
+                                   (user.pbHasType?(:POISON)
+									user.pbHasType?(:MIASMA18)) # Derx: Added a check involving Miasma for Toxic
       end
       if move.function=="070"   # OHKO moves
         modifiers[BASE_ACC] = move.accuracy+user.level-target.level
