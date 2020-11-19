@@ -108,8 +108,10 @@ class PokedexSearchSelectionSprite < SpriteWrapper
       @cols = 7
     when 2     # Type
       @xstart = 8; @ystart = 104
-      @xgap = 124; @ygap = 44
-      @cols = 4
+# ------ Derx: Changes necessary for Pokedex screen fixes
+      @xgap = 62; @ygap = 44
+      @cols = 8
+# ------ End of Pokedex screen fixes
     when 3,4   # Height, weight
       @xstart = 44; @ystart = 110
       @xgap = 8; @ygap = 112
@@ -163,8 +165,15 @@ class PokedexSearchSelectionSprite < SpriteWrapper
           self.src_rect.y = 0; self.src_rect.height = 44
         when 1     # Name
           self.src_rect.y = 284; self.src_rect.height = 44
-        when 2,5   # Type, color
+# ------ Derx: Changes necessary for Pokedex screen fixes
+# ------ Derx: These changes were directly ported and may need fixing.
+		when 2 # Type
+		  self.src_rect.y = 520; self.src_rect.height = 44
+# ------ End of Pokedex screen fixes
+        when 5 # Color
           self.src_rect.y = 44; self.src_rect.height = 44
+#        when 2,5   # Type, color
+#          self.src_rect.y = 44; self.src_rect.height = 44
         when 3,4   # Height, weight
           self.src_rect.y = (@minmax==1) ? 328 : 424; self.src_rect.height = 96
         when 6     # Shape
@@ -227,6 +236,7 @@ class PokemonPokedex_Scene
   def pbStartScene
     @sliderbitmap       = AnimatedBitmap.new("Graphics/Pictures/Pokedex/icon_slider")
     @typebitmap         = AnimatedBitmap.new(_INTL("Graphics/Pictures/Pokedex/icon_types"))
+    @typebitmaplarge    = AnimatedBitmap.new(_INTL("Graphics/Pictures/Pokedex/icon_types_big")) # Derx: Required for Pokedex Screen Fixes
     @shapebitmap        = AnimatedBitmap.new("Graphics/Pictures/Pokedex/icon_shapes")
     @hwbitmap           = AnimatedBitmap.new("Graphics/Pictures/Pokedex/icon_hw")
     @selbitmap          = AnimatedBitmap.new("Graphics/Pictures/Pokedex/icon_searchsel")
@@ -467,13 +477,13 @@ class PokemonPokedex_Scene
     # Draw type icons
     if params[2]>=0
       typerect = Rect.new(0,@typeCommands[params[2]]*32,96,32)
-      overlay.blt(128,168,@typebitmap.bitmap,typerect)
+      overlay.blt(128,168,@typebitmaplarge.bitmap,typerect) # Derx: Changes necessary for Pokedex screen fixes
     else
       textpos.push(["----",176,170,2,base,shadow,1])
     end
     if params[3]>=0
       typerect = Rect.new(0,@typeCommands[params[3]]*32,96,32)
-      overlay.blt(256,168,@typebitmap.bitmap,typerect)
+      overlay.blt(256,168,@typebitmaplarge.bitmap,typerect) # Derx: Changes necessary for Pokedex screen fixes
     else
       textpos.push(["----",304,170,2,base,shadow,1])
     end
@@ -537,9 +547,16 @@ class PokemonPokedex_Scene
       selbuttony = 156; selbuttonheight = 44
     when 2   # Type
       xstart = 8; ystart = 104
-      xgap = 124; ygap = 44
-      halfwidth = 62; cols = 4
-      selbuttony = 44; selbuttonheight = 44
+# ------ Derx: Changes necessary for Pokedex screen fixes
+      xgap = 62; ygap = 44
+      halfwidth = 32; cols = 8
+      selbuttony = 200; selbuttonheight = 44
+# ------ End of Pokedex screen fixes
+# ------ Derx: The previous segment's code is listed below
+#      xgap = 124; ygap = 44
+#      halfwidth = 62; cols = 4
+#      selbuttony = 44; selbuttonheight = 44
+# ------ Derx: Put this section back in if things go haywire and work again
     when 3,4   # Height, weight
       xstart = 44; ystart = 110
       xgap = 304/(cmds.length+1); ygap = 112
@@ -563,7 +580,7 @@ class PokemonPokedex_Scene
           textpos.push(["----",298+128*i,58,2,base,shadow,1])
         else
           typerect = Rect.new(0,@typeCommands[sel[i]]*32,96,32)
-          overlay.blt(250+128*i,58,@typebitmap.bitmap,typerect)
+          overlay.blt(250+128*i,58,@typebitmaplarge.bitmap,typerect) # Derx: Changes necessary for Pokedex screen fixes
         end
       end
     when 3   # Height range
@@ -656,9 +673,9 @@ class PokemonPokedex_Scene
            xstart+halfwidth+(cols-1)*xgap,ystart+6+(cmds.length/cols).floor*ygap,2,base,shadow,1])
       end
     when 2 # Type
-      typerect = Rect.new(0,0,96,32)
+      typerect = Rect.new(0,0,34,28) # Derx: Changes necessary for Pokedex screen fixes
       for i in 0...cmds.length
-        typerect.y = @typeCommands[i]*32
+        typerect.y = @typeCommands[i]*28 # Derx: Changes necessary for Pokedex screen fixes
         overlay.blt(xstart+14+(i%cols)*xgap,ystart+6+(i/cols).floor*ygap,@typebitmap.bitmap,typerect)
       end
       textpos.push(["----",
@@ -818,7 +835,7 @@ class PokemonPokedex_Scene
   def pbDexSearchCommands(mode,selitems,mainindex)
     cmds = [@orderCommands,@nameCommands,@typeCommands,@heightCommands,
             @weightCommands,@colorCommands,@shapeCommands][mode]
-    cols = [2,7,4,1,1,3,5][mode]
+    cols = [2,7,8,1,1,3,5][mode] # Derx: Changes necessary for Pokedex screen fixes
     ret = nil
     # Set background
     case mode

@@ -222,7 +222,7 @@ Events.onStepTaken += proc { |_sender,_e|
     for i in $Trainer.pokemonParty
       next if !isConst?(i.ability,PBAbilities,:FLAMEBODY) &&
               !isConst?(i.ability,PBAbilities,:MAGMAARMOR) &&
-			  !isConst?(i.ability,PBAbilities,:MAGMAARMOR) # Derx: Added a check for Magma Armor
+			  !isConst?(i.ability,PBAbilities,:FIREVEIL) # Derx: Added handling for Fire Veil in the egg hatching formula
       egg.eggsteps -= 1
       break
     end

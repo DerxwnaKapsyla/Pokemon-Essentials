@@ -14,12 +14,12 @@ class PokemonSystem
   attr_writer   :textinput
 
   def initialize
-    @textspeed   = 1     # Text speed (0=slow, 1=normal, 2=fast)
+    @textspeed   = 2     # Text speed (0=slow, 1=normal, 2=fast) # Derx: Default text speed is now set to Fast
     @battlescene = 0     # Battle effects (animations) (0=on, 1=off)
     @battlestyle = 0     # Battle style (0=switch, 1=set)
     @frame       = 0     # Default window frame (see also $TextFrames)
     @textskin    = 0     # Speech frame
-    @font        = 0     # Font (see also $VersionStyles)
+    @font        = 2     # Font (see also $VersionStyles) # Derx: Default font is FrLg
     @screensize  = (SCREEN_ZOOM.floor).to_i   # 0=half size, 1=full size, 2=double size
     @border      = 0     # Screen border (0=off, 1=on)
     @language    = 0     # Language (see also LANGUAGES in script PokemonSystem)

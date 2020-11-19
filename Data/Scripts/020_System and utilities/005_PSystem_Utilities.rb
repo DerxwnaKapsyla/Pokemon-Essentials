@@ -1022,7 +1022,7 @@ def pbMoveTutorChoose(move,movelist=nil,bymachine=false)
     annot = pbMoveTutorAnnotations(move,movelist)
     scene = PokemonParty_Scene.new
     screen = PokemonPartyScreen.new(scene,$Trainer.party)
-    screen.pbStartScene(_INTL("Teach which Pokémon?"),false,annot)
+    screen.pbStartScene(_INTL("Whom should be taught?"),false,annot) # Derx: Removing excplict references to Pokemon
     loop do
       chosen = screen.pbChoosePokemon
       break if chosen<0

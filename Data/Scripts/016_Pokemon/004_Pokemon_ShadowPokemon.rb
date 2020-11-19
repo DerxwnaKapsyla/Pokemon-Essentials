@@ -592,7 +592,7 @@ class PokeBattle_Move_12E < PokeBattle_Move
       next if b.hp==1
       b.pbReduceHP(i.hp/2,false)
     end
-    @battle.pbDisplay(_INTL("Each Pokémon's HP was halved!"))
+    @battle.pbDisplay(_INTL("Everyone's HP was halved!")) # Derx: Removing excplict references to Pokemon
     @battle.eachBattler { |b| b.pbItemHPHealCheck }
     user.effects[PBEffects::HyperBeam] = 2
     user.currentMove = @id

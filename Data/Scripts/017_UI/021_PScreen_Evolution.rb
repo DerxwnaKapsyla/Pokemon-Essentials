@@ -533,14 +533,14 @@ class PokemonEvolutionScene
     metaplayer2.play
     pbBGMStop
     pbPlayCry(@pokemon)
+	pbMEPlay("Evolution start") # Derx: Proper game emulation
     pbMessageDisplay(@sprites["msgwindow"],
        _INTL("\\se[]What? {1} is evolving!\\^",@pokemon.name)) { pbUpdate }
     pbMessageWaitForInput(@sprites["msgwindow"],50,true) { pbUpdate }
     pbPlayDecisionSE
     oldstate  = pbSaveSpriteState(@sprites["rsprite1"])
     oldstate2 = pbSaveSpriteState(@sprites["rsprite2"])
-    pbMEPlay("Evolution start")
-    pbBGMPlay("Evolution")
+    pbBGMPlay("U-002. Our Hisou Tensoku (Evolution).ogg") # Derx: Touhoumon Evolution Theme
     canceled = false
     begin
       pbUpdateNarrowScreen

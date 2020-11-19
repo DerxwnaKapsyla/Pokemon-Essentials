@@ -62,12 +62,12 @@ class PokeBattle_BugContestBattle < PokeBattle_Battle
     if pbBugContestState.lastPokemon
       lastPokemon = pbBugContestState.lastPokemon
       pbDisplayPaused(_INTL("You already caught a {1}.",lastPokemon.name))
-      helptext = _INTL("STOCK POKéMON:\n {1} Lv.{2} MaxHP: {3}\nTHIS POKéMON:\n {4} Lv.{5} MaxHP: {6}",
+      helptext = _INTL("STOCK CAPTURE:\n {1} Lv.{2} MaxHP: {3}\nTHIS CAPTURE:\n {4} Lv.{5} MaxHP: {6}", # Derx: Removing excplict references to Pokemon
          lastPokemon.name,lastPokemon.level,lastPokemon.totalhp,
          pkmn.name,pkmn.level,pkmn.totalhp
       )
       @scene.pbShowHelp(helptext)
-      if pbDisplayConfirm(_INTL("Switch Pokémon?"))
+      if pbDisplayConfirm(_INTL("Switch captures?")) # Derx: Removing excplict references to Pokemon
         pbBugContestState.lastPokemon = pkmn
         @scene.pbHideHelp
       else

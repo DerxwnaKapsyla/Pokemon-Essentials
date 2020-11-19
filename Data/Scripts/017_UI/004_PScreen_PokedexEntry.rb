@@ -19,7 +19,7 @@ class PokemonPokedexInfo_Scene
     @index   = index
     @region  = region
     @page = 1
-    @typebitmap = AnimatedBitmap.new(_INTL("Graphics/Pictures/Pokedex/icon_types"))
+    @typebitmap = AnimatedBitmap.new(_INTL("Graphics/Pictures/Pokedex/icon_types_big")) # Derx: Required for Pokedex Screen fixes
     @sprites = {}
     @sprites["background"] = IconSprite.new(0,0,@viewport)
     @sprites["infosprite"] = PokemonSprite.new(@viewport)
@@ -100,7 +100,7 @@ class PokemonPokedexInfo_Scene
     @index   = 0
     @page = 1
     @brief = true
-    @typebitmap = AnimatedBitmap.new(_INTL("Graphics/Pictures/Pokedex/icon_types"))
+    @typebitmap = AnimatedBitmap.new(_INTL("Graphics/Pictures/Pokedex/icon_types_big")) # Derx: Required for Pokedex Screen fixes
     @sprites = {}
     @sprites["background"] = IconSprite.new(0,0,@viewport)
     @sprites["infosprite"] = PokemonSprite.new(@viewport)
@@ -186,8 +186,20 @@ class PokemonPokedexInfo_Scene
         thisformname = thisform[2]
       else   # Necessarily applies only to form 0
         case thisform[1]
-        when 0; thisformname = _INTL("Male")
-        when 1; thisformname = _INTL("Female")
+# ------ Derx: Changes to display the _phrase_ Yin or Yang on the form display screen for Puppets					
+        when 0; 
+			if @species<494
+				thisformname = _INTL("Male")
+			else
+				thisformname = _INTL("Yin")
+			end
+        when 1; 
+			if @species<494
+				thisformname = _INTL("Female")
+			else
+				thisformname = _INTL("Yang")
+			end
+# ------ Derx: End of Form Display Name changes
         else
           thisformname = (multiforms) ? _INTL("One Form") : _INTL("Genderless")
         end
@@ -238,7 +250,13 @@ class PokemonPokedexInfo_Scene
        [_INTL("{1}{2} {3}",indexText," ",PBSpecies.getName(@species)),
           246,42,0,Color.new(248,248,248),Color.new(0,0,0)],
        [_INTL("Height"),314,158,0,base,shadow],
+# ------ Derx: Puppets don't use Weight. They use cost.
+       if @species<494
        [_INTL("Weight"),314,190,0,base,shadow]
+	   else
+		[_INTL("Cost"),314,190,0,base,shadow]
+	   end
+# ------ Derx: End of Cost changes
     ]
     if $Trainer.owned[@species]
       speciesData = pbGetSpeciesData(@species,@form)
@@ -246,10 +264,18 @@ class PokemonPokedexInfo_Scene
       # Write the kind
       kind = pbGetMessage(MessageTypes::Kinds,fSpecies)
       kind = pbGetMessage(MessageTypes::Kinds,@species) if !kind || kind==""
+# ------ Derx: Differentiates between Pokemon and Puppet
+	  if @species<494
       textpos.push([_INTL("{1} Pokémon",kind),246,74,0,base,shadow])
+	  else
+		textpos.push([_INTL("{1} Puppet",kind),246,74,0,base,shadow])
+	  end
+# ------ Derx: End of Species Differentiation
       # Write the height and weight
       height = speciesData[SpeciesHeight] || 1
       weight = speciesData[SpeciesWeight] || 1
+# ------ Derx: Puppets use Cost. Not Weight. This'll remove kg/lbs from their entries.
+	  if @species<494
       if pbGetCountry==0xF4   # If the user is in the United States
         inches = (height/0.254).round
         pounds = (weight/0.45359).round
@@ -259,6 +285,20 @@ class PokemonPokedexInfo_Scene
         textpos.push([_ISPRINTF("{1:.1f} m",height/10.0),470,158,1,base,shadow])
         textpos.push([_ISPRINTF("{1:.1f} kg",weight/10.0),482,190,1,base,shadow])
       end
+	  else
+		if pbGetCountry==0xF4   # If the user is in the United States
+			inches = (height/0.254).round
+			pounds = (weight/0.45359).round
+			textpos.push([_ISPRINTF("{1:.1f} m",height/10.0),470,158,1,base,shadow]) # Derx: Made it so it displays height in meters for Puppets
+			textpos.push([_ISPRINTF("{1:.1f}   ",weight/10.0),482,190,1,base,shadow]) # Derx: Made it so it shows the Cost in terms of kilos for Puppets
+#			textpos.push([_ISPRINTF("{1:d}'{2:02d}\"",inches/12,inches%12),460,158,1,base,shadow])
+#			textpos.push([_ISPRINTF("{1:4.1f}     ",pounds/10.0),494,190,1,base,shadow])
+		else
+			textpos.push([_ISPRINTF("{1:.1f} m",height/10.0),470,158,1,base,shadow])
+			textpos.push([_ISPRINTF("{1:.1f}   ",weight/10.0),482,190,1,base,shadow])
+		end
+	  end
+# ------ Derx: End of Cost/Weight differentiation.
       # Draw the Pokédex entry text
       entry = pbGetMessage(MessageTypes::Entries,fSpecies)
       entry = pbGetMessage(MessageTypes::Entries,@species) if !entry || entry==""
@@ -281,8 +321,14 @@ class PokemonPokedexInfo_Scene
       overlay.blt(396,120,@typebitmap.bitmap,type2rect) if type1!=type2
     else
       # Write the kind
+# ------ Derx: Makes changes to the Un-Owned Puppets to display proper information			
+      if @species<494
       textpos.push([_INTL("????? Pokémon"),246,74,0,base,shadow])
+	  else
+		textpos.push([_INTL("????? Puppet"),246,74,0,base,shadow])
+	  end			
       # Write the height and weight
+      if @species<494
       if pbGetCountry()==0xF4 # If the user is in the United States
         textpos.push([_INTL("???'??\""),460,158,1,base,shadow])
         textpos.push([_INTL("????.? lbs."),494,190,1,base,shadow])
@@ -584,3 +630,4 @@ class PokemonPokedexInfoScreen
     @scene.pbEndScene
   end
 end
+

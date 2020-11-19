@@ -335,11 +335,25 @@ class PokemonSummary_Scene
       textpos.push([_INTL("None"),16,352,0,Color.new(192,200,208),Color.new(208,216,224)])
     end
     # Write the gender symbol
+# ------ Derx: Differentiation of Pokemon and Puppet gender icons
+  if @pokemon.species<494
     if @pokemon.male?
       textpos.push([_INTL("♂"),178,62,0,Color.new(24,112,216),Color.new(136,168,208)])
     elsif @pokemon.female?
       textpos.push([_INTL("♀"),178,62,0,Color.new(248,56,32),Color.new(224,152,144)])
     end
+   else
+    if @pokemon.male? # Yang
+      pbDrawImagePositions(overlay,[
+        [sprintf("Graphics/Pictures/Thmn icons/gendermale"),174,67,0,0,-1,-1]
+      ])
+    elsif @pokemon.female? # Yin
+      pbDrawImagePositions(overlay,[
+        [sprintf("Graphics/Pictures/Thmn icons/genderfemale"),174,67,0,0,-1,-1]
+      ])
+    end
+  end
+# ------ Derx: End of species differentiation
     # Draw all text
     pbDrawTextPositions(overlay,textpos)
     # Draw the Pokémon's markings
@@ -495,9 +509,9 @@ class PokemonSummary_Scene
       mapname = @pokemon.obtainText
     end
     if mapname && mapname!=""
-      memo += _INTL("<c3=404040,B0B0B0>A mysterious Pokémon Egg received from <c3=F83820,E09890>{1}<c3=404040,B0B0B0>.\n",mapname)
+      memo+=_INTL("<c3=404040,B0B0B0>A mysterious Egg received from <c3=F83820,E09890>{1}<c3=404040,B0B0B0>.\n",mapname) # Derx: Removing excplict references to Pokemon
     else
-      memo += _INTL("<c3=404040,B0B0B0>A mysterious Pokémon Egg.\n",mapname)
+      memo+=_INTL("<c3=404040,B0B0B0>A mysterious Egg.\n",mapname) # Derx: Removing excplict references to Pokemon
     end
     memo += "\n" # Empty line
     # Write Egg Watch blurb

@@ -35,7 +35,7 @@ ItemHandlers::CanUseInBattle.addIf(proc { |item| pbIsPokeBall?(item) },   # Pok�
       next false
     end
     if battler.semiInvulnerable?
-      scene.pbDisplay(_INTL("It's no good! It's impossible to aim at a Pokémon that's not in sight!")) if showMessages
+      scene.pbDisplay(_INTL("It's no good! It's impossible to aim when the target in sight!")) if showMessages # Derx: Removing excplict references to Pokemon
       next false
     end
     # NOTE: The code below stops you from throwing a Poké Ball if there is more
@@ -44,9 +44,9 @@ ItemHandlers::CanUseInBattle.addIf(proc { |item| pbIsPokeBall?(item) },   # Pok�
     #       them if they are trying to catch a non-Shadow Pokémon.)
     if battle.pbOpposingBattlerCount>1 && !(pbIsSnagBall?(item) && battle.trainerBattle?)
       if battle.pbOpposingBattlerCount==2
-        scene.pbDisplay(_INTL("It's no good! It's impossible to aim when there are two Pokémon!")) if showMessages
+        scene.pbDisplay(_INTL("It's no good! It's impossible to aim when there are two on the field!")) if showMessages # Derx: Removing excplict references to Pokemon
       else
-        scene.pbDisplay(_INTL("It's no good! It's impossible to aim when there are more than one Pokémon!")) if showMessages
+        scene.pbDisplay(_INTL("It's no good! It's impossible to aim when there are more than one on the field!")) if showMessages # Derx: Removing excplict references to Pokemon
       end
       next false
     end
@@ -139,7 +139,7 @@ ItemHandlers::CanUseInBattle.add(:REVIVE,proc { |item,pokemon,battler,move,first
   next true
 })
 
-ItemHandlers::CanUseInBattle.copy(:REVIVE,:MAXREVIVE,:REVIVALHERB)
+ItemHandlers::CanUseInBattle.copy(:REVIVE,:MAXREVIVE,:REVIVALHERB,:LIQUIDREVIVE) # Derx: Added in a duplicate handler for Liquid Revive from Revive
 
 ItemHandlers::CanUseInBattle.add(:ETHER,proc { |item,pokemon,battler,move,firstAction,battle,scene,showMessages|
   if !pokemon.able? || move<0 ||
@@ -172,7 +172,7 @@ ItemHandlers::CanUseInBattle.add(:ELIXIR,proc { |item,pokemon,battler,move,first
   next true
 })
 
-ItemHandlers::CanUseInBattle.copy(:ELIXIR,:MAXELIXIR)
+ItemHandlers::CanUseInBattle.copy(:ELIXIR,:MAXELIXIR,:LIQUIDREVIVE) # Derx: Added in a duplicate handler for Liquid Revive from Elixir
 
 ItemHandlers::CanUseInBattle.add(:REDFLUTE,proc { |item,pokemon,battler,move,firstAction,battle,scene,showMessages|
   if !battler || battler.effects[PBEffects::Attract]<0 ||
@@ -288,6 +288,7 @@ ItemHandlers::UseInBattle.add(:GUARDSPEC,proc { |item,battler,battle|
 
 ItemHandlers::UseInBattle.add(:POKEDOLL,proc { |item,battler,battle|
   battle.decision = 3
+  pbSEPlay("Battle Flee") # Derx: Official Game Emulation
   battle.pbDisplayPaused(_INTL("You got away safely!"))
 })
 
@@ -504,6 +505,18 @@ ItemHandlers::BattleUseOnPokemon.add(:MAXELIXIR,proc { |item,pokemon,battler,cho
   end
   scene.pbDisplay(_INTL("PP was restored."))
 })
+
+# ------ Derx: Liquid Revive: Max Elixir + Max Revive
+ItemHandlers::BattleUseOnPokemon.add(:LIQUIDREVIVE,proc { |item,pokemon,battler,choices,scene|
+  for i in 0...pokemon.moves.length
+    pbBattleRestorePP(pokemon,battler,i,pokemon.moves[i].totalpp)
+    pokemon.healHP
+    pokemon.healStatus
+    scene.pbRefresh
+    scene.pbDisplay(_INTL("{1} was fully revitalized",pokemon.name))
+  end
+# ------ Derx: End of Liquid Revive
+
 
 #===============================================================================
 # BattleUseOnBattler handlers

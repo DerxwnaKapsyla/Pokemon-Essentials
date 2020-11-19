@@ -743,7 +743,7 @@ class PokemonMartScreen
           end
         end
         @stock.compact!
-        pbDisplayPaused(_INTL("Here you are! Thank you!")) { pbSEPlay("Mart buy item") }
+        pbDisplayPaused(_INTL("Here you are! Thank you!")) { pbSEPlay("sale") } # Derx: Official sound byte from Gen 3 for the cash register
         if $PokemonBag
           if quantity>=10 && pbIsPokeBall?(item) && hasConst?(PBItems,:PREMIERBALL)
             if @adapter.addItem(getConst(PBItems,:PREMIERBALL))
@@ -813,7 +813,7 @@ def pbPokemonMart(stock,speech=nil,cantsell=false)
   commands[cmdSell = commands.length] = _INTL("Sell") if !cantsell
   commands[cmdQuit = commands.length] = _INTL("Quit")
   cmd = pbMessage(
-     speech ? speech : _INTL("Welcome! How may I serve you?"),
+     speech ? speech : _INTL("Please, take your time!"), # Derx: Changed for certain unqiue shop compatabiliyu
      commands,cmdQuit+1)
   loop do
     if cmdBuy>=0 && cmd==cmdBuy

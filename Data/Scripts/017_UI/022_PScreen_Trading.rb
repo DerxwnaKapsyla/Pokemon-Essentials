@@ -165,6 +165,7 @@ class PokemonTrade_Scene
 
   def pbTrade
     pbBGMStop
+	pbBGMPlay("U-004. Shanghai Alice of Meiji 17 (Trading).ogg") # Derx: Trading theme added
     pbPlayCry(@pokemon)
     speciesname1=PBSpecies.getName(@pokemon.species)
     speciesname2=PBSpecies.getName(@pokemon2.species)

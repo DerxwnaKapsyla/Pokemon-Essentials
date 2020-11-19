@@ -130,11 +130,23 @@ class MiningGameCursor < BitmapSprite
 end
 
 
-
+# --- Derx: Modifications to the Mining Minigame to add in
+# --- * Touhoumon Items (UFOs, Fossils, Evo Shards)
+# --- * Mining Minigame Spheres (Tiny and Large)
 class MiningGameScene
   BOARDWIDTH  = 13
   BOARDHEIGHT = 10
   ITEMS = [   # Item, probability, graphic x, graphic y, width, height, pattern
+     [:GREENSPHERE1,200, 0,0, 2,2,[1,1,1,1]],
+     [:REDSPHERE1,200, 2,0, 2,2,[1,1,1,1]],
+     [:BLUESPHERE1,200, 4,0, 2,2,[1,1,1,1]],
+     [:PRISMSPHERE1,200, 6,0, 2,2,[1,1,1,1]],
+     [:PALESPHERE1,200, 8,0, 2,2,[1,1,1,1]],
+     [:GREENSPHERE2,50, 10,0, 3,3,[1,1,1,1,1,1,1,1,1]],
+     [:REDSPHERE2,50, 13,0, 3,3,[1,1,1,1,1,1,1,1,1]],
+     [:BLUESPHERE2,50, 16,0, 3,3,[1,1,1,1,1,1,1,1,1]],
+     [:PRISMSPHERE2,50, 19,0, 3,3,[1,1,1,1,1,1,1,1,1]],
+     [:PALESPHERE2,50, 22,0, 3,3,[1,1,1,1,1,1,1,1,1]],
      [:DOMEFOSSIL,20, 0,3, 5,4,[1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,0,1,1,1,0]],
      [:HELIXFOSSIL,5, 5,3, 4,4,[0,1,1,1,1,1,1,1,1,1,1,1,1,1,1,0]],
      [:HELIXFOSSIL,5, 9,3, 4,4,[1,1,1,0,1,1,1,1,1,1,1,1,0,1,1,1]],
@@ -171,7 +183,7 @@ class MiningGameScene
      [:HARDSTONE,200, 6,24, 2,2,[1,1,1,1]],
      [:HEARTSCALE,200, 8,24, 2,2,[1,0,1,1]],
      [:IRONBALL,100, 9,17, 3,3,[1,1,1,1,1,1,1,1,1]],
-     [:ODDKEYSTONE,100, 10,20, 4,4,[1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1]],
+     [:ODDKEYSTONE,20, 10,20, 4,4,[1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1]],
      [:HEATROCK,50, 12,17, 4,3,[1,0,1,0,1,1,1,1,1,1,1,1]],
      [:DAMPROCK,50, 14,20, 3,3,[1,1,1,1,1,1,1,0,1]],
      [:SMOOTHROCK,50, 17,18, 4,4,[0,0,1,0,1,1,1,0,0,1,1,1,0,1,0,0]],
@@ -195,8 +207,22 @@ class MiningGameScene
      [:SKYPLATE,10, 0,32, 4,3,[1,1,1,1,1,1,1,1,1,1,1,1]],
      [:SPOOKYPLATE,10, 4,32, 4,3,[1,1,1,1,1,1,1,1,1,1,1,1]],
      [:IRONPLATE,10, 8,32, 4,3,[1,1,1,1,1,1,1,1,1,1,1,1]],
-     [:SPLASHPLATE,10, 12,32, 4,3,[1,1,1,1,1,1,1,1,1,1,1,1]]
+     [:SPLASHPLATE,10, 12,32, 4,3,[1,1,1,1,1,1,1,1,1,1,1,1]],
+     [:DEFENSESHARD,20, 0,35, 2,2,[1,0,1,1]],
+     [:SWIFTSHARD,20, 2,35, 2,2,[1,0,1,1]],
+     [:SUPPORTSHARD,20, 4,35, 2,2,[1,0,1,1]],
+     [:TECHSHARD,20, 6,35, 2,2,[1,0,1,1]],
+     [:POWERSHARD,20, 8,35, 2,2,[1,0,1,1]],
+     [:SOLARSHARD,20, 10,35, 2,2,[1,0,1,1]],
+     [:CHROMESHARD,20, 12,35, 2,2,[1,0,1,1]],
+     [:REDUFO,50, 0,38, 3,3,[1,1,1,1,1,1,1,1,1]],
+     [:GREENUFO,400, 3,38, 3,3,[1,1,1,1,1,1,1,1,1]],
+     [:BLUEUFO,100, 6,38, 3,3,[1,1,1,1,1,1,1,1,1]],
+     [:MAGIFOSSIL,20, 9,38, 3,3,[1,1,1,1,1,1,1,1,1]],
+     [:MIKOFOSSIL,20, 12,38, 3,3,[1,1,1,1,1,1,1,1,1]]
+     
   ]
+# ------ Derx: End of Mining Minigame Modifications
   IRON = [   # Graphic x, graphic y, width, height, pattern
      [0,0, 1,4,[1,1,1,1]],
      [1,0, 2,4,[1,1,1,1,1,1,1,1]],

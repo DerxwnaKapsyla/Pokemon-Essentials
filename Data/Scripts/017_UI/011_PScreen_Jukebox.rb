@@ -65,7 +65,7 @@ class PokemonJukeboxScreen
     commands[cmdMarch = commands.length]   = _INTL("March")
     commands[cmdLullaby = commands.length] = _INTL("Lullaby")
     commands[cmdOak = commands.length]     = _INTL("Oak")
-    commands[cmdCustom = commands.length]  = _INTL("Custom")
+    commands[cmdCustom = commands.length]  = _INTL("Intigrated Music") # Derx: Changed name, Shrug!
     commands[commands.length]              = _INTL("Exit")
     @scene.pbStartScene(commands)
     loop do

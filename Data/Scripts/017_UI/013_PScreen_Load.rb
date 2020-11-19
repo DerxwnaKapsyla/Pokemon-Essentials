@@ -99,7 +99,13 @@ class PokemonLoad_Scene
     @sprites = {}
     @viewport = Viewport.new(0,0,Graphics.width,Graphics.height)
     @viewport.z = 99998
-    addBackgroundOrColoredPlane(@sprites,"background","loadbg",Color.new(248,248,248),@viewport)
+    # ------ Derx: Adds in a randomized load background
+    if rand(2)==0
+      addBackgroundOrColoredPlane(@sprites,"background","loadbg",Color.new(248,248,248),@viewport) # Yin-Yang Orb
+    else
+      addBackgroundOrColoredPlane(@sprites,"background","loadbg2",Color.new(248,248,248),@viewport) # Hakkero
+    end
+    # ------ Derx: End of randomized load backgrounds
     y = 16*2
     for i in 0...commands.length
       @sprites["panel#{i}"] = PokemonLoadPanel.new(i,commands[i],
@@ -252,6 +258,7 @@ class PokemonLoadScreen
   end
 
   def pbStartLoadScreen
+	pbBGMPlay("U-003. A Dream that is more Scarlet than Red.ogg") # Derx: Continue screen music
     $PokemonTemp   = PokemonTemp.new
     $game_temp     = Game_Temp.new
     $game_system   = Game_System.new
@@ -336,6 +343,7 @@ class PokemonLoadScreen
           next
         end
         pbPlayDecisionSE
+        pbBGMFade(0.8) # Derx: Added to fade out the track
         @scene.pbEndScene
         metadata = nil
         File.open(savefile) { |f|
@@ -415,6 +423,7 @@ class PokemonLoadScreen
             event.clear_starting
           end
         end
+        pbBGMFade(0.8) # Derx: Added to fade out the track
         $game_temp.common_event_id = 0 if $game_temp
         $scene               = Scene_Map.new
         Graphics.frame_count = 0

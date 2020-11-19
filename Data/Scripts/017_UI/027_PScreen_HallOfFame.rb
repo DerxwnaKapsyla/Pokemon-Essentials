@@ -30,7 +30,7 @@ class HallOfFame_Scene
   # If a player exceed this limit, the first one will be removed
   HALLLIMIT = 50
   # The entry music name. Put "" to doesn't play anything
-  ENTRYMUSIC = "Hall of Fame"
+  ENTRYMUSIC = "U-005. Broken Moon (Hall of Fame Mix).ogg" # Derx: Hall of Fame music changed
   # Allow eggs to be show and saved in hall
   ALLOWEGGS = true
   # Remove the hallbars when the trainer sprite appears
@@ -295,11 +295,21 @@ class HallOfFame_Scene
     overlay.clear
     pokename=pokemon.name
     speciesname=PBSpecies.getName(pokemon.species)
+# ------ Derx: Determines whether or not to display a Yin/Yang icon or a Male/Female symbol
+   if pokemon.species<494
     if pokemon.male?
       speciesname+="♂"
     elsif pokemon.female?
       speciesname+="♀"
     end
+   else
+    if pokemon.male?
+      speciesname
+    elsif pokemon.female?
+      speciesname
+    end
+   end
+# ------ Derx: End of Yin/Yang display
     pokename+="/"+speciesname
     pokename=_INTL("Egg")+"/"+_INTL("Egg") if pokemon.egg?
     idno=(pokemon.ot=="" || pokemon.egg?) ? "?????" : sprintf("%05d",pokemon.publicID)
@@ -317,6 +327,18 @@ class HallOfFame_Scene
       textPositions.push([hallNumber.to_s,Graphics.width/2+104,0,1,BASECOLOR,SHADOWCOLOR])
     end
     pbDrawTextPositions(overlay,textPositions)
+# ------ Derx: A change required to display the Yin/Yang icons on the Hall of Fame screen
+				iconoffset=overlay.text_size(pokename).width/2 + Graphics.width-192
+				if pokemon.species>=494 && pokemon.isMale?
+					pbDrawImagePositions(overlay,[
+							["Graphics/Icons/yin",iconoffset,Graphics.height-80,0,0,-1,-1]
+						])
+				elsif pokemon.species>=494 && pokemon.isFemale?
+					pbDrawImagePositions(overlay,[
+							["Graphics/Icons/yang",iconoffset,Graphics.height-80,0,0,-1,-1]
+						])
+  end
+# ------ Derx: End of required changes
   end
 
   def writeWelcome

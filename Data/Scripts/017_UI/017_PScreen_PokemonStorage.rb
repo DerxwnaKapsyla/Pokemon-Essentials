@@ -1408,11 +1408,21 @@ class PokemonStorageScene
     ]
     if !pokemon.egg?
       imagepos = []
+# ------ Derx: Displays Yin/Yang Orbs for the Puppets and Male/Female for Pokemon in the PC
+    if pokemon.species<494
       if pokemon.male?
         textstrings.push([_INTL("♂"),148,8,false,Color.new(24,112,216),Color.new(136,168,208)])
       elsif pokemon.female?
         textstrings.push([_INTL("♀"),148,8,false,Color.new(248,56,32),Color.new(224,152,144)])
       end
+    else
+      if pokemon.male?
+        imagepos.push(["Graphics/Pictures/Thmn icons/gendermale",144,12,0,0,-1,-1])
+      elsif pokemon.female?
+        imagepos.push(["Graphics/Pictures/Thmn icons/genderfemale",144,12,0,0,-1,-1])
+      end
+	end
+# ------ Derx: End of Yin/Yang display for Puppets in the PC
       imagepos.push(["Graphics/Pictures/Storage/overlay_lv",6,246])
       textstrings.push([pokemon.level.to_s,28,234,false,base,shadow])
       if pokemon.ability>0
@@ -1473,14 +1483,14 @@ class PokemonStorageScreen
         selected = @scene.pbSelectBox(@storage.party)
         if selected==nil
           if pbHeldPokemon
-            pbDisplay(_INTL("You're holding a Pokémon!"))
+            pbDisplay(_INTL("You're holding something!")) # Derx: Removing excplict references to Pokemon
             next
           end
           next if pbConfirm(_INTL("Continue Box operations?"))
           break
         elsif selected[0]==-3   # Close box
           if pbHeldPokemon
-            pbDisplay(_INTL("You're holding a Pokémon!"))
+            pbDisplay(_INTL("You're holding something!")) # Derx: Removing excplict references to Pokemon
             next
           end
           if pbConfirm(_INTL("Exit from the Box?"))
@@ -1698,7 +1708,7 @@ class PokemonStorageScreen
     end
     if pbAbleCount<=1 && pbAble?(@storage[box,index]) && !heldpoke
       pbPlayBuzzerSE
-      pbDisplay(_INTL("That's your last Pokémon!"))
+      pbDisplay(_INTL("That's your last party member!")) # Derx: Removing excplict references to Pokemon
     elsif heldpoke && heldpoke.mail
       pbDisplay(_INTL("Please remove the Mail."))
     elsif !heldpoke && @storage[box,index].mail
@@ -1737,7 +1747,7 @@ class PokemonStorageScreen
     index = selected[1]
     if box==-1 && pbAble?(@storage[box,index]) && pbAbleCount<=1
       pbPlayBuzzerSE
-      pbDisplay(_INTL("That's your last Pokémon!"))
+      pbDisplay(_INTL("That's your last party member!")) # Derx: Removing excplict references to Pokemon
       return
     end
     @scene.pbHold(selected)
@@ -1782,7 +1792,7 @@ class PokemonStorageScreen
     end
     if box==-1 && pbAble?(@storage[box,index]) && pbAbleCount<=1 && !pbAble?(@heldpkmn)
       pbPlayBuzzerSE
-      pbDisplay(_INTL("That's your last Pokémon!"))
+      pbDisplay(_INTL("That's your last party member!")) # Derx: Removing excplict references to Pokemon
       return false
     end
     if box!=-1 && @heldpkmn.mail
@@ -1816,10 +1826,10 @@ class PokemonStorageScreen
     end
     if box==-1 && pbAbleCount<=1 && pbAble?(pokemon) && !heldpoke
       pbPlayBuzzerSE
-      pbDisplay(_INTL("That's your last Pokémon!"))
+      pbDisplay(_INTL("That's your last party member!")) # Derx: Removing excplict references to Pokemon
       return
     end
-    command = pbShowCommands(_INTL("Release this Pokémon?"),[_INTL("No"),_INTL("Yes")])
+    command = pbShowCommands(_INTL("Release this party member?"),[_INTL("No"),_INTL("Yes")]) # Derx: Neutralization of Terminology
     if command==1
       pkmnname = pokemon.name
       @scene.pbRelease(selected,heldpoke)

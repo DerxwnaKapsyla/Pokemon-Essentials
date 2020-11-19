@@ -635,6 +635,25 @@ ItemHandlers::UseOnPokemon.add(:MAXELIXIR,proc { |item,pkmn,scene|
   next true
 })
 
+# ------ Derx: Liquid Revive: Max Elixir + Max Revive
+ItemHandlers::UseOnPokemon.add(:MAXREVIVE,proc { |item,pkmn,scene|
+  pprestored = 0
+  for i in 0...pkmn.moves.length
+    pprestored += pbRestorePP(pkmn,i,pkmn.moves[i].totalpp-pkmn.moves[i].pp)
+  end
+  if !pkmn.fainted?
+    scene.pbDisplay(_INTL("It won't have any effect."))
+    next false
+  end
+  pkmn.healHP
+  pkmn.healStatus
+  scene.pbRefresh
+  scene.pbDisplay(_INTL("{1} was fully revitalized.",pkmn.name))
+  next true
+})
+# ------ Derx: End of Liquid Revive
+
+
 ItemHandlers::UseOnPokemon.add(:PPUP,proc { |item,pkmn,scene|
   move = scene.pbChooseMove(pkmn,_INTL("Boost PP of which move?"))
   if move>=0

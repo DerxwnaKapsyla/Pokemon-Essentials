@@ -24,7 +24,14 @@ $BallTypes = {
   22 => :MOONBALL,
   23 => :SPORTBALL,
   24 => :DREAMBALL,
-  25 => :BEASTBALL
+  25 => :BEASTBALL,
+  # ------ Derx: Added in the core Puppet Orbs
+  26=>:CHERISHORB,
+  27=>:PUPPETORB,
+  28=>:GREATORB,
+  29=>:ULTRAORB,
+  30=>:MASTERORB
+  # ------ Derx: End of Puppet Orb additions
 }
 
 def pbBallTypeToItem(balltype)
@@ -106,7 +113,12 @@ BallHandlers::ModifyCatchRate.add(:SAFARIBALL,proc { |ball,catchRate,battle,batt
 
 BallHandlers::ModifyCatchRate.add(:NETBALL,proc { |ball,catchRate,battle,battler,ultraBeast|
   multiplier = (NEWEST_BATTLE_MECHANICS) ? 3.5 : 3
-  catchRate *= multiplier if battler.pbHasType?(:BUG) || battler.pbHasType?(:WATER)
+  catchRate *= multiplier if battler.pbHasType?(:BUG) || 
+							 battler.pbHasType?(:WATER) || 
+							 # Derx: Addition of Touhoumon Water and Beast
+							 battler.pbHasType?(:WATER18) || 
+							 battler.pbHasType?(:BEAST18) # Derx: This might have been Dream but, fuck it. Beast works better.
+							 # Derx: End of type additions
   next catchRate
 })
 
@@ -230,6 +242,13 @@ BallHandlers::ModifyCatchRate.add(:BEASTBALL,proc { |ball,catchRate,battle,battl
   end
   next catchRate
 })
+
+# ------ Derx: Functionality for the Puppet Orbs
+BallHandlers::ModifyCatchRate.copy(:GREATBALL,:GREATORB}
+BallHandlers::ModifyCatchRate.copy(:ULTRABALL,:ULTRAORB}
+BallHandlers::ModifyCatchRate.copy(:SAFARIBALL,:SAFARIORBORB}
+BallHandlers::IsUnconditional.copy(:MASTERORB,:MASTERBALL}
+# ------ Derx: End of functionality for the Puppet Orbs
 
 #===============================================================================
 # OnCatch

@@ -574,7 +574,8 @@ def pbConvertToTrainerEvent(event,trainerChecker)
   end
   # Create strings that will be used repeatedly
   safetrcombo = sprintf(":%s,\"%s\"",trtype,safequote(trname))   # :YOUNGSTER,"Joey"
-  introplay   = sprintf("pbTrainerIntro(:%s)",trtype)
+#  introplay   = sprintf("pbTrainerIntro(:%s)",trtype)
+  introplay    = sprintf("TrainerIntro2(:%s)",trtype) # Derx: Revised method of handling Trainer Intros
   # Write first page
   pbPushScript(firstpage.list,introplay)   # pbTrainerIntro
   pbPushScript(firstpage.list,"pbNoticePlayer(get_character(0))")

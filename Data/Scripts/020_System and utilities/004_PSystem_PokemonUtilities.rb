@@ -16,8 +16,8 @@ end
 
 def pbStorePokemon(pokemon)
   if pbBoxesFull?
-    pbMessage(_INTL("There's no more room for Pokémon!\1"))
-    pbMessage(_INTL("The Pokémon Boxes are full and can't accept any more!"))
+    pbMessage(_INTL("There's no more room in the box!\1")) # Derx: Removing excplict references to Pokemon
+    pbMessage(_INTL("They are full and can't accept any more!")) # Derx: Removing excplict references to Pokemon
     return
   end
   pokemon.pbRecordFirstMoves
@@ -50,8 +50,8 @@ end
 
 def pbNicknameAndStore(pokemon)
   if pbBoxesFull?
-    pbMessage(_INTL("There's no more room for Pokémon!\1"))
-    pbMessage(_INTL("The Pokémon Boxes are full and can't accept any more!"))
+    pbMessage(_INTL("There's no more in the box!\1")) # Derx: Removing excplict references to Pokemon
+    pbMessage(_INTL("They are full and can't accept any more!")) # Derx: Removing excplict references to Pokemon
     return
   end
   $Trainer.seen[pokemon.species]  = true
@@ -68,8 +68,8 @@ end
 def pbAddPokemon(pokemon,level=nil,seeform=true)
   return if !pokemon
   if pbBoxesFull?
-    pbMessage(_INTL("There's no more room for Pokémon!\1"))
-    pbMessage(_INTL("The Pokémon Boxes are full and can't accept any more!"))
+    pbMessage(_INTL("There's no more room in the box!\1")) # Derx: Removing excplict references to Pokemon
+    pbMessage(_INTL("They are full and can't accept any more!")) # Derx: Removing excplict references to Pokemon
     return false
   end
   pokemon = getID(PBSpecies,pokemon)
