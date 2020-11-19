@@ -1334,8 +1334,8 @@ BattleHandlers::DamageCalcTargetAbility.add(:MULTISCALE,
 
 BattleHandlers::DamageCalcTargetAbility.add(:THICKFAT,
   proc { |ability,user,target,move,mults,baseDmg,type|
-    if isConst?(type,PBTypes,:FIRE) || isConst?(type,PBTypes,:ICE) ||
-			   (type,PBTypes,:FIRE18) || isConst?(type,PBTypes,:ICE18) # Derx: Adding in interactions between Thick Fat and Touhoumon Fire/Ice
+    if isConst?(type,PBTypes,:FIRE)   || isConst?(type,PBTypes,:ICE) ||
+	   isConst?(type,PBTypes,:FIRE18) || isConst?(type,PBTypes,:ICE18) # Derx: Adding in interactions between Thick Fat and Touhoumon Fire/Ice
       mults[BASE_DMG_MULT] /= 2
     end
   }

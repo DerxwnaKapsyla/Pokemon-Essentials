@@ -515,6 +515,7 @@ ItemHandlers::BattleUseOnPokemon.add(:LIQUIDREVIVE,proc { |item,pokemon,battler,
     scene.pbRefresh
     scene.pbDisplay(_INTL("{1} was fully revitalized",pokemon.name))
   end
+})
 # ------ Derx: End of Liquid Revive
 
 

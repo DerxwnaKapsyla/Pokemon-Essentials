@@ -1692,9 +1692,9 @@ class PokeBattle_Move_05C < PokeBattle_Move
        # Moves that affect the moveset
        "05C",   # Mimic
        "05D",   # Sketch
-       "069"    # Transform
+       "069",    # Transform
 	   # ------ Derx: Added in Recollection to Copycat's blacklist
-	   "504",	# Recollection - Change the function code for Recollection
+	   "504"	# Recollection - Change the function code for Recollection
 	   # ------ Derx: End of Copycat's blacklist modifications
     ]
   end

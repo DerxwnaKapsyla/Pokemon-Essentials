@@ -276,23 +276,21 @@ class PokemonPokedexInfo_Scene
       weight = speciesData[SpeciesWeight] || 1
 # ------ Derx: Puppets use Cost. Not Weight. This'll remove kg/lbs from their entries.
 	  if @species<494
-      if pbGetCountry==0xF4   # If the user is in the United States
-        inches = (height/0.254).round
-        pounds = (weight/0.45359).round
-        textpos.push([_ISPRINTF("{1:d}'{2:02d}\"",inches/12,inches%12),460,158,1,base,shadow])
-        textpos.push([_ISPRINTF("{1:4.1f} lbs.",pounds/10.0),494,190,1,base,shadow])
-      else
-        textpos.push([_ISPRINTF("{1:.1f} m",height/10.0),470,158,1,base,shadow])
-        textpos.push([_ISPRINTF("{1:.1f} kg",weight/10.0),482,190,1,base,shadow])
-      end
+        if pbGetCountry==0xF4   # If the user is in the United States
+          inches = (height/0.254).round
+          pounds = (weight/0.45359).round
+          textpos.push([_ISPRINTF("{1:d}'{2:02d}\"",inches/12,inches%12),460,158,1,base,shadow])
+          textpos.push([_ISPRINTF("{1:4.1f} lbs.",pounds/10.0),494,190,1,base,shadow])
+        else
+          textpos.push([_ISPRINTF("{1:.1f} m",height/10.0),470,158,1,base,shadow])
+          textpos.push([_ISPRINTF("{1:.1f} kg",weight/10.0),482,190,1,base,shadow])
+        end
 	  else
 		if pbGetCountry==0xF4   # If the user is in the United States
 			inches = (height/0.254).round
 			pounds = (weight/0.45359).round
 			textpos.push([_ISPRINTF("{1:.1f} m",height/10.0),470,158,1,base,shadow]) # Derx: Made it so it displays height in meters for Puppets
 			textpos.push([_ISPRINTF("{1:.1f}   ",weight/10.0),482,190,1,base,shadow]) # Derx: Made it so it shows the Cost in terms of kilos for Puppets
-#			textpos.push([_ISPRINTF("{1:d}'{2:02d}\"",inches/12,inches%12),460,158,1,base,shadow])
-#			textpos.push([_ISPRINTF("{1:4.1f}     ",pounds/10.0),494,190,1,base,shadow])
 		else
 			textpos.push([_ISPRINTF("{1:.1f} m",height/10.0),470,158,1,base,shadow])
 			textpos.push([_ISPRINTF("{1:.1f}   ",weight/10.0),482,190,1,base,shadow])
@@ -323,19 +321,29 @@ class PokemonPokedexInfo_Scene
       # Write the kind
 # ------ Derx: Makes changes to the Un-Owned Puppets to display proper information			
       if @species<494
-      textpos.push([_INTL("????? Pokémon"),246,74,0,base,shadow])
+		textpos.push([_INTL("????? Pokémon"),246,74,0,base,shadow])
 	  else
 		textpos.push([_INTL("????? Puppet"),246,74,0,base,shadow])
 	  end			
       # Write the height and weight
       if @species<494
-      if pbGetCountry()==0xF4 # If the user is in the United States
-        textpos.push([_INTL("???'??\""),460,158,1,base,shadow])
-        textpos.push([_INTL("????.? lbs."),494,190,1,base,shadow])
-      else
-        textpos.push([_INTL("????.? m"),470,158,1,base,shadow])
-        textpos.push([_INTL("????.? kg"),482,190,1,base,shadow])
-      end
+	    if pbGetCountry()==0xF4 # If the user is in the United States
+		  textpos.push([_INTL("???'??\""),460,158,1,base,shadow])
+		  textpos.push([_INTL("????.? lbs."),494,190,1,base,shadow])
+		else
+		  textpos.push([_INTL("????.? m"),470,158,1,base,shadow])
+	  	  textpos.push([_INTL("????.? kg"),482,190,1,base,shadow])
+		end
+	  else
+		if pbGetCountry()==0xF4 # If the user is in the United States
+		  textpos.push([_INTL("???'??\""),460,158,1,base,shadow])
+		  textpos.push([_INTL("????.?     "),494,190,1,base,shadow])
+		else
+		  textpos.push([_INTL("????.? m"),470,158,1,base,shadow])
+		  textpos.push([_INTL("????.?   "),482,190,1,base,shadow])
+	    end
+	  end
+# ------ Derx: End of Un-Owned Differentiations			
     end
     # Draw all text
     pbDrawTextPositions(@sprites["overlay"].bitmap,textpos)

@@ -45,7 +45,7 @@ class PokeBattle_Move
     end
     # Miracle Eye
     if target.effects[PBEffects::MiracleEye]
-      ret = PBTypeEffectiveness::NORMAL_EFFECTIVE_ONE if (isConst?(defType,PBTypes,:DARK) && 
+      ret = PBTypeEffectiveness::NORMAL_EFFECTIVE_ONE if isConst?(defType,PBTypes,:DARK) &&
                                                          PBTypes.ineffective?(moveType,defType)
     end
     # Delta Stream's weather

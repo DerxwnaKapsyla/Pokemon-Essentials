@@ -3018,7 +3018,7 @@ class PokeBattle_Move_0EB < PokeBattle_Move
         @battle.pbDisplay(_INTL("{1} stood resolute!",target.pbThis))
       else
         @battle.pbDisplay(_INTL("{1} stood resolute like a {2}!",target.pbThis,target.abilityName))
-      end
+    end
       @battle.pbHideAbilitySplash(target)
       return true
 	# ------ Derx: End of Gatekeeper addition
@@ -3299,7 +3299,6 @@ class PokeBattle_Move_0F2 < PokeBattle_Move
       return true
     end
     if target.hasActiveAbility?(:STICKYHOLD) && !@battle.moldBreaker
-	if target.hasActiveAbility?(:COLLECTOR) && !@battle.moldBreaker # Derx: Added checks for Collector to prevent Item loss
       @battle.pbShowAbilitySplash(target)
       if PokeBattle_SceneConstants::USE_ABILITY_SPLASH
         @battle.pbDisplay(_INTL("But it failed to affect {1}!",target.pbThis(true)))

@@ -2050,7 +2050,7 @@ class PokeBattle_AI
     when "0EB"
       if target.effects[PBEffects::Ingrain] ||
          (skill>=PBTrainerAI.highSkill && (target.hasActiveAbility?(:SUCTIONCUPS) ||
-										   target.hasActiveAbility?(:GATEKEEPER)) # Derx: Addition of Gate Keeper for AI Checks
+										   target.hasActiveAbility?(:GATEKEEPER))) # Derx: Addition of Gate Keeper for AI Checks
         score -= 90
       else
         ch = 0
@@ -2068,7 +2068,7 @@ class PokeBattle_AI
     when "0EC"
       if !target.effects[PBEffects::Ingrain] &&
          !(skill>=PBTrainerAI.highSkill && (target.hasActiveAbility?(:SUCTIONCUPS) ||
-										    target.hasActiveAbility?(:GATEKEEPER)) # Derx: Addition of Gate Keeper for AI Checks
+										    target.hasActiveAbility?(:GATEKEEPER))) # Derx: Addition of Gate Keeper for AI Checks
         score += 40 if target.pbOwnSide.effects[PBEffects::Spikes]>0
         score += 40 if target.pbOwnSide.effects[PBEffects::ToxicSpikes]>0
         score += 40 if target.pbOwnSide.effects[PBEffects::StealthRock]

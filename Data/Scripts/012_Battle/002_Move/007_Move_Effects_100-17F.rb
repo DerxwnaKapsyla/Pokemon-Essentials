@@ -316,8 +316,8 @@ class PokeBattle_Move_10D < PokeBattle_Move
   end
 
   def pbShowAnimation(id,user,targets,hitNum=0,showAnimation=true)
-    hitNum = 1 if !user.pbHasType?(:GHOST) || # Non-Ghost anim
-				user.pbHasType?(:GHOST18))    # Derx: Added a check for Touhoumon Ghost with Curse
+    hitNum = 1 if !(user.pbHasType?(:GHOST) || # Non-Ghost anim
+				    user.pbHasType?(:GHOST18))    # Derx: Added a check for Touhoumon Ghost with Curse
     super
   end
 end

@@ -246,7 +246,7 @@ class PokemonEncounters
       if isConst?(firstPkmn.ability,PBAbilities,:STATIC) && hasConst?(PBTypes,:ELECTRIC)
         favoredType = getConst(PBTypes,:ELECTRIC)
 	# ------ Derx: Made it so Static influences more wild Wind-types
-      if isConst?(firstPkmn.ability,PBAbilities,:STATIC) && hasConst?(PBTypes,:WIND18)
+      elsif isConst?(firstPkmn.ability,PBAbilities,:STATIC) && hasConst?(PBTypes,:WIND18)
         favoredType = getConst(PBTypes,:WIND18)
 	# ------ Derx: End of Static changes
       elsif isConst?(firstPkmn.ability,PBAbilities,:MAGNETPULL) && hasConst?(PBTypes,:STEEL)
@@ -477,3 +477,4 @@ def pbEncounter(enctype)
 	$PokemonTemp.encounterType = -1
   return true
 end
+

@@ -244,10 +244,20 @@ BallHandlers::ModifyCatchRate.add(:BEASTBALL,proc { |ball,catchRate,battle,battl
 })
 
 # ------ Derx: Functionality for the Puppet Orbs
-BallHandlers::ModifyCatchRate.copy(:GREATBALL,:GREATORB}
-BallHandlers::ModifyCatchRate.copy(:ULTRABALL,:ULTRAORB}
-BallHandlers::ModifyCatchRate.copy(:SAFARIBALL,:SAFARIORBORB}
-BallHandlers::IsUnconditional.copy(:MASTERORB,:MASTERBALL}
+BallHandlers::ModifyCatchRate.add(:GREATORB,proc { |ball,catchRate,battle,battler,ultraBeast|
+  next catchRate*1.5
+})
+
+BallHandlers::ModifyCatchRate.add(:ULTRAORB,proc { |ball,catchRate,battle,battler,ultraBeast|
+  next catchRate*2
+})
+
+BallHandlers::ModifyCatchRate.add(:SAFARIORB,proc { |ball,catchRate,battle,battler,ultraBeast|
+  next catchRate*1.5
+})
+BallHandlers::IsUnconditional.add(:MASTERORB,proc { |ball,battle,battler|
+  next true
+})
 # ------ Derx: End of functionality for the Puppet Orbs
 
 #===============================================================================

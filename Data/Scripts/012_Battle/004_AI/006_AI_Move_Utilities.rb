@@ -98,7 +98,7 @@ class PokeBattle_AI
     if skill>=PBTrainerAI.mediumSkill
       if isConst?(move.type,PBTypes,:GROUND)
         return true if target.airborne? && !move.hitsFlyingTargets?
-      if isConst?(move.type,PBTypes,:EARTH18) # Derx: Added in a check for Touhoumon Earth
+      elsif isConst?(move.type,PBTypes,:EARTH18) # Derx: Added in a check for Touhoumon Earth
         return true if target.airborne? && !move.hitsFlyingTargets?
       elsif isConst?(move.type,PBTypes,:FIRE)
         return true if target.hasActiveAbility?(:FLASHFIRE)
@@ -696,3 +696,4 @@ class PokeBattle_AI
     end
   end
 end
+

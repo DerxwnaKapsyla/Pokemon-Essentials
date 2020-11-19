@@ -251,6 +251,7 @@ module RPG
             pbSEPlay("OWThunder2")
           else
             return
+          end
         end
 # ------ Derx: End of Thunder during Rain changes
       end

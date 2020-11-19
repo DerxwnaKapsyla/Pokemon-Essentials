@@ -104,7 +104,7 @@ class PokeBattle_AI
             spikesDmg = [8,6,4][spikes-1]
             if pkmn.hp<=pkmn.totalhp/spikesDmg
               next if !(pkmn.hasType?(:FLYING) ||
-					   (pkmn.hasType?(:FLYING18)) && !pkmn.hasActiveAbility?(:LEVITATE) # Derx: Added an AI check for Touhoumon Flying
+					   (pkmn.hasType?(:FLYING18))) && !pkmn.hasActiveAbility?(:LEVITATE) # Derx: Added an AI check for Touhoumon Flying
             end
           end
         end
