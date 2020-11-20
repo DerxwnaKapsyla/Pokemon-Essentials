@@ -1675,7 +1675,7 @@ BattleHandlers::TargetAbilityOnHit.add(:RETRIBUTION,
       battle.scene.pbDamageAnimation(user)
       user.pbReduceHP((user.pbReduceHP(900)).floor)
       if PokeBattle_SceneConstants::USE_ABILITY_SPLASH
-        battle.pbDisplay(_INTL("{1} is hurt!",user.pbThis))
+        battle.pbDisplay(_INTL("{1} was not prepared!",user.pbThis))
       else
         battle.pbDisplay(_INTL("{1} was not prepared for {2}'s {3}!",user.pbThis,
            target.pbThis(true),target.abilityName))
@@ -1896,13 +1896,13 @@ BattleHandlers::UserAbilityEndOfMove.add(:GEHABURN,
     numFainted = 0
     targets.each { |b| numFainted += 1 if b.damageState.fainted }
     next if numFainted==0 || !user.pbCanRaiseStatStage?(PBStats::ATTACK,user)
-    if PokeBattle_SceneConstants::USE_ABILITY_SPLASH
-      battle.pbDisplay(_INTL("{1} drew power by defeating {2}!",user.pbThis,
-         b.pbThis(true)))
-    else
+#    if PokeBattle_SceneConstants::USE_ABILITY_SPLASH
+#      battle.pbDisplay(_INTL("{1} drew power by defeating {2}!",user.pbThis,
+#         b.pbThis(true)))
+#    else
       battle.pbDisplay(_INTL("{1} drew power from {2} by defeating {3}!",user.pbThis,
-         user.abilityName,b.pbThis(true)))
-    end
+         user.abilityName,b.pbThis))
+#    end
     user.pbRaiseStatStageByAbility(PBStats::ATTACK,numFainted,user)
   }
 )

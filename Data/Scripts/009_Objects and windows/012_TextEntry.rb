@@ -899,6 +899,7 @@ class PokemonEntryScene
         pbSetSystemFont(@sprites["gender"].bitmap)
         textpos=[]
 # ------ Derx: Required changes to display the Yin/Yang icons for the Puppets on the Text Entry screen				
+		imagepos=[]
 		if pokemon.species<494
 			if pokemon.isMale?
 				textpos.push([_INTL("♂"),0,0,false,Color.new(0,128,248),Color.new(168,184,184)])
@@ -907,14 +908,11 @@ class PokemonEntryScene
 			end
 		else
 			if pokemon.isMale?
-				pbDrawImagePositions(overlay,[
-					[sprintf("Graphics/Pictures/Thmn icons/gendermale"),174,67,0,0,-1,-1]
-				])
+				imagepos.push(["Graphics/Pictures/Thmn icons/gendermale",0,0,0,0,-1,-1])
 			elsif pokemon.isFemale?
-				pbDrawImagePositions(overlay,[
-					[sprintf("Graphics/Pictures/Thmn icons/genderfemale"),174,67,0,0,-1,-1]
-				])
+				imagepos.push(["Graphics/Pictures/Thmn icons/genderfemale",0,0,0,0,-1,-1])
 			end
+		pbDrawImagePositions(@sprites["gender"].bitmap,imagepos)
 		end
 # ------ Derx: End of Yin/Yang icon display on the Text Entry screen				
         pbDrawTextPositions(@sprites["gender"].bitmap,textpos)

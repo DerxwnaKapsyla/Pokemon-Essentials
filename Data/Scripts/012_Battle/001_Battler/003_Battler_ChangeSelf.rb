@@ -45,7 +45,11 @@ class PokeBattle_Battler
       pbItemHPHealCheck
 	# ------ Derx: End of Strange Mist addition
     else
-      msg = _INTL("{1} had its energy drained!",target.pbThis) if !msg || msg==""
+#	  if pbHasMoveFunction?("505")
+#		msg = _INTL("{1} was sliced with Gehaburn and had its life force absorbed!",target.pbThis(true)) if !msg || msg=="" # Derx: Code block for Gehaburn text. Not working as intended.
+#	  else
+		msg = _INTL("{1} had its energy drained!",target.pbThis) if !msg || msg==""
+#	  end
       @battle.pbDisplay(msg)
       if canHeal?
         amt = (amt*1.3).floor if hasActiveItem?(:BIGROOT)

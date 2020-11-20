@@ -636,7 +636,7 @@ ItemHandlers::UseOnPokemon.add(:MAXELIXIR,proc { |item,pkmn,scene|
 })
 
 # ------ Derx: Liquid Revive: Max Elixir + Max Revive
-ItemHandlers::UseOnPokemon.add(:MAXREVIVE,proc { |item,pkmn,scene|
+ItemHandlers::UseOnPokemon.add(:LIQUIDREVIVE,proc { |item,pkmn,scene|
   pprestored = 0
   for i in 0...pkmn.moves.length
     pprestored += pbRestorePP(pkmn,i,pkmn.moves[i].totalpp-pkmn.moves[i].pp)

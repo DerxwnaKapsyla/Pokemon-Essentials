@@ -80,9 +80,41 @@ class PokeBattle_Move_505 < PokeBattle_Move
     return if target.damageState.hpLost<=0
     hpGain = (target.damageState.hpLost/2.0).round
     user.pbRecoverHPFromDrain(hpGain,target)
+	@battle.pbDisplay(_INTL("{1} sliced {2} with Gehaburn and absorbed its life force!",user.pbThis,target.pbThis(true)))
   end
-  
-  def pbEffectGeneral(user)
-    @battle.pbDisplay(_INTL("{1} sliced {2} with Gehaburn and absorbed its life force!",user.pbThis,target.pbThis(true)))
+end
+
+#===============================================================================
+# Power is doubled in weather. Type changes depending on the weather. (Weather Ball)
+# Derx: This Weather Ball is unique to Touhoumon and uses its types instead.
+#===============================================================================
+class PokeBattle_Move_506 < PokeBattle_Move
+  def pbBaseDamage(baseDmg,user,target)
+    baseDmg *= 2 if @battle.pbWeather!=PBWeather::None
+    return baseDmg
+  end
+
+  def pbBaseType(user)
+    ret = getID(PBTypes,:ILLUSION18)
+    case @battle.pbWeather
+    when PBWeather::Sun, PBWeather::HarshSun
+      ret = getConst(PBTypes,:FIRE18) || ret
+    when PBWeather::Rain, PBWeather::HeavyRain
+      ret = getConst(PBTypes,:WATER18) || ret
+    when PBWeather::Sandstorm
+      ret = getConst(PBTypes,:BEAST18) || ret
+    when PBWeather::Hail
+      ret = getConst(PBTypes,:ICE18) || ret
+    end
+    return ret
+  end
+
+  def pbShowAnimation(id,user,targets,hitNum=0,showAnimation=true)
+    t = pbBaseType(user)
+    hitNum = 1 if isConst?(t,PBTypes,:FIRE)   # Type-specific anims
+    hitNum = 2 if isConst?(t,PBTypes,:WATER)
+    hitNum = 3 if isConst?(t,PBTypes,:ROCK)
+    hitNum = 4 if isConst?(t,PBTypes,:ICE)
+    super
   end
 end

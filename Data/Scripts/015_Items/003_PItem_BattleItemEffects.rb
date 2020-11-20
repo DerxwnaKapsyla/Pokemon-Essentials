@@ -139,7 +139,7 @@ ItemHandlers::CanUseInBattle.add(:REVIVE,proc { |item,pokemon,battler,move,first
   next true
 })
 
-ItemHandlers::CanUseInBattle.copy(:REVIVE,:MAXREVIVE,:REVIVALHERB,:LIQUIDREVIVE) # Derx: Added in a duplicate handler for Liquid Revive from Revive
+ItemHandlers::CanUseInBattle.copy(:REVIVE,:MAXREVIVE,:REVIVALHERB)
 
 ItemHandlers::CanUseInBattle.add(:ETHER,proc { |item,pokemon,battler,move,firstAction,battle,scene,showMessages|
   if !pokemon.able? || move<0 ||
@@ -172,7 +172,7 @@ ItemHandlers::CanUseInBattle.add(:ELIXIR,proc { |item,pokemon,battler,move,first
   next true
 })
 
-ItemHandlers::CanUseInBattle.copy(:ELIXIR,:MAXELIXIR,:LIQUIDREVIVE) # Derx: Added in a duplicate handler for Liquid Revive from Elixir
+ItemHandlers::CanUseInBattle.copy(:ELIXIR,:MAXELIXIR)
 
 ItemHandlers::CanUseInBattle.add(:REDFLUTE,proc { |item,pokemon,battler,move,firstAction,battle,scene,showMessages|
   if !battler || battler.effects[PBEffects::Attract]<0 ||
@@ -274,6 +274,10 @@ ItemHandlers::CanUseInBattle.add(:POKEFLUTE,proc { |item,pokemon,battler,move,fi
     next false
   end
   next true
+})
+
+ItemHandlers::CanUseInBattle.add(:LIQUIDREVIVE,proc { |item,pokemon,battler,move,firstAction,battle,scene,showMessages|
+# Derx: Elixir-like items are broken. This item has no code until Elixirs are fixed
 })
 
 #===============================================================================
@@ -508,13 +512,13 @@ ItemHandlers::BattleUseOnPokemon.add(:MAXELIXIR,proc { |item,pokemon,battler,cho
 
 # ------ Derx: Liquid Revive: Max Elixir + Max Revive
 ItemHandlers::BattleUseOnPokemon.add(:LIQUIDREVIVE,proc { |item,pokemon,battler,choices,scene|
-  for i in 0...pokemon.moves.length
-    pbBattleRestorePP(pokemon,battler,i,pokemon.moves[i].totalpp)
-    pokemon.healHP
-    pokemon.healStatus
-    scene.pbRefresh
-    scene.pbDisplay(_INTL("{1} was fully revitalized",pokemon.name))
-  end
+#  for i in 0...pokemon.moves.length
+#    pbBattleRestorePP(pokemon,battler,i,pokemon.moves[i].totalpp)
+#  end
+	pokemon.healHP
+	pokemon.healStatus
+	scene.pbRefresh
+	scene.pbDisplay(_INTL("{1} was fully revitalized!",pokemon.name))
 })
 # ------ Derx: End of Liquid Revive
 
