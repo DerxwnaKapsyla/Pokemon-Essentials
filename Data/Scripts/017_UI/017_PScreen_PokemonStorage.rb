@@ -1276,7 +1276,7 @@ class PokemonStorageScene
   def pbMark(selected,heldpoke)
     @sprites["markingbg"].visible      = true
     @sprites["markingoverlay"].visible = true
-    msg = _INTL("Mark your Pokémon.")
+    msg = _INTL("Mark your Pokémon and Puppets.") # Derx: "Removing" excplict references to Pokemon
     msgwindow = Window_UnformattedTextPokemon.newWithSize("",180,0,Graphics.width-180,32)
     msgwindow.viewport       = @viewport
     msgwindow.visible        = true

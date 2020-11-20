@@ -164,12 +164,12 @@ class StorageSystemPC
     loop do
       command = pbShowCommandsWithHelp(nil,
          [_INTL("Organize Boxes"),
-         _INTL("Withdraw Pokémon"),
-         _INTL("Deposit Pokémon"),
+         _INTL("Withdraw"), # Derx: Removing excplict references to Pokemon
+         _INTL("Deposit"), # Derx: Removing excplict references to Pokemon
          _INTL("See ya!")],
-         [_INTL("Organize the Pokémon in Boxes and in your party."),
-         _INTL("Move Pokémon stored in Boxes to your party."),
-         _INTL("Store Pokémon in your party in Boxes."),
+         [_INTL("Organize the contents of the Boxes and in your party."), # Derx: Removing excplict references to Pokemon
+         _INTL("Move the contents stored in Boxes to your party."), # Derx: Removing excplict references to Pokemon
+         _INTL("Store party members in your party in Boxes."), # Derx: Removing excplict references to Pokemon
          _INTL("Return to the previous menu.")],-1,command
       )
       if command>=0 && command<3
@@ -184,7 +184,7 @@ class StorageSystemPC
             count += 1 if p && !p.egg? && p.hp>0
           end
           if count<=1
-            pbMessage(_INTL("Can't deposit the last Pokémon!"))
+            pbMessage(_INTL("Can't deposit your last party member!")) # Derx: Removing excplict references to Pokemon
             next
           end
         end

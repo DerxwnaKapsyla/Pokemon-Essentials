@@ -205,10 +205,10 @@ end
 
 def pbRelicStone
   if !pbHasPurifiableInParty?
-    pbMessage(_INTL("You have no Pokémon that can be purified."))
+    pbMessage(_INTL("You have nothing that can be purified.")) # Derx: Removing excplict references to Pokemon
     return
   end
-  pbMessage(_INTL("There's a Pokémon that may open the door to its heart!"))
+  pbMessage(_INTL("There's someone that may open the door to its heart!")) # Derx: Removing excplict references to Pokemon
   # Choose a purifiable Pokemon
   pbChoosePokemon(1,2,proc { |pkmn|
     !pkmn.egg? && pkmn.hp>0 && pkmn.shadowPokemon? && pkmn.heartgauge==0
@@ -356,7 +356,7 @@ class PokeBattle_Battle
        !isConst?(item,PBItems,:JOYSCENT) &&
        !isConst?(item,PBItems,:EXCITESCENT) &&
        !isConst?(item,PBItems,:VIVIDSCENT)
-      scene.pbDisplay(_INTL("This item can't be used on that Pokémon."))
+      scene.pbDisplay(_INTL("This item can't be used on them.")) # Derx: Removing excplict references to Pokemon
       return false
     end
     return ret

@@ -71,7 +71,7 @@ def Kernel.pbCut
   move = getID(PBMoves,:CUT)
   movefinder = Kernel.pbCheckMove(move)
   if !pbCheckHiddenMoveBadge(BADGEFORCUT,false) || (!$DEBUG && !movefinder && $PokemonBag.pbQuantity(PBItems::AXE)==0)
-    Kernel.pbMessage(_INTL("It's a small tree. Come back then you or your Pokémon have learned to cut it."))
+    Kernel.pbMessage(_INTL("It's a small tree. Come back then you or your party members have learned to cut it."))
     return false
   end
   if Kernel.pbConfirmMessage(_INTL("Would you like to cut this small tree?"))
@@ -148,7 +148,7 @@ def Kernel.pbDive
   move = getID(PBMoves,:DIVE)
   movefinder = Kernel.pbCheckMove(move)
   if !pbCheckHiddenMoveBadge(BADGEFORDIVE,false) || (!$DEBUG && !movefinder && $PokemonBag.pbQuantity(PBItems::DIVEGEAR)==0)
-    Kernel.pbMessage(_INTL("The sea is deep here. Come back then you or your Pokémon learned to go underwater."))
+    Kernel.pbMessage(_INTL("The sea is deep here. Come back then you or your party members learned to go underwater."))
     return false
   end
   if Kernel.pbConfirmMessage(_INTL("The sea is deep here. Would you like to use Dive?"))
@@ -190,7 +190,7 @@ def Kernel.pbSurfacing
   move = getID(PBMoves,:DIVE)
   movefinder = Kernel.pbCheckMove(move)
   if !pbCheckHiddenMoveBadge(BADGEFORDIVE,false) || (!$DEBUG && !movefinder && $PokemonBag.pbQuantity(PBItems::DIVEGEAR)==0)
-    Kernel.pbMessage(_INTL("Light is filtering down from above.  Come back then you or your Pokémon learned to go underwater."))
+    Kernel.pbMessage(_INTL("Light is filtering down from above.  Come back then you or your party members learned to go underwater."))
     return false
   end
   if Kernel.pbConfirmMessage(_INTL("Light is filtering down from above. Would you like to use Dive?"))
@@ -423,7 +423,7 @@ def Kernel.pbRockSmash
   move = getID(PBMoves,:ROCKSMASH)
   movefinder = Kernel.pbCheckMove(move)
   if !pbCheckHiddenMoveBadge(BADGEFORROCKSMASH,false) || (!$DEBUG && !movefinder && $PokemonBag.pbQuantity(PBItems::PICKAXE)==0)
-    Kernel.pbMessage(_INTL("It's a rugged rock. Come back then you or your Pokémon have learned to smash it."))
+    Kernel.pbMessage(_INTL("It's a rugged rock. Come back then you or your party members have learned to smash it."))
     return false
   end
   if Kernel.pbConfirmMessage(_INTL("This rock appears to be breakable. Would you like to use Rock Smash?"))

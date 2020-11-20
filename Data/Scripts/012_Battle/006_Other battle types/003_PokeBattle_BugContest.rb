@@ -49,7 +49,7 @@ class PokeBattle_BugContestBattle < PokeBattle_Battle
        _INTL("Sport Balls: {1}",@ballCount),
        _INTL("Fight"),
        _INTL("Ball"),
-       _INTL("Pokémon"),
+       _INTL("Party"), # Derx: Removing excplict references to Pokemon
        _INTL("Run")
     ],4)
   end

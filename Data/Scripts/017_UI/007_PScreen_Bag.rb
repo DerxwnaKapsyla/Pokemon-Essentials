@@ -496,7 +496,7 @@ class PokemonBagScreen
         next
       elsif cmdGive>=0 && command==cmdGive   # Give item to Pokémon
         if $Trainer.pokemonCount==0
-          @scene.pbDisplay(_INTL("There is no Pokémon."))
+          @scene.pbDisplay(_INTL("There are no party members.")) # Derx: Removing excplict references to Pokemon
         elsif pbIsImportantItem?(item)
           @scene.pbDisplay(_INTL("The {1} can't be held.",itemname))
         else

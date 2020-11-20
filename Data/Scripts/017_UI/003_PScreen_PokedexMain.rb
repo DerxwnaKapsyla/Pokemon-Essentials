@@ -1129,7 +1129,7 @@ class PokemonPokedex_Scene
         when 8   # Start search (filter)
           dexlist = pbSearchDexList(params)
           if dexlist.length==0
-            pbMessage(_INTL("No matching Pokémon were found."))
+            pbMessage(_INTL("Nothing matching were found."))
           else
             @dexlist = dexlist
             @sprites["pokedex"].commands = @dexlist

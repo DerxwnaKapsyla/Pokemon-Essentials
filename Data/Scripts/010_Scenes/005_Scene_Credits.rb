@@ -49,7 +49,6 @@ class Scene_Credits
 #Start Editing
 CREDIT=<<_END_
 
-CREDIT=<<_END_
 
 --- Touhoumon Development Kit ---
 Credits

@@ -321,7 +321,7 @@ class PokeBattle_Battler
     # Powder
     if user.effects[PBEffects::Powder] && isConst?(move.calcType,PBTypes,:FIRE)
       @battle.pbCommonAnimation("Powder",user)
-      @battle.pbDisplay(_INTL("When the flame touched the powder on the Pokémon, it exploded!"))
+      @battle.pbDisplay(_INTL("When the flame touched the powder on the Pokémon, it exploded!")) # Derx: Look for the context of this message later
       user.lastMoveFailed = true
       w = @battle.pbWeather
       if w!=PBWeather::Rain && w!=PBWeather::HeavyRain && user.takesIndirectDamage?

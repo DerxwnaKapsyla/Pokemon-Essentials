@@ -706,7 +706,7 @@ BattleHandlers::MoveImmunityTargetAbility.add(:TELEPATHY,
     if PokeBattle_SceneConstants::USE_ABILITY_SPLASH
       battle.pbDisplay(_INTL("{1} avoids attacks by its ally!",target.pbThis(true))) # Derx: Removing excplict references to Pokemon
     else
-      battle.pbDisplay(_INTL("{1} avoids attacks by its ally Pokémon with {2}!",
+      battle.pbDisplay(_INTL("{1} avoids attacks by its ally with {2}!", # Derx: Removing excplict references to Pokemon
          target.pbThis,target.abilityName))
     end
     battle.pbHideAbilitySplash(target)
@@ -2322,7 +2322,7 @@ BattleHandlers::AbilityOnSwitchIn.add(:ANTICIPATION,
 BattleHandlers::AbilityOnSwitchIn.add(:AURABREAK,
   proc { |ability,battler,battle|
     battle.pbShowAbilitySplash(battler)
-    battle.pbDisplay(_INTL("{1} reversed all other Pokémon's auras!",battler.pbThis))
+    battle.pbDisplay(_INTL("{1} reversed all other battlers' auras!",battler.pbThis))
     battle.pbHideAbilitySplash(battler)
   }
 )

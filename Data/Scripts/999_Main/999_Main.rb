@@ -11,7 +11,7 @@ class Scene_DebugIntro
 end
 
 def pbCallTitle
-  return Scene_DebugIntro.new if $DEBUG
+  # return Scene_DebugIntro.new if $DEBUG # Derx: Commented out because I can.
   # First parameter is an array of images in the Titles
   # directory without a file extension, to show before the
   # actual title screen.  Second parameter is the actual

@@ -225,10 +225,10 @@ class PokemonDataBox < SpriteWrapper
 	else
 		case @battler.displayGender  
 		when 0 # Yang
-			imagepos=[([sprintf("Graphics/Pictures/Thmn Icons/gendermale"),@spriteBaseX+126,10,0,0,-1,-1])]
+			imagepos=[([sprintf("Graphics/Pictures/Thmn Icons/gendermale"),@spriteBaseX+120,10,0,0,-1,-1])]
 			pbDrawImagePositions(self.bitmap,imagepos)
 		when 1 # Yin
-			imagepos=[([sprintf("Graphics/Pictures/Thmn Icons/genderfemale"),@spriteBaseX+126,10,0,0,-1,-1])]
+			imagepos=[([sprintf("Graphics/Pictures/Thmn Icons/genderfemale"),@spriteBaseX+120,10,0,0,-1,-1])]
 			pbDrawImagePositions(self.bitmap,imagepos)
 		end
     end

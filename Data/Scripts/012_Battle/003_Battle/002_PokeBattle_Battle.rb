@@ -678,7 +678,7 @@ class PokeBattle_Battle
     when PBWeather::Hail;        pbDisplay(_INTL("It started to hail!"))
     when PBWeather::HarshSun;    pbDisplay(_INTL("The sunlight turned extremely harsh!"))
     when PBWeather::HeavyRain;   pbDisplay(_INTL("A heavy rain began to fall!"))
-    when PBWeather::StrongWinds; pbDisplay(_INTL("Mysterious strong winds are protecting Flying-type Pokémon!"))
+    when PBWeather::StrongWinds; pbDisplay(_INTL("Mysterious strong winds are protecting Flying-types!")) # Derx: Removing excplict references to Pokemon
     when PBWeather::ShadowSky;   pbDisplay(_INTL("A shadow sky appeared!"))
     end
     # Check for end of primordial weather, and weather-triggered form changes

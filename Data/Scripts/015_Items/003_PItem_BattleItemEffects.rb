@@ -300,7 +300,7 @@ ItemHandlers::UseInBattle.add(:POKEFLUTE,proc { |item,battler,battle|
     b.pbCureStatus(false)
   end
   scene.pbRefresh
-  scene.pbDisplay(_INTL("All Pokémon were roused by the tune!"))
+  scene.pbDisplay(_INTL("All active battlers were roused by the tune!")) # Derx: Removing excplict references to Pokemon 
 })
 
 ItemHandlers::UseInBattle.addIf(proc { |item| pbIsPokeBall?(item) },   # Poké Balls
