@@ -346,6 +346,7 @@ class HallOfFame_Scene
     overlay.clear
     pbDrawTextPositions(overlay,[[_INTL("Welcome to the Hall of Fame!"),
         Graphics.width/2,Graphics.height-80,2,BASECOLOR,SHADOWCOLOR]])
+	pbSEPlay("Applause") # Derx: Official applause sound effect
   end
 
   def pbAnimationLoop
