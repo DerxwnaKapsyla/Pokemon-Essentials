@@ -1896,12 +1896,14 @@ BattleHandlers::UserAbilityEndOfMove.add(:GEHABURN,
     numFainted = 0
     targets.each { |b| numFainted += 1 if b.damageState.fainted }
     next if numFainted==0 || !user.pbCanRaiseStatStage?(PBStats::ATTACK,user)
+	battle.pbDisplay(_INTL("{1} drew power from {2} by defeating their foes!",user.pbThis,
+		user.abilityName))
 #    if PokeBattle_SceneConstants::USE_ABILITY_SPLASH
 #      battle.pbDisplay(_INTL("{1} drew power by defeating {2}!",user.pbThis,
 #         b.pbThis(true)))
 #    else
-      battle.pbDisplay(_INTL("{1} drew power from {2} by defeating {3}!",user.pbThis,
-         user.abilityName,b.pbThis))
+#      battle.pbDisplay(_INTL("{1} drew power from {2} by defeating {3}!",user.pbThis,
+#         user.abilityName,b.pbThis(true)))
 #    end
     user.pbRaiseStatStageByAbility(PBStats::ATTACK,numFainted,user)
   }

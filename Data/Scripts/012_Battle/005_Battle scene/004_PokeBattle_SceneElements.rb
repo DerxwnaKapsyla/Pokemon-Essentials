@@ -260,7 +260,12 @@ class PokemonDataBox < SpriteWrapper
     # Draw status icon
     if @battler.status>0
       s = @battler.status
-      s = 6 if s==PBStatuses::POISON && @battler.statusCount>0   # Badly poisoned
+# ------ Derx: Changes to fix the toxic icon - NOT OFFICIAL, MIGHT BE CHANGED IN OFFICIAL FIXES  
+      if s==PBStatuses::POISON && (@battler.pbOwnSide.effects[PBEffects::ToxicSpikes]>0 ||
+        @battler.effects[PBEffects::Toxic]>0)
+        s = 6 
+      end	  
+#      s = 6 if s==PBStatuses::POISON && @battler.statusCount>0   # Badly poisoned
       imagePos.push(["Graphics/Pictures/Battle/icon_statuses",@spriteBaseX+24,36,
          0,(s-1)*STATUS_ICON_HEIGHT,-1,STATUS_ICON_HEIGHT])
     end

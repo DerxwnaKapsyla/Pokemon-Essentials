@@ -3465,7 +3465,9 @@ class PokeBattle_Move_0F7 < PokeBattle_Move
               # Fossils
               :ARMORFOSSIL,:CLAWFOSSIL,:COVERFOSSIL,:DOMEFOSSIL,:HELIXFOSSIL,
               :JAWFOSSIL,:OLDAMBER,:PLUMEFOSSIL,:ROOTFOSSIL,:SAILFOSSIL,
-              :SKULLFOSSIL
+              :SKULLFOSSIL,
+			  # ------ Derx: Touhoumon Items with Value 100
+			  :MIKOFOSSIL,:MAGIFOSSIL
              ],
        90 => [:DEEPSEATOOTH,:GRIPCLAW,:THICKCLUB,
               # Plates
@@ -3479,7 +3481,9 @@ class PokeBattle_Move_0F7 < PokeBattle_Move
        80 => [:ASSAULTVEST,:DAWNSTONE,:DUSKSTONE,:ELECTIRIZER,:MAGMARIZER,
               :ODDKEYSTONE,:OVALSTONE,:PROTECTOR,:QUICKCLAW,:RAZORCLAW,:SACHET,
               :SAFETYGOGGLES,:SHINYSTONE,:STICKYBARB,:WEAKNESSPOLICY,
-              :WHIPPEDDREAM
+              :WHIPPEDDREAM,
+			  # ------ Derx: Touhoumon Items with Value 80
+			  :CHROMESHARD
              ],
        70 => [:DRAGONFANG,:POISONBARB,
               # EV-training items (Macho Brace is 60)
@@ -3550,8 +3554,13 @@ class PokeBattle_Move_0F7 < PokeBattle_Move
               :NUGGET,:PEARL,:PEARLSTRING,:RELICBAND,:RELICCOPPER,:RELICCROWN,
               :RELICGOLD,:RELICSILVER,:RELICSTATUE,:RELICVASE,:STARDUST,
               :STARPIECE,:STRANGESOUVENIR,:TINYMUSHROOM,
-			  # ------ Derx: Touhoumon items with Valuye 30
-			  :MIRROROFYATA,:ICEBALL
+			  # ------ Derx: Touhoumon items with Value 30
+			  :MIRROROFYATA,:ICEBALL,:SOLARSHARD,:POWERSHARD,:DEFENSESHARD,
+			  :SWIFTSHARD,:TECHSHARD,:SUPPORTSHARD,:GREENUNFO,:REDUFO,
+			  :BLUEUFO,:MAIDCOSTUME,:SWEATER,:BUNNYSUIT,:CAMOUFLAGE,
+			  :BLAZER,:MISTRESS,:NINJA,:NURSE,:SWIMSUIT,:STEWARDESS,
+			  :THICKFUR,:KIMONO,:WITCH,:GOTHIC,:BRIDALGOWN,:PRIESTESS,
+			  :CHINADRESS
              ],
        20 => [# Wings
               :CLEVERWING,:GENIUSWING,:HEALTHWING,:MUSCLEWING,:PRETTYWING,
