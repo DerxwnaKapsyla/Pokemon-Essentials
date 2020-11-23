@@ -606,7 +606,15 @@ BattleHandlers::DamageCalcUserItem.add(:HARDSTONE,
   }
 )
 
-BattleHandlers::DamageCalcUserItem.copy(:HARDSTONE,:STONEPLATE,:ROCKINCENSE)
+BattleHandlers::DamageCalcUserItem.copy(:HARDSTONE,:STONEPLATE) # Derx: Changed so that Rock Incense Incense has its own entry, to allow it to buff Earth Types
+
+# ------ Derx: New entry for Rock Incense so it can buff Earth Types
+BattleHandlers::DamageCalcUserItem.add(:ROCKINCENSE,
+  proc { |item,user,target,move,mults,baseDmg,type|
+    mults[BASE_DMG_MULT] *= 1.2 if isConst?(type,PBTypes,:EARTH)
+  }
+)
+# ------ Derx: End of Rock Incense's new entry
 
 BattleHandlers::DamageCalcUserItem.add(:ICEGEM,
   proc { |item,user,target,move,mults,baseDmg,type|
@@ -678,7 +686,15 @@ BattleHandlers::DamageCalcUserItem.add(:MIRACLESEED,
   }
 )
 
-BattleHandlers::DamageCalcUserItem.copy(:MIRACLESEED,:MEADOWPLATE,:ROSEINCENSE)
+BattleHandlers::DamageCalcUserItem.copy(:MIRACLESEED,:MEADOWPLATE) # Derx: Changed so that Rose Incense Incense has its own entry, to allow it to buff Nature Types
+
+# ------ Derx: New entry for Rose Incense so it can buff Nature Types
+BattleHandlers::DamageCalcUserItem.add(:ROseINCENSE,
+  proc { |item,user,target,move,mults,baseDmg,type|
+    mults[BASE_DMG_MULT] *= 1.2 if isConst?(type,PBTypes,:NATURE)
+  }
+)
+# ------ Derx: End of Nature Incense's new entry
 
 BattleHandlers::DamageCalcUserItem.add(:MUSCLEBAND,
   proc { |item,user,target,move,mults,baseDmg,type|
@@ -692,7 +708,17 @@ BattleHandlers::DamageCalcUserItem.add(:MYSTICWATER,
   }
 )
 
-BattleHandlers::DamageCalcUserItem.copy(:MYSTICWATER,:SPLASHPLATE,:SEAINCENSE,:WAVEINCENSE)
+BattleHandlers::DamageCalcUserItem.copy(:MYSTICWATER,:SPLASHPLATE) # Derx: Changed so that Sea Incense has its own entry, to allow it to buff Touhoumon Water
+
+# ------ Derx: New entry for Sea Incense so it can buff Touhoumon Water
+BattleHandlers::DamageCalcUserItem.add(:SEAINCENSE,
+  proc { |item,user,target,move,mults,baseDmg,type|
+    mults[BASE_DMG_MULT] *= 1.2 if isConst?(type,PBTypes,:WATER)
+  }
+)
+
+BattleHandlers::DamageCalcUserItem.copy(:SEAINCENSE,:WAVEINCENSE) # Derx: While Wave Incense was added in Gen 4... Free shrugs1
+# ------ Derx: End of Sea Incense's new entry
 
 BattleHandlers::DamageCalcUserItem.add(:NEVERMELTICE,
   proc { |item,user,target,move,mults,baseDmg,type|
@@ -823,7 +849,15 @@ BattleHandlers::DamageCalcUserItem.add(:TWISTEDSPOON,
   }
 )
 
-BattleHandlers::DamageCalcUserItem.copy(:TWISTEDSPOON,:MINDPLATE,:ODDINCENSE)
+BattleHandlers::DamageCalcUserItem.copy(:TWISTEDSPOON,:MINDPLATE) # Derx: Changed so that Odd Incense has its own entry, to allow it to buff Reason Types
+
+# ------ Derx: New enrey for Odd Incense to so it can buff Reason Types
+BattleHandlers::DamageCalcUserItem.add(:ODDINCENSE,
+  proc { |item,user,target,move,mults,baseDmg,type|
+    mults[BASE_DMG_MULT] *= 1.2 if (isConst?(type,PBTypes,:PSYCHIC) || isConst?(type,PBTypes,:REASON18))
+  }
+)
+# ------ Derx: End of Odd Incense addition
 
 BattleHandlers::DamageCalcUserItem.add(:WATERGEM,
   proc { |item,user,target,move,mults,baseDmg,type|

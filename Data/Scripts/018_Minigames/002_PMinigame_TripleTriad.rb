@@ -1,6 +1,9 @@
 #===============================================================================
 # "Triple Triad" mini-game
 # By Unknown
+# Derxwna: All of the edits in this section were to make it use coins instead
+#          of money. Because fuck if I'm dropping 20000 on an Arceus card.
+#          The coin values MAY need to be rebalanced though lol.
 #===============================================================================
 #===============================================================================
 # Card class
@@ -71,10 +74,10 @@ class TriadCard
     ret *= (@north+@east+@south+@west)
     ret /= 10   # Ranges from 2 to 24,000
     # Quantize prices to the next highest "unit"
-    if ret>10000;   ret = (1+ret/1000)*1000
-    elsif ret>5000; ret = (1+ret/500)*500
-    elsif ret>1000; ret = (1+ret/100)*100
-    elsif ret>500;  ret = (1+ret/50)*50
+    if ret>10000;   ret = (1+ret/1000)*500 # Derx: Formerly 1000
+    elsif ret>5000; ret = (1+ret/500)*250  # Derx: Formerly 500
+    elsif ret>1000; ret = (1+ret/100)*50   # Derx: Formerly 100
+    elsif ret>500;  ret = (1+ret/50)*25    # Derx: Formerly 50
     else;           ret = (1+ret/10)*10
     end
     return ret
@@ -1070,8 +1073,8 @@ def pbBuyTriads
     speciesname = PBSpecies.getName(i)
     next if !speciesname
     price = TriadCard.new(i).price
-    visprice = price.to_s_formatted
-    commands.push([price,speciesname,_INTL("{1} - ${2}",speciesname,visprice),i])
+
+    commands.push([price,speciesname,_INTL("{1} - {2} Coins",speciesname,price),i]) # Derx: Removed "visprice" line, changed to Coins
   end
   if commands.length==0
     pbMessage(_INTL("There are no cards that you can buy."))
@@ -1086,8 +1089,9 @@ def pbBuyTriads
   pbScrollMap(4,3,5)
   cmdwindow = Window_CommandPokemonEx.newWithSize(realcommands,0,0,Graphics.width/2,Graphics.height)
   cmdwindow.z = 99999
+  moneyString=_INTL("{1}",$PokemonGlobal.coins) # Derx: changed to Coins
   goldwindow = Window_UnformattedTextPokemon.newWithSize(
-     _INTL("Money:\r\n{1}",pbGetGoldString),0,0,32,32)
+     _INTL("Coins:\n{1}",moneyString),0,0,32,32) # Derx: changed to Coins
   goldwindow.resizeToFit(goldwindow.text,Graphics.width)
   goldwindow.x = Graphics.width-goldwindow.width
   goldwindow.y = 0
@@ -1118,11 +1122,11 @@ def pbBuyTriads
       itemname = commands[cmdwindow.index][1]
       cmdwindow.active = false
       cmdwindow.update
-      if $Trainer.money<price
-        pbMessage(_INTL("You don't have enough money."))
+      if $PokemonGlobal.coins<price # Derx: Removed changed to Coins
+        pbMessage(_INTL("You don't have enough coins.")) # Derx: changed to Coins
         next
       end
-      maxafford = (price<=0) ? 99 : $Trainer.money/price
+        maxafford=(price<=0) ? 99 : $PokemonGlobal.coins/price # Derx: changed to Coins
       maxafford = 99 if maxafford>99
       params = ChooseNumberParams.new
       params.setRange(1,maxafford)
@@ -1132,9 +1136,9 @@ def pbBuyTriads
          _INTL("The {1} card? Certainly. How many would you like?",itemname),params)
       next if quantity<=0
       price *= quantity
-      next if !pbConfirmMessage(_INTL("{1}, and you want {2}. That will be ${3}. OK?",itemname,quantity,price.to_s_formatted))
-      if $Trainer.money<price
-        pbMessage(_INTL("You don't have enough money."))
+      next if !pbConfirmMessage(_INTL("{1}, and you want {2}. That will be {3} coins. OK?",itemname,quantity,price.to_s_formatted)) # Derx: changed to Coins
+      if $PokemonGlobal.coins<price # Derx: changed to Coins
+        pbMessage(_INTL("You don't have enough coins.")) # Derx: changed to Coins
         next
       end
       if !$PokemonGlobal.triads.pbCanStore?(item,quantity)
@@ -1142,8 +1146,9 @@ def pbBuyTriads
         next
       end
       $PokemonGlobal.triads.pbStoreItem(item,quantity)
-      $Trainer.money -= price
-      goldwindow.text = _INTL("Money:\r\n{1}",pbGetGoldString)
+      $PokemonGlobal.coins -= price # Derx: changed to Coins
+	  moneyString=_INTL("{1}",$PokemonGlobal.coins)	# Derx: changed to Coins
+      goldwindow.text = _INTL("Coins:\r\n{1}",moneyString) # Derx: changed to Coins
       pbMessage(_INTL("Here you are! Thank you!\\se[Mart buy item]"))
     end
   end
@@ -1172,8 +1177,9 @@ def pbSellTriads
   pbScrollMap(4,3,5)
   cmdwindow = Window_CommandPokemonEx.newWithSize(commands,0,0,Graphics.width/2,Graphics.height)
   cmdwindow.z = 99999
+  moneyString=_INTL("{1}",$PokemonGlobal.coins)	# Derx: changed to Coins
   goldwindow = Window_UnformattedTextPokemon.newWithSize(
-     _INTL("Money:\r\n{1}",pbGetGoldString),0,0,32,32)
+     _INTL("Coins:\r\n{1}",moneyString),0,0,32,32) # Derx: changed to Coins
   goldwindow.resizeToFit(goldwindow.text,Graphics.width)
   goldwindow.x = Graphics.width-goldwindow.width
   goldwindow.y = 0
@@ -1232,11 +1238,12 @@ def pbSellTriads
         if quantity>0
           price /= 4
           price *= quantity
-          if pbConfirmMessage(_INTL("I can pay ${1}. Would that be OK?",price.to_s_formatted))
-            $Trainer.money += price
-            goldwindow.text = _INTL("Money:\r\n{1}",pbGetGoldString)
+          if pbConfirmMessage(_INTL("I can pay {1} coins. Would that be OK?",price.to_s_formatted))	# Derx: changed to Coins
+            $PokemonGlobal.coins += price # Derx: changed to Coins
+			moneyString=_INTL("{1}",$PokemonGlobal.coins) # Derx: changed to Coins
+            goldwindow.text = _INTL("Coins:\r\n{1}",moneyString) # Derx: changed to Coins
             $PokemonGlobal.triads.pbDeleteItem(item,quantity)
-            pbMessage(_INTL("Turned over the {1} card and received ${2}.\\se[Mart buy item]",itemname,price.to_s_formatted))
+            pbMessage(_INTL("Turned over the {1} card and received {2} coins.\\se[Mart buy item]",itemname,price.to_s_formatted)) # Derx: changed to Coins
             commands = []
             for i in 0...$PokemonGlobal.triads.length
               item = $PokemonGlobal.triads[i]
@@ -1318,3 +1325,4 @@ def pbGiveTriadCard(species,quantity=1)
   $PokemonGlobal.triads.pbStoreItem(species,quantity)
   return true
 end
+
