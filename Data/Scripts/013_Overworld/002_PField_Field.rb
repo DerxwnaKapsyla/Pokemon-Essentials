@@ -342,6 +342,19 @@ Events.onStepTakenFieldMovement += proc { |_sender,e|
     currentTag = pbGetTerrainTag(event)
     if PBTerrain.isJustGrass?(pbGetTerrainTag(event,true))  # Won't show if under bridge
       $scene.spriteset.addUserAnimation(GRASS_ANIMATION_ID,event.x,event.y,true,1)
+	# ------ Derx: Addition of Boonzeet's Puddle Script
+	# ------ Link: https://reliccastle.com/resources/313/
+	elsif pbGetTerrainTag(event,true) == PBTerrain::Puddle
+      if event == $game_player
+        pbSEPlay("puddle", 100)
+      else # reduce sound effect volume further away from player
+        dist = ((event.x-$game_player.x).abs+(event.y-$game_player.y).abs)
+        if dist <= 6 && dist >= 0
+          pbSEPlay("puddle", [80,80,80,80,70,40,25][dist])
+        end
+      end
+      $scene.spriteset.addUserAnimation(PUDDLE_ANIMATION_ID,event.x,event.y,true,0)
+	# ------ Derx: End of Boonzeet's Puddle Script addition
     elsif event==$game_player
       if currentTag==PBTerrain::WaterfallCrest
         # Descend waterfall, but only if this event is the player

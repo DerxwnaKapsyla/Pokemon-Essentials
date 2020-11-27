@@ -341,6 +341,7 @@ RUSTLE_NORMAL_ANIMATION_ID   = 1
 RUSTLE_VIGOROUS_ANIMATION_ID = 5
 RUSTLE_SHINY_ANIMATION_ID    = 6
 PLANT_SPARKLE_ANIMATION_ID   = 7
+PUDDLE_ANIMATION_ID          = 8 # Derx: Necessary for Boonzeet's Puddle Script
 
 #===============================================================================
 # * An array of available languages in the game, and their corresponding
