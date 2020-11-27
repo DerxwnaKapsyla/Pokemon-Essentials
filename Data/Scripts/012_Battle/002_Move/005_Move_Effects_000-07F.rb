@@ -87,37 +87,12 @@ end
 #===============================================================================
 # Badly poisons the target. (Poison Fang, Toxic)
 #===============================================================================
-#class PokeBattle_Move_006 < PokeBattle_PoisonMove
-#  def initialize(battle,move)
-#    super
-#    @toxic = true
-#  end
-#
-#  def pbOverrideSuccessCheckPerHit(user,target)
-#    return (NEWEST_BATTLE_MECHANICS && statusMove? && user.pbHasType?(:POISON))
-#  end
-#end
-# ------ Derx: Changes made to fix Toxic's icon - NOT OFFICIAL, MIGHT BE CHANGED IN OFFICIAL FIXES
 class PokeBattle_Move_006 < PokeBattle_PoisonMove
   def initialize(battle,move)
     super
     @toxic = true
   end
 
-  def pbEffectAgainstTarget(user,target)
-    return if damagingMove?
-    target.effects[PBEffects::Toxic] = 1
-    target.pbPoison(user,nil,@toxic)
-  end
-
-  def pbAdditionalEffect(user,target)
-    return if target.damageState.substitute
-    if target.pbCanPoison?(user,false,self)
-      target.effects[PBEffects::Toxic] = 1
-      target.pbPoison(user,nil,@toxic) 
-    end
-  end
-  
   def pbOverrideSuccessCheckPerHit(user,target)
     return (NEWEST_BATTLE_MECHANICS && statusMove? && user.pbHasType?(:POISON))
   end

@@ -342,8 +342,8 @@ class PokeBattle_Battle
       next if b.status!=PBStatuses::POISON
       if b.statusCount>0
         b.effects[PBEffects::Toxic] += 1
-        #b.effects[PBEffects::Toxic] = 15 if b.effects[PBEffects::Toxic]>15
-        b.effects[PBEffects::Toxic] = 16 if b.effects[PBEffects::Toxic]>16 		# Derx: Changes to fix toxic - NOT OFFICIAL, MIGHT BE CHANGED IN OFFICIAL FIXES
+        b.effects[PBEffects::Toxic] = 15 if b.effects[PBEffects::Toxic]>15
+        #b.effects[PBEffects::Toxic] = 16 if b.effects[PBEffects::Toxic]>16 		# Derx: Changes to fix toxic - NOT OFFICIAL, MIGHT BE CHANGED IN OFFICIAL FIXES
       end
       if b.hasActiveAbility?(:POISONHEAL)
         if b.canHeal?
@@ -359,8 +359,8 @@ class PokeBattle_Battle
         end
       elsif b.takesIndirectDamage?
         oldHP = b.hp
-        #dmg = (b.statusCount==0) ? b.totalhp/8 : b.totalhp*b.effects[PBEffects::Toxic]/16
-        dmg = (b.statusCount==0) ? b.totalhp/8 : b.totalhp*(b.effects[PBEffects::Toxic]-1)/16 		# Derx: Changes to fix toxic - NOT OFFICIAL, MIGHT BE CHANGED IN OFFICIAL FIXES
+        dmg = (b.statusCount==0) ? b.totalhp/8 : b.totalhp*b.effects[PBEffects::Toxic]/16
+        #dmg = (b.statusCount==0) ? b.totalhp/8 : b.totalhp*(b.effects[PBEffects::Toxic]-1)/16 		# Derx: Changes to fix toxic - NOT OFFICIAL, MIGHT BE CHANGED IN OFFICIAL FIXES
         b.pbContinueStatus { b.pbReduceHP(dmg,false) }
         b.pbItemHPHealCheck
         b.pbAbilitiesOnDamageTaken(oldHP)
