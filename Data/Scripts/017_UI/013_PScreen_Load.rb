@@ -100,10 +100,16 @@ class PokemonLoad_Scene
     @viewport = Viewport.new(0,0,Graphics.width,Graphics.height)
     @viewport.z = 99998
     # ------ Derx: Adds in a randomized load background
-    case rand(2)
-		when 0; loadbg = "load_orb" 		# Yin-Yang Orb
-		when 1; loadbg = "load_hakkero" 	# Mini-Hakkero
-    end
+#    case rand(2)
+#		when 0; loadbg = "load_orb" 		# Yin-Yang Orb
+#		when 1; loadbg = "load_hakkero" 	# Mini-Hakkero
+#    end
+	# ------ Array code provided by Marin, who pointed out an alternate way of doing it
+	bgs = [
+		"load_orb",		# Yin-Yang Orb
+		"load_hakkero"	# Mini-Hakkero
+	]	
+	loadbg = bgs[rand(bgs.size)]
       addBackgroundOrColoredPlane(@sprites,"background",loadbg,Color.new(248,248,248),@viewport) # This line was changed so that loadbg is now a variable instead of a direct file
     # ------ Derx: End of randomized load backgrounds
     y = 16*2
