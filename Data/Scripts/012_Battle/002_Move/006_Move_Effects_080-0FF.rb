@@ -3298,7 +3298,8 @@ class PokeBattle_Move_0F2 < PokeBattle_Move
       @battle.pbDisplay(_INTL("But it failed!"))
       return true
     end
-    if target.hasActiveAbility?(:STICKYHOLD) && !@battle.moldBreaker
+    if (target.hasActiveAbility?(:STICKYHOLD) ||
+		target.hasActiveAbility?(:COLLECTOR)) && !@battle.moldBreaker # Derx: Added a check for if the target has Collector
       @battle.pbShowAbilitySplash(target)
       if PokeBattle_SceneConstants::USE_ABILITY_SPLASH
         @battle.pbDisplay(_INTL("But it failed to affect {1}!",target.pbThis(true)))

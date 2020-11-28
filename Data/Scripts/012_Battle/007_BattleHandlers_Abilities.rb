@@ -977,21 +977,12 @@ BattleHandlers::DamageCalcUserAbility.add(:FLAREBOOST,
 
 BattleHandlers::DamageCalcUserAbility.add(:FLASHFIRE,
   proc { |ability,user,target,move,mults,baseDmg,type|
-    if user.effects[PBEffects::FlashFire] && isConst?(type,PBTypes,:FIRE)
+    if user.effects[PBEffects::FlashFire] && (isConst?(type,PBTypes,:FIRE) || isConst?(type,PBTypes,:FIRE18)) # Derx: Made it so Touhoumon Fire interacts with Flash Fire
       mults[ATK_MULT] *= 1.5
     end
   }
 )
 
-# ------ Derx: Made it so Touhoumon Fire interacts with Flash Fire
-BattleHandlers::DamageCalcUserAbility.add(:FLASHFIRE,
-  proc { |ability,user,target,move,mults,baseDmg,type|
-    if user.effects[PBEffects::FlashFire] && isConst?(type,PBTypes,:FIRE18)
-      mults[ATK_MULT] *= 1.5
-    end
-  }
-)
-# ------ Derx: End of Flash Fire interaction
 
 BattleHandlers::DamageCalcUserAbility.add(:FLOWERGIFT,
   proc { |ability,user,target,move,mults,baseDmg,type|

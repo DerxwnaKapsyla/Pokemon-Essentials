@@ -536,9 +536,9 @@ class PokeBattle_Battler
 # ------ Derx: Special Addition: Diva - Allows anyone with Diva to successfully use Attract on any gender
 # ------ This code is commented out because I'm not 100% sure if I want to use it.
 # ------ Feel free to use if you want!
-#    if attacker.hasWorkingAbility(:DIVA)
-#          return true
-#    end
+    if user.hasActiveAbility?(:DIVA)
+          return true
+    end
 # ------ Derx: End of Diva addition
     if agender==2 || ogender==2 || agender==ogender
       @battle.pbDisplay(_INTL("{1} is unaffected!",pbThis)) if showMessages
