@@ -92,11 +92,11 @@ class Game_Screen
 		 pbBGSPlay("Storm.ogg")
 	elsif @weather_type_target == 3 # Snow
 		 pbBGSPlay("Snow")
-	elsif @weather_type_target == 4 # Sandstorm
+	elsif @weather_type_target == 4 # Blizzard
 		 pbBGSPlay("Blizzard")
 	elsif @weather_type_target == 5 # Sandstorm
 		 pbBGSPlay("Darude Sandstorm")
-	elsif @weather_type_target == 6 # Sandstorm
+	elsif @weather_type_target == 6 # Heavy Rain
 		 pbBGSPlay("HeavyStorm.ogg")
 	elsif @weather_type_target == 7 # Sunny
 		 pbBGSPlay("Sunny")

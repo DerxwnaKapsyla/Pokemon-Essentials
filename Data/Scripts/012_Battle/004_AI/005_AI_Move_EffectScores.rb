@@ -164,11 +164,11 @@ class PokeBattle_AI
         end
       end
     #---------------------------------------------------------------------------
-    when "016" # Derx: Figure out how Diva's code would be implemented here
+    when "016"
       canattract = true
       agender = user.gender
       ogender = target.gender
-      if agender==2 || ogender==2 || agender==ogender
+      if (agender==2 || ogender==2 || agender==ogender) && !user.hasActiveAbility?(:DIVA) # Derx: Addition of Diva to the Attract checks
         score -= 90; canattract = false
       elsif target.effects[PBEffects::Attract]>=0
         score -= 80; canattract = false

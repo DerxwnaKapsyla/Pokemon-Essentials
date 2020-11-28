@@ -181,6 +181,7 @@ SoulfulLex: Various misc improvements
 
 --- Producers ---
 ChaoticInfinity Development
+Overseer Household
 
 
 
@@ -253,6 +254,7 @@ Please support the official games!
 Touhoumon Development Kit
 2011-2020<s>DerxwnaKapsyla
 2012-2020<s>ChaoticInfinity Development
+2020-2020<s>Overseer Household
 Based on Pokémon Essentials
 
 

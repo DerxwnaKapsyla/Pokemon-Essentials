@@ -276,9 +276,26 @@ ItemHandlers::CanUseInBattle.add(:POKEFLUTE,proc { |item,pokemon,battler,move,fi
   next true
 })
 
+# ------ Derx: Liquid Revive: Max Elixir + Max Revive
 ItemHandlers::CanUseInBattle.add(:LIQUIDREVIVE,proc { |item,pokemon,battler,move,firstAction,battle,scene,showMessages|
-# Derx: Elixir-like items are broken. This item has no code until Elixirs are fixed
+  if pokemon.able? || pokemon.egg?
+    scene.pbDisplay(_INTL("It won't have any effect.")) if showMessages
+    next false
+  end
+  canRestore = false
+  for m in pokemon.moves
+    next if m.id==0
+    next if m.totalpp<=0 || m.pp==m.totalpp
+    canRestore = true
+    break
+  end
+  if !canRestore
+    scene.pbDisplay(_INTL("It won't have any effect.")) if showMessages
+    next false
+  end
+  next true
 })
+# ------ Derx: End of Liquid Revive code
 
 #===============================================================================
 # UseInBattle handlers
@@ -512,12 +529,12 @@ ItemHandlers::BattleUseOnPokemon.add(:MAXELIXIR,proc { |item,pokemon,battler,cho
 
 # ------ Derx: Liquid Revive: Max Elixir + Max Revive
 ItemHandlers::BattleUseOnPokemon.add(:LIQUIDREVIVE,proc { |item,pokemon,battler,choices,scene|
-#  for i in 0...pokemon.moves.length
-#    pbBattleRestorePP(pokemon,battler,i,pokemon.moves[i].totalpp)
-#  end
 	pokemon.healHP
 	pokemon.healStatus
 	scene.pbRefresh
+	for i in 0...pokemon.moves.length
+		pbBattleRestorePP(pokemon,battler,i,pokemon.moves[i].totalpp)
+	end
 	scene.pbDisplay(_INTL("{1} was fully revitalized!",pokemon.name))
 })
 # ------ Derx: End of Liquid Revive
