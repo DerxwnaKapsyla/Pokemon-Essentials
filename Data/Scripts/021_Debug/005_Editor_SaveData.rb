@@ -685,6 +685,7 @@ def pbSavePokemonData
     item2            = speciesData[i][SpeciesWildItemUncommon] || 0
     item3            = speciesData[i][SpeciesWildItemRare] || 0
     incense          = speciesData[i][SpeciesIncense] || 0
+	classification	 = speciesData[i][SpeciesClassification] || 0 # Derx: Necessary for Pokemon/Touhoumon/etc split
     pokedata.write("\#-------------------------------\r\n")
     pokedata.write("[#{i}]\r\nName = #{speciesname}\r\n")
     pokedata.write("InternalName = #{cname}\r\n")
@@ -951,6 +952,7 @@ def pbSavePokemonFormsData
     origdata["item2"]            = speciesData[species][SpeciesWildItemUncommon] || 0
     origdata["item3"]            = speciesData[species][SpeciesWildItemRare] || 0
     origdata["incense"]          = speciesData[species][SpeciesIncense] || 0
+	origdata["classification"]	 = speciesData[species][SpeciesClassification] || # Derx: Necessary for Pokemon/Touhoumon/etc split
     abilities = speciesData[i][SpeciesAbilities]
     if abilities.is_a?(Array)
       ability1       = abilities[0] || 0

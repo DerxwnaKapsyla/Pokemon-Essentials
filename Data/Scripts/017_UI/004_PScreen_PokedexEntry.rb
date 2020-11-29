@@ -188,13 +188,13 @@ class PokemonPokedexInfo_Scene
         case thisform[1]
 # ------ Derx: Changes to display the _phrase_ Yin or Yang on the form display screen for Puppets					
         when 0; 
-			if @species<494
+			if pbGetSpeciesData(@species,@form,SpeciesClassification)==0
 				thisformname = _INTL("Male")
 			else
 				thisformname = _INTL("Yin")
 			end
         when 1; 
-			if @species<494
+			if pbGetSpeciesData(@species,@form,SpeciesClassification)==0
 				thisformname = _INTL("Female")
 			else
 				thisformname = _INTL("Yang")
@@ -251,7 +251,7 @@ class PokemonPokedexInfo_Scene
           246,42,0,Color.new(248,248,248),Color.new(0,0,0)],
        [_INTL("Height"),314,158,0,base,shadow],
 # ------ Derx: Puppets don't use Weight. They use cost.
-       if @species<494
+       if pbGetSpeciesData(@species,@form,SpeciesClassification)==0
        [_INTL("Weight"),314,190,0,base,shadow]
 	   else
 		[_INTL("Cost"),314,190,0,base,shadow]
@@ -265,7 +265,7 @@ class PokemonPokedexInfo_Scene
       kind = pbGetMessage(MessageTypes::Kinds,fSpecies)
       kind = pbGetMessage(MessageTypes::Kinds,@species) if !kind || kind==""
 # ------ Derx: Differentiates between Pokemon and Puppet
-	  if @species<494
+	  if pbGetSpeciesData(@species,@form,SpeciesClassification)==0
       textpos.push([_INTL("{1} Pokémon",kind),246,74,0,base,shadow])
 	  else
 		textpos.push([_INTL("{1} Puppet",kind),246,74,0,base,shadow])
@@ -275,7 +275,7 @@ class PokemonPokedexInfo_Scene
       height = speciesData[SpeciesHeight] || 1
       weight = speciesData[SpeciesWeight] || 1
 # ------ Derx: Puppets use Cost. Not Weight. This'll remove kg/lbs from their entries.
-	  if @species<494
+	  if pbGetSpeciesData(@species,@form,SpeciesClassification)==0
         if pbGetCountry==0xF4   # If the user is in the United States
           inches = (height/0.254).round
           pounds = (weight/0.45359).round
@@ -320,13 +320,13 @@ class PokemonPokedexInfo_Scene
     else
       # Write the kind
 # ------ Derx: Makes changes to the Un-Owned Puppets to display proper information			
-      if @species<494
+      if pbGetSpeciesData(@species,@form,SpeciesClassification)==0
 		textpos.push([_INTL("????? Pokémon"),246,74,0,base,shadow])
 	  else
 		textpos.push([_INTL("????? Puppet"),246,74,0,base,shadow])
 	  end			
       # Write the height and weight
-      if @species<494
+      if pbGetSpeciesData(@species,@form,SpeciesClassification)==0
 	    if pbGetCountry()==0xF4 # If the user is in the United States
 		  textpos.push([_INTL("???'??\""),460,158,1,base,shadow])
 		  textpos.push([_INTL("????.? lbs."),494,190,1,base,shadow])

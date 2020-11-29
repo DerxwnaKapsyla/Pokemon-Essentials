@@ -336,7 +336,7 @@ class PokemonSummary_Scene
     end
     # Write the gender symbol
 # ------ Derx: Differentiation of Pokemon and Puppet gender icons
-  if @pokemon.species<494
+  if pbGetSpeciesData(@pokemon.species,@pokemon.form,SpeciesClassification)==0
     if @pokemon.male?
       textpos.push([_INTL("♂"),178,62,0,Color.new(24,112,216),Color.new(136,168,208)])
     elsif @pokemon.female?

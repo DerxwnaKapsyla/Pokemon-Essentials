@@ -144,6 +144,7 @@ SpeciesMegaStone        = 23   # For alternate forms
 SpeciesMegaMove         = 24   # For alternate forms
 SpeciesUnmegaForm       = 25   # For alternate forms
 SpeciesMegaMessage      = 26   # For alternate forms
+SpeciesClassification	= 27   # Derx: Necessary for the Pokemon/Touhoumon/Etc split
 
 MetricBattlerPlayerX    = 0
 MetricBattlerPlayerY    = 1
@@ -200,7 +201,12 @@ module PokemonSpeciesData
       "BattlerShadowSize"   => [MetricBattlerShadowSize, "u"],
       "EggMoves"            => [0,                       "*e", :PBMoves],
       "FormName"            => [0,                       "q"],
-      "Evolutions"          => [0,                       "*ses", nil, :PBEvolution, nil]
+      "Evolutions"          => [0,                       "*ses", nil, :PBEvolution, nil],
+	  "Classification"      => [SpeciesClassification,   "u",] # Derx: Corresponds to the differentiation of Pokemon and Non-Pokemon 
+															   # entites, to allow for reinsertion of Pokemon from Gen 5 onward without 
+															   # needing to break the code open every time a new Pokemon species is added, 
+															   # as well as the potential for Non-Pokemon and Non-Puppet species to get 
+															   # their own unique definitions.
     }
     if compilingForms
       ret["PokedexForm"]     = [SpeciesPokedexForm,      "u"]

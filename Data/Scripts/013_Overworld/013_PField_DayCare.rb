@@ -86,9 +86,9 @@ def pbDayCareChoose(text,variable)
     choices=[]
     for i in 0...2
       pokemon=$PokemonGlobal.daycare[i][0]
-      if pokemon.isMale? && pokemon.species>=494
+      if pokemon.isMale? && pbGetSpeciesData(pokemon.species,pokemon.form,SpeciesClassification)==1
         choices.push(_ISPRINTF("<c3=585850,a8b8b8>{1:s} (<icon=yin>, Lv{2:d})</c3>",pokemon.name,pokemon.level))
-      elsif pokemon.isFemale? && pokemon.species>=494
+      elsif pokemon.isFemale? && pbGetSpeciesData(pokemon.species,pokemon.form,SpeciesClassification)==1
         choices.push(_ISPRINTF("<c3=585850,a8b8b8>{1:s} (<icon=yang>, Lv{2:d})</c3>",pokemon.name,pokemon.level))
       elsif pokemon.isMale?
         choices.push(_ISPRINTF("<c3=585850,a8b8b8>{1:s} (</c3><c3=0080f8,a8b8b8>♂</c3><c3=585850,a8b8b8>, Lv{2:d})</c3>",pokemon.name,pokemon.level))

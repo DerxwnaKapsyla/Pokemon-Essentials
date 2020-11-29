@@ -900,7 +900,7 @@ class PokemonEntryScene
         textpos=[]
 # ------ Derx: Required changes to display the Yin/Yang icons for the Puppets on the Text Entry screen				
 		imagepos=[]
-		if pokemon.species<494
+		if pbGetSpeciesData(pokemon.species,pokemon.form,SpeciesClassification)==0
 			if pokemon.isMale?
 				textpos.push([_INTL("♂"),0,0,false,Color.new(0,128,248),Color.new(168,184,184)])
 			elsif pokemon.isFemale?
@@ -1190,7 +1190,7 @@ class PokemonEntryScene2
         textpos=[]
 # ------ Derx: Required changes to display the Yin/Yang icons for the Puppets on the Text Entry screen				
 		imagepos=[]
-		if pokemon.species<494
+		if pbGetSpeciesData(pokemon.species,pokemon.form,SpeciesClassification)==0
 			if pokemon.isMale?
 				textpos.push([_INTL("♂"),0,0,false,Color.new(0,128,248),Color.new(168,184,184)])
 			elsif pokemon.isFemale?

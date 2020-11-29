@@ -1409,7 +1409,7 @@ class PokemonStorageScene
     if !pokemon.egg?
       imagepos = []
 # ------ Derx: Displays Yin/Yang Orbs for the Puppets and Male/Female for Pokemon in the PC
-    if pokemon.species<494
+    if pbGetSpeciesData(pokemon.species,pokemon.form,SpeciesClassification)==0
       if pokemon.male?
         textstrings.push([_INTL("♂"),148,8,false,Color.new(24,112,216),Color.new(136,168,208)])
       elsif pokemon.female?

@@ -381,7 +381,7 @@ class PokemonPartyPanel < SpriteWrapper
         end
         # Draw gender symbol
 		# ------ Derx: Assigns proper gender icons to the Pokemon and Puppets
-		if @pokemon.species<494
+		if pbGetSpeciesData(@pokemon.species,@pokemon.form,SpeciesClassification)==0
 			if @pokemon.male?
 			  textpos.push([_INTL("♂"),224,16,0,Color.new(0,112,248),Color.new(120,184,232)])
 			elsif @pokemon.female?

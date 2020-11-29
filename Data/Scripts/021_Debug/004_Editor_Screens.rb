@@ -884,6 +884,7 @@ def pbPokemonEditor
           item2            = speciesData[SpeciesWildItemUncommon]
           item3            = speciesData[SpeciesWildItemRare]
           incense          = speciesData[SpeciesIncense]
+		  classification   = speciesData[SpeciesClassification] # Derx: Necessary for Pokemon/Touhoumon/etc split
           originalMoveset = pbGetSpeciesMoveset(selection)
           movelist = []
           originalMoveset.each_with_index { |m,i| movelist.push([m[0],m[1],i]) }
@@ -942,6 +943,7 @@ def pbPokemonEditor
           data.push(metrics[MetricBattlerShadowSize][selection] || 2)   # 40
           data.push(evolutions)                     # 41
           data.push(incense)                        # 42
+		  data.push(classification)					# 43 - Derx: Necessary for Pokemon/Touhoumon/etc split
           # Edit the properties
           save = pbPropertyList(data[0],data,species,true)
           if save

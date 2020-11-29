@@ -296,7 +296,7 @@ class HallOfFame_Scene
     pokename=pokemon.name
     speciesname=PBSpecies.getName(pokemon.species)
 # ------ Derx: Determines whether or not to display a Yin/Yang icon or a Male/Female symbol
-   if pokemon.species<494
+   if pbGetSpeciesData(pokemon.species,pokemon.form,SpeciesClassification)==0
     if pokemon.male?
       speciesname+="♂"
     elsif pokemon.female?
@@ -328,16 +328,16 @@ class HallOfFame_Scene
     end
     pbDrawTextPositions(overlay,textPositions)
 # ------ Derx: A change required to display the Yin/Yang icons on the Hall of Fame screen
-				iconoffset=overlay.text_size(pokename).width/2 + Graphics.width-192
-				if pokemon.species>=494 && pokemon.isMale?
-					pbDrawImagePositions(overlay,[
-							["Graphics/Icons/yin",iconoffset,Graphics.height-80,0,0,-1,-1]
-						])
-				elsif pokemon.species>=494 && pokemon.isFemale?
-					pbDrawImagePositions(overlay,[
-							["Graphics/Icons/yang",iconoffset,Graphics.height-80,0,0,-1,-1]
-						])
-  end
+	iconoffset=overlay.text_size(pokename).width/2 + Graphics.width-192
+	if pbGetSpeciesData(pokemon.species,pokemon.form,SpeciesClassification)==1 && pokemon.isMale?
+		pbDrawImagePositions(overlay,[
+				["Graphics/Icons/yin",iconoffset,Graphics.height-80,0,0,-1,-1]
+			])
+	elsif pbGetSpeciesData(pokemon.species,pokemon.form,SpeciesClassification)==1 && pokemon.isFemale?
+		pbDrawImagePositions(overlay,[
+				["Graphics/Icons/yang",iconoffset,Graphics.height-80,0,0,-1,-1]
+			])
+	end
 # ------ Derx: End of required changes
   end
 
