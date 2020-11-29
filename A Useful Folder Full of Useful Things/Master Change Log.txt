@@ -391,3 +391,6 @@ November 28th, 2020:
 - Finalized ability testing. Presumably every ability should be working.
 - Changed up how Pokemon and Touhoumon are defined to allow a more adaptable and editable system
 	* Pokemon.txt now has a new valid field called "Classification", which defaults to 0. In the scripts, certain lines of code check for whether this value is a 0 or a 1. In Pokemon.txt, all Puppets have a Classification value of 1. When this value is defined, it gives all entries with a value of 1 the various changes exclusive to Puppets (Yin/Yang Gender Icons/Puppet denominator/Weight & Cost/etc). This allows the reimplementation of Gen 5+ Pokemon without needing to edit the values in the code when theres more than 493 Pokemon. This also means you can add additional species and give them a unique classification number, and tweak the code in the scripts to account for if they have unique attributes.
+
+November 29th, 2020:
+- Engage The Asteria Era.
