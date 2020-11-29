@@ -201,7 +201,7 @@ class PokeBattle_AI
         end
       end
       # If user is asleep, prefer moves that are usable while asleep
-      if user.status==PBStatuses::SLEEP && !move.usableWhenAsleep?
+      if user.status==PBStatuses::SLEEP && !move.usableWhenAsleep? && !user.hasActiveAbility?(:LUCIDDREAMING) # Derx: This should allow the AI to attack when they have Lucid Dreaming
         user.eachMove do |m|
           next unless m.usableWhenAsleep?
           score -= 60

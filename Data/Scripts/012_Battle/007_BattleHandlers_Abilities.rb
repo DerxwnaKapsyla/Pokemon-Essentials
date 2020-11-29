@@ -637,17 +637,10 @@ BattleHandlers::MoveImmunityTargetAbility.add(:FLASHFIRE,
 
 BattleHandlers::MoveImmunityTargetAbility.add(:LIGHTNINGROD,
   proc { |ability,user,target,move,type,battle|
-    next pbBattleMoveImmunityStatAbility(user,target,move,type,:ELECTRIC,PBStats::SPATK,1,battle)
+    next true if pbBattleMoveImmunityStatAbility(user,target,move,type,:ELECTRIC,PBStats::SPATK,1,battle)
+	next pbBattleMoveImmunityStatAbility(user,target,move,type,:WIND18,PBStats::SPATK,1,battle) # Derx: Added Lightning Rod interactions with Touhoumon Wind
   }
 )
-
-# ------ Derx: Added Lightning Rod interactions with Touhoumon Wind
-BattleHandlers::MoveImmunityTargetAbility.add(:LIGHTNINGROD,
-  proc { |ability,user,target,move,type,battle|
-    next pbBattleMoveImmunityStatAbility(user,target,move,type,:WIND18,PBStats::SPATK,1,battle)
-  }
-)
-# ------ Derx: End of Lightning Rod interactions
 
 BattleHandlers::MoveImmunityTargetAbility.add(:MOTORDRIVE,
   proc { |ability,user,target,move,type,battle|
@@ -657,17 +650,10 @@ BattleHandlers::MoveImmunityTargetAbility.add(:MOTORDRIVE,
 
 BattleHandlers::MoveImmunityTargetAbility.add(:SAPSIPPER,
   proc { |ability,user,target,move,type,battle|
-    next pbBattleMoveImmunityStatAbility(user,target,move,type,:GRASS,PBStats::ATTACK,1,battle)
+    next true if pbBattleMoveImmunityStatAbility(user,target,move,type,:GRASS,PBStats::ATTACK,1,battle)
+	next pbBattleMoveImmunityStatAbility(user,target,move,type,:NATURE18,PBStats::ATTACK,1,battle) # Derx: Added Sap Sipper interactions with Nature Type
   }
 )
-
-# ------ Derx: Added Sap Sipper interactions with Nature Type
-BattleHandlers::MoveImmunityTargetAbility.add(:SAPSIPPER,
-  proc { |ability,user,target,move,type,battle|
-    next pbBattleMoveImmunityStatAbility(user,target,move,type,:NATURE18,PBStats::ATTACK,1,battle)
-  }
-)
-# ------ Derx: End of Sap Sipper interactions
 
 BattleHandlers::MoveImmunityTargetAbility.add(:SOUNDPROOF,
   proc { |ability,user,target,move,type,battle|
@@ -686,17 +672,10 @@ BattleHandlers::MoveImmunityTargetAbility.add(:SOUNDPROOF,
 
 BattleHandlers::MoveImmunityTargetAbility.add(:STORMDRAIN,
   proc { |ability,user,target,move,type,battle|
-    next pbBattleMoveImmunityStatAbility(user,target,move,type,:WATER,PBStats::SPATK,1,battle)
+    next true if pbBattleMoveImmunityStatAbility(user,target,move,type,:WATER,PBStats::SPATK,1,battle)
+	next pbBattleMoveImmunityStatAbility(user,target,move,type,:WATER18,PBStats::SPATK,1,battle) # Derx: Made it so Storm Drain works with Touhoumon Water
   }
 )
-
-# ------ Derx: Made it so Storm Drain works with Touhoumon Water
-BattleHandlers::MoveImmunityTargetAbility.add(:STORMDRAIN,
-  proc { |ability,user,target,move,type,battle|
-    next pbBattleMoveImmunityStatAbility(user,target,move,type,:WATER18,PBStats::SPATK,1,battle)
-  }
-)
-# ------ Derx: End of Storm Drain interactions
 
 BattleHandlers::MoveImmunityTargetAbility.add(:TELEPATHY,
   proc { |ability,user,target,move,type,battle|
@@ -716,31 +695,18 @@ BattleHandlers::MoveImmunityTargetAbility.add(:TELEPATHY,
 
 BattleHandlers::MoveImmunityTargetAbility.add(:VOLTABSORB,
   proc { |ability,user,target,move,type,battle|
-    next pbBattleMoveImmunityHealAbility(user,target,move,type,:ELECTRIC,battle)
+    next true if pbBattleMoveImmunityHealAbility(user,target,move,type,:ELECTRIC,battle)
+	next pbBattleMoveImmunityHealAbility(user,target,move,type,:WIND18,battle) # Derx: Added a check to Volt Absorb for Touhoumon Wind 
   }
 )
 
-# ------ Derx: Added a check to Volt Absorb for Touhoumon Wind 
-BattleHandlers::MoveImmunityTargetAbility.add(:VOLTABSORB,
-  proc { |ability,user,target,move,type,battle|
-    next pbBattleMoveImmunityHealAbility(user,target,move,type,:WIND18,battle)
-  }
-)
-# ------ Derx: End of Volt Absorb changes
 
 BattleHandlers::MoveImmunityTargetAbility.add(:WATERABSORB,
   proc { |ability,user,target,move,type,battle|
-    next pbBattleMoveImmunityHealAbility(user,target,move,type,:WATER,battle)
+    next true if pbBattleMoveImmunityHealAbility(user,target,move,type,:WATER,battle)
+	next pbBattleMoveImmunityHealAbility(user,target,move,type,:WATER18,battle) # Derx: Added a check to Water Absorb for Touhoumon Water
   }
 )
-
-# ------ Derx: Added a check to Water Absorb for Touhoumon Water
-BattleHandlers::MoveImmunityTargetAbility.add(:WATERABSORB,
-  proc { |ability,user,target,move,type,battle|
-    next pbBattleMoveImmunityHealAbility(user,target,move,type,:WATER18,battle)
-  }
-)
-# ------ DerxL End of Water Absorb changes
 
 BattleHandlers::MoveImmunityTargetAbility.copy(:WATERABSORB,:DRYSKIN)
 
@@ -897,17 +863,10 @@ BattleHandlers::AccuracyCalcTargetAbility.add(:SNOWCLOAK,
 
 BattleHandlers::AccuracyCalcTargetAbility.add(:STORMDRAIN,
   proc { |ability,mods,user,target,move,type|
-    mods[BASE_ACC] = 0 if isConst?(type,PBTypes,:WATER)
+    mods[BASE_ACC] = 0 if (isConst?(type,PBTypes,:WATER) || 
+						   isConst?(type,PBTypes,:WATER18)) # Derx: Made it so Storm Drain works with Touhoumon Water
   }
 )
-
-# ------ Derx: Made it so Storm Drain works with Touhoumon Water
-BattleHandlers::AccuracyCalcTargetAbility.add(:STORMDRAIN,
-  proc { |ability,mods,user,target,move,type|
-    mods[BASE_ACC] = 0 if isConst?(type,PBTypes,:WATER18)
-  }
-)
-# ------ Derx: End of Storm Drain interactions
 
 BattleHandlers::AccuracyCalcTargetAbility.add(:TANGLEDFEET,
   proc { |ability,mods,user,target,move,type|
@@ -1227,21 +1186,11 @@ BattleHandlers::DamageCalcUserAllyAbility.add(:FLOWERGIFT,
 
 BattleHandlers::DamageCalcTargetAbility.add(:DRYSKIN,
   proc { |ability,user,target,move,mults,baseDmg,type|
-    if isConst?(type,PBTypes,:FIRE)
+    if (isConst?(type,PBTypes,:FIRE) || isConst?(type,PBTypes,:FIRE18)) # Derx: Adding in interaction with Dry Skin for Touhoumon Fire
       mults[BASE_DMG_MULT] *= 1.25
     end
   }
 )
-
-# ------ Derx: Adding in interaction with Dry Skin for Touhoumon Fire
-BattleHandlers::DamageCalcTargetAbility.add(:DRYSKIN,
-  proc { |ability,user,target,move,mults,baseDmg,type|
-    if isConst?(type,PBTypes,:FIRE18)
-      mults[BASE_DMG_MULT] *= 1.25
-    end
-  }
-)
-# ------ Derx: End of Dry Skin changes
 
 BattleHandlers::DamageCalcTargetAbility.add(:FILTER,
   proc { |ability,user,target,move,mults,baseDmg,type|
@@ -1285,17 +1234,10 @@ BattleHandlers::DamageCalcTargetAbility.add(:GRASSPELT,
 
 BattleHandlers::DamageCalcTargetAbility.add(:HEATPROOF,
   proc { |ability,user,target,move,mults,baseDmg,type|
-    mults[BASE_DMG_MULT] /= 2 if isConst?(type,PBTypes,:FIRE)
+    mults[BASE_DMG_MULT] /= 2 if (isConst?(type,PBTypes,:FIRE) ||
+								  isConst?(type,PBTypes,:FIRE18)) # Derx: Adding in interactions between Heatproof and Touhoumon Fire
   }
 )
-
-# ------ Derx: Adding in interactions between Heatproof and Touhoumon Fire
-BattleHandlers::DamageCalcTargetAbility.add(:HEATPROOF,
-  proc { |ability,user,target,move,mults,baseDmg,type|
-    mults[BASE_DMG_MULT] /= 2 if isConst?(type,PBTypes,:FIRE18)
-  }
-)
-# ------ Derx: End of Heatproof interaction changes
 
 BattleHandlers::DamageCalcTargetAbility.add(:MARVELSCALE,
   proc { |ability,user,target,move,mults,baseDmg,type|
@@ -2273,8 +2215,7 @@ BattleHandlers::AbilityOnSwitchIn.add(:AIRLOCK,
   }
 )
 
-BattleHandlers::AbilityOnSwitchIn.copy(:AIRLOCK,:CLOUDNINE)
-BattleHandlers::AbilityOnSwitchIn.copy(:AIRLOCK,:HISOUTEN,:UNCONCIOUS) # Derx: Added in a duplicate handler for Hisouten and Unconcious from Air Lock
+BattleHandlers::AbilityOnSwitchIn.copy(:AIRLOCK,:CLOUDNINE,:HISOUTEN,:UNCONCIOUS) # Derx: Added in a duplicate handler for Hisouten and Unconcious from Air Lock
 
 BattleHandlers::AbilityOnSwitchIn.add(:ANTICIPATION,
   proc { |ability,battler,battle|

@@ -206,7 +206,8 @@ class PokeBattle_Battler
         pbCureStatus
       else
         pbContinueStatus
-        if !move.usableWhenAsleep?   # Snore/Sleep Talk
+        if !move.usableWhenAsleep? &&  # Snore/Sleep Talk
+		   !hasActiveAbility?(:LUCIDDREAMING) # Derx: Should check if the user has Lucid Dreaming when determining if the user can act while asleep
           @lastMoveFailed = true
           return false
         end
