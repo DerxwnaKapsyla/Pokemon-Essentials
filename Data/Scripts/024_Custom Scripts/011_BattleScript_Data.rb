@@ -393,7 +393,19 @@ module DialogueModule
                     battle.decision=3
                     pbMessage("Hmph! Just when he finally gets a lucky break. He decides to be a nice guy too.")
                   }
-
+# Derx: Touhoumon Asteria stuff below this point. Though we can probably safely remove the above when we study it more.
+	# --- Scene: Red vs. Chibi Chen, Pallet Town
+	ChenFight = Proc.new{|battle|
+				  Kernel.pbMessageWithName("Professor Oak","Red! Remember what I told you! That Reimu Puppet is just like a Pokémon!")
+				  Kernel.pbMessageWithName("Professor Oak","Command her and she'll fight alongside you!")
+				}
+	# --- Scene: Renko & Maribel vs. Red, Oak's Lab
+	VsRed_Intro = Proc.new{|battle|
+					#pbMessage("Red has challenged you to a battle!")
+					Kernel.pbMessageWithName("Renko","Let's show Red how well we work together as a team, Mary!")
+					Kernel.pbMessageWithName("Maribel","I'm right beside you, Renko!")
+					Kernel.pbMessageWithName("Red","...")
+				}
 
 
 # DONT DELETE THIS END

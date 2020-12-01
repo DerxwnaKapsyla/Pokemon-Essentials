@@ -5,8 +5,8 @@ class PokemonLoadPanel < SpriteWrapper
   TEXTSHADOWCOLOR       = Color.new(136,136,136)
   MALETEXTCOLOR         = Color.new(56,160,248)
   MALETEXTSHADOWCOLOR   = Color.new(56,104,168)
-  FEMALETEXTCOLOR       = Color.new(240,72,88)
-  FEMALETEXTSHADOWCOLOR = Color.new(160,64,64)
+  FEMALETEXTCOLOR       = Color.new(232,232,232) #(240,72,88)
+  FEMALETEXTSHADOWCOLOR = Color.new(136,136,136) #(160,64,64)
 
   def initialize(index,title,isContinue,trainer,framecount,mapid,viewport=nil)
     super(viewport)

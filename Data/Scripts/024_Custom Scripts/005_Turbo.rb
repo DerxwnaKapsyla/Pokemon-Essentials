@@ -16,6 +16,15 @@
 # If you don't want the user to be able to speed up at certain points, you can #
 #                use "pbDisallowSpeedup" and "pbAllowSpeedup".                 #
 #==============================================================================#
+#                    Please give credit when using this.                       #
+#==============================================================================#
+
+PluginManager.register({
+  :name => "Better Fast-forward Mode",
+  :version => "1.1",
+  :credits => "Marin",
+  :link => "https://reliccastle.com/resources/151/"
+})
 
 # When the user clicks F, it'll pick the next number in this array.
 SPEEDUP_STAGES = [1,2,3]
@@ -31,9 +40,9 @@ end
 
 # Default game speed.
 $GameSpeed = 0
-
 $frame = 0
 $CanToggle = true
+
 module Graphics
   class << Graphics
     alias fast_forward_update update
