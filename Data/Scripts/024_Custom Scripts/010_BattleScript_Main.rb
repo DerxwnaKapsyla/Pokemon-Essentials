@@ -478,7 +478,7 @@ class PokeBattle_Battle
             if isConst?(enemyParty[idxPartyNew].ability,PBAbilities,:ILLUSION)
               idxPartyForName = pbLastInTeam(idxBattler)
             end
-            if pbDisplayConfirm(_INTL("{1} is about to send in {2}. Will you switch your Pokémon?",
+            if pbDisplayConfirm(_INTL("{1} is about to send in {2}. Will you switch your active party member?", # Derx: Removing excplict references to Pokemon
                opponent.fullname,enemyParty[idxPartyForName].name))
                $ShiftSwitch=false
               idxPlayerPartyNew = pbSwitchInBetween(0,false,true)
@@ -498,7 +498,7 @@ class PokeBattle_Battle
           switched.push(idxBattler)
         else   # Player's Pokémon has fainted in a wild battle
           switch = false
-          if !pbDisplayConfirm(_INTL("Use next Pokémon?"))
+          if !pbDisplayConfirm(_INTL("Continue battling?")) # Derx: Removing excplict references to Pokemon
             switch = (pbRun(idxBattler,true)<=0)
           else
             switch = true
@@ -561,7 +561,7 @@ class PokeBattle_Battle
       PBDebug.log("***Player lost***") if @decision==2
       PBDebug.log("***Player drew with opponent***") if @decision==5
       if @internalBattle
-        pbDisplayPaused(_INTL("You have no more Pokémon that can fight!"))
+        pbDisplayPaused(_INTL("You have no more party members that can fight!")) # Derx: Removing excplict references to Pokemon
         if trainerBattle?
           case @opponent.length
           when 1
