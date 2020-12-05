@@ -526,7 +526,8 @@ end
 #===============================================================================
 def pbCreatePokemon
   party = []
-  species = [:PIKACHU,:PIDGEOTTO,:KADABRA,:GYARADOS,:DIGLETT,:CHANSEY]
+  species = [:REISEN,:RIN,:SUMIREKO,:NITORI,:YAMAME,:KASEN]
+  #species = [:PIKACHU,:PIDGEOTTO,:KADABRA,:GYARADOS,:DIGLETT,:CHANSEY]
   for id in species
     party.push(getConst(PBSpecies,id)) if hasConst?(PBSpecies,id)
   end
@@ -534,24 +535,25 @@ def pbCreatePokemon
   for i in 0...party.length
     species = party[i]
     # Generate Pokémon with species and level 20
-    $Trainer.party[i] = pbNewPkmn(species,20)
+    $Trainer.party[i] = pbNewPkmn(species,30)
+	#$Trainer.party[i] = pbNewPkmn(species,20)
     $Trainer.seen[species]  = true # Set this species to seen and owned
     $Trainer.owned[species] = true
     pbSeenForm($Trainer.party[i])
   end
-  $Trainer.party[1].pbLearnMove(:FLY)
-  $Trainer.party[2].pbLearnMove(:FLASH)
-  $Trainer.party[2].pbLearnMove(:TELEPORT)
-  $Trainer.party[3].pbLearnMove(:SURF)
-  $Trainer.party[3].pbLearnMove(:DIVE)
-  $Trainer.party[3].pbLearnMove(:WATERFALL)
-  $Trainer.party[4].pbLearnMove(:DIG)
-  $Trainer.party[4].pbLearnMove(:CUT)
-  $Trainer.party[4].pbLearnMove(:HEADBUTT)
-  $Trainer.party[4].pbLearnMove(:ROCKSMASH)
-  $Trainer.party[5].pbLearnMove(:SOFTBOILED)
-  $Trainer.party[5].pbLearnMove(:STRENGTH)
-  $Trainer.party[5].pbLearnMove(:SWEETSCENT)
+  #$Trainer.party[1].pbLearnMove(:FLY)
+  #$Trainer.party[2].pbLearnMove(:FLASH)
+  #$Trainer.party[2].pbLearnMove(:TELEPORT)
+  #$Trainer.party[3].pbLearnMove(:SURF)
+  #$Trainer.party[3].pbLearnMove(:DIVE)
+  #$Trainer.party[3].pbLearnMove(:WATERFALL)
+  #$Trainer.party[4].pbLearnMove(:DIG)
+  #$Trainer.party[4].pbLearnMove(:CUT)
+  #$Trainer.party[4].pbLearnMove(:HEADBUTT)
+  #$Trainer.party[4].pbLearnMove(:ROCKSMASH)
+  #$Trainer.party[5].pbLearnMove(:SOFTBOILED)
+  #$Trainer.party[5].pbLearnMove(:STRENGTH)
+  #$Trainer.party[5].pbLearnMove(:SWEETSCENT)
   for i in 0...party.length
     $Trainer.party[i].pbRecordFirstMoves
   end

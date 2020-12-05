@@ -76,8 +76,14 @@ QUESTS = [
 # Make sure you take into account all the information given at the top of this script.
 # You don't have to give the Quest a color - :SUPERLIGHTBLUE in this example. It will default to White.
 # MSQ - SUPERLIGHTBLUE ; SQ - LIGHTGREEN
-  Quest.new(0, "Welcome Back", "I've finally returned home to Pallet Town after spending years away while training. I should check in with my mother first.", "Main Scenario Quest", "Head home and talk to your Mom.", "", "Pallet Town", :SUPERLIGHTBLUE, Time.now, false),
+	Quest.new(0, "Welcome Back", "I've finally returned home to Pallet Town after spending years away while training. I should check in with my mother first.", "Main Scenario Quest", "Head home and talk to your Mom.", "", "Pallet Town", :SUPERLIGHTBLUE, Time.now, false),
 	Quest.new(1, "Whole New World", "Renko and I are making our way to Professor Oak's lab to recieve our very first Puppet! I wonder what they'll be like, I can't wait to meet them!", "Main Scenario Quest", "Head to Oak's Lab and recieve your first Puppet.", "", "Pallet Town", :SUPERLIGHTBLUE, Time.now, false),
+	Quest.new(2, "On The Road", "Now that we've recieved our first Puppets, it's time for us to hit the road. According to our preliminary research, our first stop should be Viridian City. Adventure, here we come!", "Main Scenario Quest", "Head to the Viridian City Trainer Academy.", "", "Viridian City", :SUPERLIGHTBLUE, Time.now, false),
+	Quest.new(3, "Placeholder Name", "Placeholder Description - Viridian City Sidequest", "Side Quest", "Placeholder Objective", "", "Placeholder Location", :LIGHTGREEN, Time.now, false),
+	Quest.new(4, "Out Of This World", "While there weren't any leads in Viridian City, Renko informed me that there's a special Lunar exhibit up in Pewter City which might potentially have some leads. I suppose it couldn't hurt to check!", "Main Scenario Quest", "Travel to Pewter City and check out the Museum.", "", "Pewter City", :SUPERLIGHTBLUE, Time.now, false),
+	Quest.new(5, "Sentimental Sedimentary", "Placeholder Description - Pewter City Sidequest", "Side Quest", "Collect 10 of each Underground Gemstone.", "", "Pewter City", :LIGHTGREEN, Time.now, false),
+	Quest.new(6, "Placeholder Name", "Another bust, but with how often we've done this it isn't too off putting. In return for helping with the situation in the Museum, the curator gave us another potential lead: a colleague of theirs, Bill, north of Cerulean City.", "Main Scenario Quest", "Travel to Route 25 and meet up with Bill.", "", "Route 25", :SUPERLIGHTBLUE, Time.now, false),
+	Quest.new(7, "Cutting Edge", "While in Cerulean City, I came across a deliveryman who hurt their ankle while trying to travel through Mt. Moon. They asked if I could deliver a package up to the cottage on Route 25, and promised they'd make it worth my while.", "Side Quest", "Deliver the package to the cottage on Route 25.", "", "Route 25", :LIGHTGREEN, Time.now, false),
 ]
 
 class PokeBattle_Trainer

@@ -164,14 +164,14 @@ class PokeBattle_Battle
       case foeParty.length
       when 1
 # ------- Derx: Special Wild Battle Handler
-		if $game_switches[107] # Can't catch Pokemon
-			if $game_variables[107]==1 # Territorial Pokemon
+		if $game_switches[102] # Can't catch Pokemon
+			if $game_variables[102]==1 # Territorial Pokemon
 				pbDisplayPaused(_INTL("The territorial {1} attacked!",foeParty[0].name))
-			elsif $game_variables[107]==2 # Aggressive Pokemon
+			elsif $game_variables[102]==2 # Aggressive Pokemon
 				pbDisplayPaused(_INTL("The aggressive {1} attacked!",foeParty[0].name))
-			elsif $game_variables[107]==3 # Lifrana's Pokemon
+			elsif $game_variables[102]==3 # Lifrana's Pokemon
 				pbDisplayPaused(_INTL("Lifrana's {1} attacked!",foeParty[0].name))
-			elsif $game_variables[107]==2 # Trainer's Pokemon
+			elsif $game_variables[102]==2 # Trainer's Pokemon
 				pbDisplayPaused(_INTL("A trainer's {1} attacked!",foeParty[0].name))
 			end
         else

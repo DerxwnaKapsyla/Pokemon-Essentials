@@ -1034,7 +1034,7 @@ module TrainerDialogue
   end
 
   def self.setDone(param)
-    $DialogueDone[param]=1
+    $DialogueDone[param] = 1 if !param.include?("rand")
   end
 
   def self.setFinal
@@ -1185,10 +1185,12 @@ module TrainerDialogue
   end
 
   def self.setInstance(parameter)
-    $DialogueInstances[parameter] += 1 if !["lowHP","lowHPOpp","halfHP","halfHPOpp",
-        	                                 "bigDamage","bigDamageOpp","smlDamage",
-                                           "smlDamageOpp","attack","attackOpp",
-                                           "superEff","superEffOpp","notEff","notEffOpp"].include?(parameter)
+    noIncrement = ["lowHP","lowHPOpp","halfHP","halfHPOpp","bigDamage","bigDamageOpp","smlDamage",
+      "smlDamageOpp","attack","attackOpp","superEff","superEffOpp","notEff","notEffOpp"]
+    return if parameter.include?("rand")
+    if !noIncrement.include?(parameter)
+       $DialogueInstances[parameter] += 1
+    end
   end
 end
 
@@ -1406,7 +1408,7 @@ $ShiftSwitch=false
 
 PluginManager.register({
   :name => "Mid Battle Dialogue",
-  :version => "1.0",
+  :version => "1.5.1",
   :credits => ["Golisopod User","Luka SJ"],
   :link => "https://reliccastle.com/resources/483/"
 })

@@ -406,6 +406,117 @@ module DialogueModule
 					Kernel.pbMessageWithName("Maribel","I'm right beside you, Renko!")
 					Kernel.pbMessageWithName("Red","...")
 				}
+	# --- Scene: Renko & Maribel vs. Red - Player remains standing
+	
+	# --- Scene: Renko & Maribel vs. Red - Partner remains standing
+	
+	# --- Scene: Renko vs. Maribel, Viridian Trainer Academy
+	
+	# --- Scene: Maribel vs. Renko, Viridian Trainer Academy
+	
+	# --- Scene: Player vs. Chibi Kazami, A Seedy Situation Sidequest
+	VsCKazami_Intro = Proc.new{|battle|
+						battle.scene.appearBar
+						Kernel.pbMessageWithName($Trainer.name,"Is this the Puppet that's been interfeering with the workers? It looks way too tired to do anything too harmful...")
+						pbPlayCry(659)
+						Kernel.pbMessageWithName("CKazami","...")
+						battle.battlers[1].effects[PBEffects::Endure] = true
+						pbMessage("The wild CKazami begins to defend itself!")
+						battle.scene.disappearBar
+						battle.battlers[1].pbRaiseStatStage(PBStats::DEFENSE,3,battle.battlers[1])
+						battle.battlers[1].pbRaiseStatStage(PBStats::SPDEF,3,battle.battlers[1])
+					  }
+	
+	#VsCKazami_EndureSet = Proc.new{|battle|
+	#					    battle.battlers[1].effects[PBEffects::Endure] = true
+	#					  }
+						  
+	
+	VsCKazami_Evolve = Proc.new{|battle|
+							$game_switches[107] = true
+							$game_variables[1] = battle.battlers[0].species
+							$game_variables[3] = battle.battlers[0].name
+							battle.scene.appearBar
+							pbBGMFade(2)
+							Kernel.pbMessageWithName($Trainer.name,"Alright \\v[3], let's finish it off!")
+							pbPlayCry($game_variables[1])
+							Kernel.pbMessageWithName($game_variables[3],"!!!")
+							pbPlayCry(659)
+							Kernel.pbMessageWithName("CKazami","...")
+							battle.pbCommonAnimation("StatUp",battle.battlers[1],nil)
+							pbWait(10)
+							battle.pbAnimation(getID(PBMoves,:FLASH),battle.battlers[1],battle.battlers[1])
+							Kernel.pbMessageWithName($Trainer.name,"Wait... What's it doing?")
+							for i in 0...9
+								val = 25+(25*i)
+								battle.scene.sprites["pokemon_1"].color=Color.new(-255,-255,-255,val)
+								pbWait(1)
+							end
+							pbWait(10)
+							#battle.pbAnimation(getID(PBMoves,:FLASH),battle.battlers[1],battle.battlers[1])
+							battle.scene.sprites["pokemon_1"].color=Color.new(-255,-255,-255,255)
+							battle.battlers[1].pokemon.species = getConst(PBSpecies,:KAZAMI)
+							battle.scene.pbChangePokemon(1,battle.battlers[1].pokemon)
+							for i in 0...10
+								val = 250-(25+(25*i))
+								battle.scene.sprites["pokemon_1"].color=Color.new(-255,-255,-255,val)
+								pbWait(1)
+							end
+							battle.battlers[1].moves[0] = PokeBattle_Move.pbFromPBMove(battle,PBMove.new(getConst(PBMoves,:HYPERBEAM18)))
+							battle.battlers[1].moves[1] = PokeBattle_Move.pbFromPBMove(battle,PBMove.new(getConst(PBMoves,:LEAFBLADE18)))
+							battle.battlers[1].moves[2] = PokeBattle_Move.pbFromPBMove(battle,PBMove.new(getConst(PBMoves,:INGRAIN18)))
+							battle.battlers[1].moves[3] = PokeBattle_Move.pbFromPBMove(battle,PBMove.new(getConst(PBMoves,:TAUNT18)))
+							battle.battlers[1].name = "Kazami"
+							battle.scene.sprites["dataBox_1"].refresh
+							battle.battlers[1].pbUpdate(true)
+							battle.battlers[1].pokemon.calcStats
+							pbBGMPlay("B-009. Faint Dream ~ Inanimate Dream.ogg")
+							Kernel.pbMessageWithName($Trainer.name,"Hold on- Did it just evolve in the middle of battle!?")
+							$PokemonTemp.enduredInKazami = true
+							battle.scene.disappearBar
+							battle.battlers[1].pbRecoverHP(battle.battlers[1].totalhp-1)
+							battle.battlers[1].pbResetStatStages
+							battle.battlers[1].pbRaiseStatStage(PBStats::SPEED,1,battle.battlers[1])
+							battle.battlers[1].pbRaiseStatStage(PBStats::ATTACK,1,battle.battlers[1])
+							#battle.battlers[1].pbRaiseStatStage(PBStats::SPATK,1,battle.battlers[1])
+							battle.scene.appearBar
+							pbMessage("The wild Kazami is now prepared to fight!")
+							pbSEPlay("660Cry_Alt")
+							Kernel.pbMessageWithName("Kazami","!!!")
+							Kernel.pbMessageWithName($Trainer.name,"That look it's giving... It's fully awake now!")
+							Kernel.pbMessageWithName($Trainer.name,"Stay sharp, \\v[3]!")
+							battle.scene.disappearBar
+					   }
+	
+	VsCKazami_EndureCheck = Proc.new{|battle|
+							  if $PokemonTemp.enduredInKazami == false
+							  battle.battlers[1].effects[PBEffects::Endure] = true
+							  end
+							}
+
+	# --- Scene: Player vs. Evolved Kazami, A Seedy Situation Sidequest
+	# --- Used for if the player loses against Kazami the first time around, but after it evolves.
+	VsKazami_Intro =  Proc.new{|battle|
+						$game_variables[1] = battle.battlers[0].species
+						$game_variables[3] = battle.battlers[0].name
+						battle.scene.appearBar
+						Kernel.pbMessageWithName($Trainer.name,"That last fight was a doozy, but we won't get caught off guard again!")
+						Kernel.pbMessageWithName($Trainer.name,"Ready yourself, \\v[3]!")
+						pbPlayCry($game_variables[1])
+						Kernel.pbMessageWithName($game_variables[3],"!!!")
+						battle.scene.disappearBar
+						battle.battlers[0].pbRaiseStatStage(PBStats::DEFENSE,1,battle.battlers[0])
+						battle.battlers[0].pbRaiseStatStage(PBStats::SPDEF,1,battle.battlers[0])
+						battle.scene.appearBar
+						pbMessage("\\v[3] takes up a defensive stance!")
+						pbSEPlay("660Cry_Alt")
+						Kernel.pbMessageWithName("Kazami","!!!")
+						pbMessage("The wild Kazami prepares itself for battle once more!")
+						battle.scene.disappearBar
+						battle.battlers[1].pbRaiseStatStage(PBStats::SPEED,1,battle.battlers[1])
+						battle.battlers[1].pbRaiseStatStage(PBStats::ATTACK,1,battle.battlers[1])
+						#battle.battlers[1].pbRaiseStatStage(PBStats::SPATK,1,battle.battlers[1])
+					  }
 
 
 # DONT DELETE THIS END

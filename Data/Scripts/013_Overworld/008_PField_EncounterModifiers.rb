@@ -30,6 +30,39 @@ Events.onWildPokemonCreate += proc { |_sender, e|
   end
 }
 
+# --- Derx: Utilized Special Wild Battles to give Pokemon unique moves or preset abilities
+# Make all wild Pokémon have a certain unique move or preset ability depending on the variable set.
+Events.onWildPokemonCreate+=proc {|sender,e|
+   pokemon=e[0]
+   case $game_variables[109] # Unique Move/Preset Ability Variable
+     when 1 # Kazami Event Battle
+		if $game_map.map_id == 186
+			pokemon.makeFemale # To keep the gender consistent
+			pokemon.setAbility(0) # Sets Overgrow
+			pokemon.pbLearnMove(:VINEWHIP18)
+			pokemon.pbLearnMove(:REST18)
+			pokemon.pbLearnMove(:SCARYFACE18)
+			pokemon.pbLearnMove(:YAWN18)
+			pokemon.setNature(:QUIET) # Raises Sp.Atk, Lowers Speed
+			pokemon.makeNotShiny # Because idk if I can guarantee this when you don't catch it in a standard way
+			pokemon.calcStats
+		end
+     when 2 # Kazami Event Battle, Round 2
+		if $game_map.map_id == 186
+			pokemon.makeFemale # To keep the gender consistent
+			pokemon.setAbility(0) # Sets Overgrow
+			pokemon.pbLearnMove(:HYPERBEAM18)
+			pokemon.pbLearnMove(:LEAFBLADE18)
+			pokemon.pbLearnMove(:INGRAIN18)
+			pokemon.pbLearnMove(:TAUNT18)
+			pokemon.setNature(:QUIET) # Raises Sp.Atk, Lowers Speed
+			pokemon.makeNotShiny # Because idk if I can guarantee this when you don't catch it in a standard way
+			pokemon.calcStats
+		end
+   end
+}
+# --- Derx: End of Unique Move handler
+
 # This is the basis of a trainer modifier.  It works both for trainers loaded
 # when you battle them, and for partner trainers when they are registered.
 # Note that you can only modify a partner trainer's Pokémon, and not the trainer
