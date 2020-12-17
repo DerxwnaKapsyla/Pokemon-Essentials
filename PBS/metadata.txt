@@ -9,7 +9,7 @@ WildVictoryME = Battle victory wild.ogg
 TrainerBattleBGM = B-003. Doll Judgement ~ The Girl Who Played With People's Shapes.ogg
 SurfBGM = U-007. Surf (HgSs Surf).ogg
 BicycleBGM = U-006. Wind God Girl (Bike).ogg
-Home = 173,32,5,2
+Home = 173,33,5,2
 WildBattleBGM = B-001. Love Colored Master Spark
 #-------------------------------
 [001]
@@ -68,6 +68,22 @@ Outdoor = true
 Environment = None
 ShowArea = true
 #-------------------------------
+[036]
+# Pewter City
+Weather = Rain,10
+Bicycle = true
+MapPosition = 0,6,6
+Outdoor = true
+ShowArea = true
+#-------------------------------
+[044]
+# Indigo Plateau
+Weather = Rain,10
+Bicycle = true
+MapPosition = 0,4,6
+Outdoor = true
+ShowArea = true
+#-------------------------------
 [045]
 # Route 1
 MapSize = 1,11
@@ -79,12 +95,45 @@ Environment = Grass
 ShowArea = true
 #-------------------------------
 [046]
-# Route 2 - South
+# Route 2
 MapSize = 1,11
 Weather = Rain,5
 Bicycle = true
 MapPosition = 0,6,8
 Outdoor = true
+ShowArea = true
+#-------------------------------
+[067]
+# Route 22
+MapSize = 2,11
+Weather = Rain,5
+Bicycle = true
+MapPosition = 0,4,10
+Outdoor = true
+ShowArea = true
+#-------------------------------
+[068]
+# Route 23
+MapSize = 2,0110
+Bicycle = true
+MapPosition = 0,3,9
+Outdoor = false
+#-------------------------------
+[069]
+# Route 23
+Weather = Rain,5
+Bicycle = true
+MapPosition = 0,4,8
+Outdoor = true
+ShowArea = true
+#-------------------------------
+[076]
+# Viridian Forest
+Weather = Rain,10
+Bicycle = true
+MapPosition = 0,6,7
+Outdoor = true
+Environment = TallGrass
 ShowArea = true
 #-------------------------------
 [170]
@@ -102,6 +151,7 @@ MapPosition = 0,6,13
 [173]
 # Renko & Maribel's House
 MapPosition = 0,6,13
+HealingSpot = 34,24,25
 #-------------------------------
 [174]
 # Professor Oak's Lab
@@ -145,7 +195,7 @@ Bicycle = true
 MapPosition = 0,6,11
 #-------------------------------
 [184]
-# Route 2 - North
+# Route 2
 Weather = Rain,5
 Bicycle = true
 MapPosition = 0,6,7
@@ -153,7 +203,7 @@ Outdoor = true
 ShowArea = true
 #-------------------------------
 [185]
-# Route 2 - Side Path
+# Route 2
 Weather = Rain,5
 Bicycle = true
 MapPosition = 0,6,8
@@ -162,6 +212,30 @@ BicycleAlways = false
 ShowArea = true
 #-------------------------------
 [186]
-# Route 2 - Hidden Grotto
+# Hidden Grove
 MapPosition = 0,6,8
 Outdoor = true
+#-------------------------------
+[189]
+# Route 23
+Weather = Rain,5
+Bicycle = true
+MapPosition = 0,4,7
+Outdoor = true
+ShowArea = true
+#-------------------------------
+[190]
+# Indigo Plateau
+Weather = Snow,10
+Bicycle = true
+MapPosition = 0,4,5
+Outdoor = true
+ShowArea = true
+#-------------------------------
+[194]
+# Indigo Village
+Weather = Snow,10
+Bicycle = true
+MapPosition = 0,4,4
+Outdoor = true
+ShowArea = true
