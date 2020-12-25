@@ -117,7 +117,7 @@ class PokemonSaveScreen
     @scene.pbStartScreen
     if pbConfirmMessage(_INTL("Would you like to save the game?"))
       if safeExists?(RTP.getSaveFileName("Game.rxdata"))
-        if $PokemonTemp.begunNewGame
+        if $PokemonTemp.begunNewGame && !$DEBUG
           pbMessage(_INTL("WARNING!"))
           pbMessage(_INTL("There is a different game file that is already saved."))
           pbMessage(_INTL("If you save now, the other file's adventure, including items and Pokémon, will be entirely lost."))

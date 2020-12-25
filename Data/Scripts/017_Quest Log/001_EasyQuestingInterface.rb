@@ -84,6 +84,17 @@ QUESTS = [
 	Quest.new(5, "Sentimental Sedimentary", "Placeholder Description - Pewter City Sidequest", "Side Quest", "Collect 10 of each Underground Gemstone.", "", "Pewter City", :LIGHTGREEN, Time.now, false),
 	Quest.new(6, "Placeholder Name", "Another bust, but with how often we've done this it isn't too off putting. In return for helping with the situation in the Museum, the curator gave us another potential lead: a colleague of theirs, Bill, north of Cerulean City.", "Main Scenario Quest", "Travel to Route 25 and meet up with Bill.", "", "Route 25", :SUPERLIGHTBLUE, Time.now, false),
 	Quest.new(7, "Cutting Edge", "While in Cerulean City, I came across a deliveryman who hurt their ankle while trying to travel through Mt. Moon. They asked if I could deliver a package up to the cottage on Route 25, and promised they'd make it worth my while.", "Side Quest", "Deliver the package to the cottage on Route 25.", "", "Route 25", :LIGHTGREEN, Time.now, false),
+	Quest.new(8, "A Berry For Your Thoughts (Kanto)", "A lady on Route 2 has asked me to show her an Oran Berry and a Cheri Berry. If I do, she says she has something special to give me.", "Side Quest", "Show the Aroma Lady on Route 2 an Oran and Cheri Berry.", "", "Route 2", :LIGHTGREEN, Time.now, false),
+	Quest.new(9, "Power Play", "Bill seemed to know something, but didn't want to discuss it. Peculiar, I'll have to remember this for later! For now, Renko just called me up from Vermilion City and told me to meet her at the hotel there to assemble what we've learned so far.", "Main Scenario Quest", "Meet up with Renko at the Vermilion Seaside Hotel.", "", "Vermilion City", :SUPERLIGHTBLUE, Time.now, false),
+	Quest.new(10, "Placeholder Name", "Placeholder Description - Vermilion City Sidequest", "Side Quest", "Placeholder Objective", "", "Placeholder Location", :LIGHTGREEN, Time.now, false),
+	Quest.new(11, "Placeholder Name", "With the situation at the Power Plant resolved, Renko and I have gone our separate ways again. My destination is Lavender Town, a fairly spiritual place. It's possible that someone there has heard of the Sealed Realm in some capacity. Here's hoping!", "Main Scenario Quest", "Arrive in Lavender Town.", "", "Lavender Town", :SUPERLIGHTBLUE, Time.now, false),
+	Quest.new(12, "Ghost of a Chance", "Not long after departing Lavender Tower, the head priestess approached me and asked me for a favor. Apparently, there's plans to open a gym in Lavender Town, and she wants me to help prepare her niece, Selene, the future Gym Leader.", "Side Quest", "Defeat Selene at the site of the future Lavender Town Gym.", "", "Lavender Town", :LIGHTGREEN, Time.now, false),
+	Quest.new(13, "Welcome to the Jungle", "That was quite the exhilierating experience, I was almost afraid they might try and exorcise me! Nevertheless, I leave with both my life and the information I came for! Now I need to check in with Renko and report my findings. Onward to Fuchsia City!", "Main Scenario Quest", "Find Renko in Fuchsia City.", "", "Fuchsia City", :SUPERLIGHTBLUE, Time.now, false),
+	Quest.new(14, "Placeholder Name", "Deep within the Abandoned Safari Zone is a group of ruins that, somehow, nobody knew was there. At least, the Warden's daughter didn't She's asked me to accompany her into these ruins to assess them.", "Side Quest", "Explore the ruins of the Abandoned Safari Zone.", "", "Fuchsia City", :LIGHTGREEN, Time.now, false),
+	Quest.new(15, "Placeholder Name", "Team Rocket is definitely becoming a nuisance! Renko/Mary is heading back to Pewter City to try and decypher some tomes, but I'm going to make a brief detour and deal with Team Rocket on Cinnabar Island. I have a bad feeling about whatever they're planning...", "Main Scenario Quest", "Track down Team Rocket on Cinnabar Island.", "", "Cinnabar Island", :SUPERLIGHTBLUE, Time.now, false),
+	Quest.new(16, "Resurrection of the Past", "One of the seismologists reported an abnormal signal deep within Cinnabar Volcano, and asked if I could check it out. Just as well, I heard a strange vibration coming from deep within earlier.", "Side Quest", "Travel deep into Cinnabar Volcano.", "", "Cinnabar City", :LIGHTGREEN, Time.now, false),
+	Quest.new(17, "A Land Beyond", "Professor Oak gave me a call not too long ago and told me he had some important news to deliver to me. He wants me to return to Pallet Town so he can give it in person. Well, back to Pallet Town I go!", "Main Scenario Quest", "Return to Pallet Town and talk to Professor Oak.", "", "Pallet Town", :SUPERLIGHTBLUE, Time.now, false),
+	Quest.new(18, "Battling Under the Influence", "I attempted to ride the high-speed line to Goldenrod/Saffron City, but apparently there's been a disruption on the rail line involving a bunch of Yuugi and Suika Puppets. Since nobody else seems to be able to deal with it, it's fallen on my shoulders to help.", "Side Quest", "Defeat the Yuugi and Suika Puppets blocking the train line.", "", "Goldenrod City/Saffron City", :LIGHTGREEN, Time.now, false),
 ]
 
 class PokeBattle_Trainer
@@ -208,7 +219,7 @@ class Questlog
     for i in 0..1
       @sprites["btn#{i}"] = IconSprite.new(0, 0, @viewport)
       @sprites["btn#{i}"].setBitmap("Graphics/Pictures/questBtn")
-      @sprites["btn#{i}"].x = 84
+      @sprites["btn#{i}"].x = 64
       @sprites["btn#{i}"].y = 130 + 56 * i
       @sprites["btn#{i}"].src_rect.height = (@sprites["btn#{i}"].bitmap.height / 2).round
       @sprites["btn#{i}"].src_rect.y = i == 0 ? (@sprites["btn#{i}"].bitmap.height / 2).round : 0
@@ -650,7 +661,7 @@ class Questlog
         @sprites["ongoing#{i}"] = QuestSprite.new(0, 0, @viewport)
         @sprites["ongoing#{i}"].setBitmap("Graphics/Pictures/questBtn")
         @sprites["ongoing#{i}"].quest = @ongoing[i]
-        @sprites["ongoing#{i}"].x = 94
+        @sprites["ongoing#{i}"].x = 74
         @sprites["ongoing#{i}"].y = 42 + 52 * i
         @sprites["ongoing#{i}"].src_rect.height = (@sprites["ongoing#{i}"].bitmap.height / 2).round
         @sprites["ongoing#{i}"].src_rect.y = (@sprites["ongoing#{i}"].bitmap.height / 2).round if i == @sel_two
@@ -672,7 +683,7 @@ class Questlog
         break if i > 5
         @sprites["completed#{i}"] = QuestSprite.new(0, 0, @viewport)
         @sprites["completed#{i}"].setBitmap("Graphics/Pictures/questBtn")
-        @sprites["completed#{i}"].x = 94
+        @sprites["completed#{i}"].x = 74
         @sprites["completed#{i}"].y = 42 + 52 * i
         @sprites["completed#{i}"].src_rect.height = (@sprites["completed#{i}"].bitmap.height / 2).round
         @sprites["completed#{i}"].src_rect.y = (@sprites["completed#{i}"].bitmap.height / 2).round if i == @sel_two
