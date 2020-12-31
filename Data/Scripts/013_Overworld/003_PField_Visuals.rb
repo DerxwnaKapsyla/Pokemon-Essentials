@@ -48,7 +48,12 @@ def pbBattleAnimation(bgm=nil,battletype=0,foe=nil)
     elsif $PokemonTemp.encounterType &&
        ($PokemonTemp.encounterType==EncounterTypes::OldRod ||
        $PokemonTemp.encounterType==EncounterTypes::GoodRod ||
-       $PokemonTemp.encounterType==EncounterTypes::SuperRod)
+       $PokemonTemp.encounterType==EncounterTypes::SuperRod ||
+	   # ------ Derx: Addition of Hidden Fishing Rod encounter types
+	   $PokemonTemp.encounterType==EncounterTypes::HiddenORod ||
+       $PokemonTemp.encounterType==EncounterTypes::HiddenGRod ||
+       $PokemonTemp.encounterType==EncounterTypes::HiddenSRod)
+	   # ------ Derx: End of Hidden Fishing Rod additions
       location = 3
     elsif $PokemonEncounters.isCave?
       location = 2

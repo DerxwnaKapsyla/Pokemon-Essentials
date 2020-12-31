@@ -49,6 +49,7 @@ MetadataPlayerE          = 13
 MetadataPlayerF          = 14
 MetadataPlayerG          = 15
 MetadataPlayerH          = 16
+MetadataHiddenBattleBGM	 = 17 # Derx: Adds the ability to set the Hidden Battle BGM to the metadata
 
 MetadataOutdoor             = 1
 MetadataShowArea            = 2
@@ -88,7 +89,8 @@ module PokemonMetadata
      "PlayerE"          => [MetadataPlayerE,          "esssssss", :PBTrainers],
      "PlayerF"          => [MetadataPlayerF,          "esssssss", :PBTrainers],
      "PlayerG"          => [MetadataPlayerG,          "esssssss", :PBTrainers],
-     "PlayerH"          => [MetadataPlayerH,          "esssssss", :PBTrainers]
+     "PlayerH"          => [MetadataPlayerH,          "esssssss", :PBTrainers],
+	 "HiddenBattleBGM"  => [MetadataHiddenBattleBGM,  "s"] # Derx: Adds the ability to set the Hidden Battle BGM to the metadata
   }
   NonGlobalTypes = {
      "Outdoor"          => [MetadataOutdoor,             "b"],

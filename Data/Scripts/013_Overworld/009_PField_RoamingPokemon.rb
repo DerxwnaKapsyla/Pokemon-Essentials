@@ -129,24 +129,47 @@ def pbRoamingMethodAllowed(encType)
                    encounter==EncounterTypes::LandDay ||
                    encounter==EncounterTypes::LandNight ||
                    encounter==EncounterTypes::Water ||
-                   encounter==EncounterTypes::Cave
+                   encounter==EncounterTypes::Cave ||
+				   # ------ Derx: Addition of Hidden Encounter Types to Roaming checks
+				   encounter==EncounterTypes::HiddenLand ||
+				   encounter==EncounterTypes::HiddenWater ||
+				   encounter==EncounterTypes::HiddenCave
+				   # ------ Derx: End of Hidden Encounters being added to Roaming checks
   when 1   # Grass (except Bug Contest)/walking in caves only
     return true if encounter==EncounterTypes::Land ||
                    encounter==EncounterTypes::LandMorning ||
                    encounter==EncounterTypes::LandDay ||
                    encounter==EncounterTypes::LandNight ||
-                   encounter==EncounterTypes::Cave
+                   encounter==EncounterTypes::Cave ||
+				   # ------ Derx: Addition of Hidden Encounter Types to Roaming checks
+				   encounter==EncounterTypes::HiddenLand ||
+				   encounter==EncounterTypes::HiddenCave
+				   # ------ Derx: End of Hidden Encounters being added to Roaming checks
   when 2   # Surfing only
-    return true if encounter==EncounterTypes::Water
+    return true if encounter==EncounterTypes::Water ||
+				   # ------ Derx: Addition of Hidden Encounter Types to Roaming checks
+				   encounter==EncounterTypes::HiddenWater
+				   # ------ Derx: End of Hidden Encounters being added to Roaming checks
   when 3   # Fishing only
     return true if encounter==EncounterTypes::OldRod ||
                    encounter==EncounterTypes::GoodRod ||
-                   encounter==EncounterTypes::SuperRod
+                   encounter==EncounterTypes::SuperRod ||
+				   # ------ Derx: Addition of Hidden Encounter Types to Roaming checks
+				   encounter==EncounterTypes::HiddenORod ||
+                   encounter==EncounterTypes::HiddenGRod ||
+                   encounter==EncounterTypes::HiddenSRod
+				   # ------ Derx: End of Hidden Encounters being added to Roaming checks
   when 4   # Water-based only
     return true if encounter==EncounterTypes::Water ||
                    encounter==EncounterTypes::OldRod ||
                    encounter==EncounterTypes::GoodRod ||
-                   encounter==EncounterTypes::SuperRod
+                   encounter==EncounterTypes::SuperRod ||
+				   # ------ Derx: Addition of Hidden Encounter Types to Roaming checks
+				   encounter==EncounterTypes::HiddenWater ||
+				   encounter==EncounterTypes::HiddenORod ||
+                   encounter==EncounterTypes::HiddenGRod ||
+                   encounter==EncounterTypes::HiddenSRod
+				   # ------ Derx: End of Hidden Encounters being added to Roaming checks
   end
   return false
 end

@@ -181,7 +181,12 @@ BallHandlers::ModifyCatchRate.add(:LUREBALL,proc { |ball,catchRate,battle,battle
   multiplier = (NEWEST_BATTLE_MECHANICS) ? 5 : 3
   catchRate *= multiplier if $PokemonTemp.encounterType==EncounterTypes::OldRod ||
                              $PokemonTemp.encounterType==EncounterTypes::GoodRod ||
-                             $PokemonTemp.encounterType==EncounterTypes::SuperRod
+                             $PokemonTemp.encounterType==EncounterTypes::SuperRod ||
+							 # ------ Derx: Addition of Hidden Fishing Rod encounter types
+							 $PokemonTemp.encounterType==EncounterTypes::HiddenORod ||
+                             $PokemonTemp.encounterType==EncounterTypes::HiddenGRod ||
+                             $PokemonTemp.encounterType==EncounterTypes::HiddenSRod
+							 # ------ Derx: End of Hidden Fishing Rod additions
   next [catchRate,255].min
 })
 

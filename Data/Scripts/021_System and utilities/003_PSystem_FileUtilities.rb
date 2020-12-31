@@ -526,18 +526,41 @@ end
 # Load various wild battle music
 #===============================================================================
 def pbGetWildBattleBGM(_wildParty)   # wildParty is an array of Pokémon objects
+
+# ------ Derx: Sets up an array for playing an alternate battle BGM for Hidden Encounters
+  altbgm = [EncounterTypes::HiddenLand,
+            EncounterTypes::HiddenCave,
+            EncounterTypes::HiddenWater,
+            EncounterTypes::HiddenORod,
+            EncounterTypes::HiddenGRod,
+            EncounterTypes::HiddenSRod,
+            EncounterTypes::HiddenRSmash]
+# ------ Derx: End of array setup for Alternate BGM for Hidden Encounters
+
   if $PokemonGlobal.nextBattleBGM
     return $PokemonGlobal.nextBattleBGM.clone
   end
   ret = nil
   if !ret
     # Check map-specific metadata
-    music = pbGetMetadata($game_map.map_id,MetadataMapWildBattleBGM)
+	# ------ Derx: Calls on the above array to determine if the BGM for Hidden Battle should be pulled from metadata
+    if altbgm.include?($PokemonTemp.encounterType)
+      music = pbGetMetadata(0,MetadataHiddenBattleBGM)
+    else
+	  music = pbGetMetadata($game_map.map_id,MetadataMapWildBattleBGM)
+	end
+	# ------ Derx: End of Hidden Battle BGM related code
     ret = pbStringToAudioFile(music) if music && music!=""
   end
   if !ret
     # Check global metadata
-    music = pbGetMetadata(0,MetadataWildBattleBGM)
+	# ------ Derx: Calls on the above array to determine if the BGM for Hidden Battle should be pulled from metadata
+    if altbgm.include?($PokemonTemp.encounterType)
+      music = pbGetMetadata(0,MetadataHiddenBattleBGM)
+    else
+      music = pbGetMetadata(0,MetadataWildBattleBGM)
+    end
+	# ------ Derx: End of Hidden Battle BGM related code
     ret = pbStringToAudioFile(music) if music && music!=""
   end
   ret = pbStringToAudioFile("Battle wild") if !ret

@@ -6,11 +6,12 @@ PlayerB = SCMary,trchar001.png,001_bike.png,001_surf.png,001_run.png,001_surf.pn
 PlayerC = POKEMONTRAINER_Red,trchar002.png,002_bike.png,002_surf.png,002_run.png,002_surf.png,002_fish_offset.png,xxx
 TrainerVictoryME = Battle victory trainer.ogg
 WildVictoryME = Battle victory wild.ogg
-TrainerBattleBGM = B-003. Doll Judgement ~ The Girl Who Played With People's Shapes.ogg
+TrainerBattleBGM = B-016. Battle vs. Trainer.ogg
 SurfBGM = U-007. Surf (HgSs Surf).ogg
 BicycleBGM = U-006. Wind God Girl (Bike).ogg
 Home = 173,33,5,2
-WildBattleBGM = B-001. Love Colored Master Spark
+HiddenBattleBGM = B-010. Battle vs. Hidden Encounter.ogg
+WildBattleBGM = B-011. Battle vs. Puppet (Early Game).ogg
 #-------------------------------
 [001]
 # Intro
@@ -103,6 +104,23 @@ MapPosition = 0,6,8
 Outdoor = true
 ShowArea = true
 #-------------------------------
+[047]
+# Route 3
+MapSize = 4,1111
+Weather = Rain,10
+Bicycle = true
+MapPosition = 0,7,6
+Outdoor = true
+ShowArea = true
+#-------------------------------
+[048]
+# Route 4
+Weather = Rain,10
+Bicycle = true
+MapPosition = 0,10,5
+Outdoor = true
+ShowArea = true
+#-------------------------------
 [067]
 # Route 22
 MapSize = 2,11
@@ -134,6 +152,7 @@ Bicycle = true
 MapPosition = 0,6,7
 Outdoor = true
 Environment = TallGrass
+WildBattleBGM = B-012. Battle vs. Puppet (Forest).ogg
 ShowArea = true
 #-------------------------------
 [170]

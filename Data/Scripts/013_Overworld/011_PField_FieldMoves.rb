@@ -604,7 +604,13 @@ HiddenMoveHandlers::UseMove.add(:HEADBUTT,proc { |move,pokemon|
 #===============================================================================
 def pbRockSmashRandomEncounter
   if rand(100)<25
-    pbEncounter(EncounterTypes::RockSmash)
+	# ------ Derx: Addition of Hidden Rock Smash encounter type to the Rock Smash encounter checks
+	if rand(100) < 15 && $PokemonEncounters.hasEncounter?(EncounterTypes::HiddenRSmash)
+	  pbEncounter(EncounterTypes::HiddenRSmash) 
+	else
+      pbEncounter(EncounterTypes::RockSmash)
+	end
+	# ------ Derx: End of Hidden Rock Smash addition
   end
 end
 

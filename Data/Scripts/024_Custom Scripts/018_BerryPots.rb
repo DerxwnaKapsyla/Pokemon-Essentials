@@ -24,11 +24,12 @@ end
 #===============================================================================
 
 # WateringCan items array
-WATERINGCAN=[getConst(PBItems,:SPRAYDUCK),
-             getConst(PBItems,:SQUIRTBOTTLE),
-             getConst(PBItems,:WAILMERPAIL)
-#             getConst(PBItems,:SPRINKLOTAD) # Derx: This item doesn't exist in Asteria, so to prevent it from throwing an error it's been commented out
-            ]
+WATERINGCAN = [
+    517, # Sprayduck
+    516, # Squirtbottle
+    518, # Wailmerpail
+#    629  # Sprinklotad # Derx: This item doesn't exist in Asteria, so to prevent it from throwing an error it's been commented out
+]
             
 # Maximum times for berry to replant itself
 REPLANTS  = 9 

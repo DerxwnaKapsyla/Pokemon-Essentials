@@ -12,6 +12,16 @@ module EncounterTypes
   LandDay      = 10
   LandNight    = 11
   BugContest   = 12
+  # ------ Derx: Addition of the Hidden Encounter Types.
+  HiddenLand   = 13
+  HiddenCave   = 14
+  HiddenWater  = 15
+  HiddenRSmash = 16
+  HiddenORod   = 17
+  HiddenGRod   = 18
+  HiddenSRod   = 19
+  HiddenBug    = 20 # Derx: Might go unused, idk if I want to work this into the Bug Catching Contest.
+  # ------ Derx: End of the Hidden Encounter Type additions.
   Names = [
      "Land",
      "Cave",
@@ -25,7 +35,17 @@ module EncounterTypes
      "LandMorning",
      "LandDay",
      "LandNight",
-     "BugContest"
+     "BugContest",
+	 # ------ Derx: Addition of the Hidden Encounter Types.
+	 "HiddenLand",
+	 "HiddenCave",
+	 "HiddenWater",
+	 "HiddenRockSmash",
+	 "HiddenOldRod",
+	 "HiddenGoodRod",
+	 "HiddenSuperRod",
+	 "HiddenBugContest" # Derx: Might go unused, idk if I want to work this into the Bug Catching Contest.
+     # ------ Derx: End of the Hidden Encounter Type additions.
   ]
   EnctypeChances = [
      [20,20,10,10,10,10,5,5,4,4,1,1],
@@ -40,10 +60,22 @@ module EncounterTypes
      [20,20,10,10,10,10,5,5,4,4,1,1],
      [20,20,10,10,10,10,5,5,4,4,1,1],
      [20,20,10,10,10,10,5,5,4,4,1,1],
-     [20,20,10,10,10,10,5,5,4,4,1,1]
+     [20,20,10,10,10,10,5,5,4,4,1,1],
+	 # ------ Derx: Addition of the Hidden Encounter Types.
+	 [17,17,17,17,16,16],				# Derx: Hidden Land 
+	 [17,17,17,17,16,16],				# Derx: Hidden Cave
+	 [34,33,33],						# Derx: Hidden Water
+	 [34,33,33],						# Derx: Hidden Rock Smash
+     [100],								# Derx: Hidden Old Rod
+     [50,50],							# Derx: Hidden Good Rod
+     [34,33,33],						# Derx: Hidden Super Rod
+	 [17,17,17,17,16,16]				# Derx: Hidden Bug Catching Contest
+	 # ------ Derx: End of the Hidden Encounter Type additions.
   ]
-  EnctypeDensities   = [25, 10, 10, 0, 0, 0, 0, 0, 0, 25, 25, 25, 25]
-  EnctypeCompileDens = [ 1,  2,  3, 0, 0, 0, 0, 0, 0,  1,  1,  1,  1]
+  EnctypeDensities   = [25, 10, 10, 0, 0, 0, 0, 0, 0, 25, 25, 25, 25, 25, 10, 10, 0, 0, 0, 0, 25] # Derx: Edits made for the Hidden Encounter Table
+  EnctypeCompileDens = [ 1,  2,  3, 0, 0, 0, 0, 0, 0,  1,  1,  1,  1,  1,  2,  3, 0, 0, 0, 0,  1] # Derx: Edits made for the Hidden Encounter Table
+  # EnctypeDensities   = [25, 10, 10, 0, 0, 0, 0, 0, 0, 25, 25, 25, 25] # Derx: Original Line
+  # EnctypeCompileDens = [ 1,  2,  3, 0, 0, 0, 0, 0, 0,  1,  1,  1,  1] # Derx: Original Line
 end
 
 
@@ -107,7 +139,8 @@ class PokemonEncounters
   # Applies only to encounters triggered by moving around.
   def isCave?
     return false if @density==nil
-    return @enctypes[EncounterTypes::Cave] ? true : false
+    return (@enctypes[EncounterTypes::Cave] ||
+			@enctypes[EncounterTypes::HiddenCave]) ? true : false # Derx: Addition of the Hidden Cave Encounter Type
   end
 
   # Returns whether grass-like encounters have been defined for the current map.
@@ -118,7 +151,9 @@ class PokemonEncounters
             @enctypes[EncounterTypes::LandMorning] ||
             @enctypes[EncounterTypes::LandDay] ||
             @enctypes[EncounterTypes::LandNight] ||
-            @enctypes[EncounterTypes::BugContest]) ? true : false
+            @enctypes[EncounterTypes::BugContest] ||
+            @enctypes[EncounterTypes::HiddenLand] || # Derx: Addition of the Hidden Land Encounter Type
+            @enctypes[EncounterTypes::HiddenBug]) ? true : false # Derx: Addition of the Hidden Bug Contest Encounter Type
   end
 
   # Returns whether grass-like encounters have been defined for the current map
@@ -129,14 +164,16 @@ class PokemonEncounters
     return (@enctypes[EncounterTypes::Land] ||
             @enctypes[EncounterTypes::LandMorning] ||
             @enctypes[EncounterTypes::LandDay] ||
-            @enctypes[EncounterTypes::LandNight]) ? true : false
+            @enctypes[EncounterTypes::LandNight] ||
+            @enctypes[EncounterTypes::HiddenLand]) ? true : false # Derx: Addition of the Hidden Land Encounter Type
   end
 
   # Returns whether water-like encounters have been defined for the current map.
   # Applies only to encounters triggered by moving around (i.e. not fishing).
   def isWater?
     return false if @density==nil
-    return @enctypes[EncounterTypes::Water] ? true : false
+    return (@enctypes[EncounterTypes::Water] ||
+			@enctypes[EncounterTypes::HiddenWater])? true : false # Derx: Addition of the Hidden Water Encounter Type
   end
 
   # Returns whether it is theoretically possible to have an encounter in the
@@ -158,17 +195,34 @@ class PokemonEncounters
   # from, depending on the player's current location.
   def pbEncounterType
     if $PokemonGlobal.surfing
-      return EncounterTypes::Water
+	# ------ Derx: Addition of the Hidden Water encounter type
+	  enctype = EncounterTypes::Water
+	  enctype = EncounterTypes::HiddenWater if self.hasEncounter?(EncounterTypes::Water) && rand(100) < 15 && self.hasEncounter?(EncounterTypes::HiddenWater) # Derx: Addition of the Hidden Water encounter type
+	  return enctype
+      # return EncounterTypes::Water # Derx: Original Line
+	  # ------ Derx: End of Hidden Water addition
     elsif self.isCave?
-      return EncounterTypes::Cave
+	  # ------ Derx: Addition of the Hidden Cave encounter type
+      enctype = EncounterTypes::Cave 
+	  enctype = EncounterTypes::HiddenCave if self.hasEncounter?(EncounterTypes::Cave) && rand(100) < 15 && self.hasEncounter?(EncounterTypes::HiddenCave) # Derx: Addition of the Hidden Cave encounter type
+	  return enctype
+	  # return EncounterTypes::Cave # Derx: Original Line
+	  # ------ Derx: End of Hidden Cave addition
     elsif self.isGrass?
       time = pbGetTimeNow
       enctype = EncounterTypes::Land
       enctype = EncounterTypes::LandNight if self.hasEncounter?(EncounterTypes::LandNight) && PBDayNight.isNight?(time)
       enctype = EncounterTypes::LandDay if self.hasEncounter?(EncounterTypes::LandDay) && PBDayNight.isDay?(time)
       enctype = EncounterTypes::LandMorning if self.hasEncounter?(EncounterTypes::LandMorning) && PBDayNight.isMorning?(time)
+	  # ------ Derx: Addition of the Hidden Land encounter type
+	  enctype = EncounterTypes::HiddenLand if (self.hasEncounter?(EncounterTypes::Land) || 
+											   self.hasEncounter?(EncounterTypes::LandNight) || 
+											   self.hasEncounter?(EncounterTypes::LandDay) || 
+											   self.hasEncounter?(EncounterTypes::LandMorning)) && rand(100) < 15 && self.hasEncounter?(EncounterTypes::HiddenLand)
+	  # ------ Derx: End of Hidden Land addition
       if pbInBugContest? && self.hasEncounter?(EncounterTypes::BugContest)
         enctype = EncounterTypes::BugContest
+		enctype = EncounterTypes::HiddenBug if self.hasEncounter?(EncounterTypes::BugContest) && rand(100) < 15 && self.hasEncounter?(EncounterTypes::HiddenBug) # Derx: Addition of the Hidden Bug Contest encounter type
       end
       return enctype
     end

@@ -272,7 +272,11 @@ class MapScreenScene
      ["PlayerG",PlayerProperty,
         _INTL("Specifies player G.")],
      ["PlayerH",PlayerProperty,
-        _INTL("Specifies player H.")]
+        _INTL("Specifies player H.")],
+# ------- Derx: Changes made for Hidden Battle BGM being definable in metadata
+     ["HiddenBattleBGM",BGMProperty,
+        _INTL("Default BGM for Hidden Pokémon battles.")]
+# ------ Derx: End of changes for Hidden Battle BGMs
   ]
   LOCALMAPS = [
      ["Outdoor",BooleanProperty,

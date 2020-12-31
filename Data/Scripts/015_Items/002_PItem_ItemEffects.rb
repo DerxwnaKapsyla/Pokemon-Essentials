@@ -246,7 +246,13 @@ ItemHandlers::UseInField.add(:OLDROD,proc { |item|
   end
   encounter = $PokemonEncounters.hasEncounter?(EncounterTypes::OldRod)
   if pbFishing(encounter,1)
-    pbEncounter(EncounterTypes::OldRod)
+	# ------ Derx: Addition of Hidden Old Rod encounter type to the Old Rod encounter checks
+	if rand(100) < 15 && $PokemonEncounters.hasEncounter?(EncounterTypes::HiddenORod)
+	  pbEncounter(EncounterTypes::HiddenORod)
+	else
+	  pbEncounter(EncounterTypes::OldRod)
+	end
+	# ------ Derx: End of Hidden Old Rod addition
   end
   next 1
 })
@@ -260,7 +266,13 @@ ItemHandlers::UseInField.add(:GOODROD,proc { |item|
   end
   encounter = $PokemonEncounters.hasEncounter?(EncounterTypes::GoodRod)
   if pbFishing(encounter,2)
-    pbEncounter(EncounterTypes::GoodRod)
+	# ------ Derx: Addition of Hidden Good Rod encounter type to the Good Rod encounter checks
+	if rand(100) < 15 && $PokemonEncounters.hasEncounter?(EncounterTypes::HiddenGRod)
+	  pbEncounter(EncounterTypes::HiddenGRod)
+	else
+	  pbEncounter(EncounterTypes::GoodRod)
+	end
+	# ------ Derx: End of Hidden Good Rod addition
   end
   next 1
 })
@@ -274,7 +286,13 @@ ItemHandlers::UseInField.add(:SUPERROD,proc { |item|
   end
   encounter = $PokemonEncounters.hasEncounter?(EncounterTypes::SuperRod)
   if pbFishing(encounter,3)
-    pbEncounter(EncounterTypes::SuperRod)
+	# ------ Derx: Addition of Hidden Super Rod encounter type to the Super Rod encounter checks
+	if rand(100) < 15 && $PokemonEncounters.hasEncounter?(EncounterTypes::HiddenSRod)
+	  pbEncounter(EncounterTypes::HiddenSRod)
+	else
+	  pbEncounter(EncounterTypes::SuperRod)
+	end
+	# ------ Derx: End of Hidden Super Rod addition
   end
   next 1
 })

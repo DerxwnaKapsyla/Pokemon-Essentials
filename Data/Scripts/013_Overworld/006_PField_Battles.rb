@@ -171,6 +171,11 @@ def pbGetEnvironment
   if $PokemonTemp.encounterType==EncounterTypes::OldRod ||
      $PokemonTemp.encounterType==EncounterTypes::GoodRod ||
      $PokemonTemp.encounterType==EncounterTypes::SuperRod
+	 # ------ Derx: Addition of the Hidden Fishing Rod Encounter Types
+	 $PokemonTemp.encounterType==EncounterTypes::HiddenORod ||
+     $PokemonTemp.encounterType==EncounterTypes::HiddenGRod ||
+     $PokemonTemp.encounterType==EncounterTypes::HiddenSRod
+	 # ------ Derx: End of Hidden Fishing Rod additions
     terrainTag = pbFacingTerrainTag
   else
     terrainTag = $game_player.terrain_tag
