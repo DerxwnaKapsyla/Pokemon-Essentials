@@ -2,7 +2,7 @@
 #                   SIMPLE QUEST SYSTEM + UI 1.0
 #                           by mej 71
 #
-# updated for pokemon essentials 17.2, bug fixes
+# updated for pokemon essentials 18.1, bug fixes
 # and integration to pause menu by derFischae
 ##########################################################################
 =begin
@@ -254,16 +254,16 @@ module QuestsData
      "Reward"=>[12,"s"],
      "RewardDescription"=>[13,"s"],
      "QuestDescription"=>[14,"s"],
-     "StageLocation1" => [15,"v|s"],
-     "StageLocation2" => [16,"v|s"],
-     "StageLocation3" => [17,"v|s"],
-     "StageLocation4" => [18,"v|s"],
-     "StageLocation5" => [19,"v|s"],
-     "StageLocation6" => [20,"v|s"],
-     "StageLocation7" => [21,"v|s"],
-     "StageLocation8" => [22,"v|s"],
-     "StageLocation9" => [23,"v|s"],
-     "StageLocation10" => [24,"v|s"],
+     "StageLocation1" => [15,"s"],
+     "StageLocation2" => [16,"s"],
+     "StageLocation3" => [17,"s"],
+     "StageLocation4" => [18,"s"],
+     "StageLocation5" => [19,"s"],
+     "StageLocation6" => [20,"s"],
+     "StageLocation7" => [21,"s"],
+     "StageLocation8" => [22,"s"],
+     "StageLocation9" => [23,"s"],
+     "StageLocation10" => [24,"s"],
      "CompletedMessage"=>[25,"s"],
      "FailedMessage"=>[26,"s"],
   }  
@@ -357,7 +357,11 @@ class Game_Quests
            raise _INTL("Expected at least one stage for quest {1}\r\n{2}",currentQuest,FileLineData.linereport)
          end
          if locations.length!=stages.length
+           raise _INTL("locs= {1}" ,locations)
+
+           raise _INTL("locs= {1} & stages= {2}",locations.length,stages.length)
            raise _INTL("Expected the number of locations to match the number of stages for quest {1}\r\n{2}",currentQuest,FileLineData.linereport)
+            
          end
          if questDesc.nil? || questDesc==""
            raise _INTL("Expected a quest description for quest {1}\r\n{2}",currentQuest,FileLineData.linereport)
@@ -442,7 +446,7 @@ class Game_Quests
                end
                if record.is_a?(String) && record.downcase=="nil"
                  curLocation+=1
-                 locations.push(record)
+                 locations.push("nil")
                  break
                elsif record !~ /\D/ #only numbers
                  mapname = pbGetMessage(MessageTypes::MapNames,record.to_i) rescue nil
@@ -450,7 +454,7 @@ class Game_Quests
                    raise _INTL("Invalid map id for quest {1}, at stage {2}",sectionname,curLocation)
                  end
                  curLocation+=1
-                 locations.push(nil)
+                 locations.push(record)
                  break
                else
                  mapid = MessageTypes.getFromMapHashValue(MessageTypes::MapNames,record)
@@ -832,7 +836,7 @@ class QuestScene
           if $quest_data.getStageLocation(quests[i].id,quests[i].stage).to_s=="nil"
             locationText = "No location available"
           else
-            ret=pbGetMessage(MessageTypes::MapNames,$quest_data.getStageLocation(quests[i].id,quests[i].stage))
+            ret=pbGetMessage(MessageTypes::MapNames,$quest_data.getStageLocation(quests[i].id,quests[i].stage).to_i)
             if $Trainer
               ret.gsub!(/\\PN/,$Trainer.name)
             end
