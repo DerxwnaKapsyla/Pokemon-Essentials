@@ -798,6 +798,9 @@ class PokemonSummary_Scene
   end
 
   def drawSelectedMove(moveToLearn,moveid)
+    @fontfix=0
+    fontname=MessageConfig.pbGetSystemFontName
+    @fontfix=2 if fontname == "Pokemon FireLeaf" || fontname == "Power Red and Green"
     # Draw all of page four, except selected move's details
     drawMoveSelection(moveToLearn)
     # Set various values
@@ -841,6 +844,9 @@ class PokemonSummary_Scene
   end
 
   def drawMoveSelection(moveToLearn)
+    @fontfix=0
+    fontname=MessageConfig.pbGetSystemFontName
+    @fontfix=2 if fontname == "Pokemon FireLeaf" || fontname == "Power Red and Green"
     overlay = @sprites["overlay"].bitmap
     overlay.clear
     base   = Color.new(255,255,255)
@@ -1040,20 +1046,11 @@ class PokemonSummary_Scene
       for i in @ribbonOffset*4...@ribbonOffset*4+12
         break if !@pokemon.ribbons[i]
         ribn = @pokemon.ribbons[i]-1
-        
-        
         imagepos.push(["Graphics/Pictures/Summary/ribbons",
-        
         230+64*(coord%4)+1*2,
         78+64*(coord/4).floor+1*2, 
-        
         64*(ribn%8),64*(ribn/8).floor,64,64])
         coord += 1
-        
-        
-        
-        
-        
         break if coord>=12
       end
     end
@@ -1085,7 +1082,8 @@ class PokemonSummary_Scene
     pbDrawImagePositions(overlay,imagepos)
     # Draw name of selected ribbon
     textpos = [
-       [name,18-1*2,286+1*2+@fontfix,0,base,shadow]
+      [name,18-1*2,286+1*2+@fontfix,0,base,shadow],
+      [_INTL("{1}/{2}",@selribbon+1,@pokemon.ribbons.length),234-5*2+136*2,286+1*2,1,@base,@shadow]
     ]
     pbDrawTextPositions(overlay,textpos)
     # Draw selected ribbon's description
@@ -1246,16 +1244,16 @@ class PokemonSummary_Scene
     @sprites["rightarrow"].visible=false
     @sprites["ribbonsel"].visible = true
     @sprites["ribbonsel"].index   = 0
-    selribbon    = @ribbonOffset*4
-    oldselribbon = selribbon
+    @selribbon    = @ribbonOffset*4
+    oldselribbon = @selribbon
     switching = false
     numRibbons = @pokemon.ribbons.length
     numRows    = [((numRibbons+3)/4).floor,3].max
-    drawSelectedRibbon(@pokemon.ribbons[selribbon])
+    drawSelectedRibbon(@pokemon.ribbons[@selribbon])
     overlay = @sprites["overlay2"].bitmap
     overlay.clear
     textpos = [
-    [_INTL("{1}/{2}",selribbon+1,@pokemon.ribbons.length),234-5*2+136*2,286+1*2,1,@base,@shadow]
+    #[_INTL("{1}/{2}",selribbon+1,@pokemon.ribbons.length),234-5*2+136*2,286+1*2,1,@base,@shadow]
     ]
     pbDrawTextPositions(overlay,textpos)
     loop do
@@ -1280,54 +1278,54 @@ class PokemonSummary_Scene
         else
           pbPlayDecisionSE
           tmpribbon                      = @pokemon.ribbons[oldselribbon]
-          @pokemon.ribbons[oldselribbon] = @pokemon.ribbons[selribbon]
-          @pokemon.ribbons[selribbon]    = tmpribbon
-          if @pokemon.ribbons[oldselribbon] || @pokemon.ribbons[selribbon]
+          @pokemon.ribbons[oldselribbon] = @pokemon.ribbons[@selribbon]
+          @pokemon.ribbons[@selribbon]    = tmpribbon
+          if @pokemon.ribbons[oldselribbon] || @pokemon.ribbons[@selribbon]
             @pokemon.ribbons.compact!
-            if selribbon>=numRibbons
-              selribbon = numRibbons-1
+            if @selribbon>=numRibbons
+              @selribbon = numRibbons-1
               hasMovedCursor = true
             end
           end
           @sprites["ribbonpresel"].visible = false
           switching = false
-          drawSelectedRibbon(@pokemon.ribbons[selribbon])
+          drawSelectedRibbon(@pokemon.ribbons[@selribbon])
         end
       elsif Input.trigger?(Input::UP)
-        selribbon -= 4
-        selribbon += numRows*4 if selribbon<0
+        @selribbon -= 4
+        @selribbon += numRows*4 if @selribbon<0
         hasMovedCursor = true
         pbPlayCursorSE
       elsif Input.trigger?(Input::DOWN)
-        selribbon += 4
-        selribbon -= numRows*4 if selribbon>=numRows*4
+        @selribbon += 4
+        @selribbon -= numRows*4 if @selribbon>=numRows*4
         hasMovedCursor = true
         pbPlayCursorSE
       elsif Input.trigger?(Input::LEFT)
-        selribbon -= 1
-        selribbon += 4 if selribbon%4==3
+        @selribbon -= 1
+        @selribbon += 4 if @selribbon%4==3
         hasMovedCursor = true
         pbPlayCursorSE
       elsif Input.trigger?(Input::RIGHT)
-        selribbon += 1
-        selribbon -= 4 if selribbon%4==0
+        @selribbon += 1
+        @selribbon -= 4 if @selribbon%4==0
         hasMovedCursor = true
         pbPlayCursorSE
       end
       if hasMovedCursor
-        @ribbonOffset = (selribbon/4).floor if selribbon<@ribbonOffset*4
-        @ribbonOffset = (selribbon/4).floor-2 if selribbon>=(@ribbonOffset+3)*4
+        @ribbonOffset = (@selribbon/4).floor if @selribbon<@ribbonOffset*4
+        @ribbonOffset = (@selribbon/4).floor-2 if @selribbon>=(@ribbonOffset+3)*4
         @ribbonOffset = 0 if @ribbonOffset<0
         @ribbonOffset = numRows-3 if @ribbonOffset>numRows-3
-        @sprites["ribbonsel"].index    = selribbon-@ribbonOffset*4
+        @sprites["ribbonsel"].index    = @selribbon-@ribbonOffset*4
         @sprites["ribbonpresel"].index = oldselribbon-@ribbonOffset*4
         overlay = @sprites["overlay2"].bitmap
         overlay.clear
         textpos = [
-        [_INTL("{1}/{2}",selribbon+1,@pokemon.ribbons.length),234-5*2+136*2,286+1*2,1,@base,@shadow]
+        #[_INTL("{1}/{2}",selribbon+1,@pokemon.ribbons.length),234-5*2+136*2,286+1*2,1,@base,@shadow]
         ]
         pbDrawTextPositions(overlay,textpos)
-        drawSelectedRibbon(@pokemon.ribbons[selribbon])
+        drawSelectedRibbon(@pokemon.ribbons[@selribbon])
       end
     end
     @sprites["ribbonsel"].visible = false
