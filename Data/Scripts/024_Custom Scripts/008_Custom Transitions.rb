@@ -14,7 +14,8 @@ def pbBattleAnimationOverride(viewport,battletype=0,foe=nil)
      case $game_variables[103]  # check this variable, and depending on the number returned...
      when 0; pbCommonEvent(8)   # Vs. Red
      when 1; pbCommonEvent(9)   # Vs. Renko
-     when 2; pbCommonEvent(10)   # Vs. Maribel
+     when 2; pbCommonEvent(10)  # Vs. Maribel
+	 when 3; pbCommonEvent(11)	# Vs. Brock
      end
      return true                # Note that the battle animation is done
    end  
