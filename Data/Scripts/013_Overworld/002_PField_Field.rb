@@ -650,6 +650,12 @@ class Game_Event
     self.need_refresh = true
     return false
   end
+  
+  # ------ Derx: Checks for the Gold fights
+  def badgeQtyOdd?
+	return $Trainer.numbadges > 0 && $Trainer.numbadges % 2 != 0
+  end
+  # ------ Derx: End of checks for the Gold fights
 end
 
 

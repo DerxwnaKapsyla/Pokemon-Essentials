@@ -74,7 +74,8 @@ class Interpreter
 #    :TWINS => 'P-001. Demystify Feast',
 #    :YOUNGCOUPLE => 'P-001. Demystify Feast',
     :SCRenko => 'P-012. Girls\' Sealing Club',
-	:SCMary => 'P-012. Girls\' Sealing Club'
+	:SCMary => 'P-012. Girls\' Sealing Club',
+	:RIVAL_Gold => 'P-013. Encounter - Gold'
   }
   # Play the trainer eye bgm according to the type defined in Interpreter::TRAINER_BGMS
   # @param type [Symbol] type of trainer (key in TRAINER_BGMS)

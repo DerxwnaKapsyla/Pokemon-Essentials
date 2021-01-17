@@ -15,7 +15,8 @@ def pbBattleAnimationOverride(viewport,battletype=0,foe=nil)
      when 0; pbCommonEvent(8)   # Vs. Red
      when 1; pbCommonEvent(9)   # Vs. Renko
      when 2; pbCommonEvent(10)  # Vs. Maribel
-	 when 3; pbCommonEvent(11)	# Vs. Brock
+	 when 3; pbCommonEvent(11)	# Vs. Gym Leader
+	 when 4; pbCommonEvent(34)  # Vs. Gold
      end
      return true                # Note that the battle animation is done
    end  
