@@ -645,9 +645,9 @@ def pbStartOver(gameover=false)
   pbHealAll
   if $PokemonGlobal.pokecenterMapId && $PokemonGlobal.pokecenterMapId>=0
     if gameover
-      pbMessage(_INTL("\\w[]\\wm\\c[0]\\l[3]After the unfortunate defeat, you scurry back to a Pokémon Center.")) # Derx: Changed the color to 0, as 8 was too hard to see
+      pbMessage(_INTL("\\w[]\\wm\\c[14]\\l[3]After the unfortunate defeat, you scurry back to a Pokémon Center.")) # Derx: Changed the color to 14, as 8 was too hard to see
     else
-      pbMessage(_INTL("\\w[]\\wm\\c[0]\\l[3]You scurry back to a Pokémon Center, protecting your exhausted partners from any further harm...")) # Derx: Removing excplict references to Pokemon; also changed color to 0
+      pbMessage(_INTL("\\w[]\\wm\\c[14]\\l[3]You scurry back to a Pokémon Center, protecting your exhausted partners from any further harm...")) # Derx: Removing excplict references to Pokemon; also changed color to 14
     end
     pbCancelVehicles
     pbRemoveDependencies
@@ -668,9 +668,9 @@ def pbStartOver(gameover=false)
       return
     end
     if gameover
-      pbMessage(_INTL("\\w[]\\wm\\c[0]\\l[3]After the unfortunate defeat, you scurry back home.")) # Derx: Changed the color to 0, as 8 was too hard to see
+      pbMessage(_INTL("\\w[]\\wm\\c[14]\\l[3]After the unfortunate defeat, you scurry back home.")) # Derx: Changed the color to 14, as 8 was too hard to see
     else
-      pbMessage(_INTL("\\w[]\\wm\\c[0]\\l[3]You scurry back home, protecting your exhausted partners from any further harm...")) # Derx: Removing excplict references to Pokemon; also changed color to 0
+      pbMessage(_INTL("\\w[]\\wm\\c[14]\\l[3]You scurry back home, protecting your exhausted partners from any further harm...")) # Derx: Removing excplict references to Pokemon; also changed color to 14
     end
     if homedata
       pbCancelVehicles

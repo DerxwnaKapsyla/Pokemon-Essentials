@@ -266,6 +266,8 @@ module QuestsData
      "StageLocation10" => [24,"s"],
      "CompletedMessage"=>[25,"s"],
      "FailedMessage"=>[26,"s"],
+	 "DisplayName"=>[27,"s"], # Derx: STUPID SCIENCE
+	 "QuestType"=>[28,"s"], # Derx: For displaying whether something is a Main Scenario Quest, a Side Quest, or a Mandatory Side Quest
   }  
 end
 
@@ -282,9 +284,12 @@ class QuestInfo
   attr_reader :locations
   attr_reader :completedMessage
   attr_reader :failedMessage
+  attr_reader :displayName # Derx: STUPID SCIENCE
+  attr_reader :questType # Derx: For displaying whether something is a Main Scenario Quest, a Side Quest, or a Mandatory Side Quest
   
   def initialize(id,questName,stages,rewardString,rewardDesc,
-                  questDesc,locations,completedMessage,failedMessage)
+                  questDesc,locations,completedMessage,failedMessage,
+				  displayName,questType) # Derx: STUPID SCIENCE, also for displaying whether something is a Main Scenario Quest, a Side Quest, or a Mandatory Side Quest
     @id = id
     @name = questName
     @stages = stages
@@ -294,6 +299,8 @@ class QuestInfo
     @locations = locations
     @completedMessage = completedMessage
     @failedMessage = failedMessage
+	@displayName = displayName # Derx: Stupid Science
+	@questType = questType # Derx: For displaying whether something is a Main Scenario Quest, a Side Quest, or a Mandatory Side Quest
   end
 end
 
@@ -344,6 +351,8 @@ class Game_Quests
     questDesc = ""
     completedMessage = ""
     failedMessage = ""
+	displayName = "" # Derx: STUPID SCIENCE
+	questType = "" # Derx: For displaying whether something is a Main Scenario Quest, a Side Quest, or a Mandatory Side Quest
     locations = []
     lineCount = 0
     #check order of stages
@@ -379,7 +388,8 @@ class Game_Quests
            raise _INTL("Expected a failed message for quest {1}\r\n{2}",currentQuest,FileLineData.linereport)
          end
          @all_quests.push(QuestInfo.new(currentQuest,name,stages,rewardString,rewardDesc,
-                         questDesc,locations,completedMessage,failedMessage))
+                         questDesc,locations,completedMessage,failedMessage,displayName,
+						 questType)) # Derx: STUPID SCIENCE, also for displaying whether something is a Main Scenario Quest, a Side Quest, or a Mandatory Side Quest
          curStage = 0
          curLocation = 0
          name = ""
@@ -390,6 +400,8 @@ class Game_Quests
          questDesc = ""
          completedMessage = ""
          failedMessage = ""
+		 displayName = "" # Derx: STUPID SCIENCE
+		 questType = "" # Derx: For displaying whether something is a Main Scenario Quest, a Side Quest, or a Mandatory Side Quest
        end
        sectionname=$~[1]
        if checkQuestIDs.include?(sectionname.to_i)
@@ -439,6 +451,16 @@ class Game_Quests
            when QuestsData::NeededInfo["FailedMessage"]
              failedMessage = record
              break
+		   # ------ Derx: STUPID SCIENCE
+           when QuestsData::NeededInfo["DisplayName"]
+             displayName = record
+             break
+		   # ------ Derx: STUPID SCIENCE END
+		   # ------ Derx: For displaying Quest Type
+           when QuestsData::NeededInfo["QuestType"]
+             questType = record
+             break
+		   # ------ Derx: End of Quest Type addition
            else
              if matchData[1].include?("StageLocation")
                if ((matchData[1][/\d+/]).to_i)!=curLocation+1
@@ -502,7 +524,8 @@ class Game_Quests
       raise _INTL("Expected a failed message for quest {1}\r\n{2}",currentQuest,FileLineData.linereport)
     end
     @all_quests.push(QuestInfo.new(currentQuest,name,stages,rewardString,
-      rewardDesc,questDesc,locations,completedMessage,failedMessage)) if lineCount>0
+      rewardDesc,questDesc,locations,completedMessage,failedMessage,
+	  displayName,questType)) if lineCount>0 # Derx: STUPID SCIENCE, also for displaying whether something is a Main Scenario Quest, a Side Quest, or a Mandatory Side Quest
     save_data(@all_quests,"Data/Quests.rxdata")
   end
   
@@ -516,6 +539,8 @@ class Game_Quests
       Kernel.pbMessage("#{@all_quests[i].rewardString}")
       Kernel.pbMessage("#{@all_quests[i].rewardDesc}")
       Kernel.pbMessage("#{@all_quests[i].questDesc}")
+	  Kernel.pbMessage("#{@all_quests[i].displayName}") # Derx: STUPID SCIENCE
+	  Kernel.pbMessage("#{@all_quests[i].questType}") # Derx: For displaying whether something is a Main Scenario Quest, a Side Quest, or a Mandatory Side Quest
     end
   end
   
@@ -600,7 +625,29 @@ class Game_Quests
     for i in 0...@all_quests.length
       return @all_quests[i].failedMessage if @all_quests[i].id==questID
     end
+  end
+  
+  # ------ Derx: STUPID SCIENCE
+  def getDisplayName(questID)
+    if questID.is_a?(String)
+      questID = getIDFromName(questID)
+    end
+    for i in 0...@all_quests.length
+      return @all_quests[i].displayName if @all_quests[i].id==questID
+    end
+  end   
+  # ------ Derx: STUPID SCIENCE END
+  
+  # ------ Derx: For displaying Quest Type
+  def getQuestType(questID)
+    if questID.is_a?(String)
+      questID = getIDFromName(questID)
+    end
+    for i in 0...@all_quests.length
+      return @all_quests[i].questType if @all_quests[i].id==questID
+    end
   end 
+  # ------ Derx: End of Quest Type addition
 end
 
 #========================================================
@@ -672,6 +719,7 @@ class QuestScene
     pbSetSmallFont(@sprites["navigation_info_overlay"].bitmap)
     pbDrawSections
     pbDrawNavigationInfo
+	pbFadeInAndShow(@sprites) # Derx: Added to make the Quest Screen fade in
   end
   
   def pbDrawNavigationInfo
@@ -773,9 +821,9 @@ class QuestScene
     selectedShadowColor=Color.new(160,160,160)
     for i in 0...quests.length
       if quests[i].id==selectedID
-        textPositions.push([$quest_data.getNameFromID(quests[i].id),0,@yOffsetList+2+(i*31),0,selectedColor,selectedShadowColor])
+        textPositions.push([$quest_data.getDisplayName(quests[i].id),0,@yOffsetList+2+(i*31),0,selectedColor,selectedShadowColor])
       else
-        textPositions.push([$quest_data.getNameFromID(quests[i].id),0,@yOffsetList+2+(i*31),0,baseColor,shadowColor])
+        textPositions.push([$quest_data.getDisplayName(quests[i].id),0,@yOffsetList+2+(i*31),0,baseColor,shadowColor])
       end
     end
     pbDrawTextPositions(overlay,textPositions)
@@ -813,24 +861,26 @@ class QuestScene
          #What's draw depends on if completed, failed, or active
         if $PokemonGlobal.selectedSection==2
           textPositions.push([_INTL("Result:"),0,@yOffsetInfo+20+20*questDescArr.length,0,selectedColor,shadowColor])
-          textPositions.push([_INTL(" {1}",$quest_data.getFailedMessage(quests[i].id)),0,@yOffsetInfo+40+20*questDescArr.length,0,baseColor,shadowColor])
+          textPositions.push([_INTL("* {1}",$quest_data.getFailedMessage(quests[i].id)),0,@yOffsetInfo+40+20*questDescArr.length,0,baseColor,shadowColor])
           @curNumLines+=1
           break
         elsif $PokemonGlobal.selectedSection==1 
           textPositions.push([_INTL("Result:"),0,@yOffsetInfo+20+20*questDescArr.length,0,selectedColor,shadowColor])
-          textPositions.push([_INTL(" {1}",$quest_data.getCompletedMessage(quests[i].id)),0,@yOffsetInfo+40+20*questDescArr.length,0,baseColor,shadowColor])
+		  @curNumLines+=1
+          textPositions.push([_INTL("* {1}",$quest_data.getCompletedMessage(quests[i].id)),0,@yOffsetInfo+40+20*questDescArr.length,0,baseColor,shadowColor])
           @curNumLines+=1
           break       
         else
           textPositions.push([_INTL("Reward:"),0,@yOffsetInfo+20+20*questDescArr.length,0,selectedColor,shadowColor])
-          textPositions.push([_INTL("{1}",$quest_data.getQuestRewardDescription(quests[i].id)),65,@yOffsetInfo+20+20*questDescArr.length,0,baseColor,shadowColor])
+		  @curNumLines+=1
+          textPositions.push([_INTL("* {1}",$quest_data.getQuestRewardDescription(quests[i].id)),0,@yOffsetInfo+20+20*(questDescArr.length+1),0,baseColor,shadowColor])
           @curNumLines+=1
-          textPositions.push([_INTL("Next Task:"),0,@yOffsetInfo+20+20*(questDescArr.length+1),0,selectedColor,shadowColor])
+          textPositions.push([_INTL("Next Task:"),0,@yOffsetInfo+40+20*(questDescArr.length+1),0,selectedColor,shadowColor])
           @curNumLines+=1
-          textPositions.push([_INTL(" {1}",stageDescArr[0]),0,@yOffsetInfo+40+20*(questDescArr.length+1),0,baseColor,shadowColor])
+          textPositions.push([_INTL("* {1}",stageDescArr[0]),0,@yOffsetInfo+60+20*(questDescArr.length+1),0,baseColor,shadowColor])
           @curNumLines+=1
           for k in 1...stageDescArr.length
-            textPositions.push([_INTL("{1}",stageDescArr[k]),0,@yOffsetInfo+40+20*(questDescArr.length+1)+20*k,0,baseColor,shadowColor])
+            textPositions.push([_INTL("* {1}",stageDescArr[k]),0,@yOffsetInfo+60+20*(questDescArr.length+1)+20*k,0,baseColor,shadowColor])
             @curNumLines+=1
           end
           if $quest_data.getStageLocation(quests[i].id,quests[i].stage).to_s=="nil"
@@ -842,9 +892,13 @@ class QuestScene
             end
             locationText = ret
           end
-          textPositions.push([_INTL("Next Location:"),0,@yOffsetInfo+40+20*(questDescArr.length)+20*(stageDescArr.length+1),0,selectedColor,shadowColor])
+          textPositions.push([_INTL("Next Location:"),0,@yOffsetInfo+60+20*(questDescArr.length)+20*(stageDescArr.length+1),0,selectedColor,shadowColor])
           @curNumLines+=1
-          textPositions.push([_INTL(" {1}",locationText),0,@yOffsetInfo+60+20*(questDescArr.length)+20*(stageDescArr.length+1),0,baseColor,shadowColor])
+          textPositions.push([_INTL("* {1}",locationText),0,@yOffsetInfo+80+20*(questDescArr.length)+20*(stageDescArr.length+1),0,baseColor,shadowColor])
+          @curNumLines+=1
+		  textPositions.push([_INTL("Quest Type:"),0,@yOffsetInfo+100+20*(questDescArr.length)+20*(stageDescArr.length+1),0,selectedColor,shadowColor])
+		  @curNumLines+=1
+		  textPositions.push([_INTL("* {1}",$quest_data.getQuestType(quests[i].id)),0,@yOffsetInfo+120+20*(questDescArr.length)+20*(stageDescArr.length+1),0,baseColor,shadowColor])
           @curNumLines+=1
           break
         end

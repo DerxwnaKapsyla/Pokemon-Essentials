@@ -1,20 +1,21 @@
-cannot convert Fixnum into String
+Quest names must be unique! Welcome Back already used
+File PBS/quests.txt, section 2, key Name
+"Welcome Back"
+
 
-010_DrawText.rb:1119:in `draw_text'
-010_DrawText.rb:1119:in `pbDrawShadowText'
-005_SpriteWindow_text.rb:1239:in `drawItem'
-005_SpriteWindow_text.rb:1141:in `refresh'
-005_SpriteWindow_text.rb:1139:in `each'
-005_SpriteWindow_text.rb:1139:in `refresh'
-005_SpriteWindow_text.rb:1068:in `baseColor='
-005_SpriteWindow_text.rb:1171:in `initialize'
-011_Messages.rb:1409:in `new'
-011_Messages.rb:1409:in `pbShowCommands'
-011_Messages.rb:1361:in `pbMessage'
-011_Messages.rb:1360:in `call'
-011_Messages.rb:1326:in `pbMessageDisplay'
-011_Messages.rb:1362:in `pbMessage'
-011_BattleScript_Data.rb:397:in `load_scripts_from_folder'
+
+019_SimpleQuestUI.rb:422:in `compileAllQuests'
+019_SimpleQuestUI.rb:416:in `each'
+019_SimpleQuestUI.rb:416:in `compileAllQuests'
+019_SimpleQuestUI.rb:352:in `pbCompilerEachCommentedLine'
+001_Compiler.rb:260:in `each_line'
+001_Compiler.rb:260:in `pbCompilerEachCommentedLine'
+001_Compiler.rb:257:in `open'
+001_Compiler.rb:257:in `pbCompilerEachCommentedLine'
+019_SimpleQuestUI.rb:352:in `compileAllQuests'
+019_SimpleQuestUI.rb:323:in `initialize'
+019_SimpleQuestUI.rb:632:in `new'
+019_SimpleQuestUI.rb:632:in `load_scripts_from_folder'
 Section000:28:in `eval'
 Section000:31:in `load_scripts_from_folder'
 Section000:28:in `each'

@@ -295,20 +295,35 @@ def getSkinColor(windowskin,color,isDarkSkin)
      windowskin.width!=128 || windowskin.height!=128
     # Base color, shadow color (these are reversed on dark windowskins)
     textcolors = [
-       "0070F8","78B8E8",   # 1  Blue
-       "E82010","F8A8B8",   # 2  Red
-       "60B048","B0D090",   # 3  Green
-       "48D8D8","A8E0E0",   # 4  Cyan
-       "D038B8","E8A0E0",   # 5  Magenta
-       "E8D020","F8E888",   # 6  Yellow
-       "A0A0A8","D0D0D8",   # 7  Grey
-       "F0F0F8","C8C8D0",   # 8  White
-       "9040E8","B8A8E0",   # 9  Purple
-       "F89818","F8C898",   # 10 Orange
+	# ------ Derx: Old Colors
+    #   "0070F8","78B8E8",   # 1  Blue
+    #   "E82010","F8A8B8",   # 2  Red
+    #   "60B048","B0D090",   # 3  Green
+    #   "48D8D8","A8E0E0",   # 4  Cyan
+    #   "D038B8","E8A0E0",   # 5  Magenta
+    #   "E8D020","F8E888",   # 6  Yellow
+    #   "A0A0A8","D0D0D8",   # 7  Grey
+    #   "F0F0F8","C8C8D0",   # 8  White
+    #   "9040E8","B8A8E0",   # 9  Purple
+    #   "F89818","F8C898",   # 10 Orange
+	# ------ Derx: New Colors
+	   "1880F8","B0C0F8",   # 1  Blue
+       "F83018","F8B0A0",   # 2  Red
+       "18C020","A8E8A8",   # 3  Green
+       "40C0D0","A8E0E8",   # 4  Cyan
+       "D030C0","E8B0D8",   # 5  Magenta
+       "E0D820","F8F0A8",   # 6  Yellow
+       "98A0B0","D0D0D8",   # 7  Grey
+       "F0F0F0","C0C0C0",   # 8  White
+       "9018F8","D0A0F0",   # 9  Purple
+       "F89810","F8D0A0",   # 10 Orange
+       "A0D0F8","D8E0F8",   # 11 Light Blue
+       "F8A8D8","F0D8E0",    # 12 Pink
        colorToRgb32(MessageConfig::DARKTEXTBASE),
-          colorToRgb32(MessageConfig::DARKTEXTSHADOW),   # 11 Dark default
+          colorToRgb32(MessageConfig::DARKTEXTSHADOW),   # 13 Dark default
        colorToRgb32(MessageConfig::LIGHTTEXTBASE),
-          colorToRgb32(MessageConfig::LIGHTTEXTSHADOW)   # 12 Light default
+          colorToRgb32(MessageConfig::LIGHTTEXTSHADOW)   # 14 Light default
+	# ------ Derx: End of changes to colors
     ]
     if color==0 || color>textcolors.length/2   # No special colour, use default
       if isDarkSkin   # Dark background, light text
