@@ -118,7 +118,7 @@ module PokeBattle_BattleCommon
     # Outcome message
     case numShakes
     when 0
-      pbDisplay(_INTL("Oh no! The {1} broke free!",pokemon.name)) # Derx: Removing excplict references to Pokemon
+      pbDisplay(_INTL("Oh no! The {1} broke free!",pkmn.name)) # Derx: Removing excplict references to Pokemon
       BallHandlers.onFailCatch(ball,self,battler)
     when 1
       pbDisplay(_INTL("Aww! It appeared to be caught!"))

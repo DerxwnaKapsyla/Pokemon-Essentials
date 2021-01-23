@@ -8,37 +8,36 @@ end
 
 
 module PBDayNight
+# ------ Derx: Addition of VanillaSunshine's Day/Night tones
+# Custom-made Official Gen 4 Day & Night Tones by VanillaSunshine
+# Please credit VanillaSunshine when using these tones
   HourlyTones = [
-# Derx: For better to look at tones during Day/Night
-#Deo's custom Day & Night tones for Pokemon Essentials.
-#These are created with preserving most of the tile colors in mind.
-#Credit is appreciated.
-     Tone.new(-70,-70,11,68),     # Midnight
-     Tone.new(-70,-70,11,68),
-     Tone.new(-70,-70,11,68),
-     Tone.new(-70,-70,11,68),
-     Tone.new(-70,-70,11,68),
-     Tone.new(-17,   -51, -85,17),
-     Tone.new(-17,   -51, -85,17),      # 6AM
-     Tone.new(-17,   -51, -85,17),
-     Tone.new(0,     0,     0,    0),
-     Tone.new(0,     0,     0,    0), 
-     Tone.new(0,     0,     0,    0), 
-     Tone.new(0,     0,     0,    0), 
-     Tone.new(0,     0,     0,    0),      # Noon
-     Tone.new(0,     0,     0,    0),
-     Tone.new(0,     0,     0,    0),
-     Tone.new(0,     0,     0,    0),
-     Tone.new(0,     0,     0,    0),
-     Tone.new(0,     0,     0,    0),
-     Tone.new(-30,   -30,   5,  68),      # 6PM
-     Tone.new(-30,   -30,   5,  68),
-     Tone.new(-35,   -35,   7,  68),
-     Tone.new(-35,   -35,   7,  68),
-     Tone.new(-70,-70,11,68),
-     Tone.new(-70,-70,11,68)
-# Derx: End of Day/Night changes
+    Tone.new(-50, -50, -5,  80),   # Night           # Midnight *
+    Tone.new(-50, -50, -5,  80),   # Night           # 1AM
+    Tone.new(-50, -50, -5,  80),   # Night           # 2AM
+    Tone.new(-50, -50, -5,  80),   # Night           # 3AM
+    Tone.new(-35, -35, 15,  60),   # Night           # 4AM
+    Tone.new(-25, -25,  5,  60),   # Day/morning     # 5AM
+    Tone.new(-25, -25,  5,  60),   # Day/morning     # 6AM *
+    Tone.new(-25, -25,  5,  60),   # Day/morning     # 7AM
+    Tone.new( -5,  -5,  0,  10),   # Day/morning     # 8AM
+    Tone.new( -5,  -5,  0,  10),   # Day/morning     # 9AM
+    Tone.new( -5,  -5,  0,  10),   # Day             # 10AM
+    Tone.new( -5,  -5,  0,  10),   # Day             # 11AM
+    Tone.new(  0,   0,   0,  0),   # Day             # Noon *
+    Tone.new(  0,   0,   0,  0),   # Day             # 1PM
+    Tone.new(  0,   0,   0,  0),   # Day/afternoon   # 2PM
+    Tone.new(  0,   0,   0,  0),   # Day/afternoon   # 3PM
+    Tone.new(  0,  -5,  -5, 10),   # Day/afternoon   # 4PM
+    Tone.new(  5, -10,-30,  15),   # Day/afternoon   # 5PM
+    Tone.new( 10, -35,-35,  75),   # Day/evening     # 6PM *
+    Tone.new(-30, -30,  0,  60),   # Day/evening     # 7PM
+    Tone.new(-50, -50, -5,  80),   # Day/evening     # 8PM
+    Tone.new(-50, -50, -5,  80),   # Night           # 9PM
+    Tone.new(-50, -50, -5,  80),   # Night           # 10PM
+    Tone.new(-50, -50, -5,  80)    # Night           # 11PM
   ]
+# ------ Derx: End of Day/Night tone changes
   @cachedTone = nil
   @dayNightToneLastUpdate = nil
   @oneOverSixty = 1/60.0
