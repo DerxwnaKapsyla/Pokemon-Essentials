@@ -2087,6 +2087,30 @@ BattleHandlers::EOREffectAbility.add(:BADDREAMS,
   }
 )
 
+# ------ Derx: Addition of Ayakashi's unique ability, Abyssal Draw
+BattleHandlers::EOREffectAbility.add(:ABYSSALDRAW,
+  proc { |ability,battler,battle|
+    battle.eachOtherSideBattler(battler.index) do |b|
+      #next if !b.near?(battler) || !b.asleep?
+      battle.pbShowAbilitySplash(battler)
+      next if !b.takesIndirectDamage?(PokeBattle_SceneConstants::USE_ABILITY_SPLASH)
+      oldHP = b.hp
+      b.pbReduceHP(b.totalhp/12)
+      if PokeBattle_SceneConstants::USE_ABILITY_SPLASH
+        battle.pbDisplay(_INTL("{1} is drawn to demise!",b.pbThis))
+      else
+        battle.pbDisplay(_INTL("{1} is drawn to demise by {2}'s {3}!",b.pbThis,
+           battler.pbThis(true),battler.abilityName))
+      end
+      battle.pbHideAbilitySplash(battler)
+      b.pbItemHPHealCheck
+      b.pbAbilitiesOnDamageTaken(oldHP)
+      b.pbFaint if b.fainted?
+    end
+  }
+)
+# ------ Derx: End of Abyssal Draw addition
+
 BattleHandlers::EOREffectAbility.add(:MOODY,
   proc { |ability,battler,battle|
     randomUp = []; randomDown = []

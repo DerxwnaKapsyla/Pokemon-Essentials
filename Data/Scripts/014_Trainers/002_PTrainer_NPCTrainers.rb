@@ -121,6 +121,26 @@ def pbLoadTrainer(trainerid,trainername,partyid=0)
     success = true
     break
   end
+  #------ Derx: Doppelganger Trainer script, made by Rot8er_ConeX
+  if isConst?(trainerid,PBTrainers,:CLONE)
+    partytoload=$Trainer.party
+    party=[]
+    for i in partytoload
+      j=i.clone
+      j.iv=i.iv.clone
+      j.ev=i.ev.clone
+      j.hp=j.totalhp
+      j.status=0
+      for k in j.moves
+        k.pp=k.totalpp
+      end
+      j.calcStats
+      party.push(j)
+    end
+    opponent=PokeBattle_Trainer.new($Trainer.name,$Trainer.metaID)
+    success=true
+  end
+  #------ Derx: End of Dopelganger Trainer script
   return success ? [opponent,items,party,loseText] : nil
 end
 

@@ -1,0 +1,260 @@
+Master Change Log for Touhou Puppet Play - The Mansion of Mystery
+
+October 1st, 2016:
+	* Downgraded to Essentials v15, didn't feel like struggling with the weird screen flicker bug
+	* Mapped out the player-protagonist's room
+		* Added in an autorun event telling the player what they need to do before progressing
+		* Added in an event that forbids the player from leaving their room through the door
+	* Started working on the intro event
+October 2nd, 2016:
+	* Replaced the PBS files with their v15 equivalent
+	* Mapped out the Human Village
+	* Added some overworlds
+	* Gave the player a level 15 CMokou for their starter
+	* Added Deo's Improved Day/Night coloring
+	* Added placeholders for several trainers in the Human Village
+	* Finished the supplies box event
+	* Changed the starting cash to 5000
+	* Started working on the dialogue with the protags friends
+	* Mapped out the village rest stop
+	* added the rest stop's merchant
+	* Added an npc that gives you a random number of rare candies
+	* Added a few tracks to the game
+	* Inserted the sprites for the main Touhou characters
+	* Gave each of the main Touhou characters their trainer types
+October 4th, 2016:
+	* Finished up the dialogue between the friend group 
+	* Added in the trainer classes for the Village Patrol
+	* Added in the Keine event
+	* Added in the Keine battle
+October 5th, 2016:
+	* Finished the Keine event
+	* Added in the wild battle music
+	* Added encounters to the human village
+	* Added an item finder to the player's starting items
+	* Added items around the Human Village
+October 6th, 2016:
+	* Added the trainers in Human Village
+	* Mapped out the Forest of Magic
+October 7th, 2016:
+	* Added the temporary title screen
+	* Added encounters to Forest of Magic
+	* Added the Marisa trainer info
+	* Buffed the Keine fight
+	* Buffed the Marisa fight
+	* Added Doll Judgement to the music list
+October 8th, 2016:
+	* Finished up the segment involving the post-marisa fight
+	* Added Misty Lake to the music list
+	* Added items to the Forest of Magic
+October 9th, 2016:
+	* Added trainers to the Forest of Magic
+	* Slightly nerfed Marisa's fight
+	* Buffed the exp gain ratio by 1.25
+	* Added an NPC in the human village that offers either a Lucky Egg or EXP Share
+	* Nerfed Marisa further, changed her Puppet distribution
+		* Puppets lowered by 3 levels total
+		* Nitori and Patchouli removed, Rinnosuke added
+	* All Forest of Magic trainers nerfed
+	* Added Balm Mushroom hint npc to Human Village Rest Stop
+	* Switched the locations of the Merchant and the Nurse in the Rest Stop
+	* Slightly modified Marisa's trainer battle
+	* Mapped out Misty Lake
+October 10th, 2016
+	* Added warps to the Misty Lake
+	* Did the Stage of Stage 3 event
+	* Removed the badge count from the save and load screens
+	* Added a defeat counter to the save screen
+October 11th, 2016:
+	* Finished up the Youmu event on Stage 3/Misty Lake
+October 12th, 2016:
+	* Added trainers to Misty Lake
+	* Added items to Misty Lake
+	* Added a Shard vendor to Misty Lake
+	* Added a Demo Roadblock NPC to Misty Lake
+	* Made it so you get CMokou in your house instead of Intro
+	* Changed the line so that it says "Use next Puppet" instead of "Use next Pokemon" (Remember to modify this in F&P/DevKit/Underground)
+	* Made it so the Egg/Share vendor displays cash on hand
+	* Fixed the Egg/Share vendor so that he checks if you have less than 2500 gold, not 1500
+October 13th, 2016:
+	* Heavily modified the Mansion tileset
+	* Mapped out Floor 1 of the Prismriver Mansion
+	* Placed placeholder events for protag + friends/trainers
+October 14th, 2016:
+	* Modified the text for the PC to make it say Puppets instead of Pokemon (Remember to modify this in F&P/DevKit/Underground)
+October 15th, 2016:
+	* Mapped out the Study
+October 16th, 2016:
+	* Added the trainer battles to the first floor (sans individual rooms)
+	* Mapped out some of the individual rooms
+	* Added trainers to all rooms
+	* Added teams to trainers
+	* Added items to each room
+	* Changed it so Meiling appears at Misty Lake instead of Remilia
+	* Added wild encounters to Floor 1 and the rooms
+	* Actually set the EXP Gain to x1.25 this time
+October 17th, 2016:
+	* Pickup table now gives Orbs and not Balls
+	* Re-added the evolution theme
+	* Changed Lyrica's trainer class to "Phantom Pianist"; Phantom Keyboardist was too long
+	* Resized Lyrica's trainer sprite
+	* Added some dialogue for the friend group on Floor 1
+October 18th-20th, 2016:
+	* Finished whatever remained of Stage 4
+	* Mapped out Stage 5/Floor 2
+	* Added the Darkness Circle script
+October 21st, 2016:
+	* Mapped out the Kitchen and Dining Hall for Floor 2/Stage 5
+	* Added placeholder events for every trainer and item on the map
+	* Added in the Start of Stage 5 Cutscene
+	* Added in the various switches and variables to control the Lamprey Vision Expansion
+		* Eating a lamprey triggers the switch and expands view
+		* Winning or Running from a battle adds +1 to the variable
+		* When the variable reaches 7, the variable resets to 0 and the view contracts
+	* Added in the revelant songs for Stage 5 and 6, added in the EX Stage theme
+		* Stage 5 theme: Stirring an Autumn Moon ~ Mooned Insect (Midi by ZUN, reinstrumentalized by Derxwna)
+		* Boss 5 theme: Deaf to all but the Song ~ TPDP Mix (Artist: a-TTTempo)
+		* Stage 6 theme: Alice Maestra (Artist: Mr. Unknown)
+		* Boss 6 theme: Ghostly Band ~ Phantom Ensemble (Artist: Mr. Unknown)
+		* Stage EX Theme: Unknown X ~ Unfound Adventure (Artist: Mr. Unknown)
+	* Modified the mansion tileset slightly
+	* Finished the cutscene involving the Mystia battle
+	* Added in trainers to Floor 2
+	* Added in items to Floor 2
+	* Added the encounter table for all Floor 2 areas
+	* Modified Kogasa, Merlin, and Koakuma's movepools to account for their Evolved stages being in the wild
+	* Replaced the Mystia sprite with one from Irakuy's game
+	* Mapped out Floor 3
+October 22nd, 2016:
+	* Mapped out the Performance Hall
+	* Added the Start of Stage 6 Event
+	* Put together the [Five Fairies of Prismriver Manor]
+	* Slightly modified the shop in the Human Village for Endgame Items
+	* Added in the hefty-ass Stage 6 Cutscene involving the Prismrivers
+	* Added the Rooms to Floor 3
+	* Added wild encounters to Floor 3
+	* Added items to the rooms in Floor 3
+	* Modified Lunasa's movepool to account for their Evolved stages being in the wild
+October 23rd, 2016:
+	* Set up all trainers for Floor 3
+	* Added in the Doppel Device, a device that duplicates your team and throws it back at you, on Floor 3. This allows players to grind exp off of it.
+		* Code credit: http://www.pokecommunity.com/showthread.php?t=355236
+October 24th, 2016:
+	* Mapped out the Basement/Extra Stage
+	* Finished Stage 6's ending cutscene
+	* Finished up Nue's Pre-Battle segment, including if you lose to her
+	* Added the Zephyr Fairy event
+	* Added the Zephyr Fairy class to the game
+	* Gave each of the trainer classes a skill code
+	* Added all of the Extra Stage Trainers
+	* Added the dialogue for the Extra Stage Trainers
+	* Added the Kogasa trainer entry
+	* Renamed Lolice to Margatroid
+October 25th, 2016:
+	* Finished the cutscene for the entire Kogasa segment
+	* Finished the intro to Bad End for if you lose in the Extra Stage
+	* Finished the Good End
+	* Changed the icon the game uses for the taskbar
+	* Made it so it'll display Nitori's PC instead of Someone's PC
+	* All trainer dialogue inserted
+	* Added encounters to the Basement
+	* Modified Rin, Ran, and Seiga's movepools
+	* Other small tweaks
+October 25th, 2016 - 1:37 AM EST	
+	* Game 100% Finished
+---------------------------------
+Version 1.01~1.1
+
+May 7th, 2017:
+	* Fixed an NPC's dialogue in the Human Village Rest Stop so he properly says "EXP Share" instead of "Lucky Egg"
+May 12th, 2017:
+	* Made it so the player can lose 6 times before the Bad End gets triggered
+	* Added a second healing rock to Misty Lake, right before the Youmu fight
+	* Modified the dialogue of an NPC in the Human Village so they hint at the purpose of the defeat counter in the save menu.
+	* Fixed the exit warps in the Human Village/Forest of Magic/Misty Lake so that the default option would be "Nevermind"
+		* Made it so Nevermind moved the player back off the tile
+May 13th, 2017:
+	* Fixed Kogasa's overworld sprite so that the eyes are the right color
+May 14th, 2017:
+	* Mapped out the roof
+	* Added in the Layla battle
+	* Dialogued the first half of the Layla battle
+	* Inserted the music for the roof and Layla's battle
+October 9th, 2017:
+	* Inserted the remainder of Layla's dialogue
+	* Slightly tweaked Nue's line so she hints at the fact that there is a new thing on the third floor
+	* changed the Diary entry in the basement to say 1952 instead of 1932
+	* Added in the entry for Zephyr Fairy Saya
+	* Added Zephyr Fairy Saya in the room right before the roof.
+	* Removed the debug event on the fountain outside the mansion.
+October 9th, 2017, 8:50 PM
+	* Version 1.1, "100%" finished
+---------------------------------
+Version 1.2
+
+Octber 21st, 2019:
+	* Modified the intro by making the time between each text box longer
+	* Modified the intro by making all the text display on screen at once, instead of scrolling through text boxes.
+	* Added a Good Rod to the Human Village, next to the Guard Shack atthe eastern exit.
+	* Made a second map that is dedicated to the escape sequence, and made events that are shared between the two maps function based on interaction on the other map.
+	* Added a Good Rod encounter table to the Human Village, Forest of Magic, and Misty Lake.
+October 22nd, 2019:
+	* Added water encounters to the above maps.
+	* Fixed the blackout location inside the Human Village
+October 23rd, 2019:
+	* Fixed tile errors on the first floor of the Ruined Western Mansion
+	* Removed unnessecary comments off all the trainers
+	* Removed placeholder dialogue on Fairy Uzuki in the Ruined Western Mansion
+	* Mystia's battle theme has been replaced by one from brawlman9876 (https://pokemonrserenditions.tumblr.com/post/120363155426)
+	* Added in the capture jingle from Zoku Gensokyo Scenario (by )
+	* Changed it so the itemlevel soundbyte is stored in the Music Effect (ME) folder, and is thus called from there to properly emulate official game functionality.
+	* Added in an overworld sprite for Lyrica's Keyboard, made by Stuffman
+	* Added in pre-battle intro themes for the Fairy trainers
+		* the Village Guard didn't get any for thematic reasons
+	* Added in a unique music theme for the Zephyr Fairy fight
+	* Tweaked the dialogue of Zephyr Fairy Nico and adjusted her pre-battle scene
+	* Replaced one of Youmu's CYoumus with a CReisen
+	* Revised Greater Fairy Ayaka's AMedicine's movepool to be less aggressive; Replaced Poison Bomb with Poison Tears and Energy Light with Razor Leaf
+	* Fixed a flag on Lyrica not getting set after you beat her the first time
+	* Changed out the Turbo Script to be the one Marin made (Toggleable, three states)
+October 24th, 2019:
+	* Set up a Vs. Transition preset to use for future reference
+	* Added in a Vs. Transition for Youmu
+	* Added in a Vs. Transition for Layla
+	* Finished up the Vs. Transitions for every remaining boss
+	* Fixed the Keine trigger events in the Human Village so they wouldn't repeat the first encounter line if you lost
+October 25th, 2019:
+	* Made some of the new sounds and music louder
+	* Replaced the healing soundbyte with one from the Touhoumon games
+	* Replaced the theme on Floor 2 with a version of the song from Zoku Gensokyo Scenario
+	* Replaced the music used for Evolution
+	* Replaced the music used for battle victories
+	* Rewrote and redid Zephyr Fairy Saya's event and dialogue
+October 28th, 2019:
+	* Reworked the entire credits sequence from the ground up
+
+---------------------------------
+Version 1.3 - Final Release
+---------------------------------
+January 26th, 2021:
+	* Forked the Touhoumon Essentials v3.1 Engine from Github
+	* Changed the EXP distirbution so the x1.5 applies to all battles, not just Trainer Battles
+	* Removed the "Badges:" and "Pokedex:" lines from the Load Screen, as this game has neither.
+		* Though, "Pokedex:" became "Puppets Seen".
+	* Removed the "Badges" line from the Save Screen.
+	* Added the Defeat Counter to the Save Screen.
+	* Added in the script that controls the darkness circle
+	* Changed the name of the PC Creator to Nitori
+	* Changed the name of the Poke Ball back pocket to Puppet Orbs
+	* Modified the movepools for Kogasa, Merlin, Koakuma, Lunasa, Rin, Ran, and Seiga, as their evolved forms show up in the wild.
+	* Ported over the pbs entries for the TMoM exclusive items
+	* Ported over metadata.txt
+	* Ported over the Trainer Types
+	* Ported over the trainers and converted them to the v18.1 format
+	* Added Zephyr Fairy Kaliana to the New Game+ trainer list
+	* Ported over the encounter table
+	* Ported over the Town map data (for whatever reason)
+	* Added in Ayakashi's Abyssal Draw ability
+	* Added in the Doppelganger Trainer script
+		* http://www.pokecommunity.com/showthread.php?t=355236
+	* 

@@ -168,7 +168,7 @@ MEGA_RINGS                = [:MEGARING, :MEGABRACELET, :MEGACUFF, :MEGACHARM]
 def pbPocketNames; return ["",
   _INTL("Items"),
   _INTL("Medicine"),
-  _INTL("Poké Balls"),
+  _INTL("Puppet Orbs"), # Derx: Changed the name of the Poke Ball bag pocket to Puppet Orbs
   _INTL("TMs & HMs"),
   _INTL("Berries"),
   _INTL("Mail"),
@@ -199,7 +199,7 @@ REGION_MAP_EXTRAS = [
 # * The number of boxes in Pokémon storage.
 #===============================================================================
 def pbStorageCreator
-  return _INTL("Bill")
+  return _INTL("Nitori") # Derx: Changed the PC Creator to Nitori
 end
 NUM_STORAGE_BOXES = 48 # Derx: Changed from 32
 

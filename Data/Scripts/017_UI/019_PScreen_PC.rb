@@ -139,7 +139,7 @@ end
 
 def pbGetStorageCreator
   creator = pbStorageCreator
-  creator = _INTL("Bill") if !creator || creator==""
+  creator = _INTL("Nitori") if !creator || creator=="" # Derx: Changed the PC creator to Nitori
   return creator
 end
 

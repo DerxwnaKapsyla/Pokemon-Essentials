@@ -75,7 +75,8 @@ class PokemonSave_Scene
     else
       loctext+=_INTL("Time<r><c3={1}>{2}m</c3><br>",textColor,min)
     end
-    loctext+=_INTL("Badges<r><c3={1}>{2}</c3><br>",textColor,$Trainer.numbadges)
+    #loctext+=_INTL("Badges<r><c3={1}>{2}</c3><br>",textColor,$Trainer.numbadges) # Derx: Removed the Badges indicator from the Save Screen.
+	loctext+=_INTL("Defeat count:<r><c3={1}>{2}</c3><br>",textColor,$game_variables[50]) # Derx: Added the Defeat Counter to the Save Screen.
     if $Trainer.pokedex
       loctext+=_INTL("Pokédex<r><c3={1}>{2}/{3}</c3>",textColor,$Trainer.pokedexOwned,$Trainer.pokedexSeen)
     end

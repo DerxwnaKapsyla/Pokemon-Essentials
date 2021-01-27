@@ -575,7 +575,7 @@ class PokemonEvolutionScene
       pbUpdate
     end
     # Success jingle/message
-    pbMEPlay("Evolution success")
+    pbMEPlay("003. Evolution Fanfare") # Derx: Changed to the Touhoumon variant
     newspeciesname = PBSpecies.getName(@newspecies)
     oldspeciesname = PBSpecies.getName(@pokemon.species)
     pbMessageDisplay(@sprites["msgwindow"],

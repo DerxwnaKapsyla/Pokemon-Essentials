@@ -120,7 +120,7 @@ class PokeBattle_Battle
     end
     return if exp<=0
     # Pokémon gain more Exp from trainer battles
-    exp = (exp*1.5).floor if trainerBattle?
+    exp = (exp*1.5).floor #if trainerBattle? # Derx: Made it so the EXP Boost for Trainer Battles applies to Wild Battles as well; all battles will now give x1.5 experience.
     # Scale the gained Exp based on the gainer's level (or not)
     if SCALED_EXP_FORMULA
       exp /= 5

@@ -60,9 +60,9 @@ class PokemonLoadPanel < SpriteWrapper
       textpos = []
       if @isContinue
         textpos.push([@title,16*2,5*2,0,TEXTCOLOR,TEXTSHADOWCOLOR])
-        textpos.push([_INTL("Badges:"),16*2,56*2,0,TEXTCOLOR,TEXTSHADOWCOLOR])
-        textpos.push([@trainer.numbadges.to_s,103*2,56*2,1,TEXTCOLOR,TEXTSHADOWCOLOR])
-        textpos.push([_INTL("Pokédex:"),16*2,72*2,0,TEXTCOLOR,TEXTSHADOWCOLOR])
+#        textpos.push([_INTL("Badges:"),16*2,56*2,0,TEXTCOLOR,TEXTSHADOWCOLOR]) # Derx: There are no badges in this game. Doesn't make sense to have this here.
+#        textpos.push([@trainer.numbadges.to_s,103*2,56*2,1,TEXTCOLOR,TEXTSHADOWCOLOR]) # Derx: There are no badges in this game. Doesn't make sense to have this here.
+        textpos.push([_INTL("Puppets Seen:"),16*2,72*2,0,TEXTCOLOR,TEXTSHADOWCOLOR]) # Derx: The player doesn't get a Pokedex. Changed it to say "Puppets Seen" instead.
         textpos.push([@trainer.pokedexSeen.to_s,103*2,72*2,1,TEXTCOLOR,TEXTSHADOWCOLOR])
         textpos.push([_INTL("Time:"),16*2,88*2,0,TEXTCOLOR,TEXTSHADOWCOLOR])
         hour = @totalsec / 60 / 60
