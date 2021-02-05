@@ -609,7 +609,7 @@ def pbSurf
     movefinder=pbCheckMove(move)
     break if movefinder
   end
-  if !pbCheckHiddenMoveBadge(BADGE_FOR_SURF,false) || (!$DEBUG && !movefinder && $PokemonBag.pbQuantity(PBItems::BOAT)==0)
+  if !pbCheckHiddenMoveBadge(BADGE_FOR_SURF,false) || (!movefinder && $PokemonBag.pbQuantity(PBItems::BOAT)==0) # Derx: Removed the Debug check line
     return false
   end
   if pbConfirmMessage(_INTL("The water is a deep blue...\nWould you like to surf on it?"))
