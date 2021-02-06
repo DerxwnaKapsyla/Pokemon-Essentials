@@ -948,7 +948,7 @@ end
 
 def pbDisplayCoinsWindow(msgwindow,goldwindow)
   coinString=($PokemonGlobal) ? $PokemonGlobal.coins.to_s_formatted : "0"
-  coinwindow=Window_AdvancedTextPokemon.new(_INTL("Coins:\n<ar>{1}</ar>",coinString))
+  coinwindow=Window_AdvancedTextPokemon.new(_INTL("Festival Points:\n<ar>{1}</ar>",coinString)) # Derx: Changed Coins to Festival Points, because I realized I can use this instead of making a new thing just for FP
   coinwindow.setSkin("Graphics/Windowskins/goldskin")
   coinwindow.resizeToFit(coinwindow.text,Graphics.width)
   coinwindow.width=160 if coinwindow.width<=160
