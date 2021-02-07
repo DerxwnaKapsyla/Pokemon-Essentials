@@ -30,7 +30,10 @@ $BallTypes = {
   27=>:PUPPETORB,
   28=>:GREATORB,
   29=>:ULTRAORB,
-  30=>:MASTERORB
+  30=>:MASTERORB,
+  31=>:PUPPETORB2, # Derx: The Festival of Chaos addition
+  32=>:GREATORB2,  # Derx: The Festival of Chaos addition
+  33=>:INVERSEORB  # Derx: The Festival of Chaos addition
   # ------ Derx: End of Puppet Orb additions
 }
 
@@ -260,6 +263,12 @@ BallHandlers::IsUnconditional.add(:MASTERORB,proc { |ball,battle,battler|
 })
 # ------ Derx: End of functionality for the Puppet Orbs
 
+# ------ Derx: Addition of Seija's Great Orb from The Festival of Curses
+BallHandlers::ModifyCatchRate.add(:GREATORB2,proc { |ball,catchRate,battle,battler,ultraBeast|
+  next catchRate*1.5
+})
+# ------ Derx: End of Seija's Great Orb addition
+
 #===============================================================================
 # OnCatch
 #===============================================================================
@@ -269,4 +278,20 @@ BallHandlers::OnCatch.add(:HEALBALL,proc { |ball,battle,pkmn|
 
 BallHandlers::OnCatch.add(:FRIENDBALL,proc { |ball,battle,pkmn|
   pkmn.happiness = 200
+})
+
+# ------ Derx: Addition of The Festival of Curses' Unique Pokeballs
+BallHandlers::OnCatch.add(:PUPPETORB2,proc { |ball,battle,pkmn|
+  pkmn.happiness = 0
+})
+
+BallHandlers::OnCatch.add(:GREATORB2,proc { |ball,battle,pkmn|
+  iv1 = iv2 = rand(6)
+  iv2 = rand(6) while iv2 == iv1
+  pkmn.iv[iv1] = 0
+  pkmn.iv[iv2] = 31
+})
+
+BallHandlers::OnCatch.add(:INVERSEORB,proc { |ball,battle,pkmn|
+  pkmn.makeShiny
 })

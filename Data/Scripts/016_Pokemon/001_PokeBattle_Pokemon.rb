@@ -791,6 +791,12 @@ class PokeBattle_Pokemon
     when "revivalherb"
       gain = -20
       gain = -15 if @happiness<200
+	# ------ Derx: Addition of the Jam items to the change happiness method
+    when "jam"
+      gain = 5
+	  gain = 15 if @happiness<200
+      gain = 30 if @happiness<100
+	# ------ Derx: End of Jam additions
     else
       raise _INTL("Unknown happiness-changing method: {1}",method.to_s)
     end

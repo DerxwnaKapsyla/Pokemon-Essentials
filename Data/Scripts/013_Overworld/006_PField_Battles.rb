@@ -626,16 +626,16 @@ def pbPickup(pkmn)
      :POTION,
      :ANTIDOTE,
      :SUPERPOTION,
-     :GREATBALL,
+     :GREATORB,
      :REPEL,
      :ESCAPEROPE,
      :FULLHEAL,
      :HYPERPOTION,
-     :ULTRABALL,
+     :ULTRAORB,
      :REVIVE,
      :RARECANDY,
      :ETHER,
-     :FULLRESTORE,
+     :STRAWBERRYJAM,
      :MAXREVIVE,
      :PPUP,
      :MAXELIXIR,
@@ -647,14 +647,14 @@ def pbPickup(pkmn)
      :REDUFO,
      :NUGGET,
      :KINGSROCK,
-     :FULLRESTORE,
+     :STRAWBERRYJAM,
      :IRONBALL,
      :LUCKYEGG,
-     :PRISMSCALE,
+     :BLUEBERRYJAM,
      :ELIXIR,
-     :PRISMSCALE,
+     :STRAWBERRYJAM,
      :LEFTOVERS,
-     :PRISMSCALE
+     :BLUEBERRYJAM
   )
   return if pickupList.length<18
   return if pickupListRare.length<11

@@ -519,6 +519,25 @@ ItemHandlers::UseOnPokemon.add(:FULLRESTORE,proc { |item,pkmn,scene|
   next true
 })
 
+# ------ Derx: New item - Strawberry Jam. Full Restore, raises happiness
+ItemHandlers::UseOnPokemon.add(:STRAWBERRYJAM,proc { |item,pkmn,scene|
+  if pkmn.fainted? || (pkmn.hp==pkmn.totalhp && pkmn.status==PBStatuses::NONE)
+    scene.pbDisplay(_INTL("It won't have any effect."))
+    next false
+  end
+  hpgain = pbItemRestoreHP(pkmn,pkmn.totalhp-pkmn.hp)
+  pkmn.healStatus
+  scene.pbRefresh
+  if hpgain>0
+    scene.pbDisplay(_INTL("{1}'s HP was restored by {2} points.",pkmn.name,hpgain))
+  else
+    scene.pbDisplay(_INTL("{1} became healthy.",pkmn.name))
+  end
+  pkmn.changeHappiness("jam")
+  next true
+})
+# ------ Derx: End of Strawberry Jam addition
+
 ItemHandlers::UseOnPokemon.add(:REVIVE,proc { |item,pkmn,scene|
   if !pkmn.fainted?
     scene.pbDisplay(_INTL("It won't have any effect."))
@@ -609,6 +628,20 @@ ItemHandlers::UseOnPokemon.add(:MAXETHER,proc { |item,pkmn,scene|
   next true
 })
 
+# ------ Derx: New item - Blueberry Jam: Fully restores one move's pp and raises happiness
+ItemHandlers::UseOnPokemon.add(:BLUEBERRYJAM,proc { |item,pkmn,scene|
+  move = scene.pbChooseMove(pkmn,_INTL("Restore which move?"))
+  next false if move<0
+  if pbRestorePP(pkmn,move,pkmn.moves[move].totalpp-pkmn.moves[move].pp)==0
+    scene.pbDisplay(_INTL("It won't have any effect."))
+    next false
+  end
+  scene.pbDisplay(_INTL("PP was restored."))
+  pkmn.changeHappiness("jam")
+  next true
+})
+# ------ Derx: End of Blueberry Jam addition
+
 ItemHandlers::UseOnPokemon.add(:ELIXIR,proc { |item,pkmn,scene|
   pprestored = 0
   for i in 0...pkmn.moves.length
@@ -652,6 +685,29 @@ ItemHandlers::UseOnPokemon.add(:LIQUIDREVIVE,proc { |item,pkmn,scene|
   next true
 })
 # ------ Derx: End of Liquid Revive
+
+# ------ Derx: New Item - Minoriko's Specialty. Max Elixir + Full Restore, raises happiness
+ItemHandlers::UseOnPokemon.add(:MINORIKOJAM,proc { |item,pkmn,scene|
+  pprestored = 0
+  for i in 0...pkmn.moves.length
+    pprestored += pbRestorePP(pkmn,i,pkmn.moves[i].totalpp-pkmn.moves[i].pp)
+  end
+  if pkmn.fainted? || (pkmn.hp==pkmn.totalhp && pkmn.status==PBStatuses::NONE)
+    scene.pbDisplay(_INTL("It won't have any effect."))
+    next false
+  end
+  hpgain = pbItemRestoreHP(pkmn,pkmn.totalhp-pkmn.hp)
+  pkmn.healStatus
+  scene.pbRefresh
+  if hpgain>0
+    scene.pbDisplay(_INTL("{1} was revitalized.",pkmn.name,hpgain))
+  else
+    scene.pbDisplay(_INTL("{1} became healthy.",pkmn.name))
+  end
+  pkmn.changeHappiness("jam")
+  next true
+})
+# ------ Derx: End of Minoriko's Specialty
 
 
 ItemHandlers::UseOnPokemon.add(:PPUP,proc { |item,pkmn,scene|

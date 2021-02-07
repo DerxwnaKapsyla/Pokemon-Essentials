@@ -130,6 +130,7 @@ ItemHandlers::CanUseInBattle.add(:FULLRESTORE,proc { |item,pokemon,battler,move,
   end
   next true
 })
+ItemHandlers::CanUseInBattle.copy(:FULLRESTORE,:STRAWBERRYJAM)
 
 ItemHandlers::CanUseInBattle.add(:REVIVE,proc { |item,pokemon,battler,move,firstAction,battle,scene,showMessages|
   if pokemon.able? || pokemon.egg?
@@ -151,7 +152,7 @@ ItemHandlers::CanUseInBattle.add(:ETHER,proc { |item,pokemon,battler,move,firstA
   next true
 })
 
-ItemHandlers::CanUseInBattle.copy(:ETHER,:MAXETHER,:LEPPABERRY)
+ItemHandlers::CanUseInBattle.copy(:ETHER,:MAXETHER,:LEPPABERRY,:BLUEBERRYJAM) # Derx: Addition of Blueberry Jam to Ether-like duplicate checks
 
 ItemHandlers::CanUseInBattle.add(:ELIXIR,proc { |item,pokemon,battler,move,firstAction,battle,scene,showMessages|
   if !pokemon.able?
@@ -171,6 +172,33 @@ ItemHandlers::CanUseInBattle.add(:ELIXIR,proc { |item,pokemon,battler,move,first
   end
   next true
 })
+
+# ------ Derx: New item - Minoriko's Speciality. Full Restore + Max Elixir, raises happiness.
+ItemHandlers::CanUseInBattle.add(:MINORIKOJAM,proc { |item,pokemon,battler,move,firstAction,battle,scene,showMessages|
+  if !pokemon.able?
+    scene.pbDisplay(_INTL("It won't have any effect.")) if showMessages
+    next false
+  end
+  canRestore = false
+  for m in pokemon.moves
+    next if m.id==0
+    next if m.totalpp<=0 || m.pp==m.totalpp
+    canRestore = true
+    break
+  end
+  if !canRestore
+    scene.pbDisplay(_INTL("It won't have any effect.")) if showMessages
+    next false
+  end
+  if !pokemon.able? ||
+     (pokemon.hp==pokemon.totalhp && pokemon.status==PBStatuses::NONE &&
+     (!battler || battler.effects[PBEffects::Confusion]==0))
+    scene.pbDisplay(_INTL("It won't have any effect.")) if showMessages
+    next false
+  end
+  next true
+})
+# ------ Derx: End of Minoriko's Speciality addition
 
 ItemHandlers::CanUseInBattle.copy(:ELIXIR,:MAXELIXIR)
 
@@ -454,6 +482,22 @@ ItemHandlers::BattleUseOnPokemon.add(:FULLRESTORE,proc { |item,pokemon,battler,c
   end
 })
 
+# ------ Derx: New item - Strawberry Jam. Full Restore, raises happiness.
+ItemHandlers::BattleUseOnPokemon.add(:STRAWBERRYJAM,proc { |item,pokemon,battler,choices,scene|
+  pokemon.healStatus
+  battler.pbCureStatus(false) if battler
+  battler.pbCureConfusion if battler
+  name = (battler) ? battler.pbThis : pokemon.name
+  if pokemon.hp<pokemon.totalhp
+    pbBattleHPItem(pokemon,battler,pokemon.totalhp,scene)
+  else
+    scene.pbRefresh
+    scene.pbDisplay(_INTL("{1} became healthy.",name))
+	pokemon.changeHappiness("jam")
+  end
+})
+# ------ Derx: End of Strawberry Jam addition
+
 ItemHandlers::BattleUseOnPokemon.add(:REVIVE,proc { |item,pokemon,battler,choices,scene|
   pokemon.hp = pokemon.totalhp/2
   pokemon.hp = 1 if pokemon.hp<=0
@@ -513,6 +557,15 @@ ItemHandlers::BattleUseOnPokemon.add(:MAXETHER,proc { |item,pokemon,battler,choi
   scene.pbDisplay(_INTL("PP was restored."))
 })
 
+# ------ Derx: New item - Blueberry Jam. Max Ether, raises happiness.
+ItemHandlers::BattleUseOnPokemon.add(:BLUEBERRYJAM,proc { |item,pokemon,battler,choices,scene|
+  idxMove = choices[3]
+  pbBattleRestorePP(pokemon,battler,idxMove,pokemon.moves[idxMove].totalpp)
+  scene.pbDisplay(_INTL("PP was restored."))
+  pokemon.changeHappiness("jam")
+})
+# ------ Derx: End of Blueberry Jam addition
+
 ItemHandlers::BattleUseOnPokemon.add(:ELIXIR,proc { |item,pokemon,battler,choices,scene|
   for i in 0...pokemon.moves.length
     pbBattleRestorePP(pokemon,battler,i,10)
@@ -526,6 +579,25 @@ ItemHandlers::BattleUseOnPokemon.add(:MAXELIXIR,proc { |item,pokemon,battler,cho
   end
   scene.pbDisplay(_INTL("PP was restored."))
 })
+
+# ------ Derx: New item - Minoriko's Speciality. Full Restore + Max Elixir, raises happiness.
+ItemHandlers::BattleUseOnPokemon.add(:MINORIKOJAM,proc { |item,pokemon,battler,choices,scene|
+  pokemon.healStatus
+  battler.pbCureStatus(false) if battler
+  battler.pbCureConfusion if battler
+  name = (battler) ? battler.pbThis : pokemon.name
+  for i in 0...pokemon.moves.length
+    pbBattleRestorePP(pokemon,battler,i,pokemon.moves[i].totalpp)
+  end
+  if pokemon.hp<pokemon.totalhp
+    pbBattleHPItem(pokemon,battler,pokemon.totalhp,scene)
+  else
+    scene.pbRefresh
+    scene.pbDisplay(_INTL("{1} was revitalized.",name))
+	pokemon.changeHappiness("jam")
+  end
+})
+# ------ Derx: End of Minoriko's Speciality addition
 
 # ------ Derx: Liquid Revive: Max Elixir + Max Revive
 ItemHandlers::BattleUseOnPokemon.add(:LIQUIDREVIVE,proc { |item,pokemon,battler,choices,scene|
