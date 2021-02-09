@@ -648,7 +648,7 @@ def pbPickup(pkmn)
      :NUGGET,
      :KINGSROCK,
      :STRAWBERRYJAM,
-     :IRONBALL,
+     :AUTUMNLEAF,
      :LUCKYEGG,
      :BLUEBERRYJAM,
      :ELIXIR,
