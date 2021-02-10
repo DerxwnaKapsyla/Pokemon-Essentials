@@ -24,21 +24,21 @@ def pbBattleAnimationOverride(viewport,battletype=0,foe=nil)
 	 when 9;  pbCommonEvent(18)  # Vs. Medicine
 	 when 10; pbCommonEvent(19)  # Vs. Elly
 	 when 11; pbCommonEvent(20)  # Vs. Yuuka
-	 when 12; pbCommonEvent(21)  # Vs. Keine
-	 when 13; pbCommonEvent(22)  # Vs. Marisa
-	 when 14; pbCommonEvent(23)  # Vs. Youmu
-	 when 15; pbCommonEvent(24)  # Vs. Lyrica
-	 when 16; pbCommonEvent(25)  # Vs. Mystia
-	 when 17; pbCommonEvent(26)  # Vs. Prismrivers
-	 when 18; pbCommonEvent(27)  # Vs. Alice
-	 when 19; pbCommonEvent(28)  # Vs. Sanae
-	 when 20; pbCommonEvent(29)  # Vs. Minoriko and Shizuha
-	 when 21; pbCommonEvent(30)  # Vs. Suika
-	 when 22; pbCommonEvent(31)  # Vs. Sumireko
-	 when 23; pbCommonEvent(32)  # Vs. Gio
-	 when 24; pbCommonEvent(33)  # Vs. Kaliana
-	 when 25; pbCommonEvent(34)  # Vs. Renko and Maribel
-	 when 26; pbCommonEvent(35)  # Vs. Kalypsa
+	 when 12; pbCommonEvent(22)  # Vs. Keine
+	 when 13; pbCommonEvent(23)  # Vs. Marisa
+	 when 14; pbCommonEvent(24)  # Vs. Youmu
+	 when 15; pbCommonEvent(25)  # Vs. Lyrica
+	 when 16; pbCommonEvent(26)  # Vs. Mystia
+	 when 17; pbCommonEvent(27)  # Vs. Prismrivers
+	 when 18; pbCommonEvent(28)  # Vs. Alice
+	 when 19; pbCommonEvent(29)  # Vs. Sanae
+	 when 20; pbCommonEvent(30)  # Vs. Minoriko and Shizuha
+	 when 21; pbCommonEvent(31)  # Vs. Suika
+	 when 22; pbCommonEvent(32)  # Vs. Sumireko
+	 when 23; pbCommonEvent(33)  # Vs. Gio
+	 when 24; pbCommonEvent(34)  # Vs. Kaliana
+	 when 25; pbCommonEvent(35)  # Vs. Renko and Maribel
+	 when 26; pbCommonEvent(36)  # Vs. Kalypsa
      end
      return true                # Note that the battle animation is done
    end  

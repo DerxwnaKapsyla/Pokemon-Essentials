@@ -138,6 +138,7 @@ def pbBattleAnimationOverride(viewport,battletype=0,foe=nil)
   if (battletype==1 || battletype==3) && foe.length==1   # Against single trainer
     trainerid = (foe[0].trainertype rescue -1)
     if trainerid>=0
+	  return false if foe!=$Trainer # Derx: So the vs Bar doesn't show up in the Doppelganger Trainer fight
       tbargraphic = sprintf("Graphics/Transitions/vsBar%s",getConstantName(PBTrainers,trainerid)) rescue nil
       tbargraphic = sprintf("Graphics/Transitions/vsBar%d",trainerid) if !pbResolveBitmap(tbargraphic)
       tgraphic    = sprintf("Graphics/Transitions/vsTrainer%s",getConstantName(PBTrainers,trainerid)) rescue nil

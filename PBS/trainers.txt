@@ -14,6 +14,12 @@ Pokemon = MAGIKARP,50
 	Moves = THUNDERSHOCK,THUNDERBOLT18
 	Name = V.Absorb
 #===============================================
+# Stage 1: Festival Grounds - General Trainers
+#===============================================
+[CLONE,Clone]
+Pokemon = DITTO,5
+LoseText = "DISENGAGING DOPPELDEVICE."
+#===============================================
 # Stage 1: Festival Grounds - Initial Tournament
 #===============================================
 [YOUTH_M,Shouta]
@@ -45,9 +51,11 @@ LoseText = "Hahaha, t'was a memorable dance indeed!"
 # Stage 1: Festival Grounds - Boss Fight
 #=======================================
 [MINORIKO,Minoriko Aki]
-Pokemon = CAYA,18
-Pokemon = CKANAKO,20
-Pokemon = CMINORIKO,20
+Pokemon = CKANAKO,22
+Pokemon = CAYA,20
+Pokemon = CSHIZUHA,21
+Pokemon = CMINORIKO,22
+LoseText = "My word, you are quite the strong Puppet handler!"
 #=======================================
 # Stage 2: Misty Lake - General Trainers
 #=======================================

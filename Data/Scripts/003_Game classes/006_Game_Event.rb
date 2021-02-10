@@ -21,6 +21,13 @@ class Game_Event < Game_Character
     @to_update    = true
     @tempSwitches = {}
     moveto(@event.x, @event.y) if map
+	# ------ Code to get Unlimited Self Switch Variants to work
+    @event.pages.each {|page| page.list.each {|command|
+      if [108, 408].include?(command.code)
+        command.parameters.each {|p| check_custom_switch(page, p) }
+      end
+    }}
+	# ------ Derx: End of code for Unlimited Self Switch Variants
     refresh
   end
 
