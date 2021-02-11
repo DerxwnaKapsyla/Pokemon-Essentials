@@ -579,7 +579,7 @@ def pbGetWildCaptureME
     music = pbGetMetadata(0,MetadataWildCaptureME)
     ret = pbStringToAudioFile(music) if music && music!=""
   end
-  ret = pbStringToAudioFile("Battle capture success") if !ret
+  ret = pbStringToAudioFile("004. Caught Fanfare") if !ret # Derx: Changed to Touhoumon Variant
   ret.name = "../../Audio/ME/"+ret.name
   return ret
 end

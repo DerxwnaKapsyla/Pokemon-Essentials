@@ -104,7 +104,7 @@ class PokemonEggHatch_Scene
     pbPlayCry(@pokemon)
     updateScene(frames)
     pbBGMStop()
-    pbMEPlay("Evolution success")
+    pbMEPlay("003. Evolution Fanfare") # Derx: Changed to Touhoumon Variant
     pbMessage(_INTL("\\se[]{1} hatched from the Egg!\\wt[80]",@pokemon.name)) { update }
     if pbConfirmMessage(
         _INTL("Would you like to nickname the newly hatched {1}?",@pokemon.name)) { update }
