@@ -961,6 +961,23 @@ def pbDisplayCoinsWindow(msgwindow,goldwindow)
   coinwindow.z=msgwindow.z
   return coinwindow
 end
+
+# ------ Derx: Gets the Coin String
+def pbGetCoinString
+  coinString=""
+  begin
+    coinString=_INTL("{1} FP",$PokemonGlobal.coins.to_s_formatted)
+  rescue
+    if $data_system.respond_to?("words")
+      coinString=_INTL("{1} {2}",$game_party.gold,$data_system.words.gold)
+    else
+      coinString=_INTL("{1} {2}",$game_party.gold,Vocab.gold)
+    end
+  end
+  return coinString
+end
+# ------ Derx: End of Coin String retrieval
+
 # ------ Derx: Allows a name to be shown alongside Text Boxes
 # Display a name along with the text box
 def Kernel.pbMessageWithName(name, message,commands=nil,cmdIfCancel=0,skin=nil,defaultCmd=0,&block)

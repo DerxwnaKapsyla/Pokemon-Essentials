@@ -266,6 +266,18 @@ ItemHandlers::CanUseInBattle.add(:XACCURACY,proc { |item,pokemon,battler,move,fi
 
 ItemHandlers::CanUseInBattle.copy(:XACCURACY,:XACCURACY2,:XACCURACY3,:XACCURACY6)
 
+ItemHandlers::CanUseInBattle.add(:KAPPAATTACK,proc { |item,pokemon,battler,move,firstAction,battle,scene,showMessages|
+  next pbBattleItemCanRaiseStat?(PBStats::ATTACK,battler,scene,showMessages)
+  next pbBattleItemCanRaiseStat?(PBStats::SPATK,battler,scene,showMessages)
+  next pbBattleItemCanRaiseStat?(PBStats::SPEED,battler,scene,showMessages)
+})
+
+ItemHandlers::CanUseInBattle.add(:KAPPADEFENSE,proc { |item,pokemon,battler,move,firstAction,battle,scene,showMessages|
+  next pbBattleItemCanRaiseStat?(PBStats::DEFENSE,battler,scene,showMessages)
+  next pbBattleItemCanRaiseStat?(PBStats::SPDEF,battler,scene,showMessages)
+  next pbBattleItemCanRaiseStat?(PBStats::EVASION,battler,scene,showMessages)
+})
+
 ItemHandlers::CanUseInBattle.add(:DIREHIT,proc { |item,pokemon,battler,move,firstAction,battle,scene,showMessages|
   if !battler || battler.effects[PBEffects::FocusEnergy]>=1
     scene.pbDisplay(_INTL("It won't have any effect.")) if showMessages
@@ -762,6 +774,20 @@ ItemHandlers::BattleUseOnBattler.add(:XACCURACY3,proc { |item,battler,scene|
 
 ItemHandlers::BattleUseOnBattler.add(:XACCURACY6,proc { |item,battler,scene|
   battler.pbRaiseStatStage(PBStats::ACCURACY,6,battler)
+  battler.pokemon.changeHappiness("battleitem")
+})
+
+ItemHandlers::BattleUseOnBattler.add(:KAPPAATTACK,proc { |item,battler,scene|
+  battler.pbRaiseStatStage(PBStats::ATTACK,1,battler)
+  battler.pbRaiseStatStage(PBStats::SPATK,1,battler)
+  battler.pbRaiseStatStage(PBStats::SPEED,1,battler)
+  battler.pokemon.changeHappiness("battleitem")
+})
+
+ItemHandlers::BattleUseOnBattler.add(:KAPPADEFENSE,proc { |item,battler,scene|
+  battler.pbRaiseStatStage(PBStats::DEFENSE,1,battler)
+  battler.pbRaiseStatStage(PBStats::SPDEF,1,battler)
+  battler.pbRaiseStatStage(PBStats::EVASION,1,battler)
   battler.pokemon.changeHappiness("battleitem")
 })
 

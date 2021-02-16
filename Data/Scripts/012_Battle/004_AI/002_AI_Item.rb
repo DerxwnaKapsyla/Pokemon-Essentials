@@ -92,7 +92,11 @@ class PokeBattle_AI
        :XACCURACY  => [PBStats::ACCURACY,(NEWEST_BATTLE_MECHANICS) ? 2 : 1],
        :XACCURACY2 => [PBStats::ACCURACY,2],
        :XACCURACY3 => [PBStats::ACCURACY,3],
-       :XACCURACY6 => [PBStats::ACCURACY,6]
+       :XACCURACY6 => [PBStats::ACCURACY,6],
+	   # ------ Derx: Addition of Kappa Augment Items
+	   :KAPPAATTACK   => [PBStats::ATTACK,1,PBStats::SPATK,1,PBStats::SPEED,1],
+	   :KAPPADEFENSE   => [PBStats::DEFENSE,1,PBStats::SPDEF,1,PBStats::EVASION,1]
+	   # ------ Derx: End of Kappa Augment Items
     }
     losthp = battler.totalhp-battler.hp
     preferFullRestore = (battler.hp<=battler.totalhp*2/3 &&
