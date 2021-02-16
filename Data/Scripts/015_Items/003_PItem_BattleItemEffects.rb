@@ -266,6 +266,7 @@ ItemHandlers::CanUseInBattle.add(:XACCURACY,proc { |item,pokemon,battler,move,fi
 
 ItemHandlers::CanUseInBattle.copy(:XACCURACY,:XACCURACY2,:XACCURACY3,:XACCURACY6)
 
+# ------ Derx: Addition of the Kappa Augment items
 ItemHandlers::CanUseInBattle.add(:KAPPAATTACK,proc { |item,pokemon,battler,move,firstAction,battle,scene,showMessages|
   next pbBattleItemCanRaiseStat?(PBStats::ATTACK,battler,scene,showMessages)
   next pbBattleItemCanRaiseStat?(PBStats::SPATK,battler,scene,showMessages)
@@ -277,6 +278,7 @@ ItemHandlers::CanUseInBattle.add(:KAPPADEFENSE,proc { |item,pokemon,battler,move
   next pbBattleItemCanRaiseStat?(PBStats::SPDEF,battler,scene,showMessages)
   next pbBattleItemCanRaiseStat?(PBStats::EVASION,battler,scene,showMessages)
 })
+# ------ Derx: End of the Kappa Augment items additions
 
 ItemHandlers::CanUseInBattle.add(:DIREHIT,proc { |item,pokemon,battler,move,firstAction,battle,scene,showMessages|
   if !battler || battler.effects[PBEffects::FocusEnergy]>=1
@@ -777,6 +779,7 @@ ItemHandlers::BattleUseOnBattler.add(:XACCURACY6,proc { |item,battler,scene|
   battler.pokemon.changeHappiness("battleitem")
 })
 
+# ------ Derx: Addition of the Kappa Augment items
 ItemHandlers::BattleUseOnBattler.add(:KAPPAATTACK,proc { |item,battler,scene|
   battler.pbRaiseStatStage(PBStats::ATTACK,1,battler)
   battler.pbRaiseStatStage(PBStats::SPATK,1,battler)
@@ -790,6 +793,7 @@ ItemHandlers::BattleUseOnBattler.add(:KAPPADEFENSE,proc { |item,battler,scene|
   battler.pbRaiseStatStage(PBStats::EVASION,1,battler)
   battler.pokemon.changeHappiness("battleitem")
 })
+# ------ Derx: End of the Kappa Augment items additions
 
 ItemHandlers::BattleUseOnBattler.add(:DIREHIT,proc { |item,battler,scene|
   battler.effects[PBEffects::FocusEnergy] = 2

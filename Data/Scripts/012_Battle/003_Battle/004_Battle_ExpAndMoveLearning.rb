@@ -120,7 +120,7 @@ class PokeBattle_Battle
     end
     return if exp<=0
     # Pokémon gain more Exp from trainer battles
-    exp = (exp*2).floor #if trainerBattle? # Derx: Boosted EXP gain by x2 to account for game length, formerly x1.5 per trainer battle
+    exp = (exp*1.5).floor #if trainerBattle? # Derx: Boosted EXP gain by 1.5x across the board, instead of just in Trainer Battles.
     # Scale the gained Exp based on the gainer's level (or not)
     if SCALED_EXP_FORMULA
       exp /= 5
