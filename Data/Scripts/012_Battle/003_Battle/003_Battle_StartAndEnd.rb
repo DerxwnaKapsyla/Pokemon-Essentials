@@ -168,9 +168,9 @@ class PokeBattle_Battle
 			if $game_variables[107]==1 # Territorial Pokemon
 				pbDisplayPaused(_INTL("The territorial {1} attacked!",foeParty[0].name))
 			elsif $game_variables[107]==2 # Aggressive Pokemon
-				pbDisplayPaused(_INTL("The aggressive {1} attacked!",foeParty[0].name))
+				pbDisplayPaused(_INTL("The cursed {1} attacked!",foeParty[0].name))
 			elsif $game_variables[107]==3 # Lifrana's Pokemon
-				pbDisplayPaused(_INTL("Lifrana's {1} attacked!",foeParty[0].name))
+				pbDisplayPaused(_INTL("Medicine's {1} attacked!",foeParty[0].name))
 			elsif $game_variables[107]==2 # Trainer's Pokemon
 				pbDisplayPaused(_INTL("A trainer's {1} attacked!",foeParty[0].name))
 			end
@@ -190,10 +190,10 @@ class PokeBattle_Battle
 				pbDisplayPaused(_INTL("The territorial {1} and {2} attacked!",foeParty[0].name,
 				foeParty[1].name))
 			elsif $game_variables[107]==2 # Aggressive Pokemon
-				pbDisplayPaused(_INTL("The aggressive {1} and {2} attacked!",foeParty[0].name,
+				pbDisplayPaused(_INTL("The cursed {1} and {2} attacked!",foeParty[0].name,
 				foeParty[1].name))
 			elsif $game_variables[107]==3 # Lifrana's Pokemon
-				pbDisplayPaused(_INTL("Lifrana's {1} and {2} attacked!",foeParty[0].name,
+				pbDisplayPaused(_INTL("Medicine's {1} and {2} attacked!",foeParty[0].name,
 				foeParty[1].name))
 			elsif $game_variables[107]==2 # Trainer's Pokemon
 				pbDisplayPaused(_INTL("A trainer's {1} and {2} attacked!",foeParty[0].name,

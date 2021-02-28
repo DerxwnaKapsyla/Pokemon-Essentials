@@ -120,7 +120,11 @@ class PokeBattle_Battle
     end
     return if exp<=0
     # Pokémon gain more Exp from trainer battles
-    exp = (exp*1.5).floor #if trainerBattle? # Derx: Boosted EXP gain by 1.5x across the board, instead of just in Trainer Battles.
+	if $game_map.map_id == 15
+		exp = (exp*2).floor #if trainerBattle? # Derx: Boosted EXP gain by 2x across the board if you're deep in the Great Youkai Woods
+	else
+		exp = (exp*1.5).floor #if trainerBattle? # Derx: Boosted EXP gain by 1.5x across the board, instead of just in Trainer Battles.
+	end
     # Scale the gained Exp based on the gainer's level (or not)
     if SCALED_EXP_FORMULA
       exp /= 5

@@ -3,10 +3,10 @@
 [000]
 PlayerA = SCRenko,trchar000,000_bike.png,000_surf.png,000_run.png,000_surf.png,000_fishing.png,xxx
 PlayerB = SCMary,Ayaka_Walk,Ayaka_bike.png,001_surf.png,Ayaka_run.png,001_surf.png,Ayaka_Walk.png,xxx
-Home = 3,21,63,2
 TrainerVictoryME = 001. Victory! Vs Trainer.ogg
 WildVictoryME = 002. Victory! Vs Wild.ogg
 TrainerBattleBGM = B-002. Battle vs. Trainer.ogg
+Home = 3,21,63,2
 WildBattleBGM = B-001. Battle vs. Puppet (Early Game).ogg
 #-------------------------------
 [001]
@@ -14,9 +14,10 @@ WildBattleBGM = B-001. Battle vs. Puppet (Early Game).ogg
 #-------------------------------
 [003]
 # Human Village
+BattleBack = field_eve
 Bicycle = true
 Outdoor = false
-Environment = None
+Environment = Grass
 #-------------------------------
 [004]
 # Human Village Rest House
@@ -24,7 +25,9 @@ HealingSpot = 3,37,24
 #-------------------------------
 [005]
 # Festival Grounds
+BattleBack = field_eve
 Bicycle = true
+Environment = Grass
 ShowArea = true
 #-------------------------------
 [006]
@@ -35,30 +38,47 @@ HealingSpot = 5,49,17
 # Shizuha's Leaf Pile
 SnapEdges = true
 #-------------------------------
+[011]
+# Festival Tournament Arena
+BattleBack = city
+Environment = None
+#-------------------------------
 [012]
-# Misty Lake (RWM Shoreline)
+# Misty Lake
+BattleBack = field_eve
 Bicycle = true
+Environment = Grass
 ShowArea = true
 #-------------------------------
 [013]
-# Misty Lake (GYF Shoreline)
-Bicycle = true
-ShowArea = true
-#-------------------------------
-[014]
-# Great Youkai Forest
+# Misty Lake
+BattleBack = field_eve
 Bicycle = true
 Environment = TallGrass
 ShowArea = true
 #-------------------------------
-[015]
-# Great Youkai Forest (Hina's Domain)
+[014]
+# Great Youkai Forest
+BattleBack = forest_eve
 Bicycle = true
+Environment = Forest
+ShowArea = true
+#-------------------------------
+[015]
+# Great Youkai Forest
+BattleBack = forest_eve
+Bicycle = true
+Environment = ForestGrass
+WildBattleBGM = B-006. Battle vs. Puppet (Forest).ogg
 ShowArea = true
 #-------------------------------
 [016]
 # Human Village Outskirts
+SnapEdges = true
+BattleBack = field_eve
 Bicycle = true
+Environment = Grass
+WildBattleBGM = B-007. Battle vs. Puppet (Late Game).ogg
 ShowArea = true
 #-------------------------------
 [017]
@@ -83,3 +103,8 @@ ShowArea = true
 #-------------------------------
 [021]
 # Mugenkan
+#-------------------------------
+[033]
+# Gensokyo Wilderness
+BattleBack = field
+Environment = ForestGrass

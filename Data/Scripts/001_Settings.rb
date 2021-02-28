@@ -86,7 +86,7 @@ NO_SIGNPOSTS = []
 # * The maximum number of Game Corner coins the player can have.
 # * The maximum length, in characters, that the player's name can be.
 #===============================================================================
-INITIAL_MONEY        = 3000
+INITIAL_MONEY        = 5000 # Derx: Changed from 3000
 MAX_MONEY            = 9_999_999 # Derx: Changed from 999,999
 MAX_COINS            = 999_999 # Derx: Changed from 99,999
 MAX_PLAYER_NAME_SIZE = 10

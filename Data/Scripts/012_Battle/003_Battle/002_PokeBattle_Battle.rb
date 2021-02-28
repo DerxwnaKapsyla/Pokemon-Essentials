@@ -617,9 +617,9 @@ class PokeBattle_Battle
         if $game_variables[102]==1 # Territorial Pokemon
           return _INTL("The territorial {1}",party[pokemonindex].name)
         elsif $game_variables[102]==2 # Aggressive Pokemon
-          return _INTL("The aggressive {1}",party[pokemonindex].name)
+          return _INTL("The cursed {1}",party[pokemonindex].name)
         elsif $game_variables[102]==3 # Lifrana's
-          return _INTL("Lifrana's {1}",party[pokemonindex].name)
+          return _INTL("Medicine's {1}",party[pokemonindex].name)
         else $game_variables[102]==4 # Trainer's
           return _INTL("A trainer's {1}",party[pokemonindex].name)
         end      

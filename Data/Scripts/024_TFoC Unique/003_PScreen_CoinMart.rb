@@ -2,15 +2,15 @@
 # Abstraction layer for Pokemon Essentials
 #===============================================================================
 class PokemonMartAdapter
-  def getMoney
+  def getPoints
     return $PokemonGlobal.coins
   end
 
-  def getMoneyString
+  def getPointsString
     return pbGetCoinString
   end
 
-  def setMoney(value)
+  def setPoints(value)
     $PokemonGlobal.coins=value
   end
 
@@ -63,9 +63,13 @@ class PokemonMartAdapter
     return pbGetPrice(item)
   end
 
-  def getDisplayPrice(item,selling=false)
+  def getDisplayCoinPrice(item,selling=false)
     price = getPrice(item,selling).to_s_formatted
-    return _INTL("{1} FP",price)
+	if $game_map.map_id == 5
+		return _INTL("{1} FP",price)
+	else
+		return _INTL("$ {1}",price)
+	end
   end
 
   def canSell?(item)
@@ -230,8 +234,8 @@ class BuyAdapter
     @adapter.getDisplayName(item)
   end
 
-  def getDisplayPrice(item)
-    @adapter.getDisplayPrice(item,false)
+  def getDisplayCoinPrice(item)
+    @adapter.getDisplayCoinPrice(item,false)
   end
 
   def isSelling?
@@ -250,7 +254,7 @@ class SellAdapter
     @adapter.getDisplayName(item)
   end
 
-  def getDisplayPrice(item)
+  def getDisplayCoinPrice(item)
     if @adapter.showQuantity?(item)
       return sprintf("x%d",@adapter.getQuantity(item))
     else
@@ -297,7 +301,7 @@ class Window_PokemonMart < Window_DrawableCommand
     else
       item=@stock[index]
       itemname=@adapter.getDisplayName(item)
-      qty=@adapter.getDisplayPrice(item)
+      qty=@adapter.getDisplayCoinPrice(item)
       sizeQty=self.contents.text_size(qty).width
       xQty=rect.x+rect.width-sizeQty-2-16
       textpos.push([itemname,rect.x,ypos+2,false,self.baseColor,self.shadowColor])
@@ -309,7 +313,7 @@ end
 
 
 
-class PokemonMart_Scene
+class CoinMart_Scene
   def update
     pbUpdateSpriteHash(@sprites)
     @subscene.pbUpdate if @subscene
@@ -325,7 +329,7 @@ class PokemonMart_Scene
          @adapter.getDescription(itemwindow.item)
       itemwindow.refresh
     end
-    @sprites["moneywindow"].text=_INTL("Festival Points:\r\n<r>{1}",@adapter.getMoneyString)
+    @sprites["moneywindow"].text=_INTL("Festival Points:\r\n<r>{1}",@adapter.getPointsString)
   end
 
   def pbStartBuyOrSellScene(buying,stock,adapter)
@@ -462,12 +466,12 @@ class PokemonMart_Scene
     window.letterbyletter=false
   end
 
-  def pbShowMoney
+  def pbShowPoints
     pbRefresh
     @sprites["moneywindow"].visible=true
   end
 
-  def pbHideMoney
+  def pbHidePoints
     pbRefresh
     @sprites["moneywindow"].visible=false
   end
@@ -553,7 +557,7 @@ class PokemonMart_Scene
     end
   end
 
-  def pbChooseNumber(helptext,item,maximum)
+  def pbChooseNumber_Coin(helptext,item,maximum)
     curnumber=1
     ret=0
     helpwindow=@sprites["helpwindow"]
@@ -667,7 +671,7 @@ end
 #######################################################
 
 
-class PokemonMartScreen
+class CoinMartScreen
   def initialize(scene,stock)
     @scene=scene
     @stock=stock
@@ -695,7 +699,7 @@ class PokemonMartScreen
       break if item==0
       itemname=@adapter.getDisplayName(item)
       price=@adapter.getPrice(item)
-      if @adapter.getMoney<price
+      if @adapter.getPoints<price
         pbDisplayPaused(_INTL("You don't have enough points."))
         next
       end
@@ -706,9 +710,9 @@ class PokemonMartScreen
         end
         quantity=1
       else
-        maxafford=(price<=0) ? BAG_MAX_PER_SLOT : @adapter.getMoney/price
+        maxafford=(price<=0) ? BAG_MAX_PER_SLOT : @adapter.getPoints/price
         maxafford=BAG_MAX_PER_SLOT if maxafford>BAG_MAX_PER_SLOT
-        quantity=@scene.pbChooseNumber(
+        quantity=@scene.pbChooseNumber_Coin(
            _INTL("{1}? Certainly. How many would you like?",itemname),item,maxafford)
         next if quantity==0
         price*=quantity
@@ -717,7 +721,7 @@ class PokemonMartScreen
           next
         end
       end
-      if @adapter.getMoney<price
+      if @adapter.getPoints<price
         pbDisplayPaused(_INTL("You don't have enough points."))
         next
       end
@@ -736,7 +740,7 @@ class PokemonMartScreen
         end
         pbDisplayPaused(_INTL("You have no more room in the Bag."))
       else
-        @adapter.setMoney(@adapter.getMoney-price)
+        @adapter.setPoints(@adapter.getPoints-price)
         for i in 0...@stock.length
           if pbIsImportantItem?(@stock[i]) && $PokemonBag.pbHasItem?(@stock[i])
             @stock[i]=nil
@@ -755,45 +759,6 @@ class PokemonMartScreen
     end
     @scene.pbEndBuyScene
   end
-
-# ------ Derx: Not able to sell items
-#  def pbSellScreen
-#    item=@scene.pbStartSellScene(@adapter.getInventory,@adapter)
-#    loop do
-#      item=@scene.pbChooseSellItem
-#      break if item==0
-#      itemname=@adapter.getDisplayName(item)
-#      price=@adapter.getPrice(item,true)
-#      if !@adapter.canSell?(item)
-#        pbDisplayPaused(_INTL("{1}? Oh, no. I can't buy that.",itemname))
-#        next
-#      end
-#      qty=@adapter.getQuantity(item)
-#      next if qty==0
-#      @scene.pbShowMoney
-#      if qty>1
-#        qty=@scene.pbChooseNumber(
-#           _INTL("{1}? How many would you like to sell?",itemname),item,qty)
-#      end
-#      if qty==0
-#        @scene.pbHideMoney
-#        next
-#      end
-#      price/=2
-#      price*=qty
-#      if pbConfirm(_INTL("I can pay ${1}. Would that be OK?",price.to_s_formatted))
-#        @adapter.setMoney(@adapter.getMoney+price)
-#        qty.times do
-#          @adapter.removeItem(item)
-#        end
-#        pbDisplayPaused(_INTL("Turned over the {1} and received ${2}.",itemname,price.to_s_formatted)) { pbSEPlay("Mart buy item") }
-#        @scene.pbRefresh
-#      end
-#      @scene.pbHideMoney
-#    end
-#    @scene.pbEndSellScene
-#  end
-# ------ Derx: Not able to sell items
 end
 
 
@@ -809,23 +774,17 @@ def pbCoinMart(stock,speech=nil,cantsell=false)
   stock.compact!
   commands = []
   cmdBuy  = -1
-#  cmdSell = -1
   cmdQuit = -1
   commands[cmdBuy = commands.length]  = _INTL("Buy")
-#  commands[cmdSell = commands.length] = _INTL("Sell") if !cantsell
   commands[cmdQuit = commands.length] = _INTL("Quit")
   cmd = pbMessage(
      speech ? speech : _INTL("Please, take your time!"), # Derx: Changed for certain unqiue shop compatabiliy
      commands,cmdQuit+1)
   loop do
     if cmdBuy>=0 && cmd==cmdBuy
-      scene = PokemonMart_Scene.new
-      screen = PokemonMartScreen.new(scene,stock)
+      scene = CoinMart_Scene.new
+      screen = CoinMartScreen.new(scene,stock)
       screen.pbBuyScreen
-#    elsif cmdSell>=0 && cmd==cmdSell
-#      scene = PokemonMart_Scene.new
-#      screen = PokemonMartScreen.new(scene,stock)
-#      screen.pbSellScreen
     else
       pbMessage(_INTL("Please come again!"))
       break

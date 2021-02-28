@@ -987,6 +987,7 @@ def Kernel.pbMessageWithName(name, message,commands=nil,cmdIfCancel=0,skin=nil,d
   namewindow.setSkin("Graphics/Windowskins/goldskin")
   namewindow.resizeToFit(namewindow.text,Graphics.width)
   namewindow.width=10 if namewindow.width<=10
+  namewindow.z=99999
   if msgwindow.y==0
     namewindow.y=Graphics.height-namewindow.height
   else
