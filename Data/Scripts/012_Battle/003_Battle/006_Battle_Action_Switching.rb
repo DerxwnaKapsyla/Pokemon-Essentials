@@ -248,7 +248,11 @@ class PokeBattle_Battle
       end
     else
       owner = pbGetOwnerName(battler.index)
-      pbDisplayBrief(_INTL("{1} withdrew {2}!",owner,battler.name))
+	  if $game_map.map_id == 35 && $game_switches[102] == true # Derx: For the Medicine's Legion fights.
+		pbDisplayBrief(_INTL("Medicine: {1}, retreat from the field!",battler.name))
+	  else
+		pbDisplayBrief(_INTL("{1} withdrew {2}!",owner,battler.name))
+	  end
     end
   end
 
@@ -273,7 +277,11 @@ class PokeBattle_Battle
       end
     else
       owner = pbGetOwnerFromBattlerIndex(idxBattler)
-      pbDisplayBrief(_INTL("{1} sent out {2}!",owner.fullname,newPkmnName))
+	  if $game_map.map_id == 35 && $game_switches[102] == true # Derx: For the Medicine's Legion fights.
+		pbDisplayBrief(_INTL("Medicine: {1}, take point on the field!",newPkmnName))
+	  else
+		pbDisplayBrief(_INTL("{1} sent out {2}!",owner.fullname,newPkmnName))
+	  end
     end
   end
 

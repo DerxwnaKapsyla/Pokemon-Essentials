@@ -1,7 +1,7 @@
 # Backgrounds to show in credits. Found in Graphics/Titles/ folder
 CreditsBackgroundList = ["credits1","credits2","credits3","credits4","credits5"]
-CreditsMusic          = "W-012. Hourai Illusion ~ Far East.ogg"
-CreditsScrollSpeed    = 0.6
+CreditsMusic          = "U-001. Sakura, Sakura ~ Japanize Dream.ogg"
+CreditsScrollSpeed    = 1
 CreditsFrequency      = 8   # Number of seconds per credits slide
 CREDITS_OUTLINE       = Color.new(0,0,128, 255)
 CREDITS_SHADOW        = Color.new(0,0,0, 100)
@@ -50,7 +50,8 @@ class Scene_Credits
 CREDIT=<<_END_
 
 
---- Touhoumon Development Kit ---
+--- Touhou Puppet Play ---
+--- The Festival of Curses ---
 Credits
 
 
@@ -61,6 +62,7 @@ DerxwnaKapsyla
 
 
 --- Art Director ---
+Jelo
 DerxwnaKapsyla
 
 
@@ -76,13 +78,9 @@ DerxwnaKapsyla
 
 
 --- Music Composition ---
-Mr. Unknown<s>a-TTTempo
+a-TTTempo<s>U2 Akiyama
 Uda-Shi<s>KecleonTencho
-brawlman9876<s>Jesslejohn
-Magnius<s>DerxwnaKapsyla
-Junichi Masuda<s>Go Ichinose
-Hitomo Sato<s>Mark DiAngelo
-ZUN
+Paradarx<s>Vlizzurd
 
 
 
@@ -117,12 +115,6 @@ DerxwnaKapsyla
 
 
 
---- Pokedex Text ---
-Agastya
-DerxwnaKapsyla
-
-
-
 --- Environment and Tool Programmers ---
 Maralis: Pokextractor Tools
 Maruno: Pokemon Essentials
@@ -130,14 +122,12 @@ Maruno: Pokemon Essentials
 
 
 --- Touhoumon Designers ---
-HemoglobinA1C
-Stuffman
-Agastya
-EXSariel
+HemoglobinA1C<s>Reimufate
+Stuffman<s>Masa
+Agastya<s>EXSariel
 DoesntKnowHowToPlay
-Masa
-Reimufate
 DerxwnaKapsyla
+
 
 
 --- Original Designs for the Touhoumon ---
@@ -146,7 +136,7 @@ Team Shanghai Alice
 
 
 --- Beta Testers ---
-:wacko:
+Karl Grogslurper
 
 
 
@@ -157,7 +147,11 @@ Spyro<s>Irakuy
 Love_Albatross<s>SoulfulLex
 zero_breaker<s>Reimufate
 Uda-shi<s>KecleonTensho
-
+Jelo<s>DerxwnaKapsyla
+FocasLens<s>Poltergeist
+Amethyst and the Pokemon Reborn Team
+Relic Castle Game Jam Staff
+Team Shanghai Alice<s>Twilight Frontier
 
 
 
@@ -167,17 +161,20 @@ DerxwnaKapsyla
 --- Custom Scripts ---
 {INSERTS_PLUGIN_CREDITS_DO_NOT_REMOVE}
 FL: Trainer Intro Music script, HMs as Items script
-derFischae: HMs as Items script, Misc. Bug fixes for V17.2
+derFischae: HMs as Items script
 Bulbasarlv15: HMs as Items script
-Nuru Yuri: FmodEx Script
-KleinStudio: Map Exporter, Mosaic Transformation Animation
+Nuru Yuri: FModEx Script
 Marin: Toggleable turbo script
 Vendily: Ambient Pokemon cries
 Marty152: Sideways Stairs script
 AmethystRain: Skip Text script
 Boonzeet: Efficent water puddles script
 SoulfulLex: Various misc improvements
-(Unknown): Name tags above text boxes
+Mr. Gela: Name Windows
+Rot8er_ConeX: Doppelganger Trainer
+Mej71 & game_guy: Unlimited Self-Switch Variants port
+DerxwnaKapsyla: Game Corner Shop
+
 
 --- Producers ---
 ChaoticInfinity Development
@@ -208,6 +205,7 @@ The Dirty Cog Crew: Emotional support and motivation throughout the years
 Flameguru: Initial development of Pokémon Essentials
 Poccil (Peter O.): Developing Pokémon Essentials
 Maruno: Picking up Pokémon Essentials
+The Relic Castle Game Jam Staff
 The "Pokémon Essentials" Development Team
 
 With contributions from:
@@ -229,6 +227,7 @@ and everyone else who helped out
 --- Special Thanks ---
 Enterbrain: Developers and Producers of "RPG Maker XP"
 GameFreak: Developers of "Pokémon"
+FocasLens: Developers of "Gensou Ningyou Enbu" and "Yume no Kakera"
 ZUN: Head Developer of "Touhou Project"
 
 
@@ -252,11 +251,16 @@ No copyright infringements intended.
 Please support the official games!
 
 Touhoumon Development Kit
-2011-2020<s>DerxwnaKapsyla
-2012-2020<s>ChaoticInfinity Development
-2020-2020<s>Overseer Household
+2011-2021<s>DerxwnaKapsyla
+2012-2021<s>ChaoticInfinity Development
+2020-2021<s>Overseer Household
 Based on Pokémon Essentials
 
+Touhou Puppet Play
+The Festival of Curses
+2011-2021<s>DerxwnaKapsyla
+2012-2021<s>ChaoticInfinity Development
+2020-2021<s>Overseer Household
 
 Pokémon Essentials
 2007-2010<s>Peter O.

@@ -209,7 +209,11 @@ class PokeBattle_Battle
         # Edited
         case TrainerDialogue.eval("battleStart")
         when -1
-          pbDisplayPaused(_INTL("You are challenged by {1}!",@opponent[0].fullname))
+		  if $game_map.map_id == 35 && $game_switches[102] == true # Derx: For the Medicine's Legion fights.
+			pbDisplayPaused(_INTL("{1} stands before you!",@opponent[0].fullname))
+		  else
+			pbDisplayPaused(_INTL("You are challenged by {1}!",@opponent[0].fullname))
+		  end
         when 0
           battleStart= TrainerDialogue.get("battleStart")
           pbDisplayPaused(_INTL(battleStart,@opponent[0].fullname))
@@ -282,7 +286,11 @@ class PokeBattle_Battle
         sent = sendOuts[side][i]
         case sent.length
         when 1
-          msg += _INTL("{1} sent out {2}!",t.fullname,@battlers[sent[0]].name)
+		  if $game_map.map_id == 35 && $game_switches[102] == true # Derx: For the Medicine's Legion fights.
+			msg += _INTL("Medicine: {1}, lead the charge!",@battlers[sent[0]].name) # Derx: For the Medicine's Legion fights.
+		  else
+			msg += _INTL("{1} sent out {2}!",t.fullname,@battlers[sent[0]].name)
+		  end
         when 2
           msg += _INTL("{1} sent out {2} and {3}!",t.fullname,
              @battlers[sent[0]].name,@battlers[sent[1]].name)
@@ -484,7 +492,7 @@ class PokeBattle_Battle
             if isConst?(enemyParty[idxPartyNew].ability,PBAbilities,:ILLUSION)
               idxPartyForName = pbLastInTeam(idxBattler)
             end
-            if pbDisplayConfirm(_INTL("{1} is about to send in {2}. Will you switch your Pokémon?",
+            if pbDisplayConfirm(_INTL("{1} is about to send in {2}. Will you switch your active party member?", # Derx: Removing excplict references to Pokemon
                opponent.fullname,enemyParty[idxPartyForName].name))
                $ShiftSwitch=false
               idxPlayerPartyNew = pbSwitchInBetween(0,false,true)

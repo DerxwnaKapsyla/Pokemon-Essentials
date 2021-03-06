@@ -446,13 +446,77 @@ module DialogueModule
 					battle.scene.disappearBar
 				  }
    # --- Scene: Suzuran Field Poisoning
-   
-   #SuzuranPoisoning_Start = 
-
+   SuzuranPoisoning_Start = Proc.new{|battle|
+					battle.pbDisplay("The field is choked in thick miasma.")
+				  }
+   SuzuranPoisoning_EoT = Proc.new{|battle|
+					$game_variables[1] = battle.battlers[0].name
+					case rand(4)
+					when 1; battle.battlers[0].pbInflictStatus(PBStatuses::POISON,0,"The miasma caused #{$game_variables[1]} to become ill!") if battle.battlers[0].pbCanInflictStatus?(PBStatuses::POISON,nil,false)
+					when 2; battle.battlers[0].pbInflictStatus(PBStatuses::SLEEP,3,"The miasma caused #{$game_variables[1]} to become sleepy!") if battle.battlers[0].pbCanInflictStatus?(PBStatuses::SLEEP,nil,false)
+					when 3; battle.battlers[0].pbInflictStatus(PBStatuses::BURN,0,"The miasma caused #{$game_variables[1]} to overheat!") if battle.battlers[0].pbCanInflictStatus?(PBStatuses::BURN,nil,false)
+					when 4; battle.battlers[0].pbInflictStatus(PBStatuses::PARALYSIS,0,"The miasma caused #{$game_variables[1]}'s muscles to lock up!") if battle.battlers[0].pbCanInflictStatus?(PBStatuses::PARALYSIS,nil,false)
+					end
+				  }
    # --- Scene: Player vs. Medicine
-   #VsMedicine_Start = 
-   
-   #VsMedicine_RandBuff = 
-   
+   VsMedicine_Start = Proc.new{|battle|
+   					$game_variables[3] = false
+					$game_variables[2] = battle.battlers[1].name
+					if battle.battlers[1].attack > battle.battlers[1].spatk
+						atkstat = PBStats::ATTACK
+					elsif battle.battlers[1].attack < battle.battlers[1].spatk
+						atkstat = PBStats::SPATK
+					else
+						atkstat = PBStats::SPEED
+					end
+					battle.scene.appearBar
+					battle.scene.pbShowOpponent(0)
+					Kernel.pbMessageWithName("Medicine Melancholy","With this Tome of Curses, there's no way you'll be able to beat me!")
+					Kernel.pbMessageWithName("Medicine Melancholy","I can do a lot more than just curse my foes, just watch!")
+					Kernel.pbMessageWithName("Medicine Melancholy","I call upon the power of this Tome of Curses... give my allies strength!")
+					battle.scene.pbHideOpponent
+					battle.scene.disappearBar
+					battle.pbDisplay("Medicine calls upon the power of the Tome of Curses to boost #{$game_variables[2]}'s stats!")
+					battle.battlers[1].pbRaiseStatStage(atkstat,1,battle.battlers[1])
+				  }
+				  
+   VsMedicine_AtkBuff = Proc.new{|battle|
+   					$game_variables[3] = false
+					$game_variables[2] = battle.battlers[1].name
+					if battle.battlers[1].attack > battle.battlers[1].spatk
+						atkstat = PBStats::ATTACK
+					elsif battle.battlers[1].attack < battle.battlers[1].spatk
+						atkstat = PBStats::SPATK
+					else
+						atkstat = PBStats::SPEED
+					end
+					battle.scene.appearBar
+					battle.scene.pbShowOpponent(0)
+					Kernel.pbMessageWithName("Medicine Melancholy","I call upon the power of this Tome of Curses... give my allies strength!")
+					battle.scene.pbHideOpponent
+					battle.scene.disappearBar
+					battle.pbDisplay("Medicine calls upon the power of the Tome of Curses to boost #{$game_variables[2]}'s stats!")
+					battle.battlers[1].pbRaiseStatStage(atkstat,1,battle.battlers[1])
+				  }
+				  
+   VsMedicine_DefBuff = Proc.new{|battle|
+   					if $game_variables[3] == false
+						$game_variables[2] = battle.battlers[1].name
+						if battle.battlers[1].defense > battle.battlers[1].spdef
+							defstat = PBStats::DEFENSE
+						else
+							defstat = PBStats::SPDEF
+						end
+						battle.scene.appearBar
+						battle.scene.pbShowOpponent(0)
+						Kernel.pbMessageWithName("Medicine Melancholy","Try picking on someone your own size!")
+						battle.scene.pbHideOpponent
+						battle.scene.disappearBar
+						battle.pbDisplay("Medicine calls upon the power of the Tome of Curses to boost #{$game_variables[2]}'s stats!")
+						battle.battlers[1].pbRaiseStatStage(defstat,1,battle.battlers[1])
+						$game_variables[3] = true
+					end
+				  }
+				  
 # DONT DELETE THIS END
 end

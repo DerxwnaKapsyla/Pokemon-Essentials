@@ -150,8 +150,8 @@ Pokemon = CNAZRIN,27
 Pokemon = CSEIGA,29
 LoseText = "[Placeholder]"
 [FAIRY_2,Kurome]
-Pokemon = LILYBLACK,30
-	Moves = AGILITY18,SHADOWHIT18,TAUNT18,DARKPULSE18
+Pokemon = CLILYBLACK,26
+Pokemon = CLILYBLACK,26
 LoseText = "[Placeholder]"
 [FAIRY_2,Seku]
 Pokemon = CSHOU,27
@@ -366,13 +366,103 @@ Pokemon = TLUNA,38
 	Moves = DISCHARGE18,LIGHTSCREEN18,ENERGYLIGHT18,SWEETKISS18
 LoseText= "How could the three of us lose at full power!?"
 #==========================================
+# Stage 6: Nameless Hill - General Trainers
+#==========================================
+[FAIRY_1,Akairo]
+Pokemon = SEKIBANKI,34
+	Moves = FAINTATTACK18,RAPIDSPIN18,PURSUIT18,BLACKRIPPLE18
+Pokemon = REIMU,35
+	Moves = JUMPKICK18,SMELLINGSALT18,BARRAGE18,AIRSLASH18
+LoseText = "Oh I see! You like black and blue on others instead!"
+[FAIRY_1,Shinku]
+Pokemon = REMILIA,34
+	Moves = COERCE18,WINGATTACK18,FAINTATTACK18,BITE18
+Pokemon = MOKOU,35
+	Moves = ROLLINGKICK18,RECOVER18,FLAMEHWEEL18,LEER18
+LoseText = "Actually, can rain even be crimson-colored...?"
+[FAIRY_2,Aoi]
+Pokemon = CIRNO,35
+	Moves = AMNESIA18,TAUNT18,ICEBALL18,HAIL18
+Pokemon = MARGATROID,35
+	Moves = MANABURST18,TAUNT18,PSYBEAM18,SUBSTITUTE18
+LoseText = "Oh, now I'm feeling blue..."
+[FAIRY_G,Zofi]
+Pokemon = SUIKA,35
+	Moves = DISABLE18,ROCKSLIDE18,SEISMICTOSS18,KARATECHOP18
+Pokemon = SUIKA,36
+	Moves = FLAMETHROWER18,DISABLE18,ROCKSLIDE18,SEISMICTOSS18
+LoseText = "Haha! Another drink!"
+[FAIRY_G,Meri]
+Pokemon = TWOHU,38
+	Moves = METRONOME18,CONVERSION18,TRIATTACK18,SMILE18
+LoseText = "Come back soon!"
+[FAIRY_Z,Akane]
+Pokemon = ARAN,36
+	Moves = ZENHEADBUTT18,REST18,BINDINGVOICE18,PSYSHOT18
+Pokemon = MAMIZOU,36
+	Moves = WINGATTACK18,MAGICALLEAF18,KILLINGBITE18,TRAMSFORM18
+Pokemon = ARIN,38
+	Moves = CRUSHCLAW18,WILLOWISP18,FLAMEWHEEL18,CONFUSERAY18
+LoseText = "G-Gao..."
+#==========================================
 # Stage 6: Suzuran Field - General Trainers
 #==========================================
-
+[PUPPETS_1,Stun Legion]
+Pokemon = TOJIKO,38
+	Moves = THUNDERWAVE18,DISCHARGE18,CONFUSERAY18,OMINOUSWIND18
+	Ball = 34
+Pokemon = TIKU,38
+	Moves = MIRRORSHOT18,THUNDERBOLT18,MYSTICWATER18,COUNTER18
+	Ball = 34
+Pokemon = ASHOU,38
+	Moves = CRUSHCLAW18,THUNDERPUNCH18,SWORDSDANCE18,ENERGYLIGHT18
+	Ball = 34
+LoseText = "Medicine: Stun Legion, fall back and recover!"
+[PUPPETS_2,Burn Legion]
+Pokemon = ASUIKA,38
+	Moves = BULKUP18,FIREPUNCH18,ROCKSLIDE18,THUNDERPUNCH18
+	Ability = 1
+	Ball = 34
+Pokemon = APATCHOULI,38
+	Moves = FLAMETHROWER18,PSYBEAM18,MYSTICWATER18,WILLOWISP18
+	Ability = 0
+	Ball = 34
+Pokemon = SUTSUHO,38
+	Moves = SOAR18,LAVAPLUME18,WILLOWISP18,FLY18
+	Ball = 34
+LoseText = "Medicine: Burn Legion, fall back and recover!"
+[PUPPETS_3,Frost Legion]
+Pokemon = LUIZE,38
+	Moves = ICEBEAM18,TRIATTACK18,SWEETKISS18,NIGHTMARE18
+	Ball = 34
+Pokemon = ADLETTY,38
+	Moves = ICESHARD18,ICEPUNCH18,EXTREMESPEED18,BODYSLAM18
+	Ball = 34
+Pokemon = YUMEMI,38
+	Moves = PSYBEAM18,ICEBEAM18,SECRETPOWER18,SHOCKWAVE18
+	Ball = 34
+LoseText = "Medicine: Frost Legion, fall back and recover!"
 #==========================================
 # Stage 6: Suzuran Field - Boss Fight
 #==========================================
-#[MEDICINE,Medicine Melancholy]
+[MEDICINE,Medicine Melancholy]
+Pokemon = HEIRIN,42
+	Moves = BURNPOWDER18,MUDDYWATER18,AQUASHOWER18,CONFUSERAY18
+	Ability = 1
+Pokemon = MEDICINE,42
+	Moves = ENERGYLIGHT18,POISONBOMB18,INGRAIN18,LEECHSEED18
+	Ability = 1
+Pokemon = ARUMIA,43
+	Moves = NIGHTSLASH18,TORMENT18,SWORDSDANCE18,FIREPUNCH18
+Pokemon = NUE,44
+	Moves = AIRSLASH18,CROSSPOISON18,SAFEGUARD18,RECOVER18
+	Ability = 0
+Pokemon = SSEIGA,44
+	Moves = HYPNOSIS18,DARKPULSE18,MANABURST18,DIG18
+Pokemon = SMEDICINE,46
+	Moves = SLEEPPOWDER18,POISONBOMB18,GIGADRAIN18,CURSE18
+	Ability = 0
+LoseText = "No! No, how could I have lost!? Was... Was I wrong all along?"
 #===============================================
 # EX Stage: Garden of the Sun - General Trainers
 #===============================================

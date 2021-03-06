@@ -33,7 +33,8 @@ $BallTypes = {
   30=>:MASTERORB,
   31=>:PUPPETORB2, # Derx: The Festival of Chaos addition
   32=>:GREATORB2,  # Derx: The Festival of Chaos addition
-  33=>:INVERSEORB  # Derx: The Festival of Chaos addition
+  33=>:INVERSEORB,  # Derx: The Festival of Chaos addition
+  34=>:EMPTY # Derx: Festival of Curses addition
   # ------ Derx: End of Puppet Orb additions
 }
 

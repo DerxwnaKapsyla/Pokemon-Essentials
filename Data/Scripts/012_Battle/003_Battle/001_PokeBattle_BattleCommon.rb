@@ -102,7 +102,7 @@ module PokeBattle_BattleCommon
       pbDisplay(_INTL("The Trainer blocked your Poké Ball! Don't be a thief!"))
       return
 	# --------- Derx: For Special Wild Battles, to prevent Pokemon from being caught
-    elsif $game_switches[102] # Pokemon can't be caught switch
+    elsif $game_switches[102] && !trainerBattle? # Pokemon can't be caught switch
        pbDisplay(_INTL("It dodged the thrown Ball! It looks like it's refusing to be caught! We have to knock it out!"))
        return
 #     end # Derx: This end might be necessary. Idk. Check later. Pretty sure it isn't.

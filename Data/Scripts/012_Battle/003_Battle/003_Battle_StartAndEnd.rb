@@ -216,7 +216,11 @@ class PokeBattle_Battle
     else   # Trainer battle
       case @opponent.length
       when 1
-        pbDisplayPaused(_INTL("You are challenged by {1}!",@opponent[0].fullname))
+	    if $game_map.map_id == 35 && $game_switches[102] == true # Derx: For the Medicine's Legion fights.
+		  pbDisplayPaused(_INTL("{1} stands before you!",@opponent[0].fullname))
+		else
+		  pbDisplayPaused(_INTL("You are challenged by {1}!",@opponent[0].fullname))
+		end
       when 2
         pbDisplayPaused(_INTL("You are challenged by {1} and {2}!",@opponent[0].fullname,
            @opponent[1].fullname))
@@ -238,7 +242,11 @@ class PokeBattle_Battle
         sent = sendOuts[side][i]
         case sent.length
         when 1
-          msg += _INTL("{1} sent out {2}!",t.fullname,@battlers[sent[0]].name)
+		  if $game_map.map_id == 35 && $game_switches[102] == true # Derx: For the Medicine's Legion fights.
+			msg += _INTL("Medicine: {1}, take point on the field!",@battlers[sent[0]].name) # Derx: For the Medicine's Legion fights.
+		  else
+			msg += _INTL("{1} sent out {2}!",t.fullname,@battlers[sent[0]].name)
+		  end
         when 2
           msg += _INTL("{1} sent out {2} and {3}!",t.fullname,
              @battlers[sent[0]].name,@battlers[sent[1]].name)
