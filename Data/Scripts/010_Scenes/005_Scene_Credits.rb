@@ -1,8 +1,8 @@
 # Backgrounds to show in credits. Found in Graphics/Titles/ folder
-CreditsBackgroundList = ["credits1","credits2","credits3","credits4","credits5"]
+CreditsBackgroundList = ["Gensokyo","Human Village","BGFestival","BGMistyLake","BGYoukaiWoods1","BGYoukaiWoods2","BGPlains","BGSuzuran","BGGarden","BGMugenkan"]
 CreditsMusic          = "U-001. Sakura, Sakura ~ Japanize Dream.ogg"
 CreditsScrollSpeed    = 1
-CreditsFrequency      = 8   # Number of seconds per credits slide
+CreditsFrequency      = 12   # Number of seconds per credits slide
 CREDITS_OUTLINE       = Color.new(0,0,128, 255)
 CREDITS_SHADOW        = Color.new(0,0,0, 100)
 CREDITS_FILL          = Color.new(255,255,255, 255)
@@ -81,6 +81,7 @@ DerxwnaKapsyla
 a-TTTempo<s>U2 Akiyama
 Uda-Shi<s>KecleonTencho
 Paradarx<s>Vlizzurd
+ZUN
 
 
 
@@ -279,7 +280,7 @@ _END_
     @frameCounter = 0
     # Number of game frames per background frame
     @framesPerBackground = CreditsFrequency * Graphics.frame_rate
-    @sprite.setBitmap("Graphics/Titles/"+@backgroundList[0])
+    @sprite.setBitmap("Graphics/Titles/Credits/"+@backgroundList[0])
 #------------------
 # Credits text Setup
 #------------------
@@ -394,7 +395,7 @@ _END_
       @frameCounter -= @framesPerBackground
       @bg_index += 1
       @bg_index = 0 if @bg_index >= @backgroundList.length
-      @sprite.setBitmap("Graphics/Titles/"+@backgroundList[@bg_index])
+      @sprite.setBitmap("Graphics/Titles/Credits/"+@backgroundList[@bg_index])
     end
     return if cancel?
     return if last?

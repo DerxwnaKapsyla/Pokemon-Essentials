@@ -641,9 +641,9 @@ def pbStartOver(gameover=false)
   pbHealAll
   if $PokemonGlobal.pokecenterMapId && $PokemonGlobal.pokecenterMapId>=0
     if gameover
-      pbMessage(_INTL("\\w[]\\wm\\c[12]\\l[3]After the unfortunate defeat, you scurry back to a Pokémon Center.")) # Derx: Changed the color to 12, as 8 was too hard to see
+      pbMessage(_INTL("\\w[]\\wm\\c[12]\\l[3]After the unfortunate defeat, you scurry away to get your Puppets healed up.")) # Derx: Changed the color to 12, as 8 was too hard to see
     else
-      pbMessage(_INTL("\\w[]\\wm\\c[12]\\l[3]You scurry back to a Pokémon Center, protecting your exhausted partners from any further harm...")) # Derx: Removing excplict references to Pokemon; also changed the color to 12, as 8 was too hard to see
+      pbMessage(_INTL("\\w[]\\wm\\c[12]\\l[3]You scurry away to get your Puppets healed up, protecting them from any further harm...")) # Derx: Removing excplict references to Pokemon; also changed the color to 12, as 8 was too hard to see
     end
     pbCancelVehicles
     pbRemoveDependencies

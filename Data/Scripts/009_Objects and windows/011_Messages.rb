@@ -1310,7 +1310,7 @@ def pbMessageDisplay(msgwindow,message,letterbyletter=true,commandProc=nil)
 # ------ Derx: Skip Text Dialogue 
 # ------ Script provided by Amethyst
 # ------ (https://reliccastle.com/resources/290/)
-    if Input.press?(Input::B)
+    if Input.press?(Input::B) && !$game_switches[112]
       msgwindow.textspeed=-999
       msgwindow.update
       if msgwindow.busy?

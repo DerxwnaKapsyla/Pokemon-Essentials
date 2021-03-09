@@ -472,7 +472,7 @@ def pbMessageDisplay(msgwindow,message,letterbyletter=true,commandProc=nil)
       break if !msgwindow.busy?
     end
 	# ------ Derx: Changes to make Text Skip work with Mr. Gela's Name Boxes
-	if Input.press?(Input::B)
+	if Input.press?(Input::B) && !$game_switches[112]
       msgwindow.textspeed=-999
       msgwindow.update
       if msgwindow.busy?

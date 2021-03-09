@@ -178,3 +178,15 @@ class NewGameScene2
     hideBlk
   end
 end
+
+# ---------------------------
+
+class PostgameScene < NewGameScene2
+  TEXT = [
+    [
+      "Autumn, Season 132 of the Gensokyo Calendar",
+      "Fifth Day of the Harvest Festival"
+    ],
+    :wait, 60
+  ]
+end

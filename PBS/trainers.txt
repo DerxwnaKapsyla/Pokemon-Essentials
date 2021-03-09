@@ -115,48 +115,48 @@ LoseText = Remarkable! This will be excellent data!
 [YOUKAI_1,Thelia]
 Pokemon = CWRIGGLE,26
 Pokemon = CSEKIBANKI,28
-LoseText = "[Placeholder]"
+LoseText = "Ow, ow! It was a joke! You don't have to be so mean!"
 [YOUKAI_1,Shuri]
 Pokemon = CRIKA,25
 Pokemon = CNAZRIN,25
 Pokemon = CSHIKIEIKI,25
-LoseText = "[Placeholder]"
+LoseText = "A strong human at that!"
 [YOUKAI_1,Minako]
 Pokemon = CKOKORO,25
 Pokemon = CREIMU,24
 Pokemon = CKOISHI,28
-LoseText = "[Placeholder]"
+LoseText = "At least, that's what I'd like to believe..."
 [YOUKAI_2,Jun]
 Pokemon = CORANGE,27
 Pokemon = CPATCHOULI,27
-LoseText = "[Placeholder]"
+LoseText = "And I was just getting to the good part..."
 [YOUKAI_2,Ayana]
 Pokemon = CSARA,24
 Pokemon = CLUIZE,24
 Pokemon = CMARGATROID,25
 Pokemon = CYUMEKO,25
-LoseText = "[Placeholder]"
+LoseText = "So, shall I put you down as a maybe?"
 [YOUKAI_2,Akumo]
 Pokemon = CREMILIA,27
 Pokemon = CFLANDRE,27
-LoseText = "[Placeholder]"
+LoseText = "Eep! Too bright!"
 [FAIRY_1,Kali]
 Pokemon = CAYA,26
 Pokemon = CLAYLA,28
 Pokemon = CMURASA,27
-LoseText = "[Placeholder]"
+LoseText = "Aw, now I'm it again..."
 [FAIRY_1,Seri]
 Pokemon = CNAZRIN,27
 Pokemon = CSEIGA,29
-LoseText = "[Placeholder]"
+LoseText = "I lost, but I was distracted for a little while!"
 [FAIRY_2,Kurome]
 Pokemon = CLILYBLACK,26
 Pokemon = CLILYBLACK,26
-LoseText = "[Placeholder]"
+LoseText = "Drat! My position is compromised!"
 [FAIRY_2,Seku]
 Pokemon = CSHOU,27
 Pokemon = CYOSHIKA,29
-LoseText = "[Placeholder]"
+LoseText = "Ouchies! I guess brains aren't everything!"
 #===============================================
 # Stage 3: Great Youkai Woods - Boss Fight
 #===============================================
@@ -466,12 +466,123 @@ LoseText = "No! No, how could I have lost!? Was... Was I wrong all along?"
 #===============================================
 # EX Stage: Garden of the Sun - General Trainers
 #===============================================
-#[FAIRY_Z,Kaliana]
+[FAIRY_G,Keri]
+Pokemon = SARIEL,42
+		Moves = DARKPULSE18,LIGHTSCREEN18,WINGATTACK18,COERCE18
+LoseText = "This is the part where I transform into a super awesome second form, right?"
+[FAIRY_G,Zima]
+Pokemon = SAYA,44
+	Moves = TAILWIND18,SOAR18,DETECT18,EXTREMESPEED18,
+Pokemon = LILYBLACK,44
+	Moves = SWORDSDANCE18,SOAR18,DARKPULSE18,SHADOWHIT18
+LoseText = "I guess going second has its benefits too, doesn't it?"
+[FAIRY_G,Hanabi]
+Pokemon = MIMICHAN,45
+	Moves = SELFDESTRUCT18,HEADSMASH18,FLAREBLITZ18,DOUBLETEAM18
+	Name = Clarisse
+Pokemon = MIMICHAN,45
+	Moves = SELFDESTRUCT18,HEADSMASH18,FLAREBLITZ18,DOUBLETEAM18
+	Name = Klee
+Pokemon = MIMICHAN,45
+	Moves = EXPLOSION18,HEADSMASH18,FLAREBLITZ18,DOUBLETEAM18
+	Name = W
+LoseText = "Do... KKAAAAAAAN!!!"
+[FAIRY_G,Maria]
+Pokemon = REISENII,42
+	Moves = MINDBOMB18,DOUBLETEAM18,PSYCHOCUT18,SIGNALBEAM18
+Pokemon = TOYOHIME,45
+	Moves = EARTHQUAKE18,SPLASHING18,YAWN18,WHIRLWIND18
+Pokemon = YORIHIME,45
+	Moves = DRAWNLINE18,SWORDSDANCE18,SACREDFIRE18,COUNTER18
+LoseText = "But... The might of the Moon!"
+[FAIRY_G,Callie]
+Pokemon = SKOMACHI,42
+	Moves = NIGHTSLASH18,SWORDSDANCE18,WILLOWISP18,SHADOWDANCE18
+	Name = Death
+Pokemon = KYOUKO,42
+	Moves = BINDINGVOICE18,HYPERVOICE18,SONICBOOM18,FLASH18
+	Name = Amelia
+Pokemon = TENTACRUEL,42
+	Moves = BRINE,POISONJAB,WRAP,CONFUSERAY
+	Name = Ina
+Pokemon = WAKASAGI,42
+	Moves = SING18,SMILE18,BUBBLEBEAM18,CRUNCH18
+	Name = Gura
+Pokemon = TORI,42
+	Moves = SKYATTACK18,BLASTBURN18,DRACOMETEOR18,AIRSLASH18
+	Name = Kiara
+LoseText = "G-Guh!"
+[FAIRY_Z,Mana]
+Pokemon = SKOISHI,43
+	Moves = FAKEOUT18,SIGNALBEAM18,DARKPULSE18,DREAMEATER18
+Pokemon = DYUKARI,43
+	Moves = AMNESIA18,DARKPULSE18,DESTINYBOND18,DECISION18
+Pokemon = ASHIKIEIKI,45
+	Moves = ZENHEADBUTT18,MANABURST18,SCARYFACE18,ENERGYLIGHT18
+LoseText = "Best two out of three?"
+[FAIRY_Z,Reda]
+Pokemon = MOMIJI,44
+	Moves = NIGHTSLASH18,TAILWIND18,CRUNCH18,ENDURE18
+Pokemon = KOAKUMA,44
+	Moves = MANABURST18,MAGICCOAT18,BLACKRIPPLE18,THUNDERBOLT18
+Pokemon = ATENSHI,45
+	Moves = EARTHPOWER18,ROCKBLAST18,DRAWNLINE18,BODYSLAM18
+LoseText = "Perhaps a class change is in order."
+[FAIRY_Z,Miyra]
+Pokemon = AYUUGI,44
+	Moves = EARTHQUAKE18,BULKUP18,BRICKBREAK18,ROCKSLIDE18
+Pokemon = MEILING,44
+	Moves = DRAINPUNCH18,BULKUP18,ROLLINGKICK18,BLOCK18
+Pokemon = TICHIRIN,44
+	Moves = BELLYDRUM18,FIREPUNCH18,EXTRASENSORY18,LOWKICK18
+LoseText = "Is there something else I should work into my regiment?"
+[FAIRY_Z,Katou]
+Pokemon = AKEINE,43
+	Moves = CRUSHCLAW18,EARTHQUAKE18,IRONDEFENSE18,HEARTBREAK18
+Pokemon = AKYUU,43
+	Moves = IRONDEFENSE18,BATONPASS18,DIG18,HEARTBREAK18
+Pokemon = SYAMAME,45
+	Moves = SPIDERWEB18,DIG18,TAILWIND18,BATONPASS18
+Pokemon = AKYUU,45
+	Moves =SPIDERWEB18,CRUSHCLAW18,TAILWIND18,EARTHQUAKE18
+LoseText = "Yes, yes this is perfect!"
+[FAIRY_Z,Kaliana]
+Pokemon = ARIN,45
+	Moves = BINDINGVOICE18,DISABLE18,CRUSHCLAW18,FLAMETHROWER18
+Pokemon = RIKAKO,46
+	Moves = BARRIER18,DISCHARGE18,GALE18,THUNDERBOLT18
+Pokemon = TSUMIREKO,47
+	Moves = REST18,NIGHTMARE18,DARKPULSE18,SNORE18
+	Ability = 1
+LoseText = "As the strongest, I graciously accept my defeat."
 #==========================================
 # EX Stage: Mugenkan - Mid-boss Fight
 #==========================================
-#[ELLY,Elly]
+[ELLY,Elly]
+Pokemon = ADMEILING,45
+	Moves = VITALTHROW18,BULKUP18,STEELFIST18,STRENGTH18
+Pokemon = KURUMI,47
+	Moves = DREAMEATER18,OMINOUSWIND18.AIRSLASH18,LOVELYKISS18
+Pokemon = MEIRA,45
+	Moves = COUNTER18,DRAWNLINE18,FURYCUTTER18,LEAFBLADE18
+Pokemon = KAZAMI,48
+	Moves = GIGADRAIN18,LEAFBLADE18,TAUNT18,HEARTBREAK18
+Pokemon = ELLY,49
+	Moves = SWORDSDANCE18,DRAWNLINE18,NIGHTSLASH18,BONEMERANG18
+LoseText = "Ow- Haven't had a battle like that in a long time!"
 #==========================================
 # EX Stage: Mugenkan - Boss Fight
 #==========================================
-#[YUUKA,Yuuka Kazami]
+[YUUKA,Yuuka Kazami]
+Pokemon = TYUUKA,48
+	Moves = GIGADRAIN18,SUNNYDAY18,CRUSHCLAW18,SOLARBEAM18
+Pokemon = AMEDICINE,47
+	Moves = NATURESOUND18,DISPERSE18,POISONBOMB18,SOLARBEAM18
+Pokemon = ALILYWHITE,48
+	Moves = HEATCLAW18,TAILWIND18,SIGNALBEAM18,ROOST18
+Pokemon = KIRISAME,49
+	Moves = AEROBLAST18,DARKPULSE18,MANABURST18,SIGNALBEAM18
+Pokemon = AKISISTERS,51
+	Moves = SUNNYDAY18,SOLARBEAM18,EARTHQUAKE18,GIGADRAIN18
+Pokemon = AKAZAMI,52
+	Moves = POWERWHIP18,SOAR18,SUBSTITUTE18,HYPERBEAM18

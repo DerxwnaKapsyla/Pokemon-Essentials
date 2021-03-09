@@ -395,6 +395,21 @@ module DialogueModule
                   }
 
 # ------ Derx: Battle Scripts related to The Festival of Curses are below here.
+   # --- Scene: Nitori using the Kappa Augment Items
+   #Nitori_AtkAugment = Proc.new{|battle|
+	#				battle.pbDisplayBrief(_INTL("{1} used a Kappa Attack Augment.",trainerName,itemName))
+	#				battle.battlers[1].pbRaiseStatStage(PBStats::ATTACK,1,battle.battlers[1])
+	#				battle.battlers[1].pbRaiseStatStage(PBStats::SPATK,1,battle.battlers[1])
+	#				battle.battlers[1].pbRaiseStatStage(PBStats::SPEED,1,battle.battlers[1])
+   #}
+   
+   #Nitori_DefAugment = Proc.new{|battle|
+   #				battle.pbDisplayBrief(_INTL("{1} used a Kappa Defense Augment.",trainerName,itemName))
+	#				battle.battlers[1].pbRaiseStatStage(PBStats::DEFENSE,1,battle.battlers[1])
+	#				battle.battlers[1].pbRaiseStatStage(PBStats::SPDEF,1,battle.battlers[1])
+	#				battle.battlers[1].pbRaiseStatStage(PBStats::SPEED,1,battle.battlers[1])
+   #}
+
    # --- Scene: Possessed Puppets in Hina's Domain in the Great Youkai Forest
    PossessedPuppet_Intro = Proc.new{|battle|
 					$game_variables[1] = battle.battlers[1].name
