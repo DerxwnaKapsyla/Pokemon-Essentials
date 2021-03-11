@@ -428,24 +428,24 @@ module DialogueModule
 				  }
 
    # --- Scene: Possessed Hina Fight in the Great Youkai Forest
-   PossessedHina_Intro = Proc.new{|battle|
-					battle.scene.appearBar
-					Kernel.pbMessageWithName($Trainer.name,"Don't worry Miss Kagiyama! I'll be sure to tire out that vengeful spirit!")
-					Kernel.pbMessageWithName("Hina","...")
-					battle.scene.disappearBar
-				  }
+   #PossessedHina_Intro = Proc.new{|battle|
+	#				battle.scene.appearBar
+	#				Kernel.pbMessageWithName($Trainer.name,"Don't worry Miss Kagiyama! I'll be sure to tire out that vengeful spirit!")
+	#				Kernel.pbMessageWithName("Hina","...")
+	#				battle.scene.disappearBar
+	#			  }
 				  
-   PossessedHina_Intro2 = Proc.new{|battle|
-					battle.scene.appearBar
-					Kernel.pbMessageWithName($Trainer.name,"We may have lost last time, but we won't falter again! Stay strong, Miss Kagiyama!")
-					Kernel.pbMessageWithName("Hina","...")
-					battle.scene.disappearBar
-				  }
+   #PossessedHina_Intro2 = Proc.new{|battle|
+	#				battle.scene.appearBar
+	#				Kernel.pbMessageWithName($Trainer.name,"We may have lost last time, but we won't falter again! Stay strong, Miss Kagiyama!")
+	#				Kernel.pbMessageWithName("Hina","...")
+	#				battle.scene.disappearBar
+	#			  }
 				  
    PossessedHina_SendOut = Proc.new{|battle|
 					$game_variables[1] = battle.battlers[1].name
 					battle.scene.appearBar
-					pbMessage("Misfortune Goddess Hina Kagiyama's \\v[1] gains power from being possessed!")
+					pbMessage("Spirit Doppelganger of Hina Kagiyama's \\v[1] gains power from being possessed!")
 					battle.scene.disappearBar
 					battle.battlers[1].pbRaiseStatStage(PBStats::ATTACK,1,battle.battlers[1])
 					battle.battlers[1].pbRaiseStatStage(PBStats::SPATK,1,battle.battlers[1])
