@@ -268,6 +268,10 @@ BallHandlers::IsUnconditional.add(:MASTERORB,proc { |ball,battle,battler|
 BallHandlers::ModifyCatchRate.add(:GREATORB2,proc { |ball,catchRate,battle,battler,ultraBeast|
   next catchRate*1.5
 })
+
+BallHandlers::ModifyCatchRate.add(:INVERSEORB,proc { |ball,catchRate,battle,battler,ultraBeast|
+  next catchRate*1.5
+})
 # ------ Derx: End of Seija's Great Orb addition
 
 #===============================================================================
@@ -294,5 +298,7 @@ BallHandlers::OnCatch.add(:GREATORB2,proc { |ball,battle,pkmn|
 })
 
 BallHandlers::OnCatch.add(:INVERSEORB,proc { |ball,battle,pkmn|
-  pkmn.makeShiny
+  if rand(100) > 85
+	pkmn.makeShiny
+  end
 })
