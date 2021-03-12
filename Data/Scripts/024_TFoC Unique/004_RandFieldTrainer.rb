@@ -18,7 +18,7 @@ end
 
 Events.onStepTaken += proc {
   if $game_map.map_id == 3 && $game_switches[110] == true # Human Village and Divebomb Fairies set to be true
-    $PokemonTemp.randBatt = rand(30..50) if $PokemonTemp.randBatt == nil
+    $PokemonTemp.randBatt = rand(50..70) if $PokemonTemp.randBatt == nil
 	#p $PokemonTemp.randBatt
     if $PokemonTemp.randBatt > 0 
       $PokemonTemp.randBatt -= 1
