@@ -35,6 +35,7 @@ Events.onStepTaken += proc {
 		":FAIRY_G,\"Yunru\""  # Greater Fairy Yunru
 		]
 	  randtrainer = trainer[rand(trainer.size)]
+	  setBattleRule("base","autumn_field")
       eval("pbTrainerBattle(#{randtrainer})")
     end
   end
