@@ -170,7 +170,8 @@ class PokeBattle_Battle
             idxPartyForName = idxPartyNew
             enemyParty = pbParty(idxBattler)
             if isConst?(enemyParty[idxPartyNew].ability,PBAbilities,:ILLUSION)
-              idxPartyForName = pbLastInTeam(idxBattler)
+              new_index = pbLastInTeam(idxBattler)
+              idxPartyForName = new_index if new_index >= 0
             end
             if pbDisplayConfirm(_INTL("{1} is about to send in {2}. Will you switch your active party member?", # Derx: Removing excplict references to Pokemon
                opponent.fullname,enemyParty[idxPartyForName].name))
@@ -256,7 +257,8 @@ class PokeBattle_Battle
     party = pbParty(idxBattler)
     newPkmnName = party[idxParty].name
     if isConst?(party[idxParty].ability,PBAbilities,:ILLUSION)
-      newPkmnName = party[pbLastInTeam(idxBattler)].name
+      new_index = pbLastInTeam(idxBattler)
+      newPkmnName = party[new_index].name if new_index >= 0
     end
     if pbOwnedByPlayer?(idxBattler)
       opposing = @battlers[idxBattler].pbDirectOpposing
