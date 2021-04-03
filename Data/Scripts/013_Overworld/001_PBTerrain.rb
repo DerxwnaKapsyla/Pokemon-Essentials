@@ -18,9 +18,11 @@ module PBTerrain
   SootGrass       = 14
   Bridge          = 15
   Puddle          = 16
+  LedgeAlt		  = 17 # Derx: For the Cerulean Gym hopping platforms
 
   def self.isSurfable?(tag)
-    return PBTerrain.isWater?(tag)
+    return PBTerrain.isWater?(tag) ||
+		   PBTerrain.isWalkingLedge?(tag) # Derx: Necessary so that you can still surf over the water between platforms in Cerulean Gym
   end
 
   def self.isWater?(tag)
@@ -68,6 +70,12 @@ module PBTerrain
   def self.isLedge?(tag)
     return tag==PBTerrain::Ledge
   end
+  
+  # ------ Derx: Necessary for Cerulean Gym's hopping platforms
+  def self.isWalkingLedge?(tag)
+	return tag==PBTerrain::LedgeAlt
+  end
+  # ------ Derx: End of necessary changes
 
   def self.isIce?(tag)
     return tag==PBTerrain::Ice

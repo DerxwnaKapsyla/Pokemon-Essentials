@@ -1049,6 +1049,15 @@ def pbLedge(_xOffset,_yOffset)
       $game_player.check_event_trigger_here([1,2])
     end
     return true
+# ------ Derx: Necessary for the Cerulean Gym's hopping platforms to work
+  elsif PBTerrain.isWalkingLedge?(pbFacingTerrainTag) && !$PokemonGlobal.surfing
+    if pbJumpToward(2,true)
+      $scene.spriteset.addUserAnimation(DUST_ANIMATION_ID,$game_player.x,$game_player.y,true,1)
+      $game_player.increase_steps
+      $game_player.check_event_trigger_here([1,2])
+    end
+    return true
+# ------ Derx: End of necessary changes.
   end
   return false
 end

@@ -18,6 +18,7 @@ WildBattleBGM = B-011. Battle vs. Puppet (Early Game).ogg
 #-------------------------------
 [007]
 # Pallet Town
+BattleBack = field
 MapPosition = 0,6,13
 ShowArea = true
 #-------------------------------
@@ -47,6 +48,7 @@ MapPosition = 0,6,13
 #-------------------------------
 [019]
 # Professor Oak's Lab - B1F
+BattleBack = indoor2
 MapPosition = 0,6,13
 #-------------------------------
 [034]
@@ -61,7 +63,7 @@ ShowArea = true
 #-------------------------------
 [035]
 # Viridian City
-BattleBack = 
+BattleBack = field
 Weather = Rain,5
 Bicycle = true
 MapPosition = 0,6,10
@@ -79,9 +81,19 @@ ShowArea = true
 #-------------------------------
 [037]
 # Cerulean City
+BattleBack = field
 Weather = Storm,10
 Bicycle = true
 MapPosition = 0,16,5
+Outdoor = true
+ShowArea = true
+#-------------------------------
+[038]
+# Vermillion City
+BattleBack = city
+Weather = Rain,5
+Bicycle = true
+MapPosition = 0,16,11
 Outdoor = true
 ShowArea = true
 #-------------------------------
@@ -96,16 +108,17 @@ ShowArea = true
 [045]
 # Route 1
 MapSize = 1,11
+BattleBack = field
 Weather = Rain,5
 Bicycle = true
 MapPosition = 0,6,10
 Outdoor = true
-Environment = Grass
 ShowArea = true
 #-------------------------------
 [046]
 # Route 2
 MapSize = 1,11
+BattleBack = field
 Weather = Rain,5
 Bicycle = true
 MapPosition = 0,6,8
@@ -115,6 +128,7 @@ ShowArea = true
 [047]
 # Route 3
 MapSize = 4,1111
+BattleBack = field
 Weather = Rain,10
 Bicycle = true
 MapPosition = 0,7,6
@@ -123,15 +137,67 @@ ShowArea = true
 #-------------------------------
 [048]
 # Route 4
+BattleBack = rocky
 Weather = Rain,10
 Bicycle = true
 MapPosition = 0,10,5
 Outdoor = true
 ShowArea = true
 #-------------------------------
+[049]
+# Route 5
+MapSize = 1,11
+BattleBack = field
+Weather = Rain,5
+Bicycle = true
+MapPosition = 0,16,6
+Outdoor = true
+ShowArea = true
+#-------------------------------
+[050]
+# Route 6
+MapSize = 1,11
+BattleBack = field
+Weather = Rain,5
+Bicycle = true
+MapPosition = 0,16,9
+Outdoor = true
+ShowArea = true
+#-------------------------------
+[054]
+# Route 9
+MapSize = 3,111
+BattleBack = field
+Weather = Rain,5
+Bicycle = true
+MapPosition = 0,17,5
+Outdoor = true
+ShowArea = true
+#-------------------------------
+[055]
+# Route 10
+MapSize = 1,11
+BattleBack = field
+Weather = Rain,5
+Bicycle = true
+MapPosition = 0,20,5
+Outdoor = true
+ShowArea = true
+#-------------------------------
+[056]
+# Route 11
+MapSize = 3,111
+BattleBack = field
+Weather = Rain,5
+Bicycle = true
+MapPosition = 0,17,11
+Outdoor = true
+ShowArea = true
+#-------------------------------
 [067]
 # Route 22
 MapSize = 2,11
+BattleBack = field
 Weather = Rain,5
 Bicycle = true
 MapPosition = 0,4,10
@@ -141,12 +207,14 @@ ShowArea = true
 [068]
 # Route 23
 MapSize = 2,0110
+BattleBack = indoor
 Bicycle = true
 MapPosition = 0,3,9
 Outdoor = false
 #-------------------------------
 [069]
 # Route 23
+BattleBack = field
 Weather = Rain,5
 Bicycle = true
 MapPosition = 0,4,8
@@ -156,6 +224,7 @@ ShowArea = true
 [070]
 # Route 24
 MapSize = 1,11
+BattleBack = field
 Weather = Storm,10
 Bicycle = true
 MapPosition = 0,16,3
@@ -165,6 +234,7 @@ ShowArea = true
 [071]
 # Route 25
 MapSize = 2,11
+BattleBack = field
 Weather = Storm,10
 Bicycle = true
 MapPosition = 0,17,3
@@ -223,6 +293,7 @@ MapPosition = 0,6,13
 #-------------------------------
 [177]
 # Trainer Academy
+BattleBack = indoor1
 MapPosition = 0,6,10
 #-------------------------------
 [178]
@@ -240,6 +311,7 @@ MapPosition = 0,6,10
 #-------------------------------
 [181]
 # Viridian Gym
+BattleBack = champion2
 MapPosition = 0,6,10
 #-------------------------------
 [182]
@@ -253,6 +325,7 @@ MapPosition = 0,6,11
 #-------------------------------
 [184]
 # Route 2
+BattleBack = field
 Weather = Rain,5
 Bicycle = true
 MapPosition = 0,6,7
@@ -261,6 +334,7 @@ ShowArea = true
 #-------------------------------
 [185]
 # Route 2
+BattleBack = field
 Weather = Rain,5
 Bicycle = true
 MapPosition = 0,6,8
@@ -270,8 +344,10 @@ ShowArea = true
 #-------------------------------
 [186]
 # Hidden Grove
+BattleBack = forest
 MapPosition = 0,6,8
 Outdoor = true
+Environment = TallGrass
 #-------------------------------
 [187]
 # Hall of Representatives
@@ -279,10 +355,12 @@ MapPosition = 0,4,8
 #-------------------------------
 [188]
 # Hall of Representatives
+BattleBack = indoor2
 MapPosition = 0,4,8
 #-------------------------------
 [189]
 # Route 23
+BattleBack = field
 Weather = Rain,5
 Bicycle = true
 MapPosition = 0,4,7
@@ -346,7 +424,7 @@ HealingSpot = 36,34,33
 #-------------------------------
 [201]
 # Pewter Gym
-BattleBack = Indoor3
+BattleBack = indoor3
 MapPosition = 0,6,6
 Environment = Rock
 #-------------------------------
@@ -399,6 +477,7 @@ ShowArea = true
 #-------------------------------
 [210]
 # Mt. Moon Square
+BattleBack = field
 Weather = Storm,5
 Bicycle = true
 MapPosition = 0,11,5
@@ -430,6 +509,7 @@ ShowArea = true
 [215]
 # Route 4
 MapSize = 4,1111
+BattleBack = field
 Weather = Storm,10
 Bicycle = true
 MapPosition = 0,12,5
@@ -443,12 +523,13 @@ HealingSpot = 48,21,25
 #-------------------------------
 [217]
 # Cerulean City Gym
-BattleBack = Indoor2
+BattleBack = indoor2
 MapPosition = 0,16,5
 Environment = StillWater
 #-------------------------------
 [218]
 # Cerulean City Houses
+BattleBack = indoor1
 MapPosition = 0,16,5
 #-------------------------------
 [219]

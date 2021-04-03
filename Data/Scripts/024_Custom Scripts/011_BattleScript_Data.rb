@@ -402,9 +402,11 @@ module DialogueModule
 	# --- Scene: Renko & Maribel vs. Red, Oak's Lab
 	VsRed_Intro = Proc.new{|battle|
 					#pbMessage("Red has challenged you to a battle!")
+					battle.scene.appearBar
 					Kernel.pbMessageWithName("Renko","Let's show Red how well we work together as a team, Mary!")
 					Kernel.pbMessageWithName("Maribel","I'm right beside you, Renko!")
 					Kernel.pbMessageWithName("Red","...")
+					battle.scene.disappearBar
 				}
 	# --- Scene: Renko & Maribel vs. Red - Player remains standing
 	

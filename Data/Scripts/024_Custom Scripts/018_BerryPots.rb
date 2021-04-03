@@ -195,7 +195,7 @@ class ItemBerryPots_Scene
         anim += 1 if frame%10==0
         anim = 0 if anim > 1
         @sprites["spray"].src_rect.x = charwidth*anim
-        pbSEPlay("Anim/sand",50,120) if anim == 1
+        pbSEPlay("Berry pots watering",50,120) if anim == 1
       end
       if frame == 80
         @sprites["spray"].setBitmap("Graphics/Pictures/BerryPots/#{@item}-stop")
