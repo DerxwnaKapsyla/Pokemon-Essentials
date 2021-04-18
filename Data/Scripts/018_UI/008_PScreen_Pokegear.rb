@@ -123,13 +123,13 @@ class PokemonPokegearScreen
     cmdMap     = -1
     cmdPhone   = -1
     cmdJukebox = -1
-    cmdQuestlog = -1 # Derx: Needed for the Quest Journal
+    #cmdQuestlog = -1 # Derx: Needed for the Quest Journal
     commands[cmdMap = commands.length]     = ["map",_INTL("Map")]
     if $PokemonGlobal.phoneNumbers && $PokemonGlobal.phoneNumbers.length>0
       commands[cmdPhone = commands.length] = ["phone",_INTL("Phone")]
     end
     commands[cmdJukebox = commands.length] = ["jukebox",_INTL("Jukebox")]
-    commands[cmdQuestlog = commands.length] = ["questlog",_INTL("Quest Journal")] # Derx: Needed for the Quest Journal
+    #commands[cmdQuestlog = commands.length] = ["questlog",_INTL("Quest Journal")] # Derx: Needed for the Quest Journal
     @scene.pbStartScene(commands)
     loop do
       cmd = @scene.pbScene
@@ -148,8 +148,8 @@ class PokemonPokegearScreen
           screen.pbStartScreen
         }
 	  # Derx: Needed for the Quest Journal
-      elsif cmdQuestlog>=0 && cmd==cmdQuestlog
-        pbQuestlog
+      #elsif cmdQuestlog>=0 && cmd==cmdQuestlog
+      #  pbQuestlog
 	  # Derx: End of Quest Journal Changes
       end
     end
