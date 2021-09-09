@@ -1,0 +1,268 @@
+#==============================================================================#
+#                             Touhoumon Essentials                             #
+#                                  Version 3.x                                 #
+#             https://github.com/DerxwnaKapsyla/pokemon-essentials             #
+#==============================================================================#
+# Changes in this section include the following:
+#	* Adjusting the Pokedex to accomidate Touhoumon changes
+#	* Makes it so it displays Yin/Yang for Puppets in the Pokedex
+#	* Makes it display Cost for Puppets in the Pokedex
+#	* Makes it display "[Kind] Puppet" for Puppets
+#	* Made the height and weight display in Metric for accuracy to the games
+#==============================================================================#
+class PokemonPokedexInfo_Scene
+  def pbStartScene(dexlist,index,region)
+    @viewport = Viewport.new(0,0,Graphics.width,Graphics.height)
+    @viewport.z = 99999
+    @dexlist = dexlist
+    @index   = index
+    @region  = region
+    @page = 1
+    @typebitmap = AnimatedBitmap.new(_INTL("Graphics/Pictures/Pokedex/icon_types_big"))
+    @sprites = {}
+    @sprites["background"] = IconSprite.new(0,0,@viewport)
+    @sprites["infosprite"] = PokemonSprite.new(@viewport)
+    @sprites["infosprite"].setOffset(PictureOrigin::Center)
+    @sprites["infosprite"].x = 104
+    @sprites["infosprite"].y = 136
+    @mapdata = pbLoadTownMapData
+    map_metadata = GameData::MapMetadata.try_get($game_map.map_id)
+    mappos = (map_metadata) ? map_metadata.town_map_position : nil
+    if @region < 0                                 # Use player's current region
+      @region = (mappos) ? mappos[0] : 0                      # Region 0 default
+    end
+    @sprites["areamap"] = IconSprite.new(0,0,@viewport)
+    @sprites["areamap"].setBitmap("Graphics/Pictures/#{@mapdata[@region][1]}")
+    @sprites["areamap"].x += (Graphics.width-@sprites["areamap"].bitmap.width)/2
+    @sprites["areamap"].y += (Graphics.height+32-@sprites["areamap"].bitmap.height)/2
+    for hidden in Settings::REGION_MAP_EXTRAS
+      if hidden[0]==@region && hidden[1]>0 && $game_switches[hidden[1]]
+        pbDrawImagePositions(@sprites["areamap"].bitmap,[
+           ["Graphics/Pictures/#{hidden[4]}",
+              hidden[2]*PokemonRegionMap_Scene::SQUAREWIDTH,
+              hidden[3]*PokemonRegionMap_Scene::SQUAREHEIGHT]
+        ])
+      end
+    end
+    @sprites["areahighlight"] = BitmapSprite.new(Graphics.width,Graphics.height,@viewport)
+    @sprites["areaoverlay"] = IconSprite.new(0,0,@viewport)
+    @sprites["areaoverlay"].setBitmap("Graphics/Pictures/Pokedex/overlay_area")
+    @sprites["formfront"] = PokemonSprite.new(@viewport)
+    @sprites["formfront"].setOffset(PictureOrigin::Center)
+    @sprites["formfront"].x = 130
+    @sprites["formfront"].y = 158
+    @sprites["formback"] = PokemonSprite.new(@viewport)
+    @sprites["formback"].setOffset(PictureOrigin::Bottom)
+    @sprites["formback"].x = 382   # y is set below as it depends on metrics
+    @sprites["formicon"] = PokemonSpeciesIconSprite.new(nil, @viewport)
+    @sprites["formicon"].setOffset(PictureOrigin::Center)
+    @sprites["formicon"].x = 82
+    @sprites["formicon"].y = 328
+    @sprites["uparrow"] = AnimatedSprite.new("Graphics/Pictures/uparrow",8,28,40,2,@viewport)
+    @sprites["uparrow"].x = 242
+    @sprites["uparrow"].y = 268
+    @sprites["uparrow"].play
+    @sprites["uparrow"].visible = false
+    @sprites["downarrow"] = AnimatedSprite.new("Graphics/Pictures/downarrow",8,28,40,2,@viewport)
+    @sprites["downarrow"].x = 242
+    @sprites["downarrow"].y = 348
+    @sprites["downarrow"].play
+    @sprites["downarrow"].visible = false
+    @sprites["overlay"] = BitmapSprite.new(Graphics.width,Graphics.height,@viewport)
+    pbSetSystemFont(@sprites["overlay"].bitmap)
+    pbUpdateDummyPokemon
+    @available = pbGetAvailableForms
+    drawPage(@page)
+    pbFadeInAndShow(@sprites) { pbUpdate }
+  end
+  
+  def pbStartSceneBrief(species)  # For standalone access, shows first page only
+    @viewport = Viewport.new(0,0,Graphics.width,Graphics.height)
+    @viewport.z = 99999
+    dexnum = 0
+    dexnumshift = false
+    if $Trainer.pokedex.unlocked?(-1)   # National Dex is unlocked
+      species_data = GameData::Species.try_get(species)
+      dexnum = species_data.id_number if species_data
+      dexnumshift = true if Settings::DEXES_WITH_OFFSETS.include?(-1)
+    else
+      dexnum = 0
+      for i in 0...$Trainer.pokedex.dexes_count - 1   # Regional Dexes
+        next if !$Trainer.pokedex.unlocked?(i)
+        num = pbGetRegionalNumber(i,species)
+        next if num <= 0
+        dexnum = num
+        dexnumshift = true if Settings::DEXES_WITH_OFFSETS.include?(i)
+        break
+      end
+    end
+    @dexlist = [[species,"",0,0,dexnum,dexnumshift]]
+    @index   = 0
+    @page = 1
+    @brief = true
+    @typebitmap = AnimatedBitmap.new(_INTL("Graphics/Pictures/Pokedex/icon_types_big"))
+    @sprites = {}
+    @sprites["background"] = IconSprite.new(0,0,@viewport)
+    @sprites["infosprite"] = PokemonSprite.new(@viewport)
+    @sprites["infosprite"].setOffset(PictureOrigin::Center)
+    @sprites["infosprite"].x = 104
+    @sprites["infosprite"].y = 136
+    @sprites["overlay"] = BitmapSprite.new(Graphics.width,Graphics.height,@viewport)
+    pbSetSystemFont(@sprites["overlay"].bitmap)
+    pbUpdateDummyPokemon
+    drawPage(@page)
+    pbFadeInAndShow(@sprites) { pbUpdate }
+  end
+  
+  def pbGetAvailableForms
+    ret = []
+    multiple_forms = false
+    # Find all genders/forms of @species that have been seen
+    GameData::Species.each do |sp|
+      next if sp.species != @species
+      next if sp.form != 0 && (!sp.real_form_name || sp.real_form_name.empty?)
+      next if sp.pokedex_form != sp.form
+      multiple_forms = true if sp.form > 0
+      case sp.gender_ratio
+      when :AlwaysMale, :AlwaysFemale, :Genderless
+        real_gender = (sp.gender_ratio == :AlwaysFemale) ? 1 : 0
+        next if !$Trainer.pokedex.seen_form?(@species, real_gender, sp.form) && !Settings::DEX_SHOWS_ALL_FORMS
+        real_gender = 2 if sp.gender_ratio == :Genderless
+        ret.push([sp.form_name, real_gender, sp.form])
+      else   # Both male and female
+        for real_gender in 0...2
+          next if !$Trainer.pokedex.seen_form?(@species, real_gender, sp.form) && !Settings::DEX_SHOWS_ALL_FORMS
+          ret.push([sp.form_name, real_gender, sp.form])
+          break if sp.form_name && !sp.form_name.empty?   # Only show 1 entry for each non-0 form
+        end
+      end
+    end
+    # Sort all entries
+    ret.sort! { |a, b| (a[2] == b[2]) ? a[1] <=> b[1] : a[2] <=> b[2] }
+    # Create form names for entries if they don't already exist
+    ret.each do |entry|
+	pkmn_data = GameData::Species.get_species_form(pokemon.species, pokemon.form)
+	  if !entry[0] || entry[0].empty?   # Necessarily applies only to form 0
+		case entry[1]
+		when 0 
+		  entry[0] = pkmn_data.generation < 20 ? _INTL("Male") : _INTL("Yin")
+		when 1
+		  entry[0] = pkmn_data.generation < 20 ? _INTL("Female") : _INTL("Yang")
+		end
+	  else
+		entry[0] = multiple_forms ? _INTL("One Form") : _INTL("Genderless")
+      end
+      entry[1] = 0 if entry[1] == 2   # Genderless entries are treated as male
+    end
+    return ret
+  end
+  
+  def drawPageInfo
+    @sprites["background"].setBitmap(_INTL("Graphics/Pictures/Pokedex/bg_info"))
+    overlay = @sprites["overlay"].bitmap
+    base   = Color.new(88, 88, 80)
+    shadow = Color.new(168, 184, 184)
+    imagepos = []
+    if @brief
+      imagepos.push([_INTL("Graphics/Pictures/Pokedex/overlay_info"), 0, 0])
+    end
+    species_data = GameData::Species.get_species_form(@species, @form)
+    # Write various bits of text
+    indexText = "???"
+    if @dexlist[@index][4] > 0
+      indexNumber = @dexlist[@index][4]
+      indexNumber -= 1 if @dexlist[@index][5]
+      indexText = sprintf("%03d", indexNumber)
+    end
+    textpos = [
+       [_INTL("{1}{2} {3}", indexText, " ", species_data.name),
+          246, 36, 0, Color.new(248, 248, 248), Color.new(0, 0, 0)],
+       [_INTL("Height"), 314, 152, 0, base, shadow],
+	   #pkmn_data = GameData::Species.get_species_form(pokemon.species, pokemon.form)
+	   if pkmn_data.generation <20
+		 [_INTL("Weight"), 314, 184, 0, base, shadow]
+	   else
+		 [_INTL("Cost"), 314, 184, 0, base, shadow]
+	   end
+    ]
+    if $Trainer.owned?(@species)
+      # Write the category
+      textpos.push([_INTL("{1} Pokémon", species_data.category), 246, 68, 0, base, shadow])
+      # Write the height and weight
+      height = species_data.height
+      weight = species_data.weight
+	  pkmn_data = GameData::Species.get_species_form(pokemon.species, pokemon.form)
+	  if pkmn_data.generation <20
+		if System.user_language[3..4] == "US"   # If the user is in the United States
+          inches = (height / 0.254).round
+          pounds = (weight / 0.45359).round
+          textpos.push([_ISPRINTF("{1:d}'{2:02d}\"", inches / 12, inches % 12), 460, 152, 1, base, shadow])
+          textpos.push([_ISPRINTF("{1:4.1f} lbs.", pounds / 10.0), 494, 184, 1, base, shadow])
+		else
+          textpos.push([_ISPRINTF("{1:.1f} m", height / 10.0), 470, 152, 1, base, shadow])
+          textpos.push([_ISPRINTF("{1:.1f} kg", weight / 10.0), 482, 184, 1, base, shadow])
+		end
+	  else
+		if System.user_language[3..4] == "US"   # If the user is in the United States
+          inches = (height / 0.254).round
+          pounds = (weight / 0.45359).round
+          textpos.push([_ISPRINTF("{1:.1f} m", height / 10.0), 470, 152, 1, base, shadow])
+          textpos.push([_ISPRINTF("{1:.1f}   ", weight / 10.0), 482, 184, 1, base, shadow])
+		else
+          textpos.push([_ISPRINTF("{1:.1f} m", height / 10.0), 470, 152, 1, base, shadow])
+          textpos.push([_ISPRINTF("{1:.1f}   ", weight / 10.0), 482, 184, 1, base, shadow])
+		end
+	  end
+      # Draw the Pokédex entry text
+      drawTextEx(overlay, 40, 244, Graphics.width - (40 * 2), 4,   # overlay, x, y, width, num lines
+                 species_data.pokedex_entry, base, shadow)
+      # Draw the footprint
+      footprintfile = GameData::Species.footprint_filename(@species, @form)
+      if footprintfile
+        footprint = RPG::Cache.load_bitmap("",footprintfile)
+        overlay.blt(226, 138, footprint, footprint.rect)
+        footprint.dispose
+      end
+      # Show the owned icon
+      imagepos.push(["Graphics/Pictures/Pokedex/icon_own", 212, 44])
+      # Draw the type icon(s)
+      type1 = species_data.type1
+      type2 = species_data.type2
+      type1_number = GameData::Type.get(type1).id_number
+      type2_number = GameData::Type.get(type2).id_number
+      type1rect = Rect.new(0, type1_number * 32, 96, 32)
+      type2rect = Rect.new(0, type2_number * 32, 96, 32)
+      overlay.blt(296, 120, @typebitmap.bitmap, type1rect)
+      overlay.blt(396, 120, @typebitmap.bitmap, type2rect) if type1 != type2
+    else
+      # Write the category
+	  if pkmn_data.generation <20
+		textpos.push([_INTL("????? Pokémon"), 246, 68, 0, base, shadow])
+	  else
+		textpos.push([_INTL("????? Puppet"), 246, 68, 0, base, shadow])
+	  end
+      # Write the height and weight
+	  if pkmn_data.generation <20
+		if System.user_language[3..4] == "US"   # If the user is in the United States
+          textpos.push([_INTL("???'??\""), 460, 152, 1, base, shadow])
+          textpos.push([_INTL("????.? lbs."), 494, 184, 1, base, shadow])
+		else
+          textpos.push([_INTL("????.? m"), 470, 152, 1, base, shadow])
+          textpos.push([_INTL("????.? kg"), 482, 184, 1, base, shadow])
+		end
+	  else
+		if System.user_language[3..4] == "US"   # If the user is in the United States
+          textpos.push([_INTL("????.? m"), 470, 152, 1, base, shadow])
+          textpos.push([_INTL("????.?   "), 482, 184, 1, base, shadow])
+		else
+          textpos.push([_INTL("????.? m"), 470, 152, 1, base, shadow])
+          textpos.push([_INTL("????.?   "), 482, 184, 1, base, shadow])
+		end
+	  end
+    end
+    # Draw all text
+    pbDrawTextPositions(overlay, textpos)
+    # Draw all images
+    pbDrawImagePositions(overlay, imagepos)
+  end
+end
