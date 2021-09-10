@@ -52,13 +52,13 @@ class HallOfFame_Scene
     end
     pbDrawTextPositions(overlay,textPositions)
 	iconoffset=overlay.text_size(pokename).width/2 + Graphics.width-192
-	if pkmn_data.generation == 20 && pokemon.isMale?
+	if pkmn_data.generation == 20 && pokemon.male?
 	  pbDrawImagePositions(overlay,[
-		["Graphics/Icons/yin",iconoffset,Graphics.height-80,0,0,-1,-1]
+		["Graphics/Icons/yin",iconoffset,Graphics.height-76,1,0,-1,-1]
 	  ])
-	elsif pkmn_data.generation == 20 && pokemon.isFemale?
+	elsif pkmn_data.generation == 20 && pokemon.female?
 		pbDrawImagePositions(overlay,[
-		  ["Graphics/Icons/yang",iconoffset,Graphics.height-80,0,0,-1,-1]
+		  ["Graphics/Icons/yang",iconoffset,Graphics.height-76,1,0,-1,-1]
 		])
 	end
   end

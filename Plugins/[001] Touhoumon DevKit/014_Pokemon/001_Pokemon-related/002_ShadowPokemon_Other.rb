@@ -21,16 +21,3 @@ def pbRelicStone
     pbRelicStoneScreen($Trainer.party[$game_variables[1]])
   end
 end
-
-class PokeBattle_Battle
-  alias __shadow__pbCanUseItemOnPokemon? pbCanUseItemOnPokemon?
-
-  def pbCanUseItemOnPokemon?(item,pkmn,battler,scene,showMessages=true)
-    ret = __shadow__pbCanUseItemOnPokemon?(item,pkmn,battler,scene,showMessages)
-    if ret && pkmn.hyper_mode && ![:JOYSCENT, :EXCITESCENT, :VIVIDSCENT].include?(item)
-      scene.pbDisplay(_INTL("This item can't be used on them."))
-      return false
-    end
-    return ret
-  end
-end
