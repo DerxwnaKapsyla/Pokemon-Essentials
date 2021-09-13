@@ -1,0 +1,319 @@
+--- Touhoumon Asteria Version ---
+---          Demo 07          ---
+
+--- Demo 7: Rebooted Development ---
+May 8th, 2020 - Start Date:
+* Small misc prep work
+
+May 9th, 2020:
+* Ported over the Cargo Ship map
+* Added in Marin's Scripting Utilities
+* Created "Scene_Cutscenes" for specific cutscene events
+* Rewrote the intro segment on the Cargo Ship
+
+May 10th, 2020:
+* Mapped out Pallet Town
+* Added Marin's Easy Questing Interface
+	* Slightly tweaked the code to allow the Quest Objective to be multiline capable
+* Added in the Random Natural Movement script from Yitria Resurrection
+
+May 11th, 2020:
+* Added in the Journal entries for Welcome Home, phase 1 and 2
+* Mapped out Red's House
+* Started mapping out Professor Oak's lab
+
+May 12th, 2020:
+* Did much more of the intro segment
+* Converted several tpdp sprites to Essentials format
+* Mapped out Oak's Garden
+* Slightly modified the battle scripts to allow an in-battle message to show up when Red battles Chen
+
+May 13th, 2020:
+* Did further work on the intro, got up to the segment where you select Renko or Maribel
+
+May 14th~16th:
+* Added in a new script for a stylized scene where you choose to play as Renko or Maribel
+* Further work on the intro, made it up to Oak's lab
+* Added in a few switches and variables for the Intro handling
+* Added in a few graphics for the Starter selection segment
+
+May 19th, 2020:
+* Finished work on the segment invovling picking up the starter
+* Currently working on the segment where Renko and Maribel battle Red
+* Added trainer.txt entries for Red, and the variants for Renko and Maribel based on starter
+
+May 21st, 2020:
+* Finished up the intro segment, needs further revisions in all areas (check recorded video)
+
+--- Updated to Essentials v18.1.dev/Touhoumon Essentials v3.1 ---
+November 29th, 2020:
+* Made it so Rival!Renko disappears after Player!Maribel picks her starter
+* Added in Golisopod User's Mid-Battle Dialogue/Scripted Battles resource
+	https://reliccastle.com/resources/483/
+* Fixed it so Rival!Renko/Maribel now properly display the Yes/No prompt in the right location
+* Fixed it so starter selection scene now properly display the Yes/No prompt in the right location
+* Added in NPCs to the confrence cutscene
+	* An OW for Volkner is absent, but isn't vitally needed.
+	* Most of these graphics are from Aveontrainer, with the exception of Silver's which is from Skeizerr
+* Tweaked the Name Box text command to make sure the name box displays on top of all other graphics
+* Added dialogue text boxes to the Red vs. Chen fight and the Renko & Maribel vs. Red fight
+* Fixed the missing battle background for the Red fight
+
+November 30th, 2020:
+* Recolored the names for Renko and Maribel on the save screen to white
+	* Might make this soft lavender in the future.
+* Readded the unique starter selection line for the Oak's Lab map
+* Added in a bunch of placeholder maps for locations
+* Ported over and remapped Route 1
+* Readded the NPCs to Route 1
+* Readded the Trainers to Route 1
+* Added FL's Unreal Time Script
+* Ported over and remapped Viridian City
+* Adjusted the Renko/Maribel battle event in Viridian City
+
+December 2nd, 2020:
+* Remapped Route 2
+
+December 4th, 2020:
+* Changed the Prevent Capture switch to be switch 106 instead of 102.
+* Fully revised the Chibi Kazami event on Route 2
+* Added in a new map - Route 2's Hidden Grotto
+* Changed the Debug Party to be a bunch of Puppets /shrug
+* Added in the Offline Wonder Trade script by Black Eternity
+* Added in the Simple Exit Arrows script by Tustin2121
+* Changed some lines in the Scripted Battles resource to be species neutral
+* Added metadata for the Player's home point
+* Fixed wrong sound file in Pokemon Center events
+* Ported over Route 22's map
+
+December 5th, 2020:
+* Ported over Route 23's first exterior map
+* Ported over Route 23's interior maps
+* Ported over the Hall of Representatives map
+* Ported over Yellow's Overworld sprite
+* Added in Maruno's Invalid Tile Fixer script
+* Flat-to-ground bridges have been set to terrain tag 69 (dudes)
+
+December 6th, 2020:
+* Ported over the Indigo Plateau, Pokemon League, and Indigo Village maps
+* Ported over the Viridian Forest map
+* Ported over and remapped Pewter City
+
+Between December 7th and December 16th, 2020:
+* Added in the Gen 6 EXP Share
+* Set up Pewter City's warps and events
+* idk what else lol
+
+December 16th, 2020:
+* Put together the Apricorn Tree asset, which'll be used for Kanto and Johto's berry trees.
+
+December 18th, 2020:
+* Added Marin's Better Bitmaps
+* Added Mr. Gela's DP Summary Screen
+* Ported over the changes from the github that fixes the multiline text spacing issue.
+	* Why didn't it carry over when I pulled changes from the DevKit?????????
+
+December 21st, 2020
+* Replaced some music tracks with HgSs equivalents
+* Added in Caruban's Berry Pots resource
+* Added icons for the Gen 6 EXP Share
+* Added in the sidequest "A Berry for your Thoughts (Kanto)"
+* Added in the Girls' Sealing Club jingle from Reimufate
+* Added in Greenwich in the Sky from numerous Touhoumon Rom Hacks
+* Added in music from HgSs for Route 22 (and its other locations), and Route 23 + Pokemon League
+
+December 24th, 2020:
+* A series of small changes and fixes
+* Added in several Mystery Gifts for the Passcode Terminal
+* Fixed ANOTHER bug that didn't have its changed ported from the Github version. For SOME goddamn reason (Full EXP jingle was missing)
+* Fixed the loop point on Pallet Town's theme
+* Added an Item Ball and Hidden Item to the cut area on Route 1
+* Added the HgSs theme for Viridian Forest
+
+December 25th & 26th:
+* Added encounters to Route 2 and Viridian Forest
+* Added trainers to Route 2 and Viridian Forest
+* Added in the Map Transition Eyecatch script by Jonas930
+
+December 27th:
+* Added in a new script which allows maps to have Hidden Encounters
+	* Credit for the crux of the script goes to Maruno
+* Added encounters to Route 22 and 23
+	* Levels need adjustment as of this time
+* Removed the old Hidden Encounters script to allow for defining Hidden Encounters in Encounters.txt
+	* All the changes for it were in several different scripts
+* Added in an Alternate BGM section in PField_Visuals that plays for a Hidden Encounter
+
+December 28th and 29th:
+* Added in a new theme for Hidden Encounters
+	* From the Gen 5 games
+* Set up new music for Wild Battles
+	* From TPDP
+* Fixed an issue with exclaim bubbles showing up within event overworlds.
+* Adjusted it so the Rival now starts with the Puppet the the advantage against yours
+* Tweaked the way music is defined for Hidden Encounters
+
+December 30th, 2020:
+* Finished putting together the Pewter Museum MSQ.
+
+December 31st, 2020:
+* Raised the volume on several gen 3 style tracks.
+* Ported over the maps for Route 3 and Route 4 (West)
+* Added the trainers to Route 3
+* Added encounters to Route 3
+
+--- CHANGES PORTED FROM ESSENTIALS GITHUB BECAUSE FOR SOME REASON THEY WONT SYNC CORRECTLY ---
+* https://github.com/Maruno17/pokemon-essentials/commit/579a6cbe2a8b0a9d2068e4a1cd01ea32206a39f5
+* https://github.com/Maruno17/pokemon-essentials/commit/742a98b179acedb3eaf0de0f32e6247065dda49e
+* https://github.com/Maruno17/pokemon-essentials/commit/bfec896b46ae2e34c467b3e357931edc2750ae5d
+* https://github.com/Maruno17/pokemon-essentials/commit/896ec4ab854649b4adb45b1cc1707bc5df5ca750
+--- END OF CHANGES PORTED FROM ESSENTIALS GITHUB BECAUSE FUCK ME I GUESS IDK WHY IT DIDNT WORK ---
+
+January 2nd, 2021:
+* Set up the Mining Minigame area for Route 4/Mt. Moon
+* Begun putting together the Shiny Yorihime event in Mt. Moon
+
+January 4th & 5th:
+* Remapped Cerulean City
+* Added in Cerulean Gym
+* Added in the Gym Terminal graphical asset, from Pokemon Reborn
+* Finished up Cerulean City's maps and most NPCs
+* Added the maps for Route 24 and 25
+* Added the trainer events for Route 24 and 25
+* Fixed an issue with the Mining Minigame so it properly reset at midnight each in-game day.
+
+January 6th, 2021:
+* Added in trainers to Mt. Moon, Route 4, Cerulean Gym, Route 24, and Route 25
+* Added in a Braille Text script from Wichu
+
+January 7th, 2021:
+* Fixed a tile priority issue on the Cave tileset
+* Added a placeholder map for Route 3 (the first of, hopefully, very few...)
+* Removed the shadow under CYamame's front sprite, and lowered it by 5 to bring it closer to the battle platform (this should be brought over to the DevKit)
+* Fixed an apostrophe display issue in swapping out (Change needs to be made to base essentials)
+
+January 11th, 2021:
+* Finished the interior of Pewter Gym
+* Added trainers to Pewter Gym
+* Added in a bunch of placeholder entries for the Kanto Gym Leaders and Pokemon League
+* Added in music for Cerulean City and Routes 24/25
+* Set up a Vs. Transition for Brock
+
+January 12th, 2021:
+* Added in a bunch of Gen 4 trainer sprites
+	* Mostly for the Gym Leaders, but also for Team Rocket
+* Tweaked the Common Event list so that all Gym Leaders share the same Common Event
+* Set up Misty's VS. Transition
+* Set up all remaining Kanto Gym Leader Vs. Transitions
+
+January 13th, 2021:
+* Set up Gold's Vs. Transition
+* Tweaked the code for Renko and Maribel's Vs. Transition to allow for a bg setting in the event
+* Set up the event for Gold outside of Pewter and Cerulean gym for the Initial Encounter
+
+January 16th, 2021: 
+* Set up the Gold event inside Pewter Gym
+- Added in tracks for Vs Red and Vs. Gold
+* Added in a bit of code to make the Gold rival segments work
+* Begun setting up sidestairs via Marin's Enhanced Staircase script
+* Made it so the Blackout text is now legible on black bg
+
+January 17th, 2021:
+* Added metadata tags to a bunch of maps
+* Did heavy edits to Mt. Moon F3
+* Modified the Cave tileset to make all stairs have connected textues
+* Added items to Route 4 (East) behind the double battle
+* Fixed an issue where all the Classification tags for Puppets were removed from Pokemon.txt
+
+January 18th, 2021:
+* Adjusted a bunch of lines up to Pewter City so they use the new Name Box script by Mr. Gela
+* Added in the new Quest Interface made by Mej71/Revised by ----
+	* Added in a bunch of exiting quests to that interface
+	* Tweaked the script to add new fields to it for my own sake
+* Changed the default colors for text
+* Fixed up the Shiny Rumia on a trainer in Mt. Moon
+
+January 19th, 2021:
+* Finished converting all of the Name Boxes to the new resource
+
+January 20th, 2021:
+* Finished up the Chibi Nue sidequest event in Cerulean City
+* Fixed a bug where the game repeats the player's turn if the player fails a capture
+* Replaced the old Day/Night tones with new ones by Vanilla Sunshine
+
+March 17th, 2021:
+* Fixed the Puppet Orbs incorrect values
+* Gave existing maps proper Background and Environment tags in the metadata
+* Removed extraneous evolution data from Kosuzu
+* Made CKokoro learn Scary Face at 24 instead of 15
+* Fixed AKokoro's Attack Stat so it's 145 instead of 45
+* Implemented the Cutting Edge sidequest
+* Implemented the Bill cutscene, as well as the phone call w/ Renko/Maribel afterward
+* Ported over Route 5 and 6
+
+March 18th, 2021:
+* Ported over Vermilion City and did some remapping to it
+* Ported and remapped Route 11
+* Ported and remapped Route 10 (North)
+* Did some work involving the Cutting Edge sidequest
+
+March 19th, 2021:
+* Fixed up the events in Cerulean Gym
+
+Between March 20th and March 30th:
+* Did work on the Gold Rival segment
+* Remapped Cerulean Gym
+* Set up multiple common events for the Rival Gold fights
+* Some other stuff probably idr
+
+April 16th, 2021:
+* Made Pokemon Flash become HM07
+* Converted TM70 into Pokemon Water Pulse
+* Added Water Pulse to tm.txt
+* Commented out the old Quest Log because I'm no longer using it
+* Fixed the Gold event in Pewter City
+* Fixed a few typos
+
+April 17th, 2021:
+* Mapped out the Kanto Underground Path
+* Mapped out the Route 5, 6, 7, and 8 Underground Entrances
+* Mapped out the Route 5 and 6 Gatehouse Entrances
+* Mapped out the Route 7 and 8 Gatehouse Entrances
+* Ported and remapped Route 7 and 8
+* Started work on the Vermilion City plot segments
+* Mapped out the reception area of Seaside Hotel
+* Mapped out Renko/Maribel's room in the Hotel
+
+April 18th, 2021:
+* Begun work on the Rival segment inside Seaside Hotel
+* Replaced Rival theme with Paradarx's remix of Girls' Sealing Club
+
+April 19th, 2021:
+* Finished up the segment inside the Hotel with the Rival
+* Added in a few more music tracks
+* Started work on the Route 10 segment
+
+April 20th-21st, 2021:
+* Did more work on the Route 10 cutscene
+* Made Pkmn!Steel weak to Thmn!Fire
+* Added the Police trainer class
+* Reached the Power Plant portion of the Route 10 cutscene
+* Ported the maps for the Power Plant
+* Finished the cutscene outside the Power Plant before entering it
+* Fixed the sliding issue in the vs transitions
+* Wired up a bunch of warps
+* Added music
+* Ported and Tweaked Saffron City's map
+* Added encounters to a few locations
+
+April 23rd, 2021:
+* Added NPCs to Vermilion City
+* Wired up Vermilion City's warps
+* Added the Gold event to Vermilion City's exterior
+	- Vermilion Gym needs to be reworked for both the new design and to accomidate Gold
+* Added trainers to Route 6 and Route 9
+* Added encounters to Route 9
+* Added encounters to Route 10
+* Added encouters to Power Plant
+* Added encounters to Route 6
+* Added encounters to Route 5

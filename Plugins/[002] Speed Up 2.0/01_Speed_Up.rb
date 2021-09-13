@@ -12,6 +12,14 @@ module Input
   end
 end
 
+def pbAllowSpeedup
+  $CanToggle = true
+end
+
+def pbDisallowSpeedup
+  $CanToggle = false
+end
+
 SPEEDUP_STAGES = [1,2,3]
 $GameSpeed = 0
 $frame = 0
