@@ -164,8 +164,55 @@ module QuestModule
     :QuestDescription => "While the Police wait for backup to arrive, Mary and I have been tasked to assist in the apprehension of the thugs who took over the Power Plant. While this doesn't seem like a job for us, we cant just sit idly by! I'll be headng into the Power Plant, and Mary will be watching for if any escape.",
     :RewardString => "nil"
   }
-
-
+  
+  Quest17 = {
+    :ID => "17",
+    :Name => "Tower of Terror - I (Maribel)",
+    :QuestGiver => "Main Scenario Quest",
+    :Stage1 => "Talk to Renko at the Pokémon Center on Route 10",
+    :Location1 => "Route 10",
+    :QuestDescription => "Dealing with Team Rocket was exhausting... Renko wants to meet up at the nearby Pokémon Center to continue our conversation from earlier. She mentioned she had some leads she wanted to follow up on.",
+    :RewardString => "nil"
+  }
+  
+  Quest18 = {
+    :ID => "18",
+    :Name => "Tower of Terror - I (Renko)",
+    :QuestGiver => "Main Scenario Quest",
+    :Stage1 => "Talk to Maribel at the Pokémon Center on Route 10",
+    :Location1 => "Route 10",
+    :QuestDescription => "Dealing with Team Rocket was exhausting... Mary wants to meet up at the nearby Pokémon Center to continue our conversation from earlier. She mentioned she had some leads she wanted to follow up on.",
+    :RewardString => "nil"
+  }
+  
+  Quest19 = {
+    :ID => "19",
+    :Name => "Tower of Terror - II (Maribel)",
+    :QuestGiver => "Main Scenario Quest",
+    :Stage1 => "Try to find information about the Sealed Realm in Lavender Town",
+	:Stage2 => "Investigate the Lavender Pokémon Tower",
+	:Stage2 => "Follow the Channeler into Pokémon Tower's archives",
+    :Location1 => "Lavender Town",
+	:Location2 => "Lavender Town",
+	:Location3 => "Lavender Town",
+    :QuestDescription => "And so, we're heading out separate ways once more! Renko'll be heading off to Fuschia City while I head off to Lavender Town. She mentioned that Lavender Town is known for supernatural occurances, so what better place to check than there!",
+    :RewardString => "nil"
+  }
+  
+  Quest20 = {
+    :ID => "20",
+    :Name => "Tower of Terror - II (Renko)",
+    :QuestGiver => "Main Scenario Quest",
+    :Stage1 => "Try to find information about the Sealed Realm in Lavender Town",
+	:Stage2 => "Investigate the Lavender Pokémon Tower",
+	:Stage2 => "Follow the Channeler into Pokémon Tower's archives",
+    :Location1 => "Lavender Town",
+	:Location2 => "Lavender Town",
+	:Location3 => "Lavender Town",
+    :QuestDescription => "And so, we're heading out separate ways once more! Mary'll be heading off to Fuschia City while I head off to Lavender Town. She mentioned that Lavender Town is known for supernatural occurances, so what better place to check than there!",
+    :RewardString => "nil"
+  }
+  
 #----- Side Quests -----#
 
   Quest100 = {
@@ -229,6 +276,16 @@ module QuestModule
     :Stage1 => "Placeholder",
     :Location1 => "Vermilion City",
     :QuestDescription => "Placeholder",
+    :RewardString => "nil"
+  }
+  
+  Quest106 = {
+    :ID => "106",
+    :Name => "Ghost of a Chance",
+    :QuestGiver => "Side Quest",
+    :Stage1 => "Battle the Lavender Town Gym Leader",
+    :Location1 => "Lavender Town",
+    :QuestDescription => "The Head Priestess of Lavender Tower asked a favor of me; apparently scouts are coming to check out the new Lavender Gym, and she wants to make sure her granddaughter, Selene, is up to the task of being a Gym Leader. After showcasing my skills in Lavender Tower, how am I to refuse?",
     :RewardString => "nil"
   }
 end
