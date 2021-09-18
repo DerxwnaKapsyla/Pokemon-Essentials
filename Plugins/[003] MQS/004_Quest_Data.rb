@@ -190,12 +190,10 @@ module QuestModule
     :Name => "Tower of Terror - II (Maribel)",
     :QuestGiver => "Main Scenario Quest",
     :Stage1 => "Try to find information about the Sealed Realm in Lavender Town",
-	:Stage2 => "Investigate the Lavender Pokémon Tower",
-	:Stage2 => "Follow the Channeler into Pokémon Tower's archives",
+	:Stage2 => "Find and recover the Puppet that ran from Mr. Fuji",
     :Location1 => "Lavender Town",
 	:Location2 => "Lavender Town",
-	:Location3 => "Lavender Town",
-    :QuestDescription => "And so, we're heading out separate ways once more! Renko'll be heading off to Fuschia City while I head off to Lavender Town. She mentioned that Lavender Town is known for supernatural occurances, so what better place to check than there!",
+    :QuestDescription => "And so, we're heading our separate ways once more! Renko'll be heading off to Fuschia City while I head off to Lavender Town. She mentioned that Lavender Town is known for supernatural occurances, so what better place to check than there!",
     :RewardString => "nil"
   }
   
@@ -204,12 +202,22 @@ module QuestModule
     :Name => "Tower of Terror - II (Renko)",
     :QuestGiver => "Main Scenario Quest",
     :Stage1 => "Try to find information about the Sealed Realm in Lavender Town",
-	:Stage2 => "Investigate the Lavender Pokémon Tower",
-	:Stage2 => "Follow the Channeler into Pokémon Tower's archives",
+	:Stage2 => "Find and recover the Puppet that ran from Mr. Fuji",
     :Location1 => "Lavender Town",
 	:Location2 => "Lavender Town",
-	:Location3 => "Lavender Town",
-    :QuestDescription => "And so, we're heading out separate ways once more! Mary'll be heading off to Fuschia City while I head off to Lavender Town. She mentioned that Lavender Town is known for supernatural occurances, so what better place to check than there!",
+    :QuestDescription => "And so, we're heading our separate ways once more! Mary'll be heading off to Fuschia City while I head off to Lavender Town. She mentioned that Lavender Town is known for supernatural occurances, so what better place to check than there!",
+    :RewardString => "nil"
+  }
+  
+  Quest21 = {
+    :ID => "21",
+    :Name => "Tower of Terror - III",
+    :QuestGiver => "Main Scenario Quest",
+    :Stage1 => "Investigate the Lavender Pokémon Tower",
+	:Stage2 => "Follow the Priestess into Pokémon Tower's archives",
+    :Location1 => "Lavender Town",
+	:Location2 => "Lavender Town",
+    :QuestDescription => "Mr. Fuji actually gave a solid lead! He claims that he's heard stories about such a place from the priestesses of the Pokémon Tower. Time to see if this pans out!",
     :RewardString => "nil"
   }
   
@@ -281,6 +289,28 @@ module QuestModule
   
   Quest106 = {
     :ID => "106",
+    :Name => "The Ultimate Collector: Retribution - I",
+    :QuestGiver => "Side Quest",
+	:Stage1 => "Present the invitation to the security guard in the Underground",
+	:Stage2 => "Watch the Silph Co. presentation",
+	:Location1 => "Kanto Underground Tunnel",
+	:Location2 => "Silph Co.",
+    :QuestDescription => "The director of the Power Plant gave me an invitation to an event being held by Silph Co., some sort of special Puppet Exhibition. It might be interesting to watch, so I guess I can go check it out!",
+    :RewardString => "nil"
+  }  
+  
+  Quest107 = {
+    :ID => "107",
+    :Name => "The Ultimate Collector: Retribution - III",
+    :QuestGiver => "Side Quest",
+    :Stage1 => "Go after the haywire Ruukoto Puppets",
+    :Location1 => "Silph Co.",
+    :QuestDescription => "A disaster unfolded during the presentation! The Ruukoto Puppets that were there to assist went haywire and stole the Synthetic Puppet Prototypes and are now reaking havoc! I've been asked to put a stop to it, given I'm the only one present capable of doing so.",
+    :RewardString => "nil"
+  }  
+  
+  Quest108 = {
+    :ID => "108",
     :Name => "Ghost of a Chance",
     :QuestGiver => "Side Quest",
     :Stage1 => "Battle the Lavender Town Gym Leader",
@@ -288,4 +318,5 @@ module QuestModule
     :QuestDescription => "The Head Priestess of Lavender Tower asked a favor of me; apparently scouts are coming to check out the new Lavender Gym, and she wants to make sure her granddaughter, Selene, is up to the task of being a Gym Leader. After showcasing my skills in Lavender Tower, how am I to refuse?",
     :RewardString => "nil"
   }
+  
 end

@@ -34,11 +34,11 @@ class Interpreter
     :ENGINEER 		=> 'P-006. Trainers\' Eyes Meet (Hiker)',
     :FISHERMAN 		=> 'P-006. Trainers\' Eyes Meet (Hiker)',
 #    :GAMBLER 		=> 'P-001. Demystify Feast',
-#    :GENTLEMAN 	=> 'P-001. Demystify Feast',
+    :GENTLEMAN 		=> 'P-017. Trainers\' Eyes Meet (Gentleman)',
     :HIKER 			=> 'P-006. Trainers\' Eyes Meet (Hiker)',
 #    :JUGGLER 		=> 'P-001. Demystify Feast',
     :LADY 			=> 'P-003. Trainers\' Eyes Meet (Girl 1)',
-#    :PAINTER 		=> 'P-001. Demystify Feast',
+    :PAINTER 		=> 'P-016. Trainers\' Eyes Meet (Artist)',
 #    :POKEMANIAC 	=> 'P-001. Demystify Feast',
 #    :POKEMONBREEDER => 'P-001. Demystify Feast',
 #    :PROFESSOR 	=> 'P-001. Demystify Feast',
@@ -47,9 +47,9 @@ class Interpreter
 #    :SAILOR 		=> 'P-001. Demystify Feast',
     :SCIENTIST 		=> 'P-008. Trainers\' Eyes Meet (Psychic)',
     :SUPERNERD 		=> 'P-008. Trainers\' Eyes Meet (Psychic)',
-#    :TAMER 		=> 'P-001. Demystify Feast',
-#    :BLACKBELT 	=> 'P-001. Demystify Feast',
-#    :CRUSHGIRL 	=> 'P-001. Demystify Feast',
+    :TAMER 			=> 'P-010. Trainers\' Eyes Meet (Cooltrainer)',
+    :BLACKBELT 		=> 'P-018. Trainers\' Eyes Meet (Black Belt)',
+    :CRUSHGIRL 		=> 'P-018. Trainers\' Eyes Meet (Black Belt)',
     :CAMPER 		=> 'P-005. A Trainer Appears (Boy Version)',
     :PICNICKER 		=> 'P-011. A Trainer Appears (Girl Version)',
     :COOLTRAINER_M 	=> 'P-010. Trainers\' Eyes Meet (Cooltrainer)',
@@ -79,7 +79,8 @@ class Interpreter
 	:WORKER 		=> 'P-006. Trainers\' Eyes Meet (Hiker)',
     :SCRenko 		=> 'P-012. Girls\' Sealing Club',
 	:SCMary 		=> 'P-012. Girls\' Sealing Club',
-	:RIVAL_Gold 	=> 'P-013. Encounter - Gold'
+	:RIVAL_Gold 	=> 'P-013. Encounter - Gold',
+	:COLLECTOR 		=> 'P-015. Trainers\' Eyes Meet (Collector)'
   }
   # Play the trainer eye bgm according to the type defined in Interpreter::TRAINER_BGMS
   # @param type [Symbol] type of trainer (key in TRAINER_BGMS)

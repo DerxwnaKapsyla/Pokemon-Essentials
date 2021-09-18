@@ -5,6 +5,7 @@
 #==============================================================================#
 # Changes in this section include the following:
 #	* Added in entries for the Quest Log to the Pokegear
+#	* Added in entries for the Type Checker to the Pokegear
 #==============================================================================#
 class PokemonPokegearScreen
 
@@ -20,6 +21,7 @@ class PokemonPokegearScreen
     end
     commands[cmdJukebox = commands.length] = ["jukebox",_INTL("Jukebox")]
 	commands[cmdQuests = commands.length] = ["quests",_INTL("Quests")]
+	commands[cmdTypeCheck = commands.length] = ["checker",_INTL("Type Checker")]
     @scene.pbStartScene(commands)
     loop do
       cmd = @scene.pbScene
@@ -40,6 +42,10 @@ class PokemonPokegearScreen
 		elsif cmdQuests>=0 && cmd==cmdQuests
 		  pbFadeOutIn {
 			pbViewQuests
+		}
+		elsif cmdTypeCheck>=0 && cmd==cmdTypeCheck
+		  pbFadeOutIn {
+			pbTypeMatchUI
 		}
       end
     end

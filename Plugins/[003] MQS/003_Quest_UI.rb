@@ -235,16 +235,12 @@ class QuestList_Scene
       436,questDesc,@base,@shadow)
     # Stage description
     questStageDesc = $quest_data.getStageDescription(quest.id,quest.stage)
-    # Stage location
-    questStageLocation = $quest_data.getStageLocation(quest.id,quest.stage)
+
     # If 'nil' or missing, set to '???'
-    if questStageLocation=="nil" || questStageLocation==""
-      questStageLocation = "???"
-    end
+
     drawFormattedTextEx(@sprites["overlay3"].bitmap,38,316,
       436,"<c2=#{colorQuest("orange")}>Task:</c2> #{questStageDesc}",@base,@shadow)
-    drawFormattedTextEx(@sprites["overlay3"].bitmap,38,348,
-      436,"<c2=#{colorQuest("purple")}>Location:</c2> #{questStageLocation}",@base,@shadow)
+
   end
 
   def drawOtherInfo(quest)
@@ -275,6 +271,13 @@ class QuestList_Scene
     if questReward=="nil" || questReward==""
       questReward = "???"
     end
+    # Stage location
+    questStageLocation = $quest_data.getStageLocation(quest.id,quest.stage)
+    if questStageLocation=="nil" || questStageLocation==""
+      questStageLocation = "???"
+    end	
+    drawFormattedTextEx(@sprites["overlay3"].bitmap,38,348,
+      436,"<c2=#{colorQuest("purple")}>Location:</c2> #{questStageLocation}",@base,@shadow)
     textpos = [
       [sprintf("Stage %d/%d",quest.stage,questLength),38,38,0,@base,@shadow],
       ["#{questGiver}",38,110,0,@base,@shadow],
