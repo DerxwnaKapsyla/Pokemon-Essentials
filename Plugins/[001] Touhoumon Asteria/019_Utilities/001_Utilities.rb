@@ -44,3 +44,23 @@ def pbMoveTutorChoose(move,movelist=nil,bymachine=false,oneusemachine=false)
   }
   return ret   # Returns whether the move was learned by a Pokemon
 end
+
+def pbExclaim(event,id=Settings::EXCLAMATION_ANIMATION_ID,tinting=false)
+  if event.is_a?(Array)
+    sprite = nil
+    done = []
+    for i in event
+      if !done.include?(i.id)
+        sprite = $scene.spriteset.addUserAnimation(id,i.x,i.y-1,tinting,2)
+        done.push(i.id)
+      end
+    end
+  else
+    sprite = $scene.spriteset.addUserAnimation(id,event.x,event.y-1,tinting,2)
+  end
+  while !sprite.disposed?
+    Graphics.update
+    Input.update
+    pbUpdateSceneMap
+  end
+end

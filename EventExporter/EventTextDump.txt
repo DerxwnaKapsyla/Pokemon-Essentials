@@ -32758,8 +32758,426 @@ List of Event Commands:
 #==============================================================================
 Map ID: 080
 Map Name: Lavender Tower
-Tileset: 001: Outside
-Width: 20, Height: 15
+Tileset: 013: Graveyard
+Width: 24, Height: 20
+Auto-Change BGM: 
+
+#------------------------------------------------------------------------------
+Event ID: 001
+Event Name: Receptionist
+(X,Y): (011,004)
+
+Page #1
+Conditions
+None
+
+Graphic: NPC 08
+
+Autonomous Movement
+Type: Fixed
+Speed: 3: Slow
+Freq: 3: Low
+Options Enabled
+Move Animation
+Trigger: Action Button
+
+List of Event Commands:
+@>Text: Good day to you, welcome to Pokémon Tower. Is there something
+ :    : I can help you with today?
+@>Wait: 20 frame(s)
+@>Text: Oh! You're here for research and would like to speak to one of
+ :    : the Elder Priestesses? Just one moment!
+@>Set Move Route: This event
+ :              : $>Turn Right
+@>Play SE: 'PC access', 80, 100
+@>Text: Hello, sorry to disturb you right now ma'am, but there's someone
+ :    : here for-...\wt[30] -No, they aren't with the League.
+@>Text: They said they came here to do some research, and would like to
+ :    : speak to one of the Elder Priestesses.
+@>Wait: 30 frame(s)
+@>Text: Oh, you will? Alright, I'll let them know you'll be right up!
+@>Set Move Route: This event
+ :              : $>Turn Down
+@>Play SE: 'PC close', 80, 100
+@>Text: You're in luck! The Head Priestess herself will be right up to answer
+ :    : whatever questions you may have.
+@>Text: Just wait here and she'll be along before too long.
+@>Script: pbSetSelfSwitch(5,"A",true)
+:       : pbSetSelfSwitch(6,"A",true)
+@>
+
+Page #2
+Conditions
+Self Switch A is ON
+
+Graphic: NPC 08
+
+Autonomous Movement
+Type: Fixed
+Speed: 3: Slow
+Freq: 3: Low
+Options Enabled
+Move Animation
+Trigger: Action Button
+
+List of Event Commands:
+@>Text: Lavender Tower was errected to put the spirits of 
+ :    : Pokemon that died to rest. We also rest Puppets here 
+ :    : too.
+@>Text: The first four floors are general gravestones. Floor 5 
+ :    : is where people go for cleansing after the trip up the 
+ :    : tower.
+@>Text: Floor 6 is a special area, where special Pokemon and 
+ :    : Puppets are laid to rest and remembered.
+@>
+
+#------------------------------------------------------------------------------
+Event ID: 002
+Event Name: Priestess
+(X,Y): (004,010)
+
+Page #1
+Conditions
+None
+
+Graphic: trainer_CHANELLER
+
+Autonomous Movement
+Type: Fixed
+Speed: 3: Slow
+Freq: 3: Low
+Options Enabled
+Move Animation
+Trigger: Action Button
+
+List of Event Commands:
+@>Text: I'm terribly sorry, but this room is off limits unless you 
+ :    : have an appointment to see the Master Medium.
+@>
+
+Page #2
+Conditions
+Self Switch A is ON
+
+Graphic: trainer_CHANELLER
+
+Autonomous Movement
+Type: Fixed
+Speed: 3: Slow
+Freq: 3: Low
+Options Enabled
+Move Animation
+Trigger: Action Button
+
+List of Event Commands:
+@>Text: I've been told to allow you into the basement. Would you
+ :    : like to go downstairs right now?
+@>Show Choices: Yes, No
+(When Cancel: Choice 2)
+: When [Yes]
+ @>Text: Right this way then...\wtnp[20] And good luck.
+ @>Change Screen Color Tone: (-255,-255,-255,0), @6
+ @>Wait: 8 frame(s)
+ @>Transfer Player:[259: Lavender Tower], (035,043), Left, No Fade
+ @>Change Screen Color Tone: (0,0,0,0), @6
+ @>
+: When [No]
+ @>Text: I understand.
+ @>
+: Branch End
+@>
+
+#------------------------------------------------------------------------------
+Event ID: 003
+Event Name: ExitArrow
+(X,Y): (011,019)
+
+Page #1
+Conditions
+None
+
+Graphic: Exitarrow_red
+
+Autonomous Movement
+Type: Fixed
+Speed: 3: Slow
+Freq: 3: Low
+Options Enabled
+Move Animation
+Stop Animation
+Always on Top
+Trigger: Player Touch
+
+List of Event Commands:
+@>Conditional Branch: Player is facing Down
+ @>Play SE: 'Door exit', 100, 100
+ @>Change Screen Color Tone: (-255,-255,-255,0), @6
+ @>Wait: 8 frame(s)
+ @>Script: pbCaveExit
+ @>Transfer Player:[250: Lavender Town], (035,015), No Fade
+ @>Change Screen Color Tone: (0,0,0,0), @6
+ @>
+: Branch End
+@>
+
+#------------------------------------------------------------------------------
+Event ID: 004
+Event Name: EV004
+(X,Y): (017,013)
+
+Page #1
+Conditions
+None
+
+Graphic: trainer_AROMALADY
+
+Autonomous Movement
+Type: Custom
+Custom Move Route:
+(Repeat Action)
+$>Script: move_random_range(2,2)
+
+Speed: 3: Slow
+Freq: 3: Low
+Options Enabled
+Move Animation
+Trigger: Action Button
+
+List of Event Commands:
+@>Text: I wonder... Do Pokemon that die become Ghost Pokemon? How do 
+ :    : Ghost Pokemon come to exist anyways?
+@>Text: That also makes me wonder, can Ghost Pokemon die too? Or are 
+ :    : they destined to forever wander into eternity...
+@>
+
+#------------------------------------------------------------------------------
+Event ID: 005
+Event Name: Head Priestess
+(X,Y): (000,000)
+
+Page #1
+Conditions
+Self Switch A is ON
+
+Graphic: trainer_CHANELLER
+
+Autonomous Movement
+Type: Fixed
+Speed: 3: Slow
+Freq: 3: Low
+Options Enabled
+Move Animation
+Trigger: Autorun
+
+List of Event Commands:
+@>Change Screen Color Tone: (-255,-255,-255,0), @6
+@>Wait: 8 frame(s)
+@>Transfer Player:[080: Lavender Tower], (012,014), Right, No Fade
+@>Change Screen Color Tone: (0,0,0,0), @6
+@>Wait: 10 frame(s)
+@>Play SE: 'Door exit', 80, 100
+@>Set Event Location: [Head Priestess],(003,010), Right
+@>Set Move Route: [Priestess]
+ :              : $>Turn Left
+ :              : $>Wait: 20 frame(s)
+@>Wait for Move's Completion
+@>Set Move Route: [Priestess]
+ :              : $>Through ON
+ :              : $>Move Up
+ :              : $>Turn Down
+@>Set Move Route: [Head Priestess]
+ :              : $>Wait: 15 frame(s)
+ :              : $>Through ON
+ :              : $>Move Right
+ :              : $>Move Right
+ :              : $>Through OFF
+@>Wait for Move's Completion
+@>Set Move Route: [Priestess]
+ :              : $>Move Down
+ :              : $>Turn Right
+ :              : $>Through OFF
+@>Set Move Route: [Head Priestess]
+ :              : $>Move Down
+ :              : $>Move Down
+ :              : $>Move Down
+ :              : $>Move Down
+ :              : $>Move Right
+ :              : $>Move Right
+ :              : $>Move Right
+ :              : $>Move Right
+ :              : $>Move Right
+@>Wait for Move's Completion
+@>Text: \xn[Head Priestess]Hello there, I'm the Head Priestess of Pokémon
+ :    : Tower.
+@>Set Move Route: Player
+ :              : $>Turn Left
+@>Text: \xn[Head Priestess]I heard you're here to do research, and wished
+ :    : to speak to someone. What information is it you would like to know
+ :    : about?
+@>Wait: 10 frame(s)
+@>Show Animation: [Head Priestess], [Exclaim bubble]
+@>Set Move Route: [Head Priestess]
+ :              : $>Direction Fix ON
+ :              : $>Change Speed: 5
+ :              : $>1 Step Backward
+@>Text: \xn[Head Priestess]My word, did you just say the "Sealed Realm"!?
+@>Wait: 10 frame(s)
+@>Set Move Route: [Head Priestess]
+ :              : $>Change Speed: 3
+ :              : $>Direction Fix OFF
+ :              : $>Move Right
+@>Text: \xn[Head Priestess]I'm... surprised! There's... not many people
+ :    : these days who are aware of the existence of what you're
+ :    : asking about.
+@>Text: \xn[Head Priestess]Might I ask your name, miss?
+@>Wait: 15 frame(s)
+@>Conditional Branch: Variable [0107: Chosen Protag] == 0
+ @>Comment: --- Renko
+ @>Show Animation: [Head Priestess], [Exclaim bubble]
+ @>Text: \xn[Head Priestess]I-I'm sorry!? Did you just say your name 
+  :    : was \pn!?
+ @>Text: \xn[Head Priestess]N-No, it must just be a coincidence...
+ @>
+: Else
+ @>Comment: --- Maribel
+ @>Text: \xn[Head Priestess]\pn, hmm? Odd, that name sounds
+  :    : familiar...
+ @>Text: \xn[Head Priestess]We haven't met before, right?
+ @>
+: Branch End
+@>Text: \xn[Head Priestess]Well, anyway... You wanted to know about
+ :    : the "Sealed Realm", correct...?
+@>Text: \xn[Head Priestess]I believe we should have some information
+ :    : about it in our archives... If you'll please follow me down to
+ :    : the basement.
+@>Set Move Route: [Head Priestess]
+ :              : $>Move Left
+ :              : $>Move Left
+ :              : $>Move Left
+ :              : $>Move Left
+ :              : $>Move Up
+ :              : $>Move Up
+ :              : $>Move Up
+ :              : $>Move Up
+ :              : $>Turn Left
+@>Wait for Move's Completion
+@>Wait: 20 frame(s)
+@>Set Move Route: [Priestess]
+ :              : $>Through ON
+ :              : $>Move Up
+ :              : $>Turn Down
+@>Wait for Move's Completion
+@>Set Move Route: [Head Priestess]
+ :              : $>Through ON
+ :              : $>Move Left
+ :              : $>Move Left
+ :              : $>Move Left
+ :              : $>Move Left
+ :              : $>Through OFF
+ :              : $>SE: 'Door exit', 80, 100
+ :              : $>Change Opacity: 0
+@>Wait for Move's Completion
+@>Set Move Route: [Priestess]
+ :              : $>Move Down
+ :              : $>Turn Right
+ :              : $>Through OFF
+@>Wait for Move's Completion
+@>Script: advanceQuestToStage(:Quest21, 2)
+@>Script: pbSetSelfSwitch(2,"A",true)
+@>Control Self Switch: B =ON
+@>
+
+Page #2
+Conditions
+Self Switch B is ON
+
+Autonomous Movement
+Type: Fixed
+Speed: 3: Slow
+Freq: 3: Low
+Options Enabled
+Move Animation
+Trigger: Action Button
+
+List of Event Commands:
+@>
+
+#------------------------------------------------------------------------------
+Event ID: 006
+Event Name: Quest Indicator: Main
+(X,Y): (011,003)
+
+Page #1
+Conditions
+Variable 0110: Plot Control Variable is 9 or above
+
+Graphic: questicon2
+
+Autonomous Movement
+Type: Fixed
+Speed: 3: Slow
+Freq: 3: Low
+Options Enabled
+Move Animation
+Stop Animation
+Direction Fix
+Through
+Always on Top
+Trigger: Action Button
+
+List of Event Commands:
+@>
+
+Page #2
+Conditions
+Self Switch A is ON
+
+Autonomous Movement
+Type: Fixed
+Speed: 3: Slow
+Freq: 3: Low
+Options Enabled
+Move Animation
+Trigger: Action Button
+
+List of Event Commands:
+@>
+
+#------------------------------------------------------------------------------
+Event ID: 007
+Event Name: EV007
+(X,Y): (019,010)
+
+Page #1
+Conditions
+None
+
+Autonomous Movement
+Type: Fixed
+Speed: 3: Slow
+Freq: 3: Low
+Options Enabled
+Move Animation
+Trigger: Player Touch
+
+List of Event Commands:
+@>Set Move Route: Player
+ :              : $>Through ON
+ :              : $>Always on Top ON
+ :              : $>Turn Right
+ :              : $>Move Right
+ :              : $>Move Upper Right
+ :              : $>Through OFF
+ :              : $>Always on Top OFF
+@>Wait for Move's Completion
+@>Play SE: 'Exit Door', 80, 100
+@>Change Screen Color Tone: (-255,-255,-255,0), @6
+@>Wait: 8 frame(s)
+@>Transfer Player:[257: Lavender Tower], (018,010), Left, No Fade
+@>Change Screen Color Tone: (0,0,0,0), @6
+@>
+
+#------------------------------------------------------------------------------
 
 #==============================================================================
 Map ID: 081
@@ -54921,7 +55339,7 @@ Page #1
 Conditions
 None
 
-Graphic: trchar060
+Graphic: trainer_LEADER_Misty
 
 Autonomous Movement
 Type: Fixed
@@ -54965,17 +55383,18 @@ List of Event Commands:
 @>Text: \me[Badge get]You earned the Cascade Badge!\wtnp[90]
 @>Script: $Trainer.badges[1]=true # Cascade Badge
 @>Text: \xn[Misty]Before you go, take this as well.
-@>Script: Kernel.pbReceiveItem(PBItems::TM70) # Water Pulse, Pokemon
-:       : Kernel.pbReceiveItem(PBItems::SC03) # Water Pulse, Puppet
+@>Script: Kernel.pbReceiveItem(:TM70) # Water Pulse, Pokemon
+:       : Kernel.pbReceiveItem(:SC03) # Water Pulse, Puppet
 @>Conditional Branch: Switch [0108: TM/SC Explanation] == OFF
  @>Text: \xn[Misty]What I just gave you is a Technical Machine and a Skill Card, which allow you to teach moves to your Pokémon and Puppets.
  @>Text: \xn[Misty]There are also special Field Move variants called Hidden Machines and Hidden Skill Cards.
  @>Text: \xn[Misty]All of these have an unlimited number of uses, so you can teach them to any number of your Pokémon or Puppets!
  @>
 : Branch End
-@>Text: \xn[Misty]Both the TM and the SC are Water Pulse, a Water-Type move that 
- :    : Pokémon and Puppets can learn which has a chance to confuse their foes!
-@>Text: xn[Misty]A pretty nifty move, wouldn't you say?
+@>Text: \xn[Misty]Both the TM and the SC are Water Pulse, a Water- and Hydro-Type 
+ :    : move that Pokémon and Puppets can learn which has a chance to confuse 
+ :    : their foes!
+@>Text: \xn[Misty]A pretty nifty move, wouldn't you say?
 @>Script: pbSetSelfSwitch(12,"A",true)
 :       : pbSetSelfSwitch(13,"A",true)
 @>Control Switches: [0005: Defeated Gym 2] = ON
@@ -54985,7 +55404,7 @@ Page #2
 Conditions
 Switch 0005: Defeated Gym 2 is ON
 
-Graphic: trchar060
+Graphic: trainer_LEADER_Misty
 
 Autonomous Movement
 Type: Fixed
@@ -55010,7 +55429,7 @@ Page #1
 Conditions
 None
 
-Graphic: trchar007
+Graphic: trainer_BEAUTY
 
 Autonomous Movement
 Type: Fixed
@@ -55036,7 +55455,7 @@ Page #2
 Conditions
 Self Switch A is ON
 
-Graphic: trchar007
+Graphic: trainer_BEAUTY
 
 Autonomous Movement
 Type: Fixed
@@ -55054,7 +55473,7 @@ Page #3
 Conditions
 Switch 0005: Defeated Gym 2 is ON
 
-Graphic: trchar007
+Graphic: trainer_BEAUTY
 
 Autonomous Movement
 Type: Fixed
@@ -55077,7 +55496,7 @@ Page #1
 Conditions
 None
 
-Graphic: trchar044
+Graphic: trainer_SWIMMER_F
 
 Autonomous Movement
 Type: Fixed
@@ -55103,7 +55522,7 @@ Page #2
 Conditions
 Self Switch A is ON
 
-Graphic: trchar044
+Graphic: trainer_SWIMMER_F
 
 Autonomous Movement
 Type: Fixed
@@ -55122,7 +55541,7 @@ Page #3
 Conditions
 Switch 0005: Defeated Gym 2 is ON
 
-Graphic: trchar044
+Graphic: trainer_SWIMMER_F
 
 Autonomous Movement
 Type: Fixed
@@ -55146,7 +55565,7 @@ Page #1
 Conditions
 None
 
-Graphic: trchar035
+Graphic: trainer_COOLTRAINER_M
 
 Autonomous Movement
 Type: Fixed
@@ -55172,7 +55591,7 @@ Page #2
 Conditions
 Self Switch A is ON
 
-Graphic: trchar035
+Graphic: trainer_COOLTRAINER_M
 
 Autonomous Movement
 Type: Fixed
@@ -55190,7 +55609,7 @@ Page #3
 Conditions
 Switch 0005: Defeated Gym 2 is ON
 
-Graphic: trchar035
+Graphic: trainer_COOLTRAINER_M
 
 Autonomous Movement
 Type: Fixed
@@ -69530,6 +69949,47 @@ List of Event Commands:
 @>
 
 #------------------------------------------------------------------------------
+Event ID: 006
+Event Name: Quest Indicator: Main
+(X,Y): (015,018)
+
+Page #1
+Conditions
+Variable 0110: Plot Control Variable is 8 or above
+
+Graphic: questicon2
+
+Autonomous Movement
+Type: Fixed
+Speed: 3: Slow
+Freq: 3: Low
+Options Enabled
+Move Animation
+Stop Animation
+Direction Fix
+Through
+Always on Top
+Trigger: Action Button
+
+List of Event Commands:
+@>
+
+Page #2
+Conditions
+Variable 0110: Plot Control Variable is 9 or above
+
+Autonomous Movement
+Type: Fixed
+Speed: 3: Slow
+Freq: 3: Low
+Options Enabled
+Move Animation
+Trigger: Action Button
+
+List of Event Commands:
+@>
+
+#------------------------------------------------------------------------------
 
 #==============================================================================
 Map ID: 250
@@ -69574,10 +70034,10 @@ Speed: 3: Slow
 Freq: 3: Low
 Options Enabled
 Move Animation
-Trigger: Parallel Process
+Trigger: Action Button
 
 List of Event Commands:
-@>Change Map Settings:Fog = 'PRS-FogTexture_Normal', 0, 110, Normal, 200, 3, 3
+@>Change Map Settings:Fog = 'PRS-FogTexture_Normal', 0, 110, Normal, 200, 3, 0
 @>
 
 Page #2
@@ -69881,28 +70341,8 @@ List of Event Commands:
    @>Wait for Move's Completion
    @>Script: pbSetSelfSwitch(2,"A",true)
    @>Wait: 40 frame(s)
-   @>Change Map Settings:Fog = 'PRS-FogTexture_Normal', 0, 100, Normal, 200, 3, 3
-   @>Wait: 5 frame(s)
-   @>Change Map Settings:Fog = 'PRS-FogTexture_Normal', 0, 90, Normal, 200, 3, 3
-   @>Wait: 5 frame(s)
-   @>Change Map Settings:Fog = 'PRS-FogTexture_Normal', 0, 80, Normal, 200, 3, 3
-   @>Wait: 5 frame(s)
-   @>Change Map Settings:Fog = 'PRS-FogTexture_Normal', 0, 70, Normal, 200, 3, 3
-   @>Wait: 5 frame(s)
-   @>Change Map Settings:Fog = 'PRS-FogTexture_Normal', 0, 60, Normal, 200, 3, 3
-   @>Wait: 5 frame(s)
-   @>Change Map Settings:Fog = 'PRS-FogTexture_Normal', 0, 50, Normal, 200, 3, 3
-   @>Wait: 5 frame(s)
-   @>Change Map Settings:Fog = 'PRS-FogTexture_Normal', 0, 40, Normal, 200, 3, 3
-   @>Wait: 5 frame(s)
-   @>Change Map Settings:Fog = 'PRS-FogTexture_Normal', 0, 30, Normal, 200, 3, 3
-   @>Wait: 5 frame(s)
-   @>Change Map Settings:Fog = 'PRS-FogTexture_Normal', 0, 20, Normal, 200, 3, 3
-   @>Wait: 5 frame(s)
-   @>Change Map Settings:Fog = 'PRS-FogTexture_Normal', 0, 10, Normal, 200, 3, 3
-   @>Wait: 5 frame(s)
-   @>Change Map Settings:Fog = 'PRS-FogTexture_Normal', 0, 0, Normal, 200, 3, 3
-   @>Wait: 40 frame(s)
+   @>Set Weather Effects: None, @40
+   @>Wait: 20 frame(s)
    @>Show Animation: Player, [Exclaim bubble]
    @>Screen Flash: (255,255,255,255), @10
    @>Play SE: 'Vs flash', 80, 100
@@ -69964,7 +70404,7 @@ List of Event Commands:
 #------------------------------------------------------------------------------
 Event ID: 010
 Event Name: EV010
-(X,Y): (008,012)
+(X,Y): (006,000)
 
 Page #1
 Conditions
@@ -70000,6 +70440,22 @@ List of Event Commands:
 @>Change Map Settings:Fog = 'PRS-FogTexture_Normal', 0, 10, Normal, 200, 3, 3
 @>Wait: 1 frame(s)
 @>Change Map Settings:Fog = 'PRS-FogTexture_Normal', 0, 0, Normal, 200, 3, 3
+@>
+
+Page #2
+Conditions
+None
+
+Autonomous Movement
+Type: Fixed
+Speed: 3: Slow
+Freq: 3: Low
+Options Enabled
+Move Animation
+Trigger: Action Button
+
+List of Event Commands:
+@>Change Map Settings:Fog = 'Petals', 0, 255, Normal, 270, 0, 0
 @>
 
 #------------------------------------------------------------------------------
@@ -70284,6 +70740,180 @@ Move Animation
 Trigger: Action Button
 
 List of Event Commands:
+@>
+
+#------------------------------------------------------------------------------
+Event ID: 019
+Event Name: North door left
+(X,Y): (035,015)
+
+Page #1
+Conditions
+None
+
+Autonomous Movement
+Type: Fixed
+Speed: 3: Slow
+Freq: 3: Low
+Options Enabled
+Move Animation
+Trigger: Player Touch
+
+List of Event Commands:
+@>Play SE: 'Door exit', 100, 100
+@>Change Screen Color Tone: (-255,-255,-255,0), @6
+@>Wait: 8 frame(s)
+@>Script: pbCaveEntrance
+@>Transfer Player:[080: Lavender Tower], (011,018), Up, No Fade
+@>Script: pbHGSSTransitions("Lavender Tower")
+@>Change Screen Color Tone: (0,0,0,0), @6
+@>
+
+Page #2
+Conditions
+Switch 0022: s:tsOff?("A") is ON
+
+Autonomous Movement
+Type: Fixed
+Speed: 3: Slow
+Freq: 3: Low
+Options Enabled
+Move Animation
+Trigger: Autorun
+
+List of Event Commands:
+@>Conditional Branch: Script: get_character(0).onEvent?
+ @>Set Move Route: Player
+                   (Ignore If Can't Move)
+  :              : $>Move Down
+ @>Wait for Move's Completion
+ @>
+: Branch End
+@>Script: setTempSwitchOn("A")
+@>
+
+#------------------------------------------------------------------------------
+Event ID: 020
+Event Name: Tree size(3,4)
+(X,Y): (009,000)
+
+Page #1
+Conditions
+None
+
+Autonomous Movement
+Type: Fixed
+Speed: 3: Slow
+Freq: 3: Low
+Options Enabled
+Move Animation
+Trigger: Action Button
+
+List of Event Commands:
+@>Text: The tree is wilted...
+@>
+
+Page #2
+Conditions
+Variable 0001: Temp Pokemon Choice is 9 or above
+
+Autonomous Movement
+Type: Fixed
+Speed: 3: Slow
+Freq: 3: Low
+Options Enabled
+Move Animation
+Trigger: Action Button
+
+List of Event Commands:
+@>Comment: Wilted
+@>Conditional Branch: Script: $game_player.x >= 20 && $game_player.y >= 23
+ @>Text: The tree is wilted...
+ @>Script: Yuyuko = [:CYUYUKO, :YUYUKO, :AYUYUKO, :DYUYUKO]
+ @>Conditional Branch: Script: Yuyuko.any? { |p| $Trainer.first_pokemon.isSpecies?(p) }
+  @>Show Animation: Player, [Question bubble]
+  @>Text: Oh, the Yuyuko in your party seems to want to touch the tree.
+  @>Text: Let it?
+  @>Show Choices: Yes, No
+  (When Cancel: Choice 2)
+  : When [Yes]
+   @>Fade Out BGM: 5 sec.
+   @>Set Move Route: Player
+    :              : $>Direction Fix ON
+    :              : $>Move Down
+    :              : $>Direction Fix OFF
+   @>Wait for Move's Completion
+   @>Wait: 10 frame(s)
+   @>Set Event Location: [Yuyuko],(020,024)
+   @>Set Move Route: [Yuyuko]
+    :              : $>Through ON
+    :              : $>Change Opacity: 255
+    :              : $>Move Up
+    :              : $>Through OFF
+    :              : $>Wait: 20 frame(s)
+    :              : $>Script: Pokemon.play_cry(:CYUYUKO)
+    :              : $>Jump: +0,+0
+    :              : $>Wait: 4 frame(s)
+    :              : $>Jump: +0,+0
+   @>Wait for Move's Completion
+   @>Script: pbSetSelfSwitch(2,"A",true)
+   @>Wait: 40 frame(s)
+   @>Change Map Settings:Fog = 'PRS-FogTexture_Normal', 0, 100, Normal, 200, 3, 0
+   @>Wait: 5 frame(s)
+   @>Change Map Settings:Fog = 'PRS-FogTexture_Normal', 0, 90, Normal, 200, 3, 0
+   @>Wait: 5 frame(s)
+   @>Change Map Settings:Fog = 'PRS-FogTexture_Normal', 0, 80, Normal, 200, 0, 3
+   @>Wait: 5 frame(s)
+   @>Change Map Settings:Fog = 'PRS-FogTexture_Normal', 0, 70, Normal, 200, 3, 0
+   @>Wait: 5 frame(s)
+   @>Change Map Settings:Fog = 'PRS-FogTexture_Normal', 0, 60, Normal, 200, 3, 0
+   @>Wait: 5 frame(s)
+   @>Change Map Settings:Fog = 'PRS-FogTexture_Normal', 0, 50, Normal, 200, 3, 0
+   @>Wait: 5 frame(s)
+   @>Change Map Settings:Fog = 'PRS-FogTexture_Normal', 0, 40, Normal, 200, 3, 0
+   @>Wait: 5 frame(s)
+   @>Change Map Settings:Fog = 'PRS-FogTexture_Normal', 0, 30, Normal, 200, 3, 0
+   @>Wait: 5 frame(s)
+   @>Change Map Settings:Fog = 'PRS-FogTexture_Normal', 0, 20, Normal, 200, 3, 0
+   @>Wait: 5 frame(s)
+   @>Change Map Settings:Fog = 'PRS-FogTexture_Normal', 0, 10, Normal, 200, 3, 0
+   @>Wait: 5 frame(s)
+   @>Change Map Settings:Fog = 'PRS-FogTexture_Normal', 0, 0, Normal, 200, 3, 0
+   @>Wait: 20 frame(s)
+   @>Show Animation: Player, [Exclaim bubble]
+   @>Screen Flash: (255,255,255,255), @10
+   @>Play SE: 'Vs flash', 80, 100
+   @>Wait: 30 frame(s)
+   @>Screen Flash: (255,255,255,255), @10
+   @>Play SE: 'Vs flash', 80, 100
+   @>Wait: 30 frame(s)
+   @>Screen Flash: (255,255,255,255), @60
+   @>Play SE: 'Vs sword', 80, 100
+   @>Control Self Switch: A =ON
+   @>
+  : When [No]
+   @>
+  : Branch End
+  @>
+ : Branch End
+ @>
+: Branch End
+@>
+
+Page #3
+Conditions
+Self Switch A is ON
+
+Autonomous Movement
+Type: Fixed
+Speed: 3: Slow
+Freq: 3: Low
+Options Enabled
+Move Animation
+Trigger: Action Button
+
+List of Event Commands:
+@>Comment: Full Bloom
 @>
 
 #------------------------------------------------------------------------------
@@ -72099,6 +72729,2451 @@ List of Event Commands:
  @>Wait: 8 frame(s)
  @>Transfer Player:[039: Lavender Town], (028,015), No Fade
  @>Change Screen Color Tone: (0,0,0,0), @6
+ @>
+: Branch End
+@>
+
+#------------------------------------------------------------------------------
+
+#==============================================================================
+Map ID: 257
+Map Name: Lavender Tower
+Tileset: 013: Graveyard
+Width: 150, Height: 20
+Auto-Change BGM: 033. Mystic oriental Dream ~ Ancient Temple
+
+#------------------------------------------------------------------------------
+Event ID: 001
+Event Name: EV001
+(X,Y): (097,011)
+
+Page #1
+Conditions
+None
+
+Autonomous Movement
+Type: Fixed
+Speed: 3: Slow
+Freq: 3: Low
+Options Enabled
+Move Animation
+Trigger: Action Button
+
+List of Event Commands:
+@>Text: Floor 5\nChamber of Purification
+@>
+
+#------------------------------------------------------------------------------
+Event ID: 002
+Event Name: EV002
+(X,Y): (137,008)
+
+Page #1
+Conditions
+None
+
+Autonomous Movement
+Type: Fixed
+Speed: 3: Slow
+Freq: 3: Low
+Options Enabled
+Move Animation
+Trigger: Action Button
+
+List of Event Commands:
+@>Text: Floor 6\nChamber of Remembrance
+@>
+
+#------------------------------------------------------------------------------
+Event ID: 003
+Event Name: EV003
+(X,Y): (099,008)
+
+Page #1
+Conditions
+None
+
+Graphic: trainer_CHANELLER
+
+Autonomous Movement
+Type: Fixed
+Speed: 3: Slow
+Freq: 3: Low
+Options Enabled
+Move Animation
+Trigger: Action Button
+
+List of Event Commands:
+@>Text: If you're tired, just step into this purification zone. 
+ :    : It shall rejuvinate you and your party.
+@>
+
+#------------------------------------------------------------------------------
+Event ID: 004
+Event Name: EV004
+(X,Y): (049,010)
+
+Page #1
+Conditions
+None
+
+Autonomous Movement
+Type: Fixed
+Speed: 3: Slow
+Freq: 3: Low
+Options Enabled
+Move Animation
+Trigger: Player Touch
+
+List of Event Commands:
+@>Set Move Route: Player
+ :              : $>Through ON
+ :              : $>Always on Top ON
+ :              : $>Turn Right
+ :              : $>Move Right
+ :              : $>Move Upper Right
+ :              : $>Through OFF
+ :              : $>Always on Top OFF
+@>Wait for Move's Completion
+@>Play SE: 'Exit Door', 80, 100
+@>Change Screen Color Tone: (-255,-255,-255,0), @6
+@>Wait: 8 frame(s)
+@>Transfer Player:[257: Lavender Tower], (078,010), Left, No Fade
+@>Change Screen Color Tone: (0,0,0,0), @6
+@>
+
+#------------------------------------------------------------------------------
+Event ID: 005
+Event Name: EV005
+(X,Y): (109,010)
+
+Page #1
+Conditions
+None
+
+Autonomous Movement
+Type: Fixed
+Speed: 3: Slow
+Freq: 3: Low
+Options Enabled
+Move Animation
+Trigger: Player Touch
+
+List of Event Commands:
+@>Set Move Route: Player
+ :              : $>Through ON
+ :              : $>Always on Top ON
+ :              : $>Turn Right
+ :              : $>Move Right
+ :              : $>Move Upper Right
+ :              : $>Through OFF
+ :              : $>Always on Top OFF
+@>Wait for Move's Completion
+@>Play SE: 'Exit Door', 80, 100
+@>Change Screen Color Tone: (-255,-255,-255,0), @6
+@>Wait: 8 frame(s)
+@>Transfer Player:[257: Lavender Tower], (138,010), Left, No Fade
+@>Change Screen Color Tone: (0,0,0,0), @6
+@>
+
+#------------------------------------------------------------------------------
+Event ID: 006
+Event Name: EV006
+(X,Y): (003,010)
+
+Page #1
+Conditions
+None
+
+Autonomous Movement
+Type: Fixed
+Speed: 3: Slow
+Freq: 3: Low
+Options Enabled
+Move Animation
+Trigger: Player Touch
+
+List of Event Commands:
+@>Set Move Route: Player
+ :              : $>Through ON
+ :              : $>Always on Top ON
+ :              : $>Turn Left
+ :              : $>Move Left
+ :              : $>Move Upper Left
+ :              : $>Through OFF
+ :              : $>Always on Top OFF
+@>Wait for Move's Completion
+@>Play SE: 'Exit Door', 80, 100
+@>Change Screen Color Tone: (-255,-255,-255,0), @6
+@>Wait: 8 frame(s)
+@>Transfer Player:[257: Lavender Tower], (034,010), Right, No Fade
+@>Change Screen Color Tone: (0,0,0,0), @6
+@>
+
+#------------------------------------------------------------------------------
+Event ID: 007
+Event Name: EV007
+(X,Y): (063,010)
+
+Page #1
+Conditions
+None
+
+Autonomous Movement
+Type: Fixed
+Speed: 3: Slow
+Freq: 3: Low
+Options Enabled
+Move Animation
+Trigger: Player Touch
+
+List of Event Commands:
+@>Set Move Route: Player
+ :              : $>Through ON
+ :              : $>Always on Top ON
+ :              : $>Turn Left
+ :              : $>Move Left
+ :              : $>Move Upper Left
+ :              : $>Through OFF
+ :              : $>Always on Top OFF
+@>Wait for Move's Completion
+@>Play SE: 'Exit Door', 80, 100
+@>Change Screen Color Tone: (-255,-255,-255,0), @6
+@>Wait: 8 frame(s)
+@>Transfer Player:[257: Lavender Tower], (094,010), Right, No Fade
+@>Change Screen Color Tone: (0,0,0,0), @6
+@>
+
+#------------------------------------------------------------------------------
+Event ID: 008
+Event Name: EV008
+(X,Y): (130,016)
+
+Page #1
+Conditions
+None
+
+Autonomous Movement
+Type: Fixed
+Speed: 3: Slow
+Freq: 3: Low
+Options Enabled
+Move Animation
+Trigger: Player Touch
+
+List of Event Commands:
+@>Set Move Route: Player
+ :              : $>Through ON
+ :              : $>Always on Top ON
+ :              : $>Turn Left
+ :              : $>Move Left
+ :              : $>Move Upper Left
+ :              : $>Through OFF
+ :              : $>Always on Top OFF
+@>Wait for Move's Completion
+@>Play SE: 'Exit Door', 80, 100
+@>Change Screen Color Tone: (-255,-255,-255,0), @6
+@>Wait: 8 frame(s)
+@>Transfer Player:[258: Lavender Tower], (011,016), Right, No Fade
+@>Change Screen Color Tone: (0,0,0,0), @6
+@>
+
+#------------------------------------------------------------------------------
+Event ID: 009
+Event Name: Stairs down
+(X,Y): (019,010)
+
+Page #1
+Conditions
+None
+
+Autonomous Movement
+Type: Fixed
+Speed: 3: Slow
+Freq: 3: Low
+Options Enabled
+Move Animation
+Trigger: Player Touch
+
+List of Event Commands:
+@>Set Move Route: Player
+ :              : $>Through ON
+ :              : $>Always on Top ON
+ :              : $>Turn Right
+ :              : $>Move Right
+ :              : $>Through OFF
+ :              : $>Always on Top OFF
+@>Wait for Move's Completion
+@>Play SE: 'Exit Door', 80, 100
+@>Change Screen Color Tone: (-255,-255,-255,0), @6
+@>Wait: 8 frame(s)
+@>Transfer Player:[080: Lavender Tower], (019,010), Left, No Fade
+@>Change Screen Color Tone: (0,0,0,0), @6
+@>
+
+#------------------------------------------------------------------------------
+Event ID: 010
+Event Name: Stairs down
+(X,Y): (079,010)
+
+Page #1
+Conditions
+None
+
+Autonomous Movement
+Type: Fixed
+Speed: 3: Slow
+Freq: 3: Low
+Options Enabled
+Move Animation
+Trigger: Player Touch
+
+List of Event Commands:
+@>Set Move Route: Player
+ :              : $>Through ON
+ :              : $>Always on Top ON
+ :              : $>Turn Right
+ :              : $>Move Right
+ :              : $>Through OFF
+ :              : $>Always on Top OFF
+@>Wait for Move's Completion
+@>Play SE: 'Exit Door', 80, 100
+@>Change Screen Color Tone: (-255,-255,-255,0), @6
+@>Wait: 8 frame(s)
+@>Transfer Player:[257: Lavender Tower], (048,010), Left, No Fade
+@>Change Screen Color Tone: (0,0,0,0), @6
+@>
+
+#------------------------------------------------------------------------------
+Event ID: 011
+Event Name: Stairs down
+(X,Y): (139,010)
+
+Page #1
+Conditions
+None
+
+Autonomous Movement
+Type: Fixed
+Speed: 3: Slow
+Freq: 3: Low
+Options Enabled
+Move Animation
+Trigger: Player Touch
+
+List of Event Commands:
+@>Set Move Route: Player
+ :              : $>Through ON
+ :              : $>Always on Top ON
+ :              : $>Turn Right
+ :              : $>Move Right
+ :              : $>Through OFF
+ :              : $>Always on Top OFF
+@>Wait for Move's Completion
+@>Play SE: 'Exit Door', 80, 100
+@>Change Screen Color Tone: (-255,-255,-255,0), @6
+@>Wait: 8 frame(s)
+@>Transfer Player:[257: Lavender Tower], (108,010), Left, No Fade
+@>Change Screen Color Tone: (0,0,0,0), @6
+@>
+
+#------------------------------------------------------------------------------
+Event ID: 012
+Event Name: Stairs down
+(X,Y): (033,010)
+
+Page #1
+Conditions
+None
+
+Autonomous Movement
+Type: Fixed
+Speed: 3: Slow
+Freq: 3: Low
+Options Enabled
+Move Animation
+Trigger: Player Touch
+
+List of Event Commands:
+@>Set Move Route: Player
+ :              : $>Through ON
+ :              : $>Always on Top ON
+ :              : $>Turn Left
+ :              : $>Move Left
+ :              : $>Through OFF
+ :              : $>Always on Top OFF
+@>Wait for Move's Completion
+@>Play SE: 'Exit Door', 80, 100
+@>Change Screen Color Tone: (-255,-255,-255,0), @6
+@>Wait: 8 frame(s)
+@>Transfer Player:[257: Lavender Tower], (004,010), Right, No Fade
+@>Change Screen Color Tone: (0,0,0,0), @6
+@>
+
+#------------------------------------------------------------------------------
+Event ID: 013
+Event Name: Stairs down
+(X,Y): (093,010)
+
+Page #1
+Conditions
+None
+
+Autonomous Movement
+Type: Fixed
+Speed: 3: Slow
+Freq: 3: Low
+Options Enabled
+Move Animation
+Trigger: Player Touch
+
+List of Event Commands:
+@>Set Move Route: Player
+ :              : $>Through ON
+ :              : $>Always on Top ON
+ :              : $>Turn Left
+ :              : $>Move Left
+ :              : $>Through OFF
+ :              : $>Always on Top OFF
+@>Wait for Move's Completion
+@>Play SE: 'Exit Door', 80, 100
+@>Change Screen Color Tone: (-255,-255,-255,0), @6
+@>Wait: 8 frame(s)
+@>Transfer Player:[257: Lavender Tower], (064,010), Right, No Fade
+@>Change Screen Color Tone: (0,0,0,0), @6
+@>
+
+#------------------------------------------------------------------------------
+Event ID: 014
+Event Name: Trainer(3)
+(X,Y): (044,006)
+
+Page #1
+Conditions
+None
+
+Graphic: trainer_HEXMANIAC
+
+Autonomous Movement
+Type: Fixed
+Speed: 3: Slow
+Freq: 3: Low
+Options Enabled
+Move Animation
+Trigger: Event Touch
+
+List of Event Commands:
+@>Script: TrainerIntro2(:HEXMANIAC)
+@>Script: Kernel.pbNoticePlayer(get_character(0))
+@>Text: This field of graves shall be your reckoning point!
+@>Conditional Branch: Script: pbTrainerBattle(:HEXMANIAC,"Diana",_I("Eek! You beat back my destiny!"))
+ @>Control Self Switch: A =ON
+ @>
+: Branch End
+@>Script: pbTrainerEnd
+@>
+
+Page #2
+Conditions
+Self Switch A is ON
+
+Graphic: trainer_HEXMANIAC
+
+Autonomous Movement
+Type: Fixed
+Speed: 3: Slow
+Freq: 3: Low
+Options Enabled
+Move Animation
+Trigger: Action Button
+
+List of Event Commands:
+@>Text: I had a dream that I would battle and beat a trainer here who looked exactly like you, so I've been waiting until you showed up.
+@>
+
+#------------------------------------------------------------------------------
+Event ID: 015
+Event Name: Trainer(3)
+(X,Y): (045,007)
+
+Page #1
+Conditions
+None
+
+Graphic: trainer_CHANELLER
+
+Autonomous Movement
+Type: Fixed
+Speed: 3: Slow
+Freq: 3: Low
+Options Enabled
+Move Animation
+Trigger: Event Touch
+
+List of Event Commands:
+@>Script: TrainerIntro2(:CHANELLER)
+@>Script: Kernel.pbNoticePlayer(get_character(0))
+@>Text: This tower holds the restless spirits of Pokemon and Puppets alike. You dare intrude here?!
+@>Conditional Branch: Script: pbTrainerBattle(:CHANELLER,"Dahlia",_I("Or perhaps you were just passing through to pay respects!"))
+ @>Control Self Switch: A =ON
+ @>
+: Branch End
+@>Script: pbTrainerEnd
+@>
+
+Page #2
+Conditions
+Self Switch A is ON
+
+Graphic: trainer_CHANELLER
+
+Autonomous Movement
+Type: Fixed
+Speed: 3: Slow
+Freq: 3: Low
+Options Enabled
+Move Animation
+Trigger: Action Button
+
+List of Event Commands:
+@>Text: Several years ago, we had an issue with a malevolent spirit that was possessing the mediums here.
+@>
+
+#------------------------------------------------------------------------------
+Event ID: 016
+Event Name: Trainer(2)
+(X,Y): (048,015)
+
+Page #1
+Conditions
+None
+
+Graphic: trainer_CHANELLER
+
+Autonomous Movement
+Type: Fixed
+Speed: 3: Slow
+Freq: 3: Low
+Options Enabled
+Move Animation
+Trigger: Event Touch
+
+List of Event Commands:
+@>Script: TrainerIntro2(:CHANELLER)
+@>Script: Kernel.pbNoticePlayer(get_character(0))
+@>Text: Behold, the poltergeists live!
+@>Conditional Branch: Script: pbTrainerBattle(:CHANELLER,"Aria",_I("I meant live as in the performance, not living!"))
+ @>Control Self Switch: A =ON
+ @>
+: Branch End
+@>Script: pbTrainerEnd
+@>
+
+Page #2
+Conditions
+Self Switch A is ON
+
+Graphic: trainer_CHANELLER
+
+Autonomous Movement
+Type: Fixed
+Speed: 3: Slow
+Freq: 3: Low
+Options Enabled
+Move Animation
+Trigger: Action Button
+
+List of Event Commands:
+@>Text: These puppets carry around instruments,
+ :    : I bet they could form their own little band.
+@>
+
+#------------------------------------------------------------------------------
+Event ID: 017
+Event Name: Item Ball
+(X,Y): (042,016)
+
+Page #1
+Conditions
+None
+
+Graphic: Object ball
+
+Autonomous Movement
+Type: Fixed
+Speed: 3: Slow
+Freq: 3: Low
+Options Enabled
+Move Animation
+Trigger: Action Button
+
+List of Event Commands:
+@>Conditional Branch: Script: pbItemBall(:LEFTOVERS)
+ @>Control Self Switch: A =ON
+ @>
+: Else
+ @>
+: Branch End
+@>
+
+Page #2
+Conditions
+Self Switch A is ON
+
+Autonomous Movement
+Type: Fixed
+Speed: 3: Slow
+Freq: 3: Low
+Options Enabled
+Move Animation
+Trigger: Action Button
+
+List of Event Commands:
+@>
+
+#------------------------------------------------------------------------------
+Event ID: 018
+Event Name: Item Ball
+(X,Y): (046,016)
+
+Page #1
+Conditions
+None
+
+Graphic: Object ball
+
+Autonomous Movement
+Type: Fixed
+Speed: 3: Slow
+Freq: 3: Low
+Options Enabled
+Move Animation
+Trigger: Action Button
+
+List of Event Commands:
+@>Conditional Branch: Script: pbItemBall(:RARECANDY)
+ @>Control Self Switch: A =ON
+ @>
+: Else
+ @>
+: Branch End
+@>
+
+Page #2
+Conditions
+Self Switch A is ON
+
+Autonomous Movement
+Type: Fixed
+Speed: 3: Slow
+Freq: 3: Low
+Options Enabled
+Move Animation
+Trigger: Action Button
+
+List of Event Commands:
+@>
+
+#------------------------------------------------------------------------------
+Event ID: 019
+Event Name: Item Ball
+(X,Y): (033,013)
+
+Page #1
+Conditions
+None
+
+Graphic: Object ball
+
+Autonomous Movement
+Type: Fixed
+Speed: 3: Slow
+Freq: 3: Low
+Options Enabled
+Move Animation
+Trigger: Action Button
+
+List of Event Commands:
+@>Conditional Branch: Script: pbItemBall(:ULTRABALL)
+ @>Control Self Switch: A =ON
+ @>
+: Else
+ @>
+: Branch End
+@>
+
+Page #2
+Conditions
+Self Switch A is ON
+
+Autonomous Movement
+Type: Fixed
+Speed: 3: Slow
+Freq: 3: Low
+Options Enabled
+Move Animation
+Trigger: Action Button
+
+List of Event Commands:
+@>
+
+#------------------------------------------------------------------------------
+Event ID: 020
+Event Name: HiddenItem
+(X,Y): (037,003)
+
+Page #1
+Conditions
+None
+
+Autonomous Movement
+Type: Fixed
+Speed: 3: Slow
+Freq: 3: Low
+Options Enabled
+Move Animation
+Trigger: Action Button
+
+List of Event Commands:
+@>Conditional Branch: Script: pbItemBall(:LUCKINCENSE)
+ @>Control Self Switch: A =ON
+ @>
+: Else
+ @>
+: Branch End
+@>
+
+Page #2
+Conditions
+Self Switch A is ON
+
+Autonomous Movement
+Type: Fixed
+Speed: 3: Slow
+Freq: 3: Low
+Options Enabled
+Move Animation
+Trigger: Action Button
+
+List of Event Commands:
+@>
+
+#------------------------------------------------------------------------------
+Event ID: 021
+Event Name: Trainer(2)
+(X,Y): (072,014)
+
+Page #1
+Conditions
+None
+
+Graphic: trainer_CHANELLER
+
+Autonomous Movement
+Type: Fixed
+Speed: 3: Slow
+Freq: 3: Low
+Options Enabled
+Move Animation
+Trigger: Event Touch
+
+List of Event Commands:
+@>Script: TrainerIntro2(:CHANELLER)
+@>Script: Kernel.pbNoticePlayer(get_character(0))
+@>Text: We are taught to not just care for the tower, but are also trained in expelling dangerous spirits. A battle is not so different!
+@>Conditional Branch: Script: pbTrainerBattle(:CHANELLER,"Mia",_I("Ohohoho, for one so young you are quite strong."))
+ @>Control Self Switch: A =ON
+ @>
+: Branch End
+@>Script: pbTrainerEnd
+@>
+
+Page #2
+Conditions
+Self Switch A is ON
+
+Graphic: trainer_CHANELLER
+
+Autonomous Movement
+Type: Fixed
+Speed: 3: Slow
+Freq: 3: Low
+Options Enabled
+Move Animation
+Trigger: Action Button
+
+List of Event Commands:
+@>Text: Expelling and exorcising spirits is a skilled passed down from generations back when youkai extermination was still common-place.
+@>
+
+#------------------------------------------------------------------------------
+Event ID: 022
+Event Name: Trainer(2)
+(X,Y): (073,009)
+
+Page #1
+Conditions
+None
+
+Graphic: trainer_HEXMANIAC
+
+Autonomous Movement
+Type: Fixed
+Speed: 3: Slow
+Freq: 3: Low
+Options Enabled
+Move Animation
+Trigger: Event Touch
+
+List of Event Commands:
+@>Script: TrainerIntro(:HEXMANIAC)
+@>Script: Kernel.pbNoticePlayer(get_character(0))
+@>Text: The black wind howls... You will soon perish at my hands.
+@>Conditional Branch: Script: pbTrainerBattle(:HEXMANIAC,"Schala",_I("Oh... How dreadful."))
+ @>Control Self Switch: A =ON
+ @>
+: Branch End
+@>Script: pbTrainerEnd
+@>
+
+Page #2
+Conditions
+Self Switch A is ON
+
+Graphic: trainer_HEXMANIAC
+
+Autonomous Movement
+Type: Fixed
+Speed: 3: Slow
+Freq: 3: Low
+Options Enabled
+Move Animation
+Trigger: Action Button
+
+List of Event Commands:
+@>Text: My plans were again brought to a halt, but I will
+ :    : succeed one day!
+@>
+
+#------------------------------------------------------------------------------
+Event ID: 023
+Event Name: Item Ball
+(X,Y): (065,013)
+
+Page #1
+Conditions
+None
+
+Graphic: Object ball
+
+Autonomous Movement
+Type: Fixed
+Speed: 3: Slow
+Freq: 3: Low
+Options Enabled
+Move Animation
+Trigger: Action Button
+
+List of Event Commands:
+@>Conditional Branch: Script: pbItemBall(:SUPPORTSHARD)
+ @>Control Self Switch: A =ON
+ @>
+: Else
+ @>
+: Branch End
+@>
+
+Page #2
+Conditions
+Self Switch A is ON
+
+Autonomous Movement
+Type: Fixed
+Speed: 3: Slow
+Freq: 3: Low
+Options Enabled
+Move Animation
+Trigger: Action Button
+
+List of Event Commands:
+@>
+
+#------------------------------------------------------------------------------
+Event ID: 024
+Event Name: HiddenItem
+(X,Y): (071,002)
+
+Page #1
+Conditions
+None
+
+Autonomous Movement
+Type: Fixed
+Speed: 3: Slow
+Freq: 3: Low
+Options Enabled
+Move Animation
+Trigger: Action Button
+
+List of Event Commands:
+@>Conditional Branch: Script: pbItemBall(:LAXINCENSE)
+ @>Control Self Switch: A =ON
+ @>
+: Else
+ @>
+: Branch End
+@>
+
+Page #2
+Conditions
+Self Switch A is ON
+
+Autonomous Movement
+Type: Fixed
+Speed: 3: Slow
+Freq: 3: Low
+Options Enabled
+Move Animation
+Trigger: Action Button
+
+List of Event Commands:
+@>
+
+#------------------------------------------------------------------------------
+Event ID: 025
+Event Name: Trainer(3)
+(X,Y): (068,007)
+
+Page #1
+Conditions
+None
+
+Graphic: trainer_CHANELLER
+
+Autonomous Movement
+Type: Fixed
+Speed: 3: Slow
+Freq: 3: Low
+Options Enabled
+Move Animation
+Trigger: Event Touch
+
+List of Event Commands:
+@>Script: TrainerIntro2(:CHANELLER)
+@>Script: Kernel.pbNoticePlayer(get_character(0))
+@>Text: Death has set its sights on you, child. What shall you do?!
+@>Conditional Branch: Script: pbTrainerBattle(:CHANELLER,"Seiyaku",_I("So you choose to fight back right to the very end..."))
+ @>Control Self Switch: A =ON
+ @>
+: Branch End
+@>Script: pbTrainerEnd
+@>
+
+Page #2
+Conditions
+Self Switch A is ON
+
+Graphic: trainer_CHANELLER
+
+Autonomous Movement
+Type: Fixed
+Speed: 3: Slow
+Freq: 3: Low
+Options Enabled
+Move Animation
+Trigger: Action Button
+
+List of Event Commands:
+@>Text: Resisting death is pointless, it is an inevitability. Not 
+ :    : even gods can escape the inevitability that is death.
+@>
+
+#------------------------------------------------------------------------------
+Event ID: 026
+Event Name: Trainer(4)
+(X,Y): (071,010)
+
+Page #1
+Conditions
+None
+
+Graphic: trainer_CHANELLER
+
+Autonomous Movement
+Type: Fixed
+Speed: 3: Slow
+Freq: 3: Low
+Options Enabled
+Move Animation
+Trigger: Event Touch
+
+List of Event Commands:
+@>Script: TrainerIntro2(:CHANELLER)
+@>Script: Kernel.pbNoticePlayer(get_character(0))
+@>Text: Are you the cause for the unease of the spirits in this tower?
+@>Conditional Branch: Script: pbTrainerBattle(:CHANELLER,"Karina",_I("Kyaa! You most certainly are not, but are a force to be reckoned with!"))
+ @>Control Self Switch: A =ON
+ @>
+: Branch End
+@>Script: pbTrainerEnd
+@>
+
+Page #2
+Conditions
+Self Switch A is ON
+
+Graphic: trainer_CHANELLER
+
+Autonomous Movement
+Type: Fixed
+Speed: 3: Slow
+Freq: 3: Low
+Options Enabled
+Move Animation
+Trigger: Action Button
+
+List of Event Commands:
+@>Text: Being a descendant of the branch family of the Elder Medium, I'm able to detect spiritual unrest... but I cannot identify why the spirits are uneasy.
+@>
+
+#------------------------------------------------------------------------------
+Event ID: 027
+Event Name: Item Ball
+(X,Y): (073,017)
+
+Page #1
+Conditions
+None
+
+Graphic: Object ball
+
+Autonomous Movement
+Type: Fixed
+Speed: 3: Slow
+Freq: 3: Low
+Options Enabled
+Move Animation
+Trigger: Action Button
+
+List of Event Commands:
+@>Conditional Branch: Script: pbItemBall(:SUPERPOTION)
+ @>Control Self Switch: A =ON
+ @>
+: Else
+ @>
+: Branch End
+@>
+
+Page #2
+Conditions
+Self Switch A is ON
+
+Autonomous Movement
+Type: Fixed
+Speed: 3: Slow
+Freq: 3: Low
+Options Enabled
+Move Animation
+Trigger: Action Button
+
+List of Event Commands:
+@>
+
+#------------------------------------------------------------------------------
+Event ID: 028
+Event Name: Trainer(1)
+(X,Y): (123,011)
+
+Page #1
+Conditions
+None
+
+Graphic: trainer_CHANELLER
+
+Autonomous Movement
+Type: Custom
+Custom Move Route:
+(Repeat Action)
+$>Turn Left
+$>Turn Down
+
+Speed: 3: Slow
+Freq: 3: Low
+Options Enabled
+Move Animation
+Trigger: Event Touch
+
+List of Event Commands:
+@>Script: TrainerIntro2(:CHANELLER)
+@>Script: Kernel.pbNoticePlayer(get_character(0))
+@>Text: Fwehehehehe, how long can you last up here
+ :    : in the heart of all this spiritual energy!
+@>Conditional Branch: Script: pbTrainerBattle(:CHANELLER,"Laurel",_I("Fwehehehe, that was fast~!"))
+ @>Control Self Switch: A =ON
+ @>
+: Branch End
+@>Script: pbTrainerEnd
+@>
+
+Page #2
+Conditions
+Self Switch A is ON
+
+Graphic: trainer_CHANELLER
+
+Autonomous Movement
+Type: Custom
+Custom Move Route:
+(Repeat Action)
+$>Turn Left
+$>Turn Down
+
+Speed: 3: Slow
+Freq: 3: Low
+Options Enabled
+Move Animation
+Trigger: Action Button
+
+List of Event Commands:
+@>Text: Fwehehehehe, most of the trainers who
+ :    : dare come this high are all driven into hallucinations
+ :    : by the prankster spirits.
+@>
+
+#------------------------------------------------------------------------------
+Event ID: 029
+Event Name: Item Ball
+(X,Y): (097,003)
+
+Page #1
+Conditions
+None
+
+Graphic: Object ball
+
+Autonomous Movement
+Type: Fixed
+Speed: 3: Slow
+Freq: 3: Low
+Options Enabled
+Move Animation
+Trigger: Action Button
+
+List of Event Commands:
+@>Conditional Branch: Script: pbItemBall(:IRON)
+ @>Control Self Switch: A =ON
+ @>
+: Else
+ @>
+: Branch End
+@>
+
+Page #2
+Conditions
+Self Switch A is ON
+
+Autonomous Movement
+Type: Fixed
+Speed: 3: Slow
+Freq: 3: Low
+Options Enabled
+Move Animation
+Trigger: Action Button
+
+List of Event Commands:
+@>
+
+#------------------------------------------------------------------------------
+Event ID: 030
+Event Name: HiddenItem
+(X,Y): (134,016)
+
+Page #1
+Conditions
+None
+
+Autonomous Movement
+Type: Fixed
+Speed: 3: Slow
+Freq: 3: Low
+Options Enabled
+Move Animation
+Trigger: Action Button
+
+List of Event Commands:
+@>Conditional Branch: Script: pbItemBall(:LAVACOOKIE,10)
+ @>Control Self Switch: A =ON
+ @>
+: Else
+ @>
+: Branch End
+@>
+
+Page #2
+Conditions
+Self Switch A is ON
+
+Autonomous Movement
+Type: Fixed
+Speed: 3: Slow
+Freq: 3: Low
+Options Enabled
+Move Animation
+Trigger: Action Button
+
+List of Event Commands:
+@>
+
+#------------------------------------------------------------------------------
+Event ID: 031
+Event Name: HiddenItem
+(X,Y): (130,002)
+
+Page #1
+Conditions
+None
+
+Autonomous Movement
+Type: Fixed
+Speed: 3: Slow
+Freq: 3: Low
+Options Enabled
+Move Animation
+Trigger: Action Button
+
+List of Event Commands:
+@>Conditional Branch: Script: Kernel.pbItemBall(PBItems::PUREINCENSE)
+ @>Control Self Switch: A =ON
+ @>
+: Else
+ @>
+: Branch End
+@>
+
+Page #2
+Conditions
+Self Switch A is ON
+
+Autonomous Movement
+Type: Fixed
+Speed: 3: Slow
+Freq: 3: Low
+Options Enabled
+Move Animation
+Trigger: Action Button
+
+List of Event Commands:
+@>
+
+#------------------------------------------------------------------------------
+Event ID: 032
+Event Name: Item Ball
+(X,Y): (132,002)
+
+Page #1
+Conditions
+None
+
+Graphic: Object ball
+
+Autonomous Movement
+Type: Fixed
+Speed: 3: Slow
+Freq: 3: Low
+Options Enabled
+Move Animation
+Trigger: Action Button
+
+List of Event Commands:
+@>Conditional Branch: Script: pbItemBall(:ETHER)
+ @>Control Self Switch: A =ON
+ @>
+: Else
+ @>
+: Branch End
+@>
+
+Page #2
+Conditions
+Self Switch A is ON
+
+Autonomous Movement
+Type: Fixed
+Speed: 3: Slow
+Freq: 3: Low
+Options Enabled
+Move Animation
+Trigger: Action Button
+
+List of Event Commands:
+@>
+
+#------------------------------------------------------------------------------
+Event ID: 033
+Event Name: Trainer(5)
+(X,Y): (124,005)
+
+Page #1
+Conditions
+None
+
+Graphic: trainer_CHANELLER
+
+Autonomous Movement
+Type: Fixed
+Speed: 3: Slow
+Freq: 3: Low
+Options Enabled
+Move Animation
+Trigger: Event Touch
+
+List of Event Commands:
+@>Script: TrainerIntro2(:CHANELLER)
+@>Script: Kernel.pbNoticePlayer(get_character(0))
+@>Text: This is the Chamber of Rememberance. Not
+ :    : many come up here, as the spirits usually ward them
+ :    : off.
+@>Text: For you to make it up here you must be very
+ :    : brave, or very very lucky.
+@>Conditional Branch: Script: pbTrainerBattle(:CHANELLER,"Ami",_I("Lucky seems to be the correct assumtion!"))
+ @>Control Self Switch: A =ON
+ @>
+: Branch End
+@>Script: pbTrainerEnd
+@>
+
+Page #2
+Conditions
+Self Switch A is ON
+
+Graphic: trainer_CHANELLER
+
+Autonomous Movement
+Type: Fixed
+Speed: 3: Slow
+Freq: 3: Low
+Options Enabled
+Move Animation
+Trigger: Action Button
+
+List of Event Commands:
+@>Text: This area is where we honor the origins of
+ :    : our history as spirit mediums, back to our less than
+ :    : humble origins as youkai exterminators.
+@>
+
+#------------------------------------------------------------------------------
+Event ID: 034
+Event Name: HiddenItem
+(X,Y): (101,016)
+
+Page #1
+Conditions
+None
+
+Autonomous Movement
+Type: Fixed
+Speed: 3: Slow
+Freq: 3: Low
+Options Enabled
+Move Animation
+Trigger: Action Button
+
+List of Event Commands:
+@>Conditional Branch: Script: pbItemBall(:FRESHWATER)
+ @>Control Self Switch: A =ON
+ @>
+: Else
+ @>
+: Branch End
+@>
+
+Page #2
+Conditions
+Self Switch A is ON
+
+Autonomous Movement
+Type: Fixed
+Speed: 3: Slow
+Freq: 3: Low
+Options Enabled
+Move Animation
+Trigger: Action Button
+
+List of Event Commands:
+@>
+
+#------------------------------------------------------------------------------
+Event ID: 035
+Event Name: Trainer(2)
+(X,Y): (133,013)
+
+Page #1
+Conditions
+None
+
+Graphic: trainer_CHANELLER
+
+Autonomous Movement
+Type: Fixed
+Speed: 3: Slow
+Freq: 3: Low
+Options Enabled
+Move Animation
+Trigger: Event Touch
+
+List of Event Commands:
+@>Script: TrainerIntro2(:CHANELLER)
+@>Script: Kernel.pbNoticePlayer(get_character(0))
+@>Text: You... You can't be... battle me! Now!
+@>Conditional Branch: Script: pbTrainerBattle(:CHANELLER,"Pearl",_I("No... you're not..."))
+ @>Control Self Switch: A =ON
+ @>
+: Branch End
+@>Script: pbTrainerEnd
+@>
+
+Page #2
+Conditions
+Self Switch A is ON
+
+Graphic: trainer_CHANELLER
+
+Autonomous Movement
+Type: Fixed
+Speed: 3: Slow
+Freq: 3: Low
+Options Enabled
+Move Animation
+Trigger: Action Button
+
+List of Event Commands:
+@>Text: Forgive me. You looked quite like one of
+ :    : our Sages from over a hundred years ago. I
+ :    : apologise if I startled you.
+@>
+
+#------------------------------------------------------------------------------
+Event ID: 036
+Event Name: Trainer(2)
+(X,Y): (035,012)
+
+Page #1
+Conditions
+None
+
+Graphic: trainer_CHANELLER
+
+Autonomous Movement
+Type: Fixed
+Speed: 3: Slow
+Freq: 3: Low
+Options Enabled
+Move Animation
+Trigger: Event Touch
+
+List of Event Commands:
+@>Script: TrainerIntro2(:CHANELLER)
+@>Script: Kernel.pbNoticePlayer(get_character(0))
+@>Text: Have your puppets died? Come, show them to me!
+@>Conditional Branch: Script: pbTrainerBattle(:CHANELLER,"Morgan",_I("My mistake, all perfectly healthy!"))
+ @>Control Self Switch: A =ON
+ @>
+: Branch End
+@>Script: pbTrainerEnd
+@>
+
+Page #2
+Conditions
+Self Switch A is ON
+
+Graphic: trainer_CHANELLER
+
+Autonomous Movement
+Type: Fixed
+Speed: 3: Slow
+Freq: 3: Low
+Options Enabled
+Move Animation
+Trigger: Action Button
+
+List of Event Commands:
+@>Text: If your puppets ever die, we will handle the services free of charge. We believe that one should not have to deal with both the loss of a trusted partner,
+ :    : and the loss of their entire bank account in the process!
+@>
+
+#------------------------------------------------------------------------------
+Event ID: 038
+Event Name: EV038
+(X,Y): (050,001)
+
+Page #1
+Conditions
+None
+
+Autonomous Movement
+Type: Fixed
+Speed: 3: Slow
+Freq: 3: Low
+Options Enabled
+Move Animation
+Trigger: Action Button
+
+List of Event Commands:
+@>Comment: Trainer range: 28-33
+@>
+
+#------------------------------------------------------------------------------
+Event ID: 039
+Event Name: Purification Zone
+(X,Y): (101,009)
+
+Page #1
+Conditions
+None
+
+Autonomous Movement
+Type: Fixed
+Speed: 3: Slow
+Freq: 3: Low
+Options Enabled
+Move Animation
+Trigger: Player Touch
+
+List of Event Commands:
+@>Text: Entered the Purification Zone.
+@>Change Screen Color Tone: (-255,-255,-255,0), @20
+@>Wait: 10 frame(s)
+@>Play ME: 'Pokemon Healing', 100, 100
+@>Recover All: Entire Party
+@>Wait: 15 frame(s)
+@>Change Screen Color Tone: (0,0,0,0), @20
+@>Wait: 5 frame(s)
+@>Text: The Purification Zone has healed your entire party 
+ :    : back to full health!
+@>
+
+#------------------------------------------------------------------------------
+
+#==============================================================================
+Map ID: 258
+Map Name: Lavender Tower
+Tileset: 013: Graveyard
+Width: 24, Height: 20
+Auto-Change BGM: 033. Mystic oriental Dream ~ Ancient Temple
+
+#------------------------------------------------------------------------------
+Event ID: 001
+Event Name: EV001
+(X,Y): (011,003)
+
+Page #1
+Conditions
+None
+
+Graphic: trainer_CHANELLER
+
+Autonomous Movement
+Type: Fixed
+Speed: 3: Slow
+Freq: 3: Low
+Options Enabled
+Move Animation
+Trigger: Action Button
+
+List of Event Commands:
+@>Text: Oh, hello there young one. It's not very often that we get visitors 
+ :    : this high up in the tower.
+@>Text: This is where Pokemon that perished in the First Great War were laid 
+ :    : to rest nearly a hundred years ago.
+@>Text: I am one of the Elder Priestesses here, it is part of my duties to take 
+ :    : care of this floor.
+@>Text: I possess great spiritual clarity, as with many other Elder Mediums, 
+ :    : and as such I can see things many others cannot.
+@>Text: I can see you have a long journey ahead of you, a perilous one with 
+ :    : many foes and dangers.
+@>Text: Take these. I am sure you will find some use for it along the way.
+@>Script: pbReceiveItem(:SC04)
+:       : pbReceiveItem(:HM04)
+@>Text: These can be used to teach Strength to your Pokémon or Puppets.
+ :    : They can then use Strength to push aside heavy objects, such as
+ :    : boulders.
+@>Text: However, it requires a Gym Badge to be used outside of battle... 
+ :    : I'm afraid I can't remember which badge it is.
+@>Control Self Switch: A =ON
+@>
+
+Page #2
+Conditions
+Self Switch A is ON
+
+Graphic: trainer_CHANELLER
+
+Autonomous Movement
+Type: Fixed
+Speed: 3: Slow
+Freq: 3: Low
+Options Enabled
+Move Animation
+Trigger: Action Button
+
+List of Event Commands:
+@>Text: A realm beyond this one, not many would believe such a place exists.
+@>Text: We Elder Mediums are among those who believe in the existence of 
+ :    : a realm beyond this one, where everything goes after departing 
+ :    : from this realm.
+@>Text: All beings...  Pokémon, Humans, even Puppets, we're all destined 
+ :    : for this realm one day.
+@>
+
+#------------------------------------------------------------------------------
+Event ID: 002
+Event Name: Stairs down
+(X,Y): (010,016)
+
+Page #1
+Conditions
+None
+
+Autonomous Movement
+Type: Fixed
+Speed: 3: Slow
+Freq: 3: Low
+Options Enabled
+Move Animation
+Trigger: Player Touch
+
+List of Event Commands:
+@>Set Move Route: Player
+ :              : $>Through ON
+ :              : $>Always on Top ON
+ :              : $>Turn Left
+ :              : $>Move Left
+ :              : $>Through OFF
+ :              : $>Always on Top OFF
+@>Wait for Move's Completion
+@>Play SE: 'Exit Door', 80, 100
+@>Change Screen Color Tone: (-255,-255,-255,0), @6
+@>Wait: 8 frame(s)
+@>Transfer Player:[257: Lavender Tower], (131,016), Right, No Fade
+@>Change Screen Color Tone: (0,0,0,0), @6
+@>
+
+#------------------------------------------------------------------------------
+Event ID: 003
+Event Name: HiddenItem
+(X,Y): (011,010)
+
+Page #1
+Conditions
+None
+
+Autonomous Movement
+Type: Fixed
+Speed: 3: Slow
+Freq: 3: Low
+Options Enabled
+Move Animation
+Trigger: Action Button
+
+List of Event Commands:
+@>Conditional Branch: Script: pbItemBall(:THICKCLUB)
+ @>Control Self Switch: A =ON
+ @>
+: Else
+ @>
+: Branch End
+@>
+
+Page #2
+Conditions
+Self Switch A is ON
+
+Autonomous Movement
+Type: Fixed
+Speed: 3: Slow
+Freq: 3: Low
+Options Enabled
+Move Animation
+Trigger: Action Button
+
+List of Event Commands:
+@>
+
+#------------------------------------------------------------------------------
+
+#==============================================================================
+Map ID: 259
+Map Name: Lavender Tower
+Tileset: 013: Graveyard
+Width: 39, Height: 50
+
+#------------------------------------------------------------------------------
+Event ID: 001
+Event Name: EV001
+(X,Y): (003,043)
+
+Page #1
+Conditions
+None
+
+Graphic: trainer_CHANELLER
+
+Autonomous Movement
+Type: Fixed
+Speed: 3: Slow
+Freq: 3: Low
+Options Enabled
+Move Animation
+Trigger: Action Button
+
+List of Event Commands:
+@>Text: Forgive us, but unless you're affiliated with the Tower, you
+ :    : are not allowed down here.
+@>
+
+#------------------------------------------------------------------------------
+Event ID: 002
+Event Name: EV002
+(X,Y): (031,041)
+
+Page #1
+Conditions
+None
+
+Graphic: trainer_CHANELLER
+
+Autonomous Movement
+Type: Fixed
+Speed: 3: Slow
+Freq: 3: Low
+Options Enabled
+Move Animation
+Trigger: Action Button
+
+List of Event Commands:
+@>Text: Please forgive me, but we are currently cleaning this room. Nobody
+ :    : can enter at the moment.
+@>
+
+#------------------------------------------------------------------------------
+Event ID: 003
+Event Name: Exit
+(X,Y): (019,040)
+
+Page #1
+Conditions
+None
+
+Autonomous Movement
+Type: Fixed
+Speed: 3: Slow
+Freq: 3: Low
+Options Enabled
+Move Animation
+Trigger: Player Touch
+
+List of Event Commands:
+@>Play SE: 'Door exit', 80, 100
+@>Change Screen Color Tone: (-255,-255,-255,0), @6
+@>Wait: 8 frame(s)
+@>Transfer Player:[259: Lavender Tower], (019,030), Up, No Fade
+@>Change Screen Color Tone: (0,0,0,0), @6
+@>
+
+#------------------------------------------------------------------------------
+Event ID: 004
+Event Name: ExitArrow
+(X,Y): (019,031)
+
+Page #1
+Conditions
+None
+
+Graphic: Exitarrow_red
+
+Autonomous Movement
+Type: Fixed
+Speed: 3: Slow
+Freq: 3: Low
+Options Enabled
+Move Animation
+Stop Animation
+Always on Top
+Trigger: Player Touch
+
+List of Event Commands:
+@>Conditional Branch: Player is facing Down
+ @>Play SE: 'Door exit', 100, 100
+ @>Change Screen Color Tone: (-255,-255,-255,0), @6
+ @>Wait: 8 frame(s)
+ @>Transfer Player:[259: Lavender Tower], (019,040), No Fade
+ @>Change Screen Color Tone: (0,0,0,0), @6
+ @>Set Move Route: Player
+  :              : $>Move Down
+ @>
+: Branch End
+@>
+
+#------------------------------------------------------------------------------
+Event ID: 005
+Event Name: EV005
+(X,Y): (024,016)
+
+Page #1
+Conditions
+None
+
+Autonomous Movement
+Type: Fixed
+Speed: 3: Slow
+Freq: 3: Low
+Options Enabled
+Move Animation
+Trigger: Action Button
+
+List of Event Commands:
+@>Text: This machine seems to be able to heal your party.
+@>Text: Do you want it to heal your team?
+@>Show Choices: Yes, No
+(When Cancel: Choice 2)
+: When [Yes]
+ @>Script: pbSetPokemonCenter
+ @>Change Screen Color Tone: (-255,-255,-255,0), @20
+ @>Wait: 8 frame(s)
+ @>Play ME: 'Pkmn healing', 100, 100
+ @>Wait: 20 frame(s)
+ @>Change Screen Color Tone: (0,0,0,0), @20
+ @>Recover All: Entire Party
+ @>Text: Your party was healed.
+ @>
+: When [No]
+ @>
+: Branch End
+@>
+
+#------------------------------------------------------------------------------
+Event ID: 006
+Event Name: EV006
+(X,Y): (025,016)
+
+Page #1
+Conditions
+None
+
+Autonomous Movement
+Type: Fixed
+Speed: 3: Slow
+Freq: 3: Low
+Options Enabled
+Move Animation
+Trigger: Action Button
+
+List of Event Commands:
+@>Text: This machine seems to be able to heal your party.
+@>Text: Do you want it to heal your team?
+@>Show Choices: Yes, No
+(When Cancel: Choice 2)
+: When [Yes]
+ @>Script: pbSetPokemonCenter
+ @>Change Screen Color Tone: (-255,-255,-255,0), @20
+ @>Wait: 8 frame(s)
+ @>Play ME: 'Pkmn healing', 100, 100
+ @>Wait: 20 frame(s)
+ @>Change Screen Color Tone: (0,0,0,0), @20
+ @>Recover All: Entire Party
+ @>Text: Your party was healed.
+ @>
+: When [No]
+ @>
+: Branch End
+@>
+
+#------------------------------------------------------------------------------
+Event ID: 007
+Event Name: Exit
+(X,Y): (007,040)
+
+Page #1
+Conditions
+None
+
+Autonomous Movement
+Type: Fixed
+Speed: 3: Slow
+Freq: 3: Low
+Options Enabled
+Move Animation
+Trigger: Player Touch
+
+List of Event Commands:
+@>Play SE: 'Door exit', 80, 100
+@>Change Screen Color Tone: (-255,-255,-255,0), @6
+@>Wait: 8 frame(s)
+@>Transfer Player:[260: Lavender Tower], (012,023), Up, No Fade
+@>Change Screen Color Tone: (0,0,0,0), @6
+@>
+
+Page #2
+Conditions
+Self Switch A is ON
+
+Autonomous Movement
+Type: Fixed
+Speed: 3: Slow
+Freq: 3: Low
+Options Enabled
+Move Animation
+Trigger: Action Button
+
+List of Event Commands:
+@>Play SE: 'Door exit', 80, 100
+@>Change Screen Color Tone: (-255,-255,-255,0), @6
+@>Wait: 8 frame(s)
+@>Transfer Player:[260: Lavender Tower], (012,014), Up, No Fade
+@>Change Screen Color Tone: (0,0,0,0), @6
+@>
+
+#------------------------------------------------------------------------------
+Event ID: 008
+Event Name: Quest Indicator: Main
+(X,Y): (007,039)
+
+Page #1
+Conditions
+Variable 0110: Plot Control Variable is 9 or above
+
+Graphic: questicon2
+
+Autonomous Movement
+Type: Fixed
+Speed: 3: Slow
+Freq: 3: Low
+Options Enabled
+Move Animation
+Stop Animation
+Direction Fix
+Through
+Always on Top
+Trigger: Action Button
+
+List of Event Commands:
+@>
+
+Page #2
+Conditions
+Variable 0110: Plot Control Variable is 10 or above
+
+Autonomous Movement
+Type: Fixed
+Speed: 3: Slow
+Freq: 3: Low
+Options Enabled
+Move Animation
+Trigger: Action Button
+
+List of Event Commands:
+@>
+
+#------------------------------------------------------------------------------
+Event ID: 009
+Event Name: EV009
+(X,Y): (036,043)
+
+Page #1
+Conditions
+None
+
+Autonomous Movement
+Type: Fixed
+Speed: 3: Slow
+Freq: 3: Low
+Options Enabled
+Move Animation
+Trigger: Player Touch
+
+List of Event Commands:
+@>Set Move Route: Player
+ :              : $>Through ON
+ :              : $>Always on Top ON
+ :              : $>Turn Right
+ :              : $>Move Right
+ :              : $>Move Upper Right
+ :              : $>Through OFF
+ :              : $>Always on Top OFF
+@>Wait for Move's Completion
+@>Play SE: 'Exit Door', 80, 100
+@>Change Screen Color Tone: (-255,-255,-255,0), @6
+@>Wait: 8 frame(s)
+@>Transfer Player:[080: Lavender Tower], (005,010), Right, No Fade
+@>Change Screen Color Tone: (0,0,0,0), @6
+@>
+
+#------------------------------------------------------------------------------
+
+#==============================================================================
+Map ID: 260
+Map Name: Lavender Tower
+Tileset: 013: Graveyard
+Width: 25, Height: 31
+
+#------------------------------------------------------------------------------
+Event ID: 001
+Event Name: Priestess3
+(X,Y): (009,013)
+
+Page #1
+Conditions
+None
+
+Graphic: trainer_CHANELLER
+
+Autonomous Movement
+Type: Fixed
+Speed: 3: Slow
+Freq: 3: Low
+Options Enabled
+Move Animation
+Trigger: Action Button
+
+List of Event Commands:
+@>
+
+#------------------------------------------------------------------------------
+Event ID: 002
+Event Name: Priestess2
+(X,Y): (009,015)
+
+Page #1
+Conditions
+None
+
+Graphic: trainer_CHANELLER
+
+Autonomous Movement
+Type: Fixed
+Speed: 3: Slow
+Freq: 3: Low
+Options Enabled
+Move Animation
+Trigger: Action Button
+
+List of Event Commands:
+@>
+
+#------------------------------------------------------------------------------
+Event ID: 003
+Event Name: Priestess4
+(X,Y): (010,011)
+
+Page #1
+Conditions
+None
+
+Graphic: trainer_CHANELLER
+
+Autonomous Movement
+Type: Fixed
+Speed: 3: Slow
+Freq: 3: Low
+Options Enabled
+Move Animation
+Trigger: Action Button
+
+List of Event Commands:
+@>
+
+#------------------------------------------------------------------------------
+Event ID: 004
+Event Name: Priestess5
+(X,Y): (014,011)
+
+Page #1
+Conditions
+None
+
+Graphic: trainer_CHANELLER
+
+Autonomous Movement
+Type: Fixed
+Speed: 3: Slow
+Freq: 3: Low
+Options Enabled
+Move Animation
+Trigger: Action Button
+
+List of Event Commands:
+@>
+
+#------------------------------------------------------------------------------
+Event ID: 005
+Event Name: Priestess6
+(X,Y): (015,013)
+
+Page #1
+Conditions
+None
+
+Graphic: trainer_CHANELLER
+
+Autonomous Movement
+Type: Fixed
+Speed: 3: Slow
+Freq: 3: Low
+Options Enabled
+Move Animation
+Trigger: Action Button
+
+List of Event Commands:
+@>
+
+#------------------------------------------------------------------------------
+Event ID: 006
+Event Name: Priestess7
+(X,Y): (015,015)
+
+Page #1
+Conditions
+None
+
+Graphic: trainer_CHANELLER
+
+Autonomous Movement
+Type: Fixed
+Speed: 3: Slow
+Freq: 3: Low
+Options Enabled
+Move Animation
+Trigger: Action Button
+
+List of Event Commands:
+@>
+
+#------------------------------------------------------------------------------
+Event ID: 007
+Event Name: Head Priestess
+(X,Y): (012,010)
+
+Page #1
+Conditions
+None
+
+Graphic: trainer_CHANELLER
+
+Autonomous Movement
+Type: Fixed
+Speed: 3: Slow
+Freq: 3: Low
+Options Enabled
+Move Animation
+Trigger: Action Button
+
+List of Event Commands:
+@>
+
+#------------------------------------------------------------------------------
+Event ID: 008
+Event Name: Priestess1
+(X,Y): (010,017)
+
+Page #1
+Conditions
+None
+
+Graphic: trainer_CHANELLER
+
+Autonomous Movement
+Type: Fixed
+Speed: 3: Slow
+Freq: 3: Low
+Options Enabled
+Move Animation
+Trigger: Action Button
+
+List of Event Commands:
+@>
+
+#------------------------------------------------------------------------------
+Event ID: 009
+Event Name: Priestess8
+(X,Y): (014,017)
+
+Page #1
+Conditions
+None
+
+Graphic: trainer_CHANELLER
+
+Autonomous Movement
+Type: Fixed
+Speed: 3: Slow
+Freq: 3: Low
+Options Enabled
+Move Animation
+Trigger: Action Button
+
+List of Event Commands:
+@>
+
+#------------------------------------------------------------------------------
+Event ID: 010
+Event Name: size(3,3)
+(X,Y): (011,015)
+
+Page #1
+Conditions
+Self Switch A is ON
+
+Autonomous Movement
+Type: Fixed
+Speed: 3: Slow
+Freq: 3: Low
+Options Enabled
+Move Animation
+Trigger: Action Button
+
+List of Event Commands:
+@>
+
+#------------------------------------------------------------------------------
+Event ID: 011
+Event Name: Autorun A
+(X,Y): (000,000)
+
+Page #1
+Conditions
+None
+
+Autonomous Movement
+Type: Fixed
+Speed: 3: Slow
+Freq: 3: Low
+Options Enabled
+Move Animation
+Trigger: Autorun
+
+List of Event Commands:
+@>Wait: 5 frame(s)
+@>Set Move Route: Player
+ :              : $>Change Speed: 3
+ :              : $>Move Up
+ :              : $>Move Up
+ :              : $>Move Up
+ :              : $>Move Up
+ :              : $>Move Up
+ :              : $>Move Up
+ :              : $>Move Up
+ :              : $>Move Up
+ :              : $>Move Up
+@>Text: \xn[\pn]\b(This must be the archive room... I wonder where I should
+ :    : look first?)
+@>Wait for Move's Completion
+@>Wait: 30 frame(s)
+@>Text: \wm\w[dark]<i>Is this the one you spoke of, Lady Angela?</i>
+@>Show Animation: Player, [Question bubble]
+@>Set Move Route: Player
+                  (Repeat Action)
+ :              : $>Turn at Random
+ :              : $>Wait: 10 frame(s)
+@>Text: \wm\w[dark]<i>Yes... She's the one who wants information about</i>
+ :    : that<i>...</i>
+@>Text: \wm\w[dark]<i>I thought there was none left save for the decendants
+ :    : of the first settlers who knew about that!</i>
+@>Text: \wm\w[dark]<i>And yet, clearly she knows about it. Could she be a
+ :    : descendant, or...</i>
+@>Set Move Route: Player
+ :              : $>Turn Up
+@>Text: \xn[\pn]Hello? Is anybody there?
+@>Text: \wm\w[dark]<i>She can hear us!? But that's impossible!</i>
+@>Text: \xn[\pn]I can hear you quite normally... Are you not speaking?
+@>Text: \wm\w[dark]<i>She's not normal... There's definitely something abnormal
+ :    : about her!</i>
+@>Text: \xn[\pn]Okay, this is getting a bit strange... I think I'll just... come
+ :    : back another time...
+@>Text: \wm\w[dark]<i>No, you shall not!</i>
+@>Text: \l[1]\wm\w[dark]<ac><fs=38><i>\rHakurei Clan Art - Sealing Circle</i></fs></ac>
+@>Screen Flash: (255,255,255,255), @20
+@>Set Move Route: Player
+ :              : $>Always on Top ON
+@>Script: pbSetSelfSwitch(10,"A",true)
+@>Wait: 20 frame(s)
+@>Show Animation: Player, [Exclaim bubble]
+@>Text: \xn[\pn]W-Wait, what's this under me!?\wt[20] I... I can't move!
+@>Text: \wm\w[dark]<i>That would be the idea.</i>
+@>Comment: -----------------------
+@>Set Move Route: [Priestess1]
+ :              : $>SE: 'teleporter', 80, 100
+ :              : $>Change Opacity: 255
+@>Set Move Route: Player
+ :              : $>Turn Left
+@>Wait for Move's Completion
+@>Wait: 20 frame(s)
+@>Set Move Route: [Priestess8]
+ :              : $>SE: 'teleporter', 80, 100
+ :              : $>Change Opacity: 255
+@>Set Move Route: Player
+ :              : $>Turn Right
+@>Wait for Move's Completion
+@>Wait: 20 frame(s)
+@>Set Move Route: Player
+ :              : $>Turn Left
+ :              : $>Wait: 6 frame(s)
+ :              : $>Turn Right
+ :              : $>Wait: 6 frame(s)
+ :              : $>Turn Left
+ :              : $>Wait: 6 frame(s)
+ :              : $>Turn Right
+ :              : $>Wait: 6 frame(s)
+ :              : $>Turn Left
+ :              : $>Wait: 6 frame(s)
+ :              : $>Turn Right
+ :              : $>Wait: 20 frame(s)
+ :              : $>Turn Up
+@>Set Move Route: [Priestess2]
+ :              : $>SE: 'teleporter', 80, 100
+ :              : $>Change Opacity: 255
+@>Wait: 6 frame(s)
+@>Set Move Route: [Priestess7]
+ :              : $>SE: 'teleporter', 80, 100
+ :              : $>Change Opacity: 255
+@>Wait: 6 frame(s)
+@>Set Move Route: [Priestess3]
+ :              : $>SE: 'teleporter', 80, 100
+ :              : $>Change Opacity: 255
+@>Wait: 6 frame(s)
+@>Set Move Route: [Priestess6]
+ :              : $>SE: 'teleporter', 80, 100
+ :              : $>Change Opacity: 255
+@>Wait: 6 frame(s)
+@>Set Move Route: [Priestess4]
+ :              : $>SE: 'teleporter', 80, 100
+ :              : $>Change Opacity: 255
+@>Wait: 6 frame(s)
+@>Set Move Route: [Priestess5]
+ :              : $>SE: 'teleporter', 80, 100
+ :              : $>Change Opacity: 255
+@>Wait: 20 frame(s)
+@>Set Move Route: [Head Priestess]
+ :              : $>SE: 'teleporter', 80, 100
+ :              : $>Change Opacity: 255
+@>Wait for Move's Completion
+@>Wait: 20 frame(s)
+@>Text: \xn[Head Priestess]So, let me ask you this question again. <i>Who</i>
+ :    : are you?
+@>Text: \xn[\pn]I said it earlier! My name is \pn!
+@>Conditional Branch: Variable [0107: Chosen Protag] == 0
+ @>Comment: --- Renko
+ @>Show Animation: [Priestess6], [Exclaim bubble]
+ @>Text: You dare commit sacrilege here? We know you're not the
+  :    : Founder!
+ @>Text: No, perhaps you're a scheeming Youkai from the other side
+  :    : pretending to be her, aiming to get your revenge after all 
+  :    : these years!
+ @>Set Move Route: Player
+  :              : $>Turn Right
+ @>Text: \xn[\pn]I have no idea what you're even talking about!
+ @>Text: Silence, demon! Your lies will not work here!
+ @>Set Move Route: Player
+  :              : $>Turn Up
+ @>
+: Branch End
+@>Text: Well, regardless of who she <i>claims</i> she is, if she's anything
+ :    : supernatural, this sealing circle will reveal their true identity.
+@>Set Move Route: Player
+ :              : $>Turn Right
+@>Text: \xn[\pn]But I'm really just a normal human!
+@>Text: \xn[Head Priestess]Well, we shall see about that now, won't we?
+@>Set Move Route: Player
+ :              : $>Turn Up
+@>Wait: 40 frame(s)
+@>Set Move Route: [Priestess2]
+ :              : $>Wait: 14 frame(s)
+ :              : $>Turn Up
+@>Text: \..\..\..\wt[10]So.\wt[10] How long is this supposed to take?
+@>Wait for Move's Completion
+@>Set Move Route: [Priestess4]
+ :              : $>Turn Down
+@>Text: It should have been instantaneous... At least, that's what the
+ :    : scriptures have said!
+@>Set Move Route: [Priestess2]
+ :              : $>Turn Right
+@>Set Move Route: [Priestess4]
+ :              : $>Turn Right
+@>Text: Even the strongest Youkai shouldn't be able to remain in
+ :    : disguise in this field.
+@>Set Move Route: Player
+ :              : $>Turn Left
+@>Text: \xn[\pn]That's because I'm not a Youkai! I keep saying it, but
+ :    : I'm just a human!
+@>Text: Then how do you know about the <i>gensou kyou</i>!? The existence
+ :    : of it has been kept concealed from the general public ever since
+ :    : the realm was sealed away almost 200 years ago!
+@>Set Move Route: Player
+ :              : $>Turn Right
+@>Text: \xn[\pn]The\..\..\.. <i>gensou kyou</i>? Is that what the "Sealed Realm"
+ :    : is called?
+@>Text: \xn[Head Priestess]You really don't know, do you?
+@>Set Move Route: Player
+ :              : $>Turn Up
+@>Text: \xn[\pn]That's what I've been trying to say all this time! I'm doing
+ :    : research on the Sealed Realm with a friend of mine!
+@>Text: \xn[\pn]That's the purpose of our club, the discovery of the 
+ :    : supernatural, and to uncover the truth behind the Sealed Realm!
+@>Text: \xn[Head Priestess]This is not knowledge fit for the average 
+ :    : individual. The <i>gensou kyou</i> was sealed off from the realm of 
+ :    : humans for a reason.
+@>Text: \xn[\pn]Even so, we wish to know! This is our life's work, and
+ :    : if you have information on it, please tell me!
+@>Text: \xn[Head Priestess]The youth these days... truly impetuous and
+ :    : carefree.
+@>Text: \xn[Head Priestess]Seeking out knowledge of things that they
+ :    : can't even begin to understand.
+@>Text: \xn[Head Priestess]It has been our job to maintain the secrecy
+ :    : of the existence of the <i>gensou kyou</i>.
+@>Text: \xn[Head Priestess]You truly think that we'll just tell you
+ :    : because you ask?
+@>Text: \xn[\pn]No, I suppose not...\wt[10] But, it's still worth a shot! We've come
+ :    : this far, and we'll pursue every avenue we can until we achieve our
+ :    : goals!
+@>Wait: 25 frame(s)
+@>Text: \xn[Head Priestess]...Hmph. I see you won't be disuaded so
+ :    : easily.
+@>Comment: -----------
+@>Text: \xn[Head Priestess]If you want to be tested so bad, then
+ :    : so be it!
+@>Screen Flash: (255,255,255,255), @20
+@>Set Move Route: Player
+ :              : $>Always on Top OFF
+@>Script: pbSetSelfSwitch(10,"A",false)
+@>Text: \xn[Head Priestess]We are the keepers of this knowledge. If
+ :    : you wish to inherit it, then you must prove you are worthy of it!
+@>Text: \xn[Head Priestess]If you are found to be lacking, then you
+ :    : will have met a dead end here.
+@>Text: \xn[Head Priestess]Do you accept these conditions?
+@>Text: \xn[\pn]I don't have much of a choice, let's do this!
+@>Script: pbSetSelfSwitch2(259,7,"A",true)
+@>Control Self Switch: A =ON
+@>
+
+Page #2
+Conditions
+Self Switch A is ON
+
+Autonomous Movement
+Type: Fixed
+Speed: 3: Slow
+Freq: 3: Low
+Options Enabled
+Move Animation
+Trigger: Autorun
+
+List of Event Commands:
+@>Text: \xn[Head Priestess]Hmph! Come, child! Let me show you what the
+ :    : descendant of the great and venerable Hakurei Clan is capable
+ :    : of!
+@>Comment: Insert battle against Elder Priestess Angela here
+@>Conditional Branch: Script: pbTrainerBattle(:ELDERPRIESTESS,"Angela",_I("Perhaps this is how it was meant to be."))
+ @>Control Self Switch: A =ON
  @>
 : Branch End
 @>
@@ -74509,19 +77584,20 @@ Trigger: None
 List of Event Commands:
 @>Comment: --- Battle Count, 0
 @>Conditional Branch: Variable [0116: Battled Rival Gold] == 0
- @>Script: p=pbNewPkmn(:MANTYKE,15)
- :       : p.setItem(:MYSTICWATER)
- :       : p.ballused=6 # Dive Ball
- :       : p.happiness=150
- :       : p.pbLearnMove(:WATERPULSE)
- :       : p.pbLearnMove(:WINGATTACK)
- :       : p.pbLearnMove(:CONFUSERAY)
- :       : p.pbLearnMove(:SIGNALBEAM)
- @>Script: p.setAbility(0)
- :       : p.obtainText=_I("Recieved from Gold.")
- :       : p.iv[PBStats::SPATK]=31
- :       : p.iv[PBStats::SPDEF]=31
- :       : p.calcStats
+ @>Script: p = Pokemon.new(:MANTYKE,15)
+ :       : p.item = :MYSTICWATER
+ :       : p..poke_ball = :DIVEBALL
+ :       : p.happiness = 150
+ :       : p.learn_move(:WATERPULSE)
+ :       : p.learn_move(:WINGATTACK)
+ :       : p.learn_move(:CONFUSERAY)
+ :       : p.learn_move(:SIGNALBEAM)
+ :       : p.record_first_moves
+ @>Script: p.ability = :SWIFTSWIM
+ :       : p.obtain_text = "Recieved from Gold."
+ :       : p.iv[:SPECIAL_ATTACK]=31
+ :       : p.iv[:SPECIAL_DEFENSE]=31
+ :       : p.calc_stats
  :       : 
  :       : pbAddPokemon(p)
  @>
