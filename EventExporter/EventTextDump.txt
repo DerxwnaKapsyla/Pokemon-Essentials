@@ -16639,7 +16639,7 @@ List of Event Commands:
 @>Change Screen Color Tone: (-255,-255,-255,0), @6
 @>Wait: 8 frame(s)
 @>Change Transparent Flag: Normal
-@>Transfer Player:[244: Vermilion City Gym], (009,016), Up, No Fade
+@>Transfer Player:[244: Vermilion City Gym], (024,067), Up, No Fade
 @>Change Screen Color Tone: (0,0,0,0), @6
 @>
 
@@ -46235,6 +46235,7 @@ List of Event Commands:
   @>Text: \xn[Brock]What I just gave you is a Technical Machine and a Skill Card, which allow you to teach moves to your Pokémon and Puppets.
   @>Text: \xn[Brock]There are also special Field Move variants called Hidden Machines and Hidden Skill Cards.
   @>Text: \xn[Brock]All of these have an unlimited number of uses, so you can teach them to any number of your Pokémon or Puppets!
+  @>Control Switches: [0108: TM/SC Explanation] = ON
   @>
  : Branch End
  @>Text: \xn[Brock]Those are the Rock Tomb TMs and SCs. A rather simple move that'll make rocks fall down on your target, with a chance of lowering their speed as it 
@@ -55389,6 +55390,7 @@ List of Event Commands:
  @>Text: \xn[Misty]What I just gave you is a Technical Machine and a Skill Card, which allow you to teach moves to your Pokémon and Puppets.
  @>Text: \xn[Misty]There are also special Field Move variants called Hidden Machines and Hidden Skill Cards.
  @>Text: \xn[Misty]All of these have an unlimited number of uses, so you can teach them to any number of your Pokémon or Puppets!
+ @>Control Switches: [0108: TM/SC Explanation] = ON
  @>
 : Branch End
 @>Text: \xn[Misty]Both the TM and the SC are Water Pulse, a Water- and Hydro-Type 
@@ -66920,148 +66922,65 @@ List of Event Commands:
 #==============================================================================
 Map ID: 244
 Map Name: Vermilion City Gym
-Tileset: 014: Gyms
-Width: 20, Height: 20
-Auto-Change BGM: 014. Cosmic Mind ~ Emotional Skyscraper
+Tileset: 030: Vermillion Gym
+Width: 51, Height: 70
+Auto-Change BGM: W-011. Pokemon Gym
 
 #------------------------------------------------------------------------------
 Event ID: 001
 Event Name: EV001
-(X,Y): (009,002)
+(X,Y): (015,043)
 
 Page #1
 Conditions
 None
 
-Graphic: trchar061
-
 Autonomous Movement
 Type: Fixed
 Speed: 3: Slow
 Freq: 3: Low
 Options Enabled
 Move Animation
-Trigger: Action Button
+Trigger: Parallel Process
 
 List of Event Commands:
-@>Text: Woah there! You made it past the electrical barrier I
- :    : set up? You must have disabled the Gym's Power,
- :    : then!
-@>Text: That means you're here to challenge me then! I
- :    : like your style, kiddo. I can see you'll resort to
- :    : whatever it takes to get to your goal.
-@>Text: My name is Lt. Surge, leader of Vermilion Gym.
- :    : Back in the war, relying on my electric Pokémon
- :    : helped me out big time.
-@>Text: And even now, with these new Wind-Type puppets,
- :    : I'm still able to send my victims into paralysis!
-@>Text: You think you have what it takes to break my circuits?
- :    : Hah! You have spunk kid, I'll give you that! But let's see
- :    : how well you fare in actual combat!
-@>Conditional Branch: Switch [0134] == ON
- @>Conditional Branch: Script: pbTrainerBattle(PBTrainers::LEADER_Surge,"Lt. Surge",_I("Now that was a shocking turn of events! Not bad at all, Kid!"),false,3)
-  @>
- : Else
-  @>Exit Event Processing
-  @>
- : Branch End
- @>
-: Else
- @>Conditional Branch: Switch [0129] == ON
-  @>Conditional Branch: Script: pbTrainerBattle(PBTrainers::LEADER_Surge,"Lt. Surge",_I("Now that was a shocking turn of events! Not bad at all, Kid!"),false,2)
-   @>
-  : Else
-   @>Exit Event Processing
-   @>
-  : Branch End
-  @>
- : Else
-  @>Conditional Branch: Script: pbTrainerBattle(PBTrainers::LEADER_Surge,"Lt. Surge",_I("Now that was a shocking turn of events! Not bad at all, Kid!"),false,1)
-   @>
-  : Else
-   @>Exit Event Processing
-   @>
-  : Branch End
-  @>
- : Branch End
+@>Conditional Branch: Script: $game_player.pbTerrainTag.landmine
+ @>Wait: 1 frame(s)
+ @>Script: Pokemon.play_cry(:VOLTORB)
+ @>Show Animation: Player, [Exclaim bubble]
+ @>Text: \pn stepped on a landmine!
+ @>Play SE: 'Voltorb Flip explosion', 80, 100
+ @>Transfer Player:[244: Vermilion City Gym], (024,039), Up
  @>
 : Branch End
-@>Text: Lt. Surge: That battle left me powered up for another one!
- :    : I'd challenge you to a rematch if my puppets weren't already
- :    : fainted!
-@>Text: You're tough stuff kid! Have this Thunder Badge, proof
- :    : that you beat this old Lieutenant!
-@>Text: \me[003. Fanfare.ogg]\PN earned the Thunder Badge!\wt[80]
-@>Script: $Trainer.badges[2]=true
-@>Control Switches: [0125] = ON
-@>Text: Lt. Surge: To the victor go the spoils of war.
- :    : I want you to take this as well.
-@>Script: Kernel.pbReceiveItem(PBItems::G18TM24)
-@>Text: Lt. Surge: That SC is Thunderbolt. It harnesses the 
- :    : inner electricity within a puppet, and brings forth a 
- :    : deadly bolt of lightning to strike down foes.
-@>Text: A move utilized by the best, it could even leave
- :    : the foe paralyzed and unable to move!
-@>
-
-Page #2
-Conditions
-Switch 0125:  is ON
-
-Graphic: trchar061
-
-Autonomous Movement
-Type: Fixed
-Speed: 3: Slow
-Freq: 3: Low
-Options Enabled
-Move Animation
-Trigger: Action Button
-
-List of Event Commands:
-@>Text: Most people don't like to talk about the wars this
- :    : country has seen. They were some of the most
- :    : brutal bloodsheds around.
-@>Text: Pokemon and Trainers used as weapons, it was
- :    : a violent sight... I don't think you're ready to hear
- :    : such stories yet, kiddo!
 @>
 
 #------------------------------------------------------------------------------
 Event ID: 002
-Event Name: Trainer(3)
-(X,Y): (017,010)
+Event Name: Gold
+(X,Y): (027,061)
 
 Page #1
 Conditions
 None
 
-Graphic: trchar009
-
 Autonomous Movement
 Type: Fixed
 Speed: 3: Slow
 Freq: 3: Low
 Options Enabled
 Move Animation
-Trigger: Event Touch
+Trigger: Action Button
 
 List of Event Commands:
-@>Script: pbTrainerIntro(:ROCKER)
-@>Script: Kernel.pbNoticePlayer(get_character(0))
-@>Text: This gym is the perfect place for someone like me! All the energy here just revs me up!
-@>Conditional Branch: Script: pbTrainerBattle(PBTrainers::ROCKER,"Martain",_I("Woah, brakes applied."),false,0)
- @>Control Self Switch: A =ON
- @>
-: Branch End
-@>Script: pbTrainerEnd
 @>
 
 Page #2
 Conditions
-Self Switch A is ON
+Switch 0109: Met Gold is ON
+Switch 0110: s:badgeQtyOdd? is ON
 
-Graphic: trchar009
+Graphic: Gold (PurpleZaffre)
 
 Autonomous Movement
 Type: Fixed
@@ -67072,15 +66991,48 @@ Move Animation
 Trigger: Action Button
 
 List of Event Commands:
-@>Text: I'm gonna have to watch out for your name in 
- :    : the future, you're going places!
+@>Call Common Event: Vs. Gold - Encounter
+@>Text: \xn[Gold]Alright, let's do this, \pn!
+@>Control Switches: [0104: Transition Handler] = ON
+@>Control Variables: [0103: Vs. Transition ID] = 4
+@>Control Variables: [0115: Vs. Transition - Background] = 4
+@>Script: setBattleRule("base", "indoor1")
+@>Conditional Branch: Script: pbTrainerBattle(:RIVAL_Gold,"Gold",_I(pbGet(4)),false,1+pbGet(116))
+ @>Call Common Event: Vs. Gold - Post-Battle
+ @>Conditional Branch: Player is facing Right
+  @>Set Move Route: Player
+   :              : $>Direction Fix ON
+   :              : $>Move Down
+   :              : $>Direction Fix OFF
+  @>Wait for Move's Completion
+  @>
+ : Branch End
+ @>Set Move Route: [Gold]
+  :              : $>Move Left
+  :              : $>Move Left
+  :              : $>Move Left
+  :              : $>Move Down
+  :              : $>Move Down
+  :              : $>Move Down
+  :              : $>Move Down
+  :              : $>Move Down
+  :              : $>Move Down
+  :              : $>Change Opacity: 0
+  :              : $>SE: 'Door exit', 100, 100
+ @>Wait for Move's Completion
+ @>Control Variables: [0116: Battled Rival Gold] += 1
+ @>Control Self Switch: A =ON
+ @>Script: pbSetSelfSwitch(13,"A",true)
+ @>
+: Else
+ @>Exit Event Processing
+ @>
+: Branch End
 @>
 
 Page #3
 Conditions
-Switch 0125:  is ON
-
-Graphic: trchar009
+Self Switch A is ON
 
 Autonomous Movement
 Type: Fixed
@@ -67091,20 +67043,18 @@ Move Animation
 Trigger: Action Button
 
 List of Event Commands:
-@>Text: I'm gonna have to watch out for your name in 
- :    : the future, you're going places!
 @>
 
 #------------------------------------------------------------------------------
 Event ID: 003
-Event Name: Trainer(3)
-(X,Y): (001,010)
+Event Name: ExitArrow
+(X,Y): (024,068)
 
 Page #1
 Conditions
 None
 
-Graphic: trchar014
+Graphic: Exitarrow_red
 
 Autonomous Movement
 Type: Fixed
@@ -67112,157 +67062,103 @@ Speed: 3: Slow
 Freq: 3: Low
 Options Enabled
 Move Animation
-Trigger: Event Touch
+Stop Animation
+Always on Top
+Trigger: Player Touch
 
 List of Event Commands:
-@>Script: pbTrainerIntro(:ENGINEER)
-@>Script: Kernel.pbNoticePlayer(get_character(0))
-@>Text: Oh I'm not a gym trainer, I just keep an eye on the gym's electrical usage levels.
- :    : That doesn't mean I don't know how to battle, though!
-@>Conditional Branch: Script: pbTrainerBattle(PBTrainers::ENGINEER,"Elroy",_I("Aww, I lost."),false,0)
- @>Control Self Switch: A =ON
+@>Conditional Branch: Player is facing Down
+ @>Play SE: 'Door exit', 100, 100
+ @>Change Screen Color Tone: (-255,-255,-255,0), @6
+ @>Wait: 8 frame(s)
+ @>Transfer Player:[038: Vermillion City], (019,029), No Fade
+ @>Change Screen Color Tone: (0,0,0,0), @6
  @>
 : Branch End
-@>Script: pbTrainerEnd
-@>
-
-Page #2
-Conditions
-Self Switch A is ON
-
-Graphic: trchar014
-
-Autonomous Movement
-Type: Fixed
-Speed: 3: Slow
-Freq: 3: Low
-Options Enabled
-Move Animation
-Trigger: Action Button
-
-List of Event Commands:
-@>Text: I'm the chief electrician for the city. Everything that you see here had to be approved by me, first!
-@>
-
-Page #3
-Conditions
-Switch 0125:  is ON
-
-Graphic: trchar014
-
-Autonomous Movement
-Type: Fixed
-Speed: 3: Slow
-Freq: 3: Low
-Options Enabled
-Move Animation
-Trigger: Action Button
-
-List of Event Commands:
-@>Text: I'm the chief electrician for the city. Everything that you see here had to be approved by me, first!
 @>
 
 #------------------------------------------------------------------------------
 Event ID: 004
-Event Name: Trainer(3)
-(X,Y): (009,009)
+Event Name: EV004
+(X,Y): (019,067)
 
 Page #1
 Conditions
 None
 
-Graphic: trchar011
-
 Autonomous Movement
-Type: Custom
-Custom Move Route:
-(Repeat Action)
-$>Turn at Random
-
+Type: Fixed
 Speed: 3: Slow
-Freq: 4: High
+Freq: 3: Low
 Options Enabled
 Move Animation
-Trigger: Event Touch
+Trigger: Action Button
 
 List of Event Commands:
-@>Script: pbTrainerIntro(:SUPERNERD)
-@>Script: Kernel.pbNoticePlayer(get_character(0))
-@>Text: Hehe, having trouble what to do? Beat me and I'll let you in on a little secret.
-@>Conditional Branch: Script: pbTrainerBattle(PBTrainers::SUPERNERD,"Joseph",_I("You must really want to know, don't you!"),false,0)
- @>Control Self Switch: A =ON
+@>Conditional Branch: Variable [0122: Vermilion Gym "Cheat"] == 20
+ @>Text: After searching through the trash 100 times...
+ @>Text: You find a button, press it?
+ @>Show Choices: Yes, No
+ (When Cancel: Choice 2)
+ : When [Yes]
+  @>Text: May as well! Wouldn't have spent 20 minutes doing this
+   :    : otherwise!
+  @>Control Variables: [0123: Vermilion Gym Generators] = 2
+  @>Control Self Switch: A =ON
+  @>
+ : When [No]
+  @>
+ : Branch End
+ @>
+: Else
+ @>Text: Nope! There's only trash inside!
+ @>Control Variables: [0122: Vermilion Gym "Cheat"] += 1
  @>
 : Branch End
-@>Script: pbTrainerEnd
 @>
 
 Page #2
 Conditions
 Self Switch A is ON
 
-Graphic: trchar011
-
 Autonomous Movement
-Type: Custom
-Custom Move Route:
-(Repeat Action)
-$>Turn at Random
-
+Type: Fixed
 Speed: 3: Slow
-Freq: 4: High
+Freq: 3: Low
 Options Enabled
 Move Animation
 Trigger: Action Button
 
 List of Event Commands:
-@>Text: The laser is powered by generators. You'll have to power down the generators if you want to reach the leader.
+@>Text: Nope! There's only trash inside!
 @>
 
 Page #3
 Conditions
-Switch 0125:  is ON
-
-Graphic: trchar011
+Switch 0006: Defeated Gym 3 is ON
 
 Autonomous Movement
-Type: Custom
-Custom Move Route:
-(Repeat Action)
-$>Turn at Random
-
+Type: Fixed
 Speed: 3: Slow
-Freq: 4: High
+Freq: 3: Low
 Options Enabled
 Move Animation
 Trigger: Action Button
 
 List of Event Commands:
-@>Text: The laser is powered by generators. You'll have to power down the generators if you want to reach the leader.
+@>Text: Nope! There's only trash inside!
 @>
 
 #------------------------------------------------------------------------------
 Event ID: 005
-Event Name: EV005
-(X,Y): (007,007)
+Event Name: Gym Terminal
+(X,Y): (026,066)
 
 Page #1
 Conditions
 None
 
-Autonomous Movement
-Type: Fixed
-Speed: 3: Slow
-Freq: 3: Low
-Options Enabled
-Move Animation
-Trigger: Action Button
-
-List of Event Commands:
-@>
-
-Page #2
-Conditions
-Variable 0105: Passcode Handler is 2 or above
+Graphic: gymtelecom
 
 Autonomous Movement
 Type: Fixed
@@ -67273,487 +67169,68 @@ Move Animation
 Trigger: Action Button
 
 List of Event Commands:
+@>Conditional Branch: Player is facing Right
+ @>Text: Accessing Gym Network.
+ @>Label: Start
+ @>Text: Please select what you want to know about.
+ @>Show Choices: Gym Leader Preference, Gym Mechanics, Gym Leader Information, Nothing
+ (When Cancel: Choice 4)
+ : When [Gym Leader Preference]
+  @>Text: The Vermilion City Gym, Lt. Surge, has a preference for
+   :    : Electric Pokémon and Wind Puppets.
+  @>Text: Aside from the traditional weaknesses of Electric-type
+   :    : Pokémon, Wind-type Puppets are weak to Earth-typed
+   :    : moves.
+  @>Text: Wind-Type Puppets resist damage from Aero and 
+   :    : Wind-typed moves.
+  @>Jump to Label: Start
+  @>
+ : When [Gym Mechanics]
+  @>Text: Lt. Surge, using his expertise in warfare, has designed his 
+   :    : gym to reflect a training ground for recruits.
+  @>Text: There are two ways to navigate the gym. The first is 
+   :    : through a gauntlet of trainers, which Lt. Surge calls the 
+   :    : "Head-On Course".
+  @>Text: The second one requires navigating a simulated battlefield
+   :    : with Voltorbs littered in the ground as landmines. Tripping a
+   :    : landmine will send you back to the beginning of that course.
+  @>Text: In order to avoid tripping the landmines, it is advised to not
+   :    : run through the gym, or to bring a party member with 
+   :    : Magnet Pull.
+  @>Text: At the end, Lt. Surge will be blocked off by his trademark
+   :    : electrified fencing.
+  @>Text: Prospective challengers must disable the two generators 
+   :    : that power the fencing before they can battle the Gym 
+   :    : Leader.
+  @>Jump to Label: Start
+  @>
+ : When [Gym Leader Information]
+  @>Text: Lt. Surge, though he makes his home in Kanto, was born 
+   :    : and raised in the greater Unova Region.
+  @>Text: He served in the Kanto Armed Forces during the Tohjo Civil War,
+   :    : where he earned the nickname "The Lightning Unovan" for his
+   :    : tactics involving Electric Pokémon.
+  @>Text: After the gym was over, he was chosen as next in line to
+   :    : serve as Vermilion City's Gym Leader when the previous one
+   :    : stepped down.
+  @>Text: Since then, Vermilion Gym has gained a reputation as being
+   :    : effectively a boot camp in all but name.
+  @>Jump to Label: Start
+  @>
+ : When [Nothing]
+  @>Text: Shutting down information database.
+  @>
+ : Branch End
+ @>
+: Else
+ @>
+: Branch End
 @>
 
 #------------------------------------------------------------------------------
 Event ID: 006
-Event Name: EV006
-(X,Y): (007,006)
-
-Page #1
-Conditions
-None
-
-Autonomous Movement
-Type: Fixed
-Speed: 3: Slow
-Freq: 3: Low
-Options Enabled
-Move Animation
-Trigger: Action Button
-
-List of Event Commands:
-@>
-
-Page #2
-Conditions
-Variable 0105: Passcode Handler is 2 or above
-
-Autonomous Movement
-Type: Fixed
-Speed: 3: Slow
-Freq: 3: Low
-Options Enabled
-Move Animation
-Trigger: Action Button
-
-List of Event Commands:
-@>
-
-#------------------------------------------------------------------------------
-Event ID: 007
-Event Name: EV007
-(X,Y): (011,006)
-
-Page #1
-Conditions
-None
-
-Autonomous Movement
-Type: Fixed
-Speed: 3: Slow
-Freq: 3: Low
-Options Enabled
-Move Animation
-Trigger: Action Button
-
-List of Event Commands:
-@>
-
-Page #2
-Conditions
-Variable 0105: Passcode Handler is 2 or above
-
-Autonomous Movement
-Type: Fixed
-Speed: 3: Slow
-Freq: 3: Low
-Options Enabled
-Move Animation
-Trigger: Action Button
-
-List of Event Commands:
-@>
-
-#------------------------------------------------------------------------------
-Event ID: 008
-Event Name: EV008
-(X,Y): (011,007)
-
-Page #1
-Conditions
-None
-
-Autonomous Movement
-Type: Fixed
-Speed: 3: Slow
-Freq: 3: Low
-Options Enabled
-Move Animation
-Trigger: Action Button
-
-List of Event Commands:
-@>
-
-Page #2
-Conditions
-Variable 0105: Passcode Handler is 2 or above
-
-Autonomous Movement
-Type: Fixed
-Speed: 3: Slow
-Freq: 3: Low
-Options Enabled
-Move Animation
-Trigger: Action Button
-
-List of Event Commands:
-@>
-
-#------------------------------------------------------------------------------
-Event ID: 009
-Event Name: EV009
-(X,Y): (010,007)
-
-Page #1
-Conditions
-None
-
-Autonomous Movement
-Type: Fixed
-Speed: 3: Slow
-Freq: 3: Low
-Options Enabled
-Move Animation
-Trigger: Action Button
-
-List of Event Commands:
-@>
-
-Page #2
-Conditions
-Variable 0105: Passcode Handler is 2 or above
-
-Autonomous Movement
-Type: Fixed
-Speed: 3: Slow
-Freq: 3: Low
-Options Enabled
-Move Animation
-Trigger: Action Button
-
-List of Event Commands:
-@>
-
-#------------------------------------------------------------------------------
-Event ID: 010
-Event Name: EV010
-(X,Y): (009,007)
-
-Page #1
-Conditions
-None
-
-Autonomous Movement
-Type: Fixed
-Speed: 3: Slow
-Freq: 3: Low
-Options Enabled
-Move Animation
-Trigger: Action Button
-
-List of Event Commands:
-@>
-
-Page #2
-Conditions
-Variable 0105: Passcode Handler is 2 or above
-
-Autonomous Movement
-Type: Fixed
-Speed: 3: Slow
-Freq: 3: Low
-Options Enabled
-Move Animation
-Trigger: Action Button
-
-List of Event Commands:
-@>
-
-#------------------------------------------------------------------------------
-Event ID: 011
-Event Name: EV011
-(X,Y): (008,007)
-
-Page #1
-Conditions
-None
-
-Autonomous Movement
-Type: Fixed
-Speed: 3: Slow
-Freq: 3: Low
-Options Enabled
-Move Animation
-Trigger: Action Button
-
-List of Event Commands:
-@>
-
-Page #2
-Conditions
-Variable 0105: Passcode Handler is 2 or above
-
-Autonomous Movement
-Type: Fixed
-Speed: 3: Slow
-Freq: 3: Low
-Options Enabled
-Move Animation
-Trigger: Action Button
-
-List of Event Commands:
-@>
-
-#------------------------------------------------------------------------------
-Event ID: 012
-Event Name: EV012
-(X,Y): (008,006)
-
-Page #1
-Conditions
-None
-
-Autonomous Movement
-Type: Fixed
-Speed: 3: Slow
-Freq: 3: Low
-Options Enabled
-Move Animation
-Trigger: Action Button
-
-List of Event Commands:
-@>
-
-Page #2
-Conditions
-Variable 0105: Passcode Handler is 2 or above
-
-Autonomous Movement
-Type: Fixed
-Speed: 3: Slow
-Freq: 3: Low
-Options Enabled
-Move Animation
-Trigger: Action Button
-
-List of Event Commands:
-@>
-
-#------------------------------------------------------------------------------
-Event ID: 013
-Event Name: EV013
-(X,Y): (009,006)
-
-Page #1
-Conditions
-None
-
-Autonomous Movement
-Type: Fixed
-Speed: 3: Slow
-Freq: 3: Low
-Options Enabled
-Move Animation
-Trigger: Action Button
-
-List of Event Commands:
-@>
-
-Page #2
-Conditions
-Variable 0105: Passcode Handler is 2 or above
-
-Autonomous Movement
-Type: Fixed
-Speed: 3: Slow
-Freq: 3: Low
-Options Enabled
-Move Animation
-Trigger: Action Button
-
-List of Event Commands:
-@>
-
-#------------------------------------------------------------------------------
-Event ID: 014
-Event Name: EV014
-(X,Y): (010,006)
-
-Page #1
-Conditions
-None
-
-Autonomous Movement
-Type: Fixed
-Speed: 3: Slow
-Freq: 3: Low
-Options Enabled
-Move Animation
-Trigger: Action Button
-
-List of Event Commands:
-@>
-
-Page #2
-Conditions
-Variable 0105: Passcode Handler is 2 or above
-
-Autonomous Movement
-Type: Fixed
-Speed: 3: Slow
-Freq: 3: Low
-Options Enabled
-Move Animation
-Trigger: Action Button
-
-List of Event Commands:
-@>
-
-#------------------------------------------------------------------------------
-Event ID: 015
-Event Name: Gym Guy
-(X,Y): (010,014)
-
-Page #1
-Conditions
-None
-
-Graphic: NPC 15
-
-Autonomous Movement
-Type: Fixed
-Speed: 3: Slow
-Freq: 3: Low
-Options Enabled
-Move Animation
-Trigger: Action Button
-
-List of Event Commands:
-@>Text: Hey there, champ in the making! Let
- :    : me impart some knowledge onto you!
-@>Text: Vermilion's Leader is no pushover. Lt. Surge, as he's known, served
- :    : in the war many years ago. He even earned the nickname the
- :    : Lightning American!
-@>Text: When the puppets invaded, he took rather quickly to the
- :    : Wind-Type puppets with their ability to conduct electrical
- :    : currents.
-@>Text: Using Flying types is just asking for him to clip the
- :    : wings with a violent bolt of Electricity, and the same goes
- :    : for sending shockwaves through Water types.
-@>Text: However, if you use Earth types, you can trap the current his
- :    : Puppets make within the ground!
-@>Text: Another thing to know, Lt. Surge has locked himself behind
- :    : a pair of lasers. You'll have to find a way to shut them down
- :    : if you want to fight him.
-@>
-
-#------------------------------------------------------------------------------
-Event ID: 016
-Event Name: EV016
-(X,Y): (002,007)
-
-Page #1
-Conditions
-None
-
-Autonomous Movement
-Type: Fixed
-Speed: 3: Slow
-Freq: 3: Low
-Options Enabled
-Move Animation
-Trigger: Action Button
-
-List of Event Commands:
-@>Text: VERMILION GYM POWER GENERATORS
-@>Text: There seems to be a button underneath. Press it?
-@>Show Choices: Yes, No
-(When Cancel: Choice 2)
-: When [Yes]
- @>Text: Who wouldn't!
- @>Play SE: 'navopen', 80, 100
- @>Control Variables: [0105: Passcode Handler] += 1
- @>Conditional Branch: Variable [0105: Passcode Handler] == 1
-  @>Wait: 10 frame(s)
-  @>Text: VERMILION GYM POWER AT 50%
-  @>
- : Else
-  @>Wait: 10 frame(s)
-  @>Text: VERMILION GYM LASER POWER AT 0%
-   :    : SHUTTING DOWN LASERS TO CONSERVE GYM
-   :    : INTERNAL POWER.
-  @>
- : Branch End
- @>Control Self Switch: A =ON
- @>
-: When [No]
- @>
-: Branch End
-@>
-
-Page #2
-Conditions
-Self Switch A is ON
-
-Autonomous Movement
-Type: Fixed
-Speed: 3: Slow
-Freq: 3: Low
-Options Enabled
-Move Animation
-Trigger: Action Button
-
-List of Event Commands:
-@>Text: VERMILION GYM POWER GENERATORS
-@>Text: You've already pressed the button here.
-@>
-
-#------------------------------------------------------------------------------
-Event ID: 017
-Event Name: EV017
-(X,Y): (016,007)
-
-Page #1
-Conditions
-None
-
-Autonomous Movement
-Type: Fixed
-Speed: 3: Slow
-Freq: 3: Low
-Options Enabled
-Move Animation
-Trigger: Action Button
-
-List of Event Commands:
-@>Text: VERMILION GYM POWER GENERATORS
-@>Text: There seems to be a button underneath. Press it?
-@>Show Choices: Yes, No
-(When Cancel: Choice 2)
-: When [Yes]
- @>Text: Who wouldn't!
- @>Play SE: 'navopen', 80, 100
- @>Control Variables: [0105: Passcode Handler] += 1
- @>Conditional Branch: Variable [0105: Passcode Handler] == 1
-  @>Wait: 10 frame(s)
-  @>Text: VERMILION GYM POWER AT 50%
-  @>
- : Else
-  @>Wait: 10 frame(s)
-  @>Text: VERMILION GYM LASER POWER AT 0%
-   :    : SHUTTING DOWN LASERS TO CONSERVE GYM
-   :    : INTERNAL POWER.
-  @>
- : Branch End
- @>Control Self Switch: A =ON
- @>
-: When [No]
- @>
-: Branch End
-@>
-
-Page #2
-Conditions
-Self Switch A is ON
-
-Autonomous Movement
-Type: Fixed
-Speed: 3: Slow
-Freq: 3: Low
-Options Enabled
-Move Animation
-Trigger: Action Button
-
-List of Event Commands:
-@>Text: VERMILION GYM POWER GENERATORS
-@>Text: You've already pressed the button here.
-@>
-
-#------------------------------------------------------------------------------
-Event ID: 018
-Event Name: EV018
-(X,Y): (009,017)
+Event Name: Stairs down
+(X,Y): (028,061)
 
 Page #1
 Conditions
@@ -67768,11 +67245,242 @@ Move Animation
 Trigger: Player Touch
 
 List of Event Commands:
+@>Set Move Route: Player
+ :              : $>Through ON
+ :              : $>Always on Top ON
+ :              : $>Turn Right
+ :              : $>Move Right
+ :              : $>Through OFF
+ :              : $>Always on Top OFF
+@>Wait for Move's Completion
 @>Play SE: 'Exit Door', 80, 100
 @>Change Screen Color Tone: (-255,-255,-255,0), @6
-@>Wait: 6 frame(s)
-@>Transfer Player:[182: Regional Uplink Terminal], (014,025), No Fade
+@>Wait: 8 frame(s)
+@>Transfer Player:[244: Vermilion City Gym], (027,049), Left, No Fade
 @>Change Screen Color Tone: (0,0,0,0), @6
+@>
+
+#------------------------------------------------------------------------------
+Event ID: 007
+Event Name: EV007
+(X,Y): (028,049)
+
+Page #1
+Conditions
+None
+
+Autonomous Movement
+Type: Fixed
+Speed: 3: Slow
+Freq: 3: Low
+Options Enabled
+Move Animation
+Trigger: Player Touch
+
+List of Event Commands:
+@>Set Move Route: Player
+ :              : $>Through ON
+ :              : $>Always on Top ON
+ :              : $>Turn Right
+ :              : $>Move Right
+ :              : $>Move Upper Right
+ :              : $>Through OFF
+ :              : $>Always on Top OFF
+@>Wait for Move's Completion
+@>Play SE: 'Exit Door', 80, 100
+@>Change Screen Color Tone: (-255,-255,-255,0), @6
+@>Wait: 8 frame(s)
+@>Transfer Player:[244: Vermilion City Gym], (027,061), Left, No Fade
+@>Change Screen Color Tone: (0,0,0,0), @6
+@>
+
+#------------------------------------------------------------------------------
+Event ID: 008
+Event Name: EV008
+(X,Y): (024,027)
+
+Page #1
+Conditions
+None
+
+Graphic: trainer_LEADER_Surge
+
+Autonomous Movement
+Type: Fixed
+Speed: 3: Slow
+Freq: 3: Low
+Options Enabled
+Move Animation
+Trigger: Action Button
+
+List of Event Commands:
+@>Text: \xn[Lt. Surge]Woah there! You made it past my electrical fence?
+ :    : That must mean you braved your way through the
+ :    : landmine course!
+@>Conditional Branch: Variable [0122: Vermilion Gym "Cheat"] >= 20
+ @>Text: \xn[Lt. Surge]...Wait, you mean to tell me you dug through 
+  :    : the upstairs trash bin to find a button to deactivate my 
+  :    : fences?
+ @>Text: \xn[Lt. Surge]Haha, now that's resourceful! I haven't seen 
+  :    : anybody take advantage of that old trash bin in ages!
+ @>Text: \xn[Lt. Surge]Instead of charging blindly into peril, you 
+  :    : decided to look for an alternate route to the enemy 
+  :    : commander!
+ @>
+: Branch End
+@>Text: \xn[Lt. Surge]You've got moxie kiddo, I like that! My name is Lt. 
+ :    : Surge, leader of the Vermilion Gym.
+@>Text: \xn[Lt. Surge]Back during the wars I was in, Electric Pokémon
+ :    : saved my hide and got me out of trouble more times than I can 
+ :    : count!
+@>Text: \xn[Lt. Surge]So when I notice these new Puppets come along
+ :    : and they can manipulate electricity as well, it's only natural that
+ :    : I'd add them to my lineup!
+@>Text: \xn[Lt. Surge]You think you have what it takes to cut my
+ :    : circuits? Hah! You may have guts, but let's see how well
+ :    : you fare in actual combat!
+@>Control Switches: [0104: Transition Handler] = ON
+@>Control Variables: [0103: Vs. Transition ID] = 3
+@>Call Common Event: Vs. Transition - Badge to Ball Check
+@>Control Variables: [0113: Vs. Transition - Badge] = 2
+@>Control Variables: [0114: Vs. Transition - Leader] = 2
+@>Comment: ------------
+@>Conditional Branch: Script: pbTrainerBattle(:LEADER_Surge,"Lt. Surge",_I("Now that was a shocking turn of events! Not bad at all, kid!"),false,1+$Trainer.badge_count)
+ @>Text: \xn[Lt. Surge]That battle was electrifying! I'd challenge you
+  :    : to a rematch if my team wasn't exhausted!
+ @>Text: \xn[Lt. Surge]You're tough stuff kid! Take this Thunder Badge,
+  :    : proof that you've bested this old Lieutenant in combat!
+ @>Text: \me[Badge get]You earned the Thunder Badge!\wtnp[90]
+ @>Script: $Trainer.badges[2]=true # Boulder Badge
+ @>Text: \xn[Lt. Surge]To the victor go the spoils of war,
+  :    : take these as well, champ!
+ @>Script: pbReceiveItem(:TM24) # Thunderbolt, Pokemon
+ :       : pbReceiveItem(:SC24) # Thunderbolt, Puppet
+ @>Conditional Branch: Switch [0108: TM/SC Explanation] == OFF
+  @>Text: \xn[Lt. Surge]Those items I gave you were a Technical 
+   :    : Machine and a Skill Card. Think of them as special tactics 
+   :    : your Pokémon and Puppets can learn.
+  @>Text: \xn[Lt. Surge]If you stumble across them, there's also 
+   :    : special tactics that can be taught via Hidden Machines 
+   :    : and Hidden Skill Cards.
+  @>Text: \xn[Lt. Surge]All these machines can be used an unlimited number
+   :    : of times, so if you have one you prefer to use in battle, your enemies
+   :    : will never see it coming!
+  @>Control Switches: [0108: TM/SC Explanation] = ON
+  @>
+ : Branch End
+ @>Text: \xn[Lt. Surge]Those machines contain the move Thunderbolt, a
+  :    : devastating Electric- and Wind-type move that lets loose a
+  :    : dangerous bolt of lightning upon their foes!
+ @>Text: \xn[Lt. Surge]A move utilized by the best, it even has
+  :    : the potential to leave a foe paralyzed and unable to
+  :    : move!
+ @>Control Switches: [0006: Defeated Gym 3] = ON
+ @>
+: Branch End
+@>
+
+Page #2
+Conditions
+Switch 0006: Defeated Gym 3 is ON
+
+Graphic: trainer_LEADER_Surge
+
+Autonomous Movement
+Type: Fixed
+Speed: 3: Slow
+Freq: 3: Low
+Options Enabled
+Move Animation
+Trigger: Action Button
+
+List of Event Commands:
+@>Text: \xn[Lt. Surge]Most people don't like to talk about the wars that
+ :    : this country has seen. Can't say I blame 'em, they were nasty
+ :    : and full of brutal bloodshed.
+@>Text: \xn[Lt. Surge]It was only recently that the region began to settle
+ :    : down after those events, and even more recent that amends were
+ :    : made with our neighboors in Johto.
+@>Text: \xn[Lt. Surge]But still, Pokémon and Trainers used as weapons, it was
+ :    : a violent sight.
+@>Text: \xn[Lt. Surge]Take it from me, kiddo! As someone who witnessed it
+ :    : firsthand, you don't wanna hear about these stories!
+@>
+
+#------------------------------------------------------------------------------
+Event ID: 009
+Event Name: Brock
+(X,Y): (024,022)
+
+Page #1
+Conditions
+None
+
+Graphic: trainer_LEADER_Brock
+
+Autonomous Movement
+Type: Fixed
+Speed: 3: Slow
+Freq: 3: Low
+Options Enabled
+Move Animation
+Trigger: Action Button
+
+List of Event Commands:
+@>Text: \xn[Brock]Welcome to Pewter Gym! my name is Brock, the Gym Leader. I specialize in Rock-type Pokémon and Earth-type Puppets.
+@>Text: \xn[Brock]When it comes to battling, I believe that the best offense is a good defense. You'll find it extremely difficult to break past my defenses!
+@>Text: \xn[Brock]Think you have what it takes? Then come on, show me your best!
+@>Control Switches: [0104: Transition Handler] = ON
+@>Control Variables: [0103: Vs. Transition ID] = 3
+@>Call Common Event: Vs. Transition - Badge to Ball Check
+@>Control Variables: [0113: Vs. Transition - Badge] = 0
+@>Control Variables: [0114: Vs. Transition - Leader] = 0
+@>Conditional Branch: Script: pbTrainerBattle(:LEADER_Brock,"Brock",_I("You're stronger than I expected. Impressive work, challenger!"),false,1+$Trainer.badge_count)
+ @>Text: \xn[Brock]Not bad at all, challenger! I applaud your skills! As proof of your victory, I confer upon you the Boulder Badge!
+ @>Text: \me[Badge get]You earned the Boulder Badge!\wtnp[90]
+ @>Script: $Trainer.badges[0]=true # Boulder Badge
+ @>Text: \xn[Brock]Having the Boulder Badge will allow your Pokémon or Puppets to use the move Flash outside of battle.
+ @>Text: \xn[Brock]Flash is a skill that Pokémon and Puppets can learn that will illuminate dark
+  :    : areas, such as caves.
+ @>Text: \xn[Brock]Speaking of TMs and SCs, here, take these as well!
+ @>Script: pbReceiveItem(:TM39) # Rock Tomb, Pokemon
+ :       : pbReceiveItem(:SC39) # Rock Tomb, Puppet
+ @>Conditional Branch: Switch [0108: TM/SC Explanation] == OFF
+  @>Text: \xn[Brock]What I just gave you is a Technical Machine and a Skill Card, which allow you to teach moves to your Pokémon and Puppets.
+  @>Text: \xn[Brock]There are also special Field Move variants called Hidden Machines and Hidden Skill Cards.
+  @>Text: \xn[Brock]All of these have an unlimited number of uses, so you can teach them to any number of your Pokémon or Puppets!
+  @>Control Switches: [0108: TM/SC Explanation] = ON
+  @>
+ : Branch End
+ @>Text: \xn[Brock]Those are the Rock Tomb TMs and SCs. A rather simple move that'll make rocks fall down on your target, with a chance of lowering their speed as it 
+  :    : traps them.
+ @>Text: \xn[Brock]Be sure to put them to good use, they'll definitely help give you an advantage in battle!
+ @>Control Switches: [0004: Defeated Gym 1] = ON
+ @>Script: pbSetSelfSwitch(19,"A",true)
+ @>Script: pbSetSelfSwitch(21,"A",true)
+ @>
+: Branch End
+@>Control Switches: [0104: Transition Handler] = OFF
+@>
+
+Page #2
+Conditions
+Switch 0004: Defeated Gym 1 is ON
+
+Graphic: trainer_LEADER_Brock
+
+Autonomous Movement
+Type: Fixed
+Speed: 3: Slow
+Freq: 3: Low
+Options Enabled
+Move Animation
+Trigger: Action Button
+
+List of Event Commands:
+@>Text: \xn[Brock]The world is vast and large, and the existence of the Puppets proves there's much about this world that we don't know yet.
+@>Text: \xn[Brock]But what I do know is that there will always be strong trainers like you and I to make the world a little more enjoyable.
+@>Text: \xn[Brock]This is why I'll continue to hone myself, and my partners, that way we can take on any challenge that comes our way!
 @>
 
 #------------------------------------------------------------------------------
@@ -75181,6 +74889,1131 @@ List of Event Commands:
 #------------------------------------------------------------------------------
 
 #==============================================================================
+Map ID: 261
+Map Name: Vermilion City Gym
+Tileset: 014: Gyms
+Width: 20, Height: 20
+Auto-Change BGM: 014. Cosmic Mind ~ Emotional Skyscraper
+
+#------------------------------------------------------------------------------
+Event ID: 001
+Event Name: EV001
+(X,Y): (009,002)
+
+Page #1
+Conditions
+None
+
+Graphic: trchar061
+
+Autonomous Movement
+Type: Fixed
+Speed: 3: Slow
+Freq: 3: Low
+Options Enabled
+Move Animation
+Trigger: Action Button
+
+List of Event Commands:
+@>Text: Woah there! You made it past the electrical barrier I
+ :    : set up? You must have disabled the Gym's Power,
+ :    : then!
+@>Text: That means you're here to challenge me then! I
+ :    : like your style, kiddo. I can see you'll resort to
+ :    : whatever it takes to get to your goal.
+@>Text: My name is Lt. Surge, leader of Vermilion Gym.
+ :    : Back in the war, relying on my electric Pokémon
+ :    : helped me out big time.
+@>Text: And even now, with these new Wind-Type puppets,
+ :    : I'm still able to send my victims into paralysis!
+@>Text: You think you have what it takes to break my circuits?
+ :    : Hah! You have spunk kid, I'll give you that! But let's see
+ :    : how well you fare in actual combat!
+@>Conditional Branch: Switch [0134] == ON
+ @>Conditional Branch: Script: pbTrainerBattle(PBTrainers::LEADER_Surge,"Lt. Surge",_I("Now that was a shocking turn of events! Not bad at all, Kid!"),false,3)
+  @>
+ : Else
+  @>Exit Event Processing
+  @>
+ : Branch End
+ @>
+: Else
+ @>Conditional Branch: Switch [0129] == ON
+  @>Conditional Branch: Script: pbTrainerBattle(PBTrainers::LEADER_Surge,"Lt. Surge",_I("Now that was a shocking turn of events! Not bad at all, Kid!"),false,2)
+   @>
+  : Else
+   @>Exit Event Processing
+   @>
+  : Branch End
+  @>
+ : Else
+  @>Conditional Branch: Script: pbTrainerBattle(PBTrainers::LEADER_Surge,"Lt. Surge",_I("Now that was a shocking turn of events! Not bad at all, Kid!"),false,1)
+   @>
+  : Else
+   @>Exit Event Processing
+   @>
+  : Branch End
+  @>
+ : Branch End
+ @>
+: Branch End
+@>Text: Lt. Surge: That battle left me powered up for another one!
+ :    : I'd challenge you to a rematch if my puppets weren't already
+ :    : fainted!
+@>Text: You're tough stuff kid! Have this Thunder Badge, proof
+ :    : that you beat this old Lieutenant!
+@>Text: \me[003. Fanfare.ogg]\PN earned the Thunder Badge!\wt[80]
+@>Script: $Trainer.badges[2]=true
+@>Control Switches: [0125] = ON
+@>Text: Lt. Surge: To the victor go the spoils of war.
+ :    : I want you to take this as well.
+@>Script: Kernel.pbReceiveItem(PBItems::G18TM24)
+@>Text: Lt. Surge: That SC is Thunderbolt. It harnesses the 
+ :    : inner electricity within a puppet, and brings forth a 
+ :    : deadly bolt of lightning to strike down foes.
+@>Text: A move utilized by the best, it could even leave
+ :    : the foe paralyzed and unable to move!
+@>
+
+Page #2
+Conditions
+Switch 0125:  is ON
+
+Graphic: trchar061
+
+Autonomous Movement
+Type: Fixed
+Speed: 3: Slow
+Freq: 3: Low
+Options Enabled
+Move Animation
+Trigger: Action Button
+
+List of Event Commands:
+@>Text: Most people don't like to talk about the wars this
+ :    : country has seen. They were some of the most
+ :    : brutal bloodsheds around.
+@>Text: Pokemon and Trainers used as weapons, it was
+ :    : a violent sight... I don't think you're ready to hear
+ :    : such stories yet, kiddo!
+@>
+
+#------------------------------------------------------------------------------
+Event ID: 002
+Event Name: Trainer(3)
+(X,Y): (017,010)
+
+Page #1
+Conditions
+None
+
+Graphic: trchar009
+
+Autonomous Movement
+Type: Fixed
+Speed: 3: Slow
+Freq: 3: Low
+Options Enabled
+Move Animation
+Trigger: Event Touch
+
+List of Event Commands:
+@>Script: pbTrainerIntro(:ROCKER)
+@>Script: Kernel.pbNoticePlayer(get_character(0))
+@>Text: This gym is the perfect place for someone like me! All the energy here just revs me up!
+@>Conditional Branch: Script: pbTrainerBattle(PBTrainers::ROCKER,"Martain",_I("Woah, brakes applied."),false,0)
+ @>Control Self Switch: A =ON
+ @>
+: Branch End
+@>Script: pbTrainerEnd
+@>
+
+Page #2
+Conditions
+Self Switch A is ON
+
+Graphic: trchar009
+
+Autonomous Movement
+Type: Fixed
+Speed: 3: Slow
+Freq: 3: Low
+Options Enabled
+Move Animation
+Trigger: Action Button
+
+List of Event Commands:
+@>Text: I'm gonna have to watch out for your name in 
+ :    : the future, you're going places!
+@>
+
+Page #3
+Conditions
+Switch 0125:  is ON
+
+Graphic: trchar009
+
+Autonomous Movement
+Type: Fixed
+Speed: 3: Slow
+Freq: 3: Low
+Options Enabled
+Move Animation
+Trigger: Action Button
+
+List of Event Commands:
+@>Text: I'm gonna have to watch out for your name in 
+ :    : the future, you're going places!
+@>
+
+#------------------------------------------------------------------------------
+Event ID: 003
+Event Name: Trainer(3)
+(X,Y): (001,010)
+
+Page #1
+Conditions
+None
+
+Graphic: trchar014
+
+Autonomous Movement
+Type: Fixed
+Speed: 3: Slow
+Freq: 3: Low
+Options Enabled
+Move Animation
+Trigger: Event Touch
+
+List of Event Commands:
+@>Script: pbTrainerIntro(:ENGINEER)
+@>Script: Kernel.pbNoticePlayer(get_character(0))
+@>Text: Oh I'm not a gym trainer, I just keep an eye on the gym's electrical usage levels.
+ :    : That doesn't mean I don't know how to battle, though!
+@>Conditional Branch: Script: pbTrainerBattle(PBTrainers::ENGINEER,"Elroy",_I("Aww, I lost."),false,0)
+ @>Control Self Switch: A =ON
+ @>
+: Branch End
+@>Script: pbTrainerEnd
+@>
+
+Page #2
+Conditions
+Self Switch A is ON
+
+Graphic: trchar014
+
+Autonomous Movement
+Type: Fixed
+Speed: 3: Slow
+Freq: 3: Low
+Options Enabled
+Move Animation
+Trigger: Action Button
+
+List of Event Commands:
+@>Text: I'm the chief electrician for the city. Everything that you see here had to be approved by me, first!
+@>
+
+Page #3
+Conditions
+Switch 0125:  is ON
+
+Graphic: trchar014
+
+Autonomous Movement
+Type: Fixed
+Speed: 3: Slow
+Freq: 3: Low
+Options Enabled
+Move Animation
+Trigger: Action Button
+
+List of Event Commands:
+@>Text: I'm the chief electrician for the city. Everything that you see here had to be approved by me, first!
+@>
+
+#------------------------------------------------------------------------------
+Event ID: 004
+Event Name: Trainer(3)
+(X,Y): (009,009)
+
+Page #1
+Conditions
+None
+
+Graphic: trchar011
+
+Autonomous Movement
+Type: Custom
+Custom Move Route:
+(Repeat Action)
+$>Turn at Random
+
+Speed: 3: Slow
+Freq: 4: High
+Options Enabled
+Move Animation
+Trigger: Event Touch
+
+List of Event Commands:
+@>Script: pbTrainerIntro(:SUPERNERD)
+@>Script: Kernel.pbNoticePlayer(get_character(0))
+@>Text: Hehe, having trouble what to do? Beat me and I'll let you in on a little secret.
+@>Conditional Branch: Script: pbTrainerBattle(PBTrainers::SUPERNERD,"Joseph",_I("You must really want to know, don't you!"),false,0)
+ @>Control Self Switch: A =ON
+ @>
+: Branch End
+@>Script: pbTrainerEnd
+@>
+
+Page #2
+Conditions
+Self Switch A is ON
+
+Graphic: trchar011
+
+Autonomous Movement
+Type: Custom
+Custom Move Route:
+(Repeat Action)
+$>Turn at Random
+
+Speed: 3: Slow
+Freq: 4: High
+Options Enabled
+Move Animation
+Trigger: Action Button
+
+List of Event Commands:
+@>Text: The laser is powered by generators. You'll have to power down the generators if you want to reach the leader.
+@>
+
+Page #3
+Conditions
+Switch 0125:  is ON
+
+Graphic: trchar011
+
+Autonomous Movement
+Type: Custom
+Custom Move Route:
+(Repeat Action)
+$>Turn at Random
+
+Speed: 3: Slow
+Freq: 4: High
+Options Enabled
+Move Animation
+Trigger: Action Button
+
+List of Event Commands:
+@>Text: The laser is powered by generators. You'll have to power down the generators if you want to reach the leader.
+@>
+
+#------------------------------------------------------------------------------
+Event ID: 005
+Event Name: EV005
+(X,Y): (007,007)
+
+Page #1
+Conditions
+None
+
+Autonomous Movement
+Type: Fixed
+Speed: 3: Slow
+Freq: 3: Low
+Options Enabled
+Move Animation
+Trigger: Action Button
+
+List of Event Commands:
+@>
+
+Page #2
+Conditions
+Variable 0105: Passcode Handler is 2 or above
+
+Autonomous Movement
+Type: Fixed
+Speed: 3: Slow
+Freq: 3: Low
+Options Enabled
+Move Animation
+Trigger: Action Button
+
+List of Event Commands:
+@>
+
+#------------------------------------------------------------------------------
+Event ID: 006
+Event Name: EV006
+(X,Y): (007,006)
+
+Page #1
+Conditions
+None
+
+Autonomous Movement
+Type: Fixed
+Speed: 3: Slow
+Freq: 3: Low
+Options Enabled
+Move Animation
+Trigger: Action Button
+
+List of Event Commands:
+@>
+
+Page #2
+Conditions
+Variable 0105: Passcode Handler is 2 or above
+
+Autonomous Movement
+Type: Fixed
+Speed: 3: Slow
+Freq: 3: Low
+Options Enabled
+Move Animation
+Trigger: Action Button
+
+List of Event Commands:
+@>
+
+#------------------------------------------------------------------------------
+Event ID: 007
+Event Name: EV007
+(X,Y): (011,006)
+
+Page #1
+Conditions
+None
+
+Autonomous Movement
+Type: Fixed
+Speed: 3: Slow
+Freq: 3: Low
+Options Enabled
+Move Animation
+Trigger: Action Button
+
+List of Event Commands:
+@>
+
+Page #2
+Conditions
+Variable 0105: Passcode Handler is 2 or above
+
+Autonomous Movement
+Type: Fixed
+Speed: 3: Slow
+Freq: 3: Low
+Options Enabled
+Move Animation
+Trigger: Action Button
+
+List of Event Commands:
+@>
+
+#------------------------------------------------------------------------------
+Event ID: 008
+Event Name: EV008
+(X,Y): (011,007)
+
+Page #1
+Conditions
+None
+
+Autonomous Movement
+Type: Fixed
+Speed: 3: Slow
+Freq: 3: Low
+Options Enabled
+Move Animation
+Trigger: Action Button
+
+List of Event Commands:
+@>
+
+Page #2
+Conditions
+Variable 0105: Passcode Handler is 2 or above
+
+Autonomous Movement
+Type: Fixed
+Speed: 3: Slow
+Freq: 3: Low
+Options Enabled
+Move Animation
+Trigger: Action Button
+
+List of Event Commands:
+@>
+
+#------------------------------------------------------------------------------
+Event ID: 009
+Event Name: EV009
+(X,Y): (010,007)
+
+Page #1
+Conditions
+None
+
+Autonomous Movement
+Type: Fixed
+Speed: 3: Slow
+Freq: 3: Low
+Options Enabled
+Move Animation
+Trigger: Action Button
+
+List of Event Commands:
+@>
+
+Page #2
+Conditions
+Variable 0105: Passcode Handler is 2 or above
+
+Autonomous Movement
+Type: Fixed
+Speed: 3: Slow
+Freq: 3: Low
+Options Enabled
+Move Animation
+Trigger: Action Button
+
+List of Event Commands:
+@>
+
+#------------------------------------------------------------------------------
+Event ID: 010
+Event Name: EV010
+(X,Y): (009,007)
+
+Page #1
+Conditions
+None
+
+Autonomous Movement
+Type: Fixed
+Speed: 3: Slow
+Freq: 3: Low
+Options Enabled
+Move Animation
+Trigger: Action Button
+
+List of Event Commands:
+@>
+
+Page #2
+Conditions
+Variable 0105: Passcode Handler is 2 or above
+
+Autonomous Movement
+Type: Fixed
+Speed: 3: Slow
+Freq: 3: Low
+Options Enabled
+Move Animation
+Trigger: Action Button
+
+List of Event Commands:
+@>
+
+#------------------------------------------------------------------------------
+Event ID: 011
+Event Name: EV011
+(X,Y): (008,007)
+
+Page #1
+Conditions
+None
+
+Autonomous Movement
+Type: Fixed
+Speed: 3: Slow
+Freq: 3: Low
+Options Enabled
+Move Animation
+Trigger: Action Button
+
+List of Event Commands:
+@>
+
+Page #2
+Conditions
+Variable 0105: Passcode Handler is 2 or above
+
+Autonomous Movement
+Type: Fixed
+Speed: 3: Slow
+Freq: 3: Low
+Options Enabled
+Move Animation
+Trigger: Action Button
+
+List of Event Commands:
+@>
+
+#------------------------------------------------------------------------------
+Event ID: 012
+Event Name: EV012
+(X,Y): (008,006)
+
+Page #1
+Conditions
+None
+
+Autonomous Movement
+Type: Fixed
+Speed: 3: Slow
+Freq: 3: Low
+Options Enabled
+Move Animation
+Trigger: Action Button
+
+List of Event Commands:
+@>
+
+Page #2
+Conditions
+Variable 0105: Passcode Handler is 2 or above
+
+Autonomous Movement
+Type: Fixed
+Speed: 3: Slow
+Freq: 3: Low
+Options Enabled
+Move Animation
+Trigger: Action Button
+
+List of Event Commands:
+@>
+
+#------------------------------------------------------------------------------
+Event ID: 013
+Event Name: EV013
+(X,Y): (009,006)
+
+Page #1
+Conditions
+None
+
+Autonomous Movement
+Type: Fixed
+Speed: 3: Slow
+Freq: 3: Low
+Options Enabled
+Move Animation
+Trigger: Action Button
+
+List of Event Commands:
+@>
+
+Page #2
+Conditions
+Variable 0105: Passcode Handler is 2 or above
+
+Autonomous Movement
+Type: Fixed
+Speed: 3: Slow
+Freq: 3: Low
+Options Enabled
+Move Animation
+Trigger: Action Button
+
+List of Event Commands:
+@>
+
+#------------------------------------------------------------------------------
+Event ID: 014
+Event Name: EV014
+(X,Y): (010,006)
+
+Page #1
+Conditions
+None
+
+Autonomous Movement
+Type: Fixed
+Speed: 3: Slow
+Freq: 3: Low
+Options Enabled
+Move Animation
+Trigger: Action Button
+
+List of Event Commands:
+@>
+
+Page #2
+Conditions
+Variable 0105: Passcode Handler is 2 or above
+
+Autonomous Movement
+Type: Fixed
+Speed: 3: Slow
+Freq: 3: Low
+Options Enabled
+Move Animation
+Trigger: Action Button
+
+List of Event Commands:
+@>
+
+#------------------------------------------------------------------------------
+Event ID: 015
+Event Name: Gym Guy
+(X,Y): (010,014)
+
+Page #1
+Conditions
+None
+
+Graphic: NPC 15
+
+Autonomous Movement
+Type: Fixed
+Speed: 3: Slow
+Freq: 3: Low
+Options Enabled
+Move Animation
+Trigger: Action Button
+
+List of Event Commands:
+@>Text: Hey there, champ in the making! Let
+ :    : me impart some knowledge onto you!
+@>Text: Vermilion's Leader is no pushover. Lt. Surge, as he's known, served
+ :    : in the war many years ago. He even earned the nickname the
+ :    : Lightning American!
+@>Text: When the puppets invaded, he took rather quickly to the
+ :    : Wind-Type puppets with their ability to conduct electrical
+ :    : currents.
+@>Text: Using Flying types is just asking for him to clip the
+ :    : wings with a violent bolt of Electricity, and the same goes
+ :    : for sending shockwaves through Water types.
+@>Text: However, if you use Earth types, you can trap the current his
+ :    : Puppets make within the ground!
+@>Text: Another thing to know, Lt. Surge has locked himself behind
+ :    : a pair of lasers. You'll have to find a way to shut them down
+ :    : if you want to fight him.
+@>
+
+#------------------------------------------------------------------------------
+Event ID: 016
+Event Name: EV016
+(X,Y): (002,007)
+
+Page #1
+Conditions
+None
+
+Autonomous Movement
+Type: Fixed
+Speed: 3: Slow
+Freq: 3: Low
+Options Enabled
+Move Animation
+Trigger: Action Button
+
+List of Event Commands:
+@>Text: VERMILION GYM POWER GENERATORS
+@>Text: There seems to be a button underneath. Press it?
+@>Show Choices: Yes, No
+(When Cancel: Choice 2)
+: When [Yes]
+ @>Text: Who wouldn't!
+ @>Play SE: 'navopen', 80, 100
+ @>Control Variables: [0105: Passcode Handler] += 1
+ @>Conditional Branch: Variable [0105: Passcode Handler] == 1
+  @>Wait: 10 frame(s)
+  @>Text: VERMILION GYM POWER AT 50%
+  @>
+ : Else
+  @>Wait: 10 frame(s)
+  @>Text: VERMILION GYM LASER POWER AT 0%
+   :    : SHUTTING DOWN LASERS TO CONSERVE GYM
+   :    : INTERNAL POWER.
+  @>
+ : Branch End
+ @>Control Self Switch: A =ON
+ @>
+: When [No]
+ @>
+: Branch End
+@>
+
+Page #2
+Conditions
+Self Switch A is ON
+
+Autonomous Movement
+Type: Fixed
+Speed: 3: Slow
+Freq: 3: Low
+Options Enabled
+Move Animation
+Trigger: Action Button
+
+List of Event Commands:
+@>Text: VERMILION GYM POWER GENERATORS
+@>Text: You've already pressed the button here.
+@>
+
+#------------------------------------------------------------------------------
+Event ID: 017
+Event Name: EV017
+(X,Y): (016,007)
+
+Page #1
+Conditions
+None
+
+Autonomous Movement
+Type: Fixed
+Speed: 3: Slow
+Freq: 3: Low
+Options Enabled
+Move Animation
+Trigger: Action Button
+
+List of Event Commands:
+@>Text: VERMILION GYM POWER GENERATORS
+@>Text: There seems to be a button underneath. Press it?
+@>Show Choices: Yes, No
+(When Cancel: Choice 2)
+: When [Yes]
+ @>Text: Who wouldn't!
+ @>Play SE: 'navopen', 80, 100
+ @>Control Variables: [0105: Passcode Handler] += 1
+ @>Conditional Branch: Variable [0105: Passcode Handler] == 1
+  @>Wait: 10 frame(s)
+  @>Text: VERMILION GYM POWER AT 50%
+  @>
+ : Else
+  @>Wait: 10 frame(s)
+  @>Text: VERMILION GYM LASER POWER AT 0%
+   :    : SHUTTING DOWN LASERS TO CONSERVE GYM
+   :    : INTERNAL POWER.
+  @>
+ : Branch End
+ @>Control Self Switch: A =ON
+ @>
+: When [No]
+ @>
+: Branch End
+@>
+
+Page #2
+Conditions
+Self Switch A is ON
+
+Autonomous Movement
+Type: Fixed
+Speed: 3: Slow
+Freq: 3: Low
+Options Enabled
+Move Animation
+Trigger: Action Button
+
+List of Event Commands:
+@>Text: VERMILION GYM POWER GENERATORS
+@>Text: You've already pressed the button here.
+@>
+
+#------------------------------------------------------------------------------
+Event ID: 018
+Event Name: EV018
+(X,Y): (009,017)
+
+Page #1
+Conditions
+None
+
+Autonomous Movement
+Type: Fixed
+Speed: 3: Slow
+Freq: 3: Low
+Options Enabled
+Move Animation
+Trigger: Player Touch
+
+List of Event Commands:
+@>Play SE: 'Exit Door', 80, 100
+@>Change Screen Color Tone: (-255,-255,-255,0), @6
+@>Wait: 6 frame(s)
+@>Transfer Player:[182: Regional Uplink Terminal], (014,025), No Fade
+@>Change Screen Color Tone: (0,0,0,0), @6
+@>
+
+#------------------------------------------------------------------------------
+
+#==============================================================================
+Map ID: 262
+Map Name: Vermilion City Gym
+Tileset: 030: Vermillion Gym
+Width: 50, Height: 70
+Auto-Change BGM: W-011. Pokemon Gym
+
+#------------------------------------------------------------------------------
+Event ID: 001
+Event Name: Gym Terminal
+(X,Y): (008,006)
+
+Page #1
+Conditions
+None
+
+Graphic: gymtelecom
+
+Autonomous Movement
+Type: Fixed
+Speed: 3: Slow
+Freq: 3: Low
+Options Enabled
+Move Animation
+Trigger: Action Button
+
+List of Event Commands:
+@>Conditional Branch: Player is facing Right
+ @>Text: Accessing Gym Network.
+ @>Label: Start
+ @>Text: Please select what you want to know about.
+ @>Show Choices: Gym Leader Preference, Gym Mechanics, Gym Leader Information, Nothing
+ (When Cancel: Choice 4)
+ : When [Gym Leader Preference]
+  @>Text: The Vermilion City Gym, Lt. Surge, has a preference for
+   :    : Electric Pokémon and Wind Puppets.
+  @>Text: Aside from the traditional weaknesses of Electric-type
+   :    : Pokémon, Wind-type Puppets are weak to Earth-typed
+   :    : moves.
+  @>Text: Wind-Type Puppets resist damage from Aero and 
+   :    : Wind-typed moves.
+  @>Jump to Label: Start
+  @>
+ : When [Gym Mechanics]
+  @>Text: Lt. Surge, using his expertise in warfare, has designed his 
+   :    : gym to reflect a training ground for recruits.
+  @>Text: There are two ways to navigate the gym. The first is 
+   :    : through a gauntlet of trainers, which Lt. Surge calls the 
+   :    : "Head-On Course".
+  @>Text: The second one requires navigating a simulated battlefield
+   :    : with Voltorbs littered in the ground as landmines. Tripping a
+   :    : landmine will send you back to the beginning of that course.
+  @>Text: In order to avoid tripping the landmines, it is advised to not
+   :    : run through the gym, or to bring a party member with 
+   :    : Magnet Pull.
+  @>Text: At the end, Lt. Surge will be blocked off by his trademark
+   :    : electrified fencing.
+  @>Text: Prospective challengers must disable the two generators 
+   :    : that power the fencing before they can battle the Gym 
+   :    : Leader.
+  @>Jump to Label: Start
+  @>
+ : When [Gym Leader Information]
+  @>Text: Lt. Surge, though he makes his home in Kanto, was born 
+   :    : and raised in the greater Unova Region.
+  @>Text: He served in the Kanto Armed Forces during the Tohjo Civil War,
+   :    : where he earned the nickname "The Lightning Unovan" for his
+   :    : tactics involving Electric Pokémon.
+  @>Text: After the gym was over, he was chosen as next in line to
+   :    : serve as Vermilion City's Gym Leader when the previous one
+   :    : stepped down.
+  @>Text: Since then, Vermilion Gym has gained a reputation as being
+   :    : effectively a boot camp in all but name.
+  @>Jump to Label: Start
+  @>
+ : When [Nothing]
+  @>Text: Shutting down information database.
+  @>
+ : Branch End
+ @>
+: Else
+ @>
+: Branch End
+@>
+
+#------------------------------------------------------------------------------
+Event ID: 002
+Event Name: Gold
+(X,Y): (009,002)
+
+Page #1
+Conditions
+None
+
+Autonomous Movement
+Type: Fixed
+Speed: 3: Slow
+Freq: 3: Low
+Options Enabled
+Move Animation
+Trigger: Action Button
+
+List of Event Commands:
+@>
+
+Page #2
+Conditions
+Switch 0109: Met Gold is ON
+Switch 0110: s:badgeQtyOdd? is ON
+
+Graphic: Gold (PurpleZaffre)
+
+Autonomous Movement
+Type: Fixed
+Speed: 3: Slow
+Freq: 3: Low
+Options Enabled
+Move Animation
+Trigger: Action Button
+
+List of Event Commands:
+@>Call Common Event: Vs. Gold - Encounter
+@>Text: \xn[Gold]Alright, let's do this, \pn!
+@>Control Switches: [0104: Transition Handler] = ON
+@>Control Variables: [0103: Vs. Transition ID] = 4
+@>Control Variables: [0115: Vs. Transition - Background] = 4
+@>Script: setBattleRule("base", "indoor1")
+@>Conditional Branch: Script: pbTrainerBattle(:RIVAL_Gold,"Gold",_I(pbGet(4)),false,1+pbGet(116))
+ @>Call Common Event: Vs. Gold - Post-Battle
+ @>Conditional Branch: Player is facing Right
+  @>Set Move Route: Player
+   :              : $>Direction Fix ON
+   :              : $>Move Down
+   :              : $>Direction Fix OFF
+  @>Wait for Move's Completion
+  @>
+ : Branch End
+ @>Set Move Route: [Gold]
+  :              : $>Move Left
+  :              : $>Move Left
+  :              : $>Move Left
+  :              : $>Move Down
+  :              : $>Move Down
+  :              : $>Move Down
+  :              : $>Move Down
+  :              : $>Move Down
+  :              : $>Move Down
+  :              : $>Change Opacity: 0
+  :              : $>SE: 'Door exit', 100, 100
+ @>Wait for Move's Completion
+ @>Control Variables: [0116: Battled Rival Gold] += 1
+ @>Control Self Switch: A =ON
+ @>Script: pbSetSelfSwitch(13,"A",true)
+ @>
+: Else
+ @>Exit Event Processing
+ @>
+: Branch End
+@>
+
+Page #3
+Conditions
+Self Switch A is ON
+
+Autonomous Movement
+Type: Fixed
+Speed: 3: Slow
+Freq: 3: Low
+Options Enabled
+Move Animation
+Trigger: Action Button
+
+List of Event Commands:
+@>
+
+#------------------------------------------------------------------------------
+Event ID: 003
+Event Name: ExitArrow
+(X,Y): (006,009)
+
+Page #1
+Conditions
+None
+
+Graphic: Exitarrow_red
+
+Autonomous Movement
+Type: Fixed
+Speed: 3: Slow
+Freq: 3: Low
+Options Enabled
+Move Animation
+Stop Animation
+Always on Top
+Trigger: Player Touch
+
+List of Event Commands:
+@>Conditional Branch: Player is facing Down
+ @>Play SE: 'Door exit', 100, 100
+ @>Change Screen Color Tone: (-255,-255,-255,0), @6
+ @>Wait: 8 frame(s)
+ @>Transfer Player:[038: Vermillion City], (019,029), No Fade
+ @>Change Screen Color Tone: (0,0,0,0), @6
+ @>
+: Branch End
+@>
+
+#------------------------------------------------------------------------------
+Event ID: 004
+Event Name: EV004
+(X,Y): (001,008)
+
+Page #1
+Conditions
+None
+
+Autonomous Movement
+Type: Fixed
+Speed: 3: Slow
+Freq: 3: Low
+Options Enabled
+Move Animation
+Trigger: Action Button
+
+List of Event Commands:
+@>Conditional Branch: Variable [0122: Vermilion Gym "Cheat"] == 100
+ @>Text: After searching through the trash 100 times...
+ @>Text: You find a button, press it?
+ @>Show Choices: Yes, No
+ (When Cancel: Choice 2)
+ : When [Yes]
+  @>Text: May as well! Wouldn't have spent 20 minutes doing this
+   :    : otherwise!
+  @>Control Variables: [0123: Vermilion Gym Generators] = 2
+  @>Control Self Switch: A =ON
+  @>
+ : When [No]
+  @>
+ : Branch End
+ @>
+: Else
+ @>Text: Nope! There's only trash inside!
+ @>Control Variables: [0122: Vermilion Gym "Cheat"] += 1
+ @>
+: Branch End
+@>
+
+Page #2
+Conditions
+Self Switch A is ON
+
+Autonomous Movement
+Type: Fixed
+Speed: 3: Slow
+Freq: 3: Low
+Options Enabled
+Move Animation
+Trigger: Action Button
+
+List of Event Commands:
+@>Text: Nope! There's only trash inside!
+@>
+
+#------------------------------------------------------------------------------
+
+#==============================================================================
 
 ###############################################################################
 # COMMON EVENTS
@@ -77520,9 +78353,24 @@ List of Event Commands:
  @>Text: \xn[Gold]Cerulean Gym is one of the few Gyms I'm aware of that
   :    : has a Gym built into another public entertainment venue.
  @>Text: \xn[Gold]The leader, Misty, prefers an all out offensive with
-  :    : Water-types, as do all of the trainers here in the Aquarium.
+  :    : Water-type Pokémon and Hydro-type Puppets, as do all of 
+  :    : the trainers here in the Aquarium.
  @>Text: \xn[Gold]You'll have to be quick and nimble if you want to avoid 
   :    : getting doused!
+ @>
+: Branch End
+@>Comment: --- Cerulean Gym
+@>Conditional Branch: Script: $game_map.map_id == 244
+ @>Text: \xn[Gold]Vermilion Gym is actually really intense! It's not difficult,
+  :    : but <i>whew</i>! The atmosphere here is heavy.
+ @>Text: \xn[Gold]Lt. Surge was a veteran of the Tohjo Civil War, and
+  :    : is known for using Electric-type Pokémon to help in battle.
+ @>Text: \xn[Gold]When people were first finding out about Puppets and calling
+  :    : it an invasion, Lt. Surge was actually one of the people out there
+  :    : defending Puppets!
+ @>Text: \xn[Gold]Though, one has to wonder if ihe was sticking up for 
+  :    : them because he felt they shouldn't be mistreated, or if it's because
+  :    : he took an immediate affinity toward Wind-type Puppets...
  @>
 : Branch End
 @>
