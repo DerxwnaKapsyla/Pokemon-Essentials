@@ -6,6 +6,8 @@
 # Changes in this section include the following:
 #	* Removed explicit references to Pokemon
 #	* Adds a check for Cerulean Gym's hopping puzzle
+#	* Adds pbFieldDamage, which is (currently) used for the Vermilion Gym
+#	  Landmines. (Credits for script go to Reborn/Amethyst)
 #==============================================================================#
 
 def pbCheckAllFainted
@@ -28,4 +30,23 @@ def pbLedge(_xOffset,_yOffset)
     return true
   end
   return false
+end
+
+def pbFieldDamage
+    for i in $Trainer.able_party
+      if i.hp>0 && !i.egg?
+        if i.hp==1
+          next
+        end
+        i.hp-=(i.totalhp/8)
+        if i.hp==0
+          i.changeHappiness("faint")
+          i.status=0
+          pbMessage(_INTL("{1} fainted...",i.name))
+        end
+		if $Trainer.able_pokemon_count == 0
+		  pbCheckAllFainted()
+		end
+      end
+    end
 end

@@ -16,9 +16,11 @@ def pbStartOver(gameover=false)
   $Trainer.heal_party
   if $PokemonGlobal.pokecenterMapId && $PokemonGlobal.pokecenterMapId>=0
     if gameover
-      pbMessage(_INTL("\\w[]\\wm\\c[12]\\l[3]After the unfortunate defeat, you scurry back to a Pokémon Center."))
+      $game_screen.pictures[1].erase
+	  pbMessage(_INTL("\\w[]\\wm\\c[12]\\l[3]After the unfortunate defeat, you scurry back to a Pokémon Center."))
     else
-      pbMessage(_INTL("\\w[]\\wm\\c[12]\\l[3]You scurry back to a Pokémon Center, protecting your exhausted partners from any further harm..."))
+      $game_screen.pictures[1].erase
+	  pbMessage(_INTL("\\w[]\\wm\\c[12]\\l[3]You scurry back to a Pokémon Center, protecting your exhausted partners from any further harm..."))
     end
     pbCancelVehicles
     pbRemoveDependencies
