@@ -65846,6 +65846,80 @@ List of Event Commands:
 @>
 
 #------------------------------------------------------------------------------
+Event ID: 010
+Event Name: Nosepass Trade
+(X,Y): (002,002)
+
+Page #1
+Conditions
+None
+
+Graphic: trainer_COOLTRAINER_F
+
+Autonomous Movement
+Type: Fixed
+Speed: 3: Slow
+Freq: 3: Low
+Options Enabled
+Move Animation
+Trigger: Action Button
+
+List of Event Commands:
+@>Text: Hey! I caught an extra Nosepass that I don't need, and I don't
+ :    : want it to go to waste.
+@>Text: Would you like to have it? I'll accept any offer you have, I just want
+ :    : it to go to a good trainer!
+@>Show Choices: Yes, No
+(When Cancel: Choice 2)
+: When [Yes]
+ @>Script: pbChooseTradablePokemon(1, 2)
+ @>Conditional Branch: Variable [0001: Temp Pokemon Choice] == -1
+  @>Text: No? Oh well, if you decide to come back later, I'll be
+   :    : here!
+  @>
+ : Else
+  @>Text: Alright, let's get started!
+  @>Play SE: 'PC access', 80, 100
+  @>Script: pkmn = Pokemon.new(:NOSEPASS,
+  :       :    pbGetPokemon(1).level)
+  :       : pkmn.item = :MAGNET
+  :       : pkmn.ability = :MAGNETPULL
+  @>Script: pkmn.calcStats
+  @>Script: pbStartTrade(pbGet(1), pkmn,
+  :       :   _I("Noz"), _I("Merida"), 1
+  :       : )
+  @>Text: Sweet, thanks! Please treat that Nosepass well!
+  @>Control Self Switch: A =ON
+  @>
+ : Branch End
+ @>
+: When [No]
+ @>Text: No? Oh well, if you decide to come back later, I'll be
+  :    : here!
+ @>
+: Branch End
+@>
+
+Page #2
+Conditions
+Self Switch A is ON
+
+Graphic: trainer_COOLTRAINER_F
+
+Autonomous Movement
+Type: Fixed
+Speed: 3: Slow
+Freq: 3: Low
+Options Enabled
+Move Animation
+Trigger: Action Button
+
+List of Event Commands:
+@>Text: How's that Nosepass I traded you working out? I heard that they
+ :    : might be useful in the Gym here if you haven't checked it out yet.
+@>
+
+#------------------------------------------------------------------------------
 
 #==============================================================================
 Map ID: 241
@@ -66364,19 +66438,18 @@ List of Event Commands:
 @>Show Choices: Yes, No
 (When Cancel: Choice 2)
 : When [Yes]
- @>Script: pbChoosePokemon(1,2,
- :       : proc {|poke|
- :       :  !poke.egg? &&
- :       :  !(poke.isShadow? rescue false) &&
- :       :  poke.species==PBSpecies::CYUUGI
- :       : })
+ @>Script: pbChoosePokemonForTrade(1, 2,
+ :       :   :CYUUGI
+ :       : )
  @>Conditional Branch: Variable [0001: Temp Pokemon Choice] == -1
   @>Text: I guess I'll go back to looking for one myself...
   @>
  : Else
-  @>Text: \bOK, let's get started.
+  @>Text: Oh, thank you! Let's begin the trade then!
+  @>Play SE: 'PC access', 80, 100
   @>Script: pbStartTrade(pbGet(1),
-  :       : PBSpecies::CLUIZE,"Reine","Alice")
+  :       :   :CLUIZE, _I("Reine"), _I("Alice")
+  :       : )
   @>Text: \PN traded CYuugi for CLuize!
   @>Text: Thanks for the Chibi Yuugi! I'll take good care of it!
   @>Control Self Switch: A =ON
@@ -66429,8 +66502,10 @@ Move Animation
 Trigger: Action Button
 
 List of Event Commands:
-@>Text: My brother hasn't been the same since he discovered battle simulators. He keeps talking about how things are the new "Metagame", and spends most of his free 
- :    : time trying to come up with good "sets" for Puppets.
+@>Text: My brother hasn't been the same since he discovered battle 
+ :    : simulators. He keeps talking about how things are the new 
+ :    : "Metagame", and spends most of his free time trying to come up 
+ :    : with good "sets" for Puppets.
 @>Text: His latest obssession is with Ruukoto, he says she can be perfect...
 @>Text: I should give him a good thrashing in battle next time I see him.
 @>
@@ -66930,7 +67005,7 @@ Auto-Change BGM: W-011. Pokemon Gym
 #------------------------------------------------------------------------------
 Event ID: 001
 Event Name: Landmine Check
-(X,Y): (015,044)
+(X,Y): (000,044)
 
 Page #1
 Conditions
@@ -66942,7 +67017,7 @@ Speed: 3: Slow
 Freq: 3: Low
 Options Enabled
 Move Animation
-Trigger: Parallel Process
+Trigger: Action Button
 
 List of Event Commands:
 @>Conditional Branch: Script: $game_player.pbTerrainTag.landmine
@@ -67073,9 +67148,7 @@ List of Event Commands:
  @>Play SE: 'Door exit', 100, 100
  @>Change Screen Color Tone: (-255,-255,-255,0), @6
  @>Wait: 8 frame(s)
- @>Script: pbSetSelfSwitch(14,"A",false)
  @>Transfer Player:[038: Vermillion City], (019,029), No Fade
- @>Erase Picture: 1
  @>Change Screen Color Tone: (0,0,0,0), @6
  @>
 : Branch End
@@ -67263,7 +67336,6 @@ List of Event Commands:
 @>Play SE: 'Door exit', 100, 100
 @>Change Screen Color Tone: (-255,-255,-255,0), @6
 @>Wait: 8 frame(s)
-@>Script: pbSetSelfSwitch(14,"A",true)
 @>Transfer Player:[244: Vermilion City Gym], (027,049), Left, No Fade
 @>Change Screen Color Tone: (0,0,0,0), @6
 @>
@@ -67298,9 +67370,7 @@ List of Event Commands:
 @>Play SE: 'Door exit', 100, 100
 @>Change Screen Color Tone: (-255,-255,-255,0), @6
 @>Wait: 8 frame(s)
-@>Script: pbSetSelfSwitch(14,"A",false)
 @>Transfer Player:[244: Vermilion City Gym], (027,061), Left, No Fade
-@>Erase Picture: 1
 @>Change Screen Color Tone: (0,0,0,0), @6
 @>
 
@@ -67504,7 +67574,7 @@ Speed: 3: Slow
 Freq: 3: Low
 Options Enabled
 Move Animation
-Trigger: Parallel Process
+Trigger: Action Button
 
 List of Event Commands:
 @>Conditional Branch: Self Switch A == OFF
@@ -67565,7 +67635,7 @@ List of Event Commands:
 #------------------------------------------------------------------------------
 Event ID: 014
 Event Name: Have Magnet Pull check
-(X,Y): (019,046)
+(X,Y): (050,069)
 
 Page #1
 Conditions
@@ -67578,16 +67648,16 @@ Speed: 3: Slow
 Freq: 3: Low
 Options Enabled
 Move Animation
-Trigger: Parallel Process
+Trigger: Action Button
 
 List of Event Commands:
-@>Show Picture: 1, 'Alt Magnet', Upper Left (0,0), (100%,100%), 255, Normal
+@>Show Picture: 50, 'Alt Magnet', Upper Left (0,0), (100%,100%), 255, Normal
 @>
 
 #------------------------------------------------------------------------------
 Event ID: 015
 Event Name: Steps Check
-(X,Y): (019,044)
+(X,Y): (000,048)
 
 Page #1
 Conditions
@@ -67599,7 +67669,7 @@ Speed: 3: Slow
 Freq: 3: Low
 Options Enabled
 Move Animation
-Trigger: Parallel Process
+Trigger: Action Button
 
 List of Event Commands:
 @>Conditional Branch: Variable [0124: Magnet Pull Steps] == 1
@@ -67611,6 +67681,9 @@ List of Event Commands:
  :       : pbSetSelfSwitch(18,"A",false)
  :       : pbSetSelfSwitch(19,"A",false)
  :       : pbSetSelfSwitch(20,"A",false)
+ :       : pbSetSelfSwitch(31,"A",false)
+ :       : pbSetSelfSwitch(32,"A",false)
+ :       : pbSetSelfSwitch(35,"A",false)
  @>Control Switches: [0115: Magnet Pull Used] = OFF
  @>Control Switches: [0116: Magnet Pull Charge] = ON
  @>
@@ -67619,12 +67692,12 @@ List of Event Commands:
 
 #------------------------------------------------------------------------------
 Event ID: 016
-Event Name: landmines size(5,13)
+Event Name: landmines size(5,8)
 (X,Y): (007,041)
 
 Page #1
 Conditions
-Self Switch A is ON
+Switch 0115: Magnet Pull Used is ON
 
 Autonomous Movement
 Type: Fixed
@@ -67645,7 +67718,7 @@ Event Name: landmines size(7,6)
 
 Page #1
 Conditions
-Self Switch A is ON
+Switch 0115: Magnet Pull Used is ON
 
 Autonomous Movement
 Type: Fixed
@@ -67662,11 +67735,11 @@ List of Event Commands:
 #------------------------------------------------------------------------------
 Event ID: 018
 Event Name: landmines size(3,5)
-(X,Y): (030,041)
+(X,Y): (030,040)
 
 Page #1
 Conditions
-Self Switch A is ON
+Switch 0115: Magnet Pull Used is ON
 
 Autonomous Movement
 Type: Fixed
@@ -67682,12 +67755,12 @@ List of Event Commands:
 
 #------------------------------------------------------------------------------
 Event ID: 019
-Event Name: landmines size(8,11)
+Event Name: landmines size(8,3)
 (X,Y): (033,041)
 
 Page #1
 Conditions
-Self Switch A is ON
+Switch 0115: Magnet Pull Used is ON
 
 Autonomous Movement
 Type: Fixed
@@ -67703,12 +67776,12 @@ List of Event Commands:
 
 #------------------------------------------------------------------------------
 Event ID: 020
-Event Name: landmines size(7,11)
+Event Name: landmines size(7,3)
 (X,Y): (041,041)
 
 Page #1
 Conditions
-Self Switch A is ON
+Switch 0115: Magnet Pull Used is ON
 
 Autonomous Movement
 Type: Fixed
@@ -67904,8 +67977,8 @@ List of Event Commands:
 
 #------------------------------------------------------------------------------
 Event ID: 025
-Event Name: Trainer(3)
-(X,Y): (024,038)
+Event Name: Trainer(2)
+(X,Y): (022,044)
 
 Page #1
 Conditions
@@ -67914,11 +67987,7 @@ None
 Graphic: trainer_SUPERNERD
 
 Autonomous Movement
-Type: Custom
-Custom Move Route:
-(Repeat Action)
-$>Turn at Random
-
+Type: Fixed
 Speed: 3: Slow
 Freq: 4: High
 Options Enabled
@@ -67944,11 +68013,7 @@ Self Switch A is ON
 Graphic: trainer_SUPERNERD
 
 Autonomous Movement
-Type: Custom
-Custom Move Route:
-(Repeat Action)
-$>Turn at Random
-
+Type: Fixed
 Speed: 3: Slow
 Freq: 4: High
 Options Enabled
@@ -67969,11 +68034,7 @@ Switch 0006: Defeated Gym 3 is ON
 Graphic: trainer_SUPERNERD
 
 Autonomous Movement
-Type: Custom
-Custom Move Route:
-(Repeat Action)
-$>Turn at Random
-
+Type: Fixed
 Speed: 3: Slow
 Freq: 4: High
 Options Enabled
@@ -68060,7 +68121,7 @@ List of Event Commands:
 #------------------------------------------------------------------------------
 Event ID: 027
 Event Name: Trainer(2)
-(X,Y): (041,038)
+(X,Y): (042,037)
 
 Page #1
 Conditions
@@ -68078,6 +68139,7 @@ Speed: 3: Slow
 Freq: 4: High
 Options Enabled
 Move Animation
+Always on Top
 Trigger: Event Touch
 
 List of Event Commands:
@@ -68155,20 +68217,64 @@ Speed: 3: Slow
 Freq: 3: Low
 Options Enabled
 Move Animation
+Trigger: Event Touch
+
+List of Event Commands:
+@>Script: pbTrainerIntro(:GENTLEMAN)
+@>Script: pbNoticePlayer(get_character(0))
+@>Text: I've served under Lt. Surge since our time in the war.
+@>Text: His command was second to none, allow me to demonstrate!
+@>Conditional Branch: Script: pbTrainerBattle(:GENTLEMAN,"Baxter",_I("While victory is important, he did always stress the importance of a tactical retreat when necessary."))
+ @>Control Self Switch: A =ON
+ @>
+: Branch End
+@>Script: pbTrainerEnd
+@>
+
+Page #2
+Conditions
+Self Switch A is ON
+
+Graphic: trainer_GENTLEMAN
+
+Autonomous Movement
+Type: Fixed
+Speed: 3: Slow
+Freq: 3: Low
+Options Enabled
+Move Animation
 Trigger: Action Button
 
 List of Event Commands:
-@>Comment: Battle: I've served under Lt. Surge since our time in the war.\mHis command
- :       : was second to none, allow me to demonstrate!
-@>Comment: Type: GENTLEMAN
-@>Comment: Name: Baxter
-@>Comment: EndSpeech: While victory is important, he did always stress the
- :       : importance of a tactical retreat when necessary.
-@>Comment: EndBattle: Are you surprised to see someone as old as myself
- :       : revere Lt. Surge as I do?\mHe proved his worth on the battlefield,
- :       : as both a leader and a combatant.\mI hold profound respect for
- :       : the man.
-@>Comment: EndIfSwitch: 6
+@>Text: Are you surprised to see someone as old as myself
+ :    : revere Lt. Surge as I do?
+@>Text: He proved his worth on the battlefield,
+ :    : as both a leader and a combatant.
+@>Text: I hold profound respect for
+ :    : the man.
+@>
+
+Page #3
+Conditions
+Switch 0006: Defeated Gym 3 is ON
+
+Graphic: trainer_GENTLEMAN
+
+Autonomous Movement
+Type: Fixed
+Speed: 3: Slow
+Freq: 3: Low
+Options Enabled
+Move Animation
+Trigger: Action Button
+
+List of Event Commands:
+@>Text: Are you surprised to see someone as old as myself
+ :    : revere Lt. Surge as I do?
+@>Text: He proved his worth on the battlefield,
+ :    : as both a leader and a combatant.
+@>Text: I hold profound respect for
+ :    : the man.
 @>
 
 #------------------------------------------------------------------------------
@@ -68192,19 +68298,67 @@ Speed: 3: Slow
 Freq: 5: Higher
 Options Enabled
 Move Animation
+Always on Top
+Trigger: Event Touch
+
+List of Event Commands:
+@>Script: pbTrainerIntro(:JUGGLER)
+@>Script: pbNoticePlayer(get_character(0))
+@>Text: Come one, come all, to witness my amazing juggling skills! Even in battle,
+ :    : they not even drop!
+@>Conditional Branch: Script: pbTrainerBattle(:JUGGLER,"Yuuki",_I("Ah-ha! See, even in defeat, they remained in the air!"))
+ @>Control Self Switch: A =ON
+ @>
+: Branch End
+@>Script: pbTrainerEnd
+@>
+
+Page #2
+Conditions
+Self Switch A is ON
+
+Graphic: trainer_JUGGLER
+
+Autonomous Movement
+Type: Custom
+Custom Move Route:
+(Repeat Action)
+$>Turn at Random
+
+Speed: 3: Slow
+Freq: 5: Higher
+Options Enabled
+Move Animation
 Trigger: Action Button
 
 List of Event Commands:
-@>Comment: Battle: Come one, come all, to witness my amazing juggling skills! Even in battle,
- :       : they not even drop!
-@>Comment: Type: JUGGLER
-@>Comment: Name: Yuuki
-@>Comment: EndSpeech: Ah-ha! See, even in defeat, they remained in the
- :       : air!
-@>Comment: EndBattle: I've practiced for years to maintain this level of focus,
- :       : and let me tell you, it's not even half as tough as some of the
- :       : training Lt. Surge puts people through!
-@>Comment: EndIfSwitch: 6
+@>Text: I've practiced for years to maintain this level of focus,
+ :    : and let me tell you, it's not even half as tough as some of the
+ :    : training Lt. Surge puts people through!
+@>
+
+Page #3
+Conditions
+Switch 0006: Defeated Gym 3 is ON
+
+Graphic: trainer_JUGGLER
+
+Autonomous Movement
+Type: Custom
+Custom Move Route:
+(Repeat Action)
+$>Turn at Random
+
+Speed: 3: Slow
+Freq: 5: Higher
+Options Enabled
+Move Animation
+Trigger: Action Button
+
+List of Event Commands:
+@>Text: I've practiced for years to maintain this level of focus,
+ :    : and let me tell you, it's not even half as tough as some of the
+ :    : training Lt. Surge puts people through!
 @>
 
 #------------------------------------------------------------------------------
@@ -68229,18 +68383,180 @@ Speed: 3: Slow
 Freq: 4: High
 Options Enabled
 Move Animation
+Always on Top
+Trigger: Event Touch
+
+List of Event Commands:
+@>Script: pbTrainerIntro(:LADY)
+@>Script: pbNoticePlayer(get_character(0))
+@>Text: Are you shocked to see someone of my stature
+ :    : here? Well then, commencing shock therapy!
+@>Conditional Branch: Script: pbTrainerBattle(:LADY,"Nichole",_I("Oh no, ground yourself!"))
+ @>Control Self Switch: A =ON
+ @>
+: Branch End
+@>Script: pbTrainerEnd
+@>
+
+Page #2
+Conditions
+Self Switch A is ON
+
+Graphic: trainer_LADY
+
+Autonomous Movement
+Type: Custom
+Custom Move Route:
+(Repeat Action)
+$>Turn Left
+$>Turn Up
+
+Speed: 3: Slow
+Freq: 4: High
+Options Enabled
+Move Animation
 Trigger: Action Button
 
 List of Event Commands:
-@>Comment: Battle: Are you shocked to see someone of my stature
- :       : here? Well then, commencing shock therapy!
-@>Comment: Type: LADY
-@>Comment: Name: Nichole
-@>Comment: EndSpeech: Oh no, ground yourself!
-@>Comment: EndBattle: I've had an affinity for Electricity ever since I 
- :       : recieved my first partner, a Shinx, ages ago.\mSince then, 
- :       : whenever I battle, I like to make things extra crispy.
-@>Comment: EndIfSwitch: 6
+@>Text: I've had an affinity for Electricity ever since I
+ :    : recieved my first partner, a Shinx, ages ago.
+@>Text: Since then,\nwhenever I battle, I like to make things extra crispy.
+@>
+
+Page #3
+Conditions
+Switch 0006: Defeated Gym 3 is ON
+
+Graphic: trainer_LADY
+
+Autonomous Movement
+Type: Custom
+Custom Move Route:
+(Repeat Action)
+$>Turn Left
+$>Turn Up
+
+Speed: 3: Slow
+Freq: 4: High
+Options Enabled
+Move Animation
+Trigger: Action Button
+
+List of Event Commands:
+@>Text: I've had an affinity for Electricity ever since I
+ :    : recieved my first partner, a Shinx, ages ago.
+@>Text: Since then,\nwhenever I battle, I like to make things extra crispy.
+@>
+
+#------------------------------------------------------------------------------
+Event ID: 031
+Event Name: landmines size(8,8)
+(X,Y): (033,038)
+
+Page #1
+Conditions
+Switch 0115: Magnet Pull Used is ON
+
+Autonomous Movement
+Type: Fixed
+Speed: 3: Slow
+Freq: 3: Low
+Options Enabled
+Move Animation
+Through
+Trigger: Action Button
+
+List of Event Commands:
+@>
+
+#------------------------------------------------------------------------------
+Event ID: 032
+Event Name: landmines size(7,8)
+(X,Y): (041,038)
+
+Page #1
+Conditions
+Switch 0115: Magnet Pull Used is ON
+
+Autonomous Movement
+Type: Fixed
+Speed: 3: Slow
+Freq: 3: Low
+Options Enabled
+Move Animation
+Through
+Trigger: Action Button
+
+List of Event Commands:
+@>
+
+#------------------------------------------------------------------------------
+Event ID: 033
+Event Name: Counter(6)
+(X,Y): (007,020)
+
+Page #1
+Conditions
+None
+
+Graphic: Object ball
+
+Autonomous Movement
+Type: Fixed
+Speed: 3: Slow
+Freq: 3: Low
+Options Enabled
+Move Animation
+Trigger: Event Touch
+
+List of Event Commands:
+@>Set Move Route: Player
+ :              : $>Always on Top OFF
+@>
+
+#------------------------------------------------------------------------------
+Event ID: 034
+Event Name: Counter(6)
+(X,Y): (007,021)
+
+Page #1
+Conditions
+None
+
+Graphic: Object ball
+
+Autonomous Movement
+Type: Fixed
+Speed: 3: Slow
+Freq: 3: Low
+Options Enabled
+Move Animation
+Trigger: Event Touch
+
+List of Event Commands:
+@>Set Move Route: Player
+ :              : $>Always on Top ON
+@>
+
+#------------------------------------------------------------------------------
+Event ID: 035
+Event Name: landmines size(5,5)
+(X,Y): (007,033)
+
+Page #1
+Conditions
+Switch 0115: Magnet Pull Used is ON
+
+Autonomous Movement
+Type: Fixed
+Speed: 3: Slow
+Freq: 3: Low
+Options Enabled
+Move Animation
+Through
+Trigger: Action Button
+
+List of Event Commands:
 @>
 
 #------------------------------------------------------------------------------

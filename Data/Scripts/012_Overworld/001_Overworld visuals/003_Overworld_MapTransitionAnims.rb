@@ -120,12 +120,14 @@ def pbStartOver(gameover=false)
       pbCancelVehicles
       pbRemoveDependencies
       $game_switches[Settings::STARTING_OVER_SWITCH] = true
-      $game_temp.player_new_map_id    = homedata[0]
-      $game_temp.player_new_x         = homedata[1]
-      $game_temp.player_new_y         = homedata[2]
-      $game_temp.player_new_direction = homedata[3]
-      $scene.transfer_player if $scene.is_a?(Scene_Map)
-      $game_map.refresh
+	  pbFadeOutIn {
+		$game_temp.player_new_map_id    = homedata[0]
+		$game_temp.player_new_x         = homedata[1]
+		$game_temp.player_new_y         = homedata[2]
+		$game_temp.player_new_direction = homedata[3]
+		$scene.transfer_player if $scene.is_a?(Scene_Map)
+		$game_map.refresh
+	  }
     else
       $Trainer.heal_party
     end
