@@ -221,6 +221,26 @@ module QuestModule
     :RewardString => "nil"
   }
   
+  Quest22 = {
+    :ID => "22",
+    :Name => "Welcome to the Jungle - I (Renko)",
+    :QuestGiver => "Main Scenario Quest",
+    :Stage1 => "Meet up with Maribel in Fuchsia City",
+    :Location1 => "Lavender Town",
+    :QuestDescription => "The Lavender Town lead may not have proven as promising as we thought, but I did manage to get some valuable information out of it! For now, I should meet back up with Mary over in Fuchsia City and share our findings.",
+    :RewardString => "nil"
+  }
+  
+  Quest23 = {
+    :ID => "23",
+    :Name => "Welcome to the Jungle - I (Maribel)",
+    :QuestGiver => "Main Scenario Quest",
+    :Stage1 => "Meet up with Renko in Fuchsia City",
+    :Location1 => "Lavender Town",
+    :QuestDescription => "The Lavender Town lead may not have proven as promising as we thought, but I did manage to get some valuable information out of it! For now, I should meet back up with Renko over in Fuchsia City and share our findings.",
+    :RewardString => "nil"
+  }
+  
 #----- Side Quests -----#
 
   Quest100 = {
@@ -315,7 +335,7 @@ module QuestModule
     :QuestGiver => "Side Quest",
     :Stage1 => "Battle the Lavender Town Gym Leader",
     :Location1 => "Lavender Town",
-    :QuestDescription => "The Head Priestess of Lavender Tower asked a favor of me; apparently scouts are coming to check out the new Lavender Gym, and she wants to make sure her granddaughter, Selene, is up to the task of being a Gym Leader. After showcasing my skills in Lavender Tower, how am I to refuse?",
+    :QuestDescription => "One of the Priestess of Lavender Tower asked a favor of me; apparently scouts are coming to check out the new Lavender Gym, and she wants to make sure her granddaughter, Selene, is up to the task of being a Gym Leader. After showcasing my skills in Lavender Tower, how am I to refuse?",
     :RewardString => "nil"
   }
   

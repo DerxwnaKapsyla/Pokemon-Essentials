@@ -32761,7 +32761,7 @@ Map ID: 080
 Map Name: Lavender Tower
 Tileset: 013: Graveyard
 Width: 24, Height: 20
-Auto-Change BGM: 
+Auto-Change BGM: W-023. Pokemon Tower
 
 #------------------------------------------------------------------------------
 Event ID: 001
@@ -32852,8 +32852,8 @@ Move Animation
 Trigger: Action Button
 
 List of Event Commands:
-@>Text: I'm terribly sorry, but this room is off limits unless you 
- :    : have an appointment to see the Master Medium.
+@>Text: I'm terribly sorry, but this area is off limits unless you 
+ :    : have an appointment to see the Head Priestess.
 @>
 
 Page #2
@@ -32879,6 +32879,40 @@ List of Event Commands:
  @>Text: Right this way then...\wtnp[20] And good luck.
  @>Change Screen Color Tone: (-255,-255,-255,0), @6
  @>Wait: 8 frame(s)
+ @>Play SE: 'Door exit', 80, 100
+ @>Transfer Player:[259: Lavender Tower], (035,043), Left, No Fade
+ @>Change Screen Color Tone: (0,0,0,0), @6
+ @>
+: When [No]
+ @>Text: I understand.
+ @>
+: Branch End
+@>
+
+Page #3
+Conditions
+Variable 0110: Plot Control Variable is 11 or above
+
+Graphic: trainer_CHANELLER
+
+Autonomous Movement
+Type: Fixed
+Speed: 3: Slow
+Freq: 3: Low
+Options Enabled
+Move Animation
+Trigger: Action Button
+
+List of Event Commands:
+@>Text: I've been told to allow you into the basement. Would you
+ :    : like to go downstairs right now?
+@>Show Choices: Yes, No
+(When Cancel: Choice 2)
+: When [Yes]
+ @>Text: Right this way then...
+ @>Change Screen Color Tone: (-255,-255,-255,0), @6
+ @>Wait: 8 frame(s)
+ @>Play SE: 'Door exit', 80, 100
  @>Transfer Player:[259: Lavender Tower], (035,043), Left, No Fade
  @>Change Screen Color Tone: (0,0,0,0), @6
  @>
@@ -32914,7 +32948,6 @@ List of Event Commands:
  @>Play SE: 'Door exit', 100, 100
  @>Change Screen Color Tone: (-255,-255,-255,0), @6
  @>Wait: 8 frame(s)
- @>Script: pbCaveExit
  @>Transfer Player:[250: Lavender Town], (035,015), No Fade
  @>Change Screen Color Tone: (0,0,0,0), @6
  @>
@@ -33171,9 +33204,10 @@ List of Event Commands:
  :              : $>Through OFF
  :              : $>Always on Top OFF
 @>Wait for Move's Completion
-@>Play SE: 'Exit Door', 80, 100
+@>Play SE: 'Door exit', 80, 100
 @>Change Screen Color Tone: (-255,-255,-255,0), @6
 @>Wait: 8 frame(s)
+@>Script: pbCaveEntrance
 @>Transfer Player:[257: Lavender Tower], (018,010), Left, No Fade
 @>Change Screen Color Tone: (0,0,0,0), @6
 @>
@@ -67456,6 +67490,7 @@ List of Event Commands:
   :    : the potential to leave a foe paralyzed and unable to
   :    : move!
  @>Control Switches: [0006: Defeated Gym 3] = ON
+ @>Script: pbSetSelfSwitch(2,"A",true)
  @>
 : Branch End
 @>
@@ -67562,7 +67597,7 @@ List of Event Commands:
 #------------------------------------------------------------------------------
 Event ID: 012
 Event Name: Magnet Pull check
-(X,Y): (017,044)
+(X,Y): (000,046)
 
 Page #1
 Conditions
@@ -69948,8 +69983,213 @@ List of Event Commands:
 #==============================================================================
 Map ID: 247
 Map Name: Silph Co.
-Tileset: 029: Underground Path
-Width: 20, Height: 15
+Tileset: 003: Inside
+Width: 45, Height: 20
+
+#------------------------------------------------------------------------------
+Event ID: 001
+Event Name: EV001
+(X,Y): (022,002)
+
+Page #1
+Conditions
+None
+
+Autonomous Movement
+Type: Fixed
+Speed: 3: Slow
+Freq: 3: Low
+Options Enabled
+Move Animation
+Trigger: Action Button
+
+List of Event Commands:
+@>Text: Silph Co. - Lower Basement\nResearch and Development
+@>
+
+#------------------------------------------------------------------------------
+Event ID: 002
+Event Name: Guard
+(X,Y): (018,003)
+
+Page #1
+Conditions
+None
+
+Graphic: NPC 20
+
+Autonomous Movement
+Type: Fixed
+Speed: 3: Slow
+Freq: 3: Low
+Options Enabled
+Move Animation
+Trigger: Action Button
+
+List of Event Commands:
+@>Text: Good day miss, are you here for the special exhibition?
+@>Show Choices: Yes, No
+(When Cancel: Choice 2)
+: When [Yes]
+ @>Text: Excellent, allow me to show you inside. And remember, photos
+  :    : and video are not permitted until the designated time.
+ @>Play SE: 'Door exit', 100, 100
+ @>Change Screen Color Tone: (-255,-255,-255,0), @6
+ @>Wait: 8 frame(s)
+ @>Transfer Player:[263: Silph Co.: Presentation Room], (012,033), No Fade
+ @>Change Screen Color Tone: (0,0,0,0), @6
+ @>
+: When [No]
+ @>
+: Branch End
+@>
+
+#------------------------------------------------------------------------------
+Event ID: 003
+Event Name: Guard
+(X,Y): (026,003)
+
+Page #1
+Conditions
+None
+
+Graphic: NPC 20
+
+Autonomous Movement
+Type: Fixed
+Speed: 3: Slow
+Freq: 3: Low
+Options Enabled
+Move Animation
+Trigger: Action Button
+
+List of Event Commands:
+@>Text: Good day miss, are you here for the special exhibition?
+@>Show Choices: Yes, No
+(When Cancel: Choice 2)
+: When [Yes]
+ @>Text: Excellent, allow me to show you inside. And remember, photos
+  :    : and video are not permitted until the designated time.
+ @>Play SE: 'Door exit', 100, 100
+ @>Change Screen Color Tone: (-255,-255,-255,0), @6
+ @>Wait: 8 frame(s)
+ @>Transfer Player:[263: Silph Co.: Presentation Room], (024,033), No Fade
+ @>Change Screen Color Tone: (0,0,0,0), @6
+ @>
+: When [No]
+ @>
+: Branch End
+@>
+
+#------------------------------------------------------------------------------
+Event ID: 004
+Event Name: Counter(4)
+(X,Y): (014,002)
+
+Page #1
+Conditions
+None
+
+Autonomous Movement
+Type: Fixed
+Speed: 3: Slow
+Freq: 3: Low
+Options Enabled
+Move Animation
+Trigger: Event Touch
+
+List of Event Commands:
+@>Text: I don't think I should be heading this way.
+@>Set Move Route: Player
+ :              : $>1 Step Backward
+@>
+
+Page #2
+Conditions
+Variable 0126: T.U.C.: Ruukoto SQ is 1 or above
+
+Autonomous Movement
+Type: Fixed
+Speed: 3: Slow
+Freq: 3: Low
+Options Enabled
+Move Animation
+Trigger: Action Button
+
+List of Event Commands:
+@>
+
+#------------------------------------------------------------------------------
+Event ID: 005
+Event Name: Counter(4)
+(X,Y): (030,002)
+
+Page #1
+Conditions
+None
+
+Autonomous Movement
+Type: Fixed
+Speed: 3: Slow
+Freq: 3: Low
+Options Enabled
+Move Animation
+Trigger: Event Touch
+
+List of Event Commands:
+@>Text: I don't think I should be heading this way.
+@>Set Move Route: Player
+ :              : $>1 Step Backward
+@>
+
+Page #2
+Conditions
+Variable 0126: T.U.C.: Ruukoto SQ is 1 or above
+
+Autonomous Movement
+Type: Fixed
+Speed: 3: Slow
+Freq: 3: Low
+Options Enabled
+Move Animation
+Trigger: Action Button
+
+List of Event Commands:
+@>
+
+#------------------------------------------------------------------------------
+Event ID: 006
+Event Name: ExitArrow
+(X,Y): (022,010)
+
+Page #1
+Conditions
+None
+
+Graphic: Exitarrow_red
+
+Autonomous Movement
+Type: Fixed
+Speed: 3: Slow
+Freq: 3: Low
+Options Enabled
+Move Animation
+Stop Animation
+Always on Top
+Trigger: Player Touch
+
+List of Event Commands:
+@>Conditional Branch: Player is facing Down
+ @>Play SE: 'Door exit', 100, 100
+ @>Change Screen Color Tone: (-255,-255,-255,0), @6
+ @>Wait: 8 frame(s)
+ @>Transfer Player:[229: Kanto Underground Path], (035,042), No Fade
+ @>Change Screen Color Tone: (0,0,0,0), @6
+ @>
+: Branch End
+@>
+
+#------------------------------------------------------------------------------
 
 #==============================================================================
 Map ID: 248
@@ -70774,6 +71014,48 @@ List of Event Commands:
 @>
 
 #------------------------------------------------------------------------------
+Event ID: 007
+Event Name: Quest Indicator: Sidequest 1
+(X,Y): (036,014)
+
+Page #1
+Conditions
+Variable 0125: Lavender Gym SQ is 1 or above
+
+Graphic: questicon2
+
+Autonomous Movement
+Type: Fixed
+Speed: 3: Slow
+Freq: 3: Low
+Options Enabled
+Move Animation
+Stop Animation
+Direction Fix
+Through
+Always on Top
+Trigger: Action Button
+
+List of Event Commands:
+@>Comment: Relevant Sidequest: The Mystery Box
+@>
+
+Page #2
+Conditions
+Variable 0110: Plot Control Variable is 2 or above
+
+Autonomous Movement
+Type: Fixed
+Speed: 3: Slow
+Freq: 3: Low
+Options Enabled
+Move Animation
+Trigger: Action Button
+
+List of Event Commands:
+@>
+
+#------------------------------------------------------------------------------
 
 #==============================================================================
 Map ID: 250
@@ -71056,7 +71338,56 @@ Move Animation
 Trigger: Action Button
 
 List of Event Commands:
-@>Text: 
+@>Comment: Substitute TM
+@>Text: \pn inspects the mysterious grave...
+@>Conditional Branch: Script: pbReceiveItem(:TM90)
+ @>Text: ...Hm? There's a note attached to the grave as well.
+ @>Text: \w[black]My dearest, I'm afraid I failed in finding the tree we
+  :    : favored in our youth.
+ @>Text: \w[black]Very likely, it was cut down to make way for land
+  :    : development.
+ @>Text: \w[black]But that's just how it goes for Humans, wouldn't you 
+  :    : agree?
+ @>Text: \w[black]Though it's not the same, I've managed to create a
+  :    : suitable subtitute, where I could lay you to rest properly.
+ @>Text: \w[black]I've sealed it away, using the power of the spectre that
+  :    : idolizes wilted trees.
+ @>Text: \w[black]Should the day come where someone stumbles across
+  :    : it, I hope they are able to a person with a kind, if adventurous,
+  :    : soul, like you were.
+ @>Control Self Switch: A =ON
+ @>
+: Else
+ @>
+: Branch End
+@>
+
+Page #3
+Conditions
+Self Switch A is ON
+
+Autonomous Movement
+Type: Fixed
+Speed: 3: Slow
+Freq: 3: Low
+Options Enabled
+Move Animation
+Trigger: Action Button
+
+List of Event Commands:
+@>Text: \w[black]My dearest, I'm afraid I failed in finding the tree we
+ :    : favored in our youth.
+@>Text: \w[black]Very likely, it was cut down to make way for land
+ :    : development.
+@>Text: \w[black]But that's just how it goes for Humans, wouldn't you 
+ :    : agree?
+@>Text: \w[black]Though it's not the same, I've managed to create a
+ :    : suitable subtitute, where I could lay you to rest properly.
+@>Text: \w[black]I've sealed it away, using the power of the spectre that
+ :    : idolizes wilted trees.
+@>Text: \w[black]Should the day come where someone stumbles across
+ :    : it, I hope they are able to a person with a kind, if adventurous,
+ :    : soul, like you were.
 @>
 
 #------------------------------------------------------------------------------
@@ -71125,7 +71456,7 @@ List of Event Commands:
    @>Wait for Move's Completion
    @>Script: pbSetSelfSwitch(2,"A",true)
    @>Wait: 40 frame(s)
-   @>Set Weather Effects: None, @40
+   @>Set Weather Effects: None, @80
    @>Wait: 20 frame(s)
    @>Show Animation: Player, [Exclaim bubble]
    @>Screen Flash: (255,255,255,255), @10
@@ -71136,6 +71467,13 @@ List of Event Commands:
    @>Wait: 30 frame(s)
    @>Screen Flash: (255,255,255,255), @60
    @>Play SE: 'Vs sword', 80, 100
+   @>Set Event Location: [Yuyuko],(000,003)
+   @>Set Move Route: [Yuyuko]
+    :              : $>Change Opacity: 0
+   @>Show Animation: Player, [Exclaim bubble]
+   @>Script: pbSetSelfSwitch(9,"A",true)
+   @>Wait: 20 frame(s)
+   @>Text: The tree suddenly entered full bloom!
    @>Control Self Switch: A =ON
    @>
   : When [No]
@@ -71161,6 +71499,21 @@ Trigger: Action Button
 
 List of Event Commands:
 @>Comment: Full Bloom
+@>Text: The tree is in full bloom now...
+@>Text: There seems to be an opening in the tree.
+@>Text: Enter it?
+@>Show Choices: Yes, No
+(When Cancel: Choice 2)
+: When [Yes]
+ @>Play SE: 'Door exit', 100, 100
+ @>Change Screen Color Tone: (-255,-255,-255,0), @6
+ @>Wait: 8 frame(s)
+ @>Transfer Player:[251: ???], (019,035), No Fade
+ @>Change Screen Color Tone: (0,0,0,0), @6
+ @>
+: When [No]
+ @>
+: Branch End
 @>
 
 #------------------------------------------------------------------------------
@@ -71173,6 +71526,21 @@ Conditions
 None
 
 Graphic: OW - Puppet_Yuyuko
+
+Autonomous Movement
+Type: Fixed
+Speed: 3: Slow
+Freq: 3: Low
+Options Enabled
+Move Animation
+Trigger: Action Button
+
+List of Event Commands:
+@>
+
+Page #2
+Conditions
+Self Switch A is ON
 
 Autonomous Movement
 Type: Fixed
@@ -71402,7 +71770,7 @@ List of Event Commands:
 
 #------------------------------------------------------------------------------
 Event ID: 016
-Event Name: Head Priestess
+Event Name: Priestess
 (X,Y): (034,016)
 
 Page #1
@@ -71547,7 +71915,6 @@ List of Event Commands:
 @>Play SE: 'Door exit', 100, 100
 @>Change Screen Color Tone: (-255,-255,-255,0), @6
 @>Wait: 8 frame(s)
-@>Script: pbCaveEntrance
 @>Transfer Player:[080: Lavender Tower], (011,018), Up, No Fade
 @>Script: pbHGSSTransitions("Lavender Tower")
 @>Change Screen Color Tone: (0,0,0,0), @6
@@ -71701,6 +72068,85 @@ List of Event Commands:
 @>
 
 #------------------------------------------------------------------------------
+Event ID: 021
+Event Name: 
+(X,Y): (035,012)
+
+Page #1
+Conditions
+Variable 0110: Plot Control Variable is 11 or above
+
+Autonomous Movement
+Type: Fixed
+Speed: 3: Slow
+Freq: 3: Low
+Options Enabled
+Move Animation
+Trigger: Autorun
+
+List of Event Commands:
+@>Wait: 1 frame(s)
+@>Set Move Route: Player
+ :              : $>Move Down
+@>Text: Wait just a moment please!
+@>Wait for Move's Completion
+@>Show Animation: Player, [Question bubble]
+@>Set Move Route: Player
+ :              : $>Turn Up
+@>Wait for Move's Completion
+@>Set Event Location: [Priestess],(035,016), Down
+@>Set Move Route: [Priestess]
+ :              : $>Through ON
+ :              : $>Graphic: "trainer_CHANELLER', 0, 2, 0
+ :              : $>Change Opacity: 255
+ :              : $>SE: 'Door exit', 80, 100
+@>Wait for Move's Completion
+@>Text: If I could please have a moment of your time, you see,
+ :    : I was one of the priestesses who was present when you
+ :    : battled Lady Angela.
+@>Text: I agree that there is something special about you...It led me to
+ :    : the conclusion that you're perfect!
+@>Show Animation: Player, [Question bubble]
+@>Wait: 5 frame(s)
+@>Text: You see, my granddaughter, Selene, is establishing a gym here in
+ :    : Lavender Town, and later today a scout from the League Association
+ :    : is coming to inspect it.
+@>Text: She claims that she's ready, and normally I'd believe her, however...
+@>Text: I've done research, and the scouting process is extremely strict.
+@>Text: In the past ten years, not even the Fighting Dojo of Saffron City
+ :    : has managed to achieve official gym status.
+@>Text: Your battling skills stood out to me, and I thought that you might
+ :    : be the perfect one to test her to see if she is ready.
+@>Text: She'll be in her gym, located in the Tunnel of Liminality. Just tell her
+ :    : I sent you and she'll listen, I'm sure of it! Good luck, miss! And
+ :    : don't go easy on her!
+@>Set Move Route: [Priestess]
+ :              : $>Turn Up
+ :              : $>Wait: 2 frame(s)
+ :              : $>Change Opacity: 0
+ :              : $>SE: 'Door exit', 80, 100
+@>Wait for Move's Completion
+@>Script: activateQuest(:Quest108)
+@>Control Variables: [0125: Lavender Gym SQ] = 1
+@>Control Self Switch: A =ON
+@>
+
+Page #2
+Conditions
+Self Switch A is ON
+
+Autonomous Movement
+Type: Fixed
+Speed: 3: Slow
+Freq: 3: Low
+Options Enabled
+Move Animation
+Trigger: Action Button
+
+List of Event Commands:
+@>
+
+#------------------------------------------------------------------------------
 
 #==============================================================================
 Map ID: 251
@@ -71710,7 +72156,7 @@ Width: 39, Height: 50
 
 #------------------------------------------------------------------------------
 Event ID: 001
-Event Name: EV001
+Event Name: Ayakashi Trigger
 (X,Y): (019,011)
 
 Page #1
@@ -71726,12 +72172,1195 @@ Move Animation
 Trigger: Action Button
 
 List of Event Commands:
+@>Text: Erected in memorium of the person closest to me. May her
+ :    : soul rest in peace, never to be distrurbed.
+@>Text: Here, beneath the sakura tree we loved with all our heart.
+@>Fade Out BGM: 3 sec.
+@>Wait: 60 frame(s)
+@>Wait: 60 frame(s)
+@>Set Event Location: [Ghost],(019,011)
+@>Set Move Route: [Ghost]
+ :              : $>Stop Animation ON
+ :              : $>Direction Fix ON
+ :              : $>Through ON
+ :              : $>SE: 'Stare', 80, 100
+ :              : $>Change Speed: 1
+ :              : $>Move Up
+ :              : $>Change Opacity: 16
+ :              : $>Wait: 1 frame(s)
+ :              : $>Change Opacity: 32
+ :              : $>Wait: 1 frame(s)
+ :              : $>Change Opacity: 48
+ :              : $>Wait: 1 frame(s)
+ :              : $>Change Opacity: 64
+ :              : $>Wait: 1 frame(s)
+ :              : $>Change Opacity: 80
+ :              : $>Wait: 1 frame(s)
+ :              : $>Change Opacity: 96
+ :              : $>Wait: 1 frame(s)
+ :              : $>Change Opacity: 112
+ :              : $>Wait: 1 frame(s)
+ :              : $>Change Opacity: 128
+ :              : $>Wait: 1 frame(s)
+ :              : $>Change Opacity: 144
+ :              : $>Wait: 1 frame(s)
+ :              : $>Change Opacity: 160
+ :              : $>Wait: 1 frame(s)
+ :              : $>Change Opacity: 176
+ :              : $>Wait: 1 frame(s)
+ :              : $>Change Opacity: 192
+ :              : $>Wait: 1 frame(s)
+ :              : $>Change Opacity: 208
+ :              : $>Wait: 1 frame(s)
+ :              : $>Change Opacity: 224
+ :              : $>Wait: 1 frame(s)
+ :              : $>Change Opacity: 240
+ :              : $>Wait: 1 frame(s)
+ :              : $>Change Opacity: 255
+@>Wait for Move's Completion
+@>Wait: 20 frame(s)
+@>Set Move Route: [Ghost]
+ :              : $>SE: 'Stare', 80, 100
+ :              : $>Move Up
+ :              : $>Change Opacity: 240
+ :              : $>Wait: 1 frame(s)
+ :              : $>Change Opacity: 224
+ :              : $>Wait: 1 frame(s)
+ :              : $>Change Opacity: 208
+ :              : $>Wait: 1 frame(s)
+ :              : $>Change Opacity: 192
+ :              : $>Wait: 1 frame(s)
+ :              : $>Change Opacity: 176
+ :              : $>Wait: 1 frame(s)
+ :              : $>Change Opacity: 160
+ :              : $>Wait: 1 frame(s)
+ :              : $>Change Opacity: 144
+ :              : $>Wait: 1 frame(s)
+ :              : $>Change Opacity: 128
+ :              : $>Wait: 1 frame(s)
+ :              : $>Change Opacity: 112
+ :              : $>Wait: 1 frame(s)
+ :              : $>Change Opacity: 96
+ :              : $>Wait: 1 frame(s)
+ :              : $>Change Opacity: 80
+ :              : $>Wait: 1 frame(s)
+ :              : $>Change Opacity: 64
+ :              : $>Wait: 1 frame(s)
+ :              : $>Change Opacity: 48
+ :              : $>Wait: 1 frame(s)
+ :              : $>Change Opacity: 32
+ :              : $>Wait: 1 frame(s)
+ :              : $>Change Opacity: 16
+ :              : $>Wait: 1 frame(s)
+ :              : $>Change Opacity: 0
+@>Wait for Move's Completion
+@>Wait: 20 frame(s)
+@>Control Variables: [0001: Temp Pokemon Choice] = 0
+@>Loop
+ @>Conditional Branch: Variable [0001: Temp Pokemon Choice] != 3
+  @>Set Move Route: [Tree]
+   :              : $>SE: 'Shiny sparkle', 80, 100
+   :              : $>Wait: 1 frame(s)
+   :              : $>Graphic: "Glowing Sakura Tree', 0, 2, 1
+   :              : $>Wait: 1 frame(s)
+   :              : $>Graphic: "Glowing Sakura Tree', 0, 2, 2
+   :              : $>Wait: 1 frame(s)
+   :              : $>Graphic: "Glowing Sakura Tree', 0, 2, 3
+   :              : $>Wait: 1 frame(s)
+   :              : $>Graphic: "Glowing Sakura Tree', 0, 4, 0
+   :              : $>Wait: 1 frame(s)
+   :              : $>Graphic: "Glowing Sakura Tree', 0, 4, 1
+   :              : $>Wait: 1 frame(s)
+   :              : $>Graphic: "Glowing Sakura Tree', 0, 4, 2
+   :              : $>Wait: 1 frame(s)
+   :              : $>Graphic: "Glowing Sakura Tree', 0, 4, 3
+   :              : $>Wait: 1 frame(s)
+   :              : $>Graphic: "Glowing Sakura Tree', 0, 6, 0
+   :              : $>Wait: 1 frame(s)
+   :              : $>Graphic: "Glowing Sakura Tree', 0, 6, 1
+   :              : $>Wait: 1 frame(s)
+   :              : $>Graphic: "Glowing Sakura Tree', 0, 6, 2
+   :              : $>Wait: 1 frame(s)
+   :              : $>Graphic: "Glowing Sakura Tree', 0, 6, 3
+   :              : $>Wait: 1 frame(s)
+   :              : $>Graphic: "Glowing Sakura Tree', 0, 8, 0
+   :              : $>Wait: 1 frame(s)
+   :              : $>Graphic: "Glowing Sakura Tree', 0, 8, 1
+   :              : $>Wait: 1 frame(s)
+   :              : $>Graphic: "Glowing Sakura Tree', 0, 8, 2
+   :              : $>Wait: 1 frame(s)
+   :              : $>Graphic: "Glowing Sakura Tree', 0, 8, 3
+   :              : $>SE: '', 80, 100
+   :              : $>Wait: 1 frame(s)
+   :              : $>Graphic: "Glowing Sakura Tree', 0, 8, 2
+   :              : $>Wait: 1 frame(s)
+   :              : $>Graphic: "Glowing Sakura Tree', 0, 8, 1
+   :              : $>Wait: 1 frame(s)
+   :              : $>Graphic: "Glowing Sakura Tree', 0, 8, 0
+   :              : $>Wait: 1 frame(s)
+   :              : $>Graphic: "Glowing Sakura Tree', 0, 6, 3
+   :              : $>Wait: 1 frame(s)
+   :              : $>Graphic: "Glowing Sakura Tree', 0, 6, 2
+   :              : $>Wait: 1 frame(s)
+   :              : $>Graphic: "Glowing Sakura Tree', 0, 6, 1
+   :              : $>Wait: 1 frame(s)
+   :              : $>Graphic: "Glowing Sakura Tree', 0, 6, 0
+   :              : $>Wait: 1 frame(s)
+   :              : $>Graphic: "Glowing Sakura Tree', 0, 4, 3
+   :              : $>Wait: 1 frame(s)
+   :              : $>Graphic: "Glowing Sakura Tree', 0, 4, 2
+   :              : $>Wait: 1 frame(s)
+   :              : $>Graphic: "Glowing Sakura Tree', 0, 4, 1
+   :              : $>Wait: 1 frame(s)
+   :              : $>Graphic: "Glowing Sakura Tree', 0, 4, 0
+   :              : $>Wait: 1 frame(s)
+   :              : $>Graphic: "Glowing Sakura Tree', 0, 2, 3
+   :              : $>Wait: 1 frame(s)
+   :              : $>Graphic: "Glowing Sakura Tree', 0, 2, 2
+   :              : $>Wait: 1 frame(s)
+   :              : $>Graphic: "Glowing Sakura Tree', 0, 2, 1
+   :              : $>Wait: 1 frame(s)
+   :              : $>Graphic: "Glowing Sakura Tree', 0, 2, 0
+  @>Wait for Move's Completion
+  @>Control Variables: [0001: Temp Pokemon Choice] += 1
+  @>
+ : Else
+  @>Control Variables: [0001: Temp Pokemon Choice] = 0
+  @>Break Loop
+  @>
+ : Branch End
+ @>
+: Repeat Above
+@>Wait: 20 frame(s)
+@>Set Move Route: [Ghost]
+ :              : $>Stop Animation OFF
+ :              : $>Direction Fix OFF
+ :              : $>Graphic: "OW - Puppet_Ayakashi', 0, 2, 0
+ :              : $>SE: 'Stare', 80, 100
+ :              : $>Change Opacity: 16
+ :              : $>Wait: 1 frame(s)
+ :              : $>Change Opacity: 32
+ :              : $>Wait: 1 frame(s)
+ :              : $>Change Opacity: 48
+ :              : $>Wait: 1 frame(s)
+ :              : $>Change Opacity: 64
+ :              : $>Wait: 1 frame(s)
+ :              : $>Change Opacity: 80
+ :              : $>Wait: 1 frame(s)
+ :              : $>Change Opacity: 96
+ :              : $>Wait: 1 frame(s)
+ :              : $>Change Opacity: 112
+ :              : $>Wait: 1 frame(s)
+ :              : $>Change Opacity: 128
+ :              : $>Wait: 1 frame(s)
+ :              : $>Change Opacity: 144
+ :              : $>Wait: 1 frame(s)
+ :              : $>Change Opacity: 160
+ :              : $>Wait: 1 frame(s)
+ :              : $>Change Opacity: 176
+ :              : $>Wait: 1 frame(s)
+ :              : $>Change Opacity: 192
+ :              : $>Wait: 1 frame(s)
+ :              : $>Change Opacity: 208
+ :              : $>Wait: 1 frame(s)
+ :              : $>Change Opacity: 224
+ :              : $>Wait: 1 frame(s)
+ :              : $>Change Opacity: 240
+ :              : $>Wait: 1 frame(s)
+ :              : $>Change Opacity: 255
+@>Wait for Move's Completion
+@>Script: Pokemon.play_cry(:AYAKASHI)
+@>Wait: 40 frame(s)
+@>Script: setBattleRule("cannotRun")
+@>Control Switches: [0104: Transition Handler] = ON
+@>Control Variables: [0103: Vs. Transition ID] = 11
+@>Change Battle BGM: 'U-008. Sakura, Sakura ~ Japanize Dream', 100, 100
+@>Conditional Branch: Script: pbWildBattle(:AYAKASHI,35)
+ @>
+: Else
+ @>
+: Branch End
+@>
+
+Page #2
+Conditions
+Self Switch A is ON
+
+Autonomous Movement
+Type: Fixed
+Speed: 3: Slow
+Freq: 3: Low
+Options Enabled
+Move Animation
+Trigger: Action Button
+
+List of Event Commands:
 @>Text: Erected in memorium of a friend. May her
  :    : soul rest in peace, never to be distrurbed.
 @>Text: Here, beneath the sakura tree we loved
  :    : with all our heart.
+@>
+
+#------------------------------------------------------------------------------
+Event ID: 002
+Event Name: ExitArrow
+(X,Y): (019,036)
+
+Page #1
+Conditions
+None
+
+Graphic: Exitarrow_red
+
+Autonomous Movement
+Type: Fixed
+Speed: 3: Slow
+Freq: 3: Low
+Options Enabled
+Move Animation
+Stop Animation
+Always on Top
+Trigger: Player Touch
+
+List of Event Commands:
+@>Conditional Branch: Player is facing Down
+ @>Play SE: 'Door exit', 100, 100
+ @>Change Screen Color Tone: (-255,-255,-255,0), @6
+ @>Wait: 8 frame(s)
+ @>Transfer Player:[250: Lavender Town], (020,023), No Fade
+ @>Change Screen Color Tone: (0,0,0,0), @6
+ @>
+: Branch End
+@>
+
+#------------------------------------------------------------------------------
+Event ID: 003
+Event Name: Lantern
+(X,Y): (015,033)
+
+Page #1
+Conditions
+Self Switch A is ON
+
+Graphic: Lantern
+
+Autonomous Movement
+Type: Fixed
+Speed: 3: Slow
+Freq: 3: Low
+Options Enabled
+Move Animation
+Stop Animation
+Direction Fix
+Trigger: Action Button
+
+List of Event Commands:
+@>
+
+#------------------------------------------------------------------------------
+Event ID: 004
+Event Name: Lantern
+(X,Y): (023,033)
+
+Page #1
+Conditions
+Self Switch A is ON
+
+Graphic: Lantern
+
+Autonomous Movement
+Type: Fixed
+Speed: 3: Slow
+Freq: 3: Low
+Options Enabled
+Move Animation
+Stop Animation
+Direction Fix
+Trigger: Action Button
+
+List of Event Commands:
+@>
+
+#------------------------------------------------------------------------------
+Event ID: 005
+Event Name: Lantern
+(X,Y): (015,029)
+
+Page #1
+Conditions
+Self Switch A is ON
+
+Graphic: Lantern
+
+Autonomous Movement
+Type: Fixed
+Speed: 3: Slow
+Freq: 3: Low
+Options Enabled
+Move Animation
+Stop Animation
+Direction Fix
+Trigger: Action Button
+
+List of Event Commands:
+@>
+
+#------------------------------------------------------------------------------
+Event ID: 006
+Event Name: Ayakashi Trigger
+(X,Y): (019,004)
+
+Page #1
+Conditions
+None
+
+Autonomous Movement
+Type: Fixed
+Speed: 3: Slow
+Freq: 3: Low
+Options Enabled
+Move Animation
+Trigger: Action Button
+
+List of Event Commands:
+@>Text: Erected in memorium of the person closest to me. May her
+ :    : soul rest in peace, never to be distrurbed.
+@>Text: Here, beneath the sakura tree we loved with all our heart.
+@>Fade Out BGM: 3 sec.
+@>Wait: 60 frame(s)
+@>Set Event Location: [Ghost],(019,011)
+@>Set Move Route: [Ghost]
+ :              : $>Through ON
+ :              : $>SE: 'Stare', 80, 100
+ :              : $>Change Speed: 1
+ :              : $>Move Up
+ :              : $>Change Opacity: 16
+ :              : $>Wait: 1 frame(s)
+ :              : $>Change Opacity: 32
+ :              : $>Wait: 1 frame(s)
+ :              : $>Change Opacity: 48
+ :              : $>Wait: 1 frame(s)
+ :              : $>Change Opacity: 64
+ :              : $>Wait: 1 frame(s)
+ :              : $>Change Opacity: 80
+ :              : $>Wait: 1 frame(s)
+ :              : $>Change Opacity: 96
+ :              : $>Wait: 1 frame(s)
+ :              : $>Change Opacity: 112
+ :              : $>Wait: 1 frame(s)
+ :              : $>Change Opacity: 128
+ :              : $>Wait: 1 frame(s)
+ :              : $>Change Opacity: 144
+ :              : $>Wait: 1 frame(s)
+ :              : $>Change Opacity: 160
+ :              : $>Wait: 1 frame(s)
+ :              : $>Change Opacity: 176
+ :              : $>Wait: 1 frame(s)
+ :              : $>Change Opacity: 192
+ :              : $>Wait: 1 frame(s)
+ :              : $>Change Opacity: 208
+ :              : $>Wait: 1 frame(s)
+ :              : $>Change Opacity: 224
+ :              : $>Wait: 1 frame(s)
+ :              : $>Change Opacity: 240
+ :              : $>Wait: 1 frame(s)
+ :              : $>Change Opacity: 255
+@>Wait for Move's Completion
+@>Wait: 20 frame(s)
+@>Set Move Route: [Ghost]
+ :              : $>SE: 'Stare', 80, 100
+ :              : $>Move Up
+ :              : $>Change Opacity: 240
+ :              : $>Wait: 1 frame(s)
+ :              : $>Change Opacity: 224
+ :              : $>Wait: 1 frame(s)
+ :              : $>Change Opacity: 208
+ :              : $>Wait: 1 frame(s)
+ :              : $>Change Opacity: 192
+ :              : $>Wait: 1 frame(s)
+ :              : $>Change Opacity: 176
+ :              : $>Wait: 1 frame(s)
+ :              : $>Change Opacity: 160
+ :              : $>Wait: 1 frame(s)
+ :              : $>Change Opacity: 144
+ :              : $>Wait: 1 frame(s)
+ :              : $>Change Opacity: 128
+ :              : $>Wait: 1 frame(s)
+ :              : $>Change Opacity: 112
+ :              : $>Wait: 1 frame(s)
+ :              : $>Change Opacity: 96
+ :              : $>Wait: 1 frame(s)
+ :              : $>Change Opacity: 80
+ :              : $>Wait: 1 frame(s)
+ :              : $>Change Opacity: 64
+ :              : $>Wait: 1 frame(s)
+ :              : $>Change Opacity: 48
+ :              : $>Wait: 1 frame(s)
+ :              : $>Change Opacity: 32
+ :              : $>Wait: 1 frame(s)
+ :              : $>Change Opacity: 16
+ :              : $>Wait: 1 frame(s)
+ :              : $>Change Opacity: 0
+@>Wait for Move's Completion
+@>Wait: 20 frame(s)
+@>Set Move Route: [Tree]
+ :              : $>SE: 'Shiny sparkle', 80, 100
+ :              : $>Wait: 1 frame(s)
+ :              : $>Graphic: "Glowing Sakura Tree', 0, 2, 1
+ :              : $>Wait: 1 frame(s)
+ :              : $>Graphic: "Glowing Sakura Tree', 0, 2, 2
+ :              : $>Wait: 1 frame(s)
+ :              : $>Graphic: "Glowing Sakura Tree', 0, 2, 3
+ :              : $>Wait: 1 frame(s)
+ :              : $>Graphic: "Glowing Sakura Tree', 0, 4, 0
+ :              : $>Wait: 1 frame(s)
+ :              : $>Graphic: "Glowing Sakura Tree', 0, 4, 1
+ :              : $>Wait: 1 frame(s)
+ :              : $>Graphic: "Glowing Sakura Tree', 0, 4, 2
+ :              : $>Wait: 1 frame(s)
+ :              : $>Graphic: "Glowing Sakura Tree', 0, 4, 3
+ :              : $>Wait: 1 frame(s)
+ :              : $>Graphic: "Glowing Sakura Tree', 0, 6, 0
+ :              : $>Wait: 1 frame(s)
+ :              : $>Graphic: "Glowing Sakura Tree', 0, 6, 1
+ :              : $>Wait: 1 frame(s)
+ :              : $>Graphic: "Glowing Sakura Tree', 0, 6, 2
+ :              : $>Wait: 1 frame(s)
+ :              : $>Graphic: "Glowing Sakura Tree', 0, 6, 3
+ :              : $>Wait: 1 frame(s)
+ :              : $>Graphic: "Glowing Sakura Tree', 0, 8, 0
+ :              : $>Wait: 1 frame(s)
+ :              : $>Graphic: "Glowing Sakura Tree', 0, 8, 1
+ :              : $>Wait: 1 frame(s)
+ :              : $>Graphic: "Glowing Sakura Tree', 0, 8, 2
+ :              : $>Wait: 1 frame(s)
+ :              : $>Graphic: "Glowing Sakura Tree', 0, 8, 3
+ :              : $>SE: '', 80, 100
+ :              : $>Wait: 1 frame(s)
+ :              : $>Graphic: "Glowing Sakura Tree', 0, 8, 2
+ :              : $>Wait: 1 frame(s)
+ :              : $>Graphic: "Glowing Sakura Tree', 0, 8, 1
+ :              : $>Wait: 1 frame(s)
+ :              : $>Graphic: "Glowing Sakura Tree', 0, 8, 0
+ :              : $>Wait: 1 frame(s)
+ :              : $>Graphic: "Glowing Sakura Tree', 0, 6, 3
+ :              : $>Wait: 1 frame(s)
+ :              : $>Graphic: "Glowing Sakura Tree', 0, 6, 2
+ :              : $>Wait: 1 frame(s)
+ :              : $>Graphic: "Glowing Sakura Tree', 0, 6, 1
+ :              : $>Wait: 1 frame(s)
+ :              : $>Graphic: "Glowing Sakura Tree', 0, 6, 0
+ :              : $>Wait: 1 frame(s)
+ :              : $>Graphic: "Glowing Sakura Tree', 0, 4, 3
+ :              : $>Wait: 1 frame(s)
+ :              : $>Graphic: "Glowing Sakura Tree', 0, 4, 2
+ :              : $>Wait: 1 frame(s)
+ :              : $>Graphic: "Glowing Sakura Tree', 0, 4, 1
+ :              : $>Wait: 1 frame(s)
+ :              : $>Graphic: "Glowing Sakura Tree', 0, 4, 0
+ :              : $>Wait: 1 frame(s)
+ :              : $>Graphic: "Glowing Sakura Tree', 0, 2, 3
+ :              : $>Wait: 1 frame(s)
+ :              : $>Graphic: "Glowing Sakura Tree', 0, 2, 2
+ :              : $>Wait: 1 frame(s)
+ :              : $>Graphic: "Glowing Sakura Tree', 0, 2, 1
+ :              : $>Wait: 1 frame(s)
+ :              : $>Graphic: "Glowing Sakura Tree', 0, 2, 0
+ :              : $>SE: 'Shiny sparkle', 80, 100
+ :              : $>Wait: 1 frame(s)
+ :              : $>Graphic: "Glowing Sakura Tree', 0, 2, 1
+ :              : $>Wait: 1 frame(s)
+ :              : $>Graphic: "Glowing Sakura Tree', 0, 2, 2
+ :              : $>Wait: 1 frame(s)
+ :              : $>Graphic: "Glowing Sakura Tree', 0, 2, 3
+ :              : $>Wait: 1 frame(s)
+ :              : $>Graphic: "Glowing Sakura Tree', 0, 4, 0
+ :              : $>Wait: 1 frame(s)
+ :              : $>Graphic: "Glowing Sakura Tree', 0, 4, 1
+ :              : $>Wait: 1 frame(s)
+ :              : $>Graphic: "Glowing Sakura Tree', 0, 4, 2
+ :              : $>Wait: 1 frame(s)
+ :              : $>Graphic: "Glowing Sakura Tree', 0, 4, 3
+ :              : $>Wait: 1 frame(s)
+ :              : $>Graphic: "Glowing Sakura Tree', 0, 6, 0
+ :              : $>Wait: 1 frame(s)
+ :              : $>Graphic: "Glowing Sakura Tree', 0, 6, 1
+ :              : $>Wait: 1 frame(s)
+ :              : $>Graphic: "Glowing Sakura Tree', 0, 6, 2
+ :              : $>Wait: 1 frame(s)
+ :              : $>Graphic: "Glowing Sakura Tree', 0, 6, 3
+ :              : $>Wait: 1 frame(s)
+ :              : $>Graphic: "Glowing Sakura Tree', 0, 8, 0
+ :              : $>Wait: 1 frame(s)
+ :              : $>Graphic: "Glowing Sakura Tree', 0, 8, 1
+ :              : $>Wait: 1 frame(s)
+ :              : $>Graphic: "Glowing Sakura Tree', 0, 8, 2
+ :              : $>Wait: 1 frame(s)
+ :              : $>Graphic: "Glowing Sakura Tree', 0, 8, 3
+ :              : $>SE: '', 80, 100
+ :              : $>Wait: 1 frame(s)
+ :              : $>Graphic: "Glowing Sakura Tree', 0, 8, 2
+ :              : $>Wait: 1 frame(s)
+ :              : $>Graphic: "Glowing Sakura Tree', 0, 8, 1
+ :              : $>Wait: 1 frame(s)
+ :              : $>Graphic: "Glowing Sakura Tree', 0, 8, 0
+ :              : $>Wait: 1 frame(s)
+ :              : $>Graphic: "Glowing Sakura Tree', 0, 6, 3
+ :              : $>Wait: 1 frame(s)
+ :              : $>Graphic: "Glowing Sakura Tree', 0, 6, 2
+ :              : $>Wait: 1 frame(s)
+ :              : $>Graphic: "Glowing Sakura Tree', 0, 6, 1
+ :              : $>Wait: 1 frame(s)
+ :              : $>Graphic: "Glowing Sakura Tree', 0, 6, 0
+ :              : $>Wait: 1 frame(s)
+ :              : $>Graphic: "Glowing Sakura Tree', 0, 4, 3
+ :              : $>Wait: 1 frame(s)
+ :              : $>Graphic: "Glowing Sakura Tree', 0, 4, 2
+ :              : $>Wait: 1 frame(s)
+ :              : $>Graphic: "Glowing Sakura Tree', 0, 4, 1
+ :              : $>Wait: 1 frame(s)
+ :              : $>Graphic: "Glowing Sakura Tree', 0, 4, 0
+ :              : $>Wait: 1 frame(s)
+ :              : $>Graphic: "Glowing Sakura Tree', 0, 2, 3
+ :              : $>Wait: 1 frame(s)
+ :              : $>Graphic: "Glowing Sakura Tree', 0, 2, 2
+ :              : $>Wait: 1 frame(s)
+ :              : $>Graphic: "Glowing Sakura Tree', 0, 2, 1
+ :              : $>Wait: 1 frame(s)
+ :              : $>Graphic: "Glowing Sakura Tree', 0, 2, 0
+ :              : $>SE: 'Shiny sparkle', 80, 100
+ :              : $>Wait: 1 frame(s)
+ :              : $>Graphic: "Glowing Sakura Tree', 0, 2, 1
+ :              : $>Wait: 1 frame(s)
+ :              : $>Graphic: "Glowing Sakura Tree', 0, 2, 2
+ :              : $>Wait: 1 frame(s)
+ :              : $>Graphic: "Glowing Sakura Tree', 0, 2, 3
+ :              : $>Wait: 1 frame(s)
+ :              : $>Graphic: "Glowing Sakura Tree', 0, 4, 0
+ :              : $>Wait: 1 frame(s)
+ :              : $>Graphic: "Glowing Sakura Tree', 0, 4, 1
+ :              : $>Wait: 1 frame(s)
+ :              : $>Graphic: "Glowing Sakura Tree', 0, 4, 2
+ :              : $>Wait: 1 frame(s)
+ :              : $>Graphic: "Glowing Sakura Tree', 0, 4, 3
+ :              : $>Wait: 1 frame(s)
+ :              : $>Graphic: "Glowing Sakura Tree', 0, 6, 0
+ :              : $>Wait: 1 frame(s)
+ :              : $>Graphic: "Glowing Sakura Tree', 0, 6, 1
+ :              : $>Wait: 1 frame(s)
+ :              : $>Graphic: "Glowing Sakura Tree', 0, 6, 2
+ :              : $>Wait: 1 frame(s)
+ :              : $>Graphic: "Glowing Sakura Tree', 0, 6, 3
+ :              : $>Wait: 1 frame(s)
+ :              : $>Graphic: "Glowing Sakura Tree', 0, 8, 0
+ :              : $>Wait: 1 frame(s)
+ :              : $>Graphic: "Glowing Sakura Tree', 0, 8, 1
+ :              : $>Wait: 1 frame(s)
+ :              : $>Graphic: "Glowing Sakura Tree', 0, 8, 2
+ :              : $>Wait: 1 frame(s)
+ :              : $>Graphic: "Glowing Sakura Tree', 0, 8, 3
+ :              : $>SE: '', 80, 100
+ :              : $>Wait: 1 frame(s)
+ :              : $>Graphic: "Glowing Sakura Tree', 0, 8, 2
+ :              : $>Wait: 1 frame(s)
+ :              : $>Graphic: "Glowing Sakura Tree', 0, 8, 1
+ :              : $>Wait: 1 frame(s)
+ :              : $>Graphic: "Glowing Sakura Tree', 0, 8, 0
+ :              : $>Wait: 1 frame(s)
+ :              : $>Graphic: "Glowing Sakura Tree', 0, 6, 3
+ :              : $>Wait: 1 frame(s)
+ :              : $>Graphic: "Glowing Sakura Tree', 0, 6, 2
+ :              : $>Wait: 1 frame(s)
+ :              : $>Graphic: "Glowing Sakura Tree', 0, 6, 1
+ :              : $>Wait: 1 frame(s)
+ :              : $>Graphic: "Glowing Sakura Tree', 0, 6, 0
+ :              : $>Wait: 1 frame(s)
+ :              : $>Graphic: "Glowing Sakura Tree', 0, 4, 3
+ :              : $>Wait: 1 frame(s)
+ :              : $>Graphic: "Glowing Sakura Tree', 0, 4, 2
+ :              : $>Wait: 1 frame(s)
+ :              : $>Graphic: "Glowing Sakura Tree', 0, 4, 1
+ :              : $>Wait: 1 frame(s)
+ :              : $>Graphic: "Glowing Sakura Tree', 0, 4, 0
+ :              : $>Wait: 1 frame(s)
+ :              : $>Graphic: "Glowing Sakura Tree', 0, 2, 3
+ :              : $>Wait: 1 frame(s)
+ :              : $>Graphic: "Glowing Sakura Tree', 0, 2, 2
+ :              : $>Wait: 1 frame(s)
+ :              : $>Graphic: "Glowing Sakura Tree', 0, 2, 1
+ :              : $>Wait: 1 frame(s)
+ :              : $>Graphic: "Glowing Sakura Tree', 0, 2, 0
+@>Wait for Move's Completion
+@>Change Battle BGM: 'U-008. Sakura, Sakura ~ Japanize Dream', 100, 100
 @>Script: setBattleRule("cannotRun")
 @>Script: pbWildBattle(:AYAKASHI,35)
+@>
+
+Page #2
+Conditions
+Self Switch A is ON
+
+Autonomous Movement
+Type: Fixed
+Speed: 3: Slow
+Freq: 3: Low
+Options Enabled
+Move Animation
+Trigger: Action Button
+
+List of Event Commands:
+@>Text: Erected in memorium of a friend. May her
+ :    : soul rest in peace, never to be distrurbed.
+@>Text: Here, beneath the sakura tree we loved
+ :    : with all our heart.
+@>
+
+#------------------------------------------------------------------------------
+Event ID: 008
+Event Name: Lantern
+(X,Y): (023,029)
+
+Page #1
+Conditions
+Self Switch A is ON
+
+Graphic: Lantern
+
+Autonomous Movement
+Type: Fixed
+Speed: 3: Slow
+Freq: 3: Low
+Options Enabled
+Move Animation
+Stop Animation
+Direction Fix
+Trigger: Action Button
+
+List of Event Commands:
+@>
+
+#------------------------------------------------------------------------------
+Event ID: 009
+Event Name: Lantern
+(X,Y): (015,025)
+
+Page #1
+Conditions
+Self Switch A is ON
+
+Graphic: Lantern
+
+Autonomous Movement
+Type: Fixed
+Speed: 3: Slow
+Freq: 3: Low
+Options Enabled
+Move Animation
+Stop Animation
+Direction Fix
+Trigger: Action Button
+
+List of Event Commands:
+@>
+
+#------------------------------------------------------------------------------
+Event ID: 010
+Event Name: Lantern
+(X,Y): (023,025)
+
+Page #1
+Conditions
+Self Switch A is ON
+
+Graphic: Lantern
+
+Autonomous Movement
+Type: Fixed
+Speed: 3: Slow
+Freq: 3: Low
+Options Enabled
+Move Animation
+Stop Animation
+Direction Fix
+Trigger: Action Button
+
+List of Event Commands:
+@>
+
+#------------------------------------------------------------------------------
+Event ID: 011
+Event Name: Lantern
+(X,Y): (015,021)
+
+Page #1
+Conditions
+Self Switch A is ON
+
+Graphic: Lantern
+
+Autonomous Movement
+Type: Fixed
+Speed: 3: Slow
+Freq: 3: Low
+Options Enabled
+Move Animation
+Stop Animation
+Direction Fix
+Trigger: Action Button
+
+List of Event Commands:
+@>
+
+#------------------------------------------------------------------------------
+Event ID: 012
+Event Name: Lantern
+(X,Y): (023,021)
+
+Page #1
+Conditions
+Self Switch A is ON
+
+Graphic: Lantern
+
+Autonomous Movement
+Type: Fixed
+Speed: 3: Slow
+Freq: 3: Low
+Options Enabled
+Move Animation
+Stop Animation
+Direction Fix
+Trigger: Action Button
+
+List of Event Commands:
+@>
+
+#------------------------------------------------------------------------------
+Event ID: 013
+Event Name: Lantern
+(X,Y): (015,017)
+
+Page #1
+Conditions
+Self Switch A is ON
+
+Graphic: Lantern
+
+Autonomous Movement
+Type: Fixed
+Speed: 3: Slow
+Freq: 3: Low
+Options Enabled
+Move Animation
+Stop Animation
+Direction Fix
+Trigger: Action Button
+
+List of Event Commands:
+@>
+
+#------------------------------------------------------------------------------
+Event ID: 014
+Event Name: Lantern
+(X,Y): (023,017)
+
+Page #1
+Conditions
+Self Switch A is ON
+
+Graphic: Lantern
+
+Autonomous Movement
+Type: Fixed
+Speed: 3: Slow
+Freq: 3: Low
+Options Enabled
+Move Animation
+Stop Animation
+Direction Fix
+Trigger: Action Button
+
+List of Event Commands:
+@>
+
+#------------------------------------------------------------------------------
+Event ID: 015
+Event Name: Lantern
+(X,Y): (015,013)
+
+Page #1
+Conditions
+Self Switch A is ON
+
+Graphic: Lantern
+
+Autonomous Movement
+Type: Fixed
+Speed: 3: Slow
+Freq: 3: Low
+Options Enabled
+Move Animation
+Stop Animation
+Direction Fix
+Trigger: Action Button
+
+List of Event Commands:
+@>
+
+#------------------------------------------------------------------------------
+Event ID: 016
+Event Name: Lantern
+(X,Y): (023,013)
+
+Page #1
+Conditions
+Self Switch A is ON
+
+Graphic: Lantern
+
+Autonomous Movement
+Type: Fixed
+Speed: 3: Slow
+Freq: 3: Low
+Options Enabled
+Move Animation
+Stop Animation
+Direction Fix
+Trigger: Action Button
+
+List of Event Commands:
+@>
+
+#------------------------------------------------------------------------------
+Event ID: 017
+Event Name: Map Tone
+(X,Y): (000,014)
+
+Page #1
+Conditions
+None
+
+Autonomous Movement
+Type: Fixed
+Speed: 3: Slow
+Freq: 3: Low
+Options Enabled
+Move Animation
+Trigger: Action Button
+
+List of Event Commands:
+@>Change Screen Color Tone: (-70,-70,11,68), @0
+@>
+
+#------------------------------------------------------------------------------
+Event ID: 018
+Event Name: Ghost
+(X,Y): (000,012)
+
+Page #1
+Conditions
+None
+
+Graphic: TPDP_NPC 26
+
+Autonomous Movement
+Type: Fixed
+Speed: 3: Slow
+Freq: 3: Low
+Options Enabled
+Move Animation
+Stop Animation
+Direction Fix
+Always on Top
+Trigger: Action Button
+
+List of Event Commands:
+@>
+
+#------------------------------------------------------------------------------
+Event ID: 019
+Event Name: Light Source
+(X,Y): (015,034)
+
+Page #1
+Conditions
+Self Switch A is ON
+
+Graphic: light_fire
+
+Autonomous Movement
+Type: Fixed
+Speed: 3: Slow
+Freq: 3: Low
+Options Enabled
+Move Animation
+Trigger: Action Button
+
+List of Event Commands:
+@>
+
+#------------------------------------------------------------------------------
+Event ID: 020
+Event Name: Light Source
+(X,Y): (023,034)
+
+Page #1
+Conditions
+Self Switch A is ON
+
+Graphic: light_fire
+
+Autonomous Movement
+Type: Fixed
+Speed: 3: Slow
+Freq: 3: Low
+Options Enabled
+Move Animation
+Trigger: Action Button
+
+List of Event Commands:
+@>
+
+#------------------------------------------------------------------------------
+Event ID: 021
+Event Name: Light Source
+(X,Y): (015,030)
+
+Page #1
+Conditions
+Self Switch A is ON
+
+Graphic: light_fire
+
+Autonomous Movement
+Type: Fixed
+Speed: 3: Slow
+Freq: 3: Low
+Options Enabled
+Move Animation
+Trigger: Action Button
+
+List of Event Commands:
+@>
+
+#------------------------------------------------------------------------------
+Event ID: 022
+Event Name: Light Source
+(X,Y): (023,030)
+
+Page #1
+Conditions
+Self Switch A is ON
+
+Graphic: light_fire
+
+Autonomous Movement
+Type: Fixed
+Speed: 3: Slow
+Freq: 3: Low
+Options Enabled
+Move Animation
+Trigger: Action Button
+
+List of Event Commands:
+@>
+
+#------------------------------------------------------------------------------
+Event ID: 023
+Event Name: Light Source
+(X,Y): (015,026)
+
+Page #1
+Conditions
+Self Switch A is ON
+
+Graphic: light_fire
+
+Autonomous Movement
+Type: Fixed
+Speed: 3: Slow
+Freq: 3: Low
+Options Enabled
+Move Animation
+Trigger: Action Button
+
+List of Event Commands:
+@>
+
+#------------------------------------------------------------------------------
+Event ID: 024
+Event Name: Light Source
+(X,Y): (023,026)
+
+Page #1
+Conditions
+Self Switch A is ON
+
+Graphic: light_fire
+
+Autonomous Movement
+Type: Fixed
+Speed: 3: Slow
+Freq: 3: Low
+Options Enabled
+Move Animation
+Trigger: Action Button
+
+List of Event Commands:
+@>
+
+#------------------------------------------------------------------------------
+Event ID: 025
+Event Name: Light Source
+(X,Y): (015,022)
+
+Page #1
+Conditions
+Self Switch A is ON
+
+Graphic: light_fire
+
+Autonomous Movement
+Type: Fixed
+Speed: 3: Slow
+Freq: 3: Low
+Options Enabled
+Move Animation
+Trigger: Action Button
+
+List of Event Commands:
+@>
+
+#------------------------------------------------------------------------------
+Event ID: 026
+Event Name: Light Source
+(X,Y): (023,022)
+
+Page #1
+Conditions
+Self Switch A is ON
+
+Graphic: light_fire
+
+Autonomous Movement
+Type: Fixed
+Speed: 3: Slow
+Freq: 3: Low
+Options Enabled
+Move Animation
+Trigger: Action Button
+
+List of Event Commands:
+@>
+
+#------------------------------------------------------------------------------
+Event ID: 027
+Event Name: Light Source
+(X,Y): (015,018)
+
+Page #1
+Conditions
+Self Switch A is ON
+
+Graphic: light_fire
+
+Autonomous Movement
+Type: Fixed
+Speed: 3: Slow
+Freq: 3: Low
+Options Enabled
+Move Animation
+Trigger: Action Button
+
+List of Event Commands:
+@>
+
+#------------------------------------------------------------------------------
+Event ID: 028
+Event Name: Light Source
+(X,Y): (023,018)
+
+Page #1
+Conditions
+Self Switch A is ON
+
+Graphic: light_fire
+
+Autonomous Movement
+Type: Fixed
+Speed: 3: Slow
+Freq: 3: Low
+Options Enabled
+Move Animation
+Trigger: Action Button
+
+List of Event Commands:
+@>
+
+#------------------------------------------------------------------------------
+Event ID: 029
+Event Name: Light Source
+(X,Y): (015,014)
+
+Page #1
+Conditions
+Self Switch A is ON
+
+Graphic: light_fire
+
+Autonomous Movement
+Type: Fixed
+Speed: 3: Slow
+Freq: 3: Low
+Options Enabled
+Move Animation
+Trigger: Action Button
+
+List of Event Commands:
+@>
+
+#------------------------------------------------------------------------------
+Event ID: 030
+Event Name: Light Source
+(X,Y): (023,014)
+
+Page #1
+Conditions
+Self Switch A is ON
+
+Graphic: light_fire
+
+Autonomous Movement
+Type: Fixed
+Speed: 3: Slow
+Freq: 3: Low
+Options Enabled
+Move Animation
+Trigger: Action Button
+
+List of Event Commands:
+@>
+
+#------------------------------------------------------------------------------
+Event ID: 031
+Event Name: Tree
+(X,Y): (019,010)
+
+Page #1
+Conditions
+None
+
+Graphic: Glowing Sakura Tree
+
+Autonomous Movement
+Type: Fixed
+Speed: 3: Slow
+Freq: 3: Low
+Options Enabled
+Move Animation
+Trigger: Action Button
+
+List of Event Commands:
 @>
 
 #------------------------------------------------------------------------------
@@ -73524,7 +75153,7 @@ Map ID: 257
 Map Name: Lavender Tower
 Tileset: 013: Graveyard
 Width: 150, Height: 20
-Auto-Change BGM: 033. Mystic oriental Dream ~ Ancient Temple
+Auto-Change BGM: W-023. Pokemon Tower
 
 #------------------------------------------------------------------------------
 Event ID: 001
@@ -73619,7 +75248,7 @@ List of Event Commands:
  :              : $>Through OFF
  :              : $>Always on Top OFF
 @>Wait for Move's Completion
-@>Play SE: 'Exit Door', 80, 100
+@>Play SE: 'Door exit', 80, 100
 @>Change Screen Color Tone: (-255,-255,-255,0), @6
 @>Wait: 8 frame(s)
 @>Transfer Player:[257: Lavender Tower], (078,010), Left, No Fade
@@ -73653,7 +75282,7 @@ List of Event Commands:
  :              : $>Through OFF
  :              : $>Always on Top OFF
 @>Wait for Move's Completion
-@>Play SE: 'Exit Door', 80, 100
+@>Play SE: 'Door exit', 80, 100
 @>Change Screen Color Tone: (-255,-255,-255,0), @6
 @>Wait: 8 frame(s)
 @>Transfer Player:[257: Lavender Tower], (138,010), Left, No Fade
@@ -73687,7 +75316,7 @@ List of Event Commands:
  :              : $>Through OFF
  :              : $>Always on Top OFF
 @>Wait for Move's Completion
-@>Play SE: 'Exit Door', 80, 100
+@>Play SE: 'Door exit', 80, 100
 @>Change Screen Color Tone: (-255,-255,-255,0), @6
 @>Wait: 8 frame(s)
 @>Transfer Player:[257: Lavender Tower], (034,010), Right, No Fade
@@ -73721,7 +75350,7 @@ List of Event Commands:
  :              : $>Through OFF
  :              : $>Always on Top OFF
 @>Wait for Move's Completion
-@>Play SE: 'Exit Door', 80, 100
+@>Play SE: 'Door exit', 80, 100
 @>Change Screen Color Tone: (-255,-255,-255,0), @6
 @>Wait: 8 frame(s)
 @>Transfer Player:[257: Lavender Tower], (094,010), Right, No Fade
@@ -73755,7 +75384,7 @@ List of Event Commands:
  :              : $>Through OFF
  :              : $>Always on Top OFF
 @>Wait for Move's Completion
-@>Play SE: 'Exit Door', 80, 100
+@>Play SE: 'Door exit', 80, 100
 @>Change Screen Color Tone: (-255,-255,-255,0), @6
 @>Wait: 8 frame(s)
 @>Transfer Player:[258: Lavender Tower], (011,016), Right, No Fade
@@ -73788,10 +75417,11 @@ List of Event Commands:
  :              : $>Through OFF
  :              : $>Always on Top OFF
 @>Wait for Move's Completion
-@>Play SE: 'Exit Door', 80, 100
+@>Play SE: 'Door exit', 80, 100
 @>Change Screen Color Tone: (-255,-255,-255,0), @6
 @>Wait: 8 frame(s)
-@>Transfer Player:[080: Lavender Tower], (019,010), Left, No Fade
+@>Script: pbCaveExit
+@>Transfer Player:[080: Lavender Tower], (018,010), Left, No Fade
 @>Change Screen Color Tone: (0,0,0,0), @6
 @>
 
@@ -73821,7 +75451,7 @@ List of Event Commands:
  :              : $>Through OFF
  :              : $>Always on Top OFF
 @>Wait for Move's Completion
-@>Play SE: 'Exit Door', 80, 100
+@>Play SE: 'Door exit', 80, 100
 @>Change Screen Color Tone: (-255,-255,-255,0), @6
 @>Wait: 8 frame(s)
 @>Transfer Player:[257: Lavender Tower], (048,010), Left, No Fade
@@ -73854,7 +75484,7 @@ List of Event Commands:
  :              : $>Through OFF
  :              : $>Always on Top OFF
 @>Wait for Move's Completion
-@>Play SE: 'Exit Door', 80, 100
+@>Play SE: 'Door exit', 80, 100
 @>Change Screen Color Tone: (-255,-255,-255,0), @6
 @>Wait: 8 frame(s)
 @>Transfer Player:[257: Lavender Tower], (108,010), Left, No Fade
@@ -73887,7 +75517,7 @@ List of Event Commands:
  :              : $>Through OFF
  :              : $>Always on Top OFF
 @>Wait for Move's Completion
-@>Play SE: 'Exit Door', 80, 100
+@>Play SE: 'Door exit', 80, 100
 @>Change Screen Color Tone: (-255,-255,-255,0), @6
 @>Wait: 8 frame(s)
 @>Transfer Player:[257: Lavender Tower], (004,010), Right, No Fade
@@ -73920,7 +75550,7 @@ List of Event Commands:
  :              : $>Through OFF
  :              : $>Always on Top OFF
 @>Wait for Move's Completion
-@>Play SE: 'Exit Door', 80, 100
+@>Play SE: 'Door exit', 80, 100
 @>Change Screen Color Tone: (-255,-255,-255,0), @6
 @>Wait: 8 frame(s)
 @>Transfer Player:[257: Lavender Tower], (064,010), Right, No Fade
@@ -75044,7 +76674,7 @@ Map ID: 258
 Map Name: Lavender Tower
 Tileset: 013: Graveyard
 Width: 24, Height: 20
-Auto-Change BGM: 033. Mystic oriental Dream ~ Ancient Temple
+Auto-Change BGM: W-023. Pokemon Tower
 
 #------------------------------------------------------------------------------
 Event ID: 001
@@ -75136,7 +76766,7 @@ List of Event Commands:
  :              : $>Through OFF
  :              : $>Always on Top OFF
 @>Wait for Move's Completion
-@>Play SE: 'Exit Door', 80, 100
+@>Play SE: 'Door exit', 80, 100
 @>Change Screen Color Tone: (-255,-255,-255,0), @6
 @>Wait: 8 frame(s)
 @>Transfer Player:[257: Lavender Tower], (131,016), Right, No Fade
@@ -75191,6 +76821,7 @@ Map ID: 259
 Map Name: Lavender Tower
 Tileset: 013: Graveyard
 Width: 39, Height: 50
+Auto-Change BGM: W-023. Pokemon Tower
 
 #------------------------------------------------------------------------------
 Event ID: 001
@@ -75261,7 +76892,14 @@ List of Event Commands:
 @>Play SE: 'Door exit', 80, 100
 @>Change Screen Color Tone: (-255,-255,-255,0), @6
 @>Wait: 8 frame(s)
-@>Transfer Player:[259: Lavender Tower], (019,030), Up, No Fade
+@>Conditional Branch: Self Switch A == ON
+ @>Transfer Player:[259: Lavender Tower], (019,023), Right, No Fade
+ @>Script: pbSetSelfSwitch(11,"A",true)
+ @>
+: Else
+ @>Transfer Player:[259: Lavender Tower], (019,030), Up, No Fade
+ @>
+: Branch End
 @>Change Screen Color Tone: (0,0,0,0), @6
 @>
 
@@ -75408,7 +77046,7 @@ Speed: 3: Slow
 Freq: 3: Low
 Options Enabled
 Move Animation
-Trigger: Action Button
+Trigger: Player Touch
 
 List of Event Commands:
 @>Play SE: 'Door exit', 80, 100
@@ -75416,6 +77054,24 @@ List of Event Commands:
 @>Wait: 8 frame(s)
 @>Transfer Player:[260: Lavender Tower], (012,014), Up, No Fade
 @>Change Screen Color Tone: (0,0,0,0), @6
+@>
+
+Page #3
+Conditions
+Self Switch B is ON
+
+Autonomous Movement
+Type: Fixed
+Speed: 3: Slow
+Freq: 3: Low
+Options Enabled
+Move Animation
+Trigger: Player Touch
+
+List of Event Commands:
+@>Text: I shouldn't head back inside right now.
+@>Set Move Route: Player
+ :              : $>Move Down
 @>
 
 #------------------------------------------------------------------------------
@@ -75446,6 +77102,28 @@ List of Event Commands:
 
 Page #2
 Conditions
+Self Switch A is ON
+
+Graphic: questicon2
+
+Autonomous Movement
+Type: Fixed
+Speed: 3: Slow
+Freq: 3: Low
+Options Enabled
+Move Animation
+Stop Animation
+Direction Fix
+Through
+Always on Top
+Trigger: Parallel Process
+
+List of Event Commands:
+@>Set Event Location: This event,(019,039)
+@>
+
+Page #3
+Conditions
 Variable 0110: Plot Control Variable is 10 or above
 
 Autonomous Movement
@@ -75454,7 +77132,11 @@ Speed: 3: Slow
 Freq: 3: Low
 Options Enabled
 Move Animation
-Trigger: Action Button
+Stop Animation
+Direction Fix
+Through
+Always on Top
+Trigger: Parallel Process
 
 List of Event Commands:
 @>
@@ -75486,11 +77168,249 @@ List of Event Commands:
  :              : $>Through OFF
  :              : $>Always on Top OFF
 @>Wait for Move's Completion
-@>Play SE: 'Exit Door', 80, 100
+@>Play SE: 'Door exit', 80, 100
 @>Change Screen Color Tone: (-255,-255,-255,0), @6
 @>Wait: 8 frame(s)
 @>Transfer Player:[080: Lavender Tower], (005,010), Right, No Fade
 @>Change Screen Color Tone: (0,0,0,0), @6
+@>
+
+#------------------------------------------------------------------------------
+Event ID: 010
+Event Name: EV010
+(X,Y): (007,041)
+
+Page #1
+Conditions
+Variable 0110: Plot Control Variable is 11 or above
+
+Graphic: trainer_CHANELLER
+
+Autonomous Movement
+Type: Fixed
+Speed: 3: Slow
+Freq: 3: Low
+Options Enabled
+Move Animation
+Trigger: Action Button
+
+List of Event Commands:
+@>Text: Please forgive me, but we are currently cleaning this room. Nobody
+ :    : can enter at the moment.
+@>
+
+#------------------------------------------------------------------------------
+Event ID: 011
+Event Name: EV011
+(X,Y): (028,023)
+
+Page #1
+Conditions
+Self Switch A is ON
+
+Autonomous Movement
+Type: Fixed
+Speed: 3: Slow
+Freq: 3: Low
+Options Enabled
+Move Animation
+Trigger: Autorun
+
+List of Event Commands:
+@>Wait: 20 frame(s)
+@>Set Event Location: [Head Priestess],(019,030), Up
+@>Play SE: 'Door enter', 100, 100
+@>Set Move Route: [Head Priestess]
+ :              : $>Move Up
+ :              : $>Move Up
+ :              : $>Move Up
+ :              : $>Move Up
+ :              : $>Move Up
+ :              : $>Move Up
+@>Set Move Route: Player
+ :              : $>Turn Down
+@>Wait for Move's Completion
+@>Text: \xn[Head Priestess]As I had feared, we didn't have much remaining
+ :    : in the form of tangible resources.
+@>Text: \xn[Head Priestess]Most of what we know about the gensou kyou
+ :    : has been passed down by word of mouth.
+@>Text: \xn[Head Priestess]It is a land filled with Youkai and malevolence
+ :    : that our realm hasn't seen in almost 200 years.
+@>Text: \xn[Head Priestess]Though it isn't much, please take these 
+ :    : with you. They're all that we have pertaining to the subject.
+@>Script: pbReceiveItem(:SEIRADIARY)
+@>Text: \xn[Head Priestess]This is the personal diary of one of my clan's
+ :    : heads. Though most of the pages have been worn down, there
+ :    : are a few passages still readable.
+@>Text: \xn[Head Priestess]This is the personal diary of one of my clan's
+ :    : heads. Though most of the pages have been worn down, there
+ :    : are a few passages still readable.
+@>Script: pbReceiveItem(:GENSOUEDICT)
+@>Text: \xn[Head Priestess]This would be the official parchment that was
+ :    : written up when the Gensou Kyou Edict was settled on. 
+@>Text: \xn[Head Priestess]It mostly documents the conditions for the
+ :    : edict, as well as the founders of said edict.
+@>Text: \xn[Head Priestess]I'm afraid it might not help that much, but a
+ :    : promise is a promise...
+@>Text: \xn[Head Priestess]All I'll ask is that you eventually return these 
+ :    : here when you're done with them. They are all that my clan
+ :    : has left of its heritage.
+@>Text: \xn[Head Priestess]If that will be all, I must return to work. I do
+ :    : hope that these will be of hope in some way.
+@>Set Move Route: [Head Priestess]
+ :              : $>Move Down
+ :              : $>Move Down
+ :              : $>Move Down
+ :              : $>Move Down
+ :              : $>Move Down
+ :              : $>Move Down
+ :              : $>SE: 'Door exit', 80, 100
+ :              : $>Change Opacity: 0
+@>Wait for Move's Completion
+@>Script: pbSetPokemonCenter
+@>Text: \xn[\pn]\b(I should check on these tomes when I get the chance...
+ :    : But, in the meanwhile, I should check in with \v[108].)
+@>Wait: 5 frame(s)
+@>Text: \wt[5]<icon=icon_phone>\se[Phone ring]\b\ts[]Ring...!\wt[10] Ring...!\wt[10] Ring...!\wt[10] Ring...!\wtnp[40]
+@>Text: \xn[\v[108]]\se[PC access]<icon=icon_phone>\bHey, \pn! What's up, did you finish in
+ :    : Lavender Town already?
+@>Wait: 5 frame(s)
+@>Text: \xn[\v[108]]<icon=icon_phone>\bWow, it actually paid off? Great! Wish I could
+ :    : say I was having better luck here in Fuchsia. Getting access to the Safari
+ :    : Zone has been harder than I thought.
+@>Text: \xn[\v[108]]<icon=icon_phone>\bMaybe when you swing by here, we can tackle
+ :    : it together? Two heads are better than one afterall!
+@>Text: \xn[\v[108]]<icon=icon_phone>\bI'll be waiting for you in the Pokémon Center!
+@>Text: <icon=icon_phone>\se[Phone hangup]\ts[]Click!\wt[10]\n......\wt[10] ......\wtnp[40]
+@>Script: pbSetSelfSwitch(3,"A",false)
+@>Control Variables: [0110: Plot Control Variable] = 11
+@>Script: completeQuest(:Quest21)
+@>Conditional Branch: Variable [0107: Chosen Protag] == 0
+ @>Comment: --- Renko
+ @>Script: activateQuest(:Quest22)
+ @>
+: Else
+ @>Comment: --- Maribel
+ @>Script: activateQuest(:Quest23)
+ @>
+: Branch End
+@>Control Self Switch: B =ON
+@>
+
+Page #2
+Conditions
+Self Switch B is ON
+
+Autonomous Movement
+Type: Fixed
+Speed: 3: Slow
+Freq: 3: Low
+Options Enabled
+Move Animation
+Trigger: Action Button
+
+List of Event Commands:
+@>
+
+#------------------------------------------------------------------------------
+Event ID: 012
+Event Name: Head Priestess
+(X,Y): (000,020)
+
+Page #1
+Conditions
+None
+
+Graphic: trainer_CHANELLER
+
+Autonomous Movement
+Type: Fixed
+Speed: 3: Slow
+Freq: 3: Low
+Options Enabled
+Move Animation
+Trigger: Action Button
+
+List of Event Commands:
+@>
+
+Page #2
+Conditions
+Variable 0110: Plot Control Variable is 11 or above
+
+Autonomous Movement
+Type: Fixed
+Speed: 3: Slow
+Freq: 3: Low
+Options Enabled
+Move Animation
+Trigger: Action Button
+
+List of Event Commands:
+@>
+
+#------------------------------------------------------------------------------
+Event ID: 013
+Event Name: EV013
+(X,Y): (000,032)
+
+Page #1
+Conditions
+None
+
+Autonomous Movement
+Type: Fixed
+Speed: 3: Slow
+Freq: 3: Low
+Options Enabled
+Move Animation
+Trigger: Action Button
+
+List of Event Commands:
+@>Script: pbSetSelfSwitch2(259,7,"B",true)
+:       : pbSetSelfSwitch2(259,8,"A",true)
+@>
+
+#------------------------------------------------------------------------------
+Event ID: 014
+Event Name: ---
+(X,Y): (012,043)
+
+Page #1
+Conditions
+None
+
+Graphic: Object ball
+
+Autonomous Movement
+Type: Fixed
+Speed: 3: Slow
+Freq: 3: Low
+Options Enabled
+Move Animation
+Trigger: Action Button
+
+List of Event Commands:
+@>Control Self Switch: A =ON
+@>
+
+Page #2
+Conditions
+Self Switch A is ON
+
+Graphic: light1
+
+Autonomous Movement
+Type: Fixed
+Speed: 3: Slow
+Freq: 3: Low
+Options Enabled
+Move Animation
+Through
+Always on Top
+Trigger: Action Button
+
+List of Event Commands:
 @>
 
 #------------------------------------------------------------------------------
@@ -75509,6 +77429,23 @@ Event Name: Priestess3
 Page #1
 Conditions
 None
+
+Graphic: trainer_CHANELLER
+
+Autonomous Movement
+Type: Fixed
+Speed: 3: Slow
+Freq: 3: Low
+Options Enabled
+Move Animation
+Trigger: Action Button
+
+List of Event Commands:
+@>
+
+Page #2
+Conditions
+Self Switch A is ON
 
 Graphic: trainer_CHANELLER
 
@@ -75545,6 +77482,23 @@ Trigger: Action Button
 List of Event Commands:
 @>
 
+Page #2
+Conditions
+Self Switch A is ON
+
+Graphic: trainer_CHANELLER
+
+Autonomous Movement
+Type: Fixed
+Speed: 3: Slow
+Freq: 3: Low
+Options Enabled
+Move Animation
+Trigger: Action Button
+
+List of Event Commands:
+@>
+
 #------------------------------------------------------------------------------
 Event ID: 003
 Event Name: Priestess4
@@ -75553,6 +77507,23 @@ Event Name: Priestess4
 Page #1
 Conditions
 None
+
+Graphic: trainer_CHANELLER
+
+Autonomous Movement
+Type: Fixed
+Speed: 3: Slow
+Freq: 3: Low
+Options Enabled
+Move Animation
+Trigger: Action Button
+
+List of Event Commands:
+@>
+
+Page #2
+Conditions
+Self Switch A is ON
 
 Graphic: trainer_CHANELLER
 
@@ -75589,6 +77560,23 @@ Trigger: Action Button
 List of Event Commands:
 @>
 
+Page #2
+Conditions
+Self Switch A is ON
+
+Graphic: trainer_CHANELLER
+
+Autonomous Movement
+Type: Fixed
+Speed: 3: Slow
+Freq: 3: Low
+Options Enabled
+Move Animation
+Trigger: Action Button
+
+List of Event Commands:
+@>
+
 #------------------------------------------------------------------------------
 Event ID: 005
 Event Name: Priestess6
@@ -75597,6 +77585,23 @@ Event Name: Priestess6
 Page #1
 Conditions
 None
+
+Graphic: trainer_CHANELLER
+
+Autonomous Movement
+Type: Fixed
+Speed: 3: Slow
+Freq: 3: Low
+Options Enabled
+Move Animation
+Trigger: Action Button
+
+List of Event Commands:
+@>
+
+Page #2
+Conditions
+Self Switch A is ON
 
 Graphic: trainer_CHANELLER
 
@@ -75633,6 +77638,23 @@ Trigger: Action Button
 List of Event Commands:
 @>
 
+Page #2
+Conditions
+Self Switch A is ON
+
+Graphic: trainer_CHANELLER
+
+Autonomous Movement
+Type: Fixed
+Speed: 3: Slow
+Freq: 3: Low
+Options Enabled
+Move Animation
+Trigger: Action Button
+
+List of Event Commands:
+@>
+
 #------------------------------------------------------------------------------
 Event ID: 007
 Event Name: Head Priestess
@@ -75641,6 +77663,23 @@ Event Name: Head Priestess
 Page #1
 Conditions
 None
+
+Graphic: trainer_CHANELLER
+
+Autonomous Movement
+Type: Fixed
+Speed: 3: Slow
+Freq: 3: Low
+Options Enabled
+Move Animation
+Trigger: Action Button
+
+List of Event Commands:
+@>
+
+Page #2
+Conditions
+Self Switch A is ON
 
 Graphic: trainer_CHANELLER
 
@@ -75677,6 +77716,23 @@ Trigger: Action Button
 List of Event Commands:
 @>
 
+Page #2
+Conditions
+Self Switch A is ON
+
+Graphic: trainer_CHANELLER
+
+Autonomous Movement
+Type: Fixed
+Speed: 3: Slow
+Freq: 3: Low
+Options Enabled
+Move Animation
+Trigger: Action Button
+
+List of Event Commands:
+@>
+
 #------------------------------------------------------------------------------
 Event ID: 009
 Event Name: Priestess8
@@ -75685,6 +77741,23 @@ Event Name: Priestess8
 Page #1
 Conditions
 None
+
+Graphic: trainer_CHANELLER
+
+Autonomous Movement
+Type: Fixed
+Speed: 3: Slow
+Freq: 3: Low
+Options Enabled
+Move Animation
+Trigger: Action Button
+
+List of Event Commands:
+@>
+
+Page #2
+Conditions
+Self Switch A is ON
 
 Graphic: trainer_CHANELLER
 
@@ -75737,7 +77810,7 @@ Move Animation
 Trigger: Autorun
 
 List of Event Commands:
-@>Wait: 5 frame(s)
+@>Wait: 2 frame(s)
 @>Set Move Route: Player
  :              : $>Change Speed: 3
  :              : $>Move Up
@@ -75841,6 +77914,15 @@ List of Event Commands:
  :              : $>SE: 'teleporter', 80, 100
  :              : $>Change Opacity: 255
 @>Wait for Move's Completion
+@>Script: pbSetSelfSwitch(1,"A",true)
+:       : pbSetSelfSwitch(2,"A",true)
+:       : pbSetSelfSwitch(3,"A",true)
+:       : pbSetSelfSwitch(4,"A",true)
+:       : pbSetSelfSwitch(5,"A",true)
+:       : pbSetSelfSwitch(6,"A",true)
+:       : pbSetSelfSwitch(7,"A",true)
+:       : pbSetSelfSwitch(8,"A",true)
+:       : pbSetSelfSwitch(9,"A",true)
 @>Wait: 20 frame(s)
 @>Text: \xn[Head Priestess]So, let me ask you this question again. <i>Who</i>
  :    : are you?
@@ -75955,11 +78037,62 @@ List of Event Commands:
 @>Text: \xn[Head Priestess]Hmph! Come, child! Let me show you what the
  :    : descendant of the great and venerable Hakurei Clan is capable
  :    : of!
-@>Comment: Insert battle against Elder Priestess Angela here
 @>Conditional Branch: Script: pbTrainerBattle(:ELDERPRIESTESS,"Angela",_I("Perhaps this is how it was meant to be."))
- @>Control Self Switch: A =ON
+ @>Text: \xn[Head Priestess]It would seem the gods have favored you 
+  :    : today, Miss \pn.
+ @>Text: \xn[\pn]I take it that means you'll tell me all that you know?
+ @>Text: \xn[Head Priestess]Under normal circumstances, I would shoo you 
+  :    : out of the Tower without a second though, however...
+ @>Text: \xn[Head Priestess]There's... something about you. You claim to 
+  :    : be normal, but I believe otherwise.
+ @>Text: \xn[Head Priestess]I don't know what it is, but... Perhaps we can
+  :    : trust you with the knowledge.
+ @>Text: \xn[\pn]\b(Finally, progress!)
+ @>Text: Lady Angela, are you sure that is a good idea? Just giving away
+  :    : your clan's ancient heritage to a stranger?
+ @>Text: \xn[Head Priestess]As I said, I believe this person is trustworthy
+  :    : enough. I could gather as such through our battle.
+ @>Text: \xn[Head Priestess]Besides... The Hakurei Clan is all but forgotten
+  :    : to time. None are left alive to remember or acknowledge our 
+  :    : lineage.
+ @>Text: \xn[Head Priestess]I have to wonder if the other side's clan is still
+  :    : holding up...
+ @>Wait: 20 frame(s)
+ @>Text: \xn[Head Priestess]Hmph! At any rate, Miss \pn?
+ @>Text: \xn[\pn]Yes? What is it?
+ @>Text: \xn[Head Priestess]I will ask you to wait in my office, just next to
+  :    : the archives, while I look for the relevant tomes we have.
+ @>Text: \xn[Head Priestess]I cannot promise it'll be much. Most of my
+  :    : clan's tomes were lost when they moved from their ancestral
+  :    : home.
+ @>Text: \xn[\pn]Oh, no, don't worry! Anything you have will be helpful!
+  :    : I'll be taking my leave now!
+ @>Script: pbSetSelfSwitch2(259,3,"A",true)
+ :       : pbSetSelfSwitch2(259,7,"B",true)
+ :       : pbSetSelfSwitch2(259,8,"A",true)
+ @>Control Self Switch: B =ON
+ @>Play SE: 'Door exit', 80, 100
+ @>Change Screen Color Tone: (-255,-255,-255,0), @6
+ @>Wait: 8 frame(s)
+ @>Transfer Player:[259: Lavender Tower], (007,041), Up, No Fade
+ @>Change Screen Color Tone: (0,0,0,0), @6
  @>
 : Branch End
+@>
+
+Page #3
+Conditions
+Self Switch B is ON
+
+Autonomous Movement
+Type: Fixed
+Speed: 3: Slow
+Freq: 3: Low
+Options Enabled
+Move Animation
+Trigger: Action Button
+
+List of Event Commands:
 @>
 
 #------------------------------------------------------------------------------
@@ -77088,6 +79221,330 @@ List of Event Commands:
 @>
 
 #------------------------------------------------------------------------------
+
+#==============================================================================
+Map ID: 263
+Map Name: Silph Co.: Presentation Room
+Tileset: 031: Silph Co
+Width: 37, Height: 41
+
+#------------------------------------------------------------------------------
+Event ID: 001
+Event Name: ExitArrow
+(X,Y): (012,034)
+
+Page #1
+Conditions
+None
+
+Graphic: Exitarrow_red
+
+Autonomous Movement
+Type: Fixed
+Speed: 3: Slow
+Freq: 3: Low
+Options Enabled
+Move Animation
+Stop Animation
+Always on Top
+Trigger: Player Touch
+
+List of Event Commands:
+@>Conditional Branch: Player is facing Down
+ @>Play SE: 'Door exit', 100, 100
+ @>Change Screen Color Tone: (-255,-255,-255,0), @6
+ @>Wait: 8 frame(s)
+ @>Transfer Player:[247: Silph Co.], (018,004), No Fade
+ @>Change Screen Color Tone: (0,0,0,0), @6
+ @>
+: Branch End
+@>
+
+#------------------------------------------------------------------------------
+Event ID: 002
+Event Name: ExitArrow
+(X,Y): (024,034)
+
+Page #1
+Conditions
+None
+
+Graphic: Exitarrow_red
+
+Autonomous Movement
+Type: Fixed
+Speed: 3: Slow
+Freq: 3: Low
+Options Enabled
+Move Animation
+Stop Animation
+Always on Top
+Trigger: Player Touch
+
+List of Event Commands:
+@>Conditional Branch: Player is facing Down
+ @>Play SE: 'Door exit', 100, 100
+ @>Change Screen Color Tone: (-255,-255,-255,0), @6
+ @>Wait: 8 frame(s)
+ @>Transfer Player:[247: Silph Co.], (026,004), No Fade
+ @>Change Screen Color Tone: (0,0,0,0), @6
+ @>
+: Branch End
+@>
+
+#------------------------------------------------------------------------------
+Event ID: 003
+Event Name: Ruukoto 1
+(X,Y): (000,040)
+
+Page #1
+Conditions
+Self Switch A is ON
+
+Graphic: trainer_HAYWIRE1
+
+Autonomous Movement
+Type: Fixed
+Speed: 3: Slow
+Freq: 3: Low
+Options Enabled
+Move Animation
+Trigger: Action Button
+
+List of Event Commands:
+@>
+
+#------------------------------------------------------------------------------
+Event ID: 004
+Event Name: Ruukoto 2
+(X,Y): (002,040)
+
+Page #1
+Conditions
+Self Switch A is ON
+
+Graphic: trainer_HAYWIRE1
+
+Autonomous Movement
+Type: Fixed
+Speed: 3: Slow
+Freq: 3: Low
+Options Enabled
+Move Animation
+Trigger: Action Button
+
+List of Event Commands:
+@>
+
+#------------------------------------------------------------------------------
+Event ID: 005
+Event Name: Ruukoto 3
+(X,Y): (004,040)
+
+Page #1
+Conditions
+Self Switch A is ON
+
+Graphic: trainer_HAYWIRE1
+
+Autonomous Movement
+Type: Fixed
+Speed: 3: Slow
+Freq: 3: Low
+Options Enabled
+Move Animation
+Trigger: Action Button
+
+List of Event Commands:
+@>
+
+#------------------------------------------------------------------------------
+Event ID: 006
+Event Name: Ruukoto 4
+(X,Y): (006,040)
+
+Page #1
+Conditions
+Self Switch A is ON
+
+Graphic: trainer_HAYWIRE1
+
+Autonomous Movement
+Type: Fixed
+Speed: 3: Slow
+Freq: 3: Low
+Options Enabled
+Move Animation
+Trigger: Action Button
+
+List of Event Commands:
+@>
+
+#------------------------------------------------------------------------------
+Event ID: 007
+Event Name: DLwRuukoto
+(X,Y): (008,040)
+
+Page #1
+Conditions
+Self Switch A is ON
+
+Graphic: trainer_HAYWIRE2
+
+Autonomous Movement
+Type: Fixed
+Speed: 3: Slow
+Freq: 3: Low
+Options Enabled
+Move Animation
+Trigger: Action Button
+
+List of Event Commands:
+@>
+
+#------------------------------------------------------------------------------
+Event ID: 008
+Event Name: Master Ball - AI Charizard
+(X,Y): (000,038)
+
+Page #1
+Conditions
+Self Switch A is ON
+
+Graphic: Object master_ball
+
+Autonomous Movement
+Type: Fixed
+Speed: 3: Slow
+Freq: 3: Low
+Options Enabled
+Move Animation
+Trigger: Action Button
+
+List of Event Commands:
+@>
+
+#------------------------------------------------------------------------------
+Event ID: 009
+Event Name: Master Ball - AI Gyarados
+(X,Y): (002,038)
+
+Page #1
+Conditions
+Self Switch A is ON
+
+Graphic: Object master_ball
+
+Autonomous Movement
+Type: Fixed
+Speed: 3: Slow
+Freq: 3: Low
+Options Enabled
+Move Animation
+Trigger: Action Button
+
+List of Event Commands:
+@>
+
+#------------------------------------------------------------------------------
+Event ID: 010
+Event Name: Master Ball - AI Salamence
+(X,Y): (004,038)
+
+Page #1
+Conditions
+Self Switch A is ON
+
+Graphic: Object master_ball
+
+Autonomous Movement
+Type: Fixed
+Speed: 3: Slow
+Freq: 3: Low
+Options Enabled
+Move Animation
+Trigger: Action Button
+
+List of Event Commands:
+@>
+
+#------------------------------------------------------------------------------
+Event ID: 011
+Event Name: Master Ball - AI Garchomp
+(X,Y): (006,038)
+
+Page #1
+Conditions
+Self Switch A is ON
+
+Graphic: Object master_ball
+
+Autonomous Movement
+Type: Fixed
+Speed: 3: Slow
+Freq: 3: Low
+Options Enabled
+Move Animation
+Trigger: Action Button
+
+List of Event Commands:
+@>
+
+#------------------------------------------------------------------------------
+Event ID: 012
+Event Name: Master Ball - AI Dialga
+(X,Y): (008,038)
+
+Page #1
+Conditions
+Self Switch A is ON
+
+Graphic: Object master_ball
+
+Autonomous Movement
+Type: Fixed
+Speed: 3: Slow
+Freq: 3: Low
+Options Enabled
+Move Animation
+Trigger: Action Button
+
+List of Event Commands:
+@>
+
+#------------------------------------------------------------------------------
+Event ID: 014
+Event Name: Icon Display
+(X,Y): (018,002)
+
+Page #1
+Conditions
+None
+
+Autonomous Movement
+Type: Fixed
+Speed: 3: Slow
+Freq: 3: Low
+Options Enabled
+Move Animation
+Trigger: Action Button
+
+List of Event Commands:
+@>
+
+#------------------------------------------------------------------------------
+
+#==============================================================================
+Map ID: 264
+Map Name: Silph Co.: Workstations
+Tileset: 003: Inside
+Width: 20, Height: 15
+
+#==============================================================================
+Map ID: 265
+Map Name: Silph Co.: Development
+Tileset: 003: Inside
+Width: 20, Height: 15
 
 #==============================================================================
 
@@ -78393,6 +80850,60 @@ Common Event Name: Vs. DLwRuukoto
 Trigger: None
 
 List of Event Commands:
+@>Comment: --- Pre-Battle Intro Setup
+@>Call Common Event: Vs. Transition - Flash
+@>Call Common Event: Vs. Transition - BG
+@>Change Screen Color Tone: (-255,-255,-255,0), @6
+@>Wait: 6 frame(s)
+@>Script: pbShowPicture(2,"Transitions/Bars_Under.png",1,256,192,zoomX=100,zoomY=100,opacity=230,blendType=0)
+@>Script: pbShowPicture(5,"Transitions/Bars_Over.png",1,256,192,zoomX=100,zoomY=100,opacity=230,blendType=0)
+@>Move Picture: 5, @5, Center (256,192), (100%,100%), 230, Normal
+@>Wait: 5 frame(s)
+@>Script: pbShowPicture(1,"Transitions/BGs/BGSilph.png",1,256,192,100,100,0,0)
+@>Wait: 5 frame(s)
+@>Move Picture: 1, @5, Center (256,192), (100%,100%), 255, Normal
+@>Wait: 15 frame(s)
+@>Play SE: 'Vs flash', 80, 100
+@>Screen Flash: (255,255,255,255), @10
+@>Script: pbShowPicture(3,"Transitions/PTs/Char_DLwRuukotoS.png",1,256,192,zoomX=100,zoomY=100,opacity=255,blendType=0)
+@>Wait: 25 frame(s)
+@>Screen Flash: (255,255,255,255), @10
+@>Play SE: 'Vs sword', 80, 100
+@>Script: pbShowPicture(4,"Transitions/PTs/Char_DLwRuukoto.png",1,256,192,zoomX=100,zoomY=100,opacity=255,blendType=0)
+@>Script: pbShowPicture(6,"Transitions/Names/Name_DLwRuukoto.png",1,256,192,zoomX=100,zoomY=100,opacity=255,blendType=0)
+@>Move Picture: 3, @30, Center (250,192), (100%,100%), 255, Normal
+@>Call Common Event: Vs. Transition - Balls
+@>Wait: 60 frame(s)
+@>Move Picture: 1, @5, Center (256,192), (100%,100%), 0, Normal
+@>Move Picture: 2, @5, Center (256,192), (100%,100%), 0, Normal
+@>Move Picture: 3, @5, Center (250,192), (100%,100%), 0, Normal
+@>Move Picture: 4, @5, Center (256,192), (100%,100%), 0, Normal
+@>Move Picture: 5, @5, Center (256,192), (100%,100%), 0, Normal
+@>Move Picture: 6, @5, Center (256,192), (100%,100%), 0, Normal
+@>Change Picture Color Tone: 10, (-255,-255,-255,0), @5
+@>Change Picture Color Tone: 11, (-255,-255,-255,0), @5
+@>Change Picture Color Tone: 12, (-255,-255,-255,0), @5
+@>Change Picture Color Tone: 13, (-255,-255,-255,0), @5
+@>Change Picture Color Tone: 14, (-255,-255,-255,0), @5
+@>Change Picture Color Tone: 15, (-255,-255,-255,0), @5
+@>Change Picture Color Tone: 16, (-255,-255,-255,0), @5
+@>Wait: 6 frame(s)
+@>Erase Picture: 1
+@>Erase Picture: 2
+@>Erase Picture: 3
+@>Erase Picture: 4
+@>Erase Picture: 5
+@>Erase Picture: 6
+@>Erase Picture: 10
+@>Erase Picture: 11
+@>Erase Picture: 12
+@>Erase Picture: 13
+@>Erase Picture: 14
+@>Erase Picture: 15
+@>Erase Picture: 16
+@>Change Screen Color Tone: (0,0,0,0), @10
+@>Comment: --- Pre-Battle Intro Conclusion
+@>Control Switches: [0104: Transition Handler] = OFF
 @>
 
 #==============================================================================
@@ -79532,6 +82043,416 @@ List of Event Commands:
 #==============================================================================
 Common Event ID: 110
 Common Event Name: -----------
+
+Trigger: None
+
+List of Event Commands:
+@>
+
+#==============================================================================
+Common Event ID: 111
+Common Event Name: Vs. Ayakashi
+
+Trigger: None
+
+List of Event Commands:
+@>Comment: Note: Ayakashi's shadow does not move.
+ :       : When copying, COPY THE MOVEMENT FOR OTHER 
+ :       : SHADOWS
+@>Comment: --- Pre-Battle Intro Setup
+@>Change Battle BGM: 'U-008. Sakura, Sakura ~ Japanize Dream', 100, 100
+@>Comment: --- FLASH IS UNIQUE TO AYAKASHI
+@>Change Screen Color Tone: (-255,-255,-255,0), @4
+@>Wait: 4 frame(s)
+@>Change Screen Color Tone: (-70,-70,11,68), @4
+@>Wait: 4 frame(s)
+@>Change Screen Color Tone: (-255,-255,-255,0), @4
+@>Wait: 4 frame(s)
+@>Change Screen Color Tone: (-70,-70,11,68), @4
+@>Wait: 8 frame(s)
+@>Comment: --- FLASH IS UNIQUE TO AYAKASHI
+@>Change Screen Color Tone: (-255,-255,-255,0), @6
+@>Wait: 6 frame(s)
+@>Script: pbShowPicture(20,"Transitions/Bars_Under.png",1,256,192,zoomX=100,zoomY=100,opacity=230,blendType=0)
+@>Script: pbShowPicture(5,"Transitions/Bars_Over.png",1,256,192,zoomX=100,zoomY=100,opacity=230,blendType=0)
+@>Move Picture: 5, @5, Center (256,192), (100%,100%), 230, Normal
+@>Wait: 5 frame(s)
+@>Script: pbShowPicture(1,"Transitions/BGs/BGAyakashi.png",1,256,192,100,100,0,0)
+@>Wait: 5 frame(s)
+@>Move Picture: 1, @5, Center (256,192), (100%,100%), 255, Normal
+@>Wait: 15 frame(s)
+@>Play SE: 'Vs flash', 80, 100
+@>Screen Flash: (255,255,255,255), @10
+@>Script: pbShowPicture(3,"Transitions/PTs/Puppet_AyakashiS.png",1,256,192,100,100,255,0)
+@>Wait: 25 frame(s)
+@>Screen Flash: (255,255,255,255), @10
+@>Play SE: 'Vs sword', 80, 100
+@>Script: pbShowPicture(4,"Transitions/PTs/Puppet_Ayakashi.png",1,256,192,100,100,255,0)
+@>Script: pbShowPicture(21,"Transitions/Names/Name_AyakashiP.png",1,256,192,100,100,255,0)
+@>Wait: 60 frame(s)
+@>Move Picture: 1, @5, Center (256,192), (100%,100%), 0, Normal
+@>Move Picture: 20, @5, Center (256,192), (100%,100%), 0, Normal
+@>Move Picture: 3, @5, Center (250,192), (100%,100%), 0, Normal
+@>Move Picture: 4, @5, Center (256,192), (100%,100%), 0, Normal
+@>Move Picture: 5, @5, Center (256,192), (100%,100%), 0, Normal
+@>Move Picture: 21, @5, Center (256,192), (100%,100%), 0, Normal
+@>Wait: 6 frame(s)
+@>Erase Picture: 1
+@>Erase Picture: 20
+@>Erase Picture: 3
+@>Erase Picture: 4
+@>Erase Picture: 5
+@>Erase Picture: 21
+@>Change Screen Color Tone: (0,0,0,0), @10
+@>Comment: --- Pre-Battle Intro Conclusion
+@>Control Switches: [0104: Transition Handler] = OFF
+@>
+
+#==============================================================================
+Common Event ID: 112
+Common Event Name: 
+
+Trigger: None
+
+List of Event Commands:
+@>
+
+#==============================================================================
+Common Event ID: 113
+Common Event Name: 
+
+Trigger: None
+
+List of Event Commands:
+@>
+
+#==============================================================================
+Common Event ID: 114
+Common Event Name: 
+
+Trigger: None
+
+List of Event Commands:
+@>
+
+#==============================================================================
+Common Event ID: 115
+Common Event Name: 
+
+Trigger: None
+
+List of Event Commands:
+@>
+
+#==============================================================================
+Common Event ID: 116
+Common Event Name: 
+
+Trigger: None
+
+List of Event Commands:
+@>
+
+#==============================================================================
+Common Event ID: 117
+Common Event Name: 
+
+Trigger: None
+
+List of Event Commands:
+@>
+
+#==============================================================================
+Common Event ID: 118
+Common Event Name: 
+
+Trigger: None
+
+List of Event Commands:
+@>
+
+#==============================================================================
+Common Event ID: 119
+Common Event Name: 
+
+Trigger: None
+
+List of Event Commands:
+@>
+
+#==============================================================================
+Common Event ID: 120
+Common Event Name: 
+
+Trigger: None
+
+List of Event Commands:
+@>
+
+#==============================================================================
+Common Event ID: 121
+Common Event Name: 
+
+Trigger: None
+
+List of Event Commands:
+@>
+
+#==============================================================================
+Common Event ID: 122
+Common Event Name: 
+
+Trigger: None
+
+List of Event Commands:
+@>
+
+#==============================================================================
+Common Event ID: 123
+Common Event Name: 
+
+Trigger: None
+
+List of Event Commands:
+@>
+
+#==============================================================================
+Common Event ID: 124
+Common Event Name: 
+
+Trigger: None
+
+List of Event Commands:
+@>
+
+#==============================================================================
+Common Event ID: 125
+Common Event Name: 
+
+Trigger: None
+
+List of Event Commands:
+@>
+
+#==============================================================================
+Common Event ID: 126
+Common Event Name: 
+
+Trigger: None
+
+List of Event Commands:
+@>
+
+#==============================================================================
+Common Event ID: 127
+Common Event Name: 
+
+Trigger: None
+
+List of Event Commands:
+@>
+
+#==============================================================================
+Common Event ID: 128
+Common Event Name: 
+
+Trigger: None
+
+List of Event Commands:
+@>
+
+#==============================================================================
+Common Event ID: 129
+Common Event Name: 
+
+Trigger: None
+
+List of Event Commands:
+@>
+
+#==============================================================================
+Common Event ID: 130
+Common Event Name: 
+
+Trigger: None
+
+List of Event Commands:
+@>
+
+#==============================================================================
+Common Event ID: 131
+Common Event Name: 
+
+Trigger: None
+
+List of Event Commands:
+@>
+
+#==============================================================================
+Common Event ID: 132
+Common Event Name: 
+
+Trigger: None
+
+List of Event Commands:
+@>
+
+#==============================================================================
+Common Event ID: 133
+Common Event Name: 
+
+Trigger: None
+
+List of Event Commands:
+@>
+
+#==============================================================================
+Common Event ID: 134
+Common Event Name: 
+
+Trigger: None
+
+List of Event Commands:
+@>
+
+#==============================================================================
+Common Event ID: 135
+Common Event Name: 
+
+Trigger: None
+
+List of Event Commands:
+@>
+
+#==============================================================================
+Common Event ID: 136
+Common Event Name: 
+
+Trigger: None
+
+List of Event Commands:
+@>
+
+#==============================================================================
+Common Event ID: 137
+Common Event Name: 
+
+Trigger: None
+
+List of Event Commands:
+@>
+
+#==============================================================================
+Common Event ID: 138
+Common Event Name: 
+
+Trigger: None
+
+List of Event Commands:
+@>
+
+#==============================================================================
+Common Event ID: 139
+Common Event Name: 
+
+Trigger: None
+
+List of Event Commands:
+@>
+
+#==============================================================================
+Common Event ID: 140
+Common Event Name: 
+
+Trigger: None
+
+List of Event Commands:
+@>
+
+#==============================================================================
+Common Event ID: 141
+Common Event Name: 
+
+Trigger: None
+
+List of Event Commands:
+@>
+
+#==============================================================================
+Common Event ID: 142
+Common Event Name: 
+
+Trigger: None
+
+List of Event Commands:
+@>
+
+#==============================================================================
+Common Event ID: 143
+Common Event Name: 
+
+Trigger: None
+
+List of Event Commands:
+@>
+
+#==============================================================================
+Common Event ID: 144
+Common Event Name: 
+
+Trigger: None
+
+List of Event Commands:
+@>
+
+#==============================================================================
+Common Event ID: 145
+Common Event Name: 
+
+Trigger: None
+
+List of Event Commands:
+@>
+
+#==============================================================================
+Common Event ID: 146
+Common Event Name: 
+
+Trigger: None
+
+List of Event Commands:
+@>
+
+#==============================================================================
+Common Event ID: 147
+Common Event Name: 
+
+Trigger: None
+
+List of Event Commands:
+@>
+
+#==============================================================================
+Common Event ID: 148
+Common Event Name: 
+
+Trigger: None
+
+List of Event Commands:
+@>
+
+#==============================================================================
+Common Event ID: 149
+Common Event Name: 
+
+Trigger: None
+
+List of Event Commands:
+@>
+
+#==============================================================================
+Common Event ID: 150
+Common Event Name: 
 
 Trigger: None
 
