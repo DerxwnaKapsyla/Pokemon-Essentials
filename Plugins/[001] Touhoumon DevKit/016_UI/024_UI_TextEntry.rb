@@ -82,7 +82,7 @@ class PokemonEntryScene
         @sprites["gender"].bitmap.clear
         pbSetSystemFont(@sprites["gender"].bitmap)
         pkmn_data = GameData::Species.get_species_form(pokemon.species, pokemon.form)
-		if pkmn_data.generation == 20
+		if pkmn_data.generation < 20
 			textpos  = []
 			if pokemon.male?
 				textpos.push([_INTL("♂"),0,0,false,Color.new(0,128,248),Color.new(168,184,184)])
