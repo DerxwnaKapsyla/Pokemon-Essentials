@@ -72177,207 +72177,68 @@ List of Event Commands:
 @>Text: Here, beneath the sakura tree we loved with all our heart.
 @>Fade Out BGM: 3 sec.
 @>Wait: 60 frame(s)
-@>Wait: 60 frame(s)
 @>Set Event Location: [Ghost],(019,011)
 @>Set Move Route: [Ghost]
- :              : $>Stop Animation ON
- :              : $>Direction Fix ON
- :              : $>Through ON
- :              : $>SE: 'Stare', 80, 100
- :              : $>Change Speed: 1
- :              : $>Move Up
- :              : $>Change Opacity: 16
- :              : $>Wait: 1 frame(s)
- :              : $>Change Opacity: 32
- :              : $>Wait: 1 frame(s)
- :              : $>Change Opacity: 48
- :              : $>Wait: 1 frame(s)
- :              : $>Change Opacity: 64
- :              : $>Wait: 1 frame(s)
- :              : $>Change Opacity: 80
- :              : $>Wait: 1 frame(s)
- :              : $>Change Opacity: 96
- :              : $>Wait: 1 frame(s)
- :              : $>Change Opacity: 112
- :              : $>Wait: 1 frame(s)
- :              : $>Change Opacity: 128
- :              : $>Wait: 1 frame(s)
- :              : $>Change Opacity: 144
- :              : $>Wait: 1 frame(s)
- :              : $>Change Opacity: 160
- :              : $>Wait: 1 frame(s)
- :              : $>Change Opacity: 176
- :              : $>Wait: 1 frame(s)
- :              : $>Change Opacity: 192
- :              : $>Wait: 1 frame(s)
- :              : $>Change Opacity: 208
- :              : $>Wait: 1 frame(s)
- :              : $>Change Opacity: 224
- :              : $>Wait: 1 frame(s)
- :              : $>Change Opacity: 240
- :              : $>Wait: 1 frame(s)
- :              : $>Change Opacity: 255
-@>Wait for Move's Completion
+ :              : $>Graphic: "TPDP_NPC 26', 0, 2, 0
+@>Script: event = $game_map.events[18]
+:       : 
+:       : pbSEPlay("Stare")
+:       : event.move_up
+:       : 16.times do
+:       :   event.opacity += 16
+:       :   pbWait(4)
+:       : end
+:       : pbWait(20)
+@>Script: pbSEPlay("Stare")
+:       : event.move_up
+:       : 16.times do
+:       :   event.opacity -= 16
+:       :   pbWait(4)
+:       : end
 @>Wait: 20 frame(s)
-@>Set Move Route: [Ghost]
- :              : $>SE: 'Stare', 80, 100
- :              : $>Move Up
- :              : $>Change Opacity: 240
- :              : $>Wait: 1 frame(s)
- :              : $>Change Opacity: 224
- :              : $>Wait: 1 frame(s)
- :              : $>Change Opacity: 208
- :              : $>Wait: 1 frame(s)
- :              : $>Change Opacity: 192
- :              : $>Wait: 1 frame(s)
- :              : $>Change Opacity: 176
- :              : $>Wait: 1 frame(s)
- :              : $>Change Opacity: 160
- :              : $>Wait: 1 frame(s)
- :              : $>Change Opacity: 144
- :              : $>Wait: 1 frame(s)
- :              : $>Change Opacity: 128
- :              : $>Wait: 1 frame(s)
- :              : $>Change Opacity: 112
- :              : $>Wait: 1 frame(s)
- :              : $>Change Opacity: 96
- :              : $>Wait: 1 frame(s)
- :              : $>Change Opacity: 80
- :              : $>Wait: 1 frame(s)
- :              : $>Change Opacity: 64
- :              : $>Wait: 1 frame(s)
- :              : $>Change Opacity: 48
- :              : $>Wait: 1 frame(s)
- :              : $>Change Opacity: 32
- :              : $>Wait: 1 frame(s)
- :              : $>Change Opacity: 16
- :              : $>Wait: 1 frame(s)
- :              : $>Change Opacity: 0
-@>Wait for Move's Completion
+@>Script: event = $game_map.events[31]
+:       : 3.times do
+:       :   pbSEPlay("Shiny sparkle")
+:       :   16.times do
+:       :     event.opacity += 16
+:       :     pbWait(2)
+:       :   end
+@>Script:   pbWait(4)
+:       :   16.times do
+:       :     event.opacity -= 16
+:       :     pbWait(2)
+:       :   end
+:       : end
 @>Wait: 20 frame(s)
-@>Control Variables: [0001: Temp Pokemon Choice] = 0
-@>Loop
- @>Conditional Branch: Variable [0001: Temp Pokemon Choice] != 3
-  @>Set Move Route: [Tree]
-   :              : $>SE: 'Shiny sparkle', 80, 100
-   :              : $>Wait: 1 frame(s)
-   :              : $>Graphic: "Glowing Sakura Tree', 0, 2, 1
-   :              : $>Wait: 1 frame(s)
-   :              : $>Graphic: "Glowing Sakura Tree', 0, 2, 2
-   :              : $>Wait: 1 frame(s)
-   :              : $>Graphic: "Glowing Sakura Tree', 0, 2, 3
-   :              : $>Wait: 1 frame(s)
-   :              : $>Graphic: "Glowing Sakura Tree', 0, 4, 0
-   :              : $>Wait: 1 frame(s)
-   :              : $>Graphic: "Glowing Sakura Tree', 0, 4, 1
-   :              : $>Wait: 1 frame(s)
-   :              : $>Graphic: "Glowing Sakura Tree', 0, 4, 2
-   :              : $>Wait: 1 frame(s)
-   :              : $>Graphic: "Glowing Sakura Tree', 0, 4, 3
-   :              : $>Wait: 1 frame(s)
-   :              : $>Graphic: "Glowing Sakura Tree', 0, 6, 0
-   :              : $>Wait: 1 frame(s)
-   :              : $>Graphic: "Glowing Sakura Tree', 0, 6, 1
-   :              : $>Wait: 1 frame(s)
-   :              : $>Graphic: "Glowing Sakura Tree', 0, 6, 2
-   :              : $>Wait: 1 frame(s)
-   :              : $>Graphic: "Glowing Sakura Tree', 0, 6, 3
-   :              : $>Wait: 1 frame(s)
-   :              : $>Graphic: "Glowing Sakura Tree', 0, 8, 0
-   :              : $>Wait: 1 frame(s)
-   :              : $>Graphic: "Glowing Sakura Tree', 0, 8, 1
-   :              : $>Wait: 1 frame(s)
-   :              : $>Graphic: "Glowing Sakura Tree', 0, 8, 2
-   :              : $>Wait: 1 frame(s)
-   :              : $>Graphic: "Glowing Sakura Tree', 0, 8, 3
-   :              : $>SE: '', 80, 100
-   :              : $>Wait: 1 frame(s)
-   :              : $>Graphic: "Glowing Sakura Tree', 0, 8, 2
-   :              : $>Wait: 1 frame(s)
-   :              : $>Graphic: "Glowing Sakura Tree', 0, 8, 1
-   :              : $>Wait: 1 frame(s)
-   :              : $>Graphic: "Glowing Sakura Tree', 0, 8, 0
-   :              : $>Wait: 1 frame(s)
-   :              : $>Graphic: "Glowing Sakura Tree', 0, 6, 3
-   :              : $>Wait: 1 frame(s)
-   :              : $>Graphic: "Glowing Sakura Tree', 0, 6, 2
-   :              : $>Wait: 1 frame(s)
-   :              : $>Graphic: "Glowing Sakura Tree', 0, 6, 1
-   :              : $>Wait: 1 frame(s)
-   :              : $>Graphic: "Glowing Sakura Tree', 0, 6, 0
-   :              : $>Wait: 1 frame(s)
-   :              : $>Graphic: "Glowing Sakura Tree', 0, 4, 3
-   :              : $>Wait: 1 frame(s)
-   :              : $>Graphic: "Glowing Sakura Tree', 0, 4, 2
-   :              : $>Wait: 1 frame(s)
-   :              : $>Graphic: "Glowing Sakura Tree', 0, 4, 1
-   :              : $>Wait: 1 frame(s)
-   :              : $>Graphic: "Glowing Sakura Tree', 0, 4, 0
-   :              : $>Wait: 1 frame(s)
-   :              : $>Graphic: "Glowing Sakura Tree', 0, 2, 3
-   :              : $>Wait: 1 frame(s)
-   :              : $>Graphic: "Glowing Sakura Tree', 0, 2, 2
-   :              : $>Wait: 1 frame(s)
-   :              : $>Graphic: "Glowing Sakura Tree', 0, 2, 1
-   :              : $>Wait: 1 frame(s)
-   :              : $>Graphic: "Glowing Sakura Tree', 0, 2, 0
-  @>Wait for Move's Completion
-  @>Control Variables: [0001: Temp Pokemon Choice] += 1
-  @>
- : Else
-  @>Control Variables: [0001: Temp Pokemon Choice] = 0
-  @>Break Loop
-  @>
- : Branch End
- @>
-: Repeat Above
-@>Wait: 20 frame(s)
-@>Set Move Route: [Ghost]
- :              : $>Stop Animation OFF
- :              : $>Direction Fix OFF
- :              : $>Graphic: "OW - Puppet_Ayakashi', 0, 2, 0
- :              : $>SE: 'Stare', 80, 100
- :              : $>Change Opacity: 16
- :              : $>Wait: 1 frame(s)
- :              : $>Change Opacity: 32
- :              : $>Wait: 1 frame(s)
- :              : $>Change Opacity: 48
- :              : $>Wait: 1 frame(s)
- :              : $>Change Opacity: 64
- :              : $>Wait: 1 frame(s)
- :              : $>Change Opacity: 80
- :              : $>Wait: 1 frame(s)
- :              : $>Change Opacity: 96
- :              : $>Wait: 1 frame(s)
- :              : $>Change Opacity: 112
- :              : $>Wait: 1 frame(s)
- :              : $>Change Opacity: 128
- :              : $>Wait: 1 frame(s)
- :              : $>Change Opacity: 144
- :              : $>Wait: 1 frame(s)
- :              : $>Change Opacity: 160
- :              : $>Wait: 1 frame(s)
- :              : $>Change Opacity: 176
- :              : $>Wait: 1 frame(s)
- :              : $>Change Opacity: 192
- :              : $>Wait: 1 frame(s)
- :              : $>Change Opacity: 208
- :              : $>Wait: 1 frame(s)
- :              : $>Change Opacity: 224
- :              : $>Wait: 1 frame(s)
- :              : $>Change Opacity: 240
- :              : $>Wait: 1 frame(s)
- :              : $>Change Opacity: 255
+@>Script: event = $game_map.events[18]
+:       : 
+:       : pbSetSelfSwitch(18,"A",true)
+:       : pbSEPlay("Stare")
+:       : 16.times do
+:       :   event.opacity += 16
+:       :   pbWait(4)
+:       : end
 @>Wait for Move's Completion
 @>Script: Pokemon.play_cry(:AYAKASHI)
-@>Wait: 40 frame(s)
+@>Wait: 30 frame(s)
 @>Script: setBattleRule("cannotRun")
+:       : setBattleRule("outcome", 2)
 @>Control Switches: [0104: Transition Handler] = ON
 @>Control Variables: [0103: Vs. Transition ID] = 11
 @>Change Battle BGM: 'U-008. Sakura, Sakura ~ Japanize Dream', 100, 100
 @>Conditional Branch: Script: pbWildBattle(:AYAKASHI,35)
- @>
-: Else
+ @>Conditional Branch: Variable [0002: Temp Move Choice] == 4
+  @>Set Move Route: [Ghost]
+   :              : $>Change Opacity: 0
+  @>Script: pbSetSelfSwitch(18,"B",true)
+  @>Control Self Switch: B =ON
+  @>
+ : Else
+  @>Set Move Route: [Ghost]
+   :              : $>Change Opacity: 0
+  @>Control Self Switch: A =ON
+  @>
+ : Branch End
  @>
 : Branch End
 @>
@@ -72385,6 +72246,52 @@ List of Event Commands:
 Page #2
 Conditions
 Self Switch A is ON
+
+Autonomous Movement
+Type: Fixed
+Speed: 3: Slow
+Freq: 3: Low
+Options Enabled
+Move Animation
+Trigger: Action Button
+
+List of Event Commands:
+@>Text: Erected in memorium of a friend. May her
+ :    : soul rest in peace, never to be distrurbed.
+@>Text: Here, beneath the sakura tree we loved
+ :    : with all our heart.
+@>Fade Out BGM: 3 sec.
+@>Wait: 60 frame(s)
+@>Script: event = $game_map.events[18]
+:       : 
+:       : pbSetSelfSwitch(18,"A",true)
+:       : pbSEPlay("Stare")
+:       : 16.times do
+:       :   event.opacity += 16
+:       :   pbWait(4)
+:       : end
+@>Wait for Move's Completion
+@>Script: Pokemon.play_cry(:AYAKASHI)
+@>Wait: 30 frame(s)
+@>Script: setBattleRule("cannotRun")
+:       : setBattleRule("outcome", 2)
+@>Control Switches: [0104: Transition Handler] = ON
+@>Control Variables: [0103: Vs. Transition ID] = 11
+@>Change Battle BGM: 'U-008. Sakura, Sakura ~ Japanize Dream', 100, 100
+@>Conditional Branch: Script: pbWildBattle(:AYAKASHI,35)
+ @>Conditional Branch: Variable [0002: Temp Move Choice] == 4
+  @>Set Move Route: [Ghost]
+   :              : $>Change Opacity: 0
+  @>Control Self Switch: B =ON
+  @>
+ : Branch End
+ @>
+: Branch End
+@>
+
+Page #3
+Conditions
+Self Switch B is ON
 
 Autonomous Movement
 Type: Fixed
@@ -72440,7 +72347,7 @@ Event Name: Lantern
 
 Page #1
 Conditions
-Self Switch A is ON
+None
 
 Graphic: Lantern
 
@@ -72464,7 +72371,7 @@ Event Name: Lantern
 
 Page #1
 Conditions
-Self Switch A is ON
+None
 
 Graphic: Lantern
 
@@ -72488,7 +72395,7 @@ Event Name: Lantern
 
 Page #1
 Conditions
-Self Switch A is ON
+None
 
 Graphic: Lantern
 
@@ -72507,8 +72414,8 @@ List of Event Commands:
 
 #------------------------------------------------------------------------------
 Event ID: 006
-Event Name: Ayakashi Trigger
-(X,Y): (019,004)
+Event Name: OLD Ayakashi Trigger
+(X,Y): (000,010)
 
 Page #1
 Conditions
@@ -72822,7 +72729,7 @@ Event Name: Lantern
 
 Page #1
 Conditions
-Self Switch A is ON
+None
 
 Graphic: Lantern
 
@@ -72846,7 +72753,7 @@ Event Name: Lantern
 
 Page #1
 Conditions
-Self Switch A is ON
+None
 
 Graphic: Lantern
 
@@ -72870,7 +72777,7 @@ Event Name: Lantern
 
 Page #1
 Conditions
-Self Switch A is ON
+None
 
 Graphic: Lantern
 
@@ -72894,7 +72801,7 @@ Event Name: Lantern
 
 Page #1
 Conditions
-Self Switch A is ON
+None
 
 Graphic: Lantern
 
@@ -72918,7 +72825,7 @@ Event Name: Lantern
 
 Page #1
 Conditions
-Self Switch A is ON
+None
 
 Graphic: Lantern
 
@@ -72942,7 +72849,7 @@ Event Name: Lantern
 
 Page #1
 Conditions
-Self Switch A is ON
+None
 
 Graphic: Lantern
 
@@ -72966,7 +72873,7 @@ Event Name: Lantern
 
 Page #1
 Conditions
-Self Switch A is ON
+None
 
 Graphic: Lantern
 
@@ -72990,7 +72897,7 @@ Event Name: Lantern
 
 Page #1
 Conditions
-Self Switch A is ON
+None
 
 Graphic: Lantern
 
@@ -73014,7 +72921,7 @@ Event Name: Lantern
 
 Page #1
 Conditions
-Self Switch A is ON
+None
 
 Graphic: Lantern
 
@@ -73065,6 +72972,27 @@ Graphic: TPDP_NPC 26
 
 Autonomous Movement
 Type: Fixed
+Speed: 1: Slowest
+Freq: 3: Low
+Options Enabled
+Move Animation
+Stop Animation
+Direction Fix
+Through
+Always on Top
+Trigger: Action Button
+
+List of Event Commands:
+@>
+
+Page #2
+Conditions
+Self Switch A is ON
+
+Graphic: OW - Puppet_Ayakashi
+
+Autonomous Movement
+Type: Fixed
 Speed: 3: Slow
 Freq: 3: Low
 Options Enabled
@@ -73072,6 +73000,22 @@ Move Animation
 Stop Animation
 Direction Fix
 Always on Top
+Trigger: Parallel Process
+
+List of Event Commands:
+@>Set Event Location: This event,(019,009)
+@>
+
+Page #3
+Conditions
+Self Switch B is ON
+
+Autonomous Movement
+Type: Fixed
+Speed: 3: Slow
+Freq: 3: Low
+Options Enabled
+Move Animation
 Trigger: Action Button
 
 List of Event Commands:
@@ -73084,7 +73028,7 @@ Event Name: Light Source
 
 Page #1
 Conditions
-Self Switch A is ON
+None
 
 Graphic: light_fire
 
@@ -73106,7 +73050,7 @@ Event Name: Light Source
 
 Page #1
 Conditions
-Self Switch A is ON
+None
 
 Graphic: light_fire
 
@@ -73128,7 +73072,7 @@ Event Name: Light Source
 
 Page #1
 Conditions
-Self Switch A is ON
+None
 
 Graphic: light_fire
 
@@ -73150,7 +73094,7 @@ Event Name: Light Source
 
 Page #1
 Conditions
-Self Switch A is ON
+None
 
 Graphic: light_fire
 
@@ -73172,7 +73116,7 @@ Event Name: Light Source
 
 Page #1
 Conditions
-Self Switch A is ON
+None
 
 Graphic: light_fire
 
@@ -73194,7 +73138,7 @@ Event Name: Light Source
 
 Page #1
 Conditions
-Self Switch A is ON
+None
 
 Graphic: light_fire
 
@@ -73216,7 +73160,7 @@ Event Name: Light Source
 
 Page #1
 Conditions
-Self Switch A is ON
+None
 
 Graphic: light_fire
 
@@ -73238,7 +73182,7 @@ Event Name: Light Source
 
 Page #1
 Conditions
-Self Switch A is ON
+None
 
 Graphic: light_fire
 
@@ -73260,7 +73204,7 @@ Event Name: Light Source
 
 Page #1
 Conditions
-Self Switch A is ON
+None
 
 Graphic: light_fire
 
@@ -73282,7 +73226,7 @@ Event Name: Light Source
 
 Page #1
 Conditions
-Self Switch A is ON
+None
 
 Graphic: light_fire
 
@@ -73304,7 +73248,7 @@ Event Name: Light Source
 
 Page #1
 Conditions
-Self Switch A is ON
+None
 
 Graphic: light_fire
 
@@ -73326,7 +73270,7 @@ Event Name: Light Source
 
 Page #1
 Conditions
-Self Switch A is ON
+None
 
 Graphic: light_fire
 

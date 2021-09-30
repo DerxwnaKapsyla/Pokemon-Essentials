@@ -359,6 +359,30 @@ BattleHandlers::TargetAbilityAfterMoveUse.add(:PICKPOCKET,
 
 BattleHandlers::EORHealingAbility.copy(:SHEDSKIN,:MAINTENANCE)
 
+# Derx: Custom Ability for Ayakashi, not in Vanilla 1.8
+# Abyssal Drain - Drains foes by 1/16th max hp
+BattleHandlers::EOREffectAbility.add(:ABYSSALDRAIN,
+  proc { |ability,battler,battle|
+    battle.eachOtherSideBattler(battler.index) do |b|
+      next if !b.near?(battler)
+      battle.pbShowAbilitySplash(battler)
+      next if !b.takesIndirectDamage?(PokeBattle_SceneConstants::USE_ABILITY_SPLASH)
+      oldHP = b.hp
+      b.pbReduceHP(b.totalhp/16)
+      if PokeBattle_SceneConstants::USE_ABILITY_SPLASH
+        battle.pbDisplay(_INTL("{1}'s lifeforce is being taken!",b.pbThis))
+      else
+        battle.pbDisplay(_INTL("{1}'s lifeforce is being taken by {2}'s {3}!",b.pbThis,
+           battler.pbThis(true),battler.abilityName))
+      end
+      battle.pbHideAbilitySplash(battler)
+      b.pbItemHPHealCheck
+      b.pbAbilitiesOnDamageTaken(oldHP)
+      b.pbFaint if b.fainted?
+    end
+  }
+)
+
 # Derx: Renamed 1.8 Shadow Tag to Piercing Stare so it doesn't work like Pokemon's Shadow Tag.
 BattleHandlers::TrappingTargetAbility.copy(:ARENATRAP,:PIERCINGSTARE)
 
