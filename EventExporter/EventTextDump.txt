@@ -71339,25 +71339,28 @@ Trigger: Action Button
 
 List of Event Commands:
 @>Comment: Substitute TM
-@>Text: \pn inspects the mysterious grave...
-@>Conditional Branch: Script: pbReceiveItem(:TM90)
- @>Text: ...Hm? There's a note attached to the grave as well.
- @>Text: \w[black]My dearest, I'm afraid I failed in finding the tree we
-  :    : favored in our youth.
- @>Text: \w[black]Very likely, it was cut down to make way for land
-  :    : development.
- @>Text: \w[black]But that's just how it goes for Humans, wouldn't you 
-  :    : agree?
- @>Text: \w[black]Though it's not the same, I've managed to create a
-  :    : suitable subtitute, where I could lay you to rest properly.
- @>Text: \w[black]I've sealed it away, using the power of the spectre that
-  :    : idolizes wilted trees.
- @>Text: \w[black]Should the day come where someone stumbles across
-  :    : it, I hope they are able to a person with a kind, if adventurous,
-  :    : soul, like you were.
- @>Control Self Switch: A =ON
- @>
-: Else
+@>Conditional Branch: Player is facing Up
+ @>Text: \pn inspects the mysterious grave...
+ @>Conditional Branch: Script: pbReceiveItem(:TM90)
+  @>Text: ...Hm? There's a note attached to the grave as well.
+  @>Text: \w[black]My dearest, I'm afraid I failed in finding the tree we
+   :    : favored in our youth.
+  @>Text: \w[black]Very likely, it was cut down to make way for land
+   :    : development.
+  @>Text: \w[black]But that's just how it goes for Humans, wouldn't you 
+   :    : agree?
+  @>Text: \w[black]Though it's not the same, I've managed to create a
+   :    : suitable subtitute, where I could lay you to rest properly.
+  @>Text: \w[black]I've sealed it away, using the power of the spectre that
+   :    : idolizes wilted trees.
+  @>Text: \w[black]Should the day come where someone stumbles across
+   :    : it, I hope they are able to a person with a kind, if adventurous,
+   :    : soul, like you were.
+  @>Control Self Switch: A =ON
+  @>
+ : Else
+  @>
+ : Branch End
  @>
 : Branch End
 @>
@@ -71375,19 +71378,22 @@ Move Animation
 Trigger: Action Button
 
 List of Event Commands:
-@>Text: \w[black]My dearest, I'm afraid I failed in finding the tree we
- :    : favored in our youth.
-@>Text: \w[black]Very likely, it was cut down to make way for land
- :    : development.
-@>Text: \w[black]But that's just how it goes for Humans, wouldn't you 
- :    : agree?
-@>Text: \w[black]Though it's not the same, I've managed to create a
- :    : suitable subtitute, where I could lay you to rest properly.
-@>Text: \w[black]I've sealed it away, using the power of the spectre that
- :    : idolizes wilted trees.
-@>Text: \w[black]Should the day come where someone stumbles across
- :    : it, I hope they are able to a person with a kind, if adventurous,
- :    : soul, like you were.
+@>Conditional Branch: Player is facing Up
+ @>Text: \w[black]My dearest, I'm afraid I failed in finding the tree we
+  :    : favored in our youth.
+ @>Text: \w[black]Very likely, it was cut down to make way for land
+  :    : development.
+ @>Text: \w[black]But that's just how it goes for Humans, wouldn't you 
+  :    : agree?
+ @>Text: \w[black]Though it's not the same, I've managed to create a
+  :    : suitable subtitute, where I could lay you to rest properly.
+ @>Text: \w[black]I've sealed it away, using the power of the spectre that
+  :    : idolizes wilted trees.
+ @>Text: \w[black]Should the day come where someone stumbles across
+  :    : it, I hope they are able to a person with a kind, if adventurous,
+  :    : soul, like you were.
+ @>
+: Branch End
 @>
 
 #------------------------------------------------------------------------------
@@ -71413,7 +71419,7 @@ List of Event Commands:
 
 Page #2
 Conditions
-Variable 0001: Temp Pokemon Choice is 9 or above
+Variable 0110: Plot Control Variable is 9 or above
 
 Autonomous Movement
 Type: Fixed
@@ -72147,6 +72153,132 @@ List of Event Commands:
 @>
 
 #------------------------------------------------------------------------------
+Event ID: 022
+Event Name: EV022
+(X,Y): (015,036)
+
+Page #1
+Conditions
+None
+
+Autonomous Movement
+Type: Fixed
+Speed: 3: Slow
+Freq: 3: Low
+Options Enabled
+Move Animation
+Trigger: Action Button
+
+List of Event Commands:
+@>Conditional Branch: Player is facing Up
+ @>Text: This grave has been defaced...
+ @>Text: Someone has written on this stone, in some angry hand...
+ @>Text: "Hope rides alone"
+ @>
+: Branch End
+@>
+
+#------------------------------------------------------------------------------
+Event ID: 023
+Event Name: EV023
+(X,Y): (024,032)
+
+Page #1
+Conditions
+None
+
+Autonomous Movement
+Type: Fixed
+Speed: 3: Slow
+Freq: 3: Low
+Options Enabled
+Move Animation
+Trigger: Action Button
+
+List of Event Commands:
+@>Conditional Branch: Player is facing Up
+ @>Text: Rest In Peace\n
+  :    : Wake Up Angry
+ @>
+: Branch End
+@>
+
+#------------------------------------------------------------------------------
+Event ID: 024
+Event Name: EV024
+(X,Y): (034,040)
+
+Page #1
+Conditions
+None
+
+Autonomous Movement
+Type: Fixed
+Speed: 3: Slow
+Freq: 3: Low
+Options Enabled
+Move Animation
+Trigger: Action Button
+
+List of Event Commands:
+@>Conditional Branch: Player is facing Up
+ @>Text: A grave, nothing abnormal about it.
+ @>
+: Branch End
+@>
+
+#------------------------------------------------------------------------------
+Event ID: 025
+Event Name: EV025
+(X,Y): (034,032)
+
+Page #1
+Conditions
+None
+
+Autonomous Movement
+Type: Fixed
+Speed: 3: Slow
+Freq: 3: Low
+Options Enabled
+Move Animation
+Trigger: Action Button
+
+List of Event Commands:
+@>Conditional Branch: Player is facing Up
+ @>Text: Last known resting place of the Maid of Time
+ @>Text: Last heard speaking the following words:
+ @>Text: "i am very much alive, and i intend to stay that way :)"
+ @>
+: Branch End
+@>
+
+#------------------------------------------------------------------------------
+Event ID: 026
+Event Name: EV026
+(X,Y): (018,040)
+
+Page #1
+Conditions
+None
+
+Autonomous Movement
+Type: Fixed
+Speed: 3: Slow
+Freq: 3: Low
+Options Enabled
+Move Animation
+Trigger: Action Button
+
+List of Event Commands:
+@>Conditional Branch: Player is facing Up
+ @>Text: Even in Death,\n
+  :    : #Deadbeat forever
+ @>
+: Branch End
+@>
+
+#------------------------------------------------------------------------------
 
 #==============================================================================
 Map ID: 251
@@ -72510,7 +72642,7 @@ List of Event Commands:
  :              : $>Change Opacity: 0
 @>Wait for Move's Completion
 @>Wait: 20 frame(s)
-@>Set Move Route: [Tree]
+@>Set Move Route: [CutTree]
  :              : $>SE: 'Shiny sparkle', 80, 100
  :              : $>Wait: 1 frame(s)
  :              : $>Graphic: "Glowing Sakura Tree', 0, 2, 1
@@ -73287,7 +73419,7 @@ List of Event Commands:
 
 #------------------------------------------------------------------------------
 Event ID: 031
-Event Name: Tree
+Event Name: CutTree
 (X,Y): (019,010)
 
 Page #1

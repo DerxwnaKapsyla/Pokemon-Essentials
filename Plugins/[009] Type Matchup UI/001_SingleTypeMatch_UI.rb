@@ -145,7 +145,7 @@ class TypeMatch_Scene
   # Method that pulls a random species of the given type
   def getRandomSpeciesFromType(type)
     arr = []
-    GameData::Species.each { |s| arr.push(s.id) if s.form==0 && (s.type1==type || s.type2==type) && s.generation <6 }
+    GameData::Species.each { |s| arr.push(s.id) if s.form==0 && (s.type1==type || s.type2==type) } #&& s.generation <6 }
     return arr[rand(arr.length)]
   end
   
