@@ -1,24 +1,24 @@
-Touhoumon Essentials Read-me File - Please take the time to read this 
+Touhoumon Asteria Read-me File - Please take the time to read this 
 all out.
 
 Sections:
-* TE01. OFFICIAL DOWNLOAD LINKS
-* TE02. SYSTEM COMPATIBILITY
-* TE03. IMPORTANT INFORMATION
-* TE04. GAME INFORMATION
-* TE05. DEFAULT CONTROLS
-* TE06. BUGS AND UNFINISHED THINGS IN THE CURRENT RELEASE
-* TE07. CHANGE LOG
-* TE08. SPECIAL GRATITUDES AND CREDITS
+* TA01. OFFICIAL DOWNLOAD LINKS
+* TA02. SYSTEM COMPATIBILITY
+* TA03. IMPORTANT INFORMATION
+* TA04. GAME INFORMATION
+* TA05. DEFAULT CONTROLS
+* TA06. BUGS AND UNFINISHED THINGS IN THE CURRENT RELEASE
+* TA07. CHANGE LOG
+* TA08. SPECIAL GRATITUDES AND CREDITS
 * DERX. CONTACT INFORMATION
 * LEGAL INFORMATION
 
 ----------------------------------------------------------------------
-TE01. OFFICIAL DOWNLOAD LINKS
+TA01. OFFICIAL DOWNLOAD LINKS
 ----------------------------------------------------------------------
 Links to the official downloads can be found at the following locations:
 	* https://www.pokecommunity.com/showthread.php?p=10155859
-	* https://reliccastle.com/threads/2502/
+	* [Relic Castle Link]
 	* https://chaoticinfinitydev.tumblr.com/
 
 As such, if you downloaded this from a website not on this list, 
@@ -32,28 +32,33 @@ version being released. It also makes it easier for me to give you
 bug support help if you're using a current version.
 
 ----------------------------------------------------------------------
-TE02. SYSTEM COMPATIBILITY
+TA02. SYSTEM COMPATIBILITY
 ----------------------------------------------------------------------
 This game was created in RPG Maker XP, a computer program that allows 
 you to create RPG-genre games on the computer, compatible for the 
-Computer only. As such, Touhoumon Essentials will NOT be compatible 
+Computer only. As such, Touhoumon Asteria will NOT be compatible 
 with any Game Boy Advance emulator, DS Emulator, or any Handheld 
 emulator of the sort. Please do not ask me how to make it compatible 
 with any emulator, there is no way to do so. 
 
 On the same note, please do not ask me how to play it on an Android 
 Phone/iPhone/Whatever smart phone you may possess. The same applies as
-above, there is no way to play Touhoumon Essentials on a Smartphone. 
+above, there is no way to play Touhoumon Asteria on a Smartphone.
+
+While there have been efforts in recent times to get Essentials-made
+games to work on mobile devices, I am not aware of the process behind
+this, as Asteria was made as a PC game. I cannot help with getting the
+game working on mobile devices.
 
 ----------------------------------------------------------------------
-TE03. IMPORTANT INFORMATION
+TA03. IMPORTANT INFORMATION
 ----------------------------------------------------------------------
-Feel free to get messy with the system files if you wanna rip the kit
-apart and figure out how things work! I may not be able to offer you
-the most in-depth technical assistance, but I can provide whatever
-help I can! If you break something, though, my best suggestion is to
-redownload the kit (or better, make a backup somewhere- this is a
-development kit, why aren't you making more backups as you work?)
+Please do not mess with the system files, they help keep the game
+running stable. If you need something addressed, please send me a
+message so I can help you- my contact information will be below.
+If you mess with the files, and the game manages to break, I am not
+responsible for what breaks. I will not be able to help you fix the
+game, and the only advice I can give is to start a new game.
 
 There are documents in the folder labeled "A Useful Folder Full of 
 Useful Things" which provide information about certain subjects, 
@@ -62,36 +67,30 @@ both an on/offine verson of the 1.8 Type Chart and the Touhoumon
 Essentials type chart, as well as text documents created by both
 Agastya and Derxwna in regards to 1.8 mechanics and concepts.
 
-If for whatever reason you care about your save file within the
-DevKit's micro game, please take note that a future update to the
-DevKit may render that save file broken. If that happens, there will
-be a notice on my blog and the relevant threads.
+Do not get too attached to your save file, and be prepared to start a
+new save file at any time. Changes to internal coding, the way 
+certain events are handled, and the various phases of the moon may
+render your existing save file broken, and will require a full 
+restart.
 
 ----------------------------------------------------------------------
-TE04. GAME INFORMATION
+TA04. GAME INFORMATION
 ----------------------------------------------------------------------
-Touhoumon Essentials is a a development kit built on the Essentials 
-Game Engine for RPG Maker XP. It comes with Generation I-IV for its
-core franchise (With Generation V moves and stats), as well as the
-mechanics of Touhou Puppet Play Generation 1.812x developed by
-Hemoglobin A1c. The kit allows individuals to make their own Touhoumon
-fangame outside of the need to utilize ROM Hacking. There are a few
-differences to vanilla 1.8, most notably Puppets of the Touhou Project
-characters from Touhou 13: Ten Desires up to, and including, 
-Touhou 14.5: Urban Legend in Limbo. Several of these new Puppets, as
-well as tweaked older ones, come from Touhoumon Purple, made by
-Agastya, and Touhoumon Unnamed, made by DoesntKnowHowToPlay. The DevKit
-also features a fully functional, if perhaps excessive, 34 Type Chart
-system, to allow Pokemon and Puppet mechanics to function 
-independantly of one another.
+Touhoumon Asteria is a game built around the Essentials Game Engine
+for RPG Maker XP, with the 1.8 generation of Touhou Puppet Play at
+its core. It fuses the aforementioned generation of TPP with the
+mechanics of the Fourth+ Generation of the parent franchise. 
 
-Within Touhoumon Essentials is a Micro-Game that revolves around
-Red, and takes place during the events of Touhoumon Faith & Prayer
-Version. The events of this game are dubiously canonical at best, but
-it shows a small xample of what can be done with the engine.
-
+Asteria is a somewhat untraditional fangame, focusing more on plot
+than on becoming a Master Trainer or completing the dex. As such, the
+Gym Challenge is an optional part of the game. With the redesign,
+the world should be accessable to the player from the start. 
+Certain areas might be blocked off because of main or side quest
+progression, but this is to be expected of most games. If you
+notice any issues with an area you shouldn't be able to access yet,
+please contact me.
 ----------------------------------------------------------------------
-TE05. DEFAULT CONTROLS
+TA05. DEFAULT CONTROLS
 ----------------------------------------------------------------------
 These are the default controls for the game. These cannot be changed
 in game.
@@ -113,12 +112,12 @@ Z Button/Shift Button
 F5 Button/Backspace
 	* Press to use a registered Key Item.
 
-T Button
+q Button
 	* Enable Turbo mode, increases the FPS of the game. Has three 
 	  different states. 
 
 ----------------------------------------------------------------------
-TE06. BUGS AND UNFINISHED THINGS IN THE CURRENT RELEASE
+TA06. BUGS AND UNFINISHED THINGS IN THE CURRENT RELEASE
 ----------------------------------------------------------------------
 EVERYTHING IS SHITCODE I AM A TERRIBLE PROGRAMMER! :wackospin:
 
@@ -135,14 +134,20 @@ Remember: A reported bug eventually* gets fixed, an unreported bug
 stays unnoticed forever.
 
 ----------------------------------------------------------------------
-TE07. CHANGE LOG
+TA07. CHANGE LOG
 ----------------------------------------------------------------------
-May 7th, 2020: Version 3.0
-- Rebuilt from the ground up, using Essentials v17.2 as a base
+Demo 7 - Asteria Version:
+* Officially Renamed to Touhoumon Asteria Version
+* Previous save files are NOT compatable with this version.
+* DRAMATICALLY overhauled content from Demo 1-6.
+
+June 9th, 2015: Demo 6 - Faith & Prayer Version
+* Previous release
+* Last release under the name "Faith & Prayer Version"
 
 
 ----------------------------------------------------------------------
-TE08. SPECIAL GRATITUDES AND CREDITS
+TA08. SPECIAL GRATITUDES AND CREDITS
 ----------------------------------------------------------------------
 I'm proud to say these people have helped make this possible. For more
 detailed credits, check out the text file named "credits.txt"

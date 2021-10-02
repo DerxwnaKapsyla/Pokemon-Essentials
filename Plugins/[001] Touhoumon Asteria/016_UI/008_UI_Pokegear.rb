@@ -20,7 +20,7 @@ class PokemonPokegearScreen
       commands[cmdPhone = commands.length] = ["phone",_INTL("Phone")]
     end
     commands[cmdJukebox = commands.length] = ["jukebox",_INTL("Jukebox")]
-	commands[cmdQuests = commands.length] = ["quests",_INTL("Quests")]
+	#commands[cmdQuests = commands.length] = ["quests",_INTL("Quests")]
 	commands[cmdTypeCheck = commands.length] = ["checker",_INTL("Type Checker")]
     @scene.pbStartScene(commands)
     loop do
@@ -39,10 +39,10 @@ class PokemonPokegearScreen
           screen = PokemonJukeboxScreen.new(scene)
           screen.pbStartScreen
         }
-		elsif cmdQuests>=0 && cmd==cmdQuests
-		  pbFadeOutIn {
-			pbViewQuests
-		}
+		#elsif cmdQuests>=0 && cmd==cmdQuests
+		#  pbFadeOutIn {
+		#	pbViewQuests
+		#}
 		elsif cmdTypeCheck>=0 && cmd==cmdTypeCheck
 		  pbFadeOutIn {
 			pbTypeMatchUI

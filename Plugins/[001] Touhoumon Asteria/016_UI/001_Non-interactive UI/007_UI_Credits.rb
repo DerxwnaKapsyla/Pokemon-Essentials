@@ -21,7 +21,7 @@ class Scene_Credits
   # Start Editing
   CREDIT = <<_END_
 
---- Touhoumon Development Kit ---
+--- Touhoumon Asteria ---
 Credits
 
 
@@ -213,16 +213,22 @@ This is a non-profit fan-made game.
 No copyright infringements intended.
 Please support the official games!
 
+Touhoumon Asteria Version
+2011-2021<s>DerxwnaKapsyla
+2012-2021<s>ChaoticInfinity Development
+2020-2021<s>Overseer Household
+
+
 Touhoumon Development Kit
-2011-2020<s>DerxwnaKapsyla
-2012-2020<s>ChaoticInfinity Development
-2020-2020<s>Overseer Household
+2011-2021<s>DerxwnaKapsyla
+2012-2021<s>ChaoticInfinity Development
+2020-2021<s>Overseer Household
 Based on Pokémon Essentials
 
 
 Pokémon Essentials
 2007-2010<s>Peter O.
-2011-2017<s>Maruno
+2011-2021<s>Maruno
 Based on work by Flameguru
 
 

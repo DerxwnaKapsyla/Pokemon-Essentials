@@ -19040,7 +19040,7 @@ Page #1
 Conditions
 None
 
-Graphic: trainer_POKEMONBREEDER
+Graphic: trainer_AROMALADY
 
 Autonomous Movement
 Type: Fixed
@@ -19071,7 +19071,7 @@ Page #2
 Conditions
 Self Switch A is ON
 
-Graphic: trainer_POKEMONBREEDER
+Graphic: trainer_AROMALADY
 
 Autonomous Movement
 Type: Fixed
@@ -19116,7 +19116,7 @@ Page #3
 Conditions
 Self Switch B is ON
 
-Graphic: trainer_POKEMONBREEDER
+Graphic: trainer_AROMALADY
 
 Autonomous Movement
 Type: Fixed
@@ -19730,7 +19730,7 @@ Page #1
 Conditions
 None
 
-Graphic: trainer_PAINTER
+Graphic: trainer_LASS
 
 Autonomous Movement
 Type: Custom
@@ -19766,7 +19766,7 @@ Page #2
 Conditions
 Self Switch A is ON
 
-Graphic: trainer_PAINTER
+Graphic: trainer_LASS
 
 Autonomous Movement
 Type: Custom
@@ -22822,7 +22822,7 @@ Page #1
 Conditions
 None
 
-Graphic: trainer_PAINTER
+Graphic: trainer_LASS
 
 Autonomous Movement
 Type: Fixed
@@ -22848,7 +22848,7 @@ Page #2
 Conditions
 Self Switch A is ON
 
-Graphic: trainer_PAINTER
+Graphic: trainer_LASS
 
 Autonomous Movement
 Type: Fixed
@@ -23295,6 +23295,21 @@ Page #1
 Conditions
 None
 
+Autonomous Movement
+Type: Fixed
+Speed: 3: Slow
+Freq: 3: Low
+Options Enabled
+Move Animation
+Trigger: Action Button
+
+List of Event Commands:
+@>
+
+Page #2
+Conditions
+Variable 0110: Plot Control Variable is 6 or above
+
 Graphic: NPC 20
 
 Autonomous Movement
@@ -23310,7 +23325,7 @@ List of Event Commands:
  :    : resolved, nobody is allowed to pass this way.
 @>
 
-Page #2
+Page #3
 Conditions
 Variable 0110: Plot Control Variable is 8 or above
 
@@ -23334,6 +23349,21 @@ Page #1
 Conditions
 None
 
+Autonomous Movement
+Type: Fixed
+Speed: 3: Slow
+Freq: 3: Low
+Options Enabled
+Move Animation
+Trigger: Action Button
+
+List of Event Commands:
+@>
+
+Page #2
+Conditions
+Variable 0110: Plot Control Variable is 6 or above
+
 Graphic: NPC 20
 
 Autonomous Movement
@@ -23349,7 +23379,7 @@ List of Event Commands:
  :    : resolved, nobody is allowed to pass this way.
 @>
 
-Page #2
+Page #3
 Conditions
 Variable 0110: Plot Control Variable is 8 or above
 
@@ -23373,6 +23403,21 @@ Page #1
 Conditions
 None
 
+Autonomous Movement
+Type: Fixed
+Speed: 3: Slow
+Freq: 3: Low
+Options Enabled
+Move Animation
+Trigger: Action Button
+
+List of Event Commands:
+@>
+
+Page #2
+Conditions
+Variable 0110: Plot Control Variable is 6 or above
+
 Graphic: NPC 01
 
 Autonomous Movement
@@ -23387,7 +23432,7 @@ List of Event Commands:
 @>Text: I'm sorry, but civilians aren't allowed to pass presently.
 @>
 
-Page #2
+Page #3
 Conditions
 Self Switch A is ON
 
@@ -23406,7 +23451,7 @@ List of Event Commands:
  :    : right ahead.
 @>
 
-Page #3
+Page #4
 Conditions
 Variable 0110: Plot Control Variable is 7 or above
 
@@ -23441,6 +23486,23 @@ Move Animation
 Trigger: Event Touch
 
 List of Event Commands:
+@>
+
+Page #2
+Conditions
+Variable 0110: Plot Control Variable is 6 or above
+
+Graphic: Object ball
+
+Autonomous Movement
+Type: Fixed
+Speed: 3: Slow
+Freq: 3: Low
+Options Enabled
+Move Animation
+Trigger: Event Touch
+
+List of Event Commands:
 @>Set Move Route: [Officer 1]
  :              : $>Turn toward Player
 @>Text: I'm sorry, but civilians aren't allowed to pass presently.
@@ -23450,7 +23512,7 @@ List of Event Commands:
  :              : $>Turn Up
 @>
 
-Page #2
+Page #3
 Conditions
 Self Switch A is ON
 
@@ -24166,6 +24228,25 @@ Page #1
 Conditions
 None
 
+Graphic: trainer_GENTLEMAN
+
+Autonomous Movement
+Type: Fixed
+Speed: 3: Slow
+Freq: 3: Low
+Options Enabled
+Move Animation
+Trigger: Action Button
+
+List of Event Commands:
+@>Text: Sorry, I'm out here waiting for my appointment with 
+ :    : the Director. I'll move soon.
+@>
+
+Page #2
+Conditions
+None
+
 Graphic: NPC 01_1
 
 Autonomous Movement
@@ -24243,12 +24324,12 @@ List of Event Commands:
  :       : activateQuest(:Quest15)
  @>
 : Branch End
-@>Script: pbSetSelfSwitch(40,"A",true)
+@>Script: pbSetSelfSwitch(40,"B",true)
 :       : pbSetSelfSwitch(41,"A",true)
 @>Control Self Switch: A =ON
 @>
 
-Page #2
+Page #3
 Conditions
 Self Switch A is ON
 
@@ -24272,6 +24353,7 @@ List of Event Commands:
  @>Change Screen Color Tone: (-255,-255,-255,0), @6
  @>Wait: 8 frame(s)
  @>Transfer Player:[079: Power Plant], (019,017), Up, No Fade
+ @>Script: pbHGSSTransitions("Power Plant")
  @>Change Screen Color Tone: (0,0,0,0), @6
  @>
 : Branch End
@@ -24282,7 +24364,7 @@ List of Event Commands:
 : Branch End
 @>
 
-Page #3
+Page #4
 Conditions
 Variable 0110: Plot Control Variable is 7 or above
 
@@ -24327,6 +24409,8 @@ List of Event Commands:
  :    : time.
 @>Text: \xn[David]The only time they've ever had a dent in their organization was when
  :    : they were taken down ten years ago by Red.
+@>Show Animation: Player, [Exclaim bubble]
+@>Show Animation: [Renko/Maribel - 2], [Exclaim bubble]
 @>Text: \xn[\v[108] & \pn]\b(Red took them down ten years ago!?)
 @>Text: \xn[David]Your friend mentined earlier that you said that Team Rocket
  :    : had fled from the scene after achieving their goals, yes?
@@ -24334,7 +24418,7 @@ List of Event Commands:
  :    : they finished what they were doing here.
 @>Text: \xn[David]That is unfortunate... I'll leave a small detachment of my men here,
  :    : just in case there's any stragglers.
-@>Text: \xn[David]I must be returning to the station to fill out a report. \pn,\wt[20] \v[108].
+@>Text: \xn[David]I must be returning to the station to fill out a report. \pn, \v[108].
  :    : The two of you take care and stay safe, it was a pleasure to meet you both.
 @>Set Move Route: [Police Chief]
  :              : $>Through ON
@@ -24365,6 +24449,8 @@ List of Event Commands:
  :              : $>Turn toward Player
 @>Text: \xn[\v[108]]Say, \pn. Wanna continue our conversation from earlier at the
  :    : nearby Pokémon Center? I wanna take a quick breather after all of that!
+@>Set Move Route: Player
+ :              : $>Turn Left
 @>Text: \xn[\pn]I think I'm in agreement there... Who would have thunk that
  :    : battling an evil organization would be so exhausting.
 @>Text: \xn[\v[108]]Haha, I'll head on over and meet you there then! 
@@ -24406,7 +24492,7 @@ List of Event Commands:
 : Branch End
 @>
 
-Page #4
+Page #5
 Conditions
 Self Switch B is ON
 
@@ -24429,7 +24515,7 @@ Event Name: Manager
 
 Page #1
 Conditions
-None
+Variable 0110: Plot Control Variable is 6 or above
 
 Graphic: NPC 06
 
@@ -24476,7 +24562,7 @@ Event Name: EV010
 
 Page #1
 Conditions
-None
+Variable 0110: Plot Control Variable is 6 or above
 
 Graphic: NPC 07
 
@@ -24515,7 +24601,7 @@ Event Name: EV011
 
 Page #1
 Conditions
-None
+Variable 0110: Plot Control Variable is 6 or above
 
 Graphic: trainer_SCIENTIST
 
@@ -24562,6 +24648,21 @@ Page #1
 Conditions
 None
 
+Autonomous Movement
+Type: Fixed
+Speed: 3: Slow
+Freq: 3: Low
+Options Enabled
+Move Animation
+Trigger: Action Button
+
+List of Event Commands:
+@>
+
+Page #2
+Conditions
+Variable 0110: Plot Control Variable is 6 or above
+
 Graphic: NPC 01
 
 Autonomous Movement
@@ -24576,7 +24677,7 @@ List of Event Commands:
 @>Text: I'm sorry, but civilians aren't allowed to pass presently.
 @>
 
-Page #2
+Page #3
 Conditions
 Self Switch A is ON
 
@@ -24595,7 +24696,7 @@ List of Event Commands:
  :    : right ahead.
 @>
 
-Page #3
+Page #4
 Conditions
 Variable 0110: Plot Control Variable is 10 or above
 
@@ -25175,6 +25276,7 @@ List of Event Commands:
 @>Change Screen Color Tone: (-255,-255,-255,0), @6
 @>Wait: 8 frame(s)
 @>Transfer Player:[079: Power Plant], (019,017), Up, No Fade
+@>Script: pbHGSSTransitions("Power Plant")
 @>Change Screen Color Tone: (0,0,0,0), @6
 @>
 
@@ -25413,6 +25515,7 @@ Event Name: Renko/Maribel - 2
 Page #1
 Conditions
 Variable 0107: Chosen Protag is 0 or above
+Self Switch A is ON
 
 Graphic: trainer_SCMary
 
@@ -25433,6 +25536,7 @@ List of Event Commands:
 Page #2
 Conditions
 Variable 0107: Chosen Protag is 1 or above
+Self Switch A is ON
 
 Graphic: trainer_SCRenko
 
@@ -25452,7 +25556,7 @@ List of Event Commands:
 
 Page #3
 Conditions
-Self Switch A is ON
+Self Switch B is ON
 
 Autonomous Movement
 Type: Fixed
@@ -27998,7 +28102,7 @@ Page #1
 Conditions
 None
 
-Graphic: trainer_BURGLAR
+Graphic: trainer_SUPERNERD
 
 Autonomous Movement
 Type: Fixed
@@ -28023,7 +28127,7 @@ Page #2
 Conditions
 Self Switch A is ON
 
-Graphic: trainer_BURGLAR
+Graphic: trainer_SUPERNERD
 
 Autonomous Movement
 Type: Fixed
@@ -32327,7 +32431,6 @@ List of Event Commands:
 @>Change Screen Color Tone: (-255,-255,-255,0), @6
 @>Wait: 8 frame(s)
 @>Transfer Player:[239: Power Plant], (048,005), Left, No Fade
-@>Script: pbHGSSTransitions("Power Plant")
 @>Change Screen Color Tone: (0,0,0,0), @6
 @>
 
@@ -35270,7 +35373,7 @@ Page #1
 Conditions
 None
 
-Graphic: trainer_PAINTER
+Graphic: trainer_LASS
 
 Autonomous Movement
 Type: Fixed
@@ -35720,7 +35823,7 @@ Page #1
 Conditions
 None
 
-Graphic: trainer_BURGLAR
+Graphic: trainer_COLLECTOR
 
 Autonomous Movement
 Type: Fixed
@@ -35732,10 +35835,26 @@ Direction Fix
 Trigger: Action Button
 
 List of Event Commands:
-@>Text: I can't believe them! After all the work I did for them, 
- :    : and they forbade me from beholding my work!
-@>Text: I'll get them back. I know exactly how to do so, too... 
- :    : Yes, those Maid Puppets of theirs will do nicely.
+@>Text: I can't believe them! Not only did they disgrace my work
+ :    : to my face, they had the audacity to steal it and claim it
+ :    : as their own!
+@>Text: They'll pay... Oh yes, they'll pay. Those corporate bastards won't
+ :    : know what hit them.
+@>
+
+Page #2
+Conditions
+Variable 0126: T.U.C.: Ruukoto SQ is 1 or above
+
+Autonomous Movement
+Type: Fixed
+Speed: 3: Slow
+Freq: 3: Low
+Options Enabled
+Move Animation
+Trigger: Action Button
+
+List of Event Commands:
 @>
 
 #------------------------------------------------------------------------------
@@ -47829,21 +47948,6 @@ List of Event Commands:
  :    : ability to evolve numerous Pokémon at once!
 @>
 
-Page #2
-Conditions
-Switch 0118:  is ON
-
-Autonomous Movement
-Type: Fixed
-Speed: 3: Slow
-Freq: 3: Low
-Options Enabled
-Move Animation
-Trigger: Action Button
-
-List of Event Commands:
-@>
-
 #------------------------------------------------------------------------------
 Event ID: 016
 Event Name: EV016
@@ -47853,7 +47957,7 @@ Page #1
 Conditions
 None
 
-Graphic: trainer_ENGINEER
+Graphic: trainer_WORKER
 
 Autonomous Movement
 Type: Fixed
@@ -47871,7 +47975,7 @@ List of Event Commands:
 
 Page #2
 Conditions
-Switch 0118:  is ON
+None
 
 Autonomous Movement
 Type: Fixed
@@ -47908,21 +48012,6 @@ List of Event Commands:
 @>Text: Daddy, I want to become a space man one day!
 @>
 
-Page #2
-Conditions
-Switch 0118:  is ON
-
-Autonomous Movement
-Type: Fixed
-Speed: 3: Slow
-Freq: 3: Low
-Options Enabled
-Move Animation
-Trigger: Action Button
-
-List of Event Commands:
-@>
-
 #------------------------------------------------------------------------------
 Event ID: 018
 Event Name: EV018
@@ -47946,21 +48035,6 @@ List of Event Commands:
 @>Text: I'm not entirely sure what's so special about these
  :    : exhibits.
 @>Text: They just seem like regular parts of an ordinary house.
-@>
-
-Page #2
-Conditions
-Switch 0118:  is ON
-
-Autonomous Movement
-Type: Fixed
-Speed: 3: Slow
-Freq: 3: Low
-Options Enabled
-Move Animation
-Trigger: Action Button
-
-List of Event Commands:
 @>
 
 #------------------------------------------------------------------------------
@@ -48037,21 +48111,6 @@ List of Event Commands:
 @>Text: Hey kid, if you're looking to get up to the third floor,
  :    : you'll have to go and use the Staff Entrance. They don't
  :    : allow people to go in this way.
-@>
-
-Page #2
-Conditions
-Switch 0118:  is ON
-
-Autonomous Movement
-Type: Fixed
-Speed: 3: Slow
-Freq: 3: Low
-Options Enabled
-Move Animation
-Trigger: Action Button
-
-List of Event Commands:
 @>
 
 #------------------------------------------------------------------------------
@@ -48249,8 +48308,10 @@ Trigger: Action Button
 
 List of Event Commands:
 @>Conditional Branch: Player is facing Up
- @>Text: It appears to be a Pokeball, but with special engravings on the top half.
- @>Text: It appears to be written in ancient Japanese, but it's too hard to make out the words.
+ @>Text: It appears to be a Pokeball, but with special engravings on the top 
+  :    : half.
+ @>Text: It appears to be written in an ancient language, but it's too hard 
+  :    : to make out the words.
  @>
 : Else
  @>
@@ -50648,12 +50709,14 @@ Move Animation
 Trigger: Action Button
 
 List of Event Commands:
-@>Text: [Placeholder text for Nurse]
+@>Text: Hello there! I'm a wandering nurse, would you like to rest here?
 @>Show Choices: Yes, No
 (When Cancel: Choice 2)
 : When [Yes]
  @>Recover All: Entire Party
  @>Play SE: 'Mining found all', 100, 100
+ @>Text: There! All healed up!
+ @>Text: Good luck out there!
  @>
 : When [No]
  @>
@@ -72855,6 +72918,36 @@ List of Event Commands:
 @>
 
 #------------------------------------------------------------------------------
+Event ID: 007
+Event Name: EV007
+(X,Y): (013,012)
+
+Page #1
+Conditions
+None
+
+Autonomous Movement
+Type: Fixed
+Speed: 3: Slow
+Freq: 3: Low
+Options Enabled
+Move Animation
+Trigger: Action Button
+
+List of Event Commands:
+@>Text: It's a terminal that lets you input a code.
+ :    : Try it out?
+@>Show Choices: Yes, No
+(When Cancel: Choice 2)
+: When [Yes]
+ @>Call Common Event: Passcode System
+ @>
+: When [No]
+ @>
+: Branch End
+@>
+
+#------------------------------------------------------------------------------
 Event ID: 008
 Event Name: Lantern
 (X,Y): (023,029)
@@ -79891,6 +79984,35 @@ List of Event Commands:
   :    : responsibly.
  @>Text: \bThis code will have to be reapplied each time you 
   :    : reload the game.
+ @>Exit Event Processing
+ @>
+: Else
+ @>
+: Branch End
+@>Comment: --- CKoishi, Lv5: 08160807, Hi Chirei
+@>Conditional Branch: Script: $game_variables[105]==16080807
+ @>Conditional Branch: Switch [0081: Chirei's Koishi] == ON
+  @>Text: \bChirei I'm sorry but I can't give you more Koishi.
+  @>Exit Event Processing
+  @>
+ : Else
+  @>Text: \bThis code will add a prisoner to your party. You 
+   :    : have no say in the matter.
+  @>Script: pkmn=Pokemon.new(:CKOISHI,5)
+  :       : pkmn.item = :HEARTSCALE
+  :       : pkmn.happiness = 255
+  :       : pkmn.iv[:HP]=15
+  :       : pkmn.iv[:ATTACK]=15
+  :       : pkmn.iv[:DEFENSE]=15
+  :       : pkmn.iv[:SPECIAL_ATTACK]=15
+  :       : pkmn.iv[:SPECIAL_DEFENSE]=15
+  :       : pkmn.iv[:SPEED]=15
+  @>Script: pkmn.calc_stats
+  :       : pbAddPokemon(pkmn)
+  @>Control Switches: [0081: Chirei's Koishi] = ON
+  @>Exit Event Processing
+  @>
+ : Branch End
  @>Exit Event Processing
  @>
 : Else

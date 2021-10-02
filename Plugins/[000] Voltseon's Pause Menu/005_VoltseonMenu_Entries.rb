@@ -263,7 +263,7 @@ end
 #-------------------------------------------------------------------------------
 class MenuEntryEncounterList < MenuEntry
   def initialize
-    @icon = "menuDebug"
+    @icon = "menuEncounters"
     @name = "Encounters"
   end
 
@@ -283,7 +283,7 @@ end
 #-------------------------------------------------------------------------------
 class MenuEntryQuests < MenuEntry
   def initialize
-    @icon = "menuDebug"
+    @icon = "menuJournal"
     @name = "Quests"
   end
 
