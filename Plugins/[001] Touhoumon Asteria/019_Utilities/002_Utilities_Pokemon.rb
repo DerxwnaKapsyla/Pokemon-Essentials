@@ -63,7 +63,7 @@ def pbAddPokemon(pkmn, level = 1, see_form = true)
   pkmn = Pokemon.new(pkmn, level) if !pkmn.is_a?(Pokemon)
   species_name = pkmn.speciesName
   if $game_map && $game_map.map_id==18 # Derx: If the player is on Map 18 (Oak's Lab - 2F)
-	pbMessage(_INTL("{1} received the {2} from Professor Oak!\\me[Pkmn get]\\wtnp[80]",$Trainer.name,speciesname))
+	pbMessage(_INTL("{1} received the {2} from Professor Oak!\\me[Pkmn get]\\wtnp[80]",$Trainer.name,species_name))
   else
 	pbMessage(_INTL("{1} obtained {2}!\\me[Pkmn get]\\wtnp[80]\1", $Trainer.name, species_name))
   end

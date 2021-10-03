@@ -1,0 +1,53 @@
+Script error in event 1 (coords 4,7), map 18 (Professor Oak's Lab - 2F):
+Exception: NameError
+Message: undefined local variable or method `speciesname' for #<Interpreter @event_id: 1>
+
+***Full script:
+p=Pokemon.new(:CSANAE,5,$Trainer)
+p.item=:ORANBERRY
+p.calc_stats
+p.reset_moves
+
+pbAddPokemon(p)
+
+
+Backtrace:
+[Touhoumon Asteria] 002_Utilities_Pokemon.rb:66:in `pbAddPokemon'
+(eval):6:in `execute_script'
+003_Interpreter.rb:137:in `eval'
+003_Interpreter.rb:137:in `execute_script'
+004_Interpreter_Commands.rb:1024:in `command_355'
+004_Interpreter_Commands.rb:116:in `execute_command'
+003_Interpreter.rb:127:in `block in update'
+003_Interpreter.rb:87:in `loop'
+003_Interpreter.rb:87:in `update'
+[Touhoumon Asteria] 006_Vermilion Gym.rb:18:in `block in update'
+
+
+003_Interpreter.rb:189:in `rescue in execute_script'
+003_Interpreter.rb:135:in `execute_script'
+004_Interpreter_Commands.rb:1024:in `command_355'
+004_Interpreter_Commands.rb:116:in `execute_command'
+003_Interpreter.rb:127:in `block in update'
+003_Interpreter.rb:87:in `loop'
+003_Interpreter.rb:87:in `update'
+[Touhoumon Asteria] 006_Vermilion Gym.rb:18:in `block in update'
+[Touhoumon Asteria] 006_Vermilion Gym.rb:16:in `loop'
+[Touhoumon Asteria] 006_Vermilion Gym.rb:16:in `update'
+002_Scene_Map.rb:220:in `block in main'
+002_Scene_Map.rb:217:in `loop'
+002_Scene_Map.rb:217:in `main'
+999_Main.rb:35:in `mainFunctionDebug'
+999_Main.rb:20:in `mainFunction'
+999_Main.rb:45:in `block (2 levels) in load_scripts_from_folder'
+999_Main.rb:44:in `loop'
+999_Main.rb:44:in `block in load_scripts_from_folder'
+000:Main:31:in `eval'
+000:Main:31:in `block in load_scripts_from_folder'
+000:Main:28:in `each'
+000:Main:28:in `load_scripts_from_folder'
+000:Main:41:in `block in load_scripts_from_folder'
+000:Main:40:in `each'
+000:Main:40:in `load_scripts_from_folder'
+000:Main:45:in `<main>'
+-e:in `eval'

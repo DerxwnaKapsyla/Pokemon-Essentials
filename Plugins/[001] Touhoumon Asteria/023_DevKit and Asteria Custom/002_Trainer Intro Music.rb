@@ -87,6 +87,8 @@ class Interpreter
 #  def trainer_eye_bgm(type, volume = 100, pitch = 100)
   def TrainerIntro2(type, volume = 100, pitch = 100)
     audio_file = TRAINER_BGMS[type]
+	pbGlobalLock
     Audio.bgm_play("Audio/BGM/Intros/#{audio_file}", volume, pitch) if audio_file
+	return true
   end
 end
