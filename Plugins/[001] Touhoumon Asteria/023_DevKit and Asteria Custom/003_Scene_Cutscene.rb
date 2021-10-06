@@ -121,7 +121,7 @@ class IntroEnd < PreludeScene
     :clear,
     :wait, 60,
     [
-      "What would they discover? Who would the meet?",
+      "What would they discover? Who would they meet?",
       "Would they learn the truth behind the",
       "Sealed Realm?"
     ],

@@ -20,11 +20,11 @@
 #-------------------------------------------------------------------------------
 GameData::TerrainTag.register({
   :id                     => :StairLeft,
-  :id_number              => 18
+  :id_number              => 50
 })
 GameData::TerrainTag.register({
   :id                     => :StairRight,
-  :id_number              => 19
+  :id_number              => 51
 })
 #-------------------------------------------------------------------------------
 # Existing Class Extensions

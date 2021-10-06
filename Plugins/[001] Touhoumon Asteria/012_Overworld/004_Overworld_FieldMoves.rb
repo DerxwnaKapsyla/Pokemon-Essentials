@@ -14,8 +14,14 @@
 # Cut
 #===============================================================================
 def pbCut
-  move = :CUT
-  movefinder = $Trainer.get_pokemon_with_move(move)
+  movelist = [:CUT, :CUT18]
+  move=nil
+  movefinder=nil
+  movelist.each do |m|
+	move=m
+	movefinder=$Trainer.get_pokemon_with_move(m)
+	break if movefinder
+  end
   if !(pbCheckHiddenMoveBadge(Settings::BADGE_FOR_CUT,false) || 
        pbCheckHiddenMoveBadge(Settings::ALT_BADGE_FOR_CUT,false)) || (!$DEBUG && !movefinder)
     pbMessage(_INTL("This tree looks like it can be cut down."))
@@ -49,8 +55,14 @@ def pbDive
   return false if $game_player.pbFacingEvent
   map_metadata = GameData::MapMetadata.try_get($game_map.map_id)
   return false if !map_metadata || !map_metadata.dive_map_id
-  move = :DIVE
-  movefinder = $Trainer.get_pokemon_with_move(move)
+  movelist = [:DIVE, :SHADOWDIVE18]
+  move=nil
+  movefinder=nil
+  movelist.each do |m|
+	move=m
+	movefinder=$Trainer.get_pokemon_with_move(m)
+	break if movefinder
+  end
   if !(pbCheckHiddenMoveBadge(Settings::BADGE_FOR_DIVE,false) ||
 	   pbCheckHiddenMoveBadge(Settings::ALT_BADGE_FOR_DIVE,false)) || (!$DEBUG && !movefinder)
     pbMessage(_INTL("The sea is deep here. It may be possible to go underwater."))
@@ -87,8 +99,14 @@ def pbSurfacing
     break
   end
   return if !surface_map_id
-  move = :DIVE
-  movefinder = $Trainer.get_pokemon_with_move(move)
+  movelist = [:DIVE, :SHADOWDIVE18]
+  move=nil
+  movefinder=nil
+  movelist.each do |m|
+	move=m
+	movefinder=$Trainer.get_pokemon_with_move(m)
+	break if movefinder
+  end
   if !(pbCheckHiddenMoveBadge(Settings::BADGE_FOR_DIVE,false) ||
 	   pbCheckHiddenMoveBadge(Settings::ALT_BADGE_FOR_DIVE,false)) || (!$DEBUG && !movefinder)
     pbMessage(_INTL("Light is filtering down from above. It may be possible to surface here."))
@@ -185,8 +203,14 @@ HiddenMoveHandlers::CanUseMove.add(:FLY,proc { |move,pkmn,showmsg|
 # Headbutt
 #===============================================================================
 def pbHeadbutt(event=nil)
-  move = :HEADBUTT
-  movefinder = $Trainer.get_pokemon_with_move(move)
+  movelist = [:HEADBUTT, :HEADBUTT18]
+  move=nil
+  movefinder=nil
+  movelist.each do |m|
+	move=m
+	movefinder=$Trainer.get_pokemon_with_move(m)
+	break if movefinder
+  end
   if !$DEBUG && !movefinder
     pbMessage(_INTL("Something could be in this tree. Maybe it could be shaken."))
     return false
@@ -205,8 +229,14 @@ end
 # Rock Smash
 #===============================================================================
 def pbRockSmash
-  move = :ROCKSMASH
-  movefinder = $Trainer.get_pokemon_with_move(move)
+  movelist = [:ROCKSMASH, :ROCKSMASH18]
+  move=nil
+  movefinder=nil
+  movelist.each do |m|
+	move=m
+	movefinder=$Trainer.get_pokemon_with_move(m)
+	break if movefinder
+  end
   if !(pbCheckHiddenMoveBadge(Settings::BADGE_FOR_ROCKSMASH,false) ||
 	   pbCheckHiddenMoveBadge(Settings::ALT_BADGE_FOR_ROCKSMASH,false)) || (!$DEBUG && !movefinder)
     pbMessage(_INTL("It's a rugged rock, but it may be possible to smash it."))
@@ -240,8 +270,14 @@ def pbStrength
     pbMessage(_INTL("Strength made it possible to move boulders around."))
     return false
   end
-  move = :STRENGTH
-  movefinder = $Trainer.get_pokemon_with_move(move)
+  movelist = [:STRENGTH, :STRENGTH18]
+  move=nil
+  movefinder=nil
+  movelist.each do |m|
+	move=m
+	movefinder=$Trainer.get_pokemon_with_move(m)
+	break if movefinder
+  end
   if !(pbCheckHiddenMoveBadge(Settings::BADGE_FOR_STRENGTH,false) ||
 	   pbCheckHiddenMoveBadge(Settings::ALT_BADGE_FOR_STRENGTH,false)) || (!$DEBUG && !movefinder)
     pbMessage(_INTL("It's a big boulder, but it may be possible to push it aside."))
@@ -275,8 +311,14 @@ HiddenMoveHandlers::CanUseMove.add(:STRENGTH,proc { |move,pkmn,showmsg|
 def pbSurf
   return false if $game_player.pbFacingEvent
   return false if $game_player.pbHasDependentEvents?
-  move = :SURF
-  movefinder = $Trainer.get_pokemon_with_move(move)
+  movelist = [:SURF, :SURF18]
+  move=nil
+  movefinder=nil
+  movelist.each do |m|
+	move=m
+	movefinder=$Trainer.get_pokemon_with_move(m)
+	break if movefinder
+  end
   if !(pbCheckHiddenMoveBadge(Settings::BADGE_FOR_SURF,false) ||
 	   pbCheckHiddenMoveBadge(Settings::ALT_BADGE_FOR_SURF,false)) || (!$DEBUG && !movefinder)
     return false
@@ -322,8 +364,14 @@ HiddenMoveHandlers::CanUseMove.add(:SURF,proc { |move,pkmn,showmsg|
 # Waterfall
 #===============================================================================
 def pbWaterfall
-  move = :WATERFALL
-  movefinder = $Trainer.get_pokemon_with_move(move)
+  movelist = [:WATERFALL, :WATERFALL18]
+  move=nil
+  movefinder=nil
+  movelist.each do |m|
+	move=m
+	movefinder=$Trainer.get_pokemon_with_move(m)
+	break if movefinder
+  end
   if !(pbCheckHiddenMoveBadge(Settings::BADGE_FOR_WATERFALL,false) ||
 	   pbCheckHiddenMoveBadge(Settings::ALT_BADGE_FOR_WATERFALL,false)) || (!$DEBUG && !movefinder)
     pbMessage(_INTL("A wall of water is crashing down with a mighty roar."))

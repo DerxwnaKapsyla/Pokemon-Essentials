@@ -30,7 +30,7 @@ module QuestModule
     :ID => "3",
     :Name => "Welcome Back - III",
     :QuestGiver => "Main Scenario Quest",
-    :Stage1 => "Head out into Professor Oak's garden",
+    :Stage1 => "Head out into Professor Oak's garden.",
     :Location1 => "Pallet Town",
     :QuestDescription => "There was a loud cry for help outside the Lab just now, and one of the Puppets that Professor Oak told me about ran outside in response! I should go see if I can help!",
     :RewardString => "nil"
@@ -42,7 +42,7 @@ module QuestModule
     :QuestGiver => "Main Scenario Quest",
     :Stage1 => "Head over to Oak's Lab and recieve your first Puppet.",
     :Location1 => "Pallet Town",
-    :QuestDescription => "Renko and I are making our way to Professor Oak's lab to recieve our very first Puppet! I wonder what they'll be like, I can't wait to meet them!",
+    :QuestDescription => "Renko and I are making our way to Professor Oak's lab to receive our very first Puppet! I wonder what they'll be like, I can't wait to meet them!",
     :RewardString => "nil"
   }
   
@@ -52,7 +52,7 @@ module QuestModule
     :QuestGiver => "Main Scenario Quest",
     :Stage1 => "Head over to Oak's Lab and recieve your first Puppet.",
     :Location1 => "Pallet Town",
-    :QuestDescription => "Mary and I are making our way to Professor Oak's lab to recieve our very first Puppet! I wonder what they'll be like, I can't wait to meet them!",
+    :QuestDescription => "Mary and I are making our way to Professor Oak's lab to receive our very first Puppet! I wonder what they'll be like, I can't wait to meet them!",
     :RewardString => "nil"
   }
   
@@ -82,7 +82,7 @@ module QuestModule
     :QuestGiver => "Main Scenario Quest",
     :Stage1 => "Head to the Viridian City Trainer Academy.",
     :Location1 => "Viridian City",
-    :QuestDescription => "Now that we've recieved our first Puppets, it's time for us to hit the road. According to our preliminary research, our first stop should be the Trainer Academy in Viridian City. Adventure, here we come!"
+    :QuestDescription => "Now that we've received our first Puppets, it's time for us to hit the road. According to our preliminary research, our first stop should be the Trainer Academy in Viridian City. Adventure, here we come!"
   }
   
   Quest9 = {
@@ -169,7 +169,7 @@ module QuestModule
     :ID => "17",
     :Name => "Tower of Terror - I (Maribel)",
     :QuestGiver => "Main Scenario Quest",
-    :Stage1 => "Talk to Renko at the Pokémon Center on Route 10",
+    :Stage1 => "Talk to Renko at the Pokémon Center on Route 10.",
     :Location1 => "Route 10",
     :QuestDescription => "Dealing with Team Rocket was exhausting... Renko wants to meet up at the nearby Pokémon Center to continue our conversation from earlier. She mentioned she had some leads she wanted to follow up on.",
     :RewardString => "nil"
@@ -179,7 +179,7 @@ module QuestModule
     :ID => "18",
     :Name => "Tower of Terror - I (Renko)",
     :QuestGiver => "Main Scenario Quest",
-    :Stage1 => "Talk to Maribel at the Pokémon Center on Route 10",
+    :Stage1 => "Talk to Maribel at the Pokémon Center on Route 10.",
     :Location1 => "Route 10",
     :QuestDescription => "Dealing with Team Rocket was exhausting... Mary wants to meet up at the nearby Pokémon Center to continue our conversation from earlier. She mentioned she had some leads she wanted to follow up on.",
     :RewardString => "nil"
@@ -189,11 +189,11 @@ module QuestModule
     :ID => "19",
     :Name => "Tower of Terror - II (Maribel)",
     :QuestGiver => "Main Scenario Quest",
-    :Stage1 => "Try to find information about the Sealed Realm in Lavender Town",
-	:Stage2 => "Find and recover the Puppet that ran from Mr. Fuji",
+    :Stage1 => "Try to find information about the Sealed Realm in Lavender Town.",
+	:Stage2 => "Find and recover the Puppet that ran from Mr. Fuji.",
     :Location1 => "Lavender Town",
 	:Location2 => "Lavender Town",
-    :QuestDescription => "And so, we're heading our separate ways once more! Renko'll be heading off to Fuschia City while I head off to Lavender Town. She mentioned that Lavender Town is known for supernatural occurances, so what better place to check than there!",
+    :QuestDescription => "And so, we're heading our separate ways once more! Renko'll be heading off to Fuschia City while I head off to Lavender Town. She mentioned that Lavender Town is known for supernatural occurrences, so what better place to check than there!",
     :RewardString => "nil"
   }
   
@@ -201,11 +201,11 @@ module QuestModule
     :ID => "20",
     :Name => "Tower of Terror - II (Renko)",
     :QuestGiver => "Main Scenario Quest",
-    :Stage1 => "Try to find information about the Sealed Realm in Lavender Town",
-	:Stage2 => "Find and recover the Puppet that ran from Mr. Fuji",
+    :Stage1 => "Try to find information about the Sealed Realm in Lavender Town.",
+	:Stage2 => "Find and recover the Puppet that ran from Mr. Fuji.",
     :Location1 => "Lavender Town",
 	:Location2 => "Lavender Town",
-    :QuestDescription => "And so, we're heading our separate ways once more! Mary'll be heading off to Fuschia City while I head off to Lavender Town. She mentioned that Lavender Town is known for supernatural occurances, so what better place to check than there!",
+    :QuestDescription => "And so, we're heading our separate ways once more! Mary'll be heading off to Fuschia City while I head off to Lavender Town. She mentioned that Lavender Town is known for supernatural occurrences, so what better place to check than there!",
     :RewardString => "nil"
   }
   
@@ -213,8 +213,8 @@ module QuestModule
     :ID => "21",
     :Name => "Tower of Terror - III",
     :QuestGiver => "Main Scenario Quest",
-    :Stage1 => "Investigate the Lavender Pokémon Tower",
-	:Stage2 => "Follow the Priestess into Pokémon Tower's archives",
+    :Stage1 => "Investigate the Lavender Pokémon Tower.",
+	:Stage2 => "Follow the Priestess into Pokémon Tower's archives.",
     :Location1 => "Lavender Town",
 	:Location2 => "Lavender Town",
     :QuestDescription => "Mr. Fuji actually gave a solid lead! He claims that he's heard stories about such a place from the priestesses of the Pokémon Tower. Time to see if this pans out!",
@@ -225,7 +225,7 @@ module QuestModule
     :ID => "22",
     :Name => "Welcome to the Jungle - I (Renko)",
     :QuestGiver => "Main Scenario Quest",
-    :Stage1 => "Meet up with Maribel in Fuchsia City",
+    :Stage1 => "Meet up with Maribel in Fuchsia City.",
     :Location1 => "Lavender Town",
     :QuestDescription => "The Lavender Town lead may not have proven as promising as we thought, but I did manage to get some valuable information out of it! For now, I should meet back up with Mary over in Fuchsia City and share our findings.",
     :RewardString => "nil"
@@ -235,7 +235,7 @@ module QuestModule
     :ID => "23",
     :Name => "Welcome to the Jungle - I (Maribel)",
     :QuestGiver => "Main Scenario Quest",
-    :Stage1 => "Meet up with Renko in Fuchsia City",
+    :Stage1 => "Meet up with Renko in Fuchsia City.",
     :Location1 => "Lavender Town",
     :QuestDescription => "The Lavender Town lead may not have proven as promising as we thought, but I did manage to get some valuable information out of it! For now, I should meet back up with Renko over in Fuchsia City and share our findings.",
     :RewardString => "nil"
@@ -311,8 +311,8 @@ module QuestModule
     :ID => "106",
     :Name => "The Ultimate Collector: Retribution - I",
     :QuestGiver => "Side Quest",
-	:Stage1 => "Present the invitation to the security guard in the Underground",
-	:Stage2 => "Watch the Silph Co. presentation",
+	:Stage1 => "Present the invitation to the security guard in the Underground.",
+	:Stage2 => "Watch the Silph Co. presentation.",
 	:Location1 => "Kanto Underground Tunnel",
 	:Location2 => "Silph Co.",
     :QuestDescription => "The director of the Power Plant gave me an invitation to an event being held by Silph Co., some sort of special Puppet Exhibition. It might be interesting to watch, so I guess I can go check it out!",
@@ -323,7 +323,7 @@ module QuestModule
     :ID => "107",
     :Name => "The Ultimate Collector: Retribution - III",
     :QuestGiver => "Side Quest",
-    :Stage1 => "Go after the haywire Ruukoto Puppets",
+    :Stage1 => "Go after the haywire Ruukoto Puppets.",
     :Location1 => "Silph Co.",
     :QuestDescription => "A disaster unfolded during the presentation! The Ruukoto Puppets that were there to assist went haywire and stole the Synthetic Puppet Prototypes and are now reaking havoc! I've been asked to put a stop to it, given I'm the only one present capable of doing so.",
     :RewardString => "nil"
@@ -333,9 +333,9 @@ module QuestModule
     :ID => "108",
     :Name => "Ghost of a Chance",
     :QuestGiver => "Side Quest",
-    :Stage1 => "Battle the Lavender Town Gym Leader",
+    :Stage1 => "Battle the Lavender Town Gym Leader.",
     :Location1 => "Lavender Town",
-    :QuestDescription => "One of the Priestess of Lavender Tower asked a favor of me; apparently scouts are coming to check out the new Lavender Gym, and she wants to make sure her granddaughter, Selene, is up to the task of being a Gym Leader. After showcasing my skills in Lavender Tower, how am I to refuse?",
+    :QuestDescription => "One of the Priestesses of Lavender Tower asked a favor of me; apparently scouts are coming to check out the new Lavender Gym, and she wants to make sure her granddaughter, Selene, is up to the task of being a Gym Leader. After showcasing my skills in Lavender Tower, how am I to refuse?",
     :RewardString => "nil"
   }
   

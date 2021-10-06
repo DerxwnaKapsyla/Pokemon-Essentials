@@ -571,6 +571,13 @@ Move Animation
 Trigger: Autorun
 
 List of Event Commands:
+@>Conditional Branch: Script: SaveData.exists? && $PokemonTemp.begunNewGame
+ @>Text: \w[dark]There is a different game file that is already saved.
+ @>Text: \w[dark]\l[3]If you save later, the other file's adventure, including items and party members, will be entirely lost.
+ @>Text: \w[dark]This will be your only warning. 
+ @>Wait: 10 frame(s)
+ @>
+: Branch End
 @>Text: \l[3]Would you like to proceed through Asteria's intro? Skipping this
  :    : segment has no impact on gameplay.
 @>Show Choices: Yes, No
@@ -625,6 +632,26 @@ List of Event Commands:
 @>Script: pbSetSelfSwitch2(7,8,"B",true)
 :       : pbSetSelfSwitch2(7,16,"B",true)
 @>Control Self Switch: A =ON
+@>
+
+#------------------------------------------------------------------------------
+Event ID: 005
+Event Name: EV005
+(X,Y): (019,001)
+
+Page #1
+Conditions
+None
+
+Autonomous Movement
+Type: Fixed
+Speed: 3: Slow
+Freq: 3: Low
+Options Enabled
+Move Animation
+Trigger: Action Button
+
+List of Event Commands:
 @>
 
 #------------------------------------------------------------------------------
@@ -2529,25 +2556,25 @@ Trigger: Autorun
 List of Event Commands:
 @>Scroll Map: Up, 11, 3
 @>Wait: 20 frame(s)
-@>Text: \xn[Gabby]Welcome back to our continued broadcast of the ongoing global crisis.\wtnp[40]
-@>Text: \xn[Gabby]We're reporting live from the emergency confrence held in Lumiose City.\wtnp[40]
-@>Text: \xn[Gabby]Leaders and important figures from across the world have gathered here.\wtnp[40]
-@>Text: \xn[Gabby]Today marks day 35 of our continued coverage of the confrence.\wtnp[40]
-@>Text: \xn[Gabby]To our knowledge not a whole lot has changed since the last report.\wtnp[40]
-@>Text: \xn[Gabby]For those of you just tuning in...\wtnp[40]
-@>Text: \xn[Gabby]This confrence was called in response to the current ongoing crisis.\wtnp[40]
-@>Text: \xn[Gabby]Over two months ago, an unknown invasive species appeared out of nowhere.\wtnp[40]
-@>Text: \xn[Gabby]The number of these species have increased throughout the Hoenn Region...\wtnp[40]
-@>Text: \xn[Gabby]... and have been spotted in other regions as well.\wtnp[40]
-@>Text: \xn[Gabby]According to officials, these creatures are definitely not Pokemon.\wtnp[40]
-@>Text: \xn[Gabby]But beyond that everything else about them is entirely unknown.\wtnp[40]
-@>Text: \xn[Gabby]Where they came from, what they're capable of, it remains a mystery.\wtnp[40]
-@>Text: \xn[Gabby]Now, earlier this afternoon we recieved an tip from an anonymous source.\wtnp[40]
-@>Text: \l[3]\xn[Gabby]It appears that Professor Samuel Oak will be proposing an idea to the council today.\wtnp[40]
-@>Text: \xn[Gabby]However, as of this moment, we have not verified these claims, or this idea.\wtnp[40]
-@>Text: \xn[Gabby]We will be bringing you the latest news as we have it.\wtnp[40]
-@>Text: \xn[Gabby]This is Gabby of Hoenn TV, reporting once again from the emergency confrence.\wtnp[40]
-@>Text: \xn[Gabby]Back to you in the studio, Dave.\wtnp[40]
+@>Text: \xn[Gabby]\w[dark]Welcome back to our continued broadcast of the ongoing global crisis.\wtnp[40]
+@>Text: \xn[Gabby]\w[dark]We're reporting live from the emergency conference held in Lumiose City.\wtnp[40]
+@>Text: \xn[Gabby]\w[dark]Leaders and important figures from across the world have gathered here.\wtnp[40]
+@>Text: \xn[Gabby]\w[dark]Today marks day 35 of our continued coverage of the confrence.\wtnp[40]
+@>Text: \xn[Gabby]\w[dark]To our knowledge not a whole lot has changed since the last report.\wtnp[40]
+@>Text: \xn[Gabby]\w[dark]For those of you just tuning in...\wtnp[40]
+@>Text: \xn[Gabby]\w[dark]This confrence was called in response to the current ongoing crisis.\wtnp[40]
+@>Text: \xn[Gabby]\w[dark]Over two months ago, an unknown invasive species appeared out of nowhere.\wtnp[40]
+@>Text: \xn[Gabby]\w[dark]The number of these species have increased throughout the Hoenn Region...\wtnp[40]
+@>Text: \xn[Gabby]\w[dark]... and have been spotted in other regions as well.\wtnp[40]
+@>Text: \xn[Gabby]\w[dark]According to officials, these creatures are definitely not Pokemon.\wtnp[40]
+@>Text: \xn[Gabby]\w[dark]But beyond that everything else about them is entirely unknown.\wtnp[40]
+@>Text: \xn[Gabby]\w[dark]Where they came from, what they're capable of, it remains a mystery.\wtnp[40]
+@>Text: \xn[Gabby]\w[dark]Now, earlier this afternoon we recieved an tip from an anonymous source.\wtnp[40]
+@>Text: \l[3]\xn[Gabby]\w[dark]It appears that Professor Samuel Oak will be proposing an idea to the council today.\wtnp[40]
+@>Text: \xn[Gabby]\w[dark]However, as of this moment, we have not verified these claims, or this idea.\wtnp[40]
+@>Text: \xn[Gabby]\w[dark]We will be bringing you the latest news as we have it.\wtnp[40]
+@>Text: \xn[Gabby]\w[dark]This is Gabby of Hoenn TV, reporting once again from the emergency confrence.\wtnp[40]
+@>Text: \xn[Gabby]\w[dark]Back to you in the studio, Dave.\wtnp[40]
 @>Text: \se[Tile Game cursor]*Click*\wtnp[40]
 @>Control Self Switch: A =ON
 @>
@@ -2949,7 +2976,7 @@ Trigger: Autorun
 List of Event Commands:
 @>Script: activateQuest(:Quest1)
 @>Text: \bYour Quest Journal has been updated! You can view 
- :    : the Quest Journal from the Pokégear menu.
+ :    : the Quest Journal from the menu.
 @>Text: \bYou can also look for quest objectives in the 
  :    : overworld by looking for an icon over them.
 @>Control Self Switch: B =ON
@@ -5124,11 +5151,11 @@ List of Event Commands:
 @>Text: \xn[Professor Oak]Though there was initial hesitation, people took to them rather quickly!
 @>Text: \xn[Professor Oak]It's quite incredible how well they meshed into society.
 @>Text: \xn[Professor Oak]...Well, except for one issue.
-@>Text: \xn[Professor Oak]For some reason, Pokémon are extremely wary around Puppes.
+@>Text: \xn[Professor Oak]For some reason, Pokémon are extremely wary around Puppets.
 @>Text: \xn[Professor Oak]As Puppets became more widespread, Pokémon started going into hiding.
 @>Text: \xn[Professor Oak]Researchers around the world noted that Pokémon actively avoided Puppets, for
  :    : reasons we can't even begin to theorize about.
-@>Text: \xn[Professor Oak]It's almost like some sort of inate, primal instinct, despite Puppets not showing any sort of hostility.
+@>Text: \xn[Professor Oak]It's almost like some sort of innate, primal instinct, despite Puppets not showing any sort of hostility.
 @>Text: \xn[Professor Oak]As a result of that, the Pokémon Adoption Agency headquarters in the Kikoto
  :    : Continent has temporarily closed their doors, and they've rebranded as a Pokémon Preservation Complex.
 @>Text: \xn[Professor Oak]Their current goal is to bring in displaced Pokémon so they can be helped to
@@ -6844,7 +6871,7 @@ List of Event Commands:
  :              : $>Move Down
 @>Text: \xn[Brown-Haired Girl]While we were stumbling around, that cat found us and started to chase us down!
 @>Text: \xn[Brown-Haired Girl]Thankfully someone heard our cry for help!
-@>Text: \xn[Brown-Haired Girl]... I have to say, though... Watching a battle like that was exhillerating! Is that normal in this world?
+@>Text: \xn[Brown-Haired Girl]... I have to say, though... Watching a battle like that was exhilarating! Is that normal in this world?
 @>Text: \xn[Professor Oak]You two act as if you've never heard of Pokémon or Puppets before...
 @>Text: \xn[Professor Oak]What matters for the time being though is that you both are safe.
 @>Set Move Route: [Red's Mom]
@@ -7356,7 +7383,7 @@ List of Event Commands:
  :    : cross into this one when trying to enter this "Sealed Realm", you called it?
 @>Text: \xn[Maribel]Something along those lines!
 @>Text: \xn[Maribel]Renko and I have been part of a club at our university that tries to seek out
- :    : unexplainable phenomena, and our biggest project is proving the existance of a 
+ :    : unexplainable phenomena, and our biggest project is proving the existence of a 
  :    : realm that exists alongside ours.
 @>Text: \xn[Maribel]We finally hit a breakthrough on our research, and we thought we found a way to break through the seal, but...
 @>Text: \xn[Renko]It looks like our efforts managed to get us here, instead! Who would have thought
@@ -7505,7 +7532,7 @@ Move Animation
 Trigger: Action Button
 
 List of Event Commands:
-@>Text: * This laptop looks like its running server software. 
+@>Text: * This laptop looks like it's running server software. 
  :    : Best not to mess with it.
 @>
 
@@ -8691,19 +8718,19 @@ List of Event Commands:
 @>Change Screen Color Tone: (0,0,0,0), @10
 @>Text: \xn[Professor Oak]Now that you both have your Puppets, this makes you both official trainers!
 @>Text: \xn[Professor Oak]This means you're both allowed to travel across the world and take on a region's Gym challenge.
-@>Text: \xn[Professor Oak]Scattered across the world's regions are the various Gyms, where storng trainers 
+@>Text: \xn[Professor Oak]Scattered across the world's regions are the various Gyms, where strong trainers 
  :    : gather and test would-be champions.
 @>Text: \xn[Professor Oak]At the end of a Gym is the Gym Leader. If you beat them, they will award you with 
  :    : a badge that signifies you overcame them and their challenge.
 @>Text: \xn[Professor Oak]Collecting eight badges from a region will immediately qualify you to challenge that region's Pokémon League.
 @>Text: \xn[Professor Oak]The Pokémon League is the ultimate aspiration for most trainers. They aim to 
- :    : reach that pinacle and challenge the Elite Four to attain the prestiguous title of Regional Champion.
+ :    : reach that pinnacle and challenge the Elite Four to attain the prestigious title of Regional Champion.
 @>Text: \xn[Renko]That sounds really extreme...
 @>Text: \xn[Professor Oak]With trust in your partners and a well formed strategy, you'll find that a trainer can overcome any challenge!
 @>Text: \xn[Professor Oak]But, words can only convey so much...\wt[10] Red, if you would?
 @>Wait: 10 frame(s)
 @>Text: \xn[Maribel]...Professor?
-@>Text: \xn[Professor Oak]Red here will be your final lesson. He shall teach you both what it's like to actualy be a Trainer.
+@>Text: \xn[Professor Oak]Red here will be your final lesson. He shall teach you both what it's like to actually be a Trainer.
 @>Text: \xn[Professor Oak]There's no better teacher than experience, afterall!
 @>Show Animation: Player, [Exclaim bubble]
 @>Show Animation: [Alt. Heroine], [Exclaim bubble]
@@ -8712,7 +8739,7 @@ List of Event Commands:
  :    : both to properly test yourselves without it being overwhelming.
 @>Text: \xn[Professor Oak]It'll be you two together fighting him, a more than even matchup if I do say so myself!
 @>Text: \xn[Red]...
-@>Text: \xn[Maribel]I'm not completely sure about this... But, if Renko are fighting alongside one another,
+@>Text: \xn[Maribel]I'm not completely sure about this... But, if Renko and I fight alongside one another,
  :    : we might be able to stand a chance!
 @>Text: \xn[Renko]Yeah, totally! Together, there's nothing we can't take on!
 @>Text: \xn[Professor Oak]That's the spirit!
@@ -9025,7 +9052,7 @@ List of Event Commands:
   :    : a trainer, and how difficult the road ahead will be.
  @>
 : Branch End
-@>Text: \xn[Professor Oak]Precisely! And just remmeber, even if you lose, that's still important growth.
+@>Text: \xn[Professor Oak]Precisely! And just rememeber, even if you lose, that's still important growth.
 @>Text: \xn[Professor Oak]There's always something to be learned, even in defeat, something I'm sure Red can
  :    : tell you from his many years of experience.
 @>Text: \xn[Professor Oak]The more you trust in your partners, the more they'll come to trust in you.
@@ -11854,44 +11881,6 @@ List of Event Commands:
 @>
 
 #------------------------------------------------------------------------------
-Event ID: 030
-Event Name: EV030
-(X,Y): (018,032)
-
-Page #1
-Conditions
-None
-
-Autonomous Movement
-Type: Fixed
-Speed: 3: Slow
-Freq: 3: Low
-Options Enabled
-Move Animation
-Trigger: Action Button
-
-List of Event Commands:
-@>Call Common Event: Journal Update
-@>Script: pbSetQuest(1, true)
-@>Script: pbAddQuest(2)
-@>Script: pbAddQuest(3)
-@>Script: pbAddQuest(4)
-@>Script: pbAddQuest(5)
-@>Script: pbAddQuest(6)
-@>Script: pbAddQuest(7)
-@>Script: pbAddQuest(8)
-@>Script: pbAddQuest(9)
-@>Script: pbAddQuest(10)
-@>Script: pbAddQuest(11)
-@>Script: pbAddQuest(12)
-@>Script: pbAddQuest(13)
-@>Script: pbAddQuest(14)
-@>Script: pbAddQuest(15)
-@>Script: pbAddQuest(16)
-@>Script: pbAddQuest(17)
-@>
-
-#------------------------------------------------------------------------------
 
 #==============================================================================
 Map ID: 036
@@ -13451,29 +13440,6 @@ List of Event Commands:
 @>
 
 #------------------------------------------------------------------------------
-Event ID: 048
-Event Name: Slope
-(X,Y): (053,014)
-
-Page #1
-Conditions
-None
-
-Autonomous Movement
-Type: Fixed
-Speed: 3: Slow
-Freq: 3: Low
-Options Enabled
-Move Animation
-Trigger: Event Touch
-
-List of Event Commands:
-@>Comment: Slope: -2x-1
-@>Comment: Width: 0/3
-@>Comment: Offset: 16px
-@>
-
-#------------------------------------------------------------------------------
 Event ID: 049
 Event Name: Gold
 (X,Y): (054,000)
@@ -13508,121 +13474,6 @@ Move Animation
 Trigger: Action Button
 
 List of Event Commands:
-@>
-
-#------------------------------------------------------------------------------
-Event ID: 050
-Event Name: Slope
-(X,Y): (053,013)
-
-Page #1
-Conditions
-None
-
-Autonomous Movement
-Type: Fixed
-Speed: 3: Slow
-Freq: 3: Low
-Options Enabled
-Move Animation
-Trigger: Event Touch
-
-List of Event Commands:
-@>Comment: Slope: -2x-1
-@>Comment: Width: 1/3
-@>Comment: Offset: 16px
-@>
-
-#------------------------------------------------------------------------------
-Event ID: 051
-Event Name: Slope
-(X,Y): (053,012)
-
-Page #1
-Conditions
-None
-
-Autonomous Movement
-Type: Fixed
-Speed: 3: Slow
-Freq: 3: Low
-Options Enabled
-Move Animation
-Trigger: Event Touch
-
-List of Event Commands:
-@>Comment: Slope: -2x-1
-@>Comment: Width: 2/3
-@>Comment: Offset: 16px
-@>
-
-#------------------------------------------------------------------------------
-Event ID: 052
-Event Name: Slope
-(X,Y): (051,013)
-
-Page #1
-Conditions
-None
-
-Autonomous Movement
-Type: Fixed
-Speed: 3: Slow
-Freq: 3: Low
-Options Enabled
-Move Animation
-Trigger: Event Touch
-
-List of Event Commands:
-@>Comment: Slope: 2x1
-@>Comment: Width: 0/3
-@>Comment: Offset: 16px
-@>
-
-#------------------------------------------------------------------------------
-Event ID: 053
-Event Name: Slope
-(X,Y): (051,012)
-
-Page #1
-Conditions
-None
-
-Autonomous Movement
-Type: Fixed
-Speed: 3: Slow
-Freq: 3: Low
-Options Enabled
-Move Animation
-Trigger: Event Touch
-
-List of Event Commands:
-@>Comment: Slope: 2x1
-@>Comment: Width: 1/3
-@>Comment: Offset: 16px
-@>
-
-#------------------------------------------------------------------------------
-Event ID: 054
-Event Name: Slope
-(X,Y): (051,011)
-
-Page #1
-Conditions
-None
-
-Autonomous Movement
-Type: Fixed
-Speed: 3: Slow
-Freq: 3: Low
-Options Enabled
-Move Animation
-Trigger: Event Touch
-
-List of Event Commands:
-@>Comment: Slope: 2x1
-@>Comment: Width: 2/3
-@>Comment: Offset: 16px
 @>
 
 #------------------------------------------------------------------------------
@@ -14165,7 +14016,7 @@ List of Event Commands:
 @>Show Choices: Yes, No
 (When Cancel: Choice 2)
 : When [Yes]
- @>Text: Well alright then!
+ @>Text: Well alright, then!
  @>
 : When [No]
  @>Text: Well, to the west of us is Cerulean Cave, a cave 
@@ -15177,7 +15028,7 @@ List of Event Commands:
 
 #==============================================================================
 Map ID: 038
-Map Name: Vermillion City
+Map Name: Vermilion City
 Tileset: 001: Outside
 Width: 53, Height: 53
 Auto-Change BGM: W-017. Vermillion City
@@ -15367,144 +15218,6 @@ Move Animation
 Trigger: Action Button
 
 List of Event Commands:
-@>
-
-#------------------------------------------------------------------------------
-Event ID: 004
-Event Name: Slope
-(X,Y): (034,011)
-
-Page #1
-Conditions
-None
-
-Autonomous Movement
-Type: Fixed
-Speed: 3: Slow
-Freq: 3: Low
-Options Enabled
-Move Animation
-Trigger: Event Touch
-
-List of Event Commands:
-@>Comment: Slope: 2x-1
-@>Comment: Width: 2/3
-@>Comment: Offset: 16px
-@>
-
-#------------------------------------------------------------------------------
-Event ID: 005
-Event Name: Slope
-(X,Y): (034,012)
-
-Page #1
-Conditions
-None
-
-Autonomous Movement
-Type: Fixed
-Speed: 3: Slow
-Freq: 3: Low
-Options Enabled
-Move Animation
-Trigger: Event Touch
-
-List of Event Commands:
-@>Comment: Slope: 2x-1
-@>Comment: Width: 1/3
-@>Comment: Offset: 16px
-@>
-
-#------------------------------------------------------------------------------
-Event ID: 006
-Event Name: Slope
-(X,Y): (034,013)
-
-Page #1
-Conditions
-None
-
-Autonomous Movement
-Type: Fixed
-Speed: 3: Slow
-Freq: 3: Low
-Options Enabled
-Move Animation
-Trigger: Event Touch
-
-List of Event Commands:
-@>Comment: Slope: 2x-1
-@>Comment: Width: 0/3
-@>Comment: Offset: 16px
-@>
-
-#------------------------------------------------------------------------------
-Event ID: 007
-Event Name: Slope
-(X,Y): (036,010)
-
-Page #1
-Conditions
-None
-
-Autonomous Movement
-Type: Fixed
-Speed: 3: Slow
-Freq: 3: Low
-Options Enabled
-Move Animation
-Trigger: Event Touch
-
-List of Event Commands:
-@>Comment: Slope: -2x1
-@>Comment: Width: 2/3
-@>Comment: Offset: 16px
-@>
-
-#------------------------------------------------------------------------------
-Event ID: 008
-Event Name: Slope
-(X,Y): (036,011)
-
-Page #1
-Conditions
-None
-
-Autonomous Movement
-Type: Fixed
-Speed: 3: Slow
-Freq: 3: Low
-Options Enabled
-Move Animation
-Trigger: Event Touch
-
-List of Event Commands:
-@>Comment: Slope: -2x1
-@>Comment: Width: 1/3
-@>Comment: Offset: 16px
-@>
-
-#------------------------------------------------------------------------------
-Event ID: 009
-Event Name: Slope
-(X,Y): (036,012)
-
-Page #1
-Conditions
-None
-
-Autonomous Movement
-Type: Fixed
-Speed: 3: Slow
-Freq: 3: Low
-Options Enabled
-Move Animation
-Trigger: Event Touch
-
-List of Event Commands:
-@>Comment: Slope: -2x1
-@>Comment: Width: 0/3
-@>Comment: Offset: 16px
 @>
 
 #------------------------------------------------------------------------------
@@ -16782,114 +16495,6 @@ List of Event Commands:
  @>Script: pbSmashThisEvent
  @>
 : Branch End
-@>
-
-#------------------------------------------------------------------------------
-Event ID: 034
-Event Name: Trainer(6)
-(X,Y): (018,013)
-
-Page #1
-Conditions
-None
-
-Graphic: trainer_POKEMONRANGER_M
-
-Autonomous Movement
-Type: Fixed
-Speed: 3: Slow
-Freq: 3: Low
-Options Enabled
-Move Animation
-Trigger: Event Touch
-
-List of Event Commands:
-@>Script: TrainerIntro2(:CAMPER)
-@>Script: pbNoticePlayer(get_character(0))
-@>Text: You shouldn't go trampling on the wild grass that grows here!
-@>Conditional Branch: Script: pbTrainerBattle(:CAMPER,"Daniel",_I("I got trampled over!"))
- @>Control Self Switch: A =ON
- @>
-: Branch End
-@>Script: pbTrainerEnd
-@>
-
-Page #2
-Conditions
-Self Switch A is ON
-
-Graphic: trainer_POKEMONRANGER_M
-
-Autonomous Movement
-Type: Fixed
-Speed: 3: Slow
-Freq: 3: Low
-Options Enabled
-Move Animation
-Trigger: Action Button
-
-List of Event Commands:
-@>Text: You should have more regard for plants and things that grow in the wild. They help keep this planet healthy!
-@>
-
-#------------------------------------------------------------------------------
-Event ID: 035
-Event Name: Trainer(6)
-(X,Y): (022,013)
-
-Page #1
-Conditions
-None
-
-Graphic: trainer_POKEMONRANGER_F
-
-Autonomous Movement
-Type: Custom
-Custom Move Route:
-(Repeat Action)
-$>Turn Up
-$>Wait: 10 frame(s)
-$>Turn Left
-
-Speed: 3: Slow
-Freq: 3: Low
-Options Enabled
-Move Animation
-Trigger: Event Touch
-
-List of Event Commands:
-@>Script: TrainerIntro2(:PICNICKER)
-@>Script: pbNoticePlayer(get_character(0))
-@>Text: My Puppets and I are one with nature out here!
-@>Conditional Branch: Script: pbTrainerBattle(:PICNICKER,"Lila",_I("Isn't nature beautiful?"))
- @>Control Self Switch: A =ON
- @>
-: Branch End
-@>Script: pbTrainerEnd
-@>
-
-Page #2
-Conditions
-Self Switch A is ON
-
-Graphic: trainer_POKEMONRANGER_F
-
-Autonomous Movement
-Type: Custom
-Custom Move Route:
-(Repeat Action)
-$>Turn Up
-$>Wait: 10 frame(s)
-$>Turn Left
-
-Speed: 3: Slow
-Freq: 3: Low
-Options Enabled
-Move Animation
-Trigger: Action Button
-
-List of Event Commands:
-@>Text: Even if we lose a battle, being able to enjoy the outdoors makes up for the loss!
 @>
 
 #------------------------------------------------------------------------------
@@ -19199,7 +18804,6 @@ List of Event Commands:
 @>Text: If you can show me an Oran Berry and a Cheri Berry, 
  :    : I'll give you something special.
 @>Script: activateQuest(:Quest102)
-@>Call Common Event: Journal Update
 @>Control Self Switch: A =ON
 @>
 
@@ -26237,7 +25841,7 @@ List of Event Commands:
 @>Conditional Branch: Player is facing Up
  @>Text: \sign[signskin]\l[4]In accordance with the word of the Puppet Protection
   :    : Act, all Trainers will be allowed to to bring either Pokémon or Puppets
-  :    : when challeneging the Pokémon League.
+  :    : when challenging the Pokémon League.
  @>
 : Branch End
 @>
@@ -26879,7 +26483,7 @@ Trigger: Action Button
 List of Event Commands:
 @>Text: Ahead is the Hall of Representatives, where Gym Leaders send 
  :    : representatives of their gyms to act as an obstacle for trainers
- :    : who want to challenge the Pokemon League to overcome.
+ :    : who want to challenge the Pokemon League.
 @>Text: All of the trainers inside are very strong, even stronger than their
  :    : home Gym Leader in some cases! Be prepared for a tough gauntlet!
 @>
@@ -27089,7 +26693,7 @@ List of Event Commands:
 #------------------------------------------------------------------------------
 Event ID: 008
 Event Name: EV008
-(X,Y): (021,024)
+(X,Y): (020,025)
 
 Page #1
 Conditions
@@ -27456,8 +27060,11 @@ Move Animation
 Trigger: Action Button
 
 List of Event Commands:
-@>Text: Elaine: The Nugget Bridge Crew is a long standing tradition of Cerulean City. The strongest trainers from the city gather here as a test for willing trainers. We take 
- :    : great pride in our role for Cerulean City.
+@>Text: \xn[Elaine]The Nugget Bridge Crew is a long standing tradition of 
+ :    : Cerulean City.
+@>Text: \xn[Elaine]The strongest trainers from the city gather here as 
+ :    : a test for willing trainers. We take great pride in our role for 
+ :    : Cerulean City.
 @>
 
 #------------------------------------------------------------------------------
@@ -27478,24 +27085,26 @@ Move Animation
 Trigger: Player Touch
 
 List of Event Commands:
-@>Text: Marcus: Well done on beating the other trainers of the bridge! My name is Marcus, and my partner's name is Elaine.
-@>Text: Elaine: Together, we challenge trainers who think they're strong enough to overcome the might of the Nugget Bridge. 
+@>Text: \xn[Marcus]Well done on beating the other trainers of the bridge! My name is Marcus, and my partner's name is Elaine.
+@>Text: \xn[Elaine]Together, we challenge trainers who think they're strong enough to overcome the might of the Nugget Bridge. 
 @>Conditional Branch: Script: $Trainer.able_pokemon_count<=1
- @>Text: Marcus: We can't exactly challenge you to a fair fight if you only have one Puppet, though!
- @>Text: Elaine: Do come back when you have a second puppet, so we can fight on equal terms.
+ @>Text: \xn[Marcus]We can't exactly challenge you to a fair fight if you only have one Puppet, though!
+ @>Text: \xn[Elaine]Do come back when you have a second puppet, so we can fight on equal terms.
+ @>Set Move Route: Player
+  :              : $>Move Down
  @>Exit Event Processing
  @>
 : Else
  @>Script: TrainerIntro2(:COOLCOUPLE)
- @>Text: Marcus: Since you made it to us, as per the rules of combat and of the bridge, we accept your challenge!
- @>Text: Elaine: Now prepare to be dazzled by our masterful combination!
+ @>Text: \xn[Marcus]Since you made it to us, as per the rules of combat and of the bridge, we accept your challenge!
+ @>Text: \xn[Elaine]Now prepare to be dazzled by our masterful combination!
  @>Conditional Branch: Script: pbTrainerBattle(:COOLCOUPLE,"Marcus & Elaine",_I("An excellent show of force, good job challenger!"),true)
-  @>Text: Marcus: Congratulations on beating all six of the Nugget Bridge crew!
-  @>Text: Elaine: To commemorate your victory, we award you a Nugget; the very namesake of this bridge!
+  @>Text: \xn[Marcus]Congratulations on beating all six of the Nugget Bridge crew!
+  @>Text: \xn[Elaine]To commemorate your victory, we award you a Nugget; the very namesake of this bridge!
   @>Script: pbReceiveItem(:NUGGET)
   @>Control Self Switch: A =ON
-  @>Script: pbSetSelfSwitch(1,"A",true)
-  @>Script: pbSetSelfSwitch(2,"A",true)
+  @>Script: pbSetSelfSwitch(6,"A",true)
+  @>Script: pbSetSelfSwitch(8,"A",true)
   @>
  : Branch End
  @>Script: pbTrainerEnd
@@ -27566,12 +27175,11 @@ Move Animation
 Trigger: Action Button
 
 List of Event Commands:
-@>Text: Marcus: The Nugget Bridge has existed even in olden 
+@>Text: \xn[Marcus]The Nugget Bridge has existed even in olden 
  :    : times, back when Kanto was in its infancy. 
-@>Text: Trainers would often gather at the bridge to conduct 
- :    : battles to see who was the strongest in the city,
-@>Text: and \nit became a long-standing tradition to uphold those 
- :    : ideals our forefathers had.
+@>Text: \xn[Marcus]Trainers would often gather at the bridge to conduct 
+ :    : battles to see who was the strongest in the city, and it became a 
+ :    : long-standing tradition to uphold those ideals our forefathers had.
 @>
 
 #------------------------------------------------------------------------------
@@ -28088,7 +27696,8 @@ Move Animation
 Trigger: Action Button
 
 List of Event Commands:
-@>Text: If you happen to see any of my other brothers be sure to tell them hi for me.
+@>Text: If you happen to see any of my other brothers,
+ :    :  be sure to tell them hi for me.
 @>
 
 #------------------------------------------------------------------------------
@@ -28264,7 +27873,7 @@ Move Animation
 Trigger: Action Button
 
 List of Event Commands:
-@>Text: I say Ill explore it, but I have no idea
+@>Text: I say I'll explore it, but I have no idea
  :    : where to even start looking!
 @>
 
@@ -29376,972 +28985,6 @@ List of Event Commands:
 @>
 
 #------------------------------------------------------------------------------
-Event ID: 023
-Event Name: Slope
-(X,Y): (037,068)
-
-Page #1
-Conditions
-None
-
-Autonomous Movement
-Type: Fixed
-Speed: 3: Slow
-Freq: 3: Low
-Options Enabled
-Move Animation
-Trigger: Event Touch
-
-List of Event Commands:
-@>Comment: Slope: -2x-1
-@>Comment: Width: 0/3
-@>Comment: Offset: 16px
-@>
-
-#------------------------------------------------------------------------------
-Event ID: 024
-Event Name: Slope
-(X,Y): (037,067)
-
-Page #1
-Conditions
-None
-
-Autonomous Movement
-Type: Fixed
-Speed: 3: Slow
-Freq: 3: Low
-Options Enabled
-Move Animation
-Trigger: Event Touch
-
-List of Event Commands:
-@>Comment: Slope: -2x-1
-@>Comment: Width: 1/3
-@>Comment: Offset: 16px
-@>
-
-#------------------------------------------------------------------------------
-Event ID: 025
-Event Name: Slope
-(X,Y): (037,066)
-
-Page #1
-Conditions
-None
-
-Autonomous Movement
-Type: Fixed
-Speed: 3: Slow
-Freq: 3: Low
-Options Enabled
-Move Animation
-Trigger: Event Touch
-
-List of Event Commands:
-@>Comment: Slope: -2x-1
-@>Comment: Width: 2/3
-@>Comment: Offset: 16px
-@>
-
-#------------------------------------------------------------------------------
-Event ID: 026
-Event Name: Slope
-(X,Y): (044,068)
-
-Page #1
-Conditions
-None
-
-Autonomous Movement
-Type: Fixed
-Speed: 3: Slow
-Freq: 3: Low
-Options Enabled
-Move Animation
-Trigger: Event Touch
-
-List of Event Commands:
-@>Comment: Slope: -2x-1
-@>Comment: Width: 0/3
-@>Comment: Offset: 16px
-@>
-
-#------------------------------------------------------------------------------
-Event ID: 027
-Event Name: Slope
-(X,Y): (044,067)
-
-Page #1
-Conditions
-None
-
-Autonomous Movement
-Type: Fixed
-Speed: 3: Slow
-Freq: 3: Low
-Options Enabled
-Move Animation
-Trigger: Event Touch
-
-List of Event Commands:
-@>Comment: Slope: -2x-1
-@>Comment: Width: 1/3
-@>Comment: Offset: 16px
-@>
-
-#------------------------------------------------------------------------------
-Event ID: 028
-Event Name: Slope
-(X,Y): (044,066)
-
-Page #1
-Conditions
-None
-
-Autonomous Movement
-Type: Fixed
-Speed: 3: Slow
-Freq: 3: Low
-Options Enabled
-Move Animation
-Trigger: Event Touch
-
-List of Event Commands:
-@>Comment: Slope: -2x-1
-@>Comment: Width: 2/3
-@>Comment: Offset: 16px
-@>
-
-#------------------------------------------------------------------------------
-Event ID: 029
-Event Name: Slope
-(X,Y): (025,054)
-
-Page #1
-Conditions
-None
-
-Autonomous Movement
-Type: Fixed
-Speed: 3: Slow
-Freq: 3: Low
-Options Enabled
-Move Animation
-Trigger: Event Touch
-
-List of Event Commands:
-@>Comment: Slope: -2x-1
-@>Comment: Width: 0/3
-@>Comment: Offset: 16px
-@>
-
-#------------------------------------------------------------------------------
-Event ID: 030
-Event Name: Slope
-(X,Y): (025,053)
-
-Page #1
-Conditions
-None
-
-Autonomous Movement
-Type: Fixed
-Speed: 3: Slow
-Freq: 3: Low
-Options Enabled
-Move Animation
-Trigger: Event Touch
-
-List of Event Commands:
-@>Comment: Slope: -2x-1
-@>Comment: Width: 1/3
-@>Comment: Offset: 16px
-@>
-
-#------------------------------------------------------------------------------
-Event ID: 031
-Event Name: Slope
-(X,Y): (025,052)
-
-Page #1
-Conditions
-None
-
-Autonomous Movement
-Type: Fixed
-Speed: 3: Slow
-Freq: 3: Low
-Options Enabled
-Move Animation
-Trigger: Event Touch
-
-List of Event Commands:
-@>Comment: Slope: -2x-1
-@>Comment: Width: 2/3
-@>Comment: Offset: 16px
-@>
-
-#------------------------------------------------------------------------------
-Event ID: 032
-Event Name: Slope
-(X,Y): (019,053)
-
-Page #1
-Conditions
-None
-
-Autonomous Movement
-Type: Fixed
-Speed: 3: Slow
-Freq: 3: Low
-Options Enabled
-Move Animation
-Trigger: Event Touch
-
-List of Event Commands:
-@>Comment: Slope: -2x-1
-@>Comment: Width: 0/3
-@>Comment: Offset: 16px
-@>
-
-#------------------------------------------------------------------------------
-Event ID: 033
-Event Name: Slope
-(X,Y): (019,052)
-
-Page #1
-Conditions
-None
-
-Autonomous Movement
-Type: Fixed
-Speed: 3: Slow
-Freq: 3: Low
-Options Enabled
-Move Animation
-Trigger: Event Touch
-
-List of Event Commands:
-@>Comment: Slope: -2x-1
-@>Comment: Width: 1/3
-@>Comment: Offset: 16px
-@>
-
-#------------------------------------------------------------------------------
-Event ID: 034
-Event Name: Slope
-(X,Y): (019,051)
-
-Page #1
-Conditions
-None
-
-Autonomous Movement
-Type: Fixed
-Speed: 3: Slow
-Freq: 3: Low
-Options Enabled
-Move Animation
-Trigger: Event Touch
-
-List of Event Commands:
-@>Comment: Slope: -2x-1
-@>Comment: Width: 2/3
-@>Comment: Offset: 16px
-@>
-
-#------------------------------------------------------------------------------
-Event ID: 035
-Event Name: Slope
-(X,Y): (035,067)
-
-Page #1
-Conditions
-None
-
-Autonomous Movement
-Type: Fixed
-Speed: 3: Slow
-Freq: 3: Low
-Options Enabled
-Move Animation
-Trigger: Event Touch
-
-List of Event Commands:
-@>Comment: Slope: 2x1
-@>Comment: Width: 0/3
-@>Comment: Offset: 16px
-@>
-
-#------------------------------------------------------------------------------
-Event ID: 036
-Event Name: Slope
-(X,Y): (035,066)
-
-Page #1
-Conditions
-None
-
-Autonomous Movement
-Type: Fixed
-Speed: 3: Slow
-Freq: 3: Low
-Options Enabled
-Move Animation
-Trigger: Event Touch
-
-List of Event Commands:
-@>Comment: Slope: 2x1
-@>Comment: Width: 1/3
-@>Comment: Offset: 16px
-@>
-
-#------------------------------------------------------------------------------
-Event ID: 037
-Event Name: Slope
-(X,Y): (035,065)
-
-Page #1
-Conditions
-None
-
-Autonomous Movement
-Type: Fixed
-Speed: 3: Slow
-Freq: 3: Low
-Options Enabled
-Move Animation
-Trigger: Event Touch
-
-List of Event Commands:
-@>Comment: Slope: 2x1
-@>Comment: Width: 2/3
-@>Comment: Offset: 16px
-@>
-
-#------------------------------------------------------------------------------
-Event ID: 038
-Event Name: Slope
-(X,Y): (042,067)
-
-Page #1
-Conditions
-None
-
-Autonomous Movement
-Type: Fixed
-Speed: 3: Slow
-Freq: 3: Low
-Options Enabled
-Move Animation
-Trigger: Event Touch
-
-List of Event Commands:
-@>Comment: Slope: 2x1
-@>Comment: Width: 0/3
-@>Comment: Offset: 16px
-@>
-
-#------------------------------------------------------------------------------
-Event ID: 039
-Event Name: Slope
-(X,Y): (042,066)
-
-Page #1
-Conditions
-None
-
-Autonomous Movement
-Type: Fixed
-Speed: 3: Slow
-Freq: 3: Low
-Options Enabled
-Move Animation
-Trigger: Event Touch
-
-List of Event Commands:
-@>Comment: Slope: 2x1
-@>Comment: Width: 1/3
-@>Comment: Offset: 16px
-@>
-
-#------------------------------------------------------------------------------
-Event ID: 040
-Event Name: Slope
-(X,Y): (042,065)
-
-Page #1
-Conditions
-None
-
-Autonomous Movement
-Type: Fixed
-Speed: 3: Slow
-Freq: 3: Low
-Options Enabled
-Move Animation
-Trigger: Event Touch
-
-List of Event Commands:
-@>Comment: Slope: 2x1
-@>Comment: Width: 2/3
-@>Comment: Offset: 16px
-@>
-
-#------------------------------------------------------------------------------
-Event ID: 041
-Event Name: Slope
-(X,Y): (023,053)
-
-Page #1
-Conditions
-None
-
-Autonomous Movement
-Type: Fixed
-Speed: 3: Slow
-Freq: 3: Low
-Options Enabled
-Move Animation
-Trigger: Event Touch
-
-List of Event Commands:
-@>Comment: Slope: 2x1
-@>Comment: Width: 0/3
-@>Comment: Offset: 16px
-@>
-
-#------------------------------------------------------------------------------
-Event ID: 042
-Event Name: Slope
-(X,Y): (023,052)
-
-Page #1
-Conditions
-None
-
-Autonomous Movement
-Type: Fixed
-Speed: 3: Slow
-Freq: 3: Low
-Options Enabled
-Move Animation
-Trigger: Event Touch
-
-List of Event Commands:
-@>Comment: Slope: 2x1
-@>Comment: Width: 1/3
-@>Comment: Offset: 16px
-@>
-
-#------------------------------------------------------------------------------
-Event ID: 043
-Event Name: Slope
-(X,Y): (023,051)
-
-Page #1
-Conditions
-None
-
-Autonomous Movement
-Type: Fixed
-Speed: 3: Slow
-Freq: 3: Low
-Options Enabled
-Move Animation
-Trigger: Event Touch
-
-List of Event Commands:
-@>Comment: Slope: 2x1
-@>Comment: Width: 2/3
-@>Comment: Offset: 16px
-@>
-
-#------------------------------------------------------------------------------
-Event ID: 044
-Event Name: Slope
-(X,Y): (017,052)
-
-Page #1
-Conditions
-None
-
-Autonomous Movement
-Type: Fixed
-Speed: 3: Slow
-Freq: 3: Low
-Options Enabled
-Move Animation
-Trigger: Event Touch
-
-List of Event Commands:
-@>Comment: Slope: 2x1
-@>Comment: Width: 0/3
-@>Comment: Offset: 16px
-@>
-
-#------------------------------------------------------------------------------
-Event ID: 045
-Event Name: Slope
-(X,Y): (017,051)
-
-Page #1
-Conditions
-None
-
-Autonomous Movement
-Type: Fixed
-Speed: 3: Slow
-Freq: 3: Low
-Options Enabled
-Move Animation
-Trigger: Event Touch
-
-List of Event Commands:
-@>Comment: Slope: 2x1
-@>Comment: Width: 1/3
-@>Comment: Offset: 16px
-@>
-
-#------------------------------------------------------------------------------
-Event ID: 046
-Event Name: Slope
-(X,Y): (017,050)
-
-Page #1
-Conditions
-None
-
-Autonomous Movement
-Type: Fixed
-Speed: 3: Slow
-Freq: 3: Low
-Options Enabled
-Move Animation
-Trigger: Event Touch
-
-List of Event Commands:
-@>Comment: Slope: 2x1
-@>Comment: Width: 2/3
-@>Comment: Offset: 16px
-@>
-
-#------------------------------------------------------------------------------
-Event ID: 047
-Event Name: Slope
-(X,Y): (058,022)
-
-Page #1
-Conditions
-None
-
-Autonomous Movement
-Type: Fixed
-Speed: 3: Slow
-Freq: 3: Low
-Options Enabled
-Move Animation
-Trigger: Event Touch
-
-List of Event Commands:
-@>Comment: Slope: -2x-1
-@>Comment: Width: 0/3
-@>Comment: Offset: 16px
-@>
-
-#------------------------------------------------------------------------------
-Event ID: 048
-Event Name: Slope
-(X,Y): (058,021)
-
-Page #1
-Conditions
-None
-
-Autonomous Movement
-Type: Fixed
-Speed: 3: Slow
-Freq: 3: Low
-Options Enabled
-Move Animation
-Trigger: Event Touch
-
-List of Event Commands:
-@>Comment: Slope: -2x-1
-@>Comment: Width: 1/3
-@>Comment: Offset: 16px
-@>
-
-#------------------------------------------------------------------------------
-Event ID: 049
-Event Name: Slope
-(X,Y): (058,020)
-
-Page #1
-Conditions
-None
-
-Autonomous Movement
-Type: Fixed
-Speed: 3: Slow
-Freq: 3: Low
-Options Enabled
-Move Animation
-Trigger: Event Touch
-
-List of Event Commands:
-@>Comment: Slope: -2x-1
-@>Comment: Width: 2/3
-@>Comment: Offset: 16px
-@>
-
-#------------------------------------------------------------------------------
-Event ID: 050
-Event Name: Slope
-(X,Y): (056,021)
-
-Page #1
-Conditions
-None
-
-Autonomous Movement
-Type: Fixed
-Speed: 3: Slow
-Freq: 3: Low
-Options Enabled
-Move Animation
-Trigger: Event Touch
-
-List of Event Commands:
-@>Comment: Slope: 2x1
-@>Comment: Width: 0/3
-@>Comment: Offset: 16px
-@>
-
-#------------------------------------------------------------------------------
-Event ID: 051
-Event Name: Slope
-(X,Y): (056,020)
-
-Page #1
-Conditions
-None
-
-Autonomous Movement
-Type: Fixed
-Speed: 3: Slow
-Freq: 3: Low
-Options Enabled
-Move Animation
-Trigger: Event Touch
-
-List of Event Commands:
-@>Comment: Slope: 2x1
-@>Comment: Width: 1/3
-@>Comment: Offset: 16px
-@>
-
-#------------------------------------------------------------------------------
-Event ID: 052
-Event Name: Slope
-(X,Y): (056,019)
-
-Page #1
-Conditions
-None
-
-Autonomous Movement
-Type: Fixed
-Speed: 3: Slow
-Freq: 3: Low
-Options Enabled
-Move Animation
-Trigger: Event Touch
-
-List of Event Commands:
-@>Comment: Slope: 2x1
-@>Comment: Width: 2/3
-@>Comment: Offset: 16px
-@>
-
-#------------------------------------------------------------------------------
-Event ID: 053
-Event Name: Slope
-(X,Y): (023,030)
-
-Page #1
-Conditions
-None
-
-Autonomous Movement
-Type: Fixed
-Speed: 3: Slow
-Freq: 3: Low
-Options Enabled
-Move Animation
-Trigger: Event Touch
-
-List of Event Commands:
-@>Comment: Slope: -2x-1
-@>Comment: Width: 0/3
-@>Comment: Offset: 16px
-@>
-
-#------------------------------------------------------------------------------
-Event ID: 054
-Event Name: Slope
-(X,Y): (023,029)
-
-Page #1
-Conditions
-None
-
-Autonomous Movement
-Type: Fixed
-Speed: 3: Slow
-Freq: 3: Low
-Options Enabled
-Move Animation
-Trigger: Event Touch
-
-List of Event Commands:
-@>Comment: Slope: -2x-1
-@>Comment: Width: 1/3
-@>Comment: Offset: 16px
-@>
-
-#------------------------------------------------------------------------------
-Event ID: 055
-Event Name: Slope
-(X,Y): (023,028)
-
-Page #1
-Conditions
-None
-
-Autonomous Movement
-Type: Fixed
-Speed: 3: Slow
-Freq: 3: Low
-Options Enabled
-Move Animation
-Trigger: Event Touch
-
-List of Event Commands:
-@>Comment: Slope: -2x-1
-@>Comment: Width: 2/3
-@>Comment: Offset: 16px
-@>
-
-#------------------------------------------------------------------------------
-Event ID: 056
-Event Name: Slope
-(X,Y): (021,029)
-
-Page #1
-Conditions
-None
-
-Autonomous Movement
-Type: Fixed
-Speed: 3: Slow
-Freq: 3: Low
-Options Enabled
-Move Animation
-Trigger: Event Touch
-
-List of Event Commands:
-@>Comment: Slope: 2x1
-@>Comment: Width: 0/3
-@>Comment: Offset: 16px
-@>
-
-#------------------------------------------------------------------------------
-Event ID: 057
-Event Name: Slope
-(X,Y): (021,028)
-
-Page #1
-Conditions
-None
-
-Autonomous Movement
-Type: Fixed
-Speed: 3: Slow
-Freq: 3: Low
-Options Enabled
-Move Animation
-Trigger: Event Touch
-
-List of Event Commands:
-@>Comment: Slope: 2x1
-@>Comment: Width: 1/3
-@>Comment: Offset: 16px
-@>
-
-#------------------------------------------------------------------------------
-Event ID: 058
-Event Name: Slope
-(X,Y): (021,027)
-
-Page #1
-Conditions
-None
-
-Autonomous Movement
-Type: Fixed
-Speed: 3: Slow
-Freq: 3: Low
-Options Enabled
-Move Animation
-Trigger: Event Touch
-
-List of Event Commands:
-@>Comment: Slope: 2x1
-@>Comment: Width: 2/3
-@>Comment: Offset: 16px
-@>
-
-#------------------------------------------------------------------------------
-Event ID: 059
-Event Name: Slope
-(X,Y): (046,022)
-
-Page #1
-Conditions
-None
-
-Autonomous Movement
-Type: Fixed
-Speed: 3: Slow
-Freq: 3: Low
-Options Enabled
-Move Animation
-Trigger: Event Touch
-
-List of Event Commands:
-@>Comment: Slope: 2x-1
-@>Comment: Width: 0/3
-@>Comment: Offset: 16px
-@>
-
-#------------------------------------------------------------------------------
-Event ID: 060
-Event Name: Slope
-(X,Y): (046,021)
-
-Page #1
-Conditions
-None
-
-Autonomous Movement
-Type: Fixed
-Speed: 3: Slow
-Freq: 3: Low
-Options Enabled
-Move Animation
-Trigger: Event Touch
-
-List of Event Commands:
-@>Comment: Slope: 2x-1
-@>Comment: Width: 1/3
-@>Comment: Offset: 16px
-@>
-
-#------------------------------------------------------------------------------
-Event ID: 061
-Event Name: Slope
-(X,Y): (046,020)
-
-Page #1
-Conditions
-None
-
-Autonomous Movement
-Type: Fixed
-Speed: 3: Slow
-Freq: 3: Low
-Options Enabled
-Move Animation
-Trigger: Event Touch
-
-List of Event Commands:
-@>Comment: Slope: 2x-1
-@>Comment: Width: 2/3
-@>Comment: Offset: 16px
-@>
-
-#------------------------------------------------------------------------------
-Event ID: 062
-Event Name: Slope
-(X,Y): (048,021)
-
-Page #1
-Conditions
-None
-
-Autonomous Movement
-Type: Fixed
-Speed: 3: Slow
-Freq: 3: Low
-Options Enabled
-Move Animation
-Trigger: Event Touch
-
-List of Event Commands:
-@>Comment: Slope: -2x1
-@>Comment: Width: 0/3
-@>Comment: Offset: 16px
-@>
-
-#------------------------------------------------------------------------------
-Event ID: 063
-Event Name: Slope
-(X,Y): (048,020)
-
-Page #1
-Conditions
-None
-
-Autonomous Movement
-Type: Fixed
-Speed: 3: Slow
-Freq: 3: Low
-Options Enabled
-Move Animation
-Trigger: Event Touch
-
-List of Event Commands:
-@>Comment: Slope: -2x1
-@>Comment: Width: 1/3
-@>Comment: Offset: 16px
-@>
-
-#------------------------------------------------------------------------------
-Event ID: 064
-Event Name: Slope
-(X,Y): (048,019)
-
-Page #1
-Conditions
-None
-
-Autonomous Movement
-Type: Fixed
-Speed: 3: Slow
-Freq: 3: Low
-Options Enabled
-Move Animation
-Trigger: Event Touch
-
-List of Event Commands:
-@>Comment: Slope: -2x1
-@>Comment: Width: 2/3
-@>Comment: Offset: 16px
-@>
-
-#------------------------------------------------------------------------------
 
 #==============================================================================
 Map ID: 077
@@ -30944,6 +29587,7 @@ Map ID: 078
 Map Name: Rock Tunnel
 Tileset: 006: Caves
 Width: 62, Height: 56
+Auto-Change BGM: W-014. Caves of Kanto
 
 #------------------------------------------------------------------------------
 Event ID: 001
@@ -34559,7 +33203,7 @@ Move Animation
 Trigger: Action Button
 
 List of Event Commands:
-@>Text: * This laptop looks like its running server software. 
+@>Text: * This laptop looks like it's running server software. 
  :    : Best not to mess with it.
 @>
 
@@ -37093,7 +35737,6 @@ List of Event Commands:
  @>Control Variables: [0110: Plot Control Variable] = 1
  @>Change Screen Color Tone: (0,0,0,0), @6
  @>Control Self Switch: B =ON
- @>Call Common Event: Journal Update
  @>Script: completeQuest(:Quest8)
  :       : activateQuest(:Quest9)
  @>Exit Event Processing
@@ -37171,7 +35814,6 @@ List of Event Commands:
  @>Control Variables: [0110: Plot Control Variable] = 1
  @>Change Screen Color Tone: (0,0,0,0), @6
  @>Control Self Switch: B =ON
- @>Call Common Event: Journal Update
  @>Script: completeQuest(:Quest8)
  :       : activateQuest(:Quest9)
  @>Exit Event Processing
@@ -38000,7 +36642,7 @@ Page #1
 Conditions
 None
 
-Graphic: Pokemon 02
+Graphic: OW_FEAROW
 
 Autonomous Movement
 Type: Random
@@ -38008,9 +36650,12 @@ Speed: 3: Slow
 Freq: 3: Low
 Options Enabled
 Move Animation
+Stop Animation
 Trigger: Action Button
 
 List of Event Commands:
+@>Script: Pokemon.play_cry(:FEAROW)
+@>Wait: 10 frame(s)
 @>
 
 #------------------------------------------------------------------------------
@@ -38068,7 +36713,7 @@ List of Event Commands:
 @>Text: Oh, is that you granddaughter? Did you bring me my 
  :    : coffee?
 @>Text: Wait... you're not her, you're someone else!
-@>Text: You shouldn't be here, this is someone elses house! 
+@>Text: You shouldn't be here, this is someone else's house! 
  :    : How dare you trespass!
 @>
 
@@ -46256,6 +44901,7 @@ Speed: 3: Slow
 Freq: 3: Low
 Options Enabled
 Move Animation
+Direction Fix
 Trigger: Action Button
 
 List of Event Commands:
@@ -46278,7 +44924,7 @@ List of Event Commands:
   @>
  : When [Gym Mechanics]
   @>Text: Brock has opted to keep him gym simple for the sake
-   :    : of beginning chalengers to the Gym Challenge.
+   :    : of beginning challengers to the Gym Challenge.
   @>Text: Despite constant criticisms that his Gym doesn't stand
    :    : out when compared to other gyms, Brock has remained
    :    : resolute in his decision.
@@ -46418,7 +45064,7 @@ Move Animation
 Trigger: Action Button
 
 List of Event Commands:
-@>Text: Pewter Gym and Pewter Mseum have an
+@>Text: Pewter Gym and Pewter Museum have an
  :    : extremely symbiotic relationship. I serve as a liaison
  :    : for both!
 @>
@@ -54781,7 +53427,7 @@ Trigger: Event Touch
 List of Event Commands:
 @>Script: TrainerIntro2(:LASS)
 @>Script: pbNoticePlayer(get_character(0))
-@>Text: You're interupting my study session! I'll just have to use beating you as a new mnemonic!
+@>Text: You're interrupting my study session! I'll just have to use beating you as a new mnemonic!
 @>Conditional Branch: Script: pbTrainerBattle(:LASS,"Lizzie",_I("Would this be an example of an imaginary number?"))
  @>Control Self Switch: A =ON
  @>
@@ -56241,7 +54887,7 @@ Trigger: Action Button
 
 List of Event Commands:
 @>Text: Kanto Region Gym Leaders
-@>Text: Which section do you want to read from?\ch[1,-1,Pewter City,Cerulean City,Vermilion City,Celadon City,Fuchsia City,Saffron City,Cinnabar Island,Viridian 
+@>Text: Which section do you want to read from?\ch[1,-1,Pewter City,Cerulean City,Vermilion City,Celadon City,Fuschia City,Saffron City,Cinnabar Island,Viridian 
  :    : City,Saffron Dojo,Lavender Town]
 @>Conditional Branch: Variable [0001: Temp Pokemon Choice] == -1
  @>
@@ -56249,59 +54895,59 @@ List of Event Commands:
 @>Conditional Branch: Variable [0001: Temp Pokemon Choice] == 0
  @>Text: Pewter City Gym\nLeader: Brock\nBadge: Boulder Badge\nType: Earth and Rock
  @>Text: Beating the Pewter Gym gives you the ability
-  :    : to use the HM Move, Flash, outside of battle.
+  :    : to use the Field Move, Flash, outside of battle.
  @>
 : Branch End
 @>Conditional Branch: Variable [0001: Temp Pokemon Choice] == 1
- @>Text: Cerulean City Gym\nLeader: Misty\nBadge: Cascade Badge\nType: Water
+ @>Text: Cerulean City Gym\nLeader: Misty\nBadge: Cascade Badge\nType: Water and Hydro
  @>Text: Beating the Cerulean Gym gives you the ability
-  :    : to use the HM Move, Cut, outside of battle.
+  :    : to use the Field Move, Cut, outside of battle.
  @>
 : Branch End
 @>Conditional Branch: Variable [0001: Temp Pokemon Choice] == 2
  @>Text: Vermilion City Gym\nLeader: Lt. Surge\nBadge: Thunder Badge\nType: Wind and Electric
  @>Text: Beating the Vermilion Gym gives you the ability
-  :    : to use the HM Move, Fly, outside of battle.
+  :    : to use the Field Move, Fly, outside of battle.
  @>
 : Branch End
 @>Conditional Branch: Variable [0001: Temp Pokemon Choice] == 3
  @>Text: Celadon City Gym\nLeader: Erika\nBadge: Rainbow Badge\nType: Nature and Grass
  @>Text: Beating the Celadon Gym gives you the ability
-  :    : to use the HM Move, Strength, outside of battle.
+  :    : to use the Field Move, Strength, outside of battle.
  @>
 : Branch End
 @>Conditional Branch: Variable [0001: Temp Pokemon Choice] == 4
- @>Text: Fuchisa City Gym\nLeader: Janine\nBadge: Soul Badge\nType: Miasma and Poison
+ @>Text: Fuschia City Gym\nLeader: Janine\nBadge: Soul Badge\nType: Miasma and Poison
  @>Text: Beating the Fuchisa Gym gives you the ability
-  :    : to use the HM Move, Surf, outside of battle.
+  :    : to use the Field Move, Surf, outside of battle.
  @>
 : Branch End
 @>Conditional Branch: Variable [0001: Temp Pokemon Choice] == 5
  @>Text: Saffron City Gym\nLeader: Sabrina\nBadge: Marsh Badge\nType: Reason and Psychic
  @>Text: Beating the Saffron Gym gives you the ability
-  :    : to use the HM Move, Rock Smash, outside of battle.
+  :    : to use the Field Move, Rock Smash, outside of battle.
  @>
 : Branch End
 @>Conditional Branch: Variable [0001: Temp Pokemon Choice] == 6
- @>Text: Cinnabar Island Gym\nLeader: Blaine\nBadge: Volcano Badge\nType: Fire
+ @>Text: Cinnabar Island Gym\nLeader: Blaine\nBadge: Volcano Badge\nType: Fire and Pyro
  @>
 : Branch End
 @>Conditional Branch: Variable [0001: Temp Pokemon Choice] == 7
  @>Text: Viridian City Gym\nLeader: Green\nBadge: Earth Badge\nType: Variety
  @>Text: Beating the Viridian Gym gives you the ability
-  :    : to use the HM Move, Waterfall, outside of battle.
+  :    : to use the Field Move, Waterfall, outside of battle.
  @>
 : Branch End
 @>Conditional Branch: Variable [0001: Temp Pokemon Choice] == 8
  @>Text: Saffron Fighting Dojo\nLeader: Buront\nType: Dream and Fighting
- @>Text: This is currently not an officially recognised gym part of
-  :    : the Kanto Region Gym Circuit.
+ @>Text: This gym is currently not recognized as an official part of the 
+  :    : Kanto Region Gym Circuit.
  @>
 : Branch End
 @>Conditional Branch: Variable [0001: Temp Pokemon Choice] == 9
- @>Text: Lavender Town Gym\nLeader: Selene\nType: Ghost
- @>Text: This is currently not an officially recognised gym part of
-  :    : the Kanto Region Gym Circuit.
+ @>Text: Lavender Town Gym\nLeader: Selene\nType: Ghost and Nether
+ @>Text: This gym is currently not recognized as an official part of the 
+  :    : Kanto Region Gym Circuit.
  @>
 : Branch End
 @>
@@ -56378,43 +55024,45 @@ List of Event Commands:
  @>
 : Branch End
 @>Conditional Branch: Variable [0001: Temp Pokemon Choice] == 0
- @>Text: Violet City Gym\nLeader: Falkner\nBadge: Zephyr Badge\nType: Flying
+ @>Text: Violet City Gym\nLeader: Falkner\nBadge: Zephyr Badge\nType: Flying and Aero
  @>Text: Beating the Violet Gym gives you the ability
-  :    : to use the HM Move, Flash, outside of battle.
+  :    : to use the Field Move, Flash, outside of battle.
  @>
 : Branch End
 @>Conditional Branch: Variable [0001: Temp Pokemon Choice] == 1
  @>Text: Azalea City Gym\nLeader: Bugsy\nBadge: Hive Badge\nType: Nature and Bug
  @>Text: Beating the Cerulean Gym gives you the ability
-  :    : to use the HM Move, Cut, outside of battle.
+  :    : to use the Field Move, Cut, outside of battle.
  @>
 : Branch End
 @>Conditional Branch: Variable [0001: Temp Pokemon Choice] == 2
  @>Text: Goldenrod City Gym\nLeader: Whitney\nBadge: Plain Badge\nType: Heart and Normal
  @>Text: Beating the Goldenrod Gym gives you the ability
-  :    : to use the HM Move, Strength, outside of battle.
+  :    : to use the Field Move, Strength, outside of battle.
  @>
 : Branch End
 @>Conditional Branch: Variable [0001: Temp Pokemon Choice] == 3
- @>Text: Ecruteak City Gym\nLeader: Morty\nBadge: Fog Badge\nType: Ghost
+ @>Text: Ecruteak City Gym\nLeader: Morty\nBadge: Fog Badge\nType: Ghost and Nether
  @>Text: Beating the Ecruteak Gym gives you the ability
-  :    : to use the HM Move, Surf, outside of battle.
+  :    : to use the Field Move, Surf, outside of battle.
  @>
 : Branch End
 @>Conditional Branch: Variable [0001: Temp Pokemon Choice] == 4
  @>Text: Cianwood City Gym\nLeader: Chuck\nBadge: Storm Badge\nType: Dream and Fighting
  @>Text: Beating the Cianwood Gym gives you the ability
-  :    : to use the HM Move, Fly, outside of battle.
+  :    : to use the Field Move, Fly, outside of battle.
  @>
 : Branch End
 @>Conditional Branch: Variable [0001: Temp Pokemon Choice] == 5
- @>Text: Olivine City Gym\nLeader: Jasmine\nBadge: Mineral Badge\nType: Steel
+ @>Text: Olivine City Gym\nLeader: Jasmine\nBadge: Mineral Badge\nType: Steel and Metal
  @>Text: Beating the Olivine Gym gives you the ability
-  :    : to use the HM Move, Rock Smash, outside of battle.
+  :    : to use the Field Move, Rock Smash, outside of battle.
  @>
 : Branch End
 @>Conditional Branch: Variable [0001: Temp Pokemon Choice] == 6
- @>Text: Mahogany Town Gym\nLeader: Pryce\nBadge: Glacier Badge\nType: Ice
+ @>Text: Mahogany Town Gym\nLeader: Pryce\nBadge: Glacier Badge\nType: Ice and Cryo
+ @>Text: Beating the Mahogany Gym gives you the ability
+  :    : to use the Field Move, Whirlpool, outside of battle.
  @>Text: Addendum 1: Pryce is no longer the Gym Leader of Mahogany
   :    : Gym. While a proper replacement is found, Glacia of the Hoenn
   :    : Elite Four has taken his spot.
@@ -56423,7 +55071,7 @@ List of Event Commands:
 @>Conditional Branch: Variable [0001: Temp Pokemon Choice] == 7
  @>Text: Blackthorn City Gym\nLeader: Clair\nBadge: Rising Badge\nType: Faith and Dragon
  @>Text: Beating the Viridian Gym gives you the ability
-  :    : to use the HM Move, Waterfall, outside of battle.
+  :    : to use the Field Move, Waterfall, outside of battle.
  @>
 : Branch End
 @>
@@ -60386,7 +59034,6 @@ List of Event Commands:
  @>Text: \xn[Bill]You will need the badge from the Cerulean Gym to 
   :    : use them, however.
  @>Script: advanceQuestToStage(:Quest103, 2)
- @>Call Common Event: Journal Update
  @>
 : Branch End
 @>Set Move Route: Player
@@ -60453,7 +59100,6 @@ List of Event Commands:
  @>Text: \xn[Bill]You will need the badge from the Cerulean Gym to 
   :    : use them, however.
  @>Script: advanceQuestToStage(:Quest103,2)
- @>Call Common Event: Journal Update
  @>
 : Else
  @>Text: \xn[Bill]A pen pal of mine is helping with getting the machine
@@ -61265,7 +59911,7 @@ List of Event Commands:
 :       : :OLDGATEAU,:CASTELIACONE,
 :       : :RARECANDY,:SWEETHEART,
 :       : :FRESHWATER,:SODAPOP,
-:       : :LEMONADE,:MOOMOOMILK
+:       : :LEMONADE,:MOOMOOMILK,
 :       : :ESCAPEROPE,:REPEL
 :       : ])
 @>
@@ -61845,7 +60491,7 @@ List of Event Commands:
  @>Play SE: 'Door exit', 100, 100
  @>Change Screen Color Tone: (-255,-255,-255,0), @6
  @>Wait: 8 frame(s)
- @>Transfer Player:[038: Vermillion City], (043,013), No Fade
+ @>Transfer Player:[038: Vermilion City], (043,013), No Fade
  @>Change Screen Color Tone: (0,0,0,0), @6
  @>
 : Branch End
@@ -61877,7 +60523,7 @@ List of Event Commands:
  @>Play SE: 'Door exit', 100, 100
  @>Change Screen Color Tone: (-255,-255,-255,0), @6
  @>Wait: 8 frame(s)
- @>Transfer Player:[038: Vermillion City], (043,013), No Fade
+ @>Transfer Player:[038: Vermilion City], (043,013), No Fade
  @>Change Screen Color Tone: (0,0,0,0), @6
  @>
 : Branch End
@@ -63794,7 +62440,7 @@ List of Event Commands:
  @>Play SE: 'Door exit', 100, 100
  @>Change Screen Color Tone: (-255,-255,-255,0), @6
  @>Wait: 8 frame(s)
- @>Transfer Player:[038: Vermillion City], (043,013), No Fade
+ @>Transfer Player:[038: Vermilion City], (043,013), No Fade
  @>Change Screen Color Tone: (0,0,0,0), @6
  @>
 : Branch End
@@ -65608,7 +64254,7 @@ List of Event Commands:
  @>Play SE: 'Door exit', 100, 100
  @>Change Screen Color Tone: (-255,-255,-255,0), @6
  @>Wait: 8 frame(s)
- @>Transfer Player:[038: Vermillion City], (020,009), No Fade
+ @>Transfer Player:[038: Vermilion City], (020,009), No Fade
  @>Change Screen Color Tone: (0,0,0,0), @6
  @>
 : Branch End
@@ -66212,9 +64858,11 @@ Speed: 3: Slow
 Freq: 3: Low
 Options Enabled
 Move Animation
+Direction Fix
 Trigger: Action Button
 
 List of Event Commands:
+@>Text: They seem to be playing together.
 @>
 
 #------------------------------------------------------------------------------
@@ -66264,9 +64912,11 @@ Speed: 3: Slow
 Freq: 3: Low
 Options Enabled
 Move Animation
+Direction Fix
 Trigger: Action Button
 
 List of Event Commands:
+@>Text: They seem to be playing together.
 @>
 
 #------------------------------------------------------------------------------
@@ -66457,7 +65107,7 @@ List of Event Commands:
  @>Play SE: 'Door exit', 100, 100
  @>Change Screen Color Tone: (-255,-255,-255,0), @6
  @>Wait: 8 frame(s)
- @>Transfer Player:[038: Vermillion City], (014,009), No Fade
+ @>Transfer Player:[038: Vermilion City], (014,009), No Fade
  @>Change Screen Color Tone: (0,0,0,0), @6
  @>
 : Branch End
@@ -66489,7 +65139,7 @@ List of Event Commands:
  @>Play SE: 'Door exit', 100, 100
  @>Change Screen Color Tone: (-255,-255,-255,0), @6
  @>Wait: 8 frame(s)
- @>Transfer Player:[038: Vermillion City], (024,020), No Fade
+ @>Transfer Player:[038: Vermilion City], (024,020), No Fade
  @>Change Screen Color Tone: (0,0,0,0), @6
  @>
 : Branch End
@@ -66521,7 +65171,7 @@ List of Event Commands:
  @>Play SE: 'Door exit', 100, 100
  @>Change Screen Color Tone: (-255,-255,-255,0), @6
  @>Wait: 8 frame(s)
- @>Transfer Player:[038: Vermillion City], (033,028), No Fade
+ @>Transfer Player:[038: Vermilion City], (033,028), No Fade
  @>Change Screen Color Tone: (0,0,0,0), @6
  @>
 : Branch End
@@ -66553,7 +65203,7 @@ List of Event Commands:
  @>Play SE: 'Door exit', 100, 100
  @>Change Screen Color Tone: (-255,-255,-255,0), @6
  @>Wait: 8 frame(s)
- @>Transfer Player:[038: Vermillion City], (017,020), No Fade
+ @>Transfer Player:[038: Vermilion City], (017,020), No Fade
  @>Change Screen Color Tone: (0,0,0,0), @6
  @>
 : Branch End
@@ -66958,7 +65608,7 @@ List of Event Commands:
  @>Play SE: 'Door exit', 100, 100
  @>Change Screen Color Tone: (-255,-255,-255,0), @6
  @>Wait: 8 frame(s)
- @>Transfer Player:[038: Vermillion City], (033,020), No Fade
+ @>Transfer Player:[038: Vermilion City], (033,020), No Fade
  @>Change Screen Color Tone: (0,0,0,0), @6
  @>
 : Branch End
@@ -66968,7 +65618,7 @@ List of Event Commands:
 
 #==============================================================================
 Map ID: 243
-Map Name: Vermillion Harbor
+Map Name: Vermilion Harbor
 Tileset: 003: Inside
 Width: 29, Height: 20
 Auto-Change BGM: 009. Nostalgic Blood of the East ~ Old World
@@ -67066,7 +65716,7 @@ List of Event Commands:
 @>Play SE: 'Exit Door', 80, 100
 @>Change Screen Color Tone: (-255,-255,-255,0), @6
 @>Wait: 6 frame(s)
-@>Transfer Player:[038: Vermillion City], (028,038), No Fade
+@>Transfer Player:[038: Vermilion City], (028,038), No Fade
 @>Change Screen Color Tone: (0,0,0,0), @6
 @>
 
@@ -67327,7 +65977,7 @@ List of Event Commands:
  @>Play SE: 'Door exit', 100, 100
  @>Change Screen Color Tone: (-255,-255,-255,0), @6
  @>Wait: 8 frame(s)
- @>Transfer Player:[038: Vermillion City], (019,029), No Fade
+ @>Transfer Player:[038: Vermilion City], (019,029), No Fade
  @>Change Screen Color Tone: (0,0,0,0), @6
  @>
 : Branch End
@@ -68740,6 +67390,54 @@ List of Event Commands:
 @>
 
 #------------------------------------------------------------------------------
+Event ID: 036
+Event Name: Counter(5)
+(X,Y): (021,043)
+
+Page #1
+Conditions
+None
+
+Graphic: Object ball
+
+Autonomous Movement
+Type: Fixed
+Speed: 3: Slow
+Freq: 3: Low
+Options Enabled
+Move Animation
+Trigger: Event Touch
+
+List of Event Commands:
+@>Set Move Route: Player
+ :              : $>Always on Top OFF
+@>
+
+#------------------------------------------------------------------------------
+Event ID: 037
+Event Name: Counter(5)
+(X,Y): (021,032)
+
+Page #1
+Conditions
+None
+
+Graphic: Object ball
+
+Autonomous Movement
+Type: Fixed
+Speed: 3: Slow
+Freq: 3: Low
+Options Enabled
+Move Animation
+Trigger: Event Touch
+
+List of Event Commands:
+@>Set Move Route: Player
+ :              : $>Always on Top OFF
+@>
+
+#------------------------------------------------------------------------------
 
 #==============================================================================
 Map ID: 245
@@ -69906,7 +68604,7 @@ Map ID: 248
 Map Name: Rock Tunnel
 Tileset: 006: Caves
 Width: 62, Height: 56
-Auto-Change BGM: 019. The Cave People No Longer Enter
+Auto-Change BGM: W-014. Caves of Kanto
 
 #------------------------------------------------------------------------------
 Event ID: 001
@@ -70882,109 +69580,9 @@ Trigger: Action Button
 
 List of Event Commands:
 @>Conditional Branch: Player is facing Up
- @>Text: Here lies my hopes and dreams\n
-  :    : Second only to my loss of innocence
+ @>Text: Here lies my hopes and dreams
+  :    : \nSecond only to my loss of innocence
  @>Conditional Branch: Variable [0120: Graveyard Variable] == 1
-  @>Control Variables: [0120: Graveyard Variable] += 1
-  @>
- : Else
-  @>Control Variables: [0120: Graveyard Variable] = 0
-  @>
- : Branch End
- @>
-: Branch End
-@>
-
-Page #2
-Conditions
-Variable 0001: Temp Pokemon Choice is 2 or above
-
-Autonomous Movement
-Type: Fixed
-Speed: 3: Slow
-Freq: 3: Low
-Options Enabled
-Move Animation
-Trigger: Action Button
-
-List of Event Commands:
-@>Conditional Branch: Player is facing Up
- @>Text: Here lies my hopes and dreams\n
-  :    : Second only to my loss of innocence
- @>
-: Branch End
-@>
-
-#------------------------------------------------------------------------------
-Event ID: 005
-Event Name: EV005
-(X,Y): (037,036)
-
-Page #1
-Conditions
-None
-
-Autonomous Movement
-Type: Fixed
-Speed: 3: Slow
-Freq: 3: Low
-Options Enabled
-Move Animation
-Trigger: Action Button
-
-List of Event Commands:
-@>Conditional Branch: Player is facing Up
- @>Text: Rest in Peace\n
-  :    : S. W.
- @>Text: He Was Number One\n#1
- @>Control Variables: [0120: Graveyard Variable] += 1
- @>
-: Branch End
-@>
-
-Page #2
-Conditions
-Variable 0001: Temp Pokemon Choice is 1 or above
-
-Autonomous Movement
-Type: Fixed
-Speed: 3: Slow
-Freq: 3: Low
-Options Enabled
-Move Animation
-Trigger: Action Button
-
-List of Event Commands:
-@>Conditional Branch: Player is facing Up
- @>Text: Rest in Peace\n
-  :    : S. W.
- @>Text: He Was Number One\n#1
- @>
-: Branch End
-@>
-
-#------------------------------------------------------------------------------
-Event ID: 006
-Event Name: EV006
-(X,Y): (024,040)
-
-Page #1
-Conditions
-None
-
-Autonomous Movement
-Type: Fixed
-Speed: 3: Slow
-Freq: 3: Low
-Options Enabled
-Move Animation
-Trigger: Action Button
-
-List of Event Commands:
-@>Conditional Branch: Player is facing Up
- @>Text: In honor of Cerberus the Dodrio\n
-  :    : You did it you magnificent bird, you flew like none else could
- @>Conditional Branch: Variable [0120: Graveyard Variable] == 2
   @>Control Variables: [0120: Graveyard Variable] += 1
   @>
  : Else
@@ -71009,8 +69607,106 @@ Trigger: Action Button
 
 List of Event Commands:
 @>Conditional Branch: Player is facing Up
- @>Text: In honor of Cerberus the Dodrio\n
-  :    : You did it you magnificent bird, you flew like none else could
+ @>Text: Here lies my hopes and dreams
+  :    : \nSecond only to my loss of innocence
+ @>
+: Branch End
+@>
+
+#------------------------------------------------------------------------------
+Event ID: 005
+Event Name: EV005
+(X,Y): (037,036)
+
+Page #1
+Conditions
+None
+
+Autonomous Movement
+Type: Fixed
+Speed: 3: Slow
+Freq: 3: Low
+Options Enabled
+Move Animation
+Trigger: Action Button
+
+List of Event Commands:
+@>Conditional Branch: Player is facing Up
+ @>Text: Rest in Peace\n\nS. W.
+ @>Text: He Was Number One\n\n#1
+ @>Control Variables: [0120: Graveyard Variable] += 1
+ @>
+: Branch End
+@>
+
+Page #2
+Conditions
+Variable 0120: Graveyard Variable is 1 or above
+
+Autonomous Movement
+Type: Fixed
+Speed: 3: Slow
+Freq: 3: Low
+Options Enabled
+Move Animation
+Trigger: Action Button
+
+List of Event Commands:
+@>Conditional Branch: Player is facing Up
+ @>Text: Rest in Peace\n\nS. W.
+ @>Text: He Was Number One\n\n#1
+ @>
+: Branch End
+@>
+
+#------------------------------------------------------------------------------
+Event ID: 006
+Event Name: EV006
+(X,Y): (024,040)
+
+Page #1
+Conditions
+None
+
+Autonomous Movement
+Type: Fixed
+Speed: 3: Slow
+Freq: 3: Low
+Options Enabled
+Move Animation
+Trigger: Action Button
+
+List of Event Commands:
+@>Conditional Branch: Player is facing Up
+ @>Text: In honor of Cerberus the Dodrio
+  :    : \nYou did it you magnificent bird, you flew like none else could
+ @>Conditional Branch: Variable [0120: Graveyard Variable] == 2
+  @>Control Variables: [0120: Graveyard Variable] += 1
+  @>
+ : Else
+  @>Control Variables: [0120: Graveyard Variable] = 0
+  @>
+ : Branch End
+ @>
+: Branch End
+@>
+
+Page #2
+Conditions
+Variable 0120: Graveyard Variable is 3 or above
+
+Autonomous Movement
+Type: Fixed
+Speed: 3: Slow
+Freq: 3: Low
+Options Enabled
+Move Animation
+Trigger: Action Button
+
+List of Event Commands:
+@>Conditional Branch: Player is facing Up
+ @>Text: In honor of Cerberus the Dodrio
+  :    : \nYou did it you magnificent bird, you flew like none else could
  @>
 : Branch End
 @>
@@ -71907,8 +70603,7 @@ Trigger: Action Button
 
 List of Event Commands:
 @>Conditional Branch: Player is facing Up
- @>Text: Rest In Peace\n
-  :    : Wake Up Angry
+ @>Text: Rest In Peace\n\nWake Up Angry
  @>
 : Branch End
 @>
@@ -71982,8 +70677,7 @@ Trigger: Action Button
 
 List of Event Commands:
 @>Conditional Branch: Player is facing Up
- @>Text: Even in Death,\n
-  :    : #Deadbeat forever
+ @>Text: Even in Death,\n\n#Deadbeat forever
  @>
 : Branch End
 @>
@@ -77879,1131 +76573,6 @@ Move Animation
 Trigger: Action Button
 
 List of Event Commands:
-@>
-
-#------------------------------------------------------------------------------
-
-#==============================================================================
-Map ID: 261
-Map Name: Vermilion City Gym
-Tileset: 014: Gyms
-Width: 20, Height: 20
-Auto-Change BGM: 014. Cosmic Mind ~ Emotional Skyscraper
-
-#------------------------------------------------------------------------------
-Event ID: 001
-Event Name: EV001
-(X,Y): (009,002)
-
-Page #1
-Conditions
-None
-
-Graphic: trchar061
-
-Autonomous Movement
-Type: Fixed
-Speed: 3: Slow
-Freq: 3: Low
-Options Enabled
-Move Animation
-Trigger: Action Button
-
-List of Event Commands:
-@>Text: Woah there! You made it past the electrical barrier I
- :    : set up? You must have disabled the Gym's Power,
- :    : then!
-@>Text: That means you're here to challenge me then! I
- :    : like your style, kiddo. I can see you'll resort to
- :    : whatever it takes to get to your goal.
-@>Text: My name is Lt. Surge, leader of Vermilion Gym.
- :    : Back in the war, relying on my electric Pokémon
- :    : helped me out big time.
-@>Text: And even now, with these new Wind-Type puppets,
- :    : I'm still able to send my victims into paralysis!
-@>Text: You think you have what it takes to break my circuits?
- :    : Hah! You have spunk kid, I'll give you that! But let's see
- :    : how well you fare in actual combat!
-@>Conditional Branch: Switch [0134] == ON
- @>Conditional Branch: Script: pbTrainerBattle(PBTrainers::LEADER_Surge,"Lt. Surge",_I("Now that was a shocking turn of events! Not bad at all, Kid!"),false,3)
-  @>
- : Else
-  @>Exit Event Processing
-  @>
- : Branch End
- @>
-: Else
- @>Conditional Branch: Switch [0129] == ON
-  @>Conditional Branch: Script: pbTrainerBattle(PBTrainers::LEADER_Surge,"Lt. Surge",_I("Now that was a shocking turn of events! Not bad at all, Kid!"),false,2)
-   @>
-  : Else
-   @>Exit Event Processing
-   @>
-  : Branch End
-  @>
- : Else
-  @>Conditional Branch: Script: pbTrainerBattle(PBTrainers::LEADER_Surge,"Lt. Surge",_I("Now that was a shocking turn of events! Not bad at all, Kid!"),false,1)
-   @>
-  : Else
-   @>Exit Event Processing
-   @>
-  : Branch End
-  @>
- : Branch End
- @>
-: Branch End
-@>Text: Lt. Surge: That battle left me powered up for another one!
- :    : I'd challenge you to a rematch if my puppets weren't already
- :    : fainted!
-@>Text: You're tough stuff kid! Have this Thunder Badge, proof
- :    : that you beat this old Lieutenant!
-@>Text: \me[003. Fanfare.ogg]\PN earned the Thunder Badge!\wt[80]
-@>Script: $Trainer.badges[2]=true
-@>Control Switches: [0125] = ON
-@>Text: Lt. Surge: To the victor go the spoils of war.
- :    : I want you to take this as well.
-@>Script: Kernel.pbReceiveItem(PBItems::G18TM24)
-@>Text: Lt. Surge: That SC is Thunderbolt. It harnesses the 
- :    : inner electricity within a puppet, and brings forth a 
- :    : deadly bolt of lightning to strike down foes.
-@>Text: A move utilized by the best, it could even leave
- :    : the foe paralyzed and unable to move!
-@>
-
-Page #2
-Conditions
-Switch 0125:  is ON
-
-Graphic: trchar061
-
-Autonomous Movement
-Type: Fixed
-Speed: 3: Slow
-Freq: 3: Low
-Options Enabled
-Move Animation
-Trigger: Action Button
-
-List of Event Commands:
-@>Text: Most people don't like to talk about the wars this
- :    : country has seen. They were some of the most
- :    : brutal bloodsheds around.
-@>Text: Pokemon and Trainers used as weapons, it was
- :    : a violent sight... I don't think you're ready to hear
- :    : such stories yet, kiddo!
-@>
-
-#------------------------------------------------------------------------------
-Event ID: 002
-Event Name: Trainer(3)
-(X,Y): (017,010)
-
-Page #1
-Conditions
-None
-
-Graphic: trchar009
-
-Autonomous Movement
-Type: Fixed
-Speed: 3: Slow
-Freq: 3: Low
-Options Enabled
-Move Animation
-Trigger: Event Touch
-
-List of Event Commands:
-@>Script: pbTrainerIntro(:ROCKER)
-@>Script: Kernel.pbNoticePlayer(get_character(0))
-@>Text: This gym is the perfect place for someone like me! All the energy here just revs me up!
-@>Conditional Branch: Script: pbTrainerBattle(PBTrainers::ROCKER,"Martain",_I("Woah, brakes applied."),false,0)
- @>Control Self Switch: A =ON
- @>
-: Branch End
-@>Script: pbTrainerEnd
-@>
-
-Page #2
-Conditions
-Self Switch A is ON
-
-Graphic: trchar009
-
-Autonomous Movement
-Type: Fixed
-Speed: 3: Slow
-Freq: 3: Low
-Options Enabled
-Move Animation
-Trigger: Action Button
-
-List of Event Commands:
-@>Text: I'm gonna have to watch out for your name in 
- :    : the future, you're going places!
-@>
-
-Page #3
-Conditions
-Switch 0125:  is ON
-
-Graphic: trchar009
-
-Autonomous Movement
-Type: Fixed
-Speed: 3: Slow
-Freq: 3: Low
-Options Enabled
-Move Animation
-Trigger: Action Button
-
-List of Event Commands:
-@>Text: I'm gonna have to watch out for your name in 
- :    : the future, you're going places!
-@>
-
-#------------------------------------------------------------------------------
-Event ID: 003
-Event Name: Trainer(3)
-(X,Y): (001,010)
-
-Page #1
-Conditions
-None
-
-Graphic: trchar014
-
-Autonomous Movement
-Type: Fixed
-Speed: 3: Slow
-Freq: 3: Low
-Options Enabled
-Move Animation
-Trigger: Event Touch
-
-List of Event Commands:
-@>Script: pbTrainerIntro(:ENGINEER)
-@>Script: Kernel.pbNoticePlayer(get_character(0))
-@>Text: Oh I'm not a gym trainer, I just keep an eye on the gym's electrical usage levels.
- :    : That doesn't mean I don't know how to battle, though!
-@>Conditional Branch: Script: pbTrainerBattle(PBTrainers::ENGINEER,"Elroy",_I("Aww, I lost."),false,0)
- @>Control Self Switch: A =ON
- @>
-: Branch End
-@>Script: pbTrainerEnd
-@>
-
-Page #2
-Conditions
-Self Switch A is ON
-
-Graphic: trchar014
-
-Autonomous Movement
-Type: Fixed
-Speed: 3: Slow
-Freq: 3: Low
-Options Enabled
-Move Animation
-Trigger: Action Button
-
-List of Event Commands:
-@>Text: I'm the chief electrician for the city. Everything that you see here had to be approved by me, first!
-@>
-
-Page #3
-Conditions
-Switch 0125:  is ON
-
-Graphic: trchar014
-
-Autonomous Movement
-Type: Fixed
-Speed: 3: Slow
-Freq: 3: Low
-Options Enabled
-Move Animation
-Trigger: Action Button
-
-List of Event Commands:
-@>Text: I'm the chief electrician for the city. Everything that you see here had to be approved by me, first!
-@>
-
-#------------------------------------------------------------------------------
-Event ID: 004
-Event Name: Trainer(3)
-(X,Y): (009,009)
-
-Page #1
-Conditions
-None
-
-Graphic: trchar011
-
-Autonomous Movement
-Type: Custom
-Custom Move Route:
-(Repeat Action)
-$>Turn at Random
-
-Speed: 3: Slow
-Freq: 4: High
-Options Enabled
-Move Animation
-Trigger: Event Touch
-
-List of Event Commands:
-@>Script: pbTrainerIntro(:SUPERNERD)
-@>Script: Kernel.pbNoticePlayer(get_character(0))
-@>Text: Hehe, having trouble what to do? Beat me and I'll let you in on a little secret.
-@>Conditional Branch: Script: pbTrainerBattle(PBTrainers::SUPERNERD,"Joseph",_I("You must really want to know, don't you!"),false,0)
- @>Control Self Switch: A =ON
- @>
-: Branch End
-@>Script: pbTrainerEnd
-@>
-
-Page #2
-Conditions
-Self Switch A is ON
-
-Graphic: trchar011
-
-Autonomous Movement
-Type: Custom
-Custom Move Route:
-(Repeat Action)
-$>Turn at Random
-
-Speed: 3: Slow
-Freq: 4: High
-Options Enabled
-Move Animation
-Trigger: Action Button
-
-List of Event Commands:
-@>Text: The laser is powered by generators. You'll have to power down the generators if you want to reach the leader.
-@>
-
-Page #3
-Conditions
-Switch 0125:  is ON
-
-Graphic: trchar011
-
-Autonomous Movement
-Type: Custom
-Custom Move Route:
-(Repeat Action)
-$>Turn at Random
-
-Speed: 3: Slow
-Freq: 4: High
-Options Enabled
-Move Animation
-Trigger: Action Button
-
-List of Event Commands:
-@>Text: The laser is powered by generators. You'll have to power down the generators if you want to reach the leader.
-@>
-
-#------------------------------------------------------------------------------
-Event ID: 005
-Event Name: EV005
-(X,Y): (007,007)
-
-Page #1
-Conditions
-None
-
-Autonomous Movement
-Type: Fixed
-Speed: 3: Slow
-Freq: 3: Low
-Options Enabled
-Move Animation
-Trigger: Action Button
-
-List of Event Commands:
-@>
-
-Page #2
-Conditions
-Variable 0105: Passcode Handler is 2 or above
-
-Autonomous Movement
-Type: Fixed
-Speed: 3: Slow
-Freq: 3: Low
-Options Enabled
-Move Animation
-Trigger: Action Button
-
-List of Event Commands:
-@>
-
-#------------------------------------------------------------------------------
-Event ID: 006
-Event Name: EV006
-(X,Y): (007,006)
-
-Page #1
-Conditions
-None
-
-Autonomous Movement
-Type: Fixed
-Speed: 3: Slow
-Freq: 3: Low
-Options Enabled
-Move Animation
-Trigger: Action Button
-
-List of Event Commands:
-@>
-
-Page #2
-Conditions
-Variable 0105: Passcode Handler is 2 or above
-
-Autonomous Movement
-Type: Fixed
-Speed: 3: Slow
-Freq: 3: Low
-Options Enabled
-Move Animation
-Trigger: Action Button
-
-List of Event Commands:
-@>
-
-#------------------------------------------------------------------------------
-Event ID: 007
-Event Name: EV007
-(X,Y): (011,006)
-
-Page #1
-Conditions
-None
-
-Autonomous Movement
-Type: Fixed
-Speed: 3: Slow
-Freq: 3: Low
-Options Enabled
-Move Animation
-Trigger: Action Button
-
-List of Event Commands:
-@>
-
-Page #2
-Conditions
-Variable 0105: Passcode Handler is 2 or above
-
-Autonomous Movement
-Type: Fixed
-Speed: 3: Slow
-Freq: 3: Low
-Options Enabled
-Move Animation
-Trigger: Action Button
-
-List of Event Commands:
-@>
-
-#------------------------------------------------------------------------------
-Event ID: 008
-Event Name: EV008
-(X,Y): (011,007)
-
-Page #1
-Conditions
-None
-
-Autonomous Movement
-Type: Fixed
-Speed: 3: Slow
-Freq: 3: Low
-Options Enabled
-Move Animation
-Trigger: Action Button
-
-List of Event Commands:
-@>
-
-Page #2
-Conditions
-Variable 0105: Passcode Handler is 2 or above
-
-Autonomous Movement
-Type: Fixed
-Speed: 3: Slow
-Freq: 3: Low
-Options Enabled
-Move Animation
-Trigger: Action Button
-
-List of Event Commands:
-@>
-
-#------------------------------------------------------------------------------
-Event ID: 009
-Event Name: EV009
-(X,Y): (010,007)
-
-Page #1
-Conditions
-None
-
-Autonomous Movement
-Type: Fixed
-Speed: 3: Slow
-Freq: 3: Low
-Options Enabled
-Move Animation
-Trigger: Action Button
-
-List of Event Commands:
-@>
-
-Page #2
-Conditions
-Variable 0105: Passcode Handler is 2 or above
-
-Autonomous Movement
-Type: Fixed
-Speed: 3: Slow
-Freq: 3: Low
-Options Enabled
-Move Animation
-Trigger: Action Button
-
-List of Event Commands:
-@>
-
-#------------------------------------------------------------------------------
-Event ID: 010
-Event Name: EV010
-(X,Y): (009,007)
-
-Page #1
-Conditions
-None
-
-Autonomous Movement
-Type: Fixed
-Speed: 3: Slow
-Freq: 3: Low
-Options Enabled
-Move Animation
-Trigger: Action Button
-
-List of Event Commands:
-@>
-
-Page #2
-Conditions
-Variable 0105: Passcode Handler is 2 or above
-
-Autonomous Movement
-Type: Fixed
-Speed: 3: Slow
-Freq: 3: Low
-Options Enabled
-Move Animation
-Trigger: Action Button
-
-List of Event Commands:
-@>
-
-#------------------------------------------------------------------------------
-Event ID: 011
-Event Name: EV011
-(X,Y): (008,007)
-
-Page #1
-Conditions
-None
-
-Autonomous Movement
-Type: Fixed
-Speed: 3: Slow
-Freq: 3: Low
-Options Enabled
-Move Animation
-Trigger: Action Button
-
-List of Event Commands:
-@>
-
-Page #2
-Conditions
-Variable 0105: Passcode Handler is 2 or above
-
-Autonomous Movement
-Type: Fixed
-Speed: 3: Slow
-Freq: 3: Low
-Options Enabled
-Move Animation
-Trigger: Action Button
-
-List of Event Commands:
-@>
-
-#------------------------------------------------------------------------------
-Event ID: 012
-Event Name: EV012
-(X,Y): (008,006)
-
-Page #1
-Conditions
-None
-
-Autonomous Movement
-Type: Fixed
-Speed: 3: Slow
-Freq: 3: Low
-Options Enabled
-Move Animation
-Trigger: Action Button
-
-List of Event Commands:
-@>
-
-Page #2
-Conditions
-Variable 0105: Passcode Handler is 2 or above
-
-Autonomous Movement
-Type: Fixed
-Speed: 3: Slow
-Freq: 3: Low
-Options Enabled
-Move Animation
-Trigger: Action Button
-
-List of Event Commands:
-@>
-
-#------------------------------------------------------------------------------
-Event ID: 013
-Event Name: EV013
-(X,Y): (009,006)
-
-Page #1
-Conditions
-None
-
-Autonomous Movement
-Type: Fixed
-Speed: 3: Slow
-Freq: 3: Low
-Options Enabled
-Move Animation
-Trigger: Action Button
-
-List of Event Commands:
-@>
-
-Page #2
-Conditions
-Variable 0105: Passcode Handler is 2 or above
-
-Autonomous Movement
-Type: Fixed
-Speed: 3: Slow
-Freq: 3: Low
-Options Enabled
-Move Animation
-Trigger: Action Button
-
-List of Event Commands:
-@>
-
-#------------------------------------------------------------------------------
-Event ID: 014
-Event Name: EV014
-(X,Y): (010,006)
-
-Page #1
-Conditions
-None
-
-Autonomous Movement
-Type: Fixed
-Speed: 3: Slow
-Freq: 3: Low
-Options Enabled
-Move Animation
-Trigger: Action Button
-
-List of Event Commands:
-@>
-
-Page #2
-Conditions
-Variable 0105: Passcode Handler is 2 or above
-
-Autonomous Movement
-Type: Fixed
-Speed: 3: Slow
-Freq: 3: Low
-Options Enabled
-Move Animation
-Trigger: Action Button
-
-List of Event Commands:
-@>
-
-#------------------------------------------------------------------------------
-Event ID: 015
-Event Name: Gym Guy
-(X,Y): (010,014)
-
-Page #1
-Conditions
-None
-
-Graphic: NPC 15
-
-Autonomous Movement
-Type: Fixed
-Speed: 3: Slow
-Freq: 3: Low
-Options Enabled
-Move Animation
-Trigger: Action Button
-
-List of Event Commands:
-@>Text: Hey there, champ in the making! Let
- :    : me impart some knowledge onto you!
-@>Text: Vermilion's Leader is no pushover. Lt. Surge, as he's known, served
- :    : in the war many years ago. He even earned the nickname the
- :    : Lightning American!
-@>Text: When the puppets invaded, he took rather quickly to the
- :    : Wind-Type puppets with their ability to conduct electrical
- :    : currents.
-@>Text: Using Flying types is just asking for him to clip the
- :    : wings with a violent bolt of Electricity, and the same goes
- :    : for sending shockwaves through Water types.
-@>Text: However, if you use Earth types, you can trap the current his
- :    : Puppets make within the ground!
-@>Text: Another thing to know, Lt. Surge has locked himself behind
- :    : a pair of lasers. You'll have to find a way to shut them down
- :    : if you want to fight him.
-@>
-
-#------------------------------------------------------------------------------
-Event ID: 016
-Event Name: EV016
-(X,Y): (002,007)
-
-Page #1
-Conditions
-None
-
-Autonomous Movement
-Type: Fixed
-Speed: 3: Slow
-Freq: 3: Low
-Options Enabled
-Move Animation
-Trigger: Action Button
-
-List of Event Commands:
-@>Text: VERMILION GYM POWER GENERATORS
-@>Text: There seems to be a button underneath. Press it?
-@>Show Choices: Yes, No
-(When Cancel: Choice 2)
-: When [Yes]
- @>Text: Who wouldn't!
- @>Play SE: 'navopen', 80, 100
- @>Control Variables: [0105: Passcode Handler] += 1
- @>Conditional Branch: Variable [0105: Passcode Handler] == 1
-  @>Wait: 10 frame(s)
-  @>Text: VERMILION GYM POWER AT 50%
-  @>
- : Else
-  @>Wait: 10 frame(s)
-  @>Text: VERMILION GYM LASER POWER AT 0%
-   :    : SHUTTING DOWN LASERS TO CONSERVE GYM
-   :    : INTERNAL POWER.
-  @>
- : Branch End
- @>Control Self Switch: A =ON
- @>
-: When [No]
- @>
-: Branch End
-@>
-
-Page #2
-Conditions
-Self Switch A is ON
-
-Autonomous Movement
-Type: Fixed
-Speed: 3: Slow
-Freq: 3: Low
-Options Enabled
-Move Animation
-Trigger: Action Button
-
-List of Event Commands:
-@>Text: VERMILION GYM POWER GENERATORS
-@>Text: You've already pressed the button here.
-@>
-
-#------------------------------------------------------------------------------
-Event ID: 017
-Event Name: EV017
-(X,Y): (016,007)
-
-Page #1
-Conditions
-None
-
-Autonomous Movement
-Type: Fixed
-Speed: 3: Slow
-Freq: 3: Low
-Options Enabled
-Move Animation
-Trigger: Action Button
-
-List of Event Commands:
-@>Text: VERMILION GYM POWER GENERATORS
-@>Text: There seems to be a button underneath. Press it?
-@>Show Choices: Yes, No
-(When Cancel: Choice 2)
-: When [Yes]
- @>Text: Who wouldn't!
- @>Play SE: 'navopen', 80, 100
- @>Control Variables: [0105: Passcode Handler] += 1
- @>Conditional Branch: Variable [0105: Passcode Handler] == 1
-  @>Wait: 10 frame(s)
-  @>Text: VERMILION GYM POWER AT 50%
-  @>
- : Else
-  @>Wait: 10 frame(s)
-  @>Text: VERMILION GYM LASER POWER AT 0%
-   :    : SHUTTING DOWN LASERS TO CONSERVE GYM
-   :    : INTERNAL POWER.
-  @>
- : Branch End
- @>Control Self Switch: A =ON
- @>
-: When [No]
- @>
-: Branch End
-@>
-
-Page #2
-Conditions
-Self Switch A is ON
-
-Autonomous Movement
-Type: Fixed
-Speed: 3: Slow
-Freq: 3: Low
-Options Enabled
-Move Animation
-Trigger: Action Button
-
-List of Event Commands:
-@>Text: VERMILION GYM POWER GENERATORS
-@>Text: You've already pressed the button here.
-@>
-
-#------------------------------------------------------------------------------
-Event ID: 018
-Event Name: EV018
-(X,Y): (009,017)
-
-Page #1
-Conditions
-None
-
-Autonomous Movement
-Type: Fixed
-Speed: 3: Slow
-Freq: 3: Low
-Options Enabled
-Move Animation
-Trigger: Player Touch
-
-List of Event Commands:
-@>Play SE: 'Exit Door', 80, 100
-@>Change Screen Color Tone: (-255,-255,-255,0), @6
-@>Wait: 6 frame(s)
-@>Transfer Player:[182: Regional Uplink Terminal], (014,025), No Fade
-@>Change Screen Color Tone: (0,0,0,0), @6
-@>
-
-#------------------------------------------------------------------------------
-
-#==============================================================================
-Map ID: 262
-Map Name: Vermilion City Gym
-Tileset: 030: Vermillion Gym
-Width: 50, Height: 70
-Auto-Change BGM: W-011. Pokemon Gym
-
-#------------------------------------------------------------------------------
-Event ID: 001
-Event Name: Gym Terminal
-(X,Y): (008,006)
-
-Page #1
-Conditions
-None
-
-Graphic: gymtelecom
-
-Autonomous Movement
-Type: Fixed
-Speed: 3: Slow
-Freq: 3: Low
-Options Enabled
-Move Animation
-Trigger: Action Button
-
-List of Event Commands:
-@>Conditional Branch: Player is facing Right
- @>Text: Accessing Gym Network.
- @>Label: Start
- @>Text: Please select what you want to know about.
- @>Show Choices: Gym Leader Preference, Gym Mechanics, Gym Leader Information, Nothing
- (When Cancel: Choice 4)
- : When [Gym Leader Preference]
-  @>Text: The Vermilion City Gym, Lt. Surge, has a preference for
-   :    : Electric Pokémon and Wind Puppets.
-  @>Text: Aside from the traditional weaknesses of Electric-type
-   :    : Pokémon, Wind-type Puppets are weak to Earth-typed
-   :    : moves.
-  @>Text: Wind-Type Puppets resist damage from Aero and 
-   :    : Wind-typed moves.
-  @>Jump to Label: Start
-  @>
- : When [Gym Mechanics]
-  @>Text: Lt. Surge, using his expertise in warfare, has designed his 
-   :    : gym to reflect a training ground for recruits.
-  @>Text: There are two ways to navigate the gym. The first is 
-   :    : through a gauntlet of trainers, which Lt. Surge calls the 
-   :    : "Head-On Course".
-  @>Text: The second one requires navigating a simulated battlefield
-   :    : with Voltorbs littered in the ground as landmines. Tripping a
-   :    : landmine will send you back to the beginning of that course.
-  @>Text: In order to avoid tripping the landmines, it is advised to not
-   :    : run through the gym, or to bring a party member with 
-   :    : Magnet Pull.
-  @>Text: At the end, Lt. Surge will be blocked off by his trademark
-   :    : electrified fencing.
-  @>Text: Prospective challengers must disable the two generators 
-   :    : that power the fencing before they can battle the Gym 
-   :    : Leader.
-  @>Jump to Label: Start
-  @>
- : When [Gym Leader Information]
-  @>Text: Lt. Surge, though he makes his home in Kanto, was born 
-   :    : and raised in the greater Unova Region.
-  @>Text: He served in the Kanto Armed Forces during the Tohjo Civil War,
-   :    : where he earned the nickname "The Lightning Unovan" for his
-   :    : tactics involving Electric Pokémon.
-  @>Text: After the gym was over, he was chosen as next in line to
-   :    : serve as Vermilion City's Gym Leader when the previous one
-   :    : stepped down.
-  @>Text: Since then, Vermilion Gym has gained a reputation as being
-   :    : effectively a boot camp in all but name.
-  @>Jump to Label: Start
-  @>
- : When [Nothing]
-  @>Text: Shutting down information database.
-  @>
- : Branch End
- @>
-: Else
- @>
-: Branch End
-@>
-
-#------------------------------------------------------------------------------
-Event ID: 002
-Event Name: Gold
-(X,Y): (009,002)
-
-Page #1
-Conditions
-None
-
-Autonomous Movement
-Type: Fixed
-Speed: 3: Slow
-Freq: 3: Low
-Options Enabled
-Move Animation
-Trigger: Action Button
-
-List of Event Commands:
-@>
-
-Page #2
-Conditions
-Switch 0109: Met Gold is ON
-Switch 0110: s:badgeQtyOdd? is ON
-
-Graphic: Gold (PurpleZaffre)
-
-Autonomous Movement
-Type: Fixed
-Speed: 3: Slow
-Freq: 3: Low
-Options Enabled
-Move Animation
-Trigger: Action Button
-
-List of Event Commands:
-@>Call Common Event: Vs. Gold - Encounter
-@>Text: \xn[Gold]Alright, let's do this, \pn!
-@>Control Switches: [0104: Transition Handler] = ON
-@>Control Variables: [0103: Vs. Transition ID] = 4
-@>Control Variables: [0115: Vs. Transition - Background] = 4
-@>Script: setBattleRule("base", "indoor1")
-@>Conditional Branch: Script: pbTrainerBattle(:RIVAL_Gold,"Gold",_I(pbGet(4)),false,1+pbGet(116))
- @>Call Common Event: Vs. Gold - Post-Battle
- @>Conditional Branch: Player is facing Right
-  @>Set Move Route: Player
-   :              : $>Direction Fix ON
-   :              : $>Move Down
-   :              : $>Direction Fix OFF
-  @>Wait for Move's Completion
-  @>
- : Branch End
- @>Set Move Route: [Gold]
-  :              : $>Move Left
-  :              : $>Move Left
-  :              : $>Move Left
-  :              : $>Move Down
-  :              : $>Move Down
-  :              : $>Move Down
-  :              : $>Move Down
-  :              : $>Move Down
-  :              : $>Move Down
-  :              : $>Change Opacity: 0
-  :              : $>SE: 'Door exit', 100, 100
- @>Wait for Move's Completion
- @>Control Variables: [0116: Battled Rival Gold] += 1
- @>Control Self Switch: A =ON
- @>Script: pbSetSelfSwitch(13,"A",true)
- @>
-: Else
- @>Exit Event Processing
- @>
-: Branch End
-@>
-
-Page #3
-Conditions
-Self Switch A is ON
-
-Autonomous Movement
-Type: Fixed
-Speed: 3: Slow
-Freq: 3: Low
-Options Enabled
-Move Animation
-Trigger: Action Button
-
-List of Event Commands:
-@>
-
-#------------------------------------------------------------------------------
-Event ID: 003
-Event Name: ExitArrow
-(X,Y): (006,009)
-
-Page #1
-Conditions
-None
-
-Graphic: Exitarrow_red
-
-Autonomous Movement
-Type: Fixed
-Speed: 3: Slow
-Freq: 3: Low
-Options Enabled
-Move Animation
-Stop Animation
-Always on Top
-Trigger: Player Touch
-
-List of Event Commands:
-@>Conditional Branch: Player is facing Down
- @>Play SE: 'Door exit', 100, 100
- @>Change Screen Color Tone: (-255,-255,-255,0), @6
- @>Wait: 8 frame(s)
- @>Transfer Player:[038: Vermillion City], (019,029), No Fade
- @>Change Screen Color Tone: (0,0,0,0), @6
- @>
-: Branch End
-@>
-
-#------------------------------------------------------------------------------
-Event ID: 004
-Event Name: EV004
-(X,Y): (001,008)
-
-Page #1
-Conditions
-None
-
-Autonomous Movement
-Type: Fixed
-Speed: 3: Slow
-Freq: 3: Low
-Options Enabled
-Move Animation
-Trigger: Action Button
-
-List of Event Commands:
-@>Conditional Branch: Variable [0122: Vermilion Gym "Cheat"] == 100
- @>Text: After searching through the trash 100 times...
- @>Text: You find a button, press it?
- @>Show Choices: Yes, No
- (When Cancel: Choice 2)
- : When [Yes]
-  @>Text: May as well! Wouldn't have spent 20 minutes doing this
-   :    : otherwise!
-  @>Control Variables: [0123: Vermilion Gym Generators] = 2
-  @>Control Self Switch: A =ON
-  @>
- : When [No]
-  @>
- : Branch End
- @>
-: Else
- @>Text: Nope! There's only trash inside!
- @>Control Variables: [0122: Vermilion Gym "Cheat"] += 1
- @>
-: Branch End
-@>
-
-Page #2
-Conditions
-Self Switch A is ON
-
-Autonomous Movement
-Type: Fixed
-Speed: 3: Slow
-Freq: 3: Low
-Options Enabled
-Move Animation
-Trigger: Action Button
-
-List of Event Commands:
-@>Text: Nope! There's only trash inside!
 @>
 
 #------------------------------------------------------------------------------
