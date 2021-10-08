@@ -134,3 +134,14 @@ class IntroEnd < PreludeScene
     :wait, 60
   ]
 end
+
+# ---------------------------
+
+class Preview < PreludeScene
+  TEXT = [
+    [
+      "To be continued..."
+    ],
+    :wait, 180,
+  ]
+end

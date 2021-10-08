@@ -80,7 +80,8 @@ class Interpreter
     :SCRenko 		=> 'P-012. Girls\' Sealing Club',
 	:SCMary 		=> 'P-012. Girls\' Sealing Club',
 	:RIVAL_Gold 	=> 'P-013. Encounter - Gold',
-	:COLLECTOR 		=> 'P-015. Trainers\' Eyes Meet (Collector)'
+	:COLLECTOR 		=> 'P-015. Trainers\' Eyes Meet (Collector)',
+	:ELDERPRIESTESS	=> 'P-019. Last Occultism'
   }
   # Play the trainer eye bgm according to the type defined in Interpreter::TRAINER_BGMS
   # @param type [Symbol] type of trainer (key in TRAINER_BGMS)

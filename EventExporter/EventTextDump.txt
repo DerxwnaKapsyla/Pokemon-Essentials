@@ -15221,9 +15221,9 @@ List of Event Commands:
 @>
 
 #------------------------------------------------------------------------------
-Event ID: 010
-Event Name: Slope
-(X,Y): (047,024)
+Event ID: 004
+Event Name: EV004
+(X,Y): (015,020)
 
 Page #1
 Conditions
@@ -15235,127 +15235,10 @@ Speed: 3: Slow
 Freq: 3: Low
 Options Enabled
 Move Animation
-Trigger: Event Touch
+Trigger: Action Button
 
 List of Event Commands:
-@>Comment: Slope: 2x-1
-@>Comment: Width: 0/3
-@>Comment: Offset: 16px
-@>
-
-#------------------------------------------------------------------------------
-Event ID: 011
-Event Name: Slope
-(X,Y): (047,023)
-
-Page #1
-Conditions
-None
-
-Autonomous Movement
-Type: Fixed
-Speed: 3: Slow
-Freq: 3: Low
-Options Enabled
-Move Animation
-Trigger: Event Touch
-
-List of Event Commands:
-@>Comment: Slope: 2x-1
-@>Comment: Width: 1/3
-@>Comment: Offset: 16px
-@>
-
-#------------------------------------------------------------------------------
-Event ID: 012
-Event Name: Slope
-(X,Y): (047,022)
-
-Page #1
-Conditions
-None
-
-Autonomous Movement
-Type: Fixed
-Speed: 3: Slow
-Freq: 3: Low
-Options Enabled
-Move Animation
-Trigger: Event Touch
-
-List of Event Commands:
-@>Comment: Slope: 2x-1
-@>Comment: Width: 2/3
-@>Comment: Offset: 16px
-@>
-
-#------------------------------------------------------------------------------
-Event ID: 013
-Event Name: Slope
-(X,Y): (049,023)
-
-Page #1
-Conditions
-None
-
-Autonomous Movement
-Type: Fixed
-Speed: 3: Slow
-Freq: 3: Low
-Options Enabled
-Move Animation
-Trigger: Event Touch
-
-List of Event Commands:
-@>Comment: Slope: -2x1
-@>Comment: Width: 0/3
-@>Comment: Offset: 16px
-@>
-
-#------------------------------------------------------------------------------
-Event ID: 014
-Event Name: Slope
-(X,Y): (049,022)
-
-Page #1
-Conditions
-None
-
-Autonomous Movement
-Type: Fixed
-Speed: 3: Slow
-Freq: 3: Low
-Options Enabled
-Move Animation
-Trigger: Event Touch
-
-List of Event Commands:
-@>Comment: Slope: -2x1
-@>Comment: Width: 1/3
-@>Comment: Offset: 16px
-@>
-
-#------------------------------------------------------------------------------
-Event ID: 015
-Event Name: Slope
-(X,Y): (049,021)
-
-Page #1
-Conditions
-None
-
-Autonomous Movement
-Type: Fixed
-Speed: 3: Slow
-Freq: 3: Low
-Options Enabled
-Move Animation
-Trigger: Event Touch
-
-List of Event Commands:
-@>Comment: Slope: -2x1
-@>Comment: Width: 2/3
-@>Comment: Offset: 16px
+@>Text: \sign[signskin]\l[3]<ac>Pokémon Fan Club - Kanto Branch\nHome to all Pokémon and Puppet Enthusiasts
 @>
 
 #------------------------------------------------------------------------------
@@ -17043,7 +16926,7 @@ List of Event Commands:
 @>Change Screen Color Tone: (-255,-255,-255,0), @6
 @>Wait: 8 frame(s)
 @>Change Transparent Flag: Normal
-@>Transfer Player:[254: Lavender Town], (042,007), Up, No Fade
+@>Transfer Player:[254: Lavender Town], (043,007), Up, No Fade
 @>Change Screen Color Tone: (0,0,0,0), @6
 @>
 
@@ -22642,7 +22525,7 @@ List of Event Commands:
 @>Script: TrainerIntro2(:BUGCATCHER)
 @>Script: Kernel.pbNoticePlayer(get_character(0))
 @>Text: I thought there'd be more fairies on this
- :    : route. Oh well, I'll still test em' on you.
+ :    : route. Oh well, I'll still test 'em on you.
 @>Conditional Branch: Script: pbTrainerBattle(:BUGCATCHER,"Sammy",_I("Pathetic!"))
  @>Control Self Switch: A =ON
  @>
@@ -23341,7 +23224,7 @@ List of Event Commands:
    :    : dealing with-\^
   @>Text: \xn[Officer 3]Are you doubting my judgment?
   @>Text: \xn[Officer 2]...!\wt[10] S-Sir, no sir!
-  @>Text: \xn[Officer 1]Shall we allow them to pass umimpeeded, 
+  @>Text: \xn[Officer 1]Shall we allow them to pass unimpeded, 
    :    : then?
   @>Text: \xn[Officer 3]Yes, also go heal up your partners in case 
    :    : another situation arises.
@@ -23404,6 +23287,7 @@ List of Event Commands:
   @>Set Event Location: [Police Chief],(027,072)
   @>Script: pbSetSelfSwitch(3,"A",true)
   :       : pbSetSelfSwitch(4,"A",true)
+  :       : pbSetSelfSwitch(40,"A",true)
   :       : pbSetSelfSwitch(12,"A",true)
   :       : pbDeregisterPartner
   @>Control Self Switch: C =ON
@@ -23678,6 +23562,7 @@ List of Event Commands:
   @>Set Event Location: [Police Chief],(027,072)
   @>Script: pbSetSelfSwitch(3,"A",true)
   :       : pbSetSelfSwitch(4,"A",true)
+  :       : pbSetSelfSwitch(40,"A",true)
   :       : pbSetSelfSwitch(12,"A",true)
   :       : pbDeregisterPartner
   @>Control Self Switch: C =ON
@@ -24022,7 +23907,7 @@ List of Event Commands:
  :    : force.
 @>Text: \xn[David]With what we know, they currently have three high ranking
  :    : individuals; Stratos, Astra, and Celeste. Information on them is rather
- :    : sparce.
+ :    : sparse.
 @>Text: \xn[David]If the individual in question you encountered called
  :    : themselves Stratos, then there can be no doubt this is
  :    : Team Rocket causing trouble once more.
@@ -24765,7 +24650,7 @@ List of Event Commands:
 @>Change Screen Color Tone: (-255,-255,-255,0), @6
 @>Wait: 8 frame(s)
 @>Script: pbCaveEntrance
-@>Transfer Player:[078: Rock Tunnel], (024,010), Up, No Fade
+@>Transfer Player:[078: Rock Tunnel], (024,010), Down, No Fade
 @>Script: pbHGSSTransitions("Rock Tunnel")
 @>Change Screen Color Tone: (0,0,0,0), @6
 @>
@@ -24812,6 +24697,30 @@ Trigger: Action Button
 
 List of Event Commands:
 @>Text: \sign[signskin]\l[2]<ac>Rock Tunnel\n<ac>Warning: Restricted Visibility
+@>
+
+#------------------------------------------------------------------------------
+Event ID: 020
+Event Name: size(2,1)
+(X,Y): (024,073)
+
+Page #1
+Conditions
+None
+
+Autonomous Movement
+Type: Fixed
+Speed: 3: Slow
+Freq: 3: Low
+Options Enabled
+Move Animation
+Trigger: Action Button
+
+List of Event Commands:
+@>Conditional Branch: Player is facing Up
+ @>Text: \sign[signskin]\l[3]<ac>Kanto Power Plant\nProviding power to the entirety of the Kanto Region
+ @>
+: Branch End
 @>
 
 #------------------------------------------------------------------------------
@@ -24983,7 +24892,7 @@ List of Event Commands:
 
 Page #2
 Conditions
-Self Switch A is ON
+Variable 0110: Plot Control Variable is 8 or above
 
 Autonomous Movement
 Type: Fixed
@@ -25281,144 +25190,6 @@ Map Name: Route 11
 Tileset: 001: Outside
 Width: 74, Height: 32
 Auto-Change BGM: W-020. Route Theme 4
-
-#------------------------------------------------------------------------------
-Event ID: 001
-Event Name: Slope
-(X,Y): (008,017)
-
-Page #1
-Conditions
-None
-
-Autonomous Movement
-Type: Fixed
-Speed: 3: Slow
-Freq: 3: Low
-Options Enabled
-Move Animation
-Trigger: Event Touch
-
-List of Event Commands:
-@>Comment: Slope: -2x-1
-@>Comment: Width: 0/3
-@>Comment: Offset: 16px
-@>
-
-#------------------------------------------------------------------------------
-Event ID: 002
-Event Name: Slope
-(X,Y): (008,016)
-
-Page #1
-Conditions
-None
-
-Autonomous Movement
-Type: Fixed
-Speed: 3: Slow
-Freq: 3: Low
-Options Enabled
-Move Animation
-Trigger: Event Touch
-
-List of Event Commands:
-@>Comment: Slope: -2x-1
-@>Comment: Width: 1/3
-@>Comment: Offset: 16px
-@>
-
-#------------------------------------------------------------------------------
-Event ID: 003
-Event Name: Slope
-(X,Y): (008,015)
-
-Page #1
-Conditions
-None
-
-Autonomous Movement
-Type: Fixed
-Speed: 3: Slow
-Freq: 3: Low
-Options Enabled
-Move Animation
-Trigger: Event Touch
-
-List of Event Commands:
-@>Comment: Slope: -2x-1
-@>Comment: Width: 2/3
-@>Comment: Offset: 16px
-@>
-
-#------------------------------------------------------------------------------
-Event ID: 004
-Event Name: Slope
-(X,Y): (006,016)
-
-Page #1
-Conditions
-None
-
-Autonomous Movement
-Type: Fixed
-Speed: 3: Slow
-Freq: 3: Low
-Options Enabled
-Move Animation
-Trigger: Event Touch
-
-List of Event Commands:
-@>Comment: Slope: 2x1
-@>Comment: Width: 0/3
-@>Comment: Offset: 16px
-@>
-
-#------------------------------------------------------------------------------
-Event ID: 005
-Event Name: Slope
-(X,Y): (006,015)
-
-Page #1
-Conditions
-None
-
-Autonomous Movement
-Type: Fixed
-Speed: 3: Slow
-Freq: 3: Low
-Options Enabled
-Move Animation
-Trigger: Event Touch
-
-List of Event Commands:
-@>Comment: Slope: 2x1
-@>Comment: Width: 1/3
-@>Comment: Offset: 16px
-@>
-
-#------------------------------------------------------------------------------
-Event ID: 006
-Event Name: Slope
-(X,Y): (006,014)
-
-Page #1
-Conditions
-None
-
-Autonomous Movement
-Type: Fixed
-Speed: 3: Slow
-Freq: 3: Low
-Options Enabled
-Move Animation
-Trigger: Event Touch
-
-List of Event Commands:
-@>Comment: Slope: 2x1
-@>Comment: Width: 2/3
-@>Comment: Offset: 16px
-@>
 
 #------------------------------------------------------------------------------
 Event ID: 007
@@ -30405,7 +30176,7 @@ List of Event Commands:
 
 Page #2
 Conditions
-Variable 0110: Plot Control Variable is 7 or above
+Variable 0110: Plot Control Variable is 8 or above
 
 Autonomous Movement
 Type: Fixed
@@ -30734,7 +30505,6 @@ Move Animation
 Trigger: Action Button
 
 List of Event Commands:
-@>Text: The shutter is in emergency lockdown mode.
 @>
 
 Page #2
@@ -30770,7 +30540,6 @@ Move Animation
 Trigger: Action Button
 
 List of Event Commands:
-@>Text: The shutter is in emergency lockdown mode.
 @>
 
 Page #2
@@ -30878,7 +30647,6 @@ Move Animation
 Trigger: Action Button
 
 List of Event Commands:
-@>Text: The shutter is in emergency lockdown mode.
 @>
 
 Page #2
@@ -30914,7 +30682,6 @@ Move Animation
 Trigger: Action Button
 
 List of Event Commands:
-@>Text: The shutter is in emergency lockdown mode.
 @>
 
 Page #2
@@ -31533,7 +31300,7 @@ List of Event Commands:
 Map ID: 080
 Map Name: Lavender Tower
 Tileset: 013: Graveyard
-Width: 24, Height: 20
+Width: 24, Height: 21
 Auto-Change BGM: W-023. Pokemon Tower
 
 #------------------------------------------------------------------------------
@@ -54153,7 +53920,7 @@ List of Event Commands:
 Map ID: 217
 Map Name: Cerulean City Gym
 Tileset: 028: Cerulean Gym
-Width: 45, Height: 61
+Width: 45, Height: 62
 Auto-Change BGM: W-011. Pokemon Gym
 
 #------------------------------------------------------------------------------
@@ -54528,6 +54295,7 @@ Speed: 3: Slow
 Freq: 3: Low
 Options Enabled
 Move Animation
+Direction Fix
 Trigger: Action Button
 
 List of Event Commands:
@@ -59880,7 +59648,7 @@ List of Event Commands:
 Map ID: 227
 Map Name: Vermilion Seaside Hotel
 Tileset: 010: Department Store
-Width: 38, Height: 20
+Width: 38, Height: 22
 Auto-Change BGM: W-017. Vermillion City
 
 #------------------------------------------------------------------------------
@@ -61052,6 +60820,104 @@ List of Event Commands:
 @>
 
 #------------------------------------------------------------------------------
+Event ID: 007
+Event Name: Cave Entrance
+(X,Y): (015,013)
+
+Page #1
+Conditions
+None
+
+Autonomous Movement
+Type: Fixed
+Speed: 3: Slow
+Freq: 3: Low
+Options Enabled
+Move Animation
+Trigger: Player Touch
+
+List of Event Commands:
+@>Play SE: 'Door exit', 100, 100
+@>Change Screen Color Tone: (-255,-255,-255,0), @6
+@>Wait: 8 frame(s)
+@>Script: pbCaveEntrance
+@>Transfer Player:[078: Rock Tunnel], (025,045), Up, No Fade
+@>Script: pbHGSSTransitions("Rock Tunnel")
+@>Change Screen Color Tone: (0,0,0,0), @6
+@>
+
+Page #2
+Conditions
+Switch 0022: s:tsOff?("A") is ON
+
+Autonomous Movement
+Type: Fixed
+Speed: 3: Slow
+Freq: 3: Low
+Options Enabled
+Move Animation
+Trigger: Autorun
+
+List of Event Commands:
+@>Conditional Branch: Script: get_character(0).onEvent?
+ @>Set Move Route: Player
+                   (Ignore If Can't Move)
+  :              : $>Move Down
+ @>Wait for Move's Completion
+ @>
+: Branch End
+@>Script: setTempSwitchOn("A")
+@>
+
+#------------------------------------------------------------------------------
+Event ID: 008
+Event Name: EV008
+(X,Y): (017,013)
+
+Page #1
+Conditions
+None
+
+Autonomous Movement
+Type: Fixed
+Speed: 3: Slow
+Freq: 3: Low
+Options Enabled
+Move Animation
+Trigger: Action Button
+
+List of Event Commands:
+@>Change Screen Color Tone: (-255,-255,-255,0), @40
+@>Wait: 40 frame(s)
+@>Transfer Player:[001: Intro], (009,005)
+@>Fade Out BGM: 2 sec.
+@>Script: Preview.new
+@>Wait: 25 frame(s)
+@>Return to Title Screen
+@>
+
+#------------------------------------------------------------------------------
+Event ID: 009
+Event Name: EV009
+(X,Y): (017,012)
+
+Page #1
+Conditions
+None
+
+Autonomous Movement
+Type: Fixed
+Speed: 3: Slow
+Freq: 3: Low
+Options Enabled
+Move Animation
+Trigger: Action Button
+
+List of Event Commands:
+@>Script: UnrealTime.add_seconds(14400)
+@>
+
+#------------------------------------------------------------------------------
 
 #==============================================================================
 Map ID: 229
@@ -61394,10 +61260,7 @@ Move Animation
 Trigger: Action Button
 
 List of Event Commands:
-@>Text: This gatehouse connects Pallet Town and Viridian City.
-@>Text: Putting a gatehouse here always felt weird, but 
- :    : because of its proximity to Pallet Town it pays pretty well.
-@>Text: So, hey. Can't complain!
+@>Text: This gatehouse connects Cerulean City and Saffron City.
 @>
 
 #------------------------------------------------------------------------------
@@ -61607,10 +61470,7 @@ Move Animation
 Trigger: Action Button
 
 List of Event Commands:
-@>Text: This gatehouse connects Pallet Town and Viridian City.
-@>Text: Putting a gatehouse here always felt weird, but 
- :    : because of its proximity to Pallet Town it pays pretty well.
-@>Text: So, hey. Can't complain!
+@>Text: This gatehouse connects Vermilion City and Saffron City.
 @>
 
 #------------------------------------------------------------------------------
@@ -62014,7 +61874,7 @@ Move Animation
 Trigger: Action Button
 
 List of Event Commands:
-@>Text: This gatehouse connects Celadon City and Saffron City.
+@>Text: This gatehouse connects Lavender Town and Saffron City.
 @>
 
 #------------------------------------------------------------------------------
@@ -63607,9 +63467,8 @@ Move Animation
 Trigger: Action Button
 
 List of Event Commands:
-@>Text: What are we doing here? Classified
- :    : information pipsqueak! So classified that not even I
- :    : know!
+@>Text: What are we doing here? Classified information, 
+ :    : pipsqueak! So classified that not even I know!
 @>
 
 Page #3
@@ -63675,7 +63534,7 @@ Trigger: Action Button
 List of Event Commands:
 @>Text: I've waited a long time to come out of the
  :    : shadows and cause mayhem again, it's all so
- :    : exhillerating!
+ :    : exhilarating!
 @>
 
 Page #3
@@ -63739,7 +63598,7 @@ Move Animation
 Trigger: Action Button
 
 List of Event Commands:
-@>Text: Oh screw it all I don't care!
+@>Text: Oh screw it all, I don't care!
 @>
 
 Page #3
@@ -63978,9 +63837,9 @@ Move Animation
 Trigger: Action Button
 
 List of Event Commands:
-@>Text: That's fine, just go ahead and beat me.
- :    : Ahead are the leaders for this mission and they'll
- :    : bounce you back where you came from.
+@>Text: That's fine, just go ahead and beat me. Ahead is the 
+ :    : commander for this mission, and they'll bounce you 
+ :    : back where you came from.
 @>
 
 Page #3
@@ -64121,7 +63980,7 @@ Move Animation
 Trigger: Action Button
 
 List of Event Commands:
-@>Text: Don't expect the exec go toy with you just because 
+@>Text: Don't expect the exec to toy with you just because 
  :    : you're a kid; You're history, chump.
 @>
 
@@ -65620,7 +65479,7 @@ List of Event Commands:
 Map ID: 243
 Map Name: Vermilion Harbor
 Tileset: 003: Inside
-Width: 29, Height: 20
+Width: 29, Height: 21
 Auto-Change BGM: 009. Nostalgic Blood of the East ~ Old World
 
 #------------------------------------------------------------------------------
@@ -66075,6 +65934,7 @@ Speed: 3: Slow
 Freq: 3: Low
 Options Enabled
 Move Animation
+Direction Fix
 Trigger: Action Button
 
 List of Event Commands:
@@ -69215,6 +69075,34 @@ List of Event Commands:
 : Branch End
 @>
 
+Page #2
+Conditions
+Variable 0001: Temp Pokemon Choice is 9 or above
+
+Graphic: Exitarrow_red
+
+Autonomous Movement
+Type: Fixed
+Speed: 3: Slow
+Freq: 3: Low
+Options Enabled
+Move Animation
+Stop Animation
+Always on Top
+Trigger: Player Touch
+
+List of Event Commands:
+@>Conditional Branch: Player is facing Right
+ @>Play SE: 'Door exit', 100, 100
+ @>Change Screen Color Tone: (-255,-255,-255,0), @6
+ @>Wait: 8 frame(s)
+ @>Transfer Player:[250: Lavender Town], (008,034), No Fade
+ @>Script: UnrealTime.advance_to(20,00,00)
+ @>Change Screen Color Tone: (0,0,0,0), @6
+ @>
+: Branch End
+@>
+
 #------------------------------------------------------------------------------
 Event ID: 004
 Event Name: ExitArrow
@@ -69464,6 +69352,38 @@ List of Event Commands:
 @>
 
 #------------------------------------------------------------------------------
+Event ID: 008
+Event Name: ExitArrow
+(X,Y): (072,027)
+
+Page #1
+Conditions
+None
+
+Graphic: Exitarrow_red
+
+Autonomous Movement
+Type: Fixed
+Speed: 3: Slow
+Freq: 3: Low
+Options Enabled
+Move Animation
+Stop Animation
+Always on Top
+Trigger: Player Touch
+
+List of Event Commands:
+@>Conditional Branch: Player is facing Right
+ @>Play SE: 'Door exit', 100, 100
+ @>Change Screen Color Tone: (-255,-255,-255,0), @6
+ @>Wait: 8 frame(s)
+ @>Transfer Player:[250: Lavender Town], (008,034), No Fade
+ @>Change Screen Color Tone: (0,0,0,0), @6
+ @>
+: Branch End
+@>
+
+#------------------------------------------------------------------------------
 
 #==============================================================================
 Map ID: 250
@@ -69583,6 +69503,7 @@ List of Event Commands:
  @>Text: Here lies my hopes and dreams
   :    : \nSecond only to my loss of innocence
  @>Conditional Branch: Variable [0120: Graveyard Variable] == 1
+  @>Play SE: 'Rock Smash', 50, 50
   @>Control Variables: [0120: Graveyard Variable] += 1
   @>
  : Else
@@ -69632,9 +69553,10 @@ Trigger: Action Button
 
 List of Event Commands:
 @>Conditional Branch: Player is facing Up
- @>Text: Rest in Peace\n\nS. W.
- @>Text: He Was Number One\n\n#1
+ @>Text: Rest in Peace\nS. W.
+ @>Text: He Was Number One\n#1
  @>Control Variables: [0120: Graveyard Variable] += 1
+ @>Play SE: 'Rock Smash', 50, 50
  @>
 : Branch End
 @>
@@ -69653,8 +69575,8 @@ Trigger: Action Button
 
 List of Event Commands:
 @>Conditional Branch: Player is facing Up
- @>Text: Rest in Peace\n\nS. W.
- @>Text: He Was Number One\n\n#1
+ @>Text: Rest in Peace\nS. W.
+ @>Text: He Was Number One\n#1
  @>
 : Branch End
 @>
@@ -69681,6 +69603,9 @@ List of Event Commands:
  @>Text: In honor of Cerberus the Dodrio
   :    : \nYou did it you magnificent bird, you flew like none else could
  @>Conditional Branch: Variable [0120: Graveyard Variable] == 2
+  @>Play SE: 'Mining collapse', 80, 50
+  @>Show Animation: Player, [Exclaim bubble]
+  @>Text: It sounded like something somewhere nearby opened up!
   @>Control Variables: [0120: Graveyard Variable] += 1
   @>
  : Else
@@ -69749,19 +69674,19 @@ List of Event Commands:
  @>Text: \pn inspects the mysterious grave...
  @>Conditional Branch: Script: pbReceiveItem(:TM90)
   @>Text: ...Hm? There's a note attached to the grave as well.
-  @>Text: \w[black]My dearest, I'm afraid I failed in finding the tree we
+  @>Text: \w[dark]My dearest, I'm afraid I failed in finding the tree we
    :    : favored in our youth.
-  @>Text: \w[black]Very likely, it was cut down to make way for land
+  @>Text: \w[dark]Very likely, it was cut down to make way for land
    :    : development.
-  @>Text: \w[black]But that's just how it goes for Humans, wouldn't you 
+  @>Text: \w[dark]But that's just how it goes for Humans, wouldn't you 
    :    : agree?
-  @>Text: \w[black]Though it's not the same, I've managed to create a
+  @>Text: \w[dark]Though it's not the same, I've managed to create a
    :    : suitable subtitute, where I could lay you to rest properly.
-  @>Text: \w[black]I've sealed it away, using the power of the spectre that
+  @>Text: \w[dark]I've sealed it away, using the power of the spectre that
    :    : idolizes wilted trees.
-  @>Text: \w[black]Should the day come where someone stumbles across
-   :    : it, I hope they are able to a person with a kind, if adventurous,
-   :    : soul, like you were.
+  @>Text: \w[dark]Should the day come where someone stumbles across
+   :    : it, I hope they are a person with a kind, adventurous soul like you 
+   :    : were.
   @>Control Self Switch: A =ON
   @>
  : Else
@@ -69785,19 +69710,19 @@ Trigger: Action Button
 
 List of Event Commands:
 @>Conditional Branch: Player is facing Up
- @>Text: \w[black]My dearest, I'm afraid I failed in finding the tree we
+ @>Text: \w[dark]My dearest, I'm afraid I failed in finding the tree we
   :    : favored in our youth.
- @>Text: \w[black]Very likely, it was cut down to make way for land
+ @>Text: \w[dark]Very likely, it was cut down to make way for land
   :    : development.
- @>Text: \w[black]But that's just how it goes for Humans, wouldn't you 
+ @>Text: \w[dark]But that's just how it goes for Humans, wouldn't you 
   :    : agree?
- @>Text: \w[black]Though it's not the same, I've managed to create a
+ @>Text: \w[dark]Though it's not the same, I've managed to create a
   :    : suitable subtitute, where I could lay you to rest properly.
- @>Text: \w[black]I've sealed it away, using the power of the spectre that
+ @>Text: \w[dark]I've sealed it away, using the power of the spectre that
   :    : idolizes wilted trees.
- @>Text: \w[black]Should the day come where someone stumbles across
-  :    : it, I hope they are able to a person with a kind, if adventurous,
-  :    : soul, like you were.
+ @>Text: \w[dark]Should the day come where someone stumbles across
+  :    : it, I hope they are a person with a kind, adventurous soul like you 
+  :    : were.
  @>
 : Branch End
 @>
@@ -70680,6 +70605,76 @@ List of Event Commands:
  @>Text: Even in Death,\n\n#Deadbeat forever
  @>
 : Branch End
+@>
+
+#------------------------------------------------------------------------------
+Event ID: 027
+Event Name: EV027
+(X,Y): (037,040)
+
+Page #1
+Conditions
+None
+
+Autonomous Movement
+Type: Fixed
+Speed: 3: Slow
+Freq: 3: Low
+Options Enabled
+Move Animation
+Trigger: Action Button
+
+List of Event Commands:
+@>Text: This grave stone is a different color. Inspect it?
+@>Show Choices: Yes, No
+(When Cancel: Choice 2)
+: When [Yes]
+ @>Text: You take a closer look...
+ @>Wait: 20 frame(s)
+ @>Show Animation: Player, [Exclaim bubble]
+ @>Text: A hand popped out of the ground!
+ @>Script: Pokemon.play_cry(:CYOSHIKA)
+ @>Wait: 10 frame(s)
+ @>Script: pbWildBattle(:CYOSHIKA,20)
+ @>Script: pbSetEventTime
+ @>
+: When [No]
+ @>
+: Branch End
+@>
+
+Page #2
+Conditions
+Self Switch A is ON
+
+Autonomous Movement
+Type: Fixed
+Speed: 3: Slow
+Freq: 3: Low
+Options Enabled
+Move Animation
+Trigger: Action Button
+
+List of Event Commands:
+@>Text: The grave appears to be empty now...
+@>
+
+Page #3
+Conditions
+Switch 0023: s:cooledDown?(86400) is ON
+Self Switch A is ON
+
+Autonomous Movement
+Type: Fixed
+Speed: 3: Slow
+Freq: 3: Low
+Options Enabled
+Move Animation
+Trigger: Autorun
+
+List of Event Commands:
+@>Control Self Switch: A =OFF
+@>Script: setTempSwitchOn("A")
 @>
 
 #------------------------------------------------------------------------------
@@ -72762,7 +72757,7 @@ List of Event Commands:
 #------------------------------------------------------------------------------
 Event ID: 003
 Event Name: ExitArrow
-(X,Y): (042,008)
+(X,Y): (043,008)
 
 Page #1
 Conditions
@@ -72955,7 +72950,7 @@ List of Event Commands:
 #------------------------------------------------------------------------------
 Event ID: 010
 Event Name: Name Rater
-(X,Y): (042,004)
+(X,Y): (043,004)
 
 Page #1
 Conditions
@@ -74420,7 +74415,7 @@ Move Animation
 Trigger: Event Touch
 
 List of Event Commands:
-@>Script: TrainerIntro(:HEXMANIAC)
+@>Script: TrainerIntro2(:HEXMANIAC)
 @>Script: Kernel.pbNoticePlayer(get_character(0))
 @>Text: The black wind howls... You will soon perish at my hands.
 @>Conditional Branch: Script: pbTrainerBattle(:HEXMANIAC,"Schala",_I("Oh... How dreadful."))
@@ -75187,7 +75182,7 @@ List of Event Commands:
 @>Text: I can see you have a long journey ahead of you, a perilous one with 
  :    : many foes and dangers.
 @>Text: Take these. I am sure you will find some use for it along the way.
-@>Script: pbReceiveItem(:SC04)
+@>Script: pbReceiveItem(:HC04)
 :       : pbReceiveItem(:HM04)
 @>Text: These can be used to teach Strength to your Pokémon or Puppets.
  :    : They can then use Strength to push aside heavy objects, such as
@@ -75852,48 +75847,6 @@ List of Event Commands:
 @>
 
 #------------------------------------------------------------------------------
-Event ID: 014
-Event Name: ---
-(X,Y): (012,043)
-
-Page #1
-Conditions
-None
-
-Graphic: Object ball
-
-Autonomous Movement
-Type: Fixed
-Speed: 3: Slow
-Freq: 3: Low
-Options Enabled
-Move Animation
-Trigger: Action Button
-
-List of Event Commands:
-@>Control Self Switch: A =ON
-@>
-
-Page #2
-Conditions
-Self Switch A is ON
-
-Graphic: light1
-
-Autonomous Movement
-Type: Fixed
-Speed: 3: Slow
-Freq: 3: Low
-Options Enabled
-Move Animation
-Through
-Always on Top
-Trigger: Action Button
-
-List of Event Commands:
-@>
-
-#------------------------------------------------------------------------------
 
 #==============================================================================
 Map ID: 260
@@ -76338,6 +76291,7 @@ List of Event Commands:
 @>Text: \xn[\pn]W-Wait, what's this under me!?\wt[20] I... I can't move!
 @>Text: \wm\w[dark]<i>That would be the idea.</i>
 @>Comment: -----------------------
+@>Play BGM: 'P-019. Last Occultism', 100, 100
 @>Set Move Route: [Priestess1]
  :              : $>SE: 'teleporter', 80, 100
  :              : $>Change Opacity: 255
@@ -76432,6 +76386,7 @@ List of Event Commands:
 @>Set Move Route: Player
  :              : $>Turn Up
 @>Wait: 40 frame(s)
+@>Fade Out BGM: 2 sec.
 @>Set Move Route: [Priestess2]
  :              : $>Wait: 14 frame(s)
  :              : $>Turn Up
@@ -76482,7 +76437,7 @@ List of Event Commands:
  :    : this far, and we'll pursue every avenue we can until we achieve our
  :    : goals!
 @>Wait: 25 frame(s)
-@>Text: \xn[Head Priestess]...Hmph. I see you won't be disuaded so
+@>Text: \xn[Head Priestess]...Hmph. I see you won't be dissuaded so
  :    : easily.
 @>Comment: -----------
 @>Text: \xn[Head Priestess]If you want to be tested so bad, then
@@ -76491,6 +76446,7 @@ List of Event Commands:
 @>Set Move Route: Player
  :              : $>Always on Top OFF
 @>Script: pbSetSelfSwitch(10,"A",false)
+@>Script: TrainerIntro2(:ELDERPRIESTESS)
 @>Text: \xn[Head Priestess]We are the keepers of this knowledge. If
  :    : you wish to inherit it, then you must prove you are worthy of it!
 @>Text: \xn[Head Priestess]If you are found to be lacking, then you
@@ -76514,15 +76470,647 @@ Move Animation
 Trigger: Autorun
 
 List of Event Commands:
+@>Script: TrainerIntro2(:ELDERPRIESTESS)
 @>Text: \xn[Head Priestess]Hmph! Come, child! Let me show you what the
  :    : descendant of the great and venerable Hakurei Clan is capable
  :    : of!
+@>Change Battle BGM: 'B-022. Demystify Feast', 100, 100
 @>Conditional Branch: Script: pbTrainerBattle(:ELDERPRIESTESS,"Angela",_I("Perhaps this is how it was meant to be."))
+ @>Play BGM: 'W-023. Pokemon Tower', 100, 100
  @>Text: \xn[Head Priestess]It would seem the gods have favored you 
   :    : today, Miss \pn.
  @>Text: \xn[\pn]I take it that means you'll tell me all that you know?
  @>Text: \xn[Head Priestess]Under normal circumstances, I would shoo you 
-  :    : out of the Tower without a second though, however...
+  :    : out of the Tower without a second thought, however...
+ @>Text: \xn[Head Priestess]There's... something about you. You claim to 
+  :    : be normal, but I believe otherwise.
+ @>Text: \xn[Head Priestess]I don't know what it is, but... Perhaps we can
+  :    : trust you with the knowledge.
+ @>Text: \xn[\pn]\b(Finally, progress!)
+ @>Text: Lady Angela, are you sure that is a good idea? Just giving away
+  :    : your clan's ancient heritage to a stranger?
+ @>Text: \xn[Head Priestess]As I said, I believe this person is trustworthy
+  :    : enough. I could gather as such through our battle.
+ @>Text: \xn[Head Priestess]Besides... The Hakurei Clan is all but forgotten
+  :    : to time. None are left alive to remember or acknowledge our 
+  :    : lineage.
+ @>Text: \xn[Head Priestess]I have to wonder if the other side's clan is still
+  :    : holding up...
+ @>Wait: 20 frame(s)
+ @>Text: \xn[Head Priestess]Hmph! At any rate, Miss \pn?
+ @>Text: \xn[\pn]Yes? What is it?
+ @>Text: \xn[Head Priestess]I will ask you to wait in my office, just next to
+  :    : the archives, while I look for the relevant tomes we have.
+ @>Text: \xn[Head Priestess]I cannot promise it'll be much. Most of my
+  :    : clan's tomes were lost when they moved from their ancestral
+  :    : home.
+ @>Text: \xn[\pn]Oh, no, don't worry! Anything you have will be helpful!
+  :    : I'll be taking my leave now!
+ @>Script: pbSetSelfSwitch2(259,3,"A",true)
+ :       : pbSetSelfSwitch2(259,7,"B",true)
+ :       : pbSetSelfSwitch2(259,8,"A",true)
+ @>Control Self Switch: B =ON
+ @>Play SE: 'Door exit', 80, 100
+ @>Change Screen Color Tone: (-255,-255,-255,0), @6
+ @>Wait: 8 frame(s)
+ @>Transfer Player:[259: Lavender Tower], (007,041), Up, No Fade
+ @>Change Screen Color Tone: (0,0,0,0), @6
+ @>
+: Branch End
+@>
+
+Page #3
+Conditions
+Self Switch B is ON
+
+Autonomous Movement
+Type: Fixed
+Speed: 3: Slow
+Freq: 3: Low
+Options Enabled
+Move Animation
+Trigger: Action Button
+
+List of Event Commands:
+@>
+
+#------------------------------------------------------------------------------
+Event ID: 012
+Event Name: Autorun A
+(X,Y): (024,000)
+
+Page #1
+Conditions
+None
+
+Autonomous Movement
+Type: Fixed
+Speed: 3: Slow
+Freq: 3: Low
+Options Enabled
+Move Animation
+Trigger: Action Button
+
+List of Event Commands:
+@>Wait: 2 frame(s)
+@>Set Move Route: Player
+ :              : $>Change Speed: 3
+ :              : $>Move Up
+ :              : $>Move Up
+ :              : $>Move Up
+ :              : $>Move Up
+ :              : $>Move Up
+ :              : $>Move Up
+ :              : $>Move Up
+ :              : $>Move Up
+ :              : $>Move Up
+@>Text: \xn[\pn]\b(This must be the archive room... I wonder where I should
+ :    : look first?)
+@>Wait for Move's Completion
+@>Wait: 30 frame(s)
+@>Text: \wm\w[dark]<i>Is this the one you spoke of, Lady Angela?</i>
+@>Show Animation: Player, [Question bubble]
+@>Set Move Route: Player
+                  (Repeat Action)
+ :              : $>Turn at Random
+ :              : $>Wait: 10 frame(s)
+@>Text: \wm\w[dark]<i>Yes... She's the one who wants information about</i>
+ :    : that<i>...</i>
+@>Text: \wm\w[dark]<i>I thought there was none left save for the decendants
+ :    : of the first settlers who knew about that!</i>
+@>Text: \wm\w[dark]<i>And yet, clearly she knows about it. Could she be a
+ :    : descendant, or...</i>
+@>Set Move Route: Player
+ :              : $>Turn Up
+@>Text: \xn[\pn]Hello? Is anybody there?
+@>Text: \wm\w[dark]<i>She can hear us!? But that's impossible!</i>
+@>Text: \xn[\pn]I can hear you quite normally... Are you not speaking?
+@>Text: \wm\w[dark]<i>She's not normal... There's definitely something abnormal
+ :    : about her!</i>
+@>Text: \xn[\pn]Okay, this is getting a bit strange... I think I'll just... come
+ :    : back another time...
+@>Text: \wm\w[dark]<i>No, you shall not!</i>
+@>Text: \l[1]\wm\w[dark]<ac><fs=38><i>\rHakurei Clan Art - Sealing Circle</i></fs></ac>
+@>Screen Flash: (255,255,255,255), @20
+@>Set Move Route: Player
+ :              : $>Always on Top ON
+@>Script: pbSetSelfSwitch(10,"A",true)
+@>Wait: 20 frame(s)
+@>Show Animation: Player, [Exclaim bubble]
+@>Text: \xn[\pn]W-Wait, what's this under me!?\wt[20] I... I can't move!
+@>Text: \wm\w[dark]<i>That would be the idea.</i>
+@>Comment: -----------------------
+@>Set Move Route: [Priestess1]
+ :              : $>SE: 'teleporter', 80, 100
+ :              : $>Change Opacity: 255
+@>Set Move Route: Player
+ :              : $>Turn Left
+@>Wait for Move's Completion
+@>Wait: 20 frame(s)
+@>Set Move Route: [Priestess8]
+ :              : $>SE: 'teleporter', 80, 100
+ :              : $>Change Opacity: 255
+@>Set Move Route: Player
+ :              : $>Turn Right
+@>Wait for Move's Completion
+@>Wait: 20 frame(s)
+@>Set Move Route: Player
+ :              : $>Turn Left
+ :              : $>Wait: 6 frame(s)
+ :              : $>Turn Right
+ :              : $>Wait: 6 frame(s)
+ :              : $>Turn Left
+ :              : $>Wait: 6 frame(s)
+ :              : $>Turn Right
+ :              : $>Wait: 6 frame(s)
+ :              : $>Turn Left
+ :              : $>Wait: 6 frame(s)
+ :              : $>Turn Right
+ :              : $>Wait: 20 frame(s)
+ :              : $>Turn Up
+@>Set Move Route: [Priestess2]
+ :              : $>SE: 'teleporter', 80, 100
+ :              : $>Change Opacity: 255
+@>Wait: 6 frame(s)
+@>Set Move Route: [Priestess7]
+ :              : $>SE: 'teleporter', 80, 100
+ :              : $>Change Opacity: 255
+@>Wait: 6 frame(s)
+@>Set Move Route: [Priestess3]
+ :              : $>SE: 'teleporter', 80, 100
+ :              : $>Change Opacity: 255
+@>Wait: 6 frame(s)
+@>Set Move Route: [Priestess6]
+ :              : $>SE: 'teleporter', 80, 100
+ :              : $>Change Opacity: 255
+@>Wait: 6 frame(s)
+@>Set Move Route: [Priestess4]
+ :              : $>SE: 'teleporter', 80, 100
+ :              : $>Change Opacity: 255
+@>Wait: 6 frame(s)
+@>Set Move Route: [Priestess5]
+ :              : $>SE: 'teleporter', 80, 100
+ :              : $>Change Opacity: 255
+@>Wait: 20 frame(s)
+@>Set Move Route: [Head Priestess]
+ :              : $>SE: 'teleporter', 80, 100
+ :              : $>Change Opacity: 255
+@>Wait for Move's Completion
+@>Script: pbSetSelfSwitch(1,"A",true)
+:       : pbSetSelfSwitch(2,"A",true)
+:       : pbSetSelfSwitch(3,"A",true)
+:       : pbSetSelfSwitch(4,"A",true)
+:       : pbSetSelfSwitch(5,"A",true)
+:       : pbSetSelfSwitch(6,"A",true)
+:       : pbSetSelfSwitch(7,"A",true)
+:       : pbSetSelfSwitch(8,"A",true)
+:       : pbSetSelfSwitch(9,"A",true)
+@>Wait: 20 frame(s)
+@>Text: \xn[Head Priestess]So, let me ask you this question again. <i>Who</i>
+ :    : are you?
+@>Text: \xn[\pn]I said it earlier! My name is \pn!
+@>Conditional Branch: Variable [0107: Chosen Protag] == 0
+ @>Comment: --- Renko
+ @>Show Animation: [Priestess6], [Exclaim bubble]
+ @>Text: You dare commit sacrilege here? We know you're not the
+  :    : Founder!
+ @>Text: No, perhaps you're a scheeming Youkai from the other side
+  :    : pretending to be her, aiming to get your revenge after all 
+  :    : these years!
+ @>Set Move Route: Player
+  :              : $>Turn Right
+ @>Text: \xn[\pn]I have no idea what you're even talking about!
+ @>Text: Silence, demon! Your lies will not work here!
+ @>Set Move Route: Player
+  :              : $>Turn Up
+ @>
+: Branch End
+@>Text: Well, regardless of who she <i>claims</i> she is, if she's anything
+ :    : supernatural, this sealing circle will reveal their true identity.
+@>Set Move Route: Player
+ :              : $>Turn Right
+@>Text: \xn[\pn]But I'm really just a normal human!
+@>Text: \xn[Head Priestess]Well, we shall see about that now, won't we?
+@>Set Move Route: Player
+ :              : $>Turn Up
+@>Wait: 40 frame(s)
+@>Fade Out BGM: 2 sec.
+@>Set Move Route: [Priestess2]
+ :              : $>Wait: 14 frame(s)
+ :              : $>Turn Up
+@>Text: \..\..\..\wt[10]So.\wt[10] How long is this supposed to take?
+@>Wait for Move's Completion
+@>Set Move Route: [Priestess4]
+ :              : $>Turn Down
+@>Text: It should have been instantaneous... At least, that's what the
+ :    : scriptures have said!
+@>Set Move Route: [Priestess2]
+ :              : $>Turn Right
+@>Set Move Route: [Priestess4]
+ :              : $>Turn Right
+@>Text: Even the strongest Youkai shouldn't be able to remain in
+ :    : disguise in this field.
+@>Set Move Route: Player
+ :              : $>Turn Left
+@>Text: \xn[\pn]That's because I'm not a Youkai! I keep saying it, but
+ :    : I'm just a human!
+@>Text: Then how do you know about the <i>gensou kyou</i>!? The existence
+ :    : of it has been kept concealed from the general public ever since
+ :    : the realm was sealed away almost 200 years ago!
+@>Set Move Route: Player
+ :              : $>Turn Right
+@>Text: \xn[\pn]The\..\..\.. <i>gensou kyou</i>? Is that what the "Sealed Realm"
+ :    : is called?
+@>Text: \xn[Head Priestess]You really don't know, do you?
+@>Set Move Route: Player
+ :              : $>Turn Up
+@>Text: \xn[\pn]That's what I've been trying to say all this time! I'm doing
+ :    : research on the Sealed Realm with a friend of mine!
+@>Text: \xn[\pn]That's the purpose of our club, the discovery of the 
+ :    : supernatural, and to uncover the truth behind the Sealed Realm!
+@>Text: \xn[Head Priestess]This is not knowledge fit for the average 
+ :    : individual. The <i>gensou kyou</i> was sealed off from the realm of 
+ :    : humans for a reason.
+@>Text: \xn[\pn]Even so, we wish to know! This is our life's work, and
+ :    : if you have information on it, please tell me!
+@>Text: \xn[Head Priestess]The youth these days... truly impetuous and
+ :    : carefree.
+@>Text: \xn[Head Priestess]Seeking out knowledge of things that they
+ :    : can't even begin to understand.
+@>Text: \xn[Head Priestess]It has been our job to maintain the secrecy
+ :    : of the existence of the <i>gensou kyou</i>.
+@>Text: \xn[Head Priestess]You truly think that we'll just tell you
+ :    : because you ask?
+@>Text: \xn[\pn]No, I suppose not...\wt[10] But, it's still worth a shot! We've come
+ :    : this far, and we'll pursue every avenue we can until we achieve our
+ :    : goals!
+@>Wait: 25 frame(s)
+@>Text: \xn[Head Priestess]...Hmph. I see you won't be dissuaded so
+ :    : easily.
+@>Comment: -----------
+@>Text: \xn[Head Priestess]If you want to be tested so bad, then
+ :    : so be it!
+@>Screen Flash: (255,255,255,255), @20
+@>Set Move Route: Player
+ :              : $>Always on Top OFF
+@>Script: pbSetSelfSwitch(10,"A",false)
+@>Script: TrainerIntro2(:ELDERPRIESTESS)
+@>Text: \xn[Head Priestess]We are the keepers of this knowledge. If
+ :    : you wish to inherit it, then you must prove you are worthy of it!
+@>Text: \xn[Head Priestess]If you are found to be lacking, then you
+ :    : will have met a dead end here.
+@>Text: \xn[Head Priestess]Do you accept these conditions?
+@>Text: \xn[\pn]I don't have much of a choice, let's do this!
+@>Script: pbSetSelfSwitch2(259,7,"A",true)
+@>Control Self Switch: A =ON
+@>
+
+Page #2
+Conditions
+Self Switch A is ON
+
+Autonomous Movement
+Type: Fixed
+Speed: 3: Slow
+Freq: 3: Low
+Options Enabled
+Move Animation
+Trigger: Action Button
+
+List of Event Commands:
+@>Script: TrainerIntro2(:ELDERPRIESTESS)
+@>Text: \xn[Head Priestess]Hmph! Come, child! Let me show you what the
+ :    : descendant of the great and venerable Hakurei Clan is capable
+ :    : of!
+@>Change Battle BGM: 'B-022. Demystify Feast', 100, 100
+@>Conditional Branch: Script: pbTrainerBattle(:ELDERPRIESTESS,"Angela",_I("Perhaps this is how it was meant to be."))
+ @>Play BGM: 'W-023. Pokemon Tower', 100, 100
+ @>Text: \xn[Head Priestess]It would seem the gods have favored you 
+  :    : today, Miss \pn.
+ @>Text: \xn[\pn]I take it that means you'll tell me all that you know?
+ @>Text: \xn[Head Priestess]Under normal circumstances, I would shoo you 
+  :    : out of the Tower without a second thought, however...
+ @>Text: \xn[Head Priestess]There's... something about you. You claim to 
+  :    : be normal, but I believe otherwise.
+ @>Text: \xn[Head Priestess]I don't know what it is, but... Perhaps we can
+  :    : trust you with the knowledge.
+ @>Text: \xn[\pn]\b(Finally, progress!)
+ @>Text: Lady Angela, are you sure that is a good idea? Just giving away
+  :    : your clan's ancient heritage to a stranger?
+ @>Text: \xn[Head Priestess]As I said, I believe this person is trustworthy
+  :    : enough. I could gather as such through our battle.
+ @>Text: \xn[Head Priestess]Besides... The Hakurei Clan is all but forgotten
+  :    : to time. None are left alive to remember or acknowledge our 
+  :    : lineage.
+ @>Text: \xn[Head Priestess]I have to wonder if the other side's clan is still
+  :    : holding up...
+ @>Wait: 20 frame(s)
+ @>Text: \xn[Head Priestess]Hmph! At any rate, Miss \pn?
+ @>Text: \xn[\pn]Yes? What is it?
+ @>Text: \xn[Head Priestess]I will ask you to wait in my office, just next to
+  :    : the archives, while I look for the relevant tomes we have.
+ @>Text: \xn[Head Priestess]I cannot promise it'll be much. Most of my
+  :    : clan's tomes were lost when they moved from their ancestral
+  :    : home.
+ @>Text: \xn[\pn]Oh, no, don't worry! Anything you have will be helpful!
+  :    : I'll be taking my leave now!
+ @>Script: pbSetSelfSwitch2(259,3,"A",true)
+ :       : pbSetSelfSwitch2(259,7,"B",true)
+ :       : pbSetSelfSwitch2(259,8,"A",true)
+ @>Control Self Switch: B =ON
+ @>Play SE: 'Door exit', 80, 100
+ @>Change Screen Color Tone: (-255,-255,-255,0), @6
+ @>Wait: 8 frame(s)
+ @>Transfer Player:[259: Lavender Tower], (007,041), Up, No Fade
+ @>Change Screen Color Tone: (0,0,0,0), @6
+ @>
+: Branch End
+@>
+
+Page #3
+Conditions
+Self Switch B is ON
+
+Autonomous Movement
+Type: Fixed
+Speed: 3: Slow
+Freq: 3: Low
+Options Enabled
+Move Animation
+Trigger: Action Button
+
+List of Event Commands:
+@>
+
+#------------------------------------------------------------------------------
+Event ID: 013
+Event Name: Autorun A
+(X,Y): (024,028)
+
+Page #1
+Conditions
+None
+
+Autonomous Movement
+Type: Fixed
+Speed: 3: Slow
+Freq: 3: Low
+Options Enabled
+Move Animation
+Trigger: Action Button
+
+List of Event Commands:
+@>Wait: 2 frame(s)
+@>Set Move Route: Player
+ :              : $>Change Speed: 3
+ :              : $>Move Up
+ :              : $>Move Up
+ :              : $>Move Up
+ :              : $>Move Up
+ :              : $>Move Up
+ :              : $>Move Up
+ :              : $>Move Up
+ :              : $>Move Up
+ :              : $>Move Up
+@>Text: \xn[\pn]\b(This must be the archive room... I wonder where I should
+ :    : look first?)
+@>Wait for Move's Completion
+@>Wait: 30 frame(s)
+@>Text: \wm\w[dark]<i>Is this the one you spoke of, Lady Angela?</i>
+@>Show Animation: Player, [Question bubble]
+@>Set Move Route: Player
+                  (Repeat Action)
+ :              : $>Turn at Random
+ :              : $>Wait: 10 frame(s)
+@>Text: \wm\w[dark]<i>Yes... She's the one who wants information about</i>
+ :    : that<i>...</i>
+@>Text: \wm\w[dark]<i>I thought there was none left save for the decendants
+ :    : of the first settlers who knew about that!</i>
+@>Text: \wm\w[dark]<i>And yet, clearly she knows about it. Could she be a
+ :    : descendant, or...</i>
+@>Set Move Route: Player
+ :              : $>Turn Up
+@>Text: \xn[\pn]Hello? Is anybody there?
+@>Text: \wm\w[dark]<i>She can hear us!? But that's impossible!</i>
+@>Text: \xn[\pn]I can hear you quite normally... Are you not speaking?
+@>Text: \wm\w[dark]<i>She's not normal... There's definitely something abnormal
+ :    : about her!</i>
+@>Text: \xn[\pn]Okay, this is getting a bit strange... I think I'll just... come
+ :    : back another time...
+@>Text: \wm\w[dark]<i>No, you shall not!</i>
+@>Text: \l[1]\wm\w[dark]<ac><fs=38><i>\rHakurei Clan Art - Sealing Circle</i></fs></ac>
+@>Screen Flash: (255,255,255,255), @20
+@>Set Move Route: Player
+ :              : $>Always on Top ON
+@>Script: pbSetSelfSwitch(10,"A",true)
+@>Wait: 20 frame(s)
+@>Show Animation: Player, [Exclaim bubble]
+@>Text: \xn[\pn]W-Wait, what's this under me!?\wt[20] I... I can't move!
+@>Text: \wm\w[dark]<i>That would be the idea.</i>
+@>Comment: -----------------------
+@>Play BGM: 'P-019. Last Occultism', 100, 100
+@>Set Move Route: [Priestess1]
+ :              : $>SE: 'teleporter', 80, 100
+ :              : $>Change Opacity: 255
+@>Set Move Route: Player
+ :              : $>Turn Left
+@>Wait for Move's Completion
+@>Wait: 20 frame(s)
+@>Set Move Route: [Priestess8]
+ :              : $>SE: 'teleporter', 80, 100
+ :              : $>Change Opacity: 255
+@>Set Move Route: Player
+ :              : $>Turn Right
+@>Wait for Move's Completion
+@>Wait: 20 frame(s)
+@>Set Move Route: Player
+ :              : $>Turn Left
+ :              : $>Wait: 6 frame(s)
+ :              : $>Turn Right
+ :              : $>Wait: 6 frame(s)
+ :              : $>Turn Left
+ :              : $>Wait: 6 frame(s)
+ :              : $>Turn Right
+ :              : $>Wait: 6 frame(s)
+ :              : $>Turn Left
+ :              : $>Wait: 6 frame(s)
+ :              : $>Turn Right
+ :              : $>Wait: 20 frame(s)
+ :              : $>Turn Up
+@>Set Move Route: [Priestess2]
+ :              : $>SE: 'teleporter', 80, 100
+ :              : $>Change Opacity: 255
+@>Wait: 6 frame(s)
+@>Set Move Route: [Priestess7]
+ :              : $>SE: 'teleporter', 80, 100
+ :              : $>Change Opacity: 255
+@>Wait: 6 frame(s)
+@>Set Move Route: [Priestess3]
+ :              : $>SE: 'teleporter', 80, 100
+ :              : $>Change Opacity: 255
+@>Wait: 6 frame(s)
+@>Set Move Route: [Priestess6]
+ :              : $>SE: 'teleporter', 80, 100
+ :              : $>Change Opacity: 255
+@>Wait: 6 frame(s)
+@>Set Move Route: [Priestess4]
+ :              : $>SE: 'teleporter', 80, 100
+ :              : $>Change Opacity: 255
+@>Wait: 6 frame(s)
+@>Set Move Route: [Priestess5]
+ :              : $>SE: 'teleporter', 80, 100
+ :              : $>Change Opacity: 255
+@>Wait: 20 frame(s)
+@>Set Move Route: [Head Priestess]
+ :              : $>SE: 'teleporter', 80, 100
+ :              : $>Change Opacity: 255
+@>Wait for Move's Completion
+@>Script: pbSetSelfSwitch(1,"A",true)
+:       : pbSetSelfSwitch(2,"A",true)
+:       : pbSetSelfSwitch(3,"A",true)
+:       : pbSetSelfSwitch(4,"A",true)
+:       : pbSetSelfSwitch(5,"A",true)
+:       : pbSetSelfSwitch(6,"A",true)
+:       : pbSetSelfSwitch(7,"A",true)
+:       : pbSetSelfSwitch(8,"A",true)
+:       : pbSetSelfSwitch(9,"A",true)
+@>Wait: 20 frame(s)
+@>Text: \xn[Head Priestess]So, let me ask you this question again. <i>Who</i>
+ :    : are you?
+@>Text: \xn[\pn]I said it earlier! My name is \pn!
+@>Conditional Branch: Variable [0107: Chosen Protag] == 0
+ @>Comment: --- Renko
+ @>Show Animation: [Priestess6], [Exclaim bubble]
+ @>Text: You dare commit sacrilege here? We know you're not the
+  :    : Founder!
+ @>Text: No, perhaps you're a scheeming Youkai from the other side
+  :    : pretending to be her, aiming to get your revenge after all 
+  :    : these years!
+ @>Set Move Route: Player
+  :              : $>Turn Right
+ @>Text: \xn[\pn]I have no idea what you're even talking about!
+ @>Text: Silence, demon! Your lies will not work here!
+ @>Set Move Route: Player
+  :              : $>Turn Up
+ @>
+: Branch End
+@>Text: Well, regardless of who she <i>claims</i> she is, if she's anything
+ :    : supernatural, this sealing circle will reveal their true identity.
+@>Set Move Route: Player
+ :              : $>Turn Right
+@>Text: \xn[\pn]But I'm really just a normal human!
+@>Text: \xn[Head Priestess]Well, we shall see about that now, won't we?
+@>Set Move Route: Player
+ :              : $>Turn Up
+@>Conditional Branch: Script: $DEBUG == false
+ @>Change Screen Color Tone: (-255,-255,-255,0), @40
+ @>Wait: 40 frame(s)
+ @>Transfer Player:[001: Intro], (009,005)
+ @>Fade Out BGM: 2 sec.
+ @>Script: Preview.new
+ @>Wait: 25 frame(s)
+ @>Return to Title Screen
+ @>
+: Else
+ @>Wait: 40 frame(s)
+ @>Fade Out BGM: 2 sec.
+ @>Set Move Route: [Priestess2]
+  :              : $>Wait: 14 frame(s)
+  :              : $>Turn Up
+ @>Text: \..\..\..\wt[10]So.\wt[10] How long is this supposed to take?
+ @>Wait for Move's Completion
+ @>Set Move Route: [Priestess4]
+  :              : $>Turn Down
+ @>Text: It should have been instantaneous... At least, that's what the
+  :    : scriptures have said!
+ @>Set Move Route: [Priestess2]
+  :              : $>Turn Right
+ @>Set Move Route: [Priestess4]
+  :              : $>Turn Right
+ @>Text: Even the strongest Youkai shouldn't be able to remain in
+  :    : disguise in this field.
+ @>Set Move Route: Player
+  :              : $>Turn Left
+ @>Text: \xn[\pn]That's because I'm not a Youkai! I keep saying it, but
+  :    : I'm just a human!
+ @>Text: Then how do you know about the <i>gensou kyou</i>!? The existence
+  :    : of it has been kept concealed from the general public ever since
+  :    : the realm was sealed away almost 200 years ago!
+ @>Set Move Route: Player
+  :              : $>Turn Right
+ @>Text: \xn[\pn]The\..\..\.. <i>gensou kyou</i>? Is that what the "Sealed Realm"
+  :    : is called?
+ @>Text: \xn[Head Priestess]You really don't know, do you?
+ @>Set Move Route: Player
+  :              : $>Turn Up
+ @>Text: \xn[\pn]That's what I've been trying to say all this time! I'm doing
+  :    : research on the Sealed Realm with a friend of mine!
+ @>Text: \xn[\pn]That's the purpose of our club, the discovery of the 
+  :    : supernatural, and to uncover the truth behind the Sealed Realm!
+ @>Text: \xn[Head Priestess]This is not knowledge fit for the average 
+  :    : individual. The <i>gensou kyou</i> was sealed off from the realm of 
+  :    : humans for a reason.
+ @>Text: \xn[\pn]Even so, we wish to know! This is our life's work, and
+  :    : if you have information on it, please tell me!
+ @>Text: \xn[Head Priestess]The youth these days... truly impetuous and
+  :    : carefree.
+ @>Text: \xn[Head Priestess]Seeking out knowledge of things that they
+  :    : can't even begin to understand.
+ @>Text: \xn[Head Priestess]It has been our job to maintain the secrecy
+  :    : of the existence of the <i>gensou kyou</i>.
+ @>Text: \xn[Head Priestess]You truly think that we'll just tell you
+  :    : because you ask?
+ @>Text: \xn[\pn]No, I suppose not...\wt[10] But, it's still worth a shot! We've come
+  :    : this far, and we'll pursue every avenue we can until we achieve our
+  :    : goals!
+ @>Wait: 25 frame(s)
+ @>Text: \xn[Head Priestess]...Hmph. I see you won't be dissuaded so
+  :    : easily.
+ @>Comment: -----------
+ @>Text: \xn[Head Priestess]If you want to be tested so bad, then
+  :    : so be it!
+ @>Screen Flash: (255,255,255,255), @20
+ @>Set Move Route: Player
+  :              : $>Always on Top OFF
+ @>Script: pbSetSelfSwitch(10,"A",false)
+ @>Script: TrainerIntro2(:ELDERPRIESTESS)
+ @>Text: \xn[Head Priestess]We are the keepers of this knowledge. If
+  :    : you wish to inherit it, then you must prove you are worthy of it!
+ @>Text: \xn[Head Priestess]If you are found to be lacking, then you
+  :    : will have met a dead end here.
+ @>Text: \xn[Head Priestess]Do you accept these conditions?
+ @>Text: \xn[\pn]I don't have much of a choice, let's do this!
+ @>Script: pbSetSelfSwitch2(259,7,"A",true)
+ @>Control Self Switch: A =ON
+ @>
+: Branch End
+@>
+
+Page #2
+Conditions
+Self Switch A is ON
+
+Autonomous Movement
+Type: Fixed
+Speed: 3: Slow
+Freq: 3: Low
+Options Enabled
+Move Animation
+Trigger: Action Button
+
+List of Event Commands:
+@>Script: TrainerIntro2(:ELDERPRIESTESS)
+@>Text: \xn[Head Priestess]Hmph! Come, child! Let me show you what the
+ :    : descendant of the great and venerable Hakurei Clan is capable
+ :    : of!
+@>Change Battle BGM: 'B-022. Demystify Feast', 100, 100
+@>Conditional Branch: Script: pbTrainerBattle(:ELDERPRIESTESS,"Angela",_I("Perhaps this is how it was meant to be."))
+ @>Play BGM: 'W-023. Pokemon Tower', 100, 100
+ @>Text: \xn[Head Priestess]It would seem the gods have favored you 
+  :    : today, Miss \pn.
+ @>Text: \xn[\pn]I take it that means you'll tell me all that you know?
+ @>Text: \xn[Head Priestess]Under normal circumstances, I would shoo you 
+  :    : out of the Tower without a second thought, however...
  @>Text: \xn[Head Priestess]There's... something about you. You claim to 
   :    : be normal, but I believe otherwise.
  @>Text: \xn[Head Priestess]I don't know what it is, but... Perhaps we can

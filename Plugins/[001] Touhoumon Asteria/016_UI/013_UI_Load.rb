@@ -41,7 +41,7 @@ end
 #==============================================================================#
 class PokemonLoadScreen
   def pbStartLoadScreen
-	pbBGMPlay("U-003. A Dream that is more Scarlet than Red.ogg")
+	#pbBGMPlay("U-003. A Dream that is more Scarlet than Red.ogg")
     commands = []
     cmd_continue     = -1
     cmd_new_game     = -1

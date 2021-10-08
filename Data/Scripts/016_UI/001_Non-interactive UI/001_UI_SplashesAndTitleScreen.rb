@@ -77,7 +77,7 @@ class IntroEventScene < EventScene
     @pic.moveOpacity(0, FADE_TICKS, 0)
     @pic2.clearProcesses
     @pic2.moveOpacity(0, FADE_TICKS, 0)
-    pbBGMStop(1.0)
+    #pbBGMStop(1.0) # Derx: Commented out for the sake of science
     pictureWait
     scene.dispose   # Close the scene
   end
