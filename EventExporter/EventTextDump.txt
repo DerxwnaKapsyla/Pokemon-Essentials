@@ -2976,7 +2976,7 @@ Trigger: Autorun
 List of Event Commands:
 @>Script: activateQuest(:Quest1)
 @>Text: \bYour Quest Journal has been updated! You can view 
- :    : the Quest Journal from the menu.
+ :    : the Quest Journal from the pause menu.
 @>Text: \bYou can also look for quest objectives in the 
  :    : overworld by looking for an icon over them.
 @>Control Self Switch: B =ON
@@ -5227,7 +5227,8 @@ List of Event Commands:
  :              : $>Turn Right
 @>Text: \xn[Professor Oak]Hm? Is everything alright?
 @>Wait: 20 frame(s)
-@>Play BGM: 'W-004. Help!', 60, 100
+@>Script: playSpecialBGM(Intro_Help)
+@>Play BGM: 'W-004. Help!', 100, 100
 @>Text: \xn[Unknown Voice]HELP!!!
 @>Set Move Route: [Oak's Aide A]
  :              : $>Turn Right
@@ -6541,6 +6542,7 @@ Map ID: 013
 Map Name: Cutscene: Lab Back Garden
 Tileset: 001: Outside
 Width: 45, Height: 25
+Auto-Change BGM: W-012. Ecruteak & Cianwood City
 
 #------------------------------------------------------------------------------
 Event ID: 001
@@ -6831,6 +6833,7 @@ List of Event Commands:
 @>Wait for Move's Completion
 @>Fade Out BGM: 2 sec.
 @>Wait: 40 frame(s)
+@>Script: deactivateSpecialBGM(Intro_Help)
 @>Play BGM: 'W-002. Pallet Town', 100, 100
 @>Text: \xn[Professor Oak]I see you haven't lost your touch, Red! Well done!
 @>Set Move Route: Player
@@ -7057,6 +7060,8 @@ List of Event Commands:
 @>Fade Out BGM: 2 sec.
 @>Control Self Switch: C =ON
 @>Change Screen Color Tone: (-255,-255,-255,0), @6
+@>Wait: 10 frame(s)
+@>Script: NextMorning.new
 @>Wait: 20 frame(s)
 @>Transfer Player:[015: Renko & Maribel's House], (033,005), Down, No Fade
 @>Change Screen Color Tone: (0,0,0,0), @6
@@ -7713,7 +7718,7 @@ List of Event Commands:
 @>Change Screen Color Tone: (0,0,0,0), @20
 @>Wait: 1 frame(s)
 @>Text: \bYour Quest Journal has been updated! You can view 
- :    : the Quest Journal from the Pokégear menu.
+ :    : the Quest Journal from the pause menu.
 @>Text: \bYou can also look for quest objectives in the 
  :    : overworld by looking for an icon over them.
 @>Control Self Switch: A =ON
@@ -10386,7 +10391,7 @@ List of Event Commands:
  :    : use.
 @>Text: I already have a better one back home, so I can give 
  :    : you the one I have now!
-@>Script: Kernel.pbReceiveItem(PBItems::OLDROD)
+@>Script: pbReceiveItem(:OLDROD)
 @>Control Self Switch: A =ON
 @>
 
@@ -14055,7 +14060,7 @@ Trigger: Action Button
 List of Event Commands:
 @>Text: I've heard that looking into a water fountain can reveal
  :    : your greatest desires or some deep truths.
-@>Text: But whenever I look into it, all I see is someone's who
+@>Text: But whenever I look into it, all I see is someone who
  :    : leads a busy life with little time for relaxation.
 @>Text: What do you see reflected in the water?
 @>
@@ -15517,7 +15522,7 @@ Move Animation
 Trigger: Action Button
 
 List of Event Commands:
-@>Text: \sign[signskin]\l[3]<ac>Vermilion City Gym\n<ac>Leader: Lt. Surge\n<ac>"The Lightning American"
+@>Text: \sign[signskin]\l[3]<ac>Vermilion City Gym\n<ac>Leader: Lt. Surge\n<ac>"The Lightning Unovan"
 @>
 
 #------------------------------------------------------------------------------
@@ -22449,7 +22454,7 @@ List of Event Commands:
 
 #------------------------------------------------------------------------------
 Event ID: 017
-Event Name: Trainer(2)
+Event Name: Trainer(3)
 (X,Y): (047,019)
 
 Page #1
@@ -26613,6 +26618,8 @@ Trigger: Event Touch
 List of Event Commands:
 @>Script: TrainerIntro2(:LASS)
 @>Script: pbNoticePlayer(get_character(0))
+@>Script: setBattleRule("base", "yellow1")
+:       : setBattleRule("backdrop", "water")
 @>Text: Welcome to the Nugget Bridge! I'm the first trainer you have to fight. Beat all six of us, and you gain a valuable Nugget! Are you ready?
 @>Conditional Branch: Script: pbTrainerBattle(:LASS,"Mai",_I("The Bridge Sentry has fallen!"))
  @>Control Self Switch: A =ON
@@ -26661,6 +26668,8 @@ Trigger: Event Touch
 List of Event Commands:
 @>Script: TrainerIntro2(:YOUNGSTER)
 @>Script: pbNoticePlayer(get_character(0))
+@>Script: setBattleRule("base", "yellow1")
+:       : setBattleRule("backdrop", "water")
 @>Text: Nugget Bridge's Number two, ready to go! You think you have what it takes to make it to the end? Let's find out!
 @>Conditional Branch: Script: pbTrainerBattle(:YOUNGSTER,"Daryll",_I("Oof, I was beaten."))
  @>Control Self Switch: A =ON
@@ -26709,6 +26718,8 @@ Trigger: Event Touch
 List of Event Commands:
 @>Script: TrainerIntro2(:BIRDKEEPER)
 @>Script: pbNoticePlayer(get_character(0))
+@>Script: setBattleRule("base", "yellow1")
+:       : setBattleRule("backdrop", "water")
 @>Text: If you want to beat the Third Trainer of the Nugget Bridge, your skills need to soar higher than the fastest Tengu!
 @>Conditional Branch: Script: pbTrainerBattle(:BIRDKEEPER,"Derek",_I("Those are some high skills indeed!"))
  @>Control Self Switch: A =ON
@@ -26757,6 +26768,8 @@ Trigger: Event Touch
 List of Event Commands:
 @>Script: TrainerIntro2(:AROMALADY)
 @>Script: pbNoticePlayer(get_character(0))
+@>Script: setBattleRule("base", "yellow1")
+:       : setBattleRule("backdrop", "water")
 @>Text: I am the fourth member of the Nugget Bridge crew. Can you smell it in the air? It's the scent of victory. Whose you ask? Mine, silly!
 @>Conditional Branch: Script: pbTrainerBattle(:AROMALADY,"Roselyn",_I("Oh dear, I must have gotten distracted."))
  @>Control Self Switch: A =ON
@@ -26869,6 +26882,8 @@ List of Event Commands:
  @>Script: TrainerIntro2(:COOLCOUPLE)
  @>Text: \xn[Marcus]Since you made it to us, as per the rules of combat and of the bridge, we accept your challenge!
  @>Text: \xn[Elaine]Now prepare to be dazzled by our masterful combination!
+ @>Script: setBattleRule("base", "yellow1")
+ :       : setBattleRule("backdrop", "water")
  @>Conditional Branch: Script: pbTrainerBattle(:COOLCOUPLE,"Marcus & Elaine",_I("An excellent show of force, good job challenger!"),true)
   @>Text: \xn[Marcus]Congratulations on beating all six of the Nugget Bridge crew!
   @>Text: \xn[Elaine]To commemorate your victory, we award you a Nugget; the very namesake of this bridge!
@@ -27423,7 +27438,7 @@ List of Event Commands:
 #------------------------------------------------------------------------------
 Event ID: 008
 Event Name: Trainer(3)
-(X,Y): (025,016)
+(X,Y): (027,017)
 
 Page #1
 Conditions
@@ -27432,7 +27447,11 @@ None
 Graphic: trainer_HIKER
 
 Autonomous Movement
-Type: Fixed
+Type: Custom
+Custom Move Route:
+(Repeat Action)
+$>Turn at Random
+
 Speed: 3: Slow
 Freq: 3: Low
 Options Enabled
@@ -27459,7 +27478,11 @@ Self Switch A is ON
 Graphic: trainer_HIKER
 
 Autonomous Movement
-Type: Fixed
+Type: Custom
+Custom Move Route:
+(Repeat Action)
+$>Turn at Random
+
 Speed: 3: Slow
 Freq: 3: Low
 Options Enabled
@@ -27501,7 +27524,7 @@ List of Event Commands:
 
 #------------------------------------------------------------------------------
 Event ID: 010
-Event Name: Trainer(3)
+Event Name: Trainer(2)
 (X,Y): (030,015)
 
 Page #1
@@ -29785,7 +29808,7 @@ Trigger: Player Touch
 
 List of Event Commands:
 @>Change Screen Color Tone: (-255,-255,-255,0), @6
-@>Play SE: 'Exit Door', 100, 100
+@>Play SE: 'Door exit', 100, 100
 @>Wait: 8 frame(s)
 @>Transfer Player:[248: Rock Tunnel], (045,036), No Fade
 @>Change Screen Color Tone: (0,0,0,0), @6
@@ -29810,7 +29833,7 @@ Trigger: Player Touch
 
 List of Event Commands:
 @>Change Screen Color Tone: (-255,-255,-255,0), @6
-@>Play SE: 'Exit Door', 100, 100
+@>Play SE: 'Door exit', 100, 100
 @>Wait: 8 frame(s)
 @>Transfer Player:[248: Rock Tunnel], (009,011), No Fade
 @>Change Screen Color Tone: (0,0,0,0), @6
@@ -29893,7 +29916,7 @@ Trigger: Player Touch
 
 List of Event Commands:
 @>Change Screen Color Tone: (-255,-255,-255,0), @6
-@>Play SE: 'Exit Door', 100, 100
+@>Play SE: 'Door exit', 100, 100
 @>Wait: 8 frame(s)
 @>Transfer Player:[248: Rock Tunnel], (040,011), No Fade
 @>Change Screen Color Tone: (0,0,0,0), @6
@@ -32550,7 +32573,7 @@ List of Event Commands:
 
 Page #2
 Conditions
-Switch 0126:  is ON
+Variable 0110: Plot Control Variable is 7 or above
 
 Graphic: NPC 11
 
@@ -32565,7 +32588,6 @@ Trigger: Action Button
 List of Event Commands:
 @>Text: Good day miss, we have a decent selection of goods 
  :    : available for purchase. Would you like to buy some?
-@>Script: setPrice(:POTION,250)
 @>Text: I sell healing items and Status recovery items. Which 
  :    : would you like to pick from?
 @>Show Choices: Healing Items, Status Recovery Items, None
@@ -32590,7 +32612,7 @@ List of Event Commands:
 
 Page #3
 Conditions
-Switch 0129:  is ON
+Variable 0110: Plot Control Variable is 20 or above
 
 Graphic: NPC 11
 
@@ -32605,7 +32627,6 @@ Trigger: Action Button
 List of Event Commands:
 @>Text: Good day miss, we have a decent selection of goods 
  :    : available for purchase. Would you like to buy some?
-@>Script: setPrice(:POTION,250)
 @>Text: I sell healing items and Status recovery items. Which 
  :    : would you like to pick from?
 @>Show Choices: Healing Items, Status Recovery Items, None
@@ -32635,7 +32656,7 @@ List of Event Commands:
 
 Page #4
 Conditions
-Switch 0134:  is ON
+Variable 0110: Plot Control Variable is 20 or above
 
 Graphic: NPC 11
 
@@ -32650,7 +32671,6 @@ Trigger: Action Button
 List of Event Commands:
 @>Text: Good day miss, we have a decent selection of goods 
  :    : available for purchase. Would you like to buy some?
-@>Script: setPrice(:POTION,250)
 @>Text: I sell healing items and Status recovery items. Which 
  :    : would you like to pick from?
 @>Show Choices: Healing Items, Status Recovery Items, None
@@ -32743,7 +32763,7 @@ List of Event Commands:
 
 Page #2
 Conditions
-Switch 0126:  is ON
+Variable 0001: Temp Pokemon Choice is 7 or above
 
 Graphic: NPC 10
 
@@ -32784,7 +32804,7 @@ List of Event Commands:
 
 Page #3
 Conditions
-Switch 0129:  is ON
+Variable 0110: Plot Control Variable is 20 or above
 
 Graphic: NPC 10
 
@@ -32826,7 +32846,7 @@ List of Event Commands:
 
 Page #4
 Conditions
-Switch 0134:  is ON
+Variable 0110: Plot Control Variable is 20 or above
 
 Graphic: NPC 10
 
@@ -32875,7 +32895,7 @@ Event Name: Vitamins
 
 Page #1
 Conditions
-Switch 0134:  is ON
+Variable 0110: Plot Control Variable is 20 or above
 
 Graphic: trainer_COOLTRAINER_F
 
@@ -33209,28 +33229,8 @@ Move Animation
 Trigger: Action Button
 
 List of Event Commands:
-@>Text: Ah, Red, I see you've returned!
-@>Text: I suppose you're here to get appraised about the situation? How much do you already know?
-@>Text: Well, Professor Oak can probably tell it better than I can... You better go talk to him.
-@>
-
-Page #2
-Conditions
-Self Switch A is ON
-
-Graphic: trainer_SCIENTIST
-
-Autonomous Movement
-Type: Fixed
-Speed: 3: Slow
-Freq: 3: Low
-Options Enabled
-Move Animation
-Trigger: Action Button
-
-List of Event Commands:
-@>Text: That scream sounded like it came from the garden!
-@>Text: You don't think poachers are trying to steal the Professor's Puppets, right?
+@>Text: Professor Oak is one of the foremost researchers on Puppets, he was
+ :    : the one who discovered them alongside Professor Birch afterall!
 @>
 
 #------------------------------------------------------------------------------
@@ -44716,9 +44716,84 @@ List of Event Commands:
 : Branch End
 @>
 
+Page #2
+Conditions
+Switch 0004: Defeated Gym 1 is ON
+
+Graphic: gymtelecom
+
+Autonomous Movement
+Type: Fixed
+Speed: 3: Slow
+Freq: 3: Low
+Options Enabled
+Move Animation
+Direction Fix
+Trigger: Action Button
+
+List of Event Commands:
+@>Conditional Branch: Player is facing Right
+ @>Text: Accessing Gym Network.
+ @>Label: Start
+ @>Text: Please select what you want to know about.\ch[1,-1,Gym Leader Preference,
+  :    : Gym Mechanics,Gym Leader Information,Gym Rebattle Protocol]
+ @>Conditional Branch: Variable [0001: Temp Pokemon Choice] == -1
+  @>Text: Shutting down information database.
+  @>Exit Event Processing
+  @>
+ : Branch End
+ @>Conditional Branch: Variable [0001: Temp Pokemon Choice] == 0
+  @>Comment: Gym Leader Preference
+  @>Text: The Pewter City Gym, Brock, has a preference for
+   :    : Rock-type Pokémon and Earth-type Puppets.
+  @>Text: Aside from the traditional weaknesses of Rock-type
+   :    : Pokémon, Earth-type Puppets are weak to Hydro, Nature,
+   :    : and Cryo-Typed moves.
+  @>Text: Earth-Type Puppets resist damage from Miasma, Pyro,
+   :    : Poison, and Rock-type moves, and are immune to
+   :    : Wind and Electric-type moves.
+  @>Jump to Label: Start
+  @>
+ : Branch End
+ @>Conditional Branch: Variable [0001: Temp Pokemon Choice] == 1
+  @>Comment: Gym Mechanics
+  @>Text: Brock has opted to keep him gym simple for the sake
+   :    : of beginning challengers to the Gym Challenge.
+  @>Text: Despite constant criticisms that his Gym doesn't stand
+   :    : out when compared to other gyms, Brock has remained
+   :    : resolute in his decision.
+  @>Jump to Label: Start
+  @>
+ : Branch End
+ @>Conditional Branch: Variable [0001: Temp Pokemon Choice] == 2
+  @>Comment: Gym Leader Information
+  @>Text: Aside from being a Gym Leader, Brock is a well
+   :    : respected Pokémon Breeder, known across the
+   :    : world.
+  @>Text: As Brock is often called away for Breeder-related reasons,
+   :    : the curator of Pewter Musuem, Miles, will take over as 
+   :    : Brock's replacement Gym Leader.
+  @>Jump to Label: Start
+  @>
+ : Branch End
+ @>Conditional Branch: Variable [0001: Temp Pokemon Choice] == 3
+  @>Comment: Gym Rematch Protocol
+  @>Script: $game_variables[129] = "Pewter Gym"
+  @>Text: This will inform the Gym Leader and all trainers in 
+   :    : the gym that you wish to challenge them again.
+  @>Call Common Event: Gym Rematch Protocol
+  @>Set Event Location: [GT_Trainer(3)],(021,026), Up
+  @>Set Event Location: [GT_Trainer(3)],(017,012), Left
+  @>Set Event Location: [GT_Brock],(015,005), Down
+  @>
+ : Branch End
+ @>
+: Branch End
+@>
+
 #------------------------------------------------------------------------------
 Event ID: 003
-Event Name: Trainer(3)
+Event Name: GT_Trainer(3)
 (X,Y): (021,026)
 
 Page #1
@@ -44739,7 +44814,7 @@ List of Event Commands:
 @>Script: TrainerIntro2(:CAMPER)
 @>Script: pbNoticePlayer(get_character(0))
 @>Text: Hold it right there! You're leagues too early to consider challenging Brock!
-@>Conditional Branch: Script: pbTrainerBattle(:CAMPER,"Devin",_I("Wait... Does leagues measure distance? Or is that just a turn of phrase?"))
+@>Conditional Branch: Script: pbTrainerBattle(:CAMPER,"Devin",_I("Wait... Does leagues measure distance? Or is that just a turn of phrase?"),false,1+$Trainer.badge_count)
  @>Control Self Switch: A =ON
  @>
 : Branch End
@@ -44784,9 +44859,34 @@ List of Event Commands:
  :    : fight Brock!
 @>
 
+Page #4
+Conditions
+Self Switch B is ON
+
+Graphic: trainer_CAMPER
+
+Autonomous Movement
+Type: Fixed
+Speed: 3: Slow
+Freq: 3: Low
+Options Enabled
+Move Animation
+Trigger: Event Touch
+
+List of Event Commands:
+@>Script: TrainerIntro2(:CAMPER)
+@>Script: pbNoticePlayer(get_character(0))
+@>Text: Hold it right there! You're leagues too early to consider challenging Brock to a rematch!
+@>Conditional Branch: Script: pbTrainerBattle(:CAMPER,"Devin",_I("Wait... Does leagues measure distance? Or is that just a turn of phrase?"),false,$game_variables[128])
+ @>Control Self Switch: B =OFF
+ @>
+: Branch End
+@>Script: pbTrainerEnd
+@>
+
 #------------------------------------------------------------------------------
 Event ID: 004
-Event Name: Trainer(3)
+Event Name: GT_Trainer(3)
 (X,Y): (017,012)
 
 Page #1
@@ -44809,7 +44909,7 @@ List of Event Commands:
 @>Text: Do you know about the relation between
  :    : Pewter Museum and Pewter Gym? Both have people
  :    : very dedicated to their work!
-@>Conditional Branch: Script: pbTrainerBattle(:RUINMANIAC,"Vic",_I("Dedication goes a long way, but even that doesn't ensure victory."))
+@>Conditional Branch: Script: pbTrainerBattle(:RUINMANIAC,"Vic",_I("Dedication goes a long way, but even that doesn't ensure victory."),false,1+$Trainer.badge_count)
  @>Control Self Switch: A =ON
  @>
 : Branch End
@@ -44856,9 +44956,36 @@ List of Event Commands:
  :    : for both!
 @>
 
+Page #4
+Conditions
+Self Switch B is ON
+
+Graphic: trainer_RUINMANIAC
+
+Autonomous Movement
+Type: Fixed
+Speed: 3: Slow
+Freq: 3: Low
+Options Enabled
+Move Animation
+Trigger: Event Touch
+
+List of Event Commands:
+@>Script: TrainerIntro2(:RUINMANIAC)
+@>Script: pbNoticePlayer(get_character(0))
+@>Text: Do you know about the relation between
+ :    : Pewter Museum and Pewter Gym? Both have people
+ :    : very dedicated to their work!
+@>Conditional Branch: Script: pbTrainerBattle(:RUINMANIAC,"Vic",_I("Dedication goes a long way, but even that doesn't ensure victory."),false,$game_variables[128])
+ @>Control Self Switch: B =OFF
+ @>
+: Branch End
+@>Script: pbTrainerEnd
+@>
+
 #------------------------------------------------------------------------------
 Event ID: 005
-Event Name: Brock
+Event Name: GT_Brock
 (X,Y): (015,005)
 
 Page #1
@@ -44930,6 +45057,46 @@ List of Event Commands:
 @>Text: \xn[Brock]The world is vast and large, and the existence of the Puppets proves there's much about this world that we don't know yet.
 @>Text: \xn[Brock]But what I do know is that there will always be strong trainers like you and I to make the world a little more enjoyable.
 @>Text: \xn[Brock]This is why I'll continue to hone myself, and my partners, that way we can take on any challenge that comes our way!
+@>
+
+Page #3
+Conditions
+Self Switch B is ON
+
+Graphic: trainer_LEADER_Brock
+
+Autonomous Movement
+Type: Fixed
+Speed: 3: Slow
+Freq: 3: Low
+Options Enabled
+Move Animation
+Trigger: Action Button
+
+List of Event Commands:
+@>Text: \xn[Brock]So, you've returned for a rematch? Alright!
+@>Text: \xn[Brock]Let's see if you've kept up your training!
+@>Control Switches: [0104: Transition Handler] = ON
+@>Control Variables: [0103: Vs. Transition ID] = 3
+@>Call Common Event: Vs. Transition - Rematch to Ball Check
+@>Control Variables: [0113: Vs. Transition - Badge] = 0
+@>Control Variables: [0114: Vs. Transition - Leader] = 0
+@>Conditional Branch: Script: pbTrainerBattle(:LEADER_Brock,"Brock",_I("You're even stronger than I remembered!"),false,$game_variables[128])
+ @>Text: \xn[Brock]Well done challenger! Keep up your training, let's have 
+  :    : another battle again another day!
+ @>Control Switches: [0118: Gym Rematch in Prog?] = OFF
+ @>Script: $game_variables[127] = nil
+ :       : $game_variables[128] = nil
+ :       : 
+ :       : for event in $game_map.events.values
+ :       :   if event.name[/GT_/i]
+ :       :     $game_self_switches[[$game_map.map_id,event.id,"B"]] = false
+ :       :   end
+ :       : end
+ :       : 
+ :       : $game_map.refresh
+ @>
+: Branch End
 @>
 
 #------------------------------------------------------------------------------
@@ -45182,6 +45349,181 @@ Trigger: Player Touch
 
 List of Event Commands:
 @>Script: pbBridgeOn
+@>
+
+#------------------------------------------------------------------------------
+Event ID: 018
+Event Name: Gym Terminal
+(X,Y): (039,024)
+
+Page #1
+Conditions
+None
+
+Graphic: gymtelecom
+
+Autonomous Movement
+Type: Fixed
+Speed: 3: Slow
+Freq: 3: Low
+Options Enabled
+Move Animation
+Direction Fix
+Trigger: Action Button
+
+List of Event Commands:
+@>Conditional Branch: Player is facing Right
+ @>Text: Accessing Gym Network.
+ @>Label: Start
+ @>Text: Please select what you want to know about.
+ @>Show Choices: Gym Leader Preference, Gym Mechanics, Gym Leader Information, Nothing
+ (When Cancel: Choice 4)
+ : When [Gym Leader Preference]
+  @>Text: The Pewter City Gym, Brock, has a preference for
+   :    : Rock-type Pokémon and Earth-type Puppets.
+  @>Text: Aside from the traditional weaknesses of Rock-type
+   :    : Pokémon, Earth-type Puppets are weak to Hydro, Nature,
+   :    : and Cryo-Typed moves.
+  @>Text: Earth-Type Puppets resist damage from Miasma, Pyro,
+   :    : Poison, and Rock-type moves, and are immune to
+   :    : Wind and Electric-type moves.
+  @>Jump to Label: Start
+  @>
+ : When [Gym Mechanics]
+  @>Text: Brock has opted to keep him gym simple for the sake
+   :    : of beginning challengers to the Gym Challenge.
+  @>Text: Despite constant criticisms that his Gym doesn't stand
+   :    : out when compared to other gyms, Brock has remained
+   :    : resolute in his decision.
+  @>Jump to Label: Start
+  @>
+ : When [Gym Leader Information]
+  @>Text: Aside from being a Gym Leader, Brock is a well
+   :    : respected Pokémon Breeder, known across the
+   :    : world.
+  @>Text: As Brock is often called away for Breeder-related reasons,
+   :    : the curator of Pewter Musuem, Miles, will take over as 
+   :    : Brock's replacement Gym Leader.
+  @>Jump to Label: Start
+  @>
+ : When [Nothing]
+  @>Text: Shutting down information database.
+  @>
+ : Branch End
+ @>
+: Else
+ @>
+: Branch End
+@>
+
+Page #2
+Conditions
+Switch 0004: Defeated Gym 1 is ON
+
+Graphic: gymtelecom
+
+Autonomous Movement
+Type: Fixed
+Speed: 3: Slow
+Freq: 3: Low
+Options Enabled
+Move Animation
+Direction Fix
+Trigger: Action Button
+
+List of Event Commands:
+@>Conditional Branch: Player is facing Right
+ @>Text: Accessing Gym Network.
+ @>Label: Start
+ @>Text: Please select what you want to know about.\ch[1,-1,Gym Leader Preference,
+  :    : Gym Mechanics,Gym Leader Information,Gym Rebattle Protocol]
+ @>Conditional Branch: Variable [0001: Temp Pokemon Choice] == -1
+  @>Text: Shutting down information database.
+  @>Exit Event Processing
+  @>
+ : Branch End
+ @>Conditional Branch: Variable [0001: Temp Pokemon Choice] == 0
+  @>Comment: Gym Leader Preference
+  @>Text: The Pewter City Gym, Brock, has a preference for
+   :    : Rock-type Pokémon and Earth-type Puppets.
+  @>Text: Aside from the traditional weaknesses of Rock-type
+   :    : Pokémon, Earth-type Puppets are weak to Hydro, Nature,
+   :    : and Cryo-Typed moves.
+  @>Text: Earth-Type Puppets resist damage from Miasma, Pyro,
+   :    : Poison, and Rock-type moves, and are immune to
+   :    : Wind and Electric-type moves.
+  @>Jump to Label: Start
+  @>
+ : Branch End
+ @>Conditional Branch: Variable [0001: Temp Pokemon Choice] == 1
+  @>Comment: Gym Mechanics
+  @>Text: Brock has opted to keep him gym simple for the sake
+   :    : of beginning challengers to the Gym Challenge.
+  @>Text: Despite constant criticisms that his Gym doesn't stand
+   :    : out when compared to other gyms, Brock has remained
+   :    : resolute in his decision.
+  @>Jump to Label: Start
+  @>
+ : Branch End
+ @>Conditional Branch: Variable [0001: Temp Pokemon Choice] == 2
+  @>Comment: Gym Leader Information
+  @>Text: Aside from being a Gym Leader, Brock is a well
+   :    : respected Pokémon Breeder, known across the
+   :    : world.
+  @>Text: As Brock is often called away for Breeder-related reasons,
+   :    : the curator of Pewter Musuem, Miles, will take over as 
+   :    : Brock's replacement Gym Leader.
+  @>Jump to Label: Start
+  @>
+ : Branch End
+ @>Conditional Branch: Variable [0001: Temp Pokemon Choice] == 3
+  @>Comment: Gym Rebattle Protocol
+  @>Conditional Branch: Switch [0118: Gym Rematch in Prog?] == ON
+   @>Comment: Gym elsewhere has a challenge in progress.
+   @>Text: You currently have a rematch in progress for \v[127]. 
+    :    : Please complete your challenge there first before 
+    :    : challenging another gym to a rematch.
+   @>Jump to Label: Start
+   @>
+  : Else
+   @>Comment: Can rematch the current gym
+   @>Text: This will send a notification to the Gym Leader and all 
+    :    : trainers in the gym that you wish to challenge them again. 
+    :    : Is that acceptable?
+   @>Show Choices: Yes, No
+   (When Cancel: Choice 2)
+   : When [Yes]
+    @>Text: To complete the protocol, you must choose a team set 
+     :    : for the gym to use.
+    @>Text: Take note, you can not select a team set higher 
+     :    : than your total badge count.
+    @>Control Variables: [0002: Temp Move Choice] = 0
+    @>Input Number: [0002: Temp Move Choice], 2 digit(s)
+    @>Conditional Branch: Script: $game_variables[2] > $Trainer.badge_count+1
+     @>Text: Invalid input, challenger does not have the requisite badge count.
+     @>
+    : Else
+     @>Text: Confirming, you want the team set the gym uses set 
+      :    : to as if you had \v[2] badges?
+     @>Show Choices: Yes, No
+     (When Cancel: Choice 2)
+     : When [Yes]
+      @>
+     : When [No]
+      @>
+     : Branch End
+     @>
+    : Branch End
+    @>
+   : When [No]
+    @>
+   : Branch End
+   @>
+  : Branch End
+  @>
+ : Branch End
+ @>
+: Branch End
 @>
 
 #------------------------------------------------------------------------------
@@ -46923,7 +47265,7 @@ List of Event Commands:
   @>
  : Branch End
  @>Control Self Switch: A =ON
- @>Control Switches: [0118] = ON
+ @>Control Switches: [0118: Gym Rematch in Prog?] = ON
  @>
 : Branch End
 @>Script: pbTrainerEnd
@@ -46997,7 +47339,7 @@ List of Event Commands:
 
 Page #3
 Conditions
-Switch 0117: s:hasMagnetPullUser? is ON
+Switch 0117: s:tsOff?("B") is ON
 
 Graphic: trchar026
 
@@ -54799,7 +55141,7 @@ List of Event Commands:
 : Branch End
 @>Conditional Branch: Variable [0001: Temp Pokemon Choice] == 1
  @>Text: Azalea City Gym\nLeader: Bugsy\nBadge: Hive Badge\nType: Nature and Bug
- @>Text: Beating the Cerulean Gym gives you the ability
+ @>Text: Beating the Azalea Gym gives you the ability
   :    : to use the Field Move, Cut, outside of battle.
  @>
 : Branch End
@@ -54838,7 +55180,7 @@ List of Event Commands:
 : Branch End
 @>Conditional Branch: Variable [0001: Temp Pokemon Choice] == 7
  @>Text: Blackthorn City Gym\nLeader: Clair\nBadge: Rising Badge\nType: Faith and Dragon
- @>Text: Beating the Viridian Gym gives you the ability
+ @>Text: Beating the Blackthorn Gym gives you the ability
   :    : to use the Field Move, Waterfall, outside of battle.
  @>
 : Branch End
@@ -60870,9 +61212,9 @@ List of Event Commands:
 @>
 
 #------------------------------------------------------------------------------
-Event ID: 008
-Event Name: EV008
-(X,Y): (017,013)
+Event ID: 010
+Event Name: EV010
+(X,Y): (011,013)
 
 Page #1
 Conditions
@@ -60887,19 +61229,81 @@ Move Animation
 Trigger: Action Button
 
 List of Event Commands:
-@>Change Screen Color Tone: (-255,-255,-255,0), @40
-@>Wait: 40 frame(s)
-@>Transfer Player:[001: Intro], (009,005)
-@>Fade Out BGM: 2 sec.
-@>Script: Preview.new
-@>Wait: 25 frame(s)
-@>Return to Title Screen
+@>Conditional Branch: Player is facing Up
+ @>Text: Accessing Gym Network.
+ @>Label: Start
+ @>Text: Please select what you want to know about.\ch[1,-1,Gym Leader Preference,
+  :    : Gym Mechanics,Gym Leader Information,Gym Rebattle Protocol]
+ @>Conditional Branch: Variable [0001: Temp Pokemon Choice] == -1
+  @>Text: Shutting down information database.
+  @>Exit Event Processing
+  @>
+ : Branch End
+ @>Conditional Branch: Variable [0001: Temp Pokemon Choice] == 0
+  @>Comment: Gym Leader Preference
+  @>Text: The Pewter City Gym, Brock, has a preference for
+   :    : Rock-type Pokémon and Earth-type Puppets.
+  @>Text: Aside from the traditional weaknesses of Rock-type
+   :    : Pokémon, Earth-type Puppets are weak to Hydro, Nature,
+   :    : and Cryo-Typed moves.
+  @>Text: Earth-Type Puppets resist damage from Miasma, Pyro,
+   :    : Poison, and Rock-type moves, and are immune to
+   :    : Wind and Electric-type moves.
+  @>Jump to Label: Start
+  @>
+ : Branch End
+ @>Conditional Branch: Variable [0001: Temp Pokemon Choice] == 1
+  @>Comment: Gym Mechanics
+  @>Text: Brock has opted to keep him gym simple for the sake
+   :    : of beginning challengers to the Gym Challenge.
+  @>Text: Despite constant criticisms that his Gym doesn't stand
+   :    : out when compared to other gyms, Brock has remained
+   :    : resolute in his decision.
+  @>Jump to Label: Start
+  @>
+ : Branch End
+ @>Conditional Branch: Variable [0001: Temp Pokemon Choice] == 2
+  @>Comment: Gym Leader Information
+  @>Text: Aside from being a Gym Leader, Brock is a well
+   :    : respected Pokémon Breeder, known across the
+   :    : world.
+  @>Text: As Brock is often called away for Breeder-related reasons,
+   :    : the curator of Pewter Musuem, Miles, will take over as 
+   :    : Brock's replacement Gym Leader.
+  @>Jump to Label: Start
+  @>
+ : Branch End
+ @>Conditional Branch: Variable [0001: Temp Pokemon Choice] == 3
+  @>Comment: Gym Rematch Protocol
+  @>Script: $game_variables[129] = "Pewter Gym"
+  @>Text: This will inform the Gym Leader and all trainers in 
+   :    : the gym that you wish to challenge them again.
+  @>Call Common Event: Gym Rematch Protocol
+  @>
+ : Branch End
+ @>
+: Branch End
+@>
+
+Page #2
+Conditions
+Self Switch D is ON
+
+Autonomous Movement
+Type: Fixed
+Speed: 3: Slow
+Freq: 3: Low
+Options Enabled
+Move Animation
+Trigger: Action Button
+
+List of Event Commands:
 @>
 
 #------------------------------------------------------------------------------
-Event ID: 009
-Event Name: EV009
-(X,Y): (017,012)
+Event ID: 011
+Event Name: EV011
+(X,Y): (012,013)
 
 Page #1
 Conditions
@@ -60914,7 +61318,7 @@ Move Animation
 Trigger: Action Button
 
 List of Event Commands:
-@>Script: UnrealTime.add_seconds(14400)
+@>Script: pbSelectGymSet
 @>
 
 #------------------------------------------------------------------------------
@@ -61990,6 +62394,8 @@ List of Event Commands:
  @>Comment: --- Yes
  @>Text: \xn[Maribel]Great! Let's go!
  @>Comment: ==================
+ @>Script: setBattleRule("base", "pink1")
+ :       : setBattleRule("backdrop", "indoor2")
  @>Control Switches: [0104: Transition Handler] = ON
  @>Control Variables: [0103: Vs. Transition ID] = 2
  @>Control Variables: [0104: Vs. Transition - Pkmn] = 4
@@ -62135,6 +62541,8 @@ List of Event Commands:
  @>Comment: --- Yes
  @>Text: \xn[Renko]Awesome! Don't hold back on me, Mary!
  @>Comment: ==================
+ @>Script: setBattleRule("base", "pink1")
+ :       : setBattleRule("backdrop", "indoor2")
  @>Control Switches: [0104: Transition Handler] = ON
  @>Control Variables: [0103: Vs. Transition ID] = 1
  @>Control Variables: [0104: Vs. Transition - Pkmn] = 4
@@ -64052,7 +64460,7 @@ List of Event Commands:
  @>Text: \xn[\v[108]]<icon=icon_phone>\bYou better get back up here and report the
   :    : situation to the Police chief!
  @>Text: <icon=icon_phone>\se[Phone hangup]\ts[]Click!\wt[10]\n......\wt[10] ......\wtnp[40]
- @>Script: pbSetSelfSwitch2(55,40,"A",false)
+ @>Script: pbSetSelfSwitch2(55,40,"B",false)
  @>Play SE: 'Door exit', 100, 100
  @>Change Screen Color Tone: (-255,-255,-255,0), @6
  @>Wait: 8 frame(s)
@@ -64610,7 +65018,7 @@ Map ID: 241
 Map Name: Vermilion City Houses
 Tileset: 003: Inside
 Width: 40, Height: 40
-Auto-Change BGM: 022. Beware the Umbrella Left There Forever
+Auto-Change BGM: W-017. Vermillion City
 
 #------------------------------------------------------------------------------
 Event ID: 001
@@ -64836,6 +65244,7 @@ List of Event Commands:
  :    : Humans or anything else that exists out there, we must always be kind
  :    : and generous to those around us.
 @>Control Self Switch: A =ON
+@>Control Self Switch: B =ON
 @>
 
 Page #2
@@ -64872,6 +65281,7 @@ List of Event Commands:
 :       : 
 :       : pbReceiveItem(pbGet(1),5)
 @>Text: Use them responsibly!
+@>Control Self Switch: B =ON
 @>
 
 Page #3
@@ -64896,7 +65306,7 @@ List of Event Commands:
 Page #4
 Conditions
 Switch 0111: s:cooledDownDays?(2) is ON
-Switch 0022: s:tsOff?("A") is ON
+Switch 0117: s:tsOff?("B") is ON
 Self Switch B is ON
 
 Graphic: trainer_GENTLEMAN
@@ -65405,7 +65815,7 @@ Map ID: 242
 Map Name: PokeMart
 Tileset: 005: Poké Mart
 Width: 20, Height: 15
-Auto-Change BGM: PokeMart
+Auto-Change BGM: W-009. Pokemon Mart (Monsekai)
 
 #------------------------------------------------------------------------------
 Event ID: 001
@@ -65480,7 +65890,7 @@ Map ID: 243
 Map Name: Vermilion Harbor
 Tileset: 003: Inside
 Width: 29, Height: 21
-Auto-Change BGM: 009. Nostalgic Blood of the East ~ Old World
+Auto-Change BGM: W-017. Vermillion City
 
 #------------------------------------------------------------------------------
 Event ID: 001
@@ -66329,7 +66739,7 @@ Event Name: Have Magnet Pull check
 
 Page #1
 Conditions
-Switch 0117: s:hasMagnetPullUser? is ON
+Switch 0117: s:tsOff?("B") is ON
 Self Switch A is ON
 
 Autonomous Movement
@@ -67019,6 +67429,7 @@ Speed: 3: Slow
 Freq: 5: Higher
 Options Enabled
 Move Animation
+Always on Top
 Trigger: Action Button
 
 List of Event Commands:
@@ -67043,6 +67454,7 @@ Speed: 3: Slow
 Freq: 5: Higher
 Options Enabled
 Move Animation
+Always on Top
 Trigger: Action Button
 
 List of Event Commands:
@@ -67077,7 +67489,7 @@ Always on Top
 Trigger: Event Touch
 
 List of Event Commands:
-@>Script: pbTrainerIntro(:LADY)
+@>Script: TrainerIntro2(:LADY)
 @>Script: pbNoticePlayer(get_character(0))
 @>Text: Are you shocked to see someone of my stature
  :    : here? Well then, commencing shock therapy!
@@ -67110,7 +67522,7 @@ Trigger: Action Button
 List of Event Commands:
 @>Text: I've had an affinity for Electricity ever since I
  :    : recieved my first partner, a Shinx, ages ago.
-@>Text: Since then,\nwhenever I battle, I like to make things extra crispy.
+@>Text: Since then, whenever I battle, I like to make things extra crispy.
 @>
 
 Page #3
@@ -67135,7 +67547,7 @@ Trigger: Action Button
 List of Event Commands:
 @>Text: I've had an affinity for Electricity ever since I
  :    : recieved my first partner, a Shinx, ages ago.
-@>Text: Since then,\nwhenever I battle, I like to make things extra crispy.
+@>Text: Since then, whenever I battle, I like to make things extra crispy.
 @>
 
 #------------------------------------------------------------------------------
@@ -68485,7 +68897,7 @@ Trigger: Player Touch
 
 List of Event Commands:
 @>Change Screen Color Tone: (-255,-255,-255,0), @6
-@>Play SE: 'Exit Door', 100, 100
+@>Play SE: 'Door exit', 100, 100
 @>Wait: 8 frame(s)
 @>Transfer Player:[078: Rock Tunnel], (052,029), No Fade
 @>Change Screen Color Tone: (0,0,0,0), @6
@@ -68510,7 +68922,7 @@ Trigger: Player Touch
 
 List of Event Commands:
 @>Change Screen Color Tone: (-255,-255,-255,0), @6
-@>Play SE: 'Exit Door', 100, 100
+@>Play SE: 'Door exit', 100, 100
 @>Wait: 8 frame(s)
 @>Transfer Player:[078: Rock Tunnel], (027,021), No Fade
 @>Change Screen Color Tone: (0,0,0,0), @6
@@ -68535,7 +68947,7 @@ Trigger: Player Touch
 
 List of Event Commands:
 @>Change Screen Color Tone: (-255,-255,-255,0), @6
-@>Play SE: 'Exit Door', 100, 100
+@>Play SE: 'Door exit', 100, 100
 @>Wait: 8 frame(s)
 @>Transfer Player:[078: Rock Tunnel], (052,010), No Fade
 @>Change Screen Color Tone: (0,0,0,0), @6
@@ -68560,7 +68972,7 @@ Trigger: Player Touch
 
 List of Event Commands:
 @>Change Screen Color Tone: (-255,-255,-255,0), @6
-@>Play SE: 'Exit Door', 100, 100
+@>Play SE: 'Door exit', 100, 100
 @>Wait: 8 frame(s)
 @>Transfer Player:[078: Rock Tunnel], (011,010), No Fade
 @>Change Screen Color Tone: (0,0,0,0), @6
@@ -69338,7 +69750,7 @@ List of Event Commands:
 
 Page #2
 Conditions
-Variable 0110: Plot Control Variable is 2 or above
+Variable 0125: Lavender Gym SQ is 5 or above
 
 Autonomous Movement
 Type: Fixed
@@ -70684,6 +71096,7 @@ Map ID: 251
 Map Name: ???
 Tileset: 001: Outside
 Width: 39, Height: 50
+Auto-Change BGM: W-022. Lavender Town
 
 #------------------------------------------------------------------------------
 Event ID: 001
@@ -71845,7 +72258,7 @@ Map ID: 252
 Map Name: Lavender Town Gym
 Tileset: 013: Graveyard
 Width: 21, Height: 26
-Auto-Change BGM: 033. Mystic oriental Dream ~ Ancient Temple
+Auto-Change BGM: W-011. Pokemon Gym
 
 #------------------------------------------------------------------------------
 Event ID: 001
@@ -72509,7 +72922,7 @@ Map ID: 253
 Map Name: Lavender Radio Tower
 Tileset: 003: Inside
 Width: 22, Height: 15
-Auto-Change BGM: 023. The Capital City of Flowers in The Sky
+Auto-Change BGM: W-022. Lavender Town
 
 #------------------------------------------------------------------------------
 Event ID: 001
@@ -72688,7 +73101,7 @@ Map ID: 254
 Map Name: Lavender Town
 Tileset: 003: Inside
 Width: 60, Height: 15
-Auto-Change BGM: 034. Ultimate Truth
+Auto-Change BGM: W-022. Lavender Town
 
 #------------------------------------------------------------------------------
 Event ID: 001
@@ -73552,7 +73965,7 @@ Map ID: 256
 Map Name: PokeMart
 Tileset: 005: Poké Mart
 Width: 20, Height: 15
-Auto-Change BGM: 027. PokeCenter
+Auto-Change BGM: W-009. Pokemon Mart (Monsekai)
 
 #------------------------------------------------------------------------------
 Event ID: 001
@@ -75092,6 +75505,33 @@ List of Event Commands:
 @>
 
 #------------------------------------------------------------------------------
+Event ID: 037
+Event Name: :wacko:
+(X,Y): (078,009)
+
+Page #1
+Conditions
+None
+
+Graphic: Object ball
+
+Autonomous Movement
+Type: Fixed
+Speed: 3: Slow
+Freq: 3: Low
+Options Enabled
+Move Animation
+Trigger: Action Button
+
+List of Event Commands:
+@>Comment: I exist simply because Derx was too lazy to combine 
+ :       : the stair and gravestone to prevent you from being 
+ :       : able to walk on this tile.
+ :       : 
+ :       : There was probably an easier way to do this.
+@>
+
+#------------------------------------------------------------------------------
 Event ID: 038
 Event Name: EV038
 (X,Y): (050,001)
@@ -75717,9 +76157,10 @@ List of Event Commands:
 @>Text: \xn[Head Priestess]This is the personal diary of one of my clan's
  :    : heads. Though most of the pages have been worn down, there
  :    : are a few passages still readable.
-@>Text: \xn[Head Priestess]This is the personal diary of one of my clan's
- :    : heads. Though most of the pages have been worn down, there
- :    : are a few passages still readable.
+@>Text: \xn[Head Priestess]She was the twin sister of the shrine maiden 
+ :    : that entered the gensou kyou when the realm was sealed away.
+@>Text: \xn[Head Priestess]All the members of the clan that reside on this
+ :    : side are the descendnats of Seira Hakurei.
 @>Script: pbReceiveItem(:GENSOUEDICT)
 @>Text: \xn[Head Priestess]This would be the official parchment that was
  :    : written up when the Gensou Kyou Edict was settled on. 
@@ -79481,11 +79922,18 @@ List of Event Commands:
  @>Control Variables: [0104: Vs. Transition - Pkmn] = 2
  @>
 : Else
- @>Conditional Branch: Script: $Trainer.badge_count == 1
+ @>Conditional Branch: Script: $Trainer.badge_count >= 1
   @>Comment: 1 Badge
   @>Control Variables: [0104: Vs. Transition - Pkmn] = 3
   @>
  : Else
+  @>Conditional Branch: Script: $Trainer.badge_count >= 3
+   @>Comment: 1 Badge
+   @>Control Variables: [0104: Vs. Transition - Pkmn] = 4
+   @>
+  : Else
+   @>
+  : Branch End
   @>
  : Branch End
  @>
@@ -79543,11 +79991,33 @@ List of Event Commands:
 
 #==============================================================================
 Common Event ID: 090
-Common Event Name: 
+Common Event Name: Vs. Transition - Rematch to Ball Check
 
 Trigger: None
 
 List of Event Commands:
+@>Comment: Checks for the rematch instance.
+ :       : Used for determining the ball count for Gym Leaders.
+@>Conditional Branch: Script: $game_variables[128] == 1
+ @>Comment: 0 Badges
+ @>Control Variables: [0104: Vs. Transition - Pkmn] = 2
+ @>
+: Branch End
+@>Conditional Branch: Script: $game_variables[128] == 2
+ @>Comment: 1 Badge
+ @>Control Variables: [0104: Vs. Transition - Pkmn] = 3
+ @>
+: Branch End
+@>Conditional Branch: Script: $game_variables[128] == 3
+ @>Comment: 2 Badges
+ @>Control Variables: [0104: Vs. Transition - Pkmn] = 3
+ @>
+: Branch End
+@>Conditional Branch: Script: $game_variables[128] == 4
+ @>Comment: 3 Badges
+ @>Control Variables: [0104: Vs. Transition - Pkmn] = 4
+ @>
+: Branch End
 @>
 
 #==============================================================================
@@ -79570,11 +80040,75 @@ List of Event Commands:
 
 #==============================================================================
 Common Event ID: 093
-Common Event Name: 
+Common Event Name: Gym Rematch Protocol
 
 Trigger: None
 
 List of Event Commands:
+@>Text: Is this acceptable?
+@>Show Choices: Yes, No
+(When Cancel: Choice 2)
+: When [Yes]
+ @>Label: Gym Rematch Setup
+ @>Conditional Branch: Script: pbGymRematch
+  @>Conditional Branch: Variable [0003: Temp Pokemon Name] == -1
+   @>Text: Rematch process canceled.
+   @>Jump to Label: Start
+   @>
+  : Else
+   @>Conditional Branch: Script: $game_variables[3] != 1
+    @>Text: Confirming, you want the team selection that the gym 
+     :    : uses set to as if you had \v[3] badges?\ch[1,1,Yes,No]
+    @>
+   : Else
+    @>Text: Confirming, you want the team selection that the gym 
+     :    : uses set to as if you had \v[3] badge?\ch[1,1,Yes,No]
+    @>
+   : Branch End
+   @>
+  : Branch End
+  @>Conditional Branch: Variable [0001: Temp Pokemon Choice] == 0
+   @>Conditional Branch: Script: $game_variables[3] != 1
+    @>Text: This gym has been informed that you wish to 
+     :    : rechallenge them, and to treat it as if you had 
+     :    : \v[3] badges.
+    @>
+   : Else
+    @>Text: This gym has been informed that you wish to 
+     :    : rechallenge them, and to treat it as if you had 
+     :    : \v[3] badge.
+    @>
+   : Branch End
+   @>Text: If you wish to cancel your challenge, please interact 
+    :    : with the terminal again.
+   @>Control Switches: [0118: Gym Rematch in Prog?] = ON
+   @>Script: $game_variables[127] = $game_variables[129]
+   :       : $game_variables[128] = $game_variables[2]
+   :       : $game_variables[2] = nil
+   :       : $game_variables[3] = nil
+   @>Script: for event in $game_map.events.values
+   :       :   if event.name[/GT_/i]
+   :       :     $game_self_switches[[$game_map.map_id,event.id,"B"]] = true
+   :       :   end
+   :       : end
+   :       : 
+   :       : $game_map.refresh
+   @>
+  : Branch End
+  @>Conditional Branch: Variable [0001: Temp Pokemon Choice] == 1
+   @>Jump to Label: Gym Rematch Setup
+   @>
+  : Branch End
+  @>
+ : Else
+  @>Jump to Label: Start
+  @>
+ : Branch End
+ @>
+: When [No]
+ @>Jump to Label: Start
+ @>
+: Branch End
 @>
 
 #==============================================================================

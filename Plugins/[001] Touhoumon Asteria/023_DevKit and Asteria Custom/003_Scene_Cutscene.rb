@@ -145,3 +145,14 @@ class Preview < PreludeScene
     :wait, 180,
   ]
 end
+
+# ---------------------------
+
+class NextMorning < PreludeScene
+  TEXT = [
+    [
+      "The next morning..."
+    ],
+    :wait, 180,
+  ]
+end

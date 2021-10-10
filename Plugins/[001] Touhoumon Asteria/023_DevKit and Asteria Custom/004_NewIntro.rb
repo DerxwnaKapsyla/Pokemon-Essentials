@@ -25,9 +25,9 @@ class PlayerChoiceGUI
 			 @sprites["renko"].opacity += 8
        @sprites["mary"].opacity += 8
     }
-    Kernel.pbMessage(_INTL("In this game you play as either Renko Usami or Maribel Hearn."))
-    Kernel.pbMessage(_INTL("This decision cannot be changed later, and has no significant impact on the game aside from slight dialogue differences."))
-    Kernel.pbMessage(_INTL("Please choose who you would like to play as.\\wtnp[1]"))
+    Kernel.pbMessage(_INTL("\\w[dark]In this game you play as either Renko Usami or Maribel Hearn."))
+    Kernel.pbMessage(_INTL("\\w[dark]This decision cannot be changed later, and has no significant impact on the game aside from slight dialogue differences."))
+    Kernel.pbMessage(_INTL("\\w[dark]Please choose who you would like to play as.\\wtnp[1]"))
     @sprites["please"].opacity = 255
 		@sprites["mary"].opacity = 191
     loop do
@@ -44,12 +44,14 @@ class PlayerChoiceGUI
         @sprites["mary"].opacity = 191
       end
       if Input.trigger?(Input::C)
-        cmd = Kernel.pbConfirmMessage(_INTL("Are you sure you want to play as #{@sel == 0 ? "Renko Usami" : "Maribel Hearn"}?"))
+		@sprites["please"].opacity = 0
+        cmd = Kernel.pbConfirmMessage(_INTL("\\w[dark]Are you sure you want to play as #{@sel == 0 ? "Renko Usami" : "Maribel Hearn"}?"))
         if cmd
           pbChangePlayer(@sel)
           $game_variables[107] = @sel
           break
         end
+	  @sprites["please"].opacity = 255
       end
     end
 		@sprites["renko"].opacity = 255

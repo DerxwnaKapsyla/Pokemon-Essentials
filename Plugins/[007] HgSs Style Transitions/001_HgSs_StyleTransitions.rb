@@ -40,7 +40,7 @@ def pbHGSSTransitions(place,black=true)
   name="Night" if PBDayNight.isNight?
   pbToneChangeAll(Tone.new(-255,-255,-255),0) if black
   viewport=Viewport.new(0,0,Graphics.width,Graphics.height)
-  viewport.z=99
+  viewport.z=99998 # Derx: So it appears above the flash layer, but below the Map Name box
   bg=Sprite.new(viewport)
   if File.exist?("Graphics/Pictures/Transitions/Eyecatches/#{place}_#{name}.png")
     bg.bitmap=Bitmap.new("Graphics/Pictures/Transitions/Eyecatches/#{place}_#{name}.png")
