@@ -1,3 +1,4 @@
+# Derx: I've made adjustments to this to make it display smaller icons and double width them for Weaknesses greater than 6 types
 class TypeMatch_Scene
 
   # Filename for base graphic
@@ -21,12 +22,13 @@ class TypeMatch_Scene
     @sprites["base"].x = Graphics.width/2; @sprites["base"].y = Graphics.height/2 - 16
     @h = @sprites["base"].y - @sprites["base"].oy
     @w = @sprites["base"].x - @sprites["base"].ox
-    @typebitmap = AnimatedBitmap.new(_INTL("Graphics/Pictures/types"))
+	@typebitmap = AnimatedBitmap.new(_INTL("Graphics/Pictures/types"))
+    @typebitmapsmall = AnimatedBitmap.new(_INTL("Graphics/Pictures/pokedex/icon_types"))
     2.times do |i|
       @sprites["icon_#{i}"] = PokemonSpeciesIconSprite.new(nil,@viewport)
       @sprites["icon_#{i}"].setOffset(PictureOrigin::Center)
-      @sprites["icon_#{i}"].x = Graphics.width/2 - 96 + 192*i
-      @sprites["icon_#{i}"].y = @h+34
+      @sprites["icon_#{i}"].x = Graphics.width/2 - 112 + 224*i
+      @sprites["icon_#{i}"].y = @h+40
       @sprites["icon_#{i}"].mirror = true if i==0
     end
     @sprites["rightarrow"] = AnimatedSprite.new("Graphics/Pictures/rightarrow",8,40,28,2,@viewport)
@@ -101,23 +103,26 @@ class TypeMatch_Scene
     @overlay_type.blt(Graphics.width/2-32,@h+20,@typebitmap.bitmap,
                   Rect.new(0, type.id_number * 28, 64, 28))
     # Weaknesses
-    weak = type.weaknesses
+	weak = type.weaknesses
+	xPos1 = (weak.length >6) ? [@w+71, @w+105] : @w+88    
     weaktype_rect = []
     weak.each_with_index do |s, i|
       t = GameData::Type.get(s).id_number
       weaktype_rect.push(Rect.new(0, t * 28, 64, 28))
-      @overlay_type.blt(@w+40,@h+102+28*i,@typebitmap.bitmap,weaktype_rect[i])
+	  x1 = (xPos1.is_a?(Array)) ? xPos1[i/6] : xPos1
+	  @overlay_type.blt(x1,@h+108+28*(i%6),@typebitmapsmall.bitmap,weaktype_rect[i])
+#     @overlay_type.blt(@w+40,@h+102+28*i,@typebitmapsmall.bitmap,weaktype_rect[i])
     end
     # Resistances
     resist = type.resistances
     # Because Steel typing has an annoying number of resistances
-    xPos = (resist.length >6) ? [Graphics.width/2-64,Graphics.width/2] : Graphics.width/2-32
+    xPos2 = (resist.length >6) ? [Graphics.width/2-33,Graphics.width/2+1] : Graphics.width/2-16
     resisttype_rect = []
     resist.each_with_index do |s, i|
       t = GameData::Type.get(s).id_number
       resisttype_rect.push(Rect.new(0, t * 28, 64, 28))
-      x = (xPos.is_a?(Array)) ? xPos[i/6] : xPos
-      @overlay_type.blt(x,@h+102+28*(i%6),@typebitmap.bitmap,
+      x2 = (xPos2.is_a?(Array)) ? xPos2[i/6] : xPos2
+      @overlay_type.blt(x2,@h+108+28*(i%6),@typebitmapsmall.bitmap,
           resisttype_rect[i])
     end
     # Immunities
@@ -126,14 +131,14 @@ class TypeMatch_Scene
     immune.each_with_index do |s, i|
       t = GameData::Type.get(s).id_number
       immunetype_rect.push(Rect.new(0, t * 28, 64, 28))
-      @overlay_type.blt(@w+280,@h+102+28*i,@typebitmap.bitmap,immunetype_rect[i])
+      @overlay_type.blt(@w+328,@h+108+28*i,@typebitmapsmall.bitmap,immunetype_rect[i])
     end
     base   = Color.new(80,80,88)
     shadow = Color.new(160,160,168)
     textpos = [
-    ["Weak",@w+72,@h+62,2,base,shadow],
-    ["Resist",Graphics.width/2,@h+62,2,base,shadow],
-    ["Immune",@w+312,@h+62,2,base,shadow],
+    ["Weak",@w+104,@h+68,2,base,shadow],
+    ["Resist",Graphics.width/2,@h+68,2,base,shadow],
+    ["Immune",@w+344,@h+68,2,base,shadow],
     ["USE: Jump",4,Graphics.height-38,0,Color.new(248,248,248),Color.new(72,80,88)],
     ["ARROWS: Navigate",Graphics.width/2,Graphics.height-38,2,Color.new(248,248,248),Color.new(72,80,88)],
     ["BACK: Exit",Graphics.width-4,Graphics.height-38,1,Color.new(248,248,248),Color.new(72,80,88)]
@@ -162,6 +167,7 @@ class TypeMatch_Scene
     pbFadeOutAndHide(@sprites) { pbUpdate }
     pbDisposeSpriteHash(@sprites)
     @typebitmap.dispose
+    @typebitmapsmall.dispose
     @viewport.dispose
   end
   

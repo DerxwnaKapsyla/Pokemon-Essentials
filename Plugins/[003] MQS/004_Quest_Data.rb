@@ -257,9 +257,9 @@ module QuestModule
     :ID => "101",
     :Name => "Sentimental Sedimentary",
     :QuestGiver => "Side Quest",
-    :Stage1 => "Deliver 10 of each Underground Gemstone to the scientist in Pewter Museum.",
+    :Stage1 => "Deliver 5 of each Underground Gemstone to the scientist in Pewter Museum.",
     :Location1 => "Pewter City",
-    :QuestDescription => "Placeholder",
+    :QuestDescription => "A researcher in Pewter Museum is looking into Gemstones that can only be found underground. They believe these gemstones hold some sort of ancient signifigance. I happened to get tasked with recovering some of them and bring them back for their research.",
     :RewardString => "nil"
   }
   

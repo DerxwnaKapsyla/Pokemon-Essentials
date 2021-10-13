@@ -57,7 +57,7 @@ ShowArea = true
 Bicycle = true
 Weather = Rain,5
 MapPosition = 0,6,13
-BattleBack = 
+BattleBack = city
 Environment = None
 #-------------------------------
 [035]
@@ -67,7 +67,7 @@ ShowArea = true
 Bicycle = true
 Weather = Rain,5
 MapPosition = 0,6,10
-BattleBack = field
+BattleBack = city
 Environment = None
 #-------------------------------
 [036]
@@ -77,6 +77,7 @@ ShowArea = true
 Bicycle = true
 Weather = Rain,10
 MapPosition = 0,6,6
+BattleBack = city
 #-------------------------------
 [037]
 # Cerulean City
@@ -85,7 +86,7 @@ ShowArea = true
 Bicycle = true
 Weather = Storm,10
 MapPosition = 0,16,5
-BattleBack = field
+BattleBack = city
 #-------------------------------
 [038]
 # Vermilion City
@@ -104,6 +105,22 @@ Bicycle = true
 Weather = Rain,13
 MapPosition = 0,20,8
 #-------------------------------
+[040]
+# Celadon City
+BattleBack = city
+#-------------------------------
+[041]
+# Saffron City
+BattleBack = city
+#-------------------------------
+[042]
+# Fuchsia City
+BattleBack = city
+#-------------------------------
+[043]
+# Cinnabar Island
+BattleBack = city
+#-------------------------------
 [044]
 # Indigo Plateau
 Outdoor = true
@@ -111,6 +128,7 @@ ShowArea = true
 Bicycle = true
 Weather = Rain,10
 MapPosition = 0,4,6
+BattleBack = rocky
 #-------------------------------
 [045]
 # Route 1
@@ -171,6 +189,10 @@ MapPosition = 0,16,9
 BattleBack = field
 MapSize = 1,11
 #-------------------------------
+[052]
+# Route 7
+BattleBack = field
+#-------------------------------
 [053]
 # Route 8
 Outdoor = true
@@ -178,6 +200,7 @@ ShowArea = true
 Bicycle = true
 Weather = Rain,7
 MapPosition = 0,17,8
+BattleBack = field
 MapSize = 3,111
 #-------------------------------
 [054]
@@ -187,8 +210,9 @@ ShowArea = true
 Bicycle = true
 Weather = Rain,5
 MapPosition = 0,17,5
-BattleBack = field
+BattleBack = rocky
 MapSize = 3,111
+Environment = Grass
 #-------------------------------
 [055]
 # Route 10
@@ -210,6 +234,15 @@ MapPosition = 0,17,11
 BattleBack = field
 MapSize = 3,111
 #-------------------------------
+[057]
+# Route 12
+Outdoor = true
+ShowArea = true
+Bicycle = true
+Weather = Rain,10
+MapPosition = 0,20,9
+MapSize = 1,11111
+#-------------------------------
 [067]
 # Route 22
 Outdoor = true
@@ -225,7 +258,7 @@ MapSize = 2,11
 Outdoor = false
 Bicycle = true
 MapPosition = 0,3,9
-BattleBack = indoor
+BattleBack = indoor1
 MapSize = 2,0110
 #-------------------------------
 [069]
@@ -266,7 +299,7 @@ Weather = Rain,10
 MapPosition = 0,6,7
 BattleBack = Forest
 WildBattleBGM = B-012. Battle vs. Puppet (Forest).ogg
-Environment = TallGrass
+Environment = ForestGrass
 #-------------------------------
 [077]
 # Mt. Moon
@@ -299,6 +332,15 @@ BattleBack = factory
 ShowArea = true
 MapPosition = 0,20,8
 #-------------------------------
+[081]
+# Diglett's Cave
+ShowArea = true
+Bicycle = true
+MapPosition = 0,6,7
+WildBattleBGM = B-013. Battle vs. Puppet (Cave).ogg
+MapSize = 12,100000000000000000000000000000000000000000000000000000000001
+Environment = Cave
+#-------------------------------
 [170]
 # Red's House
 MapPosition = 0,6,13
@@ -315,6 +357,7 @@ MapPosition = 0,6,13
 # Renko & Maribel's House
 HealingSpot = 34,24,25
 MapPosition = 0,6,13
+BattleBack = indoor1
 #-------------------------------
 [174]
 # Professor Oak's Lab
@@ -389,11 +432,12 @@ Environment = TallGrass
 [187]
 # Hall of Representatives
 MapPosition = 0,4,8
+BattleBack = elite5
 #-------------------------------
 [188]
 # Hall of Representatives
 MapPosition = 0,4,8
-BattleBack = indoor2
+BattleBack = elite5
 #-------------------------------
 [189]
 # Route 23
@@ -451,7 +495,7 @@ MapPosition = 0,4,4
 MapPosition = 0,6,7
 #-------------------------------
 [199]
-# Route 2 (Diglett's Cave Exit)
+# Route 2
 MapPosition = 0,6,8
 #-------------------------------
 [200]
@@ -597,7 +641,8 @@ ShowArea = true
 Bicycle = true
 Weather = Rain,8
 MapPosition = 0,20,7
-BattleBack = field
+BattleBack = rocky
+Environment = Grass
 #-------------------------------
 [236]
 # Route 8: Tunnel Entrance
@@ -614,6 +659,10 @@ MapPosition = 0,20,6
 BattleBack = factory
 WildBattleBGM = B-013. Battle vs. Puppet (Cave).ogg
 #-------------------------------
+[244]
+# Vermilion City Gym
+BattleBack = indoor2
+#-------------------------------
 [245]
 # Route 3
 Outdoor = true
@@ -621,7 +670,9 @@ ShowArea = true
 Bicycle = true
 Weather = Rain,10
 MapPosition = 0,9,6
+BattleBack = rocky
 MapSize = 2,11
+Environment = Grass
 #-------------------------------
 [246]
 # Pokémon Center
@@ -658,6 +709,10 @@ Environment = Graveyard
 BattleBack = ayakashi
 Environment = Graveyard
 #-------------------------------
+[252]
+# Lavender Town Gym
+BattleBack = distortion
+#-------------------------------
 [257]
 # Lavender Tower
 Weather = Fog,100
@@ -682,6 +737,22 @@ MapPosition = 0,20,8
 BattleBack = distortion
 Environment = Graveyard
 #-------------------------------
+[261]
+# Diglett's Cave (Vermilion)
+ShowArea = true
+Bicycle = true
+MapPosition = 0,17,11
+WildBattleBGM = B-013. Battle vs. Puppet (Cave).ogg
+Environment = Cave
+#-------------------------------
+[262]
+# Diglett's Cave (Pewter)
+ShowArea = true
+Bicycle = true
+MapPosition = 0,6,7
+WildBattleBGM = B-013. Battle vs. Puppet (Cave).ogg
+Environment = Cave
+#-------------------------------
 [266]
 # Route 3
 Outdoor = true
@@ -689,4 +760,11 @@ ShowArea = true
 Bicycle = true
 Weather = Rain,10
 MapPosition = 0,7,6
+BattleBack = rocky
 MapSize = 2,11
+Environment = Grass
+#-------------------------------
+[268]
+# Route 11
+Bicycle = true
+MapPosition = 0,19,11

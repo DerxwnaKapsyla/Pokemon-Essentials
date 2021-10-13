@@ -1,0 +1,41 @@
+﻿Name      = Maruno's Experimental Map Renderer
+Version   = 1.0.2
+Website   = https://github.com/Maruno17/pokemon-essentials
+Credits   = Maruno
+#=====================================================================
+# Notes
+#=====================================================================
+#
+# This is an EXPERIMENTAL plugin. Do not expect it to work properly.
+# Do not expect support.
+#
+# This plugin is a potential new map renderer for Essentials. It aims
+# to fix any lag issues for people using AMD graphics cards, and also
+# to be faster all round. It is in plugin form so that it can be
+# tested quickly and easily - if it works properly, it will be
+# included in Essentials v20.
+#
+# This map renderer should work properly with connected maps, map
+# transfers (including diving), screen shifting while buying from a
+# Mart, etc. The number of connected maps being shown at once should
+# have no noticeable effect on its speed.
+#
+# You can now have each autotile animate at its own rate. The default
+# is 5 (each frame of the animation lasts 5/20ths of a second), but
+# you can put "[x]" at the end of the autotile's filename (where "x"
+# is a number) and it will use that value instead, i.e. each frame of
+# the animation will last x/20ths of a second.
+#
+# There is a little-known unused feature in RMXP known as flash_data.
+# In fact, it is unusable since it cannot be edited in RMXP. It was
+# intended to allow each tile of a map to flash its own colour when
+# the screen flashes. This is currently unsupported, because it's
+# impossible to set a map's flash_data with RMXP and because screen
+# flashing works differently anyway. The code for it may well be
+# removed.
+#
+# The map renderer has variables for ox, oy and visible. These are all
+# currently unused, and I doubt anyone would ever use them, so they
+# may well be removed.
+#
+#=====================================================================

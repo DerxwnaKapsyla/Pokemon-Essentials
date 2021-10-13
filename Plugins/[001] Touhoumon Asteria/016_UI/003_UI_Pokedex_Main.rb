@@ -161,7 +161,9 @@ class PokedexSearchSelectionSprite < SpriteWrapper
       case @index
       when 0         # Order
         self.x = 252; self.y = 52
-      when 1,2,3,4   # Name, type, height, weight
+      when 1,3,4     # Name, height, weight
+        self.x = 114; self.y = 110+(@index-1)*52
+      when 2   	     # Type
         self.x = 114; self.y = 110+(@index-1)*52
       when 5         # Color
         self.x = 382; self.y = 110
@@ -183,7 +185,7 @@ class PokedexSearchSelectionSprite < SpriteWrapper
 # ------ Derx: Changes necessary for Pokedex screen fixes
 # ------ Derx: These changes were directly ported and may need fixing.
 		when 2 # Type
-		  self.src_rect.y = 44; self.src_rect.height = 44
+		  self.src_rect.y = 392; self.src_rect.height = 44
 # ------ End of Pokedex screen fixes
         when 5 # Color
           self.src_rect.y = 44; self.src_rect.height = 44
