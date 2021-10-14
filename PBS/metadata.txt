@@ -15,6 +15,9 @@ PlayerC = POKEMONTRAINER_Red,trainer_POKEMONTRAINER_Red,boy_bike.png,boy_surf.pn
 [001]
 # Intro
 #-------------------------------
+[002]
+# Prefab Map
+#-------------------------------
 [007]
 # Pallet Town
 ShowArea = true
@@ -23,30 +26,53 @@ BattleBack = field
 #-------------------------------
 [008]
 # Red's House
+Name = Pallet Town
 MapPosition = 0,6,13
 #-------------------------------
 [009]
 # Professor Oak's Lab
+Name = Pallet Town
 MapPosition = 0,6,13
+#-------------------------------
+[010]
+# Cutscene: Cave of Origin
+Name = Cave of Origin
+#-------------------------------
+[012]
+# Cutscene: Confrence Hall
+Name = Lumiose City
+#-------------------------------
+[013]
+# Cutscene: Lab Back Garden
+Name = Pallet Town
+#-------------------------------
+[014]
+# Cutscene: Lab Dining Room
+Name = Pallet Town
 #-------------------------------
 [015]
 # Renko & Maribel's House
+Name = Pallet Town
 MapPosition = 0,6,13
 #-------------------------------
 [016]
 # Green's House
+Name = Pallet Town
 MapPosition = 0,6,13
 #-------------------------------
 [017]
 # Pallet General Store
+Name = Pallet Town
 MapPosition = 0,6,13
 #-------------------------------
 [018]
 # Professor Oak's Lab - 2F
+Name = Pallet Town
 MapPosition = 0,6,13
 #-------------------------------
 [019]
 # Professor Oak's Lab - B1F
+Name = Pallet Town
 MapPosition = 0,6,13
 BattleBack = indoor2
 #-------------------------------
@@ -189,6 +215,10 @@ MapPosition = 0,16,9
 BattleBack = field
 MapSize = 1,11
 #-------------------------------
+[051]
+# Route 5
+Name = Route 5
+#-------------------------------
 [052]
 # Route 7
 BattleBack = field
@@ -255,6 +285,7 @@ MapSize = 2,11
 #-------------------------------
 [068]
 # Route 23
+Name = Route 23
 Outdoor = false
 Bicycle = true
 MapPosition = 0,3,9
@@ -343,63 +374,77 @@ Environment = Cave
 #-------------------------------
 [170]
 # Red's House
+Name = Pallet Town
 MapPosition = 0,6,13
 #-------------------------------
 [171]
 # Green's House
+Name = Pallet Town
 MapPosition = 0,6,13
 #-------------------------------
 [172]
 # Pallet General Store
+Name = Pallet Town
 MapPosition = 0,6,13
 #-------------------------------
 [173]
 # Renko & Maribel's House
+Name = Pallet Town
 HealingSpot = 34,24,25
 MapPosition = 0,6,13
 BattleBack = indoor1
 #-------------------------------
 [174]
 # Professor Oak's Lab
+Name = Pallet Town
 MapPosition = 0,6,13
 #-------------------------------
 [175]
 # Professor Oak's Lab - 2F
+Name = Pallet Town
 MapPosition = 0,6,13
 #-------------------------------
 [176]
 # Professor Oak's Lab - B1F
+Name = Pallet Town
 MapPosition = 0,6,13
 #-------------------------------
 [177]
 # Trainer Academy
+Name = Viridian City
 MapPosition = 0,6,10
 BattleBack = indoor1
 #-------------------------------
 [178]
 # Pokémon Center
+Name = Viridian City
 HealingSpot = 35,29,42
 MapPosition = 0,6,10
 #-------------------------------
 [179]
 # Poké Mart
+Name = Viridian City
 MapPosition = 0,6,10
 #-------------------------------
 [180]
 # Viridian City
+Name = Viridian City
 MapPosition = 0,6,10
 #-------------------------------
 [181]
 # Viridian Gym
+Name = Viridian City
 MapPosition = 0,6,10
 BattleBack = champion2
 #-------------------------------
 [182]
 # Regional Uplink Terminal
+Name = Viridian City
 MapPosition = 0,6,10
 #-------------------------------
 [183]
-# Gatehouse
+# Route 1
+Name = Route 1
 Bicycle = true
 MapPosition = 0,6,11
 #-------------------------------
@@ -424,6 +469,7 @@ BattleBack = field
 #-------------------------------
 [186]
 # Hidden Grove
+Name = Route 2
 Outdoor = true
 MapPosition = 0,6,8
 BattleBack = forest
@@ -431,11 +477,13 @@ Environment = TallGrass
 #-------------------------------
 [187]
 # Hall of Representatives
+Name = Route 23
 MapPosition = 0,4,8
 BattleBack = elite5
 #-------------------------------
 [188]
 # Hall of Representatives
+Name = Route 23
 MapPosition = 0,4,8
 BattleBack = elite5
 #-------------------------------
@@ -463,10 +511,12 @@ MapPosition = 0,4,4
 #-------------------------------
 [192]
 # Indigo Plateau - Elite Four
+Name = Indigo Plateau
 MapPosition = 0,4,4
 #-------------------------------
 [193]
 # Indigo Plateau - Hall of Fame
+Name = Indigo Plateau
 MapPosition = 0,4,4
 #-------------------------------
 [194]
@@ -479,54 +529,66 @@ MapPosition = 0,4,4
 #-------------------------------
 [195]
 # Indigo Village Hotels
+Name = Indigo Village
 MapPosition = 0,4,4
 #-------------------------------
 [196]
 # PokeCenter
+Name = Indigo Village
 MapPosition = 0,4,4
 #-------------------------------
 [197]
 # PokeMart
+Name = Indigo Village
 Outdoor = false
 MapPosition = 0,4,4
 #-------------------------------
 [198]
-# Viridian Forest Gatehouse
+# Route 2
+Name = Route 2
 MapPosition = 0,6,7
 #-------------------------------
 [199]
 # Route 2
+Name = Route 2
 MapPosition = 0,6,8
 #-------------------------------
 [200]
 # Pokémon Center
+Name = Pewter City
 HealingSpot = 36,34,33
 MapPosition = 0,6,6
 #-------------------------------
 [201]
 # Pewter Gym
+Name = Pewter City
 MapPosition = 0,6,6
 BattleBack = indoor3
 Environment = Rock
 #-------------------------------
 [202]
 # Poké Mart
+Name = Pewter City
 MapPosition = 0,6,6
 #-------------------------------
 [203]
 # Pewter Museum F1
+Name = Pewter City
 MapPosition = 0,6,6
 #-------------------------------
 [204]
 # Pewter Museum F2
+Name = Pewter City
 MapPosition = 0,6,6
 #-------------------------------
 [205]
 # Pewter Museum F3
+Name = Pewter City
 MapPosition = 0,6,6
 #-------------------------------
 [206]
 # Pewter City Houses
+Name = Pewter City
 MapPosition = 0,6,6
 #-------------------------------
 [207]
@@ -550,6 +612,7 @@ Environment = Cave
 #-------------------------------
 [209]
 # Mt. Moon Square
+Name = Mt. Moon
 ShowArea = true
 Bicycle = true
 MapPosition = 0,11,5
@@ -558,6 +621,7 @@ Environment = Cave
 #-------------------------------
 [210]
 # Mt. Moon Square
+Name = Mt. Moon
 Outdoor = true
 ShowArea = true
 Bicycle = true
@@ -567,6 +631,7 @@ BattleBack = field
 #-------------------------------
 [211]
 # Gift Shop
+Name = Mt. Moon
 MapPosition = 0,11,5
 #-------------------------------
 [212]
@@ -587,6 +652,10 @@ BattleBack = Cave1
 WildBattleBGM = B-013. Battle vs. Puppet (Cave).ogg
 Environment = Cave
 #-------------------------------
+[214]
+# Mt. Moon Mining Caves
+Name = Mt. Moon
+#-------------------------------
 [215]
 # Route 4
 Outdoor = true
@@ -599,40 +668,56 @@ MapSize = 4,1111
 #-------------------------------
 [216]
 # Pokémon Center
+Name = Route 4
 HealingSpot = 48,21,25
 MapPosition = 0,10,5
 #-------------------------------
 [217]
 # Cerulean City Gym
+Name = Cerulean City
 MapPosition = 0,16,5
 BattleBack = cerulean
 #-------------------------------
 [218]
 # Cerulean City Houses
+Name = Cerulean City
 MapPosition = 0,16,5
 BattleBack = indoor1
 #-------------------------------
 [219]
 # Poké Mart
+Name = Cerulean City
 Outdoor = false
 MapPosition = 0,16,5
 #-------------------------------
 [220]
 # Pokémon Center
+Name = Cerulean City
 HealingSpot = 37,9,30
 MapPosition = 0,16,5
 #-------------------------------
 [221]
 # Bike shop
+Name = Cerulean City
 MapPosition = 0,16,5
 #-------------------------------
 [223]
 # Gatehouse
+Name = Route 24
 MapPosition = 0,15,3
 #-------------------------------
 [224]
-# Bill's House
+# Route 25
+Name = Route 25
 MapPosition = 0,18,3
+#-------------------------------
+[225]
+# Route 3 (Placeholder)
+Name = Mystery Zone
+#-------------------------------
+[227]
+# Vermilion Seaside Hotel
+Name = Vermilion City
 #-------------------------------
 [228]
 # Route 10
@@ -644,13 +729,43 @@ MapPosition = 0,20,7
 BattleBack = rocky
 Environment = Grass
 #-------------------------------
+[230]
+# Route 5
+Name = Route 5
+#-------------------------------
+[231]
+# Route 5
+Name = Route 5
+#-------------------------------
+[232]
+# Route 6
+Name = Route 6
+#-------------------------------
+[233]
+# Route 6
+Name = Route 6
+#-------------------------------
+[234]
+# Route 7
+Name = Route 7
+#-------------------------------
+[235]
+# Route 7
+Name = Route 7
+#-------------------------------
 [236]
-# Route 8: Tunnel Entrance
+# Route 8
+Name = Route 8
 MapPosition = 0,17,8
 #-------------------------------
 [237]
-# Route 8: Gatehouse
+# Route 8
+Name = Route 8
 MapPosition = 0,17,8
+#-------------------------------
+[238]
+# Vermilion Seaside Hotel
+Name = Vermilion City
 #-------------------------------
 [239]
 # Power Plant
@@ -659,8 +774,25 @@ MapPosition = 0,20,6
 BattleBack = factory
 WildBattleBGM = B-013. Battle vs. Puppet (Cave).ogg
 #-------------------------------
+[240]
+# Pokémon Center
+Name = Vermilion City
+#-------------------------------
+[241]
+# Vermilion City Houses
+Name = Vermilion City
+#-------------------------------
+[242]
+# PokeMart
+Name = Vermilion City
+#-------------------------------
+[243]
+# Vermilion Harbor
+Name = Vermilion City
+#-------------------------------
 [244]
 # Vermilion City Gym
+Name = Vermilion City
 BattleBack = indoor2
 #-------------------------------
 [245]
@@ -676,6 +808,7 @@ Environment = Grass
 #-------------------------------
 [246]
 # Pokémon Center
+Name = Route 10
 HealingSpot = 55,27,43
 MapPosition = 0,20,6
 #-------------------------------
@@ -691,6 +824,7 @@ Environment = Cave
 #-------------------------------
 [249]
 # Tunnel of Liminality
+Name = Lavender Town
 Bicycle = true
 MapPosition = 0,20,8
 #-------------------------------
@@ -706,12 +840,30 @@ Environment = Graveyard
 #-------------------------------
 [251]
 # ???
+Name = ???
 BattleBack = ayakashi
 Environment = Graveyard
 #-------------------------------
 [252]
 # Lavender Town Gym
+Name = Lavender Town
 BattleBack = distortion
+#-------------------------------
+[253]
+# Lavender Radio Tower
+Name = Lavender Town
+#-------------------------------
+[254]
+# Lavender Town
+Name = Lavender Town
+#-------------------------------
+[255]
+# Pokémon Center
+Name = Lavender Town
+#-------------------------------
+[256]
+# PokeMart
+Name = Lavender Town
 #-------------------------------
 [257]
 # Lavender Tower
@@ -738,7 +890,7 @@ BattleBack = distortion
 Environment = Graveyard
 #-------------------------------
 [261]
-# Diglett's Cave (Vermilion)
+# Diglett's Cave
 ShowArea = true
 Bicycle = true
 MapPosition = 0,17,11
@@ -746,12 +898,24 @@ WildBattleBGM = B-013. Battle vs. Puppet (Cave).ogg
 Environment = Cave
 #-------------------------------
 [262]
-# Diglett's Cave (Pewter)
+# Diglett's Cave
 ShowArea = true
 Bicycle = true
 MapPosition = 0,6,7
 WildBattleBGM = B-013. Battle vs. Puppet (Cave).ogg
 Environment = Cave
+#-------------------------------
+[263]
+# Silph Co.: Presentation Room
+Name = Silph Co.
+#-------------------------------
+[264]
+# Silph Co.: Workstations
+Name = Silph Co.
+#-------------------------------
+[265]
+# Silph Co.: Development
+Name = Silph Co.
 #-------------------------------
 [266]
 # Route 3
@@ -764,7 +928,12 @@ BattleBack = rocky
 MapSize = 2,11
 Environment = Grass
 #-------------------------------
+[267]
+# Diglett's Cave Mining Tunnels
+Name = Diglett's Cave
+#-------------------------------
 [268]
 # Route 11
+Name = Route 11
 Bicycle = true
 MapPosition = 0,19,11
