@@ -1,3 +1,15 @@
+#==================================================================
+# Touhoumon Asteria - Special Scenes
+#==================================================================
+# This section is for special gui scenes in Asteria that can't
+# really be handled any other way- to my knowledge, at least.
+#
+# These scenes can be the player selection GUI, or a special
+# cutscene, or even a trade where you want to show the recipient's
+# Pokemon/Puppets off. Limitless possibilities, endless laziness!!
+#==================================================================
+# Player Slection GUI
+#==================================================================
 class PlayerChoiceGUI
   def initialize
     @viewport = Viewport.new(0, 0, Graphics.width, Graphics.height)
@@ -71,3 +83,25 @@ class PlayerChoiceGUI
     @viewport.dispose
   end
 end
+
+#==================================================================
+# Teacher Polly's trades
+#==================================================================
+#class TradeSummaryCutsceneGUI
+#  def initialize
+#	@viewport = Viewport.new(0, 0, Graphics.width, Graphics.height)
+#    @sprites = {}
+#    @sel = 0
+#    @sprites["pkmnsummary"] = Sprite.new(@viewport)
+#    @sprites["pkmnsummary"].bitmap = Bitmap.new("Graphics/Pictures/Special Scenes/PollyTrade/{1}_1",$game_variables[1])
+#    @sprites["pkmnsummary"].opacity = 0
+#    main
+#  end
+  
+#  def main
+#    32.times { 
+#       Graphics.update
+#       @sprites["pkmnsummary"].opacity += 8
+#    }
+
+#end

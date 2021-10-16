@@ -8,8 +8,8 @@ WildVictoryME = Battle victory wild.ogg
 TrainerVictoryME = Battle victory trainer.ogg
 SurfBGM = U-007. Surf (HgSs Surf).ogg
 BicycleBGM = U-006. Wind God Girl (Bike).ogg
-PlayerA = SCRenko,trainer_SCRenko,Renko_bike.png,Renko_surf.png,Renko_run.png,Renko_surf.png,Renko_fishing.png,xxx
-PlayerB = SCMary,trainer_SCMary,Maribel_bike.png,Maribel_run.png,Maribel_run.png,Maribel_surf.png,Maribel_fishing.png,xxx
+PlayerA = SCRenko,trainer_SCRenko,Renko_bike,Renko_surf,Renko_run,Renko_surf,Renko_fish_offset,Renko_fish_offset,xxx
+PlayerB = SCMary,trainer_SCMary,Maribel_bike,Maribel_surf,Maribel_run,Maribel_surf,Maribel_fish_offset,Maribel_fish_offset,xxx
 PlayerC = POKEMONTRAINER_Red,trainer_POKEMONTRAINER_Red,boy_bike.png,boy_surf.png,boy_run.png,boy_surf.png,boy_fish_offset.png,xxx
 #-------------------------------
 [001]
@@ -216,7 +216,7 @@ BattleBack = field
 MapSize = 1,11
 #-------------------------------
 [051]
-# Route 5
+# Route 5 - Daycare
 Name = Route 5
 #-------------------------------
 [052]
@@ -266,12 +266,42 @@ MapSize = 3,111
 #-------------------------------
 [057]
 # Route 12
+Name = 
 Outdoor = true
 ShowArea = true
 Bicycle = true
 Weather = Rain,10
 MapPosition = 0,20,9
-MapSize = 1,11111
+MapSize = 1,1111
+#-------------------------------
+[058]
+# Route 13
+Outdoor = true
+ShowArea = true
+Bicycle = true
+Weather = Rain,10
+MapPosition = 0,18,13
+MapSize = 3,111
+#-------------------------------
+[059]
+# Route 14
+Name = 
+Outdoor = true
+ShowArea = true
+Bicycle = true
+Weather = Rain,10
+MapPosition = 0,17,13
+MapSize = 1,11
+#-------------------------------
+[060]
+# Route 15
+Outdoor = true
+ShowArea = true
+Bicycle = true
+BicycleAlways = true
+Weather = Rain,10
+MapPosition = 0,15,14
+MapSize = 2,11
 #-------------------------------
 [067]
 # Route 22
@@ -730,11 +760,11 @@ BattleBack = rocky
 Environment = Grass
 #-------------------------------
 [230]
-# Route 5
+# Route 5 - Underground Entrance
 Name = Route 5
 #-------------------------------
 [231]
-# Route 5
+# Route 5 - Gatehouse
 Name = Route 5
 #-------------------------------
 [232]
@@ -933,7 +963,36 @@ Environment = Grass
 Name = Diglett's Cave
 #-------------------------------
 [268]
-# Route 11
+# Route 11 - Gatehouse
 Name = Route 11
 Bicycle = true
 MapPosition = 0,19,11
+#-------------------------------
+[270]
+# Fishing Guru's House
+Name = Route 12
+MapPosition = 0,20,11
+#-------------------------------
+[271]
+# Gatehouse
+Name = Route 12
+MapPosition = 0,20,9
+#-------------------------------
+[272]
+# Route 13 - School Annex Building
+Name = Route 13
+MapPosition = 0,19,13
+BattleBack = indoor2
+#-------------------------------
+[273]
+# Route 14 (Placeholder Map)
+Name = Mystery Zone
+Outdoor = true
+ShowArea = true
+Weather = Fog,50
+MapPosition = 0,20,14
+#-------------------------------
+[275]
+# Route 15 - Gatehouse
+Name = Route 15
+MapPosition = 0,15,14

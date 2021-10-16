@@ -17505,7 +17505,7 @@ List of Event Commands:
 @>Play SE: 'Door exit', 100, 100
 @>Change Screen Color Tone: (-255,-255,-255,0), @6
 @>Wait: 8 frame(s)
-@>Transfer Player:[231: Route 5], (004,009), Up, No Fade
+@>Transfer Player:[231: Route 5 - Gatehouse], (004,009), Up, No Fade
 @>Change Screen Color Tone: (0,0,0,0), @6
 @>
 
@@ -17553,7 +17553,7 @@ List of Event Commands:
 @>Play SE: 'Door exit', 100, 100
 @>Change Screen Color Tone: (-255,-255,-255,0), @6
 @>Wait: 8 frame(s)
-@>Transfer Player:[231: Route 5], (004,009), Up, No Fade
+@>Transfer Player:[231: Route 5 - Gatehouse], (004,009), Up, No Fade
 @>Change Screen Color Tone: (0,0,0,0), @6
 @>
 
@@ -17601,7 +17601,7 @@ List of Event Commands:
 @>Play SE: 'Door exit', 100, 100
 @>Change Screen Color Tone: (-255,-255,-255,0), @6
 @>Wait: 8 frame(s)
-@>Transfer Player:[231: Route 5], (004,009), Up, No Fade
+@>Transfer Player:[231: Route 5 - Gatehouse], (004,009), Up, No Fade
 @>Change Screen Color Tone: (0,0,0,0), @6
 @>
 
@@ -20169,7 +20169,7 @@ List of Event Commands:
 @>Text: So, if you left Pokémon at the Hoenn Daycare, you 
  :    : could retrieve them from the Kanto Daycare easily!
 @>Text: The world is gets smaller every day with connections like this!
-@>Script: pbSetSelfSwitch(9,"A",true)
+@>Script: pbSetSelfSwitch(1,"A",true)
 @>Control Self Switch: A =ON
 @>
 
@@ -20271,7 +20271,7 @@ List of Event Commands:
 @>Change Screen Color Tone: (-255,-255,-255,0), @6
 @>Wait: 8 frame(s)
 @>Change Transparent Flag: Normal
-@>Transfer Player:[051: Route 5], (004,007), Up, No Fade
+@>Transfer Player:[051: Route 5 - Daycare], (004,007), Up, No Fade
 @>Change Screen Color Tone: (0,0,0,0), @6
 @>
 
@@ -20373,7 +20373,7 @@ List of Event Commands:
 @>Change Screen Color Tone: (-255,-255,-255,0), @6
 @>Wait: 8 frame(s)
 @>Change Transparent Flag: Normal
-@>Transfer Player:[230: Route 5], (007,011), Up, No Fade
+@>Transfer Player:[230: Route 5 - Underground Entrance], (007,011), Up, No Fade
 @>Change Screen Color Tone: (0,0,0,0), @6
 @>
 
@@ -20450,7 +20450,7 @@ List of Event Commands:
  @>Play SE: 'Door exit', 100, 100
  @>Change Screen Color Tone: (-255,-255,-255,0), @6
  @>Wait: 8 frame(s)
- @>Transfer Player:[231: Route 5], (004,001), Down, No Fade
+ @>Transfer Player:[231: Route 5 - Gatehouse], (004,001), Down, No Fade
  @>Change Screen Color Tone: (0,0,0,0), @6
  @>
 : Branch End
@@ -20482,7 +20482,7 @@ List of Event Commands:
  @>Play SE: 'Door exit', 100, 100
  @>Change Screen Color Tone: (-255,-255,-255,0), @6
  @>Wait: 8 frame(s)
- @>Transfer Player:[231: Route 5], (004,001), Down, No Fade
+ @>Transfer Player:[231: Route 5 - Gatehouse], (004,001), Down, No Fade
  @>Change Screen Color Tone: (0,0,0,0), @6
  @>
 : Branch End
@@ -20514,7 +20514,7 @@ List of Event Commands:
  @>Play SE: 'Door exit', 100, 100
  @>Change Screen Color Tone: (-255,-255,-255,0), @6
  @>Wait: 8 frame(s)
- @>Transfer Player:[231: Route 5], (004,001), Down, No Fade
+ @>Transfer Player:[231: Route 5 - Gatehouse], (004,001), Down, No Fade
  @>Change Screen Color Tone: (0,0,0,0), @6
  @>
 : Branch End
@@ -21264,7 +21264,7 @@ List of Event Commands:
 
 #==============================================================================
 Map ID: 051
-Map Name: Route 5
+Map Name: Route 5 - Daycare
 Tileset: 003: Inside
 Width: 20, Height: 15
 Auto-Change BGM: W-007. Route Theme 2
@@ -26271,6 +26271,38 @@ List of Event Commands:
 @>
 
 #------------------------------------------------------------------------------
+Event ID: 020
+Event Name: ExitArrow
+(X,Y): (061,017)
+
+Page #1
+Conditions
+None
+
+Graphic: Exitarrow_red
+
+Autonomous Movement
+Type: Fixed
+Speed: 3: Slow
+Freq: 3: Low
+Options Enabled
+Move Animation
+Stop Animation
+Always on Top
+Trigger: Player Touch
+
+List of Event Commands:
+@>Conditional Branch: Player is facing Right
+ @>Play SE: 'Door exit', 100, 100
+ @>Change Screen Color Tone: (-255,-255,-255,0), @6
+ @>Wait: 8 frame(s)
+ @>Transfer Player:[268: Route 11 - Gatehouse], (001,006), No Fade
+ @>Change Screen Color Tone: (0,0,0,0), @6
+ @>
+: Branch End
+@>
+
+#------------------------------------------------------------------------------
 
 #==============================================================================
 Map ID: 057
@@ -26560,7 +26592,7 @@ Page #1
 Conditions
 None
 
-Graphic: Object ball
+Graphic: Object tm_ball
 
 Autonomous Movement
 Type: Fixed
@@ -26637,27 +26669,1812 @@ List of Event Commands:
 @>
 
 #------------------------------------------------------------------------------
+Event ID: 010
+Event Name: ExitArrow
+(X,Y): (007,070)
+
+Page #1
+Conditions
+None
+
+Graphic: Exitarrow_red
+
+Autonomous Movement
+Type: Fixed
+Speed: 3: Slow
+Freq: 3: Low
+Options Enabled
+Move Animation
+Stop Animation
+Always on Top
+Trigger: Player Touch
+
+List of Event Commands:
+@>Conditional Branch: Player is facing Left
+ @>Play SE: 'Door exit', 100, 100
+ @>Change Screen Color Tone: (-255,-255,-255,0), @6
+ @>Wait: 8 frame(s)
+ @>Transfer Player:[268: Route 11 - Gatehouse], (011,006), No Fade
+ @>Change Screen Color Tone: (0,0,0,0), @6
+ @>
+: Branch End
+@>
+
+#------------------------------------------------------------------------------
+Event ID: 011
+Event Name: EV011
+(X,Y): (020,085)
+
+Page #1
+Conditions
+None
+
+Graphic: doors1
+
+Autonomous Movement
+Type: Fixed
+Speed: 3: Slow
+Freq: 3: Low
+Options Enabled
+Move Animation
+Trigger: Player Touch
+
+List of Event Commands:
+@>Set Move Route: This event
+                  (Ignore If Can't Move)
+ :              : $>SE: 'Door enter', 100, 100
+ :              : $>Wait: 2 frame(s)
+ :              : $>Turn Left
+ :              : $>Wait: 2 frame(s)
+ :              : $>Turn Right
+ :              : $>Wait: 2 frame(s)
+ :              : $>Turn Up
+ :              : $>Wait: 2 frame(s)
+@>Wait for Move's Completion
+@>Set Move Route: Player
+                  (Ignore If Can't Move)
+ :              : $>Through ON
+ :              : $>Move Up
+ :              : $>Through OFF
+@>Wait for Move's Completion
+@>Change Transparent Flag: Transparency
+@>Set Move Route: This event
+                  (Ignore If Can't Move)
+ :              : $>Wait: 2 frame(s)
+ :              : $>Turn Right
+ :              : $>Wait: 2 frame(s)
+ :              : $>Turn Left
+ :              : $>Wait: 2 frame(s)
+ :              : $>Turn Down
+ :              : $>Wait: 2 frame(s)
+@>Wait for Move's Completion
+@>Change Screen Color Tone: (-255,-255,-255,0), @6
+@>Wait: 8 frame(s)
+@>Change Transparent Flag: Normal
+@>Transfer Player:[270: Fishing Guru's House], (003,007), Up, No Fade
+@>Change Screen Color Tone: (0,0,0,0), @6
+@>
+
+Page #2
+Conditions
+Switch 0022: s:tsOff?("A") is ON
+
+Graphic: doors1
+
+Autonomous Movement
+Type: Fixed
+Speed: 3: Slow
+Freq: 3: Low
+Options Enabled
+Move Animation
+Trigger: Autorun
+
+List of Event Commands:
+@>Conditional Branch: Script: get_character(0).onEvent?
+ @>Change Transparent Flag: Transparency
+ @>Set Move Route: This event
+                   (Ignore If Can't Move)
+  :              : $>SE: 'Door enter', 100, 100
+  :              : $>Wait: 2 frame(s)
+  :              : $>Turn Left
+  :              : $>Wait: 2 frame(s)
+  :              : $>Turn Right
+  :              : $>Wait: 2 frame(s)
+  :              : $>Turn Up
+  :              : $>Wait: 2 frame(s)
+ @>Wait for Move's Completion
+ @>Change Transparent Flag: Normal
+ @>Set Move Route: Player
+                   (Ignore If Can't Move)
+  :              : $>Move Down
+ @>Wait for Move's Completion
+ @>Set Move Route: This event
+                   (Ignore If Can't Move)
+  :              : $>Turn Right
+  :              : $>Wait: 2 frame(s)
+  :              : $>Turn Left
+  :              : $>Wait: 2 frame(s)
+  :              : $>Turn Down
+  :              : $>Wait: 2 frame(s)
+ @>Wait for Move's Completion
+ @>
+: Branch End
+@>Script: setTempSwitchOn("A")
+@>
+
+#------------------------------------------------------------------------------
+Event ID: 012
+Event Name: Trainer(1)
+(X,Y): (022,027)
+
+Page #1
+Conditions
+None
+
+Graphic: trainer_FISHERMAN
+
+Autonomous Movement
+Type: Fixed
+Speed: 3: Slow
+Freq: 3: Low
+Options Enabled
+Move Animation
+Trigger: Event Touch
+
+List of Event Commands:
+@>Script: TrainerIntro2(:FISHERMAN)
+@>Script: pbNoticePlayer(get_character(0))
+@>Text: Fishing is very important to me! But battles
+ :    : are equally important to me, too!
+@>Conditional Branch: Script: pbTrainerBattle(:FISHERMAN,"Marshal",_I("I never said I was good at battling though..."))
+ @>Control Self Switch: A =ON
+ @>
+: Branch End
+@>Script: pbTrainerEnd
+@>
+
+Page #2
+Conditions
+Self Switch A is ON
+
+Graphic: trainer_FISHERMAN
+
+Autonomous Movement
+Type: Fixed
+Speed: 3: Slow
+Freq: 3: Low
+Options Enabled
+Move Animation
+Trigger: Action Button
+
+List of Event Commands:
+@>Text: Now that I think about it, I'm not very good at fishing 
+ :    : either. It doesn't stop me from doing what I love, 
+ :    : though!
+@>
+
+#------------------------------------------------------------------------------
+Event ID: 013
+Event Name: Trainer(1)
+(X,Y): (027,042)
+
+Page #1
+Conditions
+None
+
+Graphic: trainer_FISHERMAN
+
+Autonomous Movement
+Type: Fixed
+Speed: 3: Slow
+Freq: 3: Low
+Options Enabled
+Move Animation
+Trigger: Event Touch
+
+List of Event Commands:
+@>Script: TrainerIntro2(:FISHERMAN)
+@>Script: pbNoticePlayer(get_character(0))
+@>Text: Ohohoho, I think I caught a live one!
+@>Conditional Branch: Script: pbTrainerBattle(:FISHERMAN,"Albert",_I("I meant the fishing rod, not you!"))
+ @>Control Self Switch: A =ON
+ @>
+: Branch End
+@>Script: pbTrainerEnd
+@>
+
+Page #2
+Conditions
+Self Switch A is ON
+
+Graphic: trainer_FISHERMAN
+
+Autonomous Movement
+Type: Fixed
+Speed: 3: Slow
+Freq: 3: Low
+Options Enabled
+Move Animation
+Trigger: Action Button
+
+List of Event Commands:
+@>Text: And now it got away, so much for that
+ :    : haul.
+@>
+
+#------------------------------------------------------------------------------
+Event ID: 014
+Event Name: Trainer(1)
+(X,Y): (025,043)
+
+Page #1
+Conditions
+None
+
+Graphic: trainer_FISHERMAN
+
+Autonomous Movement
+Type: Fixed
+Speed: 3: Slow
+Freq: 3: Low
+Options Enabled
+Move Animation
+Trigger: Event Touch
+
+List of Event Commands:
+@>Script: TrainerIntro2(:FISHERMAN)
+@>Script: pbNoticePlayer(get_character(0))
+@>Text: I wake up every morning at the crack of dawn
+ :    : to go out fishing!
+@>Conditional Branch: Script: pbTrainerBattle(:FISHERMAN,"Drew",_I("No loss will stop my fishing routine."))
+ @>Control Self Switch: A =ON
+ @>
+: Branch End
+@>Script: pbTrainerEnd
+@>
+
+Page #2
+Conditions
+Self Switch A is ON
+
+Graphic: trainer_FISHERMAN
+
+Autonomous Movement
+Type: Fixed
+Speed: 3: Slow
+Freq: 3: Low
+Options Enabled
+Move Animation
+Trigger: Action Button
+
+List of Event Commands:
+@>Text: I stay out all day, fishing on Route 12,
+ :    : from dawn to dusk, even if I catch nothing.
+@>
+
+#------------------------------------------------------------------------------
+Event ID: 015
+Event Name: Trainer(1)
+(X,Y): (026,059)
+
+Page #1
+Conditions
+None
+
+Graphic: trainer_FISHERMAN
+
+Autonomous Movement
+Type: Fixed
+Speed: 3: Slow
+Freq: 3: Low
+Options Enabled
+Move Animation
+Trigger: Event Touch
+
+List of Event Commands:
+@>Script: TrainerIntro2(:FISHERMAN)
+@>Script: pbNoticePlayer(get_character(0))
+@>Text: Come, join me in this wonderful experience!
+@>Conditional Branch: Script: pbTrainerBattle(:FISHERMAN,"Genki",_I("A jovial time indeed!"))
+ @>Control Self Switch: A =ON
+ @>
+: Branch End
+@>Script: pbTrainerEnd
+@>
+
+Page #2
+Conditions
+Self Switch A is ON
+
+Graphic: trainer_FISHERMAN
+
+Autonomous Movement
+Type: Fixed
+Speed: 3: Slow
+Freq: 3: Low
+Options Enabled
+Move Animation
+Trigger: Action Button
+
+List of Event Commands:
+@>Text: Fishing on Route 12 is one of the best experiences 
+ :    : you can have. 
+@>Text: It's nice and peaceful down here, meaning you can 
+ :    : get lost in the allure of fishing.
+@>
+
+#------------------------------------------------------------------------------
+Event ID: 016
+Event Name: Item Ball
+(X,Y): (025,085)
+
+Page #1
+Conditions
+None
+
+Graphic: Object ball
+
+Autonomous Movement
+Type: Fixed
+Speed: 3: Slow
+Freq: 3: Low
+Options Enabled
+Move Animation
+Trigger: Action Button
+
+List of Event Commands:
+@>Conditional Branch: Script: pbItemBall(:NETBALL)
+ @>Control Self Switch: A =ON
+ @>
+: Else
+ @>
+: Branch End
+@>
+
+Page #2
+Conditions
+Self Switch A is ON
+
+Autonomous Movement
+Type: Fixed
+Speed: 3: Slow
+Freq: 3: Low
+Options Enabled
+Move Animation
+Trigger: Action Button
+
+List of Event Commands:
+@>
+
+#------------------------------------------------------------------------------
+Event ID: 017
+Event Name: Trainer(1)
+(X,Y): (026,102)
+
+Page #1
+Conditions
+None
+
+Graphic: trainer_FISHERMAN
+
+Autonomous Movement
+Type: Fixed
+Speed: 3: Slow
+Freq: 3: Low
+Options Enabled
+Move Animation
+Trigger: Event Touch
+
+List of Event Commands:
+@>Script: TrainerIntro2(:FISHERMAN)
+@>Script: pbNoticePlayer(get_character(0))
+@>Text: Apparently my new Fishing Rod will reel things
+ :    : in even if I'm not doing it myself. Let's test that with a
+ :    : battle!
+@>Conditional Branch: Script: pbTrainerBattle(:FISHERMAN,"Arthur",_I("Haha, it actually does work!"))
+ @>Control Self Switch: A =ON
+ @>
+: Branch End
+@>Script: pbTrainerEnd
+@>
+
+Page #2
+Conditions
+Self Switch A is ON
+
+Graphic: trainer_FISHERMAN
+
+Autonomous Movement
+Type: Fixed
+Speed: 3: Slow
+Freq: 3: Low
+Options Enabled
+Move Animation
+Trigger: Action Button
+
+List of Event Commands:
+@>Text: It's just as she said. Prop the Fishing Rod up, leave it be, and it'll 
+ :    : start reeling things in on its own! Technology is amazing!
+@>
+
+#------------------------------------------------------------------------------
 
 #==============================================================================
 Map ID: 058
 Map Name: Route 13
 Tileset: 001: Outside
-Width: 20, Height: 15
+Width: 104, Height: 20
 Auto-Change BGM: W-020. Route Theme 4
+
+#------------------------------------------------------------------------------
+Event ID: 001
+Event Name: Item
+(X,Y): (085,006)
+
+Page #1
+Conditions
+None
+
+Graphic: Object ball
+
+Autonomous Movement
+Type: Fixed
+Speed: 3: Slow
+Freq: 3: Low
+Options Enabled
+Move Animation
+Trigger: Action Button
+
+List of Event Commands:
+@>Conditional Branch: Script: pbItemBall(:SUPPORTSHARD)
+ @>Control Self Switch: A =ON
+ @>
+: Else
+ @>
+: Branch End
+@>
+
+Page #2
+Conditions
+Self Switch A is ON
+
+Autonomous Movement
+Type: Fixed
+Speed: 3: Slow
+Freq: 3: Low
+Options Enabled
+Move Animation
+Trigger: Action Button
+
+List of Event Commands:
+@>
+
+#------------------------------------------------------------------------------
+Event ID: 002
+Event Name: EV002
+(X,Y): (065,007)
+
+Page #1
+Conditions
+None
+
+Autonomous Movement
+Type: Fixed
+Speed: 3: Slow
+Freq: 3: Low
+Options Enabled
+Move Animation
+Trigger: Action Button
+
+List of Event Commands:
+@>Text: Viridian City Trainer Academy Annex\nUsed for 
+ :    : Outdoor Lessons
+@>
+
+#------------------------------------------------------------------------------
+Event ID: 003
+Event Name: EV003
+(X,Y): (056,007)
+
+Page #1
+Conditions
+None
+
+Autonomous Movement
+Type: Fixed
+Speed: 3: Slow
+Freq: 3: Low
+Options Enabled
+Move Animation
+Trigger: Action Button
+
+List of Event Commands:
+@>Text: Battle Park
+@>
+
+#------------------------------------------------------------------------------
+Event ID: 004
+Event Name: HiddenItem
+(X,Y): (056,005)
+
+Page #1
+Conditions
+None
+
+Autonomous Movement
+Type: Fixed
+Speed: 3: Slow
+Freq: 3: Low
+Options Enabled
+Move Animation
+Trigger: Action Button
+
+List of Event Commands:
+@>Conditional Branch: Script: pbItemBall(:SUPERREPEL)
+ @>Control Self Switch: A =ON
+ @>
+: Else
+ @>
+: Branch End
+@>
+
+Page #2
+Conditions
+Self Switch A is ON
+
+Autonomous Movement
+Type: Fixed
+Speed: 3: Slow
+Freq: 3: Low
+Options Enabled
+Move Animation
+Trigger: Action Button
+
+List of Event Commands:
+@>
+
+#------------------------------------------------------------------------------
+Event ID: 005
+Event Name: Map Nurse
+(X,Y): (065,005)
+
+Page #1
+Conditions
+None
+
+Graphic: NPC 16
+
+Autonomous Movement
+Type: Fixed
+Speed: 3: Slow
+Freq: 3: Low
+Options Enabled
+Move Animation
+Trigger: Action Button
+
+List of Event Commands:
+@>Text: Oh, hello there! I'm the annex school's nurse. I come 
+ :    : along on outdoor trips to ensure that the children 
+ :    : don't get too rough with one another.
+@>Text: I can also heal your party if you'd like. Shall I do so?
+@>Show Choices: Yes, No
+(When Cancel: Choice 2)
+: When [Yes]
+ @>Text: Alright, we'll have them patched right up!
+ @>Set Move Route: This event
+  :              : $>Turn Right
+ @>Text: Chansey, please use Softboiled.
+ @>Set Move Route: [Map Nurse]
+  :              : $>Direction Fix OFF
+  :              : $>Turn Left
+ @>Play SE: '113Cry', 80, 100
+ @>Wait: 15 frame(s)
+ @>Recover All: Entire Party
+ @>Change Screen Color Tone: (-255,-255,-255,0), @20
+ @>Wait: 20 frame(s)
+ @>Play ME: 'Pokemon Healing', 100, 100
+ @>Wait: 20 frame(s)
+ @>Change Screen Color Tone: (0,0,0,0), @20
+ @>Wait: 20 frame(s)
+ @>Set Move Route: This event
+  :              : $>Turn Down
+ @>Set Move Route: [Map Nurse]
+  :              : $>Turn Down
+  :              : $>Direction Fix ON
+ @>Text: And there, they should be all healed now!
+ @>
+: When [No]
+ @>
+: Branch End
+@>Text: You be good to your partners now! Take care!
+@>
+
+#------------------------------------------------------------------------------
+Event ID: 006
+Event Name: Chansey
+(X,Y): (066,005)
+
+Page #1
+Conditions
+None
+
+Graphic: Pokemon 03
+
+Autonomous Movement
+Type: Fixed
+Speed: 3: Slow
+Freq: 3: Low
+Options Enabled
+Move Animation
+Direction Fix
+Trigger: Action Button
+
+List of Event Commands:
+@>Play SE: '113Cry', 80, 100
+@>Wait: 15 frame(s)
+@>
+
+#------------------------------------------------------------------------------
+Event ID: 007
+Event Name: Item
+(X,Y): (040,009)
+
+Page #1
+Conditions
+None
+
+Graphic: Object ball
+
+Autonomous Movement
+Type: Fixed
+Speed: 3: Slow
+Freq: 3: Low
+Options Enabled
+Move Animation
+Trigger: Action Button
+
+List of Event Commands:
+@>Conditional Branch: Script: pbItemBall(:CARBOS)
+ @>Control Self Switch: A =ON
+ @>
+: Else
+ @>
+: Branch End
+@>
+
+Page #2
+Conditions
+Self Switch A is ON
+
+Autonomous Movement
+Type: Fixed
+Speed: 3: Slow
+Freq: 3: Low
+Options Enabled
+Move Animation
+Trigger: Action Button
+
+List of Event Commands:
+@>
+
+#------------------------------------------------------------------------------
+Event ID: 008
+Event Name: Item
+(X,Y): (024,013)
+
+Page #1
+Conditions
+None
+
+Graphic: Object ball
+
+Autonomous Movement
+Type: Fixed
+Speed: 3: Slow
+Freq: 3: Low
+Options Enabled
+Move Animation
+Trigger: Action Button
+
+List of Event Commands:
+@>Conditional Branch: Script: pbItemBall(:POKETOY)
+ @>Control Self Switch: A =ON
+ @>
+: Else
+ @>
+: Branch End
+@>
+
+Page #2
+Conditions
+Self Switch A is ON
+
+Autonomous Movement
+Type: Fixed
+Speed: 3: Slow
+Freq: 3: Low
+Options Enabled
+Move Animation
+Trigger: Action Button
+
+List of Event Commands:
+@>
+
+#------------------------------------------------------------------------------
+Event ID: 009
+Event Name: EV009
+(X,Y): (061,007)
+
+Page #1
+Conditions
+None
+
+Graphic: doors1
+
+Autonomous Movement
+Type: Fixed
+Speed: 3: Slow
+Freq: 3: Low
+Options Enabled
+Move Animation
+Trigger: Player Touch
+
+List of Event Commands:
+@>Set Move Route: This event
+                  (Ignore If Can't Move)
+ :              : $>SE: 'Door enter', 100, 100
+ :              : $>Wait: 2 frame(s)
+ :              : $>Turn Left
+ :              : $>Wait: 2 frame(s)
+ :              : $>Turn Right
+ :              : $>Wait: 2 frame(s)
+ :              : $>Turn Up
+ :              : $>Wait: 2 frame(s)
+@>Wait for Move's Completion
+@>Set Move Route: Player
+                  (Ignore If Can't Move)
+ :              : $>Through ON
+ :              : $>Move Up
+ :              : $>Through OFF
+@>Wait for Move's Completion
+@>Change Transparent Flag: Transparency
+@>Set Move Route: This event
+                  (Ignore If Can't Move)
+ :              : $>Wait: 2 frame(s)
+ :              : $>Turn Right
+ :              : $>Wait: 2 frame(s)
+ :              : $>Turn Left
+ :              : $>Wait: 2 frame(s)
+ :              : $>Turn Down
+ :              : $>Wait: 2 frame(s)
+@>Wait for Move's Completion
+@>Change Screen Color Tone: (-255,-255,-255,0), @6
+@>Wait: 8 frame(s)
+@>Change Transparent Flag: Normal
+@>Transfer Player:[272: Route 13 - School Annex Building], (016,012), Up, No Fade
+@>Change Screen Color Tone: (0,0,0,0), @6
+@>
+
+Page #2
+Conditions
+Switch 0022: s:tsOff?("A") is ON
+
+Graphic: doors1
+
+Autonomous Movement
+Type: Fixed
+Speed: 3: Slow
+Freq: 3: Low
+Options Enabled
+Move Animation
+Trigger: Autorun
+
+List of Event Commands:
+@>Conditional Branch: Script: get_character(0).onEvent?
+ @>Change Transparent Flag: Transparency
+ @>Set Move Route: This event
+                   (Ignore If Can't Move)
+  :              : $>SE: 'Door enter', 100, 100
+  :              : $>Wait: 2 frame(s)
+  :              : $>Turn Left
+  :              : $>Wait: 2 frame(s)
+  :              : $>Turn Right
+  :              : $>Wait: 2 frame(s)
+  :              : $>Turn Up
+  :              : $>Wait: 2 frame(s)
+ @>Wait for Move's Completion
+ @>Change Transparent Flag: Normal
+ @>Set Move Route: Player
+                   (Ignore If Can't Move)
+  :              : $>Move Down
+ @>Wait for Move's Completion
+ @>Set Move Route: This event
+                   (Ignore If Can't Move)
+  :              : $>Turn Right
+  :              : $>Wait: 2 frame(s)
+  :              : $>Turn Left
+  :              : $>Wait: 2 frame(s)
+  :              : $>Turn Down
+  :              : $>Wait: 2 frame(s)
+ @>Wait for Move's Completion
+ @>
+: Branch End
+@>Script: setTempSwitchOn("A")
+@>
+
+#------------------------------------------------------------------------------
+Event ID: 010
+Event Name: Trainer(6)
+(X,Y): (063,008)
+
+Page #1
+Conditions
+None
+
+Graphic: trainer_TEACHER
+
+Autonomous Movement
+Type: Fixed
+Speed: 3: Slow
+Freq: 3: Low
+Options Enabled
+Move Animation
+Trigger: Event Touch
+
+List of Event Commands:
+@>Script: TrainerIntro2(:TEACHER)
+@>Script: pbNoticePlayer(get_character(0))
+@>Text: Are you a student passing by for the outdoor lesson? No? Well let 
+ :    : me use you as a teaching aide for my students!
+@>Conditional Branch: Script: pbTrainerBattle(:TEACHER,"Lucinda",_I("Such commendable skill!"))
+ @>Control Self Switch: A =ON
+ @>
+: Branch End
+@>Script: pbTrainerEnd
+@>
+
+Page #2
+Conditions
+Self Switch A is ON
+
+Graphic: trainer_TEACHER
+
+Autonomous Movement
+Type: Fixed
+Speed: 3: Slow
+Freq: 3: Low
+Options Enabled
+Move Animation
+Trigger: Action Button
+
+List of Event Commands:
+@>Text: You should think about taking lessons at the Trainer Academy, you'd 
+ :    : do well in the advanced courses!
+@>
+
+#------------------------------------------------------------------------------
+Event ID: 011
+Event Name: Trainer(1)
+(X,Y): (070,005)
+
+Page #1
+Conditions
+None
+
+Graphic: trainer_SCHOOLKID_m
+
+Autonomous Movement
+Type: Fixed
+Speed: 3: Slow
+Freq: 3: Low
+Options Enabled
+Move Animation
+Trigger: Event Touch
+
+List of Event Commands:
+@>Script: TrainerIntro2(:SCHOOLKID_m)
+@>Script: Kernel.pbNoticePlayer(get_character(0))
+@>Text: I'm studying to take on the advanced courses! But book smarts can 
+ :    : only get so far, so it's time for some practical application!
+@>Conditional Branch: Script: pbTrainerBattle(:SCHOOLKID_m,"Kenneth",_I("Ouch! Practicality hurts."))
+ @>Control Self Switch: A =ON
+ @>
+: Branch End
+@>Script: pbTrainerEnd
+@>
+
+Page #2
+Conditions
+Self Switch A is ON
+
+Graphic: trainer_SCHOOLKID_m
+
+Autonomous Movement
+Type: Fixed
+Speed: 3: Slow
+Freq: 3: Low
+Options Enabled
+Move Animation
+Trigger: Action Button
+
+List of Event Commands:
+@>Text: Maybe I should retake Ms. Lucinda's classes before I attempt to 
+ :    : move to Professor Polly's courses.
+@>
+
+#------------------------------------------------------------------------------
+Event ID: 012
+Event Name: Trainer(5)
+(X,Y): (050,009)
+
+Page #1
+Conditions
+None
+
+Graphic: trainer_SCHOOLKID_f
+
+Autonomous Movement
+Type: Fixed
+Speed: 3: Slow
+Freq: 3: Low
+Options Enabled
+Move Animation
+Trigger: Event Touch
+
+List of Event Commands:
+@>Script: TrainerIntro2(:SCHOOLKID_f)
+@>Script: pbNoticePlayer(get_character(0))
+@>Text: You want to challenge me, Elise? I'll show you that there's a larger 
+ :    : gap between us than just between our ages!
+@>Conditional Branch: Script: pbTrainerBattle(:SCHOOLKID_f,"Elise",_I("Eek! That gap was large, but not the way I intended it!"))
+ @>Control Self Switch: A =ON
+ @>
+: Branch End
+@>Script: pbTrainerEnd
+@>
+
+Page #2
+Conditions
+Self Switch A is ON
+
+Graphic: trainer_SCHOOLKID_f
+
+Autonomous Movement
+Type: Fixed
+Speed: 3: Slow
+Freq: 3: Low
+Options Enabled
+Move Animation
+Trigger: Action Button
+
+List of Event Commands:
+@>Text: Ms. Lucinda said I'm the strongest trainer in the class, so other 
+ :    : students often come to me to try and "dethrone" me. 
+@>Text: I have to stay in tip-top shape to beat them!
+@>
+
+#------------------------------------------------------------------------------
+Event ID: 013
+Event Name: Trainer(5)
+(X,Y): (030,009)
+
+Page #1
+Conditions
+None
+
+Graphic: trainer_SCHOOLKID_m
+
+Autonomous Movement
+Type: Fixed
+Speed: 3: Slow
+Freq: 3: Low
+Options Enabled
+Move Animation
+Trigger: Event Touch
+
+List of Event Commands:
+@>Script: TrainerIntro2(:SCHOOLKID_m)
+@>Script: pbNoticePlayer(get_character(0))
+@>Text: This is a big stage, but I wonder if it's big enough for the battle 
+ :    : that'll happen between you and I!
+@>Conditional Branch: Script: pbTrainerBattle(:SCHOOLKID_m,"Dean",_I("To the victor goes center stage and applause!"))
+ @>Control Self Switch: A =ON
+ @>
+: Branch End
+@>Script: pbTrainerEnd
+@>
+
+Page #2
+Conditions
+Self Switch A is ON
+
+Graphic: trainer_SCHOOLKID_m
+
+Autonomous Movement
+Type: Fixed
+Speed: 3: Slow
+Freq: 3: Low
+Options Enabled
+Move Animation
+Trigger: Action Button
+
+List of Event Commands:
+@>Text: I really want to become a performer one day, but I also want to 
+ :    : incorporate Pokémon and Puppets into my routine.
+@>
+
+#------------------------------------------------------------------------------
+Event ID: 014
+Event Name: Trainer(3)
+(X,Y): (013,007)
+
+Page #1
+Conditions
+None
+
+Graphic: trainer_SCHOOLKID_f
+
+Autonomous Movement
+Type: Custom
+Custom Move Route:
+(Repeat Action)
+$>Move Right
+$>Move Right
+$>Move Down
+$>Move Down
+$>Move Down
+$>Move Left
+$>Move Left
+$>Move Left
+$>Move Left
+$>Move Up
+$>Move Up
+$>Move Up
+$>Move Right
+$>Move Right
+
+Speed: 3: Slow
+Freq: 6: Highest
+Options Enabled
+Move Animation
+Trigger: Event Touch
+
+List of Event Commands:
+@>Script: TrainerIntro2(:SCHOOLKID_f)
+@>Script: pbNoticePlayer(get_character(0))
+@>Text: My parents told me that running with my Puppets 
+ :    : was a good way to keep us fit!
+@>Conditional Branch: Script: pbTrainerBattle(:SCHOOLKID_f,"Mel",_I("That was much better than we normally do!"))
+ @>Control Self Switch: A =ON
+ @>
+: Branch End
+@>Script: pbTrainerEnd
+@>
+
+Page #2
+Conditions
+Self Switch A is ON
+
+Graphic: trainer_SCHOOLKID_f
+
+Autonomous Movement
+Type: Custom
+Custom Move Route:
+(Repeat Action)
+$>Move Right
+$>Move Right
+$>Move Down
+$>Move Down
+$>Move Down
+$>Move Left
+$>Move Left
+$>Move Left
+$>Move Left
+$>Move Up
+$>Move Up
+$>Move Up
+$>Move Right
+$>Move Right
+
+Speed: 3: Slow
+Freq: 6: Highest
+Options Enabled
+Move Animation
+Trigger: Action Button
+
+List of Event Commands:
+@>Text: I think my parents may be on to something, I'll have to keep this 
+ :    : training up!
+@>
+
+#------------------------------------------------------------------------------
+Event ID: 015
+Event Name: Trainer(3)
+(X,Y): (016,017)
+
+Page #1
+Conditions
+None
+
+Graphic: trainer_JUGGLER
+
+Autonomous Movement
+Type: Fixed
+Speed: 3: Slow
+Freq: 3: Low
+Options Enabled
+Move Animation
+Trigger: Event Touch
+
+List of Event Commands:
+@>Script: TrainerIntro2(:JUGGLER)
+@>Script: pbNoticePlayer(get_character(0))
+@>Text: Allow me to bedazzle you with my marvelous Puppet synergy!
+@>Conditional Branch: Script: pbTrainerBattle(:JUGGLER,"Piros",_I("What a combination you and your puppets make!"))
+ @>Control Self Switch: A =ON
+ @>
+: Branch End
+@>Script: pbTrainerEnd
+@>
+
+Page #2
+Conditions
+Self Switch A is ON
+
+Graphic: trainer_JUGGLER
+
+Autonomous Movement
+Type: Fixed
+Speed: 3: Slow
+Freq: 3: Low
+Options Enabled
+Move Animation
+Trigger: Action Button
+
+List of Event Commands:
+@>Text: Piros is actually my stage name, I adopted it after obtaining my 
+ :    : current Puppet team.
+@>
+
+#------------------------------------------------------------------------------
+Event ID: 016
+Event Name: Yellow Apricorn Tree
+(X,Y): (071,008)
+
+Page #1
+Conditions
+None
+
+Graphic: Apricorn_2
+
+Autonomous Movement
+Type: Fixed
+Speed: 3: Slow
+Freq: 3: Low
+Options Enabled
+Move Animation
+Direction Fix
+Trigger: Action Button
+
+List of Event Commands:
+@>Text: It's a Sitrus Berry tree!
+@>Call Common Event: Yellow Apricorn
+@>Script: pbItemBall(:SITRUSBERRY)
+@>Script: pbSetEventTime
+@>
+
+Page #2
+Conditions
+Self Switch A is ON
+
+Graphic: Apricorn_0
+
+Autonomous Movement
+Type: Fixed
+Speed: 3: Slow
+Freq: 3: Low
+Options Enabled
+Move Animation
+Direction Fix
+Trigger: Action Button
+
+List of Event Commands:
+@>Text: The tree is empty...
+@>
+
+Page #3
+Conditions
+Switch 0023: s:cooledDown?(86400) is ON
+Self Switch A is ON
+
+Graphic: Apricorn_0
+
+Autonomous Movement
+Type: Fixed
+Speed: 3: Slow
+Freq: 3: Low
+Options Enabled
+Move Animation
+Direction Fix
+Trigger: Autorun
+
+List of Event Commands:
+@>Control Self Switch: A =OFF
+@>Script: setTempSwitchOn("A")
+@>
+
+#------------------------------------------------------------------------------
 
 #==============================================================================
 Map ID: 059
 Map Name: Route 14
 Tileset: 001: Outside
-Width: 20, Height: 15
+Width: 41, Height: 44
 Auto-Change BGM: W-020. Route Theme 4
+
+#------------------------------------------------------------------------------
+Event ID: 001
+Event Name: EV001
+(X,Y): (022,029)
+
+Page #1
+Conditions
+None
+
+Graphic: trainer_SAILOR
+
+Autonomous Movement
+Type: Fixed
+Speed: 3: Slow
+Freq: 3: Low
+Options Enabled
+Move Animation
+Trigger: Action Button
+
+List of Event Commands:
+@>Comment: NPC that'll take you to an island off the coast of Kanto that's
+ :       : experiencing "Abnormal Snow" for the season.
+ :       : 
+ :       : Will be a place where you can catch Winter-themed Puppets.
+@>Comment: Unlocks when you have the item "Spectral Pass", recieved from 
+ :       : the Passcode System.
+@>Text: Sorry, we're busy gearing up for a trip. You'll have to
+ :    : come back later.
+@>
+
+#------------------------------------------------------------------------------
+Event ID: 002
+Event Name: Boat size(5,3)
+(X,Y): (024,027)
+
+Page #1
+Conditions
+None
+
+Autonomous Movement
+Type: Fixed
+Speed: 3: Slow
+Freq: 3: Low
+Options Enabled
+Move Animation
+Trigger: Action Button
+
+List of Event Commands:
+@>
+
+#------------------------------------------------------------------------------
+Event ID: 003
+Event Name: Trainer(4)
+(X,Y): (013,029)
+
+Page #1
+Conditions
+None
+
+Graphic: trainer_HEXMANIAC
+
+Autonomous Movement
+Type: Custom
+Custom Move Route:
+(Repeat Action)
+$>Turn at Random
+
+Speed: 3: Slow
+Freq: 4: High
+Options Enabled
+Move Animation
+Trigger: Event Touch
+
+List of Event Commands:
+@>Script: TrainerIntro2(:HEXMANIAC)
+@>Script: pbNoticePlayer(get_character(0))
+@>Text: I am the goddess of misfortune, and I bring
+ :    : bad luck to people! I'll bring it to you right now!
+@>Conditional Branch: Script: pbTrainerBattle(:HEXMANIAC,"Maggey",_I("Not even I am immune to my own bad luck!"))
+ @>Control Self Switch: A =ON
+ @>
+: Branch End
+@>Script: pbTrainerEnd
+@>
+
+Page #2
+Conditions
+Self Switch A is ON
+
+Graphic: trainer_HEXMANIAC
+
+Autonomous Movement
+Type: Custom
+Custom Move Route:
+(Repeat Action)
+$>Turn at Random
+
+Speed: 3: Slow
+Freq: 4: High
+Options Enabled
+Move Animation
+Trigger: Action Button
+
+List of Event Commands:
+@>Text: I have been unlucky for a long time, and
+ :    : my bad luck affects those around me.
+@>Text: I've grown accustomed to it, but I decided to try and 
+ :    : use it against other trainers!
+@>Text: Unfortunately, it usually backfires on me...
+@>
+
+#------------------------------------------------------------------------------
+Event ID: 004
+Event Name: CutTree
+(X,Y): (008,006)
+
+Page #1
+Conditions
+None
+
+Graphic: Object tree 1
+
+Autonomous Movement
+Type: Fixed
+Speed: 3: Slow
+Freq: 3: Low
+Options Enabled
+Move Animation
+Trigger: Action Button
+
+List of Event Commands:
+@>Set Move Route: This event
+ :              : $>Turn Down
+@>Conditional Branch: Script: pbCut
+ @>Script: pbSmashThisEvent
+ @>
+: Branch End
+@>
+
+#------------------------------------------------------------------------------
+Event ID: 005
+Event Name: CutTree
+(X,Y): (002,027)
+
+Page #1
+Conditions
+None
+
+Graphic: Object tree 1
+
+Autonomous Movement
+Type: Fixed
+Speed: 3: Slow
+Freq: 3: Low
+Options Enabled
+Move Animation
+Trigger: Action Button
+
+List of Event Commands:
+@>Set Move Route: This event
+ :              : $>Turn Down
+@>Conditional Branch: Script: pbCut
+ @>Script: pbSmashThisEvent
+ @>
+: Branch End
+@>
+
+#------------------------------------------------------------------------------
 
 #==============================================================================
 Map ID: 060
 Map Name: Route 15
 Tileset: 001: Outside
-Width: 20, Height: 15
+Width: 72, Height: 27
 Auto-Change BGM: W-020. Route Theme 4
+
+#------------------------------------------------------------------------------
+Event ID: 001
+Event Name: HiddenItem
+(X,Y): (057,014)
+
+Page #1
+Conditions
+None
+
+Autonomous Movement
+Type: Fixed
+Speed: 3: Slow
+Freq: 3: Low
+Options Enabled
+Move Animation
+Trigger: Action Button
+
+List of Event Commands:
+@>Conditional Branch: Script: pbItemBall(:ENERGYROOT)
+ @>Control Self Switch: A =ON
+ @>
+: Else
+ @>
+: Branch End
+@>
+
+Page #2
+Conditions
+Self Switch A is ON
+
+Autonomous Movement
+Type: Fixed
+Speed: 3: Slow
+Freq: 3: Low
+Options Enabled
+Move Animation
+Trigger: Action Button
+
+List of Event Commands:
+@>
+
+#------------------------------------------------------------------------------
+Event ID: 002
+Event Name: Item
+(X,Y): (018,009)
+
+Page #1
+Conditions
+None
+
+Graphic: Object ball
+
+Autonomous Movement
+Type: Fixed
+Speed: 3: Slow
+Freq: 3: Low
+Options Enabled
+Move Animation
+Trigger: Action Button
+
+List of Event Commands:
+@>Conditional Branch: Script: pbItemBall(:FULLHEAL)
+ @>Control Self Switch: A =ON
+ @>
+: Else
+ @>
+: Branch End
+@>
+
+Page #2
+Conditions
+Self Switch A is ON
+
+Autonomous Movement
+Type: Fixed
+Speed: 3: Slow
+Freq: 3: Low
+Options Enabled
+Move Animation
+Trigger: Action Button
+
+List of Event Commands:
+@>
+
+#------------------------------------------------------------------------------
+Event ID: 003
+Event Name: Trainer(3)
+(X,Y): (045,016)
+
+Page #1
+Conditions
+None
+
+Graphic: trainer_POKEMONRANGER_F
+
+Autonomous Movement
+Type: Custom
+Custom Move Route:
+(Repeat Action)
+$>Move Left
+$>Move Left
+$>Move Left
+$>Turn Up
+$>Wait: 10 frame(s)
+$>Turn Down
+$>Wait: 10 frame(s)
+$>Move Right
+$>Move Right
+$>Move Right
+$>Move Right
+$>Move Right
+$>Move Right
+$>Turn Up
+$>Wait: 10 frame(s)
+$>Turn Down
+$>Wait: 10 frame(s)
+$>Move Left
+$>Move Left
+$>Move Left
+
+Speed: 3: Slow
+Freq: 6: Highest
+Options Enabled
+Move Animation
+Trigger: Event Touch
+
+List of Event Commands:
+@>Script: TrainerIntro2(:POKEMONRANGER_F)
+@>Script: pbNoticePlayer(get_character(0))
+@>Text: Are you making sure to respect the environment and Puppets around you?
+@>Conditional Branch: Script: pbTrainerBattle(:POKEMONRANGER_F,"Audrey",_I("Such a composed team, you could never do harm!"))
+ @>Control Self Switch: A =ON
+ @>
+: Branch End
+@>Script: pbTrainerEnd
+@>
+
+Page #2
+Conditions
+Self Switch A is ON
+
+Graphic: trainer_POKEMONRANGER_F
+
+Autonomous Movement
+Type: Custom
+Custom Move Route:
+(Repeat Action)
+$>Move Left
+$>Move Left
+$>Move Left
+$>Turn Up
+$>Wait: 10 frame(s)
+$>Turn Down
+$>Wait: 10 frame(s)
+$>Move Right
+$>Move Right
+$>Move Right
+$>Move Right
+$>Move Right
+$>Move Right
+$>Turn Up
+$>Wait: 10 frame(s)
+$>Turn Down
+$>Wait: 10 frame(s)
+$>Move Left
+$>Move Left
+$>Move Left
+
+Speed: 3: Slow
+Freq: 6: Highest
+Options Enabled
+Move Animation
+Trigger: Action Button
+
+List of Event Commands:
+@>Text: A Ranger's job is to ensure that the environment is not harmed, and that Puppets as well as Pokemon are being treated properly.
+@>
+
+#------------------------------------------------------------------------------
+Event ID: 004
+Event Name: Trainer(2)
+(X,Y): (039,014)
+
+Page #1
+Conditions
+None
+
+Graphic: trainer_AROMALADY
+
+Autonomous Movement
+Type: Custom
+Custom Move Route:
+(Repeat Action)
+$>Turn at Random
+
+Speed: 3: Slow
+Freq: 3: Low
+Options Enabled
+Move Animation
+Trigger: Event Touch
+
+List of Event Commands:
+@>Script: TrainerIntro2(:AROMALADY)
+@>Script: pbNoticePlayer(get_character(0))
+@>Text: Huh? Who are you? Where am I? I think a battle will 
+ :    : help bring me back to my senses.
+@>Conditional Branch: Script: pbTrainerBattle(:AROMALADY,"Jenna",_I("Ah, thank you! That helped!"))
+ @>Control Self Switch: A =ON
+ @>
+: Branch End
+@>Script: pbTrainerEnd
+@>
+
+Page #2
+Conditions
+Self Switch A is ON
+
+Graphic: trainer_AROMALADY
+
+Autonomous Movement
+Type: Custom
+Custom Move Route:
+(Repeat Action)
+$>Turn at Random
+
+Speed: 3: Slow
+Freq: 3: Low
+Options Enabled
+Move Animation
+Trigger: Action Button
+
+List of Event Commands:
+@>Text: I can get lost in thought when I'm outside, and forget several things.
+@>
+
+#------------------------------------------------------------------------------
+Event ID: 005
+Event Name: EV005
+(X,Y): (040,014)
+
+Page #1
+Conditions
+None
+
+Autonomous Movement
+Type: Fixed
+Speed: 3: Slow
+Freq: 3: Low
+Options Enabled
+Move Animation
+Trigger: Action Button
+
+List of Event Commands:
+@>Text: \sign[signskin]\l[2]<ac>Route 15\n<ac>West to Fuchsia City
+@>
+
+#------------------------------------------------------------------------------
+Event ID: 006
+Event Name: Trainer(5)
+(X,Y): (018,017)
+
+Page #1
+Conditions
+None
+
+Graphic: trainer_BIRDKEEPER
+
+Autonomous Movement
+Type: Fixed
+Speed: 3: Slow
+Freq: 3: Low
+Options Enabled
+Move Animation
+Trigger: Event Touch
+
+List of Event Commands:
+@>Script: TrainerIntro2(:BIRDKEEPER)
+@>Script: pbNoticePlayer(get_character(0))
+@>Text: Chirp chirp tweet chirp utsu chirp honk.
+@>Conditional Branch: Script: pbTrainerBattle(:BIRDKEEPER,"Dexter",_I("Oh you thought I wanted a battle, whoops!"))
+ @>Control Self Switch: A =ON
+ @>
+: Branch End
+@>Script: pbTrainerEnd
+@>
+
+Page #2
+Conditions
+Self Switch A is ON
+
+Graphic: trainer_BIRDKEEPER
+
+Autonomous Movement
+Type: Fixed
+Speed: 3: Slow
+Freq: 3: Low
+Options Enabled
+Move Animation
+Trigger: Action Button
+
+List of Event Commands:
+@>Text: I'm trying to speak the language of the birds, but it doesn't seem 
+ :    : to be going well.
+@>
+
+#------------------------------------------------------------------------------
+Event ID: 007
+Event Name: Trainer(4)
+(X,Y): (024,009)
+
+Page #1
+Conditions
+None
+
+Graphic: trainer_RUINMANIAC
+
+Autonomous Movement
+Type: Fixed
+Speed: 3: Slow
+Freq: 3: Low
+Options Enabled
+Move Animation
+Trigger: Event Touch
+
+List of Event Commands:
+@>Script: TrainerIntro2(:RUINMANIAC)
+@>Script: pbNoticePlayer(get_character(0))
+@>Text: Have you come here to learn about the ancient civilization of the dragons?
+@>Conditional Branch: Script: pbTrainerBattle(:RUINMANIAC,"Sanders",_I("I don't know how this helped my findings at all."))
+ @>Control Self Switch: A =ON
+ @>
+: Branch End
+@>Script: pbTrainerEnd
+@>
+
+Page #2
+Conditions
+Self Switch A is ON
+
+Graphic: trainer_RUINMANIAC
+
+Autonomous Movement
+Type: Fixed
+Speed: 3: Slow
+Freq: 3: Low
+Options Enabled
+Move Animation
+Trigger: Action Button
+
+List of Event Commands:
+@>Text: Long ago, long back before the First Great War, Kanto was a much different place. If my calculations are correct, an ancient civilization that worshiped dragons 
+ :    : was once close to where we are. The mysteries that are waiting to be discovered there excite me to no end!
+@>
+
+#------------------------------------------------------------------------------
+Event ID: 008
+Event Name: ExitArrow
+(X,Y): (015,014)
+
+Page #1
+Conditions
+None
+
+Graphic: Exitarrow_red
+
+Autonomous Movement
+Type: Fixed
+Speed: 3: Slow
+Freq: 3: Low
+Options Enabled
+Move Animation
+Stop Animation
+Always on Top
+Trigger: Player Touch
+
+List of Event Commands:
+@>Conditional Branch: Player is facing Left
+ @>Play SE: 'Door exit', 100, 100
+ @>Change Screen Color Tone: (-255,-255,-255,0), @6
+ @>Wait: 8 frame(s)
+ @>Transfer Player:[275: Route 15 - Gatehouse], (011,006), No Fade
+ @>Change Screen Color Tone: (0,0,0,0), @6
+ @>
+: Branch End
+@>
+
+#------------------------------------------------------------------------------
 
 #==============================================================================
 Map ID: 061
@@ -56127,7 +57944,7 @@ Auto-Change BGM: W-011. Pokemon Gym
 
 #------------------------------------------------------------------------------
 Event ID: 001
-Event Name: Misty
+Event Name: GT_Misty
 (X,Y): (022,021)
 
 Page #1
@@ -56158,7 +57975,7 @@ List of Event Commands:
 : Branch End
 @>Text: \xn[Misty]And, well, it seems you've beaten all the trainers here, 
  :    : so sure! I'll accept your challenge!
-@>Text: \xn[Misty]But get ready, my Water-types aren't going to go 
+@>Text: \xn[Misty]But get ready, my Water and Hydro-types aren't going to go 
  :    : easy on you!
 @>Script: setBattleRule("backdrop", "cerulean")
 @>Control Switches: [0104: Transition Handler] = ON
@@ -56214,12 +58031,60 @@ Trigger: Action Button
 List of Event Commands:
 @>Text: \xn[Misty]The world is vast and expansive! One day I would love to
  :    : go on an adventure across the world and see all the Water-type
- :    : Pokémon and Puppets I can find!
+ :    : Pokémon and Hydro-type Puppets I can find!
+@>
+
+Page #3
+Conditions
+Self Switch B is ON
+
+Graphic: trainer_LEADER_Misty
+
+Autonomous Movement
+Type: Fixed
+Speed: 3: Slow
+Freq: 3: Low
+Options Enabled
+Move Animation
+Trigger: Action Button
+
+List of Event Commands:
+@>Text: \xn[Misty]Welcome back to Cerulean Gym, challenger!
+@>Conditional Branch: Variable [0118: Misty's Gym Challenge] < 3
+ @>Text: \xn[Misty]You know the rules, I won't battle you until you
+  :    : beat the other trainers in my gym!
+ @>Exit Event Processing
+ @>
+: Branch End
+@>Text: \xn[Misty]Are you all set? I've been training hard since our last
+ :    : battle!
+@>Script: setBattleRule("backdrop", "cerulean")
+@>Control Switches: [0104: Transition Handler] = ON
+@>Control Variables: [0103: Vs. Transition ID] = 3
+@>Call Common Event: Vs. Transition - Rematch to Ball Check
+@>Control Variables: [0113: Vs. Transition - Badge] = 1
+@>Control Variables: [0114: Vs. Transition - Leader] = 1
+@>Conditional Branch: Script: pbTrainerBattle(:LEADER_Misty,"Misty",_I("You're even better than before!"),false,pbGet(128))
+ @>Text: \xn[Misty]Haha, you're quite enjoyable to battle! I'll look forward to
+  :    : your next rematch! Don't be a stranger, okay?
+ @>Control Switches: [0118: Gym Rematch in Prog?] = OFF
+ @>Script: $game_variables[127] = nil
+ :       : $game_variables[128] = nil
+ :       : 
+ :       : for event in $game_map.events.values
+ :       :   if event.name[/GT_/i]
+ :       :     $game_self_switches[[$game_map.map_id,event.id,"B"]] = false
+ :       :   end
+ :       : end
+ :       : 
+ :       : $game_map.refresh
+ @>
+: Branch End
 @>
 
 #------------------------------------------------------------------------------
 Event ID: 002
-Event Name: Trainer
+Event Name: GT_Trainer
 (X,Y): (015,028)
 
 Page #1
@@ -56240,7 +58105,7 @@ List of Event Commands:
 @>Script: TrainerIntro2(:BEAUTY)
 @>Text: A challenger? Now? It was nice relaxing by the
  :    : pool for once.
-@>Conditional Branch: Script: pbTrainerBattle(:BEAUTY,"Linda",_I("... Oh."))
+@>Conditional Branch: Script: pbTrainerBattle(:BEAUTY,"Linda",_I("... Oh."),false,1+$Trainer.badge_count)
  @>Control Variables: [0118: Misty's Gym Challenge] += 1
  @>Control Self Switch: A =ON
  @>
@@ -56284,9 +58149,35 @@ List of Event Commands:
 @>Text: Well, I guess now we all get to relax.
 @>
 
+Page #4
+Conditions
+Self Switch B is ON
+
+Graphic: trainer_BEAUTY
+
+Autonomous Movement
+Type: Fixed
+Speed: 3: Slow
+Freq: 3: Low
+Options Enabled
+Move Animation
+Trigger: Action Button
+
+List of Event Commands:
+@>Script: TrainerIntro2(:BEAUTY)
+@>Text: A rematch? Really? Fine, let's get this over with so I
+ :    : can go back to relaxing.
+@>Conditional Branch: Script: pbTrainerBattle(:BEAUTY,"Linda",_I("... I guess."),false,pbGet(128))
+ @>Control Variables: [0118: Misty's Gym Challenge] += 1
+ @>Control Self Switch: B =OFF
+ @>
+: Branch End
+@>Script: pbTrainerEnd
+@>
+
 #------------------------------------------------------------------------------
 Event ID: 003
-Event Name: Trainer
+Event Name: GT_Trainer
 (X,Y): (029,028)
 
 Page #1
@@ -56307,7 +58198,7 @@ List of Event Commands:
 @>Script: TrainerIntro2(:SWIMMER_F)
 @>Text: A challenger? Finally! I was waiting for this! I
  :    : hope you're ready! Let's go!
-@>Conditional Branch: Script: pbTrainerBattle(:SWIMMER_F,"Adelle",_I("Aww shoot, I lost."))
+@>Conditional Branch: Script: pbTrainerBattle(:SWIMMER_F,"Adelle",_I("Aww shoot, I lost."),false,1+$Trainer.badge_count)
  @>Control Variables: [0118: Misty's Gym Challenge] += 1
  @>Control Self Switch: A =ON
  @>
@@ -56353,9 +58244,35 @@ List of Event Commands:
  :    : waves like you have! Keep up the good work!
 @>
 
+Page #4
+Conditions
+None
+
+Graphic: trainer_SWIMMER_F
+
+Autonomous Movement
+Type: Fixed
+Speed: 3: Slow
+Freq: 3: Low
+Options Enabled
+Move Animation
+Trigger: Action Button
+
+List of Event Commands:
+@>Script: TrainerIntro2(:SWIMMER_F)
+@>Text: A rematch? Awesome! I was hoping for a chance to go again!
+ :    : Let's do this!
+@>Conditional Branch: Script: pbTrainerBattle(:SWIMMER_F,"Adelle",_I("Aww shoot, I lost again."),false,pbGet(128))
+ @>Control Variables: [0118: Misty's Gym Challenge] += 1
+ @>Control Self Switch: B =OFF
+ @>
+: Branch End
+@>Script: pbTrainerEnd
+@>
+
 #------------------------------------------------------------------------------
 Event ID: 004
-Event Name: Trainer
+Event Name: GT_Trainer
 (X,Y): (022,011)
 
 Page #1
@@ -56376,7 +58293,7 @@ List of Event Commands:
 @>Script: TrainerIntro2(:COOLTRAINER_M)
 @>Text: A challenger? Feh. Don't cry when your
  :    : clothes are soaked through.
-@>Conditional Branch: Script: pbTrainerBattle(:COOLTRAINER_M,"Trill",_I("Whoa! I surrender!"))
+@>Conditional Branch: Script: pbTrainerBattle(:COOLTRAINER_M,"Trill",_I("Whoa! I surrender!"),false,1+$Trainer.badge_count)
  @>Control Variables: [0118: Misty's Gym Challenge] += 1
  @>Control Self Switch: A =ON
  @>
@@ -56418,6 +58335,32 @@ Trigger: Action Button
 
 List of Event Commands:
 @>Text: Maybe you're not as weak as you look.
+@>
+
+Page #4
+Conditions
+None
+
+Graphic: trainer_COOLTRAINER_M
+
+Autonomous Movement
+Type: Fixed
+Speed: 3: Slow
+Freq: 3: Low
+Options Enabled
+Move Animation
+Trigger: Action Button
+
+List of Event Commands:
+@>Script: TrainerIntro2(:COOLTRAINER_M)
+@>Text: Back for another go, eh? Let's see how you dodge
+ :    : getting doused this time.
+@>Conditional Branch: Script: pbTrainerBattle(:COOLTRAINER_M,"Trill",_I("Whoa! I surrender!"),false,pbGet(128))
+ @>Control Variables: [0118: Misty's Gym Challenge] += 1
+ @>Control Self Switch: B =OFF
+ @>
+: Branch End
+@>Script: pbTrainerEnd
 @>
 
 #------------------------------------------------------------------------------
@@ -56542,6 +58485,84 @@ List of Event Commands:
  : Branch End
  @>
 : Else
+ @>
+: Branch End
+@>
+
+Page #2
+Conditions
+Switch 0005: Defeated Gym 2 is ON
+
+Graphic: gymtelecom
+
+Autonomous Movement
+Type: Fixed
+Speed: 3: Slow
+Freq: 3: Low
+Options Enabled
+Move Animation
+Direction Fix
+Trigger: Action Button
+
+List of Event Commands:
+@>Conditional Branch: Player is facing Right
+ @>Text: Accessing Gym Network.
+ @>Label: Start
+ @>Text: Please select what you want to know about.\ch[1,-1,Gym Leader Preference,
+  :    : Gym Mechanics,Gym Leader Information,Gym Rebattle Protocol]
+ @>Conditional Branch: Variable [0001: Temp Pokemon Choice] == -1
+  @>Text: Shutting down information database.
+  @>Exit Event Processing
+  @>
+ : Branch End
+ @>Conditional Branch: Variable [0001: Temp Pokemon Choice] == 0
+  @>Comment: Gym Leader Preference
+  @>Text: The Cerulean City Gym, Misty, has a preference for
+   :    : Water Pokémon or Hydro Puppets.
+  @>Text: Aside from the traditional weaknesses of Water-type
+   :    : Pokémon, Hydro-type Puppets are weak to Wind, Nature,
+   :    : and Miasma-typed moves.
+  @>Text: Hydro-Type Puppets resist damage from Metal, Pyro, Cryo,
+   :    : and Hydro-type moves.
+  @>Jump to Label: Start
+  @>
+ : Branch End
+ @>Conditional Branch: Variable [0001: Temp Pokemon Choice] == 1
+  @>Comment: Gym Mechanics
+  @>Text: In order to progress through the gym, challengers will
+   :    : need to battle all trainers in the gym before the leader
+   :    : accepts their challenge.
+  @>Text: As of late, this system has also been used to deter
+   :    : would-be suitors for the Gym Leader, gaining these
+   :    : trainers the title of "Misty's Elite Guard."
+  @>Jump to Label: Start
+  @>
+ : Branch End
+ @>Conditional Branch: Variable [0001: Temp Pokemon Choice] == 2
+  @>Comment: Gym Leader Information
+  @>Text: The Gym Leader, Misty, is one of the owners of the 
+   :    : Cerulean Aquatic Show, where she and her sisters
+   :    : put on underwater performances with various
+   :    : Pokémon and Puppets.
+  @>Text: While Misty herself is not known for performing often in the
+   :    : shows themselves, she often takes up the role of narrator
+   :    : while her sisters put on performances.
+  @>Jump to Label: Start
+  @>
+ : Branch End
+ @>Conditional Branch: Variable [0001: Temp Pokemon Choice] == 3
+  @>Comment: Gym Rematch Protocol
+  @>Script: $game_variables[129] = "Cerulean Gym"
+  @>Text: This will inform the Gym Leader and all trainers in 
+   :    : the gym that you wish to challenge them again.
+  @>Call Common Event: Gym Rematch Protocol
+  @>Set Event Location: [GT_Trainer],(015,028), Down
+  @>Set Event Location: [GT_Trainer],(029,028), Down
+  @>Set Event Location: [GT_Trainer],(022,011), Down
+  @>Set Event Location: [GT_Misty],(022,021), Down
+  @>Control Variables: [0118: Misty's Gym Challenge] = 0
+  @>
+ : Branch End
  @>
 : Branch End
 @>
@@ -63208,7 +65229,7 @@ List of Event Commands:
 @>Play SE: 'Door exit', 100, 100
 @>Change Screen Color Tone: (-255,-255,-255,0), @6
 @>Wait: 8 frame(s)
-@>Transfer Player:[230: Route 5], (008,004), Right, No Fade
+@>Transfer Player:[230: Route 5 - Underground Entrance], (008,004), Right, No Fade
 @>Change Screen Color Tone: (0,0,0,0), @6
 @>
 
@@ -63291,7 +65312,7 @@ List of Event Commands:
 
 #==============================================================================
 Map ID: 230
-Map Name: Route 5
+Map Name: Route 5 - Underground Entrance
 Tileset: 003: Inside
 Width: 20, Height: 15
 Auto-Change BGM: W-007. Route Theme 2
@@ -63389,7 +65410,7 @@ List of Event Commands:
 
 #==============================================================================
 Map ID: 231
-Map Name: Route 5
+Map Name: Route 5 - Gatehouse
 Tileset: 003: Inside
 Width: 20, Height: 15
 Auto-Change BGM: W-007. Route Theme 2
@@ -79361,7 +81382,7 @@ Map ID: 261
 Map Name: Diglett's Cave
 Tileset: 006: Caves
 Width: 25, Height: 18
-Auto-Change BGM: W-015. Cerulean City
+Auto-Change BGM: W-014. Caves of Kanto
 
 #------------------------------------------------------------------------------
 Event ID: 001
@@ -79393,6 +81414,31 @@ List of Event Commands:
  @>Change Screen Color Tone: (0,0,0,0), @6
  @>
 : Branch End
+@>
+
+#------------------------------------------------------------------------------
+Event ID: 002
+Event Name: Ladder down
+(X,Y): (013,009)
+
+Page #1
+Conditions
+None
+
+Autonomous Movement
+Type: Fixed
+Speed: 3: Slow
+Freq: 3: Low
+Options Enabled
+Move Animation
+Trigger: Player Touch
+
+List of Event Commands:
+@>Change Screen Color Tone: (-255,-255,-255,0), @6
+@>Play SE: 'Door exit', 100, 100
+@>Wait: 8 frame(s)
+@>Transfer Player:[081: Diglett's Cave], (092,071), Down, No Fade
+@>Change Screen Color Tone: (0,0,0,0), @6
 @>
 
 #------------------------------------------------------------------------------
@@ -79434,6 +81480,31 @@ List of Event Commands:
  @>Change Screen Color Tone: (0,0,0,0), @6
  @>
 : Branch End
+@>
+
+#------------------------------------------------------------------------------
+Event ID: 002
+Event Name: Ladder down
+(X,Y): (013,009)
+
+Page #1
+Conditions
+None
+
+Autonomous Movement
+Type: Fixed
+Speed: 3: Slow
+Freq: 3: Low
+Options Enabled
+Move Animation
+Trigger: Player Touch
+
+List of Event Commands:
+@>Change Screen Color Tone: (-255,-255,-255,0), @6
+@>Play SE: 'Door exit', 100, 100
+@>Wait: 8 frame(s)
+@>Transfer Player:[081: Diglett's Cave], (013,003), Down, No Fade
+@>Change Screen Color Tone: (0,0,0,0), @6
 @>
 
 #------------------------------------------------------------------------------
@@ -82282,7 +84353,7 @@ List of Event Commands:
 
 #==============================================================================
 Map ID: 268
-Map Name: Route 11
+Map Name: Route 11 - Gatehouse
 Tileset: 003: Inside
 Width: 36, Height: 15
 Auto-Change BGM: W-020. Route Theme 4
@@ -82317,7 +84388,7 @@ List of Event Commands:
 @>Play SE: 'Exit Door', 80, 100
 @>Change Screen Color Tone: (-255,-255,-255,0), @6
 @>Wait: 8 frame(s)
-@>Transfer Player:[268: Route 11], (029,009), Right, No Fade
+@>Transfer Player:[268: Route 11 - Gatehouse], (029,009), Right, No Fade
 @>Change Screen Color Tone: (0,0,0,0), @6
 @>
 
@@ -82350,7 +84421,7 @@ List of Event Commands:
 @>Play SE: 'Exit Door', 80, 100
 @>Change Screen Color Tone: (-255,-255,-255,0), @6
 @>Wait: 8 frame(s)
-@>Transfer Player:[268: Route 11], (009,010), Left, No Fade
+@>Transfer Player:[268: Route 11 - Gatehouse], (009,010), Left, No Fade
 @>Change Screen Color Tone: (0,0,0,0), @6
 @>
 
@@ -82493,6 +84564,741 @@ List of Event Commands:
  @>Change Screen Color Tone: (0,0,0,0), @6
  @>
 : Branch End
+@>
+
+#------------------------------------------------------------------------------
+
+#==============================================================================
+Map ID: 269
+Map Name: Special Maps
+Tileset: 001: Outside
+Width: 20, Height: 15
+
+#==============================================================================
+Map ID: 270
+Map Name: Fishing Guru's House
+Tileset: 003: Inside
+Width: 20, Height: 15
+Auto-Change BGM: W-020. Route Theme 4
+
+#------------------------------------------------------------------------------
+Event ID: 001
+Event Name: size(2,1)
+(X,Y): (009,001)
+
+Page #1
+Conditions
+None
+
+Autonomous Movement
+Type: Fixed
+Speed: 3: Slow
+Freq: 3: Low
+Options Enabled
+Move Animation
+Trigger: Action Button
+
+List of Event Commands:
+@>Text: It's a picture of three men all holding what appears to 
+ :    : be a giant Magikarp.
+@>
+
+#------------------------------------------------------------------------------
+Event ID: 002
+Event Name: EV002
+(X,Y): (004,004)
+
+Page #1
+Conditions
+None
+
+Graphic: trainer_FISHERMAN
+
+Autonomous Movement
+Type: Fixed
+Speed: 3: Slow
+Freq: 3: Low
+Options Enabled
+Move Animation
+Trigger: Action Button
+
+List of Event Commands:
+@>Text: Oh my! People don't often stop here.
+@>Text: I am one of the three fishing brothers. Specifically, I 
+ :    : am the youngest of the three.
+@>Text: Since you've come out of your way to visit, allow me 
+ :    : to present you with this!
+@>Script: pbReceiveItem(:GOODROD)
+@>Text: That Good Rod is one of the better Fishing Rods out 
+ :    : there, it can catch most things found in waters.
+@>Text: If you want to fish down deeper, you'll need to get 
+ :    : the Super Rod. I'm sure my brother in Fuchsia has a 
+ :    : Super Rod on him.
+@>Control Self Switch: A =ON
+@>
+
+Page #2
+Conditions
+Self Switch A is ON
+
+Graphic: trainer_FISHERMAN
+
+Autonomous Movement
+Type: Fixed
+Speed: 3: Slow
+Freq: 3: Low
+Options Enabled
+Move Animation
+Trigger: Action Button
+
+List of Event Commands:
+@>Text: Hopefully you enjoy fishing with your new rod!
+@>
+
+#------------------------------------------------------------------------------
+Event ID: 003
+Event Name: ExitArrow
+(X,Y): (003,008)
+
+Page #1
+Conditions
+None
+
+Graphic: Exitarrow_red
+
+Autonomous Movement
+Type: Fixed
+Speed: 3: Slow
+Freq: 3: Low
+Options Enabled
+Move Animation
+Stop Animation
+Always on Top
+Trigger: Player Touch
+
+List of Event Commands:
+@>Conditional Branch: Player is facing Down
+ @>Play SE: 'Door exit', 100, 100
+ @>Change Screen Color Tone: (-255,-255,-255,0), @6
+ @>Wait: 8 frame(s)
+ @>Transfer Player:[057: Route 12], (020,085), No Fade
+ @>Change Screen Color Tone: (0,0,0,0), @6
+ @>
+: Branch End
+@>
+
+#------------------------------------------------------------------------------
+
+#==============================================================================
+Map ID: 271
+Map Name: Gatehouse
+Tileset: 003: Inside
+Width: 38, Height: 15
+Auto-Change BGM: W-020. Route Theme 4
+
+#------------------------------------------------------------------------------
+Event ID: 001
+Event Name: EV001
+(X,Y): (002,006)
+
+Page #1
+Conditions
+None
+
+Graphic: NPC 20
+
+Autonomous Movement
+Type: Fixed
+Speed: 3: Slow
+Freq: 3: Low
+Options Enabled
+Move Animation
+Trigger: Action Button
+
+List of Event Commands:
+@>Text: This gatehouse connects Lavender Town and Route 12.
+@>
+
+#------------------------------------------------------------------------------
+Event ID: 002
+Event Name: EV002
+(X,Y): (031,002)
+
+Page #1
+Conditions
+None
+
+Graphic: NPC 07
+
+Autonomous Movement
+Type: Fixed
+Speed: 3: Slow
+Freq: 3: Low
+Options Enabled
+Move Animation
+Trigger: Action Button
+
+List of Event Commands:
+@>Text: Sometimes, if you look close enough, you'd swear 
+ :    : you can see ghosts of the departed Pokémon and 
+ :    : Puppets floating around Lavender Tower.
+@>
+
+#------------------------------------------------------------------------------
+Event ID: 003
+Event Name: Stairs up (L-to-R)
+(X,Y): (010,010)
+
+Page #1
+Conditions
+None
+
+Autonomous Movement
+Type: Fixed
+Speed: 3: Slow
+Freq: 3: Low
+Options Enabled
+Move Animation
+Trigger: Player Touch
+
+List of Event Commands:
+@>Set Move Route: Player
+ :              : $>Through ON
+ :              : $>Always on Top ON
+ :              : $>Turn Right
+ :              : $>Move Right
+ :              : $>Move Upper Right
+ :              : $>Through OFF
+ :              : $>Always on Top OFF
+@>Wait for Move's Completion
+@>Play SE: 'Exit Door', 80, 100
+@>Change Screen Color Tone: (-255,-255,-255,0), @6
+@>Wait: 8 frame(s)
+@>Transfer Player:[271: Gatehouse], (033,009), Right, No Fade
+@>Change Screen Color Tone: (0,0,0,0), @6
+@>
+
+#------------------------------------------------------------------------------
+Event ID: 004
+Event Name: Stairs down (R-to-L)
+(X,Y): (032,009)
+
+Page #1
+Conditions
+None
+
+Autonomous Movement
+Type: Fixed
+Speed: 3: Slow
+Freq: 3: Low
+Options Enabled
+Move Animation
+Trigger: Player Touch
+
+List of Event Commands:
+@>Set Move Route: Player
+ :              : $>Through ON
+ :              : $>Always on Top ON
+ :              : $>Turn Left
+ :              : $>Move Left
+ :              : $>Through OFF
+ :              : $>Always on Top OFF
+@>Wait for Move's Completion
+@>Play SE: 'Exit Door', 80, 100
+@>Change Screen Color Tone: (-255,-255,-255,0), @6
+@>Wait: 8 frame(s)
+@>Transfer Player:[271: Gatehouse], (009,010), Left, No Fade
+@>Change Screen Color Tone: (0,0,0,0), @6
+@>
+
+#------------------------------------------------------------------------------
+Event ID: 005
+Event Name: North door left
+(X,Y): (006,001)
+
+Page #1
+Conditions
+None
+
+Autonomous Movement
+Type: Fixed
+Speed: 3: Slow
+Freq: 3: Low
+Options Enabled
+Move Animation
+Trigger: Player Touch
+
+List of Event Commands:
+@>Play SE: 'Door exit', 100, 100
+@>Change Screen Color Tone: (-255,-255,-255,0), @6
+@>Wait: 8 frame(s)
+@>Transfer Player:[057: Route 12], (022,015), Up, No Fade
+@>Change Screen Color Tone: (0,0,0,0), @6
+@>
+
+Page #2
+Conditions
+Switch 0022: s:tsOff?("A") is ON
+
+Autonomous Movement
+Type: Fixed
+Speed: 3: Slow
+Freq: 3: Low
+Options Enabled
+Move Animation
+Trigger: Autorun
+
+List of Event Commands:
+@>Conditional Branch: Script: get_character(0).onEvent?
+ @>Set Move Route: Player
+                   (Ignore If Can't Move)
+  :              : $>Move Down
+ @>Wait for Move's Completion
+ @>
+: Branch End
+@>Script: setTempSwitchOn("A")
+@>
+
+#------------------------------------------------------------------------------
+Event ID: 006
+Event Name: ExitArrow
+(X,Y): (006,012)
+
+Page #1
+Conditions
+None
+
+Graphic: Exitarrow_red
+
+Autonomous Movement
+Type: Fixed
+Speed: 3: Slow
+Freq: 3: Low
+Options Enabled
+Move Animation
+Stop Animation
+Always on Top
+Trigger: Player Touch
+
+List of Event Commands:
+@>Conditional Branch: Player is facing Down
+ @>Play SE: 'Door exit', 100, 100
+ @>Change Screen Color Tone: (-255,-255,-255,0), @6
+ @>Wait: 8 frame(s)
+ @>Transfer Player:[057: Route 12], (022,022), No Fade
+ @>Change Screen Color Tone: (0,0,0,0), @6
+ @>
+: Branch End
+@>
+
+#------------------------------------------------------------------------------
+
+#==============================================================================
+Map ID: 272
+Map Name: Route 13 - School Annex Building
+Tileset: 003: Inside
+Width: 30, Height: 15
+Auto-Change BGM: W-020. Route Theme 4
+
+#------------------------------------------------------------------------------
+Event ID: 001
+Event Name: Trainer(1)
+(X,Y): (023,006)
+
+Page #1
+Conditions
+None
+
+Graphic: trainer_SCHOOLKID_f
+
+Autonomous Movement
+Type: Fixed
+Speed: 3: Slow
+Freq: 3: Low
+Options Enabled
+Move Animation
+Trigger: Event Touch
+
+List of Event Commands:
+@>Script: TrainerIntro2(:SCHOOLKID_f)
+@>Script: pbNoticePlayer(get_character(0))
+@>Text: I take after my big sister! Wanna see?
+@>Conditional Branch: Script: pbTrainerBattle(:SCHOOLKID_f,"Anna",_I("I guess my duplication skills aren't as good as hers yet."))
+ @>Control Self Switch: A =ON
+ @>
+: Branch End
+@>Script: pbTrainerEnd
+@>
+
+Page #2
+Conditions
+Self Switch A is ON
+
+Graphic: trainer_SCHOOLKID_f
+
+Autonomous Movement
+Type: Fixed
+Speed: 3: Slow
+Freq: 3: Low
+Options Enabled
+Move Animation
+Trigger: Action Button
+
+List of Event Commands:
+@>Text: My sister is a worldwide phenomenon for her duplication skills!
+@>Text: I wanna be just like her one day!
+@>
+
+#------------------------------------------------------------------------------
+Event ID: 002
+Event Name: PC
+(X,Y): (016,005)
+
+Page #1
+Conditions
+None
+
+Autonomous Movement
+Type: Fixed
+Speed: 3: Slow
+Freq: 3: Low
+Options Enabled
+Move Animation
+Trigger: Action Button
+
+List of Event Commands:
+@>Script: pbPokeCenterPC
+@>
+
+#------------------------------------------------------------------------------
+Event ID: 003
+Event Name: ExitArrow
+(X,Y): (016,013)
+
+Page #1
+Conditions
+None
+
+Graphic: Exitarrow_red
+
+Autonomous Movement
+Type: Fixed
+Speed: 3: Slow
+Freq: 3: Low
+Options Enabled
+Move Animation
+Stop Animation
+Always on Top
+Trigger: Player Touch
+
+List of Event Commands:
+@>Conditional Branch: Player is facing Down
+ @>Play SE: 'Door exit', 100, 100
+ @>Change Screen Color Tone: (-255,-255,-255,0), @6
+ @>Wait: 8 frame(s)
+ @>Transfer Player:[058: Route 13], (061,007), No Fade
+ @>Change Screen Color Tone: (0,0,0,0), @6
+ @>
+: Branch End
+@>
+
+#------------------------------------------------------------------------------
+Event ID: 004
+Event Name: Trainer(1)
+(X,Y): (007,003)
+
+Page #1
+Conditions
+None
+
+Graphic: trainer_TEACHER
+
+Autonomous Movement
+Type: Fixed
+Speed: 3: Slow
+Freq: 3: Low
+Options Enabled
+Move Animation
+Trigger: Event Touch
+
+List of Event Commands:
+@>Text: I was just preparing for a lesson, however you seem to be
+ :    : interesting. How about it, care to take me on in a battle?
+ :    : If you win, I'll make it worth your while!
+@>Show Choices: Yes, No
+(When Cancel: Choice 2)
+: When [Yes]
+ @>Script: TrainerIntro2(:TEACHER)
+ @>Script: pbNoticePlayer(get_character(0))
+ @>Text: Wonderful! Let's start the lesson then!
+ @>Conditional Branch: Script: pbTrainerBattle(:TEACHER,"Polly",_I("Yes, you will appreciate this reward I'm sure!"))
+  @>Text: You are a remarkable trainer! You'll also come in handy for my
+   :    : lesson today!
+  @>Text: You see, I'm teaching my students today about how Trades 
+   :    : work. Unfortunately, I forgot to prepare a trade before hand. 
+  @>Text: If you'd like, I'd be willing to trade you one of these two I just battled
+   :    : with. They were caught not too long ago, so they don't have any
+   :    : attachment to me.
+  @>Text: If you're interested, I'll give you a chance to prepare who you'd like to
+   :    : trade over! Talk to me again when you do!
+  @>Control Self Switch: A =ON
+  @>
+ : Branch End
+ @>Script: pbTrainerEnd
+ @>
+: When [No]
+ @>
+: Branch End
+@>
+
+Page #2
+Conditions
+Self Switch A is ON
+
+Graphic: trainer_TEACHER
+
+Autonomous Movement
+Type: Fixed
+Speed: 3: Slow
+Freq: 3: Low
+Options Enabled
+Move Animation
+Trigger: Action Button
+
+List of Event Commands:
+@>Text: You came back, great!
+@>Text: So, which of my two would you like?
+@>
+
+#------------------------------------------------------------------------------
+
+#==============================================================================
+Map ID: 273
+Map Name: Route 14 (Placeholder Map)
+Tileset: 001: Outside
+Width: 60, Height: 15
+
+#==============================================================================
+Map ID: 274
+Map Name: Wisteria Island
+Tileset: 001: Outside
+Width: 20, Height: 15
+
+#==============================================================================
+Map ID: 275
+Map Name: Route 15 - Gatehouse
+Tileset: 003: Inside
+Width: 36, Height: 15
+Auto-Change BGM: 
+
+#------------------------------------------------------------------------------
+Event ID: 001
+Event Name: Stairs up (L-to-R)
+(X,Y): (010,010)
+
+Page #1
+Conditions
+None
+
+Autonomous Movement
+Type: Fixed
+Speed: 3: Slow
+Freq: 3: Low
+Options Enabled
+Move Animation
+Trigger: Player Touch
+
+List of Event Commands:
+@>Set Move Route: Player
+ :              : $>Through ON
+ :              : $>Always on Top ON
+ :              : $>Turn Right
+ :              : $>Move Right
+ :              : $>Move Upper Right
+ :              : $>Through OFF
+ :              : $>Always on Top OFF
+@>Wait for Move's Completion
+@>Play SE: 'Exit Door', 80, 100
+@>Change Screen Color Tone: (-255,-255,-255,0), @6
+@>Wait: 8 frame(s)
+@>Transfer Player:[275: Route 15 - Gatehouse], (029,009), Right, No Fade
+@>Change Screen Color Tone: (0,0,0,0), @6
+@>
+
+#------------------------------------------------------------------------------
+Event ID: 002
+Event Name: Stairs down (R-to-L)
+(X,Y): (028,009)
+
+Page #1
+Conditions
+None
+
+Autonomous Movement
+Type: Fixed
+Speed: 3: Slow
+Freq: 3: Low
+Options Enabled
+Move Animation
+Trigger: Player Touch
+
+List of Event Commands:
+@>Set Move Route: Player
+ :              : $>Through ON
+ :              : $>Always on Top ON
+ :              : $>Turn Left
+ :              : $>Move Left
+ :              : $>Through OFF
+ :              : $>Always on Top OFF
+@>Wait for Move's Completion
+@>Play SE: 'Exit Door', 80, 100
+@>Change Screen Color Tone: (-255,-255,-255,0), @6
+@>Wait: 8 frame(s)
+@>Transfer Player:[275: Route 15 - Gatehouse], (009,010), Left, No Fade
+@>Change Screen Color Tone: (0,0,0,0), @6
+@>
+
+#------------------------------------------------------------------------------
+Event ID: 003
+Event Name: EV003
+(X,Y): (006,002)
+
+Page #1
+Conditions
+None
+
+Graphic: NPC 20
+
+Autonomous Movement
+Type: Fixed
+Speed: 3: Slow
+Freq: 3: Low
+Options Enabled
+Move Animation
+Trigger: Action Button
+
+List of Event Commands:
+@>Text: This gatehouse connects Route 15 and Fuchsia City.
+@>
+
+#------------------------------------------------------------------------------
+Event ID: 004
+Event Name: EV004
+(X,Y): (021,006)
+
+Page #1
+Conditions
+None
+
+Graphic: trainer_SCIENTIST
+
+Autonomous Movement
+Type: Fixed
+Speed: 3: Slow
+Freq: 3: Low
+Options Enabled
+Move Animation
+Trigger: Action Button
+
+List of Event Commands:
+@>Text: Oh hello, are you \PN?
+@>Text: I'm one of Professor Oak's Aides.
+@>Text: I was told to deliver this if I ran into you, 
+ :    : Professor Oak says it should help you cross oceans.
+@>Script: pbReceiveItem(:HM03)
+:       : pbReceiveItem(:SC03)
+@>Text: Surf can be taught to Pokémon and Puppets so they can ferry you
+ :    : across the water.
+@>Text: You might find it useful for reaching Cinnabar Island, which
+ :    : lies across the sea.
+@>Text: Professor Oak says that if you want to continue your quest for
+ :    : the Sealed Realm, you should explore all possible avenues!
+@>Control Self Switch: A =ON
+@>
+
+Page #2
+Conditions
+Self Switch A is ON
+
+Graphic: trchar028
+
+Autonomous Movement
+Type: Fixed
+Speed: 3: Slow
+Freq: 3: Low
+Options Enabled
+Move Animation
+Trigger: Action Button
+
+List of Event Commands:
+@>Text: Ever since you two showed up, Professor Oak has been putting
+ :    : stock into the theory proposed at the Puppet Symposium.
+@>Text: The possibility that Puppets actually did come from another world,
+ :    : and that they could be connected to the "Sealed Realm" you're
+ :    : looking for.
+@>
+
+#------------------------------------------------------------------------------
+Event ID: 005
+Event Name: ExitArrow
+(X,Y): (012,006)
+
+Page #1
+Conditions
+None
+
+Graphic: Exitarrow_red
+
+Autonomous Movement
+Type: Fixed
+Speed: 3: Slow
+Freq: 3: Low
+Options Enabled
+Move Animation
+Stop Animation
+Always on Top
+Trigger: Player Touch
+
+List of Event Commands:
+@>Conditional Branch: Player is facing Right
+ @>Play SE: 'Door exit', 100, 100
+ @>Change Screen Color Tone: (-255,-255,-255,0), @6
+ @>Wait: 8 frame(s)
+ @>Transfer Player:[060: Route 15], (016,014), No Fade
+ @>Change Screen Color Tone: (0,0,0,0), @6
+ @>
+: Branch End
+@>
+
+#------------------------------------------------------------------------------
+Event ID: 006
+Event Name: EV006
+(X,Y): (001,006)
+
+Page #1
+Conditions
+None
+
+Graphic: Scientist (Aveontrainer)
+
+Autonomous Movement
+Type: Fixed
+Speed: 3: Slow
+Freq: 3: Low
+Options Enabled
+Move Animation
+Trigger: Action Button
+
+List of Event Commands:
+@>Text: \xn[DerxwnaKapsyla]This is the end of the current Internal Test 
+ :    : Demo.
+@>Text: \xn[DerxwnaKapsyla]Fuchsia City and Celadon City are currently 
+ :    : not accessable.
+@>Text: \xn[DerxwnaKapsyla]Saffron City is in an incomplete state.
+@>Text: \xn[DerxwnaKapsyla]If you have found any bugs, please fill out the 
+ :    : Bug Reporting Google Form you were provided with.
+@>Text: \xn[DerxwnaKapsyla]If you would like to apply to help with Asteria 
+ :    : going forward, throw me a message!
 @>
 
 #------------------------------------------------------------------------------

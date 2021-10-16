@@ -15,6 +15,7 @@ def pbGymRematch
 	  end
 	else
 	  pbMessage(_INTL("You currently have a rematch in progress for {1}. Please complete your challenge there before challenging another gym to a rematch.",$game_variables[127]))
+	  return false
 	end
   else 
 	$game_variables[2] = pbSelectGymSet
