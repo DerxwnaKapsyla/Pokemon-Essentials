@@ -70177,6 +70177,99 @@ List of Event Commands:
 : Branch End
 @>
 
+Page #2
+Conditions
+Switch 0006: Defeated Gym 3 is ON
+
+Graphic: gymtelecom
+
+Autonomous Movement
+Type: Fixed
+Speed: 3: Slow
+Freq: 3: Low
+Options Enabled
+Move Animation
+Direction Fix
+Trigger: Action Button
+
+List of Event Commands:
+@>Conditional Branch: Player is facing Right
+ @>Text: Accessing Gym Network.
+ @>Label: Start
+ @>Text: Please select what you want to know about.\ch[1,-1,Gym Leader Preference,
+  :    : Gym Mechanics,Gym Leader Information,Gym Rebattle Protocol]
+ @>Conditional Branch: Variable [0001: Temp Pokemon Choice] == -1
+  @>Text: Shutting down information database.
+  @>Exit Event Processing
+  @>
+ : Branch End
+ @>Conditional Branch: Variable [0001: Temp Pokemon Choice] == 0
+  @>Comment: Gym Leader Preference
+  @>Text: The Vermilion City Gym, Lt. Surge, has a preference for
+   :    : Electric Pokémon and Wind Puppets.
+  @>Text: Aside from the traditional weaknesses of Electric-type
+   :    : Pokémon, Wind-type Puppets are weak to Earth-typed
+   :    : moves.
+  @>Text: Wind-Type Puppets resist damage from Aero and 
+   :    : Wind-typed moves.
+  @>Jump to Label: Start
+  @>
+ : Branch End
+ @>Conditional Branch: Variable [0001: Temp Pokemon Choice] == 1
+  @>Comment: Gym Mechanics
+  @>Text: Lt. Surge, using his expertise in warfare, has designed his 
+   :    : gym to reflect a training ground for recruits.
+  @>Text: There are two ways to navigate the gym. The first is 
+   :    : through a gauntlet of trainers, which Lt. Surge calls the 
+   :    : "Head-On Course".
+  @>Text: The second one requires navigating a simulated battlefield
+   :    : with Voltorbs littered in the ground as landmines. Tripping a
+   :    : landmine will send you back to the beginning of that course.
+  @>Text: In order to avoid tripping the landmines, it is advised to not
+   :    : run through the gym, or to bring a party member with 
+   :    : Magnet Pull.
+  @>Text: At the end, Lt. Surge will be blocked off by his trademark
+   :    : electrified fencing.
+  @>Text: Prospective challengers must disable the two generators 
+   :    : that power the fencing before they can battle the Gym 
+   :    : Leader.
+  @>Jump to Label: Start
+  @>
+ : Branch End
+ @>Conditional Branch: Variable [0001: Temp Pokemon Choice] == 2
+  @>Comment: Gym Leader Information
+  @>Text: Lt. Surge, though he makes his home in Kanto, was born 
+   :    : and raised in the greater Unova Region.
+  @>Text: He served in the Kanto Armed Forces during the Tohjo Civil War,
+   :    : where he earned the nickname "The Lightning Unovan" for his
+   :    : tactics involving Electric Pokémon.
+  @>Text: After the gym was over, he was chosen as next in line to
+   :    : serve as Vermilion City's Gym Leader when the previous one
+   :    : stepped down.
+  @>Text: Since then, Vermilion Gym has gained a reputation as being
+   :    : effectively a boot camp in all but name.
+  @>Jump to Label: Start
+  @>
+ : Branch End
+ @>Conditional Branch: Variable [0001: Temp Pokemon Choice] == 3
+  @>Comment: Gym Rematch Protocol
+  @>Script: $game_variables[129] = "Vermilion Gym"
+  @>Text: This will inform the Gym Leader and all trainers in 
+   :    : the gym that you wish to challenge them again.
+  @>Call Common Event: Gym Rematch Protocol
+  @>Set Event Location: [GT_Surge],(024,027), Down
+  @>Set Event Location: [GT_Trainer(2)],(022,044), Right
+  @>Set Event Location: [GT_Trainer(3)],(007,019), Right
+  @>Set Event Location: [GT_Trainer(2)],(042,037), Down
+  @>Set Event Location: [GT_Trainer(1)],(040,041), Left
+  @>Set Event Location: [GT_Trainer(1)],(039,034), Up
+  @>Set Event Location: [GT_Trainer(1)],(008,035), Left
+  @>
+ : Branch End
+ @>
+: Branch End
+@>
+
 #------------------------------------------------------------------------------
 Event ID: 006
 Event Name: Stairs down
@@ -70246,7 +70339,7 @@ List of Event Commands:
 
 #------------------------------------------------------------------------------
 Event ID: 008
-Event Name: EV008
+Event Name: GT_Surge
 (X,Y): (024,027)
 
 Page #1
@@ -70356,6 +70449,45 @@ List of Event Commands:
  :    : a violent sight.
 @>Text: \xn[Lt. Surge]Take it from me, kiddo! As someone who witnessed it
  :    : firsthand, you don't wanna hear about these stories!
+@>
+
+Page #3
+Conditions
+Self Switch B is ON
+
+Graphic: trainer_LEADER_Surge
+
+Autonomous Movement
+Type: Fixed
+Speed: 3: Slow
+Freq: 3: Low
+Options Enabled
+Move Animation
+Trigger: Action Button
+
+List of Event Commands:
+@>Text: \xn[Lt. Surge]Back for a rematch, huh? Haha, you've got spunk, kid!
+@>Text: \xn[Lt. Surge]They say lightning doesn't strike twice, let's put that old saying to the test!
+@>Control Switches: [0104: Transition Handler] = ON
+@>Control Variables: [0103: Vs. Transition ID] = 3
+@>Call Common Event: Vs. Transition - Rematch to Ball Check
+@>Control Variables: [0113: Vs. Transition - Badge] = 2
+@>Control Variables: [0114: Vs. Transition - Leader] = 2
+@>Conditional Branch: Script: pbTrainerBattle(:LEADER_Surge,"Lt. Surge",_I("I've been thoroughly shocked! You're good, kid!"),false,pbGet(128))
+ @>Text: \xn[Brock]Haha, you're a real spectacle, kid! You'll go far as a trainer!
+ @>Control Switches: [0118: Gym Rematch in Prog?] = OFF
+ @>Script: $game_variables[127] = nil
+ :       : $game_variables[128] = nil
+ :       : 
+ :       : for event in $game_map.events.values
+ :       :   if event.name[/GT_/i]
+ :       :     $game_self_switches[[$game_map.map_id,event.id,"B"]] = false
+ :       :   end
+ :       : end
+ :       : 
+ :       : $game_map.refresh
+ @>
+: Branch End
 @>
 
 #------------------------------------------------------------------------------
@@ -70848,7 +70980,7 @@ List of Event Commands:
 
 #------------------------------------------------------------------------------
 Event ID: 025
-Event Name: Trainer(2)
+Event Name: GT_Trainer(2)
 (X,Y): (022,044)
 
 Page #1
@@ -70870,7 +71002,7 @@ List of Event Commands:
 @>Script: Kernel.pbNoticePlayer(get_character(0))
 @>Text: Hehe, having trouble what to do? 
  :    : Beat me and I'll let you in on a little secret.
-@>Conditional Branch: Script: pbTrainerBattle(:SUPERNERD,"Joseph",_I("You must really want to know, don't you!"))
+@>Conditional Branch: Script: pbTrainerBattle(:SUPERNERD,"Joseph",_I("You must really want to know, don't you!"),false,1+$Trainer.badge_count)
  @>Control Self Switch: A =ON
  @>
 : Branch End
@@ -70919,9 +71051,35 @@ List of Event Commands:
 @>Text: Good luck with that though!
 @>
 
+Page #4
+Conditions
+Self Switch B is ON
+
+Graphic: trainer_SUPERNERD
+
+Autonomous Movement
+Type: Fixed
+Speed: 3: Slow
+Freq: 4: High
+Options Enabled
+Move Animation
+Trigger: Event Touch
+
+List of Event Commands:
+@>Script: TrainerIntro2(:SUPERNERD)
+@>Script: Kernel.pbNoticePlayer(get_character(0))
+@>Text: You want to be reminded how the gym works?
+ :    : Sure, I can indulge you- if you beat me again!
+@>Conditional Branch: Script: pbTrainerBattle(:SUPERNERD,"Joseph",_I("You must really want to be reminded, don't you!"),false,pbGet(128))
+ @>Control Self Switch: B =OFF
+ @>
+: Branch End
+@>Script: pbTrainerEnd
+@>
+
 #------------------------------------------------------------------------------
 Event ID: 026
-Event Name: Trainer(3)
+Event Name: GT_Trainer(3)
 (X,Y): (007,019)
 
 Page #1
@@ -70944,7 +71102,7 @@ List of Event Commands:
 @>Text: Oh I'm not a gym trainer, I just keep an eye on the city's
  :    : electrical usage levels.
 @>Text: That doesn't mean I don't know how to battle, though!
-@>Conditional Branch: Script: pbTrainerBattle(:ENGINEER,"Elroy",_I("Aww, I lost."))
+@>Conditional Branch: Script: pbTrainerBattle(:ENGINEER,"Elroy",_I("Aww, I lost."),false,1+$Trainer.badge_count)
  @>Control Self Switch: A =ON
  @>
 : Branch End
@@ -70989,9 +71147,36 @@ List of Event Commands:
  :    : had to be approved by me, first!
 @>
 
+Page #4
+Conditions
+Self Switch B is ON
+
+Graphic: trainer_ENGINEER
+
+Autonomous Movement
+Type: Fixed
+Speed: 3: Slow
+Freq: 3: Low
+Options Enabled
+Move Animation
+Trigger: Event Touch
+
+List of Event Commands:
+@>Script: TrainerIntro2(:ENGINEER)
+@>Script: Kernel.pbNoticePlayer(get_character(0))
+@>Text: I should be getting back to my actual job... But why not
+ :    : another battle before I go?
+@>Text: That doesn't mean I don't know how to battle, though!
+@>Conditional Branch: Script: pbTrainerBattle(:ENGINEER,"Elroy",_I("My meters are getting overcharged!"),false,pbGet(128))
+ @>Control Self Switch: B =OFF
+ @>
+: Branch End
+@>Script: pbTrainerEnd
+@>
+
 #------------------------------------------------------------------------------
 Event ID: 027
-Event Name: Trainer(2)
+Event Name: GT_Trainer(2)
 (X,Y): (042,037)
 
 Page #1
@@ -71018,7 +71203,7 @@ List of Event Commands:
 @>Script: Kernel.pbNoticePlayer(get_character(0))
 @>Text: This gym is the perfect place for someone like me! 
  :    : All the energy here just revs me up!
-@>Conditional Branch: Script: pbTrainerBattle(:ROCKER,"Martain",_I("Woah, brakes applied."))
+@>Conditional Branch: Script: pbTrainerBattle(:ROCKER,"Martain",_I("Woah, brakes applied."),false,1+$Trainer.badge_count)
  @>Control Self Switch: A =ON
  @>
 : Branch End
@@ -71071,9 +71256,41 @@ List of Event Commands:
  :    : the future, you're going places!
 @>
 
+Page #4
+Conditions
+Self Switch B is ON
+
+Graphic: trainer_ROCKER
+
+Autonomous Movement
+Type: Custom
+Custom Move Route:
+(Repeat Action)
+$>Turn at Random
+
+Speed: 3: Slow
+Freq: 4: High
+Options Enabled
+Move Animation
+Always on Top
+Trigger: Event Touch
+
+List of Event Commands:
+@>Script: TrainerIntro2(:ROCKER)
+@>Script: Kernel.pbNoticePlayer(get_character(0))
+@>Text: You've brought a change in the currents! There's even more
+ :    : energy here than before! Time to give you a taste of your
+ :    : own medicine!
+@>Conditional Branch: Script: pbTrainerBattle(:ROCKER,"Martain",_I("Who-ho-hoa! Chill there, you took this one."),false,pbGet(128))
+ @>Control Self Switch: B =OFF
+ @>
+: Branch End
+@>Script: pbTrainerEnd
+@>
+
 #------------------------------------------------------------------------------
 Event ID: 028
-Event Name: Trainer(1)
+Event Name: GT_Trainer(1)
 (X,Y): (040,041)
 
 Page #1
@@ -71095,7 +71312,7 @@ List of Event Commands:
 @>Script: pbNoticePlayer(get_character(0))
 @>Text: I've served under Lt. Surge since our time in the war.
 @>Text: His command was second to none, allow me to demonstrate!
-@>Conditional Branch: Script: pbTrainerBattle(:GENTLEMAN,"Baxter",_I("While victory is important, he did always stress the importance of a tactical retreat when necessary."))
+@>Conditional Branch: Script: pbTrainerBattle(:GENTLEMAN,"Baxter",_I("While victory is important, he did always stress the importance of a tactical retreat when necessary."),false,1+$Trainer.badge_count)
  @>Control Self Switch: A =ON
  @>
 : Branch End
@@ -71148,9 +71365,36 @@ List of Event Commands:
  :    : the man.
 @>
 
+Page #4
+Conditions
+Self Switch B is ON
+
+Graphic: trainer_GENTLEMAN
+
+Autonomous Movement
+Type: Fixed
+Speed: 3: Slow
+Freq: 3: Low
+Options Enabled
+Move Animation
+Trigger: Event Touch
+
+List of Event Commands:
+@>Script: pbTrainerIntro(:GENTLEMAN)
+@>Script: pbNoticePlayer(get_character(0))
+@>Text: Ever since you defeated Lt. Surge, he's been putting the rookies
+ :    : through the works to get them stronger.
+@>Text: His training is second to none, allow me to demonstrate!
+@>Conditional Branch: Script: pbTrainerBattle(:GENTLEMAN,"Baxter",_I("While losing isn't the end of the world, a victory would be great for gym morale."),false,pbGet(128))
+ @>Control Self Switch: B =OFF
+ @>
+: Branch End
+@>Script: pbTrainerEnd
+@>
+
 #------------------------------------------------------------------------------
 Event ID: 029
-Event Name: Trainer(1)
+Event Name: GT_Trainer(1)
 (X,Y): (039,034)
 
 Page #1
@@ -71177,7 +71421,7 @@ List of Event Commands:
 @>Script: pbNoticePlayer(get_character(0))
 @>Text: Come one, come all, to witness my amazing juggling skills! Even in battle,
  :    : they not even drop!
-@>Conditional Branch: Script: pbTrainerBattle(:JUGGLER,"Yuuki",_I("Ah-ha! See, even in defeat, they remained in the air!"))
+@>Conditional Branch: Script: pbTrainerBattle(:JUGGLER,"Yuuki",_I("Ah-ha! See, even in defeat, they remained in the air!"),false,1+$Trainer.badge_count)
  @>Control Self Switch: A =ON
  @>
 : Branch End
@@ -71234,9 +71478,40 @@ List of Event Commands:
  :    : training Lt. Surge puts people through!
 @>
 
+Page #4
+Conditions
+Self Switch B is ON
+
+Graphic: trainer_JUGGLER
+
+Autonomous Movement
+Type: Custom
+Custom Move Route:
+(Repeat Action)
+$>Turn at Random
+
+Speed: 3: Slow
+Freq: 5: Higher
+Options Enabled
+Move Animation
+Always on Top
+Trigger: Event Touch
+
+List of Event Commands:
+@>Script: pbTrainerIntro(:JUGGLER)
+@>Script: pbNoticePlayer(get_character(0))
+@>Text: Have you come to witness my amazing juggling skills once again?
+ :    : Let me just give your Puppets a knock out in three quick steps first!
+@>Conditional Branch: Script: pbTrainerBattle(:JUGGLER,"Yuuki",_I("See! Even still, I didn't drop a single one!"),false,pbGet(128))
+ @>Control Self Switch: B =OFF
+ @>
+: Branch End
+@>Script: pbTrainerEnd
+@>
+
 #------------------------------------------------------------------------------
 Event ID: 030
-Event Name: Trainer(1)
+Event Name: GT_Trainer(1)
 (X,Y): (008,035)
 
 Page #1
@@ -71264,7 +71539,7 @@ List of Event Commands:
 @>Script: pbNoticePlayer(get_character(0))
 @>Text: Are you shocked to see someone of my stature
  :    : here? Well then, commencing shock therapy!
-@>Conditional Branch: Script: pbTrainerBattle(:LADY,"Nichole",_I("Oh no, ground yourself!"))
+@>Conditional Branch: Script: pbTrainerBattle(:LADY,"Nichole",_I("Oh no, ground yourself!"),false,1+$Trainer.badge_count)
  @>Control Self Switch: A =ON
  @>
 : Branch End
@@ -71319,6 +71594,38 @@ List of Event Commands:
 @>Text: I've had an affinity for Electricity ever since I
  :    : recieved my first partner, a Shinx, ages ago.
 @>Text: Since then, whenever I battle, I like to make things extra crispy.
+@>
+
+Page #4
+Conditions
+Self Switch B is ON
+
+Graphic: trainer_LADY
+
+Autonomous Movement
+Type: Custom
+Custom Move Route:
+(Repeat Action)
+$>Turn Left
+$>Turn Up
+
+Speed: 3: Slow
+Freq: 4: High
+Options Enabled
+Move Animation
+Always on Top
+Trigger: Event Touch
+
+List of Event Commands:
+@>Script: TrainerIntro2(:LADY)
+@>Script: pbNoticePlayer(get_character(0))
+@>Text: How sure am I that I'll beat you this time? Positively! I'm wired
+ :    : and ready to shock some humility into you!
+@>Conditional Branch: Script: pbTrainerBattle(:LADY,"Nichole",_I("Hey hey, don't be so negative!!"),false,pbGet(128))
+ @>Control Self Switch: B =OFF
+ @>
+: Branch End
+@>Script: pbTrainerEnd
 @>
 
 #------------------------------------------------------------------------------
@@ -71478,6 +71785,99 @@ Trigger: Event Touch
 List of Event Commands:
 @>Set Move Route: Player
  :              : $>Always on Top OFF
+@>
+
+#------------------------------------------------------------------------------
+Event ID: 038
+Event Name: GT_Trainer(3)
+(X,Y): (029,045)
+
+Page #1
+Conditions
+None
+
+Graphic: trainer_CAMPER
+
+Autonomous Movement
+Type: Fixed
+Speed: 3: Slow
+Freq: 3: Low
+Options Enabled
+Move Animation
+Trigger: Event Touch
+
+List of Event Commands:
+@>Script: TrainerIntro2(:CAMPER)
+@>Script: pbNoticePlayer(get_character(0))
+@>Text: Hold it right there! You're leagues too early to consider challenging Brock!
+@>Conditional Branch: Script: pbTrainerBattle(:CAMPER,"Devin",_I("Wait... Does leagues measure distance? Or is that just a turn of phrase?"),false,1+$Trainer.badge_count)
+ @>Control Self Switch: A =ON
+ @>
+: Branch End
+@>Script: pbTrainerEnd
+@>
+
+Page #2
+Conditions
+Self Switch A is ON
+
+Graphic: trainer_CAMPER
+
+Autonomous Movement
+Type: Fixed
+Speed: 3: Slow
+Freq: 3: Low
+Options Enabled
+Move Animation
+Trigger: Action Button
+
+List of Event Commands:
+@>Text: I guess you might have what it takes to
+ :    : fight Brock!
+@>
+
+Page #3
+Conditions
+Switch 0004: Defeated Gym 1 is ON
+
+Graphic: trainer_CAMPER
+
+Autonomous Movement
+Type: Fixed
+Speed: 3: Slow
+Freq: 3: Low
+Options Enabled
+Move Animation
+Trigger: Action Button
+
+List of Event Commands:
+@>Text: I guess you might have what it takes to
+ :    : fight Brock!
+@>
+
+Page #4
+Conditions
+Self Switch B is ON
+
+Graphic: trainer_CAMPER
+
+Autonomous Movement
+Type: Fixed
+Speed: 3: Slow
+Freq: 3: Low
+Options Enabled
+Move Animation
+Trigger: Event Touch
+
+List of Event Commands:
+@>Script: TrainerIntro2(:CAMPER)
+@>Script: pbNoticePlayer(get_character(0))
+@>Text: Hold it right there! You're leagues too early to consider challenging Brock to a rematch!
+@>Conditional Branch: Script: pbTrainerBattle(:CAMPER,"Devin",_I("Wait... Does leagues measure distance? Or is that just a turn of phrase?"),false,pbGet(128))
+ @>Control Self Switch: B =OFF
+ @>
+: Branch End
+@>Script: pbTrainerEnd
 @>
 
 #------------------------------------------------------------------------------
@@ -85066,8 +85466,100 @@ Move Animation
 Trigger: Action Button
 
 List of Event Commands:
-@>Text: You came back, great!
-@>Text: So, which of my two would you like?
+@>Text: You came back, great! Did you get what you were
+ :    : going to trade ready?
+@>Text: So, which of my two would you like? They both have
+ :    : great potential!
+@>Show Choices: Hypno, Rikako, Not right now
+(When Cancel: Choice 3)
+: When [Hypno]
+ @>Script: pbChooseTradablePokemon(1, 2)
+ @>Conditional Branch: Variable [0001: Temp Pokemon Choice] == -1
+  @>Text: You aren't ready yet? Alright! Just please be sure to hurry back,
+   :    : I can only put off the lesson for so long!
+  @>
+ : Else
+  @>Text: Alright, let's get started!
+  @>Play SE: 'PC access', 80, 100
+  @>Script: pkmn = Pokemon.new(:HYPNO,32)
+  :       : pkmn.makeMale
+  :       : pkmn.ability = :INSOMNIA
+  :       : pkmn.nature = :GENTLE
+  :       : pkmn.poke_ball = :GREATBALL
+  :       : pkmn.learn_move(:HEADBUTT)
+  :       : pkmn.learn_move(:PSYBEAM)
+  :       : pkmn.learn_move(:MEDITATE)
+  :       : pkmn.learn_move(:HYPNOSIS)
+  @>Script: pkmn.iv[:HP]              = 25
+  :       : pkmn.iv[:ATTACK]          = 25
+  :       : pkmn.iv[:DEFENSE]         = 25
+  :       : pkmn.iv[:SPECIAL_ATTACK]  = 25
+  :       : pkmn.iv[:SPEICAL_DEFENSE] = 25
+  :       : pkmn.iv[:SPEED]           = 25
+  @>Script: pkmn.calcStats
+  @>Script: pbStartTrade(pbGet(1), pkmn,
+  :       :   _I("Hypno"), _I("Polly"), 1
+  :       : )
+  @>Text: Thank you for your help! Please treat that Hypno well!
+  @>Control Self Switch: B =ON
+  @>
+ : Branch End
+ @>
+: When [Rikako]
+ @>Script: pbChooseTradablePokemon(1, 2)
+ @>Conditional Branch: Variable [0001: Temp Pokemon Choice] == -1
+  @>Text: You aren't ready yet? Alright! Just please be sure to hurry back,
+   :    : I can only put off the lesson for so long!
+  @>
+ : Else
+  @>Text: Alright, let's get started!
+  @>Play SE: 'PC access', 80, 100
+  @>Script: pkmn = Pokemon.new(:RIKAKO,32)
+  :       : pkmn.makeFemale
+  :       : pkmn.ability = :INSOMNIA
+  :       : pkmn.nature = :MODEST
+  :       : pkmn.poke_ball = :GREATBALL
+  :       : pkmn.learn_move(:SONICBOOM18)
+  :       : pkmn.learn_move(:SHOCKWAVE18)
+  :       : pkmn.learn_move(:PSYBEAM18)
+  :       : pkmn.learn_move(:THUNDERWAVE18)
+  @>Script: pkmn.iv[:HP]              = 25
+  :       : pkmn.iv[:ATTACK]          = 25
+  :       : pkmn.iv[:DEFENSE]         = 25
+  :       : pkmn.iv[:SPECIAL_ATTACK]  = 25
+  :       : pkmn.iv[:SPEICAL_DEFENSE] = 25
+  :       : pkmn.iv[:SPEED]           = 25
+  @>Script: pkmn.calcStats
+  @>Script: pbStartTrade(pbGet(1), pkmn,
+  :       :   _I("Rikako"), _I("Polly"), 1
+  :       : )
+  @>Text: Thank you for your help! Please treat that Hypno well!
+  @>Control Self Switch: B =ON
+  @>
+ : Branch End
+ @>
+: When [Not right now]
+ @>Text: You aren't ready yet? Alright! Just please be sure to hurry back,
+  :    : I can only put off the lesson for so long!
+ @>
+: Branch End
+@>
+
+Page #3
+Conditions
+Self Switch B is ON
+
+Graphic: trainer_TEACHER
+
+Autonomous Movement
+Type: Fixed
+Speed: 3: Slow
+Freq: 3: Low
+Options Enabled
+Move Animation
+Trigger: Action Button
+
+List of Event Commands:
 @>
 
 #------------------------------------------------------------------------------
