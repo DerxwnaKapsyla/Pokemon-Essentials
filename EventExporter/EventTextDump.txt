@@ -5227,7 +5227,7 @@ List of Event Commands:
  :              : $>Turn Right
 @>Text: \xn[Professor Oak]Hm? Is everything alright?
 @>Wait: 20 frame(s)
-@>Script: playSpecialBGM(Intro_Help)
+@>Script: playSpecialBGM("Intro_Help")
 @>Play BGM: 'W-004. Help!', 100, 100
 @>Text: \xn[Unknown Voice]HELP!!!
 @>Set Move Route: [Oak's Aide A]
@@ -6833,7 +6833,7 @@ List of Event Commands:
 @>Wait for Move's Completion
 @>Fade Out BGM: 2 sec.
 @>Wait: 40 frame(s)
-@>Script: deactivateSpecialBGM(Intro_Help)
+@>Script: deactivateSpecialBGM("Intro_Help")
 @>Play BGM: 'W-002. Pallet Town', 100, 100
 @>Text: \xn[Professor Oak]I see you haven't lost your touch, Red! Well done!
 @>Set Move Route: Player
@@ -58246,7 +58246,7 @@ List of Event Commands:
 
 Page #4
 Conditions
-None
+Self Switch B is ON
 
 Graphic: trainer_SWIMMER_F
 
@@ -58339,7 +58339,7 @@ List of Event Commands:
 
 Page #4
 Conditions
-None
+Self Switch B is ON
 
 Graphic: trainer_COOLTRAINER_M
 
@@ -71788,99 +71788,6 @@ List of Event Commands:
 @>
 
 #------------------------------------------------------------------------------
-Event ID: 038
-Event Name: GT_Trainer(3)
-(X,Y): (029,045)
-
-Page #1
-Conditions
-None
-
-Graphic: trainer_CAMPER
-
-Autonomous Movement
-Type: Fixed
-Speed: 3: Slow
-Freq: 3: Low
-Options Enabled
-Move Animation
-Trigger: Event Touch
-
-List of Event Commands:
-@>Script: TrainerIntro2(:CAMPER)
-@>Script: pbNoticePlayer(get_character(0))
-@>Text: Hold it right there! You're leagues too early to consider challenging Brock!
-@>Conditional Branch: Script: pbTrainerBattle(:CAMPER,"Devin",_I("Wait... Does leagues measure distance? Or is that just a turn of phrase?"),false,1+$Trainer.badge_count)
- @>Control Self Switch: A =ON
- @>
-: Branch End
-@>Script: pbTrainerEnd
-@>
-
-Page #2
-Conditions
-Self Switch A is ON
-
-Graphic: trainer_CAMPER
-
-Autonomous Movement
-Type: Fixed
-Speed: 3: Slow
-Freq: 3: Low
-Options Enabled
-Move Animation
-Trigger: Action Button
-
-List of Event Commands:
-@>Text: I guess you might have what it takes to
- :    : fight Brock!
-@>
-
-Page #3
-Conditions
-Switch 0004: Defeated Gym 1 is ON
-
-Graphic: trainer_CAMPER
-
-Autonomous Movement
-Type: Fixed
-Speed: 3: Slow
-Freq: 3: Low
-Options Enabled
-Move Animation
-Trigger: Action Button
-
-List of Event Commands:
-@>Text: I guess you might have what it takes to
- :    : fight Brock!
-@>
-
-Page #4
-Conditions
-Self Switch B is ON
-
-Graphic: trainer_CAMPER
-
-Autonomous Movement
-Type: Fixed
-Speed: 3: Slow
-Freq: 3: Low
-Options Enabled
-Move Animation
-Trigger: Event Touch
-
-List of Event Commands:
-@>Script: TrainerIntro2(:CAMPER)
-@>Script: pbNoticePlayer(get_character(0))
-@>Text: Hold it right there! You're leagues too early to consider challenging Brock to a rematch!
-@>Conditional Branch: Script: pbTrainerBattle(:CAMPER,"Devin",_I("Wait... Does leagues measure distance? Or is that just a turn of phrase?"),false,pbGet(128))
- @>Control Self Switch: B =OFF
- @>
-: Branch End
-@>Script: pbTrainerEnd
-@>
-
-#------------------------------------------------------------------------------
 
 #==============================================================================
 Map ID: 245
@@ -75835,6 +75742,27 @@ List of Event Commands:
  :    : soul rest in peace, never to be distrurbed.
 @>Text: Here, beneath the sakura tree we loved
  :    : with all our heart.
+@>
+
+#------------------------------------------------------------------------------
+Event ID: 007
+Event Name: EV007
+(X,Y): (013,012)
+
+Page #1
+Conditions
+None
+
+Autonomous Movement
+Type: Fixed
+Speed: 3: Slow
+Freq: 3: Low
+Options Enabled
+Move Animation
+Trigger: Action Button
+
+List of Event Commands:
+@>Change Screen Color Tone: (-70,-70,11,68), @20
 @>
 
 #------------------------------------------------------------------------------
@@ -84874,8 +84802,8 @@ List of Event Commands:
 @>Text: I'm one of Professor Oak's Aides.
 @>Text: I was told to deliver this if I ran into you; Professor 
  :    : Oak says it should help you illuminate dark caves.
-@>Script: pbReceiveItem(PBItems::HM05)
-:       : pbReceiveItem(PBItems::HC05)
+@>Script: pbReceiveItem(:HM05)
+:       : pbReceiveItem(:HC05)
 @>Text: You can teach Flash to a Pokémon or Puppet and use it to 
  :    : brighten darkened caves.
 @>Text: I hear that Rock Tunnel is notorious for being a dimly 
@@ -85560,6 +85488,8 @@ Move Animation
 Trigger: Action Button
 
 List of Event Commands:
+@>Text: This will make for a great hands on lesson when it comes to
+ :    : using traded Pokémon or Puppets.
 @>
 
 #------------------------------------------------------------------------------
@@ -86069,15 +85999,34 @@ List of Event Commands:
 : Else
  @>
 : Branch End
-@>Comment: --- CKoishi, Lv5: 08160807, Hi Chirei
+@>Comment: --- Igglybuff/CKoishi, Lv5: 08160807, Hi Chirei
 @>Conditional Branch: Script: $game_variables[105]==16080807
  @>Conditional Branch: Switch [0081: Chirei's Koishi] == ON
-  @>Text: \bChirei I'm sorry but I can't give you more Koishi.
+  @>Text: \bChirei I'm sorry but I can't give you more Igglybuff, 
+   :    : or else more Koishi will be spawned.
   @>Exit Event Processing
   @>
  : Else
-  @>Text: \bThis code will add a prisoner to your party. You 
-   :    : have no say in the matter.
+  @>Text: \bThis code will add an Igglybuff to the party.
+  @>Script: p1=Pokemon.new(:IGGLYBUFF,5)
+  :       : p1.item = :HEARTSCALE
+  :       : p1.happiness = 255
+  :       : p1.iv[:HP]=15
+  :       : p1.iv[:ATTACK]=15
+  :       : p1.iv[:DEFENSE]=15
+  :       : p1.iv[:SPECIAL_ATTACK]=15
+  :       : p1.iv[:SPECIAL_DEFENSE]=15
+  :       : p1.iv[:SPEED]=15
+  @>Script: p1.calc_stats
+  :       : 
+  :       : p1.learn_move(:SING18)
+  :       : p1.learn_move(:CHARM)
+  :       : p1.learn_move(:DEFENSECURL)
+  :       : p1.learn_move(:TICKLE)
+  :       : p1.record_first_moves
+  :       : 
+  :       : pbAddPokemon(p1)
+  @>Comment: -----
   @>Script: pkmn=Pokemon.new(:CKOISHI,5)
   :       : pkmn.item = :HEARTSCALE
   :       : pkmn.happiness = 255
@@ -86088,7 +86037,7 @@ List of Event Commands:
   :       : pkmn.iv[:SPECIAL_DEFENSE]=15
   :       : pkmn.iv[:SPEED]=15
   @>Script: pkmn.calc_stats
-  :       : pbAddPokemon(pkmn)
+  :       : pbAddPokemonSilent(pkmn)
   @>Control Switches: [0081: Chirei's Koishi] = ON
   @>Exit Event Processing
   @>
