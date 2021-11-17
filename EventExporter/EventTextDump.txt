@@ -8562,7 +8562,8 @@ Move Animation
 Trigger: Player Touch
 
 List of Event Commands:
-@>Text: * This leads to where the attic. I shouldn't head up there.
+@>Text: * This leads to where the attic is. I shouldn't head up 
+ :    : there.
 @>
 
 Page #2
@@ -8719,6 +8720,10 @@ List of Event Commands:
 @>Transfer Player:[018: Professor Oak's Lab - 2F], (010,007), Up
 @>Set Move Route: [Alt. Heroine]
  :              : $>Turn Up
+@>Set Move Route: [Professor Oak]
+ :              : $>Turn Down
+@>Set Move Route: [Red]
+ :              : $>Turn Down
 @>Wait: 10 frame(s)
 @>Change Screen Color Tone: (0,0,0,0), @10
 @>Text: \xn[Professor Oak]Now that you both have your Puppets, this makes you both official trainers!
@@ -10483,7 +10488,7 @@ Page #1
 Conditions
 None
 
-Graphic: trainer_PSYCHIC_M
+Graphic: trainer_COOLTRAINER_M
 
 Autonomous Movement
 Type: Fixed
@@ -15269,6 +15274,32 @@ List of Event Commands:
 @>
 
 #------------------------------------------------------------------------------
+Event ID: 006
+Event Name: EV006
+(X,Y): (016,031)
+
+Page #1
+Conditions
+None
+
+Graphic: trainer_CAMPER
+
+Autonomous Movement
+Type: Fixed
+Speed: 3: Slow
+Freq: 3: Low
+Options Enabled
+Move Animation
+Trigger: Action Button
+
+List of Event Commands:
+@>Text: This gym apparently becomes a bit easier if you have a Pokémon with
+ :    : the ability Magnet Pull.
+@>Text: I think I heard about a person in the Pokémon Center who was offering
+ :    : a Nosepass for trade... I wonder if it has Magnet Pull?
+@>
+
+#------------------------------------------------------------------------------
 Event ID: 016
 Event Name: EV016
 (X,Y): (013,025)
@@ -17411,7 +17442,512 @@ List of Event Commands:
 Map ID: 040
 Map Name: Celadon City
 Tileset: 001: Outside
-Width: 20, Height: 15
+Width: 60, Height: 56
+
+#------------------------------------------------------------------------------
+Event ID: 001
+Event Name: EV001
+(X,Y): (010,029)
+
+Page #1
+Conditions
+None
+
+Graphic: NPC 19
+
+Autonomous Movement
+Type: Random
+Speed: 3: Slow
+Freq: 3: Low
+Options Enabled
+Move Animation
+Trigger: Action Button
+
+List of Event Commands:
+@>Text: You know, I heard someone left a Coin Case somewhere
+ :    : inside Celadon Condominiums. I wonder if it's still there.
+@>
+
+#------------------------------------------------------------------------------
+Event ID: 002
+Event Name: EV002
+(X,Y): (018,022)
+
+Page #1
+Conditions
+None
+
+Autonomous Movement
+Type: Fixed
+Speed: 3: Slow
+Freq: 3: Low
+Options Enabled
+Move Animation
+Trigger: Action Button
+
+List of Event Commands:
+@>Text: Celadon City Department Store
+@>
+
+#------------------------------------------------------------------------------
+Event ID: 003
+Event Name: EV003
+(X,Y): (022,026)
+
+Page #1
+Conditions
+None
+
+Autonomous Movement
+Type: Fixed
+Speed: 3: Slow
+Freq: 3: Low
+Options Enabled
+Move Animation
+Trigger: Action Button
+
+List of Event Commands:
+@>Text: \sign[signskin]\l[2]<ac>Celadon City<ac>\nThe City of Raibhow Dreams
+@>
+
+#------------------------------------------------------------------------------
+Event ID: 004
+Event Name: HiddenItem:LUCKYEGG
+(X,Y): (028,027)
+
+Page #1
+Conditions
+None
+
+Autonomous Movement
+Type: Fixed
+Speed: 3: Slow
+Freq: 3: Low
+Options Enabled
+Move Animation
+Trigger: Action Button
+
+List of Event Commands:
+@>
+
+#------------------------------------------------------------------------------
+Event ID: 005
+Event Name: EV005
+(X,Y): (033,024)
+
+Page #1
+Conditions
+None
+
+Graphic: trainer_AROMALADY
+
+Autonomous Movement
+Type: Fixed
+Speed: 3: Slow
+Freq: 3: Low
+Options Enabled
+Move Animation
+Trigger: Action Button
+
+List of Event Commands:
+@>Text: I really feel one with nature here in Celadon City. I 
+ :    : honestly can't imagine a better place to live!
+@>
+
+#------------------------------------------------------------------------------
+Event ID: 006
+Event Name: EV006
+(X,Y): (026,017)
+
+Page #1
+Conditions
+None
+
+Graphic: trainer_COOLTRAINER_M
+
+Autonomous Movement
+Type: Custom
+Custom Move Route:
+(Repeat Action)
+$>Turn at Random
+
+Speed: 3: Slow
+Freq: 3: Low
+Options Enabled
+Move Animation
+Trigger: Action Button
+
+List of Event Commands:
+@>Text: I wonder who this "Overseer Household" group is. 
+ :    : I've never heard of them before, but they claim they 
+ :    : are "Responsible this".
+@>Text: What does that even mean?
+@>
+
+#------------------------------------------------------------------------------
+Event ID: 007
+Event Name: EV007
+(X,Y): (026,019)
+
+Page #1
+Conditions
+None
+
+Autonomous Movement
+Type: Fixed
+Speed: 3: Slow
+Freq: 3: Low
+Options Enabled
+Move Animation
+Trigger: Action Button
+
+List of Event Commands:
+@>Text: Celadon Condominiums
+@>
+
+#------------------------------------------------------------------------------
+Event ID: 008
+Event Name: EV008
+(X,Y): (033,031)
+
+Page #1
+Conditions
+None
+
+Autonomous Movement
+Type: Fixed
+Speed: 3: Slow
+Freq: 3: Low
+Options Enabled
+Move Animation
+Trigger: Action Button
+
+List of Event Commands:
+@>Text: \sign[signskin]\l[2]<ac>Rocket Game Corner<ac>\nNot Affiliated With Team Rocket!
+@>
+
+#------------------------------------------------------------------------------
+Event ID: 009
+Event Name: EV009
+(X,Y): (038,031)
+
+Page #1
+Conditions
+None
+
+Autonomous Movement
+Type: Fixed
+Speed: 3: Slow
+Freq: 3: Low
+Options Enabled
+Move Animation
+Trigger: Action Button
+
+List of Event Commands:
+@>Text: \sign[signskin]\l[3]<ac>Prize Hall<ac>\nExhcnage your hard earned coins for prizes!
+@>Text: ...There seems to be a note attached to the sign.
+@>Text: All prize vendors have been moved to inside the Game Corner.
+@>
+
+#------------------------------------------------------------------------------
+Event ID: 010
+Event Name: EV010
+(X,Y): (045,031)
+
+Page #1
+Conditions
+None
+
+Autonomous Movement
+Type: Fixed
+Speed: 3: Slow
+Freq: 3: Low
+Options Enabled
+Move Animation
+Trigger: Action Button
+
+List of Event Commands:
+@>Text: \sign[signskin]\l[4]<ac>Fun Asteria Facts Time!</ac>\n* Back when Pokémon were harder to obtain, the Game Corner served as a way to get them easier.
+@>
+
+#------------------------------------------------------------------------------
+Event ID: 011
+Event Name: EV011
+(X,Y): (051,038)
+
+Page #1
+Conditions
+None
+
+Autonomous Movement
+Type: Fixed
+Speed: 3: Slow
+Freq: 3: Low
+Options Enabled
+Move Animation
+Trigger: Action Button
+
+List of Event Commands:
+@>Text: \sign[signskin]\l[2]<ac>Celadon Hotel<ac>\nNow accepting Pokémon and Puppets!
+@>
+
+#------------------------------------------------------------------------------
+Event ID: 012
+Event Name: EV012
+(X,Y): (013,038)
+
+Page #1
+Conditions
+None
+
+Graphic: trainer_GAMBLER
+
+Autonomous Movement
+Type: Fixed
+Speed: 3: Slow
+Freq: 3: Low
+Options Enabled
+Move Animation
+Trigger: Action Button
+
+List of Event Commands:
+@>Text: I love this gym, but ever since they remodeled I've 
+ :    : been unable to see the pretty young girls!
+@>
+
+#------------------------------------------------------------------------------
+Event ID: 013
+Event Name: EV013
+(X,Y): (017,039)
+
+Page #1
+Conditions
+None
+
+Autonomous Movement
+Type: Fixed
+Speed: 3: Slow
+Freq: 3: Low
+Options Enabled
+Move Animation
+Trigger: Action Button
+
+List of Event Commands:
+@>Text: \sign[signskin]\l[3]<ac>Celadon City Gym\n<ac>Leader: Erika\n<ac>"The Nature-Loving Princess"
+@>
+
+#------------------------------------------------------------------------------
+Event ID: 014
+Event Name: NPC
+(X,Y): (008,020)
+
+Page #1
+Conditions
+None
+
+Graphic: NPC 07
+
+Autonomous Movement
+Type: Fixed
+Speed: 3: Slow
+Freq: 3: Low
+Options Enabled
+Move Animation
+Trigger: Action Button
+
+List of Event Commands:
+@>Text: BIG SALES, LOTS OF MERCHANDISE. CELADON DEPARTMENT
+ :    : STORE HAS IT ALL!
+@>Text: VITAMINS, TECHNICAL MACHINES, HEALING ITEMS, POKEBALLS,
+ :    : YOU CAN'T BEAT THE SELECTION HERE!
+@>Text: I CHUGGED A WHOLE SUPER BIG GULP OF FIVE HOUR ENERGY. 
+ :    : WOO!
+@>
+
+#------------------------------------------------------------------------------
+Event ID: 015
+Event Name: Item:MAXREPEL
+(X,Y): (004,010)
+
+Page #1
+Conditions
+None
+
+Autonomous Movement
+Type: Fixed
+Speed: 3: Slow
+Freq: 3: Low
+Options Enabled
+Move Animation
+Trigger: Action Button
+
+List of Event Commands:
+@>
+
+#------------------------------------------------------------------------------
+Event ID: 016
+Event Name: Item:POKEDOLL
+(X,Y): (055,034)
+
+Page #1
+Conditions
+None
+
+Autonomous Movement
+Type: Fixed
+Speed: 3: Slow
+Freq: 3: Low
+Options Enabled
+Move Animation
+Trigger: Action Button
+
+List of Event Commands:
+@>
+
+#------------------------------------------------------------------------------
+Event ID: 017
+Event Name: HiddenItem:POWERSHARD
+(X,Y): (054,014)
+
+Page #1
+Conditions
+None
+
+Autonomous Movement
+Type: Fixed
+Speed: 3: Slow
+Freq: 3: Low
+Options Enabled
+Move Animation
+Trigger: Action Button
+
+List of Event Commands:
+@>
+
+#------------------------------------------------------------------------------
+Event ID: 018
+Event Name: HiddenItem:MIRACLESEED
+(X,Y): (042,044)
+
+Page #1
+Conditions
+None
+
+Autonomous Movement
+Type: Fixed
+Speed: 3: Slow
+Freq: 3: Low
+Options Enabled
+Move Animation
+Trigger: Action Button
+
+List of Event Commands:
+@>
+
+#------------------------------------------------------------------------------
+Event ID: 019
+Event Name: EV019
+(X,Y): (039,028)
+
+Page #1
+Conditions
+None
+
+Graphic: doors6
+
+Autonomous Movement
+Type: Fixed
+Speed: 3: Slow
+Freq: 3: Low
+Options Enabled
+Move Animation
+Trigger: Player Touch
+
+List of Event Commands:
+@>Set Move Route: This event
+                  (Ignore If Can't Move)
+ :              : $>SE: 'Automatic Door', 100, 100
+ :              : $>Wait: 2 frame(s)
+ :              : $>Turn Left
+ :              : $>Wait: 2 frame(s)
+ :              : $>Turn Right
+ :              : $>Wait: 2 frame(s)
+ :              : $>Turn Up
+ :              : $>Wait: 2 frame(s)
+@>Wait for Move's Completion
+@>Set Move Route: Player
+                  (Ignore If Can't Move)
+ :              : $>Through ON
+ :              : $>Move Up
+ :              : $>Through OFF
+@>Wait for Move's Completion
+@>Change Transparent Flag: Transparency
+@>Set Move Route: This event
+                  (Ignore If Can't Move)
+ :              : $>Wait: 2 frame(s)
+ :              : $>Turn Right
+ :              : $>Wait: 2 frame(s)
+ :              : $>Turn Left
+ :              : $>Wait: 2 frame(s)
+ :              : $>Turn Down
+ :              : $>Wait: 2 frame(s)
+@>Wait for Move's Completion
+@>Play SE: 'Exit Door', 80, 100
+@>Change Screen Color Tone: (-255,-255,-255,0), @6
+@>Wait: 8 frame(s)
+@>Change Transparent Flag: Normal
+@>Transfer Player:[011: Cutscene: Viridian Forest & Ruins of Alph], (004,029), Up, No Fade
+@>Change Screen Color Tone: (0,0,0,0), @6
+@>
+
+Page #2
+Conditions
+Switch 0022: s:tsOff?("A") is ON
+
+Graphic: doors6
+
+Autonomous Movement
+Type: Fixed
+Speed: 3: Slow
+Freq: 3: Low
+Options Enabled
+Move Animation
+Trigger: Autorun
+
+List of Event Commands:
+@>Conditional Branch: Script: get_character(0).onEvent?
+ @>Change Transparent Flag: Transparency
+ @>Set Move Route: This event
+                   (Ignore If Can't Move)
+  :              : $>SE: 'Automatic Door', 100, 100
+  :              : $>Wait: 2 frame(s)
+  :              : $>Turn Left
+  :              : $>Wait: 2 frame(s)
+  :              : $>Turn Right
+  :              : $>Wait: 2 frame(s)
+  :              : $>Turn Up
+  :              : $>Wait: 2 frame(s)
+ @>Wait for Move's Completion
+ @>Change Transparent Flag: Normal
+ @>Set Move Route: Player
+                   (Ignore If Can't Move)
+  :              : $>Move Down
+ @>Wait for Move's Completion
+ @>Set Move Route: This event
+                   (Ignore If Can't Move)
+  :              : $>Turn Right
+  :              : $>Wait: 2 frame(s)
+  :              : $>Turn Left
+  :              : $>Wait: 2 frame(s)
+  :              : $>Turn Down
+  :              : $>Wait: 2 frame(s)
+ @>Wait for Move's Completion
+ @>
+: Branch End
+@>Script: setTempSwitchOn("A")
+@>
+
+#------------------------------------------------------------------------------
 
 #==============================================================================
 Map ID: 041
@@ -24018,7 +24554,7 @@ List of Event Commands:
  :              : $>Change Opacity: 0
  :              : $>Through OFF
 @>Wait for Move's Completion
-@>Script: pbSetSelfSwitch(40,"A",true)
+@>Script: pbSetSelfSwitch(40,"B",true)
 :       : pbSetSelfSwitch2(246,9,"A",true)
 :       : pbSetSelfSwitch2(246,10,"A",true)
 @>Conditional Branch: Variable [0107: Chosen Protag] == 0
@@ -25135,6 +25671,21 @@ Trigger: Action Button
 List of Event Commands:
 @>
 
+Page #4
+Conditions
+Variable 0110: Plot Control Variable is 8 or above
+
+Autonomous Movement
+Type: Fixed
+Speed: 3: Slow
+Freq: 3: Low
+Options Enabled
+Move Animation
+Trigger: Action Button
+
+List of Event Commands:
+@>
+
 #------------------------------------------------------------------------------
 Event ID: 041
 Event Name: Renko/Maribel - 3
@@ -26117,8 +26668,8 @@ Move Animation
 Trigger: Event Touch
 
 List of Event Commands:
-@>Script: pbTrainerIntro(:BUGCATCHER)
-@>Script: Kernel.pbNoticePlayer(get_character(0))
+@>Script: TrainerIntro2(:BUGCATCHER)
+@>Script: pbNoticePlayer(get_character(0))
 @>Text: Uhh, I just caught this bug-like thing...
  :    : I came for fairies, but let's test her.
 @>Conditional Branch: Script: pbTrainerBattle(:BUGCATCHER,"Tanner",_I("Should have stuck with fairies."))
@@ -28579,6 +29130,8 @@ List of Event Commands:
   :    : over the past few years!
  @>
 : Branch End
+@>Set Move Route: This event
+ :              : $>Turn Up
 @>
 
 #------------------------------------------------------------------------------
@@ -36916,7 +37469,8 @@ Move Animation
 Trigger: Player Touch
 
 List of Event Commands:
-@>Text: * This leads to where the attic. I shouldn't head up there.
+@>Text: * This leads to where the attic is. I shouldn't head up 
+ :    : there.
 @>
 
 Page #2
@@ -39628,8 +40182,10 @@ List of Event Commands:
 @>Text: Up until recently, if you wanted to safely make it 
  :    : through Viridian Forest, you had to stock up on so 
  :    : many antidotes.
-@>Text: With the dispapearance of the Weedle population, I 
- :    : guess antidote sales have gone down considerably...
+@>Text: Ever since Puppets became more commonplace, the 
+ :    : Weedle population has gone down considerably.
+@>Text: Unfortunately, the Fairy Puppets have taken their 
+ :    : place as being obnoxious pranksters instead.
 @>
 
 #------------------------------------------------------------------------------
@@ -48518,7 +49074,7 @@ Move Animation
 Trigger: Action Button
 
 List of Event Commands:
-@>Text: \xn[Brock]Welcome to Pewter Gym! my name is Brock, the Gym Leader. I specialize in Rock-type Pokémon and Earth-type Puppets.
+@>Text: \xn[Brock]Welcome to Pewter Gym! My name is Brock, the Gym Leader. I specialize in Rock-type Pokémon and Earth-type Puppets.
 @>Text: \xn[Brock]When it comes to battling, I believe that the best offense is a good defense. You'll find it extremely difficult to break past my defenses!
 @>Text: \xn[Brock]Think you have what it takes? Then come on, show me your best!
 @>Control Switches: [0104: Transition Handler] = ON
@@ -59693,6 +60249,15 @@ Move Animation
 Trigger: Action Button
 
 List of Event Commands:
+@>Text: Inspect this box?
+@>Show Choices: Yes, No
+(When Cancel: Choice 2)
+: When [Yes]
+ @>Text: ... Nope, nothing inside of it.
+ @>
+: When [No]
+ @>
+: Branch End
 @>
 
 Page #3
@@ -59932,6 +60497,15 @@ Move Animation
 Trigger: Action Button
 
 List of Event Commands:
+@>Text: Inspect this box?
+@>Show Choices: Yes, No
+(When Cancel: Choice 2)
+: When [Yes]
+ @>Text: ... Nope, nothing inside of it.
+ @>
+: When [No]
+ @>
+: Branch End
 @>
 
 Page #3
@@ -60083,6 +60657,15 @@ Move Animation
 Trigger: Action Button
 
 List of Event Commands:
+@>Text: Inspect this box?
+@>Show Choices: Yes, No
+(When Cancel: Choice 2)
+: When [Yes]
+ @>Text: ... Nope, nothing inside of it.
+ @>
+: When [No]
+ @>
+: Branch End
 @>
 
 Page #3
@@ -60190,6 +60773,15 @@ Move Animation
 Trigger: Action Button
 
 List of Event Commands:
+@>Text: Inspect this box?
+@>Show Choices: Yes, No
+(When Cancel: Choice 2)
+: When [Yes]
+ @>Text: ... Nope, nothing inside of it.
+ @>
+: When [No]
+ @>
+: Branch End
 @>
 
 Page #3
@@ -60341,6 +60933,15 @@ Move Animation
 Trigger: Action Button
 
 List of Event Commands:
+@>Text: Inspect this box?
+@>Show Choices: Yes, No
+(When Cancel: Choice 2)
+: When [Yes]
+ @>Text: ... Nope, nothing inside of it.
+ @>
+: When [No]
+ @>
+: Branch End
 @>
 
 Page #3
@@ -61283,7 +61884,7 @@ List of Event Commands:
  @>Text: Since then, I've been held up in the Pokémon Center... I'm not going 
   :    : back into that house until I can figure out how to deal with it.
  @>Text: ...Actually, you seem like someone who enjoys exploring the
-  :    : myserious. You wouldn't mind helping to see what's going on
+  :    : mysterious. You wouldn't mind helping to see what's going on
   :    : in my house, right? Great!
  @>Text: It's just north of the Pokémon Center, next to Nugget bridge.
  @>Text: I will easily make it worth your while if you help me out!
@@ -61333,7 +61934,7 @@ List of Event Commands:
  @>Text: You put the items away \nin the <icon=bagPocket1>\c[1]Items Pocket\c[0].
  @>Text: Those items can be used to boost the damage of a Pokémon
   :    : or Puppet's Water- and Hydro-type moves.
- @>Text: I have plenty of these of own, so you can have a 
+ @>Text: I have plenty of these of my own, so you can have a 
   :    : pair as well!
  @>Text: I'm going to head on back to my house now and
   :    : finally get started on unpacking. Thank you once
@@ -77096,6 +77697,30 @@ Move Animation
 Trigger: Action Button
 
 List of Event Commands:
+@>Conditional Branch: Switch [0016: s:PBDayNight.isMorning?] == ON
+ @>
+: Else
+ @>Text: \xn[DJ Naki]Hey there! We're still setting up right now, so do you
+  :    : think you can come back later! I promise it'll be worth your while!
+ @>
+: Branch End
+@>
+
+Page #2
+Conditions
+None
+
+Graphic: trainer_AROMALADY
+
+Autonomous Movement
+Type: Fixed
+Speed: 3: Slow
+Freq: 3: Low
+Options Enabled
+Move Animation
+Trigger: Action Button
+
+List of Event Commands:
 @>Text: \xn[DJ Naki]Hey there! We're still setting up right now, so do you
  :    : think you can come back later! I promise it'll be worth your while!
 @>
@@ -77185,12 +77810,32 @@ Move Animation
 Trigger: Action Button
 
 List of Event Commands:
-@>Comment: DJ Ibuki is a Morning only Event. The player can talk to them 
+@>Comment: DJ Naki is a Morning only Event. The player can talk to them 
  :       : every day and get "interviewed". This segment is just a small 
- :       : questionare which can net you some items.
-@>Comment: The main portion of DJ Ibuki's interview is the Battle Segment
- :       : where she battles you live on radio. You get a Blue UFO each
- :       : time you beat her.
+ :       : questionare which gets you Points you can exchange for items.
+ :       : 
+ :       : Similar to Buena's Password.
+@>Comment: The main portion of DJ Naki's interview is the Battle Segment
+ :       : where she battles you live on radio. If you beat her, she gives
+ :       : you a greater amount of Points.
+ :       : 
+ :       : Her team scales based on badge count.
+@>Comment: There will be a counter that tracks how many times the player 
+ :       : has  battled DJ Naki. There might be a dedicated one for 
+ :       : victories, but I'm not settled on that yet.
+ :       : 
+ :       : This variable controls her dialogue to an extent, as well as 
+ :       : prizes you recieve.
+@>Comment: At certain victory thresholds, the player will recieve items from 
+ :       : DJ Naki. The items and thresholds are as follows:
+ :       : 5 Wins: 
+ :       : 10 Wins:
+ :       : 25 Wins:
+ :       : 50 Wins:
+@>Comment: 100 Wins: Prism Candy, Crimson Jam x5
+ :       : 
+ :       : At every win past 100 she gives the player an additional 10
+ :       : Points, plus 
 @>
 
 #------------------------------------------------------------------------------
@@ -84802,7 +85447,7 @@ List of Event Commands:
 @>Text: I'm one of Professor Oak's Aides.
 @>Text: I was told to deliver this if I ran into you; Professor 
  :    : Oak says it should help you illuminate dark caves.
-@>Script: pbReceiveItem(:HM05)
+@>Script: pbReceiveItem(:HM07)
 :       : pbReceiveItem(:HC05)
 @>Text: You can teach Flash to a Pokémon or Puppet and use it to 
  :    : brighten darkened caves.
@@ -85628,7 +86273,7 @@ List of Event Commands:
 @>Text: I was told to deliver this if I ran into you, 
  :    : Professor Oak says it should help you cross oceans.
 @>Script: pbReceiveItem(:HM03)
-:       : pbReceiveItem(:SC03)
+:       : pbReceiveItem(:HC03)
 @>Text: Surf can be taught to Pokémon and Puppets so they can ferry you
  :    : across the water.
 @>Text: You might find it useful for reaching Cinnabar Island, which
@@ -85642,7 +86287,7 @@ Page #2
 Conditions
 Self Switch A is ON
 
-Graphic: trchar028
+Graphic: trainer_SCIENTIST
 
 Autonomous Movement
 Type: Fixed
@@ -85721,6 +86366,2628 @@ List of Event Commands:
  :    : Bug Reporting Google Form you were provided with.
 @>Text: \xn[DerxwnaKapsyla]If you would like to apply to help with Asteria 
  :    : going forward, throw me a message!
+@>
+
+#------------------------------------------------------------------------------
+
+#==============================================================================
+Map ID: 276
+Map Name: Pokémon Center
+Tileset: 004: Poke Center
+Width: 25, Height: 25
+Auto-Change BGM: W-008. Pokemon Center (Monsekai)
+
+#------------------------------------------------------------------------------
+Event ID: 001
+Event Name: ExitArrow
+(X,Y): (007,011)
+
+Page #1
+Conditions
+None
+
+Graphic: Exitarrow_red
+
+Autonomous Movement
+Type: Fixed
+Speed: 3: Slow
+Freq: 3: Low
+Options Enabled
+Move Animation
+Stop Animation
+Always on Top
+Trigger: Player Touch
+
+List of Event Commands:
+@>Conditional Branch: Player is facing Down
+ @>Play SE: 'Door exit', 100, 100
+ @>Change Screen Color Tone: (-255,-255,-255,0), @6
+ @>Wait: 8 frame(s)
+ @>Transfer Player:[036: Pewter City], (034,032), No Fade
+ @>Change Screen Color Tone: (0,0,0,0), @6
+ @>
+: Branch End
+@>
+
+#------------------------------------------------------------------------------
+Event ID: 002
+Event Name: Nurse
+(X,Y): (007,002)
+
+Page #1
+Conditions
+None
+
+Graphic: NPC 16
+
+Autonomous Movement
+Type: Fixed
+Speed: 3: Slow
+Freq: 3: Low
+Options Enabled
+Move Animation
+Trigger: Action Button
+
+List of Event Commands:
+@>Comment: This line of code sets the player's current position as 
+ :       : the spot they will return to after they lose a battle 
+ :       : and lack out.
+ :       : Page 2 of this event detects when this happens, and 
+ :       : heals the player's Pokémon and wishes them better 
+ :       : luck in future.
+@>Script: pbSetPokemonCenter
+@>Text: \rHello, and welcome to the Pokémon Center.
+@>Text: \rWe restore your tired Pokémon to full health.
+@>Text: \rWould you like to rest your Pokémon?
+@>Show Choices: Yes, No
+(When Cancel: Choice 2)
+: When [Yes]
+ @>Text: \rOK, I'll take your Pokémon for a few seconds.
+ @>Recover All: Entire Party
+ @>Set Move Route: This event
+  :              : $>Turn Left
+  :              : $>Wait: 2 frame(s)
+ @>Wait for Move's Completion
+ @>Control Variables: [0006: Poké Center healing ball count] = 0
+ @>Script: count = $Trainer.pokemon_count
+ :       : for i in 1..count
+ :       :   pbSet(6, i)
+ :       :   pbSEPlay("Battle ball shake")
+ :       :   pbWait(16)
+ :       : end
+ @>Set Move Route: [Healing balls]
+  :              : $>Stop Animation ON
+ @>Play ME: 'Pkmn healing', 100, 100
+ @>Wait: 58 frame(s)
+ @>Control Variables: [0006: Poké Center healing ball count] = 0
+ @>Script: get_character(4).pattern = 0
+ @>Set Move Route: [Healing balls]
+  :              : $>Stop Animation OFF
+ @>Set Move Route: This event
+  :              : $>Wait: 15 frame(s)
+  :              : $>Turn Down
+ @>Wait for Move's Completion
+ @>Conditional Branch: Script: pbPokerus?
+  @>Text: \rYour Pokémon may be infected by PokeRus.
+  @>Text: \rLittle is known about the PokeRus except that they 
+   :    : are microscopic life-forms that attach to Pokémon.
+  @>Text: \rWhile infected, Pokémon are said to grow 
+   :    : exceptionally well.
+  @>Control Switches: [0002: Seen Pokérus in Poké Center] = ON
+  @>
+ : Else
+  @>Text: \rThank you for waiting.
+  @>Text: \rWe've restored your Pokémon to full health.
+  @>Set Move Route: This event
+   :              : $>Graphic: "NPC 16', 0, 2, 1
+   :              : $>Wait: 10 frame(s)
+   :              : $>Graphic: "NPC 16', 0, 2, 0
+  @>Wait for Move's Completion
+  @>Text: \rWe hope to see you again!
+  @>
+ : Branch End
+ @>
+: When [No]
+ @>Text: \rWe hope to see you again!
+ @>
+: Branch End
+@>
+
+Page #2
+Conditions
+Switch 0001: Starting over is ON
+
+Graphic: NPC 16
+
+Autonomous Movement
+Type: Fixed
+Speed: 3: Slow
+Freq: 3: Low
+Options Enabled
+Move Animation
+Trigger: Autorun
+
+List of Event Commands:
+@>Comment: Every map you can end up in after having all your 
+ :       : Pokémon faint (typically Poké Centers and home) 
+ :       : must have an Autorun event in it like this one.
+ :       : This event fully heals all the player's Pokémon, says 
+ :       : something to that effect, and turns the "Starting 
+ :       : over" switch OFF again.
+@>Comment: For convenience, this can be a single page in an 
+ :       : NPC's event (e.g. Mom, a nurse).
+@>Text: \rFirst, you should restore your Pokémon to full 
+ :    : health.
+@>Recover All: Entire Party
+@>Set Move Route: This event
+ :              : $>Turn Left
+ :              : $>Wait: 2 frame(s)
+@>Wait for Move's Completion
+@>Control Variables: [0006: Poké Center healing ball count] = 0
+@>Script: for i in 1..$Trainer.pokemon_count
+:       :   pbSet(6, i)
+:       :   pbSEPlay("Battle ball shake")
+:       :   pbWait(16)
+:       : end
+@>Set Move Route: [Healing balls]
+ :              : $>Stop Animation ON
+@>Play ME: 'Pkmn healing', 100, 100
+@>Wait: 58 frame(s)
+@>Control Variables: [0006: Poké Center healing ball count] = 0
+@>Script: get_character(4).pattern = 0
+@>Set Move Route: [Healing balls]
+ :              : $>Stop Animation OFF
+@>Set Move Route: This event
+ :              : $>Wait: 15 frame(s)
+ :              : $>Turn Down
+@>Wait for Move's Completion
+@>Text: \rYour Pokémon have been healed to perfect health.
+@>Set Move Route: This event
+ :              : $>Graphic: "NPC 16', 0, 2, 1
+ :              : $>Wait: 10 frame(s)
+ :              : $>Graphic: "NPC 16', 0, 2, 0
+@>Wait for Move's Completion
+@>Text: \rWe hope you excel!
+@>Control Switches: [0001: Starting over] = OFF
+@>
+
+#------------------------------------------------------------------------------
+Event ID: 003
+Event Name: PC
+(X,Y): (011,001)
+
+Page #1
+Conditions
+None
+
+Autonomous Movement
+Type: Fixed
+Speed: 3: Slow
+Freq: 3: Low
+Options Enabled
+Move Animation
+Trigger: Action Button
+
+List of Event Commands:
+@>Script: pbPokeCenterPC
+@>
+
+#------------------------------------------------------------------------------
+Event ID: 004
+Event Name: Healing balls
+(X,Y): (005,002)
+
+Page #1
+Conditions
+None
+
+Autonomous Movement
+Type: Fixed
+Speed: 4: Fast
+Freq: 3: Low
+Options Enabled
+Trigger: Action Button
+
+List of Event Commands:
+@>
+
+Page #2
+Conditions
+Variable 0006: Poké Center healing ball count is 1 or above
+
+Graphic: Healing balls 1
+
+Autonomous Movement
+Type: Fixed
+Speed: 3: Slow
+Freq: 3: Low
+Options Enabled
+Trigger: Action Button
+
+List of Event Commands:
+@>
+
+Page #3
+Conditions
+Variable 0006: Poké Center healing ball count is 2 or above
+
+Graphic: Healing balls 1
+
+Autonomous Movement
+Type: Fixed
+Speed: 3: Slow
+Freq: 3: Low
+Options Enabled
+Trigger: Action Button
+
+List of Event Commands:
+@>
+
+Page #4
+Conditions
+Variable 0006: Poké Center healing ball count is 3 or above
+
+Graphic: Healing balls 1
+
+Autonomous Movement
+Type: Fixed
+Speed: 3: Slow
+Freq: 3: Low
+Options Enabled
+Trigger: Action Button
+
+List of Event Commands:
+@>
+
+Page #5
+Conditions
+Variable 0006: Poké Center healing ball count is 4 or above
+
+Graphic: Healing balls 2
+
+Autonomous Movement
+Type: Fixed
+Speed: 3: Slow
+Freq: 3: Low
+Options Enabled
+Trigger: Action Button
+
+List of Event Commands:
+@>
+
+Page #6
+Conditions
+Variable 0006: Poké Center healing ball count is 5 or above
+
+Graphic: Healing balls 2
+
+Autonomous Movement
+Type: Fixed
+Speed: 3: Slow
+Freq: 3: Low
+Options Enabled
+Trigger: Action Button
+
+List of Event Commands:
+@>
+
+Page #7
+Conditions
+Variable 0006: Poké Center healing ball count is 6 or above
+
+Graphic: Healing balls 2
+
+Autonomous Movement
+Type: Fixed
+Speed: 3: Slow
+Freq: 3: Low
+Options Enabled
+Trigger: Action Button
+
+List of Event Commands:
+@>
+
+#------------------------------------------------------------------------------
+Event ID: 005
+Event Name: EV005
+(X,Y): (003,001)
+
+Page #1
+Conditions
+None
+
+Autonomous Movement
+Type: Fixed
+Speed: 3: Slow
+Freq: 3: Low
+Options Enabled
+Move Animation
+Trigger: Action Button
+
+List of Event Commands:
+@>Text: It's a terminal that lets you input a code.
+ :    : Try it out?
+@>Show Choices: Yes, No
+(When Cancel: Choice 2)
+: When [Yes]
+ @>Call Common Event: Passcode System
+ @>
+: When [No]
+ @>
+: Branch End
+@>
+
+#------------------------------------------------------------------------------
+Event ID: 006
+Event Name: Town Map left
+(X,Y): (012,001)
+
+Page #1
+Conditions
+None
+
+Autonomous Movement
+Type: Fixed
+Speed: 3: Slow
+Freq: 3: Low
+Options Enabled
+Move Animation
+Trigger: Action Button
+
+List of Event Commands:
+@>Script: pbShowMap
+@>
+
+#------------------------------------------------------------------------------
+Event ID: 007
+Event Name: Town Map right
+(X,Y): (013,001)
+
+Page #1
+Conditions
+None
+
+Autonomous Movement
+Type: Fixed
+Speed: 3: Slow
+Freq: 3: Low
+Options Enabled
+Move Animation
+Trigger: Action Button
+
+List of Event Commands:
+@>Script: pbShowMap
+@>
+
+#------------------------------------------------------------------------------
+Event ID: 008
+Event Name: EV008
+(X,Y): (009,007)
+
+Page #1
+Conditions
+None
+
+Graphic: trainer_HEXMANIAC
+
+Autonomous Movement
+Type: Custom
+Custom Move Route:
+(Repeat Action)
+$>Turn at Random
+
+Speed: 3: Slow
+Freq: 3: Low
+Options Enabled
+Move Animation
+Trigger: Action Button
+
+List of Event Commands:
+@>Text: I've been hearing rumors about the Celadon Game Corner.
+ :    : You wanna hear about them?
+@>Show Choices: I love juicy rumors!, No, not right now.
+(When Cancel: Choice 2)
+: When [I love juicy rumors!]
+ @>Text: Awesome! So, apparently Team Rocket used to run the Game
+  :    : Corner, and when they were driven out it fell under new
+  :    : managment.
+ @>Text: They refurbished the basement levels, and added additional
+  :    : game stations there!
+ @>Text: However, the rumor goes that there was a secret basement
+  :    : level that nobody knew about. Some sort of secret lab or
+  :    : something.
+ @>Text: Unbelievable, right? Well, apparently people've been hearing strange
+  :    : noises coming from the Game Corner at night. However, whenever
+  :    : inspected by staff, nobody found anything.
+ @>Text: I wonder if perhaps those rumors are true, and perhaps those
+  :    : noises are the area being haunted by Ghost or Neither-types!
+ @>Text: If you're interested, you should totally check it out and see
+  :    : if you can uncover the mystery!
+ @>Script: activateQuest(:Quest108)
+ @>Script: pbSetSelfSwitch(9,"A",true)
+ @>
+: When [No, not right now.]
+ @>Text: Aw, alright! Well, who's to say if it's real or not I suppose!
+ @>
+: Branch End
+@>
+
+Page #2
+Conditions
+None
+
+Graphic: trainer_HEXMANIAC
+
+Autonomous Movement
+Type: Custom
+Custom Move Route:
+(Repeat Action)
+$>Turn at Random
+
+Speed: 3: Slow
+Freq: 3: Low
+Options Enabled
+Move Animation
+Trigger: Action Button
+
+List of Event Commands:
+@>Text: I've also been hearing rumors about mysterious graves outside
+ :    : Lavender Tower. I should investigate those as well!
+@>
+
+#------------------------------------------------------------------------------
+Event ID: 009
+Event Name: Quest Indicator: Sidequest
+(X,Y): (009,006)
+
+Page #1
+Conditions
+None
+
+Graphic: questicon2
+
+Autonomous Movement
+Type: Fixed
+Speed: 3: Slow
+Freq: 3: Low
+Options Enabled
+Move Animation
+Stop Animation
+Direction Fix
+Through
+Always on Top
+Trigger: Action Button
+
+List of Event Commands:
+@>Comment: Relevant Sidequest: Darkness Within Darkness
+@>
+
+Page #2
+Conditions
+Self Switch A is ON
+
+Autonomous Movement
+Type: Fixed
+Speed: 3: Slow
+Freq: 3: Low
+Options Enabled
+Move Animation
+Trigger: Action Button
+
+List of Event Commands:
+@>
+
+#------------------------------------------------------------------------------
+
+#==============================================================================
+Map ID: 277
+Map Name: Department Store
+Tileset: 010: Department Store
+Width: 150, Height: 19
+Auto-Change BGM: 027. PokeCenter
+
+#------------------------------------------------------------------------------
+Event ID: 001
+Event Name: EV001
+(X,Y): (006,010)
+
+Page #1
+Conditions
+None
+
+Graphic: NPC 08
+
+Autonomous Movement
+Type: Fixed
+Speed: 3: Slow
+Freq: 3: Low
+Options Enabled
+Move Animation
+Trigger: Action Button
+
+List of Event Commands:
+@>Text: Hello!\nWelcome to Celadon Department Store.
+@>Text: The board on the right describes the store layout.
+@>
+
+#------------------------------------------------------------------------------
+Event ID: 002
+Event Name: EV002
+(X,Y): (009,011)
+
+Page #1
+Conditions
+None
+
+Autonomous Movement
+Type: Fixed
+Speed: 3: Slow
+Freq: 3: Low
+Options Enabled
+Move Animation
+Trigger: Action Button
+
+List of Event Commands:
+@>Text: 1F: Service Counter\n2F: Trainer's Market\n3F: TV Game Shop\n4F: Wise Man Gifts\n5F: Drugstore\nRooftop Square: Vending Machines
+@>
+
+#------------------------------------------------------------------------------
+Event ID: 003
+Event Name: Floor sign
+(X,Y): (008,001)
+
+Page #1
+Conditions
+None
+
+Autonomous Movement
+Type: Fixed
+Speed: 3: Slow
+Freq: 3: Low
+Options Enabled
+Move Animation
+Trigger: Action Button
+
+List of Event Commands:
+@>Text: \sign[signskin]1F: Service Counter
+@>
+
+#------------------------------------------------------------------------------
+Event ID: 004
+Event Name: Cashier bottom
+(X,Y): (024,008)
+
+Page #1
+Conditions
+None
+
+Graphic: NPC 19
+
+Autonomous Movement
+Type: Fixed
+Speed: 3: Slow
+Freq: 3: Low
+Options Enabled
+Move Animation
+Trigger: Action Button
+
+List of Event Commands:
+@>Text: Hello and welcome to Celadon Department Store.\nWe have a large variety of goods here.
+@>Script: pbPokemonMart([
+:       : :GREATBALL,:HYPERPOTION,
+:       : :SUPERPOTION,:REVIVE,
+:       : :ANTIDOTE,:PARLYZHEAL,
+:       : :AWAKENING,:BURNHEAL,
+:       : :ICEHEAL,:SUPEREPEL
+:       : ])
+@>
+
+#------------------------------------------------------------------------------
+Event ID: 005
+Event Name: Cashier top
+(X,Y): (024,006)
+
+Page #1
+Conditions
+None
+
+Graphic: NPC 19
+
+Autonomous Movement
+Type: Fixed
+Speed: 3: Slow
+Freq: 3: Low
+Options Enabled
+Move Animation
+Trigger: Action Button
+
+List of Event Commands:
+@>Text: Hello and welcome to Celadon Department Store.\nWe have a large variety of goods here.
+@>Script: pbPokemonMart([
+:       : :G18TM05,:G18TM28,
+:       : :G18TM31,:G18TM43,
+:       : :G18TM45
+:       : ])
+@>
+
+#------------------------------------------------------------------------------
+Event ID: 006
+Event Name: Cashier 4F
+(X,Y): (070,013)
+
+Page #1
+Conditions
+None
+
+Graphic: NPC 19
+
+Autonomous Movement
+Type: Fixed
+Speed: 3: Slow
+Freq: 3: Low
+Options Enabled
+Move Animation
+Trigger: Action Button
+
+List of Event Commands:
+@>Text: Hello and welcome to Celadon Department Store.\nWe have a large variety of goods here.
+@>Script: pbPokemonMart([
+:       : :POKEDOLL,:TECHSHARD,
+:       : :POWERSHARD,:DEFENSESHARD,
+:       : :SWIFTSHARD,:SUPPORTSHARD,
+:       : :FIRESTONE,:WATERSTONE,
+:       : :LEAFSTONE,:THUNDERSTONE,
+:       : :DUSKSTONE,:DAWNSTONE,
+:       : :SHINYSTONE,:MOONSTONE
+:       : ])
+@>
+
+#------------------------------------------------------------------------------
+Event ID: 007
+Event Name: Cashier top 5F
+(X,Y): (090,006)
+
+Page #1
+Conditions
+None
+
+Graphic: NPC 19
+
+Autonomous Movement
+Type: Fixed
+Speed: 3: Slow
+Freq: 3: Low
+Options Enabled
+Move Animation
+Trigger: Action Button
+
+List of Event Commands:
+@>Text: Hello and welcome to Celadon Department Store.\nWe have a large variety of goods here.
+@>Script: pbPokemonMart([
+:       : :HPUP,
+:       : :PROTEIN,
+:       : :IRON,
+:       : :CALCIUM,
+:       : :ZINC,
+:       : :CARBOS
+:       : ])
+@>
+
+#------------------------------------------------------------------------------
+Event ID: 008
+Event Name: Cashier bottom 5F
+(X,Y): (090,007)
+
+Page #1
+Conditions
+None
+
+Graphic: NPC 19
+
+Autonomous Movement
+Type: Fixed
+Speed: 3: Slow
+Freq: 3: Low
+Options Enabled
+Move Animation
+Trigger: Action Button
+
+List of Event Commands:
+@>Text: Hello and welcome to Celadon Department Store.\nWe have a large variety of goods here.
+@>Script: pbPokemonMart([
+:       : :XATTACK,
+:       : :XDEFEND,
+:       : :XSPEED,
+:       : :XSPECIAL,
+:       : :XSPDEF,
+:       : :XACCURACY,
+:       : :GUARDSPEC,
+:       : :DIREHIT
+:       : ])
+@>
+
+#------------------------------------------------------------------------------
+Event ID: 009
+Event Name: Vending machine 1
+(X,Y): (128,006)
+
+Page #1
+Conditions
+None
+
+Autonomous Movement
+Type: Fixed
+Speed: 3: Slow
+Freq: 3: Low
+Options Enabled
+Move Animation
+Trigger: Action Button
+
+List of Event Commands:
+@>Conditional Branch: Player is facing Up
+ @>Label: Start
+ @>Text: It's a vending machine.\n
+  :    : Which drink would you like?\G
+ @>Show Choices: Fresh Water - $200, Soda Pop - $300, Lemonade - $350, Cancel
+ (When Cancel: Choice 4)
+ : When [Fresh Water - $200]
+  @>Conditional Branch: Gold 200 or more
+   @>Conditional Branch: Script: $PokemonBag.pbCanStore?(PBItems::FRESHWATER)
+    @>Change Gold: - 200
+    @>Script: $PokemonBag.pbStoreItem(PBItems::FRESHWATER)
+    @>Text: \GA Fresh Water dropped down!
+    @>Control Variables: [0001: Temp Pokemon Choice] = Random No. (0...10)
+    @>Conditional Branch: Variable [0001: Temp Pokemon Choice] == 0
+     @>Conditional Branch: Script: $PokemonBag.pbCanStore?(PBItems::FRESHWATER)
+      @>Script: $PokemonBag.pbStoreItem(PBItems::FRESHWATER)
+      @>Text: \GBonus! Another Fresh Water dropped down.
+      @>
+     : Branch End
+     @>
+    : Branch End
+    @>Jump to Label: Start
+    @>
+   : Else
+    @>Text: \GYou have no room left in the Bag.
+    @>
+   : Branch End
+   @>
+  : Else
+   @>Text: \GYou don't have enough money.
+   @>
+  : Branch End
+  @>
+ : When [Soda Pop - $300]
+  @>Conditional Branch: Gold 300 or more
+   @>Conditional Branch: Script: $PokemonBag.pbCanStore?(PBItems::SODAPOP)
+    @>Change Gold: - 300
+    @>Script: $PokemonBag.pbStoreItem(PBItems::SODAPOP)
+    @>Text: \GA Soda Pop dropped down!
+    @>Control Variables: [0001: Temp Pokemon Choice] = Random No. (0...10)
+    @>Conditional Branch: Variable [0001: Temp Pokemon Choice] == 0
+     @>Conditional Branch: Script: $PokemonBag.pbCanStore?(PBItems::SODAPOP)
+      @>Script: $PokemonBag.pbStoreItem(PBItems::SODAPOP)
+      @>Text: \GBonus! Another Soda Pop dropped down.
+      @>
+     : Branch End
+     @>
+    : Branch End
+    @>Jump to Label: Start
+    @>
+   : Else
+    @>Text: \GYou have no room left in the Bag.
+    @>
+   : Branch End
+   @>
+  : Else
+   @>Text: \GYou don't have enough money.
+   @>
+  : Branch End
+  @>
+ : When [Lemonade - $350]
+  @>Conditional Branch: Gold 350 or more
+   @>Conditional Branch: Script: $PokemonBag.pbCanStore?(PBItems::LEMONADE)
+    @>Change Gold: - 350
+    @>Script: $PokemonBag.pbStoreItem(PBItems::LEMONADE)
+    @>Text: \GA Lemonade dropped down!
+    @>Control Variables: [0001: Temp Pokemon Choice] = Random No. (0...10)
+    @>Conditional Branch: Variable [0001: Temp Pokemon Choice] == 0
+     @>Conditional Branch: Script: $PokemonBag.pbCanStore?(PBItems::LEMONADE)
+      @>Script: $PokemonBag.pbStoreItem(PBItems::LEMONADE)
+      @>Text: \GBonus! Another Lemonade dropped down.
+      @>
+     : Branch End
+     @>
+    : Branch End
+    @>Jump to Label: Start
+    @>
+   : Else
+    @>Text: \GYou have no room left in the Bag.
+    @>
+   : Branch End
+   @>
+  : Else
+   @>Text: \GYou don't have enough money.
+   @>
+  : Branch End
+  @>
+ : When [Cancel]
+  @>Text: \GDecided not to buy a drink.
+  @>
+ : Branch End
+ @>
+: Else
+ @>
+: Branch End
+@>
+
+#------------------------------------------------------------------------------
+Event ID: 010
+Event Name: Vending machine 1
+(X,Y): (129,006)
+
+Page #1
+Conditions
+None
+
+Autonomous Movement
+Type: Fixed
+Speed: 3: Slow
+Freq: 3: Low
+Options Enabled
+Move Animation
+Trigger: Action Button
+
+List of Event Commands:
+@>Conditional Branch: Player is facing Up
+ @>Label: Start
+ @>Text: It's a vending machine.\n
+  :    : Which drink would you like?\G
+ @>Show Choices: Fresh Water - $200, Soda Pop - $300, Lemonade - $350, Cancel
+ (When Cancel: Choice 4)
+ : When [Fresh Water - $200]
+  @>Conditional Branch: Gold 200 or more
+   @>Conditional Branch: Script: $PokemonBag.pbCanStore?(PBItems::FRESHWATER)
+    @>Change Gold: - 200
+    @>Script: $PokemonBag.pbStoreItem(PBItems::FRESHWATER)
+    @>Text: \GA Fresh Water dropped down!
+    @>Control Variables: [0001: Temp Pokemon Choice] = Random No. (0...10)
+    @>Conditional Branch: Variable [0001: Temp Pokemon Choice] == 0
+     @>Conditional Branch: Script: $PokemonBag.pbCanStore?(PBItems::FRESHWATER)
+      @>Script: $PokemonBag.pbStoreItem(PBItems::FRESHWATER)
+      @>Text: \GBonus! Another Fresh Water dropped down.
+      @>
+     : Branch End
+     @>
+    : Branch End
+    @>Jump to Label: Start
+    @>
+   : Else
+    @>Text: \GYou have no room left in the Bag.
+    @>
+   : Branch End
+   @>
+  : Else
+   @>Text: \GYou don't have enough money.
+   @>
+  : Branch End
+  @>
+ : When [Soda Pop - $300]
+  @>Conditional Branch: Gold 300 or more
+   @>Conditional Branch: Script: $PokemonBag.pbCanStore?(PBItems::SODAPOP)
+    @>Change Gold: - 300
+    @>Script: $PokemonBag.pbStoreItem(PBItems::SODAPOP)
+    @>Text: \GA Soda Pop dropped down!
+    @>Control Variables: [0001: Temp Pokemon Choice] = Random No. (0...10)
+    @>Conditional Branch: Variable [0001: Temp Pokemon Choice] == 0
+     @>Conditional Branch: Script: $PokemonBag.pbCanStore?(PBItems::SODAPOP)
+      @>Script: $PokemonBag.pbStoreItem(PBItems::SODAPOP)
+      @>Text: \GBonus! Another Soda Pop dropped down.
+      @>
+     : Branch End
+     @>
+    : Branch End
+    @>Jump to Label: Start
+    @>
+   : Else
+    @>Text: \GYou have no room left in the Bag.
+    @>
+   : Branch End
+   @>
+  : Else
+   @>Text: \GYou don't have enough money.
+   @>
+  : Branch End
+  @>
+ : When [Lemonade - $350]
+  @>Conditional Branch: Gold 350 or more
+   @>Conditional Branch: Script: $PokemonBag.pbCanStore?(PBItems::LEMONADE)
+    @>Change Gold: - 350
+    @>Script: $PokemonBag.pbStoreItem(PBItems::LEMONADE)
+    @>Text: \GA Lemonade dropped down!
+    @>Control Variables: [0001: Temp Pokemon Choice] = Random No. (0...10)
+    @>Conditional Branch: Variable [0001: Temp Pokemon Choice] == 0
+     @>Conditional Branch: Script: $PokemonBag.pbCanStore?(PBItems::LEMONADE)
+      @>Script: $PokemonBag.pbStoreItem(PBItems::LEMONADE)
+      @>Text: \GBonus! Another Lemonade dropped down.
+      @>
+     : Branch End
+     @>
+    : Branch End
+    @>Jump to Label: Start
+    @>
+   : Else
+    @>Text: \GYou have no room left in the Bag.
+    @>
+   : Branch End
+   @>
+  : Else
+   @>Text: \GYou don't have enough money.
+   @>
+  : Branch End
+  @>
+ : When [Cancel]
+  @>Text: \GDecided not to buy a drink.
+  @>
+ : Branch End
+ @>
+: Else
+ @>
+: Branch End
+@>
+
+#------------------------------------------------------------------------------
+Event ID: 011
+Event Name: Vending machine 1
+(X,Y): (130,006)
+
+Page #1
+Conditions
+None
+
+Autonomous Movement
+Type: Fixed
+Speed: 3: Slow
+Freq: 3: Low
+Options Enabled
+Move Animation
+Trigger: Action Button
+
+List of Event Commands:
+@>Conditional Branch: Player is facing Up
+ @>Label: Start
+ @>Text: It's a vending machine.\n
+  :    : Which drink would you like?\G
+ @>Show Choices: Fresh Water - $200, Soda Pop - $300, Lemonade - $350, Cancel
+ (When Cancel: Choice 4)
+ : When [Fresh Water - $200]
+  @>Conditional Branch: Gold 200 or more
+   @>Conditional Branch: Script: $PokemonBag.pbCanStore?(PBItems::FRESHWATER)
+    @>Change Gold: - 200
+    @>Script: $PokemonBag.pbStoreItem(PBItems::FRESHWATER)
+    @>Text: \GA Fresh Water dropped down!
+    @>Control Variables: [0001: Temp Pokemon Choice] = Random No. (0...10)
+    @>Conditional Branch: Variable [0001: Temp Pokemon Choice] == 0
+     @>Conditional Branch: Script: $PokemonBag.pbCanStore?(PBItems::FRESHWATER)
+      @>Script: $PokemonBag.pbStoreItem(PBItems::FRESHWATER)
+      @>Text: \GBonus! Another Fresh Water dropped down.
+      @>
+     : Branch End
+     @>
+    : Branch End
+    @>Jump to Label: Start
+    @>
+   : Else
+    @>Text: \GYou have no room left in the Bag.
+    @>
+   : Branch End
+   @>
+  : Else
+   @>Text: \GYou don't have enough money.
+   @>
+  : Branch End
+  @>
+ : When [Soda Pop - $300]
+  @>Conditional Branch: Gold 300 or more
+   @>Conditional Branch: Script: $PokemonBag.pbCanStore?(PBItems::SODAPOP)
+    @>Change Gold: - 300
+    @>Script: $PokemonBag.pbStoreItem(PBItems::SODAPOP)
+    @>Text: \GA Soda Pop dropped down!
+    @>Control Variables: [0001: Temp Pokemon Choice] = Random No. (0...10)
+    @>Conditional Branch: Variable [0001: Temp Pokemon Choice] == 0
+     @>Conditional Branch: Script: $PokemonBag.pbCanStore?(PBItems::SODAPOP)
+      @>Script: $PokemonBag.pbStoreItem(PBItems::SODAPOP)
+      @>Text: \GBonus! Another Soda Pop dropped down.
+      @>
+     : Branch End
+     @>
+    : Branch End
+    @>Jump to Label: Start
+    @>
+   : Else
+    @>Text: \GYou have no room left in the Bag.
+    @>
+   : Branch End
+   @>
+  : Else
+   @>Text: \GYou don't have enough money.
+   @>
+  : Branch End
+  @>
+ : When [Lemonade - $350]
+  @>Conditional Branch: Gold 350 or more
+   @>Conditional Branch: Script: $PokemonBag.pbCanStore?(PBItems::LEMONADE)
+    @>Change Gold: - 350
+    @>Script: $PokemonBag.pbStoreItem(PBItems::LEMONADE)
+    @>Text: \GA Lemonade dropped down!
+    @>Control Variables: [0001: Temp Pokemon Choice] = Random No. (0...10)
+    @>Conditional Branch: Variable [0001: Temp Pokemon Choice] == 0
+     @>Conditional Branch: Script: $PokemonBag.pbCanStore?(PBItems::LEMONADE)
+      @>Script: $PokemonBag.pbStoreItem(PBItems::LEMONADE)
+      @>Text: \GBonus! Another Lemonade dropped down.
+      @>
+     : Branch End
+     @>
+    : Branch End
+    @>Jump to Label: Start
+    @>
+   : Else
+    @>Text: \GYou have no room left in the Bag.
+    @>
+   : Branch End
+   @>
+  : Else
+   @>Text: \GYou don't have enough money.
+   @>
+  : Branch End
+  @>
+ : When [Cancel]
+  @>Text: \GDecided not to buy a drink.
+  @>
+ : Branch End
+ @>
+: Else
+ @>
+: Branch End
+@>
+
+#------------------------------------------------------------------------------
+Event ID: 012
+Event Name: Floor sign
+(X,Y): (132,006)
+
+Page #1
+Conditions
+None
+
+Autonomous Movement
+Type: Fixed
+Speed: 3: Slow
+Freq: 3: Low
+Options Enabled
+Move Animation
+Trigger: Action Button
+
+List of Event Commands:
+@>Text: \sign[signskin]Rooftop Square: Vending Machines
+@>
+
+#------------------------------------------------------------------------------
+Event ID: 013
+Event Name: Floor sign
+(X,Y): (097,001)
+
+Page #1
+Conditions
+None
+
+Autonomous Movement
+Type: Fixed
+Speed: 3: Slow
+Freq: 3: Low
+Options Enabled
+Move Animation
+Trigger: Action Button
+
+List of Event Commands:
+@>Text: \sign[signskin]5F: Drugstore
+@>
+
+#------------------------------------------------------------------------------
+Event ID: 014
+Event Name: Floor sign
+(X,Y): (071,001)
+
+Page #1
+Conditions
+None
+
+Autonomous Movement
+Type: Fixed
+Speed: 3: Slow
+Freq: 3: Low
+Options Enabled
+Move Animation
+Trigger: Action Button
+
+List of Event Commands:
+@>Text: \sign[signskin]Express yourself with gifts!  4F: Wise 
+ :    : Man Gifts
+@>Text: \sign[signskin]Evolution Special!\nEvolution Items on 
+ :    : sale now!
+@>
+
+#------------------------------------------------------------------------------
+Event ID: 015
+Event Name: Floor sign
+(X,Y): (053,001)
+
+Page #1
+Conditions
+None
+
+Autonomous Movement
+Type: Fixed
+Speed: 3: Slow
+Freq: 3: Low
+Options Enabled
+Move Animation
+Trigger: Action Button
+
+List of Event Commands:
+@>Text: \sign[signskin]3F: TV Game Shop
+@>
+
+#------------------------------------------------------------------------------
+Event ID: 016
+Event Name: Floor sign
+(X,Y): (027,001)
+
+Page #1
+Conditions
+None
+
+Autonomous Movement
+Type: Fixed
+Speed: 3: Slow
+Freq: 3: Low
+Options Enabled
+Move Animation
+Trigger: Action Button
+
+List of Event Commands:
+@>Text: \sign[signskin]Top-Grade Items for Trainers!
+@>Text: \sign[signskin]2F: Trainer's Market
+@>
+
+#------------------------------------------------------------------------------
+Event ID: 017
+Event Name: Elevator door F1
+(X,Y): (006,001)
+
+Page #1
+Conditions
+None
+
+Graphic: doors9
+
+Autonomous Movement
+Type: Fixed
+Speed: 3: Slow
+Freq: 3: Low
+Options Enabled
+Move Animation
+Trigger: Player Touch
+
+List of Event Commands:
+@>Control Variables: [0010: Elevator current floor] = 1
+@>Set Move Route: This event
+                  (Ignore If Can't Move)
+ :              : $>SE: 'Automatic Door', 80, 100
+ :              : $>Wait: 2 frame(s)
+ :              : $>Turn Left
+ :              : $>Wait: 2 frame(s)
+ :              : $>Turn Right
+ :              : $>Wait: 2 frame(s)
+ :              : $>Turn Up
+ :              : $>Wait: 2 frame(s)
+@>Wait for Move's Completion
+@>Set Move Route: Player
+                  (Ignore If Can't Move)
+ :              : $>Through ON
+ :              : $>Move Up
+ :              : $>Through OFF
+@>Wait for Move's Completion
+@>Change Transparent Flag: Transparency
+@>Set Move Route: This event
+                  (Ignore If Can't Move)
+ :              : $>Wait: 2 frame(s)
+ :              : $>Turn Right
+ :              : $>Wait: 2 frame(s)
+ :              : $>Turn Left
+ :              : $>Wait: 2 frame(s)
+ :              : $>Turn Down
+ :              : $>Wait: 2 frame(s)
+@>Wait for Move's Completion
+@>Change Screen Color Tone: (-255,-255,-255,0), @6
+@>Wait: 8 frame(s)
+@>Change Transparent Flag: Normal
+@>Transfer Player:[278: Celadon Dept. Elevator], (002,005), Up, No Fade
+@>Change Screen Color Tone: (0,0,0,0), @6
+@>
+
+Page #2
+Conditions
+Switch 0022: s:tsOff?("A") is ON
+
+Graphic: doors9
+
+Autonomous Movement
+Type: Fixed
+Speed: 3: Slow
+Freq: 3: Low
+Options Enabled
+Move Animation
+Trigger: Autorun
+
+List of Event Commands:
+@>Conditional Branch: Script: get_character(0).onEvent?
+ @>Change Transparent Flag: Transparency
+ @>Set Move Route: This event
+                   (Ignore If Can't Move)
+  :              : $>SE: 'Entering Door', 100, 100
+  :              : $>Wait: 2 frame(s)
+  :              : $>Turn Left
+  :              : $>Wait: 2 frame(s)
+  :              : $>Turn Right
+  :              : $>Wait: 2 frame(s)
+  :              : $>Turn Up
+  :              : $>Wait: 2 frame(s)
+ @>Wait for Move's Completion
+ @>Change Transparent Flag: Normal
+ @>Set Move Route: Player
+                   (Ignore If Can't Move)
+  :              : $>Move Down
+ @>Wait for Move's Completion
+ @>Set Move Route: This event
+                   (Ignore If Can't Move)
+  :              : $>Turn Right
+  :              : $>Wait: 2 frame(s)
+  :              : $>Turn Left
+  :              : $>Wait: 2 frame(s)
+  :              : $>Turn Down
+  :              : $>Wait: 2 frame(s)
+ @>Wait for Move's Completion
+ @>
+: Branch End
+@>Script: setTempSwitchOn("A")
+@>
+
+#------------------------------------------------------------------------------
+Event ID: 018
+Event Name: Elevator door F2
+(X,Y): (029,001)
+
+Page #1
+Conditions
+None
+
+Graphic: doors9
+
+Autonomous Movement
+Type: Fixed
+Speed: 3: Slow
+Freq: 3: Low
+Options Enabled
+Move Animation
+Trigger: Player Touch
+
+List of Event Commands:
+@>Control Variables: [0010: Elevator current floor] = 2
+@>Set Move Route: This event
+                  (Ignore If Can't Move)
+ :              : $>SE: 'Automatic Door', 80, 100
+ :              : $>Wait: 2 frame(s)
+ :              : $>Turn Left
+ :              : $>Wait: 2 frame(s)
+ :              : $>Turn Right
+ :              : $>Wait: 2 frame(s)
+ :              : $>Turn Up
+ :              : $>Wait: 2 frame(s)
+@>Wait for Move's Completion
+@>Set Move Route: Player
+                  (Ignore If Can't Move)
+ :              : $>Through ON
+ :              : $>Move Up
+ :              : $>Through OFF
+@>Wait for Move's Completion
+@>Change Transparent Flag: Transparency
+@>Set Move Route: This event
+                  (Ignore If Can't Move)
+ :              : $>Wait: 2 frame(s)
+ :              : $>Turn Right
+ :              : $>Wait: 2 frame(s)
+ :              : $>Turn Left
+ :              : $>Wait: 2 frame(s)
+ :              : $>Turn Down
+ :              : $>Wait: 2 frame(s)
+@>Wait for Move's Completion
+@>Change Screen Color Tone: (-255,-255,-255,0), @6
+@>Wait: 8 frame(s)
+@>Change Transparent Flag: Normal
+@>Transfer Player:[278: Celadon Dept. Elevator], (002,005), Up, No Fade
+@>Change Screen Color Tone: (0,0,0,0), @6
+@>
+
+Page #2
+Conditions
+Switch 0022: s:tsOff?("A") is ON
+
+Graphic: doors9
+
+Autonomous Movement
+Type: Fixed
+Speed: 3: Slow
+Freq: 3: Low
+Options Enabled
+Move Animation
+Trigger: Autorun
+
+List of Event Commands:
+@>Conditional Branch: Script: get_character(0).onEvent?
+ @>Change Transparent Flag: Transparency
+ @>Set Move Route: This event
+                   (Ignore If Can't Move)
+  :              : $>SE: 'Entering Door', 100, 100
+  :              : $>Wait: 2 frame(s)
+  :              : $>Turn Left
+  :              : $>Wait: 2 frame(s)
+  :              : $>Turn Right
+  :              : $>Wait: 2 frame(s)
+  :              : $>Turn Up
+  :              : $>Wait: 2 frame(s)
+ @>Wait for Move's Completion
+ @>Change Transparent Flag: Normal
+ @>Set Move Route: Player
+                   (Ignore If Can't Move)
+  :              : $>Move Down
+ @>Wait for Move's Completion
+ @>Set Move Route: This event
+                   (Ignore If Can't Move)
+  :              : $>Turn Right
+  :              : $>Wait: 2 frame(s)
+  :              : $>Turn Left
+  :              : $>Wait: 2 frame(s)
+  :              : $>Turn Down
+  :              : $>Wait: 2 frame(s)
+ @>Wait for Move's Completion
+ @>
+: Branch End
+@>Script: setTempSwitchOn("A")
+@>
+
+#------------------------------------------------------------------------------
+Event ID: 019
+Event Name: Elevator door F3
+(X,Y): (051,001)
+
+Page #1
+Conditions
+None
+
+Graphic: doors9
+
+Autonomous Movement
+Type: Fixed
+Speed: 3: Slow
+Freq: 3: Low
+Options Enabled
+Move Animation
+Trigger: Player Touch
+
+List of Event Commands:
+@>Control Variables: [0010: Elevator current floor] = 3
+@>Set Move Route: This event
+                  (Ignore If Can't Move)
+ :              : $>SE: 'Automatic Door', 80, 100
+ :              : $>Wait: 2 frame(s)
+ :              : $>Turn Left
+ :              : $>Wait: 2 frame(s)
+ :              : $>Turn Right
+ :              : $>Wait: 2 frame(s)
+ :              : $>Turn Up
+ :              : $>Wait: 2 frame(s)
+@>Wait for Move's Completion
+@>Set Move Route: Player
+                  (Ignore If Can't Move)
+ :              : $>Through ON
+ :              : $>Move Up
+ :              : $>Through OFF
+@>Wait for Move's Completion
+@>Change Transparent Flag: Transparency
+@>Set Move Route: This event
+                  (Ignore If Can't Move)
+ :              : $>Wait: 2 frame(s)
+ :              : $>Turn Right
+ :              : $>Wait: 2 frame(s)
+ :              : $>Turn Left
+ :              : $>Wait: 2 frame(s)
+ :              : $>Turn Down
+ :              : $>Wait: 2 frame(s)
+@>Wait for Move's Completion
+@>Change Screen Color Tone: (-255,-255,-255,0), @6
+@>Wait: 8 frame(s)
+@>Change Transparent Flag: Normal
+@>Transfer Player:[278: Celadon Dept. Elevator], (002,005), Up, No Fade
+@>Change Screen Color Tone: (0,0,0,0), @6
+@>
+
+Page #2
+Conditions
+Switch 0022: s:tsOff?("A") is ON
+
+Graphic: doors9
+
+Autonomous Movement
+Type: Fixed
+Speed: 3: Slow
+Freq: 3: Low
+Options Enabled
+Move Animation
+Trigger: Autorun
+
+List of Event Commands:
+@>Conditional Branch: Script: get_character(0).onEvent?
+ @>Change Transparent Flag: Transparency
+ @>Set Move Route: This event
+                   (Ignore If Can't Move)
+  :              : $>SE: 'Entering Door', 100, 100
+  :              : $>Wait: 2 frame(s)
+  :              : $>Turn Left
+  :              : $>Wait: 2 frame(s)
+  :              : $>Turn Right
+  :              : $>Wait: 2 frame(s)
+  :              : $>Turn Up
+  :              : $>Wait: 2 frame(s)
+ @>Wait for Move's Completion
+ @>Change Transparent Flag: Normal
+ @>Set Move Route: Player
+                   (Ignore If Can't Move)
+  :              : $>Move Down
+ @>Wait for Move's Completion
+ @>Set Move Route: This event
+                   (Ignore If Can't Move)
+  :              : $>Turn Right
+  :              : $>Wait: 2 frame(s)
+  :              : $>Turn Left
+  :              : $>Wait: 2 frame(s)
+  :              : $>Turn Down
+  :              : $>Wait: 2 frame(s)
+ @>Wait for Move's Completion
+ @>
+: Branch End
+@>Script: setTempSwitchOn("A")
+@>
+
+#------------------------------------------------------------------------------
+Event ID: 020
+Event Name: Elevator door F4
+(X,Y): (073,001)
+
+Page #1
+Conditions
+None
+
+Graphic: doors9
+
+Autonomous Movement
+Type: Fixed
+Speed: 3: Slow
+Freq: 3: Low
+Options Enabled
+Move Animation
+Trigger: Player Touch
+
+List of Event Commands:
+@>Control Variables: [0010: Elevator current floor] = 4
+@>Set Move Route: This event
+                  (Ignore If Can't Move)
+ :              : $>SE: 'Automatic Door', 80, 100
+ :              : $>Wait: 2 frame(s)
+ :              : $>Turn Left
+ :              : $>Wait: 2 frame(s)
+ :              : $>Turn Right
+ :              : $>Wait: 2 frame(s)
+ :              : $>Turn Up
+ :              : $>Wait: 2 frame(s)
+@>Wait for Move's Completion
+@>Set Move Route: Player
+                  (Ignore If Can't Move)
+ :              : $>Through ON
+ :              : $>Move Up
+ :              : $>Through OFF
+@>Wait for Move's Completion
+@>Change Transparent Flag: Transparency
+@>Set Move Route: This event
+                  (Ignore If Can't Move)
+ :              : $>Wait: 2 frame(s)
+ :              : $>Turn Right
+ :              : $>Wait: 2 frame(s)
+ :              : $>Turn Left
+ :              : $>Wait: 2 frame(s)
+ :              : $>Turn Down
+ :              : $>Wait: 2 frame(s)
+@>Wait for Move's Completion
+@>Change Screen Color Tone: (-255,-255,-255,0), @6
+@>Wait: 8 frame(s)
+@>Change Transparent Flag: Normal
+@>Transfer Player:[278: Celadon Dept. Elevator], (002,005), Up, No Fade
+@>Change Screen Color Tone: (0,0,0,0), @6
+@>
+
+Page #2
+Conditions
+Switch 0022: s:tsOff?("A") is ON
+
+Graphic: doors9
+
+Autonomous Movement
+Type: Fixed
+Speed: 3: Slow
+Freq: 3: Low
+Options Enabled
+Move Animation
+Trigger: Autorun
+
+List of Event Commands:
+@>Conditional Branch: Script: get_character(0).onEvent?
+ @>Change Transparent Flag: Transparency
+ @>Set Move Route: This event
+                   (Ignore If Can't Move)
+  :              : $>SE: 'Entering Door', 100, 100
+  :              : $>Wait: 2 frame(s)
+  :              : $>Turn Left
+  :              : $>Wait: 2 frame(s)
+  :              : $>Turn Right
+  :              : $>Wait: 2 frame(s)
+  :              : $>Turn Up
+  :              : $>Wait: 2 frame(s)
+ @>Wait for Move's Completion
+ @>Change Transparent Flag: Normal
+ @>Set Move Route: Player
+                   (Ignore If Can't Move)
+  :              : $>Move Down
+ @>Wait for Move's Completion
+ @>Set Move Route: This event
+                   (Ignore If Can't Move)
+  :              : $>Turn Right
+  :              : $>Wait: 2 frame(s)
+  :              : $>Turn Left
+  :              : $>Wait: 2 frame(s)
+  :              : $>Turn Down
+  :              : $>Wait: 2 frame(s)
+ @>Wait for Move's Completion
+ @>
+: Branch End
+@>Script: setTempSwitchOn("A")
+@>
+
+#------------------------------------------------------------------------------
+Event ID: 021
+Event Name: Elevator door F5
+(X,Y): (095,001)
+
+Page #1
+Conditions
+None
+
+Graphic: doors9
+
+Autonomous Movement
+Type: Fixed
+Speed: 3: Slow
+Freq: 3: Low
+Options Enabled
+Move Animation
+Trigger: Player Touch
+
+List of Event Commands:
+@>Control Variables: [0010: Elevator current floor] = 5
+@>Set Move Route: This event
+                  (Ignore If Can't Move)
+ :              : $>SE: 'Automatic Door', 80, 100
+ :              : $>Wait: 2 frame(s)
+ :              : $>Turn Left
+ :              : $>Wait: 2 frame(s)
+ :              : $>Turn Right
+ :              : $>Wait: 2 frame(s)
+ :              : $>Turn Up
+ :              : $>Wait: 2 frame(s)
+@>Wait for Move's Completion
+@>Set Move Route: Player
+                  (Ignore If Can't Move)
+ :              : $>Through ON
+ :              : $>Move Up
+ :              : $>Through OFF
+@>Wait for Move's Completion
+@>Change Transparent Flag: Transparency
+@>Set Move Route: This event
+                  (Ignore If Can't Move)
+ :              : $>Wait: 2 frame(s)
+ :              : $>Turn Right
+ :              : $>Wait: 2 frame(s)
+ :              : $>Turn Left
+ :              : $>Wait: 2 frame(s)
+ :              : $>Turn Down
+ :              : $>Wait: 2 frame(s)
+@>Wait for Move's Completion
+@>Change Screen Color Tone: (-255,-255,-255,0), @6
+@>Wait: 8 frame(s)
+@>Change Transparent Flag: Normal
+@>Transfer Player:[278: Celadon Dept. Elevator], (002,005), Up, No Fade
+@>Change Screen Color Tone: (0,0,0,0), @6
+@>
+
+Page #2
+Conditions
+Switch 0022: s:tsOff?("A") is ON
+
+Graphic: doors9
+
+Autonomous Movement
+Type: Fixed
+Speed: 3: Slow
+Freq: 3: Low
+Options Enabled
+Move Animation
+Trigger: Autorun
+
+List of Event Commands:
+@>Conditional Branch: Script: get_character(0).onEvent?
+ @>Change Transparent Flag: Transparency
+ @>Set Move Route: This event
+                   (Ignore If Can't Move)
+  :              : $>SE: 'Entering Door', 100, 100
+  :              : $>Wait: 2 frame(s)
+  :              : $>Turn Left
+  :              : $>Wait: 2 frame(s)
+  :              : $>Turn Right
+  :              : $>Wait: 2 frame(s)
+  :              : $>Turn Up
+  :              : $>Wait: 2 frame(s)
+ @>Wait for Move's Completion
+ @>Change Transparent Flag: Normal
+ @>Set Move Route: Player
+                   (Ignore If Can't Move)
+  :              : $>Move Down
+ @>Wait for Move's Completion
+ @>Set Move Route: This event
+                   (Ignore If Can't Move)
+  :              : $>Turn Right
+  :              : $>Wait: 2 frame(s)
+  :              : $>Turn Left
+  :              : $>Wait: 2 frame(s)
+  :              : $>Turn Down
+  :              : $>Wait: 2 frame(s)
+ @>Wait for Move's Completion
+ @>
+: Branch End
+@>Script: setTempSwitchOn("A")
+@>
+
+#------------------------------------------------------------------------------
+Event ID: 022
+Event Name: EV022
+(X,Y): (012,006)
+
+Page #1
+Conditions
+None
+
+Graphic: trainer_SUPERNERD
+
+Autonomous Movement
+Type: Fixed
+Speed: 3: Slow
+Freq: 3: Low
+Options Enabled
+Move Animation
+Trigger: Action Button
+
+List of Event Commands:
+@>Text: Do you mind? I'm busy on the phone here. Wait your turn!
+@>
+
+#------------------------------------------------------------------------------
+Event ID: 023
+Event Name: EV023
+(X,Y): (121,008)
+
+Page #1
+Conditions
+None
+
+Autonomous Movement
+Type: Fixed
+Speed: 3: Slow
+Freq: 3: Low
+Options Enabled
+Move Animation
+Trigger: Action Button
+
+List of Event Commands:
+@>
+
+Page #2
+Conditions
+Switch 0126:  is ON
+
+Graphic: trchar015
+
+Autonomous Movement
+Type: Fixed
+Speed: 3: Slow
+Freq: 3: Low
+Options Enabled
+Move Animation
+Trigger: Action Button
+
+List of Event Commands:
+@>Text: I came here to return this boat I bought, but I realized 
+ :    : it was a promotional item and non-refundable.
+@>Text: I was returning it because a friend managed to buy 
+ :    : me a better one and I never had a chance to use this 
+ :    : one.
+@>Text: It'll become a drag if I keep it around, so why don't 
+ :    : you have it instead. A way to cross waters is 
+ :    : always a good thing!
+@>Script: Kernel.pbReceiveItem(PBItems::BOAT)
+@>Text: That boat's inflateable, so it should fit inside your 
+ :    : backpack for storage. Hope you enjoy crossing the 
+ :    : seas, kiddo!
+@>Control Self Switch: A =ON
+@>
+
+Page #3
+Conditions
+Self Switch A is ON
+
+Graphic: trchar015
+
+Autonomous Movement
+Type: Fixed
+Speed: 3: Slow
+Freq: 3: Low
+Options Enabled
+Move Animation
+Trigger: Action Button
+
+List of Event Commands:
+@>Text: Sometimes I wonder how you can fight certain things 
+ :    : on the ocean. Like a Diglett, for example. Where does 
+ :    : it go...?
+@>
+
+#------------------------------------------------------------------------------
+Event ID: 024
+Event Name: EV024
+(X,Y): (025,012)
+
+Page #1
+Conditions
+None
+
+Graphic: trainer_YOUNGSTER
+
+Autonomous Movement
+Type: Fixed
+Speed: 3: Slow
+Freq: 3: Low
+Options Enabled
+Move Animation
+Trigger: Action Button
+
+List of Event Commands:
+@>Text: So many items to pick from... I think I'll pick up some more Pokéballs 
+ :    : and a few potions.
+@>
+
+#------------------------------------------------------------------------------
+Event ID: 025
+Event Name: EV025
+(X,Y): (034,006)
+
+Page #1
+Conditions
+None
+
+Graphic: trainer_GENTLEMAN
+
+Autonomous Movement
+Type: Fixed
+Speed: 3: Slow
+Freq: 3: Low
+Options Enabled
+Move Animation
+Trigger: Action Button
+
+List of Event Commands:
+@>Text: They have some interesting Technical Machines here. 
+ :    : I wonder if they plan to stock any more?
+@>
+
+#------------------------------------------------------------------------------
+Event ID: 026
+Event Name: EV026
+(X,Y): (055,009)
+
+Page #1
+Conditions
+None
+
+Graphic: NPC 05
+
+Autonomous Movement
+Type: Fixed
+Speed: 3: Slow
+Freq: 3: Low
+Options Enabled
+Move Animation
+Trigger: Action Button
+
+List of Event Commands:
+@>Text: I'm sorry, you arrived just a bit too late.
+@>Text: We were holding a special promotion where you could get a free Inflatable Boat, but we're all out now.
+@>Text: We have no plans to stock them again in the future, 
+ :    : we apologise if you missed your chance at getting 
+ :    : one.
+@>
+
+#------------------------------------------------------------------------------
+Event ID: 027
+Event Name: EV027
+(X,Y): (045,004)
+
+Page #1
+Conditions
+None
+
+Autonomous Movement
+Type: Fixed
+Speed: 3: Slow
+Freq: 3: Low
+Options Enabled
+Move Animation
+Trigger: Action Button
+
+List of Event Commands:
+@>Text: It's a poster about a game called "Inferno Red and Malachite Green Version" The text below it says "Play as a rising trainer in the vast Kanto region. Collect the 8 
+ :    : badges and challenge the Pokemon League! Coming to a handheld soon!"
+@>
+
+#------------------------------------------------------------------------------
+Event ID: 028
+Event Name: EV028
+(X,Y): (047,004)
+
+Page #1
+Conditions
+None
+
+Autonomous Movement
+Type: Fixed
+Speed: 3: Slow
+Freq: 3: Low
+Options Enabled
+Move Animation
+Trigger: Action Button
+
+List of Event Commands:
+@>Text: It's a poster about a game called "Inferno Red and Malachite Green Version" The text below it says "Play as a rising trainer in the vast Kanto region. Collect the 8 
+ :    : badges and challenge the Pokemon League! Coming to a handheld soon!"
+@>
+
+#------------------------------------------------------------------------------
+Event ID: 029
+Event Name: EV029
+(X,Y): (057,005)
+
+Page #1
+Conditions
+None
+
+Autonomous Movement
+Type: Fixed
+Speed: 3: Slow
+Freq: 3: Low
+Options Enabled
+Move Animation
+Trigger: Action Button
+
+List of Event Commands:
+@>Text: A brand new TV. I wonder how much it costs...
+@>Text: ...
+@>Wait: 20 frame(s)
+@>Text: Nevermind.
+@>
+
+#------------------------------------------------------------------------------
+Event ID: 030
+Event Name: EV030
+(X,Y): (056,005)
+
+Page #1
+Conditions
+None
+
+Autonomous Movement
+Type: Fixed
+Speed: 3: Slow
+Freq: 3: Low
+Options Enabled
+Move Animation
+Trigger: Action Button
+
+List of Event Commands:
+@>Text: A brand new TV. I wonder how much it costs...
+@>Text: ...
+@>Wait: 20 frame(s)
+@>Text: Nevermind.
+@>
+
+#------------------------------------------------------------------------------
+Event ID: 031
+Event Name: Shop exit
+(X,Y): (002,015)
+
+Page #1
+Conditions
+None
+
+Autonomous Movement
+Type: Fixed
+Speed: 3: Slow
+Freq: 3: Low
+Options Enabled
+Move Animation
+Trigger: Player Touch
+
+List of Event Commands:
+@>Play SE: 'Door exit', 80, 100
+@>Change Screen Color Tone: (-255,-255,-255,0), @6
+@>Wait: 8 frame(s)
+@>Transfer Player:[040: Celadon City], (011,022), No Fade
+@>Change Screen Color Tone: (0,0,0,0), @6
+@>
+
+#------------------------------------------------------------------------------
+Event ID: 032
+Event Name: Shop exit
+(X,Y): (010,015)
+
+Page #1
+Conditions
+None
+
+Autonomous Movement
+Type: Fixed
+Speed: 3: Slow
+Freq: 3: Low
+Options Enabled
+Move Animation
+Trigger: Player Touch
+
+List of Event Commands:
+@>Play SE: 'Door exit', 80, 100
+@>Change Screen Color Tone: (-255,-255,-255,0), @6
+@>Wait: 8 frame(s)
+@>Transfer Player:[040: Celadon City], (015,022), No Fade
+@>Change Screen Color Tone: (0,0,0,0), @6
+@>
+
+#------------------------------------------------------------------------------
+Event ID: 033
+Event Name: Stairs up
+(X,Y): (033,002)
+
+Page #1
+Conditions
+None
+
+Autonomous Movement
+Type: Fixed
+Speed: 3: Slow
+Freq: 3: Low
+Options Enabled
+Move Animation
+Trigger: Player Touch
+
+List of Event Commands:
+@>Set Move Route: Player
+ :              : $>Through ON
+ :              : $>Always on Top ON
+ :              : $>Move Right
+ :              : $>Turn Right
+ :              : $>Move Upper Right
+ :              : $>Through OFF
+ :              : $>Always on Top OFF
+@>Wait for Move's Completion
+@>Play SE: 'Door exit', 80, 100
+@>Change Screen Color Tone: (-255,-255,-255,0), @6
+@>Wait: 8 frame(s)
+@>Transfer Player:[277: Department Store], (054,002), Left, No Fade
+@>Change Screen Color Tone: (0,0,0,0), @6
+@>
+
+#------------------------------------------------------------------------------
+Event ID: 034
+Event Name: Stairs up
+(X,Y): (003,002)
+
+Page #1
+Conditions
+None
+
+Autonomous Movement
+Type: Fixed
+Speed: 3: Slow
+Freq: 3: Low
+Options Enabled
+Move Animation
+Trigger: Player Touch
+
+List of Event Commands:
+@>Set Move Route: Player
+ :              : $>Through ON
+ :              : $>Always on Top ON
+ :              : $>Move Left
+ :              : $>Turn Left
+ :              : $>Move Upper Left
+ :              : $>Through OFF
+ :              : $>Always on Top OFF
+@>Wait for Move's Completion
+@>Play SE: 'Door exit', 80, 100
+@>Change Screen Color Tone: (-255,-255,-255,0), @6
+@>Wait: 8 frame(s)
+@>Transfer Player:[277: Department Store], (004,002), Right, No Fade
+@>Change Screen Color Tone: (0,0,0,0), @6
+@>
+
+#------------------------------------------------------------------------------
+Event ID: 035
+Event Name: Stairs down
+(X,Y): (055,002)
+
+Page #1
+Conditions
+None
+
+Autonomous Movement
+Type: Fixed
+Speed: 3: Slow
+Freq: 3: Low
+Options Enabled
+Move Animation
+Trigger: Player Touch
+
+List of Event Commands:
+@>Set Move Route: Player
+ :              : $>Through ON
+ :              : $>Always on Top ON
+ :              : $>Turn Right
+ :              : $>Move Right
+ :              : $>Through OFF
+ :              : $>Always on Top OFF
+@>Wait for Move's Completion
+@>Play SE: 'Door exit', 80, 100
+@>Change Screen Color Tone: (-255,-255,-255,0), @6
+@>Wait: 8 frame(s)
+@>Transfer Player:[277: Department Store], (032,002), Left, No Fade
+@>Change Screen Color Tone: (0,0,0,0), @6
+@>
+
+#------------------------------------------------------------------------------
+Event ID: 036
+Event Name: Stairs down
+(X,Y): (025,002)
+
+Page #1
+Conditions
+None
+
+Autonomous Movement
+Type: Fixed
+Speed: 3: Slow
+Freq: 3: Low
+Options Enabled
+Move Animation
+Trigger: Player Touch
+
+List of Event Commands:
+@>Set Move Route: Player
+ :              : $>Through ON
+ :              : $>Always on Top ON
+ :              : $>Turn Left
+ :              : $>Move Left
+ :              : $>Through OFF
+ :              : $>Always on Top OFF
+@>Wait for Move's Completion
+@>Play SE: 'Door exit', 80, 100
+@>Change Screen Color Tone: (-255,-255,-255,0), @6
+@>Wait: 8 frame(s)
+@>Transfer Player:[277: Department Store], (004,002), Right, No Fade
+@>Change Screen Color Tone: (0,0,0,0), @6
+@>
+
+#------------------------------------------------------------------------------
+Event ID: 037
+Event Name: Stairs up
+(X,Y): (047,002)
+
+Page #1
+Conditions
+None
+
+Autonomous Movement
+Type: Fixed
+Speed: 3: Slow
+Freq: 3: Low
+Options Enabled
+Move Animation
+Trigger: Player Touch
+
+List of Event Commands:
+@>Set Move Route: Player
+ :              : $>Through ON
+ :              : $>Always on Top ON
+ :              : $>Move Left
+ :              : $>Turn Left
+ :              : $>Move Upper Left
+ :              : $>Through OFF
+ :              : $>Always on Top OFF
+@>Wait for Move's Completion
+@>Play SE: 'Door exit', 80, 100
+@>Change Screen Color Tone: (-255,-255,-255,0), @6
+@>Wait: 8 frame(s)
+@>Transfer Player:[277: Department Store], (070,002), Right, No Fade
+@>Change Screen Color Tone: (0,0,0,0), @6
+@>
+
+#------------------------------------------------------------------------------
+Event ID: 038
+Event Name: Stairs up
+(X,Y): (091,002)
+
+Page #1
+Conditions
+None
+
+Autonomous Movement
+Type: Fixed
+Speed: 3: Slow
+Freq: 3: Low
+Options Enabled
+Move Animation
+Trigger: Player Touch
+
+List of Event Commands:
+@>Set Move Route: Player
+ :              : $>Through ON
+ :              : $>Always on Top ON
+ :              : $>Move Left
+ :              : $>Turn Left
+ :              : $>Move Upper Left
+ :              : $>Through OFF
+ :              : $>Always on Top OFF
+@>Wait for Move's Completion
+@>Play SE: 'Door exit', 80, 100
+@>Change Screen Color Tone: (-255,-255,-255,0), @6
+@>Wait: 8 frame(s)
+@>Transfer Player:[277: Department Store], (133,009), Left, No Fade
+@>Change Screen Color Tone: (0,0,0,0), @6
+@>
+
+#------------------------------------------------------------------------------
+Event ID: 039
+Event Name: Stairs down
+(X,Y): (069,002)
+
+Page #1
+Conditions
+None
+
+Autonomous Movement
+Type: Fixed
+Speed: 3: Slow
+Freq: 3: Low
+Options Enabled
+Move Animation
+Trigger: Player Touch
+
+List of Event Commands:
+@>Set Move Route: Player
+ :              : $>Through ON
+ :              : $>Always on Top ON
+ :              : $>Turn Left
+ :              : $>Move Left
+ :              : $>Through OFF
+ :              : $>Always on Top OFF
+@>Wait for Move's Completion
+@>Play SE: 'Door exit', 80, 100
+@>Change Screen Color Tone: (-255,-255,-255,0), @6
+@>Wait: 8 frame(s)
+@>Transfer Player:[277: Department Store], (054,002), Right, No Fade
+@>Change Screen Color Tone: (0,0,0,0), @6
+@>
+
+#------------------------------------------------------------------------------
+Event ID: 040
+Event Name: Stairs up
+(X,Y): (077,002)
+
+Page #1
+Conditions
+None
+
+Autonomous Movement
+Type: Fixed
+Speed: 3: Slow
+Freq: 3: Low
+Options Enabled
+Move Animation
+Trigger: Player Touch
+
+List of Event Commands:
+@>Set Move Route: Player
+ :              : $>Through ON
+ :              : $>Always on Top ON
+ :              : $>Move Right
+ :              : $>Turn Right
+ :              : $>Move Upper Right
+ :              : $>Through OFF
+ :              : $>Always on Top OFF
+@>Wait for Move's Completion
+@>Play SE: 'Door exit', 80, 100
+@>Change Screen Color Tone: (-255,-255,-255,0), @6
+@>Wait: 8 frame(s)
+@>Transfer Player:[277: Department Store], (098,002), Left, No Fade
+@>Change Screen Color Tone: (0,0,0,0), @6
+@>
+
+#------------------------------------------------------------------------------
+Event ID: 041
+Event Name: Stairs down
+(X,Y): (099,002)
+
+Page #1
+Conditions
+None
+
+Autonomous Movement
+Type: Fixed
+Speed: 3: Slow
+Freq: 3: Low
+Options Enabled
+Move Animation
+Trigger: Player Touch
+
+List of Event Commands:
+@>Set Move Route: Player
+ :              : $>Through ON
+ :              : $>Always on Top ON
+ :              : $>Turn Right
+ :              : $>Move Right
+ :              : $>Through OFF
+ :              : $>Always on Top OFF
+@>Wait for Move's Completion
+@>Play SE: 'Door exit', 80, 100
+@>Change Screen Color Tone: (-255,-255,-255,0), @6
+@>Wait: 8 frame(s)
+@>Transfer Player:[277: Department Store], (076,002), Left, No Fade
+@>Change Screen Color Tone: (0,0,0,0), @6
+@>
+
+#------------------------------------------------------------------------------
+Event ID: 042
+Event Name: Exit
+(X,Y): (134,008)
+
+Page #1
+Conditions
+None
+
+Autonomous Movement
+Type: Fixed
+Speed: 3: Slow
+Freq: 3: Low
+Options Enabled
+Move Animation
+Trigger: Player Touch
+
+List of Event Commands:
+@>Play SE: 'Door exit', 80, 100
+@>Change Screen Color Tone: (-255,-255,-255,0), @6
+@>Wait: 8 frame(s)
+@>Transfer Player:[277: Department Store], (092,002), Right, No Fade
+@>Change Screen Color Tone: (0,0,0,0), @6
+@>
+
+#------------------------------------------------------------------------------
+Event ID: 043
+Event Name: Exit
+(X,Y): (134,009)
+
+Page #1
+Conditions
+None
+
+Autonomous Movement
+Type: Fixed
+Speed: 3: Slow
+Freq: 3: Low
+Options Enabled
+Move Animation
+Trigger: Player Touch
+
+List of Event Commands:
+@>Play SE: 'Exit Door', 80, 100
+@>Change Screen Color Tone: (-255,-255,-255,0), @6
+@>Wait: 8 frame(s)
+@>Transfer Player:[010: Cutscene: Cave of Origin], (092,002), Right, No Fade
+@>Change Screen Color Tone: (0,0,0,0), @6
+@>
+
+#------------------------------------------------------------------------------
+
+#==============================================================================
+Map ID: 278
+Map Name: Celadon Dept. Elevator
+Tileset: 010: Department Store
+Width: 20, Height: 15
+Auto-Change BGM: 027. PokeCenter
+
+#------------------------------------------------------------------------------
+Event ID: 001
+Event Name: Exit
+(X,Y): (002,006)
+
+Page #1
+Conditions
+None
+
+Autonomous Movement
+Type: Fixed
+Speed: 3: Slow
+Freq: 3: Low
+Options Enabled
+Move Animation
+Trigger: Player Touch
+
+List of Event Commands:
+@>Play SE: 'Door exit', 80, 100
+@>Change Screen Color Tone: (-255,-255,-255,0), @6
+@>Wait: 8 frame(s)
+@>Conditional Branch: Variable [0010: Elevator current floor] == 5
+ @>Transfer Player:[277: Department Store], (095,001), No Fade
+ @>
+: Else
+ @>Conditional Branch: Variable [0010: Elevator current floor] == 4
+  @>Transfer Player:[277: Department Store], (073,001), No Fade
+  @>
+ : Else
+  @>Conditional Branch: Variable [0010: Elevator current floor] == 3
+   @>Transfer Player:[277: Department Store], (051,001), No Fade
+   @>
+  : Else
+   @>Conditional Branch: Variable [0010: Elevator current floor] == 2
+    @>Transfer Player:[277: Department Store], (029,001), No Fade
+    @>
+   : Else
+    @>Transfer Player:[277: Department Store], (006,001), No Fade
+    @>
+   : Branch End
+   @>
+  : Branch End
+  @>
+ : Branch End
+ @>
+: Branch End
+@>Change Screen Color Tone: (0,0,0,0), @6
+@>
+
+#------------------------------------------------------------------------------
+Event ID: 002
+Event Name: Controls
+(X,Y): (000,002)
+
+Page #1
+Conditions
+None
+
+Autonomous Movement
+Type: Fixed
+Speed: 3: Slow
+Freq: 3: Low
+Options Enabled
+Move Animation
+Trigger: Action Button
+
+List of Event Commands:
+@>Script: cur=5-pbGet(10)
+:       : $game_variables[11]=Kernel.pbMessage(
+:       :     _I("Which floor do you want?"),
+:       :     [_I("5F"),_I("4F"),_I("3F"),
+:       :     _I("2F"),_I("1F"),_I("Exit")],
+:       :     6,nil,cur)
+@>Script: t=pbGet(11)
+:       : pbSet(11,5-t)
+@>Conditional Branch: Variable [0011: Elevator new floor] == 0
+ @>Comment: Choice was cancelled.
+ @>
+: Else
+ @>Label: Start
+ @>Conditional Branch: Variable [0011: Elevator new floor] > Variable [0010: Elevator current floor]
+  @>Comment: Go up.
+  @>Screen Shake: 4, 9, @12
+  @>Set Move Route: [Wall left]
+   :              : $>Turn Left
+   :              : $>Wait: 2 frame(s)
+   :              : $>Turn Right
+   :              : $>Wait: 2 frame(s)
+   :              : $>Turn Down
+   :              : $>Wait: 2 frame(s)
+   :              : $>Turn Left
+   :              : $>Wait: 2 frame(s)
+   :              : $>Turn Right
+   :              : $>Wait: 2 frame(s)
+   :              : $>Turn Down
+   :              : $>Wait: 2 frame(s)
+  @>Set Move Route: [Wall middle]
+   :              : $>Turn Left
+   :              : $>Wait: 2 frame(s)
+   :              : $>Turn Right
+   :              : $>Wait: 2 frame(s)
+   :              : $>Turn Down
+   :              : $>Wait: 2 frame(s)
+   :              : $>Turn Left
+   :              : $>Wait: 2 frame(s)
+   :              : $>Turn Right
+   :              : $>Wait: 2 frame(s)
+   :              : $>Turn Down
+   :              : $>Wait: 2 frame(s)
+  @>Set Move Route: [Wall right]
+   :              : $>Turn Left
+   :              : $>Wait: 2 frame(s)
+   :              : $>Turn Right
+   :              : $>Wait: 2 frame(s)
+   :              : $>Turn Down
+   :              : $>Wait: 2 frame(s)
+   :              : $>Turn Left
+   :              : $>Wait: 2 frame(s)
+   :              : $>Turn Right
+   :              : $>Wait: 2 frame(s)
+   :              : $>Turn Down
+   :              : $>Wait: 2 frame(s)
+  @>Wait for Move's Completion
+  @>Control Variables: [0010: Elevator current floor] += 1
+  @>Jump to Label: Start
+  @>
+ : Branch End
+ @>Conditional Branch: Variable [0011: Elevator new floor] < Variable [0010: Elevator current floor]
+  @>Comment: Go down.
+  @>Screen Shake: 4, 9, @12
+  @>Set Move Route: [Wall left]
+   :              : $>Turn Right
+   :              : $>Wait: 2 frame(s)
+   :              : $>Turn Left
+   :              : $>Wait: 2 frame(s)
+   :              : $>Turn Down
+   :              : $>Wait: 2 frame(s)
+   :              : $>Turn Right
+   :              : $>Wait: 2 frame(s)
+   :              : $>Turn Left
+   :              : $>Wait: 2 frame(s)
+   :              : $>Turn Down
+   :              : $>Wait: 2 frame(s)
+  @>Set Move Route: [Wall middle]
+   :              : $>Turn Right
+   :              : $>Wait: 2 frame(s)
+   :              : $>Turn Left
+   :              : $>Wait: 2 frame(s)
+   :              : $>Turn Down
+   :              : $>Wait: 2 frame(s)
+   :              : $>Turn Right
+   :              : $>Wait: 2 frame(s)
+   :              : $>Turn Left
+   :              : $>Wait: 2 frame(s)
+   :              : $>Turn Down
+   :              : $>Wait: 2 frame(s)
+  @>Set Move Route: [Wall right]
+   :              : $>Turn Right
+   :              : $>Wait: 2 frame(s)
+   :              : $>Turn Left
+   :              : $>Wait: 2 frame(s)
+   :              : $>Turn Down
+   :              : $>Wait: 2 frame(s)
+   :              : $>Turn Right
+   :              : $>Wait: 2 frame(s)
+   :              : $>Turn Left
+   :              : $>Wait: 2 frame(s)
+   :              : $>Turn Down
+   :              : $>Wait: 2 frame(s)
+  @>Wait for Move's Completion
+  @>Control Variables: [0010: Elevator current floor] -= 1
+  @>Jump to Label: Start
+  @>
+ : Branch End
+ @>
+: Branch End
+@>
+
+#------------------------------------------------------------------------------
+Event ID: 003
+Event Name: Wall left
+(X,Y): (001,002)
+
+Page #1
+Conditions
+None
+
+Graphic: elevatorwall
+
+Autonomous Movement
+Type: Fixed
+Speed: 3: Slow
+Freq: 3: Low
+Options Enabled
+Move Animation
+Trigger: Action Button
+
+List of Event Commands:
+@>
+
+#------------------------------------------------------------------------------
+Event ID: 004
+Event Name: Wall middle
+(X,Y): (002,002)
+
+Page #1
+Conditions
+None
+
+Graphic: elevatorwall
+
+Autonomous Movement
+Type: Fixed
+Speed: 3: Slow
+Freq: 3: Low
+Options Enabled
+Move Animation
+Trigger: Action Button
+
+List of Event Commands:
+@>
+
+#------------------------------------------------------------------------------
+Event ID: 005
+Event Name: Wall right
+(X,Y): (003,002)
+
+Page #1
+Conditions
+None
+
+Graphic: elevatorwall
+
+Autonomous Movement
+Type: Fixed
+Speed: 3: Slow
+Freq: 3: Low
+Options Enabled
+Move Animation
+Trigger: Action Button
+
+List of Event Commands:
 @>
 
 #------------------------------------------------------------------------------

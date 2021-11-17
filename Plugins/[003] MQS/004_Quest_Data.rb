@@ -339,4 +339,14 @@ module QuestModule
     :RewardString => "nil"
   }
   
+  Quest108 = {
+    :ID => "108",
+    :Name => "Darkness Within Darkness",
+    :QuestGiver => "Side Quest",
+    :Stage1 => "Investigate the Celadon Game Corner.",
+    :Location1 => "Celadon City",
+    :QuestDescription => "A rumor seems to be going around about mysterious noises coming from the Game Corner at night. However, nobody can find the source. Clearly it's time to put on my detective hat and investigate!",
+    :RewardString => "nil"
+  }
+  
 end

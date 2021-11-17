@@ -351,7 +351,7 @@ class ItemBerryPots_Scene
             pbFadeOutIn {
               scene = PokemonBag_Scene.new
               screen = PokemonBagScreen.new(scene,$PokemonBag)
-              berry = screen.pbChooseItemScreen(Proc.new { |item| GameData::Item.get(item).is_berry?(item) })
+              berry = screen.pbChooseItemScreen(Proc.new { |item| GameData::Item.get(item).is_berry? })
             }
             if berry
               timenow=pbGetTimeNow
