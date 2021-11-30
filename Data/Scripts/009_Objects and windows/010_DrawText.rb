@@ -596,10 +596,10 @@ def getFormattedText(bitmap,xDst,yDst,widthDst,heightDst,text,lineheight=32,
         elsif control=="ac" # Center align
           if !endtag
             alignstack.push(2)
-            nextline=1 if x>0 && nextline==0
+            #nextline=1 if x>0 && nextline==0
           else
             alignstack.pop;
-            nextline=1 if x>0 && nextline==0
+            #nextline=1 if x>0 && nextline==0
           end
         elsif control=="icon" # Icon
           if !endtag
