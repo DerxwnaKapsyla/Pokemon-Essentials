@@ -6,6 +6,8 @@
 # Changes in this section include the following:
 #	* Adds a check for Freeze that will thaw the user if they use a Touhoumon-
 #	  typed Fire move.
+#	* Added a check for whether an item is suppoosed to become inert after
+#	  its used (T2 Gemstones/Damage Resist Berries)
 #==============================================================================#
 class PokeBattle_Battler
   def pbEffectsAfterMove(user,targets,move,numHits)
@@ -58,7 +60,12 @@ class PokeBattle_Battler
     if user.effects[PBEffects::GemConsumed]
       # NOTE: The consume animation and message for Gems are shown immediately
       #       after the move's animation, but the item is only consumed now.
-      user.pbConsumeItem
+	  if $PokemonTemp.inertItem = true
+	    user.pbConsumeAndInertItem
+		$PokemonTemp.inertItem = false
+	  else
+		user.pbConsumeItem
+      end
     end
     # Pokémon switching caused by Roar, Whirlwind, Circle Throw, Dragon Tail
     switchedBattlers = []

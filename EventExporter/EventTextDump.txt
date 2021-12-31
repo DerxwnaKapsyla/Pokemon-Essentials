@@ -17512,12 +17512,33 @@ List of Event Commands:
 
 #------------------------------------------------------------------------------
 Event ID: 004
-Event Name: HiddenItem:LUCKYEGG
+Event Name: HiddenItem
 (X,Y): (028,027)
 
 Page #1
 Conditions
 None
+
+Autonomous Movement
+Type: Fixed
+Speed: 3: Slow
+Freq: 3: Low
+Options Enabled
+Move Animation
+Trigger: Action Button
+
+List of Event Commands:
+@>Conditional Branch: Script: pbItemBall(:LUCKYEGG)
+ @>Control Self Switch: A =ON
+ @>
+: Else
+ @>
+: Branch End
+@>
+
+Page #2
+Conditions
+Self Switch A is ON
 
 Autonomous Movement
 Type: Fixed
@@ -17766,12 +17787,35 @@ List of Event Commands:
 
 #------------------------------------------------------------------------------
 Event ID: 015
-Event Name: Item:MAXREPEL
+Event Name: Item
 (X,Y): (004,010)
 
 Page #1
 Conditions
 None
+
+Graphic: Object ball
+
+Autonomous Movement
+Type: Fixed
+Speed: 3: Slow
+Freq: 3: Low
+Options Enabled
+Move Animation
+Trigger: Action Button
+
+List of Event Commands:
+@>Conditional Branch: Script: pbItemBall(:MAXREPEL)
+ @>Control Self Switch: A =ON
+ @>
+: Else
+ @>
+: Branch End
+@>
+
+Page #2
+Conditions
+Self Switch A is ON
 
 Autonomous Movement
 Type: Fixed
@@ -17786,12 +17830,35 @@ List of Event Commands:
 
 #------------------------------------------------------------------------------
 Event ID: 016
-Event Name: Item:POKEDOLL
+Event Name: Item
 (X,Y): (055,034)
 
 Page #1
 Conditions
 None
+
+Graphic: Object ball
+
+Autonomous Movement
+Type: Fixed
+Speed: 3: Slow
+Freq: 3: Low
+Options Enabled
+Move Animation
+Trigger: Action Button
+
+List of Event Commands:
+@>Conditional Branch: Script: pbItemBall(:POKEDOLL)
+ @>Control Self Switch: A =ON
+ @>
+: Else
+ @>
+: Branch End
+@>
+
+Page #2
+Conditions
+Self Switch A is ON
 
 Autonomous Movement
 Type: Fixed
@@ -17806,7 +17873,7 @@ List of Event Commands:
 
 #------------------------------------------------------------------------------
 Event ID: 017
-Event Name: HiddenItem:POWERSHARD
+Event Name: HiddenItem
 (X,Y): (054,014)
 
 Page #1
@@ -17822,16 +17889,58 @@ Move Animation
 Trigger: Action Button
 
 List of Event Commands:
+@>Conditional Branch: Script: pbItemBall(:POWERSHARD)
+ @>Control Self Switch: A =ON
+ @>
+: Else
+ @>
+: Branch End
+@>
+
+Page #2
+Conditions
+Self Switch A is ON
+
+Autonomous Movement
+Type: Fixed
+Speed: 3: Slow
+Freq: 3: Low
+Options Enabled
+Move Animation
+Trigger: Action Button
+
+List of Event Commands:
 @>
 
 #------------------------------------------------------------------------------
 Event ID: 018
-Event Name: HiddenItem:MIRACLESEED
+Event Name: HiddenItem
 (X,Y): (042,044)
 
 Page #1
 Conditions
 None
+
+Autonomous Movement
+Type: Fixed
+Speed: 3: Slow
+Freq: 3: Low
+Options Enabled
+Move Animation
+Trigger: Action Button
+
+List of Event Commands:
+@>Conditional Branch: Script: pbItemBall(:MIRACLESEED)
+ @>Control Self Switch: A =ON
+ @>
+: Else
+ @>
+: Branch End
+@>
+
+Page #2
+Conditions
+Self Switch A is ON
 
 Autonomous Movement
 Type: Fixed
@@ -17945,6 +18054,53 @@ List of Event Commands:
  @>
 : Branch End
 @>Script: setTempSwitchOn("A")
+@>
+
+#------------------------------------------------------------------------------
+Event ID: 020
+Event Name: EV020
+(X,Y): (026,005)
+
+Page #1
+Conditions
+Switch 0015: s:PBDayNight.isNight? is ON
+
+Autonomous Movement
+Type: Fixed
+Speed: 3: Slow
+Freq: 3: Low
+Options Enabled
+Move Animation
+Trigger: Parallel Process
+
+List of Event Commands:
+@>Conditional Branch: Script: $game_player.x.between?(30, 48) && $game_player.y.between?(21, 36)
+ @>Play SE: 'Automatic Door', 100, 100
+ @>Show Animation: Player, [Question bubble]
+ @>Wait: 10 frame(s)
+ @>Play SE: 'Mining collapse', 40, 50
+ @>Show Animation: Player, [Exclaim bubble]
+ @>Wait: 10 frame(s)
+ @>Text: \xn[\pn]\b(That noise sounded suspicious just now! It must have
+  :    : come from somewhere near by, but I wonder where.)
+ @>Control Self Switch: A =ON
+ @>
+: Branch End
+@>
+
+Page #2
+Conditions
+Self Switch A is ON
+
+Autonomous Movement
+Type: Fixed
+Speed: 3: Slow
+Freq: 3: Low
+Options Enabled
+Move Animation
+Trigger: Action Button
+
+List of Event Commands:
 @>
 
 #------------------------------------------------------------------------------
@@ -85543,7 +85699,7 @@ List of Event Commands:
 
 #==============================================================================
 Map ID: 269
-Map Name: Special Maps
+Map Name: Sandbox Zone
 Tileset: 001: Outside
 Width: 20, Height: 15
 
@@ -86147,9 +86303,1383 @@ Width: 60, Height: 15
 
 #==============================================================================
 Map ID: 274
-Map Name: Wisteria Island
-Tileset: 001: Outside
-Width: 20, Height: 15
+Map Name: Sandbox Zone - F1
+Tileset: 004: Poke Center
+Width: 31, Height: 31
+Auto-Change BGM: W-013. Mining Tunnels
+
+#------------------------------------------------------------------------------
+Event ID: 001
+Event Name: Medicine & Vitamins
+(X,Y): (011,028)
+
+Page #1
+Conditions
+None
+
+Graphic: NPC 19
+
+Autonomous Movement
+Type: Fixed
+Speed: 3: Slow
+Freq: 3: Low
+Options Enabled
+Move Animation
+Trigger: Action Button
+
+List of Event Commands:
+@>Text: We have a plethora of medicine and vitamins to
+ :    : help keep your partners nice and healthy!\ch[1,-1,HP Restoration,PP Restoration, 
+ :    : Status-Healing Items,Vitamins and Wings,Revival Items,In-Battle Boosters,None]
+@>Conditional Branch: Variable [0001: Temp Pokemon Choice] == -1
+ @>
+: Branch End
+@>Conditional Branch: Variable [0001: Temp Pokemon Choice] == 0
+ @>Comment: --- HP Restoration
+ @>Script: pbPokemonMart([
+ :       : :POTION,:SUPERPOTION,
+ :       : :HYPERPOTION,:MAXPOTION,
+ :       : :FULLRESTORE
+ :       : ])
+ @>
+: Branch End
+@>Conditional Branch: Variable [0001: Temp Pokemon Choice] == 1
+ @>Comment: --- PP Restoration
+ @>Script: pbPokemonMart([
+ :       : :ETHER,:ELIXIR,
+ :       : :MAXETHER,:MAXELIXIR
+ :       : ])
+ @>
+: Branch End
+@>Conditional Branch: Variable [0001: Temp Pokemon Choice] == 2
+ @>Comment: --- Status-Healing Items
+ @>Script: pbPokemonMart([
+ :       : :ANTIDOTE,:PARALYZEHEAL,
+ :       : :AWAKENING,:BURNHEAL,
+ :       : :ICEHEAL,:FULLHEAL
+ :       : ])
+ @>
+: Branch End
+@>Conditional Branch: Variable [0001: Temp Pokemon Choice] == 3
+ @>Comment: --- Vitamins and Wings
+ @>Script: pbPokemonMart([
+ :       : :ABILITYCAPSULE,:HPUP,
+ :       : :PROTEIN,:IRON,:CALCIUM,:ZINC,:CARBOS,
+ :       : :PPUP,:PPMAX,
+ :       : :HEALTHWING,:MUSCLEWING,:RESISTWING,:GENIUSWING,:CLEVERWING,:SWIFTWING
+ :       : ])
+ @>
+: Branch End
+@>Conditional Branch: Variable [0001: Temp Pokemon Choice] == 4
+ @>Comment: --- Revival Items
+ @>Script: pbPokemonMart([
+ :       : :REVIVE,:MAXREVIVE,
+ :       : :LIQUIDREVIVE,:SACREDASH
+ :       : ])
+ @>
+: Branch End
+@>Conditional Branch: Variable [0001: Temp Pokemon Choice] == 5
+ @>Comment: --- In-Battle Boosters
+ @>Script: pbPokemonMart([
+ :       : :XATTACK,:XDEFENSE,
+ :       : :XSPECIAL,:XSPDEF,
+ :       : :XSPEED,:XACCURACY,
+ :       : :DIREHIT,:GUARDSPEC
+ :       : ])
+ @>
+: Branch End
+@>
+
+#------------------------------------------------------------------------------
+Event ID: 002
+Event Name: Consumables
+(X,Y): (015,028)
+
+Page #1
+Conditions
+None
+
+Graphic: NPC 09
+
+Autonomous Movement
+Type: Fixed
+Speed: 3: Slow
+Freq: 3: Low
+Options Enabled
+Move Animation
+Trigger: Action Button
+
+List of Event Commands:
+@>Text: Everyone loves consumables, even your partners! And that's
+ :    : why we sell all sorts of consumables here!\ch[1,-1,Candy,
+ :    : Drinks,Regional Specialties,Medicinal Herbs,None]
+@>Conditional Branch: Variable [0001: Temp Pokemon Choice] == -1
+ @>
+: Branch End
+@>Conditional Branch: Variable [0001: Temp Pokemon Choice] == 0
+ @>Comment: --- Candy
+ @>Script: pbPokemonMart([
+ :       : :SWEETHEART,:RARECANDY,:PRISMCANDY
+ :       : ])
+ @>
+: Branch End
+@>Conditional Branch: Variable [0001: Temp Pokemon Choice] == 1
+ @>Comment: --- Drinks
+ @>Script: pbPokemonMart([
+ :       : :BERRYJUICE,:FRESHWATER,
+ :       : :SODAPOP,:LEMONADE,
+ :       : :MOOMOOMILK
+ :       : ])
+ @>
+: Branch End
+@>Conditional Branch: Variable [0001: Temp Pokemon Choice] == 2
+ @>Comment: --- Regional Specialties
+ @>Script: pbPokemonMart([
+ :       : :PEWTERCRUNCH,:RAGECANDYBAR,
+ :       : :LAVACOOKIE,:OLDGATEAU,
+ :       : :GRILLEDLAMPREY
+ :       : ])
+ @>
+: Branch End
+@>Conditional Branch: Variable [0001: Temp Pokemon Choice] == 3
+ @>Comment: --- Medicinal Herbs
+ @>Script: pbPokemonMart([
+ :       : :ENERGYPOWDER,:ENERGYROOT,
+ :       : :HEALPOWDER,:REVIVALHERB
+ :       : ])
+ @>
+: Branch End
+@>
+
+#------------------------------------------------------------------------------
+Event ID: 003
+Event Name: Berries
+(X,Y): (019,028)
+
+Page #1
+Conditions
+None
+
+Graphic: trainer_POKEMONBREEDER
+
+Autonomous Movement
+Type: Fixed
+Speed: 3: Slow
+Freq: 3: Low
+Options Enabled
+Move Animation
+Trigger: Action Button
+
+List of Event Commands:
+@>Text: We sell all kinds of berries here, fresh off the crop!
+ :    : Which would you like to see?
+@>Show Choices: Healing/Status Berries, Friendship Berries, Element Berries, None
+(When Cancel: Choice 4)
+: When [Healing/Status Berries]
+ @>Script: pbPokemonMart([
+ :       : :CHERIBERRY,:CHESTOBERRY,:PECHABERRY,:RAWSTBERRY,:ASPEARBERRY,
+ :       : :LEPPABERRY,:ORANBERRY,:PERSIMBERRY,:LUMBERRY,:SITRUSBERRY,
+ :       : :FIGYBERRY,:WIKIBERRY,:MAGOBERRY,:AGUAVBERRY,:IAPAPABERRY,
+ :       : :LIECHIBERRY,:GANLONBERRY,:SALACBERRY,:PETAYABERRY,:APICOTBERRY,
+ :       : :LANSATBERRY,:STARFBERRY,:ENIGMABERRY,:MICLEBERRY,:CUSTAPBERRY,
+ :       : :JABOCABERRY,:ROWAPBERRY,:KEEBERRY,:MARANGABERRY,
+ :       : ])
+ @>
+: When [Friendship Berries]
+ @>Script: pbPokemonMart([
+ :       : :POMEGBERRY,:KELPSYBERRY,:QUALOTBERRY,:HONDEWBERRY,:GREPABERRY,
+ :       : :TAMATOBERRY,
+ :       : ])
+ @>
+: When [Element Berries]
+ @>Script: pbPokemonMart([
+ :       : :OCCABERRY,:PASSHOBERRY,:WACANBERRY,:RINDOBERRY,:YACHEBERRY,
+ :       : :CHOPLEBERRY,:KEBIABERRY,:SHUCABERRY,:COBABERRY,:PAYAPABERRY,
+ :       : :TANGABERRY,:CHARTIBERRY,:KASIBBERRY,:HABANBERRY,:COLBURBERRY,
+ :       : :BABIRIBERRY,:CHILANBERRY
+ :       : ])
+ @>
+: When [None]
+ @>
+: Branch End
+@>
+
+#------------------------------------------------------------------------------
+Event ID: 004
+Event Name: Pokeballs
+(X,Y): (013,028)
+
+Page #1
+Conditions
+None
+
+Graphic: NPC 17
+
+Autonomous Movement
+Type: Fixed
+Speed: 3: Slow
+Freq: 3: Low
+Options Enabled
+Move Animation
+Trigger: Action Button
+
+List of Event Commands:
+@>Text: We sell every kind of Pokeball here! Is there a specific kind you're 
+ :    : looking for?\ch[1,-1,Regular Balls,Special Balls,Unique Balls,None]
+@>Conditional Branch: Variable [0001: Temp Pokemon Choice] == -1
+ @>
+: Branch End
+@>Conditional Branch: Variable [0001: Temp Pokemon Choice] == 0
+ @>Comment: --- Regular Balls
+ @>Script: pbPokemonMart([
+ :       : :POKEBALL,:GREATBALL,:ULTRABALL,:MASTERBALL,
+ :       : :PUPPETORB,:GREATORB,:ULTRAORB,:MASTERORB
+ :       : ])
+ @>
+: Branch End
+@>Conditional Branch: Variable [0001: Temp Pokemon Choice] == 1
+ @>Comment: --- Special Balls
+ @>Script: pbPokemonMart([
+ :       : :NETBALL,:DIVEBALL,:NESTBALL,:REPEATBALL,:TIMERBALL,
+ :       : :LUXURYBALL,:DUSKBALL,:QUICKBALL,:FASTBALL,:LEVELBALL,
+ :       : :LUREBALL,:HEAVYBALL,:LOVEBALL,:FRIENDBALL,:MOONBALL
+ :       : ])
+ @>
+: Branch End
+@>Conditional Branch: Variable [0001: Temp Pokemon Choice] == 2
+ @>Comment: --- Unique Balls
+ @>Script: pbPokemonMart([
+ :       : :SAFARIBALL,:SPORTBALL,:PREMIERBALL,
+ :       : :CHERISHBALL,:CHERISHORB
+ :       : ])
+ @>
+: Branch End
+@>
+
+Page #2
+Conditions
+Switch 0019: s:pbIsWeekday(-1,2,4,6) is ON
+Switch 0018: s:PBDayNight.isEvening? is ON
+
+Graphic: NPC 17
+
+Autonomous Movement
+Type: Fixed
+Speed: 3: Slow
+Freq: 3: Low
+Options Enabled
+Move Animation
+Trigger: Action Button
+
+List of Event Commands:
+@>Text: We sell every kind of Pokeball here! Is there a specific kind you're 
+ :    : looking for?\ch[1,-1,Regular Balls,Special Balls,Unique Balls,???,None]
+@>Conditional Branch: Variable [0001: Temp Pokemon Choice] == -1
+ @>
+: Branch End
+@>Conditional Branch: Variable [0001: Temp Pokemon Choice] == 0
+ @>Comment: --- Regular Balls
+ @>Script: pbPokemonMart([
+ :       : :POKEBALL,:GREATBALL,:ULTRABALL,:MASTERBALL,
+ :       : :PUPPETORB,:GREATORB,:ULTRAORB,:MASTERORB
+ :       : ])
+ @>
+: Branch End
+@>Conditional Branch: Variable [0001: Temp Pokemon Choice] == 1
+ @>Comment: --- Special Balls
+ @>Script: pbPokemonMart([
+ :       : :NETBALL,:DIVEBALL,:NESTBALL,:REPEATBALL,:TIMERBALL,
+ :       : :LUXURYBALL,:DUSKBALL,:QUICKBALL,:FASTBALL,:LEVELBALL,
+ :       : :LUREBALL,:HEAVYBALL,:LOVEBALL,:FRIENDBALL,:MOONBALL
+ :       : ])
+ @>
+: Branch End
+@>Conditional Branch: Variable [0001: Temp Pokemon Choice] == 2
+ @>Comment: --- Unique Balls
+ @>Script: pbPokemonMart([
+ :       : :SAFARIBALL,:SPORTBALL,:PREMIERBALL,
+ :       : :CHERISHBALL,:CHERISHORB
+ :       : ])
+ @>
+: Branch End
+@>Conditional Branch: Variable [0001: Temp Pokemon Choice] == 3
+ @>Comment: --- Unique Balls
+ @>Script: pbPokemonMart([
+ :       : :PUPPETORB2,:GREATORB2,INVERSEORB
+ :       : ])
+ @>
+: Branch End
+@>
+
+#------------------------------------------------------------------------------
+Event ID: 005
+Event Name: Generic Items
+(X,Y): (017,028)
+
+Page #1
+Conditions
+None
+
+Graphic: trainer_HIKER
+
+Autonomous Movement
+Type: Fixed
+Speed: 3: Slow
+Freq: 3: Low
+Options Enabled
+Move Animation
+Trigger: Action Button
+
+List of Event Commands:
+@>Text: We sell a great deal of items essential to every
+ :    : type of trainer!\ch[1,-1,Exploring Items,Underground Spheres,
+ :    : Flutes,Misc. Items,None]
+@>Conditional Branch: Variable [0001: Temp Pokemon Choice] == -1
+ @>
+: Branch End
+@>Conditional Branch: Variable [0001: Temp Pokemon Choice] == 0
+ @>Comment: --- Exploring Items
+ @>Script: pbPokemonMart([
+ :       : :REPEL,:SUPERREPEL,
+ :       : :MAXREPEL,:BLACKFLUTE,
+ :       : :WHITEFLUTE,:HONEY,
+ :       : :ESCAPEROPE
+ :       : ])
+ @>
+: Branch End
+@>Conditional Branch: Variable [0001: Temp Pokemon Choice] == 1
+ @>Comment: --- Underground Spheres
+ @>Script: pbPokemonMart([
+ :       : :GREENSPHERE1,:REDSPHERE1,:BLUESPHERE1,:PRISMSPHERE1,:PALESPHERE1,
+ :       : :GREENSPHERE2,:REDSPHERE2,:BLUESPHERE2,:PRISMSPHERE2,:PALESPHERE2
+ :       : ])
+ @>
+: Branch End
+@>Conditional Branch: Variable [0001: Temp Pokemon Choice] == 2
+ @>Comment: --- Flutes
+ @>Script: pbPokemonMart([
+ :       : :BLUEFLUTE,
+ :       : :YELLOWFLUTE,
+ :       : :REDFLUTE
+ :       : ])
+ @>
+: Branch End
+@>Conditional Branch: Variable [0001: Temp Pokemon Choice] == 3
+ @>Comment: --- Misc. Items
+ @>Script: pbPokemonMart([
+ :       : :EVERSTONE,
+ :       : :LUCKYEGG,:EXPSHARE,
+ :       : :AMULETCOIN,:SOOTHEBELL,
+ :       : :CLEANSETAG,:POKEDOLL,
+ :       : :FLUFFYTAIL,:POKETOY,
+ :       : :ABILITYCAPSULE,:DONATIONBOX
+ :       : ])
+ @>
+: Branch End
+@>
+
+#------------------------------------------------------------------------------
+Event ID: 006
+Event Name: Hold Items 1
+(X,Y): (007,014)
+
+Page #1
+Conditions
+None
+
+Graphic: trainer_COOLTRAINER_M
+
+Autonomous Movement
+Type: Fixed
+Speed: 3: Slow
+Freq: 3: Low
+Options Enabled
+Move Animation
+Trigger: Action Button
+
+List of Event Commands:
+@>Text: Welcome to the Hold Item Corner, where we sell all the
+ :    : hold items you could ever want!\ch[1,-1,Duration Boosters,
+ :    : Species-Specific Items,Misc. Type Items,Incense,None]
+@>Conditional Branch: Variable [0001: Temp Pokemon Choice] == -1
+ @>
+: Branch End
+@>Conditional Branch: Variable [0001: Temp Pokemon Choice] == 0
+ @>Comment: --- Duration Boosters
+ @>Script: pbPokemonMart([
+ :       : :HEATROCK,:DAMPROCK,
+ :       : :SMOOTHROCK,:ICYROCK,
+ :       : :LIGHTCLAY,:GRIPCLAW
+ :       : ])
+ @>
+: Branch End
+@>Conditional Branch: Variable [0001: Temp Pokemon Choice] == 1
+ @>Comment: --- Species-Specific Items
+ @>Script: pbPokemonMart([
+ :       : :LIGHTBALL,:LUCKYPUNCH,
+ :       : :METALPOWDER,:QUICKPOWDER,
+ :       : :THICKCLUB,:STICK,
+ :       : :SOULDEW,:ADAMANTORB,
+ :       : :LUSTROUSORB,:GRISEOUSORB,
+ :       : :YATAMIRROR,:KUSANAGI,
+ :       : :ICEBALL,:NYUUDOUFIST,
+ :       : :CURSEDRIBBON
+ :       : ])
+ @>
+: Branch End
+@>Conditional Branch: Variable [0001: Temp Pokemon Choice] == 2
+ @>Comment: --- Misc.Type Items
+ @>Script: pbPokemonMart([
+ :       : :ABSORBBULB,:CELLBATTERY
+ :       : ])
+ @>
+: Branch End
+@>Conditional Branch: Variable [0001: Temp Pokemon Choice] == 3
+ @>Comment: --- Incense
+ @>Script: pbPokemonMart([
+ :       : :LAXINCENSE,:FULLINCENSE,
+ :       : :LUCKINCENSE,:PUREINCENSE,
+ :       : :SEAINCENSE,:WAVEINCENSE,
+ :       : :ROSEINCENSE,:ODDINCENSE,
+ :       : :ROCKINCENSE,
+ :       : ])
+ @>
+: Branch End
+@>
+
+#------------------------------------------------------------------------------
+Event ID: 007
+Event Name: Hold Items 2
+(X,Y): (007,016)
+
+Page #1
+Conditions
+None
+
+Graphic: trainer_RUINMANIAC
+
+Autonomous Movement
+Type: Fixed
+Speed: 3: Slow
+Freq: 3: Low
+Options Enabled
+Move Animation
+Trigger: Action Button
+
+List of Event Commands:
+@>Text: Welcome to the Hold Item Corner, where we sell all the
+ :    : hold items you could ever want!\ch[1,-1,Pokémon Type Boosters,Pokémon Element Plates,Pokémon Gems,Pokémon Ribbons,
+ :    : Puppet Type Costumes,Puppet Element Spheres,Puppet Gems,Puppet Hairpins,None]
+@>Conditional Branch: Variable [0001: Temp Pokemon Choice] == -1
+ @>
+: Branch End
+@>Conditional Branch: Variable [0001: Temp Pokemon Choice] == 0
+ @>Comment: --- Pokémon Type Boosters
+ @>Script: pbPokemonMart([
+ :       : :CHARCOAL,:MYSTICWATER,
+ :       : :MAGNET,:MIRACLESEED,
+ :       : :NEVERMELTICE,:BLACKBELT,
+ :       : :POISONBARB,:SOFTSAND,
+ :       : :SHARPBEAK,:TWISTEDSPOON,
+ :       : :SILVERPOWDER,:HARDSTONE,
+ :       : :SPELLTAG,:DRAGONFANG,
+ :       : :BLACKGLASSES,:METALCOAT,
+ :       : :SILKSCARF
+ :       : ])
+ @>
+: Branch End
+@>Conditional Branch: Variable [0001: Temp Pokemon Choice] == 1
+ @>Comment: --- Pokémon Element Plates
+ @>Script: pbPokemonMart([
+ :       : :FLAMEPLATE,:SPLASHPLATE,
+ :       : :ZAPPLATE,:MEADOWPLATE,
+ :       : :ICICLEPLATE,:FISTPLATE,
+ :       : :TOXICPLATE,:EARTHPLATE,
+ :       : :SKYPLATE,:MINDPLATE,
+ :       : :INSECTPLATE,:STONEPLATE,
+ :       : :SPOOKYPLATE,:DRACOPLATE,
+ :       : :DREADPLATE,:IRONPLATE,
+ :       : ])
+ @>
+: Branch End
+@>Conditional Branch: Variable [0001: Temp Pokemon Choice] == 2
+ @>Comment: --- Pokémon Gems
+ @>Script: pbPokemonMart([
+ :       : :FIREGEM,:WATERGEM,
+ :       : :ELECTRICGEM,:GRASSGEM,
+ :       : :ICEGEM,:FIGHTINGGEM,
+ :       : :POISONGEM,:GROUNDGEM,
+ :       : :FLYINGGEM,:PSYCHICGEM,
+ :       : :BUGGEM,:ROCKGEM,
+ :       : :GHOSTGEM,:DRAGONGEM,
+ :       : :DARKGEM,:STEELGEM,
+ :       : :NORMALGEM
+ :       : ])
+ @>
+: Branch End
+@>Conditional Branch: Variable [0001: Temp Pokemon Choice] == 3
+ @>Comment: --- Pokémon Ribbons
+ @>Script: pbPokemonMart([
+ :       : :FIRERIBBON,:WATERRIBBON,
+ :       : :ELECTRICRIBBON,:GRASSRIBBON,
+ :       : :ICERIBBON,:FIGHTINGRIBBON,
+ :       : :POISONRIBBON,:GROUNDRIBBON,
+ :       : :FLYINGRIBBON,:PSYCHICRIBBON,
+ :       : :BUGRIBBON,:ROCKRIBBON,
+ :       : :GHOSTRIBBON,:DRAGONRIBBON,
+ :       : :DARKRIBBON,:STEELRIBBON,
+ :       : :NORMALRIBBON
+ :       : ])
+ @>
+: Branch End
+@>Conditional Branch: Variable [0001: Temp Pokemon Choice] == 4
+ @>Comment: --- Puppet Type Costumes
+ @>Script: pbPokemonMart([
+ :       : :MAIDCOSTUME,:SWEATER,
+ :       : :BUNNYSUIT,:CAMOUFLAGE,
+ :       : :BLAZER,:MISTRESS,
+ :       : :NINJA,:NURSE,
+ :       : :SWIMSUIT,:STEWARDESS,
+ :       : :THICKFUR,:KIMONO,
+ :       : :WITCH,:GOTHIC,
+ :       : :BRIDALGOWN,:PRIESTESS,
+ :       : :CHINADRESS
+ :       : ])
+ @>
+: Branch End
+@>Conditional Branch: Variable [0001: Temp Pokemon Choice] == 5
+ @>Comment: --- Puppet Element Plates
+ @>Script: pbPokemonMart([
+ :       : :DAMASCUSSPHERE,:TERRASPHERE,
+ :       : :FERALSPHERE,:GROWTHSPHERE,
+ :       : :TRUSTSPHERE,:SINSPHERE,
+ :       : :GUSTSPHERE,:CORROSIONSPHERE,
+ :       : :FLOODSPHERE,:FLIGHTSPHERE,
+ :       : :FROSTSPHERE,:SOULSPHERE,
+ :       : :KNOWLEDGESPHERE,:BLAZESPHERE,
+ :       : :VIRTUESPHERE,:PHANTASMSPHERE
+ :       : ])
+ @>
+: Branch End
+@>Conditional Branch: Variable [0001: Temp Pokemon Choice] == 6
+ @>Comment: --- Puppet Gems
+ @>Script: pbPokemonMart([
+ :       : :HEMATITE,:QUARTZ,:ONYX,:MALACHITE,
+ :       : :GOLD,:OBSIDIAN,:JADE,:AMETHYST,
+ :       : :AQUAMARINE,:DIAMOND,:LAPISLAZULI,:SUGILITE,
+ :       : :OPAL,:GARNET,:MORGANITE,:TOPAZ,
+ :       : :MOONSTONEGEM
+ :       : ])
+ @>
+: Branch End
+@>Conditional Branch: Variable [0001: Temp Pokemon Choice] == 7
+ @>Comment: --- Puppet Ribbons
+ @>Script: pbPokemonMart([
+ :       : :HEMATITEHAIRPIN,:QUARTZHAIRPIN,:ONYXHAIRPIN,:MALACHITEHAIRPIN,
+ :       : :GOLDHAIRPIN,:OBSIDIANHAIRPIN,:JADEHAIRPIN,:AMETHYSTHAIRPIN,
+ :       : :AQUAMARINEHAIRPIN,:DIAMONDHAIRPIN,:LAPISHAIRPIN,:SUGILITEHAIRPIN,
+ :       : :OPALHAIRPIN,:GARNETHAIRPIN,:MORGANITEHAIRPIN,:TOPAZHAIRPIN,
+ :       : :MOONSTONEHAIRPIN
+ :       : ])
+ @>
+: Branch End
+@>
+
+#------------------------------------------------------------------------------
+Event ID: 008
+Event Name: Hold Items 3
+(X,Y): (007,018)
+
+Page #1
+Conditions
+None
+
+Graphic: trainer_HEXMANIAC
+
+Autonomous Movement
+Type: Fixed
+Speed: 3: Slow
+Freq: 3: Low
+Options Enabled
+Move Animation
+Trigger: Action Button
+
+List of Event Commands:
+@>Text: Welcome to the Hold Item Corner, where we sell all the
+ :    : hold items you could ever want!\ch[1,-1,Pokémon Type Pendants,Puppet Type Charms,
+ :    : Focus and Choice Items,Herbs,Passive Items,Active Items,None]
+@>Conditional Branch: Variable [0001: Temp Pokemon Choice] == -1
+ @>
+: Branch End
+@>Conditional Branch: Variable [0001: Temp Pokemon Choice] == 0
+ @>Comment: --- Pokemon Type Pendants
+ @>Script: pbPokemonMart([
+ :       : :OCCAPENDANT,:PASSHOPENDANT,:WACANPENDANT,
+ :       : :RINDOPENDANT,:YACHEPENDANT,:CHOPLEPENDANT,
+ :       : :KEBIAPENDANT,:SHUCAPENDANT,:COBAPENDANT,
+ :       : :PAYAPAPENDANT,:TANGAPENDANT,:CHARTIPENDANT,
+ :       : :KASIBPENDANT,:HABANPENDANT,:COLBURPENDANT,
+ :       : :BABIRIPENDANT,:CHILANPENDANT
+ :       : ])
+ @>
+: Branch End
+@>Conditional Branch: Variable [0001: Temp Pokemon Choice] == 1
+ @>Comment: --- Puppet Type Charms
+ @>Script: pbPokemonMart([
+ :       : :ANTIMETAL,:ANTIEARTH,:ANTIBEAST,
+ :       : :ANTINATURE,:ANTIHEART,:ANTIUMBRAL,
+ :       : :ANTIWIND,:ANTIMIASMA,:ANTIHYDRO,
+ :       : :ANTIAERO,:ANTICRYO,:ANTINETHER,
+ :       : :ANTIREASON,:ANTIPYRO,:ANTIILLUSION,
+ :       : :ANTIFAITH,:ANTIDREAM
+ :       : ])
+ @>
+: Branch End
+@>Conditional Branch: Variable [0001: Temp Pokemon Choice] == 2
+ @>Comment: --- Focus and Choice Items
+ @>Script: pbPokemonMart([
+ :       : :FOCUSBAND,:FOCUSSASH,:CHOICEBAND,:CHOICESPECS,:CHOICESCARF,
+ :       : :BLOOMERS,:FOCUSRIBBON,:POWERRIBBON,:POWERGOGGLES,:POWERCAPE
+ :       : ])
+ @>
+: Branch End
+@>Conditional Branch: Variable [0001: Temp Pokemon Choice] == 3
+ @>Comment: --- Herbs
+ @>Script: pbPokemonMart([
+ :       : :MENTALHERB,
+ :       : :WHITEHERB,
+ :       : :POWERHERB
+ :       : ])
+ @>
+: Branch End
+@>Conditional Branch: Variable [0001: Temp Pokemon Choice] == 4
+ @>Comment: --- Passive Items
+ @>Script: pbPokemonMart([
+ :       : :AIRBALLOON,:BRIGHTPOWDER,:EVIOLITE,
+ :       : :FLOATSTONE,:SHEDSHELL,:SMOKEBALL,
+ :       : :BINDINGBAND,:BIGROOT,:BLACKSLUDGE,
+ :       : :LEFTOVERS,:LIFEORB,:EXPERTBELT,
+ :       : :MUSCLEBAND,:WISEGLASSES,:RAZORCLAW,
+ :       : :SCOPELENS,:WIDELENS,:LAGGINGTAIL,
+ :       : :QUICKCLAW,:FLAMEORB,:TOXICORB,
+ :       : :IRONBALL,:RINGTARGET
+ :       : ])
+ @>
+: Branch End
+@>Conditional Branch: Variable [0001: Temp Pokemon Choice] == 5
+ @>Comment: --- Active Items
+ @>Script: pbPokemonMart([
+ :       : :DESTINYKNOT,:ROCKYHELMET,
+ :       : :EJECTBUTTON,:REDCARD,
+ :       : :SHELLBELL,:METRONOME,
+ :       : :ZOOMLENS,:KINGSROCK,
+ :       : :RAZORFANG,:STICKYBARB
+ :       : ])
+ @>
+: Branch End
+@>
+
+#------------------------------------------------------------------------------
+Event ID: 009
+Event Name: Evolution Items
+(X,Y): (028,014)
+
+Page #1
+Conditions
+None
+
+Graphic: trainer_COOLTRAINER_F
+
+Autonomous Movement
+Type: Fixed
+Speed: 3: Slow
+Freq: 3: Low
+Options Enabled
+Move Animation
+Trigger: Action Button
+
+List of Event Commands:
+@>Text: We sell evolution items here! Would you like stones
+ :    : or hold items?
+@>Show Choices: Stones, Hold Items, None
+(When Cancel: Choice 3)
+: When [Stones]
+ @>Script: pbPokemonMart([
+ :       : :FIRESTONE,:WATERSTONE,:THUNDERSTONE,
+ :       : :LEAFSTONE,:MOONSTONE,:SUNSTONE,
+ :       : :SHINYSTONE,:DUSKSTONE,:DAWNSTONE,
+ :       : :ICESTONE,:LINKSTONE,:POWERSHARD,
+ :       : :DEFENSESHARD,:SWIFTSHARD,:SUPPORTSHARD,
+ :       : :TECHSHARD,:SOLARSHARD,:CHROMESHARD
+ :       : ])
+ @>
+: When [Hold Items]
+ @>Script: pbPokemonMart([
+ :       : :DEEPSEASCALE,:DEEPSEATOOTH,:DRAGONSCALE,
+ :       : :DUBIOUSDISC,:ELECTIRIZER,:KINGSROCK,
+ :       : :MAGMARIZER,:METALCOAT,:PRISMSCALE,
+ :       : :PROTECTOR,:REAPERCLOTH,:UPGRADE,
+ :       : :WHIPPEDDREAM,:OVALSTONE,:RAZORCLAW,
+ :       : :RAZORFANG,
+ :       : ])
+ @>
+: When [None]
+ @>
+: Branch End
+@>
+
+#------------------------------------------------------------------------------
+Event ID: 010
+Event Name: TM Merchant
+(X,Y): (028,016)
+
+Page #1
+Conditions
+None
+
+Graphic: Scientist Alt (Aveontrainer)
+
+Autonomous Movement
+Type: Fixed
+Speed: 3: Slow
+Freq: 3: Low
+Options Enabled
+Move Animation
+Trigger: Action Button
+
+List of Event Commands:
+@>Text: We sell Technical Machines and Skill Cards here! Which would you like to see?\ch[1,-1,TM01-50,TM51-100,
+ :    : SC01-50,HMs and HCs,None]
+@>Conditional Branch: Variable [0001: Temp Pokemon Choice] == -1
+ @>
+: Branch End
+@>Conditional Branch: Variable [0001: Temp Pokemon Choice] == 0
+ @>Comment: --- TM01-50
+ @>Script: pbPokemonMart([
+ :       : :TM01,:TM02,:TM03,:TM04,:TM05,:TM06,:TM07,:TM08,
+ :       : :TM09,:TM10,:TM11,:TM12,:TM13,:TM14,:TM15,:TM16,
+ :       : :TM17,:TM18,:TM19,:TM20,:TM21,:TM22,:TM23,:TM24,
+ :       : :TM25,:TM26,:TM27,:TM28,:TM29,:TM30,:TM31,:TM32,
+ :       : :TM33,:TM34,:TM35,:TM36,:TM37,:TM38,:TM39,:TM40,
+ :       : :TM41,:TM42,:TM43,:TM44,:TM45,:TM46,:TM47,:TM48,
+ :       : :TM49,:TM50,
+ :       : ])
+ @>
+: Branch End
+@>Conditional Branch: Variable [0001: Temp Pokemon Choice] == 1
+ @>Comment: --- TM51-95
+ @>Script: pbPokemonMart([
+ :       : :TM51,:TM52,:TM53,:TM54,:TM55,:TM56,:TM57,:TM58,
+ :       : :TM59,:TM60,:TM61,:TM62,:TM63,:TM64,:TM65,:TM66,
+ :       : :TM67,:TM68,:TM69,:TM70,:TM71,:TM72,:TM73,:TM74,
+ :       : :TM75,:TM76,:TM77,:TM78,:TM79,:TM80,:TM81,:TM82,
+ :       : :TM83,:TM84,:TM85,:TM86,:TM87,:TM88,:TM89,:TM90,
+ :       : :TM91,:TM92,:TM93,:TM94,:TM95
+ :       : ])
+ @>
+: Branch End
+@>Conditional Branch: Variable [0001: Temp Pokemon Choice] == 2
+ @>Comment: --- SC01-50
+ @>Script: pbPokemonMart([
+ :       : :SC01,:SC02,:SC03,:SC04,:SC05,:SC06,:SC07,:SC08,
+ :       : :SC09,:SC10,:SC11,:SC12,:SC13,:SC14,:SC15,:SC16,
+ :       : :SC17,:SC18,:SC19,:SC20,:SC21,:SC22,:SC23,:SC24,
+ :       : :SC25,:SC26,:SC27,:SC28,:SC29,:SC30,:SC31,:SC32,
+ :       : :SC33,:SC34,:SC35,:SC36,:SC37,:SC38,:SC39,:SC40,
+ :       : :SC41,:SC42,:SC43,:SC44,:SC45,:SC46,:SC47,:SC48,
+ :       : :SC49,:SC50,
+ :       : ])
+ @>
+: Branch End
+@>Conditional Branch: Variable [0001: Temp Pokemon Choice] == 3
+ @>Comment: --- HMs and HCs
+ @>Script: pbPokemonMart([
+ :       : :HM01,:HM02,:HM03,:HM04,:HM05,:HM06,:HM07,
+ :       : :HC01,:HC02,:HC03,:HC04,:HC05,:HC06,:HC07,:HC08,:HC09
+ :       : ])
+ @>
+: Branch End
+@>
+
+#------------------------------------------------------------------------------
+Event ID: 011
+Event Name: EV Boosting Hold Items
+(X,Y): (002,016)
+
+Page #1
+Conditions
+None
+
+Graphic: trainer_COLLECTOR
+
+Autonomous Movement
+Type: Fixed
+Speed: 3: Slow
+Freq: 3: Low
+Options Enabled
+Move Animation
+Trigger: Action Button
+
+List of Event Commands:
+@>Script: pbPokemonMart([
+:       : :MACHOBRACE,
+:       : :POWERWEIGHT,:POWERBRACER,
+:       : :POWERBELT,:POWERANKLET,
+:       : :POWERLENS,:POWERBAND,
+:       : ])
+@>
+
+#------------------------------------------------------------------------------
+Event ID: 012
+Event Name: Key Items
+(X,Y): (028,018)
+
+Page #1
+Conditions
+None
+
+Graphic: trainer_WORKER
+
+Autonomous Movement
+Type: Fixed
+Speed: 3: Slow
+Freq: 3: Low
+Options Enabled
+Move Animation
+Trigger: Action Button
+
+List of Event Commands:
+@>Text: Hello there! I primarily sell tools of my trade, stuff people like
+ :    : me might need in the field- Exploration Items!
+@>Script: pbPokemonMart([
+:       : :EXPSHARE,:OLDROD,:GOODROD,:SUPERROD,
+:       : :ITEMFINDER,:BICYCLE,:POKEFLUTE,:AXE,
+:       : :LANTERN,:PICKAXE,:BOAT,:HOOK,:TELEPORTER,
+:       : :GAUNTLETS
+:       : ])
+@>
+
+#------------------------------------------------------------------------------
+Event ID: 013
+Event Name: Pokemon Generator
+(X,Y): (015,006)
+
+Page #1
+Conditions
+None
+
+Graphic: trainer_POKEMANIAC
+
+Autonomous Movement
+Type: Fixed
+Speed: 3: Slow
+Freq: 3: Low
+Options Enabled
+Move Animation
+Trigger: Action Button
+
+List of Event Commands:
+@>Text: I have amassed a collection of every single Pokémon and Puppet
+ :    : known to the world!
+@>Text: Would you like to make use of my services?\ch[1,-1,Specific Species,Fill Box,Every single one?]
+@>Conditional Branch: Variable [0001: Temp Pokemon Choice] == -1
+ @>
+: Branch End
+@>Conditional Branch: Variable [0001: Temp Pokemon Choice] == 0
+ @>Comment: --- Specific Species Generation
+ @>Text: Would you like me to give you a specific species?
+ @>Show Choices: Yes, No
+ (When Cancel: Choice 2)
+ : When [Yes]
+  @>Text: Before we do, would you like them to be shiny or not?
+  @>Show Choices: Yes, No
+  (When Cancel: Choice 2)
+  : When [Yes]
+   @>Control Switches: [0031: Shiny wild Pokémon] = ON
+   @>Text: You're lucky I have shinies of everything, too!
+   @>Script: gap(10,948,false)
+   @>Control Switches: [0031: Shiny wild Pokémon] = OFF
+   @>
+  : When [No]
+   @>Text: No shiny, alright!
+   @>Script: gap(10,948,false)
+   @>
+  : Branch End
+  @>
+ : When [No]
+  @>
+ : Branch End
+ @>
+: Branch End
+@>Conditional Branch: Variable [0001: Temp Pokemon Choice] == 1
+ @>Comment: --- Fill Box
+ @>Text: I can transfer one of every species to your box, they'll all be Level 10.
+ @>Text: If I do this, you might experience some brief slowdown. Is this
+  :    : what you want?
+ @>Show Choices: Yes, No
+ (When Cancel: Choice 2)
+ : When [Yes]
+  @>Text: This will overwrite everything that is in the PC already.
+   :    : If you wish to keep anything in your boxes already,
+   :    : please move them to beyond box 35.
+  @>Text: Is this acceptable?
+  @>Show Choices: Yes, No
+  (When Cancel: Choice 2)
+  : When [Yes]
+   @>Text: Transfer in progress! Please stand by.\^
+   @>Script: pbFillBox
+   @>Text: Storage boxes have been filled with one of every species!
+   @>
+  : When [No]
+   @>
+  : Branch End
+  @>
+ : When [No]
+  @>
+ : Branch End
+ @>
+: Branch End
+@>Conditional Branch: Variable [0001: Temp Pokemon Choice] == 2
+ @>Text: Well... Almost every. I'm banned from entering a few regions,
+  :    : so until I can find a way to set up a network in those regions,
+  :    : you'll have to make do with the first 493 Pokémon.
+ @>
+: Branch End
+@>
+
+#------------------------------------------------------------------------------
+Event ID: 014
+Event Name: PC
+(X,Y): (013,012)
+
+Page #1
+Conditions
+None
+
+Autonomous Movement
+Type: Fixed
+Speed: 3: Slow
+Freq: 3: Low
+Options Enabled
+Move Animation
+Trigger: Action Button
+
+List of Event Commands:
+@>Conditional Branch: Player is facing Up
+ @>Text: Now accessing the Sandbox Computer System,
+  :    : Ver. 1.23b - Meteorfall Edition.
+ @>Text: Which partition would you like to access?
+ @>Show Choices: Sandbox Partition, Pokemon Center Partition
+ (When Cancel: Choice 2)
+ : When [Sandbox Partition]
+  @>Text: \se[PC open]\PN booted up Pandora's Partition.
+  @>Call Common Event: Passcode System
+  @>
+ : When [Pokemon Center Partition]
+  @>Script: pbPokeCenterPC
+  @>
+ : Branch End
+ @>Text: Shutting down the Sandbox Computer System.
+ @>
+: Else
+ @>
+: Branch End
+@>
+
+#------------------------------------------------------------------------------
+Event ID: 015
+Event Name: Day Care Man
+(X,Y): (017,013)
+
+Page #1
+Conditions
+None
+
+Graphic: NPC 18
+
+Autonomous Movement
+Type: Fixed
+Speed: 3: Slow
+Freq: 3: Low
+Options Enabled
+Move Animation
+Trigger: Action Button
+
+List of Event Commands:
+@>Conditional Branch: Script: Kernel.pbEggGenerated?
+ @>Text: Ah, it's you!
+ @>Text: We were raising your Pokémon, and my goodness, 
+  :    : were we surprised!
+ @>Text: Your Pokémon was holding an Egg!
+ @>Text: We don't know how it got there, but your Pokémon 
+  :    : had it.
+ @>Text: You do want it, don't you?
+ @>Show Choices: Yes, No
+ (When Cancel: Choice 2)
+ : When [Yes]
+  @>Label: ReceiveEgg
+  @>Conditional Branch: Script: $Trainer.party.length>=6
+   @>Text: You have no room for it right now...  Come back 
+    :    : when you've made room.
+   @>Exit Event Processing
+   @>
+  : Branch End
+  @>Text: \PN received the Egg from the Day-Care Man.
+  @>Text: You take good care of it.
+  @>Script: pbDayCareGenerateEgg
+  @>Script: $PokemonGlobal.daycareEgg=0
+  :       : $PokemonGlobal.daycareEggSteps=0
+  @>
+ : When [No]
+  @>Text: I really will keep it.  You do want this Egg, yes?
+  @>Show Choices: Yes, No
+  (When Cancel: Choice 2)
+  : When [Yes]
+   @>Jump to Label: ReceiveEgg
+   @>
+  : When [No]
+   @>Text: Well all right then, I'll take it.  Thank you.
+   @>Text: That is, I don't think we'll ever find another...
+   @>Text: No, no, I'm sure we'll find another one.  I'm definitely 
+    :    : sure of it!
+   @>Script: $PokemonGlobal.daycareEgg=0
+   :       : $PokemonGlobal.daycareEggSteps=0
+   @>Exit Event Processing
+   @>
+  : Branch End
+  @>
+ : Branch End
+ @>
+: Else
+ @>Conditional Branch: Script: Kernel.pbDayCareDeposited==0
+  @>Text: I'm the Day-Care Man.
+  @>Text: I help take care of the precious Pokémon of 
+   :    : trainers.
+  @>Text: Any Pokémon you'd like to have raised you can 
+   :    : leave in my wife's care.
+  @>
+ : Branch End
+ @>Conditional Branch: Script: Kernel.pbDayCareDeposited==1
+  @>Script: pbDayCareGetDeposited(-1,3,-1)
+  @>Text: Ah, it's you!\nGood to see you!
+  @>Text: Your \v[3] is doing just fine.
+  @>
+ : Branch End
+ @>Conditional Branch: Script: Kernel.pbDayCareDeposited==2
+  @>Script: pbDayCareGetDeposited(0,3,-1)
+  :       : pbDayCareGetDeposited(1,4,-1)
+  :       : pbDayCareGetCompatibility(5)
+  @>Text: Ah, it's you!\nGood to see you!
+  @>Text: Your \v[3] and \v[4] are doing just fine.
+  @>Conditional Branch: Variable [0005: Temp Text Entry] == 0
+   @>Text: The two play with other Pokémon rather than with 
+    :    : each other...
+   @>
+  : Branch End
+  @>Conditional Branch: Variable [0005: Temp Text Entry] == 1
+   @>Text: The two don't seem to like each other much.
+   @>
+  : Branch End
+  @>Conditional Branch: Variable [0005: Temp Text Entry] == 2
+   @>Text: The two seem to get along.
+   @>
+  : Branch End
+  @>Conditional Branch: Variable [0005: Temp Text Entry] == 3
+   @>Text: The two seem to get along very well.
+   @>
+  : Branch End
+  @>
+ : Branch End
+ @>
+: Branch End
+@>
+
+#------------------------------------------------------------------------------
+Event ID: 016
+Event Name: Money NPC
+(X,Y): (022,023)
+
+Page #1
+Conditions
+None
+
+Autonomous Movement
+Type: Fixed
+Speed: 3: Slow
+Freq: 3: Low
+Options Enabled
+Move Animation
+Trigger: Action Button
+
+List of Event Commands:
+@>
+
+#------------------------------------------------------------------------------
+Event ID: 017
+Event Name: Random Gen
+(X,Y): (012,008)
+
+Page #1
+Conditions
+None
+
+Graphic: Pokemon 01
+
+Autonomous Movement
+Type: Fixed
+Speed: 3: Slow
+Freq: 3: Low
+Options Enabled
+Move Animation
+Trigger: Action Button
+
+List of Event Commands:
+@>Script: gap(10,948,false)
+@>
+
+#------------------------------------------------------------------------------
+Event ID: 018
+Event Name: Gen Pkmn
+(X,Y): (013,008)
+
+Page #1
+Conditions
+None
+
+Graphic: Pokemon 02
+
+Autonomous Movement
+Type: Fixed
+Speed: 3: Slow
+Freq: 3: Low
+Options Enabled
+Move Animation
+Trigger: Action Button
+
+List of Event Commands:
+@>Show Choices: Level 100, Another level
+(When Cancel: Choice 2)
+: When [Level 100]
+ @>Script: gap2(100,["Abra","Ekans"])
+ @>
+: When [Another level]
+ @>Text: Chose a level between 0 and 100.
+ @>Script: value = 0
+ :       : params = ChooseNumberParams.new
+ :       : params.setDefaultValue(value)
+ :       : params.setMaxDigits(3)
+ :       : params.setNegativesAllowed(false)
+ :       : value = Kernel.pbMessageChooseNumber(_INTL("How much eV do you want?",27),params)
+ :       : if value>0 && value<=100
+ :       :  gap2(value)
+ :       : else
+ :       :  pbMessage("The level has to be between 1 and 100.")
+ :       : end
+ :       :  
+ @>
+: Branch End
+@>
+
+#------------------------------------------------------------------------------
+Event ID: 019
+Event Name: Nat
+(X,Y): (015,008)
+
+Page #1
+Conditions
+None
+
+Graphic: Pokemon 10
+
+Autonomous Movement
+Type: Fixed
+Speed: 3: Slow
+Freq: 3: Low
+Options Enabled
+Move Animation
+Trigger: Action Button
+
+List of Event Commands:
+@>Label: ChoosePokemon
+@>Text: \bWhich Pokémon needs to change its nature?
+@>Script: pbChoosePokemon(1, 3)
+@>Comment: If Game Variable 1 is less than 0, it means the player 
+ :       : has canceled choosing a Pokémon.
+@>Conditional Branch: Variable [0001: Temp Pokemon Choice] < 0
+ @>Text: \bCome again if you want to change a Nature.
+ @>
+: Else
+ @>Script: pkmn=pbGetPokemon(1)
+ :       : changeNature(pkmn)
+ @>
+: Branch End
+@>
+
+#------------------------------------------------------------------------------
+Event ID: 020
+Event Name: Abil
+(X,Y): (016,008)
+
+Page #1
+Conditions
+None
+
+Graphic: Pokemon 05
+
+Autonomous Movement
+Type: Fixed
+Speed: 3: Slow
+Freq: 3: Low
+Options Enabled
+Move Animation
+Trigger: Action Button
+
+List of Event Commands:
+@>Label: ChoosePokemon
+@>Text: \bWhich Pokémon needs to change its ability?
+@>Script: pbChoosePokemon(1, 3)
+@>Comment: If Game Variable 1 is less than 0, it means the player 
+ :       : has canceled choosing a Pokémon.
+@>Conditional Branch: Variable [0001: Temp Pokemon Choice] < 0
+ @>Text: \bCome again if you want to change an ability.
+ @>
+: Else
+ @>Script: pkmn=pbGetPokemon(1)
+ :       : setabil(pkmn)
+ @>
+: Branch End
+@>
+
+#------------------------------------------------------------------------------
+Event ID: 021
+Event Name: Ev
+(X,Y): (018,008)
+
+Page #1
+Conditions
+None
+
+Graphic: Pokemon 09
+
+Autonomous Movement
+Type: Fixed
+Speed: 3: Slow
+Freq: 3: Low
+Options Enabled
+Move Animation
+Trigger: Action Button
+
+List of Event Commands:
+@>Label: ChoosePokemon
+@>Text: \bWhich Pokémon needs training?
+@>Script: pbChoosePokemon(1, 3)
+@>Comment: If Game Variable 1 is less than 0, it means the player 
+ :       : has canceled choosing a Pokémon.
+@>Conditional Branch: Variable [0001: Temp Pokemon Choice] < 0
+ @>Text: \bCome again if you want to train.
+ @>
+: Else
+ @>Script: pkmn=pbGetPokemon(1)
+ :       : changeeV(pkmn)
+ @>
+: Branch End
+@>
+
+#------------------------------------------------------------------------------
+Event ID: 022
+Event Name: Custom ev
+(X,Y): (019,008)
+
+Page #1
+Conditions
+None
+
+Graphic: Pokemon 09
+
+Autonomous Movement
+Type: Fixed
+Speed: 3: Slow
+Freq: 3: Low
+Options Enabled
+Move Animation
+Trigger: Action Button
+
+List of Event Commands:
+@>Label: ChoosePokemon
+@>Text: \bWhich Pokémon needs training?
+@>Script: pbChoosePokemon(1,3,proc {|poke|
+:       :        !poke.egg?},true)
+@>Comment: If variable 1 is less than 0, it means the player has 
+ :       : canceled choosing a Pokémon.
+@>Conditional Branch: Variable [0001: Temp Pokemon Choice] < 0
+ @>Text: \bCome back if you want to train.
+ @>Conditional Branch: Script: pbGetPokemon(1).egg?
+  @>Text: \bAn egg can't be trained.
+  @>Jump to Label: ChoosePokemon
+  @>
+ : Branch End
+ @>Conditional Branch: Script: pbGetPokemon(1).shadowPokemon?
+  @>Text: \bNo way, I don't want to go near a Shadow 
+   :    : Pokémon..
+  @>Jump to Label: ChoosePokemon
+  @>
+ : Branch End
+ @>
+: Else
+ @>Label: stat
+ @>Text: \bWhich stat do you want to train?
+ @>Text: \ch[26,-1,HP,ATK,DEF,SPE ATK,SPE DEF,SPEED]
+ @>Script: pkmn = pbGetPokemon(1)
+ :       : value = 0
+ :       : params = ChooseNumberParams.new
+ :       : params.setDefaultValue(value)
+ :       : params.setMaxDigits(3)
+ :       : params.setNegativesAllowed(false)
+ :       : value = Kernel.pbMessageChooseNumber(_INTL("How much eV do you want?",27),params)
+ :       : pbJustRaiseEffortValues(pkmn,pbGet(26),value)
+ :       : pkmn.calc_stats
+ :       :  
+ @>Wait: 8 frame(s)
+ @>Show Choices: Choose another stat, Change Pokémon, Stop!
+ (When Cancel: Choice 3)
+ : When [Choose another stat]
+  @>Jump to Label: stat
+  @>
+ : When [Change Pokémon]
+  @>Jump to Label: ChoosePokemon
+  @>
+ : When [Stop!]
+  @>Text: \bCome back if you want to train.
+  @>
+ : Branch End
+ @>
+: Branch End
+@>
+
+#------------------------------------------------------------------------------
+Event ID: 023
+Event Name: EV023
+(X,Y): (013,009)
+
+Page #1
+Conditions
+None
+
+Graphic: Object ball
+
+Autonomous Movement
+Type: Fixed
+Speed: 3: Slow
+Freq: 3: Low
+Options Enabled
+Move Animation
+Trigger: Action Button
+
+List of Event Commands:
+@>Script: pbFillBox
+@>
+
+#------------------------------------------------------------------------------
 
 #==============================================================================
 Map ID: 275
@@ -87132,14 +88662,14 @@ List of Event Commands:
  (When Cancel: Choice 4)
  : When [Fresh Water - $200]
   @>Conditional Branch: Gold 200 or more
-   @>Conditional Branch: Script: $PokemonBag.pbCanStore?(PBItems::FRESHWATER)
+   @>Conditional Branch: Script: $PokemonBag.pbCanStore?(:FRESHWATER)
     @>Change Gold: - 200
-    @>Script: $PokemonBag.pbStoreItem(PBItems::FRESHWATER)
+    @>Script: $PokemonBag.pbStoreItem(:FRESHWATER)
     @>Text: \GA Fresh Water dropped down!
     @>Control Variables: [0001: Temp Pokemon Choice] = Random No. (0...10)
     @>Conditional Branch: Variable [0001: Temp Pokemon Choice] == 0
-     @>Conditional Branch: Script: $PokemonBag.pbCanStore?(PBItems::FRESHWATER)
-      @>Script: $PokemonBag.pbStoreItem(PBItems::FRESHWATER)
+     @>Conditional Branch: Script: $PokemonBag.pbCanStore?(:FRESHWATER)
+      @>Script: $PokemonBag.pbStoreItem(:FRESHWATER)
       @>Text: \GBonus! Another Fresh Water dropped down.
       @>
      : Branch End
@@ -87159,14 +88689,14 @@ List of Event Commands:
   @>
  : When [Soda Pop - $300]
   @>Conditional Branch: Gold 300 or more
-   @>Conditional Branch: Script: $PokemonBag.pbCanStore?(PBItems::SODAPOP)
+   @>Conditional Branch: Script: $PokemonBag.pbCanStore?(:SODAPOP)
     @>Change Gold: - 300
-    @>Script: $PokemonBag.pbStoreItem(PBItems::SODAPOP)
+    @>Script: $PokemonBag.pbStoreItem(:SODAPOP)
     @>Text: \GA Soda Pop dropped down!
     @>Control Variables: [0001: Temp Pokemon Choice] = Random No. (0...10)
     @>Conditional Branch: Variable [0001: Temp Pokemon Choice] == 0
-     @>Conditional Branch: Script: $PokemonBag.pbCanStore?(PBItems::SODAPOP)
-      @>Script: $PokemonBag.pbStoreItem(PBItems::SODAPOP)
+     @>Conditional Branch: Script: $PokemonBag.pbCanStore?(:SODAPOP)
+      @>Script: $PokemonBag.pbStoreItem(:SODAPOP)
       @>Text: \GBonus! Another Soda Pop dropped down.
       @>
      : Branch End
@@ -87186,14 +88716,14 @@ List of Event Commands:
   @>
  : When [Lemonade - $350]
   @>Conditional Branch: Gold 350 or more
-   @>Conditional Branch: Script: $PokemonBag.pbCanStore?(PBItems::LEMONADE)
+   @>Conditional Branch: Script: $PokemonBag.pbCanStore?(:LEMONADE)
     @>Change Gold: - 350
-    @>Script: $PokemonBag.pbStoreItem(PBItems::LEMONADE)
+    @>Script: $PokemonBag.pbStoreItem(:LEMONADE)
     @>Text: \GA Lemonade dropped down!
     @>Control Variables: [0001: Temp Pokemon Choice] = Random No. (0...10)
     @>Conditional Branch: Variable [0001: Temp Pokemon Choice] == 0
-     @>Conditional Branch: Script: $PokemonBag.pbCanStore?(PBItems::LEMONADE)
-      @>Script: $PokemonBag.pbStoreItem(PBItems::LEMONADE)
+     @>Conditional Branch: Script: $PokemonBag.pbCanStore?(:LEMONADE)
+      @>Script: $PokemonBag.pbStoreItem(:LEMONADE)
       @>Text: \GBonus! Another Lemonade dropped down.
       @>
      : Branch End
@@ -87223,7 +88753,7 @@ List of Event Commands:
 
 #------------------------------------------------------------------------------
 Event ID: 010
-Event Name: Vending machine 1
+Event Name: Vending machine 2
 (X,Y): (129,006)
 
 Page #1
@@ -87247,14 +88777,14 @@ List of Event Commands:
  (When Cancel: Choice 4)
  : When [Fresh Water - $200]
   @>Conditional Branch: Gold 200 or more
-   @>Conditional Branch: Script: $PokemonBag.pbCanStore?(PBItems::FRESHWATER)
+   @>Conditional Branch: Script: $PokemonBag.pbCanStore?(:FRESHWATER)
     @>Change Gold: - 200
-    @>Script: $PokemonBag.pbStoreItem(PBItems::FRESHWATER)
+    @>Script: $PokemonBag.pbStoreItem(:FRESHWATER)
     @>Text: \GA Fresh Water dropped down!
     @>Control Variables: [0001: Temp Pokemon Choice] = Random No. (0...10)
     @>Conditional Branch: Variable [0001: Temp Pokemon Choice] == 0
-     @>Conditional Branch: Script: $PokemonBag.pbCanStore?(PBItems::FRESHWATER)
-      @>Script: $PokemonBag.pbStoreItem(PBItems::FRESHWATER)
+     @>Conditional Branch: Script: $PokemonBag.pbCanStore?(:FRESHWATER)
+      @>Script: $PokemonBag.pbStoreItem(:FRESHWATER)
       @>Text: \GBonus! Another Fresh Water dropped down.
       @>
      : Branch End
@@ -87274,14 +88804,14 @@ List of Event Commands:
   @>
  : When [Soda Pop - $300]
   @>Conditional Branch: Gold 300 or more
-   @>Conditional Branch: Script: $PokemonBag.pbCanStore?(PBItems::SODAPOP)
+   @>Conditional Branch: Script: $PokemonBag.pbCanStore?(:SODAPOP)
     @>Change Gold: - 300
-    @>Script: $PokemonBag.pbStoreItem(PBItems::SODAPOP)
+    @>Script: $PokemonBag.pbStoreItem(:SODAPOP)
     @>Text: \GA Soda Pop dropped down!
     @>Control Variables: [0001: Temp Pokemon Choice] = Random No. (0...10)
     @>Conditional Branch: Variable [0001: Temp Pokemon Choice] == 0
-     @>Conditional Branch: Script: $PokemonBag.pbCanStore?(PBItems::SODAPOP)
-      @>Script: $PokemonBag.pbStoreItem(PBItems::SODAPOP)
+     @>Conditional Branch: Script: $PokemonBag.pbCanStore?(:SODAPOP)
+      @>Script: $PokemonBag.pbStoreItem(:SODAPOP)
       @>Text: \GBonus! Another Soda Pop dropped down.
       @>
      : Branch End
@@ -87301,14 +88831,14 @@ List of Event Commands:
   @>
  : When [Lemonade - $350]
   @>Conditional Branch: Gold 350 or more
-   @>Conditional Branch: Script: $PokemonBag.pbCanStore?(PBItems::LEMONADE)
+   @>Conditional Branch: Script: $PokemonBag.pbCanStore?(:LEMONADE)
     @>Change Gold: - 350
-    @>Script: $PokemonBag.pbStoreItem(PBItems::LEMONADE)
+    @>Script: $PokemonBag.pbStoreItem(:LEMONADE)
     @>Text: \GA Lemonade dropped down!
     @>Control Variables: [0001: Temp Pokemon Choice] = Random No. (0...10)
     @>Conditional Branch: Variable [0001: Temp Pokemon Choice] == 0
-     @>Conditional Branch: Script: $PokemonBag.pbCanStore?(PBItems::LEMONADE)
-      @>Script: $PokemonBag.pbStoreItem(PBItems::LEMONADE)
+     @>Conditional Branch: Script: $PokemonBag.pbCanStore?(:LEMONADE)
+      @>Script: $PokemonBag.pbStoreItem(:LEMONADE)
       @>Text: \GBonus! Another Lemonade dropped down.
       @>
      : Branch End
@@ -87338,7 +88868,7 @@ List of Event Commands:
 
 #------------------------------------------------------------------------------
 Event ID: 011
-Event Name: Vending machine 1
+Event Name: Vending machine 3
 (X,Y): (130,006)
 
 Page #1
@@ -87362,14 +88892,14 @@ List of Event Commands:
  (When Cancel: Choice 4)
  : When [Fresh Water - $200]
   @>Conditional Branch: Gold 200 or more
-   @>Conditional Branch: Script: $PokemonBag.pbCanStore?(PBItems::FRESHWATER)
+   @>Conditional Branch: Script: $PokemonBag.pbCanStore?(:FRESHWATER)
     @>Change Gold: - 200
-    @>Script: $PokemonBag.pbStoreItem(PBItems::FRESHWATER)
+    @>Script: $PokemonBag.pbStoreItem(:FRESHWATER)
     @>Text: \GA Fresh Water dropped down!
     @>Control Variables: [0001: Temp Pokemon Choice] = Random No. (0...10)
     @>Conditional Branch: Variable [0001: Temp Pokemon Choice] == 0
-     @>Conditional Branch: Script: $PokemonBag.pbCanStore?(PBItems::FRESHWATER)
-      @>Script: $PokemonBag.pbStoreItem(PBItems::FRESHWATER)
+     @>Conditional Branch: Script: $PokemonBag.pbCanStore?(:FRESHWATER)
+      @>Script: $PokemonBag.pbStoreItem(:FRESHWATER)
       @>Text: \GBonus! Another Fresh Water dropped down.
       @>
      : Branch End
@@ -87389,14 +88919,14 @@ List of Event Commands:
   @>
  : When [Soda Pop - $300]
   @>Conditional Branch: Gold 300 or more
-   @>Conditional Branch: Script: $PokemonBag.pbCanStore?(PBItems::SODAPOP)
+   @>Conditional Branch: Script: $PokemonBag.pbCanStore?(:SODAPOP)
     @>Change Gold: - 300
-    @>Script: $PokemonBag.pbStoreItem(PBItems::SODAPOP)
+    @>Script: $PokemonBag.pbStoreItem(:SODAPOP)
     @>Text: \GA Soda Pop dropped down!
     @>Control Variables: [0001: Temp Pokemon Choice] = Random No. (0...10)
     @>Conditional Branch: Variable [0001: Temp Pokemon Choice] == 0
-     @>Conditional Branch: Script: $PokemonBag.pbCanStore?(PBItems::SODAPOP)
-      @>Script: $PokemonBag.pbStoreItem(PBItems::SODAPOP)
+     @>Conditional Branch: Script: $PokemonBag.pbCanStore?(:SODAPOP)
+      @>Script: $PokemonBag.pbStoreItem(:SODAPOP)
       @>Text: \GBonus! Another Soda Pop dropped down.
       @>
      : Branch End
@@ -87416,14 +88946,14 @@ List of Event Commands:
   @>
  : When [Lemonade - $350]
   @>Conditional Branch: Gold 350 or more
-   @>Conditional Branch: Script: $PokemonBag.pbCanStore?(PBItems::LEMONADE)
+   @>Conditional Branch: Script: $PokemonBag.pbCanStore?(:LEMONADE)
     @>Change Gold: - 350
-    @>Script: $PokemonBag.pbStoreItem(PBItems::LEMONADE)
+    @>Script: $PokemonBag.pbStoreItem(:LEMONADE)
     @>Text: \GA Lemonade dropped down!
     @>Control Variables: [0001: Temp Pokemon Choice] = Random No. (0...10)
     @>Conditional Branch: Variable [0001: Temp Pokemon Choice] == 0
-     @>Conditional Branch: Script: $PokemonBag.pbCanStore?(PBItems::LEMONADE)
-      @>Script: $PokemonBag.pbStoreItem(PBItems::LEMONADE)
+     @>Conditional Branch: Script: $PokemonBag.pbCanStore?(:LEMONADE)
+      @>Script: $PokemonBag.pbStoreItem(:LEMONADE)
       @>Text: \GBonus! Another Lemonade dropped down.
       @>
      : Branch End
@@ -88122,7 +89652,7 @@ Page #2
 Conditions
 Switch 0126:  is ON
 
-Graphic: trchar015
+Graphic: trainer_FISHERMAN
 
 Autonomous Movement
 Type: Fixed
@@ -88141,7 +89671,7 @@ List of Event Commands:
 @>Text: It'll become a drag if I keep it around, so why don't 
  :    : you have it instead. A way to cross waters is 
  :    : always a good thing!
-@>Script: Kernel.pbReceiveItem(PBItems::BOAT)
+@>Script: pbReceiveItem(PBItems::BOAT)
 @>Text: That boat's inflateable, so it should fit inside your 
  :    : backpack for storage. Hope you enjoy crossing the 
  :    : seas, kiddo!
@@ -88152,7 +89682,7 @@ Page #3
 Conditions
 Self Switch A is ON
 
-Graphic: trchar015
+Graphic: trainer_FISHERMAN
 
 Autonomous Movement
 Type: Fixed
@@ -88237,7 +89767,8 @@ Trigger: Action Button
 
 List of Event Commands:
 @>Text: I'm sorry, you arrived just a bit too late.
-@>Text: We were holding a special promotion where you could get a free Inflatable Boat, but we're all out now.
+@>Text: We were holding a special promotion where you could get a free 
+ :    : Inflatable Boat, but we're all out now.
 @>Text: We have no plans to stock them again in the future, 
  :    : we apologise if you missed your chance at getting 
  :    : one.
@@ -88988,6 +90519,1695 @@ Move Animation
 Trigger: Action Button
 
 List of Event Commands:
+@>
+
+#------------------------------------------------------------------------------
+
+#==============================================================================
+Map ID: 279
+Map Name: Wisteria Island
+Tileset: 001: Outside
+Width: 45, Height: 37
+
+#==============================================================================
+Map ID: 280
+Map Name: Wisteria Island - Snowy Forest
+Tileset: 001: Outside
+Width: 20, Height: 15
+
+#==============================================================================
+Map ID: 281
+Map Name: Wisteria Island - Sunny Beach
+Tileset: 001: Outside
+Width: 20, Height: 15
+
+#==============================================================================
+Map ID: 282
+Map Name: Wisteria Island - Central Command
+Tileset: 001: Outside
+Width: 20, Height: 15
+
+#==============================================================================
+Map ID: 283
+Map Name: Wisteria Island - Rest Stop
+Tileset: 001: Outside
+Width: 20, Height: 15
+
+#==============================================================================
+Map ID: 284
+Map Name: Wisteria Island - Rest Stop
+Tileset: 001: Outside
+Width: 20, Height: 15
+
+#==============================================================================
+Map ID: 285
+Map Name: Wisteria Island - Frosted Cave
+Tileset: 001: Outside
+Width: 20, Height: 15
+
+#==============================================================================
+Map ID: 286
+Map Name: Wisteria Island - Solar Crag
+Tileset: 001: Outside
+Width: 20, Height: 15
+
+#==============================================================================
+Map ID: 287
+Map Name: Celadon Inn
+Tileset: 003: Inside
+Width: 20, Height: 15
+Auto-Change BGM: 031. Tomorrow Will Be Special, Yesterday Was Not
+
+#------------------------------------------------------------------------------
+Event ID: 001
+Event Name: EV001
+(X,Y): (009,000)
+
+Page #1
+Conditions
+None
+
+Autonomous Movement
+Type: Fixed
+Speed: 3: Slow
+Freq: 3: Low
+Options Enabled
+Move Animation
+Trigger: Action Button
+
+List of Event Commands:
+@>Comment: Smaller hotel, smaller rooms, less rooms
+@>
+
+#------------------------------------------------------------------------------
+Event ID: 006
+Event Name: EV006
+(X,Y): (004,004)
+
+Page #1
+Conditions
+None
+
+Graphic: NPC 14
+
+Autonomous Movement
+Type: Fixed
+Speed: 3: Slow
+Freq: 3: Low
+Options Enabled
+Move Animation
+Trigger: Action Button
+
+List of Event Commands:
+@>Text: I'm sorry, but we don't have any rooms open right now.
+@>
+
+#------------------------------------------------------------------------------
+
+#==============================================================================
+Map ID: 288
+Map Name: Celadon City Houses
+Tileset: 003: Inside
+Width: 50, Height: 15
+Auto-Change BGM: 031. Tomorrow Will Be Special, Yesterday Was Not
+
+#------------------------------------------------------------------------------
+Event ID: 001
+Event Name: EV001
+(X,Y): (002,002)
+
+Page #1
+Conditions
+None
+
+Graphic: NPC 16
+
+Autonomous Movement
+Type: Fixed
+Speed: 3: Slow
+Freq: 3: Low
+Options Enabled
+Move Animation
+Trigger: Action Button
+
+List of Event Commands:
+@>Text: What, you want me to restore your party to full 
+ :    : health? I'm on break right now. I'm sure there's a 
+ :    : substitute nurse over at the Pokemon Center.
+@>
+
+#------------------------------------------------------------------------------
+Event ID: 002
+Event Name: Chibi Yuugi
+(X,Y): (001,006)
+
+Page #1
+Conditions
+None
+
+Graphic: Chibi Yuugi
+
+Autonomous Movement
+Type: Fixed
+Speed: 3: Slow
+Freq: 3: Low
+Options Enabled
+Move Animation
+Trigger: Action Button
+
+List of Event Commands:
+@>
+
+#------------------------------------------------------------------------------
+Event ID: 003
+Event Name: EV003
+(X,Y): (003,007)
+
+Page #1
+Conditions
+None
+
+Graphic: trchar009
+
+Autonomous Movement
+Type: Fixed
+Speed: 3: Slow
+Freq: 3: Low
+Options Enabled
+Move Animation
+Trigger: Action Button
+
+List of Event Commands:
+@>Text: Hahahaha, my Yuugi could best anyone in a drinking 
+ :    : contest.
+@>
+
+#------------------------------------------------------------------------------
+Event ID: 004
+Event Name: EV004
+(X,Y): (009,002)
+
+Page #1
+Conditions
+None
+
+Graphic: NPC 01
+
+Autonomous Movement
+Type: Fixed
+Speed: 3: Slow
+Freq: 3: Low
+Options Enabled
+Move Animation
+Trigger: Action Button
+
+List of Event Commands:
+@>Text: There isn't a much better diner in Kanto than the 
+ :    : famous Celadon Prismatic Diner. I always come here 
+ :    : when on break, the food here is amazing!
+@>
+
+#------------------------------------------------------------------------------
+Event ID: 005
+Event Name: EV005
+(X,Y): (009,006)
+
+Page #1
+Conditions
+None
+
+Graphic: trchar035
+
+Autonomous Movement
+Type: Fixed
+Speed: 3: Slow
+Freq: 3: Low
+Options Enabled
+Move Animation
+Trigger: Action Button
+
+List of Event Commands:
+@>Text: Hey, have you heard about the house next door?
+@>Text: Apparently, somebody lives there, but nobody ever 
+ :    : sees them. Apparently it's rented out to someone 
+ :    : with the initials R.K.
+@>Text: I wonder what R.K. stands for?
+@>
+
+#------------------------------------------------------------------------------
+Event ID: 006
+Event Name: EV006
+(X,Y): (040,003)
+
+Page #1
+Conditions
+None
+
+Autonomous Movement
+Type: Fixed
+Speed: 3: Slow
+Freq: 3: Low
+Options Enabled
+Move Animation
+Trigger: Action Button
+
+List of Event Commands:
+@>Text: The computer requires a password to be used, and 
+ :    : no password hint. Drats.
+@>
+
+#------------------------------------------------------------------------------
+Event ID: 007
+Event Name: EV007
+(X,Y): (042,002)
+
+Page #1
+Conditions
+None
+
+Autonomous Movement
+Type: Fixed
+Speed: 3: Slow
+Freq: 3: Low
+Options Enabled
+Move Animation
+Trigger: Action Button
+
+List of Event Commands:
+@>Text: The computer requires a password to be used, and 
+ :    : no password hint. Drats.
+@>
+
+#------------------------------------------------------------------------------
+Event ID: 008
+Event Name: EV008
+(X,Y): (043,002)
+
+Page #1
+Conditions
+None
+
+Autonomous Movement
+Type: Fixed
+Speed: 3: Slow
+Freq: 3: Low
+Options Enabled
+Move Animation
+Trigger: Action Button
+
+List of Event Commands:
+@>Text: The computer requires a password to be used, and 
+ :    : no password hint. Drats.
+@>
+
+#------------------------------------------------------------------------------
+Event ID: 009
+Event Name: EV009
+(X,Y): (044,002)
+
+Page #1
+Conditions
+None
+
+Autonomous Movement
+Type: Fixed
+Speed: 3: Slow
+Freq: 3: Low
+Options Enabled
+Move Animation
+Trigger: Action Button
+
+List of Event Commands:
+@>Text: An empty mug. The faint smell of chocolate can be 
+ :    : detected from it.
+@>
+
+#------------------------------------------------------------------------------
+Event ID: 010
+Event Name: EV010
+(X,Y): (045,003)
+
+Page #1
+Conditions
+None
+
+Autonomous Movement
+Type: Fixed
+Speed: 3: Slow
+Freq: 3: Low
+Options Enabled
+Move Animation
+Trigger: Action Button
+
+List of Event Commands:
+@>Text: Nothing but trash.
+@>
+
+#------------------------------------------------------------------------------
+Event ID: 011
+Event Name: EV011
+(X,Y): (011,003)
+
+Page #1
+Conditions
+None
+
+Graphic: NPC 09
+
+Autonomous Movement
+Type: Fixed
+Speed: 3: Slow
+Freq: 3: Low
+Options Enabled
+Move Animation
+Direction Fix
+Trigger: Action Button
+
+List of Event Commands:
+@>Text: He seems to be busy doing dishes. Best not to 
+ :    : distract him.
+@>
+
+#------------------------------------------------------------------------------
+Event ID: 012
+Event Name: EV012
+(X,Y): (012,007)
+
+Page #1
+Conditions
+None
+
+Graphic: NPC 08
+
+Autonomous Movement
+Type: Fixed
+Speed: 3: Slow
+Freq: 3: Low
+Options Enabled
+Move Animation
+Trigger: Action Button
+
+List of Event Commands:
+@>Text: The chef here is one of the most renowned chefs in all of Kanto! He's won several awards and trophies for "Most Appealing Dinner", "Best Meal", and "Spotless 
+ :    : Kitchen", just to name a few.
+@>
+
+#------------------------------------------------------------------------------
+
+#==============================================================================
+Map ID: 289
+Map Name: Celadon Game Corner
+Tileset: 012: Game Corner
+Width: 20, Height: 31
+Auto-Change BGM: 22 - The Doll Maker of Bucuresti
+
+#------------------------------------------------------------------------------
+Event ID: 001
+Event Name: Voltorb Flip 1
+(X,Y): (001,007)
+
+Page #1
+Conditions
+None
+
+Autonomous Movement
+Type: Fixed
+Speed: 3: Slow
+Freq: 3: Low
+Options Enabled
+Move Animation
+Trigger: Action Button
+
+List of Event Commands:
+@>Text: Would you like to play a game of Voltorb Flip?
+@>Show Choices: Yes, No
+(When Cancel: Choice 2)
+: When [Yes]
+ @>Script: pbVoltorbFlip
+ @>
+: When [No]
+ @>
+: Branch End
+@>
+
+#------------------------------------------------------------------------------
+Event ID: 002
+Event Name: Voltorb Flip 2
+(X,Y): (005,007)
+
+Page #1
+Conditions
+None
+
+Autonomous Movement
+Type: Fixed
+Speed: 3: Slow
+Freq: 3: Low
+Options Enabled
+Move Animation
+Trigger: Action Button
+
+List of Event Commands:
+@>Text: Would you like to play a game of Voltorb Flip?
+@>Show Choices: Yes, No
+(When Cancel: Choice 2)
+: When [Yes]
+ @>Script: pbVoltorbFlip
+ @>
+: When [No]
+ @>
+: Branch End
+@>
+
+#------------------------------------------------------------------------------
+Event ID: 003
+Event Name: Voltorb Flip 3
+(X,Y): (011,007)
+
+Page #1
+Conditions
+None
+
+Autonomous Movement
+Type: Fixed
+Speed: 3: Slow
+Freq: 3: Low
+Options Enabled
+Move Animation
+Trigger: Action Button
+
+List of Event Commands:
+@>Text: Would you like to play a game of Voltorb Flip?
+@>Show Choices: Yes, No
+(When Cancel: Choice 2)
+: When [Yes]
+ @>Script: pbVoltorbFlip
+ @>
+: When [No]
+ @>
+: Branch End
+@>
+
+#------------------------------------------------------------------------------
+Event ID: 004
+Event Name: Voltorb Flip 4
+(X,Y): (015,007)
+
+Page #1
+Conditions
+None
+
+Autonomous Movement
+Type: Fixed
+Speed: 3: Slow
+Freq: 3: Low
+Options Enabled
+Move Animation
+Trigger: Action Button
+
+List of Event Commands:
+@>Text: Would you like to play a game of Voltorb Flip?
+@>Show Choices: Yes, No
+(When Cancel: Choice 2)
+: When [Yes]
+ @>Script: pbVoltorbFlip
+ @>
+: When [No]
+ @>
+: Branch End
+@>
+
+#------------------------------------------------------------------------------
+Event ID: 006
+Event Name: EV006
+(X,Y): (011,008)
+
+Page #1
+Conditions
+None
+
+Graphic: trchar037
+
+Autonomous Movement
+Type: Fixed
+Speed: 3: Slow
+Freq: 3: Low
+Options Enabled
+Move Animation
+Trigger: Action Button
+
+List of Event Commands:
+@>Text: I don't get this game at all! Apparently you're 
+ :    : supposed to reveal all the cards on the table without 
+ :    : flipping a voltorb? But how!
+@>
+
+#------------------------------------------------------------------------------
+Event ID: 007
+Event Name: EV007
+(X,Y): (015,013)
+
+Page #1
+Conditions
+None
+
+Graphic: trchar033
+
+Autonomous Movement
+Type: Fixed
+Speed: 3: Slow
+Freq: 3: Low
+Options Enabled
+Move Animation
+Direction Fix
+Trigger: Action Button
+
+List of Event Commands:
+@>Text: That's right, just keep giving me coins. This beats 
+ :    : having to play all those machines.
+@>
+
+#------------------------------------------------------------------------------
+Event ID: 008
+Event Name: Voltorb Flip 1
+(X,Y): (001,010)
+
+Page #1
+Conditions
+None
+
+Autonomous Movement
+Type: Fixed
+Speed: 3: Slow
+Freq: 3: Low
+Options Enabled
+Move Animation
+Trigger: Action Button
+
+List of Event Commands:
+@>Text: Would you like to play a game of Voltorb Flip?
+@>Show Choices: Yes, No
+(When Cancel: Choice 2)
+: When [Yes]
+ @>Script: pbVoltorbFlip
+ @>
+: When [No]
+ @>
+: Branch End
+@>
+
+#------------------------------------------------------------------------------
+Event ID: 009
+Event Name: Voltorb Flip 1
+(X,Y): (005,010)
+
+Page #1
+Conditions
+None
+
+Autonomous Movement
+Type: Fixed
+Speed: 3: Slow
+Freq: 3: Low
+Options Enabled
+Move Animation
+Trigger: Action Button
+
+List of Event Commands:
+@>Text: Would you like to play a game of Voltorb Flip?
+@>Show Choices: Yes, No
+(When Cancel: Choice 2)
+: When [Yes]
+ @>Script: pbVoltorbFlip
+ @>
+: When [No]
+ @>
+: Branch End
+@>
+
+#------------------------------------------------------------------------------
+Event ID: 010
+Event Name: Voltorb Flip 1
+(X,Y): (011,010)
+
+Page #1
+Conditions
+None
+
+Autonomous Movement
+Type: Fixed
+Speed: 3: Slow
+Freq: 3: Low
+Options Enabled
+Move Animation
+Trigger: Action Button
+
+List of Event Commands:
+@>Text: Would you like to play a game of Voltorb Flip?
+@>Show Choices: Yes, No
+(When Cancel: Choice 2)
+: When [Yes]
+ @>Script: pbVoltorbFlip
+ @>
+: When [No]
+ @>
+: Branch End
+@>
+
+#------------------------------------------------------------------------------
+Event ID: 011
+Event Name: Voltorb Flip 1
+(X,Y): (015,010)
+
+Page #1
+Conditions
+None
+
+Autonomous Movement
+Type: Fixed
+Speed: 3: Slow
+Freq: 3: Low
+Options Enabled
+Move Animation
+Trigger: Action Button
+
+List of Event Commands:
+@>Text: Would you like to play a game of Voltorb Flip?
+@>Show Choices: Yes, No
+(When Cancel: Choice 2)
+: When [Yes]
+ @>Script: pbVoltorbFlip
+ @>
+: When [No]
+ @>
+: Branch End
+@>
+
+#------------------------------------------------------------------------------
+Event ID: 016
+Event Name: Voltorb Flip
+(X,Y): (013,020)
+
+Page #1
+Conditions
+None
+
+Autonomous Movement
+Type: Fixed
+Speed: 3: Slow
+Freq: 3: Low
+Options Enabled
+Move Animation
+Trigger: Action Button
+
+List of Event Commands:
+@>Set Move Route: [Voltorb Flip man]
+ :              : $>Turn Down
+@>Wait for Move's Completion
+@>Text: Mr. Game: \bShow me how you play and make my 
+ :    : heart pound with excitement!
+@>Script: pbVoltorbFlip
+@>
+
+#------------------------------------------------------------------------------
+Event ID: 018
+Event Name: Voltorb Flip man
+(X,Y): (008,002)
+
+Page #1
+Conditions
+None
+
+Graphic: NPC 21
+
+Autonomous Movement
+Type: Fixed
+Speed: 3: Slow
+Freq: 3: Low
+Options Enabled
+Move Animation
+Trigger: Action Button
+
+List of Event Commands:
+@>Conditional Branch: Self Switch A == OFF
+ @>Text: My name is Mr. Game!
+ @>Text: My heart pounds with excitement when people 
+  :    : enjoy my Coin game!
+ @>Text: In fact, that's what I live for!\nGo ahead and play it!
+ @>Text: Make my heart pound with excitement!
+ @>Control Self Switch: A =ON
+ @>
+: Else
+ @>Text: Go ahead and play my Coin game!
+ @>Text: Make my heart pound with excitement!
+ @>
+: Branch End
+@>
+
+#------------------------------------------------------------------------------
+Event ID: 019
+Event Name: Coin seller
+(X,Y): (004,002)
+
+Page #1
+Conditions
+None
+
+Graphic: NPC 07
+
+Autonomous Movement
+Type: Fixed
+Speed: 3: Slow
+Freq: 3: Low
+Options Enabled
+Move Animation
+Trigger: Action Button
+
+List of Event Commands:
+@>Text: \G\CNWelcome to Rocket Game Corner!
+@>Conditional Branch: Script: $PokemonBag.pbQuantity(PBItems::COINCASE)<=0
+ @>Text: \G\CNDo you need some game coins?\nWould you 
+  :    : like to buy some?
+ @>Text: \G\CNYou don't have a Coin Case.
+ @>
+: Else
+ @>Text: \G\CNDo you need some game coins?\nWould you 
+  :    : like to buy some?
+ @>Show Choices: 50 coins [$1,000], 500 coins [$10,000], Exit
+ (When Cancel: Choice 3)
+ : When [50 coins [$1,000]]
+  @>Conditional Branch: Script: $PokemonGlobal.coins+50>=MAXCOINS
+   @>Text: \G\CNWhoops!\nYour Coin Case is full.
+   @>
+  : Else
+   @>Conditional Branch: Gold 999 or less
+    @>Text: \G\CNYou can't afford the coins.
+    @>
+   : Else
+    @>Change Gold: - 1000
+    @>Script: $PokemonGlobal.coins+=50
+    @>Text: \G\CNThank you\nHere are your coins!
+    @>
+   : Branch End
+   @>
+  : Branch End
+  @>
+ : When [500 coins [$10,000]]
+  @>Conditional Branch: Script: $PokemonGlobal.coins+500>=MAXCOINS
+   @>Text: \G\CNWhoops!\nYour Coin Case is full.
+   @>
+  : Else
+   @>Conditional Branch: Gold 9999 or less
+    @>Text: \G\CNYou can't afford the coins.
+    @>
+   : Else
+    @>Change Gold: - 10000
+    @>Script: $PokemonGlobal.coins+=500
+    @>Text: \G\CNThank you\nHere are your coins!
+    @>
+   : Branch End
+   @>
+  : Branch End
+  @>
+ : When [Exit]
+  @>Text: \G\CNNo?\nPlease come play sometime!
+  @>
+ : Branch End
+ @>
+: Branch End
+@>
+
+#------------------------------------------------------------------------------
+Event ID: 021
+Event Name: Coin Case giver
+(X,Y): (003,002)
+
+Page #1
+Conditions
+None
+
+Graphic: NPC 08
+
+Autonomous Movement
+Type: Fixed
+Speed: 3: Slow
+Freq: 3: Low
+Options Enabled
+Move Animation
+Trigger: Action Button
+
+List of Event Commands:
+@>Text: Welcome to Celadon City's Rocket Game Corner!
+@>Text: We've expanded our facilities to allow for much more 
+ :    : to do, more ways to earn coins, and even more 
+ :    : ways to spend them!
+@>Text: Would you like an explination of what we have to 
+ :    : offer?
+@>Show Choices: Yes, No
+(When Cancel: Choice 2)
+: When [Yes]
+ @>Text: On this floor we have the Voltorb Flip machines, a 
+  :    : new addition, a game where you have to flip all the 
+  :    : cards without revealing a Voltorb.
+ @>Text: The first basement floor has the slot machines, the 
+  :    : automated coin machines, and a few reward 
+  :    : vendors.
+ @>Text: The second basement floor is a general resting area, 
+  :    : and also the Pokemon prize vendor. You can redeem 
+  :    : your coins for various different Pokemon there.
+ @>Conditional Branch: Switch [0134] == OFF
+  @>Text: Though right now they're still setting things up down 
+   :    : there, so you can't redeem coins there just yet. We 
+   :    : promise to have it ready soon!
+  @>
+ : Branch End
+ @>Text: On the final basement floor we have the Card Corner, 
+  :    : which is where players grather to play Triple Triad. 
+  :    : You can learn more about Triple Triad there.
+ @>Text: Outside the building and to the right we have a few 
+  :    : more prize vendors.
+ @>
+: When [No]
+ @>Text: Please, enjoy your stay here at the Rocket Game 
+  :    : Corner!
+ @>
+: Branch End
+@>
+
+#------------------------------------------------------------------------------
+Event ID: 028
+Event Name: Prize vendor left
+(X,Y): (003,023)
+
+Page #1
+Conditions
+None
+
+Graphic: NPC 07
+
+Autonomous Movement
+Type: Fixed
+Speed: 3: Slow
+Freq: 3: Low
+Options Enabled
+Move Animation
+Trigger: Action Button
+
+List of Event Commands:
+@>Text: \CNWe exchange your coins for prizes.
+@>Text: \CNWhich prize would you like?\ch[1,6,
+ :    : Smoke Ball - 800 coins,Camouflage - 1000 coins,
+ :    : Gothic Dress - 1000 coins,Swimsuit - 1000 coins,
+ :    : Yellow Flute - 1600 coins,No thanks]
+@>Script: item=[:SMOKEBALL,:CAMOUFLAGE,
+:       :       :GOTHIC,:SWIMSUIT,
+:       :       :YELLOWFLUTE,0][pbGet(1)]
+:       : price=[800,1000,1000,1000,1600,0
+:       :       ][pbGet(1)]
+:       : if item && item!=0
+:       :   item=getID(PBItems,item)
+:       : end
+:       : pbSet(1,item)
+:       : pbSet(2,price)
+:       : pbSet(3,PBItems.getName(item))
+@>Conditional Branch: Variable [0001: Temp Pokemon Choice] > 0
+ @>Text: \CNSo, you want the \v[3]?
+ @>Show Choices: Yes, No
+ (When Cancel: Choice 2)
+ : When [Yes]
+  @>Conditional Branch: Script: pbGet(2)>$PokemonGlobal.coins
+   @>Text: \CNSorry, you'll need more coins than that.
+   @>
+  : Else
+   @>Conditional Branch: Script: $PokemonBag.pbCanStore?(pbGet(1))
+    @>Script: $PokemonGlobal.coins-=pbGet(2)
+    @>Script: Kernel.pbReceiveItem(pbGet(1))
+    @>
+   : Else
+    @>Text: \CNYou have no room in your Bag.
+    @>
+   : Branch End
+   @>
+  : Branch End
+  @>
+ : When [No]
+  @>
+ : Branch End
+ @>
+: Branch End
+@>
+
+#------------------------------------------------------------------------------
+Event ID: 029
+Event Name: Prize vendor middle
+(X,Y): (005,023)
+
+Page #1
+Conditions
+None
+
+Graphic: NPC 07
+
+Autonomous Movement
+Type: Fixed
+Speed: 3: Slow
+Freq: 3: Low
+Options Enabled
+Move Animation
+Trigger: Action Button
+
+List of Event Commands:
+@>Text: \CNWe exchange your coins for prizes.
+@>Text: \CNWhich prize would you like?\ch[1,7,
+ :    : Chibi Patchouli - 180 coins,Genji - 500 coins,
+ :    : Chibi Ran - 1400 coins,Chibi Eiki - 2800 coins,
+ :    : Reisen II - 5000 coins,Chibi VIVIT - 9999 coins,No thanks]
+@>Script: item=[:CPATCHOULI,:GENJI,
+:       :       :CRAN,:CSHIKIEIKI,
+:       :       :REISENII,:CVIVIT,0][pbGet(1)]
+:       : price=[180,500,1400,2800,5000,
+:       :        9999,0][pbGet(1)]
+:       : lv=[10,10,15,15,20,25,0][pbGet(1)]
+:       : if item && item!=0
+:       :   item=getID(PBSpecies,item)
+:       : end
+:       : pbSet(1,item); pbSet(2,price)
+:       : pbSet(3,PBSpecies.getName(item))
+:       : pbSet(4,lv)
+@>Conditional Branch: Variable [0001: Temp Pokemon Choice] > 0
+ @>Text: \CNSo, you want the \v[3]?
+ @>Show Choices: Yes, No
+ (When Cancel: Choice 2)
+ : When [Yes]
+  @>Conditional Branch: Script: pbGet(2)>$PokemonGlobal.coins
+   @>Text: \CNSorry, you'll need more coins than that.
+   @>
+  : Else
+   @>Conditional Branch: Script: Kernel.pbAddPokemon(pbGet(1),pbGet(4))
+    @>Script: $PokemonGlobal.coins-=pbGet(2)
+    @>
+   : Branch End
+   @>
+  : Branch End
+  @>
+ : When [No]
+  @>
+ : Branch End
+ @>
+: Branch End
+@>
+
+#------------------------------------------------------------------------------
+Event ID: 030
+Event Name: Prize vendor right
+(X,Y): (019,030)
+
+Page #1
+Conditions
+None
+
+Graphic: NPC 07
+
+Autonomous Movement
+Type: Fixed
+Speed: 3: Slow
+Freq: 3: Low
+Options Enabled
+Move Animation
+Trigger: Action Button
+
+List of Event Commands:
+@>Text: \CN\bWe exchange your coins for prizes.
+@>Text: \CN\bWhich prize would you like?\ch[1,6,
+ :    : TM13 - 4000 coins,TM23 - 3500 coins,
+ :    : TM24 - 4000 coins,TM30 - 4500 coins,
+ :    : TM35 - 4000 coins,No thanks]
+@>Script: item=[:G18TM13,:G18TM23,:G18TM24,
+:       :       :G18TM30,:G18TM35,0][pbGet(1)]
+:       : price=[4000,3500,4000,4500,4000,
+:       :        0][pbGet(1)]
+:       : if item && item!=0
+:       :   item=getID(PBItems,item)
+:       : end
+:       : pbSet(1,item)
+:       : pbSet(2,price)
+:       : pbSet(3,PBItems.getName(item))
+@>Conditional Branch: Variable [0001: Temp Pokemon Choice] > 0
+ @>Text: \CN\bSo, you want the \v[3]?
+ @>Show Choices: Yes, No
+ (When Cancel: Choice 2)
+ : When [Yes]
+  @>Conditional Branch: Script: pbGet(2)>$PokemonGlobal.coins
+   @>Text: \CN\bSorry, you'll need more coins than that.
+   @>
+  : Else
+   @>Conditional Branch: Script: $PokemonBag.pbCanStore?(pbGet(1))
+    @>Script: $PokemonGlobal.coins-=pbGet(2)
+    @>Script: Kernel.pbReceiveItem(pbGet(1))
+    @>
+   : Else
+    @>Text: \CN\bYou have no room in your Bag.
+    @>
+   : Branch End
+   @>
+  : Branch End
+  @>
+ : When [No]
+  @>
+ : Branch End
+ @>
+: Branch End
+@>
+
+#------------------------------------------------------------------------------
+
+#==============================================================================
+Map ID: 290
+Map Name: Sandbox Zone - F2
+Tileset: 004: Poke Center
+Width: 31, Height: 31
+
+#------------------------------------------------------------------------------
+Event ID: 001
+Event Name: Day Care Lady
+(X,Y): (015,005)
+
+Page #1
+Conditions
+None
+
+Graphic: NPC 11
+
+Autonomous Movement
+Type: Fixed
+Speed: 3: Slow
+Freq: 3: Low
+Options Enabled
+Move Animation
+Trigger: Action Button
+
+List of Event Commands:
+@>Conditional Branch: Script: Kernel.pbEggGenerated?
+ @>Text: Ah, there you are!  My husband was looking for 
+  :    : you.
+ @>Exit Event Processing
+ @>
+: Branch End
+@>Control Self Switch: A =OFF
+@>Conditional Branch: Script: Kernel.pbDayCareDeposited==0
+ @>Text: I'm the Day-Care Lady.  We can raise Pokémon for 
+  :    : you.
+ @>Text: Would you like us to raise your Pokémon?
+ @>Show Choices: Yes, No
+ (When Cancel: Choice 2)
+ : When [Yes]
+  @>Conditional Branch: Script: $Trainer.pokemonCount<=1
+   @>Text: Oh?  But you only have one Pokémon with you.
+   @>Text: You can't go off without a Pokémon.  Come back 
+    :    : another time.
+   @>Exit Event Processing
+   @>
+  : Branch End
+  @>Text: Which Pokémon should we raise for you?
+  @>Script: pbChooseNonEggPokemon(1,3)
+  @>Conditional Branch: Variable [0001: Temp Pokemon Choice] < 0
+   @>Text: Oh, fine, then.\nCome again.
+   @>Exit Event Processing
+   @>
+  : Branch End
+  @>Conditional Branch: Script: !pbCheckAble(pbGet(1))
+   @>Text: If you leave me that Pokémon, what are you gonna 
+    :    : battle with?
+   @>Text: Come back another time.
+   @>Exit Event Processing
+   @>
+  : Branch End
+  @>Script: pbDayCareDeposit(pbGet(1))
+  @>Text: Fine, we'll raise your \v[3] for a while.
+  @>Text: Come back for it later.
+  @>Label: RaiseAnother
+  @>Text: We can raise two of your Pokémon.  Would you like 
+   :    : us to raise another?
+  @>Show Choices: Yes, No
+  (When Cancel: Choice 2)
+  : When [Yes]
+   @>Conditional Branch: Script: $Trainer.pokemonCount<=1
+    @>Text: Oh?  But you only have one Pokémon with you.
+    @>Text: You can't go off without a Pokémon.  Come back 
+     :    : another time.
+    @>Exit Event Processing
+    @>
+   : Branch End
+   @>Text: Which Pokémon should we raise for you?
+   @>Script: pbChooseNonEggPokemon(1,3)
+   @>Conditional Branch: Variable [0001: Temp Pokemon Choice] < 0
+    @>Text: Very good.  Come again.
+    @>Exit Event Processing
+    @>
+   : Branch End
+   @>Conditional Branch: Script: !pbCheckAble(pbGet(1))
+    @>Text: If you leave me that Pokémon, what are you gonna 
+     :    : battle with?
+    @>Text: Come back another time.
+    @>Exit Event Processing
+    @>
+   : Branch End
+   @>Script: pbDayCareDeposit(pbGet(1))
+   @>Text: Fine, we'll raise your \v[3] for a while.
+   @>Text: Come back for it later.
+   @>
+  : When [No]
+   @>Conditional Branch: Self Switch A == ON
+    @>Jump to Label: TakeBack
+    @>
+   : Else
+    @>Text: Very good.  Come again.
+    @>
+   : Branch End
+   @>
+  : Branch End
+  @>
+ : When [No]
+  @>Text: Oh, fine, then.\nCome again.
+  @>
+ : Branch End
+ @>
+: Else
+ @>Text: Ah, it's you!  Good to see you.  Now, about your 
+  :    : Pokémon...
+ @>Conditional Branch: Script: pbDayCareGetLevelGain(0,3,4) && $game_variables[4]>0
+  @>Text: By level, your \v[3] has grown by about \v[4].
+  @>
+ : Branch End
+ @>Conditional Branch: Script: pbDayCareGetLevelGain(1,3,4) && $game_variables[4]>0
+  @>Text: By level, your \v[3] has grown by about \v[4].
+  @>
+ : Branch End
+ @>Conditional Branch: Script: Kernel.pbDayCareDeposited==1
+  @>Control Self Switch: A =ON
+  @>Jump to Label: RaiseAnother
+  @>
+ : Else
+  @>Label: TakeBack
+  @>Text: Do you want your Pokémon back?
+  @>Show Choices: Yes, No
+  (When Cancel: Choice 2)
+  : When [Yes]
+   @>Label: TakeBackChosen
+   @>Conditional Branch: Script: $Trainer.party.length>=6
+    @>Text: Your Pokémon team is full.  Make room, then come 
+     :    : see me.
+    @>Exit Event Processing
+    @>
+   : Branch End
+   @>Script: pbDayCareChoose(
+   :       : _I("Which one do you want back?"),1)
+   @>Conditional Branch: Variable [0001: Temp Pokemon Choice] < 0
+    @>Text: Very good.  Come again.
+    @>Exit Event Processing
+    @>
+   : Branch End
+   @>Script: pbDayCareGetDeposited(pbGet(1),3,4)
+   @>Text: \GIf you want your \v[3] back, it will cost $\v[4].
+   @>Show Choices: Yes, No
+   (When Cancel: Choice 2)
+   : When [Yes]
+    @>Control Variables: [0005: Temp Text Entry] = Gold
+    @>Conditional Branch: Variable [0005: Temp Text Entry] < Variable [0004: Temp Move Name]
+     @>Text: \GYou don't have enough money...
+     @>Exit Event Processing
+     @>
+    : Branch End
+    @>Change Gold: - Variable [0004: Temp Move Name]
+    @>Script: pbDayCareWithdraw(pbGet(1))
+    @>Text: \GExcellent\nHere's your Pokémon.
+    @>Text: \PN took \v[3] back from the Day-Care Lady.
+    @>Conditional Branch: Script: Kernel.pbDayCareDeposited==1
+     @>Text: Do you want to take back the other one, too?
+     @>Show Choices: Yes, No
+     (When Cancel: Choice 2)
+     : When [Yes]
+      @>Jump to Label: TakeBackChosen
+      @>
+     : When [No]
+      @>Text: Very good.  Come again.
+      @>
+     : Branch End
+     @>
+    : Else
+     @>Text: Very good.  Come again.
+     @>
+    : Branch End
+    @>
+   : When [No]
+    @>Text: Very good.  Come again.
+    @>
+   : Branch End
+   @>
+  : When [No]
+   @>Text: Very good.  Come again.
+   @>
+  : Branch End
+  @>
+ : Branch End
+ @>
+: Branch End
+@>
+
+#------------------------------------------------------------------------------
+Event ID: 002
+Event Name: EV002
+(X,Y): (013,006)
+
+Page #1
+Conditions
+None
+
+Graphic: Object ball
+
+Autonomous Movement
+Type: Fixed
+Speed: 3: Slow
+Freq: 3: Low
+Options Enabled
+Move Animation
+Trigger: Action Button
+
+List of Event Commands:
+@>Text: This is the Egg Hatcher. It instantly hatches all eggs in 
+ :    : your party.
+@>Text: Do you want to hatch all the eggs in your party?
+@>Show Choices: Yes, No
+(When Cancel: Choice 2)
+: When [Yes]
+ @>Text: Preparing Egg Hatching routine.
+ @>Wait: 10 frame(s)
+ @>Play SE: 'itemlevel', 80, 100
+ @>Script: pbHatchAll
+ @>
+: When [No]
+ @>
+: Branch End
+@>
+
+#------------------------------------------------------------------------------
+Event ID: 003
+Event Name: Specific Nature Selector
+(X,Y): (009,005)
+
+Page #1
+Conditions
+None
+
+Autonomous Movement
+Type: Fixed
+Speed: 3: Slow
+Freq: 3: Low
+Options Enabled
+Move Animation
+Trigger: Action Button
+
+List of Event Commands:
+@>
+
+#------------------------------------------------------------------------------
+Event ID: 004
+Event Name: Pokerus Distributor
+(X,Y): (006,005)
+
+Page #1
+Conditions
+None
+
+Graphic: trainer_GENTLEMAN
+
+Autonomous Movement
+Type: Fixed
+Speed: 3: Slow
+Freq: 3: Low
+Options Enabled
+Move Animation
+Trigger: Action Button
+
+List of Event Commands:
+@>Text: You look like a capable young trainer.
+@>Text: I happen to have a Pokemon here that might be of
+ :    : some interest to you.
+@>Script: pkmn=Pokemon.new(:DITTO,10)
+:       : pkmn.shiny = true
+:       : pkmn.givePokerus(15)
+:       : pkmn.happiness = 255
+:       : pkmn.iv[:HP]=31
+:       : pkmn.iv[:ATTACK]=31
+:       : pkmn.iv[:DEFENSE]=31
+:       : pkmn.iv[:SPECIAL_ATTACK]=31
+:       : pkmn.iv[:SPECIAL_DEFENSE]=31
+:       : pkmn.iv[:SPEED]=31
+:       : pbAddPokemon(pkmn)
+@>Text: I spent a long time trying to find this specimen.
+ :    : Several years, even!
+@>Text: Unfortunately by the time I found it, I was too old
+ :    : to make proper use of it.
+@>Text: Perhaps you can give it a better life than I could have.
+@>
+
+#------------------------------------------------------------------------------
+Event ID: 005
+Event Name: Move Relearner
+(X,Y): (021,005)
+
+Page #1
+Conditions
+None
+
+Autonomous Movement
+Type: Fixed
+Speed: 3: Slow
+Freq: 3: Low
+Options Enabled
+Move Animation
+Trigger: Action Button
+
+List of Event Commands:
+@>
+
+#------------------------------------------------------------------------------
+Event ID: 006
+Event Name: Move Deleter
+(X,Y): (024,005)
+
+Page #1
+Conditions
+None
+
+Autonomous Movement
+Type: Fixed
+Speed: 3: Slow
+Freq: 3: Low
+Options Enabled
+Move Animation
+Trigger: Action Button
+
+List of Event Commands:
+@>
+
+#------------------------------------------------------------------------------
+Event ID: 007
+Event Name: Name Rater
+(X,Y): (027,008)
+
+Page #1
+Conditions
+None
+
+Autonomous Movement
+Type: Fixed
+Speed: 3: Slow
+Freq: 3: Low
+Options Enabled
+Move Animation
+Trigger: Action Button
+
+List of Event Commands:
+@>
+
+#------------------------------------------------------------------------------
+Event ID: 008
+Event Name: Hidden Power Sage
+(X,Y): (027,011)
+
+Page #1
+Conditions
+None
+
+Autonomous Movement
+Type: Fixed
+Speed: 3: Slow
+Freq: 3: Low
+Options Enabled
+Move Animation
+Trigger: Action Button
+
+List of Event Commands:
+@>
+
+#------------------------------------------------------------------------------
+Event ID: 009
+Event Name: Rotom Form Change Box
+(X,Y): (004,023)
+
+Page #1
+Conditions
+None
+
+Autonomous Movement
+Type: Fixed
+Speed: 3: Slow
+Freq: 3: Low
+Options Enabled
+Move Animation
+Trigger: Action Button
+
+List of Event Commands:
+@>
+
+#------------------------------------------------------------------------------
+Event ID: 010
+Event Name: Deoxys Meteorite
+(X,Y): (026,023)
+
+Page #1
+Conditions
+None
+
+Graphic: Object rock
+
+Autonomous Movement
+Type: Fixed
+Speed: 3: Slow
+Freq: 3: Low
+Options Enabled
+Move Animation
+Trigger: Action Button
+
+List of Event Commands:
+@>
+
+#------------------------------------------------------------------------------
+Event ID: 011
+Event Name: HP EV Trainer
+(X,Y): (013,017)
+
+Page #1
+Conditions
+None
+
+Autonomous Movement
+Type: Fixed
+Speed: 3: Slow
+Freq: 3: Low
+Options Enabled
+Move Animation
+Trigger: Action Button
+
+List of Event Commands:
+@>
+
+#------------------------------------------------------------------------------
+Event ID: 012
+Event Name: Atk EV Trainer
+(X,Y): (013,019)
+
+Page #1
+Conditions
+None
+
+Autonomous Movement
+Type: Fixed
+Speed: 3: Slow
+Freq: 3: Low
+Options Enabled
+Move Animation
+Trigger: Action Button
+
+List of Event Commands:
+@>
+
+#------------------------------------------------------------------------------
+Event ID: 013
+Event Name: Def EV Trainer
+(X,Y): (013,021)
+
+Page #1
+Conditions
+None
+
+Autonomous Movement
+Type: Fixed
+Speed: 3: Slow
+Freq: 3: Low
+Options Enabled
+Move Animation
+Trigger: Action Button
+
+List of Event Commands:
+@>
+
+#------------------------------------------------------------------------------
+Event ID: 014
+Event Name: Spd EV Trainer
+(X,Y): (017,017)
+
+Page #1
+Conditions
+None
+
+Autonomous Movement
+Type: Fixed
+Speed: 3: Slow
+Freq: 3: Low
+Options Enabled
+Move Animation
+Trigger: Action Button
+
+List of Event Commands:
+@>
+
+#------------------------------------------------------------------------------
+Event ID: 015
+Event Name: SDef EV Trainer
+(X,Y): (017,019)
+
+Page #1
+Conditions
+None
+
+Autonomous Movement
+Type: Fixed
+Speed: 3: Slow
+Freq: 3: Low
+Options Enabled
+Move Animation
+Trigger: Action Button
+
+List of Event Commands:
+@>
+
+#------------------------------------------------------------------------------
+Event ID: 016
+Event Name: SAtk EV Trainer
+(X,Y): (017,021)
+
+Page #1
+Conditions
+None
+
+Autonomous Movement
+Type: Fixed
+Speed: 3: Slow
+Freq: 3: Low
+Options Enabled
+Move Animation
+Trigger: Action Button
+
+List of Event Commands:
+@>
+
+#------------------------------------------------------------------------------
+Event ID: 017
+Event Name: Sandbox Proprietor (Trainer)
+(X,Y): (015,027)
+
+Page #1
+Conditions
+None
+
+Autonomous Movement
+Type: Fixed
+Speed: 3: Slow
+Freq: 3: Low
+Options Enabled
+Move Animation
+Trigger: Action Button
+
+List of Event Commands:
+@>
+
+#------------------------------------------------------------------------------
+Event ID: 018
+Event Name: Move Tutor 1
+(X,Y): (003,008)
+
+Page #1
+Conditions
+None
+
+Autonomous Movement
+Type: Fixed
+Speed: 3: Slow
+Freq: 3: Low
+Options Enabled
+Move Animation
+Trigger: Action Button
+
+List of Event Commands:
+@>
+
+#------------------------------------------------------------------------------
+Event ID: 019
+Event Name: Move Tutor 2
+(X,Y): (003,011)
+
+Page #1
+Conditions
+None
+
+Autonomous Movement
+Type: Fixed
+Speed: 3: Slow
+Freq: 3: Low
+Options Enabled
+Move Animation
+Trigger: Action Button
+
+List of Event Commands:
+@>
+
+#------------------------------------------------------------------------------
+Event ID: 020
+Event Name: PC
+(X,Y): (017,006)
+
+Page #1
+Conditions
+None
+
+Autonomous Movement
+Type: Fixed
+Speed: 3: Slow
+Freq: 3: Low
+Options Enabled
+Move Animation
+Trigger: Action Button
+
+List of Event Commands:
+@>Conditional Branch: Player is facing Up
+ @>Text: Now accessing the Sandbox Computer System,
+  :    : Ver. 1.23b - Meteorfall Edition.
+ @>Text: Which partition would you like to access?
+ @>Show Choices: Sandbox Partition, Pokemon Center Partition
+ (When Cancel: Choice 2)
+ : When [Sandbox Partition]
+  @>Text: \se[PC open]\PN booted up Pandora's Partition.
+  @>Call Common Event: Passcode System
+  @>
+ : When [Pokemon Center Partition]
+  @>Script: pbPokeCenterPC
+  @>
+ : Branch End
+ @>Text: Shutting down the Sandbox Computer System.
+ @>
+: Branch End
 @>
 
 #------------------------------------------------------------------------------
@@ -90778,11 +93998,40 @@ List of Event Commands:
 
 #==============================================================================
 Common Event ID: 092
-Common Event Name: 
+Common Event Name: Sandbox PC
 
 Trigger: None
 
 List of Event Commands:
+@>Text: Which function would you like to access?
+@>Show Choices: Wonder Trade Uplink, Sandbox ATM, Log Off
+(When Cancel: Choice 3)
+: When [Wonder Trade Uplink]
+ @>Comment: --- Wonder Trade
+ @>Text: Accessing the Worldwide Uplink Array.
+ @>Text: Please be advised, our servers were recently 
+  :    : hacked, and we are not back to optimal standards.
+ @>Text: As a result, an influx of illegally leveled Pokémon and Puppets 
+  :    : are making their way through the servers.
+ @>Text: Is this acceptable?
+ @>Show Choices: Yes, No
+ (When Cancel: Choice 2)
+ : When [Yes]
+  @>Text: Initalizing trade system, please stand by\..\..\..
+   :    : \wtnp[20]\se[PC open]
+  @>Comment: pbWonderTrade(1,[:MISSINGNO],[:MISSINGNO])
+   :       : MissingNo is the only Wonder Trade restriction.
+  @>Script: 
+  @>
+ : When [No]
+  @>
+ : Branch End
+ @>
+: When [Sandbox ATM]
+ @>
+: When [Log Off]
+ @>
+: Branch End
 @>
 
 #==============================================================================
