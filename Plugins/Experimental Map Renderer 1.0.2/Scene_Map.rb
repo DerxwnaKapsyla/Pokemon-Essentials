@@ -51,10 +51,12 @@ class Scene_Map
   end
 
   def update
+
+  def update
     loop do
+      updateMaps
       pbMapInterpreter.update
       $game_player.update
-      updateMaps
       $game_system.update
       $game_screen.update
       break unless $game_temp.player_transferring
@@ -71,7 +73,7 @@ class Scene_Map
     if $game_temp.transition_processing
       $game_temp.transition_processing = false
       if $game_temp.transition_name == ""
-        Graphics.transition
+        Graphics.transition(20)
       else
         Graphics.transition(40, "Graphics/Transitions/" + $game_temp.transition_name)
       end
@@ -91,6 +93,10 @@ class Scene_Map
         end
       elsif Input.press?(Input::F9)
         $game_temp.debug_calling = true if $DEBUG
+	#####################
+	  elsif Input.press?(Input::ALT)
+		$PokemonTemp.specialActivation = true
+	#####################
       end
     end
     unless $game_player.moving?
@@ -106,6 +112,15 @@ class Scene_Map
         $PokemonTemp.hiddenMoveEventCalling = false
         $game_player.straighten
         Events.onAction.trigger(self)
+	#####################
+	  elsif $PokemonTemp.specialActivation
+		$PokemonTemp.specialActivation = false
+		$game_player.straighten
+		if $game_map.map_id == 244
+			pbMagnetPull
+		end
+      end
+	#####################
       end
     end
   end

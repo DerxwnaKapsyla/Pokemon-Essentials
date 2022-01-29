@@ -23,7 +23,7 @@ MENU_FILE_PATH = "Graphics/Pictures/Voltseon's Pause Menu/"
 # need to be loaded
 MENU_ENTRIES = [
   "MenuEntryPokemon", "MenuEntryPokedex", "MenuEntryBag", "MenuEntryPokegear",
-  "MenuEntryTrainer", "MenuEntryMap", "MenuEntryExitBugContest",
+  "MenuEntryJukebox","MenuEntryTrainer", "MenuEntryMap", "MenuEntryExitBugContest",
   "MenuEntryExitSafari", "MenuEntrySave", "MenuEntryDebug", "MenuEntryOptions",
   "MenuEntryEncounterList", "MenuEntryQuests", "MenuEntryQuit"
 ]

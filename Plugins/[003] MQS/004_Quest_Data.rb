@@ -321,11 +321,12 @@ module QuestModule
   
   Quest107 = {
     :ID => "107",
-    :Name => "The Ultimate Collector: Retribution - III",
+    :Name => "The Ultimate Collector: Retribution - II",
     :QuestGiver => "Side Quest",
     :Stage1 => "Go after the haywire Ruukoto Puppets.",
+	:Stage2 => "Return to Dark Last Word Ruukoto.",
     :Location1 => "Silph Co.",
-    :QuestDescription => "A disaster unfolded during the presentation! The Ruukoto Puppets that were there to assist went haywire and stole the Synthetic Puppet Prototypes and are now reaking havoc! I've been asked to put a stop to it, given I'm the only one present capable of doing so.",
+    :QuestDescription => "A disaster unfolded during the presentation! A Puppet that identifies itself as Dark Last Word Ruukoto and its ilk stole all of the Prototype Synthetic PokéPuppets! On top of that, their leader wants me to battle all of them to 'Prove their integiry'.",
     :RewardString => "nil"
   }  
   
@@ -334,13 +335,15 @@ module QuestModule
     :Name => "Ghost of a Chance",
     :QuestGiver => "Side Quest",
     :Stage1 => "Battle the Lavender Town Gym Leader.",
+	:Stage2 => "Clear out the mischevous Puppets from the gym.",
+	:Stage3 => "Return to Selene in Lavender Gym.",
     :Location1 => "Lavender Town",
     :QuestDescription => "One of the Priestesses of Lavender Tower asked a favor of me; apparently scouts are coming to check out the new Lavender Gym, and she wants to make sure her granddaughter, Selene, is up to the task of being a Gym Leader. After showcasing my skills in Lavender Tower, how am I to refuse?",
     :RewardString => "nil"
   }
   
-  Quest108 = {
-    :ID => "108",
+  Quest109 = {
+    :ID => "109",
     :Name => "Darkness Within Darkness",
     :QuestGiver => "Side Quest",
     :Stage1 => "Investigate the Celadon Game Corner.",

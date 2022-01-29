@@ -18,6 +18,12 @@ BattleHandlers::StatLossImmunityAbility.copy(:CLEARBODY,:WHITESMOKE,:HAKUREIMIKO
 
 BattleHandlers::StatLossImmunityAbility.copy(:HYPERCUTTER,:HISTRENGTH)
 
+BattleHandlers::PriorityChangeAbility.add(:FLOWOFTIME,
+  proc { |ability,battler,move,pri|
+    next pri+1 if battler.hp<=(battler.totalhp/2)
+  }
+)
+
 BattleHandlers::MoveImmunityTargetAbility.add(:FLASHFIRE,
   proc { |ability,user,target,move,type,battle|
     next false if user.index==target.index

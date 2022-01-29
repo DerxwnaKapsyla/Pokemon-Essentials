@@ -66,5 +66,6 @@
 #EDIT THIS ARRAY:
 REPLACE_BGMS = [
 				["Intro_Help", "W-004. Help!.ogg", [9, 13]],
-				["Takeover_1", "W-021. Team Rocket Attacks.ogg", [79, 239]]
+				["Takeover_1", "W-021. Team Rocket Attacks.ogg", [79, 239]],
+				["Retribution", "W-024. Silph Co. Takeover (Ruukoto Style)", [247, 263, 264]]
                ]

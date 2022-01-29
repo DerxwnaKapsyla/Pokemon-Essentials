@@ -84,7 +84,8 @@ class Interpreter
 	:ELDERPRIESTESS		=> 'P-019. Last Occultism',
 	:TEACHER			=> 'P-016. Trainers\' Eyes Meet (Artist)',
 	:SCHOOLKID_m		=> 'P-021. Trainers\' Eyes Meet (Youngster-2).ogg',
-	:SCHOOLKID_f		=> 'P-020. Trainers\' Eyes Meet (Girl 2).ogg'
+	:SCHOOLKID_f		=> 'P-020. Trainers\' Eyes Meet (Girl 2).ogg',
+	:HAYWIRE2			=> 'P-023. False Strawberry (Intro).ogg'
 #	:CYCLIST_m			=> '',
 #	:CYCLIST_f			=> ''
   }

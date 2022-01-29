@@ -3,7 +3,7 @@
 [000]
 Home = 173,33,5,2
 WildBattleBGM = B-011. Battle vs. Puppet (Early Game).ogg
-TrainerBattleBGM = B-003. Doll Judgement ~ The Girl Who Played With People's Shapes.ogg
+TrainerBattleBGM = B-016. Battle vs. Trainer.ogg
 WildVictoryME = Battle victory wild.ogg
 TrainerVictoryME = Battle victory trainer.ogg
 SurfBGM = U-007. Surf (HgSs Surf).ogg
@@ -135,6 +135,12 @@ MapPosition = 0,20,8
 #-------------------------------
 [040]
 # Celadon City
+Name = Celadon City
+Outdoor = true
+ShowArea = true
+Bicycle = true
+Weather = Rain,10
+MapPosition = 0,13,8
 BattleBack = city
 #-------------------------------
 [041]
@@ -223,7 +229,14 @@ Name = Route 5
 #-------------------------------
 [052]
 # Route 7
+Name = Route 7
+Outdoor = true
+ShowArea = true
+Bicycle = true
+Weather = Rain,10
+MapPosition = 0,14,8
 BattleBack = field
+MapSize = 2,11
 #-------------------------------
 [053]
 # Route 8
@@ -844,6 +857,11 @@ Name = Route 10
 HealingSpot = 55,27,43
 MapPosition = 0,20,6
 #-------------------------------
+[247]
+# Silph Co.
+Name = Silph Co.
+MapPosition = 0,16,8
+#-------------------------------
 [248]
 # Rock Tunnel
 ShowArea = true
@@ -879,6 +897,8 @@ Environment = Graveyard
 [252]
 # Lavender Town Gym
 Name = Lavender Town
+MapPosition = 0,20,8
+DarkMap = true
 BattleBack = distortion
 #-------------------------------
 [253]
@@ -940,13 +960,16 @@ Environment = Cave
 [263]
 # Silph Co.: Presentation Room
 Name = Silph Co.
+MapPosition = 0,16,8
+BattleBack = indoor2
 #-------------------------------
 [264]
-# Silph Co.: Workstations
+# Silph Co.: R&D
 Name = Silph Co.
+MapPosition = 0,16,8
+BattleBack = indoor2
 #-------------------------------
 [265]
-# Silph Co.: Development
 Name = Silph Co.
 #-------------------------------
 [266]
@@ -998,3 +1021,10 @@ MapPosition = 0,20,14
 # Route 15 - Gatehouse
 Name = Route 15
 MapPosition = 0,15,14
+#-------------------------------
+[291]
+# Lavender Town Gym
+Name = Lavender Town
+MapPosition = 0,20,8
+BattleBack = distortion
+TrainerVictoryME = Battle victory leader.ogg

@@ -291,3 +291,17 @@ class MenuEntryQuests < MenuEntry
 
   def selectable?; return defined?(hasAnyQuests?) && hasAnyQuests?; end
 end
+
+#-------------------------------------------------------------------------------
+# Entry for Music Room by Marin
+#-------------------------------------------------------------------------------
+class MenuEntryJukebox < MenuEntry
+  def initialize
+    @icon = "menuDebug"
+    @name = "Music Room"
+  end
+
+  def selected(menu); pbFadeOutIn(99999) { EnhancedJukebox.new }; end
+
+  def selectable?; return true; end
+end
