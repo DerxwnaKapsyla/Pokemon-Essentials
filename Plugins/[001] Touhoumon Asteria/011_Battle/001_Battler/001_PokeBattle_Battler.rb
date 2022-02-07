@@ -16,7 +16,7 @@ class PokeBattle_Battler
 		  case $game_variables[Settings::SPECIAL_BATTLE_VARIABLE]
 			when 1	then sbName = "the territorial"	 ; sbName2 = "The territorial" 
 			when 2	then sbName = "the aggressive" 	 ; sbName2 = "The aggressive"
-			when 3	then sbName = "Lifrana's"	 	 ; sbName2 = "Lifrana's"
+			when 3	then sbName = "Celadon Gym's"	 ; sbName2 = "Celadon Gym's"
 			when 4	then sbName = "a trainer's"		 ; sbName2 = "A trainer's"
 		    else		 sbName = "the wild"		 ; sbName2 = "The wild"
 		  end

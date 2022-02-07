@@ -323,8 +323,9 @@ module QuestModule
     :ID => "107",
     :Name => "The Ultimate Collector: Retribution - II",
     :QuestGiver => "Side Quest",
-    :Stage1 => "Go after the haywire Ruukoto Puppets.",
+    :Stage1 => "Go after the rogue Ruukoto Puppets.",
 	:Stage2 => "Return to Dark Last Word Ruukoto.",
+	:Stage3 => "Input 23112013 into a Pokémon Center terminal.",
     :Location1 => "Silph Co.",
     :QuestDescription => "A disaster unfolded during the presentation! A Puppet that identifies itself as Dark Last Word Ruukoto and its ilk stole all of the Prototype Synthetic PokéPuppets! On top of that, their leader wants me to battle all of them to 'Prove their integiry'.",
     :RewardString => "nil"

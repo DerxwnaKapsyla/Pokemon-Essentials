@@ -149,6 +149,12 @@ BattleBack = city
 #-------------------------------
 [042]
 # Fuchsia City
+Name = Fuchsia City
+Outdoor = true
+ShowArea = true
+Bicycle = true
+Weather = Rain,10
+MapPosition = 0,14,14
 BattleBack = city
 #-------------------------------
 [043]
@@ -250,6 +256,7 @@ MapSize = 3,111
 #-------------------------------
 [054]
 # Route 9
+Name = Route 9
 Outdoor = true
 ShowArea = true
 Bicycle = true
@@ -261,6 +268,7 @@ Environment = Grass
 #-------------------------------
 [055]
 # Route 10
+Name = Route 10
 Outdoor = true
 ShowArea = true
 Bicycle = true
@@ -271,6 +279,7 @@ MapSize = 1,11
 #-------------------------------
 [056]
 # Route 11
+Name = Route 11
 Outdoor = true
 ShowArea = true
 Bicycle = true
@@ -281,7 +290,7 @@ MapSize = 3,111
 #-------------------------------
 [057]
 # Route 12
-Name = 
+Name = Route 12
 Outdoor = true
 ShowArea = true
 Bicycle = true
@@ -291,6 +300,7 @@ MapSize = 1,1111
 #-------------------------------
 [058]
 # Route 13
+Name = Route 13
 Outdoor = true
 ShowArea = true
 Bicycle = true
@@ -300,7 +310,7 @@ MapSize = 3,111
 #-------------------------------
 [059]
 # Route 14
-Name = 
+Name = Route 14
 Outdoor = true
 ShowArea = true
 Bicycle = true
@@ -310,10 +320,11 @@ MapSize = 1,11
 #-------------------------------
 [060]
 # Route 15
+Name = Route 15
 Outdoor = true
 ShowArea = true
 Bicycle = true
-BicycleAlways = true
+BicycleAlways = false
 Weather = Rain,10
 MapPosition = 0,15,14
 MapSize = 2,11
@@ -727,7 +738,7 @@ BattleBack = cerulean
 # Cerulean City Houses
 Name = Cerulean City
 MapPosition = 0,16,5
-BattleBack = indoor1
+BattleBack = indoor2
 #-------------------------------
 [219]
 # Poké Mart
@@ -766,6 +777,7 @@ Name = Vermilion City
 #-------------------------------
 [228]
 # Route 10
+Name = Route 10
 Outdoor = true
 ShowArea = true
 Bicycle = true
@@ -970,7 +982,10 @@ MapPosition = 0,16,8
 BattleBack = indoor2
 #-------------------------------
 [265]
-Name = Silph Co.
+# Pokémon Center
+Name = Fuchsia City
+HealingSpot = 42,25,30
+MapPosition = 0,14,14
 #-------------------------------
 [266]
 # Route 3
@@ -1028,3 +1043,20 @@ Name = Lavender Town
 MapPosition = 0,20,8
 BattleBack = distortion
 TrainerVictoryME = Battle victory leader.ogg
+#-------------------------------
+[292]
+# Route 8
+#-------------------------------
+[301]
+# [D] Celadon Gym (Rooms)
+Name = Celadon Gym
+MapPosition = 0,13,8
+BattleBack = flowergarden
+WildBattleBGM = B-012. Battle vs. Puppet (Forest).ogg
+#-------------------------------
+[302]
+# [D] Celadon Gym (Hallways)
+Name = Celadon Gym
+MapPosition = 0,13,8
+BattleBack = flowergarden
+WildBattleBGM = B-012. Battle vs. Puppet (Forest).ogg

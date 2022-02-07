@@ -224,26 +224,30 @@ class EnhancedJukebox
           # Determine if this track contains spoilers based on the SHOWIFSWITCH tag
           if metadata.has?("SHOWIFSWITCH")
             conditions = metadata.get("SHOWIFSWITCH")
-            spoiler ||= conditions.any? do |c|
-              if c.include?(",")
-                # Format SWITCH,BOOLEAN
-                switch = c.split(",")[0].to_i
-                value = c.split(",")[1].downcase == "true"
-                next $game_switches[switch] != value
-              else
-                # Format SWITCH
-                switch = c.to_i
-                next !$game_switches[switch]
+            spoiler ||= conditions.any? do |line|
+              next line.split(",").any? do |c|
+                if c.include?("|")
+                  # Format SWITCH,BOOLEAN
+                  switch = c.split("|")[0].to_i
+                  value = c.split("|")[1].downcase == "true"
+                  next $game_switches[switch] != value
+                else
+                  # Format SWITCH
+                  switch = c.to_i
+                  next !$game_switches[switch]
+                end
               end
             end
           end
           # Determine if this track contains spoilers based on the SHOWIFVARIABLE tag
           if metadata.has?("SHOWIFVARIABLE")
             conditions = metadata.get("SHOWIFVARIABLE")
-            spoiler ||= conditions.any? do |c|
-              variable = c.split(",")[0].to_i
-              value = c.split(",")[1].to_i
-              next $game_variables[variable] < value
+            spoiler ||= conditions.any? do |line|
+              next line.split(",").any? do |c|
+                variable = c.split("|")[0].to_i
+                value = c.split("|")[1].to_i
+                next $game_variables[variable] < value
+              end
             end
           end
           # Determine if this track contains spoilers based on the SHOWIFLOCATION tag
@@ -410,7 +414,7 @@ class EnhancedJukebox
           @sel -= 1
         end
       end
-      if Input.triggerex?(Input::PAGEDOWN)
+      if Input.repeat?(Input::JUMPDOWN)
         if @sel < ITEMS_DRAWN - SCROLL_FROM
           if @top + ITEMS_DRAWN == @items.size
             @sel = ITEMS_DRAWN - 1
@@ -431,7 +435,7 @@ class EnhancedJukebox
           end
         end
       end
-      if Input.triggerex?(Input::PAGEUP)
+      if Input.repeat?(Input::JUMPUP)
         if @sel >= SCROLL_FROM
           @sel = @top == 0 ? 0 : SCROLL_FROM - 1
         elsif @top > 0
@@ -629,7 +633,7 @@ class EnhancedJukebox
         @sprites["down"].visible = true
         @sprites["up"].visible = can_scroll_up?
       end
-      if Input.triggerex?(Input::PAGEDOWN) && can_scroll_down?
+      if Input.repeat?(Input::JUMPDOWN) && can_scroll_down?
         # To ensure you end up at the same spot as you would if you were to scroll manually,
         # this adds the couple pixels you might overshoot the max bitmap height in case of
         # a non-perfect division
@@ -639,7 +643,7 @@ class EnhancedJukebox
         @sprites["down"].visible = false
         @sprites["up"].visible = can_scroll_up?
       end
-      if Input.triggerex?(Input::PAGEUP) && can_scroll_up?
+      if Input.repeat?(Input::JUMPUP) && can_scroll_up?
         @sprites["text"].oy = 0
         @sprites["down"].visible = can_scroll_down?
         @sprites["up"].visible = false
@@ -857,9 +861,4 @@ class PokemonPokegearScreen
     end
     @scene.pbEndScene
   end
-end
-
-module Input
-  PAGEUP   = 33
-  PAGEDOWN = 34
 end
