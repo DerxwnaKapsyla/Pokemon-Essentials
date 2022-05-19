@@ -28,6 +28,7 @@ def pbBattleAnimationOverride(viewport,battletype=0,foe=nil)
 	 when 13; pbCommonEvent(111)	 # Vs. Yuyuko Omega (Puppet)
 	 when 14; pbCommonEvent(111)	 # Vs. Sariel Omega (Puppet)
 	 when 15; pbCommonEvent(14)		 # Vs. Selene
+	 when 16; pbCommonEvent(123)	 # Vs. Sabrina (Double Battle)
      end
      return true                # Note that the battle animation is done
    end  

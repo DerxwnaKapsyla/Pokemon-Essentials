@@ -226,7 +226,9 @@ module QuestModule
     :Name => "Welcome to the Jungle - I (Renko)",
     :QuestGiver => "Main Scenario Quest",
     :Stage1 => "Meet up with Maribel in Fuchsia City.",
-    :Location1 => "Lavender Town",
+	:Stage2 => "Meet up with Maribel at the Safari Zone.",
+    :Location1 => "Fuchsia City",
+	:Location2 => "Fuchsia City",
     :QuestDescription => "The Lavender Town lead may not have proven as promising as we thought, but I did manage to get some valuable information out of it! For now, I should meet back up with Mary over in Fuchsia City and share our findings.",
     :RewardString => "nil"
   }
@@ -236,10 +238,43 @@ module QuestModule
     :Name => "Welcome to the Jungle - I (Maribel)",
     :QuestGiver => "Main Scenario Quest",
     :Stage1 => "Meet up with Renko in Fuchsia City.",
-    :Location1 => "Lavender Town",
+	:Stage1 => "Meet up with Renko at the Safari Zone.",
+    :Location1 => "Fuchsia City",
+	:Location2 => "Fuchsia City",
     :QuestDescription => "The Lavender Town lead may not have proven as promising as we thought, but I did manage to get some valuable information out of it! For now, I should meet back up with Renko over in Fuchsia City and share our findings.",
     :RewardString => "nil"
   }
+  
+  Quest24 = {
+    :ID => "24",
+    :Name => "Welcome to the Jungle - II",
+    :QuestGiver => "Main Scenario Quest",
+    :Stage1 => "Defeat Team Rocket in the Safari Zone.",
+    :Location1 => "Lavender Town",
+    :QuestDescription => "Looks like Team Rocket actually is here in Fuchsia City, surely up to no good in the Safari Zone. But what they could want in the abandoned swamplands of the Safari Zone is anyone's guess. Either way, it can't be good.",
+    :RewardString => "nil"
+  }
+  
+  Quest25 = {
+    :ID => "25",
+    :Name => "Heat of the Moment",
+    :QuestGiver => "Main Scenario Quest",
+    :Stage1 => "Find and defeat Team Rocket on Cinnabar Island",
+    :Location1 => "Cinnabar Island",
+    :QuestDescription => "Once more we go our separate ways. While the lead in the Safari Zone is temporarily halted, there's still other leads we can pursue. However, I have a really weird feeling about Team Rocket's plans. I dunno what it is but... I feel like I need to find out more, and knock them down a peg in the process.",
+    :RewardString => "nil"
+  }  
+  
+  Quest26 = {
+    :ID => "26",
+    :Name => "New Lands Ahead!",
+    :QuestGiver => "Main Scenario Quest",
+    :Stage1 => "Make contact with Prof. Elm in New Bark Town",
+    :Location1 => "New Bark Town",
+    :QuestDescription => "---",
+    :RewardString => "nil"
+  }  
+  
   
 #----- Side Quests -----#
 
@@ -350,6 +385,16 @@ module QuestModule
     :Stage1 => "Investigate the Celadon Game Corner.",
     :Location1 => "Celadon City",
     :QuestDescription => "A rumor seems to be going around about mysterious noises coming from the Game Corner at night. However, nobody can find the source. Clearly it's time to put on my detective hat and investigate!",
+    :RewardString => "nil"
+  }
+  
+  Quest110 = {
+    :ID => "110",
+    :Name => "(Fuchsia Side Quest)",
+    :QuestGiver => "Side Quest",
+    :Stage1 => "Meet up with the Warden's Granddaughter at the Safari Zone Ruins.",
+    :Location1 => "Fuchsia City",
+    :QuestDescription => "(Description)",
     :RewardString => "nil"
   }
   

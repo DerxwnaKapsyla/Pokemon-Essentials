@@ -257,6 +257,7 @@ GameData::Evolution.register({
   },
   :after_evolution_proc => proc { |pkmn, new_species, parameter, evo_species|
     next false if $Trainer.party_full?
+	next false if $game_map.name == "Saffron City Gym" # Derx: Necessary change to not break Saffron Gym
     next false if !$PokemonBag.pbHasItem?(:POKEBALL)
     PokemonEvolutionScene.pbDuplicatePokemon(pkmn, new_species)
     $PokemonBag.pbDeleteItem(:POKEBALL)
