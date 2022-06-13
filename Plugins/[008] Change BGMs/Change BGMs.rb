@@ -71,7 +71,7 @@ class Game_Map
 
   #update the bgm to what it should be rn (I tinkered with load_data)
   def update_bgm
-    temp = load_data(sprintf("Data/Map%03d.rxdata",map_id))
+    temp = load_data(sprintf("Data/Map%03d.rxdata", map_id))
     @map.bgm = temp.bgm
   end
   
@@ -94,7 +94,7 @@ end
 
 #yeah sorry for changing the method here :D you're getting what I want, not 
 #what your gamefiles say
-alias load_data_old_aiyinsi load_data
+alias load_data_old_aiyinsi load_data unless defined?(load_data_old_aiyinsi)
 def load_data(file)
   ret = load_data_old_aiyinsi(file)
   if file.start_with?("Data/Map") && $PokemonGlobal && $PokemonGlobal.bgm_state_array && ret.respond_to?('bgm')

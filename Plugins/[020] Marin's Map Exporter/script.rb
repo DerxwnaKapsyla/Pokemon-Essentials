@@ -15,7 +15,7 @@
 
 # This is where the map will be exported to once it has been created.
 # If this file already exists, it is overwritten.
-ExportedMapFilename = "exported.png"
+EXPORTED_FILENAME = "exported.png"
 
 
 
@@ -78,13 +78,11 @@ def pbExportAMap
   vp.dispose
 end
 
-DebugMenuCommands.register("exportmap", {
-  "parent"      => "fieldmenu",
-  "name"        => _INTL("Export a Map"),
-  "description" => _INTL("Choose a map to export it to a PNG."),
-  "effect"      => proc { |sprites, viewport|
-    pbExportAMap
-  }
+MenuHandlers.add(:debug_menu, :exportmap, {
+  "name"        => "Export a Map",
+  "parent"      => :field_menu,
+  "description" => "Choose a map to export it as a PNG.",
+  "effect"      => proc { |sprites, viewport| pbExportAMap }
 })
 
 class MarinMapExporter
@@ -140,7 +138,7 @@ class MarinMapExporter
       @result.blt($game_player.x * 32 + 16 - bmp.width / 8, ($game_player.y + 1) * 32 - bmp.height / 4,
           bmp, Rect.new(0, bmp.height / 4 * (dir / 2 - 1), bmp.width / 4, bmp.height / 4))
     end
-    @result.save_to_png(ExportedMapFilename)
+    @result.save_to_png(EXPORTED_FILENAME)
     Input.update
   end
   

@@ -11,63 +11,53 @@
 class HallOfFame_Scene
   ENTRYMUSIC = "U-005. Broken Moon (Hall of Fame Mix).ogg" # Derx: Hall of Fame music changed
   
-  def writePokemonData(pokemon,hallNumber=-1)
-    overlay=@sprites["overlay"].bitmap
+  def writePokemonData(pokemon, hallNumber = -1)
+    overlay = @sprites["overlay"].bitmap
     overlay.clear
-    pokename=pokemon.name
-    speciesname=pokemon.speciesName
+    pokename = pokemon.name
+    speciesname = pokemon.speciesName
     pkmn_data = GameData::Species.get_species_form(pokemon.species, pokemon.form)
-	if pkmn_data.generation <20
-	  if pokemon.male?
-		speciesname+="♂"
+    if pkmn_data.has_flag?("Puppet")
+      if pokemon.male?
+      	speciesname += "¹"
       elsif pokemon.female?
-		speciesname+="♀"
+     	speciesname += "²"
       end
-	else
-	  if pokemon.male?
-		speciesname
+    else
+      if pokemon.male?
+      	speciesname += "♂"
       elsif pokemon.female?
-		speciesname
+     	speciesname += "♀"
       end
-	end
-    pokename+="/"+speciesname
-    pokename=_INTL("Egg")+"/"+_INTL("Egg") if pokemon.egg?
-    idno=(pokemon.owner.name.empty? || pokemon.egg?) ? "?????" : sprintf("%05d",pokemon.owner.public_id)
+    end
+    pokename += "/" + speciesname
+    pokename = _INTL("Egg") + "/" + _INTL("Egg") if pokemon.egg?
+    idno = (pokemon.owner.name.empty? || pokemon.egg?) ? "?????" : sprintf("%05d", pokemon.owner.public_id)
     dexnumber = _INTL("No. ???")
     if !pokemon.egg?
-      species_data = GameData::Species.get(pokemon.species)
-      dexnumber = _ISPRINTF("No. {1:03d}",species_data.id_number)
+      number = @nationalDexList.index(pokemon.species) || 0
+      dexnumber = _ISPRINTF("No. {1:03d}", number)
     end
-    textPositions=[
-       [dexnumber,32,Graphics.height-86,0,BASECOLOR,SHADOWCOLOR],
-       [pokename,Graphics.width-192,Graphics.height-86,2,BASECOLOR,SHADOWCOLOR],
-       [_INTL("Lv. {1}",pokemon.egg? ? "?" : pokemon.level),
-           64,Graphics.height-54,0,BASECOLOR,SHADOWCOLOR],
-       [_INTL("IDNo.{1}",pokemon.egg? ? "?????" : idno),
-           Graphics.width-192,Graphics.height-54,2,BASECOLOR,SHADOWCOLOR]
+    textPositions = [
+      [dexnumber, 32, Graphics.height - 74, 0, BASECOLOR, SHADOWCOLOR],
+      [pokename, Graphics.width - 192, Graphics.height - 74, 2, BASECOLOR, SHADOWCOLOR],
+      [_INTL("Lv. {1}", pokemon.egg? ? "?" : pokemon.level),
+       64, Graphics.height - 42, 0, BASECOLOR, SHADOWCOLOR],
+      [_INTL("IDNo.{1}", pokemon.egg? ? "?????" : idno),
+       Graphics.width - 192, Graphics.height - 42, 2, BASECOLOR, SHADOWCOLOR]
     ]
-    if (hallNumber>-1)
-      textPositions.push([_INTL("Hall of Fame No."),Graphics.width/2-104,-6,0,BASECOLOR,SHADOWCOLOR])
-      textPositions.push([hallNumber.to_s,Graphics.width/2+104,-6,1,BASECOLOR,SHADOWCOLOR])
+    if hallNumber > -1
+      textPositions.push([_INTL("Hall of Fame No."), (Graphics.width / 2) - 104, 6, 0, BASECOLOR, SHADOWCOLOR])
+      textPositions.push([hallNumber.to_s, (Graphics.width / 2) + 104, 6, 1, BASECOLOR, SHADOWCOLOR])
     end
-    pbDrawTextPositions(overlay,textPositions)
-	iconoffset=overlay.text_size(pokename).width/2 + Graphics.width-192
-	if pkmn_data.generation == 20 && pokemon.male?
-	  pbDrawImagePositions(overlay,[
-		["Graphics/Icons/yin",iconoffset,Graphics.height-76,1,0,-1,-1]
-	  ])
-	elsif pkmn_data.generation == 20 && pokemon.female?
-		pbDrawImagePositions(overlay,[
-		  ["Graphics/Icons/yang",iconoffset,Graphics.height-76,1,0,-1,-1]
-		])
-	end
+    pbDrawTextPositions(overlay, textPositions)
   end
   
   def writeWelcome
-    overlay=@sprites["overlay"].bitmap
+    overlay = @sprites["overlay"].bitmap
     overlay.clear
-    pbDrawTextPositions(overlay,[[_INTL("Welcome to the Hall of Fame!"),
-       Graphics.width/2,Graphics.height-80,2,BASECOLOR,SHADOWCOLOR]])
+    pbDrawTextPositions(overlay, [[_INTL("Welcome to the Hall of Fame!"),
+                                   Graphics.width / 2, Graphics.height - 68, 2, BASECOLOR, SHADOWCOLOR]])
 	pbSEPlay("Applause") # Derx: Official applause sound effect
   end
 end

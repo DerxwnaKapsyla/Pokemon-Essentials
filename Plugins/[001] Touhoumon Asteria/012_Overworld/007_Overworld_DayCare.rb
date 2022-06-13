@@ -5,83 +5,92 @@
 #==============================================================================#
 # Changes in this section include the following:
 #	* Removes explicit references to Pokemon
+#	* Changes the way text is displayed in the choice box to display Yin/Yang
+#	  glyphs for gender.
 #==============================================================================#
-def pbDayCareDeposit(index)
-  for i in 0...2
-    next if $PokemonGlobal.daycare[i][0]
-    $PokemonGlobal.daycare[i][0] = $Trainer.party[index]
-    $PokemonGlobal.daycare[i][1] = $Trainer.party[index].level
-    $PokemonGlobal.daycare[i][0].heal
-    $Trainer.party[index] = nil
-    $Trainer.party.compact!
-    $PokemonGlobal.daycareEgg      = 0
-    $PokemonGlobal.daycareEggSteps = 0
-    return
+class DayCare
+    def choice_text
+      return nil if !filled?
+	  pkmn_data = GameData::Species.get_species_form(pokemon.species, pokemon.form)
+	  if pkmn_data.has_flag?("Puppet")
+		if @pokemon.male?
+		  return _INTL("{1} (¹, Lv.{2})", @pokemon.name, @pokemon.level)
+		elsif @pokemon.female?
+          return _INTL("{1} (², Lv.{2})", @pokemon.name, @pokemon.level)
+		end
+	  else
+		if @pokemon.male?
+		  return _INTL("{1} (♂, Lv.{2})", @pokemon.name, @pokemon.level)
+		elsif @pokemon.female?
+          return _INTL("{1} (♀, Lv.{2})", @pokemon.name, @pokemon.level)
+		end
+	  end
+      return _INTL("{1} (Lv.{2})", @pokemon.name, @pokemon.level)
+    end
+	
+  def self.choose(text, choice_var)
+    day_care = $PokemonGlobal.day_care
+    case day_care.count
+    when 0
+      raise _INTL("Nothing found in Day Care to choose from.")
+    when 1
+      day_care.slots.each_with_index { |slot, i| $game_variables[choice_var] = i if slot.filled? }
+    else
+      commands = []
+      indices = []
+      day_care.slots.each_with_index do |slot, i|
+        text = slot.choice_text
+        next if !text
+        commands.push(text)
+        indices.push(i)
+      end
+      commands.push(_INTL("CANCEL"))
+      command = pbMessage(text, commands, commands.length)
+      $game_variables[choice_var] = (command == commands.length - 1) ? -1 : indices[command]
+    end
   end
-  raise _INTL("No room to deposit")
-end
-
-def pbDayCareWithdraw(index)
-  if !$PokemonGlobal.daycare[index][0]
-    raise _INTL("There's nothing here...")
-  elsif $Trainer.party_full?
-    raise _INTL("Can't store anything else...")
-  else
-    $Trainer.party[$Trainer.party.length] = $PokemonGlobal.daycare[index][0]
-    $PokemonGlobal.daycare[index][0] = nil
-    $PokemonGlobal.daycare[index][1] = 0
-    $PokemonGlobal.daycareEgg = 0
-  end
-end
-
-
+  
 #==============================================================================#
 # Changes in this section include the following:
 #	* Removes explicit references to Pokemon
-#	* Changes the way text is displayed in the choice box to display Yin/Yang
-#	  icons for gender.
 #==============================================================================#
-def pbDayCareChoose(text,variable)
-  count = pbDayCareDeposited
-  if count==0
-    raise _INTL("There's nothing here...")
-  elsif count==1
-    $game_variables[variable] = ($PokemonGlobal.daycare[0][0]) ? 0 : 1
-  else
-    choices = []
-    for i in 0...2
-	  pkmn_data = GameData::Species.get_species_form(pokemon.species, pokemon.form)
-      pokemon = $PokemonGlobal.daycare[i][0]
-	  if pkmn_data.generation <20
-        if pokemon.male?
-		  choices.push(_ISPRINTF("<c3=585850,a8b8b8>{1:s} (<icon=yin>, Lv{2:d})</c3>",pokemon.name,pokemon.level))
-		elsif pokemon.female? && pkmn_data == 20
-          choices.push(_ISPRINTF("<c3=585850,a8b8b8>{1:s} (<icon=yang>, Lv{2:d})</c3>",pokemon.name,pokemon.level))
-		else
-		  choices.push(_ISPRINTF("{1:s} (Lv.{2:d})",pokemon.name,pokemon.level))
-		end
-	  else
-		if pokemon.male?
-          choices.push(_ISPRINTF("<c3=585850,a8b8b8>{1:s} (</c3><c3=0080f8,a8b8b8>♂</c3><c3=585850,a8b8b8>, Lv{2:d})</c3>",pokemon.name,pokemon.level))
-		elsif pokemon.female?
-          choices.push(_ISPRINTF("<c3=585850,a8b8b8>{1:s} (</c3><c3=f81818,a8b8b8>♀</c3><c3=585850,a8b8b8> Lv{2:d})</c3>",pokemon.name,pokemon.level))
-		else
-		  choices.push(_ISPRINTF("{1:s} (Lv.{2:d})",pokemon.name,pokemon.level))
-	    end
-      end
+  def self.deposit(party_index)
+    $stats.day_care_deposits += 1
+    day_care = $PokemonGlobal.day_care
+    pkmn = $player.party[party_index]
+    raise _INTL("Nothing at index {1} in party.", party_index) if pkmn.nil?
+    day_care.slots.each do |slot|
+      next if slot.filled?
+      slot.deposit(pkmn)
+      $player.party.delete_at(party_index)
+      day_care.reset_egg_counters
+      return
     end
-    choices.push(_INTL("<c3=585850,a8b8b8>CANCEL</c3>"))
-    command = pbMessageAlt(text,choices,choices.length)
-    $game_variables[variable] = (command==2) ? -1 : command
+    raise _INTL("No room to deposit a party member.")
+  end
+
+  def self.withdraw(index)
+    day_care = $PokemonGlobal.day_care
+    slot = day_care[index]
+    if !slot.filled?
+      raise _INTL("Nothing found in slot {1}.", index)
+    elsif $player.party_full?
+      raise _INTL("No room in party to withdraw.")
+    end
+    $stats.day_care_levels_gained += slot.level_gain
+    $player.party.push(slot.pokemon)
+    slot.reset
+    day_care.reset_egg_counters
   end
 end
+	
 
 #==============================================================================#
 # Changes in this section include the following:
 #	* The addition of the pbHatchAll command, which is used in the Debug Menu
 #==============================================================================#
 def pbHatchAll
-  for egg in $Trainer.party
+  for egg in $player.party
     if egg.egg?
       egg.steps_to_hatch=0
       pbHatch(egg)

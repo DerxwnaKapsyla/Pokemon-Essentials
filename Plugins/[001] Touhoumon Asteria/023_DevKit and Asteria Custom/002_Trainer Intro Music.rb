@@ -92,10 +92,17 @@ class Interpreter
   # Play the trainer eye bgm according to the type defined in Interpreter::TRAINER_BGMS
   # @param type [Symbol] type of trainer (key in TRAINER_BGMS)
 #  def trainer_eye_bgm(type, volume = 100, pitch = 100)
-  def TrainerIntro2(type, volume = 100, pitch = 100)
-    audio_file = TRAINER_BGMS[type]
-	pbGlobalLock
-    Audio.bgm_play("Audio/BGM/Intros/#{audio_file}", volume, pitch) if audio_file
-	return true
-  end
+#  def TrainerIntro2(type, volume = 100, pitch = 100)
+#    audio_file = TRAINER_BGMS[type]
+#	pbGlobalLock
+#    Audio.bgm_play("Audio/BGM/Intros/#{audio_file}", volume, pitch) if audio_file
+#	return true
+#  end
+#  def pbTrainerIntro(symbol)
+#    return true if $DEBUG && !GameData::TrainerType.exists?(symbol)
+#    tr_type = TRAINER_BGMS[type] #GameData::TrainerType.get(symbol).id
+#    pbGlobalLock
+#    pbPlayTrainerIntroBGM("Audio/BGM/Intros/#{tr_type}")
+#    return true
+#  end
 end

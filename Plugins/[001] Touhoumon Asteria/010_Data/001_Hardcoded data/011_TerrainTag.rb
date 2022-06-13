@@ -1,13 +1,13 @@
-# Necessary for the Cerulean City Gym Platforms
+# Necessary for the Custom Terrain Tags (like in Cerulean and Vermilion Gym)
 module GameData
   class TerrainTag
     attr_reader :jump_platform
 	attr_reader :landmine
 	
-	alias jumpplatform_initialize initialize
+	alias asteria_initialize initialize
     def initialize(hash)
-	  jumpplatform_initialize(hash)
-      @jump_platform                  = hash[:jump_platform]                  || false
+	  asteria_initialize(hash)
+      @jump_platform                  = hash[:jump_platform]             || false
 	  @landmine		                  = hash[:landmine]                  || false
 	end
   end

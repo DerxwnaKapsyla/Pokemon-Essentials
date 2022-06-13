@@ -1,6 +1,6 @@
 class Game_Event < Game_Character
   def hasMagnetPullUser?
-	return true if $Trainer.get_pokemon_with_ability(:MAGNETPULL)
+	return true if $player.get_pokemon_with_ability(:MAGNETPULL)
   end 
 end
 
@@ -11,81 +11,7 @@ class Trainer
   end
 end
 
-class Scene_Map
-  def update
-    loop do
-      updateMaps
-      pbMapInterpreter.update
-      $game_player.update
-      $game_system.update
-      $game_screen.update
-      break unless $game_temp.player_transferring
-      transfer_player
-      break if $game_temp.transition_processing
-    end
-    updateSpritesets
-    if $game_temp.to_title
-      $game_temp.to_title = false
-      SaveData.mark_values_as_unloaded
-      $scene = pbCallTitle
-      return
-    end
-    if $game_temp.transition_processing
-      $game_temp.transition_processing = false
-      if $game_temp.transition_name == ""
-        Graphics.transition(20)
-      else
-        Graphics.transition(40, "Graphics/Transitions/" + $game_temp.transition_name)
-      end
-    end
-    return if $game_temp.message_window_showing
-    if !pbMapInterpreterRunning?
-      if Input.trigger?(Input::USE)
-        $PokemonTemp.hiddenMoveEventCalling = true
-      elsif Input.trigger?(Input::BACK)
-        unless $game_system.menu_disabled || $game_player.moving?
-          $game_temp.menu_calling = true
-          $game_temp.menu_beep = true
-        end
-      elsif Input.trigger?(Input::SPECIAL)
-        unless $game_player.moving?
-          $PokemonTemp.keyItemCalling = true
-        end
-      elsif Input.press?(Input::F9)
-        $game_temp.debug_calling = true if $DEBUG
-	#####################
-	  elsif Input.press?(Input::ALT)
-		$PokemonTemp.specialActivation = true
-	#####################
-      end
-    end
-    unless $game_player.moving?
-      if $game_temp.menu_calling
-        call_menu
-      elsif $game_temp.debug_calling
-        call_debug
-      elsif $PokemonTemp.keyItemCalling
-        $PokemonTemp.keyItemCalling = false
-        $game_player.straighten
-        pbUseKeyItem
-      elsif $PokemonTemp.hiddenMoveEventCalling
-        $PokemonTemp.hiddenMoveEventCalling = false
-        $game_player.straighten
-        Events.onAction.trigger(self)
-	#####################
-	  elsif $PokemonTemp.specialActivation
-		$PokemonTemp.specialActivation = false
-		$game_player.straighten
-		if $game_map.map_id == 244
-			pbMagnetPull
-		end
-      end
-	#####################
-    end
-  end
-end
-
-class PokemonTemp
+class Game_Temp
   attr_accessor :specialActivation
   
   alias specialactivation_initialize initialize
@@ -95,6 +21,79 @@ class PokemonTemp
   end
 end
 
+class Scene_Map
+  def update
+    loop do
+      pbMapInterpreter.update
+      $game_player.update
+      updateMaps
+      $game_system.update
+      $game_screen.update
+      break unless $game_temp.player_transferring
+      transfer_player(false)
+      break if $game_temp.transition_processing
+    end
+    updateSpritesets
+    if $game_temp.title_screen_calling
+      $game_temp.title_screen_calling = false
+      SaveData.mark_values_as_unloaded
+      $scene = pbCallTitle
+      return
+    end
+    if $game_temp.transition_processing
+      $game_temp.transition_processing = false
+      if $game_temp.transition_name == ""
+        Graphics.transition
+      else
+        Graphics.transition(40, "Graphics/Transitions/" + $game_temp.transition_name)
+      end
+    end
+    return if $game_temp.message_window_showing
+    if !pbMapInterpreterRunning?
+      if Input.trigger?(Input::USE)
+        $game_temp.interact_calling = true
+      elsif Input.trigger?(Input::ACTION)
+        unless $game_system.menu_disabled || $game_player.moving?
+          $game_temp.menu_calling = true
+          $game_temp.menu_beep = true
+        end
+      elsif Input.trigger?(Input::SPECIAL)
+        unless $game_player.moving?
+          $game_temp.ready_menu_calling = true
+        end
+      elsif Input.press?(Input::F9)
+        $game_temp.debug_calling = true if $DEBUG
+	#####################
+	  elsif Input.press?(Input::ALT)
+		$game_temp.specialActivation = true
+	#####################
+      end
+    end
+    unless $game_player.moving?
+      if $game_temp.menu_calling
+        call_menu
+      elsif $game_temp.debug_calling
+        call_debug
+      elsif $game_temp.ready_menu_calling
+        $game_temp.ready_menu_calling = false
+        $game_player.straighten
+        pbUseKeyItem
+      elsif $game_temp.interact_calling
+        $game_temp.interact_calling = false
+        $game_player.straighten
+        EventHandlers.trigger(:on_player_interact)
+	#####################
+	  elsif $game_temp.specialActivation
+		$game_temp.specialActivation = false
+		$game_player.straighten
+		if $game_map.map_id == 244
+			pbMagnetPull
+		end
+      end
+	#####################
+    end
+  end
+end
 
 def pbMagnetPull
   ability = :MAGNETPULL
@@ -128,20 +127,24 @@ def pbMagnetPullReset
   $game_variables[124] = 6
 end
 
-Events.onStepTaken += proc {
-  if $game_map.map_id == 244 && ($game_switches[115] || $game_switches[116]) == true # Vermilion City Gym and Magnet Pull Steps switch
-    if $game_variables[124] < 6
-      $game_variables[124] += 1
+EventHandlers.add(:on_player_step_taken_can_transfer, :magnet_pull_steps,
+  proc {
+    if $game_map.map_id == 244 && ($game_switches[115] || $game_switches[116]) == true 
+      if $game_variables[124] < 6
+        $game_variables[124] += 1
+      end
     end
-  end
-}
+  }
+)
 
-Events.onMapChange += proc { |sender, e|
-  pbMagnetPullReset
-}
+EventHandlers.add(:on_leave_map, :magnet_pull_reset,
+  proc {
+    pbMagnetPullReset
+  }
+)
 
-
-Events.onStepTaken += proc {
+EventHandlers.add(:on_player_step_taken, :step_on_landmine,
+  proc {
   if $game_map.map_id == 244 && $game_player.pbTerrainTag.landmine
 	Pokemon.play_cry(:VOLTORB)
 	pbExclaim($game_player)
@@ -156,9 +159,11 @@ Events.onStepTaken += proc {
 	}
 	pbFieldDamage
   end
-}
+  }
+)
 
-Events.onStepTaken += proc {
+EventHandlers.add(:on_player_step_taken, :magnet_pull_expires,
+  proc {
   if $game_map.map_id == 244 && $game_switches[115] == true
 	if $game_variables[124] == 1
 	  pbMessage(_INTL("The effects of the Magnet Pull wear off, and the landmines sink back into the ground."))
@@ -168,4 +173,5 @@ Events.onStepTaken += proc {
 	  $game_map.refresh
 	end
   end
-}
+  }
+)

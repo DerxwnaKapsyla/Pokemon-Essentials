@@ -14,11 +14,14 @@ module Settings
   
   X_STAT_ITEMS_RAISE_BY_TWO_STAGES = false
   NEW_POKE_BALL_CATCH_RATES        = true
+  SOUL_DEW_POWERS_UP_TYPES            = true
   
   SCALED_EXP_FORMULA        = true
   SPLIT_EXP_BETWEEN_GAINERS = true
+  MORE_EVS_FROM_POWER_ITEMS            = true
   ENABLE_CRITICAL_CAPTURES  = true
   GAIN_EXP_FOR_CAPTURE      = true
+  NEW_CAPTURE_CAN_REPLACE_PARTY_MEMBER = true
   CHECK_EVOLUTION_AFTER_ALL_BATTLES   = true
   
   SPECIAL_BATTLE_SWITCH			= 102	# Used for when you want to trigger a battle with special text for the encounter. (Ie; "N's Zoroark", "The aggressive Igglybuff", etc.)

@@ -26,7 +26,7 @@ class TypeMatch_Scene
     @typebitmapsmall = AnimatedBitmap.new(_INTL("Graphics/Pictures/pokedex/icon_types"))
     2.times do |i|
       @sprites["icon_#{i}"] = PokemonSpeciesIconSprite.new(nil,@viewport)
-      @sprites["icon_#{i}"].setOffset(PictureOrigin::Center)
+      @sprites["icon_#{i}"].setOffset(PictureOrigin::CENTER)
       @sprites["icon_#{i}"].x = Graphics.width/2 - 112 + 224*i
       @sprites["icon_#{i}"].y = @h+40
       @sprites["icon_#{i}"].mirror = true if i==0
@@ -76,6 +76,7 @@ class TypeMatch_Scene
         newType = @types[@index]
         refresh = true
       elsif Input.trigger?(Input::USE) # Option to choose specific type
+		p "WARNING: If you cancel on this screen you will crash your game."
         oldType = @types[@index]
         newType = pbChooseTypeFromList(oldType, oldType)
         if oldType != newType
@@ -101,13 +102,13 @@ class TypeMatch_Scene
     # Selected type
     type = GameData::Type.get(type)
     @overlay_type.blt(Graphics.width/2-32,@h+20,@typebitmap.bitmap,
-                  Rect.new(0, type.id_number * 28, 64, 28))
+                  Rect.new(0, type.icon_position * 28, 64, 28))
     # Weaknesses
 	weak = type.weaknesses
 	xPos1 = (weak.length >6) ? [@w+71, @w+105] : @w+88    
     weaktype_rect = []
     weak.each_with_index do |s, i|
-      t = GameData::Type.get(s).id_number
+      t = GameData::Type.get(s).icon_position
       weaktype_rect.push(Rect.new(0, t * 28, 64, 28))
 	  x1 = (xPos1.is_a?(Array)) ? xPos1[i/6] : xPos1
 	  @overlay_type.blt(x1,@h+108+28*(i%6),@typebitmapsmall.bitmap,weaktype_rect[i])
@@ -119,7 +120,7 @@ class TypeMatch_Scene
     xPos2 = (resist.length >6) ? [Graphics.width/2-33,Graphics.width/2+1] : Graphics.width/2-16
     resisttype_rect = []
     resist.each_with_index do |s, i|
-      t = GameData::Type.get(s).id_number
+      t = GameData::Type.get(s).icon_position
       resisttype_rect.push(Rect.new(0, t * 28, 64, 28))
       x2 = (xPos2.is_a?(Array)) ? xPos2[i/6] : xPos2
       @overlay_type.blt(x2,@h+108+28*(i%6),@typebitmapsmall.bitmap,
@@ -129,19 +130,19 @@ class TypeMatch_Scene
     immune = type.immunities
     immunetype_rect = []
     immune.each_with_index do |s, i|
-      t = GameData::Type.get(s).id_number
+      t = GameData::Type.get(s).icon_position
       immunetype_rect.push(Rect.new(0, t * 28, 64, 28))
       @overlay_type.blt(@w+328,@h+108+28*i,@typebitmapsmall.bitmap,immunetype_rect[i])
     end
     base   = Color.new(80,80,88)
     shadow = Color.new(160,160,168)
     textpos = [
-    ["Weak",@w+104,@h+68,2,base,shadow],
-    ["Resist",Graphics.width/2,@h+68,2,base,shadow],
-    ["Immune",@w+344,@h+68,2,base,shadow],
-    ["USE: Jump",4,Graphics.height-38,0,Color.new(248,248,248),Color.new(72,80,88)],
-    ["ARROWS: Navigate",Graphics.width/2,Graphics.height-38,2,Color.new(248,248,248),Color.new(72,80,88)],
-    ["BACK: Exit",Graphics.width-4,Graphics.height-38,1,Color.new(248,248,248),Color.new(72,80,88)]
+    ["Weak",@w+104,@h+80,2,base,shadow],
+    ["Resist",Graphics.width/2,@h+80,2,base,shadow],
+    ["Immune",@w+344,@h+80,2,base,shadow],
+    ["USE: Jump",4,Graphics.height-26,0,Color.new(248,248,248),Color.new(72,80,88)],
+    ["ARROWS: Navigate",Graphics.width/2,Graphics.height-26,2,Color.new(248,248,248),Color.new(72,80,88)],
+    ["BACK: Exit",Graphics.width-4,Graphics.height-26,1,Color.new(248,248,248),Color.new(72,80,88)]
     ]
     pbDrawTextPositions(@overlay_text,textpos) if @init
     @init = false
@@ -150,7 +151,7 @@ class TypeMatch_Scene
   # Method that pulls a random species of the given type
   def getRandomSpeciesFromType(type)
     arr = []
-    GameData::Species.each { |s| arr.push(s.id) if s.form==0 && (s.type1==type || s.type2==type) } #&& s.generation <6 }
+    GameData::Species.each { |s| arr.push(s.id) if s.form==0 && s.types == [type] } #&& s.generation <6 }
     return arr[rand(arr.length)]
   end
   
@@ -174,9 +175,9 @@ class TypeMatch_Scene
   # Borrowed from the editor scripts
   # Renamed so as to not break anything anywhere else
   def pbChooseTypeFromList(default = nil, currType)
-    commands = []
-    GameData::Type.each { |t| commands.push([t.id_number, t.name, t.id]) if !t.pseudo_type }
-    return pbChooseList(commands, default, currType, 1)
+  return pbChooseFromGameDataList(:Type, default) { |data|
+    next (data.pseudo_type) ? nil : data.real_name
+  }
   end
   
 end

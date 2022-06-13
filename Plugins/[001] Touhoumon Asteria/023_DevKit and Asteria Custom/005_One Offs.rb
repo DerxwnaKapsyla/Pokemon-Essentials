@@ -1,6 +1,6 @@
 # A file for a bunch of random one-offs for Asteria
 
-class PokemonTemp
+class Game_Temp
   attr_accessor :enduredInKazami
   attr_accessor :inertItem
 
@@ -24,17 +24,21 @@ def pbFillBox
       f = species_data.form
       # Record each form of each species as seen and owned
       if f == 0
-        if [:AlwaysMale, :AlwaysFemale, :Genderless].include?(species_data.gender_ratio)
+        if species_data.single_gendered?
           g = (species_data.gender_ratio == :AlwaysFemale) ? 1 : 0
-          $Trainer.pokedex.register(sp, g, f, false)
+          $player.pokedex.register(sp, g, f, 0, false)
+          $player.pokedex.register(sp, g, f, 1, false)
         else   # Both male and female
-          $Trainer.pokedex.register(sp, 0, f, false)
-          $Trainer.pokedex.register(sp, 1, f, false)
+          $player.pokedex.register(sp, 0, f, 0, false)
+          $player.pokedex.register(sp, 0, f, 1, false)
+          $player.pokedex.register(sp, 1, f, 0, false)
+          $player.pokedex.register(sp, 1, f, 1, false)
         end
-        $Trainer.pokedex.set_owned(sp, false)
+        $player.pokedex.set_owned(sp, false)
       elsif species_data.real_form_name && !species_data.real_form_name.empty?
         g = (species_data.gender_ratio == :AlwaysFemale) ? 1 : 0
-        $Trainer.pokedex.register(sp, g, f, false)
+        $player.pokedex.register(sp, g, f, 0, false)
+        $player.pokedex.register(sp, g, f, 1, false)
       end
       # Add Pokémon (if form 0, i.e. one of each species)
       next if f != 0
@@ -45,10 +49,10 @@ def pbFillBox
       added += 1
       $PokemonStorage[(added - 1) / box_qty, (added - 1) % box_qty] = Pokemon.new(sp, 50)
     end
-    $Trainer.pokedex.refresh_accessible_dexes
+    $player.pokedex.refresh_accessible_dexes
     pbMessage(_INTL("Storage boxes were filled with one Pokémon of each species."))
     if !completed
       pbMessage(_INTL("Note: The number of storage spaces ({1} boxes of {2}) is less than the number of species.",
-         Settings::NUM_STORAGE_BOXES, box_qty))
+                      Settings::NUM_STORAGE_BOXES, box_qty))
     end
 end

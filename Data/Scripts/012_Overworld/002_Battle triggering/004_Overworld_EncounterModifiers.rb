@@ -16,10 +16,10 @@ EventHandlers.add(:on_wild_pokemon_created, :make_shiny_switch,
 # map depend on the levels of Pokémon in the player's party.
 # This is a simple method, and can/should be modified to account for evolutions
 # and other such details.  Of course, you don't HAVE to use this code.
-Events.onWildPokemonCreate += proc { |_sender, e|
-  pokemon = e[0]
-  if $game_map.map_id == 1000
-    new_level = pbBalancedLevel($Trainer.party) - 4 + rand(5)   # For variety
+EventHandlers.add(:on_wild_pokemon_created, :level_depends_on_party,
+  proc { |pkmn|
+    next if $game_map.map_id != 51
+    new_level = pbBalancedLevel($player.party) - 4 + rand(5)   # For variety
     new_level = new_level.clamp(1, GameData::GrowthRate.max_level)
     pkmn.level = new_level
     pkmn.calc_stats

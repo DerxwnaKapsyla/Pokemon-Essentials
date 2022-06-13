@@ -6,8 +6,9 @@
 # Changes in this section include the following:
 #	* Added Jealousy to the Encounter Table modifier
 #	* Added Diva to the Encounter Table modifier
-#	* Made it so Static can find Wind-type Puppets in the wild if the first
-#	  party slot has Static as their ability (NOT YET IMPLEMENTED)
+#	* Made it so certain abilities can find favored-type Puppets in the wild 
+#	  if the first party slot has that as their ability (NOT YET IMPLEMENTED)
+#	* Added the Magnetic Lure from Reborn (NOT YET IMPLEMENTED - idk if this is where it'd go)
 #==============================================================================#
 class PokemonEncounters
   def encounter_triggered?(enc_type, repel_active = false, triggered_by_step = true)
@@ -15,7 +16,7 @@ class PokemonEncounters
       raise ArgumentError.new(_INTL("Encounter type {1} does not exist", enc_type))
     end
     return false if $game_system.encounter_disabled
-    return false if !$Trainer
+    return false if !$player
     return false if $DEBUG && Input.press?(Input::CTRL)
     # Check if enc_type has a defined step chance/encounter table
     return false if !@step_chances[enc_type] || @step_chances[enc_type] == 0
@@ -25,7 +26,7 @@ class PokemonEncounters
     return true if pbPokeRadarOnShakingGrass
     # Get base encounter chance and minimum steps grace period
     encounter_chance = @step_chances[enc_type].to_f
-    min_steps_needed = (8 - encounter_chance / 10).clamp(0, 8).to_f
+    min_steps_needed = (8 - (encounter_chance / 10)).clamp(0, 8).to_f
     # Apply modifiers to the encounter chance and the minimum steps amount
     if triggered_by_step
       encounter_chance += @chance_accumulator / 200
@@ -37,7 +38,7 @@ class PokemonEncounters
       encounter_chance *= 1.5 if $PokemonMap.whiteFluteUsed
       min_steps_needed /= 2 if $PokemonMap.whiteFluteUsed
     end
-    first_pkmn = $Trainer.first_pokemon
+    first_pkmn = $player.first_pokemon
     if first_pkmn
       case first_pkmn.item_id
       when :CLEANSETAG
@@ -51,6 +52,11 @@ class PokemonEncounters
         when :STENCH, :WHITESMOKE, :QUICKFEET, :JEALOUSY
           encounter_chance /= 2
           min_steps_needed *= 2
+        when :INFILTRATOR
+          if Settings::MORE_ABILITIES_AFFECT_WILD_ENCOUNTERS
+            encounter_chance /= 2
+            min_steps_needed *= 2
+          end
         when :SNOWCLOAK
           if GameData::Weather.get($game_screen.weather_type).category == :Hail
             encounter_chance /= 2
@@ -74,7 +80,7 @@ class PokemonEncounters
     # after a previous wild encounter
     if triggered_by_step && @step_count < min_steps_needed
       @step_count += 1
-      return false if rand(100) >= encounter_chance * 5 / (@step_chances[enc_type] + @chance_accumulator / 200)
+      return false if rand(100) >= encounter_chance * 5 / (@step_chances[enc_type] + (@chance_accumulator / 200))
     end
     # Decide whether the wild encounter should actually happen
     return true if rand(100) < encounter_chance
@@ -96,22 +102,32 @@ class PokemonEncounters
     # Static/Magnet Pull prefer wild encounters of certain types, if possible.
     # If they activate, they remove all Pokémon from the encounter table that do
     # not have the type they favor. If none have that type, nothing is changed.
-    first_pkmn = $Trainer.first_pokemon
+    first_pkmn = $player.first_pokemon
     if first_pkmn
       favored_type = nil
       case first_pkmn.ability_id
-      when :STATIC
-        favored_type = :ELECTRIC if GameData::Type.exists?(:ELECTRIC) && rand(100) < 50
+      when :FLASHFIRE
+        favored_type = :FIRE if Settings::MORE_ABILITIES_AFFECT_WILD_ENCOUNTERS &&
+                                GameData::Type.exists?(:FIRE) && rand(100) < 50
+      when :HARVEST
+        favored_type = :GRASS if Settings::MORE_ABILITIES_AFFECT_WILD_ENCOUNTERS &&
+                                 GameData::Type.exists?(:GRASS) && rand(100) < 50
+      when :LIGHTNINGROD
+        favored_type = :ELECTRIC if Settings::MORE_ABILITIES_AFFECT_WILD_ENCOUNTERS &&
+                                    GameData::Type.exists?(:ELECTRIC) && rand(100) < 50
       when :MAGNETPULL
         favored_type = :STEEL if GameData::Type.exists?(:STEEL) && rand(100) < 50
+      when :STATIC
+        favored_type = :ELECTRIC if GameData::Type.exists?(:ELECTRIC) && rand(100) < 50
+      when :STORMDRAIN
+        favored_type = :WATER if Settings::MORE_ABILITIES_AFFECT_WILD_ENCOUNTERS &&
+                                 GameData::Type.exists?(:WATER) && rand(100) < 50
       end
       if favored_type
         new_enc_list = []
         enc_list.each do |enc|
           species_data = GameData::Species.get(enc[1])
-          t1 = species_data.type1
-          t2 = species_data.type2
-          new_enc_list.push(enc) if t1 == favored_type || t2 == favored_type
+          new_enc_list.push(enc) if species_data.types.include?(favored_type)
         end
         enc_list = new_enc_list if new_enc_list.length > 0
       end

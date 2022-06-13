@@ -54,11 +54,24 @@ def pxCheckExitArrows(init=false)
 end
 
 # Run on scene change, init them as well
-Events.onMapSceneChange+=proc{|sender,e|
-  pxCheckExitArrows(true)
-}
+#Events.onMapSceneChange+=proc{|sender,e|
+#  pxCheckExitArrows(true)
+#}
+
+# Run on scene change, init them as well. v20 edition.
+EventHandlers.add(:on_enter_map, :check_arrow_on_transfer,
+  proc { |old_map_id|
+	pxCheckExitArrows(true)
+  }
+)
+
 
 # Run on every step taken
-Events.onLeaveTile+=proc {|sender,e|
-  pxCheckExitArrows
-}
+#Events.onLeaveTile+=proc {|sender,e|
+#  pxCheckExitArrows
+#}
+
+# Run on every step taken. v20 edition.
+EventHandlers.add(:on_leave_tile, :check_arrow_on_move,
+  proc { pxCheckExitArrows }
+)

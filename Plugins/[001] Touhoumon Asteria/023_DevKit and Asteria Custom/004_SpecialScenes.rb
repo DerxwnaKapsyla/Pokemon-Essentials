@@ -59,7 +59,7 @@ class PlayerChoiceGUI
 		@sprites["please"].opacity = 0
         cmd = Kernel.pbConfirmMessage(_INTL("\\w[dark]Are you sure you want to play as #{@sel == 0 ? "Renko Usami" : "Maribel Hearn"}?"))
         if cmd
-          pbChangePlayer(@sel)
+          pbChangePlayer(@sel+1)
           $game_variables[107] = @sel
           break
         end

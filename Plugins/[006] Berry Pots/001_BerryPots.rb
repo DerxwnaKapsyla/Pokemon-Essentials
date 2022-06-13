@@ -102,7 +102,7 @@ class ItemBerryPots_Scene
     watering=WATERINGCAN
     @item = "squirtbottle"
     for i in watering
-      @item = GameData::Item.get(i).name if $PokemonBag.pbHasItem?(i)
+      @item = GameData::Item.get(i).name if $bag.has?(i)
     end
     @sprites["spray"] = IconSprite.new(24,80,@viewport)
     @sprites["spray"].setBitmap(_INTL("Graphics/Pictures/BerryPots/#{@item}-stop"))
@@ -288,8 +288,8 @@ class ItemBerryPots_Scene
             ret=0
             pbFadeOutIn {
               scene = PokemonBag_Scene.new
-              screen = PokemonBagScreen.new(scene,$PokemonBag)
-              ret = screen.pbChooseItemScreen(Proc.new { |item| GameData::Item.get(item).is_mulch? })
+              screen = PokemonBagScreen.new(scene,$bag)
+              ret = screen.pbChooseItemScreen(proc { |item| GameData::Item.get(item).is_mulch? })
             }
             if ret
               if GameData::Item.get(ret).is_mulch?
@@ -298,8 +298,8 @@ class ItemBerryPots_Scene
                 if pbConfirmMessage(_INTL("Want to plant a Berry?"))
                   pbFadeOutIn {
                     scene = PokemonBag_Scene.new
-                    screen = PokemonBagScreen.new(scene,$PokemonBag)
-                    berry = screen.pbChooseItemScreen(Proc.new { |item| GameData::Item.get(item).is_berry? })
+                    screen = PokemonBagScreen.new(scene,$bag)
+                    berry = screen.pbChooseItemScreen(proc { |item| GameData::Item.get(item).is_berry? })
                   }
                   if berry
                     timenow=pbGetTimeNow
@@ -310,7 +310,7 @@ class ItemBerryPots_Scene
                     berryData[4]=100           # dampness value
                     berryData[5]=0             # number of replants
                     berryData[6]=0             # yield penalty
-                    $PokemonBag.pbDeleteItem(berry,1)
+                    $bag.remove(berry,1)
                     pbMessage(_INTL("The {1} was planted in the soft, earthy soil.",
                        GameData::Item.get(berry).name))
                   end
@@ -325,8 +325,8 @@ class ItemBerryPots_Scene
           elsif cmd==1 # Plant Berry
             pbFadeOutIn {
               scene = PokemonBag_Scene.new
-              screen = PokemonBagScreen.new(scene,$PokemonBag)
-              berry = screen.pbChooseItemScreen(Proc.new { |item| GameData::Item.get(item).is_berry? })
+              screen = PokemonBagScreen.new(scene,$bag)
+              berry = screen.pbChooseItemScreen(proc { |item| GameData::Item.get(item).is_berry? })
             }
             if berry
               timenow=pbGetTimeNow
@@ -337,7 +337,7 @@ class ItemBerryPots_Scene
               berryData[4]=100           # dampness value
               berryData[5]=0             # number of replants
               berryData[6]=0             # yield penalty
-              $PokemonBag.pbDeleteItem(berry,1)
+              $bag.remove(berry,1)
               pbMessage(_INTL("The {1} was planted in the soft, earthy soil.",
 				GameData::Item.get(berry).name))
               #interp.setVariable(berryData)
@@ -350,8 +350,8 @@ class ItemBerryPots_Scene
           if pbConfirmMessage(_INTL("Want to plant a Berry?"))
             pbFadeOutIn {
               scene = PokemonBag_Scene.new
-              screen = PokemonBagScreen.new(scene,$PokemonBag)
-              berry = screen.pbChooseItemScreen(Proc.new { |item| GameData::Item.get(item).is_berry? })
+              screen = PokemonBagScreen.new(scene,$bag)
+              berry = screen.pbChooseItemScreen(proc { |item| GameData::Item.get(item).is_berry? })
             }
             if berry
               timenow=pbGetTimeNow
@@ -362,7 +362,7 @@ class ItemBerryPots_Scene
               berryData[4]=100           # dampness value
               berryData[5]=0             # number of replants
               berryData[6]=0             # yield penalty
-              $PokemonBag.pbDeleteItem(berry,1)
+              $bag.remove(berry,1)
               pbMessage(_INTL("The {1} was planted in the soft, earthy soil.",
                  GameData::Item.get(berry).name))
               #interp.setVariable(berryData)
@@ -376,8 +376,8 @@ class ItemBerryPots_Scene
         if pbConfirmMessage(_INTL("It's soft, loamy soil.\nPlant a berry?"))
           pbFadeOutIn {
             scene = PokemonBag_Scene.new
-            screen = PokemonBagScreen.new(scene,$PokemonBag)
-            berry = screen.pbChooseItemScreen(Proc.new { |item| GameData::Item.get(item).is_berry? })
+            screen = PokemonBagScreen.new(scene,$bag)
+            berry = screen.pbChooseItemScreen(proc { |item| GameData::Item.get(item).is_berry? })
           }
           if berry
             timenow=pbGetTimeNow
@@ -388,7 +388,7 @@ class ItemBerryPots_Scene
             berryData[4]=0             # total waterings
             berryData[5]=0             # number of replants
             berryData[6]=nil; berryData[7]=nil; berryData.compact! # for compatibility
-            $PokemonBag.pbDeleteItem(berry,1)
+            $bag.remove(berry,1)
             pbMessage(_INTL("{1} planted a {2} in the soft loamy soil.",
                $Trainer.name,GameData::Item.get(berry).name))
             #interp.setVariable(berryData)
@@ -444,11 +444,11 @@ class ItemBerryPots_Scene
         message=_INTL("There is 1 \\c[1]{1}\\c[0]!\nWant to pick it?",itemname)
       end
       if pbConfirmMessage(message)
-        if !$PokemonBag.pbCanStore?(berry,berrycount)
+        if !$bag.can_add?(berry,berrycount)
           pbMessage(_INTL("Too bad...\nThe Bag is full..."))
           return
         end
-        $PokemonBag.pbStoreItem(berry,berrycount)
+        $bag.add(berry,berrycount)
         if berrycount>1
           pbMessage(_INTL("You picked the {1} \\c[1]{2}\\c[0].\\wtnp[30]",berrycount,itemname))
         else
@@ -471,7 +471,7 @@ class ItemBerryPots_Scene
     case berryData[0]
     when 1, 2, 3, 4
       for i in watering
-        if i !=0 && $PokemonBag.pbHasItem?(i)
+        if i !=0 && $bag.has?(i)
           if pbConfirmMessage(_INTL("Want to sprinkle some water with the {1}?",GameData::Item.get(i).name))
             if berryData.length>6
               # Gen 4 berry watering mechanics
