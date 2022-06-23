@@ -94,7 +94,7 @@ class NewGameScene < PreludeScene
     :wait, 60,
     [
       "Inspired by the fan-fiction",
-      "Touhou Puppt Play ~ A Viewpoint",
+      "Touhou Puppet Play ~ A Viewpoint",
       "Written by: Lone Wolf NEO"
     ],
     :wait, 120,

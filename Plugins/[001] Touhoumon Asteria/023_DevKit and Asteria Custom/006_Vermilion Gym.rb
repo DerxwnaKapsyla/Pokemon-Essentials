@@ -97,8 +97,8 @@ end
 
 def pbMagnetPull
   ability = :MAGNETPULL
-  abilityfinder = $Trainer.get_pokemon_with_ability(ability)
-  if !abilityfinder || !$DEBUG
+  abilityfinder = $player.get_pokemon_with_ability(ability)
+  if !abilityfinder #|| !$DEBUG
     pbMessage(_INTL("You don't have anybody with Magnet Pull in your party."))
     return false
   end
@@ -108,7 +108,7 @@ def pbMagnetPull
 	pbMessage(_INTL("Magnet Pull is currently recharging."))
   else
 	if pbConfirmMessage(_INTL("Would you like to use Magnet Pull?"))
-      speciesname = (abilityfinder) ? abilityfinder.name : $Trainer.name
+      speciesname = (abilityfinder) ? abilityfinder.name : $player.name
       pbMessage(_INTL("{1} used {2}!",speciesname,GameData::Ability.get(ability).name))
       pbHiddenMoveAnimation(abilityfinder)
 	  $game_switches[115] = true

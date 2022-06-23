@@ -711,7 +711,7 @@ class PokemonPokedex_Scene
                     _INTL("Z")]
     @typeCommands = []
     GameData::Type.each { |t| @typeCommands.push(t) if !t.pseudo_type }
-    @typeCommands.sort! { |a, b| a.id_number <=> b.id_number }
+    @typeCommands.sort! { |a, b| a.icon_position <=> b.icon_position }
     @heightCommands = [1,2,3,4,5,6,7,8,9,10,
                        11,12,13,14,15,16,17,18,19,20,
                        21,22,23,24,25,30,35,40,45,50,

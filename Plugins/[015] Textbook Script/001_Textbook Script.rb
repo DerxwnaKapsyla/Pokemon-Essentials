@@ -25,7 +25,7 @@ end
 
 #books
 SeiraDiary = [
-"Diary of Seira Hakurei","Today was the final day of the meeting between all involved parties, and the council came to a decision. I wasn't able to be there for it, as I was tending to the shrine, but Meira told me the news once she retrned. According to her, the council agreed that the best solution was the one proposed by the Youkai Sage- the Youkai and those sympathetic to them would be separated from the world. I wasn't really sure what that meant, so Meira explained it to me. ",
+"Diary of Seira Hakurei","Today was the final day of the meeting between all involved parties, and the council came to a decision. I wasn't able to be there for it, as I was tending to the shrine, but Meira told me the news once she returned. According to her, the council agreed that the best solution was the one proposed by the Youkai Sage- the Youkai and those sympathetic to them would be separated from the world. I wasn't really sure what that meant, so Meira explained it to me. ",
 "Diary of Seira Hakurei","With the power of both the Hakurei and the Youkai Sage of Boundaries, a great barrier would be established which would seal Youkai away in a gensou kyou- a land of illusions, where only the phantasmal would reside. Supposedly, while Humans and Youkai are allowed to enter, one of the conditions was that Pokémon not be allowed. Pokémon are to remain outside the barrier, while Youkai inside of it. Given the incidents in the past, I can't say I'm surprised by that condition.",
 "Diary of Seira Hakurei","There is one thing about this plan that I don't agree with, though. According to Meira, for it to work, the focal point needs to be our home- the Hakurei Shrine, and that one needs to exist on both sides of the barrier to maintain the seal. That's all fine and dandy, but, for a shrine to exist, it needs a shrine maiden. After our parents died, there are only two left- my twin sister Meira and myself. In order for the plan to work, one of us needs to enter the gensou kyou and upkeep the",
 "Diary of Seira Hakurei","shrine on that side, while the other maintains it over here. We're not exactly children anymore, no, but I can't help but feel distressed that Meira and I have to be separated and be unable to see each other ever again. I will talk to her and see if perhaps there's another way, maybe we can brainstorm something. I really don't want to lose the only family I have left, especially not my sister.\n- Seira Hakurei"
@@ -105,14 +105,14 @@ class Textbook_Scene
     # Write various bits of text
     pagename = @bookarray[page]
     textpos = [
-       [pagename,Graphics.width/2,4,2,base]#,shadow]
+       [pagename,Graphics.width/2,12,2,base]#,shadow]
     ]
     #For title size
     @sprites["overlay"].bitmap.font.size=32
     pbDrawTextPositions(overlay,textpos)
     @sprites["overlay"].bitmap.font.size=26
     text=@bookarray[page+1]
-    drawFormattedTextEx(overlay,25,45,Graphics.width-40,text,base)#,shadow)
+    drawFormattedTextEx(overlay,25,44,Graphics.width-40,text,base)#,shadow)
   end
 
 

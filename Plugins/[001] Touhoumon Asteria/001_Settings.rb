@@ -35,6 +35,7 @@ module Settings
   REPEL_COUNTS_FAINTED_POKEMON             = true
   MORE_ABILITIES_AFFECT_WILD_ENCOUNTERS    = true
   HIGHER_SHINY_CHANCES_WITH_NUMBER_BATTLED = true
+  OVERWORLD_WEATHER_SETS_BATTLE_TERRAIN    = false
   
   FIELD_MOVES_COUNT_BADGES = false
 
@@ -65,7 +66,7 @@ module Settings
   HEAL_STORED_POKEMON = true
   
   def self.bag_pocket_names
-    return ["",
+    return [
       _INTL("Items"),
       _INTL("Medicine"),
       _INTL("Poké Balls"), # Capture Devices was too long iirc

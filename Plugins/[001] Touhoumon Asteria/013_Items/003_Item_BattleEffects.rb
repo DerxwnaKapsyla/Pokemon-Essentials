@@ -61,8 +61,9 @@ ItemHandlers::CanUseInBattle.add(:LIQUIDREVIVE, proc { |item, pokemon, battler, 
     break
   end
   if !canRestore
-    scene.pbDisplay(_INTL("It won't have any effect.")) if showMessages
-    next false
+	next false if !pbConfirmMessage(_INTL("{1} is fainted, but has no PP to restore. Use anyway?", pokemon.name))
+#    scene.pbDisplay(_INTL("It won't have any effect.")) if showMessages
+#    next false
   end
   next true
 })
@@ -82,13 +83,13 @@ ItemHandlers::UseInBattle.add(:POKEFLUTE, proc { |item, battler, battle|
 })
 
 # ------ Liquid Revive: Max Elixir + Max Revive
-ItemHandlers::BattleUseOnPokemon.add(:LOQUIDREVIVE, proc { |item, pokemon, battler, choices, scene|
+ItemHandlers::BattleUseOnPokemon.add(:LIQUIDREVIVE, proc { |item, pokemon, battler, choices, scene|
   pokemon.heal_HP
   pokemon.heal_status
-  scene.pbRefresh
   pokemon.moves.length.times do |i|
     pbBattleRestorePP(pokemon, battler, i, pokemon.moves[i].total_pp)
   end
+  scene.pbRefresh
   scene.pbDisplay(_INTL("{1} was fully revitalized!", pokemon.name))
 })
 # ------ Derx: End of Liquid Revive code

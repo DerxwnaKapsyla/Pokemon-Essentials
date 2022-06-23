@@ -8,7 +8,7 @@
 #	* Adds handling for the "Make the next wild battle be shiny" passcode
 #	  (Switch 31). Will disable itself when it notices its on.
 #==============================================================================#
-class PokeBattle_Battle
+class Battle
   def pbStartBattleSendOut(sendOuts)	
         if $game_switches[Settings::SPECIAL_BATTLE_SWITCH]
           case $game_variables[Settings::SPECIAL_BATTLE_VARIABLE]
@@ -34,9 +34,9 @@ class PokeBattle_Battle
         pbDisplayPaused(_INTL("{4} {1}, {2} and {3} appeared!", foeParty[0].name,
                               foeParty[1].name, foeParty[2].name, sbName))
       end
-	  if $game_switches[31]==true # Used for the "Make Any Pokemon Shiny" passcode
-		$game_switches[31]=false
-	  end
+	  #if $game_switches[Settings::SHINY_WILD_POKEMON_SWITCH] # Used for the "Make Any Pokemon Shiny" passcode
+	  #  $game_switches[Settings::SHINY_WILD_POKEMON_SWITCH] = false
+	  #end
     else   # Trainer battle
       case @opponent.length
       when 1
@@ -200,6 +200,10 @@ class PokeBattle_Battle
       @peer.pbOnLeavingBattle(self, pkmn, @usedInBattle[0][i], true)   # Reset form
       pkmn.item = @initialItems[0][i]
     end
+	if $player.next_wild_shiny
+	  $game_switches[Settings::SHINY_WILD_POKEMON_SWITCH] = false
+	  $player.next_wild_shiny = false
+	end
     return @decision
   end
 end

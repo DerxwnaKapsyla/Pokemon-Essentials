@@ -4788,7 +4788,7 @@ Speed: 3: Slow
 Freq: 3: Low
 Options Enabled
 Move Animation
-Trigger: Action Button
+Trigger: Player Touch
 
 List of Event Commands:
 @>Text: * This leads out to the Professor's back garden. I 
@@ -5934,7 +5934,7 @@ Page #1
 Conditions
 None
 
-Graphic: trainer_CHAMPION_Silver
+Graphic: trainer_CHAMPION
 
 Autonomous Movement
 Type: Fixed
@@ -5978,7 +5978,7 @@ Page #1
 Conditions
 None
 
-Graphic: trainer_ELITEFOUR_Maria
+Graphic: trainer_ELITEFOUR_Lance
 
 Autonomous Movement
 Type: Fixed
@@ -8025,53 +8025,34 @@ Move Animation
 Trigger: Action Button
 
 List of Event Commands:
-@>Change Screen Color Tone: (-255,-255,-255,0), @10
-@>Wait: 10 frame(s)
-@>Show Picture: 1, '001_CSanae', Upper Left (0,0), (100%,100%), 0, Normal
-@>Move Picture: 1, @10, Upper Left (0,0), (100%,100%), 255, Normal
-@>Wait: 10 frame(s)
-@>Script: Pokemon.play_cry(:CSANAE)
-@>Label: :wacko:
-@>Conditional Branch: Script: Input.press?(Input::C) || Input.press?(Input::B)
- @>Move Picture: 1, @10, Upper Left (0,0), (100%,100%), 0, Normal
- @>Wait: 10 frame(s)
- @>Change Screen Color Tone: (0,0,0,0), @10
- @>Wait: 10 frame(s)
- @>Text: \xn[Professor Oak]So, \PN, would you like Chibi Sanae, the Miko Puppet?\ch[1,2,Yes,No]
- @>Conditional Branch: Variable [0001: Temp Pokemon Choice] == 0
-  @>Comment: Starter Chosen
-  @>Script: pbSetSelfSwitch(4,"B",true)
-  @>Text: \xn[Professor Oak]I'm sure you two will make a great pair!
-  @>Script: p=Pokemon.new(:CSANAE,5,$player)
-  :       : p.item=:ORANBERRY
-  :       : p.calc_stats
-  :       : p.reset_moves
-  :       : 
-  :       : pbAddPokemon(p)
-  @>Control Variables: [0007: Starter choice] = 1
-  @>Script: pbSetSelfSwitch(1,"A",true)
-  @>Script: pbSetSelfSwitch(10,"B",true)
-  @>Conditional Branch: Variable [0107: Chosen Protag] == 0
-   @>Script: pbRegisterPartner(:SCMary,"Maribel",2)
-   @>
-  : Else
-   @>Script: pbRegisterPartner(:SCRenko,"Renko",2)
-   @>
-  : Branch End
+@>Script: pbShowPokedexEntry(:CSANAE)
+@>Text: \xn[Professor Oak]So, \PN, would you like Chibi Sanae, the Miko Puppet?\ch[1,2,Yes,No]
+@>Conditional Branch: Variable [0001: Temp Pokemon Choice] == 0
+ @>Comment: Starter Chosen
+ @>Script: pbSetSelfSwitch(4,"B",true)
+ @>Text: \xn[Professor Oak]I'm sure you two will make a great pair!
+ @>Script: p=Pokemon.new(:CSANAE,5,$player)
+ :       : p.item=:ORANBERRY
+ :       : p.calc_stats
+ :       : p.reset_moves
+ :       : 
+ :       : pbAddPokemon(p)
+ @>Control Variables: [0007: Starter choice] = 1
+ @>Script: pbSetSelfSwitch(1,"A",true)
+ @>Script: pbSetSelfSwitch(10,"B",true)
+ @>Conditional Branch: Variable [0107: Chosen Protag] == 0
+  @>Script: pbRegisterPartner(:SCMary,"Maribel",2)
   @>
- : Branch End
- @>Conditional Branch: Variable [0001: Temp Pokemon Choice] == 1
-  @>Comment: Starter not chosen
-  @>Text: \xn[Professor Oak]Take your time and think it over carefully!
-  @>Erase Picture: 1
+ : Else
+  @>Script: pbRegisterPartner(:SCRenko,"Renko",2)
   @>
  : Branch End
  @>
-: Else
- @>Change Text Options: Bottom, Hide
- @>Text: \wt[1]
- @>Change Text Options: Bottom, Show
- @>Jump to Label: :wacko:
+: Branch End
+@>Conditional Branch: Variable [0001: Temp Pokemon Choice] == 1
+ @>Comment: Starter not chosen
+ @>Text: \xn[Professor Oak]Take your time and think it over carefully!
+ @>Erase Picture: 1
  @>
 : Branch End
 @>
@@ -8129,53 +8110,34 @@ Move Animation
 Trigger: Action Button
 
 List of Event Commands:
-@>Change Screen Color Tone: (-255,-255,-255,0), @10
-@>Wait: 10 frame(s)
-@>Show Picture: 1, '003_CAlice', Upper Left (0,0), (100%,100%), 0, Normal
-@>Move Picture: 1, @10, Upper Left (0,0), (100%,100%), 255, Normal
-@>Wait: 10 frame(s)
-@>Script: Pokemon.play_cry(:CALICE)
-@>Label: :wacko:
-@>Conditional Branch: Script: Input.press?(Input::C) || Input.press?(Input::B)
- @>Move Picture: 1, @10, Upper Left (0,0), (100%,100%), 0, Normal
- @>Wait: 10 frame(s)
- @>Change Screen Color Tone: (0,0,0,0), @10
- @>Wait: 10 frame(s)
- @>Text: \xn[Professor Oak]So, \PN, would you like Chibi Alice, the Puppeteer Puppet?\ch[1,2,Yes,No]
- @>Conditional Branch: Variable [0001: Temp Pokemon Choice] == 0
-  @>Comment: Starter Chosen
-  @>Script: pbSetSelfSwitch(4,"B",true)
-  @>Text: \xn[Professor Oak]I'm sure you two will make a great pair!
-  @>Script: p=Pokemon.new(:CALICE,5,$player)
-  :       : p.item=:ORANBERRY
-  :       : p.calc_stats
-  :       : p.reset_moves
-  :       :  
-  :       : pbAddPokemon(p)
-  @>Control Variables: [0007: Starter choice] = 2
-  @>Script: pbSetSelfSwitch(2,"A",true)
-  @>Script: pbSetSelfSwitch(10,"B",true)
-  @>Conditional Branch: Variable [0107: Chosen Protag] == 0
-   @>Script: pbRegisterPartner(:SCMary,"Maribel",1)
-   @>
-  : Else
-   @>Script: pbRegisterPartner(:SCRenko,"Renko",1)
-   @>
-  : Branch End
+@>Script: pbShowPokedexEntry(:CALICE)
+@>Text: \xn[Professor Oak]So, \PN, would you like Chibi Alice, the Puppeteer Puppet?\ch[1,2,Yes,No]
+@>Conditional Branch: Variable [0001: Temp Pokemon Choice] == 0
+ @>Comment: Starter Chosen
+ @>Script: pbSetSelfSwitch(4,"B",true)
+ @>Text: \xn[Professor Oak]I'm sure you two will make a great pair!
+ @>Script: p=Pokemon.new(:CALICE,5,$player)
+ :       : p.item=:ORANBERRY
+ :       : p.calc_stats
+ :       : p.reset_moves
+ :       :  
+ :       : pbAddPokemon(p)
+ @>Control Variables: [0007: Starter choice] = 2
+ @>Script: pbSetSelfSwitch(2,"A",true)
+ @>Script: pbSetSelfSwitch(10,"B",true)
+ @>Conditional Branch: Variable [0107: Chosen Protag] == 0
+  @>Script: pbRegisterPartner(:SCMary,"Maribel",1)
   @>
- : Branch End
- @>Conditional Branch: Variable [0001: Temp Pokemon Choice] == 1
-  @>Comment: Starter not chosen
-  @>Text: \xn[Professor Oak]Take your time and think it over carefully!
-  @>Erase Picture: 1
+ : Else
+  @>Script: pbRegisterPartner(:SCRenko,"Renko",1)
   @>
  : Branch End
  @>
-: Else
- @>Change Text Options: Bottom, Hide
- @>Text: \wt[1]
- @>Change Text Options: Bottom, Show
- @>Jump to Label: :wacko:
+: Branch End
+@>Conditional Branch: Variable [0001: Temp Pokemon Choice] == 1
+ @>Comment: Starter not chosen
+ @>Text: \xn[Professor Oak]Take your time and think it over carefully!
+ @>Erase Picture: 1
  @>
 : Branch End
 @>
@@ -8233,53 +8195,34 @@ Move Animation
 Trigger: Action Button
 
 List of Event Commands:
-@>Change Screen Color Tone: (-255,-255,-255,0), @10
-@>Wait: 10 frame(s)
-@>Show Picture: 1, '005_CReisen', Upper Left (0,0), (100%,100%), 0, Normal
-@>Move Picture: 1, @10, Upper Left (0,0), (100%,100%), 255, Normal
-@>Wait: 10 frame(s)
-@>Script: Pokemon.play_cry(:CREISEN)
-@>Label: :wacko:
-@>Conditional Branch: Script: Input.press?(Input::C) || Input.press?(Input::B)
- @>Move Picture: 1, @10, Upper Left (0,0), (100%,100%), 0, Normal
- @>Wait: 10 frame(s)
- @>Change Screen Color Tone: (0,0,0,0), @10
- @>Wait: 10 frame(s)
- @>Text: \xn[Professor Oak]So, \PN, would you like Chibi Reisen, the Moon Rabbit Puppet?\ch[1,2,Yes,No]
- @>Conditional Branch: Variable [0001: Temp Pokemon Choice] == 0
-  @>Comment: Starter Chosen
-  @>Script: pbSetSelfSwitch(4,"B",true)
-  @>Text: \xn[Professor Oak]I'm sure you two will make a great pair!
-  @>Script: p=Pokemon.new(:CREISEN,5,$player)
-  :       : p.item=:ORANBERRY
-  :       : p.calc_stats
-  :       : p.reset_moves
-  :       :  
-  :       : pbAddPokemon(p)
-  @>Control Variables: [0007: Starter choice] = 3
-  @>Script: pbSetSelfSwitch(3,"A",true)
-  @>Script: pbSetSelfSwitch(10,"B",true)
-  @>Conditional Branch: Variable [0107: Chosen Protag] == 0
-   @>Script: pbRegisterPartner(:SCMary,"Maribel",3)
-   @>
-  : Else
-   @>Script: pbRegisterPartner(:SCRenko,"Renko",3)
-   @>
-  : Branch End
+@>Script: pbShowPokedexEntry(:CREISEN)
+@>Text: \xn[Professor Oak]So, \PN, would you like Chibi Reisen, the Moon Rabbit Puppet?\ch[1,2,Yes,No]
+@>Conditional Branch: Variable [0001: Temp Pokemon Choice] == 0
+ @>Comment: Starter Chosen
+ @>Script: pbSetSelfSwitch(4,"B",true)
+ @>Text: \xn[Professor Oak]I'm sure you two will make a great pair!
+ @>Script: p=Pokemon.new(:CREISEN,5,$player)
+ :       : p.item=:ORANBERRY
+ :       : p.calc_stats
+ :       : p.reset_moves
+ :       :  
+ :       : pbAddPokemon(p)
+ @>Control Variables: [0007: Starter choice] = 3
+ @>Script: pbSetSelfSwitch(3,"A",true)
+ @>Script: pbSetSelfSwitch(10,"B",true)
+ @>Conditional Branch: Variable [0107: Chosen Protag] == 0
+  @>Script: pbRegisterPartner(:SCMary,"Maribel",3)
   @>
- : Branch End
- @>Conditional Branch: Variable [0001: Temp Pokemon Choice] == 1
-  @>Comment: Starter not chosen
-  @>Text: \xn[Professor Oak]Take your time and think it over carefully!
-  @>Erase Picture: 1
+ : Else
+  @>Script: pbRegisterPartner(:SCRenko,"Renko",3)
   @>
  : Branch End
  @>
-: Else
- @>Change Text Options: Bottom, Hide
- @>Text: \wt[1]
- @>Change Text Options: Bottom, Show
- @>Jump to Label: :wacko:
+: Branch End
+@>Conditional Branch: Variable [0001: Temp Pokemon Choice] == 1
+ @>Comment: Starter not chosen
+ @>Text: \xn[Professor Oak]Take your time and think it over carefully!
+ @>Erase Picture: 1
  @>
 : Branch End
 @>
@@ -8808,6 +8751,339 @@ List of Event Commands:
 :       : battle so he can show us what it's like to be a Trainer. Battling such a legendary 
 :       : trainer... I wonder if we stand a chance?")
 @>Script: pbSetQuestObj(1,"Head downstairs and battle Red.")
+@>
+
+#------------------------------------------------------------------------------
+Event ID: 013
+Event Name: EV013
+(X,Y): (023,011)
+
+Page #1
+Conditions
+None
+
+Autonomous Movement
+Type: Fixed
+Speed: 3: Slow
+Freq: 3: Low
+Options Enabled
+Move Animation
+Trigger: Action Button
+
+List of Event Commands:
+@>Script: pbShowPokedexEntry(:CSANAE)
+@>
+
+#------------------------------------------------------------------------------
+Event ID: 014
+Event Name: CSanae
+(X,Y): (014,024)
+
+Page #1
+Conditions
+None
+
+Graphic: Object ball
+
+Autonomous Movement
+Type: Fixed
+Speed: 3: Slow
+Freq: 3: Low
+Options Enabled
+Move Animation
+Trigger: Action Button
+
+List of Event Commands:
+@>Change Screen Color Tone: (-255,-255,-255,0), @10
+@>Wait: 10 frame(s)
+@>Show Picture: 1, '001_CSanae', Upper Left (0,0), (100%,100%), 0, Normal
+@>Move Picture: 1, @10, Upper Left (0,0), (100%,100%), 255, Normal
+@>Wait: 10 frame(s)
+@>Script: Pokemon.play_cry(:CSANAE)
+@>Label: :wacko:
+@>Conditional Branch: Script: Input.press?(Input::C) || Input.press?(Input::B)
+ @>Move Picture: 1, @10, Upper Left (0,0), (100%,100%), 0, Normal
+ @>Wait: 10 frame(s)
+ @>Change Screen Color Tone: (0,0,0,0), @10
+ @>Wait: 10 frame(s)
+ @>Text: \xn[Professor Oak]So, \PN, would you like Chibi Sanae, the Miko Puppet?\ch[1,2,Yes,No]
+ @>Conditional Branch: Variable [0001: Temp Pokemon Choice] == 0
+  @>Comment: Starter Chosen
+  @>Script: pbSetSelfSwitch(4,"B",true)
+  @>Text: \xn[Professor Oak]I'm sure you two will make a great pair!
+  @>Script: p=Pokemon.new(:CSANAE,5,$player)
+  :       : p.item=:ORANBERRY
+  :       : p.calc_stats
+  :       : p.reset_moves
+  :       : 
+  :       : pbAddPokemon(p)
+  @>Control Variables: [0007: Starter choice] = 1
+  @>Script: pbSetSelfSwitch(1,"A",true)
+  @>Script: pbSetSelfSwitch(10,"B",true)
+  @>Conditional Branch: Variable [0107: Chosen Protag] == 0
+   @>Script: pbRegisterPartner(:SCMary,"Maribel",2)
+   @>
+  : Else
+   @>Script: pbRegisterPartner(:SCRenko,"Renko",2)
+   @>
+  : Branch End
+  @>
+ : Branch End
+ @>Conditional Branch: Variable [0001: Temp Pokemon Choice] == 1
+  @>Comment: Starter not chosen
+  @>Text: \xn[Professor Oak]Take your time and think it over carefully!
+  @>Erase Picture: 1
+  @>
+ : Branch End
+ @>
+: Else
+ @>Change Text Options: Bottom, Hide
+ @>Text: \wt[1]
+ @>Change Text Options: Bottom, Show
+ @>Jump to Label: :wacko:
+ @>
+: Branch End
+@>
+
+Page #2
+Conditions
+Self Switch A is ON
+
+Autonomous Movement
+Type: Fixed
+Speed: 3: Slow
+Freq: 3: Low
+Options Enabled
+Move Animation
+Trigger: Action Button
+
+List of Event Commands:
+@>
+
+Page #3
+Conditions
+Self Switch B is ON
+
+Graphic: Object ball
+
+Autonomous Movement
+Type: Fixed
+Speed: 3: Slow
+Freq: 3: Low
+Options Enabled
+Move Animation
+Trigger: Action Button
+
+List of Event Commands:
+@>Text: * This contains Professor Oak's last Puppet. I shouldn't be greedy.
+@>
+
+#------------------------------------------------------------------------------
+Event ID: 015
+Event Name: CAlice
+(X,Y): (016,024)
+
+Page #1
+Conditions
+None
+
+Graphic: Object ball
+
+Autonomous Movement
+Type: Fixed
+Speed: 3: Slow
+Freq: 3: Low
+Options Enabled
+Move Animation
+Trigger: Action Button
+
+List of Event Commands:
+@>Change Screen Color Tone: (-255,-255,-255,0), @10
+@>Wait: 10 frame(s)
+@>Show Picture: 1, '003_CAlice', Upper Left (0,0), (100%,100%), 0, Normal
+@>Move Picture: 1, @10, Upper Left (0,0), (100%,100%), 255, Normal
+@>Wait: 10 frame(s)
+@>Script: Pokemon.play_cry(:CALICE)
+@>Label: :wacko:
+@>Conditional Branch: Script: Input.press?(Input::C) || Input.press?(Input::B)
+ @>Move Picture: 1, @10, Upper Left (0,0), (100%,100%), 0, Normal
+ @>Wait: 10 frame(s)
+ @>Change Screen Color Tone: (0,0,0,0), @10
+ @>Wait: 10 frame(s)
+ @>Text: \xn[Professor Oak]So, \PN, would you like Chibi Alice, the Puppeteer Puppet?\ch[1,2,Yes,No]
+ @>Conditional Branch: Variable [0001: Temp Pokemon Choice] == 0
+  @>Comment: Starter Chosen
+  @>Script: pbSetSelfSwitch(4,"B",true)
+  @>Text: \xn[Professor Oak]I'm sure you two will make a great pair!
+  @>Script: p=Pokemon.new(:CALICE,5,$player)
+  :       : p.item=:ORANBERRY
+  :       : p.calc_stats
+  :       : p.reset_moves
+  :       :  
+  :       : pbAddPokemon(p)
+  @>Control Variables: [0007: Starter choice] = 2
+  @>Script: pbSetSelfSwitch(2,"A",true)
+  @>Script: pbSetSelfSwitch(10,"B",true)
+  @>Conditional Branch: Variable [0107: Chosen Protag] == 0
+   @>Script: pbRegisterPartner(:SCMary,"Maribel",1)
+   @>
+  : Else
+   @>Script: pbRegisterPartner(:SCRenko,"Renko",1)
+   @>
+  : Branch End
+  @>
+ : Branch End
+ @>Conditional Branch: Variable [0001: Temp Pokemon Choice] == 1
+  @>Comment: Starter not chosen
+  @>Text: \xn[Professor Oak]Take your time and think it over carefully!
+  @>Erase Picture: 1
+  @>
+ : Branch End
+ @>
+: Else
+ @>Change Text Options: Bottom, Hide
+ @>Text: \wt[1]
+ @>Change Text Options: Bottom, Show
+ @>Jump to Label: :wacko:
+ @>
+: Branch End
+@>
+
+Page #2
+Conditions
+Self Switch A is ON
+
+Autonomous Movement
+Type: Fixed
+Speed: 3: Slow
+Freq: 3: Low
+Options Enabled
+Move Animation
+Trigger: Action Button
+
+List of Event Commands:
+@>
+
+Page #3
+Conditions
+Self Switch B is ON
+
+Graphic: Object ball
+
+Autonomous Movement
+Type: Fixed
+Speed: 3: Slow
+Freq: 3: Low
+Options Enabled
+Move Animation
+Trigger: Action Button
+
+List of Event Commands:
+@>Text: * This contains Professor Oak's last Puppet. I shouldn't be greedy.
+@>
+
+#------------------------------------------------------------------------------
+Event ID: 016
+Event Name: CReisen
+(X,Y): (018,024)
+
+Page #1
+Conditions
+None
+
+Graphic: Object ball
+
+Autonomous Movement
+Type: Fixed
+Speed: 3: Slow
+Freq: 3: Low
+Options Enabled
+Move Animation
+Trigger: Action Button
+
+List of Event Commands:
+@>Change Screen Color Tone: (-255,-255,-255,0), @10
+@>Wait: 10 frame(s)
+@>Show Picture: 1, '005_CReisen', Upper Left (0,0), (100%,100%), 0, Normal
+@>Move Picture: 1, @10, Upper Left (0,0), (100%,100%), 255, Normal
+@>Wait: 10 frame(s)
+@>Script: Pokemon.play_cry(:CREISEN)
+@>Label: :wacko:
+@>Conditional Branch: Script: Input.press?(Input::C) || Input.press?(Input::B)
+ @>Move Picture: 1, @10, Upper Left (0,0), (100%,100%), 0, Normal
+ @>Wait: 10 frame(s)
+ @>Change Screen Color Tone: (0,0,0,0), @10
+ @>Wait: 10 frame(s)
+ @>Text: \xn[Professor Oak]So, \PN, would you like Chibi Reisen, the Moon Rabbit Puppet?\ch[1,2,Yes,No]
+ @>Conditional Branch: Variable [0001: Temp Pokemon Choice] == 0
+  @>Comment: Starter Chosen
+  @>Script: pbSetSelfSwitch(4,"B",true)
+  @>Text: \xn[Professor Oak]I'm sure you two will make a great pair!
+  @>Script: p=Pokemon.new(:CREISEN,5,$player)
+  :       : p.item=:ORANBERRY
+  :       : p.calc_stats
+  :       : p.reset_moves
+  :       :  
+  :       : pbAddPokemon(p)
+  @>Control Variables: [0007: Starter choice] = 3
+  @>Script: pbSetSelfSwitch(3,"A",true)
+  @>Script: pbSetSelfSwitch(10,"B",true)
+  @>Conditional Branch: Variable [0107: Chosen Protag] == 0
+   @>Script: pbRegisterPartner(:SCMary,"Maribel",3)
+   @>
+  : Else
+   @>Script: pbRegisterPartner(:SCRenko,"Renko",3)
+   @>
+  : Branch End
+  @>
+ : Branch End
+ @>Conditional Branch: Variable [0001: Temp Pokemon Choice] == 1
+  @>Comment: Starter not chosen
+  @>Text: \xn[Professor Oak]Take your time and think it over carefully!
+  @>Erase Picture: 1
+  @>
+ : Branch End
+ @>
+: Else
+ @>Change Text Options: Bottom, Hide
+ @>Text: \wt[1]
+ @>Change Text Options: Bottom, Show
+ @>Jump to Label: :wacko:
+ @>
+: Branch End
+@>
+
+Page #2
+Conditions
+Self Switch A is ON
+
+Autonomous Movement
+Type: Fixed
+Speed: 3: Slow
+Freq: 3: Low
+Options Enabled
+Move Animation
+Trigger: Action Button
+
+List of Event Commands:
+@>
+
+Page #3
+Conditions
+Self Switch B is ON
+
+Graphic: Object ball
+
+Autonomous Movement
+Type: Fixed
+Speed: 3: Slow
+Freq: 3: Low
+Options Enabled
+Move Animation
+Trigger: Action Button
+
+List of Event Commands:
+@>Text: * This contains Professor Oak's last Puppet. I shouldn't be greedy.
 @>
 
 #------------------------------------------------------------------------------
@@ -12721,7 +12997,7 @@ List of Event Commands:
 @>Wait for Move's Completion
 @>Comment: -----------------------
 @>Memorize BGM/BGS
-@>Script: pbTrainerIntro(:RIVAL_Gold)
+@>Play BGM: 'P-013. Encounter - Gold', 100, 100
 @>Show Animation: [Gold], [Exclaim bubble]
 @>Text: \xn[Hat-Wearing Individual]Oh, I'm sorry, I didn't see you there!
 @>Text: \xn[Hat-Wearing Individual]I was just finishing up my rematch against the Gym Leader here, it's been a long time since we fought!
@@ -17410,6 +17686,69 @@ List of Event Commands:
 @>
 
 #------------------------------------------------------------------------------
+Event ID: 018
+Event Name: EV018
+(X,Y): (033,016)
+
+Page #1
+Conditions
+None
+
+Autonomous Movement
+Type: Fixed
+Speed: 3: Slow
+Freq: 3: Low
+Options Enabled
+Move Animation
+Trigger: Action Button
+
+List of Event Commands:
+@>Comment: Register pokemon, then deregister it
+@>Script: $player.pokedex.set_owned(:CSANAE)
+:       : scene=PokemonPokedexInfo_Scene.new
+:       : screen=PokemonPokedexInfoScreen.new(scene)
+:       : screen.pbDexEntry(:CSANAE)
+:       : $player.pokedex.set_owned(:CSANAE, true, false)
+@>
+
+Page #2
+Conditions
+None
+
+Autonomous Movement
+Type: Fixed
+Speed: 3: Slow
+Freq: 3: Low
+Options Enabled
+Move Animation
+Trigger: Action Button
+
+List of Event Commands:
+@>Script: pbShowPokedexEntry(:CSANAE)
+@>
+
+#------------------------------------------------------------------------------
+Event ID: 019
+Event Name: EV019
+(X,Y): (030,016)
+
+Page #1
+Conditions
+None
+
+Autonomous Movement
+Type: Fixed
+Speed: 3: Slow
+Freq: 3: Low
+Options Enabled
+Move Animation
+Trigger: Action Button
+
+List of Event Commands:
+@>Script: pbPasswordCheck
+@>
+
+#------------------------------------------------------------------------------
 
 #==============================================================================
 Map ID: 040
@@ -19794,7 +20133,7 @@ List of Event Commands:
 Map ID: 042
 Map Name: Fuchsia City
 Tileset: 001: Outside
-Width: 55, Height: 48
+Width: 71, Height: 48
 Auto-Change BGM: W-015. Cerulean City
 
 #------------------------------------------------------------------------------
@@ -20204,7 +20543,7 @@ Move Animation
 Trigger: Action Button
 
 List of Event Commands:
-@>Text: \sign[signskin]\l[4]<ac>Touhoumon Asteria Version Facts</ac>\n* I was quite pleased with how my take on Fuchsia City initially came out. Gen 2 left it rather baren 
+@>Text: \sign[signskin]\l[5]<ac>Touhoumon Asteria Version Facts</ac>\n* I was quite pleased with how my take on Fuchsia City initially came out. Gen 2 left it rather baren 
  :    : when they didnt use the Safari Zone.
 @>
 
@@ -22106,6 +22445,38 @@ List of Event Commands:
 @>
 
 #------------------------------------------------------------------------------
+Event ID: 044
+Event Name: ExitArrow
+(X,Y): (065,024)
+
+Page #1
+Conditions
+None
+
+Graphic: Exitarrow_red
+
+Autonomous Movement
+Type: Fixed
+Speed: 3: Slow
+Freq: 3: Low
+Options Enabled
+Move Animation
+Stop Animation
+Always on Top
+Trigger: Player Touch
+
+List of Event Commands:
+@>Conditional Branch: Player is facing Right
+ @>Play SE: 'Door exit', 100, 100
+ @>Change Screen Color Tone: (-255,-255,-255,0), @6
+ @>Wait: 8 frame(s)
+ @>Transfer Player:[275: Route 15 - Gatehouse], (001,006), No Fade
+ @>Change Screen Color Tone: (0,0,0,0), @6
+ @>
+: Branch End
+@>
+
+#------------------------------------------------------------------------------
 
 #==============================================================================
 Map ID: 043
@@ -22979,7 +23350,7 @@ Trigger: Action Button
 List of Event Commands:
 @>Text: I'm out here every day gathering up these
  :    : berries.
-@>Text: Kee and Maragna Berries are very rare and
+@>Text: Kee and Maranga Berries are very rare and
  :    : don't grow that often in the Kanto Region.
 @>
 
@@ -25713,43 +26084,41 @@ Trigger: Action Button
 
 List of Event Commands:
 @>Conditional Branch: Script: DayCare.egg_generated?
- @>Text: \bAh, it's you!
- @>Text: \bWe were raising your Pokémon, and my goodness, 
+ @>Text: Ah, it's you!
+ @>Text: We were raising your Pokémon, and my goodness, 
   :    : were we surprised!
- @>Text: \bYour Pokémon was holding an Egg!
- @>Text: \bWe don't know how it got there, but your Pokémon 
+ @>Text: Your Pokémon was holding an Egg!
+ @>Text: We don't know how it got there, but your Pokémon 
   :    : had it.
- @>Text: \bYou do want it, don't you?
+ @>Text: You do want it, don't you?
  @>Show Choices: Yes, No
  (When Cancel: Choice 2)
  : When [Yes]
   @>Label: ReceiveEgg
-  @>Conditional Branch: Script: $player.party.length>=6
-   @>Text: \bYou have no room for it right now...  Come back 
+  @>Conditional Branch: Script: $player.party_full?
+   @>Text: You have no room for it right now... Come back 
     :    : when you've made room.
    @>Exit Event Processing
    @>
   : Branch End
-  @>Text: \PN received the Egg from the Day-Care Man.
-  @>Text: \bYou take good care of it.
+  @>Text: \me[Egg get]\PN received the Egg from the Day-Care 
+   :    : Man.
+  @>Text: You take good care of it.
   @>Script: DayCare.collect_egg
-  @>Script: $PokemonGlobal.daycareEgg=0
-  :       : $PokemonGlobal.daycareEggSteps=0
   @>
  : When [No]
-  @>Text: \bI really will keep it.  You do want this Egg, yes?
+  @>Text: I really will keep it. You do want this Egg, yes?
   @>Show Choices: Yes, No
   (When Cancel: Choice 2)
   : When [Yes]
    @>Jump to Label: ReceiveEgg
    @>
   : When [No]
-   @>Text: \bWell all right then, I'll take it.  Thank you.
-   @>Text: \bThat is, I don't think we'll ever find another...
-   @>Text: \bNo, no, I'm sure we'll find another one.  I'm definitely 
+   @>Text: Well all right then, I'll take it. Thank you.
+   @>Text: That is, I don't think we'll ever find another...
+   @>Text: No, no, I'm sure we'll find another one. I'm definitely 
     :    : sure of it!
-   @>Script: $PokemonGlobal.daycareEgg=0
-   :       : $PokemonGlobal.daycareEggSteps=0
+   @>Script: DayCare.reset_egg_counters
    @>Exit Event Processing
    @>
   : Branch End
@@ -25757,41 +26126,41 @@ List of Event Commands:
  : Branch End
  @>
 : Else
- @>Conditional Branch: Script: DayCare.count==0
-  @>Text: \bI'm the Day-Care Man.
-  @>Text: \bI help take care of the precious Pokémon of 
+ @>Conditional Branch: Script: DayCare.count == 0
+  @>Text: I'm the Day-Care Man.
+  @>Text: I help take care of the precious Pokémon of 
    :    : trainers.
-  @>Text: \bAny Pokémon you'd like to have raised you can 
+  @>Text: Any Pokémon you'd like to have raised you can 
    :    : leave in my wife's care.
   @>
  : Branch End
- @>Conditional Branch: Script: DayCare.count==1
-  @>Script: DayCare.get_details(-1,3,-1)
-  @>Text: \bAh, it's you!\nGood to see you!
-  @>Text: \bYour \v[3] is doing just fine.
+ @>Conditional Branch: Script: DayCare.count == 1
+  @>Script: DayCare.get_details(-1, 3, -1)
+  @>Text: Ah, it's you!\nGood to see you!
+  @>Text: Your \v[3] is doing just fine.
   @>
  : Branch End
- @>Conditional Branch: Script: DayCare.count==2
-  @>Script: DayCare.get_details(0,3,-1)
-  :       : DayCare.get_details(1,4,-1)
+ @>Conditional Branch: Script: DayCare.count == 2
+  @>Script: DayCare.get_details(0, 3, -1)
+  :       : DayCare.get_details(1, 4, -1)
   :       : DayCare.get_compatibility(5)
-  @>Text: \bAh, it's you!\nGood to see you!
-  @>Text: \bYour \v[3] and \v[4] are doing just fine.
+  @>Text: Ah, it's you!\nGood to see you!
+  @>Text: Your \v[3] and \v[4] are doing just fine.
   @>Conditional Branch: Variable [0005: Temp Text Entry] == 0
-   @>Text: \bThe two play with other Pokémon rather than with 
+   @>Text: The two play with other Pokémon rather than with 
     :    : each other...
    @>
   : Branch End
   @>Conditional Branch: Variable [0005: Temp Text Entry] == 1
-   @>Text: \bThe two don't seem to like each other much.
+   @>Text: The two don't seem to like each other much.
    @>
   : Branch End
   @>Conditional Branch: Variable [0005: Temp Text Entry] == 2
-   @>Text: \bThe two seem to get along.
+   @>Text: The two seem to get along.
    @>
   : Branch End
   @>Conditional Branch: Variable [0005: Temp Text Entry] == 3
-   @>Text: \bThe two seem to get along very well.
+   @>Text: The two seem to get along very well.
    @>
   : Branch End
   @>
@@ -25821,164 +26190,174 @@ Trigger: Action Button
 
 List of Event Commands:
 @>Conditional Branch: Script: DayCare.egg_generated?
- @>Text: \rAh, there you are!  My husband was looking for 
+ @>Text: Ah, there you are! My husband was looking for 
   :    : you.
  @>Exit Event Processing
  @>
 : Branch End
 @>Control Self Switch: A =OFF
-@>Conditional Branch: Script: DayCare.count==0
- @>Text: \rI'm the Day-Care Lady.  We can raise Pokémon for 
+@>Conditional Branch: Script: DayCare.count == 0
+ @>Text: I'm the Day-Care Lady. We can raise Pokémon for 
   :    : you.
- @>Text: \rWould you like us to raise your Pokémon?
+ @>Text: Would you like us to raise your Pokémon?
  @>Show Choices: Yes, No
  (When Cancel: Choice 2)
  : When [Yes]
-  @>Conditional Branch: Script: $player.pokemonCount<=1
-   @>Text: \rOh?  But you only have one Pokémon with you.
-   @>Text: \rYou can't go off without a Pokémon.  Come back 
+  @>Conditional Branch: Script: $player.pokemon_count <= 1
+   @>Text: Oh? But you only have one Pokémon with you.
+   @>Text: You can't go off without a Pokémon. Come back 
     :    : another time.
    @>Exit Event Processing
    @>
   : Branch End
-  @>Text: \rWhich Pokémon should we raise for you?
-  @>Script: pbChooseNonEggPokemon(1,3)
+  @>Text: Which Pokémon should we raise for you?
+  @>Script: pbChooseNonEggPokemon(1, 3)
   @>Conditional Branch: Variable [0001: Temp Pokemon Choice] < 0
-   @>Text: \rOh, fine, then.\nCome again.
+   @>Text: Oh, fine, then.\nCome again.
    @>Exit Event Processing
    @>
   : Branch End
   @>Conditional Branch: Script: !$player.has_other_able_pokemon?(pbGet(1))
-   @>Text: \rIf you leave me that Pokémon, what are you gonna 
+   @>Text: If you leave me that Pokémon, what are you gonna 
     :    : battle with?
-   @>Text: \rCome back another time.
+   @>Text: Come back another time.
    @>Exit Event Processing
    @>
   : Branch End
   @>Script: DayCare.deposit(pbGet(1))
-  @>Text: \rFine, we'll raise your \v[3] for a while.
-  @>Text: \rCome back for it later.
+  @>Text: Fine, we'll raise your \v[3] for a while.
+  @>Text: Come back for it later.
   @>Label: RaiseAnother
-  @>Text: \rWe can raise two of your Pokémon.  Would you like 
+  @>Text: We can raise two of your Pokémon. Would you like 
    :    : us to raise another?
   @>Show Choices: Yes, No
   (When Cancel: Choice 2)
   : When [Yes]
-   @>Conditional Branch: Script: $player.pokemonCount<=1
-    @>Text: \rOh?  But you only have one Pokémon with you.
-    @>Text: \rYou can't go off without a Pokémon.  Come back 
+   @>Conditional Branch: Script: $player.pokemon_count <= 1
+    @>Text: Oh? But you only have one Pokémon with you.
+    @>Text: You can't go off without a Pokémon. Come back 
      :    : another time.
     @>Exit Event Processing
     @>
    : Branch End
-   @>Text: \rWhich Pokémon should we raise for you?
-   @>Script: pbChooseNonEggPokemon(1,3)
+   @>Text: Which Pokémon should we raise for you?
+   @>Script: pbChooseNonEggPokemon(1, 3)
    @>Conditional Branch: Variable [0001: Temp Pokemon Choice] < 0
-    @>Text: \rVery good.  Come again.
+    @>Text: Very good. Come again.
     @>Exit Event Processing
     @>
    : Branch End
    @>Conditional Branch: Script: !$player.has_other_able_pokemon?(pbGet(1))
-    @>Text: \rIf you leave me that Pokémon, what are you gonna 
+    @>Text: If you leave me that Pokémon, what are you gonna 
      :    : battle with?
-    @>Text: \rCome back another time.
+    @>Text: Come back another time.
+    @>Exit Event Processing
+    @>
+   : Branch End
+   @>Conditional Branch: Script: pbGetPokemon(1).cannot_store
+    @>Text: That Pokémon looks like it would rather stay with 
+     :    : you.
+    @>Text: Come back another time.
     @>Exit Event Processing
     @>
    : Branch End
    @>Script: DayCare.deposit(pbGet(1))
-   @>Text: \rFine, we'll raise your \v[3] for a while.
-   @>Text: \rCome back for it later.
+   @>Text: Fine, we'll raise your \v[3] for a while.
+   @>Text: Come back for it later.
    @>
   : When [No]
    @>Conditional Branch: Self Switch A == ON
     @>Jump to Label: TakeBack
     @>
    : Else
-    @>Text: \rVery good.  Come again.
+    @>Text: Very good. Come again.
     @>
    : Branch End
    @>
   : Branch End
   @>
  : When [No]
-  @>Text: \rOh, fine, then.\nCome again.
+  @>Text: Oh, fine, then.\nCome again.
   @>
  : Branch End
  @>
 : Else
- @>Text: \rAh, it's you!  Good to see you.  Now, about your 
+ @>Text: Ah, it's you! Good to see you. Now, about your 
   :    : Pokémon...
- @>Conditional Branch: Script: DayCare.get_level_gain(0,3,4) && $game_variables[4]>0
-  @>Text: \rBy level, your \v[3] has grown by about \v[4].
+ @>Conditional Branch: Script: DayCare.get_level_gain(0, 3, 4) && pbGet(4) > 0
+  @>Text: By level, your \v[3] has grown by about \v[4].
   @>
  : Branch End
- @>Conditional Branch: Script: DayCare.get_level_gain(1,3,4) && $game_variables[4]>0
-  @>Text: \rBy level, your \v[3] has grown by about \v[4].
+ @>Conditional Branch: Script: DayCare.get_level_gain(1, 3, 4) && pbGet(4) > 0
+  @>Text: By level, your \v[3] has grown by about \v[4].
   @>
  : Branch End
- @>Conditional Branch: Script: DayCare.count==1
+ @>Conditional Branch: Script: DayCare.count == 1
   @>Control Self Switch: A =ON
   @>Jump to Label: RaiseAnother
   @>
  : Else
   @>Label: TakeBack
-  @>Text: \rDo you want your Pokémon back?
+  @>Text: Do you want your Pokémon back?
   @>Show Choices: Yes, No
   (When Cancel: Choice 2)
   : When [Yes]
    @>Label: TakeBackChosen
-   @>Conditional Branch: Script: $player.party.length>=6
-    @>Text: \rYour Pokémon team is full.  Make room, then come 
+   @>Conditional Branch: Script: $player.party_full?
+    @>Text: Your Pokémon team is full. Make room, then come 
      :    : see me.
     @>Exit Event Processing
     @>
    : Branch End
    @>Script: DayCare.choose(
-   :       : _I("Which one do you want back?"),1)
+   :       :   _I("Which one do you want back?"),
+   :       :   1
+   :       : )
    @>Conditional Branch: Variable [0001: Temp Pokemon Choice] < 0
-    @>Text: \rVery good.  Come again.
+    @>Text: Very good. Come again.
     @>Exit Event Processing
     @>
    : Branch End
-   @>Script: DayCare.get_details(pbGet(1),3,4)
-   @>Text: \G\rIf you want your \v[3] back, it will cost $\v[4].
+   @>Script: DayCare.get_details(pbGet(1), 3, 4)
+   @>Text: \GIf you want your \v[3] back, it will cost $\v[4].
    @>Show Choices: Yes, No
    (When Cancel: Choice 2)
    : When [Yes]
     @>Control Variables: [0005: Temp Text Entry] = Gold
     @>Conditional Branch: Variable [0005: Temp Text Entry] < Variable [0004: Temp Move Name]
-     @>Text: \G\rYou don't have enough money...
+     @>Text: \GYou don't have enough money...
      @>Exit Event Processing
      @>
     : Branch End
     @>Change Gold: - Variable [0004: Temp Move Name]
+    @>Play SE: 'Mart buy item', 100, 100
     @>Script: DayCare.withdraw(pbGet(1))
-    @>Text: \G\rExcellent\nHere's your Pokémon.
+    @>Text: \GExcellent\nHere's your Pokémon.
     @>Text: \PN took \v[3] back from the Day-Care Lady.
-    @>Conditional Branch: Script: DayCare.count==1
-     @>Text: \rDo you want to take back the other one, too?
+    @>Conditional Branch: Script: DayCare.count == 1
+     @>Text: \GDo you want to take back the other one, too?
      @>Show Choices: Yes, No
      (When Cancel: Choice 2)
      : When [Yes]
       @>Jump to Label: TakeBackChosen
       @>
      : When [No]
-      @>Text: \rVery good.  Come again.
+      @>Text: Very good. Come again.
       @>
      : Branch End
      @>
     : Else
-     @>Text: \rVery good.  Come again.
+     @>Text: Very good. Come again.
      @>
     : Branch End
     @>
    : When [No]
-    @>Text: \rVery good.  Come again.
+    @>Text: Very good. Come again.
     @>
    : Branch End
    @>
   : When [No]
-   @>Text: \rVery good.  Come again.
+   @>Text: Very good. Come again.
    @>
   : Branch End
   @>
@@ -39281,7 +39660,7 @@ Trigger: Action Button
 
 List of Event Commands:
 @>Text: There seems to be a sign on the elevator. it says:
-@>Text: Staff Elevator Only. Use Keykard to access elevator.
+@>Text: Staff Elevator Only. Use Keycard to access elevator.
 @>
 
 #------------------------------------------------------------------------------
@@ -39744,7 +40123,6 @@ List of Event Commands:
 @>Change Screen Color Tone: (-255,-255,-255,0), @6
 @>Wait: 8 frame(s)
 @>Transfer Player:[239: Power Plant], (001,005), Right, No Fade
-@>Script: pbHGSSTransitions("Power Plant")
 @>Change Screen Color Tone: (0,0,0,0), @6
 @>
 
@@ -57483,6 +57861,7 @@ List of Event Commands:
  :              : $>Move Left
  :              : $>Direction Fix OFF
 @>Wait for Move's Completion
+@>Scroll Map: Down, 2, 3
 @>Set Move Route: [Giovanni]
  :              : $>Move Down
  :              : $>Move Down
@@ -57497,7 +57876,6 @@ List of Event Commands:
  :              : $>Through OFF
 @>Wait for Move's Completion
 @>Script: pbSetSelfSwitch(1,"A",true)
-@>Scroll Map: Down, 2, 3
 @>Script: pbSetSelfSwitch(9,"A",true)
 :       : pbSetSelfSwitch(11,"A",true)
 @>Script: pbSetSelfSwitch(12,"A",true)
@@ -57563,6 +57941,7 @@ List of Event Commands:
 @>Text: \xn[Miles]Now, if that is all, I kindly ask for you to take your leave of my museum.
 @>Wait: 10 frame(s)
 @>Text: \xn[Mysterious Individual]Understood. I shall take my leave. Good day, Mr. Bradford.
+@>Scroll Map: Down, 2, 3
 @>Set Move Route: [Giovanni]
  :              : $>Through ON
  :              : $>Move Down
@@ -57580,7 +57959,6 @@ List of Event Commands:
  :              : $>Through OFF
 @>Wait for Move's Completion
 @>Script: pbSetSelfSwitch(1,"A",true)
-@>Scroll Map: Down, 2, 3
 @>Script: pbSetSelfSwitch(9,"A",true)
 :       : pbSetSelfSwitch(10,"A",true)
 @>Script: pbSetSelfSwitch(12,"A",true)
@@ -79979,9 +80357,9 @@ List of Event Commands:
     :              : $>Change Opacity: 0
    @>Show Animation: Player, [Exclaim bubble]
    @>Script: pbSetSelfSwitch(9,"A",true)
+   @>Control Self Switch: A =ON
    @>Wait: 20 frame(s)
    @>Text: The tree suddenly entered full bloom!
-   @>Control Self Switch: A =ON
    @>
   : When [No]
    @>
@@ -80016,7 +80394,7 @@ List of Event Commands:
  @>Change Screen Color Tone: (-255,-255,-255,0), @6
  @>Wait: 8 frame(s)
  @>Transfer Player:[251: ???], (019,035), No Fade
- @>Change Screen Color Tone: (0,0,0,0), @6
+ @>Change Screen Color Tone: (-70,-70,11,68), @6
  @>
 : When [No]
  @>
@@ -80698,7 +81076,7 @@ Trigger: Action Button
 
 List of Event Commands:
 @>Conditional Branch: Player is facing Up
- @>Text: Rest In Peace\n\nWake Up Angry
+ @>Text: Rest In Peace\nWake Up Angry
  @>
 : Branch End
 @>
@@ -80772,7 +81150,7 @@ Trigger: Action Button
 
 List of Event Commands:
 @>Conditional Branch: Player is facing Up
- @>Text: Even in Death,\n\n#Deadbeat forever
+ @>Text: Even in Death,\n#Deadbeat forever
  @>
 : Branch End
 @>
@@ -80845,6 +81223,31 @@ Trigger: Autorun
 List of Event Commands:
 @>Control Self Switch: A =OFF
 @>Script: setTempSwitchOn("A")
+@>
+
+#------------------------------------------------------------------------------
+Event ID: 028
+Event Name: EV028
+(X,Y): (021,036)
+
+Page #1
+Conditions
+None
+
+Autonomous Movement
+Type: Fixed
+Speed: 3: Slow
+Freq: 3: Low
+Options Enabled
+Move Animation
+Trigger: Action Button
+
+List of Event Commands:
+@>Conditional Branch: Player is facing Up
+ @>Text: A grave unlike any other. Built different. Built better. Built to last.
+ @>Text: Unlike the person resting underneath.
+ @>
+: Branch End
 @>
 
 #------------------------------------------------------------------------------
@@ -80984,7 +81387,13 @@ List of Event Commands:
  @>Conditional Branch: Variable [0002: Temp Move Choice] == 4
   @>Set Move Route: [Ghost]
    :              : $>Change Opacity: 0
+  @>Script: pbSetSelfSwitch(18,"B",true)
   @>Control Self Switch: B =ON
+  @>
+ : Else
+  @>Set Move Route: [Ghost]
+   :              : $>Change Opacity: 0
+  @>Control Self Switch: A =ON
   @>
  : Branch End
  @>
@@ -81761,6 +82170,7 @@ Speed: 3: Slow
 Freq: 3: Low
 Options Enabled
 Move Animation
+Through
 Trigger: Action Button
 
 List of Event Commands:
@@ -81783,6 +82193,7 @@ Speed: 3: Slow
 Freq: 3: Low
 Options Enabled
 Move Animation
+Through
 Trigger: Action Button
 
 List of Event Commands:
@@ -81805,6 +82216,7 @@ Speed: 3: Slow
 Freq: 3: Low
 Options Enabled
 Move Animation
+Through
 Trigger: Action Button
 
 List of Event Commands:
@@ -81827,6 +82239,7 @@ Speed: 3: Slow
 Freq: 3: Low
 Options Enabled
 Move Animation
+Through
 Trigger: Action Button
 
 List of Event Commands:
@@ -81849,6 +82262,7 @@ Speed: 3: Slow
 Freq: 3: Low
 Options Enabled
 Move Animation
+Through
 Trigger: Action Button
 
 List of Event Commands:
@@ -81871,6 +82285,7 @@ Speed: 3: Slow
 Freq: 3: Low
 Options Enabled
 Move Animation
+Through
 Trigger: Action Button
 
 List of Event Commands:
@@ -81893,6 +82308,7 @@ Speed: 3: Slow
 Freq: 3: Low
 Options Enabled
 Move Animation
+Through
 Trigger: Action Button
 
 List of Event Commands:
@@ -81915,6 +82331,7 @@ Speed: 3: Slow
 Freq: 3: Low
 Options Enabled
 Move Animation
+Through
 Trigger: Action Button
 
 List of Event Commands:
@@ -81937,6 +82354,7 @@ Speed: 3: Slow
 Freq: 3: Low
 Options Enabled
 Move Animation
+Through
 Trigger: Action Button
 
 List of Event Commands:
@@ -81959,6 +82377,7 @@ Speed: 3: Slow
 Freq: 3: Low
 Options Enabled
 Move Animation
+Through
 Trigger: Action Button
 
 List of Event Commands:
@@ -81981,6 +82400,7 @@ Speed: 3: Slow
 Freq: 3: Low
 Options Enabled
 Move Animation
+Through
 Trigger: Action Button
 
 List of Event Commands:
@@ -82003,6 +82423,7 @@ Speed: 3: Slow
 Freq: 3: Low
 Options Enabled
 Move Animation
+Through
 Trigger: Action Button
 
 List of Event Commands:
@@ -82028,6 +82449,175 @@ Move Animation
 Trigger: Action Button
 
 List of Event Commands:
+@>
+
+#------------------------------------------------------------------------------
+Event ID: 032
+Event Name: Ayakashi Trigger
+(X,Y): (038,007)
+
+Page #1
+Conditions
+None
+
+Autonomous Movement
+Type: Fixed
+Speed: 3: Slow
+Freq: 3: Low
+Options Enabled
+Move Animation
+Trigger: Action Button
+
+List of Event Commands:
+@>Text: Erected in memorium of the person closest to me. May her
+ :    : soul rest in peace, never to be distrurbed.
+@>Text: Here, beneath the sakura tree we loved with all our heart.
+@>Fade Out BGM: 3 sec.
+@>Wait: 60 frame(s)
+@>Set Event Location: [Ghost],(019,011)
+@>Set Move Route: [Ghost]
+ :              : $>Graphic: "TPDP_NPC 26', 0, 2, 0
+@>Script: event = $game_map.events[18]
+:       : 
+:       : pbSEPlay("Stare")
+:       : event.move_up
+:       : 16.times do
+:       :   event.opacity += 16
+:       :   pbWait(4)
+:       : end
+:       : pbWait(20)
+@>Script: pbSEPlay("Stare")
+:       : event.move_up
+:       : 16.times do
+:       :   event.opacity -= 16
+:       :   pbWait(4)
+:       : end
+@>Wait: 20 frame(s)
+@>Script: event = $game_map.events[31]
+:       : 3.times do
+:       :   pbSEPlay("Shiny sparkle")
+:       :   16.times do
+:       :     event.opacity += 16
+:       :     pbWait(2)
+:       :   end
+@>Script:   pbWait(4)
+:       :   16.times do
+:       :     event.opacity -= 16
+:       :     pbWait(2)
+:       :   end
+:       : end
+@>Wait: 20 frame(s)
+@>Script: event = $game_map.events[18]
+:       : 
+:       : pbSetSelfSwitch(18,"A",true)
+:       : pbSEPlay("Stare")
+:       : 16.times do
+:       :   event.opacity += 16
+:       :   pbWait(4)
+:       : end
+@>Wait for Move's Completion
+@>Script: Pokemon.play_cry(:AYAKASHI)
+@>Wait: 30 frame(s)
+@>Script: setBattleRule("cannotRun")
+:       : setBattleRule("outcome", 2)
+@>Control Switches: [0104: Transition Handler] = ON
+@>Control Variables: [0103: Vs. Transition ID] = 11
+@>Change Battle BGM: 'U-008. Sakura, Sakura ~ Japanize Dream', 100, 100
+@>Conditional Branch: Script: WildBattle.start(:AYAKASHI, 35)
+ @>Conditional Branch: Variable [0002: Temp Move Choice] == 4
+  @>Set Move Route: [Ghost]
+   :              : $>Change Opacity: 0
+  @>Script: pbSetSelfSwitch(18,"B",true)
+  @>Control Self Switch: B =ON
+  @>
+ : Else
+  @>Set Move Route: [Ghost]
+   :              : $>Change Opacity: 0
+  @>Control Self Switch: A =ON
+  @>
+ : Branch End
+ @>
+: Branch End
+@>
+
+Page #2
+Conditions
+Self Switch A is ON
+
+Autonomous Movement
+Type: Fixed
+Speed: 3: Slow
+Freq: 3: Low
+Options Enabled
+Move Animation
+Trigger: Action Button
+
+List of Event Commands:
+@>Text: Erected in memorium of a friend. May her
+ :    : soul rest in peace, never to be distrurbed.
+@>Text: Here, beneath the sakura tree we loved
+ :    : with all our heart.
+@>Fade Out BGM: 3 sec.
+@>Wait: 60 frame(s)
+@>Script: event = $game_map.events[18]
+:       : 
+:       : pbSetSelfSwitch(18,"A",true)
+:       : pbSEPlay("Stare")
+:       : 16.times do
+:       :   event.opacity += 16
+:       :   pbWait(4)
+:       : end
+@>Wait for Move's Completion
+@>Script: Pokemon.play_cry(:AYAKASHI)
+@>Wait: 30 frame(s)
+@>Script: setBattleRule("cannotRun")
+:       : setBattleRule("outcome", 2)
+@>Control Switches: [0104: Transition Handler] = ON
+@>Control Variables: [0103: Vs. Transition ID] = 11
+@>Change Battle BGM: 'U-008. Sakura, Sakura ~ Japanize Dream', 100, 100
+@>Conditional Branch: Script: WildBattle.start(:AYAKASHI, 35)
+ @>Conditional Branch: Script: WildBattle.start(:AYAKASHI, 35)
+  @>Conditional Branch: Variable [0002: Temp Move Choice] == 4
+   @>Set Move Route: [Ghost]
+    :              : $>Change Opacity: 0
+   @>Script: pbSetSelfSwitch(18,"B",true)
+   @>Control Self Switch: B =ON
+   @>
+  : Else
+   @>Set Move Route: [Ghost]
+    :              : $>Change Opacity: 0
+   @>Control Self Switch: A =ON
+   @>
+  : Branch End
+  @>
+ : Branch End
+ @>Conditional Branch: Variable [0002: Temp Move Choice] == 4
+  @>Set Move Route: [Ghost]
+   :              : $>Change Opacity: 0
+  @>Control Self Switch: B =ON
+  @>
+ : Branch End
+ @>
+: Branch End
+@>
+
+Page #3
+Conditions
+Self Switch B is ON
+
+Autonomous Movement
+Type: Fixed
+Speed: 3: Slow
+Freq: 3: Low
+Options Enabled
+Move Animation
+Trigger: Action Button
+
+List of Event Commands:
+@>Text: Erected in memorium of a friend. May her
+ :    : soul rest in peace, never to be distrurbed.
+@>Text: Here, beneath the sakura tree we loved
+ :    : with all our heart.
 @>
 
 #------------------------------------------------------------------------------
@@ -85895,7 +86485,7 @@ List of Event Commands:
 @>Text: \xn[Head Priestess]She was the twin sister of the shrine maiden 
  :    : that entered the gensou kyou when the realm was sealed away.
 @>Text: \xn[Head Priestess]All the members of the clan that reside on this
- :    : side are the descendnats of Seira Hakurei.
+ :    : side are the descendants of Seira Hakurei.
 @>Script: pbReceiveItem(:GENSOUEDICT)
 @>Text: \xn[Head Priestess]This would be the official parchment that was
  :    : written up when the Gensou Kyou Edict was settled on. 
@@ -86479,7 +87069,7 @@ List of Event Commands:
 @>Text: \xn[\pn]Okay, this is getting a bit strange... I think I'll just... come
  :    : back another time...
 @>Text: \wm\w[dark]<i>No, you shall not!</i>
-@>Text: \l[1]\wm\w[dark]<ac><fs=38><i>\rHakurei Clan Art - Sealing Circle</i></fs></ac>
+@>Text: \l[2]\wm\w[dark]<ac><fs=28><i>\rHakurei Clan Art - Sealing Circle</i></fs></ac>
 @>Screen Flash: (255,255,255,255), @20
 @>Set Move Route: Player
  :              : $>Always on Top ON
@@ -97617,37 +98207,6 @@ List of Event Commands:
 @>
 
 #------------------------------------------------------------------------------
-Event ID: 006
-Event Name: EV006
-(X,Y): (001,005)
-
-Page #1
-Conditions
-None
-
-Graphic: Scientist (Aveontrainer)
-
-Autonomous Movement
-Type: Fixed
-Speed: 3: Slow
-Freq: 3: Low
-Options Enabled
-Move Animation
-Trigger: Action Button
-
-List of Event Commands:
-@>Text: \xn[DerxwnaKapsyla]This is the end of the current Internal Test 
- :    : Demo.
-@>Text: \xn[DerxwnaKapsyla]Fuchsia City and Celadon City are currently 
- :    : not accessable.
-@>Text: \xn[DerxwnaKapsyla]Saffron City is in an incomplete state.
-@>Text: \xn[DerxwnaKapsyla]If you have found any bugs, please fill out the 
- :    : Bug Reporting Google Form you were provided with.
-@>Text: \xn[DerxwnaKapsyla]If you would like to apply to help with Asteria 
- :    : going forward, throw me a message!
-@>
-
-#------------------------------------------------------------------------------
 Event ID: 007
 Event Name: ExitArrow
 (X,Y): (000,006)
@@ -97673,7 +98232,7 @@ List of Event Commands:
  @>Play SE: 'Door exit', 100, 100
  @>Change Screen Color Tone: (-255,-255,-255,0), @6
  @>Wait: 8 frame(s)
- @>Transfer Player:[060: Route 15], (009,014), No Fade
+ @>Transfer Player:[042: Fuchsia City], (064,024), No Fade
  @>Change Screen Color Tone: (0,0,0,0), @6
  @>
 : Branch End
@@ -98111,7 +98670,7 @@ List of Event Commands:
   :    : noises coming from the Game Corner at night. However, whenever
   :    : inspected by staff, nobody found anything.
  @>Text: I wonder if perhaps those rumors are true, and perhaps those
-  :    : noises are the area being haunted by Ghost or Neither-types!
+  :    : noises are the area being haunted by Ghost or Nether-types!
  @>Text: If you're interested, you should totally check it out and see
   :    : if you can uncover the mystery!
  @>Script: activateQuest(:Quest109)
@@ -98288,9 +98847,9 @@ List of Event Commands:
 @>Script: pbPokemonMart([
 :       : :GREATBALL,:HYPERPOTION,
 :       : :SUPERPOTION,:REVIVE,
-:       : :ANTIDOTE,:PARLYZHEAL,
+:       : :ANTIDOTE,:PARALYZEHEAL,
 :       : :AWAKENING,:BURNHEAL,
-:       : :ICEHEAL,:SUPEREPEL
+:       : :ICEHEAL,:SUPERREPEL
 :       : ])
 @>
 
@@ -98344,13 +98903,12 @@ Trigger: Action Button
 List of Event Commands:
 @>Text: Hello and welcome to Celadon Department Store.\nWe have a large variety of goods here.
 @>Script: pbPokemonMart([
-:       : :POKEDOLL,:TECHSHARD,
-:       : :POWERSHARD,:DEFENSESHARD,
-:       : :SWIFTSHARD,:SUPPORTSHARD,
-:       : :FIRESTONE,:WATERSTONE,
-:       : :LEAFSTONE,:THUNDERSTONE,
-:       : :DUSKSTONE,:DAWNSTONE,
-:       : :SHINYSTONE,:MOONSTONE
+:       : :POKEDOLL,
+:       : :TECHSHARD,:POWERSHARD,:DEFENSESHARD,
+:       : :SWIFTSHARD,:SUPPORTSHARD,:SOLARSHARD,
+:       : :FIRESTONE,:WATERSTONE,:LEAFSTONE,
+:       : :THUNDERSTONE,:DUSKSTONE,:DAWNSTONE,
+:       : :SHINYSTONE,:MOONSTONE,:ICESTONE
 :       : ])
 @>
 
@@ -98376,12 +98934,9 @@ Trigger: Action Button
 List of Event Commands:
 @>Text: Hello and welcome to Celadon Department Store.\nWe have a large variety of goods here.
 @>Script: pbPokemonMart([
-:       : :HPUP,
-:       : :PROTEIN,
-:       : :IRON,
-:       : :CALCIUM,
-:       : :ZINC,
-:       : :CARBOS
+:       : :HPUP,:PROTEIN,
+:       : :IRON,:CALCIUM,
+:       : :ZINC,:CARBOS
 :       : ])
 @>
 
@@ -98407,14 +98962,10 @@ Trigger: Action Button
 List of Event Commands:
 @>Text: Hello and welcome to Celadon Department Store.\nWe have a large variety of goods here.
 @>Script: pbPokemonMart([
-:       : :XATTACK,
-:       : :XDEFEND,
-:       : :XSPEED,
-:       : :XSPECIAL,
-:       : :XSPDEF,
-:       : :XACCURACY,
-:       : :GUARDSPEC,
-:       : :DIREHIT
+:       : :XATTACK,:XDEFENSE,
+:       : :XSPEED,:XSPATK,
+:       : :XSPDEF,:XACCURACY,
+:       : :GUARDSPEC,:DIREHIT
 :       : ])
 @>
 
@@ -99432,7 +99983,7 @@ List of Event Commands:
 
 Page #2
 Conditions
-Switch 0126:  is ON
+Variable 0110: Plot Control Variable is 20 or above
 
 Graphic: trainer_FISHERMAN
 
@@ -99943,7 +100494,7 @@ List of Event Commands:
 @>Play SE: 'Door exit', 80, 100
 @>Change Screen Color Tone: (-255,-255,-255,0), @6
 @>Wait: 8 frame(s)
-@>Transfer Player:[277: Department Store], (054,002), Right, No Fade
+@>Transfer Player:[277: Department Store], (048,002), Left, No Fade
 @>Change Screen Color Tone: (0,0,0,0), @6
 @>
 
@@ -100595,7 +101146,7 @@ Page #1
 Conditions
 None
 
-Graphic: trchar009
+Graphic: trainer_HIKER
 
 Autonomous Movement
 Type: Fixed
@@ -100638,13 +101189,13 @@ List of Event Commands:
 #------------------------------------------------------------------------------
 Event ID: 005
 Event Name: EV005
-(X,Y): (009,006)
+(X,Y): (025,006)
 
 Page #1
 Conditions
 None
 
-Graphic: trchar035
+Graphic: trainer_COOLTRAINER_M
 
 Autonomous Movement
 Type: Fixed
@@ -107736,24 +108287,23 @@ Move Animation
 Trigger: Action Button
 
 List of Event Commands:
-@>Text: Yes, what do you need?
-@>Text: Oh, who am I? I'm Derxwna, Head Developer of 
- :    : Chaotic Infinity Development.
-@>Text: These people here are my friends, and we work
+@>Text: \xn[???]Yes, what do you need?
+@>Text: \xn[???]Oh, who am I? I'm Derxwna, Head Developer of 
+ :    : Overseer Household.
+@>Text: \xn[Derxwna]These people here are my friends, and we work
  :    : together on making games.
-@>Text: I wish I had time to talk with you more, but I don't. I'm 
- :    : in the middle of something. If you need to ask a
- :    : questions, just wire a message to our official blog!
-@>Text: Before you go, here. Take this item, it'll make leveling 
- :    : your party members just a bit easier.
-@>Script: pbReceiveItem(PBItems::EXPSHARE)
-@>Text: The Exp. Share is a hold item that you can give to any 
- :    : member of your party, and they'll gain half the EXP 
- :    : that the that the actual battle participants recieved.
-@>Text: Anyways, I have to go back to working on my
- :    : latest endeavor, where I attempt to learn a new
- :    : engine to bring about another game I'm working
- :    : on.
+@>Text: \xn[Derxwna]I wish I had time to talk with you more, but I don't. I'm 
+ :    : in the middle of something. If you need to ask a questions, just 
+ :    : wire a message to our official blog!
+@>Text: \xn[Derxwna]Before you go, here. Take this. It's the latest in PC
+ :    : Technology.
+@>Script: pbReceiveItem(:POKEMONBOXLINK)
+@>Text: \xn[Derxwna]Bill recently sent out one of his latest inventions for 
+ :    : testing purposes, but he accidentally sent one too many to us.
+@>Text: \xn[Derxwna]I'd been meaning to send it back, but it's probably 
+ :    : better in your hands.
+@>Text: \xn[Derxwna]Anyways, I have to go back to working on my
+ :    : latest project, a multi-part story series involving the Omniverse.
 @>Control Self Switch: A =ON
 @>
 
@@ -107772,13 +108322,16 @@ Move Animation
 Trigger: Action Button
 
 List of Event Commands:
-@>Text: Tell me, have you heard of the Yitria Region?
-@>Text: Thought not, it's a region many people wouldn't have heard of...
-@>Text: Well, I'm planning to move the group out there at some point,
- :    : and expand beyond being a simple video game development
+@>Text: \xn[Derxwna]Tell me, have you heard of the Yitria Region?
+@>Text: \xn[Derxwna]Thought not, it's a region many people wouldn't have 
+ :    : heard of...
+@>Text: \xn[Derxwna]Well, I'm planning to move the group out there at some 
+ :    : point, and expand beyond being a simple video game development
  :    : group.
-@>Text: Not sure what'll happen from there, but... I'm excited for
- :    : the possibilities!
+@>Text: \xn[Derxwna]I'm also thinking about rebranding once we expand...
+ :    : Maybe Infinity Conglomeration?
+@>Text: \xn[Derxwna]Not sure what'll happen from there, but... I'm excited 
+ :    : for the possibilities!
 @>
 
 #------------------------------------------------------------------------------
@@ -108032,14 +108585,14 @@ List of Event Commands:
 
 #------------------------------------------------------------------------------
 Event ID: 011
-Event Name: The Real Agastya
+Event Name: The Real Mille
 (X,Y): (022,038)
 
 Page #1
 Conditions
 None
 
-Graphic: trchar022
+Graphic: trainer_COOLTRAINER_F
 
 Autonomous Movement
 Type: Fixed
@@ -108051,9 +108604,11 @@ Trigger: Action Button
 
 List of Event Commands:
 @>Text: Me? I'm not really part of Derxwna's group.
-@>Text: If anything, when he proposes his ideas, I'm the one 
- :    : that keeps him grounded to reality.
+@>Text: If anything, when they propose their ideas, I'm the one 
+ :    : that keeps them grounded to reality.
 @>Text: Or I funpost and offer creative ideas!
+@>Text: TCirno's changes? DLwRuukoto? AYoumu? Archie in Slateport
+ :    : Museum? All me!
 @>Text: Who am I? I made Touhoumon Purple!
 @>
 
@@ -108149,7 +108704,7 @@ Trigger: Action Button
 
 List of Event Commands:
 @>Text: The books on the shelf seem to be documents on 
- :    : various ChaoticInfinity Development projects.
+ :    : various Overseer Household projects.
 @>Text: This particular one talks about a game called "War 
  :    : of the Rice"
 @>Text: It appears to be a mod of the RTS game, Command & 
@@ -108180,7 +108735,7 @@ Trigger: Action Button
 
 List of Event Commands:
 @>Text: The books on the shelf seem to be documents on 
- :    : various ChaoticInfinity Development projects. 
+ :    : various Overseer Household projects. 
 @>Text: This particular one talks about a game called "The 
  :    : Omniverse Project"
 @>Text: A game developed in RPG Maker that... talks about... 
@@ -108207,7 +108762,7 @@ Trigger: Action Button
 
 List of Event Commands:
 @>Text: The books on the shelf seem to be documents on 
- :    : various ChaoticInfinity Development projects. 
+ :    : various Overseer Household projects. 
 @>Text: This particular one talks about a game called "Yitria 
  :    : Resurrection"
 @>Text: It appears to be a Pokemon-based Fangame for RPG 
@@ -108233,7 +108788,7 @@ Trigger: Action Button
 
 List of Event Commands:
 @>Text: The books on the shelf seem to be documents on 
- :    : various ChaoticInfinity Development projects. 
+ :    : various Overseer Household projects. 
 @>Text: This particular one talks about a game called... "Tiksy 
  :    : Chronicles"?
 @>Text: It seems to be a Touhoumon-Based Fangame 
@@ -108259,8 +108814,7 @@ Trigger: Action Button
 
 List of Event Commands:
 @>Conditional Branch: Player is facing Up
- @>Text: Chaotic Infinity Development
-  :    : \nTemporary Headquarters
+ @>Text: Overseer Household\n\nTemporary Headquarters
  @>
 : Else
  @>
@@ -108286,8 +108840,7 @@ Trigger: Action Button
 
 List of Event Commands:
 @>Conditional Branch: Player is facing Up
- @>Text: Chaotic Infinity Development
-  :    : \nTemporary Headquarters
+ @>Text: Overseer Household\n\nTemporary Headquarters
  @>
 : Else
  @>
@@ -108409,7 +108962,7 @@ Move Animation
 Trigger: Action Button
 
 List of Event Commands:
-@>Conditional Branch: Script: pbItemBall(PBItems::COINCASE)
+@>Conditional Branch: Script: pbItemBall(:COINCASE)
  @>Control Self Switch: A =ON
  @>
 : Else
@@ -110882,7 +111435,6 @@ Speed: 3: Slow
 Freq: 3: Low
 Options Enabled
 Move Animation
-Always on Top
 Trigger: Action Button
 
 List of Event Commands:
@@ -113000,7 +113552,7 @@ List of Event Commands:
 @>Text: \xn[???]Oh, hello there, might I ask who you are?
 @>Wait: 20 frame(s)
 @>Text: \xn[???]Oh, you're \pn? I've heard about you from Bill!
-@>Text: xn[Celio]My name is Celio, I'm one of his acquaintences. We met 
+@>Text: \xn[Celio]My name is Celio, I'm one of his acquaintences. We met 
  :    : while we were studying Networking in school.
 @>Text: \xn[Celio]Bill went on to produce the Kanto Regional Storage 
  :    : System, which sparked the start of the storage system world wide!
@@ -113179,7 +113731,7 @@ Page #2
 Conditions
 Self Switch A is ON
 
-Graphic: trchar015
+Graphic: trainer_FISHERMAN
 
 Autonomous Movement
 Type: Fixed
@@ -115872,7 +116424,7 @@ List of Event Commands:
  @>Wait for Move's Completion
  @>Text: We have someone who wants to challenge Buront! Line up!
  @>Set Move Route: [Gateguard (Negai)]
-  :              : $>Move toward Player
+  :              : $>Turn toward Player
  @>Wait for Move's Completion
  @>Text: You, challenger. Get yourself in the arena so we can do 
   :    : battle!
@@ -118529,6 +119081,9 @@ List of Event Commands:
  @>Control Switches: [0119: Celadon Sidequest Flag] = ON
  @>Change Screen Color Tone: (0,0,0,0), @6
  @>Script: completeQuest(:Quest109)
+ @>
+: Else
+ @>Change Transparent Flag: Normal
  @>
 : Branch End
 @>
@@ -128249,7 +128804,7 @@ List of Event Commands:
      :    : person.
     @>Text: \xn[The Collector]Though technically, we did already 
      :    : meet, but it is understandable if you didn't notice me 
-     :    : sitting beside you at the confrence.
+     :    : sitting beside you at the conference.
     @>Text: \xn[The Collector]Nevertheless, please continue your 
      :    : journey with my gift. She needs more combat 
      :    : experience, and I have deemed you as the best way 

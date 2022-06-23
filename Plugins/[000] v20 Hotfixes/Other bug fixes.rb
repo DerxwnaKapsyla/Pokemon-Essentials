@@ -6,7 +6,7 @@
 # https://github.com/Maruno17/pokemon-essentials
 #===============================================================================
 
-Essentials::ERROR_TEXT += "[v20 Hotfixes 1.0.3]\r\n"
+Essentials::ERROR_TEXT += "[v20 Hotfixes 1.0.5]\r\n"
 
 #===============================================================================
 # Fixed event evolutions not working.
@@ -35,7 +35,7 @@ def pbAddPokemon(pkmn, level = 1, see_form = true)
   end
   pkmn = Pokemon.new(pkmn, level) if !pkmn.is_a?(Pokemon)
   species_name = pkmn.speciesName
-  pbMessage(_INTL("{1} obtained {2}!\\me[Pkmn get]\\wtnp[80]\1", $player.name, species_name))
+  #pbMessage(_INTL("{1} obtained {2}!\\me[Pkmn get]\\wtnp[80]\1", $player.name, species_name))
   if $game_map && $game_map.map_id==18 # Derx: If the player is on Map 18 (Oak's Lab - 2F)
 	pbMessage(_INTL("{1} received the {2} from Professor Oak!\\me[Pkmn get]\\wtnp[80]\1", $player.name, species_name))
   else
@@ -265,7 +265,37 @@ class Scene_Map
       @spritesets[map.map_id] = Spriteset_Map.new(map)
     end
     $map_factory.setSceneStarted(self)
-    updateSpritesets
+    updateSpritesets(true)
+  end
+
+  def createSingleSpriteset(map)
+    temp = $scene.spriteset.getAnimations
+    @spritesets[map] = Spriteset_Map.new($map_factory.maps[map])
+    $scene.spriteset.restoreAnimations(temp)
+    $map_factory.setSceneStarted(self)
+    updateSpritesets(true)
+  end
+
+  def updateSpritesets(refresh = false)
+    @spritesets = {} if !@spritesets
+    $map_factory.maps.each do |map|
+      @spritesets[map.map_id] = Spriteset_Map.new(map) if !@spritesets[map.map_id]
+    end
+    keys = @spritesets.keys.clone
+    keys.each do |i|
+      if $map_factory.hasMap?(i)
+        @spritesets[i].update
+      else
+        @spritesets[i]&.dispose
+        @spritesets[i] = nil
+        @spritesets.delete(i)
+      end
+    end
+    @spritesetGlobal.update
+    pbDayNightTint(@map_renderer)
+    @map_renderer.refresh if refresh
+    @map_renderer.update
+    EventHandlers.trigger(:on_frame_update)
   end
 
   def disposeSpritesets
@@ -280,26 +310,102 @@ class Scene_Map
   end
 end
 
-def pbSceneStandby
-  yield
-end
-
-def pbLoadRpgxpScene(scene)
-  return if !$scene.is_a?(Scene_Map)
-  oldscene = $scene
-  $scene = scene
-  Graphics.freeze
-  visibleObjects = pbHideVisibleObjects
-  Graphics.transition
-  Graphics.freeze
-  while $scene && !$scene.is_a?(Scene_Map)
-    $scene.main
+class TilemapRenderer
+  def refresh
+    @need_refresh = true
   end
-  Graphics.transition
-  Graphics.freeze
-  $scene = oldscene
-  pbShowObjects(visibleObjects)
-  Graphics.transition
+
+  def update
+    # Update tone
+    if @old_tone != @tone
+      @tiles.each do |col|
+        col.each do |coord|
+          coord.each { |tile| tile.tone = @tone }
+        end
+      end
+      @old_tone = @tone.clone
+    end
+    # Update color
+    if @old_color != @color
+      @tiles.each do |col|
+        col.each do |coord|
+          coord.each { |tile| tile.color = @tone }
+        end
+      end
+      @old_color = @color.clone
+    end
+    # Recalculate autotile frames
+    @tilesets.update
+    @autotiles.update
+    do_full_refresh = @need_refresh
+    if @viewport.ox != @old_viewport_ox || @viewport.oy != @old_viewport_oy
+      @old_viewport_ox = @viewport.ox
+      @old_viewport_oy = @viewport.oy
+      do_full_refresh = true
+    end
+    # Check whether the screen has moved since the last update
+    @screen_moved = false
+    @screen_moved_vertically = false
+    if $PokemonGlobal.bridge != @bridge
+      @bridge = $PokemonGlobal.bridge
+      @screen_moved_vertically = true   # To update bridge tiles' z values
+    end
+    do_full_refresh = true if check_if_screen_moved
+    # Update all tile sprites
+    visited = []
+    @tiles_horizontal_count.times do |i|
+      visited[i] = []
+      @tiles_vertical_count.times { |j| visited[i][j] = false }
+    end
+    $map_factory.maps.each do |map|
+      # Calculate x/y ranges of tile sprites that represent them
+      map_display_x = (map.display_x.to_f / Game_Map::X_SUBPIXELS).round
+      map_display_y = (map.display_y.to_f / Game_Map::Y_SUBPIXELS).round
+      map_display_x_tile = map_display_x / DISPLAY_TILE_WIDTH
+      map_display_y_tile = map_display_y / DISPLAY_TILE_HEIGHT
+      start_x = [-map_display_x_tile, 0].max
+      start_y = [-map_display_y_tile, 0].max
+      end_x = @tiles_horizontal_count - 1
+      end_x = [end_x, map.width - map_display_x_tile - 1].min
+      end_y = @tiles_vertical_count - 1
+      end_y = [end_y, map.height - map_display_y_tile - 1].min
+      next if start_x > end_x || start_y > end_y || end_x < 0 || end_y < 0
+      # Update all tile sprites representing this map
+      (start_x..end_x).each do |i|
+        tile_x = i + map_display_x_tile
+        (start_y..end_y).each do |j|
+          tile_y = j + map_display_y_tile
+          @tiles[i][j].each_with_index do |tile, layer|
+            tile_id = map.data[tile_x, tile_y, layer]
+            if do_full_refresh || tile.need_refresh || tile.tile_id != tile_id
+              refresh_tile(tile, i, j, map, layer, tile_id)
+            else
+              refresh_tile_frame(tile, tile_id) if tile.animated && @autotiles.changed
+              # Update tile's x/y coordinates
+              refresh_tile_coordinates(tile, i, j) if @screen_moved
+              # Update tile's z value
+              refresh_tile_z(tile, map, j, layer, tile_id) if @screen_moved_vertically
+            end
+          end
+          # Record x/y as visited
+          visited[i][j] = true
+        end
+      end
+    end
+    # Clear all unvisited tile sprites
+    @tiles.each_with_index do |col, i|
+      col.each_with_index do |coord, j|
+        next if visited[i][j]
+        coord.each do |tile|
+          tile.set_bitmap("", 0, false, false, 0, nil)
+          tile.shows_reflection = false
+          tile.bridge           = false
+        end
+      end
+    end
+    @need_refresh = false
+    @autotiles.changed = false
+  end
 end
 
 #===============================================================================

@@ -123,11 +123,20 @@ class PokemonStorageScene
     ]
     if !pokemon.egg?
       imagepos = []
-      if pokemon.male?
-        textstrings.push([_INTL("♂"), 148, 14, false, Color.new(24, 112, 216), Color.new(136, 168, 208)])
-      elsif pokemon.female?
-        textstrings.push([_INTL("♀"), 148, 14, false, Color.new(248, 56, 32), Color.new(224, 152, 144)])
-      end
+	  pkmn_data = GameData::Species.get_species_form(pokemon.species, pokemon.form)
+	  if pkmn_data.has_flag?("Puppet")
+		if pokemon.male?
+          textstrings.push([_INTL("¹"), 148, 14, false, Color.new(24, 112, 216), Color.new(136, 168, 208)])
+		elsif pokemon.female?
+          textstrings.push([_INTL("²"), 148, 14, false, Color.new(248, 56, 32), Color.new(224, 152, 144)])
+		end
+	  else
+		if pokemon.male?
+          textstrings.push([_INTL("♂"), 148, 14, false, Color.new(24, 112, 216), Color.new(136, 168, 208)])
+		elsif pokemon.female?
+          textstrings.push([_INTL("♀"), 148, 14, false, Color.new(248, 56, 32), Color.new(224, 152, 144)])
+		end
+	  end
       imagepos.push(["Graphics/Pictures/Storage/overlay_lv", 6, 246])
       textstrings.push([pokemon.level.to_s, 28, 240, false, base, shadow])
       if pokemon.ability

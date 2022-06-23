@@ -25,10 +25,10 @@ class Battle::Scene::PokemonDataBox < SpriteWrapper
 	pkmn_data = GameData::Species.get_species_form(@battler.species, @battler.form)
 	if pkmn_data.has_flag?("Puppet")
       case @battler.displayGender
-      when 0   # Male
-      	textPos.push([_INTL("¹"), @spriteBaseX + 126, 12, false, MALE_BASE_COLOR, MALE_SHADOW_COLOR])
-      when 1   # Female
-      	textPos.push([_INTL("²"), @spriteBaseX + 126, 12, false, FEMALE_BASE_COLOR, FEMALE_SHADOW_COLOR])
+      when 0   # Yin
+      	textPos.push([_INTL("¹"), @spriteBaseX + 120, 12, false, MALE_BASE_COLOR, MALE_SHADOW_COLOR])
+      when 1   # Yang
+      	textPos.push([_INTL("²"), @spriteBaseX + 120, 12, false, FEMALE_BASE_COLOR, FEMALE_SHADOW_COLOR])
       end
     pbDrawTextPositions(self.bitmap, textPos)
 	else
