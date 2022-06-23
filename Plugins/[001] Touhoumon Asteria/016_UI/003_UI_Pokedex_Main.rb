@@ -9,7 +9,7 @@
 #	  just straight copying the entire script section here. A lot of it is
 #	  small changes needed to make it work.
 #==============================================================================#
-class PokedexSearchSelectionSprite < SpriteWrapper
+class PokedexSearchSelectionSprite < Sprite
   def mode=(value)
     @mode = value
     case @mode

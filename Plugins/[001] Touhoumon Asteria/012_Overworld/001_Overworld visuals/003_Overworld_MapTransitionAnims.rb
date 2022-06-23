@@ -22,7 +22,7 @@ def pbStartOver(gameover = false)
       pbMessage(_INTL("\\w[]\\wm\\c[12]\\l[3]You scurry back to a Pokémon Center, protecting your exhausted partners from any further harm..."))
     end
     pbCancelVehicles
-    pbRemoveDependencies
+    Followers.clear
 	$game_switches[Settings::SPECIAL_BATTLE_SWITCH] = false
     $game_switches[Settings::STARTING_OVER_SWITCH] = true
     $game_temp.player_new_map_id    = $PokemonGlobal.pokecenterMapId
@@ -48,7 +48,7 @@ def pbStartOver(gameover = false)
     end
     if homedata
       pbCancelVehicles
-      pbRemoveDependencies
+      Followers.clear
 	  $game_switches[Settings::SPECIAL_BATTLE_SWITCH] = false
       $game_switches[Settings::STARTING_OVER_SWITCH] = true
 	  pbFadeOutIn {

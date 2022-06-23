@@ -228,16 +228,16 @@ class PokemonEntryScene2
     @minlength = minlength
     @maxlength = maxlength
     @maxlength.times { |i|
-      @sprites["blank#{i}"] = SpriteWrapper.new(@viewport)
+      @sprites["blank#{i}"] = Sprite.new(@viewport)
       @sprites["blank#{i}"].x = 160 + (24 * i)
       @sprites["blank#{i}"].bitmap = @bitmaps[@bitmaps.length - 1]
       @blanks[i] = 0
     }
-    @sprites["bottomtab"] = SpriteWrapper.new(@viewport)   # Current tab
+    @sprites["bottomtab"] = Sprite.new(@viewport)   # Current tab
     @sprites["bottomtab"].x = 22
     @sprites["bottomtab"].y = 162
     @sprites["bottomtab"].bitmap = @bitmaps[@@Characters.length]
-    @sprites["toptab"] = SpriteWrapper.new(@viewport)   # Next tab
+    @sprites["toptab"] = Sprite.new(@viewport)   # Next tab
     @sprites["toptab"].x = 22 - 504
     @sprites["toptab"].y = 162
     @sprites["toptab"].bitmap = @bitmaps[@@Characters.length + 1]
