@@ -45,8 +45,8 @@ USER_DEFINED_NAMES = {
 # Method that returns whether a specific form has been seen (any gender)
 def seen_form_any_gender?(species, form)
   ret = false
-  if $Trainer.pokedex.seen_form?(species, 0, form) ||
-    $Trainer.pokedex.seen_form?(species, 1, form)
+  if $player.pokedex.seen_form?(species, 0, form) ||
+    $player.pokedex.seen_form?(species, 1, form)
     ret = true
   end
   return ret
@@ -233,4 +233,11 @@ class EncounterList_Screen
     @scene.pbEncounter
     @scene.pbEndScene
   end
+end
+
+# Utility method for calling UI
+def pbViewEncounters
+  scene = EncounterList_Scene.new
+  screen = EncounterList_Screen.new(scene)
+  screen.pbStartScreen
 end

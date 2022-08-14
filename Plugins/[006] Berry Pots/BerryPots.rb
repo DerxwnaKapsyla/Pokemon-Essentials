@@ -1,5 +1,5 @@
 ################################################################################
-# "BerryPots for Essentials v20 1.0"
+# "BerryPots for Essentials v20.1 1.0"
 # By Caruban
 #
 # v20 Change logs

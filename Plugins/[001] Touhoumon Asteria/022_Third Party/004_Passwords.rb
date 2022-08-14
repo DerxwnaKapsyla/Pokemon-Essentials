@@ -96,7 +96,7 @@ def pbPasswordCheck(helptext = "Input Password", minlength = 0, maxlength = 12, 
 	"scuffedaf",			# All trainers have 31^6 IVs and 252^6 EVs, restricts items in battle, removes EXP, EV, and Money gain
 	
   # --- Shenanigans ---
-	"justkoi",				# Replaces all Pokemon and Puppets with Koishi's sprite
+	"justkoi",				# Replaces all Pokemon and Puppets with Koishi
 	#"2cakesman",			# Triggers a special fight against the Five Magic Stones
 	#"justbasin"			# Replaces all Pokemon and Puppets with Basiney
   ]    
@@ -754,7 +754,7 @@ def pbPasswordCheck(helptext = "Input Password", minlength = 0, maxlength = 12, 
 		end
 	  else
 	    if pbConfirmMessage(_INTL("\\rWould you like to disable Debug Mode?"))
-		  pbMessage(_INTL("\\rDebug Mode has been enabled."))
+		  pbMessage(_INTL("\\rDebug Mode has been disabled."))
 		  $DEBUG == false
 		  return true
 		else
@@ -994,11 +994,12 @@ def pbPasswordCheck(helptext = "Input Password", minlength = 0, maxlength = 12, 
 	  end
 	# --- Just Koishi. ---
 	when "justkoi"
-	  if $Game_Temp.just_koishi
+	  if $game_temp.just_koishi
 		pbMessage(_INTL("\\bKoishi is currently loose."))
 		if pbConfirmMessage(_INTL("\\bContain Koishi?"))
 		  pbMessage(_INTL("\\bKoishi is currently being contained."))
-		  $Game_Temp.just_koishi = false
+		  $game_temp.just_koishi = false
+		  #$game_switches[121] = false
 		  return true
 		else
 		  return false
@@ -1007,7 +1008,8 @@ def pbPasswordCheck(helptext = "Input Password", minlength = 0, maxlength = 12, 
 		pbMessage(_INTL("\\bJust Koishi."))
 		if pbConfirmMessage(_INTL("\\bJust Koishi?"))
 		  pbMessage(_INTL("\\bJust Koishi."))
-		  $Game_Temp.just_koishi = true
+		  $game_temp.just_koishi = true
+		  $game_switches[121] = true
 		  return true
 		else
 		  return false
@@ -1015,11 +1017,11 @@ def pbPasswordCheck(helptext = "Input Password", minlength = 0, maxlength = 12, 
 	  end
 	# --- Just Basiney. ---
 	when "justbasin"
-	  if $Game_Temp.just_basiney
-		pbMessage(_INTL("\\bBasiney is currently loose.."))
+	  if $game_temp.just_basiney
+		pbMessage(_INTL("\\bBasiney is currently loose."))
 		if pbConfirmMessage(_INTL("\\bContain Basiney?"))
 		  pbMessage(_INTL("\\bBasiney is currently being contained."))
-		  $Game_Temp.just_basiney = false
+		  $game_temp.just_basiney = false
 		  return true
 		else
 		  return false
@@ -1028,7 +1030,7 @@ def pbPasswordCheck(helptext = "Input Password", minlength = 0, maxlength = 12, 
 		pbMessage(_INTL("\\bJust Basiney."))
 		if pbConfirmMessage(_INTL("\\bJust Basiney?"))
 		  pbMessage(_INTL("\\bJust Basiney."))
-		  $Game_Temp.just_basiney = true
+		  $game_temp.just_basiney = true
 		  return true
 		else
 		  return false
@@ -1037,8 +1039,18 @@ def pbPasswordCheck(helptext = "Input Password", minlength = 0, maxlength = 12, 
 	# --- Ask Five Magic Stones: The Battle ---
 	when "2cakesman"
 	  if $game_switches[xxx]
-		pbMessage(_INTL("The Five Magic Stones are awaiting your arrival."))
-		pbMessage(_INTL("To reach them, you must first go to sleep in your bed."))
+		pbMessage(_INTL("\\r\\xn[?????]HUMAN. DID YOU FORGET HOW TO GET TO US?"))
+		pbMessage(_INTL("\\r\\xn[?????]JUST GO SLEEP IN YOUR BED. WE HAVE NO IDEA IF IT WILL WORK, BUT WON'T IT BE INTERESTING TO FIND OUT?"))
+		pbMessage(_INTL("\\r\\xn[?????]...WHAT'S THAT? YOU'D LIKE TO KNOW WHY OUR COMMUNICATION FREQUENCY IS CALLED \"2cakesman\"?"))
+		if pbConfirmMessage(_INTL("\\r\\xn[?????]ARE YOU UNFAMILIAR WITH THE STORY OF TWO CAKES?"))
+		  pbMessage(_INTL("\\r\\xn[?????]A HUMAN WHO HASN'T HEARD THE STORY OF TWO CAKES? HOW PERPOSTEROUS!"))
+		  pbMessage(_INTL("\\r\\xn[?????]ISN'T THAT THE LATEST TREND IN THE OUTSIDE WORLD?"))
+		  pbMessage(_INTL("\\r\\xn[?????]REGARDLESS, IT IS A VERY BRIEF STORY."))
+		  # --- Come up with some outlandish story that is only vaguely similar to Cakepost
+		  return true
+		else
+		  return false
+		end
 		return false
 	  else
 		$game_player.animation_id = 003
@@ -1046,13 +1058,21 @@ def pbPasswordCheck(helptext = "Input Password", minlength = 0, maxlength = 12, 
 		pbWait(20)
 		pbSEPlay("PC open")
 		pbMessage(_INTL("\\r\\xn[?????]THERE, THAT'S BETTER."))
-		if pbConfirmMessage(_INTL("\\r-----?"))
-		  pbMessage(_INTL("\\r-----."))
-		  $Game_Temp.just_koishi = true
-		  return true
-		else
-		  return false
-		end
+		pbMessage(_INTL("\\r\\xn[?????]HUMAN. ARE YOU PICKING THIS UP? GOOD."))
+		pbMessage(_INTL("\\r\\xn[?????]WE HAVE BEEN TRYING TO GET IN CONTACT WITH YOU FOR A WHILE NOW, HUMAN."))
+		pbMessage(_INTL("\\r\\xn[?????]SOMEHOW, ALL OF OUR ATTEMPTS UP UNTIL NOW HAVE BEEN MET WITH ABJECT FAILURE."))
+		pbMessage(_INTL("\\r\\xn[?????]MOST LIKELY THE RESULT OF A CERTAIN GAP YOUKAI'S INTERFERENCE."))
+		pbMessage(_INTL("\\r\\xn[?????]NEVERTHELESS, WE DESIRE AN AUDIENCE WITH YOU IN PERSON."))
+		pbMessage(_INTL("\\r\\xn[?????]WELL, WE SAY IN PERSON, BUT CAN WE TRULY SAY THAT WHEN WE'RE JUST A BUNCH OF STONES?"))
+		pbMessage(_INTL("\\r\\xn[?????]QUIET #4. THE PHRASE \"IN PERSON\" JUST MEANS WE WOULD LIKE TO MEET THEM. THERE'S NO NEED TO GET PHILOSOPHICAL ABOUT IT."))
+		pbMessage(_INTL("\\r\\xn[?????]SHOULD YOU CHOOSE TO ACCEPT OUR INVITATION, YOU CAN FIND US IN OUR DEMIPLANE: \"STAGE 3\"."))
+		pbMessage(_INTL("\\r\\xn[?????]...HOW DO YOU GET THERE? WHAT A FOOLISH QUESTION. HOW DO YOU GET ANYWHERE? BY FLYING!"))
+		pbMessage(_INTL("\\r\\xn[?????]#5 YOU FORGET, THIS HUMAN CAN'T FLY. SHE WOULD NEED ANOTHER WAY TO GET HERE."))
+		pbMessage(_INTL("\\r\\xn[?????]OH, MY MISTAKE. UHHH, TRY SLEEPING IN YOUR BED THEN? MOST PEOPLE JUST GET TO US BY FLYING."))
+		pbMessage(_INTL("\\r\\xn[?????]...WHO AM I? I KNOW WE HAVE SIMILAR VOICES, BUT THERE'S MORE THAN ONE OF US."))
+		pbMessage(_INTL("\\r\\xn[?????]WE ARE THE FIVE MAGIC STONES."))
+		pbMessage(_INTL("\\r\\xn[?????]WE SHALL AWAIT YOUR ARRIVAL."))
+		$game_switches[xxx] # Switch to enable the warp to "Stage 3" from the Player's bed.
 	  end
 	# --- End of Passwords ---  
 	end
@@ -1078,17 +1098,47 @@ EventHandlers.add(:on_wild_pokemon_created, :perfect_ivs,
 )
 
 
+EventHandlers.add(:on_trainer_load, :koishi_time_trainer,
+  proc { |trainer|
+   if trainer   # check if you are facing a trainer
+     if $game_temp.just_koishi
+       for pkmn in trainer.party
+	     fixedLvl = nil
+		 fixedLvl = pkmn.level
+         if pkmn.level <= 40 
+		   pkmn.species = :CKOISHI
+		   pkmn.level = fixedLvl
+		 else
+		   pkmn.species = :KOISHI
+		   pkmn.level = fixedLvl
+		 end
+		 pkmn.reset_moves
+		 pkmn.calc_stats
+       end
+	 $PokemonGlobal.nextBattleBack = "Inverse"
+	 $PokemonGlobal.nextBattleBGM = pbStringToAudioFile("X-004. Hartmann's Youkai Girl")
+     end
+   end
+  }
+)
 
-#EventHandlers.trigger(:on_trainer_load, :koishi_time_trainer,
-#  proc { |trainer|
-#    if trainer   # An NPCTrainer object containing party/items/lose text, etc.
-#      pkmn.s
-#    end
-#  }
-#)
-
-#EventHandlers.add(:on_wild_pokemon_created, :koishi_time_wild,
-#  proc { |pkmn|
-#    pkmn = Pokemon.new(:KOISHI, rand(1,100)) #if $game_switches[Settings::SHINY_WILD_POKEMON_SWITCH]
-#  }
-#)
+EventHandlers.add(:on_wild_pokemon_created, :koishi_time_wild,
+  proc { |pkmn|
+	fixedLvl = nil
+	fixedLvl = pkmn.level
+	if $game_temp.just_koishi
+      if pkmn.level <= 40
+	    pkmn.species = :CKOISHI
+		pkmn.level = fixedLvl
+	  else
+	    pkmn.species = :KOISHI
+		pkmn.level = fixedLvl
+	  end
+	item = :BELUEBERRY
+	pkmn.reset_moves
+	pkmn.calc_stats
+	$PokemonGlobal.nextBattleBack = "Inverse"
+	$PokemonGlobal.nextBattleBGM = pbStringToAudioFile("X-004. Hartmann's Youkai Girl")  
+	end
+  }
+)

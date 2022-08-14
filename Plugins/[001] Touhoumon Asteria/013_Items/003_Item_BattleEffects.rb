@@ -8,6 +8,7 @@
 #	* Added in new items for Touhoumon mechanics
 #	* Added in custom items not in Touhoumon
 #	* Made tweaks to existing items
+#	* Added in a check to the Battle Rule for no capture to display an alt line
 #==============================================================================#
 
 ItemHandlers::CanUseInBattle.addIf(proc { |item| GameData::Item.get(item).is_poke_ball? },   # Poké Balls
@@ -17,7 +18,11 @@ ItemHandlers::CanUseInBattle.addIf(proc { |item| GameData::Item.get(item).is_pok
       next false
     end
     if battle.disablePokeBalls
-      scene.pbDisplay(_INTL("You can't throw a Poké Ball!")) if showMessages
+	  if $game_switches[Settings::SPECIAL_BATTLE_SWITCH]
+		scene.pbDisplay(_INTL("They're too aggressive to throw a Ball at! We have to knock it out!")) if showMessages
+	  else
+		scene.pbDisplay(_INTL("You can't throw a Poké Ball!")) if showMessages
+	  end
       next false
     end
     # NOTE: Using a Poké Ball consumes all your actions for the round. The code

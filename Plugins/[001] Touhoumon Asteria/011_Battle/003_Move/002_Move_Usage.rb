@@ -40,6 +40,9 @@ class Battle::Move
         elsif target.hasActiveItem?(:FOCUSRIBBON) && @battle.pbRandom(100) < 10
           target.damageState.focusBand = true
           damage -= 1
+        elsif target.hasActiveItem?(:STURDYVINE) # Derx: Used in the CKazami Event Battle.
+          target.damageState.sturdyVine = true
+          damage -= 1
         elsif Settings::AFFECTION_EFFECTS && @battle.internalBattle &&
               target.pbOwnedByPlayer? && !target.mega?
           chance = [0, 0, 0, 10, 15, 25][target.affection_level]
@@ -53,5 +56,45 @@ class Battle::Move
     damage = 0 if damage < 0
     target.damageState.hpLost       = damage
     target.damageState.totalHPLost += damage
+  end
+  
+  def pbEndureKOMessage(target)
+    if target.damageState.disguise
+      @battle.pbShowAbilitySplash(target)
+      if Battle::Scene::USE_ABILITY_SPLASH
+        @battle.pbDisplay(_INTL("Its disguise served it as a decoy!"))
+      else
+        @battle.pbDisplay(_INTL("{1}'s disguise served it as a decoy!", target.pbThis))
+      end
+      @battle.pbHideAbilitySplash(target)
+      target.pbChangeForm(1, _INTL("{1}'s disguise was busted!", target.pbThis))
+      target.pbReduceHP(target.totalhp / 8, false) if Settings::MECHANICS_GENERATION >= 8
+    elsif target.damageState.iceFace
+      @battle.pbShowAbilitySplash(target)
+      if !Battle::Scene::USE_ABILITY_SPLASH
+        @battle.pbDisplay(_INTL("{1}'s {2} activated!", target.pbThis, target.abilityName))
+      end
+      target.pbChangeForm(1, _INTL("{1} transformed!", target.pbThis))
+      @battle.pbHideAbilitySplash(target)
+    elsif target.damageState.endured
+      @battle.pbDisplay(_INTL("{1} endured the hit!", target.pbThis))
+    elsif target.damageState.sturdy
+      @battle.pbShowAbilitySplash(target)
+      if Battle::Scene::USE_ABILITY_SPLASH
+        @battle.pbDisplay(_INTL("{1} endured the hit!", target.pbThis))
+      else
+        @battle.pbDisplay(_INTL("{1} hung on with Sturdy!", target.pbThis))
+      end
+      @battle.pbHideAbilitySplash(target)
+    elsif target.damageState.focusSash
+      @battle.pbCommonAnimation("UseItem", target)
+      @battle.pbDisplay(_INTL("{1} hung on using its Focus Sash!", target.pbThis))
+      target.pbConsumeItem
+    elsif target.damageState.sturdyVine
+      @battle.pbCommonAnimation("UseItem", target)
+      #@battle.pbDisplay(_INTL("{1} hung on using its Sturdy Vine!", target.pbThis))
+    elsif target.damageState.affection_endured
+      @battle.pbDisplay(_INTL("{1} toughed it out so you wouldn't feel sad!", target.pbThis))
+    end
   end
 end

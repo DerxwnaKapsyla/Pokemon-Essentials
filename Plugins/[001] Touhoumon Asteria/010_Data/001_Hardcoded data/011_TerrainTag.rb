@@ -14,15 +14,6 @@ module GameData
 end
 
 
-# Used for tiles that exist but have no effect, meaning they can
-# go over water and grass and not trigger tiles underneath.
-# This is coming in a future version of Essentials.
-GameData::TerrainTag.register({
-  :id                     => :NoEffect,
-  :id_number              => 17
-})
-
-
 GameData::TerrainTag.register({
   :id                     => :Platform,
   :id_number              => 30,

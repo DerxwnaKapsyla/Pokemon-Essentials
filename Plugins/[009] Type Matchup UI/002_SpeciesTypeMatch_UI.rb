@@ -24,7 +24,7 @@ class SpeciesTypeMatch_Scene
     @typebitmap = AnimatedBitmap.new(_INTL("Graphics/Pictures/types"))
     2.times do |i|
       @sprites["icon_#{i}"] = PokemonSpeciesIconSprite.new(nil,@viewport)
-      @sprites["icon_#{i}"].setOffset(PictureOrigin::Center)
+      @sprites["icon_#{i}"].setOffset(PictureOrigin::CENTER)
       @sprites["icon_#{i}"].x = Graphics.width/2 - 112 + 224*i
       @sprites["icon_#{i}"].y = @h+40
       @sprites["icon_#{i}"].mirror = true if i==0
@@ -104,22 +104,17 @@ class SpeciesTypeMatch_Scene
       @sprites["icon_#{i}"].pbSetParams(s.id,0,s.form,false)
     end
     # Types of selected Pokémon
-    type1_number = GameData::Type.get(s.type1).id_number
-    type2_number = GameData::Type.get(s.type2).id_number
-    if s.type1==s.type2
-      @overlay_type.blt(Graphics.width/2-32,@h+36,@typebitmap.bitmap,
-          Rect.new(0, type1_number * 28, 64, 28))
-    else
-      @overlay_type.blt(Graphics.width/2-64,@h+36,@typebitmap.bitmap,
-          Rect.new(0, type1_number * 28, 64, 28))
-      @overlay_type.blt(Graphics.width/2,@h+36,@typebitmap.bitmap,
-          Rect.new(0, type2_number * 28, 64, 28))
+	s.types.each_with_index do |type, i|
+      type_number = GameData::Type.get(type).icon_position
+      type_rect = Rect.new(0, type_number * 28, 64, 28)
+      type_x = (s.types.length == 1) ? Graphics.width/2-32 : Graphics.width/2 - (64 * ((i + 1)%2))
+      @overlay_type.blt(type_x,@h+36,@typebitmap.bitmap,type_rect)
     end
     arr = []
     weak = []
     resist = []
     immune = []
-    GameData::Type.each { |t| arr.push(Effectiveness.calculate(t.id,s.type1,s.type2)) if !t.pseudo_type }
+    GameData::Type.each { |t| arr.push(Effectiveness.calculate(t.id,s.types[0],s.types[1])) if !t.pseudo_type }
     arr.each_with_index do |z, i|
       currType = @types[i]
       weak.push(currType) if Effectiveness.super_effective?(z)
@@ -130,7 +125,7 @@ class SpeciesTypeMatch_Scene
     xPos1 = (weak.length >6) ? [@w+40, @w+104] : @w+72
     weaktype_rect = []
     weak.each_with_index do |s, i|
-      t = GameData::Type.get(s).id_number
+      t = GameData::Type.get(s).icon_position
       weaktype_rect.push(Rect.new(0, t * 28, 64, 28))
       x1 = (xPos1.is_a?(Array)) ? xPos1[i/6] : xPos1
       @overlay_type.blt(x1,@h+108+28*(i%6),@typebitmap.bitmap,weaktype_rect[i])
@@ -140,7 +135,7 @@ class SpeciesTypeMatch_Scene
     xPos2 = (resist.length >6) ? [Graphics.width/2-64,Graphics.width/2] : Graphics.width/2-32
     resisttype_rect = []
     resist.each_with_index do |s, i|
-      t = GameData::Type.get(s).id_number
+      t = GameData::Type.get(s).icon_position
       resisttype_rect.push(Rect.new(0, t * 28, 64, 28))
       x2 = (xPos2.is_a?(Array)) ? xPos2[i/6] : xPos2
       @overlay_type.blt(x2,@h+108+28*(i%6),@typebitmap.bitmap,
@@ -149,24 +144,24 @@ class SpeciesTypeMatch_Scene
     # Immunities
     immunetype_rect = []
     immune.each_with_index do |s, i|
-      t = GameData::Type.get(s).id_number
+      t = GameData::Type.get(s).icon_position
       immunetype_rect.push(Rect.new(0, t * 28, 64, 28))
       @overlay_type.blt(@w+312,@h+108+28*i,@typebitmap.bitmap,immunetype_rect[i])
     end
     base   = Color.new(80,80,88)
     shadow = Color.new(160,160,168)
     textpos = [
-    ["Weak",@w+104,@h+68,2,base,shadow],
-    ["Resist",Graphics.width/2,@h+68,2,base,shadow],
-    ["Immune",@w+344,@h+68,2,base,shadow],
-    ["USE: Jump",4,Graphics.height-38,0,Color.new(248,248,248),Color.new(72,80,88)],
-    ["ARROWS: Navigate",Graphics.width/2,Graphics.height-38,2,Color.new(248,248,248),Color.new(72,80,88)],
-    ["BACK: Exit",Graphics.width-4,Graphics.height-38,1,Color.new(248,248,248),Color.new(72,80,88)]
+    ["Weak",@w+104,@h+80,2,base,shadow],
+    ["Resist",Graphics.width/2,@h+80,2,base,shadow],
+    ["Immune",@w+344,@h+80,2,base,shadow],
+    ["USE: Jump",4,Graphics.height-26,0,Color.new(248,248,248),Color.new(72,80,88)],
+    ["ARROWS: Navigate",Graphics.width/2,Graphics.height-26,2,Color.new(248,248,248),Color.new(72,80,88)],
+    ["BACK: Exit",Graphics.width-4,Graphics.height-26,1,Color.new(248,248,248),Color.new(72,80,88)]
     ]
     pbDrawTextPositions(@overlay_text,textpos) if @init
     # Draw species name
     pbDrawTextPositions(@overlay_type,[
-           [s.real_name,Graphics.width/2,@h-2,2,base,shadow]
+           [s.real_name,Graphics.width/2,@h+10,2,base,shadow]
         ])
     @init = false
   end
@@ -193,7 +188,7 @@ class SpeciesTypeMatch_Scene
     commands = []
     @species.each do |s|
       t = GameData::Species.get(s)
-      commands.push([t.id_number, t.real_name, t.id]) if t.form == 0
+      commands.push([commands.length + 1, t.real_name, t.id]) if t.form == 0
     end
     return pbChooseList(commands, default, currSpecies, 0)
   end

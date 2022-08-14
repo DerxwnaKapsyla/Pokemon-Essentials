@@ -76,7 +76,6 @@ class TypeMatch_Scene
         newType = @types[@index]
         refresh = true
       elsif Input.trigger?(Input::USE) # Option to choose specific type
-		p "WARNING: If you cancel on this screen you will crash your game."
         oldType = @types[@index]
         newType = pbChooseTypeFromList(oldType, oldType)
         if oldType != newType
@@ -101,8 +100,9 @@ class TypeMatch_Scene
     end
     # Selected type
     type = GameData::Type.get(type)
+	type_number = GameData::Type.get(type).icon_position
     @overlay_type.blt(Graphics.width/2-32,@h+20,@typebitmap.bitmap,
-                  Rect.new(0, type.icon_position * 28, 64, 28))
+                  Rect.new(0, type_number * 28, 64, 28))
     # Weaknesses
 	weak = type.weaknesses
 	xPos1 = (weak.length >6) ? [@w+71, @w+105] : @w+88    
@@ -175,9 +175,9 @@ class TypeMatch_Scene
   # Borrowed from the editor scripts
   # Renamed so as to not break anything anywhere else
   def pbChooseTypeFromList(default = nil, currType)
-  return pbChooseFromGameDataList(:Type, default) { |data|
-    next (data.pseudo_type) ? nil : data.real_name
-  }
+    commands = []
+    GameData::Type.each { |t| commands.push([commands.length + 1, t.name, t.id]) if !t.pseudo_type }
+    return pbChooseList(commands, default, currType, 1)
   end
   
 end

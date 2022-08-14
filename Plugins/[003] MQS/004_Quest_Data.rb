@@ -360,7 +360,7 @@ module QuestModule
     :QuestGiver => "Side Quest",
     :Stage1 => "Go after the rogue Ruukoto Puppets.",
 	:Stage2 => "Return to Dark Last Word Ruukoto.",
-	:Stage3 => "Input 23112013 into a Pokémon Center terminal.",
+	:Stage3 => "Input \"retribution\" into a Pokémon Center terminal.",
     :Location1 => "Silph Co.",
     :QuestDescription => "A disaster unfolded during the presentation! A Puppet that identifies itself as Dark Last Word Ruukoto and its ilk stole all of the Prototype Synthetic PokéPuppets! On top of that, their leader wants me to battle all of them to 'Prove their integiry'.",
     :RewardString => "nil"
@@ -395,6 +395,17 @@ module QuestModule
     :Stage1 => "Meet up with the Warden's Granddaughter at the Safari Zone Ruins.",
     :Location1 => "Fuchsia City",
     :QuestDescription => "(Description)",
+    :RewardString => "nil"
+  }
+  
+  Quest111 = {
+    :ID => "111",
+    :Name => "A Thorny Situation",
+    :QuestGiver => "Side Quest",
+    :Stage1 => "Investigate the disturbance on Route 2.",
+	:Stage2 => "Return to the foreman.",
+    :Location1 => "Route 2",
+    :QuestDescription => "Apparently some construction work is going on between Viridian and Pewter City, trying to make it easier for people to get between the two without needing to traverse the forest. From what I've been told, apparently there's some sort of \"Terror\" that's keeping the workers from finishing their jobs. I offered to look into it- surely it's nothing I can't handle!",
     :RewardString => "nil"
   }
   

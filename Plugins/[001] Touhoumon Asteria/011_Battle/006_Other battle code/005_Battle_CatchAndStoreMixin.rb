@@ -40,9 +40,9 @@ module Battle::CatchAndStoreMixin
       @scene.pbThrowAndDeflect(ball, 1)
       pbDisplay(_INTL("The Trainer blocked your Poké Ball! Don't be a thief!"))
       return
-	elsif $game_switches[102] # Pokemon can't be caught switch
-	  pbDisplay(_INTL("It dodged the thrown Ball! It looks like it's refusing to be caught! We have to knock it out!"))
-	  return 
+	#elsif $game_switches[102] # Pokemon can't be caught switch
+	#  pbDisplay(_INTL("It dodged the thrown Ball! It looks like it's refusing to be caught! We have to knock it out!"))
+	#  return 
     end
     # Calculate the number of shakes (4=capture)
     pkmn = battler.pokemon

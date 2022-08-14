@@ -149,7 +149,7 @@ class MarinMapExporter
       bitmap.blt(x,y,autotile,Rect.new(0,0,32,32))
     else
       id %= 48
-      tiles = CustomTilemap::Autotiles[id >> 3][id & 7]
+      tiles = TileDrawingHelper::AUTOTILE_PATTERNS[id >> 3][id & 7]
       src = Rect.new(0,0,0,0)
       halfTileWidth = halfTileHeight = halfTileSrcWidth = halfTileSrcHeight = 32 >> 1
       for i in 0...4
