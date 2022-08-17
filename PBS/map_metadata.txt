@@ -1,4 +1,3 @@
-﻿# See the documentation on the wiki to learn how to edit this file.
 #-------------------------------
 [001]   # Intro
 Name = Intro
@@ -206,6 +205,21 @@ BicycleAlways = true
 MapPosition = 0,11,7
 MapSize = 1,111
 #-------------------------------
+[042]
+# Isolated Woods
+Outdoor = true
+ShowArea = true
+Bicycle = true
+MapPosition = 2,18,4
+BattleBack = forest
+Environment = Forest
+#-------------------------------
+[043]
+# Boundary Cave
+MapPosition = 2,18,4
+BattleBack = cave3
+Environment = Cave
+#-------------------------------
 [044]   # Route 6
 Name = Route 6
 Outdoor = true
@@ -235,6 +249,12 @@ MapPosition = 0,15,10
 BattleBack = rocky
 MapSize = 2,11
 Environment = Rock
+#-------------------------------
+[048]
+# Boundary Cave
+BattleBack = cave3
+Environment = Cave
+MapPosition = 2,18,4
 #-------------------------------
 [049]   # Rock Cave 1F
 Name = Route 7
@@ -397,3 +417,114 @@ Name = Tiall Region
 Outdoor = true
 MapPosition = 1,13,16
 BattleBack = city
+#-------------------------------
+[076]
+# Mulberry Village
+Outdoor = true
+ShowArea = true
+Bicycle = true
+Weather = Rain,6
+MapPosition = 2,17,3
+#-------------------------------
+[077]
+# Abandoned Shrine
+Outdoor = true
+ShowArea = true
+Bicycle = true
+Weather = Storm,12
+BattleBack = forest
+Environment = Forest
+#-------------------------------
+[078]
+# Mulberry Pokemon Center
+HealingSpot = 76,33,27
+MapPosition = 2,17,3
+#-------------------------------
+[081]
+# Shrine of Knowledge
+MapPosition = 2,17,3
+#-------------------------------
+[082]
+# Mulberry Gym
+MapPosition = 2,17,3
+BattleBack = factory
+#-------------------------------
+[083]
+# Mulberry Gym
+MapPosition = 2,17,3
+BattleBack = factory
+#-------------------------------
+[084]
+# Mulberry Gym
+MapPosition = 2,17,3
+BattleBack = factory
+#-------------------------------
+[086]
+# Malachite Creek
+Outdoor = true
+ShowArea = true
+Bicycle = true
+Weather = Rain,6
+MapPosition = 2,18,3
+BattleBack = forest
+Environment = Forest
+#-------------------------------
+[087]
+# Mortar Heights
+MapPosition = 2,20,3
+BattleBack = cave3
+Environment = Cave
+#-------------------------------
+[088]
+# Illusion League HQ
+ShowArea = true
+Weather = Snow,47
+MapPosition = 2,20,2
+#-------------------------------
+[089]
+# League Reception
+MapPosition = 2,20,2
+#-------------------------------
+[090]
+# Elite Four Chambers
+MapPosition = 2,20,2
+BattleBack = Elite7
+#-------------------------------
+[091]
+# Hall of Fame
+MapPosition = 2,20,2
+#-------------------------------
+[092]
+# Ecruteak City
+Outdoor = true
+ShowArea = true
+Bicycle = true
+Weather = Rain,9
+MapPosition = 2,18,5
+BattleBack = city
+#-------------------------------
+[094]
+# Isolated Woods
+MapPosition = 2,18,4
+BattleBack = cave3
+Environment = Cave
+#-------------------------------
+[095]
+# Abandoned Shrine
+Outdoor = true
+ShowArea = true
+Bicycle = true
+Weather = Storm,12
+MapPosition = 2,17,2
+BattleBack = forest
+Environment = Forest
+#-------------------------------
+[096]
+# Malachite Creek
+Outdoor = true
+ShowArea = true
+Bicycle = true
+Weather = Rain,6
+MapPosition = 2,19,3
+BattleBack = forest
+Environment = Forest
