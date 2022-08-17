@@ -14,41 +14,23 @@ def pbStorePokemon(pkmn)
     return
   end
   pkmn.record_first_moves
-  if $Trainer.party_full?
-    oldcurbox = $PokemonStorage.currentBox
-    storedbox = $PokemonStorage.pbStoreCaught(pkmn)
-    curboxname = $PokemonStorage[oldcurbox].name
-    boxname = $PokemonStorage[storedbox].name
-    creator = nil
-    creator = pbGetStorageCreator if $Trainer.seen_storage_creator
-    if storedbox != oldcurbox
-      if creator
-        pbMessage(_INTL("Box \"{1}\" on {2}'s PC was full.\1", curboxname, creator))
-      else
-        pbMessage(_INTL("Box \"{1}\" on someone's PC was full.\1", curboxname))
-      end
-      pbMessage(_INTL("{1} was transferred to box \"{2}.\"", pkmn.name, boxname))
-    else
-      if creator
-        pbMessage(_INTL("{1} was transferred to {2}'s PC.\1", pkmn.name, creator))
-      else
-        pbMessage(_INTL("{1} was transferred to someone's PC.\1", pkmn.name))
-      end
-      pbMessage(_INTL("It was stored in box \"{1}.\"", boxname))
-    end
+  if $player.party_full?
+    stored_box = $PokemonStorage.pbStoreCaught(pkmn)
+    box_name   = $PokemonStorage[stored_box].name
+    pbMessage(_INTL("{1} has been sent to Box \"{2}\"!", pkmn.name, box_name))
   else
-    $Trainer.party[$Trainer.party.length] = pkmn
+    $player.party[$player.party.length] = pkmn
   end
 end
 
 def pbNicknameAndStore(pkmn)
   if pbBoxesFull?
-    pbMessage(_INTL("There's no more in the box!\1"))
+    pbMessage(_INTL("There's no more room in the box!\1"))
     pbMessage(_INTL("They are full and can't accept any more!"))
     return
   end
-  $Trainer.pokedex.set_seen(pkmn.species)
-  $Trainer.pokedex.set_owned(pkmn.species)
+  $player.pokedex.set_seen(pkmn.species)
+  $player.pokedex.set_owned(pkmn.species)
   pbNickname(pkmn)
   pbStorePokemon(pkmn)
 end
@@ -62,8 +44,22 @@ def pbAddPokemon(pkmn, level = 1, see_form = true)
   end
   pkmn = Pokemon.new(pkmn, level) if !pkmn.is_a?(Pokemon)
   species_name = pkmn.speciesName
-  pbMessage(_INTL("{1} obtained {2}!\\me[Pkmn get]\\wtnp[80]\1", $Trainer.name, species_name))
+  pbMessage(_INTL("{1} obtained {2}!\\me[Pkmn get]\\wtnp[80]\1", $player.name, species_name))
+  was_owned = $player.owned?(pkmn.species)
+  $player.pokedex.set_seen(pkmn.species)
+  $player.pokedex.set_owned(pkmn.species)
+  $player.pokedex.register(pkmn) if see_form
+  # Show Pokédex entry for new species if it hasn't been owned before
+  if Settings::SHOW_NEW_SPECIES_POKEDEX_ENTRY_MORE_OFTEN && see_form && !was_owned && $player.has_pokedex
+    pbMessage(_INTL("{1}'s data was added to the Pokédex.", species_name))
+    $player.pokedex.register_last_seen(pkmn)
+    pbFadeOutIn {
+      scene = PokemonPokedexInfo_Scene.new
+      screen = PokemonPokedexInfoScreen.new(scene)
+      screen.pbDexEntry(pkmn.species)
+    }
+  end
+  # Nickname and add the Pokémon
   pbNicknameAndStore(pkmn)
-  $Trainer.pokedex.register(pkmn) if see_form
   return true
 end

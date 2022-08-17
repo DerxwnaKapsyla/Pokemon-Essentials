@@ -53,6 +53,7 @@ brawlman9876<s>Jesslejohn
 Magnius<s>DerxwnaKapsyla
 Junichi Masuda<s>Go Ichinose
 Hitomo Sato<s>Mark DiAngelo
+Paradarx<s>Masayoshi Soken
 ZUN
 
 
@@ -89,7 +90,7 @@ DerxwnaKapsyla
 
 
 --- Pokedex Text ---
-Agastya
+Mille Materaux
 DerxwnaKapsyla
 
 
@@ -103,12 +104,13 @@ Maruno: Pokemon Essentials
 --- Touhoumon Designers ---
 HemoglobinA1C
 Stuffman
-Agastya
+Mille Marteaux
 EXSariel
 DoesntKnowHowToPlay
 Masa
 Reimufate
 DerxwnaKapsyla
+BulShell
 
 
 --- Original Designs for the Touhoumon ---
@@ -123,7 +125,7 @@ Team Shanghai Alice
 
 --- Artwork ---
 HemoglobinA1C<s>Maralis
-Kasael<s>Stuffman
+BluShell<s>Stuffman
 Spyro<s>Irakuy
 Love_Albatross<s>SoulfulLex
 zero_breaker<s>Reimufate
@@ -137,9 +139,7 @@ DerxwnaKapsyla
 
 --- Custom Scripts ---
 {INSERTS_PLUGIN_CREDITS_DO_NOT_REMOVE}
-FL: Trainer Intro Music script
 SoulfulLex: Various misc improvements
-Mr. Gela/Vendily: Name Box script
 
 --- Producers ---
 ChaoticInfinity Development
@@ -155,8 +155,7 @@ DerxwnaKapsyla
 --- Special Thanks ---
 HemoglobinA1C: Developing Touhou Puppet Play
 Maralis: Developing the Pokéxtractor Tools
-Kasael: Spriting Overworlds and Battle Sprites
-Agastya: Localization of Touhoumon 1.812 and Developer of Touhoumon Purple
+Mille Marteaux: Localization of Touhoumon 1.812 and Developer of Touhoumon Purple
 EX Sariel: Localization of Touhoumon 1.812
 DoesntKnowHowToPlay: Developer of Touhoumon Unnamed
 AmethystRain & Reborn Dev Team: Permission to use graphical assets
@@ -178,7 +177,8 @@ Boushy<s>MiDas Mike
 Brother1440<s>Near Fantastica
 FL.<s>PinkMan
 Genzai Kawakami<s>Popper
-help-14<s>Rataime
+Golisopod User<s>Rataime
+help-14<s>Savordez
 IceGod64<s>SoundSpawn
 Jacob O. Wobbrock<s>the__end
 KitsuneKouta<s>Venom12
@@ -201,6 +201,10 @@ And YOU...
 
 
 
+"mkxp-z" by:
+Roza
+Based on "mkxp" by Ancurio et al.
+
 "RPG Maker XP" by:
 Enterbrain
 
@@ -214,15 +218,15 @@ No copyright infringements intended.
 Please support the official games!
 
 Touhoumon Development Kit
-2011-2020<s>DerxwnaKapsyla
-2012-2020<s>ChaoticInfinity Development
-2020-2020<s>Overseer Household
+2011-2022<s>DerxwnaKapsyla
+2012-2021<s>ChaoticInfinity Development
+2020-2022<s>Overseer Household
 Based on Pokémon Essentials
 
 
 Pokémon Essentials
 2007-2010<s>Peter O.
-2011-2017<s>Maruno
+2011-2022<s>Maruno
 Based on work by Flameguru
 
 

@@ -7,7 +7,7 @@
 #	* Adds in the randomized background for the load save screen
 #==============================================================================#
 class PokemonLoad_Scene
-  def pbStartScene(commands, show_continue, trainer, frame_count, map_id)
+  def pbStartScene(commands, show_continue, trainer, frame_count, stats, map_id)
     @commands = commands
     @sprites = {}
     @viewport = Viewport.new(0, 0, Graphics.width, Graphics.height)
@@ -18,16 +18,18 @@ class PokemonLoad_Scene
 		"load_hakkero"	# Mini-Hakkero
 	]	
 	loadbg = bgs[rand(bgs.size)]
-      addBackgroundOrColoredPlane(@sprites,"background",loadbg,Color.new(248,248,248),@viewport) # This line was changed so that loadbg is now a variable instead of a direct file
-    # ------ Derx: End of randomized load backgrounds	  
-    y = 16*2
-    for i in 0...commands.length
-      @sprites["panel#{i}"] = PokemonLoadPanel.new(i,commands[i],
-         (show_continue) ? (i==0) : false,trainer,frame_count,map_id,@viewport)
-      @sprites["panel#{i}"].x = 24*2
+    addBackgroundOrColoredPlane(@sprites, "background", loadbg, Color.new(248, 248, 248), @viewport) # This line was changed so that loadbg is now a variable instead of a direct file
+    # ------ Derx: End of randomized load backgrounds
+    y = 32
+    commands.length.times do |i|
+      @sprites["panel#{i}"] = PokemonLoadPanel.new(
+        i, commands[i], (show_continue) ? (i == 0) : false, trainer,
+        frame_count, stats, map_id, @viewport
+      )
+      @sprites["panel#{i}"].x = 48
       @sprites["panel#{i}"].y = y
       @sprites["panel#{i}"].pbRefresh
-      y += (show_continue && i==0) ? 112*2 : 24*2
+      y += (show_continue && i == 0) ? 224 : 48
     end
     @sprites["cmdwindow"] = Window_CommandPokemon.new([])
     @sprites["cmdwindow"].viewport = @viewport
@@ -41,7 +43,7 @@ end
 #==============================================================================#
 class PokemonLoadScreen
   def pbStartLoadScreen
-	pbBGMPlay("U-003. A Dream that is more Scarlet than Red.ogg")
+	#pbBGMPlay("U-003. A Dream that is more Scarlet than Red.ogg")
     commands = []
     cmd_continue     = -1
     cmd_new_game     = -1
@@ -52,19 +54,19 @@ class PokemonLoadScreen
     cmd_quit         = -1
     show_continue = !@save_data.empty?
     if show_continue
-      commands[cmd_continue = commands.length] = _INTL('Continue')
+      commands[cmd_continue = commands.length] = _INTL("Continue")
       if @save_data[:player].mystery_gift_unlocked
-        commands[cmd_mystery_gift = commands.length] = _INTL('Mystery Gift')
+        commands[cmd_mystery_gift = commands.length] = _INTL("Mystery Gift")
       end
     end
-    commands[cmd_new_game = commands.length]  = _INTL('New Game')
-    commands[cmd_options = commands.length]   = _INTL('Options')
-    commands[cmd_language = commands.length]  = _INTL('Language') if Settings::LANGUAGES.length >= 2
-    commands[cmd_debug = commands.length]     = _INTL('Debug') if $DEBUG
-    commands[cmd_quit = commands.length]      = _INTL('Quit Game')
+    commands[cmd_new_game = commands.length]  = _INTL("New Game")
+    commands[cmd_options = commands.length]   = _INTL("Options")
+    commands[cmd_language = commands.length]  = _INTL("Language") if Settings::LANGUAGES.length >= 2
+    commands[cmd_debug = commands.length]     = _INTL("Debug") if $DEBUG
+    commands[cmd_quit = commands.length]      = _INTL("Quit Game")
     map_id = show_continue ? @save_data[:map_factory].map.map_id : 0
     @scene.pbStartScene(commands, show_continue, @save_data[:player],
-                        @save_data[:frame_count] || 0, map_id)
+                        @save_data[:frame_count] || 0, @save_data[:stats], map_id)
     @scene.pbSetParty(@save_data[:player]) if show_continue
     @scene.pbStartScene2
     loop do
@@ -90,10 +92,10 @@ class PokemonLoadScreen
       when cmd_language
         @scene.pbEndScene
         $PokemonSystem.language = pbChooseLanguage
-        pbLoadMessages('Data/' + Settings::LANGUAGES[$PokemonSystem.language][1])
+        pbLoadMessages("Data/" + Settings::LANGUAGES[$PokemonSystem.language][1])
         if show_continue
           @save_data[:pokemon_system] = $PokemonSystem
-          File.open(SaveData::FILE_PATH, 'wb') { |file| Marshal.dump(@save_data, file) }
+          File.open(SaveData::FILE_PATH, "wb") { |file| Marshal.dump(@save_data, file) }
         end
         $scene = pbCallTitle
         return
