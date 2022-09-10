@@ -5,7 +5,6 @@ Name = Intro
 #-------------------------------
 [002]   # Prefab Map
 Name = Prefab Map
-BattleBack = field
 #-------------------------------
 [003]   # The Mansion of Mystery
 Name = The Mansion of Mystery
@@ -26,7 +25,7 @@ BattleBack = field
 Name = Human Village
 Outdoor = true
 Bicycle = true
-BattleBack = village_night
+BattleBack = village
 #-------------------------------
 [007]   # \PN's Room
 Name = Human Village
@@ -37,87 +36,112 @@ HealingSpot = 6,37,24
 #-------------------------------
 [009]   # Forest of Magic
 Name = Forest of Magic
-Outdoor = false
+Outdoor = true
 ShowArea = true
 Bicycle = true
+BattleBack = forest
 #-------------------------------
 [010]   # Misty Lake
 Name = Misty Lake
 ShowArea = true
 Weather = Fog,100
+BattleBack = field
 #-------------------------------
 [011]   # Ruined Western Mansion
 Name = Ruined Western Mansion
 #-------------------------------
 [012]   # First Floor
 Name = Ruined Western Mansion
+BattleBack = indoor3
+WildBattleBGM = B-005. Battle vs. Puppet (Late Game).ogg
 #-------------------------------
 [013]   # Rooms
 Name = Ruined Western Mansion
+BattleBack = indoor3
+WildBattleBGM = B-005. Battle vs. Puppet (Late Game).ogg
 #-------------------------------
 [014]   # Study
 Name = Ruined Western Mansion
+BattleBack = indoor3
+WildBattleBGM = B-005. Battle vs. Puppet (Late Game).ogg
 #-------------------------------
 [015]   # Stairs to Basement
 Name = Ruined Western Mansion
+BattleBack = indoor3
+WildBattleBGM = B-005. Battle vs. Puppet (Late Game).ogg
 #-------------------------------
 [016]   # Second Floor
 Name = Ruined Western Mansion
+BattleBack = indoor3
+WildBattleBGM = B-005. Battle vs. Puppet (Late Game).ogg
+Flags = LampreyBlindness
 #-------------------------------
 [017]   # Kitchen
 Name = Ruined Western Mansion
+BattleBack = indoor3
+WildBattleBGM = B-005. Battle vs. Puppet (Late Game).ogg
+Flags = LampreyBlindness
 #-------------------------------
 [018]   # Dining Hall
 Name = Ruined Western Mansion
+BattleBack = indoor3
+WildBattleBGM = B-005. Battle vs. Puppet (Late Game).ogg
+Flags = LampreyBlindness
 #-------------------------------
 [019]   # Kitchen?
 Name = Ruined Western Mansion
+BattleBack = indoor3
+WildBattleBGM = B-005. Battle vs. Puppet (Late Game).ogg
 #-------------------------------
 [020]   # Dining Hall?
 Name = Ruined Western Mansion
+BattleBack = indoor3
+WildBattleBGM = B-005. Battle vs. Puppet (Late Game).ogg
 #-------------------------------
 [021]   # Second Floor (Cutscene)?
 Name = Ruined Western Mansion
-Outdoor = true
-ShowArea = true
-BattleBack = field
+BattleBack = indoor3
+WildBattleBGM = B-005. Battle vs. Puppet (Late Game).ogg
 #-------------------------------
 [023]   # Third Floor
 Name = Ruined Western Mansion
-Outdoor = true
-ShowArea = true
+BattleBack = indoor3
+WildBattleBGM = B-005. Battle vs. Puppet (Late Game).ogg
 #-------------------------------
 [024]   # Rooms
 Name = Ruined Western Mansion
+BattleBack = indoor3
+WildBattleBGM = B-005. Battle vs. Puppet (Late Game).ogg
 #-------------------------------
 [025]   # Performance Hall
 Name = Ruined Western Mansion
+BattleBack = hall
+WildBattleBGM = B-005. Battle vs. Puppet (Late Game).ogg
 #-------------------------------
 [026]   # Stairs to Roof
 Name = Ruined Western Mansion
+BattleBack = indoor3
+WildBattleBGM = B-005. Battle vs. Puppet (Late Game).ogg
 #-------------------------------
 [027]   # Basement
 Name = Ruined Western Mansion
+BattleBack = indoor3
+WildBattleBGM = B-005. Battle vs. Puppet (Late Game).ogg
+Flags = Basement
 #-------------------------------
 [028]   # Roof
 Name = Ruined Western Mansion
-Outdoor = true
-ShowArea = true
-BattleBack = field
+BattleBack = Layla
+WildBattleBGM = B-005. Battle vs. Puppet (Late Game).ogg
 #-------------------------------
 [029]   # Ending Filler Map (Good)
 Name = Ending Filler Map (Good)
-Name = 
-Bicycle = true
 #-------------------------------
 [030]   # Ending Filler Map (Bad)
 Name = Ending Filler Map (Bad)
 #-------------------------------
 [031]   # Credits - Village Schoolhouse
 Name = Credits - Village Schoolhouse
-Outdoor = true
-ShowArea = true
-BattleBack = field
 #-------------------------------
 [032]   # Credits - Misty Lake
 Name = Credits - Misty Lake
@@ -127,357 +151,136 @@ Name = Credits - R.W.M.
 #-------------------------------
 [034]   # Credits - R.W.M. (Alt)
 Name = Credits - R.W.M. (Alt)
-Bicycle = true
 #-------------------------------
 [035]   # Credits - \PN's House
 Name = Credits - \PN's House
-Name = 
-Outdoor = true
-ShowArea = true
 #-------------------------------
 [036]   # Credits - Group Shot
 Name = Credits - Group Shot
 #-------------------------------
 [037]   # Human Village
-Name = Ingido Plateau
-MapPosition = 0,13,6
-BattleBack = elite1
-Flags = DisableBoxLink
+Name = Human Village
 #-------------------------------
 [038]   # Human Village Rest House
-Name = Ingido Plateau
-MapPosition = 0,13,6
-Flags = DisableBoxLink
+Name = Human Village
 #-------------------------------
 [039]   # Festival Grounds
-Name = Route 4
-Outdoor = true
-ShowArea = true
-MapPosition = 0,11,6
-BattleBack = field
-MapSize = 2,11
+Name = Festival Grounds
 #-------------------------------
 [040]   # Rest House
-Name = Route 4
-Outdoor = true
-ShowArea = true
-BicycleAlways = true
-MapPosition = 0,11,6
+Name = Festival Grounds
 #-------------------------------
 [041]   # Keine's Quiz Hall
-Name = Route 5
-Outdoor = true
-ShowArea = true
-BicycleAlways = true
-MapPosition = 0,11,7
-MapSize = 1,111
+Name = Festival Grounds
 #-------------------------------
 [042]   # Alice's Puppet Boutique
-Name = Alice's Puppet Boutique
-Outdoor = true
-ShowArea = true
-Bicycle = true
-MapPosition = 2,18,4
-BattleBack = forest
-Environment = Forest
+Name = Festival Grounds
 #-------------------------------
 [043]   # Shizuha's Leaf Pile
-Name = Shizuha's Leaf Pile
-MapPosition = 2,18,4
-BattleBack = cave3
-Environment = Cave
+Name = Festival Grounds
 #-------------------------------
 [044]   # Festival Tournament Arena
-Name = Route 6
-Outdoor = true
-ShowArea = true
-MapPosition = 0,11,10
-BattleBack = field
-MapSize = 2,11
+Name = Festival Grounds
 #-------------------------------
 [045]   # Village Confrence Room
-Name = Route 6
-Outdoor = true
-ShowArea = true
-BicycleAlways = true
-MapPosition = 0,11,10
+Name = Human Village
 #-------------------------------
 [046]   # Village Confrence Room
-Name = Route 4
-Bicycle = true
-MapPosition = 0,12,6
+Name = Human Village
 #-------------------------------
 [047]   # \PN's Room
-Name = Route 7
-Outdoor = true
-ShowArea = true
-Weather = Rain,0
-MapPosition = 0,15,10
-BattleBack = rocky
-MapSize = 2,11
-Environment = Rock
+Name = Human Village
 #-------------------------------
 [048]   # Misty Lake
 Name = Misty Lake
-MapPosition = 2,18,4
-BattleBack = cave3
-Environment = Cave
 #-------------------------------
 [049]   # Misty Lake
-Name = Route 7
-Bicycle = true
-MapPosition = 0,16,10
-BattleBack = cave1
-Environment = Cave
-Flags = Magnetic,DistortionWorld
+Name = Misty Lake
 #-------------------------------
 [050]   # Prismriver Manor (F1)
-Name = Route 7
-Bicycle = true
-MapPosition = 0,16,10
-DarkMap = true
-BattleBack = cave3
-Environment = Cave
-Flags = Magnetic,DistortionWorld
+Name = Prismriver Manor
 #-------------------------------
 [051]   # Prismriver Manor (F1 - Rooms)
-Name = Route 7
-Bicycle = true
-MapPosition = 0,16,10
-Dungeon = true
-BattleBack = cave2
-Environment = Cave
-Flags = Magnetic,DistortionWorld,ScaleWildEncounterLevels
+Name = Prismriver Manor
 #-------------------------------
 [052]   # Prismriver Manor (F2)
-Name = Battle Frontier
-Outdoor = true
-ShowArea = true
-MapPosition = 0,17,10
+Name = Prismriver Manor
 #-------------------------------
 [053]   # Prismriver Manor (F2 - Rooms)
-Name = Battle Frontier
-HealingSpot = 52,17,14
-MapPosition = 0,17,10
+Name = Prismriver Manor
 #-------------------------------
 [054]   # Prismriver Manor (F3)
-Name = Battle Frontier
-MapPosition = 0,17,10
+Name = Prismriver Manor
 #-------------------------------
 [055]   # Prismriver Manor (F3 - Rooms)
-Name = Battle Frontier
-HealingSpot = 52,30,10
-MapPosition = 0,17,10
+Name = Prismriver Manor
 #-------------------------------
 [056]   # Prismriver Manor (B1F)
-Name = Battle Frontier
-MapPosition = 0,17,10
-BattleBack = indoor1
-Flags = DisableBoxLink
+Name = Prismriver Manor
 #-------------------------------
 [057]   # Great Youkai Forest
-Name = Battle Frontier
-MapPosition = 0,17,10
+Name = Great Youkai Forest
 #-------------------------------
 [058]   # Great Youkai Forest
-Name = Battle Frontier
-MapPosition = 0,17,10
+Name = Great Youkai Forest
 #-------------------------------
 [059]   # Great Youkai Forest?
-Name = Battle Frontier
-MapPosition = 0,17,10
-BattleBack = indoor1
-Flags = DisableBoxLink
+Name = Great Youkai Forest
 #-------------------------------
 [060]   # Human Village Outskirts
-Name = Battle Frontier
-MapPosition = 0,17,10
+Name = Human Village Outskirts
 #-------------------------------
 [061]   # Gensokyo Wilderness
-Name = Battle Frontier
-MapPosition = 0,17,10
-BattleBack = indoor1
-Flags = DisableBoxLink
+Name = Gensokyo Wilderness
 #-------------------------------
 [062]   # Nameless Hill
-Name = Battle Frontier
-MapPosition = 0,17,10
+Name = Nameless Hill
 #-------------------------------
 [063]   # Suzuran Field
-Name = Battle Frontier
-MapPosition = 0,17,10
-Flags = DisableBoxLink
+Name = Suzuran Field
 #-------------------------------
 [064]   # Suzuran Field
-Name = Battle Frontier
-MapPosition = 0,17,10
-BattleBack = indoor1
-Flags = DisableBoxLink
+Name = Suzuran Field
 #-------------------------------
 [065]   # Garden of the Sun
-Name = Battle Frontier
-MapPosition = 0,17,10
-Flags = DisableBoxLink
+Name = Garden of the Sun
 #-------------------------------
 [066]   # Fantasy World
-Name = Safari Zone
-Outdoor = true
-ShowArea = true
-MapPosition = 0,12,12
-BattleBack = field
+Name = Fantasy World
 #-------------------------------
 [067]   # Mugenkan
-Name = Safari Zone
-MapPosition = 0,12,12
+Name = Mugenkan
 #-------------------------------
 [068]   # Mugenkan (Back Garden)
-Name = Safari Zone
-Outdoor = true
-ShowArea = true
-MapPosition = 0,12,12
-SafariMap = true
-BattleBack = forest
-Environment = Forest
+Name = Mugenkan
 #-------------------------------
 [069]   # Ending Filler Map 1 - Stage 6
-Name = Route 8
-Outdoor = true
-ShowArea = true
-MapPosition = 0,13,13
-DiveMap = 70
-BattleBack = field
+Name = Ending
 #-------------------------------
 [070]   # Ending Filler Map 1 - EX Stage
-Name = Route 8
-MapPosition = 0,13,13
-BattleBack = underwater
-Environment = Underwater
+Name = Ending
 #-------------------------------
 [071]   # Credits - Festival Grounds
-Name = Route 8
-MapPosition = 0,13,13
+Name = Credits
 #-------------------------------
 [072]   # Credits - Misty Lake (RWM)
-Name = Berth Island
-Outdoor = true
-ShowArea = true
-Weather = Storm,50
-MapPosition = 0,18,17
-BattleBack = field
-Flags = DistortionWorld
+Name = Credits
 #-------------------------------
 [073]   # Credits - Great Youkai Forest
-Name = Faraday Island
-Outdoor = true
-ShowArea = true
-MapPosition = 0,22,16
-BattleBack = field
-Flags = DistortionWorld
+Name = Credits
 #-------------------------------
 [074]   # Credits - Village Outskirts
-Name = Route 6
-Bicycle = true
-MapPosition = 0,12,10
+Name = Credits
 #-------------------------------
 [075]   # Credits - Suzuran Field
-Name = Tiall Region
-Outdoor = true
-MapPosition = 1,13,16
-BattleBack = city
+Name = Credits
 #-------------------------------
 [076]   # Credits - Suzuran Field
-Name = Credits - Suzuran Field
-Outdoor = true
-ShowArea = true
-Bicycle = true
-Weather = Rain,6
-MapPosition = 2,17,3
+Name = Credits
 #-------------------------------
 [077]   # Credits - Village
-Name = Credits - Village
-Outdoor = true
-ShowArea = true
-Bicycle = true
-Weather = Storm,12
-BattleBack = forest
-Environment = Forest
+Name = Credits
 #-------------------------------
 [078]   # Credits - Group Shot
-Name = Credits - Group Shot
-HealingSpot = 76,33,27
-MapPosition = 2,17,3
+Name = Credits
 #-------------------------------
-[081]
-MapPosition = 2,17,3
-#-------------------------------
-[082]
-MapPosition = 2,17,3
-BattleBack = factory
-#-------------------------------
-[083]
-MapPosition = 2,17,3
-BattleBack = factory
-#-------------------------------
-[084]
-MapPosition = 2,17,3
-BattleBack = factory
-#-------------------------------
-[086]
-Outdoor = true
-ShowArea = true
-Bicycle = true
-Weather = Rain,6
-MapPosition = 2,18,3
-BattleBack = forest
-Environment = Forest
-#-------------------------------
-[087]
-MapPosition = 2,20,3
-BattleBack = cave3
-Environment = Cave
-#-------------------------------
-[088]
-ShowArea = true
-Weather = Snow,47
-MapPosition = 2,20,2
-#-------------------------------
-[089]
-MapPosition = 2,20,2
-#-------------------------------
-[090]
-MapPosition = 2,20,2
-BattleBack = Elite7
-#-------------------------------
-[091]
-MapPosition = 2,20,2
-#-------------------------------
-[092]
-Outdoor = true
-ShowArea = true
-Bicycle = true
-Weather = Rain,9
-MapPosition = 2,18,5
-BattleBack = city
-#-------------------------------
-[094]
-MapPosition = 2,18,4
-BattleBack = cave3
-Environment = Cave
-#-------------------------------
-[095]
-Outdoor = true
-ShowArea = true
-Bicycle = true
-Weather = Storm,12
-MapPosition = 2,17,2
-BattleBack = forest
-Environment = Forest
-#-------------------------------
-[096]
-Outdoor = true
-ShowArea = true
-Bicycle = true
-Weather = Rain,6
-MapPosition = 2,19,3
-BattleBack = forest
-Environment = Forest

@@ -17,6 +17,7 @@ module Settings
   MAX_COINS            = 999_999
   SUPER_SHINY          = true
   
+  TIME_SHADING                               = true
   POISON_IN_FIELD      						 = true
   POISON_FAINT_IN_FIELD						 = false 
   FISHING_AUTO_HOOK     					 = true

@@ -18,12 +18,12 @@ EventHandlers.add(:on_trainer_load, :shameless_self_insert,
     }
 )
 
-EventHandlers.add(:on_wild_pokemon_created, :pokemon_encounter,
-    proc { |pkmn|
-      next unless pkmn.species_data.has_flag?("Pokemon")
-      $PokemonGlobal.nextBattleBGM = pbStringToAudioFile("B-010. Battle vs. Hidden Encounter")
-    }
-)
+#EventHandlers.add(:on_wild_pokemon_created, :pokemon_encounter,
+#    proc { |pkmn|
+#      next unless pkmn.species_data.has_flag?("Pokemon")
+#      $PokemonGlobal.nextBattleBGM = pbStringToAudioFile("B-010. Battle vs. Hidden Encounter")
+#    }
+#)
 
 #EventHandlers.add(:on_trainer_load, :make_trainer_shiny,
 #  proc { |trainer|

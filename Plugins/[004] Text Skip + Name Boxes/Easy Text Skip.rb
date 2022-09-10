@@ -506,7 +506,7 @@ def pbMessageDisplay(msgwindow, message, letterbyletter = true, commandProc = ni
       end
     end
     ########## Text Skipping #######################
-    if $PokemonSystem.text_skip
+    if $CanToggle != false
       if Input.press?(TEXT_SKIP_BUTTON)
         msgwindow.textspeed=-999
         msgwindow.update
