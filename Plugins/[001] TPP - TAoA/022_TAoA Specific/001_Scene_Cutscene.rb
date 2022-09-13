@@ -93,3 +93,543 @@ class TMoMIntroScene
     @viewport.dispose
   end
 end
+
+# ---------------------------
+
+class CreditsIntro_TMoM
+  BASECOLOR = Color.new(248, 248, 248)
+  SHADOWCOLOR = Color.new(72, 72, 72)
+  TEXT = [
+    [
+      "Touhou Puppet Play",
+      "The Mansion of Mystery",
+	  "",
+	  "Credits"
+    ],
+    :wait, 160,
+    :clear,
+    :wait, 60,
+    [
+      "--- TMoM Team Members ---",
+      "DerxwnaKapsyla",
+	  "FionaKaenbyou"
+    ],
+    :wait, 160,
+    :clear,
+    :wait, 60,
+    [
+      "--- Director of Development & World Building---",
+      "DerxwnaKapsyla"
+    ],
+    :wait, 160,
+    :clear,
+  ]
+  
+  def initialize
+    @viewport = Viewport.new(0, 0, Graphics.width, Graphics.height)
+    @viewport.z = 999999999
+    @text = TextSprite.new(@viewport)
+    @idx = 0
+    main
+  end
+  
+  def main
+    while @idx < self.class::TEXT.size
+      if self.class::TEXT[@idx] == :wait
+        self.class::TEXT[@idx + 1].times do
+          Graphics.update
+          Input.update
+        end
+        @idx += 2
+      elsif self.class::TEXT[@idx] == :clear
+        for i in 0...32
+          Graphics.update
+          Input.update
+          @text.opacity -= 8
+        end
+        @idx += 1
+      elsif self.class::TEXT[@idx].is_a?(Array)
+        @text.opacity = 0
+        lines = self.class::TEXT[@idx]
+        @text.clear
+        for i in 0...lines.size
+          y = [
+            nil,
+            [-16],
+            [-26, 6],
+            [-48, -16, 16],
+            [-64, -32, 0, 32]
+          ][lines.size][i]
+          @text.draw([
+            lines[i],
+            Graphics.width / 2,
+            Graphics.height / 2 + y,
+            2,
+            self.class::BASECOLOR,
+            self.class::SHADOWCOLOR
+          ])
+        end
+        for i in 0...32
+          Graphics.update
+          Input.update
+          @text.opacity += 8
+        end
+        @idx += 1
+      end
+    end
+    for i in 0...32
+      Graphics.update
+      Input.update
+      @text.opacity -= 8
+    end
+    dispose
+  end
+  
+  def dispose
+    @text.dispose
+    @viewport.dispose
+  end
+end
+
+# ---------------------------
+
+class CreditsNames
+  BASECOLOR = Color.new(248, 248, 248)
+  SHADOWCOLOR = Color.new(72, 72, 72)
+  TEXT = [
+    [
+      "Mr. Unknown | a-TTTempo | Uda-Shi",
+	  "KecleonTencho | brawlman9876 | Jesslejohn",
+	  "Paradarx | Danmaq | Amane",
+    ],
+    :wait, 120,
+    :clear,
+    :wait, 60,
+    [
+      "U2 Akiyama | Hitomi Sato | Junichi Masuda",
+	  "Go Ichinose | Masayoshi Soken | Jesslejohn",
+	  "U2 Akiyama | ZUN | DerxwnaKapsyla",
+	  "Ludwig van Beethoven",
+    ],
+    :wait, 120,
+    :clear,
+    :wait, 60,
+    [
+      "DerxwnaKapsyla | DerxwnaKapsyla",
+      "FionaKaenbyou",
+    ],
+    :wait, 120,
+    :clear,
+    :wait, 60,
+    [
+      "HemoglobinA1C | Stuffman",
+	  "Reimufate | BluShell",
+      "EXSariel | Masa",
+	  "Mille Marteaux",
+    ],
+    :wait, 120,
+    :clear,
+    :wait, 60,
+    [
+      "DoesntKnowHowToPlay",
+	  "DerxwnaKapsyla",
+    ],
+    :wait, 120,
+    :clear,
+    :wait, 60,
+    [
+      "Team Shanghai Alice",
+    ],
+    :wait, 120,
+    :clear,
+    :wait, 60,
+    [
+      "HemoglobinA1C |  Alicia | BluShell",
+	  "Stuffman | Spyro | Irakuy",
+	  "SoulfulLex | zero_breaker | Reimufate",
+	  "Love_Albatross | Uda-shi | KecleonTencho",
+    ],
+    :wait, 40,
+    :clear,
+    :wait, 60,
+    [
+      "AmethystRain & Reborn Dev Team",
+	  "DerxwnaKapsyla",
+    ],
+    :wait, 120,
+    :clear,
+    :wait, 60,
+    [
+      "bo4p5687: Multiple Saves",
+	  "Marin & Phantombass: Better Speed Up",
+	  "Amethyst, Kurotsune, ENLS: Easy Text Skip",
+	  "Mr. Gela & Vendily: Name Boxes",
+    ],
+    :wait, 120,
+    :clear,
+    :wait, 60,
+    [
+      "aiyinsi & DerxwnaKapsyla: Change BGMs",
+	  "Mej71: Adjustable Dark Circle",
+	  "Grogro: Clone Trainer",
+	  "NettoHikari: EMXP Event Exporter",
+    ],
+    :wait, 120,
+    :clear,
+    :wait, 60,
+    [
+      "= Marin =",
+	  "Marin's Scripting Utilities",
+	  "Marin's Map Exporter",
+	  "Marin's Enhanced Jukebox",
+    ],
+    :wait, 120,
+    :clear,
+    :wait, 60,
+    [
+      "DerxwnaKapsyla",
+	  "ChaoticInfinity Development",
+	  "Overseer Household",
+    ],
+    :wait, 120,
+    :clear,
+    :wait, 60,
+    [
+      "HemoglobinA1C: Developer of Touhou Puppet Play",
+	  "Alicia: Developer of the Pokéxtractor Tools",
+	  "Mille & EXSariel: Localization of Thmn. 1.812",
+	  "DoesntKnowHowToPlay: Dev. of Thmn.Unnamed",
+    ],
+    :wait, 120,
+    :clear,
+    :wait, 60,
+    [
+      "Reimufate: Developer of Thmn Reimufate Version",
+	  "Fo.Lens & GNGekidan: GNE Asset Pack",
+	  "FionaKaenbyou: Writing every trainer's dialogue",
+    ],
+    :wait, 120,
+    :clear,
+    :wait, 60,
+    [
+      "Floofgear: Emotional support and motivation",
+	  "Relic Castle: For putting up with my absurdity",
+    ],
+    :wait, 120,
+    :clear,
+    :wait, 60,
+    [
+      "Flameguru: Initial developer of Essentials",
+	  "Poccil (Peter O.): Developer of Essentials",
+	  "Maruno: Current developer of Essentials",
+	  "The \"Pokémon Essentials\" Development Team",
+    ],
+    :wait, 120,
+    :clear,
+    :wait, 60,
+    [
+      "Enterbrain: Devs and Producers of \"RPG Maker XP\"",
+	  "Game Freak: Developers of \"Pokémon\"",
+	  "FocasLens: Developers of \"Gensou Ningyou Enbu\"",
+	  "ZUN: Head Developer of \"Touhou Project\"",
+    ],
+    :wait, 120,
+    :clear,
+    :wait, 60,
+    [
+      "",
+	  "",
+	  "And YOU...",
+    ],
+    :wait, 120,
+    :clear,
+    :wait, 60,
+    [
+      "\"mkxp-z\" by",
+	  "Roza",
+	  "Based on \"mkxp\" by Ancurio et al.",
+    ],
+    :wait, 120,
+    :clear,
+    :wait, 60,
+    [
+      "\"RPG Maker XP\" by",
+	  "Enterbrain",
+    ],
+    :wait, 120,
+    :clear,
+    :wait, 60,
+    [
+      "Pokémon is owned by:",
+	  "The Pokémon Company",
+	  "Nintendo",
+	  "Affiliated with Game Freak",
+    ],
+    :wait, 120,
+    :clear,
+    :wait, 60,
+    [
+      "This is a non-profit fan-made game.",
+	  "No copyright infringments intended",
+	  "Please support the official games!",
+	  "If you've paid for this, you've been had!",
+    ],
+    :wait, 120,
+    :clear,
+    :wait, 60,
+  ]
+  
+  def initialize
+    @viewport = Viewport.new(0, 0, Graphics.width, Graphics.height)
+    @viewport.z = 999999999
+    @text = TextSprite.new(@viewport)
+    @idx = 0
+    main
+  end
+  
+  def main
+    while @idx < self.class::TEXT.size
+      if self.class::TEXT[@idx] == :wait
+        self.class::TEXT[@idx + 1].times do
+          Graphics.update
+          Input.update
+        end
+        @idx += 2
+      elsif self.class::TEXT[@idx] == :clear
+        for i in 0...16
+          Graphics.update
+          Input.update
+          @text.opacity -= 16
+        end
+        @idx += 1
+      elsif self.class::TEXT[@idx].is_a?(Array)
+        @text.opacity = 0
+        lines = self.class::TEXT[@idx]
+        @text.clear
+        for i in 0...lines.size
+          y = [
+            nil,
+            #[-16],
+            #[-26, 6],
+            #[-48, -16, 16],
+            #[-64, -32, 0, 32]
+			[82],
+			[82, 108],
+			[82, 108, 134],
+			[82, 108, 134, 160]
+          ][lines.size][i]
+          @text.draw([
+            lines[i],
+            Graphics.width / 2,
+            Graphics.height / 2 + y,
+            2,
+            self.class::BASECOLOR,
+            self.class::SHADOWCOLOR
+          ])
+        end
+        for i in 0...32
+          Graphics.update
+          Input.update
+          @text.opacity += 8
+        end
+        @idx += 1
+      end
+    end
+    for i in 0...32
+      Graphics.update
+      Input.update
+      @text.opacity -= 8
+    end
+    dispose
+  end
+  
+  def dispose
+    @text.dispose
+    @viewport.dispose
+  end
+end
+
+# ---------------------------
+
+class CreditsOutro_TMoM
+  BASECOLOR = Color.new(248, 248, 248)
+  SHADOWCOLOR = Color.new(72, 72, 72)
+  TEXT = [
+    [
+      "Touhou Puppet Play",
+      "The Mansion of Mystery",
+	  "",
+	  "2021-2022         DerxwnaKapsyla ",
+	  "2021-2022          ChaoticInfinity",
+	  "2021-2022   Overseer Household",
+    ],
+    :wait, 160,
+    :clear,
+    :wait, 60,
+    [
+      "Touhoumon Essentials",
+      "",
+	  "2011-2022         DerxwnaKapsyla ",
+	  "2011-2022          ChaoticInfinity",
+	  "2020-2022   Overseer Household",
+    ],
+    :wait, 160,
+    :clear,
+    :wait, 60,
+    [
+      "Pokemon Essentials",
+      "",
+	  "2007-2010        Peter O.",
+	  "2010-2022          Maruno",
+	  "Based on work by Flameguru",
+    ],
+    :wait, 160,
+    :clear,
+	:wait, 60,
+  ]
+  
+  def initialize
+    @viewport = Viewport.new(0, 0, Graphics.width, Graphics.height)
+    @viewport.z = 999999999
+    @text = TextSprite.new(@viewport)
+    @idx = 0
+    main
+  end
+  
+  def main
+    while @idx < self.class::TEXT.size
+      if self.class::TEXT[@idx] == :wait
+        self.class::TEXT[@idx + 1].times do
+          Graphics.update
+          Input.update
+        end
+        @idx += 2
+      elsif self.class::TEXT[@idx] == :clear
+        for i in 0...16
+          Graphics.update
+          Input.update
+          @text.opacity -= 16
+        end
+        @idx += 1
+      elsif self.class::TEXT[@idx].is_a?(Array)
+        @text.opacity = 0
+        lines = self.class::TEXT[@idx]
+        @text.clear
+        for i in 0...lines.size
+          y = [
+            nil,
+            [-16],
+            [-26, 6],
+            [-48, -16, 16],
+            [-64, -32, 0, 32],
+			[-80, -48, -16, 16, 48],
+			[-96, -64, -32, 0, 32, 64]
+          ][lines.size][i]
+          @text.draw([
+            lines[i],
+            Graphics.width / 2,
+            Graphics.height / 2 + y,
+            2,
+            self.class::BASECOLOR,
+            self.class::SHADOWCOLOR
+          ])
+        end
+        for i in 0...32
+          Graphics.update
+          Input.update
+          @text.opacity += 8
+        end
+        @idx += 1
+      end
+    end
+    for i in 0...32
+      Graphics.update
+      Input.update
+      @text.opacity -= 8
+    end
+    dispose
+  end
+  
+  def dispose
+    @text.dispose
+    @viewport.dispose
+  end
+end
+
+# ---------------------------
+
+class CreditsFin
+  BASECOLOR = Color.new(248, 248, 248)
+  SHADOWCOLOR = Color.new(72, 72, 72)
+  TEXT = [
+    [
+      "                                                               Fin.",
+    ],
+    :wait, 160,
+    :clear,
+  ]
+  
+  def initialize
+    @viewport = Viewport.new(0, 0, Graphics.width, Graphics.height)
+    @viewport.z = 999999999
+    @text = TextSprite.new(@viewport)
+    @idx = 0
+    main
+  end
+  
+  def main
+    while @idx < self.class::TEXT.size
+      if self.class::TEXT[@idx] == :wait
+        self.class::TEXT[@idx + 1].times do
+          Graphics.update
+          Input.update
+        end
+        @idx += 2
+      elsif self.class::TEXT[@idx] == :clear
+        for i in 0...16
+          Graphics.update
+          Input.update
+          @text.opacity -= 16
+        end
+        @idx += 1
+      elsif self.class::TEXT[@idx].is_a?(Array)
+        @text.opacity = 0
+        lines = self.class::TEXT[@idx]
+        @text.clear
+        for i in 0...lines.size
+          y = [
+            nil,
+			[160],
+          ][lines.size][i]
+          @text.draw([
+            lines[i],
+            Graphics.width / 2,
+            Graphics.height / 2 + y,
+            2,
+            self.class::BASECOLOR,
+            self.class::SHADOWCOLOR
+          ])
+        end
+        for i in 0...32
+          Graphics.update
+          Input.update
+          @text.opacity += 8
+        end
+        @idx += 1
+      end
+    end
+    for i in 0...32
+      Graphics.update
+      Input.update
+      @text.opacity -= 8
+    end
+    dispose
+  end
+  
+  def dispose
+    @text.dispose
+    @viewport.dispose
+  end
+end
+
+# ---------------------------

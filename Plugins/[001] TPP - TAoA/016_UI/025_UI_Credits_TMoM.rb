@@ -77,11 +77,12 @@ DerxwnaKapsyla
 Mr. Unknown<s>a-TTTempo
 Uda-Shi<s>KecleonTencho
 brawlman9876<s>Jesslejohn
-Magnius<s>DerxwnaKapsyla
+U2 Akiyama<s>DerxwnaKapsyla
 Junichi Masuda<s>Go Ichinose
 Hitomo Sato<s>Mark DiAngelo
 Paradarx<s>Masayoshi Soken
-brawlman9876<s>danmaq
+Amane<s>danmaq
+Ludwig van Beethoven
 ZUN
 
 

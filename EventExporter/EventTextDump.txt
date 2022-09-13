@@ -16329,8 +16329,348 @@ List of Event Commands:
 #==============================================================================
 Map ID: 021
 Map Name: Ending Filler Map (Good) -2
-Tileset: 004: Poke Center
-Width: 20, Height: 15
+Tileset: 027: Human Village
+Width: 73, Height: 89
+
+#------------------------------------------------------------------------------
+Event ID: 001
+Event Name: EV001
+(X,Y): (037,080)
+
+Page #1
+Conditions
+None
+
+Autonomous Movement
+Type: Fixed
+Speed: 3: Slow
+Freq: 3: Low
+Options Enabled
+Move Animation
+Trigger: Autorun
+
+List of Event Commands:
+@>Change Text Options: Bottom, Show
+@>Set Move Route: Player
+ :              : $>Move Up
+ :              : $>Move Up
+ :              : $>Move Up
+ :              : $>Move Up
+ :              : $>Move Up
+ :              : $>Move Up
+ :              : $>Move Up
+@>Text: \w[dark]\c[12]\se[]\l[2]The four managed to slip back into the village
+ :    : while the moon was still in the sky.\wtnp[40]
+@>Text: \w[dark]\c[12]\se[]\l[4]Not a single soul was out patroling the southern half
+ :    : of the village. And most importantly, their parents
+ :    : were all still at home. Asleep.\wtnp[40]
+@>Text: \w[dark]\c[12]\se[]\l[4]To them, the night was a complete success. They
+ :    : achieved their goals and managed to make it back
+ :    : to the village safe and out of trouble.\wtnp[40]
+@>Text: \w[dark]\c[12]\se[]Sure, they had bumps getting to their end point, but
+ :    : as Maya put it:\wtnp[40]
+@>Text: \w[dark]\c[12]\se[]\l[2]<ac>"What great adventure doesn't have some twist
+ :    : and turns!"</ac>\wtnp[40]
+@>Change Screen Color Tone: (-255,-255,-255,0), @6
+@>Text: \w[dark]\c[12]\se[]\l[4]The four of them decided not to linger around the entrance,
+ :    : lest they be discovered...\| But not before Maya decided to
+ :    : propose the idea of another expedition.\wtnp[40]
+@>Wait: 6 frame(s)
+@>Transfer Player:[021: Ending Filler Map (Good) -2], (019,057), Left
+@>Set Event Location: [Kota],(016,056), Right
+@>Set Event Location: [Maya],(015,057), Right
+@>Set Event Location: [Shinji],(016,058), Right
+@>Wait: 6 frame(s)
+@>Change Screen Color Tone: (51,17,-34,255), @10
+@>Text: \w[dark]\c[12]\se[]\l[3]The four returned to their respective houses, all
+ :    : worn out from their eventful evening.\wtnp[40]
+@>Text: \w[dark]\c[12]\se[]\l[3]They made sure to walk the closest person back to
+ :    : their house, just to be on the safe side. The first
+ :    : to depart was \PN.\wtnp[40]
+@>Set Move Route: [Kota]
+ :              : $>Move Up
+ :              : $>Move Up
+ :              : $>Move Up
+ :              : $>Move Up
+ :              : $>Move Up
+ :              : $>Move Up
+ :              : $>Move Up
+ :              : $>Move Up
+@>Set Move Route: [Maya]
+ :              : $>Move Up
+ :              : $>Move Up
+ :              : $>Move Up
+ :              : $>Move Up
+ :              : $>Move Up
+ :              : $>Move Up
+ :              : $>Move Up
+ :              : $>Move Up
+@>Set Move Route: [Shinji]
+ :              : $>Move Up
+ :              : $>Move Up
+ :              : $>Move Up
+ :              : $>Move Up
+ :              : $>Move Up
+ :              : $>Move Up
+ :              : $>Move Up
+ :              : $>Move Up
+@>Text: \w[dark]\c[12]\se[]\l[4]\PN wished the remaining three, Kota, Maya, and Shinji,
+ :    : a decent evening and a good rest as they all went on
+ :    : their way home.\wtnp[40]
+@>Wait: 10 frame(s)
+@>Set Move Route: Player
+ :              : $>Move Right
+ :              : $>Move Right
+ :              : $>Move Down
+ :              : $>Move Down
+@>Wait for Move's Completion
+@>Wait: 5 frame(s)
+@>Change Screen Color Tone: (-255,-255,-255,0), @6
+@>Text: \w[dark]\c[12]\se[]\l[3]As they all departed to their respective homes, a
+ :    : similar thought was running through their minds.\wtnp[40]
+@>Text: \w[dark]\c[12]\se[]<ac>"<i>Another expedition, huh? I can't wait!</i>"</ac>\wtnp[40]
+@>Fade Out BGM: 2 sec.
+@>Wait: 50 frame(s)
+@>Change Text Options: Middle, Hide
+@>Text: \se[]\l[3]<ac>True End: The Thrill of Adventure\wt[30]\nCongratulations on getting the True End!</ac>\wtnp[40]
+@>Wait: 20 frame(s)
+@>Control Self Switch: A =ON
+@>Comment: INSERT TRUE CREDITS HERE
+@>Wait: 20 frame(s)
+@>Change Text Options: Middle, Hide
+@>Text: \l[4]You will now be returned to the Title Screen. 
+ :    : When you resume the game, you will be at your last 
+ :    : save point.
+@>Script: pbAllowSpeedup
+:       : $GameSpeed = pbGet(1)
+@>Change Text Options: Bottom, Show
+@>Return to Title Screen
+@>
+
+Page #2
+Conditions
+None
+
+Autonomous Movement
+Type: Fixed
+Speed: 3: Slow
+Freq: 3: Low
+Options Enabled
+Move Animation
+Trigger: Autorun
+
+List of Event Commands:
+@>Change Text Options: Bottom, Show
+@>Set Move Route: Player
+ :              : $>Move Up
+ :              : $>Move Up
+ :              : $>Move Up
+ :              : $>Move Up
+ :              : $>Move Up
+ :              : $>Move Up
+ :              : $>Move Up
+@>Text: \w[dark]\c[12]\se[]\l[2]The four managed to slip back into the village
+ :    : while the moon was still in the sky.\wtnp[40]
+@>Text: \w[dark]\c[12]\se[]\l[4]Not a single soul was out patroling the southern half
+ :    : of the village. And most importantly, their parents
+ :    : were all still at home. Asleep.\wtnp[40]
+@>Text: \w[dark]\c[12]\se[]\l[4]To them, the night was a complete success. They
+ :    : achieved their goals and managed to make it back
+ :    : to the village safe and out of trouble.\wtnp[40]
+@>Text: \w[dark]\c[12]\se[]Sure, they had bumps getting to their end point, but
+ :    : as Maya put it:\wtnp[40]
+@>Text: \w[dark]\c[12]\se[]\l[2]<ac>"What great adventure doesn't have some twist
+ :    : and turns!"</ac>\wtnp[40]
+@>Change Screen Color Tone: (-255,-255,-255,0), @6
+@>Text: \w[dark]\c[12]\se[]\l[4]The four of them decided not to linger around the entrance,
+ :    : lest they be discovered...\| But not before Maya decided to
+ :    : propose the idea of another expedition.\wtnp[40]
+@>Wait: 6 frame(s)
+@>Transfer Player:[021: Ending Filler Map (Good) -2], (019,057), Left
+@>Set Event Location: [Kota],(016,056), Right
+@>Set Event Location: [Maya],(015,057), Right
+@>Set Event Location: [Shinji],(016,058), Right
+@>Wait: 6 frame(s)
+@>Change Screen Color Tone: (51,17,-34,255), @10
+@>Text: \w[dark]\c[12]\se[]\l[3]The four returned to their respective houses, all
+ :    : worn out from their eventful evening.\wtnp[40]
+@>Text: \w[dark]\c[12]\se[]\l[3]They made sure to walk the closest person back to
+ :    : their house, just to be on the safe side. The first
+ :    : to depart was \PN.\wtnp[40]
+@>Set Move Route: [Kota]
+ :              : $>Move Up
+ :              : $>Move Up
+ :              : $>Move Up
+ :              : $>Move Up
+ :              : $>Move Up
+ :              : $>Move Up
+ :              : $>Move Up
+ :              : $>Move Up
+@>Set Move Route: [Maya]
+ :              : $>Move Up
+ :              : $>Move Up
+ :              : $>Move Up
+ :              : $>Move Up
+ :              : $>Move Up
+ :              : $>Move Up
+ :              : $>Move Up
+ :              : $>Move Up
+@>Set Move Route: [Shinji]
+ :              : $>Move Up
+ :              : $>Move Up
+ :              : $>Move Up
+ :              : $>Move Up
+ :              : $>Move Up
+ :              : $>Move Up
+ :              : $>Move Up
+ :              : $>Move Up
+@>Text: \w[dark]\c[12]\se[]\l[4]\PN wished the remaining three, Kota, Maya, and Shinji,
+ :    : a decent evening and a good rest as they all went on
+ :    : their way home.\wtnp[40]
+@>Wait: 10 frame(s)
+@>Set Move Route: Player
+ :              : $>Move Right
+ :              : $>Move Right
+ :              : $>Move Down
+ :              : $>Move Down
+@>Wait for Move's Completion
+@>Wait: 5 frame(s)
+@>Change Screen Color Tone: (-255,-255,-255,0), @6
+@>Text: \w[dark]\c[12]\se[]\l[3]As they all departed to their respective homes, a
+ :    : similar thought was running through their minds.\wtnp[40]
+@>Text: \w[dark]\c[12]\se[]<ac>"<i>Another expedition, huh? I can't wait!</i>"</ac>\wtnp[40]
+@>Fade Out BGM: 2 sec.
+@>Wait: 50 frame(s)
+@>Change Text Options: Middle, Hide
+@>Text: \se[]\l[3]<ac>True End: The Thrill of Adventure\wt[30]\nCongratulations on getting the True End!</ac>\wtnp[40]
+@>Wait: 20 frame(s)
+@>Control Self Switch: A =ON
+@>
+
+Page #3
+Conditions
+Self Switch A is ON
+
+Autonomous Movement
+Type: Fixed
+Speed: 3: Slow
+Freq: 3: Low
+Options Enabled
+Move Animation
+Trigger: Autorun
+
+List of Event Commands:
+@>Script: $game_variables[1] = $GameSpeed
+:       : pbDisallowSpeedup
+:       : $GameSpeed = 0
+@>Fade Out BGM: 2 sec.
+@>Change Screen Color Tone: (-255,-255,-255,0), @20
+@>Wait: 20 frame(s)
+@>Change Transparent Flag: Transparency
+@>Script: pbShowPicture(1,"Credits/BGs/Gensokyo.png",1,256,192,zoomX=100,zoomY=100,opacity=0,blendType=0)
+@>Wait: 10 frame(s)
+@>Move Picture: 1, @10, Center (256,192), (100%,100%), 255, Normal
+@>Play BGM: 'W-014. Eternal Full Moon', 100, 100
+@>Wait: 10 frame(s)
+@>Script: CreditsIntro_TMoM.new
+@>Wait: 20 frame(s)
+@>Move Picture: 1, @10, Center (256,192), (100%,100%), 0, Normal
+@>Wait: 16 frame(s)
+@>Comment: --- Village Schoolhouse ---
+@>Transfer Player:[031: Credits - Village Schoolhouse], (008,009), Up
+@>Change Transparent Flag: Normal
+@>
+
+#------------------------------------------------------------------------------
+Event ID: 002
+Event Name: Kota
+(X,Y): (033,074)
+
+Page #1
+Conditions
+None
+
+Graphic: TPDP_NPC 03
+
+Autonomous Movement
+Type: Fixed
+Speed: 3: Slow
+Freq: 4: High
+Options Enabled
+Move Animation
+Trigger: Action Button
+
+List of Event Commands:
+@>
+
+#------------------------------------------------------------------------------
+Event ID: 003
+Event Name: Maya
+(X,Y): (034,075)
+
+Page #1
+Conditions
+None
+
+Graphic: TPDP_NPC 06
+
+Autonomous Movement
+Type: Fixed
+Speed: 3: Slow
+Freq: 3: Low
+Options Enabled
+Move Animation
+Trigger: Action Button
+
+List of Event Commands:
+@>
+
+#------------------------------------------------------------------------------
+Event ID: 004
+Event Name: Shinji
+(X,Y): (037,074)
+
+Page #1
+Conditions
+None
+
+Graphic: TPDP_NPC 01
+
+Autonomous Movement
+Type: Fixed
+Speed: 3: Slow
+Freq: 3: Low
+Options Enabled
+Move Animation
+Trigger: Action Button
+
+List of Event Commands:
+@>
+
+#------------------------------------------------------------------------------
+Event ID: 005
+Event Name: EV005
+(X,Y): (021,062)
+
+Page #1
+Conditions
+None
+
+Graphic: Doors_TPDP2
+
+Autonomous Movement
+Type: Fixed
+Speed: 3: Slow
+Freq: 3: Low
+Options Enabled
+Move Animation
+Direction Fix
+Trigger: Event Touch
+
+List of Event Commands:
+@>
+
+#------------------------------------------------------------------------------
 
 #==============================================================================
 Map ID: 022
@@ -20032,7 +20372,7 @@ List of Event Commands:
   :    : people would notice they went missing.\wtnp[40]
  @>Change Screen Color Tone: (-255,-255,-255,0), @6
  @>Wait: 6 frame(s)
- @>Transfer Player:[026: Stairs to Roof], (011,020), Up
+ @>Transfer Player:[030: Ending Filler Map (Bad)], (013,018), Up
  @>Change Screen Color Tone: (51,17,-34,255), @6
  @>
 : Else
@@ -21092,7 +21432,7 @@ List of Event Commands:
  :    : anywhere down here...
 @>Text: \xn[Nue]Oh you humans, you can't realize the obvious 
  :    : even when it's right underneath you!
-@>Text: \PN: Wha-\^
+@>Text: \xn[\pn]Wha-\^
 @>Text: \xn[Nue]Literally, right beneath you! This sigil we're 
  :    : standing on is a magic teleporter. It'll warp you to 
  :    : another part of the basement.
@@ -21635,7 +21975,7 @@ List of Event Commands:
  :    : anywhere down here...
 @>Text: \xn[Nue]Oh you humans, you can't realize the obvious 
  :    : even when it's right underneath you!
-@>Text: \PN: Wha-\^
+@>Text: \xn[\pn]Wha-\^
 @>Text: \xn[Nue]Literally, right beneath you! This sigil behind us is 
  :    : a magic teleporter. It'll warp you to another part of the 
  :    : basement.
@@ -22172,7 +22512,7 @@ Event Name: Engage: Kogasa
 
 Page #1
 Conditions
-None
+Variable 0107: TMoM Plot Variable is 15 or above
 
 Autonomous Movement
 Type: Fixed
@@ -22199,7 +22539,7 @@ List of Event Commands:
  @>Wait: 8 frame(s)
  @>Change Transparent Flag: Normal
  @>Transfer Player:[027: Basement], (069,092), Up, No Fade
- @>Change Screen Color Tone: (0,0,0,0), @6
+ @>Change Screen Color Tone: (-102,-102,-102,0), @6
  @>Set Move Route: Player
   :              : $>Move Up
   :              : $>Move Up
@@ -22207,85 +22547,103 @@ List of Event Commands:
   :              : $>Move Up
   :              : $>Move Up
  @>Wait for Move's Completion
- @>Wait: 10 frame(s)
- @>Show Animation: Player, [Question bubble]
- @>Wait: 5 frame(s)
- @>Text: \xn[\pn]There's... nobody here?
- @>Text: \xn[\pn]Is this another of Nue's tricks...?
- @>Wait: 20 frame(s)
- @>Text: \xn[???]Boo!
- @>Show Animation: Player, [Exclaim bubble]
- @>Text: \PN: What?\^
- @>Change Screen Color Tone: (-255,-255,-255,0), @6
- @>Wait: 8 frame(s)
- @>Script: pbSetSelfSwitch(6,"A",true)
- @>Control Switches: [0132] = ON
- @>Change Screen Color Tone: (-102,-102,-102,0), @6
- @>Wait: 6 frame(s)
- @>Text: \xn[???]Hehe, I scared you!
- @>Text: \xn[\pn]Startled is more like it! Enough people have snuck 
-  :    : up on me like that tonight that it's becoming overdone.
- @>Text: \xn[???]Aww, I was so sure that'd scare you...
- @>Wait: 20 frame(s)
- @>Show Animation: [Trainer(2)], [Exclaim bubble]
- @>Text: \xn[???]Hey wait, I know who you are! You're one of 
-  :    : those humans from upstairs earlier that was tagging 
-  :    : along with that half-ghost girl!
- @>Text: \xn[???]What was her name again... Oh right! Youmu 
-  :    : Konpaku!
- @>Text: \xn[\pn]Wait, she's half ghost...? Wouldn't that make it 
-  :    : odd for her to be scared of ghosts herself...
- @>Text: \xn[???]That's what I said~ I make a habit of learning 
-  :    : people's fears and trying to scare them. Scaring 
-  :    : humans is what sustains me!
- @>Text: \xn[???]And when I learned that Miss Konpaku was both half 
-  :    : human and half ghost, and terrified of ghosts, I just 
-  :    : had to find out what would happen if I scared her!
- @>Text: \xn[???]The meal wasn't as filling, but it was still delicious~!
- @>Text: \xn[\pn]So then you really are the one behind the 
-  :    : disturbances upstairs...
- @>Text: \xn[???]Just who are you anyway?
- @>Text: \xn[???]Just your friendly, neighboorhood karakasa~ 
-  :    : Kogasa!
- @>Text: \xn[Kogasa]Hey hey, tell me something.
- @>Text: \xn[Kogasa]You came here with your friends, right? Were any of 
-  :    : them scared by what I was doing?
- @>Text: \xn[\pn]I... I guess Kota was...? We normally split paths 
-  :    : so I can't vouch for anybody in specific.
- @>Text: \xn[\pn]This is oddly off top-\^
- @>Text: \xn[Kogasa]Hmm, well, what about you then?
- @>Wait: 20 frame(s)
- @>Text: \xn[\pn]...Me?
- @>Text: \xn[Kogasa]Yes, you! Were <i>you</i> scared tonight?
- @>Text: \xn[\pn]I read horror and thriller novels as a pass time. 
-  :    : The only thing that really scared me was Nue's... 
-  :    : anticts earlier.
- @>Text: \xn[Kogasa]Oh, boo! Even when I put together all this 
-  :    : work, I'm still unable to scare people!
- @>Text: \xn[\pn]If you really want to scare people, maybe you 
-  :    : should change your tactics...?
- @>Text: \xn[\pn]I mean, just popping into a room shouting "Boo!" isn't 
-  :    : going to scare the average person...
- @>Text: \xn[\pn]Unless that person is Kota, I guess.
- @>Wait: 20 frame(s)
- @>Text: \xn[Kogasa]That's...\| a brilliant idea! And I think I know 
-  :    : just how to do it too~
- @>Wait: 10 frame(s)
- @>Script: pbTrainerIntro(:KOGASA)
- @>Text: \xn[\pn]See! That look you're giving me is scary! I don't 
-  :    : like what it's implying!
- @>Text: \xn[Kogasa]Heehee, I know one thing that'll get you 
-  :    : screaming~! Something you've been doing since you 
-  :    : got here!
- @>Text: \xn[\pn]Oh fine! Let's just get this over with then, and 
-  :    : when I beat you, you pack up and leave the 
-  :    : inhabitants of this mansion alone!
- @>Text: \xn[Kogasa]That's if you beat me~
- @>Control Self Switch: A =ON
+ @>Conditional Branch: Self Switch A == OFF
+  @>Wait: 10 frame(s)
+  @>Show Animation: Player, [Question bubble]
+  @>Wait: 5 frame(s)
+  @>Text: \xn[\pn]There's... nobody here?
+  @>Text: \xn[\pn]Is this another of Nue's tricks...?
+  @>Wait: 20 frame(s)
+  @>Text: \xn[???]Boo!
+  @>Show Animation: Player, [Exclaim bubble]
+  @>Text: \PN: What?\^
+  @>Change Screen Color Tone: (-255,-255,-255,0), @6
+  @>Wait: 8 frame(s)
+  @>Script: pbSetSelfSwitch(29,"A",true)
+  @>Change Screen Color Tone: (-102,-102,-102,0), @6
+  @>Wait: 6 frame(s)
+  @>Text: \xn[???]Hehe, I scared you!
+  @>Text: \xn[\pn]Startled is more like it! Enough people have snuck 
+   :    : up on me like that tonight that it's becoming overdone.
+  @>Text: \xn[???]Aww, I was so sure that'd scare you...
+  @>Wait: 20 frame(s)
+  @>Show Animation: [Trainer(2)], [Exclaim bubble]
+  @>Text: \xn[???]Hey wait, I know who you are! You're one of 
+   :    : those humans from upstairs earlier that was tagging 
+   :    : along with that half-ghost girl!
+  @>Text: \xn[???]What was her name again... Oh right! Youmu 
+   :    : Konpaku!
+  @>Text: \xn[\pn]Wait, she's half ghost...? Wouldn't that make it 
+   :    : odd for her to be scared of ghosts herself...
+  @>Text: \xn[???]That's what I said~ I make a habit of learning 
+   :    : people's fears and trying to scare them. Scaring 
+   :    : humans is what sustains me!
+  @>Text: \xn[???]And when I learned that Miss Konpaku was both half 
+   :    : human and half ghost, and terrified of ghosts, I just 
+   :    : had to find out what would happen if I scared her!
+  @>Text: \xn[???]The meal wasn't as filling, but it was still delicious~!
+  @>Text: \xn[\pn]So then you really are the one behind the 
+   :    : disturbances upstairs...
+  @>Text: \xn[???]Just who are you anyway?
+  @>Text: \xn[???]Just your friendly, neighboorhood karakasa~ 
+   :    : Kogasa!
+  @>Text: \xn[Kogasa]Hey hey, tell me something.
+  @>Text: \xn[Kogasa]You came here with your friends, right? Were any of 
+   :    : them scared by what I was doing?
+  @>Text: \xn[\pn]I... I guess Kota was...? We normally split paths 
+   :    : so I can't vouch for anybody in specific.
+  @>Text: \xn[\pn]This is oddly off top-\^
+  @>Text: \xn[Kogasa]Hmm, well, what about you then?
+  @>Wait: 20 frame(s)
+  @>Text: \xn[\pn]...Me?
+  @>Text: \xn[Kogasa]Yes, you! Were <i>you</i> scared tonight?
+  @>Text: \xn[\pn]I read horror and thriller novels as a pass time. 
+   :    : The only thing that really scared me was Nue's... 
+   :    : anticts earlier.
+  @>Text: \xn[Kogasa]Oh, boo! Even when I put together all this 
+   :    : work, I'm still unable to scare people!
+  @>Text: \xn[\pn]If you really want to scare people, maybe you 
+   :    : should change your tactics...?
+  @>Text: \xn[\pn]I mean, just popping into a room shouting "Boo!" isn't 
+   :    : going to scare the average person...
+  @>Text: \xn[\pn]Unless that person is Kota, I guess.
+  @>Wait: 20 frame(s)
+  @>Text: \xn[Kogasa]That's...\| a brilliant idea! And I think I know 
+   :    : just how to do it too~
+  @>Wait: 10 frame(s)
+  @>Script: pbTrainerIntro(:KOGASA)
+  @>Text: \xn[\pn]See! That look you're giving me is scary! I don't 
+   :    : like what it's implying!
+  @>Text: \xn[Kogasa]Heehee, I know one thing that'll get you 
+   :    : screaming~! Something you've been doing since you 
+   :    : got here!
+  @>Text: \xn[\pn]Oh fine! Let's just get this over with then, and 
+   :    : when I beat you, you pack up and leave the 
+   :    : inhabitants of this mansion alone!
+  @>Text: \xn[Kogasa]That's if you beat me~
+  @>Control Self Switch: A =ON
+  @>
+ : Else
+  @>Text: \xn[Kogasa]Heehee, back for another scare session~?
+  @>Text: \xn[\pn]Hmm, well, you might wanna try a little harder 
+   :    : this time!
+  @>Text: \xn[\pn]After having been through so many battles tonight, 
+   :    : it's going to take a little more than that to faze me!
+  @>Text: \xn[Kogasa]Oh fooey! Can't you let me have just this 
+   :    : one~?
+  @>Text: \xn[\pn]You're gonna have to get good at scaring if you 
+   :    : wanna scare me~!
+  @>Text: \xn[\pn]\b(I feel really bad for heckling her like this...)
+  @>Text: \xn[\pn]\b(Though, this is somewhat cathartic after what Nue did!)
+  @>Script: pbTrainerIntro(:KOGASA)
+  @>Text: \xn[Kogasa]Fine then! I'll just have to try even harder 
+   :    : than before!
+  @>
+ : Branch End
  @>Comment: --- Pre-Battle Intro Setup
  @>Control Switches: [0104: Transition Handler] = ON
- @>Control Variables: [0103: Vs. Transition ID] = 6
- @>Control Variables: [0104: Vs. Transition - Pkmn] = 5
+ @>Control Variables: [0103: Vs. Transition ID] = 7
+ @>Control Variables: [0104: Vs. Transition - Pkmn] = 6
  @>Conditional Branch: Script: TrainerBattle.start(:KOGASA, "Kogasa Tatara", 10)
   @>
  : Else
@@ -22366,7 +22724,6 @@ List of Event Commands:
   @>Wait: 20 frame(s)
   @>Change Screen Color Tone: (51,17,-34,255), @10
   @>Play BGM: 'W-013. Evening Primrose', 100, 100
-  @>Change Text Options: Bottom, Hide
   @>Text: \w[dark]\c[12]\se[]\l[3]With their task finished, \PN began their journey
    :    : out of the basement, and up to the top floor once more.\wtnp[40]
   @>Change Screen Color Tone: (-255,-255,-255,0), @6
@@ -22375,7 +22732,7 @@ List of Event Commands:
    :    : sights of the mansion one more time- rather hurridly,
    :    : as they were still pressed for time.\wtnp[40]
   @>Wait: 6 frame(s)
-  @>Transfer Player:[029: Ending Filler Map (Good)], (006,005), Up
+  @>Transfer Player:[029: Ending Filler Map (Good)], (015,015), Up
   @>Change Screen Color Tone: (51,17,-34,255), @6
   @>
  : Branch End
@@ -22385,21 +22742,6 @@ List of Event Commands:
   :              : $>Move Down
  @>
 : Branch End
-@>
-
-Page #2
-Conditions
-Self Switch A is ON
-
-Autonomous Movement
-Type: Fixed
-Speed: 3: Slow
-Freq: 3: Low
-Options Enabled
-Move Animation
-Trigger: Action Button
-
-List of Event Commands:
 @>
 
 #------------------------------------------------------------------------------
@@ -22461,6 +22803,45 @@ List of Event Commands:
 @>
 
 #------------------------------------------------------------------------------
+Event ID: 033
+Event Name: EV033
+(X,Y): (034,084)
+
+Page #1
+Conditions
+None
+
+Autonomous Movement
+Type: Fixed
+Speed: 3: Slow
+Freq: 3: Low
+Options Enabled
+Move Animation
+Trigger: Action Button
+
+List of Event Commands:
+@>Script: $game_variables[1] = $GameSpeed
+:       : pbDisallowSpeedup
+:       : $GameSpeed = 0
+@>Fade Out BGM: 2 sec.
+@>Change Screen Color Tone: (-255,-255,-255,0), @20
+@>Wait: 20 frame(s)
+@>Change Transparent Flag: Transparency
+@>Script: pbShowPicture(1,"Credits/Gensokyo.png",1,256,192,zoomX=100,zoomY=100,opacity=0,blendType=0)
+@>Wait: 10 frame(s)
+@>Move Picture: 1, @10, Center (256,192), (100%,100%), 255, Normal
+@>Play BGM: 'W-014. Eternal Full Moon', 100, 100
+@>Wait: 10 frame(s)
+@>Script: CreditsIntro_TMoM.new
+@>Wait: 20 frame(s)
+@>Move Picture: 1, @10, Center (256,192), (100%,100%), 0, Normal
+@>Wait: 16 frame(s)
+@>Comment: --- Village Schoolhouse ---
+@>Transfer Player:[031: Credits - Village Schoolhouse], (008,009), Up
+@>Change Transparent Flag: Normal
+@>
+
+#------------------------------------------------------------------------------
 
 #==============================================================================
 Map ID: 028
@@ -22471,8 +22852,245 @@ Width: 20, Height: 15
 #==============================================================================
 Map ID: 029
 Map Name: Ending Filler Map (Good)
-Tileset: 004: Poke Center
-Width: 20, Height: 15
+Tileset: 037: Ruined Western Mansion
+Width: 31, Height: 31
+
+#------------------------------------------------------------------------------
+Event ID: 001
+Event Name: Lyrica
+(X,Y): (013,010)
+
+Page #1
+Conditions
+None
+
+Graphic: Person_Lyrica
+
+Autonomous Movement
+Type: Fixed
+Speed: 3: Slow
+Freq: 3: Low
+Options Enabled
+Move Animation
+Trigger: Action Button
+
+List of Event Commands:
+@>
+
+#------------------------------------------------------------------------------
+Event ID: 002
+Event Name: Lunasa
+(X,Y): (015,011)
+
+Page #1
+Conditions
+None
+
+Graphic: Person_Lunasa
+
+Autonomous Movement
+Type: Fixed
+Speed: 3: Slow
+Freq: 3: Low
+Options Enabled
+Move Animation
+Trigger: Action Button
+
+List of Event Commands:
+@>
+
+#------------------------------------------------------------------------------
+Event ID: 003
+Event Name: Merlin
+(X,Y): (017,010)
+
+Page #1
+Conditions
+None
+
+Graphic: Person_Merlin
+
+Autonomous Movement
+Type: Fixed
+Speed: 3: Slow
+Freq: 3: Low
+Options Enabled
+Move Animation
+Trigger: Action Button
+
+List of Event Commands:
+@>
+
+#------------------------------------------------------------------------------
+Event ID: 004
+Event Name: Shinji
+(X,Y): (011,014)
+
+Page #1
+Conditions
+None
+
+Graphic: TPDP_NPC 01
+
+Autonomous Movement
+Type: Fixed
+Speed: 3: Slow
+Freq: 3: Low
+Options Enabled
+Move Animation
+Trigger: Action Button
+
+List of Event Commands:
+@>
+
+#------------------------------------------------------------------------------
+Event ID: 005
+Event Name: Maya
+(X,Y): (012,016)
+
+Page #1
+Conditions
+None
+
+Graphic: TPDP_NPC 06
+
+Autonomous Movement
+Type: Fixed
+Speed: 3: Slow
+Freq: 3: Low
+Options Enabled
+Move Animation
+Trigger: Action Button
+
+List of Event Commands:
+@>
+
+#------------------------------------------------------------------------------
+Event ID: 006
+Event Name: Kota
+(X,Y): (019,014)
+
+Page #1
+Conditions
+None
+
+Graphic: TPDP_NPC 03
+
+Autonomous Movement
+Type: Fixed
+Speed: 3: Slow
+Freq: 4: High
+Options Enabled
+Move Animation
+Trigger: Action Button
+
+List of Event Commands:
+@>
+
+#------------------------------------------------------------------------------
+Event ID: 007
+Event Name: Youmu
+(X,Y): (018,016)
+
+Page #1
+Conditions
+None
+
+Graphic: Person_Youmu
+
+Autonomous Movement
+Type: Fixed
+Speed: 3: Slow
+Freq: 3: Low
+Options Enabled
+Move Animation
+Trigger: Action Button
+
+List of Event Commands:
+@>
+
+#------------------------------------------------------------------------------
+Event ID: 008
+Event Name: EV008
+(X,Y): (015,013)
+
+Page #1
+Conditions
+None
+
+Autonomous Movement
+Type: Fixed
+Speed: 3: Slow
+Freq: 3: Low
+Options Enabled
+Move Animation
+Trigger: Autorun
+
+List of Event Commands:
+@>Text: \w[dark]\c[12]\se[]\l[3]\PN returned to the performance hall and informed the
+ :    : Prismriver Sisters that the disturbance in the basement
+ :    : was handled.\wtnp[40]
+@>Text: \w[dark]\c[12]\se[]\l[3]With that load off their backs, the Sisters were able
+ :    : to resume their practice without any issues whatsoever.\wtnp[40]
+@>Set Move Route: [Shinji]
+ :              : $>Move Left
+ :              : $>Move Down
+ :              : $>Move Down
+ :              : $>Move Down
+ :              : $>Move Down
+ :              : $>Move Down
+ :              : $>Move Down
+ :              : $>Move Down
+ :              : $>Move Down
+ :              : $>Change Opacity: 0
+@>Set Move Route: [Maya]
+ :              : $>Move Left
+ :              : $>Move Down
+ :              : $>Move Down
+ :              : $>Move Down
+ :              : $>Move Down
+ :              : $>Move Down
+ :              : $>Move Down
+ :              : $>Move Down
+ :              : $>Change Opacity: 0
+@>Set Move Route: [Kota]
+ :              : $>Move Down
+ :              : $>Move Down
+ :              : $>Move Down
+ :              : $>Move Down
+ :              : $>Move Down
+ :              : $>Move Down
+ :              : $>Move Down
+ :              : $>Move Down
+ :              : $>Change Opacity: 0
+@>Text: \w[dark]\c[12]\se[]\l[4]With all of their affairs handled, and the goal of the
+ :    : night achieved, the group of four from the village
+ :    : said their farewells and made for their trip back
+ :    : home.\wtnp[40]
+@>Wait: 10 frame(s)
+@>Set Move Route: Player
+ :              : $>Move Left
+ :              : $>Move Left
+ :              : $>Move Left
+ :              : $>Move Left
+ :              : $>Move Down
+ :              : $>Move Down
+@>Wait: 17 frame(s)
+@>Change Screen Color Tone: (-255,-255,-255,0), @6
+@>Set Move Route: Player
+ :              : $>Move Down
+ :              : $>Move Down
+ :              : $>Move Down
+ :              : $>Move Down
+ :              : $>Move Down
+ :              : $>Move Down
+@>Wait: 6 frame(s)
+@>Wait: 6 frame(s)
+@>Transfer Player:[021: Ending Filler Map (Good) -2], (036,082), Up
+@>Change Screen Color Tone: (51,17,-34,255), @6
+@>
+
+#------------------------------------------------------------------------------
 
 #==============================================================================
 Map ID: 030
@@ -22686,14 +23304,205 @@ List of Event Commands:
 #==============================================================================
 Map ID: 031
 Map Name: Credits - Village Schoolhouse
-Tileset: 004: Poke Center
-Width: 20, Height: 15
+Tileset: 029: Interior (General)
+Width: 26, Height: 15
+
+#------------------------------------------------------------------------------
+Event ID: 001
+Event Name: Keine
+(X,Y): (001,007)
+
+Page #1
+Conditions
+None
+
+Graphic: Person_Keine
+
+Autonomous Movement
+Type: Fixed
+Speed: 2: Slower
+Freq: 3: Low
+Options Enabled
+Move Animation
+Trigger: Action Button
+
+List of Event Commands:
+@>
+
+#------------------------------------------------------------------------------
+Event ID: 002
+Event Name: Maya
+(X,Y): (008,005)
+
+Page #1
+Conditions
+None
+
+Graphic: TPDP_NPC 06
+
+Autonomous Movement
+Type: Fixed
+Speed: 3: Slow
+Freq: 3: Low
+Options Enabled
+Move Animation
+Trigger: Action Button
+
+List of Event Commands:
+@>
+
+#------------------------------------------------------------------------------
+Event ID: 003
+Event Name: Kota
+(X,Y): (011,005)
+
+Page #1
+Conditions
+None
+
+Graphic: TPDP_NPC 03
+
+Autonomous Movement
+Type: Fixed
+Speed: 3: Slow
+Freq: 4: High
+Options Enabled
+Move Animation
+Trigger: Action Button
+
+List of Event Commands:
+@>
+
+#------------------------------------------------------------------------------
+Event ID: 004
+Event Name: Shinji
+(X,Y): (011,009)
+
+Page #1
+Conditions
+None
+
+Graphic: TPDP_NPC 01
+
+Autonomous Movement
+Type: Fixed
+Speed: 3: Slow
+Freq: 3: Low
+Options Enabled
+Move Animation
+Trigger: Action Button
+
+List of Event Commands:
+@>
+
+#------------------------------------------------------------------------------
+Event ID: 005
+Event Name: EV005
+(X,Y): (007,009)
+
+Page #1
+Conditions
+None
+
+Autonomous Movement
+Type: Fixed
+Speed: 3: Slow
+Freq: 3: Low
+Options Enabled
+Move Animation
+Trigger: Autorun
+
+List of Event Commands:
+@>Script: pbShowPicture(1,"Credits/TMoM/BGs/BGVillage.png",1,256,192,zoomX=100,zoomY=100,opacity=0,blendType=0)
+@>Wait: 10 frame(s)
+@>Move Picture: 1, @10, Center (256,192), (100%,100%), 255, Normal
+@>Wait: 40 frame(s)
+@>Move Picture: 1, @10, Center (256,192), (100%,100%), 0, Normal
+@>Change Screen Color Tone: (0,0,0,0), @20
+@>Wait: 20 frame(s)
+@>Set Move Route: [Keine]
+ :              : $>Move Down
+ :              : $>Move Down
+ :              : $>Turn Left
+@>Wait: 25 frame(s)
+@>Show Animation: Player, [Exclaim bubble (No SE)]
+@>Wait: 10 frame(s)
+@>Show Animation: [Kota], [Question bubble (No SE)]
+@>Wait: 15 frame(s)
+@>Show Animation: [Shinji], [Question bubble (No SE)]
+@>Wait: 10 frame(s)
+@>Set Move Route: Player
+ :              : $>Turn Right
+@>Set Move Route: [Maya]
+ :              : $>Turn Right
+@>Set Move Route: [Kota]
+ :              : $>Turn Left
+@>Set Move Route: [Shinji]
+ :              : $>Turn Left
+@>Wait for Move's Completion
+@>Set Move Route: [Keine]
+ :              : $>Move Up
+ :              : $>Turn Left
+ :              : $>Wait: 10 frame(s)
+ :              : $>Move Up
+ :              : $>Move Up
+ :              : $>Turn Left
+@>Wait for Move's Completion
+@>Wait: 10 frame(s)
+@>Set Move Route: [Keine]
+ :              : $>Move Down
+ :              : $>Move Down
+@>Show Animation: [Shinji], [Exclaim bubble (No SE)]
+@>Show Animation: [Kota], [Exclaim bubble (No SE)]
+@>Set Move Route: [Kota]
+ :              : $>Turn Down
+@>Set Move Route: [Shinji]
+ :              : $>Turn Up
+@>Wait: 15 frame(s)
+@>Show Animation: [Keine], [Question bubble (No SE)]
+@>Wait: 14 frame(s)
+@>Show Animation: [Maya], [Exclaim bubble (No SE)]
+@>Show Animation: [Kota], [Exclaim bubble (No SE)]
+@>Show Animation: [Shinji], [Exclaim bubble (No SE)]
+@>Show Animation: Player, [Exclaim bubble (No SE)]
+@>Wait: 10 frame(s)
+@>Set Move Route: [Maya]
+ :              : $>Turn Left
+@>Set Move Route: [Kota]
+ :              : $>Turn Left
+@>Set Move Route: [Shinji]
+ :              : $>Turn Left
+@>Set Move Route: Player
+ :              : $>Turn Left
+@>Wait: 3 frame(s)
+@>Set Move Route: [Keine]
+ :              : $>Turn Right
+@>Wait: 35 frame(s)
+@>Set Move Route: [Keine]
+ :              : $>Turn Down
+ :              : $>Wait: 10 frame(s)
+ :              : $>Turn Left
+ :              : $>Wait: 20 frame(s)
+ :              : $>Turn Right
+ :              : $>Wait: 45 frame(s)
+ :              : $>Turn Left
+@>Wait for Move's Completion
+@>Show Picture: 1, 'black box', Upper Left (0,200), (100%,100%), 192, Normal
+@>Wait: 10 frame(s)
+@>Scroll Map: Down, 1, 2
+@>Change Screen Color Tone: (51,17,-34,255), @20
+@>Move Picture: 1, @40, Upper Left (0,0), (100%,100%), 192, Normal
+@>Control Variables: [0110: TMoM Credits Variable] = 1
+@>Call Common Event: TMoM Credits (Good End)
+@>
+
+#------------------------------------------------------------------------------
 
 #==============================================================================
 Map ID: 032
 Map Name: Credits - Misty Lake
-Tileset: 004: Poke Center
-Width: 20, Height: 15
+Tileset: 030: Misty Lake
+Width: 30, Height: 61
 
 #==============================================================================
 Map ID: 033
@@ -24047,6 +24856,69 @@ Common Event Name: Vs. Kogasa
 Trigger: None
 
 List of Event Commands:
+@>Comment: --- Pre-Battle Intro Setup
+@>Comment: -------------
+@>Change Screen Color Tone: (-255,-255,-255,0), @4
+@>Wait: 4 frame(s)
+@>Change Screen Color Tone: (-102,-102,-102,0), @4
+@>Wait: 4 frame(s)
+@>Change Screen Color Tone: (-255,-255,-255,0), @4
+@>Wait: 4 frame(s)
+@>Change Screen Color Tone: (-102,-102,-102,0), @4
+@>Wait: 8 frame(s)
+@>Comment: -------------
+@>Change Screen Color Tone: (-255,-255,-255,0), @6
+@>Wait: 6 frame(s)
+@>Script: pbShowPicture(4,"Transitions/Bars_Under.png",1,256,192,zoomX=100,zoomY=100,opacity=230,blendType=0)
+@>Script: pbShowPicture(20,"Transitions/Bars_Over.png",1,256,192,zoomX=100,zoomY=100,opacity=230,blendType=0)
+@>Move Picture: 5, @5, Center (256,192), (100%,100%), 230, Normal
+@>Wait: 5 frame(s)
+@>Script: pbShowPicture(1,"Transitions/BGs/BGBasement.png",1,256,192,100,100,0,0)
+@>Wait: 5 frame(s)
+@>Move Picture: 1, @5, Center (256,192), (100%,100%), 255, Normal
+@>Wait: 15 frame(s)
+@>Play SE: 'Vs flash', 80, 100
+@>Screen Flash: (255,255,255,255), @10
+@>Script: pbShowPicture(3,"Transitions/PTs/Char_KogasaS.png",1,256,192,zoomX=100,zoomY=100,opacity=255,blendType=0)
+@>Wait: 25 frame(s)
+@>Screen Flash: (255,255,255,255), @10
+@>Play SE: 'Vs sword', 80, 100
+@>Script: pbShowPicture(5,"Transitions/PTs/Char_Kogasa.png",1,256,192,zoomX=100,zoomY=100,opacity=255,blendType=0)
+@>Script: pbShowPicture(21,"Transitions/Names/Name_Kogasa.png",1,256,192,zoomX=100,zoomY=100,opacity=255,blendType=0)
+@>Move Picture: 3, @30, Center (250,192), (100%,100%), 255, Normal
+@>Call Common Event: Vs. Transition - Balls
+@>Wait: 60 frame(s)
+@>Move Picture: 1, @5, Center (256,192), (100%,100%), 0, Normal
+@>Move Picture: 20, @5, Center (256,192), (100%,100%), 0, Normal
+@>Move Picture: 3, @5, Center (252,192), (100%,100%), 0, Normal
+@>Move Picture: 4, @5, Center (256,192), (100%,100%), 0, Normal
+@>Move Picture: 5, @5, Center (256,192), (100%,100%), 0, Normal
+@>Move Picture: 21, @5, Center (256,192), (100%,100%), 0, Normal
+@>Change Picture Color Tone: 10, (-255,-255,-255,0), @5
+@>Change Picture Color Tone: 11, (-255,-255,-255,0), @5
+@>Change Picture Color Tone: 12, (-255,-255,-255,0), @5
+@>Change Picture Color Tone: 13, (-255,-255,-255,0), @5
+@>Change Picture Color Tone: 14, (-255,-255,-255,0), @5
+@>Change Picture Color Tone: 15, (-255,-255,-255,0), @5
+@>Change Picture Color Tone: 16, (-255,-255,-255,0), @5
+@>Wait: 6 frame(s)
+@>Erase Picture: 1
+@>Erase Picture: 20
+@>Erase Picture: 3
+@>Erase Picture: 4
+@>Erase Picture: 5
+@>Erase Picture: 21
+@>Erase Picture: 10
+@>Erase Picture: 11
+@>Erase Picture: 12
+@>Erase Picture: 13
+@>Erase Picture: 14
+@>Erase Picture: 15
+@>Erase Picture: 16
+@>Change Screen Color Tone: (-102,-102,-102,0), @10
+@>Comment: --- Pre-Battle Intro Conclusion
+@>Control Switches: [0104: Transition Handler] = OFF
+@>Control Switches: [0105: Temp Dark Circle Adjust] = OFF
 @>
 
 #==============================================================================
@@ -25103,6 +25975,38 @@ Common Event Name: TMoM Credits (Good End)
 Trigger: None
 
 List of Event Commands:
+@>Conditional Branch: Variable [0110: TMoM Credits Variable] == 1
+ @>Wait: 20 frame(s)
+ @>Script: pbShowPicture(3,"Credits/TMoM/Headers/1_AudComp.png",1,256,192,zoomX=100,zoomY=100,opacity=0,blendType=0)
+ @>Script: pbShowPicture(4,"Credits/TMoM/People/1_AudComp_1.png",1,256,192,zoomX=100,zoomY=100,opacity=0,blendType=0)
+ @>Wait: 40 frame(s)
+ @>Move Picture: 3, @15, Center (256,192), (100%,100%), 255, Normal
+ @>Wait: 50 frame(s)
+ @>Move Picture: 4, @15, Center (256,192), (100%,100%), 255, Normal
+ @>Wait: 120 frame(s)
+ @>Move Picture: 4, @15, Center (256,192), (100%,100%), 0, Normal
+ @>Wait: 20 frame(s)
+ @>Script: pbShowPicture(4,"Credits/TMoM/People/1_AudComp_2.png",1,256,192,zoomX=100,zoomY=100,opacity=0,blendType=0)
+ @>Wait: 50 frame(s)
+ @>Move Picture: 4, @15, Center (256,192), (100%,100%), 255, Normal
+ @>Wait: 120 frame(s)
+ @>Move Picture: 3, @15, Center (256,192), (100%,100%), 0, Normal
+ @>Move Picture: 4, @15, Center (256,192), (100%,100%), 0, Normal
+ @>Wait: 20 frame(s)
+ @>Script: pbShowPicture(3,"Credits/TMoM/Headers/2_SFX.png",1,256,192,zoomX=100,zoomY=100,opacity=0,blendType=0)
+ @>Script: pbShowPicture(4,"Credits/TMoM/People/2_SFX_1.png",1,256,192,zoomX=100,zoomY=100,opacity=0,blendType=0)
+ @>Wait: 40 frame(s)
+ @>Move Picture: 3, @15, Center (256,192), (100%,100%), 255, Normal
+ @>Wait: 50 frame(s)
+ @>Move Picture: 4, @15, Center (256,192), (100%,100%), 255, Normal
+ @>Wait: 120 frame(s)
+ @>Move Picture: 3, @15, Center (256,192), (100%,100%), 0, Normal
+ @>Move Picture: 4, @15, Center (256,192), (100%,100%), 0, Normal
+ @>Wait: 15 frame(s)
+ @>Move Picture: 2, @10, Upper Left (0,384), (100%,100%), 255, Normal
+ @>Change Screen Color Tone: (-255,-255,-255,0), @10
+ @>
+: Branch End
 @>
 
 #==============================================================================
@@ -25112,6 +26016,303 @@ Common Event Name: TFoC True Credits
 Trigger: None
 
 List of Event Commands:
+@>Script: $game_variables[1] = $GameSpeed
+:       : pbDisallowSpeedup
+:       : $GameSpeed = 0
+@>Fade Out BGM: 2 sec.
+@>Change Screen Color Tone: (-255,-255,-255,0), @20
+@>Wait: 20 frame(s)
+@>Change Transparent Flag: Transparency
+@>Script: pbShowPicture(1,"Credits/BGs/Gensokyo.png",1,256,192,zoomX=100,zoomY=100,opacity=0,blendType=0)
+@>Wait: 10 frame(s)
+@>Move Picture: 1, @10, Center (256,192), (100%,100%), 255, Normal
+@>Play BGM: 'U-001. Sakura, Sakura ~ Japanize Dream', 100, 100
+@>Wait: 10 frame(s)
+@>Script: CreditsIntro.new
+@>Wait: 20 frame(s)
+@>Move Picture: 1, @10, Center (256,192), (100%,100%), 0, Normal
+@>Wait: 16 frame(s)
+@>Comment: --- Human Village ---
+@>Transfer Player:[025: Performance Hall], (009,022)
+@>Script: pbShowPicture(1,"Credits/BGs/BGFestival.png",1,256,192,zoomX=100,zoomY=100,opacity=0,blendType=0)
+@>Wait: 10 frame(s)
+@>Move Picture: 1, @10, Center (256,192), (100%,100%), 255, Normal
+@>Wait: 40 frame(s)
+@>Move Picture: 1, @10, Center (256,192), (100%,100%), 0, Normal
+@>Change Screen Color Tone: (51,17,-34,255), @6
+@>Scroll Map: Right, 60, 2
+@>Script: pbShowPicture(2,"Credits/BGs/BGTransparent.png",0,0,384,zoomX=100,zoomY=100,opacity=255,blendType=0)
+@>Move Picture: 2, @10, Upper Left (0,240), (100%,100%), 255, Normal
+@>Wait: 20 frame(s)
+@>Script: pbShowPicture(3,"Credits/Headers/1_AudComp.png",1,256,192,zoomX=100,zoomY=100,opacity=0,blendType=0)
+@>Script: pbShowPicture(4,"Credits/People/1_AudComp_1.png",1,256,192,zoomX=100,zoomY=100,opacity=0,blendType=0)
+@>Wait: 40 frame(s)
+@>Move Picture: 3, @15, Center (256,192), (100%,100%), 255, Normal
+@>Wait: 50 frame(s)
+@>Move Picture: 4, @15, Center (256,192), (100%,100%), 255, Normal
+@>Wait: 120 frame(s)
+@>Move Picture: 3, @15, Center (256,192), (100%,100%), 0, Normal
+@>Move Picture: 4, @15, Center (256,192), (100%,100%), 0, Normal
+@>Wait: 20 frame(s)
+@>Script: pbShowPicture(3,"Credits/Headers/2_SFX.png",1,256,192,zoomX=100,zoomY=100,opacity=0,blendType=0)
+@>Script: pbShowPicture(4,"Credits/People/2_SFX_1.png",1,256,192,zoomX=100,zoomY=100,opacity=0,blendType=0)
+@>Wait: 40 frame(s)
+@>Move Picture: 3, @15, Center (256,192), (100%,100%), 255, Normal
+@>Wait: 50 frame(s)
+@>Move Picture: 4, @15, Center (256,192), (100%,100%), 255, Normal
+@>Wait: 120 frame(s)
+@>Move Picture: 3, @15, Center (256,192), (100%,100%), 0, Normal
+@>Move Picture: 4, @15, Center (256,192), (100%,100%), 0, Normal
+@>Wait: 20 frame(s)
+@>Script: pbShowPicture(3,"Credits/Headers/3_ProgDev.png",1,256,192,zoomX=100,zoomY=100,opacity=0,blendType=0)
+@>Script: pbShowPicture(4,"Credits/People/3_ProgDev_1.png",1,256,192,zoomX=100,zoomY=100,opacity=0,blendType=0)
+@>Wait: 40 frame(s)
+@>Move Picture: 3, @15, Center (256,192), (100%,100%), 255, Normal
+@>Wait: 50 frame(s)
+@>Move Picture: 4, @15, Center (256,192), (100%,100%), 255, Normal
+@>Wait: 120 frame(s)
+@>Move Picture: 3, @15, Center (256,192), (100%,100%), 0, Normal
+@>Move Picture: 4, @15, Center (256,192), (100%,100%), 0, Normal
+@>Wait: 20 frame(s)
+@>Script: pbShowPicture(3,"Credits/Headers/4_PlotMap.png",1,256,192,zoomX=100,zoomY=100,opacity=0,blendType=0)
+@>Script: pbShowPicture(4,"Credits/People/4_PlotMap_1.png",1,256,192,zoomX=100,zoomY=100,opacity=0,blendType=0)
+@>Wait: 40 frame(s)
+@>Move Picture: 3, @15, Center (256,192), (100%,100%), 255, Normal
+@>Wait: 50 frame(s)
+@>Move Picture: 4, @15, Center (256,192), (100%,100%), 255, Normal
+@>Wait: 120 frame(s)
+@>Move Picture: 3, @15, Center (256,192), (100%,100%), 0, Normal
+@>Move Picture: 4, @15, Center (256,192), (100%,100%), 0, Normal
+@>Wait: 15 frame(s)
+@>Move Picture: 2, @10, Upper Left (0,384), (100%,100%), 255, Normal
+@>Change Screen Color Tone: (-255,-255,-255,0), @10
+@>Wait: 10 frame(s)
+@>Script: $game_map.start_scroll(0,0,0)
+@>Wait: 16 frame(s)
+@>Comment: --- Misty Lake ---
+@>Transfer Player:[047: \PN's Room], (090,035)
+@>Script: pbShowPicture(1,"Credits/BGs/BGMistyLake.png",1,256,192,zoomX=100,zoomY=100,opacity=0,blendType=0)
+@>Wait: 10 frame(s)
+@>Move Picture: 1, @10, Center (256,192), (100%,100%), 255, Normal
+@>Wait: 40 frame(s)
+@>Move Picture: 1, @10, Center (256,192), (100%,100%), 0, Normal
+@>Change Screen Color Tone: (51,17,-34,255), @6
+@>Scroll Map: Left, 80, 2
+@>Script: pbShowPicture(2,"Credits/BGs/BGTransparent.png",0,0,384,zoomX=100,zoomY=100,opacity=255,blendType=0)
+@>Move Picture: 2, @10, Upper Left (0,240), (100%,100%), 255, Normal
+@>Wait: 20 frame(s)
+@>Script: pbShowPicture(3,"Credits/Headers/5_Species.png",1,256,192,zoomX=100,zoomY=100,opacity=0,blendType=0)
+@>Script: pbShowPicture(4,"Credits/People/5_Species_1.png",1,256,192,zoomX=100,zoomY=100,opacity=0,blendType=0)
+@>Wait: 40 frame(s)
+@>Move Picture: 3, @15, Center (256,192), (100%,100%), 255, Normal
+@>Wait: 50 frame(s)
+@>Move Picture: 4, @15, Center (256,192), (100%,100%), 255, Normal
+@>Wait: 120 frame(s)
+@>Move Picture: 4, @15, Center (256,192), (100%,100%), 0, Normal
+@>Wait: 20 frame(s)
+@>Script: pbShowPicture(4,"Credits/People/5_Species_2.png",1,256,192,zoomX=100,zoomY=100,opacity=0,blendType=0)
+@>Wait: 50 frame(s)
+@>Move Picture: 4, @15, Center (256,192), (100%,100%), 255, Normal
+@>Wait: 120 frame(s)
+@>Move Picture: 3, @15, Center (256,192), (100%,100%), 0, Normal
+@>Move Picture: 4, @15, Center (256,192), (100%,100%), 0, Normal
+@>Wait: 20 frame(s)
+@>Script: pbShowPicture(3,"Credits/Headers/6_Origins.png",1,256,192,zoomX=100,zoomY=100,opacity=0,blendType=0)
+@>Script: pbShowPicture(4,"Credits/People/6_Origins_1.png",1,256,192,zoomX=100,zoomY=100,opacity=0,blendType=0)
+@>Wait: 40 frame(s)
+@>Move Picture: 3, @15, Center (256,192), (100%,100%), 255, Normal
+@>Wait: 50 frame(s)
+@>Move Picture: 4, @15, Center (256,192), (100%,100%), 255, Normal
+@>Wait: 120 frame(s)
+@>Move Picture: 3, @15, Center (256,192), (100%,100%), 0, Normal
+@>Move Picture: 4, @15, Center (256,192), (100%,100%), 0, Normal
+@>Wait: 15 frame(s)
+@>Move Picture: 2, @10, Upper Left (0,384), (100%,100%), 255, Normal
+@>Change Screen Color Tone: (-255,-255,-255,0), @10
+@>Wait: 10 frame(s)
+@>Script: $game_map.start_scroll(0,0,0)
+@>Wait: 16 frame(s)
+@>Comment: --- Great Youkai Forest ---
+@>Transfer Player:[026: Stairs to Roof], (030,071)
+@>Script: pbShowPicture(1,"Credits/BGs/BGYoukaiWoods1.png",1,256,192,zoomX=100,zoomY=100,opacity=0,blendType=0)
+@>Wait: 10 frame(s)
+@>Move Picture: 1, @10, Center (256,192), (100%,100%), 255, Normal
+@>Wait: 40 frame(s)
+@>Move Picture: 1, @10, Center (256,192), (100%,100%), 0, Normal
+@>Change Screen Color Tone: (51,17,-34,255), @6
+@>Scroll Map: Up, 60, 2
+@>Script: pbShowPicture(2,"Credits/BGs/BGTransparent.png",0,0,384,zoomX=100,zoomY=100,opacity=255,blendType=0)
+@>Move Picture: 2, @10, Upper Left (0,240), (100%,100%), 255, Normal
+@>Wait: 20 frame(s)
+@>Script: pbShowPicture(3,"Credits/Headers/7_Art.png",1,256,192,zoomX=100,zoomY=100,opacity=0,blendType=0)
+@>Script: pbShowPicture(4,"Credits/People/7_Art_1.png",1,256,192,zoomX=100,zoomY=100,opacity=0,blendType=0)
+@>Wait: 40 frame(s)
+@>Move Picture: 3, @15, Center (256,192), (100%,100%), 255, Normal
+@>Wait: 50 frame(s)
+@>Move Picture: 4, @15, Center (256,192), (100%,100%), 255, Normal
+@>Wait: 120 frame(s)
+@>Move Picture: 4, @15, Center (256,192), (100%,100%), 0, Normal
+@>Wait: 20 frame(s)
+@>Script: pbShowPicture(4,"Credits/People/7_Art_2.png",1,256,192,zoomX=100,zoomY=100,opacity=0,blendType=0)
+@>Wait: 50 frame(s)
+@>Move Picture: 4, @15, Center (256,192), (100%,100%), 255, Normal
+@>Wait: 120 frame(s)
+@>Move Picture: 4, @15, Center (256,192), (100%,100%), 0, Normal
+@>Wait: 20 frame(s)
+@>Script: pbShowPicture(4,"Credits/People/7_Art_3.png",1,256,192,zoomX=100,zoomY=100,opacity=0,blendType=0)
+@>Wait: 50 frame(s)
+@>Move Picture: 4, @15, Center (256,192), (100%,100%), 255, Normal
+@>Wait: 120 frame(s)
+@>Move Picture: 4, @15, Center (256,192), (100%,100%), 0, Normal
+@>Wait: 20 frame(s)
+@>Script: pbShowPicture(4,"Credits/People/7_Art_4.png",1,256,192,zoomX=100,zoomY=100,opacity=0,blendType=0)
+@>Wait: 50 frame(s)
+@>Move Picture: 4, @15, Center (256,192), (100%,100%), 255, Normal
+@>Wait: 120 frame(s)
+@>Move Picture: 4, @15, Center (256,192), (100%,100%), 0, Normal
+@>Wait: 20 frame(s)
+@>Script: pbShowPicture(4,"Credits/People/7_Art_5.png",1,256,192,zoomX=100,zoomY=100,opacity=0,blendType=0)
+@>Wait: 50 frame(s)
+@>Move Picture: 4, @15, Center (256,192), (100%,100%), 255, Normal
+@>Wait: 120 frame(s)
+@>Move Picture: 3, @15, Center (256,192), (100%,100%), 0, Normal
+@>Move Picture: 4, @15, Center (256,192), (100%,100%), 0, Normal
+@>Wait: 15 frame(s)
+@>Move Picture: 2, @10, Upper Left (0,384), (100%,100%), 255, Normal
+@>Change Screen Color Tone: (-255,-255,-255,0), @10
+@>Wait: 10 frame(s)
+@>Script: $game_map.start_scroll(0,0,0)
+@>Wait: 16 frame(s)
+@>Comment: --- Suzuran Field ---
+@>Transfer Player:[028: Roof], (009,014)
+@>Script: pbShowPicture(1,"Credits/BGs/BGSuzuran.png",1,256,192,zoomX=100,zoomY=100,opacity=0,blendType=0)
+@>Wait: 10 frame(s)
+@>Move Picture: 1, @10, Center (256,192), (100%,100%), 255, Normal
+@>Wait: 40 frame(s)
+@>Move Picture: 1, @10, Center (256,192), (100%,100%), 0, Normal
+@>Change Screen Color Tone: (51,17,-34,255), @6
+@>Scroll Map: Right, 50, 2
+@>Script: pbShowPicture(2,"Credits/BGs/BGTransparent.png",0,0,384,zoomX=100,zoomY=100,opacity=255,blendType=0)
+@>Move Picture: 2, @10, Upper Left (0,240), (100%,100%), 255, Normal
+@>Wait: 20 frame(s)
+@>Move Picture: 2, @10, Upper Left (0,240), (100%,100%), 255, Normal
+@>Wait: 20 frame(s)
+@>Script: pbShowPicture(3,"Credits/Headers/8_Scripts.png",1,256,192,zoomX=100,zoomY=100,opacity=0,blendType=0)
+@>Script: pbShowPicture(4,"Credits/People/8_Scripts_1.png",1,256,192,zoomX=100,zoomY=100,opacity=0,blendType=0)
+@>Wait: 40 frame(s)
+@>Move Picture: 3, @15, Center (256,192), (100%,100%), 255, Normal
+@>Wait: 50 frame(s)
+@>Move Picture: 4, @15, Center (256,192), (100%,100%), 255, Normal
+@>Wait: 120 frame(s)
+@>Move Picture: 4, @15, Center (256,192), (100%,100%), 0, Normal
+@>Wait: 20 frame(s)
+@>Script: pbShowPicture(4,"Credits/People/8_Scripts_2.png",1,256,192,zoomX=100,zoomY=100,opacity=0,blendType=0)
+@>Wait: 50 frame(s)
+@>Move Picture: 4, @15, Center (256,192), (100%,100%), 255, Normal
+@>Wait: 120 frame(s)
+@>Move Picture: 4, @15, Center (256,192), (100%,100%), 0, Normal
+@>Wait: 20 frame(s)
+@>Script: pbShowPicture(4,"Credits/People/8_Scripts_3.png",1,256,192,zoomX=100,zoomY=100,opacity=0,blendType=0)
+@>Wait: 50 frame(s)
+@>Move Picture: 4, @15, Center (256,192), (100%,100%), 255, Normal
+@>Wait: 120 frame(s)
+@>Move Picture: 3, @15, Center (256,192), (100%,100%), 0, Normal
+@>Move Picture: 4, @15, Center (256,192), (100%,100%), 0, Normal
+@>Wait: 15 frame(s)
+@>Move Picture: 2, @10, Upper Left (0,384), (100%,100%), 255, Normal
+@>Change Screen Color Tone: (-255,-255,-255,0), @10
+@>Wait: 10 frame(s)
+@>Script: $game_map.start_scroll(0,0,0)
+@>Wait: 16 frame(s)
+@>Comment: --- Human Village ---
+@>Transfer Player:[029: Ending Filler Map (Good)], (023,009)
+@>Script: pbShowPicture(1,"Credits/BGs/BGVillage.png",1,256,192,zoomX=100,zoomY=100,opacity=0,blendType=0)
+@>Wait: 10 frame(s)
+@>Move Picture: 1, @10, Center (256,192), (100%,100%), 255, Normal
+@>Wait: 40 frame(s)
+@>Move Picture: 1, @10, Center (256,192), (100%,100%), 0, Normal
+@>Change Screen Color Tone: (51,17,-34,255), @6
+@>Scroll Map: Down, 53, 1
+@>Script: pbShowPicture(2,"Credits/BGs/BGTransparent.png",0,0,384,zoomX=100,zoomY=100,opacity=255,blendType=0)
+@>Move Picture: 2, @10, Upper Left (0,240), (100%,100%), 255, Normal
+@>Wait: 20 frame(s)
+@>Script: pbShowPicture(3,"Credits/Headers/9_Director.png",1,256,192,zoomX=100,zoomY=100,opacity=0,blendType=0)
+@>Script: pbShowPicture(4,"Credits/People/9_Director_1.png",1,256,192,zoomX=100,zoomY=100,opacity=0,blendType=0)
+@>Wait: 40 frame(s)
+@>Move Picture: 3, @15, Center (256,192), (100%,100%), 255, Normal
+@>Wait: 70 frame(s)
+@>Move Picture: 4, @15, Center (256,192), (100%,100%), 255, Normal
+@>Wait: 120 frame(s)
+@>Move Picture: 3, @15, Center (256,192), (100%,100%), 0, Normal
+@>Move Picture: 4, @15, Center (256,192), (100%,100%), 0, Normal
+@>Wait: 20 frame(s)
+@>Script: pbShowPicture(3,"Credits/Headers/10_Thanks.png",1,256,192,zoomX=100,zoomY=100,opacity=0,blendType=0)
+@>Script: pbShowPicture(4,"Credits/People/10_Thanks_1.png",1,256,192,zoomX=100,zoomY=100,opacity=0,blendType=0)
+@>Wait: 40 frame(s)
+@>Move Picture: 3, @15, Center (256,192), (100%,100%), 255, Normal
+@>Wait: 70 frame(s)
+@>Move Picture: 4, @15, Center (256,192), (100%,100%), 255, Normal
+@>Wait: 120 frame(s)
+@>Move Picture: 4, @15, Center (256,192), (100%,100%), 0, Normal
+@>Wait: 20 frame(s)
+@>Script: pbShowPicture(4,"Credits/People/10_Thanks_2.png",1,256,192,zoomX=100,zoomY=100,opacity=0,blendType=0)
+@>Wait: 70 frame(s)
+@>Move Picture: 4, @15, Center (256,192), (100%,100%), 255, Normal
+@>Wait: 120 frame(s)
+@>Move Picture: 4, @15, Center (256,192), (100%,100%), 0, Normal
+@>Wait: 20 frame(s)
+@>Script: pbShowPicture(4,"Credits/People/10_Thanks_3.png",1,256,192,zoomX=100,zoomY=100,opacity=0,blendType=0)
+@>Wait: 70 frame(s)
+@>Move Picture: 4, @15, Center (256,192), (100%,100%), 255, Normal
+@>Wait: 120 frame(s)
+@>Move Picture: 4, @15, Center (256,192), (100%,100%), 0, Normal
+@>Wait: 20 frame(s)
+@>Script: pbShowPicture(4,"Credits/People/10_Thanks_4.png",1,256,192,zoomX=100,zoomY=100,opacity=0,blendType=0)
+@>Wait: 70 frame(s)
+@>Move Picture: 4, @15, Center (256,192), (100%,100%), 255, Normal
+@>Wait: 120 frame(s)
+@>Move Picture: 4, @15, Center (256,192), (100%,100%), 0, Normal
+@>Wait: 20 frame(s)
+@>Script: pbShowPicture(4,"Credits/People/10_Thanks_5.png",1,256,192,zoomX=100,zoomY=100,opacity=0,blendType=0)
+@>Wait: 70 frame(s)
+@>Move Picture: 4, @15, Center (256,192), (100%,100%), 255, Normal
+@>Wait: 120 frame(s)
+@>Move Picture: 4, @15, Center (256,192), (100%,100%), 0, Normal
+@>Wait: 20 frame(s)
+@>Script: pbShowPicture(4,"Credits/People/10_Thanks_6.png",1,256,192,zoomX=100,zoomY=100,opacity=0,blendType=0)
+@>Wait: 100 frame(s)
+@>Move Picture: 4, @15, Center (256,192), (100%,100%), 255, Normal
+@>Wait: 300 frame(s)
+@>Move Picture: 3, @15, Center (256,192), (100%,100%), 0, Normal
+@>Move Picture: 4, @15, Center (256,192), (100%,100%), 0, Normal
+@>Wait: 15 frame(s)
+@>Move Picture: 2, @10, Upper Left (0,384), (100%,100%), 255, Normal
+@>Wait: 40 frame(s)
+@>Change Screen Color Tone: (-255,-255,-255,0), @10
+@>Wait: 10 frame(s)
+@>Script: $game_map.start_scroll(0,0,0)
+@>Wait: 16 frame(s)
+@>Comment: --- The End
+@>Transfer Player:[030: Ending Filler Map (Bad)], (015,013)
+@>Wait: 50 frame(s)
+@>Change Screen Color Tone: (51,17,-34,255), @6
+@>Fade Out BGM: 23 sec.
+@>Wait: 20 frame(s)
+@>Script: CreditsOutro.new
+@>Wait: 10 frame(s)
+@>Change Screen Color Tone: (-255,-255,-255,0), @40
+@>Wait: 40 frame(s)
+@>Script: CreditsFin.new
+@>Wait: 40 frame(s)
+@>Change Text Options: Middle, Hide
+@>Text: \se[]\l[4]You will now be returned to the Title Screen. 
+ :    : When you resume the game, you will be at your last 
+ :    : save point.
+@>Change Text Options: Bottom, Show
+@>Control Switches: [0112: Met Nue] = OFF
+@>Script: pbAllowSpeedup
+:       : $GameSpeed = pbGet(1)
+@>Return to Title Screen
 @>
 
 #==============================================================================
