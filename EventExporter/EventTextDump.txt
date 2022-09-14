@@ -16483,7 +16483,7 @@ List of Event Commands:
  :    : and turns!"</ac>\wtnp[40]
 @>Change Screen Color Tone: (-255,-255,-255,0), @6
 @>Text: \w[dark]\c[12]\se[]\l[4]The four of them decided not to linger around the entrance,
- :    : lest they be discovered...\| But not before Maya decided to
+ :    : lest they be discovered\..\..\..\| But not before Maya decided to
  :    : propose the idea of another expedition.\wtnp[40]
 @>Wait: 6 frame(s)
 @>Transfer Player:[021: Ending Filler Map (Good) -2], (019,057), Left
@@ -16524,11 +16524,12 @@ List of Event Commands:
  :              : $>Move Up
  :              : $>Move Up
  :              : $>Move Up
-@>Text: \w[dark]\c[12]\se[]\l[4]\PN wished the remaining three, Kota, Maya, and Shinji,
+@>Text: \w[dark]\c[12]\se[]\l[3]\PN wished her departing friends,
  :    : a decent evening and a good rest as they all went on
  :    : their way home.\wtnp[40]
 @>Wait: 10 frame(s)
 @>Set Move Route: Player
+ :              : $>Move Right
  :              : $>Move Right
  :              : $>Move Right
  :              : $>Move Down
@@ -16538,11 +16539,11 @@ List of Event Commands:
 @>Change Screen Color Tone: (-255,-255,-255,0), @6
 @>Text: \w[dark]\c[12]\se[]\l[3]As they all departed to their respective homes, a
  :    : similar thought was running through their minds.\wtnp[40]
-@>Text: \w[dark]\c[12]\se[]<ac>"<i>Another expedition, huh? I can't wait!</i>"</ac>\wtnp[40]
+@>Text: \w[dark]\c[12]\se[]<ac>"<i>Another expedition, huh?\wt[15] I can't wait!</i>"</ac>\wtnp[40]
 @>Fade Out BGM: 2 sec.
 @>Wait: 50 frame(s)
 @>Change Text Options: Middle, Hide
-@>Text: \se[]\l[3]<ac>True End: The Thrill of Adventure\wt[30]\nCongratulations on getting the True End!</ac>\wtnp[40]
+@>Text: \se[]\l[3]<ac>Good End: The Thrill of Adventure\wt[30]\nCongratulations on completing the game!</ac>\wtnp[40]
 @>Wait: 20 frame(s)
 @>Control Self Switch: A =ON
 @>
@@ -16567,10 +16568,10 @@ List of Event Commands:
 @>Change Screen Color Tone: (-255,-255,-255,0), @20
 @>Wait: 20 frame(s)
 @>Change Transparent Flag: Transparency
-@>Script: pbShowPicture(1,"Credits/BGs/Gensokyo.png",1,256,192,zoomX=100,zoomY=100,opacity=0,blendType=0)
+@>Script: pbShowPicture(1,"Credits/Gensokyo.png",1,256,192,zoomX=100,zoomY=100,opacity=0,blendType=0)
 @>Wait: 10 frame(s)
 @>Move Picture: 1, @10, Center (256,192), (100%,100%), 255, Normal
-@>Play BGM: 'W-014. Eternal Full Moon', 100, 100
+@>Play BGM: 'W-015. Eternal Fullmoon (Good End)', 100, 100
 @>Wait: 10 frame(s)
 @>Script: CreditsIntro_TMoM.new
 @>Wait: 20 frame(s)
@@ -20610,9 +20611,10 @@ Trigger: Event Touch
 
 List of Event Commands:
 @>Script: pbTrainerIntro(:FAIRY2)
-@>Script: Kernel.pbNoticePlayer(get_character(0))
+@>Script: pbNoticePlayer(get_self)
 @>Text: Hello, hello! You're here to see my super special Puppet, right?
-@>Conditional Branch: Script: pbTrainerBattle(:FAIRY2,"Mari",_I("Eh? That's not a Puppet? What do you mean?"))
+@>Comment: EndSpeech: Eh? That's not a Puppet? What do you mean?
+@>Conditional Branch: Script: TrainerBattle.start(:FAIRY2, "Mari")
  @>Control Self Switch: A =ON
  @>
 : Branch End
@@ -20658,9 +20660,10 @@ Trigger: Event Touch
 
 List of Event Commands:
 @>Script: pbTrainerIntro(:FAIRY1)
-@>Script: Kernel.pbNoticePlayer(get_character(0))
+@>Script: pbNoticePlayer(get_self)
 @>Text: We stand united, for the Sisterhood! Defeat doesn't scare me.
-@>Conditional Branch: Script: pbTrainerBattle(:FAIRY1,"Oxanna",_I("Dead and back, trainer. Dead and back."))
+@>Comment: EndSpeech: Dead and back, trainer. Dead and back.
+@>Conditional Branch: Script: TrainerBattle.start(:FAIRY1, "Oxanna")
  @>Control Self Switch: A =ON
  @>
 : Branch End
@@ -20706,9 +20709,10 @@ Trigger: Event Touch
 
 List of Event Commands:
 @>Script: pbTrainerIntro(:FAIRY1)
-@>Script: Kernel.pbNoticePlayer(get_character(0))
+@>Script: pbNoticePlayer(get_self)
 @>Text: My Puppet rocks! Wanna see why?
-@>Conditional Branch: Script: pbTrainerBattle(:FAIRY1,"Stella",_I("I've hit rock bottom!"))
+@>Comment: EndSpeech: I've hit rock bottom!
+@>Conditional Branch: Script: TrainerBattle.start(:FAIRY1, "Stella")
  @>Control Self Switch: A =ON
  @>
 : Branch End
@@ -20754,9 +20758,10 @@ Trigger: Event Touch
 
 List of Event Commands:
 @>Script: pbTrainerIntro(:FAIRY1)
-@>Script: Kernel.pbNoticePlayer(get_character(0))
+@>Script: pbNoticePlayer(get_self)
 @>Text: Those other Puppets are just imitations. Mine are the real deal!
-@>Conditional Branch: Script: pbTrainerBattle(:FAIRY1,"Suigintou",_I("No! My strings have been cut!")
+@>Comment: EndSpeech: No! My strings have been cut!"
+@>Conditional Branch: Script: TrainerBattle.start(:FAIRY1, "Suigintou")
  @>Control Self Switch: A =ON
  @>
 : Branch End
@@ -20802,9 +20807,10 @@ Trigger: Event Touch
 
 List of Event Commands:
 @>Script: TrainerIntro2(:FAIRY2)
-@>Script: Kernel.pbNoticePlayer(get_character(0))
+@>Script: pbNoticePlayer(get_self)
 @>Text: Look at my Puppet's uniform! Isn't it fancy and official?
-@>Conditional Branch: Script: pbTrainerBattle(:FAIRY2,"Watanabe",_I("I wish uniforms were more help during Puppet battles..."))
+@>Comment: EndSpeech: I wish uniforms were more help during Puppet battles...
+@>Conditional Branch: Script: TrainerBattle.start(:FAIRY2, "Watanabe")
  @>Control Self Switch: A =ON
  @>
 : Branch End
@@ -20850,9 +20856,10 @@ Trigger: Event Touch
 
 List of Event Commands:
 @>Script: pbTrainerIntro(:FAIRY2)
-@>Script: Kernel.pbNoticePlayer(get_character(0))
+@>Script: pbNoticePlayer(get_self)
 @>Text: Flowers are love! Flowers are justice!
-@>Conditional Branch: Script: pbTrainerBattle(:FAIRY2,"Rafania",_I("Aaah, my fighting spirit wilted..."))
+@>Comment: EndSpeech: Aaah, my fighting spirit wilted...
+@>Conditional Branch: Script: TrainerBattle.start(:FAIRY2, "Rafania")
  @>Control Self Switch: A =ON
  @>
 : Branch End
@@ -20898,9 +20905,10 @@ Trigger: Event Touch
 
 List of Event Commands:
 @>Script: pbTrainerIntro(:FAIRY1)
-@>Script: Kernel.pbNoticePlayer(get_character(0))
+@>Script: pbNoticePlayer(get_self)
 @>Text: Hidden away in a dark, forgotten basement...is a totally awesome fairy trainer!
-@>Conditional Branch: Script: pbTrainerBattle(:FAIRY1,"Nayuki",_I("Does this mean I'm not awesome enough?"))
+@>Comment: EndSpeech: Does this mean I'm not awesome enough?
+@>Conditional Branch: Script: TrainerBattle.start(:FAIRY1, "Nayuki")
  @>Control Self Switch: A =ON
  @>
 : Branch End
@@ -20946,9 +20954,10 @@ Trigger: Event Touch
 
 List of Event Commands:
 @>Script: pbTrainerIntro(:FAIRY1)
-@>Script: Kernel.pbNoticePlayer(get_character(0))
+@>Script: pbNoticePlayer(get_self)
 @>Text: Who likes being strong?
-@>Conditional Branch: Script: pbTrainerBattle(:FAIRY1,"Ayame",_I("So powerful!"))
+@>Comment: EndSpeech: So powerful!
+@>Conditional Branch: Script: TrainerBattle.start(:FAIRY1, "Ayame")
  @>Control Self Switch: A =ON
  @>
 : Branch End
@@ -20994,9 +21003,10 @@ Trigger: Event Touch
 
 List of Event Commands:
 @>Script: pbTrainerIntro(:FAIRY1)
-@>Script: Kernel.pbNoticePlayer(get_character(0))
+@>Script: pbNoticePlayer(get_self)
 @>Text: We like being strong!
-@>Conditional Branch: Script: pbTrainerBattle(:FAIRY1,"Mikoto",_I("Too much!"))
+@>Comment: EndSpeech: Too much!
+@>Conditional Branch: Script: TrainerBattle.start(:FAIRY1, "Mikoto")
  @>Control Self Switch: A =ON
  @>
 : Branch End
@@ -21042,9 +21052,10 @@ Trigger: Event Touch
 
 List of Event Commands:
 @>Script: pbTrainerIntro(:FAIRY2)
-@>Script: Kernel.pbNoticePlayer(get_character(0))
+@>Script: pbNoticePlayer(get_self)
 @>Text: Ready to get your feet wet with a battle?
-@>Conditional Branch: Script: pbTrainerBattle(:FAIRY2,"Kanan",_I("I'm the one who got washed out!"))
+@>Comment: EndSpeech: I'm the one who got washed out!
+@>Conditional Branch: Script: TrainerBattle.start(:FAIRY2, "Kanan")
  @>Control Self Switch: A =ON
  @>
 : Branch End
@@ -21090,9 +21101,10 @@ Trigger: Event Touch
 
 List of Event Commands:
 @>Script: pbTrainerIntro(:FAIRY1)
-@>Script: Kernel.pbNoticePlayer(get_character(0))
+@>Script: pbNoticePlayer(get_self)
 @>Text: You think you can beat my team? Say your prayers!
-@>Conditional Branch: Script: pbTrainerBattle(:FAIRY1,"Paula",_I("My hopes have been shot down! They're earth-bound!"))
+@>Comment: EndSpeech: My hopes have been shot down! They're earth-bound!
+@>Conditional Branch: Script: TrainerBattle.start(:FAIRY1, "Paula")
  @>Control Self Switch: A =ON
  @>
 : Branch End
@@ -21138,9 +21150,10 @@ Trigger: Event Touch
 
 List of Event Commands:
 @>Script: pbTrainerIntro(:FAIRY3)
-@>Script: Kernel.pbNoticePlayer(get_character(0))
+@>Script: pbNoticePlayer(get_self)
 @>Text: What's that? You want me to just let you past? Too bad~
-@>Conditional Branch: Script: pbTrainerBattle(:FAIRY3,"Kalypsa",_I("Alright, alright! I give!"))
+@>Comment: EndSpeech: Alright, alright! I give!
+@>Conditional Branch: Script: TrainerBattle.start(:FAIRY3, "Kalypsa")
  @>Control Self Switch: A =ON
  @>
 : Branch End
@@ -21728,7 +21741,9 @@ List of Event Commands:
 @>Erase Picture: 4
 @>Erase Picture: 5
 @>Comment: --- Pre-Battle Intro Conclusion
-@>Conditional Branch: Script: pbTrainerBattle(PBTrainers::NUE,"Nue Houjuu",_I("Nue: All my tricks went up in smoke!"),false,0,false,0)
+@>Comment: EndSpeech: Nue: All my tricks went up in smoke!
+@>Script: setBattleRule("outcome", 0)
+@>Conditional Branch: Script: TrainerBattle.start(PBTrainers::NUE, "Nue Houjuu", 0)
  @>Change Screen Color Tone: (-102,-102,-102,0), @6
  @>Control Self Switch: A =ON
  @>
@@ -22296,7 +22311,8 @@ List of Event Commands:
 @>Script: pbTrainerIntro(:ZEPHYR)
 @>Text: You now stand before the number one fairy
  :    : in all of Gensokyo! Tremble at my might!
-@>Conditional Branch: Script: pbTrainerBattle(:ZEPHYR,"Nico",_I("N-No! I was supposed to be the best!"))
+@>Comment: EndSpeech: N-No! I was supposed to be the best!
+@>Conditional Branch: Script: TrainerBattle.start(:ZEPHYR, "Nico")
  @>Text: B-But I'm the strongest fairy! I can't be beaten
   :    : like this!
  @>Text: Nooooooo~!
@@ -22403,7 +22419,9 @@ List of Event Commands:
 @>Erase Picture: 4
 @>Erase Picture: 5
 @>Comment: --- Pre-Battle Intro Conclusion
-@>Conditional Branch: Script: pbTrainerBattle(PBTrainers::KOGASA,"Kogasa Tatara",_I("Kogasa: My scare tactics fell apart!"),false,0,false,0)
+@>Comment: EndSpeech: Kogasa: My scare tactics fell apart!
+@>Script: setBattleRule("outcome", 0)
+@>Conditional Branch: Script: TrainerBattle.start(PBTrainers::KOGASA, "Kogasa Tatara", 0)
  @>Change Screen Color Tone: (-102,-102,-102,0), @6
  @>
 : Else
@@ -23491,9 +23509,12 @@ List of Event Commands:
 @>Wait: 10 frame(s)
 @>Scroll Map: Down, 1, 2
 @>Change Screen Color Tone: (51,17,-34,255), @20
-@>Move Picture: 1, @40, Upper Left (0,0), (100%,100%), 192, Normal
+@>Move Picture: 1, @40, Upper Left (0,0), (100%,100%), 255, Normal
 @>Control Variables: [0110: TMoM Credits Variable] = 1
 @>Call Common Event: TMoM Credits (Good End)
+@>Wait: 10 frame(s)
+@>Transfer Player:[032: Credits - Misty Lake], (014,045)
+@>Change Transparent Flag: Transparency
 @>
 
 #------------------------------------------------------------------------------
@@ -23504,17 +23525,1489 @@ Map Name: Credits - Misty Lake
 Tileset: 030: Misty Lake
 Width: 30, Height: 61
 
+#------------------------------------------------------------------------------
+Event ID: 001
+Event Name: Youmu
+(X,Y): (015,045)
+
+Page #1
+Conditions
+None
+
+Graphic: Person_YOumu
+
+Autonomous Movement
+Type: Fixed
+Speed: 5: Faster
+Freq: 3: Low
+Options Enabled
+Move Animation
+Through
+Trigger: Action Button
+
+List of Event Commands:
+@>
+
+#------------------------------------------------------------------------------
+Event ID: 002
+Event Name: Ghost A
+(X,Y): (015,043)
+
+Page #1
+Conditions
+None
+
+Graphic: CharaGhost
+
+Autonomous Movement
+Type: Fixed
+Speed: 2: Slower
+Freq: 3: Low
+Options Enabled
+Move Animation
+Through
+Trigger: Action Button
+
+List of Event Commands:
+@>
+
+#------------------------------------------------------------------------------
+Event ID: 003
+Event Name: Ghost B
+(X,Y): (013,045)
+
+Page #1
+Conditions
+None
+
+Graphic: CharaGhost
+
+Autonomous Movement
+Type: Fixed
+Speed: 2: Slower
+Freq: 3: Low
+Options Enabled
+Move Animation
+Through
+Trigger: Action Button
+
+List of Event Commands:
+@>
+
+#------------------------------------------------------------------------------
+Event ID: 004
+Event Name: Ghost C
+(X,Y): (015,047)
+
+Page #1
+Conditions
+None
+
+Graphic: CharaGhost
+
+Autonomous Movement
+Type: Fixed
+Speed: 2: Slower
+Freq: 3: Low
+Options Enabled
+Move Animation
+Through
+Trigger: Action Button
+
+List of Event Commands:
+@>
+
+#------------------------------------------------------------------------------
+Event ID: 005
+Event Name: Ghost D
+(X,Y): (017,045)
+
+Page #1
+Conditions
+None
+
+Graphic: CharaGhost
+
+Autonomous Movement
+Type: Fixed
+Speed: 2: Slower
+Freq: 3: Low
+Options Enabled
+Move Animation
+Through
+Trigger: Action Button
+
+List of Event Commands:
+@>
+
+#------------------------------------------------------------------------------
+Event ID: 006
+Event Name: Kogasa
+(X,Y): (020,041)
+
+Page #1
+Conditions
+None
+
+Graphic: Person_Kogasa
+
+Autonomous Movement
+Type: Fixed
+Speed: 3: Slow
+Freq: 3: Low
+Options Enabled
+Move Animation
+Through
+Trigger: Action Button
+
+List of Event Commands:
+@>
+
+#------------------------------------------------------------------------------
+Event ID: 007
+Event Name: EV007
+(X,Y): (016,046)
+
+Page #1
+Conditions
+None
+
+Autonomous Movement
+Type: Fixed
+Speed: 3: Slow
+Freq: 3: Low
+Options Enabled
+Move Animation
+Trigger: Autorun
+
+List of Event Commands:
+@>Script: pbShowPicture(1,"Credits/TMoM/BGs/BGMistyLake.png",1,256,192,zoomX=100,zoomY=100,opacity=0,blendType=0)
+@>Wait: 10 frame(s)
+@>Move Picture: 1, @10, Center (256,192), (100%,100%), 255, Normal
+@>Wait: 40 frame(s)
+@>Move Picture: 1, @10, Center (256,192), (100%,100%), 0, Normal
+@>Change Screen Color Tone: (0,0,0,0), @20
+@>Wait: 20 frame(s)
+@>Show Animation: [Youmu], [Question bubble (No SE)]
+@>Set Move Route: [Ghost B]
+ :              : $>Stop Animation ON
+ :              : $>Direction Fix ON
+ :              : $>Change Opacity: 20
+ :              : $>Wait: 2 frame(s)
+ :              : $>Change Opacity: 40
+ :              : $>Wait: 2 frame(s)
+ :              : $>Change Opacity: 60
+ :              : $>Wait: 2 frame(s)
+ :              : $>Change Opacity: 80
+ :              : $>Wait: 2 frame(s)
+ :              : $>Change Opacity: 120
+ :              : $>Wait: 2 frame(s)
+ :              : $>Change Opacity: 140
+ :              : $>Wait: 2 frame(s)
+ :              : $>Change Opacity: 160
+ :              : $>Wait: 2 frame(s)
+ :              : $>Change Opacity: 180
+@>Wait for Move's Completion
+@>Wait: 20 frame(s)
+@>Show Animation: [Youmu], [Exclaim bubble (No SE)]
+@>Set Move Route: [Youmu]
+ :              : $>Wait: 14 frame(s)
+ :              : $>Turn Up
+ :              : $>Wait: 6 frame(s)
+ :              : $>Turn Right
+ :              : $>Wait: 6 frame(s)
+ :              : $>Turn Down
+@>Set Move Route: [Ghost A]
+ :              : $>Stop Animation ON
+ :              : $>Direction Fix ON
+ :              : $>Change Opacity: 20
+ :              : $>Wait: 2 frame(s)
+ :              : $>Change Opacity: 40
+ :              : $>Wait: 2 frame(s)
+ :              : $>Change Opacity: 60
+ :              : $>Wait: 2 frame(s)
+ :              : $>Change Opacity: 80
+ :              : $>Wait: 2 frame(s)
+ :              : $>Change Opacity: 120
+ :              : $>Wait: 2 frame(s)
+ :              : $>Change Opacity: 140
+ :              : $>Wait: 2 frame(s)
+ :              : $>Change Opacity: 160
+ :              : $>Wait: 2 frame(s)
+ :              : $>Change Opacity: 180
+@>Set Move Route: [Ghost C]
+ :              : $>Stop Animation ON
+ :              : $>Direction Fix ON
+ :              : $>Wait: 7 frame(s)
+ :              : $>Change Opacity: 20
+ :              : $>Wait: 2 frame(s)
+ :              : $>Change Opacity: 40
+ :              : $>Wait: 2 frame(s)
+ :              : $>Change Opacity: 60
+ :              : $>Wait: 2 frame(s)
+ :              : $>Change Opacity: 80
+ :              : $>Wait: 2 frame(s)
+ :              : $>Change Opacity: 120
+ :              : $>Wait: 2 frame(s)
+ :              : $>Change Opacity: 140
+ :              : $>Wait: 2 frame(s)
+ :              : $>Change Opacity: 160
+ :              : $>Wait: 2 frame(s)
+ :              : $>Change Opacity: 180
+@>Set Move Route: [Ghost D]
+ :              : $>Stop Animation ON
+ :              : $>Direction Fix ON
+ :              : $>Wait: 10 frame(s)
+ :              : $>Change Opacity: 20
+ :              : $>Wait: 2 frame(s)
+ :              : $>Change Opacity: 40
+ :              : $>Wait: 2 frame(s)
+ :              : $>Change Opacity: 60
+ :              : $>Wait: 2 frame(s)
+ :              : $>Change Opacity: 80
+ :              : $>Wait: 2 frame(s)
+ :              : $>Change Opacity: 120
+ :              : $>Wait: 2 frame(s)
+ :              : $>Change Opacity: 140
+ :              : $>Wait: 2 frame(s)
+ :              : $>Change Opacity: 160
+ :              : $>Wait: 2 frame(s)
+ :              : $>Change Opacity: 180
+@>Wait for Move's Completion
+@>Set Move Route: [Youmu]
+ :              : $>Wait: 20 frame(s)
+ :              : $>Turn Left
+@>Wait for Move's Completion
+@>Wait: 20 frame(s)
+@>Show Animation: [Youmu], [Exclaim bubble (No SE)]
+@>Set Move Route: [Youmu]
+ :              : $>Direction Fix ON
+ :              : $>Change Speed: 1
+ :              : $>Jump: +0,+0
+@>Set Move Route: [Ghost B]
+                  (Repeat Action)
+ :              : $>Move Down
+ :              : $>Move Down
+ :              : $>Move Right
+ :              : $>Move Right
+ :              : $>Move Right
+ :              : $>Move Right
+ :              : $>Move Up
+ :              : $>Move Up
+ :              : $>Move Up
+ :              : $>Move Up
+ :              : $>Move Left
+ :              : $>Move Left
+ :              : $>Move Left
+ :              : $>Move Left
+ :              : $>Move Down
+ :              : $>Move Down
+@>Set Move Route: [Ghost A]
+                  (Repeat Action)
+ :              : $>Move Left
+ :              : $>Move Left
+ :              : $>Move Down
+ :              : $>Move Down
+ :              : $>Move Down
+ :              : $>Move Down
+ :              : $>Move Right
+ :              : $>Move Right
+ :              : $>Move Right
+ :              : $>Move Right
+ :              : $>Move Up
+ :              : $>Move Up
+ :              : $>Move Up
+ :              : $>Move Up
+ :              : $>Move Left
+ :              : $>Move Left
+@>Set Move Route: [Ghost C]
+                  (Repeat Action)
+ :              : $>Move Right
+ :              : $>Move Right
+ :              : $>Move Up
+ :              : $>Move Up
+ :              : $>Move Up
+ :              : $>Move Up
+ :              : $>Move Left
+ :              : $>Move Left
+ :              : $>Move Left
+ :              : $>Move Left
+ :              : $>Move Down
+ :              : $>Move Down
+ :              : $>Move Down
+ :              : $>Move Down
+ :              : $>Move Right
+ :              : $>Move Right
+@>Set Move Route: [Ghost D]
+                  (Repeat Action)
+ :              : $>Move Up
+ :              : $>Move Up
+ :              : $>Move Left
+ :              : $>Move Left
+ :              : $>Move Left
+ :              : $>Move Left
+ :              : $>Move Down
+ :              : $>Move Down
+ :              : $>Move Down
+ :              : $>Move Down
+ :              : $>Move Right
+ :              : $>Move Right
+ :              : $>Move Right
+ :              : $>Move Right
+ :              : $>Move Up
+ :              : $>Move Up
+@>Wait: 85 frame(s)
+@>Set Move Route: [Youmu]
+ :              : $>Move Right
+ :              : $>Wait: 30 frame(s)
+ :              : $>Direction Fix OFF
+ :              : $>Change Speed: 5
+ :              : $>Move Up
+ :              : $>Move Up
+ :              : $>Move Up
+ :              : $>Move Up
+ :              : $>Move Up
+ :              : $>Move Up
+ :              : $>Change Opacity: 0
+@>Wait: 70 frame(s)
+@>Set Move Route: [Kogasa]
+ :              : $>Change Opacity: 20
+ :              : $>Wait: 2 frame(s)
+ :              : $>Change Opacity: 40
+ :              : $>Wait: 2 frame(s)
+ :              : $>Change Opacity: 60
+ :              : $>Wait: 2 frame(s)
+ :              : $>Change Opacity: 80
+ :              : $>Wait: 2 frame(s)
+ :              : $>Change Opacity: 120
+ :              : $>Wait: 2 frame(s)
+ :              : $>Change Opacity: 140
+ :              : $>Wait: 2 frame(s)
+ :              : $>Change Opacity: 160
+ :              : $>Wait: 2 frame(s)
+ :              : $>Change Opacity: 180
+ :              : $>Wait: 2 frame(s)
+ :              : $>Change Opacity: 200
+ :              : $>Wait: 2 frame(s)
+ :              : $>Change Opacity: 220
+ :              : $>Wait: 2 frame(s)
+ :              : $>Change Opacity: 240
+ :              : $>Wait: 2 frame(s)
+ :              : $>Change Opacity: 255
+@>Wait: 30 frame(s)
+@>Set Move Route: [Kogasa]
+ :              : $>Move Down
+ :              : $>Move Down
+ :              : $>Move Down
+ :              : $>Move Down
+ :              : $>Move Left
+ :              : $>Move Left
+@>Show Picture: 1, 'black box', Upper Left (0,200), (100%,100%), 255, Normal
+@>Wait: 70 frame(s)
+@>Set Move Route: [Ghost A]
+                  (Repeat Action)
+ :              : $>Stop Animation OFF
+ :              : $>Direction Fix OFF
+@>Set Move Route: [Ghost B]
+                  (Repeat Action)
+ :              : $>Stop Animation OFF
+ :              : $>Direction Fix OFF
+@>Set Move Route: [Ghost C]
+                  (Repeat Action)
+ :              : $>Stop Animation OFF
+ :              : $>Direction Fix OFF
+@>Set Move Route: [Ghost D]
+                  (Repeat Action)
+ :              : $>Stop Animation OFF
+ :              : $>Direction Fix OFF
+@>Wait: 5 frame(s)
+@>Comment: -- Figure out how to pause oiverworld scene here
+ :       : -- At the least, pause the fog.
+@>Scroll Map: Down, 2, 2
+@>Change Screen Color Tone: (51,17,-34,255), @20
+@>Move Picture: 1, @40, Upper Left (0,0), (100%,100%), 255, Normal
+@>Control Variables: [0110: TMoM Credits Variable] = 2
+@>Call Common Event: TMoM Credits (Good End)
+@>Wait: 10 frame(s)
+@>Transfer Player:[033: Credits - R.W.M.], (015,017), Up
+@>Change Transparent Flag: Normal
+@>
+
+#------------------------------------------------------------------------------
+
 #==============================================================================
 Map ID: 033
 Map Name: Credits - R.W.M.
-Tileset: 004: Poke Center
-Width: 20, Height: 15
+Tileset: 037: Ruined Western Mansion
+Width: 31, Height: 31
+
+#------------------------------------------------------------------------------
+Event ID: 001
+Event Name: Lyrica
+(X,Y): (013,010)
+
+Page #1
+Conditions
+None
+
+Graphic: Person_Lyrica
+
+Autonomous Movement
+Type: Fixed
+Speed: 3: Slow
+Freq: 3: Low
+Options Enabled
+Move Animation
+Trigger: Action Button
+
+List of Event Commands:
+@>
+
+#------------------------------------------------------------------------------
+Event ID: 002
+Event Name: Lunasa
+(X,Y): (015,011)
+
+Page #1
+Conditions
+None
+
+Graphic: Person_Lunasa
+
+Autonomous Movement
+Type: Fixed
+Speed: 3: Slow
+Freq: 3: Low
+Options Enabled
+Move Animation
+Trigger: Action Button
+
+List of Event Commands:
+@>
+
+#------------------------------------------------------------------------------
+Event ID: 003
+Event Name: Merlin
+(X,Y): (017,010)
+
+Page #1
+Conditions
+None
+
+Graphic: Person_Merlin
+
+Autonomous Movement
+Type: Fixed
+Speed: 3: Slow
+Freq: 3: Low
+Options Enabled
+Move Animation
+Trigger: Action Button
+
+List of Event Commands:
+@>
+
+#------------------------------------------------------------------------------
+Event ID: 004
+Event Name: Mystia
+(X,Y): (015,015)
+
+Page #1
+Conditions
+None
+
+Graphic: Person_Mystia
+
+Autonomous Movement
+Type: Fixed
+Speed: 3: Slow
+Freq: 3: Low
+Options Enabled
+Move Animation
+Trigger: Action Button
+
+List of Event Commands:
+@>
+
+Page #2
+Conditions
+Switch 0127:  is ON
+
+Autonomous Movement
+Type: Fixed
+Speed: 3: Slow
+Freq: 3: Low
+Options Enabled
+Move Animation
+Trigger: Action Button
+
+List of Event Commands:
+@>
+
+#------------------------------------------------------------------------------
+Event ID: 005
+Event Name: EV005
+(X,Y): (007,016)
+
+Page #1
+Conditions
+None
+
+Graphic: TPDP_NPC 20
+
+Autonomous Movement
+Type: Fixed
+Speed: 3: Slow
+Freq: 3: Low
+Options Enabled
+Move Animation
+Trigger: Action Button
+
+List of Event Commands:
+@>
+
+#------------------------------------------------------------------------------
+Event ID: 006
+Event Name: EV006
+(X,Y): (008,016)
+
+Page #1
+Conditions
+None
+
+Graphic: TPDP_NPC 18
+
+Autonomous Movement
+Type: Fixed
+Speed: 3: Slow
+Freq: 3: Low
+Options Enabled
+Move Animation
+Trigger: Action Button
+
+List of Event Commands:
+@>
+
+#------------------------------------------------------------------------------
+Event ID: 007
+Event Name: EV007
+(X,Y): (009,016)
+
+Page #1
+Conditions
+None
+
+Graphic: TPDP_NPC 38
+
+Autonomous Movement
+Type: Fixed
+Speed: 3: Slow
+Freq: 3: Low
+Options Enabled
+Move Animation
+Trigger: Action Button
+
+List of Event Commands:
+@>
+
+#------------------------------------------------------------------------------
+Event ID: 008
+Event Name: EV008
+(X,Y): (008,018)
+
+Page #1
+Conditions
+None
+
+Graphic: TPDP_NPC 09
+
+Autonomous Movement
+Type: Fixed
+Speed: 3: Slow
+Freq: 3: Low
+Options Enabled
+Move Animation
+Trigger: Action Button
+
+List of Event Commands:
+@>
+
+#------------------------------------------------------------------------------
+Event ID: 009
+Event Name: EV009
+(X,Y): (009,018)
+
+Page #1
+Conditions
+None
+
+Graphic: TPDP_NPC 11
+
+Autonomous Movement
+Type: Fixed
+Speed: 3: Slow
+Freq: 3: Low
+Options Enabled
+Move Animation
+Trigger: Action Button
+
+List of Event Commands:
+@>
+
+#------------------------------------------------------------------------------
+Event ID: 010
+Event Name: EV010
+(X,Y): (007,020)
+
+Page #1
+Conditions
+None
+
+Graphic: TPDP_NPC 07
+
+Autonomous Movement
+Type: Fixed
+Speed: 3: Slow
+Freq: 3: Low
+Options Enabled
+Move Animation
+Trigger: Action Button
+
+List of Event Commands:
+@>
+
+#------------------------------------------------------------------------------
+Event ID: 011
+Event Name: EV011
+(X,Y): (008,020)
+
+Page #1
+Conditions
+None
+
+Graphic: TPDP_NPC 23
+
+Autonomous Movement
+Type: Fixed
+Speed: 3: Slow
+Freq: 3: Low
+Options Enabled
+Move Animation
+Trigger: Action Button
+
+List of Event Commands:
+@>
+
+#------------------------------------------------------------------------------
+Event ID: 012
+Event Name: EV012
+(X,Y): (009,020)
+
+Page #1
+Conditions
+None
+
+Graphic: TPDP_NPC 15
+
+Autonomous Movement
+Type: Fixed
+Speed: 3: Slow
+Freq: 3: Low
+Options Enabled
+Move Animation
+Trigger: Action Button
+
+List of Event Commands:
+@>
+
+#------------------------------------------------------------------------------
+Event ID: 013
+Event Name: EV013
+(X,Y): (021,016)
+
+Page #1
+Conditions
+None
+
+Graphic: TPDP_NPC 17
+
+Autonomous Movement
+Type: Fixed
+Speed: 3: Slow
+Freq: 3: Low
+Options Enabled
+Move Animation
+Trigger: Action Button
+
+List of Event Commands:
+@>
+
+#------------------------------------------------------------------------------
+Event ID: 014
+Event Name: Maya
+(X,Y): (022,016)
+
+Page #1
+Conditions
+None
+
+Graphic: TPDP_NPC 06
+
+Autonomous Movement
+Type: Fixed
+Speed: 3: Slow
+Freq: 3: Low
+Options Enabled
+Move Animation
+Trigger: Action Button
+
+List of Event Commands:
+@>
+
+#------------------------------------------------------------------------------
+Event ID: 015
+Event Name: EV015
+(X,Y): (021,018)
+
+Page #1
+Conditions
+None
+
+Graphic: Person_Keine
+
+Autonomous Movement
+Type: Fixed
+Speed: 3: Slow
+Freq: 3: Low
+Options Enabled
+Move Animation
+Trigger: Action Button
+
+List of Event Commands:
+@>
+
+#------------------------------------------------------------------------------
+Event ID: 016
+Event Name: EV016
+(X,Y): (022,018)
+
+Page #1
+Conditions
+None
+
+Graphic: TPDP_NPC 27
+
+Autonomous Movement
+Type: Fixed
+Speed: 3: Slow
+Freq: 3: Low
+Options Enabled
+Move Animation
+Trigger: Action Button
+
+List of Event Commands:
+@>
+
+#------------------------------------------------------------------------------
+Event ID: 017
+Event Name: EV017
+(X,Y): (023,018)
+
+Page #1
+Conditions
+None
+
+Graphic: TPDP_NPC 23
+
+Autonomous Movement
+Type: Fixed
+Speed: 3: Slow
+Freq: 3: Low
+Options Enabled
+Move Animation
+Trigger: Action Button
+
+List of Event Commands:
+@>
+
+#------------------------------------------------------------------------------
+Event ID: 018
+Event Name: EV018
+(X,Y): (021,020)
+
+Page #1
+Conditions
+None
+
+Graphic: TPDP_NPC 02
+
+Autonomous Movement
+Type: Fixed
+Speed: 3: Slow
+Freq: 3: Low
+Options Enabled
+Move Animation
+Trigger: Action Button
+
+List of Event Commands:
+@>
+
+#------------------------------------------------------------------------------
+Event ID: 019
+Event Name: EV019
+(X,Y): (022,020)
+
+Page #1
+Conditions
+None
+
+Graphic: TPDP_NPC 20
+
+Autonomous Movement
+Type: Fixed
+Speed: 3: Slow
+Freq: 3: Low
+Options Enabled
+Move Animation
+Trigger: Action Button
+
+List of Event Commands:
+@>
+
+#------------------------------------------------------------------------------
+Event ID: 020
+Event Name: EV020
+(X,Y): (023,020)
+
+Page #1
+Conditions
+None
+
+Graphic: TPDP_NPC 05
+
+Autonomous Movement
+Type: Fixed
+Speed: 3: Slow
+Freq: 3: Low
+Options Enabled
+Move Animation
+Trigger: Action Button
+
+List of Event Commands:
+@>
+
+#------------------------------------------------------------------------------
+Event ID: 021
+Event Name: Kota
+(X,Y): (013,017)
+
+Page #1
+Conditions
+None
+
+Graphic: TPDP_NPC 03
+
+Autonomous Movement
+Type: Fixed
+Speed: 3: Slow
+Freq: 4: High
+Options Enabled
+Move Animation
+Trigger: Action Button
+
+List of Event Commands:
+@>
+
+#------------------------------------------------------------------------------
+Event ID: 022
+Event Name: EV022
+(X,Y): (014,017)
+
+Page #1
+Conditions
+None
+
+Graphic: TPDP_NPC 18
+
+Autonomous Movement
+Type: Fixed
+Speed: 3: Slow
+Freq: 3: Low
+Options Enabled
+Move Animation
+Trigger: Action Button
+
+List of Event Commands:
+@>
+
+#------------------------------------------------------------------------------
+Event ID: 023
+Event Name: EV023
+(X,Y): (016,017)
+
+Page #1
+Conditions
+None
+
+Graphic: TPDP_NPC 07
+
+Autonomous Movement
+Type: Fixed
+Speed: 3: Slow
+Freq: 3: Low
+Options Enabled
+Move Animation
+Trigger: Action Button
+
+List of Event Commands:
+@>
+
+#------------------------------------------------------------------------------
+Event ID: 024
+Event Name: EV024
+(X,Y): (017,017)
+
+Page #1
+Conditions
+None
+
+Graphic: Person_Marisa
+
+Autonomous Movement
+Type: Fixed
+Speed: 3: Slow
+Freq: 3: Low
+Options Enabled
+Move Animation
+Trigger: Action Button
+
+List of Event Commands:
+@>
+
+#------------------------------------------------------------------------------
+Event ID: 025
+Event Name: EV025
+(X,Y): (018,017)
+
+Page #1
+Conditions
+None
+
+Graphic: TPDP_NPC 38
+
+Autonomous Movement
+Type: Fixed
+Speed: 3: Slow
+Freq: 3: Low
+Options Enabled
+Move Animation
+Trigger: Action Button
+
+List of Event Commands:
+@>
+
+#------------------------------------------------------------------------------
+Event ID: 026
+Event Name: EV026
+(X,Y): (012,019)
+
+Page #1
+Conditions
+None
+
+Graphic: TPDP_NPC 13
+
+Autonomous Movement
+Type: Fixed
+Speed: 3: Slow
+Freq: 3: Low
+Options Enabled
+Move Animation
+Trigger: Action Button
+
+List of Event Commands:
+@>
+
+#------------------------------------------------------------------------------
+Event ID: 027
+Event Name: EV027
+(X,Y): (013,019)
+
+Page #1
+Conditions
+None
+
+Graphic: TPDP_NPC 30
+
+Autonomous Movement
+Type: Fixed
+Speed: 3: Slow
+Freq: 3: Low
+Options Enabled
+Move Animation
+Trigger: Action Button
+
+List of Event Commands:
+@>
+
+#------------------------------------------------------------------------------
+Event ID: 028
+Event Name: EV028
+(X,Y): (014,019)
+
+Page #1
+Conditions
+None
+
+Graphic: Person_YOumu
+
+Autonomous Movement
+Type: Fixed
+Speed: 3: Slow
+Freq: 3: Low
+Options Enabled
+Move Animation
+Trigger: Action Button
+
+List of Event Commands:
+@>
+
+#------------------------------------------------------------------------------
+Event ID: 029
+Event Name: Shinji
+(X,Y): (016,019)
+
+Page #1
+Conditions
+None
+
+Graphic: TPDP_NPC 01
+
+Autonomous Movement
+Type: Fixed
+Speed: 3: Slow
+Freq: 3: Low
+Options Enabled
+Move Animation
+Trigger: Action Button
+
+List of Event Commands:
+@>
+
+#------------------------------------------------------------------------------
+Event ID: 030
+Event Name: EV030
+(X,Y): (017,019)
+
+Page #1
+Conditions
+None
+
+Graphic: TPDP_NPC 08
+
+Autonomous Movement
+Type: Fixed
+Speed: 3: Slow
+Freq: 3: Low
+Options Enabled
+Move Animation
+Trigger: Action Button
+
+List of Event Commands:
+@>
+
+#------------------------------------------------------------------------------
+Event ID: 031
+Event Name: EV031
+(X,Y): (018,019)
+
+Page #1
+Conditions
+None
+
+Graphic: TPDP_NPC 37
+
+Autonomous Movement
+Type: Fixed
+Speed: 3: Slow
+Freq: 3: Low
+Options Enabled
+Move Animation
+Trigger: Action Button
+
+List of Event Commands:
+@>
+
+#------------------------------------------------------------------------------
+Event ID: 032
+Event Name: EV032
+(X,Y): (015,002)
+
+Page #1
+Conditions
+None
+
+Autonomous Movement
+Type: Fixed
+Speed: 3: Slow
+Freq: 3: Low
+Options Enabled
+Move Animation
+Trigger: Autorun
+
+List of Event Commands:
+@>Script: pbShowPicture(1,"Credits/TMoM/BGs/BGRWM.png",1,256,192,zoomX=100,zoomY=100,opacity=0,blendType=0)
+@>Wait: 10 frame(s)
+@>Move Picture: 1, @10, Center (256,192), (100%,100%), 255, Normal
+@>Wait: 40 frame(s)
+@>Move Picture: 1, @10, Center (256,192), (100%,100%), 0, Normal
+@>Change Screen Color Tone: (-85,-85,-85,0), @20
+@>Wait: 20 frame(s)
+@>Scroll Map: Up, 4, 3
+@>Show Picture: 1, 'black box', Upper Left (0,200), (100%,100%), 255, Normal
+@>Change Text Options: Middle, Hide
+@>Wait: 15 frame(s)
+@>Comment: -- Remember to time this at siome point. Maybe.
+ :       : -- It'll look better!!!!
+@>Text: \se[]\l[3]<ac>We will join,\| join,\| join into a band:</ac>\wtnp[20]
+@>Text: \se[]\l[3]<ac>As the tempo rises, take the final stand!</ac>\wtnp[20]
+@>Text: \se[]\l[3]<ac>And mix\| these\| gentle melodies</ac>\wtnp[20]
+@>Text: \se[]\l[3]<ac>Into one grand medley as we please!</ac>\wtnp[20]
+@>Text: \se[]\l[3]<ac>We will break,\| break,\| break into a song:</ac>\wtnp[20]
+@>Text: \se[]\l[3]<ac>Just to show how we've been living all along!</ac>\wtnp[20]
+@>Text: \se[]\l[3]<ac>With backs\| still\| turned the other way,</ac>\wtnp[20]
+@>Text: \se[]\l[3]<ac>We can face the music some other day...</ac>\wtnp[20]
+@>Wait: 20 frame(s)
+@>Scroll Map: Down, 2, 2
+@>Change Screen Color Tone: (51,17,-34,255), @20
+@>Move Picture: 1, @40, Upper Left (0,0), (100%,100%), 255, Normal
+@>Control Variables: [0110: TMoM Credits Variable] = 3
+@>Call Common Event: TMoM Credits (Good End)
+@>Wait: 10 frame(s)
+@>Transfer Player:[034: Credits - R.W.M. (Alt)], (015,017), Up
+@>Change Transparent Flag: Transparency
+@>
+
+Page #2
+Conditions
+Self Switch B is ON
+
+Autonomous Movement
+Type: Fixed
+Speed: 3: Slow
+Freq: 3: Low
+Options Enabled
+Move Animation
+Trigger: Action Button
+
+List of Event Commands:
+@>
+
+#------------------------------------------------------------------------------
 
 #==============================================================================
 Map ID: 034
 Map Name: Credits - R.W.M. (Alt)
-Tileset: 004: Poke Center
-Width: 20, Height: 15
+Tileset: 037: Ruined Western Mansion
+Width: 31, Height: 31
+
+#------------------------------------------------------------------------------
+Event ID: 001
+Event Name: Lyrica
+(X,Y): (015,015)
+
+Page #1
+Conditions
+None
+
+Graphic: Person_Lyrica
+
+Autonomous Movement
+Type: Fixed
+Speed: 3: Slow
+Freq: 3: Low
+Options Enabled
+Move Animation
+Trigger: Action Button
+
+List of Event Commands:
+@>
+
+#------------------------------------------------------------------------------
+Event ID: 002
+Event Name: Lunasa
+(X,Y): (017,017)
+
+Page #1
+Conditions
+None
+
+Graphic: Person_Lunasa
+
+Autonomous Movement
+Type: Fixed
+Speed: 3: Slow
+Freq: 3: Low
+Options Enabled
+Move Animation
+Trigger: Action Button
+
+List of Event Commands:
+@>
+
+#------------------------------------------------------------------------------
+Event ID: 003
+Event Name: Merlin
+(X,Y): (015,019)
+
+Page #1
+Conditions
+None
+
+Graphic: Person_Merlin
+
+Autonomous Movement
+Type: Fixed
+Speed: 3: Slow
+Freq: 3: Low
+Options Enabled
+Move Animation
+Trigger: Action Button
+
+List of Event Commands:
+@>
+
+#------------------------------------------------------------------------------
+Event ID: 004
+Event Name: Layla
+(X,Y): (019,015)
+
+Page #1
+Conditions
+None
+
+Graphic: OW - Layla Prismriver
+
+Autonomous Movement
+Type: Fixed
+Speed: 3: Slow
+Freq: 3: Low
+Options Enabled
+Move Animation
+Trigger: Action Button
+
+List of Event Commands:
+@>
+
+#------------------------------------------------------------------------------
+Event ID: 005
+Event Name: Protag
+(X,Y): (013,017)
+
+Page #1
+Conditions
+None
+
+Graphic: Ayaka_Walk
+
+Autonomous Movement
+Type: Fixed
+Speed: 3: Slow
+Freq: 3: Low
+Options Enabled
+Move Animation
+Trigger: Action Button
+
+List of Event Commands:
+@>
+
+#------------------------------------------------------------------------------
+Event ID: 006
+Event Name: EV006
+(X,Y): (015,017)
+
+Page #1
+Conditions
+None
+
+Autonomous Movement
+Type: Fixed
+Speed: 3: Slow
+Freq: 3: Low
+Options Enabled
+Move Animation
+Trigger: Autorun
+
+List of Event Commands:
+@>Wait: 30 frame(s)
+@>Move Picture: 1, @10, Center (256,192), (100%,100%), 0, Normal
+@>Change Screen Color Tone: (0,0,0,0), @10
+@>Show Picture: 1, 'black box', Upper Left (0,200), (100%,100%), 255, Normal
+@>Wait: 40 frame(s)
+@>Set Move Route: [Protag]
+ :              : $>Move Down
+ :              : $>Move Down
+ :              : $>Move Down
+ :              : $>Move Down
+ :              : $>Move Down
+ :              : $>Move Down
+ :              : $>Move Down
+ :              : $>Move Down
+ :              : $>Change Opacity: 0
+@>Set Move Route: [Maya]
+ :              : $>Move Down
+ :              : $>Move Down
+ :              : $>Move Down
+ :              : $>Move Down
+ :              : $>Move Down
+ :              : $>Move Down
+ :              : $>Move Down
+ :              : $>Change Opacity: 0
+@>Wait for Move's Completion
+@>Wait: 20 frame(s)
+@>Set Move Route: [Merlin]
+ :              : $>Turn Up
+@>Set Move Route: [Lyrica]
+ :              : $>Turn Down
+@>Wait: 10 frame(s)
+@>Show Animation: [Lyrica], [Exclaim bubble (No SE)]
+@>Show Animation: [Merlin], [Exclaim bubble (No SE)]
+@>Show Animation: [Lunasa], [Exclaim bubble (No SE)]
+@>Set Move Route: [Merlin]
+ :              : $>Change Speed: 5
+ :              : $>Jump: +0,+0
+@>Set Move Route: [Lunasa]
+ :              : $>Change Speed: 5
+ :              : $>Jump: +0,+0
+@>Set Move Route: [Lyrica]
+ :              : $>Change Speed: 5
+ :              : $>Jump: +0,+0
+@>Wait for Move's Completion
+@>Set Move Route: [Merlin]
+ :              : $>Change Speed: 5
+ :              : $>Jump: +0,+0
+@>Set Move Route: [Lunasa]
+ :              : $>Change Speed: 5
+ :              : $>Jump: +0,+0
+@>Set Move Route: [Lyrica]
+ :              : $>Change Speed: 5
+ :              : $>Jump: +0,+0
+@>Wait for Move's Completion
+@>Set Move Route: [Merlin]
+ :              : $>Change Speed: 5
+ :              : $>Jump: +0,+0
+@>Set Move Route: [Lunasa]
+ :              : $>Change Speed: 5
+ :              : $>Jump: +0,+0
+@>Set Move Route: [Lyrica]
+ :              : $>Change Speed: 5
+ :              : $>Jump: +0,+0
+@>Wait for Move's Completion
+@>Wait: 20 frame(s)
+@>Set Move Route: [Layla]
+ :              : $>Move Down
+ :              : $>Move Down
+ :              : $>Move Down
+@>Wait for Move's Completion
+@>Set Move Route: [Layla]
+ :              : $>Move Down
+@>Wait: 5 frame(s)
+@>Show Animation: [Merlin], [Question bubble (No SE)]
+@>Set Move Route: [Merlin]
+ :              : $>Turn Right
+@>Wait for Move's Completion
+@>Wait: 25 frame(s)
+@>Set Move Route: [Layla]
+ :              : $>Turn Left
+@>Wait for Move's Completion
+@>Wait: 10 frame(s)
+@>Show Animation: [Layla], [Exclaim bubble (No SE)]
+@>Set Move Route: [Merlin]
+ :              : $>Change Speed: 2
+ :              : $>Move Right
+ :              : $>Wait: 8 frame(s)
+ :              : $>Move Right
+@>Wait for Move's Completion
+@>Wait: 10 frame(s)
+@>Show Animation: [Lunasa], [Question bubble (No SE)]
+@>Set Move Route: [Lunasa]
+ :              : $>Turn Down
+@>Wait for Move's Completion
+@>Wait: 10 frame(s)
+@>Show Animation: [Merlin], [Exclaim bubble (No SE)]
+@>Wait: 5 frame(s)
+@>Set Move Route: [Merlin]
+ :              : $>Turn Up
+@>Wait for Move's Completion
+@>Wait: 10 frame(s)
+@>Set Move Route: [Layla]
+ :              : $>Change Opacity: 100
+ :              : $>Wait: 2 frame(s)
+ :              : $>Change Opacity: 80
+ :              : $>Wait: 2 frame(s)
+ :              : $>Change Opacity: 40
+ :              : $>Wait: 2 frame(s)
+ :              : $>Change Opacity: 20
+ :              : $>Wait: 2 frame(s)
+ :              : $>Change Opacity: 0
+@>Wait for Move's Completion
+@>Set Move Route: [Merlin]
+ :              : $>Turn Right
+@>Wait for Move's Completion
+@>Wait: 10 frame(s)
+@>Show Animation: [Merlin], [Question bubble (No SE)]
+@>Wait: 10 frame(s)
+@>Show Animation: [Lyrica], [Question bubble (No SE)]
+@>Show Animation: [Lunasa], [Question bubble (No SE)]
+@>Wait: 20 frame(s)
+@>Scroll Map: Down, 2, 2
+@>Change Screen Color Tone: (51,17,-34,255), @20
+@>Move Picture: 1, @40, Upper Left (0,0), (100%,100%), 255, Normal
+@>Control Variables: [0110: TMoM Credits Variable] = 4
+@>Call Common Event: TMoM Credits (Good End)
+@>Wait: 10 frame(s)
+@>Transfer Player:[034: Credits - R.W.M. (Alt)], (015,017), Up
+@>Change Transparent Flag: Transparency
+@>
+
+#------------------------------------------------------------------------------
+Event ID: 007
+Event Name: Maya
+(X,Y): (012,018)
+
+Page #1
+Conditions
+None
+
+Graphic: TPDP_NPC 06
+
+Autonomous Movement
+Type: Fixed
+Speed: 3: Slow
+Freq: 3: Low
+Options Enabled
+Move Animation
+Trigger: Action Button
+
+List of Event Commands:
+@>
+
+Page #2
+Conditions
+Self Switch A is ON
+
+Autonomous Movement
+Type: Fixed
+Speed: 3: Slow
+Freq: 3: Low
+Options Enabled
+Move Animation
+Trigger: Action Button
+
+List of Event Commands:
+@>
+
+#------------------------------------------------------------------------------
 
 #==============================================================================
 Map ID: 035
@@ -23778,6 +25271,12 @@ Width: 20, Height: 15
 Map ID: 078
 Map Name: Credits - Group Shot
 Tileset: 004: Poke Center
+Width: 20, Height: 15
+
+#==============================================================================
+Map ID: 079
+Map Name: Credits - Forest of Magic
+Tileset: 036: Forest of Magic
 Width: 20, Height: 15
 
 #==============================================================================
@@ -25997,6 +27496,108 @@ List of Event Commands:
  @>Script: pbShowPicture(4,"Credits/TMoM/People/2_SFX_1.png",1,256,192,zoomX=100,zoomY=100,opacity=0,blendType=0)
  @>Wait: 40 frame(s)
  @>Move Picture: 3, @15, Center (256,192), (100%,100%), 255, Normal
+ @>Wait: 50 frame(s)
+ @>Move Picture: 4, @15, Center (256,192), (100%,100%), 255, Normal
+ @>Wait: 120 frame(s)
+ @>Move Picture: 3, @15, Center (256,192), (100%,100%), 0, Normal
+ @>Move Picture: 4, @15, Center (256,192), (100%,100%), 0, Normal
+ @>Wait: 15 frame(s)
+ @>Move Picture: 2, @10, Upper Left (0,384), (100%,100%), 255, Normal
+ @>Change Screen Color Tone: (-255,-255,-255,0), @10
+ @>
+: Branch End
+@>Conditional Branch: Variable [0110: TMoM Credits Variable] == 2
+ @>Wait: 20 frame(s)
+ @>Script: pbShowPicture(3,"Credits/TMoM/Headers/3_ProgDev.png",1,256,192,zoomX=100,zoomY=100,opacity=0,blendType=0)
+ @>Script: pbShowPicture(4,"Credits/TMoM/People/3_ProgDev_1.png",1,256,192,zoomX=100,zoomY=100,opacity=0,blendType=0)
+ @>Wait: 40 frame(s)
+ @>Move Picture: 3, @15, Center (256,192), (100%,100%), 255, Normal
+ @>Wait: 50 frame(s)
+ @>Move Picture: 4, @15, Center (256,192), (100%,100%), 255, Normal
+ @>Wait: 120 frame(s)
+ @>Move Picture: 3, @15, Center (256,192), (100%,100%), 0, Normal
+ @>Move Picture: 4, @15, Center (256,192), (100%,100%), 0, Normal
+ @>Wait: 20 frame(s)
+ @>Script: pbShowPicture(3,"Credits/TMoM/Headers/4_PlotMap.png",1,256,192,zoomX=100,zoomY=100,opacity=0,blendType=0)
+ @>Script: pbShowPicture(4,"Credits/TMoM/People/4_PlotMap_1.png",1,256,192,zoomX=100,zoomY=100,opacity=0,blendType=0)
+ @>Wait: 40 frame(s)
+ @>Move Picture: 3, @15, Center (256,192), (100%,100%), 255, Normal
+ @>Wait: 50 frame(s)
+ @>Move Picture: 4, @15, Center (256,192), (100%,100%), 255, Normal
+ @>Wait: 120 frame(s)
+ @>Move Picture: 3, @15, Center (256,192), (100%,100%), 0, Normal
+ @>Move Picture: 4, @15, Center (256,192), (100%,100%), 0, Normal
+ @>Wait: 15 frame(s)
+ @>Move Picture: 2, @10, Upper Left (0,384), (100%,100%), 255, Normal
+ @>Change Screen Color Tone: (-255,-255,-255,0), @10
+ @>
+: Branch End
+@>Conditional Branch: Variable [0110: TMoM Credits Variable] == 3
+ @>Wait: 20 frame(s)
+ @>Script: pbShowPicture(3,"Credits/TMoM/Headers/5_Species.png",1,256,192,zoomX=100,zoomY=100,opacity=0,blendType=0)
+ @>Script: pbShowPicture(4,"Credits/TMoM/People/5_Species_1.png",1,256,192,zoomX=100,zoomY=100,opacity=0,blendType=0)
+ @>Wait: 40 frame(s)
+ @>Move Picture: 3, @15, Center (256,192), (100%,100%), 255, Normal
+ @>Wait: 50 frame(s)
+ @>Move Picture: 4, @15, Center (256,192), (100%,100%), 255, Normal
+ @>Wait: 120 frame(s)
+ @>Move Picture: 4, @15, Center (256,192), (100%,100%), 0, Normal
+ @>Wait: 20 frame(s)
+ @>Script: pbShowPicture(4,"Credits/TMoM/People/5_Species_2.png",1,256,192,zoomX=100,zoomY=100,opacity=0,blendType=0)
+ @>Wait: 50 frame(s)
+ @>Move Picture: 4, @15, Center (256,192), (100%,100%), 255, Normal
+ @>Wait: 120 frame(s)
+ @>Move Picture: 3, @15, Center (256,192), (100%,100%), 0, Normal
+ @>Move Picture: 4, @15, Center (256,192), (100%,100%), 0, Normal
+ @>Wait: 20 frame(s)
+ @>Script: pbShowPicture(3,"Credits/TMoM/Headers/6_TSA.png",1,256,192,zoomX=100,zoomY=100,opacity=0,blendType=0)
+ @>Script: pbShowPicture(4,"Credits/TMoM/People/6_TSA_1.png",1,256,192,zoomX=100,zoomY=100,opacity=0,blendType=0)
+ @>Wait: 40 frame(s)
+ @>Move Picture: 3, @15, Center (256,192), (100%,100%), 255, Normal
+ @>Wait: 50 frame(s)
+ @>Move Picture: 4, @15, Center (256,192), (100%,100%), 255, Normal
+ @>Wait: 120 frame(s)
+ @>Move Picture: 3, @15, Center (256,192), (100%,100%), 0, Normal
+ @>Move Picture: 4, @15, Center (256,192), (100%,100%), 0, Normal
+ @>Wait: 15 frame(s)
+ @>Move Picture: 2, @10, Upper Left (0,384), (100%,100%), 255, Normal
+ @>Change Screen Color Tone: (-255,-255,-255,0), @10
+ @>
+: Branch End
+@>Conditional Branch: Variable [0110: TMoM Credits Variable] == 4
+ @>Wait: 20 frame(s)
+ @>Script: pbShowPicture(3,"Credits/TMoM/Headers/7_Art.png",1,256,192,zoomX=100,zoomY=100,opacity=0,blendType=0)
+ @>Script: pbShowPicture(4,"Credits/TMoM/People/7_Art_1.png",1,256,192,zoomX=100,zoomY=100,opacity=0,blendType=0)
+ @>Wait: 40 frame(s)
+ @>Move Picture: 3, @15, Center (256,192), (100%,100%), 255, Normal
+ @>Wait: 50 frame(s)
+ @>Move Picture: 4, @15, Center (256,192), (100%,100%), 255, Normal
+ @>Wait: 120 frame(s)
+ @>Move Picture: 4, @15, Center (256,192), (100%,100%), 0, Normal
+ @>Wait: 20 frame(s)
+ @>Script: pbShowPicture(4,"Credits/TMoM/People/7_Art_2.png",1,256,192,zoomX=100,zoomY=100,opacity=0,blendType=0)
+ @>Wait: 50 frame(s)
+ @>Move Picture: 4, @15, Center (256,192), (100%,100%), 255, Normal
+ @>Wait: 120 frame(s)
+ @>Move Picture: 3, @15, Center (256,192), (100%,100%), 0, Normal
+ @>Move Picture: 4, @15, Center (256,192), (100%,100%), 0, Normal
+ @>Wait: 20 frame(s)
+ @>Script: pbShowPicture(3,"Credits/TMoM/Headers/8_Scripts.png",1,256,192,zoomX=100,zoomY=100,opacity=0,blendType=0)
+ @>Script: pbShowPicture(4,"Credits/TMoM/People/8_Scripts_1.png",1,256,192,zoomX=100,zoomY=100,opacity=0,blendType=0)
+ @>Wait: 40 frame(s)
+ @>Move Picture: 3, @15, Center (256,192), (100%,100%), 255, Normal
+ @>Wait: 50 frame(s)
+ @>Move Picture: 4, @15, Center (256,192), (100%,100%), 255, Normal
+ @>Wait: 120 frame(s)
+ @>Move Picture: 4, @15, Center (256,192), (100%,100%), 0, Normal
+ @>Wait: 20 frame(s)
+ @>Script: pbShowPicture(4,"Credits/TMoM/People/8_Scripts_2.png",1,256,192,zoomX=100,zoomY=100,opacity=0,blendType=0)
+ @>Wait: 50 frame(s)
+ @>Move Picture: 4, @15, Center (256,192), (100%,100%), 255, Normal
+ @>Wait: 120 frame(s)
+ @>Move Picture: 4, @15, Center (256,192), (100%,100%), 0, Normal
+ @>Wait: 20 frame(s)
+ @>Script: pbShowPicture(4,"Credits/TMoM/People/8_Scripts_3.png",1,256,192,zoomX=100,zoomY=100,opacity=0,blendType=0)
  @>Wait: 50 frame(s)
  @>Move Picture: 4, @15, Center (256,192), (100%,100%), 255, Normal
  @>Wait: 120 frame(s)
