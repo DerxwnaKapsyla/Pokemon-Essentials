@@ -24656,7 +24656,7 @@ Move Animation
 Trigger: Autorun
 
 List of Event Commands:
-@>Script: pbShowPicture(1,"Credits/TMoM/BGs/BGRWM.png",1,256,192,zoomX=100,zoomY=100,opacity=0,blendType=0)
+@>Script: pbShowPicture(1,"Credits/TMoM/BGs/BGRWM_1.png",1,256,192,zoomX=100,zoomY=100,opacity=0,blendType=0)
 @>Wait: 10 frame(s)
 @>Move Picture: 1, @10, Center (256,192), (100%,100%), 255, Normal
 @>Wait: 40 frame(s)
@@ -24966,7 +24966,7 @@ List of Event Commands:
 @>Control Variables: [0110: TMoM Credits Variable] = 4
 @>Call Common Event: TMoM Credits (Good End)
 @>Wait: 10 frame(s)
-@>Transfer Player:[034: Credits - R.W.M. (Alt)], (015,017), Up
+@>Transfer Player:[035: Credits - \PN's House], (009,012), Up
 @>Change Transparent Flag: Transparency
 @>
 
@@ -25012,14 +25012,305 @@ List of Event Commands:
 #==============================================================================
 Map ID: 035
 Map Name: Credits - \PN's House
-Tileset: 004: Poke Center
+Tileset: 029: Interior (General)
 Width: 20, Height: 15
+
+#------------------------------------------------------------------------------
+Event ID: 001
+Event Name: EV001
+(X,Y): (009,013)
+
+Page #1
+Conditions
+None
+
+Autonomous Movement
+Type: Fixed
+Speed: 3: Slow
+Freq: 3: Low
+Options Enabled
+Move Animation
+Trigger: Autorun
+
+List of Event Commands:
+@>Script: pbShowPicture(1,"Credits/TMoM/BGs/BGVillage.png",1,256,192,zoomX=100,zoomY=100,opacity=0,blendType=0)
+@>Wait: 10 frame(s)
+@>Move Picture: 1, @10, Center (256,192), (100%,100%), 255, Normal
+@>Wait: 40 frame(s)
+@>Move Picture: 1, @10, Center (256,192), (100%,100%), 0, Normal
+@>Change Screen Color Tone: (0,0,0,0), @20
+@>Wait: 25 frame(s)
+@>Change Transparent Flag: Normal
+@>Set Move Route: Player
+ :              : $>Move Up
+ :              : $>Move Up
+ :              : $>Move Up
+ :              : $>Move Up
+ :              : $>Move Up
+ :              : $>Turn Left
+@>Wait for Move's Completion
+@>Wait: 20 frame(s)
+@>Show Picture: 1, 'black box', Upper Left (0,200), (100%,100%), 255, Normal
+@>Scroll Map: Down, 2, 2
+@>Change Screen Color Tone: (51,17,-34,255), @20
+@>Move Picture: 1, @40, Upper Left (0,0), (100%,100%), 255, Normal
+@>Control Variables: [0110: TMoM Credits Variable] = 5
+@>Call Common Event: TMoM Credits (Good End)
+@>Wait: 10 frame(s)
+@>Show Picture: 2, 'black box', Upper Left (0,200), (100%,100%), 255, Normal
+@>Control Variables: [0110: TMoM Credits Variable] = 6
+@>Call Common Event: TMoM Credits (Good End)
+@>Wait: 10 frame(s)
+@>Transfer Player:[036: Credits - Group Shot], (011,012), Up
+@>Change Transparent Flag: Transparency
+@>
+
+#------------------------------------------------------------------------------
 
 #==============================================================================
 Map ID: 036
 Map Name: Credits - Group Shot
-Tileset: 004: Poke Center
-Width: 20, Height: 15
+Tileset: 030: Misty Lake
+Width: 23, Height: 23
+
+#------------------------------------------------------------------------------
+Event ID: 001
+Event Name: Shinji
+(X,Y): (007,011)
+
+Page #1
+Conditions
+None
+
+Graphic: TPDP_NPC 01
+
+Autonomous Movement
+Type: Fixed
+Speed: 3: Slow
+Freq: 3: Low
+Options Enabled
+Move Animation
+Trigger: Action Button
+
+List of Event Commands:
+@>
+
+#------------------------------------------------------------------------------
+Event ID: 002
+Event Name: Maya
+(X,Y): (009,011)
+
+Page #1
+Conditions
+None
+
+Graphic: TPDP_NPC 06
+
+Autonomous Movement
+Type: Fixed
+Speed: 3: Slow
+Freq: 3: Low
+Options Enabled
+Move Animation
+Trigger: Action Button
+
+List of Event Commands:
+@>
+
+#------------------------------------------------------------------------------
+Event ID: 003
+Event Name: Youmu
+(X,Y): (013,011)
+
+Page #1
+Conditions
+None
+
+Graphic: Person_YOumu
+
+Autonomous Movement
+Type: Fixed
+Speed: 3: Slow
+Freq: 3: Low
+Options Enabled
+Move Animation
+Trigger: Action Button
+
+List of Event Commands:
+@>
+
+#------------------------------------------------------------------------------
+Event ID: 004
+Event Name: Kota
+(X,Y): (015,011)
+
+Page #1
+Conditions
+None
+
+Graphic: TPDP_NPC 03
+
+Autonomous Movement
+Type: Fixed
+Speed: 3: Slow
+Freq: 3: Low
+Options Enabled
+Move Animation
+Trigger: Action Button
+
+List of Event Commands:
+@>
+
+#------------------------------------------------------------------------------
+Event ID: 005
+Event Name: Player
+(X,Y): (011,012)
+
+Page #1
+Conditions
+None
+
+Graphic: Ayaka_Walk
+
+Autonomous Movement
+Type: Fixed
+Speed: 3: Slow
+Freq: 3: Low
+Options Enabled
+Move Animation
+Trigger: Action Button
+
+List of Event Commands:
+@>
+
+#------------------------------------------------------------------------------
+Event ID: 006
+Event Name: Lyrica
+(X,Y): (009,015)
+
+Page #1
+Conditions
+None
+
+Graphic: Person_Lyrica
+
+Autonomous Movement
+Type: Fixed
+Speed: 3: Slow
+Freq: 3: Low
+Options Enabled
+Move Animation
+Trigger: Action Button
+
+List of Event Commands:
+@>
+
+#------------------------------------------------------------------------------
+Event ID: 007
+Event Name: Merlin
+(X,Y): (013,015)
+
+Page #1
+Conditions
+None
+
+Graphic: Person_Merlin
+
+Autonomous Movement
+Type: Fixed
+Speed: 3: Slow
+Freq: 3: Low
+Options Enabled
+Move Animation
+Trigger: Action Button
+
+List of Event Commands:
+@>
+
+#------------------------------------------------------------------------------
+Event ID: 008
+Event Name: Lunasa
+(X,Y): (011,017)
+
+Page #1
+Conditions
+None
+
+Graphic: Person_Lunasa
+
+Autonomous Movement
+Type: Fixed
+Speed: 3: Slow
+Freq: 3: Low
+Options Enabled
+Move Animation
+Trigger: Action Button
+
+List of Event Commands:
+@>
+
+#------------------------------------------------------------------------------
+Event ID: 009
+Event Name: Layla
+(X,Y): (011,007)
+
+Page #1
+Conditions
+None
+
+Graphic: Person_Layla
+
+Autonomous Movement
+Type: Fixed
+Speed: 3: Slow
+Freq: 3: Low
+Options Enabled
+Move Animation
+Trigger: Action Button
+
+List of Event Commands:
+@>
+
+#------------------------------------------------------------------------------
+Event ID: 010
+Event Name: EV010
+(X,Y): (011,009)
+
+Page #1
+Conditions
+None
+
+Autonomous Movement
+Type: Fixed
+Speed: 3: Slow
+Freq: 3: Low
+Options Enabled
+Move Animation
+Trigger: Autorun
+
+List of Event Commands:
+@>Change Screen Color Tone: (0,0,0,0), @20
+@>Wait: 40 frame(s)
+@>Change Screen Color Tone: (51,17,-34,255), @20
+@>Wait: 20 frame(s)
+@>Script: CreditsOutro_TMoM.new
+@>Wait: 20 frame(s)
+@>Change Screen Color Tone: (-255,-255,-255,0), @20
+@>Wait: 25 frame(s)
+@>Fade Out BGM: 2 sec.
+@>Script: CreditsFin.new
+@>Wait: 20 frame(s)
+@>Change Text Options: Middle, Hide
+@>Text: \l[4]You will now be returned to the Title Screen. 
+ :    : When you resume the game, you will be at your last 
+ :    : save point.
+@>Script: pbAllowSpeedup
+:       : $GameSpeed = pbGet(1)
+@>Change Text Options: Bottom, Show
+@>Return to Title Screen
+@>
+
+#------------------------------------------------------------------------------
 
 #==============================================================================
 Map ID: 037
@@ -25271,12 +25562,6 @@ Width: 20, Height: 15
 Map ID: 078
 Map Name: Credits - Group Shot
 Tileset: 004: Poke Center
-Width: 20, Height: 15
-
-#==============================================================================
-Map ID: 079
-Map Name: Credits - Forest of Magic
-Tileset: 036: Forest of Magic
 Width: 20, Height: 15
 
 #==============================================================================
@@ -27478,27 +27763,27 @@ List of Event Commands:
  @>Wait: 20 frame(s)
  @>Script: pbShowPicture(3,"Credits/TMoM/Headers/1_AudComp.png",1,256,192,zoomX=100,zoomY=100,opacity=0,blendType=0)
  @>Script: pbShowPicture(4,"Credits/TMoM/People/1_AudComp_1.png",1,256,192,zoomX=100,zoomY=100,opacity=0,blendType=0)
- @>Wait: 40 frame(s)
+ @>Wait: 30 frame(s)
  @>Move Picture: 3, @15, Center (256,192), (100%,100%), 255, Normal
- @>Wait: 50 frame(s)
+ @>Wait: 40 frame(s)
  @>Move Picture: 4, @15, Center (256,192), (100%,100%), 255, Normal
- @>Wait: 120 frame(s)
+ @>Wait: 60 frame(s)
  @>Move Picture: 4, @15, Center (256,192), (100%,100%), 0, Normal
  @>Wait: 20 frame(s)
  @>Script: pbShowPicture(4,"Credits/TMoM/People/1_AudComp_2.png",1,256,192,zoomX=100,zoomY=100,opacity=0,blendType=0)
- @>Wait: 50 frame(s)
+ @>Wait: 40 frame(s)
  @>Move Picture: 4, @15, Center (256,192), (100%,100%), 255, Normal
- @>Wait: 120 frame(s)
+ @>Wait: 70 frame(s)
  @>Move Picture: 3, @15, Center (256,192), (100%,100%), 0, Normal
  @>Move Picture: 4, @15, Center (256,192), (100%,100%), 0, Normal
  @>Wait: 20 frame(s)
  @>Script: pbShowPicture(3,"Credits/TMoM/Headers/2_SFX.png",1,256,192,zoomX=100,zoomY=100,opacity=0,blendType=0)
  @>Script: pbShowPicture(4,"Credits/TMoM/People/2_SFX_1.png",1,256,192,zoomX=100,zoomY=100,opacity=0,blendType=0)
- @>Wait: 40 frame(s)
+ @>Wait: 30 frame(s)
  @>Move Picture: 3, @15, Center (256,192), (100%,100%), 255, Normal
- @>Wait: 50 frame(s)
+ @>Wait: 40 frame(s)
  @>Move Picture: 4, @15, Center (256,192), (100%,100%), 255, Normal
- @>Wait: 120 frame(s)
+ @>Wait: 60 frame(s)
  @>Move Picture: 3, @15, Center (256,192), (100%,100%), 0, Normal
  @>Move Picture: 4, @15, Center (256,192), (100%,100%), 0, Normal
  @>Wait: 15 frame(s)
@@ -27510,21 +27795,21 @@ List of Event Commands:
  @>Wait: 20 frame(s)
  @>Script: pbShowPicture(3,"Credits/TMoM/Headers/3_ProgDev.png",1,256,192,zoomX=100,zoomY=100,opacity=0,blendType=0)
  @>Script: pbShowPicture(4,"Credits/TMoM/People/3_ProgDev_1.png",1,256,192,zoomX=100,zoomY=100,opacity=0,blendType=0)
- @>Wait: 40 frame(s)
+ @>Wait: 30 frame(s)
  @>Move Picture: 3, @15, Center (256,192), (100%,100%), 255, Normal
- @>Wait: 50 frame(s)
+ @>Wait: 40 frame(s)
  @>Move Picture: 4, @15, Center (256,192), (100%,100%), 255, Normal
- @>Wait: 120 frame(s)
+ @>Wait: 60 frame(s)
  @>Move Picture: 3, @15, Center (256,192), (100%,100%), 0, Normal
  @>Move Picture: 4, @15, Center (256,192), (100%,100%), 0, Normal
  @>Wait: 20 frame(s)
  @>Script: pbShowPicture(3,"Credits/TMoM/Headers/4_PlotMap.png",1,256,192,zoomX=100,zoomY=100,opacity=0,blendType=0)
  @>Script: pbShowPicture(4,"Credits/TMoM/People/4_PlotMap_1.png",1,256,192,zoomX=100,zoomY=100,opacity=0,blendType=0)
- @>Wait: 40 frame(s)
+ @>Wait: 30 frame(s)
  @>Move Picture: 3, @15, Center (256,192), (100%,100%), 255, Normal
- @>Wait: 50 frame(s)
+ @>Wait: 40 frame(s)
  @>Move Picture: 4, @15, Center (256,192), (100%,100%), 255, Normal
- @>Wait: 120 frame(s)
+ @>Wait: 60 frame(s)
  @>Move Picture: 3, @15, Center (256,192), (100%,100%), 0, Normal
  @>Move Picture: 4, @15, Center (256,192), (100%,100%), 0, Normal
  @>Wait: 15 frame(s)
@@ -27536,27 +27821,27 @@ List of Event Commands:
  @>Wait: 20 frame(s)
  @>Script: pbShowPicture(3,"Credits/TMoM/Headers/5_Species.png",1,256,192,zoomX=100,zoomY=100,opacity=0,blendType=0)
  @>Script: pbShowPicture(4,"Credits/TMoM/People/5_Species_1.png",1,256,192,zoomX=100,zoomY=100,opacity=0,blendType=0)
- @>Wait: 40 frame(s)
+ @>Wait: 30 frame(s)
  @>Move Picture: 3, @15, Center (256,192), (100%,100%), 255, Normal
- @>Wait: 50 frame(s)
+ @>Wait: 40 frame(s)
  @>Move Picture: 4, @15, Center (256,192), (100%,100%), 255, Normal
- @>Wait: 120 frame(s)
+ @>Wait: 60 frame(s)
  @>Move Picture: 4, @15, Center (256,192), (100%,100%), 0, Normal
  @>Wait: 20 frame(s)
  @>Script: pbShowPicture(4,"Credits/TMoM/People/5_Species_2.png",1,256,192,zoomX=100,zoomY=100,opacity=0,blendType=0)
- @>Wait: 50 frame(s)
+ @>Wait: 40 frame(s)
  @>Move Picture: 4, @15, Center (256,192), (100%,100%), 255, Normal
- @>Wait: 120 frame(s)
+ @>Wait: 60 frame(s)
  @>Move Picture: 3, @15, Center (256,192), (100%,100%), 0, Normal
  @>Move Picture: 4, @15, Center (256,192), (100%,100%), 0, Normal
  @>Wait: 20 frame(s)
  @>Script: pbShowPicture(3,"Credits/TMoM/Headers/6_TSA.png",1,256,192,zoomX=100,zoomY=100,opacity=0,blendType=0)
  @>Script: pbShowPicture(4,"Credits/TMoM/People/6_TSA_1.png",1,256,192,zoomX=100,zoomY=100,opacity=0,blendType=0)
- @>Wait: 40 frame(s)
+ @>Wait: 30 frame(s)
  @>Move Picture: 3, @15, Center (256,192), (100%,100%), 255, Normal
- @>Wait: 50 frame(s)
+ @>Wait: 40 frame(s)
  @>Move Picture: 4, @15, Center (256,192), (100%,100%), 255, Normal
- @>Wait: 120 frame(s)
+ @>Wait: 60 frame(s)
  @>Move Picture: 3, @15, Center (256,192), (100%,100%), 0, Normal
  @>Move Picture: 4, @15, Center (256,192), (100%,100%), 0, Normal
  @>Wait: 15 frame(s)
@@ -27568,43 +27853,140 @@ List of Event Commands:
  @>Wait: 20 frame(s)
  @>Script: pbShowPicture(3,"Credits/TMoM/Headers/7_Art.png",1,256,192,zoomX=100,zoomY=100,opacity=0,blendType=0)
  @>Script: pbShowPicture(4,"Credits/TMoM/People/7_Art_1.png",1,256,192,zoomX=100,zoomY=100,opacity=0,blendType=0)
- @>Wait: 40 frame(s)
+ @>Wait: 30 frame(s)
  @>Move Picture: 3, @15, Center (256,192), (100%,100%), 255, Normal
- @>Wait: 50 frame(s)
+ @>Wait: 40 frame(s)
  @>Move Picture: 4, @15, Center (256,192), (100%,100%), 255, Normal
- @>Wait: 120 frame(s)
+ @>Wait: 60 frame(s)
  @>Move Picture: 4, @15, Center (256,192), (100%,100%), 0, Normal
  @>Wait: 20 frame(s)
  @>Script: pbShowPicture(4,"Credits/TMoM/People/7_Art_2.png",1,256,192,zoomX=100,zoomY=100,opacity=0,blendType=0)
- @>Wait: 50 frame(s)
+ @>Wait: 40 frame(s)
  @>Move Picture: 4, @15, Center (256,192), (100%,100%), 255, Normal
- @>Wait: 120 frame(s)
+ @>Wait: 60 frame(s)
  @>Move Picture: 3, @15, Center (256,192), (100%,100%), 0, Normal
  @>Move Picture: 4, @15, Center (256,192), (100%,100%), 0, Normal
  @>Wait: 20 frame(s)
  @>Script: pbShowPicture(3,"Credits/TMoM/Headers/8_Scripts.png",1,256,192,zoomX=100,zoomY=100,opacity=0,blendType=0)
  @>Script: pbShowPicture(4,"Credits/TMoM/People/8_Scripts_1.png",1,256,192,zoomX=100,zoomY=100,opacity=0,blendType=0)
- @>Wait: 40 frame(s)
+ @>Wait: 30 frame(s)
  @>Move Picture: 3, @15, Center (256,192), (100%,100%), 255, Normal
- @>Wait: 50 frame(s)
+ @>Wait: 40 frame(s)
  @>Move Picture: 4, @15, Center (256,192), (100%,100%), 255, Normal
- @>Wait: 120 frame(s)
+ @>Wait: 60 frame(s)
  @>Move Picture: 4, @15, Center (256,192), (100%,100%), 0, Normal
  @>Wait: 20 frame(s)
  @>Script: pbShowPicture(4,"Credits/TMoM/People/8_Scripts_2.png",1,256,192,zoomX=100,zoomY=100,opacity=0,blendType=0)
- @>Wait: 50 frame(s)
+ @>Wait: 40 frame(s)
  @>Move Picture: 4, @15, Center (256,192), (100%,100%), 255, Normal
- @>Wait: 120 frame(s)
+ @>Wait: 60 frame(s)
  @>Move Picture: 4, @15, Center (256,192), (100%,100%), 0, Normal
  @>Wait: 20 frame(s)
  @>Script: pbShowPicture(4,"Credits/TMoM/People/8_Scripts_3.png",1,256,192,zoomX=100,zoomY=100,opacity=0,blendType=0)
- @>Wait: 50 frame(s)
+ @>Wait: 40 frame(s)
  @>Move Picture: 4, @15, Center (256,192), (100%,100%), 255, Normal
- @>Wait: 120 frame(s)
+ @>Wait: 60 frame(s)
  @>Move Picture: 3, @15, Center (256,192), (100%,100%), 0, Normal
  @>Move Picture: 4, @15, Center (256,192), (100%,100%), 0, Normal
  @>Wait: 15 frame(s)
  @>Move Picture: 2, @10, Upper Left (0,384), (100%,100%), 255, Normal
+ @>Change Screen Color Tone: (-255,-255,-255,0), @10
+ @>
+: Branch End
+@>Conditional Branch: Variable [0110: TMoM Credits Variable] == 5
+ @>Wait: 20 frame(s)
+ @>Script: pbShowPicture(3,"Credits/TMoM/Headers/9_Director.png",1,256,192,zoomX=100,zoomY=100,opacity=0,blendType=0)
+ @>Script: pbShowPicture(4,"Credits/TMoM/People/9_Director_1.png",1,256,192,zoomX=100,zoomY=100,opacity=0,blendType=0)
+ @>Wait: 30 frame(s)
+ @>Move Picture: 3, @15, Center (256,192), (100%,100%), 255, Normal
+ @>Wait: 40 frame(s)
+ @>Move Picture: 4, @15, Center (256,192), (100%,100%), 255, Normal
+ @>Wait: 60 frame(s)
+ @>Move Picture: 3, @15, Center (256,192), (100%,100%), 0, Normal
+ @>Move Picture: 4, @15, Center (256,192), (100%,100%), 0, Normal
+ @>Wait: 20 frame(s)
+ @>Script: pbShowPicture(3,"Credits/TMoM/Headers/10_Thanks.png",1,256,192,zoomX=100,zoomY=100,opacity=0,blendType=0)
+ @>Script: pbShowPicture(4,"Credits/TMoM/People/10_Thanks_1.png",1,256,192,zoomX=100,zoomY=100,opacity=0,blendType=0)
+ @>Wait: 30 frame(s)
+ @>Move Picture: 3, @15, Center (256,192), (100%,100%), 255, Normal
+ @>Wait: 40 frame(s)
+ @>Move Picture: 4, @15, Center (256,192), (100%,100%), 255, Normal
+ @>Wait: 60 frame(s)
+ @>Move Picture: 4, @15, Center (256,192), (100%,100%), 0, Normal
+ @>Wait: 20 frame(s)
+ @>Script: pbShowPicture(4,"Credits/TMoM/People/10_Thanks_2.png",1,256,192,zoomX=100,zoomY=100,opacity=0,blendType=0)
+ @>Wait: 40 frame(s)
+ @>Move Picture: 4, @15, Center (256,192), (100%,100%), 255, Normal
+ @>Wait: 60 frame(s)
+ @>Move Picture: 4, @15, Center (256,192), (100%,100%), 0, Normal
+ @>Wait: 20 frame(s)
+ @>Script: pbShowPicture(4,"Credits/TMoM/People/10_Thanks_3.png",1,256,192,zoomX=100,zoomY=100,opacity=0,blendType=0)
+ @>Wait: 40 frame(s)
+ @>Move Picture: 4, @15, Center (256,192), (100%,100%), 255, Normal
+ @>Wait: 60 frame(s)
+ @>Move Picture: 3, @15, Center (256,192), (100%,100%), 0, Normal
+ @>Move Picture: 4, @15, Center (256,192), (100%,100%), 0, Normal
+ @>Wait: 15 frame(s)
+ @>Move Picture: 2, @10, Upper Left (0,384), (100%,100%), 255, Normal
+ @>Change Screen Color Tone: (-255,-255,-255,0), @10
+ @>
+: Branch End
+@>Conditional Branch: Variable [0110: TMoM Credits Variable] == 6
+ @>Script: pbShowPicture(1,"Credits/Gensokyo.png",1,256,192,zoomX=100,zoomY=100,opacity=0,blendType=0)
+ @>Wait: 10 frame(s)
+ @>Move Picture: 1, @10, Center (256,192), (100%,100%), 255, Normal
+ @>Wait: 20 frame(s)
+ @>Move Picture: 2, @40, Upper Left (0,0), (100%,100%), 192, Normal
+ @>Wait: 40 frame(s)
+ @>Script: pbShowPicture(3,"Credits/TMoM/Headers/10_Thanks.png",1,256,192,zoomX=100,zoomY=100,opacity=0,blendType=0)
+ @>Script: pbShowPicture(4,"Credits/Gen_Credits_1.png",1,256,192,zoomX=100,zoomY=100,opacity=0,blendType=0)
+ @>Wait: 30 frame(s)
+ @>Move Picture: 3, @15, Center (256,192), (100%,100%), 255, Normal
+ @>Wait: 40 frame(s)
+ @>Move Picture: 4, @15, Center (256,192), (100%,100%), 255, Normal
+ @>Wait: 60 frame(s)
+ @>Move Picture: 4, @15, Center (256,192), (100%,100%), 0, Normal
+ @>Wait: 20 frame(s)
+ @>Script: pbShowPicture(4,"Credits/Gen_Credits_2.png",1,256,192,zoomX=100,zoomY=100,opacity=0,blendType=0)
+ @>Wait: 40 frame(s)
+ @>Move Picture: 4, @15, Center (256,192), (100%,100%), 255, Normal
+ @>Wait: 60 frame(s)
+ @>Move Picture: 4, @15, Center (256,192), (100%,100%), 0, Normal
+ @>Wait: 20 frame(s)
+ @>Script: pbShowPicture(4,"Credits/Gen_Credits_3.png",1,256,192,zoomX=100,zoomY=100,opacity=0,blendType=0)
+ @>Wait: 40 frame(s)
+ @>Move Picture: 4, @15, Center (256,192), (100%,100%), 255, Normal
+ @>Wait: 60 frame(s)
+ @>Move Picture: 3, @15, Center (256,192), (100%,100%), 0, Normal
+ @>Move Picture: 4, @15, Center (256,192), (100%,100%), 0, Normal
+ @>Wait: 20 frame(s)
+ @>Script: pbShowPicture(4,"Credits/Gen_Credits_4.png",1,256,192,zoomX=100,zoomY=100,opacity=0,blendType=0)
+ @>Wait: 30 frame(s)
+ @>Move Picture: 4, @15, Center (256,192), (100%,100%), 255, Normal
+ @>Wait: 60 frame(s)
+ @>Move Picture: 4, @15, Center (256,192), (100%,100%), 0, Normal
+ @>Wait: 20 frame(s)
+ @>Script: pbShowPicture(4,"Credits/Gen_Credits_5.png",1,256,192,zoomX=100,zoomY=100,opacity=0,blendType=0)
+ @>Wait: 40 frame(s)
+ @>Move Picture: 4, @15, Center (256,192), (100%,100%), 255, Normal
+ @>Wait: 60 frame(s)
+ @>Move Picture: 4, @15, Center (256,192), (100%,100%), 0, Normal
+ @>Wait: 20 frame(s)
+ @>Script: pbShowPicture(4,"Credits/Gen_Credits_6.png",1,256,192,zoomX=100,zoomY=100,opacity=0,blendType=0)
+ @>Wait: 40 frame(s)
+ @>Move Picture: 4, @15, Center (256,192), (100%,100%), 255, Normal
+ @>Wait: 60 frame(s)
+ @>Move Picture: 4, @15, Center (256,192), (100%,100%), 0, Normal
+ @>Wait: 20 frame(s)
+ @>Script: pbShowPicture(4,"Credits/Gen_Credits_7.png",1,256,192,zoomX=100,zoomY=100,opacity=0,blendType=0)
+ @>Wait: 40 frame(s)
+ @>Move Picture: 4, @15, Center (256,192), (100%,100%), 255, Normal
+ @>Wait: 60 frame(s)
+ @>Move Picture: 4, @15, Center (256,192), (100%,100%), 0, Normal
+ @>Script: pbBGMFade(0.5)
+ @>Wait: 15 frame(s)
+ @>Move Picture: 2, @10, Upper Left (0,384), (100%,100%), 192, Normal
+ @>Move Picture: 1, @10, Center (256,192), (100%,100%), 0, Normal
  @>Change Screen Color Tone: (-255,-255,-255,0), @10
  @>
 : Branch End
@@ -27982,6 +28364,244 @@ List of Event Commands:
  @>Script: pbPokeCenterPC
  @>
 : When [Leave Shrine]
+ @>
+: Branch End
+@>
+
+#==============================================================================
+Common Event ID: 105
+Common Event Name: TMoM Credits (Good End) (Backup)
+
+Trigger: None
+
+List of Event Commands:
+@>Conditional Branch: Variable [0110: TMoM Credits Variable] == 1
+ @>Wait: 20 frame(s)
+ @>Script: pbShowPicture(3,"Credits/TMoM/Headers/1_AudComp.png",1,256,192,zoomX=100,zoomY=100,opacity=0,blendType=0)
+ @>Script: pbShowPicture(4,"Credits/TMoM/People/1_AudComp_1.png",1,256,192,zoomX=100,zoomY=100,opacity=0,blendType=0)
+ @>Wait: 40 frame(s)
+ @>Move Picture: 3, @15, Center (256,192), (100%,100%), 255, Normal
+ @>Wait: 50 frame(s)
+ @>Move Picture: 4, @15, Center (256,192), (100%,100%), 255, Normal
+ @>Wait: 120 frame(s)
+ @>Move Picture: 4, @15, Center (256,192), (100%,100%), 0, Normal
+ @>Wait: 20 frame(s)
+ @>Script: pbShowPicture(4,"Credits/TMoM/People/1_AudComp_2.png",1,256,192,zoomX=100,zoomY=100,opacity=0,blendType=0)
+ @>Wait: 50 frame(s)
+ @>Move Picture: 4, @15, Center (256,192), (100%,100%), 255, Normal
+ @>Wait: 120 frame(s)
+ @>Move Picture: 3, @15, Center (256,192), (100%,100%), 0, Normal
+ @>Move Picture: 4, @15, Center (256,192), (100%,100%), 0, Normal
+ @>Wait: 20 frame(s)
+ @>Script: pbShowPicture(3,"Credits/TMoM/Headers/2_SFX.png",1,256,192,zoomX=100,zoomY=100,opacity=0,blendType=0)
+ @>Script: pbShowPicture(4,"Credits/TMoM/People/2_SFX_1.png",1,256,192,zoomX=100,zoomY=100,opacity=0,blendType=0)
+ @>Wait: 40 frame(s)
+ @>Move Picture: 3, @15, Center (256,192), (100%,100%), 255, Normal
+ @>Wait: 50 frame(s)
+ @>Move Picture: 4, @15, Center (256,192), (100%,100%), 255, Normal
+ @>Wait: 120 frame(s)
+ @>Move Picture: 3, @15, Center (256,192), (100%,100%), 0, Normal
+ @>Move Picture: 4, @15, Center (256,192), (100%,100%), 0, Normal
+ @>Wait: 15 frame(s)
+ @>Move Picture: 2, @10, Upper Left (0,384), (100%,100%), 255, Normal
+ @>Change Screen Color Tone: (-255,-255,-255,0), @10
+ @>
+: Branch End
+@>Conditional Branch: Variable [0110: TMoM Credits Variable] == 2
+ @>Wait: 20 frame(s)
+ @>Script: pbShowPicture(3,"Credits/TMoM/Headers/3_ProgDev.png",1,256,192,zoomX=100,zoomY=100,opacity=0,blendType=0)
+ @>Script: pbShowPicture(4,"Credits/TMoM/People/3_ProgDev_1.png",1,256,192,zoomX=100,zoomY=100,opacity=0,blendType=0)
+ @>Wait: 40 frame(s)
+ @>Move Picture: 3, @15, Center (256,192), (100%,100%), 255, Normal
+ @>Wait: 50 frame(s)
+ @>Move Picture: 4, @15, Center (256,192), (100%,100%), 255, Normal
+ @>Wait: 120 frame(s)
+ @>Move Picture: 3, @15, Center (256,192), (100%,100%), 0, Normal
+ @>Move Picture: 4, @15, Center (256,192), (100%,100%), 0, Normal
+ @>Wait: 20 frame(s)
+ @>Script: pbShowPicture(3,"Credits/TMoM/Headers/4_PlotMap.png",1,256,192,zoomX=100,zoomY=100,opacity=0,blendType=0)
+ @>Script: pbShowPicture(4,"Credits/TMoM/People/4_PlotMap_1.png",1,256,192,zoomX=100,zoomY=100,opacity=0,blendType=0)
+ @>Wait: 40 frame(s)
+ @>Move Picture: 3, @15, Center (256,192), (100%,100%), 255, Normal
+ @>Wait: 50 frame(s)
+ @>Move Picture: 4, @15, Center (256,192), (100%,100%), 255, Normal
+ @>Wait: 120 frame(s)
+ @>Move Picture: 3, @15, Center (256,192), (100%,100%), 0, Normal
+ @>Move Picture: 4, @15, Center (256,192), (100%,100%), 0, Normal
+ @>Wait: 15 frame(s)
+ @>Move Picture: 2, @10, Upper Left (0,384), (100%,100%), 255, Normal
+ @>Change Screen Color Tone: (-255,-255,-255,0), @10
+ @>
+: Branch End
+@>Conditional Branch: Variable [0110: TMoM Credits Variable] == 3
+ @>Wait: 20 frame(s)
+ @>Script: pbShowPicture(3,"Credits/TMoM/Headers/5_Species.png",1,256,192,zoomX=100,zoomY=100,opacity=0,blendType=0)
+ @>Script: pbShowPicture(4,"Credits/TMoM/People/5_Species_1.png",1,256,192,zoomX=100,zoomY=100,opacity=0,blendType=0)
+ @>Wait: 40 frame(s)
+ @>Move Picture: 3, @15, Center (256,192), (100%,100%), 255, Normal
+ @>Wait: 50 frame(s)
+ @>Move Picture: 4, @15, Center (256,192), (100%,100%), 255, Normal
+ @>Wait: 120 frame(s)
+ @>Move Picture: 4, @15, Center (256,192), (100%,100%), 0, Normal
+ @>Wait: 20 frame(s)
+ @>Script: pbShowPicture(4,"Credits/TMoM/People/5_Species_2.png",1,256,192,zoomX=100,zoomY=100,opacity=0,blendType=0)
+ @>Wait: 50 frame(s)
+ @>Move Picture: 4, @15, Center (256,192), (100%,100%), 255, Normal
+ @>Wait: 120 frame(s)
+ @>Move Picture: 3, @15, Center (256,192), (100%,100%), 0, Normal
+ @>Move Picture: 4, @15, Center (256,192), (100%,100%), 0, Normal
+ @>Wait: 20 frame(s)
+ @>Script: pbShowPicture(3,"Credits/TMoM/Headers/6_TSA.png",1,256,192,zoomX=100,zoomY=100,opacity=0,blendType=0)
+ @>Script: pbShowPicture(4,"Credits/TMoM/People/6_TSA_1.png",1,256,192,zoomX=100,zoomY=100,opacity=0,blendType=0)
+ @>Wait: 40 frame(s)
+ @>Move Picture: 3, @15, Center (256,192), (100%,100%), 255, Normal
+ @>Wait: 50 frame(s)
+ @>Move Picture: 4, @15, Center (256,192), (100%,100%), 255, Normal
+ @>Wait: 120 frame(s)
+ @>Move Picture: 3, @15, Center (256,192), (100%,100%), 0, Normal
+ @>Move Picture: 4, @15, Center (256,192), (100%,100%), 0, Normal
+ @>Wait: 15 frame(s)
+ @>Move Picture: 2, @10, Upper Left (0,384), (100%,100%), 255, Normal
+ @>Change Screen Color Tone: (-255,-255,-255,0), @10
+ @>
+: Branch End
+@>Conditional Branch: Variable [0110: TMoM Credits Variable] == 4
+ @>Wait: 20 frame(s)
+ @>Script: pbShowPicture(3,"Credits/TMoM/Headers/7_Art.png",1,256,192,zoomX=100,zoomY=100,opacity=0,blendType=0)
+ @>Script: pbShowPicture(4,"Credits/TMoM/People/7_Art_1.png",1,256,192,zoomX=100,zoomY=100,opacity=0,blendType=0)
+ @>Wait: 40 frame(s)
+ @>Move Picture: 3, @15, Center (256,192), (100%,100%), 255, Normal
+ @>Wait: 50 frame(s)
+ @>Move Picture: 4, @15, Center (256,192), (100%,100%), 255, Normal
+ @>Wait: 120 frame(s)
+ @>Move Picture: 4, @15, Center (256,192), (100%,100%), 0, Normal
+ @>Wait: 20 frame(s)
+ @>Script: pbShowPicture(4,"Credits/TMoM/People/7_Art_2.png",1,256,192,zoomX=100,zoomY=100,opacity=0,blendType=0)
+ @>Wait: 50 frame(s)
+ @>Move Picture: 4, @15, Center (256,192), (100%,100%), 255, Normal
+ @>Wait: 120 frame(s)
+ @>Move Picture: 3, @15, Center (256,192), (100%,100%), 0, Normal
+ @>Move Picture: 4, @15, Center (256,192), (100%,100%), 0, Normal
+ @>Wait: 20 frame(s)
+ @>Script: pbShowPicture(3,"Credits/TMoM/Headers/8_Scripts.png",1,256,192,zoomX=100,zoomY=100,opacity=0,blendType=0)
+ @>Script: pbShowPicture(4,"Credits/TMoM/People/8_Scripts_1.png",1,256,192,zoomX=100,zoomY=100,opacity=0,blendType=0)
+ @>Wait: 40 frame(s)
+ @>Move Picture: 3, @15, Center (256,192), (100%,100%), 255, Normal
+ @>Wait: 50 frame(s)
+ @>Move Picture: 4, @15, Center (256,192), (100%,100%), 255, Normal
+ @>Wait: 120 frame(s)
+ @>Move Picture: 4, @15, Center (256,192), (100%,100%), 0, Normal
+ @>Wait: 20 frame(s)
+ @>Script: pbShowPicture(4,"Credits/TMoM/People/8_Scripts_2.png",1,256,192,zoomX=100,zoomY=100,opacity=0,blendType=0)
+ @>Wait: 50 frame(s)
+ @>Move Picture: 4, @15, Center (256,192), (100%,100%), 255, Normal
+ @>Wait: 120 frame(s)
+ @>Move Picture: 4, @15, Center (256,192), (100%,100%), 0, Normal
+ @>Wait: 20 frame(s)
+ @>Script: pbShowPicture(4,"Credits/TMoM/People/8_Scripts_3.png",1,256,192,zoomX=100,zoomY=100,opacity=0,blendType=0)
+ @>Wait: 50 frame(s)
+ @>Move Picture: 4, @15, Center (256,192), (100%,100%), 255, Normal
+ @>Wait: 120 frame(s)
+ @>Move Picture: 3, @15, Center (256,192), (100%,100%), 0, Normal
+ @>Move Picture: 4, @15, Center (256,192), (100%,100%), 0, Normal
+ @>Wait: 15 frame(s)
+ @>Move Picture: 2, @10, Upper Left (0,384), (100%,100%), 255, Normal
+ @>Change Screen Color Tone: (-255,-255,-255,0), @10
+ @>
+: Branch End
+@>Conditional Branch: Variable [0110: TMoM Credits Variable] == 5
+ @>Wait: 20 frame(s)
+ @>Script: pbShowPicture(3,"Credits/TMoM/Headers/9_Director.png",1,256,192,zoomX=100,zoomY=100,opacity=0,blendType=0)
+ @>Script: pbShowPicture(4,"Credits/TMoM/People/9_Director_1.png",1,256,192,zoomX=100,zoomY=100,opacity=0,blendType=0)
+ @>Wait: 40 frame(s)
+ @>Move Picture: 3, @15, Center (256,192), (100%,100%), 255, Normal
+ @>Wait: 50 frame(s)
+ @>Move Picture: 4, @15, Center (256,192), (100%,100%), 255, Normal
+ @>Wait: 120 frame(s)
+ @>Move Picture: 3, @15, Center (256,192), (100%,100%), 0, Normal
+ @>Move Picture: 4, @15, Center (256,192), (100%,100%), 0, Normal
+ @>Wait: 20 frame(s)
+ @>Script: pbShowPicture(3,"Credits/TMoM/Headers/10_Thanks.png",1,256,192,zoomX=100,zoomY=100,opacity=0,blendType=0)
+ @>Script: pbShowPicture(4,"Credits/TMoM/People/10_Thanks_1.png",1,256,192,zoomX=100,zoomY=100,opacity=0,blendType=0)
+ @>Wait: 40 frame(s)
+ @>Move Picture: 3, @15, Center (256,192), (100%,100%), 255, Normal
+ @>Wait: 50 frame(s)
+ @>Move Picture: 4, @15, Center (256,192), (100%,100%), 255, Normal
+ @>Wait: 120 frame(s)
+ @>Move Picture: 4, @15, Center (256,192), (100%,100%), 0, Normal
+ @>Wait: 20 frame(s)
+ @>Script: pbShowPicture(4,"Credits/TMoM/People/10_Thanks_2.png",1,256,192,zoomX=100,zoomY=100,opacity=0,blendType=0)
+ @>Wait: 50 frame(s)
+ @>Move Picture: 4, @15, Center (256,192), (100%,100%), 255, Normal
+ @>Wait: 120 frame(s)
+ @>Move Picture: 4, @15, Center (256,192), (100%,100%), 0, Normal
+ @>Wait: 20 frame(s)
+ @>Script: pbShowPicture(4,"Credits/TMoM/People/10_Thanks_3.png",1,256,192,zoomX=100,zoomY=100,opacity=0,blendType=0)
+ @>Wait: 50 frame(s)
+ @>Move Picture: 4, @15, Center (256,192), (100%,100%), 255, Normal
+ @>Wait: 120 frame(s)
+ @>Move Picture: 3, @15, Center (256,192), (100%,100%), 0, Normal
+ @>Move Picture: 4, @15, Center (256,192), (100%,100%), 0, Normal
+ @>Wait: 15 frame(s)
+ @>Move Picture: 2, @10, Upper Left (0,384), (100%,100%), 255, Normal
+ @>Change Screen Color Tone: (-255,-255,-255,0), @10
+ @>
+: Branch End
+@>Conditional Branch: Variable [0110: TMoM Credits Variable] == 6
+ @>Script: pbShowPicture(1,"Credits/Gensokyo.png",1,256,192,zoomX=100,zoomY=100,opacity=0,blendType=0)
+ @>Wait: 10 frame(s)
+ @>Move Picture: 1, @10, Center (256,192), (100%,100%), 255, Normal
+ @>Wait: 20 frame(s)
+ @>Move Picture: 2, @40, Upper Left (0,0), (100%,100%), 255, Normal
+ @>Wait: 50 frame(s)
+ @>Script: pbShowPicture(3,"Credits/TMoM/Headers/10_Thanks.png",1,256,192,zoomX=100,zoomY=100,opacity=0,blendType=0)
+ @>Script: pbShowPicture(4,"Credits/Gen_Credits_1.png",1,256,192,zoomX=100,zoomY=100,opacity=0,blendType=0)
+ @>Wait: 40 frame(s)
+ @>Move Picture: 3, @15, Center (256,192), (100%,100%), 255, Normal
+ @>Wait: 50 frame(s)
+ @>Move Picture: 4, @15, Center (256,192), (100%,100%), 255, Normal
+ @>Wait: 120 frame(s)
+ @>Move Picture: 4, @15, Center (256,192), (100%,100%), 0, Normal
+ @>Wait: 20 frame(s)
+ @>Script: pbShowPicture(4,"Credits/Gen_Credits_2.png",1,256,192,zoomX=100,zoomY=100,opacity=0,blendType=0)
+ @>Wait: 50 frame(s)
+ @>Move Picture: 4, @15, Center (256,192), (100%,100%), 255, Normal
+ @>Wait: 120 frame(s)
+ @>Move Picture: 4, @15, Center (256,192), (100%,100%), 0, Normal
+ @>Wait: 20 frame(s)
+ @>Script: pbShowPicture(4,"Credits/Gen_Credits_3.png",1,256,192,zoomX=100,zoomY=100,opacity=0,blendType=0)
+ @>Wait: 50 frame(s)
+ @>Move Picture: 4, @15, Center (256,192), (100%,100%), 255, Normal
+ @>Wait: 120 frame(s)
+ @>Move Picture: 3, @15, Center (256,192), (100%,100%), 0, Normal
+ @>Move Picture: 4, @15, Center (256,192), (100%,100%), 0, Normal
+ @>Wait: 20 frame(s)
+ @>Script: pbShowPicture(4,"Credits/Gen_Credits_4.png",1,256,192,zoomX=100,zoomY=100,opacity=0,blendType=0)
+ @>Wait: 40 frame(s)
+ @>Move Picture: 4, @15, Center (256,192), (100%,100%), 255, Normal
+ @>Wait: 120 frame(s)
+ @>Move Picture: 4, @15, Center (256,192), (100%,100%), 0, Normal
+ @>Wait: 20 frame(s)
+ @>Script: pbShowPicture(4,"Credits/Gen_Credits_5.png",1,256,192,zoomX=100,zoomY=100,opacity=0,blendType=0)
+ @>Wait: 50 frame(s)
+ @>Move Picture: 4, @15, Center (256,192), (100%,100%), 255, Normal
+ @>Wait: 120 frame(s)
+ @>Move Picture: 4, @15, Center (256,192), (100%,100%), 0, Normal
+ @>Wait: 20 frame(s)
+ @>Script: pbShowPicture(4,"Credits/Gen_Credits_6.png",1,256,192,zoomX=100,zoomY=100,opacity=0,blendType=0)
+ @>Wait: 50 frame(s)
+ @>Move Picture: 4, @15, Center (256,192), (100%,100%), 255, Normal
+ @>Wait: 120 frame(s)
+ @>Move Picture: 4, @15, Center (256,192), (100%,100%), 0, Normal
+ @>Wait: 20 frame(s)
+ @>Script: pbShowPicture(4,"Credits/Gen_Credits_7.png",1,256,192,zoomX=100,zoomY=100,opacity=0,blendType=0)
+ @>Wait: 50 frame(s)
+ @>Move Picture: 4, @15, Center (256,192), (100%,100%), 255, Normal
+ @>Wait: 120 frame(s)
+ @>Move Picture: 4, @15, Center (256,192), (100%,100%), 0, Normal
+ @>Wait: 15 frame(s)
+ @>Move Picture: 2, @10, Upper Left (0,384), (100%,100%), 255, Normal
+ @>Change Screen Color Tone: (-255,-255,-255,0), @10
  @>
 : Branch End
 @>
