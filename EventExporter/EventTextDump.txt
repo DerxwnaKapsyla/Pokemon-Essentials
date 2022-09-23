@@ -22406,6 +22406,28 @@ List of Event Commands:
 @>
 
 #------------------------------------------------------------------------------
+Event ID: 004
+Event Name: EV004
+(X,Y): (019,017)
+
+Page #1
+Conditions
+None
+
+Autonomous Movement
+Type: Fixed
+Speed: 3: Slow
+Freq: 3: Low
+Options Enabled
+Move Animation
+Trigger: Action Button
+
+List of Event Commands:
+@>Change Screen Color Tone: (-255,-255,-255,0), @1
+@>Text: The Adventures of Ayaka
+@>
+
+#------------------------------------------------------------------------------
 
 #==============================================================================
 Map ID: 029
@@ -25103,135 +25125,6 @@ Map ID: 078
 Map Name: Credits - Group Shot
 Tileset: 004: Poke Center
 Width: 20, Height: 15
-
-#==============================================================================
-Map ID: 079
-Map Name: Stairs to Roof
-Tileset: 037: Ruined Western Mansion
-Width: 20, Height: 15
-Auto-Change BGM: W-010. Alice Maestra
-
-#------------------------------------------------------------------------------
-Event ID: 001
-Event Name: Counter(3)
-(X,Y): (009,012)
-
-Page #1
-Conditions
-Variable 0107: TMoM Plot Variable is 14 or above
-
-Graphic: Object ball
-
-Autonomous Movement
-Type: Fixed
-Speed: 3: Slow
-Freq: 3: Low
-Options Enabled
-Move Animation
-Trigger: Event Touch
-
-List of Event Commands:
-@>Play SE: 'Exit Door', 80, 100
-@>Change Screen Color Tone: (-255,-255,-255,0), @6
-@>Wait: 8 frame(s)
-@>Transfer Player:[027: Basement], (013,061), No Fade
-@>Set Move Route: Player
- :              : $>Move Down
-@>Change Screen Color Tone: (-102,-102,-102,0), @6
-@>
-
-#------------------------------------------------------------------------------
-Event ID: 002
-Event Name: Zephyr Fairy
-(X,Y): (004,009)
-
-Page #1
-Conditions
-None
-
-Graphic: TPDP_NPC 48
-
-Autonomous Movement
-Type: Fixed
-Speed: 3: Slow
-Freq: 3: Low
-Options Enabled
-Move Animation
-Trigger: Action Button
-
-List of Event Commands:
-@>Script: pbTrainerIntro(:ZEPHYR)
-@>Text: This is my turf and I won't let you past here!
- :    : I'll blow you away without a second thought!
-@>Comment: EndSpeech: N-No! I was supposed to be the best!
-@>Conditional Branch: Script: TrainerBattle.start(:ZEPHYR, "Saya")
- @>Text: You blew me away instead!
- @>Text: Nooooooo~!
- @>Change Screen Color Tone: (-255,-255,-255,0), @6
- @>Wait: 8 frame(s)
- @>Play SE: 'Enemy Defeat', 30, 100
- @>Control Self Switch: A =ON
- @>Change Screen Color Tone: (-102,-102,-102,0), @6
- @>
-: Branch End
-@>Script: pbTrainerEnd
-@>
-
-Page #2
-Conditions
-Self Switch A is ON
-
-Autonomous Movement
-Type: Fixed
-Speed: 3: Slow
-Freq: 3: Low
-Options Enabled
-Move Animation
-Trigger: Action Button
-
-List of Event Commands:
-@>
-
-#------------------------------------------------------------------------------
-Event ID: 003
-Event Name: ExitArrow
-(X,Y): (003,009)
-
-Page #1
-Conditions
-None
-
-Graphic: Exitarrow_red
-
-Autonomous Movement
-Type: Fixed
-Speed: 3: Slow
-Freq: 3: Low
-Options Enabled
-Move Animation
-Stop Animation
-Always on Top
-Trigger: Player Touch
-
-List of Event Commands:
-@>Conditional Branch: Player is facing Left
- @>Play SE: 'Door exit', 100, 100
- @>Change Screen Color Tone: (-255,-255,-255,0), @6
- @>Wait: 8 frame(s)
- @>Transfer Player:[028: Roof], (014,012), No Fade
- @>Change Screen Color Tone: (0,0,0,0), @6
- @>
-: Branch End
-@>
-
-#------------------------------------------------------------------------------
-
-#==============================================================================
-Map ID: 080
-Map Name: Roof
-Tileset: 037: Ruined Western Mansion
-Width: 35, Height: 37
-Auto-Change BGM: W-012. Hourai Illusion ~ Far East
 
 #==============================================================================
 
