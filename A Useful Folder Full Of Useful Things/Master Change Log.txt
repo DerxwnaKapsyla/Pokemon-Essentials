@@ -48,16 +48,13 @@ August 28th-September 22nd, 2022:
 
 
 TAoA Things to Fix or Do
-- Add in an "Origin Sounds" item, which is similar to GB Sounds; it'll play the original tracks from TMoM
-	* This is assuming that I replace them with later generation style tracks
-- Figure out why the Change BGM plugin only changes the BGM of the map you're on if you reload from a save
-- Add the Defeat Counter into the save UI
-- Add Door to Alice's house
-https://i.imgur.com/xmVrC5G.png (Typo, also Maya's sprite)
+https://i.imgur.com/Zejykjm.png
 
 DevKit/Asteria/TAoA/Etc fixes:
 * Konngara's sprite is named wrong
 * AdRan has Kagerou's cry
+1. Puppet Toxic is not guaranteed to hit with miasma types 
+2. Skill Cards and Hidden Cards dont show up with their icons
 A bunch of moves have incomplete function codes in moves.txt
 - Rage
 - Thrash
@@ -66,3 +63,7 @@ A bunch of moves have incomplete function codes in moves.txt
 - Lock On
 - Mana Shield
 - Gehaburn
+
+Known Issues:
+Defeat Count carries over between saves (for now, hopefully)
+BGM Change doesn't work perfectly on v20.1; it only changes the bgm of the map you're on if you reload from a save at any point before the bgm changes.

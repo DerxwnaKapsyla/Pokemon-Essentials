@@ -217,6 +217,7 @@ class Battle
       pkmn.calc_stats
       battler&.pbUpdate(false)
       @scene.pbRefreshOne(battler.index) if battler
+	  pbMEPlay("Pkmn level up") # Derx: Official game accuracy change - Maybe. Will need to check.
       pbDisplayPaused(_INTL("{1} grew to Lv. {2}!", pkmn.name, curLevel))
       @scene.pbLevelUp(pkmn, battler, oldTotalHP, oldAttack, oldDefense,
                        oldSpAtk, oldSpDef, oldSpeed)

@@ -76,8 +76,11 @@ List of Event Commands:
 @>Change Text Options: Bottom, Show
 @>Call Common Event: Want to know?
 @>Comment: ------------------------------------------------------
-@>Label: Start
 @>Change Text Options: Bottom, Hide
+@>Text: The Adventures of Ayaka is a series of games that revolve around
+ :    : the main character, Ayaka (who can be renamed when starting), 
+ :    : and her adventures across Gensokyo.
+@>Label: Start
 @>Text: Which of these adventures would you like to play through?
 @>Text: \l[3]Do note, this cannot be changed later, and can only be done on
  :    : a separate save file.
@@ -119,6 +122,83 @@ List of Event Commands:
   @>Move Picture: 1, @20, Upper Left (0,0), (100%,100%), 0, Normal
   @>Wait: 20 frame(s)
   @>Transfer Player:[004: The Festival of Curses], (001,001)
+  @>
+ : When [No]
+  @>Move Picture: 1, @20, Upper Left (0,0), (100%,100%), 0, Normal
+  @>Wait: 20 frame(s)
+  @>Jump to Label: Start
+  @>
+ : Branch End
+ @>
+: Branch End
+@>
+
+Page #2
+Conditions
+None
+
+Autonomous Movement
+Type: Fixed
+Speed: 3: Slow
+Freq: 3: Low
+Options Enabled
+Move Animation
+Trigger: Autorun
+
+List of Event Commands:
+@>Fade Out BGM: 1 sec.
+@>Wait: 20 frame(s)
+@>Change Transparent Flag: Transparency
+@>Comment: ------------------------------------------------------
+@>Change Text Options: Bottom, Show
+@>Call Common Event: Want to know?
+@>Comment: ------------------------------------------------------
+@>Change Text Options: Bottom, Hide
+@>Text: The Adventures of Ayaka is a series of games that revolve around
+ :    : the main character, Ayaka (who can be renamed when starting), 
+ :    : and her adventures across Gensokyo.
+@>Label: Start
+@>Text: Which of these adventures would you like to play through?
+@>Text: \l[3]Do note, this cannot be changed later, and can only be done on
+ :    : a separate save file.
+@>Show Choices: The Mansion of Mystery, The Festival of Curses
+(When Cancel: Disallow)
+: When [The Mansion of Mystery]
+ @>Comment: --- TMoM
+ @>Show Picture: 1, 'TMoM', Upper Left (0,0), (100%,100%), 0, Normal
+ @>Move Picture: 1, @20, Upper Left (0,0), (100%,100%), 255, Normal
+ @>Wait: 60 frame(s)
+ @>Change Text Options: Bottom, Show
+ @>Text: The Mansion of Mystery.\wt[20]\nIs this the adventure you'd like to play?
+ @>Show Choices: Yes, No
+ (When Cancel: Choice 2)
+ : When [Yes]
+  @>Control Variables: [0105: Game Selected] = 1
+  @>Move Picture: 1, @20, Upper Left (0,0), (100%,100%), 0, Normal
+  @>Wait: 20 frame(s)
+  @>Transfer Player:[003: The Mansion of Mystery], (001,001)
+  @>
+ : When [No]
+  @>Move Picture: 1, @20, Upper Left (0,0), (100%,100%), 0, Normal
+  @>Wait: 20 frame(s)
+  @>Jump to Label: Start
+  @>
+ : Branch End
+ @>
+: When [The Festival of Curses]
+ @>Comment: --- TFoC
+ @>Show Picture: 1, 'TFoC', Upper Left (0,0), (100%,100%), 0, Normal
+ @>Move Picture: 1, @20, Upper Left (0,0), (100%,100%), 255, Normal
+ @>Wait: 60 frame(s)
+ @>Change Text Options: Bottom, Show
+ @>Text: The Festival of Curses.\wt[20]\nIs this the adventure you'd like to play?
+ @>Show Choices: Yes, No
+ (When Cancel: Choice 2)
+ : When [Yes]
+  @>Text: NOT CURRENTLY IMPLEMENTED. PLEASE WAIT FOR FUTURE UPDATES.
+  @>Move Picture: 1, @20, Upper Left (0,0), (100%,100%), 0, Normal
+  @>Wait: 20 frame(s)
+  @>Jump to Label: Start
   @>
  : When [No]
   @>Move Picture: 1, @20, Upper Left (0,0), (100%,100%), 0, Normal
@@ -1139,13 +1219,17 @@ List of Event Commands:
 @>Show Choices: Yes, No
 (When Cancel: Choice 2)
 : When [Yes]
+ @>Call Common Event: Player Name Easter Eggs
  @>
 : When [No]
  @>Text: What is your name?
  @>Jump to Label: Enter Name
  @>
 : Branch End
-@>Call Common Event: Starter Selection
+@>Conditional Branch: Switch [0106: Name Easter Egg] == OFF
+ @>Call Common Event: Starter Selection
+ @>
+: Branch End
 @>Comment: ------------------------------------------------------
 @>Text: Skip the intro cinematic?
 @>Show Choices: Yes, No
@@ -2130,7 +2214,7 @@ List of Event Commands:
  @>Text: This way leads to the area we use for festivals.
  @>Text: I don't have any purpose there.
  @>Set Move Route: Player
-  :              : $>Move Right
+  :              : $>Move Left
  @>
 : Branch End
 @>
@@ -2812,7 +2896,7 @@ List of Event Commands:
 
 Page #3
 Conditions
-Switch 0106:  is ON
+Switch 0106: Name Easter Egg is ON
 
 Autonomous Movement
 Type: Fixed
@@ -3668,6 +3752,33 @@ List of Event Commands:
  @>
 : Branch End
 @>Control Switches: [0001: Starting over] = OFF
+@>
+
+#------------------------------------------------------------------------------
+Event ID: 049
+Event Name: EV049
+(X,Y): (055,048)
+
+Page #1
+Conditions
+None
+
+Graphic: Object ball
+
+Autonomous Movement
+Type: Fixed
+Speed: 3: Slow
+Freq: 3: Low
+Options Enabled
+Move Animation
+Trigger: Action Button
+
+List of Event Commands:
+@>Script: $game_variables[1] = $player.defeat_count
+@>Text: \bDEBUG ONLY TEXT: Set the defeat count.
+@>Input Number: [0001: Temp Pokemon Choice], 2 digit(s)
+@>Text: \bSetting losses to \v[1].
+@>Script: $player.defeat_count = pbGet(1)
 @>
 
 #------------------------------------------------------------------------------
@@ -5998,7 +6109,7 @@ List of Event Commands:
 @>Wait: 10 frame(s)
 @>Text: \xn[Shinji]Well I can certainly see why it has this name.
 @>Text: \xn[Kota]Is it always this foggy?
-@>Text: \xn[Marisa]You bet'cha! Sometimes its worse, like back 
+@>Text: \xn[Marisa]You bet'cha! Sometimes it's worse, like back 
  :    : during the Scarlet Mist Incident.
 @>Text: \xn[Marisa]It can get pretty hard to see around these parts, so 
  :    : 'f I was you, I'd have some sort of light source to help navigate.
@@ -9248,6 +9359,24 @@ Move Animation
 Trigger: Player Touch
 
 List of Event Commands:
+@>Text: This door is locked.
+@>
+
+Page #2
+Conditions
+Variable 0107: TMoM Plot Variable is 14 or above
+
+Graphic: Doors_TPDP2
+
+Autonomous Movement
+Type: Fixed
+Speed: 3: Slow
+Freq: 3: Low
+Options Enabled
+Move Animation
+Trigger: Player Touch
+
+List of Event Commands:
 @>Set Move Route: This event
                   (Ignore If Can't Move)
  :              : $>SE: 'Door enter', 100, 100
@@ -9284,7 +9413,7 @@ List of Event Commands:
 @>Change Screen Color Tone: (0,0,0,0), @6
 @>
 
-Page #2
+Page #3
 Conditions
 Switch 0022: s:tsOff?("A") is ON
 
@@ -21172,6 +21301,49 @@ List of Event Commands:
 @>
 
 #------------------------------------------------------------------------------
+Event ID: 019
+Event Name: EV019
+(X,Y): (053,005)
+
+Page #1
+Conditions
+None
+
+Autonomous Movement
+Type: Fixed
+Speed: 3: Slow
+Freq: 3: Low
+Options Enabled
+Move Animation
+Trigger: Action Button
+
+List of Event Commands:
+@>Text: It appears to be a diary of some sort. Most
+ :    : of the pages appear to be ripped out.
+@>Text: Except for one.
+@>Text: Read it?
+@>Show Choices: Yes, No
+(When Cancel: Choice 2)
+: When [Yes]
+ @>Text: \rI've figured it out! I've figured out how it might
+  :    : be possible to create an artificial lifeform!
+ @>Text: \rIt's impossible through our current level of scientific
+  :    : discovery.
+ @>Text: \rAlchemy and magic. That's where my answers
+  :    : await me.
+ @>Text: \rOne of father's old history books talks about
+  :    : a region where youkai and magic ran rampant.
+ @>Text: \rI will head to where this region of land was
+  :    : and study what I can. And when I return, I will
+  :    : bring them back.
+ @>Text: \rLayla Prismriver, October 27th, 1952
+ @>
+: When [No]
+ @>
+: Branch End
+@>
+
+#------------------------------------------------------------------------------
 Event ID: 020
 Event Name: Nue
 (X,Y): (058,005)
@@ -22135,6 +22307,30 @@ List of Event Commands:
 @>
 
 #------------------------------------------------------------------------------
+Event ID: 035
+Event Name: EV035
+(X,Y): (056,005)
+
+Page #1
+Conditions
+None
+
+Autonomous Movement
+Type: Fixed
+Speed: 3: Slow
+Freq: 3: Low
+Options Enabled
+Move Animation
+Trigger: Action Button
+
+List of Event Commands:
+@>Text: \bDEBUG ONLY TEXT: Set the defeat count.
+@>Input Number: [0001: Temp Pokemon Choice], 2 digit(s)
+@>Text: \bSetting losses to \v[1].
+@>Script: $player.defeat_count = pbGet(1)
+@>
+
+#------------------------------------------------------------------------------
 
 #==============================================================================
 Map ID: 028
@@ -22403,28 +22599,6 @@ List of Event Commands:
  @>Change Screen Color Tone: (0,0,0,0), @6
  @>
 : Branch End
-@>
-
-#------------------------------------------------------------------------------
-Event ID: 004
-Event Name: EV004
-(X,Y): (019,017)
-
-Page #1
-Conditions
-None
-
-Autonomous Movement
-Type: Fixed
-Speed: 3: Slow
-Freq: 3: Low
-Options Enabled
-Move Animation
-Trigger: Action Button
-
-List of Event Commands:
-@>Change Screen Color Tone: (-255,-255,-255,0), @1
-@>Text: The Adventures of Ayaka
 @>
 
 #------------------------------------------------------------------------------
@@ -27311,6 +27485,43 @@ Common Event Name:
 Trigger: None
 
 List of Event Commands:
+@>Conditional Branch: Script: $game_variables[2] == "Test"
+ @>Text: Your fate has already been decided for you.
+ @>Script: pkmn = Pokemon.new(:CKOISHI, 15)
+ :       : pkmn.item = :ORANBERRY
+ :       : pkmn.poke_ball = :CHERISHORB
+ :       : pkmn.obtain_text = "Gensokyo Wilderness"
+ @>Script: pkmn.iv[:HP] = 31
+ :       : pkmn.iv[:ATTACK] = 31
+ :       : pkmn.iv[:DEFENSE] = 31
+ :       : pkmn.iv[:SPATK] = 31
+ :       : pkmn.iv[:SPDEF] = 31
+ :       : pkmn.iv[:SPEED] = 31
+ :       : pkmn.calc_stats
+ :       : pkmn.reset_moves
+ :       : pbAddPokemonSilent(pkmn)
+ @>Control Switches: [0106: Name Easter Egg] = ON
+ @>
+: Branch End
+@>Conditional Branch: Script: $game_variables[2] == "Test2"
+ @>Text: \se[WBC]Welcome back, commander.
+ @>Script: pkmn = Pokemon.new(:CSUMIREKO, 15)
+ :       : pkmn.item = :ORANBERRY
+ :       : pkmn.poke_ball = :CHERISHORB
+ :       : pkmn.obtain_text = "Gensokyo Wilderness"
+ :       : pkmn.shiny = true
+ @>Script: pkmn.iv[:HP] = 31
+ :       : pkmn.iv[:ATTACK] = 31
+ :       : pkmn.iv[:DEFENSE] = 31
+ :       : pkmn.iv[:SPATK] = 31
+ :       : pkmn.iv[:SPDEF] = 31
+ :       : pkmn.iv[:SPEED] = 31
+ :       : pkmn.calc_stats
+ :       : pkmn.reset_moves
+ :       : pbAddPokemonSilent(pkmn)
+ @>Control Switches: [0106: Name Easter Egg] = ON
+ @>
+: Branch End
 @>
 
 #==============================================================================
@@ -27984,240 +28195,63 @@ List of Event Commands:
 
 #==============================================================================
 Common Event ID: 105
-Common Event Name: TMoM Credits (Good End) (Backup)
+Common Event Name: Player Name Easter Eggs
 
 Trigger: None
 
 List of Event Commands:
-@>Conditional Branch: Variable [0110: TMoM Credits Variable] == 1
- @>Wait: 20 frame(s)
- @>Script: pbShowPicture(3,"Credits/TMoM/Headers/1_AudComp.png",1,256,192,zoomX=100,zoomY=100,opacity=0,blendType=0)
- @>Script: pbShowPicture(4,"Credits/TMoM/People/1_AudComp_1.png",1,256,192,zoomX=100,zoomY=100,opacity=0,blendType=0)
- @>Wait: 40 frame(s)
- @>Move Picture: 3, @15, Center (256,192), (100%,100%), 255, Normal
- @>Wait: 50 frame(s)
- @>Move Picture: 4, @15, Center (256,192), (100%,100%), 255, Normal
- @>Wait: 120 frame(s)
- @>Move Picture: 4, @15, Center (256,192), (100%,100%), 0, Normal
- @>Wait: 20 frame(s)
- @>Script: pbShowPicture(4,"Credits/TMoM/People/1_AudComp_2.png",1,256,192,zoomX=100,zoomY=100,opacity=0,blendType=0)
- @>Wait: 50 frame(s)
- @>Move Picture: 4, @15, Center (256,192), (100%,100%), 255, Normal
- @>Wait: 120 frame(s)
- @>Move Picture: 3, @15, Center (256,192), (100%,100%), 0, Normal
- @>Move Picture: 4, @15, Center (256,192), (100%,100%), 0, Normal
- @>Wait: 20 frame(s)
- @>Script: pbShowPicture(3,"Credits/TMoM/Headers/2_SFX.png",1,256,192,zoomX=100,zoomY=100,opacity=0,blendType=0)
- @>Script: pbShowPicture(4,"Credits/TMoM/People/2_SFX_1.png",1,256,192,zoomX=100,zoomY=100,opacity=0,blendType=0)
- @>Wait: 40 frame(s)
- @>Move Picture: 3, @15, Center (256,192), (100%,100%), 255, Normal
- @>Wait: 50 frame(s)
- @>Move Picture: 4, @15, Center (256,192), (100%,100%), 255, Normal
- @>Wait: 120 frame(s)
- @>Move Picture: 3, @15, Center (256,192), (100%,100%), 0, Normal
- @>Move Picture: 4, @15, Center (256,192), (100%,100%), 0, Normal
- @>Wait: 15 frame(s)
- @>Move Picture: 2, @10, Upper Left (0,384), (100%,100%), 255, Normal
- @>Change Screen Color Tone: (-255,-255,-255,0), @10
+@>Conditional Branch: Script: $player.name == "NorionMyth" || $player.name == "Norion" || $player.name == "Norion Myth" 
+ @>Text: Your fate has already been decided for you.
+ @>Script: pkmn = Pokemon.new(:CKOISHI, 15)
+ :       : pkmn.item = :ORANBERRY
+ :       : pkmn.poke_ball = :CHERISHORB
+ :       : pkmn.obtain_text = "Gensokyo Wilderness"
+ @>Script: pkmn.iv[:HP] = 31
+ :       : pkmn.iv[:ATTACK] = 31
+ :       : pkmn.iv[:DEFENSE] = 31
+ :       : pkmn.iv[:SPATK] = 31
+ :       : pkmn.iv[:SPDEF] = 31
+ :       : pkmn.iv[:SPEED] = 31
+ :       : pkmn.calc_stats
+ :       : pkmn.reset_moves
+ :       : pbAddPokemonSilent(pkmn)
+ @>Control Switches: [0106: Name Easter Egg] = ON
  @>
 : Branch End
-@>Conditional Branch: Variable [0110: TMoM Credits Variable] == 2
- @>Wait: 20 frame(s)
- @>Script: pbShowPicture(3,"Credits/TMoM/Headers/3_ProgDev.png",1,256,192,zoomX=100,zoomY=100,opacity=0,blendType=0)
- @>Script: pbShowPicture(4,"Credits/TMoM/People/3_ProgDev_1.png",1,256,192,zoomX=100,zoomY=100,opacity=0,blendType=0)
- @>Wait: 40 frame(s)
- @>Move Picture: 3, @15, Center (256,192), (100%,100%), 255, Normal
- @>Wait: 50 frame(s)
- @>Move Picture: 4, @15, Center (256,192), (100%,100%), 255, Normal
- @>Wait: 120 frame(s)
- @>Move Picture: 3, @15, Center (256,192), (100%,100%), 0, Normal
- @>Move Picture: 4, @15, Center (256,192), (100%,100%), 0, Normal
- @>Wait: 20 frame(s)
- @>Script: pbShowPicture(3,"Credits/TMoM/Headers/4_PlotMap.png",1,256,192,zoomX=100,zoomY=100,opacity=0,blendType=0)
- @>Script: pbShowPicture(4,"Credits/TMoM/People/4_PlotMap_1.png",1,256,192,zoomX=100,zoomY=100,opacity=0,blendType=0)
- @>Wait: 40 frame(s)
- @>Move Picture: 3, @15, Center (256,192), (100%,100%), 255, Normal
- @>Wait: 50 frame(s)
- @>Move Picture: 4, @15, Center (256,192), (100%,100%), 255, Normal
- @>Wait: 120 frame(s)
- @>Move Picture: 3, @15, Center (256,192), (100%,100%), 0, Normal
- @>Move Picture: 4, @15, Center (256,192), (100%,100%), 0, Normal
- @>Wait: 15 frame(s)
- @>Move Picture: 2, @10, Upper Left (0,384), (100%,100%), 255, Normal
- @>Change Screen Color Tone: (-255,-255,-255,0), @10
+@>Conditional Branch: Script: $player.name == "Derxwna" || $player.name == "Kaliana" 
+ @>Text: \se[WBC]Welcome back, commander.\wtnp[30]
+ @>Script: pkmn = Pokemon.new(:CSUMIREKO, 15)
+ :       : pkmn.item = :ORANBERRY
+ :       : pkmn.poke_ball = :CHERISHORB
+ :       : pkmn.obtain_text = "Gensokyo Wilderness"
+ :       : pkmn.shiny = true
+ @>Script: pkmn.iv[:HP] = 31
+ :       : pkmn.iv[:ATTACK] = 31
+ :       : pkmn.iv[:DEFENSE] = 31
+ :       : pkmn.iv[:SPATK] = 31
+ :       : pkmn.iv[:SPDEF] = 31
+ :       : pkmn.iv[:SPEED] = 31
+ :       : pkmn.calc_stats
+ :       : pkmn.reset_moves
+ :       : pbAddPokemonSilent(pkmn)
+ @>Control Switches: [0106: Name Easter Egg] = ON
  @>
 : Branch End
-@>Conditional Branch: Variable [0110: TMoM Credits Variable] == 3
- @>Wait: 20 frame(s)
- @>Script: pbShowPicture(3,"Credits/TMoM/Headers/5_Species.png",1,256,192,zoomX=100,zoomY=100,opacity=0,blendType=0)
- @>Script: pbShowPicture(4,"Credits/TMoM/People/5_Species_1.png",1,256,192,zoomX=100,zoomY=100,opacity=0,blendType=0)
- @>Wait: 40 frame(s)
- @>Move Picture: 3, @15, Center (256,192), (100%,100%), 255, Normal
- @>Wait: 50 frame(s)
- @>Move Picture: 4, @15, Center (256,192), (100%,100%), 255, Normal
- @>Wait: 120 frame(s)
- @>Move Picture: 4, @15, Center (256,192), (100%,100%), 0, Normal
- @>Wait: 20 frame(s)
- @>Script: pbShowPicture(4,"Credits/TMoM/People/5_Species_2.png",1,256,192,zoomX=100,zoomY=100,opacity=0,blendType=0)
- @>Wait: 50 frame(s)
- @>Move Picture: 4, @15, Center (256,192), (100%,100%), 255, Normal
- @>Wait: 120 frame(s)
- @>Move Picture: 3, @15, Center (256,192), (100%,100%), 0, Normal
- @>Move Picture: 4, @15, Center (256,192), (100%,100%), 0, Normal
- @>Wait: 20 frame(s)
- @>Script: pbShowPicture(3,"Credits/TMoM/Headers/6_TSA.png",1,256,192,zoomX=100,zoomY=100,opacity=0,blendType=0)
- @>Script: pbShowPicture(4,"Credits/TMoM/People/6_TSA_1.png",1,256,192,zoomX=100,zoomY=100,opacity=0,blendType=0)
- @>Wait: 40 frame(s)
- @>Move Picture: 3, @15, Center (256,192), (100%,100%), 255, Normal
- @>Wait: 50 frame(s)
- @>Move Picture: 4, @15, Center (256,192), (100%,100%), 255, Normal
- @>Wait: 120 frame(s)
- @>Move Picture: 3, @15, Center (256,192), (100%,100%), 0, Normal
- @>Move Picture: 4, @15, Center (256,192), (100%,100%), 0, Normal
- @>Wait: 15 frame(s)
- @>Move Picture: 2, @10, Upper Left (0,384), (100%,100%), 255, Normal
- @>Change Screen Color Tone: (-255,-255,-255,0), @10
+@>Conditional Branch: Script: $player.name == "Ayaka... 2!" || $player.name == "Ayaka2"
+ @>Text: <b>Initializing Hardcore Mode.</b>
+ @>Script: $player.name = "Ayaka"
+ @>Control Switches: [0107: New Game +] = ON
  @>
 : Branch End
-@>Conditional Branch: Variable [0110: TMoM Credits Variable] == 4
- @>Wait: 20 frame(s)
- @>Script: pbShowPicture(3,"Credits/TMoM/Headers/7_Art.png",1,256,192,zoomX=100,zoomY=100,opacity=0,blendType=0)
- @>Script: pbShowPicture(4,"Credits/TMoM/People/7_Art_1.png",1,256,192,zoomX=100,zoomY=100,opacity=0,blendType=0)
- @>Wait: 40 frame(s)
- @>Move Picture: 3, @15, Center (256,192), (100%,100%), 255, Normal
- @>Wait: 50 frame(s)
- @>Move Picture: 4, @15, Center (256,192), (100%,100%), 255, Normal
- @>Wait: 120 frame(s)
- @>Move Picture: 4, @15, Center (256,192), (100%,100%), 0, Normal
- @>Wait: 20 frame(s)
- @>Script: pbShowPicture(4,"Credits/TMoM/People/7_Art_2.png",1,256,192,zoomX=100,zoomY=100,opacity=0,blendType=0)
- @>Wait: 50 frame(s)
- @>Move Picture: 4, @15, Center (256,192), (100%,100%), 255, Normal
- @>Wait: 120 frame(s)
- @>Move Picture: 3, @15, Center (256,192), (100%,100%), 0, Normal
- @>Move Picture: 4, @15, Center (256,192), (100%,100%), 0, Normal
- @>Wait: 20 frame(s)
- @>Script: pbShowPicture(3,"Credits/TMoM/Headers/8_Scripts.png",1,256,192,zoomX=100,zoomY=100,opacity=0,blendType=0)
- @>Script: pbShowPicture(4,"Credits/TMoM/People/8_Scripts_1.png",1,256,192,zoomX=100,zoomY=100,opacity=0,blendType=0)
- @>Wait: 40 frame(s)
- @>Move Picture: 3, @15, Center (256,192), (100%,100%), 255, Normal
- @>Wait: 50 frame(s)
- @>Move Picture: 4, @15, Center (256,192), (100%,100%), 255, Normal
- @>Wait: 120 frame(s)
- @>Move Picture: 4, @15, Center (256,192), (100%,100%), 0, Normal
- @>Wait: 20 frame(s)
- @>Script: pbShowPicture(4,"Credits/TMoM/People/8_Scripts_2.png",1,256,192,zoomX=100,zoomY=100,opacity=0,blendType=0)
- @>Wait: 50 frame(s)
- @>Move Picture: 4, @15, Center (256,192), (100%,100%), 255, Normal
- @>Wait: 120 frame(s)
- @>Move Picture: 4, @15, Center (256,192), (100%,100%), 0, Normal
- @>Wait: 20 frame(s)
- @>Script: pbShowPicture(4,"Credits/TMoM/People/8_Scripts_3.png",1,256,192,zoomX=100,zoomY=100,opacity=0,blendType=0)
- @>Wait: 50 frame(s)
- @>Move Picture: 4, @15, Center (256,192), (100%,100%), 255, Normal
- @>Wait: 120 frame(s)
- @>Move Picture: 3, @15, Center (256,192), (100%,100%), 0, Normal
- @>Move Picture: 4, @15, Center (256,192), (100%,100%), 0, Normal
- @>Wait: 15 frame(s)
- @>Move Picture: 2, @10, Upper Left (0,384), (100%,100%), 255, Normal
- @>Change Screen Color Tone: (-255,-255,-255,0), @10
- @>
-: Branch End
-@>Conditional Branch: Variable [0110: TMoM Credits Variable] == 5
- @>Wait: 20 frame(s)
- @>Script: pbShowPicture(3,"Credits/TMoM/Headers/9_Director.png",1,256,192,zoomX=100,zoomY=100,opacity=0,blendType=0)
- @>Script: pbShowPicture(4,"Credits/TMoM/People/9_Director_1.png",1,256,192,zoomX=100,zoomY=100,opacity=0,blendType=0)
- @>Wait: 40 frame(s)
- @>Move Picture: 3, @15, Center (256,192), (100%,100%), 255, Normal
- @>Wait: 50 frame(s)
- @>Move Picture: 4, @15, Center (256,192), (100%,100%), 255, Normal
- @>Wait: 120 frame(s)
- @>Move Picture: 3, @15, Center (256,192), (100%,100%), 0, Normal
- @>Move Picture: 4, @15, Center (256,192), (100%,100%), 0, Normal
- @>Wait: 20 frame(s)
- @>Script: pbShowPicture(3,"Credits/TMoM/Headers/10_Thanks.png",1,256,192,zoomX=100,zoomY=100,opacity=0,blendType=0)
- @>Script: pbShowPicture(4,"Credits/TMoM/People/10_Thanks_1.png",1,256,192,zoomX=100,zoomY=100,opacity=0,blendType=0)
- @>Wait: 40 frame(s)
- @>Move Picture: 3, @15, Center (256,192), (100%,100%), 255, Normal
- @>Wait: 50 frame(s)
- @>Move Picture: 4, @15, Center (256,192), (100%,100%), 255, Normal
- @>Wait: 120 frame(s)
- @>Move Picture: 4, @15, Center (256,192), (100%,100%), 0, Normal
- @>Wait: 20 frame(s)
- @>Script: pbShowPicture(4,"Credits/TMoM/People/10_Thanks_2.png",1,256,192,zoomX=100,zoomY=100,opacity=0,blendType=0)
- @>Wait: 50 frame(s)
- @>Move Picture: 4, @15, Center (256,192), (100%,100%), 255, Normal
- @>Wait: 120 frame(s)
- @>Move Picture: 4, @15, Center (256,192), (100%,100%), 0, Normal
- @>Wait: 20 frame(s)
- @>Script: pbShowPicture(4,"Credits/TMoM/People/10_Thanks_3.png",1,256,192,zoomX=100,zoomY=100,opacity=0,blendType=0)
- @>Wait: 50 frame(s)
- @>Move Picture: 4, @15, Center (256,192), (100%,100%), 255, Normal
- @>Wait: 120 frame(s)
- @>Move Picture: 3, @15, Center (256,192), (100%,100%), 0, Normal
- @>Move Picture: 4, @15, Center (256,192), (100%,100%), 0, Normal
- @>Wait: 15 frame(s)
- @>Move Picture: 2, @10, Upper Left (0,384), (100%,100%), 255, Normal
- @>Change Screen Color Tone: (-255,-255,-255,0), @10
- @>
-: Branch End
-@>Conditional Branch: Variable [0110: TMoM Credits Variable] == 6
- @>Script: pbShowPicture(1,"Credits/Gensokyo.png",1,256,192,zoomX=100,zoomY=100,opacity=0,blendType=0)
- @>Wait: 10 frame(s)
- @>Move Picture: 1, @10, Center (256,192), (100%,100%), 255, Normal
- @>Wait: 20 frame(s)
- @>Move Picture: 2, @40, Upper Left (0,0), (100%,100%), 255, Normal
- @>Wait: 50 frame(s)
- @>Script: pbShowPicture(3,"Credits/TMoM/Headers/10_Thanks.png",1,256,192,zoomX=100,zoomY=100,opacity=0,blendType=0)
- @>Script: pbShowPicture(4,"Credits/Gen_Credits_1.png",1,256,192,zoomX=100,zoomY=100,opacity=0,blendType=0)
- @>Wait: 40 frame(s)
- @>Move Picture: 3, @15, Center (256,192), (100%,100%), 255, Normal
- @>Wait: 50 frame(s)
- @>Move Picture: 4, @15, Center (256,192), (100%,100%), 255, Normal
- @>Wait: 120 frame(s)
- @>Move Picture: 4, @15, Center (256,192), (100%,100%), 0, Normal
- @>Wait: 20 frame(s)
- @>Script: pbShowPicture(4,"Credits/Gen_Credits_2.png",1,256,192,zoomX=100,zoomY=100,opacity=0,blendType=0)
- @>Wait: 50 frame(s)
- @>Move Picture: 4, @15, Center (256,192), (100%,100%), 255, Normal
- @>Wait: 120 frame(s)
- @>Move Picture: 4, @15, Center (256,192), (100%,100%), 0, Normal
- @>Wait: 20 frame(s)
- @>Script: pbShowPicture(4,"Credits/Gen_Credits_3.png",1,256,192,zoomX=100,zoomY=100,opacity=0,blendType=0)
- @>Wait: 50 frame(s)
- @>Move Picture: 4, @15, Center (256,192), (100%,100%), 255, Normal
- @>Wait: 120 frame(s)
- @>Move Picture: 3, @15, Center (256,192), (100%,100%), 0, Normal
- @>Move Picture: 4, @15, Center (256,192), (100%,100%), 0, Normal
- @>Wait: 20 frame(s)
- @>Script: pbShowPicture(4,"Credits/Gen_Credits_4.png",1,256,192,zoomX=100,zoomY=100,opacity=0,blendType=0)
- @>Wait: 40 frame(s)
- @>Move Picture: 4, @15, Center (256,192), (100%,100%), 255, Normal
- @>Wait: 120 frame(s)
- @>Move Picture: 4, @15, Center (256,192), (100%,100%), 0, Normal
- @>Wait: 20 frame(s)
- @>Script: pbShowPicture(4,"Credits/Gen_Credits_5.png",1,256,192,zoomX=100,zoomY=100,opacity=0,blendType=0)
- @>Wait: 50 frame(s)
- @>Move Picture: 4, @15, Center (256,192), (100%,100%), 255, Normal
- @>Wait: 120 frame(s)
- @>Move Picture: 4, @15, Center (256,192), (100%,100%), 0, Normal
- @>Wait: 20 frame(s)
- @>Script: pbShowPicture(4,"Credits/Gen_Credits_6.png",1,256,192,zoomX=100,zoomY=100,opacity=0,blendType=0)
- @>Wait: 50 frame(s)
- @>Move Picture: 4, @15, Center (256,192), (100%,100%), 255, Normal
- @>Wait: 120 frame(s)
- @>Move Picture: 4, @15, Center (256,192), (100%,100%), 0, Normal
- @>Wait: 20 frame(s)
- @>Script: pbShowPicture(4,"Credits/Gen_Credits_7.png",1,256,192,zoomX=100,zoomY=100,opacity=0,blendType=0)
- @>Wait: 50 frame(s)
- @>Move Picture: 4, @15, Center (256,192), (100%,100%), 255, Normal
- @>Wait: 120 frame(s)
- @>Move Picture: 4, @15, Center (256,192), (100%,100%), 0, Normal
- @>Wait: 15 frame(s)
- @>Move Picture: 2, @10, Upper Left (0,384), (100%,100%), 255, Normal
- @>Change Screen Color Tone: (-255,-255,-255,0), @10
- @>
-: Branch End
+@>
+
+#==============================================================================
+Common Event ID: 106
+Common Event Name: 
+
+Trigger: None
+
+List of Event Commands:
 @>
 
 #==============================================================================
