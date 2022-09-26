@@ -3923,6 +3923,29 @@ List of Event Commands:
 @>
 
 #------------------------------------------------------------------------------
+Event ID: 004
+Event Name: EV004
+(X,Y): (004,003)
+
+Page #1
+Conditions
+None
+
+Autonomous Movement
+Type: Fixed
+Speed: 3: Slow
+Freq: 3: Low
+Options Enabled
+Move Animation
+Trigger: Action Button
+
+List of Event Commands:
+@>Change Screen Color Tone: (-255,-255,-255,0), @1
+@>Wait: 20 frame(s)
+@>Script: CreditsOutro_TMoM.new
+@>
+
+#------------------------------------------------------------------------------
 
 #==============================================================================
 Map ID: 008
@@ -28201,11 +28224,12 @@ Trigger: None
 
 List of Event Commands:
 @>Conditional Branch: Script: $player.name == "NorionMyth" || $player.name == "Norion" || $player.name == "Norion Myth" 
- @>Text: Your fate has already been decided for you.
+ @>Text: A fate that is berigoo awaits you!
  @>Script: pkmn = Pokemon.new(:CKOISHI, 15)
  :       : pkmn.item = :ORANBERRY
  :       : pkmn.poke_ball = :CHERISHORB
  :       : pkmn.obtain_text = "Gensokyo Wilderness"
+ :       : pkmn.shiny = true
  @>Script: pkmn.iv[:HP] = 31
  :       : pkmn.iv[:ATTACK] = 31
  :       : pkmn.iv[:DEFENSE] = 31
@@ -28237,7 +28261,7 @@ List of Event Commands:
  @>Control Switches: [0106: Name Easter Egg] = ON
  @>
 : Branch End
-@>Conditional Branch: Script: $player.name == "Ayaka... 2!" || $player.name == "Ayaka2"
+@>Conditional Branch: Script: $player.name == "Ayaka2"
  @>Text: <b>Initializing Hardcore Mode.</b>
  @>Script: $player.name = "Ayaka"
  @>Control Switches: [0107: New Game +] = ON

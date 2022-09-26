@@ -18,7 +18,7 @@ class TMoMIntroScene
     :wait, 120,
     [
       "Spring, Season 130 of the Gensokyo Calendar",
-      "Time: 7 PM"
+      "Human Village, Evening"
     ],
     :wait, 60
   ]
