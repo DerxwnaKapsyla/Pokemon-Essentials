@@ -7,5 +7,6 @@
 #	* Removed the quick jump to intro for if you're in Debug Mode.
 #==============================================================================#
 def pbCallTitle
+  $PokemonTemp=PokemonTemp.new()
   return Scene_Intro.new
 end

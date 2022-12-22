@@ -1354,6 +1354,151 @@ List of Event Commands:
 @>Wait: 20 frame(s)
 @>Change Text Options: Bottom, Show
 @>Change Transparent Flag: Normal
+@>Control Self Switch: A =ON
+@>Transfer Player:[007: \PN's Room], (004,007), Right
+@>Change Screen Color Tone: (0,0,0,0), @6
+@>
+
+Page #2
+Conditions
+Switch 0107: New Game + is ON
+Self Switch A is ON
+
+Autonomous Movement
+Type: Fixed
+Speed: 3: Slow
+Freq: 3: Low
+Options Enabled
+Move Animation
+Trigger: Autorun
+
+List of Event Commands:
+@>Fade Out BGM: 2 sec.
+@>Wait: 20 frame(s)
+@>Script: $player.scenario_name = "The Mansion of Mystery"
+@>Text: Skip the intro cinematic?
+@>Show Choices: Yes, No
+(When Cancel: Choice 2)
+: When [Yes]
+ @>Jump to Label: Title drop
+ @>
+: When [No]
+ @>
+: Branch End
+@>Wait: 10 frame(s)
+@>Comment: ------------------------------------------------------
+@>Play BGM: 'W-002. Memory of Forgathering Dream', 100, 100
+@>Script: pbShowPicture(1,"Intro Cutscene/TMoM/Gensokyo.png",1,256,192,100,100,0,0)
+@>Wait: 10 frame(s)
+@>Change Text Options: Bottom, Show
+@>Move Picture: 1, @10, Center (256,192), (100%,100%), 255, Normal
+@>Wait: 10 frame(s)
+@>Text: \w[dark]\c[12]\se[]\l[3]\wtnp[5]With the consequences of the Urban Legends incident long past, 
+ :    : so too comes an end to the 130th Season of the realm known as Gensokyo.\wtnp[40]
+@>Wait: 10 frame(s)
+@>Text: \w[dark]\c[12]\se[]\wtnp[5]The realm returns, once again, to the relative peace it is familiar with.\wtnp[40]
+@>Wait: 10 frame(s)
+@>Text: \w[dark]\c[12]\se[]\l[3]\wtnp[5]But even here in this wonderland known as Gensokyo, things do not always remain at ease.\wtnp[40]
+@>Wait: 10 frame(s)
+@>Move Picture: 1, @10, Center (256,192), (100%,100%), 0, Normal
+@>Wait: 10 frame(s)
+@>Erase Picture: 1
+@>Comment: ------------------------------------------------------
+@>Script: pbShowPicture(1,"Intro Cutscene/TMoM/Alice's House.png",1,256,192,100,100,0,0)
+@>Wait: 10 frame(s)
+@>Move Picture: 1, @10, Center (256,192), (100%,100%), 255, Normal
+@>Text: \w[dark]\c[12]\se[]\l[3]\wtnp[5]The local Youkai Magician who controls puppets, one day, managed to create a perfectly autonomus doll.\wtnp[40]
+@>Wait: 10 frame(s)
+@>Text: \w[dark]\c[12]\se[]\l[2]\wtnp[5]A doll that could move of its own accord, her life's dream and ambition finally fufilled.\wtnp[40]
+@>Wait: 10 frame(s)
+@>Move Picture: 1, @10, Center (256,192), (100%,100%), 0, Normal
+@>Wait: 10 frame(s)
+@>Erase Picture: 1
+@>Comment: ------------------------------------------------------
+@>Script: pbShowPicture(1,"Intro Cutscene/TMoM/Marisa's House.png",1,256,192,100,100,0,0)
+@>Wait: 10 frame(s)
+@>Move Picture: 1, @10, Center (256,192), (100%,100%), 255, Normal
+@>Text: \w[dark]\c[12]\se[]\l[4]\wtnp[6]When a certain Ordinary Magician learned of this, she managed to procure the 
+ :    : knowledge for it herself, and managed to create an autonomous doll in her likeness.\wtnp[40]
+@>Wait: 10 frame(s)
+@>Text: \w[dark]\c[12]\se[]\l[3]\wtnp[5]This allowed the magician to double her productivity in all areas, but things like these don't go unnoticed.\wtnp[40]
+@>Wait: 10 frame(s)
+@>Move Picture: 1, @10, Center (256,192), (100%,100%), 0, Normal
+@>Wait: 10 frame(s)
+@>Erase Picture: 1
+@>Comment: ------------------------------------------------------
+@>Script: pbShowPicture(1,"Intro Cutscene/TMoM/Human Village.png",1,256,192,100,100,0,0)
+@>Wait: 10 frame(s)
+@>Move Picture: 1, @10, Center (256,192), (100%,100%), 255, Normal
+@>Wait: 10 frame(s)
+@>Text: \w[dark]\c[12]\se[]\l[4]\wtnp[5]Thanks to a certain Tengu Reporter, word of the puppeteer's success went viral, 
+ :    : and people from the human village began flocking to her for puppets of their own.\wtnp[40]
+@>Wait: 10 frame(s)
+@>Text: \w[dark]\c[12]\se[]\l[5]\wtnp[6]These puppets were based off of the prominent Gensokyo inhabitants - the Shrine Maiden, 
+ :    : the Incident Solvers, those who started the incidents, and even the related and unrelated Third Parties.\wtnp[40]
+@>Wait: 10 frame(s)
+@>Move Picture: 1, @10, Center (256,192), (100%,100%), 0, Normal
+@>Wait: 10 frame(s)
+@>Erase Picture: 1
+@>Comment: ------------------------------------------------------
+@>Script: pbShowPicture(1,"Intro Cutscene/TMoM/Hakurei Shrine.png",1,256,192,100,100,0,0)
+@>Wait: 10 frame(s)
+@>Move Picture: 1, @10, Center (256,192), (100%,100%), 255, Normal
+@>Wait: 10 frame(s)
+@>Text: \w[dark]\c[12]\se[]\l[5]\wtnp[5]This caused the big names in Gensokyo to take notice, and even they too began to obtain 
+ :    : puppets for themselves, and engage in the rapidly growing style that were Puppet Battles.\wtnp[40]
+@>Wait: 10 frame(s)
+@>Text: \w[dark]\c[12]\se[]\l[4]\wtnp[5]Eventually, this became the new standard for resolving incidents within Gensokyo. 
+ :    : The Spell Card rule was changed to only be invoked in dire emergancies.\wtnp[40]
+@>Wait: 10 frame(s)
+@>Text: \w[dark]\c[12]\se[]\l[3]\wtnp[5]As such, the last incident to be resolved with Spell Cards properly in any sort of capacity was the Urban
+ :    : Legend Incident.\wtnp[40]
+@>Wait: 10 frame(s)
+@>Text: \w[dark]\c[12]\se[]\wtnp[2] After that, Puppets had total control of the scene.\wtnp[40]
+@>Wait: 10 frame(s)
+@>Text: \w[dark]\c[12]\se[]\l[5]\wtnp[5]Humans could now rely on themselves to solve incidents and not have to trouble the 
+ :    : Shrine Maiden, though this didn't stop the Shrine Maiden from occasionally stepping in to handle cases.\wtnp[40]
+@>Wait: 10 frame(s)
+@>Move Picture: 1, @10, Center (256,192), (100%,100%), 0, Normal
+@>Wait: 10 frame(s)
+@>Erase Picture: 1
+@>Comment: ------------------------------------------------------
+@>Script: pbShowPicture(1,"Intro Cutscene/TMoM/Bamboo Forest.png",1,256,192,100,100,0,0)
+@>Wait: 10 frame(s)
+@>Move Picture: 1, @10, Center (256,192), (100%,100%), 255, Normal
+@>Wait: 10 frame(s)
+@>Text: \w[dark]\c[12]\se[]\l[4]\wtnp[5]As the months drew onward, it became commonplace to see puppets wandering around 
+ :    : in the wild. They started to fill each and every corner of Gensokyo.\wtnp[40]
+@>Wait: 10 frame(s)
+@>Text: \w[dark]\c[12]\se[]\l[3]\wtnp[5]They blended in seemlessly with the native Human, Youkai, and everything else that existed within the mystical realm.\wtnp[40]
+@>Wait: 10 frame(s)
+@>Text: \w[dark]\c[12]\se[]\l[2]\wtnp[5]Life, as always, was good in the illusionary wonderland of Gensokyo.\wtnp[40]
+@>Wait: 10 frame(s)
+@>Move Picture: 1, @10, Center (256,192), (100%,100%), 0, Normal
+@>Wait: 10 frame(s)
+@>Erase Picture: 1
+@>Comment: ------------------------------------------------------
+@>Text: \w[dark]\c[12]\se[]\l[4]\wtnp[5]But like always, things do not remain perfect forever, and the fate of 
+ :    : Gensokyo now rests in the hands of those who command the Puppets.\wtnp[40]
+@>Script: pbShowPicture(1,"Intro Cutscene/TMoM/Human Village.png",1,256,192,100,100,0,0)
+@>Wait: 10 frame(s)
+@>Move Picture: 1, @10, Center (256,192), (100%,100%), 255, Normal
+@>Wait: 10 frame(s)
+@>Text: \w[dark]\c[12]\se[]\l[4]\wtnp[5]This tale is about a youth from the Human 
+ :    : Village, and their journey outside their familiar walls 
+ :    : to uncover the truth behind a mystery.\wtnp[40]
+@>Wait: 10 frame(s)
+@>Text: \w[dark]\c[12]\se[]\l[1]\wtnp[5]Thus beginning their legacy...\wtnp[40]
+@>Wait: 10 frame(s)
+@>Move Picture: 1, @10, Center (256,192), (100%,100%), 0, Normal
+@>Wait: 10 frame(s)
+@>Erase Picture: 1
+@>Comment: ------------------------------------------------------
+@>Label: Title drop
+@>Script: TMoMIntroScene.new
+@>Wait: 20 frame(s)
+@>Change Text Options: Bottom, Show
+@>Change Transparent Flag: Normal
 @>Transfer Player:[007: \PN's Room], (004,007), Right
 @>Change Screen Color Tone: (0,0,0,0), @6
 @>
@@ -2246,7 +2391,7 @@ List of Event Commands:
 @>Script: pbTrainerIntro(:PATROL2M)
 @>Script: pbNoticePlayer(get_self)
 @>Text: You children need to return home now!
-@>Conditional Branch: Script: TrainerBattle.start(:PATROL2M, "Kengo")
+@>Conditional Branch: Script: TrainerBattle.start(:PATROL2M, "Kengo",pbGet(99))
  @>Control Self Switch: A =ON
  @>
 : Branch End
@@ -2331,7 +2476,7 @@ List of Event Commands:
 @>Script: pbTrainerIntro(:PATROL1F)
 @>Script: pbNoticePlayer(get_self)
 @>Text: Runaway detected, runaway detected!
-@>Conditional Branch: Script: TrainerBattle.start(:PATROL1F, "Asami")
+@>Conditional Branch: Script: TrainerBattle.start(:PATROL1F, "Asami",pbGet(99))
  @>Control Self Switch: A =ON
  @>
 : Branch End
@@ -2412,7 +2557,7 @@ List of Event Commands:
 @>Script: pbTrainerIntro(:PATROL1F)
 @>Script: pbNoticePlayer(get_self)
 @>Text: Just stay right there!
-@>Conditional Branch: Script: TrainerBattle.start(:PATROL1F, "Tsukimi")
+@>Conditional Branch: Script: TrainerBattle.start(:PATROL1F, "Tsukimi",pbGet(99))
  @>Control Self Switch: A =ON
  @>
 : Branch End
@@ -2461,7 +2606,7 @@ List of Event Commands:
 @>Script: TrainerIntro2(:PATROL1M)
 @>Script: pbNoticePlayer(get_self)
 @>Text: You aren't going anywhere!
-@>Conditional Branch: Script: TrainerBattle.start(:PATROL1M, "Ryou")
+@>Conditional Branch: Script: TrainerBattle.start(:PATROL1M, "Ryou",pbGet(99))
  @>Control Self Switch: A =ON
  @>
 : Branch End
@@ -2511,7 +2656,7 @@ List of Event Commands:
 @>Script: pbNoticePlayer(get_self)
 @>Text: What could you possibly be doing awake at
  :    : this hour anyway!?
-@>Conditional Branch: Script: TrainerBattle.start(:PATROL1M, "Taketo")
+@>Conditional Branch: Script: TrainerBattle.start(:PATROL1M, "Taketo",pbGet(99))
  @>Control Self Switch: A =ON
  @>
 : Branch End
@@ -2634,7 +2779,7 @@ List of Event Commands:
 @>Script: pbNoticePlayer(get_self)
 @>Text: It is my job to keep you from going anywhere,
  :    : so let's go!
-@>Conditional Branch: Script: TrainerBattle.start(:PATROL2F, "Hinoka")
+@>Conditional Branch: Script: TrainerBattle.start(:PATROL2F, "Hinoka",pbGet(99))
  @>Control Self Switch: A =ON
  @>
 : Branch End
@@ -2750,7 +2895,7 @@ List of Event Commands:
 @>Script: pbNoticePlayer(get_self)
 @>Text: Wait, \PN, you're the one sneaking out? Looks
  :    : like big sis is gonna have to be the one to stop you!
-@>Conditional Branch: Script: TrainerBattle.start(:PATROL2F, "Riko")
+@>Conditional Branch: Script: TrainerBattle.start(:PATROL2F, "Riko",pbGet(99))
  @>Control Self Switch: A =ON
  @>
 : Branch End
@@ -2831,7 +2976,7 @@ List of Event Commands:
 @>Script: pbNoticePlayer(get_self)
 @>Text: You're getting too close to the exit for our
  :    : liking, and need to be stopped right now!
-@>Conditional Branch: Script: TrainerBattle.start(:PATROL2M, "Takumi")
+@>Conditional Branch: Script: TrainerBattle.start(:PATROL2M, "Takumi",pbGet(99))
  @>Control Self Switch: A =ON
  @>
 : Branch End
@@ -2896,7 +3041,7 @@ List of Event Commands:
 
 Page #3
 Conditions
-Switch 0106: Name Easter Egg is ON
+Variable 0107: TMoM Plot Variable is 3 or above
 
 Autonomous Movement
 Type: Fixed
@@ -3007,8 +3152,14 @@ List of Event Commands:
   :    : Alright then teacher, let's go!
  @>Control Switches: [0104: Transition Handler] = ON
  @>Control Variables: [0103: Vs. Transition ID] = 0
- @>Control Variables: [0104: Vs. Transition - Pkmn] = 3
- @>Conditional Branch: Script: TrainerBattle.start(:KEINE, "Keine Kamishirasawa", 10)
+ @>Conditional Branch: Switch [0107: New Game +] == OFF
+  @>Control Variables: [0104: Vs. Transition - Pkmn] = 3
+  @>
+ : Else
+  @>Control Variables: [0104: Vs. Transition - Pkmn] = 5
+  @>
+ : Branch End
+ @>Conditional Branch: Script: TrainerBattle.start(:KEINE, "Keine Kamishirasawa", 10+(pbGet(99) * 10))
   @>Control Self Switch: A =ON
   @>
  : Else
@@ -3030,8 +3181,14 @@ List of Event Commands:
   :    : how unprepared you are!
  @>Control Switches: [0104: Transition Handler] = ON
  @>Control Variables: [0103: Vs. Transition ID] = 0
- @>Control Variables: [0104: Vs. Transition - Pkmn] = 3
- @>Conditional Branch: Script: TrainerBattle.start(:KEINE, "Keine Kamishirasawa", 11)
+ @>Conditional Branch: Switch [0107: New Game +] == OFF
+  @>Control Variables: [0104: Vs. Transition - Pkmn] = 3
+  @>
+ : Else
+  @>Control Variables: [0104: Vs. Transition - Pkmn] = 5
+  @>
+ : Branch End
+ @>Conditional Branch: Script: TrainerBattle.start(:KEINE, "Keine Kamishirasawa", 11+(pbGet(99) * 10))
   @>
  : Else
   @>Script: pbTrainerEnd
@@ -3863,11 +4020,12 @@ List of Event Commands:
 @>Text: \xn[\pn]I\..\..\..\. probably shouldn't go through the front door. 
  :    : Can't risk waking my parents up and having them get angry.
 @>Control Variables: [0107: TMoM Plot Variable] = 1
+@>Control Self Switch: A =ON
 @>
 
 Page #2
 Conditions
-Switch 0101: --- Thmn Essentials --- is ON
+Self Switch A is ON
 
 Autonomous Movement
 Type: Fixed
@@ -3923,9 +4081,9 @@ List of Event Commands:
 @>
 
 #------------------------------------------------------------------------------
-Event ID: 004
-Event Name: EV004
-(X,Y): (004,003)
+Event ID: 005
+Event Name: EV005
+(X,Y): (005,007)
 
 Page #1
 Conditions
@@ -3940,9 +4098,11 @@ Move Animation
 Trigger: Action Button
 
 List of Event Commands:
-@>Change Screen Color Tone: (-255,-255,-255,0), @1
-@>Wait: 20 frame(s)
-@>Script: CreditsOutro_TMoM.new
+@>Play SE: 'Exit Door', 80, 100
+@>Change Screen Color Tone: (-255,-255,-255,0), @6
+@>Wait: 8 frame(s)
+@>Transfer Player:[019: World of Fantasies], (019,020), Down, No Fade
+@>Change Screen Color Tone: (0,0,0,0), @6
 @>
 
 #------------------------------------------------------------------------------
@@ -4250,7 +4410,7 @@ Trigger: Action Button
 List of Event Commands:
 @>Text: Welcome to the Human Village Rest Stop. We have a
  :    : variety of goods to select from.
-@>Conditional Branch: Variable [0107: TMoM Plot Variable] == 30
+@>Conditional Branch: Variable [0107: TMoM Plot Variable] == 12
  @>Script: setPrice(:RARECANDY,9800)
  @>Script: setPrice(:MAXREVIVE,9800)
  @>Script: pbPokemonMart([
@@ -4270,6 +4430,34 @@ List of Event Commands:
  :       : ])
  @>
 : Branch End
+@>
+
+Page #2
+Conditions
+Switch 0107: New Game + is ON
+
+Graphic: TPDP_NPC 39
+
+Autonomous Movement
+Type: Fixed
+Speed: 3: Slow
+Freq: 3: Low
+Options Enabled
+Move Animation
+Trigger: Action Button
+
+List of Event Commands:
+@>Text: Welcome to the Human Village Rest Stop. We have a
+ :    : variety of goods to select from.
+@>Script: setPrice(:RARECANDY,9800)
+@>Script: setPrice(:MAXREVIVE,9800)
+@>Script: pbPokemonMart([
+:       : :PUPPETORB,:GREATORB,:ULTRAORB,
+:       : :POTION,:SUPERPOTION,:HYPERPOTION,:MAXPOTION,:FULLRESTORE,
+:       : :REVIVE,:MAXREVIVE,:FULLHEAL,
+:       : :REPEL,:SUPERREPEL,
+:       : :RARECANDY,:PPUP
+:       : ])
 @>
 
 #------------------------------------------------------------------------------
@@ -5294,7 +5482,7 @@ List of Event Commands:
 @>Control Switches: [0104: Transition Handler] = ON
 @>Control Variables: [0103: Vs. Transition ID] = 1
 @>Control Variables: [0104: Vs. Transition - Pkmn] = 3
-@>Conditional Branch: Script: TrainerBattle.start(:MARISA, "Marisa Kirisame", 10)
+@>Conditional Branch: Script: TrainerBattle.start(:MARISA, "Marisa Kirisame", 10+(pbGet(99) * 10))
  @>
 : Else
  @>Control Self Switch: A =ON
@@ -5437,198 +5625,6 @@ List of Event Commands:
 @>
 
 #------------------------------------------------------------------------------
-Event ID: 019
-Event Name: Counter(3)
-(X,Y): (012,026)
-
-Page #1
-Conditions
-None
-
-Graphic: Object ball
-
-Autonomous Movement
-Type: Fixed
-Speed: 3: Slow
-Freq: 3: Low
-Options Enabled
-Move Animation
-Direction Fix
-Trigger: Event Touch
-
-List of Event Commands:
-@>Conditional Branch: Player is facing Down
- @>Text: \xn[\pn]Although this way leads to the Forest of Magic and 
-  :    : the Misty Lake, I should meet up with my friends first.
- @>Set Move Route: Player
-  :              : $>Move Up
- @>
-: Branch End
-@>
-
-Page #2
-Conditions
-Variable 0107: TMoM Plot Variable is 2 or above
-
-Graphic: Object ball
-
-Autonomous Movement
-Type: Fixed
-Speed: 3: Slow
-Freq: 3: Low
-Options Enabled
-Move Animation
-Trigger: Event Touch
-
-List of Event Commands:
-@>Set Move Route: Player
- :              : $>Move Down
- :              : $>Move Down
- :              : $>Move Down
- :              : $>Change Speed: 4
-@>Text: \xn[\pn]Alright! I'm almost there!\wtnp[5]
-@>Wait for Move's Completion
-@>Text: \xn[???]Hold it right there!
-@>Script: pbSetSelfSwitch(28,"A",true)
-@>Wait: 10 frame(s)
-@>Show Animation: Player, [Exclaim bubble]
-@>Set Move Route: []
- :              : $>Move Up
- :              : $>Move Up
- :              : $>Move Up
- :              : $>Move Up
- :              : $>Move Up
- :              : $>Move Up
-@>Wait for Move's Completion
-@>Conditional Branch: Self Switch A == OFF
- @>Text: \xn[Keine]So, it is you \PN. I suppose I should have
-  :    : expected this after your conversations in class.
- @>Text: \xn[\pn]M-Miss Keine... What are you doing here?
- @>Text: \xn[Keine]Don't play dumb with me! You know that
-  :    : aside from being your teacher, I'm also in charge
-  :    : of the Village Patrol.
- @>Text: \xn[Keine]Honestly, how did you all really expect to sneak
-  :    : out of the village without being spotted at all?
- @>Text: \xn[\pn]We were kinda hoping that...\^
- @>Text: \xn[Keine]It's reckless and foolish, that's what it was!
- @>Text: \xn[Keine]Beyond the village is extremely unsafe, especially
-  :    : at night. All manner of youkai and creatures are
-  :    : wandering about.
- @>Text: \xn[\pn]But I have my Puppets with me! I'll be fine! They'll
-  :    : protect me if I should come across harm!
- @>Text: \xn[Keine]Is that really what you think? That just because
-  :    : you hold a form of power, that you know how to use
-  :    : it responsibly? Do you remember nothing I've taught you
-  :    : in class?
- @>Text: \xn[\pn]Well...
- @>Text: \xn[Keine]If you're so insistant on it, then fine, show
-  :    : me just how capable you and your Puppets are!
- @>Script: pbTrainerIntro(:KEINE)
- @>Wait: 10 frame(s)
- @>Text: \xn[\pn]...Wait, what?
- @>Text: \xn[Keine]That's right. If you want out of this village,
-  :    : you'll just have to beat me in battle.
- @>Text: \xn[Keine]It should be no problem, right? You have your
-  :    : Puppets afterall.
- @>Text: \xn[\pn]...\wt[15]Looks like I don't have a choice in the matter.\wt[15]
-  :    : Alright then teacher, let's go!
- @>Control Switches: [0104: Transition Handler] = ON
- @>Control Variables: [0103: Vs. Transition ID] = 0
- @>Control Variables: [0104: Vs. Transition - Pkmn] = 3
- @>Conditional Branch: Script: TrainerBattle.start(:KEINE, "Keine Kamishirasawa", 10)
-  @>Control Self Switch: A =ON
-  @>
- : Else
-  @>Script: pbTrainerEnd
-  @>Exit Event Processing
-  @>
- : Branch End
- @>
-: Else
- @>Text: \xn[Keine]Even though you lost, you're still trying to
-  :    : sneak out?
- @>Text: \xn[\pn]I'm not going to give up that easily, and neither
-  :    : are my Puppets!
- @>Text: \xn[Keine]Perhaps the threat of detention will keep you
-  :    : in the village.
- @>Text: \xn[Keine]But if you insist on keeping this up...
- @>Script: pbTrainerIntro(:KEINE)
- @>Text: \xn[Keine]Then I'll have no choice but to keep showing you
-  :    : how unprepared you are!
- @>Control Switches: [0104: Transition Handler] = ON
- @>Control Variables: [0103: Vs. Transition ID] = 0
- @>Control Variables: [0104: Vs. Transition - Pkmn] = 3
- @>Conditional Branch: Script: TrainerBattle.start(:KEINE, "Keine Kamishirasawa", 11)
-  @>
- : Else
-  @>Script: pbTrainerEnd
-  @>Exit Event Processing
-  @>
- : Branch End
- @>
-: Branch End
-@>Text: \xn[Keine]Alright fine, I concede! You have what it
- :    : takes to watch yourself.
-@>Text: \xn[\pn]So that means you'll let us go then?
-@>Text: \xn[Keine]As much as I am loathe to it, you and your
- :    : friends are free to go out.
-@>Text: \xn[\pn]Awesome! Thanks Miss Keine, you're the best
- :    : teacher!
-@>Text: \xn[Keine]I'm your only teacher!
-@>Play SE: 'Exit Door', 80, 100
-@>Change Screen Color Tone: (-255,-255,-255,0), @6
-@>Wait: 7 frame(s)
-@>Change Transparent Flag: Transparency
-@>Change Screen Color Tone: (0,0,0,0), @6
-@>Wait: 20 frame(s)
-@>Text: \xn[Keine]...<i>sigh</i>.
-@>Wait: 10 frame(s)
-@>Set Move Route: []
- :              : $>Turn Down
-@>Text: \xn[Keine]Maybe this really is the next step in Gensokyo's
- :    : progression...
-@>Text: \xn[Keine]I should discuss this with Akyuu. Maybe it is time for
- :    : a change.
-@>Change Screen Color Tone: (-255,-255,-255,0), @6
-@>Wait: 7 frame(s)
-@>Change Transparent Flag: Normal
-@>Wait: 1 frame(s)
-@>Transfer Player:[009: Forest of Magic], (072,007)
-@>Control Variables: [0107: TMoM Plot Variable] = 3
-@>Change Screen Color Tone: (0,0,0,0), @6
-@>Set Move Route: Player
- :              : $>Move Down
-@>
-
-Page #3
-Conditions
-Variable 0107: TMoM Plot Variable is 3 or above
-
-Graphic: Object ball
-
-Autonomous Movement
-Type: Fixed
-Speed: 3: Slow
-Freq: 3: Low
-Options Enabled
-Move Animation
-Direction Fix
-Trigger: Event Touch
-
-List of Event Commands:
-@>Conditional Branch: Player is facing Down
- @>Play SE: 'Door exit', 100, 100
- @>Change Screen Color Tone: (-255,-255,-255,0), @6
- @>Wait: 8 frame(s)
- @>Transfer Player:[012: First Floor], (090,035), No Fade
- @>Change Screen Color Tone: (0,0,0,0), @6
- @>Set Move Route: Player
-  :              : $>Move Left
- @>
-: Branch End
-@>
-
-#------------------------------------------------------------------------------
 Event ID: 020
 Event Name: Trainer(3)
 (X,Y): (066,018)
@@ -5652,7 +5648,7 @@ List of Event Commands:
 @>Script: pbNoticePlayer(get_self)
 @>Text: Those are some pretty Puppets you have! Can I borrow them 
  :    : for a while?
-@>Conditional Branch: Script: TrainerBattle.start(:FAIRY1, "Koko")
+@>Conditional Branch: Script: TrainerBattle.start(:FAIRY1, "Koko",pbGet(99))
  @>Control Self Switch: A =ON
  @>
 : Branch End
@@ -5700,7 +5696,7 @@ List of Event Commands:
 @>Script: pbTrainerIntro(:FAIRY1)
 @>Script: pbNoticePlayer(get_self)
 @>Text: It's time for war! Face the might of my Puppet army!
-@>Conditional Branch: Script: TrainerBattle.start(:FAIRY2, "Tail")
+@>Conditional Branch: Script: TrainerBattle.start(:FAIRY2, "Tail",pbGet(99))
  @>Control Self Switch: A =ON
  @>
 : Branch End
@@ -5748,7 +5744,7 @@ List of Event Commands:
 @>Script: TrainerIntro2(:FAIRY1)
 @>Script: pbNoticePlayer(get_self)
 @>Text: A human in the forest? A human in the forest!
-@>Conditional Branch: Script: TrainerBattle.start(:FAIRY1, "Rose")
+@>Conditional Branch: Script: TrainerBattle.start(:FAIRY1, "Rose",pbGet(99))
  @>Control Self Switch: A =ON
  @>
 : Branch End
@@ -5796,7 +5792,7 @@ List of Event Commands:
 @>Script: pbTrainerIntro(:FAIRY1)
 @>Script: pbNoticePlayer(get_self)
 @>Text: [Placeholder Dialogue]
-@>Conditional Branch: Script: TrainerBattle.start(:FAIRY1, "Miria")
+@>Conditional Branch: Script: TrainerBattle.start(:FAIRY1, "Miria",pbGet(99))
  @>Control Self Switch: A =ON
  @>
 : Branch End
@@ -5845,7 +5841,7 @@ List of Event Commands:
 @>Script: pbTrainerIntro(:FAIRY1)
 @>Script: pbNoticePlayer(get_self)
 @>Text: No matter how hard it rains, I'll take you on!
-@>Conditional Branch: Script: TrainerBattle.start(:FAIRY1, "Honoka")
+@>Conditional Branch: Script: TrainerBattle.start(:FAIRY1, "Honoka",pbGet(99))
  @>Control Self Switch: A =ON
  @>
 : Branch End
@@ -5897,7 +5893,7 @@ List of Event Commands:
 @>Script: pbTrainerIntro(:FAIRY2)
 @>Script: pbNoticePlayer(get_self)
 @>Text: Look at my pretty birdie! Isn't she adorable?
-@>Conditional Branch: Script: TrainerBattle.start(:FAIRY2, "Ibuki")
+@>Conditional Branch: Script: TrainerBattle.start(:FAIRY2, "Ibuki",pbGet(99))
  @>Control Self Switch: A =ON
  @>
 : Branch End
@@ -5949,7 +5945,7 @@ List of Event Commands:
 @>Script: pbTrainerIntro(:FAIRY1)
 @>Script: pbNoticePlayer(get_self)
 @>Text: I like my dress! It's so frilly and easy to wear!
-@>Conditional Branch: Script: TrainerBattle.start(:FAIRY1, "Aniya")
+@>Conditional Branch: Script: TrainerBattle.start(:FAIRY1, "Aniya",pbGet(99))
  @>Control Self Switch: A =ON
  @>
 : Branch End
@@ -6448,7 +6444,7 @@ List of Event Commands:
 @>Script: pbTrainerIntro(:FAIRY1)
 @>Script: pbNoticePlayer(get_self)
 @>Text: Welcome to Misty Lake, home of the Cerulean Gym Leader!
-@>Conditional Branch: Script: TrainerBattle.start(:FAIRY1, "Erina")
+@>Conditional Branch: Script: TrainerBattle.start(:FAIRY1, "Erina"pbGet(99))
  @>Control Self Switch: A =ON
  @>
 : Branch End
@@ -6496,7 +6492,7 @@ List of Event Commands:
 @>Script: pbTrainerIntro(:FAIRY2)
 @>Script: pbNoticePlayer(get_self)
 @>Text: What a cute human! I wanna take you home!
-@>Conditional Branch: Script: TrainerBattle.start(:FAIRY2, "Rena")
+@>Conditional Branch: Script: TrainerBattle.start(:FAIRY2, "Rena"pbGet(99))
  @>Control Self Switch: A =ON
  @>
 : Branch End
@@ -6550,7 +6546,7 @@ List of Event Commands:
 @>Script: pbTrainerIntro(:FAIRY1)
 @>Script: pbNoticePlayer(get_self)
 @>Text: A fairy trainer with fairy Puppets makes the ultimate team!
-@>Conditional Branch: Script: TrainerBattle.start(:FAIRY1, "Noelle")
+@>Conditional Branch: Script: TrainerBattle.start(:FAIRY1, "Noelle"pbGet(99))
  @>Control Self Switch: A =ON
  @>
 : Branch End
@@ -6618,7 +6614,7 @@ List of Event Commands:
 @>Script: pbTrainerIntro(:FAIRY2)
 @>Script: pbNoticePlayer(get_self)
 @>Text: Get ready, 'cause my Puppets are gonna lecture you to death!
-@>Conditional Branch: Script: TrainerBattle.start(:FAIRY2, "Izumi")
+@>Conditional Branch: Script: TrainerBattle.start(:FAIRY2, "Izumi"pbGet(99))
  @>Control Self Switch: A =ON
  @>
 : Branch End
@@ -6681,7 +6677,7 @@ List of Event Commands:
 @>Script: pbTrainerIntro(:FAIRY1)
 @>Script: pbNoticePlayer(get_self)
 @>Text: It's spring! It's spring!
-@>Conditional Branch: Script: TrainerBattle.start(:FAIRY1, "Himawari")
+@>Conditional Branch: Script: TrainerBattle.start(:FAIRY1, "Himawari"pbGet(99))
  @>Control Self Switch: A =ON
  @>
 : Branch End
@@ -6848,7 +6844,7 @@ List of Event Commands:
 @>Control Switches: [0104: Transition Handler] = ON
 @>Control Variables: [0103: Vs. Transition ID] = 2
 @>Control Variables: [0104: Vs. Transition - Pkmn] = 4
-@>Conditional Branch: Script: TrainerBattle.start(:YOUMU, "Youmu Konpaku", 10)
+@>Conditional Branch: Script: TrainerBattle.start(:YOUMU, "Youmu Konpaku", 10+(pbGet(99) * 10))
  @>
 : Else
  @>Control Self Switch: A =ON
@@ -7223,7 +7219,7 @@ List of Event Commands:
 @>Control Switches: [0104: Transition Handler] = ON
 @>Control Variables: [0103: Vs. Transition ID] = 2
 @>Control Variables: [0104: Vs. Transition - Pkmn] = 4
-@>Conditional Branch: Script: TrainerBattle.start(:YOUMU, "Youmu Konpaku", 10)
+@>Conditional Branch: Script: TrainerBattle.start(:YOUMU, "Youmu Konpaku", 10+(pbGet(99) * 10))
  @>
 : Else
  @>Control Self Switch: A =ON
@@ -7391,7 +7387,7 @@ List of Event Commands:
 @>Script: pbTrainerIntro(:FAIRY2)
 @>Script: pbNoticePlayer(get_self)
 @>Text: ^8^ Chirpy chirp chirp!
-@>Conditional Branch: Script: TrainerBattle.start(:FAIRY2, "Kotori")
+@>Conditional Branch: Script: TrainerBattle.start(:FAIRY2, "Kotori"pbGet(99))
  @>Control Self Switch: A =ON
  @>
 : Branch End
@@ -7443,7 +7439,7 @@ List of Event Commands:
 @>Script: pbTrainerIntro(:FAIRY1)
 @>Script: pbNoticePlayer(get_self)
 @>Text: My Puppets have the best IVs! I can't lose!
-@>Conditional Branch: Script: TrainerBattle.start(:FAIRY1, "Saya")
+@>Conditional Branch: Script: TrainerBattle.start(:FAIRY1, "Saya"pbGet(99))
  @>Control Self Switch: A =ON
  @>
 : Branch End
@@ -7495,7 +7491,7 @@ List of Event Commands:
 @>Script: pbTrainerIntro(:FAIRY1)
 @>Script: pbNoticePlayer(get_self)
 @>Text: Spring is overrated. Don't you think fall is way cooler?
-@>Conditional Branch: Script: TrainerBattle.start(:FAIRY1, "Aki")
+@>Conditional Branch: Script: TrainerBattle.start(:FAIRY1, "Aki"pbGet(99))
  @>Control Self Switch: A =ON
  @>
 : Branch End
@@ -8555,7 +8551,7 @@ List of Event Commands:
 @>Script: pbNoticePlayer(get_self)
 @>Text: Hello, human~ How would you like a nice big hug?
 @>Comment: EndSpeech: I couldn't even get within grasping distance!
-@>Conditional Branch: Script: TrainerBattle.start(:FAIRY3, "Nozomi")
+@>Conditional Branch: Script: TrainerBattle.start(:FAIRY3, "Nozomi",pbGet(99))
  @>Control Self Switch: A =ON
  @>
 : Branch End
@@ -8604,7 +8600,7 @@ List of Event Commands:
 @>Script: pbNoticePlayer(get_self)
 @>Text: Code red! Intruder detected!
 @>Comment: EndSpeech: You red my every move!
-@>Conditional Branch: Script: TrainerBattle.start(:FAIRY3, "Akane")
+@>Conditional Branch: Script: TrainerBattle.start(:FAIRY3, "Akane",pbGet(99))
  @>Control Self Switch: A =ON
  @>
 : Branch End
@@ -8653,7 +8649,7 @@ List of Event Commands:
 @>Script: pbNoticePlayer(get_self)
 @>Text: Have you ever wondered what we're talking about? How we seem to have knowledge beyond our societal bracket?
 @>Comment: EndSpeech: Yeah, me neither!
-@>Conditional Branch: Script: TrainerBattle.start(:FAIRY1, "Uzuki")
+@>Conditional Branch: Script: TrainerBattle.start(:FAIRY1, "Uzuki",pbGet(99))
  @>Control Self Switch: A =ON
  @>
 : Branch End
@@ -8706,7 +8702,7 @@ List of Event Commands:
 @>Script: pbNoticePlayer(get_self)
 @>Text: It's time for battle! All systems green!
 @>Comment: EndSpeech: Uwaah...you're not a greenhorn after all.
-@>Conditional Branch: Script: TrainerBattle.start(:FAIRY1, "Midori")
+@>Conditional Branch: Script: TrainerBattle.start(:FAIRY1, "Midori",pbGet(99))
  @>Control Self Switch: A =ON
  @>
 : Branch End
@@ -8759,7 +8755,7 @@ List of Event Commands:
 @>Script: pbNoticePlayer(get_self)
 @>Text: Watch out, world! There's a super cool Puppet trainer coming through!
 @>Comment: EndSpeech: That fight wasn't cool at all...
-@>Conditional Branch: Script: TrainerBattle.start(:FAIRY2, "Haruna")
+@>Conditional Branch: Script: TrainerBattle.start(:FAIRY2, "Haruna",pbGet(99))
  @>Control Self Switch: A =ON
  @>
 : Branch End
@@ -8812,7 +8808,7 @@ List of Event Commands:
 @>Script: pbNoticePlayer(get_self)
 @>Text: What a spooky mansion! Think there's any treasure here?
 @>Comment: EndSpeech: The real treasures here are your Puppets!
-@>Conditional Branch: Script: TrainerBattle.start(:FAIRY2, "Naomi")
+@>Conditional Branch: Script: TrainerBattle.start(:FAIRY2, "Naomi",pbGet(99))
  @>Control Self Switch: A =ON
  @>
 : Branch End
@@ -10558,7 +10554,7 @@ List of Event Commands:
 @>Script: pbNoticePlayer(get_self)
 @>Text: Fluffy Puppets are the best Puppets! Let me show you why!
 @>Comment: EndSpeech: I guess the fluff was not enough...
-@>Conditional Branch: Script: TrainerBattle.start(:FAIRY1, "Pino")
+@>Conditional Branch: Script: TrainerBattle.start(:FAIRY1, "Pino",pbGet(99))
  @>Control Self Switch: A =ON
  @>
 : Branch End
@@ -10607,7 +10603,7 @@ List of Event Commands:
 @>Script: pbNoticePlayer(get_self)
 @>Text: [Placeholder Dialogue]
 @>Comment: EndSpeech: [Placeholder Dialogue]
-@>Conditional Branch: Script: TrainerBattle.start(:FAIRY1, "Chiyori")
+@>Conditional Branch: Script: TrainerBattle.start(:FAIRY1, "Chiyori",pbGet(99))
  @>Control Self Switch: A =ON
  @>
 : Branch End
@@ -10662,7 +10658,7 @@ List of Event Commands:
 @>Script: pbNoticePlayer(get_self)
 @>Text: Braaaains...
 @>Comment: EndSpeech: See, if you'd let me eat your brains first, I totally would have won.
-@>Conditional Branch: Script: TrainerBattle.start(:FAIRY3, "Megami")
+@>Conditional Branch: Script: TrainerBattle.start(:FAIRY3, "Megami",pbGet(99))
  @>Control Self Switch: A =ON
  @>
 : Branch End
@@ -10717,7 +10713,7 @@ List of Event Commands:
 @>Script: pbNoticePlayer(get_self)
 @>Text: This area's mine now! If you wanna get past, you have to battle me!
 @>Comment: EndSpeech: OK, fine, you can go now.
-@>Conditional Branch: Script: TrainerBattle.start(:FAIRY1, "Suzuha")
+@>Conditional Branch: Script: TrainerBattle.start(:FAIRY1, "Suzuha",pbGet(99))
  @>Control Self Switch: A =ON
  @>
 : Branch End
@@ -10766,7 +10762,7 @@ List of Event Commands:
 @>Script: pbNoticePlayer(get_self)
 @>Text: People say you can clip flying-type Puppets' wings with a jolt of electricity...I won't allow such insults!
 @>Comment: EndSpeech: ...Darn! My cherished bird Puppets...
-@>Conditional Branch: Script: TrainerBattle.start(:FAIRY2, "Aria")
+@>Conditional Branch: Script: TrainerBattle.start(:FAIRY2, "Aria",pbGet(99))
  @>Control Self Switch: A =ON
  @>
 : Branch End
@@ -10815,7 +10811,7 @@ List of Event Commands:
 @>Script: pbNoticePlayer(get_self)
 @>Text: You're a trainer, and I'm a trainer. Can I make it any more obvious?
 @>Comment: EndSpeech: See you later, human!
-@>Conditional Branch: Script: TrainerBattle.start(:FAIRY2, "Avril")
+@>Conditional Branch: Script: TrainerBattle.start(:FAIRY2, "Avril",pbGet(99))
  @>Control Self Switch: A =ON
  @>
 : Branch End
@@ -10864,7 +10860,7 @@ List of Event Commands:
 @>Script: pbNoticePlayer(get_self)
 @>Text: Think fast! It's spooky Puppet time!
 @>Comment: EndSpeech: Humans are so brave!
-@>Conditional Branch: Script: TrainerBattle.start(:FAIRY3, "Acretia")
+@>Conditional Branch: Script: TrainerBattle.start(:FAIRY3, "Acretia",pbGet(99))
  @>Control Self Switch: A =ON
  @>
 : Branch End
@@ -11489,7 +11485,7 @@ List of Event Commands:
 @>Control Variables: [0103: Vs. Transition ID] = 3
 @>Control Variables: [0104: Vs. Transition - Pkmn] = 4
 @>Comment: EndSpeech: Lyrica: Hehe, you certainly are one strong trainer~
-@>Conditional Branch: Script: TrainerBattle.start(:LYRICA, "Lyrica Prismriver", 10)
+@>Conditional Branch: Script: TrainerBattle.start(:LYRICA, "Lyrica Prismriver", 10+(pbGet(99) * 10))
  @>
 : Else
  @>Script: pbTrainerEnd
@@ -11666,7 +11662,7 @@ List of Event Commands:
 @>Control Switches: [0104: Transition Handler] = ON
 @>Control Variables: [0103: Vs. Transition ID] = 3
 @>Control Variables: [0104: Vs. Transition - Pkmn] = 4
-@>Conditional Branch: Script: TrainerBattle.start(:LYRICA, "Lyrica Prismriver", 10)
+@>Conditional Branch: Script: TrainerBattle.start(:LYRICA, "Lyrica Prismriver", 10+(pbGet(99) * 10))
  @>
 : Else
  @>Script: pbTrainerEnd
@@ -13130,7 +13126,7 @@ List of Event Commands:
 @>Script: pbNoticePlayer(get_self)
 @>Text: If you want to beat me, there's no room for error!
 @>Comment: EndSpeech: Somehow, you found the route to victory!
-@>Conditional Branch: Script: TrainerBattle.start(:FAIRY1, "Ruu")
+@>Conditional Branch: Script: TrainerBattle.start(:FAIRY1, "Ruu",pbGet(99))
  @>Control Self Switch: A =ON
  @>
 : Branch End
@@ -13179,7 +13175,7 @@ List of Event Commands:
 @>Script: pbNoticePlayer(get_self)
 @>Text: I might've lost my last 50 battles, but this time I'll win for sure!
 @>Comment: EndSpeech: Shameless! Absolutely shameless!
-@>Conditional Branch: Script: TrainerBattle.start(:FAIRY1, "Umi")
+@>Conditional Branch: Script: TrainerBattle.start(:FAIRY1, "Umi",pbGet(99))
  @>Control Self Switch: A =ON
  @>
 : Branch End
@@ -13228,7 +13224,7 @@ List of Event Commands:
 @>Script: pbNoticePlayer(get_self)
 @>Text: My Puppets will give you the royal treatment!
 @>Comment: EndSpeech: Horosho...
-@>Conditional Branch: Script: TrainerBattle.start(:FAIRY1, "Eli")
+@>Conditional Branch: Script: TrainerBattle.start(:FAIRY1, "Eli",pbGet(99))
  @>Control Self Switch: A =ON
  @>
 : Branch End
@@ -13277,7 +13273,7 @@ List of Event Commands:
 @>Script: pbNoticePlayer(get_self)
 @>Text: I'm going to give you a taste of your own medicine!
 @>Comment: EndSpeech: Wait. She's MY Puppet, so wouldn't it be a taste of MY own medicine?
-@>Conditional Branch: Script: TrainerBattle.start(:FAIRY2, "Ayana")
+@>Conditional Branch: Script: TrainerBattle.start(:FAIRY2, "Ayana",pbGet(99))
  @>Control Self Switch: A =ON
  @>
 : Branch End
@@ -13563,7 +13559,7 @@ List of Event Commands:
 @>Control Switches: [0104: Transition Handler] = ON
 @>Control Variables: [0103: Vs. Transition ID] = 4
 @>Control Variables: [0104: Vs. Transition - Pkmn] = 5
-@>Conditional Branch: Script: TrainerBattle.start(:MYSTIA, "Mystia Lorelei", 10)
+@>Conditional Branch: Script: TrainerBattle.start(:MYSTIA, "Mystia Lorelei", 10+(pbGet(99) * 10))
  @>
 : Else
  @>Script: pbTrainerEnd
@@ -13770,7 +13766,7 @@ List of Event Commands:
 @>Control Switches: [0104: Transition Handler] = ON
 @>Control Variables: [0103: Vs. Transition ID] = 4
 @>Control Variables: [0104: Vs. Transition - Pkmn] = 5
-@>Conditional Branch: Script: TrainerBattle.start(:MYSTIA, "Mystia Lorelei", 10)
+@>Conditional Branch: Script: TrainerBattle.start(:MYSTIA, "Mystia Lorelei", 10+(pbGet(99) * 10))
  @>
 : Else
  @>Script: pbTrainerEnd
@@ -14752,7 +14748,7 @@ List of Event Commands:
 @>Script: pbNoticePlayer(get_self)
 @>Text: Nothing builds an appetite like a trainer battle!
 @>Comment: EndSpeech: Ah, that fight really hit the spot.
-@>Conditional Branch: Script: TrainerBattle.start(:FAIRY1, "Kokoa")
+@>Conditional Branch: Script: TrainerBattle.start(:FAIRY1, "Kokoa",pbGet(99))
  @>Control Self Switch: A =ON
  @>
 : Branch End
@@ -14801,7 +14797,7 @@ List of Event Commands:
 @>Script: pbNoticePlayer(get_self)
 @>Text: The mansion's darkness will consume you!
 @>Comment: EndSpeech: No! I'm...blacking out!
-@>Conditional Branch: Script: TrainerBattle.start(:FAIRY2, "Kuro")
+@>Conditional Branch: Script: TrainerBattle.start(:FAIRY2, "Kuro",pbGet(99))
  @>Control Self Switch: A =ON
  @>
 : Branch End
@@ -14850,7 +14846,7 @@ List of Event Commands:
 @>Script: pbNoticePlayer(get_self)
 @>Text: Party time! Let's fight the night away!
 @>Comment: EndSpeech: Looks like the party's over...
-@>Conditional Branch: Script: TrainerBattle.start(:FAIRY1, "Mika")
+@>Conditional Branch: Script: TrainerBattle.start(:FAIRY1, "Mika",pbGet(99))
  @>Control Self Switch: A =ON
  @>
 : Branch End
@@ -14904,7 +14900,7 @@ List of Event Commands:
 @>Script: pbNoticePlayer(get_self)
 @>Text: My Puppets are as reliable as a stopwatch!
 @>Comment: EndSpeech: Uh-oh! Looks like my cogs are rusty!
-@>Conditional Branch: Script: TrainerBattle.start(:FAIRY1, "Seiko")
+@>Conditional Branch: Script: TrainerBattle.start(:FAIRY1, "Seiko",pbGet(99))
  @>Control Self Switch: A =ON
  @>
 : Branch End
@@ -15679,7 +15675,7 @@ List of Event Commands:
 @>Script: pbNoticePlayer(get_self)
 @>Text: Breaking news: you're about to get beaten!
 @>Comment: EndSpeech: Stop the presses...
-@>Conditional Branch: Script: TrainerBattle.start(:FAIRY1, "Aika")
+@>Conditional Branch: Script: TrainerBattle.start(:FAIRY1, "Aika",pbGet(99))
  @>Control Self Switch: A =ON
  @>
 : Branch End
@@ -15728,7 +15724,7 @@ List of Event Commands:
 @>Script: pbNoticePlayer(get_self)
 @>Text: My Puppets will blind you with science!
 @>Comment: EndSpeech: Aaaah! My eyes, my eyes!
-@>Conditional Branch: Script: TrainerBattle.start(:FAIRY1, "Rina")
+@>Conditional Branch: Script: TrainerBattle.start(:FAIRY1, "Rina",pbGet(99))
  @>Control Self Switch: A =ON
  @>
 : Branch End
@@ -15777,7 +15773,7 @@ List of Event Commands:
 @>Script: pbNoticePlayer(get_self)
 @>Text: Welcome home, master! How about a Puppet battle?
 @>Comment: EndSpeech: What's that? You’re not the master of the house?
-@>Conditional Branch: Script: TrainerBattle.start(:FAIRY2, "Saphira")
+@>Conditional Branch: Script: TrainerBattle.start(:FAIRY2, "Saphira",pbGet(99))
  @>Control Self Switch: A =ON
  @>
 : Branch End
@@ -15826,7 +15822,7 @@ List of Event Commands:
 @>Script: pbNoticePlayer(get_self)
 @>Text: U-Um...battle me, please!
 @>Comment: EndSpeech: Oh, I lost...
-@>Conditional Branch: Script: TrainerBattle.start(:FAIRY2, "Ruby")
+@>Conditional Branch: Script: TrainerBattle.start(:FAIRY2, "Ruby",pbGet(99))
  @>Control Self Switch: A =ON
  @>
 : Branch End
@@ -15875,7 +15871,7 @@ List of Event Commands:
 @>Script: pbNoticePlayer(get_self)
 @>Text: I know everything there is to know about Puppets!
 @>Comment: EndSpeech: Impossible! My strategies were flawless!
-@>Conditional Branch: Script: TrainerBattle.start(:FAIRY2, "Dia")
+@>Conditional Branch: Script: TrainerBattle.start(:FAIRY2, "Dia",pbGet(99))
  @>Control Self Switch: A =ON
  @>
 : Branch End
@@ -15898,6 +15894,405 @@ Trigger: Action Button
 
 List of Event Commands:
 @>Text: Philistine. I'll bet you don't even know how many EVs a CMystia gives you.
+@>
+
+#------------------------------------------------------------------------------
+
+#==============================================================================
+Map ID: 019
+Map Name: World of Fantasies
+Tileset: 038: World of Fantasies
+Width: 39, Height: 39
+Auto-Change BGM: X-004. Cavern of Remembrance
+
+#------------------------------------------------------------------------------
+Event ID: 001
+Event Name: Five Magic Stones
+(X,Y): (019,022)
+
+Page #1
+Conditions
+None
+
+Graphic: Person_FiveMagicStones_Hologram
+
+Autonomous Movement
+Type: Fixed
+Speed: 3: Slow
+Freq: 3: Low
+Options Enabled
+Move Animation
+Through
+Trigger: Action Button
+
+List of Event Commands:
+@>
+
+#------------------------------------------------------------------------------
+Event ID: 002
+Event Name: EV002
+(X,Y): (032,020)
+
+Page #1
+Conditions
+None
+
+Autonomous Movement
+Type: Fixed
+Speed: 3: Slow
+Freq: 3: Low
+Options Enabled
+Move Animation
+Trigger: Autorun
+
+List of Event Commands:
+@>Text: \xn[\pn]... Huh? Where am I?
+@>Set Move Route: Player
+ :              : $>Turn Left
+ :              : $>Wait: 10 frame(s)
+ :              : $>Turn Right
+ :              : $>Wait: 10 frame(s)
+ :              : $>Turn Up
+ :              : $>Wait: 10 frame(s)
+ :              : $>Turn Down
+@>Text: \xn[\pn]Is\..\..\.. Is this some kind of dream?
+@>Wait for Move's Completion
+@>Text: \xn[\pn]The last thing I remember was\..\..\..-\wtnp[1]
+@>Text: \xn[?]HELLO THERE, HUMAN.
+@>Show Animation: Player, [Exclaim bubble]
+@>Text: \xn[\pn]Hello!? Is somebody there?
+@>Text: \xn[???]YES, WE ARE RIGHT IN FRONT OF YOU.
+@>Text: \xn[\pn]In\..\..\.. front of me? But there's nobody there!
+@>Text: \xn[???]NOBODY TH-\WT[10] CONSARN IT ALL, NUMBER 2 YOU 
+ :    : FORGOT TO TURN ON THE HOLO-LIVECASTER.
+@>Text: \xn[??]SORRY ABOUT THAT, GIVE ME A MOMENT.
+@>Wait: 10 frame(s)
+@>Play BGM: 'X-003. Shiny Smily Story (8-bit Remix)', 80, 100
+@>Wait: 20 frame(s)
+@>Text: \xn[?????]THAT IS MOST DEFINITELY NOT THE HOLO-LIVECASTER 
+ :    : NUMBER 2. THAT IS THE HOLOLIVE CASTER.
+@>Text: \xn[??]OH.\wt[10] SO IT IS.\wt[20] CURIOUS.
+@>Text: \xn[??]WHY DO WE EVEN HAVE MORE THAN ONE THING WITH 
+ :    : THE THREE WORDS "HOLO LIVE CASTER"? IS THIS SOMEONE'S 
+ :    : IDEA OF A JOKE?
+@>Comment: Yes. Now get back to work you five.
+@>Text: \xn[??]FINE THEN. I HAVE NO IDEA WHO ORGANIZED 
+ :    : THIS SYSTEM BUT THEIR SENSE OF ORGANIZATION IS A MESS.
+@>Text: \xn[?]ON THAT NOTE, WHO EVEN NEEDS A CLOUD SERVER 
+ :    : WITH THAT MANY GEOPBYTES OF STORAGE?
+@>Text: \xn[????]I FOUND IT; IT WAS STORED IN THE "A Useful Folder 
+ :    : Full Of Useful Things" DIRECTORY. WHY IT WAS STORED THERE,
+ :    : I HAVE NO IDEA.
+@>Text: \xn[????]LET ME JUST TURN IT ON NOW.
+@>Wait: 10 frame(s)
+@>Play BGM: 'X-004. Cavern of Remembrance', 100, 100
+@>Change Screen Color Tone: (-255,-255,-255,0), @8
+@>Wait: 8 frame(s)
+@>Play SE: 'PC open', 80, 100
+@>Set Move Route: [Five Magic Stones]
+ :              : $>Change Opacity: 255
+@>Change Screen Color Tone: (0,0,0,0), @8
+@>Wait: 10 frame(s)
+@>Text: \xn[????]THERE. THAT'S MUCH BETTER.
+@>Text: \xn[?]GREETINGS, HUMAN. WE APOLOGIZE FOR ALL THE 
+ :    : TECHNICAL DIFFICULTIES JUST NOW.
+@>Text: \xn[\pn]Are... are you a stone?
+@>Text: \xn[?????]NOT JUST A STONE. FIVE OF THEM.
+@>Text: \xn[Five Magic Stones]WE ARE THE FIVE MAGIC STONES, AND 
+ :    : WE ARE THE GUARDIANS OF THIS DEMI-PLANE; THE "WORLD 
+ :    : OF FANTASIES."
+@>Text: \xn[Stone #2]CURIOUS THAT YOU SHOWED UP HERE. NOBODY
+ :    : HAS BEEN TO THIS TOWER IN A LONG TIME.
+@>Text: \xn[\pn]I don't even know how I showed up here! Or even 
+ :    : where here is!
+@>Text: \xn[Stone #3]THIS TOWER IS A SPECIAL TRAINING SPOT FOR
+ :    : DENIZENS OF THE WORLD OF FANTASIES. THE OFFICIAL NAME
+ :    : IS THE "MEMORY ANALYSIS AND SIMULATION TOWER FOR
+ :    : DESIGNING IMMERSIVE EXPERIENCES AND DATAPOINTS".
+@>Text: \xn[Stone #1]BUT THAT NAME DOESN'T STICK WITH THE OTHER
+ :    : DENIZENS, SO IT JUST ENDS UP BEING CALLED THE "TOWER OF
+ :    : ADVENTURES."
+@>Text: \xn[Stone #1]IT ALLOWS SUBJECTS TO RELIVE PAST TRIALS
+ :    : TO TRAIN THEMSELVES FURTHER.
+@>Text: \xn[Stone #1]BUT NOBODY COMES HERE ANYMORE, SO THE
+ :    : TOWER HASN'T SEEN ACTIVITY IN DECADES.
+@>Text: \xn[Stone #4]YOU, HOWEVER, LOOK LIKE YOU'VE BEEN ON 
+ :    : AN ADVENTURE OR TWO IN YOUR LIFETIME. MAYBE MORE.
+@>Text: \xn[\pn]Have I...? I genuinely can't recall how many I've been 
+ :    : on by this point...
+@>Text: \xn[\pn]Or maybe it's because this is all just a really weird dream.
+@>Text: \xn[Stone #4]WHAT ARE WE ALL BUT DREAMS THOUGHT UP
+ :    : BY THE UNIVERSE.
+@>Text: \xn[Stone #2]PROFOUNDLY SAID, NUMBER 4. DREAM OR NOT,
+ :    : IT MATTERS LITTLE. SO ENJOY IT WHILE IT LASTS.
+@>Text: \xn[\pn]Hmm... Y'know what, you make a great point! So, how
+ :    : does this place work?
+@>Text: \xn[Stone #5]ALL YOU NEED TO DO IS WALK UP TO ONE OF THE
+ :    : PLATFORMS AND ENGAGE THE "NEW GAME PLUS" PROTOCOL.
+@>Text: \xn[Stone #1]WELL, "NEW GAME PLUS" IS WHAT THE DENIZENS
+ :    : CALL IT. THE ACTUAL NAME IS-\wtnp[15]
+@>Text: \xn[Stone #2]NUMBER 1, IF YOU TRY TO SAY THE WHOLE 
+ :    : NAME, WE'LL BE HERE ALL NIGHT.
+@>Text: \xn[\pn]That easy, huh? Okay, I'll give it a whirl!
+@>Text: \xn[Stone #4]SPLENDID. BEFORE YOU GO THOUGH, WE WOULD
+ :    : LIKE TO GIVE YOU A MEMENTO OF YOUR TIME HERE.
+@>Script: pkmn = Pokemon.new(:MAGISTONES, 40)
+:       : pkmn.item = :KNOWLEDGESPHERE
+:       : pkmn.poke_ball = :MASTERORB
+:       : pkmn.obtain_text = "World of Fantasies"
+@>Script: pkmn.iv[:HP] = 31
+:       : pkmn.iv[:ATTACK] = 31
+:       : pkmn.iv[:DEFENSE] = 31
+:       : pkmn.iv[:SPATK] = 31
+:       : pkmn.iv[:SPDEF] = 31
+:       : pkmn.iv[:SPEED] = 31
+:       : pkmn.calc_stats
+:       : pkmn.reset_moves
+:       : pbAddPokemon(pkmn)
+@>Text: \xn[\pn]Thanks... I think!
+@>Text: \xn[\pn]\b(Is... Is this supposed to be a Puppet representation
+ :    : of them? It's just more rocks...)
+@>Text: \xn[Stone #3]THINK NOTHING OF IT. YOU MAY FIND IT TO BE
+ :    : HELPFUL ON YOUR TRIALS AHEAD.
+@>Text: \xn[Five Magic Stones]GOOD LUCK ON THEM, ADVENTURER.
+@>Change Screen Color Tone: (-255,-255,-255,0), @8
+@>Wait: 8 frame(s)
+@>Play SE: 'PC close', 80, 100
+@>Set Move Route: [Five Magic Stones]
+ :              : $>Change Opacity: 0
+@>Change Screen Color Tone: (0,0,0,0), @8
+@>Control Self Switch: A =ON
+@>Script: $player.new_game_plus = true
+:       : $player.scenario_name = "None"
+@>Control Switches: [0107: New Game +] = ON
+@>
+
+Page #2
+Conditions
+Self Switch A is ON
+
+Autonomous Movement
+Type: Fixed
+Speed: 3: Slow
+Freq: 3: Low
+Options Enabled
+Move Animation
+Trigger: Action Button
+
+List of Event Commands:
+@>
+
+#------------------------------------------------------------------------------
+Event ID: 003
+Event Name: The Mansion of Mystery
+(X,Y): (014,023)
+
+Page #1
+Conditions
+None
+
+Autonomous Movement
+Type: Fixed
+Speed: 3: Slow
+Freq: 3: Low
+Options Enabled
+Move Animation
+Trigger: Action Button
+
+List of Event Commands:
+@>Script: $game_variables[1] = $game_switches[113] ? "Yes" : "No"
+:       : $game_variables[2] = $game_switches[114] ? "Yes" : "No"
+:       : $game_variables[3] = $game_switches[115] ? "Yes" : "No"
+@>Conditional Branch: Variable [0107: TMoM Plot Variable] >= 20
+ @>Text: \sign[signskin]\l[5]<ac>The Mansion of Mystery</ac>\nStatus: Cleared
+  :    : \nBad End Seen: \v[1]
+  :    : \nGood End Seen: \v[2]
+  :    : \nBonus Boss Beaten: \v[3]
+ @>
+: Else
+ @>Text: \sign[signskin]<ac>The Mansion of Mystery</ac>\n
+  :    : Status: Uncleared
+ @>
+: Branch End
+@>
+
+#------------------------------------------------------------------------------
+Event ID: 004
+Event Name: The Mansion of Mystery
+(X,Y): (026,023)
+
+Page #1
+Conditions
+None
+
+Autonomous Movement
+Type: Fixed
+Speed: 3: Slow
+Freq: 3: Low
+Options Enabled
+Move Animation
+Trigger: Action Button
+
+List of Event Commands:
+@>Script: $game_variables[1] = $game_switches[113] ? "Yes" : "No"
+:       : $game_variables[2] = $game_switches[114] ? "Yes" : "No"
+:       : $game_variables[3] = $game_switches[115] ? "Yes" : "No"
+@>Conditional Branch: Variable [0130: TFoC Plot Variable] >= 99
+ @>Text: \sign[signskin]\l[5]<ac>The Festival of Curses</ac>\nStatus: Cleared
+  :    : \nGensokyo's Brightest: \v[1]
+  :    : \nVillage's Strongest: \v[2]
+  :    : \nPrismriver's Bravest: \v[3]
+ @>
+: Else
+ @>Text: \sign[signskin]<ac>The Festival of Curses</ac>\n
+  :    : Status: Uncleared
+ @>
+: Branch End
+@>
+
+#------------------------------------------------------------------------------
+Event ID: 005
+Event Name: [Adventure 3]
+(X,Y): (020,014)
+
+Page #1
+Conditions
+None
+
+Autonomous Movement
+Type: Fixed
+Speed: 3: Slow
+Freq: 3: Low
+Options Enabled
+Move Animation
+Trigger: Action Button
+
+List of Event Commands:
+@>Text: \sign[signskin]\l[3]<ac>Coming Soon
+ :    : \nHopefully!</ac>
+@>
+
+#------------------------------------------------------------------------------
+Event ID: 006
+Event Name: EV006
+(X,Y): (019,013)
+
+Page #1
+Conditions
+None
+
+Graphic: trainer_ABYSSALSOVEREIGN
+
+Autonomous Movement
+Type: Fixed
+Speed: 3: Slow
+Freq: 3: Low
+Options Enabled
+Move Animation
+Trigger: Action Button
+
+List of Event Commands:
+@>Text: \xn[???]Oh- You're uh. You're here early!
+@>Text: \xn[???]Sorry, I haven't, uh. I haven't got this set up yet!
+@>Text: \xn[???]Come back another time, okay?
+@>Set Move Route: This event
+ :              : $>Turn Up
+@>
+
+#------------------------------------------------------------------------------
+Event ID: 007
+Event Name: EV007
+(X,Y): (032,022)
+
+Page #1
+Conditions
+None
+
+Autonomous Movement
+Type: Fixed
+Speed: 3: Slow
+Freq: 3: Low
+Options Enabled
+Move Animation
+Trigger: Action Button
+
+List of Event Commands:
+@>Show Choices: Bad End, Good End, Layla
+(When Cancel: Choice 2)
+: When [Bad End]
+ @>Control Switches: [0113: Bad End Seen] = ON
+ @>
+: When [Good End]
+ @>Control Switches: [0114: Good End Seen] = ON
+ @>
+: When [Layla]
+ @>Control Switches: [0115: Layla Beaten] = ON
+ @>
+: Branch End
+@>
+
+#------------------------------------------------------------------------------
+Event ID: 008
+Event Name: EV008
+(X,Y): (013,020)
+
+Page #1
+Conditions
+None
+
+Autonomous Movement
+Type: Fixed
+Speed: 3: Slow
+Freq: 3: Low
+Options Enabled
+Move Animation
+Trigger: Player Touch
+
+List of Event Commands:
+@>Show Picture: 1, 'TMoM', Upper Left (0,0), (100%,100%), 0, Normal
+@>Move Picture: 1, @20, Upper Left (0,0), (100%,100%), 255, Normal
+@>Wait: 60 frame(s)
+@>Change Text Options: Bottom, Show
+@>Text: The Mansion of Mystery.\wt[20]\nIs this the adventure you'd like to play?
+@>Show Choices: Yes, No
+(When Cancel: Choice 2)
+: When [Yes]
+ @>Control Variables: [0105: Game Selected] = 1
+ @>Move Picture: 1, @20, Upper Left (0,0), (100%,100%), 0, Normal
+ @>Wait: 20 frame(s)
+ @>Script: $player.scenario_name = "The Mansion of Mystery"
+ @>Change Transparent Flag: Transparency
+ @>Transfer Player:[003: The Mansion of Mystery], (001,001)
+ @>
+: When [No]
+ @>Move Picture: 1, @20, Upper Left (0,0), (100%,100%), 0, Normal
+ @>Wait: 20 frame(s)
+ @>Jump to Label: Start
+ @>
+: Branch End
+@>
+
+#------------------------------------------------------------------------------
+Event ID: 009
+Event Name: EV009
+(X,Y): (019,027)
+
+Page #1
+Conditions
+None
+
+Graphic: Person_FiveMagicStones
+
+Autonomous Movement
+Type: Fixed
+Speed: 3: Slow
+Freq: 3: Low
+Options Enabled
+Move Animation
+Trigger: Action Button
+
+List of Event Commands:
+@>Script: Reincarnate.reincarnationWindow
 @>
 
 #------------------------------------------------------------------------------
@@ -16664,7 +17059,7 @@ List of Event Commands:
  @>Control Switches: [0104: Transition Handler] = ON
  @>Control Variables: [0103: Vs. Transition ID] = 3
  @>Control Variables: [0104: Vs. Transition - Pkmn] = 3
- @>Conditional Branch: Script: TrainerBattle.start(:LYRICA, "Lyrica Prismriver", 11)
+ @>Conditional Branch: Script: TrainerBattle.start(:LYRICA, "Lyrica Prismriver", 11+(pbGet(99) * 10))
   @>
  : Else
   @>Script: pbTrainerEnd
@@ -16741,7 +17136,7 @@ List of Event Commands:
  @>Control Switches: [0104: Transition Handler] = ON
  @>Control Variables: [0103: Vs. Transition ID] = 3
  @>Control Variables: [0104: Vs. Transition - Pkmn] = 3
- @>Conditional Branch: Script: TrainerBattle.start(:LYRICA, "Lyrica Prismriver", 11)
+ @>Conditional Branch: Script: TrainerBattle.start(:LYRICA, "Lyrica Prismriver", 11+(pbGet(99) * 10))
   @>
  : Else
   @>Script: pbTrainerEnd
@@ -17116,7 +17511,7 @@ List of Event Commands:
 @>Script: pbNoticePlayer(get_self)
 @>Text: I-It's not like I want to battle you or anything. I'm just here because my friends are here!
 @>Comment: EndSpeech: How did you beat me? I don’t get it at all!
-@>Conditional Branch: Script: TrainerBattle.start(:FAIRY2, "Maki")
+@>Conditional Branch: Script: TrainerBattle.start(:FAIRY2, "Maki",pbGet(99))
  @>Control Self Switch: A =ON
  @>
 : Branch End
@@ -17170,7 +17565,7 @@ List of Event Commands:
 @>Script: pbNoticePlayer(get_self)
 @>Text: I've been waiting all day for you. Let's battle!
 @>Comment: EndSpeech: No way! I lost, even after all my waiting!?
-@>Conditional Branch: Script: TrainerBattle.start(:FAIRY1, "Kaya")
+@>Conditional Branch: Script: TrainerBattle.start(:FAIRY1, "Kaya",pbGet(99))
  @>Control Self Switch: A =ON
  @>
 : Branch End
@@ -17229,7 +17624,7 @@ List of Event Commands:
 @>Script: pbNoticePlayer(get_self)
 @>Text: Ufufu...by locking eyes with me, you've entered a contract to become my little demon!
 @>Comment: EndSpeech: No, no, no! You're supposed to lose, you dummy!
-@>Conditional Branch: Script: TrainerBattle.start(:FAIRY2, "Yohane")
+@>Conditional Branch: Script: TrainerBattle.start(:FAIRY2, "Yohane",pbGet(99))
  @>Control Self Switch: A =ON
  @>
 : Branch End
@@ -17283,7 +17678,7 @@ List of Event Commands:
 @>Script: pbNoticePlayer(get_self)
 @>Text: I'm going to show you the power of the future!
 @>Comment: EndSpeech: Dagyaaaah!
-@>Conditional Branch: Script: TrainerBattle.start(:FAIRY2, "Hanamaru")
+@>Conditional Branch: Script: TrainerBattle.start(:FAIRY2, "Hanamaru",pbGet(99))
  @>Control Self Switch: A =ON
  @>
 : Branch End
@@ -17336,7 +17731,7 @@ List of Event Commands:
 @>Script: pbNoticePlayer(get_self)
 @>Text: Why don't more Puppets fight with swords? Swords are super cool.
 @>Comment: EndSpeech: But your skills are even sharper!
-@>Conditional Branch: Script: TrainerBattle.start(:FAIRY1, "Sayaka")
+@>Conditional Branch: Script: TrainerBattle.start(:FAIRY1, "Sayaka",pbGet(99))
  @>Control Self Switch: A =ON
  @>
 : Branch End
@@ -17389,7 +17784,7 @@ List of Event Commands:
 @>Script: pbNoticePlayer(get_self)
 @>Text: Not to brag, but my team is the cat's meow!
 @>Comment: EndSpeech: Oops, I let the cat out of the bag...
-@>Conditional Branch: Script: TrainerBattle.start(:FAIRY1, "Rin")
+@>Conditional Branch: Script: TrainerBattle.start(:FAIRY1, "Rin",pbGet(99))
  @>Control Self Switch: A =ON
  @>
 : Branch End
@@ -17438,7 +17833,7 @@ List of Event Commands:
 @>Script: pbNoticePlayer(get_self)
 @>Text: Once I beat you, my Puppets and I are going to have a big feast together!
 @>Comment: EndSpeech: Nooo! Somebody help meeeee!
-@>Conditional Branch: Script: TrainerBattle.start(:FAIRY1, "Hanayo")
+@>Conditional Branch: Script: TrainerBattle.start(:FAIRY1, "Hanayo",pbGet(99))
  @>Control Self Switch: A =ON
  @>
 : Branch End
@@ -17486,7 +17881,7 @@ List of Event Commands:
 @>Script: pbTrainerIntro(:FAIRY3)
 @>Text: Hehe, I'm the ruler of this manor! Countess!
 @>Comment: EndSpeech: Oh no, my beautiful mansion~!
-@>Conditional Branch: Script: TrainerBattle.start(:FAIRY3, "Countess")
+@>Conditional Branch: Script: TrainerBattle.start(:FAIRY3, "Countess",pbGet(99))
  @>Text: You beat me, noooooo~
  @>Change Screen Color Tone: (-255,-255,-255,0), @6
  @>Wait: 8 frame(s)
@@ -17535,7 +17930,7 @@ List of Event Commands:
 @>Script: pbTrainerIntro(:FAIRY3)
 @>Text: Hehe, I'm the youngest of this manor! Layla!
 @>Comment: EndSpeech: Oh no~
-@>Conditional Branch: Script: TrainerBattle.start(:FAIRY3, "Layla")
+@>Conditional Branch: Script: TrainerBattle.start(:FAIRY3, "Layla",pbGet(99))
  @>Text: You beat me, noooooo~
  @>Change Screen Color Tone: (-255,-255,-255,0), @6
  @>Wait: 8 frame(s)
@@ -17584,7 +17979,7 @@ List of Event Commands:
 @>Script: pbTrainerIntro(:FAIRY3)
 @>Text: Hehe, I'm the talentedest of this manor! Lydia!
 @>Comment: EndSpeech: Oh no~
-@>Conditional Branch: Script: TrainerBattle.start(:FAIRY3, "Lydia")
+@>Conditional Branch: Script: TrainerBattle.start(:FAIRY3, "Lydia",pbGet(99))
  @>Text: You beat me, noooooo~
  @>Change Screen Color Tone: (-255,-255,-255,0), @6
  @>Wait: 8 frame(s)
@@ -17633,7 +18028,7 @@ List of Event Commands:
 @>Script: pbTrainerIntro(:FAIRY3)
 @>Text: Hehe, I'm the smartest of this manor! Lumaria!
 @>Comment: EndSpeech: Oh no~
-@>Conditional Branch: Script: TrainerBattle.start(:FAIRY3, "Lumaria")
+@>Conditional Branch: Script: TrainerBattle.start(:FAIRY3, "Lumaria",pbGet(99))
  @>Text: You beat me, noooooo~
  @>Change Screen Color Tone: (-255,-255,-255,0), @6
  @>Wait: 8 frame(s)
@@ -17682,7 +18077,7 @@ List of Event Commands:
 @>Script: pbTrainerIntro(:FAIRY3)
 @>Text: Hehe, I'm the strongest of this manor! Maria!
 @>Comment: EndSpeech: Oh no~
-@>Conditional Branch: Script: TrainerBattle.start(:FAIRY3, "Maria")
+@>Conditional Branch: Script: TrainerBattle.start(:FAIRY3, "Maria",pbGet(99))
  @>Text: You beat me, noooooo~
  @>Change Screen Color Tone: (-255,-255,-255,0), @6
  @>Wait: 8 frame(s)
@@ -19614,7 +20009,7 @@ List of Event Commands:
 @>Control Switches: [0104: Transition Handler] = ON
 @>Control Variables: [0103: Vs. Transition ID] = 5
 @>Control Variables: [0104: Vs. Transition - Pkmn] = 6
-@>Conditional Branch: Script: TrainerBattle.start(:PRISMRIVER, "Prismriver Sisters", 10)
+@>Conditional Branch: Script: TrainerBattle.start(:PRISMRIVER, "Prismriver Sisters", 10+(pbGet(99) * 10))
  @>
 : Else
  @>Script: pbTrainerEnd
@@ -19650,6 +20045,8 @@ List of Event Commands:
  @>
 : Branch End
 @>Conditional Branch: Script: $stats.trainer_battles_lost >= 10
+ @>Control Variables: [0107: TMoM Plot Variable] = 20
+ @>Control Switches: [0115: Layla Beaten] = ON
  @>Comment: ------ ENGAGE BAD END A ------
  @>Set Move Route: [Shinji]
   :              : $>Change Speed: 5
@@ -20044,7 +20441,7 @@ List of Event Commands:
 @>Text: This is my turf and I won't let you past here!
  :    : I'll blow you away without a second thought!
 @>Comment: EndSpeech: N-No! I was supposed to be the best!
-@>Conditional Branch: Script: TrainerBattle.start(:ZEPHYR, "Saya")
+@>Conditional Branch: Script: TrainerBattle.start(:ZEPHYR, "Saya",pbGet(99))
  @>Text: You blew me away instead!
  @>Text: Nooooooo~!
  @>Change Screen Color Tone: (-255,-255,-255,0), @6
@@ -20340,7 +20737,7 @@ List of Event Commands:
 @>Script: pbNoticePlayer(get_self)
 @>Text: Hello, hello! You're here to see my super special Puppet, right?
 @>Comment: EndSpeech: Eh? That's not a Puppet? What do you mean?
-@>Conditional Branch: Script: TrainerBattle.start(:FAIRY2, "Mari")
+@>Conditional Branch: Script: TrainerBattle.start(:FAIRY2, "Mari",pbGet(99))
  @>Control Self Switch: A =ON
  @>
 : Branch End
@@ -20389,7 +20786,7 @@ List of Event Commands:
 @>Script: pbNoticePlayer(get_self)
 @>Text: We stand united, for the Sisterhood! Defeat doesn't scare me.
 @>Comment: EndSpeech: Dead and back, trainer. Dead and back.
-@>Conditional Branch: Script: TrainerBattle.start(:FAIRY1, "Oxanna")
+@>Conditional Branch: Script: TrainerBattle.start(:FAIRY1, "Oxanna",pbGet(99))
  @>Control Self Switch: A =ON
  @>
 : Branch End
@@ -20438,7 +20835,7 @@ List of Event Commands:
 @>Script: pbNoticePlayer(get_self)
 @>Text: My Puppet rocks! Wanna see why?
 @>Comment: EndSpeech: I've hit rock bottom!
-@>Conditional Branch: Script: TrainerBattle.start(:FAIRY1, "Stella")
+@>Conditional Branch: Script: TrainerBattle.start(:FAIRY1, "Stella",pbGet(99))
  @>Control Self Switch: A =ON
  @>
 : Branch End
@@ -20487,7 +20884,7 @@ List of Event Commands:
 @>Script: pbNoticePlayer(get_self)
 @>Text: Those other Puppets are just imitations. Mine are the real deal!
 @>Comment: EndSpeech: No! My strings have been cut!"
-@>Conditional Branch: Script: TrainerBattle.start(:FAIRY1, "Suigintou")
+@>Conditional Branch: Script: TrainerBattle.start(:FAIRY1, "Suigintou",pbGet(99))
  @>Control Self Switch: A =ON
  @>
 : Branch End
@@ -20536,7 +20933,7 @@ List of Event Commands:
 @>Script: pbNoticePlayer(get_self)
 @>Text: Look at my Puppet's uniform! Isn't it fancy and official?
 @>Comment: EndSpeech: I wish uniforms were more help during Puppet battles...
-@>Conditional Branch: Script: TrainerBattle.start(:FAIRY2, "Watanabe")
+@>Conditional Branch: Script: TrainerBattle.start(:FAIRY2, "Watanabe",pbGet(99))
  @>Control Self Switch: A =ON
  @>
 : Branch End
@@ -20585,7 +20982,7 @@ List of Event Commands:
 @>Script: pbNoticePlayer(get_self)
 @>Text: Flowers are love! Flowers are justice!
 @>Comment: EndSpeech: Aaah, my fighting spirit wilted...
-@>Conditional Branch: Script: TrainerBattle.start(:FAIRY2, "Rafania")
+@>Conditional Branch: Script: TrainerBattle.start(:FAIRY2, "Rafania",pbGet(99))
  @>Control Self Switch: A =ON
  @>
 : Branch End
@@ -20634,7 +21031,7 @@ List of Event Commands:
 @>Script: pbNoticePlayer(get_self)
 @>Text: Hidden away in a dark, forgotten basement...is a totally awesome fairy trainer!
 @>Comment: EndSpeech: Does this mean I'm not awesome enough?
-@>Conditional Branch: Script: TrainerBattle.start(:FAIRY1, "Nayuki")
+@>Conditional Branch: Script: TrainerBattle.start(:FAIRY1, "Nayuki",pbGet(99))
  @>Control Self Switch: A =ON
  @>
 : Branch End
@@ -20683,7 +21080,7 @@ List of Event Commands:
 @>Script: pbNoticePlayer(get_self)
 @>Text: Who likes being strong?
 @>Comment: EndSpeech: So powerful!
-@>Conditional Branch: Script: TrainerBattle.start(:FAIRY1, "Ayame")
+@>Conditional Branch: Script: TrainerBattle.start(:FAIRY1, "Ayame",pbGet(99))
  @>Control Self Switch: A =ON
  @>
 : Branch End
@@ -20732,7 +21129,7 @@ List of Event Commands:
 @>Script: pbNoticePlayer(get_self)
 @>Text: We like being strong!
 @>Comment: EndSpeech: Too much!
-@>Conditional Branch: Script: TrainerBattle.start(:FAIRY1, "Mikoto")
+@>Conditional Branch: Script: TrainerBattle.start(:FAIRY1, "Mikoto",pbGet(99))
  @>Control Self Switch: A =ON
  @>
 : Branch End
@@ -20781,7 +21178,7 @@ List of Event Commands:
 @>Script: pbNoticePlayer(get_self)
 @>Text: Ready to get your feet wet with a battle?
 @>Comment: EndSpeech: I'm the one who got washed out!
-@>Conditional Branch: Script: TrainerBattle.start(:FAIRY2, "Kanan")
+@>Conditional Branch: Script: TrainerBattle.start(:FAIRY2, "Kanan",pbGet(99))
  @>Control Self Switch: A =ON
  @>
 : Branch End
@@ -20830,7 +21227,7 @@ List of Event Commands:
 @>Script: pbNoticePlayer(get_self)
 @>Text: You think you can beat my team? Say your prayers!
 @>Comment: EndSpeech: My hopes have been shot down! They're earth-bound!
-@>Conditional Branch: Script: TrainerBattle.start(:FAIRY1, "Paula")
+@>Conditional Branch: Script: TrainerBattle.start(:FAIRY1, "Paula",pbGet(99))
  @>Control Self Switch: A =ON
  @>
 : Branch End
@@ -20879,7 +21276,7 @@ List of Event Commands:
 @>Script: pbNoticePlayer(get_self)
 @>Text: What's that? You want me to just let you past? Too bad~
 @>Comment: EndSpeech: Alright, alright! I give!
-@>Conditional Branch: Script: TrainerBattle.start(:FAIRY3, "Kalypsa")
+@>Conditional Branch: Script: TrainerBattle.start(:FAIRY3, "Kalypsa",pbGet(99))
  @>Control Self Switch: A =ON
  @>
 : Branch End
@@ -21148,7 +21545,7 @@ List of Event Commands:
 @>Control Switches: [0104: Transition Handler] = ON
 @>Control Variables: [0103: Vs. Transition ID] = 6
 @>Control Variables: [0104: Vs. Transition - Pkmn] = 5
-@>Conditional Branch: Script: TrainerBattle.start(:NUE, "Nue Houjuu", 10)
+@>Conditional Branch: Script: TrainerBattle.start(:NUE, "Nue Houjuu", 10+(pbGet(99) * 10))
  @>
 : Else
  @>Script: pbTrainerEnd
@@ -21538,7 +21935,7 @@ List of Event Commands:
 @>Control Switches: [0104: Transition Handler] = ON
 @>Control Variables: [0103: Vs. Transition ID] = 6
 @>Control Variables: [0104: Vs. Transition - Pkmn] = 5
-@>Conditional Branch: Script: TrainerBattle.start(:NUE, "Nue Houjuu", 10)
+@>Conditional Branch: Script: TrainerBattle.start(:NUE, "Nue Houjuu", 10+(pbGet(99) * 10))
  @>
 : Else
  @>Script: pbTrainerEnd
@@ -21883,7 +22280,7 @@ List of Event Commands:
 @>Text: You now stand before the number one fairy
  :    : in all of Gensokyo! Tremble at my might!
 @>Comment: EndSpeech: N-No! I was supposed to be the best!
-@>Conditional Branch: Script: TrainerBattle.start(:ZEPHYR, "Nico")
+@>Conditional Branch: Script: TrainerBattle.start(:ZEPHYR, "Nico",pbGet(99))
  @>Text: B-But I'm the strongest fairy! I can't be beaten
   :    : like this!
  @>Text: Nooooooo~!
@@ -22103,7 +22500,7 @@ List of Event Commands:
  @>Control Switches: [0104: Transition Handler] = ON
  @>Control Variables: [0103: Vs. Transition ID] = 7
  @>Control Variables: [0104: Vs. Transition - Pkmn] = 6
- @>Conditional Branch: Script: TrainerBattle.start(:KOGASA, "Kogasa Tatara", 10)
+ @>Conditional Branch: Script: TrainerBattle.start(:KOGASA, "Kogasa Tatara", 10+(pbGet(99) * 10))
   @>
  : Else
   @>Script: pbTrainerEnd
@@ -22112,6 +22509,7 @@ List of Event Commands:
  : Branch End
  @>Comment: --- Pre-Battle Intro Conclusion
  @>Comment: ---------- FUNLAND BEGINS AGAIN
+ @>Control Variables: [0107: TMoM Plot Variable] = 20
  @>Text: \xn[Kogasa]Uwaa~! 
  @>Text: \xn[\pn]Now, will you please leave the inhabitants of 
   :    : this mansion alone?
@@ -22122,11 +22520,15 @@ List of Event Commands:
  @>Text: \xn[Kogasa]I should take the success I did get and run with it, 
   :    : and take your advice with me too!
  @>Text: \xn[\pn]That's the spirit!
- @>Text: \bDEBUG ONLY TEXT: Set the defeat count.
- @>Input Number: [0001: Temp Pokemon Choice], 2 digit(s)
- @>Text: \bSetting losses to \v[1].
- @>Script: $stats.trainer_battles_lost = pbGet(1)
+ @>Conditional Branch: Script: $DEBUG == true
+  @>Text: \bDEBUG ONLY TEXT: Set the defeat count.
+  @>Input Number: [0001: Temp Pokemon Choice], 2 digit(s)
+  @>Text: \bSetting losses to \v[1].
+  @>Script: $stats.trainer_battles_lost = pbGet(1)
+  @>
+ : Branch End
  @>Conditional Branch: Script: $stats.trainer_battles_lost >= 10
+  @>Control Switches: [0113: Bad End Seen] = ON
   @>Comment: ---------- BAD END VARIANT B
   @>Text: \xn[Kogasa]Besides, it's not like you can scare 
    :    : effectively in the early morning anyway!
@@ -22166,10 +22568,10 @@ List of Event Commands:
   @>Change Screen Color Tone: (51,17,-34,255), @6
   @>
  : Else
+  @>Control Switches: [0114: Good End Seen] = ON
   @>Comment: ---------- TRUE END
   @>Change Screen Color Tone: (-255,-255,-255,0), @6
   @>Wait: 8 frame(s)
-  @>Control Variables: [0107: TMoM Plot Variable] = 16
   @>Change Screen Color Tone: (-102,-102,-102,0), @6
   @>Wait: 10 frame(s)
   @>Text: \xn[\pn]I think it's time for me to get going as well.
@@ -22397,13 +22799,14 @@ List of Event Commands:
 @>Control Switches: [0104: Transition Handler] = ON
 @>Control Variables: [0103: Vs. Transition ID] = 8
 @>Control Variables: [0104: Vs. Transition - Pkmn] = 6
-@>Conditional Branch: Script: TrainerBattle.start(:LAYLA, "Layla Prismriver", 10)
+@>Conditional Branch: Script: TrainerBattle.start(:LAYLA, "Layla Prismriver", 10+(pbGet(99) * 10))
  @>
 : Else
  @>Script: pbTrainerEnd
  @>Exit Event Processing
  @>
 : Branch End
+@>Control Switches: [0115: Layla Beaten] = ON
 @>Text: \xn[Layla]Oh, I haven't felt that alive since... well, when I 
  :    : was alive!
 @>Text: \xn[Layla]I bet you would have been the ideal trainer for the 
@@ -22540,13 +22943,14 @@ List of Event Commands:
 @>Control Switches: [0104: Transition Handler] = ON
 @>Control Variables: [0103: Vs. Transition ID] = 8
 @>Control Variables: [0104: Vs. Transition - Pkmn] = 6
-@>Conditional Branch: Script: TrainerBattle.start(:LAYLA, "Layla Prismriver", 10)
+@>Conditional Branch: Script: TrainerBattle.start(:LAYLA, "Layla Prismriver", 10+(pbGet(99) * 10))
  @>
 : Else
  @>Script: pbTrainerEnd
  @>Exit Event Processing
  @>
 : Branch End
+@>Control Switches: [0115: Layla Beaten] = ON
 @>Text: \xn[Layla]Oh, I haven't felt that alive since... well, when I 
  :    : was alive!
 @>Text: \xn[Layla]I bet you would have been the ideal trainer for the 
@@ -28243,7 +28647,7 @@ List of Event Commands:
  @>
 : Branch End
 @>Conditional Branch: Script: $player.name == "Derxwna" || $player.name == "Kaliana" 
- @>Text: \se[WBC]Welcome back, commander.\wtnp[30]
+ @>Text: <ac>\c[3]\se[WBC]Welcome back, commander.\wtnp[30]</ac>
  @>Script: pkmn = Pokemon.new(:CSUMIREKO, 15)
  :       : pkmn.item = :ORANBERRY
  :       : pkmn.poke_ball = :CHERISHORB
@@ -28261,10 +28665,26 @@ List of Event Commands:
  @>Control Switches: [0106: Name Easter Egg] = ON
  @>
 : Branch End
-@>Conditional Branch: Script: $player.name == "Ayaka2"
- @>Text: <b>Initializing Hardcore Mode.</b>
+@>Conditional Branch: Script: $player.name == "Ayaka2" || $player.name == "Ayaka+"
+ @>Text: <b>Initializing New Game+.</b>
  @>Script: $player.name = "Ayaka"
+ @>Script: $player.new_game_plus = true
  @>Control Switches: [0107: New Game +] = ON
+ @>Control Variables: [0099: NG+ Loop] = 1
+ @>Script: pkmn = Pokemon.new(:MAGISTONES, 40)
+ :       : pkmn.item = :KNOWLEDGESPHERE
+ :       : pkmn.poke_ball = :MASTERORB
+ :       : pkmn.obtain_text = "World of Fantasies"
+ @>Script: pkmn.iv[:HP] = 31
+ :       : pkmn.iv[:ATTACK] = 31
+ :       : pkmn.iv[:DEFENSE] = 31
+ :       : pkmn.iv[:SPATK] = 31
+ :       : pkmn.iv[:SPDEF] = 31
+ :       : pkmn.iv[:SPEED] = 31
+ :       : pkmn.calc_stats
+ :       : pkmn.reset_moves
+ :       : pbAddPokemonSilent(pkmn)
+ @>Control Switches: [0106: Name Easter Egg] = ON
  @>
 : Branch End
 @>

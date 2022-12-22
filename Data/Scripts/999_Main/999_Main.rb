@@ -9,6 +9,7 @@ class Scene_DebugIntro
 end
 
 def pbCallTitle
+  $PokemonTemp=PokemonTemp.new() # Derx: Added here because I didn't want to make a separate Thing:tm: for this
   return Scene_DebugIntro.new if $DEBUG
   return Scene_Intro.new
 end

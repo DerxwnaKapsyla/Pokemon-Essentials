@@ -9,10 +9,10 @@
 #	  it will always be day.
 #==============================================================================#
 def pbGetTimeNow
-  if playerIsInMansionOfMystery?
+  if GameData::MapMetadata.get($game_map.map_id)&.has_flag?("TMoM")
     now = Time.now
     return Time.local(now.year,now.month,now.day, 23, 0)
-  elsif playerIsInFestivalOfCurses?
+  elsif GameData::MapMetadata.get($game_map.map_id)&.has_flag?("TFoC")
     now = Time.now
     return Time.local(now.year,now.month,now.day, 12, 0)
   end
@@ -34,10 +34,10 @@ end
 #  end
 #end
 
-def playerIsInMansionOfMystery?
-  return $game_variables[105] == 1
-end
+#def playerIsInMansionOfMystery?
+#  return $game_variables[105] == 1
+#end
 
-def playerIsInFestivalOfCurses?
-  return $game_variables[105] == 2
-end
+#def playerIsInFestivalOfCurses?
+#  return $game_variables[105] == 2
+#end

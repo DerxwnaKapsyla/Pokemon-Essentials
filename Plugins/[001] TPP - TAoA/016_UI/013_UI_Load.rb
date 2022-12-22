@@ -1,4 +1,7 @@
 class PokemonLoadPanel < Sprite
+
+	TEXTCOLOR_NGP = Color.new(232, 232, 0)
+
   def refresh
     return if @refreshing
     return if disposed?
@@ -17,29 +20,55 @@ class PokemonLoadPanel < Sprite
       end
       textpos = []
       if @isContinue
-        textpos.push([@title, 32, 16, 0, TEXTCOLOR, TEXTSHADOWCOLOR])
-        textpos.push([_INTL("Losses:"), 32, 150, 0, TEXTCOLOR, TEXTSHADOWCOLOR])
-        textpos.push([$stats.trainer_battles_lost.to_s, 206, 150, 1, TEXTCOLOR, TEXTSHADOWCOLOR])
-        textpos.push([_INTL("Scenario:"), 32, 182, 0, TEXTCOLOR, TEXTSHADOWCOLOR])
-        textpos.push([trainer.scenario_name, 152, 182, 0, TEXTCOLOR, TEXTSHADOWCOLOR])
-        textpos.push([_INTL("Time:"), 32, 118, 0, TEXTCOLOR, TEXTSHADOWCOLOR])
-        hour = @totalsec / 60 / 60
-        min  = @totalsec / 60 % 60
-        if hour > 0
-          textpos.push([_INTL("{1}h {2}m", hour, min), 206, 118, 1, TEXTCOLOR, TEXTSHADOWCOLOR])
-        else
-          textpos.push([_INTL("{1}m", min), 206, 118, 1, TEXTCOLOR, TEXTSHADOWCOLOR])
-        end
-        if @trainer.male?
-          textpos.push([@trainer.name, 112, 70, 0, MALETEXTCOLOR, MALETEXTSHADOWCOLOR])
-        elsif @trainer.female?
-          textpos.push([@trainer.name, 112, 70, 0, FEMALETEXTCOLOR, FEMALETEXTSHADOWCOLOR])
-        else
-          textpos.push([@trainer.name, 112, 70, 0, TEXTCOLOR, TEXTSHADOWCOLOR])
-        end
-        mapname = pbGetMapNameFromId(@mapid)
-        mapname.gsub!(/\\PN/, @trainer.name)
-        textpos.push([mapname, 386, 16, 1, TEXTCOLOR, TEXTSHADOWCOLOR])
+		if @trainer.new_game_plus
+		  textpos.push([@title, 32, 16, 0, TEXTCOLOR_NGP, TEXTSHADOWCOLOR])
+		  textpos.push([_INTL("Losses:"), 32, 150, 0, TEXTCOLOR_NGP, TEXTSHADOWCOLOR])
+		  textpos.push([$stats.trainer_battles_lost.to_s, 206, 150, 1, TEXTCOLOR_NGP, TEXTSHADOWCOLOR])
+		  textpos.push([_INTL("Scenario:"), 32, 182, 0, TEXTCOLOR_NGP, TEXTSHADOWCOLOR])
+		  textpos.push([@trainer.scenario_name, 152, 182, 0, TEXTCOLOR_NGP, TEXTSHADOWCOLOR])
+		  textpos.push([_INTL("Time:"), 32, 118, 0, TEXTCOLOR_NGP, TEXTSHADOWCOLOR])
+		  hour = @totalsec / 60 / 60
+		  min  = @totalsec / 60 % 60
+		  if hour > 0
+            textpos.push([_INTL("{1}h {2}m", hour, min), 206, 118, 1, TEXTCOLOR_NGP, TEXTSHADOWCOLOR])
+		  else
+            textpos.push([_INTL("{1}m", min), 206, 118, 1, TEXTCOLOR_NGP, TEXTSHADOWCOLOR])
+		  end
+		  if @trainer.male?
+            textpos.push([@trainer.name, 112, 70, 0, MALETEXTCOLOR, MALETEXTSHADOWCOLOR])
+		  elsif @trainer.female?
+            textpos.push([@trainer.name, 112, 70, 0, FEMALETEXTCOLOR, FEMALETEXTSHADOWCOLOR])
+		  else
+            textpos.push([@trainer.name, 112, 70, 0, TEXTCOLOR_NGP, TEXTSHADOWCOLOR])
+		  end
+		  mapname = pbGetMapNameFromId(@mapid)
+		  mapname.gsub!(/\\PN/, @trainer.name)
+		  textpos.push([mapname, 386, 16, 1, TEXTCOLOR_NGP, TEXTSHADOWCOLOR])
+		else
+		  textpos.push([@title, 32, 16, 0, TEXTCOLOR, TEXTSHADOWCOLOR])
+		  textpos.push([_INTL("Losses:"), 32, 150, 0, TEXTCOLOR, TEXTSHADOWCOLOR])
+		  textpos.push([$stats.trainer_battles_lost.to_s, 206, 150, 1, TEXTCOLOR, TEXTSHADOWCOLOR])
+		  textpos.push([_INTL("Scenario:"), 32, 182, 0, TEXTCOLOR, TEXTSHADOWCOLOR])
+		  textpos.push([@trainer.scenario_name, 152, 182, 0, TEXTCOLOR, TEXTSHADOWCOLOR])
+		  textpos.push([_INTL("Time:"), 32, 118, 0, TEXTCOLOR, TEXTSHADOWCOLOR])
+		  hour = @totalsec / 60 / 60
+		  min  = @totalsec / 60 % 60
+		  if hour > 0
+            textpos.push([_INTL("{1}h {2}m", hour, min), 206, 118, 1, TEXTCOLOR, TEXTSHADOWCOLOR])
+		  else
+            textpos.push([_INTL("{1}m", min), 206, 118, 1, TEXTCOLOR, TEXTSHADOWCOLOR])
+		  end
+		  if @trainer.male?
+            textpos.push([@trainer.name, 112, 70, 0, MALETEXTCOLOR, MALETEXTSHADOWCOLOR])
+		  elsif @trainer.female?
+            textpos.push([@trainer.name, 112, 70, 0, FEMALETEXTCOLOR, FEMALETEXTSHADOWCOLOR])
+		  else
+            textpos.push([@trainer.name, 112, 70, 0, TEXTCOLOR, TEXTSHADOWCOLOR])
+		  end
+		  mapname = pbGetMapNameFromId(@mapid)
+		  mapname.gsub!(/\\PN/, @trainer.name)
+		  textpos.push([mapname, 386, 16, 1, TEXTCOLOR, TEXTSHADOWCOLOR])
+		end
       else
         textpos.push([@title, 32, 14, 0, TEXTCOLOR, TEXTSHADOWCOLOR])
       end
