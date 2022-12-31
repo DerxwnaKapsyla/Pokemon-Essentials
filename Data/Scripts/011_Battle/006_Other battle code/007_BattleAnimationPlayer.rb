@@ -310,7 +310,7 @@ class PBAnimTiming
       text = sprintf("[%d] Set FG: \"%s\"", @frame + 1, name)
       text += sprintf(" (color=%s,%s,%s,%s)",
                       @colorRed || "-",
-                      @colorGreen | "-",
+                      @colorGreen || "-", # Two bars here, otherwise it's another operator.
                       @colorBlue || "-",
                       @colorAlpha || "-")
       text += sprintf(" (opacity=%d)", @opacity)

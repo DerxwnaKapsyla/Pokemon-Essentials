@@ -4,7 +4,7 @@ class Battle::Scene
   attr_reader   :viewport
   attr_reader   :sprites
 
-  USE_ABILITY_SPLASH   = (Settings::MECHANICS_GENERATION >= 5)
+  USE_ABILITY_SPLASH   = true #(Settings::MECHANICS_GENERATION >= 5)
   MESSAGE_PAUSE_TIME   = 1.0   # In seconds
   # Text colors
   MESSAGE_BASE_COLOR   = Color.new(80, 80, 88)

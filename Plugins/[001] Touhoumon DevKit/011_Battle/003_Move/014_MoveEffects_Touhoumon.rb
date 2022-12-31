@@ -125,3 +125,64 @@ class Battle::Move::TypeAndPowerDependOnWeatherThmn < Battle::Move
     super
   end
 end
+
+#===============================================================================
+# Increases the user's Attack, Special Attack, and Speed by 2 stages each. 
+# Resets the user's Defense and Special Defense to 0. 
+# Removes the effects of Ingrain, Safeguard, and Mist on the user's side
+# (Celestial Mind)
+#===============================================================================
+class Battle::Move::RaiseUserAtkSpAtkSpd2ResetUserStatStagesResetUserFieldEffects < Battle::Move
+  def initialize(battle, move)
+    super
+    @statUp = [:ATTACK, 2, :SPECIAL_ATTACK, 2, :SPEED, 2]
+  end
+  
+  def pbEffectGeneral(user)
+    showAnim = true
+    (@statUp.length / 2).times do |i|
+      next if !user.pbCanRaiseStatStage?(@statUp[i * 2], user, self)
+      if user.pbRaiseStatStage(@statUp[i * 2], @statUp[(i * 2) + 1], user, showAnim)
+        showAnim = false
+      end
+    end
+    # copied-ish from pbResetStatStages (used by Haze)
+    [:DEFENSE,:SPECIAL_DEFENSE].each do |s|
+      if user.stages[s] > 0
+        user.statsLoweredThisRound = true
+        user.statsDropped = true
+      elsif user.stages[s] < 0
+        user.statsRaisedThisRound = true
+      end
+      user.stages[s] = 0
+    end
+    user.effects[PBEffects::Ingrain] = false
+    user.pbOwnSide.effects[PBEffects::Safeguard] = 0
+    user.pbOwnSide.effects[PBEffects::Mist] = 0
+  end
+end
+
+#===============================================================================
+# Multi-Hit Move that has a chance to paralyze. Is always treated as a Super
+# Effective move. (Hisou Sword)
+#===============================================================================
+class Battle::Move::HitTwoToFiveTimesParalyzeTargetAlwaysSuperEffective < Battle::Move::ParalyzeTarget
+  def multiHitMove?; return true; end
+
+  def pbNumHits(user, targets)
+    hitChances = [
+      2, 2, 2, 2, 2, 2, 2,
+      3, 3, 3, 3, 3, 3, 3,
+      4, 4, 4,
+      5, 5, 5
+    ]
+    r = @battle.pbRandom(hitChances.length)
+    r = hitChances.length - 1 if user.hasActiveAbility?(:SKILLLINK)
+    return hitChances[r]
+  end
+  
+  def pbCalcTypeModSingle(moveType, defType, user, target)
+    return Effectiveness::SUPER_EFFECTIVE_ONE
+    return super
+  end
+end

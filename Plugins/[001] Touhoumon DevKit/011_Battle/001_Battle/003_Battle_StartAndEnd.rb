@@ -9,86 +9,51 @@
 #	  (Switch 31). Will disable itself when it notices its on.
 #==============================================================================#
 class Battle
-  def pbStartBattleSendOut(sendOuts)	
-        if $game_switches[Settings::SPECIAL_BATTLE_SWITCH]
-          case $game_variables[Settings::SPECIAL_BATTLE_VARIABLE]
-                when 1        then sbName = "The territorial"
-                when 2        then sbName = "The aggressive"
-                when 3        then sbName = "Celadon Gym's"
-                when 4        then sbName = "A trainer's"
-                else               sbName = "Oh! A wild"
-          end
-        else
-          sbName = "Oh! A wild"
-        end 
-    # "Want to battle" messages
+def pbStartBattleSendOut(sendOuts)
     if wildBattle?
-      foeParty = pbParty(1)
-      case foeParty.length
-      when 1
-        pbDisplayPaused(_INTL("{2} {1} appeared!", foeParty[0].name, sbName))
-      when 2
-        pbDisplayPaused(_INTL("{3} {1} and {2} appeared!", foeParty[0].name,
-                              foeParty[1].name, sbName))
-      when 3
-        pbDisplayPaused(_INTL("{4} {1}, {2} and {3} appeared!", foeParty[0].name,
-                              foeParty[1].name, foeParty[2].name, sbName))
+      foes = pbParty(1)
+      if $game_variables[Settings::SPECIAL_BATTLE_VARIABLE].is_a?(String)
+        msg = "#{$game_variables[Settings::SPECIAL_BATTLE_VARIABLE]}"
+        msg += " " if !nil_or_empty?(msg)
+      else
+        msg = "Oh! A wild "
       end
-	  #if $game_switches[Settings::SHINY_WILD_POKEMON_SWITCH] # Used for the "Make Any Pokemon Shiny" passcode
-	  #  $game_switches[Settings::SHINY_WILD_POKEMON_SWITCH] = false
-	  #end
-    else   # Trainer battle
-      case @opponent.length
-      when 1
-        pbDisplayPaused(_INTL("You are challenged by {1}!", @opponent[0].full_name))
-      when 2
-        pbDisplayPaused(_INTL("You are challenged by {1} and {2}!", @opponent[0].full_name,
-                              @opponent[1].full_name))
-      when 3
-        pbDisplayPaused(_INTL("You are challenged by {1}, {2} and {3}!",
-                              @opponent[0].full_name, @opponent[1].full_name, @opponent[2].full_name))
-      end
+    else
+      foes = @opponent
+      msg = "You are challenged by "
     end
-    # Send out Pokémon (opposing trainers first)
+    foes.each_with_index do |foe, i|
+      if i > 0
+        msg += (i == foes.length - 1) ? " and " : ", "
+      end
+      msg += (wildBattle?) ? foe.name : foe.full_name
+    end
+    msg += (wildBattle?) ? " appeared!" : "!"
+    pbDisplayPaused(_INTL("{1}", msg))
     [1, 0].each do |side|
       next if side == 1 && wildBattle?
       msg = ""
       toSendOut = []
-      trainers = (side == 0) ? @player : @opponent
-      # Opposing trainers and partner trainers's messages about sending out Pokémon
+      trainers = (side == 0) ? @player.reverse : @opponent
       trainers.each_with_index do |t, i|
-        next if side == 0 && i == 0   # The player's message is shown last
         msg += "\r\n" if msg.length > 0
-        sent = sendOuts[side][i]
-        case sent.length
-        when 1
-          msg += _INTL("{1} sent out {2}!", t.full_name, @battlers[sent[0]].name)
-        when 2
-          msg += _INTL("{1} sent out {2} and {3}!", t.full_name,
-                       @battlers[sent[0]].name, @battlers[sent[1]].name)
-        when 3
-          msg += _INTL("{1} sent out {2}, {3} and {4}!", t.full_name,
-                       @battlers[sent[0]].name, @battlers[sent[1]].name, @battlers[sent[2]].name)
+        if side == 0 && i == trainers.length - 1
+          msg += "Go! "
+          sent = sendOuts[side][trainers.length - 1]
+        else
+          msg += "#{t.full_name} sent out "
+          sent = sendOuts[side][i]
         end
-        toSendOut.concat(sent)
-      end
-      # The player's message about sending out Pokémon
-      if side == 0
-        msg += "\r\n" if msg.length > 0
-        sent = sendOuts[side][0]
-        case sent.length
-        when 1
-          msg += _INTL("Go! {1}!", @battlers[sent[0]].name)
-        when 2
-          msg += _INTL("Go! {1} and {2}!", @battlers[sent[0]].name, @battlers[sent[1]].name)
-        when 3
-          msg += _INTL("Go! {1}, {2} and {3}!", @battlers[sent[0]].name,
-                       @battlers[sent[1]].name, @battlers[sent[2]].name)
+        sent.each_with_index do |idxBattler, j|
+          if j > 0
+            msg += (j == sent.length - 1) ? " and " : ", "
+          end
+          msg += @battlers[idxBattler].name
         end
+        msg += "!"
         toSendOut.concat(sent)
       end
       pbDisplayBrief(msg) if msg.length > 0
-      # The actual sending out of Pokémon
       animSendOuts = []
       toSendOut.each do |idxBattler|
         animSendOuts.push([idxBattler, @battlers[idxBattler].pokemon])

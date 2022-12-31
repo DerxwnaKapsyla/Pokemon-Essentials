@@ -12,15 +12,8 @@ class Battle::Battler
       if @battle.trainerBattle?
         return lowerCase ? _INTL("the opposing {1}", name) : _INTL("The opposing {1}", name)
       else
-		if $game_switches[Settings::SPECIAL_BATTLE_SWITCH] # Special Battle Switch
-		  case $game_variables[Settings::SPECIAL_BATTLE_VARIABLE]
-			when 1	then sbName = "the territorial"	 ; sbName2 = "The territorial" 
-			when 2	then sbName = "the aggressive" 	 ; sbName2 = "The aggressive"
-			when 3	then sbName = "Celadon Gym's"	 ; sbName2 = "Celadon Gym's"
-			when 4	then sbName = "a trainer's"		 ; sbName2 = "A trainer's"
-		    else		 sbName = "the wild"		 ; sbName2 = "The wild"
-		  end
-		  return lowerCase ? _INTL("{2} {1}", name, sbName) : _INTL("{2} {1}", name, sbName2)
+		if $game_variables[Settings::SPECIAL_BATTLE_VARIABLE].is_a?(String)
+		  return lowerCase ? _INTL("{1}", name) : _INTL("{1}", name)
 		else
 		  return lowerCase ? _INTL("the wild {1}", name) : _INTL("The wild {1}", name)
 		end
@@ -76,5 +69,78 @@ class Battle::Battler
     return false if hasActiveAbility?([:OVERCOAT,:ICEBODY,:SNOWCLOAK])
     return false if hasActiveItem?(:SAFETYGOGGLES)
     return true
+  end
+
+#==============================================================================#
+# Changes in this section include the following:
+#	* Added Celestial Skin to the list of abilities that can't be removed
+#     or gained.
+#==============================================================================#    
+  # Applies to both losing self's ability (i.e. being replaced by another) and
+  # having self's ability be negated.
+  def unstoppableAbility?(abil = nil)
+    abil = @ability_id if !abil
+    abil = GameData::Ability.try_get(abil)
+    return false if !abil
+    ability_blacklist = [
+      # Form-changing abilities
+      :BATTLEBOND,
+      :DISGUISE,
+#      :FLOWERGIFT,                                        # This can be stopped
+#      :FORECAST,                                          # This can be stopped
+      :GULPMISSILE,
+      :ICEFACE,
+      :MULTITYPE,
+      :POWERCONSTRUCT,
+      :SCHOOLING,
+      :SHIELDSDOWN,
+      :STANCECHANGE,
+      :ZENMODE,
+      # Abilities intended to be inherent properties of a certain species
+      :ASONECHILLINGNEIGH,
+      :ASONEGRIMNEIGH,
+      :COMATOSE,
+      :RKSSYSTEM,
+	  # --- Custom Abilities
+	  :CELESTIALSKIN,
+	  :CELESTIALSKIN2
+    ]
+    return ability_blacklist.include?(abil.id)
+  end
+  
+  # Applies to gaining the ability.
+  def ungainableAbility?(abil = nil)
+    abil = @ability_id if !abil
+    abil = GameData::Ability.try_get(abil)
+    return false if !abil
+    ability_blacklist = [
+      # Form-changing abilities
+      :BATTLEBOND,
+      :DISGUISE,
+      :FLOWERGIFT,
+      :FORECAST,
+      :GULPMISSILE,
+      :ICEFACE,
+      :MULTITYPE,
+      :POWERCONSTRUCT,
+      :SCHOOLING,
+      :SHIELDSDOWN,
+      :STANCECHANGE,
+      :ZENMODE,
+      # Appearance-changing abilities
+      :ILLUSION,
+      :IMPOSTER,
+      # Abilities intended to be inherent properties of a certain species
+      :ASONECHILLINGNEIGH,
+      :ASONEGRIMNEIGH,
+      :COMATOSE,
+      :RKSSYSTEM,
+      # Abilities that can't be negated
+      :NEUTRALIZINGGAS,
+	  # --- Custom Abilities
+	  :CELESTIALSKIN,
+	  :CELESTIALSKIN2
+    ]
+    return ability_blacklist.include?(abil.id)
   end
 end

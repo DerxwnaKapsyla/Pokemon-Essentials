@@ -10846,3 +10846,25 @@ FunctionCode = DoublePowerIfTargetNotActed
 Flags = Contact,CanProtect,CanMirrorMove
 Description = Stabs the target with an electrified beak. Power is doubled if the user attacks first.
 #-------------------------------
+[CELESTIALMIND]
+Name = Celestial Mind
+Type = QMARKS
+Category = Status
+Accuracy = 0
+TotalPP = 0
+Target = User
+FunctionCode = RaiseUserAtkSpAtkSpd2ResetUserStatStagesResetUserFieldEffects
+Description = Cutscene move. Not for player use.
+#-------------------------------
+[HISOUSWORD]
+Name = Sword of Hisou
+Type = QMARKS
+Category = Physical
+Power = 20
+Accuracy = 85
+TotalPP = 0
+Target = NearOther
+FunctionCode = HitTwoToFiveTimesParalyzeTargetAlwaysSuperEffective
+EffectChance = 20
+Flags = Contact,CanProtect,ThawsUser,CannotMetronome
+Description = Tenshi Ω's signature move. 

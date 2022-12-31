@@ -85,7 +85,7 @@ Battle::AbilityEffects::MoveImmunity.add(:TELEPATHY,
     if show_message
       battle.pbShowAbilitySplash(target)
       if Battle::Scene::USE_ABILITY_SPLASH
-        battle.pbDisplay(_INTL("{1} avoids attacks by its allyn!", target.pbThis(true)))
+        battle.pbDisplay(_INTL("{1} avoids attacks by its ally!", target.pbThis(true)))
       else
         battle.pbDisplay(_INTL("{1} avoids attacks by its ally with {2}!",
            target.pbThis, target.abilityName))
@@ -416,5 +416,39 @@ Battle::AbilityEffects::ChangeOnBattlerFainting.add(:POWEROFALCHEMY,
     battle.pbReplaceAbilitySplash(battler)
     battle.pbDisplay(_INTL("{1}'s {2} was taken over!", fainted.pbThis, fainted.abilityName))
     battle.pbHideAbilitySplash(battler)
+  }
+)
+
+Battle::AbilityEffects::MoveImmunity.add(:CELESTIALSKIN,
+  proc { |ability, user, target, move, type, battle, show_message|
+    next false if move.function != "StartPerishCountsForAllBattlers"
+    if show_message
+      battle.pbShowAbilitySplash(target)
+      if Battle::Scene::USE_ABILITY_SPLASH
+        battle.pbDisplay(_INTL("It doesn't affect {1}...", target.pbThis(true)))
+      else
+        battle.pbDisplay(_INTL("{1}'s {2} made {3} ineffective!",
+           target.pbThis, target.abilityName, move.name))
+      end
+      battle.pbHideAbilitySplash(target)
+    end
+    next true
+  }
+)
+
+Battle::AbilityEffects::MoveImmunity.add(:CELESTIALSKIN2,
+  proc { |ability, user, target, move, type, battle, show_message|
+    next false if move.function != "StartPerishCountsForAllBattlers"
+    if show_message
+      battle.pbShowAbilitySplash(target)
+      if Battle::Scene::USE_ABILITY_SPLASH
+        battle.pbDisplay(_INTL("It doesn't affect {1}...", target.pbThis(true)))
+      else
+        battle.pbDisplay(_INTL("{1}'s {2} made {3} ineffective!",
+           target.pbThis, target.abilityName, move.name))
+      end
+      battle.pbHideAbilitySplash(target)
+    end
+    next true
   }
 )
