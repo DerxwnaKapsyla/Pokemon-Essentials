@@ -83,19 +83,19 @@ Flags = TMoM
 Name = Ruined Western Mansion
 BattleBack = indoor3
 WildBattleBGM = B-005. Battle vs. Puppet (Late Game).ogg
-Flags = LampreyBlindness, TMoM
+Flags = LampreyBlindness,TMoM
 #-------------------------------
 [017]   # Kitchen
 Name = Ruined Western Mansion
 BattleBack = indoor3
 WildBattleBGM = B-005. Battle vs. Puppet (Late Game).ogg
-Flags = LampreyBlindness, TMoM
+Flags = LampreyBlindness,TMoM
 #-------------------------------
 [018]   # Dining Hall
 Name = Ruined Western Mansion
 BattleBack = indoor3
 WildBattleBGM = B-005. Battle vs. Puppet (Late Game).ogg
-Flags = LampreyBlindness, TMoM
+Flags = LampreyBlindness,TMoM
 #-------------------------------
 [019]   # World of Fantasies
 Name = World of Fantasies
@@ -138,7 +138,7 @@ Flags = TMoM
 Name = Ruined Western Mansion
 BattleBack = indoor3
 WildBattleBGM = B-005. Battle vs. Puppet (Late Game).ogg
-Flags = Basement, TMoM
+Flags = Basement,TMoM
 #-------------------------------
 [028]   # Roof
 Name = Ruined Western Mansion
@@ -175,15 +175,24 @@ Name = Credits - Group Shot
 #-------------------------------
 [037]   # Human Village
 Name = Human Village
+Outdoor = false
+Bicycle = true
+SnapEdges = true
+BattleBack = autumn
 #-------------------------------
 [038]   # Human Village Rest House
 Name = Human Village
+HealingSpot = 37,37,24
 #-------------------------------
 [039]   # Festival Grounds
 Name = Festival Grounds
+ShowArea = true
+Bicycle = true
+BattleBack = autumn
 #-------------------------------
 [040]   # Rest House
 Name = Festival Grounds
+HealingSpot = 39,49,17
 #-------------------------------
 [041]   # Keine's Quiz Hall
 Name = Festival Grounds
@@ -193,9 +202,11 @@ Name = Festival Grounds
 #-------------------------------
 [043]   # Shizuha's Leaf Pile
 Name = Festival Grounds
+SnapEdges = true
 #-------------------------------
 [044]   # Festival Tournament Arena
 Name = Festival Grounds
+BattleBack = autumn_city
 #-------------------------------
 [045]   # Village Confrence Room
 Name = Human Village
@@ -208,9 +219,17 @@ Name = Human Village
 #-------------------------------
 [048]   # Misty Lake
 Name = Misty Lake
+ShowArea = true
+Bicycle = true
+Weather = Fog,100
+BattleBack = autumn
 #-------------------------------
 [049]   # Misty Lake
 Name = Misty Lake
+ShowArea = true
+Bicycle = true
+Weather = Fog,100
+BattleBack = autumn
 #-------------------------------
 [050]   # Prismriver Manor (F1)
 Name = Prismriver Manor
@@ -235,39 +254,67 @@ Name = Prismriver Manor
 #-------------------------------
 [057]   # Great Youkai Forest
 Name = Great Youkai Forest
+ShowArea = true
+Bicycle = true
+BattleBack = autumn
+WildBattleBGM = B-006. Battle vs. Puppet (Forest).ogg
 #-------------------------------
 [058]   # Great Youkai Forest
 Name = Great Youkai Forest
+ShowArea = true
+Bicycle = true
+BattleBack = autumn
+WildBattleBGM = B-006. Battle vs. Puppet (Forest).ogg
 #-------------------------------
 [059]   # Great Youkai Forest?
 Name = Great Youkai Forest
 #-------------------------------
 [060]   # Human Village Outskirts
 Name = Human Village Outskirts
+ShowArea = true
+Bicycle = true
+SnapEdges = true
+BattleBack = autumn
+WildBattleBGM = B-007. Battle vs. Puppet (Late Game).ogg
 #-------------------------------
 [061]   # Gensokyo Wilderness
 Name = Gensokyo Wilderness
+BattleBack = AltField
 #-------------------------------
 [062]   # Nameless Hill
 Name = Nameless Hill
+ShowArea = true
+Bicycle = true
+SnapEdges = true
+BattleBack = autumn
 #-------------------------------
 [063]   # Suzuran Field
 Name = Suzuran Field
+ShowArea = true
+Bicycle = true
+BattleBack = suzuran
+WildBattleBGM = B-007. Battle vs. Puppet (Late Game).ogg
 #-------------------------------
 [064]   # Suzuran Field
 Name = Suzuran Field
+BattleBack = Suzuran
 #-------------------------------
 [065]   # Garden of the Sun
 Name = Garden of the Sun
 #-------------------------------
 [066]   # Fantasy World
 Name = Fantasy World
+ShowArea = true
+Bicycle = true
+BattleBack = mugenkan
+WildBattleBGM = B-007. Battle vs. Puppet (Late Game).ogg
 #-------------------------------
 [067]   # Mugenkan
 Name = Mugenkan
 #-------------------------------
 [068]   # Mugenkan (Back Garden)
 Name = Mugenkan
+BattleBack = mugenkan
 #-------------------------------
 [069]   # Ending Filler Map 1 - Stage 6
 Name = Ending
