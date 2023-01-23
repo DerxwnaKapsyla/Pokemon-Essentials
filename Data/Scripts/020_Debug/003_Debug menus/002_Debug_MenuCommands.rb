@@ -544,38 +544,17 @@ MenuHandlers.add(:debug_menu, :give_demo_party, {
   "description" => _INTL("Give yourself 6 preset Pokémon. They overwrite the current party."),
   "effect"      => proc {
     party = []
-    species = [:PIKACHU, :PIDGEOTTO, :KADABRA, :GYARADOS, :DIGLETT, :CHANSEY]
+    species = [:SHINKI, :ASUMIREKO, :RIKAKO, :NEPGEAR, :SAYA, :ADREISEN]
     species.each do |id|
       party.push(id) if GameData::Species.exists?(id)
     end
     $player.party.clear
     # Generate Pokémon of each species at level 20
     party.each do |species|
-      pkmn = Pokemon.new(species, 20)
+      pkmn = Pokemon.new(species, 100)
       $player.party.push(pkmn)
       $player.pokedex.register(pkmn)
       $player.pokedex.set_owned(species)
-      case species
-      when :PIDGEOTTO
-        pkmn.learn_move(:FLY)
-      when :KADABRA
-        pkmn.learn_move(:FLASH)
-        pkmn.learn_move(:TELEPORT)
-      when :GYARADOS
-        pkmn.learn_move(:SURF)
-        pkmn.learn_move(:DIVE)
-        pkmn.learn_move(:WATERFALL)
-      when :DIGLETT
-        pkmn.learn_move(:DIG)
-        pkmn.learn_move(:CUT)
-        pkmn.learn_move(:HEADBUTT)
-        pkmn.learn_move(:ROCKSMASH)
-      when :CHANSEY
-        pkmn.learn_move(:SOFTBOILED)
-        pkmn.learn_move(:STRENGTH)
-        pkmn.learn_move(:SWEETSCENT)
-      end
-      pkmn.record_first_moves
     end
     pbMessage(_INTL("Filled party with demo Pokémon."))
   }

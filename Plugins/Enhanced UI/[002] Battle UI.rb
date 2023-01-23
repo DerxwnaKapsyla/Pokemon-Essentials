@@ -69,6 +69,21 @@ class Battle::Scene
     @sprites["rightarrow"].visible = false
   end
   
+  #-----------------------------------------------------------------------------
+  # Toggles the display of battle UI's while in the Fight Menu.
+  #-----------------------------------------------------------------------------
+  def pbFightMenu_EnhancedUI(battler, cw)
+    if Input.triggerex?(Settings::MOVE_INFO_KEY)
+      pbHideBattleInfo
+      pbHideFocusPanel
+      pbToggleMoveInfo(battler, cw.index)
+    elsif Input.triggerex?(Settings::BATTLE_INFO_KEY)
+      pbHideMoveInfo
+      pbHideFocusPanel
+      pbToggleBattleInfo
+    end
+  end
+
 
 #===============================================================================
 # Move Info UI
@@ -886,11 +901,11 @@ class Battle::Scene
       effects.push([GameData::BattleWeather.get(@battle.field.weather).name, count])
     end
     # Terrain
-    if @battle.field.terrain != :None
-      count = @battle.field.terrainDuration
-      count = (count > 0) ? "#{count}/5" : "---"
-      effects.push([GameData::BattleTerrain.get(@battle.field.terrain).name + " " + _INTL("Terrain"), count])
-    end
+    #if @battle.field.terrain != :None
+    #  count = @battle.field.terrainDuration
+    #  count = (count > 0) ? "#{count}/5" : "---"
+    #  effects.push([GameData::BattleTerrain.get(@battle.field.terrain).name + " " + _INTL("Terrain"), count])
+    #end
     # Draws a list of each of the above effects currently in play.
     field_effects.each do |key, value|
       next if @battle.field.effects[key] == 0

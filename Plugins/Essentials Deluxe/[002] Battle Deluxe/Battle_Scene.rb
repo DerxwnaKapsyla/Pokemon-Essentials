@@ -7,26 +7,27 @@
 # Animation used to toggle visibility of data boxes.
 #-------------------------------------------------------------------------------
 class Battle::Scene::Animation::ToggleDataBoxes < Battle::Scene::Animation
-  def initialize(sprites, viewport, battlers)
+  def initialize(sprites, viewport, battlers, toggle)
     @battlers = battlers
+    @toggle = toggle
     super(sprites, viewport)
   end
 
   def createProcesses
     delay = 0
     @battlers.each do |b|
-	  next if b.fainted?
+      next if !b || b.fainted? && !@sprites["pokemon_#{b.index}"].visible
       if @sprites["dataBox_#{b.index}"]
-        toggle = !@sprites["dataBox_#{b.index}"].visible
         box = addSprite(@sprites["dataBox_#{b.index}"])
-        case toggle
+        case @toggle
+        when false
+          box.moveOpacity(delay, 3, 0)
+          box.setVisible(delay + 3, false)
         when true
           box.setOpacity(delay, 0)
           box.moveOpacity(delay, 3, 255)
-        when false
-          box.moveOpacity(delay, 3, 0)
+          box.setVisible(delay + 3, true)
         end
-        box.setVisible(delay + 3, toggle)
       end
     end
   end
@@ -99,8 +100,8 @@ class Battle::Scene
     end
   end
   
-  def pbToggleDataboxes
-    dataBoxAnim = Animation::ToggleDataBoxes.new(@sprites, @viewport, @battle.battlers)
+  def pbToggleDataboxes(toggle = false)
+    dataBoxAnim = Animation::ToggleDataBoxes.new(@sprites, @viewport, @battle.battlers, toggle)
     loop do
       dataBoxAnim.update
       pbUpdate
@@ -149,6 +150,33 @@ class Battle::Scene
     end
     tone = 255
     toneDiff = 40 * 20 / Graphics.frame_rate
+    loop do
+      Graphics.update
+      pbUpdate
+      tone -= toneDiff
+      @viewport.tone.set(tone, tone, tone, 0)
+      break if tone <= 0
+    end
+  end
+  
+  def pbFlashRefresh2
+    tone = 0
+    toneDiff = 180 * 20 / Graphics.frame_rate
+    loop do
+      Graphics.update
+      pbUpdate
+      tone += toneDiff
+      @viewport.tone.set(tone, tone, tone, 0)
+      break if tone >= 255
+    end
+    pbRefreshEverything
+	pbSEPlay("Anim/flash2")
+    (Graphics.frame_rate / 4).times do
+      Graphics.update
+      pbUpdate
+    end
+    tone = 255
+    toneDiff = 180 * 20 / Graphics.frame_rate
     loop do
       Graphics.update
       pbUpdate

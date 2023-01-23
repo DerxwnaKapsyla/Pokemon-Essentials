@@ -4,7 +4,7 @@
 class Scene_Credits_TFoC
   # Backgrounds to show in credits. Found in Graphics/Titles/ folder
   BACKGROUNDS_LIST       = ["Gensokyo","Human Village","BGFestival","BGMistyLake","BGYoukaiWoods1","BGYoukaiWoods2","BGPlains","BGSuzuran","BGGarden","BGMugenkan"]
-  BGM                    = "U-001. Sakura, Sakura ~ Japanize Dream.ogg"
+  BGM                    = "U-005. Sakura, Sakura ~ Japanize Dream.ogg"
   SCROLL_SPEED           = 40   # Pixels per second
   SECONDS_PER_BACKGROUND = 12
   TEXT_OUTLINE_COLOR     = Color.new(0, 0, 128, 255)
@@ -124,22 +124,17 @@ Team Shanghai Alice<s>Twilight Frontier
 --- Programmer ---
 DerxwnaKapsyla
 
+
+
 --- Custom Scripts ---
 {INSERTS_PLUGIN_CREDITS_DO_NOT_REMOVE}
-FL: Trainer Intro Music script, HMs as Items script
-derFischae: HMs as Items script
-Bulbasarlv15: HMs as Items script
-Nuru Yuri: FModEx Script
-Marin: Toggleable turbo script
-Vendily: Ambient Pokemon cries
-Marty152: Sideways Stairs script
 AmethystRain: Skip Text script
-Boonzeet: Efficent water puddles script
 SoulfulLex: Various misc improvements
 Mr. Gela: Name Windows
 Rot8er_ConeX: Doppelganger Trainer
 Mej71 & game_guy: Unlimited Self-Switch Variants port
 DerxwnaKapsyla: Game Corner Shop
+Simple Exit Arrows: Tustin2121
 
 
 --- Producers ---
@@ -154,16 +149,37 @@ DerxwnaKapsyla
 
 
 --- Special Thanks ---
-HemoglobinA1C: Developing Touhou Puppet Play
-Maralis: Developing the Pokéxtractor Tools
-Kasael: Spriting Overworlds and Battle Sprites
-Agastya: Localization of Touhoumon 1.812 and Developer of Touhoumon Purple
-EX Sariel: Localization of Touhoumon 1.812
-DoesntKnowHowToPlay: Developer of Touhoumon Unnamed
-AmethystRain & Reborn Dev Team: Permission to use graphical assets
-Reimufate: Developer of Touhoumon Reimufate Version
-FocasLens & Fantasy Puppet Theater: GNE-YnK- Asset Collection Pack
-The Dirty Cog Crew: Emotional support and motivation throughout the years
+- HemoglobinA1C - 
+Developing Touhou Puppet Play
+
+- Alicia - 
+Developing the Pokéxtractor Tools
+
+- Mille Marteaux - 
+Localization of Touhoumon 1.812
+Developer of Touhoumon Purple
+
+- EX Sariel -
+Localization of Touhoumon 1.812
+
+- DoesntKnowHowToPlay -
+Developer of Touhoumon Unnamed
+
+- AmethystRain & Reborn Dev Team -
+Pokemon Reborn Graphical Assets and Animations
+
+- Reimufate -
+Developer of Touhoumon Reimufate Version
+
+- FocasLens & Fantasy Puppet Theater -
+Gensou Ningyou Enbu - Yume no Kakera -
+Asset Collection Pack
+
+- Floofgear -
+Emotional support and motivation throughout the years
+
+- Relic Castle -
+For putting up with my absurdity
 
 
 
@@ -204,6 +220,10 @@ And YOU...
 
 
 
+"mkxp-z" by:
+Roza
+Based on "mkxp" by Ancurio et al.
+
 "RPG Maker XP" by:
 Enterbrain
 
@@ -217,20 +237,20 @@ No copyright infringements intended.
 Please support the official games!
 
 Touhoumon Development Kit
-2011-2021<s>DerxwnaKapsyla
+2011-2023<s>DerxwnaKapsyla
 2012-2021<s>ChaoticInfinity Development
-2020-2021<s>Overseer Household
+2020-2023<s>Overseer Household
 Based on Pokémon Essentials
 
 Touhou Puppet Play
 The Festival of Curses
-2011-2021<s>DerxwnaKapsyla
+2011-2023<s>DerxwnaKapsyla
 2012-2021<s>ChaoticInfinity Development
-2020-2021<s>Overseer Household
+2020-2023<s>Overseer Household
 
 Pokémon Essentials
 2007-2010<s>Peter O.
-2011-2017<s>Maruno
+2011-2023<s>Maruno
 Based on work by Flameguru
 
 _END_
@@ -275,7 +295,7 @@ _END_
     text_viewport = Viewport.new(0, @trim, Graphics.width, Graphics.height - (@trim * 2))
     text_viewport.z = 99999
     @background_sprite = IconSprite.new(0, 0)
-    @background_sprite.setBitmap("Graphics/Titles/" + BACKGROUNDS_LIST[0])
+    @background_sprite.setBitmap("Graphics/Titles/TFoC/" + BACKGROUNDS_LIST[0])
     @credit_sprites = []
     @total_height = credit_lines.size * 32
     lines_per_bitmap = @bitmap_height / 32
@@ -376,7 +396,7 @@ _END_
       @counter -= SECONDS_PER_BACKGROUND
       @bg_index += 1
       @bg_index = 0 if @bg_index >= BACKGROUNDS_LIST.length
-      @background_sprite.setBitmap("Graphics/Titles/" + BACKGROUNDS_LIST[@bg_index])
+      @background_sprite.setBitmap("Graphics/Titles/TFoC/" + BACKGROUNDS_LIST[@bg_index])
     end
     return if cancel?
     return if last?

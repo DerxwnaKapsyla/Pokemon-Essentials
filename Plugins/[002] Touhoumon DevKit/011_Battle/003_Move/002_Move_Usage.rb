@@ -40,6 +40,9 @@ class Battle::Move
         elsif target.hasActiveItem?(:FOCUSRIBBON) && @battle.pbRandom(100) < 10
           target.damageState.focusBand = true
           damage -= 1
+        elsif target.hasActiveItem?(:FOCUSRIBBON_ALT)
+          target.damageState.focusBand = true
+          damage -= 1
         elsif Settings::AFFECTION_EFFECTS && @battle.internalBattle &&
               target.pbOwnedByPlayer? && !target.mega?
           chance = [0, 0, 0, 10, 15, 25][target.affection_level]
@@ -48,6 +51,9 @@ class Battle::Move
             damage -= 1
           end
         end
+      elsif target.hasActiveItem?(:FOCUSRIBBON_ALT)
+        target.damageState.focusBand = true
+        damage -= 1
       end
     end
     damage = 0 if damage < 0

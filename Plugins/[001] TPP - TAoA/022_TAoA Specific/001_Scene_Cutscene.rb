@@ -459,9 +459,9 @@ class CreditsOutro_TMoM
       "Touhou Puppet Play",
       "The Mansion of Mystery",
 	  "",
-	  "2021-2022         DerxwnaKapsyla ",
-	  "2021-2022          ChaoticInfinity",
-	  "2021-2022   Overseer Household",
+	  "2021-2023         DerxwnaKapsyla ",
+	  "2021-2021          ChaoticInfinity",
+	  "2021-2023   Overseer Household",
     ],
     :wait, 160,
     :clear,
@@ -469,9 +469,9 @@ class CreditsOutro_TMoM
     [
       "Touhoumon Essentials",
       "",
-	  "2011-2022         DerxwnaKapsyla ",
-	  "2011-2022          ChaoticInfinity",
-	  "2020-2022   Overseer Household",
+	  "2011-2023         DerxwnaKapsyla ",
+	  "2011-2021          ChaoticInfinity",
+	  "2020-2023   Overseer Household",
     ],
     :wait, 160,
     :clear,
@@ -480,7 +480,7 @@ class CreditsOutro_TMoM
       "Pokemon Essentials",
       "",
 	  "2007-2010        Peter O.",
-	  "2010-2022          Maruno",
+	  "2010-2023          Maruno",
 	  "Based on work by Flameguru",
     ],
     :wait, 160,
@@ -738,5 +738,99 @@ class TFoCPostgameScene < TFoCIntroScene2
       "Fifth Day of the Harvest Festival"
     ],
     :wait, 60
+  ]
+end
+
+# ---------------------------
+
+class CreditsNames_TFoC < CreditsNames
+  TEXT = [
+    [
+      "Marin & Phantombass: Better Speed Up",
+	  "Amethyst, Kurotsune, ENLS: Easy Text Skip",
+	  "Mr. Gela & Vendily: Name Boxes",
+	  "NettoHikari: RMXP Event Exporter",
+    ],
+    :wait, 120,
+    :clear,
+    :wait, 60,
+    [
+      "grogro: Clone Trainer",
+	  "DerxwnaKapsyla: Coin Shop",
+	  "DeoxysPrime: EV/IV Summary Display",
+	  "Lucidious89: Essentials DX, Enhanced UI",
+    ],
+    :wait, 120,
+    :clear,
+    :wait, 60,
+  ]
+end
+
+# ---------------------------
+
+class CreditsIntro_TFoC < CreditsIntro_TMoM
+  TEXT = [
+    [
+      "Touhou Puppet Play",
+      "The Festival of Curses",
+	  "",
+	  "Credits"
+    ],
+    :wait, 160,
+    :clear,
+    :wait, 60,
+    [
+      "--- TFoC Team Members ---",
+      "DerxwnaKapsyla",
+	  "Jelo",
+	  "Karl Grogslurper"
+    ],
+    :wait, 160,
+    :clear,
+    :wait, 60,
+    [
+      "--- Director of Development & World Building---",
+      "DerxwnaKapsyla"
+    ],
+    :wait, 160,
+    :clear,
+  ]
+end
+
+# ---------------------------
+
+class CreditsOutro_TFoC < CreditsOutro_TMoM
+  TEXT = [
+    [
+      "Touhou Puppet Play",
+      "The Festival of Curses",
+	  "",
+	  "2021-2023         DerxwnaKapsyla ",
+	  "2021-2021          ChaoticInfinity",
+	  "2021-2023   Overseer Household",
+    ],
+    :wait, 160,
+    :clear,
+    :wait, 60,
+    [
+      "Touhoumon Essentials",
+      "",
+	  "2011-2023         DerxwnaKapsyla ",
+	  "2011-2021          ChaoticInfinity",
+	  "2020-2023   Overseer Household",
+    ],
+    :wait, 160,
+    :clear,
+    :wait, 60,
+    [
+      "Pokemon Essentials",
+      "",
+	  "2007-2010        Peter O.",
+	  "2010-2023          Maruno",
+	  "Based on work by Flameguru",
+    ],
+    :wait, 160,
+    :clear,
+	:wait, 60,
   ]
 end

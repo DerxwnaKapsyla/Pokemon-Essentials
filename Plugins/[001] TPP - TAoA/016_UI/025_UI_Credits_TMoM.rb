@@ -172,6 +172,7 @@ DerxwnaKapsyla
 --- Custom Scripts ---
 {INSERTS_PLUGIN_CREDITS_DO_NOT_REMOVE}
 SoulfulLex: Various misc improvements
+Simple Exit Arrows: Tustin2121
 
 --- Producers ---
 ChaoticInfinity Development
@@ -276,9 +277,9 @@ No copyright infringements intended.
 Please support the official games!
 
 Touhoumon Development Kit
-2011-2022<s>DerxwnaKapsyla
+2011-2023<s>DerxwnaKapsyla
 2012-2021<s>ChaoticInfinity Development
-2020-2022<s>Overseer Household
+2020-2023<s>Overseer Household
 Based on Pokémon Essentials
 
 

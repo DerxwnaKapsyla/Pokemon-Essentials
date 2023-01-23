@@ -62,7 +62,11 @@ class Battle
         sent = sendOuts[side][i]
         case sent.length
         when 1
-          msg += _INTL("{1} sent out {2}!", t.full_name, @battlers[sent[0]].name)
+		  if $game_map.map_id == 64 && $game_switches[102] == true # Derx: For the Medicine's Legion fights.
+		    msg += _INTL("Medicine: {1}, take point on the field!",@battlers[sent[0]].name) # Derx: For the Medicine's Legion fights.
+		  else
+			msg += _INTL("{1} sent out {2}!", t.full_name, @battlers[sent[0]].name)
+		  end
         when 2
           msg += _INTL("{1} sent out {2} and {3}!", t.full_name,
                        @battlers[sent[0]].name, @battlers[sent[1]].name)

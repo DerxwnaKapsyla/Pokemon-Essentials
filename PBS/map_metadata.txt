@@ -50,7 +50,7 @@ Name = Misty Lake
 ShowArea = true
 Weather = Fog,100
 BattleBack = field
-Flags = TMoM
+Flags = TMoM,PowerSpot
 #-------------------------------
 [011]   # Ruined Western Mansion
 Name = Ruined Western Mansion
@@ -110,6 +110,11 @@ WildBattleBGM = B-005. Battle vs. Puppet (Late Game).ogg
 Name = Ruined Western Mansion
 BattleBack = indoor3
 WildBattleBGM = B-005. Battle vs. Puppet (Late Game).ogg
+#-------------------------------
+[022]   # Festival Tournament Arena
+Name = Festival Grounds
+BattleBack = autumn_city
+WildBattleBGM = B-016. The Ground's Color is Yellow (BW Remix).ogg
 #-------------------------------
 [023]   # Third Floor
 Name = Ruined Western Mansion
@@ -179,6 +184,7 @@ Outdoor = false
 Bicycle = true
 SnapEdges = true
 BattleBack = autumn
+Flags = PowerSpot
 #-------------------------------
 [038]   # Human Village Rest House
 Name = Human Village
@@ -189,6 +195,7 @@ Name = Festival Grounds
 ShowArea = true
 Bicycle = true
 BattleBack = autumn
+Flags = Festival
 #-------------------------------
 [040]   # Rest House
 Name = Festival Grounds
@@ -199,6 +206,7 @@ Name = Festival Grounds
 #-------------------------------
 [042]   # Alice's Puppet Boutique
 Name = Festival Grounds
+Flags = Festival
 #-------------------------------
 [043]   # Shizuha's Leaf Pile
 Name = Festival Grounds
@@ -251,23 +259,25 @@ Name = Prismriver Manor
 #-------------------------------
 [056]   # Prismriver Manor (B1F)
 Name = Prismriver Manor
+Flags = PowerSpot
 #-------------------------------
 [057]   # Great Youkai Forest
 Name = Great Youkai Forest
 ShowArea = true
 Bicycle = true
 BattleBack = autumn
-WildBattleBGM = B-006. Battle vs. Puppet (Forest).ogg
+WildBattleBGM = B-004. Battle vs. Puppet (Forest).ogg
 #-------------------------------
 [058]   # Great Youkai Forest
 Name = Great Youkai Forest
 ShowArea = true
 Bicycle = true
 BattleBack = autumn
-WildBattleBGM = B-006. Battle vs. Puppet (Forest).ogg
+WildBattleBGM = B-004. Battle vs. Puppet (Forest).ogg
 #-------------------------------
 [059]   # Great Youkai Forest?
 Name = Great Youkai Forest
+Flags = PowerSpot
 #-------------------------------
 [060]   # Human Village Outskirts
 Name = Human Village Outskirts
@@ -280,6 +290,7 @@ WildBattleBGM = B-007. Battle vs. Puppet (Late Game).ogg
 [061]   # Gensokyo Wilderness
 Name = Gensokyo Wilderness
 BattleBack = AltField
+Flags = PowerSpot
 #-------------------------------
 [062]   # Nameless Hill
 Name = Nameless Hill
@@ -293,21 +304,28 @@ Name = Suzuran Field
 ShowArea = true
 Bicycle = true
 BattleBack = suzuran
-WildBattleBGM = B-007. Battle vs. Puppet (Late Game).ogg
+WildBattleBGM = B-005. Battle vs. Puppet (Late Game).ogg
+Flags = Suzuran
 #-------------------------------
 [064]   # Suzuran Field
 Name = Suzuran Field
 BattleBack = Suzuran
+Flags = PowerSpot
 #-------------------------------
 [065]   # Garden of the Sun
 Name = Garden of the Sun
+ShowArea = true
+Bicycle = true
+SnapEdges = true
+BattleBack = AltField
+WildBattleBGM = B-007. Battle vs. Puppet (Late Game).ogg
 #-------------------------------
 [066]   # Fantasy World
 Name = Fantasy World
 ShowArea = true
 Bicycle = true
 BattleBack = mugenkan
-WildBattleBGM = B-007. Battle vs. Puppet (Late Game).ogg
+WildBattleBGM = B-005. Battle vs. Puppet (Late Game).ogg
 #-------------------------------
 [067]   # Mugenkan
 Name = Mugenkan

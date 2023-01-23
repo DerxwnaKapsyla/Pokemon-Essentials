@@ -507,7 +507,7 @@ def pbMessageDisplay(msgwindow, message, letterbyletter = true, commandProc = ni
     end
     ########## Text Skipping #######################
     if $CanToggle != false
-      if Input.press?(TEXT_SKIP_BUTTON)
+      if Input.press?(TEXT_SKIP_BUTTON) && !$game_switches[103]
         msgwindow.textspeed=-999
         msgwindow.update
         if msgwindow.busy?
