@@ -47,7 +47,7 @@ SpecialBattleIntroAnimations.register("derx_animations", 100,   # Priority 100
 	 when 31 then  pbCommonEvent(48)  # Vs. Suika
 	 when 32 then  pbCommonEvent(49)  # Vs. Sumireko
 	 when 33 then  pbCommonEvent(50)  # Vs. Gio
-	 when 34 then  pbCommonEvent(51)  # Vs. Anura
+	 when 34 then  pbCommonEvent(50)  # Vs. Amira
 	 when 35 then  pbCommonEvent(52)  # Vs. Renko and Maribel
 	 when 36 then  pbCommonEvent(53)  # Vs. Kalypsa
 	 when 37 then  pbCommonEvent(54)  # Reserved if necessary

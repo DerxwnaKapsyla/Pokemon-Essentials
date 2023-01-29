@@ -144,8 +144,8 @@ class AdvancedWorldTournament
 		pbMessage(_INTL("Accounting for your current win streak, you have earned {1} BP.\\1",total_points))
 		pbMessage(_INTL("\\pn was awarded {1} Battle Points!\\me[BP Fanfare]\\wtnp[80]",total_points))
 	  else
-		pbMessage(_INTL("For your victory you have earned {1} BP.\\1",total_points))
-		pbMessage(_INTL("\\pn was awarded {1} Battle Points!\\me[BP Fanfare]\\wtnp[80]",total_points))
+		pbMessage(_INTL("For your victory you have earned {1} FP.\\1",total_points))
+		pbMessage(_INTL("\\pn was awarded {1} Festival Points!\\me[BP Fanfare]\\wtnp[80]",total_points))
 	  end
       pbMessage(_INTL("We hope to see you again."))
       $stats.pwt_wins[@tournament_id] += 1
@@ -225,11 +225,13 @@ class AdvancedWorldTournament
   def generateRounds(selected)
     @trainer_list = []
     full_list = generateFromList(selected)
+    i = 0
     loop do
       n = rand(full_list.length)
       trainer = full_list[n]
       full_list.delete_at(n)
-      @trainer_list.push(trainer)
+      @trainer_list.push([i,trainer])
+      i+=1
       break if @trainer_list.length > 7
     end
     n = rand(8)
@@ -241,7 +243,7 @@ class AdvancedWorldTournament
   
   # Methods used to generate the individual rounds
   def generateRound1
-    trainer = @trainer_list[[1,0,3,2,5,4,7,6][@player_index]]
+    trainer = @trainer_list[[1,0,3,2,5,4,7,6][@player_index]][1]
     trainer = Tournament_Trainer.new(*trainer)
     return trainer
   end
@@ -257,7 +259,7 @@ class AdvancedWorldTournament
       end
     end
     @trainer_list = list
-    trainer = @trainer_list[[1,0,3,2][@player_index]]
+    trainer = @trainer_list[[1,0,3,2][@player_index]][1]
     trainer = Tournament_Trainer.new(*trainer)
     return trainer
   end
@@ -273,7 +275,7 @@ class AdvancedWorldTournament
       end
     end
     @trainer_list = list
-    trainer = @trainer_list[[1,0][@player_index]]
+    trainer = @trainer_list[[1,0][@player_index]][1]
     trainer = Tournament_Trainer.new(*trainer)
     return trainer
   end
@@ -324,7 +326,7 @@ class AdvancedWorldTournament
       else
         opacity = 80 if !(nlist.include?(@trainer_list_int[i][0]))
 		opacity_shadow = 80 if !(nlist.include?(@trainer_list_int[i][0]))
-        trainer = Tournament_Trainer.new(*@trainer_list_int[i])
+        trainer = Tournament_Trainer.new(*@trainer_list_int[i][1])
         trname = trainer.name
         #bitmap = RPG::Cache.load_bitmap("Graphics/Characters/",GameData::TrainerType.charset_filename_brief(trainer.id))
       end

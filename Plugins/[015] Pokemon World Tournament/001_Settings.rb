@@ -13,7 +13,7 @@ PWT_LOBBY_EVENT = 59
 # ID of the event used to display an optional even if the player wins the PWT
 PWT_FANFARE_EVENT = 23
 # If marked as true, it will apply a multiplier based on the player's current win streak. Defeault to false.
-PWT_STREAK_MULT = false
+PWT_STREAK_MULT = true
 end
 
 module GameData
@@ -102,7 +102,7 @@ GameData::PWTTournament.register({
 
 GameData::PWTTournament.register({
   :id => :Easy_Diff,
-  :name => _INTL("Easy Difficulty"),
+  :name => _INTL("Easy"),
   :trainers => [
                 [:ID,"Trainer Name","Player Victory Dialogue.","Player Lose Dialogue.",100,"Lobby Dialogue.","Pre-Battle Dialogue.","Post-Battle Dialogue"], # Human Youth M
                 [:ID,"Trainer Name","Player Victory Dialogue.","Player Lose Dialogue.",100,"Lobby Dialogue.","Pre-Battle Dialogue.","Post-Battle Dialogue"], # Human Youth M
@@ -145,7 +145,7 @@ GameData::PWTTournament.register({
 
 GameData::PWTTournament.register({
   :id => :Normal_Diif,
-  :name => _INTL("Normal Difficulty"),
+  :name => _INTL("Normal"),
   :trainers => [
                 [:ID,"Trainer Name","Player Victory Dialogue.","Player Lose Dialogue.",200,"Lobby Dialogue.","Pre-Battle Dialogue.","Post-Battle Dialogue"], # Human Youth M
                 [:ID,"Trainer Name","Player Victory Dialogue.","Player Lose Dialogue.",200,"Lobby Dialogue.","Pre-Battle Dialogue.","Post-Battle Dialogue"], # Human Youth M
@@ -196,7 +196,7 @@ GameData::PWTTournament.register({
 
 GameData::PWTTournament.register({
   :id => :Hard_Diff,
-  :name => _INTL("Hard Difficulty"),
+  :name => _INTL("Hard"),
   :trainers => [
 				[:ID,"Trainer Name","Player Victory Dialogue.","Player Lose Dialogue.",300,"Lobby Dialogue.","Pre-Battle Dialogue.","Post-Battle Dialogue"], # Youkai 1
 				[:ID,"Trainer Name","Player Victory Dialogue.","Player Lose Dialogue.",300,"Lobby Dialogue.","Pre-Battle Dialogue.","Post-Battle Dialogue"], # Youkai 1
@@ -261,37 +261,37 @@ GameData::PWTTournament.register({
 
 GameData::PWTTournament.register({
   :id => :Lunatic_Diff,
-  :name => _INTL("Lunatic Difficulty"),
+  :name => _INTL("Lunatic"),
   :trainers => [
 				# ---- Gensokyo's Finest
-                [:KOKORO,"Kokoro","Hahaha, t'was a memorable dance indeed!","Though your show ends here, your performance was remarkable!",400], # Kokoro
-				[:MINORIKO,"Minoriko","Player Victory Dialogue.","Player Lose Dialogue.",400], # Minoriko
-				[:NITORI,"Nitori","Player Victory Dialogue.","Player Lose Dialogue.",400], # Nitori
-				[:HATATE,"Hatate","Player Victory Dialogue.","Player Lose Dialogue.",400], # Hatate
-				[:HINA,"Hina","Player Victory Dialogue.","Player Lose Dialogue.",400], # Hina, for real this time
-				[:STAR,"Star","Player Victory Dialogue.","Player Lose Dialogue.",400], # Star
-				[:LUNA,"Luna","Player Victory Dialogue.","Player Lose Dialogue.",400], # Luna
-				[:SUNNY,"Sunny","Player Victory Dialogue.","Player Lose Dialogue.",400], # Sunny
+                [:KOKORO,"Kokoro","Hahaha, t'was a memorable dance indeed!","Though your show ends here, your performance was remarkable!",400,"Lobby Dialogue","Pre-Battle Dialogue","Post-Battle Dialogue"], # Kokoro
+				[:MINORIKO,"Minoriko","Player Victory Dialogue.","Player Lose Dialogue.",400,"Lobby Dialogue","Pre-Battle Dialogue","Post-Battle Dialogue"], # Minoriko
+				[:NITORI,"Nitori","Player Victory Dialogue.","Player Lose Dialogue.",400,"Lobby Dialogue","Pre-Battle Dialogue","Post-Battle Dialogue"], # Nitori
+				[:HATATE,"Hatate","Player Victory Dialogue.","Player Lose Dialogue.",400,"Lobby Dialogue","Pre-Battle Dialogue","Post-Battle Dialogue"], # Hatate
+				[:HINA_REAL,"Hina","Player Victory Dialogue.","Player Lose Dialogue.",400,"Lobby Dialogue","Pre-Battle Dialogue","Post-Battle Dialogue"], # Hina, for real this time
+				[:STAR,"Star","Player Victory Dialogue.","Player Lose Dialogue.",400,"Lobby Dialogue","Pre-Battle Dialogue","Post-Battle Dialogue"], # Star
+				[:LUNA,"Luna","Player Victory Dialogue.","Player Lose Dialogue.",400,"Lobby Dialogue","Pre-Battle Dialogue","Post-Battle Dialogue"], # Luna
+				[:SUNNY,"Sunny","Player Victory Dialogue.","Player Lose Dialogue.",400,"Lobby Dialogue","Pre-Battle Dialogue","Post-Battle Dialogue"], # Sunny
 				# What, you didn't think Medicine would show up, did you?
-				[:ELLY,"Elly","Player Victory Dialogue.","Player Lose Dialogue.",400], # Elly
-				[:YUUKA,"Yuuka","Player Victory Dialogue.","Player Lose Dialogue.",400], # Yuuka
-				[:KEINE,"Keine","Player Victory Dialogue.","Player Lose Dialogue.",400], # Keine
-				[:MARISA,"Marisa","Player Victory Dialogue.","Player Lose Dialogue.",400], # Marisa
-				[:YOUMU,"Youmu","Player Victory Dialogue.","Player Lose Dialogue.",400], # Youmu
-				[:LYRICA,"Lyrica","Player Victory Dialogue.","Player Lose Dialogue.",400], # Lyrica
-				[:MYSTIA,"Mystia","Player Victory Dialogue.","Player Lose Dialogue.",400], # Mystia
-				[:LUNASA,"Lunasa","Player Victory Dialogue.","Player Lose Dialogue.",400], # Lunasa
-				[:MERLIN,"Merlin","Player Victory Dialogue.","Player Lose Dialogue.",400], # Merlin
-				[:ALICE,"Alice","Player Victory Dialogue.","Player Lose Dialogue.",400], # Alice
-				[:SANAE,"Sanae","Player Victory Dialogue.","Player Lose Dialogue.",400], # Sanae
-				[:SUIKA,"Suika","Player Victory Dialogue.","Player Lose Dialogue.",400], # Suika
-				[:SUMIREKO,"Sumireko","Player Victory Dialogue.","Player Lose Dialogue.",400], # Sumireko
-				[:LYRICA,"Lyrica","Player Victory Dialogue.","Player Lose Dialogue.",400], # Lyrica
-				[:GIO,"Gio","Player Victory Dialogue.","Player Lose Dialogue.",400], # Gio
-				[:FAIRY_ZK,"Amira","Player Victory Dialogue.","Player Lose Dialogue.",400], # Zephyr Amira
-				[:KALYPSA,"Kalypsa","Player Victory Dialogue.","Player Lose Dialogue.",400], # Kalypsa
-				[:SCRenko,"Renko","Player Victory Dialogue.","Player Lose Dialogue.",400], # Renko
-				[:SCMary,"Maribel","Player Victory Dialogue.","Player Lose Dialogue.",400] # Maribel
+				[:ELLY,"Elly","Player Victory Dialogue.","Player Lose Dialogue.",400,"Lobby Dialogue","Pre-Battle Dialogue","Post-Battle Dialogue"], # Elly
+				[:YUUKA,"Yuuka","Player Victory Dialogue.","Player Lose Dialogue.",400,"Lobby Dialogue","Pre-Battle Dialogue","Post-Battle Dialogue"], # Yuuka
+				[:KEINE,"Keine","Player Victory Dialogue.","Player Lose Dialogue.",400,"Lobby Dialogue","Pre-Battle Dialogue","Post-Battle Dialogue"], # Keine
+				[:MARISA,"Marisa","Player Victory Dialogue.","Player Lose Dialogue.",400,"Lobby Dialogue","Pre-Battle Dialogue","Post-Battle Dialogue"], # Marisa
+				[:YOUMU,"Youmu","Player Victory Dialogue.","Player Lose Dialogue.",400,"Lobby Dialogue","Pre-Battle Dialogue","Post-Battle Dialogue"], # Youmu
+				[:LYRICA,"Lyrica","Player Victory Dialogue.","Player Lose Dialogue.",400,"Lobby Dialogue","Pre-Battle Dialogue","Post-Battle Dialogue"], # Lyrica
+				[:MYSTIA,"Mystia","Player Victory Dialogue.","Player Lose Dialogue.",400,"Lobby Dialogue","Pre-Battle Dialogue","Post-Battle Dialogue"], # Mystia
+				[:LUNASA,"Lunasa","Player Victory Dialogue.","Player Lose Dialogue.",400,"Lobby Dialogue","Pre-Battle Dialogue","Post-Battle Dialogue"], # Lunasa
+				[:MERLIN,"Merlin","Player Victory Dialogue.","Player Lose Dialogue.",400,"Lobby Dialogue","Pre-Battle Dialogue","Post-Battle Dialogue"], # Merlin
+				# Bonus Trainers!
+				[:ALICE,"Alice","Player Victory Dialogue.","Player Lose Dialogue.",400,"Lobby Dialogue","Pre-Battle Dialogue","Post-Battle Dialogue"], # Alice
+				[:SANAE,"Sanae","Player Victory Dialogue.","Player Lose Dialogue.",400,"Lobby Dialogue","Pre-Battle Dialogue","Post-Battle Dialogue"], # Sanae
+				[:SUIKA,"Suika","Player Victory Dialogue.","Player Lose Dialogue.",400,"Lobby Dialogue","Pre-Battle Dialogue","Post-Battle Dialogue"], # Suika
+				[:SUMIREKO,"Sumireko","Ghk-! You just got lucky!","Now watch as I unleash my true power- wait, what do you mean I can't crash a Radio Tower into the arena!?",400,"Did you know that the Outside World also has tournaments and battles like this? They're nowhere near as interesting as here though!","Behold the power Sealing Club's first president, Sumireko Usami, as she effortlessly defeats you in a battle!","I may have been defeated, but I will return! Ahahahahaha!"], # Sumireko
+				[:GIO,"Gio","Hmph! I will get my revenge one day.","You never stood a chance against me, child.",400,"I may be trapped in this backwards realm, but my ambitions will never falter. Even with that nefarious teleporting witch watching me.","You will be another stepping stone toward my ultimate goals.","A child like you could never understand the grandness of my goals."], # Gio
+				[:FAIRY_ZK,"Amira","As the strongest fairy, I gracefully accept my defeat.","Did you really think you could beat the strongest fairy in all of Infinity?",400,"I saw someone else here with my name! I wonder if they're my twin?","You stand before the strongest fairy in Gensokyo- no, in all of Infinity!","There is only one fate for the strongest- to become stronger."], # Zephyr Amira
+				[:KALYPSA,"Kalypsa","My eyes never fail me, you are something else!","Did I get too into it? Whoops!",400,"I stop by Gensokyo every once in a while because it's just so fun here! If you ever wanna take a tour of the Omniverse, just let me know!","You have a certain aura about you... Oh yeah, I can't wait to battle you!","You're gonna go far in life, don't give up on your dreams!"], # Kalypsa
+				[:SCRenko,"Renko","A loss is just a chance for growth!","And that's how it's done! Good battle!",400,"You are an absolute powerhouse! I had a blast fighting you!","As the first champion of the Gensokyo League, I'll show you a real battle!","I'll learn from this battle and challenge you again, be ready for that day!"], # Renko
+				[:SCMary,"Maribel","We'll get 'em next time, I'm sure of it...!","I knew we could do it! I'm so proud of you all!",400,"My partners and I have been through a lot on our journey, but there's still so much more out there to experience!","I'll put everything I learned on my journey to the test, right here against you, with my closest companions!","It's time for me to bow out, my partners deserve a good rest!"] # Maribel
                ],
   :rules_proc => proc {|length|
     rules = PokemonChallengeRules.new

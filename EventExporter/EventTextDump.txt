@@ -16478,6 +16478,56 @@ List of Event Commands:
  :              : $>Turn Up
 @>
 
+Page #2
+Conditions
+None
+
+Graphic: trainer_ABYSSALSOVEREIGN
+
+Autonomous Movement
+Type: Fixed
+Speed: 3: Slow
+Freq: 3: Low
+Options Enabled
+Move Animation
+Trigger: Action Button
+
+List of Event Commands:
+@>Text: \xn[???]Oh- You're uh. You're here early!
+@>Text: \xn[???]Sorry, I haven't, uh. I haven't got this set up yet!
+@>Text: \xn[???]But, hmm... Perhaps I can give you something else instead!
+@>Fade Out BGM: 1 sec.
+@>Wait: 30 frame(s)
+@>Control Switches: [0104: Transition Handler] = ON
+@>Control Variables: [0103: Vs. Transition ID] = 34
+@>Control Variables: [0104: Vs. Transition - Pkmn] = 6
+@>Script: pbTrainerIntro(:ABYSSALSOVEREIGN)
+@>Text: \xn[???]A test of your reflexes, perhaps!
+@>Conditional Branch: Script: TrainerBattle.dx_start([:ABYSSALSOVEREIGN, "Amira Naxeroth"], {}, :VS_AMIRA)
+ @>Control Self Switch: A =ON
+ @>
+: Branch End
+@>Script: pbTrainerEnd
+@>
+
+Page #3
+Conditions
+Self Switch A is ON
+
+Graphic: trainer_ABYSSALSOVEREIGN
+
+Autonomous Movement
+Type: Fixed
+Speed: 3: Slow
+Freq: 3: Low
+Options Enabled
+Move Animation
+Trigger: Action Button
+
+List of Event Commands:
+@>Text: \xn[Amira]Don't worry! This will be done one day!
+@>
+
 #------------------------------------------------------------------------------
 Event ID: 007
 Event Name: EV007
@@ -61622,6 +61672,59 @@ Common Event Name: Vs. Amira
 Trigger: None
 
 List of Event Commands:
+@>Comment: --- Pre-Battle Intro Setup
+@>Call Common Event: Vs. Transition - Flash
+@>Change Screen Color Tone: (-255,-255,-255,0), @6
+@>Wait: 6 frame(s)
+@>Script: pbShowPicture(4,"Transitions/Bars_Under.png",1,256,192,zoomX=100,zoomY=100,opacity=230,blendType=0)
+@>Script: pbShowPicture(20,"Transitions/Bars_Over.png",1,256,192,zoomX=100,zoomY=100,opacity=230,blendType=0)
+@>Move Picture: 5, @5, Center (256,192), (100%,100%), 230, Normal
+@>Wait: 5 frame(s)
+@>Script: pbShowPicture(1,"Transitions/BGs/BGSpectral.png",1,256,192,100,100,0,0)
+@>Wait: 5 frame(s)
+@>Move Picture: 1, @5, Center (256,192), (100%,100%), 255, Normal
+@>Wait: 15 frame(s)
+@>Play SE: 'Vs flash', 80, 100
+@>Screen Flash: (255,255,255,255), @10
+@>Script: pbShowPicture(3,"Transitions/PTs/Char_AmiraS.png",1,256,192,zoomX=100,zoomY=100,opacity=255,blendType=0)
+@>Wait: 25 frame(s)
+@>Screen Flash: (255,255,255,255), @10
+@>Play SE: 'Vs sword', 80, 100
+@>Script: pbShowPicture(5,"Transitions/PTs/Char_Amira.png",1,256,192,zoomX=100,zoomY=100,opacity=255,blendType=0)
+@>Script: pbShowPicture(21,"Transitions/Names/Name_Amira.png",1,256,192,zoomX=100,zoomY=100,opacity=255,blendType=0)
+@>Move Picture: 3, @30, Center (250,192), (100%,100%), 255, Normal
+@>Call Common Event: Vs. Transition - Balls
+@>Wait: 60 frame(s)
+@>Move Picture: 1, @5, Center (256,192), (100%,100%), 0, Normal
+@>Move Picture: 20, @5, Center (256,192), (100%,100%), 0, Normal
+@>Move Picture: 3, @5, Center (252,192), (100%,100%), 0, Normal
+@>Move Picture: 4, @5, Center (256,192), (100%,100%), 0, Normal
+@>Move Picture: 5, @5, Center (256,192), (100%,100%), 0, Normal
+@>Move Picture: 21, @5, Center (256,192), (100%,100%), 0, Normal
+@>Change Picture Color Tone: 10, (-255,-255,-255,0), @5
+@>Change Picture Color Tone: 11, (-255,-255,-255,0), @5
+@>Change Picture Color Tone: 12, (-255,-255,-255,0), @5
+@>Change Picture Color Tone: 13, (-255,-255,-255,0), @5
+@>Change Picture Color Tone: 14, (-255,-255,-255,0), @5
+@>Change Picture Color Tone: 15, (-255,-255,-255,0), @5
+@>Change Picture Color Tone: 16, (-255,-255,-255,0), @5
+@>Wait: 6 frame(s)
+@>Erase Picture: 1
+@>Erase Picture: 20
+@>Erase Picture: 3
+@>Erase Picture: 4
+@>Erase Picture: 5
+@>Erase Picture: 21
+@>Erase Picture: 10
+@>Erase Picture: 11
+@>Erase Picture: 12
+@>Erase Picture: 13
+@>Erase Picture: 14
+@>Erase Picture: 15
+@>Erase Picture: 16
+@>Change Screen Color Tone: (0,0,0,0), @10
+@>Comment: --- Pre-Battle Intro Conclusion
+@>Control Switches: [0104: Transition Handler] = OFF
 @>
 
 #==============================================================================

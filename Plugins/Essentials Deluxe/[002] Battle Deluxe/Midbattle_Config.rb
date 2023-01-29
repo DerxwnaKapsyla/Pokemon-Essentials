@@ -753,5 +753,14 @@ module EssentialsDeluxe
 	  :message				=> "{1} begun to get affected by the miasma.",
 	  :status 				=> [:POISON,:BURN,:SLEEP,:FREEZE]
 	},
-  }	
+  }
+
+  #-----------------------------------------------------------------------------  
+  # Scene: Vs. Amira
+  #-----------------------------------------------------------------------------   
+  VS_AMIRA = {
+	"turnCommand" => {
+	  :speech				=> "I'm a woman out of time, from a space beyond here- give me a battle I'll never forget before I go back!"
+	},
+  }
 end

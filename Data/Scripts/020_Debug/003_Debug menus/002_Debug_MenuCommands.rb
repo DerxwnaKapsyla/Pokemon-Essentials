@@ -544,7 +544,7 @@ MenuHandlers.add(:debug_menu, :give_demo_party, {
   "description" => _INTL("Give yourself 6 preset Pokémon. They overwrite the current party."),
   "effect"      => proc {
     party = []
-    species = [:SHINKI, :ASUMIREKO, :RIKAKO, :NEPGEAR, :SAYA, :ADREISEN]
+    species = [:ADREISEN, :ASUMIREKO, :RIKAKO, :NEPGEAR, :SAYA, :SHINKI]
     species.each do |id|
       party.push(id) if GameData::Species.exists?(id)
     end
@@ -552,6 +552,12 @@ MenuHandlers.add(:debug_menu, :give_demo_party, {
     # Generate Pokémon of each species at level 20
     party.each do |species|
       pkmn = Pokemon.new(species, 100)
+	  pkmn.iv[:HP] = 31
+	  pkmn.iv[:ATTACK] = 31
+	  pkmn.iv[:DEFENSE] = 31
+	  pkmn.iv[:SPEED] = 31
+	  pkmn.iv[:SPECIAL_ATTACK] = 31
+	  pkmn.iv[:SPECIAL_DEFENSE] = 31
       $player.party.push(pkmn)
       $player.pokedex.register(pkmn)
       $player.pokedex.set_owned(species)
