@@ -8722,3 +8722,164 @@ TotalPP = 40
 Target = User
 FunctionCode = RaiseUserDefense1
 Description = The user withdraws its body into its hard shell, raising its Defense stat.
+#-------------------------------
+#-------------------------------
+#-------------------------------
+[MEGAFLARE]
+Name = Megaflare
+Type = QMARKS
+Category = Special
+Accuracy = 100
+Target = AllFoes
+FunctionCode = BurnTarget
+TotalPP = 0
+BaseDamage = 70
+Flags = ThawsUser
+EffectChance = 30
+Description = An intense rain of light and fire that has a small chance to burn the target.
+#-------------------------------
+[FLAMEBREATH]
+Name = Flamebreath
+Type = FIRE
+Category = Special
+Accuracy = 100
+Target = NearOther
+FunctionCode = BurnTarget
+TotalPP = 0
+BaseDamage = 70
+Flags = CanProtect,CanMirrorMove,ThawsUser
+EffetChance = 10
+Description = An unparalleled burst of fire erupted from one's mouth.
+#-------------------------------
+[FLATTEN]
+Name = Flatten
+Type = GROUND
+Category = Physical
+Accuracy = 100
+Target = NearOther
+FunctionCode = RandomPowerDoublePowerIfTargetUnderground # Change this to make it so Lv 8~10 are the guaranteed outcomes, then remove the relevant messages
+TotalPP = 0
+BaseDamage = 1
+Flags = CanProtect,CanMirrorMove
+Description = The user stomps its foot onto the target dealing variable damage.
+#-------------------------------
+[EARTHSHAKER]
+Name = Earthshaker
+Type = GROUND
+Category = Physical
+Accuracy = 100
+Target = AllFoes
+FunctionCode = HitTwoTimes
+TotalPP = 0
+BaseDamage = 80
+Flags = CanProtect,CanMirrorMove,HighCriticalHitRate
+Description = The user crashes onto the ground in a way that targets two specific enemies.
+#-------------------------------
+[GIGAFLARE]
+Name = Gigaflare
+Type = QMARKS
+Category = Special
+Accuracy = 0
+Target = AllFoes
+FunctionCode = BurnsTarget
+TotalPP = 0
+BaseDamage = 90
+Flags = ThawsUser
+EffectChance = 50
+Description = A destructive rain of light and fire that has a high chance to burn the target.
+#-------------------------------
+[FLARESTAR]
+Name = Flare Star
+Type = QMARKS
+Category = Special
+Accuracy = 75
+Target = NearFoe
+FunctionCode = LowerTargetDefense1
+TotalPP = 0
+BaseDamage = 60
+Flags = CanProtect,CanThaw,Bomb
+EffectChance = 100
+Description = An easily avoidable ball of light and fire that will lower the target's defense if hit.
+#-------------------------------
+[DRAGONSWRATH]
+Name = Dragon's Wrath
+Type = DRAGON
+Category = Physical
+Accuracy = 90
+Target = AllFoes
+FunctionCode = None
+TotalPP = 0
+BaseDamage = 90
+Flags = Contact,CanProtect,CanMirrorMove,HighCriticalHitRate,Biting,Punching
+Description = The user assails the target in every way it can, dealing massive damage with a high chance of a critical hit.
+#-------------------------------
+[FLAREDIVE]
+Name = Flaredive
+Type = QMARKS
+Category = Physical
+Accuracy = 95
+Target = AllFoes
+FunctionCode = EffectivenessIncludesFlyingType
+TotalPP = 0
+BaseDamage = 80
+Flags = Contact,CanProtect,ThawsUser
+Description = The user cloaks itself in light and fire, then swoops down onto the target, dealing Flying-type damage also.
+#-------------------------------
+[TERAFLARE]
+Name = Teraflare
+Type = QMARKS
+Category = Special
+Accuracy = 100
+Target = AllFoes
+FunctionCode = BurnsTarget
+TotalPP = 0
+BaseDamage = 120
+Flags = ThawsUser
+EffectChance = 70
+Description = A calamitous rain of light and fire that has a strong chance to burn the target.
+#-------------------------------
+[AKHMORN]
+Name = Akh Morn
+Type = QMARKS
+Category = Special
+Accuracy = 100
+Target = AllFoes
+FunctionCode = HitTwoToFiveTimes
+TotalPP = 0
+BaseDamage = 25
+Flags = ThawsUser,Pulse
+Description = A circle of death rains down from the sky to strike the targets multiple times.
+#-------------------------------
+[TERAFLARE_ALT]
+Name = Teraflare
+Type = QMARKS
+Category = Special
+Target = AllFoes
+FunctionCode = BurnsTarget
+TotalPP = 0
+BaseDamage = 999
+Flags = ThawsUser,HighCriticalHitRate
+EffectChance = 100
+Description = Enrage variant of Teraflare. Designed to be fatal. If survived, will cause burn.
+#-------------------------------
+[EXAFLARE]
+#711,EXAFLARE,Exaflare,00A,150,QMARKS,Special,100,0,90,AllFoes,0,fg,"A world-ending rain of light and fire that is almost guaranteed to burn the target."
+#-------------------------------
+[AKHMORN_ALT]
+#712,AKHMORN_alt,0C0,15,QMARKS,Special,100,0,0,AllFoes,0,fgm,"A circle of death rains down from the sky to strike the targets multiple times."
+#-------------------------------
+[FLAREDIVE_ALT]
+#713,FLAREDIVE_alt,Flaredive Prime,144,100,QMARKS,Physical,95,0,0,AllFoes,0,abfg,"The user cloaks itself in intense light and fire, then swoops down onto the target, dealing Flying-type damage also."
+#-------------------------------
+[AFAHMORN]
+#714,AFAHMORN,Afah Morn,0C0,40,QMARKS,Special,100,0,AllFoes,6,fgm,"An eternal death awaits those hit by this. It does not stop until all targets have fained."
+#-------------------------------
+[PROTOFLARE]
+#715,PROTOFLARE,Protoflare,00A,90,QMARKS,Special,100,0,10,NearFoe,0,bdefg,"A storm of light and fire that has a very small chance to burn the target."
+#-------------------------------
+[FLATTEN_ALT]
+#716,FLATTEN_alt,Flatten,095,1,GROUND,Physical,100,0,0,NearOthers,0,bef,"The user stomps its foot onto the target dealing destructive damage."
+#-------------------------------
+[FLARESTAR_ALT]
+#717,FLARESTAR_alt,Flare Star,04C,60,QMARKS,Special,75,0,100,NearFoe,0,bfgn,"An easily avoidable ball of light and fire that will lower the target's defense if hit."
+#----------------------------------------

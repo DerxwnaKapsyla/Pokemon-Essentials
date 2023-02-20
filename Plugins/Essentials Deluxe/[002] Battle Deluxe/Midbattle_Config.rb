@@ -488,4 +488,12 @@ module EssentialsDeluxe
                   "Hit 'em with your Agile Style, {1}!"]
     }
   }
+  
+  #-----------------------------------------------------------------------------
+  # Vs. Dreadwyrm Bahamut, the Mega Charizard X
+  #-----------------------------------------------------------------------------
+  #VS_BAHAMUT = {
+#	""
+#  
+#  }
 end
