@@ -4,6 +4,87 @@
 
 
 #-------------------------------------------------------------------------------
+# Placeholder message types for plugin compatibility.
+#-------------------------------------------------------------------------------
+module MessageTypes
+  ItemPortionNames       = 100
+  ItemPortionNamePlurals = 101
+  ItemHeldDescriptions   = 102
+  GMaxNames              = 103
+  GMaxEntries            = 104
+  Birthsigns             = 105 
+  ZodiacPowers           = 106
+  Celestials             = 107
+  BirthsignEffects       = 108
+  ZodiacEffects          = 109
+  BirthsignLore          = 110
+end
+
+
+#-------------------------------------------------------------------------------
+# Placeholder item data for plugin compatibility.
+#-------------------------------------------------------------------------------
+module GameData
+  class Item
+    SCHEMA["HeldDescription"] = [:real_held_description, "q"]
+	
+    alias dx_initialize initialize
+    def initialize(hash)
+      dx_initialize(hash)
+      @real_held_description = hash[:real_held_description]
+    end
+	
+    def held_description
+      return description if !@real_held_description
+      return pbGetMessageFromHash(MessageTypes::ItemHeldDescriptions, @real_held_description)
+    end
+	
+    def portion_name
+      return name
+    end
+
+    def portion_name_plural
+      return name_plural
+    end
+  end
+end
+
+
+#-------------------------------------------------------------------------------
+# Adds Ultra Space habitat for Ultra Beasts.
+#-------------------------------------------------------------------------------
+GameData::Habitat.register({
+  :id   => :UltraSpace,
+  :name => _INTL("Ultra Space")
+})
+
+
+#-------------------------------------------------------------------------------
+# Gets all eligible moves that a species's entire evolutionary line can learn.
+#-------------------------------------------------------------------------------
+module GameData
+  class Species
+    def get_family_moves
+      moves = []
+      baby = GameData::Species.get_species_form(get_baby_species, @form)
+      prev = GameData::Species.get_species_form(get_previous_species, @form)
+      if baby.species != @species
+        baby.moves.each { |m| moves.push(m[1]) }
+      end
+      if prev.species != @species && prev.species != baby.species
+        prev.moves.each { |m| moves.push(m[1]) }
+      end
+      @moves.each { |m| moves.push(m[1]) }
+      @tutor_moves.each { |m| moves.push(m) }
+      get_egg_moves.each { |m| moves.push(m) }
+      moves |= []
+      return moves
+    end
+  end
+end
+
+
+#-------------------------------------------------------------------------------
 # Orders Egg Groups numerically, including Legendary groups.
 #-------------------------------------------------------------------------------
 def egg_group_hash
@@ -46,10 +127,6 @@ class DayCare
   module EggGenerator
     module_function
     
-    def fluid_egg_group?(groups)
-      return groups.include?(:Ditto) || groups.include?(:Ancestor)
-    end
-    
     def generate(mother, father)
       if mother.male? || father.female? || mother.genderless?
         mother, father = father, mother
@@ -67,13 +144,17 @@ class DayCare
       inherit_moves(egg, mother_data, father_data)
       inherit_IVs(egg, mother, father)
       inherit_poke_ball(egg, mother_data, father_data)
-      birthsign_inheritance(egg, mother, father) if PluginManager.installed?("Pokémon Birthsigns")
+      inherit_birthsign(egg, mother, father) if PluginManager.installed?("Pokémon Birthsigns")
       set_shininess(egg, mother, father)
       set_pokerus(egg)
       egg.calc_stats
       return egg
     end
   end
+end
+
+def fluid_egg_group?(groups)
+  return groups.include?(:Ditto) || groups.include?(:Ancestor)
 end
 
 def legendary_egg_group?(groups)
@@ -83,12 +164,169 @@ end
 
 
 #-------------------------------------------------------------------------------
-# Adds Ultra Space habitat for Ultra Beasts.
+# Allows for different colored text in the party menu.
 #-------------------------------------------------------------------------------
-GameData::Habitat.register({
-  :id   => :UltraSpace,
-  :name => _INTL("Ultra Space")
-})
+class Window_CommandPokemonColor < Window_CommandPokemon
+  def drawItem(index, _count, rect)
+    pbSetSystemFont(self.contents) if @starting
+    rect = drawCursor(index, rect)
+    base   = self.baseColor
+    shadow = self.shadowColor
+    #---------------------------------------------------------------------------
+    # Blue text.
+    #---------------------------------------------------------------------------
+    if @colorKey[index] && @colorKey[index] == 1
+      base   = Color.new(0, 80, 160)
+      shadow = Color.new(128, 192, 240)
+    end
+    #---------------------------------------------------------------------------
+    # Orange text.
+    #---------------------------------------------------------------------------
+    if @colorKey[index] && @colorKey[index] == 2
+      base   = Color.new(236, 88, 0)
+      shadow = Color.new(255, 170, 51)
+    end
+    #---------------------------------------------------------------------------
+    # Purple text.
+    #---------------------------------------------------------------------------
+    if @colorKey[index] && @colorKey[index] == 3
+      base   = Color.new(149, 33, 246)
+      shadow = Color.new(255, 161, 326)
+    end
+    #---------------------------------------------------------------------------
+    # Gray text.
+    #---------------------------------------------------------------------------
+    if @colorKey[index] && @colorKey[index] == 4
+      base   = Color.new(184, 184, 184)
+      shadow = Color.new(96, 96, 96)
+    end
+    pbDrawShadowText(self.contents, rect.x, rect.y + (self.contents.text_offset_y || 0),
+                     rect.width, rect.height, @commands[index], base, shadow)
+  end
+end
+
+
+#-------------------------------------------------------------------------------
+# Party Screen compatibility.
+#-------------------------------------------------------------------------------
+class PokemonPartyScreen
+  def pbPokemonScreen
+    ret = nil
+    can_access_storage = false
+    if ($player.has_box_link || $bag.has?(:POKEMONBOXLINK)) &&
+       !$game_switches[Settings::DISABLE_BOX_LINK_SWITCH] &&
+       !$game_map.metadata&.has_flag?("DisableBoxLink")
+      can_access_storage = true
+    end
+    @scene.pbStartScene(@party,
+                        (@party.length > 1) ? _INTL("Choose a Pokémon.") : _INTL("Choose Pokémon or cancel."),
+                        nil, false, can_access_storage)
+    loop do
+      @scene.pbSetHelpText((@party.length > 1) ? _INTL("Choose a Pokémon.") : _INTL("Choose Pokémon or cancel."))
+      party_idx = @scene.pbChoosePokemon(false, -1, 1)
+      break if (party_idx.is_a?(Numeric) && party_idx < 0) || (party_idx.is_a?(Array) && party_idx[1] < 0)
+      if party_idx.is_a?(Array) && party_idx[0] == 1
+        @scene.pbSetHelpText(_INTL("Move to where?"))
+        old_party_idx = party_idx[1]
+        party_idx = @scene.pbChoosePokemon(true, -1, 2)
+        pbSwitch(old_party_idx, party_idx) if party_idx >= 0 && party_idx != old_party_idx
+        next
+      end
+      pkmn = @party[party_idx]
+      command_list = []
+      commands = []
+      MenuHandlers.each_available(:party_menu, self, @party, party_idx) do |option, hash, name|
+        if PluginManager.installed?("Improved Field Skills") && option == :field_skill
+          command_list.push([name, 1])
+        elsif PluginManager.installed?("Legendary Breeding") && option == :egg_skill
+          command_list.push([name, 2])
+        elsif PluginManager.installed?("Pokémon Birthsigns") && option.to_s.include?("birthsign_skill")
+          color = BirthsignHandlers::triggerMenuCommandOption(pkmn.birthsign.id, pkmn)
+          command_list.push([name, color])
+          option = :birthsign_skill
+        else
+          command_list.push(name)
+        end
+        commands.push([option, hash])
+      end
+      command_list.push(_INTL("Cancel"))
+      if !PluginManager.installed?("Improved Field Skills") && !pkmn.egg?
+        insert_index = ($DEBUG) ? 2 : 1
+        pkmn.moves.each_with_index do |move, i|
+          next if !HiddenMoveHandlers.hasHandler(move.id) &&
+                  ![:MILKDRINK, :SOFTBOILED].include?(move.id)
+          command_list.insert(insert_index, [move.name, 1])
+          commands.insert(insert_index, i)
+          insert_index += 1
+        end
+      end
+      choice = @scene.pbShowCommands(_INTL("Do what with {1}?", pkmn.name), command_list)
+      next if choice < 0 || choice >= commands.length
+      case commands[choice]
+      when Array
+        if [:field_skill, :birthsign_skill].include?(commands[choice][0])
+          ret = commands[choice][1]["effect"].call(self, @party, party_idx)
+          break if !ret.nil?
+        else
+          commands[choice][1]["effect"].call(self, @party, party_idx)
+        end
+      when Integer
+        move = pkmn.moves[commands[choice]]
+        if [:MILKDRINK, :SOFTBOILED].include?(move.id)
+          amt = [(pkmn.totalhp / 5).floor, 1].max
+          if pkmn.hp <= amt
+            pbDisplay(_INTL("Not enough HP..."))
+            next
+          end
+          @scene.pbSetHelpText(_INTL("Use on which Pokémon?"))
+          old_party_idx = party_idx
+          loop do
+            @scene.pbPreSelect(old_party_idx)
+            party_idx = @scene.pbChoosePokemon(true, party_idx)
+            break if party_idx < 0
+            newpkmn = @party[party_idx]
+            movename = move.name
+            if party_idx == old_party_idx
+              pbDisplay(_INTL("{1} can't use {2} on itself!", pkmn.name, movename))
+            elsif newpkmn.egg?
+              pbDisplay(_INTL("{1} can't be used on an Egg!", movename))
+            elsif newpkmn.fainted? || newpkmn.hp == newpkmn.totalhp
+              pbDisplay(_INTL("{1} can't be used on that Pokémon.", movename))
+            else
+              pkmn.hp -= amt
+              hpgain = pbItemRestoreHP(newpkmn, amt)
+              @scene.pbDisplay(_INTL("{1}'s HP was restored by {2} points.", newpkmn.name, hpgain))
+              pbRefresh
+            end
+            break if pkmn.hp <= amt
+          end
+          @scene.pbSelect(old_party_idx)
+          pbRefresh
+        elsif pbCanUseHiddenMove?(pkmn, move.id)
+          if pbConfirmUseHiddenMove(pkmn, move.id)
+            @scene.pbEndScene
+            if move.id == :FLY
+              scene = PokemonRegionMap_Scene.new(-1, false)
+              screen = PokemonRegionMapScreen.new(scene)
+              ret = screen.pbStartFlyScreen
+              if ret
+                $game_temp.fly_destination = ret
+                return [pkmn, move.id]
+              end
+              @scene.pbStartScene(
+                @party, (@party.length > 1) ? _INTL("Choose a Pokémon.") : _INTL("Choose Pokémon or cancel.")
+              )
+              next
+            end
+            return [pkmn, move.id]
+          end
+        end
+      end
+    end
+    @scene.pbEndScene
+    return ret
+  end
+end
 
 
 #-------------------------------------------------------------------------------
@@ -130,24 +368,13 @@ class PokemonStorageScene
     textstrings = [
       [pokename, 10, 14, false, base, shadow]
     ]
-	# ------ Derx: Changes made to support the display of Puppet Alignment Icons
     if !pokemon.egg?
       imagepos = []
-	  pkmn_data = GameData::Species.get_species_form(pokemon.species, pokemon.form)
-	  if pkmn_data.has_flag?("Puppet")
-		if pokemon.male?
-          textstrings.push([_INTL("¹"), 148, 14, false, Color.new(24, 112, 216), Color.new(136, 168, 208)])
-		elsif pokemon.female?
-          textstrings.push([_INTL("²"), 148, 14, false, Color.new(248, 56, 32), Color.new(224, 152, 144)])
-		end
-	  else
-		if pokemon.male?
-          textstrings.push([_INTL("♂"), 148, 14, false, Color.new(24, 112, 216), Color.new(136, 168, 208)])
-		elsif pokemon.female?
-          textstrings.push([_INTL("♀"), 148, 14, false, Color.new(248, 56, 32), Color.new(224, 152, 144)])
-		end
-	  end
-	# ------ Derx: End of the above changes
+      if pokemon.male?
+        textstrings.push([_INTL("♂"), 148, 14, false, Color.new(24, 112, 216), Color.new(136, 168, 208)])
+      elsif pokemon.female?
+        textstrings.push([_INTL("♀"), 148, 14, false, Color.new(248, 56, 32), Color.new(224, 152, 144)])
+      end
       imagepos.push(["Graphics/Pictures/Storage/overlay_lv", 6, 246])
       textstrings.push([pokemon.level.to_s, 28, 240, false, base, shadow])
       if pokemon.ability
@@ -166,6 +393,9 @@ class PokemonStorageScene
       if PluginManager.installed?("ZUD Mechanics")
         pbDisplayGmaxFactor(pokemon, plugin_overlay, 8, 52)
       end
+      if PluginManager.installed?("Terastal Phenomenon") && Settings::STORAGE_TERA_TYPES
+        pbDisplayTeraType(pokemon, plugin_overlay, 8, 164)
+      end
       if PluginManager.installed?("Pokémon Birthsigns")
         pbDisplayToken(pokemon, plugin_overlay, 149, 167, true)
       end
@@ -173,8 +403,8 @@ class PokemonStorageScene
         pbDisplayShinyLeaf(pokemon, plugin_overlay, 158, 50)      if Settings::STORAGE_SHINY_LEAF
         pbDisplayIVRatings(pokemon, plugin_overlay, 8, 198, true) if Settings::STORAGE_IV_RATINGS
       end
-      typebitmap = AnimatedBitmap.new(_INTL("Graphics/Pictures/types"))
-      pokemon.types.each_with_index do |type, i|
+        typebitmap = AnimatedBitmap.new(_INTL("Graphics/Pictures/types"))
+        pokemon.types.each_with_index do |type, i|
         type_number = GameData::Type.get(type).icon_position
         type_rect = Rect.new(0, type_number * 28, 64, 28)
         type_x = (pokemon.types.length == 1) ? 52 : 18 + (70 * i)
@@ -185,21 +415,6 @@ class PokemonStorageScene
     end
     pbDrawTextPositions(overlay, textstrings)
     @sprites["pokemon"].setPokemonBitmap(pokemon)
-  end
-end
-
-
-#-------------------------------------------------------------------------------
-# Checks if a common animation exists.
-#-------------------------------------------------------------------------------
-class Battle::Scene
-  def pbCommonAnimationExists?(animName)
-    animations = pbLoadBattleAnimations
-    animations.each do |a|
-      next if !a || a.name != "Common:" + animName
-      return true
-    end
-    return false
   end
 end
 
@@ -343,3 +558,43 @@ MultipleForms.register(:CALYREX, {
     end
   }
 })
+
+
+#===============================================================================
+# Transform
+#===============================================================================
+# Edited for compatibility with battle effects that alter battler sprites.
+#-------------------------------------------------------------------------------
+class Battle::Move::TransformUserIntoTarget < Battle::Move
+  def pbShowAnimation(id, user, targets, hitNum = 0, showAnimation = true)
+    super
+    user.effects[PBEffects::TransformPokemon] = targets[0].pokemon
+    @battle.scene.pbChangePokemon(user, targets[0].pokemon)
+  end
+end
+
+
+#===============================================================================
+# Imposter
+#===============================================================================
+# Edited for compatibility with battle effects that alter battler sprites.
+#-------------------------------------------------------------------------------
+Battle::AbilityEffects::OnSwitchIn.add(:IMPOSTER,
+  proc { |ability, battler, battle, switch_in|
+    next if !switch_in || battler.effects[PBEffects::Transform]
+    choice = battler.pbDirectOpposing
+    next if choice.fainted?
+    next if battler.dynamax? && !choice.dynamax_able?
+    next if choice.effects[PBEffects::Transform] ||
+            choice.effects[PBEffects::Illusion] ||
+            choice.effects[PBEffects::Substitute] > 0 ||
+            choice.effects[PBEffects::SkyDrop] >= 0 ||
+            choice.semiInvulnerable?
+    battle.pbShowAbilitySplash(battler, true)
+    battle.pbHideAbilitySplash(battler)
+    battler.effects[PBEffects::TransformPokemon] = choice.pokemon
+    battle.pbAnimation(:TRANSFORM, battler, choice)
+    battle.scene.pbChangePokemon(battler, choice.pokemon)
+    battler.pbTransform(choice)
+  }
+)

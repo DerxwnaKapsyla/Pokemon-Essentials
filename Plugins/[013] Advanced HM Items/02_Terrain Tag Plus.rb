@@ -1,6 +1,7 @@
 #===============================================================================
 # Adds Rock Climb to TerrainTag
 #===============================================================================
+
 module GameData
   class TerrainTag
     attr_reader :rockclimb   # The main part only, not the crest
@@ -8,13 +9,14 @@ module GameData
     attr_reader :can_climb
     attr_reader :whirlpool
 
-    alias advancedFMI_init initialize
+    alias advanceditemsfieldmoves_init initialize
     def initialize(hash)
-      advancedFMI_init(hash)
+      advanceditemsfieldmoves_init(hash)
       @rockclimb              = hash[:rockclimb]              || false
       @rockclimb_crest        = hash[:rockclimb_crest]        || false
       @can_climb              = hash[:can_climb]              || false
       @whirlpool              = hash[:whirlpool]              || false
+
     end
 
     def can_surf_freely
@@ -47,9 +49,9 @@ GameData::TerrainTag.register({
   :whirlpool              => true
 })
 
-#==============================================================================#
-#          Overwrites functions locally to add the Rock Climb section          #
-#==============================================================================#
+#===============================================================================
+#          Overwrites functions locally to add the Rock Climb section
+#===============================================================================
 
 class Game_Map
   def playerPassable?(x, y, d, self_event = nil)
@@ -63,7 +65,7 @@ class Game_Map
         # Ignore bridge tiles if not on a bridge
         next if terrain.bridge && $PokemonGlobal.bridge == 0
         # Make water tiles passable if player is surfing
-        return true if $PokemonGlobal.surfing && terrain.can_surf && !terrain.waterfall && !terrain.whirlpool
+        return true if $PokemonGlobal.surfing && terrain.can_surf && !terrain.waterfall && !terrain.whirlpool 
         # Prevent cycling in really tall grass/on ice
         return false if $PokemonGlobal.bicycle && terrain.must_walk
         # Depend on passability of bridge tile if on bridge

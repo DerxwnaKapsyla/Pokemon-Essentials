@@ -1,10 +1,12 @@
 ################################################################################
-# "BerryPots for Essentials v20.1 1.0"
+# "BerryPots for Essentials"
+# Version 1.1
 # By Caruban
 #
-# v20 Change logs
-# - Add more pots up to 10 pots
-# - Choose which watering can to use
+# 1.1 Change log
+# - Support planting apricorns
+# - bug fixes: pbReceivePots error
+# - bug fixes: fertilizer only can choose to plant a berry
 #-------------------------------------------------------------------------------
 # Run with:      pbBerryPots
 #
@@ -16,6 +18,8 @@
 #===============================================================================
 # The count of Pots the player starts with.
 INITIAL_POT_COUNT = 4
+
+CAN_PLANT_APRICORN = true
 
 #===============================================================================
 # BerryPots Command
@@ -29,8 +33,12 @@ def pbBerryPots
 end
 
 def pbReceivePots(count=1)
-  return false if $PokemonGlobal.berrypot_count > 10 || $PokemonGlobal.berrypot_count + count > 10
-  $PokemonGlobal.berrypot_count += count
+  $PokemonGlobal.berrypot_count = INITIAL_POT_COUNT if !$PokemonGlobal.berrypot_count
+  return false if $PokemonGlobal.berrypot_count >= 10
+  count.times{|i|
+    $PokemonGlobal.berrypot_count += 1
+    break if $PokemonGlobal.berrypot_count == 10
+  }
   return true
 end
 #===============================================================================
@@ -40,7 +48,7 @@ class PokemonGlobalMetadata
   attr_accessor :berrypots
   attr_accessor :berrypot_count
   attr_accessor :berrypots_can
-end            
+end
 
 #===============================================================================
 # Pots Scene
@@ -140,6 +148,7 @@ class ItemBerryPots_Scene
       @can_temp.push(item)
     end
     @item = $bag.has?($PokemonGlobal.berrypots_can) ? $PokemonGlobal.berrypots_can : nil
+    @item = :SQUIRTBOTTLE if !@item && $DEBUG
     @can_id = @can_temp.length > 0 ? @can_temp.index(@item) : nil
     @sprites["spray"] = IconSprite.new(0,0,@viewport)
     @sprites["spray"].setBitmap(_INTL("Graphics/Pictures/BerryPots/#{@item}"))
@@ -250,7 +259,8 @@ class ItemBerryPots_Scene
     charwidth  = @sprites["plant#{i}"].bitmap.width
     charheight = @sprites["plant#{i}"].bitmap.height
     if berry_plant.growth_stage>1
-      @sprites["plant#{i}"].src_rect = Rect.new(0,charheight*(berry_plant.growth_stage-2)/4,charwidth/4,charheight/4)
+      stage = (berry_plant.growth_stage-2).clamp(0,3)
+      @sprites["plant#{i}"].src_rect = Rect.new(0,charheight*stage/4,charwidth/4,charheight/4)
     else
       @sprites["plant#{i}"].src_rect = Rect.new(0,0,charwidth/4,charheight/4)
     end
@@ -331,6 +341,7 @@ class ItemBerryPots_Scene
       pbUpdate
       y = @index >= 0 ? @index/5 : 0
       oldindex = @index
+      oldid = @can_id
       if Input.trigger?(Input::USE)
         if @index >= 0
           pbPlayDecisionSE
@@ -338,7 +349,6 @@ class ItemBerryPots_Scene
         elsif @index == -1 && @can_temp.length > 1
           @sprites["cursor"].visible = false
           olditem = @item
-          oldid = @can_id
           loop do
             Graphics.update
             Input.update
@@ -447,6 +457,7 @@ class ItemBerryPots_Scene
         end
       end
       # Water the growing plant
+      return if !@item
       return if !pbConfirmMessage(_INTL("Want to sprinkle some water with the {1}?",
                                       GameData::Item.get(@item).name))
       berry_plant.water
@@ -462,13 +473,23 @@ class ItemBerryPots_Scene
     end
     # Nothing planted yet
     ask_to_plant = true
+    choose = :plantberry
+    cmds_new = [_INTL("Berry"),_INTL("Apricorn"),_INTL("Cancel")]
     if Settings::NEW_BERRY_PLANTS
       # New mechanics
+      all_cmd = [[_INTL("Fertilize"),:fertilize], 
+                 [_INTL("Plant Berry"),:plantberry]]
+      all_cmd.push([_INTL("Plant Apricorn"),:plantapricorn]) if CAN_PLANT_APRICORN
+      all_cmd.push([_INTL("Exit"),:exit])
       if berry_plant.mulch_id
         pbMessage(_INTL("{1} has been laid down.\1", GameData::Item.get(berry_plant.mulch_id).name))
       else
-        case pbMessage(_INTL("It's soft, earthy soil."), [_INTL("Fertilize"), _INTL("Plant Berry"), _INTL("Exit")], -1)
-        when 0   # Fertilize
+        cmds = []
+        all_cmd.each{|cmd| cmds.push(cmd[0])}
+        choose = pbMessage(_INTL("It's soft, earthy soil."), cmds, -1)
+        choose = all_cmd[choose][1]
+        case choose
+        when :fertilize   # Fertilize
           if !hasMulchItem
             pbMessage(_INTL("You don't have any fertilizer!"))
             return
@@ -489,7 +510,10 @@ class ItemBerryPots_Scene
             pbMessage(_INTL("That won't fertilize the soil!"))
             return
           end
-        when 1   # Plant Berry
+        when :plantberry   # Plant Berry
+          ask_to_plant = false
+        when :plantapricorn   # Plant Apricorn
+          choose = :plantapricorn
           ask_to_plant = false
         else   # Exit/cancel
           return
@@ -497,19 +521,46 @@ class ItemBerryPots_Scene
       end
     else
       # Old mechanics
-      return if !pbConfirmMessage(_INTL("It's soft, loamy soil.\nPlant a berry?"))
-      ask_to_plant = false
-    end
-    if !ask_to_plant || pbConfirmMessage(_INTL("Want to plant a Berry?"))
-      if !hasBerryItem
-        pbMessage(_INTL("You don't have any Berries!"))
-        return
+      # return if !pbConfirmMessage(_INTL("It's soft, loamy soil.\nPlant a berry?"))
+      if !CAN_PLANT_APRICORN
+        return if !pbConfirmMessage(_INTL("It's soft, loamy soil.\nPlant a berry?"))
+        ask_to_plant = false
+      else
+        choose = pbMessage(_INTL("It's soft, loamy soil.\nPlant a berry or apricorn?"),cmds_new,2)#!pbConfirmMessage(_INTL("It's soft, loamy soil.\nPlant an apricorn?"))
+        return if choose == 2
+        choose = all_cmd[choose+1][1]
+        ask_to_plant = false
+        # end
       end
-      pbFadeOutIn {
-        scene = PokemonBag_Scene.new
-        screen = PokemonBagScreen.new(scene, $bag)
-        berry = screen.pbChooseItemScreen(proc { |item| GameData::Item.get(item).is_berry? })
-      }
+    end
+    if ask_to_plant && !CAN_PLANT_APRICORN
+      choose = nil if !pbConfirmMessage(_INTL("Want to plant a Berry?"))
+    elsif ask_to_plant && CAN_PLANT_APRICORN
+      choose = pbMessage(_INTL("It's soft, loamy soil.\nPlant a berry or apricorn?"),cmds_new,2)
+      choose = choose == 2 ? nil : all_cmd[choose+1][1]
+    end
+    if !ask_to_plant || !choose.nil?
+      if choose == :plantberry
+        if !hasBerryItem
+          pbMessage(_INTL("You don't have any Berries!"))
+          return
+        end
+      else
+        if !hasApricorn
+          pbMessage(_INTL("You don't have any Apricorns!"))
+          return
+        end
+      end
+      if PluginManager.installed?("Apricorn Box") && choose != :plantberry
+        berry = pbChooseApricornBox(1,"Select which Apricorn to plant.")[0]
+      else
+        pbFadeOutIn {
+          scene = PokemonBag_Scene.new
+          screen = PokemonBagScreen.new(scene, $bag)
+          berry = screen.pbChooseItemScreen(choose == :plantberry ? proc { |item| GameData::Item.get(item).is_berry? } : 
+                                                                    proc { |item| GameData::Item.get(item).is_apricorn? })
+        }
+      end
       if berry
         $stats.berries_planted += 1
         berry_plant.plant(berry)
@@ -524,7 +575,7 @@ class ItemBerryPots_Scene
       end
     end
   end
-  
+
   def pbPickBerry(berry, qty = 1)
     berry = GameData::Item.get(berry)
     berry_name = (qty > 1) ? berry.name_plural : berry.name
@@ -558,7 +609,7 @@ class ItemBerryPots_Scene
     end
     return true
   end
-
+  
   def pbMessage(message,commands=nil,cmdIfCancel=0,skin=nil,defaultCmd=0,&block)
     ret = 0
     msgwindow = pbCreateMessageWindow(nil,skin)
@@ -592,6 +643,15 @@ class ItemBerryPots_Scene
     ret = false
     GameData::Item.each { |i| 
       next if !GameData::Item.get(i).is_berry?
+      ret = true if $bag.quantity(i)>0
+      break if ret
+    }
+    return ret
+  end
+  def hasApricorn
+    ret = false
+    GameData::Item.each { |i| 
+      next if !GameData::Item.get(i).is_apricorn?
       ret = true if $bag.quantity(i)>0
       break if ret
     }

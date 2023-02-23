@@ -8100,7 +8100,11 @@ Move Animation
 Trigger: Action Button
 
 List of Event Commands:
-@>Transfer Player:[185: Route 2], (027,014)
+@>Play SE: 'Exit Door', 80, 100
+@>Change Screen Color Tone: (-255,-255,-255,0), @6
+@>Wait: 8 frame(s)
+@>Transfer Player:[185: Route 2], (027,014), No Fade
+@>Change Screen Color Tone: (0,0,0,0), @6
 @>
 
 #------------------------------------------------------------------------------
@@ -21681,7 +21685,7 @@ List of Event Commands:
 #------------------------------------------------------------------------------
 Event ID: 033
 Event Name: EV033
-(X,Y): (034,032)
+(X,Y): (058,057)
 
 Page #1
 Conditions
@@ -21706,7 +21710,7 @@ List of Event Commands:
 #------------------------------------------------------------------------------
 Event ID: 034
 Event Name: EV034
-(X,Y): (032,036)
+(X,Y): (058,059)
 
 Page #1
 Conditions
@@ -53635,7 +53639,7 @@ Auto-Change BGM: U-003. A Dream that is more Scarlet than Red
 
 #------------------------------------------------------------------------------
 Event ID: 001
-Event Name: EV001
+Event Name: CKazami
 (X,Y): (014,017)
 
 Page #1
@@ -53703,7 +53707,7 @@ List of Event Commands:
  : Else
   @>Change Screen Color Tone: (-255,-255,-255,0), @6
   @>Wait: 8 frame(s)
-  @>Set Event Location: [EV001],(014,017), Down
+  @>Set Event Location: [CKazami],(014,017), Down
   @>Transfer Player:[186: Hidden Grove], (014,018), Up, No Fade
   @>Change Screen Color Tone: (0,0,0,0), @6
   @>
@@ -53782,9 +53786,10 @@ List of Event Commands:
   :              : $>Move Up
   :              : $>Move Up
  @>Wait for Move's Completion
+ @>Wait: 10 frame(s)
  @>Conditional Branch: Variable [0107: Chosen Protag] == 0
-  @>Text: \xn[???]You give off a very similar aura to someone I know... Curious
-   :    : indeed!
+  @>Text: \xn[???]Hmm, yes... You give off a very similar aura to someone 
+   :    : I know... Curious indeed!
   @>
  : Else
   @>Text: \xn[???]It's remarkable how similar you two look... Are you perhaps
@@ -53884,7 +53889,7 @@ List of Event Commands:
  : Else
   @>Change Screen Color Tone: (-255,-255,-255,0), @6
   @>Wait: 8 frame(s)
-  @>Set Event Location: [EV001],(014,017), Down
+  @>Set Event Location: [CKazami],(014,017), Down
   @>Transfer Player:[186: Hidden Grove], (014,018), Up, No Fade
   @>Change Screen Color Tone: (0,0,0,0), @6
   @>
@@ -53963,9 +53968,10 @@ List of Event Commands:
   :              : $>Move Up
   :              : $>Move Up
  @>Wait for Move's Completion
+ @>Wait: 10 frame(s)
  @>Conditional Branch: Variable [0107: Chosen Protag] == 0
-  @>Text: \xn[???]You give off a very similar aura to someone I know... Curious
-   :    : indeed!
+  @>Text: \xn[???]Hmm, yes... You give off a very similar aura to someone 
+   :    : I know... Curious indeed!
   @>
  : Else
   @>Text: \xn[???]It's remarkable how similar you two look... Are you perhaps
@@ -107154,7 +107160,7 @@ List of Event Commands:
 #------------------------------------------------------------------------------
 Event ID: 005
 Event Name: EV005
-(X,Y): (025,006)
+(X,Y): (009,006)
 
 Page #1
 Conditions
@@ -149221,7 +149227,7 @@ List of Event Commands:
 #------------------------------------------------------------------------------
 Event ID: 008
 Event Name: SmashRock
-(X,Y): (050,020)
+(X,Y): (049,020)
 
 Page #1
 Conditions
@@ -149654,18 +149660,538 @@ List of Event Commands:
 @>
 
 #------------------------------------------------------------------------------
+Event ID: 023
+Event Name: Railing
+(X,Y): (044,027)
+
+Page #1
+Conditions
+None
+
+Autonomous Movement
+Type: Fixed
+Speed: 3: Slow
+Freq: 3: Low
+Options Enabled
+Move Animation
+Trigger: Action Button
+
+List of Event Commands:
+@>
+
+#------------------------------------------------------------------------------
+Event ID: 024
+Event Name: Railing
+(X,Y): (043,027)
+
+Page #1
+Conditions
+None
+
+Autonomous Movement
+Type: Fixed
+Speed: 3: Slow
+Freq: 3: Low
+Options Enabled
+Move Animation
+Trigger: Action Button
+
+List of Event Commands:
+@>
+
+#------------------------------------------------------------------------------
+Event ID: 025
+Event Name: Railing
+(X,Y): (055,022)
+
+Page #1
+Conditions
+None
+
+Autonomous Movement
+Type: Fixed
+Speed: 3: Slow
+Freq: 3: Low
+Options Enabled
+Move Animation
+Trigger: Action Button
+
+List of Event Commands:
+@>
+
+#------------------------------------------------------------------------------
+Event ID: 026
+Event Name: Railing
+(X,Y): (056,022)
+
+Page #1
+Conditions
+None
+
+Autonomous Movement
+Type: Fixed
+Speed: 3: Slow
+Freq: 3: Low
+Options Enabled
+Move Animation
+Trigger: Action Button
+
+List of Event Commands:
+@>
+
+#------------------------------------------------------------------------------
+Event ID: 027
+Event Name: Railing
+(X,Y): (051,022)
+
+Page #1
+Conditions
+None
+
+Autonomous Movement
+Type: Fixed
+Speed: 3: Slow
+Freq: 3: Low
+Options Enabled
+Move Animation
+Trigger: Action Button
+
+List of Event Commands:
+@>
+
+#------------------------------------------------------------------------------
+Event ID: 028
+Event Name: Railing
+(X,Y): (052,022)
+
+Page #1
+Conditions
+None
+
+Autonomous Movement
+Type: Fixed
+Speed: 3: Slow
+Freq: 3: Low
+Options Enabled
+Move Animation
+Trigger: Action Button
+
+List of Event Commands:
+@>
+
+#------------------------------------------------------------------------------
+Event ID: 029
+Event Name: Railing
+(X,Y): (032,027)
+
+Page #1
+Conditions
+None
+
+Autonomous Movement
+Type: Fixed
+Speed: 3: Slow
+Freq: 3: Low
+Options Enabled
+Move Animation
+Trigger: Action Button
+
+List of Event Commands:
+@>
+
+#------------------------------------------------------------------------------
+Event ID: 030
+Event Name: Railing
+(X,Y): (033,027)
+
+Page #1
+Conditions
+None
+
+Autonomous Movement
+Type: Fixed
+Speed: 3: Slow
+Freq: 3: Low
+Options Enabled
+Move Animation
+Trigger: Action Button
+
+List of Event Commands:
+@>
+
+#------------------------------------------------------------------------------
+Event ID: 031
+Event Name: Rocket F (15)
+(X,Y): (016,037)
+
+Page #1
+Conditions
+None
+
+Autonomous Movement
+Type: Fixed
+Speed: 3: Slow
+Freq: 3: Low
+Options Enabled
+Move Animation
+Trigger: Action Button
+
+List of Event Commands:
+@>
+
+#------------------------------------------------------------------------------
+Event ID: 032
+Event Name: Rocket F (16)
+(X,Y): (037,009)
+
+Page #1
+Conditions
+None
+
+Autonomous Movement
+Type: Fixed
+Speed: 3: Slow
+Freq: 3: Low
+Options Enabled
+Move Animation
+Trigger: Action Button
+
+List of Event Commands:
+@>
+
+#------------------------------------------------------------------------------
+Event ID: 033
+Event Name: Rocket M (19)
+(X,Y): (037,013)
+
+Page #1
+Conditions
+None
+
+Autonomous Movement
+Type: Fixed
+Speed: 3: Slow
+Freq: 3: Low
+Options Enabled
+Move Animation
+Trigger: Action Button
+
+List of Event Commands:
+@>
+
+#------------------------------------------------------------------------------
+Event ID: 034
+Event Name: Rocket M (18)
+(X,Y): (045,013)
+
+Page #1
+Conditions
+None
+
+Autonomous Movement
+Type: Fixed
+Speed: 3: Slow
+Freq: 3: Low
+Options Enabled
+Move Animation
+Trigger: Action Button
+
+List of Event Commands:
+@>
+
+#------------------------------------------------------------------------------
+Event ID: 035
+Event Name: Rocket F (17)
+(X,Y): (060,019)
+
+Page #1
+Conditions
+None
+
+Autonomous Movement
+Type: Fixed
+Speed: 3: Slow
+Freq: 3: Low
+Options Enabled
+Move Animation
+Trigger: Action Button
+
+List of Event Commands:
+@>
+
+#------------------------------------------------------------------------------
+Event ID: 036
+Event Name: Rocket M (18)
+(X,Y): (055,036)
+
+Page #1
+Conditions
+None
+
+Autonomous Movement
+Type: Fixed
+Speed: 3: Slow
+Freq: 3: Low
+Options Enabled
+Move Animation
+Trigger: Action Button
+
+List of Event Commands:
+@>
+
+#------------------------------------------------------------------------------
 
 #==============================================================================
 Map ID: 346
 Map Name: Cinnabar Volcano
 Tileset: 006: Caves
-Width: 220, Height: 120
+Width: 112, Height: 120
 Auto-Change BGM: 038. Hellfire Mantle
 
 #------------------------------------------------------------------------------
-Event ID: 043
-Event Name: Item Ball
-(X,Y): (164,040)
+Event ID: 001
+Event Name: Railing
+(X,Y): (032,038)
+
+Page #1
+Conditions
+None
+
+Autonomous Movement
+Type: Fixed
+Speed: 3: Slow
+Freq: 3: Low
+Options Enabled
+Move Animation
+Trigger: Action Button
+
+List of Event Commands:
+@>
+
+#------------------------------------------------------------------------------
+Event ID: 002
+Event Name: Railing
+(X,Y): (033,038)
+
+Page #1
+Conditions
+None
+
+Autonomous Movement
+Type: Fixed
+Speed: 3: Slow
+Freq: 3: Low
+Options Enabled
+Move Animation
+Trigger: Action Button
+
+List of Event Commands:
+@>
+
+#------------------------------------------------------------------------------
+Event ID: 003
+Event Name: Railing
+(X,Y): (046,038)
+
+Page #1
+Conditions
+None
+
+Autonomous Movement
+Type: Fixed
+Speed: 3: Slow
+Freq: 3: Low
+Options Enabled
+Move Animation
+Trigger: Action Button
+
+List of Event Commands:
+@>
+
+#------------------------------------------------------------------------------
+Event ID: 004
+Event Name: Railing
+(X,Y): (047,038)
+
+Page #1
+Conditions
+None
+
+Autonomous Movement
+Type: Fixed
+Speed: 3: Slow
+Freq: 3: Low
+Options Enabled
+Move Animation
+Trigger: Action Button
+
+List of Event Commands:
+@>
+
+#------------------------------------------------------------------------------
+Event ID: 005
+Event Name: Railing
+(X,Y): (029,067)
+
+Page #1
+Conditions
+None
+
+Autonomous Movement
+Type: Fixed
+Speed: 3: Slow
+Freq: 3: Low
+Options Enabled
+Move Animation
+Trigger: Action Button
+
+List of Event Commands:
+@>
+
+#------------------------------------------------------------------------------
+Event ID: 006
+Event Name: Railing
+(X,Y): (030,067)
+
+Page #1
+Conditions
+None
+
+Autonomous Movement
+Type: Fixed
+Speed: 3: Slow
+Freq: 3: Low
+Options Enabled
+Move Animation
+Trigger: Action Button
+
+List of Event Commands:
+@>
+
+#------------------------------------------------------------------------------
+Event ID: 007
+Event Name: Railing
+(X,Y): (045,067)
+
+Page #1
+Conditions
+None
+
+Autonomous Movement
+Type: Fixed
+Speed: 3: Slow
+Freq: 3: Low
+Options Enabled
+Move Animation
+Trigger: Action Button
+
+List of Event Commands:
+@>
+
+#------------------------------------------------------------------------------
+Event ID: 008
+Event Name: Railing
+(X,Y): (044,067)
+
+Page #1
+Conditions
+None
+
+Autonomous Movement
+Type: Fixed
+Speed: 3: Slow
+Freq: 3: Low
+Options Enabled
+Move Animation
+Trigger: Action Button
+
+List of Event Commands:
+@>
+
+#------------------------------------------------------------------------------
+Event ID: 009
+Event Name: Railing
+(X,Y): (029,072)
+
+Page #1
+Conditions
+None
+
+Autonomous Movement
+Type: Fixed
+Speed: 3: Slow
+Freq: 3: Low
+Options Enabled
+Move Animation
+Trigger: Action Button
+
+List of Event Commands:
+@>
+
+#------------------------------------------------------------------------------
+Event ID: 010
+Event Name: Railing
+(X,Y): (030,072)
+
+Page #1
+Conditions
+None
+
+Autonomous Movement
+Type: Fixed
+Speed: 3: Slow
+Freq: 3: Low
+Options Enabled
+Move Animation
+Trigger: Action Button
+
+List of Event Commands:
+@>
+
+#------------------------------------------------------------------------------
+Event ID: 011
+Event Name: Railing
+(X,Y): (044,072)
+
+Page #1
+Conditions
+None
+
+Autonomous Movement
+Type: Fixed
+Speed: 3: Slow
+Freq: 3: Low
+Options Enabled
+Move Animation
+Trigger: Action Button
+
+List of Event Commands:
+@>
+
+#------------------------------------------------------------------------------
+Event ID: 012
+Event Name: Railing
+(X,Y): (045,072)
+
+Page #1
+Conditions
+None
+
+Autonomous Movement
+Type: Fixed
+Speed: 3: Slow
+Freq: 3: Low
+Options Enabled
+Move Animation
+Trigger: Action Button
+
+List of Event Commands:
+@>
+
+#------------------------------------------------------------------------------
+Event ID: 013
+Event Name: Item
+(X,Y): (043,050)
 
 Page #1
 Conditions
@@ -149682,7 +150208,7 @@ Move Animation
 Trigger: Action Button
 
 List of Event Commands:
-@>Conditional Branch: Script: pbItemBall(PBItems::NUGGET)
+@>Conditional Branch: Script: pbItemBall(:TM50)
  @>Control Self Switch: A =ON
  @>
 : Else
@@ -149706,43 +150232,9 @@ List of Event Commands:
 @>
 
 #------------------------------------------------------------------------------
-
-#==============================================================================
-Map ID: 347
-Map Name: Cinnabar Volcano
-Tileset: 006: Caves
-Width: 70, Height: 52
-Auto-Change BGM: 038. Hellfire Mantle
-
-#------------------------------------------------------------------------------
-Event ID: 001
-Event Name: EV001
-(X,Y): (014,017)
-
-Page #1
-Conditions
-None
-
-Autonomous Movement
-Type: Fixed
-Speed: 3: Slow
-Freq: 3: Low
-Options Enabled
-Move Animation
-Trigger: Player Touch
-
-List of Event Commands:
-@>Play SE: 'Exit Door', 80, 100
-@>Change Screen Color Tone: (-255,-255,-255,0), @6
-@>Wait: 8 frame(s)
-@>Transfer Player:[084: Cinnabar Volcano (Entry)], (044,012), No Fade
-@>Change Screen Color Tone: (0,0,0,0), @6
-@>
-
-#------------------------------------------------------------------------------
-Event ID: 002
+Event ID: 014
 Event Name: HiddenItem
-(X,Y): (038,010)
+(X,Y): (008,015)
 
 Page #1
 Conditions
@@ -149757,7 +150249,1187 @@ Move Animation
 Trigger: Action Button
 
 List of Event Commands:
-@>Conditional Branch: Script: pbItemBall(:XATTACK)
+@>Conditional Branch: Script: pbItemBall(:SWIFTSHARD)
+ @>Control Self Switch: A =ON
+ @>
+: Else
+ @>
+: Branch End
+@>
+
+Page #2
+Conditions
+Self Switch A is ON
+
+Autonomous Movement
+Type: Fixed
+Speed: 3: Slow
+Freq: 3: Low
+Options Enabled
+Move Animation
+Trigger: Action Button
+
+List of Event Commands:
+@>
+
+#------------------------------------------------------------------------------
+Event ID: 015
+Event Name: Item
+(X,Y): (019,023)
+
+Page #1
+Conditions
+None
+
+Graphic: Object ball
+
+Autonomous Movement
+Type: Fixed
+Speed: 3: Slow
+Freq: 3: Low
+Options Enabled
+Move Animation
+Trigger: Action Button
+
+List of Event Commands:
+@>Conditional Branch: Script: pbItemBall(:FIRESTONE)
+ @>Control Self Switch: A =ON
+ @>
+: Else
+ @>
+: Branch End
+@>
+
+Page #2
+Conditions
+Self Switch A is ON
+
+Autonomous Movement
+Type: Fixed
+Speed: 3: Slow
+Freq: 3: Low
+Options Enabled
+Move Animation
+Trigger: Action Button
+
+List of Event Commands:
+@>
+
+#------------------------------------------------------------------------------
+Event ID: 016
+Event Name: Item
+(X,Y): (054,020)
+
+Page #1
+Conditions
+None
+
+Graphic: Object ball
+
+Autonomous Movement
+Type: Fixed
+Speed: 3: Slow
+Freq: 3: Low
+Options Enabled
+Move Animation
+Trigger: Action Button
+
+List of Event Commands:
+@>Conditional Branch: Script: pbItemBall(:NUGGET)
+ @>Control Self Switch: A =ON
+ @>
+: Else
+ @>
+: Branch End
+@>
+
+Page #2
+Conditions
+Self Switch A is ON
+
+Autonomous Movement
+Type: Fixed
+Speed: 3: Slow
+Freq: 3: Low
+Options Enabled
+Move Animation
+Trigger: Action Button
+
+List of Event Commands:
+@>
+
+#------------------------------------------------------------------------------
+Event ID: 017
+Event Name: Item
+(X,Y): (023,041)
+
+Page #1
+Conditions
+None
+
+Graphic: Object ball
+
+Autonomous Movement
+Type: Fixed
+Speed: 3: Slow
+Freq: 3: Low
+Options Enabled
+Move Animation
+Trigger: Action Button
+
+List of Event Commands:
+@>Conditional Branch: Script: pbItemBall(:FULLHEAL)
+ @>Control Self Switch: A =ON
+ @>
+: Else
+ @>
+: Branch End
+@>
+
+Page #2
+Conditions
+Self Switch A is ON
+
+Autonomous Movement
+Type: Fixed
+Speed: 3: Slow
+Freq: 3: Low
+Options Enabled
+Move Animation
+Trigger: Action Button
+
+List of Event Commands:
+@>
+
+#------------------------------------------------------------------------------
+Event ID: 018
+Event Name: Item
+(X,Y): (059,062)
+
+Page #1
+Conditions
+None
+
+Graphic: Object ball
+
+Autonomous Movement
+Type: Fixed
+Speed: 3: Slow
+Freq: 3: Low
+Options Enabled
+Move Animation
+Trigger: Action Button
+
+List of Event Commands:
+@>Conditional Branch: Script: pbItemBall(:MAXPOTION)
+ @>Control Self Switch: A =ON
+ @>
+: Else
+ @>
+: Branch End
+@>
+
+Page #2
+Conditions
+Self Switch A is ON
+
+Autonomous Movement
+Type: Fixed
+Speed: 3: Slow
+Freq: 3: Low
+Options Enabled
+Move Animation
+Trigger: Action Button
+
+List of Event Commands:
+@>
+
+#------------------------------------------------------------------------------
+Event ID: 019
+Event Name: HiddenItem
+(X,Y): (060,033)
+
+Page #1
+Conditions
+None
+
+Autonomous Movement
+Type: Fixed
+Speed: 3: Slow
+Freq: 3: Low
+Options Enabled
+Move Animation
+Trigger: Action Button
+
+List of Event Commands:
+@>Conditional Branch: Script: pbItemBall(:CHARCOAL)
+ @>Control Self Switch: A =ON
+ @>
+: Else
+ @>
+: Branch End
+@>
+
+Page #2
+Conditions
+Self Switch A is ON
+
+Autonomous Movement
+Type: Fixed
+Speed: 3: Slow
+Freq: 3: Low
+Options Enabled
+Move Animation
+Trigger: Action Button
+
+List of Event Commands:
+@>
+
+#------------------------------------------------------------------------------
+Event ID: 020
+Event Name: Item
+(X,Y): (011,069)
+
+Page #1
+Conditions
+None
+
+Graphic: Object ball
+
+Autonomous Movement
+Type: Fixed
+Speed: 3: Slow
+Freq: 3: Low
+Options Enabled
+Move Animation
+Trigger: Action Button
+
+List of Event Commands:
+@>Conditional Branch: Script: pbItemBall(:SC31)
+ @>Control Self Switch: A =ON
+ @>
+: Else
+ @>
+: Branch End
+@>
+
+Page #2
+Conditions
+Self Switch A is ON
+
+Autonomous Movement
+Type: Fixed
+Speed: 3: Slow
+Freq: 3: Low
+Options Enabled
+Move Animation
+Trigger: Action Button
+
+List of Event Commands:
+@>
+
+#------------------------------------------------------------------------------
+Event ID: 021
+Event Name: Rocket Grunt M (20)
+(X,Y): (026,017)
+
+Page #1
+Conditions
+None
+
+Autonomous Movement
+Type: Fixed
+Speed: 3: Slow
+Freq: 3: Low
+Options Enabled
+Move Animation
+Trigger: Action Button
+
+List of Event Commands:
+@>
+
+#------------------------------------------------------------------------------
+Event ID: 022
+Event Name: Rocket Grunt F (19)
+(X,Y): (050,031)
+
+Page #1
+Conditions
+None
+
+Autonomous Movement
+Type: Fixed
+Speed: 3: Slow
+Freq: 3: Low
+Options Enabled
+Move Animation
+Trigger: Action Button
+
+List of Event Commands:
+@>
+
+#------------------------------------------------------------------------------
+Event ID: 023
+Event Name: Rocket Grunt F (20)
+(X,Y): (053,065)
+
+Page #1
+Conditions
+None
+
+Autonomous Movement
+Type: Fixed
+Speed: 3: Slow
+Freq: 3: Low
+Options Enabled
+Move Animation
+Trigger: Action Button
+
+List of Event Commands:
+@>
+
+#------------------------------------------------------------------------------
+Event ID: 024
+Event Name: Rocket M (21)
+(X,Y): (016,060)
+
+Page #1
+Conditions
+None
+
+Autonomous Movement
+Type: Fixed
+Speed: 3: Slow
+Freq: 3: Low
+Options Enabled
+Move Animation
+Trigger: Action Button
+
+List of Event Commands:
+@>
+
+#------------------------------------------------------------------------------
+Event ID: 025
+Event Name: Rocket F (21)
+(X,Y): (020,060)
+
+Page #1
+Conditions
+None
+
+Autonomous Movement
+Type: Fixed
+Speed: 3: Slow
+Freq: 3: Low
+Options Enabled
+Move Animation
+Trigger: Action Button
+
+List of Event Commands:
+@>
+
+#------------------------------------------------------------------------------
+Event ID: 026
+Event Name: SmashRock
+(X,Y): (046,016)
+
+Page #1
+Conditions
+None
+
+Graphic: Object rock
+
+Autonomous Movement
+Type: Fixed
+Speed: 3: Slow
+Freq: 3: Low
+Options Enabled
+Move Animation
+Trigger: Action Button
+
+List of Event Commands:
+@>Set Move Route: This event
+ :              : $>Turn Down
+@>Conditional Branch: Script: pbRockSmash
+ @>Script: pbSmashThisEvent
+ @>Script: pbRockSmashRandomEncounter
+ @>
+: Branch End
+@>
+
+#------------------------------------------------------------------------------
+Event ID: 027
+Event Name: SmashRock
+(X,Y): (016,008)
+
+Page #1
+Conditions
+None
+
+Graphic: Object rock
+
+Autonomous Movement
+Type: Fixed
+Speed: 3: Slow
+Freq: 3: Low
+Options Enabled
+Move Animation
+Trigger: Action Button
+
+List of Event Commands:
+@>Set Move Route: This event
+ :              : $>Turn Down
+@>Conditional Branch: Script: pbRockSmash
+ @>Script: pbSmashThisEvent
+ @>Script: pbRockSmashRandomEncounter
+ @>
+: Branch End
+@>
+
+#------------------------------------------------------------------------------
+Event ID: 028
+Event Name: SmashRock
+(X,Y): (013,020)
+
+Page #1
+Conditions
+None
+
+Graphic: Object rock
+
+Autonomous Movement
+Type: Fixed
+Speed: 3: Slow
+Freq: 3: Low
+Options Enabled
+Move Animation
+Trigger: Action Button
+
+List of Event Commands:
+@>Set Move Route: This event
+ :              : $>Turn Down
+@>Conditional Branch: Script: pbRockSmash
+ @>Script: pbSmashThisEvent
+ @>Script: pbRockSmashRandomEncounter
+ @>
+: Branch End
+@>
+
+#------------------------------------------------------------------------------
+Event ID: 029
+Event Name: SmashRock
+(X,Y): (035,013)
+
+Page #1
+Conditions
+None
+
+Graphic: Object rock
+
+Autonomous Movement
+Type: Fixed
+Speed: 3: Slow
+Freq: 3: Low
+Options Enabled
+Move Animation
+Trigger: Action Button
+
+List of Event Commands:
+@>Set Move Route: This event
+ :              : $>Turn Down
+@>Conditional Branch: Script: pbRockSmash
+ @>Script: pbSmashThisEvent
+ @>Script: pbRockSmashRandomEncounter
+ @>
+: Branch End
+@>
+
+#------------------------------------------------------------------------------
+Event ID: 030
+Event Name: SmashRock
+(X,Y): (055,021)
+
+Page #1
+Conditions
+None
+
+Graphic: Object rock
+
+Autonomous Movement
+Type: Fixed
+Speed: 3: Slow
+Freq: 3: Low
+Options Enabled
+Move Animation
+Trigger: Action Button
+
+List of Event Commands:
+@>Set Move Route: This event
+ :              : $>Turn Down
+@>Conditional Branch: Script: pbRockSmash
+ @>Script: pbSmashThisEvent
+ @>Script: pbRockSmashRandomEncounter
+ @>
+: Branch End
+@>
+
+#------------------------------------------------------------------------------
+Event ID: 031
+Event Name: SmashRock
+(X,Y): (058,035)
+
+Page #1
+Conditions
+None
+
+Graphic: Object rock
+
+Autonomous Movement
+Type: Fixed
+Speed: 3: Slow
+Freq: 3: Low
+Options Enabled
+Move Animation
+Trigger: Action Button
+
+List of Event Commands:
+@>Set Move Route: This event
+ :              : $>Turn Down
+@>Conditional Branch: Script: pbRockSmash
+ @>Script: pbSmashThisEvent
+ @>Script: pbRockSmashRandomEncounter
+ @>
+: Branch End
+@>
+
+#------------------------------------------------------------------------------
+Event ID: 032
+Event Name: SmashRock
+(X,Y): (049,033)
+
+Page #1
+Conditions
+None
+
+Graphic: Object rock
+
+Autonomous Movement
+Type: Fixed
+Speed: 3: Slow
+Freq: 3: Low
+Options Enabled
+Move Animation
+Trigger: Action Button
+
+List of Event Commands:
+@>Set Move Route: This event
+ :              : $>Turn Down
+@>Conditional Branch: Script: pbRockSmash
+ @>Script: pbSmashThisEvent
+ @>Script: pbRockSmashRandomEncounter
+ @>
+: Branch End
+@>
+
+#------------------------------------------------------------------------------
+Event ID: 033
+Event Name: SmashRock
+(X,Y): (056,041)
+
+Page #1
+Conditions
+None
+
+Graphic: Object rock
+
+Autonomous Movement
+Type: Fixed
+Speed: 3: Slow
+Freq: 3: Low
+Options Enabled
+Move Animation
+Trigger: Action Button
+
+List of Event Commands:
+@>Set Move Route: This event
+ :              : $>Turn Down
+@>Conditional Branch: Script: pbRockSmash
+ @>Script: pbSmashThisEvent
+ @>Script: pbRockSmashRandomEncounter
+ @>
+: Branch End
+@>
+
+#------------------------------------------------------------------------------
+Event ID: 034
+Event Name: SmashRock
+(X,Y): (061,043)
+
+Page #1
+Conditions
+None
+
+Graphic: Object rock
+
+Autonomous Movement
+Type: Fixed
+Speed: 3: Slow
+Freq: 3: Low
+Options Enabled
+Move Animation
+Trigger: Action Button
+
+List of Event Commands:
+@>Set Move Route: This event
+ :              : $>Turn Down
+@>Conditional Branch: Script: pbRockSmash
+ @>Script: pbSmashThisEvent
+ @>Script: pbRockSmashRandomEncounter
+ @>
+: Branch End
+@>
+
+#------------------------------------------------------------------------------
+Event ID: 035
+Event Name: SmashRock
+(X,Y): (022,037)
+
+Page #1
+Conditions
+None
+
+Graphic: Object rock
+
+Autonomous Movement
+Type: Fixed
+Speed: 3: Slow
+Freq: 3: Low
+Options Enabled
+Move Animation
+Trigger: Action Button
+
+List of Event Commands:
+@>Set Move Route: This event
+ :              : $>Turn Down
+@>Conditional Branch: Script: pbRockSmash
+ @>Script: pbSmashThisEvent
+ @>Script: pbRockSmashRandomEncounter
+ @>
+: Branch End
+@>
+
+#------------------------------------------------------------------------------
+Event ID: 036
+Event Name: SmashRock
+(X,Y): (028,039)
+
+Page #1
+Conditions
+None
+
+Graphic: Object rock
+
+Autonomous Movement
+Type: Fixed
+Speed: 3: Slow
+Freq: 3: Low
+Options Enabled
+Move Animation
+Trigger: Action Button
+
+List of Event Commands:
+@>Set Move Route: This event
+ :              : $>Turn Down
+@>Conditional Branch: Script: pbRockSmash
+ @>Script: pbSmashThisEvent
+ @>Script: pbRockSmashRandomEncounter
+ @>
+: Branch End
+@>
+
+#------------------------------------------------------------------------------
+Event ID: 037
+Event Name: SmashRock
+(X,Y): (027,042)
+
+Page #1
+Conditions
+None
+
+Graphic: Object rock
+
+Autonomous Movement
+Type: Fixed
+Speed: 3: Slow
+Freq: 3: Low
+Options Enabled
+Move Animation
+Trigger: Action Button
+
+List of Event Commands:
+@>Set Move Route: This event
+ :              : $>Turn Down
+@>Conditional Branch: Script: pbRockSmash
+ @>Script: pbSmashThisEvent
+ @>Script: pbRockSmashRandomEncounter
+ @>
+: Branch End
+@>
+
+#------------------------------------------------------------------------------
+Event ID: 038
+Event Name: SmashRock
+(X,Y): (040,050)
+
+Page #1
+Conditions
+None
+
+Graphic: Object rock
+
+Autonomous Movement
+Type: Fixed
+Speed: 3: Slow
+Freq: 3: Low
+Options Enabled
+Move Animation
+Trigger: Action Button
+
+List of Event Commands:
+@>Set Move Route: This event
+ :              : $>Turn Down
+@>Conditional Branch: Script: pbRockSmash
+ @>Script: pbSmashThisEvent
+ @>Script: pbRockSmashRandomEncounter
+ @>
+: Branch End
+@>
+
+#------------------------------------------------------------------------------
+Event ID: 039
+Event Name: SmashRock
+(X,Y): (046,048)
+
+Page #1
+Conditions
+None
+
+Graphic: Object rock
+
+Autonomous Movement
+Type: Fixed
+Speed: 3: Slow
+Freq: 3: Low
+Options Enabled
+Move Animation
+Trigger: Action Button
+
+List of Event Commands:
+@>Set Move Route: This event
+ :              : $>Turn Down
+@>Conditional Branch: Script: pbRockSmash
+ @>Script: pbSmashThisEvent
+ @>Script: pbRockSmashRandomEncounter
+ @>
+: Branch End
+@>
+
+#------------------------------------------------------------------------------
+Event ID: 040
+Event Name: SmashRock
+(X,Y): (042,054)
+
+Page #1
+Conditions
+None
+
+Graphic: Object rock
+
+Autonomous Movement
+Type: Fixed
+Speed: 3: Slow
+Freq: 3: Low
+Options Enabled
+Move Animation
+Trigger: Action Button
+
+List of Event Commands:
+@>Set Move Route: This event
+ :              : $>Turn Down
+@>Conditional Branch: Script: pbRockSmash
+ @>Script: pbSmashThisEvent
+ @>Script: pbRockSmashRandomEncounter
+ @>
+: Branch End
+@>
+
+#------------------------------------------------------------------------------
+Event ID: 041
+Event Name: SmashRock
+(X,Y): (053,060)
+
+Page #1
+Conditions
+None
+
+Graphic: Object rock
+
+Autonomous Movement
+Type: Fixed
+Speed: 3: Slow
+Freq: 3: Low
+Options Enabled
+Move Animation
+Trigger: Action Button
+
+List of Event Commands:
+@>Set Move Route: This event
+ :              : $>Turn Down
+@>Conditional Branch: Script: pbRockSmash
+ @>Script: pbSmashThisEvent
+ @>Script: pbRockSmashRandomEncounter
+ @>
+: Branch End
+@>
+
+#------------------------------------------------------------------------------
+Event ID: 042
+Event Name: SmashRock
+(X,Y): (058,058)
+
+Page #1
+Conditions
+None
+
+Graphic: Object rock
+
+Autonomous Movement
+Type: Fixed
+Speed: 3: Slow
+Freq: 3: Low
+Options Enabled
+Move Animation
+Trigger: Action Button
+
+List of Event Commands:
+@>Set Move Route: This event
+ :              : $>Turn Down
+@>Conditional Branch: Script: pbRockSmash
+ @>Script: pbSmashThisEvent
+ @>Script: pbRockSmashRandomEncounter
+ @>
+: Branch End
+@>
+
+#------------------------------------------------------------------------------
+Event ID: 043
+Event Name: SmashRock
+(X,Y): (047,065)
+
+Page #1
+Conditions
+None
+
+Graphic: Object rock
+
+Autonomous Movement
+Type: Fixed
+Speed: 3: Slow
+Freq: 3: Low
+Options Enabled
+Move Animation
+Trigger: Action Button
+
+List of Event Commands:
+@>Set Move Route: This event
+ :              : $>Turn Down
+@>Conditional Branch: Script: pbRockSmash
+ @>Script: pbSmashThisEvent
+ @>Script: pbRockSmashRandomEncounter
+ @>
+: Branch End
+@>
+
+#------------------------------------------------------------------------------
+Event ID: 044
+Event Name: SmashRock
+(X,Y): (049,073)
+
+Page #1
+Conditions
+None
+
+Graphic: Object rock
+
+Autonomous Movement
+Type: Fixed
+Speed: 3: Slow
+Freq: 3: Low
+Options Enabled
+Move Animation
+Trigger: Action Button
+
+List of Event Commands:
+@>Set Move Route: This event
+ :              : $>Turn Down
+@>Conditional Branch: Script: pbRockSmash
+ @>Script: pbSmashThisEvent
+ @>Script: pbRockSmashRandomEncounter
+ @>
+: Branch End
+@>
+
+#------------------------------------------------------------------------------
+Event ID: 045
+Event Name: SmashRock
+(X,Y): (025,075)
+
+Page #1
+Conditions
+None
+
+Graphic: Object rock
+
+Autonomous Movement
+Type: Fixed
+Speed: 3: Slow
+Freq: 3: Low
+Options Enabled
+Move Animation
+Trigger: Action Button
+
+List of Event Commands:
+@>Set Move Route: This event
+ :              : $>Turn Down
+@>Conditional Branch: Script: pbRockSmash
+ @>Script: pbSmashThisEvent
+ @>Script: pbRockSmashRandomEncounter
+ @>
+: Branch End
+@>
+
+#------------------------------------------------------------------------------
+Event ID: 046
+Event Name: SmashRock
+(X,Y): (028,069)
+
+Page #1
+Conditions
+None
+
+Graphic: Object rock
+
+Autonomous Movement
+Type: Fixed
+Speed: 3: Slow
+Freq: 3: Low
+Options Enabled
+Move Animation
+Trigger: Action Button
+
+List of Event Commands:
+@>Set Move Route: This event
+ :              : $>Turn Down
+@>Conditional Branch: Script: pbRockSmash
+ @>Script: pbSmashThisEvent
+ @>Script: pbRockSmashRandomEncounter
+ @>
+: Branch End
+@>
+
+#------------------------------------------------------------------------------
+Event ID: 047
+Event Name: SmashRock
+(X,Y): (012,066)
+
+Page #1
+Conditions
+None
+
+Graphic: Object rock
+
+Autonomous Movement
+Type: Fixed
+Speed: 3: Slow
+Freq: 3: Low
+Options Enabled
+Move Animation
+Trigger: Action Button
+
+List of Event Commands:
+@>Set Move Route: This event
+ :              : $>Turn Down
+@>Conditional Branch: Script: pbRockSmash
+ @>Script: pbSmashThisEvent
+ @>Script: pbRockSmashRandomEncounter
+ @>
+: Branch End
+@>
+
+#------------------------------------------------------------------------------
+Event ID: 048
+Event Name: SmashRock
+(X,Y): (013,073)
+
+Page #1
+Conditions
+None
+
+Graphic: Object rock
+
+Autonomous Movement
+Type: Fixed
+Speed: 3: Slow
+Freq: 3: Low
+Options Enabled
+Move Animation
+Trigger: Action Button
+
+List of Event Commands:
+@>Set Move Route: This event
+ :              : $>Turn Down
+@>Conditional Branch: Script: pbRockSmash
+ @>Script: pbSmashThisEvent
+ @>Script: pbRockSmashRandomEncounter
+ @>
+: Branch End
+@>
+
+#------------------------------------------------------------------------------
+Event ID: 049
+Event Name: SmashRock
+(X,Y): (020,064)
+
+Page #1
+Conditions
+None
+
+Graphic: Object rock
+
+Autonomous Movement
+Type: Fixed
+Speed: 3: Slow
+Freq: 3: Low
+Options Enabled
+Move Animation
+Trigger: Action Button
+
+List of Event Commands:
+@>Set Move Route: This event
+ :              : $>Turn Down
+@>Conditional Branch: Script: pbRockSmash
+ @>Script: pbSmashThisEvent
+ @>Script: pbRockSmashRandomEncounter
+ @>
+: Branch End
+@>
+
+#------------------------------------------------------------------------------
+Event ID: 050
+Event Name: SmashRock
+(X,Y): (021,057)
+
+Page #1
+Conditions
+None
+
+Graphic: Object rock
+
+Autonomous Movement
+Type: Fixed
+Speed: 3: Slow
+Freq: 3: Low
+Options Enabled
+Move Animation
+Trigger: Action Button
+
+List of Event Commands:
+@>Set Move Route: This event
+ :              : $>Turn Down
+@>Conditional Branch: Script: pbRockSmash
+ @>Script: pbSmashThisEvent
+ @>Script: pbRockSmashRandomEncounter
+ @>
+: Branch End
+@>
+
+#------------------------------------------------------------------------------
+Event ID: 051
+Event Name: SmashRock
+(X,Y): (030,061)
+
+Page #1
+Conditions
+None
+
+Graphic: Object rock
+
+Autonomous Movement
+Type: Fixed
+Speed: 3: Slow
+Freq: 3: Low
+Options Enabled
+Move Animation
+Trigger: Action Button
+
+List of Event Commands:
+@>Set Move Route: This event
+ :              : $>Turn Down
+@>Conditional Branch: Script: pbRockSmash
+ @>Script: pbSmashThisEvent
+ @>Script: pbRockSmashRandomEncounter
+ @>
+: Branch End
+@>
+
+#------------------------------------------------------------------------------
+
+#==============================================================================
+Map ID: 347
+Map Name: Cinnabar Volcano
+Tileset: 006: Caves
+Width: 70, Height: 100
+
+#------------------------------------------------------------------------------
+Event ID: 001
+Event Name: Rocket M (22)
+(X,Y): (030,013)
+
+Page #1
+Conditions
+None
+
+Autonomous Movement
+Type: Fixed
+Speed: 3: Slow
+Freq: 3: Low
+Options Enabled
+Move Animation
+Trigger: Action Button
+
+List of Event Commands:
+@>Comment: Moves at random within a 3x3 square
+@>
+
+#------------------------------------------------------------------------------
+Event ID: 002
+Event Name: HiddenItem
+(X,Y): (042,015)
+
+Page #1
+Conditions
+None
+
+Autonomous Movement
+Type: Fixed
+Speed: 3: Slow
+Freq: 3: Low
+Options Enabled
+Move Animation
+Trigger: Action Button
+
+List of Event Commands:
+@>Conditional Branch: Script: pbItemBall(:IRON)
  @>Control Self Switch: A =ON
  @>
 : Else
@@ -149782,12 +151454,14 @@ List of Event Commands:
 
 #------------------------------------------------------------------------------
 Event ID: 003
-Event Name: HiddenItem
-(X,Y): (026,025)
+Event Name: Item
+(X,Y): (047,021)
 
 Page #1
 Conditions
 None
+
+Graphic: Object ball
 
 Autonomous Movement
 Type: Fixed
@@ -149798,7 +151472,7 @@ Move Animation
 Trigger: Action Button
 
 List of Event Commands:
-@>Conditional Branch: Script: pbItemBall(:PEARL)
+@>Conditional Branch: Script: pbItemBall(:PPUP)
  @>Control Self Switch: A =ON
  @>
 : Else
@@ -149823,8 +151497,68 @@ List of Event Commands:
 
 #------------------------------------------------------------------------------
 Event ID: 004
-Event Name: TM Item Ball
-(X,Y): (029,027)
+Event Name: Rocket M (23)
+(X,Y): (019,023)
+
+Page #1
+Conditions
+None
+
+Autonomous Movement
+Type: Fixed
+Speed: 3: Slow
+Freq: 3: Low
+Options Enabled
+Move Animation
+Trigger: Action Button
+
+List of Event Commands:
+@>
+
+#------------------------------------------------------------------------------
+Event ID: 005
+Event Name: Rocket F (22)
+(X,Y): (023,023)
+
+Page #1
+Conditions
+None
+
+Autonomous Movement
+Type: Fixed
+Speed: 3: Slow
+Freq: 3: Low
+Options Enabled
+Move Animation
+Trigger: Action Button
+
+List of Event Commands:
+@>
+
+#------------------------------------------------------------------------------
+Event ID: 006
+Event Name: Rocket F (23)
+(X,Y): (042,033)
+
+Page #1
+Conditions
+None
+
+Autonomous Movement
+Type: Fixed
+Speed: 3: Slow
+Freq: 3: Low
+Options Enabled
+Move Animation
+Trigger: Action Button
+
+List of Event Commands:
+@>
+
+#------------------------------------------------------------------------------
+Event ID: 007
+Event Name: Item
+(X,Y): (056,034)
 
 Page #1
 Conditions
@@ -149841,8 +151575,7 @@ Move Animation
 Trigger: Action Button
 
 List of Event Commands:
-@>Comment: TM43 - Flame Charge
-@>Conditional Branch: Script: pbReceiveItem(:TM43)
+@>Conditional Branch: Script: pbItemBall(:ULTRABALL)
  @>Control Self Switch: A =ON
  @>
 : Else
@@ -149866,102 +151599,13 @@ List of Event Commands:
 @>
 
 #------------------------------------------------------------------------------
-Event ID: 005
-Event Name: SmashRock
-(X,Y): (027,027)
-
-Page #1
-Conditions
-None
-
-Graphic: Object rock
-
-Autonomous Movement
-Type: Fixed
-Speed: 3: Slow
-Freq: 3: Low
-Options Enabled
-Move Animation
-Trigger: Action Button
-
-List of Event Commands:
-@>Set Move Route: This event
- :              : $>Turn Down
-@>Conditional Branch: Script: pbRockSmash
- @>Script: pbSmashThisEvent
- @>Script: pbRockSmashRandomEncounter
- @>
-: Branch End
-@>
-
-#------------------------------------------------------------------------------
-Event ID: 006
-Event Name: SmashRock
-(X,Y): (030,025)
-
-Page #1
-Conditions
-None
-
-Graphic: Object rock
-
-Autonomous Movement
-Type: Fixed
-Speed: 3: Slow
-Freq: 3: Low
-Options Enabled
-Move Animation
-Trigger: Action Button
-
-List of Event Commands:
-@>Set Move Route: This event
- :              : $>Turn Down
-@>Conditional Branch: Script: pbRockSmash
- @>Script: pbSmashThisEvent
- @>Script: pbRockSmashRandomEncounter
- @>
-: Branch End
-@>
-
-#------------------------------------------------------------------------------
-Event ID: 007
-Event Name: SmashRock
-(X,Y): (045,022)
-
-Page #1
-Conditions
-None
-
-Graphic: Object rock
-
-Autonomous Movement
-Type: Fixed
-Speed: 3: Slow
-Freq: 3: Low
-Options Enabled
-Move Animation
-Trigger: Action Button
-
-List of Event Commands:
-@>Set Move Route: This event
- :              : $>Turn Down
-@>Conditional Branch: Script: pbRockSmash
- @>Script: pbSmashThisEvent
- @>Script: pbRockSmashRandomEncounter
- @>
-: Branch End
-@>
-
-#------------------------------------------------------------------------------
 Event ID: 008
-Event Name: SmashRock
-(X,Y): (050,020)
+Event Name: Rocket F (24)
+(X,Y): (052,064)
 
 Page #1
 Conditions
 None
-
-Graphic: Object rock
 
 Autonomous Movement
 Type: Fixed
@@ -149972,25 +151616,16 @@ Move Animation
 Trigger: Action Button
 
 List of Event Commands:
-@>Set Move Route: This event
- :              : $>Turn Down
-@>Conditional Branch: Script: pbRockSmash
- @>Script: pbSmashThisEvent
- @>Script: pbRockSmashRandomEncounter
- @>
-: Branch End
 @>
 
 #------------------------------------------------------------------------------
 Event ID: 009
-Event Name: SmashRock
-(X,Y): (012,023)
+Event Name: Item
+(X,Y): (056,058)
 
 Page #1
 Conditions
 None
-
-Graphic: Object rock
 
 Autonomous Movement
 Type: Fixed
@@ -150001,25 +151636,17 @@ Move Animation
 Trigger: Action Button
 
 List of Event Commands:
-@>Set Move Route: This event
- :              : $>Turn Down
-@>Conditional Branch: Script: pbRockSmash
- @>Script: pbSmashThisEvent
- @>Script: pbRockSmashRandomEncounter
- @>
-: Branch End
+@>Comment: Red UFO
 @>
 
 #------------------------------------------------------------------------------
 Event ID: 010
-Event Name: SmashRock
-(X,Y): (009,027)
+Event Name: Rocket M (24)
+(X,Y): (018,070)
 
 Page #1
 Conditions
 None
-
-Graphic: Object rock
 
 Autonomous Movement
 Type: Fixed
@@ -150030,25 +151657,16 @@ Move Animation
 Trigger: Action Button
 
 List of Event Commands:
-@>Set Move Route: This event
- :              : $>Turn Down
-@>Conditional Branch: Script: pbRockSmash
- @>Script: pbSmashThisEvent
- @>Script: pbRockSmashRandomEncounter
- @>
-: Branch End
 @>
 
 #------------------------------------------------------------------------------
 Event ID: 011
-Event Name: SmashRock
-(X,Y): (036,009)
+Event Name: Rocket F (25)
+(X,Y): (042,050)
 
 Page #1
 Conditions
 None
-
-Graphic: Object rock
 
 Autonomous Movement
 Type: Fixed
@@ -150059,25 +151677,18 @@ Move Animation
 Trigger: Action Button
 
 List of Event Commands:
-@>Set Move Route: This event
- :              : $>Turn Down
-@>Conditional Branch: Script: pbRockSmash
- @>Script: pbSmashThisEvent
- @>Script: pbRockSmashRandomEncounter
- @>
-: Branch End
 @>
 
 #------------------------------------------------------------------------------
 Event ID: 012
-Event Name: SmashRock
-(X,Y): (051,013)
+Event Name: Item
+(X,Y): (013,043)
 
 Page #1
 Conditions
 None
 
-Graphic: Object rock
+Graphic: Object ball
 
 Autonomous Movement
 Type: Fixed
@@ -150088,25 +151699,39 @@ Move Animation
 Trigger: Action Button
 
 List of Event Commands:
-@>Set Move Route: This event
- :              : $>Turn Down
-@>Conditional Branch: Script: pbRockSmash
- @>Script: pbSmashThisEvent
- @>Script: pbRockSmashRandomEncounter
+@>Conditional Branch: Script: pbItemBall(:SC34)
+ @>Control Self Switch: A =ON
+ @>
+: Else
  @>
 : Branch End
+@>
+
+Page #2
+Conditions
+Self Switch A is ON
+
+Autonomous Movement
+Type: Fixed
+Speed: 3: Slow
+Freq: 3: Low
+Options Enabled
+Move Animation
+Trigger: Action Button
+
+List of Event Commands:
 @>
 
 #------------------------------------------------------------------------------
 Event ID: 013
-Event Name: SmashRock
-(X,Y): (043,013)
+Event Name: Item
+(X,Y): (027,052)
 
 Page #1
 Conditions
 None
 
-Graphic: Object rock
+Graphic: Object ball
 
 Autonomous Movement
 Type: Fixed
@@ -150117,25 +151742,37 @@ Move Animation
 Trigger: Action Button
 
 List of Event Commands:
-@>Set Move Route: This event
- :              : $>Turn Down
-@>Conditional Branch: Script: pbRockSmash
- @>Script: pbSmashThisEvent
- @>Script: pbRockSmashRandomEncounter
+@>Conditional Branch: Script: pbItemBall(:RARECANDY)
+ @>Control Self Switch: A =ON
+ @>
+: Else
  @>
 : Branch End
+@>
+
+Page #2
+Conditions
+Self Switch A is ON
+
+Autonomous Movement
+Type: Fixed
+Speed: 3: Slow
+Freq: 3: Low
+Options Enabled
+Move Animation
+Trigger: Action Button
+
+List of Event Commands:
 @>
 
 #------------------------------------------------------------------------------
 Event ID: 014
-Event Name: SmashRock
-(X,Y): (054,016)
+Event Name: HiddenItem
+(X,Y): (034,037)
 
 Page #1
 Conditions
 None
-
-Graphic: Object rock
 
 Autonomous Movement
 Type: Fixed
@@ -150146,25 +151783,645 @@ Move Animation
 Trigger: Action Button
 
 List of Event Commands:
-@>Set Move Route: This event
- :              : $>Turn Down
-@>Conditional Branch: Script: pbRockSmash
- @>Script: pbSmashThisEvent
- @>Script: pbRockSmashRandomEncounter
+@>Conditional Branch: Script: pbItemBall(:FULLHEAL)
+ @>Control Self Switch: A =ON
+ @>
+: Else
  @>
 : Branch End
+@>
+
+Page #2
+Conditions
+Self Switch A is ON
+
+Autonomous Movement
+Type: Fixed
+Speed: 3: Slow
+Freq: 3: Low
+Options Enabled
+Move Animation
+Trigger: Action Button
+
+List of Event Commands:
+@>
+
+#------------------------------------------------------------------------------
+
+#==============================================================================
+Map ID: 348
+Map Name: Cinnabar Volcano
+Tileset: 006: Caves
+Width: 90, Height: 100
+
+#------------------------------------------------------------------------------
+Event ID: 001
+Event Name: Counter(4)
+(X,Y): (057,038)
+
+Page #1
+Conditions
+None
+
+Graphic: trainer_TEAMROCKET_M
+
+Autonomous Movement
+Type: Fixed
+Speed: 3: Slow
+Freq: 3: Low
+Options Enabled
+Move Animation
+Trigger: Event Touch
+
+List of Event Commands:
+@>Show Animation: This event, [Exclaim bubble]
+@>Set Move Route: This event
+                  (Ignore If Can't Move)
+ :              : $>Move toward Player
+ :              : $>Move toward Player
+ :              : $>Move toward Player
+@>Wait for Move's Completion
+@>Text: Hold on a minute, how did you get down here?
+@>Text: ..Wait... Aren't you...
+@>Wait: 5 frame(s)
+@>Text: ... Nope, I'm not touching this one. You can go get 
+ :    : trounced by the two ahead. I'm sure they'll be pleased!
+@>Text: Have fun getting wasted, runt!
+@>Control Self Switch: A =ON
+@>
+
+Page #2
+Conditions
+Self Switch A is ON
+
+Graphic: trainer_TEAMROCKET_M
+
+Autonomous Movement
+Type: Fixed
+Speed: 3: Slow
+Freq: 3: Low
+Options Enabled
+Move Animation
+Trigger: Action Button
+
+List of Event Commands:
+@>Text: Don't get me wrong, I could totally take you down!
+@>Text: I just... don't have any puppets available right now. Anything left
+ :    : would be defeated by you in a blink.
+@>Text: I used them all up trying to make my way down here, okay!?
+@>
+
+Page #3
+Conditions
+Switch 0134:  is ON
+
+Autonomous Movement
+Type: Fixed
+Speed: 3: Slow
+Freq: 3: Low
+Options Enabled
+Move Animation
+Trigger: Action Button
+
+List of Event Commands:
+@>
+
+#------------------------------------------------------------------------------
+Event ID: 002
+Event Name: Rocket F (26)
+(X,Y): (057,010)
+
+Page #1
+Conditions
+None
+
+Autonomous Movement
+Type: Fixed
+Speed: 3: Slow
+Freq: 3: Low
+Options Enabled
+Move Animation
+Trigger: Action Button
+
+List of Event Commands:
+@>
+
+#------------------------------------------------------------------------------
+Event ID: 003
+Event Name: Rocket F (27)
+(X,Y): (061,010)
+
+Page #1
+Conditions
+None
+
+Autonomous Movement
+Type: Fixed
+Speed: 3: Slow
+Freq: 3: Low
+Options Enabled
+Move Animation
+Trigger: Action Button
+
+List of Event Commands:
+@>
+
+#------------------------------------------------------------------------------
+Event ID: 004
+Event Name: Astra
+(X,Y): (016,019)
+
+Page #1
+Conditions
+None
+
+Autonomous Movement
+Type: Fixed
+Speed: 3: Slow
+Freq: 3: Low
+Options Enabled
+Move Animation
+Trigger: Action Button
+
+List of Event Commands:
+@>
+
+#------------------------------------------------------------------------------
+Event ID: 005
+Event Name: EV005
+(X,Y): (057,066)
+
+Page #1
+Conditions
+None
+
+Autonomous Movement
+Type: Fixed
+Speed: 3: Slow
+Freq: 3: Low
+Options Enabled
+Move Animation
+Trigger: Action Button
+
+List of Event Commands:
+@>Text: The text is a bit faded, but it's still readable.
+@>Text: \sign[signskin]\l[3]<ac>Cinnabar Island Gym\n<ac>Leader: Blaine\n<ac>"The Inferno Quiz Master!!"
+@>
+
+#------------------------------------------------------------------------------
+Event ID: 006
+Event Name: EV006
+(X,Y): (061,066)
+
+Page #1
+Conditions
+None
+
+Autonomous Movement
+Type: Fixed
+Speed: 3: Slow
+Freq: 3: Low
+Options Enabled
+Move Animation
+Trigger: Action Button
+
+List of Event Commands:
+@>Text: The text is a bit faded, but it's still readable.
+@>Text: \sign[signskin]\l[3]<ac>Cinnabar Island Gym\n<ac>Leader: Blaine\n<ac>"The Inferno Quiz Master!!"
+@>
+
+#------------------------------------------------------------------------------
+
+#==============================================================================
+Map ID: 349
+Map Name: Cinnabar Volcano
+Tileset: 006: Caves
+Width: 160, Height: 100
+
+#------------------------------------------------------------------------------
+Event ID: 001
+Event Name: Rocket M (22)
+(X,Y): (026,013)
+
+Page #1
+Conditions
+None
+
+Autonomous Movement
+Type: Fixed
+Speed: 3: Slow
+Freq: 3: Low
+Options Enabled
+Move Animation
+Trigger: Action Button
+
+List of Event Commands:
+@>Comment: Moves at random within a 3x3 square
+@>
+
+#------------------------------------------------------------------------------
+Event ID: 002
+Event Name: HiddenItem
+(X,Y): (038,015)
+
+Page #1
+Conditions
+None
+
+Autonomous Movement
+Type: Fixed
+Speed: 3: Slow
+Freq: 3: Low
+Options Enabled
+Move Animation
+Trigger: Action Button
+
+List of Event Commands:
+@>Conditional Branch: Script: pbItemBall(:IRON)
+ @>Control Self Switch: A =ON
+ @>
+: Else
+ @>
+: Branch End
+@>
+
+Page #2
+Conditions
+Self Switch A is ON
+
+Autonomous Movement
+Type: Fixed
+Speed: 3: Slow
+Freq: 3: Low
+Options Enabled
+Move Animation
+Trigger: Action Button
+
+List of Event Commands:
+@>
+
+#------------------------------------------------------------------------------
+Event ID: 003
+Event Name: Item
+(X,Y): (043,021)
+
+Page #1
+Conditions
+None
+
+Graphic: Object ball
+
+Autonomous Movement
+Type: Fixed
+Speed: 3: Slow
+Freq: 3: Low
+Options Enabled
+Move Animation
+Trigger: Action Button
+
+List of Event Commands:
+@>Conditional Branch: Script: pbItemBall(:PPUP)
+ @>Control Self Switch: A =ON
+ @>
+: Else
+ @>
+: Branch End
+@>
+
+Page #2
+Conditions
+Self Switch A is ON
+
+Autonomous Movement
+Type: Fixed
+Speed: 3: Slow
+Freq: 3: Low
+Options Enabled
+Move Animation
+Trigger: Action Button
+
+List of Event Commands:
+@>
+
+#------------------------------------------------------------------------------
+Event ID: 004
+Event Name: Rocket M (23)
+(X,Y): (015,023)
+
+Page #1
+Conditions
+None
+
+Autonomous Movement
+Type: Fixed
+Speed: 3: Slow
+Freq: 3: Low
+Options Enabled
+Move Animation
+Trigger: Action Button
+
+List of Event Commands:
+@>
+
+#------------------------------------------------------------------------------
+Event ID: 005
+Event Name: Rocket F (22)
+(X,Y): (019,023)
+
+Page #1
+Conditions
+None
+
+Autonomous Movement
+Type: Fixed
+Speed: 3: Slow
+Freq: 3: Low
+Options Enabled
+Move Animation
+Trigger: Action Button
+
+List of Event Commands:
+@>
+
+#------------------------------------------------------------------------------
+Event ID: 006
+Event Name: Rocket F (23)
+(X,Y): (038,033)
+
+Page #1
+Conditions
+None
+
+Autonomous Movement
+Type: Fixed
+Speed: 3: Slow
+Freq: 3: Low
+Options Enabled
+Move Animation
+Trigger: Action Button
+
+List of Event Commands:
+@>
+
+#------------------------------------------------------------------------------
+Event ID: 007
+Event Name: Item
+(X,Y): (052,034)
+
+Page #1
+Conditions
+None
+
+Graphic: Object ball
+
+Autonomous Movement
+Type: Fixed
+Speed: 3: Slow
+Freq: 3: Low
+Options Enabled
+Move Animation
+Trigger: Action Button
+
+List of Event Commands:
+@>Conditional Branch: Script: pbItemBall(:ULTRABALL)
+ @>Control Self Switch: A =ON
+ @>
+: Else
+ @>
+: Branch End
+@>
+
+Page #2
+Conditions
+Self Switch A is ON
+
+Autonomous Movement
+Type: Fixed
+Speed: 3: Slow
+Freq: 3: Low
+Options Enabled
+Move Animation
+Trigger: Action Button
+
+List of Event Commands:
+@>
+
+#------------------------------------------------------------------------------
+Event ID: 008
+Event Name: Rocket F (24)
+(X,Y): (048,064)
+
+Page #1
+Conditions
+None
+
+Autonomous Movement
+Type: Fixed
+Speed: 3: Slow
+Freq: 3: Low
+Options Enabled
+Move Animation
+Trigger: Action Button
+
+List of Event Commands:
+@>
+
+#------------------------------------------------------------------------------
+Event ID: 009
+Event Name: Item
+(X,Y): (052,058)
+
+Page #1
+Conditions
+None
+
+Autonomous Movement
+Type: Fixed
+Speed: 3: Slow
+Freq: 3: Low
+Options Enabled
+Move Animation
+Trigger: Action Button
+
+List of Event Commands:
+@>Comment: Red UFO
+@>
+
+#------------------------------------------------------------------------------
+Event ID: 010
+Event Name: Rocket M (24)
+(X,Y): (014,070)
+
+Page #1
+Conditions
+None
+
+Autonomous Movement
+Type: Fixed
+Speed: 3: Slow
+Freq: 3: Low
+Options Enabled
+Move Animation
+Trigger: Action Button
+
+List of Event Commands:
+@>
+
+#------------------------------------------------------------------------------
+Event ID: 011
+Event Name: Rocket F (25)
+(X,Y): (038,050)
+
+Page #1
+Conditions
+None
+
+Autonomous Movement
+Type: Fixed
+Speed: 3: Slow
+Freq: 3: Low
+Options Enabled
+Move Animation
+Trigger: Action Button
+
+List of Event Commands:
+@>
+
+#------------------------------------------------------------------------------
+Event ID: 012
+Event Name: Item
+(X,Y): (009,043)
+
+Page #1
+Conditions
+None
+
+Graphic: Object ball
+
+Autonomous Movement
+Type: Fixed
+Speed: 3: Slow
+Freq: 3: Low
+Options Enabled
+Move Animation
+Trigger: Action Button
+
+List of Event Commands:
+@>Conditional Branch: Script: pbItemBall(:SC34)
+ @>Control Self Switch: A =ON
+ @>
+: Else
+ @>
+: Branch End
+@>
+
+Page #2
+Conditions
+Self Switch A is ON
+
+Autonomous Movement
+Type: Fixed
+Speed: 3: Slow
+Freq: 3: Low
+Options Enabled
+Move Animation
+Trigger: Action Button
+
+List of Event Commands:
+@>
+
+#------------------------------------------------------------------------------
+Event ID: 013
+Event Name: Item
+(X,Y): (023,052)
+
+Page #1
+Conditions
+None
+
+Graphic: Object ball
+
+Autonomous Movement
+Type: Fixed
+Speed: 3: Slow
+Freq: 3: Low
+Options Enabled
+Move Animation
+Trigger: Action Button
+
+List of Event Commands:
+@>Conditional Branch: Script: pbItemBall(:RARECANDY)
+ @>Control Self Switch: A =ON
+ @>
+: Else
+ @>
+: Branch End
+@>
+
+Page #2
+Conditions
+Self Switch A is ON
+
+Autonomous Movement
+Type: Fixed
+Speed: 3: Slow
+Freq: 3: Low
+Options Enabled
+Move Animation
+Trigger: Action Button
+
+List of Event Commands:
+@>
+
+#------------------------------------------------------------------------------
+Event ID: 014
+Event Name: HiddenItem
+(X,Y): (030,037)
+
+Page #1
+Conditions
+None
+
+Autonomous Movement
+Type: Fixed
+Speed: 3: Slow
+Freq: 3: Low
+Options Enabled
+Move Animation
+Trigger: Action Button
+
+List of Event Commands:
+@>Conditional Branch: Script: pbItemBall(:FULLHEAL)
+ @>Control Self Switch: A =ON
+ @>
+: Else
+ @>
+: Branch End
+@>
+
+Page #2
+Conditions
+Self Switch A is ON
+
+Autonomous Movement
+Type: Fixed
+Speed: 3: Slow
+Freq: 3: Low
+Options Enabled
+Move Animation
+Trigger: Action Button
+
+List of Event Commands:
 @>
 
 #------------------------------------------------------------------------------
 Event ID: 015
-Event Name: SmashRock
-(X,Y): (058,025)
+Event Name: EV015
+(X,Y): (127,066)
 
 Page #1
 Conditions
 None
-
-Graphic: Object rock
 
 Autonomous Movement
 Type: Fixed
@@ -150175,25 +152432,18 @@ Move Animation
 Trigger: Action Button
 
 List of Event Commands:
-@>Set Move Route: This event
- :              : $>Turn Down
-@>Conditional Branch: Script: pbRockSmash
- @>Script: pbSmashThisEvent
- @>Script: pbRockSmashRandomEncounter
- @>
-: Branch End
+@>Text: The text is a bit faded, but it's still readable.
+@>Text: \sign[signskin]\l[3]<ac>Cinnabar Island Gym\n<ac>Leader: Blaine\n<ac>"The Inferno Quiz Master!!"
 @>
 
 #------------------------------------------------------------------------------
 Event ID: 016
-Event Name: SmashRock
-(X,Y): (060,018)
+Event Name: EV016
+(X,Y): (131,066)
 
 Page #1
 Conditions
 None
-
-Graphic: Object rock
 
 Autonomous Movement
 Type: Fixed
@@ -150204,25 +152454,51 @@ Move Animation
 Trigger: Action Button
 
 List of Event Commands:
-@>Set Move Route: This event
- :              : $>Turn Down
-@>Conditional Branch: Script: pbRockSmash
- @>Script: pbSmashThisEvent
- @>Script: pbRockSmashRandomEncounter
- @>
-: Branch End
+@>Text: The text is a bit faded, but it's still readable.
+@>Text: \sign[signskin]\l[3]<ac>Cinnabar Island Gym\n<ac>Leader: Blaine\n<ac>"The Inferno Quiz Master!!"
 @>
 
 #------------------------------------------------------------------------------
 Event ID: 017
-Event Name: SmashRock
-(X,Y): (056,033)
+Event Name: Counter(4)
+(X,Y): (127,038)
 
 Page #1
 Conditions
 None
 
-Graphic: Object rock
+Graphic: trainer_TEAMROCKET_M
+
+Autonomous Movement
+Type: Fixed
+Speed: 3: Slow
+Freq: 3: Low
+Options Enabled
+Move Animation
+Trigger: Event Touch
+
+List of Event Commands:
+@>Show Animation: This event, [Exclaim bubble]
+@>Set Move Route: This event
+                  (Ignore If Can't Move)
+ :              : $>Move toward Player
+ :              : $>Move toward Player
+ :              : $>Move toward Player
+@>Wait for Move's Completion
+@>Text: Hold on a minute, how did you get down here?
+@>Text: ..Wait... Aren't you...
+@>Wait: 5 frame(s)
+@>Text: ... Nope, I'm not touching this one. You can go get 
+ :    : trounced by the two ahead. I'm sure they'll be pleased!
+@>Text: Have fun getting wasted, runt!
+@>Control Self Switch: A =ON
+@>
+
+Page #2
+Conditions
+Self Switch A is ON
+
+Graphic: trainer_TEAMROCKET_M
 
 Autonomous Movement
 Type: Fixed
@@ -150233,25 +152509,35 @@ Move Animation
 Trigger: Action Button
 
 List of Event Commands:
-@>Set Move Route: This event
- :              : $>Turn Down
-@>Conditional Branch: Script: pbRockSmash
- @>Script: pbSmashThisEvent
- @>Script: pbRockSmashRandomEncounter
- @>
-: Branch End
+@>Text: Don't get me wrong, I could totally take you down!
+@>Text: I just... don't have any puppets available right now. Anything left
+ :    : would be defeated by you in a blink.
+@>Text: I used them all up trying to make my way down here, okay!?
+@>
+
+Page #3
+Conditions
+Switch 0134:  is ON
+
+Autonomous Movement
+Type: Fixed
+Speed: 3: Slow
+Freq: 3: Low
+Options Enabled
+Move Animation
+Trigger: Action Button
+
+List of Event Commands:
 @>
 
 #------------------------------------------------------------------------------
 Event ID: 018
-Event Name: SmashRock
-(X,Y): (034,043)
+Event Name: Rocket F (26)
+(X,Y): (127,010)
 
 Page #1
 Conditions
 None
-
-Graphic: Object rock
 
 Autonomous Movement
 Type: Fixed
@@ -150262,25 +152548,16 @@ Move Animation
 Trigger: Action Button
 
 List of Event Commands:
-@>Set Move Route: This event
- :              : $>Turn Down
-@>Conditional Branch: Script: pbRockSmash
- @>Script: pbSmashThisEvent
- @>Script: pbRockSmashRandomEncounter
- @>
-: Branch End
 @>
 
 #------------------------------------------------------------------------------
 Event ID: 019
-Event Name: SmashRock
-(X,Y): (033,043)
+Event Name: Rocket F (27)
+(X,Y): (131,010)
 
 Page #1
 Conditions
 None
-
-Graphic: Object rock
 
 Autonomous Movement
 Type: Fixed
@@ -150291,25 +152568,16 @@ Move Animation
 Trigger: Action Button
 
 List of Event Commands:
-@>Set Move Route: This event
- :              : $>Turn Down
-@>Conditional Branch: Script: pbRockSmash
- @>Script: pbSmashThisEvent
- @>Script: pbRockSmashRandomEncounter
- @>
-: Branch End
 @>
 
 #------------------------------------------------------------------------------
 Event ID: 020
-Event Name: SmashRock
-(X,Y): (023,040)
+Event Name: Astra
+(X,Y): (086,019)
 
 Page #1
 Conditions
 None
-
-Graphic: Object rock
 
 Autonomous Movement
 Type: Fixed
@@ -150320,71 +152588,6 @@ Move Animation
 Trigger: Action Button
 
 List of Event Commands:
-@>Set Move Route: This event
- :              : $>Turn Down
-@>Conditional Branch: Script: pbRockSmash
- @>Script: pbSmashThisEvent
- @>Script: pbRockSmashRandomEncounter
- @>
-: Branch End
-@>
-
-#------------------------------------------------------------------------------
-Event ID: 021
-Event Name: SmashRock
-(X,Y): (015,042)
-
-Page #1
-Conditions
-None
-
-Graphic: Object rock
-
-Autonomous Movement
-Type: Fixed
-Speed: 3: Slow
-Freq: 3: Low
-Options Enabled
-Move Animation
-Trigger: Action Button
-
-List of Event Commands:
-@>Set Move Route: This event
- :              : $>Turn Down
-@>Conditional Branch: Script: pbRockSmash
- @>Script: pbSmashThisEvent
- @>Script: pbRockSmashRandomEncounter
- @>
-: Branch End
-@>
-
-#------------------------------------------------------------------------------
-Event ID: 022
-Event Name: SmashRock
-(X,Y): (011,035)
-
-Page #1
-Conditions
-None
-
-Graphic: Object rock
-
-Autonomous Movement
-Type: Fixed
-Speed: 3: Slow
-Freq: 3: Low
-Options Enabled
-Move Animation
-Trigger: Action Button
-
-List of Event Commands:
-@>Set Move Route: This event
- :              : $>Turn Down
-@>Conditional Branch: Script: pbRockSmash
- @>Script: pbSmashThisEvent
- @>Script: pbRockSmashRandomEncounter
- @>
-: Branch End
 @>
 
 #------------------------------------------------------------------------------

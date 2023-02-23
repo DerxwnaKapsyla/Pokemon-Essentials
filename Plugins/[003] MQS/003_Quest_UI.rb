@@ -242,16 +242,8 @@ class QuestList_Scene
       436,questDesc,@base,@shadow)
     # Stage description
     questStageDesc = $quest_data.getStageDescription(quest.id,quest.stage)
-    # Stage location
-    questStageLocation = $quest_data.getStageLocation(quest.id,quest.stage)
-    # If 'nil' or missing, set to '???'
-    if questStageLocation=="nil" || questStageLocation==""
-      questStageLocation = "???"
-    end
     drawFormattedTextEx(@sprites["overlay3"].bitmap,38,320,
       436,"<c2=#{colorQuest("orange")}>Task:</c2> #{questStageDesc}",@base,@shadow)
-    drawFormattedTextEx(@sprites["overlay3"].bitmap,38,352,
-      436,"<c2=#{colorQuest("purple")}>Location:</c2> #{questStageLocation}",@base,@shadow)
   end
 
   def drawOtherInfo(quest)
@@ -283,6 +275,12 @@ class QuestList_Scene
     if questReward=="nil" || questReward=="" || active_quests.include?(quest.id)
       questReward = "???"
     end
+    # Stage location
+    questStageLocation = $quest_data.getStageLocation(quest.id,quest.stage)
+    # If 'nil' or missing, set to '???'
+    if questStageLocation=="nil" || questStageLocation==""
+      questStageLocation = "???"
+    end
     textpos = [
       [sprintf("Stage %d/%d",quest.stage,questLength),38,50,0,@base,@shadow],
       ["#{questGiver}",38,122,0,@base,@shadow],
@@ -295,13 +293,15 @@ class QuestList_Scene
 #     436,"<c2=#{colorQuest("purple")}>Stage:</c2> #{label}",@base,@shadow)
 ###
     drawFormattedTextEx(@sprites["overlay3"].bitmap,38,92,
-      436,"<c2=#{colorQuest("cyan")}>Quest received from:</c2>",@base,@shadow)
+      436,"<c2=#{colorQuest("cyan")}>Quest Type:</c2>",@base,@shadow)
     drawFormattedTextEx(@sprites["overlay3"].bitmap,38,164,
       436,"<c2=#{colorQuest("magenta")}>Quest discovered #{loc}:</c2>",@base,@shadow)
     drawFormattedTextEx(@sprites["overlay3"].bitmap,38,236,
       436,"<c2=#{colorQuest("green")}>Quest #{time_text} time:</c2>",@base,@shadow)
     drawFormattedTextEx(@sprites["overlay3"].bitmap,38,Graphics.height-64,
       436,"<c2=#{colorQuest("red")}>Reward:</c2> #{questReward}",@base,@shadow)
+    drawFormattedTextEx(@sprites["overlay3"].bitmap,38,352,
+      436,"<c2=#{colorQuest("purple")}>Location:</c2> #{questStageLocation}",@base,@shadow)
     pbDrawTextPositions(@sprites["overlay3"].bitmap,textpos)
   end
 

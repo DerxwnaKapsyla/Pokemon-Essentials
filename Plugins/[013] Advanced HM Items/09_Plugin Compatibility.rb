@@ -1,6 +1,5 @@
 if PluginManager.findDirectory("Following Pokemon EX")
   class Game_FollowingPkmn < Game_Follower
-    alias __AdvanceItemsFieldMoves__location_passable? location_passable?
     def location_passable?(x, y, direction)
       this_map = self.map
       return false if !this_map || !this_map.valid?(x, y)
@@ -49,6 +48,52 @@ if PluginManager.findDirectory("Following Pokemon EX")
         return false if !event.through && event.character_name != ""
       end
       return true
+    end
+  end
+
+  if !Item_RockClimb[:active]
+    alias __followingpkmn__fmRockClimb fmRockClimb unless defined?(__followingpkmn__fmRockClimb)
+    def fmRockClimb(*args)
+      $game_temp.no_follower_field_move = true
+      pkmn = $player.get_pokemon_with_move(:ROCKCLIMB)
+      ret = __followingpkmn__fmRockClimb(*args)
+      $game_temp.no_follower_field_move = false
+      return ret
+    end
+  end
+
+  if !Item_Camouflage[:active]
+    alias __followingpkmn__aifmVanish aifmVanish unless defined?(__followingpkmn__aifmVanish)
+    def aifmVanish(*args)
+      $game_temp.no_follower_field_move = true
+      pkmn = $player.get_pokemon_with_move(:CAMOUFLAGE)
+      ret = __followingpkmn__aifmVanish(*args)
+      $game_temp.no_follower_field_move = false
+      return ret
+    end
+  end
+end
+
+if PluginManager.findDirectory("Following Pokemon EX")
+  module FollowingPkmn
+    def self.remove_sprite
+      FollowingPkmn.get_event&.character_name = ""
+      FollowingPkmn.get_data&.character_name  = ""
+      FollowingPkmn.get_event&.character_hue  = 0
+      FollowingPkmn.get_data&.character_hue   = 0
+      if !Item_Camouflage[:orignal_effect]
+        if $game_player.camouflage == true
+          pbMoveRoute(FollowingPkmn.get_event,[
+            PBMoveRoute::Opacity,51  #20%
+            ])
+        end
+      else
+        if $game_player.camouflage == true
+          pbMoveRoute(FollowingPkmn.get_event,[
+            PBMoveRoute::Opacity,0  #0%
+            ])
+        end
+      end
     end
   end
 end
