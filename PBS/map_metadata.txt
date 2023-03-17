@@ -140,6 +140,10 @@ BattleBack = city
 #-------------------------------
 [043]   # Cinnabar Island
 Name = Cinnabar Island
+Outdoor = true
+ShowArea = true
+Weather = Rain,9
+MapPosition = 0,6,16
 BattleBack = city
 #-------------------------------
 [044]   # Indigo Plateau
@@ -305,6 +309,22 @@ MapPosition = 0,15,14
 BattleBack = field
 MapSize = 2,11
 #-------------------------------
+[065]   # Route 20
+Name = Route 20
+Outdoor = true
+ShowArea = true
+Weather = Rain,9
+MapPosition = 0,7,16
+MapSize = 7,1111111
+#-------------------------------
+[066]   # Route 21
+Name = Route 21
+Outdoor = true
+ShowArea = true
+Weather = Rain,10
+MapPosition = 0,6,14
+MapSize = 1,11
+#-------------------------------
 [067]   # Route 22
 Name = Route 22
 Outdoor = true
@@ -404,9 +424,21 @@ MapSize = 12,100000000000000000000000000000000000000000000000000000000001
 Environment = Cave
 #-------------------------------
 [082]   # Abandoned Safari Zone - Gate
-Name = Abandoned Safari Zone
+Name = Abandoned Safari Zone Entrance
 MapPosition = 0,14,14
 BattleBack = indoor2
+#-------------------------------
+[083]   # Seafoam Islands
+Name = Seafoam Islands
+ShowArea = true
+Bicycle = true
+MapPosition = 0,10,16
+#-------------------------------
+[084]   # Cinnabar Volcano (Entry)
+Name = Cinnabar Volcano
+ShowArea = true
+MapPosition = 0,6,16
+BattleBack = volcano
 #-------------------------------
 [170]   # Red's House
 Name = Pallet Town
@@ -707,6 +739,10 @@ MapPosition = 0,18,3
 [225]   # Route 3 (Placeholder)
 Name = Mystery Zone
 #-------------------------------
+[226]   # Cinnabar City Houses
+Name = Cinnabar Island
+MapPosition = 0,6,16
+#-------------------------------
 [227]   # Vermilion Seaside Hotel
 Name = Vermilion City
 #-------------------------------
@@ -719,6 +755,11 @@ Weather = Rain,8
 MapPosition = 0,20,7
 BattleBack = rocky
 Environment = Grass
+#-------------------------------
+[229]   # Kanto Underground Path
+Name = Underground Path
+MapPosition = 0,15,7
+MapSize = 3,010111010
 #-------------------------------
 [230]   # Route 5 - Underground Entrance
 Name = Route 5
@@ -1134,10 +1175,100 @@ MapPosition = 0,16,8
 Name = Saffron Gym
 MapPosition = 0,16,8
 #-------------------------------
+[328]   # Seismology Center
+Name = Cinnabar Island
+MapPosition = 0,6,16
+#-------------------------------
+[329]   # Seismology Center
+Name = Cinnabar Island
+MapPosition = 0,6,16
+#-------------------------------
+[330]   # Seismology Center
+Name = Cinnabar Island
+MapPosition = 0,6,16
+#-------------------------------
+[331]   # Pokémon Center
+Name = Cinnabar Island
+HealingSpot = 43,17,71
+MapPosition = 0,6,16
+#-------------------------------
+[332]   # PokeMart
+Name = Cinnabar Island
+MapPosition = 0,6,16
+#-------------------------------
+[333]   # Cinnabar Island Gym
+Name = Cinnabar Island
+MapPosition = 0,6,16
+#-------------------------------
 [344]   # Seafoam Islands
 Name = Seafoam Islands
+ShowArea = true
 Bicycle = true
 MapPosition = 0,10,16
 BattleBack = cave1
 WildBattleBGM = B-013. Battle vs. Puppet (Cave).ogg
 Environment = Snow
+#-------------------------------
+[345]   # Cinnabar Volcano
+Name = Cinnabar Volcano
+ShowArea = true
+MapPosition = 0,6,16
+BattleBack = volcano
+#-------------------------------
+[346]   # Cinnabar Volcano
+Name = Cinnabar Volcano
+ShowArea = true
+MapPosition = 0,6,16
+BattleBack = volcano
+#-------------------------------
+[347]   # Cinnabar Volcano
+Name = Cinnabar Volcano
+ShowArea = true
+MapPosition = 0,6,16
+BattleBack = volcano
+#-------------------------------
+[348]   # Cinnabar Volcano
+Name = Cinnabar Volcano
+ShowArea = true
+MapPosition = 0,6,16
+BattleBack = volcano
+#-------------------------------
+[350]   # Cinnabar Mansion
+Name = Ruined Mansion
+ShowArea = true
+MapPosition = 0,6,16
+DarkMap = true
+BattleBack = indoor3
+WildBattleBGM = B-013. Battle vs. Puppet (Cave).ogg
+#-------------------------------
+[351]   # Cinnabar Mansion
+Name = Ruined Mansion
+ShowArea = true
+MapPosition = 0,6,16
+DarkMap = true
+BattleBack = indoor3
+WildBattleBGM = B-013. Battle vs. Puppet (Cave).ogg
+#-------------------------------
+[352]   # Cinnabar Mansion
+Name = Ruined Mansion
+ShowArea = true
+MapPosition = 0,6,16
+DarkMap = true
+WildBattleBGM = B-013. Battle vs. Puppet (Cave).ogg
+#-------------------------------
+[353]   # Probability Space Hypervessel
+Name = Probability Space Hypervessel
+ShowArea = true
+MapPosition = 0,6,16
+#-------------------------------
+[355]   # Cinnabar Mansion
+Name = Ruined Mansion
+ShowArea = true
+MapPosition = 0,6,16
+DarkMap = true
+#-------------------------------
+[356]   # Cinnabar Mansion
+Name = Ruined Mansion
+ShowArea = true
+MapPosition = 0,6,16
+DarkMap = true

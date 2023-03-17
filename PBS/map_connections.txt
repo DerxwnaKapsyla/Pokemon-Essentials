@@ -1,11 +1,17 @@
 ﻿# See the documentation on the wiki to learn how to edit this file.
 #-------------------------------
-# Pallet Town (34) - Route 1 (45)
-34,North,0,45,South,4
 # Viridian City (35) - Route 2 (46)
 35,North,20,46,South,0
 # Route 22 (67) - Viridian City (35)
 67,East,0,35,West,11
+# Route 2 (184) - Pewter City (36)
+184,North,0,36,South,6
+# Route 3 (47) - Pewter City (36)
+47,West,0,36,East,0
+# Route 3 (Placeholder) (225) - Pewter City (36)
+225,South,0,36,North,75
+# Route 4 (48) - Pewter City (36)
+48,South,0,36,North,153
 # Cerulean City (37) - Route 5 (49)
 37,South,12,49,North,0
 # Cerulean City (37) - Route 25 (71)
@@ -34,6 +40,14 @@
 190,South,4,44,North,0
 # Route 2 (185) - Route 2 (46)
 185,West,0,46,East,1
+# Route 3 (47) - Route 2 (184)
+47,South,0,184,North,63
+# Route 3 (Placeholder) (225) - Route 3 (47)
+225,South,0,47,North,6
+# Route 4 (48) - Route 3 (47)
+48,South,0,47,North,84
+# Route 4 (48) - Route 3 (Placeholder) (225)
+48,West,35,225,East,0
 # Route 8 (53) - Route 12 (57)
 53,South,71,57,North,0
 # Route 8 (53) - Route 10 (228)
@@ -60,19 +74,15 @@
 210,East,0,215,West,0
 # Route 3 (266) - Route 3 (245)
 266,East,0,245,West,0
-# Route 2 (184) - Pewter City (36)
-184,North,0,36,South,6
-# Route 3 (47) - Pewter City (36)
-47,West,0,36,East,0
-# Route 3 (Placeholder) (225) - Pewter City (36)
-225,South,0,36,North,75
-# Route 4 (48) - Pewter City (36)
-48,South,0,36,North,153
-# Route 3 (47) - Route 2 (184)
-47,South,0,184,North,63
-# Route 3 (Placeholder) (225) - Route 3 (47)
-225,South,0,47,North,6
-# Route 4 (48) - Route 3 (47)
-48,South,0,47,North,84
-# Route 4 (48) - Route 3 (Placeholder) (225)
-48,West,35,225,East,0
+# Route 21 (66) - Pallet Town (34)
+66,North,0,34,South,9
+# Route 1 (45) - Pallet Town (34)
+45,South,4,34,North,0
+# Cinnabar Island (43) - Route 21 (66)
+43,North,1,66,South,0
+# Route 20 (65) - Route 21 (66)
+65,West,0,66,East,100
+# Route 20 (65) - Cinnabar Island (43)
+65,West,0,43,East,0
+# Route 19 (64) - Route 20 (65)
+64,West,35,65,East,0

@@ -210,7 +210,7 @@ def pbPasswordCheck(helptext = "Input Password", minlength = 0, maxlength = 12, 
 		  pbMessage(_INTL("\\xn[The Collector]One day I hope we'll be able to meet in person."))
 		  pbMessage(_INTL("\\xn[The Collector]Though technically, we did already meet, but it is understandable if you didn't notice me sitting beside you at the conference."))
 		  pbMessage(_INTL("\\xn[The Collector]Nevertheless, please continue your journey with my gift. She needs more combat experience, and I have deemed you as the best way to get it."))
-		  pbMessage(_INTL("\\xn[The Collector]Good luck on your journey, \pn. Until we meet proper."))
+		  pbMessage(_INTL("\\xn[The Collector]Good luck on your journey, \\pn. Until we meet proper."))
 		  pbWait(20)
 		  pbMessage(_INTL("\\rEnd of additional content. Thank you for using Oracle Encryption Software. Goodbye."))
 		  pbSEPlay("PC close")

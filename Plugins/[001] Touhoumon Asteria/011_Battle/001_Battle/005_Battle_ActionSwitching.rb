@@ -93,6 +93,8 @@ class Battle
 #==============================================================================#
 # Changes in this section include the following:
 #	* Removing explicit references to Pokemon as an individual species
+#	* Tweaked the swap-out line for special boss fights where you can't see
+#	  what the foe is sending out.
 #==============================================================================#  
   def pbEORSwitch(favorDraws = false)
     return if @decision > 0 && !favorDraws
@@ -123,8 +125,13 @@ class Battle
               new_index = pbLastInTeam(idxBattler)
               idxPartyForName = new_index if new_index >= 0 && new_index != idxPartyNew
             end
-            if pbDisplayConfirm(_INTL("{1} is about to send in {2}. Will you switch your active party member?",
-                                      opponent.full_name, enemyParty[idxPartyForName].name))
+			msg = _INTL("{1} is about to send in {2}. Will you switch your active party member?",
+                                      opponent.full_name, enemyParty[idxPartyForName].name)
+			if $game_switches[123]
+			  msg = _INTL("You can't see what {1} is about to send out. Will you switch?",
+                                      opponent.full_name)
+			end
+            if pbDisplayConfirm(msg)
               idxPlayerPartyNew = pbSwitchInBetween(0, false, true)
               if idxPlayerPartyNew >= 0
                 pbMessageOnRecall(@battlers[0])

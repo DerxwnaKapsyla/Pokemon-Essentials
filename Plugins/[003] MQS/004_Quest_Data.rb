@@ -259,7 +259,7 @@ module QuestModule
     :ID => "25",
     :Name => "Heat of the Moment",
     :QuestGiver => "Main Scenario Quest",
-    :Stage1 => "Find and defeat Team Rocket on Cinnabar Island",
+    :Stage1 => "Find and defeat Team Rocket on Cinnabar Island.",
     :Location1 => "Cinnabar Island",
     :QuestDescription => "Once more we go our separate ways. While the lead in the Safari Zone is temporarily halted, there's still other leads we can pursue. However, I have a really weird feeling about Team Rocket's plans. I dunno what it is but... I feel like I need to find out more, and knock them down a peg in the process.",
     :RewardString => "nil"
@@ -267,11 +267,41 @@ module QuestModule
   
   Quest26 = {
     :ID => "26",
-    :Name => "New Lands Ahead!",
+    :Name => "Girls' Adventure Club - I",
     :QuestGiver => "Main Scenario Quest",
-    :Stage1 => "Make contact with Prof. Elm in New Bark Town",
-    :Location1 => "New Bark Town",
-    :QuestDescription => "---",
+    :Stage1 => "Talk to Professor Oak in his lab.",
+    :Location1 => "Pallet Town",
+    :QuestDescription => "After dealing with Team Rocket in Cinnabar Volcano, I recieved a phone call from Professor Oak. The call wouldn't stay stable for long, so before he hung up he told me to meet him back at his lab in Pallet Town.",
+    :RewardString => "nil"
+  }  
+  
+  Quest27 = {
+    :ID => "27",
+    :Name => "Girls' Adventure Club - II (Renko)",
+    :QuestGiver => "Main Scenario Quest",
+    :Stage1 => "Battle Maribel in Professor Oak's Lab.",
+    :Location1 => "Pallet Town",
+    :QuestDescription => "Professor Oak gave Maribel and I our next big lead- a colleague of his over in the Johto Region. However, before I could set off, Maribel challenged me to one last battle to show off all we've learned on our journey.",
+    :RewardString => "nil"
+  }  
+  
+  Quest28 = {
+    :ID => "28",
+    :Name => "Girls' Adventure Club - II (Maribel)",
+    :QuestGiver => "Main Scenario Quest",
+    :Stage1 => "Battle Renko in Professor Oak's Lab.",
+    :Location1 => "Pallet Town",
+    :QuestDescription => "Professor Oak gave Renko and I our next big lead- a colleague of his over in the Johto Region. However, before I could set off, Renko challenged me to one last battle to show off all we've learned on our journey.",
+    :RewardString => "nil"
+  }  
+  
+  Quest29 = {
+    :ID => "29",
+    :Name => "Journey to the West",
+    :QuestGiver => "Main Scenario Quest",
+    :Stage1 => "Meet up with Professor Elm at his lab in New Bark Town.",
+    :Location1 => "Pallet Town",
+    :QuestDescription => "After that battle, I departed from Professor Oak's lab to meet a colleague of his in the Johto Region. Professor Elm, his colleague, has apparently been doing research into a theory of his that may involve the Sealed Realm. There's no telling if it'll pan out, but a lead is a lead! Onward to the West!",
     :RewardString => "nil"
   }  
   
@@ -328,7 +358,7 @@ module QuestModule
 	:Stage2 => "Return to the Fisherman inside Cerulean Pokémon Center.",
     :Location1 => "Cerulean City",
 	:Location2 => "Cerulean City",
-    :QuestDescription => "A Fisherman in Cerulean Pokemon Center told me that they haven't been able to return to their house ever since they moved in due to some strange occurances happening inside of it. They then asked if I could investigate it for them, and report back to them once I've figured out what's going on. Well, far be it from me to turn down a good mystery!",
+    :QuestDescription => "A Fisherman in Cerulean City told me that they haven't been able to return to their house ever since they moved in due to some strange occurances happening inside of it. They then asked if I could investigate it for them, and report back to them once I've figured out what's going on. Well, far be it from me to turn down a good mystery!",
     :RewardString => "nil"
   }
   
@@ -362,7 +392,7 @@ module QuestModule
 	:Stage2 => "Return to Dark Last Word Ruukoto.",
 	:Stage3 => "Input \"retribution\" into a Pokémon Center terminal.",
     :Location1 => "Silph Co.",
-    :QuestDescription => "A disaster unfolded during the presentation! A Puppet that identifies itself as Dark Last Word Ruukoto and its ilk stole all of the Prototype Synthetic PokéPuppets! On top of that, their leader wants me to battle all of them to 'Prove their integiry'.",
+    :QuestDescription => "A disaster unfolded during the presentation! A Puppet that identifies itself as Dark Last Word Ruukoto and its ilk stole all of the Prototype Synthetic PokéPuppets! On top of that, their leader wants me to battle all of them to 'Prove their integrity'.",
     :RewardString => "nil"
   }  
   
@@ -409,4 +439,39 @@ module QuestModule
     :RewardString => "nil"
   }
   
+  Quest112 = {
+    :ID => "112",
+    :Name => "Containment Breach - I",
+    :QuestGiver => "Side Quest",
+    :Stage1 => "Investigate Cinnabar Volcano for clues to the mysterious signal.",
+	:Stage2 => "Investigate the ruined mansion for clues to the mysterious signal.",
+    :Location1 => "Cinnabar Volcano",
+	:Location2 => "Ruined Mansion",
+    :QuestDescription => "In order for me to gain access to the volcano, I had to agree to do some investigative work in finding a strange signal. What could possibly be producing strange signals inside a volcano of all places...",
+    :RewardString => "nil"
+  }
+  
+  Quest113 = {
+    :ID => "113",
+    :Name => "Containment Breach - II",
+    :QuestGiver => "Side Quest",
+    :Stage1 => "Investigate the abandoned lab for clues to the mysterious signal.",
+	:Stage2 => "Report back to the Seismology Center's supervisor with your findings.",
+    :Location1 => "Ruined Mansion",
+	:Location2 => "Cinnabar Island",
+    :QuestDescription => "Professor Okazaki showed up while I was investigating this ruined mansion! She claimed that her ship was caught in a signal jammer and phased the volcano. However, the mysterious signal wasn't from her- rather, it's something she was also investigating. We've now teamed up to try and find it in the last room we could find.",
+    :RewardString => "nil"
+  }
+  
+  Quest114 = {
+    :ID => "114",
+    :Name => "Echo, echo, echo...",
+    :QuestGiver => "Side Quest",
+    :Stage1 => "Recover the lost Echo Pass.",
+	:Stage2 => "Return the Echo Pass to the person in Vermilion Harbor.",
+    :Location1 => "Vermilion City",
+	:Location2 => "Vermilion City",
+    :QuestDescription => "A scientist in Vermilion Harbor was panicking because he lost his ferry pass, and after hearing how much it would cost to replace it I felt compelled to at least try and help him find it. The last place he said he knew he had it was around the Seaside Hotel.",
+    :RewardString => "nil"
+  }
 end

@@ -156,3 +156,61 @@ class NextMorning < PreludeScene
     :wait, 180,
   ]
 end
+
+# ---------------------------
+
+class Act1End_Maribel < PreludeScene
+  TEXT = [
+    [
+      "With their battle concluded, Maribel set out",
+      "to the west for the Johto Region, to follow",
+      "up on a new clue to the Sealed Realm."
+    ],
+    :wait, 180,
+    :clear,
+    :wait, 60,
+    [
+      "But still, there was the looming specter of",
+      "Team Rocket's plans. Whatever they were",
+      "up to, Maribel couldn't be sure."
+    ],
+    :wait, 180,
+    :clear,
+    :wait, 60,
+    [
+      "Mysteries within mysteries awaited on the",
+	  "horizon. Maribel was sure that, in due time,",
+	  "she would be able to make sense of it all."
+    ],
+    :wait, 60
+  ]
+end
+
+# ---------------------------
+
+class Act1End_Renko < PreludeScene
+  TEXT = [
+    [
+      "With their battle concluded, Renko set out",
+      "to the west for the Johto Region, to follow",
+      "up on a new clue to the Sealed Realm."
+    ],
+    :wait, 180,
+    :clear,
+    :wait, 60,
+    [
+      "But still, there was the looming specter of",
+      "Team Rocket's plans. Whatever they were",
+      "up to, Renko couldn't be sure."
+    ],
+    :wait, 180,
+    :clear,
+    :wait, 60,
+    [
+      "Mysteries within mysteries awaited on the",
+	  "horizon. Renko was sure that, in due time,",
+	  "she would be able to make sense of it all."
+    ],
+    :wait, 60
+  ]
+end

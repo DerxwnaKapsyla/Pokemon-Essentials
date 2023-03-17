@@ -10846,3 +10846,14 @@ FunctionCode = DoublePowerIfTargetNotActed
 Flags = Contact,CanProtect,CanMirrorMove
 Description = Stabs the target with an electrified beak. Power is doubled if the user attacks first.
 #-------------------------------
+[TERRAINPULSE]
+Name = Terrain Pulse
+Type = NORMAL
+Category = Special
+Power = 50
+Accuracy = 100
+TotalPP = 10
+Target = NearOther
+FunctionCode = TypeAndPowerDependOnTerrain
+Flags = CanProtect,CanMirrorMove,Pulse
+Description = Utilizes the power of the terrain to attack. This move's type and power vary with the terrain.

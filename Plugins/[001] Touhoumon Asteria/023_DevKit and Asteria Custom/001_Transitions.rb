@@ -8,7 +8,7 @@
 #==============================================================================#
 SpecialBattleIntroAnimations.register("derx_animations", 100,   # Priority 100
   proc { |battle_type, foe, location|   # Condition
-    next $game_map && $game_switches[104] && $game_variables[103] <= 29
+    next $game_map && $game_switches[104] && $game_variables[103] <= 30
   },
   proc { |viewport, battle_type, foe, location|   # Animation
     case $game_variables[103]
@@ -41,6 +41,7 @@ SpecialBattleIntroAnimations.register("derx_animations", 100,   # Priority 100
 	when 27 then pbCommonEvent(81)    # Vs. Mima (Puppet) & Mewtwo
 	when 28 then pbCommonEvent(82)    # Vs. Mima (Puppet)
 	when 29 then pbCommonEvent(83)    # Vs. Mewtwo
+	when 30 then pbCommonEvent(123)   # Vs. Sabrina (Double)
     else
       raise "Custom animation #{$game_variables[103]} expected but not found somehow!"
     end
