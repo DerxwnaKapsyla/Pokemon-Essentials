@@ -1523,7 +1523,7 @@ List of Event Commands:
 
 Page #2
 Conditions
-Switch 0125:  is ON
+Switch 0125: Battled an Avatar is ON
 
 Graphic: trainer_LEADER_Surge
 
@@ -11195,6 +11195,44 @@ List of Event Commands:
 @>
 
 #------------------------------------------------------------------------------
+Event ID: 019
+Event Name: Marisa Omega
+(X,Y): (036,018)
+
+Page #1
+Conditions
+None
+
+Graphic: OW - Puppet_MarisaO
+
+Autonomous Movement
+Type: Fixed
+Speed: 3: Slow
+Freq: 3: Low
+Options Enabled
+Move Animation
+Trigger: Action Button
+
+List of Event Commands:
+@>Change Battle BGM: 'B-028. Battle! Vs. Avatars of Calamity', 100, 100
+@>Control Switches: [0104: Transition Handler] = ON
+@>Control Variables: [0103: Vs. Transition ID] = 12
+@>Script: Pokemon.play_cry(:MARISAO)
+@>Wait: 50 frame(s)
+@>Script: pkmn = pbGenerateWildPokemon(:MARISAO, 60)
+:       : pkmn.item = :BLAZESPHERE
+@>Script: WildBattle.dx_start([pkmn], { 
+:       :   :nocapture => true, 
+:       :   :backdrop => ["Volcano", "Volcano"],
+:       :   :outcome => 1,
+:       :   :noflee => true,
+:       :   :introtext => "{1}, the Blazing Apocalypse, challenges you!"
+:       : }, {}, :VS_MARISAO)
+@>Script: pkmn.poke_ball = :ULTRAORB
+:       : pbAddPokemon(pkmn)
+@>
+
+#------------------------------------------------------------------------------
 
 #==============================================================================
 Map ID: 035
@@ -11648,6 +11686,30 @@ List of Event Commands:
  :    : notorious gang of evil-doers and thieves.
 @>Text: A young boy defeated them, and they disbanded, 
  :    : only to reform again three years later. The nerve of them.
+@>
+
+Page #2
+Conditions
+Variable 0110: Plot Control Variable is 17 or above
+
+Graphic: trainer_GENTLEMAN
+
+Autonomous Movement
+Type: Custom
+Custom Move Route:
+(Repeat Action)
+$>Move at Random
+
+Speed: 3: Slow
+Freq: 3: Low
+Options Enabled
+Move Animation
+Trigger: Action Button
+
+List of Event Commands:
+@>Text: I've been hearing that Team Rocket is on the rampage once
+ :    : again.
+@>Text: Those hooligans don't know when to quit!
 @>
 
 #------------------------------------------------------------------------------
@@ -12328,7 +12390,7 @@ List of Event Commands:
 
 Page #2
 Conditions
-Switch 0134:  is ON
+Variable 0110: Plot Control Variable is 17 or above
 
 Graphic: doors7
 
@@ -12697,7 +12759,7 @@ List of Event Commands:
 
 Page #2
 Conditions
-Switch 0134:  is ON
+Variable 0110: Plot Control Variable is 13 or above
 
 Autonomous Movement
 Type: Fixed
@@ -12839,6 +12901,36 @@ List of Event Commands:
  @>Change Screen Color Tone: (0,0,0,0), @6
  @>
 : Branch End
+@>
+
+#------------------------------------------------------------------------------
+Event ID: 030
+Event Name: EV030
+(X,Y): (026,042)
+
+Page #1
+Conditions
+Variable 0110: Plot Control Variable is 17 or above
+
+Graphic: NPC 06
+
+Autonomous Movement
+Type: Custom
+Custom Move Route:
+(Repeat Action)
+$>Turn at Random
+
+Speed: 3: Slow
+Freq: 3: Low
+Options Enabled
+Move Animation
+Trigger: Action Button
+
+List of Event Commands:
+@>Text: Did you hear? They managed to get the Regional Uplink Terminal
+ :    : back online!
+@>Text: You can now put up a random Pokémon or Puppet for trade,
+ :    : and get another random one in return!
 @>
 
 #------------------------------------------------------------------------------
@@ -24221,6 +24313,71 @@ List of Event Commands:
 @>
 
 #------------------------------------------------------------------------------
+Event ID: 043
+Event Name: Malver
+(X,Y): (026,034)
+
+Page #1
+Conditions
+Variable 0110: Plot Control Variable is 17 or above
+
+Graphic: NPC 20_alt
+
+Autonomous Movement
+Type: Custom
+Custom Move Route:
+(Repeat Action)
+$>Turn at Random
+
+Speed: 3: Slow
+Freq: 3: Low
+Options Enabled
+Move Animation
+Trigger: Action Button
+
+List of Event Commands:
+@>Text: Excuse me, miss, may I have a moment of your time?
+@>Text: How would you like to visit a beautiful island out in the Zircon
+ :    : Ocean, one filled with history as far back as the Great Schism.
+@>Text: Of course, I am speaking of Wisteria Island, an island renowned for
+ :    : its breathtaking sights.
+@>Text: And if that doesn't captivate you, then perhaps our renowned
+ :    : fishing beach will. People from all over the world come to fish
+ :    : there.
+@>Show Animation: Player, [Exclaim bubble]
+@>Text: Who knows, perhaps there might even be clues to something you're
+ :    : interested in? Who's to say.
+@>Text: So, How about it? Are you interested? Oh, who am I kidding, of 
+ :    : course you're intrigued.
+@>Text: Here, you can have this pass, it's for the ferry boarding out of
+ :    : Route 14.
+@>Script: pbReceiveItem(:SPECTRALPASS)
+@>Text: Please, enjoy your stay on our beautiful island, Miss \pn.
+@>Change Screen Color Tone: (-255,-255,-255,0), @8
+@>Wait: 8 frame(s)
+@>Control Variables: [0143: Wisteria Island Sidequest] = 1
+@>Change Screen Color Tone: (0,0,0,0), @8
+@>Wait: 8 frame(s)
+@>Script: activateQuest(:Quest115)
+@>Text: \xn[\pn]\b(Wait, how did he know my name?)
+@>
+
+Page #2
+Conditions
+Variable 0143: Wisteria Island Sidequest is 1 or above
+
+Autonomous Movement
+Type: Fixed
+Speed: 3: Slow
+Freq: 3: Low
+Options Enabled
+Move Animation
+Trigger: Action Button
+
+List of Event Commands:
+@>
+
+#------------------------------------------------------------------------------
 Event ID: 044
 Event Name: ExitArrow
 (X,Y): (065,024)
@@ -24250,6 +24407,48 @@ List of Event Commands:
  @>Change Screen Color Tone: (0,0,0,0), @6
  @>
 : Branch End
+@>
+
+#------------------------------------------------------------------------------
+Event ID: 045
+Event Name: Quest Indicator: Sidequest
+(X,Y): (026,033)
+
+Page #1
+Conditions
+Variable 0110: Plot Control Variable is 17 or above
+
+Graphic: questicon2
+
+Autonomous Movement
+Type: Fixed
+Speed: 3: Slow
+Freq: 3: Low
+Options Enabled
+Move Animation
+Stop Animation
+Direction Fix
+Through
+Always on Top
+Trigger: Action Button
+
+List of Event Commands:
+@>Comment: Relevant Sidequest: An Island In Flux
+@>
+
+Page #2
+Conditions
+Variable 0143: Wisteria Island Sidequest is 1 or above
+
+Autonomous Movement
+Type: Fixed
+Speed: 3: Slow
+Freq: 3: Low
+Options Enabled
+Move Animation
+Trigger: Action Button
+
+List of Event Commands:
 @>
 
 #------------------------------------------------------------------------------
@@ -37261,14 +37460,81 @@ Move Animation
 Trigger: Action Button
 
 List of Event Commands:
-@>Comment: NPC that'll take you to an island off the coast of Kanto that's
- :       : experiencing "Abnormal Snow" for the season.
- :       : 
- :       : Will be a place where you can catch Winter-themed Puppets.
-@>Comment: Unlocks when you have the item "Spectral Pass", recieved from 
- :       : the Passcode System.
 @>Text: Sorry, we're busy gearing up for a trip. You'll have to
  :    : come back later.
+@>
+
+Page #2
+Conditions
+Variable 0143: Wisteria Island Sidequest is 1 or above
+
+Graphic: trainer_SAILOR
+
+Autonomous Movement
+Type: Fixed
+Speed: 3: Slow
+Freq: 3: Low
+Options Enabled
+Move Animation
+Trigger: Action Button
+
+List of Event Commands:
+@>Text: Sorry, I'm only allowed to take certain people on this ferry.
+@>Text: \b\pn showed the sailor her Spectral Pass.
+@>Text: Ah, so you're the one that fellow found, eh?
+@>Text: Well alright, I sure hope you know what you're getting into!
+@>Control Self Switch: A =ON
+@>Text: Are you ready to set sail for Wisteria Island?
+@>Show Choices: Yes, No
+(When Cancel: Choice 2)
+: When [Yes]
+ @>Text: Alright, all aboard! Watch your step when boarding!
+ @>Change Screen Color Tone: (-255,-255,-255,0), @8
+ @>Wait: 8 frame(s)
+ @>Script: seaGallop
+ @>Transfer Player:[367: Port Exilian Harbor], (008,005), Down, No Fade
+ @>Play SE: 'Door exit', 80, 100
+ @>Change Screen Color Tone: (0,0,0,0), @8
+ @>Wait: 10 frame(s)
+ @>
+: When [No]
+ @>Text: Just let me know when you're ready to depart.
+ @>
+: Branch End
+@>
+
+Page #3
+Conditions
+Self Switch A is ON
+
+Graphic: trainer_SAILOR
+
+Autonomous Movement
+Type: Fixed
+Speed: 3: Slow
+Freq: 3: Low
+Options Enabled
+Move Animation
+Trigger: Action Button
+
+List of Event Commands:
+@>Text: Are you ready to set sail for Wisteria Island?
+@>Show Choices: Yes, No
+(When Cancel: Choice 2)
+: When [Yes]
+ @>Text: Alright, all aboard! Watch your step when boarding!
+ @>Change Screen Color Tone: (-255,-255,-255,0), @8
+ @>Wait: 8 frame(s)
+ @>Script: seaGallop
+ @>Transfer Player:[367: Port Exilian Harbor], (008,005), Down, No Fade
+ @>Play SE: 'Door exit', 80, 100
+ @>Change Screen Color Tone: (0,0,0,0), @8
+ @>Wait: 10 frame(s)
+ @>
+: When [No]
+ @>Text: Just let me know when you're ready to depart.
+ @>
+: Branch End
 @>
 
 #------------------------------------------------------------------------------
@@ -39427,7 +39693,7 @@ List of Event Commands:
 @>Script: pbNoticePlayer(get_self)
 @>Text: Off in the Sevii Islands there's a little place called Chrono~
 @>Comment: EndSpeech: That's where you wanna go to get away from it all~
-@>Conditional Branch: Script: TrainerBattle.start(PBTrainers::FISHERMAN, "Love", 0)
+@>Conditional Branch: Script: TrainerBattle.start(:FISHERMAN, "Love", 0)
  @>Control Self Switch: A =ON
  @>
 : Branch End
@@ -39476,7 +39742,7 @@ List of Event Commands:
 @>Script: pbNoticePlayer(get_self)
 @>Text: I love the colorful troves of sea wares~
 @>Comment: EndSpeech: I'm pickin' up some good vibrations~
-@>Conditional Branch: Script: TrainerBattle.start(PBTrainers::FISHERMAN, "Jardine", 0)
+@>Conditional Branch: Script: TrainerBattle.start(:FISHERMAN, "Jardine", 0)
  @>Control Self Switch: A =ON
  @>
 : Branch End
@@ -39525,7 +39791,7 @@ List of Event Commands:
 @>Script: pbNoticePlayer(get_self)
 @>Text: I was living like half a man~ Then I couldn't fish but now I can~
 @>Comment: EndSpeech: Now that fish is too doggone outta sight~
-@>Conditional Branch: Script: TrainerBattle.start(PBTrainers::FISHERMAN, "Marks", 0)
+@>Conditional Branch: Script: TrainerBattle.start(:FISHERMAN, "Marks", 0)
  @>Control Self Switch: A =ON
  @>
 : Branch End
@@ -39574,7 +39840,7 @@ List of Event Commands:
 @>Script: pbNoticePlayer(get_self)
 @>Text: Let's go fishin' now~ Everybody's learning how~
 @>Comment: EndSpeech: Yes I'm gonna take you fishin' safari with me~
-@>Conditional Branch: Script: TrainerBattle.start(PBTrainers::FISHERMAN, "Johnston", 0)
+@>Conditional Branch: Script: TrainerBattle.start(:FISHERMAN, "Johnston", 0)
  @>Control Self Switch: A =ON
  @>
 : Branch End
@@ -39623,7 +39889,7 @@ List of Event Commands:
 @>Script: pbNoticePlayer(get_self)
 @>Text: Come on let's cruise ya got nothing to lose~
 @>Comment: EndSpeech: Still cruisin' after all these years~
-@>Conditional Branch: Script: TrainerBattle.start(PBTrainers::FISHERMAN, "Wilson", 0)
+@>Conditional Branch: Script: TrainerBattle.start(:FISHERMAN, "Wilson", 0)
  @>Control Self Switch: A =ON
  @>
 : Branch End
@@ -42337,7 +42603,83 @@ Width: 20, Height: 15
 Map ID: 075
 Map Name: Crystal Mountain
 Tileset: 001: Outside
-Width: 20, Height: 15
+Width: 45, Height: 50
+
+#------------------------------------------------------------------------------
+Event ID: 001
+Event Name: EV001
+(X,Y): (019,031)
+
+Page #1
+Conditions
+None
+
+Autonomous Movement
+Type: Fixed
+Speed: 3: Slow
+Freq: 3: Low
+Options Enabled
+Move Animation
+Trigger: Action Button
+
+List of Event Commands:
+@>Text: \sign[signskin]\l[3]<ac>Crystal Mountain\n<ac>Home of the Kanto
+ :    : Pokémon World Tournament
+@>Wait: 5 frame(s)
+@>Text: ...There's a note attached to the bottom.
+@>Text: \sign[signskin]Future site of the Kanto Battle Frontier!
+@>
+
+#------------------------------------------------------------------------------
+Event ID: 002
+Event Name: EV002
+(X,Y): (030,034)
+
+Page #1
+Conditions
+None
+
+Graphic: trainer_COOLTRAINER_F
+
+Autonomous Movement
+Type: Fixed
+Speed: 3: Slow
+Freq: 3: Low
+Options Enabled
+Move Animation
+Trigger: Action Button
+
+List of Event Commands:
+@>Text: The PWT has branches set up all over the world!
+@>Text: I believe the next branch is slated to be placed in the Unova 
+ :    : Region?
+@>
+
+#------------------------------------------------------------------------------
+Event ID: 003
+Event Name: EV003
+(X,Y): (037,039)
+
+Page #1
+Conditions
+None
+
+Graphic: trainer_HIKER
+
+Autonomous Movement
+Type: Fixed
+Speed: 3: Slow
+Freq: 3: Low
+Options Enabled
+Move Animation
+Trigger: Action Button
+
+List of Event Commands:
+@>Text: I've come here to win it big in the tournaments! Nothing will
+ :    : stop me!
+@>
+
+#------------------------------------------------------------------------------
 
 #==============================================================================
 Map ID: 076
@@ -49634,6 +49976,7 @@ List of Event Commands:
  @>Wait: 20 frame(s)
  @>Comment: --------------------
  @>Script: pbAllowSpeedup
+ @>Control Variables: [0110: Plot Control Variable] = 17
  @>Text: \bWould you like to travel to Viridian City immediately?
  @>Show Choices: Yes, No
  (When Cancel: Choice 2)
@@ -49651,7 +49994,6 @@ List of Event Commands:
   :    : to get going, then!
  @>Script: completeQuest(:Quest27)
  @>Script: activateQuest(:Quest29)
- @>Control Variables: [0110: Plot Control Variable] = 17
  @>Control Self Switch: A =ON
  @>
 : When [No]
@@ -49833,6 +50175,7 @@ List of Event Commands:
  @>Wait: 20 frame(s)
  @>Comment: --------------------
  @>Script: pbAllowSpeedup
+ @>Control Variables: [0110: Plot Control Variable] = 17
  @>Text: \bWould you like to travel to Viridian City immediately?
  @>Show Choices: Yes, No
  (When Cancel: Choice 2)
@@ -49850,7 +50193,6 @@ List of Event Commands:
   :    : to get going, then!
  @>Script: completeQuest(:Quest28)
  @>Script: activateQuest(:Quest29)
- @>Control Variables: [0110: Plot Control Variable] = 17
  @>Control Self Switch: A =ON
  @>
 : When [No]
@@ -53946,7 +54288,7 @@ Page #1
 Conditions
 None
 
-Graphic: trchar028
+Graphic: Scientist (Aveontrainer)
 
 Autonomous Movement
 Type: Fixed
@@ -108538,51 +108880,2823 @@ List of Event Commands:
 
 #==============================================================================
 Map ID: 279
-Map Name: Wisteria Island
-Tileset: 001: Outside
-Width: 45, Height: 37
+Map Name: Port Exilian
+Tileset: 040: Wisteria Island
+Width: 69, Height: 85
+Auto-Change BGM: W-032. Port Exilian
+
+#------------------------------------------------------------------------------
+Event ID: 001
+Event Name: Trainer
+(X,Y): (060,040)
+
+Page #1
+Conditions
+None
+
+Graphic: trainer_CAMPER
+
+Autonomous Movement
+Type: Fixed
+Speed: 3: Slow
+Freq: 3: Low
+Options Enabled
+Move Animation
+Direction Fix
+Trigger: Action Button
+
+List of Event Commands:
+@>
+
+#------------------------------------------------------------------------------
+Event ID: 002
+Event Name: Trainer
+(X,Y): (060,044)
+
+Page #1
+Conditions
+None
+
+Graphic: trainer_LASS
+
+Autonomous Movement
+Type: Fixed
+Speed: 3: Slow
+Freq: 3: Low
+Options Enabled
+Move Animation
+Trigger: Action Button
+
+List of Event Commands:
+@>
+
+#------------------------------------------------------------------------------
+Event ID: 003
+Event Name: Puppet
+(X,Y): (060,041)
+
+Page #1
+Conditions
+None
+
+Autonomous Movement
+Type: Fixed
+Speed: 3: Slow
+Freq: 3: Low
+Options Enabled
+Move Animation
+Trigger: Action Button
+
+List of Event Commands:
+@>
+
+#------------------------------------------------------------------------------
+Event ID: 004
+Event Name: Puppet
+(X,Y): (060,043)
+
+Page #1
+Conditions
+None
+
+Autonomous Movement
+Type: Fixed
+Speed: 3: Slow
+Freq: 3: Low
+Options Enabled
+Move Animation
+Trigger: Action Button
+
+List of Event Commands:
+@>
+
+#------------------------------------------------------------------------------
+Event ID: 005
+Event Name: NPC
+(X,Y): (057,040)
+
+Page #1
+Conditions
+None
+
+Graphic: trainer_SCHOOLKID_f
+
+Autonomous Movement
+Type: Fixed
+Speed: 3: Slow
+Freq: 3: Low
+Options Enabled
+Move Animation
+Trigger: Action Button
+
+List of Event Commands:
+@>Text: These Puppets look different from usual... I wonder why?
+@>
+
+#------------------------------------------------------------------------------
+Event ID: 006
+Event Name: Guard
+(X,Y): (008,032)
+
+Page #1
+Conditions
+None
+
+Graphic: NPC 20
+
+Autonomous Movement
+Type: Fixed
+Speed: 3: Slow
+Freq: 3: Low
+Options Enabled
+Move Animation
+Trigger: Action Button
+
+List of Event Commands:
+@>
+
+#------------------------------------------------------------------------------
+Event ID: 007
+Event Name: EV007
+(X,Y): (033,010)
+
+Page #1
+Conditions
+None
+
+Graphic: NPC 20
+
+Autonomous Movement
+Type: Fixed
+Speed: 3: Slow
+Freq: 3: Low
+Options Enabled
+Move Animation
+Trigger: Action Button
+
+List of Event Commands:
+@>Text: Sorry, I can't allow anybody to pass by without permission from
+ :    : Mayor Libra.
+@>
+
+Page #2
+Conditions
+Variable 0143: Wisteria Island Sidequest is 4 or above
+
+Autonomous Movement
+Type: Fixed
+Speed: 3: Slow
+Freq: 3: Low
+Options Enabled
+Move Animation
+Trigger: Action Button
+
+List of Event Commands:
+@>
+
+#------------------------------------------------------------------------------
+Event ID: 008
+Event Name: EV008
+(X,Y): (039,061)
+
+Page #1
+Conditions
+None
+
+Graphic: NPC 07
+
+Autonomous Movement
+Type: Random
+Speed: 3: Slow
+Freq: 3: Low
+Options Enabled
+Move Animation
+Trigger: Action Button
+
+List of Event Commands:
+@>Text: Mayor Libra has had her hands full with complaints ever since
+ :    : the abnormalities started.
+@>
+
+#------------------------------------------------------------------------------
+Event ID: 009
+Event Name: EV009
+(X,Y): (009,076)
+
+Page #1
+Conditions
+None
+
+Graphic: trainer_CRUSHGIRL
+
+Autonomous Movement
+Type: Fixed
+Speed: 3: Slow
+Freq: 3: Low
+Options Enabled
+Move Animation
+Trigger: Action Button
+
+List of Event Commands:
+@>Text: Wisteria Island is such a remote spot, far from other traces of
+ :    : civilization.
+@>Text: Geographically speaking, we're somewhere between the Sevii
+ :    : Islands to the north, and Kaiyomi Island to the south.
+@>
+
+#------------------------------------------------------------------------------
+Event ID: 010
+Event Name: EV010
+(X,Y): (046,034)
+
+Page #1
+Conditions
+None
+
+Graphic: trainer_SCHOOLKID_m
+
+Autonomous Movement
+Type: Custom
+Custom Move Route:
+(Repeat Action)
+$>Turn at Random
+
+Speed: 3: Slow
+Freq: 3: Low
+Options Enabled
+Move Animation
+Trigger: Action Button
+
+List of Event Commands:
+@>Text: Hey lady, did you come from somewhere far away?
+@>Text: Where are you from?
+@>Show Choices: Kanto, Kyoto
+(When Cancel: Choice 2)
+: When [Kanto]
+ @>Text: Oh oh! I know that place! That's where my favorite TV show
+  :    : takes place!
+ @>
+: When [Kyoto]
+ @>Text: Kee...ow... tow? Where's that! Must be really far away!
+ @>
+: Branch End
+@>
+
+#------------------------------------------------------------------------------
+Event ID: 011
+Event Name: EV011
+(X,Y): (021,034)
+
+Page #1
+Conditions
+None
+
+Graphic: trainer_LADY
+
+Autonomous Movement
+Type: Fixed
+Speed: 3: Slow
+Freq: 3: Low
+Options Enabled
+Move Animation
+Direction Fix
+Trigger: Action Button
+
+List of Event Commands:
+@>Text: Did you hear that Mayor Libra is thinking about calling in
+ :    : help from the mainland?
+@>
+
+#------------------------------------------------------------------------------
+Event ID: 012
+Event Name: EV012
+(X,Y): (020,034)
+
+Page #1
+Conditions
+None
+
+Graphic: trainer_PAINTER
+
+Autonomous Movement
+Type: Fixed
+Speed: 3: Slow
+Freq: 3: Low
+Options Enabled
+Move Animation
+Direction Fix
+Trigger: Action Button
+
+List of Event Commands:
+@>Text: Who could you even call to resolve this, though? A <i>magician</i>?
+@>
+
+#------------------------------------------------------------------------------
+Event ID: 013
+Event Name: Turn Back size(1,3)
+(X,Y): (009,033)
+
+Page #1
+Conditions
+None
+
+Autonomous Movement
+Type: Fixed
+Speed: 3: Slow
+Freq: 3: Low
+Options Enabled
+Move Animation
+Trigger: Player Touch
+
+List of Event Commands:
+@>Text: Sorry, I can't allow anybody past here right now.
+@>Set Move Route: Player
+ :              : $>Move Right
+@>
+
+#------------------------------------------------------------------------------
+Event ID: 014
+Event Name: EV014
+(X,Y): (056,058)
+
+Page #1
+Conditions
+None
+
+Graphic: trainer_GENTLEMAN
+
+Autonomous Movement
+Type: Fixed
+Speed: 3: Slow
+Freq: 3: Low
+Options Enabled
+Move Animation
+Trigger: Action Button
+
+List of Event Commands:
+@>Text: When the media was talking about an "invasive species", we
+ :    : thought we were safe here on our island.
+@>Text: But the abnormalities being caused... are the Puppets to blame?
+@>
+
+#------------------------------------------------------------------------------
+Event ID: 015
+Event Name: EV015
+(X,Y): (021,015)
+
+Page #1
+Conditions
+None
+
+Graphic: trainer_HEXMANIAC
+
+Autonomous Movement
+Type: Fixed
+Speed: 3: Slow
+Freq: 3: Low
+Options Enabled
+Move Animation
+Trigger: Action Button
+
+List of Event Commands:
+@>Text: I can sense it... a malevolent presence is coming from the forest.
+@>Text: That must be what's causing the abnormalities on the island!
+@>
+
+#------------------------------------------------------------------------------
+Event ID: 016
+Event Name: Sign size(2,1)
+(X,Y): (030,044)
+
+Page #1
+Conditions
+None
+
+Autonomous Movement
+Type: Fixed
+Speed: 3: Slow
+Freq: 3: Low
+Options Enabled
+Move Animation
+Trigger: Action Button
+
+List of Event Commands:
+@>Conditional Branch: Player is facing Up
+ @>Text: \sign[signskin]\l[2]<ac>Wisteria Island<ac>\nPort Exilian Town Center
+ @>
+: Branch End
+@>
+
+#------------------------------------------------------------------------------
+Event ID: 017
+Event Name: EV017
+(X,Y): (035,057)
+
+Page #1
+Conditions
+None
+
+Autonomous Movement
+Type: Fixed
+Speed: 3: Slow
+Freq: 3: Low
+Options Enabled
+Move Animation
+Trigger: Action Button
+
+List of Event Commands:
+@>Text: \sign[signskin]\l[2]<ac>Wisteria Island: Port Exilian<ac>\nA Remote Paradise Nestled In Purple
+@>
+
+#------------------------------------------------------------------------------
+Event ID: 018
+Event Name: EV018
+(X,Y): (031,011)
+
+Page #1
+Conditions
+None
+
+Autonomous Movement
+Type: Fixed
+Speed: 3: Slow
+Freq: 3: Low
+Options Enabled
+Move Animation
+Trigger: Action Button
+
+List of Event Commands:
+@>Text: \sign[signskin]\l[3]<ac>Port Exilian\n</ac>North: Wisteria Forest
+@>
+
+#------------------------------------------------------------------------------
+Event ID: 019
+Event Name: EV019
+(X,Y): (042,054)
+
+Page #1
+Conditions
+None
+
+Graphic: trainer_FISHERMAN
+
+Autonomous Movement
+Type: Custom
+Custom Move Route:
+(Repeat Action)
+$>Turn at Random
+
+Speed: 3: Slow
+Freq: 3: Low
+Options Enabled
+Move Animation
+Trigger: Action Button
+
+List of Event Commands:
+@>Text: Wisteria Beach is renowed for being an amazing fishing spot! All
+ :    : my contacts have told me to go there at some point.
+@>Text: But I haven't been able to hit the beach since this whole situation
+ :    : started!
+@>
+
+#------------------------------------------------------------------------------
+Event ID: 020
+Event Name: EV020
+(X,Y): (033,026)
+
+Page #1
+Conditions
+None
+
+Graphic: NPC 06
+
+Autonomous Movement
+Type: Fixed
+Speed: 3: Slow
+Freq: 3: Low
+Options Enabled
+Move Animation
+Trigger: Action Button
+
+List of Event Commands:
+@>Text: You can see the entirety of Wisteria Island from the observatory.
+@>Text: ...Which really sets in how much of our Island is being afflicted
+ :    : by these weird abnormalities.
+@>
+
+#------------------------------------------------------------------------------
+Event ID: 021
+Event Name: EV021
+(X,Y): (028,050)
+
+Page #1
+Conditions
+None
+
+Graphic: doors3
+
+Autonomous Movement
+Type: Fixed
+Speed: 3: Slow
+Freq: 3: Low
+Options Enabled
+Move Animation
+Trigger: Player Touch
+
+List of Event Commands:
+@>Set Move Route: This event
+                  (Ignore If Can't Move)
+ :              : $>SE: 'Automatic Door', 100, 100
+ :              : $>Wait: 2 frame(s)
+ :              : $>Turn Left
+ :              : $>Wait: 2 frame(s)
+ :              : $>Turn Right
+ :              : $>Wait: 2 frame(s)
+ :              : $>Turn Up
+ :              : $>Wait: 2 frame(s)
+@>Wait for Move's Completion
+@>Set Move Route: Player
+                  (Ignore If Can't Move)
+ :              : $>Through ON
+ :              : $>Move Up
+ :              : $>Through OFF
+@>Wait for Move's Completion
+@>Change Transparent Flag: Transparency
+@>Set Move Route: This event
+                  (Ignore If Can't Move)
+ :              : $>Wait: 2 frame(s)
+ :              : $>Turn Right
+ :              : $>Wait: 2 frame(s)
+ :              : $>Turn Left
+ :              : $>Wait: 2 frame(s)
+ :              : $>Turn Down
+ :              : $>Wait: 2 frame(s)
+@>Wait for Move's Completion
+@>Change Screen Color Tone: (-255,-255,-255,0), @6
+@>Wait: 8 frame(s)
+@>Change Transparent Flag: Normal
+@>Transfer Player:[364: Port Exilian Center], (007,010), Up, No Fade
+@>Change Screen Color Tone: (0,0,0,0), @6
+@>
+
+Page #2
+Conditions
+Switch 0022: s:tsOff?("A") is ON
+
+Graphic: doors3
+
+Autonomous Movement
+Type: Fixed
+Speed: 3: Slow
+Freq: 3: Low
+Options Enabled
+Move Animation
+Trigger: Autorun
+
+List of Event Commands:
+@>Conditional Branch: Script: get_self.onEvent?
+ @>Change Transparent Flag: Transparency
+ @>Set Move Route: This event
+                   (Ignore If Can't Move)
+  :              : $>SE: 'Automatic Door', 100, 100
+  :              : $>Wait: 2 frame(s)
+  :              : $>Turn Left
+  :              : $>Wait: 2 frame(s)
+  :              : $>Turn Right
+  :              : $>Wait: 2 frame(s)
+  :              : $>Turn Up
+  :              : $>Wait: 2 frame(s)
+ @>Wait for Move's Completion
+ @>Change Transparent Flag: Normal
+ @>Set Move Route: Player
+                   (Ignore If Can't Move)
+  :              : $>Move Down
+ @>Wait for Move's Completion
+ @>Set Move Route: This event
+                   (Ignore If Can't Move)
+  :              : $>Turn Right
+  :              : $>Wait: 2 frame(s)
+  :              : $>Turn Left
+  :              : $>Wait: 2 frame(s)
+  :              : $>Turn Down
+  :              : $>Wait: 2 frame(s)
+ @>Wait for Move's Completion
+ @>
+: Branch End
+@>Script: setTempSwitchOn("A")
+@>
+
+#------------------------------------------------------------------------------
+Event ID: 022
+Event Name: Door
+(X,Y): (033,038)
+
+Page #1
+Conditions
+None
+
+Graphic: doors7
+
+Autonomous Movement
+Type: Fixed
+Speed: 3: Slow
+Freq: 3: Low
+Options Enabled
+Move Animation
+Trigger: Player Touch
+
+List of Event Commands:
+@>Set Move Route: This event
+                  (Ignore If Can't Move)
+ :              : $>SE: 'Automatic Door', 100, 100
+ :              : $>Wait: 2 frame(s)
+ :              : $>Turn Left
+ :              : $>Wait: 2 frame(s)
+ :              : $>Turn Right
+ :              : $>Wait: 2 frame(s)
+ :              : $>Turn Up
+ :              : $>Wait: 2 frame(s)
+@>Wait for Move's Completion
+@>Set Move Route: Player
+                  (Ignore If Can't Move)
+ :              : $>Through ON
+ :              : $>Move Up
+ :              : $>Through OFF
+@>Wait for Move's Completion
+@>Change Transparent Flag: Transparency
+@>Set Move Route: This event
+                  (Ignore If Can't Move)
+ :              : $>Wait: 2 frame(s)
+ :              : $>Turn Right
+ :              : $>Wait: 2 frame(s)
+ :              : $>Turn Left
+ :              : $>Wait: 2 frame(s)
+ :              : $>Turn Down
+ :              : $>Wait: 2 frame(s)
+@>Wait for Move's Completion
+@>Change Screen Color Tone: (-255,-255,-255,0), @6
+@>Wait: 8 frame(s)
+@>Change Transparent Flag: Normal
+@>Transfer Player:[366: Port Exilian Town Center], (015,022), Up, No Fade
+@>Change Screen Color Tone: (0,0,0,0), @6
+@>
+
+Page #2
+Conditions
+Switch 0022: s:tsOff?("A") is ON
+
+Graphic: doors7
+
+Autonomous Movement
+Type: Fixed
+Speed: 3: Slow
+Freq: 3: Low
+Options Enabled
+Move Animation
+Trigger: Autorun
+
+List of Event Commands:
+@>Conditional Branch: Script: get_self.onEvent?
+ @>Change Transparent Flag: Transparency
+ @>Set Move Route: This event
+                   (Ignore If Can't Move)
+  :              : $>SE: 'Automatic Door', 100, 100
+  :              : $>Wait: 2 frame(s)
+  :              : $>Turn Left
+  :              : $>Wait: 2 frame(s)
+  :              : $>Turn Right
+  :              : $>Wait: 2 frame(s)
+  :              : $>Turn Up
+  :              : $>Wait: 2 frame(s)
+ @>Wait for Move's Completion
+ @>Change Transparent Flag: Normal
+ @>Set Move Route: Player
+                   (Ignore If Can't Move)
+  :              : $>Move Down
+ @>Wait for Move's Completion
+ @>Set Move Route: This event
+                   (Ignore If Can't Move)
+  :              : $>Turn Right
+  :              : $>Wait: 2 frame(s)
+  :              : $>Turn Left
+  :              : $>Wait: 2 frame(s)
+  :              : $>Turn Down
+  :              : $>Wait: 2 frame(s)
+ @>Wait for Move's Completion
+ @>
+: Branch End
+@>Script: setTempSwitchOn("A")
+@>
+
+#------------------------------------------------------------------------------
+Event ID: 023
+Event Name: EV023
+(X,Y): (039,013)
+
+Page #1
+Conditions
+None
+
+Graphic: doors1
+
+Autonomous Movement
+Type: Fixed
+Speed: 3: Slow
+Freq: 3: Low
+Options Enabled
+Move Animation
+Trigger: Player Touch
+
+List of Event Commands:
+@>Set Move Route: This event
+                  (Ignore If Can't Move)
+ :              : $>SE: 'Door enter', 100, 100
+ :              : $>Wait: 2 frame(s)
+ :              : $>Turn Left
+ :              : $>Wait: 2 frame(s)
+ :              : $>Turn Right
+ :              : $>Wait: 2 frame(s)
+ :              : $>Turn Up
+ :              : $>Wait: 2 frame(s)
+@>Wait for Move's Completion
+@>Set Move Route: Player
+                  (Ignore If Can't Move)
+ :              : $>Through ON
+ :              : $>Move Up
+ :              : $>Through OFF
+@>Wait for Move's Completion
+@>Change Transparent Flag: Transparency
+@>Set Move Route: This event
+                  (Ignore If Can't Move)
+ :              : $>Wait: 2 frame(s)
+ :              : $>Turn Right
+ :              : $>Wait: 2 frame(s)
+ :              : $>Turn Left
+ :              : $>Wait: 2 frame(s)
+ :              : $>Turn Down
+ :              : $>Wait: 2 frame(s)
+@>Wait for Move's Completion
+@>Change Screen Color Tone: (-255,-255,-255,0), @6
+@>Wait: 8 frame(s)
+@>Change Transparent Flag: Normal
+@>Transfer Player:[282: Port Exilian Houses], (006,023), Up, No Fade
+@>Change Screen Color Tone: (0,0,0,0), @6
+@>
+
+Page #2
+Conditions
+Switch 0022: s:tsOff?("A") is ON
+
+Graphic: doors1
+
+Autonomous Movement
+Type: Fixed
+Speed: 3: Slow
+Freq: 3: Low
+Options Enabled
+Move Animation
+Trigger: Autorun
+
+List of Event Commands:
+@>Conditional Branch: Script: get_self.onEvent?
+ @>Change Transparent Flag: Transparency
+ @>Set Move Route: This event
+                   (Ignore If Can't Move)
+  :              : $>SE: 'Door enter', 100, 100
+  :              : $>Wait: 2 frame(s)
+  :              : $>Turn Left
+  :              : $>Wait: 2 frame(s)
+  :              : $>Turn Right
+  :              : $>Wait: 2 frame(s)
+  :              : $>Turn Up
+  :              : $>Wait: 2 frame(s)
+ @>Wait for Move's Completion
+ @>Change Transparent Flag: Normal
+ @>Set Move Route: Player
+                   (Ignore If Can't Move)
+  :              : $>Move Down
+ @>Wait for Move's Completion
+ @>Set Move Route: This event
+                   (Ignore If Can't Move)
+  :              : $>Turn Right
+  :              : $>Wait: 2 frame(s)
+  :              : $>Turn Left
+  :              : $>Wait: 2 frame(s)
+  :              : $>Turn Down
+  :              : $>Wait: 2 frame(s)
+ @>Wait for Move's Completion
+ @>
+: Branch End
+@>Script: setTempSwitchOn("A")
+@>
+
+#------------------------------------------------------------------------------
+Event ID: 024
+Event Name: EV024
+(X,Y): (020,030)
+
+Page #1
+Conditions
+None
+
+Graphic: doors1
+
+Autonomous Movement
+Type: Fixed
+Speed: 3: Slow
+Freq: 3: Low
+Options Enabled
+Move Animation
+Trigger: Player Touch
+
+List of Event Commands:
+@>Set Move Route: This event
+                  (Ignore If Can't Move)
+ :              : $>SE: 'Door enter', 100, 100
+ :              : $>Wait: 2 frame(s)
+ :              : $>Turn Left
+ :              : $>Wait: 2 frame(s)
+ :              : $>Turn Right
+ :              : $>Wait: 2 frame(s)
+ :              : $>Turn Up
+ :              : $>Wait: 2 frame(s)
+@>Wait for Move's Completion
+@>Set Move Route: Player
+                  (Ignore If Can't Move)
+ :              : $>Through ON
+ :              : $>Move Up
+ :              : $>Through OFF
+@>Wait for Move's Completion
+@>Change Transparent Flag: Transparency
+@>Set Move Route: This event
+                  (Ignore If Can't Move)
+ :              : $>Wait: 2 frame(s)
+ :              : $>Turn Right
+ :              : $>Wait: 2 frame(s)
+ :              : $>Turn Left
+ :              : $>Wait: 2 frame(s)
+ :              : $>Turn Down
+ :              : $>Wait: 2 frame(s)
+@>Wait for Move's Completion
+@>Change Screen Color Tone: (-255,-255,-255,0), @6
+@>Wait: 8 frame(s)
+@>Change Transparent Flag: Normal
+@>Transfer Player:[282: Port Exilian Houses], (025,023), Up, No Fade
+@>Change Screen Color Tone: (0,0,0,0), @6
+@>
+
+Page #2
+Conditions
+Switch 0022: s:tsOff?("A") is ON
+
+Graphic: doors1
+
+Autonomous Movement
+Type: Fixed
+Speed: 3: Slow
+Freq: 3: Low
+Options Enabled
+Move Animation
+Trigger: Autorun
+
+List of Event Commands:
+@>Conditional Branch: Script: get_self.onEvent?
+ @>Change Transparent Flag: Transparency
+ @>Set Move Route: This event
+                   (Ignore If Can't Move)
+  :              : $>SE: 'Door enter', 100, 100
+  :              : $>Wait: 2 frame(s)
+  :              : $>Turn Left
+  :              : $>Wait: 2 frame(s)
+  :              : $>Turn Right
+  :              : $>Wait: 2 frame(s)
+  :              : $>Turn Up
+  :              : $>Wait: 2 frame(s)
+ @>Wait for Move's Completion
+ @>Change Transparent Flag: Normal
+ @>Set Move Route: Player
+                   (Ignore If Can't Move)
+  :              : $>Move Down
+ @>Wait for Move's Completion
+ @>Set Move Route: This event
+                   (Ignore If Can't Move)
+  :              : $>Turn Right
+  :              : $>Wait: 2 frame(s)
+  :              : $>Turn Left
+  :              : $>Wait: 2 frame(s)
+  :              : $>Turn Down
+  :              : $>Wait: 2 frame(s)
+ @>Wait for Move's Completion
+ @>
+: Branch End
+@>Script: setTempSwitchOn("A")
+@>
+
+#------------------------------------------------------------------------------
+Event ID: 025
+Event Name: EV025
+(X,Y): (054,030)
+
+Page #1
+Conditions
+None
+
+Graphic: doors1
+
+Autonomous Movement
+Type: Fixed
+Speed: 3: Slow
+Freq: 3: Low
+Options Enabled
+Move Animation
+Trigger: Player Touch
+
+List of Event Commands:
+@>Set Move Route: This event
+                  (Ignore If Can't Move)
+ :              : $>SE: 'Door enter', 100, 100
+ :              : $>Wait: 2 frame(s)
+ :              : $>Turn Left
+ :              : $>Wait: 2 frame(s)
+ :              : $>Turn Right
+ :              : $>Wait: 2 frame(s)
+ :              : $>Turn Up
+ :              : $>Wait: 2 frame(s)
+@>Wait for Move's Completion
+@>Set Move Route: Player
+                  (Ignore If Can't Move)
+ :              : $>Through ON
+ :              : $>Move Up
+ :              : $>Through OFF
+@>Wait for Move's Completion
+@>Change Transparent Flag: Transparency
+@>Set Move Route: This event
+                  (Ignore If Can't Move)
+ :              : $>Wait: 2 frame(s)
+ :              : $>Turn Right
+ :              : $>Wait: 2 frame(s)
+ :              : $>Turn Left
+ :              : $>Wait: 2 frame(s)
+ :              : $>Turn Down
+ :              : $>Wait: 2 frame(s)
+@>Wait for Move's Completion
+@>Change Screen Color Tone: (-255,-255,-255,0), @6
+@>Wait: 8 frame(s)
+@>Change Transparent Flag: Normal
+@>Transfer Player:[282: Port Exilian Houses], (044,023), Up, No Fade
+@>Change Screen Color Tone: (0,0,0,0), @6
+@>
+
+Page #2
+Conditions
+Switch 0022: s:tsOff?("A") is ON
+
+Graphic: doors1
+
+Autonomous Movement
+Type: Fixed
+Speed: 3: Slow
+Freq: 3: Low
+Options Enabled
+Move Animation
+Trigger: Autorun
+
+List of Event Commands:
+@>Conditional Branch: Script: get_self.onEvent?
+ @>Change Transparent Flag: Transparency
+ @>Set Move Route: This event
+                   (Ignore If Can't Move)
+  :              : $>SE: 'Door enter', 100, 100
+  :              : $>Wait: 2 frame(s)
+  :              : $>Turn Left
+  :              : $>Wait: 2 frame(s)
+  :              : $>Turn Right
+  :              : $>Wait: 2 frame(s)
+  :              : $>Turn Up
+  :              : $>Wait: 2 frame(s)
+ @>Wait for Move's Completion
+ @>Change Transparent Flag: Normal
+ @>Set Move Route: Player
+                   (Ignore If Can't Move)
+  :              : $>Move Down
+ @>Wait for Move's Completion
+ @>Set Move Route: This event
+                   (Ignore If Can't Move)
+  :              : $>Turn Right
+  :              : $>Wait: 2 frame(s)
+  :              : $>Turn Left
+  :              : $>Wait: 2 frame(s)
+  :              : $>Turn Down
+  :              : $>Wait: 2 frame(s)
+ @>Wait for Move's Completion
+ @>
+: Branch End
+@>Script: setTempSwitchOn("A")
+@>
+
+#------------------------------------------------------------------------------
+Event ID: 026
+Event Name: EV026
+(X,Y): (024,057)
+
+Page #1
+Conditions
+None
+
+Graphic: doors1
+
+Autonomous Movement
+Type: Fixed
+Speed: 3: Slow
+Freq: 3: Low
+Options Enabled
+Move Animation
+Trigger: Player Touch
+
+List of Event Commands:
+@>Set Move Route: This event
+                  (Ignore If Can't Move)
+ :              : $>SE: 'Door enter', 100, 100
+ :              : $>Wait: 2 frame(s)
+ :              : $>Turn Left
+ :              : $>Wait: 2 frame(s)
+ :              : $>Turn Right
+ :              : $>Wait: 2 frame(s)
+ :              : $>Turn Up
+ :              : $>Wait: 2 frame(s)
+@>Wait for Move's Completion
+@>Set Move Route: Player
+                  (Ignore If Can't Move)
+ :              : $>Through ON
+ :              : $>Move Up
+ :              : $>Through OFF
+@>Wait for Move's Completion
+@>Change Transparent Flag: Transparency
+@>Set Move Route: This event
+                  (Ignore If Can't Move)
+ :              : $>Wait: 2 frame(s)
+ :              : $>Turn Right
+ :              : $>Wait: 2 frame(s)
+ :              : $>Turn Left
+ :              : $>Wait: 2 frame(s)
+ :              : $>Turn Down
+ :              : $>Wait: 2 frame(s)
+@>Wait for Move's Completion
+@>Change Screen Color Tone: (-255,-255,-255,0), @6
+@>Wait: 8 frame(s)
+@>Change Transparent Flag: Normal
+@>Transfer Player:[282: Port Exilian Houses], (064,023), Up, No Fade
+@>Change Screen Color Tone: (0,0,0,0), @6
+@>
+
+Page #2
+Conditions
+Switch 0022: s:tsOff?("A") is ON
+
+Graphic: doors1
+
+Autonomous Movement
+Type: Fixed
+Speed: 3: Slow
+Freq: 3: Low
+Options Enabled
+Move Animation
+Trigger: Autorun
+
+List of Event Commands:
+@>Conditional Branch: Script: get_self.onEvent?
+ @>Change Transparent Flag: Transparency
+ @>Set Move Route: This event
+                   (Ignore If Can't Move)
+  :              : $>SE: 'Door enter', 100, 100
+  :              : $>Wait: 2 frame(s)
+  :              : $>Turn Left
+  :              : $>Wait: 2 frame(s)
+  :              : $>Turn Right
+  :              : $>Wait: 2 frame(s)
+  :              : $>Turn Up
+  :              : $>Wait: 2 frame(s)
+ @>Wait for Move's Completion
+ @>Change Transparent Flag: Normal
+ @>Set Move Route: Player
+                   (Ignore If Can't Move)
+  :              : $>Move Down
+ @>Wait for Move's Completion
+ @>Set Move Route: This event
+                   (Ignore If Can't Move)
+  :              : $>Turn Right
+  :              : $>Wait: 2 frame(s)
+  :              : $>Turn Left
+  :              : $>Wait: 2 frame(s)
+  :              : $>Turn Down
+  :              : $>Wait: 2 frame(s)
+ @>Wait for Move's Completion
+ @>
+: Branch End
+@>Script: setTempSwitchOn("A")
+@>
+
+#------------------------------------------------------------------------------
+Event ID: 027
+Event Name: EV027
+(X,Y): (013,029)
+
+Page #1
+Conditions
+None
+
+Graphic: doors1
+
+Autonomous Movement
+Type: Fixed
+Speed: 3: Slow
+Freq: 3: Low
+Options Enabled
+Move Animation
+Trigger: Player Touch
+
+List of Event Commands:
+@>Set Move Route: This event
+                  (Ignore If Can't Move)
+ :              : $>SE: 'Door enter', 100, 100
+ :              : $>Wait: 2 frame(s)
+ :              : $>Turn Left
+ :              : $>Wait: 2 frame(s)
+ :              : $>Turn Right
+ :              : $>Wait: 2 frame(s)
+ :              : $>Turn Up
+ :              : $>Wait: 2 frame(s)
+@>Wait for Move's Completion
+@>Set Move Route: Player
+                  (Ignore If Can't Move)
+ :              : $>Through ON
+ :              : $>Move Up
+ :              : $>Through OFF
+@>Wait for Move's Completion
+@>Change Transparent Flag: Transparency
+@>Set Move Route: This event
+                  (Ignore If Can't Move)
+ :              : $>Wait: 2 frame(s)
+ :              : $>Turn Right
+ :              : $>Wait: 2 frame(s)
+ :              : $>Turn Left
+ :              : $>Wait: 2 frame(s)
+ :              : $>Turn Down
+ :              : $>Wait: 2 frame(s)
+@>Wait for Move's Completion
+@>Change Screen Color Tone: (-255,-255,-255,0), @6
+@>Wait: 8 frame(s)
+@>Change Transparent Flag: Normal
+@>Transfer Player:[282: Port Exilian Houses], (025,042), Up, No Fade
+@>Change Screen Color Tone: (0,0,0,0), @6
+@>
+
+Page #2
+Conditions
+Switch 0022: s:tsOff?("A") is ON
+
+Graphic: doors1
+
+Autonomous Movement
+Type: Fixed
+Speed: 3: Slow
+Freq: 3: Low
+Options Enabled
+Move Animation
+Trigger: Autorun
+
+List of Event Commands:
+@>Conditional Branch: Script: get_self.onEvent?
+ @>Change Transparent Flag: Transparency
+ @>Set Move Route: This event
+                   (Ignore If Can't Move)
+  :              : $>SE: 'Door enter', 100, 100
+  :              : $>Wait: 2 frame(s)
+  :              : $>Turn Left
+  :              : $>Wait: 2 frame(s)
+  :              : $>Turn Right
+  :              : $>Wait: 2 frame(s)
+  :              : $>Turn Up
+  :              : $>Wait: 2 frame(s)
+ @>Wait for Move's Completion
+ @>Change Transparent Flag: Normal
+ @>Set Move Route: Player
+                   (Ignore If Can't Move)
+  :              : $>Move Down
+ @>Wait for Move's Completion
+ @>Set Move Route: This event
+                   (Ignore If Can't Move)
+  :              : $>Turn Right
+  :              : $>Wait: 2 frame(s)
+  :              : $>Turn Left
+  :              : $>Wait: 2 frame(s)
+  :              : $>Turn Down
+  :              : $>Wait: 2 frame(s)
+ @>Wait for Move's Completion
+ @>
+: Branch End
+@>Script: setTempSwitchOn("A")
+@>
+
+#------------------------------------------------------------------------------
+Event ID: 028
+Event Name: EV028
+(X,Y): (037,057)
+
+Page #1
+Conditions
+None
+
+Graphic: doors1
+
+Autonomous Movement
+Type: Fixed
+Speed: 3: Slow
+Freq: 3: Low
+Options Enabled
+Move Animation
+Trigger: Player Touch
+
+List of Event Commands:
+@>Set Move Route: This event
+                  (Ignore If Can't Move)
+ :              : $>SE: 'Door enter', 100, 100
+ :              : $>Wait: 2 frame(s)
+ :              : $>Turn Left
+ :              : $>Wait: 2 frame(s)
+ :              : $>Turn Right
+ :              : $>Wait: 2 frame(s)
+ :              : $>Turn Up
+ :              : $>Wait: 2 frame(s)
+@>Wait for Move's Completion
+@>Set Move Route: Player
+                  (Ignore If Can't Move)
+ :              : $>Through ON
+ :              : $>Move Up
+ :              : $>Through OFF
+@>Wait for Move's Completion
+@>Change Transparent Flag: Transparency
+@>Set Move Route: This event
+                  (Ignore If Can't Move)
+ :              : $>Wait: 2 frame(s)
+ :              : $>Turn Right
+ :              : $>Wait: 2 frame(s)
+ :              : $>Turn Left
+ :              : $>Wait: 2 frame(s)
+ :              : $>Turn Down
+ :              : $>Wait: 2 frame(s)
+@>Wait for Move's Completion
+@>Change Screen Color Tone: (-255,-255,-255,0), @6
+@>Wait: 8 frame(s)
+@>Change Transparent Flag: Normal
+@>Transfer Player:[282: Port Exilian Houses], (044,042), Up, No Fade
+@>Change Screen Color Tone: (0,0,0,0), @6
+@>
+
+Page #2
+Conditions
+Switch 0022: s:tsOff?("A") is ON
+
+Graphic: doors1
+
+Autonomous Movement
+Type: Fixed
+Speed: 3: Slow
+Freq: 3: Low
+Options Enabled
+Move Animation
+Trigger: Autorun
+
+List of Event Commands:
+@>Conditional Branch: Script: get_self.onEvent?
+ @>Change Transparent Flag: Transparency
+ @>Set Move Route: This event
+                   (Ignore If Can't Move)
+  :              : $>SE: 'Door enter', 100, 100
+  :              : $>Wait: 2 frame(s)
+  :              : $>Turn Left
+  :              : $>Wait: 2 frame(s)
+  :              : $>Turn Right
+  :              : $>Wait: 2 frame(s)
+  :              : $>Turn Up
+  :              : $>Wait: 2 frame(s)
+ @>Wait for Move's Completion
+ @>Change Transparent Flag: Normal
+ @>Set Move Route: Player
+                   (Ignore If Can't Move)
+  :              : $>Move Down
+ @>Wait for Move's Completion
+ @>Set Move Route: This event
+                   (Ignore If Can't Move)
+  :              : $>Turn Right
+  :              : $>Wait: 2 frame(s)
+  :              : $>Turn Left
+  :              : $>Wait: 2 frame(s)
+  :              : $>Turn Down
+  :              : $>Wait: 2 frame(s)
+ @>Wait for Move's Completion
+ @>
+: Branch End
+@>Script: setTempSwitchOn("A")
+@>
+
+#------------------------------------------------------------------------------
 
 #==============================================================================
 Map ID: 280
-Map Name: Wisteria Island - Snowy Forest
-Tileset: 001: Outside
-Width: 20, Height: 15
+Map Name: Graveyard Crypt
+Tileset: 019: Ruins
+Width: 55, Height: 32
+
+#------------------------------------------------------------------------------
+Event ID: 001
+Event Name: Item
+(X,Y): (005,005)
+
+Page #1
+Conditions
+None
+
+Graphic: Object ball
+
+Autonomous Movement
+Type: Fixed
+Speed: 3: Slow
+Freq: 3: Low
+Options Enabled
+Move Animation
+Trigger: Action Button
+
+List of Event Commands:
+@>Conditional Branch: Script: pbItemBall(:LIFEORB)
+ @>Control Self Switch: A =ON
+ @>
+: Else
+ @>
+: Branch End
+@>
+
+Page #2
+Conditions
+Self Switch A is ON
+
+Autonomous Movement
+Type: Fixed
+Speed: 3: Slow
+Freq: 3: Low
+Options Enabled
+Move Animation
+Trigger: Action Button
+
+List of Event Commands:
+@>
+
+#------------------------------------------------------------------------------
+Event ID: 002
+Event Name: EV002
+(X,Y): (026,015)
+
+Page #1
+Conditions
+None
+
+Autonomous Movement
+Type: Fixed
+Speed: 3: Slow
+Freq: 3: Low
+Options Enabled
+Move Animation
+Trigger: Action Button
+
+List of Event Commands:
+@>Conditional Branch: Player is facing Up
+ @>
+: Else
+ @>Change Screen Color Tone: (-255,-255,-255,0), @6
+ @>Wait: 8 frame(s)
+ @>Transfer Player:[280: Graveyard Crypt], (026,016), Up, No Fade
+ @>Change Screen Color Tone: (0,0,0,0), @6
+ @>
+: Branch End
+@>Text: It's an unmarked grave.
+@>Wait: 20 frame(s)
+@>Change Text Options: Middle, Hide
+@>Text: <i>Would you like for it to be yours?</i>
+@>Show Animation: Player, [Exclaim bubble]
+@>Change Text Options: Bottom, Show
+@>Comment: Insert cutscene of camera panning up to Yuyuko Omega
+ :       : Have Yuyuko Omega descend until she's standing over the grave
+ :       : Have camera pan alongside Yuyuko Omega
+@>Text: <i>This tree is so close to a full bloom... would you care to water it?</i>
+@>Text: <i>Yes... with that beautiful, red water you have inside of you...</i>
+@>Control Switches: [0125: Battled an Avatar] = ON
+@>
+
+#------------------------------------------------------------------------------
 
 #==============================================================================
 Map ID: 281
-Map Name: Wisteria Island - Sunny Beach
+Map Name: Wisteria Beach
 Tileset: 001: Outside
 Width: 20, Height: 15
 
 #==============================================================================
 Map ID: 282
-Map Name: Wisteria Island - Central Command
-Tileset: 001: Outside
-Width: 20, Height: 15
+Map Name: Port Exilian Houses
+Tileset: 003: Inside
+Width: 71, Height: 50
+Auto-Change BGM: W-032. Port Exilian
+
+#------------------------------------------------------------------------------
+Event ID: 001
+Event Name: Trade NPC
+(X,Y): (061,006)
+
+Page #1
+Conditions
+None
+
+Autonomous Movement
+Type: Fixed
+Speed: 3: Slow
+Freq: 3: Low
+Options Enabled
+Move Animation
+Trigger: Action Button
+
+List of Event Commands:
+@>Comment: Trade Request: Summer Parallel Puppet for its Normal Version
+@>
+
+#------------------------------------------------------------------------------
+Event ID: 002
+Event Name: EV002
+(X,Y): (062,020)
+
+Page #1
+Conditions
+None
+
+Graphic: trainer_AROMALADY
+
+Autonomous Movement
+Type: Fixed
+Speed: 3: Slow
+Freq: 3: Low
+Options Enabled
+Move Animation
+Trigger: Action Button
+
+List of Event Commands:
+@>Text: My son has been up in his room studying the differences
+ :    : between the Puppets discovered here, and those first
+ :    : discovered.
+@>Text: If you have a moment, you should talk with him. Maybe 
+ :    : you can assist in his research!
+@>
+
+#------------------------------------------------------------------------------
+Event ID: 003
+Event Name: EV003
+(X,Y): (048,006)
+
+Page #1
+Conditions
+None
+
+Graphic: NPC 08
+
+Autonomous Movement
+Type: Fixed
+Speed: 3: Slow
+Freq: 3: Low
+Options Enabled
+Move Animation
+Trigger: Action Button
+
+List of Event Commands:
+@>Text: I'm drafting a list of all the things we'll need for our next book
+ :    : club meeting.
+@>
+
+#------------------------------------------------------------------------------
+Event ID: 004
+Event Name: EV004
+(X,Y): (041,018)
+
+Page #1
+Conditions
+None
+
+Graphic: trainer_COOLTRAINER_M
+
+Autonomous Movement
+Type: Fixed
+Speed: 3: Slow
+Freq: 3: Low
+Options Enabled
+Move Animation
+Trigger: Action Button
+
+List of Event Commands:
+@>Text: Are you here to join our book club? We're always
+ :    : looking for new members!
+@>Text: This month we're reading over an interesting novel where
+ :    : the protagnist turns into a Pikachu and has to find their way
+ :    : home.
+@>
+
+#------------------------------------------------------------------------------
+Event ID: 005
+Event Name: EV005
+(X,Y): (021,018)
+
+Page #1
+Conditions
+None
+
+Graphic: NPC 07
+
+Autonomous Movement
+Type: Fixed
+Speed: 3: Slow
+Freq: 3: Low
+Options Enabled
+Move Animation
+Trigger: Action Button
+
+List of Event Commands:
+@>Text: There's nothing that we can do to resolve the issues on
+ :    : our island.
+@>Text: So all we can do is go about out daily lives, and hope that
+ :    : Mayor Libra can find a way to resolve the situation.
+@>
+
+#------------------------------------------------------------------------------
+Event ID: 006
+Event Name: EV006
+(X,Y): (026,020)
+
+Page #1
+Conditions
+None
+
+Graphic: trainer_LADY
+
+Autonomous Movement
+Type: Fixed
+Speed: 3: Slow
+Freq: 3: Low
+Options Enabled
+Move Animation
+Trigger: Action Button
+
+List of Event Commands:
+@>Text: My husband has been doing his best to try and keep us calm
+ :    : in these trying times.
+@>Text: I'm just worried about the world my daughter is growing up 
+ :    : into...
+@>
+
+#------------------------------------------------------------------------------
+Event ID: 007
+Event Name: EV007
+(X,Y): (026,006)
+
+Page #1
+Conditions
+None
+
+Graphic: trainer_SCHOOLKID_f
+
+Autonomous Movement
+Type: Fixed
+Speed: 3: Slow
+Freq: 3: Low
+Options Enabled
+Move Animation
+Trigger: Action Button
+
+List of Event Commands:
+@>Text: I really wanna explore the forest and see the snow, but
+ :    : my parents say its too dangerous!
+@>
+
+#------------------------------------------------------------------------------
+Event ID: 008
+Event Name: EV008 
+(X,Y): (004,005)
+
+Page #1
+Conditions
+None
+
+Graphic: trainer_COOLTRAINER_F
+
+Autonomous Movement
+Type: Random
+Speed: 3: Slow
+Freq: 3: Low
+Options Enabled
+Move Animation
+Trigger: Action Button
+
+List of Event Commands:
+@>Text: Did you know that the Lucky Punch and the Nyuudou Fist look 
+ :    : extremely similar?
+@>Text: I didn'- until I bought the wrong one, that is.
+@>Text: So uh, if you have an Ichirin, you might find this useful.
+@>Script: pbReceiveItem(:NYUUDOUFIST)
+@>Text: Like the Lukcy Punch, it'll boost the Critical Hit ratio for both
+ :    : Chibi Ichirin and Ichirin Puppets<i>specifically</i>.
+@>Control Self Switch: A =ON
+@>
+
+Page #2
+Conditions
+None
+
+Graphic: trainer_COOLTRAINER_F
+
+Autonomous Movement
+Type: Random
+Speed: 3: Slow
+Freq: 3: Low
+Options Enabled
+Move Animation
+Trigger: Action Button
+
+List of Event Commands:
+@>Text: While we're on the topic of Chansey, have you heard rumors of
+ :    : a special blue colored one?
+@>Text: Apparently instead of holding an egg in its pouch, it holds some
+ :    : sort of cup filled with water.
+@>Text: I've never seen it before, but I'd love to meet it one day!
+@>
+
+#------------------------------------------------------------------------------
+Event ID: 009
+Event Name: Trade NPC
+(X,Y): (026,039)
+
+Page #1
+Conditions
+None
+
+Autonomous Movement
+Type: Fixed
+Speed: 3: Slow
+Freq: 3: Low
+Options Enabled
+Move Animation
+Trigger: Action Button
+
+List of Event Commands:
+@>Comment: Trade Request: Winter Parallel Puppet for its Normal Version
+@>
+
+#------------------------------------------------------------------------------
+Event ID: 010
+Event Name: EV010
+(X,Y): (004,020)
+
+Page #1
+Conditions
+None
+
+Graphic: trainer_FISHERMAN
+
+Autonomous Movement
+Type: Fixed
+Speed: 3: Slow
+Freq: 3: Low
+Options Enabled
+Move Animation
+Trigger: Action Button
+
+List of Event Commands:
+@>Text: I'm gearing up to hit the Troditiran Region, I hear that big
+ :    : fish have been spotted in their oceans!
+@>
+
+#------------------------------------------------------------------------------
+Event ID: 011
+Event Name: EV011
+(X,Y): (023,039)
+
+Page #1
+Conditions
+None
+
+Graphic: NPC 11
+
+Autonomous Movement
+Type: Fixed
+Speed: 3: Slow
+Freq: 3: Low
+Options Enabled
+Move Animation
+Trigger: Action Button
+
+List of Event Commands:
+@>Text: The mayors of our humble city are part of a lineage that dates 
+ :    : back to the settling of this island
+@>Text: Libra, her father Yuri, his mother... all of them and beyond have 
+ :    : been mayor.
+@>Text: Libra must be feeling so pressured right now trying to live up
+ :    : to her family's legacy.
+@>
+
+#------------------------------------------------------------------------------
+Event ID: 012
+Event Name: EV012
+(X,Y): (045,039)
+
+Page #1
+Conditions
+None
+
+Graphic: trainer_GENTLEMAN
+
+Autonomous Movement
+Type: Fixed
+Speed: 3: Slow
+Freq: 3: Low
+Options Enabled
+Move Animation
+Trigger: Action Button
+
+List of Event Commands:
+@>Text: Do you know of the Great Schism?
+@>Text: It's a event that happened several hundred years ago, back when
+ :    : Pokémon were still referred to as "Magical Creatures".
+@>Text: A sorcerer from the village of Troditiran begun a conquest of
+ :    : the Zirconial Continent.
+@>Text: His reign of terror was stopped when one of the fabled 
+ :    : "Mouths of Arceus" from the village of Yitria met him on 
+ :    : the field of battle.
+@>Text: Their duel was so intense that it split the land apart, and cast the
+ :    : landmasses adrift into the Zircon Ocean.
+@>Text: These landmasses came to be known after their largest villages,
+ :    : Yitria and Troditiran, respectively.
+@>Text: They say that Wisteria Island was one of the many fragments that 
+ :    : broke off during the duel.
+@>Text: How do I know all this? Why, a lady who claims to hail from
+ :    : the Yitria Region visited here not long ago and told me the story!
+@>Text: I believe she called herself a lorekeeper, and that it was her duty
+ :    : to make sure people never forget what happened back then.
+@>
+
+#------------------------------------------------------------------------------
+Event ID: 013
+Event Name: ExitArrow
+(X,Y): (006,024)
+
+Page #1
+Conditions
+None
+
+Graphic: Exitarrow_red
+
+Autonomous Movement
+Type: Fixed
+Speed: 3: Slow
+Freq: 3: Low
+Options Enabled
+Move Animation
+Stop Animation
+Always on Top
+Trigger: Player Touch
+
+List of Event Commands:
+@>Conditional Branch: Player is facing Down
+ @>Play SE: 'Door exit', 100, 100
+ @>Change Screen Color Tone: (-255,-255,-255,0), @6
+ @>Wait: 8 frame(s)
+ @>Transfer Player:[279: Port Exilian], (039,013), No Fade
+ @>Change Screen Color Tone: (0,0,0,0), @6
+ @>
+: Branch End
+@>
+
+#------------------------------------------------------------------------------
+Event ID: 014
+Event Name: ExitArrow
+(X,Y): (025,024)
+
+Page #1
+Conditions
+None
+
+Graphic: Exitarrow_red
+
+Autonomous Movement
+Type: Fixed
+Speed: 3: Slow
+Freq: 3: Low
+Options Enabled
+Move Animation
+Stop Animation
+Always on Top
+Trigger: Player Touch
+
+List of Event Commands:
+@>Conditional Branch: Player is facing Down
+ @>Play SE: 'Door exit', 100, 100
+ @>Change Screen Color Tone: (-255,-255,-255,0), @6
+ @>Wait: 8 frame(s)
+ @>Transfer Player:[279: Port Exilian], (020,030), No Fade
+ @>Change Screen Color Tone: (0,0,0,0), @6
+ @>
+: Branch End
+@>
+
+#------------------------------------------------------------------------------
+Event ID: 015
+Event Name: ExitArrow
+(X,Y): (044,024)
+
+Page #1
+Conditions
+None
+
+Graphic: Exitarrow_red
+
+Autonomous Movement
+Type: Fixed
+Speed: 3: Slow
+Freq: 3: Low
+Options Enabled
+Move Animation
+Stop Animation
+Always on Top
+Trigger: Player Touch
+
+List of Event Commands:
+@>Conditional Branch: Player is facing Down
+ @>Play SE: 'Door exit', 100, 100
+ @>Change Screen Color Tone: (-255,-255,-255,0), @6
+ @>Wait: 8 frame(s)
+ @>Transfer Player:[279: Port Exilian], (054,030), No Fade
+ @>Change Screen Color Tone: (0,0,0,0), @6
+ @>
+: Branch End
+@>
+
+#------------------------------------------------------------------------------
+Event ID: 016
+Event Name: ExitArrow
+(X,Y): (064,024)
+
+Page #1
+Conditions
+None
+
+Graphic: Exitarrow_red
+
+Autonomous Movement
+Type: Fixed
+Speed: 3: Slow
+Freq: 3: Low
+Options Enabled
+Move Animation
+Stop Animation
+Always on Top
+Trigger: Player Touch
+
+List of Event Commands:
+@>Conditional Branch: Player is facing Down
+ @>Play SE: 'Door exit', 100, 100
+ @>Change Screen Color Tone: (-255,-255,-255,0), @6
+ @>Wait: 8 frame(s)
+ @>Transfer Player:[279: Port Exilian], (024,057), No Fade
+ @>Change Screen Color Tone: (0,0,0,0), @6
+ @>
+: Branch End
+@>
+
+#------------------------------------------------------------------------------
+Event ID: 017
+Event Name: ExitArrow
+(X,Y): (025,043)
+
+Page #1
+Conditions
+None
+
+Graphic: Exitarrow_red
+
+Autonomous Movement
+Type: Fixed
+Speed: 3: Slow
+Freq: 3: Low
+Options Enabled
+Move Animation
+Stop Animation
+Always on Top
+Trigger: Player Touch
+
+List of Event Commands:
+@>Conditional Branch: Player is facing Down
+ @>Play SE: 'Door exit', 100, 100
+ @>Change Screen Color Tone: (-255,-255,-255,0), @6
+ @>Wait: 8 frame(s)
+ @>Transfer Player:[279: Port Exilian], (013,029), No Fade
+ @>Change Screen Color Tone: (0,0,0,0), @6
+ @>
+: Branch End
+@>
+
+#------------------------------------------------------------------------------
+Event ID: 018
+Event Name: ExitArrow
+(X,Y): (044,043)
+
+Page #1
+Conditions
+None
+
+Graphic: Exitarrow_red
+
+Autonomous Movement
+Type: Fixed
+Speed: 3: Slow
+Freq: 3: Low
+Options Enabled
+Move Animation
+Stop Animation
+Always on Top
+Trigger: Player Touch
+
+List of Event Commands:
+@>Conditional Branch: Player is facing Down
+ @>Play SE: 'Door exit', 100, 100
+ @>Change Screen Color Tone: (-255,-255,-255,0), @6
+ @>Wait: 8 frame(s)
+ @>Transfer Player:[279: Port Exilian], (037,057), No Fade
+ @>Change Screen Color Tone: (0,0,0,0), @6
+ @>
+: Branch End
+@>
+
+#------------------------------------------------------------------------------
 
 #==============================================================================
 Map ID: 283
-Map Name: Wisteria Island - Rest Stop
-Tileset: 001: Outside
-Width: 20, Height: 15
+Map Name: PWT Lobby
+Tileset: 043: PWT Arena
+Width: 25, Height: 20
+Auto-Change BGM: 
+
+#------------------------------------------------------------------------------
+Event ID: 001
+Event Name: Counter(1)
+(X,Y): (012,008)
+
+Page #1
+Conditions
+None
+
+Graphic: NPC 23
+
+Autonomous Movement
+Type: Fixed
+Speed: 3: Slow
+Freq: 3: Low
+Options Enabled
+Move Animation
+Trigger: Action Button
+
+List of Event Commands:
+@>Comment: Event reserved for the lobby counter person
+ :       : that takes the Player's PWT application.
+ :       : Also used to start the PWT.
+@>Script: startPWT
+@>
+
+#------------------------------------------------------------------------------
+Event ID: 002
+Event Name: BP Vendor
+(X,Y): (020,015)
+
+Page #1
+Conditions
+None
+
+Autonomous Movement
+Type: Fixed
+Speed: 3: Slow
+Freq: 3: Low
+Options Enabled
+Move Animation
+Trigger: Action Button
+
+List of Event Commands:
+@>Comment: Vitamins, Active Hold Items, Passive Hold Item, Power Items
+@>
+
+#------------------------------------------------------------------------------
+Event ID: 003
+Event Name: EV003
+(X,Y): (010,014)
+
+Page #1
+Conditions
+None
+
+Autonomous Movement
+Type: Fixed
+Speed: 3: Slow
+Freq: 3: Low
+Options Enabled
+Move Animation
+Trigger: Action Button
+
+List of Event Commands:
+@>Comment: NPC that gives you the points viewer
+@>
+
+#------------------------------------------------------------------------------
+Event ID: 004
+Event Name: EV004
+(X,Y): (003,001)
+
+Page #1
+Conditions
+None
+
+Autonomous Movement
+Type: Fixed
+Speed: 3: Slow
+Freq: 3: Low
+Options Enabled
+Move Animation
+Trigger: Action Button
+
+List of Event Commands:
+@>Comment: Points Viewer should activate a custom GUI that displays total
+ :       : point count, last victory, and the win/loss/draw ratio for all
+ :       : tournaments.
+@>Comment: Maybe.
+@>
+
+#------------------------------------------------------------------------------
+Event ID: 005
+Event Name: EV005
+(X,Y): (005,009)
+
+Page #1
+Conditions
+None
+
+Graphic: trainer_COLLECTOR
+
+Autonomous Movement
+Type: Fixed
+Speed: 3: Slow
+Freq: 3: Low
+Options Enabled
+Move Animation
+Direction Fix
+Trigger: Action Button
+
+List of Event Commands:
+@>Text: This contest will be the perfect place to show off my...
+ :    : enhancements. Nobody will beat my Puppets. Heheh.
+@>
+
+#------------------------------------------------------------------------------
+Event ID: 006
+Event Name: EV006
+(X,Y): (006,012)
+
+Page #1
+Conditions
+None
+
+Graphic: NPC 13
+
+Autonomous Movement
+Type: Fixed
+Speed: 3: Slow
+Freq: 3: Low
+Options Enabled
+Move Animation
+Trigger: Action Button
+
+List of Event Commands:
+@>Text: I've heard that there's special tournament brackets, open
+ :    : only to those who meet special qualifications.
+@>Text: I wonder what those qualifications are?
+@>
+
+#------------------------------------------------------------------------------
+Event ID: 007
+Event Name: EV007
+(X,Y): (006,015)
+
+Page #1
+Conditions
+None
+
+Graphic: trainer_ENGINEER
+
+Autonomous Movement
+Type: Fixed
+Speed: 3: Slow
+Freq: 3: Low
+Options Enabled
+Move Animation
+Trigger: Action Button
+
+List of Event Commands:
+@>Text: I brought my daughter here because she wanted
+ :    : to enter the tournament.
+@>Text: If you ever fight her, don't go easy on her! She's
+ :    : stronger than our hometown Gym Leader!
+@>
+
+#------------------------------------------------------------------------------
+Event ID: 008
+Event Name: EV008
+(X,Y): (015,011)
+
+Page #1
+Conditions
+None
+
+Graphic: trainer_LASS
+
+Autonomous Movement
+Type: Random
+Speed: 3: Slow
+Freq: 3: Low
+Options Enabled
+Move Animation
+Trigger: Action Button
+
+List of Event Commands:
+@>Text: I got my parents to take me here so I could
+ :    : enter the tournament! Good luck to you!
+@>
+
+#------------------------------------------------------------------------------
+Event ID: 009
+Event Name: EV009
+(X,Y): (018,013)
+
+Page #1
+Conditions
+None
+
+Graphic: trainer_COOLTRAINER_M
+
+Autonomous Movement
+Type: Fixed
+Speed: 3: Slow
+Freq: 3: Low
+Options Enabled
+Move Animation
+Trigger: Action Button
+
+List of Event Commands:
+@>Text: They sure do have a lot of items you can get here.
+@>Text: I think I'll pick up a few utility items, can't go wrong
+ :    : with those.
+@>
+
+#------------------------------------------------------------------------------
+Event ID: 010
+Event Name: ExitArrow
+(X,Y): (012,018)
+
+Page #1
+Conditions
+None
+
+Graphic: Exitarrow_red
+
+Autonomous Movement
+Type: Fixed
+Speed: 3: Slow
+Freq: 3: Low
+Options Enabled
+Move Animation
+Stop Animation
+Always on Top
+Trigger: Player Touch
+
+List of Event Commands:
+@>Conditional Branch: Player is facing Down
+ @>Play SE: 'Door exit', 100, 100
+ @>Change Screen Color Tone: (-255,-255,-255,0), @6
+ @>Wait: 8 frame(s)
+ @>Transfer Player:[075: Crystal Mountain], (021,028), No Fade
+ @>Change Screen Color Tone: (0,0,0,0), @6
+ @>
+: Branch End
+@>
+
+#------------------------------------------------------------------------------
+Event ID: 011
+Event Name: EV011
+(X,Y): (014,008)
+
+Page #1
+Conditions
+None
+
+Autonomous Movement
+Type: Fixed
+Speed: 3: Slow
+Freq: 3: Low
+Options Enabled
+Move Animation
+Trigger: Action Button
+
+List of Event Commands:
+@>Text: This board seems to show total victories and defeats in the
+ :    : World Tournament.
+@>Conditional Branch: Script: $stats.pwt_loss.values.sum > 0 || $stats.pwt_wins.values.sum > 0
+ @>Script: $game_variables[1] = $stats.pwt_wins.values.sum
+ :       : $game_variables[2] = $stats.pwt_loss.values.sum
+ @>Text: \l[3]Statistics for \pn:
+  :    : \nTotal victories: \v[1]
+  :    : \nTotal defeats: \v[2]
+ @>
+: Branch End
+@>
+
+#------------------------------------------------------------------------------
+Event ID: 012
+Event Name: EV012
+(X,Y): (016,009)
+
+Page #1
+Conditions
+None
+
+Graphic: NPC 22
+
+Autonomous Movement
+Type: Fixed
+Speed: 3: Slow
+Freq: 3: Low
+Options Enabled
+Move Animation
+Trigger: Action Button
+
+List of Event Commands:
+@>Text: Would you like an explanation of how the Pokémon World 
+ :    : Tournament works?
+@>Show Choices: Yes, No
+(When Cancel: Choice 2)
+: When [Yes]
+ @>Text: Here in the Pokémon World Tournament, you select a specific 
+  :    : tournament to take part in. 
+ @>Text: Each tournament consists of three rounds. If you clear all
+  :    : three rounds you are awarded with Battle Points.
+ @>Text: The amount of Battle Points you earn for winning is dependant
+  :    : on the relevant tournament and your win streak within that
+  :    : tournament.
+ @>Text: Each tournament is broken into different challenge modes.
+ @>Text: Singles, which allows you to take 3 Pokémon into a one on one
+  :    : battle against the other trainers.
+ @>Text: Doubles, which allows you to take 4 Pokémon into a two on two
+  :    : battle against the other trainers.
+ @>Text: Full, which allows you to take all of your Pokémon into a one on one
+  :    : battle against the other trainers.
+ @>Text: And Sudden Death, where you may only bring in one Pokémon to battle
+  :    : against each trainer.
+ @>Text: And finally, money and experience is not gained while in a tournament.
+ @>
+: When [No]
+ @>Text: If you ever need a reminder of how the tournaments work, I'm
+  :    : always here to help!
+ @>
+: Branch End
+@>
+
+#------------------------------------------------------------------------------
+Event ID: 013
+Event Name: LobbyTrainer
+(X,Y): (010,011)
+
+Page #1
+Conditions
+None
+
+Autonomous Movement
+Type: Custom
+Custom Move Route:
+(Repeat Action) (Ignore If Can't Move)
+$>Turn at Random
+
+Speed: 3: Slow
+Freq: 3: Low
+Options Enabled
+Move Animation
+Trigger: Action Button
+
+List of Event Commands:
+@>Comment: Event reserved for trainers that appear in the PWT 
+ :       : lobby after you beat them.
+@>Script: pwtLobbyTalk
+@>
+
+#------------------------------------------------------------------------------
+Event ID: 014
+Event Name: PC
+(X,Y): (008,008)
+
+Page #1
+Conditions
+None
+
+Autonomous Movement
+Type: Fixed
+Speed: 3: Slow
+Freq: 3: Low
+Options Enabled
+Move Animation
+Trigger: Action Button
+
+List of Event Commands:
+@>Script: pbPokeCenterPC
+@>
+
+#------------------------------------------------------------------------------
+Event ID: 015
+Event Name: EV015
+(X,Y): (004,001)
+
+Page #1
+Conditions
+None
+
+Autonomous Movement
+Type: Fixed
+Speed: 3: Slow
+Freq: 3: Low
+Options Enabled
+Move Animation
+Trigger: Action Button
+
+List of Event Commands:
+@>Comment: === Tournaments ===
+ :       : Preliminaries: Has the Kanto and Johto representatives
+ :       : Kanto Leaders: Has Asteria's Kanto Leaders (Janine and Green replacing Koga and Giovanni)
+ :       : Johto Leaders: Has Asteria's Johto Leaders (Glacia replacing Pryce)
+ :       : Elite Trainers: Has Asteria's Elite 4 + Champions from Kanto and Johto
+@>Comment: Gensokyo Leaders: Has the leaders from the Gensokyo Challenge Circuit
+ :       : Gensokyo Elite: Has all 11 of Gensokyo's Elite Hall members
+ :       : Special Bracket: Has all of the Pokedex Holders in Asteria (Red, Blue, Green, Yellow, Gold, Silver, Krys, Renko, Maribel)
+ :       : ???? Bracket: Community submissions!
+@>Comment: 
+ :       : All main tournaments will have an "Unlocked" version, which will
+ :       : allow you to bring in Ubers, and be Level 100.
+@>
+
+#------------------------------------------------------------------------------
 
 #==============================================================================
 Map ID: 284
-Map Name: Wisteria Island - Rest Stop
-Tileset: 001: Outside
-Width: 20, Height: 15
+Map Name: PWT Stadium
+Tileset: 043: PWT Arena
+Width: 26, Height: 20
+
+#------------------------------------------------------------------------------
+Event ID: 001
+Event Name: Announcer
+(X,Y): (009,007)
+
+Page #1
+Conditions
+None
+
+Graphic: NPC 15
+
+Autonomous Movement
+Type: Fixed
+Speed: 3: Slow
+Freq: 3: Low
+Options Enabled
+Move Animation
+Trigger: Action Button
+
+List of Event Commands:
+@>Comment: Event reserved to be the announcer for the various
+ :       : matches during the PWT. Altering the event ID of this 
+ :       : event will have no effect on the system, as it is 
+ :       : purely a cosmetic object, and is never referenced.
+@>
+
+#------------------------------------------------------------------------------
+Event ID: 002
+Event Name: Opponent
+(X,Y): (017,016)
+
+Page #1
+Conditions
+None
+
+Autonomous Movement
+Type: Fixed
+Speed: 3: Slow
+Freq: 3: Low
+Options Enabled
+Move Animation
+Trigger: Action Button
+
+List of Event Commands:
+@>Comment: Event reserved as the graphical component to the 
+ :       : trainer the Player is battling against during 
+ :       : the rounds of the PWT.
+@>
+
+#------------------------------------------------------------------------------
+Event ID: 003
+Event Name: Scoreboard
+(X,Y): (010,003)
+
+Page #1
+Conditions
+None
+
+Autonomous Movement
+Type: Fixed
+Speed: 3: Slow
+Freq: 3: Low
+Options Enabled
+Move Animation
+Trigger: Action Button
+
+List of Event Commands:
+@>Comment: Event reserved for a dynamic scoreboard during the 
+ :       : PWT. The event should be placed in the top left 
+ :       : corner of a 6 x 3 map area. This area will then be 
+ :       : reserved for the graphical aspects of the scoreboard.
+@>
+
+#------------------------------------------------------------------------------
+Event ID: 004
+Event Name: StartTournament
+(X,Y): (012,003)
+
+Page #1
+Conditions
+None
+
+Autonomous Movement
+Type: Fixed
+Speed: 3: Slow
+Freq: 3: Low
+Options Enabled
+Move Animation
+Trigger: Autorun
+
+List of Event Commands:
+@>Comment: Event used to auto lunch the battle portion of the 
+ :       : PWT. You need to have this on your main PWT arena 
+ :       : map, and it has to be set to Autorun.
+@>Comment: Scroll up to make the Scoreboard more visible.
+@>Scroll Map: Up, 5, 4
+@>Scroll Map: Left, 5, 4
+@>Wait: 16 frame(s)
+@>Script: $PWT.continue
+@>
+
+Page #2
+Conditions
+Self Switch A is ON
+
+Autonomous Movement
+Type: Fixed
+Speed: 3: Slow
+Freq: 3: Low
+Options Enabled
+Move Animation
+Trigger: Action Button
+
+List of Event Commands:
+@>
+
+#------------------------------------------------------------------------------
+Event ID: 005
+Event Name: Fanfare
+(X,Y): (013,003)
+
+Page #1
+Conditions
+Self Switch A is ON
+
+Autonomous Movement
+Type: Fixed
+Speed: 3: Slow
+Freq: 3: Low
+Options Enabled
+Move Animation
+Trigger: Parallel Process
+
+List of Event Commands:
+@>Comment: Optional event used to create some sort of 
+ :       : 'celebratory' animation/event if the player beats the 
+ :       : PWT.
+@>Comment: Has to be Parallel Process!
+@>Control Self Switch: A =OFF
+@>
+
+#------------------------------------------------------------------------------
+Event ID: 006
+Event Name: Movement Behaviour
+(X,Y): (015,003)
+
+Page #1
+Conditions
+None
+
+Autonomous Movement
+Type: Fixed
+Speed: 3: Slow
+Freq: 3: Low
+Options Enabled
+Move Animation
+Trigger: Action Button
+
+List of Event Commands:
+@>Comment: Event reserved for the use of trainer and player movement
+ :       : when approaching the main PWT platform.
+@>
+
+Page #2
+Conditions
+Self Switch A is ON
+
+Autonomous Movement
+Type: Fixed
+Speed: 3: Slow
+Freq: 3: Low
+Options Enabled
+Move Animation
+Trigger: Parallel Process
+
+List of Event Commands:
+@>Comment: Event used to bring the player up to the platform
+@>Comment: Has to be Parallel Process!
+@>Set Move Route: Player
+                  (Ignore If Can't Move)
+ :              : $>Move Up
+ :              : $>Move Up
+ :              : $>Move Up
+ :              : $>Move Left
+ :              : $>Move Left
+ :              : $>Move Left
+ :              : $>Move Left
+@>Wait for Move's Completion
+@>Control Self Switch: A =OFF
+@>
+
+Page #3
+Conditions
+Self Switch B is ON
+
+Autonomous Movement
+Type: Fixed
+Speed: 3: Slow
+Freq: 3: Low
+Options Enabled
+Move Animation
+Trigger: Parallel Process
+
+List of Event Commands:
+@>Comment: Event page used to bring the opponent up to the platform
+@>Comment: Has to be Parallel Process!
+@>Set Move Route: [Opponent]
+                  (Ignore If Can't Move)
+ :              : $>Move Right
+ :              : $>Move Right
+ :              : $>Move Up
+ :              : $>Move Up
+ :              : $>Move Up
+ :              : $>Move Up
+ :              : $>Move Up
+ :              : $>Move Right
+ :              : $>Move Right
+ :              : $>Move Right
+ :              : $>Move Right
+@>Wait for Move's Completion
+@>Control Self Switch: B =OFF
+@>
+
+Page #4
+Conditions
+Self Switch C is ON
+
+Autonomous Movement
+Type: Fixed
+Speed: 3: Slow
+Freq: 3: Low
+Options Enabled
+Move Animation
+Trigger: Parallel Process
+
+List of Event Commands:
+@>Comment: Event page used to bring the player down the platform
+@>Comment: Has to be Parallel Process!
+@>Set Move Route: Player
+                  (Ignore If Can't Move)
+ :              : $>Move Right
+ :              : $>Move Right
+ :              : $>Move Right
+ :              : $>Move Right
+ :              : $>Move Down
+ :              : $>Move Down
+ :              : $>Move Down
+@>Wait for Move's Completion
+@>Control Self Switch: C =OFF
+@>
+
+Page #5
+Conditions
+Self Switch D is ON
+
+Autonomous Movement
+Type: Fixed
+Speed: 3: Slow
+Freq: 3: Low
+Options Enabled
+Move Animation
+Trigger: Parallel Process
+
+List of Event Commands:
+@>Comment: Event page used to bring the opponent down the platform
+@>Comment: Has to be Parallel Process!
+@>Set Move Route: [Opponent]
+                  (Ignore If Can't Move)
+ :              : $>Move Left
+ :              : $>Move Left
+ :              : $>Move Left
+ :              : $>Move Left
+ :              : $>Move Down
+ :              : $>Move Down
+ :              : $>Move Down
+ :              : $>Move Down
+ :              : $>Move Down
+ :              : $>Move Left
+ :              : $>Move Left
+@>Wait for Move's Completion
+@>Control Self Switch: D =OFF
+@>
+
+#------------------------------------------------------------------------------
 
 #==============================================================================
 Map ID: 285
-Map Name: Wisteria Island - Frosted Cave
-Tileset: 001: Outside
-Width: 20, Height: 15
+Map Name: Wisteria Graveyard
+Tileset: 042: Wisteria Forest
+Width: 45, Height: 47
 
 #==============================================================================
 Map ID: 286
-Map Name: Wisteria Island - Solar Crag
-Tileset: 001: Outside
-Width: 20, Height: 15
+Map Name: Solar Crag
+Tileset: 039: Cinnabar Volcano
+Width: 45, Height: 43
+Auto-Change BGM: W-031. Fires of Hokkai
+
+#------------------------------------------------------------------------------
+Event ID: 001
+Event Name: Marisa Omega
+(X,Y): (022,008)
+
+Page #1
+Conditions
+None
+
+Graphic: OW - Puppet_MarisaO
+
+Autonomous Movement
+Type: Fixed
+Speed: 3: Slow
+Freq: 3: Low
+Options Enabled
+Move Animation
+Trigger: Action Button
+
+List of Event Commands:
+@>Change Battle BGM: 'B-028. Battle! Vs. Avatars of Calamity', 100, 100
+@>Control Switches: [0104: Transition Handler] = ON
+@>Control Variables: [0103: Vs. Transition ID] = 12
+@>Script: Pokemon.play_cry(:MARISAO)
+@>Wait: 50 frame(s)
+@>Script: pkmn = pbGenerateWildPokemon(:MARISAO, 60)
+:       : pkmn.item = :BLAZESPHERE
+:       : pkmn.poke_ball = :ULTRAORB
+@>Script: WildBattle.dx_start([pkmn], { 
+:       :   :nocapture => true, 
+:       :   :backdrop => ["Volcano", "Volcano"],
+:       :   :outcome => 1,
+:       :   :noflee => true,
+:       :   :introtext => "{1}, the Blazing Apocalypse, challenges you!"
+:       : }, {}, :VS_MARISAO)
+@>Script: pbAddPokemon(pkmn)
+@>
+
+#------------------------------------------------------------------------------
+Event ID: 002
+Event Name: EV002
+(X,Y): (022,014)
+
+Page #1
+Conditions
+None
+
+Autonomous Movement
+Type: Fixed
+Speed: 3: Slow
+Freq: 3: Low
+Options Enabled
+Move Animation
+Trigger: Player Touch
+
+List of Event Commands:
+@>Scroll Map: Up, 3, 3
+@>Change Text Options: Middle, Show
+@>Text: \w[dark]<i>Oh? How interesting. An actual human being has come 
+ :    : to meet me at a time like this.</i>
+@>Set Move Route: [Marisa Omega]
+ :              : $>Turn Down
+@>Text: \w[dark]<i>But, you're too late. My power is rapidly increasing.</i>
+@>Text: \w[dark]<i>Soon, I and everything around me will be reduced to 
+ :    : cinders.</i>
+@>Wait: 20 frame(s)
+@>Text: \w[dark]<i>You still are here? Fine then. Feel the heat of a dying 
+ :    : sun!</i>
+@>Change Battle BGM: 'B-028. Battle! Vs. Avatars of Calamity', 100, 100
+@>Control Switches: [0104: Transition Handler] = ON
+@>Control Variables: [0103: Vs. Transition ID] = 12
+@>Script: Pokemon.play_cry(:MARISAO)
+@>Wait: 40 frame(s)
+@>Script: pbSetSelfSwitch(3,"A",true)
+@>Script: pkmn = pbGenerateWildPokemon(:MARISAO, 60)
+:       : pkmn.item = :BLAZESPHERE
+:       : pkmn.poke_ball = :ULTRAORB
+@>Script: WildBattle.dx_start([pkmn], { 
+:       :   :nocapture => true, 
+:       :   :backdrop => ["Volcano", "Volcano"],
+:       :   :outcome => 1,
+:       :   :noflee => true,
+:       :   :introtext => "{1}, the Blazing Apocalypse, challenges you!"
+:       : }, {}, :VS_MARISAO)
+@>Conditional Branch: Variable [0001: Temp Pokemon Choice] == 1
+ @>Text: Marisa Omega is exhausted! Now is the time to catch it!
+ @>Script: pbAddPokemon(pkmn)
+ @>
+: Branch End
+@>
+
+#------------------------------------------------------------------------------
+Event ID: 003
+Event Name: Weather Control Device
+(X,Y): (012,017)
+
+Page #1
+Conditions
+None
+
+Autonomous Movement
+Type: Fixed
+Speed: 3: Slow
+Freq: 3: Low
+Options Enabled
+Move Animation
+Trigger: Action Button
+
+List of Event Commands:
+@>Conditional Branch: Self Switch A == OFF
+ @>Script: $game_screen.weather(:Sun, 9, 20)
+ @>
+: Else
+ @>Set Weather Effects: None, @1
+ @>
+: Branch End
+@>
+
+Page #2
+Conditions
+Switch 0126: Marisa Omega Defeated is ON
+
+Autonomous Movement
+Type: Fixed
+Speed: 3: Slow
+Freq: 3: Low
+Options Enabled
+Move Animation
+Trigger: Action Button
+
+List of Event Commands:
+@>
+
+#------------------------------------------------------------------------------
 
 #==============================================================================
 Map ID: 287
@@ -129884,8 +132998,8 @@ Trigger: Action Button
 
 List of Event Commands:
 @>Text: Windows 95 Tips
-@>Text: Did you know...\n\nA small needle at the base of your mouse has been gradually
- :    : collecting your blood?
+@>Text: Did you know...\n\nA small needle at the base of your mouse 
+ :    : has been gradually collecting your blood?
 @>Text: The backup is almost complete.
 @>
 
@@ -166377,6 +169491,2816 @@ List of Event Commands:
 #------------------------------------------------------------------------------
 
 #==============================================================================
+Map ID: 358
+Map Name: Kikoto Continent
+Tileset: 001: Outside
+Width: 20, Height: 15
+
+#==============================================================================
+Map ID: 359
+Map Name: Pokémon Preservation Complex
+Tileset: 001: Outside
+Width: 20, Height: 15
+
+#==============================================================================
+Map ID: 360
+Map Name: Pokémon Preservation Complex Harbor
+Tileset: 001: Outside
+Width: 20, Height: 15
+
+#==============================================================================
+Map ID: 361
+Map Name: Migrant Cave
+Tileset: 001: Outside
+Width: 20, Height: 15
+
+#==============================================================================
+Map ID: 362
+Map Name: Migrant Cave
+Tileset: 001: Outside
+Width: 20, Height: 15
+
+#==============================================================================
+Map ID: 363
+Map Name: Wisteria Island
+Tileset: 001: Outside
+Width: 20, Height: 15
+
+#==============================================================================
+Map ID: 364
+Map Name: Port Exilian Center
+Tileset: 004: Poke Center
+Width: 20, Height: 15
+Auto-Change BGM: W-008. Pokemon Center (Monsekai)
+
+#------------------------------------------------------------------------------
+Event ID: 001
+Event Name: Nurse
+(X,Y): (007,002)
+
+Page #1
+Conditions
+None
+
+Graphic: NPC 16
+
+Autonomous Movement
+Type: Fixed
+Speed: 3: Slow
+Freq: 3: Low
+Options Enabled
+Move Animation
+Trigger: Action Button
+
+List of Event Commands:
+@>Comment: This line of code sets the player's current position as 
+ :       : the spot they will return to after they lose a battle 
+ :       : and lack out.
+ :       : Page 2 of this event detects when this happens, and 
+ :       : heals the player's Pokémon and wishes them better 
+ :       : luck in future.
+@>Script: pbSetPokemonCenter
+@>Text: \rHello, and welcome to the Pokémon Center.
+@>Text: \rWe restore your tired Pokémon to full health.
+@>Text: \rWould you like to rest your Pokémon?
+@>Show Choices: Yes, No
+(When Cancel: Choice 2)
+: When [Yes]
+ @>Text: \rOK, I'll take your Pokémon for a few seconds.
+ @>Recover All: Entire Party
+ @>Set Move Route: This event
+  :              : $>Turn Left
+  :              : $>Wait: 2 frame(s)
+ @>Wait for Move's Completion
+ @>Control Variables: [0006: Poké Center healing ball count] = 0
+ @>Script: count = $player.pokemon_count
+ :       : for i in 1..count
+ :       :   pbSet(6, i)
+ :       :   pbSEPlay("Battle ball shake")
+ :       :   pbWait(16)
+ :       : end
+ @>Set Move Route: [PC]
+  :              : $>Stop Animation ON
+ @>Play ME: 'Pkmn healing', 100, 100
+ @>Wait: 58 frame(s)
+ @>Control Variables: [0006: Poké Center healing ball count] = 0
+ @>Script: get_character(4).pattern = 0
+ @>Set Move Route: [PC]
+  :              : $>Stop Animation OFF
+ @>Set Move Route: This event
+  :              : $>Wait: 15 frame(s)
+  :              : $>Turn Down
+ @>Wait for Move's Completion
+ @>Conditional Branch: Script: pbPokerus?
+  @>Text: \rYour Pokémon may be infected by PokeRus.
+  @>Text: \rLittle is known about the PokeRus except that they 
+   :    : are microscopic life-forms that attach to Pokémon.
+  @>Text: \rWhile infected, Pokémon are said to grow 
+   :    : exceptionally well.
+  @>Control Switches: [0002: Seen Pokérus in Poké Center] = ON
+  @>
+ : Else
+  @>Text: \rThank you for waiting.
+  @>Text: \rWe've restored your Pokémon to full health.
+  @>Set Move Route: This event
+   :              : $>Graphic: "NPC 16', 0, 2, 1
+   :              : $>Wait: 10 frame(s)
+   :              : $>Graphic: "NPC 16', 0, 2, 0
+  @>Wait for Move's Completion
+  @>Text: \rWe hope to see you again!
+  @>
+ : Branch End
+ @>
+: When [No]
+ @>Text: \rWe hope to see you again!
+ @>
+: Branch End
+@>
+
+Page #2
+Conditions
+Switch 0001: Starting over is ON
+
+Graphic: NPC 16
+
+Autonomous Movement
+Type: Fixed
+Speed: 3: Slow
+Freq: 3: Low
+Options Enabled
+Move Animation
+Trigger: Autorun
+
+List of Event Commands:
+@>Comment: Every map you can end up in after having all your 
+ :       : Pokémon faint (typically Poké Centers and home) 
+ :       : must have an Autorun event in it like this one.
+ :       : This event fully heals all the player's Pokémon, says 
+ :       : something to that effect, and turns the "Starting 
+ :       : over" switch OFF again.
+@>Comment: For convenience, this can be a single page in an 
+ :       : NPC's event (e.g. Mom, a nurse).
+@>Text: \rFirst, you should restore your Pokémon to full 
+ :    : health.
+@>Recover All: Entire Party
+@>Set Move Route: This event
+ :              : $>Turn Left
+ :              : $>Wait: 2 frame(s)
+@>Wait for Move's Completion
+@>Control Variables: [0006: Poké Center healing ball count] = 0
+@>Script: for i in 1..$player.pokemon_count
+:       :   pbSet(6, i)
+:       :   pbSEPlay("Battle ball shake")
+:       :   pbWait(16)
+:       : end
+@>Set Move Route: [PC]
+ :              : $>Stop Animation ON
+@>Play ME: 'Pkmn healing', 100, 100
+@>Wait: 58 frame(s)
+@>Control Variables: [0006: Poké Center healing ball count] = 0
+@>Script: get_character(4).pattern = 0
+@>Set Move Route: [PC]
+ :              : $>Stop Animation OFF
+@>Set Move Route: This event
+ :              : $>Wait: 15 frame(s)
+ :              : $>Turn Down
+@>Wait for Move's Completion
+@>Text: \rYour Pokémon have been healed to perfect health.
+@>Set Move Route: This event
+ :              : $>Graphic: "NPC 16', 0, 2, 1
+ :              : $>Wait: 10 frame(s)
+ :              : $>Graphic: "NPC 16', 0, 2, 0
+@>Wait for Move's Completion
+@>Text: \rWe hope you excel!
+@>Control Switches: [0001: Starting over] = OFF
+@>
+
+#------------------------------------------------------------------------------
+Event ID: 002
+Event Name: Healing balls
+(X,Y): (005,002)
+
+Page #1
+Conditions
+None
+
+Autonomous Movement
+Type: Fixed
+Speed: 4: Fast
+Freq: 3: Low
+Options Enabled
+Trigger: Action Button
+
+List of Event Commands:
+@>
+
+Page #2
+Conditions
+Variable 0006: Poké Center healing ball count is 1 or above
+
+Graphic: Healing balls 1
+
+Autonomous Movement
+Type: Fixed
+Speed: 3: Slow
+Freq: 3: Low
+Options Enabled
+Trigger: Action Button
+
+List of Event Commands:
+@>
+
+Page #3
+Conditions
+Variable 0006: Poké Center healing ball count is 2 or above
+
+Graphic: Healing balls 1
+
+Autonomous Movement
+Type: Fixed
+Speed: 3: Slow
+Freq: 3: Low
+Options Enabled
+Trigger: Action Button
+
+List of Event Commands:
+@>
+
+Page #4
+Conditions
+Variable 0006: Poké Center healing ball count is 3 or above
+
+Graphic: Healing balls 1
+
+Autonomous Movement
+Type: Fixed
+Speed: 3: Slow
+Freq: 3: Low
+Options Enabled
+Trigger: Action Button
+
+List of Event Commands:
+@>
+
+Page #5
+Conditions
+Variable 0006: Poké Center healing ball count is 4 or above
+
+Graphic: Healing balls 2
+
+Autonomous Movement
+Type: Fixed
+Speed: 3: Slow
+Freq: 3: Low
+Options Enabled
+Trigger: Action Button
+
+List of Event Commands:
+@>
+
+Page #6
+Conditions
+Variable 0006: Poké Center healing ball count is 5 or above
+
+Graphic: Healing balls 2
+
+Autonomous Movement
+Type: Fixed
+Speed: 3: Slow
+Freq: 3: Low
+Options Enabled
+Trigger: Action Button
+
+List of Event Commands:
+@>
+
+Page #7
+Conditions
+Variable 0006: Poké Center healing ball count is 6 or above
+
+Graphic: Healing balls 2
+
+Autonomous Movement
+Type: Fixed
+Speed: 3: Slow
+Freq: 3: Low
+Options Enabled
+Trigger: Action Button
+
+List of Event Commands:
+@>
+
+#------------------------------------------------------------------------------
+Event ID: 003
+Event Name: Password Terminal
+(X,Y): (003,001)
+
+Page #1
+Conditions
+None
+
+Autonomous Movement
+Type: Fixed
+Speed: 3: Slow
+Freq: 3: Low
+Options Enabled
+Move Animation
+Trigger: Action Button
+
+List of Event Commands:
+@>Script: pbPasswordCheck
+@>
+
+#------------------------------------------------------------------------------
+Event ID: 004
+Event Name: PC
+(X,Y): (011,001)
+
+Page #1
+Conditions
+None
+
+Autonomous Movement
+Type: Fixed
+Speed: 3: Slow
+Freq: 3: Low
+Options Enabled
+Move Animation
+Trigger: Action Button
+
+List of Event Commands:
+@>Script: pbPokeCenterPC
+@>
+
+#------------------------------------------------------------------------------
+Event ID: 005
+Event Name: Town Map size(2,1)
+(X,Y): (012,001)
+
+Page #1
+Conditions
+None
+
+Autonomous Movement
+Type: Fixed
+Speed: 3: Slow
+Freq: 3: Low
+Options Enabled
+Move Animation
+Trigger: Action Button
+
+List of Event Commands:
+@>Script: pbShowMap
+@>
+
+#------------------------------------------------------------------------------
+Event ID: 006
+Event Name: Mart
+(X,Y): (012,008)
+
+Page #1
+Conditions
+None
+
+Graphic: NPC 19
+
+Autonomous Movement
+Type: Fixed
+Speed: 3: Slow
+Freq: 3: Low
+Options Enabled
+Move Animation
+Trigger: Action Button
+
+List of Event Commands:
+@>Text: Welcome to the Port Exilian Mart. We have a variety 
+ :    : of goods to select from.
+@>Script: pbPokemonMart([
+:       : :POKEBALL,
+:       : :POTION,
+:       : :ANTIDOTE,
+:       : :PARALYZEHEAL,
+:       : :BURNHEAL
+:       : ])
+@>
+
+#------------------------------------------------------------------------------
+Event ID: 007
+Event Name: ExitArrow
+(X,Y): (007,011)
+
+Page #1
+Conditions
+None
+
+Graphic: Exitarrow_red
+
+Autonomous Movement
+Type: Fixed
+Speed: 3: Slow
+Freq: 3: Low
+Options Enabled
+Move Animation
+Stop Animation
+Always on Top
+Trigger: Player Touch
+
+List of Event Commands:
+@>Conditional Branch: Player is facing Down
+ @>Play SE: 'Door exit', 100, 100
+ @>Change Screen Color Tone: (-255,-255,-255,0), @6
+ @>Wait: 8 frame(s)
+ @>Transfer Player:[279: Port Exilian], (028,050), No Fade
+ @>Change Screen Color Tone: (0,0,0,0), @6
+ @>
+: Branch End
+@>
+
+#------------------------------------------------------------------------------
+
+#==============================================================================
+Map ID: 365
+Map Name: Port Exilian Observatory
+Tileset: 041: Wisteria Observatory
+Width: 21, Height: 45
+Auto-Change BGM: W-032. Port Exilian
+
+#------------------------------------------------------------------------------
+Event ID: 001
+Event Name: EV001
+(X,Y): (008,028)
+
+Page #1
+Conditions
+None
+
+Graphic: NPC 10
+
+Autonomous Movement
+Type: Fixed
+Speed: 3: Slow
+Freq: 3: Low
+Options Enabled
+Move Animation
+Trigger: Action Button
+
+List of Event Commands:
+@>Text: If you look into the binoculars, you can see the abnormalities
+ :    : affecting our island...
+@>Set Move Route: This event
+ :              : $>Turn Up
+@>
+
+#------------------------------------------------------------------------------
+Event ID: 002
+Event Name: EV002
+(X,Y): (012,028)
+
+Page #1
+Conditions
+None
+
+Graphic: trainer_COOLTRAINER_F
+
+Autonomous Movement
+Type: Fixed
+Speed: 3: Slow
+Freq: 3: Low
+Options Enabled
+Move Animation
+Trigger: Action Button
+
+List of Event Commands:
+@>Text: I could have swore I saw an Utsuho Puppet over near the beach.
+@>Text: But, isn't Utsuho a Pyro-type Puppet? What's it doing near the 
+ :    : beach...
+@>Set Move Route: This event
+ :              : $>Turn Up
+@>
+
+#------------------------------------------------------------------------------
+
+#==============================================================================
+Map ID: 366
+Map Name: Port Exilian Town Center
+Tileset: 003: Inside
+Width: 31, Height: 25
+Auto-Change BGM: W-032. Port Exilian
+
+#------------------------------------------------------------------------------
+Event ID: 001
+Event Name: Receptionist
+(X,Y): (010,019)
+
+Page #1
+Conditions
+None
+
+Graphic: NPC_PikeMaid
+
+Autonomous Movement
+Type: Fixed
+Speed: 3: Slow
+Freq: 3: Low
+Options Enabled
+Move Animation
+Trigger: Action Button
+
+List of Event Commands:
+@>Text: If you're here to speak to the Mayor about the current abnormalities,
+ :    : unless you have new information please keep it brief.
+@>Text: She is already well aware of the situation, and currently looking
+ :    : into resolving it.
+@>
+
+#------------------------------------------------------------------------------
+Event ID: 002
+Event Name: Libra
+(X,Y): (015,005)
+
+Page #1
+Conditions
+None
+
+Graphic: Anime NPC 07
+
+Autonomous Movement
+Type: Fixed
+Speed: 3: Slow
+Freq: 3: Low
+Options Enabled
+Move Animation
+Trigger: Action Button
+
+List of Event Commands:
+@>Text: \xn[Libra]Yes, may I help you?
+@>Wait: 10 frame(s)
+@>Text: \xn[Libra]My apologies, you were told to come here? May I ask who
+ :    : sent you?
+@>Wait: 10 frame(s)
+@>Text: \xn[Libra]A man in a purple...-\wt[10] Ah! You must mean Malver.
+@>Text: \xn[Libra]Yes, I had him sent out to find me a specialist.
+@>Text: \xn[Libra]That must mean you are who he found... Not quite what
+ :    : I expected.
+@>Text: \xn[Libra]...And judging by the looks of things, he didn't explain 
+ :    : anything.
+@>Text: \xn[Libra]I know I told him to find me someone using any means
+ :    : necessary, but lies of ommission are not what I had in mind...
+@>Text: \xn[Libra]Ahem, regardless.
+@>Text: \xn[Libra]So, about a month ago, our island was beset by some
+ :    : abnormal weather fluctuations.
+@>Text: \xn[Libra]On one side of the island, a massive snowstorm. On the
+ :    : other, a blazing sunlight.
+@>Text: \xn[Libra]I had sent some of my advisors in to investigate, but none
+ :    : of them were able to get far enough without being driven back by
+ :    : the harsh conditions.
+@>Text: \xn[Libra]After that, I had access into the forest locked down entirely
+ :    : to keep my people safe.
+@>Text: \xn[Libra]Then, I tasked one of my trusted advisors, Malver, to go out
+ :    : and find me someone who they believed could brave these conditions.
+@>Text: \xn[Libra]If he sent you, then he must believe you have what it takes,
+ :    : so I'll trust in his judgement.
+@>Text: \xn[Libra]I will send word ahead to the guard blocking access into the
+ :    : forest to not block you from entering.
+@>Text: \xn[Libra]I wish you luck,...\wt[20] \pn, alright! Good luck,
+ :    : \pn!
+@>Control Variables: [0143: Wisteria Island Sidequest] = 4
+@>
+
+Page #2
+Conditions
+Variable 0143: Wisteria Island Sidequest is 4 or above
+
+Graphic: Anime NPC 07
+
+Autonomous Movement
+Type: Fixed
+Speed: 3: Slow
+Freq: 3: Low
+Options Enabled
+Move Animation
+Trigger: Action Button
+
+List of Event Commands:
+@>
+
+#------------------------------------------------------------------------------
+Event ID: 003
+Event Name: Hikari
+(X,Y): (012,013)
+
+Page #1
+Conditions
+None
+
+Graphic: Anime NPC 11
+
+Autonomous Movement
+Type: Fixed
+Speed: 3: Slow
+Freq: 3: Low
+Options Enabled
+Move Animation
+Trigger: Action Button
+
+List of Event Commands:
+@>
+
+Page #2
+Conditions
+Variable 0143: Wisteria Island Sidequest is 2 or above
+
+Autonomous Movement
+Type: Fixed
+Speed: 3: Slow
+Freq: 3: Low
+Options Enabled
+Move Animation
+Trigger: Action Button
+
+List of Event Commands:
+@>
+
+#------------------------------------------------------------------------------
+Event ID: 004
+Event Name: NPC
+(X,Y): (013,010)
+
+Page #1
+Conditions
+None
+
+Graphic: trainer_LADY
+
+Autonomous Movement
+Type: Fixed
+Speed: 3: Slow
+Freq: 3: Low
+Options Enabled
+Move Animation
+Trigger: Action Button
+
+List of Event Commands:
+@>
+
+Page #2
+Conditions
+Variable 0143: Wisteria Island Sidequest is 2 or above
+
+Autonomous Movement
+Type: Fixed
+Speed: 3: Slow
+Freq: 3: Low
+Options Enabled
+Move Animation
+Trigger: Action Button
+
+List of Event Commands:
+@>
+
+#------------------------------------------------------------------------------
+Event ID: 005
+Event Name: NPC
+(X,Y): (015,010)
+
+Page #1
+Conditions
+None
+
+Graphic: trainer_FISHERMAN
+
+Autonomous Movement
+Type: Fixed
+Speed: 3: Slow
+Freq: 3: Low
+Options Enabled
+Move Animation
+Trigger: Action Button
+
+List of Event Commands:
+@>
+
+Page #2
+Conditions
+Variable 0143: Wisteria Island Sidequest is 2 or above
+
+Autonomous Movement
+Type: Fixed
+Speed: 3: Slow
+Freq: 3: Low
+Options Enabled
+Move Animation
+Trigger: Action Button
+
+List of Event Commands:
+@>
+
+#------------------------------------------------------------------------------
+Event ID: 006
+Event Name: NPC
+(X,Y): (017,010)
+
+Page #1
+Conditions
+None
+
+Graphic: NPC 08
+
+Autonomous Movement
+Type: Fixed
+Speed: 3: Slow
+Freq: 3: Low
+Options Enabled
+Move Animation
+Trigger: Action Button
+
+List of Event Commands:
+@>
+
+Page #2
+Conditions
+Variable 0143: Wisteria Island Sidequest is 2 or above
+
+Autonomous Movement
+Type: Fixed
+Speed: 3: Slow
+Freq: 3: Low
+Options Enabled
+Move Animation
+Trigger: Action Button
+
+List of Event Commands:
+@>
+
+#------------------------------------------------------------------------------
+Event ID: 007
+Event Name: NPC
+(X,Y): (018,009)
+
+Page #1
+Conditions
+None
+
+Graphic: trainer_COOLTRAINER_F
+
+Autonomous Movement
+Type: Fixed
+Speed: 3: Slow
+Freq: 3: Low
+Options Enabled
+Move Animation
+Trigger: Action Button
+
+List of Event Commands:
+@>
+
+Page #2
+Conditions
+Variable 0143: Wisteria Island Sidequest is 2 or above
+
+Autonomous Movement
+Type: Fixed
+Speed: 3: Slow
+Freq: 3: Low
+Options Enabled
+Move Animation
+Trigger: Action Button
+
+List of Event Commands:
+@>
+
+#------------------------------------------------------------------------------
+Event ID: 008
+Event Name: NPC
+(X,Y): (016,009)
+
+Page #1
+Conditions
+None
+
+Graphic: NPC 10
+
+Autonomous Movement
+Type: Fixed
+Speed: 3: Slow
+Freq: 3: Low
+Options Enabled
+Move Animation
+Trigger: Action Button
+
+List of Event Commands:
+@>
+
+Page #2
+Conditions
+Variable 0143: Wisteria Island Sidequest is 2 or above
+
+Autonomous Movement
+Type: Fixed
+Speed: 3: Slow
+Freq: 3: Low
+Options Enabled
+Move Animation
+Trigger: Action Button
+
+List of Event Commands:
+@>
+
+#------------------------------------------------------------------------------
+Event ID: 009
+Event Name: NPC
+(X,Y): (014,009)
+
+Page #1
+Conditions
+None
+
+Graphic: trainer_RUINMANIAC
+
+Autonomous Movement
+Type: Fixed
+Speed: 3: Slow
+Freq: 3: Low
+Options Enabled
+Move Animation
+Trigger: Action Button
+
+List of Event Commands:
+@>
+
+Page #2
+Conditions
+Variable 0143: Wisteria Island Sidequest is 2 or above
+
+Autonomous Movement
+Type: Fixed
+Speed: 3: Slow
+Freq: 3: Low
+Options Enabled
+Move Animation
+Trigger: Action Button
+
+List of Event Commands:
+@>
+
+#------------------------------------------------------------------------------
+Event ID: 010
+Event Name: NPC
+(X,Y): (012,009)
+
+Page #1
+Conditions
+None
+
+Graphic: NPC 07
+
+Autonomous Movement
+Type: Fixed
+Speed: 3: Slow
+Freq: 3: Low
+Options Enabled
+Move Animation
+Trigger: Action Button
+
+List of Event Commands:
+@>
+
+Page #2
+Conditions
+Variable 0143: Wisteria Island Sidequest is 2 or above
+
+Autonomous Movement
+Type: Fixed
+Speed: 3: Slow
+Freq: 3: Low
+Options Enabled
+Move Animation
+Trigger: Action Button
+
+List of Event Commands:
+@>
+
+#------------------------------------------------------------------------------
+Event ID: 011
+Event Name: NPC
+(X,Y): (013,008)
+
+Page #1
+Conditions
+None
+
+Graphic: trainer_AROMALADY
+
+Autonomous Movement
+Type: Fixed
+Speed: 3: Slow
+Freq: 3: Low
+Options Enabled
+Move Animation
+Trigger: Action Button
+
+List of Event Commands:
+@>
+
+Page #2
+Conditions
+Variable 0143: Wisteria Island Sidequest is 2 or above
+
+Autonomous Movement
+Type: Fixed
+Speed: 3: Slow
+Freq: 3: Low
+Options Enabled
+Move Animation
+Trigger: Action Button
+
+List of Event Commands:
+@>
+
+#------------------------------------------------------------------------------
+Event ID: 012
+Event Name: NPC
+(X,Y): (015,008)
+
+Page #1
+Conditions
+None
+
+Graphic: trainer_GENTLEMAN
+
+Autonomous Movement
+Type: Fixed
+Speed: 3: Slow
+Freq: 3: Low
+Options Enabled
+Move Animation
+Trigger: Action Button
+
+List of Event Commands:
+@>
+
+Page #2
+Conditions
+Variable 0143: Wisteria Island Sidequest is 2 or above
+
+Autonomous Movement
+Type: Fixed
+Speed: 3: Slow
+Freq: 3: Low
+Options Enabled
+Move Animation
+Trigger: Action Button
+
+List of Event Commands:
+@>
+
+#------------------------------------------------------------------------------
+Event ID: 013
+Event Name: NPC
+(X,Y): (017,008)
+
+Page #1
+Conditions
+None
+
+Graphic: trainer_SOCIALITE
+
+Autonomous Movement
+Type: Fixed
+Speed: 3: Slow
+Freq: 3: Low
+Options Enabled
+Move Animation
+Trigger: Action Button
+
+List of Event Commands:
+@>
+
+Page #2
+Conditions
+Variable 0143: Wisteria Island Sidequest is 2 or above
+
+Autonomous Movement
+Type: Fixed
+Speed: 3: Slow
+Freq: 3: Low
+Options Enabled
+Move Animation
+Trigger: Action Button
+
+List of Event Commands:
+@>
+
+#------------------------------------------------------------------------------
+Event ID: 014
+Event Name: Yuriko
+(X,Y): (013,006)
+
+Page #1
+Conditions
+None
+
+Graphic: NPC_Teala
+
+Autonomous Movement
+Type: Fixed
+Speed: 3: Slow
+Freq: 3: Low
+Options Enabled
+Move Animation
+Trigger: Action Button
+
+List of Event Commands:
+@>
+
+Page #2
+Conditions
+Variable 0143: Wisteria Island Sidequest is 3 or above
+
+Autonomous Movement
+Type: Fixed
+Speed: 3: Slow
+Freq: 3: Low
+Options Enabled
+Move Animation
+Trigger: Action Button
+
+List of Event Commands:
+@>
+
+#------------------------------------------------------------------------------
+Event ID: 015
+Event Name: Rahn
+(X,Y): (017,006)
+
+Page #1
+Conditions
+None
+
+Graphic: NPC 21
+
+Autonomous Movement
+Type: Fixed
+Speed: 3: Slow
+Freq: 3: Low
+Options Enabled
+Move Animation
+Trigger: Action Button
+
+List of Event Commands:
+@>
+
+Page #2
+Conditions
+Variable 0143: Wisteria Island Sidequest is 3 or above
+
+Autonomous Movement
+Type: Fixed
+Speed: 3: Slow
+Freq: 3: Low
+Options Enabled
+Move Animation
+Trigger: Action Button
+
+List of Event Commands:
+@>
+
+#------------------------------------------------------------------------------
+Event ID: 016
+Event Name: Cutscene Trigger size(3,1)
+(X,Y): (014,016)
+
+Page #1
+Conditions
+None
+
+Autonomous Movement
+Type: Fixed
+Speed: 3: Slow
+Freq: 3: Low
+Options Enabled
+Move Animation
+Trigger: Player Touch
+
+List of Event Commands:
+@>Show Animation: Player, [Exclaim bubble]
+@>Text: How much longer are we going to be kept in the dark!?
+@>Text: Mayor Libra, our entire livlihoods are being disrupted!
+@>Change Screen Color Tone: (-255,-255,-255,0), @8
+@>Wait: 8 frame(s)
+@>Change Transparent Flag: Transparency
+@>Transfer Player:[366: Port Exilian Town Center], (015,007)
+@>Change Screen Color Tone: (0,0,0,0), @8
+@>Wait: 8 frame(s)
+@>Text: \xn[Libra]I understand your concerns everyone, but believe me,
+ :    : I know as little about what's going on to our home as you do.
+@>Set Event Location: [Renko/Maribel],(015,015)
+@>Set Move Route: [Renko/Maribel]
+ :              : $>Move Up
+ :              : $>Move Up
+ :              : $>Move Left
+ :              : $>Move Left
+ :              : $>Turn Up
+@>Text: \xn[Libra]Our best efforts to probe into the afflicted areas have
+ :    : proven fruitless.
+@>Show Animation: [NPC], [Question bubble]
+@>Text: Is it true that the cause behind this is a renegade Puppet?
+@>Set Move Route: [NPC]
+ :              : $>Turn Right
+@>Text: This is just like what happened in Hoenn ten years ago...
+@>Text: \xn[Libra]We have no idea what the cause is right now.
+@>Set Move Route: [NPC]
+ :              : $>Turn Up
+@>Text: \xn[Libra]For now, all I can ask is for you all to remain calm and
+ :    : collected. We will have this resolved soon, I assure you.
+@>Set Move Route: [NPC]
+ :              : $>Jump: +0,+0
+@>Text: Can you truly guarantee that though? It's been almost a month 
+ :    : now!
+@>Text: \xn[Libra]I have sent for assistance from the mainland. With
+ :    : any luck, we should have a specialist arriving very soon.
+@>Text: \xn[Libra's Secretary]If that is everyone's concerns, then this
+ :    : meeting is adjourned for now. Please file out slowly and without
+ :    : a ruckus.
+@>Change Screen Color Tone: (-255,-255,-255,0), @8
+@>Wait: 8 frame(s)
+@>Control Variables: [0143: Wisteria Island Sidequest] = 2
+@>Change Screen Color Tone: (0,0,0,0), @8
+@>Wait: 8 frame(s)
+@>Text: \xn[Libra]I really hope that specialist arrives soon.
+@>Set Move Route: [Libra]
+ :              : $>Turn Left
+@>Text: \xn[Libra]Yuriko, get in contact with Malver and ask if he's found
+ :    : someone yet.
+@>Set Move Route: [Yuriko]
+ :              : $>Turn Right
+@>Text: \xn[Libra's Secretary]Understood Miss Libra.
+@>Set Move Route: [Libra]
+ :              : $>Turn Right
+@>Text: \xn[Libra]Rahn, see if you can help our people out in any way.
+ :    : We need to give them <i>something</i> to reassure them.
+@>Set Move Route: [Rahn]
+ :              : $>Turn Left
+@>Text: \xn[Libra's Guard]If that is your wish, my lady.
+@>Change Screen Color Tone: (-255,-255,-255,0), @8
+@>Wait: 8 frame(s)
+@>Control Variables: [0143: Wisteria Island Sidequest] = 3
+@>Change Transparent Flag: Normal
+@>Transfer Player:[366: Port Exilian Town Center], (013,013)
+@>Set Event Location: [Renko/Maribel],(030,024)
+@>Set Move Route: [Libra]
+ :              : $>Turn Left
+ :              : $>Turn Down
+@>Change Screen Color Tone: (0,0,0,0), @8
+@>
+
+Page #2
+Conditions
+Variable 0143: Wisteria Island Sidequest is 2 or above
+
+Autonomous Movement
+Type: Fixed
+Speed: 3: Slow
+Freq: 3: Low
+Options Enabled
+Move Animation
+Trigger: Action Button
+
+List of Event Commands:
+@>
+
+#------------------------------------------------------------------------------
+Event ID: 017
+Event Name: Renko/Maribel
+(X,Y): (030,024)
+
+Page #1
+Conditions
+Variable 0107: Chosen Protag is 0 or above
+
+Graphic: trainer_SCRenko
+
+Autonomous Movement
+Type: Fixed
+Speed: 3: Slow
+Freq: 5: Higher
+Options Enabled
+Move Animation
+Trigger: Action Button
+
+List of Event Commands:
+@>
+
+Page #2
+Conditions
+Variable 0107: Chosen Protag is 1 or above
+
+Graphic: trainer_SCMary
+
+Autonomous Movement
+Type: Fixed
+Speed: 3: Slow
+Freq: 5: Higher
+Options Enabled
+Move Animation
+Trigger: Action Button
+
+List of Event Commands:
+@>
+
+Page #3
+Conditions
+Variable 0143: Wisteria Island Sidequest is 3 or above
+
+Autonomous Movement
+Type: Fixed
+Speed: 3: Slow
+Freq: 3: Low
+Options Enabled
+Move Animation
+Trigger: Action Button
+
+List of Event Commands:
+@>
+
+#------------------------------------------------------------------------------
+Event ID: 018
+Event Name: Hikari
+(X,Y): (015,022)
+
+Page #1
+Conditions
+Variable 0143: Wisteria Island Sidequest is 2 or above
+
+Graphic: Anime NPC 11
+
+Autonomous Movement
+Type: Fixed
+Speed: 3: Slow
+Freq: 3: Low
+Options Enabled
+Move Animation
+Trigger: Action Button
+
+List of Event Commands:
+@>Text: \xn[???]Judging from what was just discussed, this <i>has</i> to
+ :    : be where they are.
+@>Text: \xn[???]Now it's just a matter of getting to them...
+@>Show Animation: Player, [Question bubble]
+@>Wait: 10 frame(s)
+@>Set Move Route: [Hikari]
+ :              : $>Turn Up
+@>Wait for Move's Completion
+@>Text: \xn[???]Oh, sorry am I in your... wa-\..\..\..ait a second.
+@>Text: \xn[???]Y-You can-? But-...
+@>Wait: 10 frame(s)
+@>Text: \xn[???]I must be leaving now!
+@>Set Move Route: [Hikari]
+ :              : $>Turn Down
+ :              : $>Change Opacity: 0
+@>Control Self Switch: A =ON
+@>
+
+Page #2
+Conditions
+Self Switch A is ON
+
+Autonomous Movement
+Type: Fixed
+Speed: 3: Slow
+Freq: 3: Low
+Options Enabled
+Move Animation
+Trigger: Action Button
+
+List of Event Commands:
+@>
+
+Page #3
+Conditions
+Switch 0124: Met Hikari is ON
+
+Autonomous Movement
+Type: Fixed
+Speed: 3: Slow
+Freq: 3: Low
+Options Enabled
+Move Animation
+Trigger: Action Button
+
+List of Event Commands:
+@>
+
+#------------------------------------------------------------------------------
+Event ID: 019
+Event Name: ExitArrow
+(X,Y): (015,023)
+
+Page #1
+Conditions
+None
+
+Graphic: Exitarrow_red
+
+Autonomous Movement
+Type: Fixed
+Speed: 3: Slow
+Freq: 3: Low
+Options Enabled
+Move Animation
+Stop Animation
+Always on Top
+Trigger: Player Touch
+
+List of Event Commands:
+@>Conditional Branch: Player is facing Down
+ @>Play SE: 'Door exit', 100, 100
+ @>Change Screen Color Tone: (-255,-255,-255,0), @6
+ @>Wait: 8 frame(s)
+ @>Transfer Player:[279: Port Exilian], (033,038), No Fade
+ @>Change Screen Color Tone: (0,0,0,0), @6
+ @>
+: Branch End
+@>
+
+#------------------------------------------------------------------------------
+Event ID: 020
+Event Name: EV020
+(X,Y): (012,004)
+
+Page #1
+Conditions
+Variable 0143: Wisteria Island Sidequest is 3 or above
+
+Graphic: NPC 20
+
+Autonomous Movement
+Type: Fixed
+Speed: 3: Slow
+Freq: 3: Low
+Options Enabled
+Move Animation
+Trigger: Action Button
+
+List of Event Commands:
+@>Text: My apologies, only the mayor, her staff, and her personal guests
+ :    : are allowed upstairs.
+@>
+
+#------------------------------------------------------------------------------
+Event ID: 021
+Event Name: EV021
+(X,Y): (018,004)
+
+Page #1
+Conditions
+Variable 0143: Wisteria Island Sidequest is 3 or above
+
+Graphic: NPC 20
+
+Autonomous Movement
+Type: Fixed
+Speed: 3: Slow
+Freq: 3: Low
+Options Enabled
+Move Animation
+Trigger: Action Button
+
+List of Event Commands:
+@>Text: My apologies, only the mayor, her staff, and her personal guests
+ :    : are allowed upstairs.
+@>
+
+#------------------------------------------------------------------------------
+Event ID: 022
+Event Name: EV022
+(X,Y): (015,003)
+
+Page #1
+Conditions
+None
+
+Autonomous Movement
+Type: Fixed
+Speed: 3: Slow
+Freq: 3: Low
+Options Enabled
+Move Animation
+Trigger: Action Button
+
+List of Event Commands:
+@>Text: It's a picture of the mayor, standing beside a bunch of people.
+@>
+
+#------------------------------------------------------------------------------
+
+#==============================================================================
+Map ID: 367
+Map Name: Port Exilian Harbor
+Tileset: 003: Inside
+Width: 20, Height: 15
+Auto-Change BGM: W-032. Port Exilian
+
+#------------------------------------------------------------------------------
+Event ID: 001
+Event Name: Sailor
+(X,Y): (008,006)
+
+Page #1
+Conditions
+None
+
+Graphic: trainer_SAILOR
+
+Autonomous Movement
+Type: Fixed
+Speed: 3: Slow
+Freq: 3: Low
+Options Enabled
+Move Animation
+Trigger: Action Button
+
+List of Event Commands:
+@>Text: Would you like to return to Route 14?
+@>Show Choices: Yes, No
+(When Cancel: Choice 2)
+: When [Yes]
+ @>Text: Alright, all aboard! Watch your step when boarding!
+ @>Change Screen Color Tone: (-255,-255,-255,0), @8
+ @>Wait: 8 frame(s)
+ @>Script: seaGallop(true)
+ @>Transfer Player:[059: Route 14], (021,029), Left, No Fade
+ @>Play SE: 'Door exit', 80, 100
+ @>Change Screen Color Tone: (0,0,0,0), @8
+ @>Wait: 10 frame(s)
+ @>
+: When [No]
+ @>Text: Just let me know when you're ready to depart.
+ @>
+: Branch End
+@>
+
+#------------------------------------------------------------------------------
+Event ID: 002
+Event Name: Boat
+(X,Y): (008,008)
+
+Page #1
+Conditions
+None
+
+Autonomous Movement
+Type: Fixed
+Speed: 3: Slow
+Freq: 3: Low
+Options Enabled
+Move Animation
+Trigger: Action Button
+
+List of Event Commands:
+@>
+
+#------------------------------------------------------------------------------
+Event ID: 003
+Event Name: EV003
+(X,Y): (000,000)
+
+Page #1
+Conditions
+None
+
+Autonomous Movement
+Type: Fixed
+Speed: 3: Slow
+Freq: 3: Low
+Options Enabled
+Move Animation
+Trigger: Autorun
+
+List of Event Commands:
+@>Text: Welcome to Port Exilian, the only settlement on Wisteria Island!
+@>Text: You'll no doubt want to talk to Mayor Libra, she's just down the
+ :    : path outside the harbor.
+@>Control Self Switch: A =ON
+@>Script: advanceQuestToStage(:Quest115, 2)
+@>
+
+Page #2
+Conditions
+Self Switch A is ON
+
+Autonomous Movement
+Type: Fixed
+Speed: 3: Slow
+Freq: 3: Low
+Options Enabled
+Move Animation
+Trigger: Action Button
+
+List of Event Commands:
+@>
+
+#------------------------------------------------------------------------------
+Event ID: 004
+Event Name: North door left
+(X,Y): (008,002)
+
+Page #1
+Conditions
+None
+
+Autonomous Movement
+Type: Fixed
+Speed: 3: Slow
+Freq: 3: Low
+Options Enabled
+Move Animation
+Trigger: Player Touch
+
+List of Event Commands:
+@>Play SE: 'Door exit', 100, 100
+@>Change Screen Color Tone: (-255,-255,-255,0), @6
+@>Wait: 8 frame(s)
+@>Transfer Player:[279: Port Exilian], (033,073), Up, No Fade
+@>Change Screen Color Tone: (0,0,0,0), @6
+@>
+
+Page #2
+Conditions
+Switch 0022: s:tsOff?("A") is ON
+
+Autonomous Movement
+Type: Fixed
+Speed: 3: Slow
+Freq: 3: Low
+Options Enabled
+Move Animation
+Trigger: Autorun
+
+List of Event Commands:
+@>Conditional Branch: Script: get_self.onEvent?
+ @>Set Move Route: Player
+                   (Ignore If Can't Move)
+  :              : $>Move Down
+ @>Wait for Move's Completion
+ @>
+: Branch End
+@>Script: setTempSwitchOn("A")
+@>
+
+#------------------------------------------------------------------------------
+
+#==============================================================================
+Map ID: 368
+Map Name: Wisteria Forests
+Tileset: 042: Wisteria Forest
+Width: 20, Height: 15
+
+#==============================================================================
+Map ID: 369
+Map Name: hi
+Tileset: 020: Trainer Tower
+Width: 32, Height: 24
+Auto-Change BGM: Battle Frontier
+
+#------------------------------------------------------------------------------
+Event ID: 001
+Event Name: Counter(1)
+(X,Y): (015,006)
+
+Page #1
+Conditions
+None
+
+Graphic: NPC 23
+
+Autonomous Movement
+Type: Fixed
+Speed: 3: Slow
+Freq: 3: Low
+Options Enabled
+Move Animation
+Trigger: Action Button
+
+List of Event Commands:
+@>Comment: Event reserved for the lobby counter person
+ :       : that takes the Player's PWT application.
+ :       : Also used to start the PWT.
+@>Script: startPWT
+@>
+
+#------------------------------------------------------------------------------
+Event ID: 002
+Event Name: PC
+(X,Y): (018,005)
+
+Page #1
+Conditions
+None
+
+Autonomous Movement
+Type: Fixed
+Speed: 3: Slow
+Freq: 3: Low
+Options Enabled
+Move Animation
+Trigger: Action Button
+
+List of Event Commands:
+@>Script: pbPokeCenterPC
+@>
+
+#------------------------------------------------------------------------------
+Event ID: 003
+Event Name: Random Person
+(X,Y): (011,012)
+
+Page #1
+Conditions
+None
+
+Graphic: trainer_SAILOR
+
+Autonomous Movement
+Type: Custom
+Custom Move Route:
+(Repeat Action)
+$>Turn at Random
+
+Speed: 3: Slow
+Freq: 3: Low
+Options Enabled
+Move Animation
+Trigger: Action Button
+
+List of Event Commands:
+@>Text: I travelled across the seas just to participate in the 
+ :    : World Tournament.
+@>Text: I can't wait to challenge all the powerful trainers 
+ :    : here.
+@>
+
+#------------------------------------------------------------------------------
+Event ID: 004
+Event Name: Random Person
+(X,Y): (009,007)
+
+Page #1
+Conditions
+None
+
+Graphic: NPC 24
+
+Autonomous Movement
+Type: Fixed
+Speed: 3: Slow
+Freq: 3: Low
+Options Enabled
+Move Animation
+Trigger: Action Button
+
+List of Event Commands:
+@>Text: We just finished work on the infrastructure of the 
+ :    : Tournament Hall. Don't you think it's amazing?
+@>
+
+#------------------------------------------------------------------------------
+Event ID: 005
+Event Name: Random Person
+(X,Y): (019,010)
+
+Page #1
+Conditions
+None
+
+Graphic: trainer_SCIENTIST
+
+Autonomous Movement
+Type: Custom
+Custom Move Route:
+(Repeat Action)
+$>Turn at Random
+
+Speed: 3: Slow
+Freq: 3: Low
+Options Enabled
+Move Animation
+Trigger: Action Button
+
+List of Event Commands:
+@>Text: The rebuilt World Tournament is amazing! I'm sure 
+ :    : you'll have a blast facing off against all the trainers 
+ :    : here.
+@>
+
+#------------------------------------------------------------------------------
+Event ID: 006
+Event Name: LobbyTrainer
+(X,Y): (012,009)
+
+Page #1
+Conditions
+None
+
+Autonomous Movement
+Type: Custom
+Custom Move Route:
+(Repeat Action) (Ignore If Can't Move)
+$>Turn at Random
+
+Speed: 3: Slow
+Freq: 3: Low
+Options Enabled
+Move Animation
+Trigger: Action Button
+
+List of Event Commands:
+@>Comment: Event reserved for trainers that appear in the PWT 
+ :       : lobby after you beat them.
+@>Script: pwtLobbyTalk
+@>
+
+#------------------------------------------------------------------------------
+Event ID: 007
+Event Name: EV007
+(X,Y): (012,005)
+
+Page #1
+Conditions
+None
+
+Autonomous Movement
+Type: Fixed
+Speed: 3: Slow
+Freq: 3: Low
+Options Enabled
+Move Animation
+Trigger: Action Button
+
+List of Event Commands:
+@>Text: This board seems to show total victories and defeats in the
+ :    : World Tournament.
+@>Conditional Branch: Script: $stats.pwt_loss.values.sum > 0 || $stats.pwt_wins.values.sum > 0
+ @>Script: $game_variables[1] = $stats.pwt_wins.values.sum
+ :       : $game_variables[2] = $stats.pwt_loss.values.sum
+ @>Text: \l[3]Statistics for \pn:
+  :    : \nTotal victories: \v[1]
+  :    : \nTotal defeats: \v[2]
+ @>
+: Branch End
+@>
+
+#------------------------------------------------------------------------------
+Event ID: 008
+Event Name: EV008
+(X,Y): (014,006)
+
+Page #1
+Conditions
+None
+
+Graphic: NPC 22
+
+Autonomous Movement
+Type: Fixed
+Speed: 3: Slow
+Freq: 3: Low
+Options Enabled
+Move Animation
+Trigger: Action Button
+
+List of Event Commands:
+@>Text: Would you like an explanation of how the Pokémon World 
+ :    : Tournament works?
+@>Show Choices: Yes, No
+(When Cancel: Choice 2)
+: When [Yes]
+ @>Text: Here in the Pokémon World Tournament, you select a specific 
+  :    : tournament to take part in. 
+ @>Text: Each tournament consists of three rounds. If you clear all
+  :    : three rounds you are awarded with Battle Points.
+ @>Text: The amount of Battle Points you earn for winning is dependant
+  :    : on the relevant tournament and your win streak within that
+  :    : tournament.
+ @>Text: Each tournament has its own set of rules, such as restrictions
+  :    : on Pokémon, setting all battlers to a specific level.
+ @>Text: Each tournament is broken into different challenge modes.
+ @>Text: Singles, which allows you to take 3 Pokémon into a one on one
+  :    : battle against the other trainers.
+ @>Text: Doubles, which allows you to take 4 Pokémon into a two on two
+  :    : battle against the other trainers.
+ @>Text: Full, which allows you to take all of your Pokémon into a one on one
+  :    : battle against the other trainers.
+ @>Text: And Sudden Death, where you may only bring in one Pokémon to battle
+  :    : against each trainer.
+ @>Text: And finally, money and experience is not gained while in a tournament.
+ @>
+: When [No]
+ @>Text: If you ever need a reminder of how the tournaments work, I'm
+  :    : always here to help!
+ @>
+: Branch End
+@>
+
+#------------------------------------------------------------------------------
+
+#==============================================================================
+Map ID: 370
+Map Name: test
+Tileset: 001: Outside
+Width: 32, Height: 24
+Auto-Change BGM: Battle Frontier
+
+#------------------------------------------------------------------------------
+Event ID: 001
+Event Name: Announcer
+(X,Y): (018,009)
+
+Page #1
+Conditions
+None
+
+Graphic: NPC 24
+
+Autonomous Movement
+Type: Fixed
+Speed: 3: Slow
+Freq: 3: Low
+Options Enabled
+Move Animation
+Trigger: Action Button
+
+List of Event Commands:
+@>Comment: Event reserved to be the announcer for the various
+ :       : matches during the PWT. Altering the event ID of this 
+ :       : event will have no effect on the system, as it is 
+ :       : purely a cosmetic object, and is never referenced.
+@>
+
+#------------------------------------------------------------------------------
+Event ID: 002
+Event Name: Spectator
+(X,Y): (001,001)
+
+Page #1
+Conditions
+None
+
+Graphic: trainer_BEAUTY
+
+Autonomous Movement
+Type: Fixed
+Speed: 3: Slow
+Freq: 3: Low
+Options Enabled
+Move Animation
+Trigger: Action Button
+
+List of Event Commands:
+@>
+
+#------------------------------------------------------------------------------
+Event ID: 003
+Event Name: Spectator
+(X,Y): (007,003)
+
+Page #1
+Conditions
+None
+
+Graphic: trainer_BEAUTY
+
+Autonomous Movement
+Type: Fixed
+Speed: 3: Slow
+Freq: 3: Low
+Options Enabled
+Move Animation
+Trigger: Action Button
+
+List of Event Commands:
+@>
+
+#------------------------------------------------------------------------------
+Event ID: 004
+Event Name: Spectator
+(X,Y): (021,001)
+
+Page #1
+Conditions
+None
+
+Graphic: trainer_BEAUTY
+
+Autonomous Movement
+Type: Fixed
+Speed: 3: Slow
+Freq: 3: Low
+Options Enabled
+Move Animation
+Trigger: Action Button
+
+List of Event Commands:
+@>
+
+#------------------------------------------------------------------------------
+Event ID: 005
+Event Name: Spectator
+(X,Y): (025,005)
+
+Page #1
+Conditions
+None
+
+Graphic: trainer_BEAUTY
+
+Autonomous Movement
+Type: Fixed
+Speed: 3: Slow
+Freq: 3: Low
+Options Enabled
+Move Animation
+Trigger: Action Button
+
+List of Event Commands:
+@>
+
+#------------------------------------------------------------------------------
+Event ID: 006
+Event Name: Spectator
+(X,Y): (030,001)
+
+Page #1
+Conditions
+None
+
+Graphic: trainer_BEAUTY
+
+Autonomous Movement
+Type: Fixed
+Speed: 3: Slow
+Freq: 3: Low
+Options Enabled
+Move Animation
+Trigger: Action Button
+
+List of Event Commands:
+@>
+
+#------------------------------------------------------------------------------
+Event ID: 007
+Event Name: Spectator
+(X,Y): (003,003)
+
+Page #1
+Conditions
+None
+
+Graphic: trainer_GAMBLER
+
+Autonomous Movement
+Type: Fixed
+Speed: 3: Slow
+Freq: 3: Low
+Options Enabled
+Move Animation
+Trigger: Action Button
+
+List of Event Commands:
+@>
+
+#------------------------------------------------------------------------------
+Event ID: 008
+Event Name: Spectator
+(X,Y): (025,003)
+
+Page #1
+Conditions
+None
+
+Graphic: trainer_GAMBLER
+
+Autonomous Movement
+Type: Fixed
+Speed: 3: Slow
+Freq: 3: Low
+Options Enabled
+Move Animation
+Trigger: Action Button
+
+List of Event Commands:
+@>
+
+#------------------------------------------------------------------------------
+Event ID: 009
+Event Name: Spectator
+(X,Y): (030,005)
+
+Page #1
+Conditions
+None
+
+Graphic: trainer_GAMBLER
+
+Autonomous Movement
+Type: Fixed
+Speed: 3: Slow
+Freq: 3: Low
+Options Enabled
+Move Animation
+Trigger: Action Button
+
+List of Event Commands:
+@>
+
+#------------------------------------------------------------------------------
+Event ID: 010
+Event Name: Spectator
+(X,Y): (009,001)
+
+Page #1
+Conditions
+None
+
+Graphic: trainer_GENTLEMAN
+
+Autonomous Movement
+Type: Fixed
+Speed: 3: Slow
+Freq: 3: Low
+Options Enabled
+Move Animation
+Trigger: Action Button
+
+List of Event Commands:
+@>
+
+#------------------------------------------------------------------------------
+Event ID: 011
+Event Name: Spectator
+(X,Y): (004,005)
+
+Page #1
+Conditions
+None
+
+Graphic: trainer_GENTLEMAN
+
+Autonomous Movement
+Type: Fixed
+Speed: 3: Slow
+Freq: 3: Low
+Options Enabled
+Move Animation
+Trigger: Action Button
+
+List of Event Commands:
+@>
+
+#------------------------------------------------------------------------------
+Event ID: 012
+Event Name: Spectator
+(X,Y): (027,003)
+
+Page #1
+Conditions
+None
+
+Graphic: trainer_GENTLEMAN
+
+Autonomous Movement
+Type: Fixed
+Speed: 3: Slow
+Freq: 3: Low
+Options Enabled
+Move Animation
+Trigger: Action Button
+
+List of Event Commands:
+@>
+
+#------------------------------------------------------------------------------
+Event ID: 013
+Event Name: Spectator
+(X,Y): (008,005)
+
+Page #1
+Conditions
+None
+
+Graphic: trainer_HIKER
+
+Autonomous Movement
+Type: Fixed
+Speed: 3: Slow
+Freq: 3: Low
+Options Enabled
+Move Animation
+Trigger: Action Button
+
+List of Event Commands:
+@>
+
+#------------------------------------------------------------------------------
+Event ID: 014
+Event Name: Spectator
+(X,Y): (002,001)
+
+Page #1
+Conditions
+None
+
+Graphic: trainer_HIKER
+
+Autonomous Movement
+Type: Fixed
+Speed: 3: Slow
+Freq: 3: Low
+Options Enabled
+Move Animation
+Trigger: Action Button
+
+List of Event Commands:
+@>
+
+#------------------------------------------------------------------------------
+Event ID: 015
+Event Name: Spectator
+(X,Y): (026,001)
+
+Page #1
+Conditions
+None
+
+Graphic: trainer_HIKER
+
+Autonomous Movement
+Type: Fixed
+Speed: 3: Slow
+Freq: 3: Low
+Options Enabled
+Move Animation
+Trigger: Action Button
+
+List of Event Commands:
+@>
+
+#------------------------------------------------------------------------------
+Event ID: 016
+Event Name: Spectator
+(X,Y): (022,005)
+
+Page #1
+Conditions
+None
+
+Graphic: trainer_LASS
+
+Autonomous Movement
+Type: Fixed
+Speed: 3: Slow
+Freq: 3: Low
+Options Enabled
+Move Animation
+Trigger: Action Button
+
+List of Event Commands:
+@>
+
+#------------------------------------------------------------------------------
+Event ID: 017
+Event Name: Spectator
+(X,Y): (008,003)
+
+Page #1
+Conditions
+None
+
+Graphic: trainer_LASS
+
+Autonomous Movement
+Type: Fixed
+Speed: 3: Slow
+Freq: 3: Low
+Options Enabled
+Move Animation
+Trigger: Action Button
+
+List of Event Commands:
+@>
+
+#------------------------------------------------------------------------------
+Event ID: 018
+Event Name: Spectator
+(X,Y): (001,003)
+
+Page #1
+Conditions
+None
+
+Graphic: trainer_LASS
+
+Autonomous Movement
+Type: Fixed
+Speed: 3: Slow
+Freq: 3: Low
+Options Enabled
+Move Animation
+Trigger: Action Button
+
+List of Event Commands:
+@>
+
+#------------------------------------------------------------------------------
+Event ID: 019
+Event Name: Spectator
+(X,Y): (023,001)
+
+Page #1
+Conditions
+None
+
+Graphic: trainer_LASS
+
+Autonomous Movement
+Type: Fixed
+Speed: 3: Slow
+Freq: 3: Low
+Options Enabled
+Move Animation
+Trigger: Action Button
+
+List of Event Commands:
+@>
+
+#------------------------------------------------------------------------------
+Event ID: 020
+Event Name: Spectator
+(X,Y): (006,001)
+
+Page #1
+Conditions
+None
+
+Graphic: trainer_CRUSHGIRL
+
+Autonomous Movement
+Type: Fixed
+Speed: 3: Slow
+Freq: 3: Low
+Options Enabled
+Move Animation
+Trigger: Action Button
+
+List of Event Commands:
+@>
+
+#------------------------------------------------------------------------------
+Event ID: 021
+Event Name: Spectator
+(X,Y): (026,005)
+
+Page #1
+Conditions
+None
+
+Graphic: trainer_CRUSHGIRL
+
+Autonomous Movement
+Type: Fixed
+Speed: 3: Slow
+Freq: 3: Low
+Options Enabled
+Move Animation
+Trigger: Action Button
+
+List of Event Commands:
+@>
+
+#------------------------------------------------------------------------------
+Event ID: 022
+Event Name: Spectator
+(X,Y): (021,003)
+
+Page #1
+Conditions
+None
+
+Graphic: trainer_CRUSHGIRL
+
+Autonomous Movement
+Type: Fixed
+Speed: 3: Slow
+Freq: 3: Low
+Options Enabled
+Move Animation
+Trigger: Action Button
+
+List of Event Commands:
+@>
+
+#------------------------------------------------------------------------------
+Event ID: 023
+Event Name: Spectator
+(X,Y): (010,005)
+
+Page #1
+Conditions
+None
+
+Graphic: trainer_CRUSHGIRL
+
+Autonomous Movement
+Type: Fixed
+Speed: 3: Slow
+Freq: 3: Low
+Options Enabled
+Move Animation
+Trigger: Action Button
+
+List of Event Commands:
+@>
+
+#------------------------------------------------------------------------------
+Event ID: 024
+Event Name: Spectator
+(X,Y): (010,003)
+
+Page #1
+Conditions
+None
+
+Graphic: trainer_YOUNGSTER
+
+Autonomous Movement
+Type: Fixed
+Speed: 3: Slow
+Freq: 3: Low
+Options Enabled
+Move Animation
+Trigger: Action Button
+
+List of Event Commands:
+@>
+
+#------------------------------------------------------------------------------
+Event ID: 025
+Event Name: Spectator
+(X,Y): (022,003)
+
+Page #1
+Conditions
+None
+
+Graphic: trainer_YOUNGSTER
+
+Autonomous Movement
+Type: Fixed
+Speed: 3: Slow
+Freq: 3: Low
+Options Enabled
+Move Animation
+Trigger: Action Button
+
+List of Event Commands:
+@>
+
+#------------------------------------------------------------------------------
+Event ID: 026
+Event Name: Spectator
+(X,Y): (029,001)
+
+Page #1
+Conditions
+None
+
+Graphic: trainer_YOUNGSTER
+
+Autonomous Movement
+Type: Fixed
+Speed: 3: Slow
+Freq: 3: Low
+Options Enabled
+Move Animation
+Trigger: Action Button
+
+List of Event Commands:
+@>
+
+#------------------------------------------------------------------------------
+Event ID: 027
+Event Name: Spectator
+(X,Y): (002,005)
+
+Page #1
+Conditions
+None
+
+Graphic: trainer_YOUNGSTER
+
+Autonomous Movement
+Type: Fixed
+Speed: 3: Slow
+Freq: 3: Low
+Options Enabled
+Move Animation
+Trigger: Action Button
+
+List of Event Commands:
+@>
+
+#------------------------------------------------------------------------------
+Event ID: 028
+Event Name: Spectator
+(X,Y): (004,001)
+
+Page #1
+Conditions
+None
+
+Graphic: trainer_PSYCHIC_F
+
+Autonomous Movement
+Type: Fixed
+Speed: 3: Slow
+Freq: 3: Low
+Options Enabled
+Move Animation
+Trigger: Action Button
+
+List of Event Commands:
+@>
+
+#------------------------------------------------------------------------------
+Event ID: 029
+Event Name: Spectator
+(X,Y): (029,005)
+
+Page #1
+Conditions
+None
+
+Graphic: trainer_PSYCHIC_F
+
+Autonomous Movement
+Type: Fixed
+Speed: 3: Slow
+Freq: 3: Low
+Options Enabled
+Move Animation
+Trigger: Action Button
+
+List of Event Commands:
+@>
+
+#------------------------------------------------------------------------------
+Event ID: 030
+Event Name: Spectator
+(X,Y): (025,001)
+
+Page #1
+Conditions
+None
+
+Graphic: trainer_PSYCHIC_F
+
+Autonomous Movement
+Type: Fixed
+Speed: 3: Slow
+Freq: 3: Low
+Options Enabled
+Move Animation
+Trigger: Action Button
+
+List of Event Commands:
+@>
+
+#------------------------------------------------------------------------------
+Event ID: 031
+Event Name: Spectator
+(X,Y): (007,005)
+
+Page #1
+Conditions
+None
+
+Graphic: trainer_BUGCATCHER
+
+Autonomous Movement
+Type: Fixed
+Speed: 3: Slow
+Freq: 3: Low
+Options Enabled
+Move Animation
+Trigger: Action Button
+
+List of Event Commands:
+@>
+
+#------------------------------------------------------------------------------
+Event ID: 032
+Event Name: Spectator
+(X,Y): (027,001)
+
+Page #1
+Conditions
+None
+
+Graphic: trainer_BUGCATCHER
+
+Autonomous Movement
+Type: Fixed
+Speed: 3: Slow
+Freq: 3: Low
+Options Enabled
+Move Animation
+Trigger: Action Button
+
+List of Event Commands:
+@>
+
+#------------------------------------------------------------------------------
+Event ID: 033
+Event Name: Spectator
+(X,Y): (003,005)
+
+Page #1
+Conditions
+None
+
+Graphic: trainer_TWINS
+
+Autonomous Movement
+Type: Fixed
+Speed: 3: Slow
+Freq: 3: Low
+Options Enabled
+Move Animation
+Trigger: Action Button
+
+List of Event Commands:
+@>
+
+#------------------------------------------------------------------------------
+Event ID: 034
+Event Name: Scoreboard
+(X,Y): (013,004)
+
+Page #1
+Conditions
+None
+
+Autonomous Movement
+Type: Fixed
+Speed: 3: Slow
+Freq: 3: Low
+Options Enabled
+Move Animation
+Trigger: Action Button
+
+List of Event Commands:
+@>Comment: Event reserved for a dynamic scoreboard during the 
+ :       : PWT. The event should be placed in the top left 
+ :       : corner of a 6 x 3 map area. This area will then be 
+ :       : reserved for the graphical aspects of the scoreboard.
+@>
+
+#------------------------------------------------------------------------------
+Event ID: 035
+Event Name: Opponent
+(X,Y): (008,016)
+
+Page #1
+Conditions
+None
+
+Autonomous Movement
+Type: Fixed
+Speed: 3: Slow
+Freq: 3: Low
+Options Enabled
+Move Animation
+Trigger: Action Button
+
+List of Event Commands:
+@>Comment: Event reserved as the graphical component to the 
+ :       : trainer the Player is battling against during 
+ :       : the rounds of the PWT.
+@>
+
+#------------------------------------------------------------------------------
+Event ID: 036
+Event Name: StartTournament
+(X,Y): (015,004)
+
+Page #1
+Conditions
+None
+
+Autonomous Movement
+Type: Fixed
+Speed: 3: Slow
+Freq: 3: Low
+Options Enabled
+Move Animation
+Trigger: Autorun
+
+List of Event Commands:
+@>Comment: Event used to auto lunch the battle portion of the 
+ :       : PWT. You need to have this on your main PWT arena 
+ :       : map, and it has to be set to Autorun.
+@>Comment: Scroll up to make the Scoreboard more visible.
+@>Scroll Map: Up, 5, 4
+@>Scroll Map: Left, 5, 4
+@>Wait: 16 frame(s)
+@>Script: $PWT.continue
+@>
+
+Page #2
+Conditions
+Self Switch A is ON
+
+Autonomous Movement
+Type: Fixed
+Speed: 3: Slow
+Freq: 3: Low
+Options Enabled
+Move Animation
+Trigger: Action Button
+
+List of Event Commands:
+@>
+
+#------------------------------------------------------------------------------
+Event ID: 037
+Event Name: Movement Behaviour
+(X,Y): (018,004)
+
+Page #1
+Conditions
+None
+
+Autonomous Movement
+Type: Fixed
+Speed: 3: Slow
+Freq: 3: Low
+Options Enabled
+Move Animation
+Trigger: Action Button
+
+List of Event Commands:
+@>Comment: Event reserved for the use of trainer and player movement
+ :       : when approaching the main PWT platform.
+@>
+
+Page #2
+Conditions
+Self Switch A is ON
+
+Autonomous Movement
+Type: Fixed
+Speed: 3: Slow
+Freq: 3: Low
+Options Enabled
+Move Animation
+Trigger: Parallel Process
+
+List of Event Commands:
+@>Comment: Event used to bring the player up to the platform
+@>Comment: Has to be Parallel Process!
+@>Set Move Route: Player
+                  (Ignore If Can't Move)
+ :              : $>Move Up
+ :              : $>Move Up
+ :              : $>Move Up
+ :              : $>Move Left
+ :              : $>Move Left
+ :              : $>Move Left
+ :              : $>Move Left
+@>Wait for Move's Completion
+@>Control Self Switch: A =OFF
+@>
+
+Page #3
+Conditions
+Self Switch B is ON
+
+Autonomous Movement
+Type: Fixed
+Speed: 3: Slow
+Freq: 3: Low
+Options Enabled
+Move Animation
+Trigger: Parallel Process
+
+List of Event Commands:
+@>Comment: Event page used to bring the opponent up to the platform
+@>Comment: Has to be Parallel Process!
+@>Set Move Route: [Opponent]
+                  (Ignore If Can't Move)
+ :              : $>Move Right
+ :              : $>Move Right
+ :              : $>Move Up
+ :              : $>Move Up
+ :              : $>Move Up
+ :              : $>Move Up
+ :              : $>Move Up
+ :              : $>Move Right
+ :              : $>Move Right
+ :              : $>Move Right
+ :              : $>Move Right
+@>Wait for Move's Completion
+@>Control Self Switch: B =OFF
+@>
+
+Page #4
+Conditions
+Self Switch C is ON
+
+Autonomous Movement
+Type: Fixed
+Speed: 3: Slow
+Freq: 3: Low
+Options Enabled
+Move Animation
+Trigger: Parallel Process
+
+List of Event Commands:
+@>Comment: Event page used to bring the player down the platform
+@>Comment: Has to be Parallel Process!
+@>Set Move Route: Player
+                  (Ignore If Can't Move)
+ :              : $>Move Right
+ :              : $>Move Right
+ :              : $>Move Right
+ :              : $>Move Right
+ :              : $>Move Down
+ :              : $>Move Down
+ :              : $>Move Down
+@>Wait for Move's Completion
+@>Control Self Switch: C =OFF
+@>
+
+Page #5
+Conditions
+Self Switch D is ON
+
+Autonomous Movement
+Type: Fixed
+Speed: 3: Slow
+Freq: 3: Low
+Options Enabled
+Move Animation
+Trigger: Parallel Process
+
+List of Event Commands:
+@>Comment: Event page used to bring the opponent down the platform
+@>Comment: Has to be Parallel Process!
+@>Set Move Route: [Opponent]
+                  (Ignore If Can't Move)
+ :              : $>Move Left
+ :              : $>Move Left
+ :              : $>Move Left
+ :              : $>Move Left
+ :              : $>Move Down
+ :              : $>Move Down
+ :              : $>Move Down
+ :              : $>Move Down
+ :              : $>Move Down
+ :              : $>Move Left
+ :              : $>Move Left
+@>Wait for Move's Completion
+@>Control Self Switch: D =OFF
+@>
+
+#------------------------------------------------------------------------------
+Event ID: 038
+Event Name: Fanfare
+(X,Y): (016,004)
+
+Page #1
+Conditions
+Self Switch A is ON
+
+Autonomous Movement
+Type: Fixed
+Speed: 3: Slow
+Freq: 3: Low
+Options Enabled
+Move Animation
+Trigger: Parallel Process
+
+List of Event Commands:
+@>Comment: Optional event used to create some sort of 
+ :       : 'celebratory' animation/event if the player beats the 
+ :       : PWT.
+@>Comment: Has to be Parallel Process!
+@>Control Self Switch: A =OFF
+@>
+
+#------------------------------------------------------------------------------
+
+#==============================================================================
 
 ###############################################################################
 # COMMON EVENTS
@@ -169519,11 +175443,55 @@ List of Event Commands:
 
 #==============================================================================
 Common Event ID: 112
-Common Event Name: 
+Common Event Name: Vs. Marisa Omega
 
 Trigger: None
 
 List of Event Commands:
+@>Set Weather Effects: None, @1
+@>Comment: --- Pre-Battle Intro Setup
+@>Call Common Event: Vs. Transition - Flash
+@>Change Screen Color Tone: (-255,-255,-255,0), @6
+@>Wait: 6 frame(s)
+@>Script: pbShowPicture(4,"Transitions/Bars_Under.png",1,256,192,zoomX=100,zoomY=100,opacity=230,blendType=0)
+@>Script: pbShowPicture(20,"Transitions/Bars_Over.png",1,256,192,zoomX=100,zoomY=100,opacity=230,blendType=0)
+@>Move Picture: 5, @5, Center (256,192), (100%,100%), 230, Normal
+@>Wait: 5 frame(s)
+@>Script: pbShowPicture(1,"Transitions/BGs/BGVolcano.png",1,256,192,100,100,0,0)
+@>Wait: 5 frame(s)
+@>Move Picture: 1, @5, Center (256,192), (100%,100%), 255, Normal
+@>Wait: 15 frame(s)
+@>Play SE: 'Vs flash', 80, 100
+@>Screen Flash: (255,0,0,255), @10
+@>Script: pbShowPicture(3,"Transitions/PTs/Puppet_MarisaOS.png",1,256,192,100,100,255,0)
+@>Change Text Options: Middle, Show
+@>Text: \w[dark]\l[4]\se[]\ts[]\n<i><ac>When stars grow old, they drift down to the horizon...</i></ac>\wtnp[65]
+@>Play SE: 'Vs flash', 80, 100
+@>Screen Flash: (255,0,0,255), @10
+@>Text: \w[dark]\l[4]\se[]\ts[]\n<i>\c[2]<ac>And now, this giant star will fall down upon the land!</i></ac>\wtnp[165]
+@>Change Text Options: Bottom, Show
+@>Screen Flash: (255,0,0,255), @10
+@>Play SE: 'Vs sword', 80, 100
+@>Script: pbShowPicture(5,"Transitions/PTs/Puppet_MarisaO.png",1,256,192,100,100,255,0)
+@>Script: pbShowPicture(21,"Transitions/Names/Name_MarisaOP.png",1,256,192,100,100,255,0)
+@>Move Picture: 3, @30, Center (252,192), (100%,100%), 255, Normal
+@>Wait: 160 frame(s)
+@>Move Picture: 1, @5, Center (256,192), (100%,100%), 0, Normal
+@>Move Picture: 20, @5, Center (256,192), (100%,100%), 0, Normal
+@>Move Picture: 3, @5, Center (252,192), (100%,100%), 0, Normal
+@>Move Picture: 4, @5, Center (256,192), (100%,100%), 0, Normal
+@>Move Picture: 5, @5, Center (256,192), (100%,100%), 0, Normal
+@>Move Picture: 21, @5, Center (256,192), (100%,100%), 0, Normal
+@>Wait: 6 frame(s)
+@>Erase Picture: 1
+@>Erase Picture: 20
+@>Erase Picture: 3
+@>Erase Picture: 4
+@>Erase Picture: 5
+@>Erase Picture: 21
+@>Change Screen Color Tone: (0,0,0,0), @10
+@>Comment: --- Pre-Battle Intro Conclusion
+@>Control Switches: [0104: Transition Handler] = OFF
 @>
 
 #==============================================================================

@@ -10857,3 +10857,16 @@ Target = NearOther
 FunctionCode = TypeAndPowerDependOnTerrain
 Flags = CanProtect,CanMirrorMove,Pulse
 Description = Utilizes the power of the terrain to attack. This move's type and power vary with the terrain.
+#-------------------------------
+[SUPERNOVA18]
+Name = Supernova
+Type = FIRE18
+Category = Special
+Power = 140
+Accuracy = 90
+TotalPP = 5
+Target = AllNearFoes
+FunctionCode = RecoilThirdOfDamageDealtBurnTarget
+Flags = CanProtect,CanMirrorMove,ThawsUser
+EffectChance = 25
+Description = Searing heat erupts from the user in all directions. The user also takes damage and may burn the target.

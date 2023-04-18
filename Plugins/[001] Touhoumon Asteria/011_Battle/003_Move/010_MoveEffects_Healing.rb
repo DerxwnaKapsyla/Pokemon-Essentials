@@ -8,6 +8,19 @@
 #==============================================================================#
 
 #===============================================================================
+# Heals user by 1/2 of its max HP, or 2/3 of its max HP in a sandstorm. (Shore Up)
+#
+# Addition: Heals the user by 3/4ths its max HP during Cruel Sandstorm
+#===============================================================================
+class Battle::Move::HealUserDependingOnSandstorm < Battle::Move::HealingMove
+  def pbHealAmount(user)
+    return (user.totalhp * 2 / 3.0).round if user.effectiveWeather == :Sandstorm
+	return (user.totalhp * 3 / 4.0).round if user.effectiveWeather == :CruelSandstorm
+    return (user.totalhp / 2.0).round
+  end
+end
+
+#===============================================================================
 # All current battlers will perish after 3 more rounds. (Perish Song)
 #
 # Change: Removed explicit references to Pokemon as an individual species

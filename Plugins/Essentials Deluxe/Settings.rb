@@ -20,7 +20,7 @@ module Settings
   #-----------------------------------------------------------------------------
   # Toggles whether or not shiny forms should appear in the Pokedex.
   #-----------------------------------------------------------------------------
-  POKEDEX_SHINY_FORMS = true
+  POKEDEX_SHINY_FORMS = false
   
   #-----------------------------------------------------------------------------
   # Toggles whether or not shadow forms should appear in the Pokedex.

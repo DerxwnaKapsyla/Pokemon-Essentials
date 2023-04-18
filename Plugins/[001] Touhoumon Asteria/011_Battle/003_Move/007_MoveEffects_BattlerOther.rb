@@ -116,3 +116,15 @@ class Battle::Move::UserTargetSwapAbilities < Battle::Move
     return false
   end
 end
+
+#===============================================================================
+# Freezes the target. Accuracy perfect in hail. (Blizzard)
+#
+# Addition: Added a check for Severe Hail
+#===============================================================================
+class Battle::Move::FreezeTargetAlwaysHitsInHail < Battle::Move::FreezeTarget
+  def pbBaseAccuracy(user, target)
+    return 0 if target.effectiveWeather == :Hail || :SevereHail
+    return super
+  end
+end

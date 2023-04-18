@@ -99,6 +99,18 @@ class Battle
   
 #==============================================================================#
 # Changes in this section include the following:
+#	* Addition of Severe Hail and Cruel Sandstorm
+#==============================================================================#
+  alias asteria_pbStartBattleCore pbStartBattleCore
+  def pbStartBattleCore
+	asteria_pbStartBattleCore
+    case @field.weather
+    when :SevereHail  	  then pbDisplay(_INTL("Hail is falling severely."))
+	when :CruelSandstorm  then pbDisplay(_INTL("A sandstorm is raging cruely."))
+    end
+  end
+#==============================================================================#
+# Changes in this section include the following:
 #	* Removes explicit references to Pokemon as a individual species
 #==============================================================================#
   def pbEndOfBattle

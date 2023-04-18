@@ -24,7 +24,7 @@ SpecialBattleIntroAnimations.register("derx_animations", 100,   # Priority 100
     when 9  then pbCommonEvent(32)    # Vs. Astra & Celeste
     when 10 then pbCommonEvent(65)    # Vs. DLwRuukoto
     when 11 then pbCommonEvent(111)   # Vs. Ayakashi (Puppet)
-    when 12 then pbCommonEvent(111)   # Vs. Marisa Omega (Puppet)
+    when 12 then pbCommonEvent(112)   # Vs. Marisa Omega (Puppet)
     when 13 then pbCommonEvent(111)   # Vs. Yuyuko Omega (Puppet)
     when 14 then pbCommonEvent(111)   # Vs. Sariel Omega (Puppet)
     when 15 then pbCommonEvent(14)    # Vs. Selene

@@ -9,6 +9,7 @@
 #		* Strong Winds w/ Touhoumon Flying
 #		* Grounded Flying/Touhoumon Flying w/ Ground/Touhoumon Earth
 #		* Iron Ball interactions with Touhoumon Flying
+#		* Added Deathly Frost's Severe Hail effect
 #==============================================================================#
 class Battle::Move
   def pbCalcTypeModSingle(moveType, defType, user, target)
@@ -30,6 +31,10 @@ class Battle::Move
     elsif Effectiveness.super_effective_type?(moveType, defType)
       # Delta Stream's weather
       if target.effectiveWeather == :StrongWinds && (defType == :FLYING || defType == :FLYING18)
+        ret = Effectiveness::NORMAL_EFFECTIVE_ONE
+	  end
+	  # Derx: Yuyuko Omega's Deathly Frost weather. Removes Ghost and Nether weaknesses.
+      if target.effectiveWeather == :SevereHail && (defType == :GHOST || defType == :GHOST18)
         ret = Effectiveness::NORMAL_EFFECTIVE_ONE
       end
     end
@@ -229,8 +234,8 @@ class Battle::Move
       when :WATER18
         multipliers[:final_damage_multiplier] *= 1.5
       end
-    when :Sandstorm
-      if target.pbHasType?(:ROCK) && specialMove? && @function != "UseTargetDefenseInsteadOfTargetSpDef"
+    when :Sandstorm, :CruelSandstorm
+      if (target.pbHasType?(:ROCK) || target.pbHasType?(:BEAST18)) && specialMove? && @function != "UseTargetDefenseInsteadOfTargetSpDef"
         multipliers[:defense_multiplier] *= 1.5
       end
     end

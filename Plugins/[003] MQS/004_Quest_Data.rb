@@ -474,4 +474,28 @@ module QuestModule
     :QuestDescription => "A scientist in Vermilion Harbor was panicking because he lost his ferry pass, and after hearing how much it would cost to replace it I felt compelled to at least try and help him find it. The last place he said he knew he had it was around the Seaside Hotel.",
     :RewardString => "nil"
   }
+  
+  Quest115 = {
+    :ID => "115",
+    :Name => "An Island In Flux - I",
+    :QuestGiver => "Side Quest",
+    :Stage1 => "Visit Wisteria Island.",
+	:Stage1 => "Talk to Mayor Libra.",
+    :Location1 => "Fuchsia City",
+	:Location2 => "Port Exilian",
+    :QuestDescription => "A man suddenly told me about a place called Wisteria Island, and remarked at how beautiful it was, right before hinting it may have something I'm 'interested' in. It sounds like usual marketing strategies, but it couldn't hurt to visit a popular tourist spot!",
+    :RewardString => "nil"
+  }
+  
+  Quest115 = {
+    :ID => "116",
+    :Name => "An Island In Flux - II",
+    :QuestGiver => "Side Quest",
+    :Stage1 => "Investigate Wisteria Island to find the cause of the abnormalities.",
+	:Stage2 => "Report back to Mayor Libra.",
+    :Location1 => "Port Exilian",
+	:Location2 => "Wisteria Island",
+    :QuestDescription => "Of course it was too good to be true! When I spoke to the Mayor of the Island's only settlement, she informed me that she tasked one of her council to find a capable trainer to help deal with some sort of situation on the island. I guess I can look into it!",
+    :RewardString => "nil"
+  }
 end

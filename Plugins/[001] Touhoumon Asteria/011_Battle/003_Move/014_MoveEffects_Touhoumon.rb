@@ -108,9 +108,9 @@ class Battle::Move::TypeAndPowerDependOnWeatherThmn < Battle::Move
       ret = :FIRE18 if GameData::Type.exists?(:FIRE18)
     when :Rain, :HeavyRain
       ret = :WATER18 if GameData::Type.exists?(:WATER18)
-    when :Sandstorm
+    when :Sandstorm, :CruelSandstorm
       ret = :ROCK18 if GameData::Type.exists?(:ROCK18)
-    when :Hail
+    when :Hail, :SevereHail
       ret = :ICE18 if GameData::Type.exists?(:ICE18)
     end
     return ret

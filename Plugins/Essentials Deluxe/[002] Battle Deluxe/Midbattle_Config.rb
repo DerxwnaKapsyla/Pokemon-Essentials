@@ -1096,6 +1096,28 @@ module EssentialsDeluxe
   }
   
   #-----------------------------------------------------------------------------
+  # Scene: Vs. Ayakashi
+  # Mechanic: Forced Perish Song
+  #-----------------------------------------------------------------------------  
+  #VS_AYAKASHI = {
+  #	"turnCommand" => {
+  #	  :battler			=> 0,
+  #	  :blankspeech		=> "{1} is being drawn in by Ayakashi's power!,
+  #	  :effects 			=> [ [PBEffects::PerishSong, 3] ],
+  #	  :anim 			=> :PERISHSONG,
+  #	  :blankspeech_1	=> "{1} will faint in 3 turns!"
+  #	  }
+  #
+  #	"switchSentOut_repeat" => {
+  #	  :battler			=> 0,
+  #	  :blankspeech		=> "{1} is being drawn in by Ayakashi's power!,
+  #	  :effects 			=> [ [PBEffects::PerishSong, 3] ],
+  #	  :anim 			=> :PERISHSONG,
+  #	  :blankspeech_1	=> "{1} will faint in 3 turns!"
+  #	  }
+  #}
+  
+  #-----------------------------------------------------------------------------
   # Scene: Vs. DLwRuukoto, The Ultimate Collector: Retribution Sidequest
   #-----------------------------------------------------------------------------  
   VS_DLWRUUKOTO = {
@@ -1386,6 +1408,87 @@ module EssentialsDeluxe
 	#	* Display: "T h a n k  y o u . . ."
 	#	Notes: Scrapped, changed
 	#---------------------------------------------------------------------------
+  }
+  
+  #-----------------------------------------------------------------------------
+  # Scene: Vs. Marisa Omega, the Blazing Apocalypse
+  #-----------------------------------------------------------------------------  
+  VS_MARISAO = {
+	#---------------------------------------------------------------------------
+	# Turn 1 - Battle intro. 
+	#	* Mention that Pokeballs are disabled.
+	#---------------------------------------------------------------------------
+	"turnCommand" => {
+	  :anim				=> :HEATWAVE,
+	  :text				=> "The oppressive heat is frying the Poké Balls internals!\nThey cannot be used this battle!",
+	  :battler			=> :Opposing,
+	  :text_1			=> "{1} begins building up energy.",
+	  :anim_1			=> [:STOCKPILE,1],
+	#  :anim_2			=> [:SUPERPOWER,1]
+	},
+	#---------------------------------------------------------------------------
+	# Turn End - Repeat
+	#	* Inflict a small amount of damage
+	#	* Inflict Burn
+	#---------------------------------------------------------------------------
+	"turnEnd_repeat_random_33" => {
+      :text			=> [:Opposing, "A massive heat wave erupts out of {1}!"],
+	  :battler  	=> :Opposing,
+	  :anim			=> :HEATWAVE,
+	  :battler_1	=> :Self,
+	  :hp      		=> -8,
+	  :status 		=> :BURN
+    },
+
+	#---------------------------------------------------------------------------
+	# Player uses Physcal Attack
+	#	* Inflict Burn
+	#---------------------------------------------------------------------------	
+	"movePhysical" => {
+	  :battler		=> :Self,
+	  :status 		=> :BURN
+    },
+	
+	#---------------------------------------------------------------------------
+	# Marisa uses Physcal Attack
+	#	* Inflict Burn
+	#---------------------------------------------------------------------------	
+	"movePhysical_foe" => {
+	  :battler		=> :Self,
+	  :status 		=> :BURN
+    },	
+	
+	#---------------------------------------------------------------------------
+	# Start of every turn
+	#	* "Marisa Omega is building up energy."
+	#---------------------------------------------------------------------------	
+	#"turnCommand_repeat" => {
+	#  :battler			=> :Opposing,
+	#  :ignore			=> "variable_4",
+	#  :text				=> "{1} is building up energy.",
+	#  :anim				=> [:STOCKPILE,1],
+	#  :setvar			=> 1,
+    #},	
+	
+	#---------------------------------------------------------------------------
+	# Every 4 turns
+	#	* "Marisa Omega unleashes her stored energy!"
+	#	* Force Marisa Omega to use Supernova.
+	#---------------------------------------------------------------------------	
+	"turnAttack_every_4" => {
+	  :battler			=> :Opposing,
+	  :moves			=> :SUPERNOVA18,
+	  :text				=> "{1} unleashes her stored energy.",
+	  :usemove 			=> :SUPERNOVA18,
+	},
+	
+	"turnEnd_every_4"  => {
+	  :battler			=> :Opposing,
+	  :text_1			=> "{1} begins charging up energy again.",
+	  :moves			=> :Reset,
+	  :anim				=> [:STOCKPILE,1],
+	  #:setvar			=> [:mult, 0]
+    },		
   }
   
   #-----------------------------------------------------------------------------

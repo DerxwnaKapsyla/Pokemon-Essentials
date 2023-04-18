@@ -10,6 +10,18 @@
 #	* Removed explicit references to Pokemon
 #==============================================================================#
 
+Battle::AbilityEffects::SpeedCalc.add(:SANDRUSH,
+  proc { |ability, battler, mult|
+    next mult * 2 if [:Sandstorm, :CruelSandstorm].include?(battler.effectiveWeather)
+  }
+)
+
+Battle::AbilityEffects::SpeedCalc.add(:SLUSHRUSH,
+  proc { |ability, battler, mult|
+    next mult * 2 if [:Hail, :SevereHail].include?(battler.effectiveWeather)
+  }
+)
+
 Battle::AbilityEffects::StatusImmunity.copy(:MAGMAARMOR,:FIREVEIL)
 
 Battle::AbilityEffects::StatusCure.copy(:MAGMAARMOR,:FIREVEIL)
@@ -114,10 +126,30 @@ Battle::AbilityEffects::MoveImmunity.copy(:WONDERGUARD,:PLAYGHOST)
 
 Battle::AbilityEffects::AccuracyCalcFromUser.copy(:COMPOUNDEYES,:FOCUS)
 
+Battle::AbilityEffects::DamageCalcFromUser.add(:MOLTENCORE,
+  proc { |ability, user, target, move, mults, baseDmg, type|
+    mults[:attack_multiplier] *= 1.5 if type == :FIRE18
+  }
+)
+
 Battle::AbilityEffects::AccuracyCalcFromTarget.add(:LIGHTNINGROD,
   proc { |ability, mods, user, target, move, type|
     mods[:base_accuracy] = 0 if (type == :ELECTRIC ||
     							 type == :WIND18)
+  }
+)
+
+Battle::AbilityEffects::AccuracyCalcFromTarget.add(:SANDVEIL,
+  proc { |ability, mods, user, target, move, type|
+    mods[:evasion_multiplier] *= 1.25 if target.effectiveWeather == :Sandstorm
+	mods[:evasion_multiplier] *= 1.5 if target.effectiveWeather == :CruelSandstorm
+  }
+)
+
+Battle::AbilityEffects::AccuracyCalcFromTarget.add(:SNOWCLOAK,
+  proc { |ability, mods, user, target, move, type|
+    mods[:evasion_multiplier] *= 1.25 if target.effectiveWeather == :Hail
+	mods[:evasion_multiplier] *= 1.5 if target.effectiveWeather == :SevereHail
   }
 )
 
@@ -162,6 +194,9 @@ Battle::AbilityEffects::DamageCalcFromUser.add(:SANDFORCE,
     if user.effectiveWeather == :Sandstorm &&
        [:ROCK, :GROUND, :STEEL, :EARTH18, :BEAST18, :STEEL18].include?(type)
       mults[:base_damage_multiplier] *= 1.3
+	else user.effectiveWeather == :CruelSandstorm &&
+	   [:ROCK, :GROUND, :STEEL, :EARTH18, :BEAST18, :STEEL18].include?(type)
+	  mults[:base_damage_multiplier] *= 1.5
     end
   }
 )
@@ -333,6 +368,38 @@ Battle::AbilityEffects::OnEndOfUsingMove.add(:GEHABURN,
   }
 )
 
+Battle::AbilityEffects::EndOfRoundWeather.add(:ICEBODY,
+  proc { |ability, weather, battler, battle|
+    next unless [:Hail, :SevereHail].include?(weather)
+    next if !battler.canHeal?
+    battle.pbShowAbilitySplash(battler)
+	if weather == :Hail
+	  battler.pbRecoverHP(battler.totalhp / 16)
+	elsif weather == :SevereHail
+	  battler.pbRecoverHP(battler.totalhp / 8)
+	end
+    if Battle::Scene::USE_ABILITY_SPLASH
+      battle.pbDisplay(_INTL("{1}'s HP was restored.", battler.pbThis))
+    else
+      battle.pbDisplay(_INTL("{1}'s {2} restored its HP.", battler.pbThis, battler.abilityName))
+    end
+    battle.pbHideAbilitySplash(battler)
+  }
+)
+
+Battle::AbilityEffects::EndOfRoundWeather.add(:ICEFACE,
+  proc { |ability, weather, battler, battle|
+    next if [:Hail, :SevereHail].include?(weather)
+    next if !battler.canRestoreIceFace || battler.form != 1
+    battle.pbShowAbilitySplash(battler)
+    if !Battle::Scene::USE_ABILITY_SPLASH
+      battle.pbDisplay(_INTL("{1}'s {2} activated!", battler.pbThis, battler.abilityName))
+    end
+    battler.pbChangeForm(0, _INTL("{1} transformed!", battler.pbThis))
+    battle.pbHideAbilitySplash(battler)
+  }
+)
+
 Battle::AbilityEffects::AfterMoveUseFromTarget.copy(:COLORCHANGE,:MYSTERIOUS)
 
 Battle::AbilityEffects::AfterMoveUseFromTarget.add(:PICKPOCKET,
@@ -403,6 +470,18 @@ Battle::AbilityEffects::OnSwitchIn.add(:LUCIDDREAMING,
     battle.pbShowAbilitySplash(battler)
     battle.pbDisplay(_INTL("{1} is a sleepwalker!", battler.pbThis))
     battle.pbHideAbilitySplash(battler)
+  }
+)
+
+Battle::AbilityEffects::OnSwitchIn.add(:FROZENWORLD,
+  proc { |ability, battler, battle, switch_in|
+    battle.pbStartWeatherAbility(:SevereHail, battler, true)
+  }
+)
+
+Battle::AbilityEffects::OnSwitchIn.add(:ARIDWASTES,
+  proc { |ability, battler, battle, switch_in|
+    battle.pbStartWeatherAbility(:CruelSandstorm, battler, true)
   }
 )
 

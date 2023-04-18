@@ -41,6 +41,7 @@ class Battle
 #==============================================================================#
 # Changes in this section include the following:
 #	* Removing explicit references to Pokemon as an individual species.
+#	* Added in Severe Hail and Cruel Sandstorm
 #==============================================================================#  
   def pbStartWeather(user, newWeather, fixedDuration = false, showAnim = true)
     return if @field.weather == newWeather
@@ -55,17 +56,56 @@ class Battle
     pbCommonAnimation(weather_data.animation) if showAnim && weather_data
     pbHideAbilitySplash(user) if user
     case @field.weather
-    when :Sun         then pbDisplay(_INTL("The sunlight turned harsh!"))
-    when :Rain        then pbDisplay(_INTL("It started to rain!"))
-    when :Sandstorm   then pbDisplay(_INTL("A sandstorm brewed!"))
-    when :Hail        then pbDisplay(_INTL("It started to hail!"))
-    when :HarshSun    then pbDisplay(_INTL("The sunlight turned extremely harsh!"))
-    when :HeavyRain   then pbDisplay(_INTL("A heavy rain began to fall!"))
-    when :StrongWinds then pbDisplay(_INTL("Mysterious strong winds are protecting Flying-types!"))
-    when :ShadowSky   then pbDisplay(_INTL("A shadow sky appeared!"))
+    when :Sun         		then pbDisplay(_INTL("The sunlight turned harsh!"))
+    when :Rain        		then pbDisplay(_INTL("It started to rain!"))
+    when :Sandstorm   		then pbDisplay(_INTL("A sandstorm brewed!"))
+    when :Hail        		then pbDisplay(_INTL("It started to hail!"))
+    when :HarshSun    		then pbDisplay(_INTL("The sunlight turned extremely harsh!"))
+    when :HeavyRain   		then pbDisplay(_INTL("A heavy rain began to fall!"))
+	when :StrongWinds 		then pbDisplay(_INTL("Mysterious strong winds are protecting Flying-types!"))
+    when :ShadowSky   		then pbDisplay(_INTL("A shadow sky appeared!"))
+	when :SevereHail		then pbDisplay(_INTL("It started to hail severely!"))
+	when :CruelSandstorm	then pbDisplay(_INTL("A cruel sandstorm brewed!"))
     end
     # Check for end of primordial weather, and weather-triggered form changes
     allBattlers.each { |b| b.pbCheckFormOnWeatherChange }
     pbEndPrimordialWeather
+  end
+
+#==============================================================================#
+# Changes in this section include the following:
+#	* Addition of Severe Hail and Cruel Sandstorm
+#==============================================================================#  
+  alias asteria_pbEndPrimordialWeather pbEndPrimordialWeather
+  def pbEndPrimordialWeather
+	asteria_pbEndPrimordialWeather
+	case @field.weather
+	when :SevereHail
+      if !pbCheckGlobalAbility(:FROZENWORLD)
+        @field.weather = :None
+        pbDisplay("The severe hail stopped!")
+      end
+	when :CruelSandstorm
+      if !pbCheckGlobalAbility(:ARIDWASTES)
+        @field.weather = :None
+        pbDisplay("The severe hail stopped!")
+      end
+	end
+  end
+
+  def pbStartWeatherAbility(new_weather, battler, ignore_primal = false)
+	return if !ignore_primal && [:HarshSun, :HeavyRain, :StrongWinds, 
+								 :SevereHail, :CruelSandstorm].include?(@field.weather)
+    return if @field.weather == new_weather
+    pbShowAbilitySplash(battler)
+    if !Scene::USE_ABILITY_SPLASH
+      pbDisplay(_INTL("{1}'s {2} activated!", battler.pbThis, battler.abilityName))
+    end
+    fixed_duration = false
+    fixed_duration = true if Settings::FIXED_DURATION_WEATHER_FROM_ABILITY &&
+                             ![:HarshSun, :HeavyRain, :StrongWinds,
+							   :SevereHail, :CruelSandstorm].include?(new_weather)
+    pbStartWeather(battler, new_weather, fixed_duration)
+    # NOTE: The ability splash is hidden again in def pbStartWeather.
   end
 end

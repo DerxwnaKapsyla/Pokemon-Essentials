@@ -29,4 +29,34 @@ class Battle::Battler
       end
     end
   end
+  
+#==============================================================================#
+# Changes in this section include the following:
+#	* Addition of Severe Hail
+#==============================================================================#
+  alias asteria_pbCheckFormOnWeatherChange pbCheckFormOnWeatherChange
+  def pbCheckFormOnWeatherChange(ability_changed = false)
+  asteria_pbCheckFormOnWeatherChange(ability_changed)
+    if isSpecies?(:CASTFORM)
+      if hasActiveAbility?(:FORECAST)
+        newForm = 0
+        case effectiveWeather
+        when :Sun, :HarshSun   		then newForm = 1
+        when :Rain, :HeavyRain 		then newForm = 2
+        when :Hail, :SevereHail     then newForm = 3
+        end
+        if @form != newForm
+          @battle.pbShowAbilitySplash(self, true)
+          @battle.pbHideAbilitySplash(self)
+          pbChangeForm(newForm, _INTL("{1} transformed!", pbThis))
+        end
+      else
+        pbChangeForm(0, _INTL("{1} transformed!", pbThis))
+      end
+    end
+    if !ability_changed && isSpecies?(:EISCUE) && self.ability == :ICEFACE &&
+       @form == 1 && effectiveWeather == :Hail || :SevereHail
+      @canRestoreIceFace = true   # Changed form at end of round
+    end
+  end	
 end
