@@ -1,0 +1,561 @@
+
+=================
+
+[2023-04-23 14:55:56 -0700]
+[Pokémon Essentials version 20.1]
+[v20.1 Hotfixes 1.0.7]
+
+Error in Plugin: [Pokemon Special - Kanto Adventures]
+Exception: SyntaxError
+Message: [Pokemon Special - Kanto Adventures] 001_Scene Cutscene.rb:23: syntax error, unexpected symbol literal, expecting ']'
+    :wait, 60,
+    ^
+[Pokemon Special - Kanto Adventures] 001_Scene Cutscene.rb:25: syntax error, unexpected ']', expecting `end'
+[Pokemon Special - Kanto Adventures] 001_Scene Cutscene.rb:123: syntax error, unexpected string literal, expecting ']'
+    "Written by Hidenori Kusaka"
+    ^
+[Pokemon Special - Kanto Adventures] 001_Scene Cutscene.rb:125: syntax error, unexpected ']', expecting `end'
+    ]
+    ^
+
+
+Backtrace:
+Section008:653:in `eval'
+Section008:653:in `block (2 levels) in runPlugins'
+Section008:643:in `each'
+Section008:643:in `block in runPlugins'
+Section008:634:in `each'
+Section008:634:in `runPlugins'
+Section386:28:in `mainFunctionDebug'
+Section386:18:in `block in mainFunction'
+Section014:80:in `pbCriticalCode'
+Section386:18:in `mainFunction'
+
+=================
+
+[2023-04-23 14:57:02 -0700]
+[Pokémon Essentials version 20.1]
+[v20.1 Hotfixes 1.0.7]
+
+Error in Plugin: [Pokemon Special - Kanto Adventures]
+Exception: SyntaxError
+Message: [Pokemon Special - Kanto Adventures] 001_Scene Cutscene.rb:123: syntax error, unexpected string literal, expecting ']'
+    "Written by Hidenori Kusaka"
+    ^
+[Pokemon Special - Kanto Adventures] 001_Scene Cutscene.rb:125: syntax error, unexpected ']', expecting `end'
+    ]
+    ^
+
+
+Backtrace:
+Section008:653:in `eval'
+Section008:653:in `block (2 levels) in runPlugins'
+Section008:643:in `each'
+Section008:643:in `block in runPlugins'
+Section008:634:in `each'
+Section008:634:in `runPlugins'
+Section386:28:in `mainFunctionDebug'
+Section386:18:in `block in mainFunction'
+Section014:80:in `pbCriticalCode'
+Section386:18:in `mainFunction'
+
+=================
+
+[2023-04-23 14:57:25 -0700]
+[Pokémon Essentials version 20.1]
+[v20.1 Hotfixes 1.0.7]
+
+Error in Plugin: [Pokemon Special - Kanto Adventures]
+Exception: SyntaxError
+Message: [Pokemon Special - Kanto Adventures] 001_Scene Cutscene.rb:123: syntax error, unexpected string literal, expecting ']'
+    "Written by Hidenori Kusaka"
+    ^
+[Pokemon Special - Kanto Adventures] 001_Scene Cutscene.rb:125: syntax error, unexpected ']', expecting `end'
+    ],
+    ^
+
+
+Backtrace:
+Section008:653:in `eval'
+Section008:653:in `block (2 levels) in runPlugins'
+Section008:643:in `each'
+Section008:643:in `block in runPlugins'
+Section008:634:in `each'
+Section008:634:in `runPlugins'
+Section386:28:in `mainFunctionDebug'
+Section386:18:in `block in mainFunction'
+Section014:80:in `pbCriticalCode'
+Section386:18:in `mainFunction'
+
+=================
+
+[2023-04-23 15:24:36 -0700]
+[Pokémon Essentials version 20.1]
+[v20.1 Hotfixes 1.0.7]
+
+Exception: NoMethodError
+Message: undefined method `name=' for nil:NilClass
+
+Backtrace:
+[Pokemon Special - Kanto Adventures] 001_UI_SplashesAndTitleScreen.rb:20:in `open_title_screen'
+UI_SplashesAndTitleScreen:45:in `close_splash'
+Event_Handlers:47:in `call'
+Event_Handlers:47:in `block in trigger'
+Event_Handlers:42:in `each'
+Event_Handlers:42:in `trigger'
+EventScene:173:in `update'
+EventScene:179:in `main'
+UI_SplashesAndTitleScreen:123:in `main'
+Main:35:in `mainFunctionDebug'
+
+=================
+
+[2023-04-23 15:37:07 -0700]
+[Pokémon Essentials version 20.1]
+[v20.1 Hotfixes 1.0.7]
+
+Error in Plugin: [Pokemon Special - Kanto Adventures]
+Exception: SyntaxError
+Message: [Pokemon Special - Kanto Adventures] 001_Scene Cutscene.rb:183: syntax error, unexpected `end', expecting end-of-input
+
+Backtrace:
+Section008:653:in `eval'
+Section008:653:in `block (2 levels) in runPlugins'
+Section008:643:in `each'
+Section008:643:in `block in runPlugins'
+Section008:634:in `each'
+Section008:634:in `runPlugins'
+Section386:28:in `mainFunctionDebug'
+Section386:18:in `block in mainFunction'
+Section014:80:in `pbCriticalCode'
+Section386:18:in `mainFunction'
+
+=================
+
+[2023-04-23 15:37:44 -0700]
+[Pokémon Essentials version 20.1]
+[v20.1 Hotfixes 1.0.7]
+
+Exception: NoMethodError
+Message: undefined method `addImage' for #<Game_Boot_Scene_2>
+
+Backtrace:
+[Pokemon Special - Kanto Adventures] 001_Scene Cutscene.rb:114:in `initialize'
+[Pokemon Special - Kanto Adventures] 001_UI_SplashesAndTitleScreen.rb:23:in `new'
+[Pokemon Special - Kanto Adventures] 001_UI_SplashesAndTitleScreen.rb:23:in `open_title_screen'
+UI_SplashesAndTitleScreen:45:in `close_splash'
+Event_Handlers:47:in `call'
+Event_Handlers:47:in `block in trigger'
+Event_Handlers:42:in `each'
+Event_Handlers:42:in `trigger'
+EventScene:173:in `update'
+EventScene:179:in `main'
+
+=================
+
+[2023-04-23 15:39:06 -0700]
+[Pokémon Essentials version 20.1]
+[v20.1 Hotfixes 1.0.7]
+
+Exception: NameError
+Message: undefined local variable or method `viewport' for #<Game_Boot_Scene_2>
+
+Backtrace:
+[Pokemon Special - Kanto Adventures] 001_Scene Cutscene.rb:109:in `initialize'
+[Pokemon Special - Kanto Adventures] 001_UI_SplashesAndTitleScreen.rb:23:in `new'
+[Pokemon Special - Kanto Adventures] 001_UI_SplashesAndTitleScreen.rb:23:in `open_title_screen'
+UI_SplashesAndTitleScreen:45:in `close_splash'
+Event_Handlers:47:in `call'
+Event_Handlers:47:in `block in trigger'
+Event_Handlers:42:in `each'
+Event_Handlers:42:in `trigger'
+EventScene:173:in `update'
+EventScene:179:in `main'
+
+=================
+
+[2023-04-23 15:39:48 -0700]
+[Pokémon Essentials version 20.1]
+[v20.1 Hotfixes 1.0.7]
+
+Exception: ArgumentError
+Message: wrong number of arguments (given 1, expected 0)
+
+Backtrace:
+[Pokemon Special - Kanto Adventures] 001_Scene Cutscene.rb:109:in `initialize'
+[Pokemon Special - Kanto Adventures] 001_Scene Cutscene.rb:109:in `initialize'
+[Pokemon Special - Kanto Adventures] 001_UI_SplashesAndTitleScreen.rb:23:in `new'
+[Pokemon Special - Kanto Adventures] 001_UI_SplashesAndTitleScreen.rb:23:in `open_title_screen'
+305:UI_SplashesAndTitleScreen:45:in `close_splash'
+035:Event_Handlers:47:in `call'
+035:Event_Handlers:47:in `block in trigger'
+035:Event_Handlers:42:in `each'
+035:Event_Handlers:42:in `trigger'
+100:EventScene:173:in `update'
+
+=================
+
+[2023-04-23 15:48:11 -0700]
+[Pokémon Essentials version 20.1]
+[v20.1 Hotfixes 1.0.7]
+
+Exception: NoMethodError
+Message: undefined method `length' for nil:NilClass
+
+Backtrace:
+EventScene:121:in `addImage'
+[Pokemon Special - Kanto Adventures] 001_Scene Cutscene.rb:114:in `initialize'
+[Pokemon Special - Kanto Adventures] 001_UI_SplashesAndTitleScreen.rb:20:in `new'
+[Pokemon Special - Kanto Adventures] 001_UI_SplashesAndTitleScreen.rb:20:in `open_title_screen'
+UI_SplashesAndTitleScreen:45:in `close_splash'
+Event_Handlers:47:in `call'
+Event_Handlers:47:in `block in trigger'
+Event_Handlers:42:in `each'
+Event_Handlers:42:in `trigger'
+EventScene:173:in `update'
+
+=================
+
+[2023-04-23 15:55:35 -0700]
+[Pokémon Essentials version 20.1]
+[v20.1 Hotfixes 1.0.7]
+
+Exception: NoMethodError
+Message: undefined method `name=' for nil:NilClass
+
+Backtrace:
+[Pokemon Special - Kanto Adventures] 001_Scene Cutscene.rb:121:in `main'
+[Pokemon Special - Kanto Adventures] 001_Scene Cutscene.rb:117:in `initialize'
+[Pokemon Special - Kanto Adventures] 001_UI_SplashesAndTitleScreen.rb:20:in `new'
+[Pokemon Special - Kanto Adventures] 001_UI_SplashesAndTitleScreen.rb:20:in `open_title_screen'
+UI_SplashesAndTitleScreen:45:in `close_splash'
+Event_Handlers:47:in `call'
+Event_Handlers:47:in `block in trigger'
+Event_Handlers:42:in `each'
+Event_Handlers:42:in `trigger'
+EventScene:173:in `update'
+
+=================
+
+[2023-04-23 15:56:33 -0700]
+[Pokémon Essentials version 20.1]
+[v20.1 Hotfixes 1.0.7]
+
+Exception: NameError
+Message: uninitialized constant Game_Boot_Scene_2::BASECOLOR
+
+Backtrace:
+[Pokemon Special - Kanto Adventures] 001_Scene Cutscene.rb:157:in `block in main'
+[Pokemon Special - Kanto Adventures] 001_Scene Cutscene.rb:144:in `each'
+[Pokemon Special - Kanto Adventures] 001_Scene Cutscene.rb:144:in `main'
+[Pokemon Special - Kanto Adventures] 001_Scene Cutscene.rb:117:in `initialize'
+[Pokemon Special - Kanto Adventures] 001_UI_SplashesAndTitleScreen.rb:20:in `new'
+[Pokemon Special - Kanto Adventures] 001_UI_SplashesAndTitleScreen.rb:20:in `open_title_screen'
+UI_SplashesAndTitleScreen:45:in `close_splash'
+Event_Handlers:47:in `call'
+Event_Handlers:47:in `block in trigger'
+Event_Handlers:42:in `each'
+
+=================
+
+[2023-04-23 15:58:37 -0700]
+[Pokémon Essentials version 20.1]
+[v20.1 Hotfixes 1.0.7]
+
+Exception: TypeError
+Message: Argument 0: Expected fixnum
+
+Backtrace:
+[Pokemon Special - Kanto Adventures] 001_Scene Cutscene.rb:113:in `z='
+[Pokemon Special - Kanto Adventures] 001_Scene Cutscene.rb:113:in `initialize'
+[Pokemon Special - Kanto Adventures] 001_UI_SplashesAndTitleScreen.rb:20:in `new'
+[Pokemon Special - Kanto Adventures] 001_UI_SplashesAndTitleScreen.rb:20:in `open_title_screen'
+UI_SplashesAndTitleScreen:45:in `close_splash'
+Event_Handlers:47:in `call'
+Event_Handlers:47:in `block in trigger'
+Event_Handlers:42:in `each'
+Event_Handlers:42:in `trigger'
+EventScene:173:in `update'
+
+=================
+
+[2023-04-23 15:59:15 -0700]
+[Pokémon Essentials version 20.1]
+[v20.1 Hotfixes 1.0.7]
+
+Exception: TypeError
+Message: Argument 0: Expected fixnum
+
+Backtrace:
+[Pokemon Special - Kanto Adventures] 001_Scene Cutscene.rb:113:in `z='
+[Pokemon Special - Kanto Adventures] 001_Scene Cutscene.rb:113:in `initialize'
+[Pokemon Special - Kanto Adventures] 001_UI_SplashesAndTitleScreen.rb:20:in `new'
+[Pokemon Special - Kanto Adventures] 001_UI_SplashesAndTitleScreen.rb:20:in `open_title_screen'
+305:UI_SplashesAndTitleScreen:45:in `close_splash'
+035:Event_Handlers:47:in `call'
+035:Event_Handlers:47:in `block in trigger'
+035:Event_Handlers:42:in `each'
+035:Event_Handlers:42:in `trigger'
+100:EventScene:173:in `update'
+
+=================
+
+[2023-04-23 16:05:45 -0700]
+[Pokémon Essentials version 20.1]
+[v20.1 Hotfixes 1.0.7]
+
+Exception: NoMethodError
+Message: undefined method `length' for nil:NilClass
+
+Backtrace:
+EventScene:121:in `addImage'
+[Pokemon Special - Kanto Adventures] 001_Scene Cutscene.rb:117:in `initialize'
+[Pokemon Special - Kanto Adventures] 001_UI_SplashesAndTitleScreen.rb:20:in `new'
+[Pokemon Special - Kanto Adventures] 001_UI_SplashesAndTitleScreen.rb:20:in `open_title_screen'
+UI_SplashesAndTitleScreen:45:in `close_splash'
+UI_SplashesAndTitleScreen:53:in `splash_update'
+Event_Handlers:47:in `call'
+Event_Handlers:47:in `block in trigger'
+Event_Handlers:42:in `each'
+Event_Handlers:42:in `trigger'
+
+=================
+
+[2023-04-23 16:20:36 -0700]
+[Pokémon Essentials version 20.1]
+[v20.1 Hotfixes 1.0.7]
+
+Error in Plugin: [Pokemon Special - Kanto Adventures]
+Exception: SyntaxError
+Message: [Pokemon Special - Kanto Adventures] 001_UI_SplashesAndTitleScreen.rb:35: syntax error, unexpected local variable or method, expecting `end'
+  pbWait(10)mer
+            ^~~
+
+
+Backtrace:
+Section008:653:in `eval'
+Section008:653:in `block (2 levels) in runPlugins'
+Section008:643:in `each'
+Section008:643:in `block in runPlugins'
+Section008:634:in `each'
+Section008:634:in `runPlugins'
+Section386:28:in `mainFunctionDebug'
+Section386:18:in `block in mainFunction'
+Section014:80:in `pbCriticalCode'
+Section386:18:in `mainFunction'
+
+=================
+
+[2023-04-23 21:39:29 -0700]
+[Pokémon Essentials version 20.1]
+[v20.1 Hotfixes 1.0.7]
+
+Exception: RuntimeError
+Message: Undefined value POKEMONTRAINER_Blue in GameData::TrainerType
+File PBS/metadata.txt, section 2, key TrainerType
+POKEMONTRAINER_Blue
+
+
+
+Backtrace:
+Compiler:345:in `checkEnumField'
+Compiler:320:in `csvEnumField!'
+Compiler:523:in `block (2 levels) in pbGetCsvRecord'
+Compiler:415:in `each'
+Compiler:415:in `block in pbGetCsvRecord'
+Compiler:413:in `loop'
+Compiler:413:in `pbGetCsvRecord'
+Compiler_CompilePBS:1700:in `block (3 levels) in compile_metadata'
+Compiler_CompilePBS:1689:in `each_key'
+Compiler_CompilePBS:1689:in `block (2 levels) in compile_metadata'
+
+=================
+
+[2023-04-23 21:56:24 -0700]
+[Pokémon Essentials version 20.1]
+[v20.1 Hotfixes 1.0.7]
+
+Error in Plugin: [Pokemon Special - Kanto Adventures]
+Exception: SyntaxError
+Message: [Pokemon Special - Kanto Adventures] 001_Scene Cutscene.rb:108: syntax error, unexpected symbol literal, expecting ']'
+  :clear
+  ^
+[Pokemon Special - Kanto Adventures] 001_Scene Cutscene.rb:109: syntax error, unexpected ']', expecting `end'
+
+Backtrace:
+Section008:653:in `eval'
+Section008:653:in `block (2 levels) in runPlugins'
+Section008:643:in `each'
+Section008:643:in `block in runPlugins'
+Section008:634:in `each'
+Section008:634:in `runPlugins'
+Section386:28:in `mainFunctionDebug'
+Section386:18:in `block in mainFunction'
+Section014:80:in `pbCriticalCode'
+Section386:18:in `mainFunction'
+
+=================
+
+[2023-04-24 19:20:42 -0700]
+[Pokémon Essentials version 20.1]
+[v20.1 Hotfixes 1.0.7]
+
+Exception: RuntimeError
+Message: Undefined value CROBAT in GameData::Species
+File PBS/pokemon.txt, section GOLBAT, key Evolutions
+
+
+
+
+Backtrace:
+Compiler:345:in `checkEnumField'
+Compiler:320:in `csvEnumField!'
+Compiler_CompilePBS:743:in `block (2 levels) in compile_pokemon'
+Compiler_CompilePBS:742:in `each'
+Compiler_CompilePBS:742:in `block in compile_pokemon'
+GameData:117:in `block in each'
+GameData:117:in `each_value'
+GameData:117:in `each'
+Compiler_CompilePBS:740:in `compile_pokemon'
+Compiler:766:in `compile_pbs_files'
+
+=================
+
+[2023-04-25 08:44:27 -0700]
+[Pokémon Essentials version 20.1]
+[v20.1 Hotfixes 1.0.7]
+
+Exception: RGSSError
+Message: disposed sprite
+
+Backtrace:
+[Pokemon Special - Kanto Adventures] 001_Scene Cutscene.rb:91:in `opacity='
+[Pokemon Special - Kanto Adventures] 001_Scene Cutscene.rb:91:in `update_or_skip'
+[Pokemon Special - Kanto Adventures] 001_Scene Cutscene.rb:41:in `block in main'
+[Pokemon Special - Kanto Adventures] 001_Scene Cutscene.rb:40:in `times'
+[Pokemon Special - Kanto Adventures] 001_Scene Cutscene.rb:40:in `main'
+[Pokemon Special - Kanto Adventures] 001_UI_SplashesAndTitleScreen.rb:34:in `show_intro_text'
+[Pokemon Special - Kanto Adventures] 001_UI_SplashesAndTitleScreen.rb:24:in `close_splash'
+UI_SplashesAndTitleScreen:53:in `splash_update'
+Event_Handlers:47:in `call'
+Event_Handlers:47:in `block in trigger'
+
+=================
+
+[2023-04-25 08:45:40 -0700]
+[Pokémon Essentials version 20.1]
+[v20.1 Hotfixes 1.0.7]
+
+Exception: RGSSError
+Message: disposed sprite
+
+Backtrace:
+[Pokemon Special - Kanto Adventures] 001_Scene Cutscene.rb:52:in `opacity='
+[Pokemon Special - Kanto Adventures] 001_Scene Cutscene.rb:52:in `main'
+[Pokemon Special - Kanto Adventures] 001_UI_SplashesAndTitleScreen.rb:34:in `show_intro_text'
+[Pokemon Special - Kanto Adventures] 001_UI_SplashesAndTitleScreen.rb:24:in `close_splash'
+Event_Handlers:47:in `call'
+Event_Handlers:47:in `block in trigger'
+Event_Handlers:42:in `each'
+Event_Handlers:42:in `trigger'
+EventScene:173:in `update'
+EventScene:179:in `main'
+
+=================
+
+[2023-04-25 08:51:36 -0700]
+[Pokémon Essentials version 20.1]
+[v20.1 Hotfixes 1.0.7]
+
+Exception: ArgumentError
+Message: wrong number of arguments (given 0, expected 2)
+
+Backtrace:
+[Pokemon Special - Kanto Adventures] 001_UI_SplashesAndTitleScreen.rb:43:in `hide_intro_text'
+[Pokemon Special - Kanto Adventures] 001_UI_SplashesAndTitleScreen.rb:40:in `show_intro_text'
+[Pokemon Special - Kanto Adventures] 001_UI_SplashesAndTitleScreen.rb:24:in `close_splash'
+Event_Handlers:47:in `call'
+Event_Handlers:47:in `block in trigger'
+Event_Handlers:42:in `each'
+Event_Handlers:42:in `trigger'
+EventScene:173:in `update'
+EventScene:179:in `main'
+UI_SplashesAndTitleScreen:123:in `main'
+
+=================
+
+[2023-04-25 10:25:34 -0700]
+[Pokémon Essentials version 20.1]
+[v20.1 Hotfixes 1.0.7]
+
+Script error in event 3 (coords 7,7), map 1 (Intro)
+Exception: NoMethodError
+Message: undefined method `nickname=' for #<Pokemon POLIWHIRL Lv.15>
+
+***Full script:
+pbChangePlayer(1)
+pbTrainerName("Red")
+pkmn = Pokemon.new(:POLIWHIRL, 15)
+pkmn.makeMale
+pkmn.shiny = false
+pkmn.nature = :BRAVE
+pkmn.ability = :DAMP
+pkmn.obtain_method = 4
+pkmn.obtain_level = 3
+pkmn.nickname = "Poli"
+pkmn.item = :ORANBERRY
+pkmn.happiness = 255
+pkmn.cannot_trade = true
+pkmn.cannot_release = true
+pkmn.calc_stats
+
+Backtrace:
+(eval):10:in `execute_script'
+Interpreter:143:in `eval'
+Interpreter:143:in `execute_script'
+Interpreter_Commands:1112:in `command_355'
+Interpreter_Commands:116:in `execute_command'
+Interpreter:133:in `block in update'
+Interpreter:90:in `loop'
+Interpreter:90:in `update'
+Scene_Map:160:in `block in update'
+Scene_Map:159:in `loop'
+
+=================
+
+[2023-04-25 10:25:58 -0700]
+[Pokémon Essentials version 20.1]
+[v20.1 Hotfixes 1.0.7]
+
+Script error in event 3 (coords 7,7), map 1 (Intro)
+Exception: NoMethodError
+Message: undefined method `nickname=' for #<Pokemon POLIWHIRL Lv.15>
+
+***Full script:
+pbChangePlayer(1)
+pbTrainerName("Red")
+pkmn = Pokemon.new(:POLIWHIRL, 15)
+pkmn.makeMale
+pkmn.shiny = false
+pkmn.nature = :BRAVE
+pkmn.ability = :DAMP
+pkmn.obtain_method = 4
+pkmn.obtain_level = 3
+pkmn.nickname = "Poli"
+pkmn.item = :ORANBERRY
+pkmn.happiness = 255
+pkmn.cannot_trade = true
+pkmn.cannot_release = true
+pkmn.calc_stats
+
+Backtrace:
+(eval):10:in `execute_script'
+Interpreter:143:in `eval'
+Interpreter:143:in `execute_script'
+Interpreter_Commands:1112:in `command_355'
+Interpreter_Commands:116:in `execute_command'
+Interpreter:133:in `block in update'
+Interpreter:90:in `loop'
+Interpreter:90:in `update'
+Scene_Map:160:in `block in update'
+Scene_Map:159:in `loop'
