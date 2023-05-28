@@ -97,7 +97,7 @@ module UnrealTime
   # Initial date. In sequence: Year, month, day, hour and minutes.
   # Method UnrealTime.reset resets time back to this time.
   def self.initial_date
-    return Time.local(1997,4,3, 12,0)
+    return Time.local(1997,3,3, 12,0)
   end
 
   # Advance to next time. If time already passed, advance 

@@ -984,13 +984,13 @@ module EssentialsDeluxe
   #-----------------------------------------------------------------------------
   # Pokemon Adventures: Kanto Arc
   #-----------------------------------------------------------------------------
-  # "Tutorial" Battle: Vs. Nidorino
+  # "Tutorial" Battle: Red Vs. Nidorino
   #-----------------------------------------------------------------------------
   VS_NIDORINO = {
   #-----------------------------------------------------------------------------
   # Condition: Every turn, apply Endure to Poliwhirl and Nidorino
   #-----------------------------------------------------------------------------
-    "turnCommand" => {
+    "turnCommand_repeat" => {
       :battler 		=> :Opposing,
       :effects 		=> [ [PBEffects::Endure, true] ],
 	  :battler_1 	=> :Self,
@@ -1018,6 +1018,27 @@ module EssentialsDeluxe
 	
     "captureSuccess" => {
 	  :speech		=> [0, "Ha ha! Gotcha, Nidorino!"],
+	}
+  }
+  
+  #-----------------------------------------------------------------------------
+  # Battle: Red vs. Phantom Pokemon "???" (Mew)
+  #-----------------------------------------------------------------------------
+  VS_MEW = {
+  #-----------------------------------------------------------------------------
+  # Condition: Turn 0 start - Display speech
+  #-----------------------------------------------------------------------------  
+    "turnCommand" => {
+      :speech		=> [0, "Alright {1}, let's show them how a real trainer does it!"],
+	},  
+  
+  #-----------------------------------------------------------------------------
+  # Condition: Even if impossible, set Endure to Mew every turn to prevent it
+  #			   from being KO'd.
+  #-----------------------------------------------------------------------------
+	"turnAttack_repeat" => {
+	  :battler		=> 1,
+	  :effects 		=> [ [PBEffects::Endure, true] ]
 	}
   }
   

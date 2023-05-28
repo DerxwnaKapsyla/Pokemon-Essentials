@@ -58,7 +58,7 @@ class Window_AdvancedTextPokemon
 end 
 
 def pbRepositionMessageWindow(msgwindow, linecount=2)
-  msgwindow.height=32*linecount+msgwindow.borderY
+  msgwindow.height= (32 * linecount) + msgwindow.borderY
   msgwindow.y=(Graphics.height)-(msgwindow.height)
   if $game_temp && $game_temp.in_battle && !$scene.respond_to?("update_basic")
     msgwindow.y=0
@@ -82,14 +82,14 @@ def pbRepositionMessageWindow(msgwindow, linecount=2)
          msgwindow.y = 6
        else
          $game_temp.speechbubble_vp = Viewport.new(0, 6 + msgwindow.height, Graphics.width, 280)
-         msgwindow.y = (Graphics.height - msgwindow.height) - 6
+         msgwindow.y = (Graphics.height - msgwindow.height)
          if $game_temp.speechbubble_outofrange==true
            msgwindow.y = 6
          end
        end
       else
         msgwindow.height = 102
-        msgwindow.y = Graphics.height - msgwindow.height - 6
+        msgwindow.y = Graphics.height - msgwindow.height
       end
     end
   end
