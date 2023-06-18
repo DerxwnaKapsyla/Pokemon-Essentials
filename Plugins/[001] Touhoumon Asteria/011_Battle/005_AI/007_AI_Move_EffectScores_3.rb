@@ -21,7 +21,7 @@ class Battle::AI
       end
     #---------------------------------------------------------------------------
     else
-      return asteria_pbGetMoveScoreFunctionCode(score, move, user, target, skill)
+      return asteria_aiEffectScorePart2_pbGetMoveScoreFunctionCode(score, move, user, target, skill)
     end
     return score
   end

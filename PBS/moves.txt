@@ -8441,7 +8441,7 @@ Target = NearOther
 FunctionCode = SleepTarget
 Flags = CanProtect,CanMirrorMove
 EffectChance = 10
-Description = The user drags the foe into the darkness within darkness of a dream and,which can make the foe fall asleep.
+Description = The user drags the foe into the darkness within darkness of a dream, which can make the foe fall asleep.
 #-------------------------------
 [OMINOUSWIND18]
 Name = Ominous Wind
@@ -10870,3 +10870,16 @@ FunctionCode = RecoilThirdOfDamageDealtBurnTarget
 Flags = CanProtect,CanMirrorMove,ThawsUser
 EffectChance = 25
 Description = Searing heat erupts from the user in all directions. The user also takes damage and may burn the target.
+#-------------------------------
+[DEATHSEMBRACE18]
+Name = Death's Embrace
+Type = GHOST18
+Category = Physical
+Power = 80
+Accuracy = 0
+TotalPP = 10
+Target = NearOther
+FunctionCode = TrapTargetAndInflictPerishSong
+Flags = CanProtect,CanMirrorMove
+EffectChance = 100
+Description = The foe falls into a trance that will entrap them and may result in them fainting in three turns.

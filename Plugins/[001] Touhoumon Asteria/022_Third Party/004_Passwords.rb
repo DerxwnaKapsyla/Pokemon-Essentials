@@ -307,7 +307,7 @@ def pbPasswordCheck(helptext = "Input Password", minlength = 0, maxlength = 12, 
 		  pkmn.iv[:SPECIAL_DEFENSE]=15
 		  pkmn.iv[:SPEED]=15
 		  pkmn.calc_stats
-		  pkmn.ability = :FROZENWORLD
+		  pkmn.ability = :DEATHLYFROST
 		  pbAddPokemon(pkmn)
 		  $player.frozen_yuyuko_omega = true
 		  return true

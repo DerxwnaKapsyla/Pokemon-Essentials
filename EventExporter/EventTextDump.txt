@@ -11226,10 +11226,93 @@ List of Event Commands:
 :       :   :backdrop => ["Volcano", "Volcano"],
 :       :   :outcome => 1,
 :       :   :noflee => true,
+:       :   :raidcapture => true,
 :       :   :introtext => "{1}, the Blazing Apocalypse, challenges you!"
 :       : }, {}, :VS_MARISAO)
 @>Script: pkmn.poke_ball = :ULTRAORB
 :       : pbAddPokemon(pkmn)
+@>
+
+Page #2
+Conditions
+None
+
+Graphic: OW - Puppet_MarisaO
+
+Autonomous Movement
+Type: Fixed
+Speed: 3: Slow
+Freq: 3: Low
+Options Enabled
+Move Animation
+Trigger: Action Button
+
+List of Event Commands:
+@>Text: \w[dark]<i>Oh? How interesting. An actual human being has come 
+ :    : to meet me at a time like this.</i>
+@>Text: \w[dark]<i>But, you're too late. My power is rapidly increasing.</i>
+@>Text: \w[dark]<i>Soon, I and everything around me will be reduced to 
+ :    : cinders.</i>
+@>Wait: 20 frame(s)
+@>Text: \w[dark]<i>You still are here? Fine then. Feel the heat of a dying 
+ :    : sun!</i>
+@>Change Battle BGM: 'B-028. Battle! Vs. Avatars of Calamity', 100, 100
+@>Control Switches: [0104: Transition Handler] = ON
+@>Control Variables: [0103: Vs. Transition ID] = 12
+@>Script: Pokemon.play_cry(:MARISAO)
+@>Wait: 40 frame(s)
+@>Script: pbSetSelfSwitch(3,"A",true)
+@>Script: pkmn = pbGenerateWildPokemon(:MARISAO, 60)
+:       : pkmn.item = :BLAZESPHERE
+:       : pkmn.poke_ball = :ULTRAORB
+@>Script: WildBattle.dx_start([pkmn], { 
+:       :   :nocapture => true, 
+:       :   :setcapture => true,
+:       :   :backdrop => ["Volcano", "Volcano"],
+:       :   :outcome => 1,
+:       :   :noflee => true,
+:       :   :raidcapture => [nil],
+:       :   :introtext => "{1}, the Blazing Apocalypse, challenges you!"
+:       : }, {}, :VS_MARISAO)
+@>Conditional Branch: Variable [0001: Temp Pokemon Choice] != 1
+ @>Text: The oppressive heat begins to disipate inside the cave...
+ @>Control Self Switch: A =ON
+ @>
+: Else
+ @>Text: \w[dark]<i>Hmph! Is that all you have?</i>
+ @>Text: \w[dark]<i>I'll delay the inevitable for as long as I can. Now, 
+  :    : hurry and leave, before you get burnt to cinders.</i>
+ @>Set Move Route: Player
+  :              : $>1 Step Backward
+ @>
+: Branch End
+@>
+
+#------------------------------------------------------------------------------
+Event ID: 020
+Event Name: EV020
+(X,Y): (037,018)
+
+Page #1
+Conditions
+None
+
+Graphic: Object ball
+
+Autonomous Movement
+Type: Fixed
+Speed: 3: Slow
+Freq: 3: Low
+Options Enabled
+Move Animation
+Trigger: Action Button
+
+List of Event Commands:
+@>Play SE: 'Exit Door', 80, 100
+@>Change Screen Color Tone: (-255,-255,-255,0), @6
+@>Wait: 8 frame(s)
+@>Transfer Player:[280: Graveyard Crypt], (026,018), No Fade
+@>Change Screen Color Tone: (0,0,0,0), @6
 @>
 
 #------------------------------------------------------------------------------
@@ -24411,7 +24494,7 @@ List of Event Commands:
 
 #------------------------------------------------------------------------------
 Event ID: 045
-Event Name: Quest Indicator: Sidequest
+Event Name: Quest Indicator: AoC Sidequest
 (X,Y): (026,033)
 
 Page #1
@@ -89184,10 +89267,9 @@ Move Animation
 Trigger: Action Button
 
 List of Event Commands:
-@>Text: Erected in memorium of a friend. May her
+@>Text: Erected in memorium of the person closest to me. May her
  :    : soul rest in peace, never to be distrurbed.
-@>Text: Here, beneath the sakura tree we loved
- :    : with all our heart.
+@>Text: Here, beneath the sakura tree we loved with all our heart.
 @>Fade Out BGM: 3 sec.
 @>Wait: 60 frame(s)
 @>Script: event = $game_map.events[18]
@@ -110207,6 +110289,7 @@ Map ID: 280
 Map Name: Graveyard Crypt
 Tileset: 019: Ruins
 Width: 55, Height: 32
+Auto-Change BGM: U-008. Sakura, Sakura ~ Japanize Dream
 
 #------------------------------------------------------------------------------
 Event ID: 001
@@ -110279,17 +110362,137 @@ List of Event Commands:
  @>
 : Branch End
 @>Text: It's an unmarked grave.
-@>Wait: 20 frame(s)
-@>Change Text Options: Middle, Hide
-@>Text: <i>Would you like for it to be yours?</i>
+@>Wait: 10 frame(s)
+@>Change Text Options: Middle, Show
+@>Text: \w[dark]<i>Would you like for it to be yours?</i>
 @>Show Animation: Player, [Exclaim bubble]
+@>Script: event = $game_map.events[3]
+:       : 
+:       : pbSetSelfSwitch(3,"A",true)
+:       : pbSEPlay("Stare")
+:       : 16.times do
+:       :   event.opacity += 16
+:       :   pbWait(4)
+:       : end
+@>Wait for Move's Completion
+@>Set Move Route: [Yuyuko Omega]
+ :              : $>Change Speed: 2
+ :              : $>Move Animation OFF
+ :              : $>Through ON
+ :              : $>Move Down
+ :              : $>Move Down
+@>Text: \w[dark]<i>There's just a little more time before the full 
+ :    : bloom...</i>
+@>Text: \w[dark]<i>How about waiting and watching the blossoms as 
+ :    : they open?</i>
+@>Wait for Move's Completion
 @>Change Text Options: Bottom, Show
-@>Comment: Insert cutscene of camera panning up to Yuyuko Omega
- :       : Have Yuyuko Omega descend until she's standing over the grave
- :       : Have camera pan alongside Yuyuko Omega
-@>Text: <i>This tree is so close to a full bloom... would you care to water it?</i>
-@>Text: <i>Yes... with that beautiful, red water you have inside of you...</i>
-@>Control Switches: [0125: Battled an Avatar] = ON
+@>Change Battle BGM: 'B-028. Battle! Vs. Avatars of Calamity', 100, 100
+@>Control Switches: [0104: Transition Handler] = ON
+@>Control Variables: [0103: Vs. Transition ID] = 13
+@>Script: Pokemon.play_cry(:YUYUKOO)
+@>Wait: 40 frame(s)
+@>Script: pkmn = pbGenerateWildPokemon(:YUYUKOO, 60)
+:       : pkmn.item = :SOULSPHERE
+@>Script: WildBattle.dx_start([pkmn], { 
+:       :   :nocapture => true, 
+:       :   :setcapture => true,
+:       :   :backdrop => ["Ruins", "Ruins"],
+:       :   :outcome => 1,
+:       :   :noflee => true,
+:       :   :raidcapture => [nil],
+:       :   :introtext => "{1}, the Chilling Reaper, challenges you!"
+:       : }, {}, :VS_YUYUKOO)
+@>Conditional Branch: Variable [0001: Temp Pokemon Choice] != 1
+ @>Control Switches: [0127: Yuyuko Omega Defeated] = ON
+ @>Text: The biting frost begins to disipate...
+ @>Control Self Switch: A =ON
+ @>Control Switches: [0125: Battled an Avatar] = ON
+ @>
+: Else
+ @>Change Text Options: Middle, Show
+ @>Text: \w[dark]<i>Very well... If you ever feel like witnessing a beautiful
+  :    : blossom, you know where to return...</i>
+ @>Change Text Options: Bottom, Show
+ @>Script: pbSEPlay("Anim/gust")
+ @>Change Screen Color Tone: (-255,-255,-255,0), @6
+ @>Wait: 8 frame(s)
+ @>Transfer Player:[285: Wisteria Graveyard], (020,010), Down, No Fade
+ @>Change Screen Color Tone: (0,0,0,0), @6
+ @>Text: \pn was blown out of the ruins!
+ @>
+: Branch End
+@>
+
+Page #2
+Conditions
+Self Switch A is ON
+
+Autonomous Movement
+Type: Fixed
+Speed: 3: Slow
+Freq: 3: Low
+Options Enabled
+Move Animation
+Trigger: Action Button
+
+List of Event Commands:
+@>
+
+#------------------------------------------------------------------------------
+Event ID: 003
+Event Name: Yuyuko Omega
+(X,Y): (026,004)
+
+Page #1
+Conditions
+None
+
+Graphic: OW - Puppet_YuyukoO
+
+Autonomous Movement
+Type: Fixed
+Speed: 3: Slow
+Freq: 3: Low
+Options Enabled
+Move Animation
+Trigger: Action Button
+
+List of Event Commands:
+@>
+
+Page #2
+Conditions
+Self Switch A is ON
+
+Graphic: OW - Puppet_YuyukoO
+
+Autonomous Movement
+Type: Fixed
+Speed: 3: Slow
+Freq: 3: Low
+Options Enabled
+Move Animation
+Trigger: Parallel Process
+
+List of Event Commands:
+@>Set Event Location: [Yuyuko Omega],(026,012)
+@>Control Self Switch: A =OFF
+@>
+
+Page #3
+Conditions
+Switch 0127: Yuyuko Omega Defeated is ON
+
+Autonomous Movement
+Type: Fixed
+Speed: 3: Slow
+Freq: 3: Low
+Options Enabled
+Move Animation
+Trigger: Action Button
+
+List of Event Commands:
 @>
 
 #------------------------------------------------------------------------------
@@ -111555,6 +111758,7 @@ Map ID: 285
 Map Name: Wisteria Graveyard
 Tileset: 042: Wisteria Forest
 Width: 45, Height: 47
+Auto-Change BGM: U-008. Sakura, Sakura ~ Japanize Dream
 
 #==============================================================================
 Map ID: 286
@@ -111587,18 +111791,35 @@ List of Event Commands:
 @>Control Switches: [0104: Transition Handler] = ON
 @>Control Variables: [0103: Vs. Transition ID] = 12
 @>Script: Pokemon.play_cry(:MARISAO)
-@>Wait: 50 frame(s)
+@>Wait: 40 frame(s)
+@>Script: pbSetSelfSwitch(3,"A",true)
 @>Script: pkmn = pbGenerateWildPokemon(:MARISAO, 60)
 :       : pkmn.item = :BLAZESPHERE
 :       : pkmn.poke_ball = :ULTRAORB
 @>Script: WildBattle.dx_start([pkmn], { 
 :       :   :nocapture => true, 
+:       :   :setcapture => true,
 :       :   :backdrop => ["Volcano", "Volcano"],
 :       :   :outcome => 1,
 :       :   :noflee => true,
+:       :   :raidcapture => [nil],
 :       :   :introtext => "{1}, the Blazing Apocalypse, challenges you!"
 :       : }, {}, :VS_MARISAO)
-@>Script: pbAddPokemon(pkmn)
+@>
+
+Page #2
+Conditions
+Switch 0126: Marisa Omega Defeated is ON
+
+Autonomous Movement
+Type: Fixed
+Speed: 3: Slow
+Freq: 3: Low
+Options Enabled
+Move Animation
+Trigger: Action Button
+
+List of Event Commands:
 @>
 
 #------------------------------------------------------------------------------
@@ -111642,16 +111863,49 @@ List of Event Commands:
 :       : pkmn.poke_ball = :ULTRAORB
 @>Script: WildBattle.dx_start([pkmn], { 
 :       :   :nocapture => true, 
+:       :   :setcapture => true,
 :       :   :backdrop => ["Volcano", "Volcano"],
 :       :   :outcome => 1,
 :       :   :noflee => true,
+:       :   :raidcapture => [nil],
 :       :   :introtext => "{1}, the Blazing Apocalypse, challenges you!"
 :       : }, {}, :VS_MARISAO)
-@>Conditional Branch: Variable [0001: Temp Pokemon Choice] == 1
- @>Text: Marisa Omega is exhausted! Now is the time to catch it!
- @>Script: pbAddPokemon(pkmn)
+@>Conditional Branch: Variable [0001: Temp Pokemon Choice] != 1
+ @>Text: The oppressive heat begins to disipate inside the cave...
+ @>Control Self Switch: A =ON
+ @>Control Switches: [0126: Marisa Omega Defeated] = ON
+ @>Control Switches: [0125: Battled an Avatar] = ON
+ @>
+: Else
+ @>Change Text Options: Middle, Show
+ @>Script: $game_screen.weather(:Sun, 9, 20)
+ @>Text: \w[dark]<i>Hmph! Is that all you have?</i>
+ @>Text: \w[dark]<i>I'll delay the inevitable for as long as I can. Now, 
+  :    : hurry and leave, before you get burnt to cinders.</i>
+ @>Change Text Options: Bottom, Show
+ @>Script: pbSEPlay("Anim/gust")
+ @>Change Screen Color Tone: (-255,-255,-255,0), @6
+ @>Wait: 8 frame(s)
+ @>Transfer Player:[281: Wisteria Beach], (004,002), Down, No Fade
+ @>Change Screen Color Tone: (0,0,0,0), @6
+ @>Text: \pn was blown out of the cave!
  @>
 : Branch End
+@>
+
+Page #2
+Conditions
+Self Switch A is ON
+
+Autonomous Movement
+Type: Fixed
+Speed: 3: Slow
+Freq: 3: Low
+Options Enabled
+Move Animation
+Trigger: Action Button
+
+List of Event Commands:
 @>
 
 #------------------------------------------------------------------------------
@@ -170082,6 +170336,8 @@ Move Animation
 Trigger: Action Button
 
 List of Event Commands:
+@>Text: \xn[Libra]Ah, \pn! What's the status on the disturbances across the
+ :    : Island?
 @>
 
 #------------------------------------------------------------------------------
@@ -170740,7 +170996,7 @@ Speed: 3: Slow
 Freq: 3: Low
 Options Enabled
 Move Animation
-Trigger: Action Button
+Trigger: Player Touch
 
 List of Event Commands:
 @>Text: \xn[???]Judging from what was just discussed, this <i>has</i> to
@@ -170749,7 +171005,7 @@ List of Event Commands:
 @>Show Animation: Player, [Question bubble]
 @>Wait: 10 frame(s)
 @>Set Move Route: [Hikari]
- :              : $>Turn Up
+ :              : $>Turn toward Player
 @>Wait for Move's Completion
 @>Text: \xn[???]Oh, sorry am I in your... wa-\..\..\..ait a second.
 @>Text: \xn[???]Y-You can-? But-...
@@ -170757,6 +171013,10 @@ List of Event Commands:
 @>Text: \xn[???]I must be leaving now!
 @>Set Move Route: [Hikari]
  :              : $>Turn Down
+ :              : $>Wait: 5 frame(s)
+ :              : $>Through OFF
+ :              : $>Move Down
+ :              : $>Wait: 2 frame(s)
  :              : $>Change Opacity: 0
 @>Control Self Switch: A =ON
 @>
@@ -171049,12 +171309,6 @@ List of Event Commands:
 @>
 
 #------------------------------------------------------------------------------
-
-#==============================================================================
-Map ID: 368
-Map Name: Wisteria Forests
-Tileset: 042: Wisteria Forest
-Width: 20, Height: 15
 
 #==============================================================================
 Map ID: 369
@@ -175496,11 +175750,54 @@ List of Event Commands:
 
 #==============================================================================
 Common Event ID: 113
-Common Event Name: 
+Common Event Name: Vs. Yuyuko Omega
 
 Trigger: None
 
 List of Event Commands:
+@>Comment: --- Pre-Battle Intro Setup
+@>Call Common Event: Vs. Transition - Flash
+@>Change Screen Color Tone: (-255,-255,-255,0), @6
+@>Wait: 6 frame(s)
+@>Script: pbShowPicture(4,"Transitions/Bars_Under.png",1,256,192,zoomX=100,zoomY=100,opacity=230,blendType=0)
+@>Script: pbShowPicture(20,"Transitions/Bars_Over.png",1,256,192,zoomX=100,zoomY=100,opacity=230,blendType=0)
+@>Move Picture: 5, @5, Center (256,192), (100%,100%), 230, Normal
+@>Wait: 5 frame(s)
+@>Script: pbShowPicture(1,"Transitions/BGs/BGYuyuOmega.png",1,256,192,100,100,0,0)
+@>Wait: 5 frame(s)
+@>Move Picture: 1, @5, Center (256,192), (100%,100%), 255, Normal
+@>Wait: 15 frame(s)
+@>Play SE: 'Vs flash', 80, 100
+@>Screen Flash: (255,136,221,255), @10
+@>Script: pbShowPicture(3,"Transitions/PTs/Puppet_YuyukoOS.png",1,256,192,100,100,255,0)
+@>Change Text Options: Middle, Show
+@>Text: \w[dark]\l[4]\se[]\ts[]\n<i><ac>This tree is so close to a full bloom... would you care to water it?</i></ac>\wtnp[65]
+@>Play SE: 'Vs flash', 80, 100
+@>Screen Flash: (255,136,221,255), @10
+@>Text: \w[dark]\l[4]\se[]\ts[]\n<i>\c[5]<ac>Yes... with that beautiful, red water you have inside of you...</i></ac>\wtnp[165]
+@>Change Text Options: Bottom, Show
+@>Screen Flash: (255,136,221,255), @10
+@>Play SE: 'Vs sword', 80, 100
+@>Script: pbShowPicture(5,"Transitions/PTs/Puppet_YuyukoO.png",1,256,192,100,100,255,0)
+@>Script: pbShowPicture(21,"Transitions/Names/Name_YuyukoOP.png",1,256,192,100,100,255,0)
+@>Move Picture: 3, @30, Center (252,192), (100%,100%), 255, Normal
+@>Wait: 160 frame(s)
+@>Move Picture: 1, @5, Center (256,192), (100%,100%), 0, Normal
+@>Move Picture: 20, @5, Center (256,192), (100%,100%), 0, Normal
+@>Move Picture: 3, @5, Center (252,192), (100%,100%), 0, Normal
+@>Move Picture: 4, @5, Center (256,192), (100%,100%), 0, Normal
+@>Move Picture: 5, @5, Center (256,192), (100%,100%), 0, Normal
+@>Move Picture: 21, @5, Center (256,192), (100%,100%), 0, Normal
+@>Wait: 6 frame(s)
+@>Erase Picture: 1
+@>Erase Picture: 20
+@>Erase Picture: 3
+@>Erase Picture: 4
+@>Erase Picture: 5
+@>Erase Picture: 21
+@>Change Screen Color Tone: (0,0,0,0), @10
+@>Comment: --- Pre-Battle Intro Conclusion
+@>Control Switches: [0104: Transition Handler] = OFF
 @>
 
 #==============================================================================

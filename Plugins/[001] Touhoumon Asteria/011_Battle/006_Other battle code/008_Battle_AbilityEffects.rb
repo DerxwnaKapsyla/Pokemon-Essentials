@@ -473,7 +473,7 @@ Battle::AbilityEffects::OnSwitchIn.add(:LUCIDDREAMING,
   }
 )
 
-Battle::AbilityEffects::OnSwitchIn.add(:FROZENWORLD,
+Battle::AbilityEffects::OnSwitchIn.add(:DEATHLYFROST,
   proc { |ability, battler, battle, switch_in|
     battle.pbStartWeatherAbility(:SevereHail, battler, true)
   }

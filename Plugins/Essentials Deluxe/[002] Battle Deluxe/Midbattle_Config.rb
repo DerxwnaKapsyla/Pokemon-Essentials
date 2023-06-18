@@ -258,13 +258,13 @@ module EssentialsDeluxe
                               "Let's try dealing some damage.\nGet 'em, {1}!"],
     "statusInflicted_foe" => [:Opposing, "It's always a good idea to inflict status conditions like Sleep or Paralysis!",
                               "This will really help improve your odds at capturing the Pokémon!"],
-	#---------------------------------------------------------------------------
+    #---------------------------------------------------------------------------
     # Turn 1 - The Pokemon on the player's side will use a status move on the
-	#          opponent, if one is available.
+    #          opponent, if one is available.
     #---------------------------------------------------------------------------
     "turnAttack" => {
-	  :usemove => [:StatusFoe, 1]
-	},
+      :usemove => [:StatusFoe, 1]
+    },
     #---------------------------------------------------------------------------
     # Continuous - Applies Endure effect to wild Pokemon whenever targeted by
     #              a damage-dealing move. Ensures it is not KO'd early.
@@ -376,7 +376,7 @@ module EssentialsDeluxe
   # Phase 1 - Speech events.
   #-----------------------------------------------------------------------------
   DEMO_VS_SADA_PHASE_1 = {
-    "turnCommand"         => "I don't know who you think you are, but I'm not about to let anyone get in the way of my goals.",
+    "turnCommand"         => [:Opposing, "I don't know who you think you are, but I'm not about to let anyone get in the way of my goals."],
     "attackerDamaged_foe" => "This is the power the ancient past holds.\nSplendid, isn't it?",
     "defenderSEdmg_foe"   => "Now, this is interesting... Child, do you actually understand ancient Pokémon's weaknesses?",
     "attackerSEdmg_foe"   => "Do you imagine you can best the wealth of data at my disposal with your human brain?",
@@ -1420,7 +1420,7 @@ module EssentialsDeluxe
 	#---------------------------------------------------------------------------
 	"turnCommand" => {
 	  :anim				=> :HEATWAVE,
-	  :text				=> "The oppressive heat is frying the Poké Balls internals!\nThey cannot be used this battle!",
+	  :text				=> "The oppressive heat is making throwing a Poké Ball difficult!\nThey cannot be used right now!",
 	  :battler			=> :Opposing,
 	  :text_1			=> "{1} begins building up energy.",
 	  :anim_1			=> [:STOCKPILE,1],
@@ -1489,6 +1489,114 @@ module EssentialsDeluxe
 	  :anim				=> [:STOCKPILE,1],
 	  #:setvar			=> [:mult, 0]
     },		
+  }
+  
+  #-----------------------------------------------------------------------------
+  # Scene: Vs. Yuyuko Omega, the Chilling Reaper
+  #-----------------------------------------------------------------------------  
+  VS_YUYUKOO = {
+	#---------------------------------------------------------------------------
+	# Turn 1 - Battle intro. 
+	#	* Mention that Pokeballs are disabled.
+	#	* Mention that the Player's active battler is getting cold.
+	#---------------------------------------------------------------------------
+	"turnCommand" => {
+	  :anim				=> :BLIZZARD,
+	  :text				=> "The biting frost is making throwing a Poké Ball difficult!\nThey cannot be used right now!",
+	  :text_1			=> "{1} is getting cold."
+	},
+	
+    "turnAttack_1" => {
+	  :battler			=> :Opposing,
+	  :usemove 			=> :DEATHSEMBRACE18,
+    },
+	
+	#---------------------------------------------------------------------------
+    # Continuous - Every turn end
+    #   * Variable increased by 1.
+	#---------------------------------------------------------------------------	
+    "turnEnd_repeat" => {
+	  :setvar 			=> 1,
+    },
+	
+	#---------------------------------------------------------------------------
+	# Turn End - Frostbitten Phase 1
+	#	* Mention that the player's active battler is slowing down.
+	#	* Reduce the battler's speed by 2 stages
+	#---------------------------------------------------------------------------
+	"variable_1_repeat" => {
+		:battler		=> :Self,
+		:text			=> "{1} is starting to move slower.",
+		#:anim			=>
+		:stats			=> [:SPEED, -2],
+	},
+	
+	#---------------------------------------------------------------------------
+	# Turn End - Frostbitten Phase 2
+	#	* Mention that the player's active battler is becoming sluggish
+	#	* Reduce the battler's Attack, Special Attack, and Accuracy by 2 stages
+	#---------------------------------------------------------------------------
+	"variable_2_repeat" => {
+		:battler		=> :Self,
+		:text			=> "{1} is becoming sluggish.",
+		#:anim			=>
+		:stats			=> [:ATTACK, -2, :SPECIAL_ATTACK, -2],
+	},
+	
+	#---------------------------------------------------------------------------
+	# Turn End - Frostbitten Phase 3
+	#	* Mention that the player's active battler is looking extremely weak
+	#	* Reduce the battler's Defense, Special Defense, and Evasion by 2
+	#---------------------------------------------------------------------------
+	"variable_3_repeat" => {
+		:battler		=> :Self,
+		:text			=> "{1} is looking extremely weak.",
+		#:anim			=>
+		:stats			=> [:DEFENSE, -2, :SPECIAL_DEFENSE, -2],
+	},
+	
+	#---------------------------------------------------------------------------
+	# Turn End - Frostbitten Phase 4
+	#	* Mention that the player's active battler has stopped moving
+	#	* Apply freeze to the player's active battler/prevent them from attacking
+	#---------------------------------------------------------------------------
+	"variable_4_repeat" => {
+		:battler		=> :Self,
+		:text			=> "{1} has stopped moving entirely!",
+		:status  		=> [:FROZEN, true]
+	},
+	
+	#---------------------------------------------------------------------------
+	# Turn End - Frostbitten Phase 4
+	#	* Mention that Yuyuko Omega has pulled out her scythe and slashed at the 
+	#	  Player's active battler.
+	#	* Reduce the player's active battler to 0 HP, restore Yuyuko Omega's
+	#	  health to full, and give her +1 to all stats.
+	#---------------------------------------------------------------------------
+	"variable_5_repeat" => {
+		:battler		=> :Opposing,
+		:text			=> "{1} pulled out a scythe and slashed!",
+		:battler_1		=> :Self,
+		:anim			=> [:SLASH, :Self],
+		:anim_1			=> [:GIGADRAIN, :Self],
+		:hp      		=> [-1, "{1} was finished in one blow!"],
+		:battler_2		=> :Opposing,
+		:hp_1      		=> [1, "{1} absorbed the fallen foe's life force!"],
+		:stats			=> [:ATTACK, 1, :DEFENSE, 1, :SPECIAL_ATTACK, 1, :SPECIAL_DEFENSE, 1, :SPEED, 1],
+	},
+	
+	#---------------------------------------------------------------------------
+	# Player Send Out - Frostbite reset
+	#	* Reset variable to 0
+	#	* Mention that the Player's active battler is getting cold.
+	#---------------------------------------------------------------------------
+	"switchSentOut_repeat" => {
+		:setvar 		=> [:mult, 0],
+		:text_1			=> "{1} is getting cold.",
+		:setvar_1		=> -1
+	}
+		
+	
   }
   
   #-----------------------------------------------------------------------------

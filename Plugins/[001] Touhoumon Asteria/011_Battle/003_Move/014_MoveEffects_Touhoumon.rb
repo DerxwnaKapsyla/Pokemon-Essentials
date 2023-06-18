@@ -125,3 +125,20 @@ class Battle::Move::TypeAndPowerDependOnWeatherThmn < Battle::Move
     super
   end
 end
+
+################################################################################
+# User traps a foe and has a chance to inflict Perish Song 
+# status on them. (Death's Embrace)
+################################################################################
+class Battle::Move::TrapTargetAndInflictPerishSong < Battle::Move
+  def pbAdditionalEffect(user, target)
+	if target.fainted? || target.damageState.substitute
+	  return
+	else #!target.effects[PBEffects::PerishSong] > 0 || !target.effects[PBEffects::MeanLook] >= 0 
+	  @battle.pbDisplay(_INTL("{1} is unable to escape death's embrace!", target.pbThis)) if target.effects[PBEffects::MeanLook] < 0 || target.effects[PBEffects::PerishSong] == 0
+	  target.effects[PBEffects::MeanLook] 		= user.index 	if target.effects[PBEffects::MeanLook] < 0 
+      target.effects[PBEffects::PerishSong]     = 4 			if target.effects[PBEffects::PerishSong] == 0
+      target.effects[PBEffects::PerishSongUser] = user.index 
+	end
+  end
+end

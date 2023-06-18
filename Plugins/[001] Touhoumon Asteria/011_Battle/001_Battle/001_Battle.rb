@@ -81,7 +81,7 @@ class Battle
 	asteria_pbEndPrimordialWeather
 	case @field.weather
 	when :SevereHail
-      if !pbCheckGlobalAbility(:FROZENWORLD)
+      if !pbCheckGlobalAbility(:DEATHLYFROST)
         @field.weather = :None
         pbDisplay("The severe hail stopped!")
       end

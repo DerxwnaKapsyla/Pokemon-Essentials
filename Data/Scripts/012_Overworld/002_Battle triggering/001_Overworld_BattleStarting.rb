@@ -226,13 +226,15 @@ module BattleCreationHelperMethods
     # Whether battle animations are shown
     battle.showAnims = ($PokemonSystem.battlescene == 0)
     battle.showAnims = battleRules["battleAnims"] if !battleRules["battleAnims"].nil?
-    # Terrain
-    if battleRules["defaultTerrain"].nil? && Settings::OVERWORLD_WEATHER_SETS_BATTLE_TERRAIN
-      case $game_screen.weather_type
-      when :Storm
-        battle.defaultTerrain = :Electric
-      when :Fog
-        battle.defaultTerrain = :Misty
+	# Terrain
+    if battleRules["defaultTerrain"].nil?
+      if Settings::OVERWORLD_WEATHER_SETS_BATTLE_TERRAIN
+        case $game_screen.weather_type
+        when :Storm
+          battle.defaultTerrain = :Electric
+        when :Fog
+          battle.defaultTerrain = :Misty
+        end
       end
     else
       battle.defaultTerrain = battleRules["defaultTerrain"]

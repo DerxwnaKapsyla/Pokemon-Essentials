@@ -170,8 +170,9 @@ end
 #===============================================================================
 # Initiate quest data
 #===============================================================================
-class PokemonGlobalMetadata  
+class PokemonGlobalMetadata
 #  attr_writer :quests
+
   def quests
     @quests = Player_Quests.new if !@quests
     return @quests
