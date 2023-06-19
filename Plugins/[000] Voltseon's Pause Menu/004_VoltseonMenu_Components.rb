@@ -158,6 +158,7 @@ class VPM_PokemonPartyHud < Component
     @status_bmp.dispose
     @item_bmp .dispose
     @shiny_bmp.dispose
+	@disposed = true
   end
 end
 
@@ -225,6 +226,7 @@ class VPM_NewQuestHud < Component
 
   def update
     super
+	return if disposed?
     @counter += 1
     if @counter > Graphics.frame_rate / 2
       @sprites["overlay"].y += 1 if @counter % (Graphics.frame_rate / 8) == 0

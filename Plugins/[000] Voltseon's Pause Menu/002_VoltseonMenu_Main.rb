@@ -23,6 +23,7 @@ class Component
     @viewport = viewport
     @menu     = menu
     @sprites  = {}
+	@disposed = false
   end
 
   # To be defined by user
@@ -30,7 +31,11 @@ class Component
   def refresh; end
 
   def update; pbUpdateSpriteHash(@sprites); end
-  def dispose; pbDisposeSpriteHash(@sprites); end
+  def dispose
+	pbDisposeSpriteHash(@sprites)
+	@disposed = true
+  end
+  def disposed?; return @disposed;  end
 end
 
 #-------------------------------------------------------------------------------
