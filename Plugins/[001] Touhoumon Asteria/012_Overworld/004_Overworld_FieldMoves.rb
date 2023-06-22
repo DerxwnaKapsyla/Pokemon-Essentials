@@ -210,15 +210,19 @@ def pbSurf
   	   pbCheckHiddenMoveBadge(Settings::ALT_BADGE_FOR_SURF, false)) || (!$DEBUG && !movefinder)
     return false
   end
-  if pbConfirmMessage(_INTL("The water is a deep blue color... Would you like to use Surf on it?"))
-    speciesname = (movefinder) ? movefinder.name : $player.name
-    pbMessage(_INTL("{1} used {2}!", speciesname, GameData::Move.get(move).name))
-    pbCancelVehicles
-    pbHiddenMoveAnimation(movefinder)
-    surfbgm = GameData::Metadata.get.surf_BGM
-    pbCueBGM(surfbgm, 0.5) if surfbgm
-    pbStartSurfing
-    return true
+  if $game_map.metadata&.has_flag?("DisableSurf")
+	pbMessage(_INTL("Surf can't be used here!"))
+  else
+	if pbConfirmMessage(_INTL("The water is a deep blue color... Would you like to use Surf on it?"))
+	  speciesname = (movefinder) ? movefinder.name : $player.name
+      pbMessage(_INTL("{1} used {2}!", speciesname, GameData::Move.get(move).name))
+      pbCancelVehicles
+      pbHiddenMoveAnimation(movefinder)
+      surfbgm = GameData::Metadata.get.surf_BGM
+      pbCueBGM(surfbgm, 0.5) if surfbgm
+      pbStartSurfing
+      return true
+	end
   end
   return false
 end

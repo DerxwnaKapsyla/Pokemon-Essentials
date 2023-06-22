@@ -11197,7 +11197,7 @@ List of Event Commands:
 #------------------------------------------------------------------------------
 Event ID: 019
 Event Name: Marisa Omega
-(X,Y): (036,018)
+(X,Y): (046,020)
 
 Page #1
 Conditions
@@ -11313,6 +11313,137 @@ List of Event Commands:
 @>Wait: 8 frame(s)
 @>Transfer Player:[280: Graveyard Crypt], (026,018), No Fade
 @>Change Screen Color Tone: (0,0,0,0), @6
+@>
+
+#------------------------------------------------------------------------------
+Event ID: 021
+Event Name: EV021
+(X,Y): (036,018)
+
+Page #1
+Conditions
+None
+
+Autonomous Movement
+Type: Fixed
+Speed: 3: Slow
+Freq: 3: Low
+Options Enabled
+Move Animation
+Trigger: Action Button
+
+List of Event Commands:
+@>Change Screen Color Tone: (-255,-255,-255,0), @8
+@>Wait: 8 frame(s)
+@>Show Picture: 1, 'Omega Preview', Upper Left (0,0), (100%,100%), 0, Normal
+@>Show Picture: 2, 'BGBlack_Small', Upper Left (0,0), (100%,100%), 0, Normal
+@>Show Picture: 3, 'BGBlack_Small', Upper Left (256,0), (100%,100%), 0, Normal
+@>Show Picture: 4, 'BGBlack_Small', Upper Left (0,191), (100%,100%), 0, Normal
+@>Show Picture: 5, 'BGBlack_Small', Upper Left (256,191), (100%,100%), 0, Normal
+@>Change Screen Color Tone: (0,0,0,0), @8
+@>Move Picture: 1, @8, Upper Left (0,0), (100%,100%), 255, Normal
+@>Wait: 8 frame(s)
+@>Text: \xn[Hikari]The Avatars of Calamity are a series of ultra destructive
+ :    : Puppets tha 'ave the ability to warp the world around 'em.
+@>Text: \xn[Hikari]They've even been observed bein' able to influence other
+ :    : Puppets to some extent.
+@>Text: \xn[Hikari]There are only four Avatars that we're 'ware of.
+@>Move Picture: 2, @1, Upper Left (0,0), (100%,100%), 0, Normal
+@>Move Picture: 3, @1, Upper Left (256,0), (100%,100%), 125, Normal
+@>Move Picture: 4, @1, Upper Left (0,191), (100%,100%), 125, Normal
+@>Move Picture: 5, @1, Upper Left (256,191), (100%,100%), 125, Normal
+@>Text: \xn[Hikari]Marisa Omega, the Blazing Apocalypse.
+@>Wait: 10 frame(s)
+@>Move Picture: 2, @1, Upper Left (0,0), (100%,100%), 125, Normal
+@>Move Picture: 3, @1, Upper Left (256,0), (100%,100%), 0, Normal
+@>Move Picture: 4, @1, Upper Left (0,191), (100%,100%), 125, Normal
+@>Move Picture: 5, @1, Upper Left (256,191), (100%,100%), 125, Normal
+@>Text: \xn[Hikari]Yuyuko Omega, the Chilling Reaper.
+@>Wait: 10 frame(s)
+@>Move Picture: 2, @1, Upper Left (0,0), (100%,100%), 125, Normal
+@>Move Picture: 3, @1, Upper Left (256,0), (100%,100%), 125, Normal
+@>Move Picture: 4, @1, Upper Left (0,191), (100%,100%), 0, Normal
+@>Move Picture: 5, @1, Upper Left (256,191), (100%,100%), 125, Normal
+@>Text: \xn[Hikari]Kanako Omega, the Regina Procellas.
+@>Wait: 10 frame(s)
+@>Move Picture: 2, @1, Upper Left (0,0), (100%,100%), 125, Normal
+@>Move Picture: 3, @1, Upper Left (256,0), (100%,100%), 125, Normal
+@>Move Picture: 4, @1, Upper Left (0,191), (100%,100%), 125, Normal
+@>Move Picture: 5, @1, Upper Left (256,191), (100%,100%), 0, Normal
+@>Text: \xn[Hikari]An' Suika n' Yuugi Omega, the Reges Terae. Those two
+ :    : are of'en jus' called Devas Omega.
+@>Wait: 10 frame(s)
+@>Move Picture: 2, @1, Upper Left (0,0), (100%,100%), 125, Normal
+@>Move Picture: 3, @1, Upper Left (256,0), (100%,100%), 125, Normal
+@>Move Picture: 4, @1, Upper Left (0,191), (100%,100%), 125, Normal
+@>Move Picture: 5, @1, Upper Left (256,191), (100%,100%), 0, Normal
+@>Erase Picture: 2
+@>Erase Picture: 3
+@>Text: \xn[Hikari]Course, there could be more. These are jus' the ones 
+ :    : we know 'bout.
+@>
+
+Page #2
+Conditions
+None
+
+Autonomous Movement
+Type: Fixed
+Speed: 3: Slow
+Freq: 3: Low
+Options Enabled
+Move Animation
+Trigger: Action Button
+
+List of Event Commands:
+@>Change Screen Color Tone: (-255,-255,-255,0), @8
+@>Wait: 8 frame(s)
+@>Show Picture: 1, 'Omega Preview', Upper Left (0,0), (100%,100%), 0, Normal
+@>Show Picture: 2, 'BGBlack_Small', Upper Left (0,0), (100%,100%), 0, Normal
+@>Show Picture: 3, 'BGBlack_Small', Upper Left (256,0), (100%,100%), 0, Normal
+@>Show Picture: 4, 'BGBlack_Small', Upper Left (0,191), (100%,100%), 0, Normal
+@>Show Picture: 5, 'BGBlack_Small', Upper Left (256,191), (100%,100%), 0, Normal
+@>Wait: 1 frame(s)
+@>Move Picture: 2, @8, Upper Left (0,0), (100%,100%), 255, Normal
+@>Move Picture: 3, @8, Upper Left (256,0), (100%,100%), 255, Normal
+@>Move Picture: 4, @8, Upper Left (0,191), (100%,100%), 255, Normal
+@>Move Picture: 5, @8, Upper Left (256,191), (100%,100%), 255, Normal
+@>Wait: 8 frame(s)
+@>Move Picture: 1, @1, Upper Left (0,0), (100%,100%), 255, Normal
+@>Text: \xn[Hikari]The Avatars of Calamity are a series of ultra destructive
+ :    : Puppets tha 'ave the ability to warp the world around 'em.
+@>Text: \xn[Hikari]They've even been observed bein' able to influence other
+ :    : Puppets to some extent.
+@>Text: \xn[Hikari]There are only four Avatars that we're 'ware of.
+@>Move Picture: 2, @10, Upper Left (0,0), (100%,100%), 0, Normal
+@>Text: \xn[Hikari]Marisa Omega, the Blazing Apocalypse.
+@>Wait: 10 frame(s)
+@>Move Picture: 3, @10, Upper Left (256,0), (100%,100%), 0, Normal
+@>Text: \xn[Hikari]Yuyuko Omega, the Chilling Reaper.
+@>Wait: 10 frame(s)
+@>Move Picture: 4, @10, Upper Left (0,191), (100%,100%), 0, Normal
+@>Change Text Options: Middle, Show
+@>Text: \xn[Hikari]Kanako Omega, the Regina Procellas.
+@>Wait: 10 frame(s)
+@>Move Picture: 5, @10, Upper Left (256,191), (100%,100%), 0, Normal
+@>Text: \xn[Hikari]An' Suika n' Yuugi Omega, the Reges Terae. Those two
+ :    : are of'en jus' called Devas Omega.
+@>Wait: 10 frame(s)
+@>Text: \xn[Hikari]Course, there could be more. These are jus' the ones 
+ :    : we know 'bout.
+@>Move Picture: 1, @15, Upper Left (0,0), (100%,100%), 255, Normal
+@>Move Picture: 2, @15, Upper Left (0,0), (100%,100%), 255, Normal
+@>Move Picture: 3, @15, Upper Left (256,0), (100%,100%), 255, Normal
+@>Move Picture: 4, @15, Upper Left (0,191), (100%,100%), 255, Normal
+@>Move Picture: 5, @15, Upper Left (256,191), (100%,100%), 255, Normal
+@>Wait: 15 frame(s)
+@>Erase Picture: 1
+@>Erase Picture: 2
+@>Erase Picture: 3
+@>Erase Picture: 4
+@>Erase Picture: 5
+@>Change Screen Color Tone: (0,0,0,0), @8
+@>Change Text Options: Bottom, Show
 @>
 
 #------------------------------------------------------------------------------
@@ -109125,6 +109256,8 @@ Page #2
 Conditions
 Variable 0143: Wisteria Island Sidequest is 4 or above
 
+Graphic: NPC 20
+
 Autonomous Movement
 Type: Fixed
 Speed: 3: Slow
@@ -109134,6 +109267,39 @@ Move Animation
 Trigger: Action Button
 
 List of Event Commands:
+@>Conditional Branch: Self Switch A == OFF
+ @>Text: Mayor Libra has radio'd ahead and told us that you're to be
+  :    : allowed to pass.
+ @>Text: I must warn you, the areas ahead are filled with Puppets that
+  :    : even the mainland hasn't experienced, and very harsh climates.
+ @>Text: As such, I will be your guide to the afflicted areas.
+ @>Control Self Switch: A =ON
+ @>
+: Branch End
+@>Text: Where would you like to go?
+@>Show Choices: Wisteria Beach, Wisteria Graveyard, Nevermind
+(When Cancel: Choice 3)
+: When [Wisteria Beach]
+ @>Text: To the burning beach it is! Stay close so you don't
+  :    : get lost.
+ @>Change Screen Color Tone: (-255,-255,-255,0), @6
+ @>Wait: 8 frame(s)
+ @>Change Transparent Flag: Normal
+ @>Transfer Player:[281: Wisteria Beach], (003,004), Up, No Fade
+ @>Change Screen Color Tone: (0,0,0,0), @6
+ @>
+: When [Wisteria Graveyard]
+ @>Text: To the frozen forest it is! Stay close so you don't
+  :    : get lost.
+ @>Change Screen Color Tone: (-255,-255,-255,0), @6
+ @>Wait: 8 frame(s)
+ @>Change Transparent Flag: Normal
+ @>Transfer Player:[285: Wisteria Graveyard], (012,039), Down, No Fade
+ @>Change Screen Color Tone: (0,0,0,0), @6
+ @>
+: When [Nevermind]
+ @>
+: Branch End
 @>
 
 #------------------------------------------------------------------------------
@@ -110404,10 +110570,13 @@ List of Event Commands:
 :       :   :introtext => "{1}, the Chilling Reaper, challenges you!"
 :       : }, {}, :VS_YUYUKOO)
 @>Conditional Branch: Variable [0001: Temp Pokemon Choice] != 1
- @>Control Switches: [0127: Yuyuko Omega Defeated] = ON
+ @>Change Screen Color Tone: (-255,-255,-255,0), @6
+ @>Wait: 8 frame(s)
  @>Text: The biting frost begins to disipate...
  @>Control Self Switch: A =ON
- @>Control Switches: [0125: Battled an Avatar] = ON
+ @>Control Variables: [0143: Wisteria Island Sidequest] += 1
+ @>Change Screen Color Tone: (0,0,0,0), @6
+ @>Control Switches: [0127: Yuyuko Omega Defeated] = ON
  @>
 : Else
  @>Change Text Options: Middle, Show
@@ -110496,12 +110665,307 @@ List of Event Commands:
 @>
 
 #------------------------------------------------------------------------------
+Event ID: 004
+Event Name: Hikari
+(X,Y): (026,029)
+
+Page #1
+Conditions
+None
+
+Graphic: Anime NPC 11
+
+Autonomous Movement
+Type: Fixed
+Speed: 3: Slow
+Freq: 3: Low
+Options Enabled
+Move Animation
+Through
+Trigger: Action Button
+
+List of Event Commands:
+@>
+
+Page #2
+Conditions
+Switch 0124: Met Hikari is ON
+
+Autonomous Movement
+Type: Fixed
+Speed: 3: Slow
+Freq: 3: Low
+Options Enabled
+Move Animation
+Trigger: Action Button
+
+List of Event Commands:
+@>
+
+#------------------------------------------------------------------------------
+Event ID: 005
+Event Name: Autorun
+(X,Y): (034,019)
+
+Page #1
+Conditions
+Switch 0127: Yuyuko Omega Defeated is ON
+
+Autonomous Movement
+Type: Fixed
+Speed: 3: Slow
+Freq: 3: Low
+Options Enabled
+Move Animation
+Trigger: Autorun
+
+List of Event Commands:
+@>Set Event Location: [Hikari],(026,022), Up
+@>Set Move Route: [Hikari]
+ :              : $>Change Opacity: 255
+ :              : $>Move Up
+ :              : $>Move Up
+ :              : $>Move Up
+ :              : $>Move Up
+ :              : $>Move Up
+@>Change Text Options: Top, Show
+@>Text: \xn[???]A'ight, this is where the Chilling Reaper should be... Now,
+ :    : all I 'ave to do is...
+@>Wait for Move's Completion
+@>Wait: 10 frame(s)
+@>Change Text Options: Bottom, Show
+@>Text: \xn[???]...Uhm. I wasn't expectin' to see anybody else here.
+@>Set Move Route: Player
+ :              : $>Turn Down
+@>Show Animation: Player, [Question bubble]
+@>Wait: 20 frame(s)
+@>Show Animation: [Hikari], [Exclaim bubble]
+@>Text: \xn[???]Wait, you can\..\..\..\.- \wt[25]'Old on! Did you come here to fight the
+ :    : Chilling Reaper?\n\wt[25] <i>By yourself!?</i>
+@>Wait: 10 frame(s)
+@>Text: \xn[???]You're reckless! That'd be admirable, if only you knew
+ :    : what you were up against.
+@>Text: \xn[???]But uh, where are my manners!
+@>Text: \xn[Hikari]Name's Hikari! Hikari Hoshizora!
+@>Text: \xn[Hikari]I'm what you might call a "Legend Hunter"!
+@>Text: \xn[Hikari]Spendin' my time chasin' down Puppets like the Chilling 
+ :    : Reaper and it's ilk- the Avatars of Calamity.
+@>Text: \xn[Hikari]Judgin' by that blank look on your face, you 'ave no idea
+ :    : what the Avatars of Calamity are, do ya?
+@>Call Common Event: Avatar Explanation
+@>Text: \xn[Hikari]Though, to stand toe to toe with an Avatar is no easy 
+ :    : feat...
+@>Text: \xn[Hikari]Hmm... 'haps you may be the one who can resolve 
+ :    : this...
+@>Show Animation: Player, [Question bubble]
+@>Wait: 10 frame(s)
+@>Text: \xn[Hikari]Oh, pay me no mind! Jus' thinkin' aloud!
+@>Text: \xn[Hikari]Well, if you're lookn' for the next Avatar, the closes' 
+ :    : one would be the hothead, Marisa Omega. She made 'er 
+ :    : domain on the beach.
+@>Text: \xn[Hikari]I'm very int'rested in seein' how you deal with 'em for 
+ :    : myself, so I'll meet you over there!
+@>Set Move Route: [Hikari]
+ :              : $>Move Down
+ :              : $>Move Down
+ :              : $>Move Down
+ :              : $>Move Down
+ :              : $>Move Down
+ :              : $>Change Opacity: 0
+@>Wait for Move's Completion
+@>Control Switches: [0124: Met Hikari] = ON
+@>Control Self Switch: A =ON
+@>
+
+Page #2
+Conditions
+Switch 0127: Yuyuko Omega Defeated is ON
+Switch 0126: Marisa Omega Defeated is ON
+
+Autonomous Movement
+Type: Fixed
+Speed: 3: Slow
+Freq: 3: Low
+Options Enabled
+Move Animation
+Trigger: Autorun
+
+List of Event Commands:
+@>Text: \xn[Hikari]Well I'll be a Primeape's uncle, you sure dealt with
+ :    : 'er expertly!
+@>Set Move Route: [Hikari (Alt)]
+ :              : $>Move Left
+ :              : $>Move Left
+ :              : $>Move Up
+ :              : $>Move Up
+@>Wait for Move's Completion
+@>Set Move Route: Player
+ :              : $>Turn Down
+@>Text: \xn[Hikari]Yeah, you deff' have what it takes to be a Legend 
+ :    : Hunter! I've decided we're gonna team up to take down all
+ :    : the Avatars!
+@>Text: \xn[Hikari]This'll make my job much easier...
+@>Show Animation: Player, [Question bubble]
+@>Text: \xn[Hikari]Ah, don't worry 'bout that for now! Le's just focus on
+ :    : takin' those Avatars down!
+@>Text: \xn[Hikari]If I remember right, the remainin' two should be in the
+ :    : Johto Region somewhere...
+@>Text: \xn[Hikari]Haven't been back to my ol' stompin' grounds in a long
+ :    : time, I wonder how much's changed.
+@>Text: \xn[Hikari]I'm sure we'll meet back up 'gain 'fore too long!
+ :    : Stay sharp, \pn!
+@>Set Move Route: [Hikari]
+ :              : $>Move Down
+ :              : $>Move Down
+ :              : $>Move Down
+ :              : $>Move Down
+ :              : $>Move Down
+ :              : $>Change Opacity: 0
+@>Wait for Move's Completion
+@>Control Variables: [0143: Wisteria Island Sidequest] = 6
+@>
+
+Page #3
+Conditions
+Self Switch A is ON
+
+Autonomous Movement
+Type: Fixed
+Speed: 3: Slow
+Freq: 3: Low
+Options Enabled
+Move Animation
+Trigger: Action Button
+
+List of Event Commands:
+@>
+
+#------------------------------------------------------------------------------
+Event ID: 006
+Event Name: Hikari (Alt)
+(X,Y): (024,018)
+
+Page #1
+Conditions
+Switch 0126: Marisa Omega Defeated is ON
+
+Graphic: Anime NPC 11
+
+Autonomous Movement
+Type: Fixed
+Speed: 3: Slow
+Freq: 3: Low
+Options Enabled
+Move Animation
+Trigger: Action Button
+
+List of Event Commands:
+@>Text: \xn[Hikari]I'll jus' stand here and watch. If you need any help,
+ :    : I'll jump right in!
+@>Text: \xn[Hikari]Though, I get the feeling you'll be jus' fine!
+@>
+
+Page #2
+Conditions
+Variable 0143: Wisteria Island Sidequest is 6 or above
+
+Autonomous Movement
+Type: Fixed
+Speed: 3: Slow
+Freq: 3: Low
+Options Enabled
+Move Animation
+Trigger: Action Button
+
+List of Event Commands:
+@>
+
+#------------------------------------------------------------------------------
 
 #==============================================================================
 Map ID: 281
 Map Name: Wisteria Beach
 Tileset: 001: Outside
-Width: 20, Height: 15
+Width: 64, Height: 48
+
+#------------------------------------------------------------------------------
+Event ID: 001
+Event Name: EV001
+(X,Y): (000,000)
+
+Page #1
+Conditions
+None
+
+Autonomous Movement
+Type: Fixed
+Speed: 3: Slow
+Freq: 3: Low
+Options Enabled
+Move Animation
+Trigger: Autorun
+
+List of Event Commands:
+@>Text: This area is where the heat wave seems its strongest.
+@>Text: Before we restricted access to the beach, there was reports of 
+ :    : a red looking Puppet with what appeared to be witches attire.
+@>Text: However, all reports are unsure. Anytime she was spotted for
+ :    : more than a few seconds, people reported that she begun glowing
+ :    : brightly. Almost like the Sun personified.
+@>Text: Good luck out there, ma'am.
+@>Control Self Switch: A =ON
+@>
+
+Page #2
+Conditions
+Self Switch A is ON
+
+Autonomous Movement
+Type: Fixed
+Speed: 3: Slow
+Freq: 3: Low
+Options Enabled
+Move Animation
+Trigger: Action Button
+
+List of Event Commands:
+@>
+
+#------------------------------------------------------------------------------
+Event ID: 002
+Event Name: EV002
+(X,Y): (001,000)
+
+Page #1
+Conditions
+None
+
+Graphic: NPC 20
+
+Autonomous Movement
+Type: Fixed
+Speed: 3: Slow
+Freq: 3: Low
+Options Enabled
+Move Animation
+Trigger: Action Button
+
+List of Event Commands:
+@>Text: I feel like I'm going to melt... Do you want to head back?
+@>Show Choices: Yes, No
+(When Cancel: Choice 2)
+: When [Yes]
+ @>Text: Let's make haste and get back to somewhere that isn't the surface
+  :    : of the Sun!
+ @>
+: When [No]
+ @>Text: I can't leave unless you do... if only the ocean wasn't scalding
+  :    : as well, I can't even cool off there!
+ @>
+: Branch End
+@>
+
+#------------------------------------------------------------------------------
 
 #==============================================================================
 Map ID: 282
@@ -111760,6 +112224,107 @@ Tileset: 042: Wisteria Forest
 Width: 45, Height: 47
 Auto-Change BGM: U-008. Sakura, Sakura ~ Japanize Dream
 
+#------------------------------------------------------------------------------
+Event ID: 001
+Event Name: EV001
+(X,Y): (006,036)
+
+Page #1
+Conditions
+None
+
+Autonomous Movement
+Type: Fixed
+Speed: 3: Slow
+Freq: 3: Low
+Options Enabled
+Move Animation
+Trigger: Autorun
+
+List of Event Commands:
+@>Text: This area is where the storm seems its strongest.
+@>Text: Before we restricted access to the graveyard, people
+ :    : reported seeing a Puppet with a black kimono and a 
+ :    : scythe.
+@>Text: With a description like that, it almost makes you think that
+ :    : the Grim Reaper was turned into a Puppet, haha! Surely
+ :    : that wouldn't be the case.
+@>Text: Good luck out there, ma'am.
+@>Control Self Switch: A =ON
+@>
+
+Page #2
+Conditions
+Self Switch A is ON
+
+Autonomous Movement
+Type: Fixed
+Speed: 3: Slow
+Freq: 3: Low
+Options Enabled
+Move Animation
+Trigger: Action Button
+
+List of Event Commands:
+@>
+
+#------------------------------------------------------------------------------
+Event ID: 002
+Event Name: size(3,1)
+(X,Y): (011,040)
+
+Page #1
+Conditions
+None
+
+Autonomous Movement
+Type: Fixed
+Speed: 3: Slow
+Freq: 3: Low
+Options Enabled
+Move Animation
+Trigger: Player Touch
+
+List of Event Commands:
+@>Text: I shouldn't try and head back on my own.
+@>Set Move Route: Player
+ :              : $>Move Up
+@>
+
+#------------------------------------------------------------------------------
+Event ID: 003
+Event Name: EV003
+(X,Y): (012,039)
+
+Page #1
+Conditions
+None
+
+Graphic: NPC 20
+
+Autonomous Movement
+Type: Fixed
+Speed: 3: Slow
+Freq: 3: Low
+Options Enabled
+Move Animation
+Trigger: Action Button
+
+List of Event Commands:
+@>Text: This place is so cold... Do you want to head back?
+@>Show Choices: Yes, No
+(When Cancel: Choice 2)
+: When [Yes]
+ @>Text: Let's get moving! Finally, warmth, here we come!
+ @>
+: When [No]
+ @>Text: Don't linger here for too long, you may get hypothermia!
+ @>
+: Branch End
+@>
+
+#------------------------------------------------------------------------------
+
 #==============================================================================
 Map ID: 286
 Map Name: Solar Crag
@@ -111871,14 +112436,18 @@ List of Event Commands:
 :       :   :introtext => "{1}, the Blazing Apocalypse, challenges you!"
 :       : }, {}, :VS_MARISAO)
 @>Conditional Branch: Variable [0001: Temp Pokemon Choice] != 1
+ @>Script: $game_screen.weather(:Fog, 9, 20)
+ @>Change Screen Color Tone: (-255,-255,-255,0), @6
+ @>Wait: 8 frame(s)
  @>Text: The oppressive heat begins to disipate inside the cave...
  @>Control Self Switch: A =ON
+ @>Control Variables: [0143: Wisteria Island Sidequest] += 1
+ @>Change Screen Color Tone: (0,0,0,0), @6
  @>Control Switches: [0126: Marisa Omega Defeated] = ON
- @>Control Switches: [0125: Battled an Avatar] = ON
  @>
 : Else
  @>Change Text Options: Middle, Show
- @>Script: $game_screen.weather(:Sun, 9, 20)
+ @>Script: $game_screen.weather(:Fog, 9, 20)
  @>Text: \w[dark]<i>Hmph! Is that all you have?</i>
  @>Text: \w[dark]<i>I'll delay the inevitable for as long as I can. Now, 
   :    : hurry and leave, before you get burnt to cinders.</i>
@@ -111938,6 +112507,222 @@ List of Event Commands:
 Page #2
 Conditions
 Switch 0126: Marisa Omega Defeated is ON
+
+Autonomous Movement
+Type: Fixed
+Speed: 3: Slow
+Freq: 3: Low
+Options Enabled
+Move Animation
+Trigger: Action Button
+
+List of Event Commands:
+@>
+
+#------------------------------------------------------------------------------
+Event ID: 004
+Event Name: EV004
+(X,Y): (012,019)
+
+Page #1
+Conditions
+Switch 0126: Marisa Omega Defeated is ON
+
+Autonomous Movement
+Type: Fixed
+Speed: 3: Slow
+Freq: 3: Low
+Options Enabled
+Move Animation
+Trigger: Autorun
+
+List of Event Commands:
+@>Set Event Location: [Hikari],(022,022)
+@>Set Move Route: [Hikari]
+ :              : $>Move Up
+ :              : $>Move Up
+ :              : $>Move Up
+ :              : $>Move Up
+ :              : $>Move Up
+ :              : $>Move Up
+@>Scroll Map: Down, 3, 3
+@>Change Text Options: Top, Show
+@>Text: \xn[???]A'ight, this is where the Blazing Apocalypse should 
+ :    : be... Now, all I 'ave to do is...
+@>Wait for Move's Completion
+@>Wait: 10 frame(s)
+@>Change Text Options: Bottom, Show
+@>Text: \xn[???]...Uhm. I wasn't expectin' to see anybody else here.
+@>Show Animation: Player, [Question bubble]
+@>Wait: 5 frame(s)
+@>Show Animation: [Hikari], [Exclaim bubble]
+@>Text: \xn[???]Wait, you can...- \wt[25]'Old on! Did you come here to fight the
+ :    : Blazing Apocalypse?\wt[25] <i>By yourself?</i>
+@>Wait: 10 frame(s)
+@>Text: \xn[???]You're reckless! That'd be admirable, if only you knew
+ :    : what you were up against.
+@>Text: \xn[???]But uh, where are my manners!
+@>Text: \xn[Hikari]Name's Hikari! Hikari Hoshizora!
+@>Text: \xn[Hikari]I'm what you might call a "Legend Hunter"!
+@>Text: \xn[Hikari]Spendin' my time chasin' down Puppets like the Blazing 
+ :    : Apocalypse and it's ilk- the Avatars of Calamity.
+@>Text: \xn[Hikari]Judgin' by that blank look on your face, you 'ave no idea
+ :    : what the Avatars of Calamity are, do ya?
+@>Call Common Event: Avatar Explanation
+@>Text: \xn[Hikari]Though, to stand toe to toe with an Avatar is no easy 
+ :    : feat...
+@>Text: \xn[Hikari]Hmm... 'haps you may be the one who can resolve 
+ :    : this...
+@>Show Animation: Player, [Question bubble]
+@>Wait: 10 frame(s)
+@>Text: \xn[Hikari]Oh, pay me no mind! Jus' thinkin' aloud!
+@>Text: \xn[Hikari]Well, if you're lookn' for the next Avatar, the closes' 
+ :    : one would be the reaper 'erself, Yuyuko O. She made 'er domain 
+ :    : at the graveyard.
+@>Text: \xn[Hikari]I'm very int'rested in seein' how you deal with 'em for 
+ :    : myself, so I'll meet you over there!
+@>Set Move Route: [Hikari]
+ :              : $>Move Down
+ :              : $>Move Down
+ :              : $>Move Down
+ :              : $>Move Down
+ :              : $>Move Down
+ :              : $>Move Down
+ :              : $>Move Down
+ :              : $>Move Down
+ :              : $>Change Opacity: 0
+@>Wait for Move's Completion
+@>Control Switches: [0124: Met Hikari] = ON
+@>Control Self Switch: A =ON
+@>
+
+Page #2
+Conditions
+Switch 0126: Marisa Omega Defeated is ON
+Switch 0127: Yuyuko Omega Defeated is ON
+
+Autonomous Movement
+Type: Fixed
+Speed: 3: Slow
+Freq: 3: Low
+Options Enabled
+Move Animation
+Trigger: Autorun
+
+List of Event Commands:
+@>Text: \xn[Hikari]Well I'll be a Primeape's uncle, you sure dealt with
+ :    : 'er expertly!
+@>Set Move Route: [Hikari (Alt)]
+ :              : $>Move Left
+ :              : $>Move Up
+@>Scroll Map: Down, 3, 3
+@>Wait for Move's Completion
+@>Set Move Route: Player
+ :              : $>Turn Down
+@>Text: \xn[Hikari]Yeah, you deff' have what it takes to be a Legend 
+ :    : Hunter! I've decided we're gonna team up to take down all
+ :    : the Avatars!
+@>Text: \xn[Hikari]This'll make my job much easier...
+@>Show Animation: Player, [Question bubble]
+@>Text: \xn[Hikari]Ah, don't worry 'bout that for now! Le's just focus on
+ :    : takin' those Avatars down!
+@>Text: \xn[Hikari]If I remember right, the remainin' two should be in the
+ :    : Johto Region somewhere...
+@>Text: \xn[Hikari]Haven't been back to my ol' stompin' grounds in a long
+ :    : time, I wonder how much's changed.
+@>Text: \xn[Hikari]I'm sure we'll meet back up 'gain 'fore too long!
+ :    : Stay sharp, \pn!
+@>Set Move Route: [EV004]
+ :              : $>Move Down
+ :              : $>Move Down
+ :              : $>Move Down
+ :              : $>Move Down
+ :              : $>Move Down
+ :              : $>Change Opacity: 0
+@>Wait for Move's Completion
+@>Control Variables: [0143: Wisteria Island Sidequest] = 6
+@>
+
+Page #3
+Conditions
+Self Switch A is ON
+
+Autonomous Movement
+Type: Fixed
+Speed: 3: Slow
+Freq: 3: Low
+Options Enabled
+Move Animation
+Trigger: Action Button
+
+List of Event Commands:
+@>
+
+#------------------------------------------------------------------------------
+Event ID: 005
+Event Name: Hikari
+(X,Y): (037,038)
+
+Page #1
+Conditions
+None
+
+Graphic: Anime NPC 11
+
+Autonomous Movement
+Type: Fixed
+Speed: 3: Slow
+Freq: 3: Low
+Options Enabled
+Move Animation
+Trigger: Action Button
+
+List of Event Commands:
+@>
+
+Page #2
+Conditions
+Switch 0124: Met Hikari is ON
+
+Autonomous Movement
+Type: Fixed
+Speed: 3: Slow
+Freq: 3: Low
+Options Enabled
+Move Animation
+Trigger: Action Button
+
+List of Event Commands:
+@>
+
+#------------------------------------------------------------------------------
+Event ID: 006
+Event Name: Hikari (Alt)
+(X,Y): (023,016)
+
+Page #1
+Conditions
+Switch 0127: Yuyuko Omega Defeated is ON
+
+Graphic: Anime NPC 11
+
+Autonomous Movement
+Type: Fixed
+Speed: 3: Slow
+Freq: 3: Low
+Options Enabled
+Move Animation
+Trigger: Action Button
+
+List of Event Commands:
+@>Text: \xn[Hikari]I'll jus' stand here and watch. If you need any help,
+ :    : I'll jump right in!
+@>Text: \xn[Hikari]Though, I get the feeling you'll be jus' fine!
+@>
+
+Page #2
+Conditions
+Variable 0143: Wisteria Island Sidequest is 6 or above
 
 Autonomous Movement
 Type: Fixed
@@ -176026,11 +176811,59 @@ List of Event Commands:
 
 #==============================================================================
 Common Event ID: 124
-Common Event Name: 
+Common Event Name: Avatar Explanation
 
 Trigger: None
 
 List of Event Commands:
+@>Change Screen Color Tone: (-255,-255,-255,0), @8
+@>Wait: 8 frame(s)
+@>Show Picture: 1, 'Omega Preview', Upper Left (0,0), (100%,100%), 0, Normal
+@>Show Picture: 2, 'BGBlack_Small', Upper Left (0,0), (100%,100%), 0, Normal
+@>Show Picture: 3, 'BGBlack_Small', Upper Left (256,0), (100%,100%), 0, Normal
+@>Show Picture: 4, 'BGBlack_Small', Upper Left (0,191), (100%,100%), 0, Normal
+@>Show Picture: 5, 'BGBlack_Small', Upper Left (256,191), (100%,100%), 0, Normal
+@>Wait: 1 frame(s)
+@>Move Picture: 2, @8, Upper Left (0,0), (100%,100%), 255, Normal
+@>Move Picture: 3, @8, Upper Left (256,0), (100%,100%), 255, Normal
+@>Move Picture: 4, @8, Upper Left (0,191), (100%,100%), 255, Normal
+@>Move Picture: 5, @8, Upper Left (256,191), (100%,100%), 255, Normal
+@>Wait: 8 frame(s)
+@>Move Picture: 1, @1, Upper Left (0,0), (100%,100%), 255, Normal
+@>Text: \xn[Hikari]The Avatars of Calamity are a series of ultra destructive
+ :    : Puppets tha 'ave the ability to warp the world around 'em.
+@>Text: \xn[Hikari]They've even been observed bein' able to influence other
+ :    : Puppets to some extent.
+@>Text: \xn[Hikari]There are only four Avatars that we're 'ware of.
+@>Move Picture: 2, @10, Upper Left (0,0), (100%,100%), 0, Normal
+@>Text: \xn[Hikari]Marisa Omega, the Blazing Apocalypse.
+@>Wait: 10 frame(s)
+@>Move Picture: 3, @10, Upper Left (256,0), (100%,100%), 0, Normal
+@>Text: \xn[Hikari]Yuyuko Omega, the Chilling Reaper.
+@>Wait: 10 frame(s)
+@>Move Picture: 4, @10, Upper Left (0,191), (100%,100%), 0, Normal
+@>Change Text Options: Middle, Show
+@>Text: \xn[Hikari]Kanako Omega, the Regina Procellas.
+@>Wait: 10 frame(s)
+@>Move Picture: 5, @10, Upper Left (256,191), (100%,100%), 0, Normal
+@>Text: \xn[Hikari]An' Suika n' Yuugi Omega, the Reges Terae. Those two
+ :    : are of'en jus' called Devas Omega.
+@>Wait: 10 frame(s)
+@>Text: \xn[Hikari]Course, there could be more. These are jus' the ones 
+ :    : we know 'bout.
+@>Move Picture: 1, @15, Upper Left (0,0), (100%,100%), 255, Normal
+@>Move Picture: 2, @15, Upper Left (0,0), (100%,100%), 255, Normal
+@>Move Picture: 3, @15, Upper Left (256,0), (100%,100%), 255, Normal
+@>Move Picture: 4, @15, Upper Left (0,191), (100%,100%), 255, Normal
+@>Move Picture: 5, @15, Upper Left (256,191), (100%,100%), 255, Normal
+@>Wait: 15 frame(s)
+@>Erase Picture: 1
+@>Erase Picture: 2
+@>Erase Picture: 3
+@>Erase Picture: 4
+@>Erase Picture: 5
+@>Change Screen Color Tone: (0,0,0,0), @8
+@>Change Text Options: Bottom, Show
 @>
 
 #==============================================================================
