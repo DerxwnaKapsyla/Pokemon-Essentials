@@ -38807,7 +38807,7 @@ List of Event Commands:
 @>Script: pbNoticePlayer(get_self)
 @>Text: The best way to prepare for swimming? Why, that would be a battle!
 @>Comment: EndSpeech: Now that was energizing!
-@>Conditional Branch: Script: TrainerBattle.start(PBTrainers::SWIMMER_F, "Lori", 0)
+@>Conditional Branch: Script: TrainerBattle.start(:SWIMMER_F, "Lori", 0)
  @>Control Self Switch: A =ON
  @>
 : Branch End
@@ -38856,7 +38856,7 @@ List of Event Commands:
 @>Script: pbNoticePlayer(get_self)
 @>Text: I'm going to do it! I'm going to swim to Cinnabar Island! ... After I beat you in battle!
 @>Comment: EndSpeech: Ah. I see. Maybe not today.
-@>Conditional Branch: Script: TrainerBattle.start(PBTrainers::SWIMMER_M, "Tucker", 0)
+@>Conditional Branch: Script: TrainerBattle.start(:SWIMMER_M, "Tucker", 0)
  @>Control Self Switch: A =ON
  @>
 : Branch End
@@ -39083,7 +39083,7 @@ List of Event Commands:
 @>Text: Aww, the water's great. Why don't you join us in the water! If I win, you have to hop in with us!
 @>Comment: EndSpeech: Oh fooey!
 @>Script: setBattleRule("outcome", 0)
-@>Conditional Branch: Script: TrainerBattle.start(PBTrainers::SWIMMER2_F, "Briana", 0)
+@>Conditional Branch: Script: TrainerBattle.start(:SWIMMER2_F, "Briana", 0)
  @>Control Self Switch: A =ON
  @>
 : Branch End
@@ -39134,10 +39134,10 @@ Trigger: Event Touch
 List of Event Commands:
 @>Script: pbTrainerIntro(:SWIMMER2_F)
 @>Script: pbNoticePlayer(get_self)
-@>Text: I love the water, and by extention, I love Puppets that are Water-Typed!
+@>Text: I love the water, and by extention, I love Puppets that are Hydro-Typed!
 @>Comment: EndSpeech: My water types!
 @>Script: setBattleRule("outcome", 0)
-@>Conditional Branch: Script: TrainerBattle.start(PBTrainers::SWIMMER2_F, "Sharon", 0)
+@>Conditional Branch: Script: TrainerBattle.start(:SWIMMER2_F, "Sharon", 0)
  @>Control Self Switch: A =ON
  @>
 : Branch End
@@ -39190,7 +39190,7 @@ List of Event Commands:
 @>Script: pbNoticePlayer(get_self)
 @>Text: I'm supposed to be in class right now, but I ditched to go swimming. I'm in my zone, I can't lose here!
 @>Comment: EndSpeech: How could I lose out here, in my zone!
-@>Conditional Branch: Script: TrainerBattle.start(PBTrainers::SWIMMER2_M, "Haru")
+@>Conditional Branch: Script: TrainerBattle.start(:SWIMMER2_M, "Haru")
  @>Control Self Switch: A =ON
  @>
 : Branch End
@@ -39243,7 +39243,7 @@ List of Event Commands:
 @>Script: pbNoticePlayer(get_self)
 @>Text: The water's warm, yes?
 @>Comment: EndSpeech: Well, I suppose you wouldn't know.
-@>Conditional Branch: Script: TrainerBattle.start(PBTrainers::SWIMMER2_M, "Matthias")
+@>Conditional Branch: Script: TrainerBattle.start(:SWIMMER2_M, "Matthias")
  @>Control Self Switch: A =ON
  @>
 : Branch End
@@ -39305,7 +39305,7 @@ List of Event Commands:
 @>Script: pbNoticePlayer(get_self)
 @>Text: I'm working on a synchronized swimming routine. You're in the way!
 @>Comment: EndSpeech: And now I'm just floudering in the sea!
-@>Conditional Branch: Script: TrainerBattle.start(PBTrainers::SWIMMER2_M, "Esteban", 0)
+@>Conditional Branch: Script: TrainerBattle.start(:SWIMMER2_M, "Esteban", 0)
  @>Control Self Switch: A =ON
  @>
 : Branch End
@@ -39357,7 +39357,7 @@ List of Event Commands:
 @>Script: pbNoticePlayer(get_self)
 @>Text: I completely forgot my sunscreen. If you have any then you'd better share!
 @>Comment: EndSpeech: Now I'm burning up from losing too!
-@>Conditional Branch: Script: TrainerBattle.start(PBTrainers::SWIMMER2_F, "Lucia", 0)
+@>Conditional Branch: Script: TrainerBattle.start(:SWIMMER2_F, "Lucia", 0)
  @>Control Self Switch: A =ON
  @>
 : Branch End
@@ -39411,7 +39411,7 @@ List of Event Commands:
 @>Script: pbNoticePlayer(get_self)
 @>Text: I can hold my breath longer than any of my friends!
 @>Comment: EndSpeech: Cough cough! I just swallowed sea water!
-@>Conditional Branch: Script: TrainerBattle.start(PBTrainers::SWIMMER2_F, "Ariel", 0)
+@>Conditional Branch: Script: TrainerBattle.start(:SWIMMER2_F, "Ariel", 0)
  @>Control Self Switch: A =ON
  @>
 : Branch End
@@ -39470,7 +39470,7 @@ List of Event Commands:
 @>Script: pbNoticePlayer(get_self)
 @>Text: I'm going to swim every body of water in the world!
 @>Comment: EndSpeech: I guess I still need more practice.
-@>Conditional Branch: Script: TrainerBattle.start(PBTrainers::SWIMMER2_M, "Webb", 0)
+@>Conditional Branch: Script: TrainerBattle.start(:SWIMMER2_M, "Webb", 0)
  @>Control Self Switch: A =ON
  @>
 : Branch End
@@ -39543,7 +39543,7 @@ List of Event Commands:
 @>Script: pbNoticePlayer(get_self)
 @>Text: One two! One two! An even pace is necessary for long-distance swims.
 @>Comment: EndSpeech: You've completely broken my rhythm!
-@>Conditional Branch: Script: TrainerBattle.start(PBTrainers::SWIMMER2_F, "Gertrude", 0)
+@>Conditional Branch: Script: TrainerBattle.start(:SWIMMER2_F, "Gertrude", 0)
  @>Control Self Switch: A =ON
  @>
 : Branch End
@@ -39611,7 +39611,7 @@ List of Event Commands:
 @>Script: pbNoticePlayer(get_self)
 @>Text: Hoy, small fry! What are you doing out in the open waters?
 @>Comment: EndSpeech: Ach, I'm all out of bait!
-@>Conditional Branch: Script: TrainerBattle.start(PBTrainers::FISHERMAN, "Lunk", 0)
+@>Conditional Branch: Script: TrainerBattle.start(:FISHERMAN, "Lunk", 0)
  @>Control Self Switch: A =ON
  @>
 : Branch End
@@ -39660,7 +39660,7 @@ List of Event Commands:
 @>Script: pbNoticePlayer(get_self)
 @>Text: Back up! I'm fishing for something shiny I saw in the water!
 @>Comment: EndSpeech: Okay, fine! Now just stay out of my way!
-@>Conditional Branch: Script: TrainerBattle.start(PBTrainers::FISHERMAN, "Teague", 0)
+@>Conditional Branch: Script: TrainerBattle.start(:FISHERMAN, "Teague", 0)
  @>Control Self Switch: A =ON
  @>
 : Branch End
@@ -47325,13 +47325,17 @@ Page #3
 Conditions
 Variable 0110: Plot Control Variable is 13 or above
 
+Graphic: Exitarrow_red
+
 Autonomous Movement
 Type: Fixed
 Speed: 3: Slow
 Freq: 3: Low
 Options Enabled
 Move Animation
-Trigger: Action Button
+Stop Animation
+Always on Top
+Trigger: Player Touch
 
 List of Event Commands:
 @>Conditional Branch: Player is facing Down
@@ -109285,7 +109289,7 @@ List of Event Commands:
  @>Change Screen Color Tone: (-255,-255,-255,0), @6
  @>Wait: 8 frame(s)
  @>Change Transparent Flag: Normal
- @>Transfer Player:[281: Wisteria Beach], (003,004), Up, No Fade
+ @>Transfer Player:[281: Wisteria Beach], (053,033), Right, No Fade
  @>Change Screen Color Tone: (0,0,0,0), @6
  @>
 : When [Wisteria Graveyard]
@@ -109294,7 +109298,7 @@ List of Event Commands:
  @>Change Screen Color Tone: (-255,-255,-255,0), @6
  @>Wait: 8 frame(s)
  @>Change Transparent Flag: Normal
- @>Transfer Player:[285: Wisteria Graveyard], (012,039), Down, No Fade
+ @>Transfer Player:[285: Wisteria Graveyard], (012,038), Down, No Fade
  @>Change Screen Color Tone: (0,0,0,0), @6
  @>
 : When [Nevermind]
@@ -110449,6 +110453,80 @@ List of Event Commands:
 @>
 
 #------------------------------------------------------------------------------
+Event ID: 029
+Event Name: EV029
+(X,Y): (034,011)
+
+Page #1
+Conditions
+None
+
+Graphic: NPC 20
+
+Autonomous Movement
+Type: Fixed
+Speed: 3: Slow
+Freq: 3: Low
+Options Enabled
+Move Animation
+Trigger: Action Button
+
+List of Event Commands:
+@>Text: Sorry, I can't allow anybody to pass by without permission from
+ :    : Mayor Libra.
+@>
+
+Page #2
+Conditions
+Variable 0143: Wisteria Island Sidequest is 4 or above
+
+Graphic: NPC 20
+
+Autonomous Movement
+Type: Fixed
+Speed: 3: Slow
+Freq: 3: Low
+Options Enabled
+Move Animation
+Trigger: Action Button
+
+List of Event Commands:
+@>Conditional Branch: Self Switch A == OFF
+ @>Text: Mayor Libra has radio'd ahead and told us that you're to be
+  :    : allowed to pass.
+ @>Text: I must warn you, the areas ahead are filled with Puppets that
+  :    : even the mainland hasn't experienced, and very harsh climates.
+ @>Text: As such, I will be your guide to the afflicted areas.
+ @>Control Self Switch: A =ON
+ @>
+: Branch End
+@>Text: Where would you like to go?
+@>Show Choices: Wisteria Beach, Wisteria Graveyard, Nevermind
+(When Cancel: Choice 3)
+: When [Wisteria Beach]
+ @>Text: To the burning beach it is! Stay close so you don't
+  :    : get lost.
+ @>Change Screen Color Tone: (-255,-255,-255,0), @6
+ @>Wait: 8 frame(s)
+ @>Change Transparent Flag: Normal
+ @>Transfer Player:[281: Wisteria Beach], (053,033), Right, No Fade
+ @>Change Screen Color Tone: (0,0,0,0), @6
+ @>
+: When [Wisteria Graveyard]
+ @>Text: To the frozen forest it is! Stay close so you don't
+  :    : get lost.
+ @>Change Screen Color Tone: (-255,-255,-255,0), @6
+ @>Wait: 8 frame(s)
+ @>Change Transparent Flag: Normal
+ @>Transfer Player:[285: Wisteria Graveyard], (012,038), Down, No Fade
+ @>Change Screen Color Tone: (0,0,0,0), @6
+ @>
+: When [Nevermind]
+ @>
+: Branch End
+@>
+
+#------------------------------------------------------------------------------
 
 #==============================================================================
 Map ID: 280
@@ -110729,51 +110807,76 @@ List of Event Commands:
  :              : $>Move Up
  :              : $>Move Up
 @>Change Text Options: Top, Show
-@>Text: \xn[???]A'ight, this is where the Chilling Reaper should be... Now,
- :    : all I 'ave to do is...
-@>Wait for Move's Completion
-@>Wait: 10 frame(s)
-@>Change Text Options: Bottom, Show
-@>Text: \xn[???]...Uhm. I wasn't expectin' to see anybody else here.
-@>Set Move Route: Player
- :              : $>Turn Down
-@>Show Animation: Player, [Question bubble]
-@>Wait: 20 frame(s)
-@>Show Animation: [Hikari], [Exclaim bubble]
-@>Text: \xn[???]Wait, you can\..\..\..\.- \wt[25]'Old on! Did you come here to fight the
- :    : Chilling Reaper?\n\wt[25] <i>By yourself!?</i>
-@>Wait: 10 frame(s)
-@>Text: \xn[???]You're reckless! That'd be admirable, if only you knew
- :    : what you were up against.
-@>Text: \xn[???]But uh, where are my manners!
-@>Text: \xn[Hikari]Name's Hikari! Hikari Hoshizora!
-@>Text: \xn[Hikari]I'm what you might call a "Legend Hunter"!
-@>Text: \xn[Hikari]Spendin' my time chasin' down Puppets like the Chilling 
- :    : Reaper and it's ilk- the Avatars of Calamity.
-@>Text: \xn[Hikari]Judgin' by that blank look on your face, you 'ave no idea
- :    : what the Avatars of Calamity are, do ya?
-@>Call Common Event: Avatar Explanation
-@>Text: \xn[Hikari]Though, to stand toe to toe with an Avatar is no easy 
- :    : feat...
-@>Text: \xn[Hikari]Hmm... 'haps you may be the one who can resolve 
- :    : this...
-@>Show Animation: Player, [Question bubble]
-@>Wait: 10 frame(s)
-@>Text: \xn[Hikari]Oh, pay me no mind! Jus' thinkin' aloud!
-@>Text: \xn[Hikari]Well, if you're lookn' for the next Avatar, the closes' 
- :    : one would be the hothead, Marisa Omega. She made 'er 
- :    : domain on the beach.
-@>Text: \xn[Hikari]I'm very int'rested in seein' how you deal with 'em for 
- :    : myself, so I'll meet you over there!
-@>Set Move Route: [Hikari]
- :              : $>Move Down
- :              : $>Move Down
- :              : $>Move Down
- :              : $>Move Down
- :              : $>Move Down
- :              : $>Change Opacity: 0
-@>Wait for Move's Completion
-@>Control Switches: [0124: Met Hikari] = ON
+@>Conditional Branch: Switch [0124: Met Hikari] == OFF
+ @>Text: \xn[???]A'ight, this is where the Chilling Reaper should be... Now,
+  :    : all I 'ave to do is...
+ @>Wait for Move's Completion
+ @>Wait: 10 frame(s)
+ @>Change Text Options: Bottom, Show
+ @>Text: \xn[???]...Uhm. I wasn't expectin' to see anybody else here.
+ @>Set Move Route: Player
+  :              : $>Turn Down
+ @>Show Animation: Player, [Question bubble]
+ @>Wait: 20 frame(s)
+ @>Show Animation: [Hikari], [Exclaim bubble]
+ @>Text: \xn[???]Wait, you can\..\..\..\.- \wt[25]'Old on! Did you come here to fight the
+  :    : Chilling Reaper?\n\wt[25] <i>By yourself!?</i>
+ @>Wait: 10 frame(s)
+ @>Text: \xn[???]You're reckless! That'd be admirable, if only you knew
+  :    : what you were up against.
+ @>Text: \xn[???]But uh, where are my manners!
+ @>Text: \xn[Hikari]Name's Hikari! Hikari Hoshizora!
+ @>Text: \xn[Hikari]I'm what you might call a "Legend Hunter"!
+ @>Text: \xn[Hikari]Spendin' my time chasin' down Puppets like the Chilling 
+  :    : Reaper and it's ilk- the Avatars of Calamity.
+ @>Text: \xn[Hikari]Judgin' by that blank look on your face, you 'ave no idea
+  :    : what the Avatars of Calamity are, do ya?
+ @>Call Common Event: Avatar Explanation
+ @>Text: \xn[Hikari]Though, to stand toe to toe with an Avatar is no easy 
+  :    : feat...
+ @>Text: \xn[Hikari]Hmm... 'haps you may be the one who can resolve 
+  :    : this...
+ @>Show Animation: Player, [Question bubble]
+ @>Wait: 10 frame(s)
+ @>Text: \xn[Hikari]Oh, pay me no mind! Jus' thinkin' aloud!
+ @>Text: \xn[Hikari]Well, if you're lookn' for the next Avatar, the closes' 
+  :    : one would be the hothead, Marisa Omega. She made 'er 
+  :    : domain on the beach.
+ @>Text: \xn[Hikari]I'm very int'rested in seein' how you deal with 'em for 
+  :    : myself, so I'll meet you over there!
+ @>Text: \xn[Hikari]But yeah I confirmed that the other Avatar on the island
+  :    : is Marisa Omega, and she's made her domain at the beach.
+ @>Set Move Route: [Hikari]
+  :              : $>Move Down
+  :              : $>Move Down
+  :              : $>Move Down
+  :              : $>Move Down
+  :              : $>Move Down
+  :              : $>Change Opacity: 0
+ @>Wait for Move's Completion
+ @>Control Switches: [0124: Met Hikari] = ON
+ @>
+: Else
+ @>Text: \xn[Hikari]Aww man, I'm not too late am I?
+ @>Wait for Move's Completion
+ @>Set Move Route: Player
+  :              : $>Turn Down
+ @>Text: \xn[Hikari]So it was Yuyuko Omega, right? 'course it was!
+ @>Text: \xn[Hikari]I heard she's got a pretty deadly attack that can 
+  :    : tear you apart if you ain't careful! Hopefully it wasn't too bad!
+ @>Text: \xn[Hikari]But yeah I confirmed that the other Avatar on the island
+  :    : is Marisa Omega, and she's made her domain at the beach.
+ @>Text: \xn[Hikari]I'll meetcha over there!
+ @>Set Move Route: [Hikari]
+  :              : $>Move Down
+  :              : $>Move Down
+  :              : $>Move Down
+  :              : $>Move Down
+  :              : $>Move Down
+  :              : $>Change Opacity: 0
+ @>Wait for Move's Completion
+ @>
+: Branch End
 @>Control Self Switch: A =ON
 @>
 
@@ -110891,7 +110994,7 @@ Width: 64, Height: 48
 #------------------------------------------------------------------------------
 Event ID: 001
 Event Name: EV001
-(X,Y): (000,000)
+(X,Y): (055,029)
 
 Page #1
 Conditions
@@ -110912,6 +111015,8 @@ List of Event Commands:
 @>Text: However, all reports are unsure. Anytime she was spotted for
  :    : more than a few seconds, people reported that she begun glowing
  :    : brightly. Almost like the Sun personified.
+@>Text: Though, with how hazy it is, I'm amazed anybody can see
+ :    : anything out here...
 @>Text: Good luck out there, ma'am.
 @>Control Self Switch: A =ON
 @>
@@ -110934,7 +111039,7 @@ List of Event Commands:
 #------------------------------------------------------------------------------
 Event ID: 002
 Event Name: EV002
-(X,Y): (001,000)
+(X,Y): (054,033)
 
 Page #1
 Conditions
@@ -110957,12 +111062,65 @@ List of Event Commands:
 : When [Yes]
  @>Text: Let's make haste and get back to somewhere that isn't the surface
   :    : of the Sun!
+ @>Play SE: 'Door exit', 100, 100
+ @>Change Screen Color Tone: (-255,-255,-255,0), @6
+ @>Wait: 8 frame(s)
+ @>Transfer Player:[279: Port Exilian], (033,011), Down, No Fade
+ @>Change Screen Color Tone: (0,0,0,0), @6
  @>
 : When [No]
  @>Text: I can't leave unless you do... if only the ocean wasn't scalding
   :    : as well, I can't even cool off there!
  @>
 : Branch End
+@>
+
+#------------------------------------------------------------------------------
+Event ID: 003
+Event Name: size(1,3)
+(X,Y): (055,034)
+
+Page #1
+Conditions
+None
+
+Autonomous Movement
+Type: Fixed
+Speed: 3: Slow
+Freq: 3: Low
+Options Enabled
+Move Animation
+Trigger: Player Touch
+
+List of Event Commands:
+@>Text: I shouldn't try and head back on my own.
+@>Set Move Route: Player
+ :              : $>Move Left
+@>
+
+#------------------------------------------------------------------------------
+Event ID: 004
+Event Name: EV004
+(X,Y): (030,013)
+
+Page #1
+Conditions
+None
+
+Autonomous Movement
+Type: Fixed
+Speed: 3: Slow
+Freq: 3: Low
+Options Enabled
+Move Animation
+Trigger: Player Touch
+
+List of Event Commands:
+@>Play SE: 'Door exit', 100, 100
+@>Change Screen Color Tone: (-255,-255,-255,0), @6
+@>Wait: 8 frame(s)
+@>Transfer Player:[286: Solar Crag], (022,031), Up, No Fade
+@>Change Screen Color Tone: (0,0,0,0), @6
 @>
 
 #------------------------------------------------------------------------------
@@ -112316,11 +112474,141 @@ List of Event Commands:
 (When Cancel: Choice 2)
 : When [Yes]
  @>Text: Let's get moving! Finally, warmth, here we come!
+ @>Play SE: 'Door exit', 100, 100
+ @>Change Screen Color Tone: (-255,-255,-255,0), @6
+ @>Wait: 8 frame(s)
+ @>Transfer Player:[279: Port Exilian], (033,011), Down, No Fade
+ @>Change Screen Color Tone: (0,0,0,0), @6
  @>
 : When [No]
  @>Text: Don't linger here for too long, you may get hypothermia!
  @>
 : Branch End
+@>
+
+#------------------------------------------------------------------------------
+Event ID: 004
+Event Name: EV004
+(X,Y): (011,010)
+
+Page #1
+Conditions
+None
+
+Autonomous Movement
+Type: Fixed
+Speed: 3: Slow
+Freq: 3: Low
+Options Enabled
+Move Animation
+Trigger: Player Touch
+
+List of Event Commands:
+@>Play SE: 'Door exit', 100, 100
+@>Change Screen Color Tone: (-255,-255,-255,0), @6
+@>Wait: 8 frame(s)
+@>Transfer Player:[280: Graveyard Crypt], (005,029), Up, No Fade
+@>Change Screen Color Tone: (0,0,0,0), @6
+@>
+
+#------------------------------------------------------------------------------
+Event ID: 005
+Event Name: EV005
+(X,Y): (015,010)
+
+Page #1
+Conditions
+None
+
+Autonomous Movement
+Type: Fixed
+Speed: 3: Slow
+Freq: 3: Low
+Options Enabled
+Move Animation
+Trigger: Player Touch
+
+List of Event Commands:
+@>Play SE: 'Door exit', 100, 100
+@>Change Screen Color Tone: (-255,-255,-255,0), @6
+@>Wait: 8 frame(s)
+@>Transfer Player:[280: Graveyard Crypt], (005,009), Up, No Fade
+@>Change Screen Color Tone: (0,0,0,0), @6
+@>
+
+#------------------------------------------------------------------------------
+Event ID: 006
+Event Name: EV006
+(X,Y): (026,010)
+
+Page #1
+Conditions
+None
+
+Autonomous Movement
+Type: Fixed
+Speed: 3: Slow
+Freq: 3: Low
+Options Enabled
+Move Animation
+Trigger: Player Touch
+
+List of Event Commands:
+@>Play SE: 'Door exit', 100, 100
+@>Change Screen Color Tone: (-255,-255,-255,0), @6
+@>Wait: 8 frame(s)
+@>Transfer Player:[280: Graveyard Crypt], (049,009), Up, No Fade
+@>Change Screen Color Tone: (0,0,0,0), @6
+@>
+
+#------------------------------------------------------------------------------
+Event ID: 007
+Event Name: EV007
+(X,Y): (030,010)
+
+Page #1
+Conditions
+None
+
+Autonomous Movement
+Type: Fixed
+Speed: 3: Slow
+Freq: 3: Low
+Options Enabled
+Move Animation
+Trigger: Player Touch
+
+List of Event Commands:
+@>Play SE: 'Door exit', 100, 100
+@>Change Screen Color Tone: (-255,-255,-255,0), @6
+@>Wait: 8 frame(s)
+@>Transfer Player:[280: Graveyard Crypt], (049,029), Up, No Fade
+@>Change Screen Color Tone: (0,0,0,0), @6
+@>
+
+#------------------------------------------------------------------------------
+Event ID: 008
+Event Name: size(2,1)
+(X,Y): (020,008)
+
+Page #1
+Conditions
+None
+
+Autonomous Movement
+Type: Fixed
+Speed: 3: Slow
+Freq: 3: Low
+Options Enabled
+Move Animation
+Trigger: Player Touch
+
+List of Event Commands:
+@>Play SE: 'Door exit', 100, 100
+@>Change Screen Color Tone: (-255,-255,-255,0), @6
+@>Wait: 8 frame(s)
+@>Transfer Player:[280: Graveyard Crypt], (026,021), Up, No Fade
+@>Change Screen Color Tone: (0,0,0,0), @6
 @>
 
 #------------------------------------------------------------------------------
@@ -127371,7 +127659,7 @@ List of Event Commands:
 @>Play SE: 'Exit Door', 80, 100
 @>Change Screen Color Tone: (-255,-255,-255,0), @6
 @>Wait: 8 frame(s)
-@>Transfer Player:[305: Fuchsia City Gym], (016,017), Left, No Fade
+@>Transfer Player:[305: Fuchsia City Gym], (039,017), Left, No Fade
 @>Change Screen Color Tone: (0,0,0,0), @6
 @>
 
@@ -141823,7 +142111,7 @@ List of Event Commands:
  :    : pair of spare Rock Smash machines.
 @>Text: Since I've already got a way to smash rocks, I'll let 
  :    : you have this spare. Make good use of it!
-@>Script: pbReceiveItem(:HM06)
+@>Script: pbReceiveItem(:TM94)
 :       : pbReceiveItem(:HC06)
 @>Text: If you want to use Rock Smash, you'll need the badge 
  :    : from Saffron City to use it.
@@ -142409,8 +142697,6 @@ List of Event Commands:
 @>Text: I woudn't take them to be Ecoterrorists like those over in Hoenn.
 @>Text: Still, you seem to have reason to believe that Team Rocket is inside
  :    : the Volcano...
-@>Text: I'll tell you what. None of my team is brave enough to enter the
- :    : Volcano right now and investigate the source of these signals.
 @>Text: I'll tell you what. None of my team is brave enough to enter the
  :    : Volcano right now and investigate the source of these signals.
 @>Text: If you agree to find the source of it, I'll radio the guard and tell
@@ -148062,7 +148348,7 @@ List of Event Commands:
 @>Text: Or more accurately, a pick up and soar! How does 
  :    : that sound? Well I have just the thing for you.
 @>Script: pbReceiveItem(:HM02)
-:       : pbReceiveItem(:SC02)
+:       : pbReceiveItem(:HC02)
 @>Text: Those machines containc the move Fly, it'll allow your 
  :    : party members to transport you across great distances!
 @>Text: All you need is the badge from Vermilion City to use 
@@ -156808,7 +157094,7 @@ Page #2
 Conditions
 Self Switch A is ON
 
-Graphic: trchar057
+Graphic: trainer_TEAMROCKET_F
 
 Autonomous Movement
 Type: Custom
@@ -161215,8 +161501,8 @@ List of Event Commands:
 @>Set Move Route: Player
  :              : $>Through ON
  :              : $>Always on Top ON
- :              : $>Turn Right
- :              : $>Move Right
+ :              : $>Turn Left
+ :              : $>Move Left
  :              : $>Through OFF
  :              : $>Always on Top OFF
 @>Wait for Move's Completion
@@ -161224,7 +161510,7 @@ List of Event Commands:
 @>Change Screen Color Tone: (-255,-255,-255,0), @6
 @>Wait: 8 frame(s)
 @>Transfer Player:[351: Cinnabar Mansion], (011,021), Left, No Fade
-@>Change Screen Color Tone: (0,0,0,0), @6
+@>Change Screen Color Tone: (-102,-102,-102,51), @6
 @>
 
 #------------------------------------------------------------------------------
@@ -164991,7 +165277,7 @@ Speed: 3: Slow
 Freq: 3: Low
 Options Enabled
 Move Animation
-Trigger: Action Button
+Trigger: Player Touch
 
 List of Event Commands:
 @>Change Screen Color Tone: (-255,-255,-255,0), @6
@@ -165766,7 +166052,7 @@ Move Animation
 Trigger: Action Button
 
 List of Event Commands:
-@>Conditional Branch: Script: pbItemBall(PBItems::MASTERBALL)
+@>Conditional Branch: Script: pbItemBall(:MASTERBALL)
  @>Control Self Switch: A =ON
  @>
 : Else
@@ -171644,6 +171930,21 @@ List of Event Commands:
  :              : $>Turn Up
 @>Text: \xn[Libra]Our best efforts to probe into the afflicted areas have
  :    : proven fruitless.
+@>Conditional Branch: Switch [0124: Met Hikari] == ON
+ @>Set Move Route: [Hikari]
+  :              : $>Turn Right
+ @>Wait for Move's Completion
+ @>Text: \xn[Hikari]Oh, \pn! You're 'ere too I see!
+ @>Set Move Route: Player
+  :              : $>Turn Left
+ @>Text: \xn[Hikari]I arrived a while ago to get the lay of the land, 
+  :    : found m'self here listening to this meeting.
+ @>Set Move Route: [Hikari]
+  :              : $>Turn Up
+ @>Set Move Route: Player
+  :              : $>Turn Up
+ @>
+: Branch End
 @>Show Animation: [NPC], [Question bubble]
 @>Text: Is it true that the cause behind this is a renegade Puppet?
 @>Set Move Route: [NPC]
@@ -171786,7 +172087,7 @@ Trigger: Player Touch
 List of Event Commands:
 @>Text: \xn[???]Judging from what was just discussed, this <i>has</i> to
  :    : be where they are.
-@>Text: \xn[???]Now it's just a matter of getting to them...
+@>Text: \xn[???]Now 's just a matter of getting to 'em...
 @>Show Animation: Player, [Question bubble]
 @>Wait: 10 frame(s)
 @>Set Move Route: [Hikari]
@@ -171795,7 +172096,7 @@ List of Event Commands:
 @>Text: \xn[???]Oh, sorry am I in your... wa-\..\..\..ait a second.
 @>Text: \xn[???]Y-You can-? But-...
 @>Wait: 10 frame(s)
-@>Text: \xn[???]I must be leaving now!
+@>Text: \xn[???]I mus' be leaving now!
 @>Set Move Route: [Hikari]
  :              : $>Turn Down
  :              : $>Wait: 5 frame(s)
@@ -171808,7 +172109,9 @@ List of Event Commands:
 
 Page #2
 Conditions
-Self Switch A is ON
+Switch 0124: Met Hikari is ON
+
+Graphic: Anime NPC 11
 
 Autonomous Movement
 Type: Fixed
@@ -171819,11 +172122,42 @@ Move Animation
 Trigger: Action Button
 
 List of Event Commands:
+@>Text: \xn[Hikari]You caught all that, right \pn?
+@>Text: \xn[Hikari]Tell me that don't sound like another Avatar!
+@>Text: \xn[Hikari]Judgin' by what I heard in town, it sounds like there's
+ :    : two spots on the island that are being aflicted.
+@>Text: \xn[Hikari]'f I had t' guess, I'd say 's most likely the cause of
+ :    : Marisa Omega and Yuyuko Omega.
+@>Text: \xn[Hikari]However, there's no way you're gettin' access to them.
+ :    : There's a guard stationed at the only exit outta the city.
+@>Text: \xn[Hikari]Might wanna talk to the Mayor here 'n see if you can
+ :    : get permission before headin' out.
+@>Conditional Branch: Variable [0143: Wisteria Island Sidequest] == 4
+ @>Text: \xn[Hikari]Oh, you already got it? Noice! Way to be proactive, 
+  :    : \pn!
+ @>
+: Branch End
+@>Text: \xn[Hikari]I think I'll hang back in the city for a bit while you scout
+ :    : out the Island.
+@>Text: \xn[Hikari]..Ah, make no mistake! I'll 'tempt to be right 'hind
+ :    : ya! Jus' wanna take care of a few things here first is all!
+@>Text: \xn[Hikari]Did ya' really think I'd turn down the chance to see the
+ :    : other Avatars? Heck nah!
+@>Text: \xn[Hikari]I'll be 'long 'fore ya' know it!
+@>Text: \xn[Hikari]See ya' soon!
+@>Set Move Route: [Hikari]
+ :              : $>Turn Down
+ :              : $>Wait: 5 frame(s)
+ :              : $>Through OFF
+ :              : $>Move Down
+ :              : $>Wait: 2 frame(s)
+ :              : $>Change Opacity: 0
+@>Control Self Switch: A =ON
 @>
 
 Page #3
 Conditions
-Switch 0124: Met Hikari is ON
+Self Switch A is ON
 
 Autonomous Movement
 Type: Fixed
