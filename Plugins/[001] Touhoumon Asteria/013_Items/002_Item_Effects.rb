@@ -70,7 +70,7 @@ ItemHandlers::UseInField.add(:ITEMFINDER, proc { |item|
       4.times do
         pbWait(Graphics.frame_rate * 2 / 10)
         $game_player.turn_right_90
-		pbSEPlay("SlotsCoin")
+		pbSEPlay("Slots coin")
       end
       pbWait(Graphics.frame_rate * 3 / 10)
       pbMessage(_INTL("The {1}'s indicating something right underfoot!", GameData::Item.get(item).name))
@@ -88,13 +88,13 @@ ItemHandlers::UseInField.add(:ITEMFINDER, proc { |item|
       when 8 then $game_player.turn_up
       end
       pbWait(Graphics.frame_rate * 3 / 10)
-       pbSEPlay("SlotsCoin")
+       pbSEPlay("Slots coin")
        pbWait(30)
-       pbSEPlay("SlotsCoin")
+       pbSEPlay("Slots coin")
        pbWait(30)
-       pbSEPlay("SlotsCoin")
+       pbSEPlay("Slots coin")
        pbWait(30)
-       pbSEPlay("SlotsCoin")
+       pbSEPlay("Slots coin")
        pbWait(10)
       pbMessage(_INTL("Huh? The {1}'s responding!\1", GameData::Item.get(item).name))
       pbMessage(_INTL("There's an item buried around here!"))

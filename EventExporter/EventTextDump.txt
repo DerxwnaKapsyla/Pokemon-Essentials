@@ -11447,6 +11447,38 @@ List of Event Commands:
 @>
 
 #------------------------------------------------------------------------------
+Event ID: 022
+Event Name: EV022
+(X,Y): (038,018)
+
+Page #1
+Conditions
+None
+
+Autonomous Movement
+Type: Fixed
+Speed: 3: Slow
+Freq: 3: Low
+Options Enabled
+Move Animation
+Trigger: Action Button
+
+List of Event Commands:
+@>Text: Pull the gacha?
+@>Show Choices: Single Pull, Ten Pull, No
+(When Cancel: Choice 3)
+: When [Single Pull]
+ @>Script: gacha_single_pull
+ @>
+: When [Ten Pull]
+ @>Script: gacha_ten_pull
+ @>
+: When [No]
+ @>
+: Branch End
+@>
+
+#------------------------------------------------------------------------------
 
 #==============================================================================
 Map ID: 035
@@ -110453,80 +110485,6 @@ List of Event Commands:
 @>
 
 #------------------------------------------------------------------------------
-Event ID: 029
-Event Name: EV029
-(X,Y): (034,011)
-
-Page #1
-Conditions
-None
-
-Graphic: NPC 20
-
-Autonomous Movement
-Type: Fixed
-Speed: 3: Slow
-Freq: 3: Low
-Options Enabled
-Move Animation
-Trigger: Action Button
-
-List of Event Commands:
-@>Text: Sorry, I can't allow anybody to pass by without permission from
- :    : Mayor Libra.
-@>
-
-Page #2
-Conditions
-Variable 0143: Wisteria Island Sidequest is 4 or above
-
-Graphic: NPC 20
-
-Autonomous Movement
-Type: Fixed
-Speed: 3: Slow
-Freq: 3: Low
-Options Enabled
-Move Animation
-Trigger: Action Button
-
-List of Event Commands:
-@>Conditional Branch: Self Switch A == OFF
- @>Text: Mayor Libra has radio'd ahead and told us that you're to be
-  :    : allowed to pass.
- @>Text: I must warn you, the areas ahead are filled with Puppets that
-  :    : even the mainland hasn't experienced, and very harsh climates.
- @>Text: As such, I will be your guide to the afflicted areas.
- @>Control Self Switch: A =ON
- @>
-: Branch End
-@>Text: Where would you like to go?
-@>Show Choices: Wisteria Beach, Wisteria Graveyard, Nevermind
-(When Cancel: Choice 3)
-: When [Wisteria Beach]
- @>Text: To the burning beach it is! Stay close so you don't
-  :    : get lost.
- @>Change Screen Color Tone: (-255,-255,-255,0), @6
- @>Wait: 8 frame(s)
- @>Change Transparent Flag: Normal
- @>Transfer Player:[281: Wisteria Beach], (053,033), Right, No Fade
- @>Change Screen Color Tone: (0,0,0,0), @6
- @>
-: When [Wisteria Graveyard]
- @>Text: To the frozen forest it is! Stay close so you don't
-  :    : get lost.
- @>Change Screen Color Tone: (-255,-255,-255,0), @6
- @>Wait: 8 frame(s)
- @>Change Transparent Flag: Normal
- @>Transfer Player:[285: Wisteria Graveyard], (012,038), Down, No Fade
- @>Change Screen Color Tone: (0,0,0,0), @6
- @>
-: When [Nevermind]
- @>
-: Branch End
-@>
-
-#------------------------------------------------------------------------------
 
 #==============================================================================
 Map ID: 280
@@ -110981,6 +110939,161 @@ Move Animation
 Trigger: Action Button
 
 List of Event Commands:
+@>
+
+#------------------------------------------------------------------------------
+Event ID: 007
+Event Name: ExitArrow
+(X,Y): (005,010)
+
+Page #1
+Conditions
+None
+
+Graphic: Exitarrow_red
+
+Autonomous Movement
+Type: Fixed
+Speed: 3: Slow
+Freq: 3: Low
+Options Enabled
+Move Animation
+Stop Animation
+Trigger: Player Touch
+
+List of Event Commands:
+@>Conditional Branch: Player is facing Down
+ @>Play SE: 'Door exit', 100, 100
+ @>Change Screen Color Tone: (-255,-255,-255,0), @6
+ @>Wait: 8 frame(s)
+ @>Transfer Player:[285: Wisteria Graveyard], (015,011), No Fade
+ @>Change Screen Color Tone: (0,0,0,0), @6
+ @>
+: Branch End
+@>
+
+#------------------------------------------------------------------------------
+Event ID: 008
+Event Name: ExitArrow
+(X,Y): (005,030)
+
+Page #1
+Conditions
+None
+
+Graphic: Exitarrow_red
+
+Autonomous Movement
+Type: Fixed
+Speed: 3: Slow
+Freq: 3: Low
+Options Enabled
+Move Animation
+Stop Animation
+Trigger: Player Touch
+
+List of Event Commands:
+@>Conditional Branch: Player is facing Down
+ @>Play SE: 'Door exit', 100, 100
+ @>Change Screen Color Tone: (-255,-255,-255,0), @6
+ @>Wait: 8 frame(s)
+ @>Transfer Player:[285: Wisteria Graveyard], (011,011), No Fade
+ @>Change Screen Color Tone: (0,0,0,0), @6
+ @>
+: Branch End
+@>
+
+#------------------------------------------------------------------------------
+Event ID: 009
+Event Name: ExitArrow
+(X,Y): (026,022)
+
+Page #1
+Conditions
+None
+
+Graphic: Exitarrow_red
+
+Autonomous Movement
+Type: Fixed
+Speed: 3: Slow
+Freq: 3: Low
+Options Enabled
+Move Animation
+Stop Animation
+Trigger: Player Touch
+
+List of Event Commands:
+@>Conditional Branch: Player is facing Down
+ @>Play SE: 'Door exit', 100, 100
+ @>Change Screen Color Tone: (-255,-255,-255,0), @6
+ @>Wait: 8 frame(s)
+ @>Transfer Player:[285: Wisteria Graveyard], (020,010), No Fade
+ @>Change Screen Color Tone: (0,0,0,0), @6
+ @>
+: Branch End
+@>
+
+#------------------------------------------------------------------------------
+Event ID: 010
+Event Name: ExitArrow
+(X,Y): (049,010)
+
+Page #1
+Conditions
+None
+
+Graphic: Exitarrow_red
+
+Autonomous Movement
+Type: Fixed
+Speed: 3: Slow
+Freq: 3: Low
+Options Enabled
+Move Animation
+Stop Animation
+Trigger: Player Touch
+
+List of Event Commands:
+@>Conditional Branch: Player is facing Down
+ @>Play SE: 'Door exit', 100, 100
+ @>Change Screen Color Tone: (-255,-255,-255,0), @6
+ @>Wait: 8 frame(s)
+ @>Transfer Player:[285: Wisteria Graveyard], (026,011), No Fade
+ @>Change Screen Color Tone: (0,0,0,0), @6
+ @>
+: Branch End
+@>
+
+#------------------------------------------------------------------------------
+Event ID: 011
+Event Name: ExitArrow
+(X,Y): (049,030)
+
+Page #1
+Conditions
+None
+
+Graphic: Exitarrow_red
+
+Autonomous Movement
+Type: Fixed
+Speed: 3: Slow
+Freq: 3: Low
+Options Enabled
+Move Animation
+Stop Animation
+Trigger: Player Touch
+
+List of Event Commands:
+@>Conditional Branch: Player is facing Down
+ @>Play SE: 'Door exit', 100, 100
+ @>Change Screen Color Tone: (-255,-255,-255,0), @6
+ @>Wait: 8 frame(s)
+ @>Transfer Player:[285: Wisteria Graveyard], (030,011), No Fade
+ @>Change Screen Color Tone: (0,0,0,0), @6
+ @>
+: Branch End
 @>
 
 #------------------------------------------------------------------------------
@@ -112743,7 +112856,7 @@ List of Event Commands:
  @>Script: pbSEPlay("Anim/gust")
  @>Change Screen Color Tone: (-255,-255,-255,0), @6
  @>Wait: 8 frame(s)
- @>Transfer Player:[281: Wisteria Beach], (004,002), Down, No Fade
+ @>Transfer Player:[281: Wisteria Beach], (030,014), Down, No Fade
  @>Change Screen Color Tone: (0,0,0,0), @6
  @>Text: \pn was blown out of the cave!
  @>
@@ -156140,7 +156253,7 @@ List of Event Commands:
 
 Page #3
 Conditions
-Switch 0134:  is ON
+Variable 0110: Plot Control Variable is 15 or above
 
 Autonomous Movement
 Type: Fixed
@@ -165283,6 +165396,7 @@ List of Event Commands:
 @>Change Screen Color Tone: (-255,-255,-255,0), @6
 @>Play SE: 'Exit Door', 80, 100
 @>Wait: 6 frame(s)
+@>Script: pbCaveExit
 @>Transfer Player:[353: Probability Space Hypervessel], (035,084), Up
 @>Change Screen Color Tone: (0,0,0,0), @6
 @>
@@ -165609,7 +165723,9 @@ List of Event Commands:
 @>Play SE: 'Door exit', 80, 100
 @>Change Screen Color Tone: (-255,-255,-255,0), @6
 @>Wait: 8 frame(s)
+@>Script: pbCaveEntrance
 @>Transfer Player:[352: Cinnabar Mansion], (055,003), No Fade
+@>Script: pbHGSSTransitions("Cinnabar Mansion")
 @>Set Move Route: Player
  :              : $>Move Down
 @>Change Screen Color Tone: (0,0,0,0), @6
@@ -167762,7 +167878,7 @@ List of Event Commands:
  :       : $bag.add($bag.pockets[2][5][0],127)
  @>Wait: 40 frame(s)
  @>Control Switches: [0103: Hide AI Lvl in battle] = ON
- @>Script: WildBattle.dx_start([:MEW, 100], { 
+ @>Script: WildBattle.dx_start([:MEW, 80], { 
  :       :   :nocapture => true, 
  :       :   :canlose => true,
  :       :   :backdrop => ["Factory", "Factory"],
@@ -172082,6 +172198,7 @@ Speed: 3: Slow
 Freq: 3: Low
 Options Enabled
 Move Animation
+Direction Fix
 Trigger: Player Touch
 
 List of Event Commands:

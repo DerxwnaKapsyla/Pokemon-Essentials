@@ -1499,18 +1499,12 @@ module EssentialsDeluxe
 	# Turn 1 - Battle intro. 
 	#	* Mention that Pokeballs are disabled.
 	#	* Mention that the Player's active battler is getting cold.
-	#	* Use Death's Embrace as the opening move.
 	#---------------------------------------------------------------------------
 	"turnCommand" => {
 	  :anim				=> :BLIZZARD,
 	  :text				=> "The biting frost is making throwing a Poké Ball difficult!\nThey cannot be used right now!",
 	  :text_1			=> "{1} is getting cold."
 	},
-	
-    "turnAttack_1" => {
-	  :battler			=> :Opposing,
-	  :usemove 			=> :DEATHSEMBRACE18,
-    },
 	
 	#---------------------------------------------------------------------------
     # Continuous - Every turn end
