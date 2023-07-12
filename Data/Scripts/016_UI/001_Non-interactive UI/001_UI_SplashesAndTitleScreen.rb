@@ -1,3 +1,6 @@
+#===============================================================================
+#
+#===============================================================================
 class IntroEventScene < EventScene
   # Splash screen images that appear for a few seconds and then disappear.
   SPLASH_IMAGES         = ["splash1", "splash2"]
@@ -17,7 +20,6 @@ class IntroEventScene < EventScene
     @pic2 = addImage(0, 0, "")   # flashing "Press Enter" picture
     @pic2.setOpacity(0, 0)       # set opacity to 0 after waiting 0 frames
     @index = 0
-	pbBGMPlay($data_system.title_bgm) # Derx: I want old functionality back!!!
     if SPLASH_IMAGES.empty?
       open_title_screen(self, nil)
     else
@@ -31,7 +33,7 @@ class IntroEventScene < EventScene
     # fade to opacity 255 in FADE_TICKS ticks after waiting 0 frames
     @pic.moveOpacity(0, FADE_TICKS, 255)
     pictureWait
-    @timer = 0.0                            # reset the timer
+    @timer = System.uptime                  # reset the timer
     onUpdate.set(method(:splash_update))    # called every frame
     onCTrigger.set(method(:close_splash))   # called when C key is pressed
   end
@@ -50,8 +52,7 @@ class IntroEventScene < EventScene
   end
 
   def splash_update(scene, args)
-    @timer += Graphics.delta_s
-    close_splash(scene, args) if @timer > SECONDS_PER_SPLASH
+    close_splash(scene, args) if System.uptime - @timer >= SECONDS_PER_SPLASH
   end
 
   def open_title_screen(_scene, *args)
@@ -64,7 +65,7 @@ class IntroEventScene < EventScene
     @pic2.setVisible(0, true)
     @pic2.moveOpacity(0, FADE_TICKS, 255)
     pictureWait
-    #pbBGMPlay($data_system.title_bgm) # Derx: I want old functionality back!
+    pbBGMPlay($data_system.title_bgm)
     onUpdate.set(method(:title_screen_update))    # called every frame
     onCTrigger.set(method(:close_title_screen))   # called when C key is pressed
   end
@@ -82,7 +83,7 @@ class IntroEventScene < EventScene
     @pic.moveOpacity(0, FADE_TICKS, 0)
     @pic2.clearProcesses
     @pic2.moveOpacity(0, FADE_TICKS, 0)
-    #pbBGMStop(1.0) # Derx: Commented out for the sake of science
+    pbBGMStop(1.0)
     pictureWait
     scene.dispose   # Close the scene
   end
@@ -115,8 +116,9 @@ class IntroEventScene < EventScene
   end
 end
 
-
-
+#===============================================================================
+#
+#===============================================================================
 class Scene_Intro
   def main
     Graphics.transition(0)

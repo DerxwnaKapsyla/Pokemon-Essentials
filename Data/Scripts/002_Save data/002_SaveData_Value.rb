@@ -99,6 +99,8 @@ module SaveData
       return @old_format_get_proc.call(old_format)
     end
 
+    #---------------------------------------------------------------------------
+
     private
 
     # Raises an {InvalidValueError} if the given value is invalid.
@@ -202,7 +204,7 @@ module SaveData
     validate id => Symbol
     @values.delete_if { |value| value.id == id }
   end
-    
+
   # @param save_data [Hash] save data to validate
   # @return [Boolean] whether the given save data is valid
   def self.valid?(save_data)
