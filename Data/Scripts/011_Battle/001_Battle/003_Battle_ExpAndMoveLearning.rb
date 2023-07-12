@@ -173,8 +173,7 @@ class Battle
     newLevel = growth_rate.level_from_exp(expFinal)
     if newLevel < curLevel
       debugInfo = "Levels: #{curLevel}->#{newLevel} | Exp: #{pkmn.exp}->#{expFinal} | gain: #{expGained}"
-      raise _INTL("{1}'s new level is less than its\r\ncurrent level, which shouldn't happen.\r\n[Debug: {2}]",
-                  pkmn.name, debugInfo)
+      raise _INTL("{1}'s new level is less than its current level, which shouldn't happen.", pkmn.name) + "\n[#{debugInfo}]"
     end
     # Give Exp
     if pkmn.shadowPokemon?
@@ -211,9 +210,7 @@ class Battle
       oldSpAtk   = pkmn.spatk
       oldSpDef   = pkmn.spdef
       oldSpeed   = pkmn.speed
-      if battler&.pokemon
-        battler.pokemon.changeHappiness("levelup")
-      end
+      battler.pokemon.changeHappiness("levelup") if battler&.pokemon
       pkmn.calc_stats
       battler&.pbUpdate(false)
       @scene.pbRefreshOne(battler.index) if battler

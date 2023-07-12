@@ -898,7 +898,7 @@ TotalPP = 15
 Target = NearOther
 FunctionCode = ParalyzeFlinchTarget
 Flags = Contact,CanProtect,CanMirrorMove,Biting
-EffectChance = 100
+EffectChance = 101
 Description = The user bites with electrified fangs. It may also make the target flinch or leave it with paralysis.
 #-------------------------------
 [SHOCKWAVE]
@@ -1722,7 +1722,7 @@ TotalPP = 15
 Target = NearOther
 FunctionCode = BurnFlinchTarget
 Flags = Contact,CanProtect,CanMirrorMove,Biting
-EffectChance = 100
+EffectChance = 101
 Description = The user bites with flame-cloaked fangs. It may also make the target flinch or leave it burned.
 #-------------------------------
 [FLAMEWHEEL]
@@ -2986,7 +2986,7 @@ TotalPP = 15
 Target = NearOther
 FunctionCode = FreezeFlinchTarget
 Flags = Contact,CanProtect,CanMirrorMove,Biting
-EffectChance = 100
+EffectChance = 101
 Description = The user bites with cold-infused fangs. It may also make the target flinch or leave it frozen.
 #-------------------------------
 [AVALANCHE]
@@ -3633,18 +3633,6 @@ Target = NearOther
 FunctionCode = None
 Flags = Contact,CanProtect,CanMirrorMove
 Description = The target is cut with a scythe or a claw. It can also be used to cut down thin trees.
-#-------------------------------
-[STRUGGLE]
-Name = Struggle
-Type = NORMAL
-Category = Physical
-Power = 50
-Accuracy = 0
-TotalPP = 1
-Target = RandomNearFoe
-FunctionCode = Struggle
-Flags = Contact,CanProtect
-Description = An attack that is used in desperation only if the user has no PP. It also hurts the user slightly.
 #-------------------------------
 [TACKLE]
 Name = Tackle
