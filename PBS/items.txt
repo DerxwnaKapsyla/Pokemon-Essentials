@@ -6844,17 +6844,37 @@ Price = 0
 Flags = KeyItem
 Description = A ticket required to board the ship to Wisteria Island. It glows beautifully.
 #-------------------------------
-[STURDYVINE]
-Name = Sturdy Vine
-NamePlural = Sturdy Vines
-Pocket = 8
-Price = 0
-Flags = KeyItem
-Description = An item held by CKazami during the Seedy Situation sidequest. Ensures she survives any hit 100% of the time. Purely for event purposes.
-#-------------------------------
 [MAGFRAG]
 Name = Magical Fragment
 NamePlural = Magical Fragments
 Pocket = 8
 Price = 0
 Description = Pieces of crystalized magic created as a result of battle. Used in the Reincarnation process.
+#-------------------------------
+[POTATO]
+Name = Potato
+NamePlural = Potatoes
+Pocket = 2
+Price = 40
+FieldUse = OnPokemon
+BattleUse = OnPokemon
+Flags = Fling_20
+Description = A regular Potato. It may be used or held to heal the user by 20 HP. Better when baked.
+#-------------------------------
+[BAKEDPOTATO]
+Name = Baked Potato
+NamePlural = Baked Potatoes
+Pocket = 2
+Price = 100
+FieldUse = OnPokemon
+BattleUse = OnPokemon
+Flags = Fling_30
+Description = A baked Potato. It may be used or held to heal the user by 80 HP, as well as recovering from any status problem.
+#-------------------------------
+[STEALTHCHARM]
+Name = Stealth Charm
+NamePlural = Stealth Charms
+Pocket = 1
+Price = 200
+Flags = Fling_30
+Description = An item to be held. It will prevent any wild encounter from being triggered if the holder is in the first party slot.

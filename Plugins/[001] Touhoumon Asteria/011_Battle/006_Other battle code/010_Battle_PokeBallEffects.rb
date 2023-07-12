@@ -30,10 +30,24 @@ Battle::PokeBallEffects::ModifyCatchRate.add(:SAFARIORB, proc { |ball, catchRate
   next catchRate * 1.5
 })
 
+Battle::PokeBallEffects::ModifyCatchRate.add(:GLITTERBALL, proc { |ball, catchRate, battle, battler|
+  catchRate *= 4 if battler.shiny? || battler.super_shiny?
+  next catchRate
+})
+
+Battle::PokeBallEffects::ModifyCatchRate.add(:DREAMBALL, proc { |ball, catchRate, battle, battler|
+  catchRate *= 4 if battler.asleep?
+  next catchRate
+})
+
 Battle::PokeBallEffects::IsUnconditional.add(:MASTERORB, proc { |ball, battle, battler|
   next true
 })
 
-#Battle::PokeBallEffects::OnCatch.add(:GLITTERBALL, proc { |ball, battle, pkmn|
-#  pkmn.shiny = true
-#})
+Battle::PokeBallEffects::OnCatch.add(:GLITTERBALL, proc { |ball, battle, pkmn|
+  pkmn.shiny = true
+})
+
+Battle::PokeBallEffects::OnCatch.add(:DREAMBALL, proc { |ball, battle, pkmn|
+  pkmn.ability_index = 2
+})

@@ -11033,28 +11033,6 @@ List of Event Commands:
 @>
 
 #------------------------------------------------------------------------------
-Event ID: 015
-Event Name: EV015
-(X,Y): (048,018)
-
-Page #1
-Conditions
-None
-
-Autonomous Movement
-Type: Fixed
-Speed: 3: Slow
-Freq: 3: Low
-Options Enabled
-Move Animation
-Trigger: Action Button
-
-List of Event Commands:
-@>Script: pbSetQuest(1,true)
-@>Script: pbAddQuest(2)
-@>
-
-#------------------------------------------------------------------------------
 Event ID: 016
 Event Name: EV016
 (X,Y): (037,023)
@@ -11197,7 +11175,7 @@ List of Event Commands:
 #------------------------------------------------------------------------------
 Event ID: 019
 Event Name: Marisa Omega
-(X,Y): (046,020)
+(X,Y): (053,037)
 
 Page #1
 Conditions
@@ -11291,13 +11269,13 @@ List of Event Commands:
 #------------------------------------------------------------------------------
 Event ID: 020
 Event Name: EV020
-(X,Y): (037,018)
+(X,Y): (044,019)
 
 Page #1
 Conditions
 None
 
-Graphic: Object ball
+Graphic: gymtelecom
 
 Autonomous Movement
 Type: Fixed
@@ -11305,6 +11283,7 @@ Speed: 3: Slow
 Freq: 3: Low
 Options Enabled
 Move Animation
+Direction Fix
 Trigger: Action Button
 
 List of Event Commands:
@@ -11316,13 +11295,15 @@ List of Event Commands:
 @>
 
 #------------------------------------------------------------------------------
-Event ID: 021
-Event Name: EV021
-(X,Y): (036,018)
+Event ID: 022
+Event Name: EV022
+(X,Y): (051,041)
 
 Page #1
 Conditions
 None
+
+Graphic: Object tm_ball
 
 Autonomous Movement
 Type: Fixed
@@ -11333,60 +11314,15 @@ Move Animation
 Trigger: Action Button
 
 List of Event Commands:
-@>Change Screen Color Tone: (-255,-255,-255,0), @8
-@>Wait: 8 frame(s)
-@>Show Picture: 1, 'Omega Preview', Upper Left (0,0), (100%,100%), 0, Normal
-@>Show Picture: 2, 'BGBlack_Small', Upper Left (0,0), (100%,100%), 0, Normal
-@>Show Picture: 3, 'BGBlack_Small', Upper Left (256,0), (100%,100%), 0, Normal
-@>Show Picture: 4, 'BGBlack_Small', Upper Left (0,191), (100%,100%), 0, Normal
-@>Show Picture: 5, 'BGBlack_Small', Upper Left (256,191), (100%,100%), 0, Normal
-@>Change Screen Color Tone: (0,0,0,0), @8
-@>Move Picture: 1, @8, Upper Left (0,0), (100%,100%), 255, Normal
-@>Wait: 8 frame(s)
-@>Text: \xn[Hikari]The Avatars of Calamity are a series of ultra destructive
- :    : Puppets tha 'ave the ability to warp the world around 'em.
-@>Text: \xn[Hikari]They've even been observed bein' able to influence other
- :    : Puppets to some extent.
-@>Text: \xn[Hikari]There are only four Avatars that we're 'ware of.
-@>Move Picture: 2, @1, Upper Left (0,0), (100%,100%), 0, Normal
-@>Move Picture: 3, @1, Upper Left (256,0), (100%,100%), 125, Normal
-@>Move Picture: 4, @1, Upper Left (0,191), (100%,100%), 125, Normal
-@>Move Picture: 5, @1, Upper Left (256,191), (100%,100%), 125, Normal
-@>Text: \xn[Hikari]Marisa Omega, the Blazing Apocalypse.
-@>Wait: 10 frame(s)
-@>Move Picture: 2, @1, Upper Left (0,0), (100%,100%), 125, Normal
-@>Move Picture: 3, @1, Upper Left (256,0), (100%,100%), 0, Normal
-@>Move Picture: 4, @1, Upper Left (0,191), (100%,100%), 125, Normal
-@>Move Picture: 5, @1, Upper Left (256,191), (100%,100%), 125, Normal
-@>Text: \xn[Hikari]Yuyuko Omega, the Chilling Reaper.
-@>Wait: 10 frame(s)
-@>Move Picture: 2, @1, Upper Left (0,0), (100%,100%), 125, Normal
-@>Move Picture: 3, @1, Upper Left (256,0), (100%,100%), 125, Normal
-@>Move Picture: 4, @1, Upper Left (0,191), (100%,100%), 0, Normal
-@>Move Picture: 5, @1, Upper Left (256,191), (100%,100%), 125, Normal
-@>Text: \xn[Hikari]Kanako Omega, the Regina Procellas.
-@>Wait: 10 frame(s)
-@>Move Picture: 2, @1, Upper Left (0,0), (100%,100%), 125, Normal
-@>Move Picture: 3, @1, Upper Left (256,0), (100%,100%), 125, Normal
-@>Move Picture: 4, @1, Upper Left (0,191), (100%,100%), 125, Normal
-@>Move Picture: 5, @1, Upper Left (256,191), (100%,100%), 0, Normal
-@>Text: \xn[Hikari]An' Suika n' Yuugi Omega, the Reges Terae. Those two
- :    : are of'en jus' called Devas Omega.
-@>Wait: 10 frame(s)
-@>Move Picture: 2, @1, Upper Left (0,0), (100%,100%), 125, Normal
-@>Move Picture: 3, @1, Upper Left (256,0), (100%,100%), 125, Normal
-@>Move Picture: 4, @1, Upper Left (0,191), (100%,100%), 125, Normal
-@>Move Picture: 5, @1, Upper Left (256,191), (100%,100%), 0, Normal
-@>Erase Picture: 2
-@>Erase Picture: 3
-@>Text: \xn[Hikari]Course, there could be more. These are jus' the ones 
- :    : we know 'bout.
+@>Script: pgPokeGacha
 @>
 
 Page #2
 Conditions
 None
 
+Graphic: Object tm_ball
+
 Autonomous Movement
 Type: Fixed
 Speed: 3: Slow
@@ -11396,86 +11332,167 @@ Move Animation
 Trigger: Action Button
 
 List of Event Commands:
-@>Change Screen Color Tone: (-255,-255,-255,0), @8
-@>Wait: 8 frame(s)
-@>Show Picture: 1, 'Omega Preview', Upper Left (0,0), (100%,100%), 0, Normal
-@>Show Picture: 2, 'BGBlack_Small', Upper Left (0,0), (100%,100%), 0, Normal
-@>Show Picture: 3, 'BGBlack_Small', Upper Left (256,0), (100%,100%), 0, Normal
-@>Show Picture: 4, 'BGBlack_Small', Upper Left (0,191), (100%,100%), 0, Normal
-@>Show Picture: 5, 'BGBlack_Small', Upper Left (256,191), (100%,100%), 0, Normal
-@>Wait: 1 frame(s)
-@>Move Picture: 2, @8, Upper Left (0,0), (100%,100%), 255, Normal
-@>Move Picture: 3, @8, Upper Left (256,0), (100%,100%), 255, Normal
-@>Move Picture: 4, @8, Upper Left (0,191), (100%,100%), 255, Normal
-@>Move Picture: 5, @8, Upper Left (256,191), (100%,100%), 255, Normal
-@>Wait: 8 frame(s)
-@>Move Picture: 1, @1, Upper Left (0,0), (100%,100%), 255, Normal
-@>Text: \xn[Hikari]The Avatars of Calamity are a series of ultra destructive
- :    : Puppets tha 'ave the ability to warp the world around 'em.
-@>Text: \xn[Hikari]They've even been observed bein' able to influence other
- :    : Puppets to some extent.
-@>Text: \xn[Hikari]There are only four Avatars that we're 'ware of.
-@>Move Picture: 2, @10, Upper Left (0,0), (100%,100%), 0, Normal
-@>Text: \xn[Hikari]Marisa Omega, the Blazing Apocalypse.
-@>Wait: 10 frame(s)
-@>Move Picture: 3, @10, Upper Left (256,0), (100%,100%), 0, Normal
-@>Text: \xn[Hikari]Yuyuko Omega, the Chilling Reaper.
-@>Wait: 10 frame(s)
-@>Move Picture: 4, @10, Upper Left (0,191), (100%,100%), 0, Normal
-@>Change Text Options: Middle, Show
-@>Text: \xn[Hikari]Kanako Omega, the Regina Procellas.
-@>Wait: 10 frame(s)
-@>Move Picture: 5, @10, Upper Left (256,191), (100%,100%), 0, Normal
-@>Text: \xn[Hikari]An' Suika n' Yuugi Omega, the Reges Terae. Those two
- :    : are of'en jus' called Devas Omega.
-@>Wait: 10 frame(s)
-@>Text: \xn[Hikari]Course, there could be more. These are jus' the ones 
- :    : we know 'bout.
-@>Move Picture: 1, @15, Upper Left (0,0), (100%,100%), 255, Normal
-@>Move Picture: 2, @15, Upper Left (0,0), (100%,100%), 255, Normal
-@>Move Picture: 3, @15, Upper Left (256,0), (100%,100%), 255, Normal
-@>Move Picture: 4, @15, Upper Left (0,191), (100%,100%), 255, Normal
-@>Move Picture: 5, @15, Upper Left (256,191), (100%,100%), 255, Normal
-@>Wait: 15 frame(s)
-@>Erase Picture: 1
-@>Erase Picture: 2
-@>Erase Picture: 3
-@>Erase Picture: 4
-@>Erase Picture: 5
-@>Change Screen Color Tone: (0,0,0,0), @8
-@>Change Text Options: Bottom, Show
+@>Script: $bag.add(:COMETSHARD, 999)
+@>Script: pgPokeGacha
 @>
 
 #------------------------------------------------------------------------------
-Event ID: 022
-Event Name: EV022
-(X,Y): (038,018)
+Event ID: 023
+Event Name: EV023
+(X,Y): (053,041)
 
 Page #1
 Conditions
 None
 
+Graphic: Apricorn_1
+
 Autonomous Movement
 Type: Fixed
 Speed: 3: Slow
 Freq: 3: Low
 Options Enabled
 Move Animation
+Direction Fix
 Trigger: Action Button
 
 List of Event Commands:
-@>Text: Pull the gacha?
-@>Show Choices: Single Pull, Ten Pull, No
-(When Cancel: Choice 3)
-: When [Single Pull]
- @>Script: gacha_single_pull
- @>
-: When [Ten Pull]
- @>Script: gacha_ten_pull
- @>
-: When [No]
- @>
-: Branch End
+@>Script: pbMassFlag(:Pokemon,"Base",
+:       : [:BULBASAUR,:CHARMANDER,:SQUIRTLE,:CATERPIE,:WEEDLE,:PIDGEY,:RATTATA,:SPEAROW,:EKANS,:PIKACHU,:SANDSHREW,
+:       :  :NIDORANF,:NIDORANM,:CLEFAIRY,:VULPIX,:JIGGLYPUFF,:ZUBAT,:ODDISH,:PARAS,:VENONAT,:DIGLET,:MEOWTH,:PSYDUCK,
+:       :  :MANKEY,:GROWLITHE,:POLIWAG,:ABRA,:MACHOP,:BELLSPROUT,:TENTACOOOL,:GEODUDE,:PONYTA,:SLOWPOKE,:MAGNEMITE,
+:       :  :DODUO,:SEEL,:GRIMER,:SHELLDER,:GASTLY,:ONIX,:DROWZEE,:KRABBY,:VOLTORB,:EXEGGCUTE,:CUBONE,:HITMONCHAN,
+:       :  :HITMONLEE,:LICKITUNG,:KOFFING,:RHYHORN,:CHANSEY,:TANGELA,:HORSEA,:GOLDEEN,:STARYU,:MRMIME,:SCYTHER,:JYNX,
+:       :  :ELECTABUZZ,:MAGMAR,:MAGIKARP,:EEVEE,:PORYGON,:OMANYTE,:KABUTO,:SNORLAX,:DRATINI])
+@>Wait: 1 frame(s)
+@>Script: pbMassFlag(:Pokemon,"StageOne",
+:       : [:IVYSAUR,:CHARMELEON,:WARTORTLE,:METAPOD,:KAKUNA,:PIDGEOTTO,:RATICATE,:FEAROW,:ARBOK,:RAICHU,:SANDSLASH,
+:       :  :NIDORINA,:NIDORINO,:CLEFABLE,:NINETALES,:WIGGLYTUFF,:GOLBAT,:GLOOM,:PARASECT,:VENOMOTH,:DUGTRIO,:PERSIAN,
+:       :  :GOLDUCK,:PRIMEAPE,:ARCANINE,:POLIWHIRL,:KADABRA,:MACHOKE,:WEEPINBELL,:TENTACRUEL,:GRAVELER,:RAPIDASH,:SLOWBRO,
+:       :  :MAGNETON,:DODRIO,:DEWGONG,:MUK,:CLOYSTER,:HAUNTER,:HYPNO,:KINGLER,:ELECTRODE,:EXEGGUTOR,:MAROWAK,:WEEZING,
+:       :  :RHYDON,:SEADRA,:SEAKING,:GYARADOS,:VAPOREON,:JOLTEON,:FLAREON,:OMASTAR,:KABUTOPS,:DRAGONAIR])
+@>Wait: 1 frame(s)
+@>Script: pbMassFlag(:Pokemon,"StageTwo",
+:       : [:VENUSAUR,:CHARIZARD,:BLASTOISE,:BUTTERFREE,:BEEDRILL,:NIDOQUEEN,:NIDOKING,:VILEPLUME,:POLIWRATH,:ALAKAZAM,
+:       :  :MACHAMP,:VICTREEBEL,:GOLEM,:GENGAR,:DRAGONITE])
+@>Wait: 1 frame(s)
+@>Script: pbMassFlag(:Pokemon,"NoEvo",
+:       : [:FARFETCHD,:KANGASKHAN,:TAUROS,:LAPRAS,:DITTO,:AERODACTYL])
+@>Wait: 1 frame(s)
+@>Script: pbMassFlag(:Pokemon,"Legendary",
+:       : [:ARTICUNO,:ZAPDOS,:MOLTRES,:MEWTWO])
+@>Wait: 1 frame(s)
+@>Script: pbMassFlag(:Pokemon,"Mythical",
+:       : [:MEW])
+@>Wait: 1 frame(s)
+@>
+
+Page #2
+Conditions
+None
+
+Graphic: Apricorn_1
+
+Autonomous Movement
+Type: Fixed
+Speed: 3: Slow
+Freq: 3: Low
+Options Enabled
+Move Animation
+Direction Fix
+Trigger: Action Button
+
+List of Event Commands:
+@>Script: pbMassFlag(:Pokemon,"Baby",
+:       : [:PICHU,:CLEFFA,:IGGLYBUFF,:TOGEPI,:TYROGUE,:SMOOCHUM,:ELEKID,:MAGBY,:AZURIL,:WYNAUT,:BUDEW,
+:       :  :CHINGLING,:BONSLY,:MIMEJR,:HAPPINY,:MUNCHLAX,:RIOLU,:MANTYKE])
+@>Wait: 1 frame(s)
+@>Script: pbMassFlag(:Pokemon,"Base",
+:       : [:CHIKORITA,:CYNDAQUIL,:TOTODILE,:SENTRET,:HOOTHOOT,:LEDYBA,:SPINARAK,:CHINCHOU,:NATU,:MAREEP,:MARILL,:SUDOWOODO,
+:       :  :HOPPIP,:AIPOM,:SUNKERN,:YANMA,:WOOPER,:MURKROW,:MISDREAVUS,:WOBBUFFET,:PINECO,:GLIGAR,:SNUBBULL,
+:       :  :TEDDIURSA,:SLUGMA,:SWINUB,:REMORAID,:MANTINE,:HOUNDOUR,:PHANPY,:LARVITAR,:TOGETIC,:HITMONTOP,:SNEASEL])
+@>Wait: 1 frame(s)
+@>Script: pbMassFlag(:Pokemon,"StageOne",
+:       : [:BAYLEEF,:QUILAVA,:CROCONAW,:FURRET,:NOCTOWL,:LEDIAN,:ARIADOS,:LANTURN,:FLAAFFY,:AZUMARILL,:SKIPLOOM,:SUNFLORA,
+:       :  :QUAGSIRE,:ESPEON,:UMBREON,:SLOWKING,:FORRETRESS,:STEELIX,:GRANBULL,:SCIZOR,:URSARING,:MAGCARGO,:PILOSWINE,
+:       :  :OCTILLERY,:HOUNDOOM,:DONPHAN,:PORYGON2,:BLISSEY,:PUPITAR,:XATU])
+@>Wait: 1 frame(s)
+@>Script: pbMassFlag(:Pokemon,"StageTwo",
+:       : [:MEGANIUM,:TYPHLOSION,:FERALIGATR,:CROBAT,:AMPHAROS,:BELLOSSOM,:POLITOED,:JUMPLUFF,:TYRANITAR,:KINGDRA])
+@>Wait: 1 frame(s)
+@>Script: pbMassFlag(:Pokemon,"NoEvo",
+:       : [:UNOWN,:GIRAFARIG,:DUNSPARCE,:QWILFISH,:SHUCKLE,:HERACROSS,:CORSOLA,:DELIBIRD,:SMEARGLE,:MILTANK,:SKARMORY,
+:       :  :STANTLER])
+@>Wait: 1 frame(s)
+@>Script: pbMassFlag(:Pokemon,"Legendary",
+:       : [:RAIKOU,:ENTEI,:SUICUNE,:LUGIA,:HOOH])
+@>Wait: 1 frame(s)
+@>Script: pbMassFlag(:Pokemon,"Mythical",
+:       : [:CELEBI])
+@>Wait: 1 frame(s)
+@>
+
+Page #3
+Conditions
+None
+
+Graphic: Apricorn_1
+
+Autonomous Movement
+Type: Fixed
+Speed: 3: Slow
+Freq: 3: Low
+Options Enabled
+Move Animation
+Direction Fix
+Trigger: Action Button
+
+List of Event Commands:
+@>Script: pbMassFlag(:Pokemon,"Baby",
+:       : [:PICHU,:CLEFFA,:IGGLYBUFF,:TOGEPI,:TYROGUE,:SMOOCHUM,:ELEKID,:MAGBY,:AZURIL,:WYNAUT,:BUDEW,
+:       :  :CHINGLING,:BONSLY,:MIMEJR,:HAPPINY,:MUNCHLAX,:RIOLU,:MANTYKE])
+@>Wait: 1 frame(s)
+@>Script: pbMassFlag(:Pokemon,"Base",
+:       : [:CHIKORITA,:CYNDAQUIL,:TOTODILE,:SENTRET,:HOOTHOOT,:LEDYBA,:SPINARAK,:CHINCHOU,:NATU,:MAREEP,:MARIL,:SUDOWOODO,
+:       :  :HOPPIP,:AIPOM,:SUNKERN,:YANMA,:WOOPER,:MURKROW,:MISDREAVUS,:WOBBUFFET,:GIRAFARIG,:PINECO,:GLIGAR,:SNUBBULL,
+:       :  :TEDDIURSA,:SLUGMA,:SWINUB,:REMORAID,:MANTINE,:HOUNDOUR,:PHANPY,:LARVITAR,:TOGETIC,:HITMONTOP,:SNEASEL])
+@>Wait: 1 frame(s)
+@>Script: pbMassFlag(:Pokemon,"StageOne",
+:       : [:BAYLEAF,:QUILAVA,:CROCONAW,:FURRET,:NOCTOWL,:LEDIAN,:ARIADOS,:LANTURN,:FLAFFY,:AZUMARILL,:SKIPLOOM,:SUNFLORA,
+:       :  :QUAGSIRE,:ESPEON,:UMBREON,:SLOWKING,:FORETRESS,:STEELIX,:GRANBULL,:SCIZOR,:URSARING,:MAGCARGO,:PILOSWINE,
+:       :  :OCTILLERY,:HOUNDOOM,:DONPHAN,:PORYGON2,:BLISSEY,:PUPITAR])
+@>Wait: 1 frame(s)
+@>Script: pbMassFlag(:Pokemon,"StageTwo",
+:       : [:MEGANIUM,:TYPHLOSION,:FERALIGATR,:CROBAT,:AMPHAROS,:BELLOSSOM,:POLITOED,:JUMPLUFF,:TYRANITAR,:KINGDRA])
+@>Wait: 1 frame(s)
+@>Script: pbMassFlag(:Pokemon,"NoEvo",
+:       : [:UNOWN,:GIRAFARIG,:DUNSPARCE,:QWILFISH,:SHUCKLE,:HERACROSS,:CORSOLA,:DELIBIRD,:SMEARGLE,:MILTANK])
+@>Wait: 1 frame(s)
+@>Script: pbMassFlag(:Pokemon,"Legendary",
+:       : [:RAIKOU,:ENTEI,:SUICUNE,:LUGIA,:HOOH])
+@>Wait: 1 frame(s)
+@>Script: pbMassFlag(:Pokemon,"Mythical",
+:       : [:CELEBI])
+@>Wait: 1 frame(s)
+@>
+
+Page #4
+Conditions
+None
+
+Graphic: Apricorn_1
+
+Autonomous Movement
+Type: Fixed
+Speed: 3: Slow
+Freq: 3: Low
+Options Enabled
+Move Animation
+Direction Fix
+Trigger: Action Button
+
+List of Event Commands:
+@>Script: Compiler.compile_gacha_flags
 @>
 
 #------------------------------------------------------------------------------
@@ -13190,8 +13207,8 @@ Auto-Change BGM: W-006. Viridian, Pewter, Saffron City
 
 #------------------------------------------------------------------------------
 Event ID: 001
-Event Name: Counter(3)
-(X,Y): (028,024)
+Event Name: size(3,1)
+(X,Y): (025,024)
 
 Page #1
 Conditions
@@ -13205,7 +13222,7 @@ Speed: 3: Slow
 Freq: 3: Low
 Options Enabled
 Move Animation
-Trigger: Event Touch
+Trigger: Player Touch
 
 List of Event Commands:
 @>Script: pbBridgeOn
@@ -13213,8 +13230,8 @@ List of Event Commands:
 
 #------------------------------------------------------------------------------
 Event ID: 002
-Event Name: Counter(3)
-(X,Y): (028,025)
+Event Name: size(3,1)
+(X,Y): (025,025)
 
 Page #1
 Conditions
@@ -13228,7 +13245,7 @@ Speed: 3: Slow
 Freq: 3: Low
 Options Enabled
 Move Animation
-Trigger: Event Touch
+Trigger: Player Touch
 
 List of Event Commands:
 @>Script: pbBridgeOff
@@ -13310,8 +13327,8 @@ List of Event Commands:
 
 #------------------------------------------------------------------------------
 Event ID: 006
-Event Name: Counter(3)
-(X,Y): (056,015)
+Event Name: size(1,3)
+(X,Y): (056,014)
 
 Page #1
 Conditions
@@ -13325,7 +13342,7 @@ Speed: 3: Slow
 Freq: 3: Low
 Options Enabled
 Move Animation
-Trigger: Event Touch
+Trigger: Player Touch
 
 List of Event Commands:
 @>Script: pbBridgeOn
@@ -13333,8 +13350,8 @@ List of Event Commands:
 
 #------------------------------------------------------------------------------
 Event ID: 007
-Event Name: Counter(3)
-(X,Y): (057,015)
+Event Name: size(1,3)
+(X,Y): (057,014)
 
 Page #1
 Conditions
@@ -13348,10 +13365,52 @@ Speed: 3: Slow
 Freq: 3: Low
 Options Enabled
 Move Animation
-Trigger: Event Touch
+Trigger: Player Touch
 
 List of Event Commands:
 @>Script: pbBridgeOff
+@>
+
+#------------------------------------------------------------------------------
+Event ID: 008
+Event Name: size(1,3)
+(X,Y): (055,014)
+
+Page #1
+Conditions
+None
+
+Autonomous Movement
+Type: Fixed
+Speed: 3: Slow
+Freq: 3: Low
+Options Enabled
+Move Animation
+Trigger: Action Button
+
+List of Event Commands:
+@>Text: Hey, you there!
+@>Set Move Route: Player
+ :              : $>Turn Up
+@>Text: Have you checked up the museum? They're holding a 
+ :    : special exhibit there!
+@>Set Move Route: Player
+ :              : $>Move Left
+@>
+
+Page #2
+Conditions
+Variable 0110: Plot Control Variable is 2 or above
+
+Autonomous Movement
+Type: Fixed
+Speed: 3: Slow
+Freq: 3: Low
+Options Enabled
+Move Animation
+Trigger: Action Button
+
+List of Event Commands:
 @>
 
 #------------------------------------------------------------------------------
@@ -13615,7 +13674,7 @@ Move Animation
 Trigger: Action Button
 
 List of Event Commands:
-@>Text: \sign[signskin]\l[2]<ac>Route 49 ahead\n<ac>North: Crystal Village
+@>Text: \sign[signskin]\l[2]<ac>Crystal Village ahead
 @>
 
 #------------------------------------------------------------------------------
@@ -14695,14 +14754,8 @@ Move Animation
 Trigger: Event Touch
 
 List of Event Commands:
-@>Show Animation: This event, [Exclaim bubble]
-@>Text: Hey, you there!
-@>Set Move Route: Player
- :              : $>Turn Up
-@>Text: Have you checked up the museum? They're holding a 
- :    : special exhibit there!
-@>Set Move Route: Player
- :              : $>Move Left
+@>Set Move Route: This event
+ :              : $>Turn Down
 @>
 
 Page #2
@@ -22233,31 +22286,6 @@ Move Animation
 Trigger: Action Button
 
 List of Event Commands:
-@>
-
-#------------------------------------------------------------------------------
-Event ID: 033
-Event Name: EV033
-(X,Y): (058,057)
-
-Page #1
-Conditions
-None
-
-Autonomous Movement
-Type: Fixed
-Speed: 3: Slow
-Freq: 3: Low
-Options Enabled
-Move Animation
-Trigger: Action Button
-
-List of Event Commands:
-@>Play SE: 'Exit Door', 80, 100
-@>Change Screen Color Tone: (-255,-255,-255,0), @6
-@>Wait: 8 frame(s)
-@>Transfer Player:[344: Seafoam Islands], (057,188), No Fade
-@>Change Screen Color Tone: (0,0,0,0), @6
 @>
 
 #------------------------------------------------------------------------------
@@ -31655,282 +31683,6 @@ List of Event Commands:
 @>
 
 #------------------------------------------------------------------------------
-Event ID: 002
-Event Name: Slope
-(X,Y): (020,009)
-
-Page #1
-Conditions
-None
-
-Autonomous Movement
-Type: Fixed
-Speed: 3: Slow
-Freq: 3: Low
-Options Enabled
-Move Animation
-Trigger: Event Touch
-
-List of Event Commands:
-@>Comment: Slope: 2x-1
-@>Comment: Width: 2/3
-@>Comment: Offset: 16px
-@>
-
-#------------------------------------------------------------------------------
-Event ID: 003
-Event Name: Slope
-(X,Y): (020,010)
-
-Page #1
-Conditions
-None
-
-Autonomous Movement
-Type: Fixed
-Speed: 3: Slow
-Freq: 3: Low
-Options Enabled
-Move Animation
-Trigger: Event Touch
-
-List of Event Commands:
-@>Comment: Slope: 2x-1
-@>Comment: Width: 1/3
-@>Comment: Offset: 16px
-@>
-
-#------------------------------------------------------------------------------
-Event ID: 004
-Event Name: Slope
-(X,Y): (020,011)
-
-Page #1
-Conditions
-None
-
-Autonomous Movement
-Type: Fixed
-Speed: 3: Slow
-Freq: 3: Low
-Options Enabled
-Move Animation
-Trigger: Event Touch
-
-List of Event Commands:
-@>Comment: Slope: 2x-1
-@>Comment: Width: 0/3
-@>Comment: Offset: 16px
-@>
-
-#------------------------------------------------------------------------------
-Event ID: 005
-Event Name: Slope
-(X,Y): (022,008)
-
-Page #1
-Conditions
-None
-
-Autonomous Movement
-Type: Fixed
-Speed: 3: Slow
-Freq: 3: Low
-Options Enabled
-Move Animation
-Trigger: Event Touch
-
-List of Event Commands:
-@>Comment: Slope: -2x1
-@>Comment: Width: 2/3
-@>Comment: Offset: 16px
-@>
-
-#------------------------------------------------------------------------------
-Event ID: 006
-Event Name: Slope
-(X,Y): (022,009)
-
-Page #1
-Conditions
-None
-
-Autonomous Movement
-Type: Fixed
-Speed: 3: Slow
-Freq: 3: Low
-Options Enabled
-Move Animation
-Trigger: Event Touch
-
-List of Event Commands:
-@>Comment: Slope: -2x1
-@>Comment: Width: 1/3
-@>Comment: Offset: 16px
-@>
-
-#------------------------------------------------------------------------------
-Event ID: 007
-Event Name: Slope
-(X,Y): (022,010)
-
-Page #1
-Conditions
-None
-
-Autonomous Movement
-Type: Fixed
-Speed: 3: Slow
-Freq: 3: Low
-Options Enabled
-Move Animation
-Trigger: Event Touch
-
-List of Event Commands:
-@>Comment: Slope: -2x1
-@>Comment: Width: 0/3
-@>Comment: Offset: 16px
-@>
-
-#------------------------------------------------------------------------------
-Event ID: 008
-Event Name: Slope
-(X,Y): (027,011)
-
-Page #1
-Conditions
-None
-
-Autonomous Movement
-Type: Fixed
-Speed: 3: Slow
-Freq: 3: Low
-Options Enabled
-Move Animation
-Trigger: Event Touch
-
-List of Event Commands:
-@>Comment: Slope: -2x-1
-@>Comment: Width: 0/3
-@>Comment: Offset: 16px
-@>
-
-#------------------------------------------------------------------------------
-Event ID: 009
-Event Name: Slope
-(X,Y): (027,010)
-
-Page #1
-Conditions
-None
-
-Autonomous Movement
-Type: Fixed
-Speed: 3: Slow
-Freq: 3: Low
-Options Enabled
-Move Animation
-Trigger: Event Touch
-
-List of Event Commands:
-@>Comment: Slope: -2x-1
-@>Comment: Width: 1/3
-@>Comment: Offset: 16px
-@>
-
-#------------------------------------------------------------------------------
-Event ID: 010
-Event Name: Slope
-(X,Y): (027,009)
-
-Page #1
-Conditions
-None
-
-Autonomous Movement
-Type: Fixed
-Speed: 3: Slow
-Freq: 3: Low
-Options Enabled
-Move Animation
-Trigger: Event Touch
-
-List of Event Commands:
-@>Comment: Slope: -2x-1
-@>Comment: Width: 2/3
-@>Comment: Offset: 16px
-@>
-
-#------------------------------------------------------------------------------
-Event ID: 011
-Event Name: Slope
-(X,Y): (025,010)
-
-Page #1
-Conditions
-None
-
-Autonomous Movement
-Type: Fixed
-Speed: 3: Slow
-Freq: 3: Low
-Options Enabled
-Move Animation
-Trigger: Event Touch
-
-List of Event Commands:
-@>Comment: Slope: 2x1
-@>Comment: Width: 0/3
-@>Comment: Offset: 16px
-@>
-
-#------------------------------------------------------------------------------
-Event ID: 012
-Event Name: Slope
-(X,Y): (025,009)
-
-Page #1
-Conditions
-None
-
-Autonomous Movement
-Type: Fixed
-Speed: 3: Slow
-Freq: 3: Low
-Options Enabled
-Move Animation
-Trigger: Event Touch
-
-List of Event Commands:
-@>Comment: Slope: 2x1
-@>Comment: Width: 1/3
-@>Comment: Offset: 16px
-@>
-
-#------------------------------------------------------------------------------
-Event ID: 013
-Event Name: Slope
-(X,Y): (025,008)
-
-Page #1
-Conditions
-None
-
-Autonomous Movement
-Type: Fixed
-Speed: 3: Slow
-Freq: 3: Low
-Options Enabled
-Move Animation
-Trigger: Event Touch
-
-List of Event Commands:
-@>Comment: Slope: 2x1
-@>Comment: Width: 2/3
-@>Comment: Offset: 16px
-@>
-
-#------------------------------------------------------------------------------
 Event ID: 014
 Event Name: Trainer(4)
 (X,Y): (017,019)
@@ -36969,120 +36721,6 @@ List of Event Commands:
 @>
 
 #------------------------------------------------------------------------------
-Event ID: 005
-Event Name: Map Nurse
-(X,Y): (066,005)
-
-Page #1
-Conditions
-None
-
-Graphic: NPC 16
-
-Autonomous Movement
-Type: Fixed
-Speed: 3: Slow
-Freq: 3: Low
-Options Enabled
-Move Animation
-Trigger: Action Button
-
-List of Event Commands:
-@>Script: pbSetPokemonCenter
-@>Text: Oh, hello there! I'm the annex school's nurse. I come 
- :    : along on outdoor trips to ensure that the children 
- :    : don't get too rough with one another.
-@>Text: I can also heal your party if you'd like. Shall I do so?
-@>Show Choices: Yes, No
-(When Cancel: Choice 2)
-: When [Yes]
- @>Text: Alright, we'll have them patched right up!
- @>Set Move Route: This event
-  :              : $>Turn Left
- @>Text: Chansey, please use Softboiled.
- @>Play SE: '113Cry', 80, 100
- @>Wait: 15 frame(s)
- @>Recover All: Entire Party
- @>Change Screen Color Tone: (-255,-255,-255,0), @20
- @>Wait: 20 frame(s)
- @>Play ME: 'Pkmn healing', 100, 100
- @>Wait: 20 frame(s)
- @>Change Screen Color Tone: (0,0,0,0), @20
- @>Wait: 20 frame(s)
- @>Set Move Route: [Map Nurse]
-  :              : $>Turn toward Player
- @>Text: And there, they should be all healed now!
- @>
-: When [No]
- @>
-: Branch End
-@>Text: You be good to your partners now! Take care!
-@>
-
-Page #2
-Conditions
-Switch 0001: Starting over is ON
-
-Graphic: NPC 16
-
-Autonomous Movement
-Type: Fixed
-Speed: 3: Slow
-Freq: 3: Low
-Options Enabled
-Move Animation
-Trigger: Autorun
-
-List of Event Commands:
-@>Set Move Route: [Map Nurse]
- :              : $>Turn toward Player
-@>Text: Oh dear, it looks like you took quite a beating!
-@>Text: Here, let me help make you and your partners feel all better!
-@>Text: Alright, we'll have them patched right up!
-@>Text: Chansey, please use Softboiled.
-@>Set Move Route: [Map Nurse]
- :              : $>Turn Left
-@>Play SE: '113Cry', 80, 100
-@>Wait: 15 frame(s)
-@>Recover All: Entire Party
-@>Change Screen Color Tone: (-255,-255,-255,0), @20
-@>Wait: 20 frame(s)
-@>Play ME: 'Pkmn healing', 100, 100
-@>Wait: 20 frame(s)
-@>Change Screen Color Tone: (0,0,0,0), @20
-@>Wait: 20 frame(s)
-@>Set Move Route: [Map Nurse]
- :              : $>Turn toward Player
-@>Text: And there, they should be all healed now!
-@>Control Switches: [0001: Starting over] = OFF
-@>
-
-#------------------------------------------------------------------------------
-Event ID: 006
-Event Name: Chansey
-(X,Y): (065,005)
-
-Page #1
-Conditions
-None
-
-Graphic: Pokemon 03
-
-Autonomous Movement
-Type: Fixed
-Speed: 3: Slow
-Freq: 3: Low
-Options Enabled
-Move Animation
-Direction Fix
-Trigger: Action Button
-
-List of Event Commands:
-@>Play SE: '113Cry', 80, 100
-@>Wait: 15 frame(s)
-@>
-
-#------------------------------------------------------------------------------
 Event ID: 007
 Event Name: Item
 (X,Y): (040,009)
@@ -37273,7 +36911,7 @@ List of Event Commands:
 #------------------------------------------------------------------------------
 Event ID: 010
 Event Name: Trainer(6)
-(X,Y): (063,008)
+(X,Y): (059,008)
 
 Page #1
 Conditions
@@ -39803,7 +39441,7 @@ List of Event Commands:
 @>Change Screen Color Tone: (-255,-255,-255,0), @6
 @>Wait: 8 frame(s)
 @>Script: pbCaveEntrance
-@>Transfer Player:[083: Seafoam Islands], (014,018), Down, No Fade
+@>Transfer Player:[083: Seafoam Islands], (014,018), Up, No Fade
 @>Script: pbHGSSTransitions("Seafoam Islands")
 @>Change Screen Color Tone: (0,0,0,0), @6
 @>
@@ -39853,7 +39491,7 @@ List of Event Commands:
 @>Change Screen Color Tone: (-255,-255,-255,0), @6
 @>Wait: 8 frame(s)
 @>Script: pbCaveEntrance
-@>Transfer Player:[083: Seafoam Islands], (036,033), Down, No Fade
+@>Transfer Player:[083: Seafoam Islands], (036,033), Up, No Fade
 @>Script: pbHGSSTransitions("Seafoam Islands")
 @>Change Screen Color Tone: (0,0,0,0), @6
 @>
@@ -42871,9 +42509,6 @@ Trigger: Action Button
 List of Event Commands:
 @>Text: \sign[signskin]\l[3]<ac>Crystal Mountain\n<ac>Home of the Kanto
  :    : Pokémon World Tournament
-@>Wait: 5 frame(s)
-@>Text: ...There's a note attached to the bottom.
-@>Text: \sign[signskin]Future site of the Kanto Battle Frontier!
 @>
 
 #------------------------------------------------------------------------------
@@ -47529,10 +47164,10 @@ Move Animation
 Trigger: Player Touch
 
 List of Event Commands:
-@>Play SE: 'Exit Door', 80, 100
+@>Play SE: 'Door exit', 80, 100
 @>Change Screen Color Tone: (-255,-255,-255,0), @6
 @>Wait: 8 frame(s)
-@>Transfer Player:[344: Seafoam Islands], (018,008), No Fade
+@>Transfer Player:[368: Seafoam Islands], (018,012), No Fade
 @>Change Screen Color Tone: (0,0,0,0), @6
 @>
 
@@ -47554,35 +47189,11 @@ Move Animation
 Trigger: Player Touch
 
 List of Event Commands:
-@>Play SE: 'Exit Door', 80, 100
+@>Play SE: 'Door exit', 80, 100
 @>Change Screen Color Tone: (-255,-255,-255,0), @6
 @>Wait: 8 frame(s)
-@>Transfer Player:[344: Seafoam Islands], (059,022), No Fade
+@>Transfer Player:[368: Seafoam Islands], (059,026), No Fade
 @>Change Screen Color Tone: (0,0,0,0), @6
-@>
-
-#------------------------------------------------------------------------------
-Event ID: 003
-Event Name: EV003
-(X,Y): (036,030)
-
-Page #1
-Conditions
-None
-
-Autonomous Movement
-Type: Fixed
-Speed: 3: Slow
-Freq: 3: Low
-Options Enabled
-Move Animation
-Trigger: Player Touch
-
-List of Event Commands:
-@>Text: The door hatch above you is locked and requires a key.
-@>Set Move Route: Player
- :              : $>Move Down
-@>Wait for Move's Completion
 @>
 
 #------------------------------------------------------------------------------
@@ -47649,6 +47260,34 @@ List of Event Commands:
  @>Change Screen Color Tone: (0,0,0,0), @6
  @>
 : Branch End
+@>
+
+#------------------------------------------------------------------------------
+Event ID: 006
+Event Name: EV006
+(X,Y): (037,033)
+
+Page #1
+Conditions
+None
+
+Graphic: Object ball
+
+Autonomous Movement
+Type: Fixed
+Speed: 3: Slow
+Freq: 3: Low
+Options Enabled
+Move Animation
+Trigger: Action Button
+
+List of Event Commands:
+@>Script: WildBattle.dx_start([:AYAKASHI, 35], { 
+:       :   #:backdrop => ["Volcano", "Volcano"],
+:       :   :outcome => 2,
+:       :   :noflee => true,
+:       :   :introtext => "Ayakashi appeared"
+:       : }, {}, :VS_AYAKASHI)
 @>
 
 #------------------------------------------------------------------------------
@@ -55703,7 +55342,7 @@ Auto-Change BGM: U-003. A Dream that is more Scarlet than Red
 #------------------------------------------------------------------------------
 Event ID: 001
 Event Name: CKazami
-(X,Y): (014,017)
+(X,Y): (014,000)
 
 Page #1
 Conditions
@@ -56284,6 +55923,333 @@ List of Event Commands:
 Page #2
 Conditions
 Variable 0139: Kazami SQ is 2 or above
+
+Autonomous Movement
+Type: Fixed
+Speed: 3: Slow
+Freq: 3: Low
+Options Enabled
+Move Animation
+Trigger: Action Button
+
+List of Event Commands:
+@>
+
+#------------------------------------------------------------------------------
+Event ID: 009
+Event Name: CKazami
+(X,Y): (014,017)
+
+Page #1
+Conditions
+None
+
+Graphic: OW - Puppet_Kazami
+
+Autonomous Movement
+Type: Fixed
+Speed: 3: Slow
+Freq: 3: Low
+Options Enabled
+Move Animation
+Trigger: Action Button
+
+List of Event Commands:
+@>Script: Pokemon.play_cry(:CKAZAMI)
+@>Wait: 20 frame(s)
+@>Script: WildBattle.dx_start([:CKAZAMI, 35], { 
+:       :   :nocapture => true, 
+:       :   :backdrop => ["Forest_Alt", "Forest_Alt"],
+:       :   :outcome => 1,
+:       :   :noflee => true
+:       : }, 
+@>Script: {
+:       :   :gender  => 1,
+:       :   :ability => :OVERGROW,
+:       :   :nature  => :QUIET,
+:       :   :shiny   => false,
+:       :   :moves   => [:VINEWHIP18, :REST18, :SCARYFACE18, :YAWN18]
+:       : }, :VS_CKAZAMI)
+@>Conditional Branch: Variable [0001: Temp Pokemon Choice] == 1
+ @>Conditional Branch: Player is facing Up
+  @>Comment: Nothing, because this is where I want them to face
+  @>
+ : Else
+  @>Change Screen Color Tone: (-255,-255,-255,0), @6
+  @>Wait: 8 frame(s)
+  @>Set Event Location: [CKazami],(014,017), Down
+  @>Transfer Player:[186: Hidden Grove], (014,018), Up, No Fade
+  @>Change Screen Color Tone: (0,0,0,0), @6
+  @>
+ : Branch End
+ @>Wait: 8 frame(s)
+ @>Text: \xn[Kazami]\se[Cries\KAZAMI_Alt]!!!
+ @>Text: \xn[\pn]\b(Now what's it gonna do!?)
+ @>Wait: 20 frame(s)
+ @>Play SE: 'Battle catch click', 80, 100
+ @>Control Self Switch: A =ON
+ @>Script: p = Pokemon.new(:KAZAMI,35,$player)
+ :       : p.ability = :OVERGROW
+ :       : p.learn_move(:HYPERBEAM18)
+ :       : p.learn_move(:LEAFBLADE18)
+ :       : p.learn_move(:INGRAIN18)
+ :       : p.learn_move(:TAUNT18)
+ :       : p.record_first_moves
+ :       : p.nature = :QUIET
+ :       : p.calc_stats
+ :       : p.shiny = false
+ :       : p.gender = 1
+ :       : pbAddPokemonSilent(p)
+ @>Text: \me[Battle capture success]The Kazami decided to join you on your adventures!\wtnp[60]
+ @>Text: \xn[\pn]Wait, did it just put itself into one of my Pokéballs?
+ @>Text: \xn[\pn]But... why?
+ @>Change Text Options: Middle, Hide
+ @>Text: <i>Because, it saw your strength and decided you would be a worthy 
+  :    : companion.</i>
+ @>Text: <i>Strength speaks volumes, afterall!</i>
+ @>Change Text Options: Bottom, Show
+ @>Show Animation: Player, [Exclaim bubble]
+ @>Set Move Route: Player
+  :              : $>Turn Left
+  :              : $>Wait: 15 frame(s)
+  :              : $>Turn Right
+  :              : $>Wait: 15 frame(s)
+  :              : $>Turn Down
+  :              : $>Wait: 15 frame(s)
+  :              : $>Turn Up
+  :              : $>Wait: 15 frame(s)
+ @>Text: \xn[\pn]Who said that? Show yourself!
+ @>Wait for Move's Completion
+ @>Change Text Options: Middle, Hide
+ @>Text: <i>Well, if you insist!</i>
+ @>Change Text Options: Bottom, Show
+ @>Set Event Location: [Yuuka],(014,027)
+ @>Scroll Map: Down, 4, 3
+ @>Set Move Route: [Yuuka]
+  :              : $>Move Up
+  :              : $>Move Up
+  :              : $>Move Up
+  :              : $>Move Up
+ @>Wait for Move's Completion
+ @>Set Move Route: Player
+  :              : $>Turn Down
+ @>Text: \xn[\pn]\b(She looks exactly like the Kazami puppet I just fought!
+  :    : Is she a Puppet that gained the ability to speak?)
+ @>Text: \xn[\pn]Who are you?
+ @>Text: \xn[???]I am merely a traveler in this world, nobody you need
+  :    : to be concerned about!
+ @>Text: \xn[\pn]\b(Then why do you give off such a terrifying aura...?)
+ @>Text: \xn[???]As I was saying, that Puppet witnessed your strength
+  :    : first hand, and decided that joining with you would be a better
+  :    : use of its time than sitting here and terrorizing those humans.
+ @>Text: \xn[???]You should feel honored that your strength was 
+  :    : recognized. Do you not?
+ @>Text: \xn[\pn]I guess I do... I wonder why it was terrorizing those
+  :    : workers to begin with, then.
+ @>Text: \xn[???]For any number of reasons, surely- perhaps they were
+  :    : encroaching on its territory. Or, perhaps it was bored.
+ @>Text: \xn[???]You, however, are far more interesting.
+ @>Text: \xn[\pn]M-Me? Why's that?
+ @>Text: \xn[???]Like I mentioned, you have commendable strength. But,
+  :    : more than that...
+ @>Set Move Route: [Yuuka]
+  :              : $>Move Up
+  :              : $>Move Up
+ @>Wait for Move's Completion
+ @>Wait: 10 frame(s)
+ @>Conditional Branch: Variable [0107: Chosen Protag] == 0
+  @>Text: \xn[???]Hmm, yes... You give off a very similar aura to someone 
+   :    : I know... Curious indeed!
+  @>
+ : Else
+  @>Text: \xn[???]It's remarkable how similar you two look... Are you perhaps
+   :    : another shikigami of hers, or something... else?
+  @>
+ : Branch End
+ @>Text: \xn[\pn]I- I'm sorry? Who are you talking about?
+ @>Text: \xn[???]Oh, pay it no mind! Just musing to myself.
+ @>Text: \xn[???]But if my hunches are correct, I'm sure I'll see you again.
+ @>Set Move Route: [Yuuka]
+  :              : $>Move Down
+  :              : $>Move Down
+  :              : $>Move Down
+  :              : $>Move Down
+  :              : $>Move Down
+  :              : $>Move Down
+  :              : $>Move Down
+  :              : $>Move Down
+ @>Text: \xn[???]Perhaps when I do, you'll be strong enough to sate my
+  :    : interests~
+ @>Text: \xn[\pn]O... Okay?
+ @>Wait for Move's Completion
+ @>Wait: 15 frame(s)
+ @>Scroll Map: Up, 4, 3
+ @>Text: \xn[\pn]That was... kinda worrisome.
+ @>Text: \xn[\pn]I should just go back to the foreman and inform him that
+  :    : there shouldn't be anymore disturbances. Yeah...
+ @>Script: advanceQuestToStage(:Quest111, 2)
+ @>Control Variables: [0139: Kazami SQ] = 2
+ @>
+: Branch End
+@>
+
+Page #2
+Conditions
+Switch 0107: Kazami Event Switch is ON
+
+Graphic: OW - Puppet_Yuuka
+
+Autonomous Movement
+Type: Fixed
+Speed: 3: Slow
+Freq: 3: Low
+Options Enabled
+Move Animation
+Trigger: Action Button
+
+List of Event Commands:
+@>Script: Pokemon.play_cry(:KAZAMI)
+@>Wait: 20 frame(s)
+@>Script: WildBattle.dx_start([:KAZAMI, 35], { 
+:       :   :nocapture => true, 
+:       :   :backdrop => ["Forest_Alt1", "Forest_Alt1"],
+:       :   :bgm => "B-009. Faint Dream ~ Inanimate Dream",
+:       :   :outcome => 1,
+:       :   :noflee => true
+:       : },
+@>Script: {
+:       :   :gender  => 1,
+:       :   :ability => :OVERGROW,
+:       :   :nature  => :QUIET,
+:       :   :shiny   => false,
+:       :   :moves   => [:HYPERBEAM18, :LEAFBLADE18, :INGRAIN18, :TAUNT18]
+:       : }, :VS_KAZAMI)
+@>Conditional Branch: Variable [0001: Temp Pokemon Choice] == 1
+ @>Conditional Branch: Player is facing Up
+  @>Comment: Nothing, because this is where I want them to face
+  @>
+ : Else
+  @>Change Screen Color Tone: (-255,-255,-255,0), @6
+  @>Wait: 8 frame(s)
+  @>Set Event Location: [CKazami],(014,017), Down
+  @>Transfer Player:[186: Hidden Grove], (014,018), Up, No Fade
+  @>Change Screen Color Tone: (0,0,0,0), @6
+  @>
+ : Branch End
+ @>Wait: 8 frame(s)
+ @>Text: \xn[Kazami]\se[Cries\KAZAMI_Alt]!!!
+ @>Text: \xn[\pn]\b(Now what's it gonna do!?)
+ @>Wait: 20 frame(s)
+ @>Play SE: 'Battle catch click', 80, 100
+ @>Control Self Switch: A =ON
+ @>Script: p = Pokemon.new(:KAZAMI,35,$player)
+ :       : p.ability = :OVERGROW
+ :       : p.learn_move(:HYPERBEAM18)
+ :       : p.learn_move(:LEAFBLADE18)
+ :       : p.learn_move(:INGRAIN18)
+ :       : p.learn_move(:TAUNT18)
+ :       : p.record_first_moves
+ :       : p.nature = :QUIET
+ :       : p.calc_stats
+ :       : p.shiny = false
+ :       : p.gender = 1
+ :       : pbAddPokemonSilent(p)
+ @>Text: \me[Battle capture success]The Kazami decided to join you on your adventures!\wtnp[60]
+ @>Text: \xn[\pn]Wait, did it just put itself into one of my Pokéballs?
+ @>Text: \xn[\pn]But... why?
+ @>Change Text Options: Middle, Hide
+ @>Text: <i>Because, it saw your strength and decided you would be a worthy 
+  :    : companion.</i>
+ @>Text: <i>Strength speaks volumes, afterall!</i>
+ @>Change Text Options: Bottom, Show
+ @>Show Animation: Player, [Exclaim bubble]
+ @>Set Move Route: Player
+  :              : $>Turn Left
+  :              : $>Wait: 15 frame(s)
+  :              : $>Turn Right
+  :              : $>Wait: 15 frame(s)
+  :              : $>Turn Down
+  :              : $>Wait: 15 frame(s)
+  :              : $>Turn Up
+  :              : $>Wait: 15 frame(s)
+ @>Text: \xn[\pn]Who said that? Show yourself!
+ @>Wait for Move's Completion
+ @>Change Text Options: Middle, Hide
+ @>Text: <i>Well, if you insist!</i>
+ @>Change Text Options: Bottom, Show
+ @>Set Event Location: [Yuuka],(014,027)
+ @>Scroll Map: Down, 4, 3
+ @>Set Move Route: [Yuuka]
+  :              : $>Move Up
+  :              : $>Move Up
+  :              : $>Move Up
+  :              : $>Move Up
+ @>Wait for Move's Completion
+ @>Set Move Route: Player
+  :              : $>Turn Down
+ @>Text: \xn[\pn]\b(She looks exactly like the Kazami puppet I just fought!
+  :    : Is she a Puppet that gained the ability to speak?)
+ @>Text: \xn[\pn]Who are you?
+ @>Text: \xn[???]I am merely a traveler in this world, nobody you need
+  :    : to be concerned about!
+ @>Text: \xn[\pn]\b(Then why do you give off such a terrifying aura...?)
+ @>Text: \xn[???]As I was saying, that Puppet witnessed your strength
+  :    : first hand, and decided that joining with you would be a better
+  :    : use of its time than sitting here and terrorizing those humans.
+ @>Text: \xn[???]You should feel honored that your strength was 
+  :    : recognized. Do you not?
+ @>Text: \xn[\pn]I guess I do... I wonder why it was terrorizing those
+  :    : workers to begin with, then.
+ @>Text: \xn[???]For any number of reasons, surely- perhaps they were
+  :    : encroaching on its territory. Or, perhaps it was bored.
+ @>Text: \xn[???]You, however, are far more interesting.
+ @>Text: \xn[\pn]M-Me? Why's that?
+ @>Text: \xn[???]Like I mentioned, you have commendable strength. But,
+  :    : more than that...
+ @>Set Move Route: [Yuuka]
+  :              : $>Move Up
+  :              : $>Move Up
+ @>Wait for Move's Completion
+ @>Wait: 10 frame(s)
+ @>Conditional Branch: Variable [0107: Chosen Protag] == 0
+  @>Text: \xn[???]Hmm, yes... You give off a very similar aura to someone 
+   :    : I know... Curious indeed!
+  @>
+ : Else
+  @>Text: \xn[???]It's remarkable how similar you two look... Are you perhaps
+   :    : another shikigami of hers, or something... else?
+  @>
+ : Branch End
+ @>Text: \xn[\pn]I- I'm sorry? Who are you talking about?
+ @>Text: \xn[???]Oh, pay it no mind! Just musing to myself.
+ @>Text: \xn[???]But if my hunches are correct, I'm sure I'll see you again.
+ @>Set Move Route: [Yuuka]
+  :              : $>Move Down
+  :              : $>Move Down
+  :              : $>Move Down
+  :              : $>Move Down
+  :              : $>Move Down
+  :              : $>Move Down
+  :              : $>Move Down
+  :              : $>Move Down
+ @>Text: \xn[???]Perhaps when I do, you'll be strong enough to sate my
+  :    : interests~
+ @>Text: \xn[\pn]O... Okay?
+ @>Wait for Move's Completion
+ @>Wait: 15 frame(s)
+ @>Scroll Map: Up, 4, 3
+ @>Text: \xn[\pn]That was... kinda worrisome.
+ @>Text: \xn[\pn]I should just go back to the foreman and inform him that
+  :    : there shouldn't be anymore disturbances. Yeah...
+ @>Script: advanceQuestToStage(:Quest111, 2)
+ @>Control Variables: [0139: Kazami SQ] = 2
+ @>
+: Branch End
+@>
+
+Page #3
+Conditions
+Self Switch A is ON
 
 Autonomous Movement
 Type: Fixed
@@ -89399,24 +89365,25 @@ List of Event Commands:
 @>Wait for Move's Completion
 @>Script: Pokemon.play_cry(:AYAKASHI)
 @>Wait: 30 frame(s)
-@>Script: setBattleRule("cannotRun")
-:       : setBattleRule("outcome", 2)
 @>Control Switches: [0104: Transition Handler] = ON
 @>Control Variables: [0103: Vs. Transition ID] = 11
 @>Change Battle BGM: 'U-008. Sakura, Sakura ~ Japanize Dream', 100, 100
-@>Conditional Branch: Script: WildBattle.start(:AYAKASHI, 35)
- @>Conditional Branch: Variable [0002: Temp Move Choice] == 4
-  @>Set Move Route: [Ghost]
-   :              : $>Change Opacity: 0
-  @>Script: pbSetSelfSwitch(18,"B",true)
-  @>Control Self Switch: B =ON
-  @>
- : Else
-  @>Set Move Route: [Ghost]
-   :              : $>Change Opacity: 0
-  @>Control Self Switch: A =ON
-  @>
- : Branch End
+@>Script: WildBattle.dx_start([:AYAKASHI, 35], { 
+:       :   #:backdrop => ["Volcano", "Volcano"],
+:       :   :outcome => 2,
+:       :   :noflee => true,
+:       :   :introtext => "Ayakashi appeared"
+:       : }, {}, :VS_AYAKASHI)
+@>Conditional Branch: Variable [0002: Temp Move Choice] == 4
+ @>Set Move Route: [Ghost]
+  :              : $>Change Opacity: 0
+ @>Script: pbSetSelfSwitch(18,"B",true)
+ @>Control Self Switch: B =ON
+ @>
+: Else
+ @>Set Move Route: [Ghost]
+  :              : $>Change Opacity: 0
+ @>Control Self Switch: A =ON
  @>
 : Branch End
 @>
@@ -89450,24 +89417,25 @@ List of Event Commands:
 @>Wait for Move's Completion
 @>Script: Pokemon.play_cry(:AYAKASHI)
 @>Wait: 30 frame(s)
-@>Script: setBattleRule("cannotRun")
-:       : setBattleRule("outcome", 2)
 @>Control Switches: [0104: Transition Handler] = ON
 @>Control Variables: [0103: Vs. Transition ID] = 11
 @>Change Battle BGM: 'U-008. Sakura, Sakura ~ Japanize Dream', 100, 100
-@>Conditional Branch: Script: WildBattle.start(:AYAKASHI, 35)
- @>Conditional Branch: Variable [0002: Temp Move Choice] == 4
-  @>Set Move Route: [Ghost]
-   :              : $>Change Opacity: 0
-  @>Script: pbSetSelfSwitch(18,"B",true)
-  @>Control Self Switch: B =ON
-  @>
- : Else
-  @>Set Move Route: [Ghost]
-   :              : $>Change Opacity: 0
-  @>Control Self Switch: A =ON
-  @>
- : Branch End
+@>Script: WildBattle.dx_start([:AYAKASHI, 35] { 
+:       :   #:backdrop => ["Volcano", "Volcano"],
+:       :   :outcome => 2,
+:       :   :noflee => true,
+:       :   :introtext => "Ayakashi appeared"
+:       : }, {}, :VS_AYAKASHI)
+@>Conditional Branch: Variable [0002: Temp Move Choice] == 4
+ @>Set Move Route: [Ghost]
+  :              : $>Change Opacity: 0
+ @>Script: pbSetSelfSwitch(18,"B",true)
+ @>Control Self Switch: B =ON
+ @>
+: Else
+ @>Set Move Route: [Ghost]
+  :              : $>Change Opacity: 0
+ @>Control Self Switch: A =ON
  @>
 : Branch End
 @>
@@ -89485,10 +89453,9 @@ Move Animation
 Trigger: Action Button
 
 List of Event Commands:
-@>Text: Erected in memorium of a friend. May her
+@>Text: Erected in memorium of the person closest to me. May her
  :    : soul rest in peace, never to be distrurbed.
-@>Text: Here, beneath the sakura tree we loved
- :    : with all our heart.
+@>Text: Here, beneath the sakura tree we loved with all our heart.
 @>
 
 #------------------------------------------------------------------------------
@@ -104881,6 +104848,120 @@ List of Event Commands:
 @>
 
 #------------------------------------------------------------------------------
+Event ID: 005
+Event Name: Map Nurse
+(X,Y): (024,003)
+
+Page #1
+Conditions
+None
+
+Graphic: NPC 16
+
+Autonomous Movement
+Type: Fixed
+Speed: 3: Slow
+Freq: 3: Low
+Options Enabled
+Move Animation
+Trigger: Action Button
+
+List of Event Commands:
+@>Script: pbSetPokemonCenter
+@>Text: Oh, hello there! I'm the annex school's nurse. I come 
+ :    : along on outdoor trips to ensure that the children 
+ :    : don't get too rough with one another.
+@>Text: I can also heal your party if you'd like. Shall I do so?
+@>Show Choices: Yes, No
+(When Cancel: Choice 2)
+: When [Yes]
+ @>Text: Alright, we'll have them patched right up!
+ @>Set Move Route: This event
+  :              : $>Turn Left
+ @>Text: Chansey, please use Softboiled.
+ @>Play SE: '113Cry', 80, 100
+ @>Wait: 15 frame(s)
+ @>Recover All: Entire Party
+ @>Change Screen Color Tone: (-255,-255,-255,0), @20
+ @>Wait: 20 frame(s)
+ @>Play ME: 'Pkmn healing', 100, 100
+ @>Wait: 20 frame(s)
+ @>Change Screen Color Tone: (0,0,0,0), @20
+ @>Wait: 20 frame(s)
+ @>Set Move Route: [Map Nurse]
+  :              : $>Turn toward Player
+ @>Text: And there, they should be all healed now!
+ @>
+: When [No]
+ @>
+: Branch End
+@>Text: You be good to your partners now! Take care!
+@>
+
+Page #2
+Conditions
+Switch 0001: Starting over is ON
+
+Graphic: NPC 16
+
+Autonomous Movement
+Type: Fixed
+Speed: 3: Slow
+Freq: 3: Low
+Options Enabled
+Move Animation
+Trigger: Autorun
+
+List of Event Commands:
+@>Set Move Route: [Map Nurse]
+ :              : $>Turn toward Player
+@>Text: Oh dear, it looks like you took quite a beating!
+@>Text: Here, let me help make you and your partners feel all better!
+@>Text: Alright, we'll have them patched right up!
+@>Text: Chansey, please use Softboiled.
+@>Set Move Route: [Map Nurse]
+ :              : $>Turn Left
+@>Play SE: '113Cry', 80, 100
+@>Wait: 15 frame(s)
+@>Recover All: Entire Party
+@>Change Screen Color Tone: (-255,-255,-255,0), @20
+@>Wait: 20 frame(s)
+@>Play ME: 'Pkmn healing', 100, 100
+@>Wait: 20 frame(s)
+@>Change Screen Color Tone: (0,0,0,0), @20
+@>Wait: 20 frame(s)
+@>Set Move Route: [Map Nurse]
+ :              : $>Turn toward Player
+@>Text: And there, they should be all healed now!
+@>Control Switches: [0001: Starting over] = OFF
+@>
+
+#------------------------------------------------------------------------------
+Event ID: 006
+Event Name: Chansey
+(X,Y): (023,003)
+
+Page #1
+Conditions
+None
+
+Graphic: Pokemon 03
+
+Autonomous Movement
+Type: Fixed
+Speed: 3: Slow
+Freq: 3: Low
+Options Enabled
+Move Animation
+Direction Fix
+Trigger: Action Button
+
+List of Event Commands:
+@>Play SE: '113Cry', 80, 100
+@>Wait: 15 frame(s)
+@>
+
+#------------------------------------------------------------------------------
 
 #==============================================================================
 Map ID: 273
@@ -110855,8 +110936,8 @@ List of Event Commands:
 @>Text: \xn[Hikari]Well I'll be a Primeape's uncle, you sure dealt with
  :    : 'er expertly!
 @>Set Move Route: [Hikari (Alt)]
- :              : $>Move Left
- :              : $>Move Left
+ :              : $>Move Right
+ :              : $>Move Right
  :              : $>Move Up
  :              : $>Move Up
 @>Wait for Move's Completion
@@ -150927,4249 +151008,6 @@ List of Event Commands:
 #------------------------------------------------------------------------------
 
 #==============================================================================
-Map ID: 344
-Map Name: Seafoam Islands
-Tileset: 006: Caves
-Width: 80, Height: 200
-Auto-Change BGM: W-027. Ice Path
-
-#------------------------------------------------------------------------------
-Event ID: 001
-Event Name: Articuno
-(X,Y): (057,165)
-
-Page #1
-Conditions
-None
-
-Graphic: OW - 144
-
-Autonomous Movement
-Type: Fixed
-Speed: 3: Slow
-Freq: 3: Low
-Options Enabled
-Stop Animation
-Direction Fix
-Trigger: Action Button
-
-List of Event Commands:
-@>Change Battle BGM: 'B-024. Battle! Vs. Legendary Pokemon', 100, 100
-@>Control Switches: [0104: Transition Handler] = ON
-@>Control Variables: [0103: Vs. Transition ID] = 17
-@>Control Switches: [0102: Special Battle Switch] = ON
-@>Control Variables: [0102: Special Battle Variable] = 1
-@>Script: Pokemon.play_cry(:ARTICUNO)
-@>Wait: 20 frame(s)
-@>Comment: --------------------
-@>Script: setBattleRule("disablePokeBalls")
-:       : setBattleRule("cannotRun")
-:       : setBattleRule("base", "ice")
-@>Conditional Branch: Script: WildBattle.start(:ARTICUNO, 65)
- @>Control Switches: [0102: Special Battle Switch] = OFF
- @>Wait: 20 frame(s)
- @>Script: Pokemon.play_cry(:ARTICUNO)
- @>Wait: 10 frame(s)
- @>Change Screen Color Tone: (-255,-255,-255,0), @6
- @>Play SE: 'Battle flee', 100, 100
- @>Wait: 10 frame(s)
- @>Control Self Switch: A =ON
- @>Wait: 15 frame(s)
- @>Change Screen Color Tone: (0,0,0,0), @6
- @>Wait: 10 frame(s)
- @>Text: The Articuno flew off to an unknown location!
- @>Wait: 25 frame(s)
- @>Script: Pokemon.play_cry(:MAGAN)
- @>Wait: 15 frame(s)
- @>Change Screen Color Tone: (-255,-255,-255,0), @6
- @>Wait: 20 frame(s)
- @>Transfer Player:[344: Seafoam Islands], (057,170), Up, No Fade
- @>Control Variables: [0134: Articuno/Magan] = 2
- @>Change Screen Color Tone: (0,0,0,0), @6
- @>
-: Branch End
-@>Comment: --------------------
-@>
-
-Page #2
-Conditions
-Variable 0134: Articuno/Magan is 1 or above
-
-Autonomous Movement
-Type: Fixed
-Speed: 3: Slow
-Freq: 3: Low
-Options Enabled
-Move Animation
-Trigger: Action Button
-
-List of Event Commands:
-@>
-
-Page #3
-Conditions
-Self Switch A is ON
-
-Autonomous Movement
-Type: Fixed
-Speed: 3: Slow
-Freq: 3: Low
-Options Enabled
-Move Animation
-Trigger: Action Button
-
-List of Event Commands:
-@>
-
-#------------------------------------------------------------------------------
-Event ID: 002
-Event Name: EV002
-(X,Y): (059,022)
-
-Page #1
-Conditions
-None
-
-Autonomous Movement
-Type: Fixed
-Speed: 3: Slow
-Freq: 3: Low
-Options Enabled
-Move Animation
-Trigger: Player Touch
-
-List of Event Commands:
-@>Play SE: 'Exit Door', 80, 100
-@>Change Screen Color Tone: (-255,-255,-255,0), @6
-@>Wait: 8 frame(s)
-@>Transfer Player:[083: Seafoam Islands], (031,028), No Fade
-@>Change Screen Color Tone: (0,0,0,0), @6
-@>
-
-#------------------------------------------------------------------------------
-Event ID: 003
-Event Name: EV003
-(X,Y): (018,008)
-
-Page #1
-Conditions
-None
-
-Autonomous Movement
-Type: Fixed
-Speed: 3: Slow
-Freq: 3: Low
-Options Enabled
-Move Animation
-Trigger: Player Touch
-
-List of Event Commands:
-@>Play SE: 'Exit Door', 80, 100
-@>Change Screen Color Tone: (-255,-255,-255,0), @6
-@>Wait: 8 frame(s)
-@>Transfer Player:[083: Seafoam Islands], (018,013), No Fade
-@>Change Screen Color Tone: (0,0,0,0), @6
-@>
-
-#------------------------------------------------------------------------------
-Event ID: 004
-Event Name: EV004
-(X,Y): (022,021)
-
-Page #1
-Conditions
-None
-
-Autonomous Movement
-Type: Fixed
-Speed: 3: Slow
-Freq: 3: Low
-Options Enabled
-Move Animation
-Trigger: Player Touch
-
-List of Event Commands:
-@>Play SE: 'Exit Door', 80, 100
-@>Change Screen Color Tone: (-255,-255,-255,0), @6
-@>Wait: 8 frame(s)
-@>Transfer Player:[344: Seafoam Islands], (022,058), No Fade
-@>Change Screen Color Tone: (0,0,0,0), @6
-@>
-
-#------------------------------------------------------------------------------
-Event ID: 005
-Event Name: EV005
-(X,Y): (028,019)
-
-Page #1
-Conditions
-None
-
-Autonomous Movement
-Type: Fixed
-Speed: 3: Slow
-Freq: 3: Low
-Options Enabled
-Move Animation
-Trigger: Player Touch
-
-List of Event Commands:
-@>Play SE: 'Exit Door', 80, 100
-@>Change Screen Color Tone: (-255,-255,-255,0), @6
-@>Wait: 8 frame(s)
-@>Transfer Player:[344: Seafoam Islands], (028,057), No Fade
-@>Change Screen Color Tone: (0,0,0,0), @6
-@>
-
-#------------------------------------------------------------------------------
-Event ID: 006
-Event Name: EV006
-(X,Y): (047,023)
-
-Page #1
-Conditions
-None
-
-Autonomous Movement
-Type: Fixed
-Speed: 3: Slow
-Freq: 3: Low
-Options Enabled
-Move Animation
-Trigger: Player Touch
-
-List of Event Commands:
-@>Play SE: 'Exit Door', 80, 100
-@>Change Screen Color Tone: (-255,-255,-255,0), @6
-@>Wait: 8 frame(s)
-@>Transfer Player:[344: Seafoam Islands], (022,058), No Fade
-@>Change Screen Color Tone: (0,0,0,0), @6
-@>
-
-#------------------------------------------------------------------------------
-Event ID: 007
-Event Name: EV007
-(X,Y): (032,009)
-
-Page #1
-Conditions
-None
-
-Autonomous Movement
-Type: Fixed
-Speed: 3: Slow
-Freq: 3: Low
-Options Enabled
-Move Animation
-Trigger: Player Touch
-
-List of Event Commands:
-@>Play SE: 'Exit Door', 80, 100
-@>Change Screen Color Tone: (-255,-255,-255,0), @6
-@>Wait: 8 frame(s)
-@>Transfer Player:[344: Seafoam Islands], (031,048), No Fade
-@>Change Screen Color Tone: (0,0,0,0), @6
-@>
-
-#------------------------------------------------------------------------------
-Event ID: 008
-Event Name: EV008
-(X,Y): (022,058)
-
-Page #1
-Conditions
-None
-
-Autonomous Movement
-Type: Fixed
-Speed: 3: Slow
-Freq: 3: Low
-Options Enabled
-Move Animation
-Trigger: Player Touch
-
-List of Event Commands:
-@>Play SE: 'Exit Door', 80, 100
-@>Change Screen Color Tone: (-255,-255,-255,0), @6
-@>Wait: 8 frame(s)
-@>Transfer Player:[344: Seafoam Islands], (022,021), No Fade
-@>Change Screen Color Tone: (0,0,0,0), @6
-@>
-
-#------------------------------------------------------------------------------
-Event ID: 009
-Event Name: EV009
-(X,Y): (028,057)
-
-Page #1
-Conditions
-None
-
-Autonomous Movement
-Type: Fixed
-Speed: 3: Slow
-Freq: 3: Low
-Options Enabled
-Move Animation
-Trigger: Player Touch
-
-List of Event Commands:
-@>Play SE: 'Exit Door', 80, 100
-@>Change Screen Color Tone: (-255,-255,-255,0), @6
-@>Wait: 8 frame(s)
-@>Transfer Player:[344: Seafoam Islands], (028,019), No Fade
-@>Change Screen Color Tone: (0,0,0,0), @6
-@>
-
-#------------------------------------------------------------------------------
-Event ID: 010
-Event Name: EV010
-(X,Y): (031,048)
-
-Page #1
-Conditions
-None
-
-Autonomous Movement
-Type: Fixed
-Speed: 3: Slow
-Freq: 3: Low
-Options Enabled
-Move Animation
-Trigger: Player Touch
-
-List of Event Commands:
-@>Play SE: 'Exit Door', 80, 100
-@>Change Screen Color Tone: (-255,-255,-255,0), @6
-@>Wait: 8 frame(s)
-@>Transfer Player:[344: Seafoam Islands], (032,009), No Fade
-@>Change Screen Color Tone: (0,0,0,0), @6
-@>
-
-#------------------------------------------------------------------------------
-Event ID: 011
-Event Name: EV011
-(X,Y): (047,064)
-
-Page #1
-Conditions
-None
-
-Autonomous Movement
-Type: Fixed
-Speed: 3: Slow
-Freq: 3: Low
-Options Enabled
-Move Animation
-Trigger: Player Touch
-
-List of Event Commands:
-@>Play SE: 'Exit Door', 80, 100
-@>Change Screen Color Tone: (-255,-255,-255,0), @6
-@>Wait: 8 frame(s)
-@>Transfer Player:[344: Seafoam Islands], (047,023), No Fade
-@>Change Screen Color Tone: (0,0,0,0), @6
-@>
-
-#------------------------------------------------------------------------------
-Event ID: 012
-Event Name: EV012
-(X,Y): (056,051)
-
-Page #1
-Conditions
-None
-
-Autonomous Movement
-Type: Fixed
-Speed: 3: Slow
-Freq: 3: Low
-Options Enabled
-Move Animation
-Trigger: Player Touch
-
-List of Event Commands:
-@>Play SE: 'Exit Door', 80, 100
-@>Change Screen Color Tone: (-255,-255,-255,0), @6
-@>Wait: 8 frame(s)
-@>Transfer Player:[344: Seafoam Islands], (057,090), No Fade
-@>Change Screen Color Tone: (0,0,0,0), @6
-@>
-
-#------------------------------------------------------------------------------
-Event ID: 013
-Event Name: EV013
-(X,Y): (055,062)
-
-Page #1
-Conditions
-None
-
-Autonomous Movement
-Type: Fixed
-Speed: 3: Slow
-Freq: 3: Low
-Options Enabled
-Move Animation
-Trigger: Player Touch
-
-List of Event Commands:
-@>Play SE: 'Exit Door', 80, 100
-@>Change Screen Color Tone: (-255,-255,-255,0), @6
-@>Wait: 8 frame(s)
-@>Transfer Player:[344: Seafoam Islands], (056,103), No Fade
-@>Change Screen Color Tone: (0,0,0,0), @6
-@>
-
-#------------------------------------------------------------------------------
-Event ID: 014
-Event Name: EV014
-(X,Y): (036,053)
-
-Page #1
-Conditions
-None
-
-Autonomous Movement
-Type: Fixed
-Speed: 3: Slow
-Freq: 3: Low
-Options Enabled
-Move Animation
-Trigger: Player Touch
-
-List of Event Commands:
-@>Play SE: 'Exit Door', 80, 100
-@>Change Screen Color Tone: (-255,-255,-255,0), @6
-@>Wait: 8 frame(s)
-@>Transfer Player:[344: Seafoam Islands], (036,093), No Fade
-@>Change Screen Color Tone: (0,0,0,0), @6
-@>
-
-#------------------------------------------------------------------------------
-Event ID: 015
-Event Name: EV015
-(X,Y): (018,063)
-
-Page #1
-Conditions
-None
-
-Autonomous Movement
-Type: Fixed
-Speed: 3: Slow
-Freq: 3: Low
-Options Enabled
-Move Animation
-Trigger: Player Touch
-
-List of Event Commands:
-@>Play SE: 'Exit Door', 80, 100
-@>Change Screen Color Tone: (-255,-255,-255,0), @6
-@>Wait: 8 frame(s)
-@>Transfer Player:[344: Seafoam Islands], (018,103), No Fade
-@>Change Screen Color Tone: (0,0,0,0), @6
-@>
-
-#------------------------------------------------------------------------------
-Event ID: 016
-Event Name: EV016
-(X,Y): (021,170)
-
-Page #1
-Conditions
-None
-
-Autonomous Movement
-Type: Fixed
-Speed: 3: Slow
-Freq: 3: Low
-Options Enabled
-Move Animation
-Trigger: Action Button
-
-List of Event Commands:
-@>Text: There seems to be an orb-shaped indent in this wall.
-@>Conditional Branch: Script: $bag.quantity(:FROSTORB)>0
- @>Text: Perhaps the Frost Orb goes here... Try placing it in 
-  :    : the slot?
- @>Show Choices: Yes, No
- (When Cancel: Choice 2)
- : When [Yes]
-  @>Text: Let's see what happens!
-  @>Play SE: 'Knock', 100, 100
-  @>Text: \pn inserted the Frost Orb into the slot.
-  @>Wait: 10 frame(s)
-  @>Play SE: 'Ice5', 80, 100
-  @>Show Animation: Player, [Exclaim bubble]
-  @>Wait: 20 frame(s)
-  @>Play SE: 'Collapse1', 80, 100
-  @>Wait: 10 frame(s)
-  @>Change Screen Color Tone: (-255,-255,-255,0), @6
-  @>Wait: 8 frame(s)
-  @>Script: pbSetSelfSwitch(16,"A",true)
-  @>Script: pbSetSelfSwitch(17,"A",true)
-  @>Script: pbSetSelfSwitch(18,"A",true)
-  @>Script: pbSetSelfSwitch(19,"A",true)
-  @>Script: pbSetSelfSwitch(20,"A",true)
-  @>Script: pbSetSelfSwitch(21,"A",true)
-  @>Change Screen Color Tone: (0,0,0,0), @6
-  @>Show Animation: Player, [Exclaim bubble]
-  @>Text: The panel froze over and broke away! A door 
-   :    : appeared where the panel once was!
-  @>
- : When [No]
-  @>Text: Might not be a good idea...
-  @>
- : Branch End
- @>
-: Else
- @>
-: Branch End
-@>
-
-Page #2
-Conditions
-Self Switch A is ON
-
-Autonomous Movement
-Type: Fixed
-Speed: 3: Slow
-Freq: 3: Low
-Options Enabled
-Move Animation
-Trigger: Player Touch
-
-List of Event Commands:
-@>Play SE: 'Exit Door', 80, 100
-@>Change Screen Color Tone: (-255,-255,-255,0), @6
-@>Wait: 8 frame(s)
-@>Transfer Player:[344: Seafoam Islands], (057,188), No Fade
-@>Change Screen Color Tone: (0,0,0,0), @6
-@>
-
-#------------------------------------------------------------------------------
-Event ID: 017
-Event Name: EV017
-(X,Y): (020,170)
-
-Page #1
-Conditions
-None
-
-Autonomous Movement
-Type: Fixed
-Speed: 3: Slow
-Freq: 3: Low
-Options Enabled
-Move Animation
-Trigger: Action Button
-
-List of Event Commands:
-@>
-
-Page #2
-Conditions
-Self Switch A is ON
-
-Autonomous Movement
-Type: Fixed
-Speed: 3: Slow
-Freq: 3: Low
-Options Enabled
-Move Animation
-Trigger: Action Button
-
-List of Event Commands:
-@>
-
-#------------------------------------------------------------------------------
-Event ID: 018
-Event Name: EV018
-(X,Y): (022,170)
-
-Page #1
-Conditions
-None
-
-Autonomous Movement
-Type: Fixed
-Speed: 3: Slow
-Freq: 3: Low
-Options Enabled
-Move Animation
-Trigger: Action Button
-
-List of Event Commands:
-@>
-
-Page #2
-Conditions
-Self Switch A is ON
-
-Autonomous Movement
-Type: Fixed
-Speed: 3: Slow
-Freq: 3: Low
-Options Enabled
-Move Animation
-Trigger: Action Button
-
-List of Event Commands:
-@>
-
-#------------------------------------------------------------------------------
-Event ID: 019
-Event Name: EV019
-(X,Y): (022,169)
-
-Page #1
-Conditions
-None
-
-Autonomous Movement
-Type: Fixed
-Speed: 3: Slow
-Freq: 3: Low
-Options Enabled
-Move Animation
-Trigger: Action Button
-
-List of Event Commands:
-@>
-
-Page #2
-Conditions
-Self Switch A is ON
-
-Autonomous Movement
-Type: Fixed
-Speed: 3: Slow
-Freq: 3: Low
-Options Enabled
-Move Animation
-Trigger: Action Button
-
-List of Event Commands:
-@>
-
-#------------------------------------------------------------------------------
-Event ID: 020
-Event Name: EV020
-(X,Y): (021,169)
-
-Page #1
-Conditions
-None
-
-Autonomous Movement
-Type: Fixed
-Speed: 3: Slow
-Freq: 3: Low
-Options Enabled
-Move Animation
-Trigger: Action Button
-
-List of Event Commands:
-@>
-
-Page #2
-Conditions
-Self Switch A is ON
-
-Autonomous Movement
-Type: Fixed
-Speed: 3: Slow
-Freq: 3: Low
-Options Enabled
-Move Animation
-Trigger: Action Button
-
-List of Event Commands:
-@>
-
-#------------------------------------------------------------------------------
-Event ID: 021
-Event Name: EV021
-(X,Y): (020,169)
-
-Page #1
-Conditions
-None
-
-Autonomous Movement
-Type: Fixed
-Speed: 3: Slow
-Freq: 3: Low
-Options Enabled
-Move Animation
-Trigger: Action Button
-
-List of Event Commands:
-@>
-
-Page #2
-Conditions
-Self Switch A is ON
-
-Autonomous Movement
-Type: Fixed
-Speed: 3: Slow
-Freq: 3: Low
-Options Enabled
-Move Animation
-Trigger: Action Button
-
-List of Event Commands:
-@>
-
-#------------------------------------------------------------------------------
-Event ID: 022
-Event Name: EV022
-(X,Y): (057,189)
-
-Page #1
-Conditions
-None
-
-Autonomous Movement
-Type: Fixed
-Speed: 3: Slow
-Freq: 3: Low
-Options Enabled
-Move Animation
-Trigger: Player Touch
-
-List of Event Commands:
-@>Play SE: 'Exit Door', 80, 100
-@>Change Screen Color Tone: (-255,-255,-255,0), @6
-@>Wait: 8 frame(s)
-@>Transfer Player:[344: Seafoam Islands], (021,170), No Fade
-@>Change Screen Color Tone: (0,0,0,0), @6
-@>Set Move Route: Player
- :              : $>Move Down
-@>
-
-#------------------------------------------------------------------------------
-Event ID: 023
-Event Name: EV023
-(X,Y): (018,103)
-
-Page #1
-Conditions
-None
-
-Autonomous Movement
-Type: Fixed
-Speed: 3: Slow
-Freq: 3: Low
-Options Enabled
-Move Animation
-Trigger: Player Touch
-
-List of Event Commands:
-@>Play SE: 'Exit Door', 80, 100
-@>Change Screen Color Tone: (-255,-255,-255,0), @6
-@>Wait: 8 frame(s)
-@>Transfer Player:[344: Seafoam Islands], (018,063), No Fade
-@>Change Screen Color Tone: (0,0,0,0), @6
-@>
-
-#------------------------------------------------------------------------------
-Event ID: 024
-Event Name: EV024
-(X,Y): (036,093)
-
-Page #1
-Conditions
-None
-
-Autonomous Movement
-Type: Fixed
-Speed: 3: Slow
-Freq: 3: Low
-Options Enabled
-Move Animation
-Trigger: Player Touch
-
-List of Event Commands:
-@>Play SE: 'Exit Door', 80, 100
-@>Change Screen Color Tone: (-255,-255,-255,0), @6
-@>Wait: 8 frame(s)
-@>Transfer Player:[344: Seafoam Islands], (036,053), No Fade
-@>Change Screen Color Tone: (0,0,0,0), @6
-@>
-
-#------------------------------------------------------------------------------
-Event ID: 025
-Event Name: EV025
-(X,Y): (057,090)
-
-Page #1
-Conditions
-None
-
-Autonomous Movement
-Type: Fixed
-Speed: 3: Slow
-Freq: 3: Low
-Options Enabled
-Move Animation
-Trigger: Player Touch
-
-List of Event Commands:
-@>Play SE: 'Exit Door', 80, 100
-@>Change Screen Color Tone: (-255,-255,-255,0), @6
-@>Wait: 8 frame(s)
-@>Transfer Player:[344: Seafoam Islands], (056,051), No Fade
-@>Change Screen Color Tone: (0,0,0,0), @6
-@>
-
-#------------------------------------------------------------------------------
-Event ID: 026
-Event Name: EV026
-(X,Y): (056,103)
-
-Page #1
-Conditions
-None
-
-Autonomous Movement
-Type: Fixed
-Speed: 3: Slow
-Freq: 3: Low
-Options Enabled
-Move Animation
-Trigger: Player Touch
-
-List of Event Commands:
-@>Play SE: 'Exit Door', 80, 100
-@>Change Screen Color Tone: (-255,-255,-255,0), @6
-@>Wait: 8 frame(s)
-@>Transfer Player:[344: Seafoam Islands], (055,062), No Fade
-@>Change Screen Color Tone: (0,0,0,0), @6
-@>
-
-#------------------------------------------------------------------------------
-Event ID: 027
-Event Name: EV027
-(X,Y): (039,138)
-
-Page #1
-Conditions
-None
-
-Autonomous Movement
-Type: Fixed
-Speed: 3: Slow
-Freq: 3: Low
-Options Enabled
-Move Animation
-Trigger: Player Touch
-
-List of Event Commands:
-@>Play SE: 'Exit Door', 80, 100
-@>Change Screen Color Tone: (-255,-255,-255,0), @6
-@>Wait: 8 frame(s)
-@>Transfer Player:[344: Seafoam Islands], (015,189), No Fade
-@>Change Screen Color Tone: (0,0,0,0), @6
-@>
-
-#------------------------------------------------------------------------------
-Event ID: 028
-Event Name: EV028
-(X,Y): (015,189)
-
-Page #1
-Conditions
-None
-
-Autonomous Movement
-Type: Fixed
-Speed: 3: Slow
-Freq: 3: Low
-Options Enabled
-Move Animation
-Trigger: Player Touch
-
-List of Event Commands:
-@>Play SE: 'Exit Door', 80, 100
-@>Change Screen Color Tone: (-255,-255,-255,0), @6
-@>Wait: 8 frame(s)
-@>Transfer Player:[344: Seafoam Islands], (039,138), No Fade
-@>Change Screen Color Tone: (0,0,0,0), @6
-@>
-
-#------------------------------------------------------------------------------
-Event ID: 029
-Event Name: EV029
-(X,Y): (019,083)
-
-Page #1
-Conditions
-None
-
-Autonomous Movement
-Type: Fixed
-Speed: 3: Slow
-Freq: 3: Low
-Options Enabled
-Move Animation
-Trigger: Player Touch
-
-List of Event Commands:
-@>Play SE: 'Exit Door', 80, 100
-@>Change Screen Color Tone: (-255,-255,-255,0), @6
-@>Wait: 8 frame(s)
-@>Transfer Player:[344: Seafoam Islands], (018,120), No Fade
-@>Change Screen Color Tone: (0,0,0,0), @6
-@>
-
-#------------------------------------------------------------------------------
-Event ID: 030
-Event Name: EV030
-(X,Y): (025,099)
-
-Page #1
-Conditions
-None
-
-Autonomous Movement
-Type: Fixed
-Speed: 3: Slow
-Freq: 3: Low
-Options Enabled
-Move Animation
-Trigger: Player Touch
-
-List of Event Commands:
-@>Play SE: 'Exit Door', 80, 100
-@>Change Screen Color Tone: (-255,-255,-255,0), @6
-@>Wait: 8 frame(s)
-@>Transfer Player:[344: Seafoam Islands], (025,137), No Fade
-@>Change Screen Color Tone: (0,0,0,0), @6
-@>
-
-#------------------------------------------------------------------------------
-Event ID: 031
-Event Name: EV031
-(X,Y): (046,082)
-
-Page #1
-Conditions
-None
-
-Autonomous Movement
-Type: Fixed
-Speed: 3: Slow
-Freq: 3: Low
-Options Enabled
-Move Animation
-Trigger: Player Touch
-
-List of Event Commands:
-@>Play SE: 'Exit Door', 80, 100
-@>Change Screen Color Tone: (-255,-255,-255,0), @6
-@>Wait: 8 frame(s)
-@>Transfer Player:[344: Seafoam Islands], (045,120), No Fade
-@>Change Screen Color Tone: (0,0,0,0), @6
-@>
-
-#------------------------------------------------------------------------------
-Event ID: 032
-Event Name: EV032
-(X,Y): (041,091)
-
-Page #1
-Conditions
-None
-
-Autonomous Movement
-Type: Fixed
-Speed: 3: Slow
-Freq: 3: Low
-Options Enabled
-Move Animation
-Trigger: Player Touch
-
-List of Event Commands:
-@>Play SE: 'Exit Door', 80, 100
-@>Change Screen Color Tone: (-255,-255,-255,0), @6
-@>Wait: 8 frame(s)
-@>Transfer Player:[344: Seafoam Islands], (041,128), No Fade
-@>Change Screen Color Tone: (0,0,0,0), @6
-@>
-
-#------------------------------------------------------------------------------
-Event ID: 033
-Event Name: EV033
-(X,Y): (051,101)
-
-Page #1
-Conditions
-None
-
-Autonomous Movement
-Type: Fixed
-Speed: 3: Slow
-Freq: 3: Low
-Options Enabled
-Move Animation
-Trigger: Player Touch
-
-List of Event Commands:
-@>Play SE: 'Exit Door', 80, 100
-@>Change Screen Color Tone: (-255,-255,-255,0), @6
-@>Wait: 8 frame(s)
-@>Transfer Player:[344: Seafoam Islands], (050,137), No Fade
-@>Change Screen Color Tone: (0,0,0,0), @6
-@>
-
-#------------------------------------------------------------------------------
-Event ID: 034
-Event Name: EV034
-(X,Y): (059,100)
-
-Page #1
-Conditions
-None
-
-Autonomous Movement
-Type: Fixed
-Speed: 3: Slow
-Freq: 3: Low
-Options Enabled
-Move Animation
-Trigger: Player Touch
-
-List of Event Commands:
-@>Play SE: 'Exit Door', 80, 100
-@>Change Screen Color Tone: (-255,-255,-255,0), @6
-@>Wait: 8 frame(s)
-@>Transfer Player:[344: Seafoam Islands], (057,138), No Fade
-@>Change Screen Color Tone: (0,0,0,0), @6
-@>
-
-#------------------------------------------------------------------------------
-Event ID: 035
-Event Name: EV035
-(X,Y): (018,120)
-
-Page #1
-Conditions
-None
-
-Autonomous Movement
-Type: Fixed
-Speed: 3: Slow
-Freq: 3: Low
-Options Enabled
-Move Animation
-Trigger: Player Touch
-
-List of Event Commands:
-@>Play SE: 'Exit Door', 80, 100
-@>Change Screen Color Tone: (-255,-255,-255,0), @6
-@>Wait: 8 frame(s)
-@>Transfer Player:[344: Seafoam Islands], (019,083), No Fade
-@>Change Screen Color Tone: (0,0,0,0), @6
-@>
-
-#------------------------------------------------------------------------------
-Event ID: 036
-Event Name: EV036
-(X,Y): (045,120)
-
-Page #1
-Conditions
-None
-
-Autonomous Movement
-Type: Fixed
-Speed: 3: Slow
-Freq: 3: Low
-Options Enabled
-Move Animation
-Trigger: Player Touch
-
-List of Event Commands:
-@>Play SE: 'Exit Door', 80, 100
-@>Change Screen Color Tone: (-255,-255,-255,0), @6
-@>Wait: 8 frame(s)
-@>Transfer Player:[344: Seafoam Islands], (046,082), No Fade
-@>Change Screen Color Tone: (0,0,0,0), @6
-@>
-
-#------------------------------------------------------------------------------
-Event ID: 037
-Event Name: EV037
-(X,Y): (041,128)
-
-Page #1
-Conditions
-None
-
-Autonomous Movement
-Type: Fixed
-Speed: 3: Slow
-Freq: 3: Low
-Options Enabled
-Move Animation
-Trigger: Player Touch
-
-List of Event Commands:
-@>Play SE: 'Exit Door', 80, 100
-@>Change Screen Color Tone: (-255,-255,-255,0), @6
-@>Wait: 8 frame(s)
-@>Transfer Player:[344: Seafoam Islands], (041,091), No Fade
-@>Change Screen Color Tone: (0,0,0,0), @6
-@>
-
-#------------------------------------------------------------------------------
-Event ID: 038
-Event Name: EV038
-(X,Y): (025,137)
-
-Page #1
-Conditions
-None
-
-Autonomous Movement
-Type: Fixed
-Speed: 3: Slow
-Freq: 3: Low
-Options Enabled
-Move Animation
-Trigger: Player Touch
-
-List of Event Commands:
-@>Play SE: 'Exit Door', 80, 100
-@>Change Screen Color Tone: (-255,-255,-255,0), @6
-@>Wait: 8 frame(s)
-@>Transfer Player:[344: Seafoam Islands], (025,099), No Fade
-@>Change Screen Color Tone: (0,0,0,0), @6
-@>
-
-#------------------------------------------------------------------------------
-Event ID: 039
-Event Name: EV039
-(X,Y): (050,137)
-
-Page #1
-Conditions
-None
-
-Autonomous Movement
-Type: Fixed
-Speed: 3: Slow
-Freq: 3: Low
-Options Enabled
-Move Animation
-Trigger: Player Touch
-
-List of Event Commands:
-@>Play SE: 'Exit Door', 80, 100
-@>Change Screen Color Tone: (-255,-255,-255,0), @6
-@>Wait: 8 frame(s)
-@>Transfer Player:[344: Seafoam Islands], (051,101), No Fade
-@>Change Screen Color Tone: (0,0,0,0), @6
-@>
-
-#------------------------------------------------------------------------------
-Event ID: 040
-Event Name: EV040
-(X,Y): (057,138)
-
-Page #1
-Conditions
-None
-
-Autonomous Movement
-Type: Fixed
-Speed: 3: Slow
-Freq: 3: Low
-Options Enabled
-Move Animation
-Trigger: Player Touch
-
-List of Event Commands:
-@>Play SE: 'Exit Door', 80, 100
-@>Change Screen Color Tone: (-255,-255,-255,0), @6
-@>Wait: 8 frame(s)
-@>Transfer Player:[344: Seafoam Islands], (059,100), No Fade
-@>Change Screen Color Tone: (0,0,0,0), @6
-@>
-
-#------------------------------------------------------------------------------
-Event ID: 041
-Event Name: Item
-(X,Y): (037,005)
-
-Page #1
-Conditions
-None
-
-Graphic: Object ball
-
-Autonomous Movement
-Type: Fixed
-Speed: 3: Slow
-Freq: 3: Low
-Options Enabled
-Move Animation
-Trigger: Action Button
-
-List of Event Commands:
-@>Conditional Branch: Script: pbItemBall(:THICKFUR)
- @>Control Self Switch: A =ON
- @>
-: Else
- @>
-: Branch End
-@>
-
-Page #2
-Conditions
-Self Switch A is ON
-
-Autonomous Movement
-Type: Fixed
-Speed: 3: Slow
-Freq: 3: Low
-Options Enabled
-Move Animation
-Trigger: Action Button
-
-List of Event Commands:
-@>
-
-#------------------------------------------------------------------------------
-Event ID: 042
-Event Name: Item
-(X,Y): (026,025)
-
-Page #1
-Conditions
-None
-
-Graphic: Object ball
-
-Autonomous Movement
-Type: Fixed
-Speed: 3: Slow
-Freq: 3: Low
-Options Enabled
-Move Animation
-Trigger: Action Button
-
-List of Event Commands:
-@>Conditional Branch: Script: pbItemBall(:SUPERREPEL)
- @>Control Self Switch: A =ON
- @>
-: Else
- @>
-: Branch End
-@>
-
-Page #2
-Conditions
-Self Switch A is ON
-
-Autonomous Movement
-Type: Fixed
-Speed: 3: Slow
-Freq: 3: Low
-Options Enabled
-Move Animation
-Trigger: Action Button
-
-List of Event Commands:
-@>
-
-#------------------------------------------------------------------------------
-Event ID: 043
-Event Name: HiddenItem
-(X,Y): (033,019)
-
-Page #1
-Conditions
-None
-
-Autonomous Movement
-Type: Fixed
-Speed: 3: Slow
-Freq: 3: Low
-Options Enabled
-Move Animation
-Trigger: Action Button
-
-List of Event Commands:
-@>Conditional Branch: Script: pbItemBall(:ASPEARBERRY)
- @>Control Self Switch: A =ON
- @>
-: Else
- @>
-: Branch End
-@>
-
-Page #2
-Conditions
-Self Switch A is ON
-
-Autonomous Movement
-Type: Fixed
-Speed: 3: Slow
-Freq: 3: Low
-Options Enabled
-Move Animation
-Trigger: Action Button
-
-List of Event Commands:
-@>
-
-#------------------------------------------------------------------------------
-Event ID: 044
-Event Name: Item Ball
-(X,Y): (041,063)
-
-Page #1
-Conditions
-None
-
-Graphic: Object ball
-
-Autonomous Movement
-Type: Fixed
-Speed: 3: Slow
-Freq: 3: Low
-Options Enabled
-Move Animation
-Trigger: Action Button
-
-List of Event Commands:
-@>Conditional Branch: Script: pbItemBall(:ZINC)
- @>Control Self Switch: A =ON
- @>
-: Else
- @>
-: Branch End
-@>
-
-Page #2
-Conditions
-Self Switch A is ON
-
-Autonomous Movement
-Type: Fixed
-Speed: 3: Slow
-Freq: 3: Low
-Options Enabled
-Move Animation
-Trigger: Action Button
-
-List of Event Commands:
-@>
-
-#------------------------------------------------------------------------------
-Event ID: 045
-Event Name: HiddenItem
-(X,Y): (045,006)
-
-Page #1
-Conditions
-None
-
-Autonomous Movement
-Type: Fixed
-Speed: 3: Slow
-Freq: 3: Low
-Options Enabled
-Move Animation
-Trigger: Action Button
-
-List of Event Commands:
-@>Conditional Branch: Script: pbItemBall(:HYPERPOTION)
- @>Control Self Switch: A =ON
- @>
-: Else
- @>
-: Branch End
-@>
-
-Page #2
-Conditions
-Self Switch A is ON
-
-Autonomous Movement
-Type: Fixed
-Speed: 3: Slow
-Freq: 3: Low
-Options Enabled
-Move Animation
-Trigger: Action Button
-
-List of Event Commands:
-@>
-
-#------------------------------------------------------------------------------
-Event ID: 046
-Event Name: Item Ball
-(X,Y): (035,089)
-
-Page #1
-Conditions
-None
-
-Graphic: Object ball
-
-Autonomous Movement
-Type: Fixed
-Speed: 3: Slow
-Freq: 3: Low
-Options Enabled
-Move Animation
-Trigger: Action Button
-
-List of Event Commands:
-@>Conditional Branch: Script: pbItemBall(:PPUP)
- @>Control Self Switch: A =ON
- @>
-: Else
- @>
-: Branch End
-@>
-
-Page #2
-Conditions
-Self Switch A is ON
-
-Autonomous Movement
-Type: Fixed
-Speed: 3: Slow
-Freq: 3: Low
-Options Enabled
-Move Animation
-Trigger: Action Button
-
-List of Event Commands:
-@>
-
-#------------------------------------------------------------------------------
-Event ID: 047
-Event Name: TM Item Ball
-(X,Y): (054,123)
-
-Page #1
-Conditions
-None
-
-Graphic: Object ball
-
-Autonomous Movement
-Type: Fixed
-Speed: 3: Slow
-Freq: 3: Low
-Options Enabled
-Move Animation
-Trigger: Action Button
-
-List of Event Commands:
-@>Comment: SC13 - Ice Beam
-@>Conditional Branch: Script: pbReceiveItem(:SC13)
- @>Control Self Switch: A =ON
- @>
-: Else
- @>
-: Branch End
-@>
-
-Page #2
-Conditions
-Self Switch A is ON
-
-Autonomous Movement
-Type: Fixed
-Speed: 3: Slow
-Freq: 3: Low
-Options Enabled
-Move Animation
-Trigger: Action Button
-
-List of Event Commands:
-@>
-
-#------------------------------------------------------------------------------
-Event ID: 048
-Event Name: HiddenItem
-(X,Y): (039,054)
-
-Page #1
-Conditions
-None
-
-Autonomous Movement
-Type: Fixed
-Speed: 3: Slow
-Freq: 3: Low
-Options Enabled
-Move Animation
-Trigger: Action Button
-
-List of Event Commands:
-@>Conditional Branch: Script: pbItemBall(:ICYROCK)
- @>Control Self Switch: A =ON
- @>
-: Else
- @>
-: Branch End
-@>
-
-Page #2
-Conditions
-Self Switch A is ON
-
-Autonomous Movement
-Type: Fixed
-Speed: 3: Slow
-Freq: 3: Low
-Options Enabled
-Move Animation
-Trigger: Action Button
-
-List of Event Commands:
-@>
-
-#------------------------------------------------------------------------------
-Event ID: 049
-Event Name: HiddenItem
-(X,Y): (027,052)
-
-Page #1
-Conditions
-None
-
-Autonomous Movement
-Type: Fixed
-Speed: 3: Slow
-Freq: 3: Low
-Options Enabled
-Move Animation
-Trigger: Action Button
-
-List of Event Commands:
-@>Conditional Branch: Script: pbItemBall(:EVIOLITE)
- @>Control Self Switch: A =ON
- @>
-: Else
- @>
-: Branch End
-@>
-
-Page #2
-Conditions
-Self Switch A is ON
-
-Autonomous Movement
-Type: Fixed
-Speed: 3: Slow
-Freq: 3: Low
-Options Enabled
-Move Animation
-Trigger: Action Button
-
-List of Event Commands:
-@>
-
-#------------------------------------------------------------------------------
-Event ID: 050
-Event Name: HiddenItem
-(X,Y): (024,087)
-
-Page #1
-Conditions
-None
-
-Autonomous Movement
-Type: Fixed
-Speed: 3: Slow
-Freq: 3: Low
-Options Enabled
-Move Animation
-Trigger: Action Button
-
-List of Event Commands:
-@>Conditional Branch: Script: pbItemBall(:ASPEARBERRY)
- @>Control Self Switch: A =ON
- @>
-: Else
- @>
-: Branch End
-@>
-
-Page #2
-Conditions
-Self Switch A is ON
-
-Autonomous Movement
-Type: Fixed
-Speed: 3: Slow
-Freq: 3: Low
-Options Enabled
-Move Animation
-Trigger: Action Button
-
-List of Event Commands:
-@>
-
-#------------------------------------------------------------------------------
-Event ID: 051
-Event Name: HiddenItem
-(X,Y): (052,104)
-
-Page #1
-Conditions
-None
-
-Autonomous Movement
-Type: Fixed
-Speed: 3: Slow
-Freq: 3: Low
-Options Enabled
-Move Animation
-Trigger: Action Button
-
-List of Event Commands:
-@>Conditional Branch: Script: pbItemBall(:REVIVALHERB)
- @>Control Self Switch: A =ON
- @>
-: Else
- @>
-: Branch End
-@>
-
-Page #2
-Conditions
-Self Switch A is ON
-
-Autonomous Movement
-Type: Fixed
-Speed: 3: Slow
-Freq: 3: Low
-Options Enabled
-Move Animation
-Trigger: Action Button
-
-List of Event Commands:
-@>
-
-#------------------------------------------------------------------------------
-Event ID: 052
-Event Name: HiddenItem
-(X,Y): (048,136)
-
-Page #1
-Conditions
-None
-
-Autonomous Movement
-Type: Fixed
-Speed: 3: Slow
-Freq: 3: Low
-Options Enabled
-Move Animation
-Trigger: Action Button
-
-List of Event Commands:
-@>Conditional Branch: Script: pbItemBall(:NEVERMELTICE)
- @>Control Self Switch: A =ON
- @>
-: Else
- @>
-: Branch End
-@>
-
-Page #2
-Conditions
-Self Switch A is ON
-
-Autonomous Movement
-Type: Fixed
-Speed: 3: Slow
-Freq: 3: Low
-Options Enabled
-Move Animation
-Trigger: Action Button
-
-List of Event Commands:
-@>
-
-#------------------------------------------------------------------------------
-Event ID: 053
-Event Name: StrengthBoulder
-(X,Y): (044,090)
-
-Page #1
-Conditions
-None
-
-Graphic: Object boulder
-
-Autonomous Movement
-Type: Fixed
-Speed: 3: Slow
-Freq: 3: Low
-Options Enabled
-Move Animation
-Trigger: Player Touch
-
-List of Event Commands:
-@>Script: pbPushThisBoulder
-@>
-
-Page #2
-Conditions
-Self Switch A is ON
-
-Graphic: Object boulder
-
-Autonomous Movement
-Type: Fixed
-Speed: 3: Slow
-Freq: 3: Low
-Options Enabled
-Move Animation
-Trigger: Action Button
-
-List of Event Commands:
-@>
-
-#------------------------------------------------------------------------------
-Event ID: 054
-Event Name: StrengthBoulder
-(X,Y): (053,016)
-
-Page #1
-Conditions
-None
-
-Graphic: Object boulder
-
-Autonomous Movement
-Type: Fixed
-Speed: 3: Slow
-Freq: 3: Low
-Options Enabled
-Move Animation
-Trigger: Player Touch
-
-List of Event Commands:
-@>Script: pbPushThisBoulder
-@>
-
-Page #2
-Conditions
-Self Switch A is ON
-
-Graphic: Object boulder
-
-Autonomous Movement
-Type: Fixed
-Speed: 3: Slow
-Freq: 3: Low
-Options Enabled
-Move Animation
-Trigger: Action Button
-
-List of Event Commands:
-@>
-
-#------------------------------------------------------------------------------
-Event ID: 055
-Event Name: StrengthBoulder
-(X,Y): (054,016)
-
-Page #1
-Conditions
-None
-
-Graphic: Object boulder
-
-Autonomous Movement
-Type: Fixed
-Speed: 3: Slow
-Freq: 3: Low
-Options Enabled
-Move Animation
-Trigger: Player Touch
-
-List of Event Commands:
-@>Script: pbPushThisBoulder
-@>
-
-Page #2
-Conditions
-Self Switch A is ON
-
-Graphic: Object boulder
-
-Autonomous Movement
-Type: Fixed
-Speed: 3: Slow
-Freq: 3: Low
-Options Enabled
-Move Animation
-Trigger: Action Button
-
-List of Event Commands:
-@>
-
-#------------------------------------------------------------------------------
-Event ID: 056
-Event Name: StrengthBoulder
-(X,Y): (055,017)
-
-Page #1
-Conditions
-None
-
-Graphic: Object boulder
-
-Autonomous Movement
-Type: Fixed
-Speed: 3: Slow
-Freq: 3: Low
-Options Enabled
-Move Animation
-Trigger: Player Touch
-
-List of Event Commands:
-@>Script: pbPushThisBoulder
-@>
-
-Page #2
-Conditions
-Self Switch A is ON
-
-Graphic: Object boulder
-
-Autonomous Movement
-Type: Fixed
-Speed: 3: Slow
-Freq: 3: Low
-Options Enabled
-Move Animation
-Trigger: Action Button
-
-List of Event Commands:
-@>
-
-#------------------------------------------------------------------------------
-Event ID: 057
-Event Name: StrengthBoulder
-(X,Y): (021,017)
-
-Page #1
-Conditions
-None
-
-Graphic: Object boulder
-
-Autonomous Movement
-Type: Fixed
-Speed: 3: Slow
-Freq: 3: Low
-Options Enabled
-Move Animation
-Trigger: Player Touch
-
-List of Event Commands:
-@>Script: pbPushThisBoulder
-@>
-
-Page #2
-Conditions
-Self Switch A is ON
-
-Graphic: Object boulder
-
-Autonomous Movement
-Type: Fixed
-Speed: 3: Slow
-Freq: 3: Low
-Options Enabled
-Move Animation
-Trigger: Action Button
-
-List of Event Commands:
-@>
-
-#------------------------------------------------------------------------------
-Event ID: 058
-Event Name: StrengthBoulder
-(X,Y): (026,014)
-
-Page #1
-Conditions
-None
-
-Graphic: Object boulder
-
-Autonomous Movement
-Type: Fixed
-Speed: 3: Slow
-Freq: 3: Low
-Options Enabled
-Move Animation
-Trigger: Player Touch
-
-List of Event Commands:
-@>Script: pbPushThisBoulder
-@>
-
-Page #2
-Conditions
-Self Switch A is ON
-
-Graphic: Object boulder
-
-Autonomous Movement
-Type: Fixed
-Speed: 3: Slow
-Freq: 3: Low
-Options Enabled
-Move Animation
-Trigger: Action Button
-
-List of Event Commands:
-@>
-
-#------------------------------------------------------------------------------
-Event ID: 059
-Event Name: StrengthBoulder
-(X,Y): (027,023)
-
-Page #1
-Conditions
-None
-
-Graphic: Object boulder
-
-Autonomous Movement
-Type: Fixed
-Speed: 3: Slow
-Freq: 3: Low
-Options Enabled
-Move Animation
-Trigger: Player Touch
-
-List of Event Commands:
-@>Script: pbPushThisBoulder
-@>
-
-Page #2
-Conditions
-Self Switch A is ON
-
-Graphic: Object boulder
-
-Autonomous Movement
-Type: Fixed
-Speed: 3: Slow
-Freq: 3: Low
-Options Enabled
-Move Animation
-Trigger: Action Button
-
-List of Event Commands:
-@>
-
-#------------------------------------------------------------------------------
-Event ID: 060
-Event Name: Item Ball
-(X,Y): (027,122)
-
-Page #1
-Conditions
-None
-
-Graphic: Object ball
-
-Autonomous Movement
-Type: Fixed
-Speed: 3: Slow
-Freq: 3: Low
-Options Enabled
-Move Animation
-Trigger: Action Button
-
-List of Event Commands:
-@>Conditional Branch: Script: pbItemBall(:HYPERPOTION)
- @>Control Self Switch: A =ON
- @>
-: Else
- @>
-: Branch End
-@>
-
-Page #2
-Conditions
-Self Switch A is ON
-
-Autonomous Movement
-Type: Fixed
-Speed: 3: Slow
-Freq: 3: Low
-Options Enabled
-Move Animation
-Trigger: Action Button
-
-List of Event Commands:
-@>
-
-#------------------------------------------------------------------------------
-Event ID: 061
-Event Name: Item Ball
-(X,Y): (034,100)
-
-Page #1
-Conditions
-None
-
-Graphic: Object ball
-
-Autonomous Movement
-Type: Fixed
-Speed: 3: Slow
-Freq: 3: Low
-Options Enabled
-Move Animation
-Trigger: Action Button
-
-List of Event Commands:
-@>Conditional Branch: Script: pbItemBall(:ELIXIR)
- @>Control Self Switch: A =ON
- @>
-: Else
- @>
-: Branch End
-@>
-
-Page #2
-Conditions
-Self Switch A is ON
-
-Autonomous Movement
-Type: Fixed
-Speed: 3: Slow
-Freq: 3: Low
-Options Enabled
-Move Animation
-Trigger: Action Button
-
-List of Event Commands:
-@>
-
-#------------------------------------------------------------------------------
-Event ID: 062
-Event Name: Item Ball
-(X,Y): (037,059)
-
-Page #1
-Conditions
-None
-
-Graphic: Object ball
-
-Autonomous Movement
-Type: Fixed
-Speed: 3: Slow
-Freq: 3: Low
-Options Enabled
-Move Animation
-Trigger: Action Button
-
-List of Event Commands:
-@>Conditional Branch: Script: pbItemBall(:MAXREVIVE)
- @>Control Self Switch: A =ON
- @>
-: Else
- @>
-: Branch End
-@>
-
-Page #2
-Conditions
-Self Switch A is ON
-
-Autonomous Movement
-Type: Fixed
-Speed: 3: Slow
-Freq: 3: Low
-Options Enabled
-Move Animation
-Trigger: Action Button
-
-List of Event Commands:
-@>
-
-#------------------------------------------------------------------------------
-Event ID: 063
-Event Name: HiddenItem
-(X,Y): (054,022)
-
-Page #1
-Conditions
-None
-
-Autonomous Movement
-Type: Fixed
-Speed: 3: Slow
-Freq: 3: Low
-Options Enabled
-Move Animation
-Trigger: Action Button
-
-List of Event Commands:
-@>Conditional Branch: Script: pbItemBall(:ASPEARBERRY)
- @>Control Self Switch: A =ON
- @>
-: Else
- @>
-: Branch End
-@>
-
-Page #2
-Conditions
-Self Switch A is ON
-
-Autonomous Movement
-Type: Fixed
-Speed: 3: Slow
-Freq: 3: Low
-Options Enabled
-Move Animation
-Trigger: Action Button
-
-List of Event Commands:
-@>
-
-#------------------------------------------------------------------------------
-Event ID: 064
-Event Name: HiddenItem
-(X,Y): (043,014)
-
-Page #1
-Conditions
-None
-
-Autonomous Movement
-Type: Fixed
-Speed: 3: Slow
-Freq: 3: Low
-Options Enabled
-Move Animation
-Trigger: Action Button
-
-List of Event Commands:
-@>Conditional Branch: Script: pbItemBall(:ASPEARBERRY)
- @>Control Self Switch: A =ON
- @>
-: Else
- @>
-: Branch End
-@>
-
-Page #2
-Conditions
-Self Switch A is ON
-
-Autonomous Movement
-Type: Fixed
-Speed: 3: Slow
-Freq: 3: Low
-Options Enabled
-Move Animation
-Trigger: Action Button
-
-List of Event Commands:
-@>
-
-#------------------------------------------------------------------------------
-Event ID: 065
-Event Name: HiddenItem
-(X,Y): (046,015)
-
-Page #1
-Conditions
-None
-
-Autonomous Movement
-Type: Fixed
-Speed: 3: Slow
-Freq: 3: Low
-Options Enabled
-Move Animation
-Trigger: Action Button
-
-List of Event Commands:
-@>Conditional Branch: Script: pbItemBall(:ASPEARBERRY)
- @>Control Self Switch: A =ON
- @>
-: Else
- @>
-: Branch End
-@>
-
-Page #2
-Conditions
-Self Switch A is ON
-
-Autonomous Movement
-Type: Fixed
-Speed: 3: Slow
-Freq: 3: Low
-Options Enabled
-Move Animation
-Trigger: Action Button
-
-List of Event Commands:
-@>
-
-#------------------------------------------------------------------------------
-Event ID: 066
-Event Name: HiddenItem
-(X,Y): (025,018)
-
-Page #1
-Conditions
-None
-
-Autonomous Movement
-Type: Fixed
-Speed: 3: Slow
-Freq: 3: Low
-Options Enabled
-Move Animation
-Trigger: Action Button
-
-List of Event Commands:
-@>Conditional Branch: Script: pbItemBall(:ASPEARBERRY)
- @>Control Self Switch: A =ON
- @>
-: Else
- @>
-: Branch End
-@>
-
-Page #2
-Conditions
-Self Switch A is ON
-
-Autonomous Movement
-Type: Fixed
-Speed: 3: Slow
-Freq: 3: Low
-Options Enabled
-Move Animation
-Trigger: Action Button
-
-List of Event Commands:
-@>
-
-#------------------------------------------------------------------------------
-Event ID: 067
-Event Name: HiddenItem
-(X,Y): (030,009)
-
-Page #1
-Conditions
-None
-
-Autonomous Movement
-Type: Fixed
-Speed: 3: Slow
-Freq: 3: Low
-Options Enabled
-Move Animation
-Trigger: Action Button
-
-List of Event Commands:
-@>Conditional Branch: Script: pbItemBall(:ASPEARBERRY)
- @>Control Self Switch: A =ON
- @>
-: Else
- @>
-: Branch End
-@>
-
-Page #2
-Conditions
-Self Switch A is ON
-
-Autonomous Movement
-Type: Fixed
-Speed: 3: Slow
-Freq: 3: Low
-Options Enabled
-Move Animation
-Trigger: Action Button
-
-List of Event Commands:
-@>
-
-#------------------------------------------------------------------------------
-Event ID: 068
-Event Name: HiddenItem
-(X,Y): (056,020)
-
-Page #1
-Conditions
-None
-
-Autonomous Movement
-Type: Fixed
-Speed: 3: Slow
-Freq: 3: Low
-Options Enabled
-Move Animation
-Trigger: Action Button
-
-List of Event Commands:
-@>Conditional Branch: Script: pbItemBall(:ASPEARBERRY)
- @>Control Self Switch: A =ON
- @>
-: Else
- @>
-: Branch End
-@>
-
-Page #2
-Conditions
-Self Switch A is ON
-
-Autonomous Movement
-Type: Fixed
-Speed: 3: Slow
-Freq: 3: Low
-Options Enabled
-Move Animation
-Trigger: Action Button
-
-List of Event Commands:
-@>
-
-#------------------------------------------------------------------------------
-Event ID: 069
-Event Name: Counter(5)
-(X,Y): (057,060)
-
-Page #1
-Conditions
-None
-
-Graphic: Object ball
-
-Autonomous Movement
-Type: Fixed
-Speed: 3: Slow
-Freq: 3: Low
-Options Enabled
-Move Animation
-Trigger: Event Touch
-
-List of Event Commands:
-@>Script: pbBridgeOff
-@>
-
-#------------------------------------------------------------------------------
-Event ID: 070
-Event Name: Counter(5)
-(X,Y): (057,061)
-
-Page #1
-Conditions
-None
-
-Graphic: Object ball
-
-Autonomous Movement
-Type: Fixed
-Speed: 3: Slow
-Freq: 3: Low
-Options Enabled
-Move Animation
-Trigger: Event Touch
-
-List of Event Commands:
-@>Script: pbBridgeOn
-@>
-
-#------------------------------------------------------------------------------
-Event ID: 071
-Event Name: Articuno
-(X,Y): (077,181)
-
-Page #1
-Conditions
-None
-
-Graphic: OW - 144
-
-Autonomous Movement
-Type: Fixed
-Speed: 3: Slow
-Freq: 3: Low
-Options Enabled
-Stop Animation
-Direction Fix
-Trigger: Action Button
-
-List of Event Commands:
-@>Change Battle BGM: 'B-024. Battle! Vs. Legendary Pokemon', 100, 100
-@>Control Switches: [0142] = ON
-@>Play SE: '144Cry', 100, 100
-@>Wait: 20 frame(s)
-@>Memorize BGM/BGS
-@>Play BGM: '065. Legends of the Past (Vs. Legendary Birds)', 100, 100
-@>Change Screen Color Tone: (-255,-255,-255,0), @3
-@>Wait: 5 frame(s)
-@>Show Picture: 1, 'Vs. Articuno_Shadow', Center (256,192), (100%,100%), 0, Normal
-@>Move Picture: 1, @5, Center (256,192), (100%,100%), 255, Normal
-@>Wait: 15 frame(s)
-@>Screen Flash: (255,255,255,255), @10
-@>Show Picture: 1, 'Vs. Articuno 1', Center (256,192), (100%,100%), 255, Normal
-@>Wait: 25 frame(s)
-@>Screen Flash: (255,255,255,255), @10
-@>Show Picture: 1, 'Vs. Articuno 2', Center (256,192), (100%,100%), 255, Normal
-@>Wait: 25 frame(s)
-@>Move Picture: 1, @10, Center (256,192), (100%,100%), 0, Normal
-@>Wait: 10 frame(s)
-@>Erase Picture: 1
-@>Script: pbWildBattle(PBSpecies::ARTICUNO,65,1,false,false)
-@>Restore BGM/BGS
-@>Control Switches: [0142] = OFF
-@>Change Screen Color Tone: (0,0,0,0), @10
-@>Wait: 20 frame(s)
-@>Play SE: '144Cry', 100, 100
-@>Wait: 10 frame(s)
-@>Play SE: 'Whirlwind', 100, 100
-@>Change Screen Color Tone: (-255,-255,-255,0), @6
-@>Wait: 10 frame(s)
-@>Control Self Switch: A =ON
-@>Wait: 15 frame(s)
-@>Change Screen Color Tone: (0,0,0,0), @6
-@>Wait: 10 frame(s)
-@>Text: The Articuno flew off to an unknown location!
-@>Wait: 25 frame(s)
-@>Play SE: '873Cry', 100, 80
-@>Wait: 15 frame(s)
-@>Change Screen Color Tone: (-255,-255,-255,0), @6
-@>Wait: 20 frame(s)
-@>Transfer Player:[165: Bamboo Forest of the Lost], (057,170), Up, No Fade
-@>Control Switches: [0145] = ON
-@>Change Screen Color Tone: (0,0,0,0), @6
-@>
-
-Page #2
-Conditions
-Self Switch A is ON
-
-Autonomous Movement
-Type: Fixed
-Speed: 3: Slow
-Freq: 3: Low
-Options Enabled
-Move Animation
-Trigger: Action Button
-
-List of Event Commands:
-@>
-
-Page #3
-Conditions
-Switch 0144:  is ON
-
-Autonomous Movement
-Type: Fixed
-Speed: 3: Slow
-Freq: 3: Low
-Options Enabled
-Move Animation
-Trigger: Action Button
-
-List of Event Commands:
-@>
-
-#------------------------------------------------------------------------------
-Event ID: 072
-Event Name: Counter(5)
-(X,Y): (034,056)
-
-Page #1
-Conditions
-None
-
-Graphic: Object ball
-
-Autonomous Movement
-Type: Fixed
-Speed: 3: Slow
-Freq: 3: Low
-Options Enabled
-Move Animation
-Trigger: Event Touch
-
-List of Event Commands:
-@>Script: pbBridgeOn
-@>
-
-#------------------------------------------------------------------------------
-Event ID: 073
-Event Name: Counter(5)
-(X,Y): (034,055)
-
-Page #1
-Conditions
-None
-
-Graphic: Object ball
-
-Autonomous Movement
-Type: Fixed
-Speed: 3: Slow
-Freq: 3: Low
-Options Enabled
-Move Animation
-Trigger: Event Touch
-
-List of Event Commands:
-@>Script: pbBridgeOff
-@>
-
-#------------------------------------------------------------------------------
-Event ID: 074
-Event Name: Magan
-(X,Y): (077,185)
-
-Page #1
-Conditions
-None
-
-Graphic: OW - Puppet_Magan
-
-Autonomous Movement
-Type: Fixed
-Speed: 3: Slow
-Freq: 3: Low
-Options Enabled
-Stop Animation
-Direction Fix
-Trigger: Action Button
-
-List of Event Commands:
-@>Change Battle BGM: 'B-025. Battle! Vs. Legendary Puppet (Angel's Legend)', 60, 100
-@>Control Switches: [0142] = ON
-@>Play SE: '873Cry', 100, 80
-@>Wait: 10 frame(s)
-@>Memorize BGM/BGS
-@>Play BGM: '064. Angel's Legend (Vs. Puppet Legendary)', 100, 100
-@>Change Screen Color Tone: (-255,-255,-255,0), @3
-@>Wait: 5 frame(s)
-@>Show Picture: 1, 'Vs. Magan_Shadow2', Center (256,192), (100%,100%), 0, Normal
-@>Move Picture: 1, @5, Center (256,192), (100%,100%), 255, Normal
-@>Wait: 15 frame(s)
-@>Screen Flash: (255,255,255,255), @10
-@>Show Picture: 1, 'Vs. Magan 1', Center (256,192), (100%,100%), 255, Normal
-@>Wait: 25 frame(s)
-@>Screen Flash: (255,255,255,255), @10
-@>Show Picture: 1, 'Vs. Magan 2', Center (256,192), (100%,100%), 255, Normal
-@>Wait: 25 frame(s)
-@>Move Picture: 1, @10, Center (256,192), (100%,100%), 0, Normal
-@>Wait: 10 frame(s)
-@>Erase Picture: 1
-@>Script: pbWildBattle(PBSpecies::MAGAN,65,1,false,false)
-@>Restore BGM/BGS
-@>Change Screen Color Tone: (0,0,0,0), @10
-@>Control Switches: [0142] = OFF
-@>Wait: 20 frame(s)
-@>Play SE: '873Cry', 100, 80
-@>Wait: 10 frame(s)
-@>Play SE: 'Whirlwind', 100, 100
-@>Change Screen Color Tone: (-255,-255,-255,0), @6
-@>Wait: 10 frame(s)
-@>Control Self Switch: A =ON
-@>Wait: 15 frame(s)
-@>Change Screen Color Tone: (0,0,0,0), @6
-@>Wait: 10 frame(s)
-@>Text: The Magan flew off to an unknown location!
-@>Wait: 25 frame(s)
-@>Play SE: '144Cry', 100, 100
-@>Wait: 15 frame(s)
-@>Change Screen Color Tone: (-255,-255,-255,0), @6
-@>Wait: 20 frame(s)
-@>Transfer Player:[165: Bamboo Forest of the Lost], (057,170), Up, No Fade
-@>Control Switches: [0144] = ON
-@>Change Screen Color Tone: (0,0,0,0), @6
-@>
-
-Page #2
-Conditions
-Self Switch A is ON
-
-Autonomous Movement
-Type: Fixed
-Speed: 3: Slow
-Freq: 3: Low
-Options Enabled
-Move Animation
-Trigger: Action Button
-
-List of Event Commands:
-@>
-
-Page #3
-Conditions
-Switch 0145:  is ON
-
-Autonomous Movement
-Type: Fixed
-Speed: 3: Slow
-Freq: 3: Low
-Options Enabled
-Move Animation
-Trigger: Action Button
-
-List of Event Commands:
-@>
-
-#------------------------------------------------------------------------------
-Event ID: 075
-Event Name: EV075
-(X,Y): (077,183)
-
-Page #1
-Conditions
-None
-
-Autonomous Movement
-Type: Fixed
-Speed: 3: Slow
-Freq: 3: Low
-Options Enabled
-Move Animation
-Trigger: Action Button
-
-List of Event Commands:
-@>
-
-Page #2
-Conditions
-Switch 0144:  is ON
-
-Graphic: OW - 144
-
-Autonomous Movement
-Type: Fixed
-Speed: 3: Slow
-Freq: 3: Low
-Options Enabled
-Stop Animation
-Direction Fix
-Trigger: Action Button
-
-List of Event Commands:
-@>Change Battle BGM: '065. Legends of the Past (Vs. Legendary Birds)', 100, 100
-@>Play SE: '144Cry', 100, 100
-@>Wait: 20 frame(s)
-@>Memorize BGM/BGS
-@>Play BGM: '065. Legends of the Past (Vs. Legendary Birds)', 100, 100
-@>Change Screen Color Tone: (-255,-255,-255,0), @3
-@>Wait: 5 frame(s)
-@>Show Picture: 1, 'Vs. Articuno_Shadow', Center (256,192), (100%,100%), 0, Normal
-@>Move Picture: 1, @5, Center (256,192), (100%,100%), 255, Normal
-@>Wait: 15 frame(s)
-@>Screen Flash: (255,255,255,255), @10
-@>Show Picture: 1, 'Vs. Articuno 1', Center (256,192), (100%,100%), 255, Normal
-@>Wait: 25 frame(s)
-@>Screen Flash: (255,255,255,255), @10
-@>Show Picture: 1, 'Vs. Articuno 2', Center (256,192), (100%,100%), 255, Normal
-@>Wait: 25 frame(s)
-@>Move Picture: 1, @10, Center (256,192), (100%,100%), 0, Normal
-@>Wait: 10 frame(s)
-@>Erase Picture: 1
-@>Script: pbWildBattle(PBSpecies::ARTICUNO,65,1,false,false)
-@>Conditional Branch: Variable [0001: Temp Pokemon Choice] == 4
- @>Control Self Switch: A =ON
- @>Restore BGM/BGS
- @>Change Screen Color Tone: (0,0,0,0), @10
- @>
-: Else
- @>Restore BGM/BGS
- @>Change Screen Color Tone: (0,0,0,0), @10
- @>
-: Branch End
-@>
-
-Page #3
-Conditions
-Switch 0144:  is ON
-Self Switch A is ON
-
-Autonomous Movement
-Type: Fixed
-Speed: 3: Slow
-Freq: 3: Low
-Options Enabled
-Stop Animation
-Direction Fix
-Trigger: Action Button
-
-List of Event Commands:
-@>
-
-Page #4
-Conditions
-Switch 0145:  is ON
-
-Graphic: OW - Puppet_Magan
-
-Autonomous Movement
-Type: Fixed
-Speed: 3: Slow
-Freq: 3: Low
-Options Enabled
-Stop Animation
-Direction Fix
-Trigger: Action Button
-
-List of Event Commands:
-@>Change Battle BGM: 'B-025. Battle! Vs. Legendary Puppet (Angel's Legend)', 60, 100
-@>Play SE: '873Cry', 100, 80
-@>Wait: 10 frame(s)
-@>Memorize BGM/BGS
-@>Play BGM: '064. Angel's Legend (Vs. Puppet Legendary)', 100, 100
-@>Change Screen Color Tone: (-255,-255,-255,0), @3
-@>Wait: 5 frame(s)
-@>Show Picture: 1, 'Vs. Magan_Shadow2', Center (256,192), (100%,100%), 0, Normal
-@>Move Picture: 1, @5, Center (256,192), (100%,100%), 255, Normal
-@>Wait: 15 frame(s)
-@>Screen Flash: (255,255,255,255), @10
-@>Show Picture: 1, 'Vs. Magan 1', Center (256,192), (100%,100%), 255, Normal
-@>Wait: 25 frame(s)
-@>Screen Flash: (255,255,255,255), @10
-@>Show Picture: 1, 'Vs. Magan 2', Center (256,192), (100%,100%), 255, Normal
-@>Wait: 25 frame(s)
-@>Move Picture: 1, @10, Center (256,192), (100%,100%), 0, Normal
-@>Wait: 10 frame(s)
-@>Erase Picture: 1
-@>Script: pbWildBattle(PBSpecies::MAGAN,65,1,false,false)
-@>Conditional Branch: Variable [0001: Temp Pokemon Choice] == 4
- @>Control Self Switch: A =ON
- @>Restore BGM/BGS
- @>Change Screen Color Tone: (0,0,0,0), @10
- @>
-: Else
- @>Restore BGM/BGS
- @>Change Screen Color Tone: (0,0,0,0), @10
- @>
-: Branch End
-@>
-
-Page #5
-Conditions
-Switch 0145:  is ON
-Self Switch A is ON
-
-Autonomous Movement
-Type: Fixed
-Speed: 3: Slow
-Freq: 3: Low
-Options Enabled
-Stop Animation
-Direction Fix
-Trigger: Action Button
-
-List of Event Commands:
-@>
-
-#------------------------------------------------------------------------------
-Event ID: 076
-Event Name: Counter(3)
-(X,Y): (055,176)
-
-Page #1
-Conditions
-None
-
-Graphic: Object ball
-
-Autonomous Movement
-Type: Fixed
-Speed: 3: Slow
-Freq: 3: Low
-Options Enabled
-Move Animation
-Trigger: Event Touch
-
-List of Event Commands:
-@>Script: $game_variables[1] = $game_player.x
-:       : $game_variables[2] = $game_player.y
-:       : $game_variables[3] = 344
-@>Script: Pokemon.play_cry(:ARTICUNO)
-@>Wait: 25 frame(s)
-@>Script: Pokemon.play_cry(:MAGAN)
-@>Wait: 20 frame(s)
-@>Change Screen Color Tone: (-255,-255,-255,0), @6
-@>Wait: 8 frame(s)
-@>Change Transparent Flag: Transparency
-@>Transfer Player:[344: Seafoam Islands], (057,167)
-@>Wait: 10 frame(s)
-@>Change Screen Color Tone: (0,0,0,0), @6
-@>Wait: 15 frame(s)
-@>Script: Pokemon.play_cry(:ARTICUNO)
-@>Wait: 25 frame(s)
-@>Script: Pokemon.play_cry(:MAGAN)
-@>Wait: 20 frame(s)
-@>Set Move Route: [Articuno]
- :              : $>Change Speed: 5
- :              : $>Through ON
- :              : $>Move Down
- :              : $>Move Down
- :              : $>SE: 'Slam', 100, 100
- :              : $>Change Speed: 2
- :              : $>Move Up
- :              : $>Move Up
- :              : $>Change Speed: 3
-@>Set Move Route: [Magan]
- :              : $>Change Speed: 5
- :              : $>Through ON
- :              : $>Move Up
- :              : $>Move Up
- :              : $>Change Speed: 2
- :              : $>Move Down
- :              : $>Move Down
- :              : $>Change Speed: 3
-@>Wait for Move's Completion
-@>Wait: 15 frame(s)
-@>Set Move Route: [Articuno]
- :              : $>Change Speed: 5
- :              : $>Through ON
- :              : $>Move Down
- :              : $>Move Down
- :              : $>Change Speed: 2
- :              : $>Move Up
- :              : $>Move Up
- :              : $>Change Speed: 3
- :              : $>Through OFF
-@>Set Move Route: [Magan]
- :              : $>Change Speed: 5
- :              : $>Through ON
- :              : $>Move Up
- :              : $>Move Up
- :              : $>SE: 'Mega Punch', 100, 100
- :              : $>Change Speed: 2
- :              : $>Move Down
- :              : $>Move Down
- :              : $>Change Speed: 3
- :              : $>Through OFF
-@>Wait for Move's Completion
-@>Wait: 15 frame(s)
-@>Script: Pokemon.play_cry(:ARTICUNO)
-@>Wait: 25 frame(s)
-@>Script: Pokemon.play_cry(:MAGAN)
-@>Wait: 20 frame(s)
-@>Change Screen Color Tone: (-255,-255,-255,0), @6
-@>Wait: 8 frame(s)
-@>Change Transparent Flag: Normal
-@>Transfer Player:Variable [0003][0001][0002]
-@>Wait: 15 frame(s)
-@>Change Screen Color Tone: (0,0,0,0), @6
-@>Control Self Switch: A =ON
-@>
-
-Page #2
-Conditions
-Self Switch A is ON
-
-Autonomous Movement
-Type: Fixed
-Speed: 3: Slow
-Freq: 3: Low
-Options Enabled
-Move Animation
-Trigger: Action Button
-
-List of Event Commands:
-@>
-
-#------------------------------------------------------------------------------
-Event ID: 077
-Event Name: Counter(3)
-(X,Y): (055,184)
-
-Page #1
-Conditions
-None
-
-Graphic: Object ball
-
-Autonomous Movement
-Type: Fixed
-Speed: 3: Slow
-Freq: 3: Low
-Options Enabled
-Move Animation
-Trigger: Event Touch
-
-List of Event Commands:
-@>Script: Pokemon.play_cry(:ARTICUNO)
-@>Show Animation: Player, [Exclaim bubble]
-@>Wait: 25 frame(s)
-@>Script: Pokemon.play_cry(:MAGAN)
-@>Show Animation: Player, [Question bubble]
-@>Wait: 20 frame(s)
-@>Control Self Switch: A =ON
-@>
-
-Page #2
-Conditions
-Self Switch A is ON
-
-Autonomous Movement
-Type: Fixed
-Speed: 3: Slow
-Freq: 3: Low
-Options Enabled
-Move Animation
-Trigger: Action Button
-
-List of Event Commands:
-@>
-
-#------------------------------------------------------------------------------
-Event ID: 078
-Event Name: EV078
-(X,Y): (057,158)
-
-Page #1
-Conditions
-Variable 0134: Articuno/Magan is 1 or above
-
-Graphic: Object ball
-
-Autonomous Movement
-Type: Fixed
-Speed: 3: Slow
-Freq: 3: Low
-Options Enabled
-Move Animation
-Trigger: Action Button
-
-List of Event Commands:
-@>
-
-Page #2
-Conditions
-Variable 0134: Articuno/Magan is 2 or above
-
-Graphic: Object ball
-
-Autonomous Movement
-Type: Fixed
-Speed: 3: Slow
-Freq: 3: Low
-Options Enabled
-Move Animation
-Trigger: Action Button
-
-List of Event Commands:
-@>
-
-#------------------------------------------------------------------------------
-Event ID: 083
-Event Name: HiddenItem
-(X,Y): (026,052)
-
-Page #1
-Conditions
-None
-
-Autonomous Movement
-Type: Fixed
-Speed: 3: Slow
-Freq: 3: Low
-Options Enabled
-Move Animation
-Trigger: Action Button
-
-List of Event Commands:
-@>Conditional Branch: Script: pbItemBall(:ASPEARBERRY)
- @>Control Self Switch: A =ON
- @>
-: Else
- @>
-: Branch End
-@>
-
-Page #2
-Conditions
-Self Switch A is ON
-
-Autonomous Movement
-Type: Fixed
-Speed: 3: Slow
-Freq: 3: Low
-Options Enabled
-Move Animation
-Trigger: Action Button
-
-List of Event Commands:
-@>
-
-#------------------------------------------------------------------------------
-Event ID: 084
-Event Name: Magan
-(X,Y): (057,169)
-
-Page #1
-Conditions
-None
-
-Graphic: OW - Puppet_Magan
-
-Autonomous Movement
-Type: Fixed
-Speed: 3: Slow
-Freq: 3: Low
-Options Enabled
-Stop Animation
-Direction Fix
-Trigger: Action Button
-
-List of Event Commands:
-@>Change Battle BGM: 'B-025. Battle! Vs. Legendary Puppet (Angel's Legend)', 60, 100
-@>Control Switches: [0104: Transition Handler] = ON
-@>Control Variables: [0103: Vs. Transition ID] = 16
-@>Control Switches: [0102: Special Battle Switch] = ON
-@>Control Variables: [0102: Special Battle Variable] = 2
-@>Script: Pokemon.play_cry(:MAGAN)
-@>Wait: 20 frame(s)
-@>Comment: --------------------
-@>Script: setBattleRule("disablePokeBalls")
-:       : setBattleRule("cannotRun")
-:       : setBattleRule("base", "ice")
-@>Conditional Branch: Script: WildBattle.start(:MAGAN, 65)
- @>Control Switches: [0102: Special Battle Switch] = OFF
- @>Wait: 20 frame(s)
- @>Script: Pokemon.play_cry(:MAGAN)
- @>Wait: 10 frame(s)
- @>Change Screen Color Tone: (-255,-255,-255,0), @6
- @>Play SE: 'Battle flee', 100, 100
- @>Wait: 10 frame(s)
- @>Control Self Switch: A =ON
- @>Wait: 15 frame(s)
- @>Change Screen Color Tone: (0,0,0,0), @6
- @>Wait: 10 frame(s)
- @>Text: The Magan flew off to an unknown location!
- @>Wait: 25 frame(s)
- @>Script: Pokemon.play_cry(:ARTICUNO)
- @>Wait: 15 frame(s)
- @>Change Screen Color Tone: (-255,-255,-255,0), @6
- @>Wait: 20 frame(s)
- @>Transfer Player:[344: Seafoam Islands], (057,170), Up, No Fade
- @>Control Variables: [0134: Articuno/Magan] = 1
- @>Change Screen Color Tone: (0,0,0,0), @6
- @>
-: Branch End
-@>
-
-Page #2
-Conditions
-Variable 0134: Articuno/Magan is 1 or above
-
-Autonomous Movement
-Type: Fixed
-Speed: 3: Slow
-Freq: 3: Low
-Options Enabled
-Move Animation
-Trigger: Action Button
-
-List of Event Commands:
-@>
-
-Page #3
-Conditions
-Self Switch A is ON
-
-Autonomous Movement
-Type: Fixed
-Speed: 3: Slow
-Freq: 3: Low
-Options Enabled
-Move Animation
-Trigger: Action Button
-
-List of Event Commands:
-@>
-
-#------------------------------------------------------------------------------
-Event ID: 085
-Event Name: EV085
-(X,Y): (063,176)
-
-Page #1
-Conditions
-None
-
-Autonomous Movement
-Type: Fixed
-Speed: 3: Slow
-Freq: 3: Low
-Options Enabled
-Move Animation
-Trigger: Event Touch
-
-List of Event Commands:
-@>Play SE: '144Cry', 100, 100
-@>Show Animation: Player, [Exclaim bubble]
-@>Wait: 30 frame(s)
-@>Play SE: '873Cry', 100, 80
-@>Show Animation: Player, [Exclaim bubble]
-@>Wait: 20 frame(s)
-@>Change Screen Color Tone: (-255,-255,-255,0), @6
-@>Wait: 8 frame(s)
-@>Scroll Map: Up, 9, 6
-@>Scroll Map: Right, 1, 6
-@>Wait: 10 frame(s)
-@>Change Screen Color Tone: (0,0,0,0), @6
-@>Wait: 15 frame(s)
-@>Play SE: '144Cry', 100, 100
-@>Wait: 30 frame(s)
-@>Play SE: '873Cry', 100, 80
-@>Wait: 20 frame(s)
-@>Set Move Route: [Articuno]
- :              : $>Change Speed: 5
- :              : $>Through ON
- :              : $>Move Down
- :              : $>Move Down
- :              : $>SE: 'Slam', 100, 100
- :              : $>Change Speed: 2
- :              : $>Move Up
- :              : $>Move Up
- :              : $>Change Speed: 3
-@>Set Move Route: [Magan]
- :              : $>Change Speed: 5
- :              : $>Through ON
- :              : $>Move Up
- :              : $>Move Up
- :              : $>Change Speed: 2
- :              : $>Move Down
- :              : $>Move Down
- :              : $>Change Speed: 3
-@>Wait for Move's Completion
-@>Wait: 15 frame(s)
-@>Set Move Route: [Articuno]
- :              : $>Change Speed: 5
- :              : $>Through ON
- :              : $>Move Down
- :              : $>Move Down
- :              : $>Change Speed: 2
- :              : $>Move Up
- :              : $>Move Up
- :              : $>Change Speed: 3
- :              : $>Through OFF
-@>Set Move Route: [Magan]
- :              : $>Change Speed: 5
- :              : $>Through ON
- :              : $>Move Up
- :              : $>Move Up
- :              : $>SE: 'Mega Punch', 100, 100
- :              : $>Change Speed: 2
- :              : $>Move Down
- :              : $>Move Down
- :              : $>Change Speed: 3
- :              : $>Through OFF
-@>Wait for Move's Completion
-@>Wait: 15 frame(s)
-@>Play SE: '144Cry', 100, 100
-@>Wait: 30 frame(s)
-@>Play SE: '873Cry', 100, 80
-@>Wait: 20 frame(s)
-@>Change Screen Color Tone: (-255,-255,-255,0), @6
-@>Wait: 8 frame(s)
-@>Scroll Map: Down, 9, 6
-@>Scroll Map: Left, 1, 6
-@>Wait: 15 frame(s)
-@>Change Screen Color Tone: (0,0,0,0), @6
-@>Script: pbSetSelfSwitch(85,"A",true)
-@>Script: pbSetSelfSwitch(89,"A",true)
-@>Script: pbSetSelfSwitch(90,"A",true)
-@>
-
-Page #2
-Conditions
-Self Switch A is ON
-
-Autonomous Movement
-Type: Fixed
-Speed: 3: Slow
-Freq: 3: Low
-Options Enabled
-Move Animation
-Trigger: Action Button
-
-List of Event Commands:
-@>
-
-#------------------------------------------------------------------------------
-Event ID: 086
-Event Name: EV086
-(X,Y): (063,184)
-
-Page #1
-Conditions
-None
-
-Autonomous Movement
-Type: Fixed
-Speed: 3: Slow
-Freq: 3: Low
-Options Enabled
-Move Animation
-Trigger: Event Touch
-
-List of Event Commands:
-@>Play SE: '144Cry', 100, 100
-@>Show Animation: Player, [Exclaim bubble]
-@>Script: pbSetSelfSwitch(86,"A",true)
-@>Script: pbSetSelfSwitch(87,"A",true)
-@>Script: pbSetSelfSwitch(88,"A",true)
-@>
-
-Page #2
-Conditions
-Self Switch A is ON
-
-Autonomous Movement
-Type: Fixed
-Speed: 3: Slow
-Freq: 3: Low
-Options Enabled
-Move Animation
-Trigger: Action Button
-
-List of Event Commands:
-@>
-
-#------------------------------------------------------------------------------
-Event ID: 087
-Event Name: EV087
-(X,Y): (064,184)
-
-Page #1
-Conditions
-None
-
-Autonomous Movement
-Type: Fixed
-Speed: 3: Slow
-Freq: 3: Low
-Options Enabled
-Move Animation
-Trigger: Event Touch
-
-List of Event Commands:
-@>Play SE: '144Cry', 100, 100
-@>Show Animation: Player, [Exclaim bubble]
-@>Script: pbSetSelfSwitch(86,"A",true)
-@>Script: pbSetSelfSwitch(87,"A",true)
-@>Script: pbSetSelfSwitch(88,"A",true)
-@>
-
-Page #2
-Conditions
-Self Switch A is ON
-
-Autonomous Movement
-Type: Fixed
-Speed: 3: Slow
-Freq: 3: Low
-Options Enabled
-Move Animation
-Trigger: Action Button
-
-List of Event Commands:
-@>
-
-#------------------------------------------------------------------------------
-Event ID: 088
-Event Name: EV088
-(X,Y): (065,184)
-
-Page #1
-Conditions
-None
-
-Autonomous Movement
-Type: Fixed
-Speed: 3: Slow
-Freq: 3: Low
-Options Enabled
-Move Animation
-Trigger: Event Touch
-
-List of Event Commands:
-@>Play SE: '144Cry', 100, 100
-@>Show Animation: Player, [Exclaim bubble]
-@>Script: pbSetSelfSwitch(86,"A",true)
-@>Script: pbSetSelfSwitch(87,"A",true)
-@>Script: pbSetSelfSwitch(88,"A",true)
-@>
-
-Page #2
-Conditions
-Self Switch A is ON
-
-Autonomous Movement
-Type: Fixed
-Speed: 3: Slow
-Freq: 3: Low
-Options Enabled
-Move Animation
-Trigger: Action Button
-
-List of Event Commands:
-@>
-
-#------------------------------------------------------------------------------
-Event ID: 089
-Event Name: EV089
-(X,Y): (064,176)
-
-Page #1
-Conditions
-None
-
-Autonomous Movement
-Type: Fixed
-Speed: 3: Slow
-Freq: 3: Low
-Options Enabled
-Move Animation
-Trigger: Event Touch
-
-List of Event Commands:
-@>Play SE: '144Cry', 100, 100
-@>Show Animation: Player, [Exclaim bubble]
-@>Wait: 30 frame(s)
-@>Play SE: '873Cry', 100, 80
-@>Show Animation: Player, [Exclaim bubble]
-@>Wait: 20 frame(s)
-@>Change Screen Color Tone: (-255,-255,-255,0), @6
-@>Wait: 8 frame(s)
-@>Scroll Map: Up, 9, 6
-@>Wait: 10 frame(s)
-@>Change Screen Color Tone: (0,0,0,0), @6
-@>Wait: 15 frame(s)
-@>Play SE: '144Cry', 100, 100
-@>Wait: 30 frame(s)
-@>Play SE: '873Cry', 100, 80
-@>Wait: 20 frame(s)
-@>Set Move Route: [Articuno]
- :              : $>Change Speed: 5
- :              : $>Through ON
- :              : $>Move Down
- :              : $>Move Down
- :              : $>SE: 'Slam', 100, 100
- :              : $>Change Speed: 2
- :              : $>Move Up
- :              : $>Move Up
- :              : $>Change Speed: 3
-@>Set Move Route: [Magan]
- :              : $>Change Speed: 5
- :              : $>Through ON
- :              : $>Move Up
- :              : $>Move Up
- :              : $>Change Speed: 2
- :              : $>Move Down
- :              : $>Move Down
- :              : $>Change Speed: 3
-@>Wait for Move's Completion
-@>Wait: 15 frame(s)
-@>Set Move Route: [Articuno]
- :              : $>Change Speed: 5
- :              : $>Through ON
- :              : $>Move Down
- :              : $>Move Down
- :              : $>Change Speed: 2
- :              : $>Move Up
- :              : $>Move Up
- :              : $>Change Speed: 3
- :              : $>Through OFF
-@>Set Move Route: [Magan]
- :              : $>Change Speed: 5
- :              : $>Through ON
- :              : $>Move Up
- :              : $>Move Up
- :              : $>SE: 'Mega Punch', 100, 100
- :              : $>Change Speed: 2
- :              : $>Move Down
- :              : $>Move Down
- :              : $>Change Speed: 3
- :              : $>Through OFF
-@>Wait for Move's Completion
-@>Wait: 15 frame(s)
-@>Play SE: '144Cry', 100, 100
-@>Wait: 30 frame(s)
-@>Play SE: '873Cry', 100, 80
-@>Wait: 20 frame(s)
-@>Change Screen Color Tone: (-255,-255,-255,0), @6
-@>Wait: 8 frame(s)
-@>Scroll Map: Down, 9, 6
-@>Wait: 15 frame(s)
-@>Change Screen Color Tone: (0,0,0,0), @6
-@>Script: pbSetSelfSwitch(85,"A",true)
-@>Script: pbSetSelfSwitch(89,"A",true)
-@>Script: pbSetSelfSwitch(90,"A",true)
-@>
-
-Page #2
-Conditions
-Self Switch A is ON
-
-Autonomous Movement
-Type: Fixed
-Speed: 3: Slow
-Freq: 3: Low
-Options Enabled
-Move Animation
-Trigger: Action Button
-
-List of Event Commands:
-@>
-
-#------------------------------------------------------------------------------
-Event ID: 090
-Event Name: EV090
-(X,Y): (065,176)
-
-Page #1
-Conditions
-None
-
-Autonomous Movement
-Type: Fixed
-Speed: 3: Slow
-Freq: 3: Low
-Options Enabled
-Move Animation
-Trigger: Event Touch
-
-List of Event Commands:
-@>Play SE: '144Cry', 100, 100
-@>Show Animation: Player, [Exclaim bubble]
-@>Wait: 30 frame(s)
-@>Play SE: '873Cry', 100, 80
-@>Show Animation: Player, [Exclaim bubble]
-@>Wait: 20 frame(s)
-@>Change Screen Color Tone: (-255,-255,-255,0), @6
-@>Wait: 8 frame(s)
-@>Scroll Map: Up, 9, 6
-@>Scroll Map: Left, 1, 6
-@>Wait: 10 frame(s)
-@>Change Screen Color Tone: (0,0,0,0), @6
-@>Wait: 15 frame(s)
-@>Play SE: '144Cry', 100, 100
-@>Wait: 30 frame(s)
-@>Play SE: '873Cry', 100, 80
-@>Wait: 20 frame(s)
-@>Set Move Route: [Articuno]
- :              : $>Change Speed: 5
- :              : $>Through ON
- :              : $>Move Down
- :              : $>Move Down
- :              : $>SE: 'Slam', 100, 100
- :              : $>Change Speed: 2
- :              : $>Move Up
- :              : $>Move Up
- :              : $>Change Speed: 3
-@>Set Move Route: [Magan]
- :              : $>Change Speed: 5
- :              : $>Through ON
- :              : $>Move Up
- :              : $>Move Up
- :              : $>Change Speed: 2
- :              : $>Move Down
- :              : $>Move Down
- :              : $>Change Speed: 3
-@>Wait for Move's Completion
-@>Wait: 15 frame(s)
-@>Set Move Route: [Articuno]
- :              : $>Change Speed: 5
- :              : $>Through ON
- :              : $>Move Down
- :              : $>Move Down
- :              : $>Change Speed: 2
- :              : $>Move Up
- :              : $>Move Up
- :              : $>Change Speed: 3
- :              : $>Through OFF
-@>Set Move Route: [Magan]
- :              : $>Change Speed: 5
- :              : $>Through ON
- :              : $>Move Up
- :              : $>Move Up
- :              : $>SE: 'Mega Punch', 100, 100
- :              : $>Change Speed: 2
- :              : $>Move Down
- :              : $>Move Down
- :              : $>Change Speed: 3
- :              : $>Through OFF
-@>Wait for Move's Completion
-@>Wait: 15 frame(s)
-@>Play SE: '144Cry', 100, 100
-@>Wait: 30 frame(s)
-@>Play SE: '873Cry', 100, 80
-@>Wait: 20 frame(s)
-@>Change Screen Color Tone: (-255,-255,-255,0), @6
-@>Wait: 8 frame(s)
-@>Scroll Map: Down, 9, 6
-@>Scroll Map: Right, 1, 6
-@>Wait: 15 frame(s)
-@>Change Screen Color Tone: (0,0,0,0), @6
-@>Script: pbSetSelfSwitch(85,"A",true)
-@>Script: pbSetSelfSwitch(89,"A",true)
-@>Script: pbSetSelfSwitch(90,"A",true)
-@>
-
-Page #2
-Conditions
-Self Switch A is ON
-
-Autonomous Movement
-Type: Fixed
-Speed: 3: Slow
-Freq: 3: Low
-Options Enabled
-Move Animation
-Trigger: Action Button
-
-List of Event Commands:
-@>
-
-#------------------------------------------------------------------------------
-Event ID: 091
-Event Name: EV091
-(X,Y): (050,165)
-
-Page #1
-Conditions
-None
-
-Autonomous Movement
-Type: Fixed
-Speed: 3: Slow
-Freq: 3: Low
-Options Enabled
-Move Animation
-Trigger: Action Button
-
-List of Event Commands:
-@>
-
-#------------------------------------------------------------------------------
-Event ID: 092
-Event Name: EV092
-(X,Y): (057,167)
-
-Page #1
-Conditions
-None
-
-Autonomous Movement
-Type: Fixed
-Speed: 3: Slow
-Freq: 3: Low
-Options Enabled
-Move Animation
-Trigger: Action Button
-
-List of Event Commands:
-@>
-
-Page #2
-Conditions
-Variable 0134: Articuno/Magan is 1 or above
-
-Graphic: OW - 144
-
-Autonomous Movement
-Type: Fixed
-Speed: 3: Slow
-Freq: 3: Low
-Options Enabled
-Stop Animation
-Direction Fix
-Trigger: Action Button
-
-List of Event Commands:
-@>Change Battle BGM: 'B-024. Battle! Vs. Legendary Pokemon', 100, 100
-@>Control Switches: [0104: Transition Handler] = ON
-@>Control Variables: [0103: Vs. Transition ID] = 17
-@>Script: Pokemon.play_cry(:ARTICUNO)
-@>Wait: 20 frame(s)
-@>Comment: --------------------
-@>Script: setBattleRule("outcome",1)
-:       : setBattleRule("base", "ice")
-@>Script: WildBattle.start(:ARTICUNO, 65)
-@>Conditional Branch: Variable [0001: Temp Pokemon Choice] == 4
- @>Control Self Switch: A =ON
- @>
-: Else
- @>
-: Branch End
-@>
-
-Page #3
-Conditions
-Variable 0134: Articuno/Magan is 2 or above
-
-Graphic: OW - Puppet_Magan
-
-Autonomous Movement
-Type: Fixed
-Speed: 3: Slow
-Freq: 3: Low
-Options Enabled
-Stop Animation
-Direction Fix
-Trigger: Action Button
-
-List of Event Commands:
-@>Change Battle BGM: 'B-025. Battle! Vs. Legendary Puppet (Angel's Legend)', 60, 100
-@>Control Switches: [0104: Transition Handler] = ON
-@>Control Variables: [0103: Vs. Transition ID] = 16
-@>Script: Pokemon.play_cry(:ARTICUNO)
-@>Wait: 20 frame(s)
-@>Comment: --------------------
-@>Script: setBattleRule("outcome",1)
-:       : setBattleRule("base", "ice")
-@>Script: WildBattle.start(:ARTICUNO, 65)
-@>Conditional Branch: Variable [0001: Temp Pokemon Choice] == 4
- @>Control Self Switch: A =ON
- @>
-: Else
- @>
-: Branch End
-@>
-
-Page #4
-Conditions
-Self Switch A is ON
-
-Autonomous Movement
-Type: Fixed
-Speed: 3: Slow
-Freq: 3: Low
-Options Enabled
-Stop Animation
-Direction Fix
-Trigger: Action Button
-
-List of Event Commands:
-@>
-
-#------------------------------------------------------------------------------
-Event ID: 093
-Event Name: Mewtwo Test Event
-(X,Y): (076,196)
-
-Page #1
-Conditions
-None
-
-Graphic: OW - 150
-
-Autonomous Movement
-Type: Fixed
-Speed: 3: Slow
-Freq: 3: Low
-Options Enabled
-Stop Animation
-Direction Fix
-Trigger: Action Button
-
-List of Event Commands:
-@>Change Battle BGM: '000. Now, Until The Moment You Die', 100, 100
-@>Control Switches: [0142] = ON
-@>Wait: 20 frame(s)
-@>Memorize BGM/BGS
-@>Play BGM: '000. Now, Until The Moment You Die', 100, 100
-@>Comment: ------ Fuck this Intro ------
-@>Change Screen Color Tone: (-255,-255,-255,0), @0
-@>Screen Flash: (255,255,255,255), @10
-@>Show Picture: 1, 'Vs. Mewtwo_Shadow', Center (256,192), (100%,100%), 0, Normal
-@>Move Picture: 1, @5, Center (256,192), (100%,100%), 255, Normal
-@>Wait: 53 frame(s)
-@>Screen Flash: (255,255,255,255), @10
-@>Show Picture: 1, 'Vs. Sariel_Shadow', Center (256,192), (100%,100%), 0, Normal
-@>Move Picture: 1, @5, Center (256,192), (100%,100%), 255, Normal
-@>Wait: 51 frame(s)
-@>Screen Flash: (255,255,255,255), @10
-@>Play SE: 'expfull', 0, 100
-@>Show Picture: 1, 'BG_Cerulean Cave', Center (256,192), (100%,100%), 0, Normal
-@>Move Picture: 1, @5, Center (256,192), (100%,100%), 255, Normal
-@>Wait: 29 frame(s)
-@>Screen Flash: (255,255,255,255), @10
-@>Play SE: 'expfull', 0, 100
-@>Show Picture: 1, 'BG_Vina', Center (256,192), (100%,100%), 0, Normal
-@>Move Picture: 1, @5, Center (256,192), (100%,100%), 255, Normal
-@>Wait: 25 frame(s)
-@>Screen Flash: (255,255,255,255), @5
-@>Play SE: 'expfull', 0, 100
-@>Move Picture: 1, @5, Center (256,192), (100%,100%), 0, Normal
-@>Wait: 25 frame(s)
-@>Screen Flash: (255,255,255,255), @5
-@>Play SE: 'expfull', 0, 100
-@>Wait: 7 frame(s)
-@>Screen Flash: (255,255,255,255), @5
-@>Play SE: 'expfull', 0, 100
-@>Wait: 7 frame(s)
-@>Screen Flash: (255,255,255,255), @5
-@>Play SE: 'expfull', 0, 100
-@>Wait: 7 frame(s)
-@>Screen Flash: (255,255,255,255), @5
-@>Play SE: 'expfull', 0, 100
-@>Show Picture: 1, 'Vs. Sariel and Mewtwo', Center (256,192), (100%,100%), 255, Normal
-@>Wait: 200 frame(s)
-@>Script: pbDoubleWildBattle(PBSpecies::MEWTWO,100,PBSpecies::SARIEL,100,1,false,false)
-@>Restore BGM/BGS
-@>Control Switches: [0142] = OFF
-@>Change Screen Color Tone: (0,0,0,0), @10
-@>
-
-#------------------------------------------------------------------------------
-Event ID: 094
-Event Name: EV094
-(X,Y): (078,199)
-
-Page #1
-Conditions
-None
-
-Autonomous Movement
-Type: Fixed
-Speed: 3: Slow
-Freq: 3: Low
-Options Enabled
-Move Animation
-Trigger: Action Button
-
-List of Event Commands:
-@>
-
-Page #2
-Conditions
-Switch 0144:  is ON
-
-Graphic: OW - 144
-
-Autonomous Movement
-Type: Fixed
-Speed: 3: Slow
-Freq: 3: Low
-Options Enabled
-Stop Animation
-Direction Fix
-Trigger: Action Button
-
-List of Event Commands:
-@>Change Battle BGM: '065. Legends of the Past (Vs. Legendary Birds)', 100, 100
-@>Play SE: '144Cry', 100, 100
-@>Wait: 5 frame(s)
-@>Script: pbWildBattle(PBSpecies::ARTICUNO,65,1,false,false)
-@>Conditional Branch: Variable [0001: Temp Pokemon Choice] == 1
- @>
-: Else
- @>Control Self Switch: A =ON
- @>
-: Branch End
-@>
-
-Page #3
-Conditions
-Switch 0144:  is ON
-Self Switch A is ON
-
-Autonomous Movement
-Type: Fixed
-Speed: 3: Slow
-Freq: 3: Low
-Options Enabled
-Stop Animation
-Direction Fix
-Trigger: Action Button
-
-List of Event Commands:
-@>
-
-Page #4
-Conditions
-Switch 0145:  is ON
-
-Graphic: OW - Magan
-
-Autonomous Movement
-Type: Fixed
-Speed: 3: Slow
-Freq: 3: Low
-Options Enabled
-Stop Animation
-Direction Fix
-Trigger: Action Button
-
-List of Event Commands:
-@>Change Battle BGM: '064. Angel's Legend (Vs. Puppet Legendary)', 100, 100
-@>Play SE: '873Cry', 100, 80
-@>Wait: 5 frame(s)
-@>Script: pbWildBattle(PBSpecies::MAGAN,65,1,false,false)
-@>Conditional Branch: Variable [0001: Temp Pokemon Choice] == 1
- @>
-: Else
- @>Control Self Switch: A =ON
- @>
-: Branch End
-@>
-
-Page #5
-Conditions
-Switch 0145:  is ON
-Self Switch A is ON
-
-Autonomous Movement
-Type: Fixed
-Speed: 3: Slow
-Freq: 3: Low
-Options Enabled
-Stop Animation
-Direction Fix
-Trigger: Action Button
-
-List of Event Commands:
-@>
-
-#------------------------------------------------------------------------------
-Event ID: 095
-Event Name: Magan
-(X,Y): (074,199)
-
-Page #1
-Conditions
-None
-
-Graphic: OW - Magan
-
-Autonomous Movement
-Type: Fixed
-Speed: 3: Slow
-Freq: 3: Low
-Options Enabled
-Stop Animation
-Direction Fix
-Trigger: Action Button
-
-List of Event Commands:
-@>Change Battle BGM: '064. Angel's Legend (Vs. Puppet Legendary)', 100, 100
-@>Control Switches: [0142] = ON
-@>Play SE: '873Cry', 100, 80
-@>Wait: 5 frame(s)
-@>Control Switches: [0080: DLwRuukoto] = ON
-@>Script: name="Yuugenmagan"
-:       : pbSet(2,name)
-@>Script: pbWildBattle(PBSpecies::MAGAN,65,1,false,false)
-@>Control Switches: [0080: DLwRuukoto] = OFF
-@>Control Switches: [0142] = OFF
-@>Wait: 10 frame(s)
-@>Play SE: '873Cry', 100, 80
-@>Wait: 10 frame(s)
-@>Play SE: 'Whirlwind', 100, 100
-@>Change Screen Color Tone: (-255,-255,-255,0), @6
-@>Wait: 10 frame(s)
-@>Control Self Switch: A =ON
-@>Wait: 15 frame(s)
-@>Change Screen Color Tone: (0,0,0,0), @6
-@>Wait: 10 frame(s)
-@>Text: The Magan flew off to an unknown location!
-@>Wait: 25 frame(s)
-@>Play SE: '144Cry', 100, 100
-@>Wait: 15 frame(s)
-@>Change Screen Color Tone: (-255,-255,-255,0), @6
-@>Wait: 20 frame(s)
-@>Transfer Player:[165: Bamboo Forest of the Lost], (057,170), Up, No Fade
-@>Control Switches: [0144] = ON
-@>Change Screen Color Tone: (0,0,0,0), @6
-@>
-
-Page #2
-Conditions
-Self Switch A is ON
-
-Autonomous Movement
-Type: Fixed
-Speed: 3: Slow
-Freq: 3: Low
-Options Enabled
-Move Animation
-Trigger: Action Button
-
-List of Event Commands:
-@>
-
-Page #3
-Conditions
-Switch 0145:  is ON
-
-Autonomous Movement
-Type: Fixed
-Speed: 3: Slow
-Freq: 3: Low
-Options Enabled
-Move Animation
-Trigger: Action Button
-
-List of Event Commands:
-@>
-
-#------------------------------------------------------------------------------
-Event ID: 096
-Event Name: Articuno
-(X,Y): (076,199)
-
-Page #1
-Conditions
-None
-
-Graphic: OW - 144
-
-Autonomous Movement
-Type: Fixed
-Speed: 3: Slow
-Freq: 3: Low
-Options Enabled
-Stop Animation
-Direction Fix
-Trigger: Action Button
-
-List of Event Commands:
-@>Change Battle BGM: '065. Legends of the Past (Vs. Legendary Birds)', 100, 100
-@>Control Switches: [0142] = ON
-@>Play SE: '144Cry', 100, 100
-@>Wait: 5 frame(s)
-@>Script: pbWildBattle(PBSpecies::ARTICUNO,65,1,false,false)
-@>Control Switches: [0142] = OFF
-@>Wait: 10 frame(s)
-@>Play SE: '144Cry', 100, 100
-@>Wait: 10 frame(s)
-@>Play SE: 'Whirlwind', 100, 100
-@>Change Screen Color Tone: (-255,-255,-255,0), @6
-@>Wait: 10 frame(s)
-@>Control Self Switch: A =ON
-@>Wait: 15 frame(s)
-@>Change Screen Color Tone: (0,0,0,0), @6
-@>Wait: 10 frame(s)
-@>Text: The Articuno flew off to an unknown location!
-@>Wait: 25 frame(s)
-@>Play SE: '873Cry', 100, 80
-@>Wait: 15 frame(s)
-@>Change Screen Color Tone: (-255,-255,-255,0), @6
-@>Wait: 20 frame(s)
-@>Transfer Player:[165: Bamboo Forest of the Lost], (057,170), Up, No Fade
-@>Control Switches: [0145] = ON
-@>Change Screen Color Tone: (0,0,0,0), @6
-@>
-
-Page #2
-Conditions
-Self Switch A is ON
-
-Autonomous Movement
-Type: Fixed
-Speed: 3: Slow
-Freq: 3: Low
-Options Enabled
-Move Animation
-Trigger: Action Button
-
-List of Event Commands:
-@>
-
-Page #3
-Conditions
-Switch 0144:  is ON
-
-Autonomous Movement
-Type: Fixed
-Speed: 3: Slow
-Freq: 3: Low
-Options Enabled
-Move Animation
-Trigger: Action Button
-
-List of Event Commands:
-@>
-
-#------------------------------------------------------------------------------
-Event ID: 097
-Event Name: EV097
-(X,Y): (079,178)
-
-Page #1
-Conditions
-None
-
-Autonomous Movement
-Type: Fixed
-Speed: 3: Slow
-Freq: 3: Low
-Options Enabled
-Move Animation
-Trigger: Action Button
-
-List of Event Commands:
-@>
-
-Page #2
-Conditions
-Switch 0144:  is ON
-
-Graphic: OW - 144
-
-Autonomous Movement
-Type: Fixed
-Speed: 3: Slow
-Freq: 3: Low
-Options Enabled
-Stop Animation
-Direction Fix
-Trigger: Action Button
-
-List of Event Commands:
-@>Change Battle BGM: '065. Legends of the Past (Vs. Legendary Birds)', 100, 100
-@>Play SE: '144Cry', 100, 100
-@>Wait: 5 frame(s)
-@>Script: pbWildBattle(PBSpecies::ARTICUNO,65,1,false,false)
-@>Conditional Branch: Variable [0001: Temp Pokemon Choice] == 4
- @>Control Self Switch: A =ON
- @>
-: Else
- @>
-: Branch End
-@>
-
-Page #3
-Conditions
-Switch 0144:  is ON
-Self Switch A is ON
-
-Autonomous Movement
-Type: Fixed
-Speed: 3: Slow
-Freq: 3: Low
-Options Enabled
-Stop Animation
-Direction Fix
-Trigger: Action Button
-
-List of Event Commands:
-@>
-
-Page #4
-Conditions
-Switch 0145:  is ON
-
-Graphic: OW - Magan
-
-Autonomous Movement
-Type: Fixed
-Speed: 3: Slow
-Freq: 3: Low
-Options Enabled
-Stop Animation
-Direction Fix
-Trigger: Action Button
-
-List of Event Commands:
-@>Change Battle BGM: '064. Angel's Legend (Vs. Puppet Legendary)', 100, 100
-@>Play SE: '873Cry', 100, 80
-@>Wait: 5 frame(s)
-@>Script: pbWildBattle(PBSpecies::MAGAN,65,1,false,false)
-@>Conditional Branch: Variable [0001: Temp Pokemon Choice] == 1
- @>
-: Else
- @>Control Self Switch: A =ON
- @>
-: Branch End
-@>
-
-Page #5
-Conditions
-Switch 0145:  is ON
-Self Switch A is ON
-
-Autonomous Movement
-Type: Fixed
-Speed: 3: Slow
-Freq: 3: Low
-Options Enabled
-Stop Animation
-Direction Fix
-Trigger: Action Button
-
-List of Event Commands:
-@>
-
-#------------------------------------------------------------------------------
-Event ID: 098
-Event Name: EV098
-(X,Y): (028,093)
-
-Page #1
-Conditions
-None
-
-Graphic: Object boulder
-
-Autonomous Movement
-Type: Fixed
-Speed: 3: Slow
-Freq: 3: Low
-Options Enabled
-Move Animation
-Trigger: Action Button
-
-List of Event Commands:
-@>Text: The boulder seems to be frozen over...
-@>
-
-#------------------------------------------------------------------------------
-Event ID: 099
-Event Name: EV099
-(X,Y): (032,090)
-
-Page #1
-Conditions
-None
-
-Graphic: Object boulder
-
-Autonomous Movement
-Type: Fixed
-Speed: 3: Slow
-Freq: 3: Low
-Options Enabled
-Move Animation
-Trigger: Action Button
-
-List of Event Commands:
-@>Text: The boulder seems to be frozen over...
-@>
-
-#------------------------------------------------------------------------------
-Event ID: 100
-Event Name: EV100
-(X,Y): (029,087)
-
-Page #1
-Conditions
-None
-
-Graphic: Object boulder
-
-Autonomous Movement
-Type: Fixed
-Speed: 3: Slow
-Freq: 3: Low
-Options Enabled
-Move Animation
-Trigger: Action Button
-
-List of Event Commands:
-@>Text: The boulder seems to be frozen over...
-@>
-
-#------------------------------------------------------------------------------
-Event ID: 101
-Event Name: EV101
-(X,Y): (044,099)
-
-Page #1
-Conditions
-None
-
-Graphic: Object boulder
-
-Autonomous Movement
-Type: Fixed
-Speed: 3: Slow
-Freq: 3: Low
-Options Enabled
-Move Animation
-Trigger: Action Button
-
-List of Event Commands:
-@>Text: The boulder seems to be frozen over...
-@>
-
-#------------------------------------------------------------------------------
-Event ID: 102
-Event Name: EV102
-(X,Y): (038,101)
-
-Page #1
-Conditions
-None
-
-Graphic: Object boulder
-
-Autonomous Movement
-Type: Fixed
-Speed: 3: Slow
-Freq: 3: Low
-Options Enabled
-Move Animation
-Trigger: Action Button
-
-List of Event Commands:
-@>Text: The boulder seems to be frozen over...
-@>
-
-#------------------------------------------------------------------------------
-Event ID: 103
-Event Name: EV103
-(X,Y): (046,103)
-
-Page #1
-Conditions
-None
-
-Graphic: Object boulder
-
-Autonomous Movement
-Type: Fixed
-Speed: 3: Slow
-Freq: 3: Low
-Options Enabled
-Move Animation
-Trigger: Action Button
-
-List of Event Commands:
-@>Text: The boulder seems to be frozen over...
-@>
-
-#------------------------------------------------------------------------------
-
-#==============================================================================
 Map ID: 345
 Map Name: Cinnabar Volcano
 Tileset: 006: Caves
@@ -172547,6 +168385,819 @@ List of Event Commands:
 #------------------------------------------------------------------------------
 
 #==============================================================================
+Map ID: 368
+Map Name: Seafoam Islands
+Tileset: 006: Caves
+Width: 80, Height: 38
+Auto-Change BGM: W-027. Ice Path
+
+#------------------------------------------------------------------------------
+Event ID: 002
+Event Name: EV002
+(X,Y): (059,026)
+
+Page #1
+Conditions
+None
+
+Autonomous Movement
+Type: Fixed
+Speed: 3: Slow
+Freq: 3: Low
+Options Enabled
+Move Animation
+Trigger: Player Touch
+
+List of Event Commands:
+@>Play SE: 'Door exit', 80, 100
+@>Change Screen Color Tone: (-255,-255,-255,0), @6
+@>Wait: 8 frame(s)
+@>Transfer Player:[083: Seafoam Islands], (031,028), No Fade
+@>Change Screen Color Tone: (0,0,0,0), @6
+@>
+
+#------------------------------------------------------------------------------
+Event ID: 003
+Event Name: EV003
+(X,Y): (018,012)
+
+Page #1
+Conditions
+None
+
+Autonomous Movement
+Type: Fixed
+Speed: 3: Slow
+Freq: 3: Low
+Options Enabled
+Move Animation
+Trigger: Player Touch
+
+List of Event Commands:
+@>Play SE: 'Door exit', 80, 100
+@>Change Screen Color Tone: (-255,-255,-255,0), @6
+@>Wait: 8 frame(s)
+@>Transfer Player:[083: Seafoam Islands], (018,013), No Fade
+@>Change Screen Color Tone: (0,0,0,0), @6
+@>
+
+#------------------------------------------------------------------------------
+Event ID: 004
+Event Name: EV004
+(X,Y): (022,025)
+
+Page #1
+Conditions
+None
+
+Autonomous Movement
+Type: Fixed
+Speed: 3: Slow
+Freq: 3: Low
+Options Enabled
+Move Animation
+Trigger: Player Touch
+
+List of Event Commands:
+@>Play SE: 'Door exit', 80, 100
+@>Change Screen Color Tone: (-255,-255,-255,0), @6
+@>Wait: 8 frame(s)
+@>Transfer Player:[371: Seafoam Islands], (022,021), No Fade
+@>Change Screen Color Tone: (0,0,0,0), @6
+@>
+
+#------------------------------------------------------------------------------
+Event ID: 005
+Event Name: EV005
+(X,Y): (028,023)
+
+Page #1
+Conditions
+None
+
+Autonomous Movement
+Type: Fixed
+Speed: 3: Slow
+Freq: 3: Low
+Options Enabled
+Move Animation
+Trigger: Player Touch
+
+List of Event Commands:
+@>Play SE: 'Door exit', 80, 100
+@>Change Screen Color Tone: (-255,-255,-255,0), @6
+@>Wait: 8 frame(s)
+@>Transfer Player:[371: Seafoam Islands], (028,020), No Fade
+@>Change Screen Color Tone: (0,0,0,0), @6
+@>
+
+#------------------------------------------------------------------------------
+Event ID: 006
+Event Name: EV006
+(X,Y): (047,027)
+
+Page #1
+Conditions
+None
+
+Autonomous Movement
+Type: Fixed
+Speed: 3: Slow
+Freq: 3: Low
+Options Enabled
+Move Animation
+Trigger: Player Touch
+
+List of Event Commands:
+@>Play SE: 'Door exit', 80, 100
+@>Change Screen Color Tone: (-255,-255,-255,0), @6
+@>Wait: 8 frame(s)
+@>Transfer Player:[371: Seafoam Islands], (047,027), No Fade
+@>Change Screen Color Tone: (0,0,0,0), @6
+@>
+
+#------------------------------------------------------------------------------
+Event ID: 007
+Event Name: EV007
+(X,Y): (032,013)
+
+Page #1
+Conditions
+None
+
+Autonomous Movement
+Type: Fixed
+Speed: 3: Slow
+Freq: 3: Low
+Options Enabled
+Move Animation
+Trigger: Player Touch
+
+List of Event Commands:
+@>Play SE: 'Door exit', 80, 100
+@>Change Screen Color Tone: (-255,-255,-255,0), @6
+@>Wait: 8 frame(s)
+@>Transfer Player:[371: Seafoam Islands], (031,011), No Fade
+@>Change Screen Color Tone: (0,0,0,0), @6
+@>
+
+#------------------------------------------------------------------------------
+Event ID: 041
+Event Name: Item
+(X,Y): (037,009)
+
+Page #1
+Conditions
+None
+
+Graphic: Object ball
+
+Autonomous Movement
+Type: Fixed
+Speed: 3: Slow
+Freq: 3: Low
+Options Enabled
+Move Animation
+Trigger: Action Button
+
+List of Event Commands:
+@>Conditional Branch: Script: pbItemBall(:THICKFUR)
+ @>Control Self Switch: A =ON
+ @>
+: Else
+ @>
+: Branch End
+@>
+
+Page #2
+Conditions
+Self Switch A is ON
+
+Autonomous Movement
+Type: Fixed
+Speed: 3: Slow
+Freq: 3: Low
+Options Enabled
+Move Animation
+Trigger: Action Button
+
+List of Event Commands:
+@>
+
+#------------------------------------------------------------------------------
+Event ID: 042
+Event Name: Item
+(X,Y): (026,029)
+
+Page #1
+Conditions
+None
+
+Graphic: Object ball
+
+Autonomous Movement
+Type: Fixed
+Speed: 3: Slow
+Freq: 3: Low
+Options Enabled
+Move Animation
+Trigger: Action Button
+
+List of Event Commands:
+@>Conditional Branch: Script: pbItemBall(:SUPERREPEL)
+ @>Control Self Switch: A =ON
+ @>
+: Else
+ @>
+: Branch End
+@>
+
+Page #2
+Conditions
+Self Switch A is ON
+
+Autonomous Movement
+Type: Fixed
+Speed: 3: Slow
+Freq: 3: Low
+Options Enabled
+Move Animation
+Trigger: Action Button
+
+List of Event Commands:
+@>
+
+#------------------------------------------------------------------------------
+Event ID: 043
+Event Name: HiddenItem
+(X,Y): (033,023)
+
+Page #1
+Conditions
+None
+
+Autonomous Movement
+Type: Fixed
+Speed: 3: Slow
+Freq: 3: Low
+Options Enabled
+Move Animation
+Trigger: Action Button
+
+List of Event Commands:
+@>Conditional Branch: Script: pbItemBall(:ASPEARBERRY)
+ @>Control Self Switch: A =ON
+ @>
+: Else
+ @>
+: Branch End
+@>
+
+Page #2
+Conditions
+Self Switch A is ON
+
+Autonomous Movement
+Type: Fixed
+Speed: 3: Slow
+Freq: 3: Low
+Options Enabled
+Move Animation
+Trigger: Action Button
+
+List of Event Commands:
+@>
+
+#------------------------------------------------------------------------------
+Event ID: 045
+Event Name: HiddenItem
+(X,Y): (045,010)
+
+Page #1
+Conditions
+None
+
+Autonomous Movement
+Type: Fixed
+Speed: 3: Slow
+Freq: 3: Low
+Options Enabled
+Move Animation
+Trigger: Action Button
+
+List of Event Commands:
+@>Conditional Branch: Script: pbItemBall(:HYPERPOTION)
+ @>Control Self Switch: A =ON
+ @>
+: Else
+ @>
+: Branch End
+@>
+
+Page #2
+Conditions
+Self Switch A is ON
+
+Autonomous Movement
+Type: Fixed
+Speed: 3: Slow
+Freq: 3: Low
+Options Enabled
+Move Animation
+Trigger: Action Button
+
+List of Event Commands:
+@>
+
+#------------------------------------------------------------------------------
+Event ID: 054
+Event Name: StrengthBoulder
+(X,Y): (053,020)
+
+Page #1
+Conditions
+None
+
+Graphic: Object boulder
+
+Autonomous Movement
+Type: Fixed
+Speed: 3: Slow
+Freq: 3: Low
+Options Enabled
+Move Animation
+Trigger: Player Touch
+
+List of Event Commands:
+@>Script: pbPushThisBoulder
+@>
+
+Page #2
+Conditions
+Self Switch A is ON
+
+Graphic: Object boulder
+
+Autonomous Movement
+Type: Fixed
+Speed: 3: Slow
+Freq: 3: Low
+Options Enabled
+Move Animation
+Trigger: Action Button
+
+List of Event Commands:
+@>
+
+#------------------------------------------------------------------------------
+Event ID: 055
+Event Name: StrengthBoulder
+(X,Y): (054,020)
+
+Page #1
+Conditions
+None
+
+Graphic: Object boulder
+
+Autonomous Movement
+Type: Fixed
+Speed: 3: Slow
+Freq: 3: Low
+Options Enabled
+Move Animation
+Trigger: Player Touch
+
+List of Event Commands:
+@>Script: pbPushThisBoulder
+@>
+
+Page #2
+Conditions
+Self Switch A is ON
+
+Graphic: Object boulder
+
+Autonomous Movement
+Type: Fixed
+Speed: 3: Slow
+Freq: 3: Low
+Options Enabled
+Move Animation
+Trigger: Action Button
+
+List of Event Commands:
+@>
+
+#------------------------------------------------------------------------------
+Event ID: 056
+Event Name: StrengthBoulder
+(X,Y): (055,021)
+
+Page #1
+Conditions
+None
+
+Graphic: Object boulder
+
+Autonomous Movement
+Type: Fixed
+Speed: 3: Slow
+Freq: 3: Low
+Options Enabled
+Move Animation
+Trigger: Player Touch
+
+List of Event Commands:
+@>Script: pbPushThisBoulder
+@>
+
+Page #2
+Conditions
+Self Switch A is ON
+
+Graphic: Object boulder
+
+Autonomous Movement
+Type: Fixed
+Speed: 3: Slow
+Freq: 3: Low
+Options Enabled
+Move Animation
+Trigger: Action Button
+
+List of Event Commands:
+@>
+
+#------------------------------------------------------------------------------
+Event ID: 057
+Event Name: StrengthBoulder
+(X,Y): (021,021)
+
+Page #1
+Conditions
+None
+
+Graphic: Object boulder
+
+Autonomous Movement
+Type: Fixed
+Speed: 3: Slow
+Freq: 3: Low
+Options Enabled
+Move Animation
+Trigger: Player Touch
+
+List of Event Commands:
+@>Script: pbPushThisBoulder
+@>
+
+Page #2
+Conditions
+Self Switch A is ON
+
+Graphic: Object boulder
+
+Autonomous Movement
+Type: Fixed
+Speed: 3: Slow
+Freq: 3: Low
+Options Enabled
+Move Animation
+Trigger: Action Button
+
+List of Event Commands:
+@>
+
+#------------------------------------------------------------------------------
+Event ID: 058
+Event Name: StrengthBoulder
+(X,Y): (026,018)
+
+Page #1
+Conditions
+None
+
+Graphic: Object boulder
+
+Autonomous Movement
+Type: Fixed
+Speed: 3: Slow
+Freq: 3: Low
+Options Enabled
+Move Animation
+Trigger: Player Touch
+
+List of Event Commands:
+@>Script: pbPushThisBoulder
+@>
+
+Page #2
+Conditions
+Self Switch A is ON
+
+Graphic: Object boulder
+
+Autonomous Movement
+Type: Fixed
+Speed: 3: Slow
+Freq: 3: Low
+Options Enabled
+Move Animation
+Trigger: Action Button
+
+List of Event Commands:
+@>
+
+#------------------------------------------------------------------------------
+Event ID: 059
+Event Name: StrengthBoulder
+(X,Y): (027,027)
+
+Page #1
+Conditions
+None
+
+Graphic: Object boulder
+
+Autonomous Movement
+Type: Fixed
+Speed: 3: Slow
+Freq: 3: Low
+Options Enabled
+Move Animation
+Trigger: Player Touch
+
+List of Event Commands:
+@>Script: pbPushThisBoulder
+@>
+
+Page #2
+Conditions
+Self Switch A is ON
+
+Graphic: Object boulder
+
+Autonomous Movement
+Type: Fixed
+Speed: 3: Slow
+Freq: 3: Low
+Options Enabled
+Move Animation
+Trigger: Action Button
+
+List of Event Commands:
+@>
+
+#------------------------------------------------------------------------------
+Event ID: 063
+Event Name: HiddenItem
+(X,Y): (054,026)
+
+Page #1
+Conditions
+None
+
+Autonomous Movement
+Type: Fixed
+Speed: 3: Slow
+Freq: 3: Low
+Options Enabled
+Move Animation
+Trigger: Action Button
+
+List of Event Commands:
+@>Conditional Branch: Script: pbItemBall(:ASPEARBERRY)
+ @>Control Self Switch: A =ON
+ @>
+: Else
+ @>
+: Branch End
+@>
+
+Page #2
+Conditions
+Self Switch A is ON
+
+Autonomous Movement
+Type: Fixed
+Speed: 3: Slow
+Freq: 3: Low
+Options Enabled
+Move Animation
+Trigger: Action Button
+
+List of Event Commands:
+@>
+
+#------------------------------------------------------------------------------
+Event ID: 064
+Event Name: HiddenItem
+(X,Y): (043,018)
+
+Page #1
+Conditions
+None
+
+Autonomous Movement
+Type: Fixed
+Speed: 3: Slow
+Freq: 3: Low
+Options Enabled
+Move Animation
+Trigger: Action Button
+
+List of Event Commands:
+@>Conditional Branch: Script: pbItemBall(:ASPEARBERRY)
+ @>Control Self Switch: A =ON
+ @>
+: Else
+ @>
+: Branch End
+@>
+
+Page #2
+Conditions
+Self Switch A is ON
+
+Autonomous Movement
+Type: Fixed
+Speed: 3: Slow
+Freq: 3: Low
+Options Enabled
+Move Animation
+Trigger: Action Button
+
+List of Event Commands:
+@>
+
+#------------------------------------------------------------------------------
+Event ID: 065
+Event Name: HiddenItem
+(X,Y): (046,019)
+
+Page #1
+Conditions
+None
+
+Autonomous Movement
+Type: Fixed
+Speed: 3: Slow
+Freq: 3: Low
+Options Enabled
+Move Animation
+Trigger: Action Button
+
+List of Event Commands:
+@>Conditional Branch: Script: pbItemBall(:ASPEARBERRY)
+ @>Control Self Switch: A =ON
+ @>
+: Else
+ @>
+: Branch End
+@>
+
+Page #2
+Conditions
+Self Switch A is ON
+
+Autonomous Movement
+Type: Fixed
+Speed: 3: Slow
+Freq: 3: Low
+Options Enabled
+Move Animation
+Trigger: Action Button
+
+List of Event Commands:
+@>
+
+#------------------------------------------------------------------------------
+Event ID: 066
+Event Name: HiddenItem
+(X,Y): (025,022)
+
+Page #1
+Conditions
+None
+
+Autonomous Movement
+Type: Fixed
+Speed: 3: Slow
+Freq: 3: Low
+Options Enabled
+Move Animation
+Trigger: Action Button
+
+List of Event Commands:
+@>Conditional Branch: Script: pbItemBall(:ASPEARBERRY)
+ @>Control Self Switch: A =ON
+ @>
+: Else
+ @>
+: Branch End
+@>
+
+Page #2
+Conditions
+Self Switch A is ON
+
+Autonomous Movement
+Type: Fixed
+Speed: 3: Slow
+Freq: 3: Low
+Options Enabled
+Move Animation
+Trigger: Action Button
+
+List of Event Commands:
+@>
+
+#------------------------------------------------------------------------------
+Event ID: 067
+Event Name: HiddenItem
+(X,Y): (030,013)
+
+Page #1
+Conditions
+None
+
+Autonomous Movement
+Type: Fixed
+Speed: 3: Slow
+Freq: 3: Low
+Options Enabled
+Move Animation
+Trigger: Action Button
+
+List of Event Commands:
+@>Conditional Branch: Script: pbItemBall(:ASPEARBERRY)
+ @>Control Self Switch: A =ON
+ @>
+: Else
+ @>
+: Branch End
+@>
+
+Page #2
+Conditions
+Self Switch A is ON
+
+Autonomous Movement
+Type: Fixed
+Speed: 3: Slow
+Freq: 3: Low
+Options Enabled
+Move Animation
+Trigger: Action Button
+
+List of Event Commands:
+@>
+
+#------------------------------------------------------------------------------
+Event ID: 068
+Event Name: HiddenItem
+(X,Y): (056,024)
+
+Page #1
+Conditions
+None
+
+Autonomous Movement
+Type: Fixed
+Speed: 3: Slow
+Freq: 3: Low
+Options Enabled
+Move Animation
+Trigger: Action Button
+
+List of Event Commands:
+@>Conditional Branch: Script: pbItemBall(:ASPEARBERRY)
+ @>Control Self Switch: A =ON
+ @>
+: Else
+ @>
+: Branch End
+@>
+
+Page #2
+Conditions
+Self Switch A is ON
+
+Autonomous Movement
+Type: Fixed
+Speed: 3: Slow
+Freq: 3: Low
+Options Enabled
+Move Animation
+Trigger: Action Button
+
+List of Event Commands:
+@>
+
+#------------------------------------------------------------------------------
+
+#==============================================================================
 Map ID: 369
 Map Name: hi
 Tileset: 020: Trainer Tower
@@ -173786,6 +170437,2209 @@ List of Event Commands:
  :       : PWT.
 @>Comment: Has to be Parallel Process!
 @>Control Self Switch: A =OFF
+@>
+
+#------------------------------------------------------------------------------
+
+#==============================================================================
+Map ID: 371
+Map Name: Seafoam Islands
+Tileset: 006: Caves
+Width: 80, Height: 37
+Auto-Change BGM: W-027. Ice Path
+
+#------------------------------------------------------------------------------
+Event ID: 001
+Event Name: EV001
+(X,Y): (049,018)
+
+Page #1
+Conditions
+None
+
+Autonomous Movement
+Type: Fixed
+Speed: 3: Slow
+Freq: 3: Low
+Options Enabled
+Move Animation
+Trigger: Action Button
+
+List of Event Commands:
+@>Comment: Trainer - Ruin Maniac Sabon
+ :       : "Seafoam Islands holds a deep secret, I'll be the first to discover it!"
+ :       : "I'll be the first to discover the exit, I suppose!"
+ :       : "They say that you can find one of the legendary birds, Articuno, here. Nobody has seen it in over seven years though."
+@>
+
+#------------------------------------------------------------------------------
+Event ID: 002
+Event Name: EV002
+(X,Y): (027,024)
+
+Page #1
+Conditions
+None
+
+Autonomous Movement
+Type: Fixed
+Speed: 3: Slow
+Freq: 3: Low
+Options Enabled
+Move Animation
+Trigger: Action Button
+
+List of Event Commands:
+@>Comment: Trainer - Boarder Amy
+ :       : "This is the best place to train Ice and Cryo-types! We have home-turf advantage!"
+ :       : "Totally wasted..."
+ :       : "I feel naturally at home in the cold, guess it helps that I grew up in Snowpoint City."
+@>
+
+#------------------------------------------------------------------------------
+Event ID: 008
+Event Name: EV008
+(X,Y): (022,021)
+
+Page #1
+Conditions
+None
+
+Autonomous Movement
+Type: Fixed
+Speed: 3: Slow
+Freq: 3: Low
+Options Enabled
+Move Animation
+Trigger: Player Touch
+
+List of Event Commands:
+@>Play SE: 'Door exit', 80, 100
+@>Change Screen Color Tone: (-255,-255,-255,0), @6
+@>Wait: 8 frame(s)
+@>Transfer Player:[368: Seafoam Islands], (022,025), No Fade
+@>Change Screen Color Tone: (0,0,0,0), @6
+@>
+
+#------------------------------------------------------------------------------
+Event ID: 009
+Event Name: EV009
+(X,Y): (028,020)
+
+Page #1
+Conditions
+None
+
+Autonomous Movement
+Type: Fixed
+Speed: 3: Slow
+Freq: 3: Low
+Options Enabled
+Move Animation
+Trigger: Player Touch
+
+List of Event Commands:
+@>Play SE: 'Door exit', 80, 100
+@>Change Screen Color Tone: (-255,-255,-255,0), @6
+@>Wait: 8 frame(s)
+@>Transfer Player:[368: Seafoam Islands], (028,023), No Fade
+@>Change Screen Color Tone: (0,0,0,0), @6
+@>
+
+#------------------------------------------------------------------------------
+Event ID: 010
+Event Name: EV010
+(X,Y): (031,011)
+
+Page #1
+Conditions
+None
+
+Autonomous Movement
+Type: Fixed
+Speed: 3: Slow
+Freq: 3: Low
+Options Enabled
+Move Animation
+Trigger: Player Touch
+
+List of Event Commands:
+@>Play SE: 'Door exit', 80, 100
+@>Change Screen Color Tone: (-255,-255,-255,0), @6
+@>Wait: 8 frame(s)
+@>Transfer Player:[368: Seafoam Islands], (032,013), No Fade
+@>Change Screen Color Tone: (0,0,0,0), @6
+@>
+
+#------------------------------------------------------------------------------
+Event ID: 011
+Event Name: EV011
+(X,Y): (047,027)
+
+Page #1
+Conditions
+None
+
+Autonomous Movement
+Type: Fixed
+Speed: 3: Slow
+Freq: 3: Low
+Options Enabled
+Move Animation
+Trigger: Player Touch
+
+List of Event Commands:
+@>Play SE: 'Door exit', 80, 100
+@>Change Screen Color Tone: (-255,-255,-255,0), @6
+@>Wait: 8 frame(s)
+@>Transfer Player:[368: Seafoam Islands], (047,027), No Fade
+@>Change Screen Color Tone: (0,0,0,0), @6
+@>
+
+#------------------------------------------------------------------------------
+Event ID: 012
+Event Name: EV012
+(X,Y): (056,014)
+
+Page #1
+Conditions
+None
+
+Autonomous Movement
+Type: Fixed
+Speed: 3: Slow
+Freq: 3: Low
+Options Enabled
+Move Animation
+Trigger: Player Touch
+
+List of Event Commands:
+@>Play SE: 'Door exit', 80, 100
+@>Change Screen Color Tone: (-255,-255,-255,0), @6
+@>Wait: 8 frame(s)
+@>Transfer Player:[372: Seafoam Islands], (057,017), No Fade
+@>Change Screen Color Tone: (0,0,0,0), @6
+@>
+
+#------------------------------------------------------------------------------
+Event ID: 013
+Event Name: EV013
+(X,Y): (055,025)
+
+Page #1
+Conditions
+None
+
+Autonomous Movement
+Type: Fixed
+Speed: 3: Slow
+Freq: 3: Low
+Options Enabled
+Move Animation
+Trigger: Player Touch
+
+List of Event Commands:
+@>Play SE: 'Door exit', 80, 100
+@>Change Screen Color Tone: (-255,-255,-255,0), @6
+@>Wait: 8 frame(s)
+@>Transfer Player:[372: Seafoam Islands], (056,030), No Fade
+@>Change Screen Color Tone: (0,0,0,0), @6
+@>
+
+#------------------------------------------------------------------------------
+Event ID: 014
+Event Name: EV014
+(X,Y): (036,016)
+
+Page #1
+Conditions
+None
+
+Autonomous Movement
+Type: Fixed
+Speed: 3: Slow
+Freq: 3: Low
+Options Enabled
+Move Animation
+Trigger: Player Touch
+
+List of Event Commands:
+@>Play SE: 'Door exit', 80, 100
+@>Change Screen Color Tone: (-255,-255,-255,0), @6
+@>Wait: 8 frame(s)
+@>Transfer Player:[372: Seafoam Islands], (036,020), No Fade
+@>Change Screen Color Tone: (0,0,0,0), @6
+@>
+
+#------------------------------------------------------------------------------
+Event ID: 015
+Event Name: EV015
+(X,Y): (018,026)
+
+Page #1
+Conditions
+None
+
+Autonomous Movement
+Type: Fixed
+Speed: 3: Slow
+Freq: 3: Low
+Options Enabled
+Move Animation
+Trigger: Player Touch
+
+List of Event Commands:
+@>Play SE: 'Door exit', 80, 100
+@>Change Screen Color Tone: (-255,-255,-255,0), @6
+@>Wait: 8 frame(s)
+@>Transfer Player:[372: Seafoam Islands], (018,030), No Fade
+@>Change Screen Color Tone: (0,0,0,0), @6
+@>
+
+#------------------------------------------------------------------------------
+Event ID: 044
+Event Name: Item Ball
+(X,Y): (041,026)
+
+Page #1
+Conditions
+None
+
+Graphic: Object ball
+
+Autonomous Movement
+Type: Fixed
+Speed: 3: Slow
+Freq: 3: Low
+Options Enabled
+Move Animation
+Trigger: Action Button
+
+List of Event Commands:
+@>Conditional Branch: Script: pbItemBall(:ZINC)
+ @>Control Self Switch: A =ON
+ @>
+: Else
+ @>
+: Branch End
+@>
+
+Page #2
+Conditions
+Self Switch A is ON
+
+Autonomous Movement
+Type: Fixed
+Speed: 3: Slow
+Freq: 3: Low
+Options Enabled
+Move Animation
+Trigger: Action Button
+
+List of Event Commands:
+@>
+
+#------------------------------------------------------------------------------
+Event ID: 048
+Event Name: HiddenItem
+(X,Y): (039,017)
+
+Page #1
+Conditions
+None
+
+Autonomous Movement
+Type: Fixed
+Speed: 3: Slow
+Freq: 3: Low
+Options Enabled
+Move Animation
+Trigger: Action Button
+
+List of Event Commands:
+@>Conditional Branch: Script: pbItemBall(:ICYROCK)
+ @>Control Self Switch: A =ON
+ @>
+: Else
+ @>
+: Branch End
+@>
+
+Page #2
+Conditions
+Self Switch A is ON
+
+Autonomous Movement
+Type: Fixed
+Speed: 3: Slow
+Freq: 3: Low
+Options Enabled
+Move Animation
+Trigger: Action Button
+
+List of Event Commands:
+@>
+
+#------------------------------------------------------------------------------
+Event ID: 049
+Event Name: HiddenItem
+(X,Y): (027,015)
+
+Page #1
+Conditions
+None
+
+Autonomous Movement
+Type: Fixed
+Speed: 3: Slow
+Freq: 3: Low
+Options Enabled
+Move Animation
+Trigger: Action Button
+
+List of Event Commands:
+@>Conditional Branch: Script: pbItemBall(:EVIOLITE)
+ @>Control Self Switch: A =ON
+ @>
+: Else
+ @>
+: Branch End
+@>
+
+Page #2
+Conditions
+Self Switch A is ON
+
+Autonomous Movement
+Type: Fixed
+Speed: 3: Slow
+Freq: 3: Low
+Options Enabled
+Move Animation
+Trigger: Action Button
+
+List of Event Commands:
+@>
+
+#------------------------------------------------------------------------------
+Event ID: 062
+Event Name: Item Ball
+(X,Y): (037,022)
+
+Page #1
+Conditions
+None
+
+Graphic: Object ball
+
+Autonomous Movement
+Type: Fixed
+Speed: 3: Slow
+Freq: 3: Low
+Options Enabled
+Move Animation
+Trigger: Action Button
+
+List of Event Commands:
+@>Conditional Branch: Script: pbItemBall(:MAXREVIVE)
+ @>Control Self Switch: A =ON
+ @>
+: Else
+ @>
+: Branch End
+@>
+
+Page #2
+Conditions
+Self Switch A is ON
+
+Autonomous Movement
+Type: Fixed
+Speed: 3: Slow
+Freq: 3: Low
+Options Enabled
+Move Animation
+Trigger: Action Button
+
+List of Event Commands:
+@>
+
+#------------------------------------------------------------------------------
+Event ID: 069
+Event Name: size(4,1)
+(X,Y): (053,023)
+
+Page #1
+Conditions
+None
+
+Graphic: Object ball
+
+Autonomous Movement
+Type: Fixed
+Speed: 3: Slow
+Freq: 3: Low
+Options Enabled
+Move Animation
+Trigger: Player Touch
+
+List of Event Commands:
+@>Script: pbBridgeOff
+@>
+
+#------------------------------------------------------------------------------
+Event ID: 070
+Event Name: size(4,1)
+(X,Y): (053,024)
+
+Page #1
+Conditions
+None
+
+Graphic: Object ball
+
+Autonomous Movement
+Type: Fixed
+Speed: 3: Slow
+Freq: 3: Low
+Options Enabled
+Move Animation
+Trigger: Player Touch
+
+List of Event Commands:
+@>Script: pbBridgeOn
+@>
+
+#------------------------------------------------------------------------------
+Event ID: 072
+Event Name: size(5,1)
+(X,Y): (035,019)
+
+Page #1
+Conditions
+None
+
+Graphic: Object ball
+
+Autonomous Movement
+Type: Fixed
+Speed: 3: Slow
+Freq: 3: Low
+Options Enabled
+Move Animation
+Trigger: Player Touch
+
+List of Event Commands:
+@>Script: pbBridgeOn
+@>
+
+#------------------------------------------------------------------------------
+Event ID: 073
+Event Name: size(5,1)
+(X,Y): (035,018)
+
+Page #1
+Conditions
+None
+
+Graphic: Object ball
+
+Autonomous Movement
+Type: Fixed
+Speed: 3: Slow
+Freq: 3: Low
+Options Enabled
+Move Animation
+Trigger: Player Touch
+
+List of Event Commands:
+@>Script: pbBridgeOff
+@>
+
+#------------------------------------------------------------------------------
+Event ID: 083
+Event Name: HiddenItem
+(X,Y): (026,015)
+
+Page #1
+Conditions
+None
+
+Autonomous Movement
+Type: Fixed
+Speed: 3: Slow
+Freq: 3: Low
+Options Enabled
+Move Animation
+Trigger: Action Button
+
+List of Event Commands:
+@>Conditional Branch: Script: pbItemBall(:ASPEARBERRY)
+ @>Control Self Switch: A =ON
+ @>
+: Else
+ @>
+: Branch End
+@>
+
+Page #2
+Conditions
+Self Switch A is ON
+
+Autonomous Movement
+Type: Fixed
+Speed: 3: Slow
+Freq: 3: Low
+Options Enabled
+Move Animation
+Trigger: Action Button
+
+List of Event Commands:
+@>
+
+#------------------------------------------------------------------------------
+
+#==============================================================================
+Map ID: 372
+Map Name: Seafoam Islands
+Tileset: 006: Caves
+Width: 80, Height: 41
+Auto-Change BGM: W-027. Ice Path
+
+#------------------------------------------------------------------------------
+Event ID: 023
+Event Name: EV023
+(X,Y): (018,030)
+
+Page #1
+Conditions
+None
+
+Autonomous Movement
+Type: Fixed
+Speed: 3: Slow
+Freq: 3: Low
+Options Enabled
+Move Animation
+Trigger: Player Touch
+
+List of Event Commands:
+@>Play SE: 'Door exit', 80, 100
+@>Change Screen Color Tone: (-255,-255,-255,0), @6
+@>Wait: 8 frame(s)
+@>Transfer Player:[371: Seafoam Islands], (018,026), No Fade
+@>Change Screen Color Tone: (0,0,0,0), @6
+@>
+
+#------------------------------------------------------------------------------
+Event ID: 024
+Event Name: EV024
+(X,Y): (036,020)
+
+Page #1
+Conditions
+None
+
+Autonomous Movement
+Type: Fixed
+Speed: 3: Slow
+Freq: 3: Low
+Options Enabled
+Move Animation
+Trigger: Player Touch
+
+List of Event Commands:
+@>Play SE: 'Door exit', 80, 100
+@>Change Screen Color Tone: (-255,-255,-255,0), @6
+@>Wait: 8 frame(s)
+@>Transfer Player:[371: Seafoam Islands], (036,016), No Fade
+@>Change Screen Color Tone: (0,0,0,0), @6
+@>
+
+#------------------------------------------------------------------------------
+Event ID: 025
+Event Name: EV025
+(X,Y): (057,017)
+
+Page #1
+Conditions
+None
+
+Autonomous Movement
+Type: Fixed
+Speed: 3: Slow
+Freq: 3: Low
+Options Enabled
+Move Animation
+Trigger: Player Touch
+
+List of Event Commands:
+@>Play SE: 'Door exit', 80, 100
+@>Change Screen Color Tone: (-255,-255,-255,0), @6
+@>Wait: 8 frame(s)
+@>Transfer Player:[371: Seafoam Islands], (056,014), No Fade
+@>Change Screen Color Tone: (0,0,0,0), @6
+@>
+
+#------------------------------------------------------------------------------
+Event ID: 026
+Event Name: EV026
+(X,Y): (056,030)
+
+Page #1
+Conditions
+None
+
+Autonomous Movement
+Type: Fixed
+Speed: 3: Slow
+Freq: 3: Low
+Options Enabled
+Move Animation
+Trigger: Player Touch
+
+List of Event Commands:
+@>Play SE: 'Door exit', 80, 100
+@>Change Screen Color Tone: (-255,-255,-255,0), @6
+@>Wait: 8 frame(s)
+@>Transfer Player:[371: Seafoam Islands], (055,025), No Fade
+@>Change Screen Color Tone: (0,0,0,0), @6
+@>
+
+#------------------------------------------------------------------------------
+Event ID: 029
+Event Name: EV029
+(X,Y): (019,010)
+
+Page #1
+Conditions
+None
+
+Autonomous Movement
+Type: Fixed
+Speed: 3: Slow
+Freq: 3: Low
+Options Enabled
+Move Animation
+Trigger: Player Touch
+
+List of Event Commands:
+@>Play SE: 'Door exit', 80, 100
+@>Change Screen Color Tone: (-255,-255,-255,0), @6
+@>Wait: 8 frame(s)
+@>Transfer Player:[373: Seafoam Islands], (018,010), No Fade
+@>Change Screen Color Tone: (0,0,0,0), @6
+@>
+
+#------------------------------------------------------------------------------
+Event ID: 030
+Event Name: EV030
+(X,Y): (025,026)
+
+Page #1
+Conditions
+None
+
+Autonomous Movement
+Type: Fixed
+Speed: 3: Slow
+Freq: 3: Low
+Options Enabled
+Move Animation
+Trigger: Player Touch
+
+List of Event Commands:
+@>Play SE: 'Door exit', 80, 100
+@>Change Screen Color Tone: (-255,-255,-255,0), @6
+@>Wait: 8 frame(s)
+@>Transfer Player:[373: Seafoam Islands], (025,027), No Fade
+@>Change Screen Color Tone: (0,0,0,0), @6
+@>
+
+#------------------------------------------------------------------------------
+Event ID: 031
+Event Name: EV031
+(X,Y): (046,009)
+
+Page #1
+Conditions
+None
+
+Autonomous Movement
+Type: Fixed
+Speed: 3: Slow
+Freq: 3: Low
+Options Enabled
+Move Animation
+Trigger: Player Touch
+
+List of Event Commands:
+@>Play SE: 'Door exit', 80, 100
+@>Change Screen Color Tone: (-255,-255,-255,0), @6
+@>Wait: 8 frame(s)
+@>Transfer Player:[373: Seafoam Islands], (045,010), No Fade
+@>Change Screen Color Tone: (0,0,0,0), @6
+@>
+
+#------------------------------------------------------------------------------
+Event ID: 032
+Event Name: EV032
+(X,Y): (041,018)
+
+Page #1
+Conditions
+None
+
+Autonomous Movement
+Type: Fixed
+Speed: 3: Slow
+Freq: 3: Low
+Options Enabled
+Move Animation
+Trigger: Player Touch
+
+List of Event Commands:
+@>Play SE: 'Door exit', 80, 100
+@>Change Screen Color Tone: (-255,-255,-255,0), @6
+@>Wait: 8 frame(s)
+@>Transfer Player:[373: Seafoam Islands], (041,018), No Fade
+@>Change Screen Color Tone: (0,0,0,0), @6
+@>
+
+#------------------------------------------------------------------------------
+Event ID: 033
+Event Name: EV033
+(X,Y): (051,028)
+
+Page #1
+Conditions
+None
+
+Autonomous Movement
+Type: Fixed
+Speed: 3: Slow
+Freq: 3: Low
+Options Enabled
+Move Animation
+Trigger: Player Touch
+
+List of Event Commands:
+@>Play SE: 'Door exit', 80, 100
+@>Change Screen Color Tone: (-255,-255,-255,0), @6
+@>Wait: 8 frame(s)
+@>Transfer Player:[373: Seafoam Islands], (050,027), No Fade
+@>Change Screen Color Tone: (0,0,0,0), @6
+@>
+
+#------------------------------------------------------------------------------
+Event ID: 034
+Event Name: EV034
+(X,Y): (059,027)
+
+Page #1
+Conditions
+None
+
+Autonomous Movement
+Type: Fixed
+Speed: 3: Slow
+Freq: 3: Low
+Options Enabled
+Move Animation
+Trigger: Player Touch
+
+List of Event Commands:
+@>Play SE: 'Door exit', 80, 100
+@>Change Screen Color Tone: (-255,-255,-255,0), @6
+@>Wait: 8 frame(s)
+@>Transfer Player:[373: Seafoam Islands], (057,028), No Fade
+@>Change Screen Color Tone: (0,0,0,0), @6
+@>
+
+#------------------------------------------------------------------------------
+Event ID: 046
+Event Name: Item Ball
+(X,Y): (035,016)
+
+Page #1
+Conditions
+None
+
+Graphic: Object ball
+
+Autonomous Movement
+Type: Fixed
+Speed: 3: Slow
+Freq: 3: Low
+Options Enabled
+Move Animation
+Trigger: Action Button
+
+List of Event Commands:
+@>Conditional Branch: Script: pbItemBall(:PPUP)
+ @>Control Self Switch: A =ON
+ @>
+: Else
+ @>
+: Branch End
+@>
+
+Page #2
+Conditions
+Self Switch A is ON
+
+Autonomous Movement
+Type: Fixed
+Speed: 3: Slow
+Freq: 3: Low
+Options Enabled
+Move Animation
+Trigger: Action Button
+
+List of Event Commands:
+@>
+
+#------------------------------------------------------------------------------
+Event ID: 050
+Event Name: HiddenItem
+(X,Y): (024,014)
+
+Page #1
+Conditions
+None
+
+Autonomous Movement
+Type: Fixed
+Speed: 3: Slow
+Freq: 3: Low
+Options Enabled
+Move Animation
+Trigger: Action Button
+
+List of Event Commands:
+@>Conditional Branch: Script: pbItemBall(:ASPEARBERRY)
+ @>Control Self Switch: A =ON
+ @>
+: Else
+ @>
+: Branch End
+@>
+
+Page #2
+Conditions
+Self Switch A is ON
+
+Autonomous Movement
+Type: Fixed
+Speed: 3: Slow
+Freq: 3: Low
+Options Enabled
+Move Animation
+Trigger: Action Button
+
+List of Event Commands:
+@>
+
+#------------------------------------------------------------------------------
+Event ID: 051
+Event Name: HiddenItem
+(X,Y): (052,031)
+
+Page #1
+Conditions
+None
+
+Autonomous Movement
+Type: Fixed
+Speed: 3: Slow
+Freq: 3: Low
+Options Enabled
+Move Animation
+Trigger: Action Button
+
+List of Event Commands:
+@>Conditional Branch: Script: pbItemBall(:REVIVALHERB)
+ @>Control Self Switch: A =ON
+ @>
+: Else
+ @>
+: Branch End
+@>
+
+Page #2
+Conditions
+Self Switch A is ON
+
+Autonomous Movement
+Type: Fixed
+Speed: 3: Slow
+Freq: 3: Low
+Options Enabled
+Move Animation
+Trigger: Action Button
+
+List of Event Commands:
+@>
+
+#------------------------------------------------------------------------------
+Event ID: 053
+Event Name: StrengthBoulder
+(X,Y): (044,017)
+
+Page #1
+Conditions
+None
+
+Graphic: Object boulder
+
+Autonomous Movement
+Type: Fixed
+Speed: 3: Slow
+Freq: 3: Low
+Options Enabled
+Move Animation
+Trigger: Player Touch
+
+List of Event Commands:
+@>Script: pbPushThisBoulder
+@>
+
+Page #2
+Conditions
+Self Switch A is ON
+
+Graphic: Object boulder
+
+Autonomous Movement
+Type: Fixed
+Speed: 3: Slow
+Freq: 3: Low
+Options Enabled
+Move Animation
+Trigger: Action Button
+
+List of Event Commands:
+@>
+
+#------------------------------------------------------------------------------
+Event ID: 061
+Event Name: Item Ball
+(X,Y): (034,027)
+
+Page #1
+Conditions
+None
+
+Graphic: Object ball
+
+Autonomous Movement
+Type: Fixed
+Speed: 3: Slow
+Freq: 3: Low
+Options Enabled
+Move Animation
+Trigger: Action Button
+
+List of Event Commands:
+@>Conditional Branch: Script: pbItemBall(:ELIXIR)
+ @>Control Self Switch: A =ON
+ @>
+: Else
+ @>
+: Branch End
+@>
+
+Page #2
+Conditions
+Self Switch A is ON
+
+Autonomous Movement
+Type: Fixed
+Speed: 3: Slow
+Freq: 3: Low
+Options Enabled
+Move Animation
+Trigger: Action Button
+
+List of Event Commands:
+@>
+
+#------------------------------------------------------------------------------
+Event ID: 098
+Event Name: EV098
+(X,Y): (028,020)
+
+Page #1
+Conditions
+None
+
+Graphic: Object boulder
+
+Autonomous Movement
+Type: Fixed
+Speed: 3: Slow
+Freq: 3: Low
+Options Enabled
+Move Animation
+Trigger: Action Button
+
+List of Event Commands:
+@>Text: The boulder seems to be frozen over...
+@>
+
+#------------------------------------------------------------------------------
+Event ID: 099
+Event Name: EV099
+(X,Y): (032,017)
+
+Page #1
+Conditions
+None
+
+Graphic: Object boulder
+
+Autonomous Movement
+Type: Fixed
+Speed: 3: Slow
+Freq: 3: Low
+Options Enabled
+Move Animation
+Trigger: Action Button
+
+List of Event Commands:
+@>Text: The boulder seems to be frozen over...
+@>
+
+#------------------------------------------------------------------------------
+Event ID: 100
+Event Name: EV100
+(X,Y): (029,014)
+
+Page #1
+Conditions
+None
+
+Graphic: Object boulder
+
+Autonomous Movement
+Type: Fixed
+Speed: 3: Slow
+Freq: 3: Low
+Options Enabled
+Move Animation
+Trigger: Action Button
+
+List of Event Commands:
+@>Text: The boulder seems to be frozen over...
+@>
+
+#------------------------------------------------------------------------------
+Event ID: 101
+Event Name: EV101
+(X,Y): (044,026)
+
+Page #1
+Conditions
+None
+
+Graphic: Object boulder
+
+Autonomous Movement
+Type: Fixed
+Speed: 3: Slow
+Freq: 3: Low
+Options Enabled
+Move Animation
+Trigger: Action Button
+
+List of Event Commands:
+@>Text: The boulder seems to be frozen over...
+@>
+
+#------------------------------------------------------------------------------
+Event ID: 102
+Event Name: EV102
+(X,Y): (038,028)
+
+Page #1
+Conditions
+None
+
+Graphic: Object boulder
+
+Autonomous Movement
+Type: Fixed
+Speed: 3: Slow
+Freq: 3: Low
+Options Enabled
+Move Animation
+Trigger: Action Button
+
+List of Event Commands:
+@>Text: The boulder seems to be frozen over...
+@>
+
+#------------------------------------------------------------------------------
+Event ID: 103
+Event Name: EV103
+(X,Y): (046,030)
+
+Page #1
+Conditions
+None
+
+Graphic: Object boulder
+
+Autonomous Movement
+Type: Fixed
+Speed: 3: Slow
+Freq: 3: Low
+Options Enabled
+Move Animation
+Trigger: Action Button
+
+List of Event Commands:
+@>Text: The boulder seems to be frozen over...
+@>
+
+#------------------------------------------------------------------------------
+
+#==============================================================================
+Map ID: 373
+Map Name: Seafoam Islands
+Tileset: 006: Caves
+Width: 80, Height: 45
+Auto-Change BGM: W-027. Ice Path
+
+#------------------------------------------------------------------------------
+Event ID: 027
+Event Name: EV027
+(X,Y): (039,028)
+
+Page #1
+Conditions
+None
+
+Autonomous Movement
+Type: Fixed
+Speed: 3: Slow
+Freq: 3: Low
+Options Enabled
+Move Animation
+Trigger: Player Touch
+
+List of Event Commands:
+@>Play SE: 'Door exit', 80, 100
+@>Change Screen Color Tone: (-255,-255,-255,0), @6
+@>Wait: 8 frame(s)
+@>Transfer Player:[374: Seafoam Islands], (015,042), No Fade
+@>Change Screen Color Tone: (0,0,0,0), @6
+@>
+
+#------------------------------------------------------------------------------
+Event ID: 035
+Event Name: EV035
+(X,Y): (018,010)
+
+Page #1
+Conditions
+None
+
+Autonomous Movement
+Type: Fixed
+Speed: 3: Slow
+Freq: 3: Low
+Options Enabled
+Move Animation
+Trigger: Player Touch
+
+List of Event Commands:
+@>Play SE: 'Door exit', 80, 100
+@>Change Screen Color Tone: (-255,-255,-255,0), @6
+@>Wait: 8 frame(s)
+@>Transfer Player:[372: Seafoam Islands], (019,010), No Fade
+@>Change Screen Color Tone: (0,0,0,0), @6
+@>
+
+#------------------------------------------------------------------------------
+Event ID: 036
+Event Name: EV036
+(X,Y): (045,010)
+
+Page #1
+Conditions
+None
+
+Autonomous Movement
+Type: Fixed
+Speed: 3: Slow
+Freq: 3: Low
+Options Enabled
+Move Animation
+Trigger: Player Touch
+
+List of Event Commands:
+@>Play SE: 'Door exit', 80, 100
+@>Change Screen Color Tone: (-255,-255,-255,0), @6
+@>Wait: 8 frame(s)
+@>Transfer Player:[372: Seafoam Islands], (046,009), No Fade
+@>Change Screen Color Tone: (0,0,0,0), @6
+@>
+
+#------------------------------------------------------------------------------
+Event ID: 037
+Event Name: EV037
+(X,Y): (041,018)
+
+Page #1
+Conditions
+None
+
+Autonomous Movement
+Type: Fixed
+Speed: 3: Slow
+Freq: 3: Low
+Options Enabled
+Move Animation
+Trigger: Player Touch
+
+List of Event Commands:
+@>Play SE: 'Door exit', 80, 100
+@>Change Screen Color Tone: (-255,-255,-255,0), @6
+@>Wait: 8 frame(s)
+@>Transfer Player:[372: Seafoam Islands], (041,018), No Fade
+@>Change Screen Color Tone: (0,0,0,0), @6
+@>
+
+#------------------------------------------------------------------------------
+Event ID: 038
+Event Name: EV038
+(X,Y): (025,027)
+
+Page #1
+Conditions
+None
+
+Autonomous Movement
+Type: Fixed
+Speed: 3: Slow
+Freq: 3: Low
+Options Enabled
+Move Animation
+Trigger: Player Touch
+
+List of Event Commands:
+@>Play SE: 'Door exit', 80, 100
+@>Change Screen Color Tone: (-255,-255,-255,0), @6
+@>Wait: 8 frame(s)
+@>Transfer Player:[372: Seafoam Islands], (025,026), No Fade
+@>Change Screen Color Tone: (0,0,0,0), @6
+@>
+
+#------------------------------------------------------------------------------
+Event ID: 039
+Event Name: EV039
+(X,Y): (050,027)
+
+Page #1
+Conditions
+None
+
+Autonomous Movement
+Type: Fixed
+Speed: 3: Slow
+Freq: 3: Low
+Options Enabled
+Move Animation
+Trigger: Player Touch
+
+List of Event Commands:
+@>Play SE: 'Door exit', 80, 100
+@>Change Screen Color Tone: (-255,-255,-255,0), @6
+@>Wait: 8 frame(s)
+@>Transfer Player:[372: Seafoam Islands], (051,028), No Fade
+@>Change Screen Color Tone: (0,0,0,0), @6
+@>
+
+#------------------------------------------------------------------------------
+Event ID: 040
+Event Name: EV040
+(X,Y): (057,028)
+
+Page #1
+Conditions
+None
+
+Autonomous Movement
+Type: Fixed
+Speed: 3: Slow
+Freq: 3: Low
+Options Enabled
+Move Animation
+Trigger: Player Touch
+
+List of Event Commands:
+@>Play SE: 'Door exit', 80, 100
+@>Change Screen Color Tone: (-255,-255,-255,0), @6
+@>Wait: 8 frame(s)
+@>Transfer Player:[372: Seafoam Islands], (059,027), No Fade
+@>Change Screen Color Tone: (0,0,0,0), @6
+@>
+
+#------------------------------------------------------------------------------
+Event ID: 047
+Event Name: TM Item Ball
+(X,Y): (054,013)
+
+Page #1
+Conditions
+None
+
+Graphic: Object ball
+
+Autonomous Movement
+Type: Fixed
+Speed: 3: Slow
+Freq: 3: Low
+Options Enabled
+Move Animation
+Trigger: Action Button
+
+List of Event Commands:
+@>Comment: SC13 - Ice Beam
+@>Conditional Branch: Script: pbReceiveItem(:SC13)
+ @>Control Self Switch: A =ON
+ @>
+: Else
+ @>
+: Branch End
+@>
+
+Page #2
+Conditions
+Self Switch A is ON
+
+Autonomous Movement
+Type: Fixed
+Speed: 3: Slow
+Freq: 3: Low
+Options Enabled
+Move Animation
+Trigger: Action Button
+
+List of Event Commands:
+@>
+
+#------------------------------------------------------------------------------
+Event ID: 052
+Event Name: HiddenItem
+(X,Y): (048,026)
+
+Page #1
+Conditions
+None
+
+Autonomous Movement
+Type: Fixed
+Speed: 3: Slow
+Freq: 3: Low
+Options Enabled
+Move Animation
+Trigger: Action Button
+
+List of Event Commands:
+@>Conditional Branch: Script: pbItemBall(:NEVERMELTICE)
+ @>Control Self Switch: A =ON
+ @>
+: Else
+ @>
+: Branch End
+@>
+
+Page #2
+Conditions
+Self Switch A is ON
+
+Autonomous Movement
+Type: Fixed
+Speed: 3: Slow
+Freq: 3: Low
+Options Enabled
+Move Animation
+Trigger: Action Button
+
+List of Event Commands:
+@>
+
+#------------------------------------------------------------------------------
+Event ID: 060
+Event Name: Item Ball
+(X,Y): (027,012)
+
+Page #1
+Conditions
+None
+
+Graphic: Object ball
+
+Autonomous Movement
+Type: Fixed
+Speed: 3: Slow
+Freq: 3: Low
+Options Enabled
+Move Animation
+Trigger: Action Button
+
+List of Event Commands:
+@>Conditional Branch: Script: pbItemBall(:HYPERPOTION)
+ @>Control Self Switch: A =ON
+ @>
+: Else
+ @>
+: Branch End
+@>
+
+Page #2
+Conditions
+Self Switch A is ON
+
+Autonomous Movement
+Type: Fixed
+Speed: 3: Slow
+Freq: 3: Low
+Options Enabled
+Move Animation
+Trigger: Action Button
+
+List of Event Commands:
+@>
+
+#------------------------------------------------------------------------------
+
+#==============================================================================
+Map ID: 374
+Map Name: Seafoam Islands
+Tileset: 006: Caves
+Width: 80, Height: 53
+Auto-Change BGM: W-027. Ice Path
+
+#------------------------------------------------------------------------------
+Event ID: 001
+Event Name: Articuno
+(X,Y): (057,018)
+
+Page #1
+Conditions
+None
+
+Graphic: OW - 144
+
+Autonomous Movement
+Type: Fixed
+Speed: 3: Slow
+Freq: 3: Low
+Options Enabled
+Stop Animation
+Direction Fix
+Trigger: Action Button
+
+List of Event Commands:
+@>Change Battle BGM: 'B-024. Battle! Vs. Legendary Pokemon', 100, 100
+@>Control Switches: [0104: Transition Handler] = ON
+@>Control Variables: [0103: Vs. Transition ID] = 17
+@>Control Switches: [0102: Special Battle Switch] = ON
+@>Control Variables: [0102: Special Battle Variable] = 1
+@>Script: Pokemon.play_cry(:ARTICUNO)
+@>Wait: 20 frame(s)
+@>Comment: --------------------
+@>Script: setBattleRule("disablePokeBalls")
+:       : setBattleRule("cannotRun")
+:       : setBattleRule("base", "ice")
+@>Conditional Branch: Script: WildBattle.start(:ARTICUNO, 65)
+ @>Control Switches: [0102: Special Battle Switch] = OFF
+ @>Wait: 20 frame(s)
+ @>Script: Pokemon.play_cry(:ARTICUNO)
+ @>Wait: 10 frame(s)
+ @>Change Screen Color Tone: (-255,-255,-255,0), @6
+ @>Play SE: 'Battle flee', 100, 100
+ @>Wait: 10 frame(s)
+ @>Control Self Switch: A =ON
+ @>Wait: 15 frame(s)
+ @>Change Screen Color Tone: (0,0,0,0), @6
+ @>Wait: 10 frame(s)
+ @>Text: The Articuno flew off to an unknown location!
+ @>Wait: 25 frame(s)
+ @>Script: Pokemon.play_cry(:MAGAN)
+ @>Wait: 15 frame(s)
+ @>Change Screen Color Tone: (-255,-255,-255,0), @6
+ @>Wait: 20 frame(s)
+ @>Transfer Player:[374: Seafoam Islands], (057,021), Up, No Fade
+ @>Control Variables: [0134: Articuno/Magan] = 2
+ @>Change Screen Color Tone: (0,0,0,0), @6
+ @>
+: Branch End
+@>Comment: --------------------
+@>
+
+Page #2
+Conditions
+Variable 0134: Articuno/Magan is 1 or above
+
+Autonomous Movement
+Type: Fixed
+Speed: 3: Slow
+Freq: 3: Low
+Options Enabled
+Move Animation
+Trigger: Action Button
+
+List of Event Commands:
+@>
+
+Page #3
+Conditions
+Self Switch A is ON
+
+Autonomous Movement
+Type: Fixed
+Speed: 3: Slow
+Freq: 3: Low
+Options Enabled
+Move Animation
+Trigger: Action Button
+
+List of Event Commands:
+@>
+
+#------------------------------------------------------------------------------
+Event ID: 002
+Event Name: size(3,2)
+(X,Y): (020,023)
+
+Page #1
+Conditions
+None
+
+Autonomous Movement
+Type: Fixed
+Speed: 3: Slow
+Freq: 3: Low
+Options Enabled
+Move Animation
+Trigger: Action Button
+
+List of Event Commands:
+@>
+
+Page #2
+Conditions
+Self Switch A is ON
+
+Autonomous Movement
+Type: Fixed
+Speed: 3: Slow
+Freq: 3: Low
+Options Enabled
+Move Animation
+Trigger: Action Button
+
+List of Event Commands:
+@>
+
+#------------------------------------------------------------------------------
+Event ID: 003
+Event Name: EV003
+(X,Y): (021,023)
+
+Page #1
+Conditions
+None
+
+Autonomous Movement
+Type: Fixed
+Speed: 3: Slow
+Freq: 3: Low
+Options Enabled
+Move Animation
+Trigger: Action Button
+
+List of Event Commands:
+@>Text: There seems to be an orb-shaped indent in this wall.
+@>Conditional Branch: Script: $bag.quantity(:FROSTORB)>0
+ @>Text: Perhaps the Frost Orb goes here... Try placing it in 
+  :    : the slot?
+ @>Show Choices: Yes, No
+ (When Cancel: Choice 2)
+ : When [Yes]
+  @>Text: Let's see what happens!
+  @>Play SE: 'Knock', 100, 100
+  @>Text: \pn inserted the Frost Orb into the slot.
+  @>Wait: 10 frame(s)
+  @>Play SE: 'Ice5', 80, 100
+  @>Show Animation: Player, [Exclaim bubble]
+  @>Wait: 20 frame(s)
+  @>Play SE: 'Collapse1', 80, 100
+  @>Wait: 10 frame(s)
+  @>Change Screen Color Tone: (-255,-255,-255,0), @6
+  @>Wait: 8 frame(s)
+  @>Script: pbSetSelfSwitch(2,"A",true)
+  @>Control Self Switch: A =ON
+  @>Change Screen Color Tone: (0,0,0,0), @6
+  @>Show Animation: Player, [Exclaim bubble]
+  @>Text: The panel froze over and broke away! A door 
+   :    : appeared where the panel once was!
+  @>
+ : When [No]
+  @>Text: Might not be a good idea...
+  @>
+ : Branch End
+ @>
+: Else
+ @>
+: Branch End
+@>
+
+Page #2
+Conditions
+Self Switch A is ON
+
+Autonomous Movement
+Type: Fixed
+Speed: 3: Slow
+Freq: 3: Low
+Options Enabled
+Move Animation
+Trigger: Player Touch
+
+List of Event Commands:
+@>Play SE: 'Door exit', 80, 100
+@>Change Screen Color Tone: (-255,-255,-255,0), @6
+@>Wait: 8 frame(s)
+@>Transfer Player:[374: Seafoam Islands], (057,041), No Fade
+@>Change Screen Color Tone: (0,0,0,0), @6
+@>
+
+#------------------------------------------------------------------------------
+Event ID: 022
+Event Name: EV022
+(X,Y): (057,042)
+
+Page #1
+Conditions
+None
+
+Autonomous Movement
+Type: Fixed
+Speed: 3: Slow
+Freq: 3: Low
+Options Enabled
+Move Animation
+Trigger: Player Touch
+
+List of Event Commands:
+@>Play SE: 'Door exit', 80, 100
+@>Change Screen Color Tone: (-255,-255,-255,0), @6
+@>Wait: 8 frame(s)
+@>Transfer Player:[374: Seafoam Islands], (021,023), No Fade
+@>Change Screen Color Tone: (0,0,0,0), @6
+@>Set Move Route: Player
+ :              : $>Move Down
+@>
+
+#------------------------------------------------------------------------------
+Event ID: 028
+Event Name: EV028
+(X,Y): (015,042)
+
+Page #1
+Conditions
+None
+
+Autonomous Movement
+Type: Fixed
+Speed: 3: Slow
+Freq: 3: Low
+Options Enabled
+Move Animation
+Trigger: Player Touch
+
+List of Event Commands:
+@>Play SE: 'Door exit', 80, 100
+@>Change Screen Color Tone: (-255,-255,-255,0), @6
+@>Wait: 8 frame(s)
+@>Transfer Player:[373: Seafoam Islands], (039,028), No Fade
+@>Change Screen Color Tone: (0,0,0,0), @6
+@>
+
+#------------------------------------------------------------------------------
+Event ID: 076
+Event Name: Counter(3)
+(X,Y): (055,029)
+
+Page #1
+Conditions
+None
+
+Graphic: Object ball
+
+Autonomous Movement
+Type: Fixed
+Speed: 3: Slow
+Freq: 3: Low
+Options Enabled
+Move Animation
+Trigger: Event Touch
+
+List of Event Commands:
+@>Script: $game_variables[1] = $game_player.x
+:       : $game_variables[2] = $game_player.y
+:       : $game_variables[3] = 344
+@>Script: Pokemon.play_cry(:ARTICUNO)
+@>Wait: 25 frame(s)
+@>Script: Pokemon.play_cry(:MAGAN)
+@>Wait: 20 frame(s)
+@>Change Screen Color Tone: (-255,-255,-255,0), @6
+@>Wait: 8 frame(s)
+@>Change Transparent Flag: Transparency
+@>Transfer Player:[374: Seafoam Islands], (057,020)
+@>Wait: 10 frame(s)
+@>Change Screen Color Tone: (0,0,0,0), @6
+@>Wait: 15 frame(s)
+@>Script: Pokemon.play_cry(:ARTICUNO)
+@>Wait: 25 frame(s)
+@>Script: Pokemon.play_cry(:MAGAN)
+@>Wait: 20 frame(s)
+@>Set Move Route: [Articuno]
+ :              : $>Change Speed: 5
+ :              : $>Through ON
+ :              : $>Move Down
+ :              : $>Move Down
+ :              : $>SE: 'Slam', 100, 100
+ :              : $>Change Speed: 2
+ :              : $>Move Up
+ :              : $>Move Up
+ :              : $>Change Speed: 3
+@>Set Move Route: [Magan]
+ :              : $>Change Speed: 5
+ :              : $>Through ON
+ :              : $>Move Up
+ :              : $>Move Up
+ :              : $>Change Speed: 2
+ :              : $>Move Down
+ :              : $>Move Down
+ :              : $>Change Speed: 3
+@>Wait for Move's Completion
+@>Wait: 15 frame(s)
+@>Set Move Route: [Articuno]
+ :              : $>Change Speed: 5
+ :              : $>Through ON
+ :              : $>Move Down
+ :              : $>Move Down
+ :              : $>Change Speed: 2
+ :              : $>Move Up
+ :              : $>Move Up
+ :              : $>Change Speed: 3
+ :              : $>Through OFF
+@>Set Move Route: [Magan]
+ :              : $>Change Speed: 5
+ :              : $>Through ON
+ :              : $>Move Up
+ :              : $>Move Up
+ :              : $>SE: 'Mega Punch', 100, 100
+ :              : $>Change Speed: 2
+ :              : $>Move Down
+ :              : $>Move Down
+ :              : $>Change Speed: 3
+ :              : $>Through OFF
+@>Wait for Move's Completion
+@>Wait: 15 frame(s)
+@>Script: Pokemon.play_cry(:ARTICUNO)
+@>Wait: 25 frame(s)
+@>Script: Pokemon.play_cry(:MAGAN)
+@>Wait: 20 frame(s)
+@>Change Screen Color Tone: (-255,-255,-255,0), @6
+@>Wait: 8 frame(s)
+@>Change Transparent Flag: Normal
+@>Transfer Player:Variable [0003][0001][0002]
+@>Wait: 15 frame(s)
+@>Change Screen Color Tone: (0,0,0,0), @6
+@>Control Self Switch: A =ON
+@>
+
+Page #2
+Conditions
+Self Switch A is ON
+
+Autonomous Movement
+Type: Fixed
+Speed: 3: Slow
+Freq: 3: Low
+Options Enabled
+Move Animation
+Trigger: Action Button
+
+List of Event Commands:
+@>
+
+#------------------------------------------------------------------------------
+Event ID: 077
+Event Name: Counter(3)
+(X,Y): (055,037)
+
+Page #1
+Conditions
+None
+
+Graphic: Object ball
+
+Autonomous Movement
+Type: Fixed
+Speed: 3: Slow
+Freq: 3: Low
+Options Enabled
+Move Animation
+Trigger: Event Touch
+
+List of Event Commands:
+@>Script: Pokemon.play_cry(:ARTICUNO)
+@>Show Animation: Player, [Exclaim bubble]
+@>Wait: 25 frame(s)
+@>Script: Pokemon.play_cry(:MAGAN)
+@>Show Animation: Player, [Question bubble]
+@>Wait: 20 frame(s)
+@>Control Self Switch: A =ON
+@>
+
+Page #2
+Conditions
+Self Switch A is ON
+
+Autonomous Movement
+Type: Fixed
+Speed: 3: Slow
+Freq: 3: Low
+Options Enabled
+Move Animation
+Trigger: Action Button
+
+List of Event Commands:
+@>
+
+#------------------------------------------------------------------------------
+Event ID: 078
+Event Name: EV078
+(X,Y): (057,011)
+
+Page #1
+Conditions
+Variable 0134: Articuno/Magan is 1 or above
+
+Graphic: Object ball
+
+Autonomous Movement
+Type: Fixed
+Speed: 3: Slow
+Freq: 3: Low
+Options Enabled
+Move Animation
+Trigger: Action Button
+
+List of Event Commands:
+@>
+
+Page #2
+Conditions
+Variable 0134: Articuno/Magan is 2 or above
+
+Graphic: Object ball
+
+Autonomous Movement
+Type: Fixed
+Speed: 3: Slow
+Freq: 3: Low
+Options Enabled
+Move Animation
+Trigger: Action Button
+
+List of Event Commands:
+@>
+
+#------------------------------------------------------------------------------
+Event ID: 084
+Event Name: Magan
+(X,Y): (057,022)
+
+Page #1
+Conditions
+None
+
+Graphic: OW - Puppet_Magan
+
+Autonomous Movement
+Type: Fixed
+Speed: 3: Slow
+Freq: 3: Low
+Options Enabled
+Stop Animation
+Direction Fix
+Trigger: Action Button
+
+List of Event Commands:
+@>Change Battle BGM: 'B-025. Battle! Vs. Legendary Puppet (Angel's Legend)', 60, 100
+@>Control Switches: [0104: Transition Handler] = ON
+@>Control Variables: [0103: Vs. Transition ID] = 16
+@>Control Switches: [0102: Special Battle Switch] = ON
+@>Control Variables: [0102: Special Battle Variable] = 2
+@>Script: Pokemon.play_cry(:MAGAN)
+@>Wait: 20 frame(s)
+@>Comment: --------------------
+@>Script: setBattleRule("disablePokeBalls")
+:       : setBattleRule("cannotRun")
+:       : setBattleRule("base", "ice")
+@>Conditional Branch: Script: WildBattle.start(:MAGAN, 65)
+ @>Control Switches: [0102: Special Battle Switch] = OFF
+ @>Wait: 20 frame(s)
+ @>Script: Pokemon.play_cry(:MAGAN)
+ @>Wait: 10 frame(s)
+ @>Change Screen Color Tone: (-255,-255,-255,0), @6
+ @>Play SE: 'Battle flee', 100, 100
+ @>Wait: 10 frame(s)
+ @>Control Self Switch: A =ON
+ @>Wait: 15 frame(s)
+ @>Change Screen Color Tone: (0,0,0,0), @6
+ @>Wait: 10 frame(s)
+ @>Text: The Magan flew off to an unknown location!
+ @>Wait: 25 frame(s)
+ @>Script: Pokemon.play_cry(:ARTICUNO)
+ @>Wait: 15 frame(s)
+ @>Change Screen Color Tone: (-255,-255,-255,0), @6
+ @>Wait: 20 frame(s)
+ @>Transfer Player:[374: Seafoam Islands], (057,021), Up, No Fade
+ @>Control Variables: [0134: Articuno/Magan] = 1
+ @>Change Screen Color Tone: (0,0,0,0), @6
+ @>
+: Branch End
+@>
+
+Page #2
+Conditions
+Variable 0134: Articuno/Magan is 1 or above
+
+Autonomous Movement
+Type: Fixed
+Speed: 3: Slow
+Freq: 3: Low
+Options Enabled
+Move Animation
+Trigger: Action Button
+
+List of Event Commands:
+@>
+
+Page #3
+Conditions
+Self Switch A is ON
+
+Autonomous Movement
+Type: Fixed
+Speed: 3: Slow
+Freq: 3: Low
+Options Enabled
+Move Animation
+Trigger: Action Button
+
+List of Event Commands:
+@>
+
+#------------------------------------------------------------------------------
+Event ID: 091
+Event Name: EV091
+(X,Y): (050,018)
+
+Page #1
+Conditions
+None
+
+Autonomous Movement
+Type: Fixed
+Speed: 3: Slow
+Freq: 3: Low
+Options Enabled
+Move Animation
+Trigger: Action Button
+
+List of Event Commands:
+@>
+
+#------------------------------------------------------------------------------
+Event ID: 092
+Event Name: EV092
+(X,Y): (057,020)
+
+Page #1
+Conditions
+None
+
+Autonomous Movement
+Type: Fixed
+Speed: 3: Slow
+Freq: 3: Low
+Options Enabled
+Move Animation
+Trigger: Action Button
+
+List of Event Commands:
+@>
+
+Page #2
+Conditions
+Variable 0134: Articuno/Magan is 1 or above
+
+Graphic: OW - 144
+
+Autonomous Movement
+Type: Fixed
+Speed: 3: Slow
+Freq: 3: Low
+Options Enabled
+Stop Animation
+Direction Fix
+Trigger: Action Button
+
+List of Event Commands:
+@>Change Battle BGM: 'B-024. Battle! Vs. Legendary Pokemon', 100, 100
+@>Control Switches: [0104: Transition Handler] = ON
+@>Control Variables: [0103: Vs. Transition ID] = 17
+@>Script: Pokemon.play_cry(:ARTICUNO)
+@>Wait: 20 frame(s)
+@>Comment: --------------------
+@>Script: setBattleRule("outcome",1)
+:       : setBattleRule("base", "ice")
+@>Script: WildBattle.start(:ARTICUNO, 65)
+@>Conditional Branch: Variable [0001: Temp Pokemon Choice] == 4
+ @>Control Self Switch: A =ON
+ @>
+: Else
+ @>
+: Branch End
+@>
+
+Page #3
+Conditions
+Variable 0134: Articuno/Magan is 2 or above
+
+Graphic: OW - Puppet_Magan
+
+Autonomous Movement
+Type: Fixed
+Speed: 3: Slow
+Freq: 3: Low
+Options Enabled
+Stop Animation
+Direction Fix
+Trigger: Action Button
+
+List of Event Commands:
+@>Change Battle BGM: 'B-025. Battle! Vs. Legendary Puppet (Angel's Legend)', 60, 100
+@>Control Switches: [0104: Transition Handler] = ON
+@>Control Variables: [0103: Vs. Transition ID] = 16
+@>Script: Pokemon.play_cry(:ARTICUNO)
+@>Wait: 20 frame(s)
+@>Comment: --------------------
+@>Script: setBattleRule("outcome",1)
+:       : setBattleRule("base", "ice")
+@>Script: WildBattle.start(:ARTICUNO, 65)
+@>Conditional Branch: Variable [0001: Temp Pokemon Choice] == 4
+ @>Control Self Switch: A =ON
+ @>
+: Else
+ @>
+: Branch End
+@>
+
+Page #4
+Conditions
+Self Switch A is ON
+
+Autonomous Movement
+Type: Fixed
+Speed: 3: Slow
+Freq: 3: Low
+Options Enabled
+Stop Animation
+Direction Fix
+Trigger: Action Button
+
+List of Event Commands:
+@>
+
+#------------------------------------------------------------------------------
+Event ID: 093
+Event Name: Mewtwo Test Event
+(X,Y): (076,049)
+
+Page #1
+Conditions
+None
+
+Graphic: OW - 150
+
+Autonomous Movement
+Type: Fixed
+Speed: 3: Slow
+Freq: 3: Low
+Options Enabled
+Stop Animation
+Direction Fix
+Trigger: Action Button
+
+List of Event Commands:
+@>Change Battle BGM: '000. Now, Until The Moment You Die', 100, 100
+@>Control Switches: [0142] = ON
+@>Wait: 20 frame(s)
+@>Memorize BGM/BGS
+@>Play BGM: '000. Now, Until The Moment You Die', 100, 100
+@>Comment: ------ Fuck this Intro ------
+@>Change Screen Color Tone: (-255,-255,-255,0), @0
+@>Screen Flash: (255,255,255,255), @10
+@>Show Picture: 1, 'Vs. Mewtwo_Shadow', Center (256,192), (100%,100%), 0, Normal
+@>Move Picture: 1, @5, Center (256,192), (100%,100%), 255, Normal
+@>Wait: 53 frame(s)
+@>Screen Flash: (255,255,255,255), @10
+@>Show Picture: 1, 'Vs. Sariel_Shadow', Center (256,192), (100%,100%), 0, Normal
+@>Move Picture: 1, @5, Center (256,192), (100%,100%), 255, Normal
+@>Wait: 51 frame(s)
+@>Screen Flash: (255,255,255,255), @10
+@>Play SE: 'expfull', 0, 100
+@>Show Picture: 1, 'BG_Cerulean Cave', Center (256,192), (100%,100%), 0, Normal
+@>Move Picture: 1, @5, Center (256,192), (100%,100%), 255, Normal
+@>Wait: 29 frame(s)
+@>Screen Flash: (255,255,255,255), @10
+@>Play SE: 'expfull', 0, 100
+@>Show Picture: 1, 'BG_Vina', Center (256,192), (100%,100%), 0, Normal
+@>Move Picture: 1, @5, Center (256,192), (100%,100%), 255, Normal
+@>Wait: 25 frame(s)
+@>Screen Flash: (255,255,255,255), @5
+@>Play SE: 'expfull', 0, 100
+@>Move Picture: 1, @5, Center (256,192), (100%,100%), 0, Normal
+@>Wait: 25 frame(s)
+@>Screen Flash: (255,255,255,255), @5
+@>Play SE: 'expfull', 0, 100
+@>Wait: 7 frame(s)
+@>Screen Flash: (255,255,255,255), @5
+@>Play SE: 'expfull', 0, 100
+@>Wait: 7 frame(s)
+@>Screen Flash: (255,255,255,255), @5
+@>Play SE: 'expfull', 0, 100
+@>Wait: 7 frame(s)
+@>Screen Flash: (255,255,255,255), @5
+@>Play SE: 'expfull', 0, 100
+@>Show Picture: 1, 'Vs. Sariel and Mewtwo', Center (256,192), (100%,100%), 255, Normal
+@>Wait: 200 frame(s)
+@>Script: pbDoubleWildBattle(PBSpecies::MEWTWO,100,PBSpecies::SARIEL,100,1,false,false)
+@>Restore BGM/BGS
+@>Control Switches: [0142] = OFF
+@>Change Screen Color Tone: (0,0,0,0), @10
 @>
 
 #------------------------------------------------------------------------------

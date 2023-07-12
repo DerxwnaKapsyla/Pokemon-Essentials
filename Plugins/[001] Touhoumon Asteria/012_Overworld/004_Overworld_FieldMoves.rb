@@ -125,7 +125,7 @@ def pbRockSmash
   end
   if !(pbCheckHiddenMoveBadge(Settings::BADGE_FOR_ROCKSMASH, false) ||
   	   pbCheckHiddenMoveBadge(Settings::ALT_BADGE_FOR_ROCKSMASH, false)) || (!$DEBUG && !movefinder)
-    pbMessage(_INTL("It's a rugged rock, but it may be able to smash it."))
+    pbMessage(_INTL("It's a rugged rock, but it may be able to be smashed."))
     return false
   end
   if pbConfirmMessage(_INTL("This rock seems breakable with a hidden move.\nWould you like to use Rock Smash?"))
@@ -167,7 +167,7 @@ def pbStrength
   end
   if !(pbCheckHiddenMoveBadge(Settings::BADGE_FOR_STRENGTH, false) ||
   	   pbCheckHiddenMoveBadge(Settings::ALT_BADGE_FOR_STRENGTH, false)) || (!$DEBUG && !movefinder)
-    pbMessage(_INTL("It's a big boulder, but it may be able to push it aside."))
+    pbMessage(_INTL("It's a big boulder, but it may be able to be pushed aside."))
     return false
   end
   pbMessage(_INTL("It's a big boulder, but you may be able to push it aside with a hidden move.\1"))

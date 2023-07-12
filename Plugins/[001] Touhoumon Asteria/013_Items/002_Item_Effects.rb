@@ -115,9 +115,6 @@ ItemHandlers::UseOnPokemon.add(:LIQUIDREVIVE, proc { |item, qty, pkmn, scene|
   pkmn.moves.length.times do |i|
     pprestored += pbRestorePP(pkmn, i, pkmn.moves[i].total_pp - pkmn.moves[i].pp)
   end
-  if pprestored == 0
-	next false if !pbConfirmMessage(_INTL("{1} is fainted, but has no PP to restore. Use anyway?", pkmn.name))
-  end
   pkmn.heal_HP
   pkmn.heal_status
   scene.pbRefresh

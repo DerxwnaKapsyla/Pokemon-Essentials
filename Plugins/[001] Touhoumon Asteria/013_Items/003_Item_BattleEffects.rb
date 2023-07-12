@@ -65,11 +65,6 @@ ItemHandlers::CanUseInBattle.add(:LIQUIDREVIVE, proc { |item, pokemon, battler, 
     canRestore = true
     break
   end
-  if !canRestore
-	next false if !pbConfirmMessage(_INTL("{1} is fainted, but has no PP to restore. Use anyway?", pokemon.name))
-#    scene.pbDisplay(_INTL("It won't have any effect.")) if showMessages
-#    next false
-  end
   next true
 })
 # ------ Derx: End of Liquid Revive code

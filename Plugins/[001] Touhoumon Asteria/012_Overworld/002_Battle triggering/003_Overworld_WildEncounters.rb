@@ -47,6 +47,9 @@ class PokemonEncounters
       when :PUREINCENSE
         encounter_chance *= 2.0 / 3
         min_steps_needed *= 4 / 3.0
+	  when :STEALTHCHARM
+        encounter_chance = 0
+        min_steps_needed = 0
       else   # Ignore ability effects if an item effect applies
         case first_pkmn.ability_id
         when :STENCH, :WHITESMOKE, :QUICKFEET, :JEALOUSY

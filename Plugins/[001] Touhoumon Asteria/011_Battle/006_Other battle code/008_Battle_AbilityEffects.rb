@@ -400,6 +400,38 @@ Battle::AbilityEffects::EndOfRoundWeather.add(:ICEFACE,
   }
 )
 
+Battle::AbilityEffects::EndOfRoundGainItem.add(:GRAVEROBBER,
+  proc { |ability, battler, battle|
+    next if battler.item
+    foundItem = nil
+    fromBattler = nil
+    use = 0
+	p "1"
+    battle.allBattlers.each do |b|
+      next if b.index == battler.index
+      next if b.effects[PBEffects::PickupUse] <= use
+      foundItem   = b.effects[PBEffects::PickupItem]
+      fromBattler = b
+      use         = b.effects[PBEffects::PickupUse]
+    end
+	p "2"
+    next if !foundItem
+    battle.pbShowAbilitySplash(battler)
+    battler.item = foundItem
+    fromBattler.effects[PBEffects::PickupItem] = nil
+    fromBattler.effects[PBEffects::PickupUse]  = 0
+    fromBattler.setRecycleItem(nil) if fromBattler.recycleItem == foundItem
+    if battle.wildBattle? && !battler.initialItem && fromBattler.initialItem == foundItem
+      battler.setInitialItem(foundItem)
+      fromBattler.setInitialItem(nil)
+    end
+	p "3"
+    battle.pbDisplay(_INTL("{1} dug up one {2}!", battler.pbThis, battler.itemName))
+    battle.pbHideAbilitySplash(battler)
+    battler.pbHeldItemTriggerCheck
+  }
+)
+
 Battle::AbilityEffects::AfterMoveUseFromTarget.copy(:COLORCHANGE,:MYSTERIOUS)
 
 Battle::AbilityEffects::AfterMoveUseFromTarget.add(:PICKPOCKET,

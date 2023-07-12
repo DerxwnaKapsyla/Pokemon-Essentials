@@ -1007,19 +1007,24 @@ module EssentialsDeluxe
   #-----------------------------------------------------------------------------  
   VS_RED_1 = {
     "turnCommand" => {
-	  :blankspeech		=> ["RENKO: Let's show Red how well we work together as a team, Mary!", 
-							"MARIBEL: I'm right beside you, Renko!",
-							"RED: ..."], 
+	  #:speech			=> ["RENKO: Let's show Red how well we work together as a team, Mary!", 
+		#					"MARIBEL: I'm right beside you, Renko!",
+		#					"RED: ..."], 
+	  :speech			=> [:Speaker, {:name => "Renko",  :skin => 1}, "Let's show Red how well we work together as a team, Mary!",
+							:Speaker, {:name => "Maribel",  :skin => 1}, "I'm right beside you, Renko!",
+							1, "..."], 
 	  },
 	"fainted" => {
 	  :ignore			=> "fainted_ally",
 	  :battler			=> :Ally,
-	  :blankspeech		=> ["\PN: Oh no!", "{2}: It's alright, I've got this \pn!"]
+	  :speech			=> [0, "Oh no!",
+							2, "It's alright, I've got this!"]
 	  },
 	"fainted_ally" => {
 	  :ignore			=> "fainted",
 	  :battler			=> :Ally,
-	  :blankspeech		=> ["{2}: Oh no!", "\pn: It's alright, I've got this {2}!"]
+	  :speech			=> [2, "Oh no!",
+							0, "It's alright, I've got this!"]
 	  },
 	}
 	
@@ -1027,52 +1032,65 @@ module EssentialsDeluxe
   # Scene: Vs. Chibi Kazami, A Thorny Situation sidequest
   #-----------------------------------------------------------------------------  
   VS_CKAZAMI = {
+  	#------------------------------
+	# Start of Battle:
+	# * Player Dialogue: Remarks about how Kazami doesnt look threatening.
+	# * Kazami begins to defend itself
+	# * Kazami gains +2 Def/SDef
+	#------------------------------
 	"turnCommand" => {
-	  :battler				=> 0,
-	  :blankspeech			=> ["{2}: So this is the Puppet that all those construction workers are afraid of?", 
-								"{2}: She looks like she's too sleepy to do any harm, but I guess looks can be decieving..."],
+	  :speech				=> [0, "So this is the Puppet that all those construction workers are afraid of?", 
+								0, "She looks like she's too sleepy to do any harm, but I guess looks can be decieving...",
+								1, :Anim, :GROWL, :Self,  "..."],
 	  :battler				=> 1,
-	  :blankspeech_1		=> "CKazami: ...",
-	  :text_3				=> "The wild CKazami begins to defend itself!",
+	  :text					=> "The wild CKazami begins to defend itself!",
 	  :stats   				=> [:DEFENSE, 2, :SPECIAL_DEFENSE, 2],
-	  :item					=> :STURDYVINE
+	  :anim					=> :INGRAIN,
+	  :text_1				=> "The vines that rose out of the ground are making throwing a Poké Ball difficult!\nThey cannot be used in this battle!",
 	},
 	
-	"defenderHPLowLast_foe" => {
+	#---------------------------------------------------------------------------
+    # Continuous - Applies Endure effect to CKazami whenever targeted by
+    #              a damage-dealing move. Ensures it is not KO'd early.
+    #              will become disabled once a she reaches low HP.
+	#---------------------------------------------------------------------------
+	"moveDamaging_repeat" => {
+	  :ignore 		=> "defenderHPLow_foe",
+	  :battler 		=> :Opposing,
+	  :effects 		=> [ [PBEffects::Endure, true] ]
+	},
+	
+	#---------------------------------------------------------------------------
+    # Low HP (Foe) - Kazami evolution sequence. Very lengthy.
+	#---------------------------------------------------------------------------	
+	"defenderHPLow_foe" => {
 	  :nobgm				=> true,
-	  :battler				=> 0,
-	  :blankspeech			=> "{2}: Alright, let's finish it off!\"",
-	  :battler_1			=> 1,
-	  :playSEnw				=> "Cries/CKAZAMI",
-	  :blankspeech_1		=> "CKazami: ...",
+	  :speech				=> [0, "Alright, let's finish it off!",
+							    1, :Anim, :GROWL, :Self,  "..."],
 	  :text					=> "The CKazami stood back up!",
 	  :hp      				=> 1,
-	  :battler_2			=> 0,
-	  :blankspeech_2		=> "{2}: Wait... what's it doing?\"",
-	  :battler_3			=> 1,
+	  :speech_1				=> [0, "Wait... what's it doing?"],
+	  :battler				=> 1,
 	  :anim					=> "KazamiEvo",
 	  :form					=> 1,
+	  :rename				=> "Kazami",
 	  :anim_2				=> "EmptyAnim",
 	  :backdrop2			=> "Forest_Alt1",
 	  :anim_3				=> "Shadow",
 	  :playSEnw_2			=> "Cries/KAZAMI_Alt",
-	  :rename				=> "Kazami",
 	  :status  				=> :NONE,
 	  :playSE_1				=> "Evolution success",
-	  :battler_4			=> 0,
-	  :blankspeech_3		=> ["{2}: No way- Did it just evolve in the middle of battle!?", 
-								"{2}: This doesn't bode well!"],
+	  :speech_2				=> [0, "No way- Did it just evolve in the middle of battle!?", 
+								0, "This doesn't bode well!"],
 	  :wait					=> 35,
 	  :bgmnw				=> "B-009. Faint Dream ~ Inanimate Dream",
-	  :battler_5			=> 1,
 	  :stats  	 			=> :Reset_Defenses,
 	  :stats_1 				=> [:ATTACK, 1, :SPECIAL_ATTACK, 1, :SPEED, 1],
-	  :text_4				=> "The wild Kazami is now prepared to fight!",
+	  :text_2				=> "The wild Kazami is now prepared to fight!",
 	  :moves   				=> [:HYPERBEAM18, :LEAFBLADE18, :INGRAIN18, :TAUNT18],
 	  :ability 				=> :OVERGROW,
 	  :item					=> :MALACHITE,
-	  :playSEnw_3			=> "Cries/KAZAMI_Alt",
-	  :blankspeech_4		=> ["Kazami: !!!"],
+	  :speech_3				=> [1, :Anim, :GROWL, :Self,  "!!!"],
 	  :switchon				=> 107,
 	},	
   }
@@ -1081,41 +1099,55 @@ module EssentialsDeluxe
   # Scene: Vs. Kazami, A Thorny Situation (If defeated but witnessed CKazami evolve)
   #-----------------------------------------------------------------------------  
   VS_KAZAMI = {
+  	#------------------------------
+	# Start of Battle:
+	# * Player Dialogue: Remarks They won't get caught off guard again
+	# * Kazami takes up stance
+	# * Kazami gains +1 Atk/Spd/SAtk
+	# * Kazami gains a Malachite
+	#------------------------------
 	"turnCommand" => {
 	  :battler				=> 0,
-	  :blankspeech			=> ["{2}: That last fight caught us off guard, but we won't falter again!", 
-								"{2}: Ready yourself, {1}!"],
+	  :speech				=> [0, "That last fight caught us off guard, but we won't falter again!", 
+								0, "Ready yourself, {1}!"],
 	  :text					=> ["The wild Kazami takes up a battling stance!"],
 	  :battler_1			=> 1,
 	  :stats   				=> [:ATTACK, 1, :SPEED, 1, :SPECIAL_ATTACK, 1],
-	  :playSEnw				=> "Cries/KAZAMI_Alt",
-	  :blankspeech_1		=> ["Kazami: !!!"],
+	  :speech_1				=> [1, :Anim, :GROWL, :Self,  "!!!"],
 	  :text_1				=> ["The wild Kazami is ready to fight once again!"],
-	  :item					=> :MALACHITE
+	  :item					=> :MALACHITE,
+	  :anim					=> :INGRAIN,
+	  :text_2				=> "The vines that rose out of the ground are making throwing a Poké Ball difficult!\nThey cannot be used in this battle!",
 	},
   }
   
   #-----------------------------------------------------------------------------
   # Scene: Vs. Ayakashi
-  # Mechanic: Forced Perish Song
+  # Mechanic: Blackout Battle. The player has to land damage on Ayakashi to
+  #			  reset the counter. The blackout will happen after the variable
+  #			  hits 4 turns.
   #-----------------------------------------------------------------------------  
-  #VS_AYAKASHI = {
-  #	"turnCommand" => {
-  #	  :battler			=> 0,
-  #	  :blankspeech		=> "{1} is being drawn in by Ayakashi's power!,
-  #	  :effects 			=> [ [PBEffects::PerishSong, 3] ],
-  #	  :anim 			=> :PERISHSONG,
-  #	  :blankspeech_1	=> "{1} will faint in 3 turns!"
-  #	  }
-  #
-  #	"switchSentOut_repeat" => {
-  #	  :battler			=> 0,
-  #	  :blankspeech		=> "{1} is being drawn in by Ayakashi's power!,
-  #	  :effects 			=> [ [PBEffects::PerishSong, 3] ],
-  #	  :anim 			=> :PERISHSONG,
-  #	  :blankspeech_1	=> "{1} will faint in 3 turns!"
-  #	  }
-  #}
+  VS_AYAKASHI = {
+  	"turnCommand" => {
+  	  :battler			=> 0,
+  	  :text				=> "{2} is being drawn in by Ayakashi's power!",
+  	  :effects 			=> [ [PBEffects::NoRetreat, :Self] ],
+  	  :anim 			=> :PERISHSONG,
+  	  :text_1			=> "{2} will blackout after 4 turns!"
+  	  },
+  
+  	#------------------------------
+	# Turn End
+	# * Increase variable by one
+	# * If variable hits four, the player loses the battle
+	#------------------------------
+	
+  	#------------------------------
+	# Landing a hit on Ayakashi
+	# * Reset the timer back to 4
+	# * Mention that Ayakashi's hold temporarily weakened
+	#------------------------------
+  }
   
   #-----------------------------------------------------------------------------
   # Scene: Vs. DLwRuukoto, The Ultimate Collector: Retribution Sidequest
@@ -1247,7 +1279,7 @@ module EssentialsDeluxe
 	# Random chance at the end of every turn:
 	#	* Inflict a random status condition
 	#---------------------------------------------------------------------------
-    "turnEnd_repeat_random" => {
+    "turnEnd_repeat_random_33" => {
       :text			=> [:Opposing, "{1} emits a bizarre energy pulse!"],
 	  :battler  	=> :Opposing,
 	  :anim			=> :TERRAINPULSE,
