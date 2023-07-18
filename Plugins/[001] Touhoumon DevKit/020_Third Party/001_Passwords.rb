@@ -11,6 +11,7 @@ class Player < Trainer
   attr_accessor :dlwruukoto
   attr_accessor :next_wild_shiny
   attr_accessor	:puppet_orbs_200
+  attr_accessor	:reincarnation_items
 #  attr_accessor	:derx_rebattle
 #  attr_accessor	:sariel_fight
 end
@@ -26,6 +27,7 @@ def pbPasswordCheck(helptext = "Input Password", minlength = 0, maxlength = 12, 
 	
   # --- Item Distributions ---
 	"20161118",				# 200 Puppet Orbs
+	"rahnwasright",			# Full set of Reincarnation Items
 	
   # --- Utility and Quality of Life ---
 	"moreshiny",			# Next Wild Encounter is shiny
@@ -101,6 +103,34 @@ def pbPasswordCheck(helptext = "Input Password", minlength = 0, maxlength = 12, 
 		if pbConfirmMessage(_INTL("\\bWould you like to claim this code??"))
 		  pbReceiveItem(:PUPPETORB,200)
 		  $player.puppet_orbs_200 = true
+		  return true
+		else
+		  return false
+		end
+	  end
+	# --- Reincarnation Items ---
+	when "rahnwasright"
+	  if $player.reincarnation_items
+		pbMessage(_INTL("\\bYou have already redeemed the code for the Reincarnation Items. This code cannot be used again."))
+		return false
+	  else
+		pbMessage(_INTL("\\bThis code will give you a full set of items for the Reincarnation System."))
+		pbMessage(_INTL("\\bOnce claimed, you will not be able to renew this code again."))
+		if pbConfirmMessage(_INTL("\\bWould you like to claim this code??"))
+		  pbReceiveItem(:GOLDSTONE)
+		  pbReceiveItem(:REDSTONE)
+		  pbReceiveItem(:BLUESTONE)
+		  pbReceiveItem(:BLACKSTONE)
+		  pbReceiveItem(:WHITESTONE)
+		  pbReceiveItem(:GREENSTONE)
+		  pbReceiveItem(:RAINBOWSTONE)
+		  pbReceiveItem(:REDMARK)
+		  pbReceiveItem(:BLUEMARK)
+		  pbReceiveItem(:BLACKMARK)
+		  pbReceiveItem(:WHITEMARK)
+		  pbReceiveItem(:GREENMARK)
+		  pbReceiveItem(:GREYMARK)
+		  $player.reincarnation_items = true
 		  return true
 		else
 		  return false

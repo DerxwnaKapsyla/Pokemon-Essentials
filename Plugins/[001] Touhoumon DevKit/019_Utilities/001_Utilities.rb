@@ -12,7 +12,7 @@ def pbMoveTutorChoose(move, movelist = nil, bymachine = false, oneusemachine = f
   if movelist.is_a?(Array)
     movelist.map! { |m| GameData::Move.get(m).id }
   end
-  pbFadeOutIn {
+  pbFadeOutIn do
     movename = GameData::Move.get(move).name
     annot = pbMoveTutorAnnotations(move, movelist)
     scene = PokemonParty_Scene.new
@@ -39,6 +39,6 @@ def pbMoveTutorChoose(move, movelist = nil, bymachine = false, oneusemachine = f
       end
     end
     screen.pbEndScene
-  }
+  end
   return ret   # Returns whether the move was learned by a Pokemon
 end

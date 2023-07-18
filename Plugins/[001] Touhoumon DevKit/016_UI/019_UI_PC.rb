@@ -12,7 +12,7 @@ MenuHandlers.add(:pc_menu, :pokemon_storage, {
   },
   "order"     => 10,
   "effect"    => proc { |menu|
-    pbMessage(_INTL("\\se[PC access]The Pokémon Storage System was opened."))
+    pbMessage("\\se[PC access]" + _INTL("The Pokémon Storage System was opened."))
     command = 0
     loop do
       command = pbShowCommandsWithHelp(nil,
@@ -40,12 +40,14 @@ MenuHandlers.add(:pc_menu, :pokemon_storage, {
           pbMessage(_INTL("Can't deposit your last party member!"))
           next
         end
+        pbFadeOutIn do
+          scene = PokemonStorageScene.new
+          screen = PokemonStorageScreen.new(scene, $PokemonStorage)
+          screen.pbStartScreen(2)
+        end
+      else
+        break
       end
-      pbFadeOutIn {
-        scene = PokemonStorageScene.new
-        screen = PokemonStorageScreen.new(scene, $PokemonStorage)
-        screen.pbStartScreen(command)
-      }
     end
     next false
   }

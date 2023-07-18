@@ -18,7 +18,7 @@ class PokemonPartyPanel < Sprite
     base_color   = (@pokemon.male?) ? Color.new(0, 112, 248) : Color.new(232, 32, 16)
     shadow_color = (@pokemon.male?) ? Color.new(120, 184, 232) : Color.new(248, 168, 184)
     pbDrawTextPositions(@overlaysprite.bitmap,
-                        [[gender_text, 224, 22, 0, base_color, shadow_color]])
+                        [[gender_text, 224, 22, :left, base_color, shadow_color]])
   end
 end
 
@@ -140,9 +140,9 @@ class PokemonPartyScreen
         statuses[pkmnid] = 1
         pbRefreshSingle(pkmnid)
       elsif cmdSummary >= 0 && command == cmdSummary
-        @scene.pbSummary(pkmnid) {
+        @scene.pbSummary(pkmnid) do
           @scene.pbSetHelpText((@party.length > 1) ? _INTL("Choose a party member.") : _INTL("Choose party member or cancel."))
-        }
+        end
       end
     end
     @scene.pbEndScene
@@ -330,9 +330,9 @@ MenuHandlers.add(:party_menu, :summary, {
   "name"      => _INTL("Summary"),
   "order"     => 10,
   "effect"    => proc { |screen, party, party_idx|
-    screen.scene.pbSummary(party_idx) {
+    screen.scene.pbSummary(party_idx) do
       screen.scene.pbSetHelpText((party.length > 1) ? _INTL("Choose a party member.") : _INTL("Choose party member or cancel."))
-    }
+    end
   }
 })
 
@@ -346,10 +346,10 @@ MenuHandlers.add(:party_menu, :mail, {
                                           [_INTL("Read"), _INTL("Take"), _INTL("Cancel")])
     case command
     when 0   # Read
-      pbFadeOutIn {
+      pbFadeOutIn do
         pbDisplayMail(pkmn.mail, pkmn)
         screen.scene.pbSetHelpText((party.length > 1) ? _INTL("Choose a party member.") : _INTL("Choose party member or cancel."))
-      }
+      end
     when 1   # Take
       if pbTakeItemFromPokemon(pkmn, screen)
         screen.pbRefreshSingle(party_idx)
@@ -363,9 +363,9 @@ MenuHandlers.add(:party_menu_item, :use, {
   "order"     => 10,
   "effect"    => proc { |screen, party, party_idx|
     pkmn = party[party_idx]
-    item = screen.scene.pbUseItem($bag, pkmn) {
+    item = screen.scene.pbUseItem($bag, pkmn) do
       screen.scene.pbSetHelpText((party.length > 1) ? _INTL("Choose a party member.") : _INTL("Choose party member or cancel."))
-    }
+    end
     next if !item
     pbUseItemOnPokemon(item, pkmn, screen)
     screen.pbRefreshSingle(party_idx)
@@ -377,9 +377,9 @@ MenuHandlers.add(:party_menu_item, :give, {
   "order"     => 20,
   "effect"    => proc { |screen, party, party_idx|
     pkmn = party[party_idx]
-    item = screen.scene.pbChooseItem($bag) {
+    item = screen.scene.pbChooseItem($bag) do
       screen.scene.pbSetHelpText((party.length > 1) ? _INTL("Choose a party member.") : _INTL("Choose party member or cancel."))
-    }
+    end
     next if !item || !pbGiveItemToPokemon(item, pkmn, screen, party_idx)
     screen.pbRefreshSingle(party_idx)
   }
@@ -391,7 +391,7 @@ MenuHandlers.add(:party_menu_item, :give, {
 #==============================================================================#
 def pbChoosePokemon(variableNumber, nameVarNumber, ableProc = nil, allowIneligible = false)
   chosen = 0
-  pbFadeOutIn {
+  pbFadeOutIn do
     scene = PokemonParty_Scene.new
     screen = PokemonPartyScreen.new(scene, $player.party)
     if ableProc
@@ -401,7 +401,7 @@ def pbChoosePokemon(variableNumber, nameVarNumber, ableProc = nil, allowIneligib
       chosen = screen.pbChoosePokemon
       screen.pbEndScene
     end
-  }
+  end
   pbSet(variableNumber, chosen)
   if chosen >= 0
     pbSet(nameVarNumber, $player.party[chosen].name)
@@ -412,7 +412,7 @@ end
 
 def pbChooseTradablePokemon(variableNumber, nameVarNumber, ableProc = nil, allowIneligible = false)
   chosen = 0
-  pbFadeOutIn {
+  pbFadeOutIn do
     scene = PokemonParty_Scene.new
     screen = PokemonPartyScreen.new(scene, $player.party)
     if ableProc
@@ -422,7 +422,7 @@ def pbChooseTradablePokemon(variableNumber, nameVarNumber, ableProc = nil, allow
       chosen = screen.pbChoosePokemon
       screen.pbEndScene
     end
-  }
+  end
   pbSet(variableNumber, chosen)
   if chosen >= 0
     pbSet(nameVarNumber, $player.party[chosen].name)

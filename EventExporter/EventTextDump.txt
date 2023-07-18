@@ -19252,54 +19252,6 @@ List of Event Commands:
 @>
 
 #------------------------------------------------------------------------------
-Event ID: 019
-Event Name: Trainer(2)
-(X,Y): (000,005)
-
-Page #1
-Conditions
-None
-
-Graphic: trainer_YOUNGSTER
-
-Autonomous Movement
-Type: Fixed
-Speed: 3: Slow
-Freq: 3: Low
-Options Enabled
-Move Animation
-Trigger: Event Touch
-
-List of Event Commands:
-@>Script: pbTrainerIntro(:YOUNGSTER)
-@>Script: pbNoticePlayer(get_self)
-@>Text: \bHi! I like shorts! They're comfy and easy to wear!
-@>Conditional Branch: Script: TrainerBattle.start(:YOUNGSTER, "Ben")
- @>Control Self Switch: A =ON
- @>
-: Branch End
-@>Script: pbTrainerEnd
-@>
-
-Page #2
-Conditions
-Self Switch A is ON
-
-Graphic: trainer_YOUNGSTER
-
-Autonomous Movement
-Type: Fixed
-Speed: 3: Slow
-Freq: 3: Low
-Options Enabled
-Move Animation
-Trigger: Action Button
-
-List of Event Commands:
-@>Text: \bYou can't get a trainer event simpler than me!
-@>
-
-#------------------------------------------------------------------------------
 
 #==============================================================================
 Map ID: 044
@@ -32391,6 +32343,11 @@ Trigger: Action Button
 
 List of Event Commands:
 @>Text: Nothing in here but trash...
+@>Text: Wait, it looks like there's a note at the bottom of the trash bin!
+@>Text: \c[9]"I've discovered it! The method to eternal life!"
+@>Text: \c[9]"The key lies in this term: 'rahnwasright'."
+@>Text: \c[9]"I'm not sure who Rahn was or what they were right about, but
+ :    : clearly they must have been onto something, right?"
 @>
 
 #------------------------------------------------------------------------------
@@ -35451,7 +35408,7 @@ List of Event Commands:
 #------------------------------------------------------------------------------
 Event ID: 002
 Event Name: EV002
-(X,Y): (003,012)
+(X,Y): (003,013)
 
 Page #1
 Conditions
@@ -35734,6 +35691,77 @@ List of Event Commands:
 :       : pkmn.learn_move(:SWAGGER)
 :       : pkmn.learn_move(:PAINSPLIT)
 :       : pkmn.calc_stats
+@>
+
+#------------------------------------------------------------------------------
+Event ID: 010
+Event Name: EV010
+(X,Y): (003,011)
+
+Page #1
+Conditions
+None
+
+Graphic: NPC 21
+
+Autonomous Movement
+Type: Fixed
+Speed: 3: Slow
+Freq: 3: Low
+Options Enabled
+Move Animation
+Trigger: Action Button
+
+List of Event Commands:
+@>Text: I am the Reincarnation Guru. I can Reincarnate your 
+ :    : party members.
+@>Label: Start
+@>Text: Would you like to utilize my services?
+@>Show Choices: Yes, No, What's Reincarnation
+(When Cancel: Choice 2)
+: When [Yes]
+ @>Script: Reincarnation.show_reincarnation_scene
+ @>
+: When [No]
+ @>Text: I look forward to seeing you again.
+ @>
+: When [What's Reincarnation]
+ @>Text: Reincarnation is a system designed to be an alternative to 
+  :    : breeding in terms of getting ideal Pokemon or Puppets.
+ @>Text: The system is very simple to use. You just need one species
+  :    : to reincarnate. This will reset its level, all of its EVs, its evolution,
+  :    : and reroll all of its IVs.
+ @>Text: There are steps you can take to have more control over the 
+  :    : Reincarnation process.
+ @>Text: If you have two "Donor" species, they can pass down their
+  :    : IVs in a manner similar to breeding. 
+ @>Text: One donor will pass down 1 stat, two will pass down 3 between
+  :    : both donors.
+ @>Text: You can also determine the Reincarnated species's nature
+  :    : through use of two different fields where you can place items.
+ @>Text: These are the "Boon" field, the stat that gets raised, and the
+  :    : "Bane" field, the stat that gets lowered.
+ @>Text: There is one item for every stat, including one for a 
+  :    : Neutral, in case you want to randomize the Boon or Bane
+  :    : while guaranteeing the other one, or just want a guaranteed
+  :    : Neutral nature.
+ @>Text: Finally, the last field allows you to guarantee an IV to be "Held".
+ @>Text: There are six items, one for each stat. These items, when used in
+  :    : the process, will ensure that the selected IV for Reincarnated species
+  :    : does not get rerolled.
+ @>Text: However, there is a seventh item, which allows you to guarantee
+  :    : that both donor pass down 5 stat at random between them.
+ @>Text: In essence, this means if you have both donors with 31 IVs in
+  :    : all 6 stats, the Reincarnated species is guaranteed to have 5
+  :    : stats with 31 IVs, making the process of acquiring perfect stats
+  :    : on it completely trivial.
+ @>Text: One last thing to mention is the Reincarnation System requires
+  :    : a currency to be used, defined in items_reincarnation.txt as MAGFRAG. This
+  :    : can be changed or turned off within the settings.
+ @>Jump to Label: Start
+ @>Text: 
+ @>
+: Branch End
 @>
 
 #------------------------------------------------------------------------------
@@ -36491,7 +36519,7 @@ List of Event Commands:
 #------------------------------------------------------------------------------
 Event ID: 020
 Event Name: EV020
-(X,Y): (034,032)
+(X,Y): (034,030)
 
 Page #1
 Conditions
@@ -37993,62 +38021,8 @@ List of Event Commands:
 @>
 
 #------------------------------------------------------------------------------
-Event ID: 002
-Event Name: EV002
-(X,Y): (020,006)
-
-Page #1
-Conditions
-None
-
-Autonomous Movement
-Type: Fixed
-Speed: 3: Slow
-Freq: 3: Low
-Options Enabled
-Move Animation
-Trigger: Action Button
-
-List of Event Commands:
-@>Text: This machine seems to be able to heal your party.
-@>Text: Do you want it to heal your team?
-@>Show Choices: Yes, No
-(When Cancel: Choice 2)
-: When [Yes]
- @>Script: pbSetPokemonCenter
- @>Change Screen Color Tone: (-255,-255,-255,0), @20
- @>Wait: 20 frame(s)
- @>Play ME: 'Pkmn healing', 100, 100
- @>Wait: 60 frame(s)
- @>Change Screen Color Tone: (0,0,0,0), @20
- @>Recover All: Entire Party
- @>Text: Your party was healed.
- @>
-: When [No]
- @>
-: Branch End
-@>
-
-Page #2
-Conditions
-Switch 0001: Starting over is ON
-
-Autonomous Movement
-Type: Fixed
-Speed: 3: Slow
-Freq: 3: Low
-Options Enabled
-Move Animation
-Trigger: Autorun
-
-List of Event Commands:
-@>Recover All: Entire Party
-@>Control Switches: [0001: Starting over] = OFF
-@>
-
-#------------------------------------------------------------------------------
 Event ID: 003
-Event Name: EV003
+Event Name: size(2,1)
 (X,Y): (019,006)
 
 Page #1
@@ -38605,6 +38579,72 @@ List of Event Commands:
  @>
 : Branch End
 @>Script: setTempSwitchOn("A")
+@>
+
+#------------------------------------------------------------------------------
+Event ID: 002
+Event Name: EV002
+(X,Y): (021,027)
+
+Page #1
+Conditions
+None
+
+Autonomous Movement
+Type: Fixed
+Speed: 3: Slow
+Freq: 3: Low
+Options Enabled
+Move Animation
+Trigger: Action Button
+
+List of Event Commands:
+@>Text: This crystal gives off a weird energy.
+@>Text: Almost feels alive.
+@>
+
+#------------------------------------------------------------------------------
+Event ID: 003
+Event Name: EV003
+(X,Y): (027,027)
+
+Page #1
+Conditions
+None
+
+Autonomous Movement
+Type: Fixed
+Speed: 3: Slow
+Freq: 3: Low
+Options Enabled
+Move Animation
+Trigger: Action Button
+
+List of Event Commands:
+@>Text: This crystal gives off a weird energy.
+@>Text: Almost feels alive.
+@>
+
+#------------------------------------------------------------------------------
+Event ID: 004
+Event Name: EV004
+(X,Y): (024,032)
+
+Page #1
+Conditions
+None
+
+Autonomous Movement
+Type: Fixed
+Speed: 3: Slow
+Freq: 3: Low
+Options Enabled
+Move Animation
+Trigger: Action Button
+
+List of Event Commands:
+@>Text: This crystal gives off a weird energy.
+@>Text: Almost feels alive.
 @>
 
 #------------------------------------------------------------------------------

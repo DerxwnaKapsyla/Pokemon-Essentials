@@ -7,14 +7,14 @@
 #	* Addition of Strange Mist as an Ability
 #==============================================================================#
 class Battle::Battler
-  def pbRecoverHPFromDrain(amt, target, msg=nil)
-    if target.hasActiveAbility?(:LIQUIDOOZE)
+  def pbRecoverHPFromDrain(amt, target, msg = nil)
+    if target.hasActiveAbility?(:LIQUIDOOZE, true)
       @battle.pbShowAbilitySplash(target)
       pbReduceHP(amt)
       @battle.pbDisplay(_INTL("{1} sucked up the liquid ooze!", pbThis))
       @battle.pbHideAbilitySplash(target)
       pbItemHPHealCheck
-	elsif target.hasActiveAbility?(:STRANGEMIST)
+	elsif target.hasActiveAbility?(:STRANGEMIST, true)
       @battle.pbShowAbilitySplash(target)
       pbReduceHP(amt)
       @battle.pbDisplay(_INTL("{1} sucked up the strange mist!", pbThis))

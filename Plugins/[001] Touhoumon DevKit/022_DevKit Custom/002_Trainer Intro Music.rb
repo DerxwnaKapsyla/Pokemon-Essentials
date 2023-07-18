@@ -22,6 +22,8 @@
 # normally, barring a few exceptions. Uncomment as necessary, or feel free to
 # purge the entire list!
 #==============================================================================#
+# This code is outdated! I no longer use this!
+#==============================================================================#
 
 class Interpreter
   TRAINER_BGMS = {

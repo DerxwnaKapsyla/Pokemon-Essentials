@@ -9,7 +9,7 @@
 class Battle::Battler
   def pbCanInflictStatus?(newStatus, user, showMessages, move = nil, ignoreStatus = false)
     return false if fainted?
-    selfInflicted = (user && user.index == @index)
+    self_inflicted = (user && user.index == @index)   # Rest and Flame Orb/Toxic Orb only
     # Already have that status problem
     if self.status == newStatus && !ignoreStatus
       if showMessages
@@ -26,13 +26,13 @@ class Battle::Battler
       return false
     end
     # Trying to replace a status problem with another one
-    if self.status != :NONE && !ignoreStatus && !selfInflicted
+    if self.status != :NONE && !ignoreStatus && !(self_inflicted && move)   # Rest can replace a status problem
       @battle.pbDisplay(_INTL("It doesn't affect {1}...", pbThis(true))) if showMessages
       return false
     end
     # Trying to inflict a status problem on a Pokémon behind a substitute
     if @effects[PBEffects::Substitute] > 0 && !(move && move.ignoresSubstitute?(user)) &&
-       !selfInflicted
+       !self_inflicted
       @battle.pbDisplay(_INTL("It doesn't affect {1}...", pbThis(true))) if showMessages
       return false
     end
@@ -95,7 +95,7 @@ class Battle::Battler
     immAlly = nil
     if Battle::AbilityEffects.triggerStatusImmunityNonIgnorable(self.ability, self, newStatus)
       immuneByAbility = true
-    elsif selfInflicted || !@battle.moldBreaker
+    elsif self_inflicted || !@battle.moldBreaker
       if abilityActive? && Battle::AbilityEffects.triggerStatusImmunity(self.ability, self, newStatus)
         immuneByAbility = true
       else
@@ -153,7 +153,7 @@ class Battle::Battler
       return false
     end
     # Safeguard immunity
-    if pbOwnSide.effects[PBEffects::Safeguard] > 0 && !selfInflicted && move &&
+    if pbOwnSide.effects[PBEffects::Safeguard] > 0 && !self_inflicted && move &&
        !(user && user.hasActiveAbility?(:INFILTRATOR))
       @battle.pbDisplay(_INTL("{1}'s team is protected by Safeguard!", pbThis)) if showMessages
       return false
@@ -175,8 +175,8 @@ class Battle::Battler
     hasImmuneType = false
     case newStatus
     when :POISON
-      # NOTE: target will have Synchronize, so it can't have Corrosion.
-      if !(target && target.hasActiveAbility?(:CORROSION))
+      # NOTE: user will have Synchronize, so it can't have Corrosion.
+      if !(user && user.hasActiveAbility?(:CORROSION))
         hasImmuneType |= pbHasType?(:POISON)
         hasImmuneType |= pbHasType?(:STEEL)
 		hasImmuneType |= pbHasType?(:MIASMA18)
@@ -203,6 +203,7 @@ class Battle::Battler
       return false
     end
     # Safeguard immunity
+    # NOTE: user will have Synchronize, so it can't have Infiltrator.
     if pbOwnSide.effects[PBEffects::Safeguard] > 0 &&
        !(user && user.hasActiveAbility?(:INFILTRATOR))
       return false
@@ -225,9 +226,7 @@ class Battle::Battler
     end
     agender = user.gender
     ogender = gender
-    if user.hasActiveAbility?(:DIVA)
-	  return true
-    end 
+    return true if user.hasActiveAbility?(:DIVA)
     if agender == 2 || ogender == 2 || agender == ogender
       @battle.pbDisplay(_INTL("{1} is unaffected!", pbThis)) if showMessages
       return false
@@ -248,15 +247,15 @@ class Battle::Battler
         allAllies.each do |b|
           next if !b.hasActiveAbility?(:AROMAVEIL)
           if showMessages
-            @battle.pbShowAbilitySplash(self)
+            @battle.pbShowAbilitySplash(b)
             if Battle::Scene::USE_ABILITY_SPLASH
               @battle.pbDisplay(_INTL("{1} is unaffected!", pbThis))
             else
               @battle.pbDisplay(_INTL("{1}'s {2} prevents romance!", b.pbThis, b.abilityName))
             end
-            @battle.pbHideAbilitySplash(self)
+            @battle.pbHideAbilitySplash(b)
           end
-          return true
+          return false
         end
       end
     end

@@ -28,27 +28,7 @@ class DayCare
       return _INTL("{1} (Lv.{2})", @pokemon.name, @pokemon.level)
     end
 	
-  def self.choose(text, choice_var)
-    day_care = $PokemonGlobal.day_care
-    case day_care.count
-    when 0
-      raise _INTL("Nothing found in Day Care to choose from.")
-    when 1
-      day_care.slots.each_with_index { |slot, i| $game_variables[choice_var] = i if slot.filled? }
-    else
-      commands = []
-      indices = []
-      day_care.slots.each_with_index do |slot, i|
-        text = slot.choice_text
-        next if !text
-        commands.push(text)
-        indices.push(i)
-      end
-      commands.push(_INTL("CANCEL"))
-      command = pbMessage(text, commands, commands.length)
-      $game_variables[choice_var] = (command == commands.length - 1) ? -1 : indices[command]
-    end
-  end
+
   
 #==============================================================================#
 # Changes in this section include the following:
@@ -82,9 +62,31 @@ class DayCare
     slot.reset
     day_care.reset_egg_counters
   end
+
+  def self.choose(message, choice_var)
+    day_care = $PokemonGlobal.day_care
+    case day_care.count
+    when 0
+      raise _INTL("Nothing found in Day Care to choose from.")
+    when 1
+      day_care.slots.each_with_index { |slot, i| $game_variables[choice_var] = i if slot.filled? }
+    else
+      commands = []
+      indices = []
+      day_care.slots.each_with_index do |slot, i|
+        choice_text = slot.choice_text
+        next if !choice_text
+        commands.push(choice_text)
+        indices.push(i)
+      end
+      commands.push(_INTL("CANCEL"))
+      command = pbMessage(message, commands, commands.length)
+      $game_variables[choice_var] = (command == commands.length - 1) ? -1 : indices[command]
+    end
+  end
 end
 	
-
+  
 #==============================================================================#
 # Changes in this section include the following:
 #	* The addition of the pbHatchAll command, which is used in the Debug Menu
