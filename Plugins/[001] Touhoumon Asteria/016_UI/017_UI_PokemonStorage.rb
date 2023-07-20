@@ -45,8 +45,8 @@ class PokemonStorageScene
                                                 @markingbitmap.bitmap, markrect)
         end
         textpos = [
-          [_INTL("OK"), 402, 216, 2, base, shadow, 1],
-          [_INTL("Cancel"), 402, 280, 2, base, shadow, 1]
+          [_INTL("OK"), 402, 216, :center, base, shadow, :outline],
+          [_INTL("Cancel"), 402, 280, :center, base, shadow, :outline]
         ]
         pbDrawTextPositions(@sprites["markingoverlay"].bitmap, textpos)
         pbMarkingSetArrow(@sprites["arrow"], index)
@@ -99,8 +99,8 @@ class PokemonStorageScene
     buttonshadow = Color.new(80, 80, 80)
     pbDrawTextPositions(
       overlay,
-      [[_INTL("Party: {1}", (@storage.party.length rescue 0)), 270, 334, 2, buttonbase, buttonshadow, 1],
-       [_INTL("Exit"), 446, 334, 2, buttonbase, buttonshadow, 1]]
+      [[_INTL("Party: {1}", (@storage.party.length rescue 0)), 270, 334, :center, buttonbase, buttonshadow, :outline],
+       [_INTL("Exit"), 446, 334, :center, buttonbase, buttonshadow, :outline]]
     )
     pokemon = nil
     if @screen.pbHeldPokemon
@@ -119,40 +119,38 @@ class PokemonStorageScene
     nonshadow = Color.new(224, 224, 224)
     pokename = pokemon.name
     textstrings = [
-      [pokename, 10, 14, false, base, shadow]
+      [pokename, 10, 14, :left, base, shadow]
     ]
     if !pokemon.egg?
       imagepos = []
 	  pkmn_data = GameData::Species.get_species_form(pokemon.species, pokemon.form)
 	  if pkmn_data.has_flag?("Puppet")
 		if pokemon.male?
-          textstrings.push([_INTL("¹"), 148, 14, false, Color.new(24, 112, 216), Color.new(136, 168, 208)])
+          textstrings.push([_INTL("¹"), 148, 14, :left, Color.new(24, 112, 216), Color.new(136, 168, 208)])
 		elsif pokemon.female?
-          textstrings.push([_INTL("²"), 148, 14, false, Color.new(248, 56, 32), Color.new(224, 152, 144)])
+          textstrings.push([_INTL("²"), 148, 14, :left, Color.new(248, 56, 32), Color.new(224, 152, 144)])
 		end
 	  else
 		if pokemon.male?
-          textstrings.push([_INTL("♂"), 148, 14, false, Color.new(24, 112, 216), Color.new(136, 168, 208)])
+          textstrings.push([_INTL("♂"), 148, 14, :left, Color.new(24, 112, 216), Color.new(136, 168, 208)])
 		elsif pokemon.female?
-          textstrings.push([_INTL("♀"), 148, 14, false, Color.new(248, 56, 32), Color.new(224, 152, 144)])
+          textstrings.push([_INTL("♀"), 148, 14, :left, Color.new(248, 56, 32), Color.new(224, 152, 144)])
 		end
 	  end
-      imagepos.push(["Graphics/Pictures/Storage/overlay_lv", 6, 246])
+      imagepos.push(["Graphics/UI/Storage/overlay_lv", 6, 246])
       textstrings.push([pokemon.level.to_s, 28, 240, false, base, shadow])
       if pokemon.ability
-        textstrings.push([pokemon.ability.name, 86, 312, 2, base, shadow])
+        textstrings.push([pokemon.ability.name, 86, 312, :center, base, shadow])
       else
-        textstrings.push([_INTL("No ability"), 86, 312, 2, nonbase, nonshadow])
+        textstrings.push([_INTL("No ability"), 86, 312, :center, nonbase, nonshadow])
       end
       if pokemon.item
-        textstrings.push([pokemon.item.name, 86, 348, 2, base, shadow])
+        textstrings.push([pokemon.item.name, 86, 348, :center, base, shadow])
       else
-        textstrings.push([_INTL("No item"), 86, 348, 2, nonbase, nonshadow])
+        textstrings.push([_INTL("No item"), 86, 348, :center, nonbase, nonshadow])
       end
-      if pokemon.shiny?
-        imagepos.push(["Graphics/Pictures/shiny", 156, 198])
-      end
-      typebitmap = AnimatedBitmap.new(_INTL("Graphics/Pictures/types"))
+      imagepos.push(["Graphics/UI/shiny", 156, 198]) if pokemon.shiny?
+      typebitmap = AnimatedBitmap.new(_INTL("Graphics/UI/types"))
       pokemon.types.each_with_index do |type, i|
         type_number = GameData::Type.get(type).icon_position
         type_rect = Rect.new(0, type_number * 28, 64, 28)
@@ -336,9 +334,7 @@ class PokemonStorageScreen
   def pbStore(selected, heldpoke)
     box = selected[0]
     index = selected[1]
-    if box != -1
-      raise _INTL("Can't deposit from box...")
-    end
+    raise _INTL("Can't deposit from box...") if box != -1
     if pbAbleCount <= 1 && pbAble?(@storage[box, index]) && !heldpoke
       pbPlayBuzzerSE
       pbDisplay(_INTL("That's your last party member!"))

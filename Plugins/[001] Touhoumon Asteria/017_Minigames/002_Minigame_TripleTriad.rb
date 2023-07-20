@@ -57,7 +57,7 @@ def pbBuyTriads
   cmdwindow = Window_CommandPokemonEx.newWithSize(realcommands, 0, 0, Graphics.width / 2, Graphics.height)
   cmdwindow.z = 99999
   goldwindow = Window_UnformattedTextPokemon.newWithSize(
-    _INTL("Coins:\r\n{1}", $player.coins.to_s_formatted), 0, 0, 32, 32
+    _INTL("Coins:\n{1}", $player.coins.to_s_formatted), 0, 0, 32, 32
   )
   goldwindow.resizeToFit(goldwindow.text, Graphics.width)
   goldwindow.x = Graphics.width - goldwindow.width
@@ -116,7 +116,7 @@ def pbBuyTriads
       $PokemonGlobal.triads.add(item, quantity)
       $player.coins -= price
       goldwindow.text = _INTL("Coins:\r\n{1}", $player.coins.to_s_formatted)
-      pbMessage(_INTL("Here you are! Thank you!\\se[Mart buy item]"))
+      pbMessage(_INTL("Here you are! Thank you!") + "\\se[Mart buy item]")
     end
   end
   cmdwindow.dispose
@@ -172,9 +172,7 @@ def pbSellTriads
       item = $PokemonGlobal.triads.get_item(cmdwindow.index)
       if olditem != item
         preview.bitmap&.dispose
-        if item
-          preview.bitmap = TriadCard.new(item).createBitmap(1)
-        end
+        preview.bitmap = TriadCard.new(item).createBitmap(1) if item
         olditem = item
       end
       if Input.trigger?(Input::BACK)

@@ -11,46 +11,8 @@
 #	* Added in a check to the Battle Rule for no capture to display an alt line
 #==============================================================================#
 
-ItemHandlers::CanUseInBattle.addIf(proc { |item| GameData::Item.get(item).is_poke_ball? },   # Poké Balls
-  proc { |item, pokemon, battler, move, firstAction, battle, scene, showMessages|
-    if battle.pbPlayer.party_full? && $PokemonStorage.full?
-      scene.pbDisplay(_INTL("There is no room left in the PC!")) if showMessages
-      next false
-    end
-    if battle.disablePokeBalls
-	  if $game_switches[Settings::SPECIAL_BATTLE_SWITCH]
-		scene.pbDisplay(_INTL("They're too aggressive to throw a Ball at! We have to knock it out!")) if showMessages
-	  else
-		scene.pbDisplay(_INTL("You can't throw a Poké Ball!")) if showMessages
-	  end
-      next false
-    end
-    # NOTE: Using a Poké Ball consumes all your actions for the round. The code
-    #       below is one half of making this happen; the other half is in def
-    #       pbItemUsesAllActions?.
-    if !firstAction
-      scene.pbDisplay(_INTL("It's impossible to aim without being focused!")) if showMessages
-      next false
-    end
-    if battler.semiInvulnerable?
-      scene.pbDisplay(_INTL("It's no good! It's impossible to aim when the target isn't in sight!")) if showMessages
-      next false
-    end
-    # NOTE: The code below stops you from throwing a Poké Ball if there is more
-    #       than one unfainted opposing Pokémon. (Snag Balls can be thrown in
-    #       this case, but only in trainer battles, and the trainer will deflect
-    #       them if they are trying to catch a non-Shadow Pokémon.)
-    if battle.pbOpposingBattlerCount > 1 && !(GameData::Item.get(item).is_snag_ball? && battle.trainerBattle?)
-      if battle.pbOpposingBattlerCount == 2
-        scene.pbDisplay(_INTL("It's no good! It's impossible to aim when there are two on the field!")) if showMessages
-      elsif showMessages
-        scene.pbDisplay(_INTL("It's no good! It's impossible to aim when there are more than one on the field!"))
-      end
-      next false
-    end
-    next true
-  }
-)
+ItemHandlers::CanUseInBattle.copy(:POTION, :POTATO)
+ItemHandlers::CanUseInBattle.copy(:FULLHEAL, :GRILLEDLAMPREY)
 
 # ------ Liquid Revive: Max Elixir + Max Revive
 ItemHandlers::CanUseInBattle.add(:LIQUIDREVIVE, proc { |item, pokemon, battler, move, firstAction, battle, scene, showMessages|
@@ -69,6 +31,15 @@ ItemHandlers::CanUseInBattle.add(:LIQUIDREVIVE, proc { |item, pokemon, battler, 
 })
 # ------ Derx: End of Liquid Revive code
 
+ItemHandlers::CanUseInBattle.add(:BAKEDPOTATO, proc { |item, pokemon, battler, move, firstAction, battle, scene, showMessages|
+  if !pokemon.able? || (pokemon.hp == pokemon.totalhp ||
+                       (pokemon.status == :NONE &&
+                       (!battler || battler.effects[PBEffects::Confusion] == 0)))
+    scene.pbDisplay(_INTL("It won't have any effect.")) if showMessages
+    next false
+  end
+})
+
 ItemHandlers::UseInBattle.add(:POKEDOLL, proc { |item, battler, battle|
   battle.decision = 3
   pbSEPlay("Battle Flee")
@@ -82,6 +53,8 @@ ItemHandlers::UseInBattle.add(:POKEFLUTE, proc { |item, battler, battle|
   battle.pbDisplay(_INTL("All active battlers were roused by the tune!"))
 })
 
+ItemHandlers::BattleUseOnPokemon.copy(:FULLHEAL, :GRILLEDLAMPREY)
+
 # ------ Liquid Revive: Max Elixir + Max Revive
 ItemHandlers::BattleUseOnPokemon.add(:LIQUIDREVIVE, proc { |item, pokemon, battler, choices, scene|
   pokemon.heal_HP
@@ -93,3 +66,21 @@ ItemHandlers::BattleUseOnPokemon.add(:LIQUIDREVIVE, proc { |item, pokemon, battl
   scene.pbDisplay(_INTL("{1} was fully revitalized!", pokemon.name))
 })
 # ------ Derx: End of Liquid Revive code
+
+
+ItemHandlers::BattleUseOnPokemon.add(:POTATO, proc { |item, pokemon, battler, choices, scene|
+  pbBattleHPItem(pokemon, battler, 20, scene)
+})
+
+ItemHandlers::BattleUseOnPokemon.add(:BAKEDPOTATO, proc { |item, pokemon, battler, choices, scene|
+  pokemon.heal_status
+  battler&.pbCureStatus(false)
+  battler&.pbCureConfusion
+  name = (battler) ? battler.pbThis : pokemon.name
+  if pokemon.hp < pokemon.totalhp
+	pbBattleHPItem(pokemon, battler, pokemon.totalhp / 4, scene)
+  else
+    scene.pbRefresh
+    scene.pbDisplay(_INTL("{1} became healthy.", name))
+  end
+})

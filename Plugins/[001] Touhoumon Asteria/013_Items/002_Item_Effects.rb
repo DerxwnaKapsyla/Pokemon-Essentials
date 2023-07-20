@@ -11,17 +11,29 @@
 #==============================================================================#
 ItemHandlers::UseInField.add(:BLACKFLUTE, proc { |item|
   pbUseItemMessage(item)
-  pbMessage(_INTL("Wild Pokémon and Puppets will be repelled."))
-  $PokemonMap.blackFluteUsed = true
-  $PokemonMap.whiteFluteUsed = false
+  if Settings::FLUTES_CHANGE_WILD_ENCOUNTER_LEVELS
+    pbMessage(_INTL("Now you're more likely to encounter high-level Pokémon and Puppets!"))
+    $PokemonMap.higher_level_wild_pokemon = true
+    $PokemonMap.lower_level_wild_pokemon = false
+  else
+    pbMessage(_INTL("The likelihood of encountering Pokémon and Puppets decreased!"))
+    $PokemonMap.lower_encounter_rate = true
+    $PokemonMap.higher_encounter_rate = false
+  end
   next true
 })
 
 ItemHandlers::UseInField.add(:WHITEFLUTE, proc { |item|
   pbUseItemMessage(item)
-  pbMessage(_INTL("Wild Pokémon and Puppets will be lured."))
-  $PokemonMap.blackFluteUsed = false
-  $PokemonMap.whiteFluteUsed = true
+  if Settings::FLUTES_CHANGE_WILD_ENCOUNTER_LEVELS
+    pbMessage(_INTL("Now you're more likely to encounter low-level Pokémon and Puppets!"))
+    $PokemonMap.lower_level_wild_pokemon = true
+    $PokemonMap.higher_level_wild_pokemon = false
+  else
+    pbMessage(_INTL("The likelihood of encountering Pokémon and Puppets increased!"))
+    $PokemonMap.higher_encounter_rate = true
+    $PokemonMap.lower_encounter_rate = false
+  end
   next true
 })
 
@@ -41,7 +53,7 @@ ItemHandlers::UseInField.add(:SACREDASH, proc { |item|
     next false
   end
   revived = 0
-  pbFadeOutIn {
+  pbFadeOutIn do
     scene = PokemonParty_Scene.new
     screen = PokemonPartyScreen.new(scene, $player.party)
     screen.pbStartScene(_INTL("Using item..."), false)
@@ -52,11 +64,9 @@ ItemHandlers::UseInField.add(:SACREDASH, proc { |item|
       screen.pbRefreshSingle(i)
       screen.pbDisplay(_INTL("{1}'s HP was restored.", pkmn.name))
     end
-    if revived == 0
-      screen.pbDisplay(_INTL("It won't have any effect."))
-    end
+    screen.pbDisplay(_INTL("It won't have any effect.")) if revived == 0
     screen.pbEndScene
-  }
+  end
   next (revived > 0)
 })
 
@@ -68,11 +78,11 @@ ItemHandlers::UseInField.add(:ITEMFINDER, proc { |item|
     offsetY = event.y - $game_player.y
     if offsetX == 0 && offsetY == 0   # Standing on the item, spin around
       4.times do
-        pbWait(Graphics.frame_rate * 2 / 10)
+        pbWait(0.2)
         $game_player.turn_right_90
-		pbSEPlay("Slots coin")
+		pbSEPlay("SlotsCoin")
       end
-      pbWait(Graphics.frame_rate * 3 / 10)
+      pbWait(0.3)
       pbMessage(_INTL("The {1}'s indicating something right underfoot!", GameData::Item.get(item).name))
     else   # Item is nearby, face towards it
       direction = $game_player.direction
@@ -87,23 +97,41 @@ ItemHandlers::UseInField.add(:ITEMFINDER, proc { |item|
       when 6 then $game_player.turn_right
       when 8 then $game_player.turn_up
       end
-      pbWait(Graphics.frame_rate * 3 / 10)
-       pbSEPlay("Slots coin")
-       pbWait(30)
-       pbSEPlay("Slots coin")
-       pbWait(30)
-       pbSEPlay("Slots coin")
-       pbWait(30)
-       pbSEPlay("Slots coin")
-       pbWait(10)
-      pbMessage(_INTL("Huh? The {1}'s responding!\1", GameData::Item.get(item).name))
+      4.times do
+        pbWait(0.2)
+		pbSEPlay("SlotsCoin")
+      end
+      pbWait(0.3)
+      pbMessage(_INTL("Huh? The {1}'s responding!", GameData::Item.get(item).name) + "\1")
       pbMessage(_INTL("There's an item buried around here!"))
     end
   else
-    pbMessage(_INTL("... \\wt[10]... \\wt[10]... \\wt[10]...\\wt[10]Nope! There's no response."))
+    pbMessage(_INTL("... \\wt[10]... \\wt[10]... \\wt[10]... \\wt[10]Nope! There's no response."))
   end
   next true
 })
+
+ItemHandlers::UseOnPokemon.add(:POTATO, proc { |item, qty, pkmn, scene|
+  next pbHPItem(pkmn, 20, scene)
+})
+
+ItemHandlers::UseOnPokemon.add(:BAKEDPOTATO, proc { |item, qty, pkmn, scene|
+  if pkmn.fainted?
+    scene.pbDisplay(_INTL("It won't have any effect."))
+    next false
+  end
+  pkmn.heal_status
+  scene.pbRefresh
+  hpgain = pbItemRestoreHP(pkmn, pkmn.totalhp / 4)
+  if hpgain > 0
+    scene.pbDisplay(_INTL("{1}'s HP was restored by {2} points.", pkmn.name, hpgain))
+  else
+    scene.pbDisplay(_INTL("{1} became healthy.", pkmn.name))
+  end
+  #next pbHPItem(pkmn, pkmn.totalhp / 4, scene)
+})
+
+ItemHandlers::UseOnPokemon.copy(:FULLHEAL, :GRILLEDLAMPREY)
 
 # ------ Derx: Liquid Revive: Max Elixir + Max Revive
 ItemHandlers::UseOnPokemon.add(:LIQUIDREVIVE, proc { |item, qty, pkmn, scene|

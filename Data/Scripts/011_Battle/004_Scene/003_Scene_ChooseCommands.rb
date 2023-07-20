@@ -22,7 +22,7 @@ class Battle::Scene
   #       1 = regular battle with "Cancel"
   #       2 = regular battle with "Call" (for Shadow Pokémon battles)
   #       3 = Safari Zone
-  #       4 = Bug Catching Contest
+  #       4 = Bug-Catching Contest
   def pbCommandMenuEx(idxBattler, texts, mode = 0)
     pbShowWindow(COMMAND_BOX)
     cw = @sprites["commandWindow"]
@@ -98,15 +98,11 @@ class Battle::Scene
       if Input.trigger?(Input::LEFT)
         cw.index -= 1 if (cw.index & 1) == 1
       elsif Input.trigger?(Input::RIGHT)
-        if battler.moves[cw.index + 1]&.id && (cw.index & 1) == 0
-          cw.index += 1
-        end
+        cw.index += 1 if battler.moves[cw.index + 1]&.id && (cw.index & 1) == 0
       elsif Input.trigger?(Input::UP)
         cw.index -= 2 if (cw.index & 2) == 2
       elsif Input.trigger?(Input::DOWN)
-        if battler.moves[cw.index + 2]&.id && (cw.index & 2) == 0
-          cw.index += 2
-        end
+        cw.index += 2 if battler.moves[cw.index + 2]&.id && (cw.index & 2) == 0
       end
       pbPlayCursorSE if cw.index != oldIndex
       # Actions
@@ -350,7 +346,7 @@ class Battle::Scene
       when :BothSides
         showName = true
       else
-        showName = @battle.pbMoveCanTarget?(i, idxBattler, target_data)
+        showName = @battle.pbMoveCanTarget?(idxBattler, i, target_data)
       end
       next nil if !showName
       next (@battle.battlers[i].fainted?) ? "" : @battle.battlers[i].name
@@ -449,11 +445,11 @@ class Battle::Scene
   # not allow HM moves to be forgotten.
   def pbForgetMove(pkmn, moveToLearn)
     ret = -1
-    pbFadeOutIn {
+    pbFadeOutIn do
       scene = PokemonSummary_Scene.new
       screen = PokemonSummaryScreen.new(scene)
       ret = screen.pbStartForgetScreen([pkmn], 0, moveToLearn)
-    }
+    end
     return ret
   end
 
@@ -468,10 +464,10 @@ class Battle::Scene
   # Shows the Pokédex entry screen for a newly caught Pokémon
   #=============================================================================
   def pbShowPokedex(species)
-    pbFadeOutIn {
+    pbFadeOutIn do
       scene = PokemonPokedexInfo_Scene.new
       screen = PokemonPokedexInfoScreen.new(scene)
       screen.pbDexEntry(species)
-    }
+    end
   end
 end

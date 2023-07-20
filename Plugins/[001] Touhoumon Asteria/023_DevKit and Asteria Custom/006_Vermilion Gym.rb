@@ -1,3 +1,4 @@
+
 class Game_Event < Game_Character
   def hasMagnetPullUser?
 	return true if $player.get_pokemon_with_ability(:MAGNETPULL)
@@ -29,13 +30,12 @@ class Scene_Map
       updateMaps
       $game_system.update
       $game_screen.update
-      break unless $game_temp.player_transferring
+      break if !$game_temp.player_transferring
       transfer_player(false)
       break if $game_temp.transition_processing
     end
     updateSpritesets
     if $game_temp.title_screen_calling
-      $game_temp.title_screen_calling = false
       SaveData.mark_values_as_unloaded
       $scene = pbCallTitle
       return
@@ -49,18 +49,16 @@ class Scene_Map
       end
     end
     return if $game_temp.message_window_showing
-    if !pbMapInterpreterRunning?
+    if !pbMapInterpreterRunning? && !$PokemonGlobal.forced_movement?
       if Input.trigger?(Input::USE)
         $game_temp.interact_calling = true
       elsif Input.trigger?(Input::ACTION)
-        unless $game_system.menu_disabled || $game_player.moving?
+        if !$game_system.menu_disabled && !$game_player.moving?
           $game_temp.menu_calling = true
           $game_temp.menu_beep = true
         end
       elsif Input.trigger?(Input::SPECIAL)
-        unless $game_player.moving?
-          $game_temp.ready_menu_calling = true
-        end
+        $game_temp.ready_menu_calling = true if !$game_player.moving?
       elsif Input.press?(Input::F9)
         $game_temp.debug_calling = true if $DEBUG
 	#####################
@@ -69,7 +67,7 @@ class Scene_Map
 	#####################
       end
     end
-    unless $game_player.moving?
+    if !$game_player.moving?
       if $game_temp.menu_calling
         call_menu
       elsif $game_temp.debug_calling
@@ -80,8 +78,18 @@ class Scene_Map
         pbUseKeyItem
       elsif $game_temp.interact_calling
         $game_temp.interact_calling = false
-        $game_player.straighten
-        EventHandlers.trigger(:on_player_interact)
+        triggered = false
+        # Try to trigger an event the player is standing on, and one in front of
+        # the player
+        if !$game_temp.in_mini_update
+          triggered ||= $game_player.check_event_trigger_here([0])
+          triggered ||= $game_player.check_event_trigger_there([0, 2]) if !triggered
+        end
+        # Try to trigger an interaction with a tile
+        if !triggered
+          $game_player.straighten
+          EventHandlers.trigger(:on_player_interact)
+        end
 	#####################
 	  elsif $game_temp.specialActivation
 		$game_temp.specialActivation = false

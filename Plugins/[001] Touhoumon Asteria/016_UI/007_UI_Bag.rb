@@ -43,9 +43,9 @@ class PokemonBagScreen
       itemname = itm.name
       command = @scene.pbShowCommands(_INTL("{1} is selected.", itemname), commands)
       if cmdRead >= 0 && command == cmdRead   # Read mail
-        pbFadeOutIn {
+        pbFadeOutIn do
           pbDisplayMail(Mail.new(item, "", ""))
-        }
+        end
       elsif cmdUse >= 0 && command == cmdUse   # Use item
         ret = pbUseItem(@bag, item, @scene)
         # ret: 0=Item wasn't used; 1=Item used; 2=Close Bag to use in field
@@ -56,23 +56,23 @@ class PokemonBagScreen
         if $player.pokemon_count == 0
           @scene.pbDisplay(_INTL("There are no party members."))
         elsif itm.is_important?
-          @scene.pbDisplay(_INTL("The {1} can't be held.", itemname))
+          @scene.pbDisplay(_INTL("The {1} can't be held.", itm.portion_name))
         else
-          pbFadeOutIn {
+          pbFadeOutIn do
             sscene = PokemonParty_Scene.new
             sscreen = PokemonPartyScreen.new(sscene, $player.party)
             sscreen.pbPokemonGiveScreen(item)
             @scene.pbRefresh
-          }
+          end
         end
       elsif cmdToss >= 0 && command == cmdToss   # Toss item
         qty = @bag.quantity(item)
         if qty > 1
-          helptext = _INTL("Toss out how many {1}?", itm.name_plural)
+          helptext = _INTL("Toss out how many {1}?", itm.portion_name_plural)
           qty = @scene.pbChooseNumber(helptext, qty)
         end
         if qty > 0
-          itemname = itm.name_plural if qty > 1
+          itemname = (qty > 1) ? itm.portion_name_plural : itm.portion_name
           if pbConfirm(_INTL("Is it OK to throw away {1} {2}?", qty, itemname))
             pbDisplay(_INTL("Threw away {1} {2}.", qty, itemname))
             qty.times { @bag.remove(item) }
@@ -105,7 +105,7 @@ class PokemonBagScreen
             params.setRange(0, Settings::BAG_MAX_PER_SLOT)
             params.setDefaultValue(qty)
             newqty = pbMessageChooseNumber(
-              _INTL("Choose new quantity of {1} (max. #{Settings::BAG_MAX_PER_SLOT}).", itemplural), params
+              _INTL("Choose new quantity of {1} (max. {2}).", itemplural, Settings::BAG_MAX_PER_SLOT), params
             ) { @scene.pbUpdate }
             if newqty > qty
               @bag.add(item, newqty - qty)

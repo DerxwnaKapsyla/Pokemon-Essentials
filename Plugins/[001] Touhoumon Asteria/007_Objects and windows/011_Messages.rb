@@ -7,12 +7,13 @@
 #	* Necessary changes to allow for an alternate pbShowCommands to work
 #==============================================================================#
 def pbMessageAlt(message, commands = nil, cmdIfCancel = 0, skin = nil, defaultCmd = 0, &block)
+
   ret = 0
   msgwindow = pbCreateMessageWindow(nil, skin)
   if commands
     ret = pbMessageDisplay(msgwindow, message, true,
-                           proc { |msgwindow|
-                             next Kernel.pbShowCommandsWithIcon(msgwindow, commands, cmdIfCancel, defaultCmd, &block)
+                           proc { |msgwndw|
+                             next Kernel.pbShowCommandsWithIcon(msgwndw, commands, cmdIfCancel, defaultCmd, &block)
                            }, &block)
   else
     pbMessageDisplay(msgwindow, message, &block)

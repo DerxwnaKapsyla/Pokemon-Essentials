@@ -1,6 +1,7 @@
+# TO-DO: Get a message to display for both Pickup and Graverobber
 EventHandlers.add(:on_end_battle, :evolve_and_black_out_alt,
   proc { |decision, canLose|
-    # Check for blacking out or gaining Pickup/Huney Gather items
+    # Check for blacking out or gaining Graverobber/Potato Harvest items
     case decision
     when 1, 4   # Win, capture
 	  $player.pokemon_party.each do |pkmn|
@@ -11,6 +12,7 @@ EventHandlers.add(:on_end_battle, :evolve_and_black_out_alt,
   }
 )
 
+# Derx: Still fleshing out items.
 GRAVEROBBER_COMMON_ITEMS = [
   :ORANBERRY,     # Levels 1-10
   :PECHABERRY,    # Levels 1-10, 11-20
@@ -34,7 +36,7 @@ GRAVEROBBER_COMMON_ITEMS = [
 
 GRAVEROBBER_COMMON_ITEM_CHANCES = [30, 10, 10, 10, 10, 10, 10, 4, 4]
 
-
+# Derx: Still fleshing out items.
 GRAVEROBBER_RARE_ITEMS = [
   :ENERGYROOT,    # Levels 1-10
   :RAREBONE,      # Levels 1-10, 11-20

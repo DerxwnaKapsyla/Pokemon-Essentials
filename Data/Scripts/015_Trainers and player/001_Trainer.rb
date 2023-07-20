@@ -19,6 +19,10 @@ class Trainer
     return _INTL("{1} {2}", trainer_type_name, @name)
   end
 
+  def skill_level
+    return GameData::TrainerType.try_get(self.trainer_type)&.skill_level || 0
+  end
+
   #=============================================================================
 
   # Portion of the ID which is visible on the Trainer Card
@@ -178,12 +182,14 @@ end
 # Trainer class for NPC trainers
 #===============================================================================
 class NPCTrainer < Trainer
+  attr_accessor :version
   attr_accessor :items
   attr_accessor :lose_text
   attr_accessor :win_text
 
-  def initialize(name, trainer_type)
-    super
+  def initialize(name, trainer_type, version = 0)
+    super(name, trainer_type)
+    @version   = version
     @items     = []
     @lose_text = nil
     @win_text  = nil

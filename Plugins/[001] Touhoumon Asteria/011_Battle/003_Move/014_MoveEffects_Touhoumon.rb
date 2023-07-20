@@ -126,6 +126,41 @@ class Battle::Move::TypeAndPowerDependOnWeatherThmn < Battle::Move
   end
 end
 
+#===============================================================================
+# Type depends on the user's held Sphere. (Armageddon)
+#===============================================================================
+class Battle::Move::TypeDependsOnUserSphere < Battle::Move
+  def initialize(battle, move)
+    super
+    @itemTypes = {
+      :DAMASCUSSPHERE    => :STEEL18,
+	  :TERRASPHERE       => :EARTH18,
+      :FERALSPHERE       => :BEAST18,
+      :GROWTHSPHERE      => :NATURE18,
+      :TRUSTSPHERE       => :HEART18,
+      :SINSPHERE         => :DARK18,
+      :GUSTSPHERE        => :WIND18,
+      :CORROSIONSPHERE   => :MIASMA18,
+      :FLIGHTSPHERE      => :FLYING18,
+      :FROSTSPHERE       => :ICE18,
+      :SOULSPHERE        => :GHOST18,
+      :KNOWLEDGESPHERE   => :REASON18,
+      :BLAZESPHERE       => :FIRE18,
+      :VIRTUESPHERE      => :FAITH18,
+      :PHANTASMSPHERE    => :DREAM18
+    }
+  end
+
+  def pbBaseType(user)
+    ret = :ILLUSION18
+    if user.item_id && user.itemActive?
+      typ = @itemTypes[user.item_id]
+      ret = typ if typ && GameData::Type.exists?(typ)
+    end
+    return ret
+  end
+end
+
 ################################################################################
 # User traps a foe and has a chance to inflict Perish Song 
 # status on them. (Death's Embrace)

@@ -14,16 +14,16 @@ class PokemonMartScreen
       item = @scene.pbChooseBuyItem
       break if !item
       quantity       = 0
-      itemname       = @adapter.getDisplayName(item)
-      itemnameplural = @adapter.getDisplayNamePlural(item)
+      itemname       = @adapter.getName(item)
+      itemnameplural = @adapter.getNamePlural(item)
       price = @adapter.getPrice(item)
       if @adapter.getMoney < price
         pbDisplayPaused(_INTL("You don't have enough money."))
         next
       end
       if GameData::Item.get(item).is_important?
-        next if !pbConfirm(_INTL("So you want {1}?\nIt'll be ${2}. All right?",
-                            itemname, price.to_s_formatted))
+        next if !pbConfirm(_INTL("So you want the {1}?\nIt'll be ${2}. All right?",
+                                 itemname, price.to_s_formatted))
         quantity = 1
       else
         maxafford = (price <= 0) ? Settings::BAG_MAX_PER_SLOT : @adapter.getMoney / price
@@ -54,8 +54,8 @@ class PokemonMartScreen
         $stats.money_spent_at_marts += price
         $stats.mart_items_bought += quantity
         @adapter.setMoney(@adapter.getMoney - price)
-        @stock.delete_if { |item| GameData::Item.get(item).is_important? && $bag.has?(item) }
-        pbDisplayPaused(_INTL("Here you are! Thank you!")) { pbSEPlay("sale") }
+        @stock.delete_if { |itm| GameData::Item.get(itm).is_important? && $bag.has?(itm) }
+        pbDisplayPaused(_INTL("Here you are! Thank you!")) { pbSEPlay("Mart buy item") }
         if quantity >= 10 && GameData::Item.exists?(:PREMIERBALL)
           if Settings::MORE_BONUS_PREMIER_BALLS && GameData::Item.get(item).is_poke_ball?
             premier_balls_added = 0
@@ -63,8 +63,8 @@ class PokemonMartScreen
               break if !@adapter.addItem(:PREMIERBALL)
               premier_balls_added += 1
             end
-            ball_name = GameData::Item.get(:PREMIERBALL).name
-            ball_name = GameData::Item.get(:PREMIERBALL).name_plural if premier_balls_added > 1
+            ball_name = GameData::Item.get(:PREMIERBALL).portion_name
+            ball_name = GameData::Item.get(:PREMIERBALL).portion_name_plural if premier_balls_added > 1
             $stats.premier_balls_earned += premier_balls_added
             pbDisplayPaused(_INTL("And have {1} {2} on the house!", premier_balls_added, ball_name))
           elsif !Settings::MORE_BONUS_PREMIER_BALLS && GameData::Item.get(item) == :POKEBALL

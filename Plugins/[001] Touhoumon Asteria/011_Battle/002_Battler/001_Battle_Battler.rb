@@ -59,7 +59,7 @@ class Battle::Battler
 					pbHasType?(:EARTH18) || pbHasType?(:BEAST18) || pbHasType?(:STEEL18)
     return false if inTwoTurnAttack?("TwoTurnAttackInvulnerableUnderground",
                                      "TwoTurnAttackInvulnerableUnderwater")
-    return false if hasActiveAbility?([:OVERCOAT,:SANDFORCE,:SANDRUSH,:SANDVEIL])
+    return false if hasActiveAbility?([:OVERCOAT, :SANDFORCE, :SANDRUSH, :SANDVEIL])
     return false if hasActiveItem?(:SAFETYGOGGLES)
     return true
   end

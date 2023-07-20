@@ -40,9 +40,6 @@ class Battle::Move
         elsif target.hasActiveItem?(:FOCUSRIBBON) && @battle.pbRandom(100) < 10
           target.damageState.focusBand = true
           damage -= 1
-        elsif target.hasActiveItem?(:STURDYVINE) # Derx: Used in the CKazami Event Battle.
-          target.damageState.sturdyVine = true
-          damage -= 1
         elsif Settings::AFFECTION_EFFECTS && @battle.internalBattle &&
               target.pbOwnedByPlayer? && !target.mega?
           chance = [0, 0, 0, 10, 15, 25][target.affection_level]
@@ -90,9 +87,9 @@ class Battle::Move
       @battle.pbCommonAnimation("UseItem", target)
       @battle.pbDisplay(_INTL("{1} hung on using its Focus Sash!", target.pbThis))
       target.pbConsumeItem
-    elsif target.damageState.sturdyVine
+    elsif target.damageState.focusBand
       @battle.pbCommonAnimation("UseItem", target)
-      #@battle.pbDisplay(_INTL("{1} hung on using its Sturdy Vine!", target.pbThis))
+      @battle.pbDisplay(_INTL("{1} hung on using its Focus Band!", target.pbThis))
     elsif target.damageState.affection_endured
       @battle.pbDisplay(_INTL("{1} toughed it out so you wouldn't feel sad!", target.pbThis))
     end

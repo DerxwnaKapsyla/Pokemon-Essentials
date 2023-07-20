@@ -12,7 +12,7 @@ def pbMoveTutorChoose(move, movelist = nil, bymachine = false, oneusemachine = f
   if movelist.is_a?(Array)
     movelist.map! { |m| GameData::Move.get(m).id }
   end
-  pbFadeOutIn {
+  pbFadeOutIn do
     movename = GameData::Move.get(move).name
     annot = pbMoveTutorAnnotations(move, movelist)
     scene = PokemonParty_Scene.new
@@ -39,27 +39,6 @@ def pbMoveTutorChoose(move, movelist = nil, bymachine = false, oneusemachine = f
       end
     end
     screen.pbEndScene
-  }
+  end
   return ret   # Returns whether the move was learned by a Pokemon
 end
-
-# Derx: Commented out for now as who knows, maybe v20 handled this better!!!!
-#def pbExclaim(event,id=Settings::EXCLAMATION_ANIMATION_ID,tinting=false)
-#  if event.is_a?(Array)
-#    sprite = nil
-#    done = []
-#    for i in event
-#      if !done.include?(i.id)
-#        sprite = $scene.spriteset.addUserAnimation(id,i.x,i.y-1,tinting,2)
-#        done.push(i.id)
-#      end
-#    end
-#  else
-#    sprite = $scene.spriteset.addUserAnimation(id,event.x,event.y-1,tinting,2)
-#  end
-#  while !sprite.disposed?
-#    Graphics.update
-#    Input.update
-#    pbUpdateSceneMap
-#  end
-#end

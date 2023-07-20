@@ -14,7 +14,7 @@
 #===============================================================================
 class Battle::Move::SetTargetAbilityToSimple < Battle::Move
   def pbFailsAgainstTarget?(user, target, show_message)
-    if target.unstoppableAbility? || [:TRUANT, :SIMPLE, :FRETFUL].include?(target.ability)
+    if target.unstoppableAbility? || [:TRUANT, :SIMPLE, :FRETFUL].include?(target.ability_id)
       @battle.pbDisplay(_INTL("But it failed!")) if show_message
       return true
     end
@@ -83,6 +83,8 @@ end
 # Addition: Added in a check for Play Ghost
 #===============================================================================
 class Battle::Move::UserTargetSwapAbilities < Battle::Move
+  def ignoresSubstitute?(user); return true; end
+
   def pbMoveFailed?(user, targets)
     if !user.ability
       @battle.pbDisplay(_INTL("But it failed!"))

@@ -47290,6 +47290,24 @@ List of Event Commands:
 :       : }, {}, :VS_AYAKASHI)
 @>
 
+Page #2
+Conditions
+None
+
+Graphic: Object ball
+
+Autonomous Movement
+Type: Fixed
+Speed: 3: Slow
+Freq: 3: Low
+Options Enabled
+Move Animation
+Trigger: Action Button
+
+List of Event Commands:
+@>Script: Graphics.play_movie("Chaos.ogv")
+@>
+
 #------------------------------------------------------------------------------
 
 #==============================================================================
@@ -151003,6 +151021,397 @@ List of Event Commands:
  @>
 : Branch End
 @>Script: setTempSwitchOn("A")
+@>
+
+#------------------------------------------------------------------------------
+
+#==============================================================================
+Map ID: 344
+Map Name: Game Load Cutscene
+Tileset: 044: Dorm Room
+Width: 30, Height: 24
+Auto-Change BGM: U-009. to the end of Eternity
+
+#------------------------------------------------------------------------------
+Event ID: 001
+Event Name: Renko
+(X,Y): (018,010)
+
+Page #1
+Conditions
+None
+
+Graphic: trainer_SCRenko
+
+Autonomous Movement
+Type: Fixed
+Speed: 3: Slow
+Freq: 3: Low
+Options Enabled
+Move Animation
+Trigger: Action Button
+
+List of Event Commands:
+@>
+
+#------------------------------------------------------------------------------
+Event ID: 002
+Event Name: Wormhole
+(X,Y): (019,008)
+
+Page #1
+Conditions
+None
+
+Graphic: Ultra Wormhole
+
+Autonomous Movement
+Type: Custom
+Custom Move Route:
+(Repeat Action)
+$>Turn Left
+$>Wait: 8 frame(s)
+$>Turn Right
+$>Wait: 8 frame(s)
+$>Turn Up
+$>Wait: 8 frame(s)
+$>Turn Down
+$>Wait: 8 frame(s)
+
+Speed: 3: Slow
+Freq: 6: Highest
+Options Enabled
+Move Animation
+Trigger: Action Button
+
+List of Event Commands:
+@>
+
+#------------------------------------------------------------------------------
+Event ID: 003
+Event Name: Maribel
+(X,Y): (021,020)
+
+Page #1
+Conditions
+None
+
+Graphic: trainer_SCMary
+
+Autonomous Movement
+Type: Fixed
+Speed: 3: Slow
+Freq: 3: Low
+Options Enabled
+Move Animation
+Trigger: Action Button
+
+List of Event Commands:
+@>
+
+#------------------------------------------------------------------------------
+Event ID: 004
+Event Name: Otherworldly Fragment
+(X,Y): (019,010)
+
+Page #1
+Conditions
+None
+
+Graphic: Object ball
+
+Autonomous Movement
+Type: Fixed
+Speed: 3: Slow
+Freq: 3: Low
+Options Enabled
+Move Animation
+Trigger: Action Button
+
+List of Event Commands:
+@>
+
+#------------------------------------------------------------------------------
+Event ID: 005
+Event Name: Autorun event
+(X,Y): (017,004)
+
+Page #1
+Conditions
+Self Switch A is ON
+
+Autonomous Movement
+Type: Fixed
+Speed: 3: Slow
+Freq: 3: Low
+Options Enabled
+Move Animation
+Trigger: Autorun
+
+List of Event Commands:
+@>Change Screen Color Tone: (0,0,0,0), @20
+@>Text: \se[]\xn[Renko]Just <i>what</i> are you supposed to <i>be</i>...\wtnp[20]
+@>Wait: 5 frame(s)
+@>Set Move Route: [Maribel]
+ :              : $>Move Up
+ :              : $>Move Up
+ :              : $>Move Up
+ :              : $>Move Up
+ :              : $>Move Up
+ :              : $>Move Up
+ :              : $>Move Up
+ :              : $>Move Up
+ :              : $>Move Up
+ :              : $>Move Up
+ :              : $>Move Left
+@>Text: \se[]\xn[Maribel]Still no luck?\wtnp[20]
+@>Set Move Route: [Renko]
+ :              : $>Turn Down
+@>Text: \se[]\xn[Renko]I've poured over countless journals and books, but...\wtnp[20]
+@>Set Move Route: [Renko]
+ :              : $>Turn Right
+@>Text: \l[3]\se[]\xn[Renko]There's nothing that even remotely matches this 
+ :    : in Ancient Japanese mythology.\wtnp[20]
+@>Text: \se[]\xn[Renko]Any luck on your side?\wtnp[20]
+@>Text: \se[]\xn[Maribel]I looked into my family's private collection, <i>nothing</i>...\wtnp[20]
+@>Text: \se[]\xn[Maribel]I dunno Renko, do you <i>really</i> think this 
+ :    : gem is connected to the Sealed Realm?\wtnp[20]
+@>Set Move Route: [Renko]
+ :              : $>Jump: +0,+0
+@>Text: \l[3]\se[]\xn[Renko]Call it a strong hunch! It suddenly showed up in our
+ :    : dorm room with no explanation.\wtnp[20]
+@>Text: \l[3]\se[]\xn[Renko]And unless you pulled it out of your dreams and don't
+ :    : remember, this is quite the enigmatic object.\wtnp[20]
+@>Text: \se[]\xn[Maribel]Especially since it started glowing that almost
+ :    : unearthly shade of red...\wtnp[20]
+@>Set Move Route: [Maribel]
+ :              : $>Turn Right
+ :              : $>Wait: 7 frame(s)
+ :              : $>Turn Down
+ :              : $>Wait: 7 frame(s)
+ :              : $>Turn Up
+@>Text: \se[]\xn[Maribel]I sure hope this isn't some magical explosive!\wtnp[20]
+@>Text: \se[]\xn[Renko]But wouldn't that be a fascinating discovery!\wtnp[20]
+@>Wait for Move's Completion
+@>Set Move Route: [Maribel]
+ :              : $>Turn Left
+@>Text: \se[]\xn[Maribel]Your definition of fascinating and mine are quite 
+ :    : different sometimes, Renko...\wtnp[20]
+@>Wait: 20 frame(s)
+@>Play SE: 'Ice Smash', 100, 50
+@>Wait: 10 frame(s)
+@>Show Animation: [Renko], [Question bubble]
+@>Show Animation: [Maribel], [Question bubble]
+@>Wait: 20 frame(s)
+@>Text: \se[]\xn[Renko]Did you hear that? It sounded like it started 
+ :    : cracking!\wtnp[20]
+@>Text: \se[]\xn[Maribel]Don't tell me it actually <i>is</i> a bomb!\wtnp[20]
+@>Wait: 10 frame(s)
+@>Play SE: 'Ice Smash', 100, 50
+@>Wait: 10 frame(s)
+@>Text: \se[]\xn[Renko]C'mon! Let's take cover and watch from a distance!\wtnp[20]
+@>Set Move Route: [Renko]
+ :              : $>Change Speed: 5
+ :              : $>Move Down
+ :              : $>Move Down
+ :              : $>Move Down
+ :              : $>Move Down
+ :              : $>Move Down
+ :              : $>Move Down
+ :              : $>Move Down
+ :              : $>Move Down
+ :              : $>Change Speed: 3
+@>Set Move Route: [Maribel]
+ :              : $>Change Speed: 5
+ :              : $>Move Down
+ :              : $>Move Down
+ :              : $>Move Down
+ :              : $>Move Down
+ :              : $>Move Down
+ :              : $>Move Down
+ :              : $>Move Down
+ :              : $>Move Down
+ :              : $>Change Speed: 3
+@>Play SE: 'Ice Smash', 100, 50
+@>Wait: 10 frame(s)
+@>Play SE: 'Ice Smash', 100, 50
+@>Wait: 10 frame(s)
+@>Play SE: 'Ice Smash', 100, 50
+@>Wait: 15 frame(s)
+@>Play SE: 'DX Power Up', 80, 50
+@>Wait for Move's Completion
+@>Change Screen Color Tone: (255,255,255,0), @3
+@>Wait: 3 frame(s)
+@>Set Move Route: [Otherworldly Fragment]
+ :              : $>Change Opacity: 0
+@>Set Move Route: [Wormhole]
+ :              : $>Change Opacity: 255
+@>Change Map Settings:Fog = 'Fog3', 0, 196, Normal, 200, 0, 2
+@>Scroll Map: Down, 5, 6
+@>Wait: 100 frame(s)
+@>Screen Shake: 7, 4, @15
+@>Wait: 3 frame(s)
+@>Change Screen Color Tone: (0,0,0,0), @10
+@>Wait: 10 frame(s)
+@>Text: \se[]\xn[Renko]<i>*Cough*\wt[20] *Cough*</i>\wt[20] Are you alright
+ :    : over there, Mary?\wtnp[20]
+@>Text: \l[3]\se[]\xn[Maribel]Y-Yeah, I'm-\wt[10] <i>*Cough*</i>\wt[10]- I'm fine. This
+ :    : smoke is so thick I can barely see anything!\wtnp[20]
+@>Text: \l[3]\se[]\xn[Renko]The dorm doesn't seem to be on fire at least...
+ :    : Could have been an ancient smoke bomb?\wtnp[20]
+@>Set Move Route: [Maribel]
+ :              : $>Turn Up
+@>Show Animation: [Maribel], [Exclaim bubble]
+@>Text: \se[]\xn[Maribel]I guess-\wt[10] Wait, Renko! Look at where the
+ :    : object was!\wtnp[20]
+@>Text: \se[]\xn[Renko]Oh no, don't tell me there's a hole in the floor...\wtnp[20]
+@>Wait: 10 frame(s)
+@>Set Move Route: [Renko]
+ :              : $>Turn Up
+@>Show Animation: [Renko], [Exclaim bubble]
+@>Text: \se[]\xn[Renko]...-Whoa! What <i>is</i> that!?\wtnp[20]
+@>Scroll Map: Up, 6, 2
+@>Set Move Route: [Renko]
+ :              : $>Move Up
+ :              : $>Move Up
+ :              : $>Move Up
+ :              : $>Move Up
+ :              : $>Move Up
+ :              : $>Move Up
+ :              : $>Move Up
+ :              : $>Move Up
+@>Set Move Route: [Maribel]
+ :              : $>Move Up
+ :              : $>Move Up
+ :              : $>Move Up
+ :              : $>Move Up
+ :              : $>Move Up
+ :              : $>Move Up
+ :              : $>Move Up
+ :              : $>Move Up
+@>Wait for Move's Completion
+@>Text: \se[]\xn[Renko]Is that... some kind of wormhole?\wtnp[20]
+@>Text: \l[3]\se[]\xn[Maribel]It looks like it could be one... Did that crystal 
+ :    : create it? Where do you think it leads?\wtnp[20]
+@>Text: \se[]\xn[Renko]I'm not sure...\wtnp[20]
+@>Wait: 10 frame(s)
+@>Set Move Route: [Renko]
+ :              : $>Turn Right
+@>Text: \se[]\xn[Renko]Wanna find out?\wtnp[20]
+@>Show Animation: [Maribel], [Exclaim bubble]
+@>Set Move Route: [Maribel]
+ :              : $>Turn Left
+@>Text: \se[]\xn[Maribel]An adventure? Into unknown territory? Is that
+ :    : really a wise idea...\wtnp[20]
+@>Text: \l[3]\se[]\xn[Renko]Nope! But when have we ever done things the
+ :    : average person would consider 'wise'? Besides...\wtnp[20]
+@>Set Move Route: [Renko]
+ :              : $>Turn Up
+@>Text: \l[3]\se[]\xn[Renko]I've got a good feeling about this one. I think this 
+ :    : will be the key to learning about the Sealed Realm!\wtnp[20]
+@>Set Move Route: [Maribel]
+ :              : $>Wait: 10 frame(s)
+ :              : $>Turn Up
+@>Text: \se[]\xn[Maribel]I can't deny that I'm curious...\wt[10] Oh, why not!
+ :    : We have no other leads right now!\wtnp[20]
+@>Text: \se[]\xn[Renko]An adventure into the depths of the unknown... 
+ :    : How exciting!\wtnp[20]
+@>Text: \se[]\xn[Maribel]We won't be led astray, so long as we're by 
+ :    : each other's side!\wtnp[20]
+@>Set Move Route: [Renko]
+ :              : $>Change Speed: 2
+ :              : $>Through ON
+ :              : $>Move Up
+ :              : $>Move Up
+ :              : $>Move Up
+ :              : $>Change Opacity: 0
+@>Set Move Route: [Maribel]
+ :              : $>Change Speed: 2
+ :              : $>Through ON
+ :              : $>Move Up
+ :              : $>Move Up
+ :              : $>Move Up
+ :              : $>Change Opacity: 0
+@>Text: \l[3]\se[]\xn[Renko]I just hope that wherever we're going is nice 
+ :    : and cool. This summer's heat wave is miserable!\wtnp[20]
+@>Wait for Move's Completion
+@>Wait: 20 frame(s)
+@>Set Move Route: [Wormhole]
+ :              : $>SE: 'Stare', 80, 75
+ :              : $>Change Opacity: 255
+ :              : $>Wait: 2 frame(s)
+ :              : $>Change Opacity: 240
+ :              : $>Wait: 2 frame(s)
+ :              : $>Change Opacity: 224
+ :              : $>Wait: 2 frame(s)
+ :              : $>Change Opacity: 208
+ :              : $>Wait: 2 frame(s)
+ :              : $>Change Opacity: 192
+ :              : $>Wait: 2 frame(s)
+ :              : $>Change Opacity: 176
+ :              : $>Wait: 2 frame(s)
+ :              : $>Change Opacity: 160
+ :              : $>Wait: 2 frame(s)
+ :              : $>Change Opacity: 144
+ :              : $>Wait: 2 frame(s)
+ :              : $>Change Opacity: 128
+ :              : $>Wait: 2 frame(s)
+ :              : $>Change Opacity: 112
+ :              : $>Wait: 2 frame(s)
+ :              : $>Change Opacity: 96
+ :              : $>Wait: 2 frame(s)
+ :              : $>Change Opacity: 80
+ :              : $>Wait: 2 frame(s)
+ :              : $>Change Opacity: 64
+ :              : $>Wait: 2 frame(s)
+ :              : $>Change Opacity: 48
+ :              : $>Wait: 2 frame(s)
+ :              : $>Change Opacity: 32
+ :              : $>Wait: 2 frame(s)
+ :              : $>Change Opacity: 16
+ :              : $>Wait: 2 frame(s)
+ :              : $>Change Opacity: 0
+@>Wait for Move's Completion
+@>Control Self Switch: A =OFF
+@>
+
+#------------------------------------------------------------------------------
+Event ID: 006
+Event Name: EV006
+(X,Y): (019,011)
+
+Page #1
+Conditions
+None
+
+Autonomous Movement
+Type: Fixed
+Speed: 3: Slow
+Freq: 3: Low
+Options Enabled
+Move Animation
+Trigger: Action Button
+
+List of Event Commands:
+@>Change Screen Color Tone: (-255,-255,-255,0), @1
+@>Change Transparent Flag: Transparency
+@>Control Self Switch: A =ON
+@>
+
+Page #2
+Conditions
+Self Switch A is ON
+
+Autonomous Movement
+Type: Fixed
+Speed: 3: Slow
+Freq: 3: Low
+Options Enabled
+Move Animation
+Trigger: Action Button
+
+List of Event Commands:
+@>Script: pbSetSelfSwitch(5,"A",true)
 @>
 
 #------------------------------------------------------------------------------

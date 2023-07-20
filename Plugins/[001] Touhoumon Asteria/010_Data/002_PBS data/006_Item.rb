@@ -5,7 +5,6 @@
 #==============================================================================#
 # Changes in this section include the following:
 #	* Addition of Sariel Omega's Spheres
-#	* Addition of Chibi Kazami's Sturdy Vine for her event battle
 #==============================================================================#
 
 module GameData
@@ -70,8 +69,7 @@ module GameData
                         :KNOWLEDGESPHERE,
                         :BLAZESPHERE,
                         :VIRTUESPHERE,
-                        :PHANTASMSPHERE],
-		:CKAZAMI	=>	[:STURDYVINE]
+                        :PHANTASMSPHERE]
       }
       return combos[species]&.include?(@id)
     end
