@@ -7,7 +7,7 @@
 #	* Modified the graphics used in the Title and Splash Screen
 #==============================================================================#
 class IntroEventScene < EventScene
-  SPLASH_IMAGES         = ["splash_logo"]
+  SPLASH_IMAGES         = ["intro3", "splash_logo"]
   TITLE_BG_IMAGE        = 'splash'
   TITLE_START_IMAGE     = 'start'
   
@@ -19,6 +19,7 @@ class IntroEventScene < EventScene
     @pic2.setOpacity(0, 0)       # set opacity to 0 after waiting 0 frames
     @index = 0
 	pbBGMPlay($data_system.title_bgm) # Derx: I want old functionality back!!!
+	#Graphics.play_movie("Videos/2023-07-20 19-32-04.ogv", 80, true)
     if SPLASH_IMAGES.empty?
       open_title_screen(self, nil)
     else

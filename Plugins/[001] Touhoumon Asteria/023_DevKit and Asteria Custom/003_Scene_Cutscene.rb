@@ -19,7 +19,7 @@ class Splash_Devs_1 < EventScene
     ],
     :wait, 140,
     :clear,
-    :wait, 8,
+    :wait, 6,
     [
       "mkxp-z",
 	  "",
@@ -96,7 +96,7 @@ class Splash_Devs_1 < EventScene
     end
     @text.opacity = 0
     dispose
-	Graphics.play_movie("Chaos.ogv", 80, true)
+	Graphics.play_movie("Videos/Intro.ogv", 80, true)
 	  return @skipped
   end
 
