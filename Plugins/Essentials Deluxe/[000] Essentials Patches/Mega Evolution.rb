@@ -40,9 +40,9 @@ class Battle::Scene::PokemonDataBox < Sprite
       ypos = 6
     elsif @battler.primal?
       if @battler.isSpecies?(:GROUDON)
-        filename = "Graphics/Pictures/Battle/icon_primal_Groudon"
+        filename = "Graphics/UI/battle/icon_primal_Groudon"
       elsif @battler.isSpecies?(:KYOGRE)
-        filename = "Graphics/Pictures/Battle/icon_primal_Kyogre"
+        filename = "Graphics/UI/battle/icon_primal_Kyogre"
       end
     end
     pbDrawImagePositions(self.bitmap, [[filename, @spriteBaseX + specialX, ypos]]) if filename

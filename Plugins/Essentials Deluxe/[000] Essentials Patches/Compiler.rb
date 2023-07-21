@@ -190,7 +190,7 @@ module Compiler
     ability_descriptions = []
     PLUGIN_FILES.each do |plugin|
       path = "PBS/Plugins/#{plugin}/abilities.txt"
-      next if !safeExists?(path)
+      next if !FileTest.exist?(path)
       compile_pbs_file_message_start(path)
       ability_hash = nil
       idx = 0
@@ -312,7 +312,7 @@ module Compiler
     item_held_descriptions    = []
     PLUGIN_FILES.each do |plugin|
       path = "PBS/Plugins/#{plugin}/items.txt"
-      next if !safeExists?(path)
+      next if !FileTest.exist?(path)
       compile_pbs_file_message_start(path)
       item_hash = nil
       idx = 0
@@ -481,7 +481,7 @@ module Compiler
     move_descriptions = []
     PLUGIN_FILES.each do |plugin|
       path = "PBS/Plugins/#{plugin}/moves.txt"
-      next if !safeExists?(path)
+      next if !FileTest.exist?(path)
       compile_pbs_file_message_start(path)
       move_hash = nil
       idx = 0
@@ -625,7 +625,7 @@ module Compiler
     }
     PLUGIN_FILES.each do |plugin|
       path = "PBS/Plugins/#{plugin}/pokemon.txt"
-      next if !safeExists?(path)
+      next if !FileTest.exist?(path)
       compile_pbs_file_message_start(path)
       File.open(path, "rb") { |f|
         FileLineData.file = path
@@ -710,7 +710,7 @@ module Compiler
     schema = GameData::MapMetadata::SCHEMA
     PLUGIN_FILES.each do |plugin|
       path = "PBS/Plugins/#{plugin}/map_metadata.txt"
-      next if !safeExists?(path)
+      next if !FileTest.exist?(path)
       compile_pbs_file_message_start(path)
       idx = 0
       File.open(path, "rb") { |f|
@@ -769,11 +769,11 @@ module Compiler
     PLUGIN_FILES.each do |plugin|
       for file in ["abilities", "items", "moves", "pokemon", "map_metadata"]
         path = "PBS/Plugins/#{plugin}/#{file}.txt"
-        mustCompile = true if safeExists?(path)
+        mustCompile = true if FileTest.exist?(path)
       end
       if plugin == "Improved Field Skills"
         path = "PBS/Plugins/#{plugin}/field_skills.txt"
-        mustCompile = true if !safeExists?(path)
+        mustCompile = true if !FileTest.exist?(path)
       end
     end
     return if !mustCompile
@@ -816,9 +816,9 @@ module Compiler
     compile_animations
     compile_trainer_events(mustCompile)
     Console.echo_li _INTL("Saving messages...")
-    pbSetTextMessages
-    MessageTypes.saveMessages
-    MessageTypes.loadMessageFile("Data/messages.dat") if safeExists?("Data/messages.dat")
+    Translator.gather_script_and_event_texts
+    MessageTypes.save_default_messages
+    MessageTypes.load_default_messages if FileTest.exist?("Data/messages_core.dat")
     Console.echo_done(true)
     Console.echo_li _INTL("Reloading cache...")
     System.reload_cache
@@ -892,7 +892,7 @@ module Compiler
         mustCompile = true
       end
       dataFiles.each do |filename|
-        if safeExists?("Data/" + filename)
+        if FileTest.exist?("Data/" + filename)
           begin
             File.open("Data/#{filename}") { |file|
               latestDataTime = [latestDataTime, file.mtime.to_i].max
@@ -906,7 +906,7 @@ module Compiler
         end
       end
       textFiles.each do |filename|
-        next if !safeExists?("PBS/" + filename)
+        next if !FileTest.exist?("PBS/" + filename)
         begin
           File.open("PBS/#{filename}") { |file|
             latestTextTime = [latestTextTime, file.mtime.to_i].max
@@ -920,7 +920,7 @@ module Compiler
       if mustCompile
         dataFiles.length.times do |i|
           begin
-            File.delete("Data/#{dataFiles[i]}") if safeExists?("Data/#{dataFiles[i]}")
+            File.delete("Data/#{dataFiles[i]}") if FileTest.exist?("Data/#{dataFiles[i]}")
           rescue SystemCallError
           end
         end

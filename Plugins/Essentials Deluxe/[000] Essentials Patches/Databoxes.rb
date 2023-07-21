@@ -7,12 +7,12 @@
 #-------------------------------------------------------------------------------
 # Battler Databoxes
 #-------------------------------------------------------------------------------
-class Battle::Scene::PokemonDataBox < SpriteWrapper
+class Battle::Scene::PokemonDataBox < Sprite
   def initializeDataBoxGraphic(sideSize)
     onPlayerSide = @battler.index.even?
     @can_focus = PluginManager.installed?("Focus Meter System")
     @raid_boss = PluginManager.installed?("ZUD Mechanics") && @battler.effects[PBEffects::MaxRaidBoss]
-    path = "Graphics/Pictures/Battle/"
+    path = "Graphics/UI/Battle/"
     path = "Graphics/Plugins/Focus Meter/Databoxes/" if @can_focus
     player_normal = path + "databox_normal"
     player_thin   = path + "databox_thin"

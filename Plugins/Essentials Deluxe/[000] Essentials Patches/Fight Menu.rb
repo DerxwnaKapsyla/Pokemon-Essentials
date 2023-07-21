@@ -36,11 +36,11 @@ class Battle::Scene::FightMenu < Battle::Scene::MenuBase
     @battleStyle = -1
     @teraType    = -1
     if USE_GRAPHICS
-      @buttonBitmap  = AnimatedBitmap.new(_INTL("Graphics/Pictures/Battle/cursor_fight"))
+      @buttonBitmap  = AnimatedBitmap.new(_INTL("Graphics/UI/battle/cursor_fight"))
       @typeBitmap    = AnimatedBitmap.new(_INTL("Graphics/Pictures/types"))
-      @shiftBitmap   = AnimatedBitmap.new(_INTL("Graphics/Pictures/Battle/cursor_shift"))
+      @shiftBitmap   = AnimatedBitmap.new(_INTL("Graphics/UI/battle/cursor_shift"))
       @battleButtonBitmap = {}
-      @battleButtonBitmap[:mega] = AnimatedBitmap.new(_INTL("Graphics/Pictures/Battle/cursor_mega"))
+      @battleButtonBitmap[:mega] = AnimatedBitmap.new(_INTL("Graphics/UI/battle/cursor_mega"))
       if PluginManager.installed?("ZUD Mechanics")
         path = "Graphics/Plugins/ZUD/Battle/"
         @battleButtonBitmap[:ultra] = AnimatedBitmap.new(path + "cursor_ultra")
@@ -64,10 +64,10 @@ class Battle::Scene::FightMenu < Battle::Scene::MenuBase
       end
       @chosen_button = :none
       background = IconSprite.new(0, Graphics.height - 96, viewport)
-      background.setBitmap("Graphics/Pictures/Battle/overlay_fight")
+      background.setBitmap("Graphics/UI/battle/overlay_fight")
       addSprite("background", background)
       @buttons = Array.new(Pokemon::MAX_MOVES) do |i|
-        button = SpriteWrapper.new(viewport)
+        button = Sprite.new(viewport)
         button.bitmap = @buttonBitmap.bitmap
         button.x = self.x + 4
         button.x += (i.even? ? 0 : (@buttonBitmap.width / 2) - 4)
@@ -88,15 +88,15 @@ class Battle::Scene::FightMenu < Battle::Scene::MenuBase
       @infoOverlay.y = self.y
       pbSetNarrowFont(@infoOverlay.bitmap)
       addSprite("infoOverlay", @infoOverlay)
-      @typeIcon = SpriteWrapper.new(viewport)
+      @typeIcon = Sprite.new(viewport)
       @typeIcon.bitmap = @typeBitmap.bitmap
       @typeIcon.x      = self.x + 416
       @typeIcon.y      = self.y + 20
       @typeIcon.src_rect.height = TYPE_ICON_HEIGHT
       addSprite("typeIcon", @typeIcon)
-      @battleButton = SpriteWrapper.new(viewport) # For button graphic
+      @battleButton = Sprite.new(viewport) # For button graphic
       addSprite("battleButton", @battleButton)
-      @shiftButton = SpriteWrapper.new(viewport)
+      @shiftButton = Sprite.new(viewport)
       @shiftButton.bitmap = @shiftBitmap.bitmap
       @shiftButton.x      = self.x + 4
       @shiftButton.y      = self.y - @shiftBitmap.height
@@ -104,7 +104,7 @@ class Battle::Scene::FightMenu < Battle::Scene::MenuBase
       if PluginManager.installed?("Focus Meter System")
         path = "Graphics/Plugins/Focus Meter/"
         @focusBitmap = AnimatedBitmap.new(path + "cursor_focus")
-        @focusButton = SpriteWrapper.new(viewport)
+        @focusButton = Sprite.new(viewport)
         @focusButton.bitmap = @focusBitmap.bitmap
         @focusButton.x      = self.x + 4
         @focusButton.y      = self.y - @focusBitmap.height / 2

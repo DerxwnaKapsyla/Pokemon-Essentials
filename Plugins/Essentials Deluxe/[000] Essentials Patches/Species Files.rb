@@ -430,7 +430,7 @@ end
 #-------------------------------------------------------------------------------
 # Pokemon bitmaps (Out of battle)
 #-------------------------------------------------------------------------------
-class PokemonSprite < SpriteWrapper
+class PokemonSprite < Sprite
   def setPokemonBitmap(*params)
     pokemon = params[0]
     @_iconbitmap&.dispose
@@ -530,14 +530,14 @@ end
 #-------------------------------------------------------------------------------
 # Icon sprites (Defined Pokemon)
 #-------------------------------------------------------------------------------
-class PokemonIconSprite < SpriteWrapper
+class PokemonIconSprite < Sprite
   def pokemon=(value)
     @pokemon = value
     @animBitmap&.dispose
     @animBitmap = nil
     if !@pokemon
       self.bitmap = nil
-      @currentFrame = 0
+      @current_fame = 0
       @counter = 0
       return
     end
@@ -547,8 +547,8 @@ class PokemonIconSprite < SpriteWrapper
     self.src_rect.width  = @animBitmap.height
     self.src_rect.height = @animBitmap.height
     self.applyIconEffects
-    @numFrames    = @animBitmap.width / @animBitmap.height
-    @currentFrame = 0 if @currentFrame >= @numFrames
+    @frames_count = @animBitmap.width / @animBitmap.height
+    @current_frame = 0 if @current_frame >= @frames_count
     changeOrigin
   end
 end
@@ -557,7 +557,7 @@ end
 #-------------------------------------------------------------------------------
 # Icon sprites (for species)
 #-------------------------------------------------------------------------------
-class PokemonSpeciesIconSprite < SpriteWrapper
+class PokemonSpeciesIconSprite < Sprite
   attr_reader :shadow
   attr_reader :dmax
   attr_reader :gmax
