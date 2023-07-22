@@ -95,7 +95,7 @@ class Battle::Battler
   #-----------------------------------------------------------------------------
   def apply_battler_effects(effect, setting, msg = nil, lowercase = false)
     case effect
-    when PBEffects::Type3
+    when PBEffects::ExtraType
       if GameData::Type.exists?(setting) && !pbHasType?(setting)
         @effects[effect] = setting
         @battle.pbDisplay(_INTL(msg, pbThis(lowercase))) if msg
