@@ -8363,7 +8363,7 @@ Move Animation
 Trigger: Action Button
 
 List of Event Commands:
-@>Script: pbShowPokedexEntry(:CSANAE)
+@>Script: pbDexEntry(:CSANAE)
 @>Text: \xn[Professor Oak]So, \PN, would you like Chibi Sanae, the Miko Puppet?\ch[1,2,Yes,No]
 @>Conditional Branch: Variable [0001: Temp Pokemon Choice] == 0
  @>Comment: Starter Chosen
@@ -151938,6 +151938,32 @@ Trigger: Action Button
 
 List of Event Commands:
 @>Script: pbSetSelfSwitch(5,"A",true)
+@>
+
+#------------------------------------------------------------------------------
+Event ID: 007
+Event Name: EV007
+(X,Y): (002,006)
+
+Page #1
+Conditions
+None
+
+Graphic: Object master_ball
+
+Autonomous Movement
+Type: Fixed
+Speed: 3: Slow
+Freq: 3: Low
+Options Enabled
+Move Animation
+Trigger: Action Button
+
+List of Event Commands:
+@>Comment: AI Checks in Essentials Deluxe broken (check item 
+ :       : use)
+ :       : Choosing a starter is broken (Undefined method 
+ :       : showing dex entry)
 @>
 
 #------------------------------------------------------------------------------
