@@ -8363,7 +8363,7 @@ Move Animation
 Trigger: Action Button
 
 List of Event Commands:
-@>Script: pbDexEntry(:CSANAE)
+@>Script: pbShowPokedexEntry(:CSANAE)
 @>Text: \xn[Professor Oak]So, \PN, would you like Chibi Sanae, the Miko Puppet?\ch[1,2,Yes,No]
 @>Conditional Branch: Variable [0001: Temp Pokemon Choice] == 0
  @>Comment: Starter Chosen
@@ -9888,11 +9888,19 @@ List of Event Commands:
 @>Set Move Route: [Professor Oak]
  :              : $>Turn Down
 @>Text: \xn[Professor Oak]...Begin!
-@>Script: #BattleScripting.setInScript("sendout1Opp",:VsRed_Intro)
 @>Control Switches: [0104: Transition Handler] = ON
 @>Control Variables: [0103: Vs. Transition ID] = 0
 @>Control Variables: [0115: Vs. Transition - Background] = 0
 @>Control Variables: [0104: Vs. Transition - Pkmn] = 2
+@>Conditional Branch: Script: !PluginManager.installed?("Essentials Deluxe")
+ @>Script: pbRegisterPartner(pbGet(1), pbGet(2), pbGet(3))
+ @>Script: setBattleRule("backdrop", "indoor2")
+ :       : setBattleRule("outcome", 1)
+ :       : setBattleRule("noMoney")
+ :       : setBattleRule("canLose")
+ :       : setBattleRule("2v2")
+ @>
+: Branch End
 @>Script: TrainerBattle.dx_start([:POKEMONTRAINER_Red, "Red"], {
 :       :   :backdrop => "indoor2",
 :       :   :outcome  => 1,
@@ -9976,7 +9984,7 @@ List of Event Commands:
  @>Text: \xn[Professor Oak]You two are more than ready for what lies ahead.
  @>Text: \xn[Maribel]Even though we lost?
  @>Text: \xn[Professor Oak]As I'm sure Red here could tell you, even he's lost a battle here and there!
- @>Text: \xn[Professor Oak]Why, that's the fate of a rainer who seeks out challenges and aims to become stronger!
+ @>Text: \xn[Professor Oak]Why, that's the fate of a trainer who seeks out challenges and aims to become stronger!
  @>Text: \xn[Professor Oak]Nobody remains unbeatable forever, afterall!
  @>Text: \xn[Renko]I suppose that is true...
  @>Text: \xn[Renko]Even in mine and Mary's case, if we let ourselves get stalled every time we hit a
@@ -10025,9 +10033,6 @@ List of Event Commands:
  :              : $>Turn Right
 @>Text: \xn[Renko]Absolutely, Mary! Let's get out there and see what secrets this world has waiting for us to discover!
 @>Comment: --------------------
-@>Script: $GameSpeed = 0
-:       : $frame = 0
-:       : pbDisallowSpeedup
 @>Change Screen Color Tone: (-255,-255,-255,0), @20
 @>Memorize BGM/BGS
 @>Fade Out BGM: 1 sec.
@@ -10053,7 +10058,6 @@ List of Event Commands:
 @>Wait: 40 frame(s)
 @>Comment: --------------------
 @>Change Transparent Flag: Normal
-@>Script: pbAllowSpeedup
 @>Transfer Player:[034: Pallet Town], (041,014), Left, No Fade
 @>Change Screen Color Tone: (0,0,0,0), @20
 @>Control Self Switch: A =ON
@@ -27021,6 +27025,30 @@ List of Event Commands:
  @>
 : Branch End
 @>Script: setTempSwitchOn("A")
+@>
+
+#------------------------------------------------------------------------------
+Event ID: 017
+Event Name: EV017
+(X,Y): (034,026)
+
+Page #1
+Conditions
+None
+
+Graphic: Object ball
+
+Autonomous Movement
+Type: Fixed
+Speed: 3: Slow
+Freq: 3: Low
+Options Enabled
+Move Animation
+Trigger: Action Button
+
+List of Event Commands:
+@>Script: pbUnlockRecipe(:BerryJuice)
+:       : pbItemCrafter(pbGetRecipes)
 @>
 
 #------------------------------------------------------------------------------
