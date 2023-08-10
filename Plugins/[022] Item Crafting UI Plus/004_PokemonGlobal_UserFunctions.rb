@@ -16,10 +16,8 @@ def pbLockRecipe(recipe_id)
 end
 
 def pbGetRecipes(flag=nil)
-  ret = []
-  $PokemonGlobal.recipes.each do |recipe|
-    next if flag && !GameData::Recipe.get(recipe).has_flag?(flag)
-    ret.push(recipe)
+  if flag
+    return GameData::Recipe::DATA.select {|_k,r| r.has_flag?(flag) }.keys
   end
-  return ret
+  return GameData::Recipe.keys
 end

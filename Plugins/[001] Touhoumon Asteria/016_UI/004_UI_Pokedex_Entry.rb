@@ -76,7 +76,8 @@ class PokemonPokedexInfo_Scene
     pbFadeInAndShow(@sprites) { pbUpdate }
   end
 
-  def pbStartSceneBrief(species)  # For standalone access, shows first page only
+  # For standalone access, shows first page only.
+  def pbStartSceneBrief(species)
     @viewport = Viewport.new(0, 0, Graphics.width, Graphics.height)
     @viewport.z = 99999
     dexnum = 0
@@ -174,7 +175,7 @@ class PokemonPokedexInfo_Scene
         next if !$player.pokedex.seen_form?(@species, real_gender, sp.form) && !Settings::DEX_SHOWS_ALL_FORMS
         real_gender = 2 if sp.gender_ratio == :Genderless
         ret.push([sp.form_name, real_gender, sp.form])
-      elsif sp.form == 0 &&   # Form 0 and no gender differences
+      elsif sp.form == 0 && !gender_differences
         2.times do |real_gndr|
           next if !$player.pokedex.seen_form?(@species, real_gndr, sp.form) && !Settings::DEX_SHOWS_ALL_FORMS
           ret.push([sp.form_name || _INTL("One Form"), 0, sp.form])
@@ -528,6 +529,7 @@ class PokemonPokedexInfo_Scene
       elsif Input.trigger?(Input::USE)
         case @page
         when 1   # Info
+          pbPlayDecisionSE
           @show_battled_count = !@show_battled_count
           dorefresh = true
         when 2   # Area
@@ -592,11 +594,8 @@ class PokemonPokedexInfo_Scene
       if Input.trigger?(Input::ACTION)
         pbSEStop
         Pokemon.play_cry(@species, @form)
-      elsif Input.trigger?(Input::BACK)
+      elsif Input.trigger?(Input::BACK) || Input.trigger?(Input::USE)
         pbPlayCloseMenuSE
-        break
-      elsif Input.trigger?(Input::USE)
-        pbPlayDecisionSE
         break
       end
     end
@@ -618,7 +617,8 @@ class PokemonPokedexInfoScreen
     return ret   # Index of last species viewed in dexlist
   end
 
-  def pbStartSceneSingle(species)   # For use from a Pokémon's summary screen
+  # For use from a Pokémon's summary screen.
+  def pbStartSceneSingle(species)
     region = -1
     if Settings::USE_CURRENT_REGION_DEX
       region = pbGetCurrentRegion
@@ -641,7 +641,8 @@ class PokemonPokedexInfoScreen
     @scene.pbEndScene
   end
 
-  def pbDexEntry(species)   # For use when capturing a new species
+  # For use when capturing or otherwise obtaining a new species.
+  def pbDexEntry(species)
     @scene.pbStartSceneBrief(species)
     @scene.pbSceneBrief
     @scene.pbEndScene

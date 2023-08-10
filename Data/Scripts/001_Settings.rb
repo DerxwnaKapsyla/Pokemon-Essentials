@@ -1,6 +1,6 @@
 #==============================================================================#
 #                              Pokémon Essentials                              #
-#                                  Version 21                                  #
+#                                 Version 21.1                                 #
 #                https://github.com/Maruno17/pokemon-essentials                #
 #==============================================================================#
 
@@ -40,6 +40,10 @@ module Settings
   SUPER_SHINY          = (MECHANICS_GENERATION >= 8)
   # The odds of a wild Pokémon/bred egg having Pokérus (out of 65536).
   POKERUS_CHANCE       = 3
+  # Whether IVs and EVs are treated as 0 when calculating a Pokémon's stats.
+  # IVs and EVs still exist, and are used by Hidden Power and some cosmetic
+  # things as normal.
+  DISABLE_IVS_AND_EVS  = false
 
   #=============================================================================
 
@@ -452,7 +456,7 @@ end
 
 # DO NOT EDIT THESE!
 module Essentials
-  VERSION = "21"
+  VERSION = "21.1"
   ERROR_TEXT = ""
-  MKXPZ_VERSION = "2.4.2/ee8dc7e"
+  MKXPZ_VERSION = "2.4.2/c9378cf"
 end

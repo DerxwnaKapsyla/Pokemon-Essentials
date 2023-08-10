@@ -249,8 +249,7 @@ class Battle::AI
            :BUGMEMORY, :DARKMEMORY, :DRAGONMEMORY, :ELECTRICMEMORY,
            :FAIRYMEMORY, :FIGHTINGMEMORY, :FIREMEMORY, :FLYINGMEMORY,
            :GHOSTMEMORY, :GRASSMEMORY, :GROUNDMEMORY, :ICEMEMORY, :POISONMEMORY,
-           :PSYCHICMEMORY, :ROCKMEMORY, :STEELMEMORY, :WATERMEMORY
-           ],
+           :PSYCHICMEMORY, :ROCKMEMORY, :STEELMEMORY, :WATERMEMORY],
     0  => [:SMOKEBALL],
     -5 => [:FULLINCENSE, :LAGGINGTAIL, :RINGTARGET],
     -6 => [:MACHOBRACE, :POWERANKLET, :POWERBAND, :POWERBELT, :POWERBRACER,
@@ -411,7 +410,7 @@ Battle::AI::Handlers::ItemRanking.addIf(:type_boosting_items_thmn,
       :FIRE18   		=> [:GOTHIC, :BLAZESPHERE],
       :ILLUSION18  		=> [:BRIDALGOWN],
       :FAITH18     		=> [:PRIESTESS, :VIRTUESPHERE],
-      :DREAM18    		=> [:CHINADRESS, :PHANTASMSPHERE],
+      :DREAM18    		=> [:CHINADRESS, :PHANTASMSPHERE]
     }
     boosted_type = nil
     boosters.each_pair do |type, items|
@@ -450,7 +449,7 @@ Battle::AI::Handlers::ItemRanking.addIf(:gems_pkmn_tiertwo,
       :PSYCHICRIBBON  => :PSYCHIC,
       :ROCKRIBBON     => :ROCK,
       :STEELRIBBON    => :STEEL,
-      :WATERRIBBON    => :WATER,
+      :WATERRIBBON    => :WATER
     }[item]
     next score if boosted_type && battler.has_damaging_move_of_type?(boosted_type)
     next 0
@@ -482,7 +481,7 @@ Battle::AI::Handlers::ItemRanking.addIf(:gems_thmn,
       :GARNET         => :FIRE18,
       :MORGANITE      => :REASON18,
       :TOPAZ          => :FAITH18,
-      :MOONSTONEGEM   => :DREAM18,
+      :MOONSTONEGEM   => :DREAM18
     }[item]
     next score if boosted_type && battler.has_damaging_move_of_type?(boosted_type)
     next 0
@@ -516,7 +515,7 @@ Battle::AI::Handlers::ItemRanking.addIf(:gems_thmn_tiertwo,
       :GARNETHAIRPIN         => :FIRE18,
       :MORGANITEHAIRPIN      => :REASON18,
       :TOPAZHAIRPIN          => :FAITH18,
-      :MOONSTONEHAIRPIN      => :DREAM18,
+      :MOONSTONEHAIRPIN      => :DREAM18
     }[item]
     next score if boosted_type && battler.has_damaging_move_of_type?(boosted_type)
     next 0

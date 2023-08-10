@@ -159,14 +159,15 @@ class Battle::AI::AITrainer
     end
     # Mud Sport and Water Sport
     if @ai.trainer.medium_skill?
-      if (calc_type == :ELECTRIC || calc_type == :WIND18)
+      case calc_type
+      when :ELECTRIC, :WIND18
         if @ai.battle.allBattlers.any? { |b| b.effects[PBEffects::MudSport] }
           multipliers[:power_multiplier] /= 3
         end
         if @ai.battle.field.effects[PBEffects::MudSportField] > 0
           multipliers[:power_multiplier] /= 3
         end
-      elsif (calc_type == :FIRE || calc_type == :FIRE18)
+      when :FIRE, :FIRE18
         if @ai.battle.allBattlers.any? { |b| b.effects[PBEffects::WaterSport] }
           multipliers[:power_multiplier] /= 3
         end

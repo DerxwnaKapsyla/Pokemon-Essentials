@@ -72,8 +72,8 @@ class Battle
       return if !battler.takesHailDamage?
       pbDisplay(_INTL("{1} is buffeted by the hail!", battler.pbThis))
       amt = battler.totalhp / 8
-    return if amt < 0
 	end
+    return if amt < 0
     @scene.pbDamageAnimation(battler)
     battler.pbReduceHP(amt, false)
     battler.pbItemHPHealCheck

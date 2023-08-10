@@ -657,36 +657,21 @@ MenuHandlers.add(:debug_menu, :give_demo_party, {
   "description" => _INTL("Give yourself 6 preset Pokémon. They overwrite the current party."),
   "effect"      => proc {
     party = []
-    species = [:PIKACHU, :PIDGEOTTO, :KADABRA, :GYARADOS, :DIGLETT, :CHANSEY]
+    species = [:ADREISEN, :ASUMIREKO, :RIKAKO, :NEPGEAR, :SAYA, :SHINKI]
     species.each { |id| party.push(id) if GameData::Species.exists?(id) }
     $player.party.clear
     # Generate Pokémon of each species at level 20
-    party.each do |spec|
-      pkmn = Pokemon.new(spec, 20)
+    party.each do |species|
+      pkmn = Pokemon.new(species, 100)
+	  pkmn.iv[:HP] = 31
+	  pkmn.iv[:ATTACK] = 31
+	  pkmn.iv[:DEFENSE] = 31
+	  pkmn.iv[:SPEED] = 31
+	  pkmn.iv[:SPECIAL_ATTACK] = 31
+	  pkmn.iv[:SPECIAL_DEFENSE] = 31
       $player.party.push(pkmn)
       $player.pokedex.register(pkmn)
-      $player.pokedex.set_owned(spec)
-      case spec
-      when :PIDGEOTTO
-        pkmn.learn_move(:FLY)
-      when :KADABRA
-        pkmn.learn_move(:FLASH)
-        pkmn.learn_move(:TELEPORT)
-      when :GYARADOS
-        pkmn.learn_move(:SURF)
-        pkmn.learn_move(:DIVE)
-        pkmn.learn_move(:WATERFALL)
-      when :DIGLETT
-        pkmn.learn_move(:DIG)
-        pkmn.learn_move(:CUT)
-        pkmn.learn_move(:HEADBUTT)
-        pkmn.learn_move(:ROCKSMASH)
-      when :CHANSEY
-        pkmn.learn_move(:SOFTBOILED)
-        pkmn.learn_move(:STRENGTH)
-        pkmn.learn_move(:SWEETSCENT)
-      end
-      pkmn.record_first_moves
+      $player.pokedex.set_owned(species)
     end
     pbMessage(_INTL("Filled party with demo Pokémon."))
   }
@@ -875,7 +860,6 @@ MenuHandlers.add(:debug_menu, :set_money, {
         params.setDefaultValue($player.battle_points)
         $player.battle_points = pbMessageChooseNumber("\\ts[]" + _INTL("Set the player's BP amount."), params)
       end
-
     end
   }
 })

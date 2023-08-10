@@ -1,9 +1,25 @@
+#===============================================================================
+#===============================================================================
+#===============================================================================
+# Seagallop (boat "cutscene") • by Mr. Gela/theo#7722
+# Updated to V21.1 by RealMugen
+# With adjustments made by DerxwnaKapsyla
+#-------------------------------------------------------------------------------
+# USING THIS SCRIPT
+#-------------------------------------------------------------------------------
+#
+# Call using 'seaGallop' as a script call in an event, etc.
+#
+#===============================================================================
+#===============================================================================
+#===============================================================================
+
 if !PluginManager.installed?("Seagallop Cutscene")
   PluginManager.register({                                                 
     :name    => "Seagallop Cutscene",                                        
     :version => "1.0",                                                     
     :link    => "https://reliccastle.com/resources/389/",             
-    :credits => "Mr. Gela"
+    :credits => "Mr. Gela, DerxwnaKapsyla, Realmugen"
   })
 end
 
@@ -30,17 +46,17 @@ end
       pbUpdateSpriteHash(@sprites)
       if @mirror==false # Not mirrored
         if @sprites["bg"]
-          @sprites["bg"].ox-=2 # Move sea towards the right
+          @sprites["bg"].ox-=1.5 # Move sea towards the right
         end
         if @sprites["wind"]
-          @sprites["wind"].ox+=24 # Move wind towards the left
+          @sprites["wind"].ox+=18 # Move wind towards the left
         end
       else # Mirrored
         if @sprites["bg"]
-          @sprites["bg"].ox+=2 # Move sea towards the right
+          @sprites["bg"].ox+=1.5 # Move sea towards the right
         end
         if @sprites["wind"]
-          @sprites["wind"].ox-=24 # Move wind towards the left
+          @sprites["wind"].ox-=18 # Move wind towards the left
         end
       end
     end
@@ -50,22 +66,22 @@ end
       trail=@sprites["trail"]
 	  pbSEPlay("Seagallop Ferry")
       if @mirror==false # Not mirrored
-        for i in 1..70
+        for i in 1..120
           pbUpdate
-          boat.x+=14   # move boat every frame
+          boat.x+=9   # move boat every frame
           if (i%2)==0 # move trail but only every two frames
                       # cause that's kind of what FRLG does
-            trail.x+=14*2 
+            trail.x+=9*2 
           end
           wait(1)
         end
       else # Mirrored
-        for i in 1..80
+        for i in 1..130
           pbUpdate
-          boat.x-=14   # move boat every frame
+          boat.x-=9   # move boat every frame
           if (i%2)==0 # move trail but only every two frames
                       # cause that's kind of what FRLG does
-            trail.x-=14*2 
+            trail.x-=9*2 
           end
           wait(1)
         end
@@ -91,7 +107,7 @@ end
       if @mirror==false # Not mirrored  
         # boat
         @sprites["boat"] = IconSprite.new(0,0,@viewport)
-        @sprites["boat"].setBitmap("Graphics/Pictures/Seagallop/waterBoat")
+        @sprites["boat"].setBitmap("Graphics/UI/Seagallop/waterBoat")
         @sprites["boat"].zoom_x=2
         @sprites["boat"].zoom_y=2
         @sprites["boat"].x=0-@sprites["boat"].bitmap.width*2
@@ -100,7 +116,7 @@ end
         
         # graphic under the boat
         @sprites["trail"] = IconSprite.new(0,0,@viewport)
-        @sprites["trail"].setBitmap("Graphics/Pictures/Seagallop/waterTrail")
+        @sprites["trail"].setBitmap("Graphics/UI/Seagallop/waterTrail")
         @sprites["trail"].zoom_x=2
         @sprites["trail"].zoom_y=2
         @sprites["trail"].x=@sprites["boat"].x-@sprites["trail"].bitmap.width*2+42*2
@@ -109,7 +125,7 @@ end
       else # Mirrored
         # boat
         @sprites["boat"] = IconSprite.new(0,0,@viewport)
-        @sprites["boat"].setBitmap("Graphics/Pictures/Seagallop/waterBoat")
+        @sprites["boat"].setBitmap("Graphics/UI/Seagallop/waterBoat")
         @sprites["boat"].zoom_x=2
         @sprites["boat"].zoom_y=2
         @sprites["boat"].x=Graphics.width+@sprites["boat"].bitmap.width-30
@@ -119,7 +135,7 @@ end
         
         # graphic under the boat
         @sprites["trail"] = IconSprite.new(0,0,@viewport)
-        @sprites["trail"].setBitmap("Graphics/Pictures/Seagallop/waterTrail")
+        @sprites["trail"].setBitmap("Graphics/UI/Seagallop/waterTrail")
         @sprites["trail"].zoom_x=2
         @sprites["trail"].zoom_y=2
         @sprites["trail"].x=@sprites["boat"].x+@sprites["boat"].bitmap.width-10

@@ -12,7 +12,6 @@ class PokemonTrade_Scene
     $player.pokedex.register(@pokemon2)
     $player.pokedex.set_owned(@pokemon2.species)
     pbBGMStop
-	pbBGMPlay("U-004. Shanghai Alice of Meiji 17 (Trading).ogg")
     @pokemon.play_cry
     speciesname1 = GameData::Species.get(@pokemon.species).name
     speciesname2 = GameData::Species.get(@pokemon2.species).name
@@ -21,12 +20,15 @@ class PokemonTrade_Scene
                                @pokemon.name, @pokemon.owner.public_id, @pokemon.owner.name) + "\\wtnp[0]") { pbUpdate }
     pbMessageWaitForInput(@sprites["msgwindow"], 50, true) { pbUpdate }
     pbPlayDecisionSE
+	pbBGMPlay("U-004. Shanghai Alice of Meiji 17 (Trading).ogg")
     pbScene1
     pbMessageDisplay(@sprites["msgwindow"],
                      _INTL("For {1}'s {2},\n{3} sends {4}.", @trader1, speciesname1, @trader2, speciesname2) + "\1") { pbUpdate }
     pbMessageDisplay(@sprites["msgwindow"],
                      _INTL("{1} bids farewell to {2}.", @trader2, speciesname2)) { pbUpdate }
     pbScene2
+    pbBGMStop
+    pbMEPlay("Battle capture success")
     pbMessageDisplay(@sprites["msgwindow"],
                      _ISPRINTF("{1:s}\nID: {2:05d}   OT: {3:s}",
                                @pokemon2.name, @pokemon2.owner.public_id, @pokemon2.owner.name) + "\1") { pbUpdate }

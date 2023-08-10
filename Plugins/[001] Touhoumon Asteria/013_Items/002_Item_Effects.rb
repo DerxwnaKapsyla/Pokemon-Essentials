@@ -57,6 +57,7 @@ ItemHandlers::UseInField.add(:SACREDASH, proc { |item|
     scene = PokemonParty_Scene.new
     screen = PokemonPartyScreen.new(scene, $player.party)
     screen.pbStartScene(_INTL("Using item..."), false)
+    pbSEPlay("Use item in party")
     $player.party.each_with_index do |pkmn, i|
       next if !pkmn.fainted?
       revived += 1
@@ -70,47 +71,6 @@ ItemHandlers::UseInField.add(:SACREDASH, proc { |item|
   next (revived > 0)
 })
 
-ItemHandlers::UseInField.add(:ITEMFINDER, proc { |item|
-  $stats.itemfinder_count += 1
-  event = pbClosestHiddenItem
-  if event
-    offsetX = event.x - $game_player.x
-    offsetY = event.y - $game_player.y
-    if offsetX == 0 && offsetY == 0   # Standing on the item, spin around
-      4.times do
-        pbWait(0.2)
-        $game_player.turn_right_90
-		pbSEPlay("SlotsCoin")
-      end
-      pbWait(0.3)
-      pbMessage(_INTL("The {1}'s indicating something right underfoot!", GameData::Item.get(item).name))
-    else   # Item is nearby, face towards it
-      direction = $game_player.direction
-      if offsetX.abs > offsetY.abs
-        direction = (offsetX < 0) ? 4 : 6
-      else
-        direction = (offsetY < 0) ? 8 : 2
-      end
-      case direction
-      when 2 then $game_player.turn_down
-      when 4 then $game_player.turn_left
-      when 6 then $game_player.turn_right
-      when 8 then $game_player.turn_up
-      end
-      4.times do
-        pbWait(0.2)
-		pbSEPlay("SlotsCoin")
-      end
-      pbWait(0.3)
-      pbMessage(_INTL("Huh? The {1}'s responding!", GameData::Item.get(item).name) + "\1")
-      pbMessage(_INTL("There's an item buried around here!"))
-    end
-  else
-    pbMessage(_INTL("... \\wt[10]... \\wt[10]... \\wt[10]... \\wt[10]Nope! There's no response."))
-  end
-  next true
-})
-
 ItemHandlers::UseOnPokemon.add(:POTATO, proc { |item, qty, pkmn, scene|
   next pbHPItem(pkmn, 20, scene)
 })
@@ -120,6 +80,7 @@ ItemHandlers::UseOnPokemon.add(:BAKEDPOTATO, proc { |item, qty, pkmn, scene|
     scene.pbDisplay(_INTL("It won't have any effect."))
     next false
   end
+  pbSEPlay("Use item in party")
   pkmn.heal_status
   scene.pbRefresh
   hpgain = pbItemRestoreHP(pkmn, pkmn.totalhp / 4)
@@ -139,6 +100,7 @@ ItemHandlers::UseOnPokemon.add(:LIQUIDREVIVE, proc { |item, qty, pkmn, scene|
     scene.pbDisplay(_INTL("It won't have any effect."))
     next false
   end
+  pbSEPlay("Use item in party")
   pprestored = 0
   pkmn.moves.length.times do |i|
     pprestored += pbRestorePP(pkmn, i, pkmn.moves[i].total_pp - pkmn.moves[i].pp)

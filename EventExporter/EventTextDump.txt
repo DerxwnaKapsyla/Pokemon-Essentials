@@ -27030,7 +27030,7 @@ List of Event Commands:
 #------------------------------------------------------------------------------
 Event ID: 017
 Event Name: EV017
-(X,Y): (034,026)
+(X,Y): (001,032)
 
 Page #1
 Conditions
@@ -27047,8 +27047,11 @@ Move Animation
 Trigger: Action Button
 
 List of Event Commands:
-@>Script: pbUnlockRecipe(:BerryJuice)
-:       : pbItemCrafter(pbGetRecipes)
+@>Change Screen Color Tone: (-255,-255,-255,0), @8
+@>Wait: 8 frame(s)
+@>Script: seaGallop
+@>Wait: 8 frame(s)
+@>Change Screen Color Tone: (0,0,0,0), @8
 @>
 
 #------------------------------------------------------------------------------
