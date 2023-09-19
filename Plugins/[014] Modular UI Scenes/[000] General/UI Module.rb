@@ -61,4 +61,14 @@ module UIHandlers
     end
     return _INTL(option_hash["name"]), _INTL(option_hash["suffix"]), option_hash["options"]
   end
+
+  def self.edit_hash(menu, page, field, new_data)
+    hash = @@handlers[menu][page]
+    if hash
+      old_data = hash[field]
+      if old_data != new_data
+        hash[field] = new_data
+      end
+    end
+  end
 end

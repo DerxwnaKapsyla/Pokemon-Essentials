@@ -32,7 +32,13 @@ Battle::AbilityEffects::StatLossImmunity.copy(:HYPERCUTTER,:HISTRENGTH)
 
 Battle::AbilityEffects::PriorityChange.add(:FLOWOFTIME,
   proc { |ability, battler, move, pri|
-    next pri+1 if battler.hp<=(battler.totalhp/2)
+    next pri + 1 if battler.hp<=(battler.totalhp/2)
+  }
+)
+
+Battle::AbilityEffects::PriorityChange.add(:RADICALWAVES,
+  proc { |ability, battler, move, pri|
+    next pri + 1 if move.waveMove?
   }
 )
 

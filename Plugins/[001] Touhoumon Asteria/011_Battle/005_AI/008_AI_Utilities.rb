@@ -98,7 +98,7 @@ class Battle::AI
            :SHEDSKIN, :SKILLLINK, :SOULHEART, :STORMDRAIN, :TERAVOLT, :THICKFAT,
            :TINTEDLENS, :TOUGHCLAWS, :TRIAGE, :TURBOBLAZE, :UNBURDEN,
            :VOLTABSORB, :WATERABSORB,
-		   :GEHABURN, :FOCUS, :MAINTENANCE, :ICEWALL],
+		   :GEHABURN, :FOCUS, :MAINTENANCE, :ICEWALL, :RADICALWAVES],
 		   
     6  => [:BATTLEBOND, :CHLOROPHYLL, :COMATOSE, :DARKAURA, :DRYSKIN,
            :FAIRYAURA, :FILTER, :FLASHFIRE, :FORECAST, :GALEWINGS, :GUTS,
@@ -262,6 +262,7 @@ end
 #==============================================================================#
 # Changes in this section include the following:
 #	* Various adjustments to abilities to account for Touhoumon variants
+#	* Addition of new abilities, such Radical Waves
 #==============================================================================#  
 Battle::AI::Handlers::AbilityRanking.add(:BLAZE,
   proc { |ability, score, battler, ai|
@@ -314,6 +315,13 @@ Battle::AI::Handlers::AbilityRanking.add(:TORRENT,
   proc { |ability, score, battler, ai|
     next score if battler.has_damaging_move_of_type?(:WATER)
 	next score if battler.has_damaging_move_of_type?(:WATER18)
+    next 0
+  }
+)
+
+Battle::AI::Handlers::AbilityRanking.add(:RADICALWAVES,
+  proc { |ability, score, battler, ai|
+    next score if battler.check_for_move { |m| m.waveMove? }
     next 0
   }
 )

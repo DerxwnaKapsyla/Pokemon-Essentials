@@ -27055,6 +27055,29 @@ List of Event Commands:
 @>
 
 #------------------------------------------------------------------------------
+Event ID: 018
+Event Name: EV018
+(X,Y): (034,026)
+
+Page #1
+Conditions
+None
+
+Graphic: Object ball
+
+Autonomous Movement
+Type: Fixed
+Speed: 3: Slow
+Freq: 3: Low
+Options Enabled
+Move Animation
+Trigger: Action Button
+
+List of Event Commands:
+@>Script: pbFieldApplyStatus(:POISON, 3, false, false)
+@>
+
+#------------------------------------------------------------------------------
 
 #==============================================================================
 Map ID: 046
@@ -143466,47 +143489,20 @@ List of Event Commands:
 #==============================================================================
 Map ID: 333
 Map Name: Cinnabar Island Gym
-Tileset: 014: Gyms
-Width: 37, Height: 30
+Tileset: 045: Cinnabar Gym
+Width: 47, Height: 70
 Auto-Change BGM: 014. Cosmic Mind ~ Emotional Skyscraper
 
 #------------------------------------------------------------------------------
 Event ID: 001
-Event Name: Trainer(3)
-(X,Y): (006,022)
+Event Name: Blaine
+(X,Y): (023,019)
 
 Page #1
 Conditions
 None
 
-Graphic: trchar029
-
-Autonomous Movement
-Type: Fixed
-Speed: 3: Slow
-Freq: 3: Low
-Options Enabled
-Move Animation
-Trigger: Event Touch
-
-List of Event Commands:
-@>Script: pbTrainerIntro(:SUPERNERD)
-@>Script: pbNoticePlayer(get_self)
-@>Text: What's the matter, machines too hard for your inferior brain?
-@>Comment: EndSpeech: Or you just wanted to challenge trainers instead!
-@>Conditional Branch: Script: TrainerBattle.start(PBTrainers::SUPERNERD, "Trevor", 0)
- @>Control Variables: [0109: Unique Wild Battle] += 1
- @>Control Self Switch: A =ON
- @>
-: Branch End
-@>Script: pbTrainerEnd
-@>
-
-Page #2
-Conditions
-Self Switch A is ON
-
-Graphic: trchar029
+Graphic: trainer_LEADER_Blaine
 
 Autonomous Movement
 Type: Fixed
@@ -143517,46 +143513,18 @@ Move Animation
 Trigger: Action Button
 
 List of Event Commands:
-@>Text: Each of the trainers in here has a button which adds a counter to the gate's check system. If you beat any of us, we have to press that button.
 @>
 
 #------------------------------------------------------------------------------
 Event ID: 002
-Event Name: Trainer(3)
-(X,Y): (005,016)
+Event Name: Receptionist
+(X,Y): (023,058)
 
 Page #1
 Conditions
 None
 
-Graphic: trchar028
-
-Autonomous Movement
-Type: Fixed
-Speed: 3: Slow
-Freq: 3: Low
-Options Enabled
-Move Animation
-Trigger: Event Touch
-
-List of Event Commands:
-@>Script: pbTrainerIntro(:SCIENTIST)
-@>Script: pbNoticePlayer(get_self)
-@>Text: Volcanoes are made of lava, and lava has the power to destroy everything. How well can you fare against lava, I wonder?
-@>Comment: EndSpeech: Cool and collected, I see.
-@>Conditional Branch: Script: TrainerBattle.start(PBTrainers::SCIENTIST, "Marqus", 0)
- @>Control Variables: [0109: Unique Wild Battle] += 1
- @>Control Self Switch: A =ON
- @>
-: Branch End
-@>Script: pbTrainerEnd
-@>
-
-Page #2
-Conditions
-Self Switch A is ON
-
-Graphic: trchar028
+Graphic: NPC 22
 
 Autonomous Movement
 Type: Fixed
@@ -143567,46 +143535,25 @@ Move Animation
 Trigger: Action Button
 
 List of Event Commands:
-@>Text: I would prefer to run from lava, but I suppose everyone has their methods.
+@>Text: Hello there. Do you have an appointment with the director?
+@>Text: Oh, you're here to challenge the gym? Very well then! Let me
+ :    : just open the doors for you.
+@>Wait: 5 frame(s)
+@>Play SE: 'Mining collapse', 80, 100
+@>Script: pbSetSelfSwitch(32,"A",true)
+:       : pbSetSelfSwitch(33,"A",true)
+@>Text: There you go! Be sure to take the path on the left to get into
+ :    : the gym. Good luck!
 @>
 
 #------------------------------------------------------------------------------
 Event ID: 003
-Event Name: Trainer(3)
-(X,Y): (006,010)
+Event Name: Gold
+(X,Y): (023,060)
 
 Page #1
 Conditions
 None
-
-Graphic: trchar028
-
-Autonomous Movement
-Type: Fixed
-Speed: 3: Slow
-Freq: 3: Low
-Options Enabled
-Move Animation
-Trigger: Event Touch
-
-List of Event Commands:
-@>Script: pbTrainerIntro(:SCIENTIST)
-@>Script: pbNoticePlayer(get_self)
-@>Text: 1-53! 92 16-92-6-19!
-@>Comment: EndSpeech: What?! I mean... 74-1-85?!
-@>Conditional Branch: Script: TrainerBattle.start(PBTrainers::SCIENTIST, "Endel", 0)
- @>Control Variables: [0109: Unique Wild Battle] += 1
- @>Control Self Switch: A =ON
- @>
-: Branch End
-@>Script: pbTrainerEnd
-@>
-
-Page #2
-Conditions
-Self Switch A is ON
-
-Graphic: trchar028
 
 Autonomous Movement
 Type: Fixed
@@ -143617,19 +143564,51 @@ Move Animation
 Trigger: Action Button
 
 List of Event Commands:
-@>Text: 7-8 8-10 20-7 24-89-19 90-53-16 92-60-68-16-73-60 90-53-16.
+@>
+
+Page #2
+Conditions
+Switch 0109: Met Gold is ON
+Switch 0110: s:badgeQtyOdd? is ON
+
+Graphic: Gold (PurpleZaffre)
+
+Autonomous Movement
+Type: Fixed
+Speed: 3: Slow
+Freq: 3: Low
+Options Enabled
+Move Animation
+Trigger: Action Button
+
+List of Event Commands:
+@>
+
+Page #3
+Conditions
+Self Switch A is ON
+
+Autonomous Movement
+Type: Fixed
+Speed: 3: Slow
+Freq: 3: Low
+Options Enabled
+Move Animation
+Trigger: Action Button
+
+List of Event Commands:
 @>
 
 #------------------------------------------------------------------------------
 Event ID: 004
-Event Name: Trainer(3)
-(X,Y): (025,021)
+Event Name: Gym Terminal
+(X,Y): (025,036)
 
 Page #1
 Conditions
 None
 
-Graphic: trchar029
+Graphic: gymtelecom
 
 Autonomous Movement
 Type: Fixed
@@ -143637,27 +143616,65 @@ Speed: 3: Slow
 Freq: 3: Low
 Options Enabled
 Move Animation
-Trigger: Event Touch
+Direction Fix
+Trigger: Action Button
 
 List of Event Commands:
-@>Script: pbTrainerIntro(:SUPERNERD)
-@>Script: pbNoticePlayer(get_self)
-@>Text: Look at how scuffed up your puppets are! Do
- :    : you have any respect for their value?!
-@>Comment: EndSpeech: Waaah, my puppets!
-@>Conditional Branch: Script: TrainerBattle.start(PBTrainers::SUPERNERD, "Lenny", 0)
- @>Control Variables: [0110: Plot Control Variable] += 1
- @>Control Self Switch: A =ON
+@>Conditional Branch: Player is facing Right
+ @>Text: Accessing Gym Network.
+ @>Label: Start
+ @>Text: Please select what you want to know about.
+ @>Show Choices: Gym Leader Preference, Gym Mechanics, Gym Leader Information, Nothing
+ (When Cancel: Choice 4)
+ : When [Gym Leader Preference]
+  @>Text: The Cinnabar Island Gym, Blaine, has a preference for
+   :    : Fire-type Pokémon and Pyro-type Puppets.
+  @>Text: Aside from the traditional weaknesses of Grass-type
+   :    : Pokémon, Pyro-type Puppets are weak to Earth and 
+   :    : Hydro-type moves.
+  @>Text: Pyro-Type Puppets resist damage from Metal, Pyro, Nature
+   :    : Fire, Grass, Steel, and Ice-type moves.
+  @>Jump to Label: Start
+  @>
+ : When [Gym Mechanics]
+  @>Text: Blaine has reconstructed the entire concept of his gym after
+   :    : rebuilding it. Challengers have to assemble a potion that will 
+   :    : allow them to walk through fire and reach the Gym Leader.
+  @>Text: Ingredients are found throughout the gym, as well as hints on
+   :    : how to assemble the potion.
+  @>Text: Challengers who assemble the potion incorrectly and attempt
+   :    : to challenge Blaine will find that their party has been burned,
+   :    : potentially taking damage as well.
+  @>Jump to Label: Start
+  @>
+ : When [Gym Leader Information]
+  @>Text: Blaine was once a researcher of the fabled CInnabar Mansion,
+   :    : but after an explosion at the facility he retired from the scientist
+   :    : life and devoted his entire time to being a Gym Leader.
+  @>Text: It wasn't until the eruption of Cinnabar Volcano seven years ago
+   :    : that Blaine decided to reinvent himself once more- melding his Gym
+   :    : Leader persona with his former researcher.
+  @>Text: After the explosion of Cinnabar Mansion, rumors began to suround
+   :    : Blaine that he was making some sort of super weapon. These rumors
+   :    : are entirely unsubstantiated, and no proof of such claims has come to
+   :    : light.
+  @>Jump to Label: Start
+  @>
+ : When [Nothing]
+  @>Text: Shutting down information database.
+  @>
+ : Branch End
+ @>
+: Else
  @>
 : Branch End
-@>Script: pbTrainerEnd
 @>
 
 Page #2
 Conditions
-Self Switch A is ON
+Switch 0007: Defeated Gym 4 is ON
 
-Graphic: trchar029
+Graphic: gymtelecom
 
 Autonomous Movement
 Type: Fixed
@@ -143665,51 +143682,88 @@ Speed: 3: Slow
 Freq: 3: Low
 Options Enabled
 Move Animation
+Direction Fix
 Trigger: Action Button
 
 List of Event Commands:
-@>Text: I prefer collecting the cutest puppets
- :    : instead of battling.
+@>Conditional Branch: Player is facing Right
+ @>Text: Accessing Gym Network.
+ @>Label: Start
+ @>Text: Please select what you want to know about.\ch[1,-1,Gym Leader Preference,
+  :    : Gym Mechanics,Gym Leader Information,Gym Rebattle Protocol]
+ @>Conditional Branch: Variable [0001: Temp Pokemon Choice] == -1
+  @>Text: Shutting down information database.
+  @>Exit Event Processing
+  @>
+ : Branch End
+ @>Conditional Branch: Variable [0001: Temp Pokemon Choice] == 0
+  @>Comment: Gym Leader Preference
+  @>Text: The Celadon City Gym, Erika, has a preference for
+   :    : Grass-type Pokémon and Nature-type Puppets.
+  @>Text: Aside from the traditional weaknesses of Grass-type
+   :    : Pokémon, Nature-type Puppets are weak to Aero, Cryo,
+   :    : Pyro, and Miasma-Typed moves.
+  @>Text: Nature-Type Puppets resist damage from Beast, Hydro, Wind, Nature
+   :    : Earth, Water, Electric, Grass, and Ground-type moves.
+  @>Jump to Label: Start
+  @>
+ : Branch End
+ @>Conditional Branch: Variable [0001: Temp Pokemon Choice] == 1
+  @>Comment: Gym Mechanics
+  @>Text: In order to reach Erika, challengers must first navigate the gym
+   :    : and its "Untampered Nature" in order to battle trainers which
+   :    : unlock the door to her chambers.
+  @>Text: The trainers in the gym will offer to heal the challenger as
+   :    : opposed to battling them, but if they do then they will not
+   :    : battle the challenger afterward.
+  @>Text: Enough trainers must be beaten to unlock the door to Erika's
+   :    : chambers. If the challenger doesn't battle enough, they must
+   :    : restart the challenge entirely.
+  @>Text: On the way to each trainer is a hallway full of Pokémon and
+   :    : Puppets owned by the Gym, which will battle the challenger.
+   :    : As they are owned by the gym, they cannot be caught.
+  @>Text: Those hallways are filled with an aroma that calms the nerves
+   :    : of those that breathe it in. As a result, experience growth in those
+   :    : hallways is stunted entirely.
+  @>Jump to Label: Start
+  @>
+ : Branch End
+ @>Conditional Branch: Variable [0001: Temp Pokemon Choice] == 2
+  @>Comment: Gym Leader Information
+  @>Text: Despite the nobility of Kanto fading into obscurity many 
+   :    : years ago, many people still treat Erika like a Princess,
+   :    : even though the title exists in name only and has no
+   :    : power.
+  @>Text: She makes no effort to stop or encourage it though, focusing only
+   :    : on her own interests- namely, her flower arranging.
+  @>Text: As such, she imports flowers from various far away regions
+   :    : to decorate the Gym with when it strikes her fancy.
+  @>Text: In her free time, when she's not maintaining the gym, she
+   :    : enjoys wandering into nearby meadows to doze off among
+   :    : the flowers.
+  @>Jump to Label: Start
+  @>
+ : Branch End
+ @>Conditional Branch: Variable [0001: Temp Pokemon Choice] == 3
+  @>Comment: Gym Rematch Protocol
+  @>Script: $game_variables[129] = "Celadon Gym"
+  @>Text: This will inform the Gym Leader and all trainers in 
+   :    : the gym that you wish to challenge them again.
+  @>Call Common Event: Gym Rematch Protocol
+  @>
+ : Branch End
+ @>
+: Branch End
 @>
 
 #------------------------------------------------------------------------------
 Event ID: 005
-Event Name: Trainer(3)
-(X,Y): (026,016)
+Event Name: Trainer
+(X,Y): (019,026)
 
 Page #1
 Conditions
 None
-
-Graphic: trchar028
-
-Autonomous Movement
-Type: Fixed
-Speed: 3: Slow
-Freq: 3: Low
-Options Enabled
-Move Animation
-Trigger: Event Touch
-
-List of Event Commands:
-@>Script: pbTrainerIntro(:SCIENTIST)
-@>Script: pbNoticePlayer(get_self)
-@>Text: My data indicates that your probability of success is less
- :    : than 10%.
-@>Comment: EndSpeech: It seems it was my chances of success that were drastically reduced!
-@>Conditional Branch: Script: TrainerBattle.start(PBTrainers::SCIENTIST, "Kabal", 0)
- @>Control Variables: [0110: Plot Control Variable] += 1
- @>Control Self Switch: A =ON
- @>
-: Branch End
-@>Script: pbTrainerEnd
-@>
-
-Page #2
-Conditions
-Self Switch A is ON
-
-Graphic: trchar028
 
 Autonomous Movement
 Type: Fixed
@@ -143720,47 +143774,16 @@ Move Animation
 Trigger: Action Button
 
 List of Event Commands:
-@>Text: Science is imperfect, but we are always learning
- :    : from our mistakes.
 @>
 
 #------------------------------------------------------------------------------
 Event ID: 006
-Event Name: Trainer(3)
-(X,Y): (025,011)
+Event Name: Trainer
+(X,Y): (007,029)
 
 Page #1
 Conditions
 None
-
-Graphic: trchar029
-
-Autonomous Movement
-Type: Fixed
-Speed: 3: Slow
-Freq: 3: Low
-Options Enabled
-Move Animation
-Trigger: Event Touch
-
-List of Event Commands:
-@>Script: pbTrainerIntro(:SUPERNERD)
-@>Script: pbNoticePlayer(get_self)
-@>Text: Ufufu, I've been devising an unbeatable strategy. You'll be the first to fall!
-@>Comment: EndSpeech: My perfect plan failed before it had a chance!
-@>Conditional Branch: Script: TrainerBattle.start(PBTrainers::SUPERNERD, "Hann", 0)
- @>Control Variables: [0110: Plot Control Variable] += 1
- @>Control Self Switch: A =ON
- @>
-: Branch End
-@>Script: pbTrainerEnd
-@>
-
-Page #2
-Conditions
-Self Switch A is ON
-
-Graphic: trchar029
 
 Autonomous Movement
 Type: Fixed
@@ -143771,20 +143794,17 @@ Move Animation
 Trigger: Action Button
 
 List of Event Commands:
-@>Text: Even the best laid plans have a chance of failure. You remember that.
 @>
 
 #------------------------------------------------------------------------------
 Event ID: 007
-Event Name: Blaine
-(X,Y): (018,013)
+Event Name: Trainer
+(X,Y): (007,015)
 
 Page #1
 Conditions
 None
 
-Graphic: trchar065
-
 Autonomous Movement
 Type: Fixed
 Speed: 3: Slow
@@ -143794,72 +143814,16 @@ Move Animation
 Trigger: Action Button
 
 List of Event Commands:
-@>Text: Whoa hey! You must think you're hot stuff to make it this far!
- :    : People usually give up after the first trivia machine!
-@>Text: My name's Blaine, leader of Cinnabar Gym!
-@>Text: Blaine: I rebuilt this gym when we rebuilt the island, but
- :    : I've always remained true to my quizzical nature!
-@>Text: But I'm much more than just quizzes and riddles - I'm known for
- :    : leaving my foes incinerated by the flames of my Pokemon and
- :    : Puppets!
-@>Text: If you can beat me, you'll get my Volcano Badge. But I warn you
- :    : now: when you battle me, you may get a bit... hot under the 
- :    : collar!
-@>Text: I'm red hot and ready!
-@>Comment: EndSpeech: I've been put out! Reduced to ashes!
-@>Conditional Branch: Script: TrainerBattle.start(PBTrainers::LEADER_Blaine, "Blaine")
- @>Text: Blaine: You've completely doused my fire, I'm nothing but
-  :    : charcoal now!
- @>Text: As promised, take this Volcano Badge, proof of the blazing
-  :    : hot battle that we shared!
- @>Text: \me[003. Fanfare.ogg]\PN earned the Volcano Badge!\wt[80]
- @>Script: $player.badges[6]=true
- @>Control Switches: [0136] = ON
- @>Text: Blaine: You have to take this SC before you go!
- @>Script: pbReceiveItem(PBItems::G18TM38)
- @>Text: Blaine: SC38 contains the move Fire Blast. One of the
-  :    : most powerful fire type moves in the book!
- @>Text: If it makes contact, the foe better hope they have a 
-  :    : Burn Heal on them!
- @>Text: Make sure to teach this to those who can make
-  :    : best use of it!
- @>
-: Branch End
-@>
-
-Page #2
-Conditions
-Switch 0136:  is ON
-
-Graphic: trchar065
-
-Autonomous Movement
-Type: Fixed
-Speed: 3: Slow
-Freq: 3: Low
-Options Enabled
-Move Animation
-Trigger: Action Button
-
-List of Event Commands:
-@>Text: I've recently remembered that I once promised an
- :    : old challenger that we'd have a battle again once I 
- :    : rebuilt my gym.
-@>Text: I should contact them for a fiery rematch!
-@>Text: I hear they're part of the Pokemon League now, so this
- :    : rematch should be an intense one!
 @>
 
 #------------------------------------------------------------------------------
 Event ID: 008
-Event Name: EV008
-(X,Y): (018,026)
+Event Name: Trainer
+(X,Y): (020,002)
 
 Page #1
 Conditions
 None
-
-Graphic: NPC 15
 
 Autonomous Movement
 Type: Fixed
@@ -143870,48 +143834,16 @@ Move Animation
 Trigger: Action Button
 
 List of Event Commands:
-@>Text: Hey there, champ in the making! Yes, you! Are you prepared 
- :    : to scorch the ground with your presence? Well let me help you out!
-@>Text: Cinnabar Island Gym was destroyed 7 years ago when the Volcano went off,
- :    : and was rebuilt a few years ago, completely redesigned. 
-@>Text: Similar to its old design in terms of concept, the Gym Leader is
- :    : behind a blockade that can only be lowered by answering questions
- :    : or beating trainers.
-@>Text: On opposite sides of the hallway reside three trainers and three
- :    : trivia machines. You must beat a total of three of either of these,
- :    : in any order, to be able to advance to the next hallway.
-@>Text: Be warned though, if you fail at answering a question, you won't be 
- :    : able to try again, and you will need to fight a trainer to get through 
- :    : the blockade.
-@>Text: If you want to preserve your Puppets for the Gym Leader,
- :    : I highly suggest knowing your random trivia!
-@>Text: As for the types seen in the gym, Blaine, the leader, prefers to burn
- :    : things up with Fire types - both before and after the Puppet Invasion.
-@>Text: Fire-based moves can leave a burn which will halve your Puppet's 
- :    : physical attack power, so having a way to deal with burns is an 
- :    : absolute must here!
-@>Text: Fire Types have the most strengths in the type advantage chart. 
- :    : They can start wildfires which will eradicate Nature and the Beasts 
- :    : living inside.
-@>Text: They can also melt down Ice and Steel into liquids 
- :    : with their hot temperatures!
-@>Text: However, as expected, Fire Types have a crippling weakness
- :    : to Water Types - their infernos can't ignite under raging waters.
-@>Text: And while Fire may burn Nature to a crisp, in the end, the Earth always
- :    : wins, as the remains from raging wildfires leave the Earth ready and
- :    : able to grow once again.
 @>
 
 #------------------------------------------------------------------------------
 Event ID: 009
-Event Name: ExitArrow
-(X,Y): (018,029)
+Event Name: Trainer
+(X,Y): (035,018)
 
 Page #1
 Conditions
 None
-
-Graphic: Exitarrow_red
 
 Autonomous Movement
 Type: Fixed
@@ -143919,25 +143851,15 @@ Speed: 3: Slow
 Freq: 3: Low
 Options Enabled
 Move Animation
-Stop Animation
-Always on Top
-Trigger: Player Touch
+Trigger: Action Button
 
 List of Event Commands:
-@>Conditional Branch: Player is facing Down
- @>Play SE: 'Door exit', 100, 100
- @>Change Screen Color Tone: (-255,-255,-255,0), @6
- @>Wait: 8 frame(s)
- @>Transfer Player:[043: Cinnabar Island], (020,056), No Fade
- @>Change Screen Color Tone: (0,0,0,0), @6
- @>
-: Branch End
 @>
 
 #------------------------------------------------------------------------------
 Event ID: 010
-Event Name: EV010
-(X,Y): (018,010)
+Event Name: Trainer
+(X,Y): (040,014)
 
 Page #1
 Conditions
@@ -143952,32 +143874,16 @@ Move Animation
 Trigger: Action Button
 
 List of Event Commands:
-@>Comment: Range the trainers between 40-48
 @>
 
 #------------------------------------------------------------------------------
 Event ID: 011
-Event Name: Gate 1
-(X,Y): (017,006)
+Event Name: Trainer
+(X,Y): (031,011)
 
 Page #1
 Conditions
 None
-
-Autonomous Movement
-Type: Fixed
-Speed: 3: Slow
-Freq: 3: Low
-Options Enabled
-Move Animation
-Trigger: Action Button
-
-List of Event Commands:
-@>
-
-Page #2
-Conditions
-Variable 0109: Unique Wild Battle is 3 or above
 
 Autonomous Movement
 Type: Fixed
@@ -143992,8 +143898,8 @@ List of Event Commands:
 
 #------------------------------------------------------------------------------
 Event ID: 012
-Event Name: Gate 1
-(X,Y): (017,005)
+Event Name: Riddle 1
+(X,Y): (007,012)
 
 Page #1
 Conditions
@@ -144008,27 +143914,24 @@ Move Animation
 Trigger: Action Button
 
 List of Event Commands:
-@>
-
-Page #2
-Conditions
-Variable 0109: Unique Wild Battle is 3 or above
-
-Autonomous Movement
-Type: Fixed
-Speed: 3: Slow
-Freq: 3: Low
-Options Enabled
-Move Animation
-Trigger: Action Button
-
-List of Event Commands:
+@>Conditional Branch: Script: pbGet(144) == :ITEM1
+ @>Text: Recipie involves Ingredient 1.
+ @>
+: Branch End
+@>Conditional Branch: Script: pbGet(144) == :ITEM2
+ @>Text: Recipie involves Ingredient 2.
+ @>
+: Branch End
+@>Conditional Branch: Script: pbGet(144) == :ITEM3
+ @>Text: Recipie involves Ingredient 3.
+ @>
+: Branch End
 @>
 
 #------------------------------------------------------------------------------
 Event ID: 013
-Event Name: Gate 1
-(X,Y): (018,005)
+Event Name: Riddle 2
+(X,Y): (023,006)
 
 Page #1
 Conditions
@@ -144043,27 +143946,24 @@ Move Animation
 Trigger: Action Button
 
 List of Event Commands:
-@>
-
-Page #2
-Conditions
-Variable 0109: Unique Wild Battle is 3 or above
-
-Autonomous Movement
-Type: Fixed
-Speed: 3: Slow
-Freq: 3: Low
-Options Enabled
-Move Animation
-Trigger: Action Button
-
-List of Event Commands:
+@>Conditional Branch: Script: pbGet(145) == :ITEM4
+ @>Text: Recipie involves Ingredient 4.
+ @>
+: Branch End
+@>Conditional Branch: Script: pbGet(145) == :ITEM5
+ @>Text: Recipie involves Ingredient 5.
+ @>
+: Branch End
+@>Conditional Branch: Script: pbGet(145) == :ITEM6
+ @>Text: Recipie involves Ingredient 6.
+ @>
+: Branch End
 @>
 
 #------------------------------------------------------------------------------
 Event ID: 014
-Event Name: Gate 1
-(X,Y): (019,005)
+Event Name: Riddle 3
+(X,Y): (041,023)
 
 Page #1
 Conditions
@@ -144078,27 +143978,27 @@ Move Animation
 Trigger: Action Button
 
 List of Event Commands:
-@>
-
-Page #2
-Conditions
-Variable 0109: Unique Wild Battle is 3 or above
-
-Autonomous Movement
-Type: Fixed
-Speed: 3: Slow
-Freq: 3: Low
-Options Enabled
-Move Animation
-Trigger: Action Button
-
-List of Event Commands:
+@>Conditional Branch: Player is facing Up
+ @>Conditional Branch: Script: pbGet(146) == :ITEM7
+  @>Text: Recipie involves Ingredient 7.
+  @>
+ : Branch End
+ @>Conditional Branch: Script: pbGet(146) == :ITEM8
+  @>Text: Recipie involves Ingredient 8.
+  @>
+ : Branch End
+ @>Conditional Branch: Script: pbGet(146) == :ITEM9
+  @>Text: Recipie involves Ingredient 9.
+  @>
+ : Branch End
+ @>
+: Branch End
 @>
 
 #------------------------------------------------------------------------------
 Event ID: 015
-Event Name: Gate 1
-(X,Y): (018,006)
+Event Name: Ingredient List 1
+(X,Y): (037,013)
 
 Page #1
 Conditions
@@ -144113,11 +144013,29 @@ Move Animation
 Trigger: Action Button
 
 List of Event Commands:
+@>Text: Which ingredeint will you take?
+@>Show Choices: Ingredient 1, Ingredient 2, Ingredient 3, Nevermind
+(When Cancel: Choice 4)
+: When [Ingredient 1]
+ @>Script: pbReceiveItem(:ITEM1)
+ @>Control Self Switch: A =ON
+ @>
+: When [Ingredient 2]
+ @>Script: pbReceiveItem(:ITEM2)
+ @>Control Self Switch: A =ON
+ @>
+: When [Ingredient 3]
+ @>Script: pbReceiveItem(:ITEM3)
+ @>Control Self Switch: A =ON
+ @>
+: When [Nevermind]
+ @>
+: Branch End
 @>
 
 Page #2
 Conditions
-Variable 0109: Unique Wild Battle is 3 or above
+Self Switch A is ON
 
 Autonomous Movement
 Type: Fixed
@@ -144128,12 +144046,22 @@ Move Animation
 Trigger: Action Button
 
 List of Event Commands:
+@>Text: Would you like to return the ingredient you took?
+@>Show Choices: Yes, No
+(When Cancel: Choice 2)
+: When [Yes]
+ @>Text: Ingredient returned.
+ @>Control Self Switch: A =OFF
+ @>
+: When [No]
+ @>
+: Branch End
 @>
 
 #------------------------------------------------------------------------------
 Event ID: 016
-Event Name: Gate 1
-(X,Y): (019,006)
+Event Name: Ingredient List 2
+(X,Y): (003,025)
 
 Page #1
 Conditions
@@ -144148,11 +144076,29 @@ Move Animation
 Trigger: Action Button
 
 List of Event Commands:
+@>Text: Which ingredeint will you take?
+@>Show Choices: Ingredient 4, Ingredient 5, Ingredient 6, Nevermind
+(When Cancel: Choice 4)
+: When [Ingredient 4]
+ @>Script: pbReceiveItem(:ITEM4)
+ @>Control Self Switch: A =ON
+ @>
+: When [Ingredient 5]
+ @>Script: pbReceiveItem(:ITEM5)
+ @>Control Self Switch: A =ON
+ @>
+: When [Ingredient 6]
+ @>Script: pbReceiveItem(:ITEM6)
+ @>Control Self Switch: A =ON
+ @>
+: When [Nevermind]
+ @>
+: Branch End
 @>
 
 Page #2
 Conditions
-Variable 0109: Unique Wild Battle is 3 or above
+Self Switch A is ON
 
 Autonomous Movement
 Type: Fixed
@@ -144163,12 +144109,22 @@ Move Animation
 Trigger: Action Button
 
 List of Event Commands:
+@>Text: Would you like to return the ingredient you took?
+@>Show Choices: Yes, No
+(When Cancel: Choice 2)
+: When [Yes]
+ @>Text: Ingredient returned.
+ @>Control Self Switch: A =OFF
+ @>
+: When [No]
+ @>
+: Branch End
 @>
 
 #------------------------------------------------------------------------------
 Event ID: 017
-Event Name: Gate 1
-(X,Y): (019,020)
+Event Name: Ingredient List 3
+(X,Y): (014,001)
 
 Page #1
 Conditions
@@ -144183,11 +144139,29 @@ Move Animation
 Trigger: Action Button
 
 List of Event Commands:
+@>Text: Which ingredeint will you take?
+@>Show Choices: Ingredient 7, Ingredient 8, Ingredient 9, Nevermind
+(When Cancel: Choice 4)
+: When [Ingredient 7]
+ @>Script: pbReceiveItem(:ITEM7)
+ @>Control Self Switch: A =ON
+ @>
+: When [Ingredient 8]
+ @>Script: pbReceiveItem(:ITEM8)
+ @>Control Self Switch: A =ON
+ @>
+: When [Ingredient 9]
+ @>Script: pbReceiveItem(:ITEM9)
+ @>Control Self Switch: A =ON
+ @>
+: When [Nevermind]
+ @>
+: Branch End
 @>
 
 Page #2
 Conditions
-Variable 0110: Plot Control Variable is 3 or above
+Self Switch A is ON
 
 Autonomous Movement
 Type: Fixed
@@ -144198,12 +144172,22 @@ Move Animation
 Trigger: Action Button
 
 List of Event Commands:
+@>Text: Would you like to return the ingredient you took?
+@>Show Choices: Yes, No
+(When Cancel: Choice 2)
+: When [Yes]
+ @>Text: Ingredient returned.
+ @>Control Self Switch: A =OFF
+ @>
+: When [No]
+ @>
+: Branch End
 @>
 
 #------------------------------------------------------------------------------
 Event ID: 018
-Event Name: Gate 1
-(X,Y): (018,020)
+Event Name: EV018
+(X,Y): (023,032)
 
 Page #1
 Conditions
@@ -144218,11 +144202,63 @@ Move Animation
 Trigger: Action Button
 
 List of Event Commands:
+@>Text: This machine seems like it can synthesize potions.
+@>Text: Use it?
+@>Show Choices: Yes, No
+(When Cancel: Choice 2)
+: When [Yes]
+ @>Text: Processing ingredients. Please stand by.
+ @>Conditional Branch: Script: $bag.has?(pbGet(144).to_sym)
+  @>Control Variables: [0147: Cinnabar Potion] += 1
+  @>
+ : Branch End
+ @>Conditional Branch: Script: $bag.has?(pbGet(145).to_sym)
+  @>Control Variables: [0147: Cinnabar Potion] += 1
+  @>
+ : Branch End
+ @>Conditional Branch: Script: $bag.has?(pbGet(146).to_sym)
+  @>Control Variables: [0147: Cinnabar Potion] += 1
+  @>
+ : Branch End
+ @>Wait: 10 frame(s)
+ @>Script: $bag.remove(:ITEM1)
+ :       : $bag.remove(:ITEM2)
+ :       : $bag.remove(:ITEM3)
+ :       : $bag.remove(:ITEM4)
+ :       : $bag.remove(:ITEM5)
+ :       : $bag.remove(:ITEM6)
+ :       : $bag.remove(:ITEM7)
+ :       : $bag.remove(:ITEM8)
+ :       : $bag.remove(:ITEM9)
+ @>Conditional Branch: Variable [0147: Cinnabar Potion] == 0
+  @>Script: pbReceiveItem(:PURPLEPOTION)
+  @>
+ : Else
+  @>Conditional Branch: Variable [0147: Cinnabar Potion] == 1
+   @>Script: pbReceiveItem(:GREENPOTION)
+   @>
+  : Else
+   @>Conditional Branch: Variable [0147: Cinnabar Potion] == 2
+    @>Script: pbReceiveItem(:BLUEPOTION)
+    @>
+   : Else
+    @>Script: pbReceiveItem(:REDPOTION)
+    @>
+   : Branch End
+   @>
+  : Branch End
+  @>
+ : Branch End
+ @>Control Self Switch: A =ON
+ @>
+: When [No]
+ @>
+: Branch End
 @>
 
 Page #2
 Conditions
-Variable 0110: Plot Control Variable is 3 or above
+Self Switch A is ON
 
 Autonomous Movement
 Type: Fixed
@@ -144233,12 +144269,28 @@ Move Animation
 Trigger: Action Button
 
 List of Event Commands:
+@>Text: Would you like to discard the potion you have to synthesize 
+ :    : a new one?
+@>Show Choices: Yes, No
+(When Cancel: Choice 2)
+: When [Yes]
+ @>Text: \pn dumped their down the drain.
+ @>Control Self Switch: A =OFF
+ @>Script: pbSetSelfSwitch(15,"A",false)
+ :       : pbSetSelfSwitch(16,"A",false)
+ :       : pbSetSelfSwitch(17,"A",false)
+ @>Script: pbSet(148, nil)
+ @>Control Variables: [0147: Cinnabar Potion] = 0
+ @>
+: When [No]
+ @>
+: Branch End
 @>
 
 #------------------------------------------------------------------------------
 Event ID: 019
-Event Name: Gate 1
-(X,Y): (017,020)
+Event Name: size(2,1)
+(X,Y): (021,017)
 
 Page #1
 Conditions
@@ -144253,46 +144305,33 @@ Move Animation
 Trigger: Action Button
 
 List of Event Commands:
-@>
-
-Page #2
-Conditions
-Variable 0110: Plot Control Variable is 3 or above
-
-Autonomous Movement
-Type: Fixed
-Speed: 3: Slow
-Freq: 3: Low
-Options Enabled
-Move Animation
-Trigger: Action Button
-
-List of Event Commands:
+@>Text: This controls the fire geysers. Turn them off?
+@>Show Choices: Yes, No
+(When Cancel: Choice 2)
+: When [Yes]
+ @>Script: for event in $game_map.events.values
+ :       :   if event.name[/Fire/i]
+ :       :     $game_self_switches[[$game_map.map_id,event.id,"A"]] = true
+ :       :   end
+ :       : end
+ :       : $game_map.refresh
+ @>Control Self Switch: A =ON
+ @>
+: When [No]
+ @>
+: Branch End
 @>
 
 #------------------------------------------------------------------------------
 Event ID: 020
-Event Name: Gate 1
-(X,Y): (017,019)
+Event Name: EV020
+(X,Y): (000,050)
 
 Page #1
 Conditions
 None
 
-Autonomous Movement
-Type: Fixed
-Speed: 3: Slow
-Freq: 3: Low
-Options Enabled
-Move Animation
-Trigger: Action Button
-
-List of Event Commands:
-@>
-
-Page #2
-Conditions
-Variable 0110: Plot Control Variable is 3 or above
+Graphic: Object ball
 
 Autonomous Movement
 Type: Fixed
@@ -144303,16 +144342,20 @@ Move Animation
 Trigger: Action Button
 
 List of Event Commands:
+@>Text: Ingredient 1 is set to \v[144]. Ingredient 2 is set to \v[145]. 
+ :    : Ingredient 3 is set to \v[146].
 @>
 
 #------------------------------------------------------------------------------
 Event ID: 021
-Event Name: Gate 1
-(X,Y): (018,019)
+Event Name: Fire
+(X,Y): (021,025)
 
 Page #1
 Conditions
 None
+
+Graphic: Fire
 
 Autonomous Movement
 Type: Fixed
@@ -144320,6 +144363,9 @@ Speed: 3: Slow
 Freq: 3: Low
 Options Enabled
 Move Animation
+Stop Animation
+Direction Fix
+Through
 Trigger: Action Button
 
 List of Event Commands:
@@ -144327,7 +144373,7 @@ List of Event Commands:
 
 Page #2
 Conditions
-Variable 0110: Plot Control Variable is 3 or above
+Self Switch A is ON
 
 Autonomous Movement
 Type: Fixed
@@ -144342,12 +144388,14 @@ List of Event Commands:
 
 #------------------------------------------------------------------------------
 Event ID: 022
-Event Name: Gate 1
-(X,Y): (019,019)
+Event Name: Fire
+(X,Y): (022,026)
 
 Page #1
 Conditions
 None
+
+Graphic: Fire
 
 Autonomous Movement
 Type: Fixed
@@ -144355,6 +144403,9 @@ Speed: 3: Slow
 Freq: 3: Low
 Options Enabled
 Move Animation
+Stop Animation
+Direction Fix
+Through
 Trigger: Action Button
 
 List of Event Commands:
@@ -144362,7 +144413,7 @@ List of Event Commands:
 
 Page #2
 Conditions
-Variable 0110: Plot Control Variable is 3 or above
+Self Switch A is ON
 
 Autonomous Movement
 Type: Fixed
@@ -144377,12 +144428,14 @@ List of Event Commands:
 
 #------------------------------------------------------------------------------
 Event ID: 023
-Event Name: EV023
-(X,Y): (029,022)
+Event Name: Fire
+(X,Y): (023,026)
 
 Page #1
 Conditions
 None
+
+Graphic: Fire
 
 Autonomous Movement
 Type: Fixed
@@ -144390,45 +144443,12 @@ Speed: 3: Slow
 Freq: 3: Low
 Options Enabled
 Move Animation
+Stop Animation
+Direction Fix
+Through
 Trigger: Action Button
 
 List of Event Commands:
-@>Text: Welcome to the Cinnabar Gym Trivia Machine! Have you got what it
- :    : takes to avoid all the trainers? Let's test your knowledge!
-@>Text: Puppets evolve through leveling up, as well as through Evolution
- :    : Shards, such as the Power Shard and the Swift Shard.
-@>Text: Your question is: What Shard is used to evolve Puppets into their 
- :    : Advent Form, if they have one?
-@>Show Choices: Swift Shard, Solar Shard, Chrome Shard
-(When Cancel: Disallow)
-: When [Swift Shard]
- @>Jump to Label: WRONG
- @>
-: When [Solar Shard]
- @>Jump to Label: RIGHT
- @>
-: When [Chrome Shard]
- @>Jump to Label: WRONG
- @>
-: Branch End
-@>Label: WRONG
-@>Play SE: 'buzzer', 100, 100
-@>Text: That is incorrect! Sorry for your loss!
-@>Text: The correct answer was "Solar Shard"!
-@>Text: Well, that's all from this machine! Enjoy your stay in Cinnabar Gym!
-@>Control Self Switch: A =ON
-@>Exit Event Processing
-@>Label: RIGHT
-@>Play SE: 'itemlevel', 100, 100
-@>Text: That is the correct answer! The Solar Shard is used to
- :    : evolve Puppets to their Advent Form!
-@>Control Variables: [0109: Unique Wild Battle] += 1
-@>Text: Congratulations, you've got one more counter on the gate being 
- :    : opened!
-@>Text: Good luck on the rest of your challenge, contestant!
-@>Script: pbSetSelfSwitch(23,"A",true)
-@>Script: pbSetSelfSwitch(24,"A",true)
-@>Control Self Switch: A =ON
 @>
 
 Page #2
@@ -144448,12 +144468,14 @@ List of Event Commands:
 
 #------------------------------------------------------------------------------
 Event ID: 024
-Event Name: EV024
-(X,Y): (030,022)
+Event Name: Fire
+(X,Y): (024,026)
 
 Page #1
 Conditions
 None
+
+Graphic: Fire
 
 Autonomous Movement
 Type: Fixed
@@ -144461,45 +144483,12 @@ Speed: 3: Slow
 Freq: 3: Low
 Options Enabled
 Move Animation
+Stop Animation
+Direction Fix
+Through
 Trigger: Action Button
 
 List of Event Commands:
-@>Text: Welcome to the Cinnabar Gym Trivia Machine! Have you got what it
- :    : takes to avoid all the trainers? Let's test your knowledge!
-@>Text: Puppets evolve through leveling up, as well as through Evolution
- :    : Shards, such as the Power Shard and the Swift Shard.
-@>Text: Your question is: What Shard is used to evolve Puppets into their 
- :    : Advent Form, if they have one?
-@>Show Choices: Swift Shard, Solar Shard, Chrome Shard
-(When Cancel: Disallow)
-: When [Swift Shard]
- @>Jump to Label: WRONG
- @>
-: When [Solar Shard]
- @>Jump to Label: RIGHT
- @>
-: When [Chrome Shard]
- @>Jump to Label: WRONG
- @>
-: Branch End
-@>Label: WRONG
-@>Play SE: 'buzzer', 100, 100
-@>Text: That is incorrect! Sorry for your loss!
-@>Text: The correct answer was "Solar Shard"!
-@>Text: Well, that's all from this machine! Enjoy your stay in Cinnabar Gym!
-@>Control Self Switch: A =ON
-@>Exit Event Processing
-@>Label: RIGHT
-@>Play SE: 'itemlevel', 100, 100
-@>Text: That is the correct answer! The Solar Shard is used to
- :    : evolve Puppets to their Advent Form!
-@>Control Variables: [0109: Unique Wild Battle] += 1
-@>Text: Congratulations, you've got one more counter on the gate being 
- :    : opened!
-@>Text: Good luck on the rest of your challenge, contestant!
-@>Script: pbSetSelfSwitch(23,"A",true)
-@>Script: pbSetSelfSwitch(24,"A",true)
-@>Control Self Switch: A =ON
 @>
 
 Page #2
@@ -144519,12 +144508,14 @@ List of Event Commands:
 
 #------------------------------------------------------------------------------
 Event ID: 025
-Event Name: EV025
-(X,Y): (032,016)
+Event Name: Fire
+(X,Y): (025,025)
 
 Page #1
 Conditions
 None
+
+Graphic: Fire
 
 Autonomous Movement
 Type: Fixed
@@ -144532,46 +144523,12 @@ Speed: 3: Slow
 Freq: 3: Low
 Options Enabled
 Move Animation
+Stop Animation
+Direction Fix
+Through
 Trigger: Action Button
 
 List of Event Commands:
-@>Text: Welcome to the Cinnabar Gym Trivia Machine! Have you got what it
- :    : takes to avoid all the trainers? Let's test your knowledge!
-@>Text: Kanto has several cities and towns, being a very large region
- :    : of the world.
-@>Text: Your question is: How many gyms are there that are part of
- :    : the Kanto Region that are held in towns?
-@>Show Choices: 3, 2, 1
-(When Cancel: Disallow)
-: When [3]
- @>Jump to Label: WRONG
- @>
-: When [2]
- @>Jump to Label: WRONG
- @>
-: When [1]
- @>Jump to Label: RIGHT
- @>
-: Branch End
-@>Label: WRONG
-@>Play SE: 'buzzer', 100, 100
-@>Text: That is incorrect! Sorry for your loss!
-@>Text: The correct answer was "1", and that solitary example is the
- :    : Lavender Town Gym!
-@>Text: Well, that's all from this machine! Enjoy your stay in Cinnabar Gym!
-@>Control Self Switch: A =ON
-@>Exit Event Processing
-@>Label: RIGHT
-@>Play SE: 'itemlevel', 100, 100
-@>Text: That is the correct answer! Kanto has only one gym located
- :    : in a traditional town, and that would be Lavender Town Gym!
-@>Control Variables: [0109: Unique Wild Battle] += 1
-@>Text: Congratulations, you've got one more counter on the gate being 
- :    : opened!
-@>Text: Good luck on the rest of your challenge, contestant!
-@>Script: pbSetSelfSwitch(25,"A",true)
-@>Script: pbSetSelfSwitch(26,"A",true)
-@>Control Self Switch: A =ON
 @>
 
 Page #2
@@ -144591,12 +144548,14 @@ List of Event Commands:
 
 #------------------------------------------------------------------------------
 Event ID: 026
-Event Name: EV026
-(X,Y): (031,016)
+Event Name: Fire
+(X,Y): (021,022)
 
 Page #1
 Conditions
 None
+
+Graphic: Fire
 
 Autonomous Movement
 Type: Fixed
@@ -144604,46 +144563,12 @@ Speed: 3: Slow
 Freq: 3: Low
 Options Enabled
 Move Animation
+Stop Animation
+Direction Fix
+Through
 Trigger: Action Button
 
 List of Event Commands:
-@>Text: Welcome to the Cinnabar Gym Trivia Machine! Have you got what it
- :    : takes to avoid all the trainers? Let's test your knowledge!
-@>Text: Kanto has several cities and towns, being a very large region
- :    : of the world.
-@>Text: Your question is: How many gyms are there that are part of
- :    : the Kanto Region that are held in towns?
-@>Show Choices: 3, 2, 1
-(When Cancel: Disallow)
-: When [3]
- @>Jump to Label: WRONG
- @>
-: When [2]
- @>Jump to Label: WRONG
- @>
-: When [1]
- @>Jump to Label: RIGHT
- @>
-: Branch End
-@>Label: WRONG
-@>Play SE: 'buzzer', 100, 100
-@>Text: That is incorrect! Sorry for your loss!
-@>Text: The correct answer was "1", and that solitary example is the
- :    : Lavender Town Gym!
-@>Text: Well, that's all from this machine! Enjoy your stay in Cinnabar Gym!
-@>Control Self Switch: A =ON
-@>Exit Event Processing
-@>Label: RIGHT
-@>Play SE: 'itemlevel', 100, 100
-@>Text: That is the correct answer! Kanto has only one gym located
- :    : in a traditional town, and that would be Lavender Town Gym!
-@>Control Variables: [0109: Unique Wild Battle] += 1
-@>Text: Congratulations, you've got one more counter on the gate being 
- :    : opened!
-@>Text: Good luck on the rest of your challenge, contestant!
-@>Script: pbSetSelfSwitch(25,"A",true)
-@>Script: pbSetSelfSwitch(26,"A",true)
-@>Control Self Switch: A =ON
 @>
 
 Page #2
@@ -144663,12 +144588,14 @@ List of Event Commands:
 
 #------------------------------------------------------------------------------
 Event ID: 027
-Event Name: EV027
-(X,Y): (029,010)
+Event Name: Fire
+(X,Y): (022,023)
 
 Page #1
 Conditions
 None
+
+Graphic: Fire
 
 Autonomous Movement
 Type: Fixed
@@ -144676,48 +144603,12 @@ Speed: 3: Slow
 Freq: 3: Low
 Options Enabled
 Move Animation
+Stop Animation
+Direction Fix
+Through
 Trigger: Action Button
 
 List of Event Commands:
-@>Text: Welcome to the Cinnabar Gym Trivia Machine! Have you got what it
- :    : takes to avoid all the trainers? Let's test your knowledge!
-@>Text: Kanto and Johto are two parts of the same continent, only 
- :    : rejoined recently after the organization of the Pokemon 
- :    : League Challenge.
-@>Text: Your question is: What is the name of the combined Kanto
- :    : and Johto Landmass?
-@>Show Choices: Kajoh, Jotaro, Tohjo
-(When Cancel: Disallow)
-: When [Kajoh]
- @>Jump to Label: WRONG
- @>
-: When [Jotaro]
- @>Jump to Label: WRONG
- @>
-: When [Tohjo]
- @>Jump to Label: RIGHT
- @>
-: Branch End
-@>Label: WRONG
-@>Play SE: 'buzzer', 100, 100
-@>Text: That is incorrect! Sorry for your loss!
-@>Text: The correct answer was "Tohjo", as a combination of the
- :    : "To" in Kanto and "Jo" in Johto. The H was thrown in to make
- :    : the word easier to pronounce.
-@>Text: Well, that's all from this machine! Enjoy your stay in Cinnabar Gym!
-@>Control Self Switch: A =ON
-@>Exit Event Processing
-@>Label: RIGHT
-@>Play SE: 'itemlevel', 100, 100
-@>Text: That is the correct answer! The Tohjo Continent was named
- :    : after its two largest regions, Kanto, "To", and Johto, "Jo".
-@>Control Variables: [0109: Unique Wild Battle] += 1
-@>Text: Congratulations, you've got one more counter on the gate being 
- :    : opened!
-@>Text: Good luck on the rest of your challenge, contestant!
-@>Script: pbSetSelfSwitch(27,"A",true)
-@>Script: pbSetSelfSwitch(28,"A",true)
-@>Control Self Switch: A =ON
 @>
 
 Page #2
@@ -144737,12 +144628,14 @@ List of Event Commands:
 
 #------------------------------------------------------------------------------
 Event ID: 028
-Event Name: EV028
-(X,Y): (030,010)
+Event Name: Fire
+(X,Y): (023,023)
 
 Page #1
 Conditions
 None
+
+Graphic: Fire
 
 Autonomous Movement
 Type: Fixed
@@ -144750,48 +144643,12 @@ Speed: 3: Slow
 Freq: 3: Low
 Options Enabled
 Move Animation
+Stop Animation
+Direction Fix
+Through
 Trigger: Action Button
 
 List of Event Commands:
-@>Text: Welcome to the Cinnabar Gym Trivia Machine! Have you got what it
- :    : takes to avoid all the trainers? Let's test your knowledge!
-@>Text: Kanto and Johto are two parts of the same continent, only 
- :    : rejoined recently after the organization of the Pokemon 
- :    : League Challenge.
-@>Text: Your question is: What is the name of the combined Kanto
- :    : and Johto Landmass?
-@>Show Choices: Kajoh, Jotaro, Tohjo
-(When Cancel: Disallow)
-: When [Kajoh]
- @>Jump to Label: WRONG
- @>
-: When [Jotaro]
- @>Jump to Label: WRONG
- @>
-: When [Tohjo]
- @>Jump to Label: RIGHT
- @>
-: Branch End
-@>Label: WRONG
-@>Play SE: 'buzzer', 100, 100
-@>Text: That is incorrect! Sorry for your loss!
-@>Text: The correct answer was "Tohjo", as a combination of the
- :    : "To" in Kanto and "Jo" in Johto. The H was thrown in to make
- :    : the word easier to pronounce.
-@>Text: Well, that's all from this machine! Enjoy your stay in Cinnabar Gym!
-@>Control Self Switch: A =ON
-@>Exit Event Processing
-@>Label: RIGHT
-@>Play SE: 'itemlevel', 100, 100
-@>Text: That is the correct answer! The Tohjo Continent was named
- :    : after its two largest regions, Kanto, "To", and Johto, "Jo".
-@>Control Variables: [0109: Unique Wild Battle] += 1
-@>Text: Congratulations, you've got one more counter on the gate being 
- :    : opened!
-@>Text: Good luck on the rest of your challenge, contestant!
-@>Script: pbSetSelfSwitch(27,"A",true)
-@>Script: pbSetSelfSwitch(28,"A",true)
-@>Control Self Switch: A =ON
 @>
 
 Page #2
@@ -144811,12 +144668,14 @@ List of Event Commands:
 
 #------------------------------------------------------------------------------
 Event ID: 029
-Event Name: EV029
-(X,Y): (011,011)
+Event Name: Fire
+(X,Y): (024,023)
 
 Page #1
 Conditions
 None
+
+Graphic: Fire
 
 Autonomous Movement
 Type: Fixed
@@ -144824,46 +144683,12 @@ Speed: 3: Slow
 Freq: 3: Low
 Options Enabled
 Move Animation
+Stop Animation
+Direction Fix
+Through
 Trigger: Action Button
 
 List of Event Commands:
-@>Text: Welcome to the Cinnabar Gym Trivia Machine! Have you got what it
- :    : takes to avoid all the trainers? Let's test your knowledge!
-@>Text: Saffron City has two gyms, only one of them is officially
- :    : sanctioned by the Pokemon League Federation.
-@>Text: Your question is: What is the name of the Saffron Dojo's
- :    : Dojo Master?
-@>Show Choices: Buront, Brawny, Brony
-(When Cancel: Disallow)
-: When [Buront]
- @>Jump to Label: RIGHT
- @>
-: When [Brawny]
- @>Jump to Label: WRONG
- @>
-: When [Brony]
- @>Jump to Label: WRONG
- @>
-: Branch End
-@>Label: WRONG
-@>Play SE: 'buzzer', 100, 100
-@>Text: That is incorrect! Sorry for your loss!
-@>Text: The correct answer was "Buront". He was made the Dojo 
- :    : Master around 4 years ago.
-@>Text: Well, that's all from this machine! Enjoy your stay in Cinnabar Gym!
-@>Control Self Switch: A =ON
-@>Exit Event Processing
-@>Label: RIGHT
-@>Play SE: 'itemlevel', 100, 100
-@>Text: That is the correct answer! Buront is the name of the Saffron
- :    : Dojo Master.
-@>Control Variables: [0110: Plot Control Variable] += 1
-@>Text: Congratulations, you've got one more counter on the gate being 
- :    : opened!
-@>Text: Good luck on the rest of your challenge, contestant!
-@>Script: pbSetSelfSwitch(29,"A",true)
-@>Script: pbSetSelfSwitch(30,"A",true)
-@>Control Self Switch: A =ON
 @>
 
 Page #2
@@ -144883,12 +144708,14 @@ List of Event Commands:
 
 #------------------------------------------------------------------------------
 Event ID: 030
-Event Name: EV030
-(X,Y): (012,011)
+Event Name: Fire
+(X,Y): (025,022)
 
 Page #1
 Conditions
 None
+
+Graphic: Fire
 
 Autonomous Movement
 Type: Fixed
@@ -144896,46 +144723,12 @@ Speed: 3: Slow
 Freq: 3: Low
 Options Enabled
 Move Animation
+Stop Animation
+Direction Fix
+Through
 Trigger: Action Button
 
 List of Event Commands:
-@>Text: Welcome to the Cinnabar Gym Trivia Machine! Have you got what it
- :    : takes to avoid all the trainers? Let's test your knowledge!
-@>Text: Saffron City has two gyms, only one of them is officially
- :    : sanctioned by the Pokemon League Federation.
-@>Text: Your question is: What is the name of the Saffron Dojo's
- :    : Dojo Master?
-@>Show Choices: Buront, Brawny, Brony
-(When Cancel: Disallow)
-: When [Buront]
- @>Jump to Label: RIGHT
- @>
-: When [Brawny]
- @>Jump to Label: WRONG
- @>
-: When [Brony]
- @>Jump to Label: WRONG
- @>
-: Branch End
-@>Label: WRONG
-@>Play SE: 'buzzer', 100, 100
-@>Text: That is incorrect! Sorry for your loss!
-@>Text: The correct answer was "Buront". He was made the Dojo 
- :    : Master around 4 years ago.
-@>Text: Well, that's all from this machine! Enjoy your stay in Cinnabar Gym!
-@>Control Self Switch: A =ON
-@>Exit Event Processing
-@>Label: RIGHT
-@>Play SE: 'itemlevel', 100, 100
-@>Text: That is the correct answer! Buront is the name of the Saffron
- :    : Dojo Master.
-@>Control Variables: [0110: Plot Control Variable] += 1
-@>Text: Congratulations, you've got one more counter on the gate being 
- :    : opened!
-@>Text: Good luck on the rest of your challenge, contestant!
-@>Script: pbSetSelfSwitch(29,"A",true)
-@>Script: pbSetSelfSwitch(30,"A",true)
-@>Control Self Switch: A =ON
 @>
 
 Page #2
@@ -144955,8 +144748,8 @@ List of Event Commands:
 
 #------------------------------------------------------------------------------
 Event ID: 031
-Event Name: EV031
-(X,Y): (009,016)
+Event Name: size(5,1)
+(X,Y): (021,027)
 
 Page #1
 Conditions
@@ -144968,69 +144761,90 @@ Speed: 3: Slow
 Freq: 3: Low
 Options Enabled
 Move Animation
-Trigger: Action Button
+Trigger: Player Touch
 
 List of Event Commands:
-@>Text: Welcome to the Cinnabar Gym Trivia Machine! Have you got what it
- :    : takes to avoid all the trainers? Let's test your knowledge!
-@>Text: Certain moves can leave nasty status effects on your Puppets,
- :    : rendering them unable to do certain things!
-@>Text: Your question is: Which of these moves will directly make it so 
- :    : your Puppet's physical attack is halved?
-@>Show Choices: Scald, Burn Powder, Tri-Attack
-(When Cancel: Disallow)
-: When [Scald]
- @>Jump to Label: WRONG
+@>Text: \xn[\pn] \b(Am I ready to battle the Gym Leader?)
+@>Show Choices: Yes, No
+(When Cancel: Choice 2)
+: When [Yes]
+ @>Conditional Branch: Script: $bag.has?(:REDPOTION) || $bag.has?(:BLUEPOTION) || $bag.has?(:GREENPOTION) || $bag.has?(:PURPLEPOTION)
+  @>Text: \xn[\pn] \b(Here goes nothing...)
+  @>Change Screen Color Tone: (-255,-255,-255,0), @8
+  @>Wait: 8 frame(s)
+  @>Transfer Player:[333: Cinnabar Island Gym], (023,027), Up
+  @>Change Screen Color Tone: (0,0,0,0), @8
+  @>Wait: 8 frame(s)
+  @>Text: \pn sprayed down themselves and their party with the 
+   :    : synthesized potion.
+  @>Script: $bag.remove(:REDPOTION)
+  :       : $bag.remove(:BLUEPOTION)
+  :       : $bag.remove(:GREENPOTION)
+  :       : $bag.remove(:PURPLEPOTION)
+  @>Conditional Branch: Variable [0147: Cinnabar Potion] <= 2
+   @>Script: pbFieldApplyStatus(:BURN, 6)
+   @>Conditional Branch: Variable [0147: Cinnabar Potion] <= 1
+    @>Script: pbFieldDamageNoFaint
+    @>Conditional Branch: Variable [0147: Cinnabar Potion] <= 0
+     @>Script: pbFieldDamageNoFaint
+     @>Jump to Label: Exit Potion Effects
+     @>
+    : Branch End
+    @>Jump to Label: Exit Potion Effects
+    @>
+   : Else
+    @>Jump to Label: Exit Potion Effects
+    @>
+   : Branch End
+   @>
+  : Else
+   @>Jump to Label: Exit Potion Effects
+   @>
+  : Branch End
+  @>Label: Exit Potion Effects
+  @>Set Move Route: Player
+   :              : $>Change Speed: 5
+   :              : $>Move Up
+   :              : $>Move Up
+   :              : $>Move Up
+   :              : $>Move Up
+   :              : $>Move Up
+   :              : $>Change Speed: 4
+  @>Wait for Move's Completion
+  @>Text: \xn[\pn]\b(Hey, that wasn't so bad! I didn't feel a thing! Let me check
+   :    : how my partners fared...)
+  @>Wait: 10 frame(s)
+  @>Conditional Branch: Variable [0147: Cinnabar Potion] >= 3
+   @>Text: \xn[\pn]\b(Tip top shape, excellent!)
+   @>
+  : Else
+   @>Show Animation: Player, [Exclaim bubble]
+   @>Text: \xn[\pn]\b(Oh no! It looks like they got singed! Was that 
+    :    : the wrong potion?)
+   @>
+  : Branch End
+  @>Control Variables: [0147: Cinnabar Potion] = 0
+  @>
+ : Else
+  @>Text: \xn[\pn] \b(I don't have a potion to move through the fires yet!)
+  @>Set Move Route: Player
+   :              : $>Move Down
+  @>Wait for Move's Completion
+  @>
+ : Branch End
  @>
-: When [Burn Powder]
- @>Jump to Label: RIGHT
- @>
-: When [Tri-Attack]
- @>Jump to Label: WRONG
+: When [No]
+ @>Set Move Route: Player
+  :              : $>Move Down
+ @>Wait for Move's Completion
  @>
 : Branch End
-@>Label: WRONG
-@>Play SE: 'buzzer', 100, 100
-@>Text: That is incorrect! Sorry for your loss!
-@>Text: The correct answer was "Burn Powder". While all those moves
- :    : can inflict a Burn status effect, Burn Powder is the only of the
- :    : three that has a 100% chance of inflicting burn.
-@>Text: Well, that's all from this machine! Enjoy your stay in Cinnabar Gym!
-@>Control Self Switch: A =ON
-@>Exit Event Processing
-@>Label: RIGHT
-@>Play SE: 'itemlevel', 100, 100
-@>Text: That is the correct answer! Burn Powder will always inflict
- :    : a Burn status effect on the foe, and as a result cause the
- :    : foe's Physical Attack to be halved.
-@>Control Variables: [0110: Plot Control Variable] += 1
-@>Text: Congratulations, you've got one more counter on the gate being 
- :    : opened!
-@>Text: Good luck on the rest of your challenge, contestant!
-@>Script: pbSetSelfSwitch(31,"A",true)
-@>Script: pbSetSelfSwitch(32,"A",true)
-@>Control Self Switch: A =ON
-@>
-
-Page #2
-Conditions
-Self Switch A is ON
-
-Autonomous Movement
-Type: Fixed
-Speed: 3: Slow
-Freq: 3: Low
-Options Enabled
-Move Animation
-Trigger: Action Button
-
-List of Event Commands:
 @>
 
 #------------------------------------------------------------------------------
 Event ID: 032
-Event Name: EV032
-(X,Y): (010,016)
+Event Name: size(1,2)
+(X,Y): (018,057)
 
 Page #1
 Conditions
@@ -145045,45 +144859,6 @@ Move Animation
 Trigger: Action Button
 
 List of Event Commands:
-@>Text: Welcome to the Cinnabar Gym Trivia Machine! Have you got what it
- :    : takes to avoid all the trainers? Let's test your knowledge!
-@>Text: Certain moves can leave nasty status effects on your Puppets,
- :    : rendering them unable to do certain things!
-@>Text: Your question is: Which of these moves will directly make it so 
- :    : your Puppet's physical attack is halved?
-@>Show Choices: Scald, Burn Powder, Tri-Attack
-(When Cancel: Disallow)
-: When [Scald]
- @>Jump to Label: WRONG
- @>
-: When [Burn Powder]
- @>Jump to Label: RIGHT
- @>
-: When [Tri-Attack]
- @>Jump to Label: WRONG
- @>
-: Branch End
-@>Label: WRONG
-@>Play SE: 'buzzer', 100, 100
-@>Text: That is incorrect! Sorry for your loss!
-@>Text: The correct answer was "Burn Powder". While all those moves
- :    : can inflict a Burn status effect, Burn Powder is the only of the
- :    : three that has a 100% chance of inflicting burn.
-@>Text: Well, that's all from this machine! Enjoy your stay in Cinnabar Gym!
-@>Control Self Switch: A =ON
-@>Exit Event Processing
-@>Label: RIGHT
-@>Play SE: 'itemlevel', 100, 100
-@>Text: That is the correct answer! Burn Powder will always inflict
- :    : a Burn status effect on the foe, and as a result cause the
- :    : foe's Physical Attack to be halved.
-@>Control Variables: [0110: Plot Control Variable] += 1
-@>Text: Congratulations, you've got one more counter on the gate being 
- :    : opened!
-@>Text: Good luck on the rest of your challenge, contestant!
-@>Script: pbSetSelfSwitch(31,"A",true)
-@>Script: pbSetSelfSwitch(32,"A",true)
-@>Control Self Switch: A =ON
 @>
 
 Page #2
@@ -145103,8 +144878,8 @@ List of Event Commands:
 
 #------------------------------------------------------------------------------
 Event ID: 033
-Event Name: EV033
-(X,Y): (011,021)
+Event Name: size(1,2)
+(X,Y): (019,057)
 
 Page #1
 Conditions
@@ -145119,45 +144894,132 @@ Move Animation
 Trigger: Action Button
 
 List of Event Commands:
-@>Text: Welcome to the Cinnabar Gym Trivia Machine! Have you got what it
- :    : takes to avoid all the trainers? Let's test your knowledge!
-@>Text: Puppets have different stats and different growths for their 
- :    : stats. Each puppet is unique, but puppets of the same species 
- :    : share a Common Base Stat Total.
-@>Text: Your question is: Defense Layla and Defense Patchouli. Which of
- :    : the two Puppets has the lowest Base Stat Value in Speed?
-@>Show Choices: Defense Patchouli, Defense Layla, Both are tied
-(When Cancel: Disallow)
-: When [Defense Patchouli]
- @>Jump to Label: RIGHT
+@>
+
+Page #2
+Conditions
+Self Switch A is ON
+
+Autonomous Movement
+Type: Fixed
+Speed: 3: Slow
+Freq: 3: Low
+Options Enabled
+Move Animation
+Trigger: Action Button
+
+List of Event Commands:
+@>
+
+#------------------------------------------------------------------------------
+Event ID: 034
+Event Name: Trigger Gold size(3,1)
+(X,Y): (022,064)
+
+Page #1
+Conditions
+None
+
+Autonomous Movement
+Type: Fixed
+Speed: 3: Slow
+Freq: 3: Low
+Options Enabled
+Move Animation
+Through
+Trigger: Action Button
+
+List of Event Commands:
+@>
+
+Page #2
+Conditions
+Switch 0109: Met Gold is ON
+Switch 0110: s:badgeQtyOdd? is ON
+
+Autonomous Movement
+Type: Fixed
+Speed: 3: Slow
+Freq: 3: Low
+Options Enabled
+Move Animation
+Through
+Trigger: Event Touch
+
+List of Event Commands:
+@>Text: \xn[Gold]Catch ya' around Kayla!
+@>Set Move Route: [Gold]
+ :              : $>Turn Down
+@>Show Animation: [Gold], [Exclaim bubble]
+@>Wait for Move's Completion
+@>Set Move Route: [Gold]
+                  (Ignore If Can't Move)
+ :              : $>Wait: 15 frame(s)
+ :              : $>Move Down
+ :              : $>Move Down
+ :              : $>Move Down
+@>Wait for Move's Completion
+@>Script: look_at_event($game_player, 3)
+@>Set Move Route: [Gold]
+                  (Ignore If Can't Move)
+ :              : $>Turn toward Player
+@>Call Common Event: Vs. Gold - Encounter
+@>Text: \xn[Gold]Alright, let's do this, \pn!
+@>Control Switches: [0104: Transition Handler] = ON
+@>Control Variables: [0103: Vs. Transition ID] = 4
+@>Control Variables: [0115: Vs. Transition - Background] = 2
+@>Script: setBattleRule("base", "indoor1")
+@>Comment: EndSpeech: _I(pbGet(4))
+@>Conditional Branch: Script: TrainerBattle.start(:RIVAL_Gold, "Gold", 1+pbGet(116))
+ @>Call Common Event: Vs. Gold - Post-Battle
+ @>Set Move Route: Player
+  :              : $>Move Left
+  :              : $>Turn Right
+ @>Wait for Move's Completion
+ @>Set Move Route: [size(2,1)]
+  :              : $>Move Down
+  :              : $>Change Opacity: 0
+  :              : $>SE: 'Door exit', 100, 100
+ @>Wait for Move's Completion
+ @>Control Variables: [0116: Battled Rival Gold] += 1
+ @>Control Self Switch: A =ON
+ @>Script: pbSetSelfSwitch(21,"A",true)
  @>
-: When [Defense Layla]
- @>Jump to Label: WRONG
- @>
-: When [Both are tied]
- @>Jump to Label: WRONG
+: Else
+ @>Exit Event Processing
  @>
 : Branch End
-@>Label: WRONG
-@>Play SE: 'buzzer', 100, 100
-@>Text: That is incorrect! Sorry for your loss!
-@>Text: The correct answer was "Defense Patchouli", who
- :    : has a Speed value of 5, while Defense Layla has a
- :    : Speed value of 10.
-@>Text: Well, that's all from this machine! Enjoy your stay in Cinnabar Gym!
-@>Control Self Switch: A =ON
-@>Exit Event Processing
-@>Label: RIGHT
-@>Play SE: 'itemlevel', 100, 100
-@>Text: That is the correct answer! Defense Patchouli has the
- :    : lowest Speed stat, at 5, while Defense Layla comes in
- :    : behind at 10.
-@>Control Variables: [0110: Plot Control Variable] += 1
-@>Text: Congratulations, you've got one more counter on the gate being 
- :    : opened!
-@>Text: Good luck on the rest of your challenge, contestant!
-@>Script: pbSetSelfSwitch(33,"A",true)
-@>Script: pbSetSelfSwitch(35,"A",true)
+@>
+
+#------------------------------------------------------------------------------
+Event ID: 035
+Event Name: Gym Initializer
+(X,Y): (023,055)
+
+Page #1
+Conditions
+None
+
+Autonomous Movement
+Type: Fixed
+Speed: 3: Slow
+Freq: 3: Low
+Options Enabled
+Move Animation
+Trigger: Parallel Process
+
+List of Event Commands:
+@>Script: ingredient1 = [:ITEM1, :ITEM2, :ITEM3]
+:       : ingredient2 = [:ITEM4, :ITEM5, :ITEM6]
+:       : ingredient3 = [:ITEM7, :ITEM8, :ITEM9]
+:       : 
+:       : rand_ing1 = ingredient1.sample
+:       : rand_ing2 = ingredient2.sample
+:       : rand_ing3 = ingredient3.sample
+:       : 
+:       : pbSet(144, rand_ing1)
+:       : pbSet(145, rand_ing2)
+:       : pbSet(146, rand_ing3)
 @>Control Self Switch: A =ON
 @>
 
@@ -145177,68 +145039,15 @@ List of Event Commands:
 @>
 
 #------------------------------------------------------------------------------
-Event ID: 035
-Event Name: EV035
-(X,Y): (012,021)
+Event ID: 036
+Event Name: EV036
+(X,Y): (000,052)
 
 Page #1
 Conditions
 None
 
-Autonomous Movement
-Type: Fixed
-Speed: 3: Slow
-Freq: 3: Low
-Options Enabled
-Move Animation
-Trigger: Action Button
-
-List of Event Commands:
-@>Text: Welcome to the Cinnabar Gym Trivia Machine! Have you got what it
- :    : takes to avoid all the trainers? Let's test your knowledge!
-@>Text: Puppets have different stats and different growths for their 
- :    : stats. Each puppet is unique, but puppets of the same species 
- :    : share a Common Base Stat Total.
-@>Text: Your question is: Defense Layla and Defense Patchouli. Which of
- :    : the two Puppets has the lowest Base Stat Value in Speed?
-@>Show Choices: Defense Patchouli, Defense Layla, Both are tied
-(When Cancel: Disallow)
-: When [Defense Patchouli]
- @>Jump to Label: RIGHT
- @>
-: When [Defense Layla]
- @>Jump to Label: WRONG
- @>
-: When [Both are tied]
- @>Jump to Label: WRONG
- @>
-: Branch End
-@>Label: WRONG
-@>Play SE: 'buzzer', 100, 100
-@>Text: That is incorrect! Sorry for your loss!
-@>Text: The correct answer was "Defense Patchouli", who
- :    : has a Speed value of 5, while Defense Layla has a
- :    : Speed value of 10.
-@>Text: Well, that's all from this machine! Enjoy your stay in Cinnabar Gym!
-@>Control Self Switch: A =ON
-@>Exit Event Processing
-@>Label: RIGHT
-@>Play SE: 'itemlevel', 100, 100
-@>Text: That is the correct answer! Defense Patchouli has the
- :    : lowest Speed stat, at 5, while Defense Layla comes in
- :    : behind at 10.
-@>Control Variables: [0110: Plot Control Variable] += 1
-@>Text: Congratulations, you've got one more counter on the gate being 
- :    : opened!
-@>Text: Good luck on the rest of your challenge, contestant!
-@>Script: pbSetSelfSwitch(33,"A",true)
-@>Script: pbSetSelfSwitch(35,"A",true)
-@>Control Self Switch: A =ON
-@>
-
-Page #2
-Conditions
-Self Switch A is ON
+Graphic: Object ball
 
 Autonomous Movement
 Type: Fixed
@@ -145249,6 +145058,7 @@ Move Animation
 Trigger: Action Button
 
 List of Event Commands:
+@>Script: pbSetSelfSwitch(35,"A",false)
 @>
 
 #------------------------------------------------------------------------------
@@ -176548,19 +176358,40 @@ List of Event Commands:
  @>
 : Branch End
 @>Comment: --- Cinnabar Gym
-@>Conditional Branch: Script: $game_map.map_id == 999
+@>Conditional Branch: Script: $game_map.map_id == 333
  @>Text: \xn[Gold]Blaine decided to embrace his passions in a whole
   :    : new way.
- @>Text: \xn[Gold]Instead of being a Trivia Master, he decided to build
-  :    : his gym around his former profession- did you know he used
-  :    : to be a geneticist?
- @>Text: \xn[Gold]Well, challengers now have to create a potion 
-  :    : that'll allow them to get through the flames that surround him.
- @>Text: \xn[Gold]The alchemic formula is different for each challenger,
-  :    : so I couldn't help you with it! You'll have to deduce it on your
-  :    : own, or battle the trainers here for information.
- @>Text: \xn[Gold]But be warned, you only have three attempts to 
-  :    : create the correct potion! So try not to get it wrong!
+ @>Text: \xn[Gold]Did you know he used to be a geneticist? Well, he 
+  :    : blended his interests as both a quiz master and a scientist 
+  :    : togther in his gym redesign.
+ @>Text: \xn[Gold]Challengers now have to create a potion that will 
+  :    : allow them to walk through the flames that surround barricade 
+  :    : him in his chamber!
+ @>Show Animation: Player, [Exclaim bubble]
+ @>Text: \xn[Gold]The formula is different for each challenger, so I 
+  :    : couldn't help you with it! You'll have to deduce it on your 
+  :    : own, battle the trainers here for information, or do reseach 
+  :    : within the gym!
+ @>Text: \xn[Gold]But be warned! If you get the potion wrong, and you
+  :    : attempt to walk through the fires, your partners are going
+  :    : to get seriously messed up!
+ @>Text: \xn[Gold]Pay close attention to the potion you make!
+ @>
+: Branch End
+@>Comment: --- Viridian Gym
+@>Conditional Branch: Script: $game_map.map_id == 999
+ @>Text: \xn[Gold]Green... Green is a challenge, plain and simple.
+ @>Text: \xn[Gold]He used to be champion of the Kanto League... 
+  :    : before Red dethroned him in a matter of hours. But don't let 
+  :    : his 'demotion' to Gym Leader give you a reason to relax.
+ @>Text: \xn[Gold]Green may not rely on fancy tricks in his gym, or 
+  :    : even have any trainers, but he's extremely strong.
+ @>Text: \xn[Gold]He apparently just returned from an assignment
+  :    : in the Tiksi Region, something to do with "Puppets that had
+  :    : their hearts sealed away", or something.
+ @>Text: \xn[Gold]As a result, his Puppets have unique moves they
+  :    : wouldn't normally learn! The entire battle may be over before
+  :    : it starts if you aren't careful!
  @>
 : Branch End
 @>

@@ -1,10 +1,8 @@
 #===============================================================================
-# Add any custom page mechanics to the methods and settings below.
+# Summary settings.
 #===============================================================================
 class PokemonSummary_Scene
-  #=============================================================================
-  # Display settings.
-  #=============================================================================
+  #-----------------------------------------------------------------------------
   # Sets the maximum number of page icons that can be displayed on screen at once.
   # Pages that exceed this maximum will shift over all previous icons when you
   # scroll to that page. (Default: 5)
@@ -29,8 +27,8 @@ class PokemonSummary_Scene
   PAGE_ICONS_ALIGNMENT = :center
   
   #-----------------------------------------------------------------------------
-  # Sets the length and width (in pixels) of each individual icon sprite.
-  # Remember that the length of the icon set here should be half of the size of
+  # Sets the width and height (in pixels) of each individual icon sprite.
+  # Remember that the width of the icon set here should be half of the size of
   # the actual width of the graphic, since both the highlighted and unhighlighted
   # versions of the icon are contained in the same graphic. (Default: [52, 60])
   #-----------------------------------------------------------------------------

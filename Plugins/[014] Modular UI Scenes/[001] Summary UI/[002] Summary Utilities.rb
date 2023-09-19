@@ -51,7 +51,7 @@ class PokemonSummary_Scene
       if page > size
         imagepos.push([path, xpos + offset - 14, ypos + 20, 0, 0, 12, 20])
       end
-      if range.min < range.max && page < @page_list.length - 1
+      if page <= size && size < @page_list.length
         imagepos.push([path, xpos + offset + (iconPos * w) + 2, ypos + 20, 14, 0, 12, 20])
       end
     end

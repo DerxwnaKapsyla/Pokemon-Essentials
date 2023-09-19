@@ -169,13 +169,13 @@ end
 #===============================================================================
 class PokemonPokedex_Scene
   def pbStartScene
-    @sliderbitmap       = AnimatedBitmap.new("Graphics/Pictures/Pokedex/icon_slider")
-    @typebitmap         = AnimatedBitmap.new(_INTL("Graphics/Pictures/Pokedex/icon_types"))
-    @typebitmaplarge    = AnimatedBitmap.new(_INTL("Graphics/Pictures/Pokedex/icon_types_big")) # Derx: Required for Pokedex Screen Fixes
-    @shapebitmap        = AnimatedBitmap.new("Graphics/Pictures/Pokedex/icon_shapes")
-    @hwbitmap           = AnimatedBitmap.new("Graphics/Pictures/Pokedex/icon_hw")
-    @selbitmap          = AnimatedBitmap.new("Graphics/Pictures/Pokedex/icon_searchsel")
-    @searchsliderbitmap = AnimatedBitmap.new(_INTL("Graphics/Pictures/Pokedex/icon_searchslider"))
+    @sliderbitmap       = AnimatedBitmap.new("Graphics/UI/Pokedex/icon_slider")
+    @typebitmap         = AnimatedBitmap.new(_INTL("Graphics/UI/Pokedex/icon_types"))
+    @typebitmaplarge    = AnimatedBitmap.new(_INTL("Graphics/UI/Pokedex/icon_types_big")) # Derx: Required for Pokedex Screen Fixes
+    @shapebitmap        = AnimatedBitmap.new("Graphics/UI/Pokedex/icon_shapes")
+    @hwbitmap           = AnimatedBitmap.new("Graphics/UI/Pokedex/icon_hw")
+    @selbitmap          = AnimatedBitmap.new("Graphics/UI/Pokedex/icon_searchsel")
+    @searchsliderbitmap = AnimatedBitmap.new(_INTL("Graphics/UI/Pokedex/icon_searchslider"))
     @sprites = {}
     @viewport = Viewport.new(0, 0, Graphics.width, Graphics.height)
     @viewport.z = 99999
