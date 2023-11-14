@@ -834,3 +834,36 @@ class CreditsOutro_TFoC < CreditsOutro_TMoM
 	:wait, 60,
   ]
 end
+
+# ---------------------------
+
+class TKoLIntroScene1 < TMoMIntroScene
+  TEXT = [
+    [
+      "Touhou Puppet Play ~ The Kingdom of Lunacy",
+      "Developed by: DerxwnaKapsyla"
+    ],
+    :wait, 120,
+    :clear,
+    :wait, 120,
+    [
+      "Summer, Season 133 of the Gensokyo Calendar",
+      "Human Village, Second Full Moon"
+    ],
+    :wait, 60
+  ]
+end
+
+# ---------------------------
+
+class TKoLPostgameScene < TMoMIntroScene
+  TEXT = [
+    [
+      "Summer, Season 133 of the Gensokyo Calendar",
+      "Human Village, New Moon"
+    ],
+    :wait, 60
+  ]
+end
+
+# ---------------------------

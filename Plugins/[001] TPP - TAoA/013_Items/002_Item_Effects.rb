@@ -1,0 +1,1 @@
+ItemHandlers::UseInField.copy(:SACREDASH, :GOLDENPEACHSAKE)

@@ -7,12 +7,22 @@
 #	  it will always be night.
 #	* Makes it so that if the player is playing The Festival of Cureses, that
 #	  it will always be day.
+#	* Makes it so that if the player is playing The Kingdom of Lunacy, that
+#	  it will always be day.
+#	* Makes it so that if the player is playing The Last Adventure, that
+#	  it will always be day.
 #==============================================================================#
 def pbGetTimeNow
   if GameData::MapMetadata.get($game_map.map_id)&.has_flag?("TMoM")
     now = Time.now
     return Time.local(now.year,now.month,now.day, 23, 0)
   elsif GameData::MapMetadata.get($game_map.map_id)&.has_flag?("TFoC")
+    now = Time.now
+    return Time.local(now.year,now.month,now.day, 12, 0)
+  elsif GameData::MapMetadata.get($game_map.map_id)&.has_flag?("TKoL")
+    now = Time.now
+    return Time.local(now.year,now.month,now.day, 12, 0)
+  elsif GameData::MapMetadata.get($game_map.map_id)&.has_flag?("TLA")
     now = Time.now
     return Time.local(now.year,now.month,now.day, 12, 0)
   end
