@@ -33,3 +33,12 @@ Battle::PokeBallEffects::ModifyCatchRate.add(:SAFARIORB, proc { |ball, catchRate
 Battle::PokeBallEffects::IsUnconditional.add(:MASTERORB, proc { |ball, battle, battler|
   next true
 })
+
+Battle::PokeBallEffects::ModifyCatchRate.add(:MOONBALL, proc { |ball, catchRate, battle, battler|
+  if battler.pokemon.species_data.has_flag?("Lunarian")
+    catchRate *= 5
+  else
+    catchRate /= 10
+  end
+  next catchRate
+})

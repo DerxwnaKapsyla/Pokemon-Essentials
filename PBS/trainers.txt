@@ -2128,7 +2128,7 @@ Pokemon = CHANSEY,100
 # Stage 1: Human Village
 #-------------------------------
 [TENGUC_M,Daichi]
-LoseText = "Ack!"
+LoseText = Ack!
 Items = HYPERPOTION,HYPERPOTION,FULLRESTORE
 Pokemon = SLILYBLACK,50
 	Moves = DARKPULSE18,NASTYPLOT18,OMINOUSWIND18,SHADOWBALL18
@@ -2146,37 +2146,222 @@ Pokemon = SUNNY,50
 #-------------------------------
 # Stage 1: Bamboo Forest
 #-------------------------------
-
+[EARTHRABBIT,Nagi]
+LoseText = Why didn't you warn me you were strong!
+Pokemon = CKAGEROU,16
+Pokemon = CREISEN,17
 #-------------------------------
-# Stage 1: Eientei
+[EARTHRABBIT,Hiiragi]
+LoseText = I shouldn't have wasted time battling...
+Pokemon = CLILYWHITE,18
 #-------------------------------
-
+[EARTHRABBIT,Ibuki]
+LoseText = Okay, alright, I'll behave!
+Pokemon = CMYSTIA,17
+Pokemon = CKYOUKO,17
 #-------------------------------
-# Midboss: Reisen U. Inaba
+[EARTHRABBIT,Kaya]
+LoseText = If it's not you, then... ...Oh, right.
+Pokemon = CYUKI,18
+Pokemon = CSHIZUHA,18
+Pokemon = CWAKASAGI,20
 #-------------------------------
-
+[EARTHRABBIT,Mao]
+LoseText = Now now, let's not jump to conclusions!
+Pokemon = CEIRIN,21
+#-------------------------------
+[EARTHRABBIT,Mugi]
+LoseText = Eep! My Puppets!
+Pokemon = CTEWI,19
+Pokemon = CHATATE,19
+Pokemon = CKASEN,19
+#-------------------------------
+[EARTHRABBIT,Inako]
+LoseText = So much for that prank...
+Pokemon = CNAZRIN,17
+Pokemon = CTEWI,19
+#-------------------------------
+[EARTHRABBIT,Yura]
+LoseText = Wait, what do you mean it's supposed to be a rabbit instead!?
+Pokemon = CMARISA,21
+#-------------------------------
+# Boss: Reisen U. Inaba
+#-------------------------------
+[REISEN,Reisen U. Inaba,10]
+LoseText = I heard you were strong, but wow...
+Pokemon = CYOUMU,21
+Pokemon = CREISEN,23
 #-------------------------------
 # Boss: Eirin Yagokoro
 #-------------------------------
-
-
+[EIRIN,Eirin Yagokoro,10]
+LoseText = I see... Yes, you'll do just fine.
+Pokemon = CKAGUYA,21
+Pokemon = CEIRIN,23
 #-------------------------------
 # Stage 2: Youkai Mountain
 #-------------------------------
+[YOUKAI_1,Suzuran]
+Pokemon = CMEDICINE,22
+Pokemon = CHINA,23
+Pokemon = CYAMAME,24
+LoseText = Oh... what do you have against toxins, eh?
+#-------------------------------
+[FAIRY_1_ALT,Kuroko]
+Pokemon = CLILYBLACK,23
+Pokemon = CRUMIA,25
+LoseText = You may not be, but I sure am!
+#-------------------------------
+[FAIRY_1_ALT,Rito]
+Pokemon = CHATATE,24
+Pokemon = CYUYUKO,24
+Pokemon = CNITORI,24
+LoseText = Human on... I forgot what came next!
+#-------------------------------
+[FAIRY_2_ALT,Shiroko]
+Pokemon = CMOMIJI,24
+Pokemon = CLILYWHITE,26
+Pokemon = CLUNA,26
+LoseText = ...Too much? Not enough?
+#-------------------------------
+[YOUKAI_2,Kazune]
+Pokemon = CAYA,25
+Pokemon = CIKU,25
+Pokemon = CAYA,27
+LoseText = Oh no, a tailwind!
+#-------------------------------
+[YOUKAI_1,Kaede]
+Pokemon = CSANAE,25
+Pokemon = CREIMU,25
+Pokemon = CRENKO,30
+LoseText = Is it because I'm a youkai that I can't channel the gods?
+#-------------------------------
+[FAIRY_1_ALT,Filia]
+Pokemon = CYUUGI,28
+Pokemon = CMEILING,28
+Pokemon = CSARA,28
+LoseText = You blocked my overhead!
+#-------------------------------
+[YOUKAI_2,Kokonoe]
+Pokemon = CRIN,27
+Pokemon = CMOMIJI,27
+Pokemon = CKAGEROU,29
+Pokemon = CCHEN,29
+LoseText = C-Calm down! We weren't going to eat you!
+#-------------------------------
+# Midoss: Seiran
+#-------------------------------
+[SEIRAN,Seiran,10]
+LoseText = Mayday, mayday! This is a state of emergency!
+Pokemon = CREISEN,25
+Pokemon = CHATATE,25
+Pokemon = SEIRAN,27
+	Moves = FURYSWIPES18,MIRRORSHOT18,PSYBEAM18,AURORABEAM18
+	Ball = MOONBALL
 
 #-------------------------------
-# Boss: Seiran & Ringo
+# Boss: Ringo
 #-------------------------------
-
+[RINGO,Ringo,10]
+LoseText = The Earth really does have a bunch of strong people on it, doesn't it?
+Pokemon = CYUYUKO,29
+Pokemon = CTOYOHIME,30
+Pokemon = RINGO,31
+	Moves = CRUNCH18,BULKUP18,PINMISSILE18,BULLETSEED18
+	Ball = MOONBALL
 
 #-------------------------------
 # Stage 3: Kaian Passageway
 #-------------------------------
-
+[MOONRABBIT,Asuna]
+LoseText = Major emergency! Fall back to central command!
+Items = SUPERPOTION,SUPERPOTION,FULLHEAL
+Pokemon = CMARISA,30
+Pokemon = CDOREMY,32
+	Ball = MOONBALL
+Pokemon = CRIKA,33
+#-------------------------------
+[PUPPETEER_M,Asahi]
+LoseText = LISTENING BEEN SAID: REAR BEST WITHDRAW.
+Pokemon = MOMIJI,33
+	Moves = FURYCUTTER18,BLADEFLASH18,HOWL18,BITE18
+Pokemon = CRIKA,33
+Pokemon = CSHIKIEIKI,33
+Pokemon = KANA,33
+	Moves = OMINOUSWIND18,MIST18,DISABLE18,FLAIL18
+#-------------------------------
+[PUPPETEER_F,Mariko]
+LoseText = WHY SEEK HAPPINESS? DESIGN ANOTHER TOURNAMENT.
+Pokemon = CKANAKO,35
+Pokemon = YAMAME,35
+	Moves = DIG18,SHADOWHIT18,CROSSPOISON18,MUDSHOT18
+#-------------------------------
+[PUPPETEER_F,Wakana]
+LoseText = HOBBY ISN'T PERFECT. HERE I COME WIRELESS WORLD.
+Pokemon = CSARA,34
+Pokemon = CMERLIN,36
+Pokemon = CHINA,33
+#-------------------------------
+[MOONRABBIT,Amokusu]
+LoseText = I was given one task to do, then you came along and ruined it!
+Items = SUPERPOTION,SUPERPOTION,FULLHEAL
+Pokemon = CSAGUME,33
+	Ball = MOONBALL
+Pokemon = CYORIHIME,35
+	Ball = MOONBALL
+Pokemon = SAGUME,35
+	Moves = HAZE18,ENCORE18,DECISION18,BINDINGVOICE18
+	Ball = MOONBALL
+#-------------------------------
+[FAIRY_G_ALT,Hanako]
+LoseText = Yzaltog tsuj ylbaborp rotaerc eht!
+Pokemon = CSHIZUHA,34
+Pokemon = CYUUKA,34
+#-------------------------------
+[FAIRY_G_ALT,Ritsuko]
+LoseText = Em taeb uoy eveileb t'nac I!
+Pokemon = CMARGATROID,33
+Pokemon = CCIRNO,33
+Pokemon = CHECATIA,35
+#-------------------------------
+[FAIRY_G_ALT,Lydia]
+LoseText = Niaga ti trats, revo trats l'li dna, pots ot em llet~
+Pokemon = CLYRICA,31
+Pokemon = CMARIBEL,31
+Pokemon = CSEIJA,34
+#-------------------------------
+[MOONRABBIT,Kaori]
+LoseText = Our Puppets... Is this why we're losing against the invasion?
+Items = SUPERPOTION,SUPERPOTION,FULLHEAL
+Pokemon = CSAGUME,33
+	Ball = MOONBALL
+Pokemon = CTOYOHIME,35
+	Ball = MOONBALL
+Pokemon = SAGUME,35
+	Moves = HAZE18,ENCORE18,DECISION18,BINDINGVOICE18
+	Ball = MOONBALL
 #-------------------------------
 # Boss: Doremy Sweet
 #-------------------------------
-
+[DOREMY,Doremy Sweet,10]
+LoseText = I see... Well, I have done my job, so that's enough I suppose.
+Items = HYPERPOTION,SUPERPOTION,SUPERPOTION,FULLHEAL,FULLHEAL
+Pokemon = CDOREMY,35
+	Ball = DREAMBALL
+	Name = R.E.M.
+Pokemon = MAGISTONES,36
+	Name = Tumbler~
+	Ball = DREAMBALL
+Pokemon = KAZAMI,36
+	Name = Nighterror
+	Moves = MEGADRAIN18,AROMATHERAPY18,SCARYFACE18,RAZORLEAF18
+	Ball = DREAMBALL
+Pokemon = DOREMY,38
+	Name = Dreamweave
+	Moves = REST18,SLEEPTALK18,NIGHTMARE18,DIZZYPUNCH18
+	Shiny = yes
+	Item = CHESTOBERRY
+	Ball = DREAMBALL
 
 #-------------------------------
 # Stage 4: Capital Outskirts

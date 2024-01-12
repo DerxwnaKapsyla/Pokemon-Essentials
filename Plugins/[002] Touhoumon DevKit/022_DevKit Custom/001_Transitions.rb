@@ -8,7 +8,7 @@
 #==============================================================================#
 SpecialBattleIntroAnimations.register("derx_animations", 100,   # Priority 100
   proc { |battle_type, foe, location|   # Condition
-    next $game_map && $game_switches[104] && $game_variables[103] <= 40
+    next $game_map && $game_switches[104] && $game_variables[103] <= 56
   },
   proc { |viewport, battle_type, foe, location|   # Animation
     case $game_variables[103]    # check this variable, and depending on the number returned...
@@ -54,6 +54,24 @@ SpecialBattleIntroAnimations.register("derx_animations", 100,   # Priority 100
 	 when 38 then  pbCommonEvent(55)  # Reserved if necessary
 	 when 39 then  pbCommonEvent(56)  # Reserved if necessary
 	 when 40 then  pbCommonEvent(57)  # Vs. Doppel Device
+	 
+	 when 41 then  pbCommonEvent(61)  # Vs. Eirin & Reisen
+	 when 42 then  pbCommonEvent(62)  # Vs. Seiran
+	 when 43 then  pbCommonEvent(63)  # Vs. Ringo
+	 when 44 then  pbCommonEvent(64)  # Vs. Doremy
+	 when 45 then  pbCommonEvent(65)  # Vs. Clownpiece
+	 when 46 then  pbCommonEvent(66)  # Vs. Junko
+	 when 47 then  pbCommonEvent(67)  # Vs. Junko & Hecatia
+	 when 48 then  pbCommonEvent(68)  # Vs. Rei'Sen
+	 when 49 then  pbCommonEvent(69)  # Vs. Sagume
+	 when 50 then  pbCommonEvent(70)  # Vs. Toyohime & Yorihime
+	 
+	 when 51 then  pbCommonEvent(81)  # Vs. Phantasmal Prismriver Sisters 
+	 when 52 then  pbCommonEvent(82)  # Vs. Phantasmal Medicine
+	 when 53 then  pbCommonEvent(83)  # Vs. Phantasmal Junko
+	 when 54 then  pbCommonEvent(84)  # Vs. Phantasmal Hecatia
+	 when 55 then  pbCommonEvent(85)  # Vs. Mima
+	 when 56 then  pbCommonEvent(86)  # Vs. Meimu
     else
       raise "Custom animation #{$game_variables[103]} expected but not found somehow!"
     end

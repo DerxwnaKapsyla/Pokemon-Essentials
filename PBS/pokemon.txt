@@ -16734,7 +16734,7 @@ Shape = Bipedal
 Category = Moon Rabbit
 Pokedex = A moon rabbit that abandonded her allies and fled to the Earth.
 Generation = 20
-Flags = Puppet
+Flags = Puppet, Lunarian
 WildItemUncommon = BLAZER
 Evolutions = REISEN,Level,36,ADREISEN,Item,SOLARSHARD,DREISEN,Item,DEFENSESHARD,TREISEN,Item,TECHSHARD
 #-------------------------------
@@ -16760,7 +16760,7 @@ Shape = Bipedal
 Category = Moon Rabbit
 Pokedex = A moon rabbit living with earth rabbits. Can cause insanity in anything that makes eye contact.
 Generation = 20
-Flags = Puppet
+Flags = Puppet, Lunarian
 #-------------------------------
 [DREISEN]
 Name = DReisen
@@ -16784,7 +16784,7 @@ Shape = Bipedal
 Category = Moon Rabbit
 Pokedex = Due to her control over illusions, she's difficult to pin down with ranged attacks.
 Generation = 20
-Flags = Puppet
+Flags = Puppet, Lunarian
 #-------------------------------
 [TREISEN]
 Name = TReisen
@@ -16808,7 +16808,7 @@ Shape = Bipedal
 Category = Moon Rabbit
 Pokedex = Her control of wavelengths also influences her voice, making it hard to hold a direct conversation with her.
 Generation = 20
-Flags = Puppet
+Flags = Puppet, Lunarian
 #-------------------------------
 [ADREISEN]
 Name = AdReisen
@@ -16832,7 +16832,7 @@ Shape = Bipedal
 Category = Advent
 Pokedex = A swift marksman often seen with Cirno. When not on missions, they enjoy sparring with each other.
 Generation = 20
-Flags = Puppet
+Flags = Puppet, Lunarian
 #-------------------------------
 [CEIRIN]
 Name = CEirin
@@ -16857,7 +16857,7 @@ Shape = Bipedal
 Category = Genius
 Pokedex = A Lunarian living on Earth in exile with Kaguya.
 Generation = 20
-Flags = Puppet
+Flags = Puppet, Lunarian
 WildItemUncommon = NURSE
 Evolutions = EIRIN,Level,38,AEIRIN,Item,POWERSHARD,HEIRIN,Item,SUPPORTSHARD
 #-------------------------------
@@ -16883,7 +16883,7 @@ Shape = Bipedal
 Category = Genius
 Pokedex = A natural genius and skilled pharmacist. She created the Hourai Elixir with help from Kaguya.
 Generation = 20
-Flags = Puppet
+Flags = Puppet, Lunarian
 WildItemUncommon = NURSE
 #-------------------------------
 [AEIRIN]
@@ -16908,7 +16908,7 @@ Shape = Bipedal
 Category = Genius
 Pokedex = Usually pleasant, but she can't stand fools. Has no issues with killing others if it'll make her plans come together.
 Generation = 20
-Flags = Puppet
+Flags = Puppet, Lunarian
 #-------------------------------
 [HEIRIN]
 Name = HEirin
@@ -16932,7 +16932,7 @@ Shape = Bipedal
 Category = Genius
 Pokedex = Her medicines are famous for working quickly and without side effects.
 Generation = 20
-Flags = Puppet
+Flags = Puppet, Lunarian
 #-------------------------------
 [CKAGUYA]
 Name = CKaguya
@@ -16957,7 +16957,7 @@ Shape = Bipedal
 Category = Eternal
 Pokedex = A Lunarian princess, banished for drinking the Hourai Elixir.
 Generation = 20
-Flags = Puppet
+Flags = Puppet, Lunarian
 WildItemUncommon = PPUP
 Evolutions = KAGUYA,Level,38,AKAGUYA,Item,POWERSHARD,DKAGUYA,Item,DEFENSESHARD
 #-------------------------------
@@ -16983,7 +16983,7 @@ Shape = Bipedal
 Category = Eternal
 Pokedex = An immortal residing in Eientei. Enjoys sharing stories with those who wish to hear them.
 Generation = 20
-Flags = Puppet
+Flags = Puppet, Lunarian
 WildItemUncommon = PPUP
 #-------------------------------
 [AKAGUYA]
@@ -17008,7 +17008,7 @@ Shape = Bipedal
 Category = Eternal
 Pokedex = Mokou's eternal rival. They used to kill each other daily, fully aware that it wouldn't change anything.
 Generation = 20
-Flags = Puppet
+Flags = Puppet, Lunarian
 #-------------------------------
 [DKAGUYA]
 Name = DKaguya
@@ -17032,7 +17032,7 @@ Shape = Bipedal
 Category = Eternal
 Pokedex = Rumors of her unnatural beauty lured countless suitors, all of which were met with her impossible requests.
 Generation = 20
-Flags = Puppet
+Flags = Puppet, Lunarian
 #-------------------------------
 [CMOKOU]
 Name = CMokou
@@ -22263,6 +22263,355 @@ Pokedex = After learning how to traverse the dream world, she has taken a fancy 
 Generation = 20
 Flags = Puppet
 #-------------------------------
+[CSEIRAN]
+Name = CSeiran
+Types = BEAST18
+BaseStats = 50,60,45,70,60,45
+GenderRatio = Female50Percent
+GrowthRate = Medium
+BaseExp = 120
+EVs = SPEED,1
+CatchRate = 200
+Happiness = 70
+Abilities = SNIPER,SKILLLINK
+Moves = 1,TACKLE18,5,TAILWHIP18,8,PSYSHOT18,10,FORESIGHT18,12,WATERGUN18,14,SWIFT18,16,LOCKON18,19,AURORABEAM18,21,PSYBEAM18,23,MIRRORSHOT18,26,FURYSWIPES18
+EggGroups = HumanshapeP,MonsterP
+HatchSteps = 5120
+Height = 0.4
+Weight = 25.0
+Color = Blue
+Shape = Bipedal
+Category = Moon Rabbit
+Pokedex = This is an unknown Puppet. Research is being done to determine more about it.
+Generation = 20
+Flags = Puppet, Lunarian
+WildItemUncommon = BUNNYSUIT
+Evolutions = SEIRAN,Level,26
+#-------------------------------
+[SEIRAN]
+Name = Seiran
+Types = BEAST18,REASON18
+BaseStats = 70,85,70,100,85,70
+GenderRatio = Female50Percent
+GrowthRate = Medium
+BaseExp = 180
+EVs = SPEED,2
+CatchRate = 45
+Happiness = 70
+Abilities = SNIPER,SKILLLINK
+Moves = 1,FURYSWIPES18,1,HYPERBEAM18,1,BULLETSEED18,1,LUNATIC18,1,LOCKON18,1,CHARGEBEAM18,1,TRIATTACK18,1,MAGICKNIFE18,1,SLASH18,30,CHARGEBEAM18,33,PSYCHOCUT18,36,BARRAGE18,40,TRIATTACK18,43,SONICBOOM18,47,ICEBEAM18,50,HYPERBEAM18,55,LUNATIC18
+EggGroups = HumanshapeP,MonsterP
+HatchSteps = 5120
+Height = 0.4
+Weight = 25.0
+Color = Blue
+Shape = Bipedal
+Category = Moon Rabbit
+Pokedex = This is an unknown Puppet. Research is being done to determine more about it.
+Generation = 20
+Flags = Puppet, Lunarian
+WildItemUncommon = BUNNYSUIT
+#-------------------------------
+[CRINGO]
+Name = CRingo
+Types = BEAST18
+BaseStats = 70,65,55,85,20,45
+GenderRatio = Female50Percent
+GrowthRate = Medium
+BaseExp = 120
+EVs = SPEED,1
+CatchRate = 200
+Happiness = 70
+Abilities = GLUTTONY,SNIPER
+Moves = 1,TACKLE18,5,TAILWHIP18,58,LICK18,11,FOCUSENERGY18,14,MACHPUNCH18,17,BITE18,20,BULLETSEED18,23,PINMISSILE18,26,BULKUP18
+EggGroups = HumanshapeP,MonsterP
+HatchSteps = 5120
+Height = 0.4
+Weight = 25.0
+Color = Yellow
+Shape = Bipedal
+Category = Moon Rabbit
+Pokedex = This is an unknown Puppet. Research is being done to determine more about it.
+Generation = 20
+Flags = Puppet, Lunarian
+WildItemUncommon = BUNNYSUIT
+Evolutions = RINGO,Level,26
+#-------------------------------
+[RINGO]
+Name = Ringo
+Types = BEAST18,DREAM18
+BaseStats = 90,90,80,110,80,70
+GenderRatio = Female50Percent
+GrowthRate = Medium
+BaseExp = 180
+EVs = ATTACK,1,SPEED,1
+CatchRate = 45
+Happiness = 70
+Abilities = GLUTTONY,SNIPER
+Moves = 1,EXTREMESPEED18,1,CRUNCH18,1,BELLYDRUM18,1,KILLINGBITE18,1,HIJUMPKICK18,1,SUPERPOWER18,1,METEORMASH18,1,BULKUP18,1,BOUNCE18,29,CRUNCH18,33,EXTREMESPEED18,36,BELLYDRUM18,40,BOUNCE18,45,HIJUMPKICK18,50,KILLINGBITE18,55,METEORMASH18,60,SUPERPOWER18
+EggGroups = HumanshapeP,MonsterP
+HatchSteps = 5120
+Height = 0.4
+Weight = 25.0
+Color = Yellow
+Shape = Bipedal
+Category = Moon Rabbit
+Pokedex = This is an unknown Puppet. Research is being done to determine more about it.
+Generation = 20
+Flags = Puppet, Lunarian
+WildItemUncommon = BUNNYSUIT
+#-------------------------------
+[CDOREMY]
+Name = CDoremy
+Types = HEART18
+BaseStats = 100,45,80,30,50,75
+GenderRatio = Female50Percent
+GrowthRate = Medium
+BaseExp = 120
+EVs = HP,1
+CatchRate = 190
+Happiness = 75
+Abilities = BADDREAMS,OWNTEMPO
+Moves = 1,POUND18,5,TAILWHIP18,7,DEFENSECURL18,10,BUBBLE18,14,PSYWAVE18,16,YAWN18,19,METRONOME18,21,ENCORE18,24,SNORE18,26,SWIFT18,29,BLACKRIPPLE18,31,TEETERDANCE18,34,RECOLLECTION18
+EggGroups = HumanshapeP,MonsterP
+HatchSteps = 5120
+Height = 0.4
+Weight = 25.0
+Color = Red
+Shape = Bipedal
+Category = Baku
+Pokedex = This is an unknown Puppet. Research is being done to determine more about it.
+Generation = 20
+Flags = Puppet
+WildItemUncommon = CHESTOBERRY
+Evolutions = DOREMY,Level,34
+#-------------------------------
+[DOREMY]
+Name = Doremy
+Types = HEART18
+BaseStats = 140,60,100,50,70,110
+GenderRatio = Female50Percent
+GrowthRate = Medium
+BaseExp = 120
+EVs = HP,1
+CatchRate = 45
+Happiness = 190
+Abilities = BADDREAMS,OWNTEMPO
+Moves = 1,SLEEPTALK18,1,NIGHTMARE18,1,DREAMEATER18,1,TRIATTACK18,1,NIGHTSHADE18,1,AMNESIA18,1,BATONPASS18,1,NASTYPLOT18,35,REST18,35,SLEEPTALK18,37,DIZZYPUNCH18,39,SPITE18,42,NIGHTMARE18,45,DREAMEATER18,47,AMNESIA18,50,TRIATTACK18,54,NASTYPLOT18,58,NIGHTSHADE18,61,LUNATIC18
+EggGroups = HumanshapeP,MonsterP
+HatchSteps = 5120
+Height = 0.4
+Weight = 25.0
+Color = Red
+Shape = Bipedal
+Category = Baku
+Pokedex = This is an unknown Puppet. Research is being done to determine more about it.
+Generation = 20
+Flags = Puppet
+WildItemCommon = CHESTOBERRY
+WildItemUncommon = LUMBERRY
+#-------------------------------
+[CSAGUME]
+Name = CSagume
+Types = MIASMA18
+BaseStats = 50,60,60,75,80,75
+GenderRatio = Female50Percent
+GrowthRate = Medium
+BaseExp = 120
+EVs = SPECIAL_ATTACK,1
+CatchRate = 90
+Happiness = 120
+Abilities = LEVITATE,GLAMOROUS
+Moves = 1,POUND18,5,DISTURBANCE18,8,GALE18,11,KNOCKOFF18,15,SING18,19,DISABLE18,24,DECISION18,28,ENCORE18,33,HAZE18
+EggGroups = HumanshapeP,MonsterP
+HatchSteps = 5120
+Height = 0.4
+Weight = 25.0
+Color = Red
+Shape = Bipedal
+Category = Lunarian
+Pokedex = This is an unknown Puppet. Research is being done to determine more about it.
+Generation = 20
+Flags = Puppet, Lunarian
+WildItemUncommon = BLACKSLUDGE
+Evolutions = SAGUME,Level,35
+#-------------------------------
+[SAGUME]
+Name = Sagume
+Types = MIASMA18,FAITH18
+BaseStats = 70,85,85,100,110,100
+GenderRatio = Female50Percent
+GrowthRate = Medium
+BaseExp = 120
+EVs = SPECIAL_ATTACK,2,SPECIAL_DEFENSE,1
+CatchRate = 45
+Happiness = 230
+Abilities = LEVITATE,GLAMOROUS
+Moves = 1,HAZE18,1,PERISHSONG18,1,PAINSPLIT18,1,MIRRORCOAT18,1,WHIRLWIND18,1,AEROBLAST18,1,JAMMING18,1,LUNATIC18,1,DISABLE18,1,MAGICCOAT18,1,NASTYPLOT18,36,BINDINGVOICE18,39,TORMENT18,42,CONFUSERAY18,47,AEROBLAST18,50,MAGICCOAT18,53,NASTYPLOT18,57,WISH18,60,LUNATIC18,65,SILVERWIND18
+EggGroups = HumanshapeP,MonsterP
+HatchSteps = 5120
+Height = 0.4
+Weight = 25.0
+Color = Red
+Shape = Bipedal
+Category = Lunarian
+Pokedex = This is an unknown Puppet. Research is being done to determine more about it.
+Generation = 20
+Flags = Puppet, Lunarian
+WildItemUncommon = BLACKSLUDGE
+#-------------------------------
+[CCLOWNPIECE]
+Name = CClownpiece
+Types = FIRE18
+BaseStats = 70,60,45,80,90,34
+GenderRatio = Female50Percent
+GrowthRate = Medium
+BaseExp = 120
+EVs = SPECIAL_ATTACK,1
+CatchRate = 190
+Happiness = 100
+Abilities = LEVITATE,BLAZE
+Moves = 1,EMBER18,5,DISTURBANCE18,8,FAKEOUT18,11,DISABLE18,14,WILLOWISP18,16,SWIFT18,19,TORMENT18,22,TAUNT18,24,FIRESPIN18,27,CONFUSERAY18,30,TRICK18
+EggGroups = HumanshapeP,MonsterP
+HatchSteps = 5120
+Height = 0.4
+Weight = 25.0
+Color = White
+Shape = Bipedal
+Category = Hell Fairy
+Pokedex = This is an unknown Puppet. Research is being done to determine more about it.
+Generation = 20
+Flags = Puppet
+WildItemUncommon = GOTHIC
+Evolutions = CLOWNPIECE,Level,31
+#-------------------------------
+[CLOWNPIECE]
+Name = Clownpiece
+Types = FIRE18
+BaseStats = 90,70,70,110,120,70
+GenderRatio = Female50Percent
+GrowthRate = Medium
+BaseExp = 120
+EVs = SPECIAL_ATTACK,3
+CatchRate = 45
+Happiness = 200
+Abilities = LEVITATE,BLAZE
+Moves = 1,WILLOWISP18,1,CONFUSERAY18,1,TORMENT18,1,FIRESPIN18,1,PRANK18,1,NIGHTMARE18,1,HEATWAVE18,1,LUNATIC18,1,BLASTBURN18,1,OMINOUSWIND18,1,TRICK18,33,PRANK18,35,HEATWAVE18,39,NIGHTMARE18,43,DARKPULSE18,47,OMINOUSWIND18,51,LUNATIC18,55,FIREBLAST18,60,BLASTBURN18
+EggGroups = HumanshapeP,MonsterP
+HatchSteps = 5120
+Height = 0.4
+Weight = 25.0
+Color = White
+Shape = Bipedal
+Category = Hell Fairy
+Pokedex = This is an unknown Puppet. Research is being done to determine more about it.
+Generation = 20
+Flags = Puppet
+WildItemUncommon = GOTHIC
+#-------------------------------
+[CJUNKO]
+Name = CJunko
+Type = HEART18
+BaseStats = 80,95,65,50,55,65
+GenderRatio = Female50Percent
+GrowthRate = Slow
+BaseExp = 120
+EVs = ATTACK,2
+CatchRate = 45
+Happiness = 150
+Abilities = HISTRENGTH,ANGERPOINT
+Moves = 1,POUND18,5,SCARYFACE18,8,MIST18,10,SEALNEEDLE18,13,HAZE18,16,HEALBELL18,20,PURSUIT18,23,DISABLE18,26,SPITE18,30,REVENGE18,33,JAMMING18,36,CURSE18
+EggGroups = HumanshapeP,MonsterP
+HatchSteps = 5120
+Height = 0.4
+Weight = 25.0
+Color = Yellow
+Shape = Bipedal
+Category = Sagacious 
+Pokedex = This is an unknown Puppet. Research is being done to determine more about it.
+Generation = 20
+Flags = Puppet
+WildItemUncommon = PUREINCENSE
+Evolutions = JUNKO,Level,40
+#-------------------------------
+[JUNKO]
+Name = Junko
+Type = HEART18
+BaseStats = 100,125,80,75,80,90
+GenderRatio = Female50Percent
+GrowthRate = Slow
+BaseExp = 120
+EVs = ATTACK,3
+CatchRate = 3
+Happiness = 250
+Abilities = HISTRENGTH,ANGERPOINT
+Moves = 1,PRISTINELUNACY18,1,RECOVER18,1,MAGICCOAT18,1,SACREDFIRE18,1,SCARYFACE18,1,HEALBELL18,1,JUDGEMENT18,1,OUTRAGE18,1,THRASH18,2,REVENGE18,2,PURSUIT18,2,MINDBOMB18,40,BRICKBREAK18,45,TAUNT18,50,THRASH18,55,MAGICCOAT18,60,PRISTINELUNACY18,65,RECOVER18,70,OUTRAGE18,75,JUDGEMENT18
+EggGroups = HumanshapeP,MonsterP
+HatchSteps = 5120
+Height = 0.4
+Weight = 25.0
+Color = Yellow
+Shape = Bipedal
+Category = Sagacious 
+Pokedex = This is an unknown Puppet. Research is being done to determine more about it.
+Generation = 20
+Flags = Puppet
+WildItemUncommon = PUREINCENSE
+#-------------------------------
+[CHECATIA]
+Name = CHecatia
+Types = FAITH18,DARK18
+BaseStats = 70,60,55,65,105,55
+GenderRatio = Female50Percent
+GrowthRate = Slow
+BaseExp = 120
+EVs = SPECIAL_ATTACK,2
+CatchRate = 45
+Happiness = 150
+Abilities = GLAMOROUS,MOLDBREAKER
+HiddenAbilities = LIFESOUL
+Moves = 1,EMBER18,5,WATERGUN18,10,BATONPASS18,15,ASSIST18,20,CHARGEBEAM18,25,WEATHERBALL18,30,METRONOME18,35,SECRETPOWER18
+EggGroups = HumanshapeP,MonsterP
+HatchSteps = 5120
+Height = 0.4
+Weight = 25.0
+Color = Black
+Shape = Bipedal
+Category = Hell Goddess
+Pokedex = This is an unknown Puppet. Research is being done to determine more about it.
+Generation = 20
+Flags = Puppet
+WildItemUncommon = PPMAX
+Evolutions = HECATIA,Level,40
+FormName = Otherworld Body
+#-------------------------------
+[HECATIA]
+Name = Hecatia
+Types = FAITH18,DARK18
+BaseStats = 90,85,80,90,135,80
+GenderRatio = Female50Percent
+GrowthRate = Slow
+BaseExp = 120
+EVs = SPECIAL_ATTACK,3
+CatchRate = 3
+Happiness = 250
+Abilities = HISTRENGTH,ANGERPOINT
+HiddenAbilities = LIFESOUL
+Moves = 1,TRIRHAPSODY18,1,ANCIENTPOWER18,1,HYDROPUMP18,1,EARTHPOWER18,1,TRIATTACK18,1,MUDDYWATER18,1,RAINDANCE18,1,MYSTICWATER18,40,TRIATTACK18,45,MUDDYWATER18,50,RAINDANCE18,55,EARTHPOWER18,60,MYSTICWATER18,65,ANCIENTPOWER18,70,HYDROPUMP18,75,TRIRHAPSODY18
+EggGroups = HumanshapeP,MonsterP
+HatchSteps = 5120
+Height = 0.4
+Weight = 25.0
+Color = Black
+Shape = Bipedal
+Category = Hell Goddess
+Pokedex = This is an unknown Puppet. Research is being done to determine more about it.
+Generation = 20
+Flags = Puppet
+WildItemCommon = PPMAX
+WildItemUncommon = PPMAX
+FormName = Otherworld Body
+#-------------------------------
 [CRENKO]
 Name = CRenko
 Types = ILLUSION18
@@ -22509,7 +22858,7 @@ Shape = Bipedal
 Category = Moon Rabbit
 Pokedex = A normal moon rabbit. Lives as Toyohime and Yorihime's pet.
 Generation = 20
-Flags = Puppet
+Flags = Puppet, Lunarian
 #-------------------------------
 [CTOYOHIME]
 Name = CToyohime
@@ -22534,7 +22883,7 @@ Shape = Bipedal
 Category = Lunarian
 Pokedex = The older of the two Watatsuki sisters. Extremely carefree.
 Generation = 20
-Flags = Puppet
+Flags = Puppet, Lunarian
 WildItemUncommon = TECHSHARD
 Evolutions = TOYOHIME,Level,36,TTOYOHIME,Item,TECHSHARD
 #-------------------------------
@@ -22560,7 +22909,7 @@ Shape = Bipedal
 Category = Lunarian
 Pokedex = Lives a relaxed life. She enjoys eating the peaches found on the moon and picking on her sister.
 Generation = 20
-Flags = Puppet
+Flags = Puppet, Lunarian
 WildItemUncommon = BRIDALGOWN
 #-------------------------------
 [TTOYOHIME]
@@ -22585,7 +22934,7 @@ Shape = Bipedal
 Category = Lunarian
 Pokedex = The fan she carries is a dangerous weapon with power comparable to nuclear weaponry.
 Generation = 20
-Flags = Puppet
+Flags = Puppet, Lunarian
 #-------------------------------
 [CYORIHIME]
 Name = CYorihime
@@ -22610,7 +22959,7 @@ Shape = Bipedal
 Category = Lunarian
 Pokedex = The younger of the two Watatsuki sisters. Overly serious.
 Generation = 20
-Flags = Puppet
+Flags = Puppet, Lunarian
 WildItemUncommon = PRIESTESS
 Evolutions = YORIHIME,Level,38,SYORIHIME,Item,SWIFTSHARD
 #-------------------------------
@@ -22636,7 +22985,7 @@ Shape = Bipedal
 Category = Lunarian
 Pokedex = Takes anything she does seriously. Many find it ridiculous, including her sister.
 Generation = 20
-Flags = Puppet
+Flags = Puppet, Lunarian
 WildItemUncommon = PRIESTESS
 #-------------------------------
 [SYORIHIME]
@@ -22661,7 +23010,7 @@ Shape = Bipedal
 Category = Lunarian
 Pokedex = The sword she wields is capable of channeling the power of Shinto gods as long as it is clean.
 Generation = 20
-Flags = Puppet
+Flags = Puppet, Lunarian
 #-------------------------------
 [CKOSUZU]
 Name = CKosuzu

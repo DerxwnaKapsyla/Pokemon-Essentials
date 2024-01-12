@@ -68,4 +68,5 @@ REPLACE_BGMS = [
 				["S1_Escape", "W-004. Dimension of Reverie.ogg", [6, 7], 100, 100],
 				["S5_Silence", "W-004. Dimension of Reverie.ogg", [16], 0],
 				["S6_Performance", "X-002. Phantom Ensemble ~ Rehearsal Mix", [19, 25]],
+				["LunarInvasion", "W-036. Electric Heritage", [91]],
                ]

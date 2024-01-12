@@ -13,22 +13,26 @@
 #	  it will always be day.
 #==============================================================================#
 def pbGetTimeNow
+  now = Time.now
+  ret = now
   if GameData::MapMetadata.get($game_map.map_id)&.has_flag?("TMoM")
-    now = Time.now
-    return Time.local(now.year,now.month,now.day, 23, 0)
+    ret = Time.local(now.year,now.month,now.day, 23, 0)
   elsif GameData::MapMetadata.get($game_map.map_id)&.has_flag?("TFoC")
-    now = Time.now
-    return Time.local(now.year,now.month,now.day, 12, 0)
+    ret = Time.local(now.year,now.month,now.day, 12, 0)
   elsif GameData::MapMetadata.get($game_map.map_id)&.has_flag?("TKoL")
-    now = Time.now
-    return Time.local(now.year,now.month,now.day, 12, 0)
+    ret = Time.local(now.year,now.month,now.day, 12, 0)
   elsif GameData::MapMetadata.get($game_map.map_id)&.has_flag?("TLA")
-    now = Time.now
-    return Time.local(now.year,now.month,now.day, 12, 0)
+    ret = Time.local(now.year,now.month,now.day, 12, 0)
   end
-  return Time.now
+  PBDayNight.pbForcedTime
+  return ret
 end
 
+module PBDayNight
+  def self.pbForcedTime
+    @dayNightToneLastUpdate = nil
+  end
+end
 
 #def pbDayNightTint(object)
 #  return if !$scene.is_a?(Scene_Map)

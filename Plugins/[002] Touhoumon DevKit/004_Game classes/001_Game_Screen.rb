@@ -8,20 +8,22 @@
 #	  depending on the weather effect.
 #==============================================================================#
 class Game_Screen
-  alias __overworld_se__weather weather
+  alias overworld_weather_sfx weather
 	
   def weather(type, power, duration)
-	__overworld_se__weather(type, power, duration)
-	case @weather_type
-		when :Rain 			then pbBGSPlay("Rain")
-		when :Storm 		then pbBGSPlay("Storm")
-		when :Snow 			then pbBGSPlay("Snow")
-		when :Blizzard 		then pbBGSPlay("Blizzard")
-		when :Sandstorm 	then pbBGSPlay("Sandstorm")
-		when :HeavyRain 	then pbBGSPlay("HeavyStorm")
-		when :Sun 			then pbBGSPlay("Sunny")
-		when :Fog 			then pbBGSPlay("Fog")
-		else					 pbBGSFade(duration)
+    overworld_weather_sfx(type, power, duration)
+    case @weather_type
+      when :Rain        then pbBGSPlay("Rain")
+      when :Storm 		then pbBGSPlay("Storm")
+      when :Snow        then pbBGSPlay("Snow")
+      when :Blizzard    then pbBGSPlay("Blizzard")
+      when :Sandstorm   then pbBGSPlay("Sandstorm")
+      when :HeavyRain   then pbBGSPlay("HeavyStorm")
+      when :Sun         then pbBGSPlay("Sunny")
+      when :Fog         then pbBGSPlay("Fog")
+      else                   pbBGSFade(duration)
 	end
   end
 end
+
+

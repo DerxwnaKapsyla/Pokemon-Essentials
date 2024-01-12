@@ -10856,6 +10856,32 @@ Target = UserSide
 FunctionCode = StartWeakenDamageAgainstUserSideIfHail
 Description = This move reduces damage from attacks for five turns. This can be used only in a hailstorm.
 #-------------------------------
+[TRIRHAPSODY18]
+Name = Trinitarian Rhapsody
+Type = FAITH18
+Category = Special
+Power = 120
+Accuracy = 80
+TotalPP = 5
+Target = NearOther
+FunctionCode = ParalyzeBurnOrFreezeTarget
+Flags = CanProtect,CanMirrorMove
+EffectChance = 20
+Description = The user strikes the target with all three of their bodies. May also paralyze, burn, or freeze the target.
+#-------------------------------
+[PRISTINELUNACY18]
+Name = Pristine Lunacy
+Type = HEART18
+Category = Physical
+Power = 100
+Accuracy = 90
+TotalPP = 5
+Target = NearOther
+FunctionCode = None
+Flags = Contact,CanProtect,CanMirrorMove,HighCriticalHitRate
+EffectChance = 20
+Description = Critical hits land more easily.
+#-------------------------------
 [BREAKNECKBLITZ]
 Name = Breakneck Blitz
 Type = NORMAL
@@ -10867,6 +10893,35 @@ Target = NearOther
 FunctionCode = None
 Flags = ZMove,CannotMetronome
 Description = The user builds up its momentum using its Z-Power and crashes into the target at full speed.
+#-------------------------------
+[HIDDENPOWER18]
+Name = Hidden Power
+Type = ILLUSION18
+Category = Status
+Accuracy = 0
+TotalPP = 20
+Target = NearOther
+FunctionCode = UseMoveDependingOnEnvironmentThmn
+Description = An attack that makes use of the land's hidden power. Its effects vary depending on the user's environment.
+#-------------------------------
+#[UNCOUNTABLESHEEP]
+#-------------------------------
+#[ABYSSOFCHAOS]
+#-------------------------------
+#[ENCHANTINGCONE]
+#-------------------------------
+#[SPIRALABYSS]
+#-------------------------------
+[MYRAIDDREAMS]
+Name = All the Myraid Dreams of Paradise
+Type = PHANTASM
+Category = Special
+Power = 130
+Accuracy = 50
+TotalPP = 5
+Target = NearOther
+FunctionCode = MyraidDreams
+Description = All of Fantasy is at your beck and call. With it by your side, there is nothing you can't do.
 #-------------------------------
 [ALLOUTPUMMELING]
 Name = All-Out Pummeling

@@ -50,7 +50,11 @@ class Battle::Move
     tTypes = target.pbTypes(true)
     # Get effectivenesses
     typeMods = [Effectiveness::NORMAL_EFFECTIVE_ONE] * 3   # 3 types max
-    if moveType == :SHADOW
+    if moveType == :PHANTASM	# where we're going we don't need roads. Or Shadow Puppets.
+      if !target.pbHasType?(:PHANTASM)
+        typeMods[0] = Effectiveness::SUPER_EFFECTIVE_ONE
+      end
+	elsif moveType == :SHADOW
       if target.shadowPokemon?
         typeMods[0] = Effectiveness::NOT_VERY_EFFECTIVE_ONE
       else

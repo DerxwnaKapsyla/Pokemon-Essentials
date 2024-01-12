@@ -18,6 +18,16 @@ EventHandlers.add(:on_trainer_load, :shameless_self_insert,
     }
 )
 
+
+EventHandlers.add(:on_wild_pokemon_created, :alter_shiny_rate,
+  proc { |pkmn|
+    if $PokemonGlobal.sake_counter >= 300
+      pkmn.shiny = (rand(256) == 0)
+    end
+  }
+)
+
+
 #EventHandlers.add(:on_wild_pokemon_created, :pokemon_encounter,
 #    proc { |pkmn|
 #      next unless pkmn.species_data.has_flag?("Pokemon")

@@ -369,6 +369,7 @@ Name = Human Village
 Outdoor = true
 ShowArea = true
 Bicycle = true
+BattleBack = village
 Flags = TKoL
 #-------------------------------
 [083]   # Human Village Rest House
@@ -388,16 +389,19 @@ Name = Bamboo Forest of the Lost
 Outdoor = true
 ShowArea = true
 Bicycle = true
+BattleBack = forest
 Environment = Forest
 Flags = TKoL
 #-------------------------------
 [087]   # Eientei
 Name = Eientei
 ShowArea = true
+BattleBack = forest
 Flags = TKoL
 #-------------------------------
-[088]   # Eientei (Rooms)
-Name = TKoL
+[088]   # Eientei (Corridors)
+Name = Eientei
+BattleBack = indoor4
 Flags = TKoL
 #-------------------------------
 [089]   # Youkai Mountain
@@ -405,10 +409,16 @@ Name = Youkai Mountain
 Outdoor = true
 ShowArea = true
 Bicycle = true
+BattleBack = forest
+Environment = ForestGrass
 Flags = TKoL
 #-------------------------------
 [090]   # Kaian Passageway
 Name = Kaian Passageway
+ShowArea = true
+BattleBack = starlight
+WildBattleBGM = B-033. Battle vs. Puppet (Dreams).ogg
+TrainerBattleBGM = B-034. Battle vs. Trainer (Dreams).ogg
 Environment = Space
 Flags = TKoL
 #-------------------------------
@@ -420,11 +430,11 @@ Bicycle = true
 Environment = Space
 Flags = TKoL,Moon
 #-------------------------------
-[092]   # LDC Command Center
+[092]   # Capital Puppet Center
 Name = Lunar Capital
 Flags = TKoL,Moon
 #-------------------------------
-[093]   # LDC Training Simulator
+[093]   # Training Simulator
 Name = Lunar Capital
 Environment = UltraSpace
 Flags = TKoL,Moon
@@ -437,7 +447,7 @@ Bicycle = true
 Environment = Space
 Flags = TKoL,Moon
 #-------------------------------
-[095]   # Capital Outskirts
+[095]   # Lunar Trenches
 Name = Lunar Surface
 Outdoor = true
 ShowArea = true
@@ -445,7 +455,7 @@ Bicycle = true
 Environment = Space
 Flags = TKoL,Moon
 #-------------------------------
-[096]   # Lunar Trenches
+[096]   # Mare Marginis
 Name = Lunar Surface
 Outdoor = true
 ShowArea = true
@@ -453,7 +463,7 @@ Bicycle = true
 Environment = Space
 Flags = TKoL,Moon
 #-------------------------------
-[097]   # Sea of Tranquility
+[097]   # Mare Tranquillitatis
 Name = Sea of Tranquility
 Outdoor = true
 ShowArea = true
@@ -544,6 +554,41 @@ Name = Dummy Map
 [116]   # Exhibition Arena
 Name = Human Village
 Outdoor = true
-Flags = TKoL
 BattleBack = city
 WildBattleBGM = B-016. The Ground's Color is Yellow (BW Remix).ogg
+Flags = TKoL
+#-------------------------------
+[117]   # Kirisame General Store
+Name = Human Village
+Flags = TKoL
+#-------------------------------
+[118]   # \PN's Room
+Name = Human Village
+Flags = TKoL
+#-------------------------------
+[119]   # Eientei (Rooms)
+Name = Eientei
+BattleBack = indoor4
+Flags = TKoL
+#-------------------------------
+[120]   # Dream World
+Name = Dream World
+BattleBack = starlight
+WildBattleBGM = B-033. Battle vs. Puppet (Dreams).ogg
+TrainerBattleBGM = B-034. Battle vs. Trainer (Dreams).ogg
+Environment = Space
+Flags = TKoL
+#-------------------------------
+[121]   # Dream World
+Name = Dream World
+BattleBack = starlight
+WildBattleBGM = B-033. Battle vs. Puppet (Dreams).ogg
+TrainerBattleBGM = B-034. Battle vs. Trainer (Dreams).ogg
+Environment = Space
+Flags = TKoL
+#-------------------------------
+[122]   # Storehouse
+Name = Lunar Capital
+#-------------------------------
+[124]   # Infinite Hallway
+Name = Lunar Capital?
