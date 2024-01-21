@@ -243,9 +243,8 @@ MenuHandlers.add(:pause_menu, :trainer_card, {
     pbPlayDecisionSE
     pbFadeOutIn do
       scene = PokemonTrainerCard_Scene.new
-      scene.start_scene
-      scene.main
-      scene.end_scene
+      screen = PokemonTrainerCardScreen.new(scene)
+      screen.pbStartScreen
       menu.pbRefresh
     end
     next false
