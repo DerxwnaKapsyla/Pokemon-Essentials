@@ -67701,7 +67701,7 @@ List of Event Commands:
 
 #------------------------------------------------------------------------------
 Event ID: 047
-Event Name: Debug Warp
+Event Name: EV047
 (X,Y): (071,058)
 
 Page #1
@@ -67717,11 +67717,8 @@ Move Animation
 Trigger: Action Button
 
 List of Event Commands:
-@>Play SE: 'Exit Door', 80, 100
-@>Change Screen Color Tone: (-255,-255,-255,0), @6
-@>Wait: 8 frame(s)
-@>Transfer Player:[115: Dummy Map], (007,004), No Fade
-@>Change Screen Color Tone: (0,0,0,0), @6
+@>Set Move Route: Player
+ :              : $>Always on Top OFF
 @>
 
 #------------------------------------------------------------------------------
@@ -75617,7 +75614,6 @@ Common Event Name:
 Trigger: None
 
 List of Event Commands:
-@>Text: TEST!
 @>
 
 #==============================================================================
