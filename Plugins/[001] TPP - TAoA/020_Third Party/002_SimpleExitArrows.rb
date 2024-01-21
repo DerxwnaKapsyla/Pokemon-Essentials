@@ -8,13 +8,13 @@
 ################################################################################
 
 class Game_Player < Game_Character
-alias __original__pbCheckEventTriggerAfterTurning pbCheckEventTriggerAfterTurning 
+alias __original__check_event_trigger_after_turning check_event_trigger_after_turning 
   # Run when the player turns.
   # The default version of this method is empty, so replacing it outright
   # like this is fine. You may want to double check, just in case, however.
   # Derx: It is no longer empty, the method needs to be aliased.
-  def pbCheckEventTriggerAfterTurning
-    __original__pbCheckEventTriggerAfterTurning
+  def check_event_trigger_after_turning
+    __original__check_event_trigger_after_turning
     pxCheckExitArrows
   end
 end

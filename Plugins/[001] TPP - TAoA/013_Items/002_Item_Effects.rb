@@ -14,16 +14,17 @@ ItemHandlers::UseOnPokemon.add(:PRISMCANDY, proc { |item, qty, pkmn, scene|
       next false
     end
     # Check for evolution
-    pbFadeOutInWithMusic {
+    pbFadeOutInWithMusic do
       evo = PokemonEvolutionScene.new
       evo.pbStartScreen(pkmn, new_species)
       evo.pbEvolution
       evo.pbEndScreen
       scene.pbRefresh if scene.is_a?(PokemonPartyScreen)
-    }
+    end
     next true
   end
   # Level up
+  pbSEPlay("Pkmn level up")
   pbChangeLevel(pkmn, pkmn.level + (qty * 5), scene)
   scene.pbHardRefresh
   next true

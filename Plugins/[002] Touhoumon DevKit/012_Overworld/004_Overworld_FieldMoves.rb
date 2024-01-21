@@ -125,7 +125,7 @@ def pbRockSmash
   end
   if !(pbCheckHiddenMoveBadge(Settings::BADGE_FOR_ROCKSMASH, false) ||
   	   pbCheckHiddenMoveBadge(Settings::ALT_BADGE_FOR_ROCKSMASH, false)) || (!$DEBUG && !movefinder)
-    pbMessage(_INTL("It's a rugged rock, but it may be able to smash it."))
+    pbMessage(_INTL("It's a rugged rock, but it may be able to be smashed."))
     return false
   end
   if pbConfirmMessage(_INTL("This rock seems breakable with a hidden move.\nWould you like to use Rock Smash?"))
@@ -167,7 +167,7 @@ def pbStrength
   end
   if !(pbCheckHiddenMoveBadge(Settings::BADGE_FOR_STRENGTH, false) ||
   	   pbCheckHiddenMoveBadge(Settings::ALT_BADGE_FOR_STRENGTH, false)) || (!$DEBUG && !movefinder)
-    pbMessage(_INTL("It's a big boulder, but it may be able to push it aside."))
+    pbMessage(_INTL("It's a big boulder, but it may be able to be pushed aside."))
     return false
   end
   pbMessage(_INTL("It's a big boulder, but you may be able to push it aside with a hidden move.\1"))
@@ -210,15 +210,19 @@ def pbSurf
   	   pbCheckHiddenMoveBadge(Settings::ALT_BADGE_FOR_SURF, false)) || (!$DEBUG && !movefinder)
     return false
   end
-  if pbConfirmMessage(_INTL("The water is a deep blue color... Would you like to use Surf on it?"))
-    speciesname = (movefinder) ? movefinder.name : $player.name
-    pbMessage(_INTL("{1} used {2}!", speciesname, GameData::Move.get(move).name))
-    pbCancelVehicles
-    pbHiddenMoveAnimation(movefinder)
-    surfbgm = GameData::Metadata.get.surf_BGM
-    pbCueBGM(surfbgm, 0.5) if surfbgm
-    pbStartSurfing
-    return true
+  if $game_map.metadata&.has_flag?("DisableSurf")
+	pbMessage(_INTL("Surf can't be used here!"))
+  else
+	if pbConfirmMessage(_INTL("The water is a deep blue color... Would you like to use Surf on it?"))
+	  speciesname = (movefinder) ? movefinder.name : $player.name
+      pbMessage(_INTL("{1} used {2}!", speciesname, GameData::Move.get(move).name))
+      pbCancelVehicles
+      pbHiddenMoveAnimation(movefinder)
+      surfbgm = GameData::Metadata.get.surf_BGM
+      pbCueBGM(surfbgm, 0.5) if surfbgm
+      pbStartSurfing
+      return true
+	end
   end
   return false
 end

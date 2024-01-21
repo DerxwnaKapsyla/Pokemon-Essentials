@@ -9,33 +9,35 @@
 #==============================================================================#
 class PokemonEvolutionScene
   def pbEvolution(cancancel = true)
-    metaplayer1 = SpriteMetafilePlayer.new(@metafile1, @sprites["rsprite1"])
-    metaplayer2 = SpriteMetafilePlayer.new(@metafile2, @sprites["rsprite2"])
-    metaplayer1.play
-    metaplayer2.play
     pbBGMStop
     pbMEPlay("Evolution start")
     pbMessageDisplay(@sprites["msgwindow"], "\\se[]" + _INTL("What?") + "\\1") { pbUpdate }
     pbPlayDecisionSE
     @pokemon.play_cry
     @sprites["msgwindow"].text = _INTL("{1} is evolving!", @pokemon.name)
-    timer = 0.0
+    timer_start = System.uptime
     loop do
       Graphics.update
       Input.update
       pbUpdate
-      timer += Graphics.delta_s
-      break if timer >= 1.0
+      break if System.uptime - timer_start >= 1
     end
-    oldstate  = pbSaveSpriteState(@sprites["rsprite1"])
-    oldstate2 = pbSaveSpriteState(@sprites["rsprite2"])
-    
-    pbBGMPlay("U-002. Our Hisou Tensoku (Evolution).ogg")
+    pbBGMPlay("U-002. Our Hisou Tensoku (Evolution)")
     canceled = false
     loop do
-      pbUpdateNarrowScreen
-      metaplayer1.update
-      metaplayer2.update
+      pbUpdateNarrowScreen(timer_start)
+      @picture1.update
+      setPictureSprite(@sprites["rsprite1"], @picture1)
+      if @sprites["rsprite1"].zoom_x > 1.0
+        @sprites["rsprite1"].zoom_x = 1.0
+        @sprites["rsprite1"].zoom_y = 1.0
+      end
+      @picture2.update
+      setPictureSprite(@sprites["rsprite2"], @picture2)
+      if @sprites["rsprite2"].zoom_x > 1.0
+        @sprites["rsprite2"].zoom_x = 1.0
+        @sprites["rsprite2"].zoom_y = 1.0
+      end
       Graphics.update
       Input.update
       pbUpdate(true)
@@ -45,9 +47,9 @@ class PokemonEvolutionScene
         canceled = true
         break
       end
-      break unless metaplayer1.playing? && metaplayer2.playing?
+      break if !@picture1.running? && !@picture2.running?
     end
-    pbFlashInOut(canceled, oldstate, oldstate2)
+    pbFlashInOut(canceled)
     if canceled
       $stats.evolutions_cancelled += 1
       pbMessageDisplay(@sprites["msgwindow"],

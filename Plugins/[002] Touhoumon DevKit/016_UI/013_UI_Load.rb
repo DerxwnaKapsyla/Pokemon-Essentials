@@ -7,7 +7,7 @@
 #	* Adds in the randomized background for the load save screen
 #==============================================================================#
 class PokemonLoad_Scene
-  def pbStartScene(commands, show_continue, trainer, frame_count, stats, map_id)
+  def pbStartScene(commands, show_continue, trainer, stats, map_id)
     @commands = commands
     @sprites = {}
     @viewport = Viewport.new(0, 0, Graphics.width, Graphics.height)
@@ -18,13 +18,12 @@ class PokemonLoad_Scene
 		"load_hakkero"	# Mini-Hakkero
 	]	
 	loadbg = bgs[rand(bgs.size)]
-    addBackgroundOrColoredPlane(@sprites, "background", loadbg, Color.new(248, 248, 248), @viewport) # This line was changed so that loadbg is now a variable instead of a direct file
+    addBackgroundOrColoredPlane(@sprites, "background", "Load/" + loadbg, Color.new(248, 248, 248), @viewport) # This line was changed so that loadbg is now a variable instead of a direct file
     # ------ Derx: End of randomized load backgrounds
     y = 32
     commands.length.times do |i|
       @sprites["panel#{i}"] = PokemonLoadPanel.new(
-        i, commands[i], (show_continue) ? (i == 0) : false, trainer,
-        frame_count, stats, map_id, @viewport
+        i, commands[i], (show_continue) ? (i == 0) : false, trainer, stats, map_id, @viewport
       )
       @sprites["panel#{i}"].x = 48
       @sprites["panel#{i}"].y = y
@@ -65,8 +64,7 @@ class PokemonLoadScreen
     commands[cmd_debug = commands.length]     = _INTL("Debug") if $DEBUG
     commands[cmd_quit = commands.length]      = _INTL("Quit Game")
     map_id = show_continue ? @save_data[:map_factory].map.map_id : 0
-    @scene.pbStartScene(commands, show_continue, @save_data[:player],
-                        @save_data[:frame_count] || 0, @save_data[:stats], map_id)
+    @scene.pbStartScene(commands, show_continue, @save_data[:player], @save_data[:stats], map_id)
     @scene.pbSetParty(@save_data[:player]) if show_continue
     @scene.pbStartScene2
     loop do
@@ -92,7 +90,7 @@ class PokemonLoadScreen
       when cmd_language
         @scene.pbEndScene
         $PokemonSystem.language = pbChooseLanguage
-        pbLoadMessages("Data/" + Settings::LANGUAGES[$PokemonSystem.language][1])
+        MessageTypes.load_message_files(Settings::LANGUAGES[$PokemonSystem.language][1])
         if show_continue
           @save_data[:pokemon_system] = $PokemonSystem
           File.open(SaveData::FILE_PATH, "wb") { |file| Marshal.dump(@save_data, file) }

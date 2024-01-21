@@ -13,12 +13,12 @@ MenuHandlers.add(:pause_menu, :party, {
   "effect"    => proc { |menu|
     pbPlayDecisionSE
     hidden_move = nil
-    pbFadeOutIn {
+    pbFadeOutIn do
       sscene = PokemonParty_Scene.new
       sscreen = PokemonPartyScreen.new(sscene, $player.party)
       hidden_move = sscreen.pbPokemonScreen
       (hidden_move) ? menu.pbEndScene : menu.pbRefresh
-    }
+    end
     next false if !hidden_move
     $game_temp.in_menu = false
     pbUseHiddenMove(hidden_move[0], hidden_move[1])

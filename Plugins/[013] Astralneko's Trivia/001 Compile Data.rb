@@ -99,11 +99,11 @@ module AstralnekoTrivia
 				@lastUpdateDate = file.mtime
 				data.store(:questions,questions)
 				data.store(:answerLists,answerLists)
-				MessageTypes.setMessagesAsHash(MessageTypes::AstralnekoTriviaQuestions,questionArray)
-				MessageTypes.setMessagesAsHash(MessageTypes::AstralnekoTriviaAnswers,answerArray)
-				pbSetTextMessages
-				MessageTypes.saveMessages
-				MessageTypes.loadMessageFile("Data/messages.dat") if safeExists?("Data/messages.dat")
+				MessageTypes.setMessagesAsHash(MessageTypes::AN_TRIVIA_QUESTIONS,questionArray)
+				MessageTypes.setMessagesAsHash(MessageTypes::AN_TRIVIA_ANSWERS,answerArray)
+				Translator.gather_script_and_event_texts
+				MessageTypes.save_default_messages
+				MessageTypes.load_default_messages if FileTest.exist?("Data/messages_core.dat")
 				return data
 			rescue
 				return nil
@@ -117,8 +117,8 @@ end
 
 # Add trivia's PBS files to MessageTypes for translation
 module MessageTypes
-	AstralnekoTriviaQuestions = 200
-	AstralnekoTriviaAnswers = 201
+	AN_TRIVIA_QUESTIONS = 200
+	AN_TRIVIA_ANSWERS   = 201
 end
 
 # Compiler

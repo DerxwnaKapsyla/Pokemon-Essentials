@@ -12,63 +12,59 @@
 #==============================================================================#
 class Battle::Move
   def pbCalcTypeModSingle(moveType, defType, user, target)
-    ret = Effectiveness.calculate_one(moveType, defType)
+    ret = Effectiveness.calculate(moveType, defType)
     if Effectiveness.ineffective_type?(moveType, defType)
       # Ring Target
       if target.hasActiveItem?(:RINGTARGET)
-        ret = Effectiveness::NORMAL_EFFECTIVE_ONE
+        ret = Effectiveness::NORMAL_EFFECTIVE_MULTIPLIER
       end
       # Foresight
       if (user.hasActiveAbility?(:SCRAPPY) || target.effects[PBEffects::Foresight]) &&
          (defType == :GHOST || defType == :GHOST18)
-        ret = Effectiveness::NORMAL_EFFECTIVE_ONE
+        ret = Effectiveness::NORMAL_EFFECTIVE_MULTIPLIER
       end
       # Miracle Eye
       if target.effects[PBEffects::MiracleEye] && defType == :DARK
-        ret = Effectiveness::NORMAL_EFFECTIVE_ONE
+        ret = Effectiveness::NORMAL_EFFECTIVE_MULTIPLIER
       end
     elsif Effectiveness.super_effective_type?(moveType, defType)
       # Delta Stream's weather
       if target.effectiveWeather == :StrongWinds && (defType == :FLYING || defType == :FLYING18)
-        ret = Effectiveness::NORMAL_EFFECTIVE_ONE
+        ret = Effectiveness::NORMAL_EFFECTIVE_MULTIPLIER
       end
     end
     # Grounded Flying-type Pokémon become susceptible to Ground moves
     if !target.airborne? && (defType == :FLYING || defType == :FLYING18) && 
     						(moveType == :GROUND || moveType == :EARTH18)
-      ret = Effectiveness::NORMAL_EFFECTIVE_ONE
+      ret = Effectiveness::NORMAL_EFFECTIVE_MULTIPLIER
     end
     return ret
   end
 
   def pbCalcTypeMod(moveType, user, target)
-    return Effectiveness::NORMAL_EFFECTIVE if !moveType
-    return Effectiveness::NORMAL_EFFECTIVE if (moveType == :GROUND || moveType == :EARTH18) &&
+    ret = Effectiveness::NORMAL_EFFECTIVE_MULTIPLIER
+    return ret if !moveType
+    return ret if (moveType == :GROUND || moveType == :EARTH18) &&
                                               (target.pbHasType?(:FLYING) || target.pbHasType?(:FLYING18)) &&
                                               target.hasActiveItem?(:IRONBALL)
-    # Determine types
-    tTypes = target.pbTypes(true)
+
     # Get effectivenesses
-    typeMods = [Effectiveness::NORMAL_EFFECTIVE_ONE] * 3   # 3 types max
     if moveType == :PHANTASM	# where we're going we don't need roads. Or Shadow Puppets.
       if !target.pbHasType?(:PHANTASM)
-        typeMods[0] = Effectiveness::SUPER_EFFECTIVE_ONE
+        ret = Effectiveness::SUPER_EFFECTIVE_MULTIPLIER
       end
-	elsif moveType == :SHADOW
+    elsif moveType == :SHADOW
       if target.shadowPokemon?
-        typeMods[0] = Effectiveness::NOT_VERY_EFFECTIVE_ONE
+        ret = Effectiveness::NOT_VERY_EFFECTIVE_MULTIPLIER
       else
-        typeMods[0] = Effectiveness::SUPER_EFFECTIVE_ONE
+        ret = Effectiveness::SUPER_EFFECTIVE_MULTIPLIER
       end
     else
-      tTypes.each_with_index do |type, i|
-        typeMods[i] = pbCalcTypeModSingle(moveType, type, user, target)
+      target.pbTypes(true).each do |type|
+        ret *= pbCalcTypeModSingle(moveType, type, user, target)
       end
+      ret *= 2 if target.effects[PBEffects::TarShot] && moveType == :FIRE
     end
-    # Multiply all effectivenesses together
-    ret = 1
-    typeMods.each { |m| ret *= m }
-    ret *= 2 if target.effects[PBEffects::TarShot] && moveType == :FIRE
     return ret
   end
   
@@ -92,9 +88,9 @@ class Battle::Move
     if (@battle.pbCheckGlobalAbility(:DARKAURA) && type == :DARK) ||
        (@battle.pbCheckGlobalAbility(:FAIRYAURA) && type == :FAIRY)
       if @battle.pbCheckGlobalAbility(:AURABREAK)
-        multipliers[:base_damage_multiplier] *= 2 / 3.0
+        multipliers[:power_multiplier] *= 3 / 4.0
       else
-        multipliers[:base_damage_multiplier] *= 4 / 3.0
+        multipliers[:power_multiplier] *= 4 / 3.0
       end
     end
     # Ability effects that alter damage
@@ -117,10 +113,14 @@ class Battle::Move
         Battle::AbilityEffects.triggerDamageCalcFromTarget(
           target.ability, user, target, self, multipliers, baseDmg, type
         )
-        Battle::AbilityEffects.triggerDamageCalcFromTargetNonIgnorable(
-          target.ability, user, target, self, multipliers, baseDmg, type
-        )
       end
+    end
+    if target.abilityActive?
+      Battle::AbilityEffects.triggerDamageCalcFromTargetNonIgnorable(
+        target.ability, user, target, self, multipliers, baseDmg, type
+      )
+    end
+    if !@battle.moldBreaker
       target.allAllies.each do |b|
         next if !b.abilityActive?
         Battle::AbilityEffects.triggerDamageCalcFromTargetAlly(
@@ -141,51 +141,51 @@ class Battle::Move
     end
     # Parental Bond's second attack
     if user.effects[PBEffects::ParentalBond] == 1
-      multipliers[:base_damage_multiplier] /= (Settings::MECHANICS_GENERATION >= 7) ? 4 : 2
+      multipliers[:power_multiplier] /= (Settings::MECHANICS_GENERATION >= 7) ? 4 : 2
     end
     # Other
     if user.effects[PBEffects::MeFirst]
-      multipliers[:base_damage_multiplier] *= 1.5
+      multipliers[:power_multiplier] *= 1.5
     end
     if user.effects[PBEffects::HelpingHand] && !self.is_a?(Battle::Move::Confusion)
-      multipliers[:base_damage_multiplier] *= 1.5
+      multipliers[:power_multiplier] *= 1.5
     end
     if user.effects[PBEffects::Charge] > 0 && (type == :ELECTRIC ||
 											   type == :WIND18)
-      multipliers[:base_damage_multiplier] *= 2
+      multipliers[:power_multiplier] *= 2
     end
     # Mud Sport
     if (type == :ELECTRIC || type == :WIND18)
       if @battle.allBattlers.any? { |b| b.effects[PBEffects::MudSport] }
-        multipliers[:base_damage_multiplier] /= 3
+        multipliers[:power_multiplier] /= 3
       end
       if @battle.field.effects[PBEffects::MudSportField] > 0
-        multipliers[:base_damage_multiplier] /= 3
+        multipliers[:power_multiplier] /= 3
       end
     end
     # Water Sport
     if (type == :FIRE || type == :FIRE18)
       if @battle.allBattlers.any? { |b| b.effects[PBEffects::WaterSport] }
-        multipliers[:base_damage_multiplier] /= 3
+        multipliers[:power_multiplier] /= 3
       end
       if @battle.field.effects[PBEffects::WaterSportField] > 0
-        multipliers[:base_damage_multiplier] /= 3
+        multipliers[:power_multiplier] /= 3
       end
     end
     # Terrain moves
     terrain_multiplier = (Settings::MECHANICS_GENERATION >= 8) ? 1.3 : 1.5
     case @battle.field.terrain
     when :Electric
-      multipliers[:base_damage_multiplier] *= terrain_multiplier if (type == :ELECTRIC ||
+      multipliers[:power_multiplier] *= terrain_multiplier if (type == :ELECTRIC ||
       																 type == :WIND18) && user.affectedByTerrain?
     when :Grassy
-      multipliers[:base_damage_multiplier] *= terrain_multiplier if (type == :GRASS ||
+      multipliers[:power_multiplier] *= terrain_multiplier if (type == :GRASS ||
       																 type == :NATURE18) && user.affectedByTerrain?
     when :Psychic
-      multipliers[:base_damage_multiplier] *= terrain_multiplier if (type == :PSYCHIC ||
+      multipliers[:power_multiplier] *= terrain_multiplier if (type == :PSYCHIC ||
       																 type == :REASON18) && user.affectedByTerrain?
     when :Misty
-      multipliers[:base_damage_multiplier] /= 2 if (type == :DRAGON ||
+      multipliers[:power_multiplier] /= 2 if (type == :DRAGON ||
       												type == :FAITH18) && target.affectedByTerrain?
     end
     # Badge multipliers
@@ -206,9 +206,7 @@ class Battle::Move
       end
     end
     # Multi-targeting attacks
-    if numTargets > 1
-      multipliers[:final_damage_multiplier] *= 0.75
-    end
+    multipliers[:final_damage_multiplier] *= 0.75 if numTargets > 1
     # Weather
     case user.effectiveWeather
     when :Sun, :HarshSun
@@ -234,9 +232,11 @@ class Battle::Move
         multipliers[:final_damage_multiplier] *= 1.5
       end
     when :Sandstorm
-      if target.pbHasType?(:ROCK) && specialMove? && @function != "UseTargetDefenseInsteadOfTargetSpDef"
+      if (target.pbHasType?(:ROCK) || target.pbHasType?(:BEAST18)) && specialMove? && @function_code != "UseTargetDefenseInsteadOfTargetSpDef"
         multipliers[:defense_multiplier] *= 1.5
       end
+    when :ShadowSky
+      multipliers[:final_damage_multiplier] *= 1.5 if type == :SHADOW
     end
     # Critical hits
     if target.damageState.critical
@@ -260,7 +260,7 @@ class Battle::Move
       end
     end
     # Type effectiveness
-    multipliers[:final_damage_multiplier] *= target.damageState.typeMod.to_f / Effectiveness::NORMAL_EFFECTIVE
+    multipliers[:final_damage_multiplier] *= target.damageState.typeMod
     # Burn
     if user.status == :BURN && physicalMove? && damageReducedByBurn? &&
        !user.hasActiveAbility?(:GUTS)
@@ -294,7 +294,7 @@ class Battle::Move
       multipliers[:final_damage_multiplier] *= 2
     end
     # Move-specific base damage modifiers
-    multipliers[:base_damage_multiplier] = pbBaseDamageMultiplier(multipliers[:base_damage_multiplier], user, target)
+    multipliers[:power_multiplier] = pbBaseDamageMultiplier(multipliers[:power_multiplier], user, target)
     # Move-specific final damage modifiers
     multipliers[:final_damage_multiplier] = pbModifyDamage(multipliers[:final_damage_multiplier], user, target)
   end
@@ -307,7 +307,8 @@ class Battle::Move
     return 0 if (target.hasActiveAbility?(:SHIELDDUST) ||
     			 target.hasActiveAbility?(:ADVENT)) && !@battle.moldBreaker
     ret = (effectChance > 0) ? effectChance : @addlEffect
-    if (Settings::MECHANICS_GENERATION >= 6 || @function != "EffectDependsOnEnvironment") &&
+    return ret if ret > 100
+    if (Settings::MECHANICS_GENERATION >= 6 || @function_code != "EffectDependsOnEnvironment") &&
        (user.hasActiveAbility?(:SERENEGRACE) || user.pbOwnSide.effects[PBEffects::Rainbow] > 0)
       ret *= 2
     end

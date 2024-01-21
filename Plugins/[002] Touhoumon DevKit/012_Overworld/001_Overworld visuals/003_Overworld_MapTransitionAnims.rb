@@ -17,9 +17,11 @@ def pbStartOver(gameover = false)
   $player.heal_party
   if $PokemonGlobal.pokecenterMapId && $PokemonGlobal.pokecenterMapId >= 0
     if gameover
-      pbMessage(_INTL("\\w[]\\wm\\c[12]\\l[3]After the unfortunate defeat, you scurry back to a Pokémon Center."))
+      pbMessage("\\w[]\\wm\\c[12]\\l[3]" +
+                _INTL("After the unfortunate defeat, you scurry back to a Pokémon Center."))
     else
-      pbMessage(_INTL("\\w[]\\wm\\c[12]\\l[3]You scurry back to a Pokémon Center, protecting your exhausted partners from any further harm..."))
+      pbMessage("\\w[]\\wm\\c[12]\\l[3]" +
+                _INTL("You scurry back to a Pokémon Center, protecting your exhausted partners from any further harm..."))
     end
     pbCancelVehicles
     Followers.clear
@@ -29,6 +31,7 @@ def pbStartOver(gameover = false)
     $game_temp.player_new_x         = $PokemonGlobal.pokecenterX
     $game_temp.player_new_y         = $PokemonGlobal.pokecenterY
     $game_temp.player_new_direction = $PokemonGlobal.pokecenterDirection
+    pbDismountBike
     $scene.transfer_player if $scene.is_a?(Scene_Map)
     $game_map.refresh
   else
@@ -42,23 +45,24 @@ def pbStartOver(gameover = false)
       return
     end
     if gameover
-      pbMessage(_INTL("\\w[]\\wm\\c[12]\\l[3]After the unfortunate defeat, you scurry back home."))
+      pbMessage("\\w[]\\wm\\c[12]\\l[3]" +
+                _INTL("After the unfortunate defeat, you scurry back home."))
     else
-      pbMessage(_INTL("\\w[]\\wm\\c[12]\\l[3]You scurry back home, protecting your exhausted partners from any further harm..."))
+      pbMessage("\\w[]\\wm\\c[12]\\l[3]" +
+                _INTL("You scurry back home, protecting your exhausted partners from any further harm..."))
     end
     if homedata
       pbCancelVehicles
       Followers.clear
 	  $game_switches[Settings::SPECIAL_BATTLE_SWITCH] = false
       $game_switches[Settings::STARTING_OVER_SWITCH] = true
-	  pbFadeOutIn {
-		$game_temp.player_new_map_id    = homedata[0]
-		$game_temp.player_new_x         = homedata[1]
-		$game_temp.player_new_y         = homedata[2]
-		$game_temp.player_new_direction = homedata[3]
-		$scene.transfer_player if $scene.is_a?(Scene_Map)
-		$game_map.refresh
-	  }
+      $game_temp.player_new_map_id    = homedata[0]
+      $game_temp.player_new_x         = homedata[1]
+      $game_temp.player_new_y         = homedata[2]
+      $game_temp.player_new_direction = homedata[3]
+      pbDismountBike
+      $scene.transfer_player if $scene.is_a?(Scene_Map)
+      $game_map.refresh
     else
       $player.heal_party
     end

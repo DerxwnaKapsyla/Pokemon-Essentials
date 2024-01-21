@@ -8,6 +8,7 @@
 #	* Added Diva to the Encounter Table modifier
 #	* Made it so certain abilities can find favored-type Puppets in the wild 
 #	  if the first party slot has that as their ability (NOT YET IMPLEMENTED)
+#	* Added the Magnetic Lure from Reborn (NOT YET IMPLEMENTED - idk if this is where it'd go)
 #==============================================================================#
 class PokemonEncounters
   def encounter_triggered?(enc_type, repel_active = false, triggered_by_step = true)
@@ -31,11 +32,12 @@ class PokemonEncounters
       encounter_chance += @chance_accumulator / 200
       encounter_chance *= 0.8 if $PokemonGlobal.bicycle
     end
-    if !Settings::FLUTES_CHANGE_WILD_ENCOUNTER_LEVELS
-      encounter_chance /= 2 if $PokemonMap.blackFluteUsed
-      min_steps_needed *= 2 if $PokemonMap.blackFluteUsed
-      encounter_chance *= 1.5 if $PokemonMap.whiteFluteUsed
-      min_steps_needed /= 2 if $PokemonMap.whiteFluteUsed
+    if $PokemonMap.lower_encounter_rate
+      encounter_chance /= 2
+      min_steps_needed *= 2
+    elsif $PokemonMap.higher_encounter_rate
+      encounter_chance *= 1.5
+      min_steps_needed /= 2
     end
     first_pkmn = $player.first_pokemon
     if first_pkmn
@@ -46,6 +48,9 @@ class PokemonEncounters
       when :PUREINCENSE
         encounter_chance *= 2.0 / 3
         min_steps_needed *= 4 / 3.0
+	  when :STEALTHCHARM
+        encounter_chance = 0
+        min_steps_needed = 0
       else   # Ignore ability effects if an item effect applies
         case first_pkmn.ability_id
         when :STENCH, :WHITESMOKE, :QUICKFEET, :JEALOUSY
@@ -158,12 +163,10 @@ class PokemonEncounters
       end
     end
     # Black Flute and White Flute alter the level of the wild Pokémon
-    if Settings::FLUTES_CHANGE_WILD_ENCOUNTER_LEVELS
-      if $PokemonMap.blackFluteUsed
-        level = [level + rand(1..4), GameData::GrowthRate.max_level].min
-      elsif $PokemonMap.whiteFluteUsed
-        level = [level - rand(1..4), 1].max
-      end
+    if $PokemonMap.lower_level_wild_pokemon
+      level = [level - rand(1..4), 1].max
+    elsif $PokemonMap.higher_level_wild_pokemon
+      level = [level + rand(1..4), GameData::GrowthRate.max_level].min
     end
     # Return [species, level]
     return [encounter[1], level]

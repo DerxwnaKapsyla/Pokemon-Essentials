@@ -16793,7 +16793,41 @@ List of Event Commands:
  :    : of them? It's just more rocks...)
 @>Text: \xn[Stone #3]THINK NOTHING OF IT. YOU MAY FIND IT TO BE
  :    : HELPFUL ON YOUR TRIALS AHEAD.
-@>Text: \xn[Five Magic Stones]GOOD LUCK ON THEM, ADVENTURER.
+@>Text: \xn[Stone #1]WE HAVE ALSO TAKEN THE LIBERTY OF
+ :    : GRANTING YOU ACCESS TO THE "REINCARNATION" SYSTEM.
+@>Text: \xn[Stone #1]IT IS A SYSTEM THAT ALLOWS YOU TO RESET
+ :    : YOUR PUPPET TO THEIR EARLIEST LEVELS AND REMOVE
+ :    : ALL OF THEIR STAT TRAINING.
+@>Text: \xn[\pn]But why would I use that...?
+@>Text: \xn[Stone #4]WHY, FOR WHAT OTHER REASON THAN THE
+ :    : NOBLEST ONE OF ALL.
+@>Text: \xn[Stone #4]OPTIMIZATION! UNRIVALED POWER!
+@>Text: \xn[Stone #2]YOU WILL NEED THESE ITEMS TO PARTAKE OF
+ :    : REINCARNATION.
+@>Script: $bag.add(:GOLDSTONE)
+:       : $bag.add(:REDSTONE)
+:       : $bag.add(:BLUESTONE)
+:       : $bag.add(:BLACKSTONE)
+:       : $bag.add(:WHITESTONE)
+:       : $bag.add(:GREENSTONE)
+:       : $bag.add(:RAINBOWSTONE)
+:       : $bag.add(:REDMARK)
+:       : $bag.add(:BLUEMARK)
+:       : $bag.add(:BLACKMARK)
+:       : $bag.add(:WHITEMARK)
+:       : $bag.add(:GREENMARK)
+@>Script: $bag.add(:GREYMARK)
+:       : $bag.add(:MAGFRAG,10)
+@>Text: \me[Item get]\PN recieved the entire suite of Reincarnation
+ :    : related items, as well as 10 Magical Fragments!\wtnp[80]
+@>Text: \xn[Stone #5]YOU SHOULD START NOTICING MAGICAL
+ :    : FRAGMENTS APPEARING AFTER EVERY BATTLE. THESE
+ :    : ARE THE CURRENCY WHICH REINCARNATION USES.
+@>Text: \xn[Stone #5]EXPERIMENT WITH THE SYSTEM, AND YOU'LL
+ :    : FIND THAT THIS SYSTEM IS UNMATCHED IN ITS POTENTIAL
+ :    : TO OPTIMIZE POTENTIAL!
+@>Text: \xn[Five Magic Stones]GOOD LUCK ON THE TRIALS AHEAD, 
+ :    : ADVENTURER.
 @>Change Screen Color Tone: (-255,-255,-255,0), @8
 @>Wait: 8 frame(s)
 @>Play SE: 'PC close', 80, 100
@@ -67666,6 +67700,31 @@ List of Event Commands:
 @>
 
 #------------------------------------------------------------------------------
+Event ID: 047
+Event Name: Debug Warp
+(X,Y): (071,058)
+
+Page #1
+Conditions
+None
+
+Autonomous Movement
+Type: Fixed
+Speed: 3: Slow
+Freq: 3: Low
+Options Enabled
+Move Animation
+Trigger: Action Button
+
+List of Event Commands:
+@>Play SE: 'Exit Door', 80, 100
+@>Change Screen Color Tone: (-255,-255,-255,0), @6
+@>Wait: 8 frame(s)
+@>Transfer Player:[115: Dummy Map], (007,004), No Fade
+@>Change Screen Color Tone: (0,0,0,0), @6
+@>
+
+#------------------------------------------------------------------------------
 
 #==============================================================================
 Map ID: 090
@@ -67673,6 +67732,32 @@ Map Name: Kaian Passageway
 Tileset: 041: Dream World
 Width: 40, Height: 90
 Auto-Change BGM: W-033. Mysterious Shrine Maiden Flying Through Space
+
+#------------------------------------------------------------------------------
+Event ID: 001
+Event Name: EV001
+(X,Y): (003,046)
+
+Page #1
+Conditions
+None
+
+Graphic: Apricorn_0
+
+Autonomous Movement
+Type: Fixed
+Speed: 3: Slow
+Freq: 3: Low
+Options Enabled
+Move Animation
+Direction Fix
+Trigger: Action Button
+
+List of Event Commands:
+@>Text: I AM THE GOD OF THIS REALM.
+@>Text: AND YOU SHOULD NOT BE HERE.
+@>Text: BEGONE AND LET ME BASK IN PEACE.
+@>
 
 #------------------------------------------------------------------------------
 Event ID: 002
@@ -67710,9 +67795,7 @@ List of Event Commands:
   @>Play SE: 'GUI naming confirm', 80, 100
   @>Text: \w[dark]TERMINAL DEACTIVATED.
   @>Control Self Switch: A =ON
-  @>Script: pbSetSelfSwitch(17,"A",false)
-  :       : pbSetSelfSwitch(18,"A",false)
-  :       : pbSetSelfSwitch(19,"A",false)
+  @>Script: pbSetSelfSwitch(20,"D",true)
   @>
  : When [No]
   @>
@@ -67868,94 +67951,6 @@ List of Event Commands:
 @>
 
 #------------------------------------------------------------------------------
-Event ID: 007
-Event Name: size(8,1)
-(X,Y): (012,055)
-
-Page #1
-Conditions
-None
-
-Autonomous Movement
-Type: Fixed
-Speed: 3: Slow
-Freq: 3: Low
-Options Enabled
-Move Animation
-Trigger: Event Touch
-
-List of Event Commands:
-@>Set Move Route: Player
- :              : $>Always on Top ON
-@>
-
-#------------------------------------------------------------------------------
-Event ID: 008
-Event Name: size(7,1)
-(X,Y): (020,055)
-
-Page #1
-Conditions
-None
-
-Autonomous Movement
-Type: Fixed
-Speed: 3: Slow
-Freq: 3: Low
-Options Enabled
-Move Animation
-Trigger: Event Touch
-
-List of Event Commands:
-@>Set Move Route: Player
- :              : $>Always on Top ON
-@>
-
-#------------------------------------------------------------------------------
-Event ID: 009
-Event Name: size(8,1)
-(X,Y): (012,056)
-
-Page #1
-Conditions
-None
-
-Autonomous Movement
-Type: Fixed
-Speed: 3: Slow
-Freq: 3: Low
-Options Enabled
-Move Animation
-Trigger: Event Touch
-
-List of Event Commands:
-@>Set Move Route: Player
- :              : $>Always on Top OFF
-@>
-
-#------------------------------------------------------------------------------
-Event ID: 010
-Event Name: size(7,1)
-(X,Y): (020,056)
-
-Page #1
-Conditions
-None
-
-Autonomous Movement
-Type: Fixed
-Speed: 3: Slow
-Freq: 3: Low
-Options Enabled
-Move Animation
-Trigger: Event Touch
-
-List of Event Commands:
-@>Set Move Route: Player
- :              : $>Always on Top OFF
-@>
-
-#------------------------------------------------------------------------------
 Event ID: 011
 Event Name: Rabbit
 (X,Y): (019,063)
@@ -68066,9 +68061,6 @@ List of Event Commands:
   :              : $>Move Up
   :              : $>Move Up
  @>Play SE: 'PC access', 80, 100
- @>Script: pbSetSelfSwitch(17,"A",true)
- :       : pbSetSelfSwitch(18,"A",true)
- :       : pbSetSelfSwitch(19,"A",true)
  @>Wait for Move's Completion
  @>Set Move Route: Player
   :              : $>Change Speed: 4
@@ -68174,50 +68166,6 @@ List of Event Commands:
 @>
 
 #------------------------------------------------------------------------------
-Event ID: 014
-Event Name: size(8,1)
-(X,Y): (015,041)
-
-Page #1
-Conditions
-None
-
-Autonomous Movement
-Type: Fixed
-Speed: 3: Slow
-Freq: 3: Low
-Options Enabled
-Move Animation
-Trigger: Event Touch
-
-List of Event Commands:
-@>Set Move Route: Player
- :              : $>Always on Top ON
-@>
-
-#------------------------------------------------------------------------------
-Event ID: 015
-Event Name: size(8,1)
-(X,Y): (015,040)
-
-Page #1
-Conditions
-None
-
-Autonomous Movement
-Type: Fixed
-Speed: 3: Slow
-Freq: 3: Low
-Options Enabled
-Move Animation
-Trigger: Event Touch
-
-List of Event Commands:
-@>Set Move Route: Player
- :              : $>Always on Top OFF
-@>
-
-#------------------------------------------------------------------------------
 Event ID: 016
 Event Name: EV016
 (X,Y): (019,008)
@@ -68245,9 +68193,9 @@ List of Event Commands:
 @>
 
 #------------------------------------------------------------------------------
-Event ID: 017
-Event Name: Bridge size(1,1)
-(X,Y): (021,054)
+Event ID: 020
+Event Name: Bridge Control Station
+(X,Y): (025,048)
 
 Page #1
 Conditions
@@ -68266,7 +68214,8 @@ List of Event Commands:
 
 Page #2
 Conditions
-Self Switch A is ON
+Switch 0022: s:tsOff?("A") is ON
+Self Switch D is ON
 
 Autonomous Movement
 Type: Fixed
@@ -68274,79 +68223,28 @@ Speed: 3: Slow
 Freq: 3: Low
 Options Enabled
 Move Animation
-Trigger: Action Button
+Trigger: Autorun
 
 List of Event Commands:
-@>
-
-#------------------------------------------------------------------------------
-Event ID: 018
-Event Name: Bridge size(3,13)
-(X,Y): (018,054)
-
-Page #1
-Conditions
-None
-
-Autonomous Movement
-Type: Fixed
-Speed: 3: Slow
-Freq: 3: Low
-Options Enabled
-Move Animation
-Trigger: Action Button
-
-List of Event Commands:
-@>
-
-Page #2
-Conditions
-Self Switch A is ON
-
-Autonomous Movement
-Type: Fixed
-Speed: 3: Slow
-Freq: 3: Low
-Options Enabled
-Move Animation
-Trigger: Action Button
-
-List of Event Commands:
-@>
-
-#------------------------------------------------------------------------------
-Event ID: 019
-Event Name: Bridge size(1,12)
-(X,Y): (021,053)
-
-Page #1
-Conditions
-None
-
-Autonomous Movement
-Type: Fixed
-Speed: 3: Slow
-Freq: 3: Low
-Options Enabled
-Move Animation
-Trigger: Action Button
-
-List of Event Commands:
-@>
-
-Page #2
-Conditions
-Self Switch A is ON
-
-Autonomous Movement
-Type: Fixed
-Speed: 3: Slow
-Freq: 3: Low
-Options Enabled
-Move Animation
-Trigger: Action Button
-
-List of Event Commands:
+@>Control Variables: [0001: Temp Pokemon Choice] = 0
+@>Loop
+ @>Script: $game_map.set_tile(18, 42 + pbGet(1), 2, 1248)
+ :       : $game_map.set_tile(19, 42 + pbGet(1), 2, 1249)
+ :       : $game_map.set_tile(20, 42 + pbGet(1), 2, 1250)
+ :       : $game_map.set_tile(21, 42 + pbGet(1), 2, 1251)
+ @>Control Variables: [0001: Temp Pokemon Choice] += 1
+ @>Conditional Branch: Variable [0001: Temp Pokemon Choice] == 12
+  @>Break Loop
+  @>
+ : Branch End
+ @>
+: Repeat Above
+@>Script: $game_map.set_tile(18, 54, 2, 1256)
+:       : $game_map.set_tile(19, 54, 2, 1257)
+:       : $game_map.set_tile(20, 54, 2, 1258)
+:       : $game_map.set_tile(21, 54, 2, 1259)
+@>Control Variables: [0001: Temp Pokemon Choice] = 0
+@>Script: setTempSwitchOn("A")
 @>
 
 #------------------------------------------------------------------------------
@@ -68381,7 +68279,7 @@ List of Event Commands:
 
 #------------------------------------------------------------------------------
 Event ID: 002
-Event Name: Hell Fairy
+Event Name: Hell Fairy sight(4)
 (X,Y): (045,047)
 
 Page #1
@@ -68409,9 +68307,6 @@ List of Event Commands:
  @>
 : Else
  @>Show Animation: This event, [Exclaim bubble]
- @>Set Move Route: This event
-                   (Repeat Action) (Ignore If Can't Move)
-  :              : $>Move toward Player
  @>Wait for Move's Completion
  @>Text: Oooh~ Are you a resident of the Capital~? I wanna play
   :    : a game with you~!
@@ -68901,9 +68796,6 @@ Trigger: Action Button
 
 List of Event Commands:
 @>Show Animation: This event, [Exclaim bubble]
-@>Set Move Route: This event
-                  (Repeat Action) (Ignore If Can't Move)
- :              : $>Move toward Player
 @>Wait for Move's Completion
 @>Text: Oooh~ Are you a resident of the Capital~? I wanna play
  :    : a game with you~!
@@ -68972,9 +68864,6 @@ Trigger: Action Button
 
 List of Event Commands:
 @>Show Animation: This event, [Exclaim bubble]
-@>Set Move Route: This event
-                  (Repeat Action) (Ignore If Can't Move)
- :              : $>Move toward Player
 @>Wait for Move's Completion
 @>Text: Oooh~ Are you a resident of the Capital~? I wanna play
  :    : a game with you~!
@@ -69043,7 +68932,7 @@ List of Event Commands:
 
 #------------------------------------------------------------------------------
 Event ID: 013
-Event Name: Hell Fairy Trainer(5)
+Event Name: Hell Fairy sight(5)
 (X,Y): (057,037)
 
 Page #1
@@ -69061,6 +68950,7 @@ Move Animation
 Trigger: Event Touch
 
 List of Event Commands:
+@>Show Animation: This event, [Exclaim bubble]
 @>Text: Oooh~ Are you a resident of the Capital~? I wanna play
  :    : a game with you~!
 @>Text: \xn[\pn]\b(Shoot, gotta get out of here!)
@@ -69118,9 +69008,6 @@ Trigger: Event Touch
 
 List of Event Commands:
 @>Show Animation: This event, [Exclaim bubble]
-@>Set Move Route: This event
-                  (Repeat Action) (Ignore If Can't Move)
- :              : $>Move toward Player
 @>Wait for Move's Completion
 @>Text: Oooh~ Are you a resident of the Capital~? I wanna play
  :    : a game with you~!
@@ -69168,9 +69055,6 @@ Trigger: Event Touch
 
 List of Event Commands:
 @>Show Animation: This event, [Exclaim bubble]
-@>Set Move Route: This event
-                  (Repeat Action) (Ignore If Can't Move)
- :              : $>Move toward Player
 @>Wait for Move's Completion
 @>Text: Oooh~ Are you a resident of the Capital~? I wanna play
  :    : a game with you~!
@@ -69284,9 +69168,6 @@ Trigger: Event Touch
 
 List of Event Commands:
 @>Show Animation: This event, [Exclaim bubble]
-@>Set Move Route: This event
-                  (Repeat Action) (Ignore If Can't Move)
- :              : $>Move toward Player
 @>Wait for Move's Completion
 @>Text: Oooh~ Are you a resident of the Capital~? I wanna play
  :    : a game with you~!
@@ -69334,9 +69215,6 @@ Trigger: Event Touch
 
 List of Event Commands:
 @>Show Animation: This event, [Exclaim bubble]
-@>Set Move Route: This event
-                  (Repeat Action) (Ignore If Can't Move)
- :              : $>Move toward Player
 @>Wait for Move's Completion
 @>Text: Oooh~ Are you a resident of the Capital~? I wanna play
  :    : a game with you~!
@@ -69365,7 +69243,7 @@ List of Event Commands:
 
 #------------------------------------------------------------------------------
 Event ID: 019
-Event Name: Hell Fairy
+Event Name: Hell Fairy sight(3) update
 (X,Y): (011,024)
 
 Page #1
@@ -69453,13 +69331,10 @@ Speed: 3: Slow
 Freq: 6: Highest
 Options Enabled
 Move Animation
-Trigger: Action Button
+Trigger: Event Touch
 
 List of Event Commands:
 @>Show Animation: This event, [Exclaim bubble]
-@>Set Move Route: This event
-                  (Repeat Action) (Ignore If Can't Move)
- :              : $>Move toward Player
 @>Wait for Move's Completion
 @>Text: Oooh~ Are you a resident of the Capital~? I wanna play
  :    : a game with you~!
@@ -69554,13 +69429,10 @@ Speed: 3: Slow
 Freq: 6: Highest
 Options Enabled
 Move Animation
-Trigger: Action Button
+Trigger: Event Touch
 
 List of Event Commands:
 @>Show Animation: This event, [Exclaim bubble]
-@>Set Move Route: This event
-                  (Repeat Action) (Ignore If Can't Move)
- :              : $>Move toward Player
 @>Wait for Move's Completion
 @>Text: Oooh~ Are you a resident of the Capital~? I wanna play
  :    : a game with you~!
@@ -69589,7 +69461,7 @@ List of Event Commands:
 
 #------------------------------------------------------------------------------
 Event ID: 021
-Event Name: Hell Fairy update
+Event Name: Hell Fairy sight(4) update
 (X,Y): (027,041)
 
 Page #1
@@ -69642,13 +69514,10 @@ Speed: 3: Slow
 Freq: 6: Highest
 Options Enabled
 Move Animation
-Trigger: Action Button
+Trigger: Event Touch
 
 List of Event Commands:
 @>Show Animation: This event, [Exclaim bubble]
-@>Set Move Route: This event
-                  (Repeat Action) (Ignore If Can't Move)
- :              : $>Move toward Player
 @>Wait for Move's Completion
 @>Text: Oooh~ Are you a resident of the Capital~? I wanna play
  :    : a game with you~!
@@ -69730,13 +69599,10 @@ Speed: 3: Slow
 Freq: 6: Highest
 Options Enabled
 Move Animation
-Trigger: Action Button
+Trigger: Event Touch
 
 List of Event Commands:
 @>Show Animation: This event, [Exclaim bubble]
-@>Set Move Route: This event
-                  (Repeat Action) (Ignore If Can't Move)
- :              : $>Move toward Player
 @>Wait for Move's Completion
 @>Text: Oooh~ Are you a resident of the Capital~? I wanna play
  :    : a game with you~!
@@ -69784,9 +69650,6 @@ Trigger: Event Touch
 
 List of Event Commands:
 @>Show Animation: This event, [Exclaim bubble]
-@>Set Move Route: This event
-                  (Repeat Action) (Ignore If Can't Move)
- :              : $>Move toward Player
 @>Wait for Move's Completion
 @>Text: Oooh~ Are you a resident of the Capital~? I wanna play
  :    : a game with you~!
@@ -69830,13 +69693,10 @@ Speed: 3: Slow
 Freq: 3: Low
 Options Enabled
 Move Animation
-Trigger: Action Button
+Trigger: Event Touch
 
 List of Event Commands:
 @>Show Animation: This event, [Exclaim bubble]
-@>Set Move Route: This event
-                  (Repeat Action) (Ignore If Can't Move)
- :              : $>Move toward Player
 @>Wait for Move's Completion
 @>Text: Oooh~ Are you a resident of the Capital~? I wanna play
  :    : a game with you~!
@@ -69865,7 +69725,7 @@ List of Event Commands:
 
 #------------------------------------------------------------------------------
 Event ID: 025
-Event Name: Hell Fairy sight(3)
+Event Name:   
 (X,Y): (019,062)
 
 Page #1
@@ -69884,13 +69744,10 @@ Speed: 3: Slow
 Freq: 5: Higher
 Options Enabled
 Move Animation
-Trigger: Action Button
+Trigger: Event Touch
 
 List of Event Commands:
 @>Show Animation: This event, [Exclaim bubble]
-@>Set Move Route: This event
-                  (Repeat Action) (Ignore If Can't Move)
- :              : $>Move toward Player
 @>Wait for Move's Completion
 @>Text: Oooh~ Are you a resident of the Capital~? I wanna play
  :    : a game with you~!
@@ -69938,9 +69795,6 @@ Trigger: Event Touch
 
 List of Event Commands:
 @>Show Animation: This event, [Exclaim bubble]
-@>Set Move Route: This event
-                  (Repeat Action) (Ignore If Can't Move)
- :              : $>Move toward Player
 @>Wait for Move's Completion
 @>Text: Oooh~ Are you a resident of the Capital~? I wanna play
  :    : a game with you~!
@@ -69988,9 +69842,6 @@ Trigger: Event Touch
 
 List of Event Commands:
 @>Show Animation: This event, [Exclaim bubble]
-@>Set Move Route: This event
-                  (Repeat Action) (Ignore If Can't Move)
- :              : $>Move toward Player
 @>Wait for Move's Completion
 @>Text: Oooh~ Are you a resident of the Capital~? I wanna play
  :    : a game with you~!
@@ -70038,9 +69889,6 @@ Trigger: Event Touch
 
 List of Event Commands:
 @>Show Animation: This event, [Exclaim bubble]
-@>Set Move Route: This event
-                  (Repeat Action) (Ignore If Can't Move)
- :              : $>Move toward Player
 @>Wait for Move's Completion
 @>Text: Oooh~ Are you a resident of the Capital~? I wanna play
  :    : a game with you~!
@@ -70088,9 +69936,6 @@ Trigger: Event Touch
 
 List of Event Commands:
 @>Show Animation: This event, [Exclaim bubble]
-@>Set Move Route: This event
-                  (Repeat Action) (Ignore If Can't Move)
- :              : $>Move toward Player
 @>Wait for Move's Completion
 @>Text: Oooh~ Are you a resident of the Capital~? I wanna play
  :    : a game with you~!
@@ -70119,7 +69964,7 @@ List of Event Commands:
 
 #------------------------------------------------------------------------------
 Event ID: 030
-Event Name: Hell Fairy update
+Event Name: Hell Fairy sight(3) update
 (X,Y): (022,038)
 
 Page #1
@@ -70151,13 +69996,10 @@ Speed: 3: Slow
 Freq: 6: Highest
 Options Enabled
 Move Animation
-Trigger: Action Button
+Trigger: Event Touch
 
 List of Event Commands:
 @>Show Animation: This event, [Exclaim bubble]
-@>Set Move Route: This event
-                  (Repeat Action) (Ignore If Can't Move)
- :              : $>Move toward Player
 @>Wait for Move's Completion
 @>Text: Oooh~ Are you a resident of the Capital~? I wanna play
  :    : a game with you~!
@@ -70209,9 +70051,6 @@ Trigger: Event Touch
 
 List of Event Commands:
 @>Show Animation: This event, [Exclaim bubble]
-@>Set Move Route: This event
-                  (Repeat Action) (Ignore If Can't Move)
- :              : $>Move toward Player
 @>Wait for Move's Completion
 @>Text: Oooh~ Are you a resident of the Capital~? I wanna play
  :    : a game with you~!
@@ -70419,13 +70258,695 @@ List of Event Commands:
 @>
 
 #------------------------------------------------------------------------------
+Event ID: 041
+Event Name: Rabbit Guard
+(X,Y): (034,021)
+
+Page #1
+Conditions
+None
+
+Graphic: TPDP_NPC 55
+
+Autonomous Movement
+Type: Fixed
+Speed: 3: Slow
+Freq: 3: Low
+Options Enabled
+Move Animation
+Trigger: Action Button
+
+List of Event Commands:
+@>
+
+#------------------------------------------------------------------------------
+Event ID: 042
+Event Name: Rabbit Guard
+(X,Y): (035,021)
+
+Page #1
+Conditions
+None
+
+Graphic: TPDP_NPC 54
+
+Autonomous Movement
+Type: Fixed
+Speed: 3: Slow
+Freq: 3: Low
+Options Enabled
+Move Animation
+Trigger: Action Button
+
+List of Event Commands:
+@>
+
+#------------------------------------------------------------------------------
+Event ID: 043
+Event Name: Rabbit Guard
+(X,Y): (036,021)
+
+Page #1
+Conditions
+None
+
+Graphic: TPDP_NPC 55
+
+Autonomous Movement
+Type: Fixed
+Speed: 3: Slow
+Freq: 3: Low
+Options Enabled
+Move Animation
+Trigger: Action Button
+
+List of Event Commands:
+@>
+
+#------------------------------------------------------------------------------
+Event ID: 044
+Event Name: Rabbit Guard
+(X,Y): (037,021)
+
+Page #1
+Conditions
+None
+
+Graphic: TPDP_NPC 54
+
+Autonomous Movement
+Type: Fixed
+Speed: 3: Slow
+Freq: 3: Low
+Options Enabled
+Move Animation
+Trigger: Action Button
+
+List of Event Commands:
+@>
+
+#------------------------------------------------------------------------------
 
 #==============================================================================
 Map ID: 092
 Map Name: Capital Puppet Center
-Tileset: 004: Poke Center
-Width: 20, Height: 15
+Tileset: 029: Interior (General)
+Width: 24, Height: 30
 Auto-Change BGM: W-018. Player's Score
+
+#------------------------------------------------------------------------------
+Event ID: 001
+Event Name: Sagume
+(X,Y): (012,007)
+
+Page #1
+Conditions
+None
+
+Graphic: Person_Sagume
+
+Autonomous Movement
+Type: Custom
+Custom Move Route:
+(Repeat Action)
+$>Turn at Random
+
+Speed: 3: Slow
+Freq: 3: Low
+Options Enabled
+Move Animation
+Trigger: Action Button
+
+List of Event Commands:
+@>Text: \xn[\pn]Excuse me, Lady Sagume?
+@>Text: \xn[\pn]\b(Hopefully I have the right person... It'd be real awkward if
+ :    : I address them by the wrong name.)
+@>Text: \xn[???]...
+@>Text: \xn[\pn]...Hello?
+@>Text: \xn[???]... ... ...\wt[20]What is a human like you 
+ :    : doing on the moon?
+@>Show Animation: Player, [Exclaim bubble]
+@>Set Move Route: Player
+ :              : $>Direction Fix ON
+ :              : $>Change Speed: 6
+ :              : $>1 Step Backward
+ :              : $>Change Speed: 4
+@>Text: \xn[\pn]\b(Wh- She figured out I was a human instantly!?)
+@>Set Move Route: Player
+ :              : $>Move Up
+@>Text: \xn[\pn]N-No! What are you talking about! I'm-\wtnp[1]
+@>Text: \xn[???]A human... \wt[10]From Gensokyo.
+@>Text: \xn[\pn]\b(No sense denying it then... Can't fool a goddess.)
+@>Text: \xn[???]I see. So it looks like our operations there were
+ :    : unveiled.
+@>Text: \xn[\pn]So you <i>are</i> responsible for the invasion of
+ :    : Gensokyo! Why?
+@>Text: \xn[???]... Why are you here? What is your role in all this?
+@>Text: \xn[\pn]Well, I was tasked by Miss Yagokoro to figure out why the
+ :    : Moon was invading Gensokyo, and-\wtnp[1]
+@>Show Animation: [Sagume], [Exclaim bubble]
+@>Text: \xn[???]Lady Yagokoro...! I see, I now understand why
+ :    : you are here.
+@>Text: \xn[???]But why would she send a human...-\wtnp[1]
+@>Text: Lady Sagume! Lady Sagume! We have big trouble brewing!
+@>Show Animation: [Sagume], [Exclaim bubble]
+@>Comment: (insert rabbit running up from off screen here)
+ :       : (Insert a wait for movement to finish check)
+ :       : (Turn player toward rabbit's direction)
+@>Text: \xn[Sagume]What is the issue?
+@>Text: The Hell Fairies have arrived with a massive army! They're
+ :    : swarming the road to the Palace, and we're at risk of being
+ :    : overrun!
+@>Show Animation: [Sagume], [Exclaim bubble]
+@>Show Animation: Player, [Exclaim bubble]
+@>Text: \xn[Sagume]Gather up the reserve forces and reinforce the
+ :    : Palace! I shall join anon!
+@>Text: Ma'am! Yes Ma'am!
+@>Comment: (Rabbit run off screen, make vanish)
+ :       : (Sagume turns back to the player)
+@>Text: \xn[Sagume]You will be coming with me. You are not to leave my
+ :    : side, understood?
+@>Text: \xn[\pn]I don't think I can decline this... But if it means I can finally
+ :    : get some answers!
+@>
+
+#------------------------------------------------------------------------------
+Event ID: 002
+Event Name: NPC
+(X,Y): (002,018)
+
+Page #1
+Conditions
+None
+
+Graphic: TPDP_NPC 04
+
+Autonomous Movement
+Type: Fixed
+Speed: 3: Slow
+Freq: 3: Low
+Options Enabled
+Move Animation
+Trigger: Action Button
+
+List of Event Commands:
+@>Text: I've heard a rumor that if you defeat enough Puppets in the simulator,
+ :    : then a stronger Puppet will make an appearance.
+@>Text: I haven't tested that though, I can't seem to last too long in there.
+@>
+
+#------------------------------------------------------------------------------
+Event ID: 003
+Event Name: NPC
+(X,Y): (003,021)
+
+Page #1
+Conditions
+None
+
+Autonomous Movement
+Type: Fixed
+Speed: 3: Slow
+Freq: 3: Low
+Options Enabled
+Move Animation
+Trigger: Action Button
+
+List of Event Commands:
+@>
+
+#------------------------------------------------------------------------------
+Event ID: 004
+Event Name: NPC
+(X,Y): (003,013)
+
+Page #1
+Conditions
+None
+
+Autonomous Movement
+Type: Fixed
+Speed: 3: Slow
+Freq: 3: Low
+Options Enabled
+Move Animation
+Trigger: Action Button
+
+List of Event Commands:
+@>
+
+#------------------------------------------------------------------------------
+Event ID: 005
+Event Name: NPC
+(X,Y): (020,013)
+
+Page #1
+Conditions
+None
+
+Autonomous Movement
+Type: Fixed
+Speed: 3: Slow
+Freq: 3: Low
+Options Enabled
+Move Animation
+Trigger: Action Button
+
+List of Event Commands:
+@>
+
+#------------------------------------------------------------------------------
+Event ID: 006
+Event Name: NPC
+(X,Y): (020,016)
+
+Page #1
+Conditions
+None
+
+Autonomous Movement
+Type: Fixed
+Speed: 3: Slow
+Freq: 3: Low
+Options Enabled
+Move Animation
+Trigger: Action Button
+
+List of Event Commands:
+@>
+
+#------------------------------------------------------------------------------
+Event ID: 007
+Event Name: NPC
+(X,Y): (021,018)
+
+Page #1
+Conditions
+None
+
+Autonomous Movement
+Type: Fixed
+Speed: 3: Slow
+Freq: 3: Low
+Options Enabled
+Move Animation
+Trigger: Action Button
+
+List of Event Commands:
+@>
+
+#------------------------------------------------------------------------------
+Event ID: 008
+Event Name: NPC
+(X,Y): (014,025)
+
+Page #1
+Conditions
+None
+
+Autonomous Movement
+Type: Fixed
+Speed: 3: Slow
+Freq: 3: Low
+Options Enabled
+Move Animation
+Trigger: Action Button
+
+List of Event Commands:
+@>
+
+#------------------------------------------------------------------------------
+Event ID: 009
+Event Name: NPC
+(X,Y): (019,024)
+
+Page #1
+Conditions
+None
+
+Autonomous Movement
+Type: Fixed
+Speed: 3: Slow
+Freq: 3: Low
+Options Enabled
+Move Animation
+Trigger: Action Button
+
+List of Event Commands:
+@>
+
+#------------------------------------------------------------------------------
+Event ID: 010
+Event Name: NPC
+(X,Y): (008,025)
+
+Page #1
+Conditions
+None
+
+Autonomous Movement
+Type: Fixed
+Speed: 3: Slow
+Freq: 3: Low
+Options Enabled
+Move Animation
+Trigger: Action Button
+
+List of Event Commands:
+@>
+
+#------------------------------------------------------------------------------
+Event ID: 011
+Event Name: NPC
+(X,Y): (007,025)
+
+Page #1
+Conditions
+None
+
+Autonomous Movement
+Type: Fixed
+Speed: 3: Slow
+Freq: 3: Low
+Options Enabled
+Move Animation
+Trigger: Action Button
+
+List of Event Commands:
+@>
+
+#------------------------------------------------------------------------------
+Event ID: 012
+Event Name: NPC
+(X,Y): (005,024)
+
+Page #1
+Conditions
+None
+
+Autonomous Movement
+Type: Fixed
+Speed: 3: Slow
+Freq: 3: Low
+Options Enabled
+Move Animation
+Trigger: Action Button
+
+List of Event Commands:
+@>
+
+#------------------------------------------------------------------------------
+Event ID: 013
+Event Name: NPC
+(X,Y): (007,016)
+
+Page #1
+Conditions
+None
+
+Autonomous Movement
+Type: Fixed
+Speed: 3: Slow
+Freq: 3: Low
+Options Enabled
+Move Animation
+Trigger: Action Button
+
+List of Event Commands:
+@>
+
+#------------------------------------------------------------------------------
+Event ID: 014
+Event Name: NPC
+(X,Y): (016,017)
+
+Page #1
+Conditions
+None
+
+Autonomous Movement
+Type: Fixed
+Speed: 3: Slow
+Freq: 3: Low
+Options Enabled
+Move Animation
+Trigger: Action Button
+
+List of Event Commands:
+@>
+
+#------------------------------------------------------------------------------
+Event ID: 015
+Event Name: NPC
+(X,Y): (016,014)
+
+Page #1
+Conditions
+None
+
+Autonomous Movement
+Type: Fixed
+Speed: 3: Slow
+Freq: 3: Low
+Options Enabled
+Move Animation
+Trigger: Action Button
+
+List of Event Commands:
+@>
+
+#------------------------------------------------------------------------------
+Event ID: 016
+Event Name: NPC
+(X,Y): (007,013)
+
+Page #1
+Conditions
+None
+
+Autonomous Movement
+Type: Fixed
+Speed: 3: Slow
+Freq: 3: Low
+Options Enabled
+Move Animation
+Trigger: Action Button
+
+List of Event Commands:
+@>
+
+#------------------------------------------------------------------------------
+Event ID: 017
+Event Name: Nurse
+(X,Y): (011,019)
+
+Page #1
+Conditions
+None
+
+Autonomous Movement
+Type: Fixed
+Speed: 3: Slow
+Freq: 3: Low
+Options Enabled
+Move Animation
+Trigger: Action Button
+
+List of Event Commands:
+@>
+
+#------------------------------------------------------------------------------
+Event ID: 018
+Event Name: Shopkeeper
+(X,Y): (012,019)
+
+Page #1
+Conditions
+None
+
+Autonomous Movement
+Type: Fixed
+Speed: 3: Slow
+Freq: 3: Low
+Options Enabled
+Move Animation
+Trigger: Action Button
+
+List of Event Commands:
+@>
+
+#------------------------------------------------------------------------------
+Event ID: 019
+Event Name: ExitArrow
+(X,Y): (011,028)
+
+Page #1
+Conditions
+None
+
+Graphic: Exitarrow_red
+
+Autonomous Movement
+Type: Fixed
+Speed: 3: Slow
+Freq: 3: Low
+Options Enabled
+Move Animation
+Stop Animation
+Trigger: Player Touch
+
+List of Event Commands:
+@>Conditional Branch: Player is facing Down
+ @>Play SE: 'Door exit', 100, 100
+ @>Change Screen Color Tone: (-255,-255,-255,0), @6
+ @>Wait: 8 frame(s)
+ @>Transfer Player:[091: Lunar Capital], (027,037), Down, No Fade
+ @>Change Screen Color Tone: (0,0,0,0), @6
+ @>Set Move Route: Player
+  :              : $>Move Down
+ @>
+: Branch End
+@>
+
+#------------------------------------------------------------------------------
+Event ID: 020
+Event Name: ExitArrow
+(X,Y): (012,028)
+
+Page #1
+Conditions
+None
+
+Graphic: Exitarrow_red
+
+Autonomous Movement
+Type: Fixed
+Speed: 3: Slow
+Freq: 3: Low
+Options Enabled
+Move Animation
+Stop Animation
+Trigger: Player Touch
+
+List of Event Commands:
+@>Conditional Branch: Player is facing Down
+ @>Play SE: 'Door exit', 100, 100
+ @>Change Screen Color Tone: (-255,-255,-255,0), @6
+ @>Wait: 8 frame(s)
+ @>Transfer Player:[091: Lunar Capital], (027,037), Down, No Fade
+ @>Change Screen Color Tone: (0,0,0,0), @6
+ @>Set Move Route: Player
+  :              : $>Move Down
+ @>
+: Branch End
+@>
+
+#------------------------------------------------------------------------------
+Event ID: 021
+Event Name: EV021
+(X,Y): (015,017)
+
+Page #1
+Conditions
+None
+
+Graphic: OW_NitoPC
+
+Autonomous Movement
+Type: Fixed
+Speed: 3: Slow
+Freq: 3: Low
+Options Enabled
+Move Animation
+Direction Fix
+Trigger: Action Button
+
+List of Event Commands:
+@>Script: pbPokeCenterPC
+@>
+
+#------------------------------------------------------------------------------
+Event ID: 022
+Event Name: EV022
+(X,Y): (023,029)
+
+Page #1
+Conditions
+Variable 0121: TKoL Plot Variable is 13 or above
+
+Autonomous Movement
+Type: Fixed
+Speed: 3: Slow
+Freq: 3: Low
+Options Enabled
+Move Animation
+Trigger: Autorun
+
+List of Event Commands:
+@>Text: \xn[\pn]\b(Now to find this 'Lady Sagume' and get to the bottom 
+ :    : of all this...)
+@>Control Self Switch: A =ON
+@>
+
+Page #2
+Conditions
+Self Switch A is ON
+
+Autonomous Movement
+Type: Fixed
+Speed: 3: Slow
+Freq: 3: Low
+Options Enabled
+Move Animation
+Trigger: Action Button
+
+List of Event Commands:
+@>
+
+#------------------------------------------------------------------------------
+Event ID: 023
+Event Name: EV023
+(X,Y): (010,018)
+
+Page #1
+Conditions
+None
+
+Graphic: TPDP_NPC 55
+
+Autonomous Movement
+Type: Fixed
+Speed: 3: Slow
+Freq: 3: Low
+Options Enabled
+Move Animation
+Trigger: Action Button
+
+List of Event Commands:
+@>Text: Hello there! Are you here to take part in the Puppet Training 
+ :    : Simulator?
+@>Show Choices: Yes, No, Explain
+(When Cancel: Choice 2)
+: When [Yes]
+ @>
+: When [No]
+ @>
+: When [Explain]
+ @>Text: The Puppet Training Simulator was established by order of
+  :    : Lady Sagume as a way to train recruits of the Lunar Defense
+  :    : Corps on how to use Puppets.
+ @>Text: However, as time went on, the service expanded to allow 
+  :    : anybody with Puppets to make use of the service!
+ @>Text: The Simulator will put you in an area filled with Puppets provided by
+  :    : the Capital to battle against.
+ @>Text: You can use this area to train to your hearts content.
+ @>Text: However, none of the Puppets here will be captureable.
+ @>Text: After every battle, your party will be healed automatically.
+ @>
+: Branch End
+@>
+
+#------------------------------------------------------------------------------
 
 #==============================================================================
 Map ID: 093
@@ -70442,9 +70963,689 @@ Width: 20, Height: 15
 
 #==============================================================================
 Map ID: 095
-Map Name: Lunar Trenches
-Tileset: 042: The Moon
-Width: 20, Height: 15
+Map Name: Kaian Passageway
+Tileset: 041: Dream World
+Width: 40, Height: 90
+Auto-Change BGM: W-033. Mysterious Shrine Maiden Flying Through Space
+
+#------------------------------------------------------------------------------
+Event ID: 002
+Event Name: EV002
+(X,Y): (019,061)
+
+Page #1
+Conditions
+None
+
+Autonomous Movement
+Type: Fixed
+Speed: 3: Slow
+Freq: 3: Low
+Options Enabled
+Move Animation
+Trigger: Action Button
+
+List of Event Commands:
+@>Text: \w[dark]KAIAN PASSAGEWAY #4\n
+ :    : BRIDGE CONTROL STATION
+@>Conditional Branch: Variable [0123: TKoL Kaian Terminal] < 2
+ @>Text: \w[dark]CONTROL TERMINALS STILL ACTIVE.\n
+  :    : CANNOT DEPLOY BRIDGE.
+ @>
+: Else
+ @>Text: \w[dark]CONTROL TERMINALS DEACTIVATED.\N
+  :    : ACTIVATE BRIDGE CONTROL?
+ @>Show Choices: Yes, No
+ (When Cancel: Choice 2)
+ : When [Yes]
+  @>Text: \w[dark]ACTIVATING BRIDGE CONTROL.
+  @>Play SE: 'PC access', 80, 100
+  @>Wait: 15 frame(s)
+  @>Play SE: 'GUI naming confirm', 80, 100
+  @>Text: \w[dark]TERMINAL DEACTIVATED.
+  @>Control Self Switch: A =ON
+  @>Script: pbSetSelfSwitch(17,"A",false)
+  :       : pbSetSelfSwitch(18,"A",false)
+  :       : pbSetSelfSwitch(19,"A",false)
+  @>
+ : When [No]
+  @>
+ : Branch End
+ @>
+: Branch End
+@>
+
+Page #2
+Conditions
+Self Switch A is ON
+
+Autonomous Movement
+Type: Fixed
+Speed: 3: Slow
+Freq: 3: Low
+Options Enabled
+Move Animation
+Trigger: Action Button
+
+List of Event Commands:
+@>Text: \w[dark]KAIAN PASSAGEWAY #4\n
+ :    : BRIDGE CONTROL STATION
+@>Text: \w[dark]BRIDGE IS CURRENTLY DEPLOYED.
+@>
+
+#------------------------------------------------------------------------------
+Event ID: 003
+Event Name: EV003
+(X,Y): (014,062)
+
+Page #1
+Conditions
+None
+
+Graphic: Ultra Wormhole
+
+Autonomous Movement
+Type: Custom
+Custom Move Route:
+(Repeat Action)
+$>Turn Left
+$>Wait: 8 frame(s)
+$>Turn Right
+$>Wait: 8 frame(s)
+$>Turn Up
+$>Wait: 8 frame(s)
+$>Turn Down
+$>Wait: 8 frame(s)
+
+Speed: 3: Slow
+Freq: 6: Highest
+Options Enabled
+Move Animation
+Trigger: Event Touch
+
+List of Event Commands:
+@>Play SE: 'teleporter', 60, 100
+@>Change Screen Color Tone: (-255,-255,-255,0), @6
+@>Wait: 8 frame(s)
+@>Transfer Player:[120: Dream World], (026,052), No Fade
+@>Change Screen Color Tone: (0,0,0,0), @6
+@>Set Move Route: Player
+ :              : $>Move Down
+@>
+
+#------------------------------------------------------------------------------
+Event ID: 004
+Event Name: EV004
+(X,Y): (024,062)
+
+Page #1
+Conditions
+None
+
+Graphic: Ultra Wormhole
+
+Autonomous Movement
+Type: Custom
+Custom Move Route:
+(Repeat Action)
+$>Turn Left
+$>Wait: 8 frame(s)
+$>Turn Right
+$>Wait: 8 frame(s)
+$>Turn Up
+$>Wait: 8 frame(s)
+$>Turn Down
+$>Wait: 8 frame(s)
+
+Speed: 3: Slow
+Freq: 6: Highest
+Options Enabled
+Move Animation
+Trigger: Event Touch
+
+List of Event Commands:
+@>Play SE: 'teleporter', 60, 100
+@>Change Screen Color Tone: (-255,-255,-255,0), @6
+@>Wait: 8 frame(s)
+@>Transfer Player:[120: Dream World], (005,032), No Fade
+@>Change Screen Color Tone: (0,0,0,0), @6
+@>Set Move Route: Player
+ :              : $>Move Down
+@>
+
+#------------------------------------------------------------------------------
+Event ID: 005
+Event Name: EV005
+(X,Y): (004,059)
+
+Page #1
+Conditions
+None
+
+Autonomous Movement
+Type: Fixed
+Speed: 3: Slow
+Freq: 3: Low
+Options Enabled
+Move Animation
+Trigger: Parallel Process
+
+List of Event Commands:
+@>Change Map Settings:Panorama = 'Stars1', 0
+@>Change Map Settings:Fog = 'PurpleFog', 50, 192, Normal, 200, 1, 1
+@>
+
+#------------------------------------------------------------------------------
+Event ID: 006
+Event Name: Door size(3,1)
+(X,Y): (018,076)
+
+Page #1
+Conditions
+None
+
+Autonomous Movement
+Type: Fixed
+Speed: 3: Slow
+Freq: 3: Low
+Options Enabled
+Move Animation
+Trigger: Event Touch
+
+List of Event Commands:
+@>Fade Out BGM: 3 sec.
+@>Play SE: 'PRSFX- LTBTS1', 90, 70
+@>Change Screen Color Tone: (-255,-255,-255,0), @60
+@>Wait: 70 frame(s)
+@>Transfer Player:[089: Youkai Mountain], (073,059), Down, No Fade
+@>Change Screen Color Tone: (0,0,0,0), @20
+@>
+
+#------------------------------------------------------------------------------
+Event ID: 007
+Event Name: size(8,1)
+(X,Y): (012,055)
+
+Page #1
+Conditions
+None
+
+Autonomous Movement
+Type: Fixed
+Speed: 3: Slow
+Freq: 3: Low
+Options Enabled
+Move Animation
+Trigger: Player Touch
+
+List of Event Commands:
+@>Set Move Route: Player
+ :              : $>Always on Top ON
+@>
+
+#------------------------------------------------------------------------------
+Event ID: 008
+Event Name: size(7,1)
+(X,Y): (020,055)
+
+Page #1
+Conditions
+None
+
+Autonomous Movement
+Type: Fixed
+Speed: 3: Slow
+Freq: 3: Low
+Options Enabled
+Move Animation
+Trigger: Player Touch
+
+List of Event Commands:
+@>Set Move Route: Player
+ :              : $>Always on Top ON
+@>
+
+#------------------------------------------------------------------------------
+Event ID: 009
+Event Name: size(8,1)
+(X,Y): (012,056)
+
+Page #1
+Conditions
+None
+
+Autonomous Movement
+Type: Fixed
+Speed: 3: Slow
+Freq: 3: Low
+Options Enabled
+Move Animation
+Trigger: Player Touch
+
+List of Event Commands:
+@>Text: e
+@>Set Move Route: Player
+ :              : $>Always on Top OFF
+@>
+
+#------------------------------------------------------------------------------
+Event ID: 010
+Event Name: size(7,1)
+(X,Y): (020,056)
+
+Page #1
+Conditions
+None
+
+Autonomous Movement
+Type: Fixed
+Speed: 3: Slow
+Freq: 3: Low
+Options Enabled
+Move Animation
+Trigger: Event Touch
+
+List of Event Commands:
+@>Text: e
+@>Set Move Route: Player
+ :              : $>Always on Top OFF
+@>
+
+#------------------------------------------------------------------------------
+Event ID: 011
+Event Name: Rabbit
+(X,Y): (019,063)
+
+Page #1
+Conditions
+None
+
+Graphic: TPDP_NPC 54
+
+Autonomous Movement
+Type: Fixed
+Speed: 3: Slow
+Freq: 3: Low
+Options Enabled
+Move Animation
+Trigger: Action Button
+
+List of Event Commands:
+@>
+
+Page #2
+Conditions
+Variable 0121: TKoL Plot Variable is 11 or above
+
+Autonomous Movement
+Type: Fixed
+Speed: 3: Slow
+Freq: 3: Low
+Options Enabled
+Move Animation
+Trigger: Action Button
+
+List of Event Commands:
+@>
+
+#------------------------------------------------------------------------------
+Event ID: 012
+Event Name: EV012
+(X,Y): (028,075)
+
+Page #1
+Conditions
+Variable 0121: TKoL Plot Variable is 10 or above
+
+Autonomous Movement
+Type: Fixed
+Speed: 3: Slow
+Freq: 3: Low
+Options Enabled
+Move Animation
+Trigger: Autorun
+
+List of Event Commands:
+@>Wait: 25 frame(s)
+@>Set Move Route: Player
+ :              : $>Turn Left
+ :              : $>Wait: 20 frame(s)
+ :              : $>Turn Right
+ :              : $>Wait: 20 frame(s)
+ :              : $>Turn Up
+@>Text: \xn[\pn]Whoa... What <i>IS</i> this place?
+@>Text: \xn[\pn]Am I even still in Gensokyo anymore?
+@>Text: \xn[\pn]...Could this be the Moon...?
+@>Wait for Move's Completion
+@>Set Move Route: Player
+ :              : $>Move Up
+ :              : $>Move Up
+ :              : $>Move Up
+@>Wait for Move's Completion
+@>Text: Hold it right there!
+@>Show Animation: Player, [Exclaim bubble]
+@>Set Move Route: [Rabbit]
+ :              : $>Move Down
+ :              : $>Move Down
+ :              : $>Move Down
+ :              : $>Move Down
+ :              : $>Move Down
+@>Wait for Move's Completion
+@>Text: You are not one of the squad members we sent to Gensokyo!
+@>Text: You're not allowed here!
+@>Conditional Branch: Script: TrainerBattle.start(:MOONRABBIT, "Asuna",pbGet(99))
+ @>Control Self Switch: A =ON
+ @>Text: If Seiran and Ringo have fallen, then I have no choice but to deny 
+  :    : your passage further!
+ @>Set Move Route: [Rabbit]
+  :              : $>Change Speed: 5
+  :              : $>Move Up
+  :              : $>Move Up
+  :              : $>Move Up
+ @>Show Animation: Player, [Exclaim bubble]
+ @>Wait for Move's Completion
+ @>Set Move Route: [Rabbit]
+  :              : $>Change Speed: 5
+  :              : $>Move Up
+  :              : $>Move Up
+ @>Set Move Route: Player
+  :              : $>Change Speed: 4
+  :              : $>Wait: 5 frame(s)
+  :              : $>Move Up
+  :              : $>Move Up
+  :              : $>Move Up
+ @>Wait for Move's Completion
+ @>Set Move Route: Player
+  :              : $>Change Speed: 4
+  :              : $>Through ON
+  :              : $>Move Up
+  :              : $>Move Up
+  :              : $>Move Up
+ @>Play SE: 'PC access', 80, 100
+ @>Script: pbSetSelfSwitch(17,"A",true)
+ :       : pbSetSelfSwitch(18,"A",true)
+ :       : pbSetSelfSwitch(19,"A",true)
+ @>Wait for Move's Completion
+ @>Set Move Route: Player
+  :              : $>Change Speed: 4
+  :              : $>Through ON
+  :              : $>Move Up
+  :              : $>Through OFF
+ @>Set Move Route: [Rabbit]
+  :              : $>Change Speed: 5
+  :              : $>Through ON
+  :              : $>SE: 'Player jump', 100, 50
+  :              : $>Jump: +0,-4
+  :              : $>Through OFF
+  :              : $>Turn Down
+ @>Show Animation: Player, [Exclaim bubble]
+ @>Wait for Move's Completion
+ @>Scroll Map: Up, 2, 4
+ @>Text: \xn[\pn]\b(I have GOT to stop falling for that!)
+ @>Text: Nothing you can do now! I've disabled the controls that allow
+  :    : the bridge to extend!
+ @>Text: \xn[\pn]Doesn't that mean you're stuck here as well?
+ @>Text: Nope! Unlike you earthlings, I'm capable of flying!
+ @>Text: You should just go home!
+ @>Change Screen Color Tone: (-255,-255,-255,0), @6
+ @>Set Move Route: [Rabbit]
+  :              : $>Through ON
+  :              : $>SE: 'Player jump', 100, 50
+  :              : $>Jump: +0,-6
+  :              : $>Through OFF
+  :              : $>Change Opacity: 0
+ @>Wait: 8 frame(s)
+ @>Change Screen Color Tone: (0,0,0,0), @6
+ @>Scroll Map: Down, 2, 4
+ @>Text: \xn[\pn]Drat! She got away...!
+ @>Set Move Route: Player
+  :              : $>Move Up
+ @>Text: \xn[\pn]I may as well examine this device...
+ @>Play SE: 'PC access', 80, 100
+ @>Wait: 20 frame(s)
+ @>Text: \xn[\pn]\b(Looks like the bridge is controlled by two similar 
+  :    : devices elsewhere...)
+ @>Text: \xn[\pn]\b(Just... where are they? I don't see any bridges or 
+  :    : doors around here...)
+ @>Control Variables: [0121: TKoL Plot Variable] = 11
+ @>
+: Else
+ @>Script: pbTrainerEnd
+ @>Exit Event Processing
+ @>
+: Branch End
+@>
+
+Page #2
+Conditions
+Variable 0121: TKoL Plot Variable is 11 or above
+
+Autonomous Movement
+Type: Fixed
+Speed: 3: Slow
+Freq: 3: Low
+Options Enabled
+Move Animation
+Trigger: Action Button
+
+List of Event Commands:
+@>
+
+#------------------------------------------------------------------------------
+Event ID: 013
+Event Name: Healing Statue
+(X,Y): (013,068)
+
+Page #1
+Conditions
+None
+
+Autonomous Movement
+Type: Fixed
+Speed: 3: Slow
+Freq: 3: Low
+Options Enabled
+Move Animation
+Trigger: Action Button
+
+List of Event Commands:
+@>Script: pbSetPokemonCenter
+@>Call Common Event: Akyuu Shrines
+@>
+
+Page #2
+Conditions
+Switch 0001: Starting over is ON
+
+Autonomous Movement
+Type: Fixed
+Speed: 3: Slow
+Freq: 3: Low
+Options Enabled
+Move Animation
+Trigger: Autorun
+
+List of Event Commands:
+@>Control Switches: [0001: Starting over] = OFF
+@>
+
+#------------------------------------------------------------------------------
+Event ID: 014
+Event Name: size(8,1)
+(X,Y): (015,041)
+
+Page #1
+Conditions
+None
+
+Autonomous Movement
+Type: Fixed
+Speed: 3: Slow
+Freq: 3: Low
+Options Enabled
+Move Animation
+Trigger: Player Touch
+
+List of Event Commands:
+@>Set Move Route: Player
+ :              : $>Always on Top ON
+@>
+
+#------------------------------------------------------------------------------
+Event ID: 015
+Event Name: size(8,1)
+(X,Y): (015,040)
+
+Page #1
+Conditions
+None
+
+Autonomous Movement
+Type: Fixed
+Speed: 3: Slow
+Freq: 3: Low
+Options Enabled
+Move Animation
+Trigger: Player Touch
+
+List of Event Commands:
+@>Set Move Route: Player
+ :              : $>Always on Top OFF
+@>
+
+#------------------------------------------------------------------------------
+Event ID: 016
+Event Name: EV016
+(X,Y): (019,008)
+
+Page #1
+Conditions
+None
+
+Autonomous Movement
+Type: Fixed
+Speed: 3: Slow
+Freq: 3: Low
+Options Enabled
+Move Animation
+Trigger: Player Touch
+
+List of Event Commands:
+@>Play SE: 'Door exit', 60, 100
+@>Change Screen Color Tone: (-255,-255,-255,0), @6
+@>Wait: 8 frame(s)
+@>Transfer Player:[121: Dream World], (020,008), No Fade
+@>Change Screen Color Tone: (0,0,0,0), @6
+@>Set Move Route: Player
+ :              : $>Move Down
+@>
+
+#------------------------------------------------------------------------------
+Event ID: 017
+Event Name: Bridge size(1,1)
+(X,Y): (021,054)
+
+Page #1
+Conditions
+None
+
+Autonomous Movement
+Type: Fixed
+Speed: 3: Slow
+Freq: 3: Low
+Options Enabled
+Move Animation
+Trigger: Action Button
+
+List of Event Commands:
+@>
+
+Page #2
+Conditions
+Self Switch A is ON
+
+Autonomous Movement
+Type: Fixed
+Speed: 3: Slow
+Freq: 3: Low
+Options Enabled
+Move Animation
+Trigger: Action Button
+
+List of Event Commands:
+@>
+
+#------------------------------------------------------------------------------
+Event ID: 018
+Event Name: Bridge size(3,13)
+(X,Y): (018,054)
+
+Page #1
+Conditions
+None
+
+Autonomous Movement
+Type: Fixed
+Speed: 3: Slow
+Freq: 3: Low
+Options Enabled
+Move Animation
+Trigger: Action Button
+
+List of Event Commands:
+@>
+
+Page #2
+Conditions
+Self Switch A is ON
+
+Autonomous Movement
+Type: Fixed
+Speed: 3: Slow
+Freq: 3: Low
+Options Enabled
+Move Animation
+Trigger: Action Button
+
+List of Event Commands:
+@>
+
+#------------------------------------------------------------------------------
+Event ID: 019
+Event Name: Bridge size(1,12)
+(X,Y): (021,053)
+
+Page #1
+Conditions
+None
+
+Autonomous Movement
+Type: Fixed
+Speed: 3: Slow
+Freq: 3: Low
+Options Enabled
+Move Animation
+Trigger: Action Button
+
+List of Event Commands:
+@>
+
+Page #2
+Conditions
+Self Switch A is ON
+
+Autonomous Movement
+Type: Fixed
+Speed: 3: Slow
+Freq: 3: Low
+Options Enabled
+Move Animation
+Trigger: Action Button
+
+List of Event Commands:
+@>
+
+#------------------------------------------------------------------------------
 
 #==============================================================================
 Map ID: 096
@@ -70566,6 +71767,29 @@ Map Name: Dummy Map
 Tileset: 001: Outside
 Width: 20, Height: 15
 Auto-Change BGM: W-004. Dimension of Reverie
+
+#------------------------------------------------------------------------------
+Event ID: 001
+Event Name: EV001
+(X,Y): (007,005)
+
+Page #1
+Conditions
+None
+
+Autonomous Movement
+Type: Fixed
+Speed: 3: Slow
+Freq: 3: Low
+Options Enabled
+Move Animation
+Trigger: Action Button
+
+List of Event Commands:
+@>Script: $game_map.set_tile(0, 0, 2, 385)
+@>
+
+#------------------------------------------------------------------------------
 
 #==============================================================================
 Map ID: 116
@@ -73475,6 +74699,30 @@ List of Event Commands:
  :              : $>Move Down
 @>
 
+Page #2
+Conditions
+Switch 0022: s:tsOff?("A") is ON
+
+Autonomous Movement
+Type: Fixed
+Speed: 3: Slow
+Freq: 3: Low
+Options Enabled
+Move Animation
+Trigger: Autorun
+
+List of Event Commands:
+@>Conditional Branch: Script: get_self.onEvent?
+ @>Change Transparent Flag: Normal
+ @>Set Move Route: Player
+                   (Ignore If Can't Move)
+  :              : $>Move Down
+ @>Wait for Move's Completion
+ @>
+: Branch End
+@>Script: setTempSwitchOn("A")
+@>
+
 #------------------------------------------------------------------------------
 Event ID: 021
 Event Name: EV021
@@ -73500,6 +74748,30 @@ List of Event Commands:
 @>Change Screen Color Tone: (0,0,0,0), @6
 @>Set Move Route: Player
  :              : $>Move Down
+@>
+
+Page #2
+Conditions
+Switch 0022: s:tsOff?("A") is ON
+
+Autonomous Movement
+Type: Fixed
+Speed: 3: Slow
+Freq: 3: Low
+Options Enabled
+Move Animation
+Trigger: Autorun
+
+List of Event Commands:
+@>Conditional Branch: Script: get_self.onEvent?
+ @>Change Transparent Flag: Normal
+ @>Set Move Route: Player
+                   (Ignore If Can't Move)
+  :              : $>Move Down
+ @>Wait for Move's Completion
+ @>
+: Branch End
+@>Script: setTempSwitchOn("A")
 @>
 
 #------------------------------------------------------------------------------

@@ -9,7 +9,7 @@
 
 def pbCheckAllFainted
   if $player.able_pokemon_count == 0
-    pbMessage(_INTL("You have no more party members that can fight!\1"))
+    pbMessage(_INTL("You have no more party members that can fight!") + "\1")
     pbMessage(_INTL("You blacked out!"))
     pbBGMFade(1.0)
     pbBGSFade(1.0)

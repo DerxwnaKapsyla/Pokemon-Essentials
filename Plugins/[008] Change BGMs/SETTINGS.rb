@@ -65,8 +65,8 @@
 #------------------------------------------------------------------------------
 #EDIT THIS ARRAY:
 REPLACE_BGMS = [
-				["S1_Escape", "W-004. Dimension of Reverie.ogg", [6, 7], 100, 100],
-				["S5_Silence", "W-004. Dimension of Reverie.ogg", [16], 0],
-				["S6_Performance", "X-002. Phantom Ensemble ~ Rehearsal Mix", [19, 25]],
-				["LunarInvasion", "W-036. Electric Heritage", [91]],
+				["Intro_Help", "W-004. Help!.ogg", [9, 13]],
+				["Takeover_1", "W-021. Team Rocket Attacks.ogg", [79, 239]],
+				["Retribution", "W-024. Silph Co. Takeover (Ruukoto Style)", [247, 263, 264]],
+				["Takeover_2", "W-021. Team Rocket Attacks.ogg", [311, 312, 313, 314, 315, 316, 317]]
                ]

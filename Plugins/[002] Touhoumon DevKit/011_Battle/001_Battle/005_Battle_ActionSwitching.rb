@@ -7,7 +7,7 @@
 #	* Removing explicit references to Pokemon as an individual species
 #==============================================================================#
 class Battle
-  def pbCanSwitchLax?(idxBattler, idxParty, partyScene = nil)
+  def pbCanSwitchIn?(idxBattler, idxParty, partyScene = nil)
     return true if idxParty < 0
     party = pbParty(idxBattler)
     return false if idxParty >= party.length
@@ -38,28 +38,15 @@ class Battle
 #==============================================================================#
 # Changes in this section include the following:
 #	* Made it so Touhoumon Ghost Types can switch out regardless of conditions
-#==============================================================================#  
-  def pbCanSwitch?(idxBattler, idxParty = -1, partyScene = nil)
-    # Check whether party Pokémon can switch in
-    return false if !pbCanSwitchLax?(idxBattler, idxParty, partyScene)
-    # Make sure another battler isn't already choosing to switch to the party
-    # Pokémon
-    allSameSideBattlers(idxBattler).each do |b|
-      next if choices[b.index][0] != :SwitchOut || choices[b.index][1] != idxParty
-      partyScene&.pbDisplay(_INTL("{1} has already been selected.",
-                                  pbParty(idxBattler)[idxParty].name))
-      return false
-    end
-    # Check whether battler can switch out
+#==============================================================================#
+  def pbCanSwitchOut?(idxBattler, partyScene = nil)
     battler = @battlers[idxBattler]
     return true if battler.fainted?
     # Ability/item effects that allow switching no matter what
-    if battler.abilityActive? &&
-       Battle::AbilityEffects.triggerCertainSwitching(battler.ability, battler, self)
+    if battler.abilityActive? && Battle::AbilityEffects.triggerCertainSwitching(battler.ability, battler, self)
       return true
     end
-    if battler.itemActive? &&
-       Battle::ItemEffects.triggerCertainSwitching(battler.item, battler, self)
+    if battler.itemActive? && Battle::ItemEffects.triggerCertainSwitching(battler.item, battler, self)
       return true
     end
     # Other certain switching effects
@@ -74,25 +61,40 @@ class Battle
     allOtherSideBattlers(idxBattler).each do |b|
       next if !b.abilityActive?
       if Battle::AbilityEffects.triggerTrappingByTarget(b.ability, battler, b, self)
-        partyScene&.pbDisplay(_INTL("{1}'s {2} prevents switching!",
-                                    b.pbThis, b.abilityName))
+        partyScene&.pbDisplay(_INTL("{1}'s {2} prevents switching!", b.pbThis, b.abilityName))
         return false
       end
     end
     allOtherSideBattlers(idxBattler).each do |b|
       next if !b.itemActive?
       if Battle::ItemEffects.triggerTrappingByTarget(b.item, battler, b, self)
-        partyScene&.pbDisplay(_INTL("{1}'s {2} prevents switching!",
-                                    b.pbThis, b.itemName))
+        partyScene&.pbDisplay(_INTL("{1}'s {2} prevents switching!", b.pbThis, b.itemName))
         return false
       end
     end
     return true
   end
   
+  def pbCanSwitch?(idxBattler, idxParty = -1, partyScene = nil)
+    # Check whether party Pokémon can switch in
+    return false if !pbCanSwitchIn?(idxBattler, idxParty, partyScene)
+    # Make sure another battler isn't already choosing to switch to the party
+    # Pokémon
+    allSameSideBattlers(idxBattler).each do |b|
+      next if choices[b.index][0] != :SwitchOut || choices[b.index][1] != idxParty
+      partyScene&.pbDisplay(_INTL("{1} has already been selected.",
+                                  pbParty(idxBattler)[idxParty].name))
+      return false
+    end
+    # Check whether battler can switch out
+    return pbCanSwitchOut?(idxBattler, partyScene)
+  end
+   
 #==============================================================================#
 # Changes in this section include the following:
 #	* Removing explicit references to Pokemon as an individual species
+#	* Tweaked the swap-out line for special boss fights where you can't see
+#	  what the foe is sending out.
 #==============================================================================#  
   def pbEORSwitch(favorDraws = false)
     return if @decision > 0 && !favorDraws
@@ -123,8 +125,13 @@ class Battle
               new_index = pbLastInTeam(idxBattler)
               idxPartyForName = new_index if new_index >= 0 && new_index != idxPartyNew
             end
-            if pbDisplayConfirm(_INTL("{1} is about to send in {2}. Will you switch your active party member?",
-                                      opponent.full_name, enemyParty[idxPartyForName].name))
+			msg = _INTL("{1} is about to send in {2}. Will you switch?",
+                                      opponent.full_name, enemyParty[idxPartyForName].name)
+			if $game_switches[123]
+			  msg = _INTL("You can't see what {1} is about to send out. Will you switch?",
+                                      opponent.full_name)
+			end
+            if pbDisplayConfirm(msg)
               idxPlayerPartyNew = pbSwitchInBetween(0, false, true)
               if idxPlayerPartyNew >= 0
                 pbMessageOnRecall(@battlers[0])

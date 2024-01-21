@@ -78,6 +78,7 @@ class AdvancedWorldTournament
     end
     # Playes the introductory dialogue
     self.introduction
+    pbMapInterpreter.command_end if pbMapInterpreterRunning?
     scene = PokemonSave_Scene.new
     screen = PokemonSaveScreen.new(scene)
     return self.cancelEntry if !screen.pbSaveScreen
@@ -149,7 +150,7 @@ class AdvancedWorldTournament
 	  end
       pbMessage(_INTL("We hope to see you again."))
       $stats.pwt_wins[@tournament_id] += 1
-      $player.coins += total_points
+      $player.battle_points += total_points
 	  $stats.pwt_win_streak[@tournament_id] += 1
       self.endTournament
     when "loss"
@@ -481,12 +482,12 @@ class AdvancedWorldTournament
       self.wait(1)
     end
     @current_location = [$game_map.map_id,$game_player.x,$game_player.y]
-    $map_factory = PokemonMapFactory.new(id)
-    $game_player.moveto(x, y)
-    $game_player.refresh
-    $game_player.turn_up
-    $game_map.autoplay
-    $game_map.update
+    $game_temp.player_transferring   = true
+    $game_temp.player_new_map_id    = id
+    $game_temp.player_new_x         = x
+    $game_temp.player_new_y         = y
+    $game_temp.player_new_direction = 8
+    $scene.transfer_player
     if lobby
       self.randLobbyGeneration
       #@miniboard.dispose
@@ -659,9 +660,9 @@ class MiniBoard
       @s["vs"].zoom_x -= 1/16.0
       @s["vs"].zoom_y -= 1/16.0
       @s["vs"].opacity += 16
-      pbWait(1)
+      pbWait(0.025)
     end
-    pbWait(64)
+    pbWait(1.5)
     @inSequence = false
   end
   

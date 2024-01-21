@@ -1,7 +1,7 @@
 module AstralnekoTrivia
 	def self.getQuestion(id)
 		self.ensureCompiledData()
-		return pbGetMessageFromHash(MessageTypes::AstralnekoTriviaQuestions, self.compiledData()[:questions][id.to_sym])
+		return pbGetMessageFromHash(MessageTypes::AN_TRIVIA_QUESTIONS, self.compiledData()[:questions][id.to_sym])
 	end
 	
 	def self.getAnswers(id)
@@ -9,7 +9,7 @@ module AstralnekoTrivia
 		answerList = self.compiledData()[:answerLists][id.to_sym]
 		answers = []
 		for ans in answerList
-			answers.push(pbGetMessageFromHash(MessageTypes::AstralnekoTriviaAnswers, ans))
+			answers.push(pbGetMessageFromHash(MessageTypes::AN_TRIVIA_ANSWERS, ans))
 		end
 		return answers
 	end
@@ -19,10 +19,10 @@ end
 # Add trivia path to AstralnekoConfig
 module AstralnekoConfig
 	CORRECT_ANSWER_SPEECHES = [
-		_INTL("\\xn[Leto]\\rNice! You got it right!")
+		_INTL("Leto: \\rNice! You got it right!")
 	]
 	INCORRECT_ANSWER_SPEECHES = [
-		_INTL("\\xn[Leto]\\rAw... That's incorrect...")
+		_INTL("Leto: \\rAw... That's incorrect...")
 	]
 	TRIVIA_PATH = "PBS/default_trivia.txt" # DO NOT EDIT THIS
 	TRIVIA_LOADING_LOG = true

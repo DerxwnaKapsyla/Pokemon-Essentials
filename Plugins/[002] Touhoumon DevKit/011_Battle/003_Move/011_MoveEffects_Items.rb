@@ -94,25 +94,7 @@ class Battle::Move::UserTargetSwapItems < Battle::Move
   end
 end
 
-#===============================================================================
-# User consumes target's berry and gains its effect. (Bug Bite, Pluck)
-#
-# Addition: Made it so those w/ Collector as an ability can't lose items
-#===============================================================================
-class Battle::Move::UserConsumeTargetBerry < Battle::Move
-  def pbEffectAfterAllHits(user, target)
-    return if user.fainted? || target.fainted?
-    return if target.damageState.unaffected || target.damageState.substitute
-    return if !target.item || !target.item.is_berry?
-    return if (target.hasActiveAbility?(:STICKYHOLD) ||
-			   target.hasActiveAbility?(:COLLECTOR)) && !@battle.moldBreaker
-    item = target.item
-    itemName = target.itemName
-    target.pbRemoveItem
-    @battle.pbDisplay(_INTL("{1} stole and ate its target's {2}!", user.pbThis, itemName))
-    user.pbHeldItemTriggerCheck(item, false)
-  end
-end
+
 
 #===============================================================================
 # For 5 rounds, all held items cannot be used in any way and have no effect.
@@ -129,5 +111,118 @@ class Battle::Move::StartNegateHeldItems < Battle::Move
       @battle.field.effects[PBEffects::MagicRoom] = 5
       @battle.pbDisplay(_INTL("It created a bizarre area in which held items lose their effects!"))
     end
+  end
+end
+#===============================================================================
+# User consumes target's berry and gains its effect. (Bug Bite, Pluck)
+#
+# Addition: Made it so those w/ Collector as an ability can't lose items
+#===============================================================================
+class Battle::Move::UserConsumeTargetBerry < Battle::Move
+  def pbEffectAfterAllHits(user, target)
+    return if user.fainted? || target.fainted?
+    return if target.damageState.unaffected || target.damageState.substitute
+    return if !target.item || !target.item.is_berry? || target.unlosableItem?(target.item)
+    return if (target.hasActiveAbility?(:STICKYHOLD) ||
+			   target.hasActiveAbility?(:COLLECTOR)) && !@battle.moldBreaker
+    item = target.item
+    itemName = target.itemName
+    user.setBelched
+    target.pbRemoveItem
+    @battle.pbDisplay(_INTL("{1} stole and ate its target's {2}!", user.pbThis, itemName))
+    user.pbHeldItemTriggerCheck(item.id, false)
+    user.pbSymbiosis
+  end
+end
+
+#===============================================================================
+# User flings its item at the target. Power/effect depend on the item. (Fling)
+#
+# Addition: Baked Potato can cause burns
+#           Ice Ball can cause freeze
+#           Advent blocks secondary effects from Fling
+#===============================================================================
+class Battle::Move::ThrowUserItemAtTarget < Battle::Move
+  def pbEffectAgainstTarget(user, target)
+    return if target.damageState.substitute
+    return if (target.hasActiveAbility?(:SHIELDDUST) ||
+	           target.hasActiveAbility?(:ADVENT)) && !@battle.moldBreaker
+    case user.item_id
+    when :POISONBARB
+      target.pbPoison(user) if target.pbCanPoison?(user, false, self)
+    when :TOXICORB
+      target.pbPoison(user, nil, true) if target.pbCanPoison?(user, false, self)
+    when :FLAMEORB, :BAKEDPOTATO
+      target.pbBurn(user) if target.pbCanBurn?(user, false, self)
+    when :LIGHTBALL
+      target.pbParalyze(user) if target.pbCanParalyze?(user, false, self)
+	when :ICEBALL
+      target.pbFreeze(user) if target.pbCanFreeze?(user, false, self)
+    when :KINGSROCK, :RAZORFANG
+      target.pbFlinch(user)
+    else
+      target.pbHeldItemTriggerCheck(user.item_id, true)
+    end
+    # NOTE: The official games only let the target use Belch if the berry flung
+    #       at it has some kind of effect (i.e. it isn't an effectless berry). I
+    #       think this isn't in the spirit of "consuming a berry", so I've said
+    #       that Belch is usable after having any kind of berry flung at you.
+    target.setBelched if user.item.is_berry?
+  end
+end
+
+#===============================================================================
+# Target's berry/Gem is destroyed. (Incinerate)
+#
+# Addition: Collector blocs Incinerate Effect
+#===============================================================================
+class Battle::Move::DestroyTargetBerryOrGem < Battle::Move
+  def pbEffectWhenDealingDamage(user, target)
+    return if target.damageState.substitute || target.damageState.berryWeakened
+    return if !target.item || (!target.item.is_berry? &&
+              !(Settings::MECHANICS_GENERATION >= 6 && target.item.is_gem?))
+    return if target.unlosableItem?(target.item)
+    return if (target.hasActiveAbility?(:STICKYHOLD)
+               target.hasActiveAbility?(:COLLECTOR)) && !@battle.moldBreaker
+    item_name = target.itemName
+    target.pbRemoveItem
+    @battle.pbDisplay(_INTL("{1}'s {2} was incinerated!", target.pbThis, item_name))
+  end
+end
+
+#===============================================================================
+# Negates the effect and usability of the target's held item for the rest of the
+# battle (even if it is switched out). Fails if the target doesn't have a held
+# item, the item is unlosable, the target has Sticky Hold, or the target is
+# behind a substitute. (Corrosive Gas)
+#
+# Addition: Collector blocs Incinerate Effect
+#===============================================================================
+class Battle::Move::CorrodeTargetItem < Battle::Move
+  def pbFailsAgainstTarget?(user, target, show_message)
+    if !target.item || target.unlosableItem?(target.item) ||
+       target.effects[PBEffects::Substitute] > 0
+      @battle.pbDisplay(_INTL("{1} is unaffected!", target.pbThis)) if show_message
+      return true
+    end
+    if (target.hasActiveAbility?(:STICKYHOLD)
+               target.hasActiveAbility?(:COLLECTOR)) && !@battle.moldBreaker
+      if show_message
+        @battle.pbShowAbilitySplash(target)
+        if Battle::Scene::USE_ABILITY_SPLASH
+          @battle.pbDisplay(_INTL("{1} is unaffected!", target.pbThis))
+        else
+          @battle.pbDisplay(_INTL("{1} is unaffected because of its {2}!",
+                                  target.pbThis(true), target.abilityName))
+        end
+        @battle.pbHideAbilitySplash(target)
+      end
+      return true
+    end
+    if @battle.corrosiveGas[target.index % 2][target.pokemonIndex]
+      @battle.pbDisplay(_INTL("{1} is unaffected!", target.pbThis)) if show_message
+      return true
+    end
+    return false
   end
 end

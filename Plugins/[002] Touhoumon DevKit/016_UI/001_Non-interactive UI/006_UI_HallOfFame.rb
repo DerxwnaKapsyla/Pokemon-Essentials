@@ -39,20 +39,20 @@ class HallOfFame_Scene
       dexnumber = _ISPRINTF("No. {1:03d}", number)
     end
     textPositions = [
-      [dexnumber, 32, Graphics.height - 74, 0, BASECOLOR, SHADOWCOLOR],
-      [pokename, Graphics.width - 192, Graphics.height - 74, 2, BASECOLOR, SHADOWCOLOR],
+      [dexnumber, 32, Graphics.height - 74, :left, TEXT_BASE_COLOR, TEXT_SHADOW_COLOR],
+      [pokename, Graphics.width - 192, Graphics.height - 74, :center, TEXT_BASE_COLOR, TEXT_SHADOW_COLOR],
       [_INTL("Lv. {1}", pokemon.egg? ? "?" : pokemon.level),
-       64, Graphics.height - 42, 0, BASECOLOR, SHADOWCOLOR],
-      [_INTL("IDNo.{1}", pokemon.egg? ? "?????" : idno),
-       Graphics.width - 192, Graphics.height - 42, 2, BASECOLOR, SHADOWCOLOR]
+       64, Graphics.height - 42, :left, TEXT_BASE_COLOR, TEXT_SHADOW_COLOR],
+      [_INTL("ID No. {1}", pokemon.egg? ? "?????" : idno),
+       Graphics.width - 192, Graphics.height - 42, :center, TEXT_BASE_COLOR, TEXT_SHADOW_COLOR]
     ]
     if hallNumber > -1
-      textPositions.push([_INTL("Hall of Fame No."), (Graphics.width / 2) - 104, 6, 0, BASECOLOR, SHADOWCOLOR])
-      textPositions.push([hallNumber.to_s, (Graphics.width / 2) + 104, 6, 1, BASECOLOR, SHADOWCOLOR])
+      textPositions.push([_INTL("Hall of Fame No."), (Graphics.width / 2) - 104, 6, :left, TEXT_BASE_COLOR, TEXT_SHADOW_COLOR])
+      textPositions.push([hallNumber.to_s, (Graphics.width / 2) + 104, 6, :right, TEXT_BASE_COLOR, TEXT_SHADOW_COLOR])
     end
     pbDrawTextPositions(overlay, textPositions)
   end
-  
+
   def writeWelcome
     overlay = @sprites["overlay"].bitmap
     overlay.clear

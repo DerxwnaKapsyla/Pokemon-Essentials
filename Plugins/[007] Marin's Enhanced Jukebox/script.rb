@@ -60,7 +60,7 @@ class EnhancedJukebox
 
   def initialize
     showBlk
-    @path = "Graphics/Pictures/Enhanced Jukebox/"
+    @path = "Graphics/UI/Enhanced Jukebox/"
     @viewport = Viewport.new(0, 0, Graphics.width, Graphics.height)
     @viewport.z = 99999
     @sprites = SpriteHash.new
@@ -147,7 +147,7 @@ class EnhancedJukebox
     attr_reader :folder
 
     def initialize
-      @path = "Graphics/Pictures/Enhanced Jukebox/"
+      @path = "Graphics/UI/Enhanced Jukebox/"
       @viewport = Viewport.new(16, 52, 480, 264)
       @viewport.z = 99999
       @arrowvp = Viewport.new(16, 52, 480, 264)
@@ -157,17 +157,17 @@ class EnhancedJukebox
       @sprites["bg"].bitmap = Bitmap.new(@path + "list_bg")
       @sprites["text"] = TextSprite.new(@viewport)
       @sprites["sel"] = Sprite.new(@viewport)
-      @sprites["sel"].bitmap = Bitmap.new("Graphics/Pictures/selarrow")
+      @sprites["sel"].bitmap = Bitmap.new("Graphics/UI/sel_arrow")
       @sprites["sel"].x = 10
       @sprites["sel"].y = 4
       @sprites["icons"] = SpriteHash.new
       @sprites["up"] = Sprite.new(@arrowvp)
-      @sprites["up"].bitmap = Bitmap.new("Graphics/Pictures/uparrow")
+      @sprites["up"].bitmap = Bitmap.new("Graphics/UI/up_arrow")
       @sprites["up"].src_rect.width = 28
       @sprites["up"].visible = false
       @sprites["up"].x = @viewport.rect.width - @sprites["up"].src_rect.width - 8
       @sprites["down"] = Sprite.new(@arrowvp)
-      @sprites["down"].bitmap = Bitmap.new("Graphics/Pictures/downarrow")
+      @sprites["down"].bitmap = Bitmap.new("Graphics/UI/down_arrow")
       @sprites["down"].src_rect.width = 28
       @sprites["down"].visible = false
       @sprites["down"].x = @sprites["up"].x
@@ -471,20 +471,20 @@ class EnhancedJukebox
     def initialize(filename, metadata)
       @filename = filename
       @metadata = metadata
-      @path = "Graphics/Pictures/Enhanced Jukebox/"
+      @path = "Graphics/UI/Enhanced Jukebox/"
       @viewport = Viewport.new(16, 52, 480, 264)
       @viewport.z = 99999
       @sprites = SpriteHash.new
       @sprites["bg"] = Sprite.new(@viewport)
       @sprites["bg"].bitmap = Bitmap.new(@path + "list_bg")
       @sprites["up"] = Sprite.new(@viewport)
-      @sprites["up"].bitmap = Bitmap.new("Graphics/Pictures/uparrow")
+      @sprites["up"].bitmap = Bitmap.new("Graphics/UI/up_arrow")
       @sprites["up"].src_rect.width = 28
       @sprites["up"].visible = false
       @sprites["up"].x = @viewport.rect.width - @sprites["up"].src_rect.width - 8
       @sprites["up"].z = 1
       @sprites["down"] = Sprite.new(@viewport)
-      @sprites["down"].bitmap = Bitmap.new("Graphics/Pictures/downarrow")
+      @sprites["down"].bitmap = Bitmap.new("Graphics/UI/down_arrow")
       @sprites["down"].src_rect.width = 28
       @sprites["down"].visible = false
       @sprites["down"].x = @sprites["up"].x
@@ -753,7 +753,7 @@ end
 class ScrollingMusicText < HScrollSprite
   def initialize(cooldown, x, y, width, height)
     super
-    @path = "Graphics/Pictures/Enhanced Jukebox/"
+    @path = "Graphics/UI/Enhanced Jukebox/"
     @sprites["text"].x = 36
     @sprites["icon"] = Sprite.new(@viewport)
     @sprites["icon"].bitmap = Bitmap.new(@path + "icons")
@@ -769,8 +769,10 @@ end
 # Overwrite the defaultBGM property to allow for all folders, rather
 # than only look inside the Audio/BGM folder, and move it to $game_temp.
 class Game_System
-  def bgm_play_internal(bgm, position)
-    @bgm_position = position if !@bgm_paused
+  def bgm_play_internal(bgm, position, track = nil)
+    if !track || track == 0
+      @bgm_position = position if !@bgm_paused
+    end
     if bgm
       if ($game_temp.nil? || $game_temp.defaultBGM.nil? || bgm.name != $game_temp.defaultBGM.name)
         @playing_bgm = bgm.clone
@@ -782,28 +784,28 @@ class Game_System
     if $game_temp && $game_temp.defaultBGM
       if FileTest.audio_exist?("Audio/BGM/" + $game_temp.defaultBGM.name)
         bgm_play_internal2("Audio/BGM/" + $game_temp.defaultBGM.name,
-            $game_temp.defaultBGM.volume, $game_temp.defaultBGM.pitch, @bgm_position)
+            $game_temp.defaultBGM.volume, $game_temp.defaultBGM.pitch, @bgm_position, track)
         try_bgm = false
       elsif FileTest.audio_exist?("Audio/" + $game_temp.defaultBGM.name)
         bgm_play_internal2("Audio/" + $game_temp.defaultBGM.name,
-            $game_temp.defaultBGM.volume, $game_temp.defaultBGM.pitch, @bgm_position)
+            $game_temp.defaultBGM.volume, $game_temp.defaultBGM.pitch, @bgm_position, track)
         try_bgm = false
       elsif FileTest.audio_exist?($game_temp.defaultBGM.name)
         bgm_play_internal2($game_temp.defaultBGM.name,
-            $game_temp.defaultBGM.volume, $game_temp.defaultBGM.pitch, @bgm_position)
+            $game_temp.defaultBGM.volume, $game_temp.defaultBGM.pitch, @bgm_position, track)
         try_bgm = false
       end
     end
     if try_bgm && bgm && bgm.name != ""
       if FileTest.audio_exist?("Audio/BGM/" + bgm.name)
         bgm_play_internal2("Audio/BGM/" + bgm.name,
-            bgm.volume, bgm.pitch, @bgm_position)
+            bgm.volume, bgm.pitch, @bgm_position, track)
       elsif FileTest.audio_exist?("Audio/" + bgm.name)
         bgm_play_internal2("Audio/" + bgm.name,
-            bgm.volume, bgm.pitch, @bgm_position)
+            bgm.volume, bgm.pitch, @bgm_position, track)
       elsif FileTest.audio_exist?(bgm.name)
         bgm_play_internal2(bgm.name,
-            bgm.volume, bgm.pitch, @bgm_position)
+            bgm.volume, bgm.pitch, @bgm_position, track)
       else
         @playing_bgm = nil
         Audio.bgm_stop
