@@ -44,11 +44,11 @@ DEFAULT_WINDOWSKIN=nil
 def pbDisplayNameWindow(params)
   name         = params[1]
   isDark       = params[2]  if params[2]
-  colorBase    = colorToRgb32(MessageConfig::DARK_TEXT_MAIN_COLOR)
-  colorBase    = colorToRgb32(MessageConfig::LIGHT_TEXT_MAIN_COLOR) if isDark==true
+  colorBase    = (MessageConfig::DARK_TEXT_MAIN_COLOR).to_rgb32
+  colorBase    = (MessageConfig::LIGHT_TEXT_MAIN_COLOR).to_rgb32 if isDark==true
   colorBase    = params[3]  if !params[3].nil?
-  colowShadow  = colorToRgb32(MessageConfig::DARK_TEXT_SHADOW_COLOR)
-  colorShadow  = colorToRgb32(MessageConfig::LIGHT_TEXT_SHADOW_COLOR) if isDark==true
+  colowShadow  = (MessageConfig::DARK_TEXT_SHADOW_COLOR).to_rgb32
+  colorShadow  = (MessageConfig::LIGHT_TEXT_SHADOW_COLOR).to_rgb32 if isDark==true
   colorShadow  = params[4]  if !params[4].nil?
   font         = params[5]  if !params[5].nil?
   font         = DEFAULT_FONT if font.nil? || font=="0"
@@ -96,12 +96,12 @@ def pbDisplayNameWindow(params)
   # Handle text color
   # If base or shadow are empty somehow, load windowskin-sensitive colors
   if colorBase.nil? || colorBase.empty?
-    colorBase=colorToRgb32(MessageConfig::DARK_TEXT_MAIN_COLOR)
-    colorBase=colorToRgb32(MessageConfig::LIGHT_TEXT_MAIN_COLOR) if isDark==true
+    colorBase=(MessageConfig::DARK_TEXT_MAIN_COLOR).to_rgb32
+    colorBase=(MessageConfig::LIGHT_TEXT_MAIN_COLOR).to_rgb32 if isDark==true
   end
   if colorShadow.nil? || colorShadow.empty?
-    colorShadow=colorToRgb32(MessageConfig::DARK_TEXT_SHADOW_COLOR) 
-    colorShadow=colorToRgb32(MessageConfig::LIGHT_TEXT_SHADOW_COLOR) if isDark==true
+    colorShadow=(MessageConfig::DARK_TEXT_SHADOW_COLOR).to_rgb32 
+    colorShadow=(MessageConfig::LIGHT_TEXT_SHADOW_COLOR).to_rgb32 if isDark==true
   end
   fullColor="<c3="+colorBase+","+colorShadow+">"
   fullName.insert(0,fullColor) unless fullColor=="<c3=0,0>"

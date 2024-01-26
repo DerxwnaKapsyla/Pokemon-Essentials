@@ -18,6 +18,16 @@ EventHandlers.add(:on_trainer_load, :shameless_self_insert,
     }
 )
 
+#EventHandlers.add(:on_trainer_load, :junko,
+#  proc { |trainer|
+#    if trainer
+#      if trainer.name==("Junko")
+#        $PokemonGlobal.nextBattleBack = "starlight"
+#      end
+#    end
+#    }
+#)
+
 
 EventHandlers.add(:on_wild_pokemon_created, :alter_shiny_rate,
   proc { |pkmn|

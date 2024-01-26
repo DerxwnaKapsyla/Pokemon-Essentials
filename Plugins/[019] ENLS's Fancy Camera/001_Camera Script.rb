@@ -108,6 +108,8 @@ def pbCameraScrollDirection(direction, distance, speed = nil)
     speed = FancyCamera::DEFAULT_SPEED * 1.5
   when 6  # Fastest
     speed = FancyCamera::DEFAULT_SPEED * 2
+  else
+    speed = FancyCamera::DEFAULT_SPEED * speed
   end
   pbCameraScrollTo(x, y, speed)
 end

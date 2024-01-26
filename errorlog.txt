@@ -500,3 +500,577 @@ Backtrace:
 [Reincarnation] 003_Reincarnation_UI.rb:175:in `start_scene'
 [TAoA Core] 01_UI_PauseMenu.rb:9:in `block (2 levels) in <main>'
 002_MessageConfig.rb:575:in `pbFadeOutIn'
+
+=================
+
+[2024-01-21 16:32:28 -0700]
+[Pokémon Essentials version 21.1]
+
+Error in Plugin: [TAoA Core]
+Exception: NameError
+Message: uninitialized constant RPG::Tileset::AAAAAAAAAAAAAAAAAAAAAAAAAAA
+
+Backtrace:
+[TAoA Core] 001_CommonTiles.rb:46:in `<class:Tileset>'
+[TAoA Core] 001_CommonTiles.rb:45:in `<module:RPG>'
+[TAoA Core] 001_CommonTiles.rb:44:in `<main>'
+005_PluginManager.rb:635:in `eval'
+005_PluginManager.rb:635:in `block (2 levels) in runPlugins'
+005_PluginManager.rb:625:in `each'
+005_PluginManager.rb:625:in `block in runPlugins'
+005_PluginManager.rb:616:in `each'
+005_PluginManager.rb:616:in `runPlugins'
+999_Main.rb:35:in `mainFunctionDebug'
+
+=================
+
+[2024-01-21 16:47:19 -0700]
+[Pokémon Essentials version 21.1]
+
+Error in Plugin: [TAoA Core]
+Exception: SyntaxError
+Message: [TAoA Core] 001_CommonTiles.rb:54: syntax error, unexpected `end', expecting end-of-input
+
+Backtrace:
+005_PluginManager.rb:635:in `eval'
+005_PluginManager.rb:635:in `block (2 levels) in runPlugins'
+005_PluginManager.rb:625:in `each'
+005_PluginManager.rb:625:in `block in runPlugins'
+005_PluginManager.rb:616:in `each'
+005_PluginManager.rb:616:in `runPlugins'
+999_Main.rb:35:in `mainFunctionDebug'
+999_Main.rb:19:in `block in mainFunction'
+003_Errors.rb:79:in `pbCriticalCode'
+999_Main.rb:19:in `mainFunction'
+
+=================
+
+[2024-01-21 16:51:33 -0700]
+[Pokémon Essentials version 21.1]
+
+Error in Plugin: [TAoA Core]
+Exception: LoadError
+Message: cannot load such file -- table
+
+Backtrace:
+[TAoA Core] 001_CommonTiles.rb:44:in `require'
+[TAoA Core] 001_CommonTiles.rb:44:in `<main>'
+005_PluginManager.rb:635:in `eval'
+005_PluginManager.rb:635:in `block (2 levels) in runPlugins'
+005_PluginManager.rb:625:in `each'
+005_PluginManager.rb:625:in `block in runPlugins'
+005_PluginManager.rb:616:in `each'
+005_PluginManager.rb:616:in `runPlugins'
+999_Main.rb:35:in `mainFunctionDebug'
+999_Main.rb:19:in `block in mainFunction'
+
+=================
+
+[2024-01-24 01:26:16 -0700]
+[Pokémon Essentials version 21.1]
+[v21.1 Hotfixes 1.0.6]
+
+Script error in event 2 (coords 22,13), map 97 (Mare Tranquillitatis)
+Exception: NoMethodError
+Message: undefined method `pbCameraScrollDirection' for #<Interpreter @event_id: 2>
+
+***Full script:
+pbCameraScrollDirection(8, 4, 0.17)
+
+Backtrace:
+(eval):1:in `execute_script'
+003_Interpreter.rb:140:in `eval'
+003_Interpreter.rb:140:in `execute_script'
+004_Interpreter_Commands.rb:1177:in `command_355'
+004_Interpreter_Commands.rb:116:in `execute_command'
+003_Interpreter.rb:132:in `block in update'
+003_Interpreter.rb:86:in `loop'
+003_Interpreter.rb:86:in `update'
+002_Scene_Map.rb:167:in `block in update'
+002_Scene_Map.rb:166:in `loop'
+
+=================
+
+[2024-01-25 11:20:06 -0700]
+[Pokémon Essentials version 21.1]
+[v21.1 Hotfixes 1.0.6]
+
+Exception: NoMethodError
+Message: undefined method `bmp' for #<Sprite>
+
+Backtrace:
+[Marin's Common Tiles] 001_CommonTiles.rb:96:in `initialize'
+[Marin's Common Tiles] 001_CommonTiles.rb:24:in `new'
+[Marin's Common Tiles] 001_CommonTiles.rb:24:in `pbTilesetEditor'
+[Marin's Common Tiles] 001_CommonTiles.rb:32:in `block (2 levels) in <main>'
+002_MessageConfig.rb:575:in `pbFadeOutIn'
+[Marin's Common Tiles] 001_CommonTiles.rb:32:in `block in <main>'
+006_Event_HandlerCollections.rb:121:in `call'
+001_Debug_Menus.rb:138:in `block in pbDebugMenu'
+001_Debug_Menus.rb:100:in `loop'
+001_Debug_Menus.rb:100:in `pbDebugMenu'
+
+=================
+
+[2024-01-25 12:02:18 -0700]
+[Pokémon Essentials version 21.1]
+[v21.1 Hotfixes 1.0.6]
+
+Exception: NameError
+Message: uninitialized constant PokemonTemp
+
+Backtrace:
+[Touhoumon Essentials Development Kit] 999_Main.rb:10:in `pbCallTitle'
+999_Main.rb:41:in `mainFunctionDebug'
+999_Main.rb:19:in `block in mainFunction'
+003_Errors.rb:79:in `pbCriticalCode'
+999_Main.rb:19:in `mainFunction'
+999_Main.rb:52:in `block (2 levels) in load_scripts_from_folder'
+999_Main.rb:51:in `loop'
+999_Main.rb:51:in `block in load_scripts_from_folder'
+Main:35:in `eval'
+Main:35:in `block in load_scripts_from_folder'
+
+=================
+
+[2024-01-25 12:05:41 -0700]
+[Pokémon Essentials version 21.1]
+[v21.1 Hotfixes 1.0.6]
+
+Exception: NoMethodError
+Message: undefined method `randBatt=' for nil:NilClass
+
+Backtrace:
+[TAoA Core] 004_RandFieldTrainer.rb:16:in `pbRandBattCancel'
+[TAoA Core] 004_RandFieldTrainer.rb:48:in `block in <main>'
+005_Event_Handlers.rb:89:in `block in trigger'
+005_Event_Handlers.rb:89:in `each_value'
+005_Event_Handlers.rb:89:in `trigger'
+006_Event_HandlerCollections.rb:63:in `trigger'
+005_Game_MapFactory.rb:143:in `setMapChanging'
+005_Game_MapFactory.rb:22:in `setup'
+001_StartGame.rb:82:in `load_map'
+001_StartGame.rb:68:in `load'
+
+=================
+
+[2024-01-25 12:06:22 -0700]
+[Pokémon Essentials version 21.1]
+[v21.1 Hotfixes 1.0.6]
+
+Exception: NoMethodError
+Message: undefined method `randBatt=' for nil:NilClass
+
+Backtrace:
+[TAoA Core] 004_RandFieldTrainer.rb:16:in `pbRandBattCancel'
+[TAoA Core] 004_RandFieldTrainer.rb:48:in `block in <main>'
+005_Event_Handlers.rb:89:in `block in trigger'
+005_Event_Handlers.rb:89:in `each_value'
+005_Event_Handlers.rb:89:in `trigger'
+006_Event_HandlerCollections.rb:63:in `trigger'
+005_Game_MapFactory.rb:143:in `setMapChanging'
+005_Game_MapFactory.rb:22:in `setup'
+001_StartGame.rb:82:in `load_map'
+001_StartGame.rb:68:in `load'
+
+=================
+
+[2024-01-25 12:10:39 -0700]
+[Pokémon Essentials version 21.1]
+[v21.1 Hotfixes 1.0.6]
+
+Exception: RuntimeError
+Message: 'GHOST18' is not a defined type (type NORMAL, Immunities).
+
+Backtrace:
+[v21.1 Hotfixes] Compiler bug fixes.rb:75:in `block (2 levels) in validate_all_compiled_types'
+[v21.1 Hotfixes] Compiler bug fixes.rb:73:in `each'
+[v21.1 Hotfixes] Compiler bug fixes.rb:73:in `block in validate_all_compiled_types'
+001_GameData.rb:125:in `block in each'
+001_GameData.rb:125:in `each_value'
+001_GameData.rb:125:in `each'
+[v21.1 Hotfixes] Compiler bug fixes.rb:63:in `validate_all_compiled_types'
+002_Compiler_CompilePBS.rb:145:in `block in compile_types'
+002_Compiler_CompilePBS.rb:65:in `compile_PBS_file_generic'
+002_Compiler_CompilePBS.rb:144:in `compile_types'
+
+=================
+
+[2024-01-25 12:10:44 -0700]
+[Pokémon Essentials version 21.1]
+[v21.1 Hotfixes 1.0.6]
+
+Exception: RuntimeError
+Message: Unknown exception when compiling.
+
+Backtrace:
+001_Compiler.rb:1114:in `rescue in main'
+001_Compiler.rb:1041:in `main'
+999_Main.rb:36:in `mainFunctionDebug'
+999_Main.rb:19:in `block in mainFunction'
+003_Errors.rb:79:in `pbCriticalCode'
+999_Main.rb:19:in `mainFunction'
+999_Main.rb:52:in `block (2 levels) in load_scripts_from_folder'
+999_Main.rb:51:in `loop'
+999_Main.rb:51:in `block in load_scripts_from_folder'
+Main:35:in `eval'
+
+=================
+
+[2024-01-25 12:11:14 -0700]
+[Pokémon Essentials version 21.1]
+[v21.1 Hotfixes 1.0.6]
+
+Exception: RuntimeError
+Message: Undefined value CRUMIA in GameData::Species.
+File PBS/pokemon_metrics.txt, section CRUMIA, key SectionName
+
+
+
+
+Backtrace:
+001_Compiler.rb:454:in `checkEnumField'
+[v21.1 Hotfixes] Compiler bug fixes.rb:53:in `cast_csv_value'
+001_Compiler.rb:724:in `block (2 levels) in get_csv_record'
+001_Compiler.rb:710:in `each'
+001_Compiler.rb:710:in `block in get_csv_record'
+001_Compiler.rb:708:in `loop'
+001_Compiler.rb:708:in `get_csv_record'
+002_Compiler_CompilePBS.rb:34:in `block (4 levels) in compile_PBS_file_generic'
+002_Compiler_CompilePBS.rb:31:in `each_key'
+002_Compiler_CompilePBS.rb:31:in `block (3 levels) in compile_PBS_file_generic'
+
+=================
+
+[2024-01-25 12:11:17 -0700]
+[Pokémon Essentials version 21.1]
+[v21.1 Hotfixes 1.0.6]
+
+Exception: RuntimeError
+Message: Unknown exception when compiling.
+
+Backtrace:
+001_Compiler.rb:1114:in `rescue in main'
+001_Compiler.rb:1041:in `main'
+999_Main.rb:36:in `mainFunctionDebug'
+999_Main.rb:19:in `block in mainFunction'
+003_Errors.rb:79:in `pbCriticalCode'
+999_Main.rb:19:in `mainFunction'
+999_Main.rb:52:in `block (2 levels) in load_scripts_from_folder'
+999_Main.rb:51:in `loop'
+999_Main.rb:51:in `block in load_scripts_from_folder'
+Main:35:in `eval'
+
+=================
+
+[2024-01-25 12:11:35 -0700]
+[Pokémon Essentials version 21.1]
+[v21.1 Hotfixes 1.0.6]
+
+Exception: RuntimeError
+Message: Undefined value CRUMIA in GameData::Species.
+File PBS/pokemon_metrics.txt, section CRUMIA, key SectionName
+
+
+
+
+Backtrace:
+001_Compiler.rb:454:in `checkEnumField'
+[v21.1 Hotfixes] Compiler bug fixes.rb:53:in `cast_csv_value'
+001_Compiler.rb:724:in `block (2 levels) in get_csv_record'
+001_Compiler.rb:710:in `each'
+001_Compiler.rb:710:in `block in get_csv_record'
+001_Compiler.rb:708:in `loop'
+001_Compiler.rb:708:in `get_csv_record'
+002_Compiler_CompilePBS.rb:34:in `block (4 levels) in compile_PBS_file_generic'
+002_Compiler_CompilePBS.rb:31:in `each_key'
+002_Compiler_CompilePBS.rb:31:in `block (3 levels) in compile_PBS_file_generic'
+
+=================
+
+[2024-01-25 12:11:38 -0700]
+[Pokémon Essentials version 21.1]
+[v21.1 Hotfixes 1.0.6]
+
+Exception: RuntimeError
+Message: Unknown exception when compiling.
+
+Backtrace:
+001_Compiler.rb:1114:in `rescue in main'
+001_Compiler.rb:1041:in `main'
+999_Main.rb:36:in `mainFunctionDebug'
+999_Main.rb:19:in `block in mainFunction'
+003_Errors.rb:79:in `pbCriticalCode'
+999_Main.rb:19:in `mainFunction'
+999_Main.rb:52:in `block (2 levels) in load_scripts_from_folder'
+999_Main.rb:51:in `loop'
+999_Main.rb:51:in `block in load_scripts_from_folder'
+Main:35:in `eval'
+
+=================
+
+[2024-01-25 12:11:52 -0700]
+[Pokémon Essentials version 21.1]
+[v21.1 Hotfixes 1.0.6]
+
+Exception: RuntimeError
+Message: Undefined value RIKAKO in GameData::Species.
+File PBS/trainers.txt, section ABYSSALSOVEREIGN,Amira Naxeroth
+[ABYSSALSOVEREIGN,Amira Naxeroth]
+
+
+
+Backtrace:
+001_Compiler.rb:454:in `checkEnumField'
+[v21.1 Hotfixes] Compiler bug fixes.rb:53:in `cast_csv_value'
+001_Compiler.rb:724:in `block (2 levels) in get_csv_record'
+001_Compiler.rb:710:in `each'
+001_Compiler.rb:710:in `block in get_csv_record'
+001_Compiler.rb:708:in `loop'
+001_Compiler.rb:708:in `get_csv_record'
+002_Compiler_CompilePBS.rb:833:in `block (2 levels) in compile_trainers'
+001_Compiler.rb:244:in `block (2 levels) in pbCompilerEachPreppedLine'
+001_Compiler.rb:236:in `each_line'
+
+=================
+
+[2024-01-25 12:11:56 -0700]
+[Pokémon Essentials version 21.1]
+[v21.1 Hotfixes 1.0.6]
+
+Exception: RuntimeError
+Message: Unknown exception when compiling.
+
+Backtrace:
+001_Compiler.rb:1114:in `rescue in main'
+001_Compiler.rb:1041:in `main'
+999_Main.rb:36:in `mainFunctionDebug'
+999_Main.rb:19:in `block in mainFunction'
+003_Errors.rb:79:in `pbCriticalCode'
+999_Main.rb:19:in `mainFunction'
+999_Main.rb:52:in `block (2 levels) in load_scripts_from_folder'
+999_Main.rb:51:in `loop'
+999_Main.rb:51:in `block in load_scripts_from_folder'
+Main:35:in `eval'
+
+=================
+
+[2024-01-25 12:12:09 -0700]
+[Pokémon Essentials version 21.1]
+[v21.1 Hotfixes 1.0.6]
+
+Exception: NameError
+Message: uninitialized constant PokemonTemp
+
+Backtrace:
+999_Main.rb:12:in `pbCallTitle'
+999_Main.rb:41:in `mainFunctionDebug'
+999_Main.rb:19:in `block in mainFunction'
+003_Errors.rb:79:in `pbCriticalCode'
+999_Main.rb:19:in `mainFunction'
+999_Main.rb:52:in `block (2 levels) in load_scripts_from_folder'
+999_Main.rb:51:in `loop'
+999_Main.rb:51:in `block in load_scripts_from_folder'
+Main:35:in `eval'
+Main:35:in `block in load_scripts_from_folder'
+
+=================
+
+[2024-01-25 12:12:39 -0700]
+[Pokémon Essentials version 21.1]
+[v21.1 Hotfixes 1.0.6]
+
+Exception: NameError
+Message: uninitialized constant PokemonTemp
+
+Backtrace:
+[TAoA Core] 999_Main.rb:10:in `pbCallTitle'
+999_Main.rb:41:in `mainFunctionDebug'
+999_Main.rb:19:in `block in mainFunction'
+003_Errors.rb:79:in `pbCriticalCode'
+999_Main.rb:19:in `mainFunction'
+999_Main.rb:52:in `block (2 levels) in load_scripts_from_folder'
+999_Main.rb:51:in `loop'
+999_Main.rb:51:in `block in load_scripts_from_folder'
+Main:35:in `eval'
+Main:35:in `block in load_scripts_from_folder'
+
+=================
+
+[2024-01-25 12:12:44 -0700]
+[Pokémon Essentials version 21.1]
+[v21.1 Hotfixes 1.0.6]
+
+Exception: NameError
+Message: uninitialized constant PokemonTemp
+
+Backtrace:
+[TAoA Core] 999_Main.rb:10:in `pbCallTitle'
+999_Main.rb:41:in `mainFunctionDebug'
+999_Main.rb:19:in `block in mainFunction'
+003_Errors.rb:79:in `pbCriticalCode'
+999_Main.rb:19:in `mainFunction'
+999_Main.rb:52:in `block (2 levels) in load_scripts_from_folder'
+999_Main.rb:51:in `loop'
+999_Main.rb:51:in `block in load_scripts_from_folder'
+Main:35:in `eval'
+Main:35:in `block in load_scripts_from_folder'
+
+=================
+
+[2024-01-25 12:21:30 -0700]
+[Pokémon Essentials version 21.1]
+[v21.1 Hotfixes 1.0.6]
+
+Exception: RuntimeError
+Message: Undefined value HumanshapeP in GameData::EggGroup.
+File PBS/pokemon_thmn.txt, section CREIMU, key EggGroups
+HumanshapeP,FlyingP
+
+
+
+Backtrace:
+001_Compiler.rb:454:in `checkEnumField'
+[v21.1 Hotfixes] Compiler bug fixes.rb:53:in `cast_csv_value'
+001_Compiler.rb:724:in `block (2 levels) in get_csv_record'
+001_Compiler.rb:710:in `each'
+001_Compiler.rb:710:in `block in get_csv_record'
+001_Compiler.rb:708:in `loop'
+001_Compiler.rb:708:in `get_csv_record'
+002_Compiler_CompilePBS.rb:49:in `block (4 levels) in compile_PBS_file_generic'
+002_Compiler_CompilePBS.rb:31:in `each_key'
+002_Compiler_CompilePBS.rb:31:in `block (3 levels) in compile_PBS_file_generic'
+
+=================
+
+[2024-01-25 12:21:32 -0700]
+[Pokémon Essentials version 21.1]
+[v21.1 Hotfixes 1.0.6]
+
+Exception: RuntimeError
+Message: Unknown exception when compiling.
+
+Backtrace:
+001_Compiler.rb:1114:in `rescue in main'
+001_Compiler.rb:1041:in `main'
+999_Main.rb:36:in `mainFunctionDebug'
+999_Main.rb:19:in `block in mainFunction'
+003_Errors.rb:79:in `pbCriticalCode'
+999_Main.rb:19:in `mainFunction'
+999_Main.rb:52:in `block (2 levels) in load_scripts_from_folder'
+999_Main.rb:51:in `loop'
+999_Main.rb:51:in `block in load_scripts_from_folder'
+Main:35:in `eval'
+
+=================
+
+[2024-01-25 12:21:46 -0700]
+[Pokémon Essentials version 21.1]
+[v21.1 Hotfixes 1.0.6]
+
+Exception: RuntimeError
+Message: Undefined value HumanshapeP in GameData::EggGroup.
+File PBS/pokemon_thmn.txt, section CREIMU, key EggGroups
+HumanshapeP,FlyingP
+
+
+
+Backtrace:
+001_Compiler.rb:454:in `checkEnumField'
+[v21.1 Hotfixes] Compiler bug fixes.rb:53:in `cast_csv_value'
+001_Compiler.rb:724:in `block (2 levels) in get_csv_record'
+001_Compiler.rb:710:in `each'
+001_Compiler.rb:710:in `block in get_csv_record'
+001_Compiler.rb:708:in `loop'
+001_Compiler.rb:708:in `get_csv_record'
+002_Compiler_CompilePBS.rb:49:in `block (4 levels) in compile_PBS_file_generic'
+002_Compiler_CompilePBS.rb:31:in `each_key'
+002_Compiler_CompilePBS.rb:31:in `block (3 levels) in compile_PBS_file_generic'
+
+=================
+
+[2024-01-25 12:21:50 -0700]
+[Pokémon Essentials version 21.1]
+[v21.1 Hotfixes 1.0.6]
+
+Exception: RuntimeError
+Message: Unknown exception when compiling.
+
+Backtrace:
+001_Compiler.rb:1114:in `rescue in main'
+001_Compiler.rb:1041:in `main'
+999_Main.rb:36:in `mainFunctionDebug'
+999_Main.rb:19:in `block in mainFunction'
+003_Errors.rb:79:in `pbCriticalCode'
+999_Main.rb:19:in `mainFunction'
+999_Main.rb:52:in `block (2 levels) in load_scripts_from_folder'
+999_Main.rb:51:in `loop'
+999_Main.rb:51:in `block in load_scripts_from_folder'
+Main:35:in `eval'
+
+=================
+
+[2024-01-25 12:22:01 -0700]
+[Pokémon Essentials version 21.1]
+[v21.1 Hotfixes 1.0.6]
+
+Exception: RuntimeError
+Message: Undefined value HumanshapeP in GameData::EggGroup.
+File PBS/pokemon_thmn.txt, section CREIMU, key EggGroups
+HumanshapeP,FlyingP
+
+
+
+Backtrace:
+001_Compiler.rb:454:in `checkEnumField'
+[v21.1 Hotfixes] Compiler bug fixes.rb:53:in `cast_csv_value'
+001_Compiler.rb:724:in `block (2 levels) in get_csv_record'
+001_Compiler.rb:710:in `each'
+001_Compiler.rb:710:in `block in get_csv_record'
+001_Compiler.rb:708:in `loop'
+001_Compiler.rb:708:in `get_csv_record'
+002_Compiler_CompilePBS.rb:49:in `block (4 levels) in compile_PBS_file_generic'
+002_Compiler_CompilePBS.rb:31:in `each_key'
+002_Compiler_CompilePBS.rb:31:in `block (3 levels) in compile_PBS_file_generic'
+
+=================
+
+[2024-01-25 12:22:07 -0700]
+[Pokémon Essentials version 21.1]
+[v21.1 Hotfixes 1.0.6]
+
+Exception: RuntimeError
+Message: Unknown exception when compiling.
+
+Backtrace:
+001_Compiler.rb:1114:in `rescue in main'
+001_Compiler.rb:1041:in `main'
+999_Main.rb:36:in `mainFunctionDebug'
+999_Main.rb:19:in `block in mainFunction'
+003_Errors.rb:79:in `pbCriticalCode'
+999_Main.rb:19:in `mainFunction'
+999_Main.rb:52:in `block (2 levels) in load_scripts_from_folder'
+999_Main.rb:51:in `loop'
+999_Main.rb:51:in `block in load_scripts_from_folder'
+Main:35:in `eval'
+
+=================
+
+[2024-01-25 12:27:30 -0700]
+[Pokémon Essentials version 21.1]
+[v21.1 Hotfixes 1.0.6]
+
+Exception: RuntimeError
+Message: Unknown ID 127.
+
+Backtrace:
+001_GameData.rb:176:in `get'
+[TAoA Core] 002_Overworld_Time.rb:18:in `pbGetTimeNow'
+[Voltseon's Pause Menu] 004_VoltseonMenu_Components.rb:186:in `update'
+[Voltseon's Pause Menu] 002_VoltseonMenu_Main.rb:228:in `block (2 levels) in update'
+[Voltseon's Pause Menu] 002_VoltseonMenu_Main.rb:228:in `each'
+[Voltseon's Pause Menu] 002_VoltseonMenu_Main.rb:228:in `block in update'
+[Voltseon's Pause Menu] 002_VoltseonMenu_Main.rb:224:in `loop'
+[Voltseon's Pause Menu] 002_VoltseonMenu_Main.rb:224:in `update'
+[Voltseon's Pause Menu] 002_VoltseonMenu_Main.rb:302:in `pbStartPokemonMenu'
+[Voltseon's Pause Menu] 002_VoltseonMenu_Main.rb:293:in `call_menu'

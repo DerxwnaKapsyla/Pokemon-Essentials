@@ -67717,8 +67717,77 @@ Move Animation
 Trigger: Action Button
 
 List of Event Commands:
-@>Set Move Route: Player
- :              : $>Always on Top OFF
+@>Play SE: 'Exit Door', 80, 100
+@>Change Screen Color Tone: (-255,-255,-255,0), @6
+@>Wait: 8 frame(s)
+@>Transfer Player:[097: Mare Tranquillitatis], (027,014), No Fade
+@>Change Screen Color Tone: (0,0,0,0), @6
+@>
+
+#------------------------------------------------------------------------------
+Event ID: 048
+Event Name: EV048
+(X,Y): (071,057)
+
+Page #1
+Conditions
+None
+
+Autonomous Movement
+Type: Fixed
+Speed: 3: Slow
+Freq: 3: Low
+Options Enabled
+Move Animation
+Trigger: Action Button
+
+List of Event Commands:
+@>Script: pbCameraScrollDirection(8, 4, 0.15)
+@>Text: e
+@>Script: pbCameraSpeed(1)
+:       : pbCameraShake(6)
+@>
+
+#------------------------------------------------------------------------------
+Event ID: 049
+Event Name: size(1,3)
+(X,Y): (071,061)
+
+Page #1
+Conditions
+None
+
+Autonomous Movement
+Type: Fixed
+Speed: 3: Slow
+Freq: 3: Low
+Options Enabled
+Move Animation
+Trigger: Event Touch
+
+List of Event Commands:
+@>Script: pbBridgeOn
+@>
+
+#------------------------------------------------------------------------------
+Event ID: 050
+Event Name: size(1,3)
+(X,Y): (072,060)
+
+Page #1
+Conditions
+None
+
+Autonomous Movement
+Type: Fixed
+Speed: 3: Slow
+Freq: 3: Low
+Options Enabled
+Move Animation
+Trigger: Event Touch
+
+List of Event Commands:
+@>Script: pbBridgeOff
 @>
 
 #------------------------------------------------------------------------------
@@ -70274,6 +70343,7 @@ Move Animation
 Trigger: Action Button
 
 List of Event Commands:
+@>Text: We need to stand firm and protect the palace!
 @>
 
 #------------------------------------------------------------------------------
@@ -70296,6 +70366,7 @@ Move Animation
 Trigger: Action Button
 
 List of Event Commands:
+@>Text: We need to stand firm and protect the palace!
 @>
 
 #------------------------------------------------------------------------------
@@ -70318,6 +70389,7 @@ Move Animation
 Trigger: Action Button
 
 List of Event Commands:
+@>Text: We need to stand firm and protect the palace!
 @>
 
 #------------------------------------------------------------------------------
@@ -70340,6 +70412,7 @@ Move Animation
 Trigger: Action Button
 
 List of Event Commands:
+@>Text: We need to stand firm and protect the palace!
 @>
 
 #------------------------------------------------------------------------------
@@ -70358,7 +70431,7 @@ Event Name: Sagume
 
 Page #1
 Conditions
-None
+Variable 0121: TKoL Plot Variable is 13 or above
 
 Graphic: Person_Sagume
 
@@ -70407,9 +70480,27 @@ List of Event Commands:
 @>Text: \xn[???]But why would she send a human...-\wtnp[1]
 @>Text: Lady Sagume! Lady Sagume! We have big trouble brewing!
 @>Show Animation: [Sagume], [Exclaim bubble]
-@>Comment: (insert rabbit running up from off screen here)
- :       : (Insert a wait for movement to finish check)
- :       : (Turn player toward rabbit's direction)
+@>Set Move Route: [Sagume]
+ :              : $>Turn Right
+@>Set Move Route: Player
+ :              : $>Turn Right
+@>Set Event Location: [Off-Screen Rabbit],(018,016), Up
+@>Set Move Route: [Off-Screen Rabbit]
+ :              : $>Change Speed: 6
+ :              : $>Change Opacity: 255
+ :              : $>Move Up
+ :              : $>Move Up
+ :              : $>Move Up
+ :              : $>Move Up
+ :              : $>Move Up
+ :              : $>Move Up
+ :              : $>Move Up
+ :              : $>Move Up
+ :              : $>Move Up
+ :              : $>Move Left
+ :              : $>Move Left
+ :              : $>Move Left
+@>Wait for Move's Completion
 @>Text: \xn[Sagume]What is the issue?
 @>Text: The Hell Fairies have arrived with a massive army! They're
  :    : swarming the road to the Palace, and we're at risk of being
@@ -70419,12 +70510,72 @@ List of Event Commands:
 @>Text: \xn[Sagume]Gather up the reserve forces and reinforce the
  :    : Palace! I shall join anon!
 @>Text: Ma'am! Yes Ma'am!
-@>Comment: (Rabbit run off screen, make vanish)
- :       : (Sagume turns back to the player)
+@>Set Move Route: [Off-Screen Rabbit]
+ :              : $>Change Speed: 6
+ :              : $>Change Opacity: 255
+ :              : $>Move Right
+ :              : $>Move Right
+ :              : $>Move Right
+ :              : $>Move Down
+ :              : $>Move Down
+ :              : $>Move Down
+ :              : $>Move Down
+ :              : $>Move Down
+ :              : $>Move Down
+ :              : $>Move Down
+ :              : $>Move Down
+ :              : $>Move Down
+ :              : $>Change Opacity: 0
+@>Wait for Move's Completion
+@>Set Move Route: [Sagume]
+ :              : $>Turn toward Player
 @>Text: \xn[Sagume]You will be coming with me. You are not to leave my
  :    : side, understood?
+@>Conditional Branch: This event is facing Down
+ @>Set Move Route: Player
+  :              : $>Turn Up
+ @>
+: Else
+ @>Conditional Branch: This event is facing Right
+  @>Set Move Route: Player
+   :              : $>Turn Left
+  @>
+ : Else
+  @>Conditional Branch: This event is facing Up
+   @>Set Move Route: Player
+    :              : $>Turn Down
+   @>
+  : Else
+   @>Set Move Route: Player
+    :              : $>Turn Down
+   @>
+  : Branch End
+  @>
+ : Branch End
+ @>
+: Branch End
 @>Text: \xn[\pn]I don't think I can decline this... But if it means I can finally
  :    : get some answers!
+@>Text: \xn[Sagume]Yes, all will be made clear.
+@>Change Screen Color Tone: (-255,-255,-255,0), @6
+@>Wait: 8 frame(s)
+@>Control Variables: [0121: TKoL Plot Variable] = 14
+@>Change Screen Color Tone: (0,0,0,0), @6
+@>
+
+Page #2
+Conditions
+Variable 0121: TKoL Plot Variable is 14 or above
+
+Autonomous Movement
+Type: Fixed
+Speed: 3: Slow
+Freq: 3: Low
+Options Enabled
+Move Animation
+Trigger: Action Button
+
+List of Event Commands:
 @>
 
 #------------------------------------------------------------------------------
@@ -70941,6 +71092,70 @@ List of Event Commands:
  @>Text: After every battle, your party will be healed automatically.
  @>
 : Branch End
+@>
+
+#------------------------------------------------------------------------------
+Event ID: 024
+Event Name: Off-Screen Rabbit
+(X,Y): (000,029)
+
+Page #1
+Conditions
+None
+
+Graphic: TPDP_NPC 54
+
+Autonomous Movement
+Type: Fixed
+Speed: 3: Slow
+Freq: 3: Low
+Options Enabled
+Move Animation
+Trigger: Action Button
+
+List of Event Commands:
+@>
+
+#------------------------------------------------------------------------------
+Event ID: 025
+Event Name: size(4,1)
+(X,Y): (010,026)
+
+Page #1
+Conditions
+Variable 0121: TKoL Plot Variable is 14 or above
+
+Autonomous Movement
+Type: Fixed
+Speed: 3: Slow
+Freq: 3: Low
+Options Enabled
+Move Animation
+Trigger: Player Touch
+
+List of Event Commands:
+@>Text: \w[dark]After you leave the Puppet Center, you will be forced to
+ :    : engage in a series of battles.
+@>Text: \w[dark]If you are not ready, you may train within the Lunarian
+ :    : Training Simulator.
+@>Text: \w[dark]Otherwise, step outside the Puppet Center when you
+ :    : are ready to proceed.
+@>Control Self Switch: A =ON
+@>
+
+Page #2
+Conditions
+Self Switch A is ON
+
+Autonomous Movement
+Type: Fixed
+Speed: 3: Slow
+Freq: 3: Low
+Options Enabled
+Move Animation
+Trigger: Action Button
+
+List of Event Commands:
 @>
 
 #------------------------------------------------------------------------------
@@ -71647,14 +71862,1368 @@ List of Event Commands:
 #==============================================================================
 Map ID: 096
 Map Name: Mare Marginis
-Tileset: 004: Poke Center
+Tileset: 042: The Moon
 Width: 20, Height: 15
 
 #==============================================================================
 Map ID: 097
 Map Name: Mare Tranquillitatis
-Tileset: 004: Poke Center
-Width: 20, Height: 15
+Tileset: 042: The Moon
+Width: 56, Height: 49
+Auto-Change BGM: Sea Reflecting
+
+#------------------------------------------------------------------------------
+Event ID: 001
+Event Name: Junko
+(X,Y): (027,007)
+
+Page #1
+Conditions
+None
+
+Graphic: Person_Junko
+
+Autonomous Movement
+Type: Fixed
+Speed: 3: Slow
+Freq: 3: Low
+Options Enabled
+Move Animation
+Trigger: Action Button
+
+List of Event Commands:
+@>
+
+Page #2
+Conditions
+Switch 0142: Junko Descends is ON
+
+Graphic: Person_Junko_Alt
+
+Autonomous Movement
+Type: Custom
+Custom Move Route:
+(Repeat Action)
+$>Wait: 5 frame(s)
+$>Graphic: "Person_Junko_Alt', 0, 2, 1
+$>Wait: 5 frame(s)
+$>Graphic: "Person_Junko_Alt', 0, 2, 2
+$>Wait: 5 frame(s)
+$>Graphic: "Person_Junko_Alt', 0, 2, 3
+$>Wait: 5 frame(s)
+$>Graphic: "Person_Junko_Alt', 0, 2, 0
+
+Speed: 3: Slow
+Freq: 6: Highest
+Options Enabled
+Move Animation
+Trigger: Action Button
+
+List of Event Commands:
+@>
+
+#------------------------------------------------------------------------------
+Event ID: 002
+Event Name: size(8,1)
+(X,Y): (022,013)
+
+Page #1
+Conditions
+None
+
+Autonomous Movement
+Type: Fixed
+Speed: 3: Slow
+Freq: 3: Low
+Options Enabled
+Move Animation
+Trigger: Player Touch
+
+List of Event Commands:
+@>Set Move Route: Player
+ :              : $>Change Speed: 3
+ :              : $>Move Up
+ :              : $>Move Up
+ :              : $>Move Up
+@>Wait for Move's Completion
+@>Wait: 10 frame(s)
+@>Text: \xn[???]All of my best laid countermeasures, you overcame
+ :    : every single one of them.
+@>Text: \xn[???]'Tis truly a shame, my nemesis was nearly within my
+ :    : reach... I could almost taste the blood I would have drawn.
+@>Text: \xn[\pn]You... Are you the one who has orchestrated the
+ :    : invasion of the Lunar Capital? The one that the fairies refer
+ :    : to as their "Honorable Friend"?
+@>Text: \xn[???]Not once could I have forseen that an Earthling would
+ :    : have come to the defense of the Capital.
+@>Text: \xn[???]Given their absolute abhorance for impurity, to resort
+ :    : to such measures... truly, I have underestimated them.
+@>Text: \xn[???]I shall concede this battle to them. But my war is far,
+ :    : <i>far</i> from over.
+@>Text: \xn[\pn]Your... war?
+@>Wait: 15 frame(s)
+@>Set Move Route: [Junko]
+ :              : $>Turn Down
+@>Text: \xn[???]I am Junko. A sagacious spirit, one that bears ill will to
+ :    : all the inhabitants of the Lunar Capital...
+@>Text: \xn[???]As well as their\..\..\.. <c2=043c3aff><i><b>vile</b></i></c2> 
+ :    : Goddess, Chang'e.
+@>Text: \xn[\pn]\b(Sheesh... I could just feel the venom dripping from her
+ :    : voice with how she said that.)
+@>Text: \xn[Junko]So long as she breathes, my fury shall never be 
+ :    : quenched.
+@>Text: \xn[Junko]But I will admit defeat here- fate has already decided
+ :    : as such.
+@>Text: \xn[\pn]So uh, if you're admitting defeat... does that mean you'll
+ :    : go- quietly, preferably?
+@>Text: \xn[Junko]If I am being frank, my will to fight a battle
+ :    : I know I've lost has vanished...
+@>Wait: 10 frame(s)
+@>Text: \xn[Junko]...However, I shall at least show you some
+ :    : hospitality for arriving here.
+@>Text: \xn[Junko]It is only polite, is it not?
+@>Text: \xn[\pn]\b(I really should know better by now...)
+@>Set Move Route: [Junko]
+ :              : $>Direction Fix ON
+ :              : $>Move Animation OFF
+ :              : $>Through ON
+ :              : $>Change Speed: 3
+ :              : $>Move Up
+ :              : $>Move Up
+ :              : $>Move Up
+ :              : $>Move Up
+@>Script: pbCameraScrollDirection(8, 4, 0.17)
+@>Text: \xn[Junko]As I said before, the battle may be lost, but ever shall
+ :    : my war continue.\wtnp[20]
+@>Wait for Move's Completion
+@>Fade Out BGM: 2 sec.
+@>Text: \xn[Junko]For I cannot rest... No, not until my vengance is 
+ :    : realized.\wtnp[20]
+@>Text: \xn[Junko]\l[3]Not until the fury I've purified within my own
+ :    : heart can be brought to bear against her!\wt[10] Chang'e!\wtnp[20]
+@>Play SE: 'Vs flash', 80, 70
+@>Screen Flash: (255,255,255,255), @10
+@>Control Switches: [0142: Junko Descends] = ON
+@>Play SE: 'Mining collapse', 80, 50
+@>Script: pbCameraSpeed(1)
+:       : pbCameraShake(6)
+@>Play BGM: 'Pure Furies', 100, 100
+@>Control Switches: [0104: Transition Handler] = ON
+@>Control Variables: [0103: Vs. Transition ID] = 46
+@>Control Variables: [0104: Vs. Transition - Pkmn] = 6
+@>Wait: 2 frame(s)
+@>Show Animation: Player, [Exclaim bubble]
+@>Change Text Options: Middle, Show
+@>Text: \w[dark]\l[2]Though she now lives on another heavenly body, and I
+ :    : am unable to meet with her...\wtnp[30]
+@>Text: \w[dark]\l[2]Even if we are unable to dwell together under 
+ :    : Heaven, my hatred alone wll be refined!\wtnp[30]
+@>Text: \w[dark]\l[2]Now, show me!\wt[10] Show me what an Earthling
+ :    : who is risking her life is capable of!\wtnp[30]
+@>Text: \w[dark]\l[2]And behold!\wt[10] This pristine spiritual force that
+ :    : rejects life and death!\wtnp[30]
+@>Control Self Switch: A =ON
+@>Change Battle BGM: 'Pure Furies', 100, 100
+@>Script: setBattleRule("backdrop", "starlightJunko")
+@>Script: TrainerBattle.start(:JUNKO, "Junko")
+@>
+
+Page #2
+Conditions
+Self Switch A is ON
+
+Autonomous Movement
+Type: Fixed
+Speed: 3: Slow
+Freq: 3: Low
+Options Enabled
+Move Animation
+Trigger: Action Button
+
+List of Event Commands:
+@>
+
+#------------------------------------------------------------------------------
+Event ID: 003
+Event Name: EV003
+(X,Y): (054,014)
+
+Page #1
+Conditions
+None
+
+Graphic: Person_Junko_Alt
+
+Autonomous Movement
+Type: Custom
+Custom Move Route:
+(Repeat Action)
+$>Wait: 5 frame(s)
+$>Graphic: "Person_Junko_Alt', 0, 2, 1
+$>Wait: 5 frame(s)
+$>Graphic: "Person_Junko_Alt', 0, 2, 2
+$>Wait: 5 frame(s)
+$>Graphic: "Person_Junko_Alt', 0, 2, 3
+$>Wait: 5 frame(s)
+$>Graphic: "Person_Junko_Alt', 0, 2, 0
+
+Speed: 3: Slow
+Freq: 6: Highest
+Options Enabled
+Move Animation
+Trigger: Action Button
+
+List of Event Commands:
+@>
+
+#------------------------------------------------------------------------------
+Event ID: 004
+Event Name: FlyingRock1 update
+(X,Y): (000,010)
+
+Page #1
+Conditions
+Switch 0142: Junko Descends is ON
+
+Graphic: Flying Rocks
+
+Autonomous Movement
+Type: Fixed
+Speed: 1: Slowest
+Freq: 3: Low
+Options Enabled
+Move Animation
+Stop Animation
+Direction Fix
+Through
+Always on Top
+Trigger: Parallel Process
+
+List of Event Commands:
+@>Control Variables: [0001: Temp Pokemon Choice] = Player's Map X
+@>Control Variables: [0002: Temp Move Choice] = 13
+@>Loop
+ @>Script: if rand(2) == 1
+ :       :   $game_variables[3] = pbGet(1) + rand(8)+1
+ :       : else
+ :       :   $game_variables[3] = pbGet(1) - rand(8)-1
+ :       : end
+ :       : $game_variables[4] = pbGet(2) + rand(3)-1
+ @>Set Event Location: This event,Variable [0003][00004]
+ @>Set Move Route: This event
+                   (Ignore If Can't Move)
+  :              : $>Move Up
+  :              : $>Move Up
+  :              : $>Move Up
+  :              : $>Move Up
+  :              : $>Move Up
+  :              : $>Move Up
+  :              : $>Move Up
+  :              : $>Move Up
+  :              : $>Move Up
+  :              : $>Move Up
+  :              : $>Move Up
+  :              : $>Move Up
+ @>Wait: 250 frame(s)
+ @>
+: Repeat Above
+@>
+
+#------------------------------------------------------------------------------
+Event ID: 005
+Event Name: FlyingRock2 update
+(X,Y): (000,009)
+
+Page #1
+Conditions
+Switch 0142: Junko Descends is ON
+
+Graphic: Flying Rocks
+
+Autonomous Movement
+Type: Fixed
+Speed: 1: Slowest
+Freq: 3: Low
+Options Enabled
+Move Animation
+Stop Animation
+Direction Fix
+Through
+Always on Top
+Trigger: Parallel Process
+
+List of Event Commands:
+@>Control Variables: [0001: Temp Pokemon Choice] = Player's Map X
+@>Control Variables: [0002: Temp Move Choice] = 13
+@>Wait: 10 frame(s)
+@>Loop
+ @>Script: if rand(2) == 1
+ :       :   $game_variables[3] = pbGet(1) + rand(8)+1
+ :       : else
+ :       :   $game_variables[3] = pbGet(1) - rand(8)-1
+ :       : end
+ :       : $game_variables[4] = pbGet(2) + rand(3)-1
+ @>Set Event Location: This event,Variable [0003][00004]
+ @>Set Move Route: This event
+                   (Ignore If Can't Move)
+  :              : $>Move Up
+  :              : $>Move Up
+  :              : $>Move Up
+  :              : $>Move Up
+  :              : $>Move Up
+  :              : $>Move Up
+  :              : $>Move Up
+  :              : $>Move Up
+  :              : $>Move Up
+  :              : $>Move Up
+  :              : $>Move Up
+  :              : $>Move Up
+ @>Wait: 250 frame(s)
+ @>
+: Repeat Above
+@>
+
+#------------------------------------------------------------------------------
+Event ID: 006
+Event Name: FlyingRock3 update
+(X,Y): (000,008)
+
+Page #1
+Conditions
+Switch 0142: Junko Descends is ON
+
+Graphic: Flying Rocks
+
+Autonomous Movement
+Type: Fixed
+Speed: 1: Slowest
+Freq: 3: Low
+Options Enabled
+Move Animation
+Stop Animation
+Direction Fix
+Through
+Always on Top
+Trigger: Parallel Process
+
+List of Event Commands:
+@>Control Variables: [0001: Temp Pokemon Choice] = Player's Map X
+@>Control Variables: [0002: Temp Move Choice] = 13
+@>Wait: 20 frame(s)
+@>Loop
+ @>Script: if rand(2) == 1
+ :       :   $game_variables[3] = pbGet(1) + rand(8)+1
+ :       : else
+ :       :   $game_variables[3] = pbGet(1) - rand(8)-1
+ :       : end
+ :       : $game_variables[4] = pbGet(2) + rand(3)-1
+ @>Set Event Location: This event,Variable [0003][00004]
+ @>Set Move Route: This event
+                   (Ignore If Can't Move)
+  :              : $>Move Up
+  :              : $>Move Up
+  :              : $>Move Up
+  :              : $>Move Up
+  :              : $>Move Up
+  :              : $>Move Up
+  :              : $>Move Up
+  :              : $>Move Up
+  :              : $>Move Up
+  :              : $>Move Up
+  :              : $>Move Up
+  :              : $>Move Up
+ @>Wait: 250 frame(s)
+ @>
+: Repeat Above
+@>
+
+#------------------------------------------------------------------------------
+Event ID: 007
+Event Name: FlyingRock4 update
+(X,Y): (000,007)
+
+Page #1
+Conditions
+Switch 0142: Junko Descends is ON
+
+Graphic: Flying Rocks
+
+Autonomous Movement
+Type: Fixed
+Speed: 1: Slowest
+Freq: 3: Low
+Options Enabled
+Move Animation
+Stop Animation
+Direction Fix
+Through
+Always on Top
+Trigger: Parallel Process
+
+List of Event Commands:
+@>Control Variables: [0001: Temp Pokemon Choice] = Player's Map X
+@>Control Variables: [0002: Temp Move Choice] = 13
+@>Wait: 30 frame(s)
+@>Loop
+ @>Script: if rand(2) == 1
+ :       :   $game_variables[3] = pbGet(1) + rand(8)+1
+ :       : else
+ :       :   $game_variables[3] = pbGet(1) - rand(8)-1
+ :       : end
+ :       : $game_variables[4] = pbGet(2) + rand(3)-1
+ @>Set Event Location: This event,Variable [0003][00004]
+ @>Set Move Route: This event
+                   (Ignore If Can't Move)
+  :              : $>Move Up
+  :              : $>Move Up
+  :              : $>Move Up
+  :              : $>Move Up
+  :              : $>Move Up
+  :              : $>Move Up
+  :              : $>Move Up
+  :              : $>Move Up
+  :              : $>Move Up
+  :              : $>Move Up
+  :              : $>Move Up
+  :              : $>Move Up
+ @>Wait: 250 frame(s)
+ @>
+: Repeat Above
+@>
+
+#------------------------------------------------------------------------------
+Event ID: 008
+Event Name: FlyingRock5 update
+(X,Y): (000,006)
+
+Page #1
+Conditions
+Switch 0142: Junko Descends is ON
+
+Graphic: Flying Rocks
+
+Autonomous Movement
+Type: Fixed
+Speed: 1: Slowest
+Freq: 3: Low
+Options Enabled
+Move Animation
+Stop Animation
+Direction Fix
+Through
+Always on Top
+Trigger: Parallel Process
+
+List of Event Commands:
+@>Control Variables: [0001: Temp Pokemon Choice] = Player's Map X
+@>Control Variables: [0002: Temp Move Choice] = 13
+@>Wait: 40 frame(s)
+@>Loop
+ @>Script: if rand(2) == 1
+ :       :   $game_variables[3] = pbGet(1) + rand(8)+1
+ :       : else
+ :       :   $game_variables[3] = pbGet(1) - rand(8)-1
+ :       : end
+ :       : $game_variables[4] = pbGet(2) + rand(3)-1
+ @>Set Event Location: This event,Variable [0003][00004]
+ @>Set Move Route: This event
+                   (Ignore If Can't Move)
+  :              : $>Move Up
+  :              : $>Move Up
+  :              : $>Move Up
+  :              : $>Move Up
+  :              : $>Move Up
+  :              : $>Move Up
+  :              : $>Move Up
+  :              : $>Move Up
+  :              : $>Move Up
+  :              : $>Move Up
+  :              : $>Move Up
+  :              : $>Move Up
+ @>Wait: 250 frame(s)
+ @>
+: Repeat Above
+@>
+
+#------------------------------------------------------------------------------
+Event ID: 009
+Event Name: FlyingRock6 update
+(X,Y): (000,005)
+
+Page #1
+Conditions
+Switch 0142: Junko Descends is ON
+
+Graphic: Flying Rocks
+
+Autonomous Movement
+Type: Fixed
+Speed: 1: Slowest
+Freq: 3: Low
+Options Enabled
+Move Animation
+Stop Animation
+Direction Fix
+Through
+Always on Top
+Trigger: Parallel Process
+
+List of Event Commands:
+@>Control Variables: [0001: Temp Pokemon Choice] = Player's Map X
+@>Control Variables: [0002: Temp Move Choice] = 13
+@>Wait: 50 frame(s)
+@>Loop
+ @>Script: if rand(2) == 1
+ :       :   $game_variables[3] = pbGet(1) + rand(8)+1
+ :       : else
+ :       :   $game_variables[3] = pbGet(1) - rand(8)-1
+ :       : end
+ :       : $game_variables[4] = pbGet(2) + rand(3)-1
+ @>Set Event Location: This event,Variable [0003][00004]
+ @>Set Move Route: This event
+                   (Ignore If Can't Move)
+  :              : $>Move Up
+  :              : $>Move Up
+  :              : $>Move Up
+  :              : $>Move Up
+  :              : $>Move Up
+  :              : $>Move Up
+  :              : $>Move Up
+  :              : $>Move Up
+  :              : $>Move Up
+  :              : $>Move Up
+  :              : $>Move Up
+  :              : $>Move Up
+ @>Wait: 250 frame(s)
+ @>
+: Repeat Above
+@>
+
+#------------------------------------------------------------------------------
+Event ID: 010
+Event Name: FlyingRock7 update
+(X,Y): (000,004)
+
+Page #1
+Conditions
+Switch 0142: Junko Descends is ON
+
+Graphic: Flying Rocks
+
+Autonomous Movement
+Type: Fixed
+Speed: 1: Slowest
+Freq: 3: Low
+Options Enabled
+Move Animation
+Stop Animation
+Direction Fix
+Through
+Always on Top
+Trigger: Parallel Process
+
+List of Event Commands:
+@>Control Variables: [0001: Temp Pokemon Choice] = Player's Map X
+@>Control Variables: [0002: Temp Move Choice] = 13
+@>Wait: 60 frame(s)
+@>Loop
+ @>Script: if rand(2) == 1
+ :       :   $game_variables[3] = pbGet(1) + rand(8)+1
+ :       : else
+ :       :   $game_variables[3] = pbGet(1) - rand(8)-1
+ :       : end
+ :       : $game_variables[4] = pbGet(2) + rand(3)-1
+ @>Set Event Location: This event,Variable [0003][00004]
+ @>Set Move Route: This event
+                   (Ignore If Can't Move)
+  :              : $>Move Up
+  :              : $>Move Up
+  :              : $>Move Up
+  :              : $>Move Up
+  :              : $>Move Up
+  :              : $>Move Up
+  :              : $>Move Up
+  :              : $>Move Up
+  :              : $>Move Up
+  :              : $>Move Up
+  :              : $>Move Up
+  :              : $>Move Up
+ @>Wait: 250 frame(s)
+ @>
+: Repeat Above
+@>
+
+#------------------------------------------------------------------------------
+Event ID: 011
+Event Name: FlyingRock8 update
+(X,Y): (000,003)
+
+Page #1
+Conditions
+Switch 0142: Junko Descends is ON
+
+Graphic: Flying Rocks
+
+Autonomous Movement
+Type: Fixed
+Speed: 1: Slowest
+Freq: 3: Low
+Options Enabled
+Move Animation
+Stop Animation
+Direction Fix
+Through
+Always on Top
+Trigger: Parallel Process
+
+List of Event Commands:
+@>Control Variables: [0001: Temp Pokemon Choice] = Player's Map X
+@>Control Variables: [0002: Temp Move Choice] = 13
+@>Wait: 70 frame(s)
+@>Loop
+ @>Script: if rand(2) == 1
+ :       :   $game_variables[3] = pbGet(1) + rand(8)+1
+ :       : else
+ :       :   $game_variables[3] = pbGet(1) - rand(8)-1
+ :       : end
+ :       : $game_variables[4] = pbGet(2) + rand(3)-1
+ @>Set Event Location: This event,Variable [0003][00004]
+ @>Set Move Route: This event
+                   (Ignore If Can't Move)
+  :              : $>Move Up
+  :              : $>Move Up
+  :              : $>Move Up
+  :              : $>Move Up
+  :              : $>Move Up
+  :              : $>Move Up
+  :              : $>Move Up
+  :              : $>Move Up
+  :              : $>Move Up
+  :              : $>Move Up
+  :              : $>Move Up
+  :              : $>Move Up
+ @>Wait: 250 frame(s)
+ @>
+: Repeat Above
+@>
+
+#------------------------------------------------------------------------------
+Event ID: 012
+Event Name: FlyingRock9 update
+(X,Y): (000,002)
+
+Page #1
+Conditions
+Switch 0142: Junko Descends is ON
+
+Graphic: Flying Rocks
+
+Autonomous Movement
+Type: Fixed
+Speed: 1: Slowest
+Freq: 3: Low
+Options Enabled
+Move Animation
+Stop Animation
+Direction Fix
+Through
+Always on Top
+Trigger: Parallel Process
+
+List of Event Commands:
+@>Control Variables: [0001: Temp Pokemon Choice] = Player's Map X
+@>Control Variables: [0002: Temp Move Choice] = 13
+@>Wait: 80 frame(s)
+@>Loop
+ @>Script: if rand(2) == 1
+ :       :   $game_variables[3] = pbGet(1) + rand(8)+1
+ :       : else
+ :       :   $game_variables[3] = pbGet(1) - rand(8)-1
+ :       : end
+ :       : $game_variables[4] = pbGet(2) + rand(3)-1
+ @>Set Event Location: This event,Variable [0003][00004]
+ @>Set Move Route: This event
+                   (Ignore If Can't Move)
+  :              : $>Move Up
+  :              : $>Move Up
+  :              : $>Move Up
+  :              : $>Move Up
+  :              : $>Move Up
+  :              : $>Move Up
+  :              : $>Move Up
+  :              : $>Move Up
+  :              : $>Move Up
+  :              : $>Move Up
+  :              : $>Move Up
+  :              : $>Move Up
+ @>Wait: 250 frame(s)
+ @>
+: Repeat Above
+@>
+
+#------------------------------------------------------------------------------
+Event ID: 013
+Event Name: FlyingRock10 update
+(X,Y): (000,001)
+
+Page #1
+Conditions
+Switch 0142: Junko Descends is ON
+
+Graphic: Flying Rocks
+
+Autonomous Movement
+Type: Fixed
+Speed: 1: Slowest
+Freq: 3: Low
+Options Enabled
+Move Animation
+Stop Animation
+Direction Fix
+Through
+Always on Top
+Trigger: Parallel Process
+
+List of Event Commands:
+@>Control Variables: [0001: Temp Pokemon Choice] = Player's Map X
+@>Control Variables: [0002: Temp Move Choice] = 13
+@>Wait: 90 frame(s)
+@>Loop
+ @>Script: if rand(2) == 1
+ :       :   $game_variables[3] = pbGet(1) + rand(8)+1
+ :       : else
+ :       :   $game_variables[3] = pbGet(1) - rand(8)-1
+ :       : end
+ :       : $game_variables[4] = pbGet(2) + rand(3)-1
+ @>Set Event Location: This event,Variable [0003][00004]
+ @>Set Move Route: This event
+                   (Ignore If Can't Move)
+  :              : $>Move Up
+  :              : $>Move Up
+  :              : $>Move Up
+  :              : $>Move Up
+  :              : $>Move Up
+  :              : $>Move Up
+  :              : $>Move Up
+  :              : $>Move Up
+  :              : $>Move Up
+  :              : $>Move Up
+  :              : $>Move Up
+  :              : $>Move Up
+ @>Wait: 250 frame(s)
+ @>
+: Repeat Above
+@>
+
+#------------------------------------------------------------------------------
+Event ID: 014
+Event Name: Trigger The Rocks!
+(X,Y): (006,007)
+
+Page #1
+Conditions
+Self Switch A is ON
+
+Autonomous Movement
+Type: Fixed
+Speed: 3: Slow
+Freq: 3: Low
+Options Enabled
+Move Animation
+Trigger: Action Button
+
+List of Event Commands:
+@>Control Variables: [0001: Temp Pokemon Choice] = Player's Map X
+@>Control Variables: [0002: Temp Move Choice] = 13
+@>Loop
+ @>Script: $game_variables[3] = pbGet(1) + rand(8)
+ :       : $game_variables[4] = pbGet(2) - rand(3)
+ @>
+: Repeat Above
+@>
+
+#------------------------------------------------------------------------------
+Event ID: 015
+Event Name: EV015
+(X,Y): (028,006)
+
+Page #1
+Conditions
+None
+
+Autonomous Movement
+Type: Fixed
+Speed: 3: Slow
+Freq: 3: Low
+Options Enabled
+Move Animation
+Trigger: Action Button
+
+List of Event Commands:
+@>
+
+#------------------------------------------------------------------------------
+Event ID: 016
+Event Name: EV016
+(X,Y): (026,014)
+
+Page #1
+Conditions
+None
+
+Autonomous Movement
+Type: Fixed
+Speed: 3: Slow
+Freq: 3: Low
+Options Enabled
+Move Animation
+Trigger: Action Button
+
+List of Event Commands:
+@>Control Switches: [0142: Junko Descends] = ON
+@>
+
+#------------------------------------------------------------------------------
+Event ID: 017
+Event Name: FlyingRock9 update
+(X,Y): (001,010)
+
+Page #1
+Conditions
+Switch 0142: Junko Descends is ON
+
+Graphic: Flying Rocks
+
+Autonomous Movement
+Type: Fixed
+Speed: 1: Slowest
+Freq: 3: Low
+Options Enabled
+Move Animation
+Stop Animation
+Direction Fix
+Through
+Always on Top
+Trigger: Parallel Process
+
+List of Event Commands:
+@>Control Variables: [0001: Temp Pokemon Choice] = Player's Map X
+@>Control Variables: [0002: Temp Move Choice] = 13
+@>Wait: 100 frame(s)
+@>Loop
+ @>Script: if rand(2) == 1
+ :       :   $game_variables[3] = pbGet(1) + rand(8)+1
+ :       : else
+ :       :   $game_variables[3] = pbGet(1) - rand(8)-1
+ :       : end
+ :       : $game_variables[4] = pbGet(2) + rand(3)-1
+ @>Set Event Location: This event,Variable [0003][00004]
+ @>Set Move Route: This event
+                   (Ignore If Can't Move)
+  :              : $>Move Up
+  :              : $>Move Up
+  :              : $>Move Up
+  :              : $>Move Up
+  :              : $>Move Up
+  :              : $>Move Up
+  :              : $>Move Up
+  :              : $>Move Up
+  :              : $>Move Up
+  :              : $>Move Up
+  :              : $>Move Up
+  :              : $>Move Up
+ @>Wait: 250 frame(s)
+ @>
+: Repeat Above
+@>
+
+#------------------------------------------------------------------------------
+Event ID: 018
+Event Name: FlyingRock2 update
+(X,Y): (001,009)
+
+Page #1
+Conditions
+Switch 0142: Junko Descends is ON
+
+Graphic: Flying Rocks
+
+Autonomous Movement
+Type: Fixed
+Speed: 1: Slowest
+Freq: 3: Low
+Options Enabled
+Move Animation
+Stop Animation
+Direction Fix
+Through
+Always on Top
+Trigger: Parallel Process
+
+List of Event Commands:
+@>Control Variables: [0001: Temp Pokemon Choice] = Player's Map X
+@>Control Variables: [0002: Temp Move Choice] = 13
+@>Wait: 110 frame(s)
+@>Loop
+ @>Script: if rand(2) == 1
+ :       :   $game_variables[3] = pbGet(1) + rand(8)+1
+ :       : else
+ :       :   $game_variables[3] = pbGet(1) - rand(8)-1
+ :       : end
+ :       : $game_variables[4] = pbGet(2) + rand(3)-1
+ @>Set Event Location: This event,Variable [0003][00004]
+ @>Set Move Route: This event
+                   (Ignore If Can't Move)
+  :              : $>Move Up
+  :              : $>Move Up
+  :              : $>Move Up
+  :              : $>Move Up
+  :              : $>Move Up
+  :              : $>Move Up
+  :              : $>Move Up
+  :              : $>Move Up
+  :              : $>Move Up
+  :              : $>Move Up
+  :              : $>Move Up
+  :              : $>Move Up
+ @>Wait: 250 frame(s)
+ @>
+: Repeat Above
+@>
+
+#------------------------------------------------------------------------------
+Event ID: 019
+Event Name: FlyingRock9 update
+(X,Y): (001,008)
+
+Page #1
+Conditions
+Switch 0142: Junko Descends is ON
+
+Graphic: Flying Rocks
+
+Autonomous Movement
+Type: Fixed
+Speed: 1: Slowest
+Freq: 3: Low
+Options Enabled
+Move Animation
+Stop Animation
+Direction Fix
+Through
+Always on Top
+Trigger: Parallel Process
+
+List of Event Commands:
+@>Control Variables: [0001: Temp Pokemon Choice] = Player's Map X
+@>Control Variables: [0002: Temp Move Choice] = 13
+@>Wait: 120 frame(s)
+@>Loop
+ @>Script: if rand(2) == 1
+ :       :   $game_variables[3] = pbGet(1) + rand(8)+1
+ :       : else
+ :       :   $game_variables[3] = pbGet(1) - rand(8)-1
+ :       : end
+ :       : $game_variables[4] = pbGet(2) + rand(3)-1
+ @>Set Event Location: This event,Variable [0003][00004]
+ @>Set Move Route: This event
+                   (Ignore If Can't Move)
+  :              : $>Move Up
+  :              : $>Move Up
+  :              : $>Move Up
+  :              : $>Move Up
+  :              : $>Move Up
+  :              : $>Move Up
+  :              : $>Move Up
+  :              : $>Move Up
+  :              : $>Move Up
+  :              : $>Move Up
+  :              : $>Move Up
+  :              : $>Move Up
+ @>Wait: 250 frame(s)
+ @>
+: Repeat Above
+@>
+
+#------------------------------------------------------------------------------
+Event ID: 020
+Event Name: FlyingRock2 update
+(X,Y): (001,007)
+
+Page #1
+Conditions
+Switch 0142: Junko Descends is ON
+
+Graphic: Flying Rocks
+
+Autonomous Movement
+Type: Fixed
+Speed: 1: Slowest
+Freq: 3: Low
+Options Enabled
+Move Animation
+Stop Animation
+Direction Fix
+Through
+Always on Top
+Trigger: Parallel Process
+
+List of Event Commands:
+@>Control Variables: [0001: Temp Pokemon Choice] = Player's Map X
+@>Control Variables: [0002: Temp Move Choice] = 13
+@>Wait: 130 frame(s)
+@>Loop
+ @>Script: if rand(2) == 1
+ :       :   $game_variables[3] = pbGet(1) + rand(8)+1
+ :       : else
+ :       :   $game_variables[3] = pbGet(1) - rand(8)-1
+ :       : end
+ :       : $game_variables[4] = pbGet(2) + rand(3)-1
+ @>Set Event Location: This event,Variable [0003][00004]
+ @>Set Move Route: This event
+                   (Ignore If Can't Move)
+  :              : $>Move Up
+  :              : $>Move Up
+  :              : $>Move Up
+  :              : $>Move Up
+  :              : $>Move Up
+  :              : $>Move Up
+  :              : $>Move Up
+  :              : $>Move Up
+  :              : $>Move Up
+  :              : $>Move Up
+  :              : $>Move Up
+  :              : $>Move Up
+ @>Wait: 250 frame(s)
+ @>
+: Repeat Above
+@>
+
+#------------------------------------------------------------------------------
+Event ID: 021
+Event Name: FlyingRock9 update
+(X,Y): (001,006)
+
+Page #1
+Conditions
+Switch 0142: Junko Descends is ON
+
+Graphic: Flying Rocks
+
+Autonomous Movement
+Type: Fixed
+Speed: 1: Slowest
+Freq: 3: Low
+Options Enabled
+Move Animation
+Stop Animation
+Direction Fix
+Through
+Always on Top
+Trigger: Parallel Process
+
+List of Event Commands:
+@>Control Variables: [0001: Temp Pokemon Choice] = Player's Map X
+@>Control Variables: [0002: Temp Move Choice] = 13
+@>Wait: 140 frame(s)
+@>Loop
+ @>Script: if rand(2) == 1
+ :       :   $game_variables[3] = pbGet(1) + rand(8)+1
+ :       : else
+ :       :   $game_variables[3] = pbGet(1) - rand(8)-1
+ :       : end
+ :       : $game_variables[4] = pbGet(2) + rand(3)-1
+ @>Set Event Location: This event,Variable [0003][00004]
+ @>Set Move Route: This event
+                   (Ignore If Can't Move)
+  :              : $>Move Up
+  :              : $>Move Up
+  :              : $>Move Up
+  :              : $>Move Up
+  :              : $>Move Up
+  :              : $>Move Up
+  :              : $>Move Up
+  :              : $>Move Up
+  :              : $>Move Up
+  :              : $>Move Up
+  :              : $>Move Up
+  :              : $>Move Up
+ @>Wait: 250 frame(s)
+ @>
+: Repeat Above
+@>
+
+#------------------------------------------------------------------------------
+Event ID: 022
+Event Name: FlyingRock2 update
+(X,Y): (001,005)
+
+Page #1
+Conditions
+Switch 0142: Junko Descends is ON
+
+Graphic: Flying Rocks
+
+Autonomous Movement
+Type: Fixed
+Speed: 1: Slowest
+Freq: 3: Low
+Options Enabled
+Move Animation
+Stop Animation
+Direction Fix
+Through
+Always on Top
+Trigger: Parallel Process
+
+List of Event Commands:
+@>Control Variables: [0001: Temp Pokemon Choice] = Player's Map X
+@>Control Variables: [0002: Temp Move Choice] = 13
+@>Wait: 150 frame(s)
+@>Loop
+ @>Script: if rand(2) == 1
+ :       :   $game_variables[3] = pbGet(1) + rand(8)+1
+ :       : else
+ :       :   $game_variables[3] = pbGet(1) - rand(8)-1
+ :       : end
+ :       : $game_variables[4] = pbGet(2) + rand(3)-1
+ @>Set Event Location: This event,Variable [0003][00004]
+ @>Set Move Route: This event
+                   (Ignore If Can't Move)
+  :              : $>Move Up
+  :              : $>Move Up
+  :              : $>Move Up
+  :              : $>Move Up
+  :              : $>Move Up
+  :              : $>Move Up
+  :              : $>Move Up
+  :              : $>Move Up
+  :              : $>Move Up
+  :              : $>Move Up
+  :              : $>Move Up
+  :              : $>Move Up
+ @>Wait: 250 frame(s)
+ @>
+: Repeat Above
+@>
+
+#------------------------------------------------------------------------------
+Event ID: 023
+Event Name: FlyingRock9 update
+(X,Y): (001,004)
+
+Page #1
+Conditions
+Switch 0142: Junko Descends is ON
+
+Graphic: Flying Rocks
+
+Autonomous Movement
+Type: Fixed
+Speed: 1: Slowest
+Freq: 3: Low
+Options Enabled
+Move Animation
+Stop Animation
+Direction Fix
+Through
+Always on Top
+Trigger: Parallel Process
+
+List of Event Commands:
+@>Control Variables: [0001: Temp Pokemon Choice] = Player's Map X
+@>Control Variables: [0002: Temp Move Choice] = 13
+@>Wait: 160 frame(s)
+@>Loop
+ @>Script: if rand(2) == 1
+ :       :   $game_variables[3] = pbGet(1) + rand(8)+1
+ :       : else
+ :       :   $game_variables[3] = pbGet(1) - rand(8)-1
+ :       : end
+ :       : $game_variables[4] = pbGet(2) + rand(3)-1
+ @>Set Event Location: This event,Variable [0003][00004]
+ @>Set Move Route: This event
+                   (Ignore If Can't Move)
+  :              : $>Move Up
+  :              : $>Move Up
+  :              : $>Move Up
+  :              : $>Move Up
+  :              : $>Move Up
+  :              : $>Move Up
+  :              : $>Move Up
+  :              : $>Move Up
+  :              : $>Move Up
+  :              : $>Move Up
+  :              : $>Move Up
+  :              : $>Move Up
+ @>Wait: 250 frame(s)
+ @>
+: Repeat Above
+@>
+
+#------------------------------------------------------------------------------
+Event ID: 024
+Event Name: FlyingRock2 update
+(X,Y): (001,003)
+
+Page #1
+Conditions
+Switch 0142: Junko Descends is ON
+
+Graphic: Flying Rocks
+
+Autonomous Movement
+Type: Fixed
+Speed: 1: Slowest
+Freq: 3: Low
+Options Enabled
+Move Animation
+Stop Animation
+Direction Fix
+Through
+Always on Top
+Trigger: Parallel Process
+
+List of Event Commands:
+@>Control Variables: [0001: Temp Pokemon Choice] = Player's Map X
+@>Control Variables: [0002: Temp Move Choice] = 13
+@>Wait: 170 frame(s)
+@>Loop
+ @>Script: if rand(2) == 1
+ :       :   $game_variables[3] = pbGet(1) + rand(8)+1
+ :       : else
+ :       :   $game_variables[3] = pbGet(1) - rand(8)-1
+ :       : end
+ :       : $game_variables[4] = pbGet(2) + rand(3)-1
+ @>Set Event Location: This event,Variable [0003][00004]
+ @>Set Move Route: This event
+                   (Ignore If Can't Move)
+  :              : $>Move Up
+  :              : $>Move Up
+  :              : $>Move Up
+  :              : $>Move Up
+  :              : $>Move Up
+  :              : $>Move Up
+  :              : $>Move Up
+  :              : $>Move Up
+  :              : $>Move Up
+  :              : $>Move Up
+  :              : $>Move Up
+  :              : $>Move Up
+ @>Wait: 250 frame(s)
+ @>
+: Repeat Above
+@>
+
+#------------------------------------------------------------------------------
+Event ID: 025
+Event Name: FlyingRock9 update
+(X,Y): (001,002)
+
+Page #1
+Conditions
+Switch 0142: Junko Descends is ON
+
+Graphic: Flying Rocks
+
+Autonomous Movement
+Type: Fixed
+Speed: 1: Slowest
+Freq: 3: Low
+Options Enabled
+Move Animation
+Stop Animation
+Direction Fix
+Through
+Always on Top
+Trigger: Parallel Process
+
+List of Event Commands:
+@>Control Variables: [0001: Temp Pokemon Choice] = Player's Map X
+@>Control Variables: [0002: Temp Move Choice] = 13
+@>Wait: 180 frame(s)
+@>Loop
+ @>Script: if rand(2) == 1
+ :       :   $game_variables[3] = pbGet(1) + rand(8)+1
+ :       : else
+ :       :   $game_variables[3] = pbGet(1) - rand(8)-1
+ :       : end
+ :       : $game_variables[4] = pbGet(2) + rand(3)-1
+ @>Set Event Location: This event,Variable [0003][00004]
+ @>Set Move Route: This event
+                   (Ignore If Can't Move)
+  :              : $>Move Up
+  :              : $>Move Up
+  :              : $>Move Up
+  :              : $>Move Up
+  :              : $>Move Up
+  :              : $>Move Up
+  :              : $>Move Up
+  :              : $>Move Up
+  :              : $>Move Up
+  :              : $>Move Up
+  :              : $>Move Up
+  :              : $>Move Up
+ @>Wait: 250 frame(s)
+ @>
+: Repeat Above
+@>
+
+#------------------------------------------------------------------------------
+Event ID: 026
+Event Name: FlyingRock2 update
+(X,Y): (001,001)
+
+Page #1
+Conditions
+Switch 0142: Junko Descends is ON
+
+Graphic: Flying Rocks
+
+Autonomous Movement
+Type: Fixed
+Speed: 1: Slowest
+Freq: 3: Low
+Options Enabled
+Move Animation
+Stop Animation
+Direction Fix
+Through
+Always on Top
+Trigger: Parallel Process
+
+List of Event Commands:
+@>Control Variables: [0001: Temp Pokemon Choice] = Player's Map X
+@>Control Variables: [0002: Temp Move Choice] = 13
+@>Wait: 190 frame(s)
+@>Loop
+ @>Script: if rand(2) == 1
+ :       :   $game_variables[3] = pbGet(1) + rand(8)+1
+ :       : else
+ :       :   $game_variables[3] = pbGet(1) - rand(8)-1
+ :       : end
+ :       : $game_variables[4] = pbGet(2) + rand(3)-1
+ @>Set Event Location: This event,Variable [0003][00004]
+ @>Set Move Route: This event
+                   (Ignore If Can't Move)
+  :              : $>Move Up
+  :              : $>Move Up
+  :              : $>Move Up
+  :              : $>Move Up
+  :              : $>Move Up
+  :              : $>Move Up
+  :              : $>Move Up
+  :              : $>Move Up
+  :              : $>Move Up
+  :              : $>Move Up
+  :              : $>Move Up
+  :              : $>Move Up
+ @>Wait: 250 frame(s)
+ @>
+: Repeat Above
+@>
+
+#------------------------------------------------------------------------------
 
 #==============================================================================
 Map ID: 098
@@ -75380,7 +76949,7 @@ List of Event Commands:
 #==============================================================================
 Map ID: 123
 Map Name: Hecatia's Fortress
-Tileset: 004: Poke Center
+Tileset: 043: Hecatia's Lunar Fortress
 Width: 20, Height: 15
 
 #==============================================================================
@@ -75453,6 +77022,1219 @@ Move Animation
 Trigger: Action Button
 
 List of Event Commands:
+@>
+
+#------------------------------------------------------------------------------
+
+#==============================================================================
+Map ID: 126
+Map Name: Lunar Capital (Cutscene)
+Tileset: 042: The Moon
+Width: 81, Height: 86
+Auto-Change BGM: W-034. Frozen Capital of Eternity
+
+#------------------------------------------------------------------------------
+Event ID: 001
+Event Name: Sign size(2,2)
+(X,Y): (031,037)
+
+Page #1
+Conditions
+None
+
+Autonomous Movement
+Type: Fixed
+Speed: 3: Slow
+Freq: 3: Low
+Options Enabled
+Move Animation
+Trigger: Action Button
+
+List of Event Commands:
+@>Text: e
+@>
+
+#------------------------------------------------------------------------------
+Event ID: 002
+Event Name: Hell Fairy (Twintail)
+(X,Y): (034,027)
+
+Page #1
+Conditions
+None
+
+Graphic: TPDP_NPC 51
+
+Autonomous Movement
+Type: Fixed
+Speed: 3: Slow
+Freq: 3: Low
+Options Enabled
+Move Animation
+Trigger: Action Button
+
+List of Event Commands:
+@>
+
+#------------------------------------------------------------------------------
+Event ID: 003
+Event Name: Hell Fairy (Hairband)
+(X,Y): (035,029)
+
+Page #1
+Conditions
+None
+
+Graphic: TPDP_NPC 52
+
+Autonomous Movement
+Type: Fixed
+Speed: 3: Slow
+Freq: 3: Low
+Options Enabled
+Move Animation
+Trigger: Action Button
+
+List of Event Commands:
+@>
+
+#------------------------------------------------------------------------------
+Event ID: 004
+Event Name: Hell Fairy (Hat)
+(X,Y): (036,027)
+
+Page #1
+Conditions
+None
+
+Graphic: TPDP_NPC 53
+
+Autonomous Movement
+Type: Fixed
+Speed: 3: Slow
+Freq: 3: Low
+Options Enabled
+Move Animation
+Trigger: Action Button
+
+List of Event Commands:
+@>
+
+#------------------------------------------------------------------------------
+Event ID: 005
+Event Name: Hell Fairy (Twintail)
+(X,Y): (037,027)
+
+Page #1
+Conditions
+None
+
+Graphic: TPDP_NPC 51
+
+Autonomous Movement
+Type: Fixed
+Speed: 3: Slow
+Freq: 3: Low
+Options Enabled
+Move Animation
+Trigger: Action Button
+
+List of Event Commands:
+@>
+
+#------------------------------------------------------------------------------
+Event ID: 006
+Event Name: Hell Fairy (Twintail)
+(X,Y): (035,027)
+
+Page #1
+Conditions
+None
+
+Graphic: TPDP_NPC 51
+
+Autonomous Movement
+Type: Fixed
+Speed: 3: Slow
+Freq: 3: Low
+Options Enabled
+Move Animation
+Trigger: Action Button
+
+List of Event Commands:
+@>
+
+#------------------------------------------------------------------------------
+Event ID: 007
+Event Name: Hell Fairy (Hat)
+(X,Y): (035,028)
+
+Page #1
+Conditions
+None
+
+Graphic: TPDP_NPC 53
+
+Autonomous Movement
+Type: Fixed
+Speed: 3: Slow
+Freq: 3: Low
+Options Enabled
+Move Animation
+Trigger: Action Button
+
+List of Event Commands:
+@>
+
+#------------------------------------------------------------------------------
+Event ID: 008
+Event Name: Hell Fairy (Hairband)
+(X,Y): (036,028)
+
+Page #1
+Conditions
+None
+
+Graphic: TPDP_NPC 52
+
+Autonomous Movement
+Type: Fixed
+Speed: 3: Slow
+Freq: 3: Low
+Options Enabled
+Move Animation
+Trigger: Action Button
+
+List of Event Commands:
+@>
+
+#------------------------------------------------------------------------------
+Event ID: 009
+Event Name: Hell Fairy (Twintail)
+(X,Y): (037,028)
+
+Page #1
+Conditions
+None
+
+Graphic: TPDP_NPC 51
+
+Autonomous Movement
+Type: Fixed
+Speed: 3: Slow
+Freq: 3: Low
+Options Enabled
+Move Animation
+Trigger: Action Button
+
+List of Event Commands:
+@>
+
+#------------------------------------------------------------------------------
+Event ID: 010
+Event Name: Hell Fairy (Hairband)
+(X,Y): (034,028)
+
+Page #1
+Conditions
+None
+
+Graphic: TPDP_NPC 52
+
+Autonomous Movement
+Type: Fixed
+Speed: 3: Slow
+Freq: 3: Low
+Options Enabled
+Move Animation
+Trigger: Action Button
+
+List of Event Commands:
+@>
+
+#------------------------------------------------------------------------------
+Event ID: 011
+Event Name: Map Edge Trigger update size(1,21)
+(X,Y): (072,066)
+
+Page #1
+Conditions
+None
+
+Autonomous Movement
+Type: Fixed
+Speed: 3: Slow
+Freq: 3: Low
+Options Enabled
+Move Animation
+Trigger: Event Touch
+
+List of Event Commands:
+@>
+
+#------------------------------------------------------------------------------
+Event ID: 012
+Event Name: Map Edge Trigger update size(1,21)
+(X,Y): (008,066)
+
+Page #1
+Conditions
+None
+
+Autonomous Movement
+Type: Fixed
+Speed: 3: Slow
+Freq: 3: Low
+Options Enabled
+Move Animation
+Trigger: Event Touch
+
+List of Event Commands:
+@>
+
+#------------------------------------------------------------------------------
+Event ID: 013
+Event Name: Hell Fairy (Hat)
+(X,Y): (036,029)
+
+Page #1
+Conditions
+None
+
+Graphic: TPDP_NPC 53
+
+Autonomous Movement
+Type: Fixed
+Speed: 3: Slow
+Freq: 3: Low
+Options Enabled
+Move Animation
+Trigger: Action Button
+
+List of Event Commands:
+@>
+
+#------------------------------------------------------------------------------
+Event ID: 014
+Event Name: Hell Fairy (Twintail)
+(X,Y): (034,029)
+
+Page #1
+Conditions
+None
+
+Graphic: TPDP_NPC 51
+
+Autonomous Movement
+Type: Fixed
+Speed: 3: Slow
+Freq: 3: Low
+Options Enabled
+Move Animation
+Trigger: Action Button
+
+List of Event Commands:
+@>
+
+#------------------------------------------------------------------------------
+Event ID: 015
+Event Name: Hell Fairy (Hairband)
+(X,Y): (037,029)
+
+Page #1
+Conditions
+None
+
+Graphic: TPDP_NPC 52
+
+Autonomous Movement
+Type: Fixed
+Speed: 3: Slow
+Freq: 3: Low
+Options Enabled
+Move Animation
+Trigger: Action Button
+
+List of Event Commands:
+@>
+
+#------------------------------------------------------------------------------
+Event ID: 016
+Event Name: Hell Fairy (Twintail)
+(X,Y): (032,023)
+
+Page #1
+Conditions
+None
+
+Graphic: TPDP_NPC 51
+
+Autonomous Movement
+Type: Fixed
+Speed: 3: Slow
+Freq: 3: Low
+Options Enabled
+Move Animation
+Trigger: Action Button
+
+List of Event Commands:
+@>
+
+#------------------------------------------------------------------------------
+Event ID: 017
+Event Name: Hell Fairy (Hairband)
+(X,Y): (032,024)
+
+Page #1
+Conditions
+None
+
+Graphic: TPDP_NPC 52
+
+Autonomous Movement
+Type: Fixed
+Speed: 3: Slow
+Freq: 3: Low
+Options Enabled
+Move Animation
+Trigger: Action Button
+
+List of Event Commands:
+@>
+
+#------------------------------------------------------------------------------
+Event ID: 018
+Event Name: Hell Fairy (Hat)
+(X,Y): (032,025)
+
+Page #1
+Conditions
+None
+
+Graphic: TPDP_NPC 53
+
+Autonomous Movement
+Type: Fixed
+Speed: 3: Slow
+Freq: 3: Low
+Options Enabled
+Move Animation
+Trigger: Action Button
+
+List of Event Commands:
+@>
+
+#------------------------------------------------------------------------------
+Event ID: 019
+Event Name: Hell Fairy (Twintail)
+(X,Y): (032,026)
+
+Page #1
+Conditions
+None
+
+Graphic: TPDP_NPC 51
+
+Autonomous Movement
+Type: Fixed
+Speed: 3: Slow
+Freq: 3: Low
+Options Enabled
+Move Animation
+Trigger: Action Button
+
+List of Event Commands:
+@>
+
+#------------------------------------------------------------------------------
+Event ID: 020
+Event Name: Hell Fairy (Twintail)
+(X,Y): (031,025)
+
+Page #1
+Conditions
+None
+
+Graphic: TPDP_NPC 51
+
+Autonomous Movement
+Type: Fixed
+Speed: 3: Slow
+Freq: 3: Low
+Options Enabled
+Move Animation
+Trigger: Action Button
+
+List of Event Commands:
+@>
+
+#------------------------------------------------------------------------------
+Event ID: 021
+Event Name: Hell Fairy (Hairband)
+(X,Y): (031,023)
+
+Page #1
+Conditions
+None
+
+Graphic: TPDP_NPC 52
+
+Autonomous Movement
+Type: Fixed
+Speed: 3: Slow
+Freq: 3: Low
+Options Enabled
+Move Animation
+Trigger: Action Button
+
+List of Event Commands:
+@>
+
+#------------------------------------------------------------------------------
+Event ID: 022
+Event Name: Hell Fairy (Hairband)
+(X,Y): (031,026)
+
+Page #1
+Conditions
+None
+
+Graphic: TPDP_NPC 52
+
+Autonomous Movement
+Type: Fixed
+Speed: 3: Slow
+Freq: 3: Low
+Options Enabled
+Move Animation
+Trigger: Action Button
+
+List of Event Commands:
+@>
+
+#------------------------------------------------------------------------------
+Event ID: 023
+Event Name: Hell Fairy (Twintail)
+(X,Y): (031,024)
+
+Page #1
+Conditions
+None
+
+Graphic: TPDP_NPC 51
+
+Autonomous Movement
+Type: Fixed
+Speed: 3: Slow
+Freq: 3: Low
+Options Enabled
+Move Animation
+Trigger: Action Button
+
+List of Event Commands:
+@>
+
+#------------------------------------------------------------------------------
+Event ID: 024
+Event Name: Hell Fairy (Hairband)
+(X,Y): (030,024)
+
+Page #1
+Conditions
+None
+
+Graphic: TPDP_NPC 52
+
+Autonomous Movement
+Type: Fixed
+Speed: 3: Slow
+Freq: 3: Low
+Options Enabled
+Move Animation
+Trigger: Action Button
+
+List of Event Commands:
+@>
+
+#------------------------------------------------------------------------------
+Event ID: 025
+Event Name: Hell Fairy (Hat)
+(X,Y): (030,025)
+
+Page #1
+Conditions
+None
+
+Graphic: TPDP_NPC 53
+
+Autonomous Movement
+Type: Fixed
+Speed: 3: Slow
+Freq: 3: Low
+Options Enabled
+Move Animation
+Trigger: Action Button
+
+List of Event Commands:
+@>
+
+#------------------------------------------------------------------------------
+Event ID: 026
+Event Name: Hell Fairy (Hat)
+(X,Y): (030,026)
+
+Page #1
+Conditions
+None
+
+Graphic: TPDP_NPC 53
+
+Autonomous Movement
+Type: Fixed
+Speed: 3: Slow
+Freq: 3: Low
+Options Enabled
+Move Animation
+Trigger: Action Button
+
+List of Event Commands:
+@>
+
+#------------------------------------------------------------------------------
+Event ID: 027
+Event Name: Hell Fairy (Twintail)
+(X,Y): (030,023)
+
+Page #1
+Conditions
+None
+
+Graphic: TPDP_NPC 51
+
+Autonomous Movement
+Type: Fixed
+Speed: 3: Slow
+Freq: 3: Low
+Options Enabled
+Move Animation
+Trigger: Action Button
+
+List of Event Commands:
+@>
+
+#------------------------------------------------------------------------------
+Event ID: 028
+Event Name: Hell Fairy (Hat)
+(X,Y): (039,026)
+
+Page #1
+Conditions
+None
+
+Graphic: TPDP_NPC 53
+
+Autonomous Movement
+Type: Fixed
+Speed: 3: Slow
+Freq: 3: Low
+Options Enabled
+Move Animation
+Trigger: Action Button
+
+List of Event Commands:
+@>
+
+#------------------------------------------------------------------------------
+Event ID: 029
+Event Name: Hell Fairy (Hat)
+(X,Y): (039,024)
+
+Page #1
+Conditions
+None
+
+Graphic: TPDP_NPC 53
+
+Autonomous Movement
+Type: Fixed
+Speed: 3: Slow
+Freq: 3: Low
+Options Enabled
+Move Animation
+Trigger: Action Button
+
+List of Event Commands:
+@>
+
+#------------------------------------------------------------------------------
+Event ID: 030
+Event Name: Hell Fairy (Hairband)
+(X,Y): (039,023)
+
+Page #1
+Conditions
+None
+
+Graphic: TPDP_NPC 52
+
+Autonomous Movement
+Type: Fixed
+Speed: 3: Slow
+Freq: 3: Low
+Options Enabled
+Move Animation
+Trigger: Action Button
+
+List of Event Commands:
+@>
+
+#------------------------------------------------------------------------------
+Event ID: 031
+Event Name: Hell Fairy (Hairband)
+(X,Y): (039,025)
+
+Page #1
+Conditions
+None
+
+Graphic: TPDP_NPC 52
+
+Autonomous Movement
+Type: Fixed
+Speed: 3: Slow
+Freq: 3: Low
+Options Enabled
+Move Animation
+Trigger: Action Button
+
+List of Event Commands:
+@>
+
+#------------------------------------------------------------------------------
+Event ID: 032
+Event Name: Hell Fairy (Twintail)
+(X,Y): (040,024)
+
+Page #1
+Conditions
+None
+
+Graphic: TPDP_NPC 51
+
+Autonomous Movement
+Type: Fixed
+Speed: 3: Slow
+Freq: 3: Low
+Options Enabled
+Move Animation
+Trigger: Action Button
+
+List of Event Commands:
+@>
+
+#------------------------------------------------------------------------------
+Event ID: 033
+Event Name: Hell Fairy (Hairband)
+(X,Y): (040,026)
+
+Page #1
+Conditions
+None
+
+Graphic: TPDP_NPC 52
+
+Autonomous Movement
+Type: Fixed
+Speed: 3: Slow
+Freq: 3: Low
+Options Enabled
+Move Animation
+Trigger: Action Button
+
+List of Event Commands:
+@>
+
+#------------------------------------------------------------------------------
+Event ID: 034
+Event Name: Hell Fairy (Hat)
+(X,Y): (040,025)
+
+Page #1
+Conditions
+None
+
+Graphic: TPDP_NPC 53
+
+Autonomous Movement
+Type: Fixed
+Speed: 3: Slow
+Freq: 3: Low
+Options Enabled
+Move Animation
+Trigger: Action Button
+
+List of Event Commands:
+@>
+
+#------------------------------------------------------------------------------
+Event ID: 035
+Event Name: Hell Fairy (Hairband)
+(X,Y): (040,023)
+
+Page #1
+Conditions
+None
+
+Graphic: TPDP_NPC 52
+
+Autonomous Movement
+Type: Fixed
+Speed: 3: Slow
+Freq: 3: Low
+Options Enabled
+Move Animation
+Trigger: Action Button
+
+List of Event Commands:
+@>
+
+#------------------------------------------------------------------------------
+Event ID: 036
+Event Name: Hell Fairy (Twintail)
+(X,Y): (041,023)
+
+Page #1
+Conditions
+None
+
+Graphic: TPDP_NPC 51
+
+Autonomous Movement
+Type: Fixed
+Speed: 3: Slow
+Freq: 3: Low
+Options Enabled
+Move Animation
+Trigger: Action Button
+
+List of Event Commands:
+@>
+
+#------------------------------------------------------------------------------
+Event ID: 037
+Event Name: Hell Fairy (Hat)
+(X,Y): (041,024)
+
+Page #1
+Conditions
+None
+
+Graphic: TPDP_NPC 53
+
+Autonomous Movement
+Type: Fixed
+Speed: 3: Slow
+Freq: 3: Low
+Options Enabled
+Move Animation
+Trigger: Action Button
+
+List of Event Commands:
+@>
+
+#------------------------------------------------------------------------------
+Event ID: 038
+Event Name: Hell Fairy (Hairband)
+(X,Y): (041,025)
+
+Page #1
+Conditions
+None
+
+Graphic: TPDP_NPC 52
+
+Autonomous Movement
+Type: Fixed
+Speed: 3: Slow
+Freq: 3: Low
+Options Enabled
+Move Animation
+Trigger: Action Button
+
+List of Event Commands:
+@>
+
+#------------------------------------------------------------------------------
+Event ID: 039
+Event Name: Hell Fairy (Hairband)
+(X,Y): (041,026)
+
+Page #1
+Conditions
+None
+
+Graphic: TPDP_NPC 52
+
+Autonomous Movement
+Type: Fixed
+Speed: 3: Slow
+Freq: 3: Low
+Options Enabled
+Move Animation
+Trigger: Action Button
+
+List of Event Commands:
+@>
+
+#------------------------------------------------------------------------------
+Event ID: 040
+Event Name: Clownpiece
+(X,Y): (053,038)
+
+Page #1
+Conditions
+None
+
+Graphic: Person_Clownpiece
+
+Autonomous Movement
+Type: Fixed
+Speed: 3: Slow
+Freq: 3: Low
+Options Enabled
+Move Animation
+Trigger: Action Button
+
+List of Event Commands:
+@>
+
+#------------------------------------------------------------------------------
+Event ID: 041
+Event Name: Rabbit Guard
+(X,Y): (034,021)
+
+Page #1
+Conditions
+None
+
+Graphic: TPDP_NPC 55
+
+Autonomous Movement
+Type: Fixed
+Speed: 3: Slow
+Freq: 3: Low
+Options Enabled
+Move Animation
+Trigger: Action Button
+
+List of Event Commands:
+@>Text: We need to stand firm and protect the palace!
+@>
+
+#------------------------------------------------------------------------------
+Event ID: 042
+Event Name: Rabbit Guard
+(X,Y): (035,021)
+
+Page #1
+Conditions
+None
+
+Graphic: TPDP_NPC 54
+
+Autonomous Movement
+Type: Fixed
+Speed: 3: Slow
+Freq: 3: Low
+Options Enabled
+Move Animation
+Trigger: Action Button
+
+List of Event Commands:
+@>Text: We need to stand firm and protect the palace!
+@>
+
+#------------------------------------------------------------------------------
+Event ID: 043
+Event Name: Rabbit Guard
+(X,Y): (036,021)
+
+Page #1
+Conditions
+None
+
+Graphic: TPDP_NPC 55
+
+Autonomous Movement
+Type: Fixed
+Speed: 3: Slow
+Freq: 3: Low
+Options Enabled
+Move Animation
+Trigger: Action Button
+
+List of Event Commands:
+@>Text: We need to stand firm and protect the palace!
+@>
+
+#------------------------------------------------------------------------------
+Event ID: 044
+Event Name: Rabbit Guard
+(X,Y): (037,021)
+
+Page #1
+Conditions
+None
+
+Graphic: TPDP_NPC 54
+
+Autonomous Movement
+Type: Fixed
+Speed: 3: Slow
+Freq: 3: Low
+Options Enabled
+Move Animation
+Trigger: Action Button
+
+List of Event Commands:
+@>Text: We need to stand firm and protect the palace!
+@>
+
+#------------------------------------------------------------------------------
+Event ID: 045
+Event Name: Sagume
+(X,Y): (051,038)
+
+Page #1
+Conditions
+None
+
+Graphic: Person_Sagume
+
+Autonomous Movement
+Type: Fixed
+Speed: 3: Slow
+Freq: 3: Low
+Options Enabled
+Move Animation
+Trigger: Action Button
+
+List of Event Commands:
+@>
+
+#------------------------------------------------------------------------------
+Event ID: 046
+Event Name: Player (Cutscene)
+(X,Y): (052,038)
+
+Page #1
+Conditions
+None
+
+Graphic: trainer_AYAKA
+
+Autonomous Movement
+Type: Fixed
+Speed: 3: Slow
+Freq: 3: Low
+Options Enabled
+Move Animation
+Trigger: Action Button
+
+List of Event Commands:
+@>
+
+#------------------------------------------------------------------------------
+Event ID: 047
+Event Name: EV047
+(X,Y): (041,017)
+
+Page #1
+Conditions
+None
+
+Autonomous Movement
+Type: Fixed
+Speed: 3: Slow
+Freq: 3: Low
+Options Enabled
+Move Animation
+Trigger: Action Button
+
+List of Event Commands:
+@>Text: \xn[Rabbit Guard 2]Ghk... Is this the end...?
+@>Text: \xn[Rabbit Guard 4]If this is the end, then we'll go down protecting
+ :    : the Princesses!
+@>Text: \xn[Rabbit Guard 4]Stand strong, girls! Give these Hell Fairies no 
+ :    : quarter!
+@>Text: \xn[Hell Fairies]Gyahahaha!
+@>Wait: 10 frame(s)
+@>Text: \xn[Sagume]Omoikane-Tan, Gunk Shot!
+@>Comment: (Have the southern-most fairies look down with confusion 
+ :       : bubbles)
+ :       : (Then have them display an exclamation mark as they part
+ :       : left and right.)
+ :       : (Have an arrow shot drop onto the ground between the
+ :       : fairies)
+@>Comment: (Sagume and the Player travel up the middle)
+@>Text: \xn[Rabbit Guard 1]Lady Sagume! You're here!
+@>Text: \xn[Sagume]Fall back and reinforce the Palace! We shall handle
+ :    : things from here.
+@>Text: \xn[Rabbit Guards]Ma'am! Yes Ma'am!
+@>Comment: (Rabbit Guards run north off screen)
+@>Text: \xn[Sagume]Can I trust you to pull your weight?
+@>Text: \xn[Sagume]Don't have to ask me twice! Bring 'em on!
+@>Text: Look! New friends to play with!
+@>Text: Let's have fun breaking them!
+@>Text: \xn[\pn]\b(Hell Fairies... Can't be much worse than regular
+ :    : fairies! Let's do this!)
+@>Comment: (Cue double battle against Hell Fairies)
+ :       : (During the battle, these Hell Fairies have boosted
+ :       : Puppets. The Player's Puppets have a 5% chance to
+ :       : become confused at the end of their turn.)
+@>Text: \xn[\pn]\b(Okay I was mistaken! These fairies are definitely
+ :    : not like those in Gensokyo!)
+@>Text: \xn[Sagume]Having trouble?
+@>Text: \xn[\pn]Nothing I can't handle! Bring on the next batch!
+@>Text: \xn[Sagume]Good to hear. My blessings should allow your 
+ :    : Puppets to recover their full strength after each battle.
+@>Text: Kyahahaha! You won't be able to stand up to us all
+ :    : forever!
+@>Comment: (Cue another double battle against Hell Fairies)
+ :       : (Same conditions as before)
+@>Text: \xn[\pn]Bring on the next batch! I'll drive you all back!
+@>Text: \xn[???]Kyahahaha! You're an interesting one! I'll take
+ :    : you on myself, then!
+@>Comment: (Have the Hell Fairies turn around toward Clownpiece, who
+ :       : walks in from the south)
+@>Text: \xn[\pn]\b(This fairy looks... stranger than the ones here. Their
+ :    : leader?)
+@>Text: \xn[???]I'm Clownpiece, a Fairy from Hell, and the leader
+ :    : of this platoon of Fairies!
+@>Text: \xn[Clownpiece]We weren't expecting any resistance to
+ :    : come from the Capital itself... Our Honorable Friend told us
+ :    : that no force from the Moon would be able to stand against
+ :    : us!
+@>Text: \xn[\pn]Good thing I'm not from the Moon, then! It'll make dealing
+ :    : with you all the easier!
+@>Text: \xn[Clownpiece]Not from the Moon...?
+@>Wait: 10 frame(s)
+@>Show Animation: [Clownpiece], [Exclaim bubble]
+@>Text: \xn[Clownpiece]An Earthling! What's an Earthling doing on the 
+ :    : Moon? I wasn't told this would happen!
+@>Text: \xn[Clownpiece]But this is really interesting... Alright, I'll play
+ :    : along! Against my Madness-Enhanced Puppets
+@>Text: \xn[\pn]Madness-Enhanced...?
+@>Text: \xn[Clownpiece]By the light of my torch, I can drive all who
+ :    : witness it into insanity! Puppets included! And those that are
+ :    : driven crazy can bring out their true power!
+@>Text: \xn[Clownpiece]Between that and the power-boost given to them
+ :    : by Our Honorable Friend, they serve as the perfect way to deal
+ :    : with these stuck-up prudes on the Moon!
+@>Text: \xn[Clownpiece]And if you're standing with these jerks, then
+ :    : you're an enemy of Our Honorable Friend! And any enemies
+ :    : of Our Honorable Friend are enemies of our Master!
+@>Text: \xn[Clownpiece]You don't stand a chance against us!
+@>Text: \xn[\pn]Hell Fairy, regular Fairy, blessed by divine or maddening
+ :    : power, it makes no difference. I'll combat your power of
+ :    : madness with the Puppets I've put my trust in!
+@>Comment: (Clownpiece Battle Theme Here)
+@>Text: \xn[Clownpiece]Kyahahaha! Alright then! Fairies,
+ :    : let's get ready to crank things up!
+@>Text: \xn[Clownpiece]It's lunatic time! I'll show you a true world
+ :    : of madness!
+@>Comment: (Trigger Clownpiece Battle- Double battle against another
+ :       : Hell Fairy.)
+ :       : (Similar mechanics to the other Hell Fairies, but in this battle,
+ :       : on the round after a Hell Fairy is defeated, a new one tags
+ :       : in and takes their place. After three of them are defeated,
+ :       : a switch is triggered to prevent EXP from being gained.)
+@>Comment: (Defeating Clownpiece causes the partner fairy to retreat,
+ :       : and end the battle.)
+@>Comment: -----------------
+@>Comment: (After battle is over, have several exclamation marks 
+ :       : appear over the Hell Fairies)
+@>Text: No way, Clownpiece lost...?
+@>Text: But she was the strongest one of us...
+@>Wait: 10 frame(s)
+@>Text: Retreat!
+@>Comment: (Have all of the Hell Fairies scatter in the direction opposite
+ :       : they're facing)
+ :       : (Have Clownpiece turn to face the fleeing fairies)
+@>Text: \xn[Clownpiece]Wait, come back!
+@>Text: \xn[Clownpiece]Hah... We were told as long as we fairies,
+ :    : symbols of life incarnate, controlled the Moon, then
+ :    : the people of the Capital wouldn't be able to oppose us...
+@>Text: \xn[Clownpiece]But how could we have planned for a counter
+ :    : attack by someone from the Earth!
+@>Text: \xn[\pn]And who exactly was the one that told you that?
+@>Text: \xn[Clownpiece]Our Honorable Friend, of course! She's the
+ :    : one who refined our power!
+@>Text: \xn[Clownpiece]She told us that once she "purified" us, then
+ :    : the Capital wouldn't be able to lay a finger on us!
+@>Text: \xn[Sagume]... Purification...
+@>Text: \xn[Clownpiece]But I'm growing tired of this... I think I'll take
+ :    : after my friends and skedadle!
+@>Text: \xn[\pn]Hey, wait!
+@>Comment: (Screen fade to black, Clownpiece flees)
+ :       : (Screen fades back in)
+@>Text: \xn[\pn]Darn it, she got away before I could get more
+ :    : information from her!
+@>Comment: (Player turns to Sagume)
+@>Text: \xn[\pn]Well, we drove them off at least. That means you'll
+ :    : answer my questions now, right?
+@>Text: \xn[Sagume]... Very well then. Perhaps, someone of your
+ :    : strength, and unique standing...
+@>Comment: (Sagume turns back toward the Player)
+@>Text: \xn[Sagume]My name, as you have surmised, is Sagume Kishin.
+@>Text: \xn[Sagume]Earlier you inquired as to why I was so quiet. 'tis
+ :    : because I have the ability to manipulate fate through the power
+ :    : of spoken word.
+@>Text: \xn[Sagume]So when things are going according to plan, I can ill
+ :    : afford to speak too much, lest I risk plans going awry.
+@>Text: \xn[Sagume]"Least said, soonest mended", as the saying goes.
+@>Text: \xn[\pn]You're definitely more talkative now... What does that
+ :    : mean, have your plans come to fruition then?
+@>Text: \xn[Sagume]Quite the opposite. In response to the abnormal
+ :    : assault by the otherworldly forces, I devised a strategy to
+ :    : relocate the entirety of the Lunar Capital to Gensokyo.
+@>Text: \xn[Sagume]This necessitated the actions of purifying the land,
+ :    : as the inhabitants of the Capital cannot exist in a land where
+ :    : Death is a concept.
+@>Text: \xn[\pn]The purification of the land would have eradicated the
+ :    : entirety of Gensokyo's population...! Sure the situation here is
+ :    : bad, but-
+@>Text: \xn[Sagume]An ideal solution, it was not. Truthfully, I devised it
+ :    : as insurance in the hopes that we could drive back the invaders.
+@>Text: \xn[Sagume]When we noticed that Puppets were being utilized
+ :    : throughout Gensokyo to resolve conflicts, we opted to import
+ :    : Puppets to counter the invaders.
+@>Text: \xn[Sagume]...Unfortunately, the leaders of this invasion
+ :    : noticed this, and begun to utilize Puppets in their assault
+ :    : as well.
+@>Text: \xn[Sagume]This prompted us to return to the original plan-
+ :    : the Gensokyo Capital Relocation Plan. But now..
+@>Text: \xn[\pn]Now..?
+@>Text: \xn[Sagume]Having spoken it aloud, that plan is now moot. Instead, 
+ :    : I shall be throwing in my lot with you. You shall be the key to the 
+ :    : Capital's salvation!
+@>Text: \xn[\pn]Wait, what-
+@>Text: \xn[Sagume]Yes, let it be spoken now: you, the one from
+ :    : Gensokyo, shall be the one to save the Lunar Capital!
+@>Text: \xn[Sagume]Let the wheels of fate begin to turn over...
+@>Text: \xn[\pn]So, uh... what is it you would have me do, then...?
+@>Text: \xn[Sagume]Judging by the intel we've recieved from the field,
+ :    : the enemy has made their stronghold out on the Mare Tranquillitatis-
+ :    : the Sea of Tranquility, in Earthling parlance.
+@>Text: \xn[Sagume]You must go there, the enemy's home base, and 
+ :    : defeat her! For the sake of not just the Lunar Capital, but for
+ :    : Gensokyo as well!
+@>Text: \xn[\pn]\b(What have I even gotten myself into...)
+@>Comment: (Transfer the player back to the normal Lunar Capital map)
+ :       : (Change the plot variable +1)
+ :       : (have NPCs wandering the Capital again)
+ :       : (Have the rabbits guarding the palace say they are under
+ :       : orders to let nobody pass)
 @>
 
 #------------------------------------------------------------------------------
@@ -75614,6 +78396,7 @@ Common Event Name:
 Trigger: None
 
 List of Event Commands:
+@>Text: zdgfshj
 @>
 
 #==============================================================================
@@ -78408,18 +81191,18 @@ List of Event Commands:
 @>Script: pbShowPicture(20,"Transitions/Bars_Over.png",1,256,192,zoomX=100,zoomY=100,opacity=230,blendType=0)
 @>Move Picture: 5, @5, Center (256,192), (100%,100%), 230, Normal
 @>Wait: 5 frame(s)
-@>Script: pbShowPicture(1,"Transitions/BGs/BGVillage.png",1,256,192,100,100,0,0)
+@>Script: pbShowPicture(1,"Transitions/BGs/BGTranquility.png",1,256,192,100,100,0,0)
 @>Wait: 5 frame(s)
 @>Move Picture: 1, @5, Center (256,192), (100%,100%), 255, Normal
 @>Wait: 15 frame(s)
 @>Play SE: 'Vs flash', 80, 100
 @>Screen Flash: (255,255,255,255), @10
-@>Script: pbShowPicture(3,"Transitions/PTs/Char_KeineS.png",1,256,192,zoomX=100,zoomY=100,opacity=255,blendType=0)
+@>Script: pbShowPicture(3,"Transitions/PTs/Char_JunkoS.png",1,256,192,zoomX=100,zoomY=100,opacity=255,blendType=0)
 @>Wait: 25 frame(s)
 @>Screen Flash: (255,255,255,255), @10
 @>Play SE: 'Vs sword', 80, 100
-@>Script: pbShowPicture(5,"Transitions/PTs/Char_Keine.png",1,256,192,zoomX=100,zoomY=100,opacity=255,blendType=0)
-@>Script: pbShowPicture(21,"Transitions/Names/Name_Keine.png",1,256,192,zoomX=100,zoomY=100,opacity=255,blendType=0)
+@>Script: pbShowPicture(5,"Transitions/PTs/Char_Junko.png",1,256,192,zoomX=100,zoomY=100,opacity=255,blendType=0)
+@>Script: pbShowPicture(21,"Transitions/Names/Name_Junko.png",1,256,192,zoomX=100,zoomY=100,opacity=255,blendType=0)
 @>Move Picture: 3, @30, Center (250,192), (100%,100%), 255, Normal
 @>Call Common Event: Vs. Transition - Balls
 @>Wait: 60 frame(s)
