@@ -67702,7 +67702,7 @@ List of Event Commands:
 #------------------------------------------------------------------------------
 Event ID: 047
 Event Name: EV047
-(X,Y): (071,058)
+(X,Y): (073,049)
 
 Page #1
 Conditions
@@ -67727,7 +67727,7 @@ List of Event Commands:
 #------------------------------------------------------------------------------
 Event ID: 048
 Event Name: EV048
-(X,Y): (071,057)
+(X,Y): (074,049)
 
 Page #1
 Conditions
@@ -67788,6 +67788,106 @@ Trigger: Event Touch
 
 List of Event Commands:
 @>Script: pbBridgeOff
+@>
+
+#------------------------------------------------------------------------------
+Event ID: 051
+Event Name: EV051
+(X,Y): (075,049)
+
+Page #1
+Conditions
+None
+
+Autonomous Movement
+Type: Fixed
+Speed: 3: Slow
+Freq: 3: Low
+Options Enabled
+Move Animation
+Trigger: Action Button
+
+List of Event Commands:
+@>Script: $PokemonGlobal.dungeon_area = :forest_tpdp
+@>Play SE: 'Door exit', 80, 100
+@>Change Screen Color Tone: (-255,-255,-255,0), @6
+@>Wait: 8 frame(s)
+@>Transfer Player:[093: Training Simulator (Forest)], (000,002), Right, No Fade
+@>Change Screen Color Tone: (0,0,0,0), @6
+@>
+
+#------------------------------------------------------------------------------
+Event ID: 052
+Event Name: EV052
+(X,Y): (076,049)
+
+Page #1
+Conditions
+None
+
+Autonomous Movement
+Type: Fixed
+Speed: 3: Slow
+Freq: 3: Low
+Options Enabled
+Move Animation
+Trigger: Action Button
+
+List of Event Commands:
+@>Show Choices: Lush Forest, Deep Caverns, Lunar Trenches
+(When Cancel: Choice 2)
+: When [Lush Forest]
+ @>Text: The Lush Forest simulator. Is that correct?
+ @>Show Choices: Yes, No
+ (When Cancel: Choice 2)
+ : When [Yes]
+  @>Text: Alright then, good luck on your training!
+  @>Script: $PokemonGlobal.dungeon_area = :forest_tpdp
+  @>Play SE: 'Door exit', 80, 100
+  @>Change Screen Color Tone: (-255,-255,-255,0), @6
+  @>Wait: 8 frame(s)
+  @>Transfer Player:[093: Training Simulator (Forest)], (006,005), Down, No Fade
+  @>Change Screen Color Tone: (0,0,0,0), @6
+  @>
+ : When [No]
+  @>
+ : Branch End
+ @>
+: When [Deep Caverns]
+ @>Text: The Deep Caverns simulator. Is that correct?
+ @>Show Choices: Yes, No
+ (When Cancel: Choice 2)
+ : When [Yes]
+  @>Text: Alright then, good luck on your training!
+  @>Script: $PokemonGlobal.dungeon_area = :cave_tpdp
+  @>Play SE: 'Door exit', 80, 100
+  @>Change Screen Color Tone: (-255,-255,-255,0), @6
+  @>Wait: 8 frame(s)
+  @>Transfer Player:[127: Training Simulator (Cave)], (007,006), Down, No Fade
+  @>Change Screen Color Tone: (0,0,0,0), @6
+  @>
+ : When [No]
+  @>
+ : Branch End
+ @>
+: When [Lunar Trenches]
+ @>Text: The Lunar Trenches simulator. Is that correct?
+ @>Show Choices: Yes, No
+ (When Cancel: Choice 2)
+ : When [Yes]
+  @>Text: Alright then, good luck on your training!
+  @>Script: $PokemonGlobal.dungeon_area = :moon
+  @>Play SE: 'Door exit', 80, 100
+  @>Change Screen Color Tone: (-255,-255,-255,0), @6
+  @>Wait: 8 frame(s)
+  @>Transfer Player:[128: Training Simulator (Moon)], (010,007), Down, No Fade
+  @>Change Screen Color Tone: (0,0,0,0), @6
+  @>
+ : When [No]
+  @>
+ : Branch End
+ @>
+: Branch End
 @>
 
 #------------------------------------------------------------------------------
@@ -70416,6 +70516,208 @@ List of Event Commands:
 @>
 
 #------------------------------------------------------------------------------
+Event ID: 045
+Event Name: EV045
+(X,Y): (053,046)
+
+Page #1
+Conditions
+None
+
+Autonomous Movement
+Type: Fixed
+Speed: 3: Slow
+Freq: 6: Highest
+Options Enabled
+Move Animation
+Trigger: Event Touch
+
+List of Event Commands:
+@>Play SE: 'Door exit', 60, 100
+@>Change Screen Color Tone: (-255,-255,-255,0), @6
+@>Wait: 8 frame(s)
+@>Transfer Player:[122: Storehouse], (007,008), Up, No Fade
+@>Change Screen Color Tone: (0,0,0,0), @6
+@>Set Move Route: Player
+ :              : $>Move Down
+@>
+
+Page #2
+Conditions
+Switch 0022: s:tsOff?("A") is ON
+
+Autonomous Movement
+Type: Fixed
+Speed: 3: Slow
+Freq: 3: Low
+Options Enabled
+Move Animation
+Trigger: Autorun
+
+List of Event Commands:
+@>Conditional Branch: Script: get_self.onEvent?
+ @>Change Transparent Flag: Normal
+ @>Set Move Route: Player
+                   (Ignore If Can't Move)
+  :              : $>Move Down
+ @>Wait for Move's Completion
+ @>
+: Branch End
+@>Script: setTempSwitchOn("A")
+@>
+
+#------------------------------------------------------------------------------
+Event ID: 046
+Event Name: EV046
+(X,Y): (054,046)
+
+Page #1
+Conditions
+None
+
+Autonomous Movement
+Type: Fixed
+Speed: 3: Slow
+Freq: 6: Highest
+Options Enabled
+Move Animation
+Trigger: Event Touch
+
+List of Event Commands:
+@>Play SE: 'Door exit', 60, 100
+@>Change Screen Color Tone: (-255,-255,-255,0), @6
+@>Wait: 8 frame(s)
+@>Transfer Player:[122: Storehouse], (008,008), Up, No Fade
+@>Change Screen Color Tone: (0,0,0,0), @6
+@>Set Move Route: Player
+ :              : $>Move Down
+@>
+
+Page #2
+Conditions
+Switch 0022: s:tsOff?("A") is ON
+
+Autonomous Movement
+Type: Fixed
+Speed: 3: Slow
+Freq: 3: Low
+Options Enabled
+Move Animation
+Trigger: Autorun
+
+List of Event Commands:
+@>Conditional Branch: Script: get_self.onEvent?
+ @>Change Transparent Flag: Normal
+ @>Set Move Route: Player
+                   (Ignore If Can't Move)
+  :              : $>Move Down
+ @>Wait for Move's Completion
+ @>
+: Branch End
+@>Script: setTempSwitchOn("A")
+@>
+
+#------------------------------------------------------------------------------
+Event ID: 047
+Event Name: EV047
+(X,Y): (027,037)
+
+Page #1
+Conditions
+None
+
+Graphic: Doors_TPDP2
+
+Autonomous Movement
+Type: Fixed
+Speed: 3: Slow
+Freq: 6: Highest
+Options Enabled
+Move Animation
+Trigger: Event Touch
+
+List of Event Commands:
+@>Set Move Route: This event
+                  (Ignore If Can't Move)
+ :              : $>SE: 'Door enter', 100, 100
+ :              : $>Wait: 2 frame(s)
+ :              : $>Turn Left
+ :              : $>Wait: 2 frame(s)
+ :              : $>Turn Right
+ :              : $>Wait: 2 frame(s)
+ :              : $>Turn Up
+ :              : $>Wait: 2 frame(s)
+@>Wait for Move's Completion
+@>Set Move Route: Player
+                  (Ignore If Can't Move)
+ :              : $>Through ON
+ :              : $>Move Up
+ :              : $>Through OFF
+@>Wait for Move's Completion
+@>Change Transparent Flag: Transparency
+@>Script: Followers.follow_into_door
+@>Wait for Move's Completion
+@>Set Move Route: This event
+                  (Ignore If Can't Move)
+ :              : $>Wait: 2 frame(s)
+ :              : $>Turn Right
+ :              : $>Wait: 2 frame(s)
+ :              : $>Turn Left
+ :              : $>Wait: 2 frame(s)
+ :              : $>Turn Down
+ :              : $>Wait: 2 frame(s)
+@>Wait for Move's Completion
+@>Change Screen Color Tone: (-255,-255,-255,0), @6
+@>Wait: 8 frame(s)
+@>Change Transparent Flag: Normal
+@>Transfer Player:[092: Capital Puppet Center], (011,027), Up, No Fade
+@>Change Screen Color Tone: (0,0,0,0), @6
+@>
+
+Page #2
+Conditions
+Switch 0022: s:tsOff?("A") is ON
+
+Graphic: Doors_TPDP3
+
+Autonomous Movement
+Type: Fixed
+Speed: 3: Slow
+Freq: 3: Low
+Options Enabled
+Move Animation
+Trigger: Autorun
+
+List of Event Commands:
+@>Conditional Branch: Script: get_self.onEvent?
+ @>Change Transparent Flag: Transparency
+ @>Script: Followers.hide_followers
+ @>Set Move Route: This event
+                   (Ignore If Can't Move)
+  :              : $>Turn Left
+  :              : $>Wait: 6 frame(s)
+ @>Wait for Move's Completion
+ @>Change Transparent Flag: Normal
+ @>Set Move Route: Player
+                   (Ignore If Can't Move)
+  :              : $>Move Down
+ @>Wait for Move's Completion
+ @>Script: Followers.put_followers_on_player
+ @>Set Move Route: This event
+                   (Ignore If Can't Move)
+  :              : $>Turn Up
+  :              : $>Wait: 2 frame(s)
+  :              : $>Turn Right
+  :              : $>Wait: 2 frame(s)
+  :              : $>Turn Down
+  :              : $>Wait: 2 frame(s)
+ @>Wait for Move's Completion
+ @>
+: Branch End
+@>Script: setTempSwitchOn("A")
+@>
+
+#------------------------------------------------------------------------------
 
 #==============================================================================
 Map ID: 092
@@ -70442,15 +70744,15 @@ Custom Move Route:
 $>Turn at Random
 
 Speed: 3: Slow
-Freq: 3: Low
+Freq: 4: High
 Options Enabled
 Move Animation
 Trigger: Action Button
 
 List of Event Commands:
 @>Text: \xn[\pn]Excuse me, Lady Sagume?
-@>Text: \xn[\pn]\b(Hopefully I have the right person... It'd be real awkward if
- :    : I address them by the wrong name.)
+@>Text: \xn[\pn]\b(Hopefully I have the right person... It'd be real 
+ :    : awkward if I address them by the wrong name.)
 @>Text: \xn[???]...
 @>Text: \xn[\pn]...Hello?
 @>Text: \xn[???]... ... ...\wt[20]What is a human like you 
@@ -70458,26 +70760,28 @@ List of Event Commands:
 @>Show Animation: Player, [Exclaim bubble]
 @>Set Move Route: Player
  :              : $>Direction Fix ON
- :              : $>Change Speed: 6
+ :              : $>Change Speed: 5
  :              : $>1 Step Backward
  :              : $>Change Speed: 4
+ :              : $>Direction Fix OFF
 @>Text: \xn[\pn]\b(Wh- She figured out I was a human instantly!?)
 @>Set Move Route: Player
- :              : $>Move Up
+ :              : $>1 Step Forward
 @>Text: \xn[\pn]N-No! What are you talking about! I'm-\wtnp[1]
-@>Text: \xn[???]A human... \wt[10]From Gensokyo.
+@>Text: \xn[???]A human... \wt[15]From Gensokyo.
 @>Text: \xn[\pn]\b(No sense denying it then... Can't fool a goddess.)
-@>Text: \xn[???]I see. So it looks like our operations there were
+@>Text: \xn[???]I see.\wt[10] So it looks like our operations there were
  :    : unveiled.
 @>Text: \xn[\pn]So you <i>are</i> responsible for the invasion of
  :    : Gensokyo! Why?
 @>Text: \xn[???]... Why are you here? What is your role in all this?
-@>Text: \xn[\pn]Well, I was tasked by Miss Yagokoro to figure out why the
- :    : Moon was invading Gensokyo, and-\wtnp[1]
+@>Text: \xn[\pn]Well, I was tasked by Miss Yagokoro to figure out why 
+ :    : the Moon was invading Gensokyo, and-\wtnp[1]
 @>Show Animation: [Sagume], [Exclaim bubble]
-@>Text: \xn[???]Lady Yagokoro...! I see, I now understand why
+@>Text: \xn[???]Lady Yagokoro...!\wt[15] I see, I now understand why
  :    : you are here.
 @>Text: \xn[???]But why would she send a human...-\wtnp[1]
+@>Play BGM: 'W-035. Faraway Voyage of 380 000 Kilometers', 100, 100
 @>Text: Lady Sagume! Lady Sagume! We have big trouble brewing!
 @>Show Animation: [Sagume], [Exclaim bubble]
 @>Set Move Route: [Sagume]
@@ -70554,8 +70858,8 @@ List of Event Commands:
  : Branch End
  @>
 : Branch End
-@>Text: \xn[\pn]I don't think I can decline this... But if it means I can finally
- :    : get some answers!
+@>Text: \xn[\pn]I don't think I can decline this... But if it means I can 
+ :    : finally get some answers!
 @>Text: \xn[Sagume]Yes, all will be made clear.
 @>Change Screen Color Tone: (-255,-255,-255,0), @6
 @>Wait: 8 frame(s)
@@ -70948,7 +71252,14 @@ List of Event Commands:
  @>Play SE: 'Door exit', 100, 100
  @>Change Screen Color Tone: (-255,-255,-255,0), @6
  @>Wait: 8 frame(s)
- @>Transfer Player:[091: Lunar Capital], (027,037), Down, No Fade
+ @>Conditional Branch: Variable [0121: TKoL Plot Variable] == 14
+  @>Transfer Player:[126: Lunar Capital (Cutscene)], (035,022), Down, No Fade
+  @>Change Transparent Flag: Transparency
+  @>
+ : Else
+  @>Transfer Player:[091: Lunar Capital], (027,037), Down, No Fade
+  @>
+ : Branch End
  @>Change Screen Color Tone: (0,0,0,0), @6
  @>Set Move Route: Player
   :              : $>Move Down
@@ -70981,7 +71292,14 @@ List of Event Commands:
  @>Play SE: 'Door exit', 100, 100
  @>Change Screen Color Tone: (-255,-255,-255,0), @6
  @>Wait: 8 frame(s)
- @>Transfer Player:[091: Lunar Capital], (027,037), Down, No Fade
+ @>Conditional Branch: Variable [0121: TKoL Plot Variable] == 14
+  @>Transfer Player:[126: Lunar Capital (Cutscene)], (035,022), Down, No Fade
+  @>Change Transparent Flag: Transparency
+  @>
+ : Else
+  @>Transfer Player:[091: Lunar Capital], (027,037), Down, No Fade
+  @>
+ : Branch End
  @>Change Screen Color Tone: (0,0,0,0), @6
  @>Set Move Route: Player
   :              : $>Move Down
@@ -71076,6 +71394,63 @@ List of Event Commands:
 @>Show Choices: Yes, No, Explain
 (When Cancel: Choice 2)
 : When [Yes]
+ @>Text: We have three different areas you can train in, each with
+  :    : their own unique set of Puppets. Which would you like
+  :    : to train in?
+ @>Show Choices: Lush Forest, Deep Caverns, Lunar Trenches
+ (When Cancel: Choice 2)
+ : When [Lush Forest]
+  @>Text: The Lush Forest simulator. Is that correct?
+  @>Show Choices: Yes, No
+  (When Cancel: Choice 2)
+  : When [Yes]
+   @>Text: Alright then, good luck on your training!
+   @>Script: $PokemonGlobal.dungeon_area = :forest_tpdp
+   @>Play SE: 'Door exit', 80, 100
+   @>Change Screen Color Tone: (-255,-255,-255,0), @6
+   @>Wait: 8 frame(s)
+   @>Transfer Player:[093: Training Simulator (Forest)], (006,005), Down, No Fade
+   @>Change Screen Color Tone: (0,0,0,0), @6
+   @>
+  : When [No]
+   @>
+  : Branch End
+  @>
+ : When [Deep Caverns]
+  @>Text: The Deep Caverns simulator. Is that correct?
+  @>Show Choices: Yes, No
+  (When Cancel: Choice 2)
+  : When [Yes]
+   @>Text: Alright then, good luck on your training!
+   @>Script: $PokemonGlobal.dungeon_area = :cave_tpdp
+   @>Play SE: 'Door exit', 80, 100
+   @>Change Screen Color Tone: (-255,-255,-255,0), @6
+   @>Wait: 8 frame(s)
+   @>Transfer Player:[127: Training Simulator (Cave)], (007,006), Down, No Fade
+   @>Change Screen Color Tone: (0,0,0,0), @6
+   @>
+  : When [No]
+   @>
+  : Branch End
+  @>
+ : When [Lunar Trenches]
+  @>Text: The Lunar Trenches simulator. Is that correct?
+  @>Show Choices: Yes, No
+  (When Cancel: Choice 2)
+  : When [Yes]
+   @>Text: Alright then, good luck on your training!
+   @>Script: $PokemonGlobal.dungeon_area = :moon
+   @>Play SE: 'Door exit', 80, 100
+   @>Change Screen Color Tone: (-255,-255,-255,0), @6
+   @>Wait: 8 frame(s)
+   @>Transfer Player:[128: Training Simulator (Moon)], (010,007), Down, No Fade
+   @>Change Screen Color Tone: (0,0,0,0), @6
+   @>
+  : When [No]
+   @>
+  : Branch End
+  @>
+ : Branch End
  @>
 : When [No]
  @>
@@ -71083,10 +71458,8 @@ List of Event Commands:
  @>Text: The Puppet Training Simulator was established by order of
   :    : Lady Sagume as a way to train recruits of the Lunar Defense
   :    : Corps on how to use Puppets.
- @>Text: However, as time went on, the service expanded to allow 
-  :    : anybody with Puppets to make use of the service!
- @>Text: The Simulator will put you in an area filled with Puppets provided by
-  :    : the Capital to battle against.
+ @>Text: The Simulator will put you in an area filled with Puppets provided 
+  :    : by the Capital to battle against.
  @>Text: You can use this area to train to your hearts content.
  @>Text: However, none of the Puppets here will be captureable.
  @>Text: After every battle, your party will be healed automatically.
@@ -71104,6 +71477,21 @@ Conditions
 None
 
 Graphic: TPDP_NPC 54
+
+Autonomous Movement
+Type: Fixed
+Speed: 3: Slow
+Freq: 3: Low
+Options Enabled
+Move Animation
+Trigger: Action Button
+
+List of Event Commands:
+@>
+
+Page #2
+Conditions
+Variable 0121: TKoL Plot Variable is 14 or above
 
 Autonomous Movement
 Type: Fixed
@@ -71162,10 +71550,42 @@ List of Event Commands:
 
 #==============================================================================
 Map ID: 093
-Map Name: Training Simulator
-Tileset: 004: Poke Center
+Map Name: Training Simulator (Forest)
+Tileset: 044: Dungeon (Forest)
 Width: 20, Height: 15
 Auto-Change BGM: X-004. Cavern of Remembrance
+
+#------------------------------------------------------------------------------
+Event ID: 001
+Event Name: Exit NPC
+(X,Y): (000,000)
+
+Page #1
+Conditions
+None
+
+Graphic: TPDP_NPC 54
+
+Autonomous Movement
+Type: Fixed
+Speed: 3: Slow
+Freq: 3: Low
+Options Enabled
+Move Animation
+Trigger: Action Button
+
+List of Event Commands:
+@>Text: Do you want to exit the simulator?
+@>Show Choices: Yes, No
+(When Cancel: Choice 2)
+: When [Yes]
+ @>
+: When [No]
+ @>
+: Branch End
+@>
+
+#------------------------------------------------------------------------------
 
 #==============================================================================
 Map ID: 094
@@ -73330,7 +73750,7 @@ Width: 20, Height: 15
 #==============================================================================
 Map ID: 115
 Map Name: Dummy Map
-Tileset: 001: Outside
+Tileset: 027: Human Village
 Width: 20, Height: 15
 Auto-Change BGM: W-004. Dimension of Reverie
 
@@ -77031,7 +77451,7 @@ Map ID: 126
 Map Name: Lunar Capital (Cutscene)
 Tileset: 042: The Moon
 Width: 81, Height: 86
-Auto-Change BGM: W-034. Frozen Capital of Eternity
+Auto-Change BGM: W-035. Faraway Voyage of 380 000 Kilometers
 
 #------------------------------------------------------------------------------
 Event ID: 001
@@ -77056,7 +77476,7 @@ List of Event Commands:
 
 #------------------------------------------------------------------------------
 Event ID: 002
-Event Name: Hell Fairy (Twintail)
+Event Name: Hell Fairy (Twintail) (Bottom)
 (X,Y): (034,027)
 
 Page #1
@@ -77076,9 +77496,26 @@ Trigger: Action Button
 List of Event Commands:
 @>
 
+Page #2
+Conditions
+Self Switch A is ON
+
+Graphic: TPDP_NPC 51
+
+Autonomous Movement
+Type: Fixed
+Speed: 3: Slow
+Freq: 3: Low
+Options Enabled
+Move Animation
+Trigger: Action Button
+
+List of Event Commands:
+@>
+
 #------------------------------------------------------------------------------
 Event ID: 003
-Event Name: Hell Fairy (Hairband)
+Event Name: Hell Fairy (Hairband) (Bottom)
 (X,Y): (035,029)
 
 Page #1
@@ -77098,9 +77535,26 @@ Trigger: Action Button
 List of Event Commands:
 @>
 
+Page #2
+Conditions
+Self Switch A is ON
+
+Graphic: TPDP_NPC 52
+
+Autonomous Movement
+Type: Fixed
+Speed: 3: Slow
+Freq: 3: Low
+Options Enabled
+Move Animation
+Trigger: Action Button
+
+List of Event Commands:
+@>
+
 #------------------------------------------------------------------------------
 Event ID: 004
-Event Name: Hell Fairy (Hat)
+Event Name: Hell Fairy (Hat) (Bottom)
 (X,Y): (036,027)
 
 Page #1
@@ -77120,9 +77574,26 @@ Trigger: Action Button
 List of Event Commands:
 @>
 
+Page #2
+Conditions
+Self Switch A is ON
+
+Graphic: TPDP_NPC 53
+
+Autonomous Movement
+Type: Fixed
+Speed: 3: Slow
+Freq: 3: Low
+Options Enabled
+Move Animation
+Trigger: Action Button
+
+List of Event Commands:
+@>
+
 #------------------------------------------------------------------------------
 Event ID: 005
-Event Name: Hell Fairy (Twintail)
+Event Name: Hell Fairy (Twintail) (Bottom)
 (X,Y): (037,027)
 
 Page #1
@@ -77142,9 +77613,26 @@ Trigger: Action Button
 List of Event Commands:
 @>
 
+Page #2
+Conditions
+Self Switch A is ON
+
+Graphic: TPDP_NPC 51
+
+Autonomous Movement
+Type: Fixed
+Speed: 3: Slow
+Freq: 3: Low
+Options Enabled
+Move Animation
+Trigger: Action Button
+
+List of Event Commands:
+@>
+
 #------------------------------------------------------------------------------
 Event ID: 006
-Event Name: Hell Fairy (Twintail)
+Event Name: Hell Fairy (Twintail) (Bottom)
 (X,Y): (035,027)
 
 Page #1
@@ -77164,9 +77652,26 @@ Trigger: Action Button
 List of Event Commands:
 @>
 
+Page #2
+Conditions
+Self Switch A is ON
+
+Graphic: TPDP_NPC 51
+
+Autonomous Movement
+Type: Fixed
+Speed: 3: Slow
+Freq: 3: Low
+Options Enabled
+Move Animation
+Trigger: Action Button
+
+List of Event Commands:
+@>
+
 #------------------------------------------------------------------------------
 Event ID: 007
-Event Name: Hell Fairy (Hat)
+Event Name: Hell Fairy (Hat) (Bottom)
 (X,Y): (035,028)
 
 Page #1
@@ -77186,9 +77691,26 @@ Trigger: Action Button
 List of Event Commands:
 @>
 
+Page #2
+Conditions
+Self Switch A is ON
+
+Graphic: TPDP_NPC 53
+
+Autonomous Movement
+Type: Fixed
+Speed: 3: Slow
+Freq: 3: Low
+Options Enabled
+Move Animation
+Trigger: Action Button
+
+List of Event Commands:
+@>
+
 #------------------------------------------------------------------------------
 Event ID: 008
-Event Name: Hell Fairy (Hairband)
+Event Name: Hell Fairy (Hairband) (Bottom)
 (X,Y): (036,028)
 
 Page #1
@@ -77208,9 +77730,26 @@ Trigger: Action Button
 List of Event Commands:
 @>
 
+Page #2
+Conditions
+Self Switch A is ON
+
+Graphic: TPDP_NPC 52
+
+Autonomous Movement
+Type: Fixed
+Speed: 3: Slow
+Freq: 3: Low
+Options Enabled
+Move Animation
+Trigger: Action Button
+
+List of Event Commands:
+@>
+
 #------------------------------------------------------------------------------
 Event ID: 009
-Event Name: Hell Fairy (Twintail)
+Event Name: Hell Fairy (Twintail) (Bottom)
 (X,Y): (037,028)
 
 Page #1
@@ -77230,14 +77769,48 @@ Trigger: Action Button
 List of Event Commands:
 @>
 
+Page #2
+Conditions
+Self Switch A is ON
+
+Graphic: TPDP_NPC 51
+
+Autonomous Movement
+Type: Fixed
+Speed: 3: Slow
+Freq: 3: Low
+Options Enabled
+Move Animation
+Trigger: Action Button
+
+List of Event Commands:
+@>
+
 #------------------------------------------------------------------------------
 Event ID: 010
-Event Name: Hell Fairy (Hairband)
+Event Name: Hell Fairy (Hairband) (Bottom)
 (X,Y): (034,028)
 
 Page #1
 Conditions
 None
+
+Graphic: TPDP_NPC 52
+
+Autonomous Movement
+Type: Fixed
+Speed: 3: Slow
+Freq: 3: Low
+Options Enabled
+Move Animation
+Trigger: Action Button
+
+List of Event Commands:
+@>
+
+Page #2
+Conditions
+Self Switch A is ON
 
 Graphic: TPDP_NPC 52
 
@@ -77294,7 +77867,7 @@ List of Event Commands:
 
 #------------------------------------------------------------------------------
 Event ID: 013
-Event Name: Hell Fairy (Hat)
+Event Name: Hell Fairy (Hat) (Bottom)
 (X,Y): (036,029)
 
 Page #1
@@ -77314,9 +77887,26 @@ Trigger: Action Button
 List of Event Commands:
 @>
 
+Page #2
+Conditions
+Self Switch A is ON
+
+Graphic: TPDP_NPC 53
+
+Autonomous Movement
+Type: Fixed
+Speed: 3: Slow
+Freq: 3: Low
+Options Enabled
+Move Animation
+Trigger: Action Button
+
+List of Event Commands:
+@>
+
 #------------------------------------------------------------------------------
 Event ID: 014
-Event Name: Hell Fairy (Twintail)
+Event Name: Hell Fairy (Twintail) (Bottom)
 (X,Y): (034,029)
 
 Page #1
@@ -77336,14 +77926,48 @@ Trigger: Action Button
 List of Event Commands:
 @>
 
+Page #2
+Conditions
+Self Switch A is ON
+
+Graphic: TPDP_NPC 51
+
+Autonomous Movement
+Type: Fixed
+Speed: 3: Slow
+Freq: 3: Low
+Options Enabled
+Move Animation
+Trigger: Action Button
+
+List of Event Commands:
+@>
+
 #------------------------------------------------------------------------------
 Event ID: 015
-Event Name: Hell Fairy (Hairband)
+Event Name: Hell Fairy (Hairband) (Bottom)
 (X,Y): (037,029)
 
 Page #1
 Conditions
 None
+
+Graphic: TPDP_NPC 52
+
+Autonomous Movement
+Type: Fixed
+Speed: 3: Slow
+Freq: 3: Low
+Options Enabled
+Move Animation
+Trigger: Action Button
+
+List of Event Commands:
+@>
+
+Page #2
+Conditions
+Self Switch A is ON
 
 Graphic: TPDP_NPC 52
 
@@ -77610,6 +78234,21 @@ Conditions
 None
 
 Graphic: TPDP_NPC 51
+
+Autonomous Movement
+Type: Fixed
+Speed: 3: Slow
+Freq: 3: Low
+Options Enabled
+Move Animation
+Trigger: Action Button
+
+List of Event Commands:
+@>
+
+Page #2
+Conditions
+Variable 0121: TKoL Plot Variable is 0 or above
 
 Autonomous Movement
 Type: Fixed
@@ -77889,7 +78528,7 @@ List of Event Commands:
 #------------------------------------------------------------------------------
 Event ID: 040
 Event Name: Clownpiece
-(X,Y): (053,038)
+(X,Y): (036,034)
 
 Page #1
 Conditions
@@ -78003,7 +78642,7 @@ List of Event Commands:
 #------------------------------------------------------------------------------
 Event ID: 045
 Event Name: Sagume
-(X,Y): (051,038)
+(X,Y): (035,033)
 
 Page #1
 Conditions
@@ -78025,7 +78664,7 @@ List of Event Commands:
 #------------------------------------------------------------------------------
 Event ID: 046
 Event Name: Player (Cutscene)
-(X,Y): (052,038)
+(X,Y): (036,033)
 
 Page #1
 Conditions
@@ -78059,35 +78698,91 @@ Speed: 3: Slow
 Freq: 3: Low
 Options Enabled
 Move Animation
-Trigger: Action Button
+Trigger: Autorun
 
 List of Event Commands:
 @>Text: \xn[Rabbit Guard 2]Ghk... Is this the end...?
-@>Text: \xn[Rabbit Guard 4]If this is the end, then we'll go down protecting
- :    : the Princesses!
+@>Text: \xn[Rabbit Guard 4]If this is the end, then we'll go down 
+ :    : protecting the Princesses!
 @>Text: \xn[Rabbit Guard 4]Stand strong, girls! Give these Hell Fairies no 
  :    : quarter!
 @>Text: \xn[Hell Fairies]Gyahahaha!
 @>Wait: 10 frame(s)
+@>Change Text Options: Middle, Show
 @>Text: \xn[Sagume]Omoikane-Tan, Gunk Shot!
-@>Comment: (Have the southern-most fairies look down with confusion 
- :       : bubbles)
- :       : (Then have them display an exclamation mark as they part
- :       : left and right.)
- :       : (Have an arrow shot drop onto the ground between the
- :       : fairies)
+@>Script: pbSEPlay("Anim\PRSFX- Thousand Arrows2")
+@>Script: pbSetSelfSwitch(48,"A",true)
+@>Wait: 25 frame(s)
 @>Comment: (Sagume and the Player travel up the middle)
+@>Set Move Route: [Sagume]
+ :              : $>Through ON
+ :              : $>Move Up
+ :              : $>Move Up
+ :              : $>Move Up
+ :              : $>Move Up
+ :              : $>Move Up
+ :              : $>Move Up
+ :              : $>Move Up
+ :              : $>Move Up
+ :              : $>Move Up
+ :              : $>Move Up
+ :              : $>Turn Down
+@>Set Move Route: [Player (Cutscene)]
+ :              : $>Through ON
+ :              : $>Move Up
+ :              : $>Move Up
+ :              : $>Move Up
+ :              : $>Move Up
+ :              : $>Move Up
+ :              : $>Move Up
+ :              : $>Move Up
+ :              : $>Move Up
+ :              : $>Move Up
+ :              : $>Move Up
+ :              : $>Turn Down
+@>Wait for Move's Completion
+@>Change Text Options: Bottom, Show
 @>Text: \xn[Rabbit Guard 1]Lady Sagume! You're here!
 @>Text: \xn[Sagume]Fall back and reinforce the Palace! We shall handle
  :    : things from here.
 @>Text: \xn[Rabbit Guards]Ma'am! Yes Ma'am!
-@>Comment: (Rabbit Guards run north off screen)
+@>Set Move Route: [Rabbit Guard]
+ :              : $>Change Speed: 5
+ :              : $>Move Up
+ :              : $>Move Up
+ :              : $>Move Up
+ :              : $>Move Up
+ :              : $>Move Up
+@>Set Move Route: [Rabbit Guard]
+ :              : $>Change Speed: 5
+ :              : $>Move Up
+ :              : $>Move Up
+ :              : $>Move Up
+ :              : $>Move Up
+ :              : $>Move Up
+@>Set Move Route: [Rabbit Guard]
+ :              : $>Change Speed: 5
+ :              : $>Move Up
+ :              : $>Move Up
+ :              : $>Move Up
+ :              : $>Move Up
+ :              : $>Move Up
+@>Set Move Route: [Rabbit Guard]
+ :              : $>Change Speed: 5
+ :              : $>Move Up
+ :              : $>Move Up
+ :              : $>Move Up
+ :              : $>Move Up
+ :              : $>Move Up
+@>Scroll Map: Down, 2, 4
 @>Text: \xn[Sagume]Can I trust you to pull your weight?
-@>Text: \xn[Sagume]Don't have to ask me twice! Bring 'em on!
+@>Text: \xn[\pn]Don't have to ask me twice! Bring 'em on!
+@>Wait for Move's Completion
 @>Text: Look! New friends to play with!
 @>Text: Let's have fun breaking them!
 @>Text: \xn[\pn]\b(Hell Fairies... Can't be much worse than regular
  :    : fairies! Let's do this!)
+@>Text: [INSERT BATTLE HERE]
 @>Comment: (Cue double battle against Hell Fairies)
  :       : (During the battle, these Hell Fairies have boosted
  :       : Puppets. The Player's Puppets have a 5% chance to
@@ -78100,6 +78795,7 @@ List of Event Commands:
  :    : Puppets to recover their full strength after each battle.
 @>Text: Kyahahaha! You won't be able to stand up to us all
  :    : forever!
+@>Text: [INSERT BATTLE HERE]
 @>Comment: (Cue another double battle against Hell Fairies)
  :       : (Same conditions as before)
 @>Text: \xn[\pn]Bring on the next batch! I'll drive you all back!
@@ -78107,6 +78803,19 @@ List of Event Commands:
  :    : you on myself, then!
 @>Comment: (Have the Hell Fairies turn around toward Clownpiece, who
  :       : walks in from the south)
+@>Script: pbSetSelfSwitch(48,"A",true)
+@>Set Move Route: [Clownpiece]
+ :              : $>Through ON
+ :              : $>Move Up
+ :              : $>Move Up
+ :              : $>Move Up
+ :              : $>Move Up
+ :              : $>Move Up
+ :              : $>Move Up
+ :              : $>Move Up
+ :              : $>Move Up
+ :              : $>Move Up
+@>Wait for Move's Completion
 @>Text: \xn[\pn]\b(This fairy looks... stranger than the ones here. Their
  :    : leader?)
 @>Text: \xn[???]I'm Clownpiece, a Fairy from Hell, and the leader
@@ -78123,7 +78832,8 @@ List of Event Commands:
 @>Text: \xn[Clownpiece]An Earthling! What's an Earthling doing on the 
  :    : Moon? I wasn't told this would happen!
 @>Text: \xn[Clownpiece]But this is really interesting... Alright, I'll play
- :    : along! Against my Madness-Enhanced Puppets
+ :    : along! Let's see how long you can last against my 
+ :    : Madness-Enhanced Puppets!
 @>Text: \xn[\pn]Madness-Enhanced...?
 @>Text: \xn[Clownpiece]By the light of my torch, I can drive all who
  :    : witness it into insanity! Puppets included! And those that are
@@ -78138,106 +78848,350 @@ List of Event Commands:
 @>Text: \xn[\pn]Hell Fairy, regular Fairy, blessed by divine or maddening
  :    : power, it makes no difference. I'll combat your power of
  :    : madness with the Puppets I've put my trust in!
-@>Comment: (Clownpiece Battle Theme Here)
+@>Script: pbTrainerIntro(:CLOWNPIECE)
 @>Text: \xn[Clownpiece]Kyahahaha! Alright then! Fairies,
  :    : let's get ready to crank things up!
 @>Text: \xn[Clownpiece]It's lunatic time! I'll show you a true world
  :    : of madness!
-@>Comment: (Trigger Clownpiece Battle- Double battle against another
- :       : Hell Fairy.)
- :       : (Similar mechanics to the other Hell Fairies, but in this battle,
- :       : on the round after a Hell Fairy is defeated, a new one tags
- :       : in and takes their place. After three of them are defeated,
- :       : a switch is triggered to prevent EXP from being gained.)
-@>Comment: (Defeating Clownpiece causes the partner fairy to retreat,
- :       : and end the battle.)
-@>Comment: -----------------
-@>Comment: (After battle is over, have several exclamation marks 
- :       : appear over the Hell Fairies)
-@>Text: No way, Clownpiece lost...?
-@>Text: But she was the strongest one of us...
-@>Wait: 10 frame(s)
-@>Text: Retreat!
-@>Comment: (Have all of the Hell Fairies scatter in the direction opposite
- :       : they're facing)
- :       : (Have Clownpiece turn to face the fleeing fairies)
-@>Text: \xn[Clownpiece]Wait, come back!
-@>Text: \xn[Clownpiece]Hah... We were told as long as we fairies,
- :    : symbols of life incarnate, controlled the Moon, then
- :    : the people of the Capital wouldn't be able to oppose us...
-@>Text: \xn[Clownpiece]But how could we have planned for a counter
- :    : attack by someone from the Earth!
-@>Text: \xn[\pn]And who exactly was the one that told you that?
-@>Text: \xn[Clownpiece]Our Honorable Friend, of course! She's the
- :    : one who refined our power!
-@>Text: \xn[Clownpiece]She told us that once she "purified" us, then
- :    : the Capital wouldn't be able to lay a finger on us!
-@>Text: \xn[Sagume]... Purification...
-@>Text: \xn[Clownpiece]But I'm growing tired of this... I think I'll take
- :    : after my friends and skedadle!
-@>Text: \xn[\pn]Hey, wait!
-@>Comment: (Screen fade to black, Clownpiece flees)
- :       : (Screen fades back in)
-@>Text: \xn[\pn]Darn it, she got away before I could get more
- :    : information from her!
-@>Comment: (Player turns to Sagume)
-@>Text: \xn[\pn]Well, we drove them off at least. That means you'll
- :    : answer my questions now, right?
-@>Text: \xn[Sagume]... Very well then. Perhaps, someone of your
- :    : strength, and unique standing...
-@>Comment: (Sagume turns back toward the Player)
-@>Text: \xn[Sagume]My name, as you have surmised, is Sagume Kishin.
-@>Text: \xn[Sagume]Earlier you inquired as to why I was so quiet. 'tis
- :    : because I have the ability to manipulate fate through the power
- :    : of spoken word.
-@>Text: \xn[Sagume]So when things are going according to plan, I can ill
- :    : afford to speak too much, lest I risk plans going awry.
-@>Text: \xn[Sagume]"Least said, soonest mended", as the saying goes.
-@>Text: \xn[\pn]You're definitely more talkative now... What does that
- :    : mean, have your plans come to fruition then?
-@>Text: \xn[Sagume]Quite the opposite. In response to the abnormal
- :    : assault by the otherworldly forces, I devised a strategy to
- :    : relocate the entirety of the Lunar Capital to Gensokyo.
-@>Text: \xn[Sagume]This necessitated the actions of purifying the land,
- :    : as the inhabitants of the Capital cannot exist in a land where
- :    : Death is a concept.
-@>Text: \xn[\pn]The purification of the land would have eradicated the
- :    : entirety of Gensokyo's population...! Sure the situation here is
- :    : bad, but-
-@>Text: \xn[Sagume]An ideal solution, it was not. Truthfully, I devised it
- :    : as insurance in the hopes that we could drive back the invaders.
-@>Text: \xn[Sagume]When we noticed that Puppets were being utilized
- :    : throughout Gensokyo to resolve conflicts, we opted to import
- :    : Puppets to counter the invaders.
-@>Text: \xn[Sagume]...Unfortunately, the leaders of this invasion
- :    : noticed this, and begun to utilize Puppets in their assault
- :    : as well.
-@>Text: \xn[Sagume]This prompted us to return to the original plan-
- :    : the Gensokyo Capital Relocation Plan. But now..
-@>Text: \xn[\pn]Now..?
-@>Text: \xn[Sagume]Having spoken it aloud, that plan is now moot. Instead, 
- :    : I shall be throwing in my lot with you. You shall be the key to the 
- :    : Capital's salvation!
-@>Text: \xn[\pn]Wait, what-
-@>Text: \xn[Sagume]Yes, let it be spoken now: you, the one from
- :    : Gensokyo, shall be the one to save the Lunar Capital!
-@>Text: \xn[Sagume]Let the wheels of fate begin to turn over...
-@>Text: \xn[\pn]So, uh... what is it you would have me do, then...?
-@>Text: \xn[Sagume]Judging by the intel we've recieved from the field,
- :    : the enemy has made their stronghold out on the Mare Tranquillitatis-
- :    : the Sea of Tranquility, in Earthling parlance.
-@>Text: \xn[Sagume]You must go there, the enemy's home base, and 
- :    : defeat her! For the sake of not just the Lunar Capital, but for
- :    : Gensokyo as well!
-@>Text: \xn[\pn]\b(What have I even gotten myself into...)
-@>Comment: (Transfer the player back to the normal Lunar Capital map)
- :       : (Change the plot variable +1)
- :       : (have NPCs wandering the Capital again)
- :       : (Have the rabbits guarding the palace say they are under
- :       : orders to let nobody pass)
+@>Text: [INSERT BATTLE HERE]
+@>Control Switches: [0104: Transition Handler] = ON
+@>Control Variables: [0103: Vs. Transition ID] = 45
+@>Conditional Branch: Switch [0107: New Game +] == OFF
+ @>Control Variables: [0104: Vs. Transition - Pkmn] = 4
+ @>
+: Else
+ @>Control Variables: [0104: Vs. Transition - Pkmn] = 4
+ @>
+: Branch End
+@>Conditional Branch: Script: TrainerBattle.start(:DOREMY, "Doremy Sweet", 10+(pbGet(99) * 10))
+ @>Comment: (Trigger Clownpiece Battle- Double battle against another
+  :       : Hell Fairy.)
+  :       : (Similar mechanics to the other Hell Fairies, but in this battle,
+  :       : on the round after a Hell Fairy is defeated, a new one tags
+  :       : in and takes their place. After three of them are defeated,
+  :       : a switch is triggered to prevent EXP from being gained.)
+ @>Comment: (Defeating Clownpiece causes the partner fairy to retreat,
+  :       : and end the battle.)
+ @>Comment: -----------------
+ @>Comment: (After battle is over, have several exclamation marks 
+  :       : appear over the Hell Fairies)
+ @>Show Animation: [Hell Fairy (Twintail) (Bottom)], [Exclaim bubble]
+ @>Show Animation: [Hell Fairy (Hat) (Bottom)], [Exclaim bubble]
+ @>Show Animation: [Hell Fairy (Twintail) (Bottom)], [Exclaim bubble]
+ @>Show Animation: [Hell Fairy (Twintail)], [Exclaim bubble]
+ @>Show Animation: [Hell Fairy (Hairband)], [Exclaim bubble]
+ @>Show Animation: [Hell Fairy (Hat)], [Exclaim bubble]
+ @>Show Animation: [Hell Fairy (Hat)], [Exclaim bubble]
+ @>Show Animation: [Hell Fairy (Hat)], [Exclaim bubble]
+ @>Show Animation: [Hell Fairy (Hairband) (Bottom)], [Exclaim bubble]
+ @>Show Animation: [Hell Fairy (Hat) (Bottom)], [Exclaim bubble]
+ @>Text: No way, Clownpiece lost...?
+ @>Text: But she was the strongest one of us...
+ @>Wait: 10 frame(s)
+ @>Text: Retreat!
+ @>Change Screen Color Tone: (-255,-255,-255,0), @8
+ @>Wait: 8 frame(s)
+ @>Control Variables: [0121: TKoL Plot Variable] = 15
+ @>Change Screen Color Tone: (0,0,0,0), @8
+ @>Show Animation: [Clownpiece], [Exclaim bubble]
+ @>Set Move Route: [Clownpiece]
+  :              : $>Turn Left
+  :              : $>Wait: 15 frame(s)
+  :              : $>Turn Right
+  :              : $>Wait: 15 frame(s)
+  :              : $>Turn Down
+  :              : $>Wait: 15 frame(s)
+  :              : $>Turn Up
+ @>Text: \xn[Clownpiece]Wait, come back!
+ @>Wait for Move's Completion
+ @>Text: \xn[Clownpiece]Hah... We were told as long as we fairies,
+  :    : symbols of life incarnate, controlled the Moon, then
+  :    : the people of the Capital wouldn't be able to oppose us...
+ @>Text: \xn[Clownpiece]But how could we have planned for a counter
+  :    : attack by someone from the Earth!
+ @>Text: \xn[\pn]And who exactly was the one that told you that?
+ @>Text: \xn[Clownpiece]Our Honorable Friend, of course! She's the
+  :    : one who refined our power!
+ @>Text: \xn[Clownpiece]She told us that once she "purified" us, then
+  :    : the Capital wouldn't be able to lay a finger on us!
+ @>Text: \xn[Sagume]... Purification...
+ @>Text: \xn[Clownpiece]But I'm growing tired of this... I think I'll take
+  :    : after my friends and skedadle!
+ @>Change Screen Color Tone: (-255,-255,-255,0), @8
+ @>Text: \xn[\pn]Hey, wait!
+ @>Wait: 8 frame(s)
+ @>Control Variables: [0121: TKoL Plot Variable] = 16
+ @>Change Screen Color Tone: (0,0,0,0), @8
+ @>Text: \xn[\pn]Darn it, she got away before I could get more
+  :    : information from her!
+ @>Set Move Route: [Player (Cutscene)]
+  :              : $>Turn Left
+ @>Text: \xn[\pn]Well, we drove them off at least. That means you'll
+  :    : answer my questions now, right?
+ @>Text: \xn[Sagume]... Very well then. Perhaps, someone of your
+  :    : strength, and unique standing...
+ @>Set Move Route: [Sagume]
+  :              : $>Turn Right
+ @>Text: \xn[Sagume]My name, as you have surmised, is Sagume Kishin.
+ @>Text: \xn[Sagume]Earlier you inquired as to why I was so quiet. 'tis
+  :    : because I have the ability to manipulate fate through the power
+  :    : of spoken word.
+ @>Text: \xn[Sagume]So when things are going according to plan, I can ill
+  :    : afford to speak too much, lest I risk plans going awry.
+ @>Text: \xn[Sagume]"Least said, soonest mended", as the saying goes.
+ @>Text: \xn[\pn]You're definitely more talkative now... What does that
+  :    : mean, have your plans come to fruition then?
+ @>Text: \xn[Sagume]Quite the opposite. In response to the abnormal
+  :    : assault by the otherworldly forces, I devised a strategy to
+  :    : relocate the entirety of the Lunar Capital to Gensokyo.
+ @>Text: \xn[Sagume]This necessitated the actions of purifying the land,
+  :    : as the inhabitants of the Capital cannot exist in a land where
+  :    : Death is a concept.
+ @>Text: \xn[\pn]The purification of the land would have eradicated the
+  :    : entirety of Gensokyo's population...! Sure the situation here is
+  :    : bad, but-
+ @>Text: \xn[Sagume]An ideal solution, it was not. Truthfully, I devised it
+  :    : as insurance in the hopes that we could drive back the invaders.
+ @>Text: \xn[Sagume]When we noticed that Puppets were being utilized
+  :    : throughout Gensokyo to resolve conflicts, we opted to import
+  :    : Puppets to counter the invaders.
+ @>Text: \xn[Sagume]...Unfortunately, the leaders of this invasion
+  :    : noticed this, and begun to utilize Puppets in their assault
+  :    : as well.
+ @>Text: \xn[Sagume]This prompted us to return to the original plan-
+  :    : the Gensokyo Capital Relocation Plan. But now..
+ @>Text: \xn[\pn]Now..?
+ @>Text: \xn[Sagume]Having spoken it aloud, that plan is now moot. Instead, 
+  :    : I shall be throwing in my lot with you. You shall be the key to the 
+  :    : Capital's salvation!
+ @>Text: \xn[\pn]Wait, what-
+ @>Text: \xn[Sagume]Yes, let it be spoken now: you, the one from
+  :    : Gensokyo, shall be the one to save the Lunar Capital!
+ @>Text: \xn[Sagume]Let the wheels of fate begin to turn over...
+ @>Text: \xn[\pn]So, uh... what is it you would have me do, then...?
+ @>Text: \xn[Sagume]Judging by the intel we've recieved from the field,
+  :    : the enemy has made their stronghold out on the Mare Tranquillitatis-
+  :    : the Sea of Tranquility, in Earthling parlance.
+ @>Text: \xn[Sagume]You must go there, the enemy's home base, and 
+  :    : defeat her! For the sake of not just the Lunar Capital, but for
+  :    : Gensokyo as well!
+ @>Text: \xn[\pn]\b(What have I even gotten myself into...)
+ @>Transfer Player:[091: Lunar Capital], (036,026)
+ @>Control Variables: [0121: TKoL Plot Variable] = 16
+ @>Comment: (Transfer the player back to the normal Lunar Capital map)
+  :       : (Change the plot variable +1)
+  :       : (have NPCs wandering the Capital again)
+  :       : (Have the rabbits guarding the palace say they are under
+  :       : orders to let nobody pass)
+ @>
+: Else
+ @>Script: pbTrainerEnd
+ @>Exit Event Processing
+ @>
+: Branch End
 @>
 
 #------------------------------------------------------------------------------
+Event ID: 048
+Event Name: Fairy Movement Controller
+(X,Y): (041,012)
+
+Page #1
+Conditions
+Self Switch A is ON
+
+Graphic: Object ball
+
+Autonomous Movement
+Type: Fixed
+Speed: 3: Slow
+Freq: 3: Low
+Options Enabled
+Move Animation
+Trigger: Parallel Process
+
+List of Event Commands:
+@>Conditional Branch: Self Switch B == OFF
+ @>Script: for event in $game_map.events.values
+ :       :   if event.name[/Bottom/i]
+ :       :     $game_self_switches[[$game_map.map_id,event.id,"A"]] = true
+ :       :   end
+ :       : end
+ :       : $game_map.refresh
+ @>Show Animation: [Hell Fairy (Twintail) (Bottom)], [Question bubble]
+ @>Show Animation: [Hell Fairy (Hairband) (Bottom)], [Question bubble]
+ @>Show Animation: [Hell Fairy (Hat) (Bottom)], [Question bubble]
+ @>Show Animation: [Hell Fairy (Twintail) (Bottom)], [Question bubble]
+ @>Show Animation: [Hell Fairy (Twintail) (Bottom)], [Question bubble]
+ @>Show Animation: [Hell Fairy (Hat) (Bottom)], [Question bubble]
+ @>Show Animation: [Hell Fairy (Hairband) (Bottom)], [Question bubble]
+ @>Show Animation: [Hell Fairy (Twintail) (Bottom)], [Question bubble]
+ @>Show Animation: [Hell Fairy (Hairband) (Bottom)], [Question bubble]
+ @>Show Animation: [Hell Fairy (Hat) (Bottom)], [Question bubble]
+ @>Show Animation: [Hell Fairy (Twintail) (Bottom)], [Question bubble]
+ @>Show Animation: [Hell Fairy (Hairband) (Bottom)], [Question bubble]
+ @>Wait: 20 frame(s)
+ @>Show Animation: [Hell Fairy (Twintail) (Bottom)], [Exclaim bubble]
+ @>Show Animation: [Hell Fairy (Hairband) (Bottom)], [Exclaim bubble]
+ @>Show Animation: [Hell Fairy (Hat) (Bottom)], [Exclaim bubble]
+ @>Show Animation: [Hell Fairy (Twintail) (Bottom)], [Exclaim bubble]
+ @>Show Animation: [Hell Fairy (Twintail) (Bottom)], [Exclaim bubble]
+ @>Show Animation: [Hell Fairy (Hat) (Bottom)], [Exclaim bubble]
+ @>Show Animation: [Hell Fairy (Hairband) (Bottom)], [Exclaim bubble]
+ @>Show Animation: [Hell Fairy (Twintail) (Bottom)], [Exclaim bubble]
+ @>Show Animation: [Hell Fairy (Hairband) (Bottom)], [Exclaim bubble]
+ @>Show Animation: [Hell Fairy (Hat) (Bottom)], [Exclaim bubble]
+ @>Show Animation: [Hell Fairy (Twintail) (Bottom)], [Exclaim bubble]
+ @>Show Animation: [Hell Fairy (Hairband) (Bottom)], [Exclaim bubble]
+ @>Control Self Switch: B =ON
+ @>
+: Branch End
+@>Comment: --------------
+@>Wait: 10 frame(s)
+@>Set Move Route: [Hell Fairy (Twintail) (Bottom)]
+ :              : $>Change Speed: 5
+ :              : $>Turn Right
+ :              : $>Direction Fix ON
+ :              : $>Move Left
+ :              : $>Direction Fix OFF
+@>Set Move Route: [Hell Fairy (Hairband) (Bottom)]
+ :              : $>Change Speed: 5
+ :              : $>Turn Right
+ :              : $>Direction Fix ON
+ :              : $>Move Left
+ :              : $>Direction Fix OFF
+@>Set Move Route: [Hell Fairy (Twintail) (Bottom)]
+ :              : $>Change Speed: 5
+ :              : $>Turn Right
+ :              : $>Direction Fix ON
+ :              : $>Move Left
+ :              : $>Direction Fix OFF
+@>Set Move Route: [Hell Fairy (Hat) (Bottom)]
+ :              : $>Change Speed: 5
+ :              : $>Turn Right
+ :              : $>Direction Fix ON
+ :              : $>Move Left
+ :              : $>Direction Fix OFF
+@>Set Move Route: [Hell Fairy (Hairband) (Bottom)]
+ :              : $>Change Speed: 5
+ :              : $>Turn Right
+ :              : $>Direction Fix ON
+ :              : $>Move Left
+ :              : $>Direction Fix OFF
+@>Set Move Route: [Hell Fairy (Twintail) (Bottom)]
+ :              : $>Change Speed: 5
+ :              : $>Turn Right
+ :              : $>Direction Fix ON
+ :              : $>Move Left
+ :              : $>Direction Fix OFF
+@>Comment: --------------
+@>Set Move Route: [Hell Fairy (Hat) (Bottom)]
+ :              : $>Change Speed: 5
+ :              : $>Turn Left
+ :              : $>Direction Fix ON
+ :              : $>Move Right
+ :              : $>Direction Fix OFF
+@>Set Move Route: [Hell Fairy (Twintail) (Bottom)]
+ :              : $>Change Speed: 5
+ :              : $>Turn Left
+ :              : $>Direction Fix ON
+ :              : $>Move Right
+ :              : $>Direction Fix OFF
+@>Set Move Route: [Hell Fairy (Hairband) (Bottom)]
+ :              : $>Change Speed: 5
+ :              : $>Turn Left
+ :              : $>Direction Fix ON
+ :              : $>Move Right
+ :              : $>Direction Fix OFF
+@>Set Move Route: [Hell Fairy (Twintail) (Bottom)]
+ :              : $>Change Speed: 5
+ :              : $>Turn Left
+ :              : $>Direction Fix ON
+ :              : $>Move Right
+ :              : $>Direction Fix OFF
+@>Set Move Route: [Hell Fairy (Hat) (Bottom)]
+ :              : $>Change Speed: 5
+ :              : $>Turn Left
+ :              : $>Direction Fix ON
+ :              : $>Move Right
+ :              : $>Direction Fix OFF
+@>Set Move Route: [Hell Fairy (Hairband) (Bottom)]
+ :              : $>Change Speed: 5
+ :              : $>Turn Left
+ :              : $>Direction Fix ON
+ :              : $>Move Right
+ :              : $>Direction Fix OFF
+@>Wait for Move's Completion
+@>Control Self Switch: C =ON
+@>
+
+Page #2
+Conditions
+Self Switch C is ON
+
+Graphic: Object ball
+
+Autonomous Movement
+Type: Fixed
+Speed: 3: Slow
+Freq: 3: Low
+Options Enabled
+Move Animation
+Trigger: Parallel Process
+
+List of Event Commands:
+@>Comment: --------------
+@>Set Move Route: [Hell Fairy (Twintail) (Bottom)]
+ :              : $>Move Right
+@>Set Move Route: [Hell Fairy (Hairband) (Bottom)]
+ :              : $>Move Right
+@>Set Move Route: [Hell Fairy (Twintail) (Bottom)]
+ :              : $>Move Right
+@>Set Move Route: [Hell Fairy (Hat) (Bottom)]
+ :              : $>Move Right
+@>Set Move Route: [Hell Fairy (Hairband) (Bottom)]
+ :              : $>Move Right
+@>Set Move Route: [Hell Fairy (Twintail) (Bottom)]
+ :              : $>Move Right
+@>Comment: --------------
+@>Set Move Route: [Hell Fairy (Hat) (Bottom)]
+ :              : $>Move Left
+@>Set Move Route: [Hell Fairy (Twintail) (Bottom)]
+ :              : $>Move Left
+@>Set Move Route: [Hell Fairy (Hairband) (Bottom)]
+ :              : $>Move Left
+@>Set Move Route: [Hell Fairy (Twintail) (Bottom)]
+ :              : $>Move Left
+@>Set Move Route: [Hell Fairy (Hat) (Bottom)]
+ :              : $>Move Left
+@>Set Move Route: [Hell Fairy (Hairband) (Bottom)]
+ :              : $>Move Left
+@>Wait for Move's Completion
+@>Script: for event in $game_map.events.values
+:       :   if event.name[/Bottom/i]
+:       :     $game_self_switches[[$game_map.map_id,event.id,"A"]] = false
+:       :   end
+:       : end
+:       : $game_map.refresh
+@>Control Self Switch: C =OFF
+@>Control Self Switch: A =OFF
+@>
+
+#------------------------------------------------------------------------------
+
+#==============================================================================
+Map ID: 127
+Map Name: Training Simulator (Cave)
+Tileset: 045: Dungeon (Cave)
+Width: 20, Height: 15
+Auto-Change BGM: X-004. Cavern of Remembrance
+
+#==============================================================================
+Map ID: 128
+Map Name: Training Simulator (Moon)
+Tileset: 046: Dungeon (Moon)
+Width: 20, Height: 15
+Auto-Change BGM: X-004. Cavern of Remembrance
 
 #==============================================================================
 
@@ -81129,18 +82083,18 @@ List of Event Commands:
 @>Script: pbShowPicture(20,"Transitions/Bars_Over.png",1,256,192,zoomX=100,zoomY=100,opacity=230,blendType=0)
 @>Move Picture: 5, @5, Center (256,192), (100%,100%), 230, Normal
 @>Wait: 5 frame(s)
-@>Script: pbShowPicture(1,"Transitions/BGs/BGVillage.png",1,256,192,100,100,0,0)
+@>Script: pbShowPicture(1,"Transitions/BGs/BGCapital.png",1,256,192,100,100,0,0)
 @>Wait: 5 frame(s)
 @>Move Picture: 1, @5, Center (256,192), (100%,100%), 255, Normal
 @>Wait: 15 frame(s)
 @>Play SE: 'Vs flash', 80, 100
 @>Screen Flash: (255,255,255,255), @10
-@>Script: pbShowPicture(3,"Transitions/PTs/Char_KeineS.png",1,256,192,zoomX=100,zoomY=100,opacity=255,blendType=0)
+@>Script: pbShowPicture(3,"Transitions/PTs/Char_ClownpieceS.png",1,256,192,zoomX=100,zoomY=100,opacity=255,blendType=0)
 @>Wait: 25 frame(s)
 @>Screen Flash: (255,255,255,255), @10
 @>Play SE: 'Vs sword', 80, 100
-@>Script: pbShowPicture(5,"Transitions/PTs/Char_Keine.png",1,256,192,zoomX=100,zoomY=100,opacity=255,blendType=0)
-@>Script: pbShowPicture(21,"Transitions/Names/Name_Keine.png",1,256,192,zoomX=100,zoomY=100,opacity=255,blendType=0)
+@>Script: pbShowPicture(5,"Transitions/PTs/Char_Clownpiece.png",1,256,192,zoomX=100,zoomY=100,opacity=255,blendType=0)
+@>Script: pbShowPicture(21,"Transitions/Names/Name_Clownpiece.png",1,256,192,zoomX=100,zoomY=100,opacity=255,blendType=0)
 @>Move Picture: 3, @30, Center (250,192), (100%,100%), 255, Normal
 @>Call Common Event: Vs. Transition - Balls
 @>Wait: 60 frame(s)

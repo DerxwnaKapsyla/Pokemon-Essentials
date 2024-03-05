@@ -54,3 +54,18 @@ EventHandlers.add(:on_wild_pokemon_created, :pokemon_encounter,
 #	end
 #  }
 #)
+
+# Used in the Lunar Simulator Maps. Makes the levels of all wild Puppets in those
+# maps depend on the levels of player's party.
+# This is a simple method, and can/should be modified to account for evolutions
+# and other such details.  Of course, you don't HAVE to use this code.
+EventHandlers.add(:on_wild_pokemon_created, :level_depends_on_party,
+  proc { |pkmn|
+    next if !$game_map.metadata&.has_flag?("ScaleWildEncounterLevels")
+    new_level = pbBalancedLevel($player.party) - 4 + rand(5)   # For variety
+    new_level = new_level.clamp(1, GameData::GrowthRate.max_level)
+    pkmn.level = new_level
+    pkmn.calc_stats
+    pkmn.reset_moves
+  }
+)

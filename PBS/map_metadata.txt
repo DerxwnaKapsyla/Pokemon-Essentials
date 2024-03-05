@@ -11,7 +11,6 @@ Name = The Mansion of Mystery
 #-------------------------------
 [004]   # The Festival of Curses
 Name = The Festival of Curses
-ShowArea = false
 MapPosition = 0,13,12
 #-------------------------------
 [005]   # The Kingdom of Lunacy
@@ -180,7 +179,6 @@ Name = Credits - Group Shot
 #-------------------------------
 [037]   # Human Village
 Name = Human Village
-Outdoor = false
 Bicycle = true
 SnapEdges = true
 BattleBack = autumn
@@ -434,10 +432,12 @@ Flags = TKoL,Moon
 Name = Lunar Capital
 Flags = TKoL,Moon
 #-------------------------------
-[093]   # Training Simulator
+[093]   # Training Simulator (Forest)
 Name = Lunar Capital
+Bicycle = true
+Dungeon = true
 Environment = UltraSpace
-Flags = TKoL,Moon
+Flags = TKoL,Moon,ScaleWildEncounterLevels
 #-------------------------------
 [094]   # Surface of The Moon
 Name = Lunar Surface
@@ -447,7 +447,7 @@ Bicycle = true
 Environment = Space
 Flags = TKoL,Moon
 #-------------------------------
-[095]   # Lunar Trenches
+[095]   # Kaian Passageway
 Name = Lunar Surface
 Outdoor = true
 ShowArea = true
@@ -592,3 +592,23 @@ Name = Lunar Capital
 #-------------------------------
 [124]   # Infinite Hallway
 Name = Lunar Capital?
+#-------------------------------
+[126]   # Lunar Capital (Cutscene)
+Name = Lunar Capital
+Outdoor = true
+ShowArea = true
+Bicycle = true
+Environment = Space
+Flags = TKoL,Moon
+#-------------------------------
+[127]   # Training Simulator (Cave)
+Name = Lunar Capital
+Dungeon = true
+Environment = UltraSpace
+Flags = TKoL,Moon,ScaleWildEncounterLevels
+#-------------------------------
+[128]   # Training Simulator (Moon)
+Name = Lunar Capital
+Dungeon = true
+Environment = UltraSpace
+Flags = TKoL,Moon,ScaleWildEncounterLevels
