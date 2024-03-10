@@ -242,13 +242,35 @@ Pokemon = DOREMY,38
 	Ball = DREAMBALL
 
 #-------------------------------
-# Stage 4: Capital Outskirts
+# Stage 4: Lunar Capital
 #-------------------------------
+[HELLFAIRY,Reika]
+Pokemon = CLOWNPIECE,37
+[HELLFAIRY,Sienna]
+Pokemon = CLOWNPIECE,37
+[HELLFAIRY,Clarise]
+Pokemon = CLOWNPIECE,37
+[HELLFAIRY,Makiko]
+Pokemon = CLOWNPIECE,37
+
 
 #-------------------------------
-# Boss: Clownpiece
+# Boss: Clownpiece + Hell Fairy Backup
+# The three fairies will cycle back in every time after being defeated
 #-------------------------------
-
+[CLOWNPIECE,Clownpiece,10]
+LoseText = No way! That didn't just happen!
+Items = HYPERPOTION,HYPERPOTION,FULLHEAL,FULLHEAL
+Pokemon = LUNA,39
+Pokemon = HECATIA,42
+Pokemon = CLOWNPIECE,42
+Pokemon = CLOWNPIECE,45
+[HELLFAIRY,Lucia]
+Pokemon = CLOWNPIECE,37
+[HELLFAIRY,Astera]
+Pokemon = CLOWNPIECE,37
+[HELLFAIRY,Olivia]
+Pokemon = CLOWNPIECE,37
 
 #-------------------------------
 # Stage 5: Sea of Tranquility
@@ -257,27 +279,64 @@ Pokemon = DOREMY,38
 #-------------------------------
 # Boss: Junko
 #-------------------------------
-
+[JUNKO,Junko,10]
+LoseText = As the fates dictated, but no matter.
+Pokemon = AMOKOU,44
+Pokemon = TPARSEE,46
+Pokemon = ASUWAKO,46
+Pokemon = JUNKO,48
+Pokemon = DARKALICE,50
 
 #-------------------------------
-# Stage 6: Sea of Tranquility, Pt. 2
+# Stage 6: Sea of the Edge: Hecatia's Fortress
 #-------------------------------
 
 #-------------------------------
 # Boss: Junko
 #-------------------------------
-
+[JUNKO,Junko,11]
+LoseText = ... Chang'e, is this truly your answer to me?
+Pokemon = AMOKOU,44
+Pokemon = TPARSEE,46
+Pokemon = ASUWAKO,46
+Pokemon = JUNKO,48
+Pokemon = DARKALICE,50
+Pokemon = SARIEL,52
 #-------------------------------
 # Boss: Hecatia Lapislazuli
 #-------------------------------
+[HECATIA,Hecatia Lapislazuli,10]
+LoseText = Maybe I should have brought in all three of my bodies!
+Pokemon = CLOWNPIECE,44
+Pokemon = TSATORI,46
+Pokemon = KIKURI,46
+Pokemon = HECATIA,48
+Pokemon = SHINKI,50
+Pokemon = KONNGARA,52
 
 #-------------------------------
 # Partner: Reimu Hakurei
 #-------------------------------
+[REIMU,Reimu Hakurei,10]
+LoseText = ...
+Pokemon = DYUKARI,47
+Pokemon = SMARISA,47
+Pokemon = REIMU,48
+Pokemon = ASUIKA,50
+Pokemon = SENDAI,52
+Pokemon = AREIMU,54
 
 #-------------------------------
 # Partner: Marisa Kirisame
 #-------------------------------
+[MARISA_2,Marisa Kirisame,10]
+LoseText = ...
+Pokemon = TALICE,47
+Pokemon = MAGISTONES,47
+Pokemon = KIRISAME,48
+Pokemon = RINNOSUKE,50
+Pokemon = MIMA,52
+Pokemon = AMARISA,54
 
 #-------------------------------
 # Partner: Sanae Kochiya

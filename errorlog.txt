@@ -1565,3 +1565,544 @@ Backtrace:
 006_Event_HandlerCollections.rb:121:in `call'
 001_Debug_Menus.rb:136:in `block in pbDebugMenu'
 001_Debug_Menus.rb:100:in `loop'
+
+=================
+
+[2024-03-08 21:24:34 -0700]
+[Pokémon Essentials version 21.1]
+[v21.1 Hotfixes 1.0.6]
+
+Exception: RuntimeError
+Message: Unknown ID 129.
+
+Backtrace:
+001_GameData.rb:176:in `get'
+[TAoA Core] 002_Overworld_Time.rb:18:in `pbGetTimeNow'
+[Touhoumon Essentials Development Kit] 003_Overworld_Time.rb:51:in `isNight?'
+004_Game_Map.rb:114:in `bgm_name'
+004_Game_Map.rb:130:in `autoplay'
+[ENLS's Fancy Camera] 002_Method Overrides.rb:167:in `transfer_player'
+002_Scene_Map.rb:173:in `block in update'
+002_Scene_Map.rb:166:in `loop'
+002_Scene_Map.rb:166:in `update'
+002_Scene_Map.rb:238:in `block in main'
+
+=================
+
+[2024-03-08 21:26:15 -0700]
+[Pokémon Essentials version 21.1]
+[v21.1 Hotfixes 1.0.6]
+
+Script error in event 2 (coords 22,13), map 97 (Mare Tranquillitatis)
+Exception: RuntimeError
+Message: Trainer for data 'JUNKO, Junko, 10' is not defined.
+
+***Full script:
+TrainerBattle.start(:JUNKO, "Junko", 10+(pbGet(99) * 10))
+Backtrace:
+001_Overworld_BattleStarting.rb:566:in `block in generate_foes'
+001_Overworld_BattleStarting.rb:538:in `each'
+001_Overworld_BattleStarting.rb:538:in `each_with_index'
+001_Overworld_BattleStarting.rb:538:in `generate_foes'
+001_Overworld_BattleStarting.rb:504:in `start_core'
+001_Overworld_BattleStarting.rb:487:in `start'
+(eval):1:in `execute_script'
+003_Interpreter.rb:140:in `eval'
+003_Interpreter.rb:140:in `execute_script'
+004_Interpreter_Commands.rb:434:in `command_111'
+
+=================
+
+[2024-03-08 21:32:27 -0700]
+[Pokémon Essentials version 21.1]
+[v21.1 Hotfixes 1.0.6]
+
+Exception: RuntimeError
+Message: Undefined value DALICE in GameData::Species.
+File PBS/trainers_tkol_loop0.txt, section JUNKO,Junko,10
+[JUNKO,Junko,10]
+
+
+
+Backtrace:
+001_Compiler.rb:454:in `checkEnumField'
+[v21.1 Hotfixes] Compiler bug fixes.rb:53:in `cast_csv_value'
+001_Compiler.rb:724:in `block (2 levels) in get_csv_record'
+001_Compiler.rb:710:in `each'
+001_Compiler.rb:710:in `block in get_csv_record'
+001_Compiler.rb:708:in `loop'
+001_Compiler.rb:708:in `get_csv_record'
+002_Compiler_CompilePBS.rb:833:in `block (2 levels) in compile_trainers'
+001_Compiler.rb:244:in `block (2 levels) in pbCompilerEachPreppedLine'
+001_Compiler.rb:236:in `each_line'
+
+=================
+
+[2024-03-08 21:32:29 -0700]
+[Pokémon Essentials version 21.1]
+[v21.1 Hotfixes 1.0.6]
+
+Exception: RuntimeError
+Message: Unknown exception when compiling.
+
+Backtrace:
+001_Compiler.rb:1114:in `rescue in main'
+001_Compiler.rb:1041:in `main'
+999_Main.rb:36:in `mainFunctionDebug'
+999_Main.rb:19:in `block in mainFunction'
+003_Errors.rb:79:in `pbCriticalCode'
+999_Main.rb:19:in `mainFunction'
+999_Main.rb:52:in `block (2 levels) in load_scripts_from_folder'
+999_Main.rb:51:in `loop'
+999_Main.rb:51:in `block in load_scripts_from_folder'
+Main:35:in `eval'
+
+=================
+
+[2024-03-08 21:32:39 -0700]
+[Pokémon Essentials version 21.1]
+[v21.1 Hotfixes 1.0.6]
+
+Exception: RuntimeError
+Message: Undefined value BALICE in GameData::Species.
+File PBS/trainers_tkol_loop0.txt, section JUNKO,Junko,10
+[JUNKO,Junko,10]
+
+
+
+Backtrace:
+001_Compiler.rb:454:in `checkEnumField'
+[v21.1 Hotfixes] Compiler bug fixes.rb:53:in `cast_csv_value'
+001_Compiler.rb:724:in `block (2 levels) in get_csv_record'
+001_Compiler.rb:710:in `each'
+001_Compiler.rb:710:in `block in get_csv_record'
+001_Compiler.rb:708:in `loop'
+001_Compiler.rb:708:in `get_csv_record'
+002_Compiler_CompilePBS.rb:833:in `block (2 levels) in compile_trainers'
+001_Compiler.rb:244:in `block (2 levels) in pbCompilerEachPreppedLine'
+001_Compiler.rb:236:in `each_line'
+
+=================
+
+[2024-03-08 21:32:40 -0700]
+[Pokémon Essentials version 21.1]
+[v21.1 Hotfixes 1.0.6]
+
+Exception: RuntimeError
+Message: Unknown exception when compiling.
+
+Backtrace:
+001_Compiler.rb:1114:in `rescue in main'
+001_Compiler.rb:1041:in `main'
+999_Main.rb:36:in `mainFunctionDebug'
+999_Main.rb:19:in `block in mainFunction'
+003_Errors.rb:79:in `pbCriticalCode'
+999_Main.rb:19:in `mainFunction'
+999_Main.rb:52:in `block (2 levels) in load_scripts_from_folder'
+999_Main.rb:51:in `loop'
+999_Main.rb:51:in `block in load_scripts_from_folder'
+Main:35:in `eval'
+
+=================
+
+[2024-03-09 00:44:09 -0700]
+[Pokémon Essentials version 21.1]
+[v21.1 Hotfixes 1.0.6]
+
+Exception: RuntimeError
+Message: Unknown ID 123.
+
+Backtrace:
+001_GameData.rb:176:in `get'
+[TAoA Core] 002_Overworld_Time.rb:18:in `pbGetTimeNow'
+[Touhoumon Essentials Development Kit] 003_Overworld_Time.rb:51:in `isNight?'
+004_Game_Map.rb:114:in `bgm_name'
+004_Game_Map.rb:130:in `autoplay'
+[ENLS's Fancy Camera] 002_Method Overrides.rb:167:in `transfer_player'
+002_Debug_MenuCommands.rb:27:in `block (2 levels) in load_scripts_from_folder'
+006_Event_HandlerCollections.rb:121:in `call'
+001_Debug_Menus.rb:136:in `block in pbDebugMenu'
+001_Debug_Menus.rb:100:in `loop'
+
+=================
+
+[2024-03-09 00:47:03 -0700]
+[Pokémon Essentials version 21.1]
+[v21.1 Hotfixes 1.0.6]
+
+Script error in event 4 (coords 26,16), map 125 (Hecatia's Fortress (Roof))
+Exception: NoMethodError
+Message: undefined method `[]=' for nil:NilClass
+
+***Full script:
+$game_variable[122] = rand(3)+1
+p $game_variable[122]
+
+Backtrace:
+(eval):1:in `execute_script'
+003_Interpreter.rb:140:in `eval'
+003_Interpreter.rb:140:in `execute_script'
+004_Interpreter_Commands.rb:1177:in `command_355'
+004_Interpreter_Commands.rb:116:in `execute_command'
+003_Interpreter.rb:132:in `block in update'
+003_Interpreter.rb:86:in `loop'
+003_Interpreter.rb:86:in `update'
+002_Scene_Map.rb:167:in `block in update'
+002_Scene_Map.rb:166:in `loop'
+
+=================
+
+[2024-03-10 01:08:38 -0700]
+[Pokémon Essentials version 21.1]
+[v21.1 Hotfixes 1.0.6]
+
+Exception: ArgumentError
+Message: marshal data too short
+
+Backtrace:
+<internal:marshal>:34:in `load'
+[Change BGMs] Change BGMs.rb:99:in `load'
+[Change BGMs] Change BGMs.rb:99:in `load_data'
+[Change BGMs] Change BGMs.rb:99:in `load_data'
+001_MiscPBSData.rb:42:in `pbLoadBattleAnimations'
+001_StartGame.rb:11:in `initialize'
+999_Main.rb:37:in `mainFunctionDebug'
+999_Main.rb:19:in `block in mainFunction'
+003_Errors.rb:79:in `pbCriticalCode'
+999_Main.rb:19:in `mainFunction'
+
+=================
+
+[2024-03-10 01:09:03 -0700]
+[Pokémon Essentials version 21.1]
+[v21.1 Hotfixes 1.0.6]
+
+Exception: ArgumentError
+Message: marshal data too short
+
+Backtrace:
+<internal:marshal>:34:in `load'
+[Change BGMs] Change BGMs.rb:99:in `load'
+[Change BGMs] Change BGMs.rb:99:in `load_data'
+[Change BGMs] Change BGMs.rb:99:in `load_data'
+001_MiscPBSData.rb:42:in `pbLoadBattleAnimations'
+001_StartGame.rb:11:in `initialize'
+999_Main.rb:37:in `mainFunctionDebug'
+999_Main.rb:19:in `block in mainFunction'
+003_Errors.rb:79:in `pbCriticalCode'
+999_Main.rb:19:in `mainFunction'
+
+=================
+
+[2024-03-10 01:22:31 -0700]
+[Pokémon Essentials version 21.1]
+[v21.1 Hotfixes 1.0.6]
+
+Exception: ArgumentError
+Message: marshal data too short
+
+Backtrace:
+<internal:marshal>:34:in `load'
+[Change BGMs] Change BGMs.rb:99:in `load'
+[Change BGMs] Change BGMs.rb:99:in `load_data'
+[Change BGMs] Change BGMs.rb:99:in `load_data'
+001_MiscPBSData.rb:42:in `pbLoadBattleAnimations'
+001_StartGame.rb:11:in `initialize'
+999_Main.rb:37:in `mainFunctionDebug'
+999_Main.rb:19:in `block in mainFunction'
+003_Errors.rb:79:in `pbCriticalCode'
+999_Main.rb:19:in `mainFunction'
+
+=================
+
+[2024-03-10 01:25:43 -0700]
+[Pokémon Essentials version 21.1]
+[v21.1 Hotfixes 1.0.6]
+
+Exception: ArgumentError
+Message: marshal data too short
+
+Backtrace:
+<internal:marshal>:34:in `load'
+[Change BGMs] Change BGMs.rb:99:in `load'
+[Change BGMs] Change BGMs.rb:99:in `load_data'
+[Change BGMs] Change BGMs.rb:99:in `load_data'
+001_MiscPBSData.rb:42:in `pbLoadBattleAnimations'
+001_StartGame.rb:11:in `initialize'
+999_Main.rb:37:in `mainFunctionDebug'
+999_Main.rb:19:in `block in mainFunction'
+003_Errors.rb:79:in `pbCriticalCode'
+999_Main.rb:19:in `mainFunction'
+
+=================
+
+[2024-03-10 01:25:49 -0700]
+[Pokémon Essentials version 21.1]
+[v21.1 Hotfixes 1.0.6]
+
+Exception: ArgumentError
+Message: marshal data too short
+
+Backtrace:
+<internal:marshal>:34:in `load'
+[Change BGMs] Change BGMs.rb:99:in `load'
+[Change BGMs] Change BGMs.rb:99:in `load_data'
+[Change BGMs] Change BGMs.rb:99:in `load_data'
+001_MiscPBSData.rb:42:in `pbLoadBattleAnimations'
+001_StartGame.rb:11:in `initialize'
+999_Main.rb:37:in `mainFunctionDebug'
+999_Main.rb:19:in `block in mainFunction'
+003_Errors.rb:79:in `pbCriticalCode'
+999_Main.rb:19:in `mainFunction'
+
+=================
+
+[2024-03-10 01:25:54 -0700]
+[Pokémon Essentials version 21.1]
+[v21.1 Hotfixes 1.0.6]
+
+Exception: ArgumentError
+Message: marshal data too short
+
+Backtrace:
+<internal:marshal>:34:in `load'
+[Change BGMs] Change BGMs.rb:99:in `load'
+[Change BGMs] Change BGMs.rb:99:in `load_data'
+[Change BGMs] Change BGMs.rb:99:in `load_data'
+001_MiscPBSData.rb:42:in `pbLoadBattleAnimations'
+001_StartGame.rb:11:in `initialize'
+999_Main.rb:37:in `mainFunctionDebug'
+999_Main.rb:19:in `block in mainFunction'
+003_Errors.rb:79:in `pbCriticalCode'
+999_Main.rb:19:in `mainFunction'
+
+=================
+
+[2024-03-10 01:26:02 -0700]
+[Pokémon Essentials version 21.1]
+[v21.1 Hotfixes 1.0.6]
+
+Exception: ArgumentError
+Message: marshal data too short
+
+Backtrace:
+<internal:marshal>:34:in `load'
+[Change BGMs] Change BGMs.rb:99:in `load'
+[Change BGMs] Change BGMs.rb:99:in `load_data'
+[Change BGMs] Change BGMs.rb:99:in `load_data'
+001_MiscPBSData.rb:42:in `pbLoadBattleAnimations'
+001_StartGame.rb:11:in `initialize'
+999_Main.rb:37:in `mainFunctionDebug'
+999_Main.rb:19:in `block in mainFunction'
+003_Errors.rb:79:in `pbCriticalCode'
+999_Main.rb:19:in `mainFunction'
+
+=================
+
+[2024-03-10 01:29:09 -0700]
+[Pokémon Essentials version 21.1]
+[v21.1 Hotfixes 1.0.6]
+
+Exception: ArgumentError
+Message: marshal data too short
+
+Backtrace:
+<internal:marshal>:34:in `load'
+001_MiscPBSData.rb:42:in `load'
+001_MiscPBSData.rb:42:in `load_data'
+001_MiscPBSData.rb:42:in `pbLoadBattleAnimations'
+001_StartGame.rb:11:in `initialize'
+999_Main.rb:37:in `mainFunctionDebug'
+999_Main.rb:19:in `block in mainFunction'
+003_Errors.rb:79:in `pbCriticalCode'
+999_Main.rb:19:in `mainFunction'
+999_Main.rb:52:in `block (2 levels) in load_scripts_from_folder'
+
+=================
+
+[2024-03-10 01:32:43 -0700]
+[Pokémon Essentials version 21.1]
+[v21.1 Hotfixes 1.0.6]
+
+Exception: NameError
+Message: undefined local variable or method `filename' for Compiler:Module
+
+Backtrace:
+[Change BGMs] Change BGMs.rb:102:in `rescue in load_data'
+[Change BGMs] Change BGMs.rb:99:in `load_data'
+001_MiscPBSData.rb:61:in `pbLoadMapInfos'
+004_Compiler_MapsAndEvents.rb:55:in `import_new_maps'
+001_Compiler.rb:1061:in `main'
+999_Main.rb:36:in `mainFunctionDebug'
+999_Main.rb:19:in `block in mainFunction'
+003_Errors.rb:79:in `pbCriticalCode'
+999_Main.rb:19:in `mainFunction'
+999_Main.rb:52:in `block (2 levels) in load_scripts_from_folder'
+
+=================
+
+[2024-03-10 01:33:46 -0700]
+[Pokémon Essentials version 21.1]
+[v21.1 Hotfixes 1.0.6]
+
+Exception: RuntimeError
+Message: Unknown exception when compiling.
+
+Backtrace:
+001_Compiler.rb:1114:in `rescue in main'
+001_Compiler.rb:1041:in `main'
+999_Main.rb:36:in `mainFunctionDebug'
+999_Main.rb:19:in `block in mainFunction'
+003_Errors.rb:79:in `pbCriticalCode'
+999_Main.rb:19:in `mainFunction'
+999_Main.rb:52:in `block (2 levels) in load_scripts_from_folder'
+999_Main.rb:51:in `loop'
+999_Main.rb:51:in `block in load_scripts_from_folder'
+Main:35:in `eval'
+
+=================
+
+[2024-03-10 01:39:57 -0700]
+[Pokémon Essentials version 21.1]
+[v21.1 Hotfixes 1.0.6]
+
+Exception: ArgumentError
+Message: marshal data too short
+
+Backtrace:
+<internal:marshal>:34:in `load'
+[Change BGMs] Change BGMs.rb:99:in `load'
+[Change BGMs] Change BGMs.rb:99:in `load_data'
+[Change BGMs] Change BGMs.rb:99:in `load_data'
+001_MiscPBSData.rb:42:in `pbLoadBattleAnimations'
+001_StartGame.rb:11:in `initialize'
+999_Main.rb:37:in `mainFunctionDebug'
+999_Main.rb:19:in `block in mainFunction'
+003_Errors.rb:79:in `pbCriticalCode'
+999_Main.rb:19:in `mainFunction'
+
+=================
+
+[2024-03-10 01:42:55 -0700]
+[Pokémon Essentials version 21.1]
+[v21.1 Hotfixes 1.0.6]
+
+Exception: ArgumentError
+Message: marshal data too short
+
+Backtrace:
+<internal:marshal>:34:in `load'
+[Change BGMs] Change BGMs.rb:99:in `load'
+[Change BGMs] Change BGMs.rb:99:in `load_data'
+[Change BGMs] Change BGMs.rb:99:in `load_data'
+001_MiscPBSData.rb:42:in `pbLoadBattleAnimations'
+001_StartGame.rb:11:in `initialize'
+999_Main.rb:37:in `mainFunctionDebug'
+999_Main.rb:19:in `block in mainFunction'
+003_Errors.rb:79:in `pbCriticalCode'
+999_Main.rb:19:in `mainFunction'
+
+=================
+
+[2024-03-10 01:44:07 -0700]
+[Pokémon Essentials version 21.1]
+[v21.1 Hotfixes 1.0.6]
+
+Exception: ArgumentError
+Message: marshal data too short
+
+Backtrace:
+<internal:marshal>:34:in `load'
+[Change BGMs] Change BGMs.rb:99:in `load'
+[Change BGMs] Change BGMs.rb:99:in `load_data'
+[Change BGMs] Change BGMs.rb:99:in `load_data'
+001_MiscPBSData.rb:42:in `pbLoadBattleAnimations'
+001_StartGame.rb:11:in `initialize'
+999_Main.rb:37:in `mainFunctionDebug'
+999_Main.rb:19:in `block in mainFunction'
+003_Errors.rb:79:in `pbCriticalCode'
+999_Main.rb:19:in `mainFunction'
+
+=================
+
+[2024-03-10 01:48:24 -0700]
+[Pokémon Essentials version 21.1]
+[v21.1 Hotfixes 1.0.6]
+
+Exception: ArgumentError
+Message: marshal data too short
+
+Backtrace:
+<internal:marshal>:34:in `load'
+[Change BGMs] Change BGMs.rb:99:in `load'
+[Change BGMs] Change BGMs.rb:99:in `load_data'
+[Change BGMs] Change BGMs.rb:99:in `load_data'
+001_MiscPBSData.rb:42:in `pbLoadBattleAnimations'
+001_StartGame.rb:11:in `initialize'
+999_Main.rb:37:in `mainFunctionDebug'
+999_Main.rb:19:in `block in mainFunction'
+003_Errors.rb:79:in `pbCriticalCode'
+999_Main.rb:19:in `mainFunction'
+
+=================
+
+[2024-03-10 01:48:30 -0700]
+[Pokémon Essentials version 21.1]
+[v21.1 Hotfixes 1.0.6]
+
+Exception: ArgumentError
+Message: marshal data too short
+
+Backtrace:
+<internal:marshal>:34:in `load'
+[Change BGMs] Change BGMs.rb:99:in `load'
+[Change BGMs] Change BGMs.rb:99:in `load_data'
+[Change BGMs] Change BGMs.rb:99:in `load_data'
+001_MiscPBSData.rb:42:in `pbLoadBattleAnimations'
+001_StartGame.rb:11:in `initialize'
+999_Main.rb:37:in `mainFunctionDebug'
+999_Main.rb:19:in `block in mainFunction'
+003_Errors.rb:79:in `pbCriticalCode'
+999_Main.rb:19:in `mainFunction'
+
+=================
+
+[2024-03-10 01:48:38 -0700]
+[Pokémon Essentials version 21.1]
+[v21.1 Hotfixes 1.0.6]
+
+Exception: ArgumentError
+Message: marshal data too short
+
+Backtrace:
+<internal:marshal>:34:in `load'
+[Change BGMs] Change BGMs.rb:99:in `load'
+[Change BGMs] Change BGMs.rb:99:in `load_data'
+[Change BGMs] Change BGMs.rb:99:in `load_data'
+001_MiscPBSData.rb:42:in `pbLoadBattleAnimations'
+001_StartGame.rb:11:in `initialize'
+999_Main.rb:37:in `mainFunctionDebug'
+999_Main.rb:19:in `block in mainFunction'
+003_Errors.rb:79:in `pbCriticalCode'
+999_Main.rb:19:in `mainFunction'
+
+=================
+
+[2024-03-10 01:48:54 -0700]
+[Pokémon Essentials version 21.1]
+[v21.1 Hotfixes 1.0.6]
+
+Exception: ArgumentError
+Message: marshal data too short
+
+Backtrace:
+<internal:marshal>:34:in `load'
+[Change BGMs] Change BGMs.rb:99:in `load'
+[Change BGMs] Change BGMs.rb:99:in `load_data'
+[Change BGMs] Change BGMs.rb:99:in `load_data'
+001_MiscPBSData.rb:42:in `pbLoadBattleAnimations'
+001_StartGame.rb:11:in `initialize'
+999_Main.rb:37:in `mainFunctionDebug'
+999_Main.rb:19:in `block in mainFunction'
+003_Errors.rb:79:in `pbCriticalCode'
+999_Main.rb:19:in `mainFunction'

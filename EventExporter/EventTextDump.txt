@@ -70718,6 +70718,178 @@ List of Event Commands:
 @>
 
 #------------------------------------------------------------------------------
+Event ID: 048
+Event Name: EV048
+(X,Y): (033,038)
+
+Page #1
+Conditions
+Variable 0121: TKoL Plot Variable is 16 or above
+
+Graphic: TPDP_NPC 54
+
+Autonomous Movement
+Type: Custom
+Custom Move Route:
+(Repeat Action)
+$>Turn Right
+$>Wait: 4 frame(s)
+$>Turn Down
+$>Wait: 4 frame(s)
+
+Speed: 3: Slow
+Freq: 4: High
+Options Enabled
+Move Animation
+Trigger: Action Button
+
+List of Event Commands:
+@>Text: We were tasked to keep an eye on the Capital in case those
+ :    : fairies decide to return.
+@>
+
+#------------------------------------------------------------------------------
+Event ID: 049
+Event Name: EV049
+(X,Y): (029,052)
+
+Page #1
+Conditions
+Variable 0121: TKoL Plot Variable is 16 or above
+
+Graphic: TPDP_NPC 54
+
+Autonomous Movement
+Type: Custom
+Custom Move Route:
+(Repeat Action)
+$>Turn 90 Right or Left
+$>Wait: 4 frame(s)
+$>Turn Down
+$>Wait: 4 frame(s)
+
+Speed: 3: Slow
+Freq: 4: High
+Options Enabled
+Move Animation
+Trigger: Action Button
+
+List of Event Commands:
+@>Text: We were tasked to keep an eye on the Capital in case those
+ :    : fairies decide to return.
+@>
+
+#------------------------------------------------------------------------------
+Event ID: 050
+Event Name: EV050
+(X,Y): (064,039)
+
+Page #1
+Conditions
+Variable 0121: TKoL Plot Variable is 16 or above
+
+Graphic: TPDP_NPC 54
+
+Autonomous Movement
+Type: Custom
+Custom Move Route:
+(Repeat Action)
+$>Turn at Random
+
+Speed: 3: Slow
+Freq: 4: High
+Options Enabled
+Move Animation
+Trigger: Action Button
+
+List of Event Commands:
+@>Text: We were tasked to keep an eye on the Capital in case those
+ :    : fairies decide to return.
+@>
+
+#------------------------------------------------------------------------------
+Event ID: 051
+Event Name: EV051
+(X,Y): (016,064)
+
+Page #1
+Conditions
+Variable 0121: TKoL Plot Variable is 16 or above
+
+Graphic: TPDP_NPC 54
+
+Autonomous Movement
+Type: Custom
+Custom Move Route:
+(Repeat Action)
+$>Turn at Random
+
+Speed: 3: Slow
+Freq: 4: High
+Options Enabled
+Move Animation
+Trigger: Action Button
+
+List of Event Commands:
+@>Text: We were tasked to keep an eye on the Capital in case those
+ :    : fairies decide to return.
+@>
+
+#------------------------------------------------------------------------------
+Event ID: 052
+Event Name: EV052
+(X,Y): (038,066)
+
+Page #1
+Conditions
+Variable 0121: TKoL Plot Variable is 16 or above
+
+Graphic: TPDP_NPC 54
+
+Autonomous Movement
+Type: Fixed
+Speed: 3: Slow
+Freq: 4: High
+Options Enabled
+Move Animation
+Trigger: Action Button
+
+List of Event Commands:
+@>Text: This way leads out of the Capital and onto the lunar surface
+ :    : proper.
+@>
+
+#------------------------------------------------------------------------------
+Event ID: 053
+Event Name: size(4,1)
+(X,Y): (034,073)
+
+Page #1
+Conditions
+None
+
+Autonomous Movement
+Type: Fixed
+Speed: 3: Slow
+Freq: 3: Low
+Options Enabled
+Move Animation
+Trigger: Player Touch
+
+List of Event Commands:
+@>Conditional Branch: Player is facing Down
+ @>Play SE: 'Door exit', 100, 100
+ @>Change Screen Color Tone: (-255,-255,-255,0), @6
+ @>Wait: 8 frame(s)
+ @>Transfer Player:[097: Mare Tranquillitatis], (014,041), Up, No Fade
+ @>Change Screen Color Tone: (0,0,0,0), @6
+ @>Set Move Route: Player
+  :              : $>Move Up
+ @>
+: Branch End
+@>
+
+#------------------------------------------------------------------------------
 
 #==============================================================================
 Map ID: 092
@@ -70851,7 +71023,7 @@ List of Event Commands:
    @>
   : Else
    @>Set Move Route: Player
-    :              : $>Turn Down
+    :              : $>Turn Right
    @>
   : Branch End
   @>
@@ -72282,15 +72454,441 @@ List of Event Commands:
 #==============================================================================
 Map ID: 096
 Map Name: Mare Marginis
-Tileset: 042: The Moon
-Width: 20, Height: 15
+Tileset: 043: Hecatia's Lunar Fortress
+Width: 80, Height: 60
+Auto-Change BGM: W-038. A World Of Nightmares Never Seen Before
+
+#------------------------------------------------------------------------------
+Event ID: 001
+Event Name: Barrier Crystal size(2,2)
+(X,Y): (015,026)
+
+Page #1
+Conditions
+None
+
+Autonomous Movement
+Type: Fixed
+Speed: 3: Slow
+Freq: 3: Low
+Options Enabled
+Move Animation
+Trigger: Action Button
+
+List of Event Commands:
+@>Text: It's some sort of glowing crystal...
+@>Text: Touch it?
+@>Show Choices: Yes, No
+(When Cancel: Choice 2)
+: When [Yes]
+ @>Text: \pn reached out and touched the crystal...
+ @>Wait: 10 frame(s)
+ @>Play SE: 'Vs flash', 100, 150
+ @>Screen Flash: (255,255,255,255), @10
+ @>Control Self Switch: A =ON
+ @>Show Animation: Player, [Exclaim bubble]
+ @>Text: The crystal changed colors!
+ @>Control Variables: [0125: TKoL Barrier Crystal] += 1
+ @>
+: When [No]
+ @>
+: Branch End
+@>
+
+Page #2
+Conditions
+Self Switch A is ON
+
+Autonomous Movement
+Type: Fixed
+Speed: 3: Slow
+Freq: 3: Low
+Options Enabled
+Move Animation
+Trigger: Action Button
+
+List of Event Commands:
+@>Text: It's some sort of glowing crystal, just in a different 
+ :    : color now.
+@>
+
+Page #3
+Conditions
+Variable 0125: TKoL Barrier Crystal is 3 or above
+
+Autonomous Movement
+Type: Fixed
+Speed: 3: Slow
+Freq: 3: Low
+Options Enabled
+Move Animation
+Trigger: Action Button
+
+List of Event Commands:
+@>Text: The crystal stopped glowing.
+@>
+
+#------------------------------------------------------------------------------
+Event ID: 002
+Event Name: Barrier Crystal size(2,2)
+(X,Y): (063,026)
+
+Page #1
+Conditions
+None
+
+Autonomous Movement
+Type: Fixed
+Speed: 3: Slow
+Freq: 3: Low
+Options Enabled
+Move Animation
+Trigger: Action Button
+
+List of Event Commands:
+@>Text: It's some sort of glowing crystal...
+@>Text: Touch it?
+@>Show Choices: Yes, No
+(When Cancel: Choice 2)
+: When [Yes]
+ @>Text: \pn reached out and touched the crystal...
+ @>Wait: 10 frame(s)
+ @>Play SE: 'Vs flash', 100, 150
+ @>Screen Flash: (255,255,255,255), @10
+ @>Control Self Switch: A =ON
+ @>Show Animation: Player, [Exclaim bubble]
+ @>Text: The crystal changed colors!
+ @>Control Variables: [0125: TKoL Barrier Crystal] += 1
+ @>
+: When [No]
+ @>
+: Branch End
+@>
+
+Page #2
+Conditions
+Self Switch A is ON
+
+Autonomous Movement
+Type: Fixed
+Speed: 3: Slow
+Freq: 3: Low
+Options Enabled
+Move Animation
+Trigger: Action Button
+
+List of Event Commands:
+@>Text: It's some sort of glowing crystal, just in a different 
+ :    : color now.
+@>
+
+Page #3
+Conditions
+Variable 0125: TKoL Barrier Crystal is 3 or above
+
+Autonomous Movement
+Type: Fixed
+Speed: 3: Slow
+Freq: 3: Low
+Options Enabled
+Move Animation
+Trigger: Action Button
+
+List of Event Commands:
+@>Text: The crystal stopped glowing.
+@>
+
+#------------------------------------------------------------------------------
+Event ID: 003
+Event Name: Barrier/Entry size(2,1)
+(X,Y): (039,025)
+
+Page #1
+Conditions
+None
+
+Graphic: Fortress Barrier
+
+Autonomous Movement
+Type: Custom
+Custom Move Route:
+(Repeat Action)
+$>Wait: 3 frame(s)
+$>Graphic: "Fortress Barrier', 0, 2, 1
+$>Wait: 3 frame(s)
+$>Graphic: "Fortress Barrier', 0, 2, 2
+$>Wait: 3 frame(s)
+$>Graphic: "Fortress Barrier', 0, 2, 3
+$>Wait: 3 frame(s)
+$>Graphic: "Fortress Barrier', 0, 2, 2
+$>Wait: 3 frame(s)
+$>Graphic: "Fortress Barrier', 0, 2, 1
+$>Wait: 3 frame(s)
+$>Graphic: "Fortress Barrier', 0, 2, 0
+
+Speed: 3: Slow
+Freq: 6: Highest
+Options Enabled
+Move Animation
+Trigger: Player Touch
+
+List of Event Commands:
+@>Set Move Route: Player
+ :              : $>SE: 'Mining ping', 80, 150
+ :              : $>Direction Fix ON
+ :              : $>Change Speed: 6
+ :              : $>1 Step Backward
+ :              : $>Direction Fix OFF
+@>Show Animation: Player, [Exclaim bubble]
+@>Wait for Move's Completion
+@>Text: \xn[\pn]Some sort of barrier is preventing me from 
+ :    : approaching the fortress!
+@>Text: \xn[\pn]I wonder if there's a way for me to turn it off 
+ :    : somehow...
+@>
+
+Page #2
+Conditions
+Variable 0125: TKoL Barrier Crystal is 3 or above
+
+Graphic: Fortress Barrier
+
+Autonomous Movement
+Type: Fixed
+Speed: 3: Slow
+Freq: 3: Low
+Options Enabled
+Move Animation
+Trigger: Autorun
+
+List of Event Commands:
+@>Conditional Branch: Variable [0122: TKoL S6 Partner] <= 0
+ @>Script: $game_variable[122] = rand(3)+1
+ :       : p $game_variable[122]
+ @>
+: Branch End
+@>Wait: 20 frame(s)
+@>Set Move Route: [Barrier/Entry size(2,1)]
+ :              : $>SE: 'Force Field Down', 100, 100
+ :              : $>Graphic: "Fortress Barrier', 0, 4, 0
+ :              : $>Wait: 3 frame(s)
+ :              : $>Graphic: "Fortress Barrier', 0, 4, 1
+ :              : $>Wait: 3 frame(s)
+ :              : $>Graphic: "Fortress Barrier', 0, 4, 2
+ :              : $>Wait: 3 frame(s)
+ :              : $>Graphic: "Fortress Barrier', 0, 4, 3
+ :              : $>Wait: 3 frame(s)
+ :              : $>Graphic: "Fortress Barrier', 0, 6, 0
+ :              : $>Wait: 3 frame(s)
+ :              : $>Graphic: "Fortress Barrier', 0, 6, 1
+ :              : $>Wait: 3 frame(s)
+ :              : $>Graphic: "Fortress Barrier', 0, 6, 2
+@>Wait for Move's Completion
+@>Change Screen Color Tone: (-255,-255,-255,0), @8
+@>Wait: 8 frame(s)
+@>Control Self Switch: A =ON
+@>Script: pbCameraReset
+@>Wait: 25 frame(s)
+@>Change Screen Color Tone: (0,0,0,0), @8
+@>
+
+Page #3
+Conditions
+Self Switch A is ON
+
+Autonomous Movement
+Type: Fixed
+Speed: 3: Slow
+Freq: 3: Low
+Options Enabled
+Move Animation
+Trigger: Action Button
+
+List of Event Commands:
+@>Play SE: 'Door exit', 60, 100
+@>Change Screen Color Tone: (-255,-255,-255,0), @6
+@>Wait: 8 frame(s)
+@>Transfer Player:[123: Hecatia's Fortress], (012,018), Up, No Fade
+@>Change Screen Color Tone: (0,0,0,0), @6
+@>
+
+Page #4
+Conditions
+Switch 0022: s:tsOff?("A") is ON
+
+Autonomous Movement
+Type: Fixed
+Speed: 3: Slow
+Freq: 3: Low
+Options Enabled
+Move Animation
+Trigger: Autorun
+
+List of Event Commands:
+@>Conditional Branch: Script: get_self.onEvent?
+ @>Change Transparent Flag: Normal
+ @>Set Move Route: Player
+                   (Ignore If Can't Move)
+  :              : $>Move Down
+ @>Wait for Move's Completion
+ @>
+: Branch End
+@>Script: setTempSwitchOn("A")
+@>
+
+#------------------------------------------------------------------------------
+Event ID: 004
+Event Name: EV004
+(X,Y): (039,008)
+
+Page #1
+Conditions
+Variable 0125: TKoL Barrier Crystal is 2 or above
+
+Autonomous Movement
+Type: Fixed
+Speed: 3: Slow
+Freq: 3: Low
+Options Enabled
+Move Animation
+Trigger: Autorun
+
+List of Event Commands:
+@>Change Screen Color Tone: (-255,-255,-255,0), @8
+@>Wait: 8 frame(s)
+@>Script: pbCameraScrollTo(39, 19)
+@>Wait: 25 frame(s)
+@>Change Screen Color Tone: (0,0,0,0), @8
+@>Control Variables: [0125: TKoL Barrier Crystal] = 3
+@>
+
+Page #2
+Conditions
+Variable 0125: TKoL Barrier Crystal is 3 or above
+
+Autonomous Movement
+Type: Fixed
+Speed: 3: Slow
+Freq: 3: Low
+Options Enabled
+Move Animation
+Trigger: Action Button
+
+List of Event Commands:
+@>
+
+#------------------------------------------------------------------------------
+Event ID: 005
+Event Name: Hell Fairy Trainer
+(X,Y): (013,027)
+
+Page #1
+Conditions
+None
+
+Graphic: TPDP_NPC 51
+
+Autonomous Movement
+Type: Fixed
+Speed: 3: Slow
+Freq: 3: Low
+Options Enabled
+Move Animation
+Trigger: Action Button
+
+List of Event Commands:
+@>
+
+#------------------------------------------------------------------------------
+Event ID: 006
+Event Name: Hell Fairy Trainer
+(X,Y): (066,027)
+
+Page #1
+Conditions
+None
+
+Graphic: TPDP_NPC 53
+
+Autonomous Movement
+Type: Fixed
+Speed: 3: Slow
+Freq: 3: Low
+Options Enabled
+Move Animation
+Trigger: Action Button
+
+List of Event Commands:
+@>
+
+#------------------------------------------------------------------------------
+Event ID: 007
+Event Name: Wormhole
+(X,Y): (039,042)
+
+Page #1
+Conditions
+None
+
+Graphic: Ultra Wormhole
+
+Autonomous Movement
+Type: Custom
+Custom Move Route:
+(Repeat Action)
+$>Turn Left
+$>Wait: 8 frame(s)
+$>Turn Right
+$>Wait: 8 frame(s)
+$>Turn Up
+$>Wait: 8 frame(s)
+$>Turn Down
+$>Wait: 8 frame(s)
+
+Speed: 3: Slow
+Freq: 6: Highest
+Options Enabled
+Move Animation
+Trigger: Action Button
+
+List of Event Commands:
+@>Play SE: 'teleporter', 60, 100
+@>Change Screen Color Tone: (-255,-255,-255,0), @6
+@>Wait: 8 frame(s)
+@>Transfer Player:[097: Mare Tranquillitatis], (027,007), Down, No Fade
+@>Change Screen Color Tone: (0,0,0,0), @6
+@>
+
+#------------------------------------------------------------------------------
+Event ID: 008
+Event Name: EV008
+(X,Y): (038,028)
+
+Page #1
+Conditions
+None
+
+Autonomous Movement
+Type: Fixed
+Speed: 3: Slow
+Freq: 3: Low
+Options Enabled
+Move Animation
+Trigger: Action Button
+
+List of Event Commands:
+@>Control Variables: [0122: TKoL S6 Partner] = 2
+@>Transfer Player:[125: Hecatia's Fortress (Roof)], (019,016)
+@>
+
+#------------------------------------------------------------------------------
 
 #==============================================================================
 Map ID: 097
 Map Name: Mare Tranquillitatis
 Tileset: 042: The Moon
 Width: 56, Height: 49
-Auto-Change BGM: Sea Reflecting
+Auto-Change BGM: W-037. The Sea Where One's Home Planet Reflects
 
 #------------------------------------------------------------------------------
 Event ID: 001
@@ -72299,7 +72897,7 @@ Event Name: Junko
 
 Page #1
 Conditions
-None
+Variable 0121: TKoL Plot Variable is 17 or above
 
 Graphic: Person_Junko
 
@@ -72342,6 +72940,21 @@ Trigger: Action Button
 List of Event Commands:
 @>
 
+Page #3
+Conditions
+Variable 0121: TKoL Plot Variable is 19 or above
+
+Autonomous Movement
+Type: Fixed
+Speed: 3: Slow
+Freq: 3: Low
+Options Enabled
+Move Animation
+Trigger: Action Button
+
+List of Event Commands:
+@>
+
 #------------------------------------------------------------------------------
 Event ID: 002
 Event Name: size(8,1)
@@ -72349,7 +72962,7 @@ Event Name: size(8,1)
 
 Page #1
 Conditions
-None
+Variable 0121: TKoL Plot Variable is 17 or above
 
 Autonomous Movement
 Type: Fixed
@@ -72427,7 +73040,7 @@ List of Event Commands:
 @>Play SE: 'Mining collapse', 80, 50
 @>Script: pbCameraSpeed(1)
 :       : pbCameraShake(6)
-@>Play BGM: 'Pure Furies', 100, 100
+@>Script: pbTrainerIntro(:JUNKO)
 @>Control Switches: [0104: Transition Handler] = ON
 @>Control Variables: [0103: Vs. Transition ID] = 46
 @>Control Variables: [0104: Vs. Transition - Pkmn] = 6
@@ -72442,10 +73055,146 @@ List of Event Commands:
  :    : who is risking her life is capable of!\wtnp[30]
 @>Text: \w[dark]\l[2]And behold!\wt[10] This pristine spiritual force that
  :    : rejects life and death!\wtnp[30]
+@>Change Text Options: Bottom, Show
 @>Control Self Switch: A =ON
-@>Change Battle BGM: 'Pure Furies', 100, 100
 @>Script: setBattleRule("backdrop", "starlightJunko")
-@>Script: TrainerBattle.start(:JUNKO, "Junko")
+@>Control Switches: [0104: Transition Handler] = ON
+@>Control Variables: [0103: Vs. Transition ID] = 46
+@>Conditional Branch: Switch [0107: New Game +] == OFF
+ @>Control Variables: [0104: Vs. Transition - Pkmn] = 5
+ @>
+: Else
+ @>Control Variables: [0104: Vs. Transition - Pkmn] = 6
+ @>
+: Branch End
+@>Conditional Branch: Script: TrainerBattle.start(:JUNKO, "Junko", 10+(pbGet(99) * 10))
+ @>Fade Out BGM: 1 sec.
+ @>Screen Flash: (255,255,255,255), @10
+ @>Control Variables: [0121: TKoL Plot Variable] = 18
+ @>Play SE: 'Mining collapse', 80, 50
+ @>Script: pbCameraShake(0)
+ @>Text: \xn[\pn]\b(For someone who claims to have given up, she sure
+  :    : packed a brutal punch...)
+ @>Text: \xn[Junko]Truly, against the power to overturn fate, my
+  :    : revenge was destined to fail. This time, at least.
+ @>Text: \xn[Junko]But as I said, my war is far from over. Though I was
+  :    : defeated here today, I will make my return and bring an end
+  :    : to Chang'e once and for all.
+ @>Text: \xn[\pn]Can't you just.. Not? What good comes of getting revenge
+  :    : anyway!
+ @>Text: \xn[Junko]All I have left is my resentment for the one who
+  :    : stole everything from me... As long as I live, I will never forgive
+  :    : her.
+ @>Text: \xn[\pn]\b(Well, can you at least not get Gensokyo involved in
+  :    : your grudge then...?)
+ @>Wait: 10 frame(s)
+ @>Text: \xn[???]Yoohoo, Junko~ Moon to Junko, do you hear me?
+ @>Show Animation: Player, [Question bubble]
+ @>Text: \xn[\pn]\b(Wait, who said that?)
+ @>Play BGM: 'W-038. A World Of Nightmares Never Seen Before', 100, 100
+ @>Play SE: 'PC open', 80, 50
+ @>Screen Flash: (255,255,255,255), @2
+ @>Show Animation: Player, [Exclaim bubble]
+ @>Set Event Location: [Hecatia],(027,007), Up
+ @>Text: \xn[\pn]\b(Who's <i>that</i>?)
+ @>Text: \xn[Junko]... Hecatia. I trust you have an update?
+ @>Text: \xn[???]You bet! I happened to find the denizens of the 
+  :    : Capital hiding away in the Dream World and I've locked them 
+  :    : away in there!
+ @>Text: \xn[Junko]... And so, even as one door closes... My revenge
+  :    : continues. I shall join you momentarily!
+ @>Text: \xn[???]Hurry back soon! The sooner you get back here, the 
+  :    : sooner we can get our hands on that treacherous Chang'e!
+ @>Text: \xn[\pn]Just hold on one second! Who are you?
+ @>Show Animation: [Hecatia], [Question bubble]
+ @>Wait: 4 frame(s)
+ @>Set Move Route: [Hecatia]
+  :              : $>Turn Down
+  :              : $>Wait: 20 frame(s)
+  :              : $>Turn Up
+ @>Text: \xn[???]Why Junko, you didn't tell me we had company!
+ @>Text: \xn[???]I thought the Capital wouldn't be able to send anybody
+  :    : after us, though.
+ @>Wait for Move's Completion
+ @>Text: \xn[Junko]Ah, no. This is not a resident of the Capital. This is
+  :    : a regular Human from Earth.
+ @>Text: \xn[???]--I'm sorry, a human? Physically here?
+  :    : On the Moon? For real?
+ @>Text: \xn[Junko]Yes. Knowing that the Capital couldn't deal with us 
+  :    : themselves, they opted to send a poor scapegoat against us.
+ @>Text: \xn[???]Those cowardly Lunarians~ So afraid of touching
+  :    : even the smallest bit of impurity that they'd beg outsiders
+  :    : for help!
+ @>Set Move Route: [Hecatia]
+  :              : $>Turn Down
+ @>Text: \xn[???]Well whatever! If you're representing the Capital,
+  :    : then you are most definitely our enemy.
+ @>Text: \xn[???]My name is Hecatia, and I'm the Goddess of Hell.
+ @>Wait: 10 frame(s)
+ @>Text: \xn[\pn]... For a Goddess, you don't look anything like the 
+  :    : ones I've seen in Gensokyo.
+ @>Text: \xn[Hecatia]I'm way more fashionable and hip than the 
+  :    : common divinity in Gensokyo!
+ @>Text: \xn[\pn]\b(No more humble though...)
+ @>Set Move Route: [Hecatia]
+  :              : $>Turn Up
+ @>Text: \xn[Hecatia]So, this human's been giving you a hard time then,
+  :    : eh Junko?
+ @>Text: \xn[Junko]I wouldn't describe it as a 'hard time'. She just 
+  :    : managed to thwart our plans ever-so-slightly.
+ @>Text: \xn[Hecatia]Wow, she's that strong...? Where'd the Lunarians
+  :    : find such a capable Puppet Handler.
+ @>Text: \xn[Junko]They are cunning and deceitful. No doubt they 
+  :    : managed to manipulate her into this task.
+ @>Text: \xn[\pn]\b(...Not wrong there...)
+ @>Text: \xn[Junko]However, we have a new means of achieving our 
+  :    : goals.
+ @>Text: \xn[Junko]I shall be returning to the stronghold now! Await my 
+  :    : return.
+ @>Text: \xn[Hecatia]Understood~ I'll have the barrier down for your
+  :    : arrival!
+ @>Set Move Route: [Junko]
+  :              : $>Direction Fix ON
+  :              : $>Move Animation OFF
+  :              : $>Through ON
+  :              : $>Change Speed: 3
+  :              : $>Move Up
+  :              : $>Move Up
+ @>Show Animation: Player, [Exclaim bubble]
+ @>Script: pbCameraReset
+ @>Text: \xn[\pn]Hey, wait!
+ @>Set Move Route: Player
+  :              : $>Move Up
+ @>Set Move Route: [Hecatia]
+  :              : $>Turn Down
+ @>Text: \xn[Hecatia]Woah there! Settle down hothead, you sure this 
+  :    : is the road you want to pursue?
+ @>Text: \xn[\pn]Putting a stop to both hers and your plans is what it'll
+  :    : take to ensure Gensokyo's safety, so yes, I'm sure!
+ @>Text: \xn[Hecatia]Haha, alright, you're a fiesty little thing, so I'll
+  :    : indulge you for a bit.
+ @>Screen Flash: (255,255,255,255), @5
+ @>Play SE: 'Stare', 80, 100
+ @>Control Variables: [0121: TKoL Plot Variable] = 19
+ @>Wait: 10 frame(s)
+ @>Text: \xn[Hecatia]This will take you straight to where my Lunar
+  :    : Fortress is.
+ @>Text: \xn[Hecatia]If you can make it there, <i>maybe</i> you can
+  :    : achieve your manipulator's goals.
+ @>Text: \xn[Hecatia]Don't disapoint me!
+ @>Screen Flash: (255,255,255,255), @2
+ @>Control Variables: [0121: TKoL Plot Variable] = 20
+ @>Play SE: 'PC close', 80, 50
+ @>Wait: 20 frame(s)
+ @>Text: \xn[\pn]Sigh. Is it too much to ask for to just have one normal
+  :    : day again.
+ @>Control Self Switch: A =ON
+ @>
+: Else
+ @>Script: pbTrainerEnd
+ @>Exit Event Processing
+ @>
+: Branch End
 @>
 
 Page #2
@@ -72470,7 +73219,7 @@ Event Name: EV003
 
 Page #1
 Conditions
-None
+Variable 0001: Temp Pokemon Choice is 17 or above
 
 Graphic: Person_Junko_Alt
 
@@ -72549,6 +73298,21 @@ List of Event Commands:
 : Repeat Above
 @>
 
+Page #2
+Conditions
+Variable 0121: TKoL Plot Variable is 18 or above
+
+Autonomous Movement
+Type: Fixed
+Speed: 3: Slow
+Freq: 3: Low
+Options Enabled
+Move Animation
+Trigger: Action Button
+
+List of Event Commands:
+@>
+
 #------------------------------------------------------------------------------
 Event ID: 005
 Event Name: FlyingRock2 update
@@ -72601,6 +73365,21 @@ List of Event Commands:
  @>Wait: 250 frame(s)
  @>
 : Repeat Above
+@>
+
+Page #2
+Conditions
+Variable 0121: TKoL Plot Variable is 18 or above
+
+Autonomous Movement
+Type: Fixed
+Speed: 3: Slow
+Freq: 3: Low
+Options Enabled
+Move Animation
+Trigger: Action Button
+
+List of Event Commands:
 @>
 
 #------------------------------------------------------------------------------
@@ -72657,6 +73436,21 @@ List of Event Commands:
 : Repeat Above
 @>
 
+Page #2
+Conditions
+Variable 0121: TKoL Plot Variable is 18 or above
+
+Autonomous Movement
+Type: Fixed
+Speed: 3: Slow
+Freq: 3: Low
+Options Enabled
+Move Animation
+Trigger: Action Button
+
+List of Event Commands:
+@>
+
 #------------------------------------------------------------------------------
 Event ID: 007
 Event Name: FlyingRock4 update
@@ -72709,6 +73503,21 @@ List of Event Commands:
  @>Wait: 250 frame(s)
  @>
 : Repeat Above
+@>
+
+Page #2
+Conditions
+Variable 0121: TKoL Plot Variable is 18 or above
+
+Autonomous Movement
+Type: Fixed
+Speed: 3: Slow
+Freq: 3: Low
+Options Enabled
+Move Animation
+Trigger: Action Button
+
+List of Event Commands:
 @>
 
 #------------------------------------------------------------------------------
@@ -72765,6 +73574,21 @@ List of Event Commands:
 : Repeat Above
 @>
 
+Page #2
+Conditions
+Variable 0121: TKoL Plot Variable is 18 or above
+
+Autonomous Movement
+Type: Fixed
+Speed: 3: Slow
+Freq: 3: Low
+Options Enabled
+Move Animation
+Trigger: Action Button
+
+List of Event Commands:
+@>
+
 #------------------------------------------------------------------------------
 Event ID: 009
 Event Name: FlyingRock6 update
@@ -72817,6 +73641,21 @@ List of Event Commands:
  @>Wait: 250 frame(s)
  @>
 : Repeat Above
+@>
+
+Page #2
+Conditions
+Variable 0121: TKoL Plot Variable is 18 or above
+
+Autonomous Movement
+Type: Fixed
+Speed: 3: Slow
+Freq: 3: Low
+Options Enabled
+Move Animation
+Trigger: Action Button
+
+List of Event Commands:
 @>
 
 #------------------------------------------------------------------------------
@@ -72873,6 +73712,21 @@ List of Event Commands:
 : Repeat Above
 @>
 
+Page #2
+Conditions
+Variable 0121: TKoL Plot Variable is 18 or above
+
+Autonomous Movement
+Type: Fixed
+Speed: 3: Slow
+Freq: 3: Low
+Options Enabled
+Move Animation
+Trigger: Action Button
+
+List of Event Commands:
+@>
+
 #------------------------------------------------------------------------------
 Event ID: 011
 Event Name: FlyingRock8 update
@@ -72925,6 +73779,21 @@ List of Event Commands:
  @>Wait: 250 frame(s)
  @>
 : Repeat Above
+@>
+
+Page #2
+Conditions
+Variable 0121: TKoL Plot Variable is 18 or above
+
+Autonomous Movement
+Type: Fixed
+Speed: 3: Slow
+Freq: 3: Low
+Options Enabled
+Move Animation
+Trigger: Action Button
+
+List of Event Commands:
 @>
 
 #------------------------------------------------------------------------------
@@ -72981,6 +73850,21 @@ List of Event Commands:
 : Repeat Above
 @>
 
+Page #2
+Conditions
+Variable 0121: TKoL Plot Variable is 18 or above
+
+Autonomous Movement
+Type: Fixed
+Speed: 3: Slow
+Freq: 3: Low
+Options Enabled
+Move Animation
+Trigger: Action Button
+
+List of Event Commands:
+@>
+
 #------------------------------------------------------------------------------
 Event ID: 013
 Event Name: FlyingRock10 update
@@ -73035,6 +73919,21 @@ List of Event Commands:
 : Repeat Above
 @>
 
+Page #2
+Conditions
+Variable 0121: TKoL Plot Variable is 18 or above
+
+Autonomous Movement
+Type: Fixed
+Speed: 3: Slow
+Freq: 3: Low
+Options Enabled
+Move Animation
+Trigger: Action Button
+
+List of Event Commands:
+@>
+
 #------------------------------------------------------------------------------
 Event ID: 014
 Event Name: Trigger The Rocks!
@@ -73084,8 +73983,8 @@ List of Event Commands:
 
 #------------------------------------------------------------------------------
 Event ID: 016
-Event Name: EV016
-(X,Y): (026,014)
+Event Name: Cave Entrance
+(X,Y): (041,039)
 
 Page #1
 Conditions
@@ -73097,10 +73996,38 @@ Speed: 3: Slow
 Freq: 3: Low
 Options Enabled
 Move Animation
-Trigger: Action Button
+Trigger: Player Touch
 
 List of Event Commands:
-@>Control Switches: [0142: Junko Descends] = ON
+@>Play SE: 'Door exit', 100, 100
+@>Change Screen Color Tone: (-255,-255,-255,0), @6
+@>Wait: 8 frame(s)
+@>Script: pbCaveEntrance
+@>Transfer Player:[129: Mare Tranquillitatis Cave], (044,033), Up, No Fade
+@>Change Screen Color Tone: (0,0,0,0), @6
+@>
+
+Page #2
+Conditions
+Switch 0022: s:tsOff?("A") is ON
+
+Autonomous Movement
+Type: Fixed
+Speed: 3: Slow
+Freq: 3: Low
+Options Enabled
+Move Animation
+Trigger: Autorun
+
+List of Event Commands:
+@>Conditional Branch: Script: get_self.onEvent?
+ @>Set Move Route: Player
+                   (Ignore If Can't Move)
+  :              : $>Move Down
+ @>Wait for Move's Completion
+ @>
+: Branch End
+@>Script: setTempSwitchOn("A")
 @>
 
 #------------------------------------------------------------------------------
@@ -73157,6 +74084,21 @@ List of Event Commands:
 : Repeat Above
 @>
 
+Page #2
+Conditions
+Variable 0121: TKoL Plot Variable is 18 or above
+
+Autonomous Movement
+Type: Fixed
+Speed: 3: Slow
+Freq: 3: Low
+Options Enabled
+Move Animation
+Trigger: Action Button
+
+List of Event Commands:
+@>
+
 #------------------------------------------------------------------------------
 Event ID: 018
 Event Name: FlyingRock2 update
@@ -73209,6 +74151,21 @@ List of Event Commands:
  @>Wait: 250 frame(s)
  @>
 : Repeat Above
+@>
+
+Page #2
+Conditions
+Variable 0121: TKoL Plot Variable is 18 or above
+
+Autonomous Movement
+Type: Fixed
+Speed: 3: Slow
+Freq: 3: Low
+Options Enabled
+Move Animation
+Trigger: Action Button
+
+List of Event Commands:
 @>
 
 #------------------------------------------------------------------------------
@@ -73265,6 +74222,21 @@ List of Event Commands:
 : Repeat Above
 @>
 
+Page #2
+Conditions
+Variable 0121: TKoL Plot Variable is 18 or above
+
+Autonomous Movement
+Type: Fixed
+Speed: 3: Slow
+Freq: 3: Low
+Options Enabled
+Move Animation
+Trigger: Action Button
+
+List of Event Commands:
+@>
+
 #------------------------------------------------------------------------------
 Event ID: 020
 Event Name: FlyingRock2 update
@@ -73317,6 +74289,21 @@ List of Event Commands:
  @>Wait: 250 frame(s)
  @>
 : Repeat Above
+@>
+
+Page #2
+Conditions
+Variable 0121: TKoL Plot Variable is 18 or above
+
+Autonomous Movement
+Type: Fixed
+Speed: 3: Slow
+Freq: 3: Low
+Options Enabled
+Move Animation
+Trigger: Action Button
+
+List of Event Commands:
 @>
 
 #------------------------------------------------------------------------------
@@ -73373,6 +74360,21 @@ List of Event Commands:
 : Repeat Above
 @>
 
+Page #2
+Conditions
+Variable 0121: TKoL Plot Variable is 18 or above
+
+Autonomous Movement
+Type: Fixed
+Speed: 3: Slow
+Freq: 3: Low
+Options Enabled
+Move Animation
+Trigger: Action Button
+
+List of Event Commands:
+@>
+
 #------------------------------------------------------------------------------
 Event ID: 022
 Event Name: FlyingRock2 update
@@ -73425,6 +74427,21 @@ List of Event Commands:
  @>Wait: 250 frame(s)
  @>
 : Repeat Above
+@>
+
+Page #2
+Conditions
+Variable 0121: TKoL Plot Variable is 18 or above
+
+Autonomous Movement
+Type: Fixed
+Speed: 3: Slow
+Freq: 3: Low
+Options Enabled
+Move Animation
+Trigger: Action Button
+
+List of Event Commands:
 @>
 
 #------------------------------------------------------------------------------
@@ -73481,6 +74498,21 @@ List of Event Commands:
 : Repeat Above
 @>
 
+Page #2
+Conditions
+Variable 0121: TKoL Plot Variable is 18 or above
+
+Autonomous Movement
+Type: Fixed
+Speed: 3: Slow
+Freq: 3: Low
+Options Enabled
+Move Animation
+Trigger: Action Button
+
+List of Event Commands:
+@>
+
 #------------------------------------------------------------------------------
 Event ID: 024
 Event Name: FlyingRock2 update
@@ -73533,6 +74565,21 @@ List of Event Commands:
  @>Wait: 250 frame(s)
  @>
 : Repeat Above
+@>
+
+Page #2
+Conditions
+Variable 0121: TKoL Plot Variable is 18 or above
+
+Autonomous Movement
+Type: Fixed
+Speed: 3: Slow
+Freq: 3: Low
+Options Enabled
+Move Animation
+Trigger: Action Button
+
+List of Event Commands:
 @>
 
 #------------------------------------------------------------------------------
@@ -73589,6 +74636,21 @@ List of Event Commands:
 : Repeat Above
 @>
 
+Page #2
+Conditions
+Variable 0121: TKoL Plot Variable is 18 or above
+
+Autonomous Movement
+Type: Fixed
+Speed: 3: Slow
+Freq: 3: Low
+Options Enabled
+Move Animation
+Trigger: Action Button
+
+List of Event Commands:
+@>
+
 #------------------------------------------------------------------------------
 Event ID: 026
 Event Name: FlyingRock2 update
@@ -73641,6 +74703,248 @@ List of Event Commands:
  @>Wait: 250 frame(s)
  @>
 : Repeat Above
+@>
+
+Page #2
+Conditions
+Variable 0121: TKoL Plot Variable is 18 or above
+
+Autonomous Movement
+Type: Fixed
+Speed: 3: Slow
+Freq: 3: Low
+Options Enabled
+Move Animation
+Trigger: Action Button
+
+List of Event Commands:
+@>
+
+#------------------------------------------------------------------------------
+Event ID: 027
+Event Name: EV027
+(X,Y): (020,043)
+
+Page #1
+Conditions
+Variable 0121: TKoL Plot Variable is 16 or above
+
+Autonomous Movement
+Type: Fixed
+Speed: 3: Slow
+Freq: 3: Low
+Options Enabled
+Move Animation
+Trigger: Autorun
+
+List of Event Commands:
+@>Text: \xn[\pn]The Sea of Tranquility... I remember reading about the
+ :    : various landmarks of the Moon in Miss Keine's textbooks.
+@>Text: \xn[\pn]If I remember correctly, despite it being called a "sea",
+ :    : there shouldn't be any water on the moon.
+@>Wait: 10 frame(s)
+@>Text: \xn[\pn]... Then again, there was never any proof of a civilization
+ :    : on the moon either.
+@>Text: \xn[\pn]Today really has been full of surprises! But it's time to
+ :    : end this and defeat this "honorable guest".
+@>Control Variables: [0121: TKoL Plot Variable] = 17
+@>
+
+Page #2
+Conditions
+Variable 0121: TKoL Plot Variable is 17 or above
+
+Autonomous Movement
+Type: Fixed
+Speed: 3: Slow
+Freq: 3: Low
+Options Enabled
+Move Animation
+Trigger: Action Button
+
+List of Event Commands:
+@>
+
+#------------------------------------------------------------------------------
+Event ID: 028
+Event Name: Hell Fairy Trainer
+(X,Y): (024,035)
+
+Page #1
+Conditions
+None
+
+Autonomous Movement
+Type: Fixed
+Speed: 3: Slow
+Freq: 3: Low
+Options Enabled
+Move Animation
+Trigger: Action Button
+
+List of Event Commands:
+@>
+
+#------------------------------------------------------------------------------
+Event ID: 029
+Event Name: Hell Fairy Trainer
+(X,Y): (024,040)
+
+Page #1
+Conditions
+None
+
+Autonomous Movement
+Type: Fixed
+Speed: 3: Slow
+Freq: 3: Low
+Options Enabled
+Move Animation
+Trigger: Action Button
+
+List of Event Commands:
+@>
+
+#------------------------------------------------------------------------------
+Event ID: 030
+Event Name: Hell Fairy Trainer
+(X,Y): (040,040)
+
+Page #1
+Conditions
+None
+
+Autonomous Movement
+Type: Fixed
+Speed: 3: Slow
+Freq: 3: Low
+Options Enabled
+Move Animation
+Trigger: Action Button
+
+List of Event Commands:
+@>
+
+#------------------------------------------------------------------------------
+Event ID: 031
+Event Name: ExitArrow
+(X,Y): (027,015)
+
+Page #1
+Conditions
+None
+
+Graphic: Exitarrow_red
+
+Autonomous Movement
+Type: Fixed
+Speed: 3: Slow
+Freq: 3: Low
+Options Enabled
+Move Animation
+Stop Animation
+Trigger: Player Touch
+
+List of Event Commands:
+@>Conditional Branch: Player is facing Down
+ @>Play SE: 'Door exit', 100, 100
+ @>Change Screen Color Tone: (-255,-255,-255,0), @6
+ @>Wait: 8 frame(s)
+ @>Script: pbCaveEntrance
+ @>Transfer Player:[129: Mare Tranquillitatis Cave], (027,008), Down, No Fade
+ @>Change Screen Color Tone: (0,0,0,0), @6
+ @>
+: Branch End
+@>
+
+#------------------------------------------------------------------------------
+Event ID: 032
+Event Name: Hecatia
+(X,Y): (055,014)
+
+Page #1
+Conditions
+Variable 0121: TKoL Plot Variable is 18 or above
+
+Graphic: Person_Hecatia
+
+Autonomous Movement
+Type: Fixed
+Speed: 3: Slow
+Freq: 3: Low
+Options Enabled
+Move Animation
+Trigger: Action Button
+
+List of Event Commands:
+@>
+
+Page #2
+Conditions
+Variable 0121: TKoL Plot Variable is 20 or above
+
+Autonomous Movement
+Type: Fixed
+Speed: 3: Slow
+Freq: 3: Low
+Options Enabled
+Move Animation
+Trigger: Action Button
+
+List of Event Commands:
+@>
+
+#------------------------------------------------------------------------------
+Event ID: 033
+Event Name: Wormhole
+(X,Y): (027,006)
+
+Page #1
+Conditions
+None
+
+Autonomous Movement
+Type: Fixed
+Speed: 3: Slow
+Freq: 3: Low
+Options Enabled
+Move Animation
+Trigger: Action Button
+
+List of Event Commands:
+@>
+
+Page #2
+Conditions
+Variable 0121: TKoL Plot Variable is 19 or above
+
+Graphic: Ultra Wormhole
+
+Autonomous Movement
+Type: Custom
+Custom Move Route:
+(Repeat Action)
+$>Turn Left
+$>Wait: 8 frame(s)
+$>Turn Right
+$>Wait: 8 frame(s)
+$>Turn Up
+$>Wait: 8 frame(s)
+$>Turn Down
+$>Wait: 8 frame(s)
+
+Speed: 3: Slow
+Freq: 6: Highest
+Options Enabled
+Move Animation
+Trigger: Player Touch
+
+List of Event Commands:
+@>Play SE: 'teleporter', 60, 100
+@>Change Screen Color Tone: (-255,-255,-255,0), @6
+@>Wait: 8 frame(s)
+@>Transfer Player:[096: Mare Marginis], (039,040), Up, No Fade
+@>Change Screen Color Tone: (0,0,0,0), @6
 @>
 
 #------------------------------------------------------------------------------
@@ -77370,7 +78674,106 @@ List of Event Commands:
 Map ID: 123
 Map Name: Hecatia's Fortress
 Tileset: 043: Hecatia's Lunar Fortress
-Width: 20, Height: 15
+Width: 25, Height: 25
+Auto-Change BGM: W-038. A World Of Nightmares Never Seen Before
+
+#------------------------------------------------------------------------------
+Event ID: 001
+Event Name: Hell Fairy Trainer
+(X,Y): (012,006)
+
+Page #1
+Conditions
+None
+
+Graphic: TPDP_NPC 52
+
+Autonomous Movement
+Type: Fixed
+Speed: 3: Slow
+Freq: 3: Low
+Options Enabled
+Move Animation
+Trigger: Action Button
+
+List of Event Commands:
+@>
+
+#------------------------------------------------------------------------------
+Event ID: 002
+Event Name: EV002
+(X,Y): (012,005)
+
+Page #1
+Conditions
+None
+
+Autonomous Movement
+Type: Fixed
+Speed: 3: Slow
+Freq: 3: Low
+Options Enabled
+Move Animation
+Trigger: Player Touch
+
+List of Event Commands:
+@>Conditional Branch: Player is facing Up
+ @>Text: \w[dark]Proceeding past this point will trigger the final segment of
+  :    : Stage 6. It is highly advised you heal your Puppets before
+  :    : advancing.
+ @>Text: \w[dark]Are you prepared to advance?
+ @>Show Choices: Yes, No
+ (When Cancel: Choice 2)
+ : When [Yes]
+  @>Play SE: 'Door exit', 100, 100
+  @>Change Screen Color Tone: (-255,-255,-255,0), @6
+  @>Wait: 8 frame(s)
+  @>Transfer Player:[125: Hecatia's Fortress (Roof)], (019,016), Up, No Fade
+  @>Change Screen Color Tone: (0,0,0,0), @6
+  @>
+ : When [No]
+  @>Set Move Route: Player
+   :              : $>Move Down
+  @>
+ : Branch End
+ @>
+: Branch End
+@>
+
+#------------------------------------------------------------------------------
+Event ID: 003
+Event Name: ExitArrow
+(X,Y): (012,020)
+
+Page #1
+Conditions
+None
+
+Graphic: Exitarrow_red
+
+Autonomous Movement
+Type: Fixed
+Speed: 3: Slow
+Freq: 3: Low
+Options Enabled
+Move Animation
+Stop Animation
+Trigger: Player Touch
+
+List of Event Commands:
+@>Conditional Branch: Player is facing Down
+ @>Play SE: 'Door exit', 100, 100
+ @>Change Screen Color Tone: (-255,-255,-255,0), @6
+ @>Wait: 8 frame(s)
+ @>Transfer Player:[096: Mare Marginis], (039,025), Down, No Fade
+ @>Change Screen Color Tone: (0,0,0,0), @6
+ @>Set Move Route: Player
+  :              : $>Move Down
+ @>
+: Branch End
+@>
+
+#------------------------------------------------------------------------------
 
 #==============================================================================
 Map ID: 124
@@ -77383,6 +78786,7 @@ Map ID: 125
 Map Name: Hecatia's Fortress (Roof)
 Tileset: 043: Hecatia's Lunar Fortress
 Width: 40, Height: 30
+Auto-Change BGM: W-038. A World Of Nightmares Never Seen Before
 
 #------------------------------------------------------------------------------
 Event ID: 001
@@ -77392,6 +78796,8 @@ Event Name: Junko
 Page #1
 Conditions
 None
+
+Graphic: Person_Junko_Alt
 
 Autonomous Movement
 Type: Fixed
@@ -77413,6 +78819,8 @@ Page #1
 Conditions
 None
 
+Graphic: Person_Hecatia
+
 Autonomous Movement
 Type: Fixed
 Speed: 3: Slow
@@ -77431,7 +78839,9 @@ Event Name: Partner
 
 Page #1
 Conditions
-None
+Variable 0122: TKoL S6 Partner is 1 or above
+
+Graphic: Person_Reimu
 
 Autonomous Movement
 Type: Fixed
@@ -77442,6 +78852,292 @@ Move Animation
 Trigger: Action Button
 
 List of Event Commands:
+@>
+
+Page #2
+Conditions
+Variable 0122: TKoL S6 Partner is 2 or above
+
+Graphic: Person_Marisa
+
+Autonomous Movement
+Type: Fixed
+Speed: 3: Slow
+Freq: 3: Low
+Options Enabled
+Move Animation
+Trigger: Action Button
+
+List of Event Commands:
+@>
+
+Page #3
+Conditions
+Variable 0122: TKoL S6 Partner is 3 or above
+
+Graphic: Person_Sanae
+
+Autonomous Movement
+Type: Fixed
+Speed: 3: Slow
+Freq: 3: Low
+Options Enabled
+Move Animation
+Trigger: Action Button
+
+List of Event Commands:
+@>
+
+Page #4
+Conditions
+Variable 0122: TKoL S6 Partner is 4 or above
+
+Graphic: Person_Reisen
+
+Autonomous Movement
+Type: Fixed
+Speed: 3: Slow
+Freq: 3: Low
+Options Enabled
+Move Animation
+Trigger: Action Button
+
+List of Event Commands:
+@>
+
+#------------------------------------------------------------------------------
+Event ID: 004
+Event Name: S6 Autorun
+(X,Y): (026,016)
+
+Page #1
+Conditions
+None
+
+Autonomous Movement
+Type: Fixed
+Speed: 3: Slow
+Freq: 3: Low
+Options Enabled
+Move Animation
+Trigger: Autorun
+
+List of Event Commands:
+@>Conditional Branch: Variable [0122: TKoL S6 Partner] <= 0
+ @>Script: $game_variable[122] = rand(3)+1
+ :       : p $game_variable[122]
+ @>
+: Branch End
+@>Set Move Route: Player
+ :              : $>Move Up
+ :              : $>Move Up
+ :              : $>Move Up
+ :              : $>Move Up
+@>Wait for Move's Completion
+@>Script: pbCameraScrollDirection(8, 5, 0.3)
+@>Text: \xn[Hecatia]You came after all. Splendid!
+@>Set Move Route: [Junko]
+ :              : $>Move Animation OFF
+ :              : $>Move Down
+@>Set Move Route: [Hecatia]
+ :              : $>Move Animation OFF
+ :              : $>Move Down
+@>Change Text Options: Middle, Show
+@>Text: \xn[Junko]How should we do this then. In turns? Make it a fair
+ :    : fight?
+@>Text: \xn[Hecatia]Maybe if this was a Danmaku duel! However, we're 
+ :    : battling with Puppets.
+@>Text: \xn[Hecatia]Surely she can handle if we come at her two-on-one.
+@>Text: \xn[\pn]I've done three-on-one before! I'm not scared of either of 
+ :    : you!
+@>Text: \xn[Hecatia]Glad to hear it! This is just a simple battle after all!
+@>Script: pbTrainerIntro(:HECATIA)
+@>Text: \xn[Hecatia]While Junko may be willing to accept defeat, I on the
+ :    : other hand am fired up!\wtnp[30]
+@>Text: \xn[Hecatia]And for disrupting our plans... For that reason alone,
+ :    : I'll drop you into hell!\wtnp[30]
+@>Text: \xn[Hecatia]For that reason, and no more!\wtnp[30]
+@>Text: \xn[Hecatia]Now suffer, even in death!\wtnp[30]
+@>Change Text Options: Bottom, Show
+@>Control Switches: [0104: Transition Handler] = ON
+@>Control Variables: [0103: Vs. Transition ID] = 47
+@>Control Variables: [0104: Vs. Transition - Pkmn] = 6
+@>Call Common Event: Vs. Junko & Hecatia (Fakeout)
+@>Fade Out BGM: 1 sec.
+@>Wait: 10 frame(s)
+@>Show Animation: Player, [Question bubble]
+@>Show Animation: [Junko], [Question bubble]
+@>Show Animation: [Hecatia], [Question bubble]
+@>Change Text Options: Middle, Show
+@>Text: \xn[Hecatia]Who said that? Reveal yourself!
+@>Set Move Route: Player
+ :              : $>Turn Down
+@>Conditional Branch: Variable [0122: TKoL S6 Partner] == 1
+ @>Comment: Reimu
+ @>Script: pbRegisterPartner(:REIMU, "Reimu Hakurei", 10+(pbGet(99) * 10))
+ @>Text: \xn[???]It's always the same! You troublemakers think you 
+  :    : can just do whatever you want, don't you?
+ @>Text: \xn[???]It doesn't matter who gets affected by your 
+  :    : schemes!
+ @>Text: \xn[???]But that's why I'm here to maintain the balance. As
+  :    : Gensokyo's resident Incident Resolution Specialist...
+ @>Set Event Location: [Partner],(020,016), Up
+ @>Script: pbCameraScrollDirection(2, 6, 0.3)
+ @>Wait: 30 frame(s)
+ @>Play BGM: 'X-008. Maiden's Capriccio', 100, 100
+ @>Show Animation: Player, [Exclaim bubble]
+ @>Set Move Route: [Partner]
+  :              : $>Change Opacity: 255
+  :              : $>SE: 'Door exit', 80, 100
+  :              : $>Move Up
+  :              : $>Move Up
+  :              : $>Move Up
+  :              : $>Move Up
+ @>Wait for Move's Completion
+ @>Set Move Route: Player
+  :              : $>Turn Right
+ @>Script: pbCameraScrollDirection(8, 4)
+ @>Change Text Options: Bottom, Show
+ @>Text: \xn[Reimu]It's my job to exterminate any threats to Gensokyo's
+  :    : balance!
+ @>Text: \xn[\pn]L-Lady Reimu!? What are you doing here!?
+ @>Set Move Route: [Partner]
+  :              : $>Turn Left
+ @>Text: \xn[Reimu]My job! That doctor had her messenger inform
+  :    : me of the situation, and had me come here as well!
+ @>Set Move Route: [Partner]
+  :              : $>Turn Right
+ @>Text: \xn[Reimu]And just as I was thinking things were returning to
+  :    : normal... Nothing ever stays peaceful for too long!
+ @>Text: \xn[\pn]\b(Doctor Yagokoro had her come...? Then why did 
+  :    : she send me!)
+ @>Set Move Route: [Partner]
+  :              : $>Turn Left
+ @>Text: \xn[Reimu]I've already learned of the situation from the 
+  :    : Goddess back in the Capital.
+ @>Set Move Route: [Partner]
+  :              : $>Turn Up
+ @>Set Move Route: Player
+  :              : $>Turn Up
+ @>Text: \xn[Reimu]You two are the ones responsible for the Lunarian 
+  :    : Invasion of Gensokyo, aren't you?
+ @>Text: \xn[Reimu]And now the residents of the Capital are
+  :    : trapped in the Dream World as part of your schemes, 
+  :    : aren't they?
+ @>Text: \xn[Reimu]If they stay trapped in there any longer, it'll be a 
+  :    : huge problem for us humans as well!
+ @>Text: \xn[Hecatia]Holding Gensokyo hostage like this, truly their 
+  :    : barbaracy knows no limits.
+ @>Text: \xn[\pn]Are you not doing the same with the Capital! This revenge
+  :    : plan of yours is the same as the Capital's plan to relocate to
+  :    : Gensokyo!
+ @>Text: \xn[Junko]Gensokyo and the human world are innocent.
+  :    : The citizens of the Lunar Capital must be held accountable
+  :    : for the sins of their goddess.
+ @>Text: \xn[\pn]What kind of sense does that make!?
+ @>Text: \xn[Reimu]I'll only say this once- let the people of the moon go
+  :    : this instant!
+ @>Text: \xn[Reimu]If you don't, I'll grind you into the dust right here 
+  :    : and now!
+ @>Text: \xn[Hecatia]Such rude language... Are all the Shrine Maidens
+  :    : of Gensokyo like you?
+ @>
+: Else
+ @>Conditional Branch: Variable [0122: TKoL S6 Partner] == 2
+  @>Comment: Marisa
+  @>Script: pbRegisterPartner(:MARISA_2, "Marisa Kirisame", 10+(pbGet(99) * 10))
+  @>Text: \xn[???]Oh I'll reveal myself a'ight! Don'tchu worry 'bout
+   :    : that.
+  @>Text: \xn[???]The hero's gotta make a dramatic entrance at the
+   :    : last second, after all!
+  @>Text: \xn[???]Like a blazin' star, streakin' 'cross the night sky...
+  @>Set Event Location: [Partner],(020,016), Up
+  @>Script: pbCameraScrollDirection(2, 6, 0.3)
+  @>Wait: 30 frame(s)
+  @>Play BGM: 'X-009. Vessel of Stars ~ Casket of Star', 100, 100
+  @>Show Animation: Player, [Exclaim bubble]
+  @>Set Move Route: [Partner]
+   :              : $>Change Opacity: 255
+   :              : $>SE: 'Door exit', 80, 100
+   :              : $>Move Up
+   :              : $>Move Up
+   :              : $>Move Up
+   :              : $>Move Up
+  @>Wait for Move's Completion
+  @>Set Move Route: Player
+   :              : $>Turn Right
+  @>Script: pbCameraScrollDirection(8, 4)
+  @>Change Text Options: Bottom, Show
+  @>Text: \xn[Marisa]The number one incident resolver makes her 
+   :    : appearance!
+  @>Text: \xn[\pn]M-Miss Kirisame!? What are you doing here!?
+  @>Set Move Route: [Partner]
+   :              : $>Turn Left
+  @>Text: \xn[Marisa]'ow many times 've I gotta tell you to jus' call me 
+   :    : Marisa! Miss Kirisame is way too formal! And I ain't 'bout 
+   :    : that.
+  @>Text: \xn[Marisa]'sides, the doc sent for me. Said somethin' 'bout 
+   :    : wantin' to supply backup to her 'vanguard'.
+  @>Text: \xn[Marisa]When dealin' with the moon's people, y'can
+   :    : never be too cautious.
+  @>Text: \xn[\pn]\b(Then why even send me alone in the first place...!)
+  @>Text: \xn[Marisa]'nough 'bout that though. 've already been 
+   :    : appraised of what's goin' on by that Goddess.
+  @>Set Move Route: [Partner]
+   :              : $>Turn Up
+  @>Set Move Route: Player
+   :              : $>Turn Up
+  @>Text: \xn[Marisa]You folks are the reason why the moon's people 
+   :    : are invading Gensokyo, right? 
+  @>Text: \xn[Marisa]Now you've gone and trapped them in the Dream 
+   :    : Realm... If you keep them locked up there, that'll be real bad for
+   :    : Gensokyo!
+  @>Text: \xn[Hecatia]Holding Gensokyo hostage like this, truly their 
+   :    : barbaracy knows no limits.
+  @>Text: \xn[\pn]Are you not doing the same with the Capital! This revenge
+   :    : plan of yours is the same as the Capital's plan to relocate to
+   :    : Gensokyo!
+  @>Text: \xn[Junko]Gensokyo and the human world are innocent.
+   :    : The citizens of the Lunar Capital must be held accountable
+   :    : for the sins of their goddess.
+  @>Text: \xn[\pn]What kind of sense does that make!?
+  @>Text: \xn[Marisa]If y'aren't gonna go quietly, than there's only
+   :    : one way to settle this!
+  @>Text: \xn[Marisa]We're gonna take you both down!
+  @>
+ : Else
+  @>Conditional Branch: Variable [0122: TKoL S6 Partner] == 3
+   @>Comment: Sanae
+   @>Text: \xn[???]Stop right there, criminal scum!\wtnp[15]
+   @>
+  : Else
+   @>Conditional Branch: Variable [0122: TKoL S6 Partner] == 4
+    @>Comment: Reisen
+    @>Text: \xn[???]Think again!\wtnp[15]
+    @>
+   : Branch End
+   @>
+  : Branch End
+  @>
+ : Branch End
+ @>
+: Branch End
+@>Script: pbTrainerIntro(:HECATIA2)
+@>Text: \xn[Hecatia]Alright! A two-on-two it is then!
+@>Text: \xn[Hecatia]I'll drag you both into the depths of hell, and you 
+ :    : shall know true suffering!
+@>Control Switches: [0104: Transition Handler] = ON
+@>Control Variables: [0103: Vs. Transition ID] = 47
+@>Control Variables: [0104: Vs. Transition - Pkmn] = 6
+@>Change Battle BGM: 'B-037. Pandemonic Furies', 100, 100
+@>Script: setBattleRule("backdrop", "starlightJunko")
+@>Conditional Branch: Script: TrainerBattle.start(:HECATIA, "Hecatia Lapislazuli", 10+(pbGet(99) * 10), :JUNKO, "Junko", 11+(pbGet(99) * 10))
+ @>
+: Else
+ @>Script: pbTrainerEnd
+ @>Exit Event Processing
+ @>
+: Branch End
 @>
 
 #------------------------------------------------------------------------------
@@ -77513,6 +79209,21 @@ Trigger: Action Button
 List of Event Commands:
 @>
 
+Page #3
+Conditions
+Variable 0121: TKoL Plot Variable is 15 or above
+
+Autonomous Movement
+Type: Fixed
+Speed: 3: Slow
+Freq: 3: Low
+Options Enabled
+Move Animation
+Trigger: Action Button
+
+List of Event Commands:
+@>
+
 #------------------------------------------------------------------------------
 Event ID: 003
 Event Name: Hell Fairy (Hairband) (Bottom)
@@ -77540,6 +79251,21 @@ Conditions
 Self Switch A is ON
 
 Graphic: TPDP_NPC 52
+
+Autonomous Movement
+Type: Fixed
+Speed: 3: Slow
+Freq: 3: Low
+Options Enabled
+Move Animation
+Trigger: Action Button
+
+List of Event Commands:
+@>
+
+Page #3
+Conditions
+Variable 0121: TKoL Plot Variable is 15 or above
 
 Autonomous Movement
 Type: Fixed
@@ -77591,6 +79317,21 @@ Trigger: Action Button
 List of Event Commands:
 @>
 
+Page #3
+Conditions
+Variable 0121: TKoL Plot Variable is 15 or above
+
+Autonomous Movement
+Type: Fixed
+Speed: 3: Slow
+Freq: 3: Low
+Options Enabled
+Move Animation
+Trigger: Action Button
+
+List of Event Commands:
+@>
+
 #------------------------------------------------------------------------------
 Event ID: 005
 Event Name: Hell Fairy (Twintail) (Bottom)
@@ -77618,6 +79359,21 @@ Conditions
 Self Switch A is ON
 
 Graphic: TPDP_NPC 51
+
+Autonomous Movement
+Type: Fixed
+Speed: 3: Slow
+Freq: 3: Low
+Options Enabled
+Move Animation
+Trigger: Action Button
+
+List of Event Commands:
+@>
+
+Page #3
+Conditions
+Variable 0121: TKoL Plot Variable is 15 or above
 
 Autonomous Movement
 Type: Fixed
@@ -77669,6 +79425,21 @@ Trigger: Action Button
 List of Event Commands:
 @>
 
+Page #3
+Conditions
+Variable 0121: TKoL Plot Variable is 15 or above
+
+Autonomous Movement
+Type: Fixed
+Speed: 3: Slow
+Freq: 3: Low
+Options Enabled
+Move Animation
+Trigger: Action Button
+
+List of Event Commands:
+@>
+
 #------------------------------------------------------------------------------
 Event ID: 007
 Event Name: Hell Fairy (Hat) (Bottom)
@@ -77696,6 +79467,21 @@ Conditions
 Self Switch A is ON
 
 Graphic: TPDP_NPC 53
+
+Autonomous Movement
+Type: Fixed
+Speed: 3: Slow
+Freq: 3: Low
+Options Enabled
+Move Animation
+Trigger: Action Button
+
+List of Event Commands:
+@>
+
+Page #3
+Conditions
+Variable 0121: TKoL Plot Variable is 15 or above
 
 Autonomous Movement
 Type: Fixed
@@ -77747,6 +79533,21 @@ Trigger: Action Button
 List of Event Commands:
 @>
 
+Page #3
+Conditions
+Variable 0121: TKoL Plot Variable is 15 or above
+
+Autonomous Movement
+Type: Fixed
+Speed: 3: Slow
+Freq: 3: Low
+Options Enabled
+Move Animation
+Trigger: Action Button
+
+List of Event Commands:
+@>
+
 #------------------------------------------------------------------------------
 Event ID: 009
 Event Name: Hell Fairy (Twintail) (Bottom)
@@ -77786,6 +79587,21 @@ Trigger: Action Button
 List of Event Commands:
 @>
 
+Page #3
+Conditions
+Variable 0121: TKoL Plot Variable is 15 or above
+
+Autonomous Movement
+Type: Fixed
+Speed: 3: Slow
+Freq: 3: Low
+Options Enabled
+Move Animation
+Trigger: Action Button
+
+List of Event Commands:
+@>
+
 #------------------------------------------------------------------------------
 Event ID: 010
 Event Name: Hell Fairy (Hairband) (Bottom)
@@ -77813,6 +79629,21 @@ Conditions
 Self Switch A is ON
 
 Graphic: TPDP_NPC 52
+
+Autonomous Movement
+Type: Fixed
+Speed: 3: Slow
+Freq: 3: Low
+Options Enabled
+Move Animation
+Trigger: Action Button
+
+List of Event Commands:
+@>
+
+Page #3
+Conditions
+Variable 0121: TKoL Plot Variable is 15 or above
 
 Autonomous Movement
 Type: Fixed
@@ -77904,6 +79735,21 @@ Trigger: Action Button
 List of Event Commands:
 @>
 
+Page #3
+Conditions
+Variable 0121: TKoL Plot Variable is 15 or above
+
+Autonomous Movement
+Type: Fixed
+Speed: 3: Slow
+Freq: 3: Low
+Options Enabled
+Move Animation
+Trigger: Action Button
+
+List of Event Commands:
+@>
+
 #------------------------------------------------------------------------------
 Event ID: 014
 Event Name: Hell Fairy (Twintail) (Bottom)
@@ -77931,6 +79777,21 @@ Conditions
 Self Switch A is ON
 
 Graphic: TPDP_NPC 51
+
+Autonomous Movement
+Type: Fixed
+Speed: 3: Slow
+Freq: 3: Low
+Options Enabled
+Move Animation
+Trigger: Action Button
+
+List of Event Commands:
+@>
+
+Page #3
+Conditions
+Variable 0121: TKoL Plot Variable is 15 or above
 
 Autonomous Movement
 Type: Fixed
@@ -77982,6 +79843,21 @@ Trigger: Action Button
 List of Event Commands:
 @>
 
+Page #3
+Conditions
+Variable 0121: TKoL Plot Variable is 15 or above
+
+Autonomous Movement
+Type: Fixed
+Speed: 3: Slow
+Freq: 3: Low
+Options Enabled
+Move Animation
+Trigger: Action Button
+
+List of Event Commands:
+@>
+
 #------------------------------------------------------------------------------
 Event ID: 016
 Event Name: Hell Fairy (Twintail)
@@ -77992,6 +79868,21 @@ Conditions
 None
 
 Graphic: TPDP_NPC 51
+
+Autonomous Movement
+Type: Fixed
+Speed: 3: Slow
+Freq: 3: Low
+Options Enabled
+Move Animation
+Trigger: Action Button
+
+List of Event Commands:
+@>
+
+Page #2
+Conditions
+Variable 0121: TKoL Plot Variable is 15 or above
 
 Autonomous Movement
 Type: Fixed
@@ -78026,6 +79917,21 @@ Trigger: Action Button
 List of Event Commands:
 @>
 
+Page #2
+Conditions
+Variable 0121: TKoL Plot Variable is 15 or above
+
+Autonomous Movement
+Type: Fixed
+Speed: 3: Slow
+Freq: 3: Low
+Options Enabled
+Move Animation
+Trigger: Action Button
+
+List of Event Commands:
+@>
+
 #------------------------------------------------------------------------------
 Event ID: 018
 Event Name: Hell Fairy (Hat)
@@ -78036,6 +79942,21 @@ Conditions
 None
 
 Graphic: TPDP_NPC 53
+
+Autonomous Movement
+Type: Fixed
+Speed: 3: Slow
+Freq: 3: Low
+Options Enabled
+Move Animation
+Trigger: Action Button
+
+List of Event Commands:
+@>
+
+Page #2
+Conditions
+Variable 0121: TKoL Plot Variable is 15 or above
 
 Autonomous Movement
 Type: Fixed
@@ -78070,6 +79991,21 @@ Trigger: Action Button
 List of Event Commands:
 @>
 
+Page #2
+Conditions
+Variable 0121: TKoL Plot Variable is 15 or above
+
+Autonomous Movement
+Type: Fixed
+Speed: 3: Slow
+Freq: 3: Low
+Options Enabled
+Move Animation
+Trigger: Action Button
+
+List of Event Commands:
+@>
+
 #------------------------------------------------------------------------------
 Event ID: 020
 Event Name: Hell Fairy (Twintail)
@@ -78080,6 +80016,21 @@ Conditions
 None
 
 Graphic: TPDP_NPC 51
+
+Autonomous Movement
+Type: Fixed
+Speed: 3: Slow
+Freq: 3: Low
+Options Enabled
+Move Animation
+Trigger: Action Button
+
+List of Event Commands:
+@>
+
+Page #2
+Conditions
+Variable 0121: TKoL Plot Variable is 15 or above
 
 Autonomous Movement
 Type: Fixed
@@ -78114,6 +80065,21 @@ Trigger: Action Button
 List of Event Commands:
 @>
 
+Page #2
+Conditions
+Variable 0121: TKoL Plot Variable is 15 or above
+
+Autonomous Movement
+Type: Fixed
+Speed: 3: Slow
+Freq: 3: Low
+Options Enabled
+Move Animation
+Trigger: Action Button
+
+List of Event Commands:
+@>
+
 #------------------------------------------------------------------------------
 Event ID: 022
 Event Name: Hell Fairy (Hairband)
@@ -78124,6 +80090,21 @@ Conditions
 None
 
 Graphic: TPDP_NPC 52
+
+Autonomous Movement
+Type: Fixed
+Speed: 3: Slow
+Freq: 3: Low
+Options Enabled
+Move Animation
+Trigger: Action Button
+
+List of Event Commands:
+@>
+
+Page #2
+Conditions
+Variable 0121: TKoL Plot Variable is 15 or above
 
 Autonomous Movement
 Type: Fixed
@@ -78158,6 +80139,21 @@ Trigger: Action Button
 List of Event Commands:
 @>
 
+Page #2
+Conditions
+Variable 0121: TKoL Plot Variable is 15 or above
+
+Autonomous Movement
+Type: Fixed
+Speed: 3: Slow
+Freq: 3: Low
+Options Enabled
+Move Animation
+Trigger: Action Button
+
+List of Event Commands:
+@>
+
 #------------------------------------------------------------------------------
 Event ID: 024
 Event Name: Hell Fairy (Hairband)
@@ -78168,6 +80164,21 @@ Conditions
 None
 
 Graphic: TPDP_NPC 52
+
+Autonomous Movement
+Type: Fixed
+Speed: 3: Slow
+Freq: 3: Low
+Options Enabled
+Move Animation
+Trigger: Action Button
+
+List of Event Commands:
+@>
+
+Page #2
+Conditions
+Variable 0121: TKoL Plot Variable is 15 or above
 
 Autonomous Movement
 Type: Fixed
@@ -78202,6 +80213,21 @@ Trigger: Action Button
 List of Event Commands:
 @>
 
+Page #2
+Conditions
+Variable 0121: TKoL Plot Variable is 15 or above
+
+Autonomous Movement
+Type: Fixed
+Speed: 3: Slow
+Freq: 3: Low
+Options Enabled
+Move Animation
+Trigger: Action Button
+
+List of Event Commands:
+@>
+
 #------------------------------------------------------------------------------
 Event ID: 026
 Event Name: Hell Fairy (Hat)
@@ -78212,6 +80238,21 @@ Conditions
 None
 
 Graphic: TPDP_NPC 53
+
+Autonomous Movement
+Type: Fixed
+Speed: 3: Slow
+Freq: 3: Low
+Options Enabled
+Move Animation
+Trigger: Action Button
+
+List of Event Commands:
+@>
+
+Page #2
+Conditions
+Variable 0121: TKoL Plot Variable is 15 or above
 
 Autonomous Movement
 Type: Fixed
@@ -78248,7 +80289,7 @@ List of Event Commands:
 
 Page #2
 Conditions
-Variable 0121: TKoL Plot Variable is 0 or above
+Variable 0121: TKoL Plot Variable is 15 or above
 
 Autonomous Movement
 Type: Fixed
@@ -78283,6 +80324,21 @@ Trigger: Action Button
 List of Event Commands:
 @>
 
+Page #2
+Conditions
+Variable 0121: TKoL Plot Variable is 15 or above
+
+Autonomous Movement
+Type: Fixed
+Speed: 3: Slow
+Freq: 3: Low
+Options Enabled
+Move Animation
+Trigger: Action Button
+
+List of Event Commands:
+@>
+
 #------------------------------------------------------------------------------
 Event ID: 029
 Event Name: Hell Fairy (Hat)
@@ -78293,6 +80349,21 @@ Conditions
 None
 
 Graphic: TPDP_NPC 53
+
+Autonomous Movement
+Type: Fixed
+Speed: 3: Slow
+Freq: 3: Low
+Options Enabled
+Move Animation
+Trigger: Action Button
+
+List of Event Commands:
+@>
+
+Page #2
+Conditions
+Variable 0121: TKoL Plot Variable is 15 or above
 
 Autonomous Movement
 Type: Fixed
@@ -78327,6 +80398,21 @@ Trigger: Action Button
 List of Event Commands:
 @>
 
+Page #2
+Conditions
+Variable 0121: TKoL Plot Variable is 15 or above
+
+Autonomous Movement
+Type: Fixed
+Speed: 3: Slow
+Freq: 3: Low
+Options Enabled
+Move Animation
+Trigger: Action Button
+
+List of Event Commands:
+@>
+
 #------------------------------------------------------------------------------
 Event ID: 031
 Event Name: Hell Fairy (Hairband)
@@ -78337,6 +80423,21 @@ Conditions
 None
 
 Graphic: TPDP_NPC 52
+
+Autonomous Movement
+Type: Fixed
+Speed: 3: Slow
+Freq: 3: Low
+Options Enabled
+Move Animation
+Trigger: Action Button
+
+List of Event Commands:
+@>
+
+Page #2
+Conditions
+Variable 0121: TKoL Plot Variable is 15 or above
 
 Autonomous Movement
 Type: Fixed
@@ -78371,6 +80472,21 @@ Trigger: Action Button
 List of Event Commands:
 @>
 
+Page #2
+Conditions
+Variable 0121: TKoL Plot Variable is 15 or above
+
+Autonomous Movement
+Type: Fixed
+Speed: 3: Slow
+Freq: 3: Low
+Options Enabled
+Move Animation
+Trigger: Action Button
+
+List of Event Commands:
+@>
+
 #------------------------------------------------------------------------------
 Event ID: 033
 Event Name: Hell Fairy (Hairband)
@@ -78381,6 +80497,21 @@ Conditions
 None
 
 Graphic: TPDP_NPC 52
+
+Autonomous Movement
+Type: Fixed
+Speed: 3: Slow
+Freq: 3: Low
+Options Enabled
+Move Animation
+Trigger: Action Button
+
+List of Event Commands:
+@>
+
+Page #2
+Conditions
+Variable 0121: TKoL Plot Variable is 15 or above
 
 Autonomous Movement
 Type: Fixed
@@ -78415,6 +80546,21 @@ Trigger: Action Button
 List of Event Commands:
 @>
 
+Page #2
+Conditions
+Variable 0121: TKoL Plot Variable is 15 or above
+
+Autonomous Movement
+Type: Fixed
+Speed: 3: Slow
+Freq: 3: Low
+Options Enabled
+Move Animation
+Trigger: Action Button
+
+List of Event Commands:
+@>
+
 #------------------------------------------------------------------------------
 Event ID: 035
 Event Name: Hell Fairy (Hairband)
@@ -78425,6 +80571,21 @@ Conditions
 None
 
 Graphic: TPDP_NPC 52
+
+Autonomous Movement
+Type: Fixed
+Speed: 3: Slow
+Freq: 3: Low
+Options Enabled
+Move Animation
+Trigger: Action Button
+
+List of Event Commands:
+@>
+
+Page #2
+Conditions
+Variable 0121: TKoL Plot Variable is 15 or above
 
 Autonomous Movement
 Type: Fixed
@@ -78459,6 +80620,21 @@ Trigger: Action Button
 List of Event Commands:
 @>
 
+Page #2
+Conditions
+Variable 0121: TKoL Plot Variable is 15 or above
+
+Autonomous Movement
+Type: Fixed
+Speed: 3: Slow
+Freq: 3: Low
+Options Enabled
+Move Animation
+Trigger: Action Button
+
+List of Event Commands:
+@>
+
 #------------------------------------------------------------------------------
 Event ID: 037
 Event Name: Hell Fairy (Hat)
@@ -78469,6 +80645,21 @@ Conditions
 None
 
 Graphic: TPDP_NPC 53
+
+Autonomous Movement
+Type: Fixed
+Speed: 3: Slow
+Freq: 3: Low
+Options Enabled
+Move Animation
+Trigger: Action Button
+
+List of Event Commands:
+@>
+
+Page #2
+Conditions
+Variable 0121: TKoL Plot Variable is 15 or above
 
 Autonomous Movement
 Type: Fixed
@@ -78503,6 +80694,21 @@ Trigger: Action Button
 List of Event Commands:
 @>
 
+Page #2
+Conditions
+Variable 0121: TKoL Plot Variable is 15 or above
+
+Autonomous Movement
+Type: Fixed
+Speed: 3: Slow
+Freq: 3: Low
+Options Enabled
+Move Animation
+Trigger: Action Button
+
+List of Event Commands:
+@>
+
 #------------------------------------------------------------------------------
 Event ID: 039
 Event Name: Hell Fairy (Hairband)
@@ -78525,6 +80731,21 @@ Trigger: Action Button
 List of Event Commands:
 @>
 
+Page #2
+Conditions
+Variable 0121: TKoL Plot Variable is 15 or above
+
+Autonomous Movement
+Type: Fixed
+Speed: 3: Slow
+Freq: 3: Low
+Options Enabled
+Move Animation
+Trigger: Action Button
+
+List of Event Commands:
+@>
+
 #------------------------------------------------------------------------------
 Event ID: 040
 Event Name: Clownpiece
@@ -78535,6 +80756,21 @@ Conditions
 None
 
 Graphic: Person_Clownpiece
+
+Autonomous Movement
+Type: Fixed
+Speed: 3: Slow
+Freq: 3: Low
+Options Enabled
+Move Animation
+Trigger: Action Button
+
+List of Event Commands:
+@>
+
+Page #2
+Conditions
+Variable 0121: TKoL Plot Variable is 16 or above
 
 Autonomous Movement
 Type: Fixed
@@ -78710,9 +80946,9 @@ List of Event Commands:
 @>Wait: 10 frame(s)
 @>Change Text Options: Middle, Show
 @>Text: \xn[Sagume]Omoikane-Tan, Gunk Shot!
-@>Script: pbSEPlay("Anim\PRSFX- Thousand Arrows2")
+@>Script: Pokemon.play_cry(:EIRIN)
 @>Script: pbSetSelfSwitch(48,"A",true)
-@>Wait: 25 frame(s)
+@>Wait: 30 frame(s)
 @>Comment: (Sagume and the Player travel up the middle)
 @>Set Move Route: [Sagume]
  :              : $>Through ON
@@ -78863,7 +81099,7 @@ List of Event Commands:
  @>Control Variables: [0104: Vs. Transition - Pkmn] = 4
  @>
 : Branch End
-@>Conditional Branch: Script: TrainerBattle.start(:DOREMY, "Doremy Sweet", 10+(pbGet(99) * 10))
+@>Conditional Branch: Script: TrainerBattle.start(:CLOWNPIECE, "Clownpiece", 10+(pbGet(99) * 10))
  @>Comment: (Trigger Clownpiece Battle- Double battle against another
   :       : Hell Fairy.)
   :       : (Similar mechanics to the other Hell Fairies, but in this battle,
@@ -78889,6 +81125,7 @@ List of Event Commands:
  @>Text: But she was the strongest one of us...
  @>Wait: 10 frame(s)
  @>Text: Retreat!
+ @>Play SE: 'Battle flee', 80, 100
  @>Change Screen Color Tone: (-255,-255,-255,0), @8
  @>Wait: 8 frame(s)
  @>Control Variables: [0121: TKoL Plot Variable] = 15
@@ -78917,11 +81154,14 @@ List of Event Commands:
  @>Text: \xn[Sagume]... Purification...
  @>Text: \xn[Clownpiece]But I'm growing tired of this... I think I'll take
   :    : after my friends and skedadle!
+ @>Fade Out BGM: 1 sec.
+ @>Play SE: 'Battle flee', 80, 100
  @>Change Screen Color Tone: (-255,-255,-255,0), @8
  @>Text: \xn[\pn]Hey, wait!
  @>Wait: 8 frame(s)
  @>Control Variables: [0121: TKoL Plot Variable] = 16
  @>Change Screen Color Tone: (0,0,0,0), @8
+ @>Play BGM: 'W-034. Frozen Capital of Eternity', 100, 100
  @>Text: \xn[\pn]Darn it, she got away before I could get more
   :    : information from her!
  @>Set Move Route: [Player (Cutscene)]
@@ -78976,8 +81216,11 @@ List of Event Commands:
   :    : defeat her! For the sake of not just the Lunar Capital, but for
   :    : Gensokyo as well!
  @>Text: \xn[\pn]\b(What have I even gotten myself into...)
+ @>Change Screen Color Tone: (-255,-255,-255,0), @6
+ @>Wait: 8 frame(s)
  @>Transfer Player:[091: Lunar Capital], (036,026)
- @>Control Variables: [0121: TKoL Plot Variable] = 16
+ @>Change Transparent Flag: Normal
+ @>Change Screen Color Tone: (0,0,0,0), @6
  @>Comment: (Transfer the player back to the normal Lunar Capital map)
   :       : (Change the plot variable +1)
   :       : (have NPCs wandering the Capital again)
@@ -79012,6 +81255,7 @@ Trigger: Parallel Process
 
 List of Event Commands:
 @>Conditional Branch: Self Switch B == OFF
+ @>Script: pbSEPlay("Anim/PRSFX- Thousand Arrows2")
  @>Script: for event in $game_map.events.values
  :       :   if event.name[/Bottom/i]
  :       :     $game_self_switches[[$game_map.map_id,event.id,"A"]] = true
@@ -79048,6 +81292,7 @@ List of Event Commands:
 : Branch End
 @>Comment: --------------
 @>Wait: 10 frame(s)
+@>Script: pbSetSelfSwitch(50,"A",true)
 @>Set Move Route: [Hell Fairy (Twintail) (Bottom)]
  :              : $>Change Speed: 5
  :              : $>Turn Right
@@ -79143,29 +81388,41 @@ List of Event Commands:
 @>Comment: --------------
 @>Set Move Route: [Hell Fairy (Twintail) (Bottom)]
  :              : $>Move Right
+ :              : $>Turn Up
 @>Set Move Route: [Hell Fairy (Hairband) (Bottom)]
  :              : $>Move Right
+ :              : $>Turn Up
 @>Set Move Route: [Hell Fairy (Twintail) (Bottom)]
  :              : $>Move Right
+ :              : $>Turn Up
 @>Set Move Route: [Hell Fairy (Hat) (Bottom)]
  :              : $>Move Right
+ :              : $>Turn Up
 @>Set Move Route: [Hell Fairy (Hairband) (Bottom)]
  :              : $>Move Right
+ :              : $>Turn Up
 @>Set Move Route: [Hell Fairy (Twintail) (Bottom)]
  :              : $>Move Right
+ :              : $>Turn Up
 @>Comment: --------------
 @>Set Move Route: [Hell Fairy (Hat) (Bottom)]
  :              : $>Move Left
+ :              : $>Turn Up
 @>Set Move Route: [Hell Fairy (Twintail) (Bottom)]
  :              : $>Move Left
+ :              : $>Turn Up
 @>Set Move Route: [Hell Fairy (Hairband) (Bottom)]
  :              : $>Move Left
+ :              : $>Turn Up
 @>Set Move Route: [Hell Fairy (Twintail) (Bottom)]
  :              : $>Move Left
+ :              : $>Turn Up
 @>Set Move Route: [Hell Fairy (Hat) (Bottom)]
  :              : $>Move Left
+ :              : $>Turn Up
 @>Set Move Route: [Hell Fairy (Hairband) (Bottom)]
  :              : $>Move Left
+ :              : $>Turn Up
 @>Wait for Move's Completion
 @>Script: for event in $game_map.events.values
 :       :   if event.name[/Bottom/i]
@@ -79175,6 +81432,94 @@ List of Event Commands:
 :       : $game_map.refresh
 @>Control Self Switch: C =OFF
 @>Control Self Switch: A =OFF
+@>
+
+#------------------------------------------------------------------------------
+Event ID: 049
+Event Name: Gunk Arrow
+(X,Y): (041,037)
+
+Page #1
+Conditions
+None
+
+Graphic: arrow - Reborn
+
+Autonomous Movement
+Type: Fixed
+Speed: 6: Fastest
+Freq: 3: Low
+Options Enabled
+Move Animation
+Trigger: Action Button
+
+List of Event Commands:
+@>
+
+#------------------------------------------------------------------------------
+Event ID: 050
+Event Name: Arrow Movement Controller
+(X,Y): (042,012)
+
+Page #1
+Conditions
+Self Switch A is ON
+
+Autonomous Movement
+Type: Fixed
+Speed: 3: Slow
+Freq: 3: Low
+Options Enabled
+Move Animation
+Trigger: Parallel Process
+
+List of Event Commands:
+@>Set Event Location: [Gunk Arrow],(035,032)
+@>Set Move Route: [Gunk Arrow]
+ :              : $>Through ON
+ :              : $>Move Up
+ :              : $>Move Up
+ :              : $>Move Up
+ :              : $>Move Up
+ :              : $>Move Up
+ :              : $>Move Up
+ :              : $>Move Up
+ :              : $>Move Up
+ :              : $>Move Up
+ :              : $>Move Up
+ :              : $>Move Up
+ :              : $>Move Up
+ :              : $>Move Up
+ :              : $>Move Up
+ :              : $>Move Up
+ :              : $>Move Up
+@>Wait: 3 frame(s)
+@>Show Animation: [Rabbit Guard], [Exclaim bubble]
+@>Set Move Route: [Rabbit Guard]
+ :              : $>Change Speed: 6
+ :              : $>Move Up
+ :              : $>Move Left
+@>Wait for Move's Completion
+@>Set Move Route: [Rabbit Guard]
+ :              : $>Change Speed: 3
+ :              : $>Move Right
+ :              : $>Move Down
+@>Control Self Switch: B =ON
+@>
+
+Page #2
+Conditions
+Self Switch B is ON
+
+Autonomous Movement
+Type: Fixed
+Speed: 3: Slow
+Freq: 3: Low
+Options Enabled
+Move Animation
+Trigger: Action Button
+
+List of Event Commands:
 @>
 
 #------------------------------------------------------------------------------
@@ -79192,6 +81537,216 @@ Map Name: Training Simulator (Moon)
 Tileset: 046: Dungeon (Moon)
 Width: 20, Height: 15
 Auto-Change BGM: X-004. Cavern of Remembrance
+
+#==============================================================================
+Map ID: 129
+Map Name: Mare Tranquillitatis Cave
+Tileset: 042: The Moon
+Width: 64, Height: 42
+Auto-Change BGM: W-037. The Sea Where One's Home Planet Reflects
+
+#------------------------------------------------------------------------------
+Event ID: 001
+Event Name: Hell Fairy Trainer
+(X,Y): (030,030)
+
+Page #1
+Conditions
+None
+
+Autonomous Movement
+Type: Fixed
+Speed: 3: Slow
+Freq: 3: Low
+Options Enabled
+Move Animation
+Trigger: Action Button
+
+List of Event Commands:
+@>
+
+#------------------------------------------------------------------------------
+Event ID: 002
+Event Name: Hell Fairy Trainer
+(X,Y): (017,022)
+
+Page #1
+Conditions
+None
+
+Autonomous Movement
+Type: Fixed
+Speed: 3: Slow
+Freq: 3: Low
+Options Enabled
+Move Animation
+Trigger: Action Button
+
+List of Event Commands:
+@>
+
+#------------------------------------------------------------------------------
+Event ID: 003
+Event Name: Hell Fairy Trainer
+(X,Y): (036,014)
+
+Page #1
+Conditions
+None
+
+Autonomous Movement
+Type: Fixed
+Speed: 3: Slow
+Freq: 3: Low
+Options Enabled
+Move Animation
+Trigger: Action Button
+
+List of Event Commands:
+@>
+
+#------------------------------------------------------------------------------
+Event ID: 004
+Event Name: Hell Fairy Trainer
+(X,Y): (041,014)
+
+Page #1
+Conditions
+None
+
+Autonomous Movement
+Type: Fixed
+Speed: 3: Slow
+Freq: 3: Low
+Options Enabled
+Move Animation
+Trigger: Action Button
+
+List of Event Commands:
+@>
+
+#------------------------------------------------------------------------------
+Event ID: 005
+Event Name: Hell Fairy Trainer
+(X,Y): (049,022)
+
+Page #1
+Conditions
+None
+
+Autonomous Movement
+Type: Fixed
+Speed: 3: Slow
+Freq: 3: Low
+Options Enabled
+Move Animation
+Trigger: Action Button
+
+List of Event Commands:
+@>
+
+#------------------------------------------------------------------------------
+Event ID: 006
+Event Name: Hell Fairy Trainer
+(X,Y): (023,012)
+
+Page #1
+Conditions
+None
+
+Autonomous Movement
+Type: Fixed
+Speed: 3: Slow
+Freq: 3: Low
+Options Enabled
+Move Animation
+Trigger: Action Button
+
+List of Event Commands:
+@>
+
+#------------------------------------------------------------------------------
+Event ID: 007
+Event Name: ExitArrow
+(X,Y): (044,034)
+
+Page #1
+Conditions
+None
+
+Graphic: Exitarrow_red
+
+Autonomous Movement
+Type: Fixed
+Speed: 3: Slow
+Freq: 3: Low
+Options Enabled
+Move Animation
+Stop Animation
+Trigger: Player Touch
+
+List of Event Commands:
+@>Conditional Branch: Player is facing Down
+ @>Play SE: 'Door exit', 100, 100
+ @>Change Screen Color Tone: (-255,-255,-255,0), @6
+ @>Wait: 8 frame(s)
+ @>Script: pbCaveExit
+ @>Transfer Player:[097: Mare Tranquillitatis], (041,039), Down, No Fade
+ @>Change Screen Color Tone: (0,0,0,0), @6
+ @>
+: Branch End
+@>
+
+#------------------------------------------------------------------------------
+Event ID: 008
+Event Name: Cave Entrance
+(X,Y): (027,008)
+
+Page #1
+Conditions
+None
+
+Autonomous Movement
+Type: Fixed
+Speed: 3: Slow
+Freq: 3: Low
+Options Enabled
+Move Animation
+Trigger: Player Touch
+
+List of Event Commands:
+@>Play SE: 'Door exit', 100, 100
+@>Change Screen Color Tone: (-255,-255,-255,0), @6
+@>Wait: 8 frame(s)
+@>Script: pbCaveExit
+@>Transfer Player:[097: Mare Tranquillitatis], (027,014), Up, No Fade
+@>Change Screen Color Tone: (0,0,0,0), @6
+@>
+
+Page #2
+Conditions
+Switch 0022: s:tsOff?("A") is ON
+
+Autonomous Movement
+Type: Fixed
+Speed: 3: Slow
+Freq: 3: Low
+Options Enabled
+Move Animation
+Trigger: Autorun
+
+List of Event Commands:
+@>Conditional Branch: Script: get_self.onEvent?
+ @>Set Move Route: Player
+                   (Ignore If Can't Move)
+  :              : $>Move Down
+ @>Wait for Move's Completion
+ @>
+: Branch End
+@>Script: setTempSwitchOn("A")
+@>
+
+#------------------------------------------------------------------------------
 
 #==============================================================================
 
@@ -82207,18 +84762,18 @@ List of Event Commands:
 @>Script: pbShowPicture(20,"Transitions/Bars_Over.png",1,256,192,zoomX=100,zoomY=100,opacity=230,blendType=0)
 @>Move Picture: 5, @5, Center (256,192), (100%,100%), 230, Normal
 @>Wait: 5 frame(s)
-@>Script: pbShowPicture(1,"Transitions/BGs/BGVillage.png",1,256,192,100,100,0,0)
+@>Script: pbShowPicture(1,"Transitions/BGs/BGTranquility.png",1,256,192,100,100,0,0)
 @>Wait: 5 frame(s)
 @>Move Picture: 1, @5, Center (256,192), (100%,100%), 255, Normal
 @>Wait: 15 frame(s)
 @>Play SE: 'Vs flash', 80, 100
 @>Screen Flash: (255,255,255,255), @10
-@>Script: pbShowPicture(3,"Transitions/PTs/Char_KeineS.png",1,256,192,zoomX=100,zoomY=100,opacity=255,blendType=0)
+@>Script: pbShowPicture(3,"Transitions/PTs/Char_JunkoHecatiaS.png",1,256,192,zoomX=100,zoomY=100,opacity=255,blendType=0)
 @>Wait: 25 frame(s)
 @>Screen Flash: (255,255,255,255), @10
 @>Play SE: 'Vs sword', 80, 100
-@>Script: pbShowPicture(5,"Transitions/PTs/Char_Keine.png",1,256,192,zoomX=100,zoomY=100,opacity=255,blendType=0)
-@>Script: pbShowPicture(21,"Transitions/Names/Name_Keine.png",1,256,192,zoomX=100,zoomY=100,opacity=255,blendType=0)
+@>Script: pbShowPicture(5,"Transitions/PTs/Char_JunkoHecatia.png",1,256,192,zoomX=100,zoomY=100,opacity=255,blendType=0)
+@>Script: pbShowPicture(21,"Transitions/Names/Name_JunkoHecatia.png",1,256,192,zoomX=100,zoomY=100,opacity=255,blendType=0)
 @>Move Picture: 3, @30, Center (250,192), (100%,100%), 255, Normal
 @>Call Common Event: Vs. Transition - Balls
 @>Wait: 60 frame(s)
@@ -82455,21 +85010,47 @@ List of Event Commands:
 @>Script: pbShowPicture(20,"Transitions/Bars_Over.png",1,256,192,zoomX=100,zoomY=100,opacity=230,blendType=0)
 @>Move Picture: 5, @5, Center (256,192), (100%,100%), 230, Normal
 @>Wait: 5 frame(s)
-@>Script: pbShowPicture(1,"Transitions/BGs/BGVillage.png",1,256,192,100,100,0,0)
+@>Script: pbShowPicture(1,"Transitions/BGs/BGTranquility.png",1,256,192,100,100,0,0)
 @>Wait: 5 frame(s)
 @>Move Picture: 1, @5, Center (256,192), (100%,100%), 255, Normal
 @>Wait: 15 frame(s)
 @>Play SE: 'Vs flash', 80, 100
 @>Screen Flash: (255,255,255,255), @10
-@>Script: pbShowPicture(3,"Transitions/PTs/Char_KeineS.png",1,256,192,zoomX=100,zoomY=100,opacity=255,blendType=0)
+@>Script: pbShowPicture(3,"Transitions/PTs/Char_JunkoHecatiaS.png",1,256,192,zoomX=100,zoomY=100,opacity=255,blendType=0)
 @>Wait: 25 frame(s)
 @>Screen Flash: (255,255,255,255), @10
 @>Play SE: 'Vs sword', 80, 100
-@>Script: pbShowPicture(5,"Transitions/PTs/Char_Keine.png",1,256,192,zoomX=100,zoomY=100,opacity=255,blendType=0)
-@>Script: pbShowPicture(21,"Transitions/Names/Name_Keine.png",1,256,192,zoomX=100,zoomY=100,opacity=255,blendType=0)
+@>Script: pbShowPicture(5,"Transitions/PTs/Char_JunkoHecatia.png",1,256,192,zoomX=100,zoomY=100,opacity=255,blendType=0)
+@>Script: pbShowPicture(21,"Transitions/Names/Name_JunkoHecatia.png",1,256,192,zoomX=100,zoomY=100,opacity=255,blendType=0)
 @>Move Picture: 3, @30, Center (250,192), (100%,100%), 255, Normal
 @>Call Common Event: Vs. Transition - Balls
 @>Wait: 60 frame(s)
+@>Conditional Branch: Variable [0122: TKoL S6 Partner] == 1
+ @>Comment: Reimu
+ @>Text: \xn[???]Not so fast!\wtnp[15]
+ @>
+: Else
+ @>Conditional Branch: Variable [0122: TKoL S6 Partner] == 2
+  @>Comment: Marisa
+  @>Text: \xn[???]I wouldn't be so sure 'bout that one!\wtnp[15]
+  @>
+ : Else
+  @>Conditional Branch: Variable [0122: TKoL S6 Partner] == 3
+   @>Comment: Sanae
+   @>Text: \xn[???]Stop right there, criminal scum!\wtnp[15]
+   @>
+  : Else
+   @>Conditional Branch: Variable [0122: TKoL S6 Partner] == 4
+    @>Comment: Reisen
+    @>Text: \xn[???]Think again!\wtnp[15]
+    @>
+   : Branch End
+   @>
+  : Branch End
+  @>
+ : Branch End
+ @>
+: Branch End
 @>Move Picture: 1, @5, Center (256,192), (100%,100%), 0, Normal
 @>Move Picture: 20, @5, Center (256,192), (100%,100%), 0, Normal
 @>Move Picture: 3, @5, Center (252,192), (100%,100%), 0, Normal
