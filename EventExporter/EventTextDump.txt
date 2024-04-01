@@ -68825,7 +68825,7 @@ List of Event Commands:
 @>Scroll Map: Left, 26, 6
 @>Wait: 5 frame(s)
 @>Scroll Map: Up, 9, 6
-@>Wait: 15 frame(s)
+@>Wait: 20 frame(s)
 @>Change Screen Color Tone: (0,0,0,0), @5
 @>Text: \xn[Rabbit 1]You should make your way for the refuge point
  :    : located in the Puppet Center.
@@ -68840,7 +68840,7 @@ List of Event Commands:
 @>Scroll Map: Right, 26, 6
 @>Wait: 5 frame(s)
 @>Scroll Map: Down, 9, 6
-@>Wait: 15 frame(s)
+@>Wait: 20 frame(s)
 @>Change Screen Color Tone: (0,0,0,0), @5
 @>Wait: 5 frame(s)
 @>Set Move Route: [Rabbit (Cutscene, 2) update]
@@ -72687,7 +72687,7 @@ List of Event Commands:
 @>Change Screen Color Tone: (-255,-255,-255,0), @8
 @>Wait: 8 frame(s)
 @>Control Self Switch: A =ON
-@>Script: pbCameraReset
+@>Transfer Player:Variable [0003][0001][0002]
 @>Wait: 25 frame(s)
 @>Change Screen Color Tone: (0,0,0,0), @8
 @>
@@ -72754,6 +72754,9 @@ Move Animation
 Trigger: Autorun
 
 List of Event Commands:
+@>Control Variables: [0001: Temp Pokemon Choice] = Player's Map X
+@>Control Variables: [0002: Temp Move Choice] = Player's Map Y
+@>Script: pbSet(3, 96)
 @>Change Screen Color Tone: (-255,-255,-255,0), @8
 @>Wait: 8 frame(s)
 @>Script: pbCameraScrollTo(39, 19)
@@ -72877,8 +72880,79 @@ Move Animation
 Trigger: Action Button
 
 List of Event Commands:
-@>Control Variables: [0122: TKoL S6 Partner] = 2
+@>Control Variables: [0122: TKoL S6 Partner] = 4
+@>Control Variables: [0121: TKoL Plot Variable] = 20
 @>Transfer Player:[125: Hecatia's Fortress (Roof)], (019,016)
+@>
+
+#------------------------------------------------------------------------------
+Event ID: 009
+Event Name: EV009
+(X,Y): (079,000)
+
+Page #1
+Conditions
+None
+
+Autonomous Movement
+Type: Fixed
+Speed: 3: Slow
+Freq: 3: Low
+Options Enabled
+Move Animation
+Trigger: Action Button
+
+List of Event Commands:
+@>Control Switches: [0100: Camera Movement Control] = ON
+@>Wait: 2 frame(s)
+@>Scroll Map: Down, 8, 4
+@>Script: pbCameraScroll(0, 9)
+@>
+
+#------------------------------------------------------------------------------
+Event ID: 010
+Event Name: EV010
+(X,Y): (041,028)
+
+Page #1
+Conditions
+None
+
+Autonomous Movement
+Type: Fixed
+Speed: 3: Slow
+Freq: 3: Low
+Options Enabled
+Move Animation
+Trigger: Action Button
+
+List of Event Commands:
+@>Play BGM: 'W-039. The Moon as Seen from the Shrine', 100, 100
+@>Play SE: 'Exit Door', 80, 100
+@>Change Screen Color Tone: (-255,-255,-255,0), @6
+@>Wait: 8 frame(s)
+@>Transfer Player:[131: Ending Filler Map - Eientei], (014,015), Up, No Fade
+@>Change Screen Color Tone: (0,0,0,0), @6
+@>
+
+#------------------------------------------------------------------------------
+Event ID: 012
+Event Name: EV012
+(X,Y): (039,019)
+
+Page #1
+Conditions
+None
+
+Autonomous Movement
+Type: Fixed
+Speed: 3: Slow
+Freq: 3: Low
+Options Enabled
+Move Animation
+Trigger: Action Button
+
+List of Event Commands:
 @>
 
 #------------------------------------------------------------------------------
@@ -73198,6 +73272,242 @@ List of Event Commands:
 @>
 
 Page #2
+Conditions
+Variable 0121: TKoL Plot Variable is 17 or above
+
+Autonomous Movement
+Type: Fixed
+Speed: 3: Slow
+Freq: 3: Low
+Options Enabled
+Move Animation
+Trigger: Player Touch
+
+List of Event Commands:
+@>Set Move Route: Player
+ :              : $>Change Speed: 3
+ :              : $>Move Up
+ :              : $>Move Up
+ :              : $>Move Up
+@>Wait for Move's Completion
+@>Wait: 10 frame(s)
+@>Text: \xn[???]All of my best laid countermeasures, you overcame
+ :    : every single one of them.
+@>Text: \xn[???]'Tis truly a shame, my nemesis was nearly within my
+ :    : reach... I could almost taste the blood I would have drawn.
+@>Text: \xn[\pn]You... Are you the one who has orchestrated the
+ :    : invasion of the Lunar Capital? The one that the fairies refer
+ :    : to as their "Honorable Friend"?
+@>Text: \xn[???]Not once could I have forseen that an Earthling would
+ :    : have come to the defense of the Capital.
+@>Text: \xn[???]Given their absolute abhorance for impurity, to resort
+ :    : to such measures... truly, I have underestimated them.
+@>Text: \xn[???]I shall concede this battle to them. But my war is far,
+ :    : <i>far</i> from over.
+@>Text: \xn[\pn]Your... war?
+@>Wait: 15 frame(s)
+@>Set Move Route: [Junko]
+ :              : $>Turn Down
+@>Text: \xn[???]I am Junko. A sagacious spirit, one that bears ill will to
+ :    : all the inhabitants of the Lunar Capital...
+@>Text: \xn[???]As well as their\..\..\.. <c2=043c3aff><i><b>vile</b></i></c2> 
+ :    : Goddess, Chang'e.
+@>Text: \xn[\pn]\b(Sheesh... I could just feel the venom dripping from her
+ :    : voice with how she said that.)
+@>Text: \xn[Junko]So long as she breathes, my fury shall never be 
+ :    : quenched.
+@>Text: \xn[Junko]But I will admit defeat here- fate has already decided
+ :    : as such.
+@>Text: \xn[\pn]So uh, if you're admitting defeat... does that mean you'll
+ :    : go- quietly, preferably?
+@>Text: \xn[Junko]If I am being frank, my will to fight a battle
+ :    : I know I've lost has vanished...
+@>Wait: 10 frame(s)
+@>Text: \xn[Junko]...However, I shall at least show you some
+ :    : hospitality for arriving here.
+@>Text: \xn[Junko]It is only polite, is it not?
+@>Text: \xn[\pn]\b(I really should know better by now...)
+@>Set Move Route: [Junko]
+ :              : $>Direction Fix ON
+ :              : $>Move Animation OFF
+ :              : $>Through ON
+ :              : $>Change Speed: 3
+ :              : $>Move Up
+ :              : $>Move Up
+ :              : $>Move Up
+ :              : $>Move Up
+@>Scroll Map: Up, 4, 2
+@>Text: \xn[Junko]As I said before, the battle may be lost, but ever shall
+ :    : my war continue.\wtnp[20]
+@>Wait for Move's Completion
+@>Fade Out BGM: 2 sec.
+@>Text: \xn[Junko]For I cannot rest... No, not until my vengance is 
+ :    : realized.\wtnp[20]
+@>Text: \xn[Junko]\l[3]Not until the fury I've purified within my own
+ :    : heart can be brought to bear against her!\wt[10] Chang'e!\wtnp[20]
+@>Play SE: 'Vs flash', 80, 70
+@>Screen Flash: (255,255,255,255), @10
+@>Control Switches: [0142: Junko Descends] = ON
+@>Play SE: 'Mining collapse', 80, 50
+@>Script: $game_map.screen.start_shake(6, 2, 120)
+:       : pbTrainerIntro(:JUNKO)
+@>Control Switches: [0104: Transition Handler] = ON
+@>Control Variables: [0103: Vs. Transition ID] = 46
+@>Control Variables: [0104: Vs. Transition - Pkmn] = 6
+@>Wait: 2 frame(s)
+@>Show Animation: Player, [Exclaim bubble]
+@>Change Text Options: Middle, Show
+@>Text: \w[dark]\l[2]Though she now lives on another heavenly body, and I
+ :    : am unable to meet with her...\wtnp[30]
+@>Text: \w[dark]\l[2]Even if we are unable to dwell together under 
+ :    : Heaven, my hatred alone wll be refined!\wtnp[30]
+@>Text: \w[dark]\l[2]Now, show me!\wt[10] Show me what an Earthling
+ :    : who is risking her life is capable of!\wtnp[30]
+@>Text: \w[dark]\l[2]And behold!\wt[10] This pristine spiritual force that
+ :    : rejects life and death!\wtnp[30]
+@>Change Text Options: Bottom, Show
+@>Control Self Switch: A =ON
+@>Script: setBattleRule("backdrop", "starlightJunko")
+@>Control Switches: [0104: Transition Handler] = ON
+@>Control Variables: [0103: Vs. Transition ID] = 46
+@>Conditional Branch: Switch [0107: New Game +] == OFF
+ @>Control Variables: [0104: Vs. Transition - Pkmn] = 5
+ @>
+: Else
+ @>Control Variables: [0104: Vs. Transition - Pkmn] = 6
+ @>
+: Branch End
+@>Conditional Branch: Script: TrainerBattle.start(:JUNKO, "Junko", 10+(pbGet(99) * 10))
+ @>Fade Out BGM: 1 sec.
+ @>Screen Flash: (255,255,255,255), @10
+ @>Control Variables: [0121: TKoL Plot Variable] = 18
+ @>Play SE: 'Mining collapse', 80, 50
+ @>Script: $game_map.screen.start_shake(1, 1, 1)
+ @>Text: \xn[\pn]\b(For someone who claims to have given up, she sure
+  :    : packed a brutal punch...)
+ @>Text: \xn[Junko]Truly, against the power to overturn fate, my
+  :    : revenge was destined to fail. This time, at least.
+ @>Text: \xn[Junko]But as I said, my war is far from over. Though I was
+  :    : defeated here today, I will make my return and bring an end
+  :    : to Chang'e once and for all.
+ @>Text: \xn[\pn]Can't you just.. Not? What good comes of getting revenge
+  :    : anyway!
+ @>Text: \xn[Junko]All I have left is my resentment for the one who
+  :    : stole everything from me... As long as I live, I will never forgive
+  :    : her.
+ @>Text: \xn[\pn]\b(Well, can you at least not get Gensokyo involved in
+  :    : your grudge then...?)
+ @>Wait: 10 frame(s)
+ @>Text: \xn[???]Yoohoo, Junko~ Moon to Junko, do you hear me?
+ @>Show Animation: Player, [Question bubble]
+ @>Text: \xn[\pn]\b(Wait, who said that?)
+ @>Play BGM: 'W-038. A World Of Nightmares Never Seen Before', 100, 100
+ @>Play SE: 'PC open', 80, 50
+ @>Screen Flash: (255,255,255,255), @2
+ @>Show Animation: Player, [Exclaim bubble]
+ @>Set Event Location: [Hecatia],(027,007), Up
+ @>Text: \xn[\pn]\b(Who's <i>that</i>?)
+ @>Text: \xn[Junko]... Hecatia. I trust you have an update?
+ @>Text: \xn[???]You bet! I happened to find the denizens of the 
+  :    : Capital hiding away in the Dream World and I've locked them 
+  :    : away in there!
+ @>Text: \xn[Junko]... And so, even as one door closes... My revenge
+  :    : continues. I shall join you momentarily!
+ @>Text: \xn[???]Hurry back soon! The sooner you get back here, the 
+  :    : sooner we can get our hands on that treacherous Chang'e!
+ @>Text: \xn[\pn]Just hold on one second! Who are you?
+ @>Show Animation: [Hecatia], [Question bubble]
+ @>Wait: 4 frame(s)
+ @>Set Move Route: [Hecatia]
+  :              : $>Turn Down
+  :              : $>Wait: 20 frame(s)
+  :              : $>Turn Up
+ @>Text: \xn[???]Why Junko, you didn't tell me we had company!
+ @>Text: \xn[???]I thought the Capital wouldn't be able to send anybody
+  :    : after us, though.
+ @>Wait for Move's Completion
+ @>Text: \xn[Junko]Ah, no. This is not a resident of the Capital. This is
+  :    : a regular Human from Earth.
+ @>Text: \xn[???]--I'm sorry, a human? Physically here?
+  :    : On the Moon? For real?
+ @>Text: \xn[Junko]Yes. Knowing that the Capital couldn't deal with us 
+  :    : themselves, they opted to send a poor scapegoat against us.
+ @>Text: \xn[???]Those cowardly Lunarians~ So afraid of touching
+  :    : even the smallest bit of impurity that they'd beg outsiders
+  :    : for help!
+ @>Set Move Route: [Hecatia]
+  :              : $>Turn Down
+ @>Text: \xn[???]Well whatever! If you're representing the Capital,
+  :    : then you are most definitely our enemy.
+ @>Text: \xn[???]My name is Hecatia, and I'm the Goddess of Hell.
+ @>Wait: 10 frame(s)
+ @>Text: \xn[\pn]... For a Goddess, you don't look anything like the 
+  :    : ones I've seen in Gensokyo.
+ @>Text: \xn[Hecatia]I'm way more fashionable and hip than the 
+  :    : common divinity in Gensokyo!
+ @>Text: \xn[\pn]\b(No more humble though...)
+ @>Set Move Route: [Hecatia]
+  :              : $>Turn Up
+ @>Text: \xn[Hecatia]So, this human's been giving you a hard time then,
+  :    : eh Junko?
+ @>Text: \xn[Junko]I wouldn't describe it as a 'hard time'. She just 
+  :    : managed to thwart our plans ever-so-slightly.
+ @>Text: \xn[Hecatia]Wow, she's that strong...? Where'd the Lunarians
+  :    : find such a capable Puppet Handler.
+ @>Text: \xn[Junko]They are cunning and deceitful. No doubt they 
+  :    : managed to manipulate her into this task.
+ @>Text: \xn[\pn]\b(...Not wrong there...)
+ @>Text: \xn[Junko]However, we have a new means of achieving our 
+  :    : goals.
+ @>Text: \xn[Junko]I shall be returning to the stronghold now! Await my 
+  :    : return.
+ @>Text: \xn[Hecatia]Understood~ I'll have the barrier down for your
+  :    : arrival!
+ @>Set Move Route: [Junko]
+  :              : $>Direction Fix ON
+  :              : $>Move Animation OFF
+  :              : $>Through ON
+  :              : $>Change Speed: 3
+  :              : $>Move Up
+  :              : $>Move Up
+ @>Show Animation: Player, [Exclaim bubble]
+ @>Script: pbCameraReset
+ @>Text: \xn[\pn]Hey, wait!
+ @>Set Move Route: Player
+  :              : $>Move Up
+ @>Set Move Route: [Hecatia]
+  :              : $>Turn Down
+ @>Text: \xn[Hecatia]Woah there! Settle down hothead, you sure this 
+  :    : is the road you want to pursue?
+ @>Text: \xn[\pn]Putting a stop to both hers and your plans is what it'll
+  :    : take to ensure Gensokyo's safety, so yes, I'm sure!
+ @>Text: \xn[Hecatia]Haha, alright, you're a fiesty little thing, so I'll
+  :    : indulge you for a bit.
+ @>Screen Flash: (255,255,255,255), @5
+ @>Play SE: 'Stare', 80, 100
+ @>Control Variables: [0121: TKoL Plot Variable] = 19
+ @>Wait: 10 frame(s)
+ @>Text: \xn[Hecatia]This will take you straight to where my Lunar
+  :    : Fortress is.
+ @>Text: \xn[Hecatia]If you can make it there, <i>maybe</i> you can
+  :    : achieve your manipulator's goals.
+ @>Text: \xn[Hecatia]Don't disapoint me!
+ @>Screen Flash: (255,255,255,255), @2
+ @>Control Variables: [0121: TKoL Plot Variable] = 20
+ @>Play SE: 'PC close', 80, 50
+ @>Wait: 20 frame(s)
+ @>Text: \xn[\pn]Sigh. Is it too much to ask for to just have one normal
+  :    : day again.
+ @>Control Self Switch: A =ON
+ @>
+: Else
+ @>Script: pbTrainerEnd
+ @>Exit Event Processing
+ @>
+: Branch End
+@>
+
+Page #3
 Conditions
 Self Switch A is ON
 
@@ -74969,39 +75279,236 @@ Width: 20, Height: 15
 
 #==============================================================================
 Map ID: 101
-Map Name: Ending Filler Map - Stage 6
-Tileset: 004: Poke Center
-Width: 20, Height: 15
+Map Name: Ending Filler Map - Capital
+Tileset: 042: The Moon
+Width: 30, Height: 30
+
+#------------------------------------------------------------------------------
+Event ID: 001
+Event Name: Sagume
+(X,Y): (013,009)
+
+Page #1
+Conditions
+None
+
+Graphic: Person_Sagume
+
+Autonomous Movement
+Type: Fixed
+Speed: 3: Slow
+Freq: 3: Low
+Options Enabled
+Move Animation
+Trigger: Action Button
+
+List of Event Commands:
+@>
+
+#------------------------------------------------------------------------------
+Event ID: 002
+Event Name: Player
+(X,Y): (013,020)
+
+Page #1
+Conditions
+None
+
+Graphic: trainer_AYAKA
+
+Autonomous Movement
+Type: Fixed
+Speed: 3: Slow
+Freq: 3: Low
+Options Enabled
+Move Animation
+Trigger: Action Button
+
+List of Event Commands:
+@>
+
+#------------------------------------------------------------------------------
+Event ID: 003
+Event Name: Partner
+(X,Y): (014,020)
+
+Page #1
+Conditions
+Variable 0122: TKoL S6 Partner is 1 or above
+
+Graphic: Person_Reimu
+
+Autonomous Movement
+Type: Fixed
+Speed: 3: Slow
+Freq: 3: Low
+Options Enabled
+Move Animation
+Trigger: Action Button
+
+List of Event Commands:
+@>
+
+Page #2
+Conditions
+Variable 0122: TKoL S6 Partner is 2 or above
+
+Graphic: Person_Marisa
+
+Autonomous Movement
+Type: Fixed
+Speed: 3: Slow
+Freq: 3: Low
+Options Enabled
+Move Animation
+Trigger: Action Button
+
+List of Event Commands:
+@>
+
+Page #3
+Conditions
+Variable 0122: TKoL S6 Partner is 3 or above
+
+Graphic: Person_Sanae
+
+Autonomous Movement
+Type: Fixed
+Speed: 3: Slow
+Freq: 3: Low
+Options Enabled
+Move Animation
+Trigger: Action Button
+
+List of Event Commands:
+@>
+
+Page #4
+Conditions
+Variable 0122: TKoL S6 Partner is 4 or above
+
+Graphic: Person_Reisen
+
+Autonomous Movement
+Type: Fixed
+Speed: 3: Slow
+Freq: 3: Low
+Options Enabled
+Move Animation
+Trigger: Action Button
+
+List of Event Commands:
+@>
+
+#------------------------------------------------------------------------------
+Event ID: 004
+Event Name: Autorun
+(X,Y): (026,001)
+
+Page #1
+Conditions
+None
+
+Autonomous Movement
+Type: Fixed
+Speed: 3: Slow
+Freq: 3: Low
+Options Enabled
+Move Animation
+Trigger: Autorun
+
+List of Event Commands:
+@>Set Move Route: [Player]
+ :              : $>Move Up
+ :              : $>Move Up
+ :              : $>Move Up
+ :              : $>Move Up
+ :              : $>Move Up
+ :              : $>Move Up
+ :              : $>Move Up
+@>Set Move Route: [Partner]
+ :              : $>Move Up
+ :              : $>Move Up
+ :              : $>Move Up
+ :              : $>Move Up
+ :              : $>Move Up
+ :              : $>Move Up
+ :              : $>Move Up
+@>Wait for Move's Completion
+@>Wait: 10 frame(s)
+@>Show Animation: [Sagume], [Exclaim bubble (No SE)]
+@>Set Move Route: [Sagume]
+ :              : $>Turn Down
+@>Text: \w[dark]\c[12]\se[]\l[3]Now that Junko and Hecatia were driven 
+ :    : off the moon, and the citizens freed from captivity....\wtnp[40]
+@>Text: \w[dark]\c[12]\se[]\l[3]...Sagume upheld her end of the bargain, and
+ :    : recalled all of the Lunarians stationed within Gensokyo.\wtnp[40]
+@>Set Move Route: [Player]
+ :              : $>Move Down
+ :              : $>Move Down
+ :              : $>Move Down
+ :              : $>Move Down
+ :              : $>Move Down
+ :              : $>Move Down
+ :              : $>Move Down
+@>Set Move Route: [Partner]
+ :              : $>Move Down
+ :              : $>Move Down
+ :              : $>Move Down
+ :              : $>Move Down
+ :              : $>Move Down
+ :              : $>Move Down
+ :              : $>Move Down
+@>Set Move Route: [Sagume]
+ :              : $>Wait: 15 frame(s)
+ :              : $>Move Up
+ :              : $>Move Up
+ :              : $>Move Up
+ :              : $>Move Up
+ :              : $>Move Up
+ :              : $>Move Up
+@>Text: \w[dark]\c[12]\se[]\l[4]The pair traversed back through the Dream World,
+ :    : taking in the sights of the bizarre realm one last time, before ultimately
+ :    : waving goodbye to the Capital as a whole.\wtnp[40]
+@>Change Screen Color Tone: (-255,-255,-255,0), @6
+@>Wait: 6 frame(s)
+@>Wait for Move's Completion
+@>Change Transparent Flag: Transparency
+@>Transfer Player:[130: Ending Filler Map - Mountain], (018,017)
+@>Change Screen Color Tone: (51,17,-34,255), @6
+@>
+
+#------------------------------------------------------------------------------
 
 #==============================================================================
 Map ID: 102
 Map Name: Credits - Human Village
-Tileset: 004: Poke Center
-Width: 20, Height: 15
+Tileset: 027: Human Village
+Width: 73, Height: 89
 
 #==============================================================================
 Map ID: 103
 Map Name: Credits - Youkai Mountain
-Tileset: 004: Poke Center
-Width: 20, Height: 15
+Tileset: 040: Youkai Mountain
+Width: 88, Height: 73
 
 #==============================================================================
 Map ID: 104
 Map Name: Credits - Kaian Passageway
-Tileset: 004: Poke Center
-Width: 20, Height: 15
+Tileset: 041: Dream World
+Width: 40, Height: 90
 
 #==============================================================================
 Map ID: 105
 Map Name: Credits - Lunar Capital
-Tileset: 004: Poke Center
-Width: 20, Height: 15
+Tileset: 042: The Moon
+Width: 81, Height: 86
 
 #==============================================================================
 Map ID: 106
 Map Name: Credits - Sea of Tranquility
-Tileset: 004: Poke Center
-Width: 20, Height: 15
+Tileset: 042: The Moon
+Width: 56, Height: 49
 
 #==============================================================================
 Map ID: 107
@@ -75020,24 +75527,28 @@ Map ID: 109
 Map Name: Tower of Adventure
 Tileset: 001: Outside
 Width: 20, Height: 15
+Auto-Change BGM: W-XXX. Magician of the Twilight
 
 #==============================================================================
 Map ID: 110
 Map Name: Tower of Adventure
 Tileset: 001: Outside
 Width: 20, Height: 15
+Auto-Change BGM: W-XXX. Magician of the Twilight
 
 #==============================================================================
 Map ID: 111
 Map Name: World of Fantasies - Asteroid Crossing
 Tileset: 001: Outside
 Width: 20, Height: 15
+Auto-Change BGM: W-XXX. Magician of the Twilight
 
 #==============================================================================
 Map ID: 112
 Map Name: World of Fantasies - Edge of Existence
 Tileset: 001: Outside
 Width: 20, Height: 15
+Auto-Change BGM: W-017. Seeds of the Incident
 
 #==============================================================================
 Map ID: 113
@@ -78795,9 +79306,24 @@ Event Name: Junko
 
 Page #1
 Conditions
-None
+Variable 0121: TKoL Plot Variable is 20 or above
 
 Graphic: Person_Junko_Alt
+
+Autonomous Movement
+Type: Fixed
+Speed: 3: Slow
+Freq: 3: Low
+Options Enabled
+Move Animation
+Trigger: Action Button
+
+List of Event Commands:
+@>
+
+Page #2
+Conditions
+Variable 0121: TKoL Plot Variable is 21 or above
 
 Autonomous Movement
 Type: Fixed
@@ -78817,9 +79343,24 @@ Event Name: Hecatia
 
 Page #1
 Conditions
-None
+Variable 0121: TKoL Plot Variable is 20 or above
 
 Graphic: Person_Hecatia
+
+Autonomous Movement
+Type: Fixed
+Speed: 3: Slow
+Freq: 3: Low
+Options Enabled
+Move Animation
+Trigger: Action Button
+
+List of Event Commands:
+@>
+
+Page #2
+Conditions
+Variable 0121: TKoL Plot Variable is 21 or above
 
 Autonomous Movement
 Type: Fixed
@@ -78912,7 +79453,7 @@ Event Name: S6 Autorun
 
 Page #1
 Conditions
-None
+Variable 0121: TKoL Plot Variable is 20 or above
 
 Autonomous Movement
 Type: Fixed
@@ -79035,7 +79576,7 @@ List of Event Commands:
   :    : The citizens of the Lunar Capital must be held accountable
   :    : for the sins of their goddess.
  @>Text: \xn[\pn]What kind of sense does that make!?
- @>Text: \xn[Reimu]I'll only say this once- let the people of the moon go
+ @>Text: \xn[Reimu]Don't make me say this again- let the people of the moon go
   :    : this instant!
  @>Text: \xn[Reimu]If you don't, I'll grind you into the dust right here 
   :    : and now!
@@ -79108,12 +79649,154 @@ List of Event Commands:
  : Else
   @>Conditional Branch: Variable [0122: TKoL S6 Partner] == 3
    @>Comment: Sanae
-   @>Text: \xn[???]Stop right there, criminal scum!\wtnp[15]
+   @>Script: pbRegisterPartner(:SANAE_2, "Sanae Kochiya", 10+(pbGet(99) * 10))
+   @>Text: \xn[???]You two can't just gang up on someone because 
+    :    : you think they can handle it!
+   @>Text: \xn[???]And bullying an entire group of people while 
+    :    : you're at it... Someone needs to teach you both a 
+    :    : lesson!
+   @>Set Event Location: [Partner],(020,016), Up
+   @>Script: pbCameraScrollDirection(2, 6, 0.3)
+   @>Wait: 30 frame(s)
+   @>Play BGM: 'X-010. The Primal Scene of Japan the Girl Saw', 100, 100
+   @>Show Animation: Player, [Exclaim bubble]
+   @>Set Move Route: [Partner]
+    :              : $>Change Opacity: 255
+    :              : $>SE: 'Door exit', 80, 100
+    :              : $>Move Up
+    :              : $>Move Up
+    :              : $>Move Up
+    :              : $>Move Up
+   @>Wait for Move's Completion
+   @>Set Move Route: Player
+    :              : $>Turn Right
+   @>Script: pbCameraScrollDirection(8, 4)
+   @>Change Text Options: Bottom, Show
+   @>Text: \xn[Sanae]I'll make sure you're both thoroughly punished
+    :    : for your transgressions!
+   @>Text: \xn[\pn]L-Lady Kochiya!? What are you doing here!?
+   @>Set Move Route: [Partner]
+    :              : $>Turn Left
+   @>Text: \xn[Sanae]Oh, so you're the one that Doctor Yagokoro sent ahead!
+   @>Text: \xn[Sanae]She had her assistant come find me so I could provide you
+    :    : with backup. Seems like she wasn't sure if you could handle it
+    :    : alone!
+   @>Text: \xn[\pn]\b(Then why even send me alone in the first place...!)
+   @>Text: \xn[Sanae]Not to worry though, I'm here to help! I've already gotten
+    :    : the gist of what's going on from the citizens of the Capital.
+   @>Text: \xn[Sanae]That being said, I have my own reasons for coming here
+    :    : as well...
+   @>Set Move Route: [Partner]
+    :              : $>Turn Up
+   @>Set Move Route: Player
+    :              : $>Turn Up
+   @>Text: \xn[Sanae]You two are the reason why the Curiosity rover is
+    :    : destroying Gensokyo! Curiosity was never meant to be used
+    :    : in such a harmful manner!
+   @>Text: \xn[\pn]\b(What is a "Curiosity rover"...? Probably some outside 
+    :    : world concept.)
+   @>Text: \xn[Sanae]Once we defeat you two, you have to let the citizens of
+    :    : the Moon go, and in return they'll stop using Curiosity to purify all
+    :    : of Gensokyo!
+   @>Text: \xn[Hecatia]I have no idea what you're on about...
+   @>Text: \xn[Hecatia]But I can tell you're here on behalf of the Capital as
+    :    : well, and you too have been coereced into fighting their battles
+    :    : for them as they use Gensokyo as a hostage.
+   @>Text: \xn[Hecatia]Their barbaracy truly knows no limits!
+   @>Text: \xn[\pn]Are you not doing the same with the Capital! This revenge
+    :    : plan of yours is the same as the Capital's plan to relocate to
+    :    : Gensokyo!
+   @>Text: \xn[Junko]Gensokyo and the human world are innocent.
+    :    : The citizens of the Lunar Capital must be held accountable
+    :    : for the sins of their goddess.
+   @>Text: \xn[\pn]What kind of sense does that make!?
+   @>Text: \xn[Sanae]You two can say what you want, but I know where my
+    :    : loyalties lie- I'll protect Gensokyo and it's people, and the home I
+    :    : and my Goddesses have made for ourselves!
+   @>Text: \xn[Sanae]It's time for us to do battle! Come at us you freaky
+    :    : t-shirt weirdo!
+   @>Text: \xn[Hecatia]Ooooh, I'll accept that you're a willing pawn of the
+    :    : Capital, but I won't take an insult lying down!
    @>
   : Else
    @>Conditional Branch: Variable [0122: TKoL S6 Partner] == 4
     @>Comment: Reisen
-    @>Text: \xn[???]Think again!\wtnp[15]
+    @>Script: pbRegisterPartner(:REISEN_2, "Reisen U. Inaba", 10+(pbGet(99) * 10))
+    @>Text: \xn[???]Though I may be considered a fugitive in the eyes of
+     :    : the Capital, I can't just let you two have your way.
+    @>Text: \xn[???]Picking me for this task though... Master Yagokoro
+     :    : and Lady Sagume must be afflicted with their own bout of
+     :    : lunacy!
+    @>Set Event Location: [Partner],(020,016), Up
+    @>Script: pbCameraScrollDirection(2, 6, 0.3)
+    @>Wait: 30 frame(s)
+    @>Play BGM: 'X-011. Lunatic Eyes ~ Invisible Full Moon', 100, 100
+    @>Show Animation: Player, [Exclaim bubble]
+    @>Set Move Route: [Partner]
+     :              : $>Change Opacity: 255
+     :              : $>SE: 'Door exit', 80, 100
+     :              : $>Move Up
+     :              : $>Move Up
+     :              : $>Move Up
+     :              : $>Move Up
+    @>Wait for Move's Completion
+    @>Set Move Route: Player
+     :              : $>Turn Right
+    @>Script: pbCameraScrollDirection(8, 4)
+    @>Change Text Options: Bottom, Show
+    @>Text: \xn[Reisen]Nevertheless, I shall carry out my duties as I've been
+     :    : tasked to! I won't let down either Master or Lady Sagume!
+    @>Text: \xn[\pn]W-Wait! Reisen!? What are you of all people doing here!?
+    @>Set Move Route: [Partner]
+     :              : $>Turn Left
+    @>Text: \xn[Reisen]Miss \pn! Master had tasked me to reach out to some
+     :    : others after you left to provide backup!
+    @>Text: \xn[Reisen]After Lady Sagume appraised us of the situation,
+     :    : she sent me on ahead while the others were tasked to
+     :    : clean up the remainder of the enemy's forces.
+    @>Text: \xn[Reisen]You've done good so far, now allow me to help out!
+    @>Text: \xn[\pn]T-Thanks, I guess...?
+    @>Text: \xn[\pn]\b(But why was I even sent alone in the first place, then...!?)
+    @>Set Move Route: [Partner]
+     :              : $>Turn Up
+    @>Set Move Route: Player
+     :              : $>Turn Up
+    @>Text: \xn[Hecatia]A moon rabbit? One of Chang'e's minions?
+    @>Text: \xn[Hecatia]Things are getting interesting... But that means I
+     :    : definitely can't let you leave here!
+    @>Text: \xn[Junko]First a human, now a moon rabbit... Has the Capital
+     :    : truly fallen to resorting to such reckless maneuvers?
+    @>Text: \xn[Junko]To throw one of their own headlong into certain doom,
+     :    : they truly are a heartless bunch.
+    @>Text: \xn[Reisen]I've heard about why you two hate the people of
+     :    : the moon, and sure I can sympathize a bit with your plight...
+    @>Text: \xn[Reisen]But the majority of the Moon's people have nothing
+     :    : to do with that!
+    @>Text: \xn[Reisen]Besides, I'm no longer a citizen of the Moon, nor can I
+     :    : really be called a "moon" rabbit anymore...
+    @>Text: \xn[Junko]The very culture of the Moon and its people is what gave
+     :    : rise to treacherous individuals such as Chang'e.
+    @>Text: \xn[Junko]They all must be punished for the transgressions of
+     :    : their beloved Goddess.
+    @>Text: \xn[\pn]How does that make any sense!? You're just making
+     :    : excuses to justify a revenge plot!
+    @>Text: \xn[\pn]Your actions are just causing the Capital to resort to
+     :    : measures which put the entirety of Gensokyo at risk!
+    @>Text: \xn[Hecatia]Holding all of Gensokyo hostage just to get to us is
+     :    : proof of their savagery! You call our actions contradictory, but
+     :    : is their entire way of life also not a contradiction?
+    @>Text: \xn[Hecatia]Claiming to be all about purity, but willing to lay waste
+     :    : to an entire civilization for their own sake... Truly barbarous!
+    @>Text: \xn[Reisen]I can't call the people of the moon pure- no, it is more apt
+     :    : to call them lunatics, true to the very definition of such!
+    @>Text: \xn[Reisen]Yes! Absolute, unwavering lunatics! Otherwise they
+     :    : never would have chosen me for this task!
+    @>Text: \xn[Reisen]But because I've been chosen, I will carry out my orders
+     :    : and defeat you both and bring peace back to this kingdom of lunacy!
+    @>Text: \xn[Hecatia]Haha, very well then moon rabbit, loyal minion of my
+     :    : eternal rival Chang'e!
+    @>Text: \xn[Hecatia]I'll drag you both into the depths of hell, and you 
+     :    : shall know true suffering!
     @>
    : Branch End
    @>
@@ -79123,21 +79806,1282 @@ List of Event Commands:
  @>
 : Branch End
 @>Script: pbTrainerIntro(:HECATIA2)
-@>Text: \xn[Hecatia]Alright! A two-on-two it is then!
-@>Text: \xn[Hecatia]I'll drag you both into the depths of hell, and you 
- :    : shall know true suffering!
+@>Conditional Branch: Variable [0122: TKoL S6 Partner] == 4
+ @>Text: \xn[Hecatia]I'll give you both a real fun choice:\n
+  :    : The Moon, the Earth, or the Otherworld...?
+ @>Text: \xn[Hecatia]Pick the body of mine you want to be defeated by!
+ @>
+: Else
+ @>Text: \xn[Hecatia]Alright! A two-on-two it is then!
+ @>Text: \xn[Hecatia]I'll drag you both into the depths of hell, and you 
+  :    : shall know true suffering!
+ @>
+: Branch End
 @>Control Switches: [0104: Transition Handler] = ON
 @>Control Variables: [0103: Vs. Transition ID] = 47
 @>Control Variables: [0104: Vs. Transition - Pkmn] = 6
 @>Change Battle BGM: 'B-037. Pandemonic Furies', 100, 100
 @>Script: setBattleRule("backdrop", "starlightJunko")
 @>Conditional Branch: Script: TrainerBattle.start(:HECATIA, "Hecatia Lapislazuli", 10+(pbGet(99) * 10), :JUNKO, "Junko", 11+(pbGet(99) * 10))
+ @>Comment: After Battle
+ @>Fade Out BGM: 1 sec.
+ @>Text: \xn[\pn]There! We bested you both! It's over.
+ @>Conditional Branch: Variable [0122: TKoL S6 Partner] == 1
+  @>Comment: Reimu
+  @>Text: \xn[Reimu]Let the people of the moon go. Now.
+  @>Wait: 10 frame(s)
+  @>Set Move Route: [Hecatia]
+   :              : $>Turn Left
+  @>Text: \xn[Hecatia]Hey, Junko... Is this okay?
+  @>Wait: 10 frame(s)
+  @>Set Move Route: [Junko]
+   :              : $>Turn Right
+  @>Text: \xn[Junko]... It's fine. It is as you said earlier, I had already
+   :    : accepted this defeat as inevitability.
+  @>Text: \xn[Junko]Thanks to my encounter with these humans, I've
+   :    : lost my will to fight.
+  @>Text: \xn[Hecatia]Sure thing then! Releasing the Capital's citizens now.
+  @>Text: \xn[Hecatia]With this, they ought to pull out of Gensokyo entirely.
+  @>Set Move Route: [Hecatia]
+   :              : $>Turn Down
+  @>Set Move Route: [Junko]
+   :              : $>Turn Down
+  @>Text: \xn[Hecatia]But seriously, attacking Gensokyo? When there's such
+   :    : amazing humans there?
+  @>Text: \xn[Hecatia]I have no idea what the Capital's higher ups were
+   :    : thinking.
+  @>Text: \xn[Reimu]... Honestly not satisfied with having to bail out the 
+   :    : Capital, not after everything they've put me through.
+  @>Set Move Route: Player
+   :              : $>Turn Right
+  @>Text: \xn[\pn]What do you mean Lady Reimu?
+  @>Set Move Route: Player
+   :              : $>Turn Up
+  @>Text: \xn[Hecatia]It's just as we said earlier- the Capital held Gensokyo
+   :    : hostage to force you two to do their bidding.
+  @>Text: \xn[Hecatia]An effective, but inhuman strategy.
+  @>Text: \xn[\pn]It's not like Doctor Yagokoro was intending for that, I'm sure...
+  @>Text: \xn[Reimu]The next time I see Eirin and her bunch, I'm going to punch
+   :    : them for all the trouble I've gone through.
+  @>Text: \xn[Junko]Eirin... Is that the name of the Lunar Sage residing on Earth?
+  @>Show Animation: Player, [Exclaim bubble]
+  @>Show Animation: [Partner], [Exclaim bubble]
+  @>Text: \xn[\pn & Reimu]Uhhhmmm...
+  @>Text: \xn[Junko]I see... Perhaps, could one of you guide me to her place
+   :    : of residence?
+  @>Text: \xn[\pn]Would that really be such a good idea, Lady Reimu...?
+  @>Text: \xn[Junko]Not to worry, I don't particularly intend to fight her.
+  @>Text: \xn[Junko]For now, at least.
+  @>Text: \xn[Hecatia]Hey, that sounds like a fun idea! Take me along as well!
+  @>Text: \xn[Hecatia]I gotta meet the one who was responsible for introducing
+   :    : me to such fascinating humans.
+  @>Text: \xn[Reimu]As long as you two doesn't intend to start trouble, it should be
+   :    : fine.
+  @>Text: \xn[Reimu]Just remember, if you cause any sort of problems in
+   :    : Gensokyo, I'll exterminate you on the spot!
+  @>Text: \xn[Hecatia]Wouldn't dream of it, miss shrine maiden~
+  @>
+ : Else
+  @>Conditional Branch: Variable [0122: TKoL S6 Partner] == 2
+   @>Comment: Marisa
+   @>Text: \xn[Marisa]Y'heard the lady, we beat y'both fair 'n square. 'n there's
+    :    : more where that came from if ya wanna go again.
+   @>Text: \xn[Marisa]'s time for you both to let the Moon's people go.
+   @>Wait: 10 frame(s)
+   @>Set Move Route: [Hecatia]
+    :              : $>Turn Left
+   @>Text: \xn[Hecatia]Hey, Junko... Is this okay?
+   @>Wait: 10 frame(s)
+   @>Set Move Route: [Junko]
+    :              : $>Turn Right
+   @>Text: \xn[Junko]... It's fine. It is as you said earlier, I had already
+    :    : accepted this defeat as inevitability.
+   @>Text: \xn[Junko]Thanks to my encounter with these humans, I've
+    :    : lost my will to fight.
+   @>Text: \xn[Hecatia]Sure thing then! Releasing the Capital's citizens now.
+   @>Text: \xn[Hecatia]With this, they ought to pull out of Gensokyo entirely.
+   @>Set Move Route: [Hecatia]
+    :              : $>Turn Down
+   @>Set Move Route: [Junko]
+    :              : $>Turn Down
+   @>Text: \xn[Hecatia]But seriously, attacking Gensokyo? When there's such
+    :    : amazing humans there?
+   @>Text: \xn[Hecatia]I have no idea what the Capital's higher ups were
+    :    : thinking.
+   @>Text: \xn[Hecatia]With all their transgressions, it makes it harder to forgive
+    :    : the Capital more and more.
+   @>Text: \xn[Marisa]Well, I can't say I don't agree with the sentiment.
+   @>Text: \xn[Marisa]What's your deal anyway? If you're enemies
+    :    : of the people of the moon, we might just have some common
+    :    : ground.
+   @>Text: \xn[\pn]Is that something you really want to admit out loud, Marisa...?
+   @>Text: \xn[Junko]Our mutual enemy is Chang'e, the nefarious goddess
+    :    : of the Capital, and the leader of the rabbits residing on the moon.
+   @>Text: \xn[Junko]She is the wife of the man who stole the life of my son.
+   @>Text: \xn[Hecatia]She's also the wife of the guy that killed one of my stars!
+   @>Text: \xn[Marisa]Dictionary-definition revenge, is it? Makes sense.
+   @>Text: \xn[\pn]\b(What did she mean though by "one of her stars"? Are stars
+    :    : actually living beings in space...?)
+   @>Text: \xn[\pn]\b(Maybe Miss Keine would know more.)
+   @>Text: \xn[Marisa]I do gotta apologize 'bout all this though. Now y'have to
+    :    : give up on your revenge for our sake an' all.
+   @>Text: \xn[Junko]This was but one oportunity to take revenge. Many more will
+    :    : present itself in the future.
+   @>Text: \xn[Junko]Yes... This revenge drama will continue into eternity, so long
+    :    : as I live and breathe.
+   @>Text: \xn[Marisa]Sounds 'bout right. When y'get the moon's people involved
+    :    : in anything, feels like they're all about things takin' forever.
+   @>Text: \xn[\pn]As long as Gensokyo doesn't get caught up in the middle again...
+   @>Text: \xn[\pn]I don't know if I can fault your reasons for wanting revenge 
+    :    : honestly, even if I don't quite agree with the idea of it.
+   @>Wait: 10 frame(s)
+   @>Text: \xn[Hecatia]Soooo... Is it alright if I come visit Gensokyo to have a bit of
+    :    : fun sometime?
+   @>Text: \xn[Hecatia]With humans as interesting as you two, I don't think I'd
+    :    : ever get bored!
+   @>Text: \xn[\pn]I'm... not sure if Gensokyo could handle your level of "fun", especially
+    :    : if it involves raising hell.
+   @>Text: \xn[Marisa]'sides, ain't ya a hell goddess? Don't'cha got better things to
+    :    : do than fool 'round in Gensokyo?
+   @>Text: \xn[Hecatia]Oh, you don't need to worry about that! I have three different
+    :    : bodies; one for the Moon, one for the Earth, and one for the Otherworld.
+   @>Text: \xn[Hecatia]So long as I use my other body, I'm also an Earth Goddess.
+   @>Text: \xn[\pn]Is... Is that really how it works?
+   @>Text: \xn[Marisa]Eh, weirder deities exist in Gensokyo! She'd just be joinin'
+    :    : the pack.
+   @>Text: \xn[Hecatia]Well, we must be off now! Don't need the Capital sending a retaliatory
+    :    : force against us now that we freed them.
+   @>Text: \xn[Hecatia]I'm sure we'll be seeing each other again~
+   @>
+  : Else
+   @>Conditional Branch: Variable [0122: TKoL S6 Partner] == 3
+    @>Comment: Sanae
+    @>Text: \xn[Hecatia]Gensokyo really does have some remarkable humans...
+    @>Text: \xn[Hecatia]Seriously, what was the Capital thinking by trying to hold Gensokyo
+     :    : hostage like this.
+    @>Text: \xn[Hecatia]With all their transgressions, it makes it harder to forgive
+     :    : them more and more.
+    @>Text: \xn[Sanae]Even so, I would like you to release those 
+     :    : hard-to-forgive people now please.
+    @>Wait: 10 frame(s)
+    @>Set Move Route: [Hecatia]
+     :              : $>Turn Left
+    @>Text: \xn[Hecatia]Hey, Junko... Is this okay?
+    @>Wait: 10 frame(s)
+    @>Set Move Route: [Junko]
+     :              : $>Turn Right
+    @>Text: \xn[Junko]... It's fine. It is as you said earlier, I had already
+     :    : accepted this defeat as inevitability.
+    @>Text: \xn[Junko]Thanks to my encounter with these humans, I've
+     :    : lost my will to fight.
+    @>Text: \xn[Hecatia]Sure thing then! Releasing the Capital's citizens now.
+    @>Set Move Route: [Hecatia]
+     :              : $>Turn Down
+    @>Set Move Route: [Junko]
+     :              : $>Turn Down
+    @>Text: \xn[Hecatia]With this, they ought to pull out of Gensokyo entirely.
+    @>Text: \xn[Sanae]Well that's good to hear! I trust you two will keep to your word
+     :    : about this and not suddenly kidnap them again when we turn our backs.
+    @>Text: \xn[Junko]Worry not, we do not aim to deceive you. Throughout all of this,
+     :    : we have remained honest and forthright.
+    @>Text: \xn[Junko]I just never thought that the Capital would take all of Gensokyo
+     :    : hostage.
+    @>Text: \xn[Junko]They are the only ones who hold my ire. That my plan indirectly
+     :    : resulted in Gensokyo being attacked, I do apologize for that.
+    @>Text: \xn[\pn]Huh... You two are being much more reasonable than I would have
+     :    : figured for being so bent on revenge as you were.
+    @>Text: \xn[Junko]Make no mistake, my plans for revenge do not die here. There
+     :    : will be more attempts in the future to exact my vengance against them and
+     :    : their treacherous Goddess.
+    @>Text: \xn[\pn]Should have figured there'd be some sort of caveat to your
+     :    : actions...
+    @>Text: \xn[Sanae]If you're looking to complain about the Capital, maybe you could try
+     :    : protesting to the former citizens of the Moon that live in Gensokyo.
+    @>Text: \xn[Junko]Hmm... Perhaps that might not be a bad idea.
+    @>Set Move Route: Player
+     :              : $>Turn Right
+    @>Text: \xn[\pn]Are you sure that's a wise idea, Lady Kochiya...?
+    @>Set Move Route: [Partner]
+     :              : $>Turn Left
+    @>Text: \xn[Sanae]As long as they don't use violence in their protests! Just speaking
+     :    : should be enough.
+    @>Text: \xn[Hecatia]Of course, but what if they use violence against us first?
+     :    : Surely we would be allowed to fight back.
+    @>Set Move Route: [Partner]
+     :              : $>Turn Up
+    @>Set Move Route: Player
+     :              : $>Turn Up
+    @>Text: \xn[Sanae]Then by all means, fight them as you please! From my time in
+     :    : Gensokyo, I've learned that conflicts are more often resolved by discusson
+     :    : through combat anyways.
+    @>Text: \xn[Hecatia]You sure are an amusing one miss shrine maiden~ First you
+     :    : tell us not to use violence, then you tell us it's alright to communicate through
+     :    : violence.
+    @>Text: \xn[Hecatia]Yes, I'm sure Gensokyo will be an interesting place to visit from time
+     :    : to time!
+    @>Text: \xn[Junko]Heh. For now, I have no further desire for revenge. Thanks to you two,
+     :    : it will be a long time before my next revenge attempt against the Capital.
+    @>Text: \xn[\pn]That's a relief to hear at least!
+    @>Text: \xn[Hecatia]Well, we must be off now! Don't need the Capital sending a retaliatory
+     :    : force against us now that we freed them.
+    @>Text: \xn[Hecatia]I'm sure we'll be seeing each other again~
+    @>
+   : Else
+    @>Conditional Branch: Variable [0122: TKoL S6 Partner] == 4
+     @>Comment: Reisen
+     @>Text: \xn[Hecatia]I guess Junko was right about defeat being inevitable...
+     @>Text: \xn[Hecatia]However, I noticed something interesting during our battle.
+     @>Text: \xn[Hecatia]You there, rabbit. You're not of the moon, are you?
+     @>Text: \xn[Reisen]Ah- no, I'm not. Not anymore at least! I'm now an Earth Rabbit from
+      :    : Gensokyo.
+     @>Text: \xn[Reisen]I can never return to being a Moon Rabbit after being in Gensokyo
+      :    : for so long.
+     @>Text: \xn[Hecatia]I see~ What an interesting development indeed.
+     @>Text: \xn[Hecatia]So, this was the strategy of the lunar sage that resides on Earth...
+     @>Text: \xn[Hecatia]I'd love to get to meet her, if you'd be willing to introduce me to her~.
+     @>Set Move Route: Player
+      :              : $>Turn Right
+     @>Text: \xn[\pn]Is that a good idea, Reisen...?
+     @>Text: \xn[Reisen]Hm... Actually, I also came here to extend an invitation to the
+      :    : both of you. My Master isquite interested in meeting the both of you.
+     @>Show Animation: Player, [Exclaim bubble]
+     @>Text: \xn[Hecatia]Oh? Is that so~?
+     @>Text: \xn[Reisen]However, she does have conditions you two would need to follow.
+     @>Set Move Route: Player
+      :              : $>Turn Up
+     @>Text: \xn[Reisen]Firstly, you will need to release the citizens of the Capital currently
+      :    : trapped in the Dream World.
+     @>Text: \xn[Reisen]Then, you also have to promise to never attack the Capital again.
+     @>Set Move Route: [Hecatia]
+      :              : $>Turn Left
+     @>Text: \xn[Hecatia]Hey, Junko... Is this okay?
+     @>Wait: 10 frame(s)
+     @>Set Move Route: [Junko]
+      :              : $>Turn Right
+     @>Text: \xn[Junko]... It's fine. It is as you said earlier, I had already
+      :    : accepted this defeat as inevitability.
+     @>Set Move Route: [Junko]
+      :              : $>Turn Down
+     @>Text: \xn[Junko]However, I can only accede to one of those conditions.
+     @>Text: \xn[Junko]I'll only accept if the condition is altered to "do not attack again
+      :    : for a while". 
+     @>Text: \xn[\pn]...Reisen?
+     @>Set Move Route: [Partner]
+      :              : $>Turn Down
+      :              : $>Wait: 10 frame(s)
+      :              : $>Turn Up
+     @>Wait: 10 frame(s)
+     @>Text: \xn[Reisen]Very well then. Those terms will be acceptable.
+     @>Set Move Route: [Hecatia]
+      :              : $>Turn Down
+     @>Text: \xn[Hecatia]Alright! I'll be releasing the people of the Moon now.
+     @>Wait: 10 frame(s)
+     @>Text: \xn[Reisen]...They might actually be a good match with Master and the Princess 
+      :    : after all...
+     @>Text: \xn[Hecatia]Hm? Did you say something? I couldn't quite catch that.
+     @>Text: \xn[Reisen]Whoops, just thinking aloud! Nothing to worry about.
+     @>Text: \xn[Junko]You need not worry. For now, my desire for revenge has died down.
+     @>Text: \xn[Junko]Furthermore, the Lunarians that exist in Gensokyo are by no means 
+      :    : my enemies. This includes yourself, little rabbit.
+     @>Wait: 5 frame(s)
+     @>Text: \xn[Junko]That being said, though...
+     @>Wait: 10 frame(s)
+     @>Show Animation: [Partner], [Question bubble]
+     @>Wait: 10 frame(s)
+     @>Set Move Route: [Hecatia]
+      :              : $>Turn Left
+     @>Wait: 15 frame(s)
+     @>Text: \xn[Hecatia]Oh-ho~, even more interesting.
+     @>Text: \xn[Reisen]What is?
+     @>Set Move Route: [Hecatia]
+      :              : $>Turn Down
+     @>Text: \xn[Hecatia]It sounds like Junko has taken a bit of an interest in you!
+     @>Text: \xn[Hecatia]Yes... Because of that, she may very well put off her revenge for
+      :    : a good long while.
+     @>Text: \xn[Reisen]I-... I see! Well, uh, I'm- I'm honored...?
+     @>Text: \xn[Hecatia]You're not a moon rabbit after all, so she has no reason
+      :    : to hate you. Quite the opposite in fact~ She may take a liking to you!
+     @>Text: \xn[Hecatia]As for me, I should try searching around Gensokyo for
+      :    : interesting people as well.
+     @>Text: \xn[Hecatia]If you've got anyone in mind, feel free to introduce me!
+     @>Text: \xn[\pn]I'm sure I can think of a few people who might be interested to meet a Hell Goddess...
+     @>Text: \xn[Hecatia]Well, we must be off now! Don't need the Capital sending a retaliatory
+      :    : force against us now that we freed them.
+     @>Text: \xn[Hecatia]I'm sure we'll be seeing each other again~
+     @>
+    : Branch End
+    @>
+   : Branch End
+   @>
+  : Branch End
+  @>
+ : Branch End
+ @>Play SE: 'Teleport', 100, 150
+ @>Change Screen Color Tone: (-255,-255,-255,0), @6
+ @>Wait: 8 frame(s)
+ @>Control Variables: [0121: TKoL Plot Variable] = 21
+ @>Change Screen Color Tone: (0,0,0,0), @6
  @>
 : Else
  @>Script: pbTrainerEnd
  @>Exit Event Processing
  @>
 : Branch End
+@>
+
+Page #2
+Conditions
+Variable 0121: TKoL Plot Variable is 20 or above
+
+Autonomous Movement
+Type: Fixed
+Speed: 3: Slow
+Freq: 3: Low
+Options Enabled
+Move Animation
+Trigger: Autorun
+
+List of Event Commands:
+@>Change Map Settings:Panorama = 'Stars1', 0
+@>Conditional Branch: Variable [0122: TKoL S6 Partner] <= 0
+ @>Script: $game_variable[122] = rand(3)+1
+ :       : p $game_variable[122]
+ @>
+: Branch End
+@>Set Move Route: Player
+ :              : $>Move Up
+ :              : $>Move Up
+ :              : $>Move Up
+ :              : $>Move Up
+@>Wait for Move's Completion
+@>Scroll Map: Up, 5, 3
+@>Text: \xn[Hecatia]You came after all. Splendid!
+@>Set Move Route: [Junko]
+ :              : $>Move Animation OFF
+ :              : $>Move Down
+@>Set Move Route: [Hecatia]
+ :              : $>Move Animation OFF
+ :              : $>Move Down
+@>Change Text Options: Middle, Show
+@>Text: \xn[Junko]How should we do this then. In turns? Make it a fair
+ :    : fight?
+@>Text: \xn[Hecatia]Maybe if this was a Danmaku duel! However, we're 
+ :    : battling with Puppets.
+@>Text: \xn[Hecatia]Surely she can handle if we come at her two-on-one.
+@>Text: \xn[\pn]I've done three-on-one before! I'm not scared of either of 
+ :    : you!
+@>Text: \xn[Hecatia]Glad to hear it! This is just a simple battle after all!
+@>Script: pbTrainerIntro(:HECATIA)
+@>Text: \xn[Hecatia]While Junko may be willing to accept defeat, I on the
+ :    : other hand am fired up!\wtnp[30]
+@>Text: \xn[Hecatia]And for disrupting our plans... For that reason alone,
+ :    : I'll drop you into hell!\wtnp[30]
+@>Text: \xn[Hecatia]For that reason, and no more!\wtnp[30]
+@>Text: \xn[Hecatia]Now suffer, even in death!\wtnp[30]
+@>Change Text Options: Bottom, Show
+@>Control Switches: [0104: Transition Handler] = ON
+@>Control Variables: [0103: Vs. Transition ID] = 47
+@>Control Variables: [0104: Vs. Transition - Pkmn] = 6
+@>Call Common Event: Vs. Junko & Hecatia (Fakeout)
+@>Fade Out BGM: 1 sec.
+@>Wait: 10 frame(s)
+@>Show Animation: Player, [Question bubble]
+@>Show Animation: [Junko], [Question bubble]
+@>Show Animation: [Hecatia], [Question bubble]
+@>Change Text Options: Middle, Show
+@>Text: \xn[Hecatia]Who said that? Reveal yourself!
+@>Set Move Route: Player
+ :              : $>Turn Down
+@>Conditional Branch: Variable [0122: TKoL S6 Partner] == 1
+ @>Comment: Reimu
+ @>Script: pbRegisterPartner(:REIMU, "Reimu Hakurei", 10+(pbGet(99) * 10))
+ @>Text: \xn[???]It's always the same! You troublemakers think you 
+  :    : can just do whatever you want, don't you?
+ @>Text: \xn[???]It doesn't matter who gets affected by your 
+  :    : schemes!
+ @>Text: \xn[???]But that's why I'm here to maintain the balance. As
+  :    : Gensokyo's resident Incident Resolution Specialist...
+ @>Set Event Location: [Partner],(020,016), Up
+ @>Scroll Map: Down, 6, 4
+ @>Wait: 40 frame(s)
+ @>Play BGM: 'X-008. Maiden's Capriccio', 100, 100
+ @>Show Animation: Player, [Exclaim bubble]
+ @>Set Move Route: [Partner]
+  :              : $>Change Opacity: 255
+  :              : $>SE: 'Door exit', 80, 100
+  :              : $>Move Up
+  :              : $>Move Up
+  :              : $>Move Up
+  :              : $>Move Up
+ @>Wait for Move's Completion
+ @>Set Move Route: Player
+  :              : $>Turn Right
+ @>Scroll Map: Up, 4, 4
+ @>Change Text Options: Bottom, Show
+ @>Text: \xn[Reimu]It's my job to exterminate any threats to Gensokyo's
+  :    : balance!
+ @>Text: \xn[\pn]L-Lady Reimu!? What are you doing here!?
+ @>Set Move Route: [Partner]
+  :              : $>Turn Left
+ @>Text: \xn[Reimu]My job! That doctor had her messenger inform
+  :    : me of the situation, and had me come here as well!
+ @>Set Move Route: [Partner]
+  :              : $>Turn Right
+ @>Text: \xn[Reimu]And just as I was thinking things were returning to
+  :    : normal... Nothing ever stays peaceful for too long!
+ @>Text: \xn[\pn]\b(Doctor Yagokoro had her come...? Then why did 
+  :    : she send me!)
+ @>Set Move Route: [Partner]
+  :              : $>Turn Left
+ @>Text: \xn[Reimu]I've already learned of the situation from the 
+  :    : Goddess back in the Capital.
+ @>Set Move Route: [Partner]
+  :              : $>Turn Up
+ @>Set Move Route: Player
+  :              : $>Turn Up
+ @>Text: \xn[Reimu]You two are the ones responsible for the Lunarian 
+  :    : Invasion of Gensokyo, aren't you?
+ @>Text: \xn[Reimu]And now the residents of the Capital are
+  :    : trapped in the Dream World as part of your schemes, 
+  :    : aren't they?
+ @>Text: \xn[Reimu]If they stay trapped in there any longer, it'll be a 
+  :    : huge problem for us humans as well!
+ @>Text: \xn[Hecatia]Holding Gensokyo hostage like this, truly their 
+  :    : barbaracy knows no limits.
+ @>Text: \xn[\pn]Are you not doing the same with the Capital! This revenge
+  :    : plan of yours is the same as the Capital's plan to relocate to
+  :    : Gensokyo!
+ @>Text: \xn[Junko]Gensokyo and the human world are innocent.
+  :    : The citizens of the Lunar Capital must be held accountable
+  :    : for the sins of their goddess.
+ @>Text: \xn[\pn]What kind of sense does that make!?
+ @>Text: \xn[Reimu]Don't make me say this again- let the people of the moon go
+  :    : this instant!
+ @>Text: \xn[Reimu]If you don't, I'll grind you into the dust right here 
+  :    : and now!
+ @>Text: \xn[Hecatia]Such rude language... Are all the Shrine Maidens
+  :    : of Gensokyo like you?
+ @>
+: Else
+ @>Conditional Branch: Variable [0122: TKoL S6 Partner] == 2
+  @>Comment: Marisa
+  @>Script: pbRegisterPartner(:MARISA_2, "Marisa Kirisame", 10+(pbGet(99) * 10))
+  @>Text: \xn[???]Oh I'll reveal myself a'ight! Don'tchu worry 'bout
+   :    : that.
+  @>Text: \xn[???]The hero's gotta make a dramatic entrance at the
+   :    : last second, after all!
+  @>Text: \xn[???]Like a blazin' star, streakin' 'cross the night sky...
+  @>Set Event Location: [Partner],(020,016), Up
+  @>Scroll Map: Down, 4, 4
+  @>Wait: 40 frame(s)
+  @>Play BGM: 'X-009. Vessel of Stars ~ Casket of Star', 100, 100
+  @>Show Animation: Player, [Exclaim bubble]
+  @>Set Move Route: [Partner]
+   :              : $>Change Opacity: 255
+   :              : $>SE: 'Door exit', 80, 100
+   :              : $>Move Up
+   :              : $>Move Up
+   :              : $>Move Up
+   :              : $>Move Up
+  @>Wait for Move's Completion
+  @>Set Move Route: Player
+   :              : $>Turn Right
+  @>Scroll Map: Up, 4, 4
+  @>Change Text Options: Bottom, Show
+  @>Text: \xn[Marisa]The number one incident resolver makes her 
+   :    : appearance!
+  @>Text: \xn[\pn]M-Miss Kirisame!? What are you doing here!?
+  @>Set Move Route: [Partner]
+   :              : $>Turn Left
+  @>Text: \xn[Marisa]'ow many times 've I gotta tell you to jus' call me 
+   :    : Marisa! Miss Kirisame is way too formal! And I ain't 'bout 
+   :    : that.
+  @>Text: \xn[Marisa]'sides, the doc sent for me. Said somethin' 'bout 
+   :    : wantin' to supply backup to her 'vanguard'.
+  @>Text: \xn[Marisa]When dealin' with the moon's people, y'can
+   :    : never be too cautious.
+  @>Text: \xn[\pn]\b(Then why even send me alone in the first place...!)
+  @>Text: \xn[Marisa]'nough 'bout that though. 've already been 
+   :    : appraised of what's goin' on by that Goddess.
+  @>Set Move Route: [Partner]
+   :              : $>Turn Up
+  @>Set Move Route: Player
+   :              : $>Turn Up
+  @>Text: \xn[Marisa]You folks are the reason why the moon's people 
+   :    : are invading Gensokyo, right? 
+  @>Text: \xn[Marisa]Now you've gone and trapped them in the Dream 
+   :    : Realm... If you keep them locked up there, that'll be real bad for
+   :    : Gensokyo!
+  @>Text: \xn[Hecatia]Holding Gensokyo hostage like this, truly their 
+   :    : barbaracy knows no limits.
+  @>Text: \xn[\pn]Are you not doing the same with the Capital! This revenge
+   :    : plan of yours is the same as the Capital's plan to relocate to
+   :    : Gensokyo!
+  @>Text: \xn[Junko]Gensokyo and the human world are innocent.
+   :    : The citizens of the Lunar Capital must be held accountable
+   :    : for the sins of their goddess.
+  @>Text: \xn[\pn]What kind of sense does that make!?
+  @>Text: \xn[Marisa]If y'aren't gonna go quietly, than there's only
+   :    : one way to settle this!
+  @>Text: \xn[Marisa]We're gonna take you both down!
+  @>
+ : Else
+  @>Conditional Branch: Variable [0122: TKoL S6 Partner] == 3
+   @>Comment: Sanae
+   @>Script: pbRegisterPartner(:SANAE_2, "Sanae Kochiya", 10+(pbGet(99) * 10))
+   @>Text: \xn[???]You two can't just gang up on someone because 
+    :    : you think they can handle it!
+   @>Text: \xn[???]And bullying an entire group of people while 
+    :    : you're at it... Someone needs to teach you both a 
+    :    : lesson!
+   @>Set Event Location: [Partner],(020,016), Up
+   @>Scroll Map: Down, 6, 4
+   @>Wait: 40 frame(s)
+   @>Play BGM: 'X-010. The Primal Scene of Japan the Girl Saw', 100, 100
+   @>Show Animation: Player, [Exclaim bubble]
+   @>Set Move Route: [Partner]
+    :              : $>Change Opacity: 255
+    :              : $>SE: 'Door exit', 80, 100
+    :              : $>Move Up
+    :              : $>Move Up
+    :              : $>Move Up
+    :              : $>Move Up
+   @>Wait for Move's Completion
+   @>Set Move Route: Player
+    :              : $>Turn Right
+   @>Scroll Map: Up, 4, 4
+   @>Change Text Options: Bottom, Show
+   @>Text: \xn[Sanae]I'll make sure you're both thoroughly punished
+    :    : for your transgressions!
+   @>Text: \xn[\pn]L-Lady Kochiya!? What are you doing here!?
+   @>Set Move Route: [Partner]
+    :              : $>Turn Left
+   @>Text: \xn[Sanae]Oh, so you're the one that Doctor Yagokoro sent ahead!
+   @>Text: \xn[Sanae]She had her assistant come find me so I could provide you
+    :    : with backup. Seems like she wasn't sure if you could handle it
+    :    : alone!
+   @>Text: \xn[\pn]\b(Then why even send me alone in the first place...!)
+   @>Text: \xn[Sanae]Not to worry though, I'm here to help! I've already gotten
+    :    : the gist of what's going on from the citizens of the Capital.
+   @>Text: \xn[Sanae]That being said, I have my own reasons for coming here
+    :    : as well...
+   @>Set Move Route: [Partner]
+    :              : $>Turn Up
+   @>Set Move Route: Player
+    :              : $>Turn Up
+   @>Text: \xn[Sanae]You two are the reason why the Curiosity rover is
+    :    : destroying Gensokyo! Curiosity was never meant to be used
+    :    : in such a harmful manner!
+   @>Text: \xn[\pn]\b(What is a "Curiosity rover"...? Probably some outside 
+    :    : world concept.)
+   @>Text: \xn[Sanae]Once we defeat you two, you have to let the citizens of
+    :    : the Moon go, and in return they'll stop using Curiosity to purify all
+    :    : of Gensokyo!
+   @>Text: \xn[Hecatia]I have no idea what you're on about...
+   @>Text: \xn[Hecatia]But I can tell you're here on behalf of the Capital as
+    :    : well, and you too have been coereced into fighting their battles
+    :    : for them as they use Gensokyo as a hostage.
+   @>Text: \xn[Hecatia]Their barbaracy truly knows no limits!
+   @>Text: \xn[\pn]Are you not doing the same with the Capital! This revenge
+    :    : plan of yours is the same as the Capital's plan to relocate to
+    :    : Gensokyo!
+   @>Text: \xn[Junko]Gensokyo and the human world are innocent.
+    :    : The citizens of the Lunar Capital must be held accountable
+    :    : for the sins of their goddess.
+   @>Text: \xn[\pn]What kind of sense does that make!?
+   @>Text: \xn[Sanae]You two can say what you want, but I know where my
+    :    : loyalties lie- I'll protect Gensokyo and it's people, and the home I
+    :    : and my Goddesses have made for ourselves!
+   @>Text: \xn[Sanae]It's time for us to do battle! Come at us you freaky
+    :    : t-shirt weirdo!
+   @>Text: \xn[Hecatia]Ooooh, I'll accept that you're a willing pawn of the
+    :    : Capital, but I won't take an insult lying down!
+   @>
+  : Else
+   @>Conditional Branch: Variable [0122: TKoL S6 Partner] == 4
+    @>Comment: Reisen
+    @>Script: pbRegisterPartner(:REISEN_2, "Reisen U. Inaba", 10+(pbGet(99) * 10))
+    @>Text: \xn[???]Though I may be considered a fugitive in the eyes of
+     :    : the Capital, I can't just let you two have your way.
+    @>Text: \xn[???]Picking me for this task though... Master Yagokoro
+     :    : and Lady Sagume must be afflicted with their own bout of
+     :    : lunacy!
+    @>Set Event Location: [Partner],(020,016), Up
+    @>Scroll Map: Down, 6, 4
+    @>Wait: 40 frame(s)
+    @>Play BGM: 'X-011. Lunatic Eyes ~ Invisible Full Moon', 100, 100
+    @>Show Animation: Player, [Exclaim bubble]
+    @>Set Move Route: [Partner]
+     :              : $>Change Opacity: 255
+     :              : $>SE: 'Door exit', 80, 100
+     :              : $>Move Up
+     :              : $>Move Up
+     :              : $>Move Up
+     :              : $>Move Up
+    @>Wait for Move's Completion
+    @>Set Move Route: Player
+     :              : $>Turn Right
+    @>Scroll Map: Up, 4, 4
+    @>Change Text Options: Bottom, Show
+    @>Text: \xn[Reisen]Nevertheless, I shall carry out my duties as I've been
+     :    : tasked to! I won't let down either Master or Lady Sagume!
+    @>Text: \xn[\pn]W-Wait! Reisen!? What are you of all people doing here!?
+    @>Set Move Route: [Partner]
+     :              : $>Turn Left
+    @>Text: \xn[Reisen]Miss \pn! Master had tasked me to reach out to some
+     :    : others after you left to provide backup!
+    @>Text: \xn[Reisen]After Lady Sagume appraised us of the situation,
+     :    : she sent me on ahead while the others were tasked to
+     :    : clean up the remainder of the enemy's forces.
+    @>Text: \xn[Reisen]You've done good so far, now allow me to help out!
+    @>Text: \xn[\pn]T-Thanks, I guess...?
+    @>Text: \xn[\pn]\b(But why was I even sent alone in the first place, then...!?)
+    @>Set Move Route: [Partner]
+     :              : $>Turn Up
+    @>Set Move Route: Player
+     :              : $>Turn Up
+    @>Text: \xn[Hecatia]A moon rabbit? One of Chang'e's minions?
+    @>Text: \xn[Hecatia]Things are getting interesting... But that means I
+     :    : definitely can't let you leave here!
+    @>Text: \xn[Junko]First a human, now a moon rabbit... Has the Capital
+     :    : truly fallen to resorting to such reckless maneuvers?
+    @>Text: \xn[Junko]To throw one of their own headlong into certain doom,
+     :    : they truly are a heartless bunch.
+    @>Text: \xn[Reisen]I've heard about why you two hate the people of
+     :    : the moon, and sure I can sympathize a bit with your plight...
+    @>Text: \xn[Reisen]But the majority of the Moon's people have nothing
+     :    : to do with that!
+    @>Text: \xn[Reisen]Besides, I'm no longer a citizen of the Moon, nor can I
+     :    : really be called a "moon" rabbit anymore...
+    @>Text: \xn[Junko]The very culture of the Moon and its people is what gave
+     :    : rise to treacherous individuals such as Chang'e.
+    @>Text: \xn[Junko]They all must be punished for the transgressions of
+     :    : their beloved Goddess.
+    @>Text: \xn[\pn]How does that make any sense!? You're just making
+     :    : excuses to justify a revenge plot!
+    @>Text: \xn[\pn]Your actions are just causing the Capital to resort to
+     :    : measures which put the entirety of Gensokyo at risk!
+    @>Text: \xn[Hecatia]Holding all of Gensokyo hostage just to get to us is
+     :    : proof of their savagery! You call our actions contradictory, but
+     :    : is their entire way of life also not a contradiction?
+    @>Text: \xn[Hecatia]Claiming to be all about purity, but willing to lay waste
+     :    : to an entire civilization for their own sake... Truly barbarous!
+    @>Text: \xn[Reisen]I can't call the people of the moon pure- no, it is more apt
+     :    : to call them lunatics, true to the very definition of such!
+    @>Text: \xn[Reisen]Yes! Absolute, unwavering lunatics! Otherwise they
+     :    : never would have chosen me for this task!
+    @>Text: \xn[Reisen]But because I've been chosen, I will carry out my orders
+     :    : and defeat you both and bring peace back to this kingdom of lunacy!
+    @>Text: \xn[Hecatia]Haha, very well then moon rabbit, loyal minion of my
+     :    : eternal rival Chang'e!
+    @>Text: \xn[Hecatia]I'll drag you both into the depths of hell, and you 
+     :    : shall know true suffering!
+    @>
+   : Branch End
+   @>
+  : Branch End
+  @>
+ : Branch End
+ @>
+: Branch End
+@>Script: pbTrainerIntro(:HECATIA2)
+@>Conditional Branch: Variable [0122: TKoL S6 Partner] == 4
+ @>Text: \xn[Hecatia]I'll give you both a real fun choice:\n
+  :    : The Moon, the Earth, or the Otherworld...?
+ @>Text: \xn[Hecatia]Pick the body of mine you want to be defeated by!
+ @>
+: Else
+ @>Text: \xn[Hecatia]Alright! A two-on-two it is then!
+ @>Text: \xn[Hecatia]I'll drag you both into the depths of hell, and you 
+  :    : shall know true suffering!
+ @>
+: Branch End
+@>Control Switches: [0104: Transition Handler] = ON
+@>Control Variables: [0103: Vs. Transition ID] = 47
+@>Control Variables: [0104: Vs. Transition - Pkmn] = 6
+@>Change Battle BGM: 'B-037. Pandemonic Furies', 100, 100
+@>Script: setBattleRule("backdrop", "starlightJunko")
+@>Conditional Branch: Script: TrainerBattle.start(:HECATIA, "Hecatia Lapislazuli", 10+(pbGet(99) * 10), :JUNKO, "Junko", 11+(pbGet(99) * 10))
+ @>Comment: After Battle
+ @>Fade Out BGM: 1 sec.
+ @>Text: \xn[\pn]There! We bested you both! It's over.
+ @>Conditional Branch: Variable [0122: TKoL S6 Partner] == 1
+  @>Comment: Reimu
+  @>Text: \xn[Reimu]Let the people of the moon go. Now.
+  @>Wait: 10 frame(s)
+  @>Set Move Route: [Hecatia]
+   :              : $>Turn Left
+  @>Text: \xn[Hecatia]Hey, Junko... Is this okay?
+  @>Wait: 10 frame(s)
+  @>Set Move Route: [Junko]
+   :              : $>Turn Right
+  @>Text: \xn[Junko]... It's fine. It is as you said earlier, I had already
+   :    : accepted this defeat as inevitability.
+  @>Text: \xn[Junko]Thanks to my encounter with these humans, I've
+   :    : lost my will to fight.
+  @>Text: \xn[Hecatia]Sure thing then! Releasing the Capital's citizens now.
+  @>Text: \xn[Hecatia]With this, they ought to pull out of Gensokyo entirely.
+  @>Set Move Route: [Hecatia]
+   :              : $>Turn Down
+  @>Set Move Route: [Junko]
+   :              : $>Turn Down
+  @>Text: \xn[Hecatia]But seriously, attacking Gensokyo? When there's such
+   :    : amazing humans there?
+  @>Text: \xn[Hecatia]I have no idea what the Capital's higher ups were
+   :    : thinking.
+  @>Text: \xn[Reimu]... Honestly not satisfied with having to bail out the 
+   :    : Capital, not after everything they've put me through.
+  @>Set Move Route: Player
+   :              : $>Turn Right
+  @>Text: \xn[\pn]What do you mean Lady Reimu?
+  @>Set Move Route: Player
+   :              : $>Turn Up
+  @>Text: \xn[Hecatia]It's just as we said earlier- the Capital held Gensokyo
+   :    : hostage to force you two to do their bidding.
+  @>Text: \xn[Hecatia]An effective, but inhuman strategy.
+  @>Text: \xn[\pn]It's not like Doctor Yagokoro was intending for that, I'm sure...
+  @>Text: \xn[Reimu]The next time I see Eirin and her bunch, I'm going to punch
+   :    : them for all the trouble I've gone through.
+  @>Text: \xn[Junko]Eirin... Is that the name of the Lunar Sage residing on Earth?
+  @>Show Animation: Player, [Exclaim bubble]
+  @>Show Animation: [Partner], [Exclaim bubble]
+  @>Text: \xn[\pn & Reimu]Uhhhmmm...
+  @>Text: \xn[Junko]I see... Perhaps, could one of you guide me to her place
+   :    : of residence?
+  @>Text: \xn[\pn]Would that really be such a good idea, Lady Reimu...?
+  @>Text: \xn[Junko]Not to worry, I don't particularly intend to fight her.
+  @>Text: \xn[Junko]For now, at least.
+  @>Text: \xn[Hecatia]Hey, that sounds like a fun idea! Take me along as well!
+  @>Text: \xn[Hecatia]I gotta meet the one who was responsible for introducing
+   :    : me to such fascinating humans.
+  @>Text: \xn[Reimu]As long as you two doesn't intend to start trouble, it should be
+   :    : fine.
+  @>Text: \xn[Reimu]Just remember, if you cause any sort of problems in
+   :    : Gensokyo, I'll exterminate you on the spot!
+  @>Text: \xn[Hecatia]Wouldn't dream of it, miss shrine maiden~
+  @>
+ : Else
+  @>Conditional Branch: Variable [0122: TKoL S6 Partner] == 2
+   @>Comment: Marisa
+   @>Text: \xn[Marisa]Y'heard the lady, we beat y'both fair 'n square. 'n there's
+    :    : more where that came from if ya wanna go again.
+   @>Text: \xn[Marisa]'s time for you both to let the Moon's people go.
+   @>Wait: 10 frame(s)
+   @>Set Move Route: [Hecatia]
+    :              : $>Turn Left
+   @>Text: \xn[Hecatia]Hey, Junko... Is this okay?
+   @>Wait: 10 frame(s)
+   @>Set Move Route: [Junko]
+    :              : $>Turn Right
+   @>Text: \xn[Junko]... It's fine. It is as you said earlier, I had already
+    :    : accepted this defeat as inevitability.
+   @>Text: \xn[Junko]Thanks to my encounter with these humans, I've
+    :    : lost my will to fight.
+   @>Text: \xn[Hecatia]Sure thing then! Releasing the Capital's citizens now.
+   @>Text: \xn[Hecatia]With this, they ought to pull out of Gensokyo entirely.
+   @>Set Move Route: [Hecatia]
+    :              : $>Turn Down
+   @>Set Move Route: [Junko]
+    :              : $>Turn Down
+   @>Text: \xn[Hecatia]But seriously, attacking Gensokyo? When there's such
+    :    : amazing humans there?
+   @>Text: \xn[Hecatia]I have no idea what the Capital's higher ups were
+    :    : thinking.
+   @>Text: \xn[Hecatia]With all their transgressions, it makes it harder to forgive
+    :    : the Capital more and more.
+   @>Text: \xn[Marisa]Well, I can't say I don't agree with the sentiment.
+   @>Text: \xn[Marisa]What's your deal anyway? If you're enemies
+    :    : of the people of the moon, we might just have some common
+    :    : ground.
+   @>Text: \xn[\pn]Is that something you really want to admit out loud, Marisa...?
+   @>Text: \xn[Junko]Our mutual enemy is Chang'e, the nefarious goddess
+    :    : of the Capital, and the leader of the rabbits residing on the moon.
+   @>Text: \xn[Junko]She is the wife of the man who stole the life of my son.
+   @>Text: \xn[Hecatia]She's also the wife of the guy that killed one of my stars!
+   @>Text: \xn[Marisa]Dictionary-definition revenge, is it? Makes sense.
+   @>Text: \xn[\pn]\b(What did she mean though by "one of her stars"? Are stars
+    :    : actually living beings in space...?)
+   @>Text: \xn[\pn]\b(Maybe Miss Keine would know more.)
+   @>Text: \xn[Marisa]I do gotta apologize 'bout all this though. Now y'have to
+    :    : give up on your revenge for our sake an' all.
+   @>Text: \xn[Junko]This was but one oportunity to take revenge. Many more will
+    :    : present itself in the future.
+   @>Text: \xn[Junko]Yes... This revenge drama will continue into eternity, so long
+    :    : as I live and breathe.
+   @>Text: \xn[Marisa]Sounds 'bout right. When y'get the moon's people involved
+    :    : in anything, feels like they're all about things takin' forever.
+   @>Text: \xn[\pn]As long as Gensokyo doesn't get caught up in the middle again...
+   @>Text: \xn[\pn]I don't know if I can fault your reasons for wanting revenge 
+    :    : honestly, even if I don't quite agree with the idea of it.
+   @>Wait: 10 frame(s)
+   @>Text: \xn[Hecatia]Soooo... Is it alright if I come visit Gensokyo to have a bit of
+    :    : fun sometime?
+   @>Text: \xn[Hecatia]With humans as interesting as you two, I don't think I'd
+    :    : ever get bored!
+   @>Text: \xn[\pn]I'm... not sure if Gensokyo could handle your level of "fun", especially
+    :    : if it involves raising hell.
+   @>Text: \xn[Marisa]'sides, ain't ya a hell goddess? Don't'cha got better things to
+    :    : do than fool 'round in Gensokyo?
+   @>Text: \xn[Hecatia]Oh, you don't need to worry about that! I have three different
+    :    : bodies; one for the Moon, one for the Earth, and one for the Otherworld.
+   @>Text: \xn[Hecatia]So long as I use my other body, I'm also an Earth Goddess.
+   @>Text: \xn[\pn]Is... Is that really how it works?
+   @>Text: \xn[Marisa]Eh, weirder deities exist in Gensokyo! She'd just be joinin'
+    :    : the pack.
+   @>Text: \xn[Hecatia]Well, we must be off now! Don't need the Capital sending a retaliatory
+    :    : force against us now that we freed them.
+   @>Text: \xn[Hecatia]I'm sure we'll be seeing each other again~
+   @>
+  : Else
+   @>Conditional Branch: Variable [0122: TKoL S6 Partner] == 3
+    @>Comment: Sanae
+    @>Text: \xn[Hecatia]Gensokyo really does have some remarkable humans...
+    @>Text: \xn[Hecatia]Seriously, what was the Capital thinking by trying to hold Gensokyo
+     :    : hostage like this.
+    @>Text: \xn[Hecatia]With all their transgressions, it makes it harder to forgive
+     :    : them more and more.
+    @>Text: \xn[Sanae]Even so, I would like you to release those 
+     :    : hard-to-forgive people now please.
+    @>Wait: 10 frame(s)
+    @>Set Move Route: [Hecatia]
+     :              : $>Turn Left
+    @>Text: \xn[Hecatia]Hey, Junko... Is this okay?
+    @>Wait: 10 frame(s)
+    @>Set Move Route: [Junko]
+     :              : $>Turn Right
+    @>Text: \xn[Junko]... It's fine. It is as you said earlier, I had already
+     :    : accepted this defeat as inevitability.
+    @>Text: \xn[Junko]Thanks to my encounter with these humans, I've
+     :    : lost my will to fight.
+    @>Text: \xn[Hecatia]Sure thing then! Releasing the Capital's citizens now.
+    @>Set Move Route: [Hecatia]
+     :              : $>Turn Down
+    @>Set Move Route: [Junko]
+     :              : $>Turn Down
+    @>Text: \xn[Hecatia]With this, they ought to pull out of Gensokyo entirely.
+    @>Text: \xn[Sanae]Well that's good to hear! I trust you two will keep to your word
+     :    : about this and not suddenly kidnap them again when we turn our backs.
+    @>Text: \xn[Junko]Worry not, we do not aim to deceive you. Throughout all of this,
+     :    : we have remained honest and forthright.
+    @>Text: \xn[Junko]I just never thought that the Capital would take all of Gensokyo
+     :    : hostage.
+    @>Text: \xn[Junko]They are the only ones who hold my ire. That my plan indirectly
+     :    : resulted in Gensokyo being attacked, I do apologize for that.
+    @>Text: \xn[\pn]Huh... You two are being much more reasonable than I would have
+     :    : figured for being so bent on revenge as you were.
+    @>Text: \xn[Junko]Make no mistake, my plans for revenge do not die here. There
+     :    : will be more attempts in the future to exact my vengance against them and
+     :    : their treacherous Goddess.
+    @>Text: \xn[\pn]Should have figured there'd be some sort of caveat to your
+     :    : actions...
+    @>Text: \xn[Sanae]If you're looking to complain about the Capital, maybe you could try
+     :    : protesting to the former citizens of the Moon that live in Gensokyo.
+    @>Text: \xn[Junko]Hmm... Perhaps that might not be a bad idea.
+    @>Set Move Route: Player
+     :              : $>Turn Right
+    @>Text: \xn[\pn]Are you sure that's a wise idea, Lady Kochiya...?
+    @>Set Move Route: [Partner]
+     :              : $>Turn Left
+    @>Text: \xn[Sanae]As long as they don't use violence in their protests! Just speaking
+     :    : should be enough.
+    @>Text: \xn[Hecatia]Of course, but what if they use violence against us first?
+     :    : Surely we would be allowed to fight back.
+    @>Set Move Route: [Partner]
+     :              : $>Turn Up
+    @>Set Move Route: Player
+     :              : $>Turn Up
+    @>Text: \xn[Sanae]Then by all means, fight them as you please! From my time in
+     :    : Gensokyo, I've learned that conflicts are more often resolved by discusson
+     :    : through combat anyways.
+    @>Text: \xn[Hecatia]You sure are an amusing one miss shrine maiden~ First you
+     :    : tell us not to use violence, then you tell us it's alright to communicate through
+     :    : violence.
+    @>Text: \xn[Hecatia]Yes, I'm sure Gensokyo will be an interesting place to visit from time
+     :    : to time!
+    @>Text: \xn[Junko]Heh. For now, I have no further desire for revenge. Thanks to you two,
+     :    : it will be a long time before my next revenge attempt against the Capital.
+    @>Text: \xn[\pn]That's a relief to hear at least!
+    @>Text: \xn[Hecatia]Well, we must be off now! Don't need the Capital sending a retaliatory
+     :    : force against us now that we freed them.
+    @>Text: \xn[Hecatia]I'm sure we'll be seeing each other again~
+    @>
+   : Else
+    @>Conditional Branch: Variable [0122: TKoL S6 Partner] == 4
+     @>Comment: Reisen
+     @>Text: \xn[Hecatia]I guess Junko was right about defeat being inevitable...
+     @>Text: \xn[Hecatia]However, I noticed something interesting during our battle.
+     @>Text: \xn[Hecatia]You there, rabbit. You're not of the moon, are you?
+     @>Text: \xn[Reisen]Ah- no, I'm not. Not anymore at least! I'm now an Earth Rabbit from
+      :    : Gensokyo.
+     @>Text: \xn[Reisen]I can never return to being a Moon Rabbit after being in Gensokyo
+      :    : for so long.
+     @>Text: \xn[Hecatia]I see~ What an interesting development indeed.
+     @>Text: \xn[Hecatia]So, this was the strategy of the lunar sage that resides on Earth...
+     @>Text: \xn[Hecatia]I'd love to get to meet her, if you'd be willing to introduce me to her~.
+     @>Set Move Route: Player
+      :              : $>Turn Right
+     @>Text: \xn[\pn]Is that a good idea, Reisen...?
+     @>Text: \xn[Reisen]Hm... Actually, I also came here to extend an invitation to the
+      :    : both of you. My Master is quite interested in meeting the both of you.
+     @>Show Animation: Player, [Exclaim bubble]
+     @>Text: \xn[Hecatia]Oh? Is that so~?
+     @>Text: \xn[Reisen]However, she does have conditions you two would need to follow.
+     @>Set Move Route: Player
+      :              : $>Turn Up
+     @>Text: \xn[Reisen]Firstly, you will need to release the citizens of the Capital currently
+      :    : trapped in the Dream World.
+     @>Text: \xn[Reisen]Then, you also have to promise to never attack the Capital again.
+     @>Set Move Route: [Hecatia]
+      :              : $>Turn Left
+     @>Text: \xn[Hecatia]Hey, Junko... Is this okay?
+     @>Wait: 10 frame(s)
+     @>Set Move Route: [Junko]
+      :              : $>Turn Right
+     @>Text: \xn[Junko]... It's fine. It is as you said earlier, I had already
+      :    : accepted this defeat as inevitability.
+     @>Set Move Route: [Junko]
+      :              : $>Turn Down
+     @>Text: \xn[Junko]However, I can only accede to one of those conditions.
+     @>Text: \xn[Junko]I'll only accept if the condition is altered to "do not attack again
+      :    : for a while". 
+     @>Set Move Route: Player
+      :              : $>Turn Right
+     @>Text: \xn[\pn]...Reisen?
+     @>Set Move Route: [Partner]
+      :              : $>Turn Down
+      :              : $>Wait: 20 frame(s)
+      :              : $>Turn Up
+     @>Wait: 10 frame(s)
+     @>Text: \xn[Reisen]Very well then. Those terms will be acceptable.
+     @>Set Move Route: Player
+      :              : $>Turn Up
+     @>Set Move Route: [Hecatia]
+      :              : $>Turn Down
+     @>Text: \xn[Hecatia]Alright! I'll be releasing the people of the Moon now.
+     @>Wait: 10 frame(s)
+     @>Text: \xn[Reisen]...They might actually be a good match with Master and the Princess 
+      :    : after all...
+     @>Text: \xn[Hecatia]Hm? Did you say something? I couldn't quite catch that.
+     @>Text: \xn[Reisen]Whoops, just thinking aloud! Nothing to worry about.
+     @>Text: \xn[Junko]You need not worry. For now, my desire for revenge has died down.
+     @>Text: \xn[Junko]Furthermore, the Lunarians that exist in Gensokyo are by no means 
+      :    : my enemies. This includes yourself, little rabbit.
+     @>Wait: 5 frame(s)
+     @>Text: \xn[Junko]That being said, though...
+     @>Wait: 10 frame(s)
+     @>Show Animation: [Partner], [Question bubble]
+     @>Wait: 10 frame(s)
+     @>Set Move Route: [Hecatia]
+      :              : $>Turn Left
+     @>Wait: 15 frame(s)
+     @>Text: \xn[Hecatia]Oh-ho~, even more interesting.
+     @>Text: \xn[Reisen]What is?
+     @>Set Move Route: [Hecatia]
+      :              : $>Turn Down
+     @>Text: \xn[Hecatia]It sounds like Junko has taken a bit of an interest in you!
+     @>Text: \xn[Hecatia]Yes... Because of that, she may very well put off her revenge for
+      :    : a good long while.
+     @>Text: \xn[Reisen]I-... I see! Well, uh, I'm- I'm honored...?
+     @>Text: \xn[Hecatia]You're not a moon rabbit after all, so she has no reason
+      :    : to hate you. Quite the opposite in fact~ She may take a liking to you!
+     @>Text: \xn[Hecatia]As for me, I should try searching around Gensokyo for
+      :    : interesting people as well.
+     @>Text: \xn[Hecatia]If you've got anyone in mind, feel free to introduce me!
+     @>Text: \xn[\pn]I'm sure I can think of a few people who might be interested in meeting a Hell Goddess...
+     @>Text: \xn[Hecatia]Well, we must be off now! Don't need the Capital sending a retaliatory
+      :    : force against us now that we freed them.
+     @>Text: \xn[Hecatia]I'm sure we'll be seeing each other again~
+     @>
+    : Branch End
+    @>
+   : Branch End
+   @>
+  : Branch End
+  @>
+ : Branch End
+ @>Play SE: 'Teleport', 100, 150
+ @>Change Screen Color Tone: (-255,-255,-255,0), @6
+ @>Wait: 8 frame(s)
+ @>Control Variables: [0121: TKoL Plot Variable] = 21
+ @>Change Screen Color Tone: (0,0,0,0), @6
+ @>
+: Else
+ @>Script: pbTrainerEnd
+ @>Exit Event Processing
+ @>
+: Branch End
+@>
+
+Page #3
+Conditions
+Variable 0121: TKoL Plot Variable is 21 or above
+
+Autonomous Movement
+Type: Fixed
+Speed: 3: Slow
+Freq: 3: Low
+Options Enabled
+Move Animation
+Trigger: Autorun
+
+List of Event Commands:
+@>Script: pbCameraScrollDirection(8, 2)
+@>Comment: After Junko and Hecatia Leave
+@>Conditional Branch: Variable [0122: TKoL S6 Partner] == 1
+ @>Comment: Reimu
+ @>Text: \xn[Reimu]Yeah, somehow I doubt that...\wtnp[15]
+ @>Text: \xn[Reimu]Well, whatever! I'll cross that bridge when we come 
+  :    : to it.\wtnp[15]
+ @>Text: \xn[Reimu]We're all finished here, we should head on back to 
+  :    : Gensokyo.\wtnp[15]
+ @>Set Move Route: Player
+  :              : $>Turn Right
+ @>Text: \xn[\pn]Thank you for coming all this way to assist, Lady Reimu.
+  :    : While I certainly wasn't expecting the help, it sure made things a lot
+  :    : easier.\wtnp[15]
+ @>Set Move Route: [Partner]
+  :              : $>Turn Left
+ @>Text: \xn[Reimu]Just doing my job as the mediator of Gensokyo's
+  :    : balance, though these troublemakers never make it easy...\wtnp[16]
+ @>Text: \xn[\pn]I do appreciate it though!\wtnp[15]
+ @>Text: \xn[Reimu]If you really appreciate my services that much, always
+  :    : remember that you can drop by my shrine and offer a donation!\wtnp[15]
+ @>Text: \xn[\pn]W-We'll see about that one...\wtnp[20]
+ @>
+: Else
+ @>Conditional Branch: Variable [0122: TKoL S6 Partner] == 2
+  @>Comment: Marisa
+  @>Text: \xn[Marisa]Welp, that's settled! At least they went without too much of a
+   :    : fuss.\wtnp[15]
+  @>Set Move Route: [Partner]
+   :              : $>Turn Left
+  @>Text: \xn[Marisa]Though, I wouldn't 've minded going for another round if it came down to it.
+   :    : Could use the trainin', 'specially if it means keepin' up with you.\wtnp[15]
+  @>Set Move Route: Player
+   :              : $>Turn Right
+  @>Text: \xn[\pn]I don't know if I should feel amazed or terrified that you'd risk
+   :    : another round with them, just that one encounter alone felt exhausting.\wtnp[15]
+  @>Text: \xn[Marisa]Always gotta stay on my toes! A magician's trainin' is never truly done.\wtnp[15]
+  @>Text: \xn[Marisa]Though, Gensokyo's in good hands if it's you at th' helm of the
+   :    : Puppet Era! Means I can afford to take it easy from time t' time.\wtnp[15]
+  @>Text: \xn[\pn]\b(Didn't you just say you needed the training though?)\wtnp[15]
+  @>Text: \xn[Marisa]Anyways, we should be headin' on back to the Capital so
+   :    : we can return back home.\wtnp[15]
+  @>Text: \xn[Marisa]Gotta' let the doc know the good news!\wtnp[15]
+  @>Text: \xn[\pn]I can't wait to get home and take a nice, long nap after all this.\wtnp[15]
+  @>Text: \xn[Marisa]Assumin' y'don't get hit up by the tengu for an interview!\wtnp[15]
+  @>Text: \xn[\pn]...Right, that is probably going to happen, isn't it. Sigh.\wtnp[20]
+  @>
+ : Else
+  @>Conditional Branch: Variable [0122: TKoL S6 Partner] == 3
+   @>Comment: Sanae
+   @>Text: \xn[Sanae]Mission complete! We can now return back to Doctor Yagokoro and
+    :    : give her the good news!\wtnp[15]
+   @>Set Move Route: Player
+    :              : $>Turn Right
+   @>Text: \xn[\pn]I just hope that they don't bring any further trouble into Gensokyo.\wtnp[15]
+   @>Set Move Route: [Partner]
+    :              : $>Turn Left
+   @>Text: \xn[Sanae]You know how it is back home, trouble always brews after a while! Peace
+    :    : in Gensokyo is fleeting, but never for long.\wtnp[15]
+   @>Text: \xn[Sanae]But as long as people like you and I are there, we'll easily put the bad guys
+    :    : in their place!\wtnp[15]
+   @>Text: \xn[\pn]Fair enough of a point as any I suppose!\wtnp[15]
+   @>Text: \xn[Sanae]Exactly! Now let's head back to the Capital and inform that Goddess
+    :    : so they can stop using Curiosity for malevolent purposes.\wtnp[15]
+   @>Text: \xn[\pn]I still have no idea what this "Curiosity" thing is...\wtnp[15]
+   @>Text: \xn[Sanae]Oh! I can give you all the details about it on our way back home!\wtnp[20]
+   @>
+  : Else
+   @>Conditional Branch: Variable [0122: TKoL S6 Partner] == 4
+    @>Comment: Reisen
+    @>Text: \xn[Reisen]Phew. That could have gone so much worse, I'm thankful it didn't...\wtnp[15]
+    @>Set Move Route: [Partner]
+     :              : $>Turn Left
+    @>Text: \xn[Reisen]You were great out there though, \pn! Honestly, you probably
+     :    : could have handled the both of them on your own and been fine.\wtnp[15]
+    @>Set Move Route: Player
+     :              : $>Turn Right
+    @>Text: \xn[\pn]I don't know about that one...\wtnp[15]
+    @>Text: \xn[\pn]That aside, are you sure it was wise to invite those two to meet
+     :    : Doctor Yagokoro?\wtnp[15]
+    @>Text: \xn[Reisen]That was actually part of the Master's strategem, actually!\wtnp[15]
+    @>Text: \xn[Reisen]She knew there'd be no way that the true culprits would be unable to
+     :    : resist the urge of meeting the mastermind behind their defeat.\wtnp[15]
+    @>Text: \xn[Reisen]So, she sent me here to provide them with an oportunity, as well as to
+     :    : present them with conditions for their meeting.\wtnp[15]
+    @>Text: \xn[Reisen]Of course, she knew that they would want to alter one of the conditions 
+     :    : to better suit their whims. So, I was instructed to accept the terms as they were
+     :    : altered.\wtnp[15]
+    @>Text: \xn[\pn]...She really had all that planned out, huh? Remind me to never
+     :    : challenge her to a game which involves that degree of forward thinking...\wtnp[20]
+    @>
+   : Branch End
+   @>
+  : Branch End
+  @>
+ : Branch End
+ @>
+: Branch End
+@>Control Self Switch: A =ON
+@>
+
+Page #4
+Conditions
+Variable 0121: TKoL Plot Variable is 21 or above
+
+Autonomous Movement
+Type: Fixed
+Speed: 3: Slow
+Freq: 3: Low
+Options Enabled
+Move Animation
+Trigger: Autorun
+
+List of Event Commands:
+@>Scroll Map: Down, 2, 4
+@>Comment: After Junko and Hecatia Leave
+@>Conditional Branch: Variable [0122: TKoL S6 Partner] == 1
+ @>Comment: Reimu
+ @>Text: \xn[Reimu]Yeah, somehow I doubt that...\wtnp[15]
+ @>Text: \xn[Reimu]Well, whatever! I'll cross that bridge when we come 
+  :    : to it.\wtnp[15]
+ @>Text: \xn[Reimu]We're all finished here, we should head on back to 
+  :    : Gensokyo.\wtnp[15]
+ @>Set Move Route: Player
+  :              : $>Turn Right
+ @>Text: \xn[\pn]Thank you for coming all this way to assist, Lady Reimu.
+  :    : While I certainly wasn't expecting the help, it sure made things a lot
+  :    : easier.\wtnp[15]
+ @>Set Move Route: [Partner]
+  :              : $>Turn Left
+ @>Text: \xn[Reimu]Just doing my job as the mediator of Gensokyo's
+  :    : balance, though these troublemakers never make it easy...\wtnp[16]
+ @>Text: \xn[\pn]I do appreciate it though!\wtnp[15]
+ @>Text: \xn[Reimu]If you really appreciate my services that much, always
+  :    : remember that you can drop by my shrine and offer a donation!\wtnp[15]
+ @>Text: \xn[\pn]W-We'll see about that one...\wtnp[20]
+ @>
+: Else
+ @>Conditional Branch: Variable [0122: TKoL S6 Partner] == 2
+  @>Comment: Marisa
+  @>Text: \xn[Marisa]Welp, that's settled! At least they went without too much of a
+   :    : fuss.\wtnp[15]
+  @>Set Move Route: [Partner]
+   :              : $>Turn Left
+  @>Text: \xn[Marisa]Though, I wouldn't 've minded going for another round if it came down to it.
+   :    : Could use the trainin', 'specially if it means keepin' up with you.\wtnp[15]
+  @>Set Move Route: Player
+   :              : $>Turn Right
+  @>Text: \xn[\pn]I don't know if I should feel amazed or terrified that you'd risk
+   :    : another round with them, just that one encounter alone felt exhausting.\wtnp[15]
+  @>Text: \xn[Marisa]Always gotta stay on my toes! A magician's trainin' is never truly done.\wtnp[15]
+  @>Text: \xn[Marisa]Though, Gensokyo's in good hands if it's you at th' helm of the
+   :    : Puppet Era! Means I can afford to take it easy from time t' time.\wtnp[15]
+  @>Text: \xn[\pn]\b(Didn't you just say you needed the training though?)\wtnp[15]
+  @>Text: \xn[Marisa]Anyways, we should be headin' on back to the Capital so
+   :    : we can return back home.\wtnp[15]
+  @>Text: \xn[Marisa]Gotta' let the doc know the good news!\wtnp[15]
+  @>Text: \xn[\pn]I can't wait to get home and take a nice, long nap after all this.\wtnp[15]
+  @>Text: \xn[Marisa]Assumin' y'don't get hit up by the tengu for an interview!\wtnp[15]
+  @>Text: \xn[\pn]...Right, that is probably going to happen, isn't it. Sigh.\wtnp[20]
+  @>
+ : Else
+  @>Conditional Branch: Variable [0122: TKoL S6 Partner] == 3
+   @>Comment: Sanae
+   @>Text: \xn[Sanae]Mission complete! We can now return back to Doctor Yagokoro and
+    :    : give her the good news!\wtnp[15]
+   @>Set Move Route: Player
+    :              : $>Turn Right
+   @>Text: \xn[\pn]I just hope that they don't bring any further trouble into Gensokyo.\wtnp[15]
+   @>Set Move Route: [Partner]
+    :              : $>Turn Left
+   @>Text: \xn[Sanae]You know how it is back home, trouble always brews after a while! Peace
+    :    : in Gensokyo is fleeting, but never for long.\wtnp[15]
+   @>Text: \xn[Sanae]But as long as people like you and I are there, we'll easily put the bad guys
+    :    : in their place!\wtnp[15]
+   @>Text: \xn[\pn]Fair enough of a point as any I suppose!\wtnp[15]
+   @>Text: \xn[Sanae]Exactly! Now let's head back to the Capital and inform that Goddess
+    :    : so they can stop using Curiosity for malevolent purposes.\wtnp[15]
+   @>Text: \xn[\pn]I still have no idea what this "Curiosity" thing is...\wtnp[15]
+   @>Text: \xn[Sanae]Oh! I can give you all the details about it on our way back home!\wtnp[20]
+   @>
+  : Else
+   @>Conditional Branch: Variable [0122: TKoL S6 Partner] == 4
+    @>Comment: Reisen
+    @>Text: \xn[Reisen]Phew. That could have gone so much worse, I'm thankful it didn't...\wtnp[15]
+    @>Set Move Route: [Partner]
+     :              : $>Turn Left
+    @>Text: \xn[Reisen]You were great out there though, \pn! Honestly, you probably
+     :    : could have handled the both of them on your own and been fine.\wtnp[15]
+    @>Set Move Route: Player
+     :              : $>Turn Right
+    @>Text: \xn[\pn]I don't know about that one...\wtnp[15]
+    @>Text: \xn[\pn]That aside, are you sure it was wise to invite those two to meet
+     :    : Doctor Yagokoro?\wtnp[15]
+    @>Text: \xn[Reisen]That was actually part of the Master's strategem, actually!\wtnp[15]
+    @>Text: \xn[Reisen]She knew there'd be no way that the true culprits would be unable to
+     :    : resist the urge of meeting the mastermind behind their defeat.\wtnp[15]
+    @>Text: \xn[Reisen]So, she sent me here to provide them with an oportunity, as well as to
+     :    : present them with conditions for their meeting.\wtnp[15]
+    @>Text: \xn[Reisen]Of course, she knew that they would want to alter one of the conditions 
+     :    : to better suit their whims. So, I was instructed to accept the terms as they were
+     :    : altered.\wtnp[15]
+    @>Text: \xn[\pn]...She really had all that planned out, huh? Remind me to never
+     :    : challenge her to a game which involves that degree of forward thinking...\wtnp[20]
+    @>
+   : Branch End
+   @>
+  : Branch End
+  @>
+ : Branch End
+ @>
+: Branch End
+@>Control Self Switch: A =ON
+@>
+
+Page #5
+Conditions
+Self Switch A is ON
+
+Autonomous Movement
+Type: Fixed
+Speed: 3: Slow
+Freq: 3: Low
+Options Enabled
+Move Animation
+Trigger: Autorun
+
+List of Event Commands:
+@>Comment: Ending Cutscene
+@>Control Switches: [0103: Disable Text Skip] = ON
+@>Change Screen Color Tone: (51,17,-34,255), @10
+@>Play BGM: 'W-039. The Moon as Seen from the Shrine', 70, 100
+@>Wait: 10 frame(s)
+@>Change Text Options: Bottom, Show
+@>Text: \w[dark]\c[12]\se[]\l[3]And so wraps up another incident, with \pn
+ :    : adding another adventure to their ever growing legacy.\wtnp[40]
+@>Text: \w[dark]\c[12]\se[]\l[4]An adventure that was tiring, and exhausting, but most importantly,
+ :    : exhilarating. Traveling to the Moon was something she never imagined could happen.\wtnp[40]
+@>Set Move Route: Player
+ :              : $>Move Down
+ :              : $>Move Down
+ :              : $>Move Down
+ :              : $>Move Down
+@>Set Move Route: [Partner]
+ :              : $>Move Down
+ :              : $>Move Down
+ :              : $>Move Down
+ :              : $>Move Down
+@>Change Screen Color Tone: (-255,-255,-255,0), @6
+@>Text: \w[dark]\c[12]\se[]\l[4]She and \v[126] departed from Hecatia's fortress at the Mare
+ :    : Marginis, and make their way back to the Capital so they can give Sagume the
+ :    : news.\wtnp[40]
+@>Wait: 6 frame(s)
+@>Wait for Move's Completion
+@>Change Transparent Flag: Transparency
+@>Transfer Player:[101: Ending Filler Map - Capital], (013,011)
+@>Change Screen Color Tone: (51,17,-34,255), @6
 @>
 
 #------------------------------------------------------------------------------
@@ -81744,6 +83688,399 @@ List of Event Commands:
  @>
 : Branch End
 @>Script: setTempSwitchOn("A")
+@>
+
+#------------------------------------------------------------------------------
+
+#==============================================================================
+Map ID: 130
+Map Name: Ending Filler Map - Mountain
+Tileset: 040: Youkai Mountain
+Width: 30, Height: 30
+
+#------------------------------------------------------------------------------
+Event ID: 001
+Event Name: Player
+(X,Y): (020,017)
+
+Page #1
+Conditions
+None
+
+Graphic: trainer_AYAKA
+
+Autonomous Movement
+Type: Fixed
+Speed: 3: Slow
+Freq: 3: Low
+Options Enabled
+Move Animation
+Trigger: Action Button
+
+List of Event Commands:
+@>
+
+#------------------------------------------------------------------------------
+Event ID: 002
+Event Name: Daichi
+(X,Y): (016,018)
+
+Page #1
+Conditions
+None
+
+Graphic: TPDP_NPC 29
+
+Autonomous Movement
+Type: Fixed
+Speed: 3: Slow
+Freq: 3: Low
+Options Enabled
+Move Animation
+Trigger: Action Button
+
+List of Event Commands:
+@>
+
+#------------------------------------------------------------------------------
+Event ID: 003
+Event Name: Partner
+(X,Y): (021,017)
+
+Page #1
+Conditions
+Variable 0122: TKoL S6 Partner is 1 or above
+
+Graphic: Person_Reimu
+
+Autonomous Movement
+Type: Fixed
+Speed: 3: Slow
+Freq: 3: Low
+Options Enabled
+Move Animation
+Trigger: Action Button
+
+List of Event Commands:
+@>
+
+Page #2
+Conditions
+Variable 0122: TKoL S6 Partner is 2 or above
+
+Graphic: Person_Marisa
+
+Autonomous Movement
+Type: Fixed
+Speed: 3: Slow
+Freq: 3: Low
+Options Enabled
+Move Animation
+Trigger: Action Button
+
+List of Event Commands:
+@>
+
+Page #3
+Conditions
+Variable 0122: TKoL S6 Partner is 3 or above
+
+Graphic: Person_Sanae
+
+Autonomous Movement
+Type: Fixed
+Speed: 3: Slow
+Freq: 3: Low
+Options Enabled
+Move Animation
+Trigger: Action Button
+
+List of Event Commands:
+@>
+
+Page #4
+Conditions
+Variable 0122: TKoL S6 Partner is 4 or above
+
+Graphic: Person_Reisen
+
+Autonomous Movement
+Type: Fixed
+Speed: 3: Slow
+Freq: 3: Low
+Options Enabled
+Move Animation
+Trigger: Action Button
+
+List of Event Commands:
+@>
+
+#------------------------------------------------------------------------------
+Event ID: 004
+Event Name: Autorun
+(X,Y): (024,009)
+
+Page #1
+Conditions
+None
+
+Autonomous Movement
+Type: Fixed
+Speed: 3: Slow
+Freq: 3: Low
+Options Enabled
+Move Animation
+Trigger: Autorun
+
+List of Event Commands:
+@>Wait: 10 frame(s)
+@>Set Move Route: [Player]
+ :              : $>Through ON
+ :              : $>Change Opacity: 255
+ :              : $>Move Down
+@>Set Move Route: [Partner]
+ :              : $>Through ON
+ :              : $>Change Opacity: 255
+ :              : $>Move Down
+@>Wait for Move's Completion
+@>Set Move Route: [Daichi]
+ :              : $>Turn Right
+ :              : $>Wait: 5 frame(s)
+ :              : $>Move Right
+@>Wait: 5 frame(s)
+@>Show Animation: [Daichi], [Exclaim bubble (No SE)]
+@>Wait: 10 frame(s)
+@>Set Move Route: [Player]
+ :              : $>Turn Left
+@>Set Move Route: [Partner]
+ :              : $>Turn Left
+@>Text: \w[dark]\c[12]\se[]\l[3]Not even a second after the pair returned back to Gensokyo,
+ :    : \pn was accosted by the tengu she had met during the tournament.\wtnp[40]
+@>Text: \w[dark]\c[12]\se[]\l[3]"Ah, welcome home Honored \pn. About that 
+ :    : exclusive interview... I trust you'll have plenty of story to tell.\wtnp[40]
+@>Comment: Sweatdrop anim over player
+@>Text: \w[dark]\c[12]\se[]\l[4]\pn knew in the back of her mind that this 
+ :    : was coming, what with how certain Tengu were about breaking 
+ :    : news... Never a dull moment in her life these days.\wtnp[40]
+@>Change Screen Color Tone: (-255,-255,-255,0), @6
+@>Text: \w[dark]\c[12]\se[]\l[4]As \pn was indulging Daichi in his interview, \v[XXX]
+ :    : took their leave to return to their own home, and the tengu reporter escorted
+ :    : \pn back to the Bamboo Forest of the Lost.\wtnp[40]
+@>Wait: 6 frame(s)
+@>Wait for Move's Completion
+@>Change Transparent Flag: Transparency
+@>Transfer Player:[131: Ending Filler Map - Eientei], (014,014)
+@>Change Screen Color Tone: (51,17,-34,255), @6
+@>
+
+#------------------------------------------------------------------------------
+
+#==============================================================================
+Map ID: 131
+Map Name: Ending Filler Map - Eientei
+Tileset: 029: Interior (General)
+Width: 30, Height: 30
+
+#------------------------------------------------------------------------------
+Event ID: 001
+Event Name: Eirin
+(X,Y): (014,013)
+
+Page #1
+Conditions
+None
+
+Graphic: Person_Eirin
+
+Autonomous Movement
+Type: Fixed
+Speed: 3: Slow
+Freq: 3: Low
+Options Enabled
+Move Animation
+Trigger: Action Button
+
+List of Event Commands:
+@>
+
+#------------------------------------------------------------------------------
+Event ID: 002
+Event Name: Player
+(X,Y): (014,015)
+
+Page #1
+Conditions
+None
+
+Graphic: trainer_AYAKA
+
+Autonomous Movement
+Type: Fixed
+Speed: 3: Slow
+Freq: 3: Low
+Options Enabled
+Move Animation
+Trigger: Action Button
+
+List of Event Commands:
+@>
+
+#------------------------------------------------------------------------------
+Event ID: 003
+Event Name: Reisen
+(X,Y): (015,013)
+
+Page #1
+Conditions
+None
+
+Graphic: Person_Reisen
+
+Autonomous Movement
+Type: Fixed
+Speed: 3: Slow
+Freq: 3: Low
+Options Enabled
+Move Animation
+Trigger: Action Button
+
+List of Event Commands:
+@>
+
+#------------------------------------------------------------------------------
+Event ID: 004
+Event Name: Autorun
+(X,Y): (028,001)
+
+Page #1
+Conditions
+None
+
+Autonomous Movement
+Type: Fixed
+Speed: 3: Slow
+Freq: 3: Low
+Options Enabled
+Move Animation
+Trigger: Autorun
+
+List of Event Commands:
+@>Text: \w[dark]\c[12]\se[]\l[3]After returning to Eientei, \pn relayed the status of
+ :    : the Capital to Eirin... With some concerns of her own.\wtnp[40]
+@>Text: \w[dark]\c[12]\se[]\l[3]"I don't mean to be rude Doctor Yagokoro, but...
+ :    : You could have just told me that the Capital was in danger as well."\wtnp[40]
+@>Text: \w[dark]\c[12]\se[]\l[2]Of course, the Lunar Sage had expected this, and in
+ :    : turn asked the following:\wtnp[40]
+@>Set Move Route: [Eirin]
+ :              : $>Wait: 10 frame(s)
+ :              : $>Turn Down
+@>Text: \w[dark]\c[12]\se[]\l[2]"If you didn't know that Gensokyo was also in danger,
+ :    : would you have agreed to go?"\wtnp[40]
+@>Text: \w[dark]\c[12]\se[]\l[3]Truthfully, \pn didn't have an answer. She would jump to
+ :    : protect Gensokyo in a heartbeat, but...\wtnp[40]
+@>Text: \w[dark]\c[12]\se[]\l[3]Would she do the same for a group of people
+ :    : far away she knew nothing about? Especially those who were purifying
+ :    : all of Gensokyo?\wtnp[40]
+@>Text: \w[dark]\c[12]\se[]\l[3]Perhaps, \pn figured, she wasn't experienced enough
+ :    : to have an answer to such questions yet.\wtnp[40]
+@>Text: \w[dark]\c[12]\se[]\l[4]Nevertheless, the doctor had thanked \pn for her efforts,
+ :    : and promised to compensate her for going out of her way, and then sent her
+ :    : back to the Village.\wtnp[40]
+@>Change Screen Color Tone: (-255,-255,-255,0), @6
+@>Text: \w[dark]\c[12]\se[]\l[4]It wouldn't take more than a few days before Daichi's newspaper
+ :    : hit the presses, and the entirety of Gensokyo was made aware of \pn's latest exploits.\wtnp[40]
+@>Text: \w[dark]\c[12]\se[]\l[3]\pn decided to spend the following few days in her room,
+ :    : allowing her to have a well deserved, and needed, rest.\wtnp[40]
+@>Text: \w[dark]\c[12]\se[]\l[2]At least the worst of it was over, and she could 
+ :    : leave that kingdom of lunacy behind her!\wtnp[40]
+@>Fade Out BGM: 5 sec.
+@>Wait: 10 frame(s)
+@>Control Self Switch: A =ON
+@>
+
+Page #2
+Conditions
+Self Switch A is ON
+
+Autonomous Movement
+Type: Fixed
+Speed: 3: Slow
+Freq: 3: Low
+Options Enabled
+Move Animation
+Trigger: Autorun
+
+List of Event Commands:
+@>Change Text Options: Middle, Hide
+@>Call Common Event: TKoL Credits
+@>Wait: 20 frame(s)
+@>Script: TKoLPostgameScene.new
+@>Transfer Player:[118: \PN's Room], (004,007), Right
+@>Change Transparent Flag: Normal
+@>Change Screen Color Tone: (0,0,0,0), @8
+@>
+
+#------------------------------------------------------------------------------
+
+#==============================================================================
+Map ID: 132
+Map Name: Credits - Bamboo Forest
+Tileset: 039: Bamboo Forest
+Width: 78, Height: 68
+
+#==============================================================================
+Map ID: 133
+Map Name: Credits - Eientei
+Tileset: 039: Bamboo Forest
+Width: 42, Height: 32
+
+#==============================================================================
+Map ID: 134
+Map Name: Credits - Sea of the Edge
+Tileset: 043: Hecatia's Lunar Fortress
+Width: 80, Height: 60
+
+#==============================================================================
+Map ID: 135
+Map Name: Credits - Hecatia's Fortress
+Tileset: 043: Hecatia's Lunar Fortress
+Width: 40, Height: 30
+
+#------------------------------------------------------------------------------
+Event ID: 001
+Event Name: EV001
+(X,Y): (039,000)
+
+Page #1
+Conditions
+None
+
+Autonomous Movement
+Type: Fixed
+Speed: 3: Slow
+Freq: 3: Low
+Options Enabled
+Move Animation
+Trigger: Parallel Process
+
+List of Event Commands:
+@>Change Map Settings:Panorama = 'Stars1', 0
+@>Control Self Switch: A =ON
+@>
+
+Page #2
+Conditions
+Self Switch A is ON
+
+Autonomous Movement
+Type: Fixed
+Speed: 3: Slow
+Freq: 3: Low
+Options Enabled
+Move Animation
+Trigger: Action Button
+
+List of Event Commands:
 @>
 
 #------------------------------------------------------------------------------
@@ -85727,6 +88064,8 @@ Common Event Name: Credits Handling
 Trigger: None
 
 List of Event Commands:
+@>Control Switches: [0100: Camera Movement Control] = ON
+@>Scroll Map: Up, 50, 2
 @>
 
 #==============================================================================
@@ -86283,11 +88622,331 @@ List of Event Commands:
 
 #==============================================================================
 Common Event ID: 100
-Common Event Name: TLoK Credits
+Common Event Name: TKoL Credits
 
 Trigger: None
 
 List of Event Commands:
+@>Fade Out BGM: 2 sec.
+@>Change Screen Color Tone: (-255,-255,-255,0), @20
+@>Wait: 15 frame(s)
+@>Change Transparent Flag: Transparency
+@>Script: pbShowPicture(1,"Credits/Gensokyo.png",1,256,192,100,100,0,0)
+@>Wait: 8 frame(s)
+@>Move Picture: 1, @10, Center (256,192), (100%,100%), 255, Normal
+@>Play BGM: 'W-040. The Space Shrine Maiden Returns Home', 100, 100
+@>Wait: 8 frame(s)
+@>Script: CreditsIntro_TKoL.new
+@>Wait: 15 frame(s)
+@>Move Picture: 1, @10, Center (256,192), (100%,100%), 0, Normal
+@>Wait: 12 frame(s)
+@>Comment: --- Human Village ---
+@>Transfer Player:[102: Credits - Human Village], (032,061)
+@>Script: pbShowPicture(1,"Credits/TKoL/BGs/BGVillage.png",1,256,192,100,100,0,0)
+@>Wait: 8 frame(s)
+@>Move Picture: 1, @10, Center (256,192), (100%,100%), 255, Normal
+@>Wait: 30 frame(s)
+@>Move Picture: 1, @10, Center (256,192), (100%,100%), 0, Normal
+@>Change Screen Color Tone: (51,17,-34,255), @6
+@>Scroll Map: Up, 50, 2
+@>Script: pbShowPicture(2,"Credits/TKoL/BGs/BGTransparent.png",0,0,384,100,100,0,0)
+@>Move Picture: 2, @10, Upper Left (0,240), (100%,100%), 255, Normal
+@>Wait: 15 frame(s)
+@>Script: pbShowPicture(3,"Credits/TKoL/Headers/1_AudComp.png",1,256,192,100,100,0,0)
+@>Script: pbShowPicture(4,"Credits/TKoL/People/1_AudComp_1.png",1,256,192,100,100,0,0)
+@>Wait: 30 frame(s)
+@>Move Picture: 3, @15, Center (256,192), (100%,100%), 255, Normal
+@>Wait: 37 frame(s)
+@>Move Picture: 4, @15, Center (256,192), (100%,100%), 255, Normal
+@>Wait: 90 frame(s)
+@>Move Picture: 4, @15, Center (256,192), (100%,100%), 0, Normal
+@>Wait: 15 frame(s)
+@>Script: pbShowPicture(4,"Credits/TKoL/People/1_AudComp_2.png",1,256,192,100,100,0,0)
+@>Wait: 37 frame(s)
+@>Move Picture: 4, @15, Center (256,192), (100%,100%), 255, Normal
+@>Wait: 90 frame(s)
+@>Move Picture: 3, @15, Center (256,192), (100%,100%), 0, Normal
+@>Move Picture: 4, @15, Center (256,192), (100%,100%), 0, Normal
+@>Wait: 15 frame(s)
+@>Script: pbShowPicture(3,"Credits/TKoL/Headers/2_SFX.png",1,256,192,100,100,0,0)
+@>Script: pbShowPicture(4,"Credits/TKoL/People/2_SFX_1.png",1,256,192,100,100,0,0)
+@>Wait: 30 frame(s)
+@>Move Picture: 3, @15, Center (256,192), (100%,100%), 255, Normal
+@>Wait: 37 frame(s)
+@>Move Picture: 4, @15, Center (256,192), (100%,100%), 255, Normal
+@>Wait: 90 frame(s)
+@>Move Picture: 3, @15, Center (256,192), (100%,100%), 0, Normal
+@>Move Picture: 4, @15, Center (256,192), (100%,100%), 0, Normal
+@>Wait: 15 frame(s)
+@>Script: pbShowPicture(3,"Credits/TKoL/Headers/3_ProgDev.png",1,256,192,100,100,0,0)
+@>Script: pbShowPicture(4,"Credits/TKoL/People/3_ProgDev_1.png",1,256,192,100,100,0,0)
+@>Wait: 30 frame(s)
+@>Move Picture: 3, @15, Center (256,192), (100%,100%), 255, Normal
+@>Wait: 37 frame(s)
+@>Move Picture: 4, @15, Center (256,192), (100%,100%), 255, Normal
+@>Wait: 90 frame(s)
+@>Move Picture: 3, @15, Center (256,192), (100%,100%), 0, Normal
+@>Move Picture: 4, @15, Center (256,192), (100%,100%), 0, Normal
+@>Wait: 15 frame(s)
+@>Script: pbShowPicture(3,"Credits/TKoL/Headers/4_PlotMap.png",1,256,192,100,100,0,0)
+@>Script: pbShowPicture(4,"Credits/TKoL/People/4_PlotMap_1.png",1,256,192,100,100,0,0)
+@>Wait: 30 frame(s)
+@>Move Picture: 3, @15, Center (256,192), (100%,100%), 255, Normal
+@>Wait: 13 frame(s)
+@>Move Picture: 4, @15, Center (256,192), (100%,100%), 255, Normal
+@>Wait: 90 frame(s)
+@>Move Picture: 3, @15, Center (256,192), (100%,100%), 0, Normal
+@>Move Picture: 4, @15, Center (256,192), (100%,100%), 0, Normal
+@>Wait: 11 frame(s)
+@>Move Picture: 2, @10, Upper Left (0,384), (100%,100%), 255, Normal
+@>Change Screen Color Tone: (-255,-255,-255,0), @10
+@>Wait: 8 frame(s)
+@>Script: $game_map.start_scroll(0,0,0)
+@>Wait: 16 frame(s)
+@>Comment: --- Bamboo Forest ---
+@>Transfer Player:[132: Credits - Bamboo Forest], (010,022)
+@>Script: pbShowPicture(1,"Credits/TKoL/BGs/BGBamboo.png",1,256,192,100,100,0,0)
+@>Wait: 8 frame(s)
+@>Move Picture: 1, @10, Center (256,192), (100%,100%), 255, Normal
+@>Wait: 30 frame(s)
+@>Move Picture: 1, @10, Center (256,192), (100%,100%), 0, Normal
+@>Change Screen Color Tone: (51,17,-34,255), @6
+@>Scroll Map: Right, 50, 2
+@>Script: pbShowPicture(2,"Credits/TKoL/BGs/BGTransparent.png",0,0,384,100,100,0,0)
+@>Move Picture: 2, @10, Upper Left (0,240), (100%,100%), 255, Normal
+@>Wait: 15 frame(s)
+@>Script: pbShowPicture(3,"Credits/TKoL/Headers/5_Species.png",1,256,192,100,100,0,0)
+@>Script: pbShowPicture(4,"Credits/TKoL/People/5_Species_1.png",1,256,192,100,100,0,0)
+@>Wait: 30 frame(s)
+@>Move Picture: 3, @15, Center (256,192), (100%,100%), 255, Normal
+@>Wait: 37 frame(s)
+@>Move Picture: 4, @15, Center (256,192), (100%,100%), 255, Normal
+@>Wait: 90 frame(s)
+@>Move Picture: 4, @15, Center (256,192), (100%,100%), 0, Normal
+@>Wait: 15 frame(s)
+@>Script: pbShowPicture(4,"Credits/TKoL/People/5_Species_2.png",1,256,192,100,100,0,0)
+@>Wait: 13 frame(s)
+@>Move Picture: 4, @15, Center (256,192), (100%,100%), 255, Normal
+@>Wait: 90 frame(s)
+@>Move Picture: 3, @15, Center (256,192), (100%,100%), 0, Normal
+@>Move Picture: 4, @15, Center (256,192), (100%,100%), 0, Normal
+@>Wait: 15 frame(s)
+@>Script: pbShowPicture(3,"Credits/TKoL/Headers/6_TSA.png",1,256,192,100,100,0,0)
+@>Script: pbShowPicture(4,"Credits/TKoL/People/6_TSA_1.png",1,256,192,100,100,0,0)
+@>Wait: 30 frame(s)
+@>Move Picture: 3, @15, Center (256,192), (100%,100%), 255, Normal
+@>Wait: 37 frame(s)
+@>Move Picture: 4, @15, Center (256,192), (100%,100%), 255, Normal
+@>Wait: 90 frame(s)
+@>Move Picture: 3, @15, Center (256,192), (100%,100%), 0, Normal
+@>Move Picture: 4, @15, Center (256,192), (100%,100%), 0, Normal
+@>Wait: 11 frame(s)
+@>Move Picture: 2, @10, Upper Left (0,384), (100%,100%), 255, Normal
+@>Change Screen Color Tone: (-255,-255,-255,0), @10
+@>Wait: 10 frame(s)
+@>Script: $game_map.start_scroll(0,0,0)
+@>Wait: 16 frame(s)
+@>Comment: --- Dream World ---
+@>Transfer Player:[104: Credits - Kaian Passageway], (019,071)
+@>Script: pbShowPicture(1,"Credits/TKoL/BGs/BGDreamWorld.png",1,256,192,100,100,0,0)
+@>Wait: 8 frame(s)
+@>Move Picture: 1, @10, Center (256,192), (100%,100%), 255, Normal
+@>Wait: 30 frame(s)
+@>Move Picture: 1, @10, Center (256,192), (100%,100%), 0, Normal
+@>Change Screen Color Tone: (51,17,-34,255), @6
+@>Scroll Map: Up, 70, 2
+@>Script: pbShowPicture(2,"Credits/TKoL/BGs/BGTransparent.png",0,0,384,100,100,0,0)
+@>Move Picture: 2, @10, Upper Left (0,240), (100%,100%), 255, Normal
+@>Wait: 15 frame(s)
+@>Script: pbShowPicture(3,"Credits/TKoL/Headers/7_Art.png",1,256,192,100,100,0,0)
+@>Script: pbShowPicture(4,"Credits/TKoL/People/7_Art_1.png",1,256,192,100,100,0,0)
+@>Wait: 30 frame(s)
+@>Move Picture: 3, @15, Center (256,192), (100%,100%), 255, Normal
+@>Wait: 37 frame(s)
+@>Move Picture: 4, @15, Center (256,192), (100%,100%), 255, Normal
+@>Wait: 90 frame(s)
+@>Move Picture: 4, @15, Center (256,192), (100%,100%), 0, Normal
+@>Wait: 15 frame(s)
+@>Script: pbShowPicture(4,"Credits/TKoL/People/7_Art_2.png",1,256,192,100,100,0,0)
+@>Wait: 37 frame(s)
+@>Move Picture: 4, @15, Center (256,192), (100%,100%), 255, Normal
+@>Wait: 90 frame(s)
+@>Move Picture: 4, @15, Center (256,192), (100%,100%), 0, Normal
+@>Wait: 15 frame(s)
+@>Script: pbShowPicture(4,"Credits/TKoL/People/7_Art_3.png",1,256,192,100,100,0,0)
+@>Wait: 37 frame(s)
+@>Move Picture: 4, @15, Center (256,192), (100%,100%), 255, Normal
+@>Wait: 90 frame(s)
+@>Move Picture: 4, @15, Center (256,192), (100%,100%), 0, Normal
+@>Wait: 15 frame(s)
+@>Script: pbShowPicture(4,"Credits/TKoL/People/7_Art_4.png",1,256,192,100,100,0,0)
+@>Wait: 37 frame(s)
+@>Move Picture: 4, @15, Center (256,192), (100%,100%), 255, Normal
+@>Wait: 90 frame(s)
+@>Move Picture: 3, @15, Center (256,192), (100%,100%), 0, Normal
+@>Move Picture: 4, @15, Center (256,192), (100%,100%), 0, Normal
+@>Wait: 11 frame(s)
+@>Move Picture: 2, @10, Upper Left (0,384), (100%,100%), 255, Normal
+@>Change Screen Color Tone: (-255,-255,-255,0), @10
+@>Wait: 8 frame(s)
+@>Script: $game_map.start_scroll(0,0,0)
+@>Wait: 12 frame(s)
+@>Comment: --- Lunar Capital ---
+@>Transfer Player:[105: Credits - Lunar Capital], (035,020)
+@>Script: pbShowPicture(1,"Credits/TKoL/BGs/BGCapital.png",1,256,192,100,100,0,0)
+@>Wait: 8 frame(s)
+@>Move Picture: 1, @10, Center (256,192), (100%,100%), 255, Normal
+@>Wait: 30 frame(s)
+@>Move Picture: 1, @10, Center (256,192), (100%,100%), 0, Normal
+@>Change Screen Color Tone: (51,17,-34,255), @6
+@>Scroll Map: Down, 50, 2
+@>Script: pbShowPicture(2,"Credits/TKoL/BGs/BGTransparent.png",0,0,384,100,100,0,0)
+@>Move Picture: 2, @10, Upper Left (0,240), (100%,100%), 255, Normal
+@>Wait: 15 frame(s)
+@>Move Picture: 2, @10, Upper Left (0,240), (100%,100%), 255, Normal
+@>Wait: 15 frame(s)
+@>Script: pbShowPicture(3,"Credits/TKoL/Headers/8_Scripts.png",1,256,192,100,100,0,0)
+@>Script: pbShowPicture(4,"Credits/TKoL/People/8_Scripters_1.png",1,256,192,100,100,0,0)
+@>Wait: 30 frame(s)
+@>Move Picture: 3, @15, Center (256,192), (100%,100%), 255, Normal
+@>Wait: 37 frame(s)
+@>Move Picture: 4, @15, Center (256,192), (100%,100%), 255, Normal
+@>Wait: 90 frame(s)
+@>Move Picture: 4, @15, Center (256,192), (100%,100%), 0, Normal
+@>Wait: 15 frame(s)
+@>Script: pbShowPicture(4,"Credits/TKoL/People/8_Scripters_2.png",1,256,192,100,100,0,0)
+@>Wait: 37 frame(s)
+@>Move Picture: 4, @15, Center (256,192), (100%,100%), 255, Normal
+@>Wait: 90 frame(s)
+@>Move Picture: 4, @15, Center (256,192), (100%,100%), 0, Normal
+@>Wait: 15 frame(s)
+@>Script: pbShowPicture(4,"Credits/TKoL/People/8_Scripters_3.png",1,256,192,100,100,0,0)
+@>Wait: 37 frame(s)
+@>Move Picture: 4, @15, Center (256,192), (100%,100%), 255, Normal
+@>Wait: 90 frame(s)
+@>Move Picture: 4, @15, Center (256,192), (100%,100%), 0, Normal
+@>Wait: 15 frame(s)
+@>Script: pbShowPicture(4,"Credits/TKoL/People/8_Scripters_4.png",1,256,192,100,100,0,0)
+@>Wait: 37 frame(s)
+@>Move Picture: 4, @15, Center (256,192), (100%,100%), 255, Normal
+@>Wait: 90 frame(s)
+@>Move Picture: 3, @15, Center (256,192), (100%,100%), 0, Normal
+@>Move Picture: 4, @15, Center (256,192), (100%,100%), 0, Normal
+@>Wait: 11 frame(s)
+@>Move Picture: 2, @10, Upper Left (0,384), (100%,100%), 255, Normal
+@>Change Screen Color Tone: (-255,-255,-255,0), @10
+@>Wait: 8 frame(s)
+@>Script: $game_map.start_scroll(0,0,0)
+@>Wait: 12 frame(s)
+@>Comment: --- Sea of Tranquility ---
+@>Transfer Player:[106: Credits - Sea of Tranquility], (027,040)
+@>Script: pbShowPicture(1,"Credits/TKoL/BGs/BGTranquility.png",1,256,192,100,100,0,0)
+@>Wait: 8 frame(s)
+@>Move Picture: 1, @10, Center (256,192), (100%,100%), 255, Normal
+@>Wait: 30 frame(s)
+@>Move Picture: 1, @10, Center (256,192), (100%,100%), 0, Normal
+@>Change Screen Color Tone: (51,17,-34,255), @6
+@>Scroll Map: Up, 30, 2
+@>Script: pbShowPicture(2,"Credits/TKoL/BGs/BGTransparent.png",0,0,384,100,100,0,0)
+@>Move Picture: 2, @10, Upper Left (0,240), (100%,100%), 255, Normal
+@>Wait: 15 frame(s)
+@>Script: pbShowPicture(3,"Credits/TKoL/Headers/9_Director.png",1,256,192,100,100,0,0)
+@>Script: pbShowPicture(4,"Credits/TKoL/People/9_Director_1.png",1,256,192,100,100,0,0)
+@>Wait: 30 frame(s)
+@>Move Picture: 3, @15, Center (256,192), (100%,100%), 255, Normal
+@>Wait: 52 frame(s)
+@>Move Picture: 4, @15, Center (256,192), (100%,100%), 255, Normal
+@>Wait: 90 frame(s)
+@>Move Picture: 3, @15, Center (256,192), (100%,100%), 0, Normal
+@>Move Picture: 4, @15, Center (256,192), (100%,100%), 0, Normal
+@>Wait: 15 frame(s)
+@>Script: pbShowPicture(3,"Credits/TKoL/Headers/10_Thanks.png",1,256,192,100,100,0,0)
+@>Script: pbShowPicture(4,"Credits/TKoL/People/10_Thanks_1.png",1,256,192,100,100,0,0)
+@>Wait: 30 frame(s)
+@>Move Picture: 3, @15, Center (256,192), (100%,100%), 255, Normal
+@>Wait: 52 frame(s)
+@>Move Picture: 4, @15, Center (256,192), (100%,100%), 255, Normal
+@>Wait: 90 frame(s)
+@>Move Picture: 4, @15, Center (256,192), (100%,100%), 0, Normal
+@>Wait: 15 frame(s)
+@>Script: pbShowPicture(4,"Credits/TKoL/People/10_Thanks_2.png",1,256,192,100,100,0,0)
+@>Wait: 52 frame(s)
+@>Move Picture: 4, @15, Center (256,192), (100%,100%), 255, Normal
+@>Wait: 90 frame(s)
+@>Move Picture: 4, @15, Center (256,192), (100%,100%), 0, Normal
+@>Wait: 15 frame(s)
+@>Script: pbShowPicture(4,"Credits/TKoL/People/10_Thanks_3.png",1,256,192,100,100,0,0)
+@>Wait: 52 frame(s)
+@>Move Picture: 4, @15, Center (256,192), (100%,100%), 255, Normal
+@>Wait: 90 frame(s)
+@>Move Picture: 4, @15, Center (256,192), (100%,100%), 0, Normal
+@>Wait: 15 frame(s)
+@>Script: pbShowPicture(4,"Credits/TKoL/People/10_Thanks_4.png",1,256,192,100,100,0,0)
+@>Wait: 52 frame(s)
+@>Move Picture: 4, @15, Center (256,192), (100%,100%), 255, Normal
+@>Wait: 90 frame(s)
+@>Move Picture: 4, @15, Center (256,192), (100%,100%), 0, Normal
+@>Wait: 15 frame(s)
+@>Script: pbShowPicture(4,"Credits/TKoL/People/10_Thanks_5.png",1,256,192,100,100,0,0)
+@>Wait: 52 frame(s)
+@>Move Picture: 4, @15, Center (256,192), (100%,100%), 255, Normal
+@>Wait: 90 frame(s)
+@>Move Picture: 4, @15, Center (256,192), (100%,100%), 0, Normal
+@>Wait: 15 frame(s)
+@>Script: pbShowPicture(4,"Credits/TKoL/People/10_Thanks_6.png",1,256,192,100,100,0,0)
+@>Wait: 50 frame(s)
+@>Move Picture: 4, @15, Center (256,192), (100%,100%), 255, Normal
+@>Wait: 100 frame(s)
+@>Move Picture: 3, @15, Center (256,192), (100%,100%), 0, Normal
+@>Move Picture: 4, @15, Center (256,192), (100%,100%), 0, Normal
+@>Wait: 11 frame(s)
+@>Move Picture: 2, @10, Upper Left (0,384), (100%,100%), 255, Normal
+@>Wait: 30 frame(s)
+@>Change Screen Color Tone: (-255,-255,-255,0), @10
+@>Wait: 8 frame(s)
+@>Script: $game_map.start_scroll(0,0,0)
+@>Wait: 12 frame(s)
+@>Comment: --- Hecatia's Fortress ---
+@>Transfer Player:[135: Credits - Hecatia's Fortress], (019,006)
+@>Wait: 37 frame(s)
+@>Change Screen Color Tone: (51,17,-34,255), @6
+@>Fade Out BGM: 10 sec.
+@>Wait: 15 frame(s)
+@>Script: CreditsOutro_TKoL.new
+@>Wait: 8 frame(s)
+@>Change Screen Color Tone: (-255,-255,-255,0), @40
+@>Change Text Options: Bottom, Show
+@>Wait: 30 frame(s)
+@>Script: TKoLPostgameStinger.new
+@>Show Picture: 1, 'Toyoyori', Upper Left (0,0), (100%,100%), 0, Normal
+@>Text: \xn[Female Voice #1]That Human that came to the moon-- \pn was her name?\wtnp[30]
+@>Text: Yes, your highness. It seems she was acting on behalf of the fugitives on the planet's surface.\wtnp[30]
+@>Text: \xn[Female Voice #2]I see... That will be all for now, soldier. You're dismissed.\wtnp[30]
+@>Text: Ma'am, yes ma'am!\wtnp[30]
+@>Wait: 20 frame(s)
+@>Text: \xn[Female Voice #1]...So, Eirin sent her up to the Moon, huh?\wtnp[30]
+@>Text: \xn[Female Voice #2]It would seem that way, sister.\wtnp[30]
+@>Text: \xn[Female Voice #1]She wouldn't do that without good reason- no, it's thanks to her that the 
+ :    : capital was saved after all.\wtnp[30]
+@>Text: \xn[Female Voice #1]...As unfortunate as it is that we had to resort to outside
+ :    : assistance.\wtnp[30]
+@>Wait: 20 frame(s)
+@>Text: \xn[Female Voice #1]Should we do anything about this? If we don't act, the stuck
+ :    : up elders in the council may see this as an act of war from the Earth.\wtnp[30]
+@>Text: \xn[Female Voice #2]...\wtnp[30]
+@>Wait: 20 frame(s)
+@>Text: \xn[Female Voice #1]...Yorihime?\wtnp[30]
+@>Move Picture: 1, @20, Center (256,192), (100%,100%), 255, Normal
+@>Wait: 25 frame(s)
+@>Text: \xn[Female Voice #2]... Send an envoy to Gensokyo to retrieve her.\wtnp[30]
+@>Text: \xn[Female Voice #2]We shall put this hero of theirs to the test the way the Capital
+ :    : has always done so.\wtnp[30]
+@>Text: \xn[Female Voice #1]Alright~ I look forward to seeing their so called hero for myself.\wtnp[30]
+@>Text: \xn[Female Voice #1]No hogging them like you did the last time we had guests from
+ :    : the Earth!\wtnp[30]
+@>Move Picture: 1, @20, Center (256,192), (100%,100%), 0, Normal
+@>Wait: 25 frame(s)
+@>Erase Picture: 1
 @>
 
 #==============================================================================

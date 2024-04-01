@@ -459,9 +459,9 @@ class CreditsOutro_TMoM
       "Touhou Puppet Play",
       "The Mansion of Mystery",
 	  "",
-	  "2021-2023         DerxwnaKapsyla ",
+	  "2021-2024         DerxwnaKapsyla ",
 	  "2021-2021          ChaoticInfinity",
-	  "2021-2023   Overseer Household",
+	  "2021-2024   Overseer Household",
     ],
     :wait, 160,
     :clear,
@@ -469,9 +469,9 @@ class CreditsOutro_TMoM
     [
       "Touhoumon Essentials",
       "",
-	  "2011-2023         DerxwnaKapsyla ",
+	  "2011-2024         DerxwnaKapsyla ",
 	  "2011-2021          ChaoticInfinity",
-	  "2020-2023   Overseer Household",
+	  "2020-2024   Overseer Household",
     ],
     :wait, 160,
     :clear,
@@ -480,7 +480,7 @@ class CreditsOutro_TMoM
       "Pokemon Essentials",
       "",
 	  "2007-2010        Peter O.",
-	  "2010-2023          Maruno",
+	  "2010-2024          Maruno",
 	  "Based on work by Flameguru",
     ],
     :wait, 160,
@@ -805,9 +805,9 @@ class CreditsOutro_TFoC < CreditsOutro_TMoM
       "Touhou Puppet Play",
       "The Festival of Curses",
 	  "",
-	  "2021-2023         DerxwnaKapsyla ",
+	  "2021-2024         DerxwnaKapsyla ",
 	  "2021-2021          ChaoticInfinity",
-	  "2021-2023   Overseer Household",
+	  "2021-2024   Overseer Household",
     ],
     :wait, 160,
     :clear,
@@ -815,9 +815,9 @@ class CreditsOutro_TFoC < CreditsOutro_TMoM
     [
       "Touhoumon Essentials",
       "",
-	  "2011-2023         DerxwnaKapsyla ",
+	  "2011-2024         DerxwnaKapsyla ",
 	  "2011-2021          ChaoticInfinity",
-	  "2020-2023   Overseer Household",
+	  "2020-2024   Overseer Household",
     ],
     :wait, 160,
     :clear,
@@ -826,7 +826,7 @@ class CreditsOutro_TFoC < CreditsOutro_TMoM
       "Pokemon Essentials",
       "",
 	  "2007-2010        Peter O.",
-	  "2010-2023          Maruno",
+	  "2010-2024          Maruno",
 	  "Based on work by Flameguru",
     ],
     :wait, 160,
@@ -849,6 +849,77 @@ class TKoLIntroScene1 < TMoMIntroScene
     [
       "Summer, Season 133 of the Gensokyo Calendar",
       "Human Village, Second Full Moon"
+    ],
+    :wait, 60
+  ]
+end
+
+# ---------------------------
+
+class CreditsIntro_TKoL < CreditsIntro_TMoM
+  TEXT = [
+    [
+      "Touhou Puppet Play",
+      "The Kingdom of Lunacy",
+	  "",
+	  "Credits"
+    ],
+    :wait, 160,
+    :clear,
+    :wait, 60,
+    [
+      "--- Director of Development & World Building---",
+      "DerxwnaKapsyla"
+    ],
+    :wait, 160,
+    :clear,
+  ]
+end
+
+# ---------------------------
+
+class CreditsOutro_TKoL < CreditsOutro_TMoM
+  TEXT = [
+    [
+      "Touhou Puppet Play",
+      "The Kingdom of Lunacy",
+	  "",
+	  "2021-2024         DerxwnaKapsyla ",
+	  "2021-2021          ChaoticInfinity",
+	  "2021-2024   Overseer Household",
+    ],
+    :wait, 160,
+    :clear,
+    :wait, 60,
+    [
+      "Touhoumon Essentials",
+      "",
+	  "2011-2024         DerxwnaKapsyla ",
+	  "2011-2021          ChaoticInfinity",
+	  "2020-2024   Overseer Household",
+    ],
+    :wait, 160,
+    :clear,
+    :wait, 60,
+    [
+      "Pokemon Essentials",
+      "",
+	  "2007-2010        Peter O.",
+	  "2010-2024          Maruno",
+	  "Based on work by Flameguru",
+    ],
+    :wait, 160,
+    :clear,
+	:wait, 60,
+  ]
+end
+
+# ---------------------------
+
+class TKoLPostgameStinger < TMoMIntroScene
+  TEXT = [
+    [
+      "Meanwhile, 380000 kilometers above the Earth..."
     ],
     :wait, 60
   ]

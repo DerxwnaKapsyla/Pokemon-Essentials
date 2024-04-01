@@ -6,5 +6,5 @@ class FancyCamera
   INCREASE_WHEN_RUNNING = true
   
   # Override Scroll Map event commands (Default: true)
-  OVERRIDE_SCROLL_MAP = true
+  OVERRIDE_SCROLL_MAP = !pbGet(100) #true
 end
