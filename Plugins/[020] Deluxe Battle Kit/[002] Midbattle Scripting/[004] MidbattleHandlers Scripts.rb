@@ -26,12 +26,16 @@ MidbattleHandlers.add(:midbattle_scripts, :demo_wild_rotom,
   proc { |battle, idxBattler, idxTarget, trigger|
     foe = battle.battlers[1]
     case trigger
+    #---------------------------------------------------------------------------
+    # The player's Poke Balls are disabled at the start of the first round.
     when "RoundStartCommand_1_foe"
       battle.pbDisplayPaused(_INTL("{1} emited a powerful magnetic pulse!", foe.pbThis))
       battle.pbAnimation(:CHARGE, foe, foe)
       pbSEPlay("Anim/Paralyze3")
       battle.pbDisplayPaused(_INTL("Your Poké Balls short-circuited!\nThey cannot be used this battle!"))
       battle.disablePokeBalls = true
+    #---------------------------------------------------------------------------
+    # After taking Super Effective damage, the opponent changes form each round.
     when "RoundEnd_foe"
       next if !battle.pbTriggerActivated?("TargetWeakToMove_foe")
       battle.pbAnimation(:NIGHTMARE, foe.pbDirectOpposing(true), foe)
@@ -52,6 +56,8 @@ MidbattleHandlers.add(:midbattle_scripts, :demo_wild_rotom,
         foe.item = :CELLBATTERY
         battle.pbDisplay(_INTL("{1} equipped a {2} it found in the appliance!", foe.pbThis, foe.itemName))
       end
+    #---------------------------------------------------------------------------
+    # Opponent gains various effects when its HP falls to 50% or lower.
     when "TargetHPHalf_foe"
       next if battle.pbTriggerActivated?(trigger)
       battle.pbAnimation(:CHARGE, foe, foe)
@@ -64,6 +70,8 @@ MidbattleHandlers.add(:midbattle_scripts, :demo_wild_rotom,
         battle.pbDisplay(_INTL("{1} levitated with electromagnetism!", foe.pbThis))
       end
       battle.pbStartTerrain(foe, :Electric)
+    #---------------------------------------------------------------------------
+    # Opponent paralyzes the player's Pokemon when taking Super Effective damage.
     when "UserMoveEffective_player"
       battle.pbDisplayPaused(_INTL("{1} emited an electrical pulse out of desperation!", foe.pbThis))
       battler = battle.battlers[idxBattler]
@@ -82,8 +90,10 @@ MidbattleHandlers.add(:midbattle_scripts, :demo_wild_rotom,
 MidbattleHandlers.add(:midbattle_scripts, :demo_collapsing_cave,
   proc { |battle, idxBattler, idxTarget, trigger|
     scene = battle.scene
-	battler = battle.battlers[idxBattler]
+    battler = battle.battlers[idxBattler]
     case trigger
+    #---------------------------------------------------------------------------
+    # Introduction text explaining the event.
     when "RoundStartCommand_1_foe"
       pbSEPlay("Mining collapse")
       battle.pbDisplayPaused(_INTL("The cave ceiling begins to crumble down all around you!"))
@@ -92,9 +102,13 @@ MidbattleHandlers.add(:midbattle_scripts, :demo_collapsing_cave,
       battle.pbDisplayPaused(_INTL("I don't care if this whole cave collapses down on the both of us...haha!"))
       scene.pbForceEndSpeech
       battle.pbDisplayPaused(_INTL("Defeat your opponent before time runs out!"))
+    #---------------------------------------------------------------------------
+    # Repeated end-of-round text.
     when "RoundEnd_player"
       pbSEPlay("Mining collapse")
       battle.pbDisplayPaused(_INTL("The cave continues to collapse all around you!"))
+    #---------------------------------------------------------------------------
+    # Player's Pokemon is struck by falling rock, dealing damage & causing confusion.
     when "RoundEnd_2_player"
       battle.pbDisplayPaused(_INTL("{1} was struck on the head by a falling rock!", battler.pbThis))
       battle.pbAnimation(:ROCKSMASH, battler.pbDirectOpposing(true), battler)
@@ -106,15 +120,21 @@ MidbattleHandlers.add(:midbattle_scripts, :demo_collapsing_cave,
       elsif battler.pbCanConfuse?(battler, false)
         battler.pbConfuse
       end
+    #---------------------------------------------------------------------------
+    # Warning message.
     when "RoundEnd_3_player"
       battle.pbDisplayPaused(_INTL("You're running out of time!"))
       battle.pbDisplayPaused(_INTL("You need to escape immediately!"))
+    #---------------------------------------------------------------------------
+    # Player runs out of time and is forced to forfeit.
     when "RoundEnd_4_player"
       battle.pbDisplayPaused(_INTL("You failed to defeat your opponent in time!"))
       scene.pbRecall(idxBattler)
       battle.pbDisplayPaused(_INTL("You were forced to flee the battle!"))
       pbSEPlay("Battle flee")
       battle.decision = 3
+    #---------------------------------------------------------------------------
+    # Opponent's Pokemon stands its ground when its HP is low.
     when "LastTargetHPLow_foe"
       next if battle.pbTriggerActivated?(trigger)
       scene.pbStartSpeech(1)
@@ -130,6 +150,8 @@ MidbattleHandlers.add(:midbattle_scripts, :demo_collapsing_cave,
         battler.pbRaiseStatStage(stat, 2, battler, showAnim)
         showAnim = false
       end
+    #---------------------------------------------------------------------------
+    # Opponent mocks the player when forfeiting the match.
     when "BattleEndForfeit"
       scene.pbStartSpeech(1)
       battle.pbDisplayPaused(_INTL("Haha...you'll never make it out alive!"))
@@ -138,17 +160,27 @@ MidbattleHandlers.add(:midbattle_scripts, :demo_collapsing_cave,
 )
 
 
+#===============================================================================
+# Global Midbattle Scripts
+#===============================================================================
+# Global midbattle scripts are always active and will affect all battles as long
+# as the conditions for the scripts are met. These are not set in a battle rule,
+# and are instead triggered passively in any battle.
+#-------------------------------------------------------------------------------
+
 ################################################################################
 # Used for wild Mega battles.
 ################################################################################
 
-MidbattleHandlers.add(:midbattle_scripts, :wild_mega_battle,
+MidbattleHandlers.add(:midbattle_global, :wild_mega_battle,
   proc { |battle, idxBattler, idxTarget, trigger|
     next if !battle.wildBattle?
     next if battle.wildBattleMode != :mega
     foe = battle.battlers[1]
     next if !foe.wild?
     case trigger
+    #---------------------------------------------------------------------------
+    # Mega Evolves wild battler immediately at the start of the first round.
     when "RoundStartCommand_1_foe"
       if battle.pbCanMegaEvolve?(foe.index)
         battle.pbMegaEvolve(foe.index)
@@ -159,10 +191,14 @@ MidbattleHandlers.add(:midbattle_scripts, :wild_mega_battle,
       else
         battle.wildBattleMode = nil
       end
+    #---------------------------------------------------------------------------
+    # Un-Mega Evolves wild battler once damage cap is reached.
     when "BattlerReachedHPCap_foe"
       foe.unMega
       battle.disablePokeBalls = false
       battle.pbDisplayPaused(_INTL("{1}'s Mega Evolution faded!\nIt may now be captured!", foe.pbThis))
+    #---------------------------------------------------------------------------
+    # Tracks player's win count.
     when "BattleEndWin"
       if battle.wildBattleMode == :mega
         $stats.wild_mega_battles_won += 1
@@ -170,3 +206,5 @@ MidbattleHandlers.add(:midbattle_scripts, :wild_mega_battle,
     end
   }
 )
+
+

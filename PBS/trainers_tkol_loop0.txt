@@ -245,74 +245,158 @@ Pokemon = DOREMY,38
 # Stage 4: Lunar Capital
 #-------------------------------
 [HELLFAIRY,Reika]
-Pokemon = CLOWNPIECE,37
+LoseText = There's more where we came from!
+Pokemon = CRIN,35
+Pokemon = CSATORI,37
 [HELLFAIRY,Sienna]
-Pokemon = CLOWNPIECE,37
+LoseText = You can't beat us all~
+Pokemon = CUTSUHO,35
+Pokemon = CKOISHI,37
 [HELLFAIRY,Clarise]
-Pokemon = CLOWNPIECE,37
+LoseText = Thanks for playing, see you around~
+Pokemon = CMOMIJI,35
+Pokemon = CKANAKO,37
 [HELLFAIRY,Makiko]
-Pokemon = CLOWNPIECE,37
-
+LoseText = That was fun!
+Pokemon = CAYA,35
+Pokemon = CSUWAKO,37
 
 #-------------------------------
 # Boss: Clownpiece + Hell Fairy Backup
 # The three fairies will cycle back in every time after being defeated
+# EXP Stops being gained after beating the cycle three times
 #-------------------------------
-[CLOWNPIECE,Clownpiece,10]
+[CLOWNPIECET,Clownpiece,10]
 LoseText = No way! That didn't just happen!
 Items = HYPERPOTION,HYPERPOTION,FULLHEAL,FULLHEAL
-Pokemon = LUNA,39
+Pokemon = ALUNA,39
 Pokemon = HECATIA,42
 Pokemon = CLOWNPIECE,42
 Pokemon = CLOWNPIECE,45
 [HELLFAIRY,Lucia]
-Pokemon = CLOWNPIECE,37
+LoseText = Retreat, retreat!
+Pokemon = CYUUGI,37
+Pokemon = LUNA,39
 [HELLFAIRY,Astera]
-Pokemon = CLOWNPIECE,37
+LoseText = Retreat, retreat!
+Pokemon = CHATATE,37
+Pokemon = SUNNY,37
 [HELLFAIRY,Olivia]
-Pokemon = CLOWNPIECE,37
+LoseText = Retreat, retreat!
+Pokemon = CSARIEL,37
+Pokemon = STAR,39
 
 #-------------------------------
 # Stage 5: Sea of Tranquility
 #-------------------------------
+[HELLFAIRY,Aphrodite]
+LoseText = Placeholder
+Pokemon = DAIYOUSEI,39
+Pokemon = SANAE,41
+
+[HELLFAIRY,Ares]
+LoseText = Placeholder
+Pokemon = KANAKO,40
+Pokemon = SUWAKO,40
+Pokemon = EIRIN,42
+
+[HELLFAIRY,Ouranos]
+LoseText = Placeholder
+Pokemon = LILYWHITE,40
+Pokemon = TENMA,40
+Pokemon = UTSUHO,40
+
+[HELLFAIRY,Hermia]
+LoseText = Placeholder
+Pokemon = SAKUYA,38
+Pokemon = FUTO,39
+Pokemon = AYA,40
+
+[HELLFAIRY,Rhea]
+LoseText = Placeholder
+Pokemon = KOMACHI,39
+Pokemon = KOMACHI,39
+Pokemon = SKOMACHI,41
+Pokemon = AKOMACHI,41
+
+[HELLFAIRY,Amphitrite]
+LoseText = Placeholder
+Pokemon = NITORI,40
+Pokemon = MURASA,41
+Pokemon = ASTAR,43
+
+[HELLFAIRY,Macaria]
+LoseText = Placeholder
+Pokemon = DSHIKIEIKI,40
+Pokemon = SARIEL,42
+
+[HELLFAIRY,Dione]
+LoseText = Placeholder
+Pokemon = ATENSHI,40
+Pokemon = HAKUREI,42
+
+[HELLFAIRY,Gaia]
+LoseText = Placeholder
+Pokemon = MINORIKO,41
+Pokemon = SHIZUHA,41
+Pokemon = AKISISTERS,43
+Pokemon = AKAZAMI,44
 
 #-------------------------------
 # Boss: Junko
 #-------------------------------
 [JUNKO,Junko,10]
 LoseText = As the fates dictated, but no matter.
-Pokemon = AMOKOU,44
-Pokemon = TPARSEE,46
-Pokemon = ASUWAKO,46
-Pokemon = JUNKO,48
-Pokemon = DARKALICE,50
+Pokemon = AMOKOU,46
+Pokemon = TPARSEE,48
+Pokemon = ASUWAKO,48
+Pokemon = JUNKO,50
+Pokemon = DARKALICE,52
 
 #-------------------------------
 # Stage 6: Sea of the Edge: Hecatia's Fortress
 #-------------------------------
+[HELLFAIRY,Hypatia]
+LoseText = Placeholder
+Pokemon = ADMARISA,46
+Pokemon = AEIRIN,48
+Pokemon = SMARISA,48
+
+[HELLFAIRY,Eris]
+LoseText = Placeholder
+Pokemon = SSEIGA,47
+Pokemon = SEIJA,49
+Pokemon = ANUE,50
+
+[HELLFAIRY,Helia]
+LoseText = Placeholder
+Pokemon = AUTSUHO,48
+Pokemon = AKANAKO,50
+Pokemon = SSARIEL,50
+Pokemon = HECATIA,52
 
 #-------------------------------
 # Boss: Junko
 #-------------------------------
 [JUNKO,Junko,11]
 LoseText = ... Chang'e, is this truly your answer to me?
-Pokemon = AMOKOU,44
-Pokemon = TPARSEE,46
-Pokemon = ASUWAKO,46
-Pokemon = JUNKO,48
-Pokemon = DARKALICE,50
-Pokemon = SARIEL,52
+Pokemon = AMOKOU,46
+Pokemon = TPARSEE,48
+Pokemon = ASUWAKO,48
+Pokemon = JUNKO,50
+Pokemon = DARKALICE,52
+Pokemon = SARIEL,54
 #-------------------------------
 # Boss: Hecatia Lapislazuli
 #-------------------------------
 [HECATIA,Hecatia Lapislazuli,10]
 LoseText = Maybe I should have brought in all three of my bodies!
-Pokemon = CLOWNPIECE,44
-Pokemon = TSATORI,46
-Pokemon = KIKURI,46
-Pokemon = HECATIA,48
-Pokemon = SHINKI,50
-Pokemon = KONNGARA,52
+Pokemon = CLOWNPIECE,46
+Pokemon = TSATORI,48
+Pokemon = KIKURI,48
+Pokemon = HECATIA,50
+Pokemon = SHINKI,52
+Pokemon = KONNGARA,54
 
 #-------------------------------
 # Partner: Reimu Hakurei
@@ -365,21 +449,50 @@ Pokemon = ADREISEN,54
 #-------------------------------
 # Stage EX: Lunarian Palace
 #-------------------------------
-
-#-------------------------------
 # Midboss: Rei'sen
 #-------------------------------
+[REISEN2,Rei'Sen,10]
+Pokemon = SAGUME,50
+	Ball = MOONBALL
+Pokemon = TOYOHIME,51
+	Ball = MOONBALL
+Pokemon = ADREISEN,53
+	Ball = MOONBALL
 
 #-------------------------------
 # Midboss: Sagume Kishin
 #-------------------------------
+[SAGUME,Sagume Kishin,10]
+Pokemon = SAGUME,53
+	Ball = MOONBALL
+Pokemon = DHINA,55
+Pokemon = DOREMY,55
+	Ball = DREAMBALL
+Pokemon = AEIRIN,57
+	Name = Omoikane
+	Ball = MOONBALL
+	Moves = GUNKSHOT18,DARKPULSE18,MANABURST18,LIGHTSCREEN18
 
 #-------------------------------
 # Boss: Watatsuki no Toyohime
 #-------------------------------
+[TOYOHIME,Watatsuki no Toyohime,10]
+LoseText = ...
+Pokemon = HEIRIN,58
+Pokemon = ADYUKARI,58
+Pokemon = SKOMACHI,60
+Pokemon = YUMEMI,62
+Pokemon = TSAKUYA,63
+Pokemon = TTOYOHIME,65
 
 #-------------------------------
 # Boss: Watatsuki no Yorihime
 #-------------------------------
-
-
+[YORIHIME,Watatsuki no Yorihime,10]
+LoseText = ...
+Pokemon = AKAGUYA,58
+Pokemon = AMIKO,58
+Pokemon = DMOMIJI,60
+Pokemon = SYOUMU,62
+Pokemon = ATENSHI,63
+Pokemon = SYORIHIME,65
