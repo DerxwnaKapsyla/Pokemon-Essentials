@@ -73043,7 +73043,11 @@ Move Animation
 Trigger: Action Button
 
 List of Event Commands:
+@>Play SE: 'Exit Door', 80, 100
+@>Change Screen Color Tone: (-255,-255,-255,0), @6
+@>Wait: 8 frame(s)
 @>Transfer Player:[124: Infinite Hallway], (011,018), No Fade
+@>Change Screen Color Tone: (0,0,0,0), @6
 @>
 
 #------------------------------------------------------------------------------
@@ -80260,10 +80264,11 @@ Speed: 3: Slow
 Freq: 3: Low
 Options Enabled
 Move Animation
-Trigger: Event Touch
+Trigger: Player Touch
 
 List of Event Commands:
-@>Transfer Player:[124: Infinite Hallway], (011,033), No Fade
+@>Comment: Do not convert event
+@>Transfer Player:[124: Infinite Hallway], (011,018), No Fade
 @>
 
 #------------------------------------------------------------------------------
@@ -80281,10 +80286,10 @@ Speed: 3: Slow
 Freq: 3: Low
 Options Enabled
 Move Animation
-Trigger: Event Touch
+Trigger: Player Touch
 
 List of Event Commands:
-@>Script: pbWait(0.00001)
+@>Comment: Do not convert event
 @>Transfer Player:[124: Infinite Hallway], (011,017), No Fade
 @>
 
