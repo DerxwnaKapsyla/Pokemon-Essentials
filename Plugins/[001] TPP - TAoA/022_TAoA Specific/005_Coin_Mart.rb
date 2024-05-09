@@ -165,7 +165,7 @@ class Window_PokemonMart < Window_DrawableCommand
     @stock       = stock
     @adapter     = adapter
     super(x, y, width, height, viewport)
-    @selarrow    = AnimatedBitmap.new("Graphics/Pictures/martSel")
+    @selarrow    = AnimatedBitmap.new("Graphics/UI/Mart/cursor")
     @baseColor   = Color.new(88, 88, 80)
     @shadowColor = Color.new(168, 184, 184)
     self.windowskin = nil
@@ -184,15 +184,15 @@ class Window_PokemonMart < Window_DrawableCommand
     rect = drawCursor(index, rect)
     ypos = rect.y
     if index == count - 1
-      textpos.push([_INTL("CANCEL"), rect.x, ypos + 2, false, self.baseColor, self.shadowColor])
+      textpos.push([_INTL("CANCEL"), rect.x, ypos + 2, :left, self.baseColor, self.shadowColor])
     else
       item = @stock[index]
       itemname = @adapter.getDisplayName(item)
       qty = @adapter.getDisplayCoinPrice(item)
       sizeQty = self.contents.text_size(qty).width
       xQty = rect.x + rect.width - sizeQty - 2 - 16
-      textpos.push([itemname, rect.x, ypos + 2, false, self.baseColor, self.shadowColor])
-      textpos.push([qty, xQty, ypos + 2, false, self.baseColor, self.shadowColor])
+      textpos.push([itemname, rect.x, ypos + 2, :left, self.baseColor, self.shadowColor])
+      textpos.push([qty, xQty, ypos + 2, :left, self.baseColor, self.shadowColor])
     end
     pbDrawTextPositions(self.contents, textpos)
   end
@@ -232,7 +232,7 @@ class CoinMart_Scene
     @adapter = adapter
     @sprites = {}
     @sprites["background"] = IconSprite.new(0, 0, @viewport)
-    @sprites["background"].setBitmap("Graphics/Pictures/martScreen")
+    @sprites["background"].setBitmap("Graphics/UI/Mart/bg")
     @sprites["icon"] = ItemIconSprite.new(36, Graphics.height - 50, nil, @viewport)
     winAdapter = buying ? BuyAdapter.new(adapter) : SellAdapter.new(adapter)
     @sprites["itemwindow"] = Window_PokemonMart.new(
@@ -246,7 +246,7 @@ class CoinMart_Scene
     )
     pbPrepareWindow(@sprites["itemtextwindow"])
     @sprites["itemtextwindow"].baseColor = Color.new(248, 248, 248)
-    @sprites["itemtextwindow"].shadowColor = Color.new(0, 0, 0)
+    @sprites["itemtextwindow"].shadowColor = Color.black
     @sprites["itemtextwindow"].windowskin = nil
     @sprites["helpwindow"] = Window_AdvancedTextPokemon.new("")
     pbPrepareWindow(@sprites["helpwindow"])
@@ -297,14 +297,10 @@ class CoinMart_Scene
     @adapter = adapter
     @viewport2 = Viewport.new(0, 0, Graphics.width, Graphics.height)
     @viewport2.z = 99999
-    numFrames = Graphics.frame_rate * 4 / 10
-    alphaDiff = (255.0 / numFrames).ceil
-    (0..numFrames).each do |j|
-      col = Color.new(0, 0, 0, j * alphaDiff)
-      @viewport2.color = col
-      Graphics.update
-      Input.update
+    pbWait(0.4) do |delta_t|
+      @viewport2.color.alpha = lerp(0, 255, 0.4, delta_t)
     end
+    @viewport2.color.alpha = 255
     @subscene.pbStartScene(bag)
     @viewport = Viewport.new(0, 0, Graphics.width, Graphics.height)
     @viewport.z = 99999
@@ -341,13 +337,8 @@ class CoinMart_Scene
     @subscene&.pbEndScene
     pbDisposeSpriteHash(@sprites)
     if @viewport2
-      numFrames = Graphics.frame_rate * 4 / 10
-      alphaDiff = (255.0 / numFrames).ceil
-      (0..numFrames).each do |j|
-        col = Color.new(0, 0, 0, (numFrames - j) * alphaDiff)
-        @viewport2.color = col
-        Graphics.update
-        Input.update
+      pbWait(0.4) do |delta_t|
+        @viewport2.color.alpha = lerp(255, 0, 0.4, delta_t)
       end
       @viewport2.dispose
     end
@@ -394,13 +385,16 @@ class CoinMart_Scene
       self.update
       if !cw.busy?
         return if brief
-        pbRefresh if i == 0
+        if !refreshed_after_busy
+          pbRefresh
+          timer_start = System.uptime
+          refreshed_after_busy = true
+        end
       end
       if Input.trigger?(Input::USE) || Input.trigger?(Input::BACK)
         cw.resume if cw.busy?
       end
-      return if i >= Graphics.frame_rate * 3 / 2
-      i += 1 if !cw.busy?
+      return if refreshed_after_busy && System.uptime - timer_start >= 1.5
     end
   end
 
@@ -531,7 +525,7 @@ class CoinMart_Scene
   def pbChooseBuyItem
     itemwindow = @sprites["itemwindow"]
     @sprites["helpwindow"].visible = false
-    pbActivateWindow(@sprites, "itemwindow") {
+    pbActivateWindow(@sprites, "itemwindow") do
       pbRefresh
       loop do
         Graphics.update
@@ -551,7 +545,7 @@ class CoinMart_Scene
           end
         end
       end
-    }
+    end
   end
 
   def pbChooseSellItem

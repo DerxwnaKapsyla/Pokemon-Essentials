@@ -111,7 +111,7 @@ LoseText = Oh no, a tailwind!
 [YOUKAI_1,Kaede]
 Pokemon = CSANAE,25
 Pokemon = CREIMU,25
-Pokemon = CRENKO,30
+Pokemon = CRENKO,27
 LoseText = Is it because I'm a youkai that I can't channel the gods?
 #-------------------------------
 [FAIRY_1_ALT,Filia]
@@ -133,7 +133,7 @@ LoseText = C-Calm down! We weren't going to eat you!
 LoseText = Mayday, mayday! This is a state of emergency!
 Pokemon = CREISEN,25
 Pokemon = CHATATE,25
-Pokemon = SEIRAN,27
+Pokemon = CSEIRAN,27
 	Moves = FURYSWIPES18,MIRRORSHOT18,PSYBEAM18,AURORABEAM18
 	Ball = MOONBALL
 
@@ -144,7 +144,7 @@ Pokemon = SEIRAN,27
 LoseText = The Earth really does have a bunch of strong people on it, doesn't it?
 Pokemon = CYUYUKO,29
 Pokemon = CTOYOHIME,30
-Pokemon = RINGO,31
+Pokemon = CRINGO,31
 	Moves = CRUNCH18,BULKUP18,PINMISSILE18,BULLETSEED18
 	Ball = MOONBALL
 
@@ -192,7 +192,7 @@ Pokemon = SAGUME,35
 	Ball = MOONBALL
 #-------------------------------
 [FAIRY_G_ALT,Hanako]
-LoseText = Yzaltog tsuj ylbaborp rotaerc eht!
+LoseText = Yzal tog tsuj ylbaborp rotaerc eht!
 Pokemon = CSHIZUHA,34
 Pokemon = CYUUKA,34
 #-------------------------------
@@ -348,10 +348,15 @@ Pokemon = AKAZAMI,44
 [JUNKO,Junko,10]
 LoseText = As the fates dictated, but no matter.
 Pokemon = AMOKOU,46
+	Name = Wrath
 Pokemon = TPARSEE,48
+	Name = Invidia
 Pokemon = ASUWAKO,48
+	Name = Pestilence
 Pokemon = JUNKO,50
+	Name = Fury
 Pokemon = DARKALICE,52
+	Name = Pride
 
 #-------------------------------
 # Stage 6: Sea of the Edge: Hecatia's Fortress
@@ -381,11 +386,17 @@ Pokemon = HECATIA,52
 [JUNKO,Junko,11]
 LoseText = ... Chang'e, is this truly your answer to me?
 Pokemon = AMOKOU,46
+	Name = Wrath
 Pokemon = TPARSEE,48
+	Name = Invidia
 Pokemon = ASUWAKO,48
+	Name = Pestilence
 Pokemon = JUNKO,50
+	Name = Fury
 Pokemon = DARKALICE,52
+	Name = Pride
 Pokemon = SARIEL,54
+	Name = Death
 #-------------------------------
 # Boss: Hecatia Lapislazuli
 #-------------------------------
@@ -449,17 +460,27 @@ Pokemon = ADREISEN,54
 #-------------------------------
 # Stage EX: Lunarian Palace
 #-------------------------------
-[MOONRABBIT,Och]
-LoseText = ...
-Pokemon = EIRIN
-[MOONRABBIT,Phul]
-LoseText = ...
-Pokemon = EIRIN
+[MOONRABBIT_Och,Och]
+LoseText = Oh no, we were defeated!
+Pokemon = RIKAKO,56
+Pokemon = RIKA,57
+Pokemon = YUMEMI,59
+Pokemon = SMEILING,60
+	Form = 1
+	Shiny = yes
+[MOONRABBIT_Phul,Phul]
+LoseText = Maybe we taunted her a bit too much.
+Pokemon = MARGATROID,56
+Pokemon = APATCHOULI,57
+Pokemon = SMARISA,59
+Pokemon = SENDAI,60
+	Form = 1
+	Shiny = yes
 
 #-------------------------------
 # Midboss: Rei'sen
 #-------------------------------
-[REISEN2,Rei'Sen,10]
+[REISEN2,Rei'sen,10]
 LoseText = I told you I wasn't that strong!
 Pokemon = SAGUME,50
 	Ball = MOONBALL
@@ -472,6 +493,7 @@ Pokemon = ADREISEN,53
 # Midboss: Sagume Kishin
 #-------------------------------
 [SAGUME,Sagume Kishin,10]
+LoseText = ... Not even spoken word would have overturned this victory.
 Pokemon = SAGUME,53
 	Ball = MOONBALL
 Pokemon = DHINA,55

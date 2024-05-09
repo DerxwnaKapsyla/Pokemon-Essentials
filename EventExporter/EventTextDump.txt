@@ -79,8 +79,7 @@ List of Event Commands:
 @>Comment: ------------------------------------------------------
 @>Change Text Options: Bottom, Hide
 @>Text: The Adventures of Ayaka is a series of games that revolve around
- :    : the main character, Ayaka (who can be renamed when starting), 
- :    : and her adventures across Gensokyo.
+ :    : the main character, Ayaka, and her adventures across Gensokyo.
 @>Label: Start
 @>Text: Which of these adventures would you like to play through?
 @>Text: \l[3]Do note, this cannot be changed later, and can only be done on
@@ -1411,6 +1410,160 @@ List of Event Commands:
 
 Page #2
 Conditions
+None
+
+Autonomous Movement
+Type: Fixed
+Speed: 3: Slow
+Freq: 3: Low
+Options Enabled
+Move Animation
+Trigger: Autorun
+
+List of Event Commands:
+@>Script: $player.seen_storage_creator = true
+@>Script: $player.has_running_shoes = true
+@>Script: $player.scenario_name = "The Mansion of Mystery"
+@>Script: $player.name = "Ayaka"
+@>Conditional Branch: Switch [0107: New Game +] == ON
+ @>Jump to Label: Start
+ @>
+: Branch End
+@>Fade Out BGM: 2 sec.
+@>Script: pbChangePlayer(0)
+@>Call Common Event: Starter Selection
+@>Comment: ------------------------------------------------------
+@>Label: Start
+@>Text: Skip the intro cinematic?
+@>Show Choices: Yes, No
+(When Cancel: Choice 2)
+: When [Yes]
+ @>Jump to Label: Title drop
+ @>
+: When [No]
+ @>
+: Branch End
+@>Wait: 10 frame(s)
+@>Comment: ------------------------------------------------------
+@>Play BGM: 'W-002. Memory of Forgathering Dream', 100, 100
+@>Script: pbShowPicture(1,"Intro Cutscene/TMoM/Gensokyo.png",1,256,192,100,100,0,0)
+@>Wait: 10 frame(s)
+@>Change Text Options: Bottom, Show
+@>Move Picture: 1, @10, Center (256,192), (100%,100%), 255, Normal
+@>Wait: 10 frame(s)
+@>Text: \w[dark]\c[12]\se[]\l[3]\wtnp[5]With the consequences of the Urban Legends incident long past, 
+ :    : so too comes an end to the 130th Season of the realm known as Gensokyo.\wtnp[40]
+@>Wait: 10 frame(s)
+@>Text: \w[dark]\c[12]\se[]\wtnp[5]The realm returns, once again, to the relative peace it is familiar with.\wtnp[40]
+@>Wait: 10 frame(s)
+@>Text: \w[dark]\c[12]\se[]\l[3]\wtnp[5]But even here in this wonderland known as Gensokyo, things do not always remain at ease.\wtnp[40]
+@>Wait: 10 frame(s)
+@>Move Picture: 1, @10, Center (256,192), (100%,100%), 0, Normal
+@>Wait: 10 frame(s)
+@>Erase Picture: 1
+@>Comment: ------------------------------------------------------
+@>Script: pbShowPicture(1,"Intro Cutscene/TMoM/Alice's House.png",1,256,192,100,100,0,0)
+@>Wait: 10 frame(s)
+@>Move Picture: 1, @10, Center (256,192), (100%,100%), 255, Normal
+@>Text: \w[dark]\c[12]\se[]\l[3]\wtnp[5]The local Youkai Magician who controls puppets, one day, managed to create a perfectly autonomus doll.\wtnp[40]
+@>Wait: 10 frame(s)
+@>Text: \w[dark]\c[12]\se[]\l[2]\wtnp[5]A doll that could move of its own accord, her life's dream and ambition finally fufilled.\wtnp[40]
+@>Wait: 10 frame(s)
+@>Move Picture: 1, @10, Center (256,192), (100%,100%), 0, Normal
+@>Wait: 10 frame(s)
+@>Erase Picture: 1
+@>Comment: ------------------------------------------------------
+@>Script: pbShowPicture(1,"Intro Cutscene/TMoM/Marisa's House.png",1,256,192,100,100,0,0)
+@>Wait: 10 frame(s)
+@>Move Picture: 1, @10, Center (256,192), (100%,100%), 255, Normal
+@>Text: \w[dark]\c[12]\se[]\l[4]\wtnp[6]When a certain Ordinary Magician learned of this, she managed to procure the 
+ :    : knowledge for it herself, and managed to create an autonomous doll in her likeness.\wtnp[40]
+@>Wait: 10 frame(s)
+@>Text: \w[dark]\c[12]\se[]\l[3]\wtnp[5]This allowed the magician to double her productivity in all areas, but things like these don't go unnoticed.\wtnp[40]
+@>Wait: 10 frame(s)
+@>Move Picture: 1, @10, Center (256,192), (100%,100%), 0, Normal
+@>Wait: 10 frame(s)
+@>Erase Picture: 1
+@>Comment: ------------------------------------------------------
+@>Script: pbShowPicture(1,"Intro Cutscene/TMoM/Human Village.png",1,256,192,100,100,0,0)
+@>Wait: 10 frame(s)
+@>Move Picture: 1, @10, Center (256,192), (100%,100%), 255, Normal
+@>Wait: 10 frame(s)
+@>Text: \w[dark]\c[12]\se[]\l[4]\wtnp[5]Thanks to a certain Tengu Reporter, word of the puppeteer's success went viral, 
+ :    : and people from the human village began flocking to her for puppets of their own.\wtnp[40]
+@>Wait: 10 frame(s)
+@>Text: \w[dark]\c[12]\se[]\l[5]\wtnp[6]These puppets were based off of the prominent Gensokyo inhabitants - the Shrine Maiden, 
+ :    : the Incident Solvers, those who started the incidents, and even the related and unrelated Third Parties.\wtnp[40]
+@>Wait: 10 frame(s)
+@>Move Picture: 1, @10, Center (256,192), (100%,100%), 0, Normal
+@>Wait: 10 frame(s)
+@>Erase Picture: 1
+@>Comment: ------------------------------------------------------
+@>Script: pbShowPicture(1,"Intro Cutscene/TMoM/Hakurei Shrine.png",1,256,192,100,100,0,0)
+@>Wait: 10 frame(s)
+@>Move Picture: 1, @10, Center (256,192), (100%,100%), 255, Normal
+@>Wait: 10 frame(s)
+@>Text: \w[dark]\c[12]\se[]\l[5]\wtnp[5]This caused the big names in Gensokyo to take notice, and even they too began to obtain 
+ :    : puppets for themselves, and engage in the rapidly growing style that were Puppet Battles.\wtnp[40]
+@>Wait: 10 frame(s)
+@>Text: \w[dark]\c[12]\se[]\l[4]\wtnp[5]Eventually, this became the new standard for resolving incidents within Gensokyo. 
+ :    : The Spell Card rule was changed to only be invoked in dire emergancies.\wtnp[40]
+@>Wait: 10 frame(s)
+@>Text: \w[dark]\c[12]\se[]\l[3]\wtnp[5]As such, the last incident to be resolved with Spell Cards properly in any sort of capacity was the Urban
+ :    : Legend Incident.\wtnp[40]
+@>Wait: 10 frame(s)
+@>Text: \w[dark]\c[12]\se[]\wtnp[2] After that, Puppets had total control of the scene.\wtnp[40]
+@>Wait: 10 frame(s)
+@>Text: \w[dark]\c[12]\se[]\l[5]\wtnp[5]Humans could now rely on themselves to solve incidents and not have to trouble the 
+ :    : Shrine Maiden, though this didn't stop the Shrine Maiden from occasionally stepping in to handle cases.\wtnp[40]
+@>Wait: 10 frame(s)
+@>Move Picture: 1, @10, Center (256,192), (100%,100%), 0, Normal
+@>Wait: 10 frame(s)
+@>Erase Picture: 1
+@>Comment: ------------------------------------------------------
+@>Script: pbShowPicture(1,"Intro Cutscene/TMoM/Bamboo Forest.png",1,256,192,100,100,0,0)
+@>Wait: 10 frame(s)
+@>Move Picture: 1, @10, Center (256,192), (100%,100%), 255, Normal
+@>Wait: 10 frame(s)
+@>Text: \w[dark]\c[12]\se[]\l[4]\wtnp[5]As the months drew onward, it became commonplace to see puppets wandering around 
+ :    : in the wild. They started to fill each and every corner of Gensokyo.\wtnp[40]
+@>Wait: 10 frame(s)
+@>Text: \w[dark]\c[12]\se[]\l[3]\wtnp[5]They blended in seemlessly with the native Human, Youkai, and everything else that existed within the mystical realm.\wtnp[40]
+@>Wait: 10 frame(s)
+@>Text: \w[dark]\c[12]\se[]\l[2]\wtnp[5]Life, as always, was good in the illusionary wonderland of Gensokyo.\wtnp[40]
+@>Wait: 10 frame(s)
+@>Move Picture: 1, @10, Center (256,192), (100%,100%), 0, Normal
+@>Wait: 10 frame(s)
+@>Erase Picture: 1
+@>Comment: ------------------------------------------------------
+@>Text: \w[dark]\c[12]\se[]\l[4]\wtnp[5]But like always, things do not remain perfect forever, and the fate of 
+ :    : Gensokyo now rests in the hands of those who command the Puppets.\wtnp[40]
+@>Script: pbShowPicture(1,"Intro Cutscene/TMoM/Human Village.png",1,256,192,100,100,0,0)
+@>Wait: 10 frame(s)
+@>Move Picture: 1, @10, Center (256,192), (100%,100%), 255, Normal
+@>Wait: 10 frame(s)
+@>Text: \w[dark]\c[12]\se[]\l[4]\wtnp[5]This tale is about a youth from the Human 
+ :    : Village, and their journey outside their familiar walls 
+ :    : to uncover the truth behind a mystery.\wtnp[40]
+@>Wait: 10 frame(s)
+@>Text: \w[dark]\c[12]\se[]\l[1]\wtnp[5]Thus beginning their legacy...\wtnp[40]
+@>Wait: 10 frame(s)
+@>Move Picture: 1, @10, Center (256,192), (100%,100%), 0, Normal
+@>Wait: 10 frame(s)
+@>Erase Picture: 1
+@>Comment: ------------------------------------------------------
+@>Label: Title drop
+@>Script: TMoMIntroScene.new
+@>Wait: 20 frame(s)
+@>Change Text Options: Bottom, Show
+@>Change Transparent Flag: Normal
+@>Control Self Switch: A =ON
+@>Transfer Player:[007: \PN's Room], (004,007), Right
+@>Change Screen Color Tone: (0,0,0,0), @6
+@>
+
+Page #3
+Conditions
 Switch 0107: New Game + is ON
 Self Switch A is ON
 
@@ -1912,6 +2065,136 @@ List of Event Commands:
 
 Page #2
 Conditions
+None
+
+Autonomous Movement
+Type: Fixed
+Speed: 3: Slow
+Freq: 3: Low
+Options Enabled
+Move Animation
+Trigger: Autorun
+
+List of Event Commands:
+@>Script: $player.seen_storage_creator = true
+@>Script: $player.has_running_shoes = true
+@>Script: $player.scenario_name = "The Festival of Curses"
+@>Script: $player.name = "Ayaka"
+@>Conditional Branch: Switch [0107: New Game +] == ON
+ @>Jump to Label: Start
+ @>
+: Branch End
+@>Fade Out BGM: 2 sec.
+@>Script: pbChangePlayer(0)
+@>Call Common Event: Starter Selection
+@>Change Text Options: Middle, Hide
+@>Script: $bag.add(:POTION,5)
+:       : $bag.add(:SUPERPOTION,2)
+:       : $bag.add(:REVIVE,1)
+:       : $bag.add(:PUPPETORB,7)
+:       : $bag.add(:GREATORB,3)
+:       : $bag.add(:ITEMFINDER)
+:       : $bag.add(:GOODROD)
+@>Comment: ------------------------------------------------------
+@>Label: Start
+@>Text: Skip the intro cinematic?
+@>Show Choices: Yes, No
+(When Cancel: Choice 2)
+: When [Yes]
+ @>Jump to Label: Title drop
+ @>
+: When [No]
+ @>
+: Branch End
+@>Wait: 10 frame(s)
+@>Comment: ------------------------------------------------------
+@>Play BGM: 'W-017. Seeds of the Incident', 100, 100
+@>Script: pbShowPicture(1,"Intro Cutscene/TFoC/Gensokyo.png",1,256,192,zoomX=100,zoomY=100,opacity=0,blendType=0)
+@>Wait: 10 frame(s)
+@>Change Text Options: Bottom, Show
+@>Move Picture: 1, @10, Center (256,192), (100%,100%), 255, Normal
+@>Wait: 10 frame(s)
+@>Text: \w[dark]\c[12]\se[]\l[4]Gensokyo.\wtnp[30]\se[] A paradise for all things phantasmal and out of the ordinary.\wtnp[30]\se[] 
+ :    : A land where the supernatural can exist alongside the natural.\wtnp[40]
+@>Wait: 10 frame(s)
+@>Move Picture: 1, @10, Center (256,192), (100%,100%), 0, Normal
+@>Wait: 10 frame(s)
+@>Erase Picture: 1
+@>Comment: ------------------------------------------------------
+@>Script: pbShowPicture(1,"Intro Cutscene/TFoC/Shrine of the Wind.png",1,256,192,zoomX=100,zoomY=100,opacity=0,blendType=0)
+@>Wait: 10 frame(s)
+@>Move Picture: 1, @10, Center (256,192), (100%,100%), 255, Normal
+@>Wait: 10 frame(s)
+@>Text: \w[dark]\c[12]\se[]\l[4]Mere months ago, the incident involving Gensokyo and the Outside World came to a conclusion before anything serious could occur.\wtnp[40]
+@>Wait: 10 frame(s)
+@>Text: \w[dark]\c[12]\se[]\l[3]Thanks to that, the Puppet Era continued without issue, and continued to bring forth changes to the wonderful realm.\wtnp[40]
+@>Wait: 10 frame(s)
+@>Text: \w[dark]\c[12]\se[]\l[3]While things have changed with the existence of the Puppets, several things remain the same.\wtnp[40]
+@>Wait: 10 frame(s)
+@>Move Picture: 1, @10, Center (256,192), (100%,100%), 0, Normal
+@>Wait: 10 frame(s)
+@>Erase Picture: 1
+@>Comment: ------------------------------------------------------
+@>Script: pbShowPicture(1,"Intro Cutscene/TFoC/Festival Grounds.png",1,256,192,zoomX=100,zoomY=100,opacity=0,blendType=0)
+@>Wait: 10 frame(s)
+@>Move Picture: 1, @10, Center (256,192), (100%,100%), 255, Normal
+@>Wait: 10 frame(s)
+@>Text: \w[dark]\c[12]\se[]\l[4]Once more, the time has come for the Harvest Season, where inhabitants of the magical realm 
+ :    : gather in their communities to celebrate the bounty that the earth has given them.\wtnp[40]
+@>Wait: 10 frame(s)
+@>Text: \w[dark]\c[12]\se[]\l[4]As tradition is embraced, new ones form alongside the existence of the Puppets, to commemorate
+ :    : their existence into this realm that accepts all.\wtnp[40]
+@>Wait: 10 frame(s)
+@>Move Picture: 1, @10, Center (256,192), (100%,100%), 0, Normal
+@>Wait: 10 frame(s)
+@>Erase Picture: 1
+@>Text: \w[dark]\c[12]\se[]\l[3]But, as is usual with Gensokyo, something is always lurking in the shadows to disrupt even the most simple of peace.\wtnp[40]
+@>Comment: ------------------------------------------------------
+@>Wait: 10 frame(s)
+@>Script: pbShowPicture(1,"Intro Cutscene/TFoC/Forest.png",1,256,192,zoomX=100,zoomY=100,opacity=0,blendType=0)
+@>Wait: 10 frame(s)
+@>Move Picture: 1, @10, Center (256,192), (100%,100%), 255, Normal
+@>Wait: 10 frame(s)
+@>Text: \w[dark]\c[12]\se[]\l[3]Observing the gathering of humans is a scorned individual, tormented by the sight of humans using Puppets as they wish.\wtnp[40]
+@>Wait: 10 frame(s)
+@>Text: \w[dark]\c[12]\se[]\l[3]"They've had their way for too long... Soon, I will free them from their captivity, and show them who really wields power."\wtnp[40]
+@>Wait: 10 frame(s)
+@>Text: \w[dark]\c[12]\se[]\l[3]The individual says to themselves, as they plan to break the momentary peace once more.\wtnp[40]
+@>Wait: 10 frame(s)
+@>Move Picture: 1, @10, Center (256,192), (100%,100%), 0, Normal
+@>Wait: 10 frame(s)
+@>Erase Picture: 1
+@>Comment: ------------------------------------------------------
+@>Wait: 10 frame(s)
+@>Script: pbShowPicture(1,"Intro Cutscene/TFoC/Human Village.png",1,256,192,zoomX=100,zoomY=100,opacity=0,blendType=0)
+@>Wait: 10 frame(s)
+@>Move Picture: 1, @10, Center (256,192), (100%,100%), 255, Normal
+@>Wait: 10 frame(s)
+@>Text: \w[dark]\c[12]\se[]\l[2]And so, our story begins here, in the Human Village.\wtnp[40]
+@>Wait: 10 frame(s)
+@>Text: \w[dark]\c[12]\se[]\l[3]Once more, we follow the adventures of \pn, who solved the mystery behind the mansion of 
+ :    : mysterious music...\wtnp[40]
+@>Wait: 10 frame(s)
+@>Text: \w[dark]\c[12]\se[]\l[2]...On the dawn of one particularly eventful Harvest Festival...\wtnp[40]
+@>Wait: 10 frame(s)
+@>Move Picture: 1, @10, Center (256,192), (100%,100%), 0, Normal
+@>Wait: 10 frame(s)
+@>Erase Picture: 1
+@>Comment: ------------------------------------------------------
+@>Label: Title drop
+@>Script: TFoCIntroScene1.new
+:       : pbWait(1)
+:       : TFoCIntroScene2.new
+@>Wait: 20 frame(s)
+@>Change Text Options: Bottom, Show
+@>Change Transparent Flag: Normal
+@>Control Self Switch: A =ON
+@>Transfer Player:[037: Human Village], (021,063), Down
+@>Change Screen Color Tone: (0,0,0,0), @6
+@>
+
+Page #3
+Conditions
 Switch 0107: New Game + is ON
 Self Switch A is ON
 
@@ -2231,15 +2514,173 @@ List of Event Commands:
 @>Change Transparent Flag: Normal
 @>Control Self Switch: A =ON
 @>Script: $game_variable[122] = rand(3)+1 # Stage 6 Partner
-:       : pbSet(126, "Reimu") if pbGet(122) = 1
-:       : pbSet(126, "Marisa") if pbGet(122) = 2
-:       : pbSet(126, "Sanae") if pbGet(122) = 3
-:       : pbSet(126, "Reisen") if pbGet(122) = 4
+:       : case pbGet(122)
+:       : when 1 then pbSet(126, "Reimu")
+:       : when 2 then pbSet(126, "Marisa")
+:       : when 3 then pbSet(126, "Sanae")
+:       : when 4 then pbSet(126, "Reisen")
+:       : end
 @>Transfer Player:[116: Exhibition Arena], (011,013), Right
 @>Change Screen Color Tone: (0,0,0,0), @6
 @>
 
 Page #2
+Conditions
+None
+
+Autonomous Movement
+Type: Fixed
+Speed: 3: Slow
+Freq: 3: Low
+Options Enabled
+Move Animation
+Trigger: Autorun
+
+List of Event Commands:
+@>Script: $player.seen_storage_creator = true
+@>Script: $player.has_running_shoes = true
+@>Script: $player.scenario_name = "The Kingdom of Lunacy"
+@>Script: $player.name = "Ayaka"
+@>Conditional Branch: Switch [0107: New Game +] == ON
+ @>Jump to Label: Start
+ @>
+: Branch End
+@>Fade Out BGM: 2 sec.
+@>Script: pbChangePlayer(0)
+@>Call Common Event: Starter Selection
+@>Change Text Options: Middle, Hide
+@>Script: $bag.add(:POTION,10)
+:       : $bag.add(:SUPERPOTION,5)
+:       : $bag.add(:HYPERPOTION,3)
+:       : $bag.add(:REVIVE,2)
+:       : $bag.add(:PUPPETORB,10)
+:       : $bag.add(:GREATORB,5)
+:       : $bag.add(:ULTRAORB,3)
+:       : $bag.add(:ITEMFINDER)
+:       : $bag.add(:GOODROD)
+:       : $bag.add(:LUCKYEGG)
+:       : $bag.add(:EXPSHARE)
+@>Comment: ------------------------------------------------------
+@>Label: Start
+@>Text: Skip the intro cinematic?
+@>Show Choices: Yes, No
+(When Cancel: Choice 2)
+: When [Yes]
+ @>Jump to Label: Title drop
+ @>
+: When [No]
+ @>
+: Branch End
+@>Wait: 10 frame(s)
+@>Comment: ------------------------------------------------------
+@>Play BGM: 'W-017. Seeds of the Incident', 100, 100
+@>Script: pbShowPicture(1,"Intro Cutscene/TKoL/Gensokyo.png",1,256,192,100,100,0,0)
+@>Wait: 10 frame(s)
+@>Change Text Options: Bottom, Show
+@>Move Picture: 1, @10, Center (256,192), (100%,100%), 255, Normal
+@>Wait: 10 frame(s)
+@>Text: \w[dark]\c[12]\se[]\l[3]Gensokyo.\wtnp[30]\se[] A wonderous paradise for the phantasmal.\wtnp[30]\se[] 
+ :    : The first and last bastion for all things unbelievable.\wtnp[40]
+@>Wait: 10 frame(s)
+@>Text: \w[dark]\c[12]\se[]\l[4]Peaceful isn't the word to describe this realm.\wtnp[30]\se[] Lively.\wtnp[30]\se[] 
+ :    : Radiant.\wtnp[30]\se[] Chaotic.\wtnp[30]\se[] There is seldom a dull moment in this land.\wtnp[30]\se[]
+ :    : An impure, but beautiful place.\wtnp[40]
+@>Wait: 10 frame(s)
+@>Move Picture: 1, @10, Center (256,192), (100%,100%), 0, Normal
+@>Wait: 10 frame(s)
+@>Erase Picture: 1
+@>Comment: ------------------------------------------------------
+@>Script: pbShowPicture(1,"Intro Cutscene/TKoL/Festival Grounds.png",1,256,192,100,100,0,0)
+@>Wait: 10 frame(s)
+@>Move Picture: 1, @10, Center (256,192), (100%,100%), 255, Normal
+@>Wait: 10 frame(s)
+@>Text: \w[dark]\c[12]\se[]\l[4]It's been over a year now since the Incident where nefarious individuals invaded 
+ :    : from the outside world, and many months since the Village Harvest Festival Incident.\wtnp[40]
+@>Wait: 10 frame(s)
+@>Text: \w[dark]\c[12]\se[]\l[5]All the incidents revolving around the Puppets, autonomous dolls designed in the likeness of individuals.\wtnp[30]\se[] 
+ :    : They exist at the root of the prosperities and hardships that have graced Gensokyo. \wtnp[40]
+@>Wait: 10 frame(s)
+@>Move Picture: 1, @10, Center (256,192), (100%,100%), 0, Normal
+@>Wait: 10 frame(s)
+@>Erase Picture: 1
+@>Text: \w[dark]\c[12]\se[]\l[3]But strange things have been afoot in this land of already strange occurances.\wtnp[40]
+@>Comment: ------------------------------------------------------
+@>Script: pbShowPicture(1,"Intro Cutscene/TKoL/Forest.png",1,256,192,100,100,0,0)
+@>Wait: 10 frame(s)
+@>Move Picture: 1, @10, Center (256,192), (100%,100%), 255, Normal
+@>Wait: 10 frame(s)
+@>Text: \w[dark]\c[12]\se[]\l[3]Recently, the Puppets have begun vanishing from Gensokyo, with nobody able to determine where they've gone.\wtnp[40]
+@>Wait: 10 frame(s)
+@>Text: \w[dark]\c[12]\se[]\l[3]With the barrier fully repaired, they shouldn't be spilling through to the Outside World as often anymore.\wtnp[40]
+@>Wait: 10 frame(s)
+@>Move Picture: 1, @10, Center (256,192), (100%,100%), 0, Normal
+@>Wait: 10 frame(s)
+@>Erase Picture: 1
+@>Comment: ------------------------------------------------------
+@>Wait: 10 frame(s)
+@>Script: pbShowPicture(1,"Intro Cutscene/TKoL/Youkai Mountain.png",1,256,192,100,100,0,0)
+@>Wait: 10 frame(s)
+@>Move Picture: 1, @10, Center (256,192), (100%,100%), 255, Normal
+@>Wait: 10 frame(s)
+@>Text: \w[dark]\c[12]\se[]\l[4]Meanwhile, atop Youkai Mountain, strange mechanical constructs have been spotted roaming the lands.\wtnp[30]\se[] 
+ :    : Could they be related?\wtnp[30]\se[]  Nobody knows.\wtnp[40]
+@>Wait: 10 frame(s)
+@>Text: \w[dark]\c[12]\se[]\l[4]Nobody... except the inhabitants of Eientei, which have been keeping close watch on the Mountain for weeks.\wtnp[30]\se[]
+ :    : And the conclusion they have come to is most dire.\wtnp[40]
+@>Wait: 10 frame(s)
+@>Move Picture: 1, @10, Center (256,192), (100%,100%), 0, Normal
+@>Wait: 10 frame(s)
+@>Erase Picture: 1
+@>Comment: ------------------------------------------------------
+@>Wait: 10 frame(s)
+@>Script: pbShowPicture(1,"Intro Cutscene/TKoL/Lunar Capital.png",1,256,192,100,100,0,0)
+@>Wait: 10 frame(s)
+@>Move Picture: 1, @10, Center (256,192), (100%,100%), 255, Normal
+@>Wait: 10 frame(s)
+@>Text: \w[dark]\c[12]\se[]\l[4]High above the realm, an incident which should have unfolded years ago is now reaching a new boiling point.\wtnp[30]\se[]
+ :    : And once again, the Puppets are at the center of it all.\wtnp[40]
+@>Wait: 10 frame(s)
+@>Text: \w[dark]\c[12]\se[]\l[3]And as usual, the fate of Gensokyo, and this time even more, resides in the 
+ :    : hands of those who tame these creatures.\wtnp[40]
+@>Wait: 10 frame(s)
+@>Move Picture: 1, @10, Center (256,192), (100%,100%), 0, Normal
+@>Wait: 10 frame(s)
+@>Erase Picture: 1
+@>Comment: ------------------------------------------------------
+@>Wait: 10 frame(s)
+@>Script: pbShowPicture(1,"Intro Cutscene/TKoL/Human Village.png",1,256,192,100,100,0,0)
+@>Wait: 10 frame(s)
+@>Move Picture: 1, @10, Center (256,192), (100%,100%), 255, Normal
+@>Wait: 10 frame(s)
+@>Text: \w[dark]\c[12]\se[]\l[4]Namely, the Legend of the Human Village, \pn.\wtnp[30]\se[]
+ :    : She who has conquered the Mansion in the mists.\wtnp[30]\se[]
+ :    : She who tamed the doll dabbling in Curses.\wtnp[40]
+@>Wait: 10 frame(s)
+@>Text: \w[dark]\c[12]\se[]\l[2]And now she who will bring purity back to the currently impure Kingdom of Lunacy.\wtnp[40]
+@>Wait: 10 frame(s)
+@>Text: \w[dark]\c[12]\se[]\l[1]And so, another day dawns in Gensokyo...\wtnp[40]
+@>Wait: 10 frame(s)
+@>Move Picture: 1, @10, Center (256,192), (100%,100%), 0, Normal
+@>Wait: 10 frame(s)
+@>Erase Picture: 1
+@>Label: Title drop
+@>Script: TKoLIntroScene1.new
+@>Wait: 20 frame(s)
+@>Change Text Options: Bottom, Show
+@>Change Transparent Flag: Normal
+@>Control Self Switch: A =ON
+@>Script: pbSet(122, rand(3) + 1) # Stage 6 Partner
+:       : case pbGet(122)
+:       : when 1 then pbSet(126, "Reimu")
+:       : when 2 then pbSet(126, "Marisa")
+:       : when 3 then pbSet(126, "Sanae")
+:       : when 4 then pbSet(126, "Reisen")
+:       : end
+@>Transfer Player:[116: Exhibition Arena], (011,013), Right
+@>Change Screen Color Tone: (0,0,0,0), @6
+@>
+
+Page #3
 Conditions
 Switch 0107: New Game + is ON
 Self Switch A is ON
@@ -16952,7 +17393,7 @@ List of Event Commands:
 @>Conditional Branch: Variable [0121: TKoL Plot Variable] >= 99
  @>Text: \sign[signskin]\l[5]<ac>The Kingdom of Lunacy</ac>\nStatus: Cleared
   :    : \nWent Off Script: \v[1]
-  :    : \nReenacted the Heist: \v[2]
+  :    : \nForward and Back: \v[2]
   :    : \n-----: \v[3]
  @>
 : Else
@@ -16965,7 +17406,7 @@ List of Event Commands:
 #------------------------------------------------------------------------------
 Event ID: 006
 Event Name: EV006
-(X,Y): (019,013)
+(X,Y): (019,028)
 
 Page #1
 Conditions
@@ -17103,7 +17544,10 @@ List of Event Commands:
  @>Script: $player.scenario_name = "The Mansion of Mystery"
  @>Change Transparent Flag: Transparency
  @>Transfer Player:[003: The Mansion of Mystery], (001,001)
- @>Control Variables: [0099: NG+ Loop] = 1
+ @>Conditional Branch: Switch [0116: TMoM Cleared] == OFF
+  @>Control Variables: [0099: NG+ Loop] += 1
+  @>
+ : Branch End
  @>Control Variables: [0107..0110] = 0
  @>Control Switches: [0109..0112] = OFF
  @>
@@ -17144,6 +17588,10 @@ List of Event Commands:
  @>Move Picture: 1, @20, Upper Left (0,0), (100%,100%), 0, Normal
  @>Wait: 20 frame(s)
  @>Transfer Player:[004: The Festival of Curses], (001,001)
+ @>Conditional Branch: Switch [0139: TFoC Cleared] == ON
+  @>Control Variables: [0099: NG+ Loop] += 1
+  @>
+ : Branch End
  @>Control Variables: [0113..0116] = 0
  @>Control Switches: [0118..0125] = OFF
  @>
@@ -17284,6 +17732,75 @@ List of Event Commands:
 @>Wait: 8 frame(s)
 @>Transfer Player:[086: Bamboo Forest of the Lost], (011,057), No Fade
 @>Change Screen Color Tone: (0,0,0,0), @6
+@>
+
+#------------------------------------------------------------------------------
+Event ID: 012
+Event Name: EV012
+(X,Y): (019,029)
+
+Page #1
+Conditions
+Variable 0099: NG+ Loop is 3 or above
+
+Graphic: Object_RebornObelisk
+
+Autonomous Movement
+Type: Fixed
+Speed: 3: Slow
+Freq: 3: Low
+Options Enabled
+Move Animation
+Stop Animation
+Direction Fix
+Trigger: Action Button
+
+List of Event Commands:
+@>
+
+#------------------------------------------------------------------------------
+Event ID: 013
+Event Name: EV013
+(X,Y): (019,011)
+
+Page #1
+Conditions
+None
+
+Autonomous Movement
+Type: Fixed
+Speed: 3: Slow
+Freq: 3: Low
+Options Enabled
+Move Animation
+Trigger: Player Touch
+
+List of Event Commands:
+@>Show Picture: 1, 'TFoC', Upper Left (0,0), (100%,100%), 0, Normal
+@>Move Picture: 1, @20, Upper Left (0,0), (100%,100%), 255, Normal
+@>Wait: 60 frame(s)
+@>Change Text Options: Bottom, Show
+@>Text: The Kingdom of Lunacy.\wt[20]\nIs this the adventure you'd like to play?
+@>Show Choices: Yes, No
+(When Cancel: Choice 2)
+: When [Yes]
+ @>Control Variables: [0105: Game Selected] = 2
+ @>Move Picture: 1, @20, Upper Left (0,0), (100%,100%), 0, Normal
+ @>Wait: 20 frame(s)
+ @>Transfer Player:[005: The Kingdom of Lunacy], (001,001)
+ @>Conditional Branch: Switch [0147: TKoL Cleared] == ON
+  @>Control Variables: [0099: NG+ Loop] += 1
+  @>
+ : Branch End
+ @>Control Variables: [0121..0128] = 0
+ @>Control Switches: [0141..0142] = OFF
+ @>
+: When [No]
+ @>Move Picture: 1, @20, Upper Left (0,0), (100%,100%), 0, Normal
+ @>Wait: 20 frame(s)
+ @>Jump to Label: Start
+ @>
+: Branch End
 @>
 
 #------------------------------------------------------------------------------
@@ -61712,41 +62229,6 @@ List of Event Commands:
 @>
 
 #------------------------------------------------------------------------------
-Event ID: 047
-Event Name: EV047
-(X,Y): (035,025)
-
-Page #1
-Conditions
-None
-
-Graphic: Object ball
-
-Autonomous Movement
-Type: Fixed
-Speed: 3: Slow
-Freq: 3: Low
-Options Enabled
-Move Animation
-Trigger: Action Button
-
-List of Event Commands:
-@>Conditional Branch: Script: !pbCanDoubleBattle?
- @>Script: setBattleRule("1v2")
- @>
-: Else
- @>Script: setBattleRule("2v2")
- @>
-: Branch End
-@>Conditional Branch: Script: TrainerBattle.start(:REISEN, "Reisen U. Inaba", 10+(pbGet(99) * 10), :EIRIN, "Eirin Yagokoro", 10+(pbGet(99) * 10))
- @>
-: Else
- @>Exit Event Processing
- @>
-: Branch End
-@>
-
-#------------------------------------------------------------------------------
 Event ID: 048
 Event Name: EV048
 (X,Y): (041,016)
@@ -62042,7 +62524,6 @@ List of Event Commands:
 @>Change Screen Color Tone: (0,0,0,0), @6
 @>Wait: 20 frame(s)
 @>Text: Your Puppets have been healed to perfect health.
-@>Text: Your Puppets have been healed to perfect health.
 @>Text: We hope you excel!
 @>Control Switches: [0001: Starting over] = OFF
 @>
@@ -62335,7 +62816,7 @@ Trigger: Action Button
 List of Event Commands:
 @>Text: Hey \pn! Don't see you here often!
 @>Text: What can I get for you today?
-@>Conditional Branch: Variable [0121: TKoL Plot Variable] >= 99
+@>Conditional Branch: Variable [0121: TKoL Plot Variable] >= 20
  @>Script: pbPokemonMart([
  :       : :BEER, 
  :       : :SAKE, 
@@ -62715,7 +63196,7 @@ Trigger: Action Button
 List of Event Commands:
 @>Text: This place integrated Puppets into its work staff a while back,
  :    : and since then this place has been even more active.
-@>Text: THe Puppets are all the owner's personal Puppets, so he makes
+@>Text: The Puppets are all the owner's personal Puppets, so he makes
  :    : sure they're well taken care of after their shift.
 @>Set Move Route: This event
  :              : $>Turn Down
@@ -71373,6 +71854,8 @@ Page #1
 Conditions
 None
 
+Graphic: Person_RabbitOch
+
 Autonomous Movement
 Type: Fixed
 Speed: 3: Slow
@@ -71382,17 +71865,85 @@ Move Animation
 Trigger: Action Button
 
 List of Event Commands:
+@>Script: pbSetPokemonCenter
+@>Text: Hello, and welcome to the Capital Puppet Center.
+@>Text: We restore your tired and worn out Puppets back to 
+ :    : full health.
+@>Text: Would you like to rest your Puppets?
+@>Show Choices: Yes, No
+(When Cancel: Choice 2)
+: When [Yes]
+ @>Text: OK, I'll take your Puppets for a few seconds.
+ @>Recover All: Entire Party
+ @>Change Screen Color Tone: (-255,-255,-255,0), @6
+ @>Wait: 8 frame(s)
+ @>Play ME: 'Pkmn healing', 100, 100
+ @>Wait: 80 frame(s)
+ @>Change Screen Color Tone: (0,0,0,0), @6
+ @>Wait: 20 frame(s)
+ @>Control Variables: [0006: Poké Center healing ball count] = 0
+ @>Conditional Branch: Script: pbPokerus?
+  @>Text: Your Puppets seem to be infected with a type of 
+   :    : Outside World virus called PokeRus.
+  @>Text: Little is known about the PokeRus except that they 
+   :    : are microscopic life-forms that attach to Puppets.
+  @>Text: While infected, Puppets are said to grow 
+   :    : exceptionally well.
+  @>Control Switches: [0002: Seen Pokérus in Poké Center] = ON
+  @>
+ : Else
+  @>Text: Thank you for waiting.
+  @>Text: We've restored your Puppets to full health.
+  @>Text: We hope to see you again!
+  @>
+ : Branch End
+ @>
+: When [No]
+ @>Text: We hope to see you again!
+ @>
+: Branch End
+@>
+
+Page #2
+Conditions
+Switch 0001: Starting over is ON
+
+Graphic: Person_RabbitOch
+
+Autonomous Movement
+Type: Fixed
+Speed: 3: Slow
+Freq: 3: Low
+Options Enabled
+Move Animation
+Trigger: Autorun
+
+List of Event Commands:
+@>Text: \rFirst, you should restore your Puppets to full 
+ :    : health.
+@>Recover All: Entire Party
+@>Change Screen Color Tone: (-255,-255,-255,0), @6
+@>Wait: 8 frame(s)
+@>Play ME: 'Pkmn healing', 100, 100
+@>Wait: 60 frame(s)
+@>Change Screen Color Tone: (0,0,0,0), @6
+@>Wait: 20 frame(s)
+@>Text: Your Puppets have been healed to perfect health.
+@>Text: We hope you excel!
+@>Control Switches: [0001: Starting over] = OFF
 @>
 
 #------------------------------------------------------------------------------
 Event ID: 018
-Event Name: Shopkeeper
+Event Name: Merchant
 (X,Y): (012,019)
 
 Page #1
 Conditions
 None
 
+Graphic: TPDP_NPC 39
+
 Autonomous Movement
 Type: Fixed
 Speed: 3: Slow
@@ -71402,6 +71953,69 @@ Move Animation
 Trigger: Action Button
 
 List of Event Commands:
+@>Text: Welcome to the Lunar Capital Puppet Center. We have a
+ :    : variety of goods to select from.
+@>Conditional Branch: Variable [0121: TKoL Plot Variable] < 20
+ @>Script: pbPokemonMart([
+ :       : :PUPPETORB,:GREATORB,:ULTRAORB,:MOONBALL
+ :       : :POTION,:SUPERPOTION,:HYPERPOTION,:SAKE,:BEER,:ONIKILLERSAKE
+ :       : :REVIVE,:FULLHEAL,
+ :       : :REPEL,:SUPERREPEL,
+ :       : :POWERSHARD,:DEFENSESHARD,:TECHSHARD,
+ :       : :SWIFTSHARD,:SUPPORTSHARD,:SOLARSHARD,
+ :       : :CHROMESHARD
+ :       : ])
+ @>
+: Else
+ @>Script: setPrice(:RARECANDY,9800)
+ @>Script: setPrice(:MAXREVIVE,9800)
+ @>Script: pbPokemonMart([
+ :       : :PUPPETORB,:GREATORB,:ULTRAORB,:MOONBALL
+ :       : :POTION,:SUPERPOTION,:HYPERPOTION,:SAKE,:BEER,:ONIKILLERSAKE,
+ :       : :REVIVE,:MAXREVIVE,:GOLDENPEACHSAKE
+ :       : :FULLHEAL,:FULLRESTORE,
+ :       : :ETHER,:MAXETHER,:ELIXIR,:MAXELIXIR,
+ :       : :REPEL,:SUPERREPEL,:MAXREPEL,
+ :       : :PPUP,:RARECANDY,
+ :       : :POWERSHARD,:DEFENSESHARD,:TECHSHARD,
+ :       : :SWIFTSHARD,:SUPPORTSHARD,:SOLARSHARD,
+ :       : :CHROMESHARD
+ :       : ])
+ @>
+: Branch End
+@>
+
+Page #2
+Conditions
+Switch 0107: New Game + is ON
+
+Graphic: TPDP_NPC 39
+
+Autonomous Movement
+Type: Fixed
+Speed: 3: Slow
+Freq: 3: Low
+Options Enabled
+Move Animation
+Trigger: Action Button
+
+List of Event Commands:
+@>Text: Welcome to the Human Village Rest Stop. We have a
+ :    : variety of goods to select from.
+@>Script: setPrice(:RARECANDY,9800)
+@>Script: setPrice(:MAXREVIVE,9800)
+@>Script: pbPokemonMart([
+:       : :PUPPETORB,:GREATORB,:ULTRAORB,
+:       : :POTION,:SUPERPOTION,:HYPERPOTION,
+:       : :REVIVE,:MAXREVIVE,
+:       : :FULLHEAL,:FULLRESTORE,
+:       : :ETHER,:MAXETHER,:ELIXIR,:MAXELIXIR,
+:       : :REPEL,:SUPERREPEL,:MAXREPEL,
+:       : :PPUP,:RARECANDY,
+:       : :POWERSHARD,:DEFENSESHARD,:TECHSHARD,
+:       : :SWIFTSHARD,:SUPPORTSHARD,:SOLARSHARD,
+:       : :CHROMESHARD
+:       : ])
 @>
 
 #------------------------------------------------------------------------------
@@ -72737,6 +73351,46 @@ List of Event Commands:
 @>Script: setTempSwitchOn("A")
 @>
 
+Page #5
+Conditions
+Variable 0121: TKoL Plot Variable is 23 or above
+
+Graphic: Fortress Barrier
+
+Autonomous Movement
+Type: Custom
+Custom Move Route:
+(Repeat Action)
+$>Wait: 3 frame(s)
+$>Graphic: "Fortress Barrier', 0, 2, 1
+$>Wait: 3 frame(s)
+$>Graphic: "Fortress Barrier', 0, 2, 2
+$>Wait: 3 frame(s)
+$>Graphic: "Fortress Barrier', 0, 2, 3
+$>Wait: 3 frame(s)
+$>Graphic: "Fortress Barrier', 0, 2, 2
+$>Wait: 3 frame(s)
+$>Graphic: "Fortress Barrier', 0, 2, 1
+$>Wait: 3 frame(s)
+$>Graphic: "Fortress Barrier', 0, 2, 0
+
+Speed: 3: Slow
+Freq: 6: Highest
+Options Enabled
+Move Animation
+Trigger: Player Touch
+
+List of Event Commands:
+@>Set Move Route: Player
+ :              : $>SE: 'Mining ping', 80, 150
+ :              : $>Direction Fix ON
+ :              : $>Change Speed: 6
+ :              : $>1 Step Backward
+ :              : $>Direction Fix OFF
+@>Text: \w[dark]You aren't supposed to be here, you know. I don't know how you
+ :    : got back here, but do tell me! I'd love to know how you did so!
+@>
+
 #------------------------------------------------------------------------------
 Event ID: 004
 Event Name: EV004
@@ -72854,6 +73508,21 @@ List of Event Commands:
 @>Text: Placeholder
 @>
 
+Page #3
+Conditions
+Variable 0121: TKoL Plot Variable is 22 or above
+
+Autonomous Movement
+Type: Fixed
+Speed: 3: Slow
+Freq: 3: Low
+Options Enabled
+Move Animation
+Trigger: Action Button
+
+List of Event Commands:
+@>
+
 #------------------------------------------------------------------------------
 Event ID: 006
 Event Name: Hell Fairy Trainer
@@ -72900,6 +73569,21 @@ Trigger: Action Button
 
 List of Event Commands:
 @>Text: Placeholder
+@>
+
+Page #3
+Conditions
+Variable 0121: TKoL Plot Variable is 22 or above
+
+Autonomous Movement
+Type: Fixed
+Speed: 3: Slow
+Freq: 3: Low
+Options Enabled
+Move Animation
+Trigger: Action Button
+
+List of Event Commands:
 @>
 
 #------------------------------------------------------------------------------
@@ -73046,7 +73730,28 @@ List of Event Commands:
 @>Play SE: 'Exit Door', 80, 100
 @>Change Screen Color Tone: (-255,-255,-255,0), @6
 @>Wait: 8 frame(s)
-@>Transfer Player:[124: Infinite Hallway], (011,018), No Fade
+@>Transfer Player:[124: Infinity Veil], (011,018), No Fade
+@>Change Screen Color Tone: (0,0,0,0), @6
+@>
+
+Page #2
+Conditions
+None
+
+Autonomous Movement
+Type: Fixed
+Speed: 3: Slow
+Freq: 3: Low
+Options Enabled
+Move Animation
+Trigger: Action Button
+
+List of Event Commands:
+@>Play SE: 'Exit Door', 80, 100
+@>Change Screen Color Tone: (-255,-255,-255,0), @6
+@>Wait: 8 frame(s)
+@>Control Variables: [0121: TKoL Plot Variable] = 23
+@>Transfer Player:[099: Lunar Palace - Main Hall], (021,008), No Fade
 @>Change Screen Color Tone: (0,0,0,0), @6
 @>
 
@@ -73464,8 +74169,8 @@ List of Event Commands:
 @>Screen Flash: (255,255,255,255), @10
 @>Control Switches: [0142: Junko Descends] = ON
 @>Play SE: 'Mining collapse', 80, 50
-@>Script: $game_map.screen.start_shake(6, 2, 120)
-:       : pbTrainerIntro(:JUNKO)
+@>Screen Shake: 8, 5, @120
+@>Script: pbTrainerIntro(:JUNKO)
 @>Control Switches: [0104: Transition Handler] = ON
 @>Control Variables: [0103: Vs. Transition ID] = 46
 @>Control Variables: [0104: Vs. Transition - Pkmn] = 6
@@ -73499,7 +74204,7 @@ List of Event Commands:
  @>Screen Flash: (255,255,255,255), @10
  @>Control Variables: [0121: TKoL Plot Variable] = 18
  @>Play SE: 'Mining collapse', 80, 50
- @>Script: $game_map.screen.start_shake(1, 1, 1)
+ @>Screen Shake: 1, 1, @1
  @>Text: \xn[\pn]\b(For someone who claims to have given up, she sure
   :    : packed a brutal punch...)
  @>Text: \xn[Junko]Truly, against the power to overturn fate, my
@@ -73588,7 +74293,7 @@ List of Event Commands:
   :              : $>Move Up
   :              : $>Move Up
  @>Show Animation: Player, [Exclaim bubble]
- @>Script: pbCameraReset
+ @>Scroll Map: Down, 4, 5
  @>Text: \xn[\pn]Hey, wait!
  @>Set Move Route: Player
   :              : $>Move Up
@@ -75240,6 +75945,21 @@ List of Event Commands:
 @>Text: Placeholder
 @>
 
+Page #3
+Conditions
+Variable 0121: TKoL Plot Variable is 22 or above
+
+Autonomous Movement
+Type: Fixed
+Speed: 3: Slow
+Freq: 3: Low
+Options Enabled
+Move Animation
+Trigger: Action Button
+
+List of Event Commands:
+@>
+
 #------------------------------------------------------------------------------
 Event ID: 029
 Event Name: Hell Fairy Trainer
@@ -75288,6 +76008,21 @@ List of Event Commands:
 @>Text: Placeholder
 @>
 
+Page #3
+Conditions
+Variable 0121: TKoL Plot Variable is 22 or above
+
+Autonomous Movement
+Type: Fixed
+Speed: 3: Slow
+Freq: 3: Low
+Options Enabled
+Move Animation
+Trigger: Action Button
+
+List of Event Commands:
+@>
+
 #------------------------------------------------------------------------------
 Event ID: 030
 Event Name: Hell Fairy Trainer
@@ -75334,6 +76069,21 @@ Trigger: Action Button
 
 List of Event Commands:
 @>Text: Placeholder
+@>
+
+Page #3
+Conditions
+Variable 0121: TKoL Plot Variable is 22 or above
+
+Autonomous Movement
+Type: Fixed
+Speed: 3: Slow
+Freq: 3: Low
+Options Enabled
+Move Animation
+Trigger: Action Button
+
+List of Event Commands:
 @>
 
 #------------------------------------------------------------------------------
@@ -75458,6 +76208,21 @@ List of Event Commands:
 @>Change Screen Color Tone: (0,0,0,0), @6
 @>
 
+Page #3
+Conditions
+Variable 0121: TKoL Plot Variable is 23 or above
+
+Autonomous Movement
+Type: Fixed
+Speed: 3: Slow
+Freq: 3: Low
+Options Enabled
+Move Animation
+Trigger: Action Button
+
+List of Event Commands:
+@>
+
 #------------------------------------------------------------------------------
 
 #==============================================================================
@@ -75465,6 +76230,7 @@ Map ID: 098
 Map Name: Lunar Palace - Outside
 Tileset: 042: The Moon
 Width: 90, Height: 60
+Auto-Change BGM: W-034. Frozen Capital of Eternity
 
 #------------------------------------------------------------------------------
 Event ID: 001
@@ -75594,15 +76360,3223 @@ List of Event Commands:
 
 #==============================================================================
 Map ID: 099
-Map Name: Lunar Palace - Rooms
+Map Name: Lunar Palace - Main Hall
 Tileset: 048: Lunar Capital Palace
-Width: 20, Height: 15
+Width: 44, Height: 40
+Auto-Change BGM: W-034. Frozen Capital of Eternity
+
+#------------------------------------------------------------------------------
+Event ID: 001
+Event Name: EV001
+(X,Y): (003,020)
+
+Page #1
+Conditions
+None
+
+Graphic: TPDP_NPC 54
+
+Autonomous Movement
+Type: Fixed
+Speed: 3: Slow
+Freq: 3: Low
+Options Enabled
+Move Animation
+Trigger: Action Button
+
+List of Event Commands:
+@>Text: Sorry, civilians aren't allowed down this corridor.
+@>
+
+#------------------------------------------------------------------------------
+Event ID: 002
+Event Name: EV002
+(X,Y): (003,021)
+
+Page #1
+Conditions
+None
+
+Graphic: TPDP_NPC 55
+
+Autonomous Movement
+Type: Fixed
+Speed: 3: Slow
+Freq: 3: Low
+Options Enabled
+Move Animation
+Trigger: Action Button
+
+List of Event Commands:
+@>Text: Sorry, civilians aren't allowed down this corridor.
+@>
+
+#------------------------------------------------------------------------------
+Event ID: 003
+Event Name: EV003
+(X,Y): (021,030)
+
+Page #1
+Conditions
+None
+
+Graphic: TPDP_NPC 54
+
+Autonomous Movement
+Type: Fixed
+Speed: 3: Slow
+Freq: 3: Low
+Options Enabled
+Move Animation
+Trigger: Action Button
+
+List of Event Commands:
+@>Text: Welcome to the Lunar Palace! We currently aren't offering any
+ :    : tours at the moment.
+@>Text: ...Oh, are you the one summoned by the Princesses? Well, why didn't
+ :    : you say so sooner!
+@>Text: You'll want to go through the door in the back. They're waiting for
+ :    : you there.
+@>Text: Good luck!
+@>Control Self Switch: A =ON
+@>
+
+Page #2
+Conditions
+Self Switch A is ON
+
+Graphic: TPDP_NPC 54
+
+Autonomous Movement
+Type: Fixed
+Speed: 3: Slow
+Freq: 3: Low
+Options Enabled
+Move Animation
+Trigger: Action Button
+
+List of Event Commands:
+@>Text: You'll want to go through the door in the back. They're waiting for
+ :    : you there.
+@>Text: Good luck!
+@>
+
+#------------------------------------------------------------------------------
+Event ID: 004
+Event Name: EV004
+(X,Y): (028,020)
+
+Page #1
+Conditions
+None
+
+Graphic: TPDP_NPC 55
+
+Autonomous Movement
+Type: Fixed
+Speed: 3: Slow
+Freq: 3: Low
+Options Enabled
+Move Animation
+Trigger: Action Button
+
+List of Event Commands:
+@>Text: Sorry, we're cleaning up back here right now!
+@>
+
+#------------------------------------------------------------------------------
+Event ID: 005
+Event Name: EV005
+(X,Y): (007,032)
+
+Page #1
+Conditions
+None
+
+Graphic: TPDP_NPC 54
+
+Autonomous Movement
+Type: Fixed
+Speed: 3: Slow
+Freq: 3: Low
+Options Enabled
+Move Animation
+Direction Fix
+Trigger: Action Button
+
+List of Event Commands:
+@>Text: Did you hear? Apparently the Princesses summoned someone
+ :    : from Earth!
+@>
+
+#------------------------------------------------------------------------------
+Event ID: 006
+Event Name: EV006
+(X,Y): (007,035)
+
+Page #1
+Conditions
+None
+
+Graphic: TPDP_NPC 55
+
+Autonomous Movement
+Type: Fixed
+Speed: 3: Slow
+Freq: 3: Low
+Options Enabled
+Move Animation
+Direction Fix
+Trigger: Action Button
+
+List of Event Commands:
+@>Text: You've been listening to the rumor mill way too much! Next thing
+ :    : you're gonna say is that the Elixir of Eternity is real!
+@>
+
+#------------------------------------------------------------------------------
+Event ID: 007
+Event Name: Rei'sen
+(X,Y): (021,007)
+
+Page #1
+Conditions
+Variable 0121: TKoL Plot Variable is 23 or above
+
+Graphic: Person_Rei'sen
+
+Autonomous Movement
+Type: Fixed
+Speed: 3: Slow
+Freq: 3: Low
+Options Enabled
+Move Animation
+Trigger: Action Button
+
+List of Event Commands:
+@>Text: \xn[Rei'sen]Halt! State your name and business here.
+@>Text: \xn[\pn]U-Uh... My name is \pn, and I was-\wtnp[1]
+@>Text: \xn[Rei'sen]Ah, so <i>you're</i> \pn, the Human from Gensokyo!
+@>Text: \xn[Rei'sen]The Princesses informed me that you would be arriving 
+ :    : soon.
+@>Text: \xn[\pn]Yep, that's me! So, they're behind this door, is it?
+@>Text: \xn[Rei'sen]Yup, right behind this door!
+@>Text: \xn[\pn]Great!
+@>Wait: 20 frame(s)
+@>Text: \xn[\pn]... Uhm, so are you going to test my skills before
+ :    : letting me past?
+@>Text: \xn[Rei'sen]... Were you expecting me to?
+@>Text: \xn[\pn]Isn't... Isn't that how this always goes?
+@>Text: \xn[Rei'sen]Well, if you insist... I was just going to let you past
+ :    : whenever you were ready.
+@>Show Animation: Player, [Exclaim bubble]
+@>Text: \xn[\pn]N-No, no! You don't have to! If you want to just
+ :    : let me walk on past, go right ahead!
+@>Script: pbTrainerIntro(:REISEN2)
+@>Text: \xn[Rei'sen]I wasn't going to, but now that you've brought it up...
+ :    : I'm sure the Princesses would be cross with me after that
+ :    : declaration of battle!
+@>Text: \xn[\pn]But it wasn't a-...\wt[10] Fine, let's do this then! Part
+ :    : of me wouldn't have felt right if I just walked on by without
+ :    : proving myself anyway...
+@>Text: \xn[Rei'sen]Well, just don't be too rough on me! I'm not that strong 
+ :    : of a Handler yet...
+@>Control Switches: [0104: Transition Handler] = ON
+@>Control Variables: [0103: Vs. Transition ID] = 48
+@>Control Variables: [0104: Vs. Transition - Pkmn] = 4
+@>Conditional Branch: Script: TrainerBattle.start(:REISEN2, "Rei'sen", 10+(pbGet(99) * 10))
+ @>Text: \xn[Rei'sen]I-I apologize for holding you up! If you want to go through,
+  :    : just let me know!
+ @>Text: \xn[\pn]You were just fine! Don't worry about it!
+ @>Text: \xn[\pn]\b(I hope this doesn't count as bullying the inhabitants of the
+  :    : Capital...)
+ @>Control Variables: [0121: TKoL Plot Variable] = 24
+ @>
+: Else
+ @>Script: pbTrainerEnd
+ @>Exit Event Processing
+ @>
+: Branch End
+@>
+
+Page #2
+Conditions
+Variable 0121: TKoL Plot Variable is 24 or above
+
+Graphic: Person_Rei'sen
+
+Autonomous Movement
+Type: Fixed
+Speed: 3: Slow
+Freq: 3: Low
+Options Enabled
+Move Animation
+Trigger: Action Button
+
+List of Event Commands:
+@>Text: \xn[Rei'sen]Miss \pn! Are you ready to meet the Princesses?
+@>Text: \w[dark]Proceeding past this point will trigger the final segment of
+ :    : The Kingdom of Lunacy. It is highly advised you heal your Puppets and 
+ :    : take care of any unfinished business before advancing.
+@>Text: \w[dark]Are you prepared to advance?
+@>Show Choices: Yes, No
+(When Cancel: Choice 2)
+: When [Yes]
+ @>Play SE: 'Door exit', 100, 100
+ @>Change Screen Color Tone: (-255,-255,-255,0), @6
+ @>Wait: 8 frame(s)
+ @>Transfer Player:[100: Lunar Palace - Arena], (015,038), Up, No Fade
+ @>Change Screen Color Tone: (0,0,0,0), @6
+ @>
+: When [No]
+ @>Set Move Route: Player
+  :              : $>Move Down
+ @>
+: Branch End
+@>
+
+#------------------------------------------------------------------------------
+Event ID: 008
+Event Name: size(4,1)
+(X,Y): (020,006)
+
+Page #1
+Conditions
+None
+
+Autonomous Movement
+Type: Fixed
+Speed: 3: Slow
+Freq: 3: Low
+Options Enabled
+Move Animation
+Trigger: Action Button
+
+List of Event Commands:
+@>Text: The door is sealed shut...
+@>
+
+#------------------------------------------------------------------------------
+Event ID: 009
+Event Name: EV009
+(X,Y): (043,020)
+
+Page #1
+Conditions
+None
+
+Autonomous Movement
+Type: Fixed
+Speed: 3: Slow
+Freq: 3: Low
+Options Enabled
+Move Animation
+Trigger: Player Touch
+
+List of Event Commands:
+@>Play SE: 'Door exit', 80, 100
+@>Change Screen Color Tone: (-255,-255,-255,0), @8
+@>Wait: 8 frame(s)
+@>Transfer Player:[124: Infinity Veil], (002,017)
+@>Change Screen Color Tone: (0,0,0,0), @8
+@>
+
+#------------------------------------------------------------------------------
+Event ID: 010
+Event Name: EV010
+(X,Y): (043,021)
+
+Page #1
+Conditions
+None
+
+Autonomous Movement
+Type: Fixed
+Speed: 3: Slow
+Freq: 3: Low
+Options Enabled
+Move Animation
+Trigger: Player Touch
+
+List of Event Commands:
+@>Play SE: 'Door exit', 80, 100
+@>Change Screen Color Tone: (-255,-255,-255,0), @8
+@>Wait: 8 frame(s)
+@>Transfer Player:[124: Infinity Veil], (002,018)
+@>Change Screen Color Tone: (0,0,0,0), @8
+@>
+
+#------------------------------------------------------------------------------
 
 #==============================================================================
 Map ID: 100
-Map Name: Lunar Palace - Assembly Hall
+Map Name: Lunar Palace - Arena
 Tileset: 048: Lunar Capital Palace
-Width: 20, Height: 15
+Width: 31, Height: 41
+
+#------------------------------------------------------------------------------
+Event ID: 001
+Event Name: Toyohime
+(X,Y): (013,005)
+
+Page #1
+Conditions
+None
+
+Graphic: Person_Toyohime
+
+Autonomous Movement
+Type: Fixed
+Speed: 3: Slow
+Freq: 3: Low
+Options Enabled
+Move Animation
+Trigger: Action Button
+
+List of Event Commands:
+@>
+
+#------------------------------------------------------------------------------
+Event ID: 002
+Event Name: Yorihime
+(X,Y): (017,005)
+
+Page #1
+Conditions
+None
+
+Graphic: Person_Yorihime
+
+Autonomous Movement
+Type: Fixed
+Speed: 3: Slow
+Freq: 3: Low
+Options Enabled
+Move Animation
+Trigger: Action Button
+
+List of Event Commands:
+@>
+
+#------------------------------------------------------------------------------
+Event ID: 003
+Event Name: Rabbit Ref
+(X,Y): (010,022)
+
+Page #1
+Conditions
+None
+
+Graphic: TPDP_NPC 54
+
+Autonomous Movement
+Type: Fixed
+Speed: 3: Slow
+Freq: 3: Low
+Options Enabled
+Move Animation
+Trigger: Action Button
+
+List of Event Commands:
+@>
+
+#------------------------------------------------------------------------------
+Event ID: 004
+Event Name: Sagume
+(X,Y): (000,000)
+
+Page #1
+Conditions
+None
+
+Graphic: Person_Sagume
+
+Autonomous Movement
+Type: Fixed
+Speed: 3: Slow
+Freq: 3: Low
+Options Enabled
+Move Animation
+Trigger: Action Button
+
+List of Event Commands:
+@>
+
+#------------------------------------------------------------------------------
+Event ID: 005
+Event Name: Rabbit NPC
+(X,Y): (006,013)
+
+Page #1
+Conditions
+None
+
+Graphic: TPDP_NPC 54
+
+Autonomous Movement
+Type: Fixed
+Speed: 3: Slow
+Freq: 3: Low
+Options Enabled
+Move Animation
+Trigger: Action Button
+
+List of Event Commands:
+@>
+
+#------------------------------------------------------------------------------
+Event ID: 006
+Event Name: Rabbit NPC
+(X,Y): (006,014)
+
+Page #1
+Conditions
+None
+
+Graphic: TPDP_NPC 54
+
+Autonomous Movement
+Type: Fixed
+Speed: 3: Slow
+Freq: 3: Low
+Options Enabled
+Move Animation
+Trigger: Action Button
+
+List of Event Commands:
+@>
+
+#------------------------------------------------------------------------------
+Event ID: 007
+Event Name: Rabbit NPC
+(X,Y): (006,015)
+
+Page #1
+Conditions
+None
+
+Graphic: TPDP_NPC 54
+
+Autonomous Movement
+Type: Fixed
+Speed: 3: Slow
+Freq: 3: Low
+Options Enabled
+Move Animation
+Trigger: Action Button
+
+List of Event Commands:
+@>
+
+#------------------------------------------------------------------------------
+Event ID: 008
+Event Name: Rabbit NPC
+(X,Y): (006,016)
+
+Page #1
+Conditions
+None
+
+Graphic: TPDP_NPC 54
+
+Autonomous Movement
+Type: Fixed
+Speed: 3: Slow
+Freq: 3: Low
+Options Enabled
+Move Animation
+Trigger: Action Button
+
+List of Event Commands:
+@>
+
+#------------------------------------------------------------------------------
+Event ID: 009
+Event Name: Autorun
+(X,Y): (030,025)
+
+Page #1
+Conditions
+Variable 0121: TKoL Plot Variable is 24 or above
+
+Autonomous Movement
+Type: Fixed
+Speed: 3: Slow
+Freq: 3: Low
+Options Enabled
+Move Animation
+Trigger: Autorun
+
+List of Event Commands:
+@>Text: Alright everyone, we have a special trial today! Hailing from the
+ :    : Earth, will our defendant \pn please make their way into
+ :    : the chamber.
+@>Text: \xn[\pn]\b(Time to see what kind of trial I'm in for...)
+@>Set Move Route: Player
+ :              : $>Move Up
+ :              : $>Move Up
+ :              : $>Move Up
+ :              : $>Move Up
+ :              : $>Move Up
+ :              : $>Move Up
+ :              : $>Move Up
+@>Wait for Move's Completion
+@>Play SE: 'Applause', 80, 50
+@>Show Animation: Player, [Exclaim bubble]
+@>Set Move Route: Player
+ :              : $>Turn Left
+ :              : $>Wait: 10 frame(s)
+ :              : $>Turn Right
+ :              : $>Wait: 10 frame(s)
+@>Text: \xn[\pn]\b(So many spectators... This is a little nerve-wracking.)
+@>Wait for Move's Completion
+@>Set Move Route: [Rabbit Ref]
+ :              : $>Move Right
+ :              : $>Move Right
+ :              : $>Move Right
+ :              : $>Move Right
+ :              : $>Move Right
+ :              : $>Move Down
+ :              : $>Move Down
+ :              : $>Move Down
+ :              : $>Move Down
+ :              : $>Move Down
+ :              : $>Move Down
+@>Text: Glad to see that you didn't run, Miss \pn! That wouldn't have 
+ :    : been a very good look for the Savior of the Moon.
+@>Text: \xn[\pn]Well when the alternative is being dragged here unwillingly,
+ :    : what other options did I have...
+@>Text: \xn[\pn]Besides, I can't lie and say I'm not interested in... whatever 
+ :    : this "trial" is. There isn't a lot of documents about the Lunar 
+ :    : Civilization in Gensokyo.
+@>Wait for Move's Completion
+@>Show Animation: Player, [Exclaim bubble]
+@>Text: \xn[Female Voice #2]And that is by design! For we here in the 
+ :    : Capital choose to keep ourself separate from the affairs of the 
+ :    : Earth!
+@>Text: \xn[Female Voice #2]However, we cannot just overlook when
+ :    : someone from the Earth steps onto our lands uninvited, even if
+ :    : they did save our citizens.
+@>Set Move Route: [Rabbit Ref]
+ :              : $>Move Up
+@>Text: Folks, it looks like our judges have arrived!
+@>Scroll Map: Up, 26, 4
+@>Text: You all know who they are! Our most esteemed Princess...\wtnp[20]
+@>Text: ...As well as the joint leaders of the Lunar Defense Corps!\wtnp[20]
+@>Text: Everyone, please give it up for Lady Yorihime and Lady Toyohime!\wtnp[20]
+@>Script: pbSetSelfSwitch(17,"A",true)
+@>Wait: 45 frame(s)
+@>Text: \xn[Yorihime]At ease, everyone.
+@>Script: pbSetSelfSwitch(17,"A",false)
+@>Set Move Route: [Yorihime]
+ :              : $>Move Down
+@>Set Event Location: [Rabbit Ref],(010,022), Right
+@>Text: \xn[Yorihime]So... You're \pn, the one our citizens are calling the
+ :    : "Savior of the Moon".
+@>Text: \xn[Yorihime]Allow me to, at the very least, thank you for what
+ :    : you've done for the Capital.
+@>Text: \xn[Yorihime]Had the conflict gone on any longer... Who knows what
+ :    : could have happened.
+@>Text: \xn[\pn]\b(Yeah, Gensokyo likely wouldn't exist anymore...)
+@>Text: \xn[Yorihime]As I have mentioned earlier though, you showed
+ :    : up on the Moon uninvited and forcefully involved yourself
+ :    : in our affairs.
+@>Text: \xn[Yorihime]For invading our territory like this, you must stand trial
+ :    : before us!
+@>Text: \xn[\pn]Even though I helped save the Capital? Without my intervention,
+ :    : Junko and Hecatia would have eventually overrun the place!
+@>Text: \xn[Yorihime]Comiting a felony to right another felony does not absolve
+ :    : you of your actions!
+@>Text: \xn[\pn]The people of the Capital really are lunatics... Alright! So what's
+ :    : this "trial" I have to undergo?
+@>Set Move Route: [Toyohime]
+ :              : $>Move Down
+@>Set Move Route: [Yorihime]
+ :              : $>Direction Fix ON
+ :              : $>Move Up
+ :              : $>Direction Fix OFF
+@>Text: \xn[Toyohime]Here on the Moon, we have a strong belief in fighting
+ :    : to prove one's point. Disagreements are settled through these trials,
+ :    : and the loser must abdicate to the truth of the victor.
+@>Text: \xn[Toyohime]We extend this policy to those who we would
+ :    : deem criminals or traitors to the Capital.
+@>Text: \xn[\pn]\b(Well, that explains the arena.)
+@>Text: \xn[Toyohime]As you have been demed a criminal of the
+ :    : Capital, you must undergo this trial as well.
+@>Text: \xn[Toyohime]However...
+@>Text: \xn[\pn]However?
+@>Text: \xn[Toyohime]Well, you're just an ordinary Human! If you were to
+ :    : challenge anybody here to a more traditional trial, even our
+ :    : lowest-ranked Rabbits, you'd not survive more than a minute!
+@>Text: \xn[\pn]Gee, thanks...
+@>Set Move Route: [Toyohime]
+ :              : $>Direction Fix ON
+ :              : $>Move Up
+ :              : $>Direction Fix OFF
+@>Text: \xn[Yorihime]What my sister is trying to say is that the trial you 
+ :    : undertake will use a method both parties are adept in.
+@>Text: \xn[Yorihime]And from the research we have done on you,
+ :    : Miss "Legend of Gensokyo", your prefered type of trial
+ :    : would be done with Puppets.
+@>Text: \xn[Yorihime]Is that assumption incorrect?
+@>Text: \xn[\pn]No, I can't really say it is... So, does that mean I'll have
+ :    : to battle against someone to "prove my truth"?
+@>Text: \xn[Yorihime]That would be the way of it, yes. Should you decline,
+ :    : however, as a result of your transgressions and the stance of the
+ :    : opposing party, you will be imprisoned.
+@>Text: \xn[Yorihime]Do you accept these terms?
+@>Text: \xn[\pn]You really don't give me much of an option here. But fine, I accept!
+ :    : Who will I be battling then?
+@>Text: \xn[?????]That would be I, Miss \pn.
+@>Set Move Route: Player
+ :              : $>Move Up
+ :              : $>Move Up
+ :              : $>Move Up
+ :              : $>Move Up
+ :              : $>Move Up
+@>Set Event Location: [Sagume],(015,010), Down
+@>Set Move Route: [Sagume]
+ :              : $>Change Opacity: 255
+ :              : $>Move Down
+ :              : $>Move Down
+ :              : $>Move Down
+ :              : $>Move Down
+ :              : $>Move Down
+ :              : $>Move Down
+ :              : $>Move Down
+ :              : $>Move Down
+ :              : $>Move Down
+@>Scroll Map: Down, 17, 4
+@>Wait for Move's Completion
+@>Change Text Options: Middle, Show
+@>Text: \xn[\pn]... Lady Sagume, I see. Well, I've faced Goddesses in
+ :    : battle before, this shouldn't be too hard!
+@>Text: \xn[Sagume]...
+@>Text: \xn[\pn]... You aren't talking because you're nervous, but
+ :    : because of your ability, right...?
+@>Text: \xn[Sagume]As I've told you, my ability to reverse fortune with
+ :    : spoken word can lead to many situations being advantageous
+ :    : or disadvantageous for either party.
+@>Text: \xn[Sagume]In the spirit of the trial, I shall refrain from making
+ :    : presumptuous comments.
+@>Text: \xn[Sagume]... As an aside, naught needs be spoken. You
+ :    : know what must needs be done.
+@>Text: \xn[\pn]Right... Okay then, I'm ready for this trial!
+@>Script: pbTrainerIntro(:SAGUME)
+@>Text: Okay! This will be a battle between Lady Sagume Kishin, and the 
+ :    : Savior of the Moon, \pn!
+@>Text: This will be a free-for-all battle, with substitutions allowed.
+@>Text: \xn[Sagume]Come now, Savior of the Moon... Let's make this
+ :    : fight an interesting one!
+@>Control Switches: [0104: Transition Handler] = ON
+@>Control Variables: [0103: Vs. Transition ID] = 49
+@>Control Variables: [0104: Vs. Transition - Pkmn] = 4
+@>Conditional Branch: Script: TrainerBattle.start(:SAGUME, "Sagume Kishin", 10+(pbGet(99) * 10))
+ @>Text: What a battle folks! In a stunning spectacular, \pn has overcome 
+  :    : Lady Sagume in a Puppet Battle!
+ @>Text: Give her a hand, everyone!
+ @>Set Move Route: [Sagume]
+  :              : $>Move Down
+  :              : $>Move Down
+  :              : $>Move Down
+ @>Set Move Route: Player
+  :              : $>Move Up
+  :              : $>Move Up
+  :              : $>Move Up
+ @>Change Text Options: Bottom, Show
+ @>Script: pbSetSelfSwitch(17,"A",true)
+ @>Wait: 45 frame(s)
+ @>Wait for Move's Completion
+ @>Script: pbSetSelfSwitch(17,"A",false)
+ @>Text: With that, \pn has proven herself in the Trial of Truths!
+ @>Text: \xn[\pn]\b(That went... way better than I expected.)
+ @>Text: \xn[Sagume]You have done well, Miss \pn. You are a 
+  :    : remarkable Puppet Handler.
+ @>Text: \xn[\pn]Well, thanks! You're pretty good yourself!
+ @>Text: \xn[\pn]\b(Maybe if I wasn't fighting like my life was on 
+  :    : the line, I might have enjoyed it more!)
+ @>Text: \xn[Yorihime]Yes, you are quite strong indeed.
+ @>Scroll Map: Up, 1, 4
+ @>Set Event Location: [Toyohime],(014,012)
+ @>Set Event Location: [Yorihime],(016,012)
+ @>Set Move Route: [Toyohime]
+  :              : $>Move Down
+  :              : $>Move Down
+  :              : $>Move Down
+  :              : $>Move Down
+  :              : $>Move Down
+  :              : $>Move Down
+  :              : $>Move Down
+ @>Set Move Route: [Yorihime]
+  :              : $>Move Down
+  :              : $>Move Down
+  :              : $>Move Down
+  :              : $>Move Down
+  :              : $>Move Down
+  :              : $>Move Down
+  :              : $>Move Down
+ @>Set Move Route: [Sagume]
+  :              : $>Turn Up
+  :              : $>Wait: 10 frame(s)
+  :              : $>Move Left
+  :              : $>Move Left
+  :              : $>Move Left
+  :              : $>Turn Right
+ @>Wait for Move's Completion
+ @>Text: \xn[Yorihime]The skill of Puppet Handling, it's very similar to the style of
+  :    : battling seen across the planet as a whole.
+ @>Text: \xn[Yorihime]That Gensokyo should have adopted such style as well
+  :    : almost feels like it was destined to be.
+ @>Text: \xn[\pn]Huh, that's not something I've thought about...
+ @>Text: \xn[\pn]I remember Miss Keine's older history books talked about
+  :    : creatures that roamed the planet with magical powers and bonded
+  :    : with humans, but I never really made that connection.
+ @>Text: \xn[Yorihime]Perhaps in a past life you were a handler of
+  :    : significant renown.
+ @>Text: \xn[Yorihime]Or, perhaps this entirely of your own power
+  :    : and capabilities. Strength independant of other factors.
+ @>Text: \xn[Yorihime]To know where that power wells from would be
+  :    : an amusing exercise!
+ @>Text: \xn[\pn]... Come again?
+ @>Set Move Route: [Toyohime]
+  :              : $>Turn Right
+  :              : $>Jump: +0,+0
+  :              : $>Wait: 3 frame(s)
+  :              : $>Jump: +0,+0
+ @>Text: \xn[Toyohime]Oh, come on Yorihime! Stop being so serious for a
+  :    : moment and just say you want to battle against our new friend
+  :    : here!
+ @>Set Move Route: [Toyohime]
+  :              : $>Turn Down
+ @>Text: \xn[Toyohime]You'll have to forgive my sister here, she's so used
+  :    : to being upright, prim and proper, that all she knows how act
+  :    : sometimes is like she's dealing with the Defense Corps!
+ @>Text: \xn[\pn]No, that's fine! But if you're asing for a battle, I'm fine with
+  :    : accepting!
+ @>Text: \xn[\pn]... This won't count against me if I lose though, right? I
+  :    : still proved myself and am absolved of all crimes, right?
+ @>Text: \xn[Toyohime]No, no, you're very much in the clear! You proved yourself
+  :    : admirably in the Trial of Truths, and are completely forgiven in the eyes
+  :    : of the Capital.
+ @>Text: \xn[Toyohime]This match will purely be for our amusement.
+ @>Text: \xn[\pn]... Our?
+ @>Text: \xn[Toyohime]You didn't think I would sit this out, would you? Last
+  :    : time we had guests from Gensokyo, Yorihime had them all to herself!
+ @>Text: \xn[Toyohime]This time, I want to see exactly what it is that makes
+  :    : Gensokyoians tick~!
+ @>Text: \xn[Toyohime]Surely you'll indulge us both, right?
+ @>Text: \xn[\pn]Well... I see no reason not to. It sounds like it could be
+  :    : fun!
+ @>Text: \xn[Yorihime]Then it is settled! A two on one exhibition match!
+ @>Text: Looks like we have an interesting development brewing here
+  :    : folks! Our Savior of the Moon will be going head-to-head
+  :    : against not just one, but both of the Princesses!
+ @>Text: This will be a match remember for sure! Let's give it up for our 
+  :    : combatants!
+ @>Script: pbSetSelfSwitch(17,"A",true)
+ @>Wait: 45 frame(s)
+ @>Wait for Move's Completion
+ @>Script: pbSetSelfSwitch(17,"A",false)
+ @>Text: Will both sides please take their positions on the field before we
+  :    : begin?
+ @>Control Variables: [0121: TKoL Plot Variable] = 25
+ @>
+: Else
+ @>Script: pbTrainerEnd
+ @>Exit Event Processing
+ @>
+: Branch End
+@>
+
+Page #2
+Conditions
+Variable 0121: TKoL Plot Variable is 25 or above
+
+Autonomous Movement
+Type: Fixed
+Speed: 3: Slow
+Freq: 3: Low
+Options Enabled
+Move Animation
+Trigger: Autorun
+
+List of Event Commands:
+@>Recover All: Entire Party
+@>Change Screen Color Tone: (-255,-255,-255,0), @8
+@>Wait: 8 frame(s)
+@>Transfer Player:[100: Lunar Palace - Arena], (015,026)
+@>Set Event Location: [Toyohime],(014,019)
+@>Set Event Location: [Yorihime],(016,019)
+@>Set Event Location: [Rabbit Ref],(010,022), Right
+@>Set Event Location: [Sagume],(020,022), Left
+@>Scroll Map: Up, 4, 4
+@>Change Text Options: Middle, Show
+@>Wait: 8 frame(s)
+@>Script: pbSetSelfSwitch(17,"A",true)
+@>Change Screen Color Tone: (0,0,0,0), @8
+@>Wait: 45 frame(s)
+@>Text: Alright, settle down everyone! Let's get this special exhibition match
+ :    : underway!
+@>Script: pbSetSelfSwitch(17,"A",false)
+@>Text: This match will be between the Savior of the Moon, \pn, and our 
+ :    : very own Princesses, Toyohime and Yorihime!
+@>Text: The rules for this match will be the same as the last one; a 
+ :    : free-for-all battle, with substitutions allowed.
+@>Text: All trainers will be allowed to use up to six Puppets each.
+@>Set Move Route: Player
+ :              : $>Turn Left
+@>Show Animation: Player, [Exclaim bubble]
+@>Text: \xn[\pn]Surely you meant both sides, right? Not all trainers?
+@>Wait: 10 frame(s)
+@>Set Move Route: Player
+ :              : $>Turn Up
+@>Wait: 15 frame(s)
+@>Text: \xn[\pn]...Right!?
+@>Wait: 15 frame(s)
+@>Text: \xn[\pn]\b(That's twelve Puppets on their side to my six! How is that
+ :    : even fair!?)
+@>Text: Are both sides ready?
+@>Text: \xn[Toyohime]Ready~!
+@>Text: \xn[Yorihime]Yes, let us begin!
+@>Text: \xn[\pn]... Haaah, it never gets easier... Yeah, I'm ready to go!
+@>Text: Alright! And with confirmation from both sides, let the battle...
+@>Set Move Route: [Rabbit Ref]
+ :              : $>Turn Down
+ :              : $>Wait: 10 frame(s)
+ :              : $>Turn Up
+ :              : $>Wait: 20 frame(s)
+ :              : $>Turn Right
+@>Wait for Move's Completion
+@>Text: Begin!
+@>Script: pbTrainerIntro(:TOYOHIME)
+@>Control Switches: [0104: Transition Handler] = ON
+@>Control Variables: [0103: Vs. Transition ID] = 50
+@>Control Variables: [0104: Vs. Transition - Pkmn] = 6
+@>Conditional Branch: Script: TrainerBattle.start(:YORIHIME, "Watatsuki no Yorihime", 10+(pbGet(99) * 10), :TOYOHIME, "Watatsuki no Toyohime", 10+(pbGet(99) * 10))
+ @>Comment: Trigger post-battle cutscene here.
+ @>Comment: Trigger ending cutscene here.
+ @>
+: Else
+ @>Script: pbTrainerEnd
+ @>Exit Event Processing
+ @>
+: Branch End
+@>
+
+#------------------------------------------------------------------------------
+Event ID: 010
+Event Name: Rabbit NPC
+(X,Y): (006,018)
+
+Page #1
+Conditions
+None
+
+Graphic: TPDP_NPC 54
+
+Autonomous Movement
+Type: Fixed
+Speed: 3: Slow
+Freq: 3: Low
+Options Enabled
+Move Animation
+Trigger: Action Button
+
+List of Event Commands:
+@>
+
+#------------------------------------------------------------------------------
+Event ID: 011
+Event Name: Rabbit NPC
+(X,Y): (006,019)
+
+Page #1
+Conditions
+None
+
+Graphic: TPDP_NPC 54
+
+Autonomous Movement
+Type: Fixed
+Speed: 3: Slow
+Freq: 3: Low
+Options Enabled
+Move Animation
+Trigger: Action Button
+
+List of Event Commands:
+@>
+
+#------------------------------------------------------------------------------
+Event ID: 012
+Event Name: Rabbit NPC
+(X,Y): (006,020)
+
+Page #1
+Conditions
+None
+
+Graphic: TPDP_NPC 54
+
+Autonomous Movement
+Type: Fixed
+Speed: 3: Slow
+Freq: 3: Low
+Options Enabled
+Move Animation
+Trigger: Action Button
+
+List of Event Commands:
+@>
+
+#------------------------------------------------------------------------------
+Event ID: 013
+Event Name: Rabbit NPC
+(X,Y): (006,021)
+
+Page #1
+Conditions
+None
+
+Graphic: TPDP_NPC 54
+
+Autonomous Movement
+Type: Fixed
+Speed: 3: Slow
+Freq: 3: Low
+Options Enabled
+Move Animation
+Trigger: Action Button
+
+List of Event Commands:
+@>
+
+#------------------------------------------------------------------------------
+Event ID: 014
+Event Name: Rabbit NPC
+(X,Y): (006,022)
+
+Page #1
+Conditions
+None
+
+Graphic: TPDP_NPC 54
+
+Autonomous Movement
+Type: Fixed
+Speed: 3: Slow
+Freq: 3: Low
+Options Enabled
+Move Animation
+Trigger: Action Button
+
+List of Event Commands:
+@>
+
+#------------------------------------------------------------------------------
+Event ID: 015
+Event Name: Rabbit NPC
+(X,Y): (006,023)
+
+Page #1
+Conditions
+None
+
+Graphic: TPDP_NPC 54
+
+Autonomous Movement
+Type: Fixed
+Speed: 3: Slow
+Freq: 3: Low
+Options Enabled
+Move Animation
+Trigger: Action Button
+
+List of Event Commands:
+@>
+
+#------------------------------------------------------------------------------
+Event ID: 016
+Event Name: Rabbit NPC
+(X,Y): (006,024)
+
+Page #1
+Conditions
+None
+
+Graphic: TPDP_NPC 54
+
+Autonomous Movement
+Type: Fixed
+Speed: 3: Slow
+Freq: 3: Low
+Options Enabled
+Move Animation
+Trigger: Action Button
+
+List of Event Commands:
+@>
+
+#------------------------------------------------------------------------------
+Event ID: 017
+Event Name: Applause
+(X,Y): (029,025)
+
+Page #1
+Conditions
+Self Switch A is ON
+
+Autonomous Movement
+Type: Fixed
+Speed: 3: Slow
+Freq: 3: Low
+Options Enabled
+Move Animation
+Trigger: Parallel Process
+
+List of Event Commands:
+@>Loop
+ @>Play SE: 'Applause', 80, 50
+ @>Wait: 15 frame(s)
+ @>
+: Repeat Above
+@>
+
+#------------------------------------------------------------------------------
+Event ID: 018
+Event Name: Rabbit NPC
+(X,Y): (006,025)
+
+Page #1
+Conditions
+None
+
+Graphic: TPDP_NPC 54
+
+Autonomous Movement
+Type: Fixed
+Speed: 3: Slow
+Freq: 3: Low
+Options Enabled
+Move Animation
+Trigger: Action Button
+
+List of Event Commands:
+@>
+
+#------------------------------------------------------------------------------
+Event ID: 019
+Event Name: Rabbit NPC
+(X,Y): (006,026)
+
+Page #1
+Conditions
+None
+
+Graphic: TPDP_NPC 54
+
+Autonomous Movement
+Type: Fixed
+Speed: 3: Slow
+Freq: 3: Low
+Options Enabled
+Move Animation
+Trigger: Action Button
+
+List of Event Commands:
+@>
+
+#------------------------------------------------------------------------------
+Event ID: 020
+Event Name: Rabbit NPC
+(X,Y): (006,027)
+
+Page #1
+Conditions
+None
+
+Graphic: TPDP_NPC 54
+
+Autonomous Movement
+Type: Fixed
+Speed: 3: Slow
+Freq: 3: Low
+Options Enabled
+Move Animation
+Trigger: Action Button
+
+List of Event Commands:
+@>
+
+#------------------------------------------------------------------------------
+Event ID: 021
+Event Name: Rabbit NPC
+(X,Y): (006,029)
+
+Page #1
+Conditions
+None
+
+Graphic: TPDP_NPC 54
+
+Autonomous Movement
+Type: Fixed
+Speed: 3: Slow
+Freq: 3: Low
+Options Enabled
+Move Animation
+Trigger: Action Button
+
+List of Event Commands:
+@>
+
+#------------------------------------------------------------------------------
+Event ID: 022
+Event Name: Rabbit NPC
+(X,Y): (006,030)
+
+Page #1
+Conditions
+None
+
+Graphic: TPDP_NPC 54
+
+Autonomous Movement
+Type: Fixed
+Speed: 3: Slow
+Freq: 3: Low
+Options Enabled
+Move Animation
+Trigger: Action Button
+
+List of Event Commands:
+@>
+
+#------------------------------------------------------------------------------
+Event ID: 023
+Event Name: Rabbit NPC
+(X,Y): (006,031)
+
+Page #1
+Conditions
+None
+
+Graphic: TPDP_NPC 54
+
+Autonomous Movement
+Type: Fixed
+Speed: 3: Slow
+Freq: 3: Low
+Options Enabled
+Move Animation
+Trigger: Action Button
+
+List of Event Commands:
+@>
+
+#------------------------------------------------------------------------------
+Event ID: 024
+Event Name: Rabbit NPC
+(X,Y): (006,032)
+
+Page #1
+Conditions
+None
+
+Graphic: TPDP_NPC 54
+
+Autonomous Movement
+Type: Fixed
+Speed: 3: Slow
+Freq: 3: Low
+Options Enabled
+Move Animation
+Trigger: Action Button
+
+List of Event Commands:
+@>
+
+#------------------------------------------------------------------------------
+Event ID: 025
+Event Name: Rabbit NPC
+(X,Y): (005,031)
+
+Page #1
+Conditions
+None
+
+Graphic: TPDP_NPC 54
+
+Autonomous Movement
+Type: Fixed
+Speed: 3: Slow
+Freq: 3: Low
+Options Enabled
+Move Animation
+Trigger: Action Button
+
+List of Event Commands:
+@>
+
+#------------------------------------------------------------------------------
+Event ID: 026
+Event Name: Rabbit NPC
+(X,Y): (005,030)
+
+Page #1
+Conditions
+None
+
+Graphic: TPDP_NPC 54
+
+Autonomous Movement
+Type: Fixed
+Speed: 3: Slow
+Freq: 3: Low
+Options Enabled
+Move Animation
+Trigger: Action Button
+
+List of Event Commands:
+@>
+
+#------------------------------------------------------------------------------
+Event ID: 027
+Event Name: Rabbit NPC
+(X,Y): (005,029)
+
+Page #1
+Conditions
+None
+
+Graphic: TPDP_NPC 54
+
+Autonomous Movement
+Type: Fixed
+Speed: 3: Slow
+Freq: 3: Low
+Options Enabled
+Move Animation
+Trigger: Action Button
+
+List of Event Commands:
+@>
+
+#------------------------------------------------------------------------------
+Event ID: 028
+Event Name: Rabbit NPC
+(X,Y): (005,028)
+
+Page #1
+Conditions
+None
+
+Graphic: TPDP_NPC 54
+
+Autonomous Movement
+Type: Fixed
+Speed: 3: Slow
+Freq: 3: Low
+Options Enabled
+Move Animation
+Trigger: Action Button
+
+List of Event Commands:
+@>
+
+#------------------------------------------------------------------------------
+Event ID: 029
+Event Name: Rabbit NPC
+(X,Y): (005,026)
+
+Page #1
+Conditions
+None
+
+Graphic: TPDP_NPC 54
+
+Autonomous Movement
+Type: Fixed
+Speed: 3: Slow
+Freq: 3: Low
+Options Enabled
+Move Animation
+Trigger: Action Button
+
+List of Event Commands:
+@>
+
+#------------------------------------------------------------------------------
+Event ID: 030
+Event Name: Rabbit NPC
+(X,Y): (005,025)
+
+Page #1
+Conditions
+None
+
+Graphic: TPDP_NPC 54
+
+Autonomous Movement
+Type: Fixed
+Speed: 3: Slow
+Freq: 3: Low
+Options Enabled
+Move Animation
+Trigger: Action Button
+
+List of Event Commands:
+@>
+
+#------------------------------------------------------------------------------
+Event ID: 031
+Event Name: Rabbit NPC
+(X,Y): (005,024)
+
+Page #1
+Conditions
+None
+
+Graphic: TPDP_NPC 54
+
+Autonomous Movement
+Type: Fixed
+Speed: 3: Slow
+Freq: 3: Low
+Options Enabled
+Move Animation
+Trigger: Action Button
+
+List of Event Commands:
+@>
+
+#------------------------------------------------------------------------------
+Event ID: 033
+Event Name: Rabbit NPC
+(X,Y): (005,023)
+
+Page #1
+Conditions
+None
+
+Graphic: TPDP_NPC 54
+
+Autonomous Movement
+Type: Fixed
+Speed: 3: Slow
+Freq: 3: Low
+Options Enabled
+Move Animation
+Trigger: Action Button
+
+List of Event Commands:
+@>
+
+#------------------------------------------------------------------------------
+Event ID: 034
+Event Name: Rabbit NPC
+(X,Y): (005,022)
+
+Page #1
+Conditions
+None
+
+Graphic: TPDP_NPC 54
+
+Autonomous Movement
+Type: Fixed
+Speed: 3: Slow
+Freq: 3: Low
+Options Enabled
+Move Animation
+Trigger: Action Button
+
+List of Event Commands:
+@>
+
+#------------------------------------------------------------------------------
+Event ID: 035
+Event Name: Rabbit NPC
+(X,Y): (005,021)
+
+Page #1
+Conditions
+None
+
+Graphic: TPDP_NPC 54
+
+Autonomous Movement
+Type: Fixed
+Speed: 3: Slow
+Freq: 3: Low
+Options Enabled
+Move Animation
+Trigger: Action Button
+
+List of Event Commands:
+@>
+
+#------------------------------------------------------------------------------
+Event ID: 036
+Event Name: Rabbit NPC
+(X,Y): (005,020)
+
+Page #1
+Conditions
+None
+
+Graphic: TPDP_NPC 54
+
+Autonomous Movement
+Type: Fixed
+Speed: 3: Slow
+Freq: 3: Low
+Options Enabled
+Move Animation
+Trigger: Action Button
+
+List of Event Commands:
+@>
+
+#------------------------------------------------------------------------------
+Event ID: 037
+Event Name: Rabbit NPC
+(X,Y): (005,019)
+
+Page #1
+Conditions
+None
+
+Graphic: TPDP_NPC 54
+
+Autonomous Movement
+Type: Fixed
+Speed: 3: Slow
+Freq: 3: Low
+Options Enabled
+Move Animation
+Trigger: Action Button
+
+List of Event Commands:
+@>
+
+#------------------------------------------------------------------------------
+Event ID: 038
+Event Name: Rabbit NPC
+(X,Y): (005,018)
+
+Page #1
+Conditions
+None
+
+Graphic: TPDP_NPC 54
+
+Autonomous Movement
+Type: Fixed
+Speed: 3: Slow
+Freq: 3: Low
+Options Enabled
+Move Animation
+Trigger: Action Button
+
+List of Event Commands:
+@>
+
+#------------------------------------------------------------------------------
+Event ID: 039
+Event Name: Rabbit NPC
+(X,Y): (005,017)
+
+Page #1
+Conditions
+None
+
+Graphic: TPDP_NPC 54
+
+Autonomous Movement
+Type: Fixed
+Speed: 3: Slow
+Freq: 3: Low
+Options Enabled
+Move Animation
+Trigger: Action Button
+
+List of Event Commands:
+@>
+
+#------------------------------------------------------------------------------
+Event ID: 041
+Event Name: Rabbit NPC
+(X,Y): (005,015)
+
+Page #1
+Conditions
+None
+
+Graphic: TPDP_NPC 54
+
+Autonomous Movement
+Type: Fixed
+Speed: 3: Slow
+Freq: 3: Low
+Options Enabled
+Move Animation
+Trigger: Action Button
+
+List of Event Commands:
+@>
+
+#------------------------------------------------------------------------------
+Event ID: 042
+Event Name: Rabbit NPC
+(X,Y): (005,014)
+
+Page #1
+Conditions
+None
+
+Graphic: TPDP_NPC 54
+
+Autonomous Movement
+Type: Fixed
+Speed: 3: Slow
+Freq: 3: Low
+Options Enabled
+Move Animation
+Trigger: Action Button
+
+List of Event Commands:
+@>
+
+#------------------------------------------------------------------------------
+Event ID: 043
+Event Name: Rabbit NPC
+(X,Y): (005,013)
+
+Page #1
+Conditions
+None
+
+Graphic: TPDP_NPC 54
+
+Autonomous Movement
+Type: Fixed
+Speed: 3: Slow
+Freq: 3: Low
+Options Enabled
+Move Animation
+Trigger: Action Button
+
+List of Event Commands:
+@>
+
+#------------------------------------------------------------------------------
+Event ID: 044
+Event Name: Rabbit NPC
+(X,Y): (005,012)
+
+Page #1
+Conditions
+None
+
+Graphic: TPDP_NPC 54
+
+Autonomous Movement
+Type: Fixed
+Speed: 3: Slow
+Freq: 3: Low
+Options Enabled
+Move Animation
+Trigger: Action Button
+
+List of Event Commands:
+@>
+
+#------------------------------------------------------------------------------
+Event ID: 045
+Event Name: Rabbit NPC
+(X,Y): (004,011)
+
+Page #1
+Conditions
+None
+
+Graphic: TPDP_NPC 54
+
+Autonomous Movement
+Type: Fixed
+Speed: 3: Slow
+Freq: 3: Low
+Options Enabled
+Move Animation
+Trigger: Action Button
+
+List of Event Commands:
+@>
+
+#------------------------------------------------------------------------------
+Event ID: 046
+Event Name: Rabbit NPC
+(X,Y): (004,012)
+
+Page #1
+Conditions
+None
+
+Graphic: TPDP_NPC 54
+
+Autonomous Movement
+Type: Fixed
+Speed: 3: Slow
+Freq: 3: Low
+Options Enabled
+Move Animation
+Trigger: Action Button
+
+List of Event Commands:
+@>
+
+#------------------------------------------------------------------------------
+Event ID: 047
+Event Name: Rabbit NPC
+(X,Y): (004,013)
+
+Page #1
+Conditions
+None
+
+Graphic: TPDP_NPC 54
+
+Autonomous Movement
+Type: Fixed
+Speed: 3: Slow
+Freq: 3: Low
+Options Enabled
+Move Animation
+Trigger: Action Button
+
+List of Event Commands:
+@>
+
+#------------------------------------------------------------------------------
+Event ID: 048
+Event Name: Rabbit NPC
+(X,Y): (004,014)
+
+Page #1
+Conditions
+None
+
+Graphic: TPDP_NPC 54
+
+Autonomous Movement
+Type: Fixed
+Speed: 3: Slow
+Freq: 3: Low
+Options Enabled
+Move Animation
+Trigger: Action Button
+
+List of Event Commands:
+@>
+
+#------------------------------------------------------------------------------
+Event ID: 050
+Event Name: Rabbit NPC
+(X,Y): (004,016)
+
+Page #1
+Conditions
+None
+
+Graphic: TPDP_NPC 54
+
+Autonomous Movement
+Type: Fixed
+Speed: 3: Slow
+Freq: 3: Low
+Options Enabled
+Move Animation
+Trigger: Action Button
+
+List of Event Commands:
+@>
+
+#------------------------------------------------------------------------------
+Event ID: 051
+Event Name: Rabbit NPC
+(X,Y): (004,017)
+
+Page #1
+Conditions
+None
+
+Graphic: TPDP_NPC 54
+
+Autonomous Movement
+Type: Fixed
+Speed: 3: Slow
+Freq: 3: Low
+Options Enabled
+Move Animation
+Trigger: Action Button
+
+List of Event Commands:
+@>
+
+#------------------------------------------------------------------------------
+Event ID: 052
+Event Name: Rabbit NPC
+(X,Y): (004,018)
+
+Page #1
+Conditions
+None
+
+Graphic: TPDP_NPC 54
+
+Autonomous Movement
+Type: Fixed
+Speed: 3: Slow
+Freq: 3: Low
+Options Enabled
+Move Animation
+Trigger: Action Button
+
+List of Event Commands:
+@>
+
+#------------------------------------------------------------------------------
+Event ID: 053
+Event Name: Rabbit NPC
+(X,Y): (004,019)
+
+Page #1
+Conditions
+None
+
+Graphic: TPDP_NPC 54
+
+Autonomous Movement
+Type: Fixed
+Speed: 3: Slow
+Freq: 3: Low
+Options Enabled
+Move Animation
+Trigger: Action Button
+
+List of Event Commands:
+@>
+
+#------------------------------------------------------------------------------
+Event ID: 054
+Event Name: Rabbit NPC
+(X,Y): (004,020)
+
+Page #1
+Conditions
+None
+
+Graphic: TPDP_NPC 54
+
+Autonomous Movement
+Type: Fixed
+Speed: 3: Slow
+Freq: 3: Low
+Options Enabled
+Move Animation
+Trigger: Action Button
+
+List of Event Commands:
+@>
+
+#------------------------------------------------------------------------------
+Event ID: 055
+Event Name: Rabbit NPC
+(X,Y): (004,021)
+
+Page #1
+Conditions
+None
+
+Graphic: TPDP_NPC 54
+
+Autonomous Movement
+Type: Fixed
+Speed: 3: Slow
+Freq: 3: Low
+Options Enabled
+Move Animation
+Trigger: Action Button
+
+List of Event Commands:
+@>
+
+#------------------------------------------------------------------------------
+Event ID: 056
+Event Name: Rabbit NPC
+(X,Y): (004,022)
+
+Page #1
+Conditions
+None
+
+Graphic: TPDP_NPC 54
+
+Autonomous Movement
+Type: Fixed
+Speed: 3: Slow
+Freq: 3: Low
+Options Enabled
+Move Animation
+Trigger: Action Button
+
+List of Event Commands:
+@>
+
+#------------------------------------------------------------------------------
+Event ID: 058
+Event Name: Rabbit NPC
+(X,Y): (004,023)
+
+Page #1
+Conditions
+None
+
+Graphic: TPDP_NPC 54
+
+Autonomous Movement
+Type: Fixed
+Speed: 3: Slow
+Freq: 3: Low
+Options Enabled
+Move Animation
+Trigger: Action Button
+
+List of Event Commands:
+@>
+
+#------------------------------------------------------------------------------
+Event ID: 059
+Event Name: Rabbit NPC
+(X,Y): (004,024)
+
+Page #1
+Conditions
+None
+
+Graphic: TPDP_NPC 54
+
+Autonomous Movement
+Type: Fixed
+Speed: 3: Slow
+Freq: 3: Low
+Options Enabled
+Move Animation
+Trigger: Action Button
+
+List of Event Commands:
+@>
+
+#------------------------------------------------------------------------------
+Event ID: 060
+Event Name: Rabbit NPC
+(X,Y): (004,025)
+
+Page #1
+Conditions
+None
+
+Graphic: TPDP_NPC 54
+
+Autonomous Movement
+Type: Fixed
+Speed: 3: Slow
+Freq: 3: Low
+Options Enabled
+Move Animation
+Trigger: Action Button
+
+List of Event Commands:
+@>
+
+#------------------------------------------------------------------------------
+Event ID: 061
+Event Name: Rabbit NPC
+(X,Y): (004,027)
+
+Page #1
+Conditions
+None
+
+Graphic: TPDP_NPC 54
+
+Autonomous Movement
+Type: Fixed
+Speed: 3: Slow
+Freq: 3: Low
+Options Enabled
+Move Animation
+Trigger: Action Button
+
+List of Event Commands:
+@>
+
+#------------------------------------------------------------------------------
+Event ID: 062
+Event Name: Rabbit NPC
+(X,Y): (004,028)
+
+Page #1
+Conditions
+None
+
+Graphic: TPDP_NPC 54
+
+Autonomous Movement
+Type: Fixed
+Speed: 3: Slow
+Freq: 3: Low
+Options Enabled
+Move Animation
+Trigger: Action Button
+
+List of Event Commands:
+@>
+
+#------------------------------------------------------------------------------
+Event ID: 063
+Event Name: Rabbit NPC
+(X,Y): (004,029)
+
+Page #1
+Conditions
+None
+
+Graphic: TPDP_NPC 54
+
+Autonomous Movement
+Type: Fixed
+Speed: 3: Slow
+Freq: 3: Low
+Options Enabled
+Move Animation
+Trigger: Action Button
+
+List of Event Commands:
+@>
+
+#------------------------------------------------------------------------------
+Event ID: 064
+Event Name: Rabbit NPC
+(X,Y): (004,030)
+
+Page #1
+Conditions
+None
+
+Graphic: TPDP_NPC 54
+
+Autonomous Movement
+Type: Fixed
+Speed: 3: Slow
+Freq: 3: Low
+Options Enabled
+Move Animation
+Trigger: Action Button
+
+List of Event Commands:
+@>
+
+#------------------------------------------------------------------------------
+Event ID: 065
+Event Name: Rabbit NPC
+(X,Y): (024,013)
+
+Page #1
+Conditions
+None
+
+Graphic: TPDP_NPC 54
+
+Autonomous Movement
+Type: Fixed
+Speed: 3: Slow
+Freq: 3: Low
+Options Enabled
+Move Animation
+Trigger: Action Button
+
+List of Event Commands:
+@>
+
+#------------------------------------------------------------------------------
+Event ID: 066
+Event Name: Rabbit NPC
+(X,Y): (024,014)
+
+Page #1
+Conditions
+None
+
+Graphic: TPDP_NPC 54
+
+Autonomous Movement
+Type: Fixed
+Speed: 3: Slow
+Freq: 3: Low
+Options Enabled
+Move Animation
+Trigger: Action Button
+
+List of Event Commands:
+@>
+
+#------------------------------------------------------------------------------
+Event ID: 067
+Event Name: Rabbit NPC
+(X,Y): (024,015)
+
+Page #1
+Conditions
+None
+
+Graphic: TPDP_NPC 54
+
+Autonomous Movement
+Type: Fixed
+Speed: 3: Slow
+Freq: 3: Low
+Options Enabled
+Move Animation
+Trigger: Action Button
+
+List of Event Commands:
+@>
+
+#------------------------------------------------------------------------------
+Event ID: 068
+Event Name: Rabbit NPC
+(X,Y): (024,016)
+
+Page #1
+Conditions
+None
+
+Graphic: TPDP_NPC 54
+
+Autonomous Movement
+Type: Fixed
+Speed: 3: Slow
+Freq: 3: Low
+Options Enabled
+Move Animation
+Trigger: Action Button
+
+List of Event Commands:
+@>
+
+#------------------------------------------------------------------------------
+Event ID: 070
+Event Name: Rabbit NPC
+(X,Y): (024,018)
+
+Page #1
+Conditions
+None
+
+Graphic: TPDP_NPC 54
+
+Autonomous Movement
+Type: Fixed
+Speed: 3: Slow
+Freq: 3: Low
+Options Enabled
+Move Animation
+Trigger: Action Button
+
+List of Event Commands:
+@>
+
+#------------------------------------------------------------------------------
+Event ID: 071
+Event Name: Rabbit NPC
+(X,Y): (024,019)
+
+Page #1
+Conditions
+None
+
+Graphic: TPDP_NPC 54
+
+Autonomous Movement
+Type: Fixed
+Speed: 3: Slow
+Freq: 3: Low
+Options Enabled
+Move Animation
+Trigger: Action Button
+
+List of Event Commands:
+@>
+
+#------------------------------------------------------------------------------
+Event ID: 072
+Event Name: Rabbit NPC
+(X,Y): (024,020)
+
+Page #1
+Conditions
+None
+
+Graphic: TPDP_NPC 54
+
+Autonomous Movement
+Type: Fixed
+Speed: 3: Slow
+Freq: 3: Low
+Options Enabled
+Move Animation
+Trigger: Action Button
+
+List of Event Commands:
+@>
+
+#------------------------------------------------------------------------------
+Event ID: 073
+Event Name: Rabbit NPC
+(X,Y): (024,021)
+
+Page #1
+Conditions
+None
+
+Graphic: TPDP_NPC 54
+
+Autonomous Movement
+Type: Fixed
+Speed: 3: Slow
+Freq: 3: Low
+Options Enabled
+Move Animation
+Trigger: Action Button
+
+List of Event Commands:
+@>
+
+#------------------------------------------------------------------------------
+Event ID: 074
+Event Name: Rabbit NPC
+(X,Y): (024,022)
+
+Page #1
+Conditions
+None
+
+Graphic: TPDP_NPC 54
+
+Autonomous Movement
+Type: Fixed
+Speed: 3: Slow
+Freq: 3: Low
+Options Enabled
+Move Animation
+Trigger: Action Button
+
+List of Event Commands:
+@>
+
+#------------------------------------------------------------------------------
+Event ID: 075
+Event Name: Rabbit NPC
+(X,Y): (024,023)
+
+Page #1
+Conditions
+None
+
+Graphic: TPDP_NPC 54
+
+Autonomous Movement
+Type: Fixed
+Speed: 3: Slow
+Freq: 3: Low
+Options Enabled
+Move Animation
+Trigger: Action Button
+
+List of Event Commands:
+@>
+
+#------------------------------------------------------------------------------
+Event ID: 076
+Event Name: Rabbit NPC
+(X,Y): (024,024)
+
+Page #1
+Conditions
+None
+
+Graphic: TPDP_NPC 54
+
+Autonomous Movement
+Type: Fixed
+Speed: 3: Slow
+Freq: 3: Low
+Options Enabled
+Move Animation
+Trigger: Action Button
+
+List of Event Commands:
+@>
+
+#------------------------------------------------------------------------------
+Event ID: 078
+Event Name: Rabbit NPC
+(X,Y): (024,025)
+
+Page #1
+Conditions
+None
+
+Graphic: TPDP_NPC 54
+
+Autonomous Movement
+Type: Fixed
+Speed: 3: Slow
+Freq: 3: Low
+Options Enabled
+Move Animation
+Trigger: Action Button
+
+List of Event Commands:
+@>
+
+#------------------------------------------------------------------------------
+Event ID: 079
+Event Name: Rabbit NPC
+(X,Y): (024,026)
+
+Page #1
+Conditions
+None
+
+Graphic: TPDP_NPC 54
+
+Autonomous Movement
+Type: Fixed
+Speed: 3: Slow
+Freq: 3: Low
+Options Enabled
+Move Animation
+Trigger: Action Button
+
+List of Event Commands:
+@>
+
+#------------------------------------------------------------------------------
+Event ID: 080
+Event Name: Rabbit NPC
+(X,Y): (024,027)
+
+Page #1
+Conditions
+None
+
+Graphic: TPDP_NPC 54
+
+Autonomous Movement
+Type: Fixed
+Speed: 3: Slow
+Freq: 3: Low
+Options Enabled
+Move Animation
+Trigger: Action Button
+
+List of Event Commands:
+@>
+
+#------------------------------------------------------------------------------
+Event ID: 081
+Event Name: Rabbit NPC
+(X,Y): (024,029)
+
+Page #1
+Conditions
+None
+
+Graphic: TPDP_NPC 54
+
+Autonomous Movement
+Type: Fixed
+Speed: 3: Slow
+Freq: 3: Low
+Options Enabled
+Move Animation
+Trigger: Action Button
+
+List of Event Commands:
+@>
+
+#------------------------------------------------------------------------------
+Event ID: 082
+Event Name: Rabbit NPC
+(X,Y): (024,030)
+
+Page #1
+Conditions
+None
+
+Graphic: TPDP_NPC 54
+
+Autonomous Movement
+Type: Fixed
+Speed: 3: Slow
+Freq: 3: Low
+Options Enabled
+Move Animation
+Trigger: Action Button
+
+List of Event Commands:
+@>
+
+#------------------------------------------------------------------------------
+Event ID: 083
+Event Name: Rabbit NPC
+(X,Y): (024,031)
+
+Page #1
+Conditions
+None
+
+Graphic: TPDP_NPC 54
+
+Autonomous Movement
+Type: Fixed
+Speed: 3: Slow
+Freq: 3: Low
+Options Enabled
+Move Animation
+Trigger: Action Button
+
+List of Event Commands:
+@>
+
+#------------------------------------------------------------------------------
+Event ID: 084
+Event Name: Rabbit NPC
+(X,Y): (024,032)
+
+Page #1
+Conditions
+None
+
+Graphic: TPDP_NPC 54
+
+Autonomous Movement
+Type: Fixed
+Speed: 3: Slow
+Freq: 3: Low
+Options Enabled
+Move Animation
+Trigger: Action Button
+
+List of Event Commands:
+@>
+
+#------------------------------------------------------------------------------
+Event ID: 085
+Event Name: Rabbit NPC
+(X,Y): (025,031)
+
+Page #1
+Conditions
+None
+
+Graphic: TPDP_NPC 54
+
+Autonomous Movement
+Type: Fixed
+Speed: 3: Slow
+Freq: 3: Low
+Options Enabled
+Move Animation
+Trigger: Action Button
+
+List of Event Commands:
+@>
+
+#------------------------------------------------------------------------------
+Event ID: 086
+Event Name: Rabbit NPC
+(X,Y): (025,030)
+
+Page #1
+Conditions
+None
+
+Graphic: TPDP_NPC 54
+
+Autonomous Movement
+Type: Fixed
+Speed: 3: Slow
+Freq: 3: Low
+Options Enabled
+Move Animation
+Trigger: Action Button
+
+List of Event Commands:
+@>
+
+#------------------------------------------------------------------------------
+Event ID: 087
+Event Name: Rabbit NPC
+(X,Y): (025,029)
+
+Page #1
+Conditions
+None
+
+Graphic: TPDP_NPC 54
+
+Autonomous Movement
+Type: Fixed
+Speed: 3: Slow
+Freq: 3: Low
+Options Enabled
+Move Animation
+Trigger: Action Button
+
+List of Event Commands:
+@>
+
+#------------------------------------------------------------------------------
+Event ID: 088
+Event Name: Rabbit NPC
+(X,Y): (025,028)
+
+Page #1
+Conditions
+None
+
+Graphic: TPDP_NPC 54
+
+Autonomous Movement
+Type: Fixed
+Speed: 3: Slow
+Freq: 3: Low
+Options Enabled
+Move Animation
+Trigger: Action Button
+
+List of Event Commands:
+@>
+
+#------------------------------------------------------------------------------
+Event ID: 089
+Event Name: Rabbit NPC
+(X,Y): (025,026)
+
+Page #1
+Conditions
+None
+
+Graphic: TPDP_NPC 54
+
+Autonomous Movement
+Type: Fixed
+Speed: 3: Slow
+Freq: 3: Low
+Options Enabled
+Move Animation
+Trigger: Action Button
+
+List of Event Commands:
+@>
+
+#------------------------------------------------------------------------------
+Event ID: 090
+Event Name: Rabbit NPC
+(X,Y): (025,025)
+
+Page #1
+Conditions
+None
+
+Graphic: TPDP_NPC 54
+
+Autonomous Movement
+Type: Fixed
+Speed: 3: Slow
+Freq: 3: Low
+Options Enabled
+Move Animation
+Trigger: Action Button
+
+List of Event Commands:
+@>
+
+#------------------------------------------------------------------------------
+Event ID: 091
+Event Name: Rabbit NPC
+(X,Y): (025,024)
+
+Page #1
+Conditions
+None
+
+Graphic: TPDP_NPC 54
+
+Autonomous Movement
+Type: Fixed
+Speed: 3: Slow
+Freq: 3: Low
+Options Enabled
+Move Animation
+Trigger: Action Button
+
+List of Event Commands:
+@>
+
+#------------------------------------------------------------------------------
+Event ID: 093
+Event Name: Rabbit NPC
+(X,Y): (025,023)
+
+Page #1
+Conditions
+None
+
+Graphic: TPDP_NPC 54
+
+Autonomous Movement
+Type: Fixed
+Speed: 3: Slow
+Freq: 3: Low
+Options Enabled
+Move Animation
+Trigger: Action Button
+
+List of Event Commands:
+@>
+
+#------------------------------------------------------------------------------
+Event ID: 094
+Event Name: Rabbit NPC
+(X,Y): (025,022)
+
+Page #1
+Conditions
+None
+
+Graphic: TPDP_NPC 54
+
+Autonomous Movement
+Type: Fixed
+Speed: 3: Slow
+Freq: 3: Low
+Options Enabled
+Move Animation
+Trigger: Action Button
+
+List of Event Commands:
+@>
+
+#------------------------------------------------------------------------------
+Event ID: 095
+Event Name: Rabbit NPC
+(X,Y): (025,021)
+
+Page #1
+Conditions
+None
+
+Graphic: TPDP_NPC 54
+
+Autonomous Movement
+Type: Fixed
+Speed: 3: Slow
+Freq: 3: Low
+Options Enabled
+Move Animation
+Trigger: Action Button
+
+List of Event Commands:
+@>
+
+#------------------------------------------------------------------------------
+Event ID: 096
+Event Name: Rabbit NPC
+(X,Y): (025,020)
+
+Page #1
+Conditions
+None
+
+Graphic: TPDP_NPC 54
+
+Autonomous Movement
+Type: Fixed
+Speed: 3: Slow
+Freq: 3: Low
+Options Enabled
+Move Animation
+Trigger: Action Button
+
+List of Event Commands:
+@>
+
+#------------------------------------------------------------------------------
+Event ID: 097
+Event Name: Rabbit NPC
+(X,Y): (025,019)
+
+Page #1
+Conditions
+None
+
+Graphic: TPDP_NPC 54
+
+Autonomous Movement
+Type: Fixed
+Speed: 3: Slow
+Freq: 3: Low
+Options Enabled
+Move Animation
+Trigger: Action Button
+
+List of Event Commands:
+@>
+
+#------------------------------------------------------------------------------
+Event ID: 098
+Event Name: Rabbit NPC
+(X,Y): (025,018)
+
+Page #1
+Conditions
+None
+
+Graphic: TPDP_NPC 54
+
+Autonomous Movement
+Type: Fixed
+Speed: 3: Slow
+Freq: 3: Low
+Options Enabled
+Move Animation
+Trigger: Action Button
+
+List of Event Commands:
+@>
+
+#------------------------------------------------------------------------------
+Event ID: 099
+Event Name: Rabbit NPC
+(X,Y): (025,017)
+
+Page #1
+Conditions
+None
+
+Graphic: TPDP_NPC 54
+
+Autonomous Movement
+Type: Fixed
+Speed: 3: Slow
+Freq: 3: Low
+Options Enabled
+Move Animation
+Trigger: Action Button
+
+List of Event Commands:
+@>
+
+#------------------------------------------------------------------------------
+Event ID: 101
+Event Name: Rabbit NPC
+(X,Y): (025,015)
+
+Page #1
+Conditions
+None
+
+Graphic: TPDP_NPC 54
+
+Autonomous Movement
+Type: Fixed
+Speed: 3: Slow
+Freq: 3: Low
+Options Enabled
+Move Animation
+Trigger: Action Button
+
+List of Event Commands:
+@>
+
+#------------------------------------------------------------------------------
+Event ID: 102
+Event Name: Rabbit NPC
+(X,Y): (025,014)
+
+Page #1
+Conditions
+None
+
+Graphic: TPDP_NPC 54
+
+Autonomous Movement
+Type: Fixed
+Speed: 3: Slow
+Freq: 3: Low
+Options Enabled
+Move Animation
+Trigger: Action Button
+
+List of Event Commands:
+@>
+
+#------------------------------------------------------------------------------
+Event ID: 103
+Event Name: Rabbit NPC
+(X,Y): (025,013)
+
+Page #1
+Conditions
+None
+
+Graphic: TPDP_NPC 54
+
+Autonomous Movement
+Type: Fixed
+Speed: 3: Slow
+Freq: 3: Low
+Options Enabled
+Move Animation
+Trigger: Action Button
+
+List of Event Commands:
+@>
+
+#------------------------------------------------------------------------------
+Event ID: 104
+Event Name: Rabbit NPC
+(X,Y): (025,012)
+
+Page #1
+Conditions
+None
+
+Graphic: TPDP_NPC 54
+
+Autonomous Movement
+Type: Fixed
+Speed: 3: Slow
+Freq: 3: Low
+Options Enabled
+Move Animation
+Trigger: Action Button
+
+List of Event Commands:
+@>
+
+#------------------------------------------------------------------------------
+Event ID: 105
+Event Name: Rabbit NPC
+(X,Y): (026,011)
+
+Page #1
+Conditions
+None
+
+Graphic: TPDP_NPC 54
+
+Autonomous Movement
+Type: Fixed
+Speed: 3: Slow
+Freq: 3: Low
+Options Enabled
+Move Animation
+Trigger: Action Button
+
+List of Event Commands:
+@>
+
+#------------------------------------------------------------------------------
+Event ID: 106
+Event Name: Rabbit NPC
+(X,Y): (026,012)
+
+Page #1
+Conditions
+None
+
+Graphic: TPDP_NPC 54
+
+Autonomous Movement
+Type: Fixed
+Speed: 3: Slow
+Freq: 3: Low
+Options Enabled
+Move Animation
+Trigger: Action Button
+
+List of Event Commands:
+@>
+
+#------------------------------------------------------------------------------
+Event ID: 107
+Event Name: Rabbit NPC
+(X,Y): (026,013)
+
+Page #1
+Conditions
+None
+
+Graphic: TPDP_NPC 54
+
+Autonomous Movement
+Type: Fixed
+Speed: 3: Slow
+Freq: 3: Low
+Options Enabled
+Move Animation
+Trigger: Action Button
+
+List of Event Commands:
+@>
+
+#------------------------------------------------------------------------------
+Event ID: 108
+Event Name: Rabbit NPC
+(X,Y): (026,014)
+
+Page #1
+Conditions
+None
+
+Graphic: TPDP_NPC 54
+
+Autonomous Movement
+Type: Fixed
+Speed: 3: Slow
+Freq: 3: Low
+Options Enabled
+Move Animation
+Trigger: Action Button
+
+List of Event Commands:
+@>
+
+#------------------------------------------------------------------------------
+Event ID: 110
+Event Name: Rabbit NPC
+(X,Y): (026,016)
+
+Page #1
+Conditions
+None
+
+Graphic: TPDP_NPC 54
+
+Autonomous Movement
+Type: Fixed
+Speed: 3: Slow
+Freq: 3: Low
+Options Enabled
+Move Animation
+Trigger: Action Button
+
+List of Event Commands:
+@>
+
+#------------------------------------------------------------------------------
+Event ID: 111
+Event Name: Rabbit NPC
+(X,Y): (026,017)
+
+Page #1
+Conditions
+None
+
+Graphic: TPDP_NPC 54
+
+Autonomous Movement
+Type: Fixed
+Speed: 3: Slow
+Freq: 3: Low
+Options Enabled
+Move Animation
+Trigger: Action Button
+
+List of Event Commands:
+@>
+
+#------------------------------------------------------------------------------
+Event ID: 112
+Event Name: Rabbit NPC
+(X,Y): (026,018)
+
+Page #1
+Conditions
+None
+
+Graphic: TPDP_NPC 54
+
+Autonomous Movement
+Type: Fixed
+Speed: 3: Slow
+Freq: 3: Low
+Options Enabled
+Move Animation
+Trigger: Action Button
+
+List of Event Commands:
+@>
+
+#------------------------------------------------------------------------------
+Event ID: 113
+Event Name: Rabbit NPC
+(X,Y): (026,019)
+
+Page #1
+Conditions
+None
+
+Graphic: TPDP_NPC 54
+
+Autonomous Movement
+Type: Fixed
+Speed: 3: Slow
+Freq: 3: Low
+Options Enabled
+Move Animation
+Trigger: Action Button
+
+List of Event Commands:
+@>
+
+#------------------------------------------------------------------------------
+Event ID: 114
+Event Name: Rabbit NPC
+(X,Y): (026,020)
+
+Page #1
+Conditions
+None
+
+Graphic: TPDP_NPC 54
+
+Autonomous Movement
+Type: Fixed
+Speed: 3: Slow
+Freq: 3: Low
+Options Enabled
+Move Animation
+Trigger: Action Button
+
+List of Event Commands:
+@>
+
+#------------------------------------------------------------------------------
+Event ID: 115
+Event Name: Rabbit NPC
+(X,Y): (026,021)
+
+Page #1
+Conditions
+None
+
+Graphic: TPDP_NPC 54
+
+Autonomous Movement
+Type: Fixed
+Speed: 3: Slow
+Freq: 3: Low
+Options Enabled
+Move Animation
+Trigger: Action Button
+
+List of Event Commands:
+@>
+
+#------------------------------------------------------------------------------
+Event ID: 116
+Event Name: Rabbit NPC
+(X,Y): (026,022)
+
+Page #1
+Conditions
+None
+
+Graphic: TPDP_NPC 54
+
+Autonomous Movement
+Type: Fixed
+Speed: 3: Slow
+Freq: 3: Low
+Options Enabled
+Move Animation
+Trigger: Action Button
+
+List of Event Commands:
+@>
+
+#------------------------------------------------------------------------------
+Event ID: 118
+Event Name: Rabbit NPC
+(X,Y): (026,023)
+
+Page #1
+Conditions
+None
+
+Graphic: TPDP_NPC 54
+
+Autonomous Movement
+Type: Fixed
+Speed: 3: Slow
+Freq: 3: Low
+Options Enabled
+Move Animation
+Trigger: Action Button
+
+List of Event Commands:
+@>
+
+#------------------------------------------------------------------------------
+Event ID: 119
+Event Name: Rabbit NPC
+(X,Y): (026,024)
+
+Page #1
+Conditions
+None
+
+Graphic: TPDP_NPC 54
+
+Autonomous Movement
+Type: Fixed
+Speed: 3: Slow
+Freq: 3: Low
+Options Enabled
+Move Animation
+Trigger: Action Button
+
+List of Event Commands:
+@>
+
+#------------------------------------------------------------------------------
+Event ID: 120
+Event Name: Rabbit NPC
+(X,Y): (026,025)
+
+Page #1
+Conditions
+None
+
+Graphic: TPDP_NPC 54
+
+Autonomous Movement
+Type: Fixed
+Speed: 3: Slow
+Freq: 3: Low
+Options Enabled
+Move Animation
+Trigger: Action Button
+
+List of Event Commands:
+@>
+
+#------------------------------------------------------------------------------
+Event ID: 121
+Event Name: Rabbit NPC
+(X,Y): (026,027)
+
+Page #1
+Conditions
+None
+
+Graphic: TPDP_NPC 54
+
+Autonomous Movement
+Type: Fixed
+Speed: 3: Slow
+Freq: 3: Low
+Options Enabled
+Move Animation
+Trigger: Action Button
+
+List of Event Commands:
+@>
+
+#------------------------------------------------------------------------------
+Event ID: 122
+Event Name: Rabbit NPC
+(X,Y): (026,028)
+
+Page #1
+Conditions
+None
+
+Graphic: TPDP_NPC 54
+
+Autonomous Movement
+Type: Fixed
+Speed: 3: Slow
+Freq: 3: Low
+Options Enabled
+Move Animation
+Trigger: Action Button
+
+List of Event Commands:
+@>
+
+#------------------------------------------------------------------------------
+Event ID: 123
+Event Name: Rabbit NPC
+(X,Y): (026,029)
+
+Page #1
+Conditions
+None
+
+Graphic: TPDP_NPC 54
+
+Autonomous Movement
+Type: Fixed
+Speed: 3: Slow
+Freq: 3: Low
+Options Enabled
+Move Animation
+Trigger: Action Button
+
+List of Event Commands:
+@>
+
+#------------------------------------------------------------------------------
+Event ID: 124
+Event Name: Rabbit NPC
+(X,Y): (026,030)
+
+Page #1
+Conditions
+None
+
+Graphic: TPDP_NPC 54
+
+Autonomous Movement
+Type: Fixed
+Speed: 3: Slow
+Freq: 3: Low
+Options Enabled
+Move Animation
+Trigger: Action Button
+
+List of Event Commands:
+@>
+
+#------------------------------------------------------------------------------
 
 #==============================================================================
 Map ID: 101
@@ -75812,6 +79786,112 @@ Map ID: 102
 Map Name: Credits - Human Village
 Tileset: 027: Human Village
 Width: 73, Height: 89
+
+#==============================================================================
+Map ID: 103
+Map Name: Ancient Lunar Sake Storehouse
+Tileset: 048: Lunar Capital Palace
+Width: 20, Height: 15
+Auto-Change BGM: W-034. Frozen Capital of Eternity
+
+#------------------------------------------------------------------------------
+Event ID: 001
+Event Name: EV001
+(X,Y): (013,004)
+
+Page #1
+Conditions
+None
+
+Autonomous Movement
+Type: Fixed
+Speed: 3: Slow
+Freq: 3: Low
+Options Enabled
+Move Animation
+Trigger: Action Button
+
+List of Event Commands:
+@>Text: There's an object enshrined here.
+@>Text: Take it?
+@>Show Choices: Yes, No
+(When Cancel: Choice 2)
+: When [Yes]
+ @>Script: pbReceiveItem(:ANCIENTLUNARSAKE)
+ @>Control Switches: [0143: Ancient Lunar Sake Get] = ON
+ @>Text: \xn[\pn]... Wow! That's one strong aroma!
+ @>
+: When [No]
+ @>
+: Branch End
+@>
+
+Page #2
+Conditions
+Switch 0143: Ancient Lunar Sake Get is ON
+
+Autonomous Movement
+Type: Fixed
+Speed: 3: Slow
+Freq: 3: Low
+Options Enabled
+Move Animation
+Trigger: Action Button
+
+List of Event Commands:
+@>
+
+#------------------------------------------------------------------------------
+Event ID: 002
+Event Name: EV002
+(X,Y): (000,012)
+
+Page #1
+Conditions
+None
+
+Autonomous Movement
+Type: Fixed
+Speed: 3: Slow
+Freq: 3: Low
+Options Enabled
+Move Animation
+Trigger: Player Touch
+
+List of Event Commands:
+@>Play SE: 'Door exit', 80, 100
+@>Change Screen Color Tone: (-255,-255,-255,0), @8
+@>Wait: 8 frame(s)
+@>Transfer Player:[124: Infinity Veil], (062,018)
+@>Change Screen Color Tone: (0,0,0,0), @8
+@>
+
+#------------------------------------------------------------------------------
+Event ID: 003
+Event Name: EV003
+(X,Y): (000,011)
+
+Page #1
+Conditions
+None
+
+Autonomous Movement
+Type: Fixed
+Speed: 3: Slow
+Freq: 3: Low
+Options Enabled
+Move Animation
+Trigger: Player Touch
+
+List of Event Commands:
+@>Play SE: 'Door exit', 80, 100
+@>Change Screen Color Tone: (-255,-255,-255,0), @8
+@>Wait: 8 frame(s)
+@>Transfer Player:[124: Infinity Veil], (062,017)
+@>Change Screen Color Tone: (0,0,0,0), @8
+@>
+
+#------------------------------------------------------------------------------
 
 #==============================================================================
 Map ID: 104
@@ -76956,6 +81036,129 @@ List of Event Commands:
 @>
 
 #------------------------------------------------------------------------------
+Event ID: 003
+Event Name: EV003
+(X,Y): (000,000)
+
+Page #1
+Conditions
+Variable 0121: TKoL Plot Variable is 22 or above
+
+Autonomous Movement
+Type: Fixed
+Speed: 3: Slow
+Freq: 3: Low
+Options Enabled
+Move Animation
+Trigger: Action Button
+
+List of Event Commands:
+@>Text: \xn[\pn]Alright, my homework for the week is done! I should head on
+ :    : out and enjoy the day.
+@>Text: \xn[\pn]I wonder if Maya, Shinji, and Kota are free...
+@>Wait: 10 frame(s)
+@>Text: \xn[Mom]\pn, there's someone here to see you!
+@>Show Animation: Player, [Question bubble]
+@>Text: \xn[\pn]\b(Someone...? Wonder who it could be.)
+@>Text: \xn[\pn]Alright, send them on in!
+@>Set Move Route: Player
+ :              : $>Move Up
+ :              : $>Move Up
+ :              : $>Move Right
+ :              : $>Move Right
+ :              : $>Move Down
+ :              : $>Move Down
+ :              : $>Move Down
+ :              : $>Move Down
+ :              : $>Move Right
+ :              : $>Move Right
+ :              : $>Move Right
+ :              : $>Turn Down
+@>Wait for Move's Completion
+@>Set Event Location: [Moon Rabbit],(009,012)
+@>Set Move Route: [Moon Rabbit]
+ :              : $>SE: 'Door enter', 80, 100
+ :              : $>Change Opacity: 255
+@>Wait for Move's Completion
+@>Show Animation: Player, [Exclaim bubble]
+@>Text: \xn[\pn]Wait, what's a Moon Rabbit doing here!?
+@>Text: You must be \pn, is that correct?
+@>Text: \xn[\pn]Yes...? Why do you ask.
+@>Text: By order of the High Command of the Lunar Defense Corps, you
+ :    : have been summoned to the Capital to stand trial for your actions.
+@>Show Animation: Player, [Exclaim bubble]
+@>Text: \xn[\pn]Trial!? What do you mean Trial! What did I do wrong?
+@>Text: Your list of charges include uninvited invasion of the Capital,
+ :    : bullying of several recruits within the LDC...
+@>Text: \xn[\pn]Invasion- Bullying- What? This makes no sense!
+@>Text: Be that as it may! If you do not show up to this trial, a larger
+ :    : force will be sent to retrieve you, as your verdict will be guilty by
+ :    : default.
+@>Text: \xn[\pn]I- But! ...Fine, I guess I'll go plead my case.
+@>Text: \xn[\pn]I am wondering why I'm being made to stand trial when I literally
+ :    : saved the entire Capital...
+@>Text: I shall be taking my leave now, we look forward to seeing
+ :    : you on the Capital, Miss "Savior of the Moon"!
+@>Set Move Route: [Moon Rabbit]
+ :              : $>Turn Down
+ :              : $>SE: 'Door exit', 80, 100
+ :              : $>Change Opacity: 0
+@>Control Variables: [0121: TKoL Plot Variable] = 23
+@>
+
+Page #2
+Conditions
+Variable 0121: TKoL Plot Variable is 23 or above
+
+Autonomous Movement
+Type: Fixed
+Speed: 3: Slow
+Freq: 3: Low
+Options Enabled
+Move Animation
+Trigger: Action Button
+
+List of Event Commands:
+@>
+
+#------------------------------------------------------------------------------
+Event ID: 004
+Event Name: Moon Rabbit
+(X,Y): (019,000)
+
+Page #1
+Conditions
+None
+
+Graphic: TPDP_NPC 54
+
+Autonomous Movement
+Type: Fixed
+Speed: 3: Slow
+Freq: 3: Low
+Options Enabled
+Move Animation
+Trigger: Action Button
+
+List of Event Commands:
+@>
+
+Page #2
+Conditions
+Variable 0121: TKoL Plot Variable is 23 or above
+
+Autonomous Movement
+Type: Fixed
+Speed: 3: Slow
+Freq: 3: Low
+Options Enabled
+Move Animation
+Trigger: Action Button
+
+List of Event Commands:
+@>
+
+#------------------------------------------------------------------------------
 
 #==============================================================================
 Map ID: 119
@@ -77559,7 +81762,7 @@ Move Animation
 Trigger: Action Button
 
 List of Event Commands:
-@>Show Animation: This event, [Grass rustle]
+@>Show Animation: This event, [Exclaim bubble]
 @>Set Move Route: This event
  :              : $>Turn toward Player
 @>Text: E-Eek! I swear I'm not slacking off, I'm just-
@@ -79582,6 +83785,21 @@ List of Event Commands:
 @>Text: Placeholder
 @>
 
+Page #3
+Conditions
+Variable 0121: TKoL Plot Variable is 22 or above
+
+Autonomous Movement
+Type: Fixed
+Speed: 3: Slow
+Freq: 3: Low
+Options Enabled
+Move Animation
+Trigger: Action Button
+
+List of Event Commands:
+@>
+
 #------------------------------------------------------------------------------
 Event ID: 002
 Event Name: EV002
@@ -79589,7 +83807,7 @@ Event Name: EV002
 
 Page #1
 Conditions
-None
+Variable 0121: TKoL Plot Variable is 20 or above
 
 Autonomous Movement
 Type: Fixed
@@ -79608,31 +83826,6 @@ List of Event Commands:
  @>Show Choices: Yes, No
  (When Cancel: Choice 2)
  : When [Yes]
-  @>Conditional Branch: Script: $DEBUG
-   @>Text: DEBUG COMMAND: Pick Partner.
-   @>Show Choices: Reimu, Marisa, Sanae, Reisen
-   (When Cancel: Disallow)
-   : When [Reimu]
-    @>Control Variables: [0122: TKoL S6 Partner] = 1
-    @>Script: pbSet(126, "Reimu")
-    @>
-   : When [Marisa]
-    @>Control Variables: [0122: TKoL S6 Partner] = 2
-    @>Script: pbSet(126, "Marisa")
-    @>
-   : When [Sanae]
-    @>Control Variables: [0122: TKoL S6 Partner] = 3
-    @>Script: pbSet(126, "Sanae")
-    @>
-   : When [Reisen]
-    @>Control Variables: [0122: TKoL S6 Partner] = 4
-    @>Script: pbSet(126, "Reisen")
-    @>
-   : Branch End
-   @>
-  : Else
-   @>
-  : Branch End
   @>Play SE: 'Door exit', 100, 100
   @>Change Screen Color Tone: (-255,-255,-255,0), @6
   @>Wait: 8 frame(s)
@@ -79646,6 +83839,23 @@ List of Event Commands:
  : Branch End
  @>
 : Branch End
+@>
+
+Page #2
+Conditions
+Variable 0121: TKoL Plot Variable is 22 or above
+
+Autonomous Movement
+Type: Fixed
+Speed: 3: Slow
+Freq: 3: Low
+Options Enabled
+Move Animation
+Trigger: Player Touch
+
+List of Event Commands:
+@>Set Move Route: Player
+ :              : $>Move Down
 @>
 
 #------------------------------------------------------------------------------
@@ -79720,21 +83930,299 @@ List of Event Commands:
 @>
 
 #------------------------------------------------------------------------------
-
-#==============================================================================
-Map ID: 124
-Map Name: Infinite Hallway
-Tileset: 048: Lunar Capital Palace
-Width: 73, Height: 45
-
-#------------------------------------------------------------------------------
-Event ID: 001
-Event Name: Midpoint
-(X,Y): (032,011)
+Event ID: 005
+Event Name: EV005
+(X,Y): (023,000)
 
 Page #1
 Conditions
 None
+
+Autonomous Movement
+Type: Fixed
+Speed: 3: Slow
+Freq: 3: Low
+Options Enabled
+Move Animation
+Trigger: Action Button
+
+List of Event Commands:
+@>Conditional Branch: Script: $DEBUG
+ @>Text: DEBUG COMMAND: Pick Partner.
+ @>Show Choices: Reimu, Marisa, Sanae, Reisen
+ (When Cancel: Disallow)
+ : When [Reimu]
+  @>Control Variables: [0122: TKoL S6 Partner] = 1
+  @>Script: pbSet(126, "Reimu")
+  @>
+ : When [Marisa]
+  @>Control Variables: [0122: TKoL S6 Partner] = 2
+  @>Script: pbSet(126, "Marisa")
+  @>
+ : When [Sanae]
+  @>Control Variables: [0122: TKoL S6 Partner] = 3
+  @>Script: pbSet(126, "Sanae")
+  @>
+ : When [Reisen]
+  @>Control Variables: [0122: TKoL S6 Partner] = 4
+  @>Script: pbSet(126, "Reisen")
+  @>
+ : Branch End
+ @>
+: Else
+ @>
+: Branch End
+@>
+
+#------------------------------------------------------------------------------
+
+#==============================================================================
+Map ID: 124
+Map Name: Infinity Veil
+Tileset: 048: Lunar Capital Palace
+Width: 73, Height: 45
+Auto-Change BGM: W-034. Frozen Capital of Eternity
+
+#------------------------------------------------------------------------------
+Event ID: 001
+Event Name: size(1,5) Midpoint
+(X,Y): (030,020)
+
+Page #1
+Conditions
+Variable 0128: TKoL Hallway Variable is 1 or above
+
+Autonomous Movement
+Type: Fixed
+Speed: 3: Slow
+Freq: 3: Low
+Options Enabled
+Move Animation
+Trigger: Player Touch
+
+List of Event Commands:
+@>Conditional Branch: Self Switch A == OFF
+ @>Text: \xn[\pn]This is a really long hallway... I wonder where it leads.
+ @>Control Self Switch: A =ON
+ @>
+: Branch End
+@>
+
+Page #2
+Conditions
+Variable 0128: TKoL Hallway Variable is 2 or above
+
+Autonomous Movement
+Type: Fixed
+Speed: 3: Slow
+Freq: 3: Low
+Options Enabled
+Move Animation
+Trigger: Player Touch
+
+List of Event Commands:
+@>Conditional Branch: Self Switch B == OFF
+ @>Text: \xn[\pn]... Suspiciously long... How long have I been walking?
+ @>Control Self Switch: B =ON
+ @>
+: Branch End
+@>
+
+Page #3
+Conditions
+Variable 0128: TKoL Hallway Variable is 3 or above
+
+Autonomous Movement
+Type: Fixed
+Speed: 3: Slow
+Freq: 3: Low
+Options Enabled
+Move Animation
+Trigger: Player Touch
+
+List of Event Commands:
+@>Conditional Branch: Self Switch C == OFF
+ @>Text: \xn[\pn]Okay this is getting absurd! Does this hallway never end?
+ @>Text: \xn[?????]That would be the current idea, yes.
+ @>Text: \xn[\pn]Hey, who said that? Show yourself!
+ @>Text: \xn[?????]Alright, alright! No need to shout, sheesh.
+ @>Set Event Location: [Rabbit Engineer Och],(038,017), Left
+ @>Set Event Location: [Rabbit Engineer Phul],(038,018), Left
+ @>Set Move Route: [Rabbit Engineer Och]
+  :              : $>Move Left
+  :              : $>Move Left
+  :              : $>Move Left
+  :              : $>Move Left
+ @>Set Move Route: [Rabbit Engineer Phul]
+  :              : $>Move Left
+  :              : $>Move Left
+  :              : $>Move Left
+  :              : $>Move Left
+ @>Text: \xn[?????]But wow, I never thought we'd actually catch someone
+  :    : with the prototype.
+ @>Wait for Move's Completion
+ @>Set Move Route: [Rabbit Engineer Och]
+  :              : $>Turn Down
+ @>Text: \xn[?????]See Phul, I told you that this would work! All we need to
+  :    : do is refine the Infinity Veil some more, tweak its power consumption,
+  :    : and it'll be perfect.
+ @>Set Move Route: [Rabbit Engineer Phul]
+  :              : $>Turn Up
+ @>Text: \xn[?????]I guess I owe you a drink when we're done here, Och...
+  :    : But, with the confirmation that it does work, we can now present
+  :    : this to the Princesses for proper funding!
+ @>Text: \xn[\pn]Uhm... Hello there?
+ @>Set Move Route: [Rabbit Engineer Och]
+  :              : $>Turn Left
+ @>Text: \xn[?????]Oh! Right, sorry, we forgot you were there for
+  :    : a moment.
+ @>Text: \xn[?????]We're two engineers part of the Lunar Defense Corps 
+  :    : Experimental Technology Divison. My name is Och.
+ @>Set Move Route: [Rabbit Engineer Phul]
+  :              : $>Turn Left
+ @>Text: \xn[?????]And I'm Phul! We're the ones responsible for the LDC's
+  :    : latest technological advancements.
+ @>Text: \xn[Phul]The Nanofiber Forge, the Orion Hoverspeeder, the
+  :    : "Tsukuyomi"-class Warship...
+ @>Set Move Route: [Rabbit Engineer Och]
+  :              : $>Turn Down
+ @>Text: \xn[Och]Phul! That one is supposed to be a secret. The 
+  :    : Humans can't know about it!
+ @>Set Move Route: [Rabbit Engineer Phul]
+  :              : $>Turn Up
+ @>Text: \xn[Phul]Oh, shoot- you're right! Well, it's probably fine.
+ @>Set Move Route: [Rabbit Engineer Och]
+  :              : $>Turn Left
+ @>Set Move Route: [Rabbit Engineer Phul]
+  :              : $>Turn Left
+ @>Text: \xn[Phul]Judging by her looks, this Human probably won't cause us
+  :    : any trouble, isn't that right? She looks as harmless as they come!
+ @>Text: \xn[\pn]...Really not sure I like how I'm being talked down to 
+  :    : here.
+ @>Text: \xn[\pn]But yeah, I mean you no harm! I just happened to stumble
+  :    : in here on my way to trying to find the Princesses...
+ @>Text: \xn[Och]Oooh! You must be the one that the Capital is talking about!
+  :    : The "Savior of the Moon", they're calling you!
+ @>Text: \xn[Phul]Oh hey, I've heard of her! People are saying she took
+  :    : on the entire army of Hell Fairies and their leader all by herself.
+ @>Text: \xn[Phul]... She still doesn't look all that menacing though!
+ @>Text: \xn[Och]For someone whos called the "Savior of the Moon",
+  :    : you sure look like an ordinary human. You sure you're all
+  :    : you're cracked up to be?
+ @>Text: \xn[\pn]Hey! I'll have you know that I'm one of the the strongest 
+  :    : Puppet handlers in Gensokyo!
+ @>Text: \xn[\pn]And for the record, I <i>did</i> manage to take on the 
+  :    : entire army of Hell Fairies and their leader, <i>and</i> drove 
+  :    : them off!
+ @>Text: \xn[\pn]\b(They just don't need to know that it wasn't by myself 
+  :    : at the end..)
+ @>Text: \xn[Och]Oh-ho, bold claim for a Human to make!  It sounds
+  :    : like a challenge is in order to test those claims of yours!
+ @>Text: \xn[\pn]Bring it on! I'll show you two what I'm made of!
+ @>Text: \xn[Phul]Heh heh, if you can beat us, maybe we'll let you see
+  :    : what's at the end of this hallway too!
+ @>Text: \xn[Och]Phul! We were tasked to protect that! We can't have a repeat
+  :    : of what happened before!
+ @>Text: \xn[Phul]Don't worry about it Och! There's no way this human is
+  :    : beating us!
+ @>Text: \xn[\pn]I'll make you eat those words, let's go!
+ @>Change Battle BGM: 'B-034. Battle vs. Trainer (Dreams)', 100, 100
+ @>Conditional Branch: Script: TrainerBattle.start(:MOONRABBIT_Phul, "Phul", pbGet(99), :MOONRABBIT_Och, "Och", pbGet(99))
+  @>Text: \xn[Och]Alright, alright, we concede! You're every bit as strong as
+   :    : the other rabbits have said.
+  @>Text: \xn[Och]I still don't think it's a good idea to let you go down further
+   :    : this hallway...
+  @>Text: \xn[Phul]We did promise her-\wtnp[10]
+  @>Set Move Route: [Rabbit Engineer Och]
+   :              : $>Turn Down
+  @>Text: \xn[Och]<i>You</i> promised her that! I was more than
+   :    : content letting her wander the hallway until she got bored
+   :    : and decided to turn back.
+  @>Set Move Route: [Rabbit Engineer Phul]
+   :              : $>Turn Up
+  @>Text: \xn[Phul]Well, it's not like it's our only stockpile of it! We only
+   :    : took the one for experimentation purposes.
+  @>Text: \xn[Phul]And I'd say we more than satisified our experiments with
+   :    : it by this point!
+  @>Text: \xn[Och]As long as high command doesn't find out we let another
+   :    : one slip out of the Capital without their permission... I <i>guess</I>
+   :    : it's fine.
+  @>Text: \xn[\pn]Sorry if I was a bit rough on you two, I may have gotten
+   :    : a little carried away...
+  @>Set Move Route: [Rabbit Engineer Och]
+   :              : $>Turn Left
+  @>Text: \xn[Och]Oh don't worry about that, we're used to handling 
+   :    : each other roughly.
+  @>Show Animation: [Rabbit Engineer Phul], [Exclaim bubble]
+  @>Set Move Route: [Rabbit Engineer Phul]
+   :              : $>Jump: +0,+0
+   :              : $>SE: 'Player jump', 80, 100
+   :              : $>Wait: 8 frame(s)
+   :              : $>Jump: +0,+0
+   :              : $>SE: 'Player jump', 80, 100
+   :              : $>Wait: 8 frame(s)
+   :              : $>Jump: +0,+0
+   :              : $>SE: 'Player jump', 80, 100
+  @>Text: \xn[Phul]Oi! Och! Don't just say things like that to strangers!
+  @>Wait for Move's Completion
+  @>Set Move Route: [Rabbit Engineer Phul]
+   :              : $>Turn Left
+  @>Text: \xn[Phul]We should be leaving now, before Och says anything
+   :    : else that might have her sleeping on the couch tonight.
+  @>Text: \xn[Phul]I do apologize once again for taunting you so much,
+   :    : hopefully what lies beyond here is enough to make up for it!
+  @>Set Move Route: [Rabbit Engineer Och]
+   :              : $>Move Right
+   :              : $>Move Right
+   :              : $>Move Right
+   :              : $>Move Right
+   :              : $>Move Right
+   :              : $>Move Right
+  @>Set Move Route: [Rabbit Engineer Phul]
+   :              : $>Move Right
+   :              : $>Move Right
+   :              : $>Move Right
+   :              : $>Move Right
+   :              : $>Move Right
+   :              : $>Move Right
+  @>Text: \xn[Och]Y'know, maybe we should invest in adding Laser Sentries
+   :    : to the prototype. It could serve well as a second line of defense
+   :    : in case invaders manage to get in!
+  @>Text: \xn[Phul]We're already pushing the power consumption capacity
+   :    : by allowing it to reach down to the planet's surface! If we do
+   :    : that, we'd need to quintuple the power generation!
+  @>Wait for Move's Completion
+  @>Control Variables: [0128: TKoL Hallway Variable] = 4
+  @>Wait: 15 frame(s)
+  @>Text: \xn[\pn]... Those two sure were a strange couple.
+  @>
+ : Else
+  @>Script: pbTrainerEnd
+  @>Exit Event Processing
+  @>
+ : Branch End
+ @>
+: Branch End
+@>
+
+Page #4
+Conditions
+Variable 0128: TKoL Hallway Variable is 4 or above
+
+Autonomous Movement
+Type: Fixed
+Speed: 3: Slow
+Freq: 3: Low
+Options Enabled
+Move Animation
+Trigger: Action Button
+
+List of Event Commands:
+@>
+
+Page #5
+Conditions
+Switch 0143: Ancient Lunar Sake Get is ON
 
 Autonomous Movement
 Type: Fixed
@@ -79756,6 +84244,38 @@ Page #1
 Conditions
 None
 
+Graphic: Person_RabbitOch
+
+Autonomous Movement
+Type: Fixed
+Speed: 3: Slow
+Freq: 3: Low
+Options Enabled
+Move Animation
+Trigger: Action Button
+
+List of Event Commands:
+@>
+
+Page #2
+Conditions
+Variable 0128: TKoL Hallway Variable is 4 or above
+
+Autonomous Movement
+Type: Fixed
+Speed: 3: Slow
+Freq: 3: Low
+Options Enabled
+Move Animation
+Trigger: Action Button
+
+List of Event Commands:
+@>
+
+Page #3
+Conditions
+Switch 0143: Ancient Lunar Sake Get is ON
+
 Autonomous Movement
 Type: Fixed
 Speed: 3: Slow
@@ -79775,6 +84295,38 @@ Event Name: Rabbit Engineer Phul
 Page #1
 Conditions
 None
+
+Graphic: Person_RabbitPhul
+
+Autonomous Movement
+Type: Fixed
+Speed: 3: Slow
+Freq: 3: Low
+Options Enabled
+Move Animation
+Trigger: Action Button
+
+List of Event Commands:
+@>
+
+Page #2
+Conditions
+Variable 0128: TKoL Hallway Variable is 4 or above
+
+Autonomous Movement
+Type: Fixed
+Speed: 3: Slow
+Freq: 3: Low
+Options Enabled
+Move Animation
+Trigger: Action Button
+
+List of Event Commands:
+@>
+
+Page #3
+Conditions
+Switch 0143: Ancient Lunar Sake Get is ON
 
 Autonomous Movement
 Type: Fixed
@@ -80209,8 +84761,8 @@ List of Event Commands:
 
 #------------------------------------------------------------------------------
 Event ID: 024
-Event Name: Viewport size(2,1)
-(X,Y): (063,015)
+Event Name: EV024
+(X,Y): (063,017)
 
 Page #1
 Conditions
@@ -80222,16 +84774,43 @@ Speed: 3: Slow
 Freq: 3: Low
 Options Enabled
 Move Animation
-Trigger: Action Button
+Trigger: Player Touch
 
 List of Event Commands:
-@>Call Common Event: Moonsight
+@>Play SE: 'Door exit', 80, 100
+@>Change Screen Color Tone: (-255,-255,-255,0), @8
+@>Wait: 8 frame(s)
+@>Transfer Player:[124: Infinity Veil], (002,017)
+@>Control Variables: [0128: TKoL Hallway Variable] += 1
+@>Wait: 8 frame(s)
+@>Change Screen Color Tone: (0,0,0,0), @8
+@>
+
+Page #2
+Conditions
+Variable 0128: TKoL Hallway Variable is 4 or above
+
+Autonomous Movement
+Type: Fixed
+Speed: 3: Slow
+Freq: 3: Low
+Options Enabled
+Move Animation
+Trigger: Player Touch
+
+List of Event Commands:
+@>Play SE: 'Door exit', 80, 100
+@>Change Screen Color Tone: (-255,-255,-255,0), @8
+@>Wait: 8 frame(s)
+@>Transfer Player:[103: Ancient Lunar Sake Storehouse], (001,011)
+@>Wait: 8 frame(s)
+@>Change Screen Color Tone: (0,0,0,0), @8
 @>
 
 #------------------------------------------------------------------------------
 Event ID: 025
-Event Name: Viewport size(2,1)
-(X,Y): (066,015)
+Event Name: EV025
+(X,Y): (063,018)
 
 Page #1
 Conditions
@@ -80243,16 +84822,43 @@ Speed: 3: Slow
 Freq: 3: Low
 Options Enabled
 Move Animation
-Trigger: Action Button
+Trigger: Player Touch
 
 List of Event Commands:
-@>Call Common Event: Moonsight
+@>Play SE: 'Door exit', 80, 100
+@>Change Screen Color Tone: (-255,-255,-255,0), @8
+@>Wait: 8 frame(s)
+@>Transfer Player:[124: Infinity Veil], (002,018)
+@>Control Variables: [0128: TKoL Hallway Variable] += 1
+@>Wait: 8 frame(s)
+@>Change Screen Color Tone: (0,0,0,0), @8
+@>
+
+Page #2
+Conditions
+Variable 0128: TKoL Hallway Variable is 2 or above
+
+Autonomous Movement
+Type: Fixed
+Speed: 3: Slow
+Freq: 3: Low
+Options Enabled
+Move Animation
+Trigger: Player Touch
+
+List of Event Commands:
+@>Play SE: 'Door exit', 80, 100
+@>Change Screen Color Tone: (-255,-255,-255,0), @8
+@>Wait: 8 frame(s)
+@>Transfer Player:[103: Ancient Lunar Sake Storehouse], (001,012)
+@>Wait: 8 frame(s)
+@>Change Screen Color Tone: (0,0,0,0), @8
 @>
 
 #------------------------------------------------------------------------------
 Event ID: 026
 Event Name: EV026
-(X,Y): (059,018)
+(X,Y): (001,017)
 
 Page #1
 Conditions
@@ -80267,14 +84873,22 @@ Move Animation
 Trigger: Player Touch
 
 List of Event Commands:
-@>Comment: Do not convert event
-@>Transfer Player:[124: Infinite Hallway], (011,018), No Fade
+@>Conditional Branch: Variable [0128: TKoL Hallway Variable] < 4
+ @>Control Variables: [0128: TKoL Hallway Variable] = 0
+ @>
+: Branch End
+@>Play SE: 'Door exit', 80, 100
+@>Change Screen Color Tone: (-255,-255,-255,0), @8
+@>Wait: 8 frame(s)
+@>Transfer Player:[099: Lunar Palace - Main Hall], (042,020)
+@>Wait: 8 frame(s)
+@>Change Screen Color Tone: (0,0,0,0), @8
 @>
 
 #------------------------------------------------------------------------------
 Event ID: 027
 Event Name: EV027
-(X,Y): (059,017)
+(X,Y): (001,018)
 
 Page #1
 Conditions
@@ -80289,29 +84903,16 @@ Move Animation
 Trigger: Player Touch
 
 List of Event Commands:
-@>Comment: Do not convert event
-@>Transfer Player:[124: Infinite Hallway], (011,017), No Fade
-@>
-
-#------------------------------------------------------------------------------
-Event ID: 028
-Event Name: Viewport size(2,1)
-(X,Y): (069,015)
-
-Page #1
-Conditions
-None
-
-Autonomous Movement
-Type: Fixed
-Speed: 3: Slow
-Freq: 3: Low
-Options Enabled
-Move Animation
-Trigger: Action Button
-
-List of Event Commands:
-@>Call Common Event: Moonsight
+@>Conditional Branch: Variable [0128: TKoL Hallway Variable] < 4
+ @>Control Variables: [0128: TKoL Hallway Variable] = 0
+ @>
+: Branch End
+@>Play SE: 'Door exit', 80, 100
+@>Change Screen Color Tone: (-255,-255,-255,0), @8
+@>Wait: 8 frame(s)
+@>Transfer Player:[099: Lunar Palace - Main Hall], (042,021)
+@>Wait: 8 frame(s)
+@>Change Screen Color Tone: (0,0,0,0), @8
 @>
 
 #------------------------------------------------------------------------------
@@ -81947,6 +86548,7 @@ List of Event Commands:
  : Branch End
  @>
 : Branch End
+@>Control Variables: [0121: TKoL Plot Variable] = 22
 @>Control Self Switch: A =ON
 @>
 
@@ -83894,7 +88496,7 @@ Event Name: EV047
 
 Page #1
 Conditions
-None
+Variable 0121: TKoL Plot Variable is 14 or above
 
 Autonomous Movement
 Type: Fixed
@@ -84485,6 +89087,33 @@ List of Event Commands:
 @>
 
 #------------------------------------------------------------------------------
+Event ID: 051
+Event Name: EV051
+(X,Y): (049,017)
+
+Page #1
+Conditions
+None
+
+Autonomous Movement
+Type: Fixed
+Speed: 3: Slow
+Freq: 3: Low
+Options Enabled
+Move Animation
+Trigger: Action Button
+
+List of Event Commands:
+@>Conditional Branch: Script: TrainerBattle.start(:REISEN2, "Rei'sen", 10+(pbGet(99) * 10))
+ @>
+: Else
+ @>Script: pbTrainerEnd
+ @>Exit Event Processing
+ @>
+: Branch End
+@>
+
+#------------------------------------------------------------------------------
 
 #==============================================================================
 Map ID: 127
@@ -84555,6 +89184,21 @@ List of Event Commands:
 @>Text: Placeholder
 @>
 
+Page #3
+Conditions
+Variable 0121: TKoL Plot Variable is 22 or above
+
+Autonomous Movement
+Type: Fixed
+Speed: 3: Slow
+Freq: 3: Low
+Options Enabled
+Move Animation
+Trigger: Action Button
+
+List of Event Commands:
+@>
+
 #------------------------------------------------------------------------------
 Event ID: 002
 Event Name: Hell Fairy Trainer
@@ -84601,6 +89245,21 @@ Trigger: Action Button
 
 List of Event Commands:
 @>Text: Placeholder
+@>
+
+Page #3
+Conditions
+Variable 0121: TKoL Plot Variable is 22 or above
+
+Autonomous Movement
+Type: Fixed
+Speed: 3: Slow
+Freq: 3: Low
+Options Enabled
+Move Animation
+Trigger: Action Button
+
+List of Event Commands:
 @>
 
 #------------------------------------------------------------------------------
@@ -84651,6 +89310,21 @@ List of Event Commands:
 @>Text: Placeholder
 @>
 
+Page #3
+Conditions
+Variable 0121: TKoL Plot Variable is 22 or above
+
+Autonomous Movement
+Type: Fixed
+Speed: 3: Slow
+Freq: 3: Low
+Options Enabled
+Move Animation
+Trigger: Action Button
+
+List of Event Commands:
+@>
+
 #------------------------------------------------------------------------------
 Event ID: 004
 Event Name: Hell Fairy Trainer
@@ -84697,6 +89371,21 @@ Trigger: Action Button
 
 List of Event Commands:
 @>Text: Placeholder
+@>
+
+Page #3
+Conditions
+Variable 0121: TKoL Plot Variable is 22 or above
+
+Autonomous Movement
+Type: Fixed
+Speed: 3: Slow
+Freq: 3: Low
+Options Enabled
+Move Animation
+Trigger: Action Button
+
+List of Event Commands:
 @>
 
 #------------------------------------------------------------------------------
@@ -84747,6 +89436,21 @@ List of Event Commands:
 @>Text: Placeholder
 @>
 
+Page #3
+Conditions
+Variable 0121: TKoL Plot Variable is 22 or above
+
+Autonomous Movement
+Type: Fixed
+Speed: 3: Slow
+Freq: 3: Low
+Options Enabled
+Move Animation
+Trigger: Action Button
+
+List of Event Commands:
+@>
+
 #------------------------------------------------------------------------------
 Event ID: 006
 Event Name: Hell Fairy Trainer
@@ -84793,6 +89497,21 @@ Trigger: Action Button
 
 List of Event Commands:
 @>Text: Placeholder
+@>
+
+Page #3
+Conditions
+Variable 0121: TKoL Plot Variable is 22 or above
+
+Autonomous Movement
+Type: Fixed
+Speed: 3: Slow
+Freq: 3: Low
+Options Enabled
+Move Animation
+Trigger: Action Button
+
+List of Event Commands:
 @>
 
 #------------------------------------------------------------------------------
@@ -85213,6 +89932,12 @@ Map ID: 132
 Map Name: Credits - Bamboo Forest
 Tileset: 039: Bamboo Forest
 Width: 78, Height: 68
+
+#==============================================================================
+Map ID: 133
+Map Name: Lunar Palace - Rooms
+Tileset: 048: Lunar Capital Palace
+Width: 55, Height: 25
 
 #==============================================================================
 Map ID: 135
@@ -88335,18 +93060,18 @@ List of Event Commands:
 @>Script: pbShowPicture(20,"Transitions/Bars_Over.png",1,256,192,zoomX=100,zoomY=100,opacity=230,blendType=0)
 @>Move Picture: 5, @5, Center (256,192), (100%,100%), 230, Normal
 @>Wait: 5 frame(s)
-@>Script: pbShowPicture(1,"Transitions/BGs/BGVillage.png",1,256,192,100,100,0,0)
+@>Script: pbShowPicture(1,"Transitions/BGs/BGPalace.png",1,256,192,100,100,0,0)
 @>Wait: 5 frame(s)
 @>Move Picture: 1, @5, Center (256,192), (100%,100%), 255, Normal
 @>Wait: 15 frame(s)
 @>Play SE: 'Vs flash', 80, 100
 @>Screen Flash: (255,255,255,255), @10
-@>Script: pbShowPicture(3,"Transitions/PTs/Char_KeineS.png",1,256,192,zoomX=100,zoomY=100,opacity=255,blendType=0)
+@>Script: pbShowPicture(3,"Transitions/PTs/Char_Rei'senS.png",1,256,192,zoomX=100,zoomY=100,opacity=255,blendType=0)
 @>Wait: 25 frame(s)
 @>Screen Flash: (255,255,255,255), @10
 @>Play SE: 'Vs sword', 80, 100
-@>Script: pbShowPicture(5,"Transitions/PTs/Char_Keine.png",1,256,192,zoomX=100,zoomY=100,opacity=255,blendType=0)
-@>Script: pbShowPicture(21,"Transitions/Names/Name_Keine.png",1,256,192,zoomX=100,zoomY=100,opacity=255,blendType=0)
+@>Script: pbShowPicture(5,"Transitions/PTs/Char_Rei'sen.png",1,256,192,zoomX=100,zoomY=100,opacity=255,blendType=0)
+@>Script: pbShowPicture(21,"Transitions/Names/Name_Rei'sen.png",1,256,192,zoomX=100,zoomY=100,opacity=255,blendType=0)
 @>Move Picture: 3, @30, Center (250,192), (100%,100%), 255, Normal
 @>Call Common Event: Vs. Transition - Balls
 @>Wait: 60 frame(s)
@@ -88397,18 +93122,18 @@ List of Event Commands:
 @>Script: pbShowPicture(20,"Transitions/Bars_Over.png",1,256,192,zoomX=100,zoomY=100,opacity=230,blendType=0)
 @>Move Picture: 5, @5, Center (256,192), (100%,100%), 230, Normal
 @>Wait: 5 frame(s)
-@>Script: pbShowPicture(1,"Transitions/BGs/BGVillage.png",1,256,192,100,100,0,0)
+@>Script: pbShowPicture(1,"Transitions/BGs/BGCapital.png",1,256,192,100,100,0,0)
 @>Wait: 5 frame(s)
 @>Move Picture: 1, @5, Center (256,192), (100%,100%), 255, Normal
 @>Wait: 15 frame(s)
 @>Play SE: 'Vs flash', 80, 100
 @>Screen Flash: (255,255,255,255), @10
-@>Script: pbShowPicture(3,"Transitions/PTs/Char_KeineS.png",1,256,192,zoomX=100,zoomY=100,opacity=255,blendType=0)
+@>Script: pbShowPicture(3,"Transitions/PTs/Char_SagumeS.png",1,256,192,zoomX=100,zoomY=100,opacity=255,blendType=0)
 @>Wait: 25 frame(s)
 @>Screen Flash: (255,255,255,255), @10
 @>Play SE: 'Vs sword', 80, 100
-@>Script: pbShowPicture(5,"Transitions/PTs/Char_Keine.png",1,256,192,zoomX=100,zoomY=100,opacity=255,blendType=0)
-@>Script: pbShowPicture(21,"Transitions/Names/Name_Keine.png",1,256,192,zoomX=100,zoomY=100,opacity=255,blendType=0)
+@>Script: pbShowPicture(5,"Transitions/PTs/Char_Sagume.png",1,256,192,zoomX=100,zoomY=100,opacity=255,blendType=0)
+@>Script: pbShowPicture(21,"Transitions/Names/Name_Sagume.png",1,256,192,zoomX=100,zoomY=100,opacity=255,blendType=0)
 @>Move Picture: 3, @30, Center (250,192), (100%,100%), 255, Normal
 @>Call Common Event: Vs. Transition - Balls
 @>Wait: 60 frame(s)
@@ -88459,18 +93184,18 @@ List of Event Commands:
 @>Script: pbShowPicture(20,"Transitions/Bars_Over.png",1,256,192,zoomX=100,zoomY=100,opacity=230,blendType=0)
 @>Move Picture: 5, @5, Center (256,192), (100%,100%), 230, Normal
 @>Wait: 5 frame(s)
-@>Script: pbShowPicture(1,"Transitions/BGs/BGVillage.png",1,256,192,100,100,0,0)
+@>Script: pbShowPicture(1,"Transitions/BGs/BGCapital.png",1,256,192,100,100,0,0)
 @>Wait: 5 frame(s)
 @>Move Picture: 1, @5, Center (256,192), (100%,100%), 255, Normal
 @>Wait: 15 frame(s)
 @>Play SE: 'Vs flash', 80, 100
 @>Screen Flash: (255,255,255,255), @10
-@>Script: pbShowPicture(3,"Transitions/PTs/Char_KeineS.png",1,256,192,zoomX=100,zoomY=100,opacity=255,blendType=0)
+@>Script: pbShowPicture(3,"Transitions/PTs/Char_WatatsukiS.png",1,256,192,zoomX=100,zoomY=100,opacity=255,blendType=0)
 @>Wait: 25 frame(s)
 @>Screen Flash: (255,255,255,255), @10
 @>Play SE: 'Vs sword', 80, 100
-@>Script: pbShowPicture(5,"Transitions/PTs/Char_Keine.png",1,256,192,zoomX=100,zoomY=100,opacity=255,blendType=0)
-@>Script: pbShowPicture(21,"Transitions/Names/Name_Keine.png",1,256,192,zoomX=100,zoomY=100,opacity=255,blendType=0)
+@>Script: pbShowPicture(5,"Transitions/PTs/Char_Watatsuki.png",1,256,192,zoomX=100,zoomY=100,opacity=255,blendType=0)
+@>Script: pbShowPicture(21,"Transitions/Names/Name_Watatsuki.png",1,256,192,zoomX=100,zoomY=100,opacity=255,blendType=0)
 @>Move Picture: 3, @30, Center (250,192), (100%,100%), 255, Normal
 @>Call Common Event: Vs. Transition - Balls
 @>Wait: 60 frame(s)
@@ -90207,7 +94932,7 @@ Common Event Name: Player Name Easter Eggs
 Trigger: None
 
 List of Event Commands:
-@>Conditional Branch: Script: $player.name == "NorionMyth" || $player.name == "Norion" || $player.name == "Norion Myth" 
+@>Conditional Branch: Script: $player.name == "NorionMyth" || $player.name == "Norion" || $player.name == "Norion Myth" || $player.name == "Chirei" 
  @>Text: A fate that is berigoo awaits you!
  @>Script: pkmn = Pokemon.new(:CKOISHI, 15)
  :       : pkmn.item = :ORANBERRY
@@ -90246,7 +94971,7 @@ List of Event Commands:
  @>
 : Branch End
 @>Conditional Branch: Script: $player.name == "Ayaka2" || $player.name == "Ayaka+"
- @>Text: <b>Initializing New Game+.</b>
+ @>Text: <b>Setting game state to Loop 1 status.</b>
  @>Script: $player.name = "Ayaka"
  @>Script: $player.new_game_plus = true
  @>Control Switches: [0107: New Game +] = ON
@@ -90267,10 +94992,57 @@ List of Event Commands:
  @>Control Switches: [0106: Name Easter Egg] = ON
  @>
 : Branch End
+@>Conditional Branch: Script: $player.name == "Meimu"
+ @>Text: <b>This name does not exist. Please try again.</b>
+ @>Jump to Label: Enter name
+ @>
+: Branch End
+@>Conditional Branch: Script: $player.name == "Maribel" || $player.name == "Renko"
+ @>Text: <b>No, it is not. Please try again.</b>
+ @>Jump to Label: Enter name
+ @>
+: Branch End
 @>
 
 #==============================================================================
 Common Event ID: 106
+Common Event Name: Ending Stinger
+
+Trigger: None
+
+List of Event Commands:
+@>Comment: Section is for the End of Scenario stingers- the dialogue that 
+ :       : leads back into the World of Fantasies.
+@>Comment: There are three dialogue variants, one for each 
+ :       : scenario cleared.
+@>Conditional Branch: Variable [0141: Scenarios Cleared] == 1
+ @>Text: \w[dark]Who said the journey had to stop there though! Let's see
+  :    : what else you've done...
+ @>
+: Else
+ @>Conditional Branch: Variable [0141: Scenarios Cleared] == 2
+  @>Text: \w[dark]So then, this is what makes you... you. But, surely 
+   :    : there's more to see, right?
+  @>
+ : Else
+  @>Conditional Branch: Variable [0141: Scenarios Cleared] == 3
+   @>Text: \w[dark]That's it! I finally understand! I know what I need to 
+    :    : do now to become real!
+   @>Text: \w[dark]Thank you, \pn...
+   @>Wait: 15 frame(s)
+   @>Text: \xn[\pn]... Did someone say my name ...?
+   @>
+  : Else
+   @>
+  : Branch End
+  @>
+ : Branch End
+ @>
+: Branch End
+@>
+
+#==============================================================================
+Common Event ID: 107
 Common Event Name: 
 
 Trigger: None

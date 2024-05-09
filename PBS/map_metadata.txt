@@ -414,7 +414,7 @@ Flags = TKoL
 [090]   # Kaian Passageway
 Name = Kaian Passageway
 ShowArea = true
-BattleBack = starlight
+BattleBack = dream
 WildBattleBGM = B-033. Battle vs. Puppet (Dreams).ogg
 TrainerBattleBGM = B-034. Battle vs. Trainer (Dreams).ogg
 Environment = Space
@@ -453,6 +453,7 @@ Name = Lunar Surface
 Outdoor = true
 ShowArea = true
 Bicycle = true
+BattleBack = dream
 Environment = Space
 Flags = TKoL,Moon
 #-------------------------------
@@ -461,6 +462,7 @@ Name = Mare Marginis
 Outdoor = true
 ShowArea = true
 Bicycle = true
+BattleBack = AltField
 Environment = Space
 Flags = TKoL,Moon
 #-------------------------------
@@ -469,6 +471,7 @@ Name = Sea of Tranquility
 Outdoor = true
 ShowArea = true
 Bicycle = true
+BattleBack = moon
 Environment = Space
 Flags = TKoL,Moon
 #-------------------------------
@@ -480,12 +483,16 @@ Bicycle = true
 Environment = Space
 Flags = TKoL,Moon
 #-------------------------------
-[099]   # Lunar Palace - Rooms
+[099]   # Lunar Palace - Main Hall
 Name = Lunar Palace
+BattleBack = indoor5
+Environment = Space
 Flags = TKoL,Moon
 #-------------------------------
-[100]   # Lunar Palace - Assembly Hall
+[100]   # Lunar Palace - Arena
 Name = Lunar Palace
+BattleBack = AltField
+Environment = Space
 Flags = TKoL,Moon
 #-------------------------------
 [101]   # Ending Filler Map - Capital
@@ -494,8 +501,11 @@ Name = TKoL Ending Map
 [102]   # Credits - Human Village
 Name = TKoL Credits Map
 #-------------------------------
-[103]   # Infinite Hallway
-Name = Lunar Capital?
+[103]   # Ancient Lunar Sake Storehouse
+Name = Lunar Palace
+BattleBack = indoor5
+Environment = Space
+Flags = TKoL,Moon
 #-------------------------------
 [104]   # Credits - Kaian Passageway
 Name = TKoL Credits Map
@@ -574,7 +584,7 @@ Flags = TKoL
 #-------------------------------
 [120]   # Dream World
 Name = Dream World
-BattleBack = starlight
+BattleBack = dream
 WildBattleBGM = B-033. Battle vs. Puppet (Dreams).ogg
 TrainerBattleBGM = B-034. Battle vs. Trainer (Dreams).ogg
 Environment = Space
@@ -582,7 +592,7 @@ Flags = TKoL
 #-------------------------------
 [121]   # Dream World
 Name = Dream World
-BattleBack = starlight
+BattleBack = dream
 WildBattleBGM = B-033. Battle vs. Puppet (Dreams).ogg
 TrainerBattleBGM = B-034. Battle vs. Trainer (Dreams).ogg
 Environment = Space
@@ -590,18 +600,23 @@ Flags = TKoL
 #-------------------------------
 [122]   # Storehouse
 Name = Lunar Capital
+Flags = TKoL,Moon
 #-------------------------------
 [123]   # Hecatia's Fortress
 Name = Mare Marginis
+BattleBack = indoor4
 Environment = Space
 Flags = Moon,TKoL
 #-------------------------------
 [124]   # Infinite Hallway
-Name = Lunar Capital?
+Name = Lunar Palace
+BattleBack = indoor5
+Flags = TKoL,Moon
 #-------------------------------
 [125]   # Hecatia's Fortress (Roof)
 Name = Mare Marginis
 Outdoor = true
+BattleBack = starlightJunko
 Environment = Space
 Flags = TKoL,Moon
 #-------------------------------
@@ -629,5 +644,12 @@ Flags = TKoL,Moon,ScaleWildEncounterLevels
 [129]   # Mare Tranquillitatis Cave
 Name = Sea of Tranquility
 Bicycle = true
+BattleBack = moon
+Environment = Space
+Flags = TKoL,Moon
+#-------------------------------
+[133]   # Lunar Palace - Rooms
+Name = Lunar Palace
+BattleBack = indoor5
 Environment = Space
 Flags = TKoL,Moon

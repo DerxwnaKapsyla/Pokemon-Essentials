@@ -64,9 +64,9 @@ class PokemonMartScreen
         @adapter.setMoney(@adapter.getMoney - price)
         @stock.delete_if { |itm| GameData::Item.get(itm).is_important? && $bag.has?(item) }
 		if $game_switches[125]
-		  pbDisplayPaused(_INTL($game_variables[2])) { pbSEPlay("sale") }
+		  pbDisplayPaused(_INTL($game_variables[2])) { pbSEPlay("Sale") }
 		else 
-          pbDisplayPaused(_INTL("Here you are! Thank you!")) { pbSEPlay("sale") }
+          pbDisplayPaused(_INTL("Here you are! Thank you!")) { pbSEPlay("Sale") }
 		end
         if quantity >= 10 && GameData::Item.exists?(:PREMIERBALL)
           if Settings::MORE_BONUS_PREMIER_BALLS && GameData::Item.get(item).is_poke_ball?

@@ -605,20 +605,22 @@
   
 MidbattleHandlers.add(:midbattle_global, :miasma_field,
   proc { |battle, idxBattler, idxTarget, trigger|
-    foe = battle.battlers[1]
-    case trigger
-    when "RoundStartCommand"
-      battle.pbDisplayPaused(_INTL("The field is choked in a thick miasma!"))    
-    when "RoundEnd_player"
-      if rand(100) <= 25
-		case rand(7) # Determining Status Condition
-		when 0 then medi.pbPoison if medi.pbCanInflictStatus?(:POISON, medi, true)
-		when 1 then medi.pbBurn if medi.pbCanInflictStatus?(:BURN, medi, true)
-		when 2 then medi.pbParalyze if medi.pbCanInflictStatus?(:PARALYSIS, medi, true)
-		when 3 then medi.effects[PBEffects::Curse]
-		end
-      end	    
-    end
+    if GameData::MapMetadata.get($game_map.map_id)&.has_flag?("SuzuranField")
+	  player = battle.battlers[0]
+      case trigger
+      when "RoundStartCommand"
+        battle.pbDisplayPaused(_INTL("The field is choked in a thick miasma!"))    
+      when "RoundEnd_player"
+        if rand(100) <= 25
+		  case rand(7) # Determining Status Condition
+		  when 0 then player.pbPoison if medi.pbCanInflictStatus?(:POISON, medi, true)
+		  when 1 then player.pbBurn if medi.pbCanInflictStatus?(:BURN, medi, true)
+		  when 2 then player.pbParalyze if medi.pbCanInflictStatus?(:PARALYSIS, medi, true)
+		  when 3 then player.effects[PBEffects::Curse]
+		  end
+        end	    
+      end
+	end
   }
 )
 
