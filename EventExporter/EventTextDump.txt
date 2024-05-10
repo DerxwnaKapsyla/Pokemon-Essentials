@@ -64331,6 +64331,14 @@ Move Animation
 Trigger: Autorun
 
 List of Event Commands:
+@>Set Event Location: [Trainer(2)],(017,052)
+@>Set Event Location: [Trainer(2)],(029,044)
+@>Set Event Location: [Trainer(4)],(051,051)
+@>Set Event Location: [Trainer(4)],(057,040)
+@>Set Event Location: [Trainer(3)],(031,032)
+@>Set Event Location: [Trainer(3)],(015,020)
+@>Set Event Location: [Trainer(3)],(049,020)
+@>Set Event Location: [Trainer(3)],(064,010)
 @>Control Switches: [0001: Starting over] = OFF
 @>
 
@@ -67172,22 +67180,6 @@ List of Event Commands:
 @>Call Common Event: Akyuu Shrines
 @>
 
-Page #2
-Conditions
-Switch 0001: Starting over is ON
-
-Autonomous Movement
-Type: Fixed
-Speed: 3: Slow
-Freq: 3: Low
-Options Enabled
-Move Animation
-Trigger: Autorun
-
-List of Event Commands:
-@>Control Switches: [0001: Starting over] = OFF
-@>
-
 #------------------------------------------------------------------------------
 Event ID: 026
 Event Name: size(1,3)
@@ -68105,34 +68097,6 @@ List of Event Commands:
 @>Call Common Event: Akyuu Shrines
 @>
 
-Page #2
-Conditions
-Switch 0001: Starting over is ON
-
-Autonomous Movement
-Type: Fixed
-Speed: 3: Slow
-Freq: 3: Low
-Options Enabled
-Move Animation
-Trigger: Autorun
-
-List of Event Commands:
-@>Control Switches: [0001: Starting over] = OFF
-@>Set Event Location: [Seiran],(028,040)
-@>Set Event Location: [Seiran 2],(062,060), Right
-@>Set Event Location: [Ringo],(064,060), Left
-@>Set Event Location: [Trainer(4)],(024,054), Down
-@>Set Event Location: [Trainer(3)],(012,050), Up
-@>Set Event Location: [Trainer(3)],(011,043), Left
-@>Set Event Location: [Trainer(2)],(026,033), Left
-@>Set Event Location: [Trainer(1)],(017,017), Down
-@>Set Event Location: [Trainer(2)],(033,022), Right
-@>Set Event Location: [Trainer(3)],(068,029), Left
-@>Set Event Location: [Trainer(3)],(064,041), Left
-@>Control Switches: [0001: Starting over] = OFF
-@>
-
 #------------------------------------------------------------------------------
 Event ID: 043
 Event Name: size(3,1)
@@ -68420,6 +68384,38 @@ List of Event Commands:
  : Branch End
  @>
 : Branch End
+@>
+
+#------------------------------------------------------------------------------
+Event ID: 053
+Event Name: EV053
+(X,Y): (045,035)
+
+Page #1
+Conditions
+Switch 0001: Starting over is ON
+
+Autonomous Movement
+Type: Fixed
+Speed: 3: Slow
+Freq: 3: Low
+Options Enabled
+Move Animation
+Trigger: Autorun
+
+List of Event Commands:
+@>Set Event Location: [Seiran],(028,040)
+@>Set Event Location: [Seiran 2],(062,060), Right
+@>Set Event Location: [Ringo],(064,060), Left
+@>Set Event Location: [Trainer(4)],(024,054), Down
+@>Set Event Location: [Trainer(3)],(012,050), Up
+@>Set Event Location: [Trainer(3)],(011,043), Left
+@>Set Event Location: [Trainer(2)],(026,033), Left
+@>Set Event Location: [Trainer(1)],(017,017), Down
+@>Set Event Location: [Trainer(2)],(033,022), Right
+@>Set Event Location: [Trainer(3)],(068,029), Left
+@>Set Event Location: [Trainer(3)],(064,041), Left
+@>Control Switches: [0001: Starting over] = OFF
 @>
 
 #------------------------------------------------------------------------------
@@ -70935,7 +70931,7 @@ List of Event Commands:
 
 #------------------------------------------------------------------------------
 Event ID: 032
-Event Name: HiddenItem:MOONBALL
+Event Name: HiddenItem
 (X,Y): (044,043)
 
 Page #1
@@ -70951,16 +70947,60 @@ Move Animation
 Trigger: Action Button
 
 List of Event Commands:
+@>Conditional Branch: Script: pbItemBall(:MOONBALL)
+ @>Control Self Switch: A =ON
+ @>
+: Else
+ @>
+: Branch End
+@>
+
+Page #2
+Conditions
+Self Switch A is ON
+
+Autonomous Movement
+Type: Fixed
+Speed: 3: Slow
+Freq: 3: Low
+Options Enabled
+Move Animation
+Trigger: Action Button
+
+List of Event Commands:
 @>
 
 #------------------------------------------------------------------------------
 Event ID: 033
-Event Name: Item:SWIFTSHARD
+Event Name: Item
 (X,Y): (061,032)
 
 Page #1
 Conditions
 None
+
+Graphic: Object ball
+
+Autonomous Movement
+Type: Fixed
+Speed: 3: Slow
+Freq: 3: Low
+Options Enabled
+Move Animation
+Trigger: Action Button
+
+List of Event Commands:
+@>Conditional Branch: Script: pbItemBall(:SWIFTSHARD)
+ @>Control Self Switch: A =ON
+ @>
+: Else
+ @>
+: Branch End
+@>
+
+Page #2
+Conditions
+Self Switch A is ON
 
 Autonomous Movement
 Type: Fixed
@@ -70995,12 +71035,35 @@ List of Event Commands:
 
 #------------------------------------------------------------------------------
 Event ID: 035
-Event Name: Item:COMETSHARD
+Event Name: Item
 (X,Y): (018,036)
 
 Page #1
 Conditions
 None
+
+Graphic: Object ball
+
+Autonomous Movement
+Type: Fixed
+Speed: 3: Slow
+Freq: 3: Low
+Options Enabled
+Move Animation
+Trigger: Action Button
+
+List of Event Commands:
+@>Conditional Branch: Script: pbItemBall(:COMETSHARD)
+ @>Control Self Switch: A =ON
+ @>
+: Else
+ @>
+: Branch End
+@>
+
+Page #2
+Conditions
+Self Switch A is ON
 
 Autonomous Movement
 Type: Fixed
@@ -71015,12 +71078,35 @@ List of Event Commands:
 
 #------------------------------------------------------------------------------
 Event ID: 036
-Event Name: Item:ULTRAORB
+Event Name: Item
 (X,Y): (016,050)
 
 Page #1
 Conditions
 None
+
+Graphic: Object ball
+
+Autonomous Movement
+Type: Fixed
+Speed: 3: Slow
+Freq: 3: Low
+Options Enabled
+Move Animation
+Trigger: Action Button
+
+List of Event Commands:
+@>Conditional Branch: Script: pbItemBall(:ULTRAORB)
+ @>Control Self Switch: A =ON
+ @>
+: Else
+ @>
+: Branch End
+@>
+
+Page #2
+Conditions
+Self Switch A is ON
 
 Autonomous Movement
 Type: Fixed
@@ -71055,7 +71141,7 @@ List of Event Commands:
 
 #------------------------------------------------------------------------------
 Event ID: 038
-Event Name: HiddenItem:ENERGYROOT
+Event Name: HiddenItem
 (X,Y): (024,044)
 
 Page #1
@@ -71071,16 +71157,60 @@ Move Animation
 Trigger: Action Button
 
 List of Event Commands:
+@>Conditional Branch: Script: pbItemBall(:ENERGYROOT)
+ @>Control Self Switch: A =ON
+ @>
+: Else
+ @>
+: Branch End
+@>
+
+Page #2
+Conditions
+Self Switch A is ON
+
+Autonomous Movement
+Type: Fixed
+Speed: 3: Slow
+Freq: 3: Low
+Options Enabled
+Move Animation
+Trigger: Action Button
+
+List of Event Commands:
 @>
 
 #------------------------------------------------------------------------------
 Event ID: 039
-Event Name: Item:ETHER
+Event Name: Item
 (X,Y): (032,049)
 
 Page #1
 Conditions
 None
+
+Graphic: Object ball
+
+Autonomous Movement
+Type: Fixed
+Speed: 3: Slow
+Freq: 3: Low
+Options Enabled
+Move Animation
+Trigger: Action Button
+
+List of Event Commands:
+@>Conditional Branch: Script: pbItemBall(:ETHER)
+ @>Control Self Switch: A =ON
+ @>
+: Else
+ @>
+: Branch End
+@>
+
+Page #2
+Conditions
+Self Switch A is ON
 
 Autonomous Movement
 Type: Fixed
@@ -71095,12 +71225,33 @@ List of Event Commands:
 
 #------------------------------------------------------------------------------
 Event ID: 040
-Event Name: HiddenItem:GOLDENRICESAKE
+Event Name: HiddenItem
 (X,Y): (063,062)
 
 Page #1
 Conditions
 None
+
+Autonomous Movement
+Type: Fixed
+Speed: 3: Slow
+Freq: 3: Low
+Options Enabled
+Move Animation
+Trigger: Action Button
+
+List of Event Commands:
+@>Conditional Branch: Script: pbItemBall(:GOLDENRICESAKE)
+ @>Control Self Switch: A =ON
+ @>
+: Else
+ @>
+: Branch End
+@>
+
+Page #2
+Conditions
+Self Switch A is ON
 
 Autonomous Movement
 Type: Fixed
@@ -73667,7 +73818,7 @@ List of Event Commands:
 
 #------------------------------------------------------------------------------
 Event ID: 005
-Event Name: Hell Fairy Trainer
+Event Name: Trainer(5)
 (X,Y): (013,027)
 
 Page #1
@@ -73730,7 +73881,7 @@ List of Event Commands:
 
 #------------------------------------------------------------------------------
 Event ID: 006
-Event Name: Hell Fairy Trainer
+Event Name: Trainer(5)
 (X,Y): (066,027)
 
 Page #1
@@ -74391,7 +74542,6 @@ List of Event Commands:
 @>Text: \w[dark]\l[2]And behold!\wt[10] This pristine spiritual force that
  :    : rejects life and death!\wtnp[30]
 @>Change Text Options: Bottom, Show
-@>Control Self Switch: A =ON
 @>Script: setBattleRule("backdrop", "starlightJunko")
 :       : setBattleRule("battleIntroText","{1} descends in a graceful, fit of rage!")
 :       : setBattleRule("setSlideSprite","top")
@@ -74529,6 +74679,8 @@ List of Event Commands:
  @>
 : Else
  @>Script: pbTrainerEnd
+ @>Control Switches: [0142: Junko Descends] = OFF
+ @>Set Event Location: [Junko],(027,007), Up
  @>Exit Event Processing
  @>
 : Branch End
@@ -76104,7 +76256,7 @@ List of Event Commands:
 
 #------------------------------------------------------------------------------
 Event ID: 028
-Event Name: Hell Fairy Trainer
+Event Name: Trainer(2)
 (X,Y): (024,035)
 
 Page #1
@@ -76167,7 +76319,7 @@ List of Event Commands:
 
 #------------------------------------------------------------------------------
 Event ID: 029
-Event Name: Hell Fairy Trainer
+Event Name: Trainer(3)
 (X,Y): (024,040)
 
 Page #1
@@ -76230,7 +76382,7 @@ List of Event Commands:
 
 #------------------------------------------------------------------------------
 Event ID: 030
-Event Name: Hell Fairy Trainer
+Event Name: Trainer(1)
 (X,Y): (040,040)
 
 Page #1
@@ -81694,6 +81846,8 @@ Move Animation
 Trigger: Action Button
 
 List of Event Commands:
+@>Text: \xn[Reisen]If ths is what Master wants me to do... 
+ :    : You should prepare yourself well, Miss \pn!
 @>
 
 Page #2
@@ -83981,7 +84135,7 @@ Auto-Change BGM: W-038. A World Of Nightmares Never Seen Before
 
 #------------------------------------------------------------------------------
 Event ID: 001
-Event Name: Hell Fairy Trainer
+Event Name: Trainer
 (X,Y): (012,006)
 
 Page #1
@@ -83996,7 +84150,7 @@ Speed: 3: Slow
 Freq: 3: Low
 Options Enabled
 Move Animation
-Trigger: Event Touch
+Trigger: Action Button
 
 List of Event Commands:
 @>Script: pbTrainerIntro(:HELLFAIRY)
@@ -89383,7 +89537,7 @@ Auto-Change BGM: W-037. The Sea Where One's Home Planet Reflects
 
 #------------------------------------------------------------------------------
 Event ID: 001
-Event Name: Hell Fairy Trainer
+Event Name: Trainer(2)
 (X,Y): (030,030)
 
 Page #1
@@ -89393,9 +89547,16 @@ None
 Graphic: TPDP_NPC 53
 
 Autonomous Movement
-Type: Fixed
+Type: Custom
+Custom Move Route:
+(Repeat Action)
+$>Wait: 10 frame(s)
+$>Turn Up
+$>Wait: 10 frame(s)
+$>Turn Right
+
 Speed: 3: Slow
-Freq: 3: Low
+Freq: 4: High
 Options Enabled
 Move Animation
 Trigger: Event Touch
@@ -89418,9 +89579,16 @@ Self Switch A is ON
 Graphic: TPDP_NPC 53
 
 Autonomous Movement
-Type: Fixed
+Type: Custom
+Custom Move Route:
+(Repeat Action)
+$>Wait: 10 frame(s)
+$>Turn Up
+$>Wait: 10 frame(s)
+$>Turn Right
+
 Speed: 3: Slow
-Freq: 3: Low
+Freq: 4: High
 Options Enabled
 Move Animation
 Trigger: Action Button
@@ -89446,7 +89614,7 @@ List of Event Commands:
 
 #------------------------------------------------------------------------------
 Event ID: 002
-Event Name: Hell Fairy Trainer
+Event Name: Trainer(4)
 (X,Y): (017,022)
 
 Page #1
@@ -89456,9 +89624,16 @@ None
 Graphic: TPDP_NPC 52
 
 Autonomous Movement
-Type: Fixed
+Type: Custom
+Custom Move Route:
+(Repeat Action)
+$>Wait: 10 frame(s)
+$>Turn Right
+$>Wait: 10 frame(s)
+$>Turn Down
+
 Speed: 3: Slow
-Freq: 3: Low
+Freq: 4: High
 Options Enabled
 Move Animation
 Trigger: Event Touch
@@ -89481,9 +89656,16 @@ Self Switch A is ON
 Graphic: TPDP_NPC 52
 
 Autonomous Movement
-Type: Fixed
+Type: Custom
+Custom Move Route:
+(Repeat Action)
+$>Wait: 10 frame(s)
+$>Turn Right
+$>Wait: 10 frame(s)
+$>Turn Down
+
 Speed: 3: Slow
-Freq: 3: Low
+Freq: 4: High
 Options Enabled
 Move Animation
 Trigger: Action Button
@@ -89509,7 +89691,7 @@ List of Event Commands:
 
 #------------------------------------------------------------------------------
 Event ID: 003
-Event Name: Hell Fairy Trainer
+Event Name: Trainer(4)
 (X,Y): (036,014)
 
 Page #1
@@ -89519,9 +89701,16 @@ None
 Graphic: TPDP_NPC 51
 
 Autonomous Movement
-Type: Fixed
+Type: Custom
+Custom Move Route:
+(Repeat Action)
+$>Wait: 10 frame(s)
+$>Turn Up
+$>Wait: 10 frame(s)
+$>Turn Right
+
 Speed: 3: Slow
-Freq: 3: Low
+Freq: 4: High
 Options Enabled
 Move Animation
 Trigger: Event Touch
@@ -89544,9 +89733,16 @@ Self Switch A is ON
 Graphic: TPDP_NPC 51
 
 Autonomous Movement
-Type: Fixed
+Type: Custom
+Custom Move Route:
+(Repeat Action)
+$>Wait: 10 frame(s)
+$>Turn Up
+$>Wait: 10 frame(s)
+$>Turn Right
+
 Speed: 3: Slow
-Freq: 3: Low
+Freq: 4: High
 Options Enabled
 Move Animation
 Trigger: Action Button
@@ -89572,7 +89768,7 @@ List of Event Commands:
 
 #------------------------------------------------------------------------------
 Event ID: 004
-Event Name: Hell Fairy Trainer
+Event Name: Trainer(4)
 (X,Y): (041,014)
 
 Page #1
@@ -89635,7 +89831,7 @@ List of Event Commands:
 
 #------------------------------------------------------------------------------
 Event ID: 005
-Event Name: Hell Fairy Trainer
+Event Name: Trainer(2)
 (X,Y): (049,022)
 
 Page #1
@@ -89645,9 +89841,13 @@ None
 Graphic: TPDP_NPC 51
 
 Autonomous Movement
-Type: Fixed
+Type: Custom
+Custom Move Route:
+(Repeat Action)
+$>Script: move_random_range(2,2)
+
 Speed: 3: Slow
-Freq: 3: Low
+Freq: 4: High
 Options Enabled
 Move Animation
 Trigger: Event Touch
@@ -89670,9 +89870,13 @@ Self Switch A is ON
 Graphic: TPDP_NPC 51
 
 Autonomous Movement
-Type: Fixed
+Type: Custom
+Custom Move Route:
+(Repeat Action)
+$>Script: move_random_range(2,2)
+
 Speed: 3: Slow
-Freq: 3: Low
+Freq: 4: High
 Options Enabled
 Move Animation
 Trigger: Action Button
@@ -89698,7 +89902,7 @@ List of Event Commands:
 
 #------------------------------------------------------------------------------
 Event ID: 006
-Event Name: Hell Fairy Trainer
+Event Name: Trainer(2)
 (X,Y): (023,012)
 
 Page #1
@@ -90165,6 +90369,7 @@ List of Event Commands:
 @>Call Common Event: TKoL Credits
 @>Wait: 20 frame(s)
 @>Script: TKoLPostgameScene.new
+@>Control Variables: [0121: TKoL Plot Variable] = 22
 @>Transfer Player:[118: \PN's Room], (004,007), Right
 @>Change Transparent Flag: Normal
 @>Change Screen Color Tone: (0,0,0,0), @8
