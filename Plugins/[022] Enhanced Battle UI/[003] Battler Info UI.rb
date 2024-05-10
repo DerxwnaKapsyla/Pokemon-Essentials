@@ -6,7 +6,7 @@ class Battle::Scene
   # Handles the controls for the Battle Info UI.
   #-----------------------------------------------------------------------------
   def pbOpenBattlerInfo(battler, battlers)
-    return if !@infoUIToggle
+    return if @enhancedUIToggle != :battler
     ret = nil
     idx = 0
     battlerTotal = battlers.flatten
@@ -19,7 +19,11 @@ class Battle::Scene
     effctSize = effects.length - 1
     pbUpdateBattlerInfo(battler, effects, idxEffect)
     cw = @sprites["fightWindow"]
+    @sprites["leftarrow"].x = -2
+    @sprites["leftarrow"].y = 71
     @sprites["leftarrow"].visible = true
+    @sprites["rightarrow"].x = Graphics.width - 38
+    @sprites["rightarrow"].y = 71
     @sprites["rightarrow"].visible = true
     loop do
       pbUpdate(cw)
@@ -41,9 +45,14 @@ class Battle::Scene
         idxEffect += 1
         idxEffect = 0 if idxEffect > effctSize
         doRefresh = true
-      elsif Input.trigger?(Input::JUMPDOWN) && cw.visible
-        ret = 1
-        break
+      elsif Input.trigger?(Input::JUMPDOWN)
+        if cw.visible
+          ret = 1
+          break
+        elsif @battle.pbCanUsePokeBall?(@sprites["enhancedUIPrompts"].battler)
+          ret = 2
+          break
+        end
       elsif Input.trigger?(Input::JUMPUP) || Input.trigger?(Input::USE)
         ret = []
         if battler.opposes?
@@ -85,9 +94,9 @@ class Battle::Scene
   # Draws the Battle Info UI.
   #-----------------------------------------------------------------------------
   def pbUpdateBattlerInfo(battler, effects, idxEffect = 0)
-    @infoUIOverlay.clear
+    @enhancedUIOverlay.clear
     pbUpdateBattlerIcons
-    return if !@infoUIToggle
+    return if @enhancedUIToggle != :battler
     xpos = 28
     ypos = 24
     iconX = xpos + 28
@@ -157,8 +166,8 @@ class Battle::Scene
     #---------------------------------------------------------------------------
     pbAddWildIconDisplay(xpos, ypos, battler, imagePos)
     pbAddStatsDisplay(xpos, ypos, battler, imagePos, textPos)
-    pbDrawImagePositions(@infoUIOverlay, imagePos)
-    pbDrawTextPositions(@infoUIOverlay, textPos)
+    pbDrawImagePositions(@enhancedUIOverlay, imagePos)
+    pbDrawTextPositions(@enhancedUIOverlay, textPos)
     pbAddTypesDisplay(xpos, ypos, battler, poke)
     pbAddEffectsDisplay(xpos, ypos, panelX, effects, idxEffect)
   end
@@ -277,14 +286,15 @@ class Battle::Scene
       break if i > 2
       type_number = GameData::Type.get(type).icon_position
       type_rect = Rect.new(0, type_number * 28, 64, 28)
-      @infoUIOverlay.blt(xpos + 170, typeY + (i * 30), typebitmap.bitmap, type_rect)
+      @enhancedUIOverlay.blt(xpos + 170, typeY + (i * 30), typebitmap.bitmap, type_rect)
     end
     #---------------------------------------------------------------------------
     # Draws Tera type.
-    if battler.tera? || defined?(battler.tera_type) && (battler.pbOwnedByPlayer? || !@battle.internalBattle)
+    showTera = defined?(battler.tera_type) && battler.pokemon.terastal_able?
+    if battler.tera? || showTera && (battler.pbOwnedByPlayer? || !@battle.internalBattle)
       pkmn = (illusion) ? poke : battler
-      pbDrawImagePositions(@infoUIOverlay, [[@path + "info_extra", xpos + 182, ypos + 95]])
-      pbDisplayTeraType(pkmn, @infoUIOverlay, xpos + 186, ypos + 97, true)
+      pbDrawImagePositions(@enhancedUIOverlay, [[@path + "info_extra", xpos + 182, ypos + 95]])
+      pbDisplayTeraType(pkmn, @enhancedUIOverlay, xpos + 186, ypos + 97, true)
     end
   end
   
@@ -350,10 +360,10 @@ class Battle::Scene
       textPos.push([effect[0], xpos + 322, ypos + 138 + (i * 24), :center, BASE_DARK, SHADOW_DARK],
                    [effect[1], xpos + 426, ypos + 138 + (i * 24), :center, BASE_LIGHT, SHADOW_LIGHT])
     end
-    pbDrawImagePositions(@infoUIOverlay, imagePos)
-    pbDrawTextPositions(@infoUIOverlay, textPos)
+    pbDrawImagePositions(@enhancedUIOverlay, imagePos)
+    pbDrawTextPositions(@enhancedUIOverlay, textPos)
     desc = effects[idxEffect][2]
-    drawFormattedTextEx(@infoUIOverlay, xpos + 246, ypos + 268, 208, desc, BASE_LIGHT, SHADOW_LIGHT, 18)
+    drawFormattedTextEx(@enhancedUIOverlay, xpos + 246, ypos + 268, 208, desc, BASE_LIGHT, SHADOW_LIGHT, 18)
   end
   
   #-----------------------------------------------------------------------------

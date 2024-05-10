@@ -305,7 +305,19 @@ MidbattleHandlers.add(:midbattle_triggers, "changeBGM",
     pbBGMFade(fade)
     pbWait(fade)
     pbBGMPlay(bgm, vol, pitch)
+    battle.default_bgm = bgm
     battle.playing_bgm = bgm
+    battle.bgm_paused = false
+  }
+)
+
+#-------------------------------------------------------------------------------
+# Fades out and ends the current BGM.
+#-------------------------------------------------------------------------------
+MidbattleHandlers.add(:midbattle_triggers, "endBGM",
+  proc { |battle, idxBattler, idxTarget, params|
+    pbBGMFade(params)
+    battle.bgm_paused = true
   }
 )
 
@@ -520,9 +532,10 @@ MidbattleHandlers.add(:midbattle_triggers, "switchOut",
     end
     newPkmn = nil
     canSwitch = false
-    battle.eachInTeamFromBattlerIndex(battler.index) do |pkmn, i|
+    battle.eachInTeamFromBattlerIndex(idxBattler) do |pkmn, i|
       next if !battle.pbCanSwitchIn?(idxBattler, i)
       case switch
+      when :Choose, :Random, :Forced
       when Integer
         next if switch != i
         newPkmn = i

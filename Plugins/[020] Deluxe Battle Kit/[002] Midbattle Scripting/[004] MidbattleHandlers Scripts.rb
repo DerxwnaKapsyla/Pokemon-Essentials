@@ -208,3 +208,47 @@ MidbattleHandlers.add(:midbattle_global, :wild_mega_battle,
 )
 
 
+################################################################################
+# Plays low HP music when the player's Pokemon reach critical health.
+################################################################################
+
+MidbattleHandlers.add(:midbattle_global, :low_hp_music,
+  proc { |battle, idxBattler, idxTarget, trigger|
+    next if !Settings::PLAY_LOW_HP_MUSIC
+    battler = battle.battlers[idxBattler]
+    next if !battler || !battler.pbOwnedByPlayer?
+    track = pbGetBattleLowHealthBGM
+    next if !track.is_a?(RPG::AudioFile)
+    playingBGM = battle.playing_bgm
+    case trigger
+    #---------------------------------------------------------------------------
+    # Restores original BGM when HP is restored to healthy.
+    when "BattlerHPRecovered_player"
+      next if playingBGM != track.name
+      next if battle.pbAnyBattlerLowHP?(idxBattler)
+      battle.pbResumeBattleBGM
+    #---------------------------------------------------------------------------
+    # Restores original BGM when battler is fainted.
+    when "BattlerHPReduced_player"
+      next if playingBGM != track.name
+	  next if battle.pbAnyBattlerLowHP?(idxBattler)
+      next if !battler.fainted?
+      battle.pbResumeBattleBGM
+    #---------------------------------------------------------------------------
+    # Plays low HP music when HP is critical.
+    when "BattlerHPCritical_player"
+      next if playingBGM == track.name
+      battle.pbPauseAndPlayBGM(track)
+    #---------------------------------------------------------------------------
+    # Restores original BGM when sending out a healthy Pokemon.
+    # Plays low HP music when sending out a Pokemon with critical HP.
+    when "AfterSendOut_player"
+      if battle.pbAnyBattlerLowHP?(idxBattler)
+        next if playingBGM == track.name
+        battle.pbPauseAndPlayBGM(track)
+      elsif playingBGM == track.name
+        battle.pbResumeBattleBGM
+      end
+    end
+  }
+)

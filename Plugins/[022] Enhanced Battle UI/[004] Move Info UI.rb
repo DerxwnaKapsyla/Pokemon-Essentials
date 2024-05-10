@@ -7,9 +7,11 @@ class Battle::Scene
   #-----------------------------------------------------------------------------
   def pbToggleMoveInfo(*args)
     return if pbInSafari?
-    @moveUIToggle = !@moveUIToggle
-    (@moveUIToggle) ? pbSEPlay("GUI party switch") : pbPlayCloseMenuSE
-    @sprites["moveinfo"].visible = @moveUIToggle
+    pbHideInfoUI if @enhancedUIToggle != :move
+    @enhancedUIToggle = (@enhancedUIToggle.nil?) ? :move : nil
+    (@enhancedUIToggle) ? pbSEPlay("GUI party switch") : pbPlayCloseMenuSE
+    @sprites["enhancedUI"].visible = !@enhancedUIToggle.nil?
+    (@sprites["enhancedUI"].visible) ? pbHideUIPrompt : pbRefreshUIPrompt
     pbUpdateTargetIcons
     pbUpdateMoveInfoWindow(*args)
   end
@@ -22,7 +24,7 @@ class Battle::Scene
     @battle.allBattlers.each do |b|
       if b && !b.fainted? && b.index.odd?
         @sprites["info_icon#{b.index}"].pokemon = b.displayPokemon
-        @sprites["info_icon#{b.index}"].visible = @moveUIToggle
+        @sprites["info_icon#{b.index}"].visible = @enhancedUIToggle == :move
         @sprites["info_icon#{b.index}"].x = Graphics.width - 32 - (idx * 64)
         @sprites["info_icon#{b.index}"].y = 68
         if b.dynamax?
@@ -45,9 +47,8 @@ class Battle::Scene
   # Draws the Move Info UI.
   #-----------------------------------------------------------------------------
   def pbUpdateMoveInfoWindow(battler, specialAction, cw)
-    pbHideBattleInfo
-    @moveUIOverlay.clear
-    return if !@moveUIToggle
+    @enhancedUIOverlay.clear
+    return if @enhancedUIToggle != :move
     xpos = 0
     ypos = 94
     move = battler.moves[cw.index]
@@ -91,7 +92,7 @@ class Battle::Scene
     ]
     pbDrawMoveFlagIcons(xpos, ypos, move, imagePos)
     pbDrawTypeEffectiveness(xpos, ypos, move, type, imagePos)
-    pbDrawImagePositions(@moveUIOverlay, imagePos)
+    pbDrawImagePositions(@enhancedUIOverlay, imagePos)
     #---------------------------------------------------------------------------
     # Move damage calculations (for display purposes).
     if terastal
@@ -170,8 +171,8 @@ class Battle::Scene
       [effect_rate,     Graphics.width - 146, ypos + 40, :center, effBase,    effShadow]
     )
     pbAddPluginText(xpos, ypos, textPos, move, type, battler, specialAction, cw)
-    pbDrawTextPositions(@moveUIOverlay, textPos)
-    drawTextEx(@moveUIOverlay, xpos + 10, ypos + 70, Graphics.width - 10, 2, 
+    pbDrawTextPositions(@enhancedUIOverlay, textPos)
+    drawTextEx(@enhancedUIOverlay, xpos + 10, ypos + 70, Graphics.width - 10, 2, 
       GameData::Move.get(move.id).description, BASE_LIGHT, SHADOW_LIGHT)
   end
   
@@ -261,7 +262,7 @@ class Battle::Scene
     # Sets up additional text for Z-Moves.
     #---------------------------------------------------------------------------
     when :zmove
-	  return if move.damagingMove?
+      return if move.damagingMove?
       if cw.mode == 2
         if move.zMove? && move.has_zpower?
           effect, stage = move.get_zpower_effect
@@ -288,9 +289,9 @@ class Battle::Scene
     # Sets up additional text for moves affected by Terastallization.
     #---------------------------------------------------------------------------
     when :tera
-	  return if move.statusMove?
+      return if move.statusMove?
       if cw.teraType > 0 && battler.typeTeraBoosted?(type, true)
-        textPos.push([_INTL("Tera Type: Move boosted by Terastallization."), xpos + 10, ypos + 128, :left, BASE_RAISED, SHADOW_RAISED])
+        textPos.push([_INTL("Tera Type: Power boosted by Terastallization."), xpos + 10, ypos + 128, :left, BASE_RAISED, SHADOW_RAISED])
       end
     end
   end

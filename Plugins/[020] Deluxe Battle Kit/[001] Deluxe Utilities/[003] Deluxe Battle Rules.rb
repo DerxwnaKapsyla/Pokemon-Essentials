@@ -90,6 +90,7 @@ module BattleCreationHelperMethods
   
   BattleCreationHelperMethods.singleton_class.alias_method :dx_prepare_battle, :prepare_battle
   def prepare_battle(battle)
+    return BattleCreationHelperMethods.dx_prepare_battle(battle) if pbInSafari?
     battleRules = $game_temp.battle_rules
     battle.captureSuccess   = battleRules["captureSuccess"]   if !battleRules["captureSuccess"].nil?
     battle.tutorialCapture  = battleRules["captureTutorial"]  if !battleRules["captureTutorial"].nil?
@@ -173,6 +174,8 @@ module BattleCreationHelperMethods
     $PokemonGlobal.nextBattleVictoryBGM   = battleRules["victoryBGM"]   if !battleRules["victoryBGM"].nil?
     $PokemonGlobal.nextBattleLowHealthBGM = battleRules["lowHealthBGM"] if !battleRules["lowHealthBGM"].nil?
     $PokemonGlobal.nextBattleCaptureME    = battleRules["captureME"]    if !battleRules["captureME"].nil?
+    track = (battle.wildBattle?) ? pbGetWildBattleBGM(battle.pbParty(1)) : pbGetTrainerBattleBGM(battle.opponent)
+    battle.default_bgm = (track.is_a?(String)) ? track : track&.name
   end
 end
 
@@ -343,7 +346,7 @@ class Battle
   attr_accessor :wildBattleMode
   attr_accessor :introText
   attr_accessor :slideSpriteStyle
-  attr_accessor :playing_bgm
+  attr_accessor :default_bgm, :playing_bgm, :bgm_paused, :bgm_position
   
   alias dx_initialize initialize
   def initialize(*args)
@@ -354,6 +357,9 @@ class Battle
     @wildBattleMode   = nil
     @introText        = nil
     @slideSpriteStyle = nil
+    @bgm_paused       = false
+    @bgm_position     = 0
+    @default_bgm      = nil
     @playing_bgm      = pbGetBattleBGM&.name
   end
   
@@ -361,13 +367,8 @@ class Battle
   # Battle music utilities.
   #-----------------------------------------------------------------------------
   def pbGetBattleBGM
-    if !@default_bgm.nil?
-      track = @default_bgm
-    else
-      track = (wildBattle?) ? pbGetWildBattleBGM(@party2) : pbGetTrainerBattleBGM(@opponent)
-    end
-    track = pbResolveAudioFile(track) if track != ""
-    return track
+    return nil if nil_or_empty?(@default_bgm)
+    return pbResolveAudioFile(@default_bgm)
   end
   
   def pbResumeBattleBGM
@@ -379,7 +380,6 @@ class Battle
     @bgm_position = 0
     @bgm_paused = false
     @playing_bgm = track.name
-    @default_bgm = nil
     Graphics.frame_reset
   end
   
@@ -392,7 +392,6 @@ class Battle
     @bgm_paused = true
     track_name = canonicalize("Audio/BGM/" + track.name)
     $game_system.bgm_play_internal2(track_name, track.volume, track.pitch, 0)
-    @default_bgm = @playing_bgm
     @playing_bgm = track.name
     Graphics.frame_reset
   end

@@ -55,6 +55,19 @@ class Battle::Move
 end
 
 #===============================================================================
+# Battle utilities.
+#===============================================================================
+class Battle
+  #-----------------------------------------------------------------------------
+  # Utility for checking if any battler on a particular side is at low HP.
+  #-----------------------------------------------------------------------------
+  def pbAnyBattlerLowHP?(idxBattler)
+    allSameSideBattlers(idxBattler).each { |b| return true if b.hasLowHP? }
+    return false
+  end
+end
+
+#===============================================================================
 # Battle::Battler utilities.
 #===============================================================================
 class Battle::Battler
@@ -83,6 +96,29 @@ class Battle::Battler
   def hasLowHP?
     return false if fainted?
     return @hp <= (@totalhp / 4).floor
+  end
+  
+  #-----------------------------------------------------------------------------
+  # Aliased to update BGM when the HP of the player's battler updates.
+  #-----------------------------------------------------------------------------
+  alias dx_pbUpdate pbUpdate
+  def pbUpdate(fullChange = false)
+    dx_pbUpdate(fullChange)
+    pbUpdateLowHPMusic if @pokemon
+  end
+  
+  def pbUpdateLowHPMusic
+    return if !Settings::PLAY_LOW_HP_MUSIC
+    return if !pbOwnedByPlayer?
+    track = pbGetBattleLowHealthBGM
+    return if !track.is_a?(RPG::AudioFile)
+    if @battle.pbAnyBattlerLowHP?(@index)
+      if @battle.playing_bgm != track.name
+        @battle.pbPauseAndPlayBGM(track)
+      end
+    elsif @battle.playing_bgm == track.name
+      @battle.pbResumeBattleBGM
+    end
   end
   
   #-----------------------------------------------------------------------------

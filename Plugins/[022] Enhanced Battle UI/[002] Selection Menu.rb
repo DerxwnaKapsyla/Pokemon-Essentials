@@ -7,10 +7,10 @@ class Battle::Scene
   #-----------------------------------------------------------------------------
   def pbToggleBattleInfo
     return if pbInSafari?
-    pbHideMoveInfo
-    @infoUIToggle = !@infoUIToggle
-    (@infoUIToggle) ? pbSEPlay("GUI party switch") : pbPlayCloseMenuSE
-    @sprites["battleinfo"].visible = @infoUIToggle
+    pbHideInfoUI if @enhancedUIToggle != :battler
+    @enhancedUIToggle = (@enhancedUIToggle.nil?) ? :battler : nil
+    (@enhancedUIToggle) ? pbSEPlay("GUI party switch") : pbPlayCloseMenuSE
+    @sprites["enhancedUI"].visible = !@enhancedUIToggle.nil?
     index = (@battle.pbSideBattlerCount(0) == 3) ? 1 : 0
     pbUpdateBattlerSelection(0, index, true)
   end
@@ -24,7 +24,7 @@ class Battle::Scene
       poke = (b.opposes?) ? b.displayPokemon : b.pokemon
       if !b.fainted?
         @sprites["info_icon#{b.index}"].pokemon = poke
-        @sprites["info_icon#{b.index}"].visible = @infoUIToggle
+        @sprites["info_icon#{b.index}"].visible = @enhancedUIToggle == :battler
         @sprites["info_icon#{b.index}"].setOffset(PictureOrigin::CENTER)
         if b.dynamax?
           @sprites["info_icon#{b.index}"].set_dynamax_icon_pattern
@@ -49,8 +49,8 @@ class Battle::Scene
   # Draws the selection menu.
   #-----------------------------------------------------------------------------
   def pbUpdateBattlerSelection(idxSide, idxPoke, select = false)
-    @infoUIOverlay.clear
-    return if !@infoUIToggle
+    @enhancedUIOverlay.clear
+    return if @enhancedUIToggle != :battler
     ypos = 68
     textPos = []
     imagePos = [[@path + "select_bg", 0, ypos]]
@@ -160,8 +160,8 @@ class Battle::Scene
       end
     end
     pbUpdateBattlerIcons
-    pbDrawImagePositions(@infoUIOverlay, imagePos)
-    pbDrawTextPositions(@infoUIOverlay, textPos)
+    pbDrawImagePositions(@enhancedUIOverlay, imagePos)
+    pbDrawTextPositions(@enhancedUIOverlay, textPos)
     pbSelectBattlerInfo if select
   end
   
@@ -169,13 +169,15 @@ class Battle::Scene
   # Handles the controls for the selection menu.
   #-----------------------------------------------------------------------------
   def pbSelectBattlerInfo
-    return if !@infoUIToggle
+    return if @enhancedUIToggle != :battler
+    pbHideUIPrompt
     idxSide = 0
     idxPoke = (@battle.pbSideBattlerCount(0) < 3) ? 0 : 1
     battlers = [[], []]
     @battle.allSameSideBattlers.each { |b| battlers[0].push(b) }
     @battle.allOtherSideBattlers.reverse.each { |b| battlers[1].push(b) }
     battler = battlers[idxSide][idxPoke]
+    idxBattler = @sprites["enhancedUIPrompts"].battler
     pbShowOutline("info_icon#{battler.index}")
     cw = @sprites["fightWindow"]
     switchUI = 0
@@ -215,9 +217,14 @@ class Battle::Scene
           end
         end
         pbPlayCursorSE
-      elsif cw.visible && Input.trigger?(Input::JUMPDOWN)
-        switchUI = 1
-        break
+      elsif Input.trigger?(Input::JUMPDOWN)
+        if cw.visible
+          switchUI = 1
+          break
+        elsif @battle.pbCanUsePokeBall?(idxBattler)
+          switchUI = 2
+          break
+        end
       end
       if oldSide != idxSide || oldPoke != idxPoke
         pbUpdateBattlerSelection(idxSide, idxPoke)
@@ -228,11 +235,12 @@ class Battle::Scene
         end
       end
     end
-    pbHideBattleInfo
+    pbHideInfoUI
     pbUpdateBattlerIcons
     case switchUI
-    when 0 then pbPlayCloseMenuSE
+    when 0 then pbPlayCloseMenuSE; pbRefreshUIPrompt
     when 1 then pbToggleMoveInfo(cw.battler, :none, cw)
+    when 2 then pbToggleBallInfo(idxBattler)
     end
   end
   
@@ -240,6 +248,7 @@ class Battle::Scene
   # Edited to allow the selection menu to be opened outside of the fight menu.
   #-----------------------------------------------------------------------------
   def pbCommandMenuEx(idxBattler, texts, mode = 0)
+    pbRefreshUIPrompt(idxBattler, COMMAND_BOX)
     pbShowWindow(COMMAND_BOX)
     cw = @sprites["commandWindow"]
     cw.setTexts(texts)
@@ -274,6 +283,11 @@ class Battle::Scene
         break
       elsif Input.trigger?(Input::JUMPUP)
         pbToggleBattleInfo
+      elsif Input.trigger?(Input::JUMPDOWN)
+        if pbToggleBallInfo(idxBattler)
+          ret = 1
+          break
+        end
       end
     end
     return ret
