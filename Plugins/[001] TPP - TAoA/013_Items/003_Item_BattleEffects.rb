@@ -43,29 +43,32 @@ ItemHandlers::BattleUseOnBattler.add(:KAPPADEFENSE, proc { |item, battler, scene
 
 ItemHandlers::BattleUseOnPokemon.add(:BEER, proc { |item, pokemon, battler, choices, scene|
   pbBattleHPItem(pokemon, battler, 40, scene)
-  next if !battler.pbCanConfuse?(battler, false)
-  if rand(100) < 25
-    battler.pbConfuse(nil, _INTL("{1} became inebriated!", battler.pbThis, battler.itemName))
+  next unless battler
+  next if !battler.pbCanConfuseSelf?(battler, false)
+  if battle.pbRandom(100) < 25
+    battler.pbConfuse( _INTL("{1} became inebriated!", battler.pbThis, battler.itemName))
   end
 })
 
 ItemHandlers::BattleUseOnPokemon.add(:SAKE, proc { |item, pokemon, battler, choices, scene|
   pbBattleHPItem(pokemon, battler, 80, scene)
-  next if !battler.pbCanConfuse?(battler, false)
-  if rand(100) < 50
-    battler.pbConfuse(nil, _INTL("{1} became inebriated!", battler.pbThis, battler.itemName))
+  next unless battler
+  next if !battler.pbCanConfuseSelf?(battler, false)
+  if battle.pbRandom(100) < 50
+    battler.pbConfuse( _INTL("{1} became inebriated!", battler.pbThis, battler.itemName))
   end
 })
 
 ItemHandlers::BattleUseOnPokemon.add(:ONIKILLERSAKE, proc { |item, pokemon, battler, choices, scene|
   pbBattleHPItem(pokemon, battler, pokemon.totalhp - pokemon.hp, scene)
-  next if !battler.pbCanConfuse?(battler, false)
+  next unless battler
+  next if !battler.pbCanConfuseSelf?(battler, false)
   if battler.pokemon.species_data.has_flag?("Oni")
     battler.pbRaiseStatStage(:ATTACK, 1, battler)
     battler.pbRaiseStatStage(:SPECIAL_ATTACK, 1, battler)
 	battler.pokemon.changeHappiness("battleitem")
   end
-  if rand(100) < 75
+  if battle.pbRandom(100) < 75
     battler.pbConfuse(nil, _INTL("{1} became inebriated!", battler.pbThis, battler.itemName))
   end
 })

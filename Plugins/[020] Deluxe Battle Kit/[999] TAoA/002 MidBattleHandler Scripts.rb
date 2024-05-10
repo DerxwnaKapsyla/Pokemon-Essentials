@@ -482,13 +482,13 @@
 	#----------------------------------------------------------------------------- 
 	when "RoundEnd_player"
 	  if rand(100) <= 15
-	    if p1.pbCanConfuse?(player, false)
+	    if p1.pbCanConfuse?(p1, false)
 	      battle.pbDisplayPaused(_INTL("{1} was drawn in by Clownpiece's torchlight, and started flailing wildly!",p1.pbThis))
           p1.pbConfuse
 	    end
       end	
 	  if rand(100) <= 15
-	    if p2.pbCanConfuse?(player, false)
+	    if p2.pbCanConfuse?(p2, false)
 	      battle.pbDisplayPaused(_INTL("{1} was drawn in by Clownpiece's torchlight, and started flailing wildly!",p2.pbThis))
           p2.pbConfuse
 	    end
@@ -590,6 +590,9 @@
 	#----------------------------------------------------------------------------- 
 	when "BattlerFainted_foe1"
 	  $game_variables[129] += 1
+	  if $DEBUG
+	    p $game_variables[129]
+	  end
 	  if $game_variables[129] == 4
 	    battle.pbDisplayPaused(_INTL("The madness-enhancements that were powering all of the Hell Fairy's puppets subsided!"))
 	    scene.pbStartSpeech(3)

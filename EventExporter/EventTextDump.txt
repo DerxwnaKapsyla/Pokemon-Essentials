@@ -231,7 +231,7 @@ List of Event Commands:
  @>
 : When [The Kingdom of Lunacy]
  @>Comment: --- TKoL
- @>Show Picture: 1, 'TFoC', Upper Left (0,0), (100%,100%), 0, Normal
+ @>Show Picture: 1, 'TKoL', Upper Left (0,0), (100%,100%), 0, Normal
  @>Move Picture: 1, @20, Upper Left (0,0), (100%,100%), 255, Normal
  @>Wait: 60 frame(s)
  @>Change Text Options: Bottom, Show
@@ -17776,7 +17776,7 @@ Move Animation
 Trigger: Player Touch
 
 List of Event Commands:
-@>Show Picture: 1, 'TFoC', Upper Left (0,0), (100%,100%), 0, Normal
+@>Show Picture: 1, 'TKoL', Upper Left (0,0), (100%,100%), 0, Normal
 @>Move Picture: 1, @20, Upper Left (0,0), (100%,100%), 255, Normal
 @>Wait: 60 frame(s)
 @>Change Text Options: Bottom, Show
@@ -70935,7 +70935,7 @@ List of Event Commands:
 
 #------------------------------------------------------------------------------
 Event ID: 032
-Event Name: Item
+Event Name: HiddenItem:MOONBALL
 (X,Y): (044,043)
 
 Page #1
@@ -70955,7 +70955,7 @@ List of Event Commands:
 
 #------------------------------------------------------------------------------
 Event ID: 033
-Event Name: Item
+Event Name: Item:SWIFTSHARD
 (X,Y): (061,032)
 
 Page #1
@@ -70995,7 +70995,7 @@ List of Event Commands:
 
 #------------------------------------------------------------------------------
 Event ID: 035
-Event Name: Item
+Event Name: Item:COMETSHARD
 (X,Y): (018,036)
 
 Page #1
@@ -71015,7 +71015,7 @@ List of Event Commands:
 
 #------------------------------------------------------------------------------
 Event ID: 036
-Event Name: Item
+Event Name: Item:ULTRAORB
 (X,Y): (016,050)
 
 Page #1
@@ -71055,7 +71055,7 @@ List of Event Commands:
 
 #------------------------------------------------------------------------------
 Event ID: 038
-Event Name: Item
+Event Name: HiddenItem:ENERGYROOT
 (X,Y): (024,044)
 
 Page #1
@@ -71075,7 +71075,7 @@ List of Event Commands:
 
 #------------------------------------------------------------------------------
 Event ID: 039
-Event Name: Item
+Event Name: Item:ETHER
 (X,Y): (032,049)
 
 Page #1
@@ -71095,7 +71095,7 @@ List of Event Commands:
 
 #------------------------------------------------------------------------------
 Event ID: 040
-Event Name: Item
+Event Name: HiddenItem:GOLDENRICESAKE
 (X,Y): (063,062)
 
 Page #1
@@ -88750,6 +88750,8 @@ Move Animation
 Trigger: Autorun
 
 List of Event Commands:
+@>Script: pbSetSelfSwitch(48,"B",false)
+:       : pbSetSelfSwitch(50,"B",false)
 @>Text: \xn[Rabbit Guard 2]Ghk... Is this the end...?
 @>Text: \xn[Rabbit Guard 4]If this is the end, then we'll go down 
  :    : protecting the Princesses!
