@@ -65421,26 +65421,8 @@ List of Event Commands:
  :              : $>Move Up
  :              : $>Change Opacity: 0
  :              : $>SE: 'Door exit', 80, 100
-@>Conditional Branch: Player is facing Left
- @>Set Move Route: Player
-  :              : $>Move Left
- @>
-: Branch End
-@>Set Move Route: Player
- :              : $>Through ON
- :              : $>Move Up
- :              : $>Move Up
- :              : $>Move Up
- :              : $>Change Opacity: 0
- :              : $>Through OFF
-@>Change Screen Color Tone: (-255,-255,-255,0), @6
-@>Play SE: 'Door exit', 80, 100
-@>Wait: 8 frame(s)
-@>Change Transparent Flag: Normal
 @>Control Variables: [0121: TKoL Plot Variable] = 5
-@>Transfer Player:[119: Eientei (Rooms)], (014,017), Up, No Fade
-@>Set Move Route: Player
- :              : $>Change Opacity: 255
+@>Wait for Move's Completion
 @>
 
 Page #2
@@ -66030,6 +66012,70 @@ Trigger: Autorun
 
 List of Event Commands:
 @>Control Switches: [0001: Starting over] = OFF
+@>
+
+#------------------------------------------------------------------------------
+Event ID: 021
+Event Name: Reisen
+(X,Y): (055,015)
+
+Page #1
+Conditions
+Variable 0121: TKoL Plot Variable is 4 or above
+
+Graphic: Person_Reisen
+
+Autonomous Movement
+Type: Fixed
+Speed: 3: Slow
+Freq: 3: Low
+Options Enabled
+Move Animation
+Trigger: Action Button
+
+List of Event Commands:
+@>Text: \xn[Reisen]Oh, good, you're here! C'mon, follow me!
+@>Set Move Route: [Reisen]
+ :              : $>Through ON
+ :              : $>Move Up
+ :              : $>Move Up
+ :              : $>Change Opacity: 0
+ :              : $>SE: 'Door exit', 80, 100
+@>Conditional Branch: Player is facing Left
+ @>Set Move Route: Player
+  :              : $>Move Left
+ @>
+: Branch End
+@>Set Move Route: Player
+ :              : $>Through ON
+ :              : $>Move Up
+ :              : $>Move Up
+ :              : $>Move Up
+ :              : $>Change Opacity: 0
+ :              : $>Through OFF
+@>Change Screen Color Tone: (-255,-255,-255,0), @6
+@>Play SE: 'Door exit', 80, 100
+@>Wait: 8 frame(s)
+@>Change Transparent Flag: Normal
+@>Control Variables: [0121: TKoL Plot Variable] = 5
+@>Transfer Player:[119: Eientei (Rooms)], (014,017), Up, No Fade
+@>Set Move Route: Player
+ :              : $>Change Opacity: 255
+@>
+
+Page #2
+Conditions
+Variable 0121: TKoL Plot Variable is 5 or above
+
+Autonomous Movement
+Type: Fixed
+Speed: 3: Slow
+Freq: 3: Low
+Options Enabled
+Move Animation
+Trigger: Action Button
+
+List of Event Commands:
 @>
 
 #------------------------------------------------------------------------------
@@ -68448,6 +68494,10 @@ List of Event Commands:
   @>Text: \w[dark]TERMINAL DEACTIVATED.
   @>Control Self Switch: A =ON
   @>Script: pbSetSelfSwitch(20,"D",true)
+  @>Script: pbSetSelfSwitch(7,"A",true)
+  :       : pbSetSelfSwitch(8,"A",true)
+  :       : pbSetSelfSwitch(9,"A",true)
+  :       : pbSetSelfSwitch(10,"A",true)
   @>
  : When [No]
   @>
@@ -68600,6 +68650,154 @@ List of Event Commands:
 @>Wait: 70 frame(s)
 @>Transfer Player:[089: Youkai Mountain], (073,059), Down, No Fade
 @>Change Screen Color Tone: (0,0,0,0), @20
+@>
+
+#------------------------------------------------------------------------------
+Event ID: 007
+Event Name: Block
+(X,Y): (018,053)
+
+Page #1
+Conditions
+None
+
+Graphic: Object ball
+
+Autonomous Movement
+Type: Fixed
+Speed: 3: Slow
+Freq: 3: Low
+Options Enabled
+Move Animation
+Trigger: Action Button
+
+List of Event Commands:
+@>
+
+Page #2
+Conditions
+Self Switch A is ON
+
+Autonomous Movement
+Type: Fixed
+Speed: 3: Slow
+Freq: 3: Low
+Options Enabled
+Move Animation
+Trigger: Action Button
+
+List of Event Commands:
+@>
+
+#------------------------------------------------------------------------------
+Event ID: 008
+Event Name: Block
+(X,Y): (019,053)
+
+Page #1
+Conditions
+None
+
+Graphic: Object ball
+
+Autonomous Movement
+Type: Fixed
+Speed: 3: Slow
+Freq: 3: Low
+Options Enabled
+Move Animation
+Trigger: Action Button
+
+List of Event Commands:
+@>
+
+Page #2
+Conditions
+Self Switch A is ON
+
+Autonomous Movement
+Type: Fixed
+Speed: 3: Slow
+Freq: 3: Low
+Options Enabled
+Move Animation
+Trigger: Action Button
+
+List of Event Commands:
+@>
+
+#------------------------------------------------------------------------------
+Event ID: 009
+Event Name: Block
+(X,Y): (020,053)
+
+Page #1
+Conditions
+None
+
+Graphic: Object ball
+
+Autonomous Movement
+Type: Fixed
+Speed: 3: Slow
+Freq: 3: Low
+Options Enabled
+Move Animation
+Trigger: Action Button
+
+List of Event Commands:
+@>
+
+Page #2
+Conditions
+Self Switch A is ON
+
+Autonomous Movement
+Type: Fixed
+Speed: 3: Slow
+Freq: 3: Low
+Options Enabled
+Move Animation
+Trigger: Action Button
+
+List of Event Commands:
+@>
+
+#------------------------------------------------------------------------------
+Event ID: 010
+Event Name: Block
+(X,Y): (021,053)
+
+Page #1
+Conditions
+None
+
+Graphic: Object ball
+
+Autonomous Movement
+Type: Fixed
+Speed: 3: Slow
+Freq: 3: Low
+Options Enabled
+Move Animation
+Trigger: Action Button
+
+List of Event Commands:
+@>
+
+Page #2
+Conditions
+Self Switch A is ON
+
+Autonomous Movement
+Type: Fixed
+Speed: 3: Slow
+Freq: 3: Low
+Options Enabled
+Move Animation
+Trigger: Action Button
+
+List of Event Commands:
 @>
 
 #------------------------------------------------------------------------------
@@ -69560,6 +69758,9 @@ Move Animation
 Trigger: Event Touch
 
 List of Event Commands:
+@>Text: \xn[\pn]\b(There's nothing for me that way.)
+@>Set Move Route: Player
+ :              : $>1 Step Backward
 @>
 
 #------------------------------------------------------------------------------
@@ -69580,6 +69781,9 @@ Move Animation
 Trigger: Event Touch
 
 List of Event Commands:
+@>Text: \xn[\pn]\b(There's nothing for me that way.)
+@>Set Move Route: Player
+ :              : $>1 Step Backward
 @>
 
 #------------------------------------------------------------------------------
@@ -71919,6 +72123,7 @@ Move Animation
 Trigger: Autorun
 
 List of Event Commands:
+@>Change Transparent Flag: Normal
 @>Text: \rFirst, you should restore your Puppets to full 
  :    : health.
 @>Recover All: Entire Party
@@ -76221,6 +76426,44 @@ Move Animation
 Trigger: Action Button
 
 List of Event Commands:
+@>
+
+#------------------------------------------------------------------------------
+Event ID: 034
+Event Name: Healing Statue
+(X,Y): (017,035)
+
+Page #1
+Conditions
+None
+
+Autonomous Movement
+Type: Fixed
+Speed: 3: Slow
+Freq: 3: Low
+Options Enabled
+Move Animation
+Trigger: Action Button
+
+List of Event Commands:
+@>Script: pbSetPokemonCenter
+@>Call Common Event: Akyuu Shrines
+@>
+
+Page #2
+Conditions
+Switch 0001: Starting over is ON
+
+Autonomous Movement
+Type: Fixed
+Speed: 3: Slow
+Freq: 3: Low
+Options Enabled
+Move Animation
+Trigger: Autorun
+
+List of Event Commands:
+@>Control Switches: [0001: Starting over] = OFF
 @>
 
 #------------------------------------------------------------------------------
@@ -81050,7 +81293,7 @@ Speed: 3: Slow
 Freq: 3: Low
 Options Enabled
 Move Animation
-Trigger: Action Button
+Trigger: Autorun
 
 List of Event Commands:
 @>Text: \xn[\pn]Alright, my homework for the week is done! I should head on
