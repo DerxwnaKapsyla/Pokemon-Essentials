@@ -132,7 +132,7 @@ List of Event Commands:
  @>
 : When [The Kingdom of Lunacy]
  @>Comment: --- TKoL
- @>Show Picture: 1, 'TFoC', Upper Left (0,0), (100%,100%), 0, Normal
+ @>Show Picture: 1, 'TKoL', Upper Left (0,0), (100%,100%), 0, Normal
  @>Move Picture: 1, @20, Upper Left (0,0), (100%,100%), 255, Normal
  @>Wait: 60 frame(s)
  @>Change Text Options: Bottom, Show
@@ -34011,6 +34011,28 @@ List of Event Commands:
 : When [No]
  @>
 : Branch End
+@>
+
+#------------------------------------------------------------------------------
+Event ID: 061
+Event Name: EV061
+(X,Y): (053,033)
+
+Page #1
+Conditions
+None
+
+Graphic: OW_DoppelDevice
+
+Autonomous Movement
+Type: Fixed
+Speed: 3: Slow
+Freq: 3: Low
+Options Enabled
+Move Animation
+Trigger: Action Button
+
+List of Event Commands:
 @>
 
 #------------------------------------------------------------------------------
@@ -71287,6 +71309,21 @@ List of Event Commands:
 @>Text: We need to stand firm and protect the palace!
 @>
 
+Page #2
+Conditions
+Variable 0121: TKoL Plot Variable is 22 or above
+
+Autonomous Movement
+Type: Fixed
+Speed: 3: Slow
+Freq: 3: Low
+Options Enabled
+Move Animation
+Trigger: Action Button
+
+List of Event Commands:
+@>
+
 #------------------------------------------------------------------------------
 Event ID: 042
 Event Name: Rabbit Guard
@@ -71308,6 +71345,21 @@ Trigger: Action Button
 
 List of Event Commands:
 @>Text: We need to stand firm and protect the palace!
+@>
+
+Page #2
+Conditions
+Variable 0121: TKoL Plot Variable is 22 or above
+
+Autonomous Movement
+Type: Fixed
+Speed: 3: Slow
+Freq: 3: Low
+Options Enabled
+Move Animation
+Trigger: Action Button
+
+List of Event Commands:
 @>
 
 #------------------------------------------------------------------------------
@@ -71333,6 +71385,21 @@ List of Event Commands:
 @>Text: We need to stand firm and protect the palace!
 @>
 
+Page #2
+Conditions
+Variable 0121: TKoL Plot Variable is 22 or above
+
+Autonomous Movement
+Type: Fixed
+Speed: 3: Slow
+Freq: 3: Low
+Options Enabled
+Move Animation
+Trigger: Action Button
+
+List of Event Commands:
+@>
+
 #------------------------------------------------------------------------------
 Event ID: 044
 Event Name: Rabbit Guard
@@ -71354,6 +71421,21 @@ Trigger: Action Button
 
 List of Event Commands:
 @>Text: We need to stand firm and protect the palace!
+@>
+
+Page #2
+Conditions
+Variable 0121: TKoL Plot Variable is 22 or above
+
+Autonomous Movement
+Type: Fixed
+Speed: 3: Slow
+Freq: 3: Low
+Options Enabled
+Move Animation
+Trigger: Action Button
+
+List of Event Commands:
 @>
 
 #------------------------------------------------------------------------------
@@ -71728,6 +71810,33 @@ List of Event Commands:
   :              : $>Move Up
  @>
 : Branch End
+@>
+
+#------------------------------------------------------------------------------
+Event ID: 054
+Event Name: size(4,1)
+(X,Y): (034,010)
+
+Page #1
+Conditions
+None
+
+Autonomous Movement
+Type: Fixed
+Speed: 3: Slow
+Freq: 3: Low
+Options Enabled
+Move Animation
+Trigger: Event Touch
+
+List of Event Commands:
+@>Play SE: 'Door exit', 60, 100
+@>Change Screen Color Tone: (-255,-255,-255,0), @6
+@>Wait: 8 frame(s)
+@>Transfer Player:[098: Lunar Palace - Outside], (044,037)
+@>Change Screen Color Tone: (0,0,0,0), @6
+@>Set Move Route: Player
+ :              : $>Move Up
 @>
 
 #------------------------------------------------------------------------------
@@ -74676,6 +74785,7 @@ List of Event Commands:
  @>Text: \xn[\pn]Sigh. Is it too much to ask for to just have one normal
   :    : day again.
  @>Control Self Switch: A =ON
+ @>Control Switches: [0142: Junko Descends] = OFF
  @>
 : Else
  @>Script: pbTrainerEnd
@@ -76749,6 +76859,33 @@ Move Animation
 Trigger: Action Button
 
 List of Event Commands:
+@>
+
+#------------------------------------------------------------------------------
+Event ID: 007
+Event Name: size(4,1)
+(X,Y): (043,039)
+
+Page #1
+Conditions
+None
+
+Autonomous Movement
+Type: Fixed
+Speed: 3: Slow
+Freq: 3: Low
+Options Enabled
+Move Animation
+Trigger: Event Touch
+
+List of Event Commands:
+@>Play SE: 'Door exit', 60, 100
+@>Change Screen Color Tone: (-255,-255,-255,0), @6
+@>Wait: 8 frame(s)
+@>Transfer Player:[091: Lunar Capital], (035,010)
+@>Change Screen Color Tone: (0,0,0,0), @6
+@>Set Move Route: Player
+ :              : $>Move Down
 @>
 
 #------------------------------------------------------------------------------
@@ -81551,6 +81688,74 @@ Move Animation
 Trigger: Action Button
 
 List of Event Commands:
+@>
+
+#------------------------------------------------------------------------------
+Event ID: 005
+Event Name: EV005
+(X,Y): (003,010)
+
+Page #1
+Conditions
+None
+
+Graphic: OW_DoppelDevice
+
+Autonomous Movement
+Type: Fixed
+Speed: 3: Slow
+Freq: 3: Low
+Options Enabled
+Move Animation
+Direction Fix
+Trigger: Action Button
+
+List of Event Commands:
+@>Conditional Branch: Self Switch A == ON
+ @>Text: It's a replica of the Doppeldevice that was made by the Kappa on
+  :    : the mountain.
+ @>Control Self Switch: A =ON
+ @>
+: Branch End
+@>Conditional Branch: Player is facing Up
+ @>Text: \rENGAGE THE DOPPEL DEVICE?
+ @>Show Choices: Yes, No
+ (When Cancel: Choice 2)
+ : When [Yes]
+  @>Text: \rSCANNING. PLEASE STAND BY.
+  @>Script: pbSEPlay("Anim/PRSFX- Lock On")
+  @>Wait: 30 frame(s)
+  @>Text: \rANALYSIS COMPLETE. ADOPTING FORM SUITED FOR 
+   :    : COMBAT.
+  @>Screen Flash: (255,255,255,255), @10
+  @>Play SE: 'Vs flash', 80, 100
+  @>Set Move Route: This event
+   :              : $>Graphic: "OW_DoppelDevice', 0, 2, 2
+  @>Script: setBattleRule("noMoney")
+  @>Script: setBattleRule("canLose")
+  @>Script: pbTrainerIntro("DOPPELDEVICE")
+  @>Text: \rFORM ADOPTED. PREPARE FOR COMBAT.
+  @>Control Switches: [0104: Transition Handler] = ON
+  @>Control Variables: [0103: Vs. Transition ID] = 9
+  @>Conditional Branch: Script: TrainerBattle.start(:DOPPELDEVICE, "Doppel")
+   @>
+  : Else
+   @>Set Move Route: This event
+    :              : $>Graphic: "OW_DoppelDevice', 0, 2, 1
+   @>Exit Event Processing
+   @>
+  : Branch End
+  @>Screen Flash: (255,255,255,255), @10
+  @>Set Move Route: This event
+   :              : $>Graphic: "OW_DoppelDevice', 0, 2, 1
+  @>Text: \rRETURNING TO STAND-BY MODE.
+  @>
+ : When [No]
+  @>Text: \rRETURNING TO STAND-BY MODE.
+  @>
+ : Branch End
+ @>
+: Branch End
 @>
 
 #------------------------------------------------------------------------------
