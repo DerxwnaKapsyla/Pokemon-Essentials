@@ -81693,7 +81693,7 @@ List of Event Commands:
 #------------------------------------------------------------------------------
 Event ID: 005
 Event Name: EV005
-(X,Y): (003,010)
+(X,Y): (015,006)
 
 Page #1
 Conditions
@@ -81711,7 +81711,7 @@ Direction Fix
 Trigger: Action Button
 
 List of Event Commands:
-@>Conditional Branch: Self Switch A == ON
+@>Conditional Branch: Self Switch A == OFF
  @>Text: It's a replica of the Doppeldevice that was made by the Kappa on
   :    : the mountain.
  @>Control Self Switch: A =ON
@@ -81733,10 +81733,10 @@ List of Event Commands:
    :              : $>Graphic: "OW_DoppelDevice', 0, 2, 2
   @>Script: setBattleRule("noMoney")
   @>Script: setBattleRule("canLose")
-  @>Script: pbTrainerIntro("DOPPELDEVICE")
   @>Text: \rFORM ADOPTED. PREPARE FOR COMBAT.
   @>Control Switches: [0104: Transition Handler] = ON
   @>Control Variables: [0103: Vs. Transition ID] = 9
+  @>Change Battle BGM: 'B-016. The Ground's Color is Yellow (BW Remix)', 100, 100
   @>Conditional Branch: Script: TrainerBattle.start(:DOPPELDEVICE, "Doppel")
    @>
   : Else
