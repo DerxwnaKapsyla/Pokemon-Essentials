@@ -72422,8 +72422,8 @@ List of Event Commands:
  :    : variety of goods to select from.
 @>Conditional Branch: Variable [0121: TKoL Plot Variable] < 20
  @>Script: pbPokemonMart([
- :       : :PUPPETORB,:GREATORB,:ULTRAORB,:MOONBALL
- :       : :POTION,:SUPERPOTION,:HYPERPOTION,:SAKE,:BEER,:ONIKILLERSAKE
+ :       : :PUPPETORB,:GREATORB,:ULTRAORB,:MOONBALL,
+ :       : :POTION,:SUPERPOTION,:HYPERPOTION,:SAKE,:BEER,:ONIKILLERSAKE,
  :       : :REVIVE,:FULLHEAL,
  :       : :REPEL,:SUPERREPEL,
  :       : :POWERSHARD,:DEFENSESHARD,:TECHSHARD,
@@ -72435,9 +72435,9 @@ List of Event Commands:
  @>Script: setPrice(:RARECANDY,9800)
  @>Script: setPrice(:MAXREVIVE,9800)
  @>Script: pbPokemonMart([
- :       : :PUPPETORB,:GREATORB,:ULTRAORB,:MOONBALL
+ :       : :PUPPETORB,:GREATORB,:ULTRAORB,:MOONBALL,
  :       : :POTION,:SUPERPOTION,:HYPERPOTION,:SAKE,:BEER,:ONIKILLERSAKE,
- :       : :REVIVE,:MAXREVIVE,:GOLDENPEACHSAKE
+ :       : :REVIVE,:MAXREVIVE,
  :       : :FULLHEAL,:FULLRESTORE,
  :       : :ETHER,:MAXETHER,:ELIXIR,:MAXELIXIR,
  :       : :REPEL,:SUPERREPEL,:MAXREPEL,
@@ -72448,6 +72448,7 @@ List of Event Commands:
  :       : ])
  @>
 : Branch End
+@>Comment: ADD IN :GOLDENPEACHSAKE, TO THE SECOND LIST WHEN ITS ADDED TO ITEMS
 @>
 
 Page #2

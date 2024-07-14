@@ -5348,3 +5348,166 @@ Backtrace:
 005_PluginManager.rb:616:in `runPlugins'
 999_Main.rb:35:in `mainFunctionDebug'
 999_Main.rb:19:in `block in mainFunction'
+
+=================
+
+[2024-07-14 00:10:00 -0700]
+[Pokémon Essentials version 21.1]
+[v21.1 Hotfixes 1.0.9]
+
+Script error in event 18 (coords 12,19), map 92 (Capital Puppet Center)
+Exception: SyntaxError
+Message: (eval):5: syntax error, unexpected symbol literal, expecting ']'
+:POTION,:SUPERPOTION,:HYPERPOT...
+^
+
+
+***Full script:
+setPrice(:RARECANDY,9800)
+setPrice(:MAXREVIVE,9800)
+pbPokemonMart([
+:PUPPETORB,:GREATORB,:ULTRAORB,:MOONBALL
+:POTION,:SUPERPOTION,:HYPERPOTION,:SAKE,:BEER,:ONIKILLERSAKE,
+:REVIVE,:MAXREVIVE,:GOLDENPEACHSAKE
+:FULLHEAL,:FULLRESTORE,
+:ETHER,:MAXETHER,:ELIXIR,:MAXELIXIR,
+:REPEL,:SUPERREPEL,:MAXREPEL,
+:PPUP,:RARECANDY,
+:POWERSHARD,:DEFENSESHARD,:TECHSHARD,
+:SWIFTSHARD,:SUPPORTSHARD,:SOLARSHARD,
+:CHROMESHARD
+])
+
+=================
+
+[2024-07-14 00:11:32 -0700]
+[Pokémon Essentials version 21.1]
+[v21.1 Hotfixes 1.0.9]
+
+Script error in event 18 (coords 12,19), map 92 (Capital Puppet Center)
+Exception: SyntaxError
+Message: (eval):7: syntax error, unexpected symbol literal, expecting ']'
+:FULLHEAL,:FULLRESTORE,
+^
+
+
+***Full script:
+setPrice(:RARECANDY,9800)
+setPrice(:MAXREVIVE,9800)
+pbPokemonMart([
+:PUPPETORB,:GREATORB,:ULTRAORB,:MOONBALL,
+:POTION,:SUPERPOTION,:HYPERPOTION,:SAKE,:BEER,:ONIKILLERSAKE,
+:REVIVE,:MAXREVIVE,:GOLDENPEACHSAKE
+:FULLHEAL,:FULLRESTORE,
+:ETHER,:MAXETHER,:ELIXIR,:MAXELIXIR,
+:REPEL,:SUPERREPEL,:MAXREPEL,
+:PPUP,:RARECANDY,
+:POWERSHARD,:DEFENSESHARD,:TECHSHARD,
+:SWIFTSHARD,:SUPPORTSHARD,:SOLARSHARD,
+:CHROMESHARD
+])
+
+=================
+
+[2024-07-14 00:12:17 -0700]
+[Pokémon Essentials version 21.1]
+[v21.1 Hotfixes 1.0.9]
+
+Script error in event 55 (coords 35,27), map 91 (Lunar Capital)
+Exception: SyntaxError
+Message: (eval):7: syntax error, unexpected symbol literal, expecting ']'
+:FULLHEAL,:FULLRESTORE,
+^
+
+
+***Full script:
+setPrice(:RARECANDY,9800)
+setPrice(:MAXREVIVE,9800)
+pbPokemonMart([
+:PUPPETORB,:GREATORB,:ULTRAORB,:MOONBALL,
+:POTION,:SUPERPOTION,:HYPERPOTION,:SAKE,:BEER,:ONIKILLERSAKE,
+:REVIVE,:MAXREVIVE,:GOLDENPEACHSAKE
+:FULLHEAL,:FULLRESTORE,
+:ETHER,:MAXETHER,:ELIXIR,:MAXELIXIR,
+:REPEL,:SUPERREPEL,:MAXREPEL,
+:PPUP,:RARECANDY,
+:POWERSHARD,:DEFENSESHARD,:TECHSHARD,
+:SWIFTSHARD,:SUPPORTSHARD,:SOLARSHARD,
+:CHROMESHARD
+])
+
+=================
+
+[2024-07-14 00:13:09 -0700]
+[Pokémon Essentials version 21.1]
+[v21.1 Hotfixes 1.0.9]
+
+Script error in event 18 (coords 12,19), map 92 (Capital Puppet Center)
+Exception: RuntimeError
+Message: Unknown ID GOLDENPEACHSAKE.
+
+***Full script:
+setPrice(:RARECANDY,9800)
+setPrice(:MAXREVIVE,9800)
+pbPokemonMart([
+:PUPPETORB,:GREATORB,:ULTRAORB,:MOONBALL,
+:POTION,:SUPERPOTION,:HYPERPOTION,:SAKE,:BEER,:ONIKILLERSAKE,
+:REVIVE,:MAXREVIVE,:GOLDENPEACHSAKE,
+:FULLHEAL,:FULLRESTORE,
+:ETHER,:MAXETHER,:ELIXIR,:MAXELIXIR,
+:REPEL,:SUPERREPEL,:MAXREPEL,
+:PPUP,:RARECANDY,
+:POWERSHARD,:DEFENSESHARD,:TECHSHARD,
+:SWIFTSHARD,:SUPPORTSHARD,:SOLARSHARD,
+:CHROMESHARD
+])
+
+Backtrace:
+001_GameData.rb:103:in `get'
+[Touhoumon Essentials Development Kit] 020_UI_Pokemart.rb:108:in `block in pbPokemonMart'
+[Touhoumon Essentials Development Kit] 020_UI_Pokemart.rb:108:in `delete_if'
+[Touhoumon Essentials Development Kit] 020_UI_Pokemart.rb:108:in `pbPokemonMart'
+(eval):3:in `execute_script'
+003_Interpreter.rb:140:in `eval'
+003_Interpreter.rb:140:in `execute_script'
+004_Interpreter_Commands.rb:1177:in `command_355'
+004_Interpreter_Commands.rb:116:in `execute_command'
+003_Interpreter.rb:132:in `block in update'
+
+=================
+
+[2024-07-14 00:14:47 -0700]
+[Pokémon Essentials version 21.1]
+[v21.1 Hotfixes 1.0.9]
+
+Script error in event 18 (coords 12,19), map 92 (Capital Puppet Center)
+Exception: ArgumentError
+Message: wrong number of arguments (given 1, expected 2..5)
+
+***Full script:
+setPrice(:RARECANDY,9800)
+setPrice(:MAXREVIVE,9800)
+pbPokemonMart([
+:PUPPETORB,:GREATORB,:ULTRAORB,:MOONBALL,
+:POTION,:SUPERPOTION,:HYPERPOTION,:SAKE,:BEER,:ONIKILLERSAKE,
+:REVIVE,:MAXREVIVE,
+:FULLHEAL,:FULLRESTORE,
+:ETHER,:MAXETHER,:ELIXIR,:MAXELIXIR,
+:REPEL,:SUPERREPEL,:MAXREPEL,
+:PPUP,:RARECANDY,
+:POWERSHARD,:DEFENSESHARD,:TECHSHARD,
+:SWIFTSHARD,:SUPPORTSHARD,:SOLARSHARD,
+:CHROMESHARD
+])
+
+Backtrace:
+[Bag Screen w/int. Party] Script.rb:565:in `pbStartScene'
+020_UI_PokeMart.rb:320:in `pbStartSellScene2'
+020_UI_PokeMart.rb:305:in `pbStartSellScene'
+020_UI_PokeMart.rb:679:in `pbSellScreen'
+[Touhoumon Essentials Development Kit] 020_UI_Pokemart.rb:129:in `block in pbPokemonMart'
+[Touhoumon Essentials Development Kit] 020_UI_Pokemart.rb:121:in `loop'
+[Touhoumon Essentials Development Kit] 020_UI_Pokemart.rb:121:in `pbPokemonMart'
+(eval):3:in `execute_script'
+003_Interpreter.rb:140:in `eval'
+003_Interpreter.rb:140:in `execute_script'
