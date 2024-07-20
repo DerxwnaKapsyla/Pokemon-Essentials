@@ -1,1 +1,0 @@
-rename "*.pngh" *.png

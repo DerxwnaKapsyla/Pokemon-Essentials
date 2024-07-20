@@ -68145,6 +68145,7 @@ List of Event Commands:
  :              : $>Move Up
 @>Set Move Route: [Tewi]
  :              : $>Turn Up
+@>Exit Event Processing
 @>
 
 #------------------------------------------------------------------------------
@@ -69761,7 +69762,7 @@ List of Event Commands:
 #------------------------------------------------------------------------------
 Event ID: 011
 Event Name: Map Edge Trigger update size(1,21)
-(X,Y): (072,066)
+(X,Y): (006,015)
 
 Page #1
 Conditions
@@ -69784,7 +69785,7 @@ List of Event Commands:
 #------------------------------------------------------------------------------
 Event ID: 012
 Event Name: Map Edge Trigger update size(1,21)
-(X,Y): (008,066)
+(X,Y): (007,015)
 
 Page #1
 Conditions
@@ -71837,6 +71838,32 @@ List of Event Commands:
 @>Change Screen Color Tone: (0,0,0,0), @6
 @>Set Move Route: Player
  :              : $>Move Up
+@>
+
+#------------------------------------------------------------------------------
+Event ID: 055
+Event Name: Roadblock Control
+(X,Y): (045,051)
+
+Page #1
+Conditions
+None
+
+Autonomous Movement
+Type: Fixed
+Speed: 3: Slow
+Freq: 3: Low
+Options Enabled
+Move Animation
+Trigger: Parallel Process
+
+List of Event Commands:
+@>Conditional Branch: Script: !$game_player.x.between?(9,71)
+ @>Text: \xn[\pn]\b(There's nothing for me that way.)
+ @>Set Move Route: Player
+  :              : $>1 Step Backward
+ @>
+: Branch End
 @>
 
 #------------------------------------------------------------------------------
@@ -83185,7 +83212,7 @@ Page #1
 Conditions
 None
 
-Graphic: Object ball
+Graphic: Object tm_ball
 
 Autonomous Movement
 Type: Fixed
