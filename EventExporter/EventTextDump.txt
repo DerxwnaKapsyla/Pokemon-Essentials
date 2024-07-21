@@ -65697,11 +65697,10 @@ List of Event Commands:
 @>Set Move Route: [Reisen]
  :              : $>Through ON
  :              : $>Move Up
- :              : $>Move Up
  :              : $>Change Opacity: 0
  :              : $>SE: 'Door exit', 80, 100
-@>Control Variables: [0121: TKoL Plot Variable] = 5
 @>Wait for Move's Completion
+@>Control Variables: [0121: TKoL Plot Variable] = 5
 @>
 
 Page #2
@@ -66246,6 +66245,30 @@ List of Event Commands:
 @>Change Screen Color Tone: (0,0,0,0), @6
 @>
 
+Page #2
+Conditions
+Switch 0022: s:tsOff?("A") is ON
+
+Autonomous Movement
+Type: Fixed
+Speed: 3: Slow
+Freq: 3: Low
+Options Enabled
+Move Animation
+Trigger: Autorun
+
+List of Event Commands:
+@>Conditional Branch: Script: get_self.onEvent?
+ @>Change Transparent Flag: Normal
+ @>Set Move Route: Player
+                   (Ignore If Can't Move)
+  :              : $>Move Down
+ @>Wait for Move's Completion
+ @>
+: Branch End
+@>Script: setTempSwitchOn("A")
+@>
+
 #------------------------------------------------------------------------------
 Event ID: 019
 Event Name: EV019
@@ -66270,6 +66293,30 @@ List of Event Commands:
 @>Change Transparent Flag: Normal
 @>Transfer Player:[119: Eientei (Rooms)], (038,013), Up, No Fade
 @>Change Screen Color Tone: (0,0,0,0), @6
+@>
+
+Page #2
+Conditions
+Switch 0022: s:tsOff?("A") is ON
+
+Autonomous Movement
+Type: Fixed
+Speed: 3: Slow
+Freq: 3: Low
+Options Enabled
+Move Animation
+Trigger: Autorun
+
+List of Event Commands:
+@>Conditional Branch: Script: get_self.onEvent?
+ @>Change Transparent Flag: Normal
+ @>Set Move Route: Player
+                   (Ignore If Can't Move)
+  :              : $>Move Down
+ @>Wait for Move's Completion
+ @>
+: Branch End
+@>Script: setTempSwitchOn("A")
 @>
 
 #------------------------------------------------------------------------------
@@ -67732,7 +67779,7 @@ Speed: 3: Slow
 Freq: 3: Low
 Options Enabled
 Move Animation
-Trigger: Event Touch
+Trigger: Player Touch
 
 List of Event Commands:
 @>Text: \xn[???]This assignment is so boring! Nobody has ever come 
@@ -67799,6 +67846,7 @@ List of Event Commands:
  @>Exit Event Processing
  @>
 : Branch End
+@>Exit Event Processing
 @>
 
 Page #2
@@ -68172,7 +68220,7 @@ Speed: 3: Slow
 Freq: 3: Low
 Options Enabled
 Move Animation
-Trigger: Event Touch
+Trigger: Player Touch
 
 List of Event Commands:
 @>Text: \xn[???]This assignment is so boring! Nobody has ever come 
@@ -68235,6 +68283,7 @@ List of Event Commands:
  @>Exit Event Processing
  @>
 : Branch End
+@>Exit Event Processing
 @>
 
 Page #2
@@ -68383,7 +68432,7 @@ Speed: 3: Slow
 Freq: 3: Low
 Options Enabled
 Move Animation
-Trigger: Event Touch
+Trigger: Player Touch
 
 List of Event Commands:
 @>Set Move Route: [Tewi]
@@ -83071,6 +83120,30 @@ List of Event Commands:
 @>Change Transparent Flag: Normal
 @>Transfer Player:[088: Eientei (Corridors)], (023,013), Up, No Fade
 @>Change Screen Color Tone: (0,0,0,0), @6
+@>
+
+Page #2
+Conditions
+Switch 0022: s:tsOff?("A") is ON
+
+Autonomous Movement
+Type: Fixed
+Speed: 3: Slow
+Freq: 3: Low
+Options Enabled
+Move Animation
+Trigger: Autorun
+
+List of Event Commands:
+@>Conditional Branch: Script: get_self.onEvent?
+ @>Change Transparent Flag: Normal
+ @>Set Move Route: Player
+                   (Ignore If Can't Move)
+  :              : $>Move Down
+ @>Wait for Move's Completion
+ @>
+: Branch End
+@>Script: setTempSwitchOn("A")
 @>
 
 #------------------------------------------------------------------------------

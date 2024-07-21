@@ -5702,3 +5702,27 @@ Backtrace:
 999_Main.rb:19:in `block in mainFunction'
 003_Errors.rb:79:in `pbCriticalCode'
 999_Main.rb:19:in `mainFunction'
+
+=================
+
+[2024-07-21 10:16:22 -0700]
+[Pokémon Essentials version 21.1]
+[v21.1 Hotfixes 1.0.9]
+
+Script error in event 31 (coords 33,50), map 86 (Bamboo Forest of the Lost)
+Exception: NoMethodError
+Message: undefined method `between' for 53:Integer
+
+***Full script:
+!$game_player.y.between(55,67)
+Backtrace:
+(eval):1:in `execute_script'
+003_Interpreter.rb:140:in `eval'
+003_Interpreter.rb:140:in `execute_script'
+004_Interpreter_Commands.rb:434:in `command_111'
+004_Interpreter_Commands.rb:29:in `execute_command'
+003_Interpreter.rb:132:in `block in update'
+003_Interpreter.rb:86:in `loop'
+003_Interpreter.rb:86:in `update'
+[v21.1 Hotfixes] Misc bug fixes.rb:601:in `update'
+004_Game_Map.rb:462:in `block in update'
