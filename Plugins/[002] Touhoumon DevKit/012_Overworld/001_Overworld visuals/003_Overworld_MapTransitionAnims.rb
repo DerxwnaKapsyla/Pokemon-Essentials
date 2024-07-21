@@ -18,10 +18,10 @@ def pbStartOver(gameover = false)
   if $PokemonGlobal.pokecenterMapId && $PokemonGlobal.pokecenterMapId >= 0
     if gameover
       pbMessage("\\w[]\\wm\\c[12]\\l[3]" +
-                _INTL("After the unfortunate defeat, you scurry back to a Pokémon Center."))
+                _INTL("After the unfortunate defeat, you scurry back to the nearest rest stop."))
     else
       pbMessage("\\w[]\\wm\\c[12]\\l[3]" +
-                _INTL("You scurry back to a Pokémon Center, protecting your exhausted partners from any further harm..."))
+                _INTL("You scurry back to the nearest rest stop, protecting your exhausted partners from any further harm..."))
     end
     pbCancelVehicles
     Followers.clear
