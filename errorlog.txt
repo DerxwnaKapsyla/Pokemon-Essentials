@@ -5657,3 +5657,48 @@ Backtrace:
 003_Interpreter.rb:86:in `update'
 002_Scene_Map.rb:167:in `block in update'
 002_Scene_Map.rb:166:in `loop'
+
+=================
+
+[2024-07-20 22:22:10 -0700]
+[Pokémon Essentials version 21.1]
+
+Error in Plugin: [Arcky's Poke Market]
+Exception: SyntaxError
+Message: [Arcky's Poke Market] 000_PokeMarket_Settings_and_Setup.rb:471: syntax error, unexpected `end', expecting ']'
+
+Backtrace:
+005_PluginManager.rb:635:in `eval'
+005_PluginManager.rb:635:in `block (2 levels) in runPlugins'
+005_PluginManager.rb:625:in `each'
+005_PluginManager.rb:625:in `block in runPlugins'
+005_PluginManager.rb:616:in `each'
+005_PluginManager.rb:616:in `runPlugins'
+999_Main.rb:35:in `mainFunctionDebug'
+999_Main.rb:19:in `block in mainFunction'
+003_Errors.rb:79:in `pbCriticalCode'
+999_Main.rb:19:in `mainFunction'
+
+=================
+
+[2024-07-20 22:22:41 -0700]
+[Pokémon Essentials version 21.1]
+
+Error in Plugin: [Arcky's Poke Market]
+Exception: SyntaxError
+Message: [Arcky's Poke Market] 000_PokeMarket_Settings_and_Setup.rb:471: syntax error, unexpected `end', expecting ']'
+  end
+  ^~~
+
+
+Backtrace:
+005_PluginManager.rb:635:in `eval'
+005_PluginManager.rb:635:in `block (2 levels) in runPlugins'
+005_PluginManager.rb:625:in `each'
+005_PluginManager.rb:625:in `block in runPlugins'
+005_PluginManager.rb:616:in `each'
+005_PluginManager.rb:616:in `runPlugins'
+999_Main.rb:35:in `mainFunctionDebug'
+999_Main.rb:19:in `block in mainFunction'
+003_Errors.rb:79:in `pbCriticalCode'
+999_Main.rb:19:in `mainFunction'

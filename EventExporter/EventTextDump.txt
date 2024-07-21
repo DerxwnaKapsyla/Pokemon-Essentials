@@ -29861,7 +29861,7 @@ List of Event Commands:
 @>Show Choices: 10 FP [$100], 100 coins [$1,000], 500 FP [$5,000], Exit
 (When Cancel: Choice 4)
 : When [10 FP [$100]]
- @>Conditional Branch: Script: $player.coins+10>=MAX_COINS
+ @>Conditional Branch: Script: $player.battle_points+10>=MAX_BATTLE_POINTS
   @>Text: \G\CN\bWhoops!\nYou can't have any more points!
   @>
  : Else
@@ -29870,7 +29870,7 @@ List of Event Commands:
    @>
   : Else
    @>Change Gold: - 100
-   @>Script: $player.coins+=10
+   @>Script: $player.battle_points+=10
    @>Text: \G\CNThank you, here are your Festival Points!
    @>Text: \g\cn\pn recieved 10 Festival Points!
    @>
@@ -29879,7 +29879,7 @@ List of Event Commands:
  : Branch End
  @>
 : When [100 coins [$1,000]]
- @>Conditional Branch: Script: $player.coins+100>=MAX_COINS
+ @>Conditional Branch: Script: $player.battle_points+100>=MAX_BATTLE_POINTS
   @>Text: \G\CN\bWhoops!\nYou can't have any more points!
   @>
  : Else
@@ -29888,7 +29888,7 @@ List of Event Commands:
    @>
   : Else
    @>Change Gold: - 1000
-   @>Script: $player.coins+=100
+   @>Script: $player.battle_points+=100
    @>Text: \G\CNThank you, here are your Festival Points!
    @>Text: \g\cn\pn recieved 100 Festival Points!\me[BP Fanfare]
    @>
@@ -29897,7 +29897,7 @@ List of Event Commands:
  : Branch End
  @>
 : When [500 FP [$5,000]]
- @>Conditional Branch: Script: $player.coins+500>=MAX_COINS
+ @>Conditional Branch: Script: $player.battle_points+500>=MAX_BATTLE_POINTS
   @>Text: \G\CN\bWhoops!\nYou can't have any more points!
   @>
  : Else
@@ -29906,7 +29906,7 @@ List of Event Commands:
    @>
   : Else
    @>Change Gold: - 5000
-   @>Script: $player.coins+=500
+   @>Script: $player.battle_points+=500
    @>Text: \G\CNThank you, here are your Festival Points!
    @>Text: \g\cn\pn recieved 500 Festival Points!
    @>
@@ -31098,7 +31098,7 @@ List of Event Commands:
 @>Show Choices: Yes, No
 (When Cancel: Choice 2)
 : When [Yes]
- @>Conditional Branch: Script: pbGet(2) > $player.coins
+ @>Conditional Branch: Script: pbGet(2) > $player.battle_points
   @>Text: \cn\xn[Minoriko]Sorry, \pn! I can't give credit! You should 
    :    : try stopping by my sister's booth to get some more FP!
   @>
@@ -31107,7 +31107,7 @@ List of Event Commands:
    @>Text: \CN\xn[Minoriko]Yep, all of the FP is here! Please enjoy 
     :    : your jar of \v[3]!
    @>Play SE: 'Mart buy item', 100, 100
-   @>Script: $player.coins -= pbGet(2)
+   @>Script: $player.battle_points -= pbGet(2)
    @>Script: pbBuyPrize(pbGet(1))
    @>Text: \CN\xn[Minoriko]Oh, and don't forget your purchase 
     :    : reward!
@@ -32054,7 +32054,7 @@ List of Event Commands:
 @>Show Choices: Yes, No
 (When Cancel: Choice 2)
 : When [Yes]
- @>Conditional Branch: Script: pbGet(2) > $player.coins
+ @>Conditional Branch: Script: pbGet(2) > $player.battle_points
   @>Text: \CNSorry friend, it doesn't seem like you have enough FP!
    :    : Come on back when you have some more!
   @>
@@ -32062,7 +32062,7 @@ List of Event Commands:
   @>Conditional Branch: Script: $bag.can_add?(pbGet(1))
    @>Text: \CNYour patronage is appreciated! Please enjoy your new item!
    @>Play SE: 'Mart buy item', 100, 100
-   @>Script: $player.coins -= pbGet(2)
+   @>Script: $player.battle_points -= pbGet(2)
    @>Script: pbBuyPrize(pbGet(1), 2)
    @>Exit Event Processing
    @>
@@ -32129,7 +32129,7 @@ List of Event Commands:
 @>Show Choices: Yes, No
 (When Cancel: Choice 2)
 : When [Yes]
- @>Conditional Branch: Script: pbGet(2) > $player.coins
+ @>Conditional Branch: Script: pbGet(2) > $player.battle_points
   @>Text: \CNSorry friend, it doesn't seem like you have enough FP!
    :    : Come on back when you have some more!
   @>
@@ -32137,7 +32137,7 @@ List of Event Commands:
   @>Conditional Branch: Script: $bag.can_add?(pbGet(1))
    @>Text: \CNYour patronage is appreciated! Please enjoy your new item!
    @>Play SE: 'Mart buy item', 100, 100
-   @>Script: $player.coins -= pbGet(2)
+   @>Script: $player.battle_points -= pbGet(2)
    @>Script: pbBuyPrize(pbGet(1), 2)
    @>Exit Event Processing
    @>
@@ -32375,13 +32375,13 @@ List of Event Commands:
  @>Show Choices: Yes, No
  (When Cancel: Choice 2)
  : When [Yes]
-  @>Conditional Branch: Script: pbGet(2) > $player.coins
+  @>Conditional Branch: Script: pbGet(2) > $player.battle_points
    @>Text: \CN\xn[Seija]I know I'm a rule breaker, but even I abide by the laws of currency!
    @>
   : Else
    @>Conditional Branch: Script: $bag.can_add?(pbGet(1))
     @>Play SE: 'Mart buy item', 100, 100
-    @>Script: $player.coins -= pbGet(2)
+    @>Script: $player.battle_points -= pbGet(2)
     @>Script: pbBuyPrize(pbGet(1), 5)
     @>Text: \CN\xn[Seija]A pleasure doing business with you! And remember:
     @>Text: \CN\xn[Seija]All proceeds go to funding the Youkai Uprising that will overthrow the power strucutre of Gensokyo!
@@ -33723,6 +33723,38 @@ List of Event Commands:
 :       : ])
 @>
 
+Page #2
+Conditions
+Switch 0121: Hina Defeated is ON
+
+Graphic: TPDP_NPC 45
+
+Autonomous Movement
+Type: Fixed
+Speed: 3: Slow
+Freq: 3: Low
+Options Enabled
+Move Animation
+Trigger: Action Button
+
+List of Event Commands:
+@>Text: Welcome to my Skill Shop. Here, I sell all sorts of Skill Cards
+ :    : for Puppets to use in battle.
+@>Conditional Branch: Self Switch A == OFF
+ @>Text: These special spell cards will teach the skill contained inside
+  :    : to your Puppet, provided it's able to learn it.
+ @>Control Self Switch: A =ON
+ @>
+: Branch End
+@>Script: pbBattlePointShop([
+:       : :SC01,:SC02,:SC03,:SC04,:SC05,:SC06,:SC07,:SC08,:SC09,:SC10,
+:       : :SC11,:SC12,:SC13,:SC14,:SC15,:SC16,:SC17,:SC18,:SC19,:SC20,
+:       : :SC21,:SC22,:SC23,:SC24,:SC25,:SC26,:SC27,:SC28,:SC29,:SC30,
+:       : :SC31,:SC32,:SC33,:SC34,:SC35,:SC36,:SC37,:SC38,:SC39,:SC40,
+:       : :SC41,:SC42,:SC43,:SC44,:SC45,:SC46,:SC47,:SC48,:SC49,:SC50
+:       : ])
+@>
+
 #------------------------------------------------------------------------------
 Event ID: 056
 Event Name: EV056
@@ -33803,6 +33835,45 @@ List of Event Commands:
 :       : setPrice(:ANTIREASON,20);setPrice(:ANTIPYRO,20);setPrice(:ANTIILLUSION,20);setPrice(:ANTIFAITH,20);
 :       : setPrice(:ANTIDREAM,20);
 @>Script: pbCoinMart([
+:       : :ANTIMETAL,:ANTIEARTH,:ANTIBEAST,:ANTINATURE,:ANTIHEART,:ANTIUMBRAL,:ANTIWIND,:ANTIMIASMA,
+:       : :ANTIHYDRO,:ANTIAERO,:ANTICRYO,:ANTINETHER,:ANTIREASON,:ANTIPYRO,:ANTIILLUSION,:ANTIFAITH,
+:       : :ANTIDREAM,
+:       : ])
+@>Control Switches: [0125: Custom Shop Dialogue] = OFF
+@>Script: # --- Can't afford dialogue
+:       : $game_variables[1] = nil
+:       : # --- Purchase Dialogue
+:       : $game_variables[2] = nil
+:       : # --- Make Room dialogue
+:       : $game_variables[3] = nil
+@>
+
+Page #2
+Conditions
+Switch 0123: Medicine Beaten is ON
+
+Graphic: Person_Sanae
+
+Autonomous Movement
+Type: Fixed
+Speed: 3: Slow
+Freq: 3: Low
+Options Enabled
+Move Animation
+Trigger: Action Button
+
+List of Event Commands:
+@>Text: \xn[Sanae]Welcome to the Moriya Talisman Shop! All of our
+ :    : goods are specially made to help give your Puppets the edge
+ :    : in battle!
+@>Control Switches: [0125: Custom Shop Dialogue] = ON
+@>Script: # --- Can't afford dialogue
+:       : $game_variables[1] = "Sorry, but you don't have enough Festival Points!"
+:       : # --- Purchase Dialogue
+:       : $game_variables[2] = "Enjoy your purchase!"
+:       : # --- Make Room dialogue
+:       : $game_variables[3] = "Your bag looks quite full, you may want to empty it a bit!"
+@>Script: pbBattlePointShop([
 :       : :ANTIMETAL,:ANTIEARTH,:ANTIBEAST,:ANTINATURE,:ANTIHEART,:ANTIUMBRAL,:ANTIWIND,:ANTIMIASMA,
 :       : :ANTIHYDRO,:ANTIAERO,:ANTICRYO,:ANTINETHER,:ANTIREASON,:ANTIPYRO,:ANTIILLUSION,:ANTIFAITH,
 :       : :ANTIDREAM,
@@ -33912,7 +33983,7 @@ List of Event Commands:
   @>Text: \b(Standard banlist from Pokémon, as well as Nepgear and 
    :    : DLwRuukoto. Not like they're obtainable.)
   @>Text: Secondly, "No Eggs", as they can't participate in battle.
-  @>Text: And finally, Puppets that participat in battle will not gain 
+  @>Text: And finally, Puppets that participate in battle will not gain 
    :    : any experience, and money will not be won or lost in any 
    :    : of these battles.
   @>
@@ -33991,7 +34062,7 @@ List of Event Commands:
   @>Text: \b(Standard banlist from Pokémon, as well as Nepgear and 
    :    : DLwRuukoto. Not like they're obtainable.)
   @>Text: Secondly, "No Eggs", as they can't participate in battle.
-  @>Text: And finally, Puppets that participat in battle will not gain 
+  @>Text: And finally, Puppets that participate in battle will not gain 
    :    : any experience, and money will not be won or lost in any 
    :    : of these battles.
   @>
@@ -34931,6 +35002,49 @@ List of Event Commands:
 :       : $game_variables[3] = nil
 @>
 
+Page #4
+Conditions
+Switch 0123: Medicine Beaten is ON
+
+Graphic: Person_Alice
+
+Autonomous Movement
+Type: Fixed
+Speed: 3: Slow
+Freq: 3: Low
+Options Enabled
+Move Animation
+Trigger: Action Button
+
+List of Event Commands:
+@>Text: \xn[Alice]Welcome to the Margatroid Puppet Boutique, where the
+ :    : outfit you get for your Puppets are guaranteed to be top quality!
+@>Text: \xn[Alice]All of our products are made with Puppet comfort in 
+ :    : mind, so you can rest easy knowing that your Puppets will be 
+ :    : in good hands.
+@>Control Switches: [0125: Custom Shop Dialogue] = ON
+@>Script: # --- Can't afford dialogue
+:       : $game_variables[1] = "I'm not running a charity here! Please return when you have more Festival Points!"
+:       : # --- Purchase Dialogue
+:       : $game_variables[2] = "Thank you for your business!" # Purchase dialogue
+:       : # --- Make Room dialogue
+:       : $game_variables[3] = "You should perhaps make some additional room in your bag before I give you these!"
+@>Script: pbBattlePointShop([
+:       : :BUNNYSUIT,:MAIDCOSTUME,:SWEATER,:CAMOUFLAGE,:BLAZER,:MISTRESS,:NINJA,:NURSE,:SWIMSUIT,
+:       : :STEWARDESS,:THICKFUR,:KIMONO,:WITCH,:GOTHIC,:BRIDALGOWN,:PRIESTESS,:CHINADRESS,
+:       : :HEMATITEHAIRPIN,:QUARTZHAIRPIN,:ONYXHAIRPIN,:MALACHITEHAIRPIN,:GOLDHAIRPIN,:OBSIDIANHAIRPIN,:JADEHAIRPIN,
+:       : :AMETHYSTHAIRPIN,:AQUAMARINEHAIRPIN,:DIAMONDHAIRPIN,:LAPISHAIRPIN,:SUGILITEHAIRPIN,:OPALHAIRPIN,:GARNETHAIRPIN,
+:       : :MORGANITEHAIRPIN,:TOPAZHAIRPIN,:MOONSTONEHAIRPIN
+:       : ])
+@>Control Switches: [0125: Custom Shop Dialogue] = OFF
+@>Script: # --- Can't afford dialogue
+:       : $game_variables[1] = nil
+:       : # --- Purchase Dialogue
+:       : $game_variables[2] = nil
+:       : # --- Make Room dialogue
+:       : $game_variables[3] = nil
+@>
+
 #------------------------------------------------------------------------------
 Event ID: 002
 Event Name: EV002
@@ -35108,7 +35222,7 @@ List of Event Commands:
  @>Show Choices: Yes, No
  (When Cancel: Choice 2)
  : When [Yes]
-  @>Conditional Branch: Script: $player.coins < 40
+  @>Conditional Branch: Script: $player.battle_points < 40
    @>Text: \cn\xn[Shizuha]Oh, uh, it doesn't appear as if you have enough
     :    : Festival Points...
    @>Text: \cn\xn[Shizuha]Well, if you get enough, feel free to come
@@ -35116,7 +35230,7 @@ List of Event Commands:
    @>Exit Event Processing
    @>
   : Else
-   @>Script: $player.coins-=40
+   @>Script: $player.battle_points-=40
    @>Text: \cn\xn[Shizuha]Let's see... Yep, 40 Festival Points, all 
     :    : here!
    @>Text: \cn\xn[Shizuha]Allow me to show you into the collection 
@@ -35169,7 +35283,7 @@ List of Event Commands:
    (When Cancel: Choice 2)
    : When [Yes]
     @>Script: $bag.remove(:GOLDLEAF,pbGet(1))
-    :       : $player.coins+= pbGet(2)
+    :       : $player.battle_points+= pbGet(2)
     @>Text: \cn\pn was given \v[2] Festival Points in exchange for the leaves!\me[BP Fanfare]\wtnp[80]
     @>Text: \cn\xn[Shizuha]Wonderful! Thank you for the leaves! 
      :    : They sure are pretty, wouldn't you agree?
@@ -35205,7 +35319,7 @@ List of Event Commands:
    (When Cancel: Choice 2)
    : When [Yes]
     @>Script: $bag.remove (:SILVERLEAF,pbGet(1))
-    :       : $player.coins+= pbGet(2)
+    :       : $player.battle_points+= pbGet(2)
     @>Text: \cn\pn was given \v[2] Festival Points in exchange for the leaves!\me[BP Fanfare]\wtnp[80]
     @>Text: \cn\xn[Shizuha]Wonderful! Thank you for the leaves! 
      :    : They sure are pretty, wouldn't you agree?
@@ -35240,7 +35354,7 @@ List of Event Commands:
    (When Cancel: Choice 2)
    : When [Yes]
     @>Script: $bag.remove(:AUTUMNLEAF,pbGet(1))
-    :       : $player.coins+= pbGet(2)
+    :       : $player.battle_points+= pbGet(2)
     @>Text: \cn\pn was given \v[2] Festival Points in exchange for the leaves!\me[BP Fanfare]\wtnp[80]
     @>Text: \cn\xn[Shizuha]Wonderful! Thank you for the leaves! 
      :    : They sure are pretty, wouldn't you agree?
@@ -62266,8 +62380,8 @@ List of Event Commands:
 @>
 
 #------------------------------------------------------------------------------
-Event ID: 048
-Event Name: EV048
+Event ID: 047
+Event Name: Basic Door
 (X,Y): (041,016)
 
 Page #1
@@ -62282,11 +62396,90 @@ Speed: 3: Slow
 Freq: 3: Low
 Options Enabled
 Move Animation
-Direction Fix
-Trigger: Event Touch
+Trigger: Player Touch
 
 List of Event Commands:
-@>Text: I shouldn't enter their house uninvited.
+@>Set Move Route: This event
+                  (Ignore If Can't Move)
+ :              : $>SE: 'slide', 100, 100
+ :              : $>Wait: 2 frame(s)
+ :              : $>Turn Left
+ :              : $>Wait: 2 frame(s)
+ :              : $>Turn Right
+ :              : $>Wait: 2 frame(s)
+ :              : $>Turn Up
+ :              : $>Wait: 2 frame(s)
+@>Wait for Move's Completion
+@>Set Move Route: Player
+                  (Ignore If Can't Move)
+ :              : $>Through ON
+ :              : $>Move Up
+ :              : $>Through OFF
+@>Wait for Move's Completion
+@>Change Transparent Flag: Transparency
+@>Set Move Route: This event
+                  (Ignore If Can't Move)
+ :              : $>Wait: 2 frame(s)
+ :              : $>Turn Right
+ :              : $>Wait: 2 frame(s)
+ :              : $>Turn Left
+ :              : $>Wait: 2 frame(s)
+ :              : $>Turn Down
+ :              : $>Wait: 2 frame(s)
+@>Wait for Move's Completion
+@>Play SE: 'Door exit', 100, 100
+@>Change Screen Color Tone: (-255,-255,-255,0), @6
+@>Wait: 8 frame(s)
+@>Change Transparent Flag: Normal
+@>Transfer Player:[085: Alice's Puppet Boutique], (014,018), Up, No Fade
+@>Change Screen Color Tone: (0,0,0,0), @6
+@>
+
+Page #2
+Conditions
+Switch 0022: s:tsOff?("A") is ON
+
+Graphic: Doors_TPDP2
+
+Autonomous Movement
+Type: Fixed
+Speed: 3: Slow
+Freq: 3: Low
+Options Enabled
+Move Animation
+Trigger: Autorun
+
+List of Event Commands:
+@>Conditional Branch: Script: get_self.onEvent?
+ @>Change Transparent Flag: Transparency
+ @>Set Move Route: This event
+                   (Ignore If Can't Move)
+  :              : $>SE: 'slide', 100, 100
+  :              : $>Wait: 2 frame(s)
+  :              : $>Turn Left
+  :              : $>Wait: 2 frame(s)
+  :              : $>Turn Right
+  :              : $>Wait: 2 frame(s)
+  :              : $>Turn Up
+  :              : $>Wait: 2 frame(s)
+ @>Wait for Move's Completion
+ @>Change Transparent Flag: Normal
+ @>Set Move Route: Player
+                   (Ignore If Can't Move)
+  :              : $>Move Down
+ @>Wait for Move's Completion
+ @>Set Move Route: This event
+                   (Ignore If Can't Move)
+  :              : $>Turn Right
+  :              : $>Wait: 2 frame(s)
+  :              : $>Turn Left
+  :              : $>Wait: 2 frame(s)
+  :              : $>Turn Down
+  :              : $>Wait: 2 frame(s)
+ @>Wait for Move's Completion
+ @>
+: Branch End
+@>Script: setTempSwitchOn("A")
 @>
 
 #------------------------------------------------------------------------------
@@ -62894,6 +63087,24 @@ List of Event Commands:
 :       : :ONIKILLERSAKE,
 :       : :GOLDENRICESAKE
 :       : ])
+@>
+
+Page #3
+Conditions
+None
+
+Graphic: TPDP_NPC 37
+
+Autonomous Movement
+Type: Fixed
+Speed: 3: Slow
+Freq: 3: Low
+Options Enabled
+Move Animation
+Trigger: Action Button
+
+List of Event Commands:
+@>Script: pbTavernShop
 @>
 
 #------------------------------------------------------------------------------

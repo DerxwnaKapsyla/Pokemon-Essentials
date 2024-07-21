@@ -264,6 +264,45 @@ module APMSettings
     # Text when exiting.
     OutroText: ["\\xn[Maya]Thank you, please come again!"],
   }
+  
+  TavernShop = {
+    # Text when talking to them. This is the default one.
+    IntroText: ["Hey \\pn! Don't see you here often! What can I get for you today?"],
+    # Text when choosing to buy item. (optional: If you make this empty( [] ), you'll go to the buy screen directly.)
+    CategoryText: [], # or CategoryText: [],
+    # Text when choosing amount of item. {1} = item name.
+    BuyItemAmount: ["{1}? Sure, how many would you like?"],
+    # Text when choosing amount of item with discount. {1} = item name {2} = discount price {3} = original price.
+    BuyItemAmountDiscount: [],
+    # Text when choosing amount of item with overcharge. {1} = item name {2} = overcharge price {3} = original price.
+    BuyItemAmountOvercharge: [],
+    # Text when buying 1 of an item. {1} = item vowel {2} = item name {3} = price.
+    BuyItem: ["So you want {1} {2}?\nIt'll be ${3}. All right?"],
+    # Text when buying 2 or more of an item. {1} = amount {2} = item name (plural) {3} = price.
+    BuyItemMult: ["So you want {1} {2}?\nThey'll be ${3}. All right?"],
+    # Text when buying important item (that you can only buy 1 off). {1} = item name {2} = price.
+    BuyItemImportant: ["So you want {1}?\nIt'll be ${2} . All right?"],
+    # Text when wanted item is out of stock. {1} = item name (plural) {2} = time in days (tomorrow, in 2 days, in x days, in a week, next week etc.)
+    BuyOutOfStock: [],
+    # Text when bought item.
+    BuyThanks: ["Enjoy your drink!"],
+    # Text when x or more of a kind of item is bought and is defined in BonusItems Setting. {1} = Bonus Item(s) name(s).
+    BuyBonusMult: [],
+    # Text when you don't have enough money to buy x item(s).
+    NotEnoughMoney: ["C'mon \\pn, you know I can't just give you alcohol for free."],
+    # Text when you don't have enough room in your bag. (Only used if you have an item limit).
+    NoRoomInBag: ["Are you sure you have room to carry this?"],
+    # Text when selecting an item to sell. {1} = item name
+    SellItemAmount: ["How many {1} would you like to sell?"],
+    # Text when confirming amount of selected item to sell. {1} = price
+    SellItem: ["I can pay ${1}.\nWould that be OK?"],
+    # Text when unable to sell selected item. {1} = item name
+    CantSellItem: ["Oh, no. I can't buy {1}."],
+    # Text when returning to menu to choose either buying, selling or exit.
+    MenuReturnText: ["Did you need anything else?"],
+    # Text when exiting.
+    OutroText: ["Alright \\pn, don't be a stranger!"],
+  }
 end
 
 # If it would be easier to setup stores here then you only need to add an event script line saying pbStore1 or whatever you called the method.
@@ -404,4 +443,29 @@ def pbKirisameStore
 	:ANTIREASON,:ANTIPYRO,:ANTIILLUSION,:ANTIFAITH,
     :ANTIDREAM
   ], "KirisameShop", true)
+end
+
+def pbTavernShop
+    if pbGet(121) < 20
+	  pbPokemonMart([
+      :BEER,
+	  :SAKE,
+	  :ONIKILLERSAKE
+    ], "TavernShop", true)
+	elsif pbGet(121) >= 20
+	  pbPokemonMart([
+      :BEER,
+	  :SAKE,
+	  :ONIKILLERSAKE,
+	  :GOLDENRICESAKE
+    ], "TavernShop", true)
+	else $game_switches[107]
+	  pbPokemonMart([
+      :BEER,
+	  :SAKE,
+	  :ONIKILLERSAKE,
+	  :GOLDENRICESAKE#,
+	  #:GOLDPEACHSAKE
+    ], "TavernShop", true)
+	end
 end
