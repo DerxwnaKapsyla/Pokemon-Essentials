@@ -60674,6 +60674,21 @@ Trigger: Autorun
 
 List of Event Commands:
 @>Script: pbSetPokemonCenter
+@>Script: pkmn = Pokemon.new(:CICHIRIN,20)
+:       : pkmn.item = :LUCKYEGG
+:       : pkmn.poke_ball = :GREATORB
+:       : pkmn.obtain_text = "Gensokyo Wilderness"
+@>Script: pkmn.iv[:HP] = 31
+:       : pkmn.iv[:ATTACK] = 31
+:       : pkmn.iv[:DEFENSE] = 31
+:       : pkmn.iv[:SPATK] = 31
+:       : pkmn.iv[:SPDEF] = 31
+:       : pkmn.iv[:SPEED] = 31
+:       : pkmn.calc_stats
+:       : pkmn.reset_moves
+:       : pbAddPokemonSilent(pkmn)
+:       : 
+:       : $game_variables[1] = nil
 @>Text: \xn[Maya]I'm not sure how you do it, \pn; putting up with
  :    : all those battles so frequently.
 @>Text: \xn[Maya]Even with all the training that Kota, Shinji, and I have 
@@ -63679,6 +63694,29 @@ List of Event Commands:
 :       : $game_variables[3] = nil
 :       : # --- Shop Greeting
 :       : $game_variables[4] = nil
+@>
+
+Page #2
+Conditions
+None
+
+Graphic: Person_Alice
+
+Autonomous Movement
+Type: Fixed
+Speed: 3: Slow
+Freq: 3: Low
+Options Enabled
+Move Animation
+Trigger: Action Button
+
+List of Event Commands:
+@>Text: \xn[Alice]Welcome to the Margatroid Puppet Boutique, where the
+ :    : outfit you get for your Puppets are guaranteed to be top quality!
+@>Text: \xn[Alice]All of our products are made with Puppet comfort in 
+ :    : mind, so you can rest easy knowing that your Puppets will be 
+ :    : in good hands.
+@>Script: pbAliceStore
 @>
 
 #------------------------------------------------------------------------------
@@ -68145,7 +68183,6 @@ List of Event Commands:
  :              : $>Move Up
 @>Set Move Route: [Tewi]
  :              : $>Turn Up
-@>Exit Event Processing
 @>
 
 #------------------------------------------------------------------------------
@@ -81460,6 +81497,30 @@ List of Event Commands:
  :       : ])
  @>
 : Branch End
+@>
+
+Page #2
+Conditions
+None
+
+Graphic: NPC_Maya
+
+Autonomous Movement
+Type: Fixed
+Speed: 3: Slow
+Freq: 3: Low
+Options Enabled
+Move Animation
+Trigger: Action Button
+
+List of Event Commands:
+@>Conditional Branch: Self Switch A == OFF
+ @>Text: \xn[Maya]Hey \pn! Mr. Kirisame is out right now, so I'm
+  :    : running the shop.
+ @>Control Self Switch: A =ON
+ @>
+: Branch End
+@>Script: pbKirisameStore
 @>
 
 #------------------------------------------------------------------------------

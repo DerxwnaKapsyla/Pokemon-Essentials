@@ -137,7 +137,7 @@ class PokemonStorageScene
           textstrings.push([_INTL("♀"), 148, 14, false, Color.new(248, 56, 32), Color.new(224, 152, 144)])
 		end
 	  end
-      imagepos.push(["Graphics/Pictures/Storage/overlay_lv", 6, 246])
+      imagepos.push(["Graphics/UI/battle/overlay_lv", 6, 246])
       textstrings.push([pokemon.level.to_s, 28, 240, false, base, shadow])
       if pokemon.ability
         textstrings.push([pokemon.ability.name, 86, 312, 2, base, shadow])
@@ -150,9 +150,9 @@ class PokemonStorageScene
         textstrings.push([_INTL("No item"), 86, 348, 2, nonbase, nonshadow])
       end
       if pokemon.shiny?
-        imagepos.push(["Graphics/Pictures/shiny", 156, 198])
+        imagepos.push(["Graphics/UI/shiny", 156, 198])
       end
-      typebitmap = AnimatedBitmap.new(_INTL("Graphics/Pictures/types"))
+      typebitmap = AnimatedBitmap.new(_INTL("Graphics/UI/types"))
       pokemon.types.each_with_index do |type, i|
         type_number = GameData::Type.get(type).icon_position
         type_rect = Rect.new(0, type_number * 28, 64, 28)

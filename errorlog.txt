@@ -5511,3 +5511,149 @@ Backtrace:
 (eval):3:in `execute_script'
 003_Interpreter.rb:140:in `eval'
 003_Interpreter.rb:140:in `execute_script'
+
+=================
+
+[2024-07-20 02:34:17 -0700]
+[Pokémon Essentials version 21.1]
+[v21.1 Hotfixes 1.0.9]
+
+Exception: NameError
+Message: uninitialized constant Game_Event::IsParallel
+
+Backtrace:
+[Delta Speed Up] _Main_Script.rb:92:in `pbResetInterpreterWaitCount'
+[Delta Speed Up] _Main_Script.rb:145:in `block in update'
+[Delta Speed Up] _Main_Script.rb:145:in `each_value'
+[Delta Speed Up] _Main_Script.rb:145:in `update'
+001_StartGame.rb:70:in `load'
+[Delta Speed Up] _Main_Script.rb:23:in `load'
+[Touhoumon Essentials Development Kit] 013_UI_Load.rb:76:in `block in pbStartLoadScreen'
+[Touhoumon Essentials Development Kit] 013_UI_Load.rb:70:in `loop'
+[Touhoumon Essentials Development Kit] 013_UI_Load.rb:70:in `pbStartLoadScreen'
+001_UI_SplashesAndTitleScreen.rb:96:in `close_title_screen'
+
+=================
+
+[2024-07-20 02:37:34 -0700]
+[Pokémon Essentials version 21.1]
+[v21.1 Hotfixes 1.0.9]
+
+Exception: NameError
+Message: uninitialized constant Game_Event::IsParallel
+
+Backtrace:
+[Delta Speed Up] _Main_Script.rb:92:in `pbResetInterpreterWaitCount'
+[Delta Speed Up] _Main_Script.rb:145:in `block in update'
+[Delta Speed Up] _Main_Script.rb:145:in `each_value'
+[Delta Speed Up] _Main_Script.rb:145:in `update'
+001_StartGame.rb:70:in `load'
+[Delta Speed Up] _Main_Script.rb:23:in `load'
+[Touhoumon Essentials Development Kit] 013_UI_Load.rb:76:in `block in pbStartLoadScreen'
+[Touhoumon Essentials Development Kit] 013_UI_Load.rb:70:in `loop'
+[Touhoumon Essentials Development Kit] 013_UI_Load.rb:70:in `pbStartLoadScreen'
+001_UI_SplashesAndTitleScreen.rb:96:in `close_title_screen'
+
+=================
+
+[2024-07-20 11:32:19 -0700]
+[Pokémon Essentials version 21.1]
+[v21.1 Hotfixes 1.0.9]
+
+Exception: NameError
+Message: uninitialized constant Game_Event::IsParallel
+
+Backtrace:
+[Delta Speed Up] _Main_Script.rb:92:in `pbResetInterpreterWaitCount'
+[Delta Speed Up] _Main_Script.rb:145:in `block in update'
+[Delta Speed Up] _Main_Script.rb:145:in `each_value'
+[Delta Speed Up] _Main_Script.rb:145:in `update'
+001_StartGame.rb:70:in `load'
+[Delta Speed Up] _Main_Script.rb:23:in `load'
+[Touhoumon Essentials Development Kit] 013_UI_Load.rb:76:in `block in pbStartLoadScreen'
+[Touhoumon Essentials Development Kit] 013_UI_Load.rb:70:in `loop'
+[Touhoumon Essentials Development Kit] 013_UI_Load.rb:70:in `pbStartLoadScreen'
+001_UI_SplashesAndTitleScreen.rb:96:in `close_title_screen'
+
+=================
+
+[2024-07-20 13:50:17 -0700]
+[Pokémon Essentials version 21.1]
+[v21.1 Hotfixes 1.0.9]
+
+Script error in event 4 (coords 4,7), map 83 (Human Village Rest House)
+Exception: ArgumentError
+Message: wrong number of arguments (given 1, expected 2..5)
+
+***Full script:
+pbPokemonMart([
+:PUPPETORB,:GREATORB,:ULTRAORB,
+:POTION,:SUPERPOTION,:HYPERPOTION,
+:REVIVE,:FULLHEAL,
+:REPEL,:SUPERREPEL,
+:POWERSHARD,:DEFENSESHARD,:TECHSHARD,
+:SWIFTSHARD,:SUPPORTSHARD,:SOLARSHARD,
+:CHROMESHARD
+])
+
+Backtrace:
+[Bag Screen w/int. Party] Script.rb:565:in `pbStartScene'
+020_UI_PokeMart.rb:320:in `pbStartSellScene2'
+020_UI_PokeMart.rb:305:in `pbStartSellScene'
+[Arcky's Poke Market] 001_PokeMarket_Main.rb:543:in `pbSellScreen'
+[Arcky's Poke Market] 001_PokeMarket_Main.rb:689:in `block in pbPokemonMart'
+[Arcky's Poke Market] 001_PokeMarket_Main.rb:653:in `loop'
+[Arcky's Poke Market] 001_PokeMarket_Main.rb:653:in `pbPokemonMart'
+(eval):1:in `execute_script'
+003_Interpreter.rb:140:in `eval'
+003_Interpreter.rb:140:in `execute_script'
+
+=================
+
+[2024-07-20 17:30:52 -0700]
+[Pokémon Essentials version 21.1]
+[v21.1 Hotfixes 1.0.9]
+
+Script error in event 1 (coords 16,13), map 117 (Kirisame General Store)
+Exception: NameError
+Message: undefined local variable or method `pbKirisameShop' for #<Interpreter @event_id: 1>
+
+***Full script:
+pbKirisameShop
+
+Backtrace:
+(eval):1:in `execute_script'
+003_Interpreter.rb:140:in `eval'
+003_Interpreter.rb:140:in `execute_script'
+004_Interpreter_Commands.rb:1177:in `command_355'
+004_Interpreter_Commands.rb:116:in `execute_command'
+003_Interpreter.rb:132:in `block in update'
+003_Interpreter.rb:86:in `loop'
+003_Interpreter.rb:86:in `update'
+002_Scene_Map.rb:167:in `block in update'
+002_Scene_Map.rb:166:in `loop'
+
+=================
+
+[2024-07-20 17:31:32 -0700]
+[Pokémon Essentials version 21.1]
+[v21.1 Hotfixes 1.0.9]
+
+Script error in event 1 (coords 16,13), map 117 (Kirisame General Store)
+Exception: NameError
+Message: undefined local variable or method `pbKirisameShop' for #<Interpreter @event_id: 1>
+
+***Full script:
+pbKirisameShop
+
+Backtrace:
+(eval):1:in `execute_script'
+003_Interpreter.rb:140:in `eval'
+003_Interpreter.rb:140:in `execute_script'
+004_Interpreter_Commands.rb:1177:in `command_355'
+004_Interpreter_Commands.rb:116:in `execute_command'
+003_Interpreter.rb:132:in `block in update'
+003_Interpreter.rb:86:in `loop'
+003_Interpreter.rb:86:in `update'
+002_Scene_Map.rb:167:in `block in update'
+002_Scene_Map.rb:166:in `loop'
