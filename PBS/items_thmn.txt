@@ -2324,8 +2324,8 @@ Description = An alcoholic beverage. Can be used to restore a Puppet's HP by 40.
 [SAKE]
 Name = Sake
 NamePlural = Sake
-PortionName = bowl of Sake
-PortionNamePlural = bowls of Sake
+PortionName = bottle of Sake
+PortionNamePlural = bottle of Sake
 Pocket = 2
 Price = 900
 FieldUse = OnPokemon
@@ -2336,20 +2336,33 @@ Description = A stronger alcoholic beverage. Can be used to restore a Puppet's H
 [ONIKILLERSAKE]
 Name = Oni-Killer Sake
 NamePlural = Oni-Killer Sake
-PortionName = bowl of Oni-Killer Sake
-PortionNamePlural = bowls of Oni-Killer Sake
+PortionName = bottle of Oni-Killer Sake
+PortionNamePlural = bottle of Oni-Killer Sake
 Pocket = 2
 Price = 2000
 FieldUse = OnPokemon
 BattleUse = OnPokemon
 Flags = Fling_30
-Description = An extremely strong alcoholic beverage. Will restore a Puppet to full HP. Likely to cause intociation. Onis love this brand.
+Description = An extremely strong alcoholic beverage. Will restore a Puppet to full HP. Likely to cause intoxication. Onis love this brand.
 #-------------------------------
 [GOLDENRICESAKE]
 Name = Golden Rice Sake
 NamePlural = Golden Rice Sake
-PortionName = bowl of Golden Rice Sake
-PortionNamePlural = bowls of Golden Rice Sake
+PortionName = bottle of Golden Rice Sake
+PortionNamePlural = bottle of Rice Peach Sake
+Pocket = 2
+Price = 4000
+BPPrice = 24
+FieldUse = OnPokemon
+BattleUse = OnPokemon
+Flags = Fling_30,Medicine
+Description = A special sake brew that had all impurities removed. Will fully revitalize a fainted Puppet.
+#-------------------------------
+[GOLDENPEACHSAKE]
+Name = Golden Peach Sake
+NamePlural = Golden Peach Sake
+PortionName = bottle of Golden Peach Sake
+PortionNamePlural = bottle of Golden Peach Sake
 Pocket = 2
 Price = 7000
 FieldUse = Direct

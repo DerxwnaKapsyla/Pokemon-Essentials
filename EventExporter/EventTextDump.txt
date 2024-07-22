@@ -72303,6 +72303,10 @@ Move Animation
 Trigger: Action Button
 
 List of Event Commands:
+@>Script:   $PokemonGlobal.pokecenterMapId     = 92
+:       :   $PokemonGlobal.pokecenterX         = 24
+:       :   $PokemonGlobal.pokecenterY         = 30
+:       :   $PokemonGlobal.pokecenterDirection = 8
 @>Text: \xn[\pn]Excuse me, Lady Sagume?
 @>Text: \xn[\pn]\b(Hopefully I have the right person... It'd be real 
  :    : awkward if I address them by the wrong name.)
@@ -72959,6 +72963,8 @@ List of Event Commands:
  @>Change Screen Color Tone: (-255,-255,-255,0), @6
  @>Wait: 8 frame(s)
  @>Conditional Branch: Variable [0121: TKoL Plot Variable] == 14
+  @>Script: pbSetSelfSwitch2(126,48,"A",false)
+  :       : pbSetSelfSwitch2(126,50,"A",false)
   @>Transfer Player:[126: Lunar Capital (Cutscene)], (035,022), Down, No Fade
   @>Change Transparent Flag: Transparency
   @>
@@ -73285,6 +73291,12 @@ List of Event Commands:
 @>Show Choices: Yes, No
 (When Cancel: Choice 2)
 : When [Yes]
+ @>Play SE: 'Door exit', 80, 100
+ @>Change Screen Color Tone: (-255,-255,-255,0), @6
+ @>Wait: 8 frame(s)
+ @>Transfer Player:[092: Capital Puppet Center], (008,018), Right, No Fade
+ @>Change Screen Color Tone: (0,0,0,0), @6
+ @>Text: Did you have a good training session? Come back anytime!
  @>
 : When [No]
  @>
@@ -89838,17 +89850,20 @@ List of Event Commands:
     :       : orders to let nobody pass)
    @>
   : Else
+   @>Change Transparent Flag: Normal
    @>Script: pbTrainerEnd
    @>Exit Event Processing
    @>
   : Branch End
   @>
  : Else
+  @>Change Transparent Flag: Normal
   @>Script: pbTrainerEnd
   @>
  : Branch End
  @>
 : Else
+ @>Change Transparent Flag: Normal
  @>Script: pbTrainerEnd
  @>
 : Branch End
