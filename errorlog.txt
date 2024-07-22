@@ -5726,3 +5726,321 @@ Backtrace:
 003_Interpreter.rb:86:in `update'
 [v21.1 Hotfixes] Misc bug fixes.rb:601:in `update'
 004_Game_Map.rb:462:in `block in update'
+
+=================
+
+[2024-07-21 12:45:10 -0700]
+[Pokémon Essentials version 21.1]
+[v21.1 Hotfixes 1.0.9]
+
+Script error in event 4 (coords 4,7), map 83 (Human Village Rest House)
+Exception: RuntimeError
+Message: Unknown ID SUPERPOTIONe.
+
+***Full script:
+pbPokemonMart([
+:PUPPETORB,:GREATORB,:ULTRAORB,
+:POTION,:SUPERPOTIONe,:HYPERPOTION,
+:REVIVE,:MAXREVIVE,
+:FULLHEAL,:FULLRESTORE,
+:ETHER,:MAXETHER,:ELIXIR,:MAXELIXIR,
+:REPEL,:SUPERREPEL,:MAXREPEL,
+:PPUP,:RARECANDY,
+:POWERSHARD,:DEFENSESHARD,:TECHSHARD,
+:SWIFTSHARD,:SUPPORTSHARD,:SOLARSHARD,
+:CHROMESHARD
+])
+
+Backtrace:
+001_GameData.rb:103:in `get'
+[Arcky's Poke Market] 001_PokeMarket_Main.rb:637:in `block in pbPokemonMart'
+[Arcky's Poke Market] 001_PokeMarket_Main.rb:637:in `delete_if'
+[Arcky's Poke Market] 001_PokeMarket_Main.rb:637:in `pbPokemonMart'
+(eval):1:in `execute_script'
+003_Interpreter.rb:140:in `eval'
+003_Interpreter.rb:140:in `execute_script'
+004_Interpreter_Commands.rb:1177:in `command_355'
+004_Interpreter_Commands.rb:116:in `execute_command'
+003_Interpreter.rb:132:in `block in update'
+
+=================
+
+[2024-07-21 15:57:14 -0700]
+[Pokémon Essentials version 21.1]
+
+Error in Plugin: [Arcky's Poke Market]
+Exception: SyntaxError
+Message: [Arcky's Poke Market] 000_PokeMarket_Settings_and_Setup.rb:553: syntax error, unexpected `end', expecting end-of-input
+
+Backtrace:
+005_PluginManager.rb:635:in `eval'
+005_PluginManager.rb:635:in `block (2 levels) in runPlugins'
+005_PluginManager.rb:625:in `each'
+005_PluginManager.rb:625:in `block in runPlugins'
+005_PluginManager.rb:616:in `each'
+005_PluginManager.rb:616:in `runPlugins'
+999_Main.rb:35:in `mainFunctionDebug'
+999_Main.rb:19:in `block in mainFunction'
+003_Errors.rb:79:in `pbCriticalCode'
+999_Main.rb:19:in `mainFunction'
+
+=================
+
+[2024-07-21 16:03:04 -0700]
+[Pokémon Essentials version 21.1]
+
+Error in Plugin: [Arcky's Poke Market]
+Exception: SyntaxError
+Message: [Arcky's Poke Market] 000_PokeMarket_Settings_and_Setup.rb:309: Invalid escape character syntax
+    IntroText: ["\\se[Cries\MUSHARNA]The Musharna makes a p...
+                           ^~~
+[Arcky's Poke Market] 000_PokeMarket_Settings_and_Setup.rb:313: Invalid escape character syntax
+... BuyItemAmount: ["\\se[Cries\MUSHARNA]The Musharna makes a q...
+...                            ^~~
+[Arcky's Poke Market] 000_PokeMarket_Settings_and_Setup.rb:319: Invalid escape character syntax
+    BuyItem: ["\\se[Cries\MUSHARNA]The Musharna makes a c...
+                         ^~~
+[Arcky's Poke Market] 000_PokeMarket_Settings_and_Setup.rb:321: Invalid escape character syntax
+...   BuyItemMult: ["\\se[Cries\MUSHARNA]The Musharna makes a c...
+...                            ^~~
+[Arcky's Poke Market] 000_PokeMarket_Settings_and_Setup.rb:323: Invalid escape character syntax
+...yItemImportant: ["\\se[Cries\MUSHARNA]The Musharna makes a c...
+...                            ^~~
+[Arcky's Poke Market] 000_PokeMarket_Settings_and_Setup.rb:327: Invalid escape character syntax
+    BuyThanks: ["\\se[Cries\MUSHARNA]The Musharna makes a p...
+                           ^~~
+[Arcky's Poke Market] 000_PokeMarket_Settings_and_Setup.rb:331: Invalid escape character syntax
+...NotEnoughMoney: ["\\se[Cries\MUSHARNA]The Musharna makes a s...
+...                            ^~~
+[Arcky's Poke Market] 000_PokeMarket_Settings_and_Setup.rb:333: Invalid escape character syntax
+...   NoRoomInBag: ["\\se[Cries\MUSHARNA]The Musharna makes a s...
+...                            ^~~
+[Arcky's Poke Market] 000_PokeMarket_Settings_and_Setup.rb:335: Invalid escape character syntax
+...SellItemAmount: ["\\se[Cries\MUSHARNA]The Musharna makes a q...
+...                            ^~~
+[Arcky's Poke Market] 000_PokeMarket_Settings_and_Setup.rb:337: Invalid escape character syntax
+    SellItem: ["\\se[Cries\MUSHARNA]The Musharna makes a c...
+                          ^~~
+[Arcky's Poke Market] 000_PokeMarket_Settings_and_Setup.rb:339: Invalid escape character syntax
+...  CantSellItem: ["\\se[Cries\MUSHARNA]The Musharna makes a c...
+...                            ^~~
+[Arcky's Poke Market] 000_PokeMarket_Settings_and_Setup.rb:341: Invalid escape character syntax
+...MenuReturnText: ["\\se[Cries\MUSHARNA]The Musharna makes a q...
+...                            ^~~
+[Arcky's Poke Market] 000_PokeMarket_Settings_and_Setup.rb:343: Invalid escape character syntax
+    OutroText: ["\\se[Cries\MUSHARNA]The Musharna makes a p...
+                           ^~~
+
+
+Backtrace:
+005_PluginManager.rb:635:in `eval'
+005_PluginManager.rb:635:in `block (2 levels) in runPlugins'
+005_PluginManager.rb:625:in `each'
+005_PluginManager.rb:625:in `block in runPlugins'
+005_PluginManager.rb:616:in `each'
+005_PluginManager.rb:616:in `runPlugins'
+999_Main.rb:35:in `mainFunctionDebug'
+999_Main.rb:19:in `block in mainFunction'
+003_Errors.rb:79:in `pbCriticalCode'
+999_Main.rb:19:in `mainFunction'
+
+=================
+
+[2024-07-21 16:17:45 -0700]
+[Pokémon Essentials version 21.1]
+[v21.1 Hotfixes 1.0.9]
+
+Script error in event 14 (coords 25,68), map 90 (Kaian Passageway)
+Exception: RuntimeError
+Message: Unknown ID LUNAORB.
+
+***Full script:
+pbMusharnaShop
+
+Backtrace:
+001_GameData.rb:103:in `get'
+[Arcky's Poke Market] 001_PokeMarket_Main.rb:637:in `block in pbPokemonMart'
+[Arcky's Poke Market] 001_PokeMarket_Main.rb:637:in `delete_if'
+[Arcky's Poke Market] 001_PokeMarket_Main.rb:637:in `pbPokemonMart'
+[Arcky's Poke Market] 000_PokeMarket_Settings_and_Setup.rb:540:in `pbMusharnaShop'
+(eval):1:in `execute_script'
+003_Interpreter.rb:140:in `eval'
+003_Interpreter.rb:140:in `execute_script'
+004_Interpreter_Commands.rb:1177:in `command_355'
+004_Interpreter_Commands.rb:116:in `execute_command'
+
+=================
+
+[2024-07-21 16:31:18 -0700]
+[Pokémon Essentials version 21.1]
+[v21.1 Hotfixes 1.0.9]
+
+Exception: NoMethodError
+Message: undefined method `[]' for nil:NilClass
+
+Backtrace:
+[Touhoumon Essentials Development Kit] 004_UI_Pokedex_Entry.rb:362:in `block in pbGetEncounterPoints'
+013_Encounter.rb:55:in `block in each_of_version'
+013_Encounter.rb:47:in `block in each'
+013_Encounter.rb:47:in `each'
+013_Encounter.rb:47:in `each'
+013_Encounter.rb:54:in `each_of_version'
+[Touhoumon Essentials Development Kit] 004_UI_Pokedex_Entry.rb:356:in `pbGetEncounterPoints'
+[Touhoumon Essentials Development Kit] 004_UI_Pokedex_Entry.rb:392:in `drawPageArea'
+[Modular UI Scenes] [002] Pokedex Rewrites.rb:92:in `drawPageArea'
+[Modular UI Scenes] [001] Pokedex Handlers.rb:32:in `block in <main>'
+
+=================
+
+[2024-07-21 17:04:35 -0700]
+[Pokémon Essentials version 21.1]
+[v21.1 Hotfixes 1.0.9]
+
+Exception: NoMethodError
+Message: undefined method `[]' for nil:NilClass
+
+Backtrace:
+[Touhoumon Essentials Development Kit] 004_UI_Pokedex_Entry.rb:362:in `block in pbGetEncounterPoints'
+013_Encounter.rb:55:in `block in each_of_version'
+013_Encounter.rb:47:in `block in each'
+013_Encounter.rb:47:in `each'
+013_Encounter.rb:47:in `each'
+013_Encounter.rb:54:in `each_of_version'
+[Touhoumon Essentials Development Kit] 004_UI_Pokedex_Entry.rb:356:in `pbGetEncounterPoints'
+[Touhoumon Essentials Development Kit] 004_UI_Pokedex_Entry.rb:392:in `drawPageArea'
+[Modular UI Scenes] [002] Pokedex Rewrites.rb:92:in `drawPageArea'
+[Modular UI Scenes] [001] Pokedex Handlers.rb:32:in `block in <main>'
+
+=================
+
+[2024-07-21 17:06:05 -0700]
+[Pokémon Essentials version 21.1]
+[v21.1 Hotfixes 1.0.9]
+
+Exception: NoMethodError
+Message: undefined method `[]' for nil:NilClass
+
+Backtrace:
+[Touhoumon Essentials Development Kit] 004_UI_Pokedex_Entry.rb:362:in `block in pbGetEncounterPoints'
+013_Encounter.rb:55:in `block in each_of_version'
+013_Encounter.rb:47:in `block in each'
+013_Encounter.rb:47:in `each'
+013_Encounter.rb:47:in `each'
+013_Encounter.rb:54:in `each_of_version'
+[Touhoumon Essentials Development Kit] 004_UI_Pokedex_Entry.rb:356:in `pbGetEncounterPoints'
+[Touhoumon Essentials Development Kit] 004_UI_Pokedex_Entry.rb:392:in `drawPageArea'
+[Modular UI Scenes] [002] Pokedex Rewrites.rb:92:in `drawPageArea'
+[Modular UI Scenes] [001] Pokedex Handlers.rb:32:in `block in <main>'
+
+=================
+
+[2024-07-21 17:08:04 -0700]
+[Pokémon Essentials version 21.1]
+[v21.1 Hotfixes 1.0.9]
+
+Exception: NoMethodError
+Message: undefined method `[]' for nil:NilClass
+
+Backtrace:
+[Touhoumon Essentials Development Kit] 004_UI_Pokedex_Entry.rb:362:in `block in pbGetEncounterPoints'
+013_Encounter.rb:55:in `block in each_of_version'
+013_Encounter.rb:47:in `block in each'
+013_Encounter.rb:47:in `each'
+013_Encounter.rb:47:in `each'
+013_Encounter.rb:54:in `each_of_version'
+[Touhoumon Essentials Development Kit] 004_UI_Pokedex_Entry.rb:356:in `pbGetEncounterPoints'
+[Touhoumon Essentials Development Kit] 004_UI_Pokedex_Entry.rb:392:in `drawPageArea'
+[Modular UI Scenes] [002] Pokedex Rewrites.rb:92:in `drawPageArea'
+[Modular UI Scenes] [001] Pokedex Handlers.rb:32:in `block in <main>'
+
+=================
+
+[2024-07-21 17:12:10 -0700]
+[Pokémon Essentials version 21.1]
+[v21.1 Hotfixes 1.0.9]
+
+Exception: NoMethodError
+Message: undefined method `[]' for nil:NilClass
+
+Backtrace:
+[Touhoumon Essentials Development Kit] 004_UI_Pokedex_Entry.rb:362:in `block in pbGetEncounterPoints'
+013_Encounter.rb:55:in `block in each_of_version'
+013_Encounter.rb:47:in `block in each'
+013_Encounter.rb:47:in `each'
+013_Encounter.rb:47:in `each'
+013_Encounter.rb:54:in `each_of_version'
+[Touhoumon Essentials Development Kit] 004_UI_Pokedex_Entry.rb:356:in `pbGetEncounterPoints'
+[Touhoumon Essentials Development Kit] 004_UI_Pokedex_Entry.rb:392:in `drawPageArea'
+[Modular UI Scenes] [002] Pokedex Rewrites.rb:92:in `drawPageArea'
+[Modular UI Scenes] [001] Pokedex Handlers.rb:32:in `block in <main>'
+
+=================
+
+[2024-07-21 17:12:54 -0700]
+[Pokémon Essentials version 21.1]
+[v21.1 Hotfixes 1.0.9]
+
+Exception: NoMethodError
+Message: undefined method `[]' for nil:NilClass
+
+Backtrace:
+[Touhoumon Essentials Development Kit] 004_UI_Pokedex_Entry.rb:362:in `block in pbGetEncounterPoints'
+013_Encounter.rb:55:in `block in each_of_version'
+013_Encounter.rb:47:in `block in each'
+013_Encounter.rb:47:in `each'
+013_Encounter.rb:47:in `each'
+013_Encounter.rb:54:in `each_of_version'
+[Touhoumon Essentials Development Kit] 004_UI_Pokedex_Entry.rb:356:in `pbGetEncounterPoints'
+[Touhoumon Essentials Development Kit] 004_UI_Pokedex_Entry.rb:392:in `drawPageArea'
+[Modular UI Scenes] [002] Pokedex Rewrites.rb:92:in `drawPageArea'
+[Modular UI Scenes] [001] Pokedex Handlers.rb:32:in `block in <main>'
+
+=================
+
+[2024-07-21 18:28:12 -0700]
+[Pokémon Essentials version 21.1]
+[v21.1 Hotfixes 1.0.9]
+
+Script error in event 22 (coords 35,49), map 120 (Dream World)
+Exception: NoMethodError
+Message: undefined method `pbShowPokedex' for #<Interpreter @event_id: 22>
+
+***Full script:
+pbShowPokedex(:SEIRAN)
+
+Backtrace:
+(eval):1:in `execute_script'
+003_Interpreter.rb:140:in `eval'
+003_Interpreter.rb:140:in `execute_script'
+004_Interpreter_Commands.rb:1177:in `command_355'
+004_Interpreter_Commands.rb:116:in `execute_command'
+003_Interpreter.rb:132:in `block in update'
+003_Interpreter.rb:86:in `loop'
+003_Interpreter.rb:86:in `update'
+002_Scene_Map.rb:167:in `block in update'
+002_Scene_Map.rb:166:in `loop'
+
+=================
+
+[2024-07-21 18:35:04 -0700]
+[Pokémon Essentials version 21.1]
+[v21.1 Hotfixes 1.0.9]
+
+Script error in event 22 (coords 35,49), map 120 (Dream World)
+Exception: ArgumentError
+Message: wrong number of arguments (given 1, expected 3)
+
+***Full script:
+pbShowPokedexEntry(:SEIRAN)
+
+Backtrace:
+[Touhoumon Essentials Development Kit] 004_UI_Pokedex_Entry.rb:613:in `pbStartScreen'
+[TAoA Core] 007_One Offs.rb:17:in `block in pbShowPokedexEntry'
+002_MessageConfig.rb:575:in `pbFadeOutIn'
+[TAoA Core] 007_One Offs.rb:14:in `pbShowPokedexEntry'
+(eval):1:in `execute_script'
+003_Interpreter.rb:140:in `eval'
+003_Interpreter.rb:140:in `execute_script'
+004_Interpreter_Commands.rb:1177:in `command_355'
+004_Interpreter_Commands.rb:116:in `execute_command'
+003_Interpreter.rb:132:in `block in update'

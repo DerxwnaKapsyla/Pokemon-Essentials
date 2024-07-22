@@ -62780,7 +62780,7 @@ Trigger: Action Button
 List of Event Commands:
 @>Text: Welcome to the Human Village Rest Stop. We have a
  :    : variety of goods to select from.
-@>Conditional Branch: Variable [0115: 3 Fairies defeated] != 4
+@>Conditional Branch: Variable [0121: TKoL Plot Variable] >= 12
  @>Script: pbPokemonMart([
  :       : :PUPPETORB,:GREATORB,:ULTRAORB,
  :       : :POTION,:SUPERPOTION,:HYPERPOTION,
@@ -62841,6 +62841,24 @@ List of Event Commands:
 :       : :SWIFTSHARD,:SUPPORTSHARD,:SOLARSHARD,
 :       : :CHROMESHARD
 :       : ])
+@>
+
+Page #3
+Conditions
+None
+
+Graphic: TPDP_NPC 39
+
+Autonomous Movement
+Type: Fixed
+Speed: 3: Slow
+Freq: 3: Low
+Options Enabled
+Move Animation
+Trigger: Action Button
+
+List of Event Commands:
+@>Script: pbRestStop
 @>
 
 #------------------------------------------------------------------------------
@@ -67534,7 +67552,7 @@ Speed: 4: Fast
 Freq: 3: Low
 Options Enabled
 Move Animation
-Trigger: Event Touch
+Trigger: Player Touch
 
 List of Event Commands:
 @>Set Move Route: Player
@@ -67846,7 +67864,6 @@ List of Event Commands:
  @>Exit Event Processing
  @>
 : Branch End
-@>Exit Event Processing
 @>
 
 Page #2
@@ -68283,7 +68300,6 @@ List of Event Commands:
  @>Exit Event Processing
  @>
 : Branch End
-@>Exit Event Processing
 @>
 
 Page #2
@@ -69329,6 +69345,40 @@ Trigger: Autorun
 
 List of Event Commands:
 @>Control Switches: [0001: Starting over] = OFF
+@>
+
+#------------------------------------------------------------------------------
+Event ID: 014
+Event Name: Musharna Shop
+(X,Y): (025,068)
+
+Page #1
+Conditions
+None
+
+Graphic: 518
+
+Autonomous Movement
+Type: Fixed
+Speed: 3: Slow
+Freq: 3: Low
+Options Enabled
+Move Animation
+Stop Animation
+Trigger: Action Button
+
+List of Event Commands:
+@>Conditional Branch: Self Switch A == OFF
+ @>Text: \xn[\pn]Huh, is this some kind of Youkai...?
+ @>Text: \xn[\pn]Wait, there's some kind of sign on it.
+ @>Text: \w[signskin]The Ruler of Dreams has lent us this Musharna to resupply
+  :    : from if we need to.
+ @>Text: \xn[\pn]I guess its some kind of shop... Beats having to go
+  :    : all the way back to the Village, at least.
+ @>Control Self Switch: A =ON
+ @>
+: Branch End
+@>Script: pbMusharnaShop
 @>
 
 #------------------------------------------------------------------------------
@@ -84099,6 +84149,29 @@ List of Event Commands:
 @>
 
 #------------------------------------------------------------------------------
+Event ID: 022
+Event Name: EV022
+(X,Y): (035,049)
+
+Page #1
+Conditions
+None
+
+Graphic: Object ball
+
+Autonomous Movement
+Type: Fixed
+Speed: 3: Slow
+Freq: 3: Low
+Options Enabled
+Move Animation
+Trigger: Action Button
+
+List of Event Commands:
+@>Script: pbShowPokedexEntry(:SEIRAN)
+@>
+
+#------------------------------------------------------------------------------
 
 #==============================================================================
 Map ID: 121
@@ -84345,48 +84418,14 @@ List of Event Commands:
 
 #------------------------------------------------------------------------------
 Event ID: 005
-Event Name: Merchant
+Event Name: Musharna Shop
 (X,Y): (012,022)
 
 Page #1
 Conditions
-Variable 0121: TKoL Plot Variable is 12 or above
+None
 
-Graphic: TPDP_NPC 39
-
-Autonomous Movement
-Type: Fixed
-Speed: 3: Slow
-Freq: 3: Low
-Options Enabled
-Move Animation
-Trigger: Action Button
-
-List of Event Commands:
-@>Text: Good afternoon. I am a wandering salesman. I have
- :    : recently set up shop here. I sell several goods vital to
- :    : Puppet Handlers.
-@>Script: setPrice(:RARECANDY,9800)
-@>Script: setPrice(:MAXREVIVE,9800)
-@>Script: pbPokemonMart([
-:       : :PUPPETORB,:GREATORB,:ULTRAORB,
-:       : :POTION,:SUPERPOTION,:HYPERPOTION,
-:       : :REVIVE,:MAXREVIVE,
-:       : :FULLHEAL,:FULLRESTORE,
-:       : :ETHER,:MAXETHER,:ELIXIR,:MAXELIXIR,
-:       : :REPEL,:SUPERREPEL,:MAXREPEL,
-:       : :PPUP,:RARECANDY,
-:       : :POWERSHARD,:DEFENSESHARD,:TECHSHARD,
-:       : :SWIFTSHARD,:SUPPORTSHARD,:SOLARSHARD,
-:       : :CHROMESHARD
-:       : ])
-@>
-
-Page #2
-Conditions
-Switch 0107: New Game + is ON
-
-Graphic: TPDP_NPC 39
+Graphic: 518
 
 Autonomous Movement
 Type: Fixed
@@ -84394,25 +84433,11 @@ Speed: 3: Slow
 Freq: 3: Low
 Options Enabled
 Move Animation
+Stop Animation
 Trigger: Action Button
 
 List of Event Commands:
-@>Text: Welcome to the Human Village Rest Stop. We have a
- :    : variety of goods to select from.
-@>Script: setPrice(:RARECANDY,9800)
-@>Script: setPrice(:MAXREVIVE,9800)
-@>Script: pbPokemonMart([
-:       : :PUPPETORB,:GREATORB,:ULTRAORB,
-:       : :POTION,:SUPERPOTION,:HYPERPOTION,
-:       : :REVIVE,:MAXREVIVE,
-:       : :FULLHEAL,:FULLRESTORE,
-:       : :ETHER,:MAXETHER,:ELIXIR,:MAXELIXIR,
-:       : :REPEL,:SUPERREPEL,:MAXREPEL,
-:       : :PPUP,:RARECANDY,
-:       : :POWERSHARD,:DEFENSESHARD,:TECHSHARD,
-:       : :SWIFTSHARD,:SUPPORTSHARD,:SOLARSHARD,
-:       : :CHROMESHARD
-:       : ])
+@>Script: pbMusharnaShop
 @>
 
 #------------------------------------------------------------------------------

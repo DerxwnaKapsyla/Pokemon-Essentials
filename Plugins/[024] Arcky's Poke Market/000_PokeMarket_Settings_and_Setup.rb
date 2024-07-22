@@ -35,11 +35,11 @@ module APMSettings
   }
 
   BadgesForItems = {
-    1 => [:GREATBALL, :SUPERPOTION, :ANTIDOTE, :PARALYZEHEAL, :AWAKENING, :BURNHEAL, :ICEHEAL, :REPEL, :ESCAPEROPE],
-    3 => [:HYPERPOTION, :SUPERREPEL, :REVIVE],
-    5 => [:ULTRABALL, :FULLHEAL, :MAXREPEL],
-    7 => [:MAXPOTION],
-    8 => [:FULLRESTORE]
+    1 => [],
+    3 => [],
+    5 => [],
+    7 => [],
+    8 => []
   }
 
   Discounts = {
@@ -54,62 +54,62 @@ module APMSettings
   }
 
   BonusItems = {
-    :POKEBALL => {
-      :amount => 10,
-      :item => :PREMIERBALL
-    },
-    :GREATBALL => {
-      :amount => 10,
-      :item => [
-        [:GREATBALL, 80],
-        [:PREMIERBALL, 20]
-      ]
-    },
-    :ULTRABALL => {
-      :amount => 5,
-      :item => {
-        :PREMIERBALL => {
-          :amount => 3
-        },
-        :MASTERBALL => {
-          :chance => 0.1
-        },
-        :ULTRABALL => {
-          :amount => 2,
-          :chance => 5
-        }
-      }
-    },
-    :POTION => {
-      :amount => 5,
-      :item => {
-        :ANTIDOTE => {
-          :amount => 2
-        },
-        :PARALYZEHEAL => {
-          :amount => 2,
-          :chance => 20
-        },
-        :ICEHEAL => {
-          :amount => 2,
-          :chance => 20
-        },
-        :BURNHEAL => {
-          :amount => 2
-        },
-        :FULLHEAL => {
-          :chance => 5
-        }
-      }
-    },
-    :FULLHEAL => {
-      :amount => 10,
-      :item => {
-        :FULLHEAL => {
-          :amount => 3
-        }
-      }
-    }
+    # :POKEBALL => {
+      # :amount => 10,
+      # :item => :PREMIERBALL
+    # },
+    # :GREATBALL => {
+      # :amount => 10,
+      # :item => [
+        # [:GREATBALL, 80],
+        # [:PREMIERBALL, 20]
+      # ]
+    # },
+    # :ULTRABALL => {
+      # :amount => 5,
+      # :item => {
+        # :PREMIERBALL => {
+          # :amount => 3
+        # },
+        # :MASTERBALL => {
+          # :chance => 0.1
+        # },
+        # :ULTRABALL => {
+          # :amount => 2,
+          # :chance => 5
+        # }
+      # }
+    # },
+    # :POTION => {
+      # :amount => 5,
+      # :item => {
+        # :ANTIDOTE => {
+          # :amount => 2
+        # },
+        # :PARALYZEHEAL => {
+          # :amount => 2,
+          # :chance => 20
+        # },
+        # :ICEHEAL => {
+          # :amount => 2,
+          # :chance => 20
+        # },
+        # :BURNHEAL => {
+          # :amount => 2
+        # },
+        # :FULLHEAL => {
+          # :chance => 5
+        # }
+      # }
+    # },
+    # :FULLHEAL => {
+      # :amount => 10,
+      # :item => {
+        # :FULLHEAL => {
+          # :amount => 3
+        # }
+      # }
+    # }
   }
 
   ProSeller = {
@@ -303,6 +303,45 @@ module APMSettings
     # Text when exiting.
     OutroText: ["Alright \\pn, don't be a stranger!"],
   }
+  
+  Musharna = {
+    # Text when talking to them. This is the default one.
+    IntroText: ["\\se[MUSHARNA]The Musharna makes a pleasant noise, like it's greeting you."],
+    # Text when choosing to buy item. (optional: If you make this empty( [] ), you'll go to the buy screen directly.)
+    CategoryText: [], # or CategoryText: [],
+    # Text when choosing amount of item. {1} = item name.
+    BuyItemAmount: ["The Musharna makes a questioning noise, almost like it's asking how many {1} you want."],
+    # Text when choosing amount of item with discount. {1} = item name {2} = discount price {3} = original price.
+    BuyItemAmountDiscount: [],
+    # Text when choosing amount of item with overcharge. {1} = item name {2} = overcharge price {3} = original price.
+    BuyItemAmountOvercharge: [],
+    # Text when buying 1 of an item. {1} = item vowel {2} = item name {3} = price.
+    BuyItem: ["The Musharna makes a confirming noise, almost like it's asking if you want {1} {2}, and that it'll be ${3}."],
+    # Text when buying 2 or more of an item. {1} = amount {2} = item name (plural) {3} = price.
+    BuyItemMult: ["The Musharna makes a confirming noise, almost like it's asking if you want {1} {2}, and that it'll be ${3}."],
+    # Text when buying important item (that you can only buy 1 off). {1} = item name {2} = price.
+    BuyItemImportant: ["The Musharna makes a confirming noise, almost like it's asking if you want {1}, and that it'll be ${2}."],
+    # Text when wanted item is out of stock. {1} = item name (plural) {2} = time in days (tomorrow, in 2 days, in x days, in a week, next week etc.)
+    BuyOutOfStock: [],
+    # Text when bought item.
+    BuyThanks: ["The Musharna makes a pleased noise and takes your money!"],
+    # Text when x or more of a kind of item is bought and is defined in BonusItems Setting. {1} = Bonus Item(s) name(s).
+    BuyBonusMult: [],
+    # Text when you don't have enough money to buy x item(s).
+    NotEnoughMoney: ["The Musharna makes a sad noise, as if informing you that you don't have enough money."],
+    # Text when you don't have enough room in your bag. (Only used if you have an item limit).
+    NoRoomInBag: ["The Musharna makes a sad noise, as if informing you that you don't have enough bag space."],
+    # Text when selecting an item to sell. {1} = item name
+    SellItemAmount: ["The Musharna makes a questioning noise, almost like it's asking how many {1} you want to sell?"],
+    # Text when confirming amount of selected item to sell. {1} = price
+    SellItem: ["The Musharna makes a confirming noise, almost like it's telling you that they pay ${1} for the items."],
+    # Text when unable to sell selected item. {1} = item name
+    CantSellItem: ["The Musharna makes a confused noise, as if to tell you that it can't buy the {1}."],
+    # Text when returning to menu to choose either buying, selling or exit.
+    MenuReturnText: ["The Musharna makes a questioning noise, almost like it's asking if you need anything else."],
+    # Text when exiting.
+    OutroText: ["\\se[MUSHARNA]The Musharna makes a pleasant noise, like it's telling you to have a good day!"],
+  }
 end
 
 # If it would be easier to setup stores here then you only need to add an event script line saying pbStore1 or whatever you called the method.
@@ -468,4 +507,46 @@ def pbTavernShop
 	  #:GOLDPEACHSAKE
     ], "TavernShop", true)
 	end
+end
+
+def pbRestStop
+    if !$game_switches[99]
+	  pbPokemonMart([
+      :PUPPETORB,:GREATORB,:ULTRAORB,
+      :POTION,:SUPERPOTION,:HYPERPOTION,
+      :REVIVE,:FULLHEAL,
+      :REPEL,:SUPERREPEL,
+      :POWERSHARD,:DEFENSESHARD,:TECHSHARD,
+      :SWIFTSHARD,:SUPPORTSHARD,:SOLARSHARD,
+      :CHROMESHARD
+    ], true)
+	else
+	  pbPokemonMart([
+      :PUPPETORB,:GREATORB,:ULTRAORB,
+      :POTION,:SUPERPOTION,:HYPERPOTION,
+      :REVIVE,:MAXREVIVE,
+      :FULLHEAL,:FULLRESTORE,
+      :ETHER,:MAXETHER,:ELIXIR,:MAXELIXIR,
+      :REPEL,:SUPERREPEL,:MAXREPEL,
+      :PPUP,:RARECANDY,
+      :POWERSHARD,:DEFENSESHARD,:TECHSHARD,
+      :SWIFTSHARD,:SUPPORTSHARD,:SOLARSHARD,
+      :CHROMESHARD
+    ], true)
+	end
+end
+
+def pbMusharnaShop
+	  pbPokemonMart([
+      :PUPPETORB,:GREATORB,:ULTRAORB,:MOONBALL,
+      :POTION,:SUPERPOTION,:HYPERPOTION,
+      :REVIVE,:MAXREVIVE,
+      :FULLHEAL,:FULLRESTORE,
+      :ETHER,:MAXETHER,:ELIXIR,:MAXELIXIR,
+      :REPEL,:SUPERREPEL,:MAXREPEL,
+      :PPUP,:RARECANDY,
+      :POWERSHARD,:DEFENSESHARD,:TECHSHARD,
+      :SWIFTSHARD,:SUPPORTSHARD,:SOLARSHARD,
+      :CHROMESHARD
+    ], "Musharna", true)
 end
