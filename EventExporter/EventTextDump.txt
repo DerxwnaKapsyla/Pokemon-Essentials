@@ -68205,6 +68205,7 @@ List of Event Commands:
 @>Wait for Move's Completion
 @>Control Self Switch: A =ON
 @>Control Variables: [0121: TKoL Plot Variable] = 9
+@>Script: pbTrainerEnd
 @>
 
 Page #2
@@ -69382,6 +69383,32 @@ List of Event Commands:
 @>
 
 #------------------------------------------------------------------------------
+Event ID: 015
+Event Name: A Friend
+(X,Y): (035,017)
+
+Page #1
+Conditions
+None
+
+Graphic: bb
+
+Autonomous Movement
+Type: Custom
+Custom Move Route:
+(Repeat Action)
+$>Move at Random
+
+Speed: 3: Slow
+Freq: 3: Low
+Options Enabled
+Move Animation
+Trigger: Action Button
+
+List of Event Commands:
+@>
+
+#------------------------------------------------------------------------------
 Event ID: 016
 Event Name: EV016
 (X,Y): (019,008)
@@ -70129,6 +70156,21 @@ List of Event Commands:
  :              : $>1 Step Backward
 @>
 
+Page #2
+Conditions
+None
+
+Autonomous Movement
+Type: Fixed
+Speed: 3: Slow
+Freq: 3: Low
+Options Enabled
+Move Animation
+Trigger: Action Button
+
+List of Event Commands:
+@>
+
 #------------------------------------------------------------------------------
 Event ID: 012
 Event Name: Map Edge Trigger update size(1,21)
@@ -70150,6 +70192,21 @@ List of Event Commands:
 @>Text: \xn[\pn]\b(There's nothing for me that way.)
 @>Set Move Route: Player
  :              : $>1 Step Backward
+@>
+
+Page #2
+Conditions
+None
+
+Autonomous Movement
+Type: Fixed
+Speed: 3: Slow
+Freq: 3: Low
+Options Enabled
+Move Animation
+Trigger: Action Button
+
+List of Event Commands:
 @>
 
 #------------------------------------------------------------------------------
@@ -72856,6 +72913,24 @@ List of Event Commands:
 :       : :SWIFTSHARD,:SUPPORTSHARD,:SOLARSHARD,
 :       : :CHROMESHARD
 :       : ])
+@>
+
+Page #3
+Conditions
+None
+
+Graphic: TPDP_NPC 39
+
+Autonomous Movement
+Type: Fixed
+Speed: 3: Slow
+Freq: 3: Low
+Options Enabled
+Move Animation
+Trigger: Action Button
+
+List of Event Commands:
+@>Script: pbRestStopMoon
 @>
 
 #------------------------------------------------------------------------------
@@ -82121,6 +82196,7 @@ List of Event Commands:
  @>Show Choices: Yes, No
  (When Cancel: Choice 2)
  : When [Yes]
+  @>Recover All: Entire Party
   @>Text: \rSCANNING. PLEASE STAND BY.
   @>Script: pbSEPlay("Anim/PRSFX- Lock On")
   @>Wait: 30 frame(s)
@@ -82148,6 +82224,7 @@ List of Event Commands:
   @>Set Move Route: This event
    :              : $>Graphic: "OW_DoppelDevice', 0, 2, 1
   @>Text: \rRETURNING TO STAND-BY MODE.
+  @>Recover All: Entire Party
   @>
  : When [No]
   @>Text: \rRETURNING TO STAND-BY MODE.
@@ -84149,29 +84226,6 @@ List of Event Commands:
 @>
 
 #------------------------------------------------------------------------------
-Event ID: 022
-Event Name: EV022
-(X,Y): (035,049)
-
-Page #1
-Conditions
-None
-
-Graphic: Object ball
-
-Autonomous Movement
-Type: Fixed
-Speed: 3: Slow
-Freq: 3: Low
-Options Enabled
-Move Animation
-Trigger: Action Button
-
-List of Event Commands:
-@>Script: pbShowPokedexEntry(:SEIRAN)
-@>
-
-#------------------------------------------------------------------------------
 
 #==============================================================================
 Map ID: 121
@@ -84304,7 +84358,7 @@ Speed: 3: Slow
 Freq: 3: Low
 Options Enabled
 Move Animation
-Trigger: Event Touch
+Trigger: Player Touch
 
 List of Event Commands:
 @>Set Move Route: Player
@@ -89651,7 +89705,7 @@ List of Event Commands:
   @>Text: \xn[\pn]Hell Fairy, regular Fairy, blessed by divine or maddening
    :    : power, it makes no difference. I'll combat your power of
    :    : madness with the Puppets I've put my trust in!
-  @>Script: pbTrainerIntro(:CLOWNPIECE)
+  @>Script: # pbTrainerIntro(:CLOWNPIECET)
   @>Text: \xn[Clownpiece]Kyahahaha! Alright then! Fairies,
    :    : let's get ready to crank things up!
   @>Text: \xn[Clownpiece]It's lunatic time! I'll show you a true world

@@ -1,3 +1,18 @@
+class Game_Temp
+  attr_accessor :enduredInKazami
+  attr_accessor :inertItem
+
+  def enduredInKazami
+    @enduredInKazami = false if !@enduredInKazami
+    return @enduredInKazami
+  end
+  
+  def inertItem
+	@inertItem = false if !@inertItem
+	return @inertItem
+  end
+end
+
 class Player
   class Pokedex
     def set_owned(species, should_refresh_dexes = true, value = true)

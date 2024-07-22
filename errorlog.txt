@@ -6044,3 +6044,108 @@ Backtrace:
 004_Interpreter_Commands.rb:1177:in `command_355'
 004_Interpreter_Commands.rb:116:in `execute_command'
 003_Interpreter.rb:132:in `block in update'
+
+=================
+
+[2024-07-21 21:02:13 -0700]
+[Pokémon Essentials version 21.1]
+[v21.1 Hotfixes 1.0.9]
+
+Exception: NoMethodError
+Message: undefined method `inertItem=' for #<Game_Temp>
+
+Backtrace:
+[Touhoumon Essentials Development Kit] 009_Battle_ItemEffects.rb:873:in `block in <main>'
+005_Event_Handlers.rb:195:in `trigger'
+009_Battle_ItemEffects.rb:117:in `triggerDamageCalcFromTarget'
+[Deluxe Battle Kit] [002] Damage Calc Refactor.rb:596:in `calc_item_mults'
+[Deluxe Battle Kit] [002] Damage Calc Refactor.rb:817:in `rough_damage'
+007_AI_ChooseMove_OtherScores.rb:300:in `block (2 levels) in load_scripts_from_folder'
+001_Battle_AI.rb:130:in `block in apply_general_move_against_target_score_modifiers'
+005_Event_Handlers.rb:129:in `block in each'
+005_Event_Handlers.rb:129:in `each_pair'
+005_Event_Handlers.rb:129:in `each'
+
+=================
+
+[2024-07-21 21:02:19 -0700]
+[Pokémon Essentials version 21.1]
+[v21.1 Hotfixes 1.0.9]
+
+Exception: NoMethodError
+Message: undefined method `inertItem=' for #<Game_Temp>
+
+Backtrace:
+[Touhoumon Essentials Development Kit] 009_Battle_ItemEffects.rb:873:in `block in <main>'
+005_Event_Handlers.rb:195:in `trigger'
+009_Battle_ItemEffects.rb:117:in `triggerDamageCalcFromTarget'
+[Deluxe Battle Kit] [002] Damage Calc Refactor.rb:596:in `calc_item_mults'
+[Deluxe Battle Kit] [002] Damage Calc Refactor.rb:817:in `rough_damage'
+007_AI_ChooseMove_OtherScores.rb:300:in `block (2 levels) in load_scripts_from_folder'
+001_Battle_AI.rb:130:in `block in apply_general_move_against_target_score_modifiers'
+005_Event_Handlers.rb:129:in `block in each'
+005_Event_Handlers.rb:129:in `each_pair'
+005_Event_Handlers.rb:129:in `each'
+
+=================
+
+[2024-07-21 21:02:32 -0700]
+[Pokémon Essentials version 21.1]
+[v21.1 Hotfixes 1.0.9]
+
+Exception: NoMethodError
+Message: undefined method `inertItem=' for #<Game_Temp>
+
+Backtrace:
+[Touhoumon Essentials Development Kit] 009_Battle_ItemEffects.rb:873:in `block in <main>'
+005_Event_Handlers.rb:195:in `trigger'
+009_Battle_ItemEffects.rb:117:in `triggerDamageCalcFromTarget'
+[Deluxe Battle Kit] [002] Damage Calc Refactor.rb:596:in `calc_item_mults'
+[Deluxe Battle Kit] [002] Damage Calc Refactor.rb:817:in `rough_damage'
+007_AI_ChooseMove_OtherScores.rb:300:in `block (2 levels) in load_scripts_from_folder'
+001_Battle_AI.rb:130:in `block in apply_general_move_against_target_score_modifiers'
+005_Event_Handlers.rb:129:in `block in each'
+005_Event_Handlers.rb:129:in `each_pair'
+005_Event_Handlers.rb:129:in `each'
+
+=================
+
+[2024-07-21 21:02:34 -0700]
+[Pokémon Essentials version 21.1]
+[v21.1 Hotfixes 1.0.9]
+
+Exception: NoMethodError
+Message: undefined method `inertItem=' for #<Game_Temp>
+
+Backtrace:
+[Touhoumon Essentials Development Kit] 009_Battle_ItemEffects.rb:873:in `block in <main>'
+005_Event_Handlers.rb:195:in `trigger'
+009_Battle_ItemEffects.rb:117:in `triggerDamageCalcFromTarget'
+[Deluxe Battle Kit] [002] Damage Calc Refactor.rb:596:in `calc_item_mults'
+[Deluxe Battle Kit] [002] Damage Calc Refactor.rb:817:in `rough_damage'
+007_AI_ChooseMove_OtherScores.rb:300:in `block (2 levels) in load_scripts_from_folder'
+001_Battle_AI.rb:130:in `block in apply_general_move_against_target_score_modifiers'
+005_Event_Handlers.rb:129:in `block in each'
+005_Event_Handlers.rb:129:in `each_pair'
+005_Event_Handlers.rb:129:in `each'
+
+=================
+
+[2024-07-21 21:02:35 -0700]
+[Pokémon Essentials version 21.1]
+[v21.1 Hotfixes 1.0.9]
+
+Exception: NoMethodError
+Message: undefined method `inertItem=' for #<Game_Temp>
+
+Backtrace:
+[Touhoumon Essentials Development Kit] 009_Battle_ItemEffects.rb:873:in `block in <main>'
+005_Event_Handlers.rb:195:in `trigger'
+009_Battle_ItemEffects.rb:117:in `triggerDamageCalcFromTarget'
+[Deluxe Battle Kit] [002] Damage Calc Refactor.rb:79:in `pbCalcDamageMults_Items'
+[Deluxe Battle Kit] [002] Damage Calc Refactor.rb:285:in `pbCalcDamageMultipliers'
+[Deluxe Battle Kit] [002] Damage Calc Refactor.rb:340:in `pbCalcDamage'
+007_Battler_UseMove.rb:121:in `pbConfusionDamage'
+[Touhoumon Essentials Development Kit] 009_Battler_UseMoveSuccessChecks.rb:197:in `pbTryUseMove'
+[Deluxe Battle Kit] [001] Midbattle Overwrites.rb:451:in `pbTryUseMove'
+[Touhoumon Essentials Development Kit] 007_Battler_UseMove.rb:62:in `pbUseMove'
