@@ -95,6 +95,13 @@ module MidbattleScripts
   #-----------------------------------------------------------------------------
   # The Kingdom of Lunacy
   #-----------------------------------------------------------------------------  
+  # Scene: Vs. Boss Puppet
+  #		* Boss Puppet gains a +2 Omniboost
+  #----------------------------------------------------------------------------- 
+  
+  
+  
+  #----------------------------------------------------------------------------- 
   # Scene: Vs. Junko
   #		* Each of Junko's Puppets gets a unique +2 to one of their stats
   #-----------------------------------------------------------------------------  
@@ -127,6 +134,6 @@ module MidbattleScripts
 	  "setBattler"              => :Opposing,
 	  "text"                    => "Junko reached out and purified her Puppet's power!",
 	  "battlerStats"            => [:SPECIAL_ATTACK, 2],
-	},
+	}
   }
 end

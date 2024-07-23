@@ -72304,8 +72304,8 @@ Trigger: Action Button
 
 List of Event Commands:
 @>Script:   $PokemonGlobal.pokecenterMapId     = 92
-:       :   $PokemonGlobal.pokecenterX         = 24
-:       :   $PokemonGlobal.pokecenterY         = 30
+:       :   $PokemonGlobal.pokecenterX         = 11
+:       :   $PokemonGlobal.pokecenterY         = 21
 :       :   $PokemonGlobal.pokecenterDirection = 8
 @>Text: \xn[\pn]Excuse me, Lady Sagume?
 @>Text: \xn[\pn]\b(Hopefully I have the right person... It'd be real 
@@ -73101,6 +73101,7 @@ Move Animation
 Trigger: Action Button
 
 List of Event Commands:
+@>Control Variables: [0001..0005] = 0
 @>Text: Hello there! Are you here to take part in the Puppet Training 
  :    : Simulator?
 @>Show Choices: Yes, No, Explain
@@ -73117,12 +73118,17 @@ List of Event Commands:
   (When Cancel: Choice 2)
   : When [Yes]
    @>Text: Alright then, good luck on your training!
+   @>Control Variables: [0097: EXP Multiplier] = 2
+   @>Script: pbSet(129, rand(20..35))
+   :       : p pbGet(129) if $DEBUG
    @>Script: $PokemonGlobal.dungeon_area = :forest_tpdp
    @>Play SE: 'Door exit', 80, 100
    @>Change Screen Color Tone: (-255,-255,-255,0), @6
    @>Wait: 8 frame(s)
    @>Transfer Player:[093: Training Simulator (Forest)], (006,005), Down, No Fade
    @>Change Screen Color Tone: (0,0,0,0), @6
+   @>Change Save Access: Disable
+   @>Script: pbSetPokemonCenter
    @>
   : When [No]
    @>
@@ -73134,12 +73140,17 @@ List of Event Commands:
   (When Cancel: Choice 2)
   : When [Yes]
    @>Text: Alright then, good luck on your training!
+   @>Control Variables: [0097: EXP Multiplier] = 2
+   @>Script: pbSet(129, rand(20..35))
+   :       : p pbGet(129) if $DEBUG
    @>Script: $PokemonGlobal.dungeon_area = :cave_tpdp
    @>Play SE: 'Door exit', 80, 100
    @>Change Screen Color Tone: (-255,-255,-255,0), @6
    @>Wait: 8 frame(s)
    @>Transfer Player:[127: Training Simulator (Cave)], (007,006), Down, No Fade
    @>Change Screen Color Tone: (0,0,0,0), @6
+   @>Change Save Access: Disable
+   @>Script: pbSetPokemonCenter
    @>
   : When [No]
    @>
@@ -73151,12 +73162,17 @@ List of Event Commands:
   (When Cancel: Choice 2)
   : When [Yes]
    @>Text: Alright then, good luck on your training!
+   @>Control Variables: [0097: EXP Multiplier] = 2
+   @>Script: pbSet(129, rand(20..35))
+   :       : p pbGet(129) if $DEBUG
    @>Script: $PokemonGlobal.dungeon_area = :moon
    @>Play SE: 'Door exit', 80, 100
    @>Change Screen Color Tone: (-255,-255,-255,0), @6
    @>Wait: 8 frame(s)
    @>Transfer Player:[128: Training Simulator (Moon)], (010,007), Down, No Fade
    @>Change Screen Color Tone: (0,0,0,0), @6
+   @>Change Save Access: Disable
+   @>Script: pbSetPokemonCenter
    @>
   : When [No]
    @>
@@ -73265,7 +73281,7 @@ Map ID: 093
 Map Name: Training Simulator (Forest)
 Tileset: 044: Dungeon (Forest)
 Width: 20, Height: 15
-Auto-Change BGM: X-004. Cavern of Remembrance
+Auto-Change BGM: W-042. Primate Spirit Garden
 
 #------------------------------------------------------------------------------
 Event ID: 001
@@ -73295,12 +73311,285 @@ List of Event Commands:
  @>Change Screen Color Tone: (-255,-255,-255,0), @6
  @>Wait: 8 frame(s)
  @>Transfer Player:[092: Capital Puppet Center], (008,018), Right, No Fade
+ @>Control Variables: [0097: EXP Multiplier] = 0
  @>Change Screen Color Tone: (0,0,0,0), @6
  @>Text: Did you have a good training session? Come back anytime!
  @>
 : When [No]
  @>
 : Branch End
+@>
+
+#------------------------------------------------------------------------------
+Event ID: 002
+Event Name: Boss Controller Event
+(X,Y): (000,001)
+
+Page #1
+Conditions
+Switch 0148: --- TLA --- is ON
+
+Autonomous Movement
+Type: Fixed
+Speed: 3: Slow
+Freq: 3: Low
+Options Enabled
+Move Animation
+Trigger: Parallel Process
+
+List of Event Commands:
+@>Script: rand_puppet = [:AMARISA,:KIRISAME,:ADALICE,:AKISISTERS,
+:       :                :KAZAMI,:SMEDICINE,:AMOKOU,:HLILYWHITE,
+:       :                :SLILYBLACK,:SKOISHI][rand(10)],35]
+:       : 
+:       : Pokemon.play_cry(rand_puppet)
+@>Script: pbSetSelfSwitch(3,"A",true)
+@>Conditional Branch: Script: rand_puppet == :AMARISA
+ @>Set Move Route: [Boss Event]
+  :              : $>Graphic: "Puppet_Mima', 0, 2, 0
+ @>
+: Else
+ @>
+: Branch End
+@>Show Animation: Player, [Exclaim bubble]
+@>Text: You can hear a loud cry from somewhere in the simulator...
+@>Control Self Switch: A =ON
+@>Script: puppet = [:AMARISA,:KIRISAME,:ADALICE,:AKISISTERS,
+:       :                :KAZAMI,:SMEDICINE,:AMOKOU,:HLILYWHITE,
+:       :                :SLILYBLACK,:SKOISHI]
+:       : rand_puppet = puppet.sample
+:       : pbSet(1, rand_puppet)
+@>
+
+Page #2
+Conditions
+Switch 0148: --- TLA --- is ON
+
+Autonomous Movement
+Type: Fixed
+Speed: 3: Slow
+Freq: 3: Low
+Options Enabled
+Move Animation
+Trigger: Parallel Process
+
+List of Event Commands:
+@>Script: puppet = [:AMARISA,:KIRISAME,:ADALICE,:AKISISTERS,
+:       :                :KAZAMI,:SMEDICINE,:AMOKOU,:HLILYWHITE,
+:       :                :SLILYBLACK,:SKOISHI]
+:       : rand_puppet = puppet.sample
+:       : pbSet(1, rand_puppet)
+:       : 
+:       : Pokemon.play_cry(pbGet(1))
+@>Script: pbSetSelfSwitch(3,"A",true)
+@>Conditional Branch: Script: pbGet(1) == :AMARISA
+ @>Set Move Route: [Boss Event]
+  :              : $>Graphic: "Puppet_Mima', 0, 2, 0
+ @>
+: Else
+ @>
+: Branch End
+@>Show Animation: Player, [Exclaim bubble]
+@>Text: You can hear a loud cry from somewhere in the simulator...
+@>Control Self Switch: A =ON
+@>
+
+Page #3
+Conditions
+None
+
+Autonomous Movement
+Type: Fixed
+Speed: 3: Slow
+Freq: 3: Low
+Options Enabled
+Move Animation
+Trigger: Parallel Process
+
+List of Event Commands:
+@>Conditional Branch: Variable [0130: Puppets Defeated] >= Variable [0129: Puppets To Defeat]
+ @>Script: puppet = [:AMARISA,:KIRISAME,:ADALICE,:AKISISTERS,
+ :       :                :KAZAMI,:SMEDICINE,:AMOKOU,:HLILYWHITE,
+ :       :                :SLILYBLACK,:SKOISHI]
+ :       : rand_puppet = puppet.sample
+ :       : pbSet(131, rand_puppet)
+ :       : 
+ :       : Pokemon.play_cry(pbGet(131))
+ @>Script: pbSetSelfSwitch(3,"A",true)
+ @>Conditional Branch: Script: pbGet(131) == :AMARISA
+  @>Set Move Route: [Boss Event]
+   :              : $>Graphic: "Puppet_Mima', 0, 2, 0
+  @>
+ : Else
+  @>Set Move Route: [Boss Event]
+   :              : $>Graphic: "Puppet_Nue', 0, 2, 0
+  @>
+ : Branch End
+ @>Show Animation: Player, [Exclaim bubble]
+ @>Text: You can hear a loud cry from somewhere in the simulator...
+ @>Control Self Switch: A =ON
+ @>
+: Branch End
+@>
+
+Page #4
+Conditions
+None
+
+Autonomous Movement
+Type: Fixed
+Speed: 3: Slow
+Freq: 3: Low
+Options Enabled
+Move Animation
+Trigger: Parallel Process
+
+List of Event Commands:
+@>Conditional Branch: Variable [0130: Puppets Defeated] >= Variable [0129: Puppets To Defeat]
+ @>Script: puppet = [:AMARISA,:KIRISAME,:ADALICE,:AKISISTERS,
+ :       :                :KAZAMI,:SMEDICINE,:AMOKOU,:HLILYWHITE,
+ :       :                :SLILYBLACK,:SKOISHI]
+ :       : rand_puppet = puppet.sample
+ :       : pbSet(131, rand_puppet)
+ :       : 
+ :       : Pokemon.play_cry(pbGet(131))
+ @>Script: pbSetSelfSwitch(3,"A",true)
+ @>Comment: Sprite Change Here
+ @>Show Animation: Player, [Exclaim bubble]
+ @>Text: You can hear a loud cry from somewhere in the simulator...
+ @>Control Self Switch: A =ON
+ @>
+: Branch End
+@>
+
+Page #5
+Conditions
+Self Switch A is ON
+
+Autonomous Movement
+Type: Fixed
+Speed: 3: Slow
+Freq: 3: Low
+Options Enabled
+Move Animation
+Trigger: Action Button
+
+List of Event Commands:
+@>
+
+#------------------------------------------------------------------------------
+Event ID: 003
+Event Name: Boss Event
+(X,Y): (000,002)
+
+Page #1
+Conditions
+Self Switch A is ON
+
+Graphic: TPDP_NPC 26
+
+Autonomous Movement
+Type: Approach
+Speed: 4: Fast
+Freq: 4: High
+Options Enabled
+Move Animation
+Trigger: Player Touch
+
+List of Event Commands:
+@>Script: Pokemon.play_cry(pbGet(131))
+@>Script: setBattleRule("canLose")
+:       : setBattleRule("cannotRun")
+:       : setBattleRule("noMoney")
+:       : setBattleRule("disablePokeBalls")
+@>Script: setBattleRule("editWildPokemon", {
+:       :   :hp_level => 2,
+:       :   :immunities => [:OHKO, :SELFKO, :ESCAPE],
+:       :   :iv => 31
+:       : })
+:       : setBattleRule("battleIntroText", "You were attacked by the aggressive {1}!")
+:       : setBattleRule("setSlideSprite", "still")
+:       : setBattleRule("battleBGM", "B-041. Battle! Vs. Boss Puppet.ogg")
+:       : setBattleRule("outcome", 1)
+@>Wait: 20 frame(s)
+@>Control Variables: [0097: EXP Multiplier] = 3
+@>Script: WildBattle.start(pbGet(131), 35)
+@>Wait: 3 frame(s)
+@>Script: Pokemon.play_cry(pbGet(131))
+@>Wait: 20 frame(s)
+@>Change Screen Color Tone: (-255,-255,-255,0), @8
+@>Play SE: 'Battle flee', 80, 100
+@>Wait: 8 frame(s)
+@>Set Move Route: [Boss Event]
+ :              : $>Graphic: (None)
+@>Change Screen Color Tone: (0,0,0,0), @8
+@>Text: The aggressive Puppet ran off...
+@>Conditional Branch: Variable [0001: Temp Pokemon Choice] == 1
+ @>Wait: 4 frame(s)
+ @>Show Animation: Player, [Exclaim bubble]
+ @>Text: ...But, it looks like it left behind some items!
+ @>Script: item = [:STARDUST,:STARDUST,:STARDUST,:STARDUST,:STARDUST,:STARDUST,:STARPIECE,:STARPIECE,:STARPIECE,:COMETSHARD]
+ :       : rand_drop = item.sample
+ :       : plural = GameData::Item.get(rand_drop).name_plural
+ :       : pbSet(4, rand_drop)
+ :       : pbSet(5, plural)
+ @>Script: if rand_drop == :STARDUST
+ :       :   pbReceiveItem(pbGet(4),5)
+ :       : elsif rand_drop == :STARDUST
+ :       :   pbReceiveItem(pbGet(4),3)
+ :       : else
+ :       :   pbReceiveItem(pbGet(4))
+ :       : end
+ @>
+: Branch End
+@>Control Variables: [0097: EXP Multiplier] = 2
+@>Control Self Switch: A =OFF
+@>Control Variables: [0001..0005] = 0
+@>Control Variables: [0129..0131] = 0
+@>Script: pbSetSelfSwitch(2,"A",false)
+:       : pbSet(129, rand(20..35)) 
+:       : p pbGet(129) if $DEBUG
+@>
+
+#------------------------------------------------------------------------------
+Event ID: 004
+Event Name: EV004
+(X,Y): (019,000)
+
+Page #1
+Conditions
+None
+
+Autonomous Movement
+Type: Fixed
+Speed: 3: Slow
+Freq: 3: Low
+Options Enabled
+Move Animation
+Trigger: Action Button
+
+List of Event Commands:
+@>Script: case $game_variable[131]
+:       : when :AMARISA
+:       : 
+:       : when :KIRISAME
+:       : 
+:       : when :ADALICE
+:       : 
+:       : when :AKISISTERS
+:       : 
+:       : when :KAZAMI
+@>Script: when :SMEDICINE
+:       : 
+:       : when :AMOKOU
+:       : 
+:       : when :HLILYWHITE
+:       : 
+:       : when :SLILYBLACK
+:       : 
+:       : when :SKOISHI
+:       : 
+:       : end
 @>
 
 #------------------------------------------------------------------------------
@@ -87497,6 +87786,7 @@ List of Event Commands:
  @>Change Screen Color Tone: (0,0,0,0), @6
  @>
 : Else
+ @>Script: pbDeregisterPartner
  @>Script: pbTrainerEnd
  @>Exit Event Processing
  @>
@@ -87746,6 +88036,7 @@ Move Animation
 Trigger: Autorun
 
 List of Event Commands:
+@>Script: pbDeregisterPartner
 @>Comment: Ending Cutscene
 @>Change Screen Color Tone: (51,17,-34,255), @10
 @>Play BGM: 'W-039. The Moon as Seen from the Shrine', 70, 100
@@ -90191,14 +90482,420 @@ Map ID: 127
 Map Name: Training Simulator (Cave)
 Tileset: 045: Dungeon (Cave)
 Width: 20, Height: 15
-Auto-Change BGM: X-004. Cavern of Remembrance
+Auto-Change BGM: W-042. Primate Spirit Garden
+
+#------------------------------------------------------------------------------
+Event ID: 001
+Event Name: Exit NPC
+(X,Y): (000,000)
+
+Page #1
+Conditions
+None
+
+Graphic: TPDP_NPC 54
+
+Autonomous Movement
+Type: Fixed
+Speed: 3: Slow
+Freq: 3: Low
+Options Enabled
+Move Animation
+Trigger: Action Button
+
+List of Event Commands:
+@>Text: Do you want to exit the simulator?
+@>Show Choices: Yes, No
+(When Cancel: Choice 2)
+: When [Yes]
+ @>Play SE: 'Door exit', 80, 100
+ @>Change Screen Color Tone: (-255,-255,-255,0), @6
+ @>Wait: 8 frame(s)
+ @>Transfer Player:[092: Capital Puppet Center], (008,018), Right, No Fade
+ @>Control Variables: [0097: EXP Multiplier] = 0
+ @>Change Screen Color Tone: (0,0,0,0), @6
+ @>Text: Did you have a good training session? Come back anytime!
+ @>
+: When [No]
+ @>
+: Branch End
+@>
+
+#------------------------------------------------------------------------------
+Event ID: 002
+Event Name: Boss Controller Event
+(X,Y): (000,001)
+
+Page #1
+Conditions
+None
+
+Autonomous Movement
+Type: Fixed
+Speed: 3: Slow
+Freq: 3: Low
+Options Enabled
+Move Animation
+Trigger: Parallel Process
+
+List of Event Commands:
+@>Conditional Branch: Variable [0130: Puppets Defeated] >= Variable [0129: Puppets To Defeat]
+ @>Script: puppet = [:SHINGYOKU,:MAGAN,:MIMA,:ELIS,
+ :       :                :KIKURI,:GENGETSU,:SHINKI,:HECATIA,
+ :       :                :AKOISHI]
+ :       : rand_puppet = puppet.sample
+ :       : pbSet(131, rand_puppet)
+ :       : 
+ :       : Pokemon.play_cry(pbGet(131))
+ @>Script: pbSetSelfSwitch(3,"A",true)
+ @>Comment: Sprite Change Here
+ @>Show Animation: Player, [Exclaim bubble]
+ @>Text: You can hear a loud cry from somewhere in the simulator...
+ @>Control Self Switch: A =ON
+ @>
+: Branch End
+@>
+
+Page #2
+Conditions
+Self Switch A is ON
+
+Autonomous Movement
+Type: Fixed
+Speed: 3: Slow
+Freq: 3: Low
+Options Enabled
+Move Animation
+Trigger: Action Button
+
+List of Event Commands:
+@>
+
+#------------------------------------------------------------------------------
+Event ID: 003
+Event Name: Boss Event
+(X,Y): (000,002)
+
+Page #1
+Conditions
+Self Switch A is ON
+
+Graphic: TPDP_NPC 26
+
+Autonomous Movement
+Type: Approach
+Speed: 4: Fast
+Freq: 4: High
+Options Enabled
+Move Animation
+Trigger: Player Touch
+
+List of Event Commands:
+@>Script: Pokemon.play_cry(pbGet(131))
+@>Script: setBattleRule("canLose")
+:       : setBattleRule("cannotRun")
+:       : setBattleRule("noMoney")
+:       : setBattleRule("disablePokeBalls")
+@>Script: setBattleRule("editWildPokemon", {
+:       :   :hp_level => 2,
+:       :   :immunities => [:OHKO, :SELFKO, :ESCAPE],
+:       :   :iv => 31
+:       : })
+:       : setBattleRule("battleIntroText", "You were attacked by the aggressive {1}!")
+:       : setBattleRule("setSlideSprite", "still")
+:       : setBattleRule("battleBGM", "B-041. Battle! Vs. Boss Puppet.ogg")
+:       : setBattleRule("outcome", 1)
+@>Wait: 20 frame(s)
+@>Control Variables: [0097: EXP Multiplier] = 3
+@>Script: WildBattle.start(pbGet(131), 35)
+@>Wait: 3 frame(s)
+@>Script: Pokemon.play_cry(pbGet(131))
+@>Wait: 20 frame(s)
+@>Change Screen Color Tone: (-255,-255,-255,0), @8
+@>Play SE: 'Battle flee', 80, 100
+@>Wait: 8 frame(s)
+@>Set Move Route: [Boss Event]
+ :              : $>Graphic: (None)
+@>Change Screen Color Tone: (0,0,0,0), @8
+@>Text: The aggressive Puppet ran off...
+@>Conditional Branch: Variable [0001: Temp Pokemon Choice] == 1
+ @>Wait: 4 frame(s)
+ @>Show Animation: Player, [Exclaim bubble]
+ @>Text: ...But, it looks like it left behind some items!
+ @>Script: item = [:STARDUST,:STARDUST,:STARDUST,:STARDUST,:STARDUST,:STARDUST,:STARPIECE,:STARPIECE,:STARPIECE,:COMETSHARD]
+ :       : rand_drop = item.sample
+ :       : plural = GameData::Item.get(rand_drop).name_plural
+ :       : pbSet(4, rand_drop)
+ :       : pbSet(5, plural)
+ @>Script: if rand_drop == :STARDUST
+ :       :   pbReceiveItem(pbGet(4),5)
+ :       : elsif rand_drop == :STARDUST
+ :       :   pbReceiveItem(pbGet(4),3)
+ :       : else
+ :       :   pbReceiveItem(pbGet(4))
+ :       : end
+ @>
+: Branch End
+@>Control Variables: [0097: EXP Multiplier] = 2
+@>Control Self Switch: A =OFF
+@>Control Variables: [0001..0005] = 0
+@>Control Variables: [0129..0131] = 0
+@>Script: pbSetSelfSwitch(2,"A",false)
+:       : pbSet(129, rand(20..35)) 
+:       : p pbGet(129) if $DEBUG
+@>
+
+#------------------------------------------------------------------------------
+Event ID: 004
+Event Name: EV004
+(X,Y): (019,000)
+
+Page #1
+Conditions
+None
+
+Autonomous Movement
+Type: Fixed
+Speed: 3: Slow
+Freq: 3: Low
+Options Enabled
+Move Animation
+Trigger: Action Button
+
+List of Event Commands:
+@>Script: case $game_variable[131]
+:       : when :SHINGYOKU
+:       : 
+:       : when :MAGAN
+:       : 
+:       : when :MIMA
+:       : 
+:       : when :ELIS
+:       : 
+:       : when :KIKURI
+@>Script: when :GENGETSU
+:       : 
+:       : when :SHINKI
+:       : 
+:       : when :HECATIA
+:       : 
+:       : when :AKOISHI
+:       : 
+:       : end
+@>
+
+#------------------------------------------------------------------------------
 
 #==============================================================================
 Map ID: 128
 Map Name: Training Simulator (Moon)
 Tileset: 046: Dungeon (Moon)
 Width: 20, Height: 15
-Auto-Change BGM: X-004. Cavern of Remembrance
+Auto-Change BGM: W-042. Primate Spirit Garden
+
+#------------------------------------------------------------------------------
+Event ID: 001
+Event Name: Exit NPC
+(X,Y): (000,000)
+
+Page #1
+Conditions
+None
+
+Graphic: TPDP_NPC 54
+
+Autonomous Movement
+Type: Fixed
+Speed: 3: Slow
+Freq: 3: Low
+Options Enabled
+Move Animation
+Trigger: Action Button
+
+List of Event Commands:
+@>Text: Do you want to exit the simulator?
+@>Show Choices: Yes, No
+(When Cancel: Choice 2)
+: When [Yes]
+ @>Play SE: 'Door exit', 80, 100
+ @>Change Screen Color Tone: (-255,-255,-255,0), @6
+ @>Wait: 8 frame(s)
+ @>Transfer Player:[092: Capital Puppet Center], (008,018), Right, No Fade
+ @>Change Screen Color Tone: (0,0,0,0), @6
+ @>Text: Did you have a good training session? Come back anytime!
+ @>
+: When [No]
+ @>
+: Branch End
+@>
+
+#------------------------------------------------------------------------------
+Event ID: 002
+Event Name: Boss Controller Event
+(X,Y): (000,001)
+
+Page #1
+Conditions
+None
+
+Autonomous Movement
+Type: Fixed
+Speed: 3: Slow
+Freq: 3: Low
+Options Enabled
+Move Animation
+Trigger: Parallel Process
+
+List of Event Commands:
+@>Conditional Branch: Variable [0130: Puppets Defeated] >= Variable [0129: Puppets To Defeat]
+ @>Script: puppet = [:HAKUREI,:SARIEL,:KONNGARA,:YUMEMI,
+ :       :                :AKEINE,:ADREISEN,:TYUKARI,:TTOYOHIME,
+ :       :                :SYORIHIME,:JUNKO,:KOISHI]
+ :       : rand_puppet = puppet.sample
+ :       : pbSet(131, rand_puppet)
+ :       : 
+ :       : Pokemon.play_cry(pbGet(131))
+ @>Script: pbSetSelfSwitch(3,"A",true)
+ @>Comment: Sprite Change Here
+ @>Show Animation: Player, [Exclaim bubble]
+ @>Text: You can hear a loud cry from somewhere in the simulator...
+ @>Control Self Switch: A =ON
+ @>
+: Branch End
+@>
+
+Page #2
+Conditions
+Self Switch A is ON
+
+Autonomous Movement
+Type: Fixed
+Speed: 3: Slow
+Freq: 3: Low
+Options Enabled
+Move Animation
+Trigger: Action Button
+
+List of Event Commands:
+@>
+
+#------------------------------------------------------------------------------
+Event ID: 003
+Event Name: Boss Event
+(X,Y): (000,002)
+
+Page #1
+Conditions
+Self Switch A is ON
+
+Graphic: TPDP_NPC 26
+
+Autonomous Movement
+Type: Approach
+Speed: 4: Fast
+Freq: 4: High
+Options Enabled
+Move Animation
+Trigger: Player Touch
+
+List of Event Commands:
+@>Script: Pokemon.play_cry(pbGet(131))
+@>Script: setBattleRule("canLose")
+:       : setBattleRule("cannotRun")
+:       : setBattleRule("noMoney")
+:       : setBattleRule("disablePokeBalls")
+@>Script: setBattleRule("editWildPokemon", {
+:       :   :hp_level => 2,
+:       :   :immunities => [:OHKO, :SELFKO, :ESCAPE],
+:       :   :iv => 31
+:       : })
+:       : setBattleRule("battleIntroText", "You were attacked by the aggressive {1}!")
+:       : setBattleRule("setSlideSprite", "still")
+:       : setBattleRule("battleBGM", "B-041. Battle! Vs. Boss Puppet.ogg")
+:       : setBattleRule("outcome", 1)
+@>Wait: 20 frame(s)
+@>Control Variables: [0097: EXP Multiplier] = 3
+@>Script: WildBattle.start(pbGet(131), 35)
+@>Wait: 3 frame(s)
+@>Script: Pokemon.play_cry(pbGet(131))
+@>Wait: 20 frame(s)
+@>Change Screen Color Tone: (-255,-255,-255,0), @8
+@>Play SE: 'Battle flee', 80, 100
+@>Wait: 8 frame(s)
+@>Set Move Route: [Boss Event]
+ :              : $>Graphic: (None)
+@>Change Screen Color Tone: (0,0,0,0), @8
+@>Text: The aggressive Puppet ran off...
+@>Conditional Branch: Variable [0001: Temp Pokemon Choice] == 1
+ @>Wait: 4 frame(s)
+ @>Show Animation: Player, [Exclaim bubble]
+ @>Text: ...But, it looks like it left behind some items!
+ @>Script: item = [:STARDUST,:STARDUST,:STARDUST,:STARDUST,:STARDUST,:STARDUST,:STARPIECE,:STARPIECE,:STARPIECE,:COMETSHARD]
+ :       : rand_drop = item.sample
+ :       : plural = GameData::Item.get(rand_drop).name_plural
+ :       : pbSet(4, rand_drop)
+ :       : pbSet(5, plural)
+ @>Script: if rand_drop == :STARDUST
+ :       :   pbReceiveItem(pbGet(4),5)
+ :       : elsif rand_drop == :STARDUST
+ :       :   pbReceiveItem(pbGet(4),3)
+ :       : else
+ :       :   pbReceiveItem(pbGet(4))
+ :       : end
+ @>
+: Branch End
+@>Control Variables: [0097: EXP Multiplier] = 2
+@>Control Self Switch: A =OFF
+@>Control Variables: [0001..0005] = 0
+@>Control Variables: [0129..0131] = 0
+@>Script: pbSetSelfSwitch(2,"A",false)
+:       : pbSet(129, rand(20..35)) 
+:       : p pbGet(129) if $DEBUG
+@>
+
+#------------------------------------------------------------------------------
+Event ID: 004
+Event Name: EV004
+(X,Y): (019,000)
+
+Page #1
+Conditions
+None
+
+Autonomous Movement
+Type: Fixed
+Speed: 3: Slow
+Freq: 3: Low
+Options Enabled
+Move Animation
+Trigger: Action Button
+
+List of Event Commands:
+@>Script: case $game_variable[131]
+:       : when :HAKUREI
+:       : 
+:       : when :SARIEL
+:       : 
+:       : when :KONNGARA
+:       : 
+:       : when :YUMEMI
+:       : 
+:       : when :AKEINE
+@>Script: when :ADREISEN
+:       : 
+:       : when :TYUKARI
+:       : 
+:       : when :TTOYOHIME
+:       : 
+:       : when :SYORIHIME
+:       : 
+:       : when :JUNKO
+@>Script: when :KOISHI
+:       : 
+:       : end
+@>
+
+#------------------------------------------------------------------------------
 
 #==============================================================================
 Map ID: 129

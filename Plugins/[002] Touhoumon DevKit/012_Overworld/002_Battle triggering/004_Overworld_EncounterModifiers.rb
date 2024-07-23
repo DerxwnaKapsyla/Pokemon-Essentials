@@ -38,12 +38,12 @@ EventHandlers.add(:on_wild_pokemon_created, :alter_shiny_rate,
 )
 
 
-EventHandlers.add(:on_wild_pokemon_created, :pokemon_encounter,
-    proc { |pkmn|
-      next unless pkmn.species_data.has_flag?("Pokemon")
-      $PokemonGlobal.nextBattleBGM = pbStringToAudioFile("B-010. Battle vs. Hidden Encounter")
-    }
-)
+# EventHandlers.add(:on_wild_pokemon_created, :pokemon_encounter,
+    # proc { |pkmn|
+      # next unless pkmn.species_data.has_flag?("Pokemon")
+      # $PokemonGlobal.nextBattleBGM = pbStringToAudioFile("B-010. Battle vs. Hidden Encounter")
+    # }
+# )
 
 #EventHandlers.add(:on_trainer_load, :make_trainer_shiny,
 #  proc { |trainer|
@@ -62,7 +62,10 @@ EventHandlers.add(:on_wild_pokemon_created, :pokemon_encounter,
 EventHandlers.add(:on_wild_pokemon_created, :level_depends_on_party,
   proc { |pkmn|
     next if !$game_map.metadata&.has_flag?("ScaleWildEncounterLevels")
-    new_level = pbBalancedLevel($player.party) - 4 + rand(5)   # For variety
+    setBattleRule("canLose")
+	setBattleRule("noMoney")
+    setBattleRule("disablePokeBalls")
+	new_level = pbBalancedLevel($player.party) - 4 + rand(5)   # For variety
     new_level = new_level.clamp(1, GameData::GrowthRate.max_level)
     pkmn.level = new_level
     pkmn.calc_stats

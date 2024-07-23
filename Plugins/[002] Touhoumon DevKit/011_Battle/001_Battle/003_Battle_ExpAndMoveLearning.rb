@@ -133,6 +133,10 @@ class Battle
       exp = exp * 6 / 5
       isOutsider = true   # To show the "boosted Exp" message
     end
+	# Multiply experience if relevant variable is on and set to a value greater than 1
+	if $game_variables[97] > 1
+	  exp = exp * $game_variables[97]
+	end
     # Make sure Exp doesn't exceed the maximum
     expFinal = growth_rate.add_exp(pkmn.exp, exp)
     expGained = expFinal - pkmn.exp

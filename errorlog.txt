@@ -6388,3 +6388,283 @@ Backtrace:
 999_Main.rb:51:in `loop'
 999_Main.rb:51:in `block in load_scripts_from_folder'
 Main:35:in `eval'
+
+=================
+
+[2024-07-22 19:44:31 -0700]
+[Pokémon Essentials version 21.1]
+[v21.1 Hotfixes 1.0.9]
+
+Exception: NoMethodError
+Message: undefined method `pbPuppetsDefeated?' for #<Game_Event>
+
+Backtrace:
+(eval):1:in `switchIsOn?'
+007_Game_Event.rb:82:in `eval'
+007_Game_Event.rb:82:in `switchIsOn?'
+007_Game_Event.rb:202:in `block in refresh'
+007_Game_Event.rb:200:in `each'
+007_Game_Event.rb:200:in `refresh'
+007_Game_Event.rb:28:in `initialize'
+004_Game_Map.rb:65:in `new'
+004_Game_Map.rb:65:in `block in setup'
+004_Game_Map.rb:64:in `each_key'
+
+=================
+
+[2024-07-22 20:16:41 -0700]
+[Pokémon Essentials version 21.1]
+[v21.1 Hotfixes 1.0.9]
+
+Exception: NoMethodError
+Message: undefined method `vr_set_outcome' for BattleCreationHelperMethods:Module
+
+Backtrace:
+[TAoA Core] 001_Overworld_BattleStarting.rb:6:in `set_outcome'
+001_Overworld_BattleStarting.rb:407:in `start_core'
+001_Overworld_BattleStarting.rb:366:in `start'
+[TAoA Core] 001_Overworld.rb:31:in `pbGetWildBattleStart'
+[TAoA Core] 001_Overworld.rb:18:in `pbBattleOnStepTaken'
+[Delta Speed Up] _Main_Script.rb:83:in `pbBattleOnStepTaken'
+001_Overworld.rb:185:in `pbOnStepTaken'
+008_Game_Player.rb:552:in `update_event_triggering'
+008_Game_Player.rb:428:in `update'
+002_Scene_Map.rb:168:in `block in update'
+
+=================
+
+[2024-07-22 20:21:00 -0700]
+[Pokémon Essentials version 21.1]
+[v21.1 Hotfixes 1.0.9]
+
+Exception: NoMethodError
+Message: undefined method `vr_set_outcome' for BattleCreationHelperMethods:Module
+
+Backtrace:
+[TAoA Core] 001_Overworld_BattleStarting.rb:6:in `set_outcome'
+001_Overworld_BattleStarting.rb:407:in `start_core'
+001_Overworld_BattleStarting.rb:366:in `start'
+[TAoA Core] 001_Overworld.rb:31:in `pbGetWildBattleStart'
+[TAoA Core] 001_Overworld.rb:18:in `pbBattleOnStepTaken'
+[Delta Speed Up] _Main_Script.rb:83:in `pbBattleOnStepTaken'
+001_Overworld.rb:193:in `block (2 levels) in load_scripts_from_folder'
+005_Event_Handlers.rb:89:in `block in trigger'
+005_Event_Handlers.rb:89:in `each_value'
+005_Event_Handlers.rb:89:in `trigger'
+
+=================
+
+[2024-07-22 20:31:25 -0700]
+[Pokémon Essentials version 21.1]
+[v21.1 Hotfixes 1.0.9]
+
+Script error in event 3 (coords 29,30), map 93 (Training Simulator (Forest))
+Exception: SyntaxError
+Message: (eval):8: syntax error, unexpected symbol literal, expecting '}'
+  :immunities => [:OHKO, :SELFKO...
+  ^
+(eval):10: syntax error, unexpected '}', expecting end-of-input
+
+***Full script:
+Pokemon.play_cry(pbGet(131))
+setBattleRule("canLose")
+setBattleRule("cannotRun")
+setBattleRule("noMoney")
+setBattleRule("disablePokeBalls")
+setBattleRule("editWildPokemon", {
+  :hp_level => 2
+  :immunities => [:OHKO, :SELFKO, :ESCAPE]
+  :iv => 31
+})
+setBattleRule("battleIntroText", "You were attacked by the aggressive {1}!")
+setBattleRule("setSlideSprite", "still")
+setBattleRule("battleBGM", "B-041. Battle! Vs. Boss Puppet.ogg")
+setBattleRule("outcome", 3)
+
+WildBattle.start(pbGet(131))
+
+=================
+
+[2024-07-22 20:37:05 -0700]
+[Pokémon Essentials version 21.1]
+[v21.1 Hotfixes 1.0.9]
+
+Script error in event 3 (coords 32,38), map 93 (Training Simulator (Forest))
+Exception: RuntimeError
+Message: Species AMARISA was given but not a level.
+
+***Full script:
+Pokemon.play_cry(pbGet(131))
+setBattleRule("canLose")
+setBattleRule("cannotRun")
+setBattleRule("noMoney")
+setBattleRule("disablePokeBalls")
+setBattleRule("editWildPokemon", {
+  :hp_level => 2,
+  :immunities => [:OHKO, :SELFKO, :ESCAPE],
+  :iv => 31
+})
+setBattleRule("battleIntroText", "You were attacked by the aggressive {1}!")
+setBattleRule("setSlideSprite", "still")
+setBattleRule("battleBGM", "B-041. Battle! Vs. Boss Puppet.ogg")
+setBattleRule("outcome", 3)
+
+WildBattle.start(pbGet(131))
+
+Backtrace:
+001_Overworld_BattleStarting.rb:439:in `generate_foes'
+001_Overworld_BattleStarting.rb:357:in `start'
+(eval):16:in `execute_script'
+003_Interpreter.rb:140:in `eval'
+003_Interpreter.rb:140:in `execute_script'
+004_Interpreter_Commands.rb:1177:in `command_355'
+004_Interpreter_Commands.rb:116:in `execute_command'
+003_Interpreter.rb:132:in `block in update'
+003_Interpreter.rb:86:in `loop'
+003_Interpreter.rb:86:in `update'
+
+=================
+
+[2024-07-22 20:53:38 -0700]
+[Pokémon Essentials version 21.1]
+[v21.1 Hotfixes 1.0.9]
+
+Script error in event 4 (coords 23,42), map 93 (Training Simulator (Forest))
+Exception: NoMethodError
+Message: undefined method `set_graphic' for #<Game_Event>
+
+***Full script:
+$game_map.events[1].set_graphic('bb', 255)
+
+Backtrace:
+(eval):1:in `execute_script'
+003_Interpreter.rb:140:in `eval'
+003_Interpreter.rb:140:in `execute_script'
+004_Interpreter_Commands.rb:1177:in `command_355'
+004_Interpreter_Commands.rb:116:in `execute_command'
+003_Interpreter.rb:132:in `block in update'
+003_Interpreter.rb:86:in `loop'
+003_Interpreter.rb:86:in `update'
+002_Scene_Map.rb:167:in `block in update'
+002_Scene_Map.rb:166:in `loop'
+
+=================
+
+[2024-07-22 21:44:42 -0700]
+[Pokémon Essentials version 21.1]
+
+Error in Plugin: [TAoA Core]
+Exception: SyntaxError
+Message: [TAoA Core] 001_Overworld_BattleStarting.rb:4: syntax error, unexpected ':', expecting `end'
+... alias_method :vr_set_outcome :set_outcome
+...                              ^
+
+
+Backtrace:
+005_PluginManager.rb:635:in `eval'
+005_PluginManager.rb:635:in `block (2 levels) in runPlugins'
+005_PluginManager.rb:625:in `each'
+005_PluginManager.rb:625:in `block in runPlugins'
+005_PluginManager.rb:616:in `each'
+005_PluginManager.rb:616:in `runPlugins'
+999_Main.rb:35:in `mainFunctionDebug'
+999_Main.rb:19:in `block in mainFunction'
+003_Errors.rb:79:in `pbCriticalCode'
+999_Main.rb:19:in `mainFunction'
+
+=================
+
+[2024-07-22 21:49:32 -0700]
+[Pokémon Essentials version 21.1]
+[v21.1 Hotfixes 1.0.9]
+
+Exception: NoMethodError
+Message: undefined method `vr_set_outcome' for BattleCreationHelperMethods:Module
+
+Backtrace:
+[TAoA Core] 001_Overworld_BattleStarting.rb:6:in `set_outcome'
+001_Overworld_BattleStarting.rb:407:in `start_core'
+001_Overworld_BattleStarting.rb:366:in `start'
+[TAoA Core] 001_Overworld.rb:31:in `pbGetWildBattleStart'
+[TAoA Core] 001_Overworld.rb:18:in `pbBattleOnStepTaken'
+[Delta Speed Up] _Main_Script.rb:83:in `pbBattleOnStepTaken'
+001_Overworld.rb:185:in `pbOnStepTaken'
+008_Game_Player.rb:552:in `update_event_triggering'
+008_Game_Player.rb:428:in `update'
+002_Scene_Map.rb:168:in `block in update'
+
+=================
+
+[2024-07-22 22:10:16 -0700]
+[Pokémon Essentials version 21.1]
+[v21.1 Hotfixes 1.0.9]
+
+Script error in event 3 (coords 23,6), map 93 (Training Simulator (Forest))
+Exception: NameError
+Message: undefined local variable or method `rand_puppet' for #<Interpreter @event_id: 3>
+
+***Full script:
+Pokemon.play_cry(rand_puppet)
+
+Backtrace:
+(eval):1:in `execute_script'
+003_Interpreter.rb:140:in `eval'
+003_Interpreter.rb:140:in `execute_script'
+004_Interpreter_Commands.rb:1177:in `command_355'
+004_Interpreter_Commands.rb:116:in `execute_command'
+003_Interpreter.rb:132:in `block in update'
+003_Interpreter.rb:86:in `loop'
+003_Interpreter.rb:86:in `update'
+002_Scene_Map.rb:167:in `block in update'
+002_Scene_Map.rb:166:in `loop'
+
+=================
+
+[2024-07-23 00:00:38 -0700]
+[Pokémon Essentials version 21.1]
+[v21.1 Hotfixes 1.0.9]
+
+Script error in event 2 (coords 50,51), map 127 (Training Simulator (Cave))
+Exception: NoMethodError
+Message: undefined method `[]' for nil:NilClass
+
+***Full script:
+puppet = [:SHINGYOKU,:MAGAN,:MIMA,:ELIS,
+               :KIKURI,:GENGETSU,:SHINKI,:HECATIA,
+               :AKOISHI]
+rand_puppet = puppet.sample
+pbSet(131, rand_puppet)
+
+Pokemon.play_cry(pbGet(131))
+pbSetSelfSwitch(3,"A",true)
+case $game_variable[131]
+when :SHINGYOKU
+
+when :MAGAN
+
+when :MIMA
+
+when :ELIS
+
+when :KIKURI
+when :GENGETSU
+
+when :SHINKI
+
+when :HECATIA
+
+when :AKOISHI
+
+end
+
+Backtrace:
+(eval):9:in `execute_script'
+003_Interpreter.rb:140:in `eval'
+003_Interpreter.rb:140:in `execute_script'
+004_Interpreter_Commands.rb:1177:in `command_355'
+004_Interpreter_Commands.rb:116:in `execute_command'
+003_Interpreter.rb:132:in `block in update'
+003_Interpreter.rb:86:in `loop'
+003_Interpreter.rb:86:in `update'
+[v21.1 Hotfixes] Misc bug fixes.rb:601:in `update'
+004_Game_Map.rb:462:in `block in update'
