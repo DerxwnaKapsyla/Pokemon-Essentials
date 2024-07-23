@@ -73303,19 +73303,27 @@ Move Animation
 Trigger: Action Button
 
 List of Event Commands:
-@>Text: Do you want to exit the simulator?
-@>Show Choices: Yes, No
-(When Cancel: Choice 2)
-: When [Yes]
+@>Text: Did you need healing? Or would you like to leave the simulator?
+@>Show Choices: Healing, Leave Simulator, Nevermind
+(When Cancel: Choice 3)
+: When [Healing]
+ @>Recover All: Entire Party
+ @>Change Screen Color Tone: (-255,-255,-255,0), @6
+ @>Wait: 8 frame(s)
+ @>Play ME: 'Pkmn healing', 100, 100
+ @>Wait: 60 frame(s)
+ @>Text: Alright, you should be good to continue your training!
+ @>
+: When [Leave Simulator]
  @>Play SE: 'Door exit', 80, 100
  @>Change Screen Color Tone: (-255,-255,-255,0), @6
  @>Wait: 8 frame(s)
  @>Transfer Player:[092: Capital Puppet Center], (008,018), Right, No Fade
- @>Control Variables: [0097: EXP Multiplier] = 0
  @>Change Screen Color Tone: (0,0,0,0), @6
  @>Text: Did you have a good training session? Come back anytime!
+ @>Change Save Access: Enable
  @>
-: When [No]
+: When [Nevermind]
  @>
 : Branch End
 @>
@@ -90504,19 +90512,27 @@ Move Animation
 Trigger: Action Button
 
 List of Event Commands:
-@>Text: Do you want to exit the simulator?
-@>Show Choices: Yes, No
-(When Cancel: Choice 2)
-: When [Yes]
+@>Text: Did you need healing? Or would you like to leave the simulator?
+@>Show Choices: Healing, Leave Simulator, Nevermind
+(When Cancel: Choice 3)
+: When [Healing]
+ @>Recover All: Entire Party
+ @>Change Screen Color Tone: (-255,-255,-255,0), @6
+ @>Wait: 8 frame(s)
+ @>Play ME: 'Pkmn healing', 100, 100
+ @>Wait: 60 frame(s)
+ @>Text: Alright, you should be good to continue your training!
+ @>
+: When [Leave Simulator]
  @>Play SE: 'Door exit', 80, 100
  @>Change Screen Color Tone: (-255,-255,-255,0), @6
  @>Wait: 8 frame(s)
  @>Transfer Player:[092: Capital Puppet Center], (008,018), Right, No Fade
- @>Control Variables: [0097: EXP Multiplier] = 0
  @>Change Screen Color Tone: (0,0,0,0), @6
  @>Text: Did you have a good training session? Come back anytime!
+ @>Change Save Access: Enable
  @>
-: When [No]
+: When [Nevermind]
  @>
 : Branch End
 @>
@@ -90713,18 +90729,27 @@ Move Animation
 Trigger: Action Button
 
 List of Event Commands:
-@>Text: Do you want to exit the simulator?
-@>Show Choices: Yes, No
-(When Cancel: Choice 2)
-: When [Yes]
+@>Text: Did you need healing? Or would you like to leave the simulator?
+@>Show Choices: Healing, Leave Simulator, Nevermind
+(When Cancel: Choice 3)
+: When [Healing]
+ @>Recover All: Entire Party
+ @>Change Screen Color Tone: (-255,-255,-255,0), @6
+ @>Wait: 8 frame(s)
+ @>Play ME: 'Pkmn healing', 100, 100
+ @>Wait: 60 frame(s)
+ @>Text: Alright, you should be good to continue your training!
+ @>
+: When [Leave Simulator]
  @>Play SE: 'Door exit', 80, 100
  @>Change Screen Color Tone: (-255,-255,-255,0), @6
  @>Wait: 8 frame(s)
  @>Transfer Player:[092: Capital Puppet Center], (008,018), Right, No Fade
  @>Change Screen Color Tone: (0,0,0,0), @6
  @>Text: Did you have a good training session? Come back anytime!
+ @>Change Save Access: Enable
  @>
-: When [No]
+: When [Nevermind]
  @>
 : Branch End
 @>
