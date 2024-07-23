@@ -72967,12 +72967,16 @@ List of Event Commands:
   :       : pbSetSelfSwitch2(126,50,"A",false)
   @>Transfer Player:[126: Lunar Capital (Cutscene)], (035,022), Down, No Fade
   @>Change Transparent Flag: Transparency
+  @>Conditional Branch: Switch [0144: Clownpiece Checkpoint] == ON
+   @>Script: pbSetSelfSwitch2(126,52,"A",true)
+   @>
+  : Branch End
   @>
  : Else
   @>Transfer Player:[091: Lunar Capital], (027,037), Down, No Fade
+  @>Change Screen Color Tone: (0,0,0,0), @6
   @>
  : Branch End
- @>Change Screen Color Tone: (0,0,0,0), @6
  @>Set Move Route: Player
   :              : $>Move Down
  @>
@@ -73005,14 +73009,20 @@ List of Event Commands:
  @>Change Screen Color Tone: (-255,-255,-255,0), @6
  @>Wait: 8 frame(s)
  @>Conditional Branch: Variable [0121: TKoL Plot Variable] == 14
+  @>Script: pbSetSelfSwitch2(126,48,"A",false)
+  :       : pbSetSelfSwitch2(126,50,"A",false)
   @>Transfer Player:[126: Lunar Capital (Cutscene)], (035,022), Down, No Fade
   @>Change Transparent Flag: Transparency
+  @>Conditional Branch: Switch [0144: Clownpiece Checkpoint] == ON
+   @>Script: pbSetSelfSwitch2(126,52,"A",true)
+   @>
+  : Branch End
   @>
  : Else
   @>Transfer Player:[091: Lunar Capital], (027,037), Down, No Fade
+  @>Change Screen Color Tone: (0,0,0,0), @6
   @>
  : Branch End
- @>Change Screen Color Tone: (0,0,0,0), @6
  @>Set Move Route: Player
   :              : $>Move Down
  @>
@@ -73101,7 +73111,7 @@ Move Animation
 Trigger: Action Button
 
 List of Event Commands:
-@>Control Variables: [0001..0005] = 0
+@>Control Variables: [0129..0131] = 0
 @>Text: Hello there! Are you here to take part in the Puppet Training 
  :    : Simulator?
 @>Show Choices: Yes, No, Explain
@@ -73120,7 +73130,7 @@ List of Event Commands:
    @>Text: Alright then, good luck on your training!
    @>Control Variables: [0097: EXP Multiplier] = 2
    @>Script: pbSet(129, rand(20..35))
-   :       : p pbGet(129) if $DEBUG
+   :       : echoln "Puppets to beat: \v[129]"
    @>Script: $PokemonGlobal.dungeon_area = :forest_tpdp
    @>Play SE: 'Door exit', 80, 100
    @>Change Screen Color Tone: (-255,-255,-255,0), @6
@@ -73142,7 +73152,7 @@ List of Event Commands:
    @>Text: Alright then, good luck on your training!
    @>Control Variables: [0097: EXP Multiplier] = 2
    @>Script: pbSet(129, rand(20..35))
-   :       : p pbGet(129) if $DEBUG
+   :       : echoln "Puppets to beat: \v[129]"
    @>Script: $PokemonGlobal.dungeon_area = :cave_tpdp
    @>Play SE: 'Door exit', 80, 100
    @>Change Screen Color Tone: (-255,-255,-255,0), @6
@@ -73164,7 +73174,7 @@ List of Event Commands:
    @>Text: Alright then, good luck on your training!
    @>Control Variables: [0097: EXP Multiplier] = 2
    @>Script: pbSet(129, rand(20..35))
-   :       : p pbGet(129) if $DEBUG
+   :       : echoln "Puppets to beat: \v[129]"
    @>Script: $PokemonGlobal.dungeon_area = :moon
    @>Play SE: 'Door exit', 80, 100
    @>Change Screen Color Tone: (-255,-255,-255,0), @6
@@ -73292,6 +73302,25 @@ Page #1
 Conditions
 None
 
+Autonomous Movement
+Type: Fixed
+Speed: 3: Slow
+Freq: 3: Low
+Options Enabled
+Move Animation
+Trigger: Autorun
+
+List of Event Commands:
+@>Script: pbSet(1, $game_player.x)
+:       : pbSet(2, $game_player.y - 1)
+@>Set Event Location: [Exit NPC],Variable [0001][00002]
+@>Control Self Switch: A =ON
+@>
+
+Page #2
+Conditions
+Self Switch A is ON
+
 Graphic: TPDP_NPC 54
 
 Autonomous Movement
@@ -73303,8 +73332,8 @@ Move Animation
 Trigger: Action Button
 
 List of Event Commands:
-@>Text: Did you need healing? Or would you like to leave the simulator?
-@>Show Choices: Healing, Leave Simulator, Nevermind
+@>Text: I can assist you with various tasks ma'am! What would you like?
+@>Show Choices: Healing, Puppet Storage, Leave Simulator, Nevermind
 (When Cancel: Choice 3)
 : When [Healing]
  @>Recover All: Entire Party
@@ -73312,16 +73341,30 @@ List of Event Commands:
  @>Wait: 8 frame(s)
  @>Play ME: 'Pkmn healing', 100, 100
  @>Wait: 60 frame(s)
+ @>Change Screen Color Tone: (0,0,0,0), @6
  @>Text: Alright, you should be good to continue your training!
  @>
+: When [Puppet Storage]
+ @>Script: pbPokeCenterPC
+ @>
 : When [Leave Simulator]
- @>Play SE: 'Door exit', 80, 100
- @>Change Screen Color Tone: (-255,-255,-255,0), @6
- @>Wait: 8 frame(s)
- @>Transfer Player:[092: Capital Puppet Center], (008,018), Right, No Fade
- @>Change Screen Color Tone: (0,0,0,0), @6
- @>Text: Did you have a good training session? Come back anytime!
- @>Change Save Access: Enable
+ @>Text: Are you sure you want to end your training now?
+ @>Show Choices: Yes, No
+ (When Cancel: Choice 2)
+ : When [Yes]
+  @>Play SE: 'Door exit', 80, 100
+  @>Change Screen Color Tone: (-255,-255,-255,0), @6
+  @>Wait: 8 frame(s)
+  @>Control Self Switch: A =OFF
+  @>Transfer Player:[092: Capital Puppet Center], (008,018), Right, No Fade
+  @>Change Screen Color Tone: (0,0,0,0), @6
+  @>Text: Did you have a good training session? Come back anytime!
+  @>Script: pbSetPokemonCenter
+  @>Change Save Access: Enable
+  @>
+ : When [No]
+  @>
+ : Branch End
  @>
 : When [Nevermind]
  @>
@@ -73335,7 +73378,7 @@ Event Name: Boss Controller Event
 
 Page #1
 Conditions
-Switch 0148: --- TLA --- is ON
+None
 
 Autonomous Movement
 Type: Fixed
@@ -73346,131 +73389,34 @@ Move Animation
 Trigger: Parallel Process
 
 List of Event Commands:
-@>Script: rand_puppet = [:AMARISA,:KIRISAME,:ADALICE,:AKISISTERS,
-:       :                :KAZAMI,:SMEDICINE,:AMOKOU,:HLILYWHITE,
-:       :                :SLILYBLACK,:SKOISHI][rand(10)],35]
-:       : 
-:       : Pokemon.play_cry(rand_puppet)
-@>Script: pbSetSelfSwitch(3,"A",true)
-@>Conditional Branch: Script: rand_puppet == :AMARISA
- @>Set Move Route: [Boss Event]
-  :              : $>Graphic: "Puppet_Mima', 0, 2, 0
- @>
-: Else
+@>Conditional Branch: Variable [0130: Puppets Defeated] >= Variable [0129: Puppets To Defeat]
+ @>Script: puppet = [:AMARISA,:KIRISAME,:ADALICE,:AKISISTERS,
+ :       :                :KAZAMI,:SMEDICINE,:AMOKOU,:HLILYWHITE,
+ :       :                :SLILYBLACK,:SKOISHI]
+ :       : rand_puppet = puppet.sample
+ :       : pbSet(131, rand_puppet)
+ :       : 
+ :       : Pokemon.play_cry(pbGet(131))
+ :       : echoln "Boss Puppet:\v[131]"
+ @>Script:     if pbGet(131) == :AMARISA then pbSet(132,1)
+ :       :     elsif pbGet(131) == :KIRISAME then pbSet(132,2)
+ :       :     elsif pbGet(131) == :ADALICE then pbSet(132,3)
+ :       :     elsif pbGet(131) == :AKISISTERS then pbSet(132,4)
+ :       :     elsif pbGet(131) == :KAZAMI then pbSet(132,5)
+ :       :     elsif pbGet(131) == :SMEDICINE then pbSet(132,6)
+ :       :     elsif pbGet(131) == :AMOKOU then pbSet(132,7)
+ :       :     elsif pbGet(131) == :HLILYWHITE then pbSet(132,8)
+ :       :     elsif pbGet(131) == :SLILYBLACK then pbSet(132,9)
+ :       :     elsif pbGet(131) == :SKOISHI then pbSet(132,10)
+ :       :     end
+ @>Show Animation: Player, [Exclaim bubble]
+ @>Text: You can hear a loud cry from somewhere in the simulator...
+ @>Control Self Switch: A =ON
  @>
 : Branch End
-@>Show Animation: Player, [Exclaim bubble]
-@>Text: You can hear a loud cry from somewhere in the simulator...
-@>Control Self Switch: A =ON
-@>Script: puppet = [:AMARISA,:KIRISAME,:ADALICE,:AKISISTERS,
-:       :                :KAZAMI,:SMEDICINE,:AMOKOU,:HLILYWHITE,
-:       :                :SLILYBLACK,:SKOISHI]
-:       : rand_puppet = puppet.sample
-:       : pbSet(1, rand_puppet)
 @>
 
 Page #2
-Conditions
-Switch 0148: --- TLA --- is ON
-
-Autonomous Movement
-Type: Fixed
-Speed: 3: Slow
-Freq: 3: Low
-Options Enabled
-Move Animation
-Trigger: Parallel Process
-
-List of Event Commands:
-@>Script: puppet = [:AMARISA,:KIRISAME,:ADALICE,:AKISISTERS,
-:       :                :KAZAMI,:SMEDICINE,:AMOKOU,:HLILYWHITE,
-:       :                :SLILYBLACK,:SKOISHI]
-:       : rand_puppet = puppet.sample
-:       : pbSet(1, rand_puppet)
-:       : 
-:       : Pokemon.play_cry(pbGet(1))
-@>Script: pbSetSelfSwitch(3,"A",true)
-@>Conditional Branch: Script: pbGet(1) == :AMARISA
- @>Set Move Route: [Boss Event]
-  :              : $>Graphic: "Puppet_Mima', 0, 2, 0
- @>
-: Else
- @>
-: Branch End
-@>Show Animation: Player, [Exclaim bubble]
-@>Text: You can hear a loud cry from somewhere in the simulator...
-@>Control Self Switch: A =ON
-@>
-
-Page #3
-Conditions
-None
-
-Autonomous Movement
-Type: Fixed
-Speed: 3: Slow
-Freq: 3: Low
-Options Enabled
-Move Animation
-Trigger: Parallel Process
-
-List of Event Commands:
-@>Conditional Branch: Variable [0130: Puppets Defeated] >= Variable [0129: Puppets To Defeat]
- @>Script: puppet = [:AMARISA,:KIRISAME,:ADALICE,:AKISISTERS,
- :       :                :KAZAMI,:SMEDICINE,:AMOKOU,:HLILYWHITE,
- :       :                :SLILYBLACK,:SKOISHI]
- :       : rand_puppet = puppet.sample
- :       : pbSet(131, rand_puppet)
- :       : 
- :       : Pokemon.play_cry(pbGet(131))
- @>Script: pbSetSelfSwitch(3,"A",true)
- @>Conditional Branch: Script: pbGet(131) == :AMARISA
-  @>Set Move Route: [Boss Event]
-   :              : $>Graphic: "Puppet_Mima', 0, 2, 0
-  @>
- : Else
-  @>Set Move Route: [Boss Event]
-   :              : $>Graphic: "Puppet_Nue', 0, 2, 0
-  @>
- : Branch End
- @>Show Animation: Player, [Exclaim bubble]
- @>Text: You can hear a loud cry from somewhere in the simulator...
- @>Control Self Switch: A =ON
- @>
-: Branch End
-@>
-
-Page #4
-Conditions
-None
-
-Autonomous Movement
-Type: Fixed
-Speed: 3: Slow
-Freq: 3: Low
-Options Enabled
-Move Animation
-Trigger: Parallel Process
-
-List of Event Commands:
-@>Conditional Branch: Variable [0130: Puppets Defeated] >= Variable [0129: Puppets To Defeat]
- @>Script: puppet = [:AMARISA,:KIRISAME,:ADALICE,:AKISISTERS,
- :       :                :KAZAMI,:SMEDICINE,:AMOKOU,:HLILYWHITE,
- :       :                :SLILYBLACK,:SKOISHI]
- :       : rand_puppet = puppet.sample
- :       : pbSet(131, rand_puppet)
- :       : 
- :       : Pokemon.play_cry(pbGet(131))
- @>Script: pbSetSelfSwitch(3,"A",true)
- @>Comment: Sprite Change Here
- @>Show Animation: Player, [Exclaim bubble]
- @>Text: You can hear a loud cry from somewhere in the simulator...
- @>Control Self Switch: A =ON
- @>
-: Branch End
-@>
-
-Page #5
 Conditions
 Self Switch A is ON
 
@@ -73491,6 +73437,21 @@ Event Name: Boss Event
 (X,Y): (000,002)
 
 Page #1
+Conditions
+None
+
+Autonomous Movement
+Type: Random
+Speed: 4: Fast
+Freq: 6: Highest
+Options Enabled
+Move Animation
+Trigger: Action Button
+
+List of Event Commands:
+@>
+
+Page #2
 Conditions
 Self Switch A is ON
 
@@ -73557,6 +73518,286 @@ List of Event Commands:
 @>Script: pbSetSelfSwitch(2,"A",false)
 :       : pbSet(129, rand(20..35)) 
 :       : p pbGet(129) if $DEBUG
+@>
+
+Page #3
+Conditions
+Variable 0132: Puppet ID Sprite is 1 or above
+
+Graphic: Puppet_Marisa
+
+Autonomous Movement
+Type: Random
+Speed: 4: Fast
+Freq: 4: High
+Options Enabled
+Move Animation
+Trigger: Event Touch
+
+List of Event Commands:
+@>Comment: when :AMARISA then $game_variable[132] = 1
+ :       : when :KIRISAME then $game_variable[132] = 2
+ :       : when :ADALICE then $game_variable[132] = 3
+ :       : when :AKISISTERS then $game_variable[132] = 4
+ :       : when :KAZAMI then $game_variable[132] = 5
+@>Comment: when :SMEDICINE then $game_variable[132] = 6
+ :       : when :AMOKOU then $game_variable[132] = 7
+ :       : when :HLILYWHITE then $game_variable[132] = 8
+ :       : when :SLILYBLACK then $game_variable[132] = 9
+ :       : when :SKOISHI then $game_variable[132] = 10
+@>Call Common Event: Simulator Puppet
+@>
+
+Page #4
+Conditions
+Variable 0132: Puppet ID Sprite is 2 or above
+
+Graphic: Puppet_Kirisame
+
+Autonomous Movement
+Type: Approach
+Speed: 4: Fast
+Freq: 4: High
+Options Enabled
+Move Animation
+Trigger: Event Touch
+
+List of Event Commands:
+@>Comment: when :AMARISA then $game_variable[132] = 1
+ :       : when :KIRISAME then $game_variable[132] = 2
+ :       : when :ADALICE then $game_variable[132] = 3
+ :       : when :AKISISTERS then $game_variable[132] = 4
+ :       : when :KAZAMI then $game_variable[132] = 5
+@>Comment: when :SMEDICINE then $game_variable[132] = 6
+ :       : when :AMOKOU then $game_variable[132] = 7
+ :       : when :HLILYWHITE then $game_variable[132] = 8
+ :       : when :SLILYBLACK then $game_variable[132] = 9
+ :       : when :SKOISHI then $game_variable[132] = 10
+@>Call Common Event: Simulator Puppet
+@>
+
+Page #5
+Conditions
+Variable 0132: Puppet ID Sprite is 3 or above
+
+Graphic: Puppet_DarkAlice
+
+Autonomous Movement
+Type: Approach
+Speed: 4: Fast
+Freq: 4: High
+Options Enabled
+Move Animation
+Trigger: Event Touch
+
+List of Event Commands:
+@>Comment: when :AMARISA then $game_variable[132] = 1
+ :       : when :KIRISAME then $game_variable[132] = 2
+ :       : when :ADALICE then $game_variable[132] = 3
+ :       : when :AKISISTERS then $game_variable[132] = 4
+ :       : when :KAZAMI then $game_variable[132] = 5
+@>Comment: when :SMEDICINE then $game_variable[132] = 6
+ :       : when :AMOKOU then $game_variable[132] = 7
+ :       : when :HLILYWHITE then $game_variable[132] = 8
+ :       : when :SLILYBLACK then $game_variable[132] = 9
+ :       : when :SKOISHI then $game_variable[132] = 10
+@>Call Common Event: Simulator Puppet
+@>
+
+Page #6
+Conditions
+Variable 0132: Puppet ID Sprite is 4 or above
+
+Graphic: Puppet_Shizuha
+
+Autonomous Movement
+Type: Approach
+Speed: 4: Fast
+Freq: 4: High
+Options Enabled
+Move Animation
+Trigger: Event Touch
+
+List of Event Commands:
+@>Comment: when :AMARISA then $game_variable[132] = 1
+ :       : when :KIRISAME then $game_variable[132] = 2
+ :       : when :ADALICE then $game_variable[132] = 3
+ :       : when :AKISISTERS then $game_variable[132] = 4
+ :       : when :KAZAMI then $game_variable[132] = 5
+@>Comment: when :SMEDICINE then $game_variable[132] = 6
+ :       : when :AMOKOU then $game_variable[132] = 7
+ :       : when :HLILYWHITE then $game_variable[132] = 8
+ :       : when :SLILYBLACK then $game_variable[132] = 9
+ :       : when :SKOISHI then $game_variable[132] = 10
+@>Call Common Event: Simulator Puppet
+@>
+
+Page #7
+Conditions
+Variable 0132: Puppet ID Sprite is 5 or above
+
+Graphic: Puppet_Kazami
+
+Autonomous Movement
+Type: Approach
+Speed: 4: Fast
+Freq: 4: High
+Options Enabled
+Move Animation
+Trigger: Event Touch
+
+List of Event Commands:
+@>Comment: when :AMARISA then $game_variable[132] = 1
+ :       : when :KIRISAME then $game_variable[132] = 2
+ :       : when :ADALICE then $game_variable[132] = 3
+ :       : when :AKISISTERS then $game_variable[132] = 4
+ :       : when :KAZAMI then $game_variable[132] = 5
+@>Comment: when :SMEDICINE then $game_variable[132] = 6
+ :       : when :AMOKOU then $game_variable[132] = 7
+ :       : when :HLILYWHITE then $game_variable[132] = 8
+ :       : when :SLILYBLACK then $game_variable[132] = 9
+ :       : when :SKOISHI then $game_variable[132] = 10
+@>Call Common Event: Simulator Puppet
+@>
+
+Page #8
+Conditions
+Variable 0132: Puppet ID Sprite is 6 or above
+
+Graphic: Puppet_Medicine
+
+Autonomous Movement
+Type: Approach
+Speed: 4: Fast
+Freq: 4: High
+Options Enabled
+Move Animation
+Trigger: Event Touch
+
+List of Event Commands:
+@>Comment: when :AMARISA then $game_variable[132] = 1
+ :       : when :KIRISAME then $game_variable[132] = 2
+ :       : when :ADALICE then $game_variable[132] = 3
+ :       : when :AKISISTERS then $game_variable[132] = 4
+ :       : when :KAZAMI then $game_variable[132] = 5
+@>Comment: when :SMEDICINE then $game_variable[132] = 6
+ :       : when :AMOKOU then $game_variable[132] = 7
+ :       : when :HLILYWHITE then $game_variable[132] = 8
+ :       : when :SLILYBLACK then $game_variable[132] = 9
+ :       : when :SKOISHI then $game_variable[132] = 10
+@>Call Common Event: Simulator Puppet
+@>
+
+Page #9
+Conditions
+Variable 0132: Puppet ID Sprite is 7 or above
+
+Graphic: Puppet_Mokou
+
+Autonomous Movement
+Type: Approach
+Speed: 4: Fast
+Freq: 4: High
+Options Enabled
+Move Animation
+Trigger: Event Touch
+
+List of Event Commands:
+@>Comment: when :AMARISA then $game_variable[132] = 1
+ :       : when :KIRISAME then $game_variable[132] = 2
+ :       : when :ADALICE then $game_variable[132] = 3
+ :       : when :AKISISTERS then $game_variable[132] = 4
+ :       : when :KAZAMI then $game_variable[132] = 5
+@>Comment: when :SMEDICINE then $game_variable[132] = 6
+ :       : when :AMOKOU then $game_variable[132] = 7
+ :       : when :HLILYWHITE then $game_variable[132] = 8
+ :       : when :SLILYBLACK then $game_variable[132] = 9
+ :       : when :SKOISHI then $game_variable[132] = 10
+@>Call Common Event: Simulator Puppet
+@>
+
+Page #10
+Conditions
+Variable 0132: Puppet ID Sprite is 8 or above
+
+Graphic: Puppet_LilyW
+
+Autonomous Movement
+Type: Approach
+Speed: 4: Fast
+Freq: 4: High
+Options Enabled
+Move Animation
+Trigger: Event Touch
+
+List of Event Commands:
+@>Comment: when :AMARISA then $game_variable[132] = 1
+ :       : when :KIRISAME then $game_variable[132] = 2
+ :       : when :ADALICE then $game_variable[132] = 3
+ :       : when :AKISISTERS then $game_variable[132] = 4
+ :       : when :KAZAMI then $game_variable[132] = 5
+@>Comment: when :SMEDICINE then $game_variable[132] = 6
+ :       : when :AMOKOU then $game_variable[132] = 7
+ :       : when :HLILYWHITE then $game_variable[132] = 8
+ :       : when :SLILYBLACK then $game_variable[132] = 9
+ :       : when :SKOISHI then $game_variable[132] = 10
+@>Call Common Event: Simulator Puppet
+@>
+
+Page #11
+Conditions
+Variable 0132: Puppet ID Sprite is 9 or above
+
+Graphic: Puppet_LilyB
+
+Autonomous Movement
+Type: Approach
+Speed: 4: Fast
+Freq: 4: High
+Options Enabled
+Move Animation
+Trigger: Event Touch
+
+List of Event Commands:
+@>Comment: when :AMARISA then $game_variable[132] = 1
+ :       : when :KIRISAME then $game_variable[132] = 2
+ :       : when :ADALICE then $game_variable[132] = 3
+ :       : when :AKISISTERS then $game_variable[132] = 4
+ :       : when :KAZAMI then $game_variable[132] = 5
+@>Comment: when :SMEDICINE then $game_variable[132] = 6
+ :       : when :AMOKOU then $game_variable[132] = 7
+ :       : when :HLILYWHITE then $game_variable[132] = 8
+ :       : when :SLILYBLACK then $game_variable[132] = 9
+ :       : when :SKOISHI then $game_variable[132] = 10
+@>Call Common Event: Simulator Puppet
+@>
+
+Page #12
+Conditions
+Variable 0132: Puppet ID Sprite is 10 or above
+
+Graphic: Puppet_Koishi
+
+Autonomous Movement
+Type: Approach
+Speed: 4: Fast
+Freq: 4: High
+Options Enabled
+Move Animation
+Trigger: Event Touch
+
+List of Event Commands:
+@>Comment: when :AMARISA then $game_variable[132] = 1
+ :       : when :KIRISAME then $game_variable[132] = 2
+ :       : when :ADALICE then $game_variable[132] = 3
+ :       : when :AKISISTERS then $game_variable[132] = 4
+ :       : when :KAZAMI then $game_variable[132] = 5
+@>Comment: when :SMEDICINE then $game_variable[132] = 6
+ :       : when :AMOKOU then $game_variable[132] = 7
+ :       : when :HLILYWHITE then $game_variable[132] = 8
+ :       : when :SLILYBLACK then $game_variable[132] = 9
+ :       : when :SKOISHI then $game_variable[132] = 10
+@>Call Common Event: Simulator Puppet
 @>
 
 #------------------------------------------------------------------------------
@@ -89741,6 +89982,21 @@ List of Event Commands:
 @>Text: We need to stand firm and protect the palace!
 @>
 
+Page #2
+Conditions
+Switch 0144: Clownpiece Checkpoint is ON
+
+Autonomous Movement
+Type: Fixed
+Speed: 3: Slow
+Freq: 3: Low
+Options Enabled
+Move Animation
+Trigger: Action Button
+
+List of Event Commands:
+@>
+
 #------------------------------------------------------------------------------
 Event ID: 042
 Event Name: Rabbit Guard
@@ -89762,6 +90018,21 @@ Trigger: Action Button
 
 List of Event Commands:
 @>Text: We need to stand firm and protect the palace!
+@>
+
+Page #2
+Conditions
+Switch 0144: Clownpiece Checkpoint is ON
+
+Autonomous Movement
+Type: Fixed
+Speed: 3: Slow
+Freq: 3: Low
+Options Enabled
+Move Animation
+Trigger: Action Button
+
+List of Event Commands:
 @>
 
 #------------------------------------------------------------------------------
@@ -89787,6 +90058,21 @@ List of Event Commands:
 @>Text: We need to stand firm and protect the palace!
 @>
 
+Page #2
+Conditions
+Switch 0144: Clownpiece Checkpoint is ON
+
+Autonomous Movement
+Type: Fixed
+Speed: 3: Slow
+Freq: 3: Low
+Options Enabled
+Move Animation
+Trigger: Action Button
+
+List of Event Commands:
+@>
+
 #------------------------------------------------------------------------------
 Event ID: 044
 Event Name: Rabbit Guard
@@ -89808,6 +90094,21 @@ Trigger: Action Button
 
 List of Event Commands:
 @>Text: We need to stand firm and protect the palace!
+@>
+
+Page #2
+Conditions
+Switch 0144: Clownpiece Checkpoint is ON
+
+Autonomous Movement
+Type: Fixed
+Speed: 3: Slow
+Freq: 3: Low
+Options Enabled
+Move Animation
+Trigger: Action Button
+
+List of Event Commands:
 @>
 
 #------------------------------------------------------------------------------
@@ -90016,7 +90317,7 @@ List of Event Commands:
   @>Text: \xn[\pn]Hell Fairy, regular Fairy, blessed by divine or maddening
    :    : power, it makes no difference. I'll combat your power of
    :    : madness with the Puppets I've put my trust in!
-  @>Script: # pbTrainerIntro(:CLOWNPIECET)
+  @>Script: pbTrainerIntro(:CLOWNPIECET)
   @>Text: \xn[Clownpiece]Kyahahaha! Alright then! Fairies,
    :    : let's get ready to crank things up!
   @>Text: \xn[Clownpiece]It's lunatic time! I'll show you a true world
@@ -90164,6 +90465,333 @@ List of Event Commands:
 : Else
  @>Change Transparent Flag: Normal
  @>Script: pbTrainerEnd
+ @>
+: Branch End
+@>
+
+Page #2
+Conditions
+Variable 0121: TKoL Plot Variable is 14 or above
+
+Autonomous Movement
+Type: Fixed
+Speed: 3: Slow
+Freq: 3: Low
+Options Enabled
+Move Animation
+Trigger: Autorun
+
+List of Event Commands:
+@>Change Screen Color Tone: (0,0,0,0), @6
+@>Script: pbSetSelfSwitch(48,"B",false)
+:       : pbSetSelfSwitch(50,"B",false)
+@>Text: \xn[Rabbit Guard 2]Ghk... Is this the end...?
+@>Text: \xn[Rabbit Guard 4]If this is the end, then we'll go down 
+ :    : protecting the Princesses!
+@>Text: \xn[Rabbit Guard 4]Stand strong, girls! Give these Hell Fairies no 
+ :    : quarter!
+@>Text: \xn[Hell Fairies]Gyahahaha!
+@>Wait: 10 frame(s)
+@>Change Text Options: Middle, Show
+@>Text: \xn[Sagume]Omoikane-Tan, Gunk Shot!
+@>Script: Pokemon.play_cry(:EIRIN)
+@>Script: pbSetSelfSwitch(48,"A",true)
+@>Wait: 30 frame(s)
+@>Set Move Route: [Sagume]
+ :              : $>Through ON
+ :              : $>Move Up
+ :              : $>Move Up
+ :              : $>Move Up
+ :              : $>Move Up
+ :              : $>Move Up
+ :              : $>Move Up
+ :              : $>Move Up
+ :              : $>Move Up
+ :              : $>Move Up
+ :              : $>Move Up
+ :              : $>Turn Down
+@>Set Move Route: [Player (Cutscene)]
+ :              : $>Through ON
+ :              : $>Move Up
+ :              : $>Move Up
+ :              : $>Move Up
+ :              : $>Move Up
+ :              : $>Move Up
+ :              : $>Move Up
+ :              : $>Move Up
+ :              : $>Move Up
+ :              : $>Move Up
+ :              : $>Move Up
+ :              : $>Turn Down
+@>Wait for Move's Completion
+@>Change Text Options: Bottom, Show
+@>Text: \xn[Rabbit Guard 1]Lady Sagume! You're here!
+@>Text: \xn[Sagume]Fall back and reinforce the Palace! We shall handle
+ :    : things from here.
+@>Text: \xn[Rabbit Guards]Ma'am! Yes Ma'am!
+@>Set Move Route: [Rabbit Guard]
+ :              : $>Change Speed: 5
+ :              : $>Move Up
+ :              : $>Move Up
+ :              : $>Move Up
+ :              : $>Move Up
+ :              : $>Move Up
+@>Set Move Route: [Rabbit Guard]
+ :              : $>Change Speed: 5
+ :              : $>Move Up
+ :              : $>Move Up
+ :              : $>Move Up
+ :              : $>Move Up
+ :              : $>Move Up
+@>Set Move Route: [Rabbit Guard]
+ :              : $>Change Speed: 5
+ :              : $>Move Up
+ :              : $>Move Up
+ :              : $>Move Up
+ :              : $>Move Up
+ :              : $>Move Up
+@>Set Move Route: [Rabbit Guard]
+ :              : $>Change Speed: 5
+ :              : $>Move Up
+ :              : $>Move Up
+ :              : $>Move Up
+ :              : $>Move Up
+ :              : $>Move Up
+@>Scroll Map: Down, 2, 4
+@>Text: \xn[Sagume]Can I trust you to pull your weight?
+@>Text: \xn[\pn]Don't have to ask me twice! Bring 'em on!
+@>Wait for Move's Completion
+@>Text: Look! New friends to play with!
+@>Text: Let's have fun breaking them!
+@>Text: \xn[\pn]\b(Hell Fairies... Can't be much worse than regular
+ :    : fairies! Let's do this!)
+@>Change Battle BGM: 'B-034. Battle vs. Trainer (Dreams)', 100, 100
+@>Conditional Branch: Script: TrainerBattle.start(:HELLFAIRY, "Reika", pbGet(99), :HELLFAIRY, "Sienna", pbGet(99))
+ @>Recover All: Entire Party
+ @>Text: \xn[\pn]\b(Okay I was mistaken! These fairies are definitely
+  :    : not like those in Gensokyo!)
+ @>Text: \xn[Sagume]Having trouble?
+ @>Text: \xn[\pn]Nothing I can't handle! Bring on the next batch!
+ @>Text: \xn[Sagume]Good to hear. My blessings should allow your 
+  :    : Puppets to recover their full strength after each battle.
+ @>Text: Kyahahaha! You won't be able to stand up to us all
+  :    : forever!
+ @>Change Battle BGM: 'B-034. Battle vs. Trainer (Dreams)', 100, 100
+ @>Conditional Branch: Script: TrainerBattle.start(:HELLFAIRY, "Clarise", pbGet(99), :HELLFAIRY, "Makiko", pbGet(99))
+  @>Recover All: Entire Party
+  @>Text: \xn[\pn]Bring on the next batch! I'll drive you all back!
+  @>Text: \xn[???]Kyahahaha! You're an interesting one! I'll take
+   :    : you on myself, then!
+  @>Script: pbSetSelfSwitch(48,"A",true)
+  @>Set Move Route: [Clownpiece]
+   :              : $>Through ON
+   :              : $>Move Up
+   :              : $>Move Up
+   :              : $>Move Up
+   :              : $>Move Up
+   :              : $>Move Up
+   :              : $>Move Up
+   :              : $>Move Up
+   :              : $>Move Up
+   :              : $>Move Up
+  @>Wait for Move's Completion
+  @>Text: \xn[\pn]\b(This fairy looks... stranger than the ones here. Their
+   :    : leader?)
+  @>Text: \xn[???]I'm Clownpiece, a Fairy from Hell, and the leader
+   :    : of this platoon of Fairies!
+  @>Text: \xn[Clownpiece]We weren't expecting any resistance to
+   :    : come from the Capital itself... Our Honorable Friend told us
+   :    : that no force from the Moon would be able to stand against
+   :    : us!
+  @>Text: \xn[\pn]Good thing I'm not from the Moon, then! It'll make dealing
+   :    : with you all the easier!
+  @>Text: \xn[Clownpiece]Not from the Moon...?
+  @>Wait: 10 frame(s)
+  @>Show Animation: [Clownpiece], [Exclaim bubble]
+  @>Text: \xn[Clownpiece]An Earthling! What's an Earthling doing on the 
+   :    : Moon? I wasn't told this would happen!
+  @>Text: \xn[Clownpiece]But this is really interesting... Alright, I'll play
+   :    : along! Let's see how long you can last against my 
+   :    : Madness-Enhanced Puppets!
+  @>Text: \xn[\pn]Madness-Enhanced...?
+  @>Text: \xn[Clownpiece]By the light of my torch, I can drive all who
+   :    : witness it into insanity! Puppets included! And those that are
+   :    : driven crazy can bring out their true power!
+  @>Text: \xn[Clownpiece]Between that and the power-boost given to them
+   :    : by Our Honorable Friend, they serve as the perfect way to deal
+   :    : with these stuck-up prudes on the Moon!
+  @>Text: \xn[Clownpiece]And if you're standing with these jerks, then
+   :    : you're an enemy of Our Honorable Friend! And any enemies
+   :    : of Our Honorable Friend are enemies of our Master!
+  @>Text: \xn[Clownpiece]You don't stand a chance against us!
+  @>Text: \xn[\pn]Hell Fairy, regular Fairy, blessed by divine or maddening
+   :    : power, it makes no difference. I'll combat your power of
+   :    : madness with the Puppets I've put my trust in!
+  @>Control Switches: [0144: Clownpiece Checkpoint] = ON
+  @>
+ : Else
+  @>Change Transparent Flag: Normal
+  @>Script: pbTrainerEnd
+  @>
+ : Branch End
+ @>
+: Else
+ @>Change Transparent Flag: Normal
+ @>Script: pbTrainerEnd
+ @>
+: Branch End
+@>
+
+Page #3
+Conditions
+Switch 0144: Clownpiece Checkpoint is ON
+Variable 0121: TKoL Plot Variable is 14 or above
+
+Autonomous Movement
+Type: Fixed
+Speed: 3: Slow
+Freq: 3: Low
+Options Enabled
+Move Animation
+Trigger: Autorun
+
+List of Event Commands:
+@>Script: pbTrainerIntro(:CLOWNPIECET)
+@>Text: \xn[Clownpiece]Kyahahaha! Alright then! Fairies,
+ :    : let's get ready to crank things up!
+@>Text: \xn[Clownpiece]It's lunatic time! I'll show you a true world
+ :    : of madness!
+@>Control Switches: [0104: Transition Handler] = ON
+@>Control Variables: [0103: Vs. Transition ID] = 45
+@>Conditional Branch: Switch [0107: New Game +] == OFF
+ @>Control Variables: [0104: Vs. Transition - Pkmn] = 4
+ @>
+: Else
+ @>Control Variables: [0104: Vs. Transition - Pkmn] = 4
+ @>
+: Branch End
+@>Script: setBattleRule("midbattleScript", :vs_clownpiece)
+@>Conditional Branch: Script: TrainerBattle.start(:CLOWNPIECET, "Clownpiece", 10+(pbGet(99) * 10), :HELLFAIRY, "Lucia", pbGet(99))
+ @>Show Animation: [Hell Fairy (Twintail) (Bottom)], [Exclaim bubble]
+ @>Show Animation: [Hell Fairy (Hat) (Bottom)], [Exclaim bubble]
+ @>Show Animation: [Hell Fairy (Twintail) (Bottom)], [Exclaim bubble]
+ @>Show Animation: [Hell Fairy (Twintail)], [Exclaim bubble]
+ @>Show Animation: [Hell Fairy (Hairband)], [Exclaim bubble]
+ @>Show Animation: [Hell Fairy (Hat)], [Exclaim bubble]
+ @>Show Animation: [Hell Fairy (Hat)], [Exclaim bubble]
+ @>Show Animation: [Hell Fairy (Hat)], [Exclaim bubble]
+ @>Show Animation: [Hell Fairy (Hairband) (Bottom)], [Exclaim bubble]
+ @>Show Animation: [Hell Fairy (Hat) (Bottom)], [Exclaim bubble]
+ @>Text: No way, Clownpiece lost...?
+ @>Text: But she was the strongest one of us...
+ @>Wait: 10 frame(s)
+ @>Text: Retreat!
+ @>Play SE: 'Battle flee', 80, 100
+ @>Change Screen Color Tone: (-255,-255,-255,0), @8
+ @>Wait: 8 frame(s)
+ @>Control Variables: [0121: TKoL Plot Variable] = 15
+ @>Change Screen Color Tone: (0,0,0,0), @8
+ @>Show Animation: [Clownpiece], [Exclaim bubble]
+ @>Set Move Route: [Clownpiece]
+  :              : $>Turn Left
+  :              : $>Wait: 15 frame(s)
+  :              : $>Turn Right
+  :              : $>Wait: 15 frame(s)
+  :              : $>Turn Down
+  :              : $>Wait: 15 frame(s)
+  :              : $>Turn Up
+ @>Text: \xn[Clownpiece]Wait, come back!
+ @>Wait for Move's Completion
+ @>Text: \xn[Clownpiece]Hah... We were told as long as we fairies,
+  :    : symbols of life incarnate, controlled the Moon, then
+  :    : the people of the Capital wouldn't be able to oppose us...
+ @>Text: \xn[Clownpiece]But how could we have planned for a counter
+  :    : attack by someone from the Earth!
+ @>Text: \xn[\pn]And who exactly was the one that told you that?
+ @>Text: \xn[Clownpiece]Our Honorable Friend, of course! She's the
+  :    : one who refined our power!
+ @>Text: \xn[Clownpiece]She told us that once she "purified" us, then
+  :    : the Capital wouldn't be able to lay a finger on us!
+ @>Text: \xn[Sagume]... Purification...
+ @>Text: \xn[Clownpiece]But I'm growing tired of this... I think I'll take
+  :    : after my friends and skedadle!
+ @>Fade Out BGM: 1 sec.
+ @>Play SE: 'Battle flee', 80, 100
+ @>Change Screen Color Tone: (-255,-255,-255,0), @8
+ @>Text: \xn[\pn]Hey, wait!
+ @>Wait: 8 frame(s)
+ @>Control Variables: [0121: TKoL Plot Variable] = 16
+ @>Change Screen Color Tone: (0,0,0,0), @8
+ @>Play BGM: 'W-034. Frozen Capital of Eternity', 100, 100
+ @>Text: \xn[\pn]Darn it, she got away before I could get more
+  :    : information from her!
+ @>Set Move Route: [Player (Cutscene)]
+  :              : $>Turn Left
+ @>Text: \xn[\pn]Well, we drove them off at least. That means you'll
+  :    : answer my questions now, right?
+ @>Text: \xn[Sagume]... Very well then. Perhaps, someone of your
+  :    : strength, and unique standing...
+ @>Set Move Route: [Sagume]
+  :              : $>Turn Right
+ @>Text: \xn[Sagume]My name, as you have surmised, is Sagume Kishin.
+ @>Text: \xn[Sagume]Earlier you inquired as to why I was so quiet. 'tis
+  :    : because I have the ability to manipulate fate through the power
+  :    : of spoken word.
+ @>Text: \xn[Sagume]So when things are going according to plan, I can ill
+  :    : afford to speak too much, lest I risk plans going awry.
+ @>Text: \xn[Sagume]"Least said, soonest mended", as the saying goes.
+ @>Text: \xn[\pn]You're definitely more talkative now... What does that
+  :    : mean, have your plans come to fruition then?
+ @>Text: \xn[Sagume]Quite the opposite. In response to the abnormal
+  :    : assault by the otherworldly forces, I devised a strategy to
+  :    : relocate the entirety of the Lunar Capital to Gensokyo.
+ @>Text: \xn[Sagume]This necessitated the actions of purifying the land,
+  :    : as the inhabitants of the Capital cannot exist in a land where
+  :    : Death is a concept.
+ @>Text: \xn[\pn]The purification of the land would have eradicated the
+  :    : entirety of Gensokyo's population...! Sure the situation here is
+  :    : bad, but-
+ @>Text: \xn[Sagume]An ideal solution, it was not. Truthfully, I devised it
+  :    : as insurance in the hopes that we could drive back the invaders.
+ @>Text: \xn[Sagume]When we noticed that Puppets were being utilized
+  :    : throughout Gensokyo to resolve conflicts, we opted to import
+  :    : Puppets to counter the invaders.
+ @>Text: \xn[Sagume]...Unfortunately, the leaders of this invasion
+  :    : noticed this, and begun to utilize Puppets in their assault
+  :    : as well.
+ @>Text: \xn[Sagume]This prompted us to return to the original plan-
+  :    : the Gensokyo Capital Relocation Plan. But now..
+ @>Text: \xn[\pn]Now..?
+ @>Text: \xn[Sagume]Having spoken it aloud, that plan is now moot. Instead, 
+  :    : I shall be throwing in my lot with you. You shall be the key to the 
+  :    : Capital's salvation!
+ @>Text: \xn[\pn]Wait, what-
+ @>Text: \xn[Sagume]Yes, let it be spoken now: you, the one from
+  :    : Gensokyo, shall be the one to save the Lunar Capital!
+ @>Text: \xn[Sagume]Let the wheels of fate begin to turn over...
+ @>Text: \xn[\pn]So, uh... what is it you would have me do, then...?
+ @>Text: \xn[Sagume]Judging by the intel we've recieved from the field,
+  :    : the enemy has made their stronghold out on the Mare Tranquillitatis-
+  :    : the Sea of Tranquility, in Earthling parlance.
+ @>Text: \xn[Sagume]You must go there, the enemy's home base, and 
+  :    : defeat her! For the sake of not just the Lunar Capital, but for
+  :    : Gensokyo as well!
+ @>Text: \xn[\pn]\b(What have I even gotten myself into...)
+ @>Change Screen Color Tone: (-255,-255,-255,0), @6
+ @>Wait: 8 frame(s)
+ @>Transfer Player:[091: Lunar Capital], (036,026)
+ @>Change Transparent Flag: Normal
+ @>Change Screen Color Tone: (0,0,0,0), @6
+ @>Comment: (Transfer the player back to the normal Lunar Capital map)
+  :       : (Change the plot variable +1)
+  :       : (have NPCs wandering the Capital again)
+  :       : (Have the rabbits guarding the palace say they are under
+  :       : orders to let nobody pass)
+ @>
+: Else
+ @>Change Transparent Flag: Normal
+ @>Script: pbTrainerEnd
+ @>Exit Event Processing
  @>
 : Branch End
 @>
@@ -90368,6 +90996,21 @@ List of Event Commands:
 @>Control Self Switch: A =OFF
 @>
 
+Page #3
+Conditions
+Switch 0144: Clownpiece Checkpoint is ON
+
+Autonomous Movement
+Type: Fixed
+Speed: 3: Slow
+Freq: 3: Low
+Options Enabled
+Move Animation
+Trigger: Action Button
+
+List of Event Commands:
+@>
+
 #------------------------------------------------------------------------------
 Event ID: 049
 Event Name: Gunk Arrow
@@ -90456,6 +91099,21 @@ Trigger: Action Button
 List of Event Commands:
 @>
 
+Page #3
+Conditions
+Switch 0144: Clownpiece Checkpoint is ON
+
+Autonomous Movement
+Type: Fixed
+Speed: 3: Slow
+Freq: 3: Low
+Options Enabled
+Move Animation
+Trigger: Action Button
+
+List of Event Commands:
+@>
+
 #------------------------------------------------------------------------------
 Event ID: 051
 Event Name: EV051
@@ -90484,6 +91142,32 @@ List of Event Commands:
 @>
 
 #------------------------------------------------------------------------------
+Event ID: 052
+Event Name: Blackout Controller
+(X,Y): (048,012)
+
+Page #1
+Conditions
+Self Switch A is ON
+
+Autonomous Movement
+Type: Fixed
+Speed: 3: Slow
+Freq: 3: Low
+Options Enabled
+Move Animation
+Trigger: Autorun
+
+List of Event Commands:
+@>Scroll Map: Down, 2, 4
+@>Set Event Location: [Sagume],(035,023), Down
+@>Set Event Location: [Player (Cutscene)],(036,023), Down
+@>Set Event Location: [Clownpiece],(036,025), Up
+@>Change Screen Color Tone: (0,0,0,0), @6
+@>Control Self Switch: A =OFF
+@>
+
+#------------------------------------------------------------------------------
 
 #==============================================================================
 Map ID: 127
@@ -90501,6 +91185,25 @@ Page #1
 Conditions
 None
 
+Autonomous Movement
+Type: Fixed
+Speed: 3: Slow
+Freq: 3: Low
+Options Enabled
+Move Animation
+Trigger: Autorun
+
+List of Event Commands:
+@>Script: pbSet(1, $game_player.x)
+:       : pbSet(2, $game_player.y - 1)
+@>Set Event Location: [Exit NPC],Variable [0001][00002]
+@>Control Self Switch: A =ON
+@>
+
+Page #2
+Conditions
+Self Switch A is ON
+
 Graphic: TPDP_NPC 54
 
 Autonomous Movement
@@ -90512,8 +91215,8 @@ Move Animation
 Trigger: Action Button
 
 List of Event Commands:
-@>Text: Did you need healing? Or would you like to leave the simulator?
-@>Show Choices: Healing, Leave Simulator, Nevermind
+@>Text: I can assist you with various tasks ma'am! What would you like?
+@>Show Choices: Healing, Puppet Storage, Leave Simulator, Nevermind
 (When Cancel: Choice 3)
 : When [Healing]
  @>Recover All: Entire Party
@@ -90521,16 +91224,30 @@ List of Event Commands:
  @>Wait: 8 frame(s)
  @>Play ME: 'Pkmn healing', 100, 100
  @>Wait: 60 frame(s)
+ @>Change Screen Color Tone: (0,0,0,0), @6
  @>Text: Alright, you should be good to continue your training!
  @>
+: When [Puppet Storage]
+ @>Script: pbPokeCenterPC
+ @>
 : When [Leave Simulator]
- @>Play SE: 'Door exit', 80, 100
- @>Change Screen Color Tone: (-255,-255,-255,0), @6
- @>Wait: 8 frame(s)
- @>Transfer Player:[092: Capital Puppet Center], (008,018), Right, No Fade
- @>Change Screen Color Tone: (0,0,0,0), @6
- @>Text: Did you have a good training session? Come back anytime!
- @>Change Save Access: Enable
+ @>Text: Are you sure you want to end your training now?
+ @>Show Choices: Yes, No
+ (When Cancel: Choice 2)
+ : When [Yes]
+  @>Play SE: 'Door exit', 80, 100
+  @>Change Screen Color Tone: (-255,-255,-255,0), @6
+  @>Wait: 8 frame(s)
+  @>Control Self Switch: A =OFF
+  @>Transfer Player:[092: Capital Puppet Center], (008,018), Right, No Fade
+  @>Change Screen Color Tone: (0,0,0,0), @6
+  @>Text: Did you have a good training session? Come back anytime!
+  @>Script: pbSetPokemonCenter
+  @>Change Save Access: Enable
+  @>
+ : When [No]
+  @>
+ : Branch End
  @>
 : When [Nevermind]
  @>
@@ -90563,8 +91280,17 @@ List of Event Commands:
  :       : pbSet(131, rand_puppet)
  :       : 
  :       : Pokemon.play_cry(pbGet(131))
- @>Script: pbSetSelfSwitch(3,"A",true)
- @>Comment: Sprite Change Here
+ :       : echoln "Boss Puppet: \v[131]"
+ @>Script:     if pbGet(131) == :SHINGYOKU then pbSet(132,1)
+ :       :     elsif pbGet(131) == :MAGAN then pbSet(132,2)
+ :       :     elsif pbGet(131) == :MIMA then pbSet(132,3)
+ :       :     elsif pbGet(131) == :ELIS then pbSet(132,4)
+ :       :     elsif pbGet(131) == :KIKURI then pbSet(132,5)
+ :       :     elsif pbGet(131) == :GENGETSU then pbSet(132,6)
+ :       :     elsif pbGet(131) == :SHINKI then pbSet(132,7)
+ :       :     elsif pbGet(131) == :HECATIA then pbSet(132,8)
+ :       :     elsif pbGet(131) == :AKOISHI then pbSet(132,9)
+ :       :     end
  @>Show Animation: Player, [Exclaim bubble]
  @>Text: You can hear a loud cry from somewhere in the simulator...
  @>Control Self Switch: A =ON
@@ -90593,6 +91319,21 @@ Event Name: Boss Event
 (X,Y): (000,002)
 
 Page #1
+Conditions
+None
+
+Autonomous Movement
+Type: Random
+Speed: 4: Fast
+Freq: 6: Highest
+Options Enabled
+Move Animation
+Trigger: Action Button
+
+List of Event Commands:
+@>
+
+Page #2
 Conditions
 Self Switch A is ON
 
@@ -90659,6 +91400,249 @@ List of Event Commands:
 @>Script: pbSetSelfSwitch(2,"A",false)
 :       : pbSet(129, rand(20..35)) 
 :       : p pbGet(129) if $DEBUG
+@>
+
+Page #3
+Conditions
+Variable 0132: Puppet ID Sprite is 1 or above
+
+Graphic: Puppet_Shingyoku
+
+Autonomous Movement
+Type: Random
+Speed: 4: Fast
+Freq: 4: High
+Options Enabled
+Move Animation
+Trigger: Event Touch
+
+List of Event Commands:
+@>Comment: when :SHINGYOKU then $game_variable[132] = 1
+ :       : when :MAGAN then $game_variable[132] = 2
+ :       : when :MIMA then $game_variable[132] = 3
+ :       : when :ELIS then $game_variable[132] = 4
+ :       : when :KIKURI then $game_variable[132] = 5
+@>Comment: when :GENGETSU then $game_variable[132] = 6
+ :       : when :SHINKI then $game_variable[132] = 7
+ :       : when :HECATIA then $game_variable[132] = 8
+ :       : when :AKOISHI then $game_variable[132] = 9
+@>Call Common Event: Simulator Puppet
+@>
+
+Page #4
+Conditions
+Variable 0132: Puppet ID Sprite is 2 or above
+
+Graphic: Puppet_Magan
+
+Autonomous Movement
+Type: Approach
+Speed: 4: Fast
+Freq: 4: High
+Options Enabled
+Move Animation
+Trigger: Event Touch
+
+List of Event Commands:
+@>Comment: when :SHINGYOKU then $game_variable[132] = 1
+ :       : when :MAGAN then $game_variable[132] = 2
+ :       : when :MIMA then $game_variable[132] = 3
+ :       : when :ELIS then $game_variable[132] = 4
+ :       : when :KIKURI then $game_variable[132] = 5
+@>Comment: when :GENGETSU then $game_variable[132] = 6
+ :       : when :SHINKI then $game_variable[132] = 7
+ :       : when :HECATIA then $game_variable[132] = 8
+ :       : when :AKOISHI then $game_variable[132] = 9
+@>Call Common Event: Simulator Puppet
+@>
+
+Page #5
+Conditions
+Variable 0132: Puppet ID Sprite is 3 or above
+
+Graphic: Puppet_Mima
+
+Autonomous Movement
+Type: Approach
+Speed: 4: Fast
+Freq: 4: High
+Options Enabled
+Move Animation
+Trigger: Event Touch
+
+List of Event Commands:
+@>Comment: when :SHINGYOKU then $game_variable[132] = 1
+ :       : when :MAGAN then $game_variable[132] = 2
+ :       : when :MIMA then $game_variable[132] = 3
+ :       : when :ELIS then $game_variable[132] = 4
+ :       : when :KIKURI then $game_variable[132] = 5
+@>Comment: when :GENGETSU then $game_variable[132] = 6
+ :       : when :SHINKI then $game_variable[132] = 7
+ :       : when :HECATIA then $game_variable[132] = 8
+ :       : when :AKOISHI then $game_variable[132] = 9
+@>Call Common Event: Simulator Puppet
+@>
+
+Page #6
+Conditions
+Variable 0132: Puppet ID Sprite is 4 or above
+
+Graphic: Puppet_Elis
+
+Autonomous Movement
+Type: Approach
+Speed: 4: Fast
+Freq: 4: High
+Options Enabled
+Move Animation
+Trigger: Event Touch
+
+List of Event Commands:
+@>Comment: when :SHINGYOKU then $game_variable[132] = 1
+ :       : when :MAGAN then $game_variable[132] = 2
+ :       : when :MIMA then $game_variable[132] = 3
+ :       : when :ELIS then $game_variable[132] = 4
+ :       : when :KIKURI then $game_variable[132] = 5
+@>Comment: when :GENGETSU then $game_variable[132] = 6
+ :       : when :SHINKI then $game_variable[132] = 7
+ :       : when :HECATIA then $game_variable[132] = 8
+ :       : when :AKOISHI then $game_variable[132] = 9
+@>Call Common Event: Simulator Puppet
+@>
+
+Page #7
+Conditions
+Variable 0132: Puppet ID Sprite is 5 or above
+
+Graphic: Puppet_Kikuri
+
+Autonomous Movement
+Type: Approach
+Speed: 4: Fast
+Freq: 4: High
+Options Enabled
+Move Animation
+Trigger: Event Touch
+
+List of Event Commands:
+@>Comment: when :SHINGYOKU then $game_variable[132] = 1
+ :       : when :MAGAN then $game_variable[132] = 2
+ :       : when :MIMA then $game_variable[132] = 3
+ :       : when :ELIS then $game_variable[132] = 4
+ :       : when :KIKURI then $game_variable[132] = 5
+@>Comment: when :GENGETSU then $game_variable[132] = 6
+ :       : when :SHINKI then $game_variable[132] = 7
+ :       : when :HECATIA then $game_variable[132] = 8
+ :       : when :AKOISHI then $game_variable[132] = 9
+@>Call Common Event: Simulator Puppet
+@>
+
+Page #8
+Conditions
+Variable 0132: Puppet ID Sprite is 6 or above
+
+Graphic: Puppet_Gengetsu
+
+Autonomous Movement
+Type: Approach
+Speed: 4: Fast
+Freq: 4: High
+Options Enabled
+Move Animation
+Trigger: Event Touch
+
+List of Event Commands:
+@>Comment: when :SHINGYOKU then $game_variable[132] = 1
+ :       : when :MAGAN then $game_variable[132] = 2
+ :       : when :MIMA then $game_variable[132] = 3
+ :       : when :ELIS then $game_variable[132] = 4
+ :       : when :KIKURI then $game_variable[132] = 5
+@>Comment: when :GENGETSU then $game_variable[132] = 6
+ :       : when :SHINKI then $game_variable[132] = 7
+ :       : when :HECATIA then $game_variable[132] = 8
+ :       : when :AKOISHI then $game_variable[132] = 9
+@>Call Common Event: Simulator Puppet
+@>
+
+Page #9
+Conditions
+Variable 0132: Puppet ID Sprite is 7 or above
+
+Graphic: Puppet_Shinki
+
+Autonomous Movement
+Type: Approach
+Speed: 4: Fast
+Freq: 4: High
+Options Enabled
+Move Animation
+Trigger: Event Touch
+
+List of Event Commands:
+@>Comment: when :SHINGYOKU then $game_variable[132] = 1
+ :       : when :MAGAN then $game_variable[132] = 2
+ :       : when :MIMA then $game_variable[132] = 3
+ :       : when :ELIS then $game_variable[132] = 4
+ :       : when :KIKURI then $game_variable[132] = 5
+@>Comment: when :GENGETSU then $game_variable[132] = 6
+ :       : when :SHINKI then $game_variable[132] = 7
+ :       : when :HECATIA then $game_variable[132] = 8
+ :       : when :AKOISHI then $game_variable[132] = 9
+@>Call Common Event: Simulator Puppet
+@>
+
+Page #10
+Conditions
+Variable 0132: Puppet ID Sprite is 8 or above
+
+Graphic: Puppet_Hecatia
+
+Autonomous Movement
+Type: Approach
+Speed: 4: Fast
+Freq: 4: High
+Options Enabled
+Move Animation
+Trigger: Event Touch
+
+List of Event Commands:
+@>Comment: when :SHINGYOKU then $game_variable[132] = 1
+ :       : when :MAGAN then $game_variable[132] = 2
+ :       : when :MIMA then $game_variable[132] = 3
+ :       : when :ELIS then $game_variable[132] = 4
+ :       : when :KIKURI then $game_variable[132] = 5
+@>Comment: when :GENGETSU then $game_variable[132] = 6
+ :       : when :SHINKI then $game_variable[132] = 7
+ :       : when :HECATIA then $game_variable[132] = 8
+ :       : when :AKOISHI then $game_variable[132] = 9
+@>Call Common Event: Simulator Puppet
+@>
+
+Page #11
+Conditions
+Variable 0132: Puppet ID Sprite is 9 or above
+
+Graphic: Puppet_Koishi
+
+Autonomous Movement
+Type: Approach
+Speed: 4: Fast
+Freq: 4: High
+Options Enabled
+Move Animation
+Trigger: Event Touch
+
+List of Event Commands:
+@>Comment: when :SHINGYOKU then $game_variable[132] = 1
+ :       : when :MAGAN then $game_variable[132] = 2
+ :       : when :MIMA then $game_variable[132] = 3
+ :       : when :ELIS then $game_variable[132] = 4
+ :       : when :KIKURI then $game_variable[132] = 5
+@>Comment: when :GENGETSU then $game_variable[132] = 6
+ :       : when :SHINKI then $game_variable[132] = 7
+ :       : when :HECATIA then $game_variable[132] = 8
+ :       : when :AKOISHI then $game_variable[132] = 9
+@>Call Common Event: Simulator Puppet
 @>
 
 #------------------------------------------------------------------------------
@@ -90701,115 +91685,26 @@ List of Event Commands:
 @>
 
 #------------------------------------------------------------------------------
-
-#==============================================================================
-Map ID: 128
-Map Name: Training Simulator (Moon)
-Tileset: 046: Dungeon (Moon)
-Width: 20, Height: 15
-Auto-Change BGM: W-042. Primate Spirit Garden
-
-#------------------------------------------------------------------------------
-Event ID: 001
-Event Name: Exit NPC
-(X,Y): (000,000)
+Event ID: 005
+Event Name: Boss Event (Old)
+(X,Y): (019,014)
 
 Page #1
 Conditions
 None
 
-Graphic: TPDP_NPC 54
-
 Autonomous Movement
-Type: Fixed
-Speed: 3: Slow
-Freq: 3: Low
+Type: Random
+Speed: 4: Fast
+Freq: 6: Highest
 Options Enabled
 Move Animation
 Trigger: Action Button
 
 List of Event Commands:
-@>Text: Did you need healing? Or would you like to leave the simulator?
-@>Show Choices: Healing, Leave Simulator, Nevermind
-(When Cancel: Choice 3)
-: When [Healing]
- @>Recover All: Entire Party
- @>Change Screen Color Tone: (-255,-255,-255,0), @6
- @>Wait: 8 frame(s)
- @>Play ME: 'Pkmn healing', 100, 100
- @>Wait: 60 frame(s)
- @>Text: Alright, you should be good to continue your training!
- @>
-: When [Leave Simulator]
- @>Play SE: 'Door exit', 80, 100
- @>Change Screen Color Tone: (-255,-255,-255,0), @6
- @>Wait: 8 frame(s)
- @>Transfer Player:[092: Capital Puppet Center], (008,018), Right, No Fade
- @>Change Screen Color Tone: (0,0,0,0), @6
- @>Text: Did you have a good training session? Come back anytime!
- @>Change Save Access: Enable
- @>
-: When [Nevermind]
- @>
-: Branch End
-@>
-
-#------------------------------------------------------------------------------
-Event ID: 002
-Event Name: Boss Controller Event
-(X,Y): (000,001)
-
-Page #1
-Conditions
-None
-
-Autonomous Movement
-Type: Fixed
-Speed: 3: Slow
-Freq: 3: Low
-Options Enabled
-Move Animation
-Trigger: Parallel Process
-
-List of Event Commands:
-@>Conditional Branch: Variable [0130: Puppets Defeated] >= Variable [0129: Puppets To Defeat]
- @>Script: puppet = [:HAKUREI,:SARIEL,:KONNGARA,:YUMEMI,
- :       :                :AKEINE,:ADREISEN,:TYUKARI,:TTOYOHIME,
- :       :                :SYORIHIME,:JUNKO,:KOISHI]
- :       : rand_puppet = puppet.sample
- :       : pbSet(131, rand_puppet)
- :       : 
- :       : Pokemon.play_cry(pbGet(131))
- @>Script: pbSetSelfSwitch(3,"A",true)
- @>Comment: Sprite Change Here
- @>Show Animation: Player, [Exclaim bubble]
- @>Text: You can hear a loud cry from somewhere in the simulator...
- @>Control Self Switch: A =ON
- @>
-: Branch End
 @>
 
 Page #2
-Conditions
-Self Switch A is ON
-
-Autonomous Movement
-Type: Fixed
-Speed: 3: Slow
-Freq: 3: Low
-Options Enabled
-Move Animation
-Trigger: Action Button
-
-List of Event Commands:
-@>
-
-#------------------------------------------------------------------------------
-Event ID: 003
-Event Name: Boss Event
-(X,Y): (000,002)
-
-Page #1
 Conditions
 Self Switch A is ON
 
@@ -90879,6 +91774,562 @@ List of Event Commands:
 @>
 
 #------------------------------------------------------------------------------
+
+#==============================================================================
+Map ID: 128
+Map Name: Training Simulator (Moon)
+Tileset: 046: Dungeon (Moon)
+Width: 20, Height: 15
+Auto-Change BGM: W-042. Primate Spirit Garden
+
+#------------------------------------------------------------------------------
+Event ID: 001
+Event Name: Exit NPC
+(X,Y): (000,000)
+
+Page #1
+Conditions
+None
+
+Autonomous Movement
+Type: Fixed
+Speed: 3: Slow
+Freq: 3: Low
+Options Enabled
+Move Animation
+Trigger: Autorun
+
+List of Event Commands:
+@>Script: pbSet(1, $game_player.x)
+:       : pbSet(2, $game_player.y - 1)
+@>Set Event Location: [Exit NPC],Variable [0001][00002]
+@>Control Self Switch: A =ON
+@>
+
+Page #2
+Conditions
+Self Switch A is ON
+
+Graphic: TPDP_NPC 54
+
+Autonomous Movement
+Type: Fixed
+Speed: 3: Slow
+Freq: 3: Low
+Options Enabled
+Move Animation
+Trigger: Action Button
+
+List of Event Commands:
+@>Text: I can assist you with various tasks ma'am! What would you like?
+@>Show Choices: Healing, Puppet Storage, Leave Simulator, Nevermind
+(When Cancel: Choice 3)
+: When [Healing]
+ @>Recover All: Entire Party
+ @>Change Screen Color Tone: (-255,-255,-255,0), @6
+ @>Wait: 8 frame(s)
+ @>Play ME: 'Pkmn healing', 100, 100
+ @>Wait: 60 frame(s)
+ @>Change Screen Color Tone: (0,0,0,0), @6
+ @>Text: Alright, you should be good to continue your training!
+ @>
+: When [Puppet Storage]
+ @>Script: pbPokeCenterPC
+ @>
+: When [Leave Simulator]
+ @>Text: Are you sure you want to end your training now?
+ @>Show Choices: Yes, No
+ (When Cancel: Choice 2)
+ : When [Yes]
+  @>Play SE: 'Door exit', 80, 100
+  @>Change Screen Color Tone: (-255,-255,-255,0), @6
+  @>Wait: 8 frame(s)
+  @>Control Self Switch: A =OFF
+  @>Transfer Player:[092: Capital Puppet Center], (008,018), Right, No Fade
+  @>Change Screen Color Tone: (0,0,0,0), @6
+  @>Text: Did you have a good training session? Come back anytime!
+  @>Script: pbSetPokemonCenter
+  @>Change Save Access: Enable
+  @>
+ : When [No]
+  @>
+ : Branch End
+ @>
+: When [Nevermind]
+ @>
+: Branch End
+@>
+
+#------------------------------------------------------------------------------
+Event ID: 002
+Event Name: Boss Controller Event
+(X,Y): (000,001)
+
+Page #1
+Conditions
+None
+
+Autonomous Movement
+Type: Fixed
+Speed: 3: Slow
+Freq: 3: Low
+Options Enabled
+Move Animation
+Trigger: Parallel Process
+
+List of Event Commands:
+@>Conditional Branch: Variable [0130: Puppets Defeated] >= Variable [0129: Puppets To Defeat]
+ @>Script: puppet = [:HAKUREI,:SARIEL,:KONNGARA,:YUMEMI,
+ :       :                :AKEINE,:ADREISEN,:TYUKARI,:TTOYOHIME,
+ :       :                :SYORIHIME,:JUNKO,:KOISHI]
+ :       : rand_puppet = puppet.sample
+ :       : pbSet(131, rand_puppet)
+ :       : 
+ :       : Pokemon.play_cry(pbGet(131))
+ :       : echoln "Boss Puppet: \v[131]"
+ @>Script:     if pbGet(131) == :HAKUREI then pbSet(132,1)
+ :       :     elsif pbGet(131) == :SARIEL then pbSet(132,2)
+ :       :     elsif pbGet(131) == :KONNGARA then pbSet(132,3)
+ :       :     elsif pbGet(131) == :YUMEMI then pbSet(132,4)
+ :       :     elsif pbGet(131) == :AKEINE then pbSet(132,5)
+ :       :     elsif pbGet(131) == :ADREISEN then pbSet(132,6)
+ :       :     elsif pbGet(131) == :TYUKARI then pbSet(132,7)
+ :       :     elsif pbGet(131) == :TTOYOHIME then pbSet(132,8)
+ :       :     elsif pbGet(131) == :SYORIHIME then pbSet(132,9)
+ :       :     elsif pbGet(131) == :JUNKO then pbSet(132,10)
+ :       :     elsif pbGet(131) == :KOISHI then pbSet(132,11)
+ :       :     end
+ @>Show Animation: Player, [Exclaim bubble]
+ @>Text: You can hear a loud cry from somewhere in the simulator...
+ @>Control Self Switch: A =ON
+ @>
+: Branch End
+@>
+
+Page #2
+Conditions
+Self Switch A is ON
+
+Autonomous Movement
+Type: Fixed
+Speed: 3: Slow
+Freq: 3: Low
+Options Enabled
+Move Animation
+Trigger: Action Button
+
+List of Event Commands:
+@>
+
+#------------------------------------------------------------------------------
+Event ID: 003
+Event Name: Boss Event
+(X,Y): (000,002)
+
+Page #1
+Conditions
+None
+
+Autonomous Movement
+Type: Random
+Speed: 4: Fast
+Freq: 6: Highest
+Options Enabled
+Move Animation
+Trigger: Action Button
+
+List of Event Commands:
+@>
+
+Page #2
+Conditions
+Self Switch A is ON
+
+Graphic: TPDP_NPC 26
+
+Autonomous Movement
+Type: Approach
+Speed: 4: Fast
+Freq: 4: High
+Options Enabled
+Move Animation
+Trigger: Player Touch
+
+List of Event Commands:
+@>Script: Pokemon.play_cry(pbGet(131))
+@>Script: setBattleRule("canLose")
+:       : setBattleRule("cannotRun")
+:       : setBattleRule("noMoney")
+:       : setBattleRule("disablePokeBalls")
+@>Script: setBattleRule("editWildPokemon", {
+:       :   :hp_level => 2,
+:       :   :immunities => [:OHKO, :SELFKO, :ESCAPE],
+:       :   :iv => 31
+:       : })
+:       : setBattleRule("battleIntroText", "You were attacked by the aggressive {1}!")
+:       : setBattleRule("setSlideSprite", "still")
+:       : setBattleRule("battleBGM", "B-041. Battle! Vs. Boss Puppet.ogg")
+:       : setBattleRule("outcome", 1)
+@>Wait: 20 frame(s)
+@>Control Variables: [0097: EXP Multiplier] = 3
+@>Script: WildBattle.start(pbGet(131), 35)
+@>Wait: 3 frame(s)
+@>Script: Pokemon.play_cry(pbGet(131))
+@>Wait: 20 frame(s)
+@>Change Screen Color Tone: (-255,-255,-255,0), @8
+@>Play SE: 'Battle flee', 80, 100
+@>Wait: 8 frame(s)
+@>Set Move Route: [Boss Event]
+ :              : $>Graphic: (None)
+@>Change Screen Color Tone: (0,0,0,0), @8
+@>Text: The aggressive Puppet ran off...
+@>Conditional Branch: Variable [0001: Temp Pokemon Choice] == 1
+ @>Wait: 4 frame(s)
+ @>Show Animation: Player, [Exclaim bubble]
+ @>Text: ...But, it looks like it left behind some items!
+ @>Script: item = [:STARDUST,:STARDUST,:STARDUST,:STARDUST,:STARDUST,:STARDUST,:STARPIECE,:STARPIECE,:STARPIECE,:COMETSHARD]
+ :       : rand_drop = item.sample
+ :       : plural = GameData::Item.get(rand_drop).name_plural
+ :       : pbSet(4, rand_drop)
+ :       : pbSet(5, plural)
+ @>Script: if rand_drop == :STARDUST
+ :       :   pbReceiveItem(pbGet(4),5)
+ :       : elsif rand_drop == :STARDUST
+ :       :   pbReceiveItem(pbGet(4),3)
+ :       : else
+ :       :   pbReceiveItem(pbGet(4))
+ :       : end
+ @>
+: Branch End
+@>Control Variables: [0097: EXP Multiplier] = 2
+@>Control Self Switch: A =OFF
+@>Control Variables: [0001..0005] = 0
+@>Control Variables: [0129..0131] = 0
+@>Script: pbSetSelfSwitch(2,"A",false)
+:       : pbSet(129, rand(20..35)) 
+:       : p pbGet(129) if $DEBUG
+@>
+
+Page #3
+Conditions
+Variable 0132: Puppet ID Sprite is 1 or above
+
+Graphic: Puppet_Hakurei
+
+Autonomous Movement
+Type: Random
+Speed: 4: Fast
+Freq: 4: High
+Options Enabled
+Move Animation
+Trigger: Event Touch
+
+List of Event Commands:
+@>Comment: when :HAKUREI then $game_variable[132] = 1
+ :       : when :SARIEL then $game_variable[132] = 2
+ :       : when :KONNGARA then $game_variable[132] = 3
+ :       : when :YUMEMI then $game_variable[132] = 4
+ :       : when :AKEINE then $game_variable[132] = 5
+@>Comment: when :ADREISEN then $game_variable[132] = 6
+ :       : when :TYUKARI then $game_variable[132] = 7
+ :       : when :TTOYOHIME then $game_variable[132] = 8
+ :       : when :SYORIHIME then $game_variable[132] = 9
+ :       : when :JUNKO then $game_variable[132] = 10
+ :       : when :KOISHI then $game_variable[132] = 11
+@>Call Common Event: Simulator Puppet
+@>
+
+Page #4
+Conditions
+Variable 0132: Puppet ID Sprite is 2 or above
+
+Graphic: Puppet_Sariel
+
+Autonomous Movement
+Type: Approach
+Speed: 4: Fast
+Freq: 4: High
+Options Enabled
+Move Animation
+Trigger: Event Touch
+
+List of Event Commands:
+@>Comment: when :HAKUREI then $game_variable[132] = 1
+ :       : when :SARIEL then $game_variable[132] = 2
+ :       : when :KONNGARA then $game_variable[132] = 3
+ :       : when :YUMEMI then $game_variable[132] = 4
+ :       : when :AKEINE then $game_variable[132] = 5
+@>Comment: when :ADREISEN then $game_variable[132] = 6
+ :       : when :TYUKARI then $game_variable[132] = 7
+ :       : when :TTOYOHIME then $game_variable[132] = 8
+ :       : when :SYORIHIME then $game_variable[132] = 9
+ :       : when :JUNKO then $game_variable[132] = 10
+ :       : when :KOISHI then $game_variable[132] = 11
+@>Call Common Event: Simulator Puppet
+@>
+
+Page #5
+Conditions
+Variable 0132: Puppet ID Sprite is 3 or above
+
+Graphic: Puppet_Konngara
+
+Autonomous Movement
+Type: Approach
+Speed: 4: Fast
+Freq: 4: High
+Options Enabled
+Move Animation
+Trigger: Event Touch
+
+List of Event Commands:
+@>Comment: when :HAKUREI then $game_variable[132] = 1
+ :       : when :SARIEL then $game_variable[132] = 2
+ :       : when :KONNGARA then $game_variable[132] = 3
+ :       : when :YUMEMI then $game_variable[132] = 4
+ :       : when :AKEINE then $game_variable[132] = 5
+@>Comment: when :ADREISEN then $game_variable[132] = 6
+ :       : when :TYUKARI then $game_variable[132] = 7
+ :       : when :TTOYOHIME then $game_variable[132] = 8
+ :       : when :SYORIHIME then $game_variable[132] = 9
+ :       : when :JUNKO then $game_variable[132] = 10
+ :       : when :KOISHI then $game_variable[132] = 11
+@>Call Common Event: Simulator Puppet
+@>
+
+Page #6
+Conditions
+Variable 0132: Puppet ID Sprite is 4 or above
+
+Graphic: Puppet_Yumemi
+
+Autonomous Movement
+Type: Approach
+Speed: 4: Fast
+Freq: 4: High
+Options Enabled
+Move Animation
+Trigger: Event Touch
+
+List of Event Commands:
+@>Comment: when :HAKUREI then $game_variable[132] = 1
+ :       : when :SARIEL then $game_variable[132] = 2
+ :       : when :KONNGARA then $game_variable[132] = 3
+ :       : when :YUMEMI then $game_variable[132] = 4
+ :       : when :AKEINE then $game_variable[132] = 5
+@>Comment: when :ADREISEN then $game_variable[132] = 6
+ :       : when :TYUKARI then $game_variable[132] = 7
+ :       : when :TTOYOHIME then $game_variable[132] = 8
+ :       : when :SYORIHIME then $game_variable[132] = 9
+ :       : when :JUNKO then $game_variable[132] = 10
+ :       : when :KOISHI then $game_variable[132] = 11
+@>Call Common Event: Simulator Puppet
+@>
+
+Page #7
+Conditions
+Variable 0132: Puppet ID Sprite is 5 or above
+
+Graphic: Puppet_KeineH
+
+Autonomous Movement
+Type: Approach
+Speed: 4: Fast
+Freq: 4: High
+Options Enabled
+Move Animation
+Trigger: Event Touch
+
+List of Event Commands:
+@>Comment: when :HAKUREI then $game_variable[132] = 1
+ :       : when :SARIEL then $game_variable[132] = 2
+ :       : when :KONNGARA then $game_variable[132] = 3
+ :       : when :YUMEMI then $game_variable[132] = 4
+ :       : when :AKEINE then $game_variable[132] = 5
+@>Comment: when :ADREISEN then $game_variable[132] = 6
+ :       : when :TYUKARI then $game_variable[132] = 7
+ :       : when :TTOYOHIME then $game_variable[132] = 8
+ :       : when :SYORIHIME then $game_variable[132] = 9
+ :       : when :JUNKO then $game_variable[132] = 10
+ :       : when :KOISHI then $game_variable[132] = 11
+@>Call Common Event: Simulator Puppet
+@>
+
+Page #8
+Conditions
+Variable 0132: Puppet ID Sprite is 6 or above
+
+Graphic: Puppet_Reisen
+
+Autonomous Movement
+Type: Approach
+Speed: 4: Fast
+Freq: 4: High
+Options Enabled
+Move Animation
+Trigger: Event Touch
+
+List of Event Commands:
+@>Comment: when :HAKUREI then $game_variable[132] = 1
+ :       : when :SARIEL then $game_variable[132] = 2
+ :       : when :KONNGARA then $game_variable[132] = 3
+ :       : when :YUMEMI then $game_variable[132] = 4
+ :       : when :AKEINE then $game_variable[132] = 5
+@>Comment: when :ADREISEN then $game_variable[132] = 6
+ :       : when :TYUKARI then $game_variable[132] = 7
+ :       : when :TTOYOHIME then $game_variable[132] = 8
+ :       : when :SYORIHIME then $game_variable[132] = 9
+ :       : when :JUNKO then $game_variable[132] = 10
+ :       : when :KOISHI then $game_variable[132] = 11
+@>Call Common Event: Simulator Puppet
+@>
+
+Page #9
+Conditions
+Variable 0132: Puppet ID Sprite is 7 or above
+
+Graphic: Puppet_Yukari
+
+Autonomous Movement
+Type: Approach
+Speed: 4: Fast
+Freq: 4: High
+Options Enabled
+Move Animation
+Trigger: Event Touch
+
+List of Event Commands:
+@>Comment: when :HAKUREI then $game_variable[132] = 1
+ :       : when :SARIEL then $game_variable[132] = 2
+ :       : when :KONNGARA then $game_variable[132] = 3
+ :       : when :YUMEMI then $game_variable[132] = 4
+ :       : when :AKEINE then $game_variable[132] = 5
+@>Comment: when :ADREISEN then $game_variable[132] = 6
+ :       : when :TYUKARI then $game_variable[132] = 7
+ :       : when :TTOYOHIME then $game_variable[132] = 8
+ :       : when :SYORIHIME then $game_variable[132] = 9
+ :       : when :JUNKO then $game_variable[132] = 10
+ :       : when :KOISHI then $game_variable[132] = 11
+@>Call Common Event: Simulator Puppet
+@>
+
+Page #10
+Conditions
+Variable 0132: Puppet ID Sprite is 8 or above
+
+Graphic: Puppet_Toyohime
+
+Autonomous Movement
+Type: Approach
+Speed: 4: Fast
+Freq: 4: High
+Options Enabled
+Move Animation
+Trigger: Event Touch
+
+List of Event Commands:
+@>Comment: when :HAKUREI then $game_variable[132] = 1
+ :       : when :SARIEL then $game_variable[132] = 2
+ :       : when :KONNGARA then $game_variable[132] = 3
+ :       : when :YUMEMI then $game_variable[132] = 4
+ :       : when :AKEINE then $game_variable[132] = 5
+@>Comment: when :ADREISEN then $game_variable[132] = 6
+ :       : when :TYUKARI then $game_variable[132] = 7
+ :       : when :TTOYOHIME then $game_variable[132] = 8
+ :       : when :SYORIHIME then $game_variable[132] = 9
+ :       : when :JUNKO then $game_variable[132] = 10
+ :       : when :KOISHI then $game_variable[132] = 11
+@>Call Common Event: Simulator Puppet
+@>
+
+Page #11
+Conditions
+Variable 0132: Puppet ID Sprite is 9 or above
+
+Graphic: Puppet_Yorihime
+
+Autonomous Movement
+Type: Approach
+Speed: 4: Fast
+Freq: 4: High
+Options Enabled
+Move Animation
+Trigger: Event Touch
+
+List of Event Commands:
+@>Comment: when :HAKUREI then $game_variable[132] = 1
+ :       : when :SARIEL then $game_variable[132] = 2
+ :       : when :KONNGARA then $game_variable[132] = 3
+ :       : when :YUMEMI then $game_variable[132] = 4
+ :       : when :AKEINE then $game_variable[132] = 5
+@>Comment: when :ADREISEN then $game_variable[132] = 6
+ :       : when :TYUKARI then $game_variable[132] = 7
+ :       : when :TTOYOHIME then $game_variable[132] = 8
+ :       : when :SYORIHIME then $game_variable[132] = 9
+ :       : when :JUNKO then $game_variable[132] = 10
+ :       : when :KOISHI then $game_variable[132] = 11
+@>Call Common Event: Simulator Puppet
+@>
+
+Page #12
+Conditions
+Variable 0132: Puppet ID Sprite is 10 or above
+
+Graphic: Puppet_Junko
+
+Autonomous Movement
+Type: Approach
+Speed: 4: Fast
+Freq: 4: High
+Options Enabled
+Move Animation
+Trigger: Event Touch
+
+List of Event Commands:
+@>Comment: when :HAKUREI then $game_variable[132] = 1
+ :       : when :SARIEL then $game_variable[132] = 2
+ :       : when :KONNGARA then $game_variable[132] = 3
+ :       : when :YUMEMI then $game_variable[132] = 4
+ :       : when :AKEINE then $game_variable[132] = 5
+@>Comment: when :ADREISEN then $game_variable[132] = 6
+ :       : when :TYUKARI then $game_variable[132] = 7
+ :       : when :TTOYOHIME then $game_variable[132] = 8
+ :       : when :SYORIHIME then $game_variable[132] = 9
+ :       : when :JUNKO then $game_variable[132] = 10
+ :       : when :KOISHI then $game_variable[132] = 11
+@>Call Common Event: Simulator Puppet
+@>
+
+Page #13
+Conditions
+Variable 0132: Puppet ID Sprite is 11 or above
+
+Graphic: Puppet_Koishi
+
+Autonomous Movement
+Type: Approach
+Speed: 4: Fast
+Freq: 4: High
+Options Enabled
+Move Animation
+Trigger: Event Touch
+
+List of Event Commands:
+@>Comment: when :HAKUREI then $game_variable[132] = 1
+ :       : when :SARIEL then $game_variable[132] = 2
+ :       : when :KONNGARA then $game_variable[132] = 3
+ :       : when :YUMEMI then $game_variable[132] = 4
+ :       : when :AKEINE then $game_variable[132] = 5
+@>Comment: when :ADREISEN then $game_variable[132] = 6
+ :       : when :TYUKARI then $game_variable[132] = 7
+ :       : when :TTOYOHIME then $game_variable[132] = 8
+ :       : when :SYORIHIME then $game_variable[132] = 9
+ :       : when :JUNKO then $game_variable[132] = 10
+ :       : when :KOISHI then $game_variable[132] = 11
+@>Call Common Event: Simulator Puppet
+@>
+
+#------------------------------------------------------------------------------
 Event ID: 004
 Event Name: EV004
 (X,Y): (019,000)
@@ -90898,26 +92349,106 @@ Trigger: Action Button
 List of Event Commands:
 @>Script: case $game_variable[131]
 :       : when :HAKUREI
-:       : 
 :       : when :SARIEL
-:       : 
 :       : when :KONNGARA
-:       : 
 :       : when :YUMEMI
-:       : 
 :       : when :AKEINE
-@>Script: when :ADREISEN
-:       : 
+:       : when :ADREISEN
 :       : when :TYUKARI
-:       : 
 :       : when :TTOYOHIME
-:       : 
 :       : when :SYORIHIME
-:       : 
 :       : when :JUNKO
 @>Script: when :KOISHI
-:       : 
 :       : end
+@>
+
+#------------------------------------------------------------------------------
+Event ID: 005
+Event Name: Boss Event (Old)
+(X,Y): (019,014)
+
+Page #1
+Conditions
+None
+
+Autonomous Movement
+Type: Random
+Speed: 4: Fast
+Freq: 6: Highest
+Options Enabled
+Move Animation
+Trigger: Action Button
+
+List of Event Commands:
+@>
+
+Page #2
+Conditions
+Self Switch A is ON
+
+Graphic: TPDP_NPC 26
+
+Autonomous Movement
+Type: Approach
+Speed: 4: Fast
+Freq: 4: High
+Options Enabled
+Move Animation
+Trigger: Player Touch
+
+List of Event Commands:
+@>Script: Pokemon.play_cry(pbGet(131))
+@>Script: setBattleRule("canLose")
+:       : setBattleRule("cannotRun")
+:       : setBattleRule("noMoney")
+:       : setBattleRule("disablePokeBalls")
+@>Script: setBattleRule("editWildPokemon", {
+:       :   :hp_level => 2,
+:       :   :immunities => [:OHKO, :SELFKO, :ESCAPE],
+:       :   :iv => 31
+:       : })
+:       : setBattleRule("battleIntroText", "You were attacked by the aggressive {1}!")
+:       : setBattleRule("setSlideSprite", "still")
+:       : setBattleRule("battleBGM", "B-041. Battle! Vs. Boss Puppet.ogg")
+:       : setBattleRule("outcome", 1)
+@>Wait: 20 frame(s)
+@>Control Variables: [0097: EXP Multiplier] = 3
+@>Script: WildBattle.start(pbGet(131), 35)
+@>Wait: 3 frame(s)
+@>Script: Pokemon.play_cry(pbGet(131))
+@>Wait: 20 frame(s)
+@>Change Screen Color Tone: (-255,-255,-255,0), @8
+@>Play SE: 'Battle flee', 80, 100
+@>Wait: 8 frame(s)
+@>Set Move Route: [Boss Event]
+ :              : $>Graphic: (None)
+@>Change Screen Color Tone: (0,0,0,0), @8
+@>Text: The aggressive Puppet ran off...
+@>Conditional Branch: Variable [0001: Temp Pokemon Choice] == 1
+ @>Wait: 4 frame(s)
+ @>Show Animation: Player, [Exclaim bubble]
+ @>Text: ...But, it looks like it left behind some items!
+ @>Script: item = [:STARDUST,:STARDUST,:STARDUST,:STARDUST,:STARDUST,:STARDUST,:STARPIECE,:STARPIECE,:STARPIECE,:COMETSHARD]
+ :       : rand_drop = item.sample
+ :       : plural = GameData::Item.get(rand_drop).name_plural
+ :       : pbSet(4, rand_drop)
+ :       : pbSet(5, plural)
+ @>Script: if rand_drop == :STARDUST
+ :       :   pbReceiveItem(pbGet(4),5)
+ :       : elsif rand_drop == :STARDUST
+ :       :   pbReceiveItem(pbGet(4),3)
+ :       : else
+ :       :   pbReceiveItem(pbGet(4))
+ :       : end
+ @>
+: Branch End
+@>Control Variables: [0097: EXP Multiplier] = 2
+@>Control Self Switch: A =OFF
+@>Control Variables: [0001..0005] = 0
+@>Control Variables: [0129..0131] = 0
+@>Script: pbSetSelfSwitch(2,"A",false)
+:       : pbSet(129, rand(20..35)) 
+:       : p pbGet(129) if $DEBUG
 @>
 
 #------------------------------------------------------------------------------
@@ -95189,11 +96720,63 @@ List of Event Commands:
 
 #==============================================================================
 Common Event ID: 073
-Common Event Name: Reserved:TKoL3
+Common Event Name: Simulator Puppet
 
 Trigger: None
 
 List of Event Commands:
+@>Script: Pokemon.play_cry(pbGet(131))
+@>Script: setBattleRule("canLose")
+:       : setBattleRule("cannotRun")
+:       : setBattleRule("noMoney")
+:       : setBattleRule("disablePokeBalls")
+@>Script: setBattleRule("editWildPokemon", {
+:       :   :hp_level => 2,
+:       :   :immunities => [:OHKO, :SELFKO, :ESCAPE],
+:       :   :iv => 31
+:       : })
+:       : setBattleRule("battleIntroText", "You were attacked by the aggressive {1}!")
+:       : setBattleRule("setSlideSprite", "still")
+:       : setBattleRule("battleBGM", "B-041. Battle! Vs. Boss Puppet.ogg")
+:       : setBattleRule("outcome", 1)
+@>Wait: 20 frame(s)
+@>Control Variables: [0097: EXP Multiplier] = 3
+@>Script: WildBattle.start(pbGet(131), 35)
+@>Wait: 3 frame(s)
+@>Script: Pokemon.play_cry(pbGet(131))
+@>Wait: 20 frame(s)
+@>Change Screen Color Tone: (-255,-255,-255,0), @8
+@>Play SE: 'Battle flee', 80, 100
+@>Wait: 8 frame(s)
+@>Set Move Route: []
+ :              : $>Graphic: (None)
+@>Change Screen Color Tone: (0,0,0,0), @8
+@>Text: The aggressive Puppet ran off...
+@>Conditional Branch: Variable [0001: Temp Pokemon Choice] == 1
+ @>Wait: 4 frame(s)
+ @>Show Animation: Player, [Exclaim bubble]
+ @>Text: ...But, it looks like it left behind some items!
+ @>Script: item = [:STARDUST,:STARDUST,:STARDUST,:STARDUST,:STARDUST,:STARDUST,:STARPIECE,:STARPIECE,:STARPIECE,:COMETSHARD]
+ :       : rand_drop = item.sample
+ :       : plural = GameData::Item.get(rand_drop).name_plural
+ :       : pbSet(4, rand_drop)
+ :       : pbSet(5, plural)
+ @>Script: if rand_drop == :STARDUST
+ :       :   pbReceiveItem(pbGet(4),5)
+ :       : elsif rand_drop == :STARDUST
+ :       :   pbReceiveItem(pbGet(4),3)
+ :       : else
+ :       :   pbReceiveItem(pbGet(4))
+ :       : end
+ @>
+: Branch End
+@>Control Variables: [0097: EXP Multiplier] = 2
+@>Control Self Switch: A =OFF
+@>Control Variables: [0001..0005] = 0
+@>Control Variables: [0129..0131] = 0
+@>Script: pbSetSelfSwitch(2,"A",false)
+:       : pbSet(129, rand(20..35)) 
+:       : echoln "Puppets to beat: \v[129]"
 @>
 
 #==============================================================================

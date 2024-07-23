@@ -556,7 +556,7 @@ class PokemonMartScreen
       @scene.pbShowMoney
       if qty > 1
         qty = @scene.pbChooseNumber(
-          _INTL(@getSpeech[:SellItemAmount]&.sample || "How many {1} would you like to sell?", itemnameplural), item, qty, @discount
+          _INTL(@getSpeech[:SellItemAmount]&.sample || "How many {1} would you like to sell?", itemnameplural), item, qty
         )
       end
       if qty == 0
