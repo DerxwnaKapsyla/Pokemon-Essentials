@@ -7163,3 +7163,24 @@ Backtrace:
 003_Interpreter.rb:140:in `eval'
 003_Interpreter.rb:140:in `execute_script'
 004_Interpreter_Commands.rb:1177:in `command_355'
+
+=================
+
+[2024-07-23 20:44:54 -0700]
+[Pokémon Essentials version 21.1]
+[v21.1 Hotfixes 1.0.9]
+
+Exception: TypeError
+Message: nil can't be coerced into Integer
+
+Backtrace:
+007_BattleAnimationPlayer.rb:509:in `-'
+007_BattleAnimationPlayer.rb:509:in `block in playTiming'
+007_BattleAnimationPlayer.rb:475:in `each'
+007_BattleAnimationPlayer.rb:475:in `playTiming'
+007_BattleAnimationPlayer.rb:842:in `update'
+004_Scene_PlayAnimations.rb:548:in `block in pbAnimationCore'
+004_Scene_PlayAnimations.rb:547:in `loop'
+004_Scene_PlayAnimations.rb:547:in `pbAnimationCore'
+004_Scene_PlayAnimations.rb:501:in `block in pbAnimation'
+004_Scene_PlayAnimations.rb:399:in `pbSaveShadows'

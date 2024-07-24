@@ -443,7 +443,8 @@
   #-----------------------------------------------------------------------------  
   # Scene: Vs. Clownpiece & Hell Fairies
   #		* Hell Fairies have boosted stats. +1 Atk, Sp.Atk, Spd
-  #		* Player's Puppets have a 15% chance to become confused at end of turn
+  #     * Hell Fairies have decreased stats. -1 Def, Sp.Def, Eva
+  #		* Player's Puppets have a 5% chance to become confused at end of turn
   #		* Hell Fairies cycle in after being defeated. After three cycles,
   #		  Player stops gaining EXP for defeating them.
   #		* When Clownpiece is defeated, the partner fairy retreats.
@@ -456,18 +457,24 @@
     p1            = battle.battlers[0]
 	p2            = battle.battlers[2]
 	atk_stats     = [:ATTACK, :SPECIAL_ATTACK, :SPEED]
-	fairy_counter = $game_variables[127] # Hell Fairy Counter variable
-	hf_faint      = $game_variables[128] # Hell Fairy Faint Counter
-	cl_faint      = $game_variables[129] # Clownpiece Faint Counter
+	def_stats     = [:DEFENSE, :SPECIAL_DEFENSE, :EVASION]
+	fairy_counter = $game_variables[133] # Hell Fairy Counter variable
+	hf_faint      = $game_variables[134] # Hell Fairy Faint Counter
+	cl_faint      = $game_variables[135] # Clownpiece Faint Counter
 	showAnim = true
 	case trigger
 	#----------------------------------------------------------------------------- 
 	# On Send Out: Both Clownpiece and Hell Fairies gain +1 to Attacking stats
+	#              and a -1 to all Defensive stats
 	#----------------------------------------------------------------------------- 
 	when "AfterSendOut_foe1"
 	  battle.pbDisplayPaused(_INTL("Clownpiece's Puppet started glowing with immense strength!"))
 	  atk_stats.each do |stat|
 	    clownpiece.pbRaiseStatStage(stat, 1, clownpiece, showAnim)
+		showAnim = false
+	  end
+	  def_stats.each do |stat|
+	    clownpiece.pbLowerStatStage(stat, 1, clownpiece, showAnim)
 		showAnim = false
 	  end
 	
@@ -477,22 +484,26 @@
 	    hellfairy.pbRaiseStatStage(stat, 1, hellfairy, showAnim)
 		showAnim = false
 	  end
+	  def_stats.each do |stat|
+	    hellfairy.pbLowerStatStage(stat, 1, clownpiece, showAnim)
+		showAnim = false
+	  end
 	#----------------------------------------------------------------------------- 
-	# On Turn End: 15% chance to confuse Player's active Puppets
+	# On Turn End: 5% chance to confuse Player's active Puppets
 	#----------------------------------------------------------------------------- 
 	when "RoundEnd_player"
-	  if rand(100) <= 15
-	    if p1.pbCanConfuse?(p1, false)
-	      battle.pbDisplayPaused(_INTL("{1} was drawn in by Clownpiece's torchlight, and started flailing wildly!",p1.pbThis))
-          p1.pbConfuse
-	    end
-      end	
-	  if rand(100) <= 15
-	    if p2.pbCanConfuse?(p2, false)
-	      battle.pbDisplayPaused(_INTL("{1} was drawn in by Clownpiece's torchlight, and started flailing wildly!",p2.pbThis))
-          p2.pbConfuse
-	    end
-      end	
+	 if rand(100) <= 5
+	   if p1.pbCanConfuse?(p1, false)
+	     battle.pbDisplayPaused(_INTL("{1} was drawn in by Clownpiece's torchlight, and started flailing wildly!",p1.pbThis))
+         p1.pbConfuse
+	   end
+     end	
+	 if rand(100) <= 5
+	   if p2.pbCanConfuse?(p2, false)
+	     battle.pbDisplayPaused(_INTL("{1} was drawn in by Clownpiece's torchlight, and started flailing wildly!",p2.pbThis))
+         p2.pbConfuse
+	   end
+     end	
 	#----------------------------------------------------------------------------- 
 	# Reinforcements: After a Hell Fairy is defeated, another one takes its place.
 	#                 This cycles infinitely. After three cycles of Hell Fairies 
@@ -501,16 +512,16 @@
 	#                 battle.
 	#----------------------------------------------------------------------------- 
     when "BattlerFainted_foe2"
-      $game_variables[128] += 1
-      if $game_variables[128] == 2
-        $game_variables[127] += 1
+      $game_variables[134] += 1
+      if $game_variables[134] == 2
+        $game_variables[133] += 1
         scene.pbStartSpeech(3)
         battle.pbDisplayPaused(_INTL("Oh no, I need to retreat!"))
         pbSEPlay("Battle flee")
         scene.pbForceEndSpeech
-        case ($game_variables[127] % 3)
+        case ($game_variables[133] % 3)
         when 1 
-          if $game_variables[127] == 1
+          if $game_variables[133] == 1
             scene.pbStartSpeech(0)
             battle.pbDisplayPaused(_INTL("Alright, that means all that's left is Clownpiece!"))
             scene.pbShowSpeakerWindows("???", 1)
@@ -520,13 +531,13 @@
             scene.pbStartSpeech(0)
             battle.pbDisplayPaused(_INTL("Another one, huh? Alright! Bring 'em on!"))
             scene.pbForceEndSpeech
-            $game_variables[128] = 0
+            $game_variables[134] = 0
           else
             battle.pbAddNewTrainer(:HELLFAIRY, "Astera", $game_variables[99])
-            $game_variables[128] = 0		  
+            $game_variables[134] = 0		  
           end
         when 2
-          if $game_variables[127] == 2
+          if $game_variables[133] == 2
             scene.pbStartSpeech(0)
             scene.pbShowSpeakerWindows("???", 1)
             battle.pbDisplayPaused(_INTL("Oh! Me next, me next~!"))
@@ -535,13 +546,13 @@
             scene.pbStartSpeech(0)
             battle.pbDisplayPaused(_INTL("Okay, I can take one more, no problem!"))
             scene.pbForceEndSpeech
-            $game_variables[128] = 0
+            $game_variables[134] = 0
           else
             battle.pbAddNewTrainer(:HELLFAIRY, "Olivia", $game_variables[99])
-            $game_variables[128] = 0	
+            $game_variables[134] = 0	
           end
         when 0
-          if $game_variables[127] == 3
+          if $game_variables[133] == 3
             scene.pbStartSpeech(0)
             battle.pbDisplayPaused(_INTL("Surely that should be all of them, now I can focus on Clownpiece!"))
             scene.pbShowSpeakerWindows("???", 1)
@@ -558,16 +569,16 @@
             scene.pbShowSpeakerWindows(scene.pbGetSpeaker)
             battle.pbDisplayPaused(_INTL("Ghhk- How is that even fair!"))
             scene.pbForceEndSpeech
-            $game_variables[128] = 0
-          elsif $game_variables[127] == 6	  
+            $game_variables[134] = 0
+          elsif $game_variables[133] == 6	  
             battle.pbAddNewTrainer(:HELLFAIRY, "Lucia", $game_variables[99])
             scene.pbStartSpeech(1)
             #scene.pbShowSpeaker(:CLOWNPIECET)
             #scene.pbShowSpeakerWindows("Clownpiece", 1)
             battle.pbDisplayPaused(_INTL("What did I tell you! They won't stop coming. They won't stop coming, gyahahaha!"))
             scene.pbForceEndSpeech
-            $game_variables[128] = 0
-          elsif $game_variables[127] == 9
+            $game_variables[134] = 0
+          elsif $game_variables[133] == 9
             battle.pbAddNewTrainer(:HELLFAIRY, "Lucia", $game_variables[99])
             scene.pbStartSpeech(1)
             #scene.pbShowSpeaker(:CLOWNPIECET)
@@ -576,10 +587,10 @@
             scene.pbForceEndSpeech
             battle.expGain = false
             battle.pbDisplayPaused(_INTL("Clownpiece waved her torch around in front of your Puppets! It looks like they won't gain any further experience this battle!"))
-            $game_variables[128] = 0
+            $game_variables[134] = 0
           else
             battle.pbAddNewTrainer(:HELLFAIRY, "Lucia", $game_variables[99])
-            $game_variables[128] = 0
+            $game_variables[134] = 0
           end
         end
       end
@@ -589,11 +600,11 @@
 	#                    retreat from battle.
 	#----------------------------------------------------------------------------- 
 	when "BattlerFainted_foe1"
-	  $game_variables[129] += 1
+	  $game_variables[135] += 1
 	  if $DEBUG
-	    p $game_variables[129]
+	    p $game_variables[135]
 	  end
-	  if $game_variables[129] == 4
+	  if $game_variables[135] == 4
 	    battle.pbDisplayPaused(_INTL("The madness-enhancements that were powering all of the Hell Fairy's puppets subsided!"))
 	    scene.pbStartSpeech(3)
 	    battle.pbDisplayPaused(_INTL("C-Clownpiece fell! Oh no!! Everyone retreat!"))
