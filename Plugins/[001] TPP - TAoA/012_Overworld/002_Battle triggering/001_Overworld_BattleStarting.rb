@@ -8,7 +8,7 @@ class << self
 	case outcome
 	when 1
       $game_variables[130] += 1 if $game_map&.metadata&.has_flag?("VRTraining")
-      echoln "Puppets Defeated/Total: \v[130]/\v[129]" if $DEBUG && $game_map&.metadata&.has_flag?("VRTraining")
+      echoln "Puppets Defeated/Total: #{pbGet(130)}/#{pbGet(129)}" if $DEBUG && $game_map&.metadata&.has_flag?("VRTraining")
 	end
   end
 end

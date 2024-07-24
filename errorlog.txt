@@ -7046,3 +7046,120 @@ p pbGet(131) if $DEBUG
     end
 when :KOISHI then $game_variable[132] = 11
 end
+
+=================
+
+[2024-07-23 17:29:47 -0700]
+[Pokémon Essentials version 21.1]
+[v21.1 Hotfixes 1.0.9]
+
+Script error in event 3 (coords 41,50), map 93 (Training Simulator (Forest))
+Exception: ArgumentError
+Message: Invalid argument passed to method.
+Expected 0 to be one of [Symbol, GameData::Species, String], but got Integer.
+
+***Full script:
+Pokemon.play_cry(pbGet(131))
+setBattleRule("canLose")
+setBattleRule("cannotRun")
+setBattleRule("noMoney")
+setBattleRule("disablePokeBalls")
+setBattleRule("editWildPokemon", {
+  :hp_level => 2,
+  :immunities => [:OHKO, :SELFKO, :ESCAPE],
+  :iv => 31
+})
+setBattleRule("battleIntroText", "You were attacked by the aggressive {1}!")
+setBattleRule("setSlideSprite", "still")
+setBattleRule("battleBGM", "B-041. Battle! Vs. Boss Puppet.ogg")
+setBattleRule("outcome", 1)
+
+Backtrace:
+004_Validation.rb:29:in `validate'
+008_Species.rb:156:in `get_species_form'
+009_Species_Files.rb:184:in `check_cry_file'
+009_Species_Files.rb:195:in `cry_filename'
+009_Species_Files.rb:203:in `play_cry_from_species'
+001_Pokemon.rb:100:in `play_cry'
+(eval):1:in `execute_script'
+003_Interpreter.rb:140:in `eval'
+003_Interpreter.rb:140:in `execute_script'
+004_Interpreter_Commands.rb:1177:in `command_355'
+
+=================
+
+[2024-07-23 17:46:23 -0700]
+[Pokémon Essentials version 21.1]
+[v21.1 Hotfixes 1.0.9]
+
+Script error in event 3 (coords 59,21), map 93 (Training Simulator (Forest))
+Exception: ArgumentError
+Message: Invalid argument passed to method.
+Expected 0 to be one of [Symbol, GameData::Species, String], but got Integer.
+
+***Full script:
+Pokemon.play_cry(pbGet(131))
+setBattleRule("canLose")
+setBattleRule("cannotRun")
+setBattleRule("noMoney")
+setBattleRule("disablePokeBalls")
+setBattleRule("editWildPokemon", {
+  :hp_level => 2,
+  :immunities => [:OHKO, :SELFKO, :ESCAPE],
+  :iv => 31
+})
+setBattleRule("battleIntroText", "You were attacked by the aggressive {1}!")
+setBattleRule("setSlideSprite", "still")
+setBattleRule("battleBGM", "B-041. Battle! Vs. Boss Puppet.ogg")
+setBattleRule("outcome", 1)
+
+Backtrace:
+004_Validation.rb:29:in `validate'
+008_Species.rb:156:in `get_species_form'
+009_Species_Files.rb:184:in `check_cry_file'
+009_Species_Files.rb:195:in `cry_filename'
+009_Species_Files.rb:203:in `play_cry_from_species'
+001_Pokemon.rb:100:in `play_cry'
+(eval):1:in `execute_script'
+003_Interpreter.rb:140:in `eval'
+003_Interpreter.rb:140:in `execute_script'
+004_Interpreter_Commands.rb:1177:in `command_355'
+
+=================
+
+[2024-07-23 17:50:51 -0700]
+[Pokémon Essentials version 21.1]
+[v21.1 Hotfixes 1.0.9]
+
+Script error in event 3 (coords 56,51), map 93 (Training Simulator (Forest))
+Exception: ArgumentError
+Message: Invalid argument passed to method.
+Expected 0 to be one of [Symbol, GameData::Species, String], but got Integer.
+
+***Full script:
+Pokemon.play_cry(pbGet(131))
+setBattleRule("canLose")
+setBattleRule("cannotRun")
+setBattleRule("noMoney")
+setBattleRule("disablePokeBalls")
+setBattleRule("editWildPokemon", {
+  :hp_level => 2,
+  :immunities => [:OHKO, :SELFKO, :ESCAPE],
+  :iv => 31
+})
+setBattleRule("battleIntroText", "You were attacked by the aggressive {1}!")
+setBattleRule("setSlideSprite", "still")
+setBattleRule("battleBGM", "B-041. Battle! Vs. Boss Puppet.ogg")
+setBattleRule("outcome", 1)
+
+Backtrace:
+004_Validation.rb:29:in `validate'
+008_Species.rb:156:in `get_species_form'
+009_Species_Files.rb:184:in `check_cry_file'
+009_Species_Files.rb:195:in `cry_filename'
+009_Species_Files.rb:203:in `play_cry_from_species'
+001_Pokemon.rb:100:in `play_cry'
+(eval):1:in `execute_script'
+003_Interpreter.rb:140:in `eval'
+003_Interpreter.rb:140:in `execute_script'
+004_Interpreter_Commands.rb:1177:in `command_355'

@@ -73130,7 +73130,7 @@ List of Event Commands:
    @>Text: Alright then, good luck on your training!
    @>Control Variables: [0097: EXP Multiplier] = 2
    @>Script: pbSet(129, rand(20..35))
-   :       : echoln "Puppets to beat: \v[129]"
+   :       : echoln "Puppets to beat: #{pbGet(129)}"
    @>Script: $PokemonGlobal.dungeon_area = :forest_tpdp
    @>Play SE: 'Door exit', 80, 100
    @>Change Screen Color Tone: (-255,-255,-255,0), @6
@@ -73152,7 +73152,7 @@ List of Event Commands:
    @>Text: Alright then, good luck on your training!
    @>Control Variables: [0097: EXP Multiplier] = 2
    @>Script: pbSet(129, rand(20..35))
-   :       : echoln "Puppets to beat: \v[129]"
+   :       : echoln "Puppets to beat: #{pbGet(129)}"
    @>Script: $PokemonGlobal.dungeon_area = :cave_tpdp
    @>Play SE: 'Door exit', 80, 100
    @>Change Screen Color Tone: (-255,-255,-255,0), @6
@@ -73174,7 +73174,7 @@ List of Event Commands:
    @>Text: Alright then, good luck on your training!
    @>Control Variables: [0097: EXP Multiplier] = 2
    @>Script: pbSet(129, rand(20..35))
-   :       : echoln "Puppets to beat: \v[129]"
+   :       : echoln "Puppets to beat: #{pbGet(129)}"
    @>Script: $PokemonGlobal.dungeon_area = :moon
    @>Play SE: 'Door exit', 80, 100
    @>Change Screen Color Tone: (-255,-255,-255,0), @6
@@ -73397,7 +73397,7 @@ List of Event Commands:
  :       : pbSet(131, rand_puppet)
  :       : 
  :       : Pokemon.play_cry(pbGet(131))
- :       : echoln "Boss Puppet:\v[131]"
+ :       : echoln "Boss Puppet: #{pbGet(131)}"
  @>Script:     if pbGet(131) == :AMARISA then pbSet(132,1)
  :       :     elsif pbGet(131) == :KIRISAME then pbSet(132,2)
  :       :     elsif pbGet(131) == :ADALICE then pbSet(132,3)
@@ -91280,7 +91280,7 @@ List of Event Commands:
  :       : pbSet(131, rand_puppet)
  :       : 
  :       : Pokemon.play_cry(pbGet(131))
- :       : echoln "Boss Puppet: \v[131]"
+ :       : echoln "Boss Puppet: #{pbGet(131)}"
  @>Script:     if pbGet(131) == :SHINGYOKU then pbSet(132,1)
  :       :     elsif pbGet(131) == :MAGAN then pbSet(132,2)
  :       :     elsif pbGet(131) == :MIMA then pbSet(132,3)
@@ -91886,7 +91886,7 @@ List of Event Commands:
  :       : pbSet(131, rand_puppet)
  :       : 
  :       : Pokemon.play_cry(pbGet(131))
- :       : echoln "Boss Puppet: \v[131]"
+ :       : echoln "Boss Puppet: #{pbGet(131)}"
  @>Script:     if pbGet(131) == :HAKUREI then pbSet(132,1)
  :       :     elsif pbGet(131) == :SARIEL then pbSet(132,2)
  :       :     elsif pbGet(131) == :KONNGARA then pbSet(132,3)
@@ -96773,10 +96773,14 @@ List of Event Commands:
 @>Control Variables: [0097: EXP Multiplier] = 2
 @>Control Self Switch: A =OFF
 @>Control Variables: [0001..0005] = 0
-@>Control Variables: [0129..0131] = 0
-@>Script: pbSetSelfSwitch(2,"A",false)
+@>Control Variables: [0129..0130] = 0
+@>Script: pbSet(129, nil)
+:       : pbSet(130, nil)
+:       : pbSet(131, nil)
+:       : pbSet(132, nil)
+:       : pbSetSelfSwitch(2,"A",false)
 :       : pbSet(129, rand(20..35)) 
-:       : echoln "Puppets to beat: \v[129]"
+:       : echoln "Puppets to beat: #{pbGet(129)}"
 @>
 
 #==============================================================================
