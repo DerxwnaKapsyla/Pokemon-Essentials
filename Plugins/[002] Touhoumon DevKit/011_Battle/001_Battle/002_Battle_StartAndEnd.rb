@@ -108,6 +108,7 @@ class Battle
 #	* Implements a method to gain Magical Fragments
 #==============================================================================#
   def pbGainMagFrags
+    return if !$game_switches[107]
 	return if !Settings::GAIN_MAGICAL_FRAGMENTS_AFTER_BATTLE
 	$bag.add(:MAGFRAG, Settings::MAGICAL_FRAGMENT_REWARD_COUNT)
 	if Settings::MAGICAL_FRAGMENT_REWARD_COUNT > 1

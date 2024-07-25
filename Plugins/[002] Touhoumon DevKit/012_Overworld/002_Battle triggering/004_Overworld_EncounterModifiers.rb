@@ -72,3 +72,19 @@ EventHandlers.add(:on_wild_pokemon_created, :level_depends_on_party,
     pkmn.reset_moves
   }
 )
+
+EventHandlers.add(:on_wild_pokemon_created, :wild_music_override,
+  proc { |pkmn|
+    next if !$game_switches[98]
+    setBattleRule("battleBGM", "W-004. Dimension of Reverie.ogg")
+    setBattleRule("victoryBGM", "")
+  }
+)
+
+EventHandlers.add(:on_trainer_load, :trainer_music_override,
+  proc { |trainer|
+    next if !$game_switches[98]
+    setBattleRule("battleBGM", "W-004. Dimension of Reverie.ogg")
+    setBattleRule("victoryBGM", "")
+  }
+)

@@ -3018,13 +3018,14 @@ List of Event Commands:
 @>Fade Out BGM: 1 sec.
 @>Wait: 20 frame(s)
 @>Play BGM: 'W-004. Dimension of Reverie', 100, 100
+@>Control Switches: [0098: Music Override] = ON
 @>Wait: 10 frame(s)
 @>Text: \xn[Maya]Quick, scatter! They can't catch us if we're not 
  :    : together!
 @>Text: \xn[Maya]We'll meet up south of here!
 @>Change Screen Color Tone: (-255,-255,-255,0), @6
 @>Wait: 8 frame(s)
-@>Transfer Player:[115: Dummy Map], (006,005), Left, No Fade
+@>Transfer Player:[115: Dummy Map], (004,003), Left, No Fade
 @>Wait: 2 frame(s)
 @>Script: playSpecialBGM("S1_Escape")
 @>Transfer Player:[006: Human Village], (054,017), Left, No Fade
@@ -3503,7 +3504,7 @@ Move Animation
 Trigger: Event Touch
 
 List of Event Commands:
-@>Script: pbTrainerIntro(:PATROL2M)
+@>Script: # pbTrainerIntro(:PATROL2M)
 @>Script: pbNoticePlayer(get_self)
 @>Text: You children need to return home now!
 @>Conditional Branch: Script: TrainerBattle.start(:PATROL2M, "Kengo",pbGet(99))
@@ -3588,7 +3589,7 @@ Move Animation
 Trigger: Event Touch
 
 List of Event Commands:
-@>Script: pbTrainerIntro(:PATROL1F)
+@>Script: #pbTrainerIntro(:PATROL1F)
 @>Script: pbNoticePlayer(get_self)
 @>Text: Runaway detected, runaway detected!
 @>Conditional Branch: Script: TrainerBattle.start(:PATROL1F, "Asami",pbGet(99))
@@ -3669,7 +3670,7 @@ Move Animation
 Trigger: Event Touch
 
 List of Event Commands:
-@>Script: pbTrainerIntro(:PATROL1F)
+@>Script: #pbTrainerIntro(:PATROL1F)
 @>Script: pbNoticePlayer(get_self)
 @>Text: Just stay right there!
 @>Conditional Branch: Script: TrainerBattle.start(:PATROL1F, "Tsukimi",pbGet(99))
@@ -3718,7 +3719,7 @@ Move Animation
 Trigger: Event Touch
 
 List of Event Commands:
-@>Script: pbTrainerIntro(:PATROL1M)
+@>Script: #pbTrainerIntro(:PATROL1M)
 @>Script: pbNoticePlayer(get_self)
 @>Text: You aren't going anywhere!
 @>Conditional Branch: Script: TrainerBattle.start(:PATROL1M, "Ryou",pbGet(99))
@@ -3767,7 +3768,7 @@ Move Animation
 Trigger: Event Touch
 
 List of Event Commands:
-@>Script: pbTrainerIntro(:PATROL1M)
+@>Script: #pbTrainerIntro(:PATROL1M)
 @>Script: pbNoticePlayer(get_self)
 @>Text: What could you possibly be doing awake at
  :    : this hour anyway!?
@@ -3890,7 +3891,7 @@ Move Animation
 Trigger: Event Touch
 
 List of Event Commands:
-@>Script: pbTrainerIntro(:PATROL2F)
+@>Script: #pbTrainerIntro(:PATROL2F)
 @>Script: pbNoticePlayer(get_self)
 @>Text: It is my job to keep you from going anywhere,
  :    : so let's go!
@@ -4006,7 +4007,7 @@ Move Animation
 Trigger: Event Touch
 
 List of Event Commands:
-@>Script: pbTrainerIntro(:PATROL2F)
+@>Script: #pbTrainerIntro(:PATROL2F)
 @>Script: pbNoticePlayer(get_self)
 @>Text: Wait, \PN, you're the one sneaking out? Looks
  :    : like big sis is gonna have to be the one to stop you!
@@ -4087,7 +4088,7 @@ Move Animation
 Trigger: Event Touch
 
 List of Event Commands:
-@>Script: pbTrainerIntro(:PATROL2M)
+@>Script: #pbTrainerIntro(:PATROL2M)
 @>Script: pbNoticePlayer(get_self)
 @>Text: You're getting too close to the exit for our
  :    : liking, and need to be stopped right now!
@@ -4214,6 +4215,7 @@ Move Animation
 Trigger: Event Touch
 
 List of Event Commands:
+@>Control Switches: [0098: Music Override] = OFF
 @>Set Move Route: Player
  :              : $>Move Down
  :              : $>Move Down
@@ -4234,6 +4236,7 @@ List of Event Commands:
  :              : $>Move Up
 @>Wait for Move's Completion
 @>Conditional Branch: Self Switch A == OFF
+ @>Control Self Switch: A =ON
  @>Text: \xn[Keine]So, it is you \PN. I suppose I should have
   :    : expected this after your conversations in class.
  @>Text: \xn[\pn]M-Miss Keine... What are you doing here?
@@ -4275,7 +4278,6 @@ List of Event Commands:
   @>
  : Branch End
  @>Conditional Branch: Script: TrainerBattle.start(:KEINE, "Keine Kamishirasawa", 10+(pbGet(99) * 10))
-  @>Control Self Switch: A =ON
   @>
  : Else
   @>Script: pbTrainerEnd
@@ -4312,6 +4314,7 @@ List of Event Commands:
  : Branch End
  @>
 : Branch End
+@>Change Screen Color Tone: (0,0,0,0), @6
 @>Text: \xn[Keine]Alright fine, I concede! You have what it
  :    : takes to watch yourself.
 @>Text: \xn[\pn]So that means you'll let us go then?
@@ -4323,6 +4326,8 @@ List of Event Commands:
 @>Play SE: 'Exit Door', 80, 100
 @>Change Screen Color Tone: (-255,-255,-255,0), @6
 @>Wait: 7 frame(s)
+@>Fade Out BGS: 3 sec.
+@>Script: deactivateSpecialBGM("S1_Escape")
 @>Change Transparent Flag: Transparency
 @>Change Screen Color Tone: (0,0,0,0), @6
 @>Wait: 20 frame(s)
@@ -5066,6 +5071,10 @@ List of Event Commands:
 @>Set Event Location: [Trainer(4)],(022,057)
 @>Set Event Location: [Trainer(4)],(045,068)
 @>Set Event Location: [Trainer(3)],(028,071)
+@>Conditional Branch: Variable [0107: TMoM Plot Variable] == 2
+ @>Control Switches: [0098: Music Override] = ON
+ @>
+: Branch End
 @>Conditional Branch: Variable [0107: TMoM Plot Variable] != 4
  @>Set Event Location: [Keine],(035,088), Up
  @>
@@ -5681,6 +5690,10 @@ List of Event Commands:
 @>Text: Your Puppets have been healed to perfect health.
 @>Text: Your Puppets have been healed to perfect health.
 @>Text: We hope you excel!
+@>Conditional Branch: Variable [0107: TMoM Plot Variable] == 2
+ @>Control Switches: [0098: Music Override] = ON
+ @>
+: Branch End
 @>Control Switches: [0001: Starting over] = OFF
 @>
 
@@ -17085,7 +17098,7 @@ Map ID: 019
 Map Name: World of Fantasies
 Tileset: 038: World of Fantasies
 Width: 39, Height: 39
-Auto-Change BGM: X-004. Cavern of Remembrance
+Auto-Change BGM: W-043. Rural Makai City Esoteria
 
 #------------------------------------------------------------------------------
 Event ID: 001
@@ -17170,7 +17183,7 @@ List of Event Commands:
  :    : I HAVE NO IDEA.
 @>Text: \xn[????]LET ME JUST TURN IT ON NOW.
 @>Wait: 10 frame(s)
-@>Play BGM: 'X-004. Cavern of Remembrance', 100, 100
+@>Play BGM: 'W-043. Rural Makai City Esoteria', 100, 100
 @>Change Screen Color Tone: (-255,-255,-255,0), @8
 @>Wait: 8 frame(s)
 @>Play SE: 'PC open', 80, 100
@@ -17390,7 +17403,7 @@ List of Event Commands:
 @>Script: $game_variables[1] = $game_switches[126] ? "Yes" : "No"
 :       : $game_variables[2] = $game_switches[127] ? "Yes" : "No"
 :       : $game_variables[3] = $game_switches[128] ? "Yes" : "No"
-@>Conditional Branch: Variable [0121: TKoL Plot Variable] >= 99
+@>Conditional Branch: Variable [0121: TKoL Plot Variable] >= 26
  @>Text: \sign[signskin]\l[5]<ac>The Kingdom of Lunacy</ac>\nStatus: Cleared
   :    : \nWent Off Script: \v[1]
   :    : \nForward and Back: \v[2]
@@ -17741,7 +17754,7 @@ Event Name: EV012
 
 Page #1
 Conditions
-Variable 0099: NG+ Loop is 3 or above
+Variable 0141: Scenarios Cleared is 3 or above
 
 Graphic: Object_RebornObelisk
 
@@ -62687,7 +62700,7 @@ List of Event Commands:
   :    : this could be disorienting for you.
  @>Change Screen Color Tone: (-255,-255,-255,0), @8
  @>Play SE: 'Teleport', 80, 100
- @>Wait: 20 frame(s)
+ @>Wait: 15 frame(s)
  @>Play SE: 'teleporter', 80, 100
  @>Transfer Player:[091: Lunar Capital], (027,038), Down
  @>Change Screen Color Tone: (0,0,0,0), @8
@@ -72364,7 +72377,7 @@ Event Name: Rabbit
 
 Page #1
 Conditions
-Variable 0121: TKoL Plot Variable is 23 or above
+Variable 0121: TKoL Plot Variable is 15 or above
 
 Graphic: TPDP_NPC 55
 
@@ -79447,14 +79460,123 @@ List of Event Commands:
 @>Control Variables: [0103: Vs. Transition ID] = 50
 @>Control Variables: [0104: Vs. Transition - Pkmn] = 6
 @>Conditional Branch: Script: TrainerBattle.start(:YORIHIME, "Watatsuki no Yorihime", 10+(pbGet(99) * 10), :TOYOHIME, "Watatsuki no Toyohime", 10+(pbGet(99) * 10))
- @>Comment: Trigger post-battle cutscene here.
- @>Comment: Trigger ending cutscene here.
+ @>Script: pbTrainerEnd
+ @>Change Text Options: Middle, Show
+ @>Text: What an amazing battle! I was on the edge of my seat the 
+  :    : entire time just watching it unfold!
+ @>Text: Even though she was completely outnumbered, even though she was
+  :    : completely outmatched in every other way- everyone, give a massive
+  :    : round of applause for the victor of this exhibition match!
+ @>Text: The Savior of the Moon- \pn!
+ @>Script: pbSetSelfSwitch(17,"A",true)
+ @>Wait: 20 frame(s)
+ @>Text: \xn[\pn]\b(I can't believe I actually won that...)
+ @>Text: \xn[Yorihime]You do truly live up to your reputation, Miss Legend 
+  :    : of Gensokyo. I quite enjoyed our battle.
+ @>Text: \xn[Toyohime]As did I! The way you control your Puppets is like
+  :    : watching an elegant and graceful dance- a performance worth
+  :    : beholding!
+ @>Script: pbSetSelfSwitch(17,"A",false)
+ @>Text: \xn[Toyohime]While my sister and I may not be the absolute
+  :    : strongest trainers on the Moon-
+ @>Text: \xn[\pn]\b(What do you mean there's stronger than you?!)
+ @>Text: \xn[Toyohime]-we certainly can acknowledge when someone
+  :    : comes along and has surpassed us. You are quite the trainer,
+  :    : Miss \pn!
+ @>Text: \xn[Toyohime]Never let anyone tell you that your skills are fake,
+  :    : take pride in what you can do!
+ @>Text: \xn[\pn]R-Right.. There aren't very many Puppet Handlers back 
+  :    : in Gensokyo who can challenge me. They're either too afraid,
+  :    : or they relentlessly line up to challenge me.
+ @>Text: \xn[\pn]I do sometimes wish I could take a break from it all. It's
+  :    : hard to do that when people think of you as the strongest...
+ @>Show Animation: [Yorihime], [Exclaim bubble]
+ @>Set Move Route: [Yorihime]
+  :              : $>Wait: 15 frame(s)
+  :              : $>Turn Left
+ @>Text: \xn[Toyohime]Then perhaps you should come by here if you
+  :    : want to get away from it all!
+ @>Text: \xn[Toyohime]We have all sorts of amenities here, and the peaches 
+  :    : grown here are unlike any-\wtnp[1]
+ @>Text: \xn[Yorihime]Toyohime! You know that having Earthlings on 
+  :    : the Moon is against the wishes of the Council! You can't
+  :    : just say such carefree things like that.
+ @>Set Move Route: [Toyohime]
+  :              : $>Turn Right
+ @>Text: \xn[Toyohime]Well the Council is full of people who still want to hunt
+  :    : down Lady Yagokoro! Besides, if \pn became an official emmisary
+  :    : for Gensokyo...-\wtnp[1]
+ @>Text: \xn[\pn]Whoa whoa whoa, hold on now! I said I wanted to get
+  :    : away from the stress of my current life, not add more onto it
+  :    : by becoming an emmisary!
+ @>Text: \xn[\pn]Besides, I don't know the first thing about being an 
+  :    : emmisary!
+ @>Set Move Route: [Toyohime]
+  :              : $>Turn Down
+ @>Text: \xn[Toyohime]You don't need to worry about that, it would be in
+  :    : name only!
+ @>Text: \xn[Yorihime]Do you understand the ramifications of what you're
+  :    : suggesting, sister?
+ @>Text: \xn[Toyohime]Full well! I believe this could be beneficial for 
+  :    : our society as a whole.
+ @>Set Move Route: [Toyohime]
+  :              : $>Turn Right
+ @>Text: \xn[Toyohime]It will also allow us to keep tabs on Gensokyo,
+  :    : and better prevent an incident like this one, as well as the 
+  :    : Genso-Lunar War, from occuring.
+ @>Text: \xn[Yorihime]...How shrewd of you, sister.
+ @>Text: \xn[\pn]\b(I'd call it more audacious if anything...)
+ @>Set Move Route: [Toyohime]
+  :              : $>Turn Down
+ @>Set Move Route: [Yorihime]
+  :              : $>Turn Down
+ @>Text: \xn[Toyohime]You should think about it, at the very least!
+ @>Text: \xn[\pn]...Yeah, maybe. I'll think about it.\wtnp[50]
+ @>Control Self Switch: A =ON
  @>
 : Else
  @>Script: pbTrainerEnd
  @>Exit Event Processing
  @>
 : Branch End
+@>
+
+Page #3
+Conditions
+Self Switch A is ON
+
+Autonomous Movement
+Type: Fixed
+Speed: 3: Slow
+Freq: 3: Low
+Options Enabled
+Move Animation
+Trigger: Autorun
+
+List of Event Commands:
+@>Wait: 20 frame(s)
+@>Change Screen Color Tone: (51,17,-34,255), @10
+@>Play BGM: 'W-039. The Moon as Seen from the Shrine', 70, 100
+@>Wait: 15 frame(s)
+@>Conditional Branch: Switch [0155: Reserved] == OFF
+ @>Control Variables: [0141: Scenarios Cleared] += 1
+ @>Control Switches: [0155: Reserved] = ON
+ @>
+: Branch End
+@>Change Text Options: Bottom, Show
+@>Text: \w[dark]\c[12]\se[]\l[4]With her trial resolved, and an offer of unbelievable
+ :    : magnitude presented to her, \pn departed from the Moon, back to her
+ :    : life in Gensokyo.\wtnp[60]
+@>Change Screen Color Tone: (-255,-255,-255,0), @6
+@>Text: \w[dark]\c[12]\se[]\l[2]What happened after that? Well, those are
+ :    : stories best left for another time.\wtnp[60]
+@>Text: \w[dark]\c[12]\se[]\l[4]But, despite the state of her life, or where her
+ :    : future led her, \pn never stopped enjoying being a Puppet Handler,
+ :    : or spending time around the critters.\wtnp[80]
+@>Wait: 25 frame(s)
+@>Fade Out BGM: 2 sec.
+@>Wait: 40 frame(s)
+@>Call Common Event: Ending Stinger
 @>
 
 #------------------------------------------------------------------------------
@@ -99409,18 +99531,21 @@ List of Event Commands:
 @>Comment: There are three dialogue variants, one for each 
  :       : scenario cleared.
 @>Conditional Branch: Variable [0141: Scenarios Cleared] == 1
- @>Text: \w[dark]Who said the journey had to stop there though! Let's see
+ @>Text: \w[dark]...Surely, you've been on more adventures though! Let's see
   :    : what else you've done...
  @>
 : Else
  @>Conditional Branch: Variable [0141: Scenarios Cleared] == 2
-  @>Text: \w[dark]So then, this is what makes you... you. But, surely 
-   :    : there's more to see, right?
+  @>Text: \w[dark]You've made quite the name for yourself, haven't you?
+   :    : You've proven yourself over and over... But, there must be more to
+   :    : see, yes?
   @>
  : Else
   @>Conditional Branch: Variable [0141: Scenarios Cleared] == 3
-   @>Text: \w[dark]That's it! I finally understand! I know what I need to 
-    :    : do now to become real!
+   @>Text: \w[dark]...Your existence shines bright, such so that no matter
+    :    : where you go, people know who you are...
+   @>Text: \w[dark]... I know what I need to do now, to become real. To become
+    :    : like you.
    @>Text: \w[dark]Thank you, \pn...
    @>Wait: 15 frame(s)
    @>Text: \xn[\pn]... Did someone say my name ...?
@@ -99432,6 +99557,7 @@ List of Event Commands:
  : Branch End
  @>
 : Branch End
+@>Transfer Player:[019: World of Fantasies], (019,020), Down
 @>
 
 #==============================================================================

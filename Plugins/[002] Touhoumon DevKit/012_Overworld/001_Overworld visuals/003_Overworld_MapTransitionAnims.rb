@@ -13,6 +13,7 @@ def pbStartOver(gameover = false)
     pbBugContestStartOver
     return
   end
+  pbBGMFade(1.0) if $game_switches[98]
   $stats.blacked_out_count += 1
   $player.heal_party
   if $PokemonGlobal.pokecenterMapId && $PokemonGlobal.pokecenterMapId >= 0
