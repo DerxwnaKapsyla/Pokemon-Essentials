@@ -7184,3 +7184,63 @@ Backtrace:
 004_Scene_PlayAnimations.rb:547:in `pbAnimationCore'
 004_Scene_PlayAnimations.rb:501:in `block in pbAnimation'
 004_Scene_PlayAnimations.rb:399:in `pbSaveShadows'
+
+=================
+
+[2024-07-24 16:26:38 -0700]
+[Pokémon Essentials version 21.1]
+
+Error in Plugin: [Arcky's Poke Market]
+Exception: SyntaxError
+Message: [Arcky's Poke Market] 000_PokeMarket_Settings_and_Setup.rb:507: syntax error, unexpected symbol literal, expecting ']'
+    :GOLDPEACHSAKE
+    ^
+[Arcky's Poke Market] 000_PokeMarket_Settings_and_Setup.rb:508: syntax error, unexpected ']', expecting `end'
+    ], "TavernShop", true)
+    ^
+[Arcky's Poke Market] 000_PokeMarket_Settings_and_Setup.rb:508: syntax error, unexpected ',', expecting `end'
+    ], "TavernShop", true)
+                   ^
+[Arcky's Poke Market] 000_PokeMarket_Settings_and_Setup.rb:579: syntax error, unexpected end-of-input, expecting `end'
+
+Backtrace:
+005_PluginManager.rb:635:in `eval'
+005_PluginManager.rb:635:in `block (2 levels) in runPlugins'
+005_PluginManager.rb:625:in `each'
+005_PluginManager.rb:625:in `block in runPlugins'
+005_PluginManager.rb:616:in `each'
+005_PluginManager.rb:616:in `runPlugins'
+999_Main.rb:35:in `mainFunctionDebug'
+999_Main.rb:19:in `block in mainFunction'
+003_Errors.rb:79:in `pbCriticalCode'
+999_Main.rb:19:in `mainFunction'
+
+=================
+
+[2024-07-24 16:26:55 -0700]
+[Pokémon Essentials version 21.1]
+
+Error in Plugin: [Arcky's Poke Market]
+Exception: SyntaxError
+Message: [Arcky's Poke Market] 000_PokeMarket_Settings_and_Setup.rb:507: syntax error, unexpected symbol literal, expecting ']'
+    :GOLDPEACHSAKE
+    ^
+[Arcky's Poke Market] 000_PokeMarket_Settings_and_Setup.rb:508: syntax error, unexpected ']', expecting `end'
+    ], "TavernShop", true)
+    ^
+[Arcky's Poke Market] 000_PokeMarket_Settings_and_Setup.rb:508: syntax error, unexpected ',', expecting `end'
+    ], "TavernShop", true)
+                   ^
+[Arcky's Poke Market] 000_PokeMarket_Settings_and_Setup.rb:579: syntax error, unexpected end-of-input, expecting `end'
+
+Backtrace:
+005_PluginManager.rb:635:in `eval'
+005_PluginManager.rb:635:in `block (2 levels) in runPlugins'
+005_PluginManager.rb:625:in `each'
+005_PluginManager.rb:625:in `block in runPlugins'
+005_PluginManager.rb:616:in `each'
+005_PluginManager.rb:616:in `runPlugins'
+999_Main.rb:35:in `mainFunctionDebug'
+999_Main.rb:19:in `block in mainFunction'
+003_Errors.rb:79:in `pbCriticalCode'
+999_Main.rb:19:in `mainFunction'

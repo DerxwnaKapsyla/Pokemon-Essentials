@@ -62483,6 +62483,59 @@ List of Event Commands:
 @>
 
 #------------------------------------------------------------------------------
+Event ID: 048
+Event Name: EV048
+(X,Y): (022,060)
+
+Page #1
+Conditions
+Variable 0121: TKoL Plot Variable is 23 or above
+
+Autonomous Movement
+Type: Fixed
+Speed: 3: Slow
+Freq: 3: Low
+Options Enabled
+Move Animation
+Trigger: Autorun
+
+List of Event Commands:
+@>Wait: 5 frame(s)
+@>Set Move Route: [Rabbit]
+ :              : $>Turn Left
+@>Text: Ah, Miss Savior of the Moon, over here!
+@>Show Animation: Player, [Question bubble]
+@>Wait: 10 frame(s)
+@>Set Move Route: Player
+ :              : $>Turn Right
+@>Wait for Move's Completion
+@>Text: I've been stationed here so you can get between Gensokyo 
+ :    : and the Moon with ease.
+@>Text: No need for you to traverse through the Kaian Passageway again,
+ :    : we'll have you at the capital in no time!
+@>Text: \xn[\pn]\b(Great, well I guess I can't prolong my trial by taking the long
+ :    : way there...)
+@>Set Move Route: [Rabbit]
+ :              : $>Turn Down
+@>Control Variables: [0121: TKoL Plot Variable] = 24
+@>
+
+Page #2
+Conditions
+Variable 0121: TKoL Plot Variable is 24 or above
+
+Autonomous Movement
+Type: Fixed
+Speed: 3: Slow
+Freq: 3: Low
+Options Enabled
+Move Animation
+Trigger: Action Button
+
+List of Event Commands:
+@>
+
+#------------------------------------------------------------------------------
 Event ID: 049
 Event Name: Basic Door
 (X,Y): (044,055)
@@ -62604,6 +62657,44 @@ Trigger: Autorun
 
 List of Event Commands:
 @>Control Switches: [0001: Starting over] = OFF
+@>
+
+#------------------------------------------------------------------------------
+Event ID: 051
+Event Name: Rabbit
+(X,Y): (024,063)
+
+Page #1
+Conditions
+Variable 0121: TKoL Plot Variable is 23 or above
+
+Graphic: TPDP_NPC 55
+
+Autonomous Movement
+Type: Fixed
+Speed: 3: Slow
+Freq: 3: Low
+Options Enabled
+Move Animation
+Trigger: Action Button
+
+List of Event Commands:
+@>Text: Are you ready to return to the Capital?
+@>Show Choices: Yes, No
+(When Cancel: Choice 2)
+: When [Yes]
+ @>Text: Alright, hang on tight! If you're unaccstomed to Veil Teleportation,
+  :    : this could be disorienting for you.
+ @>Change Screen Color Tone: (-255,-255,-255,0), @8
+ @>Play SE: 'Teleport', 80, 100
+ @>Wait: 20 frame(s)
+ @>Play SE: 'teleporter', 80, 100
+ @>Transfer Player:[091: Lunar Capital], (027,038), Down
+ @>Change Screen Color Tone: (0,0,0,0), @8
+ @>
+: When [No]
+ @>
+: Branch End
 @>
 
 #------------------------------------------------------------------------------
@@ -71866,8 +71957,6 @@ List of Event Commands:
 @>Wait: 8 frame(s)
 @>Transfer Player:[122: Storehouse], (007,008), Up, No Fade
 @>Change Screen Color Tone: (0,0,0,0), @6
-@>Set Move Route: Player
- :              : $>Move Down
 @>
 
 Page #2
@@ -71917,8 +72006,6 @@ List of Event Commands:
 @>Wait: 8 frame(s)
 @>Transfer Player:[122: Storehouse], (008,008), Up, No Fade
 @>Change Screen Color Tone: (0,0,0,0), @6
-@>Set Move Route: Player
- :              : $>Move Down
 @>
 
 Page #2
@@ -72006,7 +72093,7 @@ Page #2
 Conditions
 Switch 0022: s:tsOff?("A") is ON
 
-Graphic: Doors_TPDP3
+Graphic: Doors_TPDP2
 
 Autonomous Movement
 Type: Fixed
@@ -72220,7 +72307,7 @@ List of Event Commands:
 #------------------------------------------------------------------------------
 Event ID: 054
 Event Name: size(4,1)
-(X,Y): (034,010)
+(X,Y): (034,009)
 
 Page #1
 Conditions
@@ -72266,6 +72353,44 @@ List of Event Commands:
  @>Text: \xn[\pn]\b(There's nothing for me that way.)
  @>Set Move Route: Player
   :              : $>1 Step Backward
+ @>
+: Branch End
+@>
+
+#------------------------------------------------------------------------------
+Event ID: 056
+Event Name: Rabbit
+(X,Y): (029,038)
+
+Page #1
+Conditions
+Variable 0121: TKoL Plot Variable is 23 or above
+
+Graphic: TPDP_NPC 55
+
+Autonomous Movement
+Type: Fixed
+Speed: 3: Slow
+Freq: 3: Low
+Options Enabled
+Move Animation
+Trigger: Action Button
+
+List of Event Commands:
+@>Text: Would you like to return to Gensokyo?
+@>Show Choices: Yes, No
+(When Cancel: Choice 2)
+: When [Yes]
+ @>Text: Alright, hang on tight! If you're unaccstomed to Veil Teleportation,
+  :    : this could be disorienting for you.
+ @>Change Screen Color Tone: (-255,-255,-255,0), @8
+ @>Play SE: 'Teleport', 80, 100
+ @>Wait: 20 frame(s)
+ @>Play SE: 'teleporter', 80, 100
+ @>Transfer Player:[082: Human Village], (021,063), Down
+ @>Change Screen Color Tone: (0,0,0,0), @8
+ @>
+: When [No]
  @>
 : Branch End
 @>
@@ -72465,46 +72590,6 @@ List of Event Commands:
 @>
 
 #------------------------------------------------------------------------------
-Event ID: 003
-Event Name: NPC
-(X,Y): (003,021)
-
-Page #1
-Conditions
-None
-
-Autonomous Movement
-Type: Fixed
-Speed: 3: Slow
-Freq: 3: Low
-Options Enabled
-Move Animation
-Trigger: Action Button
-
-List of Event Commands:
-@>
-
-#------------------------------------------------------------------------------
-Event ID: 004
-Event Name: NPC
-(X,Y): (003,013)
-
-Page #1
-Conditions
-None
-
-Autonomous Movement
-Type: Fixed
-Speed: 3: Slow
-Freq: 3: Low
-Options Enabled
-Move Animation
-Trigger: Action Button
-
-List of Event Commands:
-@>
-
-#------------------------------------------------------------------------------
 Event ID: 005
 Event Name: NPC
 (X,Y): (020,013)
@@ -72513,25 +72598,7 @@ Page #1
 Conditions
 None
 
-Autonomous Movement
-Type: Fixed
-Speed: 3: Slow
-Freq: 3: Low
-Options Enabled
-Move Animation
-Trigger: Action Button
-
-List of Event Commands:
-@>
-
-#------------------------------------------------------------------------------
-Event ID: 006
-Event Name: NPC
-(X,Y): (020,016)
-
-Page #1
-Conditions
-None
+Graphic: TPDP_NPC 38
 
 Autonomous Movement
 Type: Fixed
@@ -72542,36 +72609,14 @@ Move Animation
 Trigger: Action Button
 
 List of Event Commands:
+@>Text: Those fairies just suddenly... invaded, without warning...
+@>Text: Why would they suddenly come after us? We avoid dealing with
+ :    : the inhabitants of the Earth!
 @>
 
-#------------------------------------------------------------------------------
-Event ID: 007
-Event Name: NPC
-(X,Y): (021,018)
-
-Page #1
+Page #2
 Conditions
-None
-
-Autonomous Movement
-Type: Fixed
-Speed: 3: Slow
-Freq: 3: Low
-Options Enabled
-Move Animation
-Trigger: Action Button
-
-List of Event Commands:
-@>
-
-#------------------------------------------------------------------------------
-Event ID: 008
-Event Name: NPC
-(X,Y): (014,025)
-
-Page #1
-Conditions
-None
+Variable 0121: TKoL Plot Variable is 22 or above
 
 Autonomous Movement
 Type: Fixed
@@ -72593,6 +72638,25 @@ Page #1
 Conditions
 None
 
+Graphic: TPDP_NPC 54
+
+Autonomous Movement
+Type: Fixed
+Speed: 3: Slow
+Freq: 3: Low
+Options Enabled
+Move Animation
+Trigger: Action Button
+
+List of Event Commands:
+@>Text: This can't be all of the civilians... Did the Hell Fairies get
+ :    : the rest of them?
+@>
+
+Page #2
+Conditions
+Variable 0121: TKoL Plot Variable is 22 or above
+
 Autonomous Movement
 Type: Fixed
 Speed: 3: Slow
@@ -72612,6 +72676,26 @@ Event Name: NPC
 Page #1
 Conditions
 None
+
+Graphic: TPDP_NPC 55
+
+Autonomous Movement
+Type: Fixed
+Speed: 3: Slow
+Freq: 3: Low
+Options Enabled
+Move Animation
+Direction Fix
+Trigger: Action Button
+
+List of Event Commands:
+@>Text: C'mon... You really think they tell me anything? I'm just a low
+ :    : ranking recruit...
+@>
+
+Page #2
+Conditions
+Variable 0121: TKoL Plot Variable is 22 or above
 
 Autonomous Movement
 Type: Fixed
@@ -72633,25 +72717,7 @@ Page #1
 Conditions
 None
 
-Autonomous Movement
-Type: Fixed
-Speed: 3: Slow
-Freq: 3: Low
-Options Enabled
-Move Animation
-Trigger: Action Button
-
-List of Event Commands:
-@>
-
-#------------------------------------------------------------------------------
-Event ID: 012
-Event Name: NPC
-(X,Y): (005,024)
-
-Page #1
-Conditions
-None
+Graphic: TPDP_NPC 08
 
 Autonomous Movement
 Type: Fixed
@@ -72659,19 +72725,17 @@ Speed: 3: Slow
 Freq: 3: Low
 Options Enabled
 Move Animation
+Direction Fix
 Trigger: Action Button
 
 List of Event Commands:
+@>Text: Hey, you're with the army, do you know anything about 
+ :    : this "Relocation Plan"? I keep hearing whispers about it...
 @>
 
-#------------------------------------------------------------------------------
-Event ID: 013
-Event Name: NPC
-(X,Y): (007,016)
-
-Page #1
+Page #2
 Conditions
-None
+Variable 0121: TKoL Plot Variable is 22 or above
 
 Autonomous Movement
 Type: Fixed
@@ -72693,25 +72757,7 @@ Page #1
 Conditions
 None
 
-Autonomous Movement
-Type: Fixed
-Speed: 3: Slow
-Freq: 3: Low
-Options Enabled
-Move Animation
-Trigger: Action Button
-
-List of Event Commands:
-@>
-
-#------------------------------------------------------------------------------
-Event ID: 015
-Event Name: NPC
-(X,Y): (016,014)
-
-Page #1
-Conditions
-None
+Graphic: TPDP_NPC 08
 
 Autonomous Movement
 Type: Fixed
@@ -72722,6 +72768,9 @@ Move Animation
 Trigger: Action Button
 
 List of Event Commands:
+@>Text: The training simulator is full of Puppets...
+@>Text: The Princesses must have been working on Puppets for a
+ :    : long time if they have this many!
 @>
 
 #------------------------------------------------------------------------------
@@ -72732,6 +72781,25 @@ Event Name: NPC
 Page #1
 Conditions
 None
+
+Graphic: TPDP_NPC 06
+
+Autonomous Movement
+Type: Fixed
+Speed: 3: Slow
+Freq: 3: Low
+Options Enabled
+Move Animation
+Trigger: Action Button
+
+List of Event Commands:
+@>Text: I hope the army is able to drive off these fairies soon, it's
+ :    : making life extremely inconvenient right now!
+@>
+
+Page #2
+Conditions
+Variable 0121: TKoL Plot Variable is 22 or above
 
 Autonomous Movement
 Type: Fixed
@@ -73120,8 +73188,8 @@ List of Event Commands:
  @>Text: We have three different areas you can train in, each with
   :    : their own unique set of Puppets. Which would you like
   :    : to train in?
- @>Show Choices: Lush Forest, Deep Caverns, Lunar Trenches
- (When Cancel: Choice 2)
+ @>Show Choices: Lush Forest, Deep Caverns, Lunar Trenches, Nevermind
+ (When Cancel: Choice 4)
  : When [Lush Forest]
   @>Text: The Lush Forest simulator. Is that correct?
   @>Show Choices: Yes, No
@@ -73187,6 +73255,8 @@ List of Event Commands:
   : When [No]
    @>
   : Branch End
+  @>
+ : When [Nevermind]
   @>
  : Branch End
  @>
@@ -73282,27 +73352,6 @@ Move Animation
 Trigger: Action Button
 
 List of Event Commands:
-@>
-
-#------------------------------------------------------------------------------
-Event ID: 026
-Event Name: EV026
-(X,Y): (009,020)
-
-Page #1
-Conditions
-None
-
-Autonomous Movement
-Type: Fixed
-Speed: 3: Slow
-Freq: 3: Low
-Options Enabled
-Move Animation
-Trigger: Action Button
-
-List of Event Commands:
-@>Change Text Options: Bottom, Show
 @>
 
 #------------------------------------------------------------------------------
@@ -77750,6 +77799,36 @@ List of Event Commands:
 @>
 
 #------------------------------------------------------------------------------
+Event ID: 035
+Event Name: size(3,1)
+(X,Y): (013,042)
+
+Page #1
+Conditions
+None
+
+Autonomous Movement
+Type: Fixed
+Speed: 3: Slow
+Freq: 3: Low
+Options Enabled
+Move Animation
+Trigger: Player Touch
+
+List of Event Commands:
+@>Conditional Branch: Player is facing Down
+ @>Play SE: 'Door exit', 100, 100
+ @>Change Screen Color Tone: (-255,-255,-255,0), @6
+ @>Wait: 8 frame(s)
+ @>Transfer Player:[091: Lunar Capital], (035,073), Up, No Fade
+ @>Change Screen Color Tone: (0,0,0,0), @6
+ @>Set Move Route: Player
+  :              : $>Move Up
+ @>
+: Branch End
+@>
+
+#------------------------------------------------------------------------------
 
 #==============================================================================
 Map ID: 098
@@ -77767,6 +77846,8 @@ Page #1
 Conditions
 None
 
+Graphic: TPDP_NPC 54
+
 Autonomous Movement
 Type: Fixed
 Speed: 3: Slow
@@ -77776,6 +77857,7 @@ Move Animation
 Trigger: Action Button
 
 List of Event Commands:
+@>Text: Sorry, you're not allowed in this part of the Palace's grounds.
 @>
 
 #------------------------------------------------------------------------------
@@ -77787,6 +77869,8 @@ Page #1
 Conditions
 None
 
+Graphic: TPDP_NPC 55
+
 Autonomous Movement
 Type: Fixed
 Speed: 3: Slow
@@ -77796,6 +77880,7 @@ Move Animation
 Trigger: Action Button
 
 List of Event Commands:
+@>Text: Sorry, you're not allowed in this part of the Palace's grounds.
 @>
 
 #------------------------------------------------------------------------------
@@ -77807,6 +77892,8 @@ Page #1
 Conditions
 None
 
+Graphic: TPDP_NPC 54
+
 Autonomous Movement
 Type: Fixed
 Speed: 3: Slow
@@ -77816,6 +77903,7 @@ Move Animation
 Trigger: Action Button
 
 List of Event Commands:
+@>Text: Sorry, you're not allowed in this part of the Palace's grounds.
 @>
 
 #------------------------------------------------------------------------------
@@ -77827,6 +77915,8 @@ Page #1
 Conditions
 None
 
+Graphic: TPDP_NPC 55
+
 Autonomous Movement
 Type: Fixed
 Speed: 3: Slow
@@ -77836,6 +77926,7 @@ Move Animation
 Trigger: Action Button
 
 List of Event Commands:
+@>Text: Sorry, you're not allowed in this part of the Palace's grounds.
 @>
 
 #------------------------------------------------------------------------------
@@ -77907,6 +77998,333 @@ List of Event Commands:
 @>Change Screen Color Tone: (0,0,0,0), @6
 @>Set Move Route: Player
  :              : $>Move Down
+@>
+
+#------------------------------------------------------------------------------
+Event ID: 008
+Event Name: EV008
+(X,Y): (044,003)
+
+Page #1
+Conditions
+None
+
+Autonomous Movement
+Type: Fixed
+Speed: 3: Slow
+Freq: 6: Highest
+Options Enabled
+Move Animation
+Trigger: Event Touch
+
+List of Event Commands:
+@>Play SE: 'Door exit', 60, 100
+@>Change Screen Color Tone: (-255,-255,-255,0), @6
+@>Wait: 8 frame(s)
+@>Transfer Player:[099: Lunar Palace - Main Hall], (021,038), Up, No Fade
+@>Change Screen Color Tone: (0,0,0,0), @6
+@>
+
+Page #2
+Conditions
+Switch 0022: s:tsOff?("A") is ON
+
+Autonomous Movement
+Type: Fixed
+Speed: 3: Slow
+Freq: 3: Low
+Options Enabled
+Move Animation
+Trigger: Autorun
+
+List of Event Commands:
+@>Conditional Branch: Script: get_self.onEvent?
+ @>Change Transparent Flag: Normal
+ @>Set Move Route: Player
+                   (Ignore If Can't Move)
+  :              : $>Move Down
+ @>Wait for Move's Completion
+ @>
+: Branch End
+@>Script: setTempSwitchOn("A")
+@>
+
+#------------------------------------------------------------------------------
+Event ID: 009
+Event Name: EV009
+(X,Y): (045,003)
+
+Page #1
+Conditions
+None
+
+Autonomous Movement
+Type: Fixed
+Speed: 3: Slow
+Freq: 6: Highest
+Options Enabled
+Move Animation
+Trigger: Event Touch
+
+List of Event Commands:
+@>Play SE: 'Door exit', 60, 100
+@>Change Screen Color Tone: (-255,-255,-255,0), @6
+@>Wait: 8 frame(s)
+@>Transfer Player:[099: Lunar Palace - Main Hall], (022,038), Up, No Fade
+@>Change Screen Color Tone: (0,0,0,0), @6
+@>
+
+Page #2
+Conditions
+Switch 0022: s:tsOff?("A") is ON
+
+Autonomous Movement
+Type: Fixed
+Speed: 3: Slow
+Freq: 3: Low
+Options Enabled
+Move Animation
+Trigger: Autorun
+
+List of Event Commands:
+@>Conditional Branch: Script: get_self.onEvent?
+ @>Change Transparent Flag: Normal
+ @>Set Move Route: Player
+                   (Ignore If Can't Move)
+  :              : $>Move Down
+ @>Wait for Move's Completion
+ @>
+: Branch End
+@>Script: setTempSwitchOn("A")
+@>
+
+#------------------------------------------------------------------------------
+Event ID: 010
+Event Name: Rabbit Guard
+(X,Y): (010,021)
+
+Page #1
+Conditions
+None
+
+Graphic: TPDP_NPC 55
+
+Autonomous Movement
+Type: Fixed
+Speed: 3: Slow
+Freq: 3: Low
+Options Enabled
+Move Animation
+Trigger: Action Button
+
+List of Event Commands:
+@>Text: Sorry, you're not allowed in this part of the Palace's grounds.
+@>
+
+#------------------------------------------------------------------------------
+Event ID: 011
+Event Name: Rabbit Guard
+(X,Y): (011,021)
+
+Page #1
+Conditions
+None
+
+Graphic: TPDP_NPC 55
+
+Autonomous Movement
+Type: Fixed
+Speed: 3: Slow
+Freq: 3: Low
+Options Enabled
+Move Animation
+Trigger: Action Button
+
+List of Event Commands:
+@>Text: Sorry, you're not allowed in this part of the Palace's grounds.
+@>
+
+#------------------------------------------------------------------------------
+Event ID: 012
+Event Name: size(1,6)
+(X,Y): (076,018)
+
+Page #1
+Conditions
+None
+
+Autonomous Movement
+Type: Fixed
+Speed: 3: Slow
+Freq: 3: Low
+Options Enabled
+Move Animation
+Trigger: Player Touch
+
+List of Event Commands:
+@>Text: Sorry, you're not allowed in this part of the Palace's grounds.
+@>Set Move Route: Player
+ :              : $>Move Left
+@>
+
+#------------------------------------------------------------------------------
+Event ID: 013
+Event Name: Gift NPC
+(X,Y): (047,012)
+
+Page #1
+Conditions
+Variable 0121: TKoL Plot Variable is 24 or above
+
+Graphic: TPDP_NPC 55
+
+Autonomous Movement
+Type: Fixed
+Speed: 3: Slow
+Freq: 3: Low
+Options Enabled
+Move Animation
+Trigger: Action Button
+
+List of Event Commands:
+@>Text: Oh hey, it's you! You were the one who drove off all those
+ :    : Hell Fairies alongside Lady Sagume!
+@>Text: I was one of the four guards protecting the palace when the fairies
+ :    : began to swarm the main road...
+@>Text: I know you're from the Earth, but I still want to thank you for helping
+ :    : us.
+@>Text: Here, take this... Several of the Rabbits in the Corps all wanted to
+ :    : thank you as well for sticking your neck out for us. So we all got
+ :    : together and prepared a thank you present.
+@>Script: $bag.add(:MAXPOTION, 5)
+:       : $bag.add(:MAXREVIVE, 3)
+:       : $bag.add(:RARECANDY, 15)
+:       : $bag.add(:MAXETHER, 5)
+:       : $bag.add(:ABILITYCAPSULE, 6)
+:       : $bag.add(:GOLDENPEACHSAKE)
+:       : $bag.add(:TERRASPHERE)
+@>Text: \me[Item get]\pn recieved 5 \c[1]Max Potions\c[0], 3 \c[1]Max Revives\c[0], 15 \c[1]Rare Candies\c[0], 5 \c[1]Max Ethers\c[0], 6 \c[1]Ability Capsules
+ :    : \c[0], a bottle of \c[1]Golden Peach Sake\c[0], and a \c[1]Terra Sphere\c[0]!
+@>Text: \xn[\pn]Whoa! This is... this is a lot of items! Is it really alright
+ :    : to give me all this?
+@>Text: If it wasn't for you, the Capital may very well have fallen to the Fairies
+ :    : and whoever was leading them... This is the least we can do!
+@>Set Move Route: [Gift NPC]
+ :              : $>Turn Down
+@>Text: \xn[\pn]\b(Huh... I never expected to be thanked like this... Especially
+ :    : since I'm about to go on trial, for whatever reason.)
+@>Control Variables: [0121: TKoL Plot Variable] = 25
+@>
+
+Page #2
+Conditions
+Variable 0121: TKoL Plot Variable is 25 or above
+
+Graphic: TPDP_NPC 55
+
+Autonomous Movement
+Type: Fixed
+Speed: 3: Slow
+Freq: 3: Low
+Options Enabled
+Move Animation
+Trigger: Action Button
+
+List of Event Commands:
+@>Text: Good day, \pn! Once again, thank you for all you've done for us.
+@>Text: If you're looking for the Princesses, they're in the palace ahead. Good luck!
+@>
+
+#------------------------------------------------------------------------------
+Event ID: 014
+Event Name: size(4,1)
+(X,Y): (043,012)
+
+Page #1
+Conditions
+Variable 0121: TKoL Plot Variable is 24 or above
+
+Autonomous Movement
+Type: Fixed
+Speed: 3: Slow
+Freq: 3: Low
+Options Enabled
+Move Animation
+Trigger: Player Touch
+
+List of Event Commands:
+@>Show Animation: [Gift NPC], [Exclaim bubble]
+@>Set Move Route: [Gift NPC]
+ :              : $>Turn toward Player
+@>Text: Oh hey, it's you! You were the one who drove off all those
+ :    : Hell Fairies alongside Lady Sagume!
+@>Set Move Route: Player
+ :              : $>Turn Right
+@>Wait for Move's Completion
+@>Text: I was one of the four guards protecting the palace when the fairies
+ :    : began to swarm the main road...
+@>Text: I know you're from the Earth, but I still want to thank you for helping
+ :    : us.
+@>Text: Here, take this... Several of the Rabbits in the Corps all wanted to
+ :    : thank you as well for sticking your neck out for us. So we all got
+ :    : together and prepared a thank you present.
+@>Script: $bag.add(:MAXPOTION, 5)
+:       : $bag.add(:MAXREVIVE, 3)
+:       : $bag.add(:RARECANDY, 15)
+:       : $bag.add(:MAXETHER, 5)
+:       : $bag.add(:ABILITYCAPSULE, 6)
+:       : $bag.add(:GOLDENPEACHSAKE)
+:       : $bag.add(:TERRASPHERE)
+@>Text: \me[Item get]\pn recieved 5 \c[1]Max Potions\c[0], 3 \c[1]Max Revives\c[0], 15 \c[1]Rare Candies\c[0], 5 \c[1]Max Ethers\c[0], 6 \c[1]Ability Capsules
+ :    : \c[0], a bottle of \c[1]Golden Peach Sake\c[0], and a \c[1]Terra Sphere\c[0]!
+@>Text: \xn[\pn]Whoa! This is... this is a lot of items! Is it really alright
+ :    : to give me all this?
+@>Text: If it wasn't for you, the Capital may very well have fallen to the Fairies
+ :    : and whoever was leading them... This is the least we can do!
+@>Set Move Route: [Gift NPC]
+ :              : $>Turn Down
+@>Text: \xn[\pn]\b(Huh... I never expected to be thanked like this... Especially
+ :    : since I'm about to go on trial, for whatever reason.)
+@>Control Variables: [0121: TKoL Plot Variable] = 25
+@>
+
+Page #2
+Conditions
+Variable 0121: TKoL Plot Variable is 25 or above
+
+Autonomous Movement
+Type: Fixed
+Speed: 3: Slow
+Freq: 3: Low
+Options Enabled
+Move Animation
+Trigger: Action Button
+
+List of Event Commands:
+@>
+
+#------------------------------------------------------------------------------
+Event ID: 015
+Event Name: NPC
+(X,Y): (042,012)
+
+Page #1
+Conditions
+None
+
+Graphic: TPDP_NPC 54
+
+Autonomous Movement
+Type: Fixed
+Speed: 3: Slow
+Freq: 3: Low
+Options Enabled
+Move Animation
+Trigger: Action Button
+
+List of Event Commands:
+@>Text: Greetings citizen, do you have business with the Princesses?
+@>Text: If you do, you can find them in the palace up ahead.
 @>
 
 #------------------------------------------------------------------------------
@@ -78084,7 +78502,8 @@ Trigger: Action Button
 
 List of Event Commands:
 @>Text: You've been listening to the rumor mill way too much! Next thing
- :    : you're gonna say is that the Elixir of Eternity is real!
+ :    : you're gonna say is that the Humans have invented a way to
+ :    : capture and train Puppets!
 @>
 
 #------------------------------------------------------------------------------
@@ -78094,7 +78513,7 @@ Event Name: Rei'sen
 
 Page #1
 Conditions
-Variable 0121: TKoL Plot Variable is 23 or above
+Variable 0121: TKoL Plot Variable is 24 or above
 
 Graphic: Person_Rei'sen
 
@@ -78143,7 +78562,7 @@ List of Event Commands:
  @>Text: \xn[\pn]You were just fine! Don't worry about it!
  @>Text: \xn[\pn]\b(I hope this doesn't count as bullying the inhabitants of the
   :    : Capital...)
- @>Control Variables: [0121: TKoL Plot Variable] = 24
+ @>Control Variables: [0121: TKoL Plot Variable] = 25
  @>
 : Else
  @>Script: pbTrainerEnd
@@ -78154,7 +78573,7 @@ List of Event Commands:
 
 Page #2
 Conditions
-Variable 0121: TKoL Plot Variable is 24 or above
+Variable 0121: TKoL Plot Variable is 25 or above
 
 Graphic: Person_Rei'sen
 
@@ -78182,8 +78601,6 @@ List of Event Commands:
  @>Change Screen Color Tone: (0,0,0,0), @6
  @>
 : When [No]
- @>Set Move Route: Player
-  :              : $>Move Down
  @>
 : Branch End
 @>
@@ -78211,33 +78628,132 @@ List of Event Commands:
 
 #------------------------------------------------------------------------------
 Event ID: 009
-Event Name: EV009
+Event Name: ExitArrow
 (X,Y): (043,020)
 
 Page #1
 Conditions
 None
 
+Graphic: Exitarrow_red
+
 Autonomous Movement
 Type: Fixed
 Speed: 3: Slow
 Freq: 3: Low
 Options Enabled
 Move Animation
+Stop Animation
 Trigger: Player Touch
 
 List of Event Commands:
-@>Play SE: 'Door exit', 80, 100
-@>Change Screen Color Tone: (-255,-255,-255,0), @8
-@>Wait: 8 frame(s)
-@>Transfer Player:[124: Infinity Veil], (002,017)
-@>Change Screen Color Tone: (0,0,0,0), @8
+@>Conditional Branch: Player is facing Down
+ @>Play SE: 'Door exit', 80, 100
+ @>Change Screen Color Tone: (-255,-255,-255,0), @8
+ @>Wait: 8 frame(s)
+ @>Transfer Player:[124: Infinity Veil], (002,017)
+ @>Change Screen Color Tone: (0,0,0,0), @8
+ @>
+: Branch End
 @>
 
 #------------------------------------------------------------------------------
 Event ID: 010
-Event Name: EV010
+Event Name: ExitArrow
 (X,Y): (043,021)
+
+Page #1
+Conditions
+None
+
+Graphic: Exitarrow_red
+
+Autonomous Movement
+Type: Fixed
+Speed: 3: Slow
+Freq: 3: Low
+Options Enabled
+Move Animation
+Stop Animation
+Trigger: Player Touch
+
+List of Event Commands:
+@>Conditional Branch: Player is facing Down
+ @>Play SE: 'Door exit', 80, 100
+ @>Change Screen Color Tone: (-255,-255,-255,0), @8
+ @>Wait: 8 frame(s)
+ @>Transfer Player:[124: Infinity Veil], (002,018)
+ @>Change Screen Color Tone: (0,0,0,0), @8
+ @>
+: Branch End
+@>
+
+#------------------------------------------------------------------------------
+Event ID: 011
+Event Name: ExitArrow
+(X,Y): (021,039)
+
+Page #1
+Conditions
+None
+
+Graphic: Exitarrow_red
+
+Autonomous Movement
+Type: Fixed
+Speed: 3: Slow
+Freq: 3: Low
+Options Enabled
+Move Animation
+Stop Animation
+Trigger: Player Touch
+
+List of Event Commands:
+@>Conditional Branch: Player is facing Down
+ @>Play SE: 'Door exit', 100, 100
+ @>Change Screen Color Tone: (-255,-255,-255,0), @6
+ @>Wait: 8 frame(s)
+ @>Transfer Player:[098: Lunar Palace - Outside], (044,004), Down, No Fade
+ @>Change Screen Color Tone: (0,0,0,0), @6
+ @>
+: Branch End
+@>
+
+#------------------------------------------------------------------------------
+Event ID: 012
+Event Name: ExitArrow
+(X,Y): (022,039)
+
+Page #1
+Conditions
+None
+
+Graphic: Exitarrow_red
+
+Autonomous Movement
+Type: Fixed
+Speed: 3: Slow
+Freq: 3: Low
+Options Enabled
+Move Animation
+Stop Animation
+Trigger: Player Touch
+
+List of Event Commands:
+@>Conditional Branch: Player is facing Down
+ @>Play SE: 'Door exit', 100, 100
+ @>Change Screen Color Tone: (-255,-255,-255,0), @6
+ @>Wait: 8 frame(s)
+ @>Transfer Player:[098: Lunar Palace - Outside], (045,004), Down, No Fade
+ @>Change Screen Color Tone: (0,0,0,0), @6
+ @>
+: Branch End
+@>
+
+#------------------------------------------------------------------------------
+Event ID: 013
+Event Name: EV013
+(X,Y): (021,019)
 
 Page #1
 Conditions
@@ -78246,17 +78762,139 @@ None
 Autonomous Movement
 Type: Fixed
 Speed: 3: Slow
+Freq: 6: Highest
+Options Enabled
+Move Animation
+Trigger: Event Touch
+
+List of Event Commands:
+@>Play SE: 'Door exit', 60, 100
+@>Change Screen Color Tone: (-255,-255,-255,0), @6
+@>Wait: 8 frame(s)
+@>Transfer Player:[133: Lunar Palace - Rooms], (030,015), Up, No Fade
+@>Change Screen Color Tone: (0,0,0,0), @6
+@>
+
+Page #2
+Conditions
+Switch 0022: s:tsOff?("A") is ON
+
+Autonomous Movement
+Type: Fixed
+Speed: 3: Slow
 Freq: 3: Low
 Options Enabled
 Move Animation
-Trigger: Player Touch
+Trigger: Autorun
 
 List of Event Commands:
-@>Play SE: 'Door exit', 80, 100
-@>Change Screen Color Tone: (-255,-255,-255,0), @8
+@>Conditional Branch: Script: get_self.onEvent?
+ @>Change Transparent Flag: Normal
+ @>Set Move Route: Player
+                   (Ignore If Can't Move)
+  :              : $>Move Down
+ @>Wait for Move's Completion
+ @>
+: Branch End
+@>Script: setTempSwitchOn("A")
+@>
+
+#------------------------------------------------------------------------------
+Event ID: 014
+Event Name: EV014
+(X,Y): (022,019)
+
+Page #1
+Conditions
+None
+
+Autonomous Movement
+Type: Fixed
+Speed: 3: Slow
+Freq: 6: Highest
+Options Enabled
+Move Animation
+Trigger: Event Touch
+
+List of Event Commands:
+@>Play SE: 'Door exit', 60, 100
+@>Change Screen Color Tone: (-255,-255,-255,0), @6
 @>Wait: 8 frame(s)
-@>Transfer Player:[124: Infinity Veil], (002,018)
-@>Change Screen Color Tone: (0,0,0,0), @8
+@>Transfer Player:[133: Lunar Palace - Rooms], (031,015), Up, No Fade
+@>Change Screen Color Tone: (0,0,0,0), @6
+@>
+
+Page #2
+Conditions
+Switch 0022: s:tsOff?("A") is ON
+
+Autonomous Movement
+Type: Fixed
+Speed: 3: Slow
+Freq: 3: Low
+Options Enabled
+Move Animation
+Trigger: Autorun
+
+List of Event Commands:
+@>Conditional Branch: Script: get_self.onEvent?
+ @>Change Transparent Flag: Normal
+ @>Set Move Route: Player
+                   (Ignore If Can't Move)
+  :              : $>Move Down
+ @>Wait for Move's Completion
+ @>
+: Branch End
+@>Script: setTempSwitchOn("A")
+@>
+
+#------------------------------------------------------------------------------
+Event ID: 015
+Event Name: EV015
+(X,Y): (015,019)
+
+Page #1
+Conditions
+None
+
+Autonomous Movement
+Type: Fixed
+Speed: 3: Slow
+Freq: 6: Highest
+Options Enabled
+Move Animation
+Trigger: Event Touch
+
+List of Event Commands:
+@>Play SE: 'Door exit', 60, 100
+@>Change Screen Color Tone: (-255,-255,-255,0), @6
+@>Wait: 8 frame(s)
+@>Transfer Player:[133: Lunar Palace - Rooms], (006,011), Up, No Fade
+@>Change Screen Color Tone: (0,0,0,0), @6
+@>
+
+Page #2
+Conditions
+Switch 0022: s:tsOff?("A") is ON
+
+Autonomous Movement
+Type: Fixed
+Speed: 3: Slow
+Freq: 3: Low
+Options Enabled
+Move Animation
+Trigger: Autorun
+
+List of Event Commands:
+@>Conditional Branch: Script: get_self.onEvent?
+ @>Change Transparent Flag: Normal
+ @>Set Move Route: Player
+                   (Ignore If Can't Move)
+  :              : $>Move Down
+ @>Wait for Move's Completion
+ @>
+: Branch End
+@>Script: setTempSwitchOn("A")
 @>
 
 #------------------------------------------------------------------------------
@@ -78450,7 +79088,7 @@ Event Name: Autorun
 
 Page #1
 Conditions
-Variable 0121: TKoL Plot Variable is 24 or above
+Variable 0121: TKoL Plot Variable is 25 or above
 
 Autonomous Movement
 Type: Fixed
@@ -78497,6 +79135,8 @@ List of Event Commands:
  :              : $>Move Down
 @>Text: Glad to see that you didn't run, Miss \pn! That wouldn't have 
  :    : been a very good look for the Savior of the Moon.
+@>Set Move Route: Player
+ :              : $>Turn Up
 @>Text: \xn[\pn]Well when the alternative is being dragged here unwillingly,
  :    : what other options did I have...
 @>Text: \xn[\pn]Besides, I can't lie and say I'm not interested in... whatever 
@@ -78732,7 +79372,7 @@ List of Event Commands:
  @>Script: pbSetSelfSwitch(17,"A",false)
  @>Text: Will both sides please take their positions on the field before we
   :    : begin?
- @>Control Variables: [0121: TKoL Plot Variable] = 25
+ @>Control Variables: [0121: TKoL Plot Variable] = 26
  @>
 : Else
  @>Script: pbTrainerEnd
@@ -78743,7 +79383,7 @@ List of Event Commands:
 
 Page #2
 Conditions
-Variable 0121: TKoL Plot Variable is 25 or above
+Variable 0121: TKoL Plot Variable is 26 or above
 
 Autonomous Movement
 Type: Fixed
@@ -78801,6 +79441,7 @@ List of Event Commands:
  :              : $>Turn Right
 @>Wait for Move's Completion
 @>Text: Begin!
+@>Change Text Options: Bottom, Show
 @>Script: pbTrainerIntro(:TOYOHIME)
 @>Control Switches: [0104: Transition Handler] = ON
 @>Control Variables: [0103: Vs. Transition ID] = 50
@@ -82406,6 +83047,7 @@ Map ID: 117
 Map Name: Kirisame General Store
 Tileset: 029: Interior (General)
 Width: 25, Height: 20
+Auto-Change BGM: W-018. This Dull World's Unchanging Pessemism (Village)
 
 #------------------------------------------------------------------------------
 Event ID: 001
@@ -93334,6 +93976,305 @@ Map ID: 133
 Map Name: Lunar Palace - Rooms
 Tileset: 048: Lunar Capital Palace
 Width: 55, Height: 25
+
+#------------------------------------------------------------------------------
+Event ID: 001
+Event Name: ExitArrow
+(X,Y): (030,016)
+
+Page #1
+Conditions
+None
+
+Graphic: Exitarrow_red
+
+Autonomous Movement
+Type: Fixed
+Speed: 3: Slow
+Freq: 3: Low
+Options Enabled
+Move Animation
+Stop Animation
+Trigger: Player Touch
+
+List of Event Commands:
+@>Conditional Branch: Player is facing Down
+ @>Play SE: 'Door exit', 100, 100
+ @>Change Screen Color Tone: (-255,-255,-255,0), @6
+ @>Wait: 8 frame(s)
+ @>Transfer Player:[099: Lunar Palace - Main Hall], (021,019), Down, No Fade
+ @>Change Screen Color Tone: (0,0,0,0), @6
+ @>
+: Branch End
+@>
+
+#------------------------------------------------------------------------------
+Event ID: 002
+Event Name: ExitArrow
+(X,Y): (031,016)
+
+Page #1
+Conditions
+None
+
+Graphic: Exitarrow_red
+
+Autonomous Movement
+Type: Fixed
+Speed: 3: Slow
+Freq: 3: Low
+Options Enabled
+Move Animation
+Stop Animation
+Trigger: Player Touch
+
+List of Event Commands:
+@>Conditional Branch: Player is facing Down
+ @>Play SE: 'Door exit', 100, 100
+ @>Change Screen Color Tone: (-255,-255,-255,0), @6
+ @>Wait: 8 frame(s)
+ @>Transfer Player:[099: Lunar Palace - Main Hall], (022,019), Down, No Fade
+ @>Change Screen Color Tone: (0,0,0,0), @6
+ @>
+: Branch End
+@>
+
+#------------------------------------------------------------------------------
+Event ID: 003
+Event Name: ExitArrow
+(X,Y): (006,012)
+
+Page #1
+Conditions
+None
+
+Graphic: Exitarrow_red
+
+Autonomous Movement
+Type: Fixed
+Speed: 3: Slow
+Freq: 3: Low
+Options Enabled
+Move Animation
+Stop Animation
+Trigger: Player Touch
+
+List of Event Commands:
+@>Conditional Branch: Player is facing Down
+ @>Play SE: 'Door exit', 100, 100
+ @>Change Screen Color Tone: (-255,-255,-255,0), @6
+ @>Wait: 8 frame(s)
+ @>Transfer Player:[099: Lunar Palace - Main Hall], (015,019), Down, No Fade
+ @>Change Screen Color Tone: (0,0,0,0), @6
+ @>
+: Branch End
+@>
+
+#------------------------------------------------------------------------------
+Event ID: 004
+Event Name: ExitArrow
+(X,Y): (007,012)
+
+Page #1
+Conditions
+None
+
+Graphic: Exitarrow_red
+
+Autonomous Movement
+Type: Fixed
+Speed: 3: Slow
+Freq: 3: Low
+Options Enabled
+Move Animation
+Stop Animation
+Trigger: Player Touch
+
+List of Event Commands:
+@>Conditional Branch: Player is facing Down
+ @>Play SE: 'Door exit', 100, 100
+ @>Change Screen Color Tone: (-255,-255,-255,0), @6
+ @>Wait: 8 frame(s)
+ @>Transfer Player:[099: Lunar Palace - Main Hall], (015,019), Down, No Fade
+ @>Change Screen Color Tone: (0,0,0,0), @6
+ @>
+: Branch End
+@>
+
+#------------------------------------------------------------------------------
+Event ID: 005
+Event Name: Healing Statue
+(X,Y): (008,003)
+
+Page #1
+Conditions
+None
+
+Autonomous Movement
+Type: Fixed
+Speed: 3: Slow
+Freq: 3: Low
+Options Enabled
+Move Animation
+Trigger: Action Button
+
+List of Event Commands:
+@>Script: pbSetPokemonCenter
+@>Call Common Event: Akyuu Shrines
+@>
+
+Page #2
+Conditions
+Switch 0001: Starting over is ON
+
+Autonomous Movement
+Type: Fixed
+Speed: 3: Slow
+Freq: 3: Low
+Options Enabled
+Move Animation
+Trigger: Autorun
+
+List of Event Commands:
+@>Set Event Location: [ExitArrow],(017,052)
+@>Set Event Location: [ExitArrow],(029,044)
+@>Set Event Location: [ExitArrow],(051,051)
+@>Set Event Location: [ExitArrow],(057,040)
+@>Set Event Location: [Healing Statue],(031,032)
+@>Set Event Location: [EV006],(015,020)
+@>Set Event Location: [EV007],(049,020)
+@>Set Event Location: [],(064,010)
+@>Control Switches: [0001: Starting over] = OFF
+@>
+
+#------------------------------------------------------------------------------
+Event ID: 006
+Event Name: EV006
+(X,Y): (024,007)
+
+Page #1
+Conditions
+None
+
+Graphic: TPDP_NPC 54
+
+Autonomous Movement
+Type: Fixed
+Speed: 3: Slow
+Freq: 3: Low
+Options Enabled
+Move Animation
+Direction Fix
+Trigger: Action Button
+
+List of Event Commands:
+@>Text: Oh c'mon! Your deck is totally cheap! How was I supposed
+ :    : to prepare for a strategy that would just defeat me in one turn?
+@>
+
+#------------------------------------------------------------------------------
+Event ID: 007
+Event Name: EV007
+(X,Y): (028,008)
+
+Page #1
+Conditions
+None
+
+Graphic: TPDP_NPC 55
+
+Autonomous Movement
+Type: Fixed
+Speed: 3: Slow
+Freq: 3: Low
+Options Enabled
+Move Animation
+Direction Fix
+Trigger: Action Button
+
+List of Event Commands:
+@>Text: Should have played around the trap, it's not my fault
+ :    : you didn't come prepared!
+@>
+
+#------------------------------------------------------------------------------
+Event ID: 008
+Event Name: EV008
+(X,Y): (024,012)
+
+Page #1
+Conditions
+None
+
+Graphic: TPDP_NPC 55
+
+Autonomous Movement
+Type: Fixed
+Speed: 3: Slow
+Freq: 3: Low
+Options Enabled
+Move Animation
+Trigger: Action Button
+
+List of Event Commands:
+@>Text: Those two over there have been playing some new card game
+ :    : that somehow made its way to the Capital...
+@>Text: Something invlolving Youkai and Magic cards... I dunno, it's
+ :    : way too complicated for me!
+@>
+
+#------------------------------------------------------------------------------
+Event ID: 009
+Event Name: EV009
+(X,Y): (037,011)
+
+Page #1
+Conditions
+None
+
+Graphic: TPDP_NPC 54
+
+Autonomous Movement
+Type: Fixed
+Speed: 3: Slow
+Freq: 3: Low
+Options Enabled
+Move Animation
+Trigger: Action Button
+
+List of Event Commands:
+@>Text: Shh, don't distract me, I'm building a deck so I can take on
+ :    : those two over there.
+@>Set Move Route: This event
+ :              : $>Turn Right
+@>Text: Let's see, if I run this particular archetype, they might not see it
+ :    : coming... but it leaves me open to surprise traps. Hmm...
+@>
+
+#------------------------------------------------------------------------------
+Event ID: 010
+Event Name: Merchant
+(X,Y): (006,007)
+
+Page #1
+Conditions
+None
+
+Graphic: Person_RabbitPhul
+
+Autonomous Movement
+Type: Fixed
+Speed: 3: Slow
+Freq: 3: Low
+Options Enabled
+Move Animation
+Trigger: Action Button
+
+List of Event Commands:
+@>Script: pbPalaceShop
+@>
+
+#------------------------------------------------------------------------------
 
 #==============================================================================
 Map ID: 135
