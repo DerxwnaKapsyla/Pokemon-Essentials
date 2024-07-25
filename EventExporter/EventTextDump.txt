@@ -2831,7 +2831,7 @@ Map ID: 006
 Map Name: Human Village
 Tileset: 027: Human Village
 Width: 73, Height: 89
-Auto-Change BGM: W-003. This Dull World's Unchanging Pessemism (Village)
+Auto-Change BGM: W-004. Dimension of Reverie.ogg
 
 #------------------------------------------------------------------------------
 Event ID: 001
@@ -3904,7 +3904,6 @@ List of Event Commands:
 
 Page #2
 Conditions
-Switch 0102: Special Battle Switch is ON
 Self Switch A is ON
 
 Graphic: trchar036
@@ -4326,7 +4325,7 @@ List of Event Commands:
 @>Play SE: 'Exit Door', 80, 100
 @>Change Screen Color Tone: (-255,-255,-255,0), @6
 @>Wait: 7 frame(s)
-@>Fade Out BGS: 3 sec.
+@>Script: pbBGMFade(3)
 @>Script: deactivateSpecialBGM("S1_Escape")
 @>Change Transparent Flag: Transparency
 @>Change Screen Color Tone: (0,0,0,0), @6
@@ -8096,7 +8095,7 @@ List of Event Commands:
 @>Wait: 20 frame(s)
 @>Text: \xn[Maya]So you've seen through my clever disguise, 
  :    : ohohoho~ I am the Queen of all Ghosts, Chinami! Fear 
- :    : me-\se[bonk] Ow! What was that for!
+ :    : me-\se[Bonk] Ow! What was that for!
 @>Set Move Route: [Shinji]
  :              : $>Turn Up
 @>Text: \xn[Shinji]You're scaring the poor girl more.
@@ -82308,7 +82307,7 @@ Map ID: 115
 Map Name: Dummy Map
 Tileset: 027: Human Village
 Width: 20, Height: 15
-Auto-Change BGM: W-004. Dimension of Reverie
+Auto-Change BGM: W-004. Dimension of Reverie.ogg
 
 #------------------------------------------------------------------------------
 Event ID: 001
