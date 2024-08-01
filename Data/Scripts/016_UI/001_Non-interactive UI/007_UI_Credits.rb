@@ -99,10 +99,25 @@ class Scene_Credits
       "Nintendo",
       _INTL("Affiliated with Game Freak")
     ])
-    ret.push("", "")
+	ret.push("Gensou Ningyou Enbu was made by:"
+	add_names_to_credits(ret, ["FocasLens","Fantasy Puppet Theater"])
+	ret.push("Touhou Project is owned by:"
+	add_names_to_credits(ret, ["Team Shanghai Alice","ZUN"])
+	ret.push("", "", "", "", "")
+	ret.push("And YOU..."),
+    ret.push("", "", "", "")
     ret.push(_INTL("This is a non-profit fan-made game."),
              _INTL("No copyright infringements intended."),
              _INTL("Please support the official games!"))
+	ret.push("Touhoumon Development Kit",
+	         "2011-2024<s>DerxwnaKapsyla",
+			 "2012-2024<s>ChaoticInfinity Development",
+			 "Based on Pokémon Essentials")
+	ret.push("","")
+	ret.push("Pokémon Essentials",
+	         "2007-2010<s>Peter O.",
+			 "2011-2024<s>Maruno",
+			 "Based on work by Flameguru")
     return ret
   end
 

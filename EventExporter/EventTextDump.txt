@@ -2831,7 +2831,7 @@ Map ID: 006
 Map Name: Human Village
 Tileset: 027: Human Village
 Width: 73, Height: 89
-Auto-Change BGM: W-004. Dimension of Reverie.ogg
+Auto-Change BGM: W-003. This Dull World's Unchanging Pessemism (Village)
 
 #------------------------------------------------------------------------------
 Event ID: 001
@@ -3906,7 +3906,7 @@ Page #2
 Conditions
 Self Switch A is ON
 
-Graphic: trchar036
+Graphic: TPDP_NPC 38
 
 Autonomous Movement
 Type: Custom
@@ -5079,6 +5079,27 @@ List of Event Commands:
  @>
 : Branch End
 @>Control Switches: [0001: Starting over] = OFF
+@>
+
+#------------------------------------------------------------------------------
+Event ID: 049
+Event Name: EV049
+(X,Y): (039,071)
+
+Page #1
+Conditions
+None
+
+Autonomous Movement
+Type: Fixed
+Speed: 3: Slow
+Freq: 3: Low
+Options Enabled
+Move Animation
+Trigger: Action Button
+
+List of Event Commands:
+@>Script: deactivateSpecialBGM("S1_Escape")
 @>
 
 #------------------------------------------------------------------------------
@@ -6388,7 +6409,6 @@ Move Animation
 Trigger: Autorun
 
 List of Event Commands:
-@>Script: playSpecialBGM("S1_Escape")
 @>Recover All: Entire Party
 @>Scroll Map: Down, 4, 4
 @>Set Move Route: Player
@@ -9051,7 +9071,7 @@ List of Event Commands:
 @>Change Screen Color Tone: (-255,-255,-255,0), @6
 @>Wait: 8 frame(s)
 @>Change Transparent Flag: Normal
-@>Transfer Player:[011: Ruined Western Mansion], (008,014), Up, No Fade
+@>Transfer Player:[012: First Floor], (024,037), Up, No Fade
 @>Change Screen Color Tone: (0,0,0,0), @6
 @>
 
@@ -17399,9 +17419,9 @@ Move Animation
 Trigger: Action Button
 
 List of Event Commands:
-@>Script: $game_variables[1] = $game_switches[126] ? "Yes" : "No"
-:       : $game_variables[2] = $game_switches[127] ? "Yes" : "No"
-:       : $game_variables[3] = $game_switches[128] ? "Yes" : "No"
+@>Script: $game_variables[1] = $game_switches[145] ? "Yes" : "No"
+:       : $game_variables[2] = $game_switches[143] ? "Yes" : "No"
+:       : $game_variables[3] = $game_switches[146] ? "Yes" : "No"
 @>Conditional Branch: Variable [0121: TKoL Plot Variable] >= 26
  @>Text: \sign[signskin]\l[5]<ac>The Kingdom of Lunacy</ac>\nStatus: Cleared
   :    : \nWent Off Script: \v[1]
@@ -17722,31 +17742,6 @@ List of Event Commands:
 @>
 
 #------------------------------------------------------------------------------
-Event ID: 011
-Event Name: EV011
-(X,Y): (019,019)
-
-Page #1
-Conditions
-None
-
-Autonomous Movement
-Type: Fixed
-Speed: 3: Slow
-Freq: 3: Low
-Options Enabled
-Move Animation
-Trigger: Action Button
-
-List of Event Commands:
-@>Play SE: 'Exit Door', 80, 100
-@>Change Screen Color Tone: (-255,-255,-255,0), @6
-@>Wait: 8 frame(s)
-@>Transfer Player:[086: Bamboo Forest of the Lost], (011,057), No Fade
-@>Change Screen Color Tone: (0,0,0,0), @6
-@>
-
-#------------------------------------------------------------------------------
 Event ID: 012
 Event Name: EV012
 (X,Y): (019,029)
@@ -17796,7 +17791,7 @@ List of Event Commands:
 @>Show Choices: Yes, No
 (When Cancel: Choice 2)
 : When [Yes]
- @>Control Variables: [0105: Game Selected] = 2
+ @>Control Variables: [0105: Game Selected] = 3
  @>Move Picture: 1, @20, Upper Left (0,0), (100%,100%), 0, Normal
  @>Wait: 20 frame(s)
  @>Transfer Player:[005: The Kingdom of Lunacy], (001,001)
@@ -17804,8 +17799,9 @@ List of Event Commands:
   @>Control Variables: [0099: NG+ Loop] += 1
   @>
  : Branch End
- @>Control Variables: [0121..0128] = 0
+ @>Control Variables: [0121..0135] = 0
  @>Control Switches: [0141..0142] = OFF
+ @>Control Switches: [0144: Clownpiece Checkpoint] = OFF
  @>
 : When [No]
  @>Move Picture: 1, @20, Upper Left (0,0), (100%,100%), 0, Normal
@@ -18126,8 +18122,6 @@ List of Event Commands:
 @>Text: \l[4]You will now be returned to the Title Screen. 
  :    : When you resume the game, you will be at your last 
  :    : save point.
-@>Script: pbAllowSpeedup
-:       : $GameSpeed = pbGet(1)
 @>Change Text Options: Bottom, Show
 @>Return to Title Screen
 @>
@@ -18246,9 +18240,6 @@ Move Animation
 Trigger: Autorun
 
 List of Event Commands:
-@>Script: $game_variables[1] = $GameSpeed
-:       : pbDisallowSpeedup
-:       : $GameSpeed = 0
 @>Fade Out BGM: 2 sec.
 @>Change Screen Color Tone: (-255,-255,-255,0), @20
 @>Wait: 20 frame(s)
@@ -22236,9 +22227,9 @@ List of Event Commands:
 @>Fade Out BGM: 1 sec.
 @>Change Screen Color Tone: (-85,-85,-85,0), @8
 @>Wait: 20 frame(s)
-@>Script: $game_variables[1] = $GameSpeed
-:       : pbDisallowSpeedup
-:       : $GameSpeed = 0
+@>Script: # $game_variables[1] = $GameSpeed
+:       : # pbDisallowSpeedup
+:       : # $GameSpeed = 0
 @>Comment: --- Phantom Ensemble ~ Rehearsal Mix ---
 @>Script: playSpecialBGM("S6_Performance")
 @>Wait: 10 frame(s)
@@ -22275,9 +22266,9 @@ List of Event Commands:
 @>Change Screen Color Tone: (0,0,0,0), @8
 @>Change Text Options: Bottom, Show
 @>Comment: --- Phantom Ensemble ~ Rehearsal Mix ---
-@>Script: pbAllowSpeedup
-:       : $GameSpeed = pbGet(1)
-:       : deactivateSpecialBGM("S6_Performance")
+@>Script: # pbAllowSpeedup
+:       : # $GameSpeed = pbGet(1)
+:       : # deactivateSpecialBGM("S6_Performance")
 @>Restore BGM/BGS
 @>Text: \xn[Mystia]Well, it's sounding better, but you're still a bit off!
 @>Text: \xn[Mystia]Let's take a brief break and get back into the exercises.
@@ -22557,6 +22548,344 @@ List of Event Commands:
 @>
 
 Page #2
+Conditions
+None
+
+Autonomous Movement
+Type: Fixed
+Speed: 3: Slow
+Freq: 3: Low
+Options Enabled
+Move Animation
+Trigger: Autorun
+
+List of Event Commands:
+@>Change Screen Color Tone: (0,0,0,0), @6
+@>Change Text Options: Bottom, Show
+@>Set Event Location: [Mystia],(015,016), Up
+@>Text: \xn[Mystia]And from the top, let's go one more time!
+@>Memorize BGM/BGS
+@>Fade Out BGM: 1 sec.
+@>Change Screen Color Tone: (-85,-85,-85,0), @8
+@>Wait: 20 frame(s)
+@>Script: # $game_variables[1] = $GameSpeed
+:       : # pbDisallowSpeedup
+:       : # $GameSpeed = 0
+@>Comment: --- Phantom Ensemble ~ Rehearsal Mix ---
+@>Script: # playSpecialBGM("S6_Performance")
+@>Wait: 10 frame(s)
+@>Play BGM: 'X-002. Phantom Ensemble ~ Rehearsal Mix', 100, 100
+@>Change Text Options: Middle, Hide
+@>Text: <ac><i>\se[]\l[3]\ts[]What\wt[6] are\wt[4] you,\wt[8] with\wt[8] bo\wt[6]dies\wt[2] made\wt[12] of\wt[8] bro\wt[7]ken\wt[4] glass\wt[10] 
+ :    : from\wt[8] fa\wt[8]ded\wt[2] mir\wt[6]rors\wt[2] of\wt[4] the\wt[4] past?\wtnp[4]</i></ac>
+@>Text: <ac><i>\se[]\ts[]\l[3]In\wt[2] the\wt[2] end,\wt[10] less\wt[8] pre\wt[8]cious\wt[4] and\wt[10] more\wt[8] 
+ :    : frag\wt[8]ile\wt[4] than\wt[10] por\wt[6]cel\wt[8]ain\wt[2] dolls.\wtnp[30]</i></ac>
+@>Scroll Map: Up, 12, 1
+@>Text: <ac><i>\se[]\ts[]\l[3]If\wt[2] the\wt[2] con\wt[6]cert\wt[8] car\wt[8]ries\wt[4] on\wt[10] with\wt[8] or\wt[8] 
+ :    : with\wt[4]out\wt[10] the\wt[6] touch\wt[8] of\wt[2] your\wt[6] ill\wt[4]u\wt[2]sive\wt[2] hands,\wtnp[6]</ac></i>
+@>Text: <ac><i>\se[]\ts[]\l[3]Then\wt[2] what\wt[2] can\wt[8] you\wt[8] say\wt[8] you\wt[4] have\wt[12] 
+ :    : done\wt[8] by\wt[6] the\wt[2] time\wt[10] the\wt[8] cur\wt[8]tain\wt[2] 
+ :    : falls?\wtnp[16]</ac></i>
+@>Text: <ac>\se[]\l[3]\ts[]What\wt[6] are\wt[4] we,\wt[8] with\wt[8] bo\wt[6]dies\wt[2] made\wt[12] of\wt[8] bro\wt[7]ken\wt[4] glass\wt[10] 
+ :    : from\wt[8] fa\wt[8]ded\wt[2] mir\wt[6]rors\wt[2] of\wt[4] the\wt[4] past?\wtnp[2]</ac>
+@>Text: <ac>\se[]\ts[]\l[3]In\wt[2] the\wt[2] end,\wt[10] less\wt[8] pre\wt[8]cious\wt[4] and\wt[10] more\wt[8] 
+ :    : frag\wt[8]ile\wt[4] than\wt[10] por\wt[6]cel\wt[8]ain\wt[2] dolls.\wtnp[30]</ac>
+@>Text: <ac>\se[]\ts[]\l[3]If\wt[2] the\wt[2] con\wt[6]cert\wt[8] car\wt[8]ries\wt[4] on\wt[10] with\wt[8] or\wt[8] 
+ :    : with\wt[4]out\wt[10] the\wt[6] touch\wt[8] of\wt[2] our\wt[6] ill\wt[4]u\wt[2]sive\wt[2] hands,\wtnp[8]</ac>
+@>Text: <ac>\se[]\ts[]\l[3]Then\wt[2] what\wt[2] can\wt[8] we\wt[8] say\wt[8] we\wt[4] have\wt[12] 
+ :    : done\wt[8] by\wt[6] the\wt[2] time\wt[10] the\wt[8] cur\wt[8]tain\wt[2] 
+ :    : falls?\wtnp[60]</ac>
+@>Script: pbBGMFade(0.1)
+@>Wait: 20 frame(s)
+@>Change Screen Color Tone: (-255,-255,-255,0), @8
+@>Wait: 8 frame(s)
+@>Change Transparent Flag: Normal
+@>Transfer Player:[025: Performance Hall], (015,025)
+@>Change Screen Color Tone: (0,0,0,0), @8
+@>Change Text Options: Bottom, Show
+@>Comment: --- Phantom Ensemble ~ Rehearsal Mix ---
+@>Script: # pbAllowSpeedup
+:       : # $GameSpeed = pbGet(1)
+:       : # deactivateSpecialBGM("S6_Performance")
+@>Restore BGM/BGS
+@>Text: \xn[Mystia]Well, it's sounding better, but you're still a bit off!
+@>Text: \xn[Mystia]Let's take a brief break and get back into the exercises.
+@>Set Event Location: [Mystia],(011,019), Up
+@>Set Move Route: [Mystia]
+ :              : $>Move Down
+ :              : $>Move Down
+ :              : $>Move Down
+@>Wait for Move's Completion
+@>Text: \xn[Mystia]Oh hey, welcome \PN! Did you just get here?
+@>Text: \xn[\pn]Yeah, was just going around the mansion once more...
+@>Text: \xn[\pn]Did I interupt something?
+@>Text: \xn[Mystia]Nope! We're taking a short break from practice.
+@>Text: \xn[Mystia]I suppose you want to see the Sisters now, huh?
+@>Text: \xn[\pn]Well it's what we came here for!
+@>Text: \xn[Mystia]Then head on over to the front of the stage!
+ :    : I'm sure you don't want to keep the Sisters waiting
+ :    : any longer.
+@>Set Move Route: [Lyrica]
+ :              : $>Turn Right
+@>Set Move Route: [Merlin]
+ :              : $>Turn Left
+@>Set Move Route: [Lunasa]
+ :              : $>Turn Up
+@>Set Move Route: [Mystia]
+ :              : $>Move Up
+ :              : $>Move Up
+ :              : $>Move Up
+ :              : $>Move Up
+ :              : $>Move Up
+ :              : $>Move Up
+ :              : $>Move Up
+ :              : $>Move Up
+ :              : $>Turn Right
+@>Set Move Route: Player
+ :              : $>Move Up
+ :              : $>Move Right
+ :              : $>Move Right
+ :              : $>Move Right
+ :              : $>Move Right
+ :              : $>Move Up
+ :              : $>Move Up
+ :              : $>Move Up
+ :              : $>Move Up
+ :              : $>Move Up
+ :              : $>Move Up
+ :              : $>Move Up
+ :              : $>Move Up
+@>Wait for Move's Completion
+@>Set Move Route: Player
+ :              : $>Move Up
+ :              : $>Move Left
+ :              : $>Move Left
+ :              : $>Move Left
+ :              : $>Move Left
+ :              : $>Turn Up
+@>Text: \xn[Lyrica]We should go over the lyrics again, see
+ :    : if we can get a better feel for them.\wtnp[10]
+@>Text: \xn[Lyrica]What about you Lunasa, what do you think?\wtnp[10]
+@>Text: \xn[Lunasa]I think we need to just get better at practicing
+ :    : the pace of our singing.\wtnp[10]
+@>Text: \xn[Lunasa]I'm pretty sure we have the lyrics well memorized.\wtnp[10]
+@>Text: \xn[Lunasa]Do you have any insight Merlin?\wtnp[10]
+@>Text: \xn[Merlin]Well... what if we need to work on both.\wtnp[10]
+@>Text: \xn[Merlin]This is our first time actually singing, so it 
+ :    : doesn't hurt to go over all our bases!\wtnp[10]
+@>Text: \xn[Prismriver Sisters]Hmm...\wtnp[20]
+@>Wait: 20 frame(s)
+@>Set Move Route: [Lyrica]
+ :              : $>Turn Down
+@>Wait for Move's Completion
+@>Show Animation: [Lyrica], [Exclaim bubble]
+@>Text: \xn[Lyrica]Oh! \PN's finally here!
+@>Set Move Route: [Lunasa]
+ :              : $>Turn Down
+@>Set Move Route: [Merlin]
+ :              : $>Turn Down
+@>Text: \xn[Lunasa]So this is the human you met downstairs.
+@>Text: \xn[Merlin]They look like a ghost... Lyrica did you
+ :    : scare them too much!?
+@>Text: \xn[Lyrica]I did no such thing! If anything, they're the
+ :    : one who surprised me~!
+@>Text: \xn[Lunasa]Either way... On behalf of my sisters and I,
+ :    : we welcome you to Prismriver Manor.
+@>Text: \xn[Lunasa]Though it's seen better days, this is still our home,
+ :    : and we must make you feel at home.
+@>Set Move Route: Player
+ :              : $>Turn Left
+@>Text: \xn[\pn]The welcoming committee has already done a good
+ :    : job of that, I'd say.
+@>Wait: 10 frame(s)
+@>Show Animation: [Mystia], [Exclaim bubble]
+@>Wait: 1 frame(s)
+@>Set Move Route: [Mystia]
+ :              : $>Turn Left
+@>Wait for Move's Completion
+@>Wait: 10 frame(s)
+@>Text: \xn[Lunasa]Ahem... Allow us to introduce ourselves properly.
+@>Set Move Route: Player
+ :              : $>Turn Up
+@>Wait for Move's Completion
+@>Wait: 10 frame(s)
+@>Set Move Route: [Lunasa]
+ :              : $>Move Down
+@>Text: \xn[Lunasa]I am Lunasa Prismriver, the phantom 
+ :    : violinist, and the oldest of us three sisters.
+@>Set Move Route: [Lunasa]
+ :              : $>Direction Fix ON
+ :              : $>Move Up
+ :              : $>Direction Fix OFF
+@>Wait for Move's Completion
+@>Wait: 10 frame(s)
+@>Set Move Route: [Autorun]
+ :              : $>Turn Right
+@>Set Move Route: [Merlin]
+ :              : $>Move Down
+@>Text: \xn[Merlin]I'm Merlin Prismriver, the phantom trumpeter, 
+ :    : and also the middle sibling of us three sisters!
+@>Set Move Route: [Merlin]
+ :              : $>Direction Fix ON
+ :              : $>Move Up
+ :              : $>Direction Fix OFF
+@>Wait for Move's Completion
+@>Wait: 10 frame(s)
+@>Set Move Route: [Lyrica]
+ :              : $>Move Down
+@>Text: \xn[Lyrica]You and I have already met, but let's go over
+ :    : it again anyway~
+@>Text: \xn[Lyrica]Lyrica Prismriver, phantom keyboardist, and
+ :    : the youngest of the three sisters.
+@>Set Move Route: [Lyrica]
+ :              : $>Direction Fix ON
+ :              : $>Move Up
+ :              : $>Direction Fix OFF
+@>Text: \xn[Lyrica]And together, the three of us combined make\..\..\..\wtnp[10]
+@>Set Move Route: [Lyrica]
+ :              : $>Move Down
+@>Set Move Route: [Merlin]
+ :              : $>Move Down
+@>Set Move Route: [Lunasa]
+ :              : $>Move Down
+@>Text: \xn[Prismriver Sisters]The Prismriver Ensemble! 
+@>Play SE: 'Applause', 70, 100
+@>Set Move Route: [Mystia]
+ :              : $>Turn Right
+@>Wait: 60 frame(s)
+@>Set Move Route: [Lunasa]
+ :              : $>Turn Left
+@>Text: \xn[Lunasa]Did you have to do that?
+@>Set Move Route: [Lyrica]
+ :              : $>Turn Right
+@>Text: \xn[Lyrica]It just felt right!
+@>Wait: 20 frame(s)
+@>Text: \xn[\pn]Well that was... an introduction. 
+@>Set Move Route: [Lunasa]
+ :              : $>Turn Down
+@>Set Move Route: [Lyrica]
+ :              : $>Turn Down
+@>Text: \xn[Lunasa]Say \PN, did you happen to catch our
+ :    : most recent practice? Maybe you can help us out.
+@>Text: \xn[Lyrica]Are you sure you wanna drag in a
+ :    : fourth party?
+@>Text: \xn[Lyrica]I thought we were a triumverate, not a quartet~
+@>Text: \xn[Lunasa]An artist always accepts critique of their
+ :    : work, be it from whoever is willing to offer it.
+@>Text: \xn[Lyrica]True enough! So \PN, what would you say about our
+ :    : last practice. Any thoughts to contribute?
+@>Show Choices: The singing felt off time, Not enough feel for lyrics, Both, No comment
+(When Cancel: Choice 2)
+: When [The singing felt off time]
+ @>Text: \xn[\pn]Well... If I had to answer, I'd say that it felt like the
+  :    : singing wasn't timed to the tune properly.
+ @>Text: \xn[\pn]I'm no music expert though, so don't take my word for it.
+ @>Text: \xn[Lunasa]That's what I figured. Our entire singing was
+  :    : off time!
+ @>Text: \xn[Lyrica]Maybe we were a bit off time, I guess
+  :    : it's something worth trying to rectify.
+ @>
+: When [Not enough feel for lyrics]
+ @>Text: \xn[\pn]The way you three were singing, it felt as
+  :    : if you didn't have a full grasp of the lyrics yet.
+ @>Text: \xn[\pn]Maybe going over them some more without the
+  :    : music might help?
+ @>Text: \xn[\pn]See, I told you so! We needed to spend
+  :    : more time going over the lyrics!
+ @>Text: \xn[Lunasa]Even though you're the one who wrote
+  :    : them?
+ @>Text: \xn[Lyrica]Just because I wrote something, doesn't
+  :    : mean I can remember it perfectly~
+ @>
+: When [Both]
+ @>Text: \xn[\pn]I'm... not entirely sure, but it felt like the entire
+  :    : thing was a bit lacking.
+ @>Show Animation: [Mystia], [Exclaim bubble]
+ @>Text: \xn[\pn]The singing was off tune just slightly at some points,
+  :    : and there were other points where it felt like you were
+  :    : stumbling over lyrics.
+ @>Text: \xn[\pn]Maybe taking it one step at a time might help?
+ @>Wait: 20 frame(s)
+ @>Text: \xn[Lyrica]So you're saying that both the lyrics...
+ @>Text: \xn[Lunasa]...And our singing were off...
+ @>Wait: 10 frame(s)
+ @>Set Move Route: [Lyrica]
+  :              : $>Turn Right
+ @>Set Move Route: [Lunasa]
+  :              : $>Turn Right
+ @>Wait for Move's Completion
+ @>Wait: 10 frame(s)
+ @>Show Animation: [Merlin], [Question bubble]
+ @>Wait: 10 frame(s)
+ @>Set Move Route: [Merlin]
+  :              : $>Turn Left
+ @>Wait for Move's Completion
+ @>Text: \xn[Merlin]What? I did mention that we should go back
+  :    : over all of it!
+ @>Text: \xn[Merlin]As professionals, its our job to analyze each aspect
+  :    : of our performance to its fullest to ensure it goes as
+  :    : best it can!
+ @>Wait: 10 frame(s)
+ @>Text: \xn[Lyrica]She does have a point, doesn't she?
+ @>Text: \xn[Lunasa]We are professionals, so we should be acting
+  :    : like professionals! Give it our all or not at all!
+ @>Text: \xn[Merlin]Hehe, that's more like it!
+ @>Text: \xn[\pn]As long as you three work hard and practice to
+  :    : your best, you three can acomplish anything!
+ @>Set Move Route: [Lyrica]
+  :              : $>Turn Down
+ @>Set Move Route: [Merlin]
+  :              : $>Turn Down
+ @>Set Move Route: [Lunasa]
+  :              : $>Turn Down
+ @>
+: When [No comment]
+ @>Text: \xn[\pn]Sorry, I'm no expert when it comes to music affairs.
+  :    : I couldn't hear any issues with it even if there are any.
+ @>Text: \xn[\pn]But if Miss Mystia is instructing you, it might be
+  :    : best to get feedback from her.
+ @>Text: \xn[Lyrica]That's... probably a good idea, yeah.
+ @>Text: \xn[Lunasa]She is the one with extensive vocal training
+  :    : afterall, so her coaching is extremely helpful.
+ @>
+: Branch End
+@>Text: \xn[\pn]Though honestly, for what it's worth, I think
+ :    : you three sounded great!
+@>Text: \xn[\pn]You're able to play your instruments and sing at the
+ :    : same time. That's impressive in my book!
+@>Text: \xn[Lunasa]We really aprpeciate your help all the same.
+@>Text: \xn[Lunasa]It can be good to get the viewpoint of an unrelated
+ :    : third party sometimes.
+@>Text: \xn[Lunasa]Especially when it comes to improving oneself.
+@>Text: \xn[Lyrica]We need to be in top shape for this performance.
+@>Text: \xn[Lyrica]It's our first time actually singing along to one of our songs,
+ :    : so we want to make sure that we do our absolute best!
+@>Text: \xn[Merlin]Given how practice-happy us sisters are, we should be
+ :    : fine!
+@>Text: \xn[Merlin]But having someone help point us down the right
+ :    : path helps make things a lot easier for us!
+@>Wait: 20 frame(s)
+@>Set Move Route: [Lunasa]
+ :              : $>Turn Up
+@>Text: \xn[Lunasa]... You know, I just thought of something.
+@>Set Move Route: [Lyrica]
+ :              : $>Turn Right
+@>Text: \xn[Lyrica]Oh? Perhaps the same thing I'm thinking of?
+@>Set Move Route: [Merlin]
+ :              : $>Turn Left
+@>Text: \xn[Merlin]Oh oh, I think we're all thinking the same thing!
+@>Text: \xn[\pn]I have a really bad feeling about this...
+@>Wait: 10 frame(s)
+@>Set Move Route: [Lyrica]
+ :              : $>Turn Down
+@>Set Move Route: [Merlin]
+ :              : $>Turn Down
+@>Set Move Route: [Lunasa]
+ :              : $>Turn Down
+@>Control Self Switch: A =ON
+@>
+
+Page #3
 Conditions
 Self Switch A is ON
 
@@ -22976,7 +23305,7 @@ Map ID: 026
 Map Name: Stairs to Roof
 Tileset: 037: Ruined Western Mansion
 Width: 20, Height: 15
-Auto-Change BGM: 
+Auto-Change BGM: X-001. Moonlight Sonata (3rd Movement)
 
 #------------------------------------------------------------------------------
 Event ID: 001
@@ -23436,7 +23765,7 @@ Page #2
 Conditions
 Self Switch A is ON
 
-Graphic: trchar112
+Graphic: TPDP_NPC 17
 
 Autonomous Movement
 Type: Fixed
@@ -23519,7 +23848,7 @@ Move Animation
 Trigger: Event Touch
 
 List of Event Commands:
-@>Script: TrainerIntro2(:FAIRY2)
+@>Script: pbTrainerIntro(:FAIRY2)
 @>Script: pbNoticePlayer(get_self)
 @>Text: Look at my Puppet's uniform! Isn't it fancy and official?
 @>Comment: EndSpeech: I wish uniforms were more help during Puppet battles...
@@ -24940,6 +25269,8 @@ Page #3
 Conditions
 Variable 0107: TMoM Plot Variable is 16 or above
 
+Graphic: Person_Kogasa
+
 Autonomous Movement
 Type: Fixed
 Speed: 3: Slow
@@ -25132,9 +25463,6 @@ List of Event Commands:
    :    : village!
   @>Text: \xn[Kogasa]Oh? I think I just got another delicious meal 
    :    : right now~!
-  @>Script: $game_variables[1] = $GameSpeed
-  :       : pbDisallowSpeedup
-  :       : $GameSpeed = 0
   @>Control Switches: [0103: Disable Text Skip] = ON
   @>Fade Out BGM: 1 sec.
   @>Wait: 20 frame(s)
@@ -25170,9 +25498,6 @@ List of Event Commands:
    :    : The Sisters probably will want to hear that
    :    : the problem is solved.
   @>Text: \xn[\pn]And after that, we can finally head home!
-  @>Script: $game_variables[1] = $GameSpeed
-  :       : pbDisallowSpeedup
-  :       : $GameSpeed = 0
   @>Control Switches: [0103: Disable Text Skip] = ON
   @>Text: \xn[\pn]Ahhh... What a long night this has been...\wtnp[40]
   @>Wait: 20 frame(s)
@@ -25274,9 +25599,9 @@ Move Animation
 Trigger: Action Button
 
 List of Event Commands:
-@>Script: $game_variables[1] = $GameSpeed
-:       : pbDisallowSpeedup
-:       : $GameSpeed = 0
+@>Script: # $game_variables[1] = $GameSpeed
+:       : # pbDisallowSpeedup
+:       : # $GameSpeed = 0
 @>Fade Out BGM: 2 sec.
 @>Change Screen Color Tone: (-255,-255,-255,0), @20
 @>Wait: 20 frame(s)
@@ -25322,30 +25647,6 @@ List of Event Commands:
 @>Change Screen Color Tone: (0,0,0,0), @6
 @>Set Move Route: Player
  :              : $>Move Up
-@>
-
-#------------------------------------------------------------------------------
-Event ID: 035
-Event Name: EV035
-(X,Y): (056,005)
-
-Page #1
-Conditions
-None
-
-Autonomous Movement
-Type: Fixed
-Speed: 3: Slow
-Freq: 3: Low
-Options Enabled
-Move Animation
-Trigger: Action Button
-
-List of Event Commands:
-@>Text: \bDEBUG ONLY TEXT: Set the defeat count.
-@>Input Number: [0001: Temp Pokemon Choice], 2 digit(s)
-@>Text: \bSetting losses to \v[1].
-@>Script: $player.defeat_count = pbGet(1)
 @>
 
 #------------------------------------------------------------------------------
@@ -25860,6 +26161,8 @@ List of Event Commands:
  :              : $>Move Down
 @>Wait: 6 frame(s)
 @>Wait: 6 frame(s)
+@>Wait for Move's Completion
+@>Wait: 20 frame(s)
 @>Transfer Player:[021: Ending Filler Map (Good) -2], (036,082), Up
 @>Change Screen Color Tone: (51,17,-34,255), @6
 @>
@@ -26290,7 +26593,7 @@ Page #1
 Conditions
 None
 
-Graphic: Person_YOumu
+Graphic: Person_Youmu
 
 Autonomous Movement
 Type: Fixed
@@ -28058,8 +28361,6 @@ List of Event Commands:
 @>Wait: 20 frame(s)
 @>Change Text Options: Middle, Hide
 @>Text: \se[]...But who said the journey had to end so soon?\wtnp[20]
-@>Script: pbAllowSpeedup
-:       : $GameSpeed = pbGet(1)
 @>Control Switches: [0103: Disable Text Skip] = OFF
 @>Change Text Options: Bottom, Show
 @>Transfer Player:[019: World of Fantasies], (019,020), Down
@@ -39302,10 +39603,10 @@ Move Animation
 Trigger: Event Touch
 
 List of Event Commands:
-@>Script: pbTrainerIntro(:FAIRY_2_ALT)
+@>Script: pbTrainerIntro(:FAIRY_2)
 @>Script: pbNoticePlayer(get_self)
 @>Text: 'tis the season!
-@>Conditional Branch: Script: TrainerBattle.start(FAIRY_2_ALT, "Seles",pbGet(99))
+@>Conditional Branch: Script: TrainerBattle.start(:FAIRY_2_ALT, "Seles",pbGet(99))
  @>Control Self Switch: A =ON
  @>
 : Branch End
@@ -39355,7 +39656,7 @@ List of Event Commands:
 @>Script: pbTrainerIntro(:FAIRY_2_ALT)
 @>Script: pbNoticePlayer(get_self)
 @>Text: Wanna hear me sing? How about my puppets?
-@>Conditional Branch: Script: TrainerBattle.start(FAIRY_2_ALT, "Yoko",pbGet(99))
+@>Conditional Branch: Script: TrainerBattle.start(:FAIRY_2_ALT, "Yoko",pbGet(99))
  @>Control Self Switch: A =ON
  @>
 : Branch End
@@ -39403,7 +39704,7 @@ List of Event Commands:
 @>Script: pbTrainerIntro(:FAIRY_2_ALT)
 @>Script: pbNoticePlayer(get_self)
 @>Text: Hey hey, have you heard the news?
-@>Conditional Branch: Script: TrainerBattle.start(FAIRY_2_ALT, "Inai",pbGet(99))
+@>Conditional Branch: Script: TrainerBattle.start(:FAIRY_2_ALT, "Inai",pbGet(99))
  @>Control Self Switch: A =ON
  @>
 : Branch End
@@ -39451,7 +39752,7 @@ List of Event Commands:
 @>Script: pbTrainerIntro(:FAIRY_1_ALT)
 @>Script: pbNoticePlayer(get_self)
 @>Text: Hey hey, so what's all the buzz about?
-@>Conditional Branch: Script: TrainerBattle.start(FAIRY_1_ALT, "Lydia",pbGet(99))
+@>Conditional Branch: Script: TrainerBattle.start(:FAIRY_1_ALT, "Lydia",pbGet(99))
  @>Control Self Switch: A =ON
  @>
 : Branch End
@@ -39505,7 +39806,7 @@ List of Event Commands:
 @>Script: pbNoticePlayer(get_self)
 @>Text: I cast a spell on you! Poof, now you're going to
  :    : battle me!
-@>Conditional Branch: Script: TrainerBattle.start(FAIRY_2_ALT, "Ami",pbGet(99))
+@>Conditional Branch: Script: TrainerBattle.start(:FAIRY_2_ALT, "Ami",pbGet(99))
  @>Control Self Switch: A =ON
  @>
 : Branch End
@@ -40093,7 +40394,9 @@ List of Event Commands:
 @>Control Variables: [0104: Vs. Transition - Pkmn] = 4
 @>Script: $PokemonGlobal.nextBattleBack="nitori"
 :       : setBattleRule("base","nitori")
-@>Conditional Branch: Script: TrainerBattle.dx_start([:NITORI, "Nitori Kawashiro", 10+(pbGet(99) * 10)], {:backdrop => ["nitori", "nitori"]}, :VS_NITORI)
+:       : setBattleRule("backdrop", "nitori")
+:       : setBattleRule("midbattleScript", :vs_nitori)
+@>Conditional Branch: Script: TrainerBattle.start(:NITORI_Tr, "Nitori Kawashiro", 10+(pbGet(99) * 10))
  @>
 : Else
  @>Exit Event Processing
@@ -40740,7 +41043,7 @@ Move Animation
 Trigger: Event Touch
 
 List of Event Commands:
-@>Script: pbTrainerIntro(:FAIRY_2)
+@>Script: pbTrainerIntro(:FAIRY_2_ALT)
 @>Script: pbNoticePlayer(get_self)
 @>Text: My Puppets are so smart! Check 'em out!
 @>Conditional Branch: Script: TrainerBattle.start(:FAIRY_2_ALT, "Seku",pbGet(99))
@@ -40839,10 +41142,10 @@ Move Animation
 Trigger: Event Touch
 
 List of Event Commands:
-@>Script: TrainerIntro2(:FAIRY_1)
+@>Script: pbTrainerIntro(:FAIRY_1_ALT)
 @>Script: pbNoticePlayer(get_self)
 @>Text: Tag, you're it!
-@>Conditional Branch: Script: TrainerBattle.start(:FAIRY_1, "Kali")
+@>Conditional Branch: Script: TrainerBattle.start(:FAIRY_1_ALT, "Kali")
  @>Control Self Switch: A =ON
  @>
 : Branch End
@@ -41980,7 +42283,7 @@ Move Animation
 Trigger: Event Touch
 
 List of Event Commands:
-@>Script: pbTrainerIntro(:FAIRY_1)
+@>Script: pbTrainerIntro(:FAIRY_1_ALT)
 @>Script: pbNoticePlayer(get_self)
 @>Text: My friend is weird... Maybe you can help distract me from how
  :    : silly she is!
@@ -42765,7 +43068,9 @@ List of Event Commands:
 @>Control Switches: [0104: Transition Handler] = ON
 @>Control Variables: [0103: Vs. Transition ID] = 14
 @>Control Variables: [0104: Vs. Transition - Pkmn] = 4
-@>Conditional Branch: Script: TrainerBattle.dx_start([:HINA, "Hina Kagiyama", 10+(pbGet(99) * 10)], {}, :VS_FAKE_HINA)
+@>Script: setBattleRule("battleIntroText", "{1} came spinning at you!")
+:       : setBattleRule("midbattleScript", :VS_FAKE_HINA)
+@>Conditional Branch: Script: TrainerBattle.start(:HINA_F, "Hina Kagiyama", 10+(pbGet(99) * 10))
  @>Change Screen Color Tone: (-255,-255,-255,0), @6
  @>Wait: 8 frame(s)
  @>Transfer Player:[058: Great Youkai Forest], (028,015), Up, No Fade
@@ -42958,6 +43263,46 @@ List of Event Commands:
 :       : :outcome => 4,
 :       : :bgm => "B-021. Reverse Ideology"}, {},
 :       : :VS_CURSED_PUPPETS)
+@>Conditional Branch: Variable [0004: Temp Move Name] == 1
+ @>Control Variables: [0114: Cursed Puppets defeated] += 1
+ @>Control Self Switch: A =OFF
+ @>
+: Branch End
+@>
+
+Page #3
+Conditions
+Self Switch A is ON
+
+Autonomous Movement
+Type: Custom
+Custom Move Route:
+(Repeat Action)
+$>Script: move_random_range(xrange=2,yrange=2)
+
+Speed: 3: Slow
+Freq: 4: High
+Options Enabled
+Move Animation
+Trigger: Player Touch
+
+List of Event Commands:
+@>Script: possessed_puppet = [:CCHEN,:CMIMA,:CWRIGGLE,:CRUMIA,:CKAGEROU, 
+:       :                      :CLILYWHITE,:CLILYBLACK,:CMOMIJI,
+:       :                      :CHINA,:CSEIJA]
+:       : 
+:       : rand_puppet = possessed_puppet.sample
+:       : pbSet(1, rand_puppet)
+:       : 
+:       : Pokemon.play_cry(pbGet(1))
+@>Wait: 10 frame(s)
+@>Script: setBattleRule("neverCapture")
+:       : setBattleRule("cannotRun")
+:       : setBattleRule("battleBGM", "B-021. Reverse Ideology.ogg")
+:       : setBattleRule("battleIntroText", "The wild {1} lunged out at you!")
+:       : setBattleRule("outcome", 4)
+:       : setBattleRule("midbattleScript", :VS_CURSED_PUPPETS)
+@>Script: WildBattle.start(pbGet(1),35)
 @>Conditional Branch: Variable [0004: Temp Move Name] == 1
  @>Control Variables: [0114: Cursed Puppets defeated] += 1
  @>Control Self Switch: A =OFF
@@ -43201,6 +43546,46 @@ List of Event Commands:
 : Branch End
 @>
 
+Page #3
+Conditions
+Self Switch A is ON
+
+Autonomous Movement
+Type: Custom
+Custom Move Route:
+(Repeat Action)
+$>Script: move_random_range(xrange=2,yrange=2)
+
+Speed: 3: Slow
+Freq: 4: High
+Options Enabled
+Move Animation
+Trigger: Player Touch
+
+List of Event Commands:
+@>Script: possessed_puppet = [:CCHEN,:CMIMA,:CWRIGGLE,:CRUMIA,:CKAGEROU, 
+:       :                      :CLILYWHITE,:CLILYBLACK,:CMOMIJI,
+:       :                      :CHINA,:CSEIJA]
+:       : 
+:       : rand_puppet = possessed_puppet.sample
+:       : pbSet(1, rand_puppet)
+:       : 
+:       : Pokemon.play_cry(pbGet(1))
+@>Wait: 10 frame(s)
+@>Script: setBattleRule("neverCapture")
+:       : setBattleRule("cannotRun")
+:       : setBattleRule("battleBGM", "B-021. Reverse Ideology.ogg")
+:       : setBattleRule("battleIntroText", "The wild {1} lunged out at you!")
+:       : setBattleRule("outcome", 4)
+:       : setBattleRule("midbattleScript", :VS_CURSED_PUPPETS)
+@>Script: WildBattle.start(pbGet(1),35)
+@>Conditional Branch: Variable [0004: Temp Move Name] == 1
+ @>Control Variables: [0114: Cursed Puppets defeated] += 1
+ @>Control Self Switch: A =OFF
+ @>
+: Branch End
+@>
+
 #------------------------------------------------------------------------------
 Event ID: 009
 Event Name: Possessed Puppet
@@ -43269,6 +43654,46 @@ List of Event Commands:
 :       : :outcome => 4,
 :       : :bgm => "B-021. Reverse Ideology"}, {},
 :       : :VS_CURSED_PUPPETS)
+@>Conditional Branch: Variable [0004: Temp Move Name] == 1
+ @>Control Variables: [0114: Cursed Puppets defeated] += 1
+ @>Control Self Switch: A =OFF
+ @>
+: Branch End
+@>
+
+Page #3
+Conditions
+Self Switch A is ON
+
+Autonomous Movement
+Type: Custom
+Custom Move Route:
+(Repeat Action)
+$>Script: move_random_range(xrange=2,yrange=2)
+
+Speed: 3: Slow
+Freq: 4: High
+Options Enabled
+Move Animation
+Trigger: Player Touch
+
+List of Event Commands:
+@>Script: possessed_puppet = [:CCHEN,:CMIMA,:CWRIGGLE,:CRUMIA,:CKAGEROU, 
+:       :                      :CLILYWHITE,:CLILYBLACK,:CMOMIJI,
+:       :                      :CHINA,:CSEIJA]
+:       : 
+:       : rand_puppet = possessed_puppet.sample
+:       : pbSet(1, rand_puppet)
+:       : 
+:       : Pokemon.play_cry(pbGet(1))
+@>Wait: 10 frame(s)
+@>Script: setBattleRule("neverCapture")
+:       : setBattleRule("cannotRun")
+:       : setBattleRule("battleBGM", "B-021. Reverse Ideology.ogg")
+:       : setBattleRule("battleIntroText", "The wild {1} lunged out at you!")
+:       : setBattleRule("outcome", 4)
+:       : setBattleRule("midbattleScript", :VS_CURSED_PUPPETS)
+@>Script: WildBattle.start(pbGet(1),35)
 @>Conditional Branch: Variable [0004: Temp Move Name] == 1
  @>Control Variables: [0114: Cursed Puppets defeated] += 1
  @>Control Self Switch: A =OFF
@@ -44388,7 +44813,7 @@ Move Animation
 Trigger: Event Touch
 
 List of Event Commands:
-@>Script: pnTrainerIntro(:FAIRY_1_ALT)
+@>Script: pbTrainerIntro(:FAIRY_1_ALT)
 @>Script: pbNoticePlayer(get_self)
 @>Text: Peek-a-boo, I see you~!
 @>Conditional Branch: Script: TrainerBattle.start(:FAIRY_1_ALT, "Sakkaku", pbGet(99))
@@ -44446,7 +44871,7 @@ Move Animation
 Trigger: Event Touch
 
 List of Event Commands:
-@>Script: pnTrainerIntro(:FAIRY_1_ALT)
+@>Script: pbTrainerIntro(:FAIRY_1_ALT)
 @>Script: pbNoticePlayer(get_self)
 @>Text: For the revolution!
 @>Conditional Branch: Script: TrainerBattle.start(:FAIRY_1_ALT, "Amari", pbGet(99))
@@ -44696,7 +45121,7 @@ Move Animation
 Trigger: Event Touch
 
 List of Event Commands:
-@>Script: pnTrainerIntro(:FAIRY_1_ALT)
+@>Script: pbTrainerIntro(:FAIRY_1_ALT)
 @>Script: pbNoticePlayer(get_self)
 @>Text: You know what they say! A smile a day makes the pain go away!
 @>Conditional Branch: Script: TrainerBattle.start(:FAIRY_1_ALT, "Nozomi", pbGet(99))
@@ -44801,7 +45226,7 @@ Move Animation
 Trigger: Event Touch
 
 List of Event Commands:
-@>Script: pnTrainerIntro(:FAIRY_1_ALT)
+@>Script: pbTrainerIntro(:FAIRY_1_ALT)
 @>Script: pbNoticePlayer(get_self)
 @>Text: Behold, the fated battle!
 @>Conditional Branch: Script: TrainerBattle.start(:FAIRY_1_ALT, "Sonozaki", pbGet(99))
@@ -46240,14 +46665,12 @@ List of Event Commands:
 
 #------------------------------------------------------------------------------
 Event ID: 007
-Event Name: Counter(3)
-(X,Y): (022,027)
+Event Name: Size(3,1)
+(X,Y): (023,027)
 
 Page #1
 Conditions
 Variable 0115: 3 Fairies defeated is 3 or above
-
-Graphic: Object ball
 
 Autonomous Movement
 Type: Fixed
@@ -46255,7 +46678,7 @@ Speed: 3: Slow
 Freq: 3: Low
 Options Enabled
 Move Animation
-Trigger: Event Touch
+Trigger: Player Touch
 
 List of Event Commands:
 @>Set Move Route: Player
@@ -46321,8 +46744,9 @@ List of Event Commands:
 @>Control Variables: [0103: Vs. Transition ID] = 18
 @>Control Variables: [0104: Vs. Transition - Pkmn] = 6
 @>Script: setBattleRule("2v3")
+:       : setBattleRule("midbattleScript", :VS_THREE_FAIRIES)
 @>Control Self Switch: A =ON
-@>Conditional Branch: Script: TrainerBattle.dx_start([:THREEFAIRY,"of Light", 10+(pbGet(99) * 10)], {:size => "2v3"}, :VS_THREE_FAIRIES)
+@>Conditional Branch: Script: TrainerBattle.start(:THREEFAIRY,"of Light", 10+(pbGet(99) * 10))
  @>Control Self Switch: B =ON
  @>Text: \xn[\pn]Hah... hah... There, I won!
  @>Text: \xn[Sunny]Wow! It's been a long time since someone managed
@@ -46533,13 +46957,11 @@ List of Event Commands:
 #------------------------------------------------------------------------------
 Event ID: 008
 Event Name: Counter(1)
-(X,Y): (027,027)
+(X,Y): (026,027)
 
 Page #1
 Conditions
 Variable 0115: 3 Fairies defeated is 3 or above
-
-Graphic: Object ball
 
 Autonomous Movement
 Type: Fixed
@@ -46547,7 +46969,7 @@ Speed: 3: Slow
 Freq: 3: Low
 Options Enabled
 Move Animation
-Trigger: Event Touch
+Trigger: Player Touch
 
 List of Event Commands:
 @>Set Move Route: Player
@@ -46621,7 +47043,7 @@ List of Event Commands:
 @>Control Variables: [0104: Vs. Transition - Pkmn] = 6
 @>Script: setBattleRule("2v3")
 @>Control Self Switch: A =ON
-@>Conditional Branch: Script: TrainerBattle.dx_start([:THREEFAIRY,"of Light", 10+(pbGet(99) * 10)], {:size => "2v3"}, :VS_THREE_FAIRIES)
+@>Conditional Branch: Script: TrainerBattle.start(:THREEFAIRY,"of Light", 10+(pbGet(99) * 10))
  @>Control Self Switch: B =ON
  @>Text: \xn[\pn]Hah... hah... There, I won!
  @>Text: \xn[Sunny]Wow! It's been a long time since someone managed
@@ -46695,6 +47117,7 @@ List of Event Commands:
 Page #2
 Conditions
 Variable 0115: 3 Fairies defeated is 3 or above
+Self Switch A is ON
 
 Graphic: Object ball
 
@@ -48035,24 +48458,7 @@ Trigger: Parallel Process
 
 List of Event Commands:
 @>Change Map Settings:Fog = 'PurpleFog', 0, 200, Normal, 200, -5, 4
-@>Script: BattleScripting.setInScript("turnStart0",:SuzuranPoisoning_Start)
-:       : BattleScripting.setInScript("rand7",:SuzuranPoisoning_EoT)
-@>
-
-Page #2
-Conditions
-None
-
-Autonomous Movement
-Type: Fixed
-Speed: 3: Slow
-Freq: 3: Low
-Options Enabled
-Move Animation
-Trigger: Parallel Process
-
-List of Event Commands:
-@>Change Map Settings:Fog = 'PurpleFog', 0, 200, Normal, 200, -5, 4
+@>Script: # setBattleRule("midbattleScript", :miasma_field)
 @>
 
 #------------------------------------------------------------------------------
@@ -49451,6 +49857,29 @@ List of Event Commands:
 @>
 
 #------------------------------------------------------------------------------
+Event ID: 028
+Event Name: EV028
+(X,Y): (070,013)
+
+Page #1
+Conditions
+None
+
+Graphic: Object ball
+
+Autonomous Movement
+Type: Fixed
+Speed: 3: Slow
+Freq: 3: Low
+Options Enabled
+Move Animation
+Trigger: Action Button
+
+List of Event Commands:
+@>Script: deactivateSpecialBGM("Test")
+@>
+
+#------------------------------------------------------------------------------
 
 #==============================================================================
 Map ID: 064
@@ -50804,6 +51233,7 @@ Move Animation
 Trigger: Autorun
 
 List of Event Commands:
+@>Control Switches: [0102: Special Battle Switch] = OFF
 @>Recover All: Entire Party
 @>Change Screen Color Tone: (-255,-255,-255,0), @6
 @>Wait: 8 frame(s)
@@ -50835,10 +51265,15 @@ List of Event Commands:
 @>Text: \xn[Medicine]Your defeat shall serve as proof of my ideals!
 @>Text: \xn[Medicine]It is only right that I liberate my kin... for none 
  :    : among you have the power to stop me!
+@>Control Switches: [0131: Medi Final Puppet Check] = OFF
+@>Control Variables: [0117..0118] = 0
 @>Control Switches: [0104: Transition Handler] = ON
 @>Control Variables: [0103: Vs. Transition ID] = 19
 @>Control Variables: [0104: Vs. Transition - Pkmn] = 6
-@>Conditional Branch: Script: TrainerBattle.dx_start([:MEDICINE, "Medicine Melancholy", 10 + pbGet(99) * 10], {}, :VS_MEDICINE)
+@>Script: setBattleRule("midbattleScript", :vs_medicine)
+:       : setBattleRule("battleIntroText", "Medicine Melancholy, leader of the Puppet Rebellion, challenges you and your 
+:       : ideals!")
+@>Conditional Branch: Script: TrainerBattle.start(:MEDICINE_Tr, "Medicine Melancholy", 10 + pbGet(99) * 10)
  @>Control Switches: [0123: Medicine Beaten] = ON
  @>Fade Out BGM: 1 sec.
  @>Text: \xn[Medicine]How... How could we lose? I was so sure that
@@ -50903,9 +51338,9 @@ List of Event Commands:
  @>Text: \xn[Medicine]Truly strange! Oh well! Su-san and I will be off 
   :    : now as well!
  @>Script: pbSetSelfSwitch(1,"A",true)
- @>Script: $game_variables[1] = $GameSpeed
- :       : pbDisallowSpeedup
- :       : $GameSpeed = 0
+ @>Script: # $game_variables[1] = $GameSpeed
+ :       : # pbDisallowSpeedup
+ :       : # $GameSpeed = 0
  @>Control Switches: [0103: Disable Text Skip] = ON
  @>Change Map Settings:Fog = 'PurpleFog', 0, 200, Normal, 200, 0, 0
  @>Change Screen Color Tone: (51,17,-34,255), @10
@@ -57434,11 +57869,11 @@ Move Animation
 Trigger: Parallel Process
 
 List of Event Commands:
-@>Script: $scene = Scene_Credits_TFoC.new
+@>Script: $scene = Scene_Credits.new
 @>Wait: 20 frame(s)
 @>Script: TFoCPostgameScene.new
-@>Script: pbAllowSpeedup
-:       : $GameSpeed = pbGet(1)
+@>Script: # pbAllowSpeedup
+:       : # $GameSpeed = pbGet(1)
 @>Control Switches: [0103: Disable Text Skip] = OFF
 @>Change Transparent Flag: Normal
 @>Transfer Player:[047: \PN's Room], (004,007), Right
@@ -82307,7 +82742,7 @@ Map ID: 115
 Map Name: Dummy Map
 Tileset: 027: Human Village
 Width: 20, Height: 15
-Auto-Change BGM: W-004. Dimension of Reverie.ogg
+Auto-Change BGM: W-004. Dimension of Reverie
 
 #------------------------------------------------------------------------------
 Event ID: 001
@@ -96486,9 +96921,9 @@ Common Event Name: Vs. Three Fairies
 Trigger: None
 
 List of Event Commands:
-@>Script: $game_variables[1] = $GameSpeed
-:       : pbDisallowSpeedup
-:       : $GameSpeed = 0
+@>Script: # $game_variables[1] = $GameSpeed
+:       : # pbDisallowSpeedup
+:       : # $GameSpeed = 0
 @>Control Switches: [0103: Disable Text Skip] = ON
 @>Change Text Options: Middle, Hide
 @>Comment: --- Pre-Battle Intro Setup
@@ -96566,8 +97001,8 @@ List of Event Commands:
 @>Control Switches: [0104: Transition Handler] = OFF
 @>Control Switches: [0103: Disable Text Skip] = OFF
 @>Change Text Options: Bottom, Show
-@>Script: pbAllowSpeedup
-:       : $GameSpeed = pbGet(1)
+@>Script: # pbAllowSpeedup
+:       : # $GameSpeed = pbGet(1)
 @>
 
 #==============================================================================
@@ -98751,9 +99186,9 @@ Common Event Name: TFoC True Credits
 Trigger: None
 
 List of Event Commands:
-@>Script: $game_variables[1] = $GameSpeed
-:       : pbDisallowSpeedup
-:       : $GameSpeed = 0
+@>Script: # $game_variables[1] = $GameSpeed
+:       : # pbDisallowSpeedup
+:       : # $GameSpeed = 0
 @>Fade Out BGM: 2 sec.
 @>Change Screen Color Tone: (-255,-255,-255,0), @20
 @>Wait: 20 frame(s)
@@ -99043,8 +99478,8 @@ List of Event Commands:
 @>Text: \se[]...But who said the journey had to end so soon?\wtnp[20]
 @>Change Text Options: Bottom, Show
 @>Control Switches: [0103: Disable Text Skip] = OFF
-@>Script: pbAllowSpeedup
-:       : $GameSpeed = pbGet(1)
+@>Script: # pbAllowSpeedup
+:       : # $GameSpeed = pbGet(1)
 @>Transfer Player:[019: World of Fantasies], (019,020), Down
 @>
 

@@ -22,12 +22,12 @@ module MidbattleScripts
   #		* Possessed Puppets gain +1 to Attack and Sp.Atk at battle start
   #-----------------------------------------------------------------------------  
   VS_CURSED_PUPPETS = {
-	"RoundStartCommand_1" => {
+	"RoundStartCommand_1_player" => {
 	  "setBattler"      => :Self,
 	  "speech"          => "I think that's one of those Possessed Puppets that Miss Kagiyama told me to find!",
 	  "setBattler_A"    => :Opposing,
-	  "playAnim"        => [:GRUDGE, :Opposing],
-	  "playCry"         => :Opposing,
+	  "playAnim"        => [:GRUDGE, :Self],
+	  "playCry"         => :Self,
 	  "text"            => "{1} gains power from being possessed!",
 	  "battlerStats"    => [:ATTACK, 1, :SPECIAL_ATTACK, 1]
 	}
@@ -40,19 +40,19 @@ module MidbattleScripts
   #		* Final Puppet gains +2 to both Attacks and Defenses
   #----------------------------------------------------------------------------- 
   VS_FAKE_HINA = {
-    "AfterSendOut_foe" => {
+    "RoundStartCommand_1_player" => {
 	  "setBattler"        => :Opposing,
-	  "playAnim"          => [:GRUDGE, :Opposing],
-	  "playCry"           => :Opposing,
+	  "playAnim"          => [:GRUDGE, :Self],
+	  "playCry"           => :Self,
 	  "text"              => "{1} gains power from being possessed!",
 	  "battlerStats"      => [:ATTACK, 1, :SPECIAL_ATTACK, 1]
 	},
 	
 	"BattlerFainted_foe_repeat" => {
-	  "setBattler"              => :Opposing,
+	  "setBattler"              => :Self,
 	  "speech"                  => "...~",
 	  "text"                    => "The malevolent spirit ejected from the fainted Puppet and latched onto yours!",
-	  "setBattler_A"            => :Self,
+	  "setBattler_A"            => :Opposing,
 	  "playAnim"                => [:GRUDGE, :Self],
 	  "battlerStats"            => [:ATTACK, 1, :SPECIAL_ATTACK, 1],
       "battlerEffects"          => [:Curse, true],
@@ -60,9 +60,9 @@ module MidbattleScripts
 	},
 	
 	"AfterLastSendOut_foe" => {
-	  "setBattler"        => :Opposing,
-	  "playAnim"          => [:GRUDGE, :Opposing],
-	  "playCry"           => :Opposing,
+	  "setBattler"        => :Self,
+	  "playAnim"          => [:GRUDGE, :Self],
+	  "playCry"           => :Self,
 	  "text"              => "{1} gains power from being possessed!",
 	  "battlerStats"      => [:ATTACK, 2, :SPECIAL_ATTACK, 2, :DEFENSE, 2, :SPECIAL_DEFENSE, 2]
 	}

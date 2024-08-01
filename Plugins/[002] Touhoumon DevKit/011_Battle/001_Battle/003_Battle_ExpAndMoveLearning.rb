@@ -97,7 +97,7 @@ class Battle
     end
     return if exp <= 0
     # Pokémon gain more Exp from trainer battles
-    exp = (exp * 1.2).floor if Settings::MORE_EXP_FROM_TRAINER_POKEMON && trainerBattle? # Derx: Formerly 1.5
+    exp = (exp * 1.5).floor #if Settings::MORE_EXP_FROM_TRAINER_POKEMON && trainerBattle? # Derx: Formerly 1.5
     # Scale the gained Exp based on the gainer's level (or not)
     if Settings::SCALED_EXP_FORMULA
       exp /= 5

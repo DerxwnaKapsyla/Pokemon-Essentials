@@ -13,7 +13,7 @@ EventHandlers.add(:on_trainer_load, :clone,
 		trainer.name = $player.name
 		trainer.trainer_type = $player.trainer_type
 		#trainer.items = $bag
-		$PokemonGlobal.nextBattleBack = "inverse"
+		$PokemonGlobal.nextBattleBack = "Inverse"
        end
      end
    end

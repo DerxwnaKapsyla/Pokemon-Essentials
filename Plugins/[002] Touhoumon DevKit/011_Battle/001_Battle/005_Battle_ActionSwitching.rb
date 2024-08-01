@@ -127,7 +127,7 @@ class Battle
             end
 			msg = _INTL("{1} is about to send in {2}. Will you switch?",
                                       opponent.full_name, enemyParty[idxPartyForName].name)
-			if $game_switches[123]
+			if $game_switches[97]
 			  msg = _INTL("You can't see what {1} is about to send out. Will you switch?",
                                       opponent.full_name)
 			end

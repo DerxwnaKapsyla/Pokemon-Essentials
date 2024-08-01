@@ -65,5 +65,7 @@
 #------------------------------------------------------------------------------
 #EDIT THIS ARRAY:
 REPLACE_BGMS = [
-				["S1_Escape", "W-004. Dimension of Reverie.ogg", [6, 115],100,100]
+				["S1_Escape", "W-004. Dimension of Reverie.ogg", [6, 115],100,100],
+				["S6_Performance", "X-002. Phantom Ensemble ~ Rehearsal Mix", [19, 25]],
+				["Test", "W-017. Seeds of the Incident", [63]]
                ]

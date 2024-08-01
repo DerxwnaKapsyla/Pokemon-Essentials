@@ -7420,3 +7420,1500 @@ Backtrace:
 [Name Boxes] Name Windows.rb:312:in `pbMessageDisplay'
 [Delta Speed Up] _Main_Script.rb:127:in `pbMessage'
 004_Interpreter_Commands.rb:205:in `command_101'
+
+=================
+
+[2024-07-25 15:32:35 -0700]
+[Pokémon Essentials version 21.1]
+[v21.1 Hotfixes 1.0.9]
+
+Script error in event 3 (coords 7,27), map 24 (Rooms)
+Exception: NoMethodError
+Message: undefined method `pbWildBattle' for #<Interpreter @event_id: 3>
+
+***Full script:
+pbWildBattle(:CLAYLA,32,1)
+
+Backtrace:
+(eval):1:in `execute_script'
+003_Interpreter.rb:140:in `eval'
+003_Interpreter.rb:140:in `execute_script'
+004_Interpreter_Commands.rb:1177:in `command_355'
+004_Interpreter_Commands.rb:116:in `execute_command'
+003_Interpreter.rb:132:in `block in update'
+003_Interpreter.rb:86:in `loop'
+003_Interpreter.rb:86:in `update'
+002_Scene_Map.rb:167:in `block in update'
+002_Scene_Map.rb:166:in `loop'
+
+=================
+
+[2024-07-25 16:13:44 -0700]
+[Pokémon Essentials version 21.1]
+[v21.1 Hotfixes 1.0.9]
+
+Script error in event 11 (coords 17,27), map 25 (Performance Hall)
+Exception: NameError
+Message: undefined local variable or method `pbDisallowSpeedup' for #<Interpreter @event_id: 11>
+
+***Full script:
+$game_variables[1] = $GameSpeed
+pbDisallowSpeedup
+$GameSpeed = 0
+
+Backtrace:
+(eval):2:in `execute_script'
+003_Interpreter.rb:140:in `eval'
+003_Interpreter.rb:140:in `execute_script'
+004_Interpreter_Commands.rb:1177:in `command_355'
+004_Interpreter_Commands.rb:116:in `execute_command'
+003_Interpreter.rb:132:in `block in update'
+003_Interpreter.rb:86:in `loop'
+003_Interpreter.rb:86:in `update'
+002_Scene_Map.rb:167:in `block in update'
+002_Scene_Map.rb:166:in `loop'
+
+=================
+
+[2024-07-25 19:38:03 -0700]
+[Pokémon Essentials version 21.1]
+[v21.1 Hotfixes 1.0.9]
+
+Exception: TypeError
+Message: nil can't be coerced into Integer
+
+Backtrace:
+007_BattleAnimationPlayer.rb:509:in `-'
+007_BattleAnimationPlayer.rb:509:in `block in playTiming'
+007_BattleAnimationPlayer.rb:475:in `each'
+007_BattleAnimationPlayer.rb:475:in `playTiming'
+007_BattleAnimationPlayer.rb:842:in `update'
+004_Scene_PlayAnimations.rb:548:in `block in pbAnimationCore'
+004_Scene_PlayAnimations.rb:547:in `loop'
+004_Scene_PlayAnimations.rb:547:in `pbAnimationCore'
+004_Scene_PlayAnimations.rb:501:in `block in pbAnimation'
+004_Scene_PlayAnimations.rb:399:in `pbSaveShadows'
+
+=================
+
+[2024-07-25 19:52:05 -0700]
+[Pokémon Essentials version 21.1]
+[v21.1 Hotfixes 1.0.9]
+
+Script error in event 35 (coords 56,5), map 27 (Basement)
+Exception: NoMethodError
+Message: undefined method `defeat_count=' for #<Player Puppet Handler Ayaka @party=[:ADREISEN, :AKEINE, :SAKUYA, :ASUNNY, :SMEILING, :DYUYUKO]>
+
+***Full script:
+$player.defeat_count = pbGet(1)
+
+Backtrace:
+(eval):1:in `execute_script'
+003_Interpreter.rb:140:in `eval'
+003_Interpreter.rb:140:in `execute_script'
+004_Interpreter_Commands.rb:1177:in `command_355'
+004_Interpreter_Commands.rb:116:in `execute_command'
+003_Interpreter.rb:132:in `block in update'
+003_Interpreter.rb:86:in `loop'
+003_Interpreter.rb:86:in `update'
+002_Scene_Map.rb:167:in `block in update'
+002_Scene_Map.rb:166:in `loop'
+
+=================
+
+[2024-07-25 20:15:57 -0700]
+[Pokémon Essentials version 21.1]
+[v21.1 Hotfixes 1.0.9]
+
+Script error in event 30 (coords 36,82), map 27 (Basement)
+Exception: NameError
+Message: undefined local variable or method `pbDisallowSpeedup' for #<Interpreter @event_id: 30>
+
+***Full script:
+$game_variables[1] = $GameSpeed
+pbDisallowSpeedup
+$GameSpeed = 0
+
+Backtrace:
+(eval):2:in `execute_script'
+003_Interpreter.rb:140:in `eval'
+003_Interpreter.rb:140:in `execute_script'
+004_Interpreter_Commands.rb:1177:in `command_355'
+004_Interpreter_Commands.rb:116:in `execute_command'
+003_Interpreter.rb:132:in `block in update'
+003_Interpreter.rb:86:in `loop'
+003_Interpreter.rb:86:in `update'
+002_Scene_Map.rb:167:in `block in update'
+002_Scene_Map.rb:166:in `loop'
+
+=================
+
+[2024-07-25 22:11:07 -0700]
+[Pokémon Essentials version 21.1]
+[v21.1 Hotfixes 1.0.9]
+
+Script error in event 1 (coords 37,80), map 21 (Ending Filler Map (Good) -2)
+Exception: NameError
+Message: undefined local variable or method `pbDisallowSpeedup' for #<Interpreter @event_id: 1>
+
+***Full script:
+$game_variables[1] = $GameSpeed
+pbDisallowSpeedup
+$GameSpeed = 0
+
+Backtrace:
+(eval):2:in `execute_script'
+003_Interpreter.rb:140:in `eval'
+003_Interpreter.rb:140:in `execute_script'
+004_Interpreter_Commands.rb:1177:in `command_355'
+004_Interpreter_Commands.rb:116:in `execute_command'
+003_Interpreter.rb:132:in `block in update'
+003_Interpreter.rb:86:in `loop'
+003_Interpreter.rb:86:in `update'
+002_Scene_Map.rb:167:in `block in update'
+002_Scene_Map.rb:166:in `loop'
+
+=================
+
+[2024-07-25 22:21:02 -0700]
+[Pokémon Essentials version 21.1]
+[v21.1 Hotfixes 1.0.9]
+
+Script error in event 10 (coords 11,9), map 36 (Credits - Group Shot)
+Exception: NameError
+Message: undefined local variable or method `pbAllowSpeedup' for #<Interpreter @event_id: 10>
+
+***Full script:
+pbAllowSpeedup
+$GameSpeed = pbGet(1)
+
+Backtrace:
+(eval):1:in `execute_script'
+003_Interpreter.rb:140:in `eval'
+003_Interpreter.rb:140:in `execute_script'
+004_Interpreter_Commands.rb:1177:in `command_355'
+004_Interpreter_Commands.rb:116:in `execute_command'
+003_Interpreter.rb:132:in `block in update'
+003_Interpreter.rb:86:in `loop'
+003_Interpreter.rb:86:in `update'
+002_Scene_Map.rb:167:in `block in update'
+002_Scene_Map.rb:166:in `loop'
+
+=================
+
+[2024-07-25 23:01:06 -0700]
+[Pokémon Essentials version 21.1]
+[v21.1 Hotfixes 1.0.9]
+
+Script error in event 1 (coords 14,11), map 42 (Alice's Puppet Boutique)
+Exception: ArgumentError
+Message: wrong number of arguments (given 6, expected 7..9)
+
+***Full script:
+# --- Can't afford dialogue
+$game_variables[1] = "I'm not running a charity here! Please return when you have more Festival Points!"
+# --- Purchase Dialogue
+$game_variables[2] = "Thank you for your business!" # Purchase dialogue
+# --- Make Room dialogue
+$game_variables[3] = "You should perhaps make some additional room in your bag before I give you these!"
+setPrice(:BUNNYSUIT,10);setPrice(:MAIDCOSTUME,10);setPrice(:SWEATER,10);setPrice(:CAMOUFLAGE,10);
+setPrice(:BLAZER,10);setPrice(:MISTRESS,10);setPrice(:NINJA,10);setPrice(:NURSE,10);
+setPrice(:STEWARDESS,10);setPrice(:THICKFUR,10);setPrice(:KIMONO,10);setPrice(:WITCH,10);
+setPrice(:GOTHIC,10);setPrice(:BRIDALGOWN,10);setPrice(:PRIESTESS,10);setPrice(:CHINADRESS,10);
+setPrice(:SWIMSUIT,10)
+pbCoinMart([
+:BUNNYSUIT,:MAIDCOSTUME,:SWEATER,:CAMOUFLAGE,:BLAZER,:MISTRESS,:NINJA,:NURSE,:SWIMSUIT,
+:STEWARDESS,:THICKFUR,:KIMONO,:WITCH,:GOTHIC,:BRIDALGOWN,:PRIESTESS,:CHINADRESS
+])
+
+Backtrace:
+[Arcky's Poke Market] 001_PokeMarket_Main.rb:812:in `initialize'
+[TAoA Core] 005_Coin_Mart.rb:238:in `new'
+[TAoA Core] 005_Coin_Mart.rb:238:in `pbStartBuyOrSellScene'
+[TAoA Core] 005_Coin_Mart.rb:284:in `pbStartBuyScene'
+[TAoA Core] 005_Coin_Mart.rb:583:in `pbBuyScreen'
+[TAoA Core] 005_Coin_Mart.rb:737:in `block in pbCoinMart'
+[TAoA Core] 005_Coin_Mart.rb:733:in `loop'
+[TAoA Core] 005_Coin_Mart.rb:733:in `pbCoinMart'
+(eval):12:in `execute_script'
+003_Interpreter.rb:140:in `eval'
+
+=================
+
+[2024-07-25 23:45:54 -0700]
+[Pokémon Essentials version 21.1]
+[v21.1 Hotfixes 1.0.9]
+
+Script error in event 18 (coords 86,41), map 48 (Misty Lake)
+Exception: NameError
+Message: uninitialized constant Interpreter::FAIRY_2_ALT
+
+***Full script:
+TrainerBattle.start(FAIRY_2_ALT, "Seles",pbGet(99))
+Backtrace:
+(eval):1:in `execute_script'
+003_Interpreter.rb:140:in `eval'
+003_Interpreter.rb:140:in `execute_script'
+004_Interpreter_Commands.rb:434:in `command_111'
+004_Interpreter_Commands.rb:29:in `execute_command'
+003_Interpreter.rb:132:in `block in update'
+003_Interpreter.rb:86:in `loop'
+003_Interpreter.rb:86:in `update'
+002_Scene_Map.rb:167:in `block in update'
+002_Scene_Map.rb:166:in `loop'
+
+=================
+
+[2024-07-25 23:47:19 -0700]
+[Pokémon Essentials version 21.1]
+[v21.1 Hotfixes 1.0.9]
+
+Script error in event 18 (coords 86,41), map 48 (Misty Lake)
+Exception: NameError
+Message: uninitialized constant Interpreter::FAIRY_2_ALT
+
+***Full script:
+TrainerBattle.start(FAIRY_2_ALT, "Seles",pbGet(99))
+Backtrace:
+(eval):1:in `execute_script'
+003_Interpreter.rb:140:in `eval'
+003_Interpreter.rb:140:in `execute_script'
+004_Interpreter_Commands.rb:434:in `command_111'
+004_Interpreter_Commands.rb:29:in `execute_command'
+003_Interpreter.rb:132:in `block in update'
+003_Interpreter.rb:86:in `loop'
+003_Interpreter.rb:86:in `update'
+002_Scene_Map.rb:167:in `block in update'
+002_Scene_Map.rb:166:in `loop'
+
+=================
+
+[2024-07-25 23:48:08 -0700]
+[Pokémon Essentials version 21.1]
+[v21.1 Hotfixes 1.0.9]
+
+Script error in event 18 (coords 86,41), map 48 (Misty Lake)
+Exception: NameError
+Message: uninitialized constant Interpreter::FAIRY_2_ALT
+
+***Full script:
+TrainerBattle.start(FAIRY_2_ALT, "Seles",pbGet(99))
+Backtrace:
+(eval):1:in `execute_script'
+003_Interpreter.rb:140:in `eval'
+003_Interpreter.rb:140:in `execute_script'
+004_Interpreter_Commands.rb:434:in `command_111'
+004_Interpreter_Commands.rb:29:in `execute_command'
+003_Interpreter.rb:132:in `block in update'
+003_Interpreter.rb:86:in `loop'
+003_Interpreter.rb:86:in `update'
+002_Scene_Map.rb:167:in `block in update'
+002_Scene_Map.rb:166:in `loop'
+
+=================
+
+[2024-07-25 23:50:52 -0700]
+[Pokémon Essentials version 21.1]
+[v21.1 Hotfixes 1.0.9]
+
+Script error in event 20 (coords 76,46), map 48 (Misty Lake)
+Exception: NameError
+Message: uninitialized constant Interpreter::FAIRY_2_ALT
+
+***Full script:
+TrainerBattle.start(FAIRY_2_ALT, "Inai",pbGet(99))
+Backtrace:
+(eval):1:in `execute_script'
+003_Interpreter.rb:140:in `eval'
+003_Interpreter.rb:140:in `execute_script'
+004_Interpreter_Commands.rb:434:in `command_111'
+004_Interpreter_Commands.rb:29:in `execute_command'
+003_Interpreter.rb:132:in `block in update'
+003_Interpreter.rb:86:in `loop'
+003_Interpreter.rb:86:in `update'
+002_Scene_Map.rb:167:in `block in update'
+002_Scene_Map.rb:166:in `loop'
+
+=================
+
+[2024-07-26 00:16:21 -0700]
+[Pokémon Essentials version 21.1]
+[v21.1 Hotfixes 1.0.9]
+
+Script error in event 34 (coords 22,32), map 48 (Misty Lake)
+Exception: NoMethodError
+Message: undefined method `dx_start' for TrainerBattle:Class
+
+***Full script:
+TrainerBattle.dx_start([:NITORI, "Nitori Kawashiro", 10+(pbGet(99) * 10)], {:backdrop => ["nitori", "nitori"]}, :VS_NITORI)
+Backtrace:
+(eval):1:in `execute_script'
+003_Interpreter.rb:140:in `eval'
+003_Interpreter.rb:140:in `execute_script'
+004_Interpreter_Commands.rb:434:in `command_111'
+004_Interpreter_Commands.rb:29:in `execute_command'
+003_Interpreter.rb:132:in `block in update'
+003_Interpreter.rb:86:in `loop'
+003_Interpreter.rb:86:in `update'
+002_Scene_Map.rb:167:in `block in update'
+002_Scene_Map.rb:166:in `loop'
+
+=================
+
+[2024-07-26 01:42:25 -0700]
+[Pokémon Essentials version 21.1]
+[v21.1 Hotfixes 1.0.9]
+
+Script error in event 34 (coords 22,32), map 48 (Misty Lake)
+Exception: NameError
+Message: undefined local variable or method `vs_nitori' for #<Interpreter @event_id: 34>
+
+***Full script:
+$PokemonGlobal.nextBattleBack="nitori"
+setBattleRule("base","nitori")
+setBattleRule("backdrop", "nitori")
+setBattleRule("midbattleScript", vs_nitori)
+
+Backtrace:
+(eval):4:in `execute_script'
+003_Interpreter.rb:140:in `eval'
+003_Interpreter.rb:140:in `execute_script'
+004_Interpreter_Commands.rb:1177:in `command_355'
+004_Interpreter_Commands.rb:116:in `execute_command'
+003_Interpreter.rb:132:in `block in update'
+003_Interpreter.rb:86:in `loop'
+003_Interpreter.rb:86:in `update'
+002_Scene_Map.rb:167:in `block in update'
+002_Scene_Map.rb:166:in `loop'
+
+=================
+
+[2024-07-26 01:45:13 -0700]
+[Pokémon Essentials version 21.1]
+[v21.1 Hotfixes 1.0.9]
+
+Exception: NoMethodError
+Message: undefined method `species' for #<NPCTrainer Kappa Mechanist Nitori Kawashiro @party=[:CNITORI, :CRIKAKO, :CSANAE, :CNITORI]>
+
+Backtrace:
+009_Species_Files.rb:93:in `sprite_bitmap_from_pokemon'
+003_Pokemon_Sprites.rb:51:in `setPokemonBitmap'
+[Deluxe Battle Kit] [007] Shadow Pokemon.rb:75:in `setPokemonBitmap'
+[Deluxe Battle Kit] [000] Midbattle Animations.rb:72:in `pbUpdateSpeaker'
+[Deluxe Battle Kit] [000] Midbattle Animations.rb:298:in `pbShowSpeaker'
+[Deluxe Battle Kit] [000] Midbattle Animations.rb:196:in `pbStartSpeech'
+[Deluxe Battle Kit] 002 MidBattleHandler Scripts.rb:29:in `block (2 levels) in <main>'
+[Deluxe Battle Kit] 002 MidBattleHandler Scripts.rb:26:in `each'
+[Deluxe Battle Kit] 002 MidBattleHandler Scripts.rb:26:in `block in <main>'
+[Deluxe Battle Kit] [002] Midbattle Triggers.rb:31:in `trigger'
+
+=================
+
+[2024-07-26 01:46:31 -0700]
+[Pokémon Essentials version 21.1]
+[v21.1 Hotfixes 1.0.9]
+
+Exception: NoMethodError
+Message: undefined method `species' for #<NPCTrainer Kappa Mechanist Nitori Kawashiro @party=[:CNITORI, :CRIKAKO, :CSANAE, :CNITORI]>
+
+Backtrace:
+009_Species_Files.rb:93:in `sprite_bitmap_from_pokemon'
+003_Pokemon_Sprites.rb:51:in `setPokemonBitmap'
+[Deluxe Battle Kit] [007] Shadow Pokemon.rb:75:in `setPokemonBitmap'
+[Deluxe Battle Kit] [000] Midbattle Animations.rb:72:in `pbUpdateSpeaker'
+[Deluxe Battle Kit] [000] Midbattle Animations.rb:298:in `pbShowSpeaker'
+[Deluxe Battle Kit] [000] Midbattle Animations.rb:196:in `pbStartSpeech'
+[Deluxe Battle Kit] 002 MidBattleHandler Scripts.rb:39:in `block (2 levels) in <main>'
+[Deluxe Battle Kit] 002 MidBattleHandler Scripts.rb:36:in `each'
+[Deluxe Battle Kit] 002 MidBattleHandler Scripts.rb:36:in `block in <main>'
+[Deluxe Battle Kit] [002] Midbattle Triggers.rb:31:in `trigger'
+
+=================
+
+[2024-07-26 11:22:20 -0700]
+[Pokémon Essentials version 21.1]
+[v21.1 Hotfixes 1.0.9]
+
+Exception: RuntimeError
+Message: Undefined value NITORI in GameData::TrainerType.
+File PBS/trainers_tmom_loop2.txt, section NITORI,Nitori Kawashiro,10
+[NITORI,Nitori Kawashiro,10]
+
+
+
+Backtrace:
+001_Compiler.rb:454:in `checkEnumField'
+[v21.1 Hotfixes] Compiler bug fixes.rb:53:in `cast_csv_value'
+001_Compiler.rb:724:in `block (2 levels) in get_csv_record'
+001_Compiler.rb:710:in `each'
+001_Compiler.rb:710:in `block in get_csv_record'
+001_Compiler.rb:708:in `loop'
+001_Compiler.rb:708:in `get_csv_record'
+002_Compiler_CompilePBS.rb:823:in `block (2 levels) in compile_trainers'
+001_Compiler.rb:244:in `block (2 levels) in pbCompilerEachPreppedLine'
+001_Compiler.rb:236:in `each_line'
+
+=================
+
+[2024-07-26 11:22:26 -0700]
+[Pokémon Essentials version 21.1]
+[v21.1 Hotfixes 1.0.9]
+
+Exception: RuntimeError
+Message: Unknown exception when compiling.
+
+Backtrace:
+001_Compiler.rb:1114:in `rescue in main'
+001_Compiler.rb:1041:in `main'
+999_Main.rb:36:in `mainFunctionDebug'
+999_Main.rb:19:in `block in mainFunction'
+003_Errors.rb:79:in `pbCriticalCode'
+999_Main.rb:19:in `mainFunction'
+999_Main.rb:52:in `block (2 levels) in load_scripts_from_folder'
+999_Main.rb:51:in `loop'
+999_Main.rb:51:in `block in load_scripts_from_folder'
+Main:35:in `eval'
+
+=================
+
+[2024-07-26 11:23:42 -0700]
+[Pokémon Essentials version 21.1]
+[v21.1 Hotfixes 1.0.9]
+
+Exception: NoMethodError
+Message: undefined method `species' for #<NPCTrainer Kappa Mechanist Nitori Kawashiro @party=[:CNITORI, :CRIKAKO, :CSANAE, :CNITORI]>
+
+Backtrace:
+009_Species_Files.rb:93:in `sprite_bitmap_from_pokemon'
+003_Pokemon_Sprites.rb:51:in `setPokemonBitmap'
+[Deluxe Battle Kit] [007] Shadow Pokemon.rb:75:in `setPokemonBitmap'
+[Deluxe Battle Kit] [000] Midbattle Animations.rb:72:in `pbUpdateSpeaker'
+[Deluxe Battle Kit] [000] Midbattle Animations.rb:298:in `pbShowSpeaker'
+[Deluxe Battle Kit] [000] Midbattle Animations.rb:196:in `pbStartSpeech'
+[Deluxe Battle Kit] 002 MidBattleHandler Scripts.rb:29:in `block (2 levels) in <main>'
+[Deluxe Battle Kit] 002 MidBattleHandler Scripts.rb:26:in `each'
+[Deluxe Battle Kit] 002 MidBattleHandler Scripts.rb:26:in `block in <main>'
+[Deluxe Battle Kit] [002] Midbattle Triggers.rb:31:in `trigger'
+
+=================
+
+[2024-07-26 11:29:51 -0700]
+[Pokémon Essentials version 21.1]
+[v21.1 Hotfixes 1.0.9]
+
+Exception: RuntimeError
+Message: Undefined value NITORI in GameData::TrainerType.
+File PBS/trainers_tmom_loop2.txt, section NITORI,Nitori Kawashiro,10
+[NITORI,Nitori Kawashiro,10]
+
+
+
+Backtrace:
+001_Compiler.rb:454:in `checkEnumField'
+[v21.1 Hotfixes] Compiler bug fixes.rb:53:in `cast_csv_value'
+001_Compiler.rb:724:in `block (2 levels) in get_csv_record'
+001_Compiler.rb:710:in `each'
+001_Compiler.rb:710:in `block in get_csv_record'
+001_Compiler.rb:708:in `loop'
+001_Compiler.rb:708:in `get_csv_record'
+002_Compiler_CompilePBS.rb:823:in `block (2 levels) in compile_trainers'
+001_Compiler.rb:244:in `block (2 levels) in pbCompilerEachPreppedLine'
+001_Compiler.rb:236:in `each_line'
+
+=================
+
+[2024-07-26 11:29:58 -0700]
+[Pokémon Essentials version 21.1]
+[v21.1 Hotfixes 1.0.9]
+
+Exception: RuntimeError
+Message: Unknown exception when compiling.
+
+Backtrace:
+001_Compiler.rb:1114:in `rescue in main'
+001_Compiler.rb:1041:in `main'
+999_Main.rb:36:in `mainFunctionDebug'
+999_Main.rb:19:in `block in mainFunction'
+003_Errors.rb:79:in `pbCriticalCode'
+999_Main.rb:19:in `mainFunction'
+999_Main.rb:52:in `block (2 levels) in load_scripts_from_folder'
+999_Main.rb:51:in `loop'
+999_Main.rb:51:in `block in load_scripts_from_folder'
+000:Main:35:in `eval'
+
+=================
+
+[2024-07-26 12:12:03 -0700]
+[Pokémon Essentials version 21.1]
+[v21.1 Hotfixes 1.0.9]
+
+Script error in event 6 (coords 55,24), map 57 (Great Youkai Forest)
+Exception: RuntimeError
+Message: Trainer type FAIRY_1 does not exist.
+
+***Full script:
+TrainerBattle.start(:FAIRY_1, "Kali")
+Backtrace:
+001_Overworld_BattleStarting.rb:594:in `block in generate_foes'
+001_Overworld_BattleStarting.rb:538:in `each'
+001_Overworld_BattleStarting.rb:538:in `each_with_index'
+001_Overworld_BattleStarting.rb:538:in `generate_foes'
+001_Overworld_BattleStarting.rb:504:in `start_core'
+001_Overworld_BattleStarting.rb:487:in `start'
+(eval):1:in `execute_script'
+003_Interpreter.rb:140:in `eval'
+003_Interpreter.rb:140:in `execute_script'
+004_Interpreter_Commands.rb:434:in `command_111'
+
+=================
+
+[2024-07-26 12:13:38 -0700]
+[Pokémon Essentials version 21.1]
+
+Error in Plugin: [RMXP Event Exporter]
+Exception: SystemExit
+Message:  
+
+Backtrace:
+001_Transitions.rb:39:in `update'
+001_Transitions.rb:39:in `update'
+[RMXP Event Exporter] script.rb:504:in `writeEventCommands'
+[RMXP Event Exporter] script.rb:289:in `writeEventPage'
+[RMXP Event Exporter] script.rb:135:in `block (4 levels) in export'
+[RMXP Event Exporter] script.rb:132:in `each'
+[RMXP Event Exporter] script.rb:132:in `block (3 levels) in export'
+[RMXP Event Exporter] script.rb:126:in `each'
+[RMXP Event Exporter] script.rb:126:in `block (2 levels) in export'
+[RMXP Event Exporter] script.rb:103:in `each'
+
+=================
+
+[2024-07-26 12:55:17 -0700]
+[Pokémon Essentials version 21.1]
+[v21.1 Hotfixes 1.0.9]
+
+Script error in event 4 (coords 13,23), map 58 (Great Youkai Forest)
+Exception: NoMethodError
+Message: undefined method `dx_start' for WildBattle:Class
+
+***Full script:
+WildBattle.dx_start([[:CCHEN,:CMIMA,:CWRIGGLE,:CRUMIA,:CKAGEROU, 
+                     :CLILYWHITE,:CLILYBLACK,:CMOMIJI,
+                     :CHINA,:CSEIJA][rand(10)],35], {
+:nocapture => true,
+:outcome => 4,
+:bgm => "B-021. Reverse Ideology"}, {},
+:VS_CURSED_PUPPETS)
+
+Backtrace:
+(eval):1:in `execute_script'
+003_Interpreter.rb:140:in `eval'
+003_Interpreter.rb:140:in `execute_script'
+004_Interpreter_Commands.rb:1177:in `command_355'
+004_Interpreter_Commands.rb:116:in `execute_command'
+003_Interpreter.rb:132:in `block in update'
+003_Interpreter.rb:86:in `loop'
+003_Interpreter.rb:86:in `update'
+002_Scene_Map.rb:167:in `block in update'
+002_Scene_Map.rb:166:in `loop'
+
+=================
+
+[2024-07-26 13:13:56 -0700]
+[Pokémon Essentials version 21.1]
+[v21.1 Hotfixes 1.0.9]
+
+Script error in event 4 (coords 15,22), map 58 (Great Youkai Forest)
+Exception: ArgumentError
+Message: comparison of Symbol with 1 failed
+
+***Full script:
+setBattleRule("neverCapture")
+setBattleRule("battleBGM", "B-021. Reverse Ideology.ogg")
+setBattleRule("battleIntroText", "The wild {1} lunged out at you!")
+setBattleRule("outcome", 4)
+setBattleRule("midbattleScript", :VS_CURSED_PUPPETS)
+WildBattle.start([:CCHEN,:CMIMA,:CWRIGGLE,:CRUMIA,:CKAGEROU, 
+                     :CLILYWHITE,:CLILYBLACK,:CMOMIJI,
+                     :CHINA,:CSEIJA][rand(10),35])
+
+Backtrace:
+001_Pokemon.rb:200:in `<'
+001_Pokemon.rb:200:in `level='
+001_Pokemon.rb:1165:in `initialize'
+003_Overworld_WildEncounters.rb:384:in `new'
+003_Overworld_WildEncounters.rb:384:in `pbGenerateWildPokemon'
+001_Overworld_BattleStarting.rb:422:in `block in generate_foes'
+001_Overworld_BattleStarting.rb:414:in `each'
+001_Overworld_BattleStarting.rb:414:in `generate_foes'
+001_Overworld_BattleStarting.rb:357:in `start'
+(eval):6:in `execute_script'
+
+=================
+
+[2024-07-26 13:16:50 -0700]
+[Pokémon Essentials version 21.1]
+[v21.1 Hotfixes 1.0.9]
+
+Script error in event 4 (coords 15,22), map 58 (Great Youkai Forest)
+Exception: NoMethodError
+Message: undefined method `sample' for nil:NilClass
+
+***Full script:
+possessed_puppet =
+
+rand_puppet = possessed_puppet.sample
+pbSet(1, rand_puppet)
+
+Pokemon.play_cry(pbGet(1))
+
+Backtrace:
+(eval):3:in `execute_script'
+003_Interpreter.rb:140:in `eval'
+003_Interpreter.rb:140:in `execute_script'
+004_Interpreter_Commands.rb:1177:in `command_355'
+004_Interpreter_Commands.rb:116:in `execute_command'
+003_Interpreter.rb:132:in `block in update'
+003_Interpreter.rb:86:in `loop'
+003_Interpreter.rb:86:in `update'
+002_Scene_Map.rb:167:in `block in update'
+002_Scene_Map.rb:166:in `loop'
+
+=================
+
+[2024-07-26 13:18:00 -0700]
+[Pokémon Essentials version 21.1]
+[v21.1 Hotfixes 1.0.9]
+
+Script error in event 4 (coords 15,22), map 58 (Great Youkai Forest)
+Exception: NameError
+Message: uninitialized constant Interpreter::VS_CURSED_PUPPETS
+
+***Full script:
+setBattleRule("neverCapture")
+setBattleRule("battleBGM", "B-021. Reverse Ideology.ogg")
+setBattleRule("battleIntroText", "The wild {1} lunged out at you!")
+setBattleRule("outcome", 4)
+setBattleRule("midbattleScript", VS_CURSED_PUPPETS)
+WildBattle.start(pbGet(1),35)
+
+Backtrace:
+(eval):5:in `execute_script'
+003_Interpreter.rb:140:in `eval'
+003_Interpreter.rb:140:in `execute_script'
+004_Interpreter_Commands.rb:1177:in `command_355'
+004_Interpreter_Commands.rb:116:in `execute_command'
+003_Interpreter.rb:132:in `block in update'
+003_Interpreter.rb:86:in `loop'
+003_Interpreter.rb:86:in `update'
+002_Scene_Map.rb:167:in `block in update'
+002_Scene_Map.rb:166:in `loop'
+
+=================
+
+[2024-07-26 13:50:46 -0700]
+[Pokémon Essentials version 21.1]
+[v21.1 Hotfixes 1.0.9]
+
+Exception: NoMethodError
+Message: undefined method `species' for #<NPCTrainer Spirit Doppelganger Hina Kagiyama @party=[:CHINA, :DPARSEE, :EIRIN, :AHINA]>
+
+Backtrace:
+009_Species_Files.rb:93:in `sprite_bitmap_from_pokemon'
+003_Pokemon_Sprites.rb:51:in `setPokemonBitmap'
+[Deluxe Battle Kit] [007] Shadow Pokemon.rb:75:in `setPokemonBitmap'
+[Deluxe Battle Kit] [000] Midbattle Animations.rb:72:in `pbUpdateSpeaker'
+[Deluxe Battle Kit] [000] Midbattle Animations.rb:298:in `pbShowSpeaker'
+[Deluxe Battle Kit] [000] Midbattle Animations.rb:196:in `pbStartSpeech'
+[Deluxe Battle Kit] [000] Midbattle Animations.rb:247:in `block in pbProcessText'
+[Deluxe Battle Kit] [000] Midbattle Animations.rb:220:in `each'
+[Deluxe Battle Kit] [000] Midbattle Animations.rb:220:in `each_with_index'
+[Deluxe Battle Kit] [000] Midbattle Animations.rb:220:in `pbProcessText'
+
+=================
+
+[2024-07-26 13:52:28 -0700]
+[Pokémon Essentials version 21.1]
+[v21.1 Hotfixes 1.0.9]
+
+Exception: RuntimeError
+Message: Undefined value HINA in GameData::TrainerType.
+File PBS/trainers_tfoc_loop0.txt, section HINA,Hina Kagiyama,2
+[HINA,Hina Kagiyama,2]
+
+
+
+Backtrace:
+001_Compiler.rb:454:in `checkEnumField'
+[v21.1 Hotfixes] Compiler bug fixes.rb:53:in `cast_csv_value'
+001_Compiler.rb:724:in `block (2 levels) in get_csv_record'
+001_Compiler.rb:710:in `each'
+001_Compiler.rb:710:in `block in get_csv_record'
+001_Compiler.rb:708:in `loop'
+001_Compiler.rb:708:in `get_csv_record'
+002_Compiler_CompilePBS.rb:823:in `block (2 levels) in compile_trainers'
+001_Compiler.rb:244:in `block (2 levels) in pbCompilerEachPreppedLine'
+001_Compiler.rb:236:in `each_line'
+
+=================
+
+[2024-07-26 13:52:31 -0700]
+[Pokémon Essentials version 21.1]
+[v21.1 Hotfixes 1.0.9]
+
+Exception: RuntimeError
+Message: Unknown exception when compiling.
+
+Backtrace:
+001_Compiler.rb:1114:in `rescue in main'
+001_Compiler.rb:1041:in `main'
+999_Main.rb:36:in `mainFunctionDebug'
+999_Main.rb:19:in `block in mainFunction'
+003_Errors.rb:79:in `pbCriticalCode'
+999_Main.rb:19:in `mainFunction'
+999_Main.rb:52:in `block (2 levels) in load_scripts_from_folder'
+999_Main.rb:51:in `loop'
+999_Main.rb:51:in `block in load_scripts_from_folder'
+Main:35:in `eval'
+
+=================
+
+[2024-07-26 13:53:49 -0700]
+[Pokémon Essentials version 21.1]
+[v21.1 Hotfixes 1.0.9]
+
+Script error in event 2 (coords 29,12), map 58 (Great Youkai Forest)
+Exception: RuntimeError
+Message: Trainer type HINA does not exist.
+
+***Full script:
+TrainerBattle.start(:HINA, "Hina Kagiyama", 10+(pbGet(99) * 10))
+Backtrace:
+001_Overworld_BattleStarting.rb:594:in `block in generate_foes'
+001_Overworld_BattleStarting.rb:538:in `each'
+001_Overworld_BattleStarting.rb:538:in `each_with_index'
+001_Overworld_BattleStarting.rb:538:in `generate_foes'
+001_Overworld_BattleStarting.rb:504:in `start_core'
+001_Overworld_BattleStarting.rb:487:in `start'
+(eval):1:in `execute_script'
+003_Interpreter.rb:140:in `eval'
+003_Interpreter.rb:140:in `execute_script'
+004_Interpreter_Commands.rb:434:in `command_111'
+
+=================
+
+[2024-07-26 14:09:01 -0700]
+[Pokémon Essentials version 21.1]
+[v21.1 Hotfixes 1.0.9]
+
+Script error in event 5 (coords 33,40), map 60 (Human Village Outskirts)
+Exception: NoMethodError
+Message: undefined method `pnTrainerIntro' for #<Interpreter @event_id: 5>
+
+***Full script:
+pnTrainerIntro(:FAIRY_1_ALT)
+pbNoticePlayer(get_self)
+
+Backtrace:
+(eval):1:in `execute_script'
+003_Interpreter.rb:140:in `eval'
+003_Interpreter.rb:140:in `execute_script'
+004_Interpreter_Commands.rb:1177:in `command_355'
+004_Interpreter_Commands.rb:116:in `execute_command'
+003_Interpreter.rb:132:in `block in update'
+003_Interpreter.rb:86:in `loop'
+003_Interpreter.rb:86:in `update'
+002_Scene_Map.rb:167:in `block in update'
+002_Scene_Map.rb:166:in `loop'
+
+=================
+
+[2024-07-26 14:13:43 -0700]
+[Pokémon Essentials version 21.1]
+[v21.1 Hotfixes 1.0.9]
+
+Script error in event 11 (coords 35,28), map 60 (Human Village Outskirts)
+Exception: NoMethodError
+Message: undefined method `pnTrainerIntro' for #<Interpreter @event_id: 11>
+
+***Full script:
+pnTrainerIntro(:FAIRY_1_ALT)
+pbNoticePlayer(get_self)
+
+Backtrace:
+(eval):1:in `execute_script'
+003_Interpreter.rb:140:in `eval'
+003_Interpreter.rb:140:in `execute_script'
+004_Interpreter_Commands.rb:1177:in `command_355'
+004_Interpreter_Commands.rb:116:in `execute_command'
+003_Interpreter.rb:132:in `block in update'
+003_Interpreter.rb:86:in `loop'
+003_Interpreter.rb:86:in `update'
+002_Scene_Map.rb:167:in `block in update'
+002_Scene_Map.rb:166:in `loop'
+
+=================
+
+[2024-07-26 14:22:36 -0700]
+[Pokémon Essentials version 21.1]
+[v21.1 Hotfixes 1.0.9]
+
+Script error in event 13 (coords 60,18), map 60 (Human Village Outskirts)
+Exception: NoMethodError
+Message: undefined method `pnTrainerIntro' for #<Interpreter @event_id: 13>
+
+***Full script:
+pnTrainerIntro(:FAIRY_1_ALT)
+pbNoticePlayer(get_self)
+
+Backtrace:
+(eval):1:in `execute_script'
+003_Interpreter.rb:140:in `eval'
+003_Interpreter.rb:140:in `execute_script'
+004_Interpreter_Commands.rb:1177:in `command_355'
+004_Interpreter_Commands.rb:116:in `execute_command'
+003_Interpreter.rb:132:in `block in update'
+003_Interpreter.rb:86:in `loop'
+003_Interpreter.rb:86:in `update'
+002_Scene_Map.rb:167:in `block in update'
+002_Scene_Map.rb:166:in `loop'
+
+=================
+
+[2024-07-26 14:44:31 -0700]
+[Pokémon Essentials version 21.1]
+[v21.1 Hotfixes 1.0.9]
+
+Script error in event 7 (coords 22,27), map 61 (Gensokyo Wilderness)
+Exception: NoMethodError
+Message: undefined method `dx_start' for TrainerBattle:Class
+
+***Full script:
+TrainerBattle.dx_start([:THREEFAIRY,"of Light", 10+(pbGet(99) * 10)], {:size => "2v3"}, :VS_THREE_FAIRIES)
+Backtrace:
+(eval):1:in `execute_script'
+003_Interpreter.rb:140:in `eval'
+003_Interpreter.rb:140:in `execute_script'
+004_Interpreter_Commands.rb:434:in `command_111'
+004_Interpreter_Commands.rb:29:in `execute_command'
+003_Interpreter.rb:132:in `block in update'
+003_Interpreter.rb:86:in `loop'
+003_Interpreter.rb:86:in `update'
+002_Scene_Map.rb:167:in `block in update'
+002_Scene_Map.rb:166:in `loop'
+
+=================
+
+[2024-07-26 14:48:19 -0700]
+[Pokémon Essentials version 21.1]
+[v21.1 Hotfixes 1.0.9]
+
+Script error in event 7 (coords 22,27), map 61 (Gensokyo Wilderness)
+Exception: NoMethodError
+Message: undefined method `dx_start' for TrainerBattle:Class
+
+***Full script:
+TrainerBattle.dx_start([:THREEFAIRY,"of Light", 10+(pbGet(99) * 10)], {:size => "2v3"}, :VS_THREE_FAIRIES)
+Backtrace:
+(eval):1:in `execute_script'
+003_Interpreter.rb:140:in `eval'
+003_Interpreter.rb:140:in `execute_script'
+004_Interpreter_Commands.rb:434:in `command_111'
+004_Interpreter_Commands.rb:29:in `execute_command'
+003_Interpreter.rb:132:in `block in update'
+003_Interpreter.rb:86:in `loop'
+003_Interpreter.rb:86:in `update'
+002_Scene_Map.rb:167:in `block in update'
+002_Scene_Map.rb:166:in `loop'
+
+=================
+
+[2024-07-26 14:50:08 -0700]
+[Pokémon Essentials version 21.1]
+[v21.1 Hotfixes 1.0.9]
+
+Script error in event 7 (coords 23,27), map 61 (Gensokyo Wilderness)
+Exception: EventScriptError
+Message: Script error in Common Event, map 61 (Gensokyo Wilderness)
+Exception: NameError
+Message: undefined local variable or method `pbDisallowSpeedup' for #<Interpreter @event_id: 0>
+
+***Full script:
+$game_variables[1] = $GameSpeed
+pbDisallowSpeedup
+$GameSpeed = 0
+
+Backtrace:
+(eval):2:in `execute_script'
+003_Interpreter.rb:140:in `eval'
+003_Interpreter.rb:140:in `execute_script'
+004_Interpreter_Commands.rb:1177:in `command_355'
+004_Interpreter_Commands.rb:116:in `execute_command'
+003_Interpreter.rb:132:in `block in update'
+003_Interpreter.rb:86:in `loop'
+003_Interpreter.rb:86:in `update'
+001_Utilities.rb:534:in `block in pbCommonEvent'
+001_Utilities.rb:531:in `loop'
+
+
+***Full script:
+TrainerBattle.start(:THREEFAIRY,"of Light", 10+(pbGet(99) * 10))
+Backtrace:
+003_Interpreter.rb:179:in `rescue in execute_script'
+003_Interpreter.rb:138:in `execute_script'
+004_Interpreter_Commands.rb:1177:in `command_355'
+004_Interpreter_Commands.rb:116:in `execute_command'
+003_Interpreter.rb:132:in `block in update'
+003_Interpreter.rb:86:in `loop'
+003_Interpreter.rb:86:in `update'
+001_Utilities.rb:534:in `block in pbCommonEvent'
+001_Utilities.rb:531:in `loop'
+001_Utilities.rb:531:in `pbCommonEvent'
+
+=================
+
+[2024-07-26 15:18:08 -0700]
+[Pokémon Essentials version 21.1]
+[v21.1 Hotfixes 1.0.9]
+
+Exception: NoMethodError
+Message: undefined method `dx_start' for WildBattle:Class
+
+Backtrace:
+[TAoA Core] 001_Overworld.rb:29:in `pbGetWildBattleStart'
+[TAoA Core] 001_Overworld.rb:18:in `pbBattleOnStepTaken'
+[Delta Speed Up] _Main_Script.rb:83:in `pbBattleOnStepTaken'
+001_Overworld.rb:185:in `pbOnStepTaken'
+008_Game_Player.rb:552:in `update_event_triggering'
+008_Game_Player.rb:428:in `update'
+002_Scene_Map.rb:168:in `block in update'
+002_Scene_Map.rb:166:in `loop'
+002_Scene_Map.rb:166:in `update'
+002_Scene_Map.rb:238:in `block in main'
+
+=================
+
+[2024-07-26 15:22:11 -0700]
+[Pokémon Essentials version 21.1]
+[v21.1 Hotfixes 1.0.9]
+
+Exception: NoMethodError
+Message: undefined method `pbGetWildBattleStart' for #<Game_Player>
+
+Backtrace:
+[TAoA Core] 001_Overworld.rb:18:in `pbBattleOnStepTaken'
+[Delta Speed Up] _Main_Script.rb:83:in `pbBattleOnStepTaken'
+001_Overworld.rb:185:in `pbOnStepTaken'
+008_Game_Player.rb:552:in `update_event_triggering'
+008_Game_Player.rb:428:in `update'
+002_Scene_Map.rb:168:in `block in update'
+002_Scene_Map.rb:166:in `loop'
+002_Scene_Map.rb:166:in `update'
+002_Scene_Map.rb:238:in `block in main'
+002_Scene_Map.rb:235:in `loop'
+
+=================
+
+[2024-07-26 15:51:58 -0700]
+[Pokémon Essentials version 21.1]
+[v21.1 Hotfixes 1.0.9]
+
+Error in Plugin: [Deluxe Battle Kit]
+Exception: SyntaxError
+Message: [Deluxe Battle Kit] 002 MidBattleHandler Scripts.rb:90: syntax error, unexpected `end', expecting '}'
+  end
+  ^~~
+
+
+Backtrace:
+005_PluginManager.rb:635:in `eval'
+005_PluginManager.rb:635:in `block (2 levels) in runPlugins'
+005_PluginManager.rb:625:in `each'
+005_PluginManager.rb:625:in `block in runPlugins'
+005_PluginManager.rb:616:in `each'
+005_PluginManager.rb:616:in `runPlugins'
+999_Main.rb:35:in `mainFunctionDebug'
+999_Main.rb:19:in `block in mainFunction'
+003_Errors.rb:79:in `pbCriticalCode'
+999_Main.rb:19:in `mainFunction'
+
+=================
+
+[2024-07-26 15:52:12 -0700]
+[Pokémon Essentials version 21.1]
+[v21.1 Hotfixes 1.0.9]
+
+Error in Plugin: [Deluxe Battle Kit]
+Exception: SyntaxError
+Message: [Deluxe Battle Kit] 002 MidBattleHandler Scripts.rb:90: syntax error, unexpected `end', expecting '}'
+  end
+  ^~~
+
+
+Backtrace:
+005_PluginManager.rb:635:in `eval'
+005_PluginManager.rb:635:in `block (2 levels) in runPlugins'
+005_PluginManager.rb:625:in `each'
+005_PluginManager.rb:625:in `block in runPlugins'
+005_PluginManager.rb:616:in `each'
+005_PluginManager.rb:616:in `runPlugins'
+999_Main.rb:35:in `mainFunctionDebug'
+999_Main.rb:19:in `block in mainFunction'
+003_Errors.rb:79:in `pbCriticalCode'
+999_Main.rb:19:in `mainFunction'
+
+=================
+
+[2024-07-26 16:23:21 -0700]
+[Pokémon Essentials version 21.1]
+[v21.1 Hotfixes 1.0.9]
+
+Script error in event 23 (coords 26,33), map 64 (Suzuran Field)
+Exception: NoMethodError
+Message: undefined method `species' for #<NPCTrainer Forsaken Doll Medicine Melancholy @party=[:HEIRIN, :MEDICINE, :ARUMIA, :NUE, :SSEIGA, :SMEDICINE]>
+
+***Full script:
+TrainerBattle.start(:MEDICINE, "Medicine Melancholy", 10 + pbGet(99) * 10)
+Backtrace:
+009_Species_Files.rb:93:in `sprite_bitmap_from_pokemon'
+003_Pokemon_Sprites.rb:51:in `setPokemonBitmap'
+[Deluxe Battle Kit] [007] Shadow Pokemon.rb:75:in `setPokemonBitmap'
+[Deluxe Battle Kit] [000] Midbattle Animations.rb:72:in `pbUpdateSpeaker'
+[Deluxe Battle Kit] [000] Midbattle Animations.rb:298:in `pbShowSpeaker'
+[Deluxe Battle Kit] [000] Midbattle Animations.rb:196:in `pbStartSpeech'
+[Deluxe Battle Kit] 002 MidBattleHandler Scripts.rb:146:in `block in <main>'
+[Deluxe Battle Kit] [002] Midbattle Triggers.rb:31:in `trigger'
+[Deluxe Battle Kit] [001] Midbattle Overwrites.rb:216:in `block (2 levels) in pbMidbattleScripting'
+[Deluxe Battle Kit] [001] Midbattle Overwrites.rb:215:in `each'
+
+=================
+
+[2024-07-26 16:37:09 -0700]
+[Pokémon Essentials version 21.1]
+[v21.1 Hotfixes 1.0.9]
+
+Script error in event 23 (coords 26,33), map 64 (Suzuran Field)
+Exception: RuntimeError
+Message: Trainer type MEDICINE does not exist.
+
+***Full script:
+TrainerBattle.start(:MEDICINE, "Medicine Melancholy", 10 + pbGet(99) * 10)
+Backtrace:
+001_Overworld_BattleStarting.rb:594:in `block in generate_foes'
+001_Overworld_BattleStarting.rb:538:in `each'
+001_Overworld_BattleStarting.rb:538:in `each_with_index'
+001_Overworld_BattleStarting.rb:538:in `generate_foes'
+001_Overworld_BattleStarting.rb:504:in `start_core'
+001_Overworld_BattleStarting.rb:487:in `start'
+(eval):1:in `execute_script'
+003_Interpreter.rb:140:in `eval'
+003_Interpreter.rb:140:in `execute_script'
+004_Interpreter_Commands.rb:434:in `command_111'
+
+=================
+
+[2024-07-26 16:45:01 -0700]
+[Pokémon Essentials version 21.1]
+[v21.1 Hotfixes 1.0.9]
+
+Script error in event 23 (coords 26,33), map 64 (Suzuran Field)
+Exception: NoMethodError
+Message: undefined method `pRaiseStatStage' for #<Battle::Battler>
+
+***Full script:
+TrainerBattle.start(:MEDICINE_Tr, "Medicine Melancholy", 10 + pbGet(99) * 10)
+Backtrace:
+[Deluxe Battle Kit] 002 MidBattleHandler Scripts.rb:153:in `block (2 levels) in <main>'
+[Deluxe Battle Kit] 002 MidBattleHandler Scripts.rb:151:in `each'
+[Deluxe Battle Kit] 002 MidBattleHandler Scripts.rb:151:in `block in <main>'
+[Deluxe Battle Kit] [002] Midbattle Triggers.rb:31:in `trigger'
+[Deluxe Battle Kit] [001] Midbattle Overwrites.rb:216:in `block (2 levels) in pbMidbattleScripting'
+[Deluxe Battle Kit] [001] Midbattle Overwrites.rb:215:in `each'
+[Deluxe Battle Kit] [001] Midbattle Overwrites.rb:215:in `block in pbMidbattleScripting'
+[Deluxe Battle Kit] [001] Midbattle Overwrites.rb:146:in `loop'
+[Deluxe Battle Kit] [001] Midbattle Overwrites.rb:146:in `pbMidbattleScripting'
+[Deluxe Battle Kit] [001] Midbattle Overwrites.rb:111:in `pbDeluxeTriggers'
+
+=================
+
+[2024-07-26 17:23:45 -0700]
+[Pokémon Essentials version 21.1]
+[v21.1 Hotfixes 1.0.9]
+
+Exception: NameError
+Message: undefined local variable or method `battler' for main:Object
+
+Backtrace:
+[Deluxe Battle Kit] 002 MidBattleHandler Scripts.rb:179:in `block in <main>'
+[Deluxe Battle Kit] [002] Midbattle Triggers.rb:31:in `trigger'
+[Deluxe Battle Kit] [001] Midbattle Overwrites.rb:216:in `block (2 levels) in pbMidbattleScripting'
+[Deluxe Battle Kit] [001] Midbattle Overwrites.rb:215:in `each'
+[Deluxe Battle Kit] [001] Midbattle Overwrites.rb:215:in `block in pbMidbattleScripting'
+[Deluxe Battle Kit] [001] Midbattle Overwrites.rb:146:in `loop'
+[Deluxe Battle Kit] [001] Midbattle Overwrites.rb:146:in `pbMidbattleScripting'
+[Deluxe Battle Kit] [001] Midbattle Overwrites.rb:111:in `pbDeluxeTriggers'
+[Deluxe Battle Kit] [001] Midbattle Overwrites.rb:459:in `block in pbEndOfRoundPhase'
+[Deluxe Battle Kit] [001] Midbattle Overwrites.rb:458:in `each'
+
+=================
+
+[2024-07-26 17:37:43 -0700]
+[Pokémon Essentials version 21.1]
+[v21.1 Hotfixes 1.0.9]
+
+Exception: NameError
+Message: undefined local variable or method `foe' for main:Object
+
+Backtrace:
+[Deluxe Battle Kit] 002 MidBattleHandler Scripts.rb:382:in `block in <main>'
+[Deluxe Battle Kit] [002] Midbattle Triggers.rb:31:in `trigger'
+[Deluxe Battle Kit] [001] Midbattle Overwrites.rb:216:in `block (2 levels) in pbMidbattleScripting'
+[Deluxe Battle Kit] [001] Midbattle Overwrites.rb:215:in `each'
+[Deluxe Battle Kit] [001] Midbattle Overwrites.rb:215:in `block in pbMidbattleScripting'
+[Deluxe Battle Kit] [001] Midbattle Overwrites.rb:146:in `loop'
+[Deluxe Battle Kit] [001] Midbattle Overwrites.rb:146:in `pbMidbattleScripting'
+[Deluxe Battle Kit] [001] Midbattle Overwrites.rb:111:in `pbDeluxeTriggers'
+[Deluxe Battle Kit] [001] Midbattle Overwrites.rb:808:in `pbResetCommandsIndex'
+005_Battle_ActionSwitching.rb:293:in `block in pbSendOut'
+
+=================
+
+[2024-07-26 17:40:24 -0700]
+[Pokémon Essentials version 21.1]
+[v21.1 Hotfixes 1.0.9]
+
+Exception: NameError
+Message: undefined local variable or method `battler' for main:Object
+
+Backtrace:
+[Deluxe Battle Kit] 002 MidBattleHandler Scripts.rb:179:in `block in <main>'
+[Deluxe Battle Kit] [002] Midbattle Triggers.rb:31:in `trigger'
+[Deluxe Battle Kit] [001] Midbattle Overwrites.rb:216:in `block (2 levels) in pbMidbattleScripting'
+[Deluxe Battle Kit] [001] Midbattle Overwrites.rb:215:in `each'
+[Deluxe Battle Kit] [001] Midbattle Overwrites.rb:215:in `block in pbMidbattleScripting'
+[Deluxe Battle Kit] [001] Midbattle Overwrites.rb:146:in `loop'
+[Deluxe Battle Kit] [001] Midbattle Overwrites.rb:146:in `pbMidbattleScripting'
+[Deluxe Battle Kit] [001] Midbattle Overwrites.rb:111:in `pbDeluxeTriggers'
+[Deluxe Battle Kit] [001] Midbattle Overwrites.rb:459:in `block in pbEndOfRoundPhase'
+[Deluxe Battle Kit] [001] Midbattle Overwrites.rb:458:in `each'
+
+=================
+
+[2024-07-26 17:41:38 -0700]
+[Pokémon Essentials version 21.1]
+[v21.1 Hotfixes 1.0.9]
+
+Exception: NameError
+Message: undefined local variable or method `battler' for main:Object
+
+Backtrace:
+[Deluxe Battle Kit] 002 MidBattleHandler Scripts.rb:179:in `block in <main>'
+[Deluxe Battle Kit] [002] Midbattle Triggers.rb:31:in `trigger'
+[Deluxe Battle Kit] [001] Midbattle Overwrites.rb:216:in `block (2 levels) in pbMidbattleScripting'
+[Deluxe Battle Kit] [001] Midbattle Overwrites.rb:215:in `each'
+[Deluxe Battle Kit] [001] Midbattle Overwrites.rb:215:in `block in pbMidbattleScripting'
+[Deluxe Battle Kit] [001] Midbattle Overwrites.rb:146:in `loop'
+[Deluxe Battle Kit] [001] Midbattle Overwrites.rb:146:in `pbMidbattleScripting'
+[Deluxe Battle Kit] [001] Midbattle Overwrites.rb:111:in `pbDeluxeTriggers'
+[Deluxe Battle Kit] [001] Midbattle Overwrites.rb:459:in `block in pbEndOfRoundPhase'
+[Deluxe Battle Kit] [001] Midbattle Overwrites.rb:458:in `each'
+
+=================
+
+[2024-07-26 18:52:02 -0700]
+[Pokémon Essentials version 21.1]
+[v21.1 Hotfixes 1.0.9]
+
+Exception: TypeError
+Message: nil can't be coerced into Integer
+
+Backtrace:
+007_BattleAnimationPlayer.rb:509:in `-'
+007_BattleAnimationPlayer.rb:509:in `block in playTiming'
+007_BattleAnimationPlayer.rb:475:in `each'
+007_BattleAnimationPlayer.rb:475:in `playTiming'
+007_BattleAnimationPlayer.rb:842:in `update'
+004_Scene_PlayAnimations.rb:548:in `block in pbAnimationCore'
+004_Scene_PlayAnimations.rb:547:in `loop'
+004_Scene_PlayAnimations.rb:547:in `pbAnimationCore'
+004_Scene_PlayAnimations.rb:501:in `block in pbAnimation'
+004_Scene_PlayAnimations.rb:399:in `pbSaveShadows'
+
+=================
+
+[2024-07-27 11:51:09 -0700]
+[Pokémon Essentials version 21.1]
+[v21.1 Hotfixes 1.0.9]
+
+Error in Plugin: [Deluxe Battle Kit]
+Exception: SyntaxError
+Message: [Deluxe Battle Kit] 002 MidBattleHandler Scripts.rb:319: syntax error, unexpected `if', expecting `when'
+        if rebound_counter == 1
+        ^~
+
+
+Backtrace:
+005_PluginManager.rb:635:in `eval'
+005_PluginManager.rb:635:in `block (2 levels) in runPlugins'
+005_PluginManager.rb:625:in `each'
+005_PluginManager.rb:625:in `block in runPlugins'
+005_PluginManager.rb:616:in `each'
+005_PluginManager.rb:616:in `runPlugins'
+999_Main.rb:35:in `mainFunctionDebug'
+999_Main.rb:19:in `block in mainFunction'
+003_Errors.rb:79:in `pbCriticalCode'
+999_Main.rb:19:in `mainFunction'
+
+=================
+
+[2024-07-28 15:35:42 -0700]
+[Pokémon Essentials version 21.1]
+[v21.1 Hotfixes 1.0.9]
+
+Exception: NoMethodError
+Message: undefined method `pbRandom' for main:Object
+
+Backtrace:
+[Deluxe Battle Kit] 002 MidBattleHandler Scripts.rb:170:in `block in <main>'
+[Deluxe Battle Kit] [002] Midbattle Triggers.rb:31:in `trigger'
+[Deluxe Battle Kit] [001] Midbattle Overwrites.rb:216:in `block (2 levels) in pbMidbattleScripting'
+[Deluxe Battle Kit] [001] Midbattle Overwrites.rb:215:in `each'
+[Deluxe Battle Kit] [001] Midbattle Overwrites.rb:215:in `block in pbMidbattleScripting'
+[Deluxe Battle Kit] [001] Midbattle Overwrites.rb:146:in `loop'
+[Deluxe Battle Kit] [001] Midbattle Overwrites.rb:146:in `pbMidbattleScripting'
+[Deluxe Battle Kit] [001] Midbattle Overwrites.rb:111:in `pbDeluxeTriggers'
+[Deluxe Battle Kit] [001] Midbattle Overwrites.rb:459:in `block in pbEndOfRoundPhase'
+[Deluxe Battle Kit] [001] Midbattle Overwrites.rb:458:in `each'
+
+=================
+
+[2024-07-28 15:38:46 -0700]
+[Pokémon Essentials version 21.1]
+[v21.1 Hotfixes 1.0.9]
+
+Exception: NoMethodError
+Message: undefined method `pbRandom' for main:Object
+
+Backtrace:
+[Deluxe Battle Kit] 002 MidBattleHandler Scripts.rb:170:in `block in <main>'
+[Deluxe Battle Kit] [002] Midbattle Triggers.rb:31:in `trigger'
+[Deluxe Battle Kit] [001] Midbattle Overwrites.rb:216:in `block (2 levels) in pbMidbattleScripting'
+[Deluxe Battle Kit] [001] Midbattle Overwrites.rb:215:in `each'
+[Deluxe Battle Kit] [001] Midbattle Overwrites.rb:215:in `block in pbMidbattleScripting'
+[Deluxe Battle Kit] [001] Midbattle Overwrites.rb:146:in `loop'
+[Deluxe Battle Kit] [001] Midbattle Overwrites.rb:146:in `pbMidbattleScripting'
+[Deluxe Battle Kit] [001] Midbattle Overwrites.rb:111:in `pbDeluxeTriggers'
+[Deluxe Battle Kit] [001] Midbattle Overwrites.rb:459:in `block in pbEndOfRoundPhase'
+[Deluxe Battle Kit] [001] Midbattle Overwrites.rb:458:in `each'
+
+=================
+
+[2024-07-28 15:56:39 -0700]
+[Pokémon Essentials version 21.1]
+[v21.1 Hotfixes 1.0.9]
+
+Exception: NoMethodError
+Message: undefined method `pbRandom' for main:Object
+
+Backtrace:
+[Deluxe Battle Kit] 002 MidBattleHandler Scripts.rb:170:in `block in <main>'
+[Deluxe Battle Kit] [002] Midbattle Triggers.rb:31:in `trigger'
+[Deluxe Battle Kit] [001] Midbattle Overwrites.rb:216:in `block (2 levels) in pbMidbattleScripting'
+[Deluxe Battle Kit] [001] Midbattle Overwrites.rb:215:in `each'
+[Deluxe Battle Kit] [001] Midbattle Overwrites.rb:215:in `block in pbMidbattleScripting'
+[Deluxe Battle Kit] [001] Midbattle Overwrites.rb:146:in `loop'
+[Deluxe Battle Kit] [001] Midbattle Overwrites.rb:146:in `pbMidbattleScripting'
+[Deluxe Battle Kit] [001] Midbattle Overwrites.rb:111:in `pbDeluxeTriggers'
+[Deluxe Battle Kit] [001] Midbattle Overwrites.rb:459:in `block in pbEndOfRoundPhase'
+[Deluxe Battle Kit] [001] Midbattle Overwrites.rb:458:in `each'
+
+=================
+
+[2024-07-28 16:10:52 -0700]
+[Pokémon Essentials version 21.1]
+[v21.1 Hotfixes 1.0.9]
+
+Error in Plugin: [Deluxe Battle Kit]
+Exception: SyntaxError
+Message: [Deluxe Battle Kit] 002 MidBattleHandler Scripts.rb:187: syntax error, unexpected local variable or method, expecting `end'
+...ffects[PBEffects::Curse] battle.pbDisplayPaused(_INTL("{1} w...
+...                         ^~~~~~
+[Deluxe Battle Kit] 002 MidBattleHandler Scripts.rb:226: syntax error, unexpected local variable or method, expecting `end'
+...ffects[PBEffects::Curse] battle.pbDisplayPaused(_INTL("{1} w...
+...                         ^~~~~~
+[Deluxe Battle Kit] 002 MidBattleHandler Scripts.rb:228: syntax error, unexpected `else', expecting `end'
+      else # Stat Decreasers
+      ^~~~
+[Deluxe Battle Kit] 002 MidBattleHandler Scripts.rb:335: syntax error, unexpected `end', expecting '}'
+    end
+    ^~~
+[Deluxe Battle Kit] 002 MidBattleHandler Scripts.rb:358: syntax error, unexpected `when', expecting end-of-input
+  when "BattlerFainted_foe"
+  ^~~~
+
+
+Backtrace:
+005_PluginManager.rb:635:in `eval'
+005_PluginManager.rb:635:in `block (2 levels) in runPlugins'
+005_PluginManager.rb:625:in `each'
+005_PluginManager.rb:625:in `block in runPlugins'
+005_PluginManager.rb:616:in `each'
+005_PluginManager.rb:616:in `runPlugins'
+999_Main.rb:35:in `mainFunctionDebug'
+999_Main.rb:19:in `block in mainFunction'
+003_Errors.rb:79:in `pbCriticalCode'
+999_Main.rb:19:in `mainFunction'
+
+=================
+
+[2024-07-29 00:16:10 -0700]
+[Pokémon Essentials version 21.1]
+[v21.1 Hotfixes 1.0.9]
+
+Error in Plugin: [Deluxe Battle Kit]
+Exception: SyntaxError
+Message: [Deluxe Battle Kit] 002 MidBattleHandler Scripts.rb:426: syntax error, unexpected `when', expecting '}'
+  when "LastTargetHPLow_foe"
+  ^~~~
+[Deluxe Battle Kit] 002 MidBattleHandler Scripts.rb:468: syntax error, unexpected '}', expecting end-of-input
+    }
+    ^
+
+
+Backtrace:
+005_PluginManager.rb:635:in `eval'
+005_PluginManager.rb:635:in `block (2 levels) in runPlugins'
+005_PluginManager.rb:625:in `each'
+005_PluginManager.rb:625:in `block in runPlugins'
+005_PluginManager.rb:616:in `each'
+005_PluginManager.rb:616:in `runPlugins'
+999_Main.rb:35:in `mainFunctionDebug'
+999_Main.rb:19:in `block in mainFunction'
+003_Errors.rb:79:in `pbCriticalCode'
+999_Main.rb:19:in `mainFunction'
+
+=================
+
+[2024-07-29 02:49:07 -0700]
+[Pokémon Essentials version 21.1]
+[v21.1 Hotfixes 1.0.9]
+
+Exception: TypeError
+Message: nil can't be coerced into Integer
+
+Backtrace:
+007_BattleAnimationPlayer.rb:509:in `-'
+007_BattleAnimationPlayer.rb:509:in `block in playTiming'
+007_BattleAnimationPlayer.rb:475:in `each'
+007_BattleAnimationPlayer.rb:475:in `playTiming'
+007_BattleAnimationPlayer.rb:842:in `update'
+004_Scene_PlayAnimations.rb:548:in `block in pbAnimationCore'
+004_Scene_PlayAnimations.rb:547:in `loop'
+004_Scene_PlayAnimations.rb:547:in `pbAnimationCore'
+004_Scene_PlayAnimations.rb:503:in `block in pbAnimation'
+004_Scene_PlayAnimations.rb:399:in `pbSaveShadows'
+
+=================
+
+[2024-07-30 13:53:28 -0700]
+[Pokémon Essentials version 21.1]
+[v21.1 Hotfixes 1.0.9]
+
+Exception: NoMethodError
+Message: undefined method `delta_s' for Graphics:Module
+
+Backtrace:
+[TAoA Core] 026_UI_Credits_TFoC.rb:392:in `update'
+[TAoA Core] 026_UI_Credits_TFoC.rb:354:in `block in main'
+[TAoA Core] 026_UI_Credits_TFoC.rb:351:in `loop'
+[TAoA Core] 026_UI_Credits_TFoC.rb:351:in `main'
+999_Main.rb:42:in `mainFunctionDebug'
+999_Main.rb:19:in `block in mainFunction'
+003_Errors.rb:79:in `pbCriticalCode'
+999_Main.rb:19:in `mainFunction'
+999_Main.rb:52:in `block (2 levels) in load_scripts_from_folder'
+999_Main.rb:51:in `loop'
+
+=================
+
+[2024-07-30 14:07:24 -0700]
+[Pokémon Essentials version 21.1]
+[v21.1 Hotfixes 1.0.9]
+
+Exception: NoMethodError
+Message: undefined method `delta_s' for Graphics:Module
+
+Backtrace:
+[TAoA Core] 026_UI_Credits_TFoC.rb:392:in `update'
+[TAoA Core] 026_UI_Credits_TFoC.rb:354:in `block in main'
+[TAoA Core] 026_UI_Credits_TFoC.rb:351:in `loop'
+[TAoA Core] 026_UI_Credits_TFoC.rb:351:in `main'
+999_Main.rb:42:in `mainFunctionDebug'
+999_Main.rb:19:in `block in mainFunction'
+003_Errors.rb:79:in `pbCriticalCode'
+999_Main.rb:19:in `mainFunction'
+999_Main.rb:52:in `block (2 levels) in load_scripts_from_folder'
+999_Main.rb:51:in `loop'
+
+=================
+
+[2024-07-30 14:11:39 -0700]
+[Pokémon Essentials version 21.1]
+[v21.1 Hotfixes 1.0.9]
+
+Exception: NoMethodError
+Message: undefined method `scenario_name' for nil:NilClass
+
+Backtrace:
+[TAoA Core] 001_Settings.rb:19:in `game_credits'
+[Touhoumon Essentials Development Kit] 007_UI_Credits.rb:14:in `get_text'
+007_UI_Credits.rb:123:in `main'
+999_Main.rb:42:in `mainFunctionDebug'
+999_Main.rb:19:in `block in mainFunction'
+003_Errors.rb:79:in `pbCriticalCode'
+999_Main.rb:19:in `mainFunction'
+999_Main.rb:52:in `block (2 levels) in load_scripts_from_folder'
+999_Main.rb:51:in `loop'
+999_Main.rb:51:in `block in load_scripts_from_folder'
+
+=================
+
+[2024-07-30 14:15:00 -0700]
+[Pokémon Essentials version 21.1]
+[v21.1 Hotfixes 1.0.9]
+
+Exception: NoMethodError
+Message: undefined method `scenario_name' for #<Game_Player>
+
+Backtrace:
+[TAoA Core] 001_Settings.rb:19:in `game_credits'
+[Touhoumon Essentials Development Kit] 007_UI_Credits.rb:14:in `get_text'
+007_UI_Credits.rb:123:in `main'
+999_Main.rb:42:in `mainFunctionDebug'
+999_Main.rb:19:in `block in mainFunction'
+003_Errors.rb:79:in `pbCriticalCode'
+999_Main.rb:19:in `mainFunction'
+999_Main.rb:52:in `block (2 levels) in load_scripts_from_folder'
+999_Main.rb:51:in `loop'
+999_Main.rb:51:in `block in load_scripts_from_folder'
+
+=================
+
+[2024-07-30 14:40:59 -0700]
+[Pokémon Essentials version 21.1]
+[v21.1 Hotfixes 1.0.9]
+
+Exception: TypeError
+Message: nil can't be coerced into Integer
+
+Backtrace:
+007_BattleAnimationPlayer.rb:509:in `-'
+007_BattleAnimationPlayer.rb:509:in `block in playTiming'
+007_BattleAnimationPlayer.rb:475:in `each'
+007_BattleAnimationPlayer.rb:475:in `playTiming'
+007_BattleAnimationPlayer.rb:842:in `update'
+004_Scene_PlayAnimations.rb:548:in `block in pbAnimationCore'
+004_Scene_PlayAnimations.rb:547:in `loop'
+004_Scene_PlayAnimations.rb:547:in `pbAnimationCore'
+004_Scene_PlayAnimations.rb:503:in `block in pbAnimation'
+004_Scene_PlayAnimations.rb:399:in `pbSaveShadows'
