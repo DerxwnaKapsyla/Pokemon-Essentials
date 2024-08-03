@@ -17144,12 +17144,12 @@ List of Event Commands:
 
 #------------------------------------------------------------------------------
 Event ID: 002
-Event Name: EV002
+Event Name: Autorun Event
 (X,Y): (032,020)
 
 Page #1
 Conditions
-None
+Variable 0141: Scenarios Cleared is 1 or above
 
 Autonomous Movement
 Type: Fixed
@@ -17333,6 +17333,86 @@ Trigger: Action Button
 List of Event Commands:
 @>
 
+Page #3
+Conditions
+Variable 0141: Scenarios Cleared is 2 or above
+
+Autonomous Movement
+Type: Fixed
+Speed: 3: Slow
+Freq: 3: Low
+Options Enabled
+Move Animation
+Trigger: Action Button
+
+List of Event Commands:
+@>Text: \xn[\pn]Well, I'm back here again...
+@>Text: \xn[\pn]It was a bit exciting reliving that past adventure!
+@>Text: \xn[\pn]They were definitely a lot stronger too, which made it a lot
+ :    : more challenging..
+@>Text: \xn[\pn]Well, from the looks of things, there's one more platform I 
+ :    : can access...
+@>Control Self Switch: B =ON
+@>
+
+Page #4
+Conditions
+Self Switch B is ON
+
+Autonomous Movement
+Type: Fixed
+Speed: 3: Slow
+Freq: 3: Low
+Options Enabled
+Move Animation
+Trigger: Action Button
+
+List of Event Commands:
+@>
+
+Page #5
+Conditions
+Variable 0141: Scenarios Cleared is 3 or above
+
+Autonomous Movement
+Type: Fixed
+Speed: 3: Slow
+Freq: 3: Low
+Options Enabled
+Move Animation
+Trigger: Autorun
+
+List of Event Commands:
+@>Wait: 10 frame(s)
+@>Text: \xn[\pn]Back again... But, there's nothing left to do...
+@>Text: \xn[\pn]I guess I could reexperience one of my adventures again,
+ :    : but... I can't fathom them posing any more of a challenge for me.
+@>Wait: 10 frame(s)
+@>Play SE: 'Mining collapse', 80, 50
+@>Screen Shake: 7, 7, @40
+@>Show Animation: Player, [Exclaim bubble]
+@>Text: \xn[\pn]--Whoa! What was that!? An earthquake...?
+@>Text: \xn[\pn]... What's that in the sky up there?
+@>Text: \xn[\pn]I can probably get a better vantage point from the edge
+ :    : of the tower.
+@>Control Self Switch: C =ON
+@>
+
+Page #6
+Conditions
+Self Switch C is ON
+
+Autonomous Movement
+Type: Fixed
+Speed: 3: Slow
+Freq: 3: Low
+Options Enabled
+Move Animation
+Trigger: Action Button
+
+List of Event Commands:
+@>
+
 #------------------------------------------------------------------------------
 Event ID: 003
 Event Name: The Mansion of Mystery
@@ -17438,7 +17518,7 @@ List of Event Commands:
 #------------------------------------------------------------------------------
 Event ID: 006
 Event Name: EV006
-(X,Y): (019,028)
+(X,Y): (024,009)
 
 Page #1
 Conditions
@@ -17455,46 +17535,48 @@ Move Animation
 Trigger: Action Button
 
 List of Event Commands:
-@>Text: \xn[???]Oh- You're uh. You're here early!
-@>Text: \xn[???]Sorry, I haven't, uh. I haven't got this set up yet!
-@>Text: \xn[???]Come back another time, okay?
-@>Set Move Route: This event
- :              : $>Turn Up
+@>Text: \xn[???]Oh- You're here!
+@>Text: \xn[???]I've been waiting for you to return!
+@>Text: \xn[???]...Pardon? Who am I? 
+@>Text: \xn[???]My name's Amira Naxeroth! I'm just a simple traveler of 
+ :    : this vast Omniverse, chronicling all the interesting stories I've 
+ :    : seen along the way.
+@>Text: \xn[Amira]And your story... I was deeply interested in it! So I swung
+ :    : by this Universal Instance to document it!
+@>Text: \xn[Amira]You don't mind if I name it after you, right?
+@>Text: \xn[Amira]"The Adventures of Ayaka"! Simple, gets the point across!
+@>Text: \xn[Amira]Well hey, since you're here now... What do you say to a
+ :    : battle? I'm itching to have a go against a legend like you!
+@>Text: \xn[Amira]What do you say? Will you indulge me?
+@>Show Choices: Yes, No
+(When Cancel: Choice 2)
+: When [Yes]
+ @>Text: \xn[Amira]Great, thank you! I promise I'm not some wacko 
+  :    : superboss who will be impossible to beat! Just a nice,
+  :    : simple battle.
+ @>Text: \xn[Amira]That being said, I won't pull any punches! You better
+  :    : be fast, because this battle will be...
+ @>Fade Out BGM: 1 sec.
+ @>Wait: 30 frame(s)
+ @>Control Switches: [0104: Transition Handler] = ON
+ @>Control Variables: [0103: Vs. Transition ID] = 34
+ @>Control Variables: [0104: Vs. Transition - Pkmn] = 6
+ @>Script: pbTrainerIntro(:ABYSSALSOVEREIGN)
+ @>Text: \xn[Amira]...A test of your reflexes!
+ @>Conditional Branch: Script: TrainerBattle.start(:ABYSSALSOVEREIGN, "Amira Naxeroth")
+  @>Control Self Switch: A =ON
+  @>
+ : Branch End
+ @>Script: pbTrainerEnd
+ @>
+: When [No]
+ @>Text: \xn[Amira]Aww, fine. I'll be here if you change your mind!
+  :    : After all, I have all the time in the Omniverse~.
+ @>
+: Branch End
 @>
 
 Page #2
-Conditions
-None
-
-Graphic: trainer_ABYSSALSOVEREIGN
-
-Autonomous Movement
-Type: Fixed
-Speed: 3: Slow
-Freq: 3: Low
-Options Enabled
-Move Animation
-Trigger: Action Button
-
-List of Event Commands:
-@>Text: \xn[???]Oh- You're uh. You're here early!
-@>Text: \xn[???]Sorry, I haven't, uh. I haven't got this set up yet!
-@>Text: \xn[???]But, hmm... Perhaps I can give you something else instead!
-@>Fade Out BGM: 1 sec.
-@>Wait: 30 frame(s)
-@>Control Switches: [0104: Transition Handler] = ON
-@>Control Variables: [0103: Vs. Transition ID] = 34
-@>Control Variables: [0104: Vs. Transition - Pkmn] = 6
-@>Script: pbTrainerIntro(:ABYSSALSOVEREIGN)
-@>Text: \xn[???]A test of your reflexes, perhaps!
-@>Conditional Branch: Script: TrainerBattle.dx_start([:ABYSSALSOVEREIGN, "Amira Naxeroth"], {}, :VS_AMIRA)
- @>Control Self Switch: A =ON
- @>
-: Branch End
-@>Script: pbTrainerEnd
-@>
-
-Page #3
 Conditions
 Self Switch A is ON
 
@@ -17742,6 +17824,29 @@ List of Event Commands:
 @>
 
 #------------------------------------------------------------------------------
+Event ID: 011
+Event Name: EV011
+(X,Y): (019,019)
+
+Page #1
+Conditions
+None
+
+Autonomous Movement
+Type: Fixed
+Speed: 3: Slow
+Freq: 3: Low
+Options Enabled
+Move Animation
+Trigger: Action Button
+
+List of Event Commands:
+@>Control Variables: [0121: TKoL Plot Variable] = 99
+@>Control Variables: [0116: TFoC Plot Variable] = 99
+@>Control Variables: [0107: TMoM Plot Variable] = 99
+@>
+
+#------------------------------------------------------------------------------
 Event ID: 012
 Event Name: EV012
 (X,Y): (019,029)
@@ -17763,6 +17868,41 @@ Direction Fix
 Trigger: Action Button
 
 List of Event Commands:
+@>Fade Out BGM: 1 sec.
+@>Show Picture: 1, 'TLABg', Upper Left (0,0), (100%,100%), 0, Normal
+@>Show Picture: 2, 'TLA', Upper Left (0,0), (100%,100%), 0, Normal
+@>Change Screen Color Tone: (-255,-255,-255,0), @8
+@>Wait: 8 frame(s)
+@>Move Picture: 1, @8, Upper Left (0,0), (100%,100%), 255, Normal
+@>Wait: 20 frame(s)
+@>Text: \xn[\pn]...What... What in the world is that...?
+@>Wait: 20 frame(s)
+@>Move Picture: 2, @30, Upper Left (0,0), (100%,100%), 255, Normal
+@>Wait: 70 frame(s)
+@>Move Picture: 1, @1, Upper Left (0,0), (100%,100%), 0, Normal
+@>Text: Proceeding past this point will trigger the final segment of The 
+ :    : Adventures of Ayaka.
+@>Text: You will not be able to return to the prior three episodes once 
+ :    : this starts.
+@>Text: I highly recommend you make absolutely certain that you are 
+ :    : ready to progress.
+@>Text: Proceed into endgame?
+@>Show Choices: Yes, No
+(When Cancel: Choice 2)
+: When [Yes]
+ @>Script: playSpecialBGM("quiet_time")
+ @>Move Picture: 2, @30, Upper Left (0,0), (100%,100%), 0, Normal
+ @>Wait: 30 frame(s)
+ @>Change Screen Color Tone: (-255,-255,-255,0), @8
+ @>Wait: 15 frame(s)
+ @>Script: TLAIntroScene.new
+ @>Wait: 1 frame(s)
+ @>Transfer Player:[136: Tower of Adventure (Roof)], (019,029)
+ @>Change Screen Color Tone: (0,0,0,0), @8
+ @>
+: When [No]
+ @>
+: Branch End
 @>
 
 #------------------------------------------------------------------------------
@@ -17795,7 +17935,7 @@ List of Event Commands:
  @>Move Picture: 1, @20, Upper Left (0,0), (100%,100%), 0, Normal
  @>Wait: 20 frame(s)
  @>Transfer Player:[005: The Kingdom of Lunacy], (001,001)
- @>Conditional Branch: Switch [0147: TKoL Cleared] == ON
+ @>Conditional Branch: Switch [0147: TKoL Cleared] == OFF
   @>Control Variables: [0099: NG+ Loop] += 1
   @>
  : Branch End
@@ -17809,6 +17949,44 @@ List of Event Commands:
  @>Jump to Label: Start
  @>
 : Branch End
+@>
+
+#------------------------------------------------------------------------------
+Event ID: 014
+Event Name: EV014
+(X,Y): (017,019)
+
+Page #1
+Conditions
+None
+
+Autonomous Movement
+Type: Fixed
+Speed: 3: Slow
+Freq: 3: Low
+Options Enabled
+Move Animation
+Trigger: Action Button
+
+List of Event Commands:
+@>Script: pbSetPokemonCenter
+@>Call Common Event: Akyuu Shrines
+@>
+
+Page #2
+Conditions
+Switch 0001: Starting over is ON
+
+Autonomous Movement
+Type: Fixed
+Speed: 3: Slow
+Freq: 3: Low
+Options Enabled
+Move Animation
+Trigger: Autorun
+
+List of Event Commands:
+@>Control Switches: [0001: Starting over] = OFF
 @>
 
 #------------------------------------------------------------------------------
@@ -54506,6 +54684,34 @@ List of Event Commands:
 @>
 
 #------------------------------------------------------------------------------
+Event ID: 022
+Event Name: EV022
+(X,Y): (044,009)
+
+Page #1
+Conditions
+None
+
+Graphic: Object ball
+
+Autonomous Movement
+Type: Fixed
+Speed: 3: Slow
+Freq: 3: Low
+Options Enabled
+Move Animation
+Trigger: Action Button
+
+List of Event Commands:
+@>Control Variables: [0141: Scenarios Cleared] = 3
+@>Fade Out BGM: 2 sec.
+@>Change Screen Color Tone: (-255,-255,-255,0), @8
+@>Wait: 30 frame(s)
+@>Transfer Player:[019: World of Fantasies], (019,020), Down
+@>Change Screen Color Tone: (0,0,0,0), @8
+@>
+
+#------------------------------------------------------------------------------
 
 #==============================================================================
 Map ID: 068
@@ -63805,6 +64011,132 @@ List of Event Commands:
 
 Page #2
 Conditions
+Variable 0142: TLA Plot Variable is 1 or above
+
+Graphic: TPDP_NPC 29
+
+Autonomous Movement
+Type: Fixed
+Speed: 3: Slow
+Freq: 3: Low
+Options Enabled
+Move Animation
+Trigger: Action Button
+
+List of Event Commands:
+@>Change Screen Color Tone: (-255,-255,-255,0), @6
+@>Wait: 8 frame(s)
+@>Transfer Player:[084: Human Village Tavern], (002,019), Up, No Fade
+@>Set Move Route: [Daichi]
+ :              : $>Turn Down
+@>Change Screen Color Tone: (0,0,0,0), @6
+@>Set Move Route: [Daichi]
+ :              : $>Direction Fix OFF
+@>Text: \xn[\pn]So, what's this all about? Clearly you didn't invite me
+ :    : out here to talk about our battle, and I can't imagine that you're
+ :    : about to interview me here.
+@>Text: \xn[Daichi]No, but I do have some questions for you.
+@>Text: \xn[\pn]Alright, let's hear them then.
+@>Play SE: 'Electronic Malfunction', 20, 100
+@>Text: \xn[Daichi]Tell me, what are your thoughts on Dreamwalking?
+@>Set Event Location: [Moving NPC],(006,008), Left
+@>Set Move Route: [Moving NPC]
+ :              : $>Change Opacity: 255
+ :              : $>Change Speed: 3
+ :              : $>Move Left
+ :              : $>Move Left
+ :              : $>Move Down
+ :              : $>Move Down
+ :              : $>Move Down
+ :              : $>Move Down
+ :              : $>Move Left
+ :              : $>Wait: 20 frame(s)
+ :              : $>Move Right
+ :              : $>Move Down
+ :              : $>Move Down
+ :              : $>Move Down
+ :              : $>Move Down
+ :              : $>Move Down
+ :              : $>Move Right
+ :              : $>Move Right
+ :              : $>Move Right
+ :              : $>Move Right
+ :              : $>Move Right
+ :              : $>Move Right
+ :              : $>Move Right
+ :              : $>Move Right
+ :              : $>Move Right
+ :              : $>Move Right
+ :              : $>Wait: 60 frame(s)
+ :              : $>Move Left
+ :              : $>Move Left
+ :              : $>Move Left
+ :              : $>Move Left
+ :              : $>Move Left
+ :              : $>Move Left
+ :              : $>Move Left
+ :              : $>Move Left
+ :              : $>Move Left
+ :              : $>Move Left
+ :              : $>Move Up
+ :              : $>Move Up
+ :              : $>Move Up
+ :              : $>Move Up
+ :              : $>Move Up
+ :              : $>Move Up
+ :              : $>Move Up
+ :              : $>Move Up
+ :              : $>Move Up
+ :              : $>Turn Right
+ :              : $>Change Opacity: 0
+@>Text: \xn[\pn]You mean the-\wt[20] Wait, come again?
+@>Text: \xn[Daichi]Yes, Dreamwalking. The ability to traverse consciously
+ :    : through your own dreams, or someone else's.
+@>Text: \xn[\pn]I... I don't understand? I thought you were going to
+ :    : ask me about where all the missing Puppets went...?
+@>Text: \xn[Daichi]But, Honored \pn, you already solved that incident,
+ :    : don't you remember? Why would I ask you about something that
+ :    : isn't relevant!
+@>Text: \xn[Daichi]I mean no disrespect if my words offended you, oh
+ :    : Honored one.
+@>Text: \xn[\pn]...Something isn't right here...
+@>Text: \xn[\pn]What do you mean "already solved"?
+@>Text: \xn[Daichi]Honored \pn, don't you understand? This isn't where
+ :    : you should be right now.
+@>Text: \xn[\pn]...Where I should be...?
+@>Text: \xn[Daichi]Hmm. Well, it seems you don't understand what I mean
+ :    : just yet!
+@>Text: \xn[Daichi]Or rather, you do, but you aren't allowing yourself to
+ :    : know you do. After all,
+@>Text: \xn[Daichi]I'm only a construct of your subconscious mind. I
+ :    : only know what you know!
+@>Text: \xn[\pn]\b{What does that even mean...?}
+@>Wait: 20 frame(s)
+@>Text: \xn[Daichi]Well, I must be going. I trust you'll do what only
+ :    : you can do when the time comes!
+@>Set Move Route: [Daichi]
+ :              : $>Through ON
+ :              : $>Move Right
+ :              : $>Move Right
+ :              : $>Move Right
+ :              : $>Move Right
+ :              : $>Move Right
+ :              : $>Move Down
+ :              : $>Move Down
+ :              : $>Move Down
+ :              : $>Move Down
+ :              : $>Move Down
+ :              : $>Move Down
+ :              : $>SE: 'Door exit', 80, 100
+ :              : $>Change Opacity: 0
+@>Wait for Move's Completion
+@>Text: \xn[\pn]That... was really bizarre.
+@>Control Self Switch: A =ON
+@>Control Variables: [0121: TKoL Plot Variable] = 3
+@>
+
+Page #3
+Conditions
 Self Switch A is ON
 
 Autonomous Movement
@@ -68736,11 +69068,16 @@ List of Event Commands:
  :              : $>Change Opacity: 0
 @>Text: \xn[\pn]Drat! She's getting away!
 @>Text: \xn[\pn]Looks like I'll have to take the long way around...
-@>Scroll Map: Left, 5, 4
+@>Scroll Map: Left, 6, 4
 @>Set Move Route: Player
  :              : $>Move Left
  :              : $>Always on Top OFF
 @>Wait for Move's Completion
+@>Conditional Branch: Variable [0142: TLA Plot Variable] >= 1
+ @>Text: \xn[\pn]\b{Everything seems normal so far... maybe all of that
+  :    : before was just some sort of fluke...}
+ @>
+: Branch End
 @>Control Self Switch: A =ON
 @>Control Variables: [0121: TKoL Plot Variable] = 9
 @>Script: pbTrainerEnd
@@ -79992,9 +80329,9 @@ List of Event Commands:
 @>Change Screen Color Tone: (51,17,-34,255), @10
 @>Play BGM: 'W-039. The Moon as Seen from the Shrine', 70, 100
 @>Wait: 15 frame(s)
-@>Conditional Branch: Switch [0155: Reserved] == OFF
+@>Conditional Branch: Switch [0155: Junko Beaten] == OFF
  @>Control Variables: [0141: Scenarios Cleared] += 1
- @>Control Switches: [0155: Reserved] = ON
+ @>Control Switches: [0155: Junko Beaten] = ON
  @>
 : Branch End
 @>Change Text Options: Bottom, Show
@@ -82694,33 +83031,1460 @@ Width: 20, Height: 15
 #==============================================================================
 Map ID: 108
 Map Name: World of Fantasies
-Tileset: 001: Outside
-Width: 20, Height: 15
+Tileset: 038: World of Fantasies
+Width: 80, Height: 85
+
+#------------------------------------------------------------------------------
+Event ID: 001
+Event Name: Teleport A
+(X,Y): (007,033)
+
+Page #1
+Conditions
+None
+
+Autonomous Movement
+Type: Fixed
+Speed: 3: Slow
+Freq: 3: Low
+Options Enabled
+Move Animation
+Trigger: Action Button
+
+List of Event Commands:
+@>
+
+#------------------------------------------------------------------------------
+Event ID: 002
+Event Name: Teleport A
+(X,Y): (074,036)
+
+Page #1
+Conditions
+None
+
+Autonomous Movement
+Type: Fixed
+Speed: 3: Slow
+Freq: 3: Low
+Options Enabled
+Move Animation
+Trigger: Action Button
+
+List of Event Commands:
+@>
+
+#------------------------------------------------------------------------------
+Event ID: 003
+Event Name: Teleport B
+(X,Y): (050,065)
+
+Page #1
+Conditions
+None
+
+Autonomous Movement
+Type: Fixed
+Speed: 3: Slow
+Freq: 3: Low
+Options Enabled
+Move Animation
+Trigger: Action Button
+
+List of Event Commands:
+@>
+
+#------------------------------------------------------------------------------
+Event ID: 004
+Event Name: Teleport B
+(X,Y): (034,032)
+
+Page #1
+Conditions
+None
+
+Autonomous Movement
+Type: Fixed
+Speed: 3: Slow
+Freq: 3: Low
+Options Enabled
+Move Animation
+Trigger: Action Button
+
+List of Event Commands:
+@>
+
+#------------------------------------------------------------------------------
+Event ID: 005
+Event Name: Teleport C
+(X,Y): (052,048)
+
+Page #1
+Conditions
+None
+
+Autonomous Movement
+Type: Fixed
+Speed: 3: Slow
+Freq: 3: Low
+Options Enabled
+Move Animation
+Trigger: Action Button
+
+List of Event Commands:
+@>
+
+#------------------------------------------------------------------------------
+Event ID: 006
+Event Name: Teleport C
+(X,Y): (027,051)
+
+Page #1
+Conditions
+None
+
+Autonomous Movement
+Type: Fixed
+Speed: 3: Slow
+Freq: 3: Low
+Options Enabled
+Move Animation
+Trigger: Action Button
+
+List of Event Commands:
+@>
+
+#------------------------------------------------------------------------------
+Event ID: 007
+Event Name: Teleport D
+(X,Y): (011,075)
+
+Page #1
+Conditions
+None
+
+Autonomous Movement
+Type: Fixed
+Speed: 3: Slow
+Freq: 3: Low
+Options Enabled
+Move Animation
+Trigger: Action Button
+
+List of Event Commands:
+@>
+
+#------------------------------------------------------------------------------
+Event ID: 008
+Event Name: Teleport D
+(X,Y): (061,012)
+
+Page #1
+Conditions
+None
+
+Autonomous Movement
+Type: Fixed
+Speed: 3: Slow
+Freq: 3: Low
+Options Enabled
+Move Animation
+Trigger: Action Button
+
+List of Event Commands:
+@>
+
+#------------------------------------------------------------------------------
+Event ID: 009
+Event Name: EV009
+(X,Y): (023,003)
+
+Page #1
+Conditions
+None
+
+Autonomous Movement
+Type: Fixed
+Speed: 3: Slow
+Freq: 3: Low
+Options Enabled
+Move Animation
+Trigger: Parallel Process
+
+List of Event Commands:
+@>Change Map Settings:Panorama = 'WoF', 0
+@>
+
+#------------------------------------------------------------------------------
 
 #==============================================================================
 Map ID: 109
-Map Name: Tower of Adventure
-Tileset: 001: Outside
-Width: 20, Height: 15
-Auto-Change BGM: W-XXX. Magician of the Twilight
+Map Name: Tower of Adventure (Entrance)
+Tileset: 038: World of Fantasies
+Width: 51, Height: 39
+Auto-Change BGM: W-041. Magician of the Twilight
+
+#------------------------------------------------------------------------------
+Event ID: 001
+Event Name: Yuuka
+(X,Y): (025,013)
+
+Page #1
+Conditions
+None
+
+Graphic: Person_Yuuka
+
+Autonomous Movement
+Type: Fixed
+Speed: 3: Slow
+Freq: 3: Low
+Options Enabled
+Move Animation
+Trigger: Action Button
+
+List of Event Commands:
+@>
+
+#------------------------------------------------------------------------------
+Event ID: 002
+Event Name: EV002
+(X,Y): (027,016)
+
+Page #1
+Conditions
+None
+
+Autonomous Movement
+Type: Fixed
+Speed: 3: Slow
+Freq: 3: Low
+Options Enabled
+Move Animation
+Trigger: Action Button
+
+List of Event Commands:
+@>Text: \sign[signskin]Memory Analysis and Simulation Tower for
+ :    : Designining Immersive Experiences and Datapoints
+@>
+
+#------------------------------------------------------------------------------
+Event ID: 003
+Event Name: EV003
+(X,Y): (022,000)
+
+Page #1
+Conditions
+None
+
+Autonomous Movement
+Type: Fixed
+Speed: 3: Slow
+Freq: 3: Low
+Options Enabled
+Move Animation
+Trigger: Parallel Process
+
+List of Event Commands:
+@>Change Map Settings:Panorama = 'WoF', 0
+@>
+
+#------------------------------------------------------------------------------
+Event ID: 004
+Event Name: Autorun Cutscene
+(X,Y): (025,003)
+
+Page #1
+Conditions
+None
+
+Autonomous Movement
+Type: Fixed
+Speed: 3: Slow
+Freq: 3: Low
+Options Enabled
+Move Animation
+Trigger: Autorun
+
+List of Event Commands:
+@>Wait for Move's Completion
+@>Show Animation: Player, [Exclaim bubble]
+@>Text: \xn[\pn]M-Miss Kazami...! Please tell me you're real and not 
+ :    : another illusion.
+@>Set Move Route: [Yuuka]
+ :              : $>Turn Up
+@>Text: \xn[Yuuka]Oh, no, fortunately for you I am very real! I just came 
+ :    : to see what the ruckus was all about, my realm is right next to 
+ :    : this demi-plane.
+@>Text: \xn[\pn]And... What do you know about it?
+@>Text: \xn[Yuuka]You seem to be far more aware of the situation than
+ :    : I am. Why don't <i>you</i> tell <i>me</i>.
+@>Text: \xn[\pn]Well... Miss Doremy, the ruler of the Dream World, she told
+ :    : me that this incident is somehow tied to me...
+@>Text: \xn[\pn]But I don't understand it! How is this tied to me? I'm just
+ :    : an ordinary human!
+@>Text: \xn[Yuuka]An ordinary human with an extraordinary legacy- did
+ :    : I not tell you as such?
+@>Text: \xn[Yuuka]You had the potential to bloom into a flower of unparalled
+ :    : beauty, so much so that your radiance would bring all to you.
+@>Text: \xn[Yuuka]And that is precisely what has happened here- and 
+ :    : my, what a beautiful flower you've become.
+@>Text: \xn[\pn]You'll have to forgive me if I don't see that as a compliment
+ :    : right now...
+@>Text: \xn[\pn]So that's what this all is? Someone has taken an interest in
+ :    : me, and trapped me in this world?
+@>Text: \xn[Yuuka]That my dear is a mystery you'll havve to solve on 
+ :    : your own~. What fun would it be if I just gave you all the answers!
+@>Text: \xn[Yuuka]Unless, of course, you're willing to duel me for
+ :    : those answers... It has been a while since our last match,
+ :    : and I would love to see how far you've come!
+@>Text: \xn[\pn]...I think I'll take my chances trying to solve this one on
+ :    : my own, thank you very much!
+@>Text: \xn[Yuuka]A shame, but probably the best option. You don't have
+ :    : a whole lot of time!
+@>Text: \xn[Yuuka]I shall be taking my leave now!
+@>Set Move Route: [Yuuka]
+ :              : $>Move Down
+ :              : $>Move Down
+ :              : $>Move Down
+ :              : $>Move Down
+ :              : $>Move Down
+ :              : $>Move Down
+ :              : $>Move Down
+ :              : $>Move Down
+ :              : $>Change Opacity: 0
+@>Wait for Move's Completion
+@>Show Animation: Player, [Question bubble]
+@>Text: \xn[\pn]Running out of time...?
+@>Control Variables: [0142: TLA Plot Variable] = 2
+@>
+
+Page #2
+Conditions
+Variable 0142: TLA Plot Variable is 2 or above
+
+Autonomous Movement
+Type: Fixed
+Speed: 3: Slow
+Freq: 3: Low
+Options Enabled
+Move Animation
+Trigger: Action Button
+
+List of Event Commands:
+@>
+
+#------------------------------------------------------------------------------
 
 #==============================================================================
 Map ID: 110
-Map Name: Tower of Adventure
-Tileset: 001: Outside
-Width: 20, Height: 15
-Auto-Change BGM: W-XXX. Magician of the Twilight
+Map Name: Tower of Adventure (Floors)
+Tileset: 038: World of Fantasies
+Width: 195, Height: 39
+Auto-Change BGM: W-041. Magician of the Twilight
+
+#------------------------------------------------------------------------------
+Event ID: 001
+Event Name: Lyrica
+(X,Y): (010,022)
+
+Page #1
+Conditions
+None
+
+Graphic: Person_Lyrica
+
+Autonomous Movement
+Type: Fixed
+Speed: 3: Slow
+Freq: 3: Low
+Options Enabled
+Move Animation
+Trigger: Action Button
+
+List of Event Commands:
+@>
+
+Page #2
+Conditions
+Switch 0153: Prismrivers Beaten is ON
+
+Autonomous Movement
+Type: Fixed
+Speed: 3: Slow
+Freq: 3: Low
+Options Enabled
+Move Animation
+Trigger: Action Button
+
+List of Event Commands:
+@>
+
+#------------------------------------------------------------------------------
+Event ID: 002
+Event Name: Lunasa
+(X,Y): (012,023)
+
+Page #1
+Conditions
+None
+
+Graphic: Person_Lunasa
+
+Autonomous Movement
+Type: Fixed
+Speed: 3: Slow
+Freq: 3: Low
+Options Enabled
+Move Animation
+Trigger: Action Button
+
+List of Event Commands:
+@>
+
+Page #2
+Conditions
+Switch 0153: Prismrivers Beaten is ON
+
+Autonomous Movement
+Type: Fixed
+Speed: 3: Slow
+Freq: 3: Low
+Options Enabled
+Move Animation
+Trigger: Action Button
+
+List of Event Commands:
+@>
+
+#------------------------------------------------------------------------------
+Event ID: 003
+Event Name: Merlin
+(X,Y): (014,022)
+
+Page #1
+Conditions
+None
+
+Graphic: Person_Merlin
+
+Autonomous Movement
+Type: Fixed
+Speed: 3: Slow
+Freq: 3: Low
+Options Enabled
+Move Animation
+Trigger: Action Button
+
+List of Event Commands:
+@>
+
+Page #2
+Conditions
+Switch 0153: Prismrivers Beaten is ON
+
+Autonomous Movement
+Type: Fixed
+Speed: 3: Slow
+Freq: 3: Low
+Options Enabled
+Move Animation
+Trigger: Action Button
+
+List of Event Commands:
+@>
+
+#------------------------------------------------------------------------------
+Event ID: 004
+Event Name: Autobattle Control size(3,1)
+(X,Y): (011,013)
+
+Page #1
+Conditions
+None
+
+Autonomous Movement
+Type: Fixed
+Speed: 3: Slow
+Freq: 3: Low
+Options Enabled
+Move Animation
+Trigger: Autorun
+
+List of Event Commands:
+@>Set Move Route: Player
+ :              : $>Move Down
+@>Wait for Move's Completion
+@>Show Animation: Player, [Exclaim bubble]
+@>Text: \xn[\pn]Is... Is that...?
+@>Scroll Map: Down, 4, 3
+@>Wait: 20 frame(s)
+@>Change Text Options: Middle, Show
+@>Text: \xn[\pn]What are the Prismriver Sisters doing here...? They don't 
+ :    : look pleased to see me.
+@>Text: \xn[\pn]...Are they even real? It doesn't look like they'll let me pass 
+ :    : without a fight. 
+@>Text: \xn[\pn]Alright, cmon then! I've beaten you three before, I can do it 
+ :    : again!
+@>Change Text Options: Bottom, Show
+@>Control Switches: [0098: Music Override] = ON
+@>Script: setBattleRule("victoryBGM", "")
+@>Conditional Branch: Script: TrainerBattle.start(:FALSEPRISMRIVER, "Prismriver Sisters", 99)
+ @>Wait: 5 frame(s)
+ @>Change Screen Color Tone: (-255,-255,-255,0), @8
+ @>Play SE: 'Pollen', 100, 150
+ @>Wait: 8 frame(s)
+ @>Set Move Route: [Lyrica]
+  :              : $>Change Opacity: 0
+ @>Set Move Route: [Lunasa]
+  :              : $>Change Opacity: 0
+ @>Set Move Route: [Merlin]
+  :              : $>Change Opacity: 0
+ @>Change Screen Color Tone: (0,0,0,0), @8
+ @>Wait: 8 frame(s)
+ @>Scroll Map: Up, 4, 3
+ @>Text: \xn[\pn]They just... up and vanished...
+ @>Control Switches: [0153: Prismrivers Beaten] = ON
+ @>
+: Else
+ @>
+: Branch End
+@>
+
+Page #2
+Conditions
+Switch 0153: Prismrivers Beaten is ON
+
+Autonomous Movement
+Type: Fixed
+Speed: 3: Slow
+Freq: 3: Low
+Options Enabled
+Move Animation
+Trigger: Action Button
+
+List of Event Commands:
+@>
+
+#------------------------------------------------------------------------------
+Event ID: 005
+Event Name: Medicine
+(X,Y): (051,023)
+
+Page #1
+Conditions
+None
+
+Graphic: Person_Medicine
+
+Autonomous Movement
+Type: Fixed
+Speed: 3: Slow
+Freq: 3: Low
+Options Enabled
+Move Animation
+Trigger: Action Button
+
+List of Event Commands:
+@>
+
+Page #2
+Conditions
+Switch 0154: Medicine Beaten is ON
+
+Autonomous Movement
+Type: Fixed
+Speed: 3: Slow
+Freq: 3: Low
+Options Enabled
+Move Animation
+Trigger: Action Button
+
+List of Event Commands:
+@>
+
+#------------------------------------------------------------------------------
+Event ID: 006
+Event Name: Junko
+(X,Y): (090,023)
+
+Page #1
+Conditions
+None
+
+Graphic: Person_Junko_Alt2
+
+Autonomous Movement
+Type: Fixed
+Speed: 3: Slow
+Freq: 3: Low
+Options Enabled
+Move Animation
+Trigger: Action Button
+
+List of Event Commands:
+@>
+
+Page #2
+Conditions
+Switch 0155: Junko Beaten is ON
+
+Autonomous Movement
+Type: Fixed
+Speed: 3: Slow
+Freq: 3: Low
+Options Enabled
+Move Animation
+Trigger: Action Button
+
+List of Event Commands:
+@>
+
+#------------------------------------------------------------------------------
+Event ID: 007
+Event Name: Hecatia
+(X,Y): (129,023)
+
+Page #1
+Conditions
+None
+
+Graphic: Person_Hecatia
+
+Autonomous Movement
+Type: Fixed
+Speed: 3: Slow
+Freq: 3: Low
+Options Enabled
+Move Animation
+Trigger: Action Button
+
+List of Event Commands:
+@>
+
+Page #2
+Conditions
+Switch 0156: Hecatia Beaten is ON
+
+Autonomous Movement
+Type: Fixed
+Speed: 3: Slow
+Freq: 3: Low
+Options Enabled
+Move Animation
+Trigger: Action Button
+
+List of Event Commands:
+@>
+
+#------------------------------------------------------------------------------
+Event ID: 008
+Event Name: EV008
+(X,Y): (012,012)
+
+Page #1
+Conditions
+None
+
+Autonomous Movement
+Type: Fixed
+Speed: 3: Slow
+Freq: 3: Low
+Options Enabled
+Move Animation
+Trigger: Player Touch
+
+List of Event Commands:
+@>Play SE: 'teleporter', 60, 100
+@>Change Screen Color Tone: (-255,-255,-255,0), @6
+@>Wait: 8 frame(s)
+@>Transfer Player:[136: Tower of Adventure (Roof)], (019,022), Down, No Fade
+@>Change Screen Color Tone: (0,0,0,0), @6
+@>
+
+#------------------------------------------------------------------------------
+Event ID: 009
+Event Name: EV009
+(X,Y): (012,030)
+
+Page #1
+Conditions
+None
+
+Autonomous Movement
+Type: Fixed
+Speed: 3: Slow
+Freq: 3: Low
+Options Enabled
+Move Animation
+Trigger: Player Touch
+
+List of Event Commands:
+@>Play SE: 'teleporter', 60, 100
+@>Change Screen Color Tone: (-255,-255,-255,0), @6
+@>Wait: 8 frame(s)
+@>Transfer Player:[110: Tower of Adventure (Floors)], (051,013), Down, No Fade
+@>Change Screen Color Tone: (0,0,0,0), @6
+@>
+
+#------------------------------------------------------------------------------
+Event ID: 010
+Event Name: EV010
+(X,Y): (051,012)
+
+Page #1
+Conditions
+None
+
+Autonomous Movement
+Type: Fixed
+Speed: 3: Slow
+Freq: 3: Low
+Options Enabled
+Move Animation
+Trigger: Player Touch
+
+List of Event Commands:
+@>Play SE: 'teleporter', 60, 100
+@>Change Screen Color Tone: (-255,-255,-255,0), @6
+@>Wait: 8 frame(s)
+@>Transfer Player:[110: Tower of Adventure (Floors)], (012,029), Up, No Fade
+@>Change Screen Color Tone: (0,0,0,0), @6
+@>
+
+#------------------------------------------------------------------------------
+Event ID: 011
+Event Name: EV011
+(X,Y): (051,030)
+
+Page #1
+Conditions
+None
+
+Autonomous Movement
+Type: Fixed
+Speed: 3: Slow
+Freq: 3: Low
+Options Enabled
+Move Animation
+Trigger: Player Touch
+
+List of Event Commands:
+@>Play SE: 'teleporter', 60, 100
+@>Change Screen Color Tone: (-255,-255,-255,0), @6
+@>Wait: 8 frame(s)
+@>Transfer Player:[110: Tower of Adventure (Floors)], (090,013), Down, No Fade
+@>Change Screen Color Tone: (0,0,0,0), @6
+@>
+
+#------------------------------------------------------------------------------
+Event ID: 012
+Event Name: EV012
+(X,Y): (090,012)
+
+Page #1
+Conditions
+None
+
+Autonomous Movement
+Type: Fixed
+Speed: 3: Slow
+Freq: 3: Low
+Options Enabled
+Move Animation
+Trigger: Player Touch
+
+List of Event Commands:
+@>Play SE: 'teleporter', 60, 100
+@>Change Screen Color Tone: (-255,-255,-255,0), @6
+@>Wait: 8 frame(s)
+@>Transfer Player:[110: Tower of Adventure (Floors)], (051,029), Up, No Fade
+@>Change Screen Color Tone: (0,0,0,0), @6
+@>
+
+#------------------------------------------------------------------------------
+Event ID: 013
+Event Name: EV013
+(X,Y): (090,030)
+
+Page #1
+Conditions
+None
+
+Autonomous Movement
+Type: Fixed
+Speed: 3: Slow
+Freq: 3: Low
+Options Enabled
+Move Animation
+Trigger: Player Touch
+
+List of Event Commands:
+@>Play SE: 'teleporter', 60, 100
+@>Change Screen Color Tone: (-255,-255,-255,0), @6
+@>Wait: 8 frame(s)
+@>Transfer Player:[110: Tower of Adventure (Floors)], (129,013), Down, No Fade
+@>Change Screen Color Tone: (0,0,0,0), @6
+@>
+
+#------------------------------------------------------------------------------
+Event ID: 014
+Event Name: EV014
+(X,Y): (129,012)
+
+Page #1
+Conditions
+None
+
+Autonomous Movement
+Type: Fixed
+Speed: 3: Slow
+Freq: 3: Low
+Options Enabled
+Move Animation
+Trigger: Player Touch
+
+List of Event Commands:
+@>Play SE: 'teleporter', 60, 100
+@>Change Screen Color Tone: (-255,-255,-255,0), @6
+@>Wait: 8 frame(s)
+@>Transfer Player:[110: Tower of Adventure (Floors)], (090,029), Up, No Fade
+@>Change Screen Color Tone: (0,0,0,0), @6
+@>
+
+#------------------------------------------------------------------------------
+Event ID: 015
+Event Name: EV015
+(X,Y): (129,030)
+
+Page #1
+Conditions
+None
+
+Autonomous Movement
+Type: Fixed
+Speed: 3: Slow
+Freq: 3: Low
+Options Enabled
+Move Animation
+Trigger: Player Touch
+
+List of Event Commands:
+@>Play SE: 'teleporter', 60, 100
+@>Change Screen Color Tone: (-255,-255,-255,0), @6
+@>Wait: 8 frame(s)
+@>Transfer Player:[110: Tower of Adventure (Floors)], (155,038), Down, No Fade
+@>Change Screen Color Tone: (0,0,0,0), @6
+@>
+
+#------------------------------------------------------------------------------
+Event ID: 016
+Event Name: EV016
+(X,Y): (168,012)
+
+Page #1
+Conditions
+None
+
+Autonomous Movement
+Type: Fixed
+Speed: 3: Slow
+Freq: 3: Low
+Options Enabled
+Move Animation
+Trigger: Player Touch
+
+List of Event Commands:
+@>Play SE: 'teleporter', 60, 100
+@>Change Screen Color Tone: (-255,-255,-255,0), @6
+@>Wait: 8 frame(s)
+@>Transfer Player:[110: Tower of Adventure (Floors)], (129,029), Up, No Fade
+@>Change Screen Color Tone: (0,0,0,0), @6
+@>
+
+#------------------------------------------------------------------------------
+Event ID: 017
+Event Name: Autobattle Control size(3,1)
+(X,Y): (050,013)
+
+Page #1
+Conditions
+None
+
+Autonomous Movement
+Type: Fixed
+Speed: 3: Slow
+Freq: 3: Low
+Options Enabled
+Move Animation
+Trigger: Autorun
+
+List of Event Commands:
+@>Set Move Route: Player
+ :              : $>Move Down
+@>Wait for Move's Completion
+@>Show Animation: Player, [Exclaim bubble]
+@>Text: \xn[\pn]Is... Is that...?
+@>Scroll Map: Down, 4, 3
+@>Wait: 20 frame(s)
+@>Change Text Options: Middle, Show
+@>Text: \xn[\pn]First its the Prismrivers, now it's Medicine... are these 
+ :    : supposed to be manifestations of my dreams...?
+@>Text: \xn[\pn] Well whatever the case may be, your curses won't 
+ :    : get the better of me here!
+@>Change Text Options: Bottom, Show
+@>Control Switches: [0098: Music Override] = ON
+@>Script: setBattleRule("victoryBGM", "")
+@>Conditional Branch: Script: TrainerBattle.start(:FALSEMEDICINE "Prismriver Sisters", 99)
+ @>Wait: 5 frame(s)
+ @>Change Screen Color Tone: (-255,-255,-255,0), @8
+ @>Play SE: 'Pollen', 100, 150
+ @>Wait: 8 frame(s)
+ @>Set Move Route: [Lyrica]
+  :              : $>Change Opacity: 0
+ @>Set Move Route: [Lunasa]
+  :              : $>Change Opacity: 0
+ @>Set Move Route: [Merlin]
+  :              : $>Change Opacity: 0
+ @>Change Screen Color Tone: (0,0,0,0), @8
+ @>Wait: 8 frame(s)
+ @>Scroll Map: Up, 4, 3
+ @>Text: \xn[\pn]She just vanished too...
+ @>Control Switches: [0154: Medicine Beaten] = ON
+ @>
+: Else
+ @>
+: Branch End
+@>
+
+Page #2
+Conditions
+Switch 0154: Medicine Beaten is ON
+
+Autonomous Movement
+Type: Fixed
+Speed: 3: Slow
+Freq: 3: Low
+Options Enabled
+Move Animation
+Trigger: Action Button
+
+List of Event Commands:
+@>
+
+#------------------------------------------------------------------------------
+Event ID: 018
+Event Name: Autobattle Control size(3,1)
+(X,Y): (089,013)
+
+Page #1
+Conditions
+None
+
+Autonomous Movement
+Type: Fixed
+Speed: 3: Slow
+Freq: 3: Low
+Options Enabled
+Move Animation
+Trigger: Autorun
+
+List of Event Commands:
+@>Set Move Route: Player
+ :              : $>Move Down
+@>Wait for Move's Completion
+@>Show Animation: Player, [Exclaim bubble]
+@>Text: \xn[\pn]Is... Is that...?
+@>Scroll Map: Down, 4, 3
+@>Wait: 20 frame(s)
+@>Change Text Options: Middle, Show
+@>Text: \xn[\pn]It really is just pulling from my memories... I dont know 
+ :    : whos this idea this all was, but I'll find them and teach them a 
+ :    : lesson!
+@>Text: \xn[\pn]As for you, I'll beat you just like I did your original!
+@>Change Text Options: Bottom, Show
+@>Control Switches: [0098: Music Override] = ON
+@>Script: setBattleRule("victoryBGM", "")
+@>Conditional Branch: Script: TrainerBattle.start(:FALSEJUNKO "Junko", 99)
+ @>Wait: 5 frame(s)
+ @>Change Screen Color Tone: (-255,-255,-255,0), @8
+ @>Play SE: 'Pollen', 100, 150
+ @>Wait: 8 frame(s)
+ @>Set Move Route: [Lyrica]
+  :              : $>Change Opacity: 0
+ @>Set Move Route: [Lunasa]
+  :              : $>Change Opacity: 0
+ @>Set Move Route: [Merlin]
+  :              : $>Change Opacity: 0
+ @>Change Screen Color Tone: (0,0,0,0), @8
+ @>Wait: 8 frame(s)
+ @>Text: \xn[\pn]Is that everyone...?
+ @>Text: \xn[\pn]...No, because after Junko...
+ @>Scroll Map: Up, 4, 3
+ @>Control Switches: [0155: Junko Beaten] = ON
+ @>
+: Else
+ @>
+: Branch End
+@>
+
+Page #2
+Conditions
+Switch 0155: Junko Beaten is ON
+
+Autonomous Movement
+Type: Fixed
+Speed: 3: Slow
+Freq: 3: Low
+Options Enabled
+Move Animation
+Trigger: Action Button
+
+List of Event Commands:
+@>
+
+#------------------------------------------------------------------------------
+Event ID: 019
+Event Name: Autobattle Control size(3,1)
+(X,Y): (128,013)
+
+Page #1
+Conditions
+None
+
+Autonomous Movement
+Type: Fixed
+Speed: 3: Slow
+Freq: 3: Low
+Options Enabled
+Move Animation
+Trigger: Autorun
+
+List of Event Commands:
+@>Set Move Route: Player
+ :              : $>Move Down
+@>Wait for Move's Completion
+@>Show Animation: Player, [Exclaim bubble]
+@>Text: \xn[\pn]Is... Is that...?
+@>Scroll Map: Down, 4, 3
+@>Wait: 20 frame(s)
+@>Change Text Options: Middle, Show
+@>Text: \xn[\pn]...was Hecatia Lapislazuli, Goddess of Hell.
+@>Text: \xn[\pn]It really did pull from the three adventures I just relived...
+@>Text: \xn[\pn]But... why?
+@>Text: \xn[\pn]I'll figure that out later- right now, you're in my way!
+@>Change Text Options: Bottom, Show
+@>Control Switches: [0098: Music Override] = ON
+@>Script: setBattleRule("victoryBGM", "")
+@>Conditional Branch: Script: TrainerBattle.start(:FALSEHECATIA "Hecatia Lapislazuli", 99)
+ @>Wait: 5 frame(s)
+ @>Change Screen Color Tone: (-255,-255,-255,0), @8
+ @>Play SE: 'Pollen', 100, 150
+ @>Wait: 8 frame(s)
+ @>Set Move Route: [Lyrica]
+  :              : $>Change Opacity: 0
+ @>Set Move Route: [Lunasa]
+  :              : $>Change Opacity: 0
+ @>Set Move Route: [Merlin]
+  :              : $>Change Opacity: 0
+ @>Change Screen Color Tone: (0,0,0,0), @8
+ @>Wait: 8 frame(s)
+ @>Text: \xn[\pn]There, that should be everyone... Now to find some
+  :    : answers.
+ @>Scroll Map: Up, 4, 3
+ @>Control Switches: [0156: Hecatia Beaten] = ON
+ @>
+: Else
+ @>
+: Branch End
+@>
+
+Page #2
+Conditions
+Switch 0156: Hecatia Beaten is ON
+
+Autonomous Movement
+Type: Fixed
+Speed: 3: Slow
+Freq: 3: Low
+Options Enabled
+Move Animation
+Trigger: Action Button
+
+List of Event Commands:
+@>
+
+#------------------------------------------------------------------------------
+Event ID: 020
+Event Name: ExitArrow
+(X,Y): (168,033)
+
+Page #1
+Conditions
+None
+
+Graphic: Exitarrow_red
+
+Autonomous Movement
+Type: Fixed
+Speed: 3: Slow
+Freq: 3: Low
+Options Enabled
+Move Animation
+Stop Animation
+Trigger: Player Touch
+
+List of Event Commands:
+@>Conditional Branch: Player is facing Down
+ @>Play SE: 'Door exit', 100, 100
+ @>Change Screen Color Tone: (-255,-255,-255,0), @6
+ @>Wait: 8 frame(s)
+ @>Transfer Player:[109: Tower of Adventure (Entrance)], (025,006), Down, No Fade
+ @>Change Screen Color Tone: (0,0,0,0), @6
+ @>Set Move Route: Player
+  :              : $>Move Down
+  :              : $>Move Down
+ @>
+: Branch End
+@>
+
+#------------------------------------------------------------------------------
 
 #==============================================================================
 Map ID: 111
-Map Name: World of Fantasies - Asteroid Crossing
-Tileset: 001: Outside
-Width: 20, Height: 15
-Auto-Change BGM: W-XXX. Magician of the Twilight
+Map Name: Dream World
+Tileset: 041: Dream World
+Width: 41, Height: 51
+Auto-Change BGM: W-033. Mysterious Shrine Maiden Flying Through Space
+
+#------------------------------------------------------------------------------
+Event ID: 001
+Event Name: Dreamweaver
+(X,Y): (024,023)
+
+Page #1
+Conditions
+None
+
+Graphic: Object ball
+
+Autonomous Movement
+Type: Fixed
+Speed: 3: Slow
+Freq: 3: Low
+Options Enabled
+Move Animation
+Trigger: Action Button
+
+List of Event Commands:
+@>Text: \xn[\pn]There's a note attached to this ball...
+@>Change Screen Color Tone: (-60,-60,-60,255), @10
+@>Wait: 10 frame(s)
+@>Change Text Options: Middle, Hide
+@>Text: \pn. If you're reading this note, then you are avoiding the 
+ :    : situation at hand.
+@>Text: No doubt by this point you will have come across fault
+ :    : and incorrect memories.
+@>Text: The Dream World is being affected by this incident, and so I 
+ :    : will not be available to stick to the script any longer.
+@>Text: For your persistence, I have left you an incentive to move 
+ :    : forward.
+@>Change Screen Color Tone: (0,0,0,0), @10
+@>Wait: 10 frame(s)
+@>Script: pkmn = Pokemon.new(:DOREMY,100)
+:       : pkmn.cannot_release = true
+:       : pkmn.happiness = 255
+:       : pkmn.item = :RELICCROWN
+:       : pkmn.iv[:HP] = 31
+:       : pkmn.iv[:ATTACK] = 31
+:       : pkmn.iv[:DEFENSE] = 31
+:       : pkmn.iv[:SPECIAL_ATTACK] = 31
+:       : pkmn.iv[:SPECIAL_DEFENSE] = 31
+:       : pkmn.iv[:SPEED] = 31
+@>Script: pkmn.name = "Dreamweave"
+:       : pkmn.obtain_method = 4
+:       : pkmn.obtain_text = "Dream World"
+:       : pkmn.owner.gender = 1
+:       : pkmn.owner.id = $player.make_foreign_ID
+:       : pkmn.owner.language = 1
+:       : pkmn.owner.name = "Doremy Sweet"
+:       : pkmn.poke_ball = :DREAMBALL
+:       : pkmn.shiny = true
+:       : pkmn.calc_stats
+:       : 
+:       : pbAddPokemon(pkmn)
+@>Change Screen Color Tone: (-60,-60,-60,255), @10
+@>Wait: 10 frame(s)
+@>Text: Take this Puppet, it may come in handy when dealing with
+ :    : the situation at hand.
+@>Text: You are, of course, entitled to continue your lunatic dream, but
+ :    : if you are the kind of person that I believe you to be...
+@>Text: I have left an exit for you. It shall return you to the World of
+ :    : Fantasies.
+@>Text: I trust you will know what to do.
+@>Text: - Doremy Sweet
+@>Control Variables: [0121: TKoL Plot Variable] = 12
+@>Script: pbSetSelfSwitch(2,"A",true)
+@>Control Self Switch: A =ON
+@>
+
+Page #2
+Conditions
+Self Switch A is ON
+
+Autonomous Movement
+Type: Fixed
+Speed: 3: Slow
+Freq: 3: Low
+Options Enabled
+Move Animation
+Trigger: Action Button
+
+List of Event Commands:
+@>
+
+#------------------------------------------------------------------------------
+Event ID: 002
+Event Name: EV002
+(X,Y): (019,020)
+
+Page #1
+Conditions
+None
+
+Autonomous Movement
+Type: Fixed
+Speed: 3: Slow
+Freq: 3: Low
+Options Enabled
+Move Animation
+Trigger: Player Touch
+
+List of Event Commands:
+@>Text: \xn[\pn]\b{Something really isn't right here, I should look around
+ :    : a bit more first.}
+@>Set Move Route: Player
+ :              : $>Move Down
+@>
+
+Page #2
+Conditions
+Self Switch A is ON
+
+Autonomous Movement
+Type: Fixed
+Speed: 3: Slow
+Freq: 3: Low
+Options Enabled
+Move Animation
+Trigger: Action Button
+
+List of Event Commands:
+@>
+
+#------------------------------------------------------------------------------
+Event ID: 003
+Event Name: Return to WoF
+(X,Y): (013,025)
+
+Page #1
+Conditions
+None
+
+Graphic: Ultra Wormhole
+
+Autonomous Movement
+Type: Fixed
+Speed: 3: Slow
+Freq: 3: Low
+Options Enabled
+Move Animation
+Stop Animation
+Direction Fix
+Trigger: Player Touch
+
+List of Event Commands:
+@>Play SE: 'teleporter', 60, 100
+@>Change Screen Color Tone: (-255,-255,-255,0), @6
+@>Wait: 8 frame(s)
+@>Transfer Player:[136: Tower of Adventure (Roof)], (019,012), No Fade
+@>Change Screen Color Tone: (0,0,0,0), @6
+@>Text: \xn[\pn]... I'm back at the Tower of Adventure...
+@>Wait: 4 frame(s)
+@>Set Move Route: Player
+ :              : $>Turn Up
+@>Text: \xn[\pn]... Just to be sure...
+@>Set Move Route: Player
+ :              : $>Move Up
+@>Play SE: 'GUI sel buzzer', 80, 50
+@>Text: \xn[\pn]Nope, looks like this platform isn't working anymore now.
+@>Text: \xn[\pn]Guess I have no choice but to move on.
+@>Set Move Route: Player
+ :              : $>Move Down
+@>Wait for Move's Completion
+@>Script: pbSetSelfSwitch(3,"A",true)
+@>
+
+#------------------------------------------------------------------------------
+Event ID: 004
+Event Name: EV004
+(X,Y): (025,042)
+
+Page #1
+Conditions
+None
+
+Autonomous Movement
+Type: Fixed
+Speed: 3: Slow
+Freq: 3: Low
+Options Enabled
+Move Animation
+Trigger: Autorun
+
+List of Event Commands:
+@>Wait: 25 frame(s)
+@>Set Move Route: Player
+ :              : $>Turn Left
+ :              : $>Wait: 20 frame(s)
+ :              : $>Turn Right
+ :              : $>Wait: 20 frame(s)
+ :              : $>Turn Up
+@>Text: \xn[\pn]Whoa... What <i>IS</i> this place?
+@>Text: \xn[\pn]Am I even still in Gensokyo anymore?
+@>Text: \xn[\pn]...Could this be the Moon...?
+@>Wait for Move's Completion
+@>Set Move Route: Player
+ :              : $>Move Up
+ :              : $>Move Up
+ :              : $>Move Up
+@>Wait for Move's Completion
+@>Wait: 20 frame(s)
+@>Play SE: 'Electronic Malfunction', 40, 100
+@>Screen Flash: (255,255,255,255), @2
+@>Text: \xn[\pn]\b{... ... No, this... This isn't right... A Moon Rabbit is
+ :    : supposed to show up here...}
+@>Text: \xn[\pn]\b{This area... is it...?}
+@>Control Self Switch: A =ON
+@>
+
+Page #2
+Conditions
+Self Switch A is ON
+
+Autonomous Movement
+Type: Fixed
+Speed: 3: Slow
+Freq: 3: Low
+Options Enabled
+Move Animation
+Trigger: Action Button
+
+List of Event Commands:
+@>
+
+#------------------------------------------------------------------------------
+Event ID: 005
+Event Name: Musharna Shop
+(X,Y): (012,022)
+
+Page #1
+Conditions
+None
+
+Graphic: 518
+
+Autonomous Movement
+Type: Fixed
+Speed: 3: Slow
+Freq: 3: Low
+Options Enabled
+Move Animation
+Stop Animation
+Trigger: Action Button
+
+List of Event Commands:
+@>Script: pbMusharnaShop
+@>
+
+#------------------------------------------------------------------------------
+Event ID: 006
+Event Name: Door size(3,1)
+(X,Y): (019,047)
+
+Page #1
+Conditions
+None
+
+Autonomous Movement
+Type: Fixed
+Speed: 3: Slow
+Freq: 3: Low
+Options Enabled
+Move Animation
+Trigger: Event Touch
+
+List of Event Commands:
+@>Fade Out BGM: 3 sec.
+@>Play SE: 'PRSFX- LTBTS1', 90, 70
+@>Change Screen Color Tone: (-255,-255,-255,0), @60
+@>Wait: 70 frame(s)
+@>Transfer Player:[122: Storehouse], (004,003), Right, No Fade
+@>Change Screen Color Tone: (0,0,0,0), @20
+@>
+
+#------------------------------------------------------------------------------
+Event ID: 007
+Event Name: EV007
+(X,Y): (006,025)
+
+Page #1
+Conditions
+None
+
+Autonomous Movement
+Type: Fixed
+Speed: 3: Slow
+Freq: 3: Low
+Options Enabled
+Move Animation
+Trigger: Parallel Process
+
+List of Event Commands:
+@>Change Map Settings:Panorama = 'Stars1', 0
+@>Change Map Settings:Fog = 'PurpleFog', 50, 192, Normal, 200, 1, 1
+@>
+
+#------------------------------------------------------------------------------
+Event ID: 008
+Event Name: EV008
+(X,Y): (020,008)
+
+Page #1
+Conditions
+None
+
+Autonomous Movement
+Type: Fixed
+Speed: 3: Slow
+Freq: 3: Low
+Options Enabled
+Move Animation
+Trigger: Player Touch
+
+List of Event Commands:
+@>Play SE: 'Door exit', 60, 100
+@>Change Screen Color Tone: (-255,-255,-255,0), @6
+@>Wait: 8 frame(s)
+@>Transfer Player:[122: Storehouse], (004,003), Right, No Fade
+@>Change Screen Color Tone: (0,0,0,0), @6
+@>
+
+#------------------------------------------------------------------------------
 
 #==============================================================================
 Map ID: 112
-Map Name: World of Fantasies - Edge of Existence
+Map Name: Reimaden - Edge of Existence
 Tileset: 001: Outside
 Width: 20, Height: 15
 Auto-Change BGM: W-017. Seeds of the Incident
@@ -84085,7 +85849,7 @@ List of Event Commands:
     :    : civilization that resides on the Moon?
    @>Text: \xn[\pn]Not very? I've heard rumors about it, such that 
     :    : the Moon is entirely populated by rabbits, as well as the 
-    :    : snipets we heard from Marisa abgout her trip there.
+    :    : snipets we heard from Marisa about her trip there.
    @>Text: \xn[Eirin]About what I figured...
    @>Set Move Route: [Eirin]
     :              : $>Turn Right
@@ -84255,6 +86019,196 @@ List of Event Commands:
 @>
 
 Page #2
+Conditions
+Variable 0142: TLA Plot Variable is 1 or above
+
+Graphic: Person_Eirin
+
+Autonomous Movement
+Type: Fixed
+Speed: 3: Slow
+Freq: 3: Low
+Options Enabled
+Move Animation
+Trigger: Action Button
+
+List of Event Commands:
+@>Conditional Branch: Variable [0121: TKoL Plot Variable] == 6
+ @>Conditional Branch: Player is facing Up
+  @>
+ : Else
+  @>Change Screen Color Tone: (-255,-255,-255,0), @6
+  @>Wait: 8 frame(s)
+  @>Change Transparent Flag: Normal
+  @>Transfer Player:[119: Eientei (Rooms)], (014,014), Up, No Fade
+  @>Set Move Route: [Eirin]
+   :              : $>Turn Down
+  @>Change Screen Color Tone: (0,0,0,0), @6
+  @>
+ : Branch End
+ @>Set Move Route: [Reisen]
+  :              : $>Turn Down
+ @>Text: \xn[Eirin]Are you ready for your test, \pn? Be warned, neither
+  :    : Udonge or I shall pull any punches.
+ @>Play SE: 'Electronic Malfunction', 20, 100
+ @>Text: \xn[Eirin]But then, you knew that already, didn't you?
+ @>Text: \xn[\pn]\b{Seriously, what is going on here? None of this is how
+  :    : I remember it!}
+ @>Text: \xn[\pn]\b(Am I ready to fight Doctor Yagokoro and Reisen...?)
+ @>Show Choices: Yes, No
+ (When Cancel: Choice 2)
+ : When [Yes]
+  @>Text: \xn[\pn]Yeah, I'm ready. Let's do this!
+  @>Text: \xn[Eirin]Very well then.
+  @>Script: pbTrainerIntro(:EIRIN)
+  @>Text: \xn[Eirin]As the Sage of the Moon, I shall see if you have 
+   :    : what it takes to overcome the power of purity incarnate!
+  @>Control Switches: [0104: Transition Handler] = ON
+  @>Control Variables: [0103: Vs. Transition ID] = 41
+  @>Conditional Branch: Switch [0107: New Game +] == OFF
+   @>Control Variables: [0104: Vs. Transition - Pkmn] = 4
+   @>
+  : Else
+   @>Control Variables: [0104: Vs. Transition - Pkmn] = 6
+   @>
+  : Branch End
+  @>Conditional Branch: Script: !pbCanDoubleBattle?
+   @>Script: setBattleRule("1v2")
+   @>
+  : Else
+   @>Script: setBattleRule("2v2")
+   @>
+  : Branch End
+  @>Conditional Branch: Script: TrainerBattle.start(:REISEN, "Reisen U. Inaba", 10+(pbGet(99) * 10), :EIRIN, "Eirin Yagokoro", 10+(pbGet(99) * 10))
+   @>Text: \xn[Eirin]I must say, Miss \pn. The stories about you 
+    :    : were true. You are quite the formidable Puppet Handler.
+   @>Text: \xn[\pn]Well, thanks, I guess! Battling just sort of comes 
+    :    : naturally to me.
+   @>Text: \xn[Eirin]That natural affinity for battling has served you 
+    :    : well, and it'll be useful for the trials up ahead.
+   @>Text: \xn[Eirin]Tell me Miss \pn, how aware are you of the 
+    :    : civilization that resides on the Moon?
+   @>Text: \xn[\pn]Not very? I've heard rumors about it, such that 
+    :    : the Moon is entirely populated by rabbits, as well as the 
+    :    : snipets we heard from Marisa about her trip there.
+   @>Text: \xn[Eirin]About what I figured...
+   @>Set Move Route: [Eirin]
+    :              : $>Turn Right
+   @>Text: \xn[Eirin]Udonge, can you go into the storeroom and 
+    :    : retrieve the item from the container labled "Contigency 
+    :    : 81415: Ultramarine"?
+   @>Set Move Route: [Reisen]
+    :              : $>Turn Left
+   @>Text: \xn[Reisen]Oh, uh, sure thing Master. If you'll excuse me...
+   @>Set Move Route: [Eirin]
+    :              : $>Turn Down
+   @>Set Move Route: [Reisen]
+    :              : $>Move Down
+    :              : $>Move Down
+    :              : $>Move Down
+    :              : $>Move Down
+    :              : $>Change Opacity: 0
+    :              : $>SE: 'Door exit', 80, 100
+   @>Wait for Move's Completion
+   @>Text: \xn[Eirin]Now then, Miss \pn. What I'm about to tell you is
+    :    : information that, currently, nobody else in Gensokyo is aware
+    :    : of. So please, listen closely.
+   @>Play SE: 'Electronic Malfunction', 20, 100
+   @>Text: \xn[Eirin]You are dreaming. You need to wake up.
+   @>Show Animation: Player, [Exclaim bubble]
+   @>Text: \xn[\pn]...Not this again... Why do people keep telling me I'm 
+    :    : dreaming!
+   @>Text: \xn[Eirin]Did you not willfully embark on this journey, 
+    :    : despite knowing you had another task ahead of you?
+   @>Text: \xn[\pn]I came here because Miss Reisen told me to! Are 
+    :    : you saying it was something else that led me here?
+   @>Text: \xn[Eirin]That is how these sequence of events unfolded 
+    :    : normally, yes. However, you are going through these 
+    :    : motions without realizing it.
+   @>Text: \xn[Eirin]The only way that could be is if you are 
+    :    : dreaming.
+   @>Text: \xn[Eirin]...Of course, the less likely answer is traveling 
+    :    : through time, but you don't have those abilities, nor have 
+    :    : you been exposed to anyone who does.
+   @>Text: \xn[\pn]\b{Why is this happening...! Sure, I'm dreaming, 
+    :    : but why is everyone self-aware about it and pointing it 
+    :    : out!?}
+   @>Wait: 20 frame(s)
+   @>Text: \xn[Eirin]Nevertheless, I do have the ability to wake you 
+    :    : from your dream. Only one has that power, and you are 
+    :    : on track to find them.
+   @>Text: \xn[Eirin]Once you encounter her, I am positive that she will 
+    :    : assist you. Proceed as you normally would, Miss \pn.
+   @>Text: \xn[\pn]A-Alright, I guess...? You still aren't making any 
+    :    : sense right now...
+   @>Change Screen Color Tone: (-255,-255,-255,0), @6
+   @>Play SE: 'Door exit', 80, 100
+   @>Wait: 10 frame(s)
+   @>Change Transparent Flag: Transparency
+   @>Change Screen Color Tone: (0,0,0,0), @6
+   @>Wait: 10 frame(s)
+   @>Set Move Route: [Eirin]
+    :              : $>Turn Up
+   @>Text: \xn[Eirin]Yes... For you are the only one who can stop 
+    :    : this crisis from unfolding.
+   @>Text: \xn[Eirin]...And the only one who can save her from 
+    :    : herself.
+   @>Text: \xn[Reisen]Master, I'm back now!
+   @>Set Move Route: [Eirin]
+    :              : $>Turn Down
+   @>Set Move Route: [Reisen]
+    :              : $>Change Opacity: 255
+    :              : $>SE: 'Door enter', 80, 100
+    :              : $>Move Up
+    :              : $>Move Up
+    :              : $>Move Up
+    :              : $>Move Up
+    :              : $>Turn Left
+   @>Wait for Move's Completion
+   @>Set Move Route: [Eirin]
+    :              : $>Turn Right
+   @>Text: \xn[Reisen]Huh? Where did \pn go?
+   @>Text: \xn[Eirin]I've sent her off to the mountain already. With
+    :    : any luck, she should be able to deal with the challenges
+    :    : ahead.
+   @>Text: \xn[Reisen]I see... But wasn't this medicine supposed to
+    :    :  be for her?
+   @>Text: \xn[Eirin]Actually Udonge, for that medicine, I would 
+    :    : have you take on another task.
+   @>Text: \xn[Reisen]Master?
+   @>Set Move Route: [Eirin]
+    :              : $>Turn Up
+   @>Text: \xn[Eirin]Miss \pn will be the piece I move into play first, 
+    :    : with the hopes that she can resolve the incident. 
+   @>Text: \xn[Eirin]However, it would be an error in judgement if I 
+    :    : did not prepare a  sufficent contingency plan.
+   @>Set Move Route: [Eirin]
+    :              : $>Turn Right
+   @>Text: \xn[Eirin]Udonge. Deliver this medicine to the Shrine 
+    :    : Maiden and her friends. Give them a brief overview of
+    :    : the situation.
+   @>Change Screen Color Tone: (-255,-255,-255,0), @6
+   @>Wait: 10 frame(s)
+   @>Change Transparent Flag: Normal
+   @>Transfer Player:[087: Eientei], (023,014), Down
+   @>Control Variables: [0121: TKoL Plot Variable] = 7
+   @>Change Screen Color Tone: (0,0,0,0), @6
+   @>Control Self Switch: A =ON
+   @>
+  : Else
+   @>Script: pbTrainerEnd
+   @>Exit Event Processing
+   @>
+  : Branch End
+  @>
+ : When [No]
+  @>
+ : Branch End
+ @>
+: Branch End
+@>
+
+Page #3
 Conditions
 Variable 0121: TKoL Plot Variable is 7 or above
 
@@ -84733,9 +86687,106 @@ List of Event Commands:
  :              : $>Turn Down
 @>Text: \xn[Eirin]When you're ready, come talk to me again.
 @>Control Variables: [0121: TKoL Plot Variable] = 6
+@>Conditional Branch: Variable [0142: TLA Plot Variable] == 5
+ @>
+: Branch End
 @>
 
 Page #2
+Conditions
+Variable 0142: TLA Plot Variable is 1 or above
+
+Autonomous Movement
+Type: Fixed
+Speed: 3: Slow
+Freq: 3: Low
+Options Enabled
+Move Animation
+Trigger: Autorun
+
+List of Event Commands:
+@>Conditional Branch: Variable [0121: TKoL Plot Variable] == 5
+ @>Set Event Location: [Reisen],(015,016), Up
+ @>Set Event Location: [Eirin],(013,013), Left
+ @>Change Screen Color Tone: (0,0,0,0), @6
+ @>Set Move Route: [Reisen]
+  :              : $>Move Up
+  :              : $>Move Up
+  :              : $>Move Up
+  :              : $>Turn Left
+ @>Text: \xn[Reisen]Master, I've brought the person I told you about!
+ @>Wait for Move's Completion
+ @>Set Move Route: [Eirin]
+  :              : $>Turn Right
+  :              : $>Wait: 15 frame(s)
+  :              : $>Turn Down
+  :              : $>Wait: 10 frame(s)
+ @>Wait for Move's Completion
+ @>Play SE: 'Electronic Malfunction', 20, 100
+ @>Text: \xn[Eirin]Ah, welcome back Miss \pn.
+ @>Set Move Route: [Reisen]
+  :              : $>Turn Down
+ @>Text: \xn[\pn]Welcome back...? Isn't this the first time I've been here?
+ @>Text: \xn[Eirin]With listless eyes like yours, I can tell already what ails
+  :    : you.
+ @>Text: \xn[Eirin]You are stuck within your own dreams, reliving this
+  :    : moment again, am I mistaken?
+ @>Text: \xn[\pn]I'm... stuck in a dream? But, I came here willingly!
+ @>Text: \xn[Eirin]I'm sure you'll understand all in due time. We can only
+  :    : guide you but so far.
+ @>Text: \xn[Eirin]Nevertheless, come over here.
+ @>Set Move Route: [Eirin]
+  :              : $>Move Right
+  :              : $>Turn Down
+ @>Set Move Route: Player
+  :              : $>Move Up
+  :              : $>Move Up
+  :              : $>Through OFF
+ @>Wait for Move's Completion
+ @>Text: \xn[Eirin]Tell me, has Udonge informed you of anything yet?
+ @>Text: \xn[\pn]No, I just happened to run into her in the Village, and she
+  :    : told me to follow her... She implied that a strong Puppet Handler was
+  :    : needed?
+ @>Text: \xn[Eirin]More than just that is needed. Someone capable of adapting
+  :    : to a dangerous enemy's tactics is important.
+ @>Text: \xn[\pn]...This sounds serious. Are you sure I'm cut out for the 
+  :    : task?
+ @>Set Move Route: [Reisen]
+  :              : $>Turn Left
+ @>Text: \xn[Reisen]Yeah, Master. I may have had her come here, but...
+  :    : Do you really think she's capable?
+ @>Set Move Route: [Eirin]
+  :              : $>Turn Right
+ @>Text: \xn[Eirin]I believe she has the potential, but before deciding anything...
+ @>Set Move Route: [Eirin]
+  :              : $>Turn Down
+ @>Set Move Route: [Reisen]
+  :              : $>Turn Down
+ @>Text: \xn[Eirin]Miss \pn, I shall test you to see how capable you really 
+  :    : are. I will give you a chance to prepare before the test.
+ @>Text: \xn[\pn]O-Oh, alright, sure...
+ @>Set Move Route: [Eirin]
+  :              : $>Turn Right
+ @>Text: \xn[Eirin]Udonge, I want you to prepare as well. You shall assist
+  :    : me in this test.
+ @>Show Animation: [Reisen], [Exclaim bubble]
+ @>Set Move Route: [Reisen]
+  :              : $>Turn Left
+ @>Text: \xn[Reisen]M-Me!? But why!? A-Arent you enough?
+ @>Text: \xn[Eirin]If the information you've provided me is true, then 
+  :    : they'll need to be prepared to battle multiple foes.
+ @>Set Move Route: [Eirin]
+  :              : $>Turn Down
+ @>Text: \xn[Eirin]\pn.
+ @>Set Move Route: [Reisen]
+  :              : $>Turn Down
+ @>Text: \xn[Eirin]When you're ready, come talk to me again.
+ @>Control Variables: [0121: TKoL Plot Variable] = 6
+ @>
+: Branch End
+@>
+
+Page #3
 Conditions
 Variable 0121: TKoL Plot Variable is 6 or above
 
@@ -94833,6 +96884,12 @@ List of Event Commands:
 #------------------------------------------------------------------------------
 
 #==============================================================================
+Map ID: 134
+Map Name: Reimaden
+Tileset: 041: Dream World
+Width: 20, Height: 15
+
+#==============================================================================
 Map ID: 135
 Map Name: Credits - Hecatia's Fortress
 Tileset: 043: Hecatia's Lunar Fortress
@@ -94876,6 +96933,464 @@ List of Event Commands:
 @>
 
 #------------------------------------------------------------------------------
+
+#==============================================================================
+Map ID: 136
+Map Name: Tower of Adventure (Roof)
+Tileset: 038: World of Fantasies
+Width: 39, Height: 39
+Auto-Change BGM: W-041. Magician of the Twilight
+
+#------------------------------------------------------------------------------
+Event ID: 001
+Event Name: EV001
+(X,Y): (013,020)
+
+Page #1
+Conditions
+None
+
+Autonomous Movement
+Type: Fixed
+Speed: 3: Slow
+Freq: 3: Low
+Options Enabled
+Move Animation
+Trigger: Player Touch
+
+List of Event Commands:
+@>Text: The teleporter appears to no longer be working.
+@>Set Move Route: Player
+ :              : $>Move Down
+@>
+
+#------------------------------------------------------------------------------
+Event ID: 002
+Event Name: EV002
+(X,Y): (025,020)
+
+Page #1
+Conditions
+None
+
+Autonomous Movement
+Type: Fixed
+Speed: 3: Slow
+Freq: 3: Low
+Options Enabled
+Move Animation
+Trigger: Player Touch
+
+List of Event Commands:
+@>Text: The teleporter appears to no longer be working.
+@>Set Move Route: Player
+ :              : $>Move Down
+@>
+
+#------------------------------------------------------------------------------
+Event ID: 003
+Event Name: EV003
+(X,Y): (019,011)
+
+Page #1
+Conditions
+None
+
+Autonomous Movement
+Type: Fixed
+Speed: 3: Slow
+Freq: 3: Low
+Options Enabled
+Move Animation
+Trigger: Player Touch
+
+List of Event Commands:
+@>Text: This teleporter... seems to still be working!
+@>Show Picture: 1, 'TKoL', Upper Left (0,0), (100%,100%), 0, Normal
+@>Move Picture: 1, @20, Upper Left (0,0), (100%,100%), 255, Normal
+@>Wait: 60 frame(s)
+@>Change Text Options: Bottom, Show
+@>Text: The Kingdom of Lunacy.\wt[20]\nIs this the adventure you'd like to play?
+@>Show Choices: Yes, No
+(When Cancel: Choice 2)
+: When [Yes]
+ @>Text: And you're sure about this? Don't you have better things to do
+  :    : right now?
+ @>Show Choices: Yes, No
+ (When Cancel: Choice 2)
+ : When [Yes]
+  @>Text: ...Understood. Enjoy your lunatic dream for as long as it lasts.
+  @>Control Variables: [0105: Game Selected] = 3
+  @>Move Picture: 1, @20, Upper Left (0,0), (100%,100%), 0, Normal
+  @>Wait: 20 frame(s)
+  @>Transfer Player:[005: The Kingdom of Lunacy], (001,001)
+  @>Conditional Branch: Switch [0147: TKoL Cleared] == OFF
+   @>Control Variables: [0099: NG+ Loop] += 1
+   @>
+  : Branch End
+  @>Control Switches: [0098: Music Override] = OFF
+  @>Control Variables: [0121..0135] = 0
+  @>Control Switches: [0141..0142] = OFF
+  @>Control Switches: [0144: Clownpiece Checkpoint] = OFF
+  @>
+ : When [No]
+  @>Move Picture: 1, @20, Upper Left (0,0), (100%,100%), 0, Normal
+  @>Wait: 20 frame(s)
+  @>Jump to Label: Start
+  @>
+ : Branch End
+ @>
+: When [No]
+ @>Move Picture: 1, @20, Upper Left (0,0), (100%,100%), 0, Normal
+ @>Wait: 20 frame(s)
+ @>Jump to Label: Start
+ @>
+: Branch End
+@>
+
+Page #2
+Conditions
+Self Switch A is ON
+
+Autonomous Movement
+Type: Fixed
+Speed: 3: Slow
+Freq: 3: Low
+Options Enabled
+Move Animation
+Trigger: Player Touch
+
+List of Event Commands:
+@>Text: The teleporter appears to no longer be working.
+@>Set Move Route: Player
+ :              : $>Move Down
+@>
+
+#------------------------------------------------------------------------------
+Event ID: 004
+Event Name: The Mansion of Mystery
+(X,Y): (014,023)
+
+Page #1
+Conditions
+None
+
+Autonomous Movement
+Type: Fixed
+Speed: 3: Slow
+Freq: 3: Low
+Options Enabled
+Move Animation
+Trigger: Action Button
+
+List of Event Commands:
+@>Script: $game_variables[1] = $game_switches[113] ? "Yes" : "No"
+:       : $game_variables[2] = $game_switches[114] ? "Yes" : "No"
+:       : $game_variables[3] = $game_switches[115] ? "Yes" : "No"
+@>Conditional Branch: Variable [0107: TMoM Plot Variable] >= 20
+ @>Text: \sign[signskin]\l[5]<ac>The Mansion of Mystery</ac>\nStatus: Cleared
+  :    : \nBad End Seen: \v[1]
+  :    : \nGood End Seen: \v[2]
+  :    : \nBonus Boss Beaten: \v[3]
+ @>
+: Else
+ @>Text: \sign[signskin]<ac>The Mansion of Mystery</ac>\n
+  :    : Status: Uncleared
+ @>
+: Branch End
+@>
+
+#------------------------------------------------------------------------------
+Event ID: 005
+Event Name: The Mansion of Mystery
+(X,Y): (026,023)
+
+Page #1
+Conditions
+None
+
+Autonomous Movement
+Type: Fixed
+Speed: 3: Slow
+Freq: 3: Low
+Options Enabled
+Move Animation
+Trigger: Action Button
+
+List of Event Commands:
+@>Script: $game_variables[1] = $game_switches[126] ? "Yes" : "No"
+:       : $game_variables[2] = $game_switches[127] ? "Yes" : "No"
+:       : $game_variables[3] = $game_switches[128] ? "Yes" : "No"
+@>Conditional Branch: Variable [0116: TFoC Plot Variable] >= 99
+ @>Text: \sign[signskin]\l[5]<ac>The Festival of Curses</ac>\nStatus: Cleared
+  :    : \nGensokyo's Brightest: \v[1]
+  :    : \nVillage's Strongest: \v[2]
+  :    : \nPrismriver's Bravest: \v[3]
+ @>
+: Else
+ @>Text: \sign[signskin]<ac>The Festival of Curses</ac>\n
+  :    : Status: Uncleared
+ @>
+: Branch End
+@>
+
+#------------------------------------------------------------------------------
+Event ID: 006
+Event Name: The Kingdom of Lunacy
+(X,Y): (020,014)
+
+Page #1
+Conditions
+None
+
+Autonomous Movement
+Type: Fixed
+Speed: 3: Slow
+Freq: 3: Low
+Options Enabled
+Move Animation
+Trigger: Action Button
+
+List of Event Commands:
+@>Script: $game_variables[1] = $game_switches[145] ? "Yes" : "No"
+:       : $game_variables[2] = $game_switches[143] ? "Yes" : "No"
+:       : $game_variables[3] = $game_switches[146] ? "Yes" : "No"
+@>Conditional Branch: Variable [0121: TKoL Plot Variable] >= 26
+ @>Text: \sign[signskin]\l[5]<ac>The Kingdom of Lunacy</ac>\nStatus: Cleared
+  :    : \nWent Off Script: \v[1]
+  :    : \nForward and Back: \v[2]
+  :    : \n-----: \v[3]
+ @>
+: Else
+ @>Text: \sign[signskin]<ac>The Kingdom of Lunacy</ac>\n
+  :    : Status: Uncleared
+ @>
+: Branch End
+@>
+
+#------------------------------------------------------------------------------
+Event ID: 007
+Event Name: Autorun
+(X,Y): (019,032)
+
+Page #1
+Conditions
+None
+
+Autonomous Movement
+Type: Fixed
+Speed: 3: Slow
+Freq: 3: Low
+Options Enabled
+Move Animation
+Trigger: Autorun
+
+List of Event Commands:
+@>Text: \xn[\pn]This looks dangerous... I better wake up and get out of here.
+@>Wait: 20 frame(s)
+@>Show Animation: Player, [Question bubble]
+@>Text: \xn[\pn]I... I'm still here? But, I've always been able to wake up after
+ :    : one of these dream sessions, so why...!?
+@>Conditional Branch: Script: $DEBUG == true
+ @>Text: \bDEBUG: Should Doremy's dialogue change?
+ @>Show Choices: Yes, No
+ (When Cancel: Choice 2)
+ : When [Yes]
+  @>Control Switches: [0145: Doremy Deja Vu] = ON
+  @>
+ : When [No]
+  @>Control Switches: [0145: Doremy Deja Vu] = OFF
+  @>
+ : Branch End
+ @>
+: Branch End
+@>Conditional Branch: Switch [0145: Doremy Deja Vu] == ON
+ @>Text: \xn[Doremy]I knew something was off when I saw you repeating 
+  :    : the same dream multiple times, but...
+ @>Text: \xn[Doremy]I didn't think it was anything this big!
+ @>Set Event Location: [Doremy],(019,026)
+ @>Set Move Route: [Doremy]
+  :              : $>SE: 'PC open', 80, 50
+  :              : $>Change Opacity: 125
+ @>Set Move Route: Player
+  :              : $>Turn Up
+ @>Wait for Move's Completion
+ @>Show Animation: Player, [Exclaim bubble]
+ @>Text: \xn[\pn]--Doremy, the Ruler of the Dream World? What's going on here,
+  :    : what do you <i>mean!?</i>
+ @>Text: \xn[Doremy]Perhaps you don't remember, t'would be 
+  :    : unsurprising as one rarely remembers dreams after waking up.
+ @>Text: \xn[Doremy]You visited my realm several times recently, and 
+  :    : with each visit I sensed something unnatural about the visit.
+ @>Text: \xn[\pn]Unnatural...?
+ @>Text: \xn[Doremy]Usually one doesn't have active control over their 
+  :    : dreams, even amongst lucid dreamers, but you are fully 
+  :    : conscious and aware.
+ @>
+: Else
+ @>Text: \xn[Doremy]So, this is where the anomaly is originating...
+ @>Set Event Location: [Doremy],(019,026)
+ @>Set Move Route: [Doremy]
+  :              : $>SE: 'PC open', 80, 50
+  :              : $>Change Opacity: 125
+ @>Set Move Route: Player
+  :              : $>Turn Up
+ @>Wait for Move's Completion
+ @>Show Animation: Player, [Exclaim bubble]
+ @>Text: \xn[\pn]--Doremy, the Ruler of the Dream World? What are you
+  :    : doing here?
+ @>Text: \xn[Doremy]I am investigating a disturbance that is disrupting
+  :    : the Dream World.
+ @>Text: \xn[Doremy]I detected a strange anomaly coming from the
+  :    : World of Fantasies, one that was influencing the dreams
+  :    : of individuals.
+ @>Text: \xn[Doremy]I set out to determine the source of the anomaly
+  :    : and deal with it, and here I found you.
+ @>
+: Branch End
+@>Text: \xn[\pn]And that means?
+@>Text: \xn[Doremy]You are at the center of this incident.
+@>Show Animation: Player, [Exclaim bubble]
+@>Text: \xn[\pn]M-Me!? But I didn't do anything!
+@>Text: \xn[Doremy]What I mean to say is that, whoever, or whatever,
+ :    : the instigator of this incident is, it has used you as its focal point.
+@>Text: \xn[\pn]This just doesn't make sense... I'm just an ordinary human!
+@>Text: \xn[Doremy]Well, as you are the person of interest here, only
+ :    : you can resolve this.
+@>Text: \xn[Doremy]As for me, I must return to the Dream World to do 
+ :    : damage control. If I am able to, I will send aid.
+@>Text: \xn[Doremy]Good luck, Phantasmal Dreamer.
+@>Set Event Location: [Doremy],(000,000)
+@>Set Move Route: [Doremy]
+ :              : $>SE: 'PC close', 80, 50
+@>Wait: 20 frame(s)
+@>Text: \xn[\pn]Am I really at the center of all this...?
+@>Text: \xn[\pn]Well, whatever the case may be...
+@>Script: deactivateSpecialBGM("quiet_time")
+@>Script: playSpecialBGM("MotT")
+@>Text: \xn[\pn]I better investigate this, otherwise, I don't think I'll be 
+ :    : able to wake up.
+@>Control Switches: [0098: Music Override] = ON
+@>Control Variables: [0142: TLA Plot Variable] = 1
+@>
+
+Page #2
+Conditions
+Variable 0142: TLA Plot Variable is 1 or above
+
+Autonomous Movement
+Type: Fixed
+Speed: 3: Slow
+Freq: 3: Low
+Options Enabled
+Move Animation
+Trigger: Action Button
+
+List of Event Commands:
+@>
+
+#------------------------------------------------------------------------------
+Event ID: 008
+Event Name: Doremy
+(X,Y): (001,000)
+
+Page #1
+Conditions
+None
+
+Graphic: Person_Doremy
+
+Autonomous Movement
+Type: Fixed
+Speed: 3: Slow
+Freq: 3: Low
+Options Enabled
+Move Animation
+Trigger: Action Button
+
+List of Event Commands:
+@>
+
+#------------------------------------------------------------------------------
+Event ID: 009
+Event Name: EV009
+(X,Y): (019,021)
+
+Page #1
+Conditions
+Variable 0142: TLA Plot Variable is 1 or above
+
+Autonomous Movement
+Type: Fixed
+Speed: 3: Slow
+Freq: 3: Low
+Options Enabled
+Move Animation
+Trigger: Player Touch
+
+List of Event Commands:
+@>Text: Descend down the tower?
+@>Show Choices: Yes, No
+(When Cancel: Choice 2)
+: When [Yes]
+ @>Play SE: 'teleporter', 60, 100
+ @>Change Screen Color Tone: (-255,-255,-255,0), @6
+ @>Wait: 8 frame(s)
+ @>Transfer Player:[110: Tower of Adventure (Floors)], (012,013), No Fade
+ @>Change Screen Color Tone: (0,0,0,0), @6
+ @>
+: When [No]
+ @>Set Move Route: Player
+  :              : $>Move Down
+ @>
+: Branch End
+@>
+
+#------------------------------------------------------------------------------
+Event ID: 010
+Event Name: EV010
+(X,Y): (017,019)
+
+Page #1
+Conditions
+None
+
+Autonomous Movement
+Type: Fixed
+Speed: 3: Slow
+Freq: 3: Low
+Options Enabled
+Move Animation
+Trigger: Action Button
+
+List of Event Commands:
+@>Script: pbSetPokemonCenter
+@>Call Common Event: Akyuu Shrines
+@>
+
+Page #2
+Conditions
+Switch 0001: Starting over is ON
+
+Autonomous Movement
+Type: Fixed
+Speed: 3: Slow
+Freq: 3: Low
+Options Enabled
+Move Animation
+Trigger: Autorun
+
+List of Event Commands:
+@>Control Switches: [0001: Starting over] = OFF
+@>
+
+#------------------------------------------------------------------------------
+
+#==============================================================================
+Map ID: 137
+Map Name: Reimaden - Final Room
+Tileset: 041: Dream World
+Width: 20, Height: 15
 
 #==============================================================================
 
@@ -98343,30 +100858,17 @@ List of Event Commands:
 @>Script: pbShowPicture(20,"Transitions/Bars_Over.png",1,256,192,zoomX=100,zoomY=100,opacity=230,blendType=0)
 @>Move Picture: 5, @5, Center (256,192), (100%,100%), 230, Normal
 @>Wait: 5 frame(s)
-@>Script: pbShowPicture(1,"Transitions/BGs/BGRWM_1.png",1,256,192,100,100,0,0)
+@>Script: pbShowPicture(1,"Transitions/BGs/BGElite.png",1,256,192,100,100,0,0)
 @>Wait: 5 frame(s)
 @>Move Picture: 1, @5, Center (256,192), (100%,100%), 255, Normal
 @>Wait: 15 frame(s)
-@>Play SE: 'Vs flash', 80, 70
-@>Screen Flash: (255,255,255,255), @10
-@>Script: pbShowPicture(3,"Transitions/PTs/Char_Prismriver1S.png",1,256,192,zoomX=100,zoomY=100,opacity=255,blendType=0)
-@>Wait: 25 frame(s)
-@>Play SE: 'Vs flash', 80, 80
-@>Screen Flash: (255,255,255,255), @10
-@>Script: pbShowPicture(3,"Transitions/PTs/Char_Prismriver2S.png",1,256,192,zoomX=100,zoomY=100,opacity=255,blendType=0)
-@>Wait: 25 frame(s)
-@>Play SE: 'Vs flash', 80, 90
-@>Screen Flash: (255,255,255,255), @10
-@>Script: pbShowPicture(3,"Transitions/PTs/Char_Prismriver3S.png",1,256,192,zoomX=100,zoomY=100,opacity=255,blendType=0)
-@>Wait: 25 frame(s)
-@>Screen Flash: (255,255,255,255), @10
 @>Play SE: 'Vs flash', 80, 100
 @>Screen Flash: (255,255,255,255), @10
-@>Script: pbShowPicture(3,"Transitions/PTs/Char_Prismriver0S.png",1,256,192,zoomX=100,zoomY=100,opacity=255,blendType=0)
+@>Script: pbShowPicture(3,"Transitions/PTs/Char_PrismriverFS.png",1,256,192,zoomX=100,zoomY=100,opacity=255,blendType=0)
 @>Wait: 25 frame(s)
 @>Screen Flash: (255,255,255,255), @10
 @>Play SE: 'Vs sword', 80, 100
-@>Script: pbShowPicture(5,"Transitions/PTs/Char_Prismriver0.png",1,256,192,zoomX=100,zoomY=100,opacity=255,blendType=0)
+@>Script: pbShowPicture(5,"Transitions/PTs/Char_PrismriverF.png",1,256,192,zoomX=100,zoomY=100,opacity=255,blendType=0)
 @>Script: pbShowPicture(21,"Transitions/Names/Name_Prismrivers.png",1,256,192,zoomX=100,zoomY=100,opacity=255,blendType=0)
 @>Move Picture: 3, @30, Center (250,192), (100%,100%), 255, Normal
 @>Call Common Event: Vs. Transition - Balls
@@ -98418,17 +100920,17 @@ List of Event Commands:
 @>Script: pbShowPicture(20,"Transitions/Bars_Over.png",1,256,192,zoomX=100,zoomY=100,opacity=230,blendType=0)
 @>Move Picture: 5, @5, Center (256,192), (100%,100%), 230, Normal
 @>Wait: 5 frame(s)
-@>Script: pbShowPicture(1,"Transitions/BGs/BGSuzuran.png",1,256,192,100,100,0,0)
+@>Script: pbShowPicture(1,"Transitions/BGs/BGElite.png",1,256,192,100,100,0,0)
 @>Wait: 5 frame(s)
 @>Move Picture: 1, @5, Center (256,192), (100%,100%), 255, Normal
 @>Wait: 15 frame(s)
 @>Play SE: 'Vs flash', 80, 100
 @>Screen Flash: (255,255,255,255), @10
-@>Script: pbShowPicture(3,"Transitions/PTs/Char_MedicineS.png",1,256,192,zoomX=100,zoomY=100,opacity=255,blendType=0)
+@>Script: pbShowPicture(3,"Transitions/PTs/Char_MedicineFS.png",1,256,192,zoomX=100,zoomY=100,opacity=255,blendType=0)
 @>Wait: 25 frame(s)
 @>Screen Flash: (255,255,255,255), @10
 @>Play SE: 'Vs sword', 80, 100
-@>Script: pbShowPicture(5,"Transitions/PTs/Char_Medicine.png",1,256,192,zoomX=100,zoomY=100,opacity=255,blendType=0)
+@>Script: pbShowPicture(5,"Transitions/PTs/Char_MedicineF.png",1,256,192,zoomX=100,zoomY=100,opacity=255,blendType=0)
 @>Script: pbShowPicture(21,"Transitions/Names/Name_Medicine.png",1,256,192,zoomX=100,zoomY=100,opacity=255,blendType=0)
 @>Move Picture: 3, @30, Center (250,192), (100%,100%), 255, Normal
 @>Call Common Event: Vs. Transition - Balls
@@ -98480,18 +100982,18 @@ List of Event Commands:
 @>Script: pbShowPicture(20,"Transitions/Bars_Over.png",1,256,192,zoomX=100,zoomY=100,opacity=230,blendType=0)
 @>Move Picture: 5, @5, Center (256,192), (100%,100%), 230, Normal
 @>Wait: 5 frame(s)
-@>Script: pbShowPicture(1,"Transitions/BGs/BGVillage.png",1,256,192,100,100,0,0)
+@>Script: pbShowPicture(1,"Transitions/BGs/BGElite.png",1,256,192,100,100,0,0)
 @>Wait: 5 frame(s)
 @>Move Picture: 1, @5, Center (256,192), (100%,100%), 255, Normal
 @>Wait: 15 frame(s)
 @>Play SE: 'Vs flash', 80, 100
 @>Screen Flash: (255,255,255,255), @10
-@>Script: pbShowPicture(3,"Transitions/PTs/Char_KeineS.png",1,256,192,zoomX=100,zoomY=100,opacity=255,blendType=0)
+@>Script: pbShowPicture(3,"Transitions/PTs/Char_JunkoFS.png",1,256,192,zoomX=100,zoomY=100,opacity=255,blendType=0)
 @>Wait: 25 frame(s)
 @>Screen Flash: (255,255,255,255), @10
 @>Play SE: 'Vs sword', 80, 100
-@>Script: pbShowPicture(5,"Transitions/PTs/Char_Keine.png",1,256,192,zoomX=100,zoomY=100,opacity=255,blendType=0)
-@>Script: pbShowPicture(21,"Transitions/Names/Name_Keine.png",1,256,192,zoomX=100,zoomY=100,opacity=255,blendType=0)
+@>Script: pbShowPicture(5,"Transitions/PTs/Char_JunkoF.png",1,256,192,zoomX=100,zoomY=100,opacity=255,blendType=0)
+@>Script: pbShowPicture(21,"Transitions/Names/Name_Junko.png",1,256,192,zoomX=100,zoomY=100,opacity=255,blendType=0)
 @>Move Picture: 3, @30, Center (250,192), (100%,100%), 255, Normal
 @>Call Common Event: Vs. Transition - Balls
 @>Wait: 60 frame(s)
@@ -98542,18 +101044,18 @@ List of Event Commands:
 @>Script: pbShowPicture(20,"Transitions/Bars_Over.png",1,256,192,zoomX=100,zoomY=100,opacity=230,blendType=0)
 @>Move Picture: 5, @5, Center (256,192), (100%,100%), 230, Normal
 @>Wait: 5 frame(s)
-@>Script: pbShowPicture(1,"Transitions/BGs/BGVillage.png",1,256,192,100,100,0,0)
+@>Script: pbShowPicture(1,"Transitions/BGs/BGElite.png",1,256,192,100,100,0,0)
 @>Wait: 5 frame(s)
 @>Move Picture: 1, @5, Center (256,192), (100%,100%), 255, Normal
 @>Wait: 15 frame(s)
 @>Play SE: 'Vs flash', 80, 100
 @>Screen Flash: (255,255,255,255), @10
-@>Script: pbShowPicture(3,"Transitions/PTs/Char_KeineS.png",1,256,192,zoomX=100,zoomY=100,opacity=255,blendType=0)
+@>Script: pbShowPicture(3,"Transitions/PTs/Char_HecatiaFS.png",1,256,192,zoomX=100,zoomY=100,opacity=255,blendType=0)
 @>Wait: 25 frame(s)
 @>Screen Flash: (255,255,255,255), @10
 @>Play SE: 'Vs sword', 80, 100
-@>Script: pbShowPicture(5,"Transitions/PTs/Char_Keine.png",1,256,192,zoomX=100,zoomY=100,opacity=255,blendType=0)
-@>Script: pbShowPicture(21,"Transitions/Names/Name_Keine.png",1,256,192,zoomX=100,zoomY=100,opacity=255,blendType=0)
+@>Script: pbShowPicture(5,"Transitions/PTs/Char_HecatiaF.png",1,256,192,zoomX=100,zoomY=100,opacity=255,blendType=0)
+@>Script: pbShowPicture(21,"Transitions/Names/Name_Hecatia.png",1,256,192,zoomX=100,zoomY=100,opacity=255,blendType=0)
 @>Move Picture: 3, @30, Center (250,192), (100%,100%), 255, Normal
 @>Call Common Event: Vs. Transition - Balls
 @>Wait: 60 frame(s)

@@ -76,7 +76,11 @@ EventHandlers.add(:on_wild_pokemon_created, :level_depends_on_party,
 EventHandlers.add(:on_wild_pokemon_created, :wild_music_override,
   proc { |pkmn|
     next if !$game_switches[98]
-    setBattleRule("battleBGM", "W-004. Dimension of Reverie.ogg")
+	  if pbGet(107) == 2
+        setBattleRule("battleBGM", "W-004. Dimension of Reverie.ogg")
+	  else
+	    setBattleRule("battleBGM", "W-041. Magician of the Twilight.ogg")
+	  end
     setBattleRule("victoryBGM", "")
   }
 )
@@ -84,7 +88,11 @@ EventHandlers.add(:on_wild_pokemon_created, :wild_music_override,
 EventHandlers.add(:on_trainer_load, :trainer_music_override,
   proc { |trainer|
     next if !$game_switches[98]
-    setBattleRule("battleBGM", "W-004. Dimension of Reverie.ogg")
+	  if pbGet(107) == 2
+        setBattleRule("battleBGM", "W-004. Dimension of Reverie.ogg")
+	  else
+	    setBattleRule("battleBGM", "W-041. Magician of the Twilight.ogg")
+	  end
     setBattleRule("victoryBGM", "")
   }
 )

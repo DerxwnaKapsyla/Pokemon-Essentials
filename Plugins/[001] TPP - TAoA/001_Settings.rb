@@ -19,8 +19,8 @@ module Settings
     if pbGet(105) == 1
 	  return [
         _INTL("---- Touhou Puppet Play ----"),
-        _INTL("--- The Mansion of Mystery ---",)
-        _INTL("Credits",)
+        _INTL("--- The Mansion of Mystery ---"),
+        _INTL("Credits"),
 		"",
         _INTL("--- Game Director ---"),
         "DerxwnaKapsyla",

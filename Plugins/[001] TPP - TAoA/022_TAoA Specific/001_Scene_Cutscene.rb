@@ -938,3 +938,24 @@ class TKoLPostgameScene < TMoMIntroScene
 end
 
 # ---------------------------
+
+class TLAIntroScene < TMoMIntroScene
+  TEXT = [
+	[
+      "Touhou Puppet Play ~ The Adventures of Ayaka",
+	  "The Last Adventure",
+	  "",
+      "Developed by: DerxwnaKapsyla"
+    ],
+    :wait, 160,
+    :clear,
+    :wait, 60,
+    [
+      "With enough effort, one can change their",
+	  "dreams into reality..."
+    ],
+    :wait, 160,
+    :clear,
+    :wait, 60
+  ]
+end

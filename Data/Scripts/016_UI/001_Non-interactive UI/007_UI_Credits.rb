@@ -99,12 +99,12 @@ class Scene_Credits
       "Nintendo",
       _INTL("Affiliated with Game Freak")
     ])
-	ret.push("Gensou Ningyou Enbu was made by:"
+	ret.push("Gensou Ningyou Enbu was made by:")
 	add_names_to_credits(ret, ["FocasLens","Fantasy Puppet Theater"])
-	ret.push("Touhou Project is owned by:"
+	ret.push("Touhou Project is owned by:")
 	add_names_to_credits(ret, ["Team Shanghai Alice","ZUN"])
 	ret.push("", "", "", "", "")
-	ret.push("And YOU..."),
+	ret.push("And YOU...")
     ret.push("", "", "", "")
     ret.push(_INTL("This is a non-profit fan-made game."),
              _INTL("No copyright infringements intended."),
