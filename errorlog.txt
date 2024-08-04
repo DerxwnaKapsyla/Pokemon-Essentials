@@ -9579,3 +9579,24 @@ Backtrace:
 003_Interpreter.rb:132:in `block in update'
 003_Interpreter.rb:86:in `loop'
 003_Interpreter.rb:86:in `update'
+
+=================
+
+[2024-08-03 12:27:59 -0700]
+[Pokémon Essentials version 21.1]
+[v21.1 Hotfixes 1.0.9]
+
+Exception: RuntimeError
+Message: Unknown ID 137.
+
+Backtrace:
+001_GameData.rb:176:in `get'
+[TAoA Core] 002_Overworld_Time.rb:18:in `pbGetTimeNow'
+[Voltseon's Pause Menu] 004_VoltseonMenu_Components.rb:186:in `update'
+[Voltseon's Pause Menu] 002_VoltseonMenu_Main.rb:228:in `block (2 levels) in update'
+[Voltseon's Pause Menu] 002_VoltseonMenu_Main.rb:228:in `each'
+[Voltseon's Pause Menu] 002_VoltseonMenu_Main.rb:228:in `block in update'
+[Voltseon's Pause Menu] 002_VoltseonMenu_Main.rb:224:in `loop'
+[Voltseon's Pause Menu] 002_VoltseonMenu_Main.rb:224:in `update'
+[Voltseon's Pause Menu] 002_VoltseonMenu_Main.rb:302:in `pbStartPokemonMenu'
+[Voltseon's Pause Menu] 002_VoltseonMenu_Main.rb:293:in `call_menu'

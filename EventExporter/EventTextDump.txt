@@ -84484,10 +84484,98 @@ List of Event Commands:
 
 #==============================================================================
 Map ID: 112
-Map Name: Reimaden - Edge of Existence
-Tileset: 001: Outside
-Width: 20, Height: 15
+Map Name: Reimaden - Edge of Dreams
+Tileset: 038: World of Fantasies
+Width: 67, Height: 77
 Auto-Change BGM: W-017. Seeds of the Incident
+
+#------------------------------------------------------------------------------
+Event ID: 001
+Event Name: Mima
+(X,Y): (023,008)
+
+Page #1
+Conditions
+None
+
+Autonomous Movement
+Type: Fixed
+Speed: 3: Slow
+Freq: 3: Low
+Options Enabled
+Move Animation
+Trigger: Action Button
+
+List of Event Commands:
+@>
+
+#------------------------------------------------------------------------------
+Event ID: 002
+Event Name: EV002
+(X,Y): (021,067)
+
+Page #1
+Conditions
+None
+
+Autonomous Movement
+Type: Fixed
+Speed: 3: Slow
+Freq: 3: Low
+Options Enabled
+Move Animation
+Trigger: Action Button
+
+List of Event Commands:
+@>Text: \sign[signskin]Mima's Training Grounds Ahead
+@>Text: There's a note attached underneath...
+@>Text: \sign[signskin]\l[3]I haven't repaired the bridges in a while. Try not to fall,
+ :    : I won't rescue you~\n- Mima
+@>
+
+#------------------------------------------------------------------------------
+Event ID: 003
+Event Name: EV003
+(X,Y): (025,008)
+
+Page #1
+Conditions
+None
+
+Autonomous Movement
+Type: Fixed
+Speed: 3: Slow
+Freq: 3: Low
+Options Enabled
+Move Animation
+Trigger: Action Button
+
+List of Event Commands:
+@>Text: \sign[signskin]Mima's Training Grounds
+@>
+
+#------------------------------------------------------------------------------
+Event ID: 004
+Event Name: EV004
+(X,Y): (023,051)
+
+Page #1
+Conditions
+None
+
+Autonomous Movement
+Type: Fixed
+Speed: 3: Slow
+Freq: 3: Low
+Options Enabled
+Move Animation
+Trigger: Parallel Process
+
+List of Event Commands:
+@>Change Map Settings:Panorama = 'WoF', 0
+@>
+
+#------------------------------------------------------------------------------
 
 #==============================================================================
 Map ID: 113
@@ -96886,8 +96974,184 @@ List of Event Commands:
 #==============================================================================
 Map ID: 134
 Map Name: Reimaden
-Tileset: 041: Dream World
-Width: 20, Height: 15
+Tileset: 038: World of Fantasies
+Width: 49, Height: 59
+
+#------------------------------------------------------------------------------
+Event ID: 001
+Event Name: EV001
+(X,Y): (033,030)
+
+Page #1
+Conditions
+None
+
+Autonomous Movement
+Type: Fixed
+Speed: 3: Slow
+Freq: 3: Low
+Options Enabled
+Move Animation
+Trigger: Action Button
+
+List of Event Commands:
+@>Text: \sign[signskin]Secret teleporter to Hakurei Shrine\nDon't let 
+ :    : Reimu know!
+@>
+
+#------------------------------------------------------------------------------
+Event ID: 002
+Event Name: EV002
+(X,Y): (015,030)
+
+Page #1
+Conditions
+None
+
+Autonomous Movement
+Type: Fixed
+Speed: 3: Slow
+Freq: 3: Low
+Options Enabled
+Move Animation
+Trigger: Action Button
+
+List of Event Commands:
+@>Text: \sign[signskin]Teleporter to Reimaden
+@>
+
+#------------------------------------------------------------------------------
+Event ID: 003
+Event Name: 5MS #1
+(X,Y): (024,004)
+
+Page #1
+Conditions
+None
+
+Graphic: Person_FiveMagicStones
+
+Autonomous Movement
+Type: Fixed
+Speed: 3: Slow
+Freq: 3: Low
+Options Enabled
+Move Animation
+Trigger: Action Button
+
+List of Event Commands:
+@>
+
+#------------------------------------------------------------------------------
+Event ID: 004
+Event Name: 5MS #2
+(X,Y): (021,003)
+
+Page #1
+Conditions
+None
+
+Graphic: Person_FiveMagicStones
+
+Autonomous Movement
+Type: Fixed
+Speed: 3: Slow
+Freq: 3: Low
+Options Enabled
+Move Animation
+Trigger: Action Button
+
+List of Event Commands:
+@>
+
+#------------------------------------------------------------------------------
+Event ID: 005
+Event Name: 5MS #3
+(X,Y): (027,003)
+
+Page #1
+Conditions
+None
+
+Graphic: Person_FiveMagicStones
+
+Autonomous Movement
+Type: Fixed
+Speed: 3: Slow
+Freq: 3: Low
+Options Enabled
+Move Animation
+Trigger: Action Button
+
+List of Event Commands:
+@>
+
+#------------------------------------------------------------------------------
+Event ID: 006
+Event Name: 5MS #4
+(X,Y): (018,004)
+
+Page #1
+Conditions
+None
+
+Graphic: Person_FiveMagicStones
+
+Autonomous Movement
+Type: Fixed
+Speed: 3: Slow
+Freq: 3: Low
+Options Enabled
+Move Animation
+Trigger: Action Button
+
+List of Event Commands:
+@>
+
+#------------------------------------------------------------------------------
+Event ID: 007
+Event Name: 5MS #5
+(X,Y): (030,004)
+
+Page #1
+Conditions
+None
+
+Graphic: Person_FiveMagicStones
+
+Autonomous Movement
+Type: Fixed
+Speed: 3: Slow
+Freq: 3: Low
+Options Enabled
+Move Animation
+Trigger: Action Button
+
+List of Event Commands:
+@>
+
+#------------------------------------------------------------------------------
+Event ID: 008
+Event Name: EV008
+(X,Y): (024,000)
+
+Page #1
+Conditions
+None
+
+Autonomous Movement
+Type: Fixed
+Speed: 3: Slow
+Freq: 3: Low
+Options Enabled
+Move Animation
+Trigger: Parallel Process
+
+List of Event Commands:
+@>Change Map Settings:Panorama = 'WoF', 0
+@>
+
+#------------------------------------------------------------------------------
 
 #==============================================================================
 Map ID: 135
@@ -97389,8 +97653,88 @@ List of Event Commands:
 #==============================================================================
 Map ID: 137
 Map Name: Reimaden - Final Room
-Tileset: 041: Dream World
-Width: 20, Height: 15
+Tileset: 049: World of Fantasies (alt)
+Width: 31, Height: 51
+Auto-Change BGM: W-017. Seeds of the Incident
+Auto-Change BGS: Vortex
+
+#------------------------------------------------------------------------------
+Event ID: 001
+Event Name: The Rift
+(X,Y): (015,012)
+
+Page #1
+Conditions
+None
+
+Graphic: VortexFull
+
+Autonomous Movement
+Type: Custom
+Custom Move Route:
+(Repeat Action)
+$>Turn Left
+$>Wait: 8 frame(s)
+$>Turn Right
+$>Wait: 8 frame(s)
+$>Turn Up
+$>Wait: 8 frame(s)
+$>Turn Down
+$>Wait: 8 frame(s)
+
+Speed: 5: Faster
+Freq: 6: Highest
+Options Enabled
+Move Animation
+Trigger: Action Button
+
+List of Event Commands:
+@>
+
+#------------------------------------------------------------------------------
+Event ID: 002
+Event Name: EV002
+(X,Y): (000,000)
+
+Page #1
+Conditions
+None
+
+Autonomous Movement
+Type: Fixed
+Speed: 3: Slow
+Freq: 3: Low
+Options Enabled
+Move Animation
+Trigger: Parallel Process
+
+List of Event Commands:
+@>Change Map Settings:Panorama = 'WoF', 0
+@>
+
+#------------------------------------------------------------------------------
+Event ID: 003
+Event Name: EV003
+(X,Y): (015,021)
+
+Page #1
+Conditions
+None
+
+Graphic: Person_Meimu
+
+Autonomous Movement
+Type: Fixed
+Speed: 3: Slow
+Freq: 3: Low
+Options Enabled
+Move Animation
+Trigger: Action Button
+
+List of Event Commands:
+@>
+
+#------------------------------------------------------------------------------
 
 #==============================================================================
 
