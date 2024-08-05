@@ -69,5 +69,6 @@ REPLACE_BGMS = [
 				["S6_Performance", "X-002. Phantom Ensemble ~ Rehearsal Mix", [25]],
 				["Test", "W-017. Seeds of the Incident", [63]],
 				["MotT", "W-041. Magician of the Twilight.ogg", nil],
-				["quiet_time", "X-003. Shiny Smily Story (8-bit Remix).ogg", nil, 0, 100]
+				["quiet_time", "X-003. Shiny Smily Story (8-bit Remix).ogg", nil, 0, 100]#,
+				#["meimu", "B-043. Irreplacable World.ogg", [19. 137], 100, 100]
                ]

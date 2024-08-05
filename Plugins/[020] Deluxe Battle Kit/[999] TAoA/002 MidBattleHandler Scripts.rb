@@ -695,8 +695,30 @@ MidbattleHandlers.add(:midbattle_global, :miasma_field,
   # The Last Adventure
   #-----------------------------------------------------------------------------  
   # Scene: Vs. Meimu
-  #		* Apply boss-level resistances and effects to the final Meimu fight
+  #     * Have behind the scenes checks and activations for Switches and 
+  #       variables in Phase 1.
+  #		* Apply boss-level resistances and effects to the Phase 2 Meimu fight
   #		* At certain HP thresholds, have Meimu launch a signature attack
   #		* At low HP, have Meimu go invincible for five turns, the Player needs
   #		  to survive until the invincibility ends
   #-----------------------------------------------------------------------------  
+  MidbattleHandlers.add(:midbattle_scripts, :vs_meimu,
+    proc { |battle, idxBattler, idxTarget, trigger|
+      scene = battle.scene
+	  foe = battle.battlers[1]
+      case trigger
+	  #-------------------------------------
+	  when "BattleEndWin"
+	    if pbGet(143) != 5
+		  $game_variables[143] += 1
+		  #p $game_variables[143]
+		else
+		  $game_switches[157] = false
+		  $game_switches[98] = false
+		  $game_variables[143] = 6
+		  #p $game_switches[98]
+		  #p $game_switches[157]
+		end
+	  end
+     }
+  ) 

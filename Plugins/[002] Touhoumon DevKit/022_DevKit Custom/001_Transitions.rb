@@ -8,7 +8,7 @@
 #==============================================================================#
 SpecialBattleIntroAnimations.register("derx_animations", 100,   # Priority 100
   proc { |battle_type, foe, location|   # Condition
-    next $game_map && $game_switches[104] && $game_variables[103] <= 56
+    next $game_map && $game_switches[104] && $game_variables[103] <= 99
   },
   proc { |viewport, battle_type, foe, location|   # Animation
     case $game_variables[103]    # check this variable, and depending on the number returned...
@@ -66,12 +66,14 @@ SpecialBattleIntroAnimations.register("derx_animations", 100,   # Priority 100
 	 when 49 then  pbCommonEvent(69)  # Vs. Sagume
 	 when 50 then  pbCommonEvent(70)  # Vs. Toyohime & Yorihime
 	 
-	 when 51 then  pbCommonEvent(81)  # Vs. Phantasmal Prismriver Sisters 
-	 when 52 then  pbCommonEvent(82)  # Vs. Phantasmal Medicine
-	 when 53 then  pbCommonEvent(83)  # Vs. Phantasmal Junko
-	 when 54 then  pbCommonEvent(84)  # Vs. Phantasmal Hecatia
-	 when 55 then  pbCommonEvent(85)  # Vs. Mima
-	 when 56 then  pbCommonEvent(86)  # Vs. Meimu
+	 when 51 then  pbCommonEvent(77)  # Vs. Phantasmal Prismriver Sisters 
+	 when 52 then  pbCommonEvent(78)  # Vs. Phantasmal Medicine
+	 when 53 then  pbCommonEvent(79)  # Vs. Phantasmal Junko
+	 when 54 then  pbCommonEvent(80)  # Vs. Phantasmal Hecatia
+	 when 55 then  pbCommonEvent(81)  # Vs. Mima
+	 when 56 then  pbCommonEvent(82)  # Vs. Meimu
+	 when 57 then  pbCommonEvent(83)  # Vs. Meimu, final
+	 when 99
     else
       raise "Custom animation #{$game_variables[103]} expected but not found somehow!"
     end

@@ -17990,6 +17990,215 @@ List of Event Commands:
 @>
 
 #------------------------------------------------------------------------------
+Event ID: 015
+Event Name: EV015
+(X,Y): (019,027)
+
+Page #1
+Conditions
+None
+
+Graphic: Person_Meimu
+
+Autonomous Movement
+Type: Fixed
+Speed: 3: Slow
+Freq: 3: Low
+Options Enabled
+Move Animation
+Trigger: Action Button
+
+List of Event Commands:
+@>Control Variables: [0142: TLA Plot Variable] = 4
+@>Play SE: 'Door exit final', 70, 80
+@>Change Screen Color Tone: (-255,-255,-255,0), @12
+@>Fade Out BGM: 1 sec.
+@>Wait: 12 frame(s)
+@>Change Transparent Flag: Transparency
+@>Transfer Player:[137: Reimaden - Final Room], (015,012), No Fade
+@>Change Screen Color Tone: (0,0,0,0), @12
+@>
+
+Page #2
+Conditions
+None
+
+Graphic: Person_Meimu
+
+Autonomous Movement
+Type: Fixed
+Speed: 3: Slow
+Freq: 3: Low
+Options Enabled
+Move Animation
+Trigger: Action Button
+
+List of Event Commands:
+@>Control Switches: [0098: Music Override] = OFF
+@>Control Switches: [0103: Hide AI Level] = ON
+@>Change Battle BGM: 'B-044. Finale ~ For The End', 100, 100
+@>Script: setBattleRule("backdrop", "meimu")
+:       : setBattleRule("base", "meimu")
+:       : #playSpecialBGM("meimu")
+:       : setBattleRule("battleBGM", "B-044. Finale ~ For The End.ogg")
+@>Script: setBattleRule("editWildPokemon", {
+:       :   :hp_level => 3,
+:       :   :immunities => [:OHKO, :ITEMREMOVAL, :POISON, :ATTRACT, :PPLOSS, :TYPECHANGE, :ABILITYREMOVAL, :INDIRECT, 
+:       :                   :DISABLE, :SELFKO, :TRANSFORM, :ESCAPE],
+:       :   :gender => 1,
+:       :   :shiny => false,
+:       :   :iv => 31,
+:       :   :ev => 252
+:       : })
+@>Script: setBattleRule("cannotRun")
+:       : setBattleRule("disablePokeBalls")
+:       : setBattleRule("battleIntroText", "This is the end.")
+:       : setBattleRule("victoryBGM", "")
+:       : #setBattleRule("midbattleScript", :vs_meimu_final)
+@>Control Switches: [0104: Transition Handler] = ON
+@>Control Variables: [0103: Vs. Transition ID] = 57
+@>Conditional Branch: Script: WildBattle.start(:MEIMU, 100)
+ @>
+: Branch End
+@>
+
+Page #3
+Conditions
+Self Switch A is ON
+
+Graphic: Person_Meimu
+
+Autonomous Movement
+Type: Fixed
+Speed: 3: Slow
+Freq: 3: Low
+Options Enabled
+Move Animation
+Trigger: Action Button
+
+List of Event Commands:
+@>Script: setBattleRule("backdrop", "meimu")
+:       : setBattleRule("base", "meimu")
+:       : #playSpecialBGM("meimu")
+@>Control Variables: [0143: Meimu Battle Count] = 1
+@>Control Switches: [0098: Music Override] = ON
+@>Control Switches: [0157: Battling Meimu] = ON
+@>Control Switches: [0104: Transition Handler] = ON
+@>Control Variables: [0103: Vs. Transition ID] = 56
+@>Control Variables: [0104: Vs. Transition - Pkmn] = 6
+@>Conditional Branch: Script: TrainerBattle.start(:MEIMU, "Meimu", 1)
+ @>
+: Else
+ @>Script: pbTrainerEnd
+ @>Exit Event Processing
+ @>
+: Branch End
+@>
+
+#------------------------------------------------------------------------------
+Event ID: 016
+Event Name: 
+(X,Y): (038,000)
+
+Page #1
+Conditions
+None
+
+Graphic: TPDP_NPC 38
+
+Autonomous Movement
+Type: Fixed
+Speed: 3: Slow
+Freq: 6: Highest
+Options Enabled
+Move Animation
+Trigger: Action Button
+
+List of Event Commands:
+@>Conditional Branch: Script: TrainerBattle.start(:PATROL2F, "Riko",pbGet(99))
+ @>Control Self Switch: A =ON
+ @>
+: Branch End
+@>Script: pbTrainerEnd
+@>
+
+Page #2
+Conditions
+Self Switch A is ON
+
+Graphic: TPDP_NPC 38
+
+Autonomous Movement
+Type: Custom
+Custom Move Route:
+(Repeat Action)
+$>Move Down
+$>Move Down
+$>Move Down
+$>Wait: 4 frame(s)
+$>Turn Left
+$>Wait: 4 frame(s)
+$>Turn Right
+$>Wait: 4 frame(s)
+$>Turn Down
+$>Wait: 4 frame(s)
+$>Move Up
+$>Move Up
+$>Move Up
+$>Move Up
+$>Move Up
+$>Move Up
+$>Move Up
+$>Wait: 4 frame(s)
+$>Turn Left
+$>Wait: 4 frame(s)
+$>Turn Right
+$>Wait: 4 frame(s)
+$>Turn Up
+$>Wait: 4 frame(s)
+$>Move Down
+$>Move Down
+$>Move Down
+$>Move Down
+
+Speed: 3: Slow
+Freq: 6: Highest
+Options Enabled
+Move Animation
+Trigger: Action Button
+
+List of Event Commands:
+@>Text: Can't you just return home? Please? For
+ :    : big sis Riko?
+@>
+
+#------------------------------------------------------------------------------
+Event ID: 017
+Event Name: EV017
+(X,Y): (018,027)
+
+Page #1
+Conditions
+None
+
+Graphic: Object ball
+
+Autonomous Movement
+Type: Fixed
+Speed: 3: Slow
+Freq: 3: Low
+Options Enabled
+Move Animation
+Trigger: Action Button
+
+List of Event Commands:
+@>Change Text Options: Middle, Show
+@>Show Picture: 1, 'Name_Final', Upper Left (0,0), (100%,100%), 255, Normal
+@>Text: I can't afford to lose!
+@>Erase Picture: 1
+@>
+
+#------------------------------------------------------------------------------
 
 #==============================================================================
 Map ID: 020
@@ -18068,7 +18277,7 @@ List of Event Commands:
 @>Text: \se[]...But who said the journey had to end so soon?\wtnp[20]
 @>Script: pbAllowSpeedup
 :       : $GameSpeed = pbGet(1)
-@>Control Switches: [0103: Disable Text Skip] = OFF
+@>Control Switches: [0103: Hide AI Level] = OFF
 @>Change Text Options: Bottom, Show
 @>Transfer Player:[019: World of Fantasies], (019,020), Down
 @>
@@ -23175,7 +23384,7 @@ List of Event Commands:
  @>Script: $game_variables[1] = $GameSpeed
  :       : pbDisallowSpeedup
  :       : $GameSpeed = 0
- @>Control Switches: [0103: Disable Text Skip] = ON
+ @>Control Switches: [0103: Hide AI Level] = ON
  @>Fade Out BGM: 1 sec.
  @>Wait: 20 frame(s)
  @>Change Screen Color Tone: (51,17,-34,255), @6
@@ -25641,7 +25850,7 @@ List of Event Commands:
    :    : village!
   @>Text: \xn[Kogasa]Oh? I think I just got another delicious meal 
    :    : right now~!
-  @>Control Switches: [0103: Disable Text Skip] = ON
+  @>Control Switches: [0103: Hide AI Level] = ON
   @>Fade Out BGM: 1 sec.
   @>Wait: 20 frame(s)
   @>Change Screen Color Tone: (51,17,-34,255), @10
@@ -25676,7 +25885,7 @@ List of Event Commands:
    :    : The Sisters probably will want to hear that
    :    : the problem is solved.
   @>Text: \xn[\pn]And after that, we can finally head home!
-  @>Control Switches: [0103: Disable Text Skip] = ON
+  @>Control Switches: [0103: Hide AI Level] = ON
   @>Text: \xn[\pn]Ahhh... What a long night this has been...\wtnp[40]
   @>Wait: 20 frame(s)
   @>Change Screen Color Tone: (51,17,-34,255), @10
@@ -28539,7 +28748,7 @@ List of Event Commands:
 @>Wait: 20 frame(s)
 @>Change Text Options: Middle, Hide
 @>Text: \se[]...But who said the journey had to end so soon?\wtnp[20]
-@>Control Switches: [0103: Disable Text Skip] = OFF
+@>Control Switches: [0103: Hide AI Level] = OFF
 @>Change Text Options: Bottom, Show
 @>Transfer Player:[019: World of Fantasies], (019,020), Down
 @>
@@ -51519,7 +51728,7 @@ List of Event Commands:
  @>Script: # $game_variables[1] = $GameSpeed
  :       : # pbDisallowSpeedup
  :       : # $GameSpeed = 0
- @>Control Switches: [0103: Disable Text Skip] = ON
+ @>Control Switches: [0103: Hide AI Level] = ON
  @>Change Map Settings:Fog = 'PurpleFog', 0, 200, Normal, 200, 0, 0
  @>Change Screen Color Tone: (51,17,-34,255), @10
  @>Play BGM: 'W-029. Unknown Flower, Mesmerizing Journey', 70, 100
@@ -55050,7 +55259,7 @@ List of Event Commands:
   :    : our refreshments?
  @>Text: \xn[\pn]Y-Yeah, sure\..\..\..\wtnp[40]
  @>Wait: 20 frame(s)
- @>Control Switches: [0103: Disable Text Skip] = ON
+ @>Control Switches: [0103: Hide AI Level] = ON
  @>Change Screen Color Tone: (51,17,-34,255), @10
  @>Play BGM: 'W-029. Unknown Flower, Mesmerizing Journey', 70, 100
  @>Wait: 10 frame(s)
@@ -58080,7 +58289,7 @@ List of Event Commands:
 @>Script: TFoCPostgameScene.new
 @>Script: # pbAllowSpeedup
 :       : # $GameSpeed = pbGet(1)
-@>Control Switches: [0103: Disable Text Skip] = OFF
+@>Control Switches: [0103: Hide AI Level] = OFF
 @>Change Transparent Flag: Normal
 @>Transfer Player:[047: \PN's Room], (004,007), Right
 @>Change Screen Color Tone: (0,0,0,0), @6
@@ -83032,7 +83241,8 @@ Width: 20, Height: 15
 Map ID: 108
 Map Name: World of Fantasies
 Tileset: 038: World of Fantasies
-Width: 80, Height: 85
+Width: 80, Height: 88
+Auto-Change BGM: W-044. World of Empty Dreams
 
 #------------------------------------------------------------------------------
 Event ID: 001
@@ -83216,13 +83426,931 @@ List of Event Commands:
 @>
 
 #------------------------------------------------------------------------------
+Event ID: 010
+Event Name: EV010
+(X,Y): (006,004)
+
+Page #1
+Conditions
+Variable 0142: TLA Plot Variable is 2 or above
+
+Autonomous Movement
+Type: Fixed
+Speed: 3: Slow
+Freq: 3: Low
+Options Enabled
+Move Animation
+Trigger: Player Touch
+
+List of Event Commands:
+@>Text: Descend down the tower?
+@>Show Choices: Yes, No
+(When Cancel: Choice 2)
+: When [Yes]
+ @>Play SE: 'PRSFX- Teleport', 60, 100
+ @>Change Screen Color Tone: (-255,-255,-255,0), @6
+ @>Wait: 8 frame(s)
+ @>Transfer Player:[109: Tower of Adventure (Entrance)], (025,025), Up, No Fade
+ @>Change Screen Color Tone: (0,0,0,0), @6
+ @>
+: When [No]
+ @>
+: Branch End
+@>
+
+#------------------------------------------------------------------------------
+Event ID: 011
+Event Name: EV011
+(X,Y): (007,031)
+
+Page #1
+Conditions
+Variable 0142: TLA Plot Variable is 2 or above
+
+Autonomous Movement
+Type: Fixed
+Speed: 3: Slow
+Freq: 3: Low
+Options Enabled
+Move Animation
+Trigger: Player Touch
+
+List of Event Commands:
+@>Play SE: 'PRSFX- Teleport', 60, 100
+@>Show Animation: Player, [Berry plant sparkle]
+@>Wait: 10 frame(s)
+@>Change Transparent Flag: Transparency
+@>Wait: 20 frame(s)
+@>Set Move Route: Player
+ :              : $>Change Speed: 6
+ :              : $>Through ON
+ :              : $>Move Right
+ :              : $>Move Right
+ :              : $>Move Right
+ :              : $>Move Right
+ :              : $>Move Right
+ :              : $>Move Right
+ :              : $>Move Right
+ :              : $>Move Right
+ :              : $>Move Right
+ :              : $>Move Right
+ :              : $>Move Right
+ :              : $>Move Right
+ :              : $>Move Right
+ :              : $>Move Right
+ :              : $>Move Right
+ :              : $>Move Right
+ :              : $>Move Right
+ :              : $>Move Right
+ :              : $>Move Right
+ :              : $>Move Right
+ :              : $>Move Right
+ :              : $>Move Right
+ :              : $>Move Right
+ :              : $>Move Right
+ :              : $>Move Right
+ :              : $>Move Right
+ :              : $>Move Right
+ :              : $>Move Right
+ :              : $>Move Right
+ :              : $>Move Right
+ :              : $>Move Right
+ :              : $>Move Right
+ :              : $>Move Right
+ :              : $>Move Right
+ :              : $>Move Right
+ :              : $>Move Right
+ :              : $>Move Right
+ :              : $>Move Right
+ :              : $>Move Right
+ :              : $>Move Right
+ :              : $>Move Right
+ :              : $>Move Right
+ :              : $>Move Right
+ :              : $>Move Right
+ :              : $>Move Right
+ :              : $>Move Right
+ :              : $>Move Right
+ :              : $>Move Right
+ :              : $>Move Right
+ :              : $>Move Right
+ :              : $>Move Right
+ :              : $>Move Right
+ :              : $>Move Right
+ :              : $>Move Right
+ :              : $>Move Right
+ :              : $>Move Right
+ :              : $>Move Right
+ :              : $>Move Right
+ :              : $>Move Right
+ :              : $>Move Right
+ :              : $>Move Right
+ :              : $>Move Right
+ :              : $>Move Right
+ :              : $>Move Right
+ :              : $>Move Right
+ :              : $>Move Down
+ :              : $>Move Down
+ :              : $>Move Down
+ :              : $>Move Down
+ :              : $>Move Down
+ :              : $>Through OFF
+ :              : $>Change Speed: 4
+@>Wait for Move's Completion
+@>Play SE: 'PRSFX- Teleport', 60, 100
+@>Show Animation: Player, [Berry plant sparkle]
+@>Wait: 10 frame(s)
+@>Change Transparent Flag: Normal
+@>
+
+#------------------------------------------------------------------------------
+Event ID: 012
+Event Name: EV012
+(X,Y): (072,036)
+
+Page #1
+Conditions
+Variable 0142: TLA Plot Variable is 2 or above
+
+Autonomous Movement
+Type: Fixed
+Speed: 3: Slow
+Freq: 3: Low
+Options Enabled
+Move Animation
+Trigger: Player Touch
+
+List of Event Commands:
+@>Play SE: 'PRSFX- Teleport', 60, 100
+@>Show Animation: This event, [Berry plant sparkle]
+@>Wait: 10 frame(s)
+@>Change Transparent Flag: Transparency
+@>Wait: 20 frame(s)
+@>Set Move Route: Player
+ :              : $>Change Speed: 6
+ :              : $>Through ON
+ :              : $>Move Up
+ :              : $>Move Up
+ :              : $>Move Up
+ :              : $>Move Up
+ :              : $>Move Up
+ :              : $>Move Left
+ :              : $>Move Left
+ :              : $>Move Left
+ :              : $>Move Left
+ :              : $>Move Left
+ :              : $>Move Left
+ :              : $>Move Left
+ :              : $>Move Left
+ :              : $>Move Left
+ :              : $>Move Left
+ :              : $>Move Left
+ :              : $>Move Left
+ :              : $>Move Left
+ :              : $>Move Left
+ :              : $>Move Left
+ :              : $>Move Left
+ :              : $>Move Left
+ :              : $>Move Left
+ :              : $>Move Left
+ :              : $>Move Left
+ :              : $>Move Left
+ :              : $>Move Left
+ :              : $>Move Left
+ :              : $>Move Left
+ :              : $>Move Left
+ :              : $>Move Left
+ :              : $>Move Left
+ :              : $>Move Left
+ :              : $>Move Left
+ :              : $>Move Left
+ :              : $>Move Left
+ :              : $>Move Left
+ :              : $>Move Left
+ :              : $>Move Left
+ :              : $>Move Left
+ :              : $>Move Left
+ :              : $>Move Left
+ :              : $>Move Left
+ :              : $>Move Left
+ :              : $>Move Left
+ :              : $>Move Left
+ :              : $>Move Left
+ :              : $>Move Left
+ :              : $>Move Left
+ :              : $>Move Left
+ :              : $>Move Left
+ :              : $>Move Left
+ :              : $>Move Left
+ :              : $>Move Left
+ :              : $>Move Left
+ :              : $>Move Left
+ :              : $>Move Left
+ :              : $>Move Left
+ :              : $>Move Left
+ :              : $>Move Left
+ :              : $>Move Left
+ :              : $>Move Left
+ :              : $>Move Left
+ :              : $>Move Left
+ :              : $>Move Left
+ :              : $>Move Left
+ :              : $>Move Left
+ :              : $>Move Left
+ :              : $>Move Left
+ :              : $>Move Left
+ :              : $>Turn Up
+ :              : $>Through OFF
+ :              : $>Change Speed: 4
+@>Wait for Move's Completion
+@>Play SE: 'PRSFX- Teleport', 60, 100
+@>Show Animation: This event, [Berry plant sparkle]
+@>Wait: 10 frame(s)
+@>Change Transparent Flag: Normal
+@>
+
+#------------------------------------------------------------------------------
+Event ID: 013
+Event Name: EV013
+(X,Y): (048,064)
+
+Page #1
+Conditions
+Variable 0142: TLA Plot Variable is 2 or above
+
+Autonomous Movement
+Type: Fixed
+Speed: 3: Slow
+Freq: 3: Low
+Options Enabled
+Move Animation
+Trigger: Player Touch
+
+List of Event Commands:
+@>Play SE: 'PRSFX- Teleport', 60, 100
+@>Show Animation: Player, [Berry plant sparkle]
+@>Wait: 10 frame(s)
+@>Change Transparent Flag: Transparency
+@>Wait: 20 frame(s)
+@>Set Move Route: Player
+ :              : $>Change Speed: 6
+ :              : $>Through ON
+ :              : $>Move Left
+ :              : $>Move Left
+ :              : $>Move Left
+ :              : $>Move Left
+ :              : $>Move Left
+ :              : $>Move Left
+ :              : $>Move Left
+ :              : $>Move Left
+ :              : $>Move Left
+ :              : $>Move Left
+ :              : $>Move Left
+ :              : $>Move Left
+ :              : $>Move Left
+ :              : $>Move Left
+ :              : $>Move Left
+ :              : $>Move Left
+ :              : $>Move Up
+ :              : $>Move Up
+ :              : $>Move Up
+ :              : $>Move Up
+ :              : $>Move Up
+ :              : $>Move Up
+ :              : $>Move Up
+ :              : $>Move Up
+ :              : $>Move Up
+ :              : $>Move Up
+ :              : $>Move Up
+ :              : $>Move Up
+ :              : $>Move Up
+ :              : $>Move Up
+ :              : $>Move Up
+ :              : $>Move Up
+ :              : $>Move Up
+ :              : $>Move Up
+ :              : $>Move Up
+ :              : $>Move Up
+ :              : $>Move Up
+ :              : $>Move Up
+ :              : $>Move Up
+ :              : $>Move Up
+ :              : $>Move Up
+ :              : $>Move Up
+ :              : $>Move Up
+ :              : $>Move Up
+ :              : $>Move Up
+ :              : $>Move Up
+ :              : $>Move Up
+ :              : $>Move Up
+ :              : $>Turn Up
+ :              : $>Through OFF
+ :              : $>Change Speed: 4
+@>Wait for Move's Completion
+@>Play SE: 'PRSFX- Teleport', 60, 100
+@>Show Animation: Player, [Berry plant sparkle]
+@>Wait: 10 frame(s)
+@>Change Transparent Flag: Normal
+@>
+
+#------------------------------------------------------------------------------
+Event ID: 014
+Event Name: EV014
+(X,Y): (032,032)
+
+Page #1
+Conditions
+Variable 0142: TLA Plot Variable is 2 or above
+
+Autonomous Movement
+Type: Fixed
+Speed: 3: Slow
+Freq: 3: Low
+Options Enabled
+Move Animation
+Trigger: Player Touch
+
+List of Event Commands:
+@>Play SE: 'PRSFX- Teleport', 60, 100
+@>Show Animation: Player, [Berry plant sparkle]
+@>Wait: 10 frame(s)
+@>Change Transparent Flag: Transparency
+@>Wait: 20 frame(s)
+@>Set Move Route: Player
+ :              : $>Change Speed: 6
+ :              : $>Through ON
+ :              : $>Move Down
+ :              : $>Move Down
+ :              : $>Move Down
+ :              : $>Move Down
+ :              : $>Move Down
+ :              : $>Move Down
+ :              : $>Move Down
+ :              : $>Move Down
+ :              : $>Move Down
+ :              : $>Move Down
+ :              : $>Move Down
+ :              : $>Move Down
+ :              : $>Move Down
+ :              : $>Move Down
+ :              : $>Move Down
+ :              : $>Move Down
+ :              : $>Move Down
+ :              : $>Move Down
+ :              : $>Move Down
+ :              : $>Move Down
+ :              : $>Move Down
+ :              : $>Move Down
+ :              : $>Move Down
+ :              : $>Move Down
+ :              : $>Move Down
+ :              : $>Move Down
+ :              : $>Move Down
+ :              : $>Move Down
+ :              : $>Move Down
+ :              : $>Move Down
+ :              : $>Move Down
+ :              : $>Move Down
+ :              : $>Move Right
+ :              : $>Move Right
+ :              : $>Move Right
+ :              : $>Move Right
+ :              : $>Move Right
+ :              : $>Move Right
+ :              : $>Move Right
+ :              : $>Move Right
+ :              : $>Move Right
+ :              : $>Move Right
+ :              : $>Move Right
+ :              : $>Move Right
+ :              : $>Move Right
+ :              : $>Move Right
+ :              : $>Move Right
+ :              : $>Move Right
+ :              : $>Turn Down
+ :              : $>Through OFF
+ :              : $>Change Speed: 4
+@>Wait for Move's Completion
+@>Play SE: 'PRSFX- Teleport', 60, 100
+@>Show Animation: Player, [Berry plant sparkle]
+@>Wait: 10 frame(s)
+@>Change Transparent Flag: Normal
+@>
+
+#------------------------------------------------------------------------------
+Event ID: 015
+Event Name: EV015
+(X,Y): (054,048)
+
+Page #1
+Conditions
+Variable 0142: TLA Plot Variable is 2 or above
+
+Autonomous Movement
+Type: Fixed
+Speed: 3: Slow
+Freq: 3: Low
+Options Enabled
+Move Animation
+Trigger: Player Touch
+
+List of Event Commands:
+@>Play SE: 'PRSFX- Teleport', 60, 100
+@>Show Animation: Player, [Berry plant sparkle]
+@>Wait: 10 frame(s)
+@>Change Transparent Flag: Transparency
+@>Wait: 20 frame(s)
+@>Set Move Route: Player
+ :              : $>Change Speed: 6
+ :              : $>Through ON
+ :              : $>Move Down
+ :              : $>Move Down
+ :              : $>Move Left
+ :              : $>Move Left
+ :              : $>Move Left
+ :              : $>Move Left
+ :              : $>Move Left
+ :              : $>Move Left
+ :              : $>Move Left
+ :              : $>Move Left
+ :              : $>Move Left
+ :              : $>Move Left
+ :              : $>Move Left
+ :              : $>Move Left
+ :              : $>Move Left
+ :              : $>Move Left
+ :              : $>Move Left
+ :              : $>Move Left
+ :              : $>Move Left
+ :              : $>Move Left
+ :              : $>Move Left
+ :              : $>Move Left
+ :              : $>Move Left
+ :              : $>Move Left
+ :              : $>Move Left
+ :              : $>Move Left
+ :              : $>Move Left
+ :              : $>Move Left
+ :              : $>Move Left
+ :              : $>Move Left
+ :              : $>Move Left
+ :              : $>Turn Down
+ :              : $>Through OFF
+ :              : $>Change Speed: 4
+@>Wait for Move's Completion
+@>Play SE: 'PRSFX- Teleport', 60, 100
+@>Show Animation: Player, [Berry plant sparkle]
+@>Wait: 10 frame(s)
+@>Change Transparent Flag: Normal
+@>
+
+#------------------------------------------------------------------------------
+Event ID: 016
+Event Name: EV016
+(X,Y): (025,050)
+
+Page #1
+Conditions
+Variable 0142: TLA Plot Variable is 2 or above
+
+Autonomous Movement
+Type: Fixed
+Speed: 3: Slow
+Freq: 3: Low
+Options Enabled
+Move Animation
+Trigger: Player Touch
+
+List of Event Commands:
+@>Play SE: 'PRSFX- Teleport', 60, 100
+@>Show Animation: Player, [Berry plant sparkle]
+@>Wait: 10 frame(s)
+@>Change Transparent Flag: Transparency
+@>Wait: 20 frame(s)
+@>Set Move Route: Player
+ :              : $>Change Speed: 6
+ :              : $>Through ON
+ :              : $>Move Right
+ :              : $>Move Right
+ :              : $>Move Right
+ :              : $>Move Right
+ :              : $>Move Right
+ :              : $>Move Right
+ :              : $>Move Right
+ :              : $>Move Right
+ :              : $>Move Right
+ :              : $>Move Right
+ :              : $>Move Right
+ :              : $>Move Right
+ :              : $>Move Right
+ :              : $>Move Right
+ :              : $>Move Right
+ :              : $>Move Right
+ :              : $>Move Right
+ :              : $>Move Right
+ :              : $>Move Right
+ :              : $>Move Right
+ :              : $>Move Right
+ :              : $>Move Right
+ :              : $>Move Right
+ :              : $>Move Right
+ :              : $>Move Right
+ :              : $>Move Right
+ :              : $>Move Right
+ :              : $>Move Right
+ :              : $>Move Right
+ :              : $>Move Up
+ :              : $>Move Up
+ :              : $>Through OFF
+ :              : $>Change Speed: 4
+@>Wait for Move's Completion
+@>Play SE: 'PRSFX- Teleport', 60, 100
+@>Show Animation: Player, [Berry plant sparkle]
+@>Wait: 10 frame(s)
+@>Change Transparent Flag: Normal
+@>
+
+#------------------------------------------------------------------------------
+Event ID: 017
+Event Name: EV017
+(X,Y): (009,074)
+
+Page #1
+Conditions
+Variable 0142: TLA Plot Variable is 2 or above
+
+Autonomous Movement
+Type: Fixed
+Speed: 3: Slow
+Freq: 3: Low
+Options Enabled
+Move Animation
+Trigger: Player Touch
+
+List of Event Commands:
+@>Play SE: 'PRSFX- Teleport', 60, 100
+@>Show Animation: Player, [Berry plant sparkle]
+@>Wait: 10 frame(s)
+@>Change Transparent Flag: Transparency
+@>Wait: 20 frame(s)
+@>Set Move Route: Player
+ :              : $>Change Speed: 6
+ :              : $>Through ON
+ :              : $>Move Right
+ :              : $>Move Right
+ :              : $>Move Right
+ :              : $>Move Right
+ :              : $>Move Right
+ :              : $>Move Right
+ :              : $>Move Right
+ :              : $>Move Right
+ :              : $>Move Right
+ :              : $>Move Right
+ :              : $>Move Right
+ :              : $>Move Right
+ :              : $>Move Right
+ :              : $>Move Right
+ :              : $>Move Right
+ :              : $>Move Right
+ :              : $>Move Right
+ :              : $>Move Right
+ :              : $>Move Right
+ :              : $>Move Right
+ :              : $>Move Right
+ :              : $>Move Right
+ :              : $>Move Right
+ :              : $>Move Right
+ :              : $>Move Right
+ :              : $>Move Right
+ :              : $>Move Right
+ :              : $>Move Right
+ :              : $>Move Right
+ :              : $>Move Right
+ :              : $>Move Right
+ :              : $>Move Right
+ :              : $>Move Right
+ :              : $>Move Right
+ :              : $>Move Right
+ :              : $>Move Right
+ :              : $>Move Right
+ :              : $>Move Right
+ :              : $>Move Right
+ :              : $>Move Right
+ :              : $>Move Right
+ :              : $>Move Right
+ :              : $>Move Right
+ :              : $>Move Right
+ :              : $>Move Right
+ :              : $>Move Right
+ :              : $>Move Right
+ :              : $>Move Right
+ :              : $>Move Right
+ :              : $>Move Right
+ :              : $>Move Up
+ :              : $>Move Up
+ :              : $>Move Up
+ :              : $>Move Up
+ :              : $>Move Up
+ :              : $>Move Up
+ :              : $>Move Up
+ :              : $>Move Up
+ :              : $>Move Up
+ :              : $>Move Up
+ :              : $>Move Up
+ :              : $>Move Up
+ :              : $>Move Up
+ :              : $>Move Up
+ :              : $>Move Up
+ :              : $>Move Up
+ :              : $>Move Up
+ :              : $>Move Up
+ :              : $>Move Up
+ :              : $>Move Up
+ :              : $>Move Up
+ :              : $>Move Up
+ :              : $>Move Up
+ :              : $>Move Up
+ :              : $>Move Up
+ :              : $>Move Up
+ :              : $>Move Up
+ :              : $>Move Up
+ :              : $>Move Up
+ :              : $>Move Up
+ :              : $>Move Up
+ :              : $>Move Up
+ :              : $>Move Up
+ :              : $>Move Up
+ :              : $>Move Up
+ :              : $>Move Up
+ :              : $>Move Up
+ :              : $>Move Up
+ :              : $>Move Up
+ :              : $>Move Up
+ :              : $>Move Up
+ :              : $>Move Up
+ :              : $>Move Up
+ :              : $>Move Up
+ :              : $>Move Up
+ :              : $>Move Up
+ :              : $>Move Up
+ :              : $>Move Up
+ :              : $>Move Up
+ :              : $>Move Up
+ :              : $>Move Up
+ :              : $>Move Up
+ :              : $>Move Up
+ :              : $>Move Up
+ :              : $>Move Up
+ :              : $>Move Up
+ :              : $>Move Up
+ :              : $>Move Up
+ :              : $>Move Up
+ :              : $>Move Up
+ :              : $>Move Up
+ :              : $>Move Up
+ :              : $>Move Up
+ :              : $>Through OFF
+ :              : $>Change Speed: 4
+@>Wait for Move's Completion
+@>Play SE: 'PRSFX- Teleport', 60, 100
+@>Show Animation: Player, [Berry plant sparkle]
+@>Wait: 10 frame(s)
+@>Change Transparent Flag: Normal
+@>
+
+#------------------------------------------------------------------------------
+Event ID: 018
+Event Name: EV018
+(X,Y): (059,011)
+
+Page #1
+Conditions
+Variable 0142: TLA Plot Variable is 2 or above
+
+Autonomous Movement
+Type: Fixed
+Speed: 3: Slow
+Freq: 3: Low
+Options Enabled
+Move Animation
+Trigger: Player Touch
+
+List of Event Commands:
+@>Play SE: 'PRSFX- Teleport', 60, 100
+@>Show Animation: Player, [Berry plant sparkle]
+@>Wait: 10 frame(s)
+@>Change Transparent Flag: Transparency
+@>Wait: 20 frame(s)
+@>Set Move Route: Player
+ :              : $>Change Speed: 6
+ :              : $>Through ON
+ :              : $>Move Down
+ :              : $>Move Down
+ :              : $>Move Down
+ :              : $>Move Down
+ :              : $>Move Down
+ :              : $>Move Down
+ :              : $>Move Down
+ :              : $>Move Down
+ :              : $>Move Down
+ :              : $>Move Down
+ :              : $>Move Down
+ :              : $>Move Down
+ :              : $>Move Down
+ :              : $>Move Down
+ :              : $>Move Down
+ :              : $>Move Down
+ :              : $>Move Down
+ :              : $>Move Down
+ :              : $>Move Down
+ :              : $>Move Down
+ :              : $>Move Down
+ :              : $>Move Down
+ :              : $>Move Down
+ :              : $>Move Down
+ :              : $>Move Down
+ :              : $>Move Down
+ :              : $>Move Down
+ :              : $>Move Down
+ :              : $>Move Down
+ :              : $>Move Down
+ :              : $>Move Down
+ :              : $>Move Down
+ :              : $>Move Down
+ :              : $>Move Down
+ :              : $>Move Down
+ :              : $>Move Down
+ :              : $>Move Down
+ :              : $>Move Down
+ :              : $>Move Down
+ :              : $>Move Down
+ :              : $>Move Down
+ :              : $>Move Down
+ :              : $>Move Down
+ :              : $>Move Down
+ :              : $>Move Down
+ :              : $>Move Down
+ :              : $>Move Down
+ :              : $>Move Down
+ :              : $>Move Down
+ :              : $>Move Down
+ :              : $>Move Down
+ :              : $>Move Down
+ :              : $>Move Down
+ :              : $>Move Down
+ :              : $>Move Down
+ :              : $>Move Down
+ :              : $>Move Down
+ :              : $>Move Down
+ :              : $>Move Down
+ :              : $>Move Down
+ :              : $>Move Down
+ :              : $>Move Down
+ :              : $>Move Down
+ :              : $>Move Left
+ :              : $>Move Left
+ :              : $>Move Left
+ :              : $>Move Left
+ :              : $>Move Left
+ :              : $>Move Left
+ :              : $>Move Left
+ :              : $>Move Left
+ :              : $>Move Left
+ :              : $>Move Left
+ :              : $>Move Left
+ :              : $>Move Left
+ :              : $>Move Left
+ :              : $>Move Left
+ :              : $>Move Left
+ :              : $>Move Left
+ :              : $>Move Left
+ :              : $>Move Left
+ :              : $>Move Left
+ :              : $>Move Left
+ :              : $>Move Left
+ :              : $>Move Left
+ :              : $>Move Left
+ :              : $>Move Left
+ :              : $>Move Left
+ :              : $>Move Left
+ :              : $>Move Left
+ :              : $>Move Left
+ :              : $>Move Left
+ :              : $>Move Left
+ :              : $>Move Left
+ :              : $>Move Left
+ :              : $>Move Left
+ :              : $>Move Left
+ :              : $>Move Left
+ :              : $>Move Left
+ :              : $>Move Left
+ :              : $>Move Left
+ :              : $>Move Left
+ :              : $>Move Left
+ :              : $>Move Left
+ :              : $>Move Left
+ :              : $>Move Left
+ :              : $>Move Left
+ :              : $>Move Left
+ :              : $>Move Left
+ :              : $>Move Left
+ :              : $>Move Left
+ :              : $>Move Left
+ :              : $>Move Left
+ :              : $>Turn Up
+ :              : $>Through OFF
+ :              : $>Change Speed: 4
+@>Wait for Move's Completion
+@>Play SE: 'PRSFX- Teleport', 60, 100
+@>Show Animation: Player, [Berry plant sparkle]
+@>Wait: 10 frame(s)
+@>Change Transparent Flag: Normal
+@>
+
+#------------------------------------------------------------------------------
+Event ID: 019
+Event Name: Healing Statue
+(X,Y): (061,008)
+
+Page #1
+Conditions
+None
+
+Autonomous Movement
+Type: Fixed
+Speed: 3: Slow
+Freq: 3: Low
+Options Enabled
+Move Animation
+Trigger: Action Button
+
+List of Event Commands:
+@>Script: pbSetPokemonCenter
+@>Call Common Event: Akyuu Shrines
+@>
+
+Page #2
+Conditions
+Switch 0001: Starting over is ON
+
+Autonomous Movement
+Type: Fixed
+Speed: 3: Slow
+Freq: 3: Low
+Options Enabled
+Move Animation
+Trigger: Autorun
+
+List of Event Commands:
+@>Set Event Location: [Teleport A],(017,052)
+@>Set Event Location: [Teleport A],(029,044)
+@>Set Event Location: [Teleport B],(051,051)
+@>Set Event Location: [Teleport B],(057,040)
+@>Set Event Location: [Teleport C],(031,032)
+@>Set Event Location: [Teleport C],(015,020)
+@>Set Event Location: [Teleport D],(049,020)
+@>Set Event Location: [EV016],(064,010)
+@>Control Switches: [0001: Starting over] = OFF
+@>
+
+#------------------------------------------------------------------------------
+Event ID: 020
+Event Name: size(3,1)
+(X,Y): (058,006)
+
+Page #1
+Conditions
+Variable 0142: TLA Plot Variable is 2 or above
+
+Autonomous Movement
+Type: Fixed
+Speed: 3: Slow
+Freq: 3: Low
+Options Enabled
+Move Animation
+Trigger: Player Touch
+
+List of Event Commands:
+@>Conditional Branch: Player is facing Up
+ @>Play SE: 'Door exit', 100, 100
+ @>Change Screen Color Tone: (-255,-255,-255,0), @6
+ @>Wait: 8 frame(s)
+ @>Transfer Player:[134: Reimaden], (024,051), No Fade
+ @>Change Screen Color Tone: (0,0,0,0), @6
+ @>Set Move Route: Player
+  :              : $>Move Up
+ @>
+: Branch End
+@>
+
+#------------------------------------------------------------------------------
 
 #==============================================================================
 Map ID: 109
 Map Name: Tower of Adventure (Entrance)
 Tileset: 038: World of Fantasies
 Width: 51, Height: 39
-Auto-Change BGM: W-041. Magician of the Twilight
+Auto-Change BGM: W-044. World of Empty Dreams
 
 #------------------------------------------------------------------------------
 Event ID: 001
@@ -83234,6 +84362,21 @@ Conditions
 None
 
 Graphic: Person_Yuuka
+
+Autonomous Movement
+Type: Fixed
+Speed: 3: Slow
+Freq: 3: Low
+Options Enabled
+Move Animation
+Trigger: Action Button
+
+List of Event Commands:
+@>
+
+Page #2
+Conditions
+Variable 0142: TLA Plot Variable is 2 or above
 
 Autonomous Movement
 Type: Fixed
@@ -83307,6 +84450,11 @@ Move Animation
 Trigger: Autorun
 
 List of Event Commands:
+@>Set Move Route: Player
+ :              : $>Move Down
+ :              : $>Move Down
+ :              : $>Move Down
+ :              : $>Move Down
 @>Wait for Move's Completion
 @>Show Animation: Player, [Exclaim bubble]
 @>Text: \xn[\pn]M-Miss Kazami...! Please tell me you're real and not 
@@ -83375,13 +84523,38 @@ List of Event Commands:
 @>
 
 #------------------------------------------------------------------------------
+Event ID: 005
+Event Name: EV005
+(X,Y): (025,025)
+
+Page #1
+Conditions
+Variable 0142: TLA Plot Variable is 2 or above
+
+Autonomous Movement
+Type: Fixed
+Speed: 3: Slow
+Freq: 3: Low
+Options Enabled
+Move Animation
+Trigger: Player Touch
+
+List of Event Commands:
+@>Play SE: 'PRSFX- Teleport', 60, 100
+@>Change Screen Color Tone: (-255,-255,-255,0), @6
+@>Wait: 8 frame(s)
+@>Transfer Player:[108: World of Fantasies], (006,004), Down, No Fade
+@>Change Screen Color Tone: (0,0,0,0), @6
+@>
+
+#------------------------------------------------------------------------------
 
 #==============================================================================
 Map ID: 110
 Map Name: Tower of Adventure (Floors)
 Tileset: 038: World of Fantasies
 Width: 195, Height: 39
-Auto-Change BGM: W-041. Magician of the Twilight
+Auto-Change BGM: W-044. World of Empty Dreams
 
 #------------------------------------------------------------------------------
 Event ID: 001
@@ -83509,7 +84682,7 @@ Speed: 3: Slow
 Freq: 3: Low
 Options Enabled
 Move Animation
-Trigger: Autorun
+Trigger: Player Touch
 
 List of Event Commands:
 @>Set Move Route: Player
@@ -83529,6 +84702,9 @@ List of Event Commands:
 @>Change Text Options: Bottom, Show
 @>Control Switches: [0098: Music Override] = ON
 @>Script: setBattleRule("victoryBGM", "")
+@>Control Switches: [0104: Transition Handler] = ON
+@>Control Variables: [0103: Vs. Transition ID] = 51
+@>Control Variables: [0104: Vs. Transition - Pkmn] = 6
 @>Conditional Branch: Script: TrainerBattle.start(:FALSEPRISMRIVER, "Prismriver Sisters", 99)
  @>Wait: 5 frame(s)
  @>Change Screen Color Tone: (-255,-255,-255,0), @8
@@ -83698,7 +84874,7 @@ List of Event Commands:
 @>Play SE: 'teleporter', 60, 100
 @>Change Screen Color Tone: (-255,-255,-255,0), @6
 @>Wait: 8 frame(s)
-@>Transfer Player:[136: Tower of Adventure (Roof)], (019,022), Down, No Fade
+@>Transfer Player:[136: Tower of Adventure (Roof)], (019,021), Down, No Fade
 @>Change Screen Color Tone: (0,0,0,0), @6
 @>
 
@@ -83723,7 +84899,7 @@ List of Event Commands:
 @>Play SE: 'teleporter', 60, 100
 @>Change Screen Color Tone: (-255,-255,-255,0), @6
 @>Wait: 8 frame(s)
-@>Transfer Player:[110: Tower of Adventure (Floors)], (051,013), Down, No Fade
+@>Transfer Player:[110: Tower of Adventure (Floors)], (051,012), Down, No Fade
 @>Change Screen Color Tone: (0,0,0,0), @6
 @>
 
@@ -83748,7 +84924,7 @@ List of Event Commands:
 @>Play SE: 'teleporter', 60, 100
 @>Change Screen Color Tone: (-255,-255,-255,0), @6
 @>Wait: 8 frame(s)
-@>Transfer Player:[110: Tower of Adventure (Floors)], (012,029), Up, No Fade
+@>Transfer Player:[110: Tower of Adventure (Floors)], (012,030), Up, No Fade
 @>Change Screen Color Tone: (0,0,0,0), @6
 @>
 
@@ -83773,7 +84949,7 @@ List of Event Commands:
 @>Play SE: 'teleporter', 60, 100
 @>Change Screen Color Tone: (-255,-255,-255,0), @6
 @>Wait: 8 frame(s)
-@>Transfer Player:[110: Tower of Adventure (Floors)], (090,013), Down, No Fade
+@>Transfer Player:[110: Tower of Adventure (Floors)], (090,012), Down, No Fade
 @>Change Screen Color Tone: (0,0,0,0), @6
 @>
 
@@ -83798,7 +84974,7 @@ List of Event Commands:
 @>Play SE: 'teleporter', 60, 100
 @>Change Screen Color Tone: (-255,-255,-255,0), @6
 @>Wait: 8 frame(s)
-@>Transfer Player:[110: Tower of Adventure (Floors)], (051,029), Up, No Fade
+@>Transfer Player:[110: Tower of Adventure (Floors)], (051,030), Up, No Fade
 @>Change Screen Color Tone: (0,0,0,0), @6
 @>
 
@@ -83823,7 +84999,7 @@ List of Event Commands:
 @>Play SE: 'teleporter', 60, 100
 @>Change Screen Color Tone: (-255,-255,-255,0), @6
 @>Wait: 8 frame(s)
-@>Transfer Player:[110: Tower of Adventure (Floors)], (129,013), Down, No Fade
+@>Transfer Player:[110: Tower of Adventure (Floors)], (129,012), Down, No Fade
 @>Change Screen Color Tone: (0,0,0,0), @6
 @>
 
@@ -83848,7 +85024,7 @@ List of Event Commands:
 @>Play SE: 'teleporter', 60, 100
 @>Change Screen Color Tone: (-255,-255,-255,0), @6
 @>Wait: 8 frame(s)
-@>Transfer Player:[110: Tower of Adventure (Floors)], (090,029), Up, No Fade
+@>Transfer Player:[110: Tower of Adventure (Floors)], (090,030), Up, No Fade
 @>Change Screen Color Tone: (0,0,0,0), @6
 @>
 
@@ -83873,7 +85049,7 @@ List of Event Commands:
 @>Play SE: 'teleporter', 60, 100
 @>Change Screen Color Tone: (-255,-255,-255,0), @6
 @>Wait: 8 frame(s)
-@>Transfer Player:[110: Tower of Adventure (Floors)], (155,038), Down, No Fade
+@>Transfer Player:[110: Tower of Adventure (Floors)], (168,012), Down, No Fade
 @>Change Screen Color Tone: (0,0,0,0), @6
 @>
 
@@ -83898,7 +85074,7 @@ List of Event Commands:
 @>Play SE: 'teleporter', 60, 100
 @>Change Screen Color Tone: (-255,-255,-255,0), @6
 @>Wait: 8 frame(s)
-@>Transfer Player:[110: Tower of Adventure (Floors)], (129,029), Up, No Fade
+@>Transfer Player:[110: Tower of Adventure (Floors)], (129,030), Up, No Fade
 @>Change Screen Color Tone: (0,0,0,0), @6
 @>
 
@@ -83917,14 +85093,13 @@ Speed: 3: Slow
 Freq: 3: Low
 Options Enabled
 Move Animation
-Trigger: Autorun
+Trigger: Player Touch
 
 List of Event Commands:
 @>Set Move Route: Player
  :              : $>Move Down
 @>Wait for Move's Completion
 @>Show Animation: Player, [Exclaim bubble]
-@>Text: \xn[\pn]Is... Is that...?
 @>Scroll Map: Down, 4, 3
 @>Wait: 20 frame(s)
 @>Change Text Options: Middle, Show
@@ -83935,7 +85110,10 @@ List of Event Commands:
 @>Change Text Options: Bottom, Show
 @>Control Switches: [0098: Music Override] = ON
 @>Script: setBattleRule("victoryBGM", "")
-@>Conditional Branch: Script: TrainerBattle.start(:FALSEMEDICINE "Prismriver Sisters", 99)
+@>Control Switches: [0104: Transition Handler] = ON
+@>Control Variables: [0103: Vs. Transition ID] = 52
+@>Control Variables: [0104: Vs. Transition - Pkmn] = 6
+@>Conditional Branch: Script: TrainerBattle.start(:FALSEMEDICINE, "Medicine Melancholy", 99)
  @>Wait: 5 frame(s)
  @>Change Screen Color Tone: (-255,-255,-255,0), @8
  @>Play SE: 'Pollen', 100, 150
@@ -83987,14 +85165,13 @@ Speed: 3: Slow
 Freq: 3: Low
 Options Enabled
 Move Animation
-Trigger: Autorun
+Trigger: Player Touch
 
 List of Event Commands:
 @>Set Move Route: Player
  :              : $>Move Down
 @>Wait for Move's Completion
 @>Show Animation: Player, [Exclaim bubble]
-@>Text: \xn[\pn]Is... Is that...?
 @>Scroll Map: Down, 4, 3
 @>Wait: 20 frame(s)
 @>Change Text Options: Middle, Show
@@ -84005,7 +85182,10 @@ List of Event Commands:
 @>Change Text Options: Bottom, Show
 @>Control Switches: [0098: Music Override] = ON
 @>Script: setBattleRule("victoryBGM", "")
-@>Conditional Branch: Script: TrainerBattle.start(:FALSEJUNKO "Junko", 99)
+@>Control Switches: [0104: Transition Handler] = ON
+@>Control Variables: [0103: Vs. Transition ID] = 53
+@>Control Variables: [0104: Vs. Transition - Pkmn] = 6
+@>Conditional Branch: Script: TrainerBattle.start(:FALSEJUNKO, "Junko", 99)
  @>Wait: 5 frame(s)
  @>Change Screen Color Tone: (-255,-255,-255,0), @8
  @>Play SE: 'Pollen', 100, 150
@@ -84058,14 +85238,13 @@ Speed: 3: Slow
 Freq: 3: Low
 Options Enabled
 Move Animation
-Trigger: Autorun
+Trigger: Player Touch
 
 List of Event Commands:
 @>Set Move Route: Player
  :              : $>Move Down
 @>Wait for Move's Completion
 @>Show Animation: Player, [Exclaim bubble]
-@>Text: \xn[\pn]Is... Is that...?
 @>Scroll Map: Down, 4, 3
 @>Wait: 20 frame(s)
 @>Change Text Options: Middle, Show
@@ -84076,7 +85255,10 @@ List of Event Commands:
 @>Change Text Options: Bottom, Show
 @>Control Switches: [0098: Music Override] = ON
 @>Script: setBattleRule("victoryBGM", "")
-@>Conditional Branch: Script: TrainerBattle.start(:FALSEHECATIA "Hecatia Lapislazuli", 99)
+@>Control Switches: [0104: Transition Handler] = ON
+@>Control Variables: [0103: Vs. Transition ID] = 54
+@>Control Variables: [0104: Vs. Transition - Pkmn] = 6
+@>Conditional Branch: Script: TrainerBattle.start(:FALSEHECATIA, "Hecatia Lapislazuli", 99)
  @>Wait: 5 frame(s)
  @>Change Screen Color Tone: (-255,-255,-255,0), @8
  @>Play SE: 'Pollen', 100, 150
@@ -84487,7 +85669,7 @@ Map ID: 112
 Map Name: Reimaden - Edge of Dreams
 Tileset: 038: World of Fantasies
 Width: 67, Height: 77
-Auto-Change BGM: W-017. Seeds of the Incident
+Auto-Change BGM: W-044. World of Empty Dreams
 
 #------------------------------------------------------------------------------
 Event ID: 001
@@ -84496,7 +85678,24 @@ Event Name: Mima
 
 Page #1
 Conditions
-None
+Variable 0142: TLA Plot Variable is 4 or above
+
+Graphic: Person_Mima
+
+Autonomous Movement
+Type: Fixed
+Speed: 3: Slow
+Freq: 3: Low
+Options Enabled
+Move Animation
+Trigger: Action Button
+
+List of Event Commands:
+@>
+
+Page #2
+Conditions
+Variable 0142: TLA Plot Variable is 5 or above
 
 Autonomous Movement
 Type: Fixed
@@ -84573,6 +85772,238 @@ Trigger: Parallel Process
 
 List of Event Commands:
 @>Change Map Settings:Panorama = 'WoF', 0
+@>
+
+#------------------------------------------------------------------------------
+Event ID: 005
+Event Name: EV005
+(X,Y): (023,070)
+
+Page #1
+Conditions
+Variable 0142: TLA Plot Variable is 1 or above
+
+Autonomous Movement
+Type: Fixed
+Speed: 3: Slow
+Freq: 3: Low
+Options Enabled
+Move Animation
+Trigger: Player Touch
+
+List of Event Commands:
+@>Text: Descend down the tower?
+@>Show Choices: Yes, No
+(When Cancel: Choice 2)
+: When [Yes]
+ @>Play SE: 'PRSFX- Teleport', 60, 100
+ @>Change Screen Color Tone: (-255,-255,-255,0), @6
+ @>Wait: 8 frame(s)
+ @>Transfer Player:[134: Reimaden], (013,033), Up, No Fade
+ @>Change Screen Color Tone: (0,0,0,0), @6
+ @>
+: When [No]
+ @>
+: Branch End
+@>
+
+#------------------------------------------------------------------------------
+Event ID: 006
+Event Name: Healing Statue
+(X,Y): (021,008)
+
+Page #1
+Conditions
+None
+
+Autonomous Movement
+Type: Fixed
+Speed: 3: Slow
+Freq: 3: Low
+Options Enabled
+Move Animation
+Trigger: Action Button
+
+List of Event Commands:
+@>Script: pbSetPokemonCenter
+@>Call Common Event: Akyuu Shrines
+@>
+
+Page #2
+Conditions
+Switch 0001: Starting over is ON
+
+Autonomous Movement
+Type: Fixed
+Speed: 3: Slow
+Freq: 3: Low
+Options Enabled
+Move Animation
+Trigger: Autorun
+
+List of Event Commands:
+@>Set Event Location: [Mima],(017,052)
+@>Set Event Location: [EV002],(029,044)
+@>Set Event Location: [EV003],(051,051)
+@>Set Event Location: [EV004],(057,040)
+@>Set Event Location: [EV005],(031,032)
+@>Set Event Location: [Healing Statue],(015,020)
+@>Set Event Location: [PC01: Hidden Power],(049,020)
+@>Set Event Location: [],(064,010)
+@>Control Switches: [0001: Starting over] = OFF
+@>
+
+#------------------------------------------------------------------------------
+Event ID: 007
+Event Name: PC01: Hidden Power
+(X,Y): (061,071)
+
+Page #1
+Conditions
+None
+
+Graphic: Object HP Ball
+
+Autonomous Movement
+Type: Fixed
+Speed: 3: Slow
+Freq: 3: Low
+Options Enabled
+Move Animation
+Trigger: Action Button
+
+List of Event Commands:
+@>
+
+#------------------------------------------------------------------------------
+Event ID: 008
+Event Name: size(3,1)
+(X,Y): (022,006)
+
+Page #1
+Conditions
+Variable 0142: TLA Plot Variable is 5 or above
+
+Autonomous Movement
+Type: Fixed
+Speed: 3: Slow
+Freq: 3: Low
+Options Enabled
+Move Animation
+Trigger: Player Touch
+
+List of Event Commands:
+@>Conditional Branch: Player is facing Up
+ @>Text: \w[dark]Proceeding past this point will trigger the final battle
+  :    : of The Adventures of Ayaka.
+ @>Text: \w[dark]This is the end of the road.
+ @>Text: \w[dark]Are you prepared to face Meimu?
+ @>Show Choices: Yes, No
+ (When Cancel: Choice 2)
+ : When [Yes]
+  @>Play SE: 'Door exit final', 100, 80
+  @>Change Screen Color Tone: (-255,-255,-255,0), @24
+  @>Fade Out BGM: 1 sec.
+  @>Wait: 48 frame(s)
+  @>Change Transparent Flag: Transparency
+  @>Transfer Player:[137: Reimaden - Final Room], (015,012), No Fade
+  @>Change Screen Color Tone: (0,0,0,0), @24
+  @>
+ : When [No]
+  @>
+ : Branch End
+ @>
+: Branch End
+@>
+
+Page #2
+Conditions
+Variable 0142: TLA Plot Variable is 6 or above
+
+Autonomous Movement
+Type: Fixed
+Speed: 3: Slow
+Freq: 3: Low
+Options Enabled
+Move Animation
+Trigger: Player Touch
+
+List of Event Commands:
+@>Conditional Branch: Player is facing Up
+ @>Text: \w[dark]Proceeding past this point will trigger the final battle
+  :    : of The Adventures of Ayaka.
+ @>Text: \w[dark]This is the end of the road.
+ @>Text: \w[dark]Are you prepared to face Meimu?
+ @>Show Choices: Yes, No
+ (When Cancel: Choice 2)
+ : When [Yes]
+  @>Play SE: 'Door exit final', 100, 80
+  @>Change Screen Color Tone: (255,255,255,0), @24
+  @>Fade Out BGM: 1 sec.
+  @>Wait: 24 frame(s)
+  @>Transfer Player:[137: Reimaden - Final Room], (015,036), No Fade
+  @>Change Screen Color Tone: (0,0,0,0), @24
+  @>
+ : When [No]
+  @>
+ : Branch End
+ @>
+: Branch End
+@>
+
+#------------------------------------------------------------------------------
+Event ID: 009
+Event Name: size(3,1)
+(X,Y): (022,012)
+
+Page #1
+Conditions
+Variable 0142: TLA Plot Variable is 4 or above
+
+Autonomous Movement
+Type: Fixed
+Speed: 3: Slow
+Freq: 3: Low
+Options Enabled
+Move Animation
+Trigger: Player Touch
+
+List of Event Commands:
+@>Text: \xn[Mima]And here we are- thank you for traveling with us on 
+ :    : the Evil Spirit Express, we hope you had a pleasant time witnessing
+ :    : the end of reality!
+@>Text: \xn[\pn]You are way too casual about this...
+@>Text: \xn[Mima]Kid, when you've been around for as long as I have,
+ :    : you get used to witnessing world-ending scenarios every
+ :    : couple hundred years!
+@>Text: \xn[Mima]My part ends here though. Good luck kid, you're gonna 
+ :    : need it!
+@>Play SE: 'PRSFX- Teleport', 80, 100
+@>Change Screen Color Tone: (-255,-255,-255,0), @6
+@>Wait: 8 frame(s)
+@>Control Variables: [0142: TLA Plot Variable] = 5
+@>Change Screen Color Tone: (0,0,0,0), @6
+@>Wait: 8 frame(s)
+@>Text: \xn[\pn]...\wt[10] The End of Reality...\wt[10] Do I really have the
+ :    : ability to stop this...?
+@>Text: \xn[\pn]No, I can't- I <i>won't</i> let myself get shaken up by
+ :    : this! I can do this!
+@>Text: \xn[\pn]I can do it!
+@>
+
+Page #2
+Conditions
+Variable 0142: TLA Plot Variable is 5 or above
+
+Autonomous Movement
+Type: Fixed
+Speed: 3: Slow
+Freq: 3: Low
+Options Enabled
+Move Animation
+Trigger: Action Button
+
+List of Event Commands:
 @>
 
 #------------------------------------------------------------------------------
@@ -96976,6 +98407,7 @@ Map ID: 134
 Map Name: Reimaden
 Tileset: 038: World of Fantasies
 Width: 49, Height: 59
+Auto-Change BGM: W-044. World of Empty Dreams
 
 #------------------------------------------------------------------------------
 Event ID: 001
@@ -97152,6 +98584,387 @@ List of Event Commands:
 @>
 
 #------------------------------------------------------------------------------
+Event ID: 009
+Event Name: Mima
+(X,Y): (024,011)
+
+Page #1
+Conditions
+Variable 0142: TLA Plot Variable is 2 or above
+
+Graphic: Person_Mima
+
+Autonomous Movement
+Type: Fixed
+Speed: 3: Slow
+Freq: 3: Low
+Options Enabled
+Move Animation
+Trigger: Action Button
+
+List of Event Commands:
+@>
+
+Page #2
+Conditions
+Variable 0142: TLA Plot Variable is 4 or above
+
+Autonomous Movement
+Type: Fixed
+Speed: 3: Slow
+Freq: 3: Low
+Options Enabled
+Move Animation
+Trigger: Action Button
+
+List of Event Commands:
+@>
+
+#------------------------------------------------------------------------------
+Event ID: 010
+Event Name: size(5,1)
+(X,Y): (022,029)
+
+Page #1
+Conditions
+Variable 0142: TLA Plot Variable is 2 or above
+
+Autonomous Movement
+Type: Fixed
+Speed: 3: Slow
+Freq: 3: Low
+Options Enabled
+Move Animation
+Trigger: Player Touch
+
+List of Event Commands:
+@>Show Animation: Player, [Exclaim bubble]
+@>Text: \xn[?????]DO YOU UNDERSTAND THE RAMIFICATIONS OF 
+ :    : WHAT YOU HAVE DONE? THIS COULD PUT THE ENTIRETY
+ :    : OF REALITY IN DANGER.
+@>Change Screen Color Tone: (-255,-255,-255,0), @8
+@>Wait: 8 frame(s)
+@>Change Transparent Flag: Transparency
+@>Transfer Player:[134: Reimaden], (024,008)
+@>Wait: 4 frame(s)
+@>Change Screen Color Tone: (0,0,0,0), @8
+@>Text: \xn[????]Now who gave you the ability to talk back like that,
+ :    : because I sure didn't!
+@>Text: \xn[Five Magic Stones]DO NOT CHANGE THE SUBJECT MADAME 
+ :    : MISTRESS. DID YOU NOT FORSEE THIS AS A POSSIBILITY WHEN 
+ :    : TAKING THOSE ACTIONS?
+@>Text: \xn[????]Of course I did! I just didn't think it would happen this
+ :    : fast.
+@>Text: \xn[????]Training her as my apprentice was supposed to harness
+ :    : her powers, not cause them to go ballistic!
+@>Text: \xn[Five Magic Stones]WELL THIS IS WHERE WE ARE NOW, WITH
+ :    : THE ENTIRETY OF THE REALM ON THE BRINK OF COLLAPSE,
+ :    : AND REALITY ALONG WITH IT.
+@>Text: \xn[\pn]Wait, what do you mean reality is on the brink of collapse!?
+@>Set Event Location: [Ayaka (cutscene)],(024,023), Up
+@>Set Move Route: [Ayaka (cutscene)]
+ :              : $>Move Up
+ :              : $>Move Up
+ :              : $>Move Up
+ :              : $>Move Up
+ :              : $>Move Up
+@>Wait for Move's Completion
+@>Text: \xn[Five Magic Stones]MISS AYAKA, WHAT ARE YOU DOING HERE?
+@>Text: \xn[\pn]... The Five Magic Stones? And... Someone else I don't
+ :    : recognize...
+@>Text: \xn[????]Wait, did you just say \pn...
+@>Text: \xn[\pn]W-Well, yes, that is my name, and...-\wtnp[1]
+@>Set Event Location: [Mima],(024,016), Down
+@>Change Transparent Flag: Normal
+@>Set Event Location: [Ayaka (cutscene)],(048,000), Up
+@>Transfer Player:[134: Reimaden], (024,018), Up, No Fade
+@>Screen Flash: (255,255,255,255), @5
+@>Play SE: 'OWThunder1', 100, 150
+@>Show Animation: Player, [Exclaim bubble]
+@>Text: \xn[????]<b>YOU.</b>\wt[5] You are the reason why my new
+ :    : apprentice lost control of her powers! This fabled \pn I keep hearing
+ :    : about!
+@>Text: \xn[\pn]W-Whuh? What are you talking about, I've never even
+ :    : been out here before!
+@>Text: \xn[Five Magic Stones]MISTRESS MIMA, PLEASE DO NOT HURT HER.
+ :    : SHE IS NOT RESPONSIBLE FOR THIS.
+@>Screen Flash: (255,255,255,255), @5
+@>Play SE: 'OWThunder1', 100, 150
+@>Text: \xn[Mima]<b>SILENCE.</b>\wt[5] You, human! Give me one good
+ :    : reason I shouldn't turn your insides into your outsides this moment!
+@>Text: \xn[\pn]\b(What is her problem!? What is she even accusing me of!?)
+@>Text: \xn[\pn]I don't even know who you're talking about ma'am! I'm just
+ :    : an ordinary Puppet Handler from the Village, and-\wtnp[3]
+@>Text: \xn[Mima]A Puppet Handler, huh? Alright, then show me your skills,
+ :    : miss ordinary human!
+@>Control Switches: [0098: Music Override] = OFF
+@>Script: deactivateSpecialBGM("MotT")
+@>Script: playSpecialBGM("quiet_time")
+@>Script: pbTrainerIntro(:MIMA)
+@>Text: \xn[Mima]Against the ultimate terror of the night, the eternally sworn
+ :    : enemy of the Human race- I, the great magician Mima, shall rend
+ :    : you asunder!
+@>Control Switches: [0104: Transition Handler] = ON
+@>Control Variables: [0103: Vs. Transition ID] = 55
+@>Control Variables: [0104: Vs. Transition - Pkmn] = 6
+@>Conditional Branch: Script: TrainerBattle.start(:MIMA, "Mima")
+ @>Text: \xn[\pn]Haah... Haah... There, I won! Now will you please explain
+  :    : to me what in the world is going on!?
+ @>Text: \xn[Five Magic Stones]MISTRESS MIMA, PLEASE COMPOSE YOURSELF!
+  :    : THIS IS UNBECOMING OF YOU!
+ @>Text: \xn[Mima]I said silence, Stones!
+ @>Transfer Player:[134: Reimaden], (024,020), No Fade
+ @>Screen Flash: (255,255,255,255), @5
+ @>Play SE: 'OWThunder1', 100, 150
+ @>Wait: 15 frame(s)
+ @>Text: \xn[\pn]\b(I can't die, right? This is a dream after all...)
+ @>Set Move Route: [Mima]
+  :              : $>Move Down
+ @>Wait for Move's Completion
+ @>Text: \xn[\pn]\b(...But, what happens wen the dream self dies...?)
+ @>Set Move Route: [Mima]
+  :              : $>Move Down
+  :              : $>Wait: 4 frame(s)
+  :              : $>Move Down
+ @>Wait for Move's Completion
+ @>Screen Flash: (255,255,255,255), @2
+ @>Play SE: 'OWThunder1', 100, 150
+ @>Wait: 15 frame(s)
+ @>Text: \xn[Mima]...\wt[15]Very well done. You've passed my test.
+ @>Text: \xn[\pn]... ... ...\wt[15]huh?
+ @>Text: \xn[Mima]I needed to see you at your most capable. A cornered
+  :    : rat will overpower a cat, after all!
+ @>Text: \xn[\pn]Wait, this was... this was you <i>testing</i> me!? What for!?
+ @>Text: \xn[Five Magic Stones]WE DO APOLOGIZE FOR THE FACADE.
+  :    : MISTRESS MIMA PROPOSED SUCH AN IDEA AFTER OUR GUEST
+  :    : DEPARTED WITH THE INFORMATION SHE GAVE US.
+ @>Text: \xn[\pn]Your guest...?
+ @>Text: \xn[Mima]An old friend of mine told us you had arrived in the realm,
+  :    : and that we should see if you were up to the task at hand.
+ @>Show Animation: [Mima], [Exclaim bubble]
+ @>Set Move Route: [Mima]
+  :              : $>Turn Left
+  :              : $>Jump: +0,+0
+  :              : $>Wait: 4 frame(s)
+  :              : $>Jump: +0,+0
+ @>Text: \xn[Mima]Honestly though, that Yuuka... She comes and goes
+  :    : as she pleases and thinks she can tell me what to do in
+  :    : my domain!
+ @>Text: \xn[\pn]\b(...Of course Miss Kazami is her friend... that means 
+  :    : she must have known I'd reject her challenge!)
+ @>Wait for Move's Completion
+ @>Set Move Route: [Mima]
+  :              : $>Turn Down
+ @>Text: \xn[Mima]Now that I've seen what you're made of, it's time to 
+  :    : appraise you of the situation in its entirety.
+ @>Text: \xn[Five Magic Stones]DO ABRIDGE IT. THE TEST MAY HAVE BEEN
+  :    : FABRICATED, BUT THE DANGER TO REALITY IS NOT.
+ @>Set Move Route: [Mima]
+  :              : $>Turn Up
+ @>Text: \xn[Mima]And who do you think you are, trying to command me?
+ @>Text: \xn[Mima]I made you, and I can just as easily <i>un</i>make you!
+ @>Set Move Route: [Mima]
+  :              : $>Turn Down
+ @>Text: \xn[Mima]Ahem! It all started before the Puppet Era...
+ @>Change Screen Color Tone: (-255,-255,-255,0), @8
+ @>Wait: 8 frame(s)
+ @>Change Transparent Flag: Transparency
+ @>Transfer Player:[138: Reimadne - Cutscene], (015,017)
+ @>Wait: 4 frame(s)
+ @>Control Self Switch: A =ON
+ @>
+: Branch End
+@>
+
+Page #2
+Conditions
+Variable 0142: TLA Plot Variable is 3 or above
+
+Autonomous Movement
+Type: Fixed
+Speed: 3: Slow
+Freq: 3: Low
+Options Enabled
+Move Animation
+Trigger: Autorun
+
+List of Event Commands:
+@>Change Transparent Flag: Normal
+@>Set Event Location: [Mima],(024,013), Down
+@>Wait: 4 frame(s)
+@>Change Screen Color Tone: (0,0,0,0), @8
+@>Text: \xn[Mima]This fascination of hers drove her to train even harder...
+@>Text: \xn[Mima]...Until eventually, her power became too much for her
+ :    : existence to maintain. With such rapid growth and little time to acclimate,
+ :    : her abilities began to go haywire and rebound.
+@>Text: \xn[Mima]Until now...
+@>Text: \xn[\pn]...Now her powers are manifesting in a way that would
+ :    : completely tear reality apart if left to grow any further.
+@>Text: \xn[Mima]Precisely! So, I trust you know what needs to be done?
+@>Show Animation: Player, [Exclaim bubble]
+@>Text: \xn[\pn]Huh? No! I don't! I still don't see how this is my responsibility
+ :    : to fx, especially when you were the one who trained her!
+@>Text: \xn[Mima]If I could have stopped her, don't you think I would have by
+ :    : now?
+@>Text: \xn[Mima]No, only you can resolve this, as the one at the center
+ :    : of it all. Her idol.
+@>Text: \xn[Five Magic Stones]HAD WE KNOWN WHAT MISTRESS MIMA
+ :    : WAS DOING, WE WOULD HAVE STEPPED IN SOONER.
+@>Text: \xn[Five Magic Stones]GIVEN HER ACCESS TO THE TOWER WHERE
+ :    : SHE COULD TRAIN PROPERLY.
+@>Text: \xn[Five Magic Stones]AND AVOID THIS WHOLE SITUATION.
+@>Wait: 20 frame(s)
+@>Text: \xn[\pn]So once again, it falls on me to save the entirety of Gensokyo...
+ :    : Maybe idolizing the Hakurei Shrine Maiden and her friends when I was
+ :    : younger wasnt the best idea after all...
+@>Text: \xn[Mima]Forget about idoling them and train under me instead! I can
+ :    : make you even greater than them!
+@>Text: \xn[\pn]I think I'll pass... just lead me to where this entity is, and-\wtnp[1]
+@>Text: \xn[Mima]Meimu.
+@>Text: \xn[\pn]Come again?
+@>Text: \xn[Mima]Her name, it's Meimu. She may be ushering the 
+ :    : destruction of reality, but I won't have you refer to the best
+ :    : apprentice I've had in a decade as just an "entity"!
+@>Text: \xn[\pn]\b(Because <i>that's</i> your priority...)
+@>Text: \xn[Five Magic Stones]MISTRESS MIMA, I DO BELIEVE THAT IF 
+ :    : WE KEEP WASTING TIME, THEN WE WON'T HAVE ANY TIME
+ :    : LEFT FOR RESOLVING THIS INCIDENT.
+@>Text: \xn[Mima]I know, I know!
+@>Text: \xn[Mima]Listen here, I'll lead you to where Meimu is, but once you're
+ :    : there, you're on your own.
+@>Text: \xn[\pn]I figured as such... I don't know what I'll be able to do
+ :    : against someone who can manipulate reality and has lost control
+ :    : over their abilities, but...
+@>Text: \xn[Mima]Oh, you'll be fine, I'm sure!
+@>Text: \xn[Mima]Besides, even if you do fail and reality is rent asunder, I
+ :    : can always take you into my personal demi-plane and train you
+ :    : as my new apprentice!
+@>Text: \xn[\pn]...Thanks for the vote of confidence!
+@>Text: \xn[Mima]You're going to want to take the teleporter down the 
+ :    : left hallway. The one on the right doesn't lead anywhere.
+@>Text: \xn[Mima]I'll meet you at the destination!
+@>Change Screen Color Tone: (-255,-255,-255,0), @8
+@>Play SE: 'PRSFX- Teleport', 80, 100
+@>Control Variables: [0142: TLA Plot Variable] = 4
+@>Wait: 8 frame(s)
+@>Change Screen Color Tone: (0,0,0,0), @8
+@>
+
+Page #3
+Conditions
+Variable 0142: TLA Plot Variable is 4 or above
+
+Autonomous Movement
+Type: Fixed
+Speed: 3: Slow
+Freq: 3: Low
+Options Enabled
+Move Animation
+Trigger: Action Button
+
+List of Event Commands:
+@>
+
+#------------------------------------------------------------------------------
+Event ID: 011
+Event Name: Ayaka (cutscene)
+(X,Y): (000,000)
+
+Page #1
+Conditions
+None
+
+Autonomous Movement
+Type: Fixed
+Speed: 3: Slow
+Freq: 3: Low
+Options Enabled
+Move Animation
+Trigger: Action Button
+
+List of Event Commands:
+@>
+
+#------------------------------------------------------------------------------
+Event ID: 012
+Event Name: EV012
+(X,Y): (013,033)
+
+Page #1
+Conditions
+Variable 0142: TLA Plot Variable is 3 or above
+
+Autonomous Movement
+Type: Fixed
+Speed: 3: Slow
+Freq: 3: Low
+Options Enabled
+Move Animation
+Trigger: Player Touch
+
+List of Event Commands:
+@>Script: deactivateSpecialBGM("quiet_time")
+@>Play SE: 'PRSFX- Teleport', 60, 100
+@>Change Screen Color Tone: (-255,-255,-255,0), @6
+@>Wait: 8 frame(s)
+@>Transfer Player:[112: Reimaden - Edge of Dreams], (023,070), Up, No Fade
+@>Change Screen Color Tone: (0,0,0,0), @6
+@>
+
+#------------------------------------------------------------------------------
+Event ID: 013
+Event Name: EV013
+(X,Y): (035,033)
+
+Page #1
+Conditions
+None
+
+Autonomous Movement
+Type: Fixed
+Speed: 3: Slow
+Freq: 3: Low
+Options Enabled
+Move Animation
+Trigger: Player Touch
+
+List of Event Commands:
+@>Text: \bAccess denied.
+@>Set Move Route: Player
+ :              : $>Move Up
+@>
+
+#------------------------------------------------------------------------------
+Event ID: 014
+Event Name: size(3,1)
+(X,Y): (023,052)
+
+Page #1
+Conditions
+Variable 0142: TLA Plot Variable is 2 or above
+
+Autonomous Movement
+Type: Fixed
+Speed: 3: Slow
+Freq: 3: Low
+Options Enabled
+Move Animation
+Trigger: Player Touch
+
+List of Event Commands:
+@>Conditional Branch: Player is facing Down
+ @>Play SE: 'Door exit', 100, 100
+ @>Change Screen Color Tone: (-255,-255,-255,0), @6
+ @>Wait: 8 frame(s)
+ @>Transfer Player:[108: World of Fantasies], (059,007), No Fade
+ @>Change Screen Color Tone: (0,0,0,0), @6
+ @>Set Move Route: Player
+  :              : $>Move Down
+ @>
+: Branch End
+@>
+
+#------------------------------------------------------------------------------
 
 #==============================================================================
 Map ID: 135
@@ -97203,7 +99016,7 @@ Map ID: 136
 Map Name: Tower of Adventure (Roof)
 Tileset: 038: World of Fantasies
 Width: 39, Height: 39
-Auto-Change BGM: W-041. Magician of the Twilight
+Auto-Change BGM: W-044. World of Empty Dreams
 
 #------------------------------------------------------------------------------
 Event ID: 001
@@ -97474,7 +99287,7 @@ List of Event Commands:
  @>Text: \xn[Doremy]I didn't think it was anything this big!
  @>Set Event Location: [Doremy],(019,026)
  @>Set Move Route: [Doremy]
-  :              : $>SE: 'PC open', 80, 50
+  :              : $>SE: 'PRSFX- Teleport', 80, 100
   :              : $>Change Opacity: 125
  @>Set Move Route: Player
   :              : $>Turn Up
@@ -97495,7 +99308,7 @@ List of Event Commands:
  @>Text: \xn[Doremy]So, this is where the anomaly is originating...
  @>Set Event Location: [Doremy],(019,026)
  @>Set Move Route: [Doremy]
-  :              : $>SE: 'PC open', 80, 50
+  :              : $>SE: 'PRSFX- Teleport', 80, 100
   :              : $>Change Opacity: 125
  @>Set Move Route: Player
   :              : $>Turn Up
@@ -97597,10 +99410,10 @@ List of Event Commands:
 @>Show Choices: Yes, No
 (When Cancel: Choice 2)
 : When [Yes]
- @>Play SE: 'teleporter', 60, 100
+ @>Play SE: 'PRSFX- Teleport', 60, 100
  @>Change Screen Color Tone: (-255,-255,-255,0), @6
  @>Wait: 8 frame(s)
- @>Transfer Player:[110: Tower of Adventure (Floors)], (012,013), No Fade
+ @>Transfer Player:[110: Tower of Adventure (Floors)], (012,012), No Fade
  @>Change Screen Color Tone: (0,0,0,0), @6
  @>
 : When [No]
@@ -97654,7 +99467,7 @@ List of Event Commands:
 Map ID: 137
 Map Name: Reimaden - Final Room
 Tileset: 049: World of Fantasies (alt)
-Width: 31, Height: 51
+Width: 62, Height: 70
 Auto-Change BGM: W-017. Seeds of the Incident
 Auto-Change BGS: Vortex
 
@@ -97694,7 +99507,7 @@ List of Event Commands:
 #------------------------------------------------------------------------------
 Event ID: 002
 Event Name: EV002
-(X,Y): (000,000)
+(X,Y): (000,050)
 
 Page #1
 Conditions
@@ -97714,7 +99527,7 @@ List of Event Commands:
 
 #------------------------------------------------------------------------------
 Event ID: 003
-Event Name: EV003
+Event Name: Meimu
 (X,Y): (015,021)
 
 Page #1
@@ -97722,6 +99535,1983 @@ Conditions
 None
 
 Graphic: Person_Meimu
+
+Autonomous Movement
+Type: Fixed
+Speed: 3: Slow
+Freq: 3: Low
+Options Enabled
+Move Animation
+Trigger: Action Button
+
+List of Event Commands:
+@>
+
+#------------------------------------------------------------------------------
+Event ID: 004
+Event Name: Autorun
+(X,Y): (002,026)
+
+Page #1
+Conditions
+Variable 0142: TLA Plot Variable is 5 or above
+
+Autonomous Movement
+Type: Fixed
+Speed: 3: Slow
+Freq: 3: Low
+Options Enabled
+Move Animation
+Trigger: Autorun
+
+List of Event Commands:
+@>Script: pbSetSelfSwitch(36,"A",false)
+@>Wait: 20 frame(s)
+@>Set Event Location: [Ayaka (Cutscene)],(015,031)
+@>Scroll Map: Down, 9, 2
+@>Text: \xn[Meimu]C'mon, just a little more juice Meimu, you can do 
+ :    : this...\wtnp[20]
+@>Wait: 20 frame(s)
+@>Text: \xn[Meimu]Why\..\...\. Why won't this rift close...!\wtnp[20]
+@>Wait: 80 frame(s)
+@>Text: \xn[\pn]Hey! What do you think you're doing?
+@>Scroll Map: Down, 5, 3
+@>Set Move Route: [Ayaka (Cutscene)]
+ :              : $>Move Up
+ :              : $>Move Up
+ :              : $>Wait: 15 frame(s)
+@>Wait for Move's Completion
+@>Show Animation: [Meimu], [Question bubble]
+@>Wait: 8 frame(s)
+@>Set Move Route: [Meimu]
+ :              : $>Turn Down
+@>Wait for Move's Completion
+@>Wait: 10 frame(s)
+@>Set Move Route: [Meimu]
+ :              : $>Move Down
+ :              : $>Move Down
+@>Text: \xn[Meimu]Y-\wt[10]You! It's you! ...Is it really you?
+@>Change Text Options: Middle, Show
+@>Text: \xn[Meimu]But what are you doing here, I didn't pull your Dream Self
+ :    : in this time...
+@>Text: \xn[\pn]So, it was you who's been pulling me into this realm...
+@>Text: \xn[Meimu]Well you're here at just the right time! Just as soon as
+ :    : I close this rift, I'll have fulfilled my goals and become real!
+@>Text: \xn[\pn]Are you not real right ow? You're standing before me, 
+ :    : aren't you?
+@>Set Move Route: [Meimu]
+ :              : $>Turn Left
+ :              : $>Wait: 25 frame(s)
+ :              : $>Turn Down
+@>Text: \xn[Meimu]This form... it's-...\wt[10] It's temporary... If I don't keep up my efforts,
+ :    : I'll fade back into the aether of non-existence.
+@>Text: \xn[Meimu]That's why I've been practicing and focusing my
+ :    : powers every day under Lady Mima's tutelage!
+@>Wait for Move's Completion
+@>Text: \xn[\pn]But... Don't you see what's going on around you? 
+ :    : The realm is-\wtnp[2]
+@>Set Move Route: [Meimu]
+ :              : $>Turn Up
+ :              : $>Wait: 30 frame(s)
+ :              : $>Turn Down
+@>Text: \xn[Meimu]I can fix it!\wt[10] I know I can fix it!\wt[10] I just need to try harder,
+ :    : and when I have mastery of my ability to manipulate reality.
+ :    : I can fix the damage!
+@>Wait for Move's Completion
+@>Text: \xn[\pn]It's your efforts that are causing the realm to fall apart
+ :    : in the first place!
+@>Text: \xn[\pn]And if you keep this up, then there won't <i>be</i>
+ :    : a reality to fix!
+@>Set Move Route: [Meimu]
+ :              : $>Move Up
+ :              : $>Move Up
+@>Text: \xn[Meimu]I'm so close though! Just a bit more and-\wtnp[4]
+@>Screen Flash: (255,255,255,255), @5
+@>Play SE: 'OWThunder1', 100, 100
+@>Wait: 5 frame(s)
+@>Play SE: 'Mining collapse', 80, 50
+@>Screen Shake: 8, 7, @40
+@>Text: \xn[\pn]\b(This place is going to blow if she doesn't stop soon...!)
+@>Set Move Route: [Ayaka (Cutscene)]
+ :              : $>Move Up
+ :              : $>Move Up
+@>Scroll Map: Up, 2, 4
+@>Text: \xn[\pn]Meimu, please! You need to stop!
+@>Text: \xn[Meimu]No! I won't stop!
+@>Fade Out BGM: 3 sec.
+@>Wait: 20 frame(s)
+@>Text: \xn[Meimu]...But, you won't accept that as an answer, will you?
+@>Text: \xn[Meimu]No... I know you... I've seen into your dreams.\wt[10]
+ :    : I know your resolve.\wt[10] I know what you'll do.
+@>Set Move Route: [Meimu]
+ :              : $>Turn Down
+@>Text: \xn[Meimu]You, the Legend of Gensokyo... The Savior of the 
+ :    : Moon...
+@>Text: \xn[Meimu]You think you get to just walk in here and tell me
+ :    : that what I'm doing is wrong, and that you'll stop me...
+@>Text: \xn[Meimu]Well I won't allow it! Not when I've come so far!
+@>Play SE: 'Vs flash', 80, 100
+@>Screen Flash: (255,255,255,255), @10
+@>Script: pbSetSelfSwitch(36,"A",true) # Event controller for reloacting Puppet OWs
+@>Script: pbTrainerIntro(:MEIMU)
+@>Show Animation: [Ayaka (Cutscene)], [Exclaim bubble]
+@>Wait: 15 frame(s)
+@>Set Move Route: [Ayaka (Cutscene)]
+ :              : $>Turn Left
+ :              : $>Wait: 15 frame(s)
+ :              : $>Turn Right
+ :              : $>Wait: 15 frame(s)
+ :              : $>Turn Down
+ :              : $>Wait: 15 frame(s)
+ :              : $>Turn Up
+ :              : $>Wait: 15 frame(s)
+@>Wait: 10 frame(s)
+@>Text: \xn[\pn]\b(Where did all these Puppets come from!? Did...
+ :    : Did she materialize them all out of thin air?)
+@>Wait for Move's Completion
+@>Text: \xn[Meimu]I may not be able to fully manipulate reality yet... But
+ :    : I can at least do this much!
+@>Text: \xn[\pn]\b(She's determined no matter what to become real, even
+ :    : if it means ignoring the reality in front of her...)
+@>Text: \xn[Meimu]I know all of your tactics.\wt[10] All of your strategies.\wt[10]
+ :    : I've seen them all and more! I won't let you stop me!
+@>Text: \xn[\pn]Then, as the person you look up to... The person you
+ :    : claim to idolize...\wtnp[15]
+@>Set Move Route: [Ayaka (Cutscene)]
+ :              : $>Move Up
+@>Wait for Move's Completion
+@>Wait: 10 frame(s)
+@>Change Text Options: Bottom, Show
+@>Text: \xn[\pn]Then I'm going to teach you a lesson, and I'll help you
+ :    : find a better way to become real!
+@>Wait: 10 frame(s)
+@>Text: \xn[Meimu]\..\..\..\wt[10]I guess this is why they say you should never meet
+ :    : your idols...
+@>Text: \xn[Meimu]Fine then! Come at me, Oh Great Legend of Gensokyo!
+ :    : Allow me to show you the power of those born from non-existence!
+@>Script: setBattleRule("backdrop", "meimu")
+:       : setBattleRule("base", "meimu")
+:       : #playSpecialBGM("meimu")
+@>Control Variables: [0143: Meimu Battle Count] = 1
+@>Control Switches: [0098: Music Override] = ON
+@>Control Switches: [0157: Battling Meimu] = ON
+@>Control Switches: [0104: Transition Handler] = ON
+@>Control Variables: [0103: Vs. Transition ID] = 56
+@>Control Variables: [0104: Vs. Transition - Pkmn] = 6
+@>Conditional Branch: Script: TrainerBattle.start(:MEIMU, "Meimu", 1)
+ @>Control Variables: [0142: TLA Plot Variable] = 6
+ @>
+: Else
+ @>Exit Event Processing
+ @>
+: Branch End
+@>
+
+Page #2
+Conditions
+Variable 0142: TLA Plot Variable is 6 or above
+
+Autonomous Movement
+Type: Fixed
+Speed: 3: Slow
+Freq: 3: Low
+Options Enabled
+Move Animation
+Trigger: Autorun
+
+List of Event Commands:
+@>Text: \xn[\pn]\b(I think... I've finally taken down all of her Puppets...)
+@>Text: \xn[Meimu]Haah\..\..\..\. Haah\..\..\..\. This is taxing... all of my
+ :    : strength...
+@>Text: \xn[Meimu]But I can't... I can't fall here!
+@>Show Animation: [Ayaka (Cutscene)], [Exclaim bubble]
+@>Set Move Route: [Meimu]
+ :              : $>Direction Fix ON
+ :              : $>Move Animation OFF
+ :              : $>Through ON
+ :              : $>Move Up
+ :              : $>Move Up
+ :              : $>Direction Fix OFF
+ :              : $>Move Animation ON
+ :              : $>Through OFF
+@>Play SE: 'PRSFX- Aura Sphere1', 80, 50
+@>Wait for Move's Completion
+@>Wait: 30 frame(s)
+@>Script: pbSetSelfSwitch(57,"A",true)
+@>Screen Flash: (255,255,255,255), @10
+@>Play SE: 'OWThunder1', 80, 100
+@>Wait: 12 frame(s)
+@>Screen Flash: (255,255,255,255), @10
+@>Play SE: 'OWThunder2', 100, 100
+@>Wait: 12 frame(s)
+@>Change Screen Color Tone: (255,255,255,0), @2
+@>Play SE: 'OWThunder1', 100, 100
+@>Play SE: 'OWThunder1', 80, 100
+@>Wait: 20 frame(s)
+@>Script: playSpecialBGM("quiet_time")
+@>Change Transparent Flag: Normal
+@>Transfer Player:[137: Reimaden - Final Room], (046,028)
+@>Set Event Location: [Meimu],(046,024)
+@>Wait: 10 frame(s)
+@>Script: pbSetSelfSwitch(57,"A",false)
+@>Change Screen Color Tone: (0,0,0,0), @16
+@>Play BGS: 'Vortex', 80, 150
+@>Wait: 16 frame(s)
+@>Show Animation: Player, [Exclaim bubble]
+@>Text: \xn[\pn]\b(She- She's going berserk...! I have to do something!)
+@>Set Move Route: Player
+ :              : $>Change Speed: 2
+ :              : $>Move Up
+ :              : $>Wait: 10 frame(s)
+ :              : $>Move Up
+@>Wait for Move's Completion
+@>Text: \xn[Meimu]<b>COME NO CLOSER!</b>
+@>Screen Flash: (255,255,255,255), @20
+@>Play SE: 'OWThunder1', 80, 100
+@>Set Move Route: Player
+ :              : $>Direction Fix ON
+ :              : $>Change Speed: 6
+ :              : $>Move Down
+ :              : $>Move Down
+ :              : $>Move Down
+ :              : $>Move Down
+ :              : $>Move Down
+ :              : $>Move Down
+ :              : $>Move Down
+ :              : $>Move Down
+@>Wait for Move's Completion
+@>Text: \xn[\pn]\b(Ghk... I can't... I can't even approach her...)
+@>Change Screen Color Tone: (-255,-255,-255,0), @20
+@>Text: \xn[\pn]\b(Is this... really the limits of what I can do...?)\wtnp[40]
+@>Wait: 40 frame(s)
+@>Transfer Player:[137: Reimaden - Final Room], (031,060), Down, No Fade
+@>Set Event Location: [Kota],(030,058)
+@>Set Event Location: [Maya],(031,057)
+@>Set Event Location: [Shinji],(032,058)
+@>Text: \xn[Male Voice #1]C'mon Ayaka, you can't give up now!
+@>Text: \xn[\pn]--! W-Was that...?!
+@>Text: \xn[Female Voice]You're the strongest Puppet Handler in all of
+ :    : Gensokyo! You've done things most could only dream of!
+@>Change Screen Color Tone: (0,0,0,0), @1
+@>Script: deactivateSpecialBGM("quiet_time")
+@>Play BGM: 'W-002. Memory of Forgathering Dream', 100, 50
+@>Set Move Route: Player
+ :              : $>Turn Up
+@>Text: \xn[\pn]Maya!? Kota?! Shinji!? What are you three doing here!?
+ :    : <i>HOW</i> are you even here!?
+@>Text: \xn[Maya]Did you really think we would't be here? We're here to 
+ :    : witness your greatest hour! We're here to-\wtnp[4]
+@>Text: \xn[Shinji]Miss Doremy showed up in our dreams and informed us
+ :    : of the situation.
+@>Text: \xn[Shinji]She asked us to come here and provide support to you.
+@>Text: \xn[Shinji]Naturally, all three of us emphatically agreed.
+@>Text: \xn[Maya]Shinji! You <i>always</i> ruin my fun- the suspense!
+ :    : The moment! Do these mean <i>nothing</i> to you!?
+@>Text: \xn[Maya]...Ahem! But yes, Miss Doremy informed us of what
+ :    : was going on, and we came as fast as we could.
+@>Text: \xn[Maya]Besides, why wouldn't we be here? Didn't you
+ :    : promise to take us on your next big realm saving adventure?
+@>Text: \xn[Maya]You left us out when you went to the Moon! We
+ :    : had to be here for this one!
+@>Text: \xn[\pn]You guys... I don't know whyat to say...
+@>Text: \xn[\pn]But... I don't know if I have the strength to take Meimu 
+ :    : down...
+@>Text: \xn[\pn]She's a supernatural being with the ability to manipulate
+ :    : reality and is currently going berserk!
+@>Text: \xn[\pn]I'm just... a regular human from the village, who just
+ :    : happens to be a really good Puppet Handler...
+@>Text: \xn[Kota]\pn, you're the <i>only</i> one who can- Your command
+ :    : over your Puppets, your mastery of them, the bonds you've forged
+ :    : with them...
+@>Text: \xn[Kota]It's what makes it so that you are the only one who can
+ :    : take her down!
+@>Wait: 10 frame(s)
+@>Text: \xn[\pn]That logic...\wt[10] It makes no sense!
+@>Text: \xn[Kota]With your Puppets, you can do anything!
+@>Text: \xn[Kota]Sure, a human with no magical powers might not be
+ :    : able to stand against her, but...
+@>Wait: 10 frame(s)
+@>Text: \xn[\pn]...Are you saying that I should use my Puppets? My
+ :    : partners? To <i>attack</i> another person directly!?
+@>Text: \xn[\pn]But that's-\wtnp[6]
+@>Text: \xn[Shinji]Not unheard of. The Shrine Maiden and other incident
+ :    : solvers have used Puppets to deal with hostile Youkai in the
+ :    : past.
+@>Text: \xn[Shinji]Puppets are the new way of resolving conflicts
+ :    : in Gensokyo, after all. Everyone is on a completely even
+ :    : playing field.
+@>Text: \xn[\pn]But that's different! They are-\wtnp[6]
+@>Text: \xn[Maya]Just like you! People who have a form of strength, and
+ :    : they use that strength to protect others!
+@>Text: \xn[Maya]This form of strength just happen to look like adorable
+ :    : little critters!
+@>Text: \xn[\pn]I-\..\..\..\. I suppose so...
+@>Text: \xn[Kota]\pn, we all believe in you. We know you can handle this.
+@>Text: \xn[Kota]You and your Puppets, the ones you've put all your
+ :    : trust and care into.
+@>Text: \xn[Kota]Let them show you the efforts of your training and
+ :    : care!
+@>Wait: 20 frame(s)
+@>Text: \xn[\pn]...\wt[10]You're right.
+@>Text: \xn[\pn]Miss Keine told me all those years ago on our first adventure,
+ :    : that wielding power requires using it responsibly...
+@>Text: \xn[\pn]And as someone who's here right now, as someone 
+ :    : who's done so much and more...\wtnp[20]
+@>Script: playSpecialBGM("quiet_time")
+@>Play BGS: 'Vortex', 100, 150
+@>Change Screen Color Tone: (0,0,0,0), @1
+@>Text: \xn[\pn]It's my responsibility to save my home!
+@>Set Move Route: Player
+ :              : $>Change Speed: 2
+ :              : $>Move Up
+ :              : $>Move Up
+@>Scroll Map: Up, 4, 2
+@>Wait for Move's Completion
+@>Show Animation: [Meimu], [Exclaim bubble]
+@>Text: \xn[Meimu]I said don't come any closer!
+@>Text: \xn[Meimu]I don't... I don't want to hurt you... 
+@>Text: \xn[Meimu]Please just let me do this!
+@>Set Move Route: Player
+ :              : $>Change Speed: 2
+ :              : $>Move Up
+@>Text: \xn[\pn]You think that... Just because you wield a power...
+ :    : you know how to use it right...
+@>Text: \xn[\pn]But, that isn't always so simple...
+@>Set Move Route: [Meimu]
+ :              : $>Direction Fix ON
+ :              : $>Move Up
+ :              : $>Direction Fix OFF
+@>Text: \xn[Meimu]Stop it! Please just stop it!
+@>Text: \xn[\pn]I won't... I can't give up... So many people have placed
+ :    : their faith in me...
+@>Text: \xn[\pn]And for their sakes...\wtnp[20]
+@>Play BGM: 'B-044. Finale ~ For The End', 100, 100
+@>Change Battle BGM: 'B-044. Finale ~ For The End', 100, 100
+@>Change Text Options: Middle, Show
+@>Show Picture: 1, 'Name_Final', Upper Left (0,0), (100%,100%), 255, Normal
+@>Text: <ac>I can't afford to lose!</ac>
+@>Erase Picture: 1
+@>Control Variables: [0142: TLA Plot Variable] = 7
+@>
+
+Page #3
+Conditions
+Variable 0142: TLA Plot Variable is 7 or above
+
+Autonomous Movement
+Type: Fixed
+Speed: 3: Slow
+Freq: 3: Low
+Options Enabled
+Move Animation
+Trigger: Autorun
+
+List of Event Commands:
+@>Script: setBattleRule("editWildPokemon", {
+:       :   :hp_level => 3,
+:       :   :immunities => [:OHKO, :ITEMREMOVAL, :POISON, :ATTRACT, :PPLOSS, :TYPECHANGE, :ABILITYREMOVAL, :INDIRECT, 
+:       :                   :DISABLE, :SELFKO, :TRANSFORM, :ESCAPE],
+:       :   :gender => 1,
+:       :   :shiny => false,
+:       :   :iv => 31,
+:       :   :ev => 252
+:       : })
+@>Script: setBattleRule("cannotRun")
+:       : setBattleRule("disablePokeBalls")
+:       : setBattleRule("battleIntroText", "This is the end.")
+:       : setBattleRule("victoryBGM", "")
+:       : #setBattleRule("midbattleScript", :vs_meimu_final)
+@>Conditional Branch: Script: WildBattle.start(:MEIMU, 100)
+ @>
+: Branch End
+@>
+
+#------------------------------------------------------------------------------
+Event ID: 005
+Event Name: Ayaka (Cutscene)
+(X,Y): (030,026)
+
+Page #1
+Conditions
+None
+
+Graphic: Ayaka_Walk
+
+Autonomous Movement
+Type: Fixed
+Speed: 3: Slow
+Freq: 3: Low
+Options Enabled
+Move Animation
+Trigger: Action Button
+
+List of Event Commands:
+@>
+
+#------------------------------------------------------------------------------
+Event ID: 006
+Event Name: Puppet 1
+(X,Y): (000,000)
+
+Page #1
+Conditions
+None
+
+Graphic: Object ball
+
+Autonomous Movement
+Type: Fixed
+Speed: 3: Slow
+Freq: 3: Low
+Options Enabled
+Move Animation
+Trigger: Action Button
+
+List of Event Commands:
+@>
+
+#------------------------------------------------------------------------------
+Event ID: 007
+Event Name: Puppet 2
+(X,Y): (000,001)
+
+Page #1
+Conditions
+None
+
+Graphic: Object ball
+
+Autonomous Movement
+Type: Fixed
+Speed: 3: Slow
+Freq: 3: Low
+Options Enabled
+Move Animation
+Trigger: Action Button
+
+List of Event Commands:
+@>
+
+#------------------------------------------------------------------------------
+Event ID: 008
+Event Name: Puppet 3
+(X,Y): (000,002)
+
+Page #1
+Conditions
+None
+
+Graphic: Object ball
+
+Autonomous Movement
+Type: Fixed
+Speed: 3: Slow
+Freq: 3: Low
+Options Enabled
+Move Animation
+Trigger: Action Button
+
+List of Event Commands:
+@>
+
+#------------------------------------------------------------------------------
+Event ID: 009
+Event Name: Puppet 4
+(X,Y): (000,003)
+
+Page #1
+Conditions
+None
+
+Graphic: Object ball
+
+Autonomous Movement
+Type: Fixed
+Speed: 3: Slow
+Freq: 3: Low
+Options Enabled
+Move Animation
+Trigger: Action Button
+
+List of Event Commands:
+@>
+
+#------------------------------------------------------------------------------
+Event ID: 010
+Event Name: Puppet 5
+(X,Y): (000,004)
+
+Page #1
+Conditions
+None
+
+Graphic: Object ball
+
+Autonomous Movement
+Type: Fixed
+Speed: 3: Slow
+Freq: 3: Low
+Options Enabled
+Move Animation
+Trigger: Action Button
+
+List of Event Commands:
+@>
+
+#------------------------------------------------------------------------------
+Event ID: 011
+Event Name: Puppet 6
+(X,Y): (000,005)
+
+Page #1
+Conditions
+None
+
+Graphic: Object ball
+
+Autonomous Movement
+Type: Fixed
+Speed: 3: Slow
+Freq: 3: Low
+Options Enabled
+Move Animation
+Trigger: Action Button
+
+List of Event Commands:
+@>
+
+#------------------------------------------------------------------------------
+Event ID: 012
+Event Name: Puppet 7
+(X,Y): (001,000)
+
+Page #1
+Conditions
+None
+
+Graphic: Object ball
+
+Autonomous Movement
+Type: Fixed
+Speed: 3: Slow
+Freq: 3: Low
+Options Enabled
+Move Animation
+Trigger: Action Button
+
+List of Event Commands:
+@>
+
+#------------------------------------------------------------------------------
+Event ID: 013
+Event Name: Puppet 8
+(X,Y): (001,001)
+
+Page #1
+Conditions
+None
+
+Graphic: Object ball
+
+Autonomous Movement
+Type: Fixed
+Speed: 3: Slow
+Freq: 3: Low
+Options Enabled
+Move Animation
+Trigger: Action Button
+
+List of Event Commands:
+@>
+
+#------------------------------------------------------------------------------
+Event ID: 014
+Event Name: Puppet 9
+(X,Y): (001,002)
+
+Page #1
+Conditions
+None
+
+Graphic: Object ball
+
+Autonomous Movement
+Type: Fixed
+Speed: 3: Slow
+Freq: 3: Low
+Options Enabled
+Move Animation
+Trigger: Action Button
+
+List of Event Commands:
+@>
+
+#------------------------------------------------------------------------------
+Event ID: 015
+Event Name: Puppet 10\
+(X,Y): (001,003)
+
+Page #1
+Conditions
+None
+
+Graphic: Object ball
+
+Autonomous Movement
+Type: Fixed
+Speed: 3: Slow
+Freq: 3: Low
+Options Enabled
+Move Animation
+Trigger: Action Button
+
+List of Event Commands:
+@>
+
+#------------------------------------------------------------------------------
+Event ID: 016
+Event Name: Puppet 11
+(X,Y): (001,004)
+
+Page #1
+Conditions
+None
+
+Graphic: Object ball
+
+Autonomous Movement
+Type: Fixed
+Speed: 3: Slow
+Freq: 3: Low
+Options Enabled
+Move Animation
+Trigger: Action Button
+
+List of Event Commands:
+@>
+
+#------------------------------------------------------------------------------
+Event ID: 017
+Event Name: Puppet 12
+(X,Y): (001,005)
+
+Page #1
+Conditions
+None
+
+Graphic: Object ball
+
+Autonomous Movement
+Type: Fixed
+Speed: 3: Slow
+Freq: 3: Low
+Options Enabled
+Move Animation
+Trigger: Action Button
+
+List of Event Commands:
+@>
+
+#------------------------------------------------------------------------------
+Event ID: 018
+Event Name: Puppet 13
+(X,Y): (002,000)
+
+Page #1
+Conditions
+None
+
+Graphic: Object ball
+
+Autonomous Movement
+Type: Fixed
+Speed: 3: Slow
+Freq: 3: Low
+Options Enabled
+Move Animation
+Trigger: Action Button
+
+List of Event Commands:
+@>
+
+#------------------------------------------------------------------------------
+Event ID: 019
+Event Name: Puppet 14
+(X,Y): (002,001)
+
+Page #1
+Conditions
+None
+
+Graphic: Object ball
+
+Autonomous Movement
+Type: Fixed
+Speed: 3: Slow
+Freq: 3: Low
+Options Enabled
+Move Animation
+Trigger: Action Button
+
+List of Event Commands:
+@>
+
+#------------------------------------------------------------------------------
+Event ID: 020
+Event Name: Puppet 15
+(X,Y): (002,002)
+
+Page #1
+Conditions
+None
+
+Graphic: Object ball
+
+Autonomous Movement
+Type: Fixed
+Speed: 3: Slow
+Freq: 3: Low
+Options Enabled
+Move Animation
+Trigger: Action Button
+
+List of Event Commands:
+@>
+
+#------------------------------------------------------------------------------
+Event ID: 021
+Event Name: Puppet 16
+(X,Y): (002,003)
+
+Page #1
+Conditions
+None
+
+Graphic: Object ball
+
+Autonomous Movement
+Type: Fixed
+Speed: 3: Slow
+Freq: 3: Low
+Options Enabled
+Move Animation
+Trigger: Action Button
+
+List of Event Commands:
+@>
+
+#------------------------------------------------------------------------------
+Event ID: 022
+Event Name: Puppet 17
+(X,Y): (002,004)
+
+Page #1
+Conditions
+None
+
+Graphic: Object ball
+
+Autonomous Movement
+Type: Fixed
+Speed: 3: Slow
+Freq: 3: Low
+Options Enabled
+Move Animation
+Trigger: Action Button
+
+List of Event Commands:
+@>
+
+#------------------------------------------------------------------------------
+Event ID: 023
+Event Name: Puppet 18
+(X,Y): (002,005)
+
+Page #1
+Conditions
+None
+
+Graphic: Object ball
+
+Autonomous Movement
+Type: Fixed
+Speed: 3: Slow
+Freq: 3: Low
+Options Enabled
+Move Animation
+Trigger: Action Button
+
+List of Event Commands:
+@>
+
+#------------------------------------------------------------------------------
+Event ID: 024
+Event Name: Puppet 19
+(X,Y): (003,000)
+
+Page #1
+Conditions
+None
+
+Graphic: Object ball
+
+Autonomous Movement
+Type: Fixed
+Speed: 3: Slow
+Freq: 3: Low
+Options Enabled
+Move Animation
+Trigger: Action Button
+
+List of Event Commands:
+@>
+
+#------------------------------------------------------------------------------
+Event ID: 025
+Event Name: Puppet 20
+(X,Y): (003,001)
+
+Page #1
+Conditions
+None
+
+Graphic: Object ball
+
+Autonomous Movement
+Type: Fixed
+Speed: 3: Slow
+Freq: 3: Low
+Options Enabled
+Move Animation
+Trigger: Action Button
+
+List of Event Commands:
+@>
+
+#------------------------------------------------------------------------------
+Event ID: 026
+Event Name: Puppet 21
+(X,Y): (003,002)
+
+Page #1
+Conditions
+None
+
+Graphic: Object ball
+
+Autonomous Movement
+Type: Fixed
+Speed: 3: Slow
+Freq: 3: Low
+Options Enabled
+Move Animation
+Trigger: Action Button
+
+List of Event Commands:
+@>
+
+#------------------------------------------------------------------------------
+Event ID: 027
+Event Name: Puppet 22
+(X,Y): (003,003)
+
+Page #1
+Conditions
+None
+
+Graphic: Object ball
+
+Autonomous Movement
+Type: Fixed
+Speed: 3: Slow
+Freq: 3: Low
+Options Enabled
+Move Animation
+Trigger: Action Button
+
+List of Event Commands:
+@>
+
+#------------------------------------------------------------------------------
+Event ID: 028
+Event Name: Puppet 23
+(X,Y): (003,004)
+
+Page #1
+Conditions
+None
+
+Graphic: Object ball
+
+Autonomous Movement
+Type: Fixed
+Speed: 3: Slow
+Freq: 3: Low
+Options Enabled
+Move Animation
+Trigger: Action Button
+
+List of Event Commands:
+@>
+
+#------------------------------------------------------------------------------
+Event ID: 029
+Event Name: Puppet 24
+(X,Y): (003,005)
+
+Page #1
+Conditions
+None
+
+Graphic: Object ball
+
+Autonomous Movement
+Type: Fixed
+Speed: 3: Slow
+Freq: 3: Low
+Options Enabled
+Move Animation
+Trigger: Action Button
+
+List of Event Commands:
+@>
+
+#------------------------------------------------------------------------------
+Event ID: 030
+Event Name: Puppet 25
+(X,Y): (004,000)
+
+Page #1
+Conditions
+None
+
+Graphic: Object ball
+
+Autonomous Movement
+Type: Fixed
+Speed: 3: Slow
+Freq: 3: Low
+Options Enabled
+Move Animation
+Trigger: Action Button
+
+List of Event Commands:
+@>
+
+#------------------------------------------------------------------------------
+Event ID: 031
+Event Name: Puppet 26
+(X,Y): (004,001)
+
+Page #1
+Conditions
+None
+
+Graphic: Object ball
+
+Autonomous Movement
+Type: Fixed
+Speed: 3: Slow
+Freq: 3: Low
+Options Enabled
+Move Animation
+Trigger: Action Button
+
+List of Event Commands:
+@>
+
+#------------------------------------------------------------------------------
+Event ID: 032
+Event Name: Puppet 27
+(X,Y): (004,002)
+
+Page #1
+Conditions
+None
+
+Graphic: Object ball
+
+Autonomous Movement
+Type: Fixed
+Speed: 3: Slow
+Freq: 3: Low
+Options Enabled
+Move Animation
+Trigger: Action Button
+
+List of Event Commands:
+@>
+
+#------------------------------------------------------------------------------
+Event ID: 033
+Event Name: Puppet 28
+(X,Y): (004,003)
+
+Page #1
+Conditions
+None
+
+Graphic: Object ball
+
+Autonomous Movement
+Type: Fixed
+Speed: 3: Slow
+Freq: 3: Low
+Options Enabled
+Move Animation
+Trigger: Action Button
+
+List of Event Commands:
+@>
+
+#------------------------------------------------------------------------------
+Event ID: 034
+Event Name: Puppet 29
+(X,Y): (004,004)
+
+Page #1
+Conditions
+None
+
+Graphic: Object ball
+
+Autonomous Movement
+Type: Fixed
+Speed: 3: Slow
+Freq: 3: Low
+Options Enabled
+Move Animation
+Trigger: Action Button
+
+List of Event Commands:
+@>
+
+#------------------------------------------------------------------------------
+Event ID: 035
+Event Name: Puppet 30
+(X,Y): (004,005)
+
+Page #1
+Conditions
+None
+
+Graphic: Object ball
+
+Autonomous Movement
+Type: Fixed
+Speed: 3: Slow
+Freq: 3: Low
+Options Enabled
+Move Animation
+Trigger: Action Button
+
+List of Event Commands:
+@>
+
+#------------------------------------------------------------------------------
+Event ID: 036
+Event Name: Puppet Controller
+(X,Y): (002,025)
+
+Page #1
+Conditions
+Self Switch A is ON
+
+Autonomous Movement
+Type: Fixed
+Speed: 3: Slow
+Freq: 3: Low
+Options Enabled
+Move Animation
+Trigger: Parallel Process
+
+List of Event Commands:
+@>Set Event Location: [Puppet 1],(012,025)
+@>Set Event Location: [Puppet 2],(012,026)
+@>Set Event Location: [Puppet 3],(012,027)
+@>Set Event Location: [Puppet 4],(018,025)
+@>Set Event Location: [Puppet 5],(018,026)
+@>Set Event Location: [Puppet 6],(018,027)
+@>Set Event Location: [Puppet 7],(013,028)
+@>Set Event Location: [Puppet 8],(013,029)
+@>Set Event Location: [Puppet 9],(014,029)
+@>Set Event Location: [Puppet 10\],(017,028)
+@>Set Event Location: [Puppet 11],(017,029)
+@>Set Event Location: [Puppet 12],(016,029)
+@>Set Event Location: [Puppet 13],(013,024)
+@>Set Event Location: [Puppet 14],(013,023)
+@>Set Event Location: [Puppet 15],(014,023)
+@>Set Event Location: [Puppet 16],(017,024)
+@>Set Event Location: [Puppet 17],(017,023)
+@>Set Event Location: [Puppet 18],(016,023)
+@>Set Event Location: [Puppet 19],(014,030)
+@>Set Event Location: [Puppet 20],(012,029)
+@>Set Event Location: [Puppet 21],(011,027)
+@>Set Event Location: [Puppet 22],(011,025)
+@>Set Event Location: [Puppet 23],(012,023)
+@>Set Event Location: [Puppet 24],(014,022)
+@>Set Event Location: [Puppet 25],(016,022)
+@>Set Event Location: [Puppet 26],(018,023)
+@>Set Event Location: [Puppet 27],(019,025)
+@>Set Event Location: [Puppet 28],(019,027)
+@>Set Event Location: [Puppet 29],(018,029)
+@>Set Event Location: [Puppet 30],(016,030)
+@>Control Self Switch: A =OFF
+@>
+
+#------------------------------------------------------------------------------
+Event ID: 037
+Event Name: The Rift
+(X,Y): (046,012)
+
+Page #1
+Conditions
+None
+
+Graphic: VortexFull
+
+Autonomous Movement
+Type: Custom
+Custom Move Route:
+(Repeat Action)
+$>Turn Left
+$>Wait: 8 frame(s)
+$>Turn Right
+$>Wait: 8 frame(s)
+$>Turn Up
+$>Wait: 8 frame(s)
+$>Turn Down
+$>Wait: 8 frame(s)
+
+Speed: 5: Faster
+Freq: 6: Highest
+Options Enabled
+Move Animation
+Trigger: Action Button
+
+List of Event Commands:
+@>
+
+#------------------------------------------------------------------------------
+Event ID: 038
+Event Name: Fire
+(X,Y): (043,024)
+
+Page #1
+Conditions
+None
+
+Graphic: Fire
+
+Autonomous Movement
+Type: Fixed
+Speed: 4: Fast
+Freq: 5: Higher
+Options Enabled
+Move Animation
+Stop Animation
+Direction Fix
+Trigger: Action Button
+
+List of Event Commands:
+@>
+
+#------------------------------------------------------------------------------
+Event ID: 039
+Event Name: Fire
+(X,Y): (044,027)
+
+Page #1
+Conditions
+None
+
+Graphic: Fire
+
+Autonomous Movement
+Type: Fixed
+Speed: 4: Fast
+Freq: 5: Higher
+Options Enabled
+Move Animation
+Stop Animation
+Direction Fix
+Trigger: Action Button
+
+List of Event Commands:
+@>
+
+#------------------------------------------------------------------------------
+Event ID: 040
+Event Name: Fire
+(X,Y): (051,026)
+
+Page #1
+Conditions
+None
+
+Graphic: Fire
+
+Autonomous Movement
+Type: Fixed
+Speed: 4: Fast
+Freq: 5: Higher
+Options Enabled
+Move Animation
+Stop Animation
+Direction Fix
+Trigger: Action Button
+
+List of Event Commands:
+@>
+
+#------------------------------------------------------------------------------
+Event ID: 041
+Event Name: Fire
+(X,Y): (053,024)
+
+Page #1
+Conditions
+None
+
+Graphic: Fire
+
+Autonomous Movement
+Type: Fixed
+Speed: 4: Fast
+Freq: 5: Higher
+Options Enabled
+Move Animation
+Stop Animation
+Direction Fix
+Trigger: Action Button
+
+List of Event Commands:
+@>
+
+#------------------------------------------------------------------------------
+Event ID: 042
+Event Name: Fire
+(X,Y): (052,022)
+
+Page #1
+Conditions
+None
+
+Graphic: Fire
+
+Autonomous Movement
+Type: Fixed
+Speed: 4: Fast
+Freq: 5: Higher
+Options Enabled
+Move Animation
+Stop Animation
+Direction Fix
+Trigger: Action Button
+
+List of Event Commands:
+@>
+
+#------------------------------------------------------------------------------
+Event ID: 043
+Event Name: Fire
+(X,Y): (054,026)
+
+Page #1
+Conditions
+None
+
+Graphic: Fire
+
+Autonomous Movement
+Type: Fixed
+Speed: 4: Fast
+Freq: 5: Higher
+Options Enabled
+Move Animation
+Stop Animation
+Direction Fix
+Trigger: Action Button
+
+List of Event Commands:
+@>
+
+#------------------------------------------------------------------------------
+Event ID: 044
+Event Name: Fire
+(X,Y): (040,027)
+
+Page #1
+Conditions
+None
+
+Graphic: Fire
+
+Autonomous Movement
+Type: Fixed
+Speed: 4: Fast
+Freq: 5: Higher
+Options Enabled
+Move Animation
+Stop Animation
+Direction Fix
+Trigger: Action Button
+
+List of Event Commands:
+@>
+
+#------------------------------------------------------------------------------
+Event ID: 045
+Event Name: Fire
+(X,Y): (038,025)
+
+Page #1
+Conditions
+None
+
+Graphic: Fire
+
+Autonomous Movement
+Type: Fixed
+Speed: 4: Fast
+Freq: 5: Higher
+Options Enabled
+Move Animation
+Stop Animation
+Direction Fix
+Trigger: Action Button
+
+List of Event Commands:
+@>
+
+#------------------------------------------------------------------------------
+Event ID: 046
+Event Name: Fire
+(X,Y): (040,024)
+
+Page #1
+Conditions
+None
+
+Graphic: Fire
+
+Autonomous Movement
+Type: Fixed
+Speed: 4: Fast
+Freq: 5: Higher
+Options Enabled
+Move Animation
+Stop Animation
+Direction Fix
+Trigger: Action Button
+
+List of Event Commands:
+@>
+
+#------------------------------------------------------------------------------
+Event ID: 047
+Event Name: Fire
+(X,Y): (036,024)
+
+Page #1
+Conditions
+None
+
+Graphic: Fire
+
+Autonomous Movement
+Type: Fixed
+Speed: 4: Fast
+Freq: 5: Higher
+Options Enabled
+Move Animation
+Stop Animation
+Direction Fix
+Trigger: Action Button
+
+List of Event Commands:
+@>
+
+#------------------------------------------------------------------------------
+Event ID: 048
+Event Name: Fire
+(X,Y): (037,027)
+
+Page #1
+Conditions
+None
+
+Graphic: Fire
+
+Autonomous Movement
+Type: Fixed
+Speed: 4: Fast
+Freq: 5: Higher
+Options Enabled
+Move Animation
+Stop Animation
+Direction Fix
+Trigger: Action Button
+
+List of Event Commands:
+@>
+
+#------------------------------------------------------------------------------
+Event ID: 049
+Event Name: Fire
+(X,Y): (039,030)
+
+Page #1
+Conditions
+None
+
+Graphic: Fire
+
+Autonomous Movement
+Type: Fixed
+Speed: 4: Fast
+Freq: 5: Higher
+Options Enabled
+Move Animation
+Stop Animation
+Direction Fix
+Trigger: Action Button
+
+List of Event Commands:
+@>
+
+#------------------------------------------------------------------------------
+Event ID: 050
+Event Name: Fire
+(X,Y): (043,033)
+
+Page #1
+Conditions
+None
+
+Graphic: Fire
+
+Autonomous Movement
+Type: Fixed
+Speed: 4: Fast
+Freq: 5: Higher
+Options Enabled
+Move Animation
+Stop Animation
+Direction Fix
+Trigger: Action Button
+
+List of Event Commands:
+@>
+
+#------------------------------------------------------------------------------
+Event ID: 051
+Event Name: Fire
+(X,Y): (048,034)
+
+Page #1
+Conditions
+None
+
+Graphic: Fire
+
+Autonomous Movement
+Type: Fixed
+Speed: 4: Fast
+Freq: 5: Higher
+Options Enabled
+Move Animation
+Stop Animation
+Direction Fix
+Trigger: Action Button
+
+List of Event Commands:
+@>
+
+#------------------------------------------------------------------------------
+Event ID: 052
+Event Name: Fire
+(X,Y): (048,030)
+
+Page #1
+Conditions
+None
+
+Graphic: Fire
+
+Autonomous Movement
+Type: Fixed
+Speed: 4: Fast
+Freq: 5: Higher
+Options Enabled
+Move Animation
+Stop Animation
+Direction Fix
+Trigger: Action Button
+
+List of Event Commands:
+@>
+
+#------------------------------------------------------------------------------
+Event ID: 053
+Event Name: Fire
+(X,Y): (050,024)
+
+Page #1
+Conditions
+None
+
+Graphic: Fire
+
+Autonomous Movement
+Type: Fixed
+Speed: 4: Fast
+Freq: 5: Higher
+Options Enabled
+Move Animation
+Stop Animation
+Direction Fix
+Trigger: Action Button
+
+List of Event Commands:
+@>
+
+#------------------------------------------------------------------------------
+Event ID: 054
+Event Name: Fire
+(X,Y): (047,036)
+
+Page #1
+Conditions
+None
+
+Graphic: Fire
+
+Autonomous Movement
+Type: Fixed
+Speed: 4: Fast
+Freq: 5: Higher
+Options Enabled
+Move Animation
+Stop Animation
+Direction Fix
+Trigger: Action Button
+
+List of Event Commands:
+@>
+
+#------------------------------------------------------------------------------
+Event ID: 055
+Event Name: Fire
+(X,Y): (050,032)
+
+Page #1
+Conditions
+None
+
+Graphic: Fire
+
+Autonomous Movement
+Type: Fixed
+Speed: 4: Fast
+Freq: 5: Higher
+Options Enabled
+Move Animation
+Stop Animation
+Direction Fix
+Trigger: Action Button
+
+List of Event Commands:
+@>
+
+#------------------------------------------------------------------------------
+Event ID: 056
+Event Name: Fire
+(X,Y): (041,021)
+
+Page #1
+Conditions
+None
+
+Graphic: Fire
+
+Autonomous Movement
+Type: Fixed
+Speed: 4: Fast
+Freq: 5: Higher
+Options Enabled
+Move Animation
+Stop Animation
+Direction Fix
+Trigger: Action Button
+
+List of Event Commands:
+@>
+
+#------------------------------------------------------------------------------
+Event ID: 057
+Event Name: Sound Trigger
+(X,Y): (000,026)
+
+Page #1
+Conditions
+Self Switch A is ON
+
+Autonomous Movement
+Type: Fixed
+Speed: 3: Slow
+Freq: 3: Low
+Options Enabled
+Move Animation
+Trigger: Parallel Process
+
+List of Event Commands:
+@>Loop
+ @>Screen Shake: 9, 9, @15
+ @>Play SE: 'Mining collapse', 100, 50
+ @>Wait: 15 frame(s)
+ @>
+: Repeat Above
+@>
+
+#------------------------------------------------------------------------------
+Event ID: 058
+Event Name: Kota
+(X,Y): (000,069)
+
+Page #1
+Conditions
+None
+
+Graphic: NPC_Kota
+
+Autonomous Movement
+Type: Fixed
+Speed: 3: Slow
+Freq: 3: Low
+Options Enabled
+Move Animation
+Trigger: Action Button
+
+List of Event Commands:
+@>
+
+#------------------------------------------------------------------------------
+Event ID: 059
+Event Name: Shinji
+(X,Y): (001,069)
+
+Page #1
+Conditions
+None
+
+Graphic: NPC_Shinji
+
+Autonomous Movement
+Type: Fixed
+Speed: 3: Slow
+Freq: 3: Low
+Options Enabled
+Move Animation
+Trigger: Action Button
+
+List of Event Commands:
+@>
+
+#------------------------------------------------------------------------------
+Event ID: 060
+Event Name: Maya
+(X,Y): (002,069)
+
+Page #1
+Conditions
+None
+
+Graphic: NPC_Maya
+
+Autonomous Movement
+Type: Fixed
+Speed: 3: Slow
+Freq: 3: Low
+Options Enabled
+Move Animation
+Trigger: Action Button
+
+List of Event Commands:
+@>
+
+#------------------------------------------------------------------------------
+
+#==============================================================================
+Map ID: 138
+Map Name: Reimadne - Cutscene
+Tileset: 049: World of Fantasies (alt)
+Width: 31, Height: 27
+
+#------------------------------------------------------------------------------
+Event ID: 001
+Event Name: Mima
+(X,Y): (000,000)
+
+Page #1
+Conditions
+None
+
+Graphic: Person_Mima
+
+Autonomous Movement
+Type: Fixed
+Speed: 3: Slow
+Freq: 3: Low
+Options Enabled
+Move Animation
+Trigger: Action Button
+
+List of Event Commands:
+@>
+
+#------------------------------------------------------------------------------
+Event ID: 002
+Event Name: Meimu (Formless)
+(X,Y): (001,000)
+
+Page #1
+Conditions
+None
+
+Graphic: CharaGhost
+
+Autonomous Movement
+Type: Fixed
+Speed: 3: Slow
+Freq: 3: Low
+Options Enabled
+Move Animation
+Trigger: Action Button
+
+List of Event Commands:
+@>
+
+#------------------------------------------------------------------------------
+Event ID: 003
+Event Name: Meimu (Formed)
+(X,Y): (002,000)
+
+Page #1
+Conditions
+None
+
+Graphic: Person_Meimu
+
+Autonomous Movement
+Type: Fixed
+Speed: 3: Slow
+Freq: 3: Low
+Options Enabled
+Move Animation
+Trigger: Action Button
+
+List of Event Commands:
+@>
+
+#------------------------------------------------------------------------------
+Event ID: 004
+Event Name: Autorun
+(X,Y): (000,015)
+
+Page #1
+Conditions
+None
+
+Autonomous Movement
+Type: Fixed
+Speed: 3: Slow
+Freq: 3: Low
+Options Enabled
+Move Animation
+Trigger: Autorun
+
+List of Event Commands:
+@>Wait: 10 frame(s)
+@>Set Event Location: [Mima],(015,023)
+@>Set Event Location: [Meimu (Formless)],(015,010)
+@>Change Screen Color Tone: (0,0,0,255), @8
+@>Wait: 10 frame(s)
+@>Set Move Route: [Mima]
+ :              : $>Through ON
+ :              : $>Move Up
+ :              : $>Move Up
+ :              : $>Move Up
+ :              : $>Move Up
+ :              : $>Move Up
+ :              : $>Move Up
+ :              : $>Move Up
+ :              : $>Move Up
+ :              : $>Move Up
+ :              : $>Through OFF
+@>Text: \xn[Mima]In my journey to finally overtake the Hakurei, and make their
+ :    : power my own, I stumbled across an entity of great power and potential.
+@>Scroll Map: Up, 3, 3
+@>Text: \xn[Mima]One that shouldn't exist in this world.
+@>Text: \xn[Mima]So, I adopted them under my wing and begun training them
+ :    : on how to harness their powers.
+@>Wait for Move's Completion
+@>Change Screen Color Tone: (-255,-255,-255,0), @8
+@>Text: \xn[Mima]The power to manipulate Fantasy and Reality, create
+ :    : things that were unreal and bring them into reality...
+@>Wait: 8 frame(s)
+@>Set Event Location: [Mima],(015,017)
+@>Set Event Location: [Meimu (Formless)],(001,000)
+@>Set Event Location: [Meimu (Formed)],(015,010)
+@>Transfer Player:[138: Reimadne - Cutscene], (015,017)
+@>Change Screen Color Tone: (0,0,0,255), @8
+@>Text: \xn[Mima]They were so proficent at it, that one day they created
+ :    : a form for themselves out of the aether.
+@>Set Move Route: [Meimu (Formed)]
+ :              : $>Through ON
+ :              : $>Move Down
+ :              : $>Move Down
+ :              : $>Move Down
+ :              : $>Move Down
+ :              : $>Move Down
+@>Show Animation: [Mima], [Exclaim bubble (No SE)]
+@>Text: \xn[Mima]Imagine my surprise when I returned to train them one
+ :    : day, and they looked exactly like the current Hakurei Shrine Maiden!
+@>Text: \xn[Mima]Perhaps I shouldn't have told them so many stories
+ :    : about her.
+@>Change Screen Color Tone: (-255,-255,-255,0), @8
+@>Text: \xn[Mima]I intensified her training from that point, and it seemed like
+ :    : she just contined to get more and more powerful.
+@>Wait: 8 frame(s)
+@>Set Event Location: [Mima],(013,015), Right
+@>Set Event Location: [Meimu (Formed)],(017,015), Left
+@>Set Event Location: [Puppet 1],(015,014)
+@>Set Event Location: [Puppet 2],(016,015)
+@>Set Event Location: [Puppet 3],(015,016)
+@>Change Screen Color Tone: (0,0,0,255), @8
+@>Text: \xn[Mima]Her ability to manipulate Fantasy and Reality began to
+ :    : extend into the realm of dreams.
+@>Text: \xn[Mima]She could enter a person's dreams, observe them, and
+ :    : manifest concepts inside of them, or recreate them in the real world.
+@>Show Animation: [Puppet 1], [Berry plant sparkle]
+@>Show Animation: [Puppet 1], [Berry plant sparkle]
+@>Show Animation: [Puppet 1], [Berry plant sparkle]
+@>Set Move Route: [Puppet 1]
+ :              : $>Wait: 20 frame(s)
+ :              : $>Change Opacity: 255
+@>Set Move Route: [Puppet 2]
+ :              : $>Wait: 20 frame(s)
+ :              : $>Change Opacity: 255
+@>Set Move Route: [Puppet 3]
+ :              : $>Wait: 20 frame(s)
+ :              : $>Change Opacity: 255
+@>Wait for Move's Completion
+@>Show Animation: [Mima], [Exclaim bubble (No SE)]
+@>Text: \xn[Mima]I never even told her about the Puppets that were
+ :    : dominating Gensokyo, yet somehow she managed to manifest
+ :    : three of them right before my eyes!
+@>Text: \xn[Mima]I encouraged her to continue exploring her powers, and
+ :    : sought to use her as part of my plans to overtake the Hakurei.
+@>Change Screen Color Tone: (-255,-255,-255,0), @8
+@>Text: \xn[Mima]However, I could not have been more prepared for what
+ :    : was going to follow.
+@>Wait: 8 frame(s)
+@>Set Event Location: [Puppet 1],(000,001)
+@>Set Event Location: [Puppet 2],(001,001)
+@>Set Event Location: [Puppet 3],(002,001)
+@>Set Event Location: [Mima],(015,017), Up
+@>Set Event Location: [Meimu (Formed)],(015,013), Down
+@>Change Screen Color Tone: (0,0,0,255), @8
+@>Wait: 8 frame(s)
+@>Set Move Route: [Meimu (Formed)]
+ :              : $>Through ON
+ :              : $>Wait: 6 frame(s)
+ :              : $>Jump: +0,+0
+ :              : $>Wait: 4 frame(s)
+ :              : $>Jump: +0,+0
+ :              : $>Turn Left
+ :              : $>Wait: 2 frame(s)
+ :              : $>Turn Up
+ :              : $>Wait: 2 frame(s)
+ :              : $>Turn Right
+ :              : $>Wait: 2 frame(s)
+ :              : $>Turn Down
+ :              : $>Wait: 4 frame(s)
+ :              : $>Jump: +0,+0
+ :              : $>Wait: 4 frame(s)
+ :              : $>Jump: +0,+0
+ :              : $>Wait: 4 frame(s)
+ :              : $>Jump: +0,+0
+@>Text: \xn[Mima]It would seem that, at some point, she came into
+ :    : contact with your dreams, and latched onto them.
+@>Text: \xn[Mima]She would always talk about your adventures and how
+ :    : she wanted to exist in the real world and have her own adventures.
+@>Show Animation: [Mima], [Question bubble (No SE)]
+@>Text: \xn[Mima]It was her motivating factor, who was I to tell her what
+ :    : she could and couldn't do!
+@>Wait for Move's Completion
+@>Change Screen Color Tone: (-255,-255,-255,0), @8
+@>Wait: 8 frame(s)
+@>Change Transparent Flag: Transparency
+@>Transfer Player:[134: Reimaden], (024,016)
+@>Wait: 4 frame(s)
+@>Control Variables: [0142: TLA Plot Variable] = 3
+@>
+
+#------------------------------------------------------------------------------
+Event ID: 005
+Event Name: Puppet 1
+(X,Y): (000,001)
+
+Page #1
+Conditions
+None
+
+Graphic: Puppet_Mima
+
+Autonomous Movement
+Type: Fixed
+Speed: 3: Slow
+Freq: 3: Low
+Options Enabled
+Move Animation
+Trigger: Action Button
+
+List of Event Commands:
+@>
+
+#------------------------------------------------------------------------------
+Event ID: 006
+Event Name: Puppet 2
+(X,Y): (001,001)
+
+Page #1
+Conditions
+None
+
+Graphic: Puppet_Hakurei
+
+Autonomous Movement
+Type: Fixed
+Speed: 3: Slow
+Freq: 3: Low
+Options Enabled
+Move Animation
+Trigger: Action Button
+
+List of Event Commands:
+@>
+
+#------------------------------------------------------------------------------
+Event ID: 007
+Event Name: Puppet 3
+(X,Y): (002,001)
+
+Page #1
+Conditions
+None
+
+Graphic: Puppet_Kirisame
 
 Autonomous Movement
 Type: Fixed
@@ -97820,7 +101610,7 @@ List of Event Commands:
  @>Move Picture: 16, @20, Upper Left (14,294), (100%,100%), 255, Normal
  @>
 : Branch End
-@>Conditional Branch: Variable [0114: Cursed Puppets defeated] == 6
+@>Conditional Branch: Variable [0104: Vs. Transition - Pkmn] == 6
  @>Script: pbShowPicture(12,"Transitions/Balls/icon_ball.png",0,-192,294,zoomX=100,zoomY=100,opacity=255,blendType=0)
  :       : pbShowPicture(13,"Transitions/Balls/icon_ball.png",0,-192,294,zoomX=100,zoomY=100,opacity=255,blendType=0)
  :       : pbShowPicture(14,"Transitions/Balls/icon_ball.png",0,-192,294,zoomX=100,zoomY=100,opacity=255,blendType=0)
@@ -99783,7 +103573,7 @@ List of Event Commands:
 @>Script: # $game_variables[1] = $GameSpeed
 :       : # pbDisallowSpeedup
 :       : # $GameSpeed = 0
-@>Control Switches: [0103: Disable Text Skip] = ON
+@>Control Switches: [0103: Hide AI Level] = ON
 @>Change Text Options: Middle, Hide
 @>Comment: --- Pre-Battle Intro Setup
 @>Call Common Event: Vs. Transition - Flash
@@ -99858,7 +103648,7 @@ List of Event Commands:
 @>Change Screen Color Tone: (0,0,0,0), @10
 @>Comment: --- Pre-Battle Intro Conclusion
 @>Control Switches: [0104: Transition Handler] = OFF
-@>Control Switches: [0103: Disable Text Skip] = OFF
+@>Control Switches: [0103: Hide AI Level] = OFF
 @>Change Text Options: Bottom, Show
 @>Script: # pbAllowSpeedup
 :       : # $GameSpeed = pbGet(1)
@@ -101450,18 +105240,18 @@ List of Event Commands:
 @>Script: pbShowPicture(20,"Transitions/Bars_Over.png",1,256,192,zoomX=100,zoomY=100,opacity=230,blendType=0)
 @>Move Picture: 5, @5, Center (256,192), (100%,100%), 230, Normal
 @>Wait: 5 frame(s)
-@>Script: pbShowPicture(1,"Transitions/BGs/BGVillage.png",1,256,192,100,100,0,0)
+@>Script: pbShowPicture(1,"Transitions/BGs/BGWorldOfFantasy.png",1,256,192,100,100,0,0)
 @>Wait: 5 frame(s)
 @>Move Picture: 1, @5, Center (256,192), (100%,100%), 255, Normal
 @>Wait: 15 frame(s)
 @>Play SE: 'Vs flash', 80, 100
 @>Screen Flash: (255,255,255,255), @10
-@>Script: pbShowPicture(3,"Transitions/PTs/Char_KeineS.png",1,256,192,zoomX=100,zoomY=100,opacity=255,blendType=0)
+@>Script: pbShowPicture(3,"Transitions/PTs/Char_MimaS.png",1,256,192,zoomX=100,zoomY=100,opacity=255,blendType=0)
 @>Wait: 25 frame(s)
 @>Screen Flash: (255,255,255,255), @10
 @>Play SE: 'Vs sword', 80, 100
-@>Script: pbShowPicture(5,"Transitions/PTs/Char_Keine.png",1,256,192,zoomX=100,zoomY=100,opacity=255,blendType=0)
-@>Script: pbShowPicture(21,"Transitions/Names/Name_Keine.png",1,256,192,zoomX=100,zoomY=100,opacity=255,blendType=0)
+@>Script: pbShowPicture(5,"Transitions/PTs/Char_Mima.png",1,256,192,zoomX=100,zoomY=100,opacity=255,blendType=0)
+@>Script: pbShowPicture(21,"Transitions/Names/Name_Mima.png",1,256,192,zoomX=100,zoomY=100,opacity=255,blendType=0)
 @>Move Picture: 3, @30, Center (250,192), (100%,100%), 255, Normal
 @>Call Common Event: Vs. Transition - Balls
 @>Wait: 60 frame(s)
@@ -101512,20 +105302,20 @@ List of Event Commands:
 @>Script: pbShowPicture(20,"Transitions/Bars_Over.png",1,256,192,zoomX=100,zoomY=100,opacity=230,blendType=0)
 @>Move Picture: 5, @5, Center (256,192), (100%,100%), 230, Normal
 @>Wait: 5 frame(s)
-@>Script: pbShowPicture(1,"Transitions/BGs/BGVillage.png",1,256,192,100,100,0,0)
+@>Script: pbShowPicture(1,"Transitions/BGs/BGWorldOfFantasy.png",1,256,192,100,100,0,0)
 @>Wait: 5 frame(s)
 @>Move Picture: 1, @5, Center (256,192), (100%,100%), 255, Normal
 @>Wait: 15 frame(s)
 @>Play SE: 'Vs flash', 80, 100
 @>Screen Flash: (255,255,255,255), @10
-@>Script: pbShowPicture(3,"Transitions/PTs/Char_KeineS.png",1,256,192,zoomX=100,zoomY=100,opacity=255,blendType=0)
+@>Script: pbShowPicture(3,"Transitions/PTs/Char_MeimuS.png",1,256,192,zoomX=100,zoomY=100,opacity=255,blendType=0)
 @>Wait: 25 frame(s)
 @>Screen Flash: (255,255,255,255), @10
 @>Play SE: 'Vs sword', 80, 100
-@>Script: pbShowPicture(5,"Transitions/PTs/Char_Keine.png",1,256,192,zoomX=100,zoomY=100,opacity=255,blendType=0)
-@>Script: pbShowPicture(21,"Transitions/Names/Name_Keine.png",1,256,192,zoomX=100,zoomY=100,opacity=255,blendType=0)
+@>Script: pbShowPicture(5,"Transitions/PTs/Char_Meimu.png",1,256,192,zoomX=100,zoomY=100,opacity=255,blendType=0)
+@>Script: pbShowPicture(21,"Transitions/Names/Name_Meimu.png",1,256,192,zoomX=100,zoomY=100,opacity=255,blendType=0)
 @>Move Picture: 3, @30, Center (250,192), (100%,100%), 255, Normal
-@>Call Common Event: Vs. Transition - Balls
+@>Call Common Event: Vs. Meimu (Balls)
 @>Wait: 60 frame(s)
 @>Move Picture: 1, @5, Center (256,192), (100%,100%), 0, Normal
 @>Move Picture: 20, @5, Center (256,192), (100%,100%), 0, Normal
@@ -101540,6 +105330,7 @@ List of Event Commands:
 @>Change Picture Color Tone: 14, (-255,-255,-255,0), @5
 @>Change Picture Color Tone: 15, (-255,-255,-255,0), @5
 @>Change Picture Color Tone: 16, (-255,-255,-255,0), @5
+@>Change Picture Color Tone: 17, (-255,-255,-255,0), @5
 @>Wait: 6 frame(s)
 @>Erase Picture: 1
 @>Erase Picture: 20
@@ -101554,6 +105345,7 @@ List of Event Commands:
 @>Erase Picture: 14
 @>Erase Picture: 15
 @>Erase Picture: 16
+@>Erase Picture: 17
 @>Change Screen Color Tone: (0,0,0,0), @10
 @>Comment: --- Pre-Battle Intro Conclusion
 @>Control Switches: [0104: Transition Handler] = OFF
@@ -101570,26 +105362,27 @@ List of Event Commands:
 @>Call Common Event: Vs. Transition - Flash
 @>Change Screen Color Tone: (-255,-255,-255,0), @6
 @>Wait: 6 frame(s)
-@>Script: pbShowPicture(4,"Transitions/Bars_Under.png",1,256,192,zoomX=100,zoomY=100,opacity=230,blendType=0)
+@>Script: #pbShowPicture(4,"Transitions/Bars_Under.png",1,256,192,zoomX=100,zoomY=100,opacity=230,blendType=0)
 @>Script: pbShowPicture(20,"Transitions/Bars_Over.png",1,256,192,zoomX=100,zoomY=100,opacity=230,blendType=0)
 @>Move Picture: 5, @5, Center (256,192), (100%,100%), 230, Normal
 @>Wait: 5 frame(s)
-@>Script: pbShowPicture(1,"Transitions/BGs/BGVillage.png",1,256,192,100,100,0,0)
+@>Script: pbShowPicture(1,"Transitions/BGs/BGWorldOfFantasy.png",1,256,192,100,100,0,0)
 @>Wait: 5 frame(s)
 @>Move Picture: 1, @5, Center (256,192), (100%,100%), 255, Normal
 @>Wait: 15 frame(s)
 @>Play SE: 'Vs flash', 80, 100
 @>Screen Flash: (255,255,255,255), @10
-@>Script: pbShowPicture(3,"Transitions/PTs/Char_KeineS.png",1,256,192,zoomX=100,zoomY=100,opacity=255,blendType=0)
+@>Script: pbShowPicture(3,"Transitions/PTs/Char_Meimu2S.png",1,256,192,zoomX=100,zoomY=100,opacity=255,blendType=0)
 @>Wait: 25 frame(s)
 @>Screen Flash: (255,255,255,255), @10
 @>Play SE: 'Vs sword', 80, 100
-@>Script: pbShowPicture(5,"Transitions/PTs/Char_Keine.png",1,256,192,zoomX=100,zoomY=100,opacity=255,blendType=0)
-@>Script: pbShowPicture(21,"Transitions/Names/Name_Keine.png",1,256,192,zoomX=100,zoomY=100,opacity=255,blendType=0)
+@>Script: pbShowPicture(2,"Transitions/Names/Title_Meimu.png",1,256,192,zoomX=100,zoomY=100,opacity=255,blendType=0)
+@>Script: pbShowPicture(5,"Transitions/PTs/Char_Meimu2.png",1,256,192,zoomX=100,zoomY=100,opacity=255,blendType=0)
+@>Script: pbShowPicture(21,"Transitions/Names/Name_Meimu2.png",1,256,192,zoomX=100,zoomY=100,opacity=255,blendType=0)
 @>Move Picture: 3, @30, Center (250,192), (100%,100%), 255, Normal
-@>Call Common Event: Vs. Transition - Balls
 @>Wait: 60 frame(s)
 @>Move Picture: 1, @5, Center (256,192), (100%,100%), 0, Normal
+@>Move Picture: 2, @5, Center (256,192), (100%,100%), 0, Normal
 @>Move Picture: 20, @5, Center (256,192), (100%,100%), 0, Normal
 @>Move Picture: 3, @5, Center (252,192), (100%,100%), 0, Normal
 @>Move Picture: 4, @5, Center (256,192), (100%,100%), 0, Normal
@@ -101604,6 +105397,7 @@ List of Event Commands:
 @>Change Picture Color Tone: 16, (-255,-255,-255,0), @5
 @>Wait: 6 frame(s)
 @>Erase Picture: 1
+@>Erase Picture: 2
 @>Erase Picture: 20
 @>Erase Picture: 3
 @>Erase Picture: 4
@@ -101623,20 +105417,102 @@ List of Event Commands:
 
 #==============================================================================
 Common Event ID: 084
-Common Event Name: 
+Common Event Name: Vs. Meimu (Balls)
 
 Trigger: None
 
 List of Event Commands:
+@>Script: pbShowPicture(10,"Transitions/Balls/overlay_lineup.png",0,-440,324,zoomX=100,zoomY=100,opacity=255,blendType=0)
+:       : 
+:       : pbShowPicture(11,"Transitions/Balls/icon_ball.png",0,-192,294,zoomX=100,zoomY=100,opacity=255,blendType=0)
+:       : pbShowPicture(12,"Transitions/Balls/icon_ball.png",0,-192,294,zoomX=100,zoomY=100,opacity=255,blendType=0)
+:       : pbShowPicture(13,"Transitions/Balls/icon_ball.png",0,-192,294,zoomX=100,zoomY=100,opacity=255,blendType=0)
+:       : pbShowPicture(14,"Transitions/Balls/icon_ball.png",0,-192,294,zoomX=100,zoomY=100,opacity=255,blendType=0)
+:       : pbShowPicture(15,"Transitions/Balls/icon_ball.png",0,-192,294,zoomX=100,zoomY=100,opacity=255,blendType=0)
+:       : pbShowPicture(16,"Transitions/Balls/icon_ball.png",0,-192,294,zoomX=100,zoomY=100,opacity=255,blendType=0)
+:       : pbShowPicture(17,"Transitions/Balls/icon_ball30.png",0,256,192,zoomX=100,zoomY=100,opacity=0,blendType=0)
+@>Comment: ----------------------------------
+@>Move Picture: 10, @20, Upper Left (-192,324), (100%,100%), 255, Normal
+@>Move Picture: 11, @20, Upper Left (174,294), (100%,100%), 255, Normal
+@>Move Picture: 12, @20, Upper Left (142,294), (100%,100%), 255, Normal
+@>Move Picture: 13, @20, Upper Left (110,294), (100%,100%), 255, Normal
+@>Move Picture: 14, @20, Upper Left (78,294), (100%,100%), 255, Normal
+@>Move Picture: 15, @20, Upper Left (46,294), (100%,100%), 255, Normal
+@>Move Picture: 16, @20, Upper Left (14,294), (100%,100%), 255, Normal
+@>Wait: 40 frame(s)
+@>Screen Flash: (255,255,255,255), @2
+@>Play SE: 'Vs sword', 80, 70
+@>Move Picture: 17, @1, Center (256,192), (100%,100%), 255, Normal
 @>
 
 #==============================================================================
 Common Event ID: 085
-Common Event Name: 
+Common Event Name: Vs. Meimu (Balls) Backup
 
 Trigger: None
 
 List of Event Commands:
+@>Script: pbShowPicture(10,"Transitions/Balls/overlay_lineup.png",0,-440,324,zoomX=100,zoomY=100,opacity=255,blendType=0)
+:       : 
+:       : pbShowPicture(11,"Transitions/Balls/icon_ball.png",0,-192,294,zoomX=100,zoomY=100,opacity=255,blendType=0)
+:       : pbShowPicture(12,"Transitions/Balls/icon_ball.png",0,-192,294,zoomX=100,zoomY=100,opacity=255,blendType=0)
+:       : pbShowPicture(13,"Transitions/Balls/icon_ball.png",0,-192,294,zoomX=100,zoomY=100,opacity=255,blendType=0)
+:       : pbShowPicture(14,"Transitions/Balls/icon_ball.png",0,-192,294,zoomX=100,zoomY=100,opacity=255,blendType=0)
+:       : pbShowPicture(15,"Transitions/Balls/icon_ball.png",0,-192,294,zoomX=100,zoomY=100,opacity=255,blendType=0)
+:       : pbShowPicture(16,"Transitions/Balls/icon_ball.png",0,-192,294,zoomX=100,zoomY=100,opacity=255,blendType=0)
+@>Script: pbShowPicture(31,"Transitions/Balls/icon_ball.png",0,-192,294,zoomX=100,zoomY=100,opacity=255,blendType=0)
+:       : pbShowPicture(32,"Transitions/Balls/icon_ball.png",0,-192,294,zoomX=100,zoomY=100,opacity=255,blendType=0)
+:       : pbShowPicture(33,"Transitions/Balls/icon_ball.png",0,-192,294,zoomX=100,zoomY=100,opacity=255,blendType=0)
+:       : pbShowPicture(34,"Transitions/Balls/icon_ball.png",0,-192,294,zoomX=100,zoomY=100,opacity=255,blendType=0)
+:       : pbShowPicture(35,"Transitions/Balls/icon_ball.png",0,-192,294,zoomX=100,zoomY=100,opacity=255,blendType=0)
+:       : pbShowPicture(36,"Transitions/Balls/icon_ball.png",0,-192,294,zoomX=100,zoomY=100,opacity=255,blendType=0)
+@>Script: pbShowPicture(41,"Transitions/Balls/icon_ball.png",0,-192,294,zoomX=100,zoomY=100,opacity=255,blendType=0)
+:       : pbShowPicture(42,"Transitions/Balls/icon_ball.png",0,-192,294,zoomX=100,zoomY=100,opacity=255,blendType=0)
+:       : pbShowPicture(43,"Transitions/Balls/icon_ball.png",0,-192,294,zoomX=100,zoomY=100,opacity=255,blendType=0)
+:       : pbShowPicture(44,"Transitions/Balls/icon_ball.png",0,-192,294,zoomX=100,zoomY=100,opacity=255,blendType=0)
+:       : pbShowPicture(45,"Transitions/Balls/icon_ball.png",0,-192,294,zoomX=100,zoomY=100,opacity=255,blendType=0)
+:       : pbShowPicture(46,"Transitions/Balls/icon_ball.png",0,-192,294,zoomX=100,zoomY=100,opacity=255,blendType=0)
+@>Script: pbShowPicture(51,"Transitions/Balls/icon_ball.png",0,-192,294,zoomX=100,zoomY=100,opacity=255,blendType=0)
+:       : pbShowPicture(52,"Transitions/Balls/icon_ball.png",0,-192,294,zoomX=100,zoomY=100,opacity=255,blendType=0)
+:       : pbShowPicture(53,"Transitions/Balls/icon_ball.png",0,-192,294,zoomX=100,zoomY=100,opacity=255,blendType=0)
+:       : pbShowPicture(54,"Transitions/Balls/icon_ball.png",0,-192,294,zoomX=100,zoomY=100,opacity=255,blendType=0)
+:       : pbShowPicture(55,"Transitions/Balls/icon_ball.png",0,-192,294,zoomX=100,zoomY=100,opacity=255,blendType=0)
+:       : pbShowPicture(56,"Transitions/Balls/icon_ball.png",0,-192,294,zoomX=100,zoomY=100,opacity=255,blendType=0)
+@>Script: pbShowPicture(61,"Transitions/Balls/icon_ball.png",0,-192,294,zoomX=100,zoomY=100,opacity=255,blendType=0)
+:       : pbShowPicture(62,"Transitions/Balls/icon_ball.png",0,-192,294,zoomX=100,zoomY=100,opacity=255,blendType=0)
+:       : pbShowPicture(63,"Transitions/Balls/icon_ball.png",0,-192,294,zoomX=100,zoomY=100,opacity=255,blendType=0)
+:       : pbShowPicture(64,"Transitions/Balls/icon_ball.png",0,-192,294,zoomX=100,zoomY=100,opacity=255,blendType=0)
+:       : pbShowPicture(65,"Transitions/Balls/icon_ball.png",0,-192,294,zoomX=100,zoomY=100,opacity=255,blendType=0)
+:       : pbShowPicture(66,"Transitions/Balls/icon_ball.png",0,-192,294,zoomX=100,zoomY=100,opacity=255,blendType=0)
+@>Comment: ----------------------------------
+@>Move Picture: 10, @20, Upper Left (-192,324), (100%,100%), 255, Normal
+@>Move Picture: 11, @20, Upper Left (174,294), (100%,100%), 255, Normal
+@>Move Picture: 12, @20, Upper Left (142,294), (100%,100%), 255, Normal
+@>Move Picture: 13, @20, Upper Left (110,294), (100%,100%), 255, Normal
+@>Move Picture: 14, @20, Upper Left (78,294), (100%,100%), 255, Normal
+@>Move Picture: 15, @20, Upper Left (46,294), (100%,100%), 255, Normal
+@>Move Picture: 16, @20, Upper Left (14,294), (100%,100%), 255, Normal
+@>Wait: 20 frame(s)
+@>Screen Flash: (255,255,255,255), @2
+@>Play SE: 'Vs sword', 80, 70
+@>Move Picture: 31, @1, Upper Left (174,262), (100%,100%), 255, Normal
+@>Move Picture: 32, @1, Upper Left (142,262), (100%,100%), 255, Normal
+@>Move Picture: 33, @1, Upper Left (110,262), (100%,100%), 255, Normal
+@>Move Picture: 34, @1, Upper Left (78,262), (100%,100%), 255, Normal
+@>Move Picture: 35, @1, Upper Left (46,262), (100%,100%), 255, Normal
+@>Move Picture: 36, @1, Upper Left (14,262), (100%,100%), 255, Normal
+@>Move Picture: 41, @1, Upper Left (174,230), (100%,100%), 255, Normal
+@>Move Picture: 42, @1, Upper Left (142,230), (100%,100%), 255, Normal
+@>Move Picture: 43, @1, Upper Left (110,230), (100%,100%), 255, Normal
+@>Move Picture: 44, @1, Upper Left (78,230), (100%,100%), 255, Normal
+@>Move Picture: 45, @1, Upper Left (46,230), (100%,100%), 255, Normal
+@>Move Picture: 46, @1, Upper Left (14,230), (100%,100%), 255, Normal
+@>Move Picture: 41, @1, Upper Left (174,230), (100%,100%), 255, Normal
+@>Move Picture: 42, @1, Upper Left (142,230), (100%,100%), 255, Normal
+@>Move Picture: 43, @1, Upper Left (110,230), (100%,100%), 255, Normal
+@>Move Picture: 44, @1, Upper Left (78,230), (100%,100%), 255, Normal
+@>Move Picture: 45, @1, Upper Left (46,230), (100%,100%), 255, Normal
+@>Move Picture: 46, @1, Upper Left (14,230), (100%,100%), 255, Normal
 @>
 
 #==============================================================================
@@ -102323,7 +106199,7 @@ List of Event Commands:
 @>Change Text Options: Middle, Hide
 @>Text: \se[]...But who said the journey had to end so soon?\wtnp[20]
 @>Change Text Options: Bottom, Show
-@>Control Switches: [0103: Disable Text Skip] = OFF
+@>Control Switches: [0103: Hide AI Level] = OFF
 @>Script: # pbAllowSpeedup
 :       : # $GameSpeed = pbGet(1)
 @>Transfer Player:[019: World of Fantasies], (019,020), Down
