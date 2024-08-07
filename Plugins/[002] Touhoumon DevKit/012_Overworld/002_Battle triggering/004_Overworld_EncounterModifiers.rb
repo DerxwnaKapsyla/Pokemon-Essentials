@@ -75,11 +75,11 @@ EventHandlers.add(:on_wild_pokemon_created, :level_depends_on_party,
 
 EventHandlers.add(:on_wild_pokemon_created, :wild_music_override,
   proc { |pkmn|
-    next if !$game_switches[98] && $game_switches[157]
+    next if !$game_switches[98]
 	  if pbGet(107) == 2
         setBattleRule("battleBGM", "W-004. Dimension of Reverie.ogg")
-	  #else
-	   # setBattleRule("battleBGM", "W-041. Magician of the Twilight.ogg")
+	  elsif pbGet(142) < 3
+	    setBattleRule("battleBGM", "W-041. Magician of the Twilight.ogg")
 	  end
     setBattleRule("victoryBGM", "")
   }
@@ -87,10 +87,10 @@ EventHandlers.add(:on_wild_pokemon_created, :wild_music_override,
 
 EventHandlers.add(:on_trainer_load, :trainer_music_override,
   proc { |trainer|
-    next if !$game_switches[98] && $game_switches[157]
+    next if !$game_switches[98]
 	  if pbGet(107) == 2
         setBattleRule("battleBGM", "W-004. Dimension of Reverie.ogg")
-	  else
+	  elsif pbGet(142) < 3
 	    setBattleRule("battleBGM", "W-041. Magician of the Twilight.ogg")
 	  end
     setBattleRule("victoryBGM", "")
@@ -100,17 +100,17 @@ EventHandlers.add(:on_trainer_load, :trainer_music_override,
 EventHandlers.add(:on_trainer_load, :meimu_master_override,
   proc { |trainer|
     next if !$game_switches[157]
-	setBattleRule("battleBGM", "B-043. Irreplacable World.ogg") # Sets Meimu's Battle Theme
-	setBattleRule("backdrop", "meimu")                          # Sets Meimu's Battle Background
+    #setBattleRule("battleBGM", "B-043. Irreplacable World.ogg") # Sets Meimu's Battle Theme
+    setBattleRule("backdrop", "meimu")                          # Sets Meimu's Battle Background
     setBattleRule("base", "meimu")                              # Sets Meimu's Battle Base
-	setBattleRule("midbattleScript", :vs_meimu)
-	if $game_variables[143] > 1                                 # Have Meimu's sprite stay in the same spot for subsequent battles.
-	  setBattleRule("setSlideSprite", "still")
-	end
-	if $game_variables[143] < 5
-    setBattleRule("victoryBGM", "")                             # Nulls out victory music so theme can continue
-	else
-	  setBattleRule("victoryBGM", "U-003. Victory! Gensokyo's Finest.ogg")
-	end
+    setBattleRule("midbattleScript", :vs_meimu)
+    if $game_variables[143] > 1                                 # Have Meimu's sprite stay in the same spot for subsequent battles.
+      setBattleRule("setSlideSprite", "still")
+    end
+    if $game_variables[143] < 5
+      setBattleRule("victoryBGM", "")                             # Nulls out victory music so theme can continue
+    else
+      setBattleRule("victoryBGM", "U-003. Victory! Gensokyo's Finest.ogg")
+    end
   }
 )

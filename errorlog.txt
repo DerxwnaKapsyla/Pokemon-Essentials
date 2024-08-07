@@ -10266,3 +10266,375 @@ Backtrace:
 999_Main.rb:51:in `loop'
 999_Main.rb:51:in `block in load_scripts_from_folder'
 Main:35:in `eval'
+
+=================
+
+[2024-08-05 12:50:10 -0700]
+[Pokémon Essentials version 21.1]
+[v21.1 Hotfixes 1.0.9]
+
+Error in Plugin: [Deluxe Battle Kit]
+Exception: SyntaxError
+Message: [Deluxe Battle Kit] 002 MidBattleHandler Scripts.rb:737: syntax error, unexpected local variable or method, expecting ')'
+...                          _INTL("Do you know what it's like,...
+...                          ^~~~~
+[Deluxe Battle Kit] 002 MidBattleHandler Scripts.rb:739: syntax error, unexpected ')', expecting `end'
+...'t go back to that! I won't!"))
+...                              ^
+[Deluxe Battle Kit] 002 MidBattleHandler Scripts.rb:741: syntax error, unexpected `end', expecting '}'
+    end
+    ^~~
+
+
+Backtrace:
+005_PluginManager.rb:635:in `eval'
+005_PluginManager.rb:635:in `block (2 levels) in runPlugins'
+005_PluginManager.rb:625:in `each'
+005_PluginManager.rb:625:in `block in runPlugins'
+005_PluginManager.rb:616:in `each'
+005_PluginManager.rb:616:in `runPlugins'
+999_Main.rb:35:in `mainFunctionDebug'
+999_Main.rb:19:in `block in mainFunction'
+003_Errors.rb:79:in `pbCriticalCode'
+999_Main.rb:19:in `mainFunction'
+
+=================
+
+[2024-08-05 12:51:36 -0700]
+[Pokémon Essentials version 21.1]
+[v21.1 Hotfixes 1.0.9]
+
+Exception: ArgumentError
+Message: wrong number of arguments (given 4, expected 1)
+
+Backtrace:
+001_Battle.rb:824:in `pbDisplayPaused'
+[Deluxe Battle Kit] 002 MidBattleHandler Scripts.rb:736:in `block in <main>'
+[Deluxe Battle Kit] [002] Midbattle Triggers.rb:31:in `trigger'
+[Deluxe Battle Kit] [001] Midbattle Overwrites.rb:216:in `block (2 levels) in pbMidbattleScripting'
+[Deluxe Battle Kit] [001] Midbattle Overwrites.rb:215:in `each'
+[Deluxe Battle Kit] [001] Midbattle Overwrites.rb:215:in `block in pbMidbattleScripting'
+[Deluxe Battle Kit] [001] Midbattle Overwrites.rb:146:in `loop'
+[Deluxe Battle Kit] [001] Midbattle Overwrites.rb:146:in `pbMidbattleScripting'
+[Deluxe Battle Kit] [001] Midbattle Overwrites.rb:111:in `pbDeluxeTriggers'
+[Deluxe Battle Kit] [003] Command Menu Refactor.rb:373:in `block in pbCommandPhase'
+
+=================
+
+[2024-08-05 16:02:22 -0700]
+[Pokémon Essentials version 21.1]
+[v21.1 Hotfixes 1.0.9]
+
+Error in Plugin: [Deluxe Battle Kit]
+Exception: SyntaxError
+Message: [Deluxe Battle Kit] 002 MidBattleHandler Scripts.rb:788: syntax error, unexpected `when', expecting '}'
+    when
+    ^~~~
+
+
+Backtrace:
+005_PluginManager.rb:635:in `eval'
+005_PluginManager.rb:635:in `block (2 levels) in runPlugins'
+005_PluginManager.rb:625:in `each'
+005_PluginManager.rb:625:in `block in runPlugins'
+005_PluginManager.rb:616:in `each'
+005_PluginManager.rb:616:in `runPlugins'
+999_Main.rb:35:in `mainFunctionDebug'
+999_Main.rb:19:in `block in mainFunction'
+003_Errors.rb:79:in `pbCriticalCode'
+999_Main.rb:19:in `mainFunction'
+
+=================
+
+[2024-08-05 18:26:00 -0700]
+[Pokémon Essentials version 21.1]
+[v21.1 Hotfixes 1.0.9]
+
+Exception: NoMethodError
+Message: undefined method `pbAddNewBattler' for main:Object
+
+Backtrace:
+[Deluxe Battle Kit] 002 MidBattleHandler Scripts.rb:768:in `block in <main>'
+[Deluxe Battle Kit] [002] Midbattle Triggers.rb:31:in `trigger'
+[Deluxe Battle Kit] [001] Midbattle Overwrites.rb:216:in `block (2 levels) in pbMidbattleScripting'
+[Deluxe Battle Kit] [001] Midbattle Overwrites.rb:215:in `each'
+[Deluxe Battle Kit] [001] Midbattle Overwrites.rb:215:in `block in pbMidbattleScripting'
+[Deluxe Battle Kit] [001] Midbattle Overwrites.rb:146:in `loop'
+[Deluxe Battle Kit] [001] Midbattle Overwrites.rb:146:in `pbMidbattleScripting'
+[Deluxe Battle Kit] [001] Midbattle Overwrites.rb:111:in `pbDeluxeTriggers'
+[Deluxe Battle Kit] [001] Midbattle Overwrites.rb:549:in `block in pbEffectsAfterMove'
+[Deluxe Battle Kit] [001] Midbattle Overwrites.rb:548:in `each'
+
+=================
+
+[2024-08-05 18:27:09 -0700]
+[Pokémon Essentials version 21.1]
+[v21.1 Hotfixes 1.0.9]
+
+Exception: NameError
+Message: undefined local variable or method `medi' for main:Object
+
+Backtrace:
+[Deluxe Battle Kit] 002 MidBattleHandler Scripts.rb:768:in `block in <main>'
+[Deluxe Battle Kit] [002] Midbattle Triggers.rb:31:in `trigger'
+[Deluxe Battle Kit] [001] Midbattle Overwrites.rb:216:in `block (2 levels) in pbMidbattleScripting'
+[Deluxe Battle Kit] [001] Midbattle Overwrites.rb:215:in `each'
+[Deluxe Battle Kit] [001] Midbattle Overwrites.rb:215:in `block in pbMidbattleScripting'
+[Deluxe Battle Kit] [001] Midbattle Overwrites.rb:146:in `loop'
+[Deluxe Battle Kit] [001] Midbattle Overwrites.rb:146:in `pbMidbattleScripting'
+[Deluxe Battle Kit] [001] Midbattle Overwrites.rb:111:in `pbDeluxeTriggers'
+[Deluxe Battle Kit] [001] Midbattle Overwrites.rb:549:in `block in pbEffectsAfterMove'
+[Deluxe Battle Kit] [001] Midbattle Overwrites.rb:548:in `each'
+
+=================
+
+[2024-08-05 18:28:01 -0700]
+[Pokémon Essentials version 21.1]
+[v21.1 Hotfixes 1.0.9]
+
+Exception: NoMethodError
+Message: undefined method `pbAddNewBattler' for #<Battle::Battler>
+
+Backtrace:
+[Deluxe Battle Kit] 002 MidBattleHandler Scripts.rb:768:in `block in <main>'
+[Deluxe Battle Kit] [002] Midbattle Triggers.rb:31:in `trigger'
+[Deluxe Battle Kit] [001] Midbattle Overwrites.rb:216:in `block (2 levels) in pbMidbattleScripting'
+[Deluxe Battle Kit] [001] Midbattle Overwrites.rb:215:in `each'
+[Deluxe Battle Kit] [001] Midbattle Overwrites.rb:215:in `block in pbMidbattleScripting'
+[Deluxe Battle Kit] [001] Midbattle Overwrites.rb:146:in `loop'
+[Deluxe Battle Kit] [001] Midbattle Overwrites.rb:146:in `pbMidbattleScripting'
+[Deluxe Battle Kit] [001] Midbattle Overwrites.rb:111:in `pbDeluxeTriggers'
+[Deluxe Battle Kit] [001] Midbattle Overwrites.rb:549:in `block in pbEffectsAfterMove'
+[Deluxe Battle Kit] [001] Midbattle Overwrites.rb:548:in `each'
+
+=================
+
+[2024-08-05 21:15:55 -0700]
+[Pokémon Essentials version 21.1]
+[v21.1 Hotfixes 1.0.9]
+
+Error in Plugin: [Deluxe Battle Kit]
+Exception: SyntaxError
+Message: [Deluxe Battle Kit] 002 MidBattleHandler Scripts.rb:828: syntax error, unexpected '}', expecting `end'
+     }
+     ^
+
+
+Backtrace:
+005_PluginManager.rb:635:in `eval'
+005_PluginManager.rb:635:in `block (2 levels) in runPlugins'
+005_PluginManager.rb:625:in `each'
+005_PluginManager.rb:625:in `block in runPlugins'
+005_PluginManager.rb:616:in `each'
+005_PluginManager.rb:616:in `runPlugins'
+999_Main.rb:35:in `mainFunctionDebug'
+999_Main.rb:19:in `block in mainFunction'
+003_Errors.rb:79:in `pbCriticalCode'
+999_Main.rb:19:in `mainFunction'
+
+=================
+
+[2024-08-05 21:17:47 -0700]
+[Pokémon Essentials version 21.1]
+[v21.1 Hotfixes 1.0.9]
+
+Exception: NameError
+Message: uninitialized constant Effectiveness::NOT_VERY_EFFECTIVE_ONE
+
+Backtrace:
+[Sky Battles + Inverse Battles] Script.rb:105:in `effectiveness'
+003_Type.rb:131:in `get_type_effectiveness'
+003_Type.rb:137:in `block in calculate'
+003_Type.rb:136:in `each'
+003_Type.rb:136:in `calculate'
+[Touhoumon Essentials Development Kit] 003_Move_UsageCalculations.rb:15:in `pbCalcTypeModSingle'
+[Touhoumon Essentials Development Kit] 003_Move_UsageCalculations.rb:64:in `block in pbCalcTypeMod'
+[Touhoumon Essentials Development Kit] 003_Move_UsageCalculations.rb:63:in `each'
+[Touhoumon Essentials Development Kit] 003_Move_UsageCalculations.rb:63:in `pbCalcTypeMod'
+[Touhoumon Essentials Development Kit] 005_AI_ChooseMove.rb:87:in `pbPredictMoveFailureAgainstTarget'
+
+=================
+
+[2024-08-06 02:14:07 -0700]
+[Pokémon Essentials version 21.1]
+[v21.1 Hotfixes 1.0.9]
+
+Error in Plugin: [Deluxe Battle Kit]
+Exception: SyntaxError
+Message: [Deluxe Battle Kit] 002 MidBattleHandler Scripts.rb:951: syntax error, unexpected '}', expecting `end'
+     }
+     ^
+
+
+Backtrace:
+005_PluginManager.rb:635:in `eval'
+005_PluginManager.rb:635:in `block (2 levels) in runPlugins'
+005_PluginManager.rb:625:in `each'
+005_PluginManager.rb:625:in `block in runPlugins'
+005_PluginManager.rb:616:in `each'
+005_PluginManager.rb:616:in `runPlugins'
+999_Main.rb:35:in `mainFunctionDebug'
+999_Main.rb:19:in `block in mainFunction'
+003_Errors.rb:79:in `pbCriticalCode'
+999_Main.rb:19:in `mainFunction'
+
+=================
+
+[2024-08-06 02:21:03 -0700]
+[Pokémon Essentials version 21.1]
+[v21.1 Hotfixes 1.0.9]
+
+Exception: NoMethodError
+Message: undefined method `pbChangeForm' for main:Object
+
+Backtrace:
+[Deluxe Battle Kit] 002 MidBattleHandler Scripts.rb:877:in `block in <main>'
+[Deluxe Battle Kit] [002] Midbattle Triggers.rb:31:in `trigger'
+[Deluxe Battle Kit] [001] Midbattle Overwrites.rb:216:in `block (2 levels) in pbMidbattleScripting'
+[Deluxe Battle Kit] [001] Midbattle Overwrites.rb:215:in `each'
+[Deluxe Battle Kit] [001] Midbattle Overwrites.rb:215:in `block in pbMidbattleScripting'
+[Deluxe Battle Kit] [001] Midbattle Overwrites.rb:146:in `loop'
+[Deluxe Battle Kit] [001] Midbattle Overwrites.rb:146:in `pbMidbattleScripting'
+[Deluxe Battle Kit] [001] Midbattle Overwrites.rb:111:in `pbDeluxeTriggers'
+[Deluxe Battle Kit] [001] Midbattle Overwrites.rb:549:in `block in pbEffectsAfterMove'
+[Deluxe Battle Kit] [001] Midbattle Overwrites.rb:548:in `each'
+
+=================
+
+[2024-08-06 02:43:48 -0700]
+[Pokémon Essentials version 21.1]
+[v21.1 Hotfixes 1.0.9]
+
+Error in Plugin: [Deluxe Battle Kit]
+Exception: SyntaxError
+Message: [Deluxe Battle Kit] 002 MidBattleHandler Scripts.rb:909: syntax error, unexpected `elsif', expecting `end'
+      elsif $game_switches[159] # Bounda...
+      ^~~~~
+[Deluxe Battle Kit] 002 MidBattleHandler Scripts.rb:932: syntax error, unexpected `end', expecting '}'
+      end
+      ^~~
+[Deluxe Battle Kit] 002 MidBattleHandler Scripts.rb:955: syntax error, unexpected `end', expecting end-of-input
+    end
+    ^~~
+
+
+Backtrace:
+005_PluginManager.rb:635:in `eval'
+005_PluginManager.rb:635:in `block (2 levels) in runPlugins'
+005_PluginManager.rb:625:in `each'
+005_PluginManager.rb:625:in `block in runPlugins'
+005_PluginManager.rb:616:in `each'
+005_PluginManager.rb:616:in `runPlugins'
+999_Main.rb:35:in `mainFunctionDebug'
+999_Main.rb:19:in `block in mainFunction'
+003_Errors.rb:79:in `pbCriticalCode'
+999_Main.rb:19:in `mainFunction'
+
+=================
+
+[2024-08-06 02:56:30 -0700]
+[Pokémon Essentials version 21.1]
+[v21.1 Hotfixes 1.0.9]
+
+Exception: NoMethodError
+Message: undefined method `+' for :YUKARI:Symbol
+
+Backtrace:
+[Deluxe Battle Kit] 002 MidBattleHandler Scripts.rb:900:in `block in <main>'
+[Deluxe Battle Kit] [002] Midbattle Triggers.rb:31:in `trigger'
+[Deluxe Battle Kit] [001] Midbattle Overwrites.rb:216:in `block (2 levels) in pbMidbattleScripting'
+[Deluxe Battle Kit] [001] Midbattle Overwrites.rb:215:in `each'
+[Deluxe Battle Kit] [001] Midbattle Overwrites.rb:215:in `block in pbMidbattleScripting'
+[Deluxe Battle Kit] [001] Midbattle Overwrites.rb:146:in `loop'
+[Deluxe Battle Kit] [001] Midbattle Overwrites.rb:146:in `pbMidbattleScripting'
+[Deluxe Battle Kit] [001] Midbattle Overwrites.rb:111:in `pbDeluxeTriggers'
+[Deluxe Battle Kit] [001] Midbattle Overwrites.rb:459:in `block in pbEndOfRoundPhase'
+[Deluxe Battle Kit] [001] Midbattle Overwrites.rb:458:in `each'
+
+=================
+
+[2024-08-06 11:10:15 -0700]
+[Pokémon Essentials version 21.1]
+[v21.1 Hotfixes 1.0.9]
+
+Exception: NoMethodError
+Message: undefined method `[]=' for 0:Integer
+
+Backtrace:
+[Deluxe Battle Kit] 002 MidBattleHandler Scripts.rb:944:in `block in <main>'
+[Deluxe Battle Kit] [002] Midbattle Triggers.rb:31:in `trigger'
+[Deluxe Battle Kit] [001] Midbattle Overwrites.rb:216:in `block (2 levels) in pbMidbattleScripting'
+[Deluxe Battle Kit] [001] Midbattle Overwrites.rb:215:in `each'
+[Deluxe Battle Kit] [001] Midbattle Overwrites.rb:215:in `block in pbMidbattleScripting'
+[Deluxe Battle Kit] [001] Midbattle Overwrites.rb:146:in `loop'
+[Deluxe Battle Kit] [001] Midbattle Overwrites.rb:146:in `pbMidbattleScripting'
+[Deluxe Battle Kit] [001] Midbattle Overwrites.rb:111:in `pbDeluxeTriggers'
+[Deluxe Battle Kit] [001] Midbattle Overwrites.rb:459:in `block in pbEndOfRoundPhase'
+[Deluxe Battle Kit] [001] Midbattle Overwrites.rb:458:in `each'
+
+=================
+
+[2024-08-06 12:39:11 -0700]
+[Pokémon Essentials version 21.1]
+[v21.1 Hotfixes 1.0.9]
+
+Error in Plugin: [Deluxe Battle Kit]
+Exception: SyntaxError
+Message: [Deluxe Battle Kit] 002 MidBattleHandler Scripts.rb:957: syntax error, unexpected ')', expecting `end'
+...er.pbReduceHP(player.hp).floor)
+...                              ^
+
+
+Backtrace:
+005_PluginManager.rb:635:in `eval'
+005_PluginManager.rb:635:in `block (2 levels) in runPlugins'
+005_PluginManager.rb:625:in `each'
+005_PluginManager.rb:625:in `block in runPlugins'
+005_PluginManager.rb:616:in `each'
+005_PluginManager.rb:616:in `runPlugins'
+999_Main.rb:35:in `mainFunctionDebug'
+999_Main.rb:19:in `block in mainFunction'
+003_Errors.rb:79:in `pbCriticalCode'
+999_Main.rb:19:in `mainFunction'
+
+=================
+
+[2024-08-06 12:59:49 -0700]
+[Pokémon Essentials version 21.1]
+[v21.1 Hotfixes 1.0.9]
+
+Exception: NoMethodError
+Message: undefined method `+' for :YUKARI:Symbol
+
+Backtrace:
+[Deluxe Battle Kit] 002 MidBattleHandler Scripts.rb:901:in `block in <main>'
+[Deluxe Battle Kit] [002] Midbattle Triggers.rb:31:in `trigger'
+[Deluxe Battle Kit] [001] Midbattle Overwrites.rb:216:in `block (2 levels) in pbMidbattleScripting'
+[Deluxe Battle Kit] [001] Midbattle Overwrites.rb:215:in `each'
+[Deluxe Battle Kit] [001] Midbattle Overwrites.rb:215:in `block in pbMidbattleScripting'
+[Deluxe Battle Kit] [001] Midbattle Overwrites.rb:146:in `loop'
+[Deluxe Battle Kit] [001] Midbattle Overwrites.rb:146:in `pbMidbattleScripting'
+[Deluxe Battle Kit] [001] Midbattle Overwrites.rb:111:in `pbDeluxeTriggers'
+[Deluxe Battle Kit] [001] Midbattle Overwrites.rb:459:in `block in pbEndOfRoundPhase'
+[Deluxe Battle Kit] [001] Midbattle Overwrites.rb:458:in `each'
+
+=================
+
+[2024-08-06 13:14:26 -0700]
+[Pokémon Essentials version 21.1]
+[v21.1 Hotfixes 1.0.9]
+
+Exception: NameError
+Message: undefined local variable or method `plaer' for main:Object
+
+Backtrace:
+[Deluxe Battle Kit] 002 MidBattleHandler Scripts.rb:960:in `block in <main>'
+[Deluxe Battle Kit] [002] Midbattle Triggers.rb:31:in `trigger'
+[Deluxe Battle Kit] [001] Midbattle Overwrites.rb:216:in `block (2 levels) in pbMidbattleScripting'
+[Deluxe Battle Kit] [001] Midbattle Overwrites.rb:215:in `each'
+[Deluxe Battle Kit] [001] Midbattle Overwrites.rb:215:in `block in pbMidbattleScripting'
+[Deluxe Battle Kit] [001] Midbattle Overwrites.rb:146:in `loop'
+[Deluxe Battle Kit] [001] Midbattle Overwrites.rb:146:in `pbMidbattleScripting'
+[Deluxe Battle Kit] [001] Midbattle Overwrites.rb:111:in `pbDeluxeTriggers'
+[Deluxe Battle Kit] [001] Midbattle Overwrites.rb:459:in `block in pbEndOfRoundPhase'
+[Deluxe Battle Kit] [001] Midbattle Overwrites.rb:458:in `each'

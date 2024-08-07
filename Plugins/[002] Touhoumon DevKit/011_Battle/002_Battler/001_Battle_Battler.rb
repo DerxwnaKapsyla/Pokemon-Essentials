@@ -20,7 +20,11 @@ class Battle::Battler
 			when 4	then sbName = "a trainer's"		 ; sbName2 = "A trainer's"
 		    else		 sbName = "the wild"		 ; sbName2 = "The wild"
 		  end
-		  return lowerCase ? _INTL("{2} {1}", name, sbName) : _INTL("{2} {1}", name, sbName2)
+		  if $game_variables[Settings::SPECIAL_BATTLE_VARIABLE] == 5
+		    return lowerCase ? _INTL("{1}", name) : _INTL("{1}", name)
+          else
+		    return lowerCase ? _INTL("{2} {1}", name, sbName) : _INTL("{2} {1}", name, sbName2)
+		  end
 		else
 		  return lowerCase ? _INTL("the wild {1}", name) : _INTL("The wild {1}", name)
 		end
