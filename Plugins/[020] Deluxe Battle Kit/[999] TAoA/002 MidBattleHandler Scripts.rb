@@ -743,7 +743,7 @@ MidbattleHandlers.add(:midbattle_global, :miasma_field,
 	  # Round 1 Start: Meimu Dialogue
 	  #-------------------------------------
 	  when "RoundStartCommand_1_foe"
-        scene.pbStartSpeech(1)
+		scene.pbStartSpeech(1)
 		battle.pbDisplayPaused(_INTL("I swore to myself that I would become real..."))
         battle.pbDisplayPaused(_INTL("Do you know what it's like, trapped in a void of non-existence?"))
         battle.pbDisplayPaused(_INTL("Knowing you're nothing but a fleeting dream!?"))
@@ -908,6 +908,7 @@ MidbattleHandlers.add(:midbattle_global, :miasma_field,
 		pbBGMFade(1.0)
 		scene.pbStartSpeech(1)
 		pbSEPlay("Voltorb Flip explosion")
+		# Play an explosion graphic here
 		battle.pbDisplayPaused(_INTL("I...\. I can't\..."))
 		battle.pbDisplayPaused(_INTL("W-...\. Why did this have to happen..."))
 		battle.pbDisplayPaused(_INTL("My existence...\. Really was just a fluke miracle..."))
@@ -916,13 +917,17 @@ MidbattleHandlers.add(:midbattle_global, :miasma_field,
 		scene.pbStartSpeech(1)
 		battle.pbDisplayPaused(_INTL("No, this...\. Had to be done.\. I was being selfish... greedy..."))
 		pbSEPlay("Voltorb Flip explosion")
+		# Play an explosion graphic here
 		battle.pbDisplayPaused(_INTL("One life...\. For the entirety of reality...\. Isn't really a fair trade, is it...?\. Hahaha..."))
 		battle.pbDisplayPaused(_INTL("Just, please...\. Promise that you'll remember me."))
 		pbSEPlay("Voltorb Flip explosion")
+		# Play an explosion graphic here
 		battle.pbDisplayPaused(_INTL("Even if it was for one brief, shining moment...\. The girl named Meimu, born from the dreams of all the Gensokyo's across time and space...\."))
 		battle.pbDisplayPaused(_INTL("Remember\..\..\..\. that she lived\..\..\..\. Please\..\..\..\."))
 		pbSEPlay("Voltorb Flip explosion")
+		# Play an explosion graphic here
 		
+		battle.decision = 3
 	  end
 	  
 	  when "RoundEnd_foe1"
