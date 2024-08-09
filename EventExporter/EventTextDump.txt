@@ -18034,6 +18034,13 @@ Move Animation
 Trigger: Action Button
 
 List of Event Commands:
+@>Play BGM: 'B-044. Finale ~ For The End', 100, 100
+@>Change Battle BGM: 'B-044. Finale ~ For The End', 100, 100
+@>Change Text Options: Middle, Show
+@>Show Picture: 1, 'Name_Final', Upper Left (0,0), (100%,100%), 255, Normal
+@>Text: <ac>I can't afford to lose!\wtnp[20]</ac>
+@>Erase Picture: 1
+@>Change Text Options: Bottom, Show
 @>Control Switches: [0098: Music Override] = OFF
 @>Control Switches: [0103: Hide AI Level] = ON
 @>Control Switches: [0102: Special Battle Switch] = ON
@@ -18062,6 +18069,7 @@ List of Event Commands:
 @>Conditional Branch: Script: WildBattle.start(:MEIMU, 100)
  @>
 : Branch End
+@>Change Screen Color Tone: (0,0,0,0), @20
 @>
 
 Page #3
@@ -18177,13 +18185,11 @@ List of Event Commands:
 #------------------------------------------------------------------------------
 Event ID: 017
 Event Name: EV017
-(X,Y): (018,027)
+(X,Y): (020,028)
 
 Page #1
 Conditions
-None
-
-Graphic: Object ball
+Variable 0142: TLA Plot Variable is 8 or above
 
 Autonomous Movement
 Type: Fixed
@@ -18191,13 +18197,10 @@ Speed: 3: Slow
 Freq: 3: Low
 Options Enabled
 Move Animation
-Trigger: Action Button
+Trigger: Parallel Process
 
 List of Event Commands:
-@>Change Text Options: Middle, Show
-@>Show Picture: 1, 'Name_Final', Upper Left (0,0), (100%,100%), 255, Normal
-@>Text: I can't afford to lose!
-@>Erase Picture: 1
+@>Call Common Event: TLA Credits
 @>
 
 #------------------------------------------------------------------------------
@@ -86017,8 +86020,243 @@ List of Event Commands:
 #==============================================================================
 Map ID: 113
 Map Name: Ending Filler Map
-Tileset: 001: Outside
+Tileset: 029: Interior (General)
 Width: 20, Height: 15
+
+#------------------------------------------------------------------------------
+Event ID: 001
+Event Name: EV001
+(X,Y): (015,006)
+
+Page #1
+Conditions
+None
+
+Graphic: OW_DoppelDevice
+
+Autonomous Movement
+Type: Fixed
+Speed: 3: Slow
+Freq: 3: Low
+Options Enabled
+Move Animation
+Direction Fix
+Trigger: Action Button
+
+List of Event Commands:
+@>Conditional Branch: Self Switch A == OFF
+ @>Text: It's a replica of the Doppeldevice that was made by the Kappa on
+  :    : the mountain.
+ @>Control Self Switch: A =ON
+ @>
+: Branch End
+@>Conditional Branch: Player is facing Up
+ @>Text: \rENGAGE THE DOPPEL DEVICE?
+ @>Show Choices: Yes, No
+ (When Cancel: Choice 2)
+ : When [Yes]
+  @>Recover All: Entire Party
+  @>Text: \rSCANNING. PLEASE STAND BY.
+  @>Script: pbSEPlay("Anim/PRSFX- Lock On")
+  @>Wait: 30 frame(s)
+  @>Text: \rANALYSIS COMPLETE. ADOPTING FORM SUITED FOR 
+   :    : COMBAT.
+  @>Screen Flash: (255,255,255,255), @10
+  @>Play SE: 'Vs flash', 80, 100
+  @>Set Move Route: This event
+   :              : $>Graphic: "OW_DoppelDevice', 0, 2, 2
+  @>Script: setBattleRule("noMoney")
+  @>Script: setBattleRule("canLose")
+  @>Text: \rFORM ADOPTED. PREPARE FOR COMBAT.
+  @>Control Switches: [0104: Transition Handler] = ON
+  @>Control Variables: [0103: Vs. Transition ID] = 9
+  @>Change Battle BGM: 'B-016. The Ground's Color is Yellow (BW Remix)', 100, 100
+  @>Conditional Branch: Script: TrainerBattle.start(:DOPPELDEVICE, "Doppel")
+   @>
+  : Else
+   @>Set Move Route: This event
+    :              : $>Graphic: "OW_DoppelDevice', 0, 2, 1
+   @>Exit Event Processing
+   @>
+  : Branch End
+  @>Screen Flash: (255,255,255,255), @10
+  @>Set Move Route: This event
+   :              : $>Graphic: "OW_DoppelDevice', 0, 2, 1
+  @>Text: \rRETURNING TO STAND-BY MODE.
+  @>Recover All: Entire Party
+  @>
+ : When [No]
+  @>Text: \rRETURNING TO STAND-BY MODE.
+  @>
+ : Branch End
+ @>
+: Branch End
+@>
+
+#------------------------------------------------------------------------------
+Event ID: 002
+Event Name: Ayaka
+(X,Y): (008,007)
+
+Page #1
+Conditions
+None
+
+Graphic: Ayaka_Walk
+
+Autonomous Movement
+Type: Fixed
+Speed: 3: Slow
+Freq: 3: Low
+Options Enabled
+Move Animation
+Through
+Trigger: Action Button
+
+List of Event Commands:
+@>
+
+#------------------------------------------------------------------------------
+Event ID: 003
+Event Name: Meimu
+(X,Y): (001,000)
+
+Page #1
+Conditions
+None
+
+Graphic: Person_Meimu
+
+Autonomous Movement
+Type: Fixed
+Speed: 3: Slow
+Freq: 3: Low
+Options Enabled
+Move Animation
+Through
+Trigger: Action Button
+
+List of Event Commands:
+@>
+
+#------------------------------------------------------------------------------
+Event ID: 004
+Event Name: Autorun
+(X,Y): (019,000)
+
+Page #1
+Conditions
+None
+
+Autonomous Movement
+Type: Fixed
+Speed: 3: Slow
+Freq: 3: Low
+Options Enabled
+Move Animation
+Trigger: Autorun
+
+List of Event Commands:
+@>Fade Out BGM: 1 sec.
+@>Play SE: '182043__waveadventurer__five_knocks_on_bedroom_door1', 100, 100
+@>Text: \xn[Maya]\se[]\pn, come on, we're waiting for you!\wtnp[40]
+@>Change Screen Color Tone: (0,0,0,0), @1
+@>Play SE: '182043__waveadventurer__five_knocks_on_bedroom_door1', 100, 100
+@>Show Animation: [Ayaka], [Exclaim bubble]
+@>Text: \xn[Maya]\se[]You better not still be asleep! Don't make me come 
+ :    : in there and shake you awake!\wtnp[40]
+@>Text: \xn[\pn]\se[]I'm awake, I'm awake! Just give me a moment!\wtnp[40]
+@>Text: \xn[Maya]\se[]Don't take too long! The Shrine Maiden and her friends
+ :    : are already out there ahead of you!\wtnp[40]
+@>Set Move Route: [Ayaka]
+ :              : $>Move Right
+ :              : $>Turn Down
+@>Wait for Move's Completion
+@>Wait: 10 frame(s)
+@>Set Event Location: [Meimu],(009,007)
+@>Set Move Route: [Meimu]
+ :              : $>SE: 'PRSFX- Teleport', 80, 100
+ :              : $>Move Right
+ :              : $>Turn Down
+@>Text: \xn[Meimu]\se[]It sounds like something is going on... I wonder 
+ :    : what it is!\wtnp[40]
+@>Show Animation: [Ayaka], [Exclaim bubble]
+@>Set Move Route: [Ayaka]
+ :              : $>Jump: +0,+0
+ :              : $>Wait: 2 frame(s)
+ :              : $>Turn Right
+@>Text: \xn[\pn]\se[]Bwah!\wt[10] ...I'm still not used to you doing that!\wtnp[40]
+@>Text: \xn[\pn]\se[]Can't you give me a warning next time you apperate 
+ :    : into my room!?\wtnp[40]
+@>Set Move Route: [Meimu]
+ :              : $>Turn Left
+@>Text: \xn[Meimu]\se[]I'm sorry! Besides, you did say you'd find another way
+ :    : to make me real...\wtnp[40]
+@>Text: \xn[Meimu]\se[]Does this not count?\wtnp[40]
+@>Text: \xn[\pn]\se[]When I said "Make you real", I didn't have you suddenly
+ :    : latching onto my soul in mind!\wtnp[40]
+@>Text: \xn[\pn]\se[]But whatever, I'm sure you'll be able to manifest
+ :    : yourself properly one day!\wtnp[40]
+@>Change Screen Color Tone: (0,0,0,255), @10
+@>Wait: 10 frame(s)
+@>Text: \xn[\pn]\se[]It happened not long after I beat Meimu in the World
+ :    : of Fantasies.\wtnp[40]
+@>Text: \xn[\pn]\se[]One day, I felt like a strange presence was watching 
+ :    : me in the Village...\wtnp[40]
+@>Text: \xn[\pn]\se[]When I turned to confront it-\wtnp[10]
+@>Text: \xn[Meimu]\se[]She had no idea it was me! Honestly, I'm not even sure
+ :    : how I'm still here...\wtnp[40]
+@>Text: \xn[Meimu]\se[]After our battle, I was convinced I would fade away back
+ :    : into non-existence...\wtnp[40]
+@>Text: \xn[Meimu]\se[]But, I noticed a bright, purple light, and when I followed it, it
+ :    : led me back to Reimaden, where I still had a form.\wtnp[40]
+@>Text: \xn[Meimu]\se[]But I also discovered that, when I enter a dream-like trance,
+ :    : I could see through \pn's eyes whenever they were awake.\wtnp[40]
+@>Text: \xn[\pn]\se[]You nearly gave me a heart attack the first time I saw you
+ :    : in the Village!\wtnp[40]
+@>Text: \xn[\pn]\se[]Everyone thought I was going crazy because nobody else
+ :    : could see you!\wtnp[40]
+@>Text: \xn[Meimu]\se[]How many more times do you want me to apologize for
+ :    : that!\wtnp[40]
+@>Change Screen Color Tone: (0,0,0,0), @10
+@>Wait: 10 frame(s)
+@>Text: \xn[Meimu]\se[]So, what's on the agenda for today?\wtnp[40]
+@>Text: \xn[\pn]\se[]No clue! It sounds serious if Miss Reimu and the others
+ :    : are out...\wtnp[40]
+@>Text: \xn[Meimu]\se[]Are you going to join them!?\wtnp[40]
+@>Text: \xn[\pn]\se[]You could ask with a little less anticipation in your voice...\wtnp[40]
+@>Text: \xn[\pn]\se[]But I don't know, I could just sit back and watch...\wtnp[40]
+@>Wait: 10 frame(s)
+@>Text: \xn[\pn]\se[]...However, where would the fun in that be!\wtnp[40]
+@>Text: \xn[Meimu]\se[]Then what are we waiting for, let's go!\wtnp[40]
+@>Scroll Map: Down, 3, 4
+@>Set Move Route: [Meimu]
+ :              : $>Turn Down
+@>Set Move Route: [Ayaka]
+ :              : $>Graphic: "Ayaka_Run', 0, 2, 0
+ :              : $>Change Speed: 5
+ :              : $>Move Down
+ :              : $>Move Down
+ :              : $>Move Down
+ :              : $>Graphic: "Ayaka_Run', 0, 2, 1
+@>Wait for Move's Completion
+@>Change Screen Color Tone: (0,0,0,255), @10
+@>Text: \xn[\pn]\se[]Apparently, it was something called the "Perfect Possession"
+ :    : Phenomenon...\wtnp[40]
+@>Text: \xn[\pn]\se[]People were getting taken over by another person in their
+ :    : entirety.\wtnp[40]
+@>Text: \xn[\pn]\se[]Meimu... had a lot of fun with this incident.\wtnp[40]
+@>Text: \xn[\pn]\se[]It ultimately came down to Miss Reimu and Miss Yakumo
+ :    : dealing the final blow to the two who started the incident.\wtnp[40]
+@>Text: \xn[\pn]\se[]I believe it was the Pestilence Goddess and the Poverty Goddess?\wtnp[40]
+@>Text: \xn[\pn]\se[]That doesn't mean I didn't help out, though!\wtnp[40]
+@>Text: \xn[\pn]\se[]And the spectacles that followed were sure ones to behold!\wtnp[40]
+@>Play BGM: 'W-045. Above and Beyond - Loop', 40, 100
+@>Text: \xn[\pn]\se[]...But that's an <b>adventure of mine</b> for another day!\wtnp[40]
+@>Wait: 60 frame(s)
+@>
+
+#------------------------------------------------------------------------------
 
 #==============================================================================
 Map ID: 114
@@ -87117,7 +87355,7 @@ Move Animation
 Trigger: Autorun
 
 List of Event Commands:
-@>Text: \xn[\pn]Alright, my homework for the week is done! I should head on
+@>Text: \xn[\pn]Alright, my responsibilities for the week are done! I should head on
  :    : out and enjoy the day.
 @>Text: \xn[\pn]I wonder if Maya, Shinji, and Kota are free...
 @>Wait: 10 frame(s)
@@ -101264,6 +101502,43 @@ List of Event Commands:
 @>
 
 #------------------------------------------------------------------------------
+Event ID: 061
+Event Name: EV061
+(X,Y): (000,025)
+
+Page #1
+Conditions
+Variable 0142: TLA Plot Variable is 8 or above
+
+Autonomous Movement
+Type: Fixed
+Speed: 3: Slow
+Freq: 3: Low
+Options Enabled
+Move Animation
+Trigger: Parallel Process
+
+List of Event Commands:
+@>Script: playSpecialBGM("quiet_time")
+@>Control Self Switch: A =ON
+@>
+
+Page #2
+Conditions
+Self Switch A is ON
+
+Autonomous Movement
+Type: Fixed
+Speed: 3: Slow
+Freq: 3: Low
+Options Enabled
+Move Animation
+Trigger: Action Button
+
+List of Event Commands:
+@>
+
+#------------------------------------------------------------------------------
 
 #==============================================================================
 Map ID: 138
@@ -105649,11 +105924,75 @@ List of Event Commands:
 
 #==============================================================================
 Common Event ID: 094
-Common Event Name: 
+Common Event Name: TLA Credits
 
 Trigger: None
 
 List of Event Commands:
+@>Conditional Branch: Variable [0144: TAoA Credits Variable] == 0
+ @>Change Screen Color Tone: (-255,-255,-255,0), @20
+ @>Wait: 30 frame(s)
+ @>Comment: 20
+ @>Change Transparent Flag: Transparency
+ @>Script: pbShowPicture(1,"Credits/Gensokyo.png",1,256,192,zoomX=100,zoomY=100,opacity=0,blendType=0)
+ @>Wait: 20 frame(s)
+ @>Comment: 10
+ @>Move Picture: 1, @10, Center (256,192), (100%,100%), 255, Normal
+ @>Play BGM: 'W-045. Above and Beyond - Intro', 100, 100
+ @>Wait: 10 frame(s)
+ @>Comment: 10
+ @>Script: CreditsIntro_TAoA.new
+ @>Wait: 20 frame(s)
+ @>Move Picture: 1, @10, Center (256,192), (100%,100%), 0, Normal
+ @>Wait: 16 frame(s)
+ @>Change Transparent Flag: Transparency
+ @>Transfer Player:[113: Ending Filler Map], (008,007), No Fade
+ @>
+: Branch End
+@>Conditional Branch: Variable [0144: TAoA Credits Variable] == 1
+ @>Comment: Warp: Village Tournament Arena
+  :       : Scene: Prismrivers holding a concert
+ @>
+: Branch End
+@>Conditional Branch: Variable [0144: TAoA Credits Variable] == 2
+ @>Comment: Warp: Mugenkan Back Garden
+  :       : Scene: Yuuka and Medicine walking through the berry garden
+ @>
+: Branch End
+@>Conditional Branch: Variable [0144: TAoA Credits Variable] == 3
+ @>Comment: Warp: Lunar Capital Training Grounds
+  :       : Scene: Yorihime & Toyohime observing the LDC
+ @>
+: Branch End
+@>Conditional Branch: Variable [0144: TAoA Credits Variable] == 4
+ @>Comment: Warp: Human Village
+  :       : Scene: Reimu & Yukari fighting Jo'on & Shion, with
+  :       : Ayaka off to the side
+ @>
+: Branch End
+@>Conditional Branch: Variable [0144: TAoA Credits Variable] == 5
+ @>Comment: Warp: Misty Lake
+  :       : Scene: Ayaka training with Meimu watching, and Koishi
+  :       : shows up and circles Meimu obviously able to see her
+ @>
+: Branch End
+@>Conditional Branch: Variable [0144: TAoA Credits Variable] == 6
+ @>Comment: Warp: Mugenkan
+  :       : Scene: Reimu stumbling into the secret teleporter and encountering
+  :       : Mima
+ @>
+: Branch End
+@>Conditional Branch: Variable [0144: TAoA Credits Variable] == 7
+ @>Comment: Warp: Land of the Back Door
+  :       : Scene: Okina watching events unfold through a door
+ @>
+: Branch End
+@>Conditional Branch: Variable [0144: TAoA Credits Variable] == 8
+ @>Comment: Warp: Mugenkan - Mima's Training Grounds
+  :       : Scene: Ayaka and Meimu overlooking the cliff as the final
+  :       : batch of credits plays
+ @>
+: Branch End
 @>
 
 #==============================================================================

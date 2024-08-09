@@ -101,6 +101,44 @@ class Battle::Scene
       break if tone <= 0
     end
   end
+  
+  def pbFadeToWhite
+    pbForceEndSpeech
+    timer_start = System.uptime
+    loop do
+      Graphics.update
+      pbUpdate
+      tone = lerp(0, 255, 2, timer_start, System.uptime)
+      @viewport.tone.set(tone, tone, tone, 0)
+      break if tone >= 255
+    end
+    pbRefreshEverything
+    timer_start = System.uptime
+    loop do
+      Graphics.update
+      pbUpdate
+      break if System.uptime - timer_start >= 0.25
+    end
+  end
+  
+  def pbFadeToBlack
+    pbForceEndSpeech
+    timer_start = System.uptime
+    loop do
+      Graphics.update
+      pbUpdate
+      tone = lerp(255, -255, 0.1, timer_start, System.uptime)
+      @viewport.tone.set(tone, tone, tone, 0)
+      break if tone <= 0
+    end
+    pbRefreshEverything
+    timer_start = System.uptime
+    loop do
+      Graphics.update
+      pbUpdate
+      break if System.uptime - timer_start >= 0.25
+    end
+  end
 end
 
 #-------------------------------------------------------------------------------

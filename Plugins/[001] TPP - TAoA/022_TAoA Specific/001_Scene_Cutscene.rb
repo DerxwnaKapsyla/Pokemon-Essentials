@@ -1,3 +1,76 @@
+class Scene_Cutscene
+  BASECOLOR = Color.new(248, 248, 248)
+  SHADOWCOLOR = Color.new(72, 72, 72)
+  TEXT = [
+
+  ]
+  
+  def initialize
+    @viewport = Viewport.new(0, 0, Graphics.width, Graphics.height)
+    @viewport.z = 999999999
+    @text = TextSprite.new(@viewport)
+    @idx = 0
+    main
+  end
+  
+  def main
+    while @idx < self.class::TEXT.size
+      if self.class::TEXT[@idx] == :wait
+        self.class::TEXT[@idx + 1].times do
+          Graphics.update
+          Input.update
+        end
+        @idx += 2
+      elsif self.class::TEXT[@idx] == :clear
+        for i in 0...32
+          Graphics.update
+          Input.update
+          @text.opacity -= 8
+        end
+        @idx += 1
+      elsif self.class::TEXT[@idx].is_a?(Array)
+        @text.opacity = 0
+        lines = self.class::TEXT[@idx]
+        @text.clear
+        for i in 0...lines.size
+          y = [
+            nil,
+            [-16],
+            [-26, 6],
+            [-48, -16, 16],
+            [-64, -32, 0, 32]
+          ][lines.size][i]
+          @text.draw([
+            lines[i],
+            Graphics.width / 2,
+            Graphics.height / 2 + y,
+            2,
+            self.class::BASECOLOR,
+            self.class::SHADOWCOLOR
+          ])
+        end
+        for i in 0...32
+          Graphics.update
+          Input.update
+          @text.opacity += 8
+        end
+        @idx += 1
+      end
+    end
+    for i in 0...32
+      Graphics.update
+      Input.update
+      @text.opacity -= 8
+    end
+    dispose
+  end
+  
+  def dispose
+    @text.dispose
+    @viewport.dispose
+  end
+end
+
 class TMoMIntroScene
   BASECOLOR = Color.new(248, 248, 248)
   SHADOWCOLOR = Color.new(72, 72, 72)
@@ -42,10 +115,10 @@ class TMoMIntroScene
         end
         @idx += 2
       elsif self.class::TEXT[@idx] == :clear
-        (Graphics.frame_rate/10 * 4).times do
+        (Graphics.frame_rate/10 * 8).times do
           Graphics.update
           Input.update
-          @text.opacity -= 255/(Graphics.frame_rate/10 * 4)
+          @text.opacity -= 255/(Graphics.frame_rate/10 * 8)
         end
         @text.opacity = 0
         @idx += 1
@@ -59,7 +132,9 @@ class TMoMIntroScene
             [-16],
             [-26, 6],
             [-48, -16, 16],
-            [-64, -32, 0, 32]
+            [-64, -32, 0, 32],
+			[-80, -48, -16, 16, 48],
+			[-96, -64, -32, 0, 32, 64]
           ][lines.size][i]
           pbDrawTextPositions(@text.bitmap, [[
             lines[i],
@@ -158,7 +233,9 @@ class CreditsIntro_TMoM
             [-16],
             [-26, 6],
             [-48, -16, 16],
-            [-64, -32, 0, 32]
+            [-64, -32, 0, 32],
+			[-80, -48, -16, 16, 48],
+			[-96, -64, -32, 0, 32, 64]
           ][lines.size][i]
           @text.draw([
             lines[i],
@@ -957,5 +1034,93 @@ class TLAIntroScene < TMoMIntroScene
     :wait, 160,
     :clear,
     :wait, 60
+  ]
+end
+
+class MeimuOutro < TMoMIntroScene
+  BASECOLOR = Color.new(80, 80, 88)
+  SHADOWCOLOR = Color.new(160, 160, 168)
+  TEXT = [
+	[
+      "In the end, I just couldn't pull it off..."
+    ],
+    :wait, 160,
+    :clear,
+    :wait, 60,
+    [
+      "What a fool I was to think I was strong enough...",
+    ],
+    :wait, 160,
+    :clear,
+    :wait, 60,
+    [
+      "...Goodbye, Lady Mima...",
+    ],
+    :wait, 160,
+    :clear,
+    :wait, 60,
+    [
+      "...Goodbye, Ayaka...",
+    ],
+    :wait, 160,
+    :clear,
+    :wait, 60,
+    [
+      "I am so sorry for all the trouble I caused...",
+    ],
+    :wait, 160,
+    :clear,
+    :wait, 60
+  ]
+end
+
+class CreditsIntro_TAoA < CreditsIntro_TFoC
+  TEXT = [
+    [
+      "Touhou Puppet Play",
+      "The Adventures of Ayaka",
+	  "",
+	  "Credits"
+    ],
+    :wait, 160,
+    :clear,
+    :wait, 100,
+    [
+      "--- The Mansion of Mystery ---",
+	  "--- Development Team and Testers ---",
+      "DerxwnaKapsyla",
+	  "FionaKaenbyou",
+	  "Akiraita"
+    ],
+    :wait, 160,
+    :clear,
+    :wait, 100,
+    [
+      "--- The Festival of Curses ---",
+	  "--- Development Team and Testers ---",
+      "DerxwnaKapsyla",
+	  "Jelo",
+	  "KarlGrogsluper"
+    ],
+    :wait, 160,
+    :clear,
+    :wait, 100,
+    [
+      "--- The Kingdom of Lunacy ---",
+	  "--- Development Team and Testers ---",
+      "DerxwnaKapsyla",
+	  "Chirei"
+    ],
+    :wait, 160,
+    :clear,
+    :wait, 100,
+    [
+      "--- The Last Adventure ---",
+	  "--- Development Team and Testers ---",
+      "DerxwnaKapsyla",
+	  "Chirei"
+    ],
+    :wait, 400,
+    :clear,
   ]
 end

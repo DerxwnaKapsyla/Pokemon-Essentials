@@ -729,26 +729,29 @@ MidbattleHandlers.add(:midbattle_global, :miasma_field,
 	  meimu  = battle.battlers[1]
 	  #rand_puppet = [:MEEKO, :MAKURA, :MITORI, :TORAKO, :SASHA, :SUGAR, :KAREN, :MASHA]
 	  rand_puppet = [:REIMU, :MARISA, :SAKUYA, :YOUMU, :YUKARI, :ALICE, :REMILIA, :YUYUKO]
-	  # $game_variables[1] = 0
-	  # $game_variables[2] = 0
-	  # $game_variables[3] = 0
-	  # $game_variables[4] = 0
-	  # $game_variables[5] = 0
-	  # $game_switches[158] = false
-	  # $game_switches[159] = false
-	  # $game_switches[160] = false
-	  atk_stats = [:ATTACK, :SPECIAL_ATTACK]
+	  def_stats = [:DEFENSE, :SPECIAL_DEFENSE]
       case trigger
 	  #-------------------------------------
 	  # Round 1 Start: Meimu Dialogue
 	  #-------------------------------------
 	  when "RoundStartCommand_1_foe"
-		scene.pbStartSpeech(1)
-		battle.pbDisplayPaused(_INTL("I swore to myself that I would become real..."))
-        battle.pbDisplayPaused(_INTL("Do you know what it's like, trapped in a void of non-existence?"))
-        battle.pbDisplayPaused(_INTL("Knowing you're nothing but a fleeting dream!?"))
-        battle.pbDisplayPaused(_INTL("I won't go back to that! I won't!"))
-	    scene.pbForceEndSpeech
+	    $game_variables[142] = 8
+		$game_switches[96] = true
+		# pbWait(2)
+		# pbSEPlay("Enemy Defeat.ogg")
+		pbBGMFade(1.0)
+		battle.scene.pbFadeToWhite
+		# MeimuOutro.new
+		battle.decision = 3
+	  
+		# scene.pbStartSpeech(1)
+		# battle.pbDisplayPaused(_INTL("I swore to myself that I would become real..."))
+        # battle.pbDisplayPaused(_INTL("Do you know what it's like, trapped in a void of non-existence?"))
+        # battle.pbDisplayPaused(_INTL("Knowing you're nothing but a fleeting dream!?"))
+        # battle.pbDisplayPaused(_INTL("I won't go back to that! I won't!"))
+		# scene.pbShowSpeakerWindows("Ayaka", nil)
+		# battle.pbDisplayPaused(_INTL("(There has to be a way to save her...)"))
+	    # scene.pbForceEndSpeech
 		meimu.damageThreshold = -5
 	  
 	  #---------------------------------------------------------------
@@ -800,7 +803,7 @@ MidbattleHandlers.add(:midbattle_global, :miasma_field,
 	  #---------------------------------------------------------------
 	    elsif battle.midbattleVariable == 2
 		  scene.pbStartSpeech(1)
-		  battle.pbDisplayPaused(_INTL("Of course, you'll never stop..."))
+		  battle.pbDisplayPaused(_INTL("Of course it wouldn't stop you, nothing will..."))
 		  battle.pbDisplayPaused(_INTL("So why don't I show you the nightmares I lived!"))
 		  pbSEPlay("Spell Card Activation.ogg")
 		  battle.pbDisplayPaused(_INTL("Spell Card Activate!"))
@@ -838,7 +841,7 @@ MidbattleHandlers.add(:midbattle_global, :miasma_field,
 		    # Phantasmagoria - Fantasy Summoning
 			battle.pbDisplayPaused(_INTL("Meimu materialized a Puppet out of thin air!"))
 		    pbSet(5, rand_puppet.sample)
-		    battle.pbAddNewBattler(pbGet(1), 100)
+		    battle.pbAddNewBattler(pbGet(5), 100)
 		  elsif pbGet(3) == 2
 		    # Manipulation - Inversion of Perception
 			$game_temp.battle_inverse = true
@@ -855,7 +858,7 @@ MidbattleHandlers.add(:midbattle_global, :miasma_field,
 		    player.effects[PBEffects::Curse] = true
 		  end
 		  battle.midbattleVariable += 1
-		  meimu.damageThreshold = -1
+		  meimu.damageThreshold = 10
 	  
 	  #---------------------------------------------------------------
 	  # HP Threshold 5: 
@@ -888,9 +891,11 @@ MidbattleHandlers.add(:midbattle_global, :miasma_field,
 		  scene.pbForceEndSpeech
 		  $game_switches[159] = true
 		  battle.midbattleVariable += 1
-		  meimu.damageThreshold = 1
+		  meimu.damageThreshold = 10
+		  meimu.pbCureStatus
 		  meimu.pbChangeTypes(:PHANTASM)
 		  meimu.ability = :WONDERGUARD
+		  $game_variables[2] = 1
 	  
 	  #---------------------------------------------------------------
 	  # HP Threshold 6: 
@@ -906,27 +911,36 @@ MidbattleHandlers.add(:midbattle_global, :miasma_field,
 	  #---------------------------------------------------------------
 	    elsif battle.midbattleVariable == 6
 		pbBGMFade(1.0)
+		pbWait(2)
 		scene.pbStartSpeech(1)
 		pbSEPlay("Voltorb Flip explosion")
 		# Play an explosion graphic here
-		battle.pbDisplayPaused(_INTL("I...\. I can't\..."))
-		battle.pbDisplayPaused(_INTL("W-...\. Why did this have to happen..."))
-		battle.pbDisplayPaused(_INTL("My existence...\. Really was just a fluke miracle..."))
-		scene.pbStartSpeech(:AYAKA)
+		battle.pbDisplayPaused(_INTL("I... I can't..."))
+		battle.pbDisplayPaused(_INTL("W-... Why did this have to happen..."))
+		battle.pbDisplayPaused(_INTL("My existence.... Was it really just a fluke miracle...?"))
+		scene.pbShowSpeakerWindows("Ayaka", nil)
 		battle.pbDisplayPaused(_INTL("Meimu..."))
-		scene.pbStartSpeech(1)
-		battle.pbDisplayPaused(_INTL("No, this...\. Had to be done.\. I was being selfish... greedy..."))
+		scene.pbShowSpeakerWindows("Meimu", nil)
+		battle.pbDisplayPaused(_INTL("No, this... Had to be done. I was being selfish... greedy..."))
 		pbSEPlay("Voltorb Flip explosion")
 		# Play an explosion graphic here
-		battle.pbDisplayPaused(_INTL("One life...\. For the entirety of reality...\. Isn't really a fair trade, is it...?\. Hahaha..."))
-		battle.pbDisplayPaused(_INTL("Just, please...\. Promise that you'll remember me."))
+		battle.pbDisplayPaused(_INTL("One life... For the entirety of reality... Isn't really a fair trade, is it...? Hahaha..."))
+		battle.pbDisplayPaused(_INTL("Just, please... Promise that you'll remember me."))
 		pbSEPlay("Voltorb Flip explosion")
 		# Play an explosion graphic here
-		battle.pbDisplayPaused(_INTL("Even if it was for one brief, shining moment...\. The girl named Meimu, born from the dreams of all the Gensokyo's across time and space...\."))
-		battle.pbDisplayPaused(_INTL("Remember\..\..\..\. that she lived\..\..\..\. Please\..\..\..\."))
+		battle.pbDisplayPaused(_INTL("Even if it was for one brief, shining moment... The girl named Meimu..."))
+		battle.pbDisplayPaused(_INTL("...Born from the dreams of all the Gensokyo's across time and space..."))
+		battle.pbDisplayPaused(_INTL("Remember... that she lived... Please..."))
+		scene.pbForceEndSpeech
 		pbSEPlay("Voltorb Flip explosion")
 		# Play an explosion graphic here
-		
+	    $game_variables[142] = 8
+		$game_switches[96] = true
+		pbWait(2)
+		pbSEPlay("Enemy Defeat.ogg")
+		pbBGMFade(1.0)
+		battle.scene.pbFadeToWhite
+		MeimuOutro.new
 		battle.decision = 3
 	  end
 	  
@@ -936,7 +950,7 @@ MidbattleHandlers.add(:midbattle_global, :miasma_field,
 		if $game_switches[158] # Inverse Battle Effect
 	      if $game_variables[1] != 4
 		    $game_variables[1] += 1
-			#p $game_variables[1]
+			p $game_variables[1]
 		  else
 		    battle.pbDisplayPaused(_INTL("Type effectiveness inversion has stopped."))
 		    $game_temp.battle_inverse = false
@@ -945,17 +959,25 @@ MidbattleHandlers.add(:midbattle_global, :miasma_field,
 		  end
 		  		
 	    elsif $game_switches[159] # Boundary Between Fantasy and Reality check
-	      if $game_variables[2] != 7 # Turn Count Checker
+	      if $game_variables[2] < 4 # Turn Count Checker
 			$game_variables[2] += 1
-			#p $game_variables[2]
+			meimu.damageThreshold = 10
+			p $game_variables[2]
 		  else
 		    scene.pbStartSpeech(1)
 			battle.pbDisplayPaused(_INTL("...This is it! It's time to finish this!"))
 			scene.pbForceEndSpeech
-			#battle.pbDisplayPaused(_INTL("Meimu reappears!")
-			battle.pbAnimation(:FLASH, meimu, meimu)
-			meimu.pbChangeForm(1, _INTL("Meimu reappears!"))
+			#battle.scene.pbFlashFadein
+			battle.pbCommonAnimation("MeimuTF", meimu)
+			meimu.pbChangeForm(1, nil)
+			battle.pbDisplayPaused(_INTL("Meimu reappears!"))
 			meimu.pbChangeTypes(:PHANTASM)
+			showAnim = true
+	          def_stats.each do |stat|
+	          next if !meimu.pbCanRaiseStatStage?(stat, meimu)
+		      meimu.pbRaiseStatStage(stat, 4, meimu, showAnim)
+		      showAnim = false
+	        end
 			scene.pbStartSpeech(1)
 			battle.pbDisplayPaused(_INTL("You think that you have the right to deny me my chance at existence!"))
 			battle.pbDisplayPaused(_INTL("No! You don't! Nobody does!"))
@@ -971,6 +993,7 @@ MidbattleHandlers.add(:midbattle_global, :miasma_field,
 			$game_switches[160] = true # Final Attack Switch
 			$game_switches[159] = false
 			battle.midbattleVariable += 1
+			meimu.damageThreshold = -1
   		  end
 	    #end
 		
