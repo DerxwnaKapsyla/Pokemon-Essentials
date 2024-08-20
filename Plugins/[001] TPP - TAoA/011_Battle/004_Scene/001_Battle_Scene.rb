@@ -8,9 +8,9 @@ class Battle::Scene
 	  dkBattleOverride
 	end
 	pbBGMFade(1.0) if !$game_switches[98]
-	tone = Tone.new(-100, -100, -100, 0)
-	pbToneChangeAll(tone, 80)
-	pbFadeToBlack
+	# tone = Tone.new(-100, -100, -100, 0)
+	# pbToneChangeAll(tone, 80)
+	# pbFadeToBlack
     pbDisposeSprites
   end
   

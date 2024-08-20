@@ -735,23 +735,23 @@ MidbattleHandlers.add(:midbattle_global, :miasma_field,
 	  # Round 1 Start: Meimu Dialogue
 	  #-------------------------------------
 	  when "RoundStartCommand_1_foe"
-	    $game_variables[142] = 8
-		$game_switches[96] = true
+	    # $game_variables[142] = 8
+		# $game_switches[96] = true
 		# pbWait(2)
 		# pbSEPlay("Enemy Defeat.ogg")
-		pbBGMFade(1.0)
-		battle.scene.pbFadeToWhite
+		# pbBGMFade(1.0)
+		# battle.scene.pbFadeToWhite
 		# MeimuOutro.new
-		battle.decision = 3
+		# battle.decision = 3
 	  
-		# scene.pbStartSpeech(1)
-		# battle.pbDisplayPaused(_INTL("I swore to myself that I would become real..."))
-        # battle.pbDisplayPaused(_INTL("Do you know what it's like, trapped in a void of non-existence?"))
-        # battle.pbDisplayPaused(_INTL("Knowing you're nothing but a fleeting dream!?"))
-        # battle.pbDisplayPaused(_INTL("I won't go back to that! I won't!"))
-		# scene.pbShowSpeakerWindows("Ayaka", nil)
-		# battle.pbDisplayPaused(_INTL("(There has to be a way to save her...)"))
-	    # scene.pbForceEndSpeech
+		scene.pbStartSpeech(1)
+		battle.pbDisplayPaused(_INTL("I swore to myself that I would become real..."))
+        battle.pbDisplayPaused(_INTL("Do you know what it's like, trapped in a void of non-existence?"))
+        battle.pbDisplayPaused(_INTL("Knowing you're nothing but a fleeting dream!?"))
+        battle.pbDisplayPaused(_INTL("I won't go back to that! I won't!"))
+		scene.pbShowSpeakerWindows("Ayaka", nil)
+		battle.pbDisplayPaused(_INTL("(There has to be a way to save her...)"))
+	    scene.pbForceEndSpeech
 		meimu.damageThreshold = -5
 	  
 	  #---------------------------------------------------------------
@@ -939,7 +939,7 @@ MidbattleHandlers.add(:midbattle_global, :miasma_field,
 		pbWait(2)
 		pbSEPlay("Enemy Defeat.ogg")
 		pbBGMFade(1.0)
-		battle.scene.pbFadeToWhite
+		#battle.scene.pbFadeToWhite
 		MeimuOutro.new
 		battle.decision = 3
 	  end
