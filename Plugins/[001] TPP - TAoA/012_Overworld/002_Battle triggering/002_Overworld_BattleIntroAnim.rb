@@ -80,7 +80,11 @@ def pbBattleAnimation(bgm = nil, battletype = 0, foe = nil)
   $PokemonGlobal.nextBattleBack       = nil
   $PokemonEncounters.reset_step_count
   # Fade back to the overworld in 0.4 seconds
-  viewport.color = Color.black
+  if !$game_switches[95]
+    viewport.color = Color.black
+  else
+    viewport.color = Color.white
+  end
   timer_start = System.uptime
   loop do
     Graphics.update

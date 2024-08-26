@@ -18045,6 +18045,7 @@ List of Event Commands:
 @>Control Switches: [0103: Hide AI Level] = ON
 @>Control Switches: [0102: Special Battle Switch] = ON
 @>Control Variables: [0102: Special Battle Variable] = 5
+@>Control Variables: [0001..0005] = 0
 @>Change Battle BGM: 'B-044. Finale ~ For The End', 100, 100
 @>Script: setBattleRule("backdrop", "meimu")
 :       : setBattleRule("base", "meimu")
@@ -18069,7 +18070,6 @@ List of Event Commands:
 @>Conditional Branch: Script: WildBattle.start(:MEIMU, 100)
  @>
 : Branch End
-@>Change Screen Color Tone: (0,0,0,0), @20
 @>
 
 Page #3
@@ -18099,10 +18099,13 @@ List of Event Commands:
 @>Conditional Branch: Script: TrainerBattle.start(:MEIMU, "Meimu", 1)
  @>
 : Else
+ @>Change Screen Color Tone: (-255,-255,-255,0), @0
+ @>Text: a
  @>Script: pbTrainerEnd
  @>Exit Event Processing
  @>
 : Branch End
+@>Text: b
 @>
 
 #------------------------------------------------------------------------------
@@ -18223,6 +18226,49 @@ List of Event Commands:
 @>Wait: 8 frame(s)
 @>Transfer Player:[114: Credits - Village Concert Stage], (015,008), No Fade
 @>Change Screen Color Tone: (0,0,0,0), @6
+@>
+
+Page #3
+Conditions
+None
+
+Graphic: Object ball
+
+Autonomous Movement
+Type: Fixed
+Speed: 3: Slow
+Freq: 3: Low
+Options Enabled
+Move Animation
+Trigger: Action Button
+
+List of Event Commands:
+@>Script:     $game_player.transparent        = true
+:       :     $game_temp.player_new_map_id    = 145
+:       :     $game_temp.player_new_x         = 8
+:       :     $game_temp.player_new_y         = 6
+:       :     $game_temp.player_new_direction = 2
+:       :     $scene.transfer_player if $scene.is_a?(Scene_Map)
+:       :     $game_map.refresh
+@>
+
+Page #4
+Conditions
+None
+
+Graphic: Object ball
+
+Autonomous Movement
+Type: Fixed
+Speed: 3: Slow
+Freq: 3: Low
+Options Enabled
+Move Animation
+Trigger: Action Button
+
+List of Event Commands:
+@>Script: tone = Tone.new(255, 255, 255, 1)
+:       : $game_screen.start_tone_change(tone, 1)
 @>
 
 #------------------------------------------------------------------------------
@@ -104973,6 +105019,36 @@ Move Animation
 Trigger: Action Button
 
 List of Event Commands:
+@>
+
+#------------------------------------------------------------------------------
+
+#==============================================================================
+Map ID: 145
+Map Name: Dummy Map 2
+Tileset: 026: Hakurei Shrine
+Width: 20, Height: 15
+
+#------------------------------------------------------------------------------
+Event ID: 001
+Event Name: EV001
+(X,Y): (000,000)
+
+Page #1
+Conditions
+None
+
+Autonomous Movement
+Type: Fixed
+Speed: 3: Slow
+Freq: 3: Low
+Options Enabled
+Move Animation
+Trigger: Autorun
+
+List of Event Commands:
+@>Script: MeimuOutro.new
+@>Call Common Event: TLA Credits
 @>
 
 #------------------------------------------------------------------------------

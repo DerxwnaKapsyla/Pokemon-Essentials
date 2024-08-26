@@ -735,15 +735,7 @@ MidbattleHandlers.add(:midbattle_global, :miasma_field,
 	  # Round 1 Start: Meimu Dialogue
 	  #-------------------------------------
 	  when "RoundStartCommand_1_foe"
-	    # $game_variables[142] = 8
-		# $game_switches[96] = true
-		# pbWait(2)
-		# pbSEPlay("Enemy Defeat.ogg")
-		# pbBGMFade(1.0)
-		# battle.scene.pbFadeToWhite
-		# MeimuOutro.new
-		# battle.decision = 3
-	  
+
 		scene.pbStartSpeech(1)
 		battle.pbDisplayPaused(_INTL("I swore to myself that I would become real..."))
         battle.pbDisplayPaused(_INTL("Do you know what it's like, trapped in a void of non-existence?"))
@@ -788,6 +780,7 @@ MidbattleHandlers.add(:midbattle_global, :miasma_field,
 		  battle.pbDisplayPaused(_INTL("Spell Card Activate!"))
 		  battle.pbDisplayPaused(_INTL("Manipulation \"Inversion of Perception\"!"))
 		  scene.pbForceEndSpeech
+		  $game_variables[1] = 1
           $game_temp.battle_inverse = true
 		  battle.pbDisplayPaused(_INTL("Meimu manipulated reality to reverse type effectiveness for the next three turns!"))
 		  $game_switches[158] = true # Inverse Battle Active switch
@@ -846,7 +839,7 @@ MidbattleHandlers.add(:midbattle_global, :miasma_field,
 		    # Manipulation - Inversion of Perception
 			$game_temp.battle_inverse = true
 		    battle.pbDisplayPaused(_INTL("Meimu manipulated reality to reverse type effectiveness for the next three turns!"))
-			$game_variables[1] = 0
+			$game_variables[1] = 1
 		    $game_switches[158] = true # Inverse Battle Active switch
 			#p $game_switches[158]
 		  else
@@ -895,7 +888,7 @@ MidbattleHandlers.add(:midbattle_global, :miasma_field,
 		  meimu.pbCureStatus
 		  meimu.pbChangeTypes(:PHANTASM)
 		  meimu.ability = :WONDERGUARD
-		  $game_variables[2] = 1
+		  $game_variables[2] = 0
 	  
 	  #---------------------------------------------------------------
 	  # HP Threshold 6: 
@@ -937,11 +930,19 @@ MidbattleHandlers.add(:midbattle_global, :miasma_field,
 	    $game_variables[142] = 8
 		$game_switches[96] = true
 		pbWait(2)
-		pbSEPlay("Enemy Defeat.ogg")
 		pbBGMFade(1.0)
-		#battle.scene.pbFadeToWhite
-		MeimuOutro.new
+		$game_switches[95] = true
+		$game_player.transparent        = true
+		$game_temp.player_new_map_id    = 145
+		$game_temp.player_new_x         = 8
+		$game_temp.player_new_y         = 6
+		$game_temp.player_new_direction = 2
+		$scene.transfer_player if $scene.is_a?(Scene_Map)
+		$game_temp.transition_processing = false
+		$game_map.refresh
+		pbSEPlay("Enemy Defeat.ogg")
 		battle.decision = 3
+	  
 	  end
 	  
 	  when "RoundEnd_foe1"
@@ -1006,7 +1007,7 @@ MidbattleHandlers.add(:midbattle_global, :miasma_field,
 		  if $game_variables[4] != 2
 		    $game_variables[4] += 1
 			p $game_variables[4]
-		    battle.pbDisplayPaused(_INTL("Meimu begins preparing to unleash her final attack again!")) if $game_variables[4] == 1
+		    battle.pbDisplayPaused(_INTL("Meimu begins preparing to unleash her final attack!")) if $game_variables[4] == 1
 		  else
 		    scene.pbStartSpeech(1)
 			battle.pbDisplayPaused(_INTL("It's time to finish you!"))

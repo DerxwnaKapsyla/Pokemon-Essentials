@@ -12134,3 +12134,348 @@ Backtrace:
 999_Main.rb:51:in `loop'
 999_Main.rb:51:in `block in load_scripts_from_folder'
 Main:35:in `eval'
+
+=================
+
+[2024-08-22 00:01:23 -0700]
+[Pokémon Essentials version 21.1]
+[v21.1 Hotfixes 1.0.9]
+
+Exception: TypeError
+Message: no implicit conversion of Integer into String
+
+Backtrace:
+[Deluxe Battle Kit] 002 MidBattleHandler Scripts.rb:952:in `+'
+[Deluxe Battle Kit] 002 MidBattleHandler Scripts.rb:952:in `block in <main>'
+[Deluxe Battle Kit] [002] Midbattle Triggers.rb:31:in `trigger'
+[Deluxe Battle Kit] [001] Midbattle Overwrites.rb:216:in `block (2 levels) in pbMidbattleScripting'
+[Deluxe Battle Kit] [001] Midbattle Overwrites.rb:215:in `each'
+[Deluxe Battle Kit] [001] Midbattle Overwrites.rb:215:in `block in pbMidbattleScripting'
+[Deluxe Battle Kit] [001] Midbattle Overwrites.rb:146:in `loop'
+[Deluxe Battle Kit] [001] Midbattle Overwrites.rb:146:in `pbMidbattleScripting'
+[Deluxe Battle Kit] [001] Midbattle Overwrites.rb:111:in `pbDeluxeTriggers'
+[Deluxe Battle Kit] [001] Midbattle Overwrites.rb:459:in `block in pbEndOfRoundPhase'
+
+=================
+
+[2024-08-22 00:34:57 -0700]
+[Pokémon Essentials version 21.1]
+[v21.1 Hotfixes 1.0.9]
+
+Exception: TypeError
+Message: nil can't be coerced into Integer
+
+Backtrace:
+007_BattleAnimationPlayer.rb:482:in `-'
+007_BattleAnimationPlayer.rb:482:in `block in playTiming'
+007_BattleAnimationPlayer.rb:475:in `each'
+007_BattleAnimationPlayer.rb:475:in `playTiming'
+007_BattleAnimationPlayer.rb:842:in `update'
+001_AnimEditor_SceneElements.rb:900:in `update'
+001_AnimEditor_SceneElements.rb:498:in `block in play'
+001_AnimEditor_SceneElements.rb:496:in `loop'
+001_AnimEditor_SceneElements.rb:496:in `play'
+005_AnimEditor_Functions.rb:1127:in `block in animationEditorMain'
+
+=================
+
+[2024-08-22 00:41:20 -0700]
+[Pokémon Essentials version 21.1]
+[v21.1 Hotfixes 1.0.9]
+
+Exception: TypeError
+Message: nil can't be coerced into Integer
+
+Backtrace:
+007_BattleAnimationPlayer.rb:509:in `-'
+007_BattleAnimationPlayer.rb:509:in `block in playTiming'
+007_BattleAnimationPlayer.rb:475:in `each'
+007_BattleAnimationPlayer.rb:475:in `playTiming'
+007_BattleAnimationPlayer.rb:842:in `update'
+001_AnimEditor_SceneElements.rb:900:in `update'
+001_AnimEditor_SceneElements.rb:498:in `block in play'
+001_AnimEditor_SceneElements.rb:496:in `loop'
+001_AnimEditor_SceneElements.rb:496:in `play'
+005_AnimEditor_Functions.rb:1127:in `block in animationEditorMain'
+
+=================
+
+[2024-08-22 00:43:39 -0700]
+[Pokémon Essentials version 21.1]
+[v21.1 Hotfixes 1.0.9]
+
+Exception: TypeError
+Message: nil can't be coerced into Integer
+
+Backtrace:
+007_BattleAnimationPlayer.rb:509:in `-'
+007_BattleAnimationPlayer.rb:509:in `block in playTiming'
+007_BattleAnimationPlayer.rb:475:in `each'
+007_BattleAnimationPlayer.rb:475:in `playTiming'
+007_BattleAnimationPlayer.rb:842:in `update'
+001_AnimEditor_SceneElements.rb:900:in `update'
+001_AnimEditor_SceneElements.rb:498:in `block in play'
+001_AnimEditor_SceneElements.rb:496:in `loop'
+001_AnimEditor_SceneElements.rb:496:in `play'
+005_AnimEditor_Functions.rb:1127:in `block in animationEditorMain'
+
+=================
+
+[2024-08-23 19:27:24 -0700]
+[Pokémon Essentials version 21.1]
+[v21.1 Hotfixes 1.0.9]
+
+Script error in event 17 (coords 20,28), map 19 (World of Fantasies)
+Exception: NameError
+Message: undefined local variable or method `game_player' for #<Interpreter @event_id: 17>
+
+***Full script:
+game_player.transparent = true
+
+Backtrace:
+(eval):1:in `execute_script'
+003_Interpreter.rb:140:in `eval'
+003_Interpreter.rb:140:in `execute_script'
+004_Interpreter_Commands.rb:1177:in `command_355'
+004_Interpreter_Commands.rb:116:in `execute_command'
+003_Interpreter.rb:132:in `block in update'
+003_Interpreter.rb:86:in `loop'
+003_Interpreter.rb:86:in `update'
+002_Scene_Map.rb:167:in `block in update'
+002_Scene_Map.rb:166:in `loop'
+
+=================
+
+[2024-08-23 21:46:07 -0700]
+[Pokémon Essentials version 21.1]
+
+Error in Plugin: [RMXP Event Exporter]
+Exception: SystemExit
+Message:  
+
+Backtrace:
+001_Transitions.rb:39:in `update'
+001_Transitions.rb:39:in `update'
+[RMXP Event Exporter] script.rb:504:in `writeEventCommands'
+[RMXP Event Exporter] script.rb:171:in `block (2 levels) in export'
+[RMXP Event Exporter] script.rb:158:in `each'
+[RMXP Event Exporter] script.rb:158:in `block in export'
+[RMXP Event Exporter] script.rb:80:in `open'
+[RMXP Event Exporter] script.rb:80:in `export'
+[RMXP Event Exporter] script.rb:1906:in `<main>'
+005_PluginManager.rb:635:in `eval'
+
+=================
+
+[2024-08-24 00:08:50 -0700]
+[Pokémon Essentials version 21.1]
+[v21.1 Hotfixes 1.0.9]
+
+Script error in event 17 (coords 20,28), map 19 (World of Fantasies)
+Exception: NameError
+Message: undefined local variable or method `duration' for #<Interpreter @event_id: 17>
+
+***Full script:
+tone = Tone.new(255, 255, 255, 1)
+$game_screen.start_tone_change(tone, duration)
+
+Backtrace:
+(eval):2:in `execute_script'
+003_Interpreter.rb:140:in `eval'
+003_Interpreter.rb:140:in `execute_script'
+004_Interpreter_Commands.rb:1177:in `command_355'
+004_Interpreter_Commands.rb:116:in `execute_command'
+003_Interpreter.rb:132:in `block in update'
+003_Interpreter.rb:86:in `loop'
+003_Interpreter.rb:86:in `update'
+002_Scene_Map.rb:167:in `block in update'
+002_Scene_Map.rb:166:in `loop'
+
+=================
+
+[2024-08-24 00:11:32 -0700]
+[Pokémon Essentials version 21.1]
+
+Error in Plugin: [RMXP Event Exporter]
+Exception: SystemExit
+Message:  
+
+Backtrace:
+001_Transitions.rb:39:in `update'
+001_Transitions.rb:39:in `update'
+[RMXP Event Exporter] script.rb:504:in `writeEventCommands'
+[RMXP Event Exporter] script.rb:289:in `writeEventPage'
+[RMXP Event Exporter] script.rb:135:in `block (4 levels) in export'
+[RMXP Event Exporter] script.rb:132:in `each'
+[RMXP Event Exporter] script.rb:132:in `block (3 levels) in export'
+[RMXP Event Exporter] script.rb:126:in `each'
+[RMXP Event Exporter] script.rb:126:in `block (2 levels) in export'
+[RMXP Event Exporter] script.rb:103:in `each'
+
+=================
+
+[2024-08-24 00:15:25 -0700]
+[Pokémon Essentials version 21.1]
+[v21.1 Hotfixes 1.0.9]
+
+Script error in Common Event, map 145 (Dummy Map 2)
+Exception: NoMethodError
+Message: undefined method `pnWait' for #<Battle::Scene>
+
+***Full script:
+WildBattle.start(:MEIMU, 100)
+Backtrace:
+[TAoA Core] 001_Battle_Scene.rb:17:in `pbEndBattle'
+[Deluxe Battle Kit] [001] Midbattle Overwrites.rb:834:in `pbEndBattle'
+[PWT System] 002_CoreSystem.rb:732:in `pbEndBattle'
+[Touhoumon Essentials Development Kit] 002_Battle_StartAndEnd.rb:226:in `pbEndOfBattle'
+002_Battle_StartAndEnd.rb:346:in `pbBattleLoop'
+002_Battle_StartAndEnd.rb:316:in `pbStartBattleCore'
+002_Battle_StartAndEnd.rb:271:in `pbStartBattle'
+001_Overworld_BattleStarting.rb:402:in `block (2 levels) in start_core'
+002_Overworld_BattleIntroAnim.rb:55:in `pbSceneStandby'
+001_Overworld_BattleStarting.rb:402:in `block in start_core'
+
+=================
+
+[2024-08-24 00:50:19 -0700]
+[Pokémon Essentials version 21.1]
+[v21.1 Hotfixes 1.0.9]
+
+Script error in event 15 (coords 19,27), map 19 (World of Fantasies)
+Exception: NameError
+Message: undefined local variable or method `bg' for #<Battle::Scene>
+
+***Full script:
+WildBattle.start(:MEIMU, 100)
+Backtrace:
+002_Scene_Initialize.rb:135:in `pbCreateBackdropSprites'
+002_Scene_Initialize.rb:27:in `pbInitSprites'
+002_BugContestBattle.rb:8:in `pbInitSprites'
+[Deluxe Battle Kit] [000] Midbattle Animations.rb:10:in `pbInitSprites'
+[[DBK] Enhanced Battle UI] [000] Main.rb:54:in `pbInitSprites'
+002_Scene_Initialize.rb:20:in `pbStartBattle'
+002_Battle_StartAndEnd.rb:284:in `pbStartBattleCore'
+002_Battle_StartAndEnd.rb:271:in `pbStartBattle'
+001_Overworld_BattleStarting.rb:402:in `block (2 levels) in start_core'
+002_Overworld_BattleIntroAnim.rb:55:in `pbSceneStandby'
+
+=================
+
+[2024-08-24 00:52:55 -0700]
+[Pokémon Essentials version 21.1]
+[v21.1 Hotfixes 1.0.9]
+
+Script error in event 15 (coords 19,27), map 19 (World of Fantasies)
+Exception: NoMethodError
+Message: undefined method `z=' for nil:NilClass
+
+***Full script:
+WildBattle.start(:MEIMU, 100)
+Backtrace:
+002_Scene_Initialize.rb:135:in `pbCreateBackdropSprites'
+002_Scene_Initialize.rb:27:in `pbInitSprites'
+002_BugContestBattle.rb:8:in `pbInitSprites'
+[Deluxe Battle Kit] [000] Midbattle Animations.rb:10:in `pbInitSprites'
+[[DBK] Enhanced Battle UI] [000] Main.rb:54:in `pbInitSprites'
+002_Scene_Initialize.rb:20:in `pbStartBattle'
+002_Battle_StartAndEnd.rb:284:in `pbStartBattleCore'
+002_Battle_StartAndEnd.rb:271:in `pbStartBattle'
+001_Overworld_BattleStarting.rb:402:in `block (2 levels) in start_core'
+002_Overworld_BattleIntroAnim.rb:55:in `pbSceneStandby'
+
+=================
+
+[2024-08-24 01:01:34 -0700]
+[Pokémon Essentials version 21.1]
+[v21.1 Hotfixes 1.0.9]
+
+Script error in Common Event, map 145 (Dummy Map 2)
+Exception: NoMethodError
+Message: undefined method `pbShowPicture' for #<Battle::Scene>
+
+***Full script:
+WildBattle.start(:MEIMU, 100)
+Backtrace:
+[TAoA Core] 002_MessageConfig.rb:14:in `pbFadeOutAndHide_alt'
+[TAoA Core] 001_Battle_Scene.rb:7:in `pbEndBattle'
+[Deluxe Battle Kit] [001] Midbattle Overwrites.rb:834:in `pbEndBattle'
+[PWT System] 002_CoreSystem.rb:732:in `pbEndBattle'
+[Touhoumon Essentials Development Kit] 002_Battle_StartAndEnd.rb:226:in `pbEndOfBattle'
+002_Battle_StartAndEnd.rb:346:in `pbBattleLoop'
+002_Battle_StartAndEnd.rb:316:in `pbStartBattleCore'
+002_Battle_StartAndEnd.rb:271:in `pbStartBattle'
+001_Overworld_BattleStarting.rb:402:in `block (2 levels) in start_core'
+002_Overworld_BattleIntroAnim.rb:55:in `pbSceneStandby'
+
+=================
+
+[2024-08-24 01:06:19 -0700]
+[Pokémon Essentials version 21.1]
+[v21.1 Hotfixes 1.0.9]
+
+Script error in Common Event, map 145 (Dummy Map 2)
+Exception: RangeError
+Message: bignum too big to convert into `long'
+
+***Full script:
+WildBattle.start(:MEIMU, 100)
+Backtrace:
+[TAoA Core] 002_MessageConfig.rb:14:in `pbFadeOutAndHide_alt'
+[TAoA Core] 001_Battle_Scene.rb:7:in `pbEndBattle'
+[Deluxe Battle Kit] [001] Midbattle Overwrites.rb:834:in `pbEndBattle'
+[PWT System] 002_CoreSystem.rb:732:in `pbEndBattle'
+[Touhoumon Essentials Development Kit] 002_Battle_StartAndEnd.rb:226:in `pbEndOfBattle'
+002_Battle_StartAndEnd.rb:346:in `pbBattleLoop'
+002_Battle_StartAndEnd.rb:316:in `pbStartBattleCore'
+002_Battle_StartAndEnd.rb:271:in `pbStartBattle'
+001_Overworld_BattleStarting.rb:402:in `block (2 levels) in start_core'
+002_Overworld_BattleIntroAnim.rb:55:in `pbSceneStandby'
+
+=================
+
+[2024-08-24 01:07:14 -0700]
+[Pokémon Essentials version 21.1]
+[v21.1 Hotfixes 1.0.9]
+
+Script error in Common Event, map 145 (Dummy Map 2)
+Exception: NoMethodError
+Message: undefined method `show' for nil:NilClass
+
+***Full script:
+WildBattle.start(:MEIMU, 100)
+Backtrace:
+[TAoA Core] 002_MessageConfig.rb:14:in `pbFadeOutAndHide_alt'
+[TAoA Core] 001_Battle_Scene.rb:7:in `pbEndBattle'
+[Deluxe Battle Kit] [001] Midbattle Overwrites.rb:834:in `pbEndBattle'
+[PWT System] 002_CoreSystem.rb:732:in `pbEndBattle'
+[Touhoumon Essentials Development Kit] 002_Battle_StartAndEnd.rb:226:in `pbEndOfBattle'
+002_Battle_StartAndEnd.rb:346:in `pbBattleLoop'
+002_Battle_StartAndEnd.rb:316:in `pbStartBattleCore'
+002_Battle_StartAndEnd.rb:271:in `pbStartBattle'
+001_Overworld_BattleStarting.rb:402:in `block (2 levels) in start_core'
+002_Overworld_BattleIntroAnim.rb:55:in `pbSceneStandby'
+
+=================
+
+[2024-08-24 01:08:11 -0700]
+[Pokémon Essentials version 21.1]
+[v21.1 Hotfixes 1.0.9]
+
+Script error in Common Event, map 145 (Dummy Map 2)
+Exception: NoMethodError
+Message: undefined method `show' for nil:NilClass
+
+***Full script:
+WildBattle.start(:MEIMU, 100)
+Backtrace:
+[TAoA Core] 002_MessageConfig.rb:14:in `pbFadeOutAndHide_alt'
+[TAoA Core] 001_Battle_Scene.rb:7:in `pbEndBattle'
+[Deluxe Battle Kit] [001] Midbattle Overwrites.rb:834:in `pbEndBattle'
+[PWT System] 002_CoreSystem.rb:732:in `pbEndBattle'
+[Touhoumon Essentials Development Kit] 002_Battle_StartAndEnd.rb:226:in `pbEndOfBattle'
+002_Battle_StartAndEnd.rb:346:in `pbBattleLoop'
+002_Battle_StartAndEnd.rb:316:in `pbStartBattleCore'
+002_Battle_StartAndEnd.rb:271:in `pbStartBattle'
+001_Overworld_BattleStarting.rb:402:in `block (2 levels) in start_core'
+002_Overworld_BattleIntroAnim.rb:55:in `pbSceneStandby'

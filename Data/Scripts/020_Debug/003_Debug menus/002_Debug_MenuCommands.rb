@@ -672,6 +672,13 @@ MenuHandlers.add(:debug_menu, :give_demo_party, {
       $player.party.push(pkmn)
       $player.pokedex.register(pkmn)
       $player.pokedex.set_owned(species)
+	  if species != (:NEPGEAR || :SAYA)
+	    pkmn.ev[:SPECIAL_ATTACK] = 252
+		pkmn.ev[:SPEED] = 252
+	  else  
+	    pkmn.ev[:ATTACK] = 252
+		pkmn.ev[:SPEED] = 252
+	  end
     end
     pbMessage(_INTL("Filled party with demo Pokémon."))
   }
