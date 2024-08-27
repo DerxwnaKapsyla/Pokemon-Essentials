@@ -60,8 +60,61 @@ class Battle::Move::UseMoveDependingOnEnvironmentThmn < Battle::Move
 end
 
 #===============================================================================
-# Hits the foe with a powerful attack. If the move connects, boost all stats 
-# by +2, fully restore HP, apply Substitute, maybe more! Imagine!
+# Inflict a random status condition on a foe (50%)
+# Drop a random stat by 1 (25%)
+# (Spiral Abyss)
+#===============================================================================
+class Battle::Move::SpiralAbyss < Battle::Move
+
+end
+
+#===============================================================================
+# Two turn move. On turn one, enter charge state. On second turn, attack with a
+# 50% chance to paralyze the foe.
+# If charge is broken, disable the attacker's move.
+# (Prohibatory Signboard)
+#===============================================================================
+class Battle::Move::ProhibatorySignboard < Battle::Move
+
+end
+
+#===============================================================================
+# Gains power for every defeated ally in party. Increases BP by 15 each time.
+# (Walpurgis Night)
+#===============================================================================
+class Battle::Move::WalpurgisNight < Battle::Move
+
+end
+
+#===============================================================================
+# Apply attraction regardless of gender/alignment.
+# (Enchantiing Cone)
+#===============================================================================
+class Battle::Move::EnchantingCone < Battle::Move
+
+end
+
+#===============================================================================
+# Clears all stat changes on hit
+# (Fae Trickery)
+#===============================================================================
+class Battle::Move::FaeTrickery < Battle::Move
+
+end
+
+#===============================================================================
+# If move is successful, it steals the stat changes of tghe foe for itself,
+# then sets up Substitute.
+# If the user is asleep, then the move will instead heal HP equal to half
+# the damage dealt and set up Aurora Veil.
+# (All the Myriad Dreams of Paradise)
+#===============================================================================
+class Battle::Move::UltimateDream < Battle::Move
+
+end
+
+#===============================================================================
+# If the move connects, boost user's stats by +2, then apply Protect and Endure.
 # (All the Myriad Dreams of Paradise)
 #===============================================================================
 class Battle::Move::MyriadDreams < Battle::Move
