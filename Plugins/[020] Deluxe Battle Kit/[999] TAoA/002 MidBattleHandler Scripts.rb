@@ -727,8 +727,8 @@ MidbattleHandlers.add(:midbattle_global, :miasma_field,
       scene  = battle.scene
 	  player = battle.battlers[0]
 	  meimu  = battle.battlers[1]
-	  #rand_puppet = [:MEEKO, :MAKURA, :MITORI, :TORAKO, :SASHA, :SUGAR, :KAREN, :MASHA]
-	  rand_puppet = [:REIMU, :MARISA, :SAKUYA, :YOUMU, :YUKARI, :ALICE, :REMILIA, :YUYUKO]
+	  rand_puppet = [:MEEKO, :MAKURA, :MITORI, :TORAKO, :SASHA, :SUGAR, :KAREN, :MASHA]
+	  #rand_puppet = [:REIMU, :MARISA, :SAKUYA, :YOUMU, :YUKARI, :ALICE, :REMILIA, :YUYUKO]
 	  def_stats = [:DEFENSE, :SPECIAL_DEFENSE]
       case trigger
 	  #-------------------------------------

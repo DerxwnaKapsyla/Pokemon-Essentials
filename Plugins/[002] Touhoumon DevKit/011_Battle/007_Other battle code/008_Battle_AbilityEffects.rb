@@ -488,3 +488,51 @@ Battle::AbilityEffects::ChangeOnBattlerFainting.add(:POWEROFALCHEMY,
     battle.pbHideAbilitySplash(battler)
   }
 )
+
+Battle::AbilityEffects::OnBeingHit.add(:MYCELIUMMELANCHOLY,
+  proc { |ability, user, target, move, battle|
+    next if !move.pbContactMove?(user)
+    next if user.confused? || battle.pbRandom(100) >= 30
+    battle.pbShowAbilitySplash(target)
+    if user.pbCanConfuse?(target, Battle::Scene::USE_ABILITY_SPLASH) &&
+       user.affectedByContactEffect?(Battle::Scene::USE_ABILITY_SPLASH)
+      msg = nil
+      if !Battle::Scene::USE_ABILITY_SPLASH
+        msg = _INTL("{1}'s {2} confused {3}!", target.pbThis, target.abilityName, user.pbThis(true))
+      end
+      user.pbConfuse(target, msg)
+    end
+    battle.pbHideAbilitySplash(target)
+  }
+)
+
+Battle::AbilityEffects::AccuracyCalcFromUser.add(:SENSORYTRICKERY,
+  proc { |ability, mods, user, target, move, type|
+    mods[:base_accuracy] = 85
+  }
+)
+
+Battle::AbilityEffects::AccuracyCalcFromTarget.add(:SENSORYTRICKERY,
+  proc { |ability, mods, user, target, move, type|
+    mods[:base_accuracy] = 85
+  }
+)
+
+Battle::AbilityEffects::EndOfRoundEffect.add(:ABYSSALDREAM,
+  proc { |ability, battler, battle|
+    battle.allOtherSideBattlers(battler.index).each do |b|
+      next if !b.near?(battler) || !b.asleep?
+      battle.pbShowAbilitySplash(battler)
+      next if !b.takesIndirectDamage?(Battle::Scene::USE_ABILITY_SPLASH)
+      b.pbTakeEffectDamage(b.totalhp / 8) do |hp_lost|
+        if Battle::Scene::USE_ABILITY_SPLASH
+          battle.pbDisplay(_INTL("{1} is tormented!", b.pbThis))
+        else
+          battle.pbDisplay(_INTL("{1} is tormented by {2}'s {3}!",
+             b.pbThis, battler.pbThis(true), battler.abilityName))
+        end
+        battle.pbHideAbilitySplash(battler)
+      end
+    end
+  }
+)

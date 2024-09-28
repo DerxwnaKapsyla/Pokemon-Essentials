@@ -17145,7 +17145,7 @@ List of Event Commands:
 #------------------------------------------------------------------------------
 Event ID: 002
 Event Name: Autorun Event
-(X,Y): (032,020)
+(X,Y): (038,020)
 
 Page #1
 Conditions
@@ -17597,7 +17597,7 @@ List of Event Commands:
 #------------------------------------------------------------------------------
 Event ID: 007
 Event Name: EV007
-(X,Y): (032,022)
+(X,Y): (038,022)
 
 Page #1
 Conditions
@@ -18188,7 +18188,7 @@ List of Event Commands:
 #------------------------------------------------------------------------------
 Event ID: 017
 Event Name: EV017
-(X,Y): (020,028)
+(X,Y): (038,028)
 
 Page #1
 Conditions
@@ -18226,49 +18226,6 @@ List of Event Commands:
 @>Wait: 8 frame(s)
 @>Transfer Player:[114: Credits - Village Concert Stage], (015,008), No Fade
 @>Change Screen Color Tone: (0,0,0,0), @6
-@>
-
-Page #3
-Conditions
-None
-
-Graphic: Object ball
-
-Autonomous Movement
-Type: Fixed
-Speed: 3: Slow
-Freq: 3: Low
-Options Enabled
-Move Animation
-Trigger: Action Button
-
-List of Event Commands:
-@>Script:     $game_player.transparent        = true
-:       :     $game_temp.player_new_map_id    = 145
-:       :     $game_temp.player_new_x         = 8
-:       :     $game_temp.player_new_y         = 6
-:       :     $game_temp.player_new_direction = 2
-:       :     $scene.transfer_player if $scene.is_a?(Scene_Map)
-:       :     $game_map.refresh
-@>
-
-Page #4
-Conditions
-None
-
-Graphic: Object ball
-
-Autonomous Movement
-Type: Fixed
-Speed: 3: Slow
-Freq: 3: Low
-Options Enabled
-Move Animation
-Trigger: Action Button
-
-List of Event Commands:
-@>Script: tone = Tone.new(255, 255, 255, 1)
-:       : $game_screen.start_tone_change(tone, 1)
 @>
 
 #------------------------------------------------------------------------------
@@ -86293,11 +86250,11 @@ List of Event Commands:
 @>Show Animation: [Ayaka], [Exclaim bubble]
 @>Set Move Route: [Ayaka]
  :              : $>Jump: +0,+0
- :              : $>Wait: 2 frame(s)
+ :              : $>Wait: 1 frame(s)
  :              : $>Turn Right
 @>Text: \xn[\pn]\se[]Bwah!\wt[10] ...I'm still not used to you doing that!\wtnp[40]
-@>Text: \xn[\pn]\se[]Can't you give me a warning next time you apperate 
- :    : into my room!?\wtnp[40]
+@>Text: \xn[\pn]\se[]Can't you give me a warning next time you show up 
+ :    : in my room!?\wtnp[40]
 @>Set Move Route: [Meimu]
  :              : $>Turn Left
 @>Text: \xn[Meimu]\se[]I'm sorry! Besides, you did say you'd find another way
@@ -86305,7 +86262,7 @@ List of Event Commands:
 @>Text: \xn[Meimu]\se[]Does this not count?\wtnp[40]
 @>Text: \xn[\pn]\se[]When I said "Make you real", I didn't have you suddenly
  :    : latching onto my soul in mind!\wtnp[40]
-@>Text: \xn[\pn]\se[]But whatever, I'm sure you'll be able to manifest
+@>Text: \xn[\pn]\se[]But whatever... I'm sure you'll be able to manifest
  :    : yourself properly one day!\wtnp[40]
 @>Change Screen Color Tone: (0,0,0,255), @10
 @>Wait: 10 frame(s)
@@ -86333,15 +86290,27 @@ List of Event Commands:
 @>Text: \xn[Meimu]\se[]So, what's on the agenda for today?\wtnp[40]
 @>Text: \xn[\pn]\se[]No clue! It sounds serious if Miss Reimu and the others
  :    : are out...\wtnp[40]
+@>Set Move Route: [Meimu]
+ :              : $>Jump: +0,+0
+ :              : $>Wait: 4 frame(s)
+ :              : $>Jump: +0,+0
 @>Text: \xn[Meimu]\se[]Are you going to join them!?\wtnp[40]
 @>Text: \xn[\pn]\se[]You could ask with a little less anticipation in your voice...\wtnp[40]
+@>Set Move Route: Player
+ :              : $>Turn Left
 @>Text: \xn[\pn]\se[]But I don't know, I could just sit back and watch...\wtnp[40]
 @>Wait: 10 frame(s)
+@>Set Move Route: Player
+ :              : $>Wait: 4 frame(s)
+ :              : $>Turn Right
 @>Text: \xn[\pn]\se[]...However, where would the fun in that be!\wtnp[40]
 @>Text: \xn[Meimu]\se[]Then what are we waiting for, let's go!\wtnp[40]
-@>Scroll Map: Down, 3, 4
+@>Scroll Map: Down, 3, 5
 @>Set Move Route: [Meimu]
- :              : $>Turn Down
+ :              : $>SE: 'PRSFX- Teleport', 80, 100
+ :              : $>Change Opacity: 0
+@>Wait for Move's Completion
+@>Wait: 4 frame(s)
 @>Set Move Route: [Ayaka]
  :              : $>Graphic: "Ayaka_Run', 0, 2, 0
  :              : $>Change Speed: 5
@@ -86357,7 +86326,7 @@ List of Event Commands:
  :    : entirety.\wtnp[40]
 @>Text: \xn[\pn]\se[]Meimu... had a lot of fun with this incident.\wtnp[40]
 @>Text: \xn[\pn]\se[]It ultimately came down to Miss Reimu and Miss Yakumo
- :    : dealing the final blow to the two who started the incident.\wtnp[40]
+ :    : dealing the final blow to the two who manipulated the phenomenon.\wtnp[40]
 @>Text: \xn[\pn]\se[]I believe it was the Pestilence Goddess and the Poverty Goddess?\wtnp[40]
 @>Text: \xn[\pn]\se[]That doesn't mean I didn't help out, though!\wtnp[40]
 @>Text: \xn[\pn]\se[]And the spectacles that followed were sure ones to behold!\wtnp[40]
@@ -87199,12 +87168,12 @@ Trigger: Autorun
 
 List of Event Commands:
 @>Change Text Options: Middle, Show
-@>Text: \xn[Raiko]\se[]It starts with a seed in the dark of the night,\wtnp[20]
+@>Text: \xn[Raiko]\se[]It starts with a seed in the dark of the night.\wtnp[20]
 @>Text: \xn[Raiko]\se[]You wait for a sunbeam to bring it to light.\wtnp[20]
-@>Text: \xn[Raiko]\se[]The birth of a legend where you are the star,\wtnp[20]
-@>Text: \xn[Raiko]\se[]The moment defining the person you are.\wtnp[20]
-@>Text: \xn[Raiko]\se[]And in that moment the record is set,\wtnp[20]
-@>Text: \xn[Raiko]\se[]Are you that person or did you forget?\wtnp[20]
+@>Text: \xn[Raiko]\se[]The birth of a legend where you are the star...\wtnp[20]
+@>Text: \xn[Raiko]\se[]The moment defining the person you are...\wtnp[20]
+@>Text: \xn[Raiko]\se[]Then, in that moment, the record is set.\wtnp[20]
+@>Text: \xn[Raiko]\se[]Are you that person, or did you forget?\wtnp[20]
 @>Text: \xn[Raiko]\se[]What could possess you to do such a thing;\wtnp[20]
 @>Show Picture: 1, 'PrismH', Upper Left (0,0), (100%,100%), 255, Normal
 @>Text: \xn[Raiko]\se[]A spirit of fate has been playing your strings!\wtnp[20]
@@ -101092,6 +101061,7 @@ List of Event Commands:
 @>Show Picture: 1, 'Name_Final', Upper Left (0,0), (100%,100%), 255, Normal
 @>Text: <ac>I can't afford to lose!\wtnp[20]</ac>
 @>Erase Picture: 1
+@>Change Text Options: Bottom, Show
 @>Control Variables: [0142: TLA Plot Variable] = 7
 @>
 
@@ -104326,6 +104296,8 @@ Page #1
 Conditions
 None
 
+Graphic: Person_Yuuka
+
 Autonomous Movement
 Type: Fixed
 Speed: 3: Slow
@@ -104341,6 +104313,28 @@ List of Event Commands:
 Event ID: 066
 Event Name: Medicine
 (X,Y): (016,024)
+
+Page #1
+Conditions
+None
+
+Graphic: Person_Medicine
+
+Autonomous Movement
+Type: Fixed
+Speed: 3: Slow
+Freq: 3: Low
+Options Enabled
+Move Animation
+Trigger: Action Button
+
+List of Event Commands:
+@>
+
+#------------------------------------------------------------------------------
+Event ID: 067
+Event Name: Autorun
+(X,Y): (022,021)
 
 Page #1
 Conditions
@@ -104374,6 +104368,8 @@ Page #1
 Conditions
 None
 
+Graphic: Person_Toyohime
+
 Autonomous Movement
 Type: Fixed
 Speed: 3: Slow
@@ -104393,6 +104389,8 @@ Event Name: Yorihime
 Page #1
 Conditions
 None
+
+Graphic: Person_Yorihime
 
 Autonomous Movement
 Type: Fixed
@@ -104658,6 +104656,8 @@ Page #1
 Conditions
 None
 
+Graphic: Person_Lyrica
+
 Autonomous Movement
 Type: Fixed
 Speed: 3: Slow
@@ -104677,6 +104677,8 @@ Event Name: Raiko
 Page #1
 Conditions
 None
+
+Graphic: Person_Raiko
 
 Autonomous Movement
 Type: Fixed
@@ -104698,6 +104700,8 @@ Page #1
 Conditions
 None
 
+Graphic: Person_Lunasa
+
 Autonomous Movement
 Type: Fixed
 Speed: 3: Slow
@@ -104717,6 +104721,8 @@ Event Name: Merlin
 Page #1
 Conditions
 None
+
+Graphic: Person_Merlin
 
 Autonomous Movement
 Type: Fixed
@@ -104738,6 +104744,8 @@ Page #1
 Conditions
 None
 
+Graphic: Ayaka_Walk
+
 Autonomous Movement
 Type: Fixed
 Speed: 3: Slow
@@ -104757,6 +104765,8 @@ Event Name: Meimu
 Page #1
 Conditions
 None
+
+Graphic: Person_Meimu
 
 Autonomous Movement
 Type: Fixed
@@ -104778,6 +104788,8 @@ Page #1
 Conditions
 None
 
+Graphic: Person_Reimu
+
 Autonomous Movement
 Type: Fixed
 Speed: 3: Slow
@@ -104797,6 +104809,8 @@ Event Name: Yukari
 Page #1
 Conditions
 None
+
+Graphic: Person_Yukari
 
 Autonomous Movement
 Type: Fixed
@@ -104818,6 +104832,8 @@ Page #1
 Conditions
 None
 
+Graphic: Person_Joon
+
 Autonomous Movement
 Type: Fixed
 Speed: 3: Slow
@@ -104837,6 +104853,8 @@ Event Name: Shion
 Page #1
 Conditions
 None
+
+Graphic: Person_Shion
 
 Autonomous Movement
 Type: Fixed
@@ -104866,6 +104884,8 @@ Page #1
 Conditions
 None
 
+Graphic: Person_Reimu
+
 Autonomous Movement
 Type: Fixed
 Speed: 3: Slow
@@ -104885,6 +104905,8 @@ Event Name: Mima
 Page #1
 Conditions
 None
+
+Graphic: Person_Mima
 
 Autonomous Movement
 Type: Fixed
@@ -104990,6 +105012,8 @@ Page #1
 Conditions
 None
 
+Graphic: Ayaka_Walk
+
 Autonomous Movement
 Type: Fixed
 Speed: 3: Slow
@@ -105009,6 +105033,8 @@ Event Name: Meimu
 Page #1
 Conditions
 None
+
+Graphic: Person_Meimu
 
 Autonomous Movement
 Type: Fixed
@@ -109214,6 +109240,89 @@ List of Event Commands:
  @>Comment: Warp: Mugenkan - Mima's Training Grounds
   :       : Scene: Ayaka and Meimu overlooking the cliff as the final
   :       : batch of credits plays
+ @>
+: Branch End
+@>Conditional Branch: Variable [0144: TAoA Credits Variable] == 8
+ @>Show Picture: 1, 'end', Upper Left (0,0), (100%,100%), 0, Normal
+ @>Text: \xn[?????]\s[]Another happy ending for Gensokyo it would appear!\wtnp[40]
+ @>Text: \xn[Yukari]\s[]Until the next incident, of course.\wtnp[40]
+ @>Text: \xn[Yukari]\s[]Perhaps your Shrine Maiden will get involved in the next
+  :    : one, too.\wtnp[40]
+ @>Text: \xn[?????]\s[]Hey! You could have had Reimu deal with Meimu, you know!\wtnp[40]
+ @>Text: \xn[?????]\s[]So, why didn't you?\wtnp[40]
+ @>Text: \xn[Yukari]\s[]While I have no doubt she could have taken care of it,
+  :    : I decided to take a gamble on that human's chances of success.\wtnp[40]
+ @>Text: \xn[Yukari]\s[]I believe she was the more effective soluton in the end.\wtnp[40]
+ @>Text: \xn[Yukari]\s[]And if she failed, well... I was prepared to step in if necessary.\wtnp[40]
+ @>Text: \xn[Yukari]\s[]I can't just have someone barging in on my domain~.\wtnp[40]
+ @>Text: \xn[?????]\s[]Right... So then, why did you save her?\wtnp[40]
+ @>Text: \xn[Yukari]\s[]Hm? Come again~?\wtnp[40]
+ @>Text: \xn[?????]\s[]Don't play coy with me Yukari!\wtnp[40]
+ @>Text: \xn[?????]\s[]You know as well as I do that Meimu would have faded back
+  :    : into the aether if you didn't get involved in some way.\wtnp[40]
+ @>Text: \xn[Yukari]\s[]All I did was manipulate a few boundaries here and there- her will to
+  :    : live was what allowed her to sustain herself.\wtnp[40]
+ @>Text: \xn[Yukari]\s[]She, like everyone in Gensokyo, was presented with an opportunity.\wtnp[40]
+ @>Text: \xn[?????]\s[]Your philosophy.\wtnp[40]
+ @>Text: \xn[Yukari]\s[]Gensokyo accepts all. While this can be a very cruel statement,
+  :    : it can also be a beautiful one.\wtnp[40]
+ @>Text: \xn[Yukari]\s[]It is here in this realm that the supernatural and the ordinary
+  :    : can exist together.\wtnp[40]
+ @>Move Picture: 1, @20, Upper Left (0,0), (100%,100%), 255, Normal
+ @>Text: \xn[Yukari]\s[]A place where one can live free from the persecution
+  :    : and sterility of the world beyond the barrier.\wtnp[40]
+ @>Text: \xn[Yukari]\s[]Where those who don't have a place, or in this
+  :    : case don't exist, can call respite.\wtnp[40]
+ @>Text: \xn[Yukari]\s[]A magical place, but also a very simple and plain one.\wtnp[40]
+ @>Text: \xn[Yukari]\s[]Good or bad, nobody is excluded from our forsaken paradise.\wtnp[40]
+ @>Text: \xn[Yukari]\s[]Our realm accepts everyone that is willing to adhere to this
+  :    : contract.\wtnp[40]
+ @>Text: \xn[Yukari]\s[]Humans.\wt[10] Youkai.\wt[10] Gods.\wt[10] Puppets.\wt[10]
+  :    : Indiscriminately, without exception.\wtnp[40]
+ @>Text: \xn[?????]\s[]The Paradox of Tolerance. So even though Meimu nearly ripped
+  :    : the realm apart-\wtnp[40]
+ @>Text: \xn[Yukari]\s[]If she is willing to adapt proper to Gensokyo, its norms and traditions,
+  :    : then there's no reason not to welcome her here.\wtnp[40]
+ @>Text: \xn[Yukari]\s[]At any rate, it would seem that an old friend of ours is
+  :    : making moves again.\wtnp[40]
+ @>Text: \xn[Yukari]\s[]I've noticed her trademark doors appearing across the
+  :    : realm.\wtnp[40]
+ @>Text: \xn[?????]\s[]Huh... We have't heard from her in decades, I wonder
+  :    : what she's planning.\wtnp[40]
+ @>Text: \xn[Yukari]\s[]I'm sure we'll find out in due time, darling~.\wtnp[40]
+ @>Text: \xn[Yukari]\s[]For now, let's just enjoy the rest of our date night- we 
+  :    : so seldom get these as of late...\wtnp[40]
+ @>Move Picture: 1, @20, Upper Left (0,0), (100%,100%), 0, Normal
+ @>Wait: 20 frame(s)
+ @>Change Text Options: Bottom, Hide
+ @>Text: \c[12]\se[]\l[2]Gensokyo.\wtnp[30]\se[] A remarkable place that 
+  :    : shouldn't exist in our world.\wtnp[40]
+ @>Text: \c[12]\se[]\l[2]Filled with wondrous thngs beyond your wildest
+  :    : imagination.\wtnp[40]
+ @>Text: \c[12]\se[]\l[2]It is here in this realm that we followed the tale of a
+  :    : woman from the Human Village.\wtnp[40]
+ @>Text: \c[12]\se[]\l[4]Witnessed her legacy, from humble beginnings, as
+  :    : naught but a child with a sense of adventure, as she blossomed into who
+  :    : she is today.\wtnp[40]
+ @>Text: \c[12]\se[]\l[2]A champion.\wt[10] A savior.\wt[10] An idol.\wt[10]. A legend.\wtnp[40]
+ @>Text: \c[12]\se[]\l[2]In this mystical world, anything is possible.\wt[10] Everything is possible.\wtnp[40]
+ @>Text: \c[12]\se[]\l[2]All you need to do... is believe.\wtnp[40]
+ @>Comment: Display the ending cg for TAoA here.
+ @>Change Text Options: Middle, Hide
+ @>Text: \c[12]\l[4]Thank you so much for playing. If you made it this far, 
+  :    : it truly does warm my heart knowing you stuck through to the end.
+ @>Text: \c[12]\l[4]I know that this story may not be the best, but it was still
+  :    : a story I wanted to tell all the same.
+ @>Text: \c[12]\l[4]I can only hope that my passion for writing and storytelling
+  :    : shone through, even through the rougher aspects of the story.
+ @>Text: \c[12]\l[4]From the bottom of my heart, thank you. I hope to see you all
+  :    : again some time soon!
+ @>Text: \c[12]\l[4]Until next time, never give up on your dreams!\n\n- DerxwnaKapsyla
+ @>Wait: 20 frame(s)
+ @>Change Text Options: Bottom, Hide
+ @>Text: You will be returned to the World of Fantasies. All four episodes will
+  :    : be in a playable state if you wish to replay them.
+ @>Text: Your game will be saved upon reloading into the area.
  @>
 : Branch End
 @>

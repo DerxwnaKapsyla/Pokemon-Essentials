@@ -4342,13 +4342,125 @@ Target = NearOther
 FunctionCode = UseMoveDependingOnEnvironmentThmn
 Description = An attack that makes use of the land's hidden power. Its effects vary depending on the user's environment.
 #-------------------------------
-#[UNCOUNTABLESHEEP]
+[UNCOUNTABLESHEEP]
+Name = Uncountable Sheep
+Type = ILLUSION18
+Category = Physical
+Power = 40
+Accuracy = 100
+TotalPP = 40
+Target = NearOther
+FunctionCode = None
+Flags = Contact,CanProtect,CanMirrorMove
+Description = The target is run over by an endless horde of sleep. Can cause sleep.
 #-------------------------------
-#[ABYSSOFCHAOS]
+[ABYSSOFCHAOS]
+Name = Abyss of Chaos
+Type = ILLUSION18
+Category = Physical
+Power = 40
+Accuracy = 100
+TotalPP = 40
+Target = NearOther
+FunctionCode = None
+Flags = Contact,CanProtect,CanMirrorMove
+Description = Drains health from sleeping foes.
 #-------------------------------
-#[ENCHANTINGCONE]
+[ENCHANTINGCONE]
+Name = Enchanting Cone
+Type = ILLUSION18
+Category = Physical
+Power = 40
+Accuracy = 100
+TotalPP = 40
+Target = NearOther
+FunctionCode = None
+Flags = Contact,CanProtect,CanMirrorMove
+Description = Causes infatuation in target regardless of gender or spiritual alignment.
 #-------------------------------
-#[SPIRALABYSS]
+[SPIRALABYSS]
+Name = Spiral Abyss
+Type = ILLUSION18
+Category = Physical
+Power = 40
+Accuracy = 100
+TotalPP = 40
+Target = NearOther
+FunctionCode = None
+Flags = Contact,CanProtect,CanMirrorMove
+Description = Ensnares the foe in a trap which will either inflict a random status condition or lower a random stat by one.
+#-------------------------------
+[PROHIBITORYSIGNBOARD]
+Name = Prohibitory Signboard
+Type = ILLUSION18
+Category = Physical
+Power = 40
+Accuracy = 100
+TotalPP = 40
+Target = NearOther
+FunctionCode = None
+Flags = Contact,CanProtect,CanMirrorMove
+Description = Charges energy to paralyze the foe. If interupted, disables the move it was hit by.
+#-------------------------------
+[WALPURGISNIGHT]
+Name = Walpurgis Night
+Type = ILLUSION18
+Category = Physical
+Power = 40
+Accuracy = 100
+TotalPP = 40
+Target = NearOther
+FunctionCode = None
+Flags = Contact,CanProtect,CanMirrorMove
+Description = Summons the spirit of fallen allies to harass the foe.
+#-------------------------------
+[LIGHTSPEED]
+Name = Lightspeed
+Type = ILLUSION18
+Category = Physical
+Power = 40
+Accuracy = 100
+TotalPP = 40
+Target = NearOther
+FunctionCode = None
+Flags = Contact,CanProtect,CanMirrorMove
+Description = Slams into the foe at nigh-unobservable speeds. If it misses, it will do damage to the user.
+#-------------------------------
+[CREEPINGMYCELIUM]
+Name = Creeping Mycelium
+Type = ILLUSION18
+Category = Physical
+Power = 40
+Accuracy = 100
+TotalPP = 40
+Target = NearOther
+FunctionCode = None
+Flags = Contact,CanProtect,CanMirrorMove
+Description = Spreads a miasma over the field which will inflict a random status condition on a foe.
+#-------------------------------
+[FAETRICKERY]
+Name = Fae Trickery
+Type = ILLUSION18
+Category = Physical
+Power = 40
+Accuracy = 100
+TotalPP = 40
+Target = NearOther
+FunctionCode = None
+Flags = Contact,CanProtect,CanMirrorMove
+Description = Clears all of the foe's stat changes.
+#-------------------------------
+[ULTIMATEDREAM]
+Name = Ultimate Dream
+Type = ILLUSION18
+Category = Physical
+Power = 40
+Accuracy = 100
+TotalPP = 40
+Target = NearOther
+FunctionCode = None
+Flags = Contact,CanProtect,CanMirrorMove
+Description = I am not bothering to put a description in here. This move has too much going on.
 #-------------------------------
 [MYRAIDDREAMS]
 Name = All the Myraid Dreams of Paradise
@@ -4360,3 +4472,29 @@ TotalPP = 5
 Target = NearOther
 FunctionCode = MyraidDreams
 Description = All of Fantasy is at your beck and call. With it by your side, there is nothing you can't do.
+#-------------------------------
+[SUPERNOVA18]
+Name = Supernova
+Type = FIRE18
+Category = Special
+Power = 140
+Accuracy = 90
+TotalPP = 5
+Target = AllNearFoes
+FunctionCode = RecoilThirdOfDamageDealtBurnTarget
+Flags = CanProtect,CanMirrorMove,ThawsUser
+EffectChance = 25
+Description = Searing heat erupts from the user in all directions. The user also takes damage and may burn the target.
+#-------------------------------
+[DEATHSEMBRACE18]
+Name = Death's Embrace
+Type = GHOST18
+Category = Physical
+Power = 80
+Accuracy = 0
+TotalPP = 10
+Target = NearOther
+FunctionCode = TrapTargetAndInflictPerishSong
+Flags = CanProtect,CanMirrorMove
+EffectChance = 100
+Description = The foe falls into a trance that will entrap them and may result in them fainting in three turns.
