@@ -17826,7 +17826,7 @@ List of Event Commands:
 #------------------------------------------------------------------------------
 Event ID: 011
 Event Name: EV011
-(X,Y): (019,019)
+(X,Y): (035,013)
 
 Page #1
 Conditions
@@ -17992,7 +17992,7 @@ List of Event Commands:
 #------------------------------------------------------------------------------
 Event ID: 015
 Event Name: EV015
-(X,Y): (019,027)
+(X,Y): (037,027)
 
 Page #1
 Conditions
@@ -86352,6 +86352,8 @@ Page #1
 Conditions
 None
 
+Graphic: Person_Raiko
+
 Autonomous Movement
 Type: Fixed
 Speed: 3: Slow
@@ -87175,7 +87177,15 @@ List of Event Commands:
 @>Text: \xn[Raiko]\se[]Then, in that moment, the record is set.\wtnp[20]
 @>Text: \xn[Raiko]\se[]Are you that person, or did you forget?\wtnp[20]
 @>Text: \xn[Raiko]\se[]What could possess you to do such a thing;\wtnp[20]
+@>Screen Flash: (255,255,255,255), @1
+@>Play SE: 'Vs flash', 80, 100
 @>Show Picture: 1, 'PrismH', Upper Left (0,0), (100%,100%), 255, Normal
+@>Set Move Route: [Lyrica]
+ :              : $>Change Opacity: 255
+@>Set Move Route: [Lunasa]
+ :              : $>Change Opacity: 255
+@>Set Move Route: [Merlin]
+ :              : $>Change Opacity: 255
 @>Text: \xn[Raiko]\se[]A spirit of fate has been playing your strings!\wtnp[20]
 @>Play SE: 'Applause', 80, 100
 @>Erase Picture: 1
@@ -104290,7 +104300,7 @@ List of Event Commands:
 #------------------------------------------------------------------------------
 Event ID: 065
 Event Name: Yuuka
-(X,Y): (017,024)
+(X,Y): (024,006)
 
 Page #1
 Conditions
@@ -104311,14 +104321,14 @@ List of Event Commands:
 
 #------------------------------------------------------------------------------
 Event ID: 066
-Event Name: Medicine
-(X,Y): (016,024)
+Event Name: Elly
+(X,Y): (026,006)
 
 Page #1
 Conditions
 None
 
-Graphic: Person_Medicine
+Graphic: Person_Elly
 
 Autonomous Movement
 Type: Fixed
@@ -104334,7 +104344,7 @@ List of Event Commands:
 #------------------------------------------------------------------------------
 Event ID: 067
 Event Name: Autorun
-(X,Y): (022,021)
+(X,Y): (027,004)
 
 Page #1
 Conditions
@@ -104347,6 +104357,106 @@ Freq: 3: Low
 Options Enabled
 Move Animation
 Trigger: Action Button
+
+List of Event Commands:
+@>Text: \xn[Yuuka]\se[]It is quite the lovely day today~ Wouldn't you agree 
+ :    : Elly?\wtnp[20]
+@>Text: \xn[Elly]\se[]Yes Lady Yuuka, it is. Ever since that one human settled
+ :    : the crisis in the dream world, things seem to have calmed down.\wtnp[20]
+@>Text: \xn[Yuuka]\se[]Yes, \pn... She is quite the radiant flower.\wtnp[20]
+@>Wait: 10 frame(s)
+@>Text: \xn[Yuuka]\se[]Ah, on days like this, it's such a waste to remain inside.
+ :    : I think I shall go out for a stroll.\wtnp[20]
+@>Text: \xn[Elly]\se[]Oh, to anywhere in specific Lady Yuuka?\wtnp[20]
+@>Text: \xn[Yuuka]\se[]I've heard that the Hoenn Region is quite beautiful at this
+ :    : time of year...\wtnp[20]
+@>Text: \xn[Yuuka]\se[]And that they've finished renovating their battle facilities
+ :    : to accomidate Puppets. Perhaps I'll find some entertainment while
+ :    : I'm out~.\wtnp[20]
+@>Text: \xn[Elly]\se[]Will you be requiring any accompaniment today, ma'am?\wtnp[20]
+@>Text: \xn[Yuuka]\se[]No, not today. Just be sure to keep an eye on the mansion
+ :    : while I'm gone.\wtnp[20]
+@>Set Move Route: [Yuuka]
+ :              : $>Through ON
+ :              : $>Move Right
+ :              : $>Turn Up
+ :              : $>Wait: 15 frame(s)
+ :              : $>SE: 'Cut', 80, 100
+@>Wait for Move's Completion
+@>Screen Flash: (255,255,255,255), @2
+@>Set Move Route: [Portal]
+ :              : $>Change Opacity: 255
+@>Wait: 20 frame(s)
+@>Set Move Route: [Yuuka]
+ :              : $>Wait: 5 frame(s)
+ :              : $>Turn Right
+@>Text: \xn[Yuuka]\se[]Oh, and do remember to water the garden while
+ :    : I'm gone.\wtnp[20]
+@>Text: \xn[Yuuka]\se[]I would hate to come back and see all my precious
+ :    : plants withered away.\wtnp[20]
+@>Text: \xn[Yuuka]\se[]<i>Don't you agree, Elly</i>?\wtnp[20]
+@>Show Animation: [Elly], [Exclaim bubble]
+@>Text: \xn[Elly]\se[]Y-Yes Lady Yuuka, I understand.\wtnp[20]
+@>Text: \xn[Yuuka]\se[]Splendid! Well, don't wait up for me~.\wtnp[20]
+@>Set Move Route: [Yuuka]
+ :              : $>Move Up
+ :              : $>Change Opacity: 0
+ :              : $>SE: 'PRSFX- Teleport', 80, 100
+@>Wait for Move's Completion
+@>Wait: 5 frame(s)
+@>Set Move Route: [Portal]
+ :              : $>SE: 'Stare', 80, 50
+ :              : $>Change Opacity: 255
+ :              : $>Wait: 2 frame(s)
+ :              : $>Change Opacity: 224
+ :              : $>Wait: 2 frame(s)
+ :              : $>Change Opacity: 192
+ :              : $>Wait: 2 frame(s)
+ :              : $>Change Opacity: 160
+ :              : $>Wait: 2 frame(s)
+ :              : $>Change Opacity: 128
+ :              : $>Wait: 2 frame(s)
+ :              : $>Change Opacity: 96
+ :              : $>Wait: 2 frame(s)
+ :              : $>Change Opacity: 64
+ :              : $>Wait: 2 frame(s)
+ :              : $>Change Opacity: 32
+ :              : $>Wait: 2 frame(s)
+ :              : $>Change Opacity: 0
+@>Wait for Move's Completion
+@>Wait: 10 frame(s)
+@>Text: \xn[Elly]\se[]...<i>Sigh</i> You forget to water the flowers one time...\wtnp[20]
+@>
+
+#------------------------------------------------------------------------------
+Event ID: 068
+Event Name: Portal
+(X,Y): (025,005)
+
+Page #1
+Conditions
+None
+
+Graphic: Ultra Wormhole
+
+Autonomous Movement
+Type: Custom
+Custom Move Route:
+(Repeat Action)
+$>Turn Left
+$>Wait: 8 frame(s)
+$>Turn Right
+$>Wait: 8 frame(s)
+$>Turn Up
+$>Wait: 8 frame(s)
+$>Turn Down
+$>Wait: 8 frame(s)
+
+Speed: 3: Slow
+Freq: 6: Highest
+Options Enabled
+Move Animation
+Trigger: Event Touch
 
 List of Event Commands:
 @>
@@ -104619,24 +104729,24 @@ Move Animation
 Trigger: Autorun
 
 List of Event Commands:
-@>Scroll Map: Right, 15, 3
+@>Scroll Map: Up, 15, 3
 @>Wait: 15 frame(s)
-@>Text: \xn[Toyohime]Keep it up recruits!\wtnp[20]
-@>Text: \xn[Toyohime]Remember, the group that suceeds will be eligible
+@>Text: \xn[Toyohime]\se[]Keep it up recruits!\wtnp[20]
+@>Text: \xn[Toyohime]\se[]Remember, the group that suceeds will be eligible
  :    : to challenge the Emmisary of Gensokyo to a battle when she returns!\wtnp[20]
-@>Text: \xn[Yorihime]Using \pn as an incentive to drive the army to
+@>Text: \xn[Yorihime]\se[]Using \pn as an incentive to drive the army to
  :    : train harder is quite the methodology, sister.\wtnp[30]
-@>Text: \xn[Yorihime]Especially as the council stilll doesn't approve
+@>Text: \xn[Yorihime]\se[]Especially as the council stilll doesn't approve
  :    : of her being here as frequent as she is.\wtnp[30]
-@>Text: \xn[Toyohime]Well the Council can look at the army's retention
+@>Text: \xn[Toyohime]\se[]Well the Council can look at the army's retention
  :    : since she showed up for themselves~ it works very well!\wtnp[20]
-@>Text: \xn[Toyohime]We've also recieved fascinating intel from Gensokyo
+@>Text: \xn[Toyohime]\se[]We've also recieved fascinating intel from Gensokyo
  :    : as well!\wtnp[20]
-@>Text: \xn[Yorihime]Oh? and what might that be?\wtnp[30]
-@>Text: \xn[Toyohime]They have so many different ways to prepare and
+@>Text: \xn[Yorihime]\se[]Oh? and what might that be?\wtnp[30]
+@>Text: \xn[Toyohime]\se[]They have so many different ways to prepare and
  :    : utilize peaches in meals!\wtnp[20]
 @>Wait: 40 frame(s)
-@>Text: \xn[Yorihime]...Is that really all you think about, Sister...\wtnp[30]
+@>Text: \xn[Yorihime]\se[]...Is that really all you think about, Sister...\wtnp[30]
 @>
 
 #------------------------------------------------------------------------------
@@ -104804,7 +104914,7 @@ List of Event Commands:
 #------------------------------------------------------------------------------
 Event ID: 008
 Event Name: Yukari
-(X,Y): (012,013)
+(X,Y): (018,012)
 
 Page #1
 Conditions
@@ -104826,7 +104936,7 @@ List of Event Commands:
 #------------------------------------------------------------------------------
 Event ID: 009
 Event Name: Jo'on
-(X,Y): (018,012)
+(X,Y): (012,013)
 
 Page #1
 Conditions
@@ -104865,6 +104975,101 @@ Move Animation
 Trigger: Action Button
 
 List of Event Commands:
+@>
+
+#------------------------------------------------------------------------------
+Event ID: 011
+Event Name: EV011
+(X,Y): (026,010)
+
+Page #1
+Conditions
+None
+
+Autonomous Movement
+Type: Fixed
+Speed: 3: Slow
+Freq: 3: Low
+Options Enabled
+Move Animation
+Trigger: Action Button
+
+List of Event Commands:
+@>Text: \xn[Shion]\se[]All right, you're possessed! Now Joon's victory is
+ :    : assured!\wtnp[20]
+@>Wait: 20 frame(s)
+@>Show Animation: [Shion], [Question bubble]
+@>Wait: 5 frame(s)
+@>Set Move Route: [Jo'on]
+ :              : $>Turn Up
+ :              : $>Wait: 5 frame(s)
+ :              : $>Turn Down
+ :              : $>Wait: 5 frame(s)
+ :              : $>Turn Right
+ :              : $>Wait: 5 frame(s)
+ :              : $>Turn Left
+@>Text: \xn[Shion]\se[]...Wait, Joon? Where'd you go?\wtnp[20]
+@>Text: \xn[Reimu]\se[]Oh... So <i>that's</i> what it was.\wtnp[20]
+@>Text: \xn[Reimu]\se[]Yukari's explanation gave me no clue what was going
+ :    : to happen.\wtnp[20]
+@>Show Animation: [Shion], [Exclaim bubble]
+@>Text: \xn[Shion]\se[]Y-You! How are you moving freely?!\wtnp[20]
+@>Text: \xn[Shion]\se[]You were supposed to become Joon's save and have
+ :    : your freedom taken away...\wtnp[20]
+@>Text: \xn[Reimu]\se[]True, you have the power to guarantee defeat for anyone
+ :    : you possess...\wtnp[20]
+@>Text: \xn[Reimu]\se[]And your sister, the pestilence goddess, can switch slaves,
+ :    : forcing you on someone else...\wtnp[20]
+@>Text: \xn[Reimu]\se[]In other words, you can force defeat on any opponent. 
+ :    : Absolutely.\wtnp[20]
+@>Text: \xn[Reimu]\se[]You really are the worst, most disastrous combo.\wtnp[20]
+@>Text: \xn[Reimu]\se[]But you were no match for tro truly strong people.\wtnp[20]
+@>Text: \xn[Shion]\se[]You were supposed to lose control of your body when
+ :    : you possessed Joon...\wtnp[20]
+@>Show Animation: [Shion], [Question bubble]
+@>Set Move Route: [Shion]
+ :              : $>Jump: +0,+0
+@>Text: \xn[Shion]\se[]But how?! How are you still <i>moving</i>!\wtnp[20]
+@>Text: \xn[Reimu]\se[]Look closely. <i>You're</i> the master now.\wtnp[20]
+@>Show Animation: [Ayaka], [Question bubble]
+@>Show Animation: [Meimu], [Question bubble]
+@>Wait: 15 frame(s)
+@>Text: \xn[Shion]\se[]...Eh?\wtnp[20]
+@>Text: \xn[Reimu]\se[]And I'm a master too. Yukari flipped the border of master
+ :    : and slave.\wtnp[20]
+@>Text: \xn[Reimu]\se[]So the partners who were switched were Yukari and
+ :    : your sister.\wtnp[20]
+@>Play SE: 'PRSFX- Teleport', 80, 100
+@>Screen Flash: (255,255,255,255), @2
+@>Set Move Route: [Reimu]
+ :              : $>Change Opacity: 0
+@>Set Move Route: [Jo'on]
+ :              : $>Change Opacity: 255
+@>Show Animation: [Shion], [Exclaim bubble]
+@>Text: \xn[Joon]\se[]Crap! It was a trap! I'm the enemy's slave now!\wtnp[20]
+@>Text: \xn[Shion]\se[]What?!\wtnp[20]
+@>Text: \xn[Shion]\se[]So I'm not possessing Yukari then...?\wtnp[20]
+@>Text: \xn[Shion]\se[]Wait, then my slave must be-\wtnp[20]
+@>Play SE: 'PRSFX- Teleport', 80, 100
+@>Screen Flash: (255,255,255,255), @2
+@>Set Move Route: [Shion]
+ :              : $>Change Opacity: 0
+@>Set Move Route: [Yukari]
+ :              : $>Change Opacity: 255
+@>Show Animation: [Jo'on], [Exclaim bubble]
+@>Text: \xn[Yukari]\se[]Right answer~! Like this, both your power as a poverty goddess
+ :    : and her power as a pestilence goddess are meaningless.\wtnp[20]
+@>Text: \xn[Yukari]\se[]Now Reimu, I won't be able to offer you any more assistance.\wtnp[20]
+@>Text: \xn[Yukari]\se[]Take care of this poverty god~.\wtnp[20]
+@>Play SE: 'PRSFX- Teleport', 80, 100
+@>Screen Flash: (255,255,255,255), @2
+@>Set Move Route: [Shion]
+ :              : $>Change Opacity: 255
+@>Set Move Route: [Yukari]
+ :              : $>Change Opacity: 0
+@>Text: \xn[Shion]\se[]They switched the master and slave? They can do that?
+ :    : There's someone who can do that?\wtnp[20]
+@>Text: \xn[\pn & Meimu]\se[]\b(So cool...)\wtnp[20]
 @>
 
 #------------------------------------------------------------------------------
@@ -104920,6 +105125,111 @@ List of Event Commands:
 @>
 
 #------------------------------------------------------------------------------
+Event ID: 003
+Event Name: EV003
+(X,Y): (037,025)
+
+Page #1
+Conditions
+None
+
+Autonomous Movement
+Type: Fixed
+Speed: 3: Slow
+Freq: 3: Low
+Options Enabled
+Move Animation
+Trigger: Action Button
+
+List of Event Commands:
+@>Text: \xn[Reimu]\se[]...What's this weird portal doing here?\wtnp[20]
+@>Play SE: 'PRSFX- Teleport', 80, 100
+@>Wait: 10 frame(s)
+@>Change Screen Color Tone: (0,0,0,0), @8
+@>Wait: 8 frame(s)
+@>Show Animation: [Reimu], [Exclaim bubble]
+@>Text: \xn[Reimu]\se[]...! Wait a second, isn't this...\wtnp[20]
+@>Set Move Route: [Reimu]
+ :              : $>Move Up
+ :              : $>Move Up
+ :              : $>Move Up
+ :              : $>Move Up
+ :              : $>Move Up
+ :              : $>Move Up
+ :              : $>Move Up
+ :              : $>Move Up
+ :              : $>Move Up
+ :              : $>Move Up
+ :              : $>Move Up
+ :              : $>Move Up
+ :              : $>Move Up
+ :              : $>Move Up
+ :              : $>Move Up
+ :              : $>Move Up
+ :              : $>Move Up
+ :              : $>Move Up
+ :              : $>Move Up
+@>Scroll Map: Up, 19, 4
+@>Wait for Move's Completion
+@>Set Move Route: [Reimu]
+ :              : $>Move Left
+ :              : $>Move Left
+ :              : $>Move Left
+ :              : $>Move Left
+ :              : $>Move Left
+ :              : $>Move Left
+ :              : $>Move Left
+ :              : $>Move Left
+@>Scroll Map: Left, 8, 4
+@>Wait for Move's Completion
+@>Show Animation: [Reimu], [Exclaim bubble]
+@>Text: \xn[Reimu]\se[]I knew it! This is your doing!\wtnp[20]
+@>Show Animation: [Mima], [Question bubble]
+@>Wait: 15 frame(s)
+@>Show Animation: [Mima], [Exclaim bubble]
+@>Text: \xn[Mima]\se[]R-Reimu Hakurei!? What are you doing here?
+ :    : Come to visit an old friend?\wtnp[20]
+@>Text: \xn[Reimu]\se[]Cut the act Mima! What in the world is a teleporter 
+ :    : directly to my shrine doing in your realm!?\wtnp[20]
+@>Text: \xn[Reimu]\se[]What are you planning <i>this</i> time!?\wtnp[20]
+@>Text: \xn[Mima]\se[]Uhm...\wtnp[20]
+@>Wait: 20 frame(s)
+@>Text: \xn[Mima]\se[]Bye!\wtnp[20]
+@>Set Move Route: [Mima]
+ :              : $>SE: 'PRSFX- Teleport', 80, 100
+ :              : $>Change Opacity: 255
+ :              : $>Wait: 2 frame(s)
+ :              : $>Change Opacity: 224
+ :              : $>Wait: 2 frame(s)
+ :              : $>Change Opacity: 192
+ :              : $>Wait: 2 frame(s)
+ :              : $>Change Opacity: 160
+ :              : $>Wait: 2 frame(s)
+ :              : $>Change Opacity: 128
+ :              : $>Wait: 2 frame(s)
+ :              : $>Change Opacity: 96
+ :              : $>Wait: 2 frame(s)
+ :              : $>Change Opacity: 64
+ :              : $>Wait: 2 frame(s)
+ :              : $>Change Opacity: 32
+ :              : $>Wait: 2 frame(s)
+ :              : $>Change Opacity: 0
+@>Show Animation: [Reimu], [Exclaim bubble]
+@>Set Move Route: [Reimu]
+ :              : $>Through ON
+ :              : $>Change Speed: 6
+ :              : $>Wait: 10 frame(s)
+ :              : $>Move Left
+ :              : $>Move Left
+ :              : $>Move Left
+ :              : $>Move Left
+@>Text: \xn[Reimu]\se[]Hey, get back here!\wtnp[20]
+@>Wait for Move's Completion
+@>Text: \xn[Reimu]\se[]Ugh, just when I thought I was finally free of her...\wtnp[20]
+@>Text: \xn[Reimu]\se[]Looks like I'll need to reinforce the Shrine's barrier.\wt[10] <i>Again!</i>\wtnp[20]
+@>
+
+#------------------------------------------------------------------------------
 
 #==============================================================================
 Map ID: 143
@@ -104967,10 +105277,10 @@ Move Animation
 Trigger: Autorun
 
 List of Event Commands:
-@>Text: \xn[?????]I see, quite interesting...\wtnp[40]
-@>Text: \xn[?????]Looks like the Gensokyo I'll be returning to is quite
- :    : different than the one I left...\wtnp[40]
-@>Text: \xn[?????]It's time to remind them that there's more Sages than just 
+@>Text: \xn[?????]\se[]I see, quite interesting...\wtnp[40]
+@>Text: \xn[?????]\se[]Looks like the Gensokyo I'll be returning to is quite
+ :    : different than the one I left.\wtnp[40]
+@>Text: \xn[?????]\se[]It's time to remind them that there's more Sages than just 
  :    : that old gap maker~!\wtnp[40]
 @>
 
