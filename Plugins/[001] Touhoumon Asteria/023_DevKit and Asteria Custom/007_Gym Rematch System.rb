@@ -45,7 +45,7 @@ def pbSelectGymSet
   ids = []
   sets.each_with_index do |range, i|
     next if !$game_variables[2][i + 1]
-    array.push(_INTL("Set {1} (Lv.{2} - {3})", i + 1, range[0], range[1])) if $Trainer.badge_count >= i
+    array.push(_INTL("Set {1} (Lv.{2} - {3})", i + 1, range[0], range[1])) if $player.badge_count >= i
     ids.push(i + 1)
   end
   array.push(_INTL("Cancel"))

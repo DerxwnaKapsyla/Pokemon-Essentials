@@ -14,11 +14,11 @@
 #-------------------------------------------------------------------------------
 GameData::TerrainTag.register({
   :id => :StairLeft,
-  :id_number => 51,
+  :id_number => 50,
 })
 GameData::TerrainTag.register({
   :id => :StairRight,
-  :id_number => 50,
+  :id_number => 51,
 })
 #-------------------------------------------------------------------------------
 # Existing Class Extensions
@@ -125,41 +125,61 @@ class Game_Character
 
   alias move_upper_left_stairs move_upper_left
   def move_upper_left
-    move_upper_left_stairs
-    if self.map.terrain_tag(@x, @y) == :StairLeft || self.map.terrain_tag(@x, @y) == :StairRight
-      @offset_y = -16
-    else
-      @offset_y = 0
+    unless @direction_fix
+      @direction = (@direction == 6 ? 4 : @direction == 2 ? 8 : @direction)
+    end
+    if can_move_in_direction?(7)
+      @move_initial_x = @x
+      @move_initial_y = @y
+      @x -= 1
+      @y -= 1
+      @move_timer = 0.0
+      increase_steps
     end
   end
 
   alias move_upper_right_stairs move_upper_right
   def move_upper_right
-    move_upper_right_stairs
-    if self.map.terrain_tag(@x, @y) == :StairLeft || self.map.terrain_tag(@x, @y) == :StairRight
-      @offset_y = -16
-    else
-      @offset_y = 0
+    unless @direction_fix
+      @direction = (@direction == 4 ? 6 : @direction == 2 ? 8 : @direction)
+    end
+    if can_move_in_direction?(9)
+      @move_initial_x = @x
+      @move_initial_y = @y
+      @x += 1
+      @y -= 1
+      @move_timer = 0.0
+      increase_steps
     end
   end
 
   alias move_lower_left_stairs move_lower_left
   def move_lower_left
-    move_lower_left_stairs
-    if self.map.terrain_tag(@x, @y) == :StairLeft || self.map.terrain_tag(@x, @y) == :StairRight
-      @offset_y = -16
-    else
-      @offset_y = 0
+    unless @direction_fix
+      @direction = (@direction == 6 ? 4 : @direction == 8 ? 2 : @direction)
+    end
+    if can_move_in_direction?(1)
+      @move_initial_x = @x
+      @move_initial_y = @y
+      @x -= 1
+      @y += 1
+      @move_timer = 0.0
+      increase_steps
     end
   end
 
   alias move_lower_right_stairs move_lower_right
   def move_lower_right
-    move_lower_right_stairs
-    if self.map.terrain_tag(@x, @y) == :StairLeft || self.map.terrain_tag(@x, @y) == :StairRight
-      @offset_y = -16
-    else
-      @offset_y = 0
+    unless @direction_fix
+      @direction = (@direction == 4 ? 6 : @direction == 8 ? 2 : @direction)
+    end
+    if can_move_in_direction?(3)
+      @move_initial_x = @x
+      @move_initial_y = @y
+      @x += 1
+      @y += 1
+      @move_timer = 0.0
+      increase_steps
     end
   end
 end
@@ -167,39 +187,47 @@ end
 class Game_Player
   alias move_generic_stairs move_generic
 
-  def move_generic(dir, turn_enabled = true)
-    old_tag = self.map.terrain_tag(@x, @y).id
-    old_x = @x
-    if dir == 4
-      if old_tag == :StairLeft
-        if passable?(@x - 1, @y + 1, 4) && self.map.terrain_tag(@x - 1, @y + 1) == :StairLeft
-          @y += 1
-        end
-      elsif old_tag == :StairRight
-        if passable?(@x - 1, @y - 1, 6)
-          @y -= 1
-        end
-      end
-    elsif dir == 6
-      if old_tag == :StairLeft && passable?(@x + 1, @y - 1, 4)
-        @y -= 1
-      elsif old_tag == :StairRight && passable?(@x + 1, @y + 1, 6) && self.map.terrain_tag(@x + 1, @y + 1) == :StairRight
-        @y += 1
-      end
+def move_generic(dir, turn_enabled = true)
+  old_tag = self.map.terrain_tag(@x, @y).id
+  old_x = @x
+  old_y = @y
+  new_x = @x
+  new_y = @y
+
+  if dir == 4
+    if old_tag == :StairLeft && passable?(@x - 1, @y + 1, 4) && self.map.terrain_tag(@x - 1, @y + 1) == :StairLeft
+      new_x = @x - 1
+      new_y = @y + 1
+  elsif old_tag == :StairRight && passable?(@x - 1, @y - 1, 6)
+      new_x = @x - 1
+      new_y = @y - 1
     end
-    move_generic_stairs(dir, turn_enabled)
-    new_tag = self.map.terrain_tag(@x, @y)
-    if old_x != @x
-      if old_tag != :StairLeft && new_tag == :StairLeft ||
-         old_tag != :StairRight && new_tag == :StairRight
-        self.offset_y = -16
-        @y += 1 if (new_tag == :StairLeft && dir == 4) || (new_tag == :StairRight && dir == 6)
-      elsif old_tag == :StairLeft && new_tag != :StairLeft ||
-            old_tag == :StairRight && new_tag != :StairRight
-        self.offset_y = 0
-      end
+  elsif dir == 6
+    if old_tag == :StairLeft && passable?(@x + 1, @y - 1, 4)
+      new_x = @x + 1
+      new_y = @y - 1
+    elsif old_tag == :StairRight && passable?(@x + 1, @y + 1, 6) && self.map.terrain_tag(@x + 1, @y + 1) == :StairRight
+      new_x = @x + 1
+      new_y = @y + 1
     end
   end
+  if old_x != new_x || old_y != new_y
+    moveto(new_x, new_y)
+  else
+    move_generic_stairs(dir, turn_enabled)
+  end
+  new_tag = self.map.terrain_tag(@x, @y)
+  if old_x != @x
+    if old_tag != :StairLeft && new_tag == :StairLeft ||
+       old_tag != :StairRight && new_tag == :StairRight
+      self.offset_y = -16
+      @y += 1 if (new_tag == :StairLeft && dir == 4) || (new_tag == :StairRight && dir == 6)
+    elsif old_tag == :StairLeft && new_tag != :StairLeft ||
+          old_tag == :StairRight && new_tag != :StairRight
+      self.offset_y = 0
+    end
+  end
+end
 
   alias center_stairs center
 
@@ -253,55 +281,59 @@ class Game_Follower
     @through = old_through
   end
 
-  def move_fancy(direction,leader)
-    delta_x = (direction == 6) ? 1 : (direction == 4) ? -1 : 0
-    delta_y = (direction == 2) ? 1 : (direction == 8) ? -1 : 0
-    dir = direction
-    old_tag = self.map.terrain_tag(self.x, self.y).id
-    old_x = self.x
-    if direction == 4
-      if old_tag == :StairLeft
-        if passable?(self.x - 1, self.y + 1, 4) && self.map.terrain_tag(self.x - 1, self.y + 1) == :StairLeft
-          delta_y += 1
-          dir = 1
-        end
-      elsif old_tag == :StairRight
-        if passable?(self.x - 1, self.y - 1, 6)
-          delta_y -= 1
-          dir = 7
-        end
-      end
-    elsif direction == 6
-      if old_tag == :StairLeft && passable?(self.x + 1, self.y - 1, 4)
-        delta_y -= 1
-        dir = 9
-      elsif old_tag == :StairRight && passable?(self.x + 1, self.y + 1, 6) && self.map.terrain_tag(self.x + 1, self.y + 1) == :StairRight
+def move_fancy(direction, leader)
+  delta_x = (direction == 6) ? 1 : (direction == 4) ? -1 : 0
+  delta_y = (direction == 2) ? 1 : (direction == 8) ? -1 : 0
+  dir = direction
+  old_tag = self.map.terrain_tag(self.x, self.y).id
+  old_x = self.x
+
+  if direction == 4
+    if old_tag == :StairLeft
+      if passable?(self.x - 1, self.y + 1, 4) && self.map.terrain_tag(self.x - 1, self.y + 1) == :StairLeft
         delta_y += 1
-        dir = 3
+        dir = 1
+      end
+    elsif old_tag == :StairRight
+      if passable?(self.x - 1, self.y - 1, 6)
+        delta_y -= 1
+        dir = 7
       end
     end
-    new_x = self.x + delta_x
-    new_y = self.y + delta_y
-    # Move if new position is the player's, or the new position is passable,
-    # or self's current position is not passable
-    if ($game_player.x == new_x && $game_player.y == new_y) ||
-       location_passable?(new_x, new_y, 10 - direction) ||
-       !location_passable?(self.x, self.y, direction)
-      move_through(dir)
+  elsif direction == 6
+    if old_tag == :StairLeft && passable?(self.x + 1, self.y - 1, 4)
+      delta_y -= 1
+      dir = 9
+    elsif old_tag == :StairRight && passable?(self.x + 1, self.y + 1, 6) && self.map.terrain_tag(self.x + 1, self.y + 1) == :StairRight
+      delta_y += 1
+      dir = 3
     end
-    new_tag = self.map.terrain_tag(self.x, self.y)
-    if old_x != self.x
-      if old_tag != :StairLeft && new_tag == :StairLeft ||
-         old_tag != :StairRight && new_tag == :StairRight
-        self.offset_y = -16
-        @y += 1 if (new_tag == :StairLeft && direction == 4) || (new_tag == :StairRight && direction == 6)
-      elsif old_tag == :StairLeft && new_tag != :StairLeft ||
-            old_tag == :StairRight && new_tag != :StairRight
-        self.offset_y = 0
-      end
-    end
-    turn_towards_leader(leader)
   end
+
+  new_x = self.x + delta_x
+  new_y = self.y + delta_y
+
+  if ($game_player.x == new_x && $game_player.y == new_y) ||
+     location_passable?(new_x, new_y, 10 - direction) ||
+     !location_passable?(self.x, self.y, direction)
+    move_through(dir)
+  end
+
+  new_tag = self.map.terrain_tag(self.x, self.y)
+  if old_x != self.x
+    if old_tag != :StairLeft && new_tag == :StairLeft ||
+       old_tag != :StairRight && new_tag == :StairRight
+      self.offset_y = -16
+      @y += 1 if (new_tag == :StairLeft && direction == 4) || (new_tag == :StairRight && direction == 6)
+    elsif old_tag == :StairLeft && new_tag != :StairLeft ||
+          old_tag == :StairRight && new_tag != :StairRight
+      self.offset_y = 0
+    end
+  end
+
+  turn_towards_leader(leader)
+end
+
 
   def jump_fancy(direction, leader)
     delta_x = (direction == 6) ? 2 : (direction == 4) ? -2 : 0
@@ -316,11 +348,11 @@ class Game_Follower
       # Can't walk over the middle tile, but can walk over the end tile; jump over
       if location_passable?(self.x, self.y, direction)
         if leader.jumping?
-          @jump_speed_real = leader.jump_speed_real
+          @jump_speed = leader.jump_speed
         else
           # This is doubled because self has to jump 2 tiles in the time it
           # takes the leader to move one tile.
-          @jump_speed_real = leader.move_speed_real * 2
+          @jump_speed = leader.move_speed * 2
         end
         jump(delta_x, delta_y)
       else

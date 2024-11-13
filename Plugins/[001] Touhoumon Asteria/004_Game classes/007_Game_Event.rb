@@ -2,7 +2,7 @@
 class Game_Event < Game_Character
 
   def badgeQtyOdd?
-	return $Trainer.badge_count > 0 && $Trainer.badge_count % 2 != 0
+	return $player.badge_count > 0 && $player.badge_count % 2 != 0
   end
   
 end
