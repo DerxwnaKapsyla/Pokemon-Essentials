@@ -14678,7 +14678,7 @@ List of Event Commands:
 
 #------------------------------------------------------------------------------
 Event ID: 040
-Event Name: Counter(3)
+Event Name: NPC Roadblock
 (X,Y): (055,011)
 
 Page #1
@@ -14696,6 +14696,8 @@ Move Animation
 Trigger: Event Touch
 
 List of Event Commands:
+@>Text: Have you checked up the museum? They're holding a 
+ :    : special exhibit there!
 @>Set Move Route: This event
  :              : $>Turn Down
 @>
@@ -49886,16 +49888,12 @@ List of Event Commands:
  @>Text: \xn[\pn]Hopefully by that point, these clues will have led to
   :    : something concrete!
  @>Comment: --------------------
- @>Script: $GameSpeed = 0
- :       : $frame = 0
- :       : pbDisallowSpeedup
  @>Change Screen Color Tone: (-255,-255,-255,0), @20
  @>Fade Out BGM: 1 sec.
  @>Wait: 20 frame(s)
  @>Script: Act1End_Renko.new
  @>Wait: 20 frame(s)
  @>Comment: --------------------
- @>Script: pbAllowSpeedup
  @>Control Variables: [0110: Plot Control Variable] = 17
  @>Text: \bWould you like to travel to Viridian City immediately?
  @>Show Choices: Yes, No
@@ -50085,16 +50083,12 @@ List of Event Commands:
  @>Text: \xn[\pn]Hopefully by that point, these clues will have led to
   :    : something concrete!
  @>Comment: --------------------
- @>Script: $GameSpeed = 0
- :       : $frame = 0
- :       : pbDisallowSpeedup
  @>Change Screen Color Tone: (-255,-255,-255,0), @20
  @>Fade Out BGM: 1 sec.
  @>Wait: 20 frame(s)
  @>Script: Act1End_Maribel.new
  @>Wait: 20 frame(s)
  @>Comment: --------------------
- @>Script: pbAllowSpeedup
  @>Control Variables: [0110: Plot Control Variable] = 17
  @>Text: \bWould you like to travel to Viridian City immediately?
  @>Show Choices: Yes, No
@@ -52412,14 +52406,6 @@ Move Animation
 Trigger: Autorun
 
 List of Event Commands:
-@>Comment: Every map you can end up in after having all your 
- :       : Pokémon faint (typically Poké Centers and home) 
- :       : must have an Autorun event in it like this one.
- :       : This event fully heals all the player's Pokémon, says 
- :       : something to that effect, and turns the "Starting 
- :       : over" switch OFF again.
-@>Comment: For convenience, this can be a single page in an 
- :       : NPC's event (e.g. Mom, a nurse).
 @>Text: \rFirst, you should restore your Pokémon to full 
  :    : health.
 @>Recover All: Entire Party
@@ -61339,47 +61325,59 @@ Trigger: Action Button
 List of Event Commands:
 @>Script: pbSetPokemonCenter
 @>Text: \rHello, and welcome to the Pokémon Center.
-@>Text: \rWe restore your tired partners to full health.
-@>Text: \rWould you like to rest your team?
+@>Text: \rWe restore your tired Pokémon to full health.
+@>Text: \rWould you like to rest your Pokémon?
 @>Show Choices: Yes, No
 (When Cancel: Choice 2)
 : When [Yes]
- @>Text: \rOK, I'll take your party for a few seconds.
+ @>Text: \rOK, I'll take your Pokémon for a few seconds.
+ @>Script: $stats.poke_center_count += 1
  @>Recover All: Entire Party
+ @>Comment: Nurse turns to face the healing machine.
  @>Set Move Route: This event
   :              : $>Turn Left
   :              : $>Wait: 2 frame(s)
  @>Wait for Move's Completion
+ @>Comment: Nurse places Poké Balls on the healing machine one at 
+  :       : a time.
+ @>Control Variables: [0001: Temp Pokemon Choice] = Party Members
  @>Control Variables: [0006: Poké Center healing ball count] = 0
- @>Script: count=$player.pokemonCount
- :       : for i in 1..count
- :       :   pbSet(6,i)
- :       :   pbSEPlay("ballshake")
- :       :   pbWait(16)
- :       : end
+ @>Label: Place ball
+ @>Control Variables: [0006: Poké Center healing ball count] += 1
+ @>Play SE: 'Battle ball shake', 80, 100
+ @>Wait: 8 frame(s)
+ @>Conditional Branch: Variable [0006: Poké Center healing ball count] < Variable [0001: Temp Pokemon Choice]
+  @>Jump to Label: Place ball
+  @>
+ : Branch End
+ @>Comment: Healing animation and ME jingle.
  @>Set Move Route: []
   :              : $>Stop Animation ON
- @>Play ME: 'Pokemon Healing', 100, 100
+ @>Play ME: 'Pkmn healing', 100, 100
  @>Wait: 58 frame(s)
+ @>Comment: Poké Balls are removed from healing machine, nurse 
+  :       : turns to face the player.
  @>Control Variables: [0006: Poké Center healing ball count] = 0
+ @>Script: get_character(4).pattern = 0
  @>Set Move Route: []
   :              : $>Stop Animation OFF
  @>Set Move Route: This event
   :              : $>Wait: 15 frame(s)
   :              : $>Turn Down
  @>Wait for Move's Completion
+ @>Comment: Pokérus check.
  @>Conditional Branch: Script: pbPokerus?
-  @>Text: \rYour party may have been infected by PokeRus.
-  @>Text: \rLittle is known about the PokeRus except that they 
-   :    : are microscopic life-forms that attach to Pokémon
-   :    : and Puppets.
-  @>Text: \rThose that are infeted with it are said to grow 
+  @>Text: \rYour Pokémon may be infected by Pokérus.
+  @>Text: \rLittle is known about the Pokérus except that they 
+   :    : are microscopic life-forms that attach to Pokémon.
+  @>Text: \rWhile infected, Pokémon are said to grow 
    :    : exceptionally well.
   @>Control Switches: [0002: Seen Pokérus in Poké Center] = ON
   @>
  : Else
   @>Text: \rThank you for waiting.
-  @>Text: \rWe've restored your party to full health.
+  @>Text: \rWe've restored your Pokémon to full health.
+  @>Comment: Nurse bows.
   @>Set Move Route: This event
    :              : $>Graphic: "NPC 16', 0, 2, 1
    :              : $>Wait: 10 frame(s)
@@ -61410,7 +61408,7 @@ Move Animation
 Trigger: Autorun
 
 List of Event Commands:
-@>Text: \rFirst, you should let your partners recover to full 
+@>Text: \rFirst, you should restore your Pokémon to full 
  :    : health.
 @>Recover All: Entire Party
 @>Set Move Route: This event
@@ -61418,23 +61416,24 @@ List of Event Commands:
  :              : $>Wait: 2 frame(s)
 @>Wait for Move's Completion
 @>Control Variables: [0006: Poké Center healing ball count] = 0
-@>Script: for i in 1..$player.pokemonCount
-:       :   pbSet(6,i)
-:       :   pbSEPlay("ballshake")
+@>Script: for i in 1..$player.pokemon_count
+:       :   pbSet(6, i)
+:       :   pbSEPlay("Battle ball shake")
 :       :   pbWait(16)
 :       : end
 @>Set Move Route: []
  :              : $>Stop Animation ON
-@>Play ME: 'Pokemon Healing', 100, 100
+@>Play ME: 'Pkmn healing', 100, 100
 @>Wait: 58 frame(s)
 @>Control Variables: [0006: Poké Center healing ball count] = 0
+@>Script: get_character(4).pattern = 0
 @>Set Move Route: []
  :              : $>Stop Animation OFF
 @>Set Move Route: This event
  :              : $>Wait: 15 frame(s)
  :              : $>Turn Down
 @>Wait for Move's Completion
-@>Text: \rYour party has been healed to perfect health.
+@>Text: \rYour Pokémon have been healed to perfect health.
 @>Set Move Route: This event
  :              : $>Graphic: "NPC 16', 0, 2, 1
  :              : $>Wait: 10 frame(s)
@@ -62147,12 +62146,6 @@ Move Animation
 Trigger: Action Button
 
 List of Event Commands:
-@>Comment: This line of code sets the player's current position as 
- :       : the spot they will return to after they lose a battle 
- :       : and lack out.
- :       : Page 2 of this event detects when this happens, and 
- :       : heals the player's Pokémon and wishes them better 
- :       : luck in future.
 @>Script: pbSetPokemonCenter
 @>Text: \rHello, and welcome to the Pokémon Center.
 @>Text: \rWe restore your tired Pokémon to full health.
@@ -62161,22 +62154,32 @@ List of Event Commands:
 (When Cancel: Choice 2)
 : When [Yes]
  @>Text: \rOK, I'll take your Pokémon for a few seconds.
+ @>Script: $stats.poke_center_count += 1
  @>Recover All: Entire Party
+ @>Comment: Nurse turns to face the healing machine.
  @>Set Move Route: This event
   :              : $>Turn Left
   :              : $>Wait: 2 frame(s)
  @>Wait for Move's Completion
+ @>Comment: Nurse places Poké Balls on the healing machine one at 
+  :       : a time.
+ @>Control Variables: [0001: Temp Pokemon Choice] = Party Members
  @>Control Variables: [0006: Poké Center healing ball count] = 0
- @>Script: count = $player.pokemon_count
- :       : for i in 1..count
- :       :   pbSet(6, i)
- :       :   pbSEPlay("Battle ball shake")
- :       :   pbWait(16)
- :       : end
+ @>Label: Place ball
+ @>Control Variables: [0006: Poké Center healing ball count] += 1
+ @>Play SE: 'Battle ball shake', 80, 100
+ @>Wait: 8 frame(s)
+ @>Conditional Branch: Variable [0006: Poké Center healing ball count] < Variable [0001: Temp Pokemon Choice]
+  @>Jump to Label: Place ball
+  @>
+ : Branch End
+ @>Comment: Healing animation and ME jingle.
  @>Set Move Route: [Healing balls]
   :              : $>Stop Animation ON
  @>Play ME: 'Pkmn healing', 100, 100
  @>Wait: 58 frame(s)
+ @>Comment: Poké Balls are removed from healing machine, nurse 
+  :       : turns to face the player.
  @>Control Variables: [0006: Poké Center healing ball count] = 0
  @>Script: get_character(4).pattern = 0
  @>Set Move Route: [Healing balls]
@@ -62185,9 +62188,10 @@ List of Event Commands:
   :              : $>Wait: 15 frame(s)
   :              : $>Turn Down
  @>Wait for Move's Completion
+ @>Comment: Pokérus check.
  @>Conditional Branch: Script: pbPokerus?
-  @>Text: \rYour Pokémon may be infected by PokeRus.
-  @>Text: \rLittle is known about the PokeRus except that they 
+  @>Text: \rYour Pokémon may be infected by Pokérus.
+  @>Text: \rLittle is known about the Pokérus except that they 
    :    : are microscopic life-forms that attach to Pokémon.
   @>Text: \rWhile infected, Pokémon are said to grow 
    :    : exceptionally well.
@@ -62196,6 +62200,7 @@ List of Event Commands:
  : Else
   @>Text: \rThank you for waiting.
   @>Text: \rWe've restored your Pokémon to full health.
+  @>Comment: Nurse bows.
   @>Set Move Route: This event
    :              : $>Graphic: "NPC 16', 0, 2, 1
    :              : $>Wait: 10 frame(s)
@@ -62226,14 +62231,6 @@ Move Animation
 Trigger: Autorun
 
 List of Event Commands:
-@>Comment: Every map you can end up in after having all your 
- :       : Pokémon faint (typically Poké Centers and home) 
- :       : must have an Autorun event in it like this one.
- :       : This event fully heals all the player's Pokémon, says 
- :       : something to that effect, and turns the "Starting 
- :       : over" switch OFF again.
-@>Comment: For convenience, this can be a single page in an 
- :       : NPC's event (e.g. Mom, a nurse).
 @>Text: \rFirst, you should restore your Pokémon to full 
  :    : health.
 @>Recover All: Entire Party
@@ -67079,52 +67076,6 @@ List of Event Commands:
 @>
 
 #------------------------------------------------------------------------------
-Event ID: 003
-Event Name: Slope
-(X,Y): (016,029)
-
-Page #1
-Conditions
-None
-
-Autonomous Movement
-Type: Fixed
-Speed: 3: Slow
-Freq: 3: Low
-Options Enabled
-Move Animation
-Trigger: Event Touch
-
-List of Event Commands:
-@>Comment: Slope: 2x-1
-@>Comment: Width: 0/3
-@>Comment: Offset: 16px
-@>
-
-#------------------------------------------------------------------------------
-Event ID: 004
-Event Name: Slope
-(X,Y): (016,028)
-
-Page #1
-Conditions
-None
-
-Autonomous Movement
-Type: Fixed
-Speed: 3: Slow
-Freq: 3: Low
-Options Enabled
-Move Animation
-Trigger: Event Touch
-
-List of Event Commands:
-@>Comment: Slope: 2x-1
-@>Comment: Width: 1/3
-@>Comment: Offset: 16px
-@>
-
-#------------------------------------------------------------------------------
 Event ID: 005
 Event Name: EV005
 (X,Y): (019,022)
@@ -67321,98 +67272,6 @@ List of Event Commands:
 @>
 
 #------------------------------------------------------------------------------
-Event ID: 008
-Event Name: Slope
-(X,Y): (016,027)
-
-Page #1
-Conditions
-None
-
-Autonomous Movement
-Type: Fixed
-Speed: 3: Slow
-Freq: 3: Low
-Options Enabled
-Move Animation
-Trigger: Event Touch
-
-List of Event Commands:
-@>Comment: Slope: 2x-1
-@>Comment: Width: 2/3
-@>Comment: Offset: 16px
-@>
-
-#------------------------------------------------------------------------------
-Event ID: 009
-Event Name: Slope
-(X,Y): (018,028)
-
-Page #1
-Conditions
-None
-
-Autonomous Movement
-Type: Fixed
-Speed: 3: Slow
-Freq: 3: Low
-Options Enabled
-Move Animation
-Trigger: Event Touch
-
-List of Event Commands:
-@>Comment: Slope: -2x1
-@>Comment: Width: 0/3
-@>Comment: Offset: 16px
-@>
-
-#------------------------------------------------------------------------------
-Event ID: 010
-Event Name: Slope
-(X,Y): (018,027)
-
-Page #1
-Conditions
-None
-
-Autonomous Movement
-Type: Fixed
-Speed: 3: Slow
-Freq: 3: Low
-Options Enabled
-Move Animation
-Trigger: Event Touch
-
-List of Event Commands:
-@>Comment: Slope: -2x1
-@>Comment: Width: 1/3
-@>Comment: Offset: 16px
-@>
-
-#------------------------------------------------------------------------------
-Event ID: 011
-Event Name: Slope
-(X,Y): (018,026)
-
-Page #1
-Conditions
-None
-
-Autonomous Movement
-Type: Fixed
-Speed: 3: Slow
-Freq: 3: Low
-Options Enabled
-Move Animation
-Trigger: Event Touch
-
-List of Event Commands:
-@>Comment: Slope: -2x1
-@>Comment: Width: 2/3
-@>Comment: Offset: 16px
-@>
-
-#------------------------------------------------------------------------------
 Event ID: 012
 Event Name: Nurse
 (X,Y): (030,021)
@@ -67449,7 +67308,7 @@ List of Event Commands:
 #------------------------------------------------------------------------------
 Event ID: 013
 Event Name: EV013
-(X,Y): (022,021)
+(X,Y): (037,007)
 
 Page #1
 Conditions
@@ -71752,12 +71611,6 @@ Move Animation
 Trigger: Action Button
 
 List of Event Commands:
-@>Comment: This line of code sets the player's current position as 
- :       : the spot they will return to after they lose a battle 
- :       : and lack out.
- :       : Page 2 of this event detects when this happens, and 
- :       : heals the player's Pokémon and wishes them better 
- :       : luck in future.
 @>Script: pbSetPokemonCenter
 @>Text: \rHello, and welcome to the Pokémon Center.
 @>Text: \rWe restore your tired Pokémon to full health.
@@ -71766,22 +71619,32 @@ List of Event Commands:
 (When Cancel: Choice 2)
 : When [Yes]
  @>Text: \rOK, I'll take your Pokémon for a few seconds.
+ @>Script: $stats.poke_center_count += 1
  @>Recover All: Entire Party
+ @>Comment: Nurse turns to face the healing machine.
  @>Set Move Route: This event
   :              : $>Turn Left
   :              : $>Wait: 2 frame(s)
  @>Wait for Move's Completion
+ @>Comment: Nurse places Poké Balls on the healing machine one at 
+  :       : a time.
+ @>Control Variables: [0001: Temp Pokemon Choice] = Party Members
  @>Control Variables: [0006: Poké Center healing ball count] = 0
- @>Script: count = $player.pokemon_count
- :       : for i in 1..count
- :       :   pbSet(6, i)
- :       :   pbSEPlay("Battle ball shake")
- :       :   pbWait(16)
- :       : end
+ @>Label: Place ball
+ @>Control Variables: [0006: Poké Center healing ball count] += 1
+ @>Play SE: 'Battle ball shake', 80, 100
+ @>Wait: 8 frame(s)
+ @>Conditional Branch: Variable [0006: Poké Center healing ball count] < Variable [0001: Temp Pokemon Choice]
+  @>Jump to Label: Place ball
+  @>
+ : Branch End
+ @>Comment: Healing animation and ME jingle.
  @>Set Move Route: [Healing balls]
   :              : $>Stop Animation ON
  @>Play ME: 'Pkmn healing', 100, 100
  @>Wait: 58 frame(s)
+ @>Comment: Poké Balls are removed from healing machine, nurse 
+  :       : turns to face the player.
  @>Control Variables: [0006: Poké Center healing ball count] = 0
  @>Script: get_character(4).pattern = 0
  @>Set Move Route: [Healing balls]
@@ -71790,9 +71653,10 @@ List of Event Commands:
   :              : $>Wait: 15 frame(s)
   :              : $>Turn Down
  @>Wait for Move's Completion
+ @>Comment: Pokérus check.
  @>Conditional Branch: Script: pbPokerus?
-  @>Text: \rYour Pokémon may be infected by PokeRus.
-  @>Text: \rLittle is known about the PokeRus except that they 
+  @>Text: \rYour Pokémon may be infected by Pokérus.
+  @>Text: \rLittle is known about the Pokérus except that they 
    :    : are microscopic life-forms that attach to Pokémon.
   @>Text: \rWhile infected, Pokémon are said to grow 
    :    : exceptionally well.
@@ -71801,6 +71665,7 @@ List of Event Commands:
  : Else
   @>Text: \rThank you for waiting.
   @>Text: \rWe've restored your Pokémon to full health.
+  @>Comment: Nurse bows.
   @>Set Move Route: This event
    :              : $>Graphic: "NPC 16', 0, 2, 1
    :              : $>Wait: 10 frame(s)
@@ -71831,14 +71696,6 @@ Move Animation
 Trigger: Autorun
 
 List of Event Commands:
-@>Comment: Every map you can end up in after having all your 
- :       : Pokémon faint (typically Poké Centers and home) 
- :       : must have an Autorun event in it like this one.
- :       : This event fully heals all the player's Pokémon, says 
- :       : something to that effect, and turns the "Starting 
- :       : over" switch OFF again.
-@>Comment: For convenience, this can be a single page in an 
- :       : NPC's event (e.g. Mom, a nurse).
 @>Text: \rFirst, you should restore your Pokémon to full 
  :    : health.
 @>Recover All: Entire Party
@@ -74952,12 +74809,6 @@ Move Animation
 Trigger: Action Button
 
 List of Event Commands:
-@>Comment: This line of code sets the player's current position as 
- :       : the spot they will return to after they lose a battle 
- :       : and lack out.
- :       : Page 2 of this event detects when this happens, and 
- :       : heals the player's Pokémon and wishes them better 
- :       : luck in future.
 @>Script: pbSetPokemonCenter
 @>Text: \rHello, and welcome to the Pokémon Center.
 @>Text: \rWe restore your tired Pokémon to full health.
@@ -74966,22 +74817,32 @@ List of Event Commands:
 (When Cancel: Choice 2)
 : When [Yes]
  @>Text: \rOK, I'll take your Pokémon for a few seconds.
+ @>Script: $stats.poke_center_count += 1
  @>Recover All: Entire Party
+ @>Comment: Nurse turns to face the healing machine.
  @>Set Move Route: This event
   :              : $>Turn Left
   :              : $>Wait: 2 frame(s)
  @>Wait for Move's Completion
+ @>Comment: Nurse places Poké Balls on the healing machine one at 
+  :       : a time.
+ @>Control Variables: [0001: Temp Pokemon Choice] = Party Members
  @>Control Variables: [0006: Poké Center healing ball count] = 0
- @>Script: count = $player.pokemon_count
- :       : for i in 1..count
- :       :   pbSet(6, i)
- :       :   pbSEPlay("Battle ball shake")
- :       :   pbWait(16)
- :       : end
+ @>Label: Place ball
+ @>Control Variables: [0006: Poké Center healing ball count] += 1
+ @>Play SE: 'Battle ball shake', 80, 100
+ @>Wait: 8 frame(s)
+ @>Conditional Branch: Variable [0006: Poké Center healing ball count] < Variable [0001: Temp Pokemon Choice]
+  @>Jump to Label: Place ball
+  @>
+ : Branch End
+ @>Comment: Healing animation and ME jingle.
  @>Set Move Route: [Healing balls]
   :              : $>Stop Animation ON
  @>Play ME: 'Pkmn healing', 100, 100
  @>Wait: 58 frame(s)
+ @>Comment: Poké Balls are removed from healing machine, nurse 
+  :       : turns to face the player.
  @>Control Variables: [0006: Poké Center healing ball count] = 0
  @>Script: get_character(4).pattern = 0
  @>Set Move Route: [Healing balls]
@@ -74990,9 +74851,10 @@ List of Event Commands:
   :              : $>Wait: 15 frame(s)
   :              : $>Turn Down
  @>Wait for Move's Completion
+ @>Comment: Pokérus check.
  @>Conditional Branch: Script: pbPokerus?
-  @>Text: \rYour Pokémon may be infected by PokeRus.
-  @>Text: \rLittle is known about the PokeRus except that they 
+  @>Text: \rYour Pokémon may be infected by Pokérus.
+  @>Text: \rLittle is known about the Pokérus except that they 
    :    : are microscopic life-forms that attach to Pokémon.
   @>Text: \rWhile infected, Pokémon are said to grow 
    :    : exceptionally well.
@@ -75001,6 +74863,7 @@ List of Event Commands:
  : Else
   @>Text: \rThank you for waiting.
   @>Text: \rWe've restored your Pokémon to full health.
+  @>Comment: Nurse bows.
   @>Set Move Route: This event
    :              : $>Graphic: "NPC 16', 0, 2, 1
    :              : $>Wait: 10 frame(s)
@@ -75031,14 +74894,6 @@ Move Animation
 Trigger: Autorun
 
 List of Event Commands:
-@>Comment: Every map you can end up in after having all your 
- :       : Pokémon faint (typically Poké Centers and home) 
- :       : must have an Autorun event in it like this one.
- :       : This event fully heals all the player's Pokémon, says 
- :       : something to that effect, and turns the "Starting 
- :       : over" switch OFF again.
-@>Comment: For convenience, this can be a single page in an 
- :       : NPC's event (e.g. Mom, a nurse).
 @>Text: \rFirst, you should restore your Pokémon to full 
  :    : health.
 @>Recover All: Entire Party
@@ -82007,12 +81862,6 @@ Move Animation
 Trigger: Action Button
 
 List of Event Commands:
-@>Comment: This line of code sets the player's current position as 
- :       : the spot they will return to after they lose a battle 
- :       : and lack out.
- :       : Page 2 of this event detects when this happens, and 
- :       : heals the player's Pokémon and wishes them better 
- :       : luck in future.
 @>Script: pbSetPokemonCenter
 @>Text: \rHello, and welcome to the Pokémon Center.
 @>Text: \rWe restore your tired Pokémon to full health.
@@ -82021,22 +81870,32 @@ List of Event Commands:
 (When Cancel: Choice 2)
 : When [Yes]
  @>Text: \rOK, I'll take your Pokémon for a few seconds.
+ @>Script: $stats.poke_center_count += 1
  @>Recover All: Entire Party
+ @>Comment: Nurse turns to face the healing machine.
  @>Set Move Route: This event
   :              : $>Turn Left
   :              : $>Wait: 2 frame(s)
  @>Wait for Move's Completion
+ @>Comment: Nurse places Poké Balls on the healing machine one at 
+  :       : a time.
+ @>Control Variables: [0001: Temp Pokemon Choice] = Party Members
  @>Control Variables: [0006: Poké Center healing ball count] = 0
- @>Script: count = $player.pokemon_count
- :       : for i in 1..count
- :       :   pbSet(6, i)
- :       :   pbSEPlay("Battle ball shake")
- :       :   pbWait(16)
- :       : end
+ @>Label: Place ball
+ @>Control Variables: [0006: Poké Center healing ball count] += 1
+ @>Play SE: 'Battle ball shake', 80, 100
+ @>Wait: 8 frame(s)
+ @>Conditional Branch: Variable [0006: Poké Center healing ball count] < Variable [0001: Temp Pokemon Choice]
+  @>Jump to Label: Place ball
+  @>
+ : Branch End
+ @>Comment: Healing animation and ME jingle.
  @>Set Move Route: [Healing balls]
   :              : $>Stop Animation ON
  @>Play ME: 'Pkmn healing', 100, 100
  @>Wait: 58 frame(s)
+ @>Comment: Poké Balls are removed from healing machine, nurse 
+  :       : turns to face the player.
  @>Control Variables: [0006: Poké Center healing ball count] = 0
  @>Script: get_character(4).pattern = 0
  @>Set Move Route: [Healing balls]
@@ -82045,9 +81904,10 @@ List of Event Commands:
   :              : $>Wait: 15 frame(s)
   :              : $>Turn Down
  @>Wait for Move's Completion
+ @>Comment: Pokérus check.
  @>Conditional Branch: Script: pbPokerus?
-  @>Text: \rYour Pokémon may be infected by PokeRus.
-  @>Text: \rLittle is known about the PokeRus except that they 
+  @>Text: \rYour Pokémon may be infected by Pokérus.
+  @>Text: \rLittle is known about the Pokérus except that they 
    :    : are microscopic life-forms that attach to Pokémon.
   @>Text: \rWhile infected, Pokémon are said to grow 
    :    : exceptionally well.
@@ -82056,6 +81916,7 @@ List of Event Commands:
  : Else
   @>Text: \rThank you for waiting.
   @>Text: \rWe've restored your Pokémon to full health.
+  @>Comment: Nurse bows.
   @>Set Move Route: This event
    :              : $>Graphic: "NPC 16', 0, 2, 1
    :              : $>Wait: 10 frame(s)
@@ -82086,14 +81947,6 @@ Move Animation
 Trigger: Autorun
 
 List of Event Commands:
-@>Comment: Every map you can end up in after having all your 
- :       : Pokémon faint (typically Poké Centers and home) 
- :       : must have an Autorun event in it like this one.
- :       : This event fully heals all the player's Pokémon, says 
- :       : something to that effect, and turns the "Starting 
- :       : over" switch OFF again.
-@>Comment: For convenience, this can be a single page in an 
- :       : NPC's event (e.g. Mom, a nurse).
 @>Text: \rFirst, you should restore your Pokémon to full 
  :    : health.
 @>Recover All: Entire Party
@@ -88622,6 +88475,37 @@ List of Event Commands:
 
 Page #3
 Conditions
+Self Switch A is ON
+
+Graphic: OW - Puppet_Kana
+
+Autonomous Movement
+Type: Custom
+Custom Move Route:
+(Repeat Action)
+$>Turn at Random
+
+Speed: 3: Slow
+Freq: 5: Higher
+Options Enabled
+Move Animation
+Trigger: Action Button
+
+List of Event Commands:
+@>Script: Pokemon.play_cry(:CKANA)
+@>Text: \xn[CKana]!!!
+@>Text: \pn retrieved the Puppet! Better return them to Mr. Fuji!
+@>Recover All: Entire Party
+@>Script: Followers.add(@event_id,"CKana",2)
+@>Script: pbSetSelfSwitch2(249,5,"B",true)
+@>Comment: Need to test this self switch making the event 
+ :       : disappear eventually, cba to do so right now.
+ :       : Good luck future me!
+@>Control Self Switch: B =ON
+@>
+
+Page #4
+Conditions
 Self Switch B is ON
 
 Autonomous Movement
@@ -88635,7 +88519,7 @@ Trigger: Action Button
 List of Event Commands:
 @>
 
-Page #4
+Page #5
 Conditions
 Variable 0110: Plot Control Variable is 9 or above
 
@@ -91852,12 +91736,6 @@ Move Animation
 Trigger: Action Button
 
 List of Event Commands:
-@>Comment: This line of code sets the player's current position as 
- :       : the spot they will return to after they lose a battle 
- :       : and lack out.
- :       : Page 2 of this event detects when this happens, and 
- :       : heals the player's Pokémon and wishes them better 
- :       : luck in future.
 @>Script: pbSetPokemonCenter
 @>Text: \rHello, and welcome to the Pokémon Center.
 @>Text: \rWe restore your tired Pokémon to full health.
@@ -91866,22 +91744,32 @@ List of Event Commands:
 (When Cancel: Choice 2)
 : When [Yes]
  @>Text: \rOK, I'll take your Pokémon for a few seconds.
+ @>Script: $stats.poke_center_count += 1
  @>Recover All: Entire Party
+ @>Comment: Nurse turns to face the healing machine.
  @>Set Move Route: This event
   :              : $>Turn Left
   :              : $>Wait: 2 frame(s)
  @>Wait for Move's Completion
+ @>Comment: Nurse places Poké Balls on the healing machine one at 
+  :       : a time.
+ @>Control Variables: [0001: Temp Pokemon Choice] = Party Members
  @>Control Variables: [0006: Poké Center healing ball count] = 0
- @>Script: count = $player.pokemon_count
- :       : for i in 1..count
- :       :   pbSet(6, i)
- :       :   pbSEPlay("Battle ball shake")
- :       :   pbWait(16)
- :       : end
+ @>Label: Place ball
+ @>Control Variables: [0006: Poké Center healing ball count] += 1
+ @>Play SE: 'Battle ball shake', 80, 100
+ @>Wait: 8 frame(s)
+ @>Conditional Branch: Variable [0006: Poké Center healing ball count] < Variable [0001: Temp Pokemon Choice]
+  @>Jump to Label: Place ball
+  @>
+ : Branch End
+ @>Comment: Healing animation and ME jingle.
  @>Set Move Route: [Healing balls]
   :              : $>Stop Animation ON
  @>Play ME: 'Pkmn healing', 100, 100
  @>Wait: 58 frame(s)
+ @>Comment: Poké Balls are removed from healing machine, nurse 
+  :       : turns to face the player.
  @>Control Variables: [0006: Poké Center healing ball count] = 0
  @>Script: get_character(4).pattern = 0
  @>Set Move Route: [Healing balls]
@@ -91890,9 +91778,10 @@ List of Event Commands:
   :              : $>Wait: 15 frame(s)
   :              : $>Turn Down
  @>Wait for Move's Completion
+ @>Comment: Pokérus check.
  @>Conditional Branch: Script: pbPokerus?
-  @>Text: \rYour Pokémon may be infected by PokeRus.
-  @>Text: \rLittle is known about the PokeRus except that they 
+  @>Text: \rYour Pokémon may be infected by Pokérus.
+  @>Text: \rLittle is known about the Pokérus except that they 
    :    : are microscopic life-forms that attach to Pokémon.
   @>Text: \rWhile infected, Pokémon are said to grow 
    :    : exceptionally well.
@@ -91901,6 +91790,7 @@ List of Event Commands:
  : Else
   @>Text: \rThank you for waiting.
   @>Text: \rWe've restored your Pokémon to full health.
+  @>Comment: Nurse bows.
   @>Set Move Route: This event
    :              : $>Graphic: "NPC 16', 0, 2, 1
    :              : $>Wait: 10 frame(s)
@@ -91931,14 +91821,6 @@ Move Animation
 Trigger: Autorun
 
 List of Event Commands:
-@>Comment: Every map you can end up in after having all your 
- :       : Pokémon faint (typically Poké Centers and home) 
- :       : must have an Autorun event in it like this one.
- :       : This event fully heals all the player's Pokémon, says 
- :       : something to that effect, and turns the "Starting 
- :       : over" switch OFF again.
-@>Comment: For convenience, this can be a single page in an 
- :       : NPC's event (e.g. Mom, a nurse).
 @>Text: \rFirst, you should restore your Pokémon to full 
  :    : health.
 @>Recover All: Entire Party
@@ -100739,12 +100621,6 @@ Move Animation
 Trigger: Action Button
 
 List of Event Commands:
-@>Comment: This line of code sets the player's current position as 
- :       : the spot they will return to after they lose a battle 
- :       : and lack out.
- :       : Page 2 of this event detects when this happens, and 
- :       : heals the player's Pokémon and wishes them better 
- :       : luck in future.
 @>Script: pbSetPokemonCenter
 @>Text: \rHello, and welcome to the Pokémon Center.
 @>Text: \rWe restore your tired Pokémon to full health.
@@ -100753,22 +100629,32 @@ List of Event Commands:
 (When Cancel: Choice 2)
 : When [Yes]
  @>Text: \rOK, I'll take your Pokémon for a few seconds.
+ @>Script: $stats.poke_center_count += 1
  @>Recover All: Entire Party
+ @>Comment: Nurse turns to face the healing machine.
  @>Set Move Route: This event
   :              : $>Turn Left
   :              : $>Wait: 2 frame(s)
  @>Wait for Move's Completion
+ @>Comment: Nurse places Poké Balls on the healing machine one at 
+  :       : a time.
+ @>Control Variables: [0001: Temp Pokemon Choice] = Party Members
  @>Control Variables: [0006: Poké Center healing ball count] = 0
- @>Script: count = $player.pokemon_count
- :       : for i in 1..count
- :       :   pbSet(6, i)
- :       :   pbSEPlay("Battle ball shake")
- :       :   pbWait(16)
- :       : end
+ @>Label: Place ball
+ @>Control Variables: [0006: Poké Center healing ball count] += 1
+ @>Play SE: 'Battle ball shake', 80, 100
+ @>Wait: 8 frame(s)
+ @>Conditional Branch: Variable [0006: Poké Center healing ball count] < Variable [0001: Temp Pokemon Choice]
+  @>Jump to Label: Place ball
+  @>
+ : Branch End
+ @>Comment: Healing animation and ME jingle.
  @>Set Move Route: [Healing balls]
   :              : $>Stop Animation ON
  @>Play ME: 'Pkmn healing', 100, 100
  @>Wait: 58 frame(s)
+ @>Comment: Poké Balls are removed from healing machine, nurse 
+  :       : turns to face the player.
  @>Control Variables: [0006: Poké Center healing ball count] = 0
  @>Script: get_character(4).pattern = 0
  @>Set Move Route: [Healing balls]
@@ -100777,9 +100663,10 @@ List of Event Commands:
   :              : $>Wait: 15 frame(s)
   :              : $>Turn Down
  @>Wait for Move's Completion
+ @>Comment: Pokérus check.
  @>Conditional Branch: Script: pbPokerus?
-  @>Text: \rYour Pokémon may be infected by PokeRus.
-  @>Text: \rLittle is known about the PokeRus except that they 
+  @>Text: \rYour Pokémon may be infected by Pokérus.
+  @>Text: \rLittle is known about the Pokérus except that they 
    :    : are microscopic life-forms that attach to Pokémon.
   @>Text: \rWhile infected, Pokémon are said to grow 
    :    : exceptionally well.
@@ -100788,6 +100675,7 @@ List of Event Commands:
  : Else
   @>Text: \rThank you for waiting.
   @>Text: \rWe've restored your Pokémon to full health.
+  @>Comment: Nurse bows.
   @>Set Move Route: This event
    :              : $>Graphic: "NPC 16', 0, 2, 1
    :              : $>Wait: 10 frame(s)
@@ -100818,14 +100706,6 @@ Move Animation
 Trigger: Autorun
 
 List of Event Commands:
-@>Comment: Every map you can end up in after having all your 
- :       : Pokémon faint (typically Poké Centers and home) 
- :       : must have an Autorun event in it like this one.
- :       : This event fully heals all the player's Pokémon, says 
- :       : something to that effect, and turns the "Starting 
- :       : over" switch OFF again.
-@>Comment: For convenience, this can be a single page in an 
- :       : NPC's event (e.g. Mom, a nurse).
 @>Text: \rFirst, you should restore your Pokémon to full 
  :    : health.
 @>Recover All: Entire Party
@@ -106437,12 +106317,6 @@ Move Animation
 Trigger: Action Button
 
 List of Event Commands:
-@>Comment: This line of code sets the player's current position as 
- :       : the spot they will return to after they lose a battle 
- :       : and lack out.
- :       : Page 2 of this event detects when this happens, and 
- :       : heals the player's Pokémon and wishes them better 
- :       : luck in future.
 @>Script: pbSetPokemonCenter
 @>Text: \rHello, and welcome to the Pokémon Center.
 @>Text: \rWe restore your tired Pokémon to full health.
@@ -106451,22 +106325,32 @@ List of Event Commands:
 (When Cancel: Choice 2)
 : When [Yes]
  @>Text: \rOK, I'll take your Pokémon for a few seconds.
+ @>Script: $stats.poke_center_count += 1
  @>Recover All: Entire Party
+ @>Comment: Nurse turns to face the healing machine.
  @>Set Move Route: This event
   :              : $>Turn Left
   :              : $>Wait: 2 frame(s)
  @>Wait for Move's Completion
+ @>Comment: Nurse places Poké Balls on the healing machine one at 
+  :       : a time.
+ @>Control Variables: [0001: Temp Pokemon Choice] = Party Members
  @>Control Variables: [0006: Poké Center healing ball count] = 0
- @>Script: count = $player.pokemon_count
- :       : for i in 1..count
- :       :   pbSet(6, i)
- :       :   pbSEPlay("Battle ball shake")
- :       :   pbWait(16)
- :       : end
+ @>Label: Place ball
+ @>Control Variables: [0006: Poké Center healing ball count] += 1
+ @>Play SE: 'Battle ball shake', 80, 100
+ @>Wait: 8 frame(s)
+ @>Conditional Branch: Variable [0006: Poké Center healing ball count] < Variable [0001: Temp Pokemon Choice]
+  @>Jump to Label: Place ball
+  @>
+ : Branch End
+ @>Comment: Healing animation and ME jingle.
  @>Set Move Route: [Healing balls]
   :              : $>Stop Animation ON
  @>Play ME: 'Pkmn healing', 100, 100
  @>Wait: 58 frame(s)
+ @>Comment: Poké Balls are removed from healing machine, nurse 
+  :       : turns to face the player.
  @>Control Variables: [0006: Poké Center healing ball count] = 0
  @>Script: get_character(4).pattern = 0
  @>Set Move Route: [Healing balls]
@@ -106475,9 +106359,10 @@ List of Event Commands:
   :              : $>Wait: 15 frame(s)
   :              : $>Turn Down
  @>Wait for Move's Completion
+ @>Comment: Pokérus check.
  @>Conditional Branch: Script: pbPokerus?
-  @>Text: \rYour Pokémon may be infected by PokeRus.
-  @>Text: \rLittle is known about the PokeRus except that they 
+  @>Text: \rYour Pokémon may be infected by Pokérus.
+  @>Text: \rLittle is known about the Pokérus except that they 
    :    : are microscopic life-forms that attach to Pokémon.
   @>Text: \rWhile infected, Pokémon are said to grow 
    :    : exceptionally well.
@@ -106486,6 +106371,7 @@ List of Event Commands:
  : Else
   @>Text: \rThank you for waiting.
   @>Text: \rWe've restored your Pokémon to full health.
+  @>Comment: Nurse bows.
   @>Set Move Route: This event
    :              : $>Graphic: "NPC 16', 0, 2, 1
    :              : $>Wait: 10 frame(s)
@@ -106516,14 +106402,6 @@ Move Animation
 Trigger: Autorun
 
 List of Event Commands:
-@>Comment: Every map you can end up in after having all your 
- :       : Pokémon faint (typically Poké Centers and home) 
- :       : must have an Autorun event in it like this one.
- :       : This event fully heals all the player's Pokémon, says 
- :       : something to that effect, and turns the "Starting 
- :       : over" switch OFF again.
-@>Comment: For convenience, this can be a single page in an 
- :       : NPC's event (e.g. Mom, a nurse).
 @>Text: \rFirst, you should restore your Pokémon to full 
  :    : health.
 @>Recover All: Entire Party
@@ -136692,12 +136570,6 @@ Move Animation
 Trigger: Action Button
 
 List of Event Commands:
-@>Comment: This line of code sets the player's current position as 
- :       : the spot they will return to after they lose a battle 
- :       : and lack out.
- :       : Page 2 of this event detects when this happens, and 
- :       : heals the player's Pokémon and wishes them better 
- :       : luck in future.
 @>Script: pbSetPokemonCenter
 @>Text: \rHello, and welcome to the Pokémon Center.
 @>Text: \rWe restore your tired Pokémon to full health.
@@ -136706,22 +136578,32 @@ List of Event Commands:
 (When Cancel: Choice 2)
 : When [Yes]
  @>Text: \rOK, I'll take your Pokémon for a few seconds.
+ @>Script: $stats.poke_center_count += 1
  @>Recover All: Entire Party
+ @>Comment: Nurse turns to face the healing machine.
  @>Set Move Route: This event
   :              : $>Turn Left
   :              : $>Wait: 2 frame(s)
  @>Wait for Move's Completion
+ @>Comment: Nurse places Poké Balls on the healing machine one at 
+  :       : a time.
+ @>Control Variables: [0001: Temp Pokemon Choice] = Party Members
  @>Control Variables: [0006: Poké Center healing ball count] = 0
- @>Script: count = $player.pokemon_count
- :       : for i in 1..count
- :       :   pbSet(6, i)
- :       :   pbSEPlay("Battle ball shake")
- :       :   pbWait(16)
- :       : end
+ @>Label: Place ball
+ @>Control Variables: [0006: Poké Center healing ball count] += 1
+ @>Play SE: 'Battle ball shake', 80, 100
+ @>Wait: 8 frame(s)
+ @>Conditional Branch: Variable [0006: Poké Center healing ball count] < Variable [0001: Temp Pokemon Choice]
+  @>Jump to Label: Place ball
+  @>
+ : Branch End
+ @>Comment: Healing animation and ME jingle.
  @>Set Move Route: [Healing balls]
   :              : $>Stop Animation ON
  @>Play ME: 'Pkmn healing', 100, 100
  @>Wait: 58 frame(s)
+ @>Comment: Poké Balls are removed from healing machine, nurse 
+  :       : turns to face the player.
  @>Control Variables: [0006: Poké Center healing ball count] = 0
  @>Script: get_character(4).pattern = 0
  @>Set Move Route: [Healing balls]
@@ -136730,9 +136612,10 @@ List of Event Commands:
   :              : $>Wait: 15 frame(s)
   :              : $>Turn Down
  @>Wait for Move's Completion
+ @>Comment: Pokérus check.
  @>Conditional Branch: Script: pbPokerus?
-  @>Text: \rYour Pokémon may be infected by PokeRus.
-  @>Text: \rLittle is known about the PokeRus except that they 
+  @>Text: \rYour Pokémon may be infected by Pokérus.
+  @>Text: \rLittle is known about the Pokérus except that they 
    :    : are microscopic life-forms that attach to Pokémon.
   @>Text: \rWhile infected, Pokémon are said to grow 
    :    : exceptionally well.
@@ -136741,6 +136624,7 @@ List of Event Commands:
  : Else
   @>Text: \rThank you for waiting.
   @>Text: \rWe've restored your Pokémon to full health.
+  @>Comment: Nurse bows.
   @>Set Move Route: This event
    :              : $>Graphic: "NPC 16', 0, 2, 1
    :              : $>Wait: 10 frame(s)
@@ -136771,14 +136655,6 @@ Move Animation
 Trigger: Autorun
 
 List of Event Commands:
-@>Comment: Every map you can end up in after having all your 
- :       : Pokémon faint (typically Poké Centers and home) 
- :       : must have an Autorun event in it like this one.
- :       : This event fully heals all the player's Pokémon, says 
- :       : something to that effect, and turns the "Starting 
- :       : over" switch OFF again.
-@>Comment: For convenience, this can be a single page in an 
- :       : NPC's event (e.g. Mom, a nurse).
 @>Text: \rFirst, you should restore your Pokémon to full 
  :    : health.
 @>Recover All: Entire Party
@@ -141340,22 +141216,32 @@ List of Event Commands:
 (When Cancel: Choice 2)
 : When [Yes]
  @>Text: \rOK, I'll take your Pokémon for a few seconds.
+ @>Script: $stats.poke_center_count += 1
  @>Recover All: Entire Party
+ @>Comment: Nurse turns to face the healing machine.
  @>Set Move Route: This event
   :              : $>Turn Left
   :              : $>Wait: 2 frame(s)
  @>Wait for Move's Completion
+ @>Comment: Nurse places Poké Balls on the healing machine one at 
+  :       : a time.
+ @>Control Variables: [0001: Temp Pokemon Choice] = Party Members
  @>Control Variables: [0006: Poké Center healing ball count] = 0
- @>Script: count = $player.pokemon_count
- :       : for i in 1..count
- :       :   pbSet(6, i)
- :       :   pbSEPlay("Battle ball shake")
- :       :   pbWait(16)
- :       : end
+ @>Label: Place ball
+ @>Control Variables: [0006: Poké Center healing ball count] += 1
+ @>Play SE: 'Battle ball shake', 80, 100
+ @>Wait: 8 frame(s)
+ @>Conditional Branch: Variable [0006: Poké Center healing ball count] < Variable [0001: Temp Pokemon Choice]
+  @>Jump to Label: Place ball
+  @>
+ : Branch End
+ @>Comment: Healing animation and ME jingle.
  @>Set Move Route: [Healing balls]
   :              : $>Stop Animation ON
  @>Play ME: 'Pkmn healing', 100, 100
  @>Wait: 58 frame(s)
+ @>Comment: Poké Balls are removed from healing machine, nurse 
+  :       : turns to face the player.
  @>Control Variables: [0006: Poké Center healing ball count] = 0
  @>Script: get_character(4).pattern = 0
  @>Set Move Route: [Healing balls]
@@ -141364,9 +141250,10 @@ List of Event Commands:
   :              : $>Wait: 15 frame(s)
   :              : $>Turn Down
  @>Wait for Move's Completion
+ @>Comment: Pokérus check.
  @>Conditional Branch: Script: pbPokerus?
-  @>Text: \rYour Pokémon may be infected by PokeRus.
-  @>Text: \rLittle is known about the PokeRus except that they 
+  @>Text: \rYour Pokémon may be infected by Pokérus.
+  @>Text: \rLittle is known about the Pokérus except that they 
    :    : are microscopic life-forms that attach to Pokémon.
   @>Text: \rWhile infected, Pokémon are said to grow 
    :    : exceptionally well.
@@ -141375,6 +141262,7 @@ List of Event Commands:
  : Else
   @>Text: \rThank you for waiting.
   @>Text: \rWe've restored your Pokémon to full health.
+  @>Comment: Nurse bows.
   @>Set Move Route: This event
    :              : $>Graphic: "NPC 16', 0, 2, 1
    :              : $>Wait: 10 frame(s)
@@ -142888,12 +142776,6 @@ Move Animation
 Trigger: Action Button
 
 List of Event Commands:
-@>Comment: This line of code sets the player's current position as 
- :       : the spot they will return to after they lose a battle 
- :       : and lack out.
- :       : Page 2 of this event detects when this happens, and 
- :       : heals the player's Pokémon and wishes them better 
- :       : luck in future.
 @>Script: pbSetPokemonCenter
 @>Text: \rHello, and welcome to the Pokémon Center.
 @>Text: \rWe restore your tired Pokémon to full health.
@@ -142902,22 +142784,32 @@ List of Event Commands:
 (When Cancel: Choice 2)
 : When [Yes]
  @>Text: \rOK, I'll take your Pokémon for a few seconds.
+ @>Script: $stats.poke_center_count += 1
  @>Recover All: Entire Party
+ @>Comment: Nurse turns to face the healing machine.
  @>Set Move Route: This event
   :              : $>Turn Left
   :              : $>Wait: 2 frame(s)
  @>Wait for Move's Completion
+ @>Comment: Nurse places Poké Balls on the healing machine one at 
+  :       : a time.
+ @>Control Variables: [0001: Temp Pokemon Choice] = Party Members
  @>Control Variables: [0006: Poké Center healing ball count] = 0
- @>Script: count = $player.pokemon_count
- :       : for i in 1..count
- :       :   pbSet(6, i)
- :       :   pbSEPlay("Battle ball shake")
- :       :   pbWait(16)
- :       : end
+ @>Label: Place ball
+ @>Control Variables: [0006: Poké Center healing ball count] += 1
+ @>Play SE: 'Battle ball shake', 80, 100
+ @>Wait: 8 frame(s)
+ @>Conditional Branch: Variable [0006: Poké Center healing ball count] < Variable [0001: Temp Pokemon Choice]
+  @>Jump to Label: Place ball
+  @>
+ : Branch End
+ @>Comment: Healing animation and ME jingle.
  @>Set Move Route: [Healing balls]
   :              : $>Stop Animation ON
  @>Play ME: 'Pkmn healing', 100, 100
  @>Wait: 58 frame(s)
+ @>Comment: Poké Balls are removed from healing machine, nurse 
+  :       : turns to face the player.
  @>Control Variables: [0006: Poké Center healing ball count] = 0
  @>Script: get_character(4).pattern = 0
  @>Set Move Route: [Healing balls]
@@ -142926,9 +142818,10 @@ List of Event Commands:
   :              : $>Wait: 15 frame(s)
   :              : $>Turn Down
  @>Wait for Move's Completion
+ @>Comment: Pokérus check.
  @>Conditional Branch: Script: pbPokerus?
-  @>Text: \rYour Pokémon may be infected by PokeRus.
-  @>Text: \rLittle is known about the PokeRus except that they 
+  @>Text: \rYour Pokémon may be infected by Pokérus.
+  @>Text: \rLittle is known about the Pokérus except that they 
    :    : are microscopic life-forms that attach to Pokémon.
   @>Text: \rWhile infected, Pokémon are said to grow 
    :    : exceptionally well.
@@ -142937,6 +142830,7 @@ List of Event Commands:
  : Else
   @>Text: \rThank you for waiting.
   @>Text: \rWe've restored your Pokémon to full health.
+  @>Comment: Nurse bows.
   @>Set Move Route: This event
    :              : $>Graphic: "NPC 16', 0, 2, 1
    :              : $>Wait: 10 frame(s)
@@ -142967,14 +142861,6 @@ Move Animation
 Trigger: Autorun
 
 List of Event Commands:
-@>Comment: Every map you can end up in after having all your 
- :       : Pokémon faint (typically Poké Centers and home) 
- :       : must have an Autorun event in it like this one.
- :       : This event fully heals all the player's Pokémon, says 
- :       : something to that effect, and turns the "Starting 
- :       : over" switch OFF again.
-@>Comment: For convenience, this can be a single page in an 
- :       : NPC's event (e.g. Mom, a nurse).
 @>Text: \rFirst, you should restore your Pokémon to full 
  :    : health.
 @>Recover All: Entire Party

@@ -145,7 +145,7 @@ class Game_Player < Game_Character
         x_offset = (dir == 4) ? -1 : (dir == 6) ? 1 : 0
         y_offset = (dir == 8) ? -1 : (dir == 2) ? 1 : 0
         # Jump over ledges
-        if pbFacingTerrainTag.ledge
+        if pbFacingTerrainTag.ledge || (pbFacingTerrainTag.jump_platform && !$PokemonGlobal.surfing)
           if jumpForward(2)
             pbSEPlay("Player jump")
             increase_steps

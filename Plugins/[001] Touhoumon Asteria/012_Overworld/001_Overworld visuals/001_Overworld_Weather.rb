@@ -15,7 +15,7 @@ module RPG
       # Storm flashes
       if @type == :Storm && !@fading
         if @time_until_flash > 0
-          @time_until_flash -= Graphics.delta_s
+          @time_until_flash -= Graphics.delta
           if @time_until_flash <= 0
             @viewport.flash(Color.new(255, 255, 255, 230), rand(2..4) * 20)
 # ------ Derx: When raining, play some thunder!
