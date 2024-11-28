@@ -7,8 +7,8 @@ class Window_Quest < Window_DrawableCommand
     @quests = []
     super(x,y,width,height,viewport)
     self.windowskin = nil
-    @selarrow = AnimatedBitmap.new("Graphics/Pictures/selarrow")
-    RPG::Cache.retain("Graphics/Pictures/selarrow")
+    @selarrow = AnimatedBitmap.new("Graphics/UI/sel_arrow")
+    RPG::Cache.retain("Graphics/UI/sel_arrow")
   end
   
   def quests=(value)
@@ -30,7 +30,7 @@ class Window_Quest < Window_DrawableCommand
     col = @quests[index].color
     drawFormattedTextEx(self.contents,rect.x,rect.y+2,
       436,"<c2=#{col}>#{name}</c2>",base,shadow)
-    pbDrawImagePositions(self.contents,[[sprintf("Graphics/Pictures/QuestUI/new"),rect.width-16,rect.y+4]]) if @quests[index].new
+    pbDrawImagePositions(self.contents,[[sprintf("Graphics/UI/QuestUI/new"),rect.width-16,rect.y+4]]) if @quests[index].new
   end
 
   def refresh
@@ -70,20 +70,20 @@ class QuestList_Scene
     @shadow = Color.new(160,160,168)
     addBackgroundPlane(@sprites,"bg","QuestUI/bg_1",@viewport)
     @sprites["base"] = IconSprite.new(0,0,@viewport)
-    @sprites["base"].setBitmap("Graphics/Pictures/QuestUI/bg_2")
+    @sprites["base"].setBitmap("Graphics/UI/QuestUI/bg_2")
     @sprites["page_icon1"] = IconSprite.new(0,4,@viewport)
     if SHOW_FAILED_QUESTS
-      @sprites["page_icon1"].setBitmap("Graphics/Pictures/QuestUI/page_icon1a")
+      @sprites["page_icon1"].setBitmap("Graphics/UI/QuestUI/page_icon1a")
     else
-      @sprites["page_icon1"].setBitmap("Graphics/Pictures/QuestUI/page_icon1b")
+      @sprites["page_icon1"].setBitmap("Graphics/UI/QuestUI/page_icon1b")
     end
     @sprites["page_icon1"].x = Graphics.width - @sprites["page_icon1"].bitmap.width - 10
     @sprites["page_icon2"] = IconSprite.new(0,4,@viewport)
-    @sprites["page_icon2"].setBitmap("Graphics/Pictures/QuestUI/page_icon2")
+    @sprites["page_icon2"].setBitmap("Graphics/UI/QuestUI/page_icon2")
     @sprites["page_icon2"].x = Graphics.width - @sprites["page_icon2"].bitmap.width - 10
     @sprites["page_icon2"].opacity = 0
     @sprites["pageIcon"] = IconSprite.new(@sprites["page_icon1"].x,4,@viewport)
-    @sprites["pageIcon"].setBitmap("Graphics/Pictures/QuestUI/pageIcon")
+    @sprites["pageIcon"].setBitmap("Graphics/UI/QuestUI/pageIcon")
     @quests = [
       $PokemonGlobal.quests.active_quests,
       $PokemonGlobal.quests.completed_quests
@@ -126,7 +126,7 @@ class QuestList_Scene
     drawFormattedTextEx(@sprites["overlay_control"].bitmap,326,320,
       436,"<c2=#{colorQuest("red")}>New Activity:</c2>",@base,@shadow)
     pbDrawImagePositions(@sprites["overlay_control"].bitmap,[
-      [sprintf("Graphics/Pictures/QuestUI/new"),464,314]
+      [sprintf("Graphics/UI/QuestUI/new"),464,314]
     ])
     pbFadeInAndShow(@sprites) { pbUpdate }
   end

@@ -121,11 +121,13 @@ class PokemonSummary_Scene
     #---------------------------------------------------------------------------
     # Opens move selection if on the moves page and no options are available.
     #---------------------------------------------------------------------------
-    if commands.empty? && @page_id == :page_moves
-      pbMoveSelection
-      @sprites["pokemon"].visible = true
-      @sprites["pokeicon"].visible = false
-      return true
+    if @page_id == :page_moves
+      if commands.empty? || @inbattle
+        pbMoveSelection
+        @sprites["pokemon"].visible = true
+        @sprites["pokeicon"].visible = false
+        return true
+      end
     end
     #---------------------------------------------------------------------------
     commands[:cancel] = _INTL("Cancel")
@@ -246,12 +248,18 @@ class PokemonSummary_Scene
       if Input.trigger?(Input::ACTION)
         pbSEStop
         @pokemon.play_cry
+        @show_back = !@show_back
+        if PluginManager.installed?("[DBK] Animated Pokémon System")
+          @sprites["pokemon"].setSummaryBitmap(@pokemon, @show_back)
+        else
+          @sprites["pokemon"].setPokemonBitmap(@pokemon, @show_back)
+        end
       elsif Input.trigger?(Input::BACK)
         pbPlayCloseMenuSE
         break
       elsif Input.trigger?(Input::USE)
-        ret = pbPageCustomUse(@page_id, @inbattle)
-        if !ret
+        dorefresh = pbPageCustomUse(@page_id)
+        if !dorefresh
           case @page_id
           when :page_moves
             pbPlayDecisionSE
@@ -266,8 +274,6 @@ class PokemonSummary_Scene
               dorefresh = pbOptions
             end
           end
-        else
-          dorefresh = true
         end
       elsif Input.repeat?(Input::UP)
         oldindex = @partyindex
@@ -285,7 +291,7 @@ class PokemonSummary_Scene
           @ribbonOffset = 0
           dorefresh = true
         end
-      elsif Input.trigger?(Input::JUMPUP)
+      elsif Input.trigger?(Input::JUMPUP) && !@party.is_a?(PokemonBox)
         oldindex = @partyindex
         @partyindex = 0
         if @partyindex != oldindex
@@ -293,7 +299,7 @@ class PokemonSummary_Scene
           @ribbonOffset = 0
           dorefresh = true
         end
-      elsif Input.trigger?(Input::JUMPDOWN)
+      elsif Input.trigger?(Input::JUMPDOWN) && !@party.is_a?(PokemonBox)
         oldindex = @partyindex
         @partyindex = @party.length - 1
         if @partyindex != oldindex
@@ -324,6 +330,7 @@ class PokemonSummary_Scene
           dorefresh = true
         end
       end
+      @show_back = false if dorefresh
       drawPage(@page) if dorefresh
     end
     return @partyindex

@@ -39,23 +39,23 @@ module Settings
   
   FIELD_MOVES_COUNT_BADGES = false
 
-  BADGE_FOR_FLASH     = 0
-  BADGE_FOR_CUT       = 1
-  BADGE_FOR_FLY       = 2
-  BADGE_FOR_STRENGTH  = 3
-  BADGE_FOR_SURF      = 4
-  BADGE_FOR_ROCKSMASH = 5
+  BADGE_FOR_FLASH     = 0    # Boulder Bagde
+  BADGE_FOR_CUT       = 1    # Cascade Badge
+  BADGE_FOR_FLY       = 2    # Thunder Badge
+  BADGE_FOR_STRENGTH  = 3    # Rainbow Badge
+  BADGE_FOR_SURF      = 4    # Soul Bagde
+  BADGE_FOR_ROCKSMASH = 5    # Marsh Badge
   BADGE_FOR_DIVE      = -1
-  BADGE_FOR_WATERFALL = 7
+  BADGE_FOR_WATERFALL = 7    # Earth Badge
   
-  ALT_BADGE_FOR_FLASH     = 8
-  ALT_BADGE_FOR_CUT       = 9
-  ALT_BADGE_FOR_STRENGTH  = 10
-  ALT_BADGE_FOR_SURF      = 11
-  ALT_BADGE_FOR_FLY       = 12
-  ALT_BADGE_FOR_ROCKSMASH = 13
-  BADGE_FOR_WHIRLPOOL	  = 14
-  ALT_BADGE_FOR_WATERFALL = 15
+  ALT_BADGE_FOR_FLASH     = 8   # Zephyr Badge
+  ALT_BADGE_FOR_CUT       = 9   # Hive Badge
+  ALT_BADGE_FOR_STRENGTH  = 10  # Plain Badge
+  ALT_BADGE_FOR_SURF      = 11  # Fog Badge
+  ALT_BADGE_FOR_FLY       = 12  # Storm Badge
+  ALT_BADGE_FOR_ROCKSMASH = 13  # Mineral Badge
+  BADGE_FOR_WHIRLPOOL	  = 14  # Glacier Badge
+  ALT_BADGE_FOR_WATERFALL = 15  # Rising Badge
   
   TAUGHT_MACHINES_KEEP_OLD_PP          = false
   FLUTES_CHANGE_WILD_ENCOUNTER_LEVELS  = true

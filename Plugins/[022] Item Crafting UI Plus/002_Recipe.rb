@@ -5,11 +5,14 @@ module GameData
     attr_reader :yield
     attr_reader :ingredients
     attr_reader :flags
+    attr_reader :pbs_file_suffix
     
     DATA = {}
     DATA_FILENAME = "recipes.dat"
+    PBS_BASE_FILENAME = "recipes"
 
     SCHEMA = {
+      "SectionName" => [:id,          "m"],
       "Item"        => [:item,        "s"],
       "Yield"       => [:yield,       "v"],
       "Ingredients" => [:ingredients, "*sv"],

@@ -303,7 +303,6 @@ Name = Route 15
 Outdoor = true
 ShowArea = true
 Bicycle = true
-BicycleAlways = false
 Weather = Rain,10
 MapPosition = 0,15,14
 BattleBack = field
@@ -346,7 +345,6 @@ MapSize = 2,11
 #-------------------------------
 [068]   # Route 23
 Name = Route 23
-Outdoor = false
 Bicycle = true
 MapPosition = 0,3,9
 BattleBack = indoor1
@@ -394,7 +392,6 @@ Environment = ForestGrass
 #-------------------------------
 [077]   # Mt. Moon
 Name = Mt. Moon
-Outdoor = false
 ShowArea = true
 Bicycle = true
 MapPosition = 0,11,5
@@ -525,7 +522,6 @@ Name = Route 2
 Outdoor = true
 ShowArea = true
 Bicycle = true
-BicycleAlways = false
 Weather = Rain,5
 MapPosition = 0,6,8
 BattleBack = field
@@ -595,7 +591,6 @@ MapPosition = 0,4,4
 #-------------------------------
 [197]   # PokeMart
 Name = Indigo Village
-Outdoor = false
 MapPosition = 0,4,4
 #-------------------------------
 [198]   # Route 2
@@ -642,7 +637,6 @@ Name = Mt. Moon
 ShowArea = true
 Bicycle = true
 MapPosition = 0,11,5
-Dungeon = false
 BattleBack = Cave1
 WildBattleBGM = B-013. Battle vs. Puppet (Cave).ogg
 Environment = Cave
@@ -697,6 +691,10 @@ Environment = Cave
 #-------------------------------
 [214]   # Mt. Moon Mining Caves
 Name = Mt. Moon
+MapPosition = 0,11,5
+BattleBack = Cave1
+Environment = Cave
+Flags = M:Fossils,M:Relics,M:Moonstone
 #-------------------------------
 [215]   # Route 4
 Name = Route 4
@@ -725,7 +723,6 @@ BattleBack = indoor2
 #-------------------------------
 [219]   # Poké Mart
 Name = Cerulean City
-Outdoor = false
 MapPosition = 0,16,5
 #-------------------------------
 [220]   # Pokémon Center
@@ -958,6 +955,10 @@ Environment = Grass
 #-------------------------------
 [267]   # Diglett's Cave Mining Tunnels
 Name = Diglett's Cave
+MapPosition = 0,6,7
+BattleBack = Cave1
+Environment = Cave
+Flags = M:HoldItems
 #-------------------------------
 [268]   # Route 11 - Gatehouse
 Name = Route 11
@@ -1111,7 +1112,6 @@ BattleBack = indoor4
 #-------------------------------
 [307]   # Silph Co.
 Name = Silph Co.
-Name = 
 MapPosition = 0,16,8
 #-------------------------------
 [308]   # Underground Lab
@@ -1210,7 +1210,6 @@ MapPosition = 0,16,8
 #-------------------------------
 [323]   # Poké Mart
 Name = Saffron City
-Outdoor = false
 MapPosition = 0,16,8
 #-------------------------------
 [324]   # Saffron City Gym
@@ -1251,7 +1250,13 @@ MapPosition = 0,6,16
 Name = Cinnabar Island
 MapPosition = 0,6,16
 #-------------------------------
-[344]   # Seafoam Islands (Old)
+[343]   # Seaside Dig Spot
+Name = Route 19
+MapPosition = 0,14,15
+Environment = Cave
+Flags = M:TypePlates,M:TypeGems,M:PuppetGems,M:EvoStones
+#-------------------------------
+[344]   # Game Load Cutscene
 Name = Seafoam Islands
 ShowArea = true
 Bicycle = true

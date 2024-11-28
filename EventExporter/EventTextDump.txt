@@ -578,6 +578,10 @@ List of Event Commands:
  @>Wait: 10 frame(s)
  @>
 : Branch End
+@>Script: GameData::Recipe.each do |r|
+:       :   next unless r.has_flag?("TypeResistPendants")
+:       :   pbUnlockRecipe(r.id)
+:       : end
 @>Text: \l[3]Would you like to proceed through Asteria's intro? Skipping this
  :    : segment has no impact on gameplay.
 @>Show Choices: Yes, No
@@ -6891,16 +6895,14 @@ List of Event Commands:
  :              : $>Move Right
  :              : $>Move Right
 @>Wait for Move's Completion
-@>Script: #BattleScripting.setInScript("turnStart0",:ChenFight)
-@>Script: WildBattle.dx_start([:CCHEN, 2], {
-:       :   :nocapture => true,
-:       :   :cannotrun => true,
-:       :   :noexp	 => true,
-:       :   :nomoney	 => true,
-:       :   :canlose	 => true
-:       : }, 
-:       : { }, 
-:       : :RED_VS_CHEN)
+@>Script: setBattleRule("midbattleScript", :red_vs_chen)
+:       : setBattleRule("disablePokeBalls" ) # No Capture
+:       : setBattleRule("cannotRun" ) # Cannot Run
+:       : setBattleRule("noExp") # No EXP
+:       : setBattleRule("noMoney") # No Money
+:       : setBattleRule("canLose") # Can Lose
+:       : 
+:       : WildBattle.start(:CCHEN, 2)
 @>Control Self Switch: A =ON
 @>
 
@@ -6918,6 +6920,7 @@ Trigger: Autorun
 
 List of Event Commands:
 @>Script: $player.party.delete_at(0)
+:       : $player.pokedex.clear
 @>Set Move Route: [CChen]
  :              : $>Change Speed: 2
  :              : $>Direction Fix ON
@@ -9912,21 +9915,15 @@ List of Event Commands:
 @>Control Variables: [0103: Vs. Transition ID] = 0
 @>Control Variables: [0115: Vs. Transition - Background] = 0
 @>Control Variables: [0104: Vs. Transition - Pkmn] = 2
-@>Conditional Branch: Script: !PluginManager.installed?("Essentials Deluxe")
- @>Script: pbRegisterPartner(pbGet(1), pbGet(2), pbGet(3))
- @>Script: setBattleRule("backdrop", "indoor2")
- :       : setBattleRule("outcome", 1)
- :       : setBattleRule("noMoney")
- :       : setBattleRule("canLose")
- :       : setBattleRule("2v2")
- @>
-: Branch End
-@>Script: TrainerBattle.dx_start([:POKEMONTRAINER_Red, "Red"], {
-:       :   :backdrop => "indoor2",
-:       :   :outcome  => 1,
-:       :   :nomoney  => true,
-:       :   :canlose  => true,
-:       :   :partner  => [pbGet(1), pbGet(2), pbGet(3)]}, :VS_RED_1)
+@>Script: pbRegisterPartner(pbGet(1), pbGet(2), pbGet(3))
+@>Script: setBattleRule("midbattleScript", :renmari_vs_red)
+:       : setBattleRule("backdrop", "indoor2")
+:       : setBattleRule("outcome", 1)
+:       : setBattleRule("noMoney")
+:       : setBattleRule("canLose")
+:       : setBattleRule("2v2")
+:       : 
+:       : TrainerBattle.start(:POKEMONTRAINER_Red, "Red")
 @>Script: pbTrainerEnd
 @>Script: pbDeregisterPartner
 @>Control Switches: [0104: Transition Handler] = OFF
@@ -16625,6 +16622,38 @@ Move Animation
 Trigger: Action Button
 
 List of Event Commands:
+@>
+
+#------------------------------------------------------------------------------
+Event ID: 008
+Event Name: ExitArrow
+(X,Y): (028,039)
+
+Page #1
+Conditions
+None
+
+Graphic: Exitarrow_red
+
+Autonomous Movement
+Type: Fixed
+Speed: 3: Slow
+Freq: 3: Low
+Options Enabled
+Move Animation
+Stop Animation
+Always on Top
+Trigger: Player Touch
+
+List of Event Commands:
+@>Conditional Branch: Player is facing Down
+ @>Play SE: 'Door exit', 100, 100
+ @>Change Screen Color Tone: (-255,-255,-255,0), @6
+ @>Wait: 8 frame(s)
+ @>Transfer Player:[243: Vermilion Harbor], (013,002), No Fade
+ @>Change Screen Color Tone: (0,0,0,0), @6
+ @>
+: Branch End
 @>
 
 #------------------------------------------------------------------------------
@@ -26052,9 +26081,9 @@ List of Event Commands:
 @>Play SE: 'Door exit', 100, 100
 @>Change Screen Color Tone: (-255,-255,-255,0), @6
 @>Wait: 8 frame(s)
-@>Script: pbCaveEntrance
 @>Transfer Player:[084: Cinnabar Volcano (Entry)], (013,024), Up, No Fade
 @>Script: pbHGSSTransitions("Cinnabar Volcano")
+@>Script: pbCaveEntrance
 @>Change Screen Color Tone: (0,0,0,0), @6
 @>
 
@@ -28586,9 +28615,9 @@ List of Event Commands:
 @>Play SE: 'Door exit', 100, 100
 @>Change Screen Color Tone: (-255,-255,-255,0), @6
 @>Wait: 8 frame(s)
-@>Script: pbCaveEntrance
 @>Transfer Player:[077: Mt. Moon], (025,045), Up, No Fade
 @>Script: pbHGSSTransitions("Mt. Moon")
+@>Script: pbCaveEntrance
 @>Change Screen Color Tone: (0,0,0,0), @6
 @>
 
@@ -38260,7 +38289,7 @@ List of Event Commands:
   @>Play SE: 'Door exit', 100, 100
   @>Change Screen Color Tone: (-255,-255,-255,0), @6
   @>Wait: 8 frame(s)
-  @>Transfer Player:[267: Diglett's Cave Mining Tunnels], (025,017), Down
+  @>Transfer Player:[343: Seaside Dig Spot], (012,039), Up
   @>Change Screen Color Tone: (0,0,0,0), @6
   @>Wait: 6 frame(s)
   @>
@@ -46715,9 +46744,9 @@ List of Event Commands:
 @>Play SE: 'Door exit', 100, 100
 @>Change Screen Color Tone: (-255,-255,-255,0), @6
 @>Wait: 8 frame(s)
-@>Script: pbCaveEntrance
 @>Transfer Player:[311: Abandoned Safari Zone], (027,032), Up, No Fade
 @>Script: pbHGSSTransitions("Safari Zone")
+@>Script: pbCaveEntrance
 @>Change Screen Color Tone: (0,0,0,0), @6
 @>Set Move Route: Player
  :              : $>Move Up
@@ -49749,7 +49778,7 @@ List of Event Commands:
  @>Recover All: Entire Party
  @>Change Screen Color Tone: (-255,-255,-255,0), @6
  @>Wait: 8 frame(s)
- @>Transfer Player:[176: Professor Oak's Lab - B1F], (015,006), Right, No Fade
+ @>Transfer Player:[176: Professor Oak's Lab - B1F], (015,006), Left, No Fade
  @>Set Event Location: [Renko/Maribel],(006,006)
  @>Set Move Route: [Renko/Maribel]
   :              : $>Turn Right
@@ -49776,7 +49805,7 @@ List of Event Commands:
  @>Text: \xn[\v[108]]I've learned so much on my travels across Kanto.
   :    : The bonds I've made with my partners is invaluable, something
   :    : that will stick with me forever!
- @>Text: \xn[\v[108]]=The bonds I've made with my partners is invaluable, 
+ @>Text: \xn[\v[108]]The bonds I've made with my partners is invaluable, 
   :    : the memories we've shared are pricess. it's something that 
   :    : will stick with me forever!
  @>Text: \xn[\v[108]]This battle will expose everything we've been
@@ -49786,7 +49815,7 @@ List of Event Commands:
  @>Text: \xn[\pn]My own journey has taught me a lot as well! And
   :    : you'll see every facet of it- There's no-one else I'd rather 
   :    : share this experience with!
- @>Text: \xn[\pn]Give it your best, \pn, because I'll be doing the same!
+ @>Text: \xn[\pn]Give it your best, \v[108], because I'll be doing the same!
  @>Move Picture: 2, @5, Upper Left (512,0), (100%,100%), 255, Normal
  @>Move Picture: 1, @5, Upper Left (-512,0), (100%,100%), 255, Normal
  @>Wait: 10 frame(s)
@@ -50027,13 +50056,13 @@ List of Event Commands:
  @>Text: \xn[Renko & Maribel]Thanks, Professor!
  @>Text: \xn[Professor Oak]Now, both of you, come over here, I've got
   :    : one last thing for you before you head off into Johto.
- @>Set Move Route: Player
+ @>Set Move Route: [Renko/Maribel]
   :              : $>Move Right
   :              : $>Move Right
   :              : $>Move Right
   :              : $>Move Right
   :              : $>Move Up
- @>Set Move Route: [Renko/Maribel]
+ @>Set Move Route: Player
   :              : $>Move Left
   :              : $>Move Left
   :              : $>Move Left
@@ -50072,10 +50101,10 @@ List of Event Commands:
  @>Text: \xn[\v[108]]Even though I'll be sticking around here a bit longer,
   :    : this will be handy when I do cross into Johto!
  @>Set Move Route: [Renko/Maribel]
-  :              : $>Turn Left
+  :              : $>Turn Right
  @>Text: \xn[\v[108]]I take it you'll be heading out now, though?
  @>Set Move Route: Player
-  :              : $>Turn Right
+  :              : $>Turn Left
  @>Text: \xn[\pn]Yup! There's day to burn, and I can probably make it
   :    : to New Bark Town with time to spare if I head out now.
  @>Text: \xn[\v[108]]Well then, safe travels \pn! I'm sure we'll meet up
@@ -67026,8 +67055,9 @@ List of Event Commands:
 @>Change Screen Color Tone: (255,255,255,255), @6
 @>Play SE: 'Door exit', 100, 100
 @>Wait: 8 frame(s)
-@>Script: pbCaveEntrance
 @>Transfer Player:[209: Mt. Moon Square], (040,014), No Fade
+@>Script: pbHGSSTransitions("Mt. Moon")
+@>Script: pbCaveEntrance
 @>Change Screen Color Tone: (0,0,0,0), @6
 @>
 
@@ -89074,8 +89104,8 @@ List of Event Commands:
 @>Text: Erected in memorium of the person closest to me. May her
  :    : soul rest in peace, never to be distrurbed.
 @>Text: Here, beneath the sakura tree we loved with all our heart.
-@>Fade Out BGM: 3 sec.
-@>Wait: 60 frame(s)
+@>Fade Out BGM: 2 sec.
+@>Wait: 40 frame(s)
 @>Set Event Location: [Ghost],(019,011)
 @>Set Move Route: [Ghost]
  :              : $>Graphic: "TPDP_NPC 26', 0, 2, 0
@@ -89085,14 +89115,14 @@ List of Event Commands:
 :       : event.move_up
 :       : 16.times do
 :       :   event.opacity += 16
-:       :   pbWait(4)
+:       :   pbWait(0.1)
 :       : end
-:       : pbWait(20)
+:       : pbWait(0.5)
 @>Script: pbSEPlay("Stare")
 :       : event.move_up
 :       : 16.times do
 :       :   event.opacity -= 16
-:       :   pbWait(4)
+:       :   pbWait(0.1)
 :       : end
 @>Wait: 20 frame(s)
 @>Script: event = $game_map.events[31]
@@ -89100,12 +89130,12 @@ List of Event Commands:
 :       :   pbSEPlay("Shiny sparkle")
 :       :   16.times do
 :       :     event.opacity += 16
-:       :     pbWait(2)
+:       :     pbWait(0.05)
 :       :   end
-@>Script:   pbWait(4)
+@>Script:   pbWait(0.1)
 :       :   16.times do
 :       :     event.opacity -= 16
-:       :     pbWait(2)
+:       :     pbWait(0.05)
 :       :   end
 :       : end
 @>Wait: 20 frame(s)
@@ -89115,20 +89145,28 @@ List of Event Commands:
 :       : pbSEPlay("Stare")
 :       : 16.times do
 :       :   event.opacity += 16
-:       :   pbWait(4)
+:       :   pbWait(0.1)
 :       : end
 @>Wait for Move's Completion
 @>Script: Pokemon.play_cry(:AYAKASHI)
 @>Wait: 30 frame(s)
 @>Control Switches: [0104: Transition Handler] = ON
 @>Control Variables: [0103: Vs. Transition ID] = 11
-@>Change Battle BGM: 'U-008. Sakura, Sakura ~ Japanize Dream', 100, 100
-@>Script: WildBattle.dx_start([:AYAKASHI, 35], { 
-:       :   #:backdrop => ["Volcano", "Volcano"],
-:       :   :outcome => 2,
-:       :   :noflee => true,
-:       :   :introtext => "Ayakashi appeared"
-:       : }, {}, :VS_AYAKASHI)
+@>Change Battle BGM: 'B-029. Battle! Vs. Puppets of Myth', 100, 100
+@>Script: setBattleRule("outcome", 2)
+:       : setBattleRule("backdrop", "ayakashi")
+:       : setBattleRule("cannotRun")
+:       : setBattleRule("battleIntroText", "{1} appeared!")
+:       : setBattleRule("setSlideSprite", "still")
+:       : setBattleRule("databoxStyle", :Long)
+:       : setBattleRule("raidStyleCapture", {:capture_chance => 100})
+@>Script: setBattleRule("midbattleScript", :vs_ayakashi)
+:       : setBattleRule("editWildPokemon", :hp_level => 2)
+:       : setBattleRule("editWildPokemon", :immunities => [:SLEEP, :ATTRACT, :PPLOSS, 
+:       :                                                  :ABILITYREMOVAL, :ITEMREMOVAL, :DISABLE, 
+:       :                                                  :OHKO, :SELFKO, :ESCAPE, :TRANSFORM])
+:       : 
+:       : WildBattle.start(:AYAKASHI, 35)
 @>Conditional Branch: Variable [0002: Temp Move Choice] == 4
  @>Set Move Route: [Ghost]
   :              : $>Change Opacity: 0
@@ -89167,20 +89205,28 @@ List of Event Commands:
 :       : pbSEPlay("Stare")
 :       : 16.times do
 :       :   event.opacity += 16
-:       :   pbWait(4)
+:       :   pbWait(0.1)
 :       : end
 @>Wait for Move's Completion
 @>Script: Pokemon.play_cry(:AYAKASHI)
 @>Wait: 30 frame(s)
 @>Control Switches: [0104: Transition Handler] = ON
 @>Control Variables: [0103: Vs. Transition ID] = 11
-@>Change Battle BGM: 'U-008. Sakura, Sakura ~ Japanize Dream', 100, 100
-@>Script: WildBattle.dx_start([:AYAKASHI, 35] { 
-:       :   #:backdrop => ["Volcano", "Volcano"],
-:       :   :outcome => 2,
-:       :   :noflee => true,
-:       :   :introtext => "Ayakashi appeared"
-:       : }, {}, :VS_AYAKASHI)
+@>Change Battle BGM: 'B-029. Battle! Vs. Puppets of Myth', 100, 100
+@>Script: setBattleRule("outcome", 2)
+:       : setBattleRule("backdrop", "ayakashi")
+:       : setBattleRule("cannotRun")
+:       : setBattleRule("battleIntroText", "{1} appeared!")
+:       : setBattleRule("setSlideSprite", "still")
+:       : setBattleRule("databoxStyle", :Long)
+:       : setBattleRule("raidStyleCapture", {:capture_chance => 100})
+@>Script: setBattleRule("midbattleScript", :vs_ayakashi)
+:       : setBattleRule("editWildPokemon", :hp_level => 2)
+:       : setBattleRule("editWildPokemon", :immunities => [:SLEEP, :ATTRACT, :PPLOSS, 
+:       :                                                  :ABILITYREMOVAL, :ITEMREMOVAL, :DISABLE, 
+:       :                                                  :OHKO, :SELFKO, :ESCAPE, :TRANSFORM])
+:       : 
+:       : WildBattle.start(:AYAKASHI, 35)
 @>Conditional Branch: Variable [0002: Temp Move Choice] == 4
  @>Set Move Route: [Ghost]
   :              : $>Change Opacity: 0
@@ -96310,7 +96356,9 @@ List of Event Commands:
 @>Control Variables: [0104: Vs. Transition - Pkmn] = 5
 @>Change Battle BGM: 'B-023. Strawberry Crisis', 100, 100
 @>Comment: EndSpeech: Oh my, the Dark Metamorphosis failed!
-@>Conditional Branch: Script: TrainerBattle.dx_start([:HAYWIRE2, "Ruukoto"], {:nomoney  => true}, :VS_DLWRUUKOTO)
+@>Script: setBattleRule("midbattleScript", :vs_dlwruukoto)
+:       : setBattleRule("noMoney") # No Money
+@>Conditional Branch: Script: TrainerBattle.start(:HAYWIRE2, "Ruukoto")
  @>Text: \xn[DLwRuukoto]My word, you even stood up to the Dark 
   :    : Metamorphosis! You are quite the trainer!
  @>Text: \xn[DLwRuukoto]It would appear that my Master is satisfied
@@ -96329,7 +96377,7 @@ List of Event Commands:
  @>Text: \xn[DLwRuukoto]Wait, you can't do anything with that? Please
   :    : hold a moment!
  @>Wait: 10 frame(s)
- @>Text: \xn[DLwRuukoto]Here you go! Just type <c2=65467b14>23112013</c2> into
+ @>Text: \xn[DLwRuukoto]Here you go! Just type <c2=65467b14>retribution</c2> into
   :    : any terminal inside a Pokémon Center!
  @>Text: \xn[DLwRuukoto]For now, I must be going, before the "Corporate
   :    : Bastards" try and take me for their nefarious purposes.
@@ -104567,7 +104615,7 @@ List of Event Commands:
   @>Script: pbStartTrade(pbGet(1), pkmn,
   :       :   _I("Rikako"), _I("Polly"), 1
   :       : )
-  @>Text: Thank you for your help! Please treat that Hypno well!
+  @>Text: Thank you for your help! Please treat your new partner well!
   @>Control Self Switch: B =ON
   @>
  : Branch End
@@ -112695,6 +112743,81 @@ List of Event Commands:
 
 Page #2
 Conditions
+None
+
+Autonomous Movement
+Type: Fixed
+Speed: 3: Slow
+Freq: 3: Low
+Options Enabled
+Move Animation
+Trigger: Player Touch
+
+List of Event Commands:
+@>Scroll Map: Up, 3, 3
+@>Change Text Options: Middle, Show
+@>Text: \w[dark]<i>Oh? How interesting. An actual human being has come 
+ :    : to meet me at a time like this.</i>
+@>Set Move Route: [Marisa Omega]
+ :              : $>Turn Down
+@>Text: \w[dark]<i>But, you're too late. My power is rapidly increasing.</i>
+@>Text: \w[dark]<i>Soon, I and everything around me will be reduced to 
+ :    : cinders.</i>
+@>Wait: 20 frame(s)
+@>Text: \w[dark]<i>You still are here? Fine then. Feel the heat of a dying 
+ :    : sun!</i>
+@>Change Battle BGM: 'B-028. Battle! Vs. Avatars of Calamity', 100, 100
+@>Control Switches: [0104: Transition Handler] = ON
+@>Control Variables: [0103: Vs. Transition ID] = 12
+@>Script: Pokemon.play_cry(:MARISAO)
+@>Wait: 40 frame(s)
+@>Script: pbSetSelfSwitch(3,"A",true)
+@>Script: pkmn = pbGenerateWildPokemon(:MARISAO, 60)
+:       : pkmn.item = :BLAZESPHERE
+@>Script: setBattleRule("outcome", 1)
+:       : setBattleRule("backdrop", "volcano")
+:       : setBattleRule("base", "volcano")
+:       : setBattleRule("cannotRun")
+:       : setBattleRule("battleIntroText", "{1}, the Blazing Apocalypse, challenges you!")
+:       : setBattleRule("setSlideSprite", "still")
+:       : setBattleRule("databoxStyle", :Long)
+:       : setBattleRule("raidStyleCapture", {:capture_chance => 100})
+@>Script: setBattleRule("midbattleScript", :vs_marisaomega)
+:       : #setBattleRule("editWildPokemon", :hp_level => 2)
+:       : setBattleRule("editWildPokemon", :immunities => [:SLEEP, :ATTRACT, :PPLOSS, 
+:       :                                                  :ABILITYREMOVAL, :ITEMREMOVAL, :DISABLE, 
+:       :                                                  :OHKO, :SELFKO, :ESCAPE, :TRANSFORM])
+:       : 
+:       : WildBattle.start(pkmn)
+@>Conditional Branch: Variable [0001: Temp Pokemon Choice] != 1
+ @>Script: $game_screen.weather(:Fog, 9, 20)
+ @>Change Screen Color Tone: (-255,-255,-255,0), @6
+ @>Wait: 8 frame(s)
+ @>Text: The oppressive heat begins to disipate inside the cave...
+ @>Control Self Switch: A =ON
+ @>Control Variables: [0143: Wisteria Island Sidequest] += 1
+ @>Change Screen Color Tone: (0,0,0,0), @6
+ @>Control Switches: [0126: Marisa Omega Defeated] = ON
+ @>
+: Else
+ @>Change Text Options: Middle, Show
+ @>Script: $game_screen.weather(:Fog, 9, 20)
+ @>Text: \w[dark]<i>Hmph! Is that all you have?</i>
+ @>Text: \w[dark]<i>I'll delay the inevitable for as long as I can. Now, 
+  :    : hurry and leave, before you get burnt to cinders.</i>
+ @>Change Text Options: Bottom, Show
+ @>Script: pbSEPlay("Anim/gust")
+ @>Change Screen Color Tone: (-255,-255,-255,0), @6
+ @>Wait: 8 frame(s)
+ @>Transfer Player:[281: Wisteria Beach], (030,014), Down, No Fade
+ @>Change Screen Color Tone: (0,0,0,0), @6
+ @>Text: \pn was blown out of the cave!
+ @>
+: Branch End
+@>
+
+Page #3
+Conditions
 Self Switch A is ON
 
 Autonomous Movement
@@ -112964,6 +113087,41 @@ Move Animation
 Trigger: Action Button
 
 List of Event Commands:
+@>
+
+#------------------------------------------------------------------------------
+Event ID: 007
+Event Name: EV007
+(X,Y): (037,011)
+
+Page #1
+Conditions
+None
+
+Autonomous Movement
+Type: Fixed
+Speed: 3: Slow
+Freq: 3: Low
+Options Enabled
+Move Animation
+Trigger: Action Button
+
+List of Event Commands:
+@>Script: setBattleRule("outcome", 1)
+:       : setBattleRule("backdrop", "volcano")
+:       : setBattleRule("base", "volcano")
+:       : setBattleRule("cannotRun")
+:       : setBattleRule("battleIntroText", "{1}, the Blazing Apocalypse, challenges you!")
+:       : setBattleRule("setSlideSprite", "still")
+:       : setBattleRule("databoxStyle", :Long)
+:       : setBattleRule("raidStyleCapture", {:capture_chance => 100})
+@>Script: setBattleRule("midbattleScript", :vs_marisa_omega)
+:       : #setBattleRule("editWildPokemon", :hp_level => 2)
+:       : setBattleRule("editWildPokemon", :immunities => [:SLEEP, :ATTRACT, :PPLOSS, 
+:       :                                                  :ABILITYREMOVAL, :ITEMREMOVAL, :DISABLE, 
+:       :                                                  :OHKO, :SELFKO, :ESCAPE, :TRANSFORM])
+:       : 
+:       : WildBattle.start(pkmn)
 @>
 
 #------------------------------------------------------------------------------
@@ -113412,7 +113570,7 @@ Map ID: 289
 Map Name: Celadon Game Corner
 Tileset: 012: Game Corner
 Width: 20, Height: 32
-Auto-Change BGM: 22 - The Doll Maker of Bucuresti
+Auto-Change BGM: W-033. Game Corner
 
 #------------------------------------------------------------------------------
 Event ID: 001
@@ -113758,6 +113916,39 @@ List of Event Commands:
  @>Change Screen Color Tone: (0,0,0,0), @6
  @>
 : Branch End
+@>
+
+#------------------------------------------------------------------------------
+Event ID: 013
+Event Name: Stairs down
+(X,Y): (015,002)
+
+Page #1
+Conditions
+None
+
+Autonomous Movement
+Type: Fixed
+Speed: 3: Slow
+Freq: 3: Low
+Options Enabled
+Move Animation
+Trigger: Player Touch
+
+List of Event Commands:
+@>Set Move Route: Player
+ :              : $>Through ON
+ :              : $>Always on Top ON
+ :              : $>Turn Right
+ :              : $>Move Right
+ :              : $>Through OFF
+ :              : $>Always on Top OFF
+@>Wait for Move's Completion
+@>Play SE: 'Door exit', 100, 100
+@>Change Screen Color Tone: (-255,-255,-255,0), @6
+@>Wait: 8 frame(s)
+@>Transfer Player:[293: Celadon Game Corner], (012,002), Right, No Fade
+@>Change Screen Color Tone: (0,0,0,0), @6
 @>
 
 #------------------------------------------------------------------------------
@@ -115731,6 +115922,63 @@ List of Event Commands:
 : Branch End
 @>
 
+Page #2
+Conditions
+None
+
+Graphic: NPC 21
+
+Autonomous Movement
+Type: Fixed
+Speed: 3: Slow
+Freq: 3: Low
+Options Enabled
+Move Animation
+Trigger: Action Button
+
+List of Event Commands:
+@>Script: GameData::Recipe.each do |r|
+:       :   next unless r.has_flag?("TypeResistPendants")
+:       :   pbUnlockRecipe(r.id)
+:       : end
+@>Text: Greetings traveler, and welcome to my shop.
+@>Conditional Branch: Self Switch A == OFF
+ @>Text: I sell specialty charms and amulets here that will keep you
+  :    : and your most cherished partners safe.
+ @>Text: Everything you see here is hand crafted by myself.
+ @>Text: While I am amenable to you purchasing my stock, do note that
+  :    : it comes at a high price. I take great pride in my work, and the
+  :    : money goes toward bulk purchasing the ingredients I need.
+ @>Text: However, if you were to bring me the resources I require,
+  :    : that would be a different story entirely, and I'll do it all for free.
+ @>Text: With that in mind...
+ @>Control Self Switch: A =ON
+ @>
+: Branch End
+@>Text: What can I do for you today?
+@>Show Choices: Purchase Wares, Hand Over Ingredients, Nevermind
+(When Cancel: Choice 3)
+: When [Purchase Wares]
+ @>Script: pbPokemonMart([
+ :       : :OCCAPENDANT,:PASSHOPENDANT,:WACANPENDANT,:RINDOPENDANT,:YACHEPENDANT,:CHOPLEPENDANT,
+ :       : :KEBIAPENDANT,:SHUCAPENDANT,:COBAPENDANT,:PAYAPAPENDANT,:TANGAPENDANT,:CHARTIPENDANT,
+ :       : :KASIBPENDANT,:HABANPENDANT,:COLBURPENDANT,:BABIRIPENDANT,:CHILANPENDANT,
+ :       : :ANTIMETAL,:ANTIEARTH,:ANTIBEAST,:ANTINATURE,:ANTIHEART,:ANTIUMBRAL,
+ :       : :ANTIWIND,:ANTIMIASMA,:ANTIHYDRO,:ANTIAERO,:ANTICRYO,:ANTINETHER,
+ :       : :ANTIREASON,:ANTIPYRO,:ANTIILLUSION,:ANTIFAITH,:ANTIDREAM
+ :       : ])
+ @>
+: When [Hand Over Ingredients]
+ @>Text: Oh, you have ingredients for me?
+ @>Script: pbItemCrafter(
+ :       :   pbGetRecipes("TypeResistPendants")
+ :       : )
+ @>
+: When [Nevermind]
+ @>
+: Branch End
+@>
+
 #------------------------------------------------------------------------------
 Event ID: 007
 Event Name: ExitArrow
@@ -115770,7 +116018,7 @@ Map ID: 293
 Map Name: Celadon Game Corner
 Tileset: 003: Inside
 Width: 28, Height: 34
-Auto-Change BGM: 22 - The Doll Maker of Bucuresti
+Auto-Change BGM: W-033. Game Corner
 
 #------------------------------------------------------------------------------
 Event ID: 001
@@ -117019,6 +117267,106 @@ List of Event Commands:
 @>
 
 #------------------------------------------------------------------------------
+Event ID: 042
+Event Name: Stairs down
+(X,Y): (018,002)
+
+Page #1
+Conditions
+None
+
+Autonomous Movement
+Type: Fixed
+Speed: 3: Slow
+Freq: 3: Low
+Options Enabled
+Move Animation
+Trigger: Player Touch
+
+List of Event Commands:
+@>Set Move Route: Player
+ :              : $>Through ON
+ :              : $>Always on Top ON
+ :              : $>Turn Right
+ :              : $>Move Right
+ :              : $>Through OFF
+ :              : $>Always on Top OFF
+@>Wait for Move's Completion
+@>Play SE: 'Door exit', 100, 100
+@>Change Screen Color Tone: (-255,-255,-255,0), @6
+@>Wait: 8 frame(s)
+@>Transfer Player:[294: Celadon Game Corner], (028,002), Left, No Fade
+@>Change Screen Color Tone: (0,0,0,0), @6
+@>
+
+#------------------------------------------------------------------------------
+Event ID: 043
+Event Name: Stairs down
+(X,Y): (016,030)
+
+Page #1
+Conditions
+None
+
+Autonomous Movement
+Type: Fixed
+Speed: 3: Slow
+Freq: 3: Low
+Options Enabled
+Move Animation
+Trigger: Player Touch
+
+List of Event Commands:
+@>Set Move Route: Player
+ :              : $>Through ON
+ :              : $>Always on Top ON
+ :              : $>Turn Right
+ :              : $>Move Right
+ :              : $>Through OFF
+ :              : $>Always on Top OFF
+@>Wait for Move's Completion
+@>Play SE: 'Door exit', 100, 100
+@>Change Screen Color Tone: (-255,-255,-255,0), @6
+@>Wait: 8 frame(s)
+@>Transfer Player:[294: Celadon Game Corner], (023,012), Left, No Fade
+@>Change Screen Color Tone: (0,0,0,0), @6
+@>
+
+#------------------------------------------------------------------------------
+Event ID: 044
+Event Name: Stairs up
+(X,Y): (011,002)
+
+Page #1
+Conditions
+None
+
+Autonomous Movement
+Type: Fixed
+Speed: 3: Slow
+Freq: 3: Low
+Options Enabled
+Move Animation
+Trigger: Player Touch
+
+List of Event Commands:
+@>Set Move Route: Player
+ :              : $>Through ON
+ :              : $>Always on Top ON
+ :              : $>Turn Left
+ :              : $>Move Left
+ :              : $>Move Upper Left
+ :              : $>Through OFF
+ :              : $>Always on Top OFF
+@>Wait for Move's Completion
+@>Play SE: 'Door exit', 100, 100
+@>Change Screen Color Tone: (-255,-255,-255,0), @6
+@>Wait: 8 frame(s)
+@>Transfer Player:[289: Celadon Game Corner], (014,002), Right, No Fade
+@>Change Screen Color Tone: (0,0,0,0), @6
+@>
+
+#------------------------------------------------------------------------------
 Event ID: 045
 Event Name: EV045
 (X,Y): (014,001)
@@ -117193,7 +117541,7 @@ Map ID: 294
 Map Name: Celadon Game Corner
 Tileset: 003: Inside
 Width: 32, Height: 22
-Auto-Change BGM: 22 - The Doll Maker of Bucuresti
+Auto-Change BGM: W-033. Game Corner
 
 #------------------------------------------------------------------------------
 Event ID: 001
@@ -117798,6 +118146,107 @@ List of Event Commands:
  @>Text: Alright, come again sometime!
  @>
 : Branch End
+@>
+
+#------------------------------------------------------------------------------
+Event ID: 006
+Event Name: Stairs down
+(X,Y): (022,002)
+
+Page #1
+Conditions
+None
+
+Autonomous Movement
+Type: Fixed
+Speed: 3: Slow
+Freq: 3: Low
+Options Enabled
+Move Animation
+Trigger: Player Touch
+
+List of Event Commands:
+@>Set Move Route: Player
+ :              : $>Through ON
+ :              : $>Always on Top ON
+ :              : $>Turn Right
+ :              : $>Move Right
+ :              : $>Through OFF
+ :              : $>Always on Top OFF
+@>Wait for Move's Completion
+@>Play SE: 'Door exit', 100, 100
+@>Change Screen Color Tone: (-255,-255,-255,0), @6
+@>Wait: 8 frame(s)
+@>Transfer Player:[295: Celadon Game Corner], (018,002), Left, No Fade
+@>Change Screen Color Tone: (0,0,0,0), @6
+@>
+
+#------------------------------------------------------------------------------
+Event ID: 007
+Event Name: Stairs up
+(X,Y): (029,002)
+
+Page #1
+Conditions
+None
+
+Autonomous Movement
+Type: Fixed
+Speed: 3: Slow
+Freq: 3: Low
+Options Enabled
+Move Animation
+Trigger: Player Touch
+
+List of Event Commands:
+@>Set Move Route: Player
+ :              : $>Through ON
+ :              : $>Always on Top ON
+ :              : $>Turn Right
+ :              : $>Move Right
+ :              : $>Move Upper Right
+ :              : $>Through OFF
+ :              : $>Always on Top OFF
+@>Wait for Move's Completion
+@>Play SE: 'Door exit', 100, 100
+@>Change Screen Color Tone: (-255,-255,-255,0), @6
+@>Wait: 8 frame(s)
+@>Transfer Player:[293: Celadon Game Corner], (017,002), Left, No Fade
+@>Change Screen Color Tone: (0,0,0,0), @6
+@>
+
+#------------------------------------------------------------------------------
+Event ID: 008
+Event Name: Stairs up
+(X,Y): (024,012)
+
+Page #1
+Conditions
+None
+
+Autonomous Movement
+Type: Fixed
+Speed: 3: Slow
+Freq: 3: Low
+Options Enabled
+Move Animation
+Trigger: Player Touch
+
+List of Event Commands:
+@>Set Move Route: Player
+ :              : $>Through ON
+ :              : $>Always on Top ON
+ :              : $>Turn Right
+ :              : $>Move Right
+ :              : $>Move Upper Right
+ :              : $>Through OFF
+ :              : $>Always on Top OFF
+@>Wait for Move's Completion
+@>Play SE: 'Door exit', 100, 100
+@>Change Screen Color Tone: (-255,-255,-255,0), @6
+@>Wait: 8 frame(s)
+@>Transfer Player:[293: Celadon Game Corner], (015,030), Left, No Fade
+@>Change Screen Color Tone: (0,0,0,0), @6
 @>
 
 #------------------------------------------------------------------------------
@@ -119506,7 +119955,7 @@ Map ID: 295
 Map Name: Celadon Game Corner
 Tileset: 003: Inside
 Width: 22, Height: 27
-Auto-Change BGM: 22 - The Doll Maker of Bucuresti
+Auto-Change BGM: W-033. Game Corner
 
 #------------------------------------------------------------------------------
 Event ID: 001
@@ -119737,6 +120186,40 @@ List of Event Commands:
 @>Script: pbTriadDuel("Sophie", 0, 5, nil, nil,
 :       :   :ARCEUS
 :       : )
+@>
+
+#------------------------------------------------------------------------------
+Event ID: 007
+Event Name: Stairs up
+(X,Y): (019,002)
+
+Page #1
+Conditions
+None
+
+Autonomous Movement
+Type: Fixed
+Speed: 3: Slow
+Freq: 3: Low
+Options Enabled
+Move Animation
+Trigger: Player Touch
+
+List of Event Commands:
+@>Set Move Route: Player
+ :              : $>Through ON
+ :              : $>Always on Top ON
+ :              : $>Turn Right
+ :              : $>Move Right
+ :              : $>Move Upper Right
+ :              : $>Through OFF
+ :              : $>Always on Top OFF
+@>Wait for Move's Completion
+@>Play SE: 'Door exit', 100, 100
+@>Change Screen Color Tone: (-255,-255,-255,0), @6
+@>Wait: 8 frame(s)
+@>Transfer Player:[294: Celadon Game Corner], (021,002), Left, No Fade
+@>Change Screen Color Tone: (0,0,0,0), @6
 @>
 
 #------------------------------------------------------------------------------
@@ -129066,7 +129549,7 @@ List of Event Commands:
 : When [Yes]
  @>Text: Which fossil should I revive?
  @>Script: pbChooseFossil(9)
- @>Conditional Branch: Script: pbGet(9) != :NONE
+ @>Conditional Branch: Script: pbGet(9) == :NONE
   @>Comment: Player didn't choose a fossil.
   @>Text: Let me know when you want me to revive a 
    :    : fossil for you.
@@ -129086,9 +129569,7 @@ List of Event Commands:
   :       :   :ROOTFOSSIL  => :LILEEP,
   :       :   :CLAWFOSSIL  => :ANORITH,
   :       :   :SKULLFOSSIL => :CRANIDOS,
-  :       :   :ARMORFOSSIL => :SHIELDON,
-  :       :   :MIKOFOSSIL => :CHAKUREI,
-  :       :   :MAGIFOSSIL => :CKIRISAME
+  :       :   :ARMORFOSSIL => :SHIELDON
   :       : }
   @>Script: conversion_hash.merge!({
   :       :   :COVERFOSSIL => :TIRTOUGA,
@@ -129128,17 +129609,18 @@ Trigger: Action Button
 List of Event Commands:
 @>Conditional Branch: Script: pbGet(9).is_a?(Symbol)
  @>Script: data = GameData::Species.get(
- :       :   pbGet(9)).name
+ :       :   pbGet(9))
  :       : pbSet(3, data.name)
- @>Text: Where have you been?  I've finished reviving 
-  :    : your fossil.
+ @>Text: Where have you been? I've finished reviving your
+  :    : fossil.
  @>Text: It was \v[3] like I thought.
- @>Conditional Branch: Script: pbAddToParty(pbGet(9),1)
+ @>Conditional Branch: Script: pbAddToParty(pbGet(9), 1)
+  @>Script: $stats.revived_fossil_count += 1
   @>Control Variables: [0009: Fossil being revived] = 0
   @>Control Self Switch: A =OFF
   @>
  : Else
-  @>Text: You have no room left.  Make room, then come see 
+  @>Text: \bYou have no room left. Make room, then come see 
    :    : me.
   @>
  : Branch End
@@ -129150,10 +129632,10 @@ List of Event Commands:
   :       : mistake in the conversion_hash on page 1, namely 
   :       : that it doesn't contain a "fossil => species" pair for 
   :       : the item given to the fossil reviver.
- @>Text: \bI managed to revive your fossil.
- @>Text: \bHowever, what I brought back didn't live long...\1 
+ @>Text: I managed to revive your fossil.
+ @>Text: However, what I brought back didn't live long...\1 
   :    : fortunately.
- @>Text: \bSorry.
+ @>Text: Sorry.
  @>Control Self Switch: A =OFF
  @>
 : Branch End
@@ -147947,7 +148429,7 @@ Map ID: 342
 Map Name: Gatehouse
 Tileset: 003: Inside
 Width: 20, Height: 15
-Auto-Change BGM: 008. Soul as Red as a Ground Cherry
+Auto-Change BGM: W-007. Route Theme 2
 
 #------------------------------------------------------------------------------
 Event ID: 001
@@ -148129,13 +148611,13 @@ List of Event Commands:
 Map ID: 343
 Map Name: Seaside Dig Spot
 Tileset: 006: Caves
-Width: 60, Height: 60
-Auto-Change BGM: 019. The Cave People No Longer Enter
+Width: 72, Height: 56
+Auto-Change BGM: W-013. Mining Tunnels
 
 #------------------------------------------------------------------------------
 Event ID: 001
-Event Name: Light
-(X,Y): (019,032)
+Event Name: Dig Spot
+(X,Y): (014,040)
 
 Page #1
 Conditions
@@ -148150,16 +148632,7 @@ Move Animation
 Trigger: Action Button
 
 List of Event Commands:
-@>Text: This rock looks like it can be dug into. Dig into it?
-@>Show Choices: Yes, No
-(When Cancel: Choice 2)
-: When [Yes]
- @>Script: pbMiningGame
- @>Script: pbSetEventTime
- @>
-: When [No]
- @>
-: Branch End
+@>Call Common Event: Mining Minigame
 @>
 
 Page #2
@@ -148175,31 +148648,13 @@ Move Animation
 Trigger: Action Button
 
 List of Event Commands:
-@>Text: You can't dig in this rock more than once a day.
-@>
-
-Page #3
-Conditions
-Switch 0023: s:cooledDown?(86400) is ON
-Self Switch A is ON
-
-Autonomous Movement
-Type: Fixed
-Speed: 3: Slow
-Freq: 3: Low
-Options Enabled
-Move Animation
-Trigger: Autorun
-
-List of Event Commands:
-@>Control Self Switch: A =OFF
-@>Script: setTempSwitchOn("A")
+@>Text: You've already dug in this spot.
 @>
 
 #------------------------------------------------------------------------------
 Event ID: 002
-Event Name: Light
-(X,Y): (021,032)
+Event Name: Dig Spot
+(X,Y): (014,042)
 
 Page #1
 Conditions
@@ -148214,16 +148669,7 @@ Move Animation
 Trigger: Action Button
 
 List of Event Commands:
-@>Text: This rock looks like it can be dug into. Dig into it?
-@>Show Choices: Yes, No
-(When Cancel: Choice 2)
-: When [Yes]
- @>Script: pbMiningGame
- @>Script: pbSetEventTime
- @>
-: When [No]
- @>
-: Branch End
+@>Call Common Event: Mining Minigame
 @>
 
 Page #2
@@ -148239,31 +148685,13 @@ Move Animation
 Trigger: Action Button
 
 List of Event Commands:
-@>Text: You can't dig in this rock more than once a day.
-@>
-
-Page #3
-Conditions
-Switch 0023: s:cooledDown?(86400) is ON
-Self Switch A is ON
-
-Autonomous Movement
-Type: Fixed
-Speed: 3: Slow
-Freq: 3: Low
-Options Enabled
-Move Animation
-Trigger: Autorun
-
-List of Event Commands:
-@>Control Self Switch: A =OFF
-@>Script: setTempSwitchOn("A")
+@>Text: You've already dug in this spot.
 @>
 
 #------------------------------------------------------------------------------
 Event ID: 003
-Event Name: Light
-(X,Y): (023,032)
+Event Name: Dig Spot
+(X,Y): (023,035)
 
 Page #1
 Conditions
@@ -148278,16 +148706,7 @@ Move Animation
 Trigger: Action Button
 
 List of Event Commands:
-@>Text: This rock looks like it can be dug into. Dig into it?
-@>Show Choices: Yes, No
-(When Cancel: Choice 2)
-: When [Yes]
- @>Script: pbMiningGame
- @>Script: pbSetEventTime
- @>
-: When [No]
- @>
-: Branch End
+@>Call Common Event: Mining Minigame
 @>
 
 Page #2
@@ -148303,31 +148722,13 @@ Move Animation
 Trigger: Action Button
 
 List of Event Commands:
-@>Text: You can't dig in this rock more than once a day.
-@>
-
-Page #3
-Conditions
-Switch 0023: s:cooledDown?(86400) is ON
-Self Switch A is ON
-
-Autonomous Movement
-Type: Fixed
-Speed: 3: Slow
-Freq: 3: Low
-Options Enabled
-Move Animation
-Trigger: Autorun
-
-List of Event Commands:
-@>Control Self Switch: A =OFF
-@>Script: setTempSwitchOn("A")
+@>Text: You've already dug in this spot.
 @>
 
 #------------------------------------------------------------------------------
 Event ID: 004
-Event Name: Light
-(X,Y): (025,033)
+Event Name: Dig Spot
+(X,Y): (019,038)
 
 Page #1
 Conditions
@@ -148342,16 +148743,7 @@ Move Animation
 Trigger: Action Button
 
 List of Event Commands:
-@>Text: This rock looks like it can be dug into. Dig into it?
-@>Show Choices: Yes, No
-(When Cancel: Choice 2)
-: When [Yes]
- @>Script: pbMiningGame
- @>Script: pbSetEventTime
- @>
-: When [No]
- @>
-: Branch End
+@>Call Common Event: Mining Minigame
 @>
 
 Page #2
@@ -148367,31 +148759,13 @@ Move Animation
 Trigger: Action Button
 
 List of Event Commands:
-@>Text: You can't dig in this rock more than once a day.
-@>
-
-Page #3
-Conditions
-Switch 0023: s:cooledDown?(86400) is ON
-Self Switch A is ON
-
-Autonomous Movement
-Type: Fixed
-Speed: 3: Slow
-Freq: 3: Low
-Options Enabled
-Move Animation
-Trigger: Autorun
-
-List of Event Commands:
-@>Control Self Switch: A =OFF
-@>Script: setTempSwitchOn("A")
+@>Text: You've already dug in this spot.
 @>
 
 #------------------------------------------------------------------------------
 Event ID: 005
-Event Name: Light
-(X,Y): (026,035)
+Event Name: Dig Spot
+(X,Y): (016,023)
 
 Page #1
 Conditions
@@ -148406,16 +148780,7 @@ Move Animation
 Trigger: Action Button
 
 List of Event Commands:
-@>Text: This rock looks like it can be dug into. Dig into it?
-@>Show Choices: Yes, No
-(When Cancel: Choice 2)
-: When [Yes]
- @>Script: pbMiningGame
- @>Script: pbSetEventTime
- @>
-: When [No]
- @>
-: Branch End
+@>Call Common Event: Mining Minigame
 @>
 
 Page #2
@@ -148431,31 +148796,13 @@ Move Animation
 Trigger: Action Button
 
 List of Event Commands:
-@>Text: You can't dig in this rock more than once a day.
-@>
-
-Page #3
-Conditions
-Switch 0023: s:cooledDown?(86400) is ON
-Self Switch A is ON
-
-Autonomous Movement
-Type: Fixed
-Speed: 3: Slow
-Freq: 3: Low
-Options Enabled
-Move Animation
-Trigger: Autorun
-
-List of Event Commands:
-@>Control Self Switch: A =OFF
-@>Script: setTempSwitchOn("A")
+@>Text: You've already dug in this spot.
 @>
 
 #------------------------------------------------------------------------------
 Event ID: 006
-Event Name: Light
-(X,Y): (027,037)
+Event Name: Dig Spot
+(X,Y): (035,032)
 
 Page #1
 Conditions
@@ -148470,16 +148817,7 @@ Move Animation
 Trigger: Action Button
 
 List of Event Commands:
-@>Text: This rock looks like it can be dug into. Dig into it?
-@>Show Choices: Yes, No
-(When Cancel: Choice 2)
-: When [Yes]
- @>Script: pbMiningGame
- @>Script: pbSetEventTime
- @>
-: When [No]
- @>
-: Branch End
+@>Call Common Event: Mining Minigame
 @>
 
 Page #2
@@ -148495,31 +148833,13 @@ Move Animation
 Trigger: Action Button
 
 List of Event Commands:
-@>Text: You can't dig in this rock more than once a day.
-@>
-
-Page #3
-Conditions
-Switch 0023: s:cooledDown?(86400) is ON
-Self Switch A is ON
-
-Autonomous Movement
-Type: Fixed
-Speed: 3: Slow
-Freq: 3: Low
-Options Enabled
-Move Animation
-Trigger: Autorun
-
-List of Event Commands:
-@>Control Self Switch: A =OFF
-@>Script: setTempSwitchOn("A")
+@>Text: You've already dug in this spot.
 @>
 
 #------------------------------------------------------------------------------
 Event ID: 007
-Event Name: Light
-(X,Y): (028,039)
+Event Name: Dig Spot
+(X,Y): (036,026)
 
 Page #1
 Conditions
@@ -148534,16 +148854,7 @@ Move Animation
 Trigger: Action Button
 
 List of Event Commands:
-@>Text: This rock looks like it can be dug into. Dig into it?
-@>Show Choices: Yes, No
-(When Cancel: Choice 2)
-: When [Yes]
- @>Script: pbMiningGame
- @>Script: pbSetEventTime
- @>
-: When [No]
- @>
-: Branch End
+@>Call Common Event: Mining Minigame
 @>
 
 Page #2
@@ -148559,31 +148870,13 @@ Move Animation
 Trigger: Action Button
 
 List of Event Commands:
-@>Text: You can't dig in this rock more than once a day.
-@>
-
-Page #3
-Conditions
-Switch 0023: s:cooledDown?(86400) is ON
-Self Switch A is ON
-
-Autonomous Movement
-Type: Fixed
-Speed: 3: Slow
-Freq: 3: Low
-Options Enabled
-Move Animation
-Trigger: Autorun
-
-List of Event Commands:
-@>Control Self Switch: A =OFF
-@>Script: setTempSwitchOn("A")
+@>Text: You've already dug in this spot.
 @>
 
 #------------------------------------------------------------------------------
 Event ID: 008
-Event Name: Light
-(X,Y): (032,042)
+Event Name: Dig Spot
+(X,Y): (042,025)
 
 Page #1
 Conditions
@@ -148598,16 +148891,7 @@ Move Animation
 Trigger: Action Button
 
 List of Event Commands:
-@>Text: This rock looks like it can be dug into. Dig into it?
-@>Show Choices: Yes, No
-(When Cancel: Choice 2)
-: When [Yes]
- @>Script: pbMiningGame
- @>Script: pbSetEventTime
- @>
-: When [No]
- @>
-: Branch End
+@>Call Common Event: Mining Minigame
 @>
 
 Page #2
@@ -148623,31 +148907,13 @@ Move Animation
 Trigger: Action Button
 
 List of Event Commands:
-@>Text: You can't dig in this rock more than once a day.
-@>
-
-Page #3
-Conditions
-Switch 0023: s:cooledDown?(86400) is ON
-Self Switch A is ON
-
-Autonomous Movement
-Type: Fixed
-Speed: 3: Slow
-Freq: 3: Low
-Options Enabled
-Move Animation
-Trigger: Autorun
-
-List of Event Commands:
-@>Control Self Switch: A =OFF
-@>Script: setTempSwitchOn("A")
+@>Text: You've already dug in this spot.
 @>
 
 #------------------------------------------------------------------------------
 Event ID: 009
-Event Name: Light
-(X,Y): (034,043)
+Event Name: Dig Spot
+(X,Y): (016,020)
 
 Page #1
 Conditions
@@ -148662,16 +148928,7 @@ Move Animation
 Trigger: Action Button
 
 List of Event Commands:
-@>Text: This rock looks like it can be dug into. Dig into it?
-@>Show Choices: Yes, No
-(When Cancel: Choice 2)
-: When [Yes]
- @>Script: pbMiningGame
- @>Script: pbSetEventTime
- @>
-: When [No]
- @>
-: Branch End
+@>Call Common Event: Mining Minigame
 @>
 
 Page #2
@@ -148687,31 +148944,13 @@ Move Animation
 Trigger: Action Button
 
 List of Event Commands:
-@>Text: You can't dig in this rock more than once a day.
-@>
-
-Page #3
-Conditions
-Switch 0023: s:cooledDown?(86400) is ON
-Self Switch A is ON
-
-Autonomous Movement
-Type: Fixed
-Speed: 3: Slow
-Freq: 3: Low
-Options Enabled
-Move Animation
-Trigger: Autorun
-
-List of Event Commands:
-@>Control Self Switch: A =OFF
-@>Script: setTempSwitchOn("A")
+@>Text: You've already dug in this spot.
 @>
 
 #------------------------------------------------------------------------------
 Event ID: 010
-Event Name: Light
-(X,Y): (036,043)
+Event Name: Dig Spot
+(X,Y): (022,015)
 
 Page #1
 Conditions
@@ -148726,16 +148965,7 @@ Move Animation
 Trigger: Action Button
 
 List of Event Commands:
-@>Text: This rock looks like it can be dug into. Dig into it?
-@>Show Choices: Yes, No
-(When Cancel: Choice 2)
-: When [Yes]
- @>Script: pbMiningGame
- @>Script: pbSetEventTime
- @>
-: When [No]
- @>
-: Branch End
+@>Call Common Event: Mining Minigame
 @>
 
 Page #2
@@ -148751,31 +148981,13 @@ Move Animation
 Trigger: Action Button
 
 List of Event Commands:
-@>Text: You can't dig in this rock more than once a day.
-@>
-
-Page #3
-Conditions
-Switch 0023: s:cooledDown?(86400) is ON
-Self Switch A is ON
-
-Autonomous Movement
-Type: Fixed
-Speed: 3: Slow
-Freq: 3: Low
-Options Enabled
-Move Animation
-Trigger: Autorun
-
-List of Event Commands:
-@>Control Self Switch: A =OFF
-@>Script: setTempSwitchOn("A")
+@>Text: You've already dug in this spot.
 @>
 
 #------------------------------------------------------------------------------
 Event ID: 011
-Event Name: Light
-(X,Y): (038,043)
+Event Name: Dig Spot
+(X,Y): (022,023)
 
 Page #1
 Conditions
@@ -148790,16 +149002,7 @@ Move Animation
 Trigger: Action Button
 
 List of Event Commands:
-@>Text: This rock looks like it can be dug into. Dig into it?
-@>Show Choices: Yes, No
-(When Cancel: Choice 2)
-: When [Yes]
- @>Script: pbMiningGame
- @>Script: pbSetEventTime
- @>
-: When [No]
- @>
-: Branch End
+@>Call Common Event: Mining Minigame
 @>
 
 Page #2
@@ -148815,31 +149018,13 @@ Move Animation
 Trigger: Action Button
 
 List of Event Commands:
-@>Text: You can't dig in this rock more than once a day.
-@>
-
-Page #3
-Conditions
-Switch 0023: s:cooledDown?(86400) is ON
-Self Switch A is ON
-
-Autonomous Movement
-Type: Fixed
-Speed: 3: Slow
-Freq: 3: Low
-Options Enabled
-Move Animation
-Trigger: Autorun
-
-List of Event Commands:
-@>Control Self Switch: A =OFF
-@>Script: setTempSwitchOn("A")
+@>Text: You've already dug in this spot.
 @>
 
 #------------------------------------------------------------------------------
 Event ID: 012
-Event Name: Light
-(X,Y): (040,043)
+Event Name: Dig Spot
+(X,Y): (024,021)
 
 Page #1
 Conditions
@@ -148854,16 +149039,7 @@ Move Animation
 Trigger: Action Button
 
 List of Event Commands:
-@>Text: This rock looks like it can be dug into. Dig into it?
-@>Show Choices: Yes, No
-(When Cancel: Choice 2)
-: When [Yes]
- @>Script: pbMiningGame
- @>Script: pbSetEventTime
- @>
-: When [No]
- @>
-: Branch End
+@>Call Common Event: Mining Minigame
 @>
 
 Page #2
@@ -148879,31 +149055,13 @@ Move Animation
 Trigger: Action Button
 
 List of Event Commands:
-@>Text: You can't dig in this rock more than once a day.
-@>
-
-Page #3
-Conditions
-Switch 0023: s:cooledDown?(86400) is ON
-Self Switch A is ON
-
-Autonomous Movement
-Type: Fixed
-Speed: 3: Slow
-Freq: 3: Low
-Options Enabled
-Move Animation
-Trigger: Autorun
-
-List of Event Commands:
-@>Control Self Switch: A =OFF
-@>Script: setTempSwitchOn("A")
+@>Text: You've already dug in this spot.
 @>
 
 #------------------------------------------------------------------------------
 Event ID: 013
-Event Name: Light
-(X,Y): (042,043)
+Event Name: Dig Spot
+(X,Y): (034,018)
 
 Page #1
 Conditions
@@ -148918,16 +149076,7 @@ Move Animation
 Trigger: Action Button
 
 List of Event Commands:
-@>Text: This rock looks like it can be dug into. Dig into it?
-@>Show Choices: Yes, No
-(When Cancel: Choice 2)
-: When [Yes]
- @>Script: pbMiningGame
- @>Script: pbSetEventTime
- @>
-: When [No]
- @>
-: Branch End
+@>Call Common Event: Mining Minigame
 @>
 
 Page #2
@@ -148943,31 +149092,13 @@ Move Animation
 Trigger: Action Button
 
 List of Event Commands:
-@>Text: You can't dig in this rock more than once a day.
-@>
-
-Page #3
-Conditions
-Switch 0023: s:cooledDown?(86400) is ON
-Self Switch A is ON
-
-Autonomous Movement
-Type: Fixed
-Speed: 3: Slow
-Freq: 3: Low
-Options Enabled
-Move Animation
-Trigger: Autorun
-
-List of Event Commands:
-@>Control Self Switch: A =OFF
-@>Script: setTempSwitchOn("A")
+@>Text: You've already dug in this spot.
 @>
 
 #------------------------------------------------------------------------------
 Event ID: 014
-Event Name: Light
-(X,Y): (044,041)
+Event Name: Dig Spot
+(X,Y): (035,015)
 
 Page #1
 Conditions
@@ -148982,16 +149113,7 @@ Move Animation
 Trigger: Action Button
 
 List of Event Commands:
-@>Text: This rock looks like it can be dug into. Dig into it?
-@>Show Choices: Yes, No
-(When Cancel: Choice 2)
-: When [Yes]
- @>Script: pbMiningGame
- @>Script: pbSetEventTime
- @>
-: When [No]
- @>
-: Branch End
+@>Call Common Event: Mining Minigame
 @>
 
 Page #2
@@ -149007,31 +149129,13 @@ Move Animation
 Trigger: Action Button
 
 List of Event Commands:
-@>Text: You can't dig in this rock more than once a day.
-@>
-
-Page #3
-Conditions
-Switch 0023: s:cooledDown?(86400) is ON
-Self Switch A is ON
-
-Autonomous Movement
-Type: Fixed
-Speed: 3: Slow
-Freq: 3: Low
-Options Enabled
-Move Animation
-Trigger: Autorun
-
-List of Event Commands:
-@>Control Self Switch: A =OFF
-@>Script: setTempSwitchOn("A")
+@>Text: You've already dug in this spot.
 @>
 
 #------------------------------------------------------------------------------
 Event ID: 015
-Event Name: Light
-(X,Y): (044,039)
+Event Name: Dig Spot
+(X,Y): (011,010)
 
 Page #1
 Conditions
@@ -149046,16 +149150,7 @@ Move Animation
 Trigger: Action Button
 
 List of Event Commands:
-@>Text: This rock looks like it can be dug into. Dig into it?
-@>Show Choices: Yes, No
-(When Cancel: Choice 2)
-: When [Yes]
- @>Script: pbMiningGame
- @>Script: pbSetEventTime
- @>
-: When [No]
- @>
-: Branch End
+@>Call Common Event: Mining Minigame
 @>
 
 Page #2
@@ -149071,31 +149166,13 @@ Move Animation
 Trigger: Action Button
 
 List of Event Commands:
-@>Text: You can't dig in this rock more than once a day.
-@>
-
-Page #3
-Conditions
-Switch 0023: s:cooledDown?(86400) is ON
-Self Switch A is ON
-
-Autonomous Movement
-Type: Fixed
-Speed: 3: Slow
-Freq: 3: Low
-Options Enabled
-Move Animation
-Trigger: Autorun
-
-List of Event Commands:
-@>Control Self Switch: A =OFF
-@>Script: setTempSwitchOn("A")
+@>Text: You've already dug in this spot.
 @>
 
 #------------------------------------------------------------------------------
 Event ID: 016
-Event Name: Light
-(X,Y): (044,037)
+Event Name: Dig Spot
+(X,Y): (010,014)
 
 Page #1
 Conditions
@@ -149110,16 +149187,7 @@ Move Animation
 Trigger: Action Button
 
 List of Event Commands:
-@>Text: This rock looks like it can be dug into. Dig into it?
-@>Show Choices: Yes, No
-(When Cancel: Choice 2)
-: When [Yes]
- @>Script: pbMiningGame
- @>Script: pbSetEventTime
- @>
-: When [No]
- @>
-: Branch End
+@>Call Common Event: Mining Minigame
 @>
 
 Page #2
@@ -149135,31 +149203,13 @@ Move Animation
 Trigger: Action Button
 
 List of Event Commands:
-@>Text: You can't dig in this rock more than once a day.
-@>
-
-Page #3
-Conditions
-Switch 0023: s:cooledDown?(86400) is ON
-Self Switch A is ON
-
-Autonomous Movement
-Type: Fixed
-Speed: 3: Slow
-Freq: 3: Low
-Options Enabled
-Move Animation
-Trigger: Autorun
-
-List of Event Commands:
-@>Control Self Switch: A =OFF
-@>Script: setTempSwitchOn("A")
+@>Text: You've already dug in this spot.
 @>
 
 #------------------------------------------------------------------------------
 Event ID: 017
-Event Name: Light
-(X,Y): (044,035)
+Event Name: Dig Spot
+(X,Y): (009,018)
 
 Page #1
 Conditions
@@ -149174,16 +149224,7 @@ Move Animation
 Trigger: Action Button
 
 List of Event Commands:
-@>Text: This rock looks like it can be dug into. Dig into it?
-@>Show Choices: Yes, No
-(When Cancel: Choice 2)
-: When [Yes]
- @>Script: pbMiningGame
- @>Script: pbSetEventTime
- @>
-: When [No]
- @>
-: Branch End
+@>Call Common Event: Mining Minigame
 @>
 
 Page #2
@@ -149199,31 +149240,13 @@ Move Animation
 Trigger: Action Button
 
 List of Event Commands:
-@>Text: You can't dig in this rock more than once a day.
-@>
-
-Page #3
-Conditions
-Switch 0023: s:cooledDown?(86400) is ON
-Self Switch A is ON
-
-Autonomous Movement
-Type: Fixed
-Speed: 3: Slow
-Freq: 3: Low
-Options Enabled
-Move Animation
-Trigger: Autorun
-
-List of Event Commands:
-@>Control Self Switch: A =OFF
-@>Script: setTempSwitchOn("A")
+@>Text: You've already dug in this spot.
 @>
 
 #------------------------------------------------------------------------------
 Event ID: 018
-Event Name: OutdoorLight
-(X,Y): (042,033)
+Event Name: Dig Spot
+(X,Y): (009,021)
 
 Page #1
 Conditions
@@ -149238,16 +149261,7 @@ Move Animation
 Trigger: Action Button
 
 List of Event Commands:
-@>Text: This rock looks like it can be dug into. Dig into it?
-@>Show Choices: Yes, No
-(When Cancel: Choice 2)
-: When [Yes]
- @>Script: pbMiningGame
- @>Script: pbSetEventTime
- @>
-: When [No]
- @>
-: Branch End
+@>Call Common Event: Mining Minigame
 @>
 
 Page #2
@@ -149263,31 +149277,13 @@ Move Animation
 Trigger: Action Button
 
 List of Event Commands:
-@>Text: You can't dig in this rock more than once a day.
-@>
-
-Page #3
-Conditions
-Switch 0023: s:cooledDown?(86400) is ON
-Self Switch A is ON
-
-Autonomous Movement
-Type: Fixed
-Speed: 3: Slow
-Freq: 3: Low
-Options Enabled
-Move Animation
-Trigger: Autorun
-
-List of Event Commands:
-@>Control Self Switch: A =OFF
-@>Script: setTempSwitchOn("A")
+@>Text: You've already dug in this spot.
 @>
 
 #------------------------------------------------------------------------------
 Event ID: 019
-Event Name: Light
-(X,Y): (041,031)
+Event Name: Dig Spot
+(X,Y): (009,025)
 
 Page #1
 Conditions
@@ -149302,16 +149298,7 @@ Move Animation
 Trigger: Action Button
 
 List of Event Commands:
-@>Text: This rock looks like it can be dug into. Dig into it?
-@>Show Choices: Yes, No
-(When Cancel: Choice 2)
-: When [Yes]
- @>Script: pbMiningGame
- @>Script: pbSetEventTime
- @>
-: When [No]
- @>
-: Branch End
+@>Call Common Event: Mining Minigame
 @>
 
 Page #2
@@ -149327,31 +149314,13 @@ Move Animation
 Trigger: Action Button
 
 List of Event Commands:
-@>Text: You can't dig in this rock more than once a day.
-@>
-
-Page #3
-Conditions
-Switch 0023: s:cooledDown?(86400) is ON
-Self Switch A is ON
-
-Autonomous Movement
-Type: Fixed
-Speed: 3: Slow
-Freq: 3: Low
-Options Enabled
-Move Animation
-Trigger: Autorun
-
-List of Event Commands:
-@>Control Self Switch: A =OFF
-@>Script: setTempSwitchOn("A")
+@>Text: You've already dug in this spot.
 @>
 
 #------------------------------------------------------------------------------
 Event ID: 020
-Event Name: OutdoorLight
-(X,Y): (039,030)
+Event Name: Dig Spot
+(X,Y): (052,015)
 
 Page #1
 Conditions
@@ -149366,16 +149335,7 @@ Move Animation
 Trigger: Action Button
 
 List of Event Commands:
-@>Text: This rock looks like it can be dug into. Dig into it?
-@>Show Choices: Yes, No
-(When Cancel: Choice 2)
-: When [Yes]
- @>Script: pbMiningGame
- @>Script: pbSetEventTime
- @>
-: When [No]
- @>
-: Branch End
+@>Call Common Event: Mining Minigame
 @>
 
 Page #2
@@ -149391,31 +149351,13 @@ Move Animation
 Trigger: Action Button
 
 List of Event Commands:
-@>Text: You can't dig in this rock more than once a day.
-@>
-
-Page #3
-Conditions
-Switch 0023: s:cooledDown?(86400) is ON
-Self Switch A is ON
-
-Autonomous Movement
-Type: Fixed
-Speed: 3: Slow
-Freq: 3: Low
-Options Enabled
-Move Animation
-Trigger: Autorun
-
-List of Event Commands:
-@>Control Self Switch: A =OFF
-@>Script: setTempSwitchOn("A")
+@>Text: You've already dug in this spot.
 @>
 
 #------------------------------------------------------------------------------
 Event ID: 021
-Event Name: Light
-(X,Y): (037,028)
+Event Name: Dig Spot
+(X,Y): (057,013)
 
 Page #1
 Conditions
@@ -149430,16 +149372,7 @@ Move Animation
 Trigger: Action Button
 
 List of Event Commands:
-@>Text: This rock looks like it can be dug into. Dig into it?
-@>Show Choices: Yes, No
-(When Cancel: Choice 2)
-: When [Yes]
- @>Script: pbMiningGame
- @>Script: pbSetEventTime
- @>
-: When [No]
- @>
-: Branch End
+@>Call Common Event: Mining Minigame
 @>
 
 Page #2
@@ -149455,31 +149388,13 @@ Move Animation
 Trigger: Action Button
 
 List of Event Commands:
-@>Text: You can't dig in this rock more than once a day.
-@>
-
-Page #3
-Conditions
-Switch 0023: s:cooledDown?(86400) is ON
-Self Switch A is ON
-
-Autonomous Movement
-Type: Fixed
-Speed: 3: Slow
-Freq: 3: Low
-Options Enabled
-Move Animation
-Trigger: Autorun
-
-List of Event Commands:
-@>Control Self Switch: A =OFF
-@>Script: setTempSwitchOn("A")
+@>Text: You've already dug in this spot.
 @>
 
 #------------------------------------------------------------------------------
 Event ID: 022
-Event Name: Light
-(X,Y): (037,026)
+Event Name: Dig Spot
+(X,Y): (057,015)
 
 Page #1
 Conditions
@@ -149494,16 +149409,7 @@ Move Animation
 Trigger: Action Button
 
 List of Event Commands:
-@>Text: This rock looks like it can be dug into. Dig into it?
-@>Show Choices: Yes, No
-(When Cancel: Choice 2)
-: When [Yes]
- @>Script: pbMiningGame
- @>Script: pbSetEventTime
- @>
-: When [No]
- @>
-: Branch End
+@>Call Common Event: Mining Minigame
 @>
 
 Page #2
@@ -149519,31 +149425,13 @@ Move Animation
 Trigger: Action Button
 
 List of Event Commands:
-@>Text: You can't dig in this rock more than once a day.
-@>
-
-Page #3
-Conditions
-Switch 0023: s:cooledDown?(86400) is ON
-Self Switch A is ON
-
-Autonomous Movement
-Type: Fixed
-Speed: 3: Slow
-Freq: 3: Low
-Options Enabled
-Move Animation
-Trigger: Autorun
-
-List of Event Commands:
-@>Control Self Switch: A =OFF
-@>Script: setTempSwitchOn("A")
+@>Text: You've already dug in this spot.
 @>
 
 #------------------------------------------------------------------------------
 Event ID: 023
-Event Name: Light
-(X,Y): (035,025)
+Event Name: Dig Spot
+(X,Y): (050,024)
 
 Page #1
 Conditions
@@ -149558,16 +149446,7 @@ Move Animation
 Trigger: Action Button
 
 List of Event Commands:
-@>Text: This rock looks like it can be dug into. Dig into it?
-@>Show Choices: Yes, No
-(When Cancel: Choice 2)
-: When [Yes]
- @>Script: pbMiningGame
- @>Script: pbSetEventTime
- @>
-: When [No]
- @>
-: Branch End
+@>Call Common Event: Mining Minigame
 @>
 
 Page #2
@@ -149583,31 +149462,13 @@ Move Animation
 Trigger: Action Button
 
 List of Event Commands:
-@>Text: You can't dig in this rock more than once a day.
-@>
-
-Page #3
-Conditions
-Switch 0023: s:cooledDown?(86400) is ON
-Self Switch A is ON
-
-Autonomous Movement
-Type: Fixed
-Speed: 3: Slow
-Freq: 3: Low
-Options Enabled
-Move Animation
-Trigger: Autorun
-
-List of Event Commands:
-@>Control Self Switch: A =OFF
-@>Script: setTempSwitchOn("A")
+@>Text: You've already dug in this spot.
 @>
 
 #------------------------------------------------------------------------------
 Event ID: 024
-Event Name: Light
-(X,Y): (033,025)
+Event Name: Dig Spot
+(X,Y): (056,030)
 
 Page #1
 Conditions
@@ -149622,16 +149483,7 @@ Move Animation
 Trigger: Action Button
 
 List of Event Commands:
-@>Text: This rock looks like it can be dug into. Dig into it?
-@>Show Choices: Yes, No
-(When Cancel: Choice 2)
-: When [Yes]
- @>Script: pbMiningGame
- @>Script: pbSetEventTime
- @>
-: When [No]
- @>
-: Branch End
+@>Call Common Event: Mining Minigame
 @>
 
 Page #2
@@ -149647,31 +149499,13 @@ Move Animation
 Trigger: Action Button
 
 List of Event Commands:
-@>Text: You can't dig in this rock more than once a day.
-@>
-
-Page #3
-Conditions
-Switch 0023: s:cooledDown?(86400) is ON
-Self Switch A is ON
-
-Autonomous Movement
-Type: Fixed
-Speed: 3: Slow
-Freq: 3: Low
-Options Enabled
-Move Animation
-Trigger: Autorun
-
-List of Event Commands:
-@>Control Self Switch: A =OFF
-@>Script: setTempSwitchOn("A")
+@>Text: You've already dug in this spot.
 @>
 
 #------------------------------------------------------------------------------
 Event ID: 025
-Event Name: Light
-(X,Y): (031,025)
+Event Name: Dig Spot
+(X,Y): (054,040)
 
 Page #1
 Conditions
@@ -149686,16 +149520,7 @@ Move Animation
 Trigger: Action Button
 
 List of Event Commands:
-@>Text: This rock looks like it can be dug into. Dig into it?
-@>Show Choices: Yes, No
-(When Cancel: Choice 2)
-: When [Yes]
- @>Script: pbMiningGame
- @>Script: pbSetEventTime
- @>
-: When [No]
- @>
-: Branch End
+@>Call Common Event: Mining Minigame
 @>
 
 Page #2
@@ -149711,31 +149536,13 @@ Move Animation
 Trigger: Action Button
 
 List of Event Commands:
-@>Text: You can't dig in this rock more than once a day.
-@>
-
-Page #3
-Conditions
-Switch 0023: s:cooledDown?(86400) is ON
-Self Switch A is ON
-
-Autonomous Movement
-Type: Fixed
-Speed: 3: Slow
-Freq: 3: Low
-Options Enabled
-Move Animation
-Trigger: Autorun
-
-List of Event Commands:
-@>Control Self Switch: A =OFF
-@>Script: setTempSwitchOn("A")
+@>Text: You've already dug in this spot.
 @>
 
 #------------------------------------------------------------------------------
 Event ID: 026
-Event Name: Light
-(X,Y): (030,023)
+Event Name: Dig Spot
+(X,Y): (017,039)
 
 Page #1
 Conditions
@@ -149750,16 +149557,7 @@ Move Animation
 Trigger: Action Button
 
 List of Event Commands:
-@>Text: This rock looks like it can be dug into. Dig into it?
-@>Show Choices: Yes, No
-(When Cancel: Choice 2)
-: When [Yes]
- @>Script: pbMiningGame
- @>Script: pbSetEventTime
- @>
-: When [No]
- @>
-: Branch End
+@>Call Common Event: Mining Minigame
 @>
 
 Page #2
@@ -149775,31 +149573,13 @@ Move Animation
 Trigger: Action Button
 
 List of Event Commands:
-@>Text: You can't dig in this rock more than once a day.
-@>
-
-Page #3
-Conditions
-Switch 0023: s:cooledDown?(86400) is ON
-Self Switch A is ON
-
-Autonomous Movement
-Type: Fixed
-Speed: 3: Slow
-Freq: 3: Low
-Options Enabled
-Move Animation
-Trigger: Autorun
-
-List of Event Commands:
-@>Control Self Switch: A =OFF
-@>Script: setTempSwitchOn("A")
+@>Text: You've already dug in this spot.
 @>
 
 #------------------------------------------------------------------------------
 Event ID: 027
-Event Name: Light
-(X,Y): (028,022)
+Event Name: Dig Spot
+(X,Y): (017,037)
 
 Page #1
 Conditions
@@ -149814,16 +149594,7 @@ Move Animation
 Trigger: Action Button
 
 List of Event Commands:
-@>Text: This rock looks like it can be dug into. Dig into it?
-@>Show Choices: Yes, No
-(When Cancel: Choice 2)
-: When [Yes]
- @>Script: pbMiningGame
- @>Script: pbSetEventTime
- @>
-: When [No]
- @>
-: Branch End
+@>Call Common Event: Mining Minigame
 @>
 
 Page #2
@@ -149839,31 +149610,13 @@ Move Animation
 Trigger: Action Button
 
 List of Event Commands:
-@>Text: You can't dig in this rock more than once a day.
-@>
-
-Page #3
-Conditions
-Switch 0023: s:cooledDown?(86400) is ON
-Self Switch A is ON
-
-Autonomous Movement
-Type: Fixed
-Speed: 3: Slow
-Freq: 3: Low
-Options Enabled
-Move Animation
-Trigger: Autorun
-
-List of Event Commands:
-@>Control Self Switch: A =OFF
-@>Script: setTempSwitchOn("A")
+@>Text: You've already dug in this spot.
 @>
 
 #------------------------------------------------------------------------------
 Event ID: 028
-Event Name: Light
-(X,Y): (026,022)
+Event Name: Dig Spot
+(X,Y): (018,033)
 
 Page #1
 Conditions
@@ -149878,16 +149631,7 @@ Move Animation
 Trigger: Action Button
 
 List of Event Commands:
-@>Text: This rock looks like it can be dug into. Dig into it?
-@>Show Choices: Yes, No
-(When Cancel: Choice 2)
-: When [Yes]
- @>Script: pbMiningGame
- @>Script: pbSetEventTime
- @>
-: When [No]
- @>
-: Branch End
+@>Call Common Event: Mining Minigame
 @>
 
 Page #2
@@ -149903,31 +149647,13 @@ Move Animation
 Trigger: Action Button
 
 List of Event Commands:
-@>Text: You can't dig in this rock more than once a day.
-@>
-
-Page #3
-Conditions
-Switch 0023: s:cooledDown?(86400) is ON
-Self Switch A is ON
-
-Autonomous Movement
-Type: Fixed
-Speed: 3: Slow
-Freq: 3: Low
-Options Enabled
-Move Animation
-Trigger: Autorun
-
-List of Event Commands:
-@>Control Self Switch: A =OFF
-@>Script: setTempSwitchOn("A")
+@>Text: You've already dug in this spot.
 @>
 
 #------------------------------------------------------------------------------
 Event ID: 029
-Event Name: Light
-(X,Y): (024,022)
+Event Name: Dig Spot
+(X,Y): (012,024)
 
 Page #1
 Conditions
@@ -149942,16 +149668,7 @@ Move Animation
 Trigger: Action Button
 
 List of Event Commands:
-@>Text: This rock looks like it can be dug into. Dig into it?
-@>Show Choices: Yes, No
-(When Cancel: Choice 2)
-: When [Yes]
- @>Script: pbMiningGame
- @>Script: pbSetEventTime
- @>
-: When [No]
- @>
-: Branch End
+@>Call Common Event: Mining Minigame
 @>
 
 Page #2
@@ -149967,31 +149684,13 @@ Move Animation
 Trigger: Action Button
 
 List of Event Commands:
-@>Text: You can't dig in this rock more than once a day.
-@>
-
-Page #3
-Conditions
-Switch 0023: s:cooledDown?(86400) is ON
-Self Switch A is ON
-
-Autonomous Movement
-Type: Fixed
-Speed: 3: Slow
-Freq: 3: Low
-Options Enabled
-Move Animation
-Trigger: Autorun
-
-List of Event Commands:
-@>Control Self Switch: A =OFF
-@>Script: setTempSwitchOn("A")
+@>Text: You've already dug in this spot.
 @>
 
 #------------------------------------------------------------------------------
 Event ID: 030
-Event Name: Light
-(X,Y): (022,022)
+Event Name: Dig Spot
+(X,Y): (011,020)
 
 Page #1
 Conditions
@@ -150006,16 +149705,7 @@ Move Animation
 Trigger: Action Button
 
 List of Event Commands:
-@>Text: This rock looks like it can be dug into. Dig into it?
-@>Show Choices: Yes, No
-(When Cancel: Choice 2)
-: When [Yes]
- @>Script: pbMiningGame
- @>Script: pbSetEventTime
- @>
-: When [No]
- @>
-: Branch End
+@>Call Common Event: Mining Minigame
 @>
 
 Page #2
@@ -150031,31 +149721,13 @@ Move Animation
 Trigger: Action Button
 
 List of Event Commands:
-@>Text: You can't dig in this rock more than once a day.
-@>
-
-Page #3
-Conditions
-Switch 0023: s:cooledDown?(86400) is ON
-Self Switch A is ON
-
-Autonomous Movement
-Type: Fixed
-Speed: 3: Slow
-Freq: 3: Low
-Options Enabled
-Move Animation
-Trigger: Autorun
-
-List of Event Commands:
-@>Control Self Switch: A =OFF
-@>Script: setTempSwitchOn("A")
+@>Text: You've already dug in this spot.
 @>
 
 #------------------------------------------------------------------------------
 Event ID: 031
-Event Name: Light
-(X,Y): (020,023)
+Event Name: Dig Spot
+(X,Y): (013,018)
 
 Page #1
 Conditions
@@ -150070,16 +149742,7 @@ Move Animation
 Trigger: Action Button
 
 List of Event Commands:
-@>Text: This rock looks like it can be dug into. Dig into it?
-@>Show Choices: Yes, No
-(When Cancel: Choice 2)
-: When [Yes]
- @>Script: pbMiningGame
- @>Script: pbSetEventTime
- @>
-: When [No]
- @>
-: Branch End
+@>Call Common Event: Mining Minigame
 @>
 
 Page #2
@@ -150095,31 +149758,13 @@ Move Animation
 Trigger: Action Button
 
 List of Event Commands:
-@>Text: You can't dig in this rock more than once a day.
-@>
-
-Page #3
-Conditions
-Switch 0023: s:cooledDown?(86400) is ON
-Self Switch A is ON
-
-Autonomous Movement
-Type: Fixed
-Speed: 3: Slow
-Freq: 3: Low
-Options Enabled
-Move Animation
-Trigger: Autorun
-
-List of Event Commands:
-@>Control Self Switch: A =OFF
-@>Script: setTempSwitchOn("A")
+@>Text: You've already dug in this spot.
 @>
 
 #------------------------------------------------------------------------------
 Event ID: 032
-Event Name: Light
-(X,Y): (019,025)
+Event Name: Dig Spot
+(X,Y): (013,016)
 
 Page #1
 Conditions
@@ -150134,16 +149779,7 @@ Move Animation
 Trigger: Action Button
 
 List of Event Commands:
-@>Text: This rock looks like it can be dug into. Dig into it?
-@>Show Choices: Yes, No
-(When Cancel: Choice 2)
-: When [Yes]
- @>Script: pbMiningGame
- @>Script: pbSetEventTime
- @>
-: When [No]
- @>
-: Branch End
+@>Call Common Event: Mining Minigame
 @>
 
 Page #2
@@ -150159,31 +149795,13 @@ Move Animation
 Trigger: Action Button
 
 List of Event Commands:
-@>Text: You can't dig in this rock more than once a day.
-@>
-
-Page #3
-Conditions
-Switch 0023: s:cooledDown?(86400) is ON
-Self Switch A is ON
-
-Autonomous Movement
-Type: Fixed
-Speed: 3: Slow
-Freq: 3: Low
-Options Enabled
-Move Animation
-Trigger: Autorun
-
-List of Event Commands:
-@>Control Self Switch: A =OFF
-@>Script: setTempSwitchOn("A")
+@>Text: You've already dug in this spot.
 @>
 
 #------------------------------------------------------------------------------
 Event ID: 033
-Event Name: Light
-(X,Y): (017,025)
+Event Name: Dig Spot
+(X,Y): (032,014)
 
 Page #1
 Conditions
@@ -150198,16 +149816,7 @@ Move Animation
 Trigger: Action Button
 
 List of Event Commands:
-@>Text: This rock looks like it can be dug into. Dig into it?
-@>Show Choices: Yes, No
-(When Cancel: Choice 2)
-: When [Yes]
- @>Script: pbMiningGame
- @>Script: pbSetEventTime
- @>
-: When [No]
- @>
-: Branch End
+@>Call Common Event: Mining Minigame
 @>
 
 Page #2
@@ -150223,31 +149832,13 @@ Move Animation
 Trigger: Action Button
 
 List of Event Commands:
-@>Text: You can't dig in this rock more than once a day.
-@>
-
-Page #3
-Conditions
-Switch 0023: s:cooledDown?(86400) is ON
-Self Switch A is ON
-
-Autonomous Movement
-Type: Fixed
-Speed: 3: Slow
-Freq: 3: Low
-Options Enabled
-Move Animation
-Trigger: Autorun
-
-List of Event Commands:
-@>Control Self Switch: A =OFF
-@>Script: setTempSwitchOn("A")
+@>Text: You've already dug in this spot.
 @>
 
 #------------------------------------------------------------------------------
 Event ID: 034
-Event Name: Light
-(X,Y): (015,025)
+Event Name: Dig Spot
+(X,Y): (032,017)
 
 Page #1
 Conditions
@@ -150262,16 +149853,7 @@ Move Animation
 Trigger: Action Button
 
 List of Event Commands:
-@>Text: This rock looks like it can be dug into. Dig into it?
-@>Show Choices: Yes, No
-(When Cancel: Choice 2)
-: When [Yes]
- @>Script: pbMiningGame
- @>Script: pbSetEventTime
- @>
-: When [No]
- @>
-: Branch End
+@>Call Common Event: Mining Minigame
 @>
 
 Page #2
@@ -150287,31 +149869,13 @@ Move Animation
 Trigger: Action Button
 
 List of Event Commands:
-@>Text: You can't dig in this rock more than once a day.
-@>
-
-Page #3
-Conditions
-Switch 0023: s:cooledDown?(86400) is ON
-Self Switch A is ON
-
-Autonomous Movement
-Type: Fixed
-Speed: 3: Slow
-Freq: 3: Low
-Options Enabled
-Move Animation
-Trigger: Autorun
-
-List of Event Commands:
-@>Control Self Switch: A =OFF
-@>Script: setTempSwitchOn("A")
+@>Text: You've already dug in this spot.
 @>
 
 #------------------------------------------------------------------------------
 Event ID: 035
-Event Name: Light
-(X,Y): (014,027)
+Event Name: Dig Spot
+(X,Y): (024,017)
 
 Page #1
 Conditions
@@ -150326,16 +149890,7 @@ Move Animation
 Trigger: Action Button
 
 List of Event Commands:
-@>Text: This rock looks like it can be dug into. Dig into it?
-@>Show Choices: Yes, No
-(When Cancel: Choice 2)
-: When [Yes]
- @>Script: pbMiningGame
- @>Script: pbSetEventTime
- @>
-: When [No]
- @>
-: Branch End
+@>Call Common Event: Mining Minigame
 @>
 
 Page #2
@@ -150351,31 +149906,13 @@ Move Animation
 Trigger: Action Button
 
 List of Event Commands:
-@>Text: You can't dig in this rock more than once a day.
-@>
-
-Page #3
-Conditions
-Switch 0023: s:cooledDown?(86400) is ON
-Self Switch A is ON
-
-Autonomous Movement
-Type: Fixed
-Speed: 3: Slow
-Freq: 3: Low
-Options Enabled
-Move Animation
-Trigger: Autorun
-
-List of Event Commands:
-@>Control Self Switch: A =OFF
-@>Script: setTempSwitchOn("A")
+@>Text: You've already dug in this spot.
 @>
 
 #------------------------------------------------------------------------------
 Event ID: 036
-Event Name: Light
-(X,Y): (015,029)
+Event Name: Dig Spot
+(X,Y): (019,021)
 
 Page #1
 Conditions
@@ -150390,16 +149927,7 @@ Move Animation
 Trigger: Action Button
 
 List of Event Commands:
-@>Text: This rock looks like it can be dug into. Dig into it?
-@>Show Choices: Yes, No
-(When Cancel: Choice 2)
-: When [Yes]
- @>Script: pbMiningGame
- @>Script: pbSetEventTime
- @>
-: When [No]
- @>
-: Branch End
+@>Call Common Event: Mining Minigame
 @>
 
 Page #2
@@ -150415,31 +149943,13 @@ Move Animation
 Trigger: Action Button
 
 List of Event Commands:
-@>Text: You can't dig in this rock more than once a day.
-@>
-
-Page #3
-Conditions
-Switch 0023: s:cooledDown?(86400) is ON
-Self Switch A is ON
-
-Autonomous Movement
-Type: Fixed
-Speed: 3: Slow
-Freq: 3: Low
-Options Enabled
-Move Animation
-Trigger: Autorun
-
-List of Event Commands:
-@>Control Self Switch: A =OFF
-@>Script: setTempSwitchOn("A")
+@>Text: You've already dug in this spot.
 @>
 
 #------------------------------------------------------------------------------
 Event ID: 037
-Event Name: Light
-(X,Y): (017,031)
+Event Name: Dig Spot
+(X,Y): (019,023)
 
 Page #1
 Conditions
@@ -150454,16 +149964,7 @@ Move Animation
 Trigger: Action Button
 
 List of Event Commands:
-@>Text: This rock looks like it can be dug into. Dig into it?
-@>Show Choices: Yes, No
-(When Cancel: Choice 2)
-: When [Yes]
- @>Script: pbMiningGame
- @>Script: pbSetEventTime
- @>
-: When [No]
- @>
-: Branch End
+@>Call Common Event: Mining Minigame
 @>
 
 Page #2
@@ -150479,31 +149980,13 @@ Move Animation
 Trigger: Action Button
 
 List of Event Commands:
-@>Text: You can't dig in this rock more than once a day.
-@>
-
-Page #3
-Conditions
-Switch 0023: s:cooledDown?(86400) is ON
-Self Switch A is ON
-
-Autonomous Movement
-Type: Fixed
-Speed: 3: Slow
-Freq: 3: Low
-Options Enabled
-Move Animation
-Trigger: Autorun
-
-List of Event Commands:
-@>Control Self Switch: A =OFF
-@>Script: setTempSwitchOn("A")
+@>Text: You've already dug in this spot.
 @>
 
 #------------------------------------------------------------------------------
 Event ID: 038
-Event Name: Cave entrance
-(X,Y): (012,040)
+Event Name: Dig Spot
+(X,Y): (032,028)
 
 Page #1
 Conditions
@@ -150515,20 +149998,1442 @@ Speed: 3: Slow
 Freq: 3: Low
 Options Enabled
 Move Animation
-Trigger: Player Touch
+Trigger: Action Button
 
 List of Event Commands:
-@>Play SE: 'Exit Door', 100, 100
-@>Change Screen Color Tone: (255,255,255,255), @6
-@>Wait: 8 frame(s)
-@>Script: pbCaveExit
-@>Transfer Player:[064: Route 19], (033,019), No Fade
-@>Change Screen Color Tone: (0,0,0,0), @6
+@>Call Common Event: Mining Minigame
 @>
 
 Page #2
 Conditions
-Switch 0022: s:tsOff?("A") is ON
+Self Switch A is ON
+
+Autonomous Movement
+Type: Fixed
+Speed: 3: Slow
+Freq: 3: Low
+Options Enabled
+Move Animation
+Trigger: Action Button
+
+List of Event Commands:
+@>Text: You've already dug in this spot.
+@>
+
+#------------------------------------------------------------------------------
+Event ID: 039
+Event Name: Dig Spot
+(X,Y): (031,032)
+
+Page #1
+Conditions
+None
+
+Autonomous Movement
+Type: Fixed
+Speed: 3: Slow
+Freq: 3: Low
+Options Enabled
+Move Animation
+Trigger: Action Button
+
+List of Event Commands:
+@>Call Common Event: Mining Minigame
+@>
+
+Page #2
+Conditions
+Self Switch A is ON
+
+Autonomous Movement
+Type: Fixed
+Speed: 3: Slow
+Freq: 3: Low
+Options Enabled
+Move Animation
+Trigger: Action Button
+
+List of Event Commands:
+@>Text: You've already dug in this spot.
+@>
+
+#------------------------------------------------------------------------------
+Event ID: 040
+Event Name: Dig Spot
+(X,Y): (044,015)
+
+Page #1
+Conditions
+None
+
+Autonomous Movement
+Type: Fixed
+Speed: 3: Slow
+Freq: 3: Low
+Options Enabled
+Move Animation
+Trigger: Action Button
+
+List of Event Commands:
+@>Call Common Event: Mining Minigame
+@>
+
+Page #2
+Conditions
+Self Switch A is ON
+
+Autonomous Movement
+Type: Fixed
+Speed: 3: Slow
+Freq: 3: Low
+Options Enabled
+Move Animation
+Trigger: Action Button
+
+List of Event Commands:
+@>Text: You've already dug in this spot.
+@>
+
+#------------------------------------------------------------------------------
+Event ID: 041
+Event Name: Dig Spot
+(X,Y): (041,033)
+
+Page #1
+Conditions
+None
+
+Autonomous Movement
+Type: Fixed
+Speed: 3: Slow
+Freq: 3: Low
+Options Enabled
+Move Animation
+Trigger: Action Button
+
+List of Event Commands:
+@>Call Common Event: Mining Minigame
+@>
+
+Page #2
+Conditions
+Self Switch A is ON
+
+Autonomous Movement
+Type: Fixed
+Speed: 3: Slow
+Freq: 3: Low
+Options Enabled
+Move Animation
+Trigger: Action Button
+
+List of Event Commands:
+@>Text: You've already dug in this spot.
+@>
+
+#------------------------------------------------------------------------------
+Event ID: 042
+Event Name: Dig Spot
+(X,Y): (050,029)
+
+Page #1
+Conditions
+None
+
+Autonomous Movement
+Type: Fixed
+Speed: 3: Slow
+Freq: 3: Low
+Options Enabled
+Move Animation
+Trigger: Action Button
+
+List of Event Commands:
+@>Call Common Event: Mining Minigame
+@>
+
+Page #2
+Conditions
+Self Switch A is ON
+
+Autonomous Movement
+Type: Fixed
+Speed: 3: Slow
+Freq: 3: Low
+Options Enabled
+Move Animation
+Trigger: Action Button
+
+List of Event Commands:
+@>Text: You've already dug in this spot.
+@>
+
+#------------------------------------------------------------------------------
+Event ID: 043
+Event Name: Dig Spot
+(X,Y): (050,032)
+
+Page #1
+Conditions
+None
+
+Autonomous Movement
+Type: Fixed
+Speed: 3: Slow
+Freq: 3: Low
+Options Enabled
+Move Animation
+Trigger: Action Button
+
+List of Event Commands:
+@>Call Common Event: Mining Minigame
+@>
+
+Page #2
+Conditions
+Self Switch A is ON
+
+Autonomous Movement
+Type: Fixed
+Speed: 3: Slow
+Freq: 3: Low
+Options Enabled
+Move Animation
+Trigger: Action Button
+
+List of Event Commands:
+@>Text: You've already dug in this spot.
+@>
+
+#------------------------------------------------------------------------------
+Event ID: 044
+Event Name: Dig Spot
+(X,Y): (054,014)
+
+Page #1
+Conditions
+None
+
+Autonomous Movement
+Type: Fixed
+Speed: 3: Slow
+Freq: 3: Low
+Options Enabled
+Move Animation
+Trigger: Action Button
+
+List of Event Commands:
+@>Call Common Event: Mining Minigame
+@>
+
+Page #2
+Conditions
+Self Switch A is ON
+
+Autonomous Movement
+Type: Fixed
+Speed: 3: Slow
+Freq: 3: Low
+Options Enabled
+Move Animation
+Trigger: Action Button
+
+List of Event Commands:
+@>Text: You've already dug in this spot.
+@>
+
+#------------------------------------------------------------------------------
+Event ID: 045
+Event Name: Dig Spot
+(X,Y): (058,019)
+
+Page #1
+Conditions
+None
+
+Autonomous Movement
+Type: Fixed
+Speed: 3: Slow
+Freq: 3: Low
+Options Enabled
+Move Animation
+Trigger: Action Button
+
+List of Event Commands:
+@>Call Common Event: Mining Minigame
+@>
+
+Page #2
+Conditions
+Self Switch A is ON
+
+Autonomous Movement
+Type: Fixed
+Speed: 3: Slow
+Freq: 3: Low
+Options Enabled
+Move Animation
+Trigger: Action Button
+
+List of Event Commands:
+@>Text: You've already dug in this spot.
+@>
+
+#------------------------------------------------------------------------------
+Event ID: 046
+Event Name: Dig Spot
+(X,Y): (058,021)
+
+Page #1
+Conditions
+None
+
+Autonomous Movement
+Type: Fixed
+Speed: 3: Slow
+Freq: 3: Low
+Options Enabled
+Move Animation
+Trigger: Action Button
+
+List of Event Commands:
+@>Call Common Event: Mining Minigame
+@>
+
+Page #2
+Conditions
+Self Switch A is ON
+
+Autonomous Movement
+Type: Fixed
+Speed: 3: Slow
+Freq: 3: Low
+Options Enabled
+Move Animation
+Trigger: Action Button
+
+List of Event Commands:
+@>Text: You've already dug in this spot.
+@>
+
+#------------------------------------------------------------------------------
+Event ID: 047
+Event Name: Dig Spot
+(X,Y): (059,012)
+
+Page #1
+Conditions
+None
+
+Autonomous Movement
+Type: Fixed
+Speed: 3: Slow
+Freq: 3: Low
+Options Enabled
+Move Animation
+Trigger: Action Button
+
+List of Event Commands:
+@>Call Common Event: Mining Minigame
+@>
+
+Page #2
+Conditions
+Self Switch A is ON
+
+Autonomous Movement
+Type: Fixed
+Speed: 3: Slow
+Freq: 3: Low
+Options Enabled
+Move Animation
+Trigger: Action Button
+
+List of Event Commands:
+@>Text: You've already dug in this spot.
+@>
+
+#------------------------------------------------------------------------------
+Event ID: 048
+Event Name: Dig Spot
+(X,Y): (047,011)
+
+Page #1
+Conditions
+None
+
+Autonomous Movement
+Type: Fixed
+Speed: 3: Slow
+Freq: 3: Low
+Options Enabled
+Move Animation
+Trigger: Action Button
+
+List of Event Commands:
+@>Call Common Event: Mining Minigame
+@>
+
+Page #2
+Conditions
+Self Switch A is ON
+
+Autonomous Movement
+Type: Fixed
+Speed: 3: Slow
+Freq: 3: Low
+Options Enabled
+Move Animation
+Trigger: Action Button
+
+List of Event Commands:
+@>Text: You've already dug in this spot.
+@>
+
+#------------------------------------------------------------------------------
+Event ID: 049
+Event Name: Dig Spot
+(X,Y): (042,013)
+
+Page #1
+Conditions
+None
+
+Autonomous Movement
+Type: Fixed
+Speed: 3: Slow
+Freq: 3: Low
+Options Enabled
+Move Animation
+Trigger: Action Button
+
+List of Event Commands:
+@>Call Common Event: Mining Minigame
+@>
+
+Page #2
+Conditions
+Self Switch A is ON
+
+Autonomous Movement
+Type: Fixed
+Speed: 3: Slow
+Freq: 3: Low
+Options Enabled
+Move Animation
+Trigger: Action Button
+
+List of Event Commands:
+@>Text: You've already dug in this spot.
+@>
+
+#------------------------------------------------------------------------------
+Event ID: 050
+Event Name: Dig Spot
+(X,Y): (060,015)
+
+Page #1
+Conditions
+None
+
+Autonomous Movement
+Type: Fixed
+Speed: 3: Slow
+Freq: 3: Low
+Options Enabled
+Move Animation
+Trigger: Action Button
+
+List of Event Commands:
+@>Call Common Event: Mining Minigame
+@>
+
+Page #2
+Conditions
+Self Switch A is ON
+
+Autonomous Movement
+Type: Fixed
+Speed: 3: Slow
+Freq: 3: Low
+Options Enabled
+Move Animation
+Trigger: Action Button
+
+List of Event Commands:
+@>Text: You've already dug in this spot.
+@>
+
+#------------------------------------------------------------------------------
+Event ID: 051
+Event Name: Dig Spot
+(X,Y): (062,029)
+
+Page #1
+Conditions
+None
+
+Autonomous Movement
+Type: Fixed
+Speed: 3: Slow
+Freq: 3: Low
+Options Enabled
+Move Animation
+Trigger: Action Button
+
+List of Event Commands:
+@>Call Common Event: Mining Minigame
+@>
+
+Page #2
+Conditions
+Self Switch A is ON
+
+Autonomous Movement
+Type: Fixed
+Speed: 3: Slow
+Freq: 3: Low
+Options Enabled
+Move Animation
+Trigger: Action Button
+
+List of Event Commands:
+@>Text: You've already dug in this spot.
+@>
+
+#------------------------------------------------------------------------------
+Event ID: 052
+Event Name: Dig Spot
+(X,Y): (062,033)
+
+Page #1
+Conditions
+None
+
+Autonomous Movement
+Type: Fixed
+Speed: 3: Slow
+Freq: 3: Low
+Options Enabled
+Move Animation
+Trigger: Action Button
+
+List of Event Commands:
+@>Call Common Event: Mining Minigame
+@>
+
+Page #2
+Conditions
+Self Switch A is ON
+
+Autonomous Movement
+Type: Fixed
+Speed: 3: Slow
+Freq: 3: Low
+Options Enabled
+Move Animation
+Trigger: Action Button
+
+List of Event Commands:
+@>Text: You've already dug in this spot.
+@>
+
+#------------------------------------------------------------------------------
+Event ID: 053
+Event Name: Dig Spot
+(X,Y): (062,038)
+
+Page #1
+Conditions
+None
+
+Autonomous Movement
+Type: Fixed
+Speed: 3: Slow
+Freq: 3: Low
+Options Enabled
+Move Animation
+Trigger: Action Button
+
+List of Event Commands:
+@>Call Common Event: Mining Minigame
+@>
+
+Page #2
+Conditions
+Self Switch A is ON
+
+Autonomous Movement
+Type: Fixed
+Speed: 3: Slow
+Freq: 3: Low
+Options Enabled
+Move Animation
+Trigger: Action Button
+
+List of Event Commands:
+@>Text: You've already dug in this spot.
+@>
+
+#------------------------------------------------------------------------------
+Event ID: 054
+Event Name: Dig Spot
+(X,Y): (022,041)
+
+Page #1
+Conditions
+None
+
+Autonomous Movement
+Type: Fixed
+Speed: 3: Slow
+Freq: 3: Low
+Options Enabled
+Move Animation
+Trigger: Action Button
+
+List of Event Commands:
+@>Call Common Event: Mining Minigame
+@>
+
+Page #2
+Conditions
+Self Switch A is ON
+
+Autonomous Movement
+Type: Fixed
+Speed: 3: Slow
+Freq: 3: Low
+Options Enabled
+Move Animation
+Trigger: Action Button
+
+List of Event Commands:
+@>Text: You've already dug in this spot.
+@>
+
+#------------------------------------------------------------------------------
+Event ID: 055
+Event Name: Dig Spot
+(X,Y): (033,033)
+
+Page #1
+Conditions
+None
+
+Autonomous Movement
+Type: Fixed
+Speed: 3: Slow
+Freq: 3: Low
+Options Enabled
+Move Animation
+Trigger: Action Button
+
+List of Event Commands:
+@>Call Common Event: Mining Minigame
+@>
+
+Page #2
+Conditions
+Self Switch A is ON
+
+Autonomous Movement
+Type: Fixed
+Speed: 3: Slow
+Freq: 3: Low
+Options Enabled
+Move Animation
+Trigger: Action Button
+
+List of Event Commands:
+@>Text: You've already dug in this spot.
+@>
+
+#------------------------------------------------------------------------------
+Event ID: 056
+Event Name: Dig Spot
+(X,Y): (014,025)
+
+Page #1
+Conditions
+None
+
+Autonomous Movement
+Type: Fixed
+Speed: 3: Slow
+Freq: 3: Low
+Options Enabled
+Move Animation
+Trigger: Action Button
+
+List of Event Commands:
+@>Call Common Event: Mining Minigame
+@>
+
+Page #2
+Conditions
+Self Switch A is ON
+
+Autonomous Movement
+Type: Fixed
+Speed: 3: Slow
+Freq: 3: Low
+Options Enabled
+Move Animation
+Trigger: Action Button
+
+List of Event Commands:
+@>Text: You've already dug in this spot.
+@>
+
+#------------------------------------------------------------------------------
+Event ID: 057
+Event Name: Dig Spot
+(X,Y): (015,009)
+
+Page #1
+Conditions
+None
+
+Autonomous Movement
+Type: Fixed
+Speed: 3: Slow
+Freq: 3: Low
+Options Enabled
+Move Animation
+Trigger: Action Button
+
+List of Event Commands:
+@>Call Common Event: Mining Minigame
+@>
+
+Page #2
+Conditions
+Self Switch A is ON
+
+Autonomous Movement
+Type: Fixed
+Speed: 3: Slow
+Freq: 3: Low
+Options Enabled
+Move Animation
+Trigger: Action Button
+
+List of Event Commands:
+@>Text: You've already dug in this spot.
+@>
+
+#------------------------------------------------------------------------------
+Event ID: 058
+Event Name: Dig Spot
+(X,Y): (020,017)
+
+Page #1
+Conditions
+None
+
+Autonomous Movement
+Type: Fixed
+Speed: 3: Slow
+Freq: 3: Low
+Options Enabled
+Move Animation
+Trigger: Action Button
+
+List of Event Commands:
+@>Call Common Event: Mining Minigame
+@>
+
+Page #2
+Conditions
+Self Switch A is ON
+
+Autonomous Movement
+Type: Fixed
+Speed: 3: Slow
+Freq: 3: Low
+Options Enabled
+Move Animation
+Trigger: Action Button
+
+List of Event Commands:
+@>Text: You've already dug in this spot.
+@>
+
+#------------------------------------------------------------------------------
+Event ID: 059
+Event Name: Dig Spot
+(X,Y): (037,014)
+
+Page #1
+Conditions
+None
+
+Autonomous Movement
+Type: Fixed
+Speed: 3: Slow
+Freq: 3: Low
+Options Enabled
+Move Animation
+Trigger: Action Button
+
+List of Event Commands:
+@>Call Common Event: Mining Minigame
+@>
+
+Page #2
+Conditions
+Self Switch A is ON
+
+Autonomous Movement
+Type: Fixed
+Speed: 3: Slow
+Freq: 3: Low
+Options Enabled
+Move Animation
+Trigger: Action Button
+
+List of Event Commands:
+@>Text: You've already dug in this spot.
+@>
+
+#------------------------------------------------------------------------------
+Event ID: 060
+Event Name: Dig Spot
+(X,Y): (046,017)
+
+Page #1
+Conditions
+None
+
+Autonomous Movement
+Type: Fixed
+Speed: 3: Slow
+Freq: 3: Low
+Options Enabled
+Move Animation
+Trigger: Action Button
+
+List of Event Commands:
+@>Call Common Event: Mining Minigame
+@>
+
+Page #2
+Conditions
+Self Switch A is ON
+
+Autonomous Movement
+Type: Fixed
+Speed: 3: Slow
+Freq: 3: Low
+Options Enabled
+Move Animation
+Trigger: Action Button
+
+List of Event Commands:
+@>Text: You've already dug in this spot.
+@>
+
+#------------------------------------------------------------------------------
+Event ID: 061
+Event Name: Dig Spot
+(X,Y): (050,017)
+
+Page #1
+Conditions
+None
+
+Autonomous Movement
+Type: Fixed
+Speed: 3: Slow
+Freq: 3: Low
+Options Enabled
+Move Animation
+Trigger: Action Button
+
+List of Event Commands:
+@>Call Common Event: Mining Minigame
+@>
+
+Page #2
+Conditions
+Self Switch A is ON
+
+Autonomous Movement
+Type: Fixed
+Speed: 3: Slow
+Freq: 3: Low
+Options Enabled
+Move Animation
+Trigger: Action Button
+
+List of Event Commands:
+@>Text: You've already dug in this spot.
+@>
+
+#------------------------------------------------------------------------------
+Event ID: 062
+Event Name: Dig Spot
+(X,Y): (055,016)
+
+Page #1
+Conditions
+None
+
+Autonomous Movement
+Type: Fixed
+Speed: 3: Slow
+Freq: 3: Low
+Options Enabled
+Move Animation
+Trigger: Action Button
+
+List of Event Commands:
+@>Call Common Event: Mining Minigame
+@>
+
+Page #2
+Conditions
+Self Switch A is ON
+
+Autonomous Movement
+Type: Fixed
+Speed: 3: Slow
+Freq: 3: Low
+Options Enabled
+Move Animation
+Trigger: Action Button
+
+List of Event Commands:
+@>Text: You've already dug in this spot.
+@>
+
+#------------------------------------------------------------------------------
+Event ID: 063
+Event Name: Dig Spot
+(X,Y): (050,010)
+
+Page #1
+Conditions
+None
+
+Autonomous Movement
+Type: Fixed
+Speed: 3: Slow
+Freq: 3: Low
+Options Enabled
+Move Animation
+Trigger: Action Button
+
+List of Event Commands:
+@>Call Common Event: Mining Minigame
+@>
+
+Page #2
+Conditions
+Self Switch A is ON
+
+Autonomous Movement
+Type: Fixed
+Speed: 3: Slow
+Freq: 3: Low
+Options Enabled
+Move Animation
+Trigger: Action Button
+
+List of Event Commands:
+@>Text: You've already dug in this spot.
+@>
+
+#------------------------------------------------------------------------------
+Event ID: 064
+Event Name: Dig Spot
+(X,Y): (061,022)
+
+Page #1
+Conditions
+None
+
+Autonomous Movement
+Type: Fixed
+Speed: 3: Slow
+Freq: 3: Low
+Options Enabled
+Move Animation
+Trigger: Action Button
+
+List of Event Commands:
+@>Call Common Event: Mining Minigame
+@>
+
+Page #2
+Conditions
+Self Switch A is ON
+
+Autonomous Movement
+Type: Fixed
+Speed: 3: Slow
+Freq: 3: Low
+Options Enabled
+Move Animation
+Trigger: Action Button
+
+List of Event Commands:
+@>Text: You've already dug in this spot.
+@>
+
+#------------------------------------------------------------------------------
+Event ID: 065
+Event Name: Dig Spot
+(X,Y): (045,034)
+
+Page #1
+Conditions
+None
+
+Autonomous Movement
+Type: Fixed
+Speed: 3: Slow
+Freq: 3: Low
+Options Enabled
+Move Animation
+Trigger: Action Button
+
+List of Event Commands:
+@>Call Common Event: Mining Minigame
+@>
+
+Page #2
+Conditions
+Self Switch A is ON
+
+Autonomous Movement
+Type: Fixed
+Speed: 3: Slow
+Freq: 3: Low
+Options Enabled
+Move Animation
+Trigger: Action Button
+
+List of Event Commands:
+@>Text: You've already dug in this spot.
+@>
+
+#------------------------------------------------------------------------------
+Event ID: 066
+Event Name: Dig Spot
+(X,Y): (018,040)
+
+Page #1
+Conditions
+None
+
+Autonomous Movement
+Type: Fixed
+Speed: 3: Slow
+Freq: 3: Low
+Options Enabled
+Move Animation
+Trigger: Action Button
+
+List of Event Commands:
+@>Call Common Event: Mining Minigame
+@>
+
+Page #2
+Conditions
+Self Switch A is ON
+
+Autonomous Movement
+Type: Fixed
+Speed: 3: Slow
+Freq: 3: Low
+Options Enabled
+Move Animation
+Trigger: Action Button
+
+List of Event Commands:
+@>Text: You've already dug in this spot.
+@>
+
+#------------------------------------------------------------------------------
+Event ID: 067
+Event Name: Dig Spot
+(X,Y): (034,029)
+
+Page #1
+Conditions
+None
+
+Autonomous Movement
+Type: Fixed
+Speed: 3: Slow
+Freq: 3: Low
+Options Enabled
+Move Animation
+Trigger: Action Button
+
+List of Event Commands:
+@>Call Common Event: Mining Minigame
+@>
+
+Page #2
+Conditions
+Self Switch A is ON
+
+Autonomous Movement
+Type: Fixed
+Speed: 3: Slow
+Freq: 3: Low
+Options Enabled
+Move Animation
+Trigger: Action Button
+
+List of Event Commands:
+@>Text: You've already dug in this spot.
+@>
+
+#------------------------------------------------------------------------------
+Event ID: 068
+Event Name: Dig Spot
+(X,Y): (052,033)
+
+Page #1
+Conditions
+None
+
+Autonomous Movement
+Type: Fixed
+Speed: 3: Slow
+Freq: 3: Low
+Options Enabled
+Move Animation
+Trigger: Action Button
+
+List of Event Commands:
+@>Call Common Event: Mining Minigame
+@>
+
+Page #2
+Conditions
+Self Switch A is ON
+
+Autonomous Movement
+Type: Fixed
+Speed: 3: Slow
+Freq: 3: Low
+Options Enabled
+Move Animation
+Trigger: Action Button
+
+List of Event Commands:
+@>Text: You've already dug in this spot.
+@>
+
+#------------------------------------------------------------------------------
+Event ID: 069
+Event Name: Dig Spot
+(X,Y): (054,032)
+
+Page #1
+Conditions
+None
+
+Autonomous Movement
+Type: Fixed
+Speed: 3: Slow
+Freq: 3: Low
+Options Enabled
+Move Animation
+Trigger: Action Button
+
+List of Event Commands:
+@>Call Common Event: Mining Minigame
+@>
+
+Page #2
+Conditions
+Self Switch A is ON
+
+Autonomous Movement
+Type: Fixed
+Speed: 3: Slow
+Freq: 3: Low
+Options Enabled
+Move Animation
+Trigger: Action Button
+
+List of Event Commands:
+@>Text: You've already dug in this spot.
+@>
+
+#------------------------------------------------------------------------------
+Event ID: 070
+Event Name: Dig Spot
+(X,Y): (048,017)
+
+Page #1
+Conditions
+None
+
+Autonomous Movement
+Type: Fixed
+Speed: 3: Slow
+Freq: 3: Low
+Options Enabled
+Move Animation
+Trigger: Action Button
+
+List of Event Commands:
+@>Call Common Event: Mining Minigame
+@>
+
+Page #2
+Conditions
+Self Switch A is ON
+
+Autonomous Movement
+Type: Fixed
+Speed: 3: Slow
+Freq: 3: Low
+Options Enabled
+Move Animation
+Trigger: Action Button
+
+List of Event Commands:
+@>Text: You've already dug in this spot.
+@>
+
+#------------------------------------------------------------------------------
+Event ID: 071
+Event Name: Dig Spot
+(X,Y): (052,010)
+
+Page #1
+Conditions
+None
+
+Autonomous Movement
+Type: Fixed
+Speed: 3: Slow
+Freq: 3: Low
+Options Enabled
+Move Animation
+Trigger: Action Button
+
+List of Event Commands:
+@>Call Common Event: Mining Minigame
+@>
+
+Page #2
+Conditions
+Self Switch A is ON
+
+Autonomous Movement
+Type: Fixed
+Speed: 3: Slow
+Freq: 3: Low
+Options Enabled
+Move Animation
+Trigger: Action Button
+
+List of Event Commands:
+@>Text: You've already dug in this spot.
+@>
+
+#------------------------------------------------------------------------------
+Event ID: 072
+Event Name: Dig Spot
+(X,Y): (056,009)
+
+Page #1
+Conditions
+None
+
+Autonomous Movement
+Type: Fixed
+Speed: 3: Slow
+Freq: 3: Low
+Options Enabled
+Move Animation
+Trigger: Action Button
+
+List of Event Commands:
+@>Call Common Event: Mining Minigame
+@>
+
+Page #2
+Conditions
+Self Switch A is ON
+
+Autonomous Movement
+Type: Fixed
+Speed: 3: Slow
+Freq: 3: Low
+Options Enabled
+Move Animation
+Trigger: Action Button
+
+List of Event Commands:
+@>Text: You've already dug in this spot.
+@>
+
+#------------------------------------------------------------------------------
+Event ID: 073
+Event Name: Dig Spot
+(X,Y): (041,014)
+
+Page #1
+Conditions
+None
+
+Autonomous Movement
+Type: Fixed
+Speed: 3: Slow
+Freq: 3: Low
+Options Enabled
+Move Animation
+Trigger: Action Button
+
+List of Event Commands:
+@>Call Common Event: Mining Minigame
+@>
+
+Page #2
+Conditions
+Self Switch A is ON
+
+Autonomous Movement
+Type: Fixed
+Speed: 3: Slow
+Freq: 3: Low
+Options Enabled
+Move Animation
+Trigger: Action Button
+
+List of Event Commands:
+@>Text: You've already dug in this spot.
+@>
+
+#------------------------------------------------------------------------------
+Event ID: 074
+Event Name: Dig Spot
+(X,Y): (021,024)
+
+Page #1
+Conditions
+None
+
+Autonomous Movement
+Type: Fixed
+Speed: 3: Slow
+Freq: 3: Low
+Options Enabled
+Move Animation
+Trigger: Action Button
+
+List of Event Commands:
+@>Call Common Event: Mining Minigame
+@>
+
+Page #2
+Conditions
+Self Switch A is ON
+
+Autonomous Movement
+Type: Fixed
+Speed: 3: Slow
+Freq: 3: Low
+Options Enabled
+Move Animation
+Trigger: Action Button
+
+List of Event Commands:
+@>Text: You've already dug in this spot.
+@>
+
+#------------------------------------------------------------------------------
+Event ID: 075
+Event Name: Dig Spot
+(X,Y): (018,017)
+
+Page #1
+Conditions
+None
+
+Autonomous Movement
+Type: Fixed
+Speed: 3: Slow
+Freq: 3: Low
+Options Enabled
+Move Animation
+Trigger: Action Button
+
+List of Event Commands:
+@>Call Common Event: Mining Minigame
+@>
+
+Page #2
+Conditions
+Self Switch A is ON
+
+Autonomous Movement
+Type: Fixed
+Speed: 3: Slow
+Freq: 3: Low
+Options Enabled
+Move Animation
+Trigger: Action Button
+
+List of Event Commands:
+@>Text: You've already dug in this spot.
+@>
+
+#------------------------------------------------------------------------------
+Event ID: 076
+Event Name: Dig Spot
+(X,Y): (049,025)
+
+Page #1
+Conditions
+None
+
+Autonomous Movement
+Type: Fixed
+Speed: 3: Slow
+Freq: 3: Low
+Options Enabled
+Move Animation
+Trigger: Action Button
+
+List of Event Commands:
+@>Call Common Event: Mining Minigame
+@>
+
+Page #2
+Conditions
+Self Switch A is ON
+
+Autonomous Movement
+Type: Fixed
+Speed: 3: Slow
+Freq: 3: Low
+Options Enabled
+Move Animation
+Trigger: Action Button
+
+List of Event Commands:
+@>Text: You've already dug in this spot.
+@>
+
+#------------------------------------------------------------------------------
+Event ID: 077
+Event Name: Reset All Spots
+(X,Y): (006,004)
+
+Page #1
+Conditions
+None
 
 Autonomous Movement
 Type: Fixed
@@ -150539,14 +151444,78 @@ Move Animation
 Trigger: Autorun
 
 List of Event Commands:
-@>Conditional Branch: Script: get_self.onEvent?
- @>Set Move Route: Player
-                   (Ignore If Can't Move)
-  :              : $>Move Down
- @>Wait for Move's Completion
- @>
-: Branch End
+@>Script: pbSetEventTime
+@>
+
+Page #2
+Conditions
+Self Switch A is ON
+
+Autonomous Movement
+Type: Fixed
+Speed: 3: Slow
+Freq: 3: Low
+Options Enabled
+Move Animation
+Trigger: Action Button
+
+List of Event Commands:
+@>
+
+Page #3
+Conditions
+Switch 0111: s:cooledDownDays?(2) is ON
+Switch 0022: s:tsOff?("A") is ON
+Self Switch A is ON
+
+Autonomous Movement
+Type: Fixed
+Speed: 3: Slow
+Freq: 3: Low
+Options Enabled
+Move Animation
+Trigger: Autorun
+
+List of Event Commands:
+@>Comment: Have a loop here which will re-enable all of the dig spots
+@>Script: for event in $game_map.events.values
+:       :   if event.name[/Dig Spot/i]
+:       :     $game_self_switches[[$game_map.map_id,event.id,"A"]] = false
+:       :   end
+:       : end
+:       : $game_map.refresh
 @>Script: setTempSwitchOn("A")
+@>
+
+#------------------------------------------------------------------------------
+Event ID: 078
+Event Name: Auto-Exit Event
+(X,Y): (007,004)
+
+Page #1
+Conditions
+Variable 0112: Dig Spot Variable is 25 or above
+
+Autonomous Movement
+Type: Fixed
+Speed: 3: Slow
+Freq: 3: Low
+Options Enabled
+Move Animation
+Trigger: Autorun
+
+List of Event Commands:
+@>Play SE: 'PC access', 100, 100
+@>Text: \xn[PA System]Alright \pn, it's time to leave the mines!
+@>Play SE: 'Door exit', 100, 100
+@>Change Screen Color Tone: (-255,-255,-255,0), @6
+@>Wait: 8 frame(s)
+@>Transfer Player:[064: Route 19], (033,021), Up
+@>Change Screen Color Tone: (0,0,0,0), @6
+@>Wait: 6 frame(s)
+@>Change Save Access: Enable
+@>Text: Did you get a good haul? Hopefully you come back again!
+@>Control Variables: [0112: Dig Spot Variable] = 0
 @>
 
 #------------------------------------------------------------------------------
@@ -153020,7 +153989,7 @@ Page #1
 Conditions
 None
 
-Graphic: Object ball
+Graphic: Object tm_ball
 
 Autonomous Movement
 Type: Fixed
@@ -153317,7 +154286,7 @@ Page #1
 Conditions
 None
 
-Graphic: Object ball
+Graphic: Object tm_ball
 
 Autonomous Movement
 Type: Fixed
@@ -155462,7 +156431,40 @@ Move Animation
 Trigger: Action Button
 
 List of Event Commands:
-@>Comment: Red UFO
+@>Text: This is a... curious, and out of place, rock.
+@>Text: Inspect closer?
+@>Show Choices: Yes, No
+(When Cancel: Choice 2)
+: When [Yes]
+ @>Text: Upon closer inspection, it appears to be a... UFO? Disguised 
+  :    : as a rock?
+ @>Conditional Branch: Script: pbReceiveItem(:REDUFO)
+  @>Control Self Switch: A =ON
+  @>
+ : Else
+  @>
+ : Branch End
+ @>Text: Okay then.
+ @>
+: When [No]
+ @>Text: Probably a good idea.
+ @>
+: Branch End
+@>
+
+Page #2
+Conditions
+Self Switch A is ON
+
+Autonomous Movement
+Type: Fixed
+Speed: 3: Slow
+Freq: 3: Low
+Options Enabled
+Move Animation
+Trigger: Action Button
+
+List of Event Commands:
 @>
 
 #------------------------------------------------------------------------------
@@ -168533,6 +169535,7 @@ List of Event Commands:
 @>Show Animation: Player, [Question bubble]
 @>Wait: 10 frame(s)
 @>Set Move Route: [Hikari]
+ :              : $>Direction Fix OFF
  :              : $>Turn toward Player
 @>Wait for Move's Completion
 @>Text: \xn[???]Oh, sorry am I in your... wa-\..\..\..ait a second.
@@ -173127,6 +174130,2432 @@ List of Event Commands:
 @>Restore BGM/BGS
 @>Control Switches: [0142] = OFF
 @>Change Screen Color Tone: (0,0,0,0), @10
+@>
+
+#------------------------------------------------------------------------------
+
+#==============================================================================
+Map ID: 375
+Map Name: Seaside Dig Spot
+Tileset: 006: Caves
+Width: 60, Height: 60
+Auto-Change BGM: 019. The Cave People No Longer Enter
+
+#------------------------------------------------------------------------------
+Event ID: 001
+Event Name: Light
+(X,Y): (019,032)
+
+Page #1
+Conditions
+None
+
+Autonomous Movement
+Type: Fixed
+Speed: 3: Slow
+Freq: 3: Low
+Options Enabled
+Move Animation
+Trigger: Action Button
+
+List of Event Commands:
+@>Text: This rock looks like it can be dug into. Dig into it?
+@>Show Choices: Yes, No
+(When Cancel: Choice 2)
+: When [Yes]
+ @>Script: pbMiningGame
+ @>Script: pbSetEventTime
+ @>
+: When [No]
+ @>
+: Branch End
+@>
+
+Page #2
+Conditions
+Self Switch A is ON
+
+Autonomous Movement
+Type: Fixed
+Speed: 3: Slow
+Freq: 3: Low
+Options Enabled
+Move Animation
+Trigger: Action Button
+
+List of Event Commands:
+@>Text: You can't dig in this rock more than once a day.
+@>
+
+Page #3
+Conditions
+Switch 0023: s:cooledDown?(86400) is ON
+Self Switch A is ON
+
+Autonomous Movement
+Type: Fixed
+Speed: 3: Slow
+Freq: 3: Low
+Options Enabled
+Move Animation
+Trigger: Autorun
+
+List of Event Commands:
+@>Control Self Switch: A =OFF
+@>Script: setTempSwitchOn("A")
+@>
+
+#------------------------------------------------------------------------------
+Event ID: 002
+Event Name: Light
+(X,Y): (021,032)
+
+Page #1
+Conditions
+None
+
+Autonomous Movement
+Type: Fixed
+Speed: 3: Slow
+Freq: 3: Low
+Options Enabled
+Move Animation
+Trigger: Action Button
+
+List of Event Commands:
+@>Text: This rock looks like it can be dug into. Dig into it?
+@>Show Choices: Yes, No
+(When Cancel: Choice 2)
+: When [Yes]
+ @>Script: pbMiningGame
+ @>Script: pbSetEventTime
+ @>
+: When [No]
+ @>
+: Branch End
+@>
+
+Page #2
+Conditions
+Self Switch A is ON
+
+Autonomous Movement
+Type: Fixed
+Speed: 3: Slow
+Freq: 3: Low
+Options Enabled
+Move Animation
+Trigger: Action Button
+
+List of Event Commands:
+@>Text: You can't dig in this rock more than once a day.
+@>
+
+Page #3
+Conditions
+Switch 0023: s:cooledDown?(86400) is ON
+Self Switch A is ON
+
+Autonomous Movement
+Type: Fixed
+Speed: 3: Slow
+Freq: 3: Low
+Options Enabled
+Move Animation
+Trigger: Autorun
+
+List of Event Commands:
+@>Control Self Switch: A =OFF
+@>Script: setTempSwitchOn("A")
+@>
+
+#------------------------------------------------------------------------------
+Event ID: 003
+Event Name: Light
+(X,Y): (023,032)
+
+Page #1
+Conditions
+None
+
+Autonomous Movement
+Type: Fixed
+Speed: 3: Slow
+Freq: 3: Low
+Options Enabled
+Move Animation
+Trigger: Action Button
+
+List of Event Commands:
+@>Text: This rock looks like it can be dug into. Dig into it?
+@>Show Choices: Yes, No
+(When Cancel: Choice 2)
+: When [Yes]
+ @>Script: pbMiningGame
+ @>Script: pbSetEventTime
+ @>
+: When [No]
+ @>
+: Branch End
+@>
+
+Page #2
+Conditions
+Self Switch A is ON
+
+Autonomous Movement
+Type: Fixed
+Speed: 3: Slow
+Freq: 3: Low
+Options Enabled
+Move Animation
+Trigger: Action Button
+
+List of Event Commands:
+@>Text: You can't dig in this rock more than once a day.
+@>
+
+Page #3
+Conditions
+Switch 0023: s:cooledDown?(86400) is ON
+Self Switch A is ON
+
+Autonomous Movement
+Type: Fixed
+Speed: 3: Slow
+Freq: 3: Low
+Options Enabled
+Move Animation
+Trigger: Autorun
+
+List of Event Commands:
+@>Control Self Switch: A =OFF
+@>Script: setTempSwitchOn("A")
+@>
+
+#------------------------------------------------------------------------------
+Event ID: 004
+Event Name: Light
+(X,Y): (025,033)
+
+Page #1
+Conditions
+None
+
+Autonomous Movement
+Type: Fixed
+Speed: 3: Slow
+Freq: 3: Low
+Options Enabled
+Move Animation
+Trigger: Action Button
+
+List of Event Commands:
+@>Text: This rock looks like it can be dug into. Dig into it?
+@>Show Choices: Yes, No
+(When Cancel: Choice 2)
+: When [Yes]
+ @>Script: pbMiningGame
+ @>Script: pbSetEventTime
+ @>
+: When [No]
+ @>
+: Branch End
+@>
+
+Page #2
+Conditions
+Self Switch A is ON
+
+Autonomous Movement
+Type: Fixed
+Speed: 3: Slow
+Freq: 3: Low
+Options Enabled
+Move Animation
+Trigger: Action Button
+
+List of Event Commands:
+@>Text: You can't dig in this rock more than once a day.
+@>
+
+Page #3
+Conditions
+Switch 0023: s:cooledDown?(86400) is ON
+Self Switch A is ON
+
+Autonomous Movement
+Type: Fixed
+Speed: 3: Slow
+Freq: 3: Low
+Options Enabled
+Move Animation
+Trigger: Autorun
+
+List of Event Commands:
+@>Control Self Switch: A =OFF
+@>Script: setTempSwitchOn("A")
+@>
+
+#------------------------------------------------------------------------------
+Event ID: 005
+Event Name: Light
+(X,Y): (026,035)
+
+Page #1
+Conditions
+None
+
+Autonomous Movement
+Type: Fixed
+Speed: 3: Slow
+Freq: 3: Low
+Options Enabled
+Move Animation
+Trigger: Action Button
+
+List of Event Commands:
+@>Text: This rock looks like it can be dug into. Dig into it?
+@>Show Choices: Yes, No
+(When Cancel: Choice 2)
+: When [Yes]
+ @>Script: pbMiningGame
+ @>Script: pbSetEventTime
+ @>
+: When [No]
+ @>
+: Branch End
+@>
+
+Page #2
+Conditions
+Self Switch A is ON
+
+Autonomous Movement
+Type: Fixed
+Speed: 3: Slow
+Freq: 3: Low
+Options Enabled
+Move Animation
+Trigger: Action Button
+
+List of Event Commands:
+@>Text: You can't dig in this rock more than once a day.
+@>
+
+Page #3
+Conditions
+Switch 0023: s:cooledDown?(86400) is ON
+Self Switch A is ON
+
+Autonomous Movement
+Type: Fixed
+Speed: 3: Slow
+Freq: 3: Low
+Options Enabled
+Move Animation
+Trigger: Autorun
+
+List of Event Commands:
+@>Control Self Switch: A =OFF
+@>Script: setTempSwitchOn("A")
+@>
+
+#------------------------------------------------------------------------------
+Event ID: 006
+Event Name: Light
+(X,Y): (027,037)
+
+Page #1
+Conditions
+None
+
+Autonomous Movement
+Type: Fixed
+Speed: 3: Slow
+Freq: 3: Low
+Options Enabled
+Move Animation
+Trigger: Action Button
+
+List of Event Commands:
+@>Text: This rock looks like it can be dug into. Dig into it?
+@>Show Choices: Yes, No
+(When Cancel: Choice 2)
+: When [Yes]
+ @>Script: pbMiningGame
+ @>Script: pbSetEventTime
+ @>
+: When [No]
+ @>
+: Branch End
+@>
+
+Page #2
+Conditions
+Self Switch A is ON
+
+Autonomous Movement
+Type: Fixed
+Speed: 3: Slow
+Freq: 3: Low
+Options Enabled
+Move Animation
+Trigger: Action Button
+
+List of Event Commands:
+@>Text: You can't dig in this rock more than once a day.
+@>
+
+Page #3
+Conditions
+Switch 0023: s:cooledDown?(86400) is ON
+Self Switch A is ON
+
+Autonomous Movement
+Type: Fixed
+Speed: 3: Slow
+Freq: 3: Low
+Options Enabled
+Move Animation
+Trigger: Autorun
+
+List of Event Commands:
+@>Control Self Switch: A =OFF
+@>Script: setTempSwitchOn("A")
+@>
+
+#------------------------------------------------------------------------------
+Event ID: 007
+Event Name: Light
+(X,Y): (028,039)
+
+Page #1
+Conditions
+None
+
+Autonomous Movement
+Type: Fixed
+Speed: 3: Slow
+Freq: 3: Low
+Options Enabled
+Move Animation
+Trigger: Action Button
+
+List of Event Commands:
+@>Text: This rock looks like it can be dug into. Dig into it?
+@>Show Choices: Yes, No
+(When Cancel: Choice 2)
+: When [Yes]
+ @>Script: pbMiningGame
+ @>Script: pbSetEventTime
+ @>
+: When [No]
+ @>
+: Branch End
+@>
+
+Page #2
+Conditions
+Self Switch A is ON
+
+Autonomous Movement
+Type: Fixed
+Speed: 3: Slow
+Freq: 3: Low
+Options Enabled
+Move Animation
+Trigger: Action Button
+
+List of Event Commands:
+@>Text: You can't dig in this rock more than once a day.
+@>
+
+Page #3
+Conditions
+Switch 0023: s:cooledDown?(86400) is ON
+Self Switch A is ON
+
+Autonomous Movement
+Type: Fixed
+Speed: 3: Slow
+Freq: 3: Low
+Options Enabled
+Move Animation
+Trigger: Autorun
+
+List of Event Commands:
+@>Control Self Switch: A =OFF
+@>Script: setTempSwitchOn("A")
+@>
+
+#------------------------------------------------------------------------------
+Event ID: 008
+Event Name: Light
+(X,Y): (032,042)
+
+Page #1
+Conditions
+None
+
+Autonomous Movement
+Type: Fixed
+Speed: 3: Slow
+Freq: 3: Low
+Options Enabled
+Move Animation
+Trigger: Action Button
+
+List of Event Commands:
+@>Text: This rock looks like it can be dug into. Dig into it?
+@>Show Choices: Yes, No
+(When Cancel: Choice 2)
+: When [Yes]
+ @>Script: pbMiningGame
+ @>Script: pbSetEventTime
+ @>
+: When [No]
+ @>
+: Branch End
+@>
+
+Page #2
+Conditions
+Self Switch A is ON
+
+Autonomous Movement
+Type: Fixed
+Speed: 3: Slow
+Freq: 3: Low
+Options Enabled
+Move Animation
+Trigger: Action Button
+
+List of Event Commands:
+@>Text: You can't dig in this rock more than once a day.
+@>
+
+Page #3
+Conditions
+Switch 0023: s:cooledDown?(86400) is ON
+Self Switch A is ON
+
+Autonomous Movement
+Type: Fixed
+Speed: 3: Slow
+Freq: 3: Low
+Options Enabled
+Move Animation
+Trigger: Autorun
+
+List of Event Commands:
+@>Control Self Switch: A =OFF
+@>Script: setTempSwitchOn("A")
+@>
+
+#------------------------------------------------------------------------------
+Event ID: 009
+Event Name: Light
+(X,Y): (034,043)
+
+Page #1
+Conditions
+None
+
+Autonomous Movement
+Type: Fixed
+Speed: 3: Slow
+Freq: 3: Low
+Options Enabled
+Move Animation
+Trigger: Action Button
+
+List of Event Commands:
+@>Text: This rock looks like it can be dug into. Dig into it?
+@>Show Choices: Yes, No
+(When Cancel: Choice 2)
+: When [Yes]
+ @>Script: pbMiningGame
+ @>Script: pbSetEventTime
+ @>
+: When [No]
+ @>
+: Branch End
+@>
+
+Page #2
+Conditions
+Self Switch A is ON
+
+Autonomous Movement
+Type: Fixed
+Speed: 3: Slow
+Freq: 3: Low
+Options Enabled
+Move Animation
+Trigger: Action Button
+
+List of Event Commands:
+@>Text: You can't dig in this rock more than once a day.
+@>
+
+Page #3
+Conditions
+Switch 0023: s:cooledDown?(86400) is ON
+Self Switch A is ON
+
+Autonomous Movement
+Type: Fixed
+Speed: 3: Slow
+Freq: 3: Low
+Options Enabled
+Move Animation
+Trigger: Autorun
+
+List of Event Commands:
+@>Control Self Switch: A =OFF
+@>Script: setTempSwitchOn("A")
+@>
+
+#------------------------------------------------------------------------------
+Event ID: 010
+Event Name: Light
+(X,Y): (036,043)
+
+Page #1
+Conditions
+None
+
+Autonomous Movement
+Type: Fixed
+Speed: 3: Slow
+Freq: 3: Low
+Options Enabled
+Move Animation
+Trigger: Action Button
+
+List of Event Commands:
+@>Text: This rock looks like it can be dug into. Dig into it?
+@>Show Choices: Yes, No
+(When Cancel: Choice 2)
+: When [Yes]
+ @>Script: pbMiningGame
+ @>Script: pbSetEventTime
+ @>
+: When [No]
+ @>
+: Branch End
+@>
+
+Page #2
+Conditions
+Self Switch A is ON
+
+Autonomous Movement
+Type: Fixed
+Speed: 3: Slow
+Freq: 3: Low
+Options Enabled
+Move Animation
+Trigger: Action Button
+
+List of Event Commands:
+@>Text: You can't dig in this rock more than once a day.
+@>
+
+Page #3
+Conditions
+Switch 0023: s:cooledDown?(86400) is ON
+Self Switch A is ON
+
+Autonomous Movement
+Type: Fixed
+Speed: 3: Slow
+Freq: 3: Low
+Options Enabled
+Move Animation
+Trigger: Autorun
+
+List of Event Commands:
+@>Control Self Switch: A =OFF
+@>Script: setTempSwitchOn("A")
+@>
+
+#------------------------------------------------------------------------------
+Event ID: 011
+Event Name: Light
+(X,Y): (038,043)
+
+Page #1
+Conditions
+None
+
+Autonomous Movement
+Type: Fixed
+Speed: 3: Slow
+Freq: 3: Low
+Options Enabled
+Move Animation
+Trigger: Action Button
+
+List of Event Commands:
+@>Text: This rock looks like it can be dug into. Dig into it?
+@>Show Choices: Yes, No
+(When Cancel: Choice 2)
+: When [Yes]
+ @>Script: pbMiningGame
+ @>Script: pbSetEventTime
+ @>
+: When [No]
+ @>
+: Branch End
+@>
+
+Page #2
+Conditions
+Self Switch A is ON
+
+Autonomous Movement
+Type: Fixed
+Speed: 3: Slow
+Freq: 3: Low
+Options Enabled
+Move Animation
+Trigger: Action Button
+
+List of Event Commands:
+@>Text: You can't dig in this rock more than once a day.
+@>
+
+Page #3
+Conditions
+Switch 0023: s:cooledDown?(86400) is ON
+Self Switch A is ON
+
+Autonomous Movement
+Type: Fixed
+Speed: 3: Slow
+Freq: 3: Low
+Options Enabled
+Move Animation
+Trigger: Autorun
+
+List of Event Commands:
+@>Control Self Switch: A =OFF
+@>Script: setTempSwitchOn("A")
+@>
+
+#------------------------------------------------------------------------------
+Event ID: 012
+Event Name: Light
+(X,Y): (040,043)
+
+Page #1
+Conditions
+None
+
+Autonomous Movement
+Type: Fixed
+Speed: 3: Slow
+Freq: 3: Low
+Options Enabled
+Move Animation
+Trigger: Action Button
+
+List of Event Commands:
+@>Text: This rock looks like it can be dug into. Dig into it?
+@>Show Choices: Yes, No
+(When Cancel: Choice 2)
+: When [Yes]
+ @>Script: pbMiningGame
+ @>Script: pbSetEventTime
+ @>
+: When [No]
+ @>
+: Branch End
+@>
+
+Page #2
+Conditions
+Self Switch A is ON
+
+Autonomous Movement
+Type: Fixed
+Speed: 3: Slow
+Freq: 3: Low
+Options Enabled
+Move Animation
+Trigger: Action Button
+
+List of Event Commands:
+@>Text: You can't dig in this rock more than once a day.
+@>
+
+Page #3
+Conditions
+Switch 0023: s:cooledDown?(86400) is ON
+Self Switch A is ON
+
+Autonomous Movement
+Type: Fixed
+Speed: 3: Slow
+Freq: 3: Low
+Options Enabled
+Move Animation
+Trigger: Autorun
+
+List of Event Commands:
+@>Control Self Switch: A =OFF
+@>Script: setTempSwitchOn("A")
+@>
+
+#------------------------------------------------------------------------------
+Event ID: 013
+Event Name: Light
+(X,Y): (042,043)
+
+Page #1
+Conditions
+None
+
+Autonomous Movement
+Type: Fixed
+Speed: 3: Slow
+Freq: 3: Low
+Options Enabled
+Move Animation
+Trigger: Action Button
+
+List of Event Commands:
+@>Text: This rock looks like it can be dug into. Dig into it?
+@>Show Choices: Yes, No
+(When Cancel: Choice 2)
+: When [Yes]
+ @>Script: pbMiningGame
+ @>Script: pbSetEventTime
+ @>
+: When [No]
+ @>
+: Branch End
+@>
+
+Page #2
+Conditions
+Self Switch A is ON
+
+Autonomous Movement
+Type: Fixed
+Speed: 3: Slow
+Freq: 3: Low
+Options Enabled
+Move Animation
+Trigger: Action Button
+
+List of Event Commands:
+@>Text: You can't dig in this rock more than once a day.
+@>
+
+Page #3
+Conditions
+Switch 0023: s:cooledDown?(86400) is ON
+Self Switch A is ON
+
+Autonomous Movement
+Type: Fixed
+Speed: 3: Slow
+Freq: 3: Low
+Options Enabled
+Move Animation
+Trigger: Autorun
+
+List of Event Commands:
+@>Control Self Switch: A =OFF
+@>Script: setTempSwitchOn("A")
+@>
+
+#------------------------------------------------------------------------------
+Event ID: 014
+Event Name: Light
+(X,Y): (044,041)
+
+Page #1
+Conditions
+None
+
+Autonomous Movement
+Type: Fixed
+Speed: 3: Slow
+Freq: 3: Low
+Options Enabled
+Move Animation
+Trigger: Action Button
+
+List of Event Commands:
+@>Text: This rock looks like it can be dug into. Dig into it?
+@>Show Choices: Yes, No
+(When Cancel: Choice 2)
+: When [Yes]
+ @>Script: pbMiningGame
+ @>Script: pbSetEventTime
+ @>
+: When [No]
+ @>
+: Branch End
+@>
+
+Page #2
+Conditions
+Self Switch A is ON
+
+Autonomous Movement
+Type: Fixed
+Speed: 3: Slow
+Freq: 3: Low
+Options Enabled
+Move Animation
+Trigger: Action Button
+
+List of Event Commands:
+@>Text: You can't dig in this rock more than once a day.
+@>
+
+Page #3
+Conditions
+Switch 0023: s:cooledDown?(86400) is ON
+Self Switch A is ON
+
+Autonomous Movement
+Type: Fixed
+Speed: 3: Slow
+Freq: 3: Low
+Options Enabled
+Move Animation
+Trigger: Autorun
+
+List of Event Commands:
+@>Control Self Switch: A =OFF
+@>Script: setTempSwitchOn("A")
+@>
+
+#------------------------------------------------------------------------------
+Event ID: 015
+Event Name: Light
+(X,Y): (044,039)
+
+Page #1
+Conditions
+None
+
+Autonomous Movement
+Type: Fixed
+Speed: 3: Slow
+Freq: 3: Low
+Options Enabled
+Move Animation
+Trigger: Action Button
+
+List of Event Commands:
+@>Text: This rock looks like it can be dug into. Dig into it?
+@>Show Choices: Yes, No
+(When Cancel: Choice 2)
+: When [Yes]
+ @>Script: pbMiningGame
+ @>Script: pbSetEventTime
+ @>
+: When [No]
+ @>
+: Branch End
+@>
+
+Page #2
+Conditions
+Self Switch A is ON
+
+Autonomous Movement
+Type: Fixed
+Speed: 3: Slow
+Freq: 3: Low
+Options Enabled
+Move Animation
+Trigger: Action Button
+
+List of Event Commands:
+@>Text: You can't dig in this rock more than once a day.
+@>
+
+Page #3
+Conditions
+Switch 0023: s:cooledDown?(86400) is ON
+Self Switch A is ON
+
+Autonomous Movement
+Type: Fixed
+Speed: 3: Slow
+Freq: 3: Low
+Options Enabled
+Move Animation
+Trigger: Autorun
+
+List of Event Commands:
+@>Control Self Switch: A =OFF
+@>Script: setTempSwitchOn("A")
+@>
+
+#------------------------------------------------------------------------------
+Event ID: 016
+Event Name: Light
+(X,Y): (044,037)
+
+Page #1
+Conditions
+None
+
+Autonomous Movement
+Type: Fixed
+Speed: 3: Slow
+Freq: 3: Low
+Options Enabled
+Move Animation
+Trigger: Action Button
+
+List of Event Commands:
+@>Text: This rock looks like it can be dug into. Dig into it?
+@>Show Choices: Yes, No
+(When Cancel: Choice 2)
+: When [Yes]
+ @>Script: pbMiningGame
+ @>Script: pbSetEventTime
+ @>
+: When [No]
+ @>
+: Branch End
+@>
+
+Page #2
+Conditions
+Self Switch A is ON
+
+Autonomous Movement
+Type: Fixed
+Speed: 3: Slow
+Freq: 3: Low
+Options Enabled
+Move Animation
+Trigger: Action Button
+
+List of Event Commands:
+@>Text: You can't dig in this rock more than once a day.
+@>
+
+Page #3
+Conditions
+Switch 0023: s:cooledDown?(86400) is ON
+Self Switch A is ON
+
+Autonomous Movement
+Type: Fixed
+Speed: 3: Slow
+Freq: 3: Low
+Options Enabled
+Move Animation
+Trigger: Autorun
+
+List of Event Commands:
+@>Control Self Switch: A =OFF
+@>Script: setTempSwitchOn("A")
+@>
+
+#------------------------------------------------------------------------------
+Event ID: 017
+Event Name: Light
+(X,Y): (044,035)
+
+Page #1
+Conditions
+None
+
+Autonomous Movement
+Type: Fixed
+Speed: 3: Slow
+Freq: 3: Low
+Options Enabled
+Move Animation
+Trigger: Action Button
+
+List of Event Commands:
+@>Text: This rock looks like it can be dug into. Dig into it?
+@>Show Choices: Yes, No
+(When Cancel: Choice 2)
+: When [Yes]
+ @>Script: pbMiningGame
+ @>Script: pbSetEventTime
+ @>
+: When [No]
+ @>
+: Branch End
+@>
+
+Page #2
+Conditions
+Self Switch A is ON
+
+Autonomous Movement
+Type: Fixed
+Speed: 3: Slow
+Freq: 3: Low
+Options Enabled
+Move Animation
+Trigger: Action Button
+
+List of Event Commands:
+@>Text: You can't dig in this rock more than once a day.
+@>
+
+Page #3
+Conditions
+Switch 0023: s:cooledDown?(86400) is ON
+Self Switch A is ON
+
+Autonomous Movement
+Type: Fixed
+Speed: 3: Slow
+Freq: 3: Low
+Options Enabled
+Move Animation
+Trigger: Autorun
+
+List of Event Commands:
+@>Control Self Switch: A =OFF
+@>Script: setTempSwitchOn("A")
+@>
+
+#------------------------------------------------------------------------------
+Event ID: 018
+Event Name: OutdoorLight
+(X,Y): (042,033)
+
+Page #1
+Conditions
+None
+
+Autonomous Movement
+Type: Fixed
+Speed: 3: Slow
+Freq: 3: Low
+Options Enabled
+Move Animation
+Trigger: Action Button
+
+List of Event Commands:
+@>Text: This rock looks like it can be dug into. Dig into it?
+@>Show Choices: Yes, No
+(When Cancel: Choice 2)
+: When [Yes]
+ @>Script: pbMiningGame
+ @>Script: pbSetEventTime
+ @>
+: When [No]
+ @>
+: Branch End
+@>
+
+Page #2
+Conditions
+Self Switch A is ON
+
+Autonomous Movement
+Type: Fixed
+Speed: 3: Slow
+Freq: 3: Low
+Options Enabled
+Move Animation
+Trigger: Action Button
+
+List of Event Commands:
+@>Text: You can't dig in this rock more than once a day.
+@>
+
+Page #3
+Conditions
+Switch 0023: s:cooledDown?(86400) is ON
+Self Switch A is ON
+
+Autonomous Movement
+Type: Fixed
+Speed: 3: Slow
+Freq: 3: Low
+Options Enabled
+Move Animation
+Trigger: Autorun
+
+List of Event Commands:
+@>Control Self Switch: A =OFF
+@>Script: setTempSwitchOn("A")
+@>
+
+#------------------------------------------------------------------------------
+Event ID: 019
+Event Name: Light
+(X,Y): (041,031)
+
+Page #1
+Conditions
+None
+
+Autonomous Movement
+Type: Fixed
+Speed: 3: Slow
+Freq: 3: Low
+Options Enabled
+Move Animation
+Trigger: Action Button
+
+List of Event Commands:
+@>Text: This rock looks like it can be dug into. Dig into it?
+@>Show Choices: Yes, No
+(When Cancel: Choice 2)
+: When [Yes]
+ @>Script: pbMiningGame
+ @>Script: pbSetEventTime
+ @>
+: When [No]
+ @>
+: Branch End
+@>
+
+Page #2
+Conditions
+Self Switch A is ON
+
+Autonomous Movement
+Type: Fixed
+Speed: 3: Slow
+Freq: 3: Low
+Options Enabled
+Move Animation
+Trigger: Action Button
+
+List of Event Commands:
+@>Text: You can't dig in this rock more than once a day.
+@>
+
+Page #3
+Conditions
+Switch 0023: s:cooledDown?(86400) is ON
+Self Switch A is ON
+
+Autonomous Movement
+Type: Fixed
+Speed: 3: Slow
+Freq: 3: Low
+Options Enabled
+Move Animation
+Trigger: Autorun
+
+List of Event Commands:
+@>Control Self Switch: A =OFF
+@>Script: setTempSwitchOn("A")
+@>
+
+#------------------------------------------------------------------------------
+Event ID: 020
+Event Name: OutdoorLight
+(X,Y): (039,030)
+
+Page #1
+Conditions
+None
+
+Autonomous Movement
+Type: Fixed
+Speed: 3: Slow
+Freq: 3: Low
+Options Enabled
+Move Animation
+Trigger: Action Button
+
+List of Event Commands:
+@>Text: This rock looks like it can be dug into. Dig into it?
+@>Show Choices: Yes, No
+(When Cancel: Choice 2)
+: When [Yes]
+ @>Script: pbMiningGame
+ @>Script: pbSetEventTime
+ @>
+: When [No]
+ @>
+: Branch End
+@>
+
+Page #2
+Conditions
+Self Switch A is ON
+
+Autonomous Movement
+Type: Fixed
+Speed: 3: Slow
+Freq: 3: Low
+Options Enabled
+Move Animation
+Trigger: Action Button
+
+List of Event Commands:
+@>Text: You can't dig in this rock more than once a day.
+@>
+
+Page #3
+Conditions
+Switch 0023: s:cooledDown?(86400) is ON
+Self Switch A is ON
+
+Autonomous Movement
+Type: Fixed
+Speed: 3: Slow
+Freq: 3: Low
+Options Enabled
+Move Animation
+Trigger: Autorun
+
+List of Event Commands:
+@>Control Self Switch: A =OFF
+@>Script: setTempSwitchOn("A")
+@>
+
+#------------------------------------------------------------------------------
+Event ID: 021
+Event Name: Light
+(X,Y): (037,028)
+
+Page #1
+Conditions
+None
+
+Autonomous Movement
+Type: Fixed
+Speed: 3: Slow
+Freq: 3: Low
+Options Enabled
+Move Animation
+Trigger: Action Button
+
+List of Event Commands:
+@>Text: This rock looks like it can be dug into. Dig into it?
+@>Show Choices: Yes, No
+(When Cancel: Choice 2)
+: When [Yes]
+ @>Script: pbMiningGame
+ @>Script: pbSetEventTime
+ @>
+: When [No]
+ @>
+: Branch End
+@>
+
+Page #2
+Conditions
+Self Switch A is ON
+
+Autonomous Movement
+Type: Fixed
+Speed: 3: Slow
+Freq: 3: Low
+Options Enabled
+Move Animation
+Trigger: Action Button
+
+List of Event Commands:
+@>Text: You can't dig in this rock more than once a day.
+@>
+
+Page #3
+Conditions
+Switch 0023: s:cooledDown?(86400) is ON
+Self Switch A is ON
+
+Autonomous Movement
+Type: Fixed
+Speed: 3: Slow
+Freq: 3: Low
+Options Enabled
+Move Animation
+Trigger: Autorun
+
+List of Event Commands:
+@>Control Self Switch: A =OFF
+@>Script: setTempSwitchOn("A")
+@>
+
+#------------------------------------------------------------------------------
+Event ID: 022
+Event Name: Light
+(X,Y): (037,026)
+
+Page #1
+Conditions
+None
+
+Autonomous Movement
+Type: Fixed
+Speed: 3: Slow
+Freq: 3: Low
+Options Enabled
+Move Animation
+Trigger: Action Button
+
+List of Event Commands:
+@>Text: This rock looks like it can be dug into. Dig into it?
+@>Show Choices: Yes, No
+(When Cancel: Choice 2)
+: When [Yes]
+ @>Script: pbMiningGame
+ @>Script: pbSetEventTime
+ @>
+: When [No]
+ @>
+: Branch End
+@>
+
+Page #2
+Conditions
+Self Switch A is ON
+
+Autonomous Movement
+Type: Fixed
+Speed: 3: Slow
+Freq: 3: Low
+Options Enabled
+Move Animation
+Trigger: Action Button
+
+List of Event Commands:
+@>Text: You can't dig in this rock more than once a day.
+@>
+
+Page #3
+Conditions
+Switch 0023: s:cooledDown?(86400) is ON
+Self Switch A is ON
+
+Autonomous Movement
+Type: Fixed
+Speed: 3: Slow
+Freq: 3: Low
+Options Enabled
+Move Animation
+Trigger: Autorun
+
+List of Event Commands:
+@>Control Self Switch: A =OFF
+@>Script: setTempSwitchOn("A")
+@>
+
+#------------------------------------------------------------------------------
+Event ID: 023
+Event Name: Light
+(X,Y): (035,025)
+
+Page #1
+Conditions
+None
+
+Autonomous Movement
+Type: Fixed
+Speed: 3: Slow
+Freq: 3: Low
+Options Enabled
+Move Animation
+Trigger: Action Button
+
+List of Event Commands:
+@>Text: This rock looks like it can be dug into. Dig into it?
+@>Show Choices: Yes, No
+(When Cancel: Choice 2)
+: When [Yes]
+ @>Script: pbMiningGame
+ @>Script: pbSetEventTime
+ @>
+: When [No]
+ @>
+: Branch End
+@>
+
+Page #2
+Conditions
+Self Switch A is ON
+
+Autonomous Movement
+Type: Fixed
+Speed: 3: Slow
+Freq: 3: Low
+Options Enabled
+Move Animation
+Trigger: Action Button
+
+List of Event Commands:
+@>Text: You can't dig in this rock more than once a day.
+@>
+
+Page #3
+Conditions
+Switch 0023: s:cooledDown?(86400) is ON
+Self Switch A is ON
+
+Autonomous Movement
+Type: Fixed
+Speed: 3: Slow
+Freq: 3: Low
+Options Enabled
+Move Animation
+Trigger: Autorun
+
+List of Event Commands:
+@>Control Self Switch: A =OFF
+@>Script: setTempSwitchOn("A")
+@>
+
+#------------------------------------------------------------------------------
+Event ID: 024
+Event Name: Light
+(X,Y): (033,025)
+
+Page #1
+Conditions
+None
+
+Autonomous Movement
+Type: Fixed
+Speed: 3: Slow
+Freq: 3: Low
+Options Enabled
+Move Animation
+Trigger: Action Button
+
+List of Event Commands:
+@>Text: This rock looks like it can be dug into. Dig into it?
+@>Show Choices: Yes, No
+(When Cancel: Choice 2)
+: When [Yes]
+ @>Script: pbMiningGame
+ @>Script: pbSetEventTime
+ @>
+: When [No]
+ @>
+: Branch End
+@>
+
+Page #2
+Conditions
+Self Switch A is ON
+
+Autonomous Movement
+Type: Fixed
+Speed: 3: Slow
+Freq: 3: Low
+Options Enabled
+Move Animation
+Trigger: Action Button
+
+List of Event Commands:
+@>Text: You can't dig in this rock more than once a day.
+@>
+
+Page #3
+Conditions
+Switch 0023: s:cooledDown?(86400) is ON
+Self Switch A is ON
+
+Autonomous Movement
+Type: Fixed
+Speed: 3: Slow
+Freq: 3: Low
+Options Enabled
+Move Animation
+Trigger: Autorun
+
+List of Event Commands:
+@>Control Self Switch: A =OFF
+@>Script: setTempSwitchOn("A")
+@>
+
+#------------------------------------------------------------------------------
+Event ID: 025
+Event Name: Light
+(X,Y): (031,025)
+
+Page #1
+Conditions
+None
+
+Autonomous Movement
+Type: Fixed
+Speed: 3: Slow
+Freq: 3: Low
+Options Enabled
+Move Animation
+Trigger: Action Button
+
+List of Event Commands:
+@>Text: This rock looks like it can be dug into. Dig into it?
+@>Show Choices: Yes, No
+(When Cancel: Choice 2)
+: When [Yes]
+ @>Script: pbMiningGame
+ @>Script: pbSetEventTime
+ @>
+: When [No]
+ @>
+: Branch End
+@>
+
+Page #2
+Conditions
+Self Switch A is ON
+
+Autonomous Movement
+Type: Fixed
+Speed: 3: Slow
+Freq: 3: Low
+Options Enabled
+Move Animation
+Trigger: Action Button
+
+List of Event Commands:
+@>Text: You can't dig in this rock more than once a day.
+@>
+
+Page #3
+Conditions
+Switch 0023: s:cooledDown?(86400) is ON
+Self Switch A is ON
+
+Autonomous Movement
+Type: Fixed
+Speed: 3: Slow
+Freq: 3: Low
+Options Enabled
+Move Animation
+Trigger: Autorun
+
+List of Event Commands:
+@>Control Self Switch: A =OFF
+@>Script: setTempSwitchOn("A")
+@>
+
+#------------------------------------------------------------------------------
+Event ID: 026
+Event Name: Light
+(X,Y): (030,023)
+
+Page #1
+Conditions
+None
+
+Autonomous Movement
+Type: Fixed
+Speed: 3: Slow
+Freq: 3: Low
+Options Enabled
+Move Animation
+Trigger: Action Button
+
+List of Event Commands:
+@>Text: This rock looks like it can be dug into. Dig into it?
+@>Show Choices: Yes, No
+(When Cancel: Choice 2)
+: When [Yes]
+ @>Script: pbMiningGame
+ @>Script: pbSetEventTime
+ @>
+: When [No]
+ @>
+: Branch End
+@>
+
+Page #2
+Conditions
+Self Switch A is ON
+
+Autonomous Movement
+Type: Fixed
+Speed: 3: Slow
+Freq: 3: Low
+Options Enabled
+Move Animation
+Trigger: Action Button
+
+List of Event Commands:
+@>Text: You can't dig in this rock more than once a day.
+@>
+
+Page #3
+Conditions
+Switch 0023: s:cooledDown?(86400) is ON
+Self Switch A is ON
+
+Autonomous Movement
+Type: Fixed
+Speed: 3: Slow
+Freq: 3: Low
+Options Enabled
+Move Animation
+Trigger: Autorun
+
+List of Event Commands:
+@>Control Self Switch: A =OFF
+@>Script: setTempSwitchOn("A")
+@>
+
+#------------------------------------------------------------------------------
+Event ID: 027
+Event Name: Light
+(X,Y): (028,022)
+
+Page #1
+Conditions
+None
+
+Autonomous Movement
+Type: Fixed
+Speed: 3: Slow
+Freq: 3: Low
+Options Enabled
+Move Animation
+Trigger: Action Button
+
+List of Event Commands:
+@>Text: This rock looks like it can be dug into. Dig into it?
+@>Show Choices: Yes, No
+(When Cancel: Choice 2)
+: When [Yes]
+ @>Script: pbMiningGame
+ @>Script: pbSetEventTime
+ @>
+: When [No]
+ @>
+: Branch End
+@>
+
+Page #2
+Conditions
+Self Switch A is ON
+
+Autonomous Movement
+Type: Fixed
+Speed: 3: Slow
+Freq: 3: Low
+Options Enabled
+Move Animation
+Trigger: Action Button
+
+List of Event Commands:
+@>Text: You can't dig in this rock more than once a day.
+@>
+
+Page #3
+Conditions
+Switch 0023: s:cooledDown?(86400) is ON
+Self Switch A is ON
+
+Autonomous Movement
+Type: Fixed
+Speed: 3: Slow
+Freq: 3: Low
+Options Enabled
+Move Animation
+Trigger: Autorun
+
+List of Event Commands:
+@>Control Self Switch: A =OFF
+@>Script: setTempSwitchOn("A")
+@>
+
+#------------------------------------------------------------------------------
+Event ID: 028
+Event Name: Light
+(X,Y): (026,022)
+
+Page #1
+Conditions
+None
+
+Autonomous Movement
+Type: Fixed
+Speed: 3: Slow
+Freq: 3: Low
+Options Enabled
+Move Animation
+Trigger: Action Button
+
+List of Event Commands:
+@>Text: This rock looks like it can be dug into. Dig into it?
+@>Show Choices: Yes, No
+(When Cancel: Choice 2)
+: When [Yes]
+ @>Script: pbMiningGame
+ @>Script: pbSetEventTime
+ @>
+: When [No]
+ @>
+: Branch End
+@>
+
+Page #2
+Conditions
+Self Switch A is ON
+
+Autonomous Movement
+Type: Fixed
+Speed: 3: Slow
+Freq: 3: Low
+Options Enabled
+Move Animation
+Trigger: Action Button
+
+List of Event Commands:
+@>Text: You can't dig in this rock more than once a day.
+@>
+
+Page #3
+Conditions
+Switch 0023: s:cooledDown?(86400) is ON
+Self Switch A is ON
+
+Autonomous Movement
+Type: Fixed
+Speed: 3: Slow
+Freq: 3: Low
+Options Enabled
+Move Animation
+Trigger: Autorun
+
+List of Event Commands:
+@>Control Self Switch: A =OFF
+@>Script: setTempSwitchOn("A")
+@>
+
+#------------------------------------------------------------------------------
+Event ID: 029
+Event Name: Light
+(X,Y): (024,022)
+
+Page #1
+Conditions
+None
+
+Autonomous Movement
+Type: Fixed
+Speed: 3: Slow
+Freq: 3: Low
+Options Enabled
+Move Animation
+Trigger: Action Button
+
+List of Event Commands:
+@>Text: This rock looks like it can be dug into. Dig into it?
+@>Show Choices: Yes, No
+(When Cancel: Choice 2)
+: When [Yes]
+ @>Script: pbMiningGame
+ @>Script: pbSetEventTime
+ @>
+: When [No]
+ @>
+: Branch End
+@>
+
+Page #2
+Conditions
+Self Switch A is ON
+
+Autonomous Movement
+Type: Fixed
+Speed: 3: Slow
+Freq: 3: Low
+Options Enabled
+Move Animation
+Trigger: Action Button
+
+List of Event Commands:
+@>Text: You can't dig in this rock more than once a day.
+@>
+
+Page #3
+Conditions
+Switch 0023: s:cooledDown?(86400) is ON
+Self Switch A is ON
+
+Autonomous Movement
+Type: Fixed
+Speed: 3: Slow
+Freq: 3: Low
+Options Enabled
+Move Animation
+Trigger: Autorun
+
+List of Event Commands:
+@>Control Self Switch: A =OFF
+@>Script: setTempSwitchOn("A")
+@>
+
+#------------------------------------------------------------------------------
+Event ID: 030
+Event Name: Light
+(X,Y): (022,022)
+
+Page #1
+Conditions
+None
+
+Autonomous Movement
+Type: Fixed
+Speed: 3: Slow
+Freq: 3: Low
+Options Enabled
+Move Animation
+Trigger: Action Button
+
+List of Event Commands:
+@>Text: This rock looks like it can be dug into. Dig into it?
+@>Show Choices: Yes, No
+(When Cancel: Choice 2)
+: When [Yes]
+ @>Script: pbMiningGame
+ @>Script: pbSetEventTime
+ @>
+: When [No]
+ @>
+: Branch End
+@>
+
+Page #2
+Conditions
+Self Switch A is ON
+
+Autonomous Movement
+Type: Fixed
+Speed: 3: Slow
+Freq: 3: Low
+Options Enabled
+Move Animation
+Trigger: Action Button
+
+List of Event Commands:
+@>Text: You can't dig in this rock more than once a day.
+@>
+
+Page #3
+Conditions
+Switch 0023: s:cooledDown?(86400) is ON
+Self Switch A is ON
+
+Autonomous Movement
+Type: Fixed
+Speed: 3: Slow
+Freq: 3: Low
+Options Enabled
+Move Animation
+Trigger: Autorun
+
+List of Event Commands:
+@>Control Self Switch: A =OFF
+@>Script: setTempSwitchOn("A")
+@>
+
+#------------------------------------------------------------------------------
+Event ID: 031
+Event Name: Light
+(X,Y): (020,023)
+
+Page #1
+Conditions
+None
+
+Autonomous Movement
+Type: Fixed
+Speed: 3: Slow
+Freq: 3: Low
+Options Enabled
+Move Animation
+Trigger: Action Button
+
+List of Event Commands:
+@>Text: This rock looks like it can be dug into. Dig into it?
+@>Show Choices: Yes, No
+(When Cancel: Choice 2)
+: When [Yes]
+ @>Script: pbMiningGame
+ @>Script: pbSetEventTime
+ @>
+: When [No]
+ @>
+: Branch End
+@>
+
+Page #2
+Conditions
+Self Switch A is ON
+
+Autonomous Movement
+Type: Fixed
+Speed: 3: Slow
+Freq: 3: Low
+Options Enabled
+Move Animation
+Trigger: Action Button
+
+List of Event Commands:
+@>Text: You can't dig in this rock more than once a day.
+@>
+
+Page #3
+Conditions
+Switch 0023: s:cooledDown?(86400) is ON
+Self Switch A is ON
+
+Autonomous Movement
+Type: Fixed
+Speed: 3: Slow
+Freq: 3: Low
+Options Enabled
+Move Animation
+Trigger: Autorun
+
+List of Event Commands:
+@>Control Self Switch: A =OFF
+@>Script: setTempSwitchOn("A")
+@>
+
+#------------------------------------------------------------------------------
+Event ID: 032
+Event Name: Light
+(X,Y): (019,025)
+
+Page #1
+Conditions
+None
+
+Autonomous Movement
+Type: Fixed
+Speed: 3: Slow
+Freq: 3: Low
+Options Enabled
+Move Animation
+Trigger: Action Button
+
+List of Event Commands:
+@>Text: This rock looks like it can be dug into. Dig into it?
+@>Show Choices: Yes, No
+(When Cancel: Choice 2)
+: When [Yes]
+ @>Script: pbMiningGame
+ @>Script: pbSetEventTime
+ @>
+: When [No]
+ @>
+: Branch End
+@>
+
+Page #2
+Conditions
+Self Switch A is ON
+
+Autonomous Movement
+Type: Fixed
+Speed: 3: Slow
+Freq: 3: Low
+Options Enabled
+Move Animation
+Trigger: Action Button
+
+List of Event Commands:
+@>Text: You can't dig in this rock more than once a day.
+@>
+
+Page #3
+Conditions
+Switch 0023: s:cooledDown?(86400) is ON
+Self Switch A is ON
+
+Autonomous Movement
+Type: Fixed
+Speed: 3: Slow
+Freq: 3: Low
+Options Enabled
+Move Animation
+Trigger: Autorun
+
+List of Event Commands:
+@>Control Self Switch: A =OFF
+@>Script: setTempSwitchOn("A")
+@>
+
+#------------------------------------------------------------------------------
+Event ID: 033
+Event Name: Light
+(X,Y): (017,025)
+
+Page #1
+Conditions
+None
+
+Autonomous Movement
+Type: Fixed
+Speed: 3: Slow
+Freq: 3: Low
+Options Enabled
+Move Animation
+Trigger: Action Button
+
+List of Event Commands:
+@>Text: This rock looks like it can be dug into. Dig into it?
+@>Show Choices: Yes, No
+(When Cancel: Choice 2)
+: When [Yes]
+ @>Script: pbMiningGame
+ @>Script: pbSetEventTime
+ @>
+: When [No]
+ @>
+: Branch End
+@>
+
+Page #2
+Conditions
+Self Switch A is ON
+
+Autonomous Movement
+Type: Fixed
+Speed: 3: Slow
+Freq: 3: Low
+Options Enabled
+Move Animation
+Trigger: Action Button
+
+List of Event Commands:
+@>Text: You can't dig in this rock more than once a day.
+@>
+
+Page #3
+Conditions
+Switch 0023: s:cooledDown?(86400) is ON
+Self Switch A is ON
+
+Autonomous Movement
+Type: Fixed
+Speed: 3: Slow
+Freq: 3: Low
+Options Enabled
+Move Animation
+Trigger: Autorun
+
+List of Event Commands:
+@>Control Self Switch: A =OFF
+@>Script: setTempSwitchOn("A")
+@>
+
+#------------------------------------------------------------------------------
+Event ID: 034
+Event Name: Light
+(X,Y): (015,025)
+
+Page #1
+Conditions
+None
+
+Autonomous Movement
+Type: Fixed
+Speed: 3: Slow
+Freq: 3: Low
+Options Enabled
+Move Animation
+Trigger: Action Button
+
+List of Event Commands:
+@>Text: This rock looks like it can be dug into. Dig into it?
+@>Show Choices: Yes, No
+(When Cancel: Choice 2)
+: When [Yes]
+ @>Script: pbMiningGame
+ @>Script: pbSetEventTime
+ @>
+: When [No]
+ @>
+: Branch End
+@>
+
+Page #2
+Conditions
+Self Switch A is ON
+
+Autonomous Movement
+Type: Fixed
+Speed: 3: Slow
+Freq: 3: Low
+Options Enabled
+Move Animation
+Trigger: Action Button
+
+List of Event Commands:
+@>Text: You can't dig in this rock more than once a day.
+@>
+
+Page #3
+Conditions
+Switch 0023: s:cooledDown?(86400) is ON
+Self Switch A is ON
+
+Autonomous Movement
+Type: Fixed
+Speed: 3: Slow
+Freq: 3: Low
+Options Enabled
+Move Animation
+Trigger: Autorun
+
+List of Event Commands:
+@>Control Self Switch: A =OFF
+@>Script: setTempSwitchOn("A")
+@>
+
+#------------------------------------------------------------------------------
+Event ID: 035
+Event Name: Light
+(X,Y): (014,027)
+
+Page #1
+Conditions
+None
+
+Autonomous Movement
+Type: Fixed
+Speed: 3: Slow
+Freq: 3: Low
+Options Enabled
+Move Animation
+Trigger: Action Button
+
+List of Event Commands:
+@>Text: This rock looks like it can be dug into. Dig into it?
+@>Show Choices: Yes, No
+(When Cancel: Choice 2)
+: When [Yes]
+ @>Script: pbMiningGame
+ @>Script: pbSetEventTime
+ @>
+: When [No]
+ @>
+: Branch End
+@>
+
+Page #2
+Conditions
+Self Switch A is ON
+
+Autonomous Movement
+Type: Fixed
+Speed: 3: Slow
+Freq: 3: Low
+Options Enabled
+Move Animation
+Trigger: Action Button
+
+List of Event Commands:
+@>Text: You can't dig in this rock more than once a day.
+@>
+
+Page #3
+Conditions
+Switch 0023: s:cooledDown?(86400) is ON
+Self Switch A is ON
+
+Autonomous Movement
+Type: Fixed
+Speed: 3: Slow
+Freq: 3: Low
+Options Enabled
+Move Animation
+Trigger: Autorun
+
+List of Event Commands:
+@>Control Self Switch: A =OFF
+@>Script: setTempSwitchOn("A")
+@>
+
+#------------------------------------------------------------------------------
+Event ID: 036
+Event Name: Light
+(X,Y): (015,029)
+
+Page #1
+Conditions
+None
+
+Autonomous Movement
+Type: Fixed
+Speed: 3: Slow
+Freq: 3: Low
+Options Enabled
+Move Animation
+Trigger: Action Button
+
+List of Event Commands:
+@>Text: This rock looks like it can be dug into. Dig into it?
+@>Show Choices: Yes, No
+(When Cancel: Choice 2)
+: When [Yes]
+ @>Script: pbMiningGame
+ @>Script: pbSetEventTime
+ @>
+: When [No]
+ @>
+: Branch End
+@>
+
+Page #2
+Conditions
+Self Switch A is ON
+
+Autonomous Movement
+Type: Fixed
+Speed: 3: Slow
+Freq: 3: Low
+Options Enabled
+Move Animation
+Trigger: Action Button
+
+List of Event Commands:
+@>Text: You can't dig in this rock more than once a day.
+@>
+
+Page #3
+Conditions
+Switch 0023: s:cooledDown?(86400) is ON
+Self Switch A is ON
+
+Autonomous Movement
+Type: Fixed
+Speed: 3: Slow
+Freq: 3: Low
+Options Enabled
+Move Animation
+Trigger: Autorun
+
+List of Event Commands:
+@>Control Self Switch: A =OFF
+@>Script: setTempSwitchOn("A")
+@>
+
+#------------------------------------------------------------------------------
+Event ID: 037
+Event Name: Light
+(X,Y): (017,031)
+
+Page #1
+Conditions
+None
+
+Autonomous Movement
+Type: Fixed
+Speed: 3: Slow
+Freq: 3: Low
+Options Enabled
+Move Animation
+Trigger: Action Button
+
+List of Event Commands:
+@>Text: This rock looks like it can be dug into. Dig into it?
+@>Show Choices: Yes, No
+(When Cancel: Choice 2)
+: When [Yes]
+ @>Script: pbMiningGame
+ @>Script: pbSetEventTime
+ @>
+: When [No]
+ @>
+: Branch End
+@>
+
+Page #2
+Conditions
+Self Switch A is ON
+
+Autonomous Movement
+Type: Fixed
+Speed: 3: Slow
+Freq: 3: Low
+Options Enabled
+Move Animation
+Trigger: Action Button
+
+List of Event Commands:
+@>Text: You can't dig in this rock more than once a day.
+@>
+
+Page #3
+Conditions
+Switch 0023: s:cooledDown?(86400) is ON
+Self Switch A is ON
+
+Autonomous Movement
+Type: Fixed
+Speed: 3: Slow
+Freq: 3: Low
+Options Enabled
+Move Animation
+Trigger: Autorun
+
+List of Event Commands:
+@>Control Self Switch: A =OFF
+@>Script: setTempSwitchOn("A")
+@>
+
+#------------------------------------------------------------------------------
+Event ID: 038
+Event Name: Cave entrance
+(X,Y): (012,040)
+
+Page #1
+Conditions
+None
+
+Autonomous Movement
+Type: Fixed
+Speed: 3: Slow
+Freq: 3: Low
+Options Enabled
+Move Animation
+Trigger: Player Touch
+
+List of Event Commands:
+@>Play SE: 'Exit Door', 100, 100
+@>Change Screen Color Tone: (255,255,255,255), @6
+@>Wait: 8 frame(s)
+@>Script: pbCaveExit
+@>Transfer Player:[064: Route 19], (033,019), No Fade
+@>Change Screen Color Tone: (0,0,0,0), @6
+@>
+
+Page #2
+Conditions
+Switch 0022: s:tsOff?("A") is ON
+
+Autonomous Movement
+Type: Fixed
+Speed: 3: Slow
+Freq: 3: Low
+Options Enabled
+Move Animation
+Trigger: Autorun
+
+List of Event Commands:
+@>Conditional Branch: Script: get_self.onEvent?
+ @>Set Move Route: Player
+                   (Ignore If Can't Move)
+  :              : $>Move Down
+ @>Wait for Move's Completion
+ @>
+: Branch End
+@>Script: setTempSwitchOn("A")
 @>
 
 #------------------------------------------------------------------------------

@@ -165,62 +165,67 @@ def pbPasswordCheck(helptext = "Input Password", minlength = 0, maxlength = 12, 
 	  end
 	# --- DLwRuukoto ---
 	when "retribution"
-	  if $player.dlwruukoto
-		pbMessage(_INTL("...\\wt[20]No response."))
-		return false
+	  if $game_variables[126] < 7
+        pbMessage(_INTL("Invalid Password. Please try again."))
+        return false
 	  else
-		$game_player.animation_id = 003
-		pbMessage(_INTL("\\bWARNING. CORRUPT DATA LOADED. PLEASE CONTACT SILPH CO. FOR EMERGENCY MAINT-\\wtnp[1]"))
-		pbWait(20)
-		pbSEPlay("PC open")
-		pbMessage(_INTL("\\rSystem rebooted. Remote control granted. Please enter trainer ID."))
-		pbWait(20)
-		pbMessage(_INTL("\\rID confirmed. Distributing gift, \"The Destructor\". Please ensure you have room in your party or box before accepting."))
-		if pbConfirmMessage(_INTL("\\rAre you capable of recieving this gift?"))
-		  pkmn=Pokemon.new(:RUUKOTO,30)
-		  pkmn.name = "DLwRuukoto"
-		  pkmn.item = :LEFTOVERS
-		  pkmn.form = 1         # DLwRuukoto
-		  pkmn.ability = :RETRIBUTION
-		  pkmn.nature = :MODEST
-		  pkmn.gender = nil
-		  pkmn.owner.id = $Trainer.make_foreign_ID
-		  pkmn.owner.name = "The Collector"
-		  pkmn.iv[:HP]=31
-		  pkmn.iv[:ATTACK]=31
-		  pkmn.iv[:DEFENSE]=31
-		  pkmn.iv[:SPECIAL_ATTACK]=0
-		  pkmn.iv[:SPECIAL_DEFENSE]=31
-		  pkmn.iv[:SPEED]=31
-		  pkmn.calc_stats
-		  pkmn.learn_move(:TOXIC18)
-		  pkmn.learn_move(:WISH18)
-		  pkmn.learn_move(:MAGICCOAT18)
-		  pkmn.learn_move(:CHECKMAID)
-		  pkmn.record_first_moves
-		  pbAddPokemonSilent(pkmn)
-		  pbMEPlay("Battle capture success")
-		  pbMessage(_INTL("DLwRuukoto joined \\pn's team!\\wtnp[80]"))
-		  pbWait(20)
-		  pbMessage(_INTL("\\rPlaying additional content. Please stand by."))
-		  pbMessage(_INTL("\\xn[???]Well hello there, \\pn."))
-		  pbMessage(_INTL("\\xn[???]It's a shame that I couldn't address this to you in person, but this should suffice for now."))
-		  pbMessage(_INTL("\\xn[The Collector]My actual name means little to you, but you can refer to me as \"The Collector\"."))
-		  pbMessage(_INTL("\\xn[The Collector]I do hope this gift finds you well. After that show you put on for me that I can hold over those corporate megalomaniacal bastards heads you deserve this much."))
-		  pbMessage(_INTL("\\xn[The Collector]One day I hope we'll be able to meet in person."))
-		  pbMessage(_INTL("\\xn[The Collector]Though technically, we did already meet, but it is understandable if you didn't notice me sitting beside you at the conference."))
-		  pbMessage(_INTL("\\xn[The Collector]Nevertheless, please continue your journey with my gift. She needs more combat experience, and I have deemed you as the best way to get it."))
-		  pbMessage(_INTL("\\xn[The Collector]Good luck on your journey, \\pn. Until we meet proper."))
-		  pbWait(20)
-		  pbMessage(_INTL("\\rEnd of additional content. Thank you for using Oracle Encryption Software. Goodbye."))
-		  pbSEPlay("PC close")
-		  $player.dlwruukoto = true
-		  completeQuest(:Quest107)
-		  return true
-		else
+	    if $player.dlwruukoto
+		  pbMessage(_INTL("...\\wt[20]No response."))
 		  return false
-		end
-	  end	
+	    else
+		  $game_player.animation_id = 003
+		  pbMessage(_INTL("\\bWARNING. CORRUPT DATA LOADED. PLEASE CONTACT SILPH CO. FOR EMERGENCY MAINT-\\wtnp[1]"))
+		  pbWait(5)
+		  pbSEPlay("PC open")
+		  pbMessage(_INTL("\\rSystem rebooted. Remote control granted. Please enter trainer ID."))
+		  pbWait(5)
+		  pbMessage(_INTL("\\rID confirmed. Distributing gift, \"The Destructor\". Please ensure you have room in your party or box before accepting."))
+		  if pbConfirmMessage(_INTL("\\rAre you capable of recieving this gift?"))
+		    pkmn=Pokemon.new(:RUUKOTO,30)
+		    pkmn.name = "DLwRuukoto"
+		    pkmn.item = :LEFTOVERS
+		    pkmn.form = 1         # DLwRuukoto
+		    pkmn.ability = :RETRIBUTION
+		    pkmn.nature = :MODEST
+		    pkmn.gender = nil
+		    pkmn.owner.id = $player.make_foreign_ID
+		    pkmn.owner.name = "The Collector"
+		    pkmn.iv[:HP]=31
+		    pkmn.iv[:ATTACK]=31
+		    pkmn.iv[:DEFENSE]=31
+		    pkmn.iv[:SPECIAL_ATTACK]=0
+		    pkmn.iv[:SPECIAL_DEFENSE]=31
+		    pkmn.iv[:SPEED]=31
+		    pkmn.calc_stats
+		    pkmn.learn_move(:TOXIC18)
+		    pkmn.learn_move(:WISH18)
+		    pkmn.learn_move(:MAGICCOAT18)
+		    pkmn.learn_move(:CHECKMAID)
+		    pkmn.record_first_moves
+		    pbAddPokemonSilent(pkmn)
+		    pbMEPlay("Battle capture success")
+		    pbMessage(_INTL("DLwRuukoto joined \\pn's team!\\wtnp[80]"))
+		    pbWait(5)
+		    pbMessage(_INTL("\\rPlaying additional content. Please stand by."))
+		    pbMessage(_INTL("\\xn[???]Well hello there, \\pn."))
+		    pbMessage(_INTL("\\xn[???]It's a shame that I couldn't address this to you in person, but this should suffice for now."))
+		    pbMessage(_INTL("\\xn[The Collector]My actual name means little to you, but you can refer to me as \"The Collector\"."))
+		    pbMessage(_INTL("\\xn[The Collector]I do hope this gift finds you well. After that show you put on for me that I can hold over those corporate megalomaniacal bastards heads you deserve this much."))
+		    pbMessage(_INTL("\\xn[The Collector]One day I hope we'll be able to meet in person."))
+		    pbMessage(_INTL("\\xn[The Collector]Though technically, we did already meet, but it is understandable if you didn't notice me sitting beside you at the conference."))
+		    pbMessage(_INTL("\\xn[The Collector]Nevertheless, please continue your journey with my gift. She needs more combat experience, and I have deemed you as the best way to get it."))
+		    pbMessage(_INTL("\\xn[The Collector]Good luck on your journey, \\pn. Until we meet proper."))
+		    pbWait(5)
+		    pbMessage(_INTL("\\rEnd of additional content. Thank you for using Oracle Encryption Software. Goodbye."))
+		    pbSEPlay("PC close")
+		    $player.dlwruukoto = true
+		    completeQuest(:Quest107)
+		    return true
+		  else
+		    return false
+		  end
+	    end	
+	  end
 	# --- Idol Yamame ---
 	when "bigigbiff"
 	  if $player.koishibuff

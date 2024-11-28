@@ -168,9 +168,6 @@ class Battle
 #==============================================================================#
 # Changes in this section include the following:
 #	* Added in a check for the Donation Box to the money doubling formula
-#	* Made it so the Miasma type is immune to Poison Spikes
-#	* Made it so the Earth type has the same immunity as Rock types to Stealth
-#	  Rock (Not Implemented Yet)
 #==============================================================================#  	
   def pbRecordBattlerAsParticipated(battler)
     # Record money-doubling effect of Amulet Coin/Luck Incense
@@ -199,6 +196,25 @@ class Battle
 #==============================================================================#  	
   def pbEntryHazards(battler)
     battler_side = battler.pbOwnSide
+    # Stealth Rock
+    if battler_side.effects[PBEffects::StealthRock] && battler.takesIndirectDamage? &&
+       (GameData::Type.exists?(:ROCK) || GameData::Type.exists?(:EARTH18)) && !battler.hasActiveItem?(:HEAVYDUTYBOOTS)
+      bTypes = battler.pbTypes(true)
+      eff = Effectiveness.calculate(:ROCK, *bTypes)
+      if !Effectiveness.ineffective?(eff)
+        battler.pbReduceHP(battler.totalhp * eff / 8, false)
+        pbDisplay(_INTL("Pointed stones dug into {1}!", battler.pbThis))
+        battler.pbItemHPHealCheck
+      end
+    end
+    # Spikes
+    if battler_side.effects[PBEffects::Spikes] > 0 && battler.takesIndirectDamage? &&
+       !battler.airborne? && !battler.hasActiveItem?(:HEAVYDUTYBOOTS)
+      spikesDiv = [8, 6, 4][battler_side.effects[PBEffects::Spikes] - 1]
+      battler.pbReduceHP(battler.totalhp / spikesDiv, false)
+      pbDisplay(_INTL("{1} is hurt by the spikes!", battler.pbThis))
+      battler.pbItemHPHealCheck
+    end
     # Toxic Spikes
     if battler_side.effects[PBEffects::ToxicSpikes] > 0 && !battler.fainted? && !battler.airborne?
       if (battler.pbHasType?(:POISON) || battler.pbHasType?(:MIASMA18))
@@ -210,6 +226,15 @@ class Battle
         else
           battler.pbPoison(nil, _INTL("{1} was poisoned by the poison spikes!", battler.pbThis))
         end
+      end
+    end
+    # Sticky Web
+    if battler_side.effects[PBEffects::StickyWeb] && !battler.fainted? && !battler.airborne? &&
+       !battler.hasActiveItem?(:HEAVYDUTYBOOTS)
+      pbDisplay(_INTL("{1} was caught in a sticky web!", battler.pbThis))
+      if battler.pbCanLowerStatStage?(:SPEED)
+        battler.pbLowerStatStage(:SPEED, 1, nil)
+        battler.pbItemStatRestoreCheck
       end
     end
   end
