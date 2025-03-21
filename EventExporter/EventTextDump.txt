@@ -110981,6 +110981,7 @@ Map ID: 281
 Map Name: Wisteria Beach
 Tileset: 001: Outside
 Width: 64, Height: 48
+Auto-Change BGM: U-003. A Dream that is more Scarlet than Red
 
 #------------------------------------------------------------------------------
 Event ID: 001
@@ -111112,6 +111113,51 @@ List of Event Commands:
 @>Wait: 8 frame(s)
 @>Transfer Player:[286: Solar Crag], (022,031), Up, No Fade
 @>Change Screen Color Tone: (0,0,0,0), @6
+@>
+
+#------------------------------------------------------------------------------
+Event ID: 005
+Event Name: EV005
+(X,Y): (056,029)
+
+Page #1
+Conditions
+None
+
+Autonomous Movement
+Type: Fixed
+Speed: 3: Slow
+Freq: 3: Low
+Options Enabled
+Move Animation
+Trigger: Autorun
+
+List of Event Commands:
+@>Text: This area is where the heat wave seems its strongest.
+@>Text: Before we restricted access to the beach, there was reports of 
+ :    : a red looking Puppet with what appeared to be witches attire.
+@>Text: However, all reports are unsure. Anytime she was spotted for
+ :    : more than a few seconds, people reported that she begun glowing
+ :    : brightly. Almost like the Sun personified.
+@>Text: Though, with how hazy it is, I'm amazed anybody can see
+ :    : anything out here...
+@>Text: Good luck out there, ma'am.
+@>Control Self Switch: A =ON
+@>
+
+Page #2
+Conditions
+Self Switch A is ON
+
+Autonomous Movement
+Type: Fixed
+Speed: 3: Slow
+Freq: 3: Low
+Options Enabled
+Move Animation
+Trigger: Action Button
+
+List of Event Commands:
 @>
 
 #------------------------------------------------------------------------------
@@ -112780,10 +112826,10 @@ List of Event Commands:
 :       : setBattleRule("cannotRun")
 :       : setBattleRule("battleIntroText", "{1}, the Blazing Apocalypse, challenges you!")
 :       : setBattleRule("setSlideSprite", "still")
-:       : setBattleRule("databoxStyle", :Long)
+:       : setBattleRule("databoxStyle", [:Long, "{1}, the Blazing Apocalypse"])
 :       : setBattleRule("raidStyleCapture", {:capture_chance => 100})
 @>Script: setBattleRule("midbattleScript", :vs_marisaomega)
-:       : #setBattleRule("editWildPokemon", :hp_level => 2)
+:       : setBattleRule("editWildPokemon", :hp_level => 3)
 :       : setBattleRule("editWildPokemon", :immunities => [:SLEEP, :ATTRACT, :PPLOSS, 
 :       :                                                  :ABILITYREMOVAL, :ITEMREMOVAL, :DISABLE, 
 :       :                                                  :OHKO, :SELFKO, :ESCAPE, :TRANSFORM])
@@ -112908,6 +112954,8 @@ List of Event Commands:
 @>Change Text Options: Bottom, Show
 @>Text: \xn[???]...Uhm. I wasn't expectin' to see anybody else here.
 @>Show Animation: Player, [Question bubble]
+@>Set Move Route: Player
+ :              : $>Turn Down
 @>Wait: 5 frame(s)
 @>Show Animation: [Hikari], [Exclaim bubble]
 @>Text: \xn[???]Wait, you can...- \wt[25]'Old on! Did you come here to fight the

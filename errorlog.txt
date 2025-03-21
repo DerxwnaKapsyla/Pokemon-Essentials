@@ -1499,3 +1499,23 @@ Backtrace:
 [Deluxe Battle Kit] [001] Midbattle Overwrites.rb:146:in `pbMidbattleScripting'
 [Deluxe Battle Kit] [001] Midbattle Overwrites.rb:111:in `pbDeluxeTriggers'
 [Deluxe Battle Kit] [001] Midbattle Overwrites.rb:687:in `pbBeginTurn'
+
+=================
+
+[2024-11-28 11:42:49 -0700]
+[Pokémon Essentials version 21.1]
+
+Exception: NoMethodError
+Message: undefined method `immunities' for nil:NilClass
+
+Backtrace:
+[Deluxe Battle Kit] [004] Wild Boss Attributes.rb:181:in `pbFlinch'
+007_MoveEffects_BattlerOther.rb:210:in `pbAdditionalEffect'
+[Touhoumon Asteria] 007_Battler_UseMove.rb:608:in `block in pbProcessMoveHit'
+[Touhoumon Asteria] 007_Battler_UseMove.rb:604:in `each'
+[Touhoumon Asteria] 007_Battler_UseMove.rb:604:in `pbProcessMoveHit'
+[Touhoumon Asteria] 007_Battler_UseMove.rb:292:in `block in pbUseMove'
+[Touhoumon Asteria] 007_Battler_UseMove.rb:290:in `times'
+[Touhoumon Asteria] 007_Battler_UseMove.rb:290:in `pbUseMove'
+[Deluxe Battle Kit] [001] Animation Utilities.rb:278:in `block in pbProcessTurn'
+001_PBDebug.rb:6:in `logonerr'

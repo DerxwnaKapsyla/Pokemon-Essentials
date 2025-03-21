@@ -768,7 +768,7 @@
 		  foe.displayPokemon.play_cry
 		  battle.pbAnimation(:HEATWAVE, player, player)
 		  player.pbBurn if player.pbCanInflictStatus?(:BURN, player, true)
-		  battler.hp -= (battler.totalhp / 8).round
+		  #player.hp -= (player.totalhp / 8).round
 	    end
 		battle.midbattleVariable += 1
 		p battle.midbattleVariable
