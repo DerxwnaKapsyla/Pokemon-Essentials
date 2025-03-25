@@ -13057,3 +13057,96 @@ Backtrace:
 003_Interpreter.rb:86:in `update'
 002_Scene_Map.rb:167:in `block in update'
 002_Scene_Map.rb:166:in `loop'
+
+=================
+
+[2025-03-24 02:06:02 -0700]
+[Pokémon Essentials version 21.1]
+[v21.1 Hotfixes 1.0.9]
+
+Script error in event 3 (coords 7,27), map 24 (Rooms)
+Exception: NoMethodError
+Message: undefined method `pbWildBattle' for #<Interpreter @event_id: 3>
+
+***Full script:
+pbWildBattle(:CLAYLA,32,1)
+
+Backtrace:
+(eval):1:in `execute_script'
+003_Interpreter.rb:140:in `eval'
+003_Interpreter.rb:140:in `execute_script'
+004_Interpreter_Commands.rb:1177:in `command_355'
+004_Interpreter_Commands.rb:116:in `execute_command'
+003_Interpreter.rb:132:in `block in update'
+003_Interpreter.rb:86:in `loop'
+003_Interpreter.rb:86:in `update'
+002_Scene_Map.rb:167:in `block in update'
+002_Scene_Map.rb:166:in `loop'
+
+=================
+
+[2025-03-24 02:07:38 -0700]
+[Pokémon Essentials version 21.1]
+[v21.1 Hotfixes 1.0.9]
+
+Script error in event 3 (coords 8,28), map 24 (Rooms)
+Exception: ArgumentError
+Message: Invalid argument passed to method.
+Expected 1 to be one of [Symbol, GameData::Species, String], but got Integer.
+
+***Full script:
+WildBattle.start(:CLAYLA,32,1)
+
+Backtrace:
+004_Validation.rb:29:in `validate'
+001_GameData.rb:91:in `exists?'
+001_Overworld_BattleStarting.rb:432:in `block in generate_foes'
+001_Overworld_BattleStarting.rb:414:in `each'
+001_Overworld_BattleStarting.rb:414:in `generate_foes'
+001_Overworld_BattleStarting.rb:357:in `start'
+(eval):1:in `execute_script'
+003_Interpreter.rb:140:in `eval'
+003_Interpreter.rb:140:in `execute_script'
+004_Interpreter_Commands.rb:1177:in `command_355'
+
+=================
+
+[2025-03-24 03:00:50 -0700]
+[Pokémon Essentials version 21.1]
+[v21.1 Hotfixes 1.0.9]
+
+Exception: NameError
+Message: undefined local variable or method `user' for #<Battle::Battler>
+
+Backtrace:
+[Touhoumon Essentials Development Kit] 004_Battler_Statuses.rb:179:in `pbCanSynchronizeStatus?'
+[Deluxe Battle Kit] [004] Wild Boss Attributes.rb:135:in `pbCanSynchronizeStatus?'
+004_Battler_Statuses.rb:339:in `pbCanPoisonSynchronize?'
+008_Battle_AbilityEffects.rb:520:in `block (2 levels) in load_scripts_from_folder'
+005_Event_Handlers.rb:195:in `trigger'
+008_Battle_AbilityEffects.rb:109:in `triggerOnStatusInflicted'
+004_Battler_Statuses.rb:257:in `pbInflictStatus'
+[Deluxe Battle Kit] [001] Midbattle Overwrites.rb:594:in `pbInflictStatus'
+004_Battler_Statuses.rb:343:in `pbPoison'
+007_MoveEffects_BattlerOther.rb:95:in `pbAdditionalEffect'
+
+=================
+
+[2025-03-24 23:31:01 -0700]
+[Pokémon Essentials version 21.1]
+[v21.1 Hotfixes 1.0.9]
+
+Exception: NoMethodError
+Message: undefined method `shadowPokemon?' for nil:NilClass
+
+Backtrace:
+[Deluxe Battle Kit] [007] Shadow Pokemon.rb:44:in `set_shadow_icon_pattern'
+[Deluxe Battle Kit] [007] Shadow Pokemon.rb:108:in `pokemon='
+003_Pokemon_Sprites.rb:99:in `initialize'
+[Reincarnation] 003_Reincarnation_UI.rb:67:in `new'
+[Reincarnation] 003_Reincarnation_UI.rb:67:in `pokemon='
+[Reincarnation] 003_Reincarnation_UI.rb:185:in `block in start_scene'
+[Reincarnation] 003_Reincarnation_UI.rb:175:in `each'
+[Reincarnation] 003_Reincarnation_UI.rb:175:in `each_with_index'
+[Reincarnation] 003_Reincarnation_UI.rb:175:in `start_scene'
+[Reincarnation] 003_Reincarnation_UI.rb:11:in `block in show_reincarnation_scene'
