@@ -13150,3 +13150,45 @@ Backtrace:
 [Reincarnation] 003_Reincarnation_UI.rb:175:in `each_with_index'
 [Reincarnation] 003_Reincarnation_UI.rb:175:in `start_scene'
 [Reincarnation] 003_Reincarnation_UI.rb:11:in `block in show_reincarnation_scene'
+
+=================
+
+[2025-03-25 01:16:57 -0700]
+[Pokémon Essentials version 21.1]
+[v21.1 Hotfixes 1.0.9]
+
+Exception: Errno::ENOENT
+Message: File Audio/SE/bonk not found.
+
+Backtrace:
+002_Game_System.rb:243:in `se_play'
+002_Game_System.rb:243:in `se_play'
+002_Audio_Play.rb:207:in `pbSEPlay'
+[Name Boxes] Name Windows.rb:454:in `block (2 levels) in pbMessageDisplay'
+[Name Boxes] Name Windows.rb:319:in `times'
+[Name Boxes] Name Windows.rb:319:in `block in pbMessageDisplay'
+[Name Boxes] Name Windows.rb:312:in `loop'
+[Name Boxes] Name Windows.rb:312:in `pbMessageDisplay'
+[Delta Speed Up] _Main_Script.rb:127:in `pbMessage'
+004_Interpreter_Commands.rb:205:in `command_101'
+
+=================
+
+[2025-03-25 01:22:35 -0700]
+[Pokémon Essentials version 21.1]
+[v21.1 Hotfixes 1.0.9]
+
+Exception: Errno::ENOENT
+Message: File Audio/SE/bonk not found.
+
+Backtrace:
+002_Game_System.rb:243:in `se_play'
+002_Game_System.rb:243:in `se_play'
+002_Audio_Play.rb:207:in `pbSEPlay'
+[Name Boxes] Name Windows.rb:454:in `block (2 levels) in pbMessageDisplay'
+[Name Boxes] Name Windows.rb:319:in `times'
+[Name Boxes] Name Windows.rb:319:in `block in pbMessageDisplay'
+[Name Boxes] Name Windows.rb:312:in `loop'
+[Name Boxes] Name Windows.rb:312:in `pbMessageDisplay'
+[Delta Speed Up] _Main_Script.rb:127:in `pbMessage'
+004_Interpreter_Commands.rb:205:in `command_101'

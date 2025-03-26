@@ -8500,7 +8500,7 @@ List of Event Commands:
 @>Wait: 20 frame(s)
 @>Text: \xn[Maya]So you've seen through my clever disguise, 
  :    : ohohoho~ I am the Queen of all Ghosts, Chinami! Fear 
- :    : me-\se[bonk] Ow! What was that for!
+ :    : me-\se[Bonk] Ow! What was that for!
 @>Set Move Route: [Shinji]
  :              : $>Turn Up
 @>Text: \xn[Shinji]You're scaring the poor girl more.
@@ -18437,12 +18437,16 @@ List of Event Commands:
 @>Script: pbAllowSpeedup
 :       : $GameSpeed = pbGet(1)
 @>Change Text Options: Bottom, Show
+@>Transfer Player:[019: World of Fantasies], (019,020), Down
 @>Conditional Branch: Switch [0116: TMoM Cleared] == OFF
  @>Control Switches: [0116: TMoM Cleared] = ON
  @>Control Variables: [0141: Scenarios Cleared] += 1
  @>
+: Else
+ @>Change Transparent Flag: Normal
+ @>Change Screen Color Tone: (0,0,0,0), @8
+ @>
 : Branch End
-@>Transfer Player:[019: World of Fantasies], (019,020), Down
 @>
 
 #------------------------------------------------------------------------------
@@ -25981,6 +25985,7 @@ List of Event Commands:
   @>Exit Event Processing
   @>
  : Branch End
+ @>Recover All: Entire Party
  @>Comment: --- Pre-Battle Intro Conclusion
  @>Comment: ---------- FUNLAND BEGINS AGAIN
  @>Control Variables: [0107: TMoM Plot Variable] = 16
@@ -28913,12 +28918,16 @@ List of Event Commands:
 @>Change Text Options: Middle, Hide
 @>Text: \se[]...But who said the journey had to end so soon?\wtnp[20]
 @>Change Text Options: Bottom, Show
+@>Transfer Player:[019: World of Fantasies], (019,020), Down
 @>Conditional Branch: Switch [0116: TMoM Cleared] == OFF
  @>Control Switches: [0116: TMoM Cleared] = ON
  @>Control Variables: [0141: Scenarios Cleared] += 1
  @>
+: Else
+ @>Change Transparent Flag: Normal
+ @>Change Screen Color Tone: (0,0,0,0), @8
+ @>
 : Branch End
-@>Transfer Player:[019: World of Fantasies], (019,020), Down
 @>
 
 #------------------------------------------------------------------------------
