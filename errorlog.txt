@@ -13192,3 +13192,132 @@ Backtrace:
 [Name Boxes] Name Windows.rb:312:in `pbMessageDisplay'
 [Delta Speed Up] _Main_Script.rb:127:in `pbMessage'
 004_Interpreter_Commands.rb:205:in `command_101'
+
+=================
+
+[2025-03-26 21:45:46 -0700]
+[Pokémon Essentials version 21.1]
+[v21.1 Hotfixes 1.0.9]
+
+Exception: NoMethodError
+Message: undefined method `shadowPokemon?' for nil:NilClass
+
+Backtrace:
+[Deluxe Battle Kit] [007] Shadow Pokemon.rb:44:in `set_shadow_icon_pattern'
+[Deluxe Battle Kit] [007] Shadow Pokemon.rb:108:in `pokemon='
+003_Pokemon_Sprites.rb:99:in `initialize'
+[Reincarnation] 003_Reincarnation_UI.rb:67:in `new'
+[Reincarnation] 003_Reincarnation_UI.rb:67:in `pokemon='
+[Reincarnation] 003_Reincarnation_UI.rb:185:in `block in start_scene'
+[Reincarnation] 003_Reincarnation_UI.rb:175:in `each'
+[Reincarnation] 003_Reincarnation_UI.rb:175:in `each_with_index'
+[Reincarnation] 003_Reincarnation_UI.rb:175:in `start_scene'
+[Reincarnation] 003_Reincarnation_UI.rb:11:in `block in show_reincarnation_scene'
+
+=================
+
+[2025-03-26 22:23:20 -0700]
+[Pokémon Essentials version 21.1]
+[v21.1 Hotfixes 1.0.9]
+
+Script error in event 16 (coords 2,15), map 16 (Second Floor)
+Exception: NameError
+Message: undefined local variable or method `beginDarkCircle' for #<Interpreter @event_id: 16>
+
+***Full script:
+beginDarkCircle
+
+Backtrace:
+(eval):1:in `execute_script'
+003_Interpreter.rb:140:in `eval'
+003_Interpreter.rb:140:in `execute_script'
+004_Interpreter_Commands.rb:1177:in `command_355'
+004_Interpreter_Commands.rb:116:in `execute_command'
+003_Interpreter.rb:132:in `block in update'
+003_Interpreter.rb:86:in `loop'
+003_Interpreter.rb:86:in `update'
+002_Scene_Map.rb:167:in `block in update'
+002_Scene_Map.rb:166:in `loop'
+
+=================
+
+[2025-03-26 22:38:32 -0700]
+[Pokémon Essentials version 21.1]
+[v21.1 Hotfixes 1.0.9]
+
+Script error in event 17 (coords 5,15), map 16 (Second Floor)
+Exception: NameError
+Message: undefined local variable or method `endDarkCircle' for #<Interpreter @event_id: 17>
+
+***Full script:
+endDarkCircle
+
+Backtrace:
+(eval):1:in `execute_script'
+003_Interpreter.rb:140:in `eval'
+003_Interpreter.rb:140:in `execute_script'
+004_Interpreter_Commands.rb:1177:in `command_355'
+004_Interpreter_Commands.rb:116:in `execute_command'
+003_Interpreter.rb:132:in `block in update'
+003_Interpreter.rb:86:in `loop'
+003_Interpreter.rb:86:in `update'
+002_Scene_Map.rb:167:in `block in update'
+002_Scene_Map.rb:166:in `loop'
+
+=================
+
+[2025-03-26 22:39:36 -0700]
+[Pokémon Essentials version 21.1]
+[v21.1 Hotfixes 1.0.9]
+
+Script error in event 33 (coords 11,11), map 12 (First Floor)
+Exception: NameError
+Message: undefined local variable or method `beginDarkCircle' for #<Interpreter @event_id: 33>
+
+***Full script:
+beginDarkCircle
+
+Backtrace:
+(eval):1:in `execute_script'
+003_Interpreter.rb:140:in `eval'
+003_Interpreter.rb:140:in `execute_script'
+004_Interpreter_Commands.rb:1177:in `command_355'
+004_Interpreter_Commands.rb:116:in `execute_command'
+003_Interpreter.rb:132:in `block in update'
+003_Interpreter.rb:86:in `loop'
+003_Interpreter.rb:86:in `update'
+002_Scene_Map.rb:167:in `block in update'
+002_Scene_Map.rb:166:in `loop'
+
+=================
+
+[2025-03-26 23:44:58 -0700]
+[Pokémon Essentials version 21.1]
+[v21.1 Hotfixes 1.0.9]
+
+Script error in event 33 (coords 18,24), map 16 (Second Floor)
+Exception: EventScriptError
+Message: Script error in Common Event, map 16 (Second Floor)
+Exception: SyntaxError
+Message: (eval):1: syntax error, unexpected '(', expecting ')'
+...DarknessRadius($game_variables(111))
+...                              ^
+
+
+***Full script:
+pbSetDarknessRadius($game_variables(111))
+
+
+***Full script:
+TrainerBattle.start(:MYSTIA, "Mystia Lorelei", 10+(pbGet(99) * 10))
+Backtrace:
+003_Interpreter.rb:179:in `rescue in execute_script'
+003_Interpreter.rb:138:in `execute_script'
+004_Interpreter_Commands.rb:1177:in `command_355'
+004_Interpreter_Commands.rb:116:in `execute_command'
+003_Interpreter.rb:132:in `block in update'
+003_Interpreter.rb:86:in `loop'
+003_Interpreter.rb:86:in `update'
+001_Utilities.rb:534:in `block in pbCommonEvent'
+001_Utilities.rb:531:in `loop'
+001_Utilities.rb:531:in `pbCommonEvent'

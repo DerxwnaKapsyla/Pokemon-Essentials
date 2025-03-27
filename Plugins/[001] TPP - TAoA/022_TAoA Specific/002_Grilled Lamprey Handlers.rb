@@ -7,7 +7,8 @@ EventHandlers.add(:on_end_battle, :lamprey_counter,
 		end
 		$game_variables[109] = 0 			# Lamprey Eaten Counter
 		$game_switches[110] = false 		# Lamprey Eaten Switch
-		changeDarkCircleRadiusSlowly(96)
+		#changeDarkCircleRadiusSlowly(96)
+		pbMoveDarknessRadius(96)
 		#pbWait(10)
 	  else
 		$game_variables[109] += 1 # Lamprey Countdown
@@ -17,7 +18,7 @@ EventHandlers.add(:on_end_battle, :lamprey_counter,
 		if !GameData::MapMetadata.get($game_map.map_id)&.has_flag?("LampreyBlindness")
 		  $game_variables[109] = 0 			# Lamprey Eaten Counter
 		  $game_switches[110] = false 		# Lamprey Eaten Switch
-          endDarkCircle
+          #endDarkCircle
 		end
 	  end
 	end

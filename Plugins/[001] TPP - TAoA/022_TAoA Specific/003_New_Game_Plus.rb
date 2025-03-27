@@ -29,6 +29,10 @@ class PokemonGlobalMetadata
     @reset_maps = [] if !@reset_maps
     return @reset_maps
   end
+  
+  def clear_reset_maps
+    @reset_maps = []
+  end
 end
 
 EventHandlers.add(:on_game_map_setup, :new_game_plus,

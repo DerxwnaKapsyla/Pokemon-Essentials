@@ -83,21 +83,23 @@
 ################################################################################
 module Settings
   # The initial radius of the darkness circle on dark maps
-  INITIAL_DARKNESS_CIRCLE = 64
+  INITIAL_DARKNESS_CIRCLE = 96
 
   # Radius of darkness circle while using Flash
-  FLASH_CIRCLE_RADIUS = 176
+  FLASH_CIRCLE_RADIUS = 192
 
   # Variable ID of initial radius based on Map ID
   # Any radius changes on these map IDs will be reset after the player gets 
   # out of the dark map and saved to this variable.
   VARIABLE_RADIUS_DARK_MAP = {
     # Map ID => Variable ID
-    # 50 => 26,
+     16 => 111,
+	 17 => 111,
+	 18 => 111
   }
 
   # Initial opacity of darkness on dark maps
-  INITIAL_DARKNESS_OPACITY = 230#255
+  INITIAL_DARKNESS_OPACITY = 255
 
   # Value of initial opacity based on Map ID
   # This will give a different opacity for every map IDs listed here.
@@ -108,7 +110,7 @@ module Settings
 
   # List of maps that prohibit the player from using flash
   FLASH_PROHIBITED_MAPS = [
-    50,
+    16,17,18
   ]
 
   # List of maps where the player will automatically use a flashlight
@@ -132,7 +134,7 @@ module Settings
   # Images are located in "Graphics/Fogs/"
   CUSTOM_IMAGE_DARKNESS = {
     # Map ID => "Custom Darkness Image file"
-    50 => "DarkMap_50",
+    #50 => "DarkMap_50",
   }
 end
 

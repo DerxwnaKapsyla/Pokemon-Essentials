@@ -3045,6 +3045,131 @@ List of Event Commands:
 
 Page #2
 Conditions
+Variable 0107: TMoM Plot Variable is 1 or above
+
+Graphic: NPC_Maya
+
+Autonomous Movement
+Type: Fixed
+Speed: 3: Slow
+Freq: 3: Low
+Options Enabled
+Move Animation
+Trigger: Action Button
+
+List of Event Commands:
+@>Conditional Branch: Player is facing Left
+ @>Set Move Route: Player
+  :              : $>Move Down
+  :              : $>Move Left
+  :              : $>Turn Up
+ @>Set Move Route: [Maya]
+  :              : $>Turn Down
+ @>
+: Else
+ @>Conditional Branch: Player is facing Right
+  @>Set Move Route: Player
+   :              : $>Move Down
+   :              : $>Move Right
+   :              : $>Turn Up
+  @>Set Move Route: [Maya]
+   :              : $>Turn Down
+  @>
+ : Else
+  @>
+ : Branch End
+ @>
+: Branch End
+@>Script: pbSetSelfSwitch(4,"A",true)
+@>Text: \xn[Maya]There you are \PN! We've been waiting for 
+ :    : you, what took you so long?
+@>Text: \xn[\pn]Sorry, sorry! I was taking an early nap so I could 
+ :    : be awake for this and only just now woke up!
+@>Text: \xn[\pn]I didn't miss anything, right?
+@>Set Move Route: [Kota]
+ :              : $>Turn Right
+@>Text: \xn[Kota]Not too much. We had just finished going over 
+ :    : our provisions and getting last minute supplies.
+@>Text: \xn[Kota]Presumably you came prepared?
+@>Set Move Route: Player
+ :              : $>Turn Left
+@>Text: \xn[\PN]I had stuff prepared for today in advance. Though
+ :    : getting more supplies wouldn't hurt...
+@>Text: \xn[Kota]Just remember, the building right here can 
+ :    : handle what you need. Aside from purchasing items 
+ :    : here, you can also heal your Puppets.
+@>Set Move Route: Player
+ :              : $>Turn Up
+@>Text: \xn[Maya]Anyways, let's go over the operation again. 
+ :    : From the top.
+@>Set Move Route: [Shinji]
+ :              : $>Turn Up
+@>Text: \xn[Shinji]Tonight, the four of us will be sneaking out of 
+ :    : the village and heading for the Misty Lake. 
+@>Set Move Route: Player
+ :              : $>Turn Down
+@>Text: \xn[Shinji]From there, we will be searching for the abandoned 
+ :    : mansion, which is home to the mysterious music that 
+ :    : people claim to hear from it.
+@>Text: \xn[Shinji]Our objective is to learn the truth behind this rumor. 
+ :    : Simple, wouldn't you agree?
+@>Text: \xn[\pn]Simple, sure. Untill you remember that we've 
+ :    : never gone beyond the paths outside the village.
+@>Text: \xn[Kota]Not to mention, we still have to contend with 
+ :    : the village patrol. If we get caught, we're probably 
+ :    : going to be punished tremendously.
+@>Text: \xn[Maya]Guys guys, don't be such downers! We know 
+ :    : what we have to do, so all that remains is to do it!
+@>Text: \xn[Shinji]Maya's right! If we put forth the determination, 
+ :    : we'll surely have no problems!
+@>Text: \xn[Shinji]Besides. Most of the guards aren't patroling this part 
+ :    : of the village. 
+@>Set Move Route: [Village Guard (Auto)]
+ :              : $>Change Opacity: 255
+ :              : $>Move Right
+ :              : $>Move Right
+ :              : $>Move Right
+@>Text: \xn[Shinji]So long as we avoid the ones in the south, there 
+ :    : should be no issues...\^
+@>Set Move Route: Player
+ :              : $>Turn Left
+@>Set Move Route: [Maya]
+ :              : $>Turn Left
+@>Set Move Route: [Shinji]
+ :              : $>Turn Left
+@>Set Move Route: [Kota]
+ :              : $>Turn Left
+@>Text: Hey, what are you kids doing there? You should be at home!
+@>Wait: 10 frame(s)
+@>Text: \xn[Shinji]...Well, so much for the element of stealth.
+@>Text: \xn[Kota]Now what do we do!?
+@>Fade Out BGM: 1 sec.
+@>Wait: 20 frame(s)
+@>Control Switches: [0098: Music Override] = ON
+@>Script: playSpecialBGM("S1_Escape")
+@>Wait: 10 frame(s)
+@>Text: \xn[Maya]Quick, scatter! They can't catch us if we're not 
+ :    : together!
+@>Text: \xn[Maya]We'll meet up south of here!
+@>Change Screen Color Tone: (-255,-255,-255,0), @6
+@>Wait: 8 frame(s)
+@>Transfer Player:[006: Human Village], (054,017), Left, No Fade
+@>Script: pbSetPokemonCenter
+@>Control Variables: [0107: TMoM Plot Variable] = 2
+@>Change Screen Color Tone: (0,0,0,0), @6
+@>Wait: 10 frame(s)
+@>Script: pbSetSelfSwitch(4,"A",false)
+@>Text: \xn[\pn]Hopefully I managed to get away from the patrol in time... 
+ :    : But drat, this means the entire Village will be on alert now!
+@>Text: \xn[\pn]This means that...
+@>Wait: 10 frame(s)
+@>Text: \xn[\pn]No!\wt[15] I can't afford to get shaken up by that! If I
+ :    : see my sister, I'll just beat her in battle!
+@>Text: \xn[\pn]Simple! Now, off to the southern exit!
+@>
+
+Page #3
+Conditions
 Variable 0107: TMoM Plot Variable is 2 or above
 
 Autonomous Movement
@@ -6487,7 +6612,7 @@ List of Event Commands:
 @>Set Move Route: [Maya]
  :              : $>Direction Fix OFF
  :              : $>Turn Down
-@>Scroll Map: Up, 2, 4
+@>Scroll Map: Up, 1, 4
 @>Script: pbSetPokemonCenter
 @>Control Variables: [0107: TMoM Plot Variable] = 4
 @>Control Self Switch: A =ON
@@ -9181,6 +9306,26 @@ List of Event Commands:
 @>
 
 #------------------------------------------------------------------------------
+Event ID: 035
+Event Name: size(3,1)
+(X,Y): (057,014)
+
+Page #1
+Conditions
+None
+
+Autonomous Movement
+Type: Fixed
+Speed: 3: Slow
+Freq: 3: Low
+Options Enabled
+Move Animation
+Trigger: Action Button
+
+List of Event Commands:
+@>
+
+#------------------------------------------------------------------------------
 
 #==============================================================================
 Map ID: 011
@@ -10902,7 +11047,7 @@ Move Animation
 Trigger: Autorun
 
 List of Event Commands:
-@>Script: playSpecialBGM("S5_Silence")
+@>Script: playSpecialBGM("quiet_time")
 :       : pbSetSelfSwitch(2,"A",false)
 :       : pbSetSelfSwitch(3,"A",false)
 :       : pbSetSelfSwitch(4,"A",false)
@@ -11219,6 +11364,7 @@ List of Event Commands:
 Page #2
 Conditions
 Variable 0107: TMoM Plot Variable is 8 or above
+Self Switch A is ON
 
 Graphic: Object ball
 
@@ -11262,6 +11408,30 @@ List of Event Commands:
 @>
 
 Page #4
+Conditions
+Variable 0107: TMoM Plot Variable is 10 or above
+
+Graphic: Object ball
+
+Autonomous Movement
+Type: Fixed
+Speed: 3: Slow
+Freq: 3: Low
+Options Enabled
+Move Animation
+Trigger: Event Touch
+
+List of Event Commands:
+@>Play SE: 'Exit Door', 80, 100
+@>Change Screen Color Tone: (-255,-255,-255,0), @6
+@>Wait: 8 frame(s)
+@>Transfer Player:[016: Second Floor], (007,015), No Fade
+@>Change Screen Color Tone: (0,0,0,0), @6
+@>Set Move Route: Player
+ :              : $>Move Up
+@>
+
+Page #5
 Conditions
 Variable 0107: TMoM Plot Variable is 11 or above
 
@@ -12741,6 +12911,7 @@ List of Event Commands:
 @>Text: \xn[\pn]Well now that I have the key, I should probably 
  :    : go unlock the gate and round up the others.
 @>Script: pbSetSelfSwitch(4,"B",true)
+:       : pbSetSelfSwitch2(12,33,"A",true)
 @>
 
 Page #2
@@ -12918,6 +13089,7 @@ List of Event Commands:
 @>Text: \xn[\pn]Well now that I have the key, I should probably 
  :    : go unlock the gate and round up the others.
 @>Control Self Switch: B =ON
+@>Script: pbSetSelfSwitch2(12,33,"A",true)
 @>
 
 Page #3
@@ -13740,6 +13912,83 @@ List of Event Commands:
 
 Page #2
 Conditions
+Variable 0107: TMoM Plot Variable is 9 or above
+
+Autonomous Movement
+Type: Fixed
+Speed: 3: Slow
+Freq: 3: Low
+Options Enabled
+Move Animation
+Trigger: Autorun
+
+List of Event Commands:
+@>Script: pbSetDarknessRadius(999)
+@>Change Text Options: Bottom, Show
+@>Set Move Route: Player
+ :              : $>Move Up
+ :              : $>Move Up
+ :              : $>Move Up
+@>Text: \xn[Shinji]If I had to guess, I'd say this floor has
+ :    : the kitchen. The aroma of fish fills the air
+ :    : rather heavilly.
+@>Text: \xn[Maya]Well since the path downward is blocked,
+ :    : I guess we'll just have to head through the kitchen
+ :    : then!
+@>Text: \xn[Maya]Shouldn't be too complicated!
+@>Wait for Move's Completion
+@>Wait: 20 frame(s)
+@>Play SE: 'Deaf Jingle', 5, 100
+@>Wait: 5 frame(s)
+@>Show Animation: [Youmu], [Exclaim bubble]
+@>Text: \xn[Youmu]Hey, does anybody hear that?
+@>Text: \xn[Kota]Hear what? I don't hear anything...
+@>Wait: 40 frame(s)
+@>Play SE: 'Deaf Jingle', 25, 100
+@>Wait: 5 frame(s)
+@>Show Animation: [Youmu], [Exclaim bubble]
+@>Text: \xn[Youmu]There it is again!
+@>Text: \xn[\pn]I... think I heard it?
+@>Wait: 40 frame(s)
+@>Play SE: 'Deaf Jingle', 55, 100
+@>Show Animation: [Youmu], [Exclaim bubble]
+@>Show Animation: [Kota], [Exclaim bubble]
+@>Show Animation: [Shinji], [Exclaim bubble]
+@>Show Animation: [Maya], [Exclaim bubble]
+@>Show Animation: Player, [Exclaim bubble]
+@>Wait: 10 frame(s)
+@>Text: \xn[\pn]There! I definitely heard it this time!
+@>Text: \xn[Shinji]It sounds like some kind of song! But...
+ :    : it's coming from all directions?
+@>Wait: 40 frame(s)
+@>Play SE: 'Deaf Jingle', 80, 100
+@>Change Screen Color Tone: (-255,-255,-255,0), @6
+@>Wait: 70 frame(s)
+@>Script: pbSetDarknessRadius(96)
+@>Text: \xn[Kota]Ugh, my head... Is everyone else okay?
+@>Text: \xn[Maya]Yeah, I think we're fine... What was that just now
+ :    : though!?
+@>Text: \xn[Youmu]That song... Why does it sound familiar?
+@>Script: deactivateSpecialBGM("quiet_time")
+@>Change Screen Color Tone: (0,0,0,0), @30
+@>Text: \xn[Shinji]Is it just me... or did it just become harder to
+ :    : see...?
+@>Text: \xn[\pn]I don't think it's just you, Shinji... I feel like my
+ :    : sight just got worse.
+@>Text: \xn[Maya]I know what you mean... maybe it
+ :    : just got darker?
+@>Text: \xn[\pn]Maybe...? I'll try looking into it, you guys stay here.\wtnp[40]
+@>Text: \xn[Maya]Are you sure you'll be alright on your own?
+ :    : It's pretty hard to see right now...
+@>Text: \xn[\pn]After all I've been doing tonight, I'm sure I'll
+ :    : be fine!
+@>Change Screen Color Tone: (0,0,0,0), @6
+@>Control Variables: [0107: TMoM Plot Variable] = 10
+@>Control Self Switch: A =ON
+@>
+
+Page #3
+Conditions
 Self Switch A is ON
 
 Autonomous Movement
@@ -13784,6 +14033,30 @@ List of Event Commands:
 @>
 
 Page #2
+Conditions
+Variable 0107: TMoM Plot Variable is 10 or above
+
+Graphic: Object ball
+
+Autonomous Movement
+Type: Fixed
+Speed: 3: Slow
+Freq: 3: Low
+Options Enabled
+Move Animation
+Trigger: Event Touch
+
+List of Event Commands:
+@>Play SE: 'Exit Door', 80, 100
+@>Change Screen Color Tone: (-255,-255,-255,0), @6
+@>Wait: 8 frame(s)
+@>Transfer Player:[012: First Floor], (013,011), No Fade
+@>Set Move Route: Player
+ :              : $>Move Down
+@>Change Screen Color Tone: (0,0,0,0), @6
+@>
+
+Page #3
 Conditions
 Variable 0107: TMoM Plot Variable is 11 or above
 
@@ -14823,7 +15096,8 @@ List of Event Commands:
  :    : can't see anything!
 @>Text: \xn[Shinji]Not much different from earlier...
 @>Text: \xn[Kota]I think the dust is finally settling...
-@>Script: endDarkCircle
+@>Control Variables: [0111: Darkness Variable] = 999
+@>Script: pbSetDarknessRadius(999)
 @>Script: for event in $game_map.events.values
 :       :   if event.name[/Debris/i]
 :       :     $game_self_switches[[$game_map.map_id,event.id,"A"]] = true
@@ -15030,7 +15304,8 @@ List of Event Commands:
  :    : can't see anything!
 @>Text: \xn[Shinji]Not much different from earlier...
 @>Text: \xn[Kota]I think the dust is finally settling...
-@>Script: endDarkCircle
+@>Control Variables: [0111: Darkness Variable] = 999
+@>Script: pbSetDarknessRadius(999)
 @>Script: for event in $game_map.events.values
 :       :   if event.name[/Debris/i]
 :       :     $game_self_switches[[$game_map.map_id,event.id,"A"]] = true
@@ -15601,6 +15876,22 @@ List of Event Commands:
 
 Page #2
 Conditions
+None
+
+Autonomous Movement
+Type: Fixed
+Speed: 3: Slow
+Freq: 3: Low
+Options Enabled
+Move Animation
+Trigger: Action Button
+
+List of Event Commands:
+@>Call Common Event: Lamprey Event
+@>
+
+Page #3
+Conditions
 Self Switch A is ON
 
 Autonomous Movement
@@ -15614,7 +15905,7 @@ Trigger: Action Button
 List of Event Commands:
 @>
 
-Page #3
+Page #4
 Conditions
 Switch 0118: 1st Tourney. beat is ON
 
@@ -15671,6 +15962,22 @@ List of Event Commands:
 
 Page #2
 Conditions
+None
+
+Autonomous Movement
+Type: Fixed
+Speed: 3: Slow
+Freq: 3: Low
+Options Enabled
+Move Animation
+Trigger: Action Button
+
+List of Event Commands:
+@>Call Common Event: Lamprey Event
+@>
+
+Page #3
+Conditions
 Self Switch A is ON
 
 Autonomous Movement
@@ -15684,7 +15991,7 @@ Trigger: Action Button
 List of Event Commands:
 @>
 
-Page #3
+Page #4
 Conditions
 Switch 0118: 1st Tourney. beat is ON
 
@@ -15741,6 +16048,22 @@ List of Event Commands:
 
 Page #2
 Conditions
+None
+
+Autonomous Movement
+Type: Fixed
+Speed: 3: Slow
+Freq: 3: Low
+Options Enabled
+Move Animation
+Trigger: Action Button
+
+List of Event Commands:
+@>Call Common Event: Lamprey Event
+@>
+
+Page #3
+Conditions
 Self Switch A is ON
 
 Autonomous Movement
@@ -15754,7 +16077,7 @@ Trigger: Action Button
 List of Event Commands:
 @>
 
-Page #3
+Page #4
 Conditions
 Switch 0118: 1st Tourney. beat is ON
 
@@ -16205,6 +16528,22 @@ List of Event Commands:
 
 Page #2
 Conditions
+None
+
+Autonomous Movement
+Type: Fixed
+Speed: 3: Slow
+Freq: 3: Low
+Options Enabled
+Move Animation
+Trigger: Action Button
+
+List of Event Commands:
+@>Call Common Event: Lamprey Event
+@>
+
+Page #3
+Conditions
 Self Switch A is ON
 
 Autonomous Movement
@@ -16218,7 +16557,7 @@ Trigger: Action Button
 List of Event Commands:
 @>
 
-Page #3
+Page #4
 Conditions
 Switch 0118: 1st Tourney. beat is ON
 
@@ -16275,6 +16614,22 @@ List of Event Commands:
 
 Page #2
 Conditions
+None
+
+Autonomous Movement
+Type: Fixed
+Speed: 3: Slow
+Freq: 3: Low
+Options Enabled
+Move Animation
+Trigger: Action Button
+
+List of Event Commands:
+@>Call Common Event: Lamprey Event
+@>
+
+Page #3
+Conditions
 Self Switch A is ON
 
 Autonomous Movement
@@ -16288,7 +16643,7 @@ Trigger: Action Button
 List of Event Commands:
 @>
 
-Page #3
+Page #4
 Conditions
 Switch 0118: 1st Tourney. beat is ON
 
@@ -16345,6 +16700,22 @@ List of Event Commands:
 
 Page #2
 Conditions
+None
+
+Autonomous Movement
+Type: Fixed
+Speed: 3: Slow
+Freq: 3: Low
+Options Enabled
+Move Animation
+Trigger: Action Button
+
+List of Event Commands:
+@>Call Common Event: Lamprey Event
+@>
+
+Page #3
+Conditions
 Self Switch A is ON
 
 Autonomous Movement
@@ -16358,7 +16729,7 @@ Trigger: Action Button
 List of Event Commands:
 @>
 
-Page #3
+Page #4
 Conditions
 Switch 0118: 1st Tourney. beat is ON
 
@@ -17678,44 +18049,7 @@ List of Event Commands:
  : Branch End
  @>Control Variables: [0107..0110] = 0
  @>Control Switches: [0109..0112] = OFF
- @>
-: When [No]
- @>Move Picture: 1, @20, Upper Left (0,0), (100%,100%), 0, Normal
- @>Wait: 20 frame(s)
- @>
-: Branch End
-@>
-
-Page #2
-Conditions
-None
-
-Autonomous Movement
-Type: Fixed
-Speed: 3: Slow
-Freq: 3: Low
-Options Enabled
-Move Animation
-Trigger: Player Touch
-
-List of Event Commands:
-@>Show Picture: 1, 'TMoM', Upper Left (0,0), (100%,100%), 0, Normal
-@>Move Picture: 1, @20, Upper Left (0,0), (100%,100%), 255, Normal
-@>Wait: 60 frame(s)
-@>Change Text Options: Bottom, Show
-@>Text: The Mansion of Mystery.\wt[20]\nIs this the adventure you'd like to play?
-@>Show Choices: Yes, No
-(When Cancel: Choice 2)
-: When [Yes]
- @>Fade Out BGM: 1 sec.
- @>Control Variables: [0105: Game Selected] = 1
- @>Move Picture: 1, @20, Upper Left (0,0), (100%,100%), 0, Normal
- @>Wait: 20 frame(s)
- @>Script: $player.scenario_name = "The Mansion of Mystery"
- @>Change Transparent Flag: Transparency
- @>Transfer Player:[003: The Mansion of Mystery], (001,001)
- @>Control Variables: [0107..0110] = 0
- @>Control Switches: [0109..0112] = OFF
+ @>Script: $PokemonGlobal.clear_reset_maps
  @>
 : When [No]
  @>Move Picture: 1, @20, Upper Left (0,0), (100%,100%), 0, Normal
@@ -21506,7 +21840,7 @@ List of Event Commands:
 @>Wait: 20 frame(s)
 @>Text: \xn[\pn]...? Am I hearing things?
 @>Text: \xn[\pn]I swear I just heard someone laughing...
-@>Text: \xn[\pn]Seriously, this mansion of mystery just needs to stop.
+@>Text: \xn[\pn]Seriously, can this mansion of mystery be any less spooky?
 @>Control Self Switch: A =ON
 @>
 
@@ -21634,6 +21968,55 @@ List of Event Commands:
 : When [No]
  @>
 : Branch End
+@>
+
+#------------------------------------------------------------------------------
+Event ID: 031
+Event Name: EV031
+(X,Y): (029,013)
+
+Page #1
+Conditions
+None
+
+Autonomous Movement
+Type: Fixed
+Speed: 3: Slow
+Freq: 3: Low
+Options Enabled
+Move Animation
+Trigger: Action Button
+
+List of Event Commands:
+@>Play BGM: 'X-002. Phantom Ensemble ~ Rehearsal Mix', 100, 100
+@>Change Text Options: Middle, Hide
+@>Comment: 
+@>Text: <ac><i>\se[]\l[3]\ts[]What\wt[6] are\wt[4] you,\wt[8] with\wt[8] bo\wt[6]dies\wt[2] made\wt[12] of\wt[8] bro\wt[7]ken\wt[4] glass\wt[10] 
+ :    : from\wt[8] fa\wt[8]ded\wt[4] mir\wt[7]rors\wt[2] of\wt[4] the\wt[4] past?\wtnp[3]</i></ac>
+@>Comment: 
+@>Text: <ac><i>\se[]\ts[]\l[3]In\wt[3] the\wt[3] end,\wt[12] less\wt[8] pre\wt[8]cious\wt[4] and\wt[10] more\wt[8] 
+ :    : frag\wt[8]ile\wt[4] than\wt[10] por\wt[8]cel\wt[8]ain\wt[2] dolls.\wtnp[32]</i></ac>
+@>Comment: 
+@>Text: <ac><i>\se[]\ts[]\l[3]If\wt[2] the\wt[2] con\wt[6]cert\wt[8] car\wt[8]ries\wt[4] on\wt[10] with\wt[8] or\wt[8] 
+ :    : with\wt[4]out\wt[10] the\wt[6] touch\wt[8] of\wt[3] your\wt[10] ill\wt[4]u\wt[2]sive\wt[2] hands,\wtnp[8]</ac></i>
+@>Comment: 
+@>Text: <ac><i>\se[]\ts[]\l[3]Then\wt[2] what\wt[2] can\wt[10] you\wt[8] say\wt[8] you\wt[4] have\wt[12] 
+ :    : done\wt[8] by\wt[6] the\wt[2] time\wt[12] the\wt[8] cur\wt[8]tain\wt[2] 
+ :    : falls?\wtnp[28]</ac></i>
+@>Comment: 
+@>Text: <ac>\se[]\l[3]\ts[]What\wt[6] are\wt[4] we,\wt[8] with\wt[8] bo\wt[6]dies\wt[2] made\wt[12] of\wt[8] bro\wt[7]ken\wt[4] glass\wt[11] 
+ :    : from\wt[8] fa\wt[8]ded\wt[4] mir\wt[7]rors\wt[2] of\wt[4] the\wt[4] past?\wtnp[3]</ac>
+@>Comment: 
+@>Text: <ac>\se[]\ts[]\l[3]In\wt[3] the\wt[3] end,\wt[12] less\wt[8] pre\wt[8]cious\wt[4] and\wt[10] more\wt[8] 
+ :    : frag\wt[8]ile\wt[4] than\wt[10] por\wt[8]cel\wt[8]ain\wt[2] dolls.\wtnp[32]</ac>
+@>Comment: 
+@>Text: <ac>\se[]\ts[]\l[3]If\wt[2] the\wt[2] con\wt[6]cert\wt[8] car\wt[8]ries\wt[4] on\wt[10] with\wt[8] or\wt[8] 
+ :    : with\wt[4]out\wt[10] the\wt[6] touch\wt[8] of\wt[3] our\wt[10] ill\wt[4]u\wt[2]sive\wt[2] hands,\wtnp[8]</ac>
+@>Comment: 
+@>Text: <ac>\se[]\ts[]\l[3]Then\wt[2] what\wt[2] can\wt[10] we\wt[8] say\wt[8] we\wt[4] have\wt[12] 
+ :    : done\wt[8] by\wt[6] the\wt[2] time\wt[12] the\wt[8] cur\wt[8]tain\wt[2] 
+ :    : falls?\wtnp[60]</ac>
+@>Script: pbBGMFade(0.1)
 @>
 
 #------------------------------------------------------------------------------
@@ -23136,7 +23519,7 @@ List of Event Commands:
 @>Play BGM: 'X-002. Phantom Ensemble ~ Rehearsal Mix', 100, 100
 @>Change Text Options: Middle, Hide
 @>Text: <ac><i>\se[]\l[3]\ts[]What\wt[6] are\wt[4] you,\wt[8] with\wt[8] bo\wt[6]dies\wt[2] made\wt[12] of\wt[8] bro\wt[7]ken\wt[4] glass\wt[10] 
- :    : from\wt[8] fa\wt[8]ded\wt[2] mir\wt[6]rors\wt[2] of\wt[4] the\wt[4] past?\wtnp[4]</i></ac>
+ :    : from\wt[8] fa\wt[8]ded\wt[3] mir\wt[6]rors\wt[2] of\wt[4] the\wt[4] past?\wtnp[2]</i></ac>
 @>Text: <ac><i>\se[]\ts[]\l[3]In\wt[2] the\wt[2] end,\wt[10] less\wt[8] pre\wt[8]cious\wt[4] and\wt[10] more\wt[8] 
  :    : frag\wt[8]ile\wt[4] than\wt[10] por\wt[6]cel\wt[8]ain\wt[2] dolls.\wtnp[30]</i></ac>
 @>Scroll Map: Up, 12, 1
@@ -23445,6 +23828,350 @@ List of Event Commands:
 @>
 
 Page #3
+Conditions
+None
+
+Autonomous Movement
+Type: Fixed
+Speed: 3: Slow
+Freq: 3: Low
+Options Enabled
+Move Animation
+Trigger: Autorun
+
+List of Event Commands:
+@>Change Screen Color Tone: (0,0,0,0), @6
+@>Change Text Options: Bottom, Show
+@>Set Event Location: [Mystia],(015,016), Up
+@>Text: \xn[Mystia]And from the top, let's go one more time!
+@>Memorize BGM/BGS
+@>Fade Out BGM: 1 sec.
+@>Change Screen Color Tone: (-85,-85,-85,0), @8
+@>Wait: 20 frame(s)
+@>Script: # $game_variables[1] = $GameSpeed
+:       : # pbDisallowSpeedup
+:       : # $GameSpeed = 0
+@>Comment: --- Phantom Ensemble ~ Rehearsal Mix ---
+@>Script: # playSpecialBGM("S6_Performance")
+@>Wait: 10 frame(s)
+@>Play BGM: 'X-002. Phantom Ensemble ~ Rehearsal Mix', 100, 100
+@>Change Text Options: Middle, Hide
+@>Text: <ac><i>\se[]\l[3]\ts[]What\wt[6] are\wt[4] you,\wt[8] with\wt[8] bo\wt[6]dies\wt[2] made\wt[12] of\wt[8] bro\wt[7]ken\wt[4] glass\wt[10] 
+ :    : from\wt[8] fa\wt[8]ded\wt[4] mir\wt[7]rors\wt[2] of\wt[4] the\wt[4] past?\wtnp[3]</i></ac>
+@>Text: <ac><i>\se[]\ts[]\l[3]In\wt[3] the\wt[3] end,\wt[12] less\wt[8] pre\wt[8]cious\wt[4] and\wt[10] more\wt[8] 
+ :    : frag\wt[8]ile\wt[4] than\wt[10] por\wt[8]cel\wt[8]ain\wt[2] dolls.\wtnp[32]</i></ac>
+@>Scroll Map: Up, 12, 1
+@>Comment: 
+@>Text: <ac><i>\se[]\ts[]\l[3]If\wt[2] the\wt[2] con\wt[6]cert\wt[8] car\wt[8]ries\wt[4] on\wt[10] with\wt[8] or\wt[8] 
+ :    : with\wt[4]out\wt[10] the\wt[6] touch\wt[8] of\wt[3] your\wt[10] ill\wt[4]u\wt[2]sive\wt[2] hands,\wtnp[8]</ac></i>
+@>Comment: 
+@>Text: <ac><i>\se[]\ts[]\l[3]Then\wt[2] what\wt[2] can\wt[10] you\wt[8] say\wt[8] you\wt[4] have\wt[12] 
+ :    : done\wt[8] by\wt[6] the\wt[2] time\wt[12] the\wt[8] cur\wt[8]tain\wt[2] 
+ :    : falls?\wtnp[28]</ac></i>
+@>Comment: 
+@>Text: <ac>\se[]\l[3]\ts[]What\wt[6] are\wt[4] we,\wt[8] with\wt[8] bo\wt[6]dies\wt[2] made\wt[12] of\wt[8] bro\wt[7]ken\wt[4] glass\wt[11] 
+ :    : from\wt[8] fa\wt[8]ded\wt[4] mir\wt[7]rors\wt[2] of\wt[4] the\wt[4] past?\wtnp[3]</ac>
+@>Comment: 
+@>Text: <ac>\se[]\ts[]\l[3]In\wt[3] the\wt[3] end,\wt[12] less\wt[8] pre\wt[8]cious\wt[4] and\wt[10] more\wt[8] 
+ :    : frag\wt[8]ile\wt[4] than\wt[10] por\wt[8]cel\wt[8]ain\wt[2] dolls.\wtnp[32]</ac>
+@>Comment: 
+@>Text: <ac>\se[]\ts[]\l[3]If\wt[2] the\wt[2] con\wt[6]cert\wt[8] car\wt[8]ries\wt[4] on\wt[10] with\wt[8] or\wt[8] 
+ :    : with\wt[4]out\wt[10] the\wt[6] touch\wt[8] of\wt[3] our\wt[10] ill\wt[4]u\wt[2]sive\wt[2] hands,\wtnp[8]</ac>
+@>Comment: 
+@>Text: <ac>\se[]\ts[]\l[3]Then\wt[2] what\wt[2] can\wt[10] we\wt[8] say\wt[8] we\wt[4] have\wt[12] 
+ :    : done\wt[8] by\wt[6] the\wt[2] time\wt[12] the\wt[8] cur\wt[8]tain\wt[2] 
+ :    : falls?\wtnp[60]</ac>
+@>Script: pbBGMFade(0.1)
+@>Wait: 20 frame(s)
+@>Change Screen Color Tone: (-255,-255,-255,0), @8
+@>Wait: 8 frame(s)
+@>Change Transparent Flag: Normal
+@>Transfer Player:[025: Performance Hall], (015,025)
+@>Change Screen Color Tone: (0,0,0,0), @8
+@>Change Text Options: Bottom, Show
+@>Comment: --- Phantom Ensemble ~ Rehearsal Mix ---
+@>Script: # pbAllowSpeedup
+:       : # $GameSpeed = pbGet(1)
+:       : # deactivateSpecialBGM("S6_Performance")
+@>Restore BGM/BGS
+@>Text: \xn[Mystia]Well, it's sounding better, but you're still a bit off!
+@>Text: \xn[Mystia]Let's take a brief break and get back into the exercises.
+@>Set Event Location: [Mystia],(011,019), Up
+@>Set Move Route: [Mystia]
+ :              : $>Move Down
+ :              : $>Move Down
+ :              : $>Move Down
+@>Wait for Move's Completion
+@>Text: \xn[Mystia]Oh hey, welcome \PN! Did you just get here?
+@>Text: \xn[\pn]Yeah, was just going around the mansion once more...
+@>Text: \xn[\pn]Did I interupt something?
+@>Text: \xn[Mystia]Nope! We're taking a short break from practice.
+@>Text: \xn[Mystia]I suppose you want to see the Sisters now, huh?
+@>Text: \xn[\pn]Well it's what we came here for!
+@>Text: \xn[Mystia]Then head on over to the front of the stage!
+ :    : I'm sure you don't want to keep the Sisters waiting
+ :    : any longer.
+@>Set Move Route: [Lyrica]
+ :              : $>Turn Right
+@>Set Move Route: [Merlin]
+ :              : $>Turn Left
+@>Set Move Route: [Lunasa]
+ :              : $>Turn Up
+@>Set Move Route: [Mystia]
+ :              : $>Move Up
+ :              : $>Move Up
+ :              : $>Move Up
+ :              : $>Move Up
+ :              : $>Move Up
+ :              : $>Move Up
+ :              : $>Move Up
+ :              : $>Move Up
+ :              : $>Turn Right
+@>Set Move Route: Player
+ :              : $>Move Up
+ :              : $>Move Right
+ :              : $>Move Right
+ :              : $>Move Right
+ :              : $>Move Right
+ :              : $>Move Up
+ :              : $>Move Up
+ :              : $>Move Up
+ :              : $>Move Up
+ :              : $>Move Up
+ :              : $>Move Up
+ :              : $>Move Up
+ :              : $>Move Up
+@>Wait for Move's Completion
+@>Set Move Route: Player
+ :              : $>Move Up
+ :              : $>Move Left
+ :              : $>Move Left
+ :              : $>Move Left
+ :              : $>Move Left
+ :              : $>Turn Up
+@>Text: \xn[Lyrica]We should go over the lyrics again, see
+ :    : if we can get a better feel for them.\wtnp[10]
+@>Text: \xn[Lyrica]What about you Lunasa, what do you think?\wtnp[10]
+@>Text: \xn[Lunasa]I think we need to just get better at practicing
+ :    : the pace of our singing.\wtnp[10]
+@>Text: \xn[Lunasa]I'm pretty sure we have the lyrics well memorized.\wtnp[10]
+@>Text: \xn[Lunasa]Do you have any insight Merlin?\wtnp[10]
+@>Text: \xn[Merlin]Well... what if we need to work on both.\wtnp[10]
+@>Text: \xn[Merlin]This is our first time actually singing, so it 
+ :    : doesn't hurt to go over all our bases!\wtnp[10]
+@>Text: \xn[Prismriver Sisters]Hmm...\wtnp[20]
+@>Wait: 20 frame(s)
+@>Set Move Route: [Lyrica]
+ :              : $>Turn Down
+@>Wait for Move's Completion
+@>Show Animation: [Lyrica], [Exclaim bubble]
+@>Text: \xn[Lyrica]Oh! \PN's finally here!
+@>Set Move Route: [Lunasa]
+ :              : $>Turn Down
+@>Set Move Route: [Merlin]
+ :              : $>Turn Down
+@>Text: \xn[Lunasa]So this is the human you met downstairs.
+@>Text: \xn[Merlin]They look like a ghost... Lyrica did you
+ :    : scare them too much!?
+@>Text: \xn[Lyrica]I did no such thing! If anything, they're the
+ :    : one who surprised me~!
+@>Text: \xn[Lunasa]Either way... On behalf of my sisters and I,
+ :    : we welcome you to Prismriver Manor.
+@>Text: \xn[Lunasa]Though it's seen better days, this is still our home,
+ :    : and we must make you feel at home.
+@>Set Move Route: Player
+ :              : $>Turn Left
+@>Text: \xn[\pn]The welcoming committee has already done a good
+ :    : job of that, I'd say.
+@>Wait: 10 frame(s)
+@>Show Animation: [Mystia], [Exclaim bubble]
+@>Wait: 1 frame(s)
+@>Set Move Route: [Mystia]
+ :              : $>Turn Left
+@>Wait for Move's Completion
+@>Wait: 10 frame(s)
+@>Text: \xn[Lunasa]Ahem... Allow us to introduce ourselves properly.
+@>Set Move Route: Player
+ :              : $>Turn Up
+@>Wait for Move's Completion
+@>Wait: 10 frame(s)
+@>Set Move Route: [Lunasa]
+ :              : $>Move Down
+@>Text: \xn[Lunasa]I am Lunasa Prismriver, the phantom 
+ :    : violinist, and the oldest of us three sisters.
+@>Set Move Route: [Lunasa]
+ :              : $>Direction Fix ON
+ :              : $>Move Up
+ :              : $>Direction Fix OFF
+@>Wait for Move's Completion
+@>Wait: 10 frame(s)
+@>Set Move Route: [Autorun]
+ :              : $>Turn Right
+@>Set Move Route: [Merlin]
+ :              : $>Move Down
+@>Text: \xn[Merlin]I'm Merlin Prismriver, the phantom trumpeter, 
+ :    : and also the middle sibling of us three sisters!
+@>Set Move Route: [Merlin]
+ :              : $>Direction Fix ON
+ :              : $>Move Up
+ :              : $>Direction Fix OFF
+@>Wait for Move's Completion
+@>Wait: 10 frame(s)
+@>Set Move Route: [Lyrica]
+ :              : $>Move Down
+@>Text: \xn[Lyrica]You and I have already met, but let's go over
+ :    : it again anyway~
+@>Text: \xn[Lyrica]Lyrica Prismriver, phantom keyboardist, and
+ :    : the youngest of the three sisters.
+@>Set Move Route: [Lyrica]
+ :              : $>Direction Fix ON
+ :              : $>Move Up
+ :              : $>Direction Fix OFF
+@>Text: \xn[Lyrica]And together, the three of us combined make\..\..\..\wtnp[10]
+@>Set Move Route: [Lyrica]
+ :              : $>Move Down
+@>Set Move Route: [Merlin]
+ :              : $>Move Down
+@>Set Move Route: [Lunasa]
+ :              : $>Move Down
+@>Text: \xn[Prismriver Sisters]The Prismriver Ensemble! 
+@>Play SE: 'Applause', 70, 100
+@>Set Move Route: [Mystia]
+ :              : $>Turn Right
+@>Wait: 60 frame(s)
+@>Set Move Route: [Lunasa]
+ :              : $>Turn Left
+@>Text: \xn[Lunasa]Did you have to do that?
+@>Set Move Route: [Lyrica]
+ :              : $>Turn Right
+@>Text: \xn[Lyrica]It just felt right!
+@>Wait: 20 frame(s)
+@>Text: \xn[\pn]Well that was... an introduction. 
+@>Set Move Route: [Lunasa]
+ :              : $>Turn Down
+@>Set Move Route: [Lyrica]
+ :              : $>Turn Down
+@>Text: \xn[Lunasa]Say \PN, did you happen to catch our
+ :    : most recent practice? Maybe you can help us out.
+@>Text: \xn[Lyrica]Are you sure you wanna drag in a
+ :    : fourth party?
+@>Text: \xn[Lyrica]I thought we were a triumverate, not a quartet~
+@>Text: \xn[Lunasa]An artist always accepts critique of their
+ :    : work, be it from whoever is willing to offer it.
+@>Text: \xn[Lyrica]True enough! So \PN, what would you say about our
+ :    : last practice. Any thoughts to contribute?
+@>Show Choices: The singing felt off time, Not enough feel for lyrics, Both, No comment
+(When Cancel: Choice 2)
+: When [The singing felt off time]
+ @>Text: \xn[\pn]Well... If I had to answer, I'd say that it felt like the
+  :    : singing wasn't timed to the tune properly.
+ @>Text: \xn[\pn]I'm no music expert though, so don't take my word for it.
+ @>Text: \xn[Lunasa]That's what I figured. Our entire singing was
+  :    : off time!
+ @>Text: \xn[Lyrica]Maybe we were a bit off time, I guess
+  :    : it's something worth trying to rectify.
+ @>
+: When [Not enough feel for lyrics]
+ @>Text: \xn[\pn]The way you three were singing, it felt as
+  :    : if you didn't have a full grasp of the lyrics yet.
+ @>Text: \xn[\pn]Maybe going over them some more without the
+  :    : music might help?
+ @>Text: \xn[\pn]See, I told you so! We needed to spend
+  :    : more time going over the lyrics!
+ @>Text: \xn[Lunasa]Even though you're the one who wrote
+  :    : them?
+ @>Text: \xn[Lyrica]Just because I wrote something, doesn't
+  :    : mean I can remember it perfectly~
+ @>
+: When [Both]
+ @>Text: \xn[\pn]I'm... not entirely sure, but it felt like the entire
+  :    : thing was a bit lacking.
+ @>Show Animation: [Mystia], [Exclaim bubble]
+ @>Text: \xn[\pn]The singing was off tune just slightly at some points,
+  :    : and there were other points where it felt like you were
+  :    : stumbling over lyrics.
+ @>Text: \xn[\pn]Maybe taking it one step at a time might help?
+ @>Wait: 20 frame(s)
+ @>Text: \xn[Lyrica]So you're saying that both the lyrics...
+ @>Text: \xn[Lunasa]...And our singing were off...
+ @>Wait: 10 frame(s)
+ @>Set Move Route: [Lyrica]
+  :              : $>Turn Right
+ @>Set Move Route: [Lunasa]
+  :              : $>Turn Right
+ @>Wait for Move's Completion
+ @>Wait: 10 frame(s)
+ @>Show Animation: [Merlin], [Question bubble]
+ @>Wait: 10 frame(s)
+ @>Set Move Route: [Merlin]
+  :              : $>Turn Left
+ @>Wait for Move's Completion
+ @>Text: \xn[Merlin]What? I did mention that we should go back
+  :    : over all of it!
+ @>Text: \xn[Merlin]As professionals, its our job to analyze each aspect
+  :    : of our performance to its fullest to ensure it goes as
+  :    : best it can!
+ @>Wait: 10 frame(s)
+ @>Text: \xn[Lyrica]She does have a point, doesn't she?
+ @>Text: \xn[Lunasa]We are professionals, so we should be acting
+  :    : like professionals! Give it our all or not at all!
+ @>Text: \xn[Merlin]Hehe, that's more like it!
+ @>Text: \xn[\pn]As long as you three work hard and practice to
+  :    : your best, you three can acomplish anything!
+ @>Set Move Route: [Lyrica]
+  :              : $>Turn Down
+ @>Set Move Route: [Merlin]
+  :              : $>Turn Down
+ @>Set Move Route: [Lunasa]
+  :              : $>Turn Down
+ @>
+: When [No comment]
+ @>Text: \xn[\pn]Sorry, I'm no expert when it comes to music affairs.
+  :    : I couldn't hear any issues with it even if there are any.
+ @>Text: \xn[\pn]But if Miss Mystia is instructing you, it might be
+  :    : best to get feedback from her.
+ @>Text: \xn[Lyrica]That's... probably a good idea, yeah.
+ @>Text: \xn[Lunasa]She is the one with extensive vocal training
+  :    : afterall, so her coaching is extremely helpful.
+ @>
+: Branch End
+@>Text: \xn[\pn]Though honestly, for what it's worth, I think
+ :    : you three sounded great!
+@>Text: \xn[\pn]You're able to play your instruments and sing at the
+ :    : same time. That's impressive in my book!
+@>Text: \xn[Lunasa]We really aprpeciate your help all the same.
+@>Text: \xn[Lunasa]It can be good to get the viewpoint of an unrelated
+ :    : third party sometimes.
+@>Text: \xn[Lunasa]Especially when it comes to improving oneself.
+@>Text: \xn[Lyrica]We need to be in top shape for this performance.
+@>Text: \xn[Lyrica]It's our first time actually singing along to one of our songs,
+ :    : so we want to make sure that we do our absolute best!
+@>Text: \xn[Merlin]Given how practice-happy us sisters are, we should be
+ :    : fine!
+@>Text: \xn[Merlin]But having someone help point us down the right
+ :    : path helps make things a lot easier for us!
+@>Wait: 20 frame(s)
+@>Set Move Route: [Lunasa]
+ :              : $>Turn Up
+@>Text: \xn[Lunasa]... You know, I just thought of something.
+@>Set Move Route: [Lyrica]
+ :              : $>Turn Right
+@>Text: \xn[Lyrica]Oh? Perhaps the same thing I'm thinking of?
+@>Set Move Route: [Merlin]
+ :              : $>Turn Left
+@>Text: \xn[Merlin]Oh oh, I think we're all thinking the same thing!
+@>Text: \xn[\pn]I have a really bad feeling about this...
+@>Wait: 10 frame(s)
+@>Set Move Route: [Lyrica]
+ :              : $>Turn Down
+@>Set Move Route: [Merlin]
+ :              : $>Turn Down
+@>Set Move Route: [Lunasa]
+ :              : $>Turn Down
+@>Control Self Switch: A =ON
+@>
+
+Page #4
 Conditions
 Self Switch A is ON
 
@@ -28924,6 +29651,45 @@ List of Event Commands:
  @>Control Variables: [0141: Scenarios Cleared] += 1
  @>
 : Else
+ @>Change Transparent Flag: Normal
+ @>Change Screen Color Tone: (0,0,0,0), @8
+ @>
+: Branch End
+@>
+
+Page #2
+Conditions
+None
+
+Autonomous Movement
+Type: Fixed
+Speed: 3: Slow
+Freq: 3: Low
+Options Enabled
+Move Animation
+Trigger: Autorun
+
+List of Event Commands:
+@>Change Screen Color Tone: (0,0,0,0), @20
+@>Wait: 40 frame(s)
+@>Change Screen Color Tone: (51,17,-34,255), @20
+@>Wait: 20 frame(s)
+@>Script: CreditsOutro_TMoM.new
+@>Wait: 20 frame(s)
+@>Change Screen Color Tone: (-255,-255,-255,0), @20
+@>Wait: 25 frame(s)
+@>Fade Out BGM: 2 sec.
+@>Script: CreditsFin.new
+@>Wait: 20 frame(s)
+@>Conditional Branch: Switch [0116: TMoM Cleared] == OFF
+ @>Control Switches: [0116: TMoM Cleared] = ON
+ @>Control Variables: [0141: Scenarios Cleared] += 1
+ @>Change Text Options: Middle, Hide
+ @>Call Common Event: Ending Stinger
+ @>Change Text Options: Bottom, Show
+ @>
+: Else
+ @>Transfer Player:[019: World of Fantasies], (019,020), Down
  @>Change Transparent Flag: Normal
  @>Change Screen Color Tone: (0,0,0,0), @8
  @>
@@ -106409,6 +107175,7 @@ List of Event Commands:
 @>Call Common Event: Vs. Transition - Flash
 @>Change Screen Color Tone: (-255,-255,-255,0), @6
 @>Wait: 6 frame(s)
+@>Script: pbSetDarknessRadius(999)
 @>Script: pbShowPicture(4,"Transitions/Bars_Under.png",1,256,192,zoomX=100,zoomY=100,opacity=230,blendType=0)
 @>Script: pbShowPicture(20,"Transitions/Bars_Over.png",1,256,192,zoomX=100,zoomY=100,opacity=230,blendType=0)
 @>Move Picture: 5, @5, Center (256,192), (100%,100%), 230, Normal
@@ -106458,6 +107225,13 @@ List of Event Commands:
 @>Change Screen Color Tone: (0,0,0,0), @10
 @>Comment: --- Pre-Battle Intro Conclusion
 @>Control Switches: [0104: Transition Handler] = OFF
+@>Conditional Branch: Switch [0110: Lamprey Eaten] == ON
+ @>Script: pbSetDarknessRadius(192)
+ @>
+: Else
+ @>Script: pbSetDarknessRadius(96)
+ @>
+: Branch End
 @>
 
 #==============================================================================
@@ -110855,6 +111629,7 @@ List of Event Commands:
     :    : like you.
    @>Text: \w[dark]Thank you, \pn...
    @>Wait: 15 frame(s)
+   @>Change Text Options: Bottom, Show
    @>Text: \xn[\pn]... Did someone say my name ...?
    @>
   : Else
@@ -110865,15 +111640,38 @@ List of Event Commands:
  @>
 : Branch End
 @>Transfer Player:[019: World of Fantasies], (019,020), Down
+@>Change Transparent Flag: Normal
+@>Change Screen Color Tone: (0,0,0,0), @8
 @>
 
 #==============================================================================
 Common Event ID: 107
-Common Event Name: 
+Common Event Name: Lamprey Event
 
 Trigger: None
 
 List of Event Commands:
+@>Conditional Branch: Switch [0110: Lamprey Eaten] == ON
+ @>Text: You can't eat another plate, you're too full!
+ @>
+: Else
+ @>Text: It seems to be a plate of grilled lamprey.
+ @>Text: Eat it?
+ @>Show Choices: Yes, No
+ (When Cancel: Choice 2)
+ : When [Yes]
+  @>Text: Upon eating the lamprey, you notice that the darkness 
+   :    : begins to shrink!
+  @>Script: pbMoveDarknessRadius(192)
+  @>Control Variables: [0111: Darkness Variable] = 192
+  @>Control Switches: [0110: Lamprey Eaten] = ON
+  @>Control Self Switch: A =ON
+  @>
+ : When [No]
+  @>
+ : Branch End
+ @>
+: Branch End
 @>
 
 #==============================================================================
