@@ -5370,6 +5370,34 @@ List of Event Commands:
 @>
 
 #------------------------------------------------------------------------------
+Event ID: 004
+Event Name: ExitArrow
+(X,Y): (009,013)
+
+Page #1
+Conditions
+None
+
+Graphic: Exitarrow_red
+
+Autonomous Movement
+Type: Fixed
+Speed: 3: Slow
+Freq: 3: Low
+Options Enabled
+Move Animation
+Stop Animation
+Trigger: Player Touch
+
+List of Event Commands:
+@>Conditional Branch: Player is facing Down
+ @>Text: \xn[\pn]No, I should exit through the window... If I leave through the house, my
+  :    : parents will catch me.
+ @>
+: Branch End
+@>
+
+#------------------------------------------------------------------------------
 Event ID: 005
 Event Name: EV005
 (X,Y): (000,002)
@@ -5392,6 +5420,34 @@ List of Event Commands:
 @>Wait: 8 frame(s)
 @>Transfer Player:[019: World of Fantasies], (019,020), Down, No Fade
 @>Change Screen Color Tone: (0,0,0,0), @6
+@>
+
+#------------------------------------------------------------------------------
+Event ID: 006
+Event Name: ExitArrow
+(X,Y): (010,013)
+
+Page #1
+Conditions
+None
+
+Graphic: Exitarrow_red
+
+Autonomous Movement
+Type: Fixed
+Speed: 3: Slow
+Freq: 3: Low
+Options Enabled
+Move Animation
+Stop Animation
+Trigger: Player Touch
+
+List of Event Commands:
+@>Conditional Branch: Player is facing Down
+ @>Text: \xn[\pn]No, I should exit through the window... If I leave through the house, my
+  :    : parents will catch me.
+ @>
+: Branch End
 @>
 
 #------------------------------------------------------------------------------
@@ -5747,6 +5803,26 @@ List of Event Commands:
 :       : :REPEL,:SUPERREPEL,
 :       : :RARECANDY,:PPUP
 :       : ])
+@>
+
+Page #3
+Conditions
+None
+
+Graphic: TPDP_NPC 39
+
+Autonomous Movement
+Type: Fixed
+Speed: 3: Slow
+Freq: 3: Low
+Options Enabled
+Move Animation
+Trigger: Action Button
+
+List of Event Commands:
+@>Script: setPrice(:RARECANDY,9800)
+@>Script: setPrice(:MAXREVIVE,9800)
+@>Script: pbTMoMShop
 @>
 
 #------------------------------------------------------------------------------
@@ -9307,7 +9383,7 @@ List of Event Commands:
 
 #------------------------------------------------------------------------------
 Event ID: 035
-Event Name: size(3,1)
+Event Name: Impassable size(3,1)
 (X,Y): (057,014)
 
 Page #1
@@ -29686,7 +29762,6 @@ List of Event Commands:
  @>Control Variables: [0141: Scenarios Cleared] += 1
  @>Change Text Options: Middle, Hide
  @>Call Common Event: Ending Stinger
- @>Change Text Options: Bottom, Show
  @>
 : Else
  @>Transfer Player:[019: World of Fantasies], (019,020), Down
@@ -29694,6 +29769,7 @@ List of Event Commands:
  @>Change Screen Color Tone: (0,0,0,0), @8
  @>
 : Branch End
+@>Change Text Options: Bottom, Show
 @>
 
 #------------------------------------------------------------------------------
@@ -31499,66 +31575,66 @@ Move Animation
 Trigger: Action Button
 
 List of Event Commands:
-@>Text: \G\CNHello there! I can exchange your cash for Festival Points!
-@>Text: \G\CNHow many would you like?
-@>Show Choices: 10 FP [$100], 100 coins [$1,000], 500 FP [$5,000], Exit
+@>Text: \G\ptHello there! I can exchange your cash for Festival Points!
+@>Text: \G\ptHow many would you like?
+@>Show Choices: 10 FP [$100], 100 FP [$1,000], 500 FP [$5,000], Exit
 (When Cancel: Choice 4)
 : When [10 FP [$100]]
- @>Conditional Branch: Script: $player.battle_points+10>=MAX_BATTLE_POINTS
-  @>Text: \G\CN\bWhoops!\nYou can't have any more points!
+ @>Conditional Branch: Script: $player.battle_points+10>=Settings::MAX_BATTLE_POINTS
+  @>Text: \G\ptWhoops!\nYou can't have any more points!
   @>
  : Else
   @>Conditional Branch: Gold 99 or less
-   @>Text: \G\CNYou can't afford the Festival Points.
+   @>Text: \G\ptYou can't afford the Festival Points.
    @>
   : Else
    @>Change Gold: - 100
    @>Script: $player.battle_points+=10
-   @>Text: \G\CNThank you, here are your Festival Points!
-   @>Text: \g\cn\pn recieved 10 Festival Points!
+   @>Text: \G\ptThank you, here are your Festival Points!
+   @>Text: \g\pt\pn recieved 10 Festival Points!\me[BP Fanfare]
    @>
   : Branch End
   @>
  : Branch End
  @>
-: When [100 coins [$1,000]]
- @>Conditional Branch: Script: $player.battle_points+100>=MAX_BATTLE_POINTS
-  @>Text: \G\CN\bWhoops!\nYou can't have any more points!
+: When [100 FP [$1,000]]
+ @>Conditional Branch: Script: $player.battle_points+100>=Settings::MAX_BATTLE_POINTS
+  @>Text: \G\ptWhoops!\nYou can't have any more points!
   @>
  : Else
   @>Conditional Branch: Gold 999 or less
-   @>Text: \G\CNYou can't afford the Festival Points.
+   @>Text: \G\ptYou can't afford the Festival Points.
    @>
   : Else
    @>Change Gold: - 1000
    @>Script: $player.battle_points+=100
-   @>Text: \G\CNThank you, here are your Festival Points!
-   @>Text: \g\cn\pn recieved 100 Festival Points!\me[BP Fanfare]
+   @>Text: \G\ptThank you, here are your Festival Points!
+   @>Text: \g\pt\pn recieved 100 Festival Points!\me[BP Fanfare]
    @>
   : Branch End
   @>
  : Branch End
  @>
 : When [500 FP [$5,000]]
- @>Conditional Branch: Script: $player.battle_points+500>=MAX_BATTLE_POINTS
-  @>Text: \G\CN\bWhoops!\nYou can't have any more points!
+ @>Conditional Branch: Script: $player.battle_points+500>=Settings::MAX_BATTLE_POINTS
+  @>Text: \G\ptWhoops!\nYou can't have any more points!
   @>
  : Else
   @>Conditional Branch: Gold 4999 or less
-   @>Text: \G\CNYou can't afford the Festival Points.
+   @>Text: \G\ptYou can't afford the Festival Points.
    @>
   : Else
    @>Change Gold: - 5000
    @>Script: $player.battle_points+=500
-   @>Text: \G\CNThank you, here are your Festival Points!
-   @>Text: \g\cn\pn recieved 500 Festival Points!
+   @>Text: \G\ptThank you, here are your Festival Points!
+   @>Text: \g\pt\pn recieved 500 Festival Points!\me[BP Fanfare]
    @>
   : Branch End
   @>
  : Branch End
  @>
 : When [Exit]
- @>Text: \G\CN\bPlease enjoy the Harvest Festival!
+ @>Text: \G\ptPlease enjoy the Harvest Festival!
  @>Exit Event Processing
  @>
 : Branch End
@@ -31887,6 +31963,28 @@ List of Event Commands:
 :       : :SWIFTSHARD,:SUPPORTSHARD,:SOLARSHARD,
 :       : :CHROMESHARD
 :       : ])
+@>
+
+Page #3
+Conditions
+None
+
+Graphic: TPDP_NPC 39
+
+Autonomous Movement
+Type: Fixed
+Speed: 3: Slow
+Freq: 3: Low
+Options Enabled
+Move Animation
+Trigger: Action Button
+
+List of Event Commands:
+@>Text: Welcome to the Human Village Rest Stop. We have a
+ :    : variety of goods to select from.
+@>Script: setPrice(:RARECANDY,9800)
+@>Script: setPrice(:MAXREVIVE,9800)
+@>Script: pbTFoCShop
 @>
 
 #------------------------------------------------------------------------------
@@ -32844,7 +32942,7 @@ List of Event Commands:
    @>Text: \xn[Rinnosuke]In exchange for that voucher, you may have
     :    : one of these bikes.
    @>Script: $bag.remove(:BIKEVOUCHER)
-   :       : $bag.remove(:BICYCLE)
+   :       : $bag.add(:BICYCLE)
    @>Text: \PN exchanged their Bike Voucher for a brand new Bicycle!\me[Key item get]\wtnp[80]
    @>Text: \xn[Rinnosuke]A pleasure doing business with you! Do come back
     :    : if you would like to hear more about these wares.
@@ -33799,6 +33897,27 @@ List of Event Commands:
 @>Jump to Label: Choice
 @>
 
+Page #4
+Conditions
+Self Switch A is ON
+
+Graphic: TPDP_NPC 28
+
+Autonomous Movement
+Type: Fixed
+Speed: 3: Slow
+Freq: 3: Low
+Options Enabled
+Move Animation
+Trigger: Action Button
+
+List of Event Commands:
+@>Script: setPrice(:LUCKYEGG,20)
+:       : setPrice(:EXPSHARE,20)
+:       : setPrice(:ABILITYCAPSULE,100)
+@>Script: pbKappaShop
+@>
+
 #------------------------------------------------------------------------------
 Event ID: 024
 Event Name: Counter(3)
@@ -33984,72 +34103,10 @@ List of Event Commands:
  @>Control Self Switch: A =ON
  @>
 : Branch End
-@>Text: \CN\xn[Seija]Welcome to my stand of forbidden items! Care to
- :    : browse my wares?
-@>Show Choices: Yes, No
-(When Cancel: Choice 2)
-: When [Yes]
- @>Label: Choice
- @>Text: \CN\xn[Seija]Well then, which of these items would you like?
- @>Show Choices: 5x Puppet Orbs? (50 FP), 5x Great Orbs? (100 FP), 5x Inverse Orbs (250 FP), No Thanks
- (When Cancel: Choice 4)
- : When [5x Puppet Orbs? (50 FP)]
-  @>Script: pbSet(1, :PUPPETORB2)
-  :       : pbSet(2, 50)
-  @>
- : When [5x Great Orbs? (100 FP)]
-  @>Script: pbSet(1, :GREATORB2)
-  :       : pbSet(2, 100)
-  @>
- : When [5x Inverse Orbs (250 FP)]
-  @>Script: pbSet(1, :INVERSEORB)
-  :       : pbSet(2, 250)
-  @>
- : When [No Thanks]
-  @>Exit Event Processing
-  @>
- : Branch End
- @>Comment: ================================
- @>Comment: Chose an item, try to buy it.
- @>Comment: ================================
- @>Script: itm = GameData::Item.get(pbGet(1))
- :       : pbSet(3, itm.name)
- @>Text: \CN\xn[Seija]\bThe \v[3], huh?
- @>Show Choices: Yes, No
- (When Cancel: Choice 2)
- : When [Yes]
-  @>Conditional Branch: Script: pbGet(2) > $player.battle_points
-   @>Text: \CN\xn[Seija]I know I'm a rule breaker, but even I abide by the laws of currency!
-   @>
-  : Else
-   @>Conditional Branch: Script: $bag.can_add?(pbGet(1))
-    @>Play SE: 'Mart buy item', 100, 100
-    @>Script: $player.battle_points -= pbGet(2)
-    @>Script: pbBuyPrize(pbGet(1), 5)
-    @>Text: \CN\xn[Seija]A pleasure doing business with you! And remember:
-    @>Text: \CN\xn[Seija]All proceeds go to funding the Youkai Uprising that will overthrow the power strucutre of Gensokyo!
-    @>Conditional Branch: Self Switch B == OFF
-     @>Wait: 10 frame(s)
-     @>Text: \xn[\pn]...How did they even let you set up a stand here to begin with...
-     @>Control Self Switch: B =ON
-     @>
-    : Branch End
-    @>Exit Event Processing
-    @>
-   : Else
-    @>Text: \CN\xn[Seija]Unless you plan to make these float around you, your bag is kinda full.
-    @>Exit Event Processing
-    @>
-   : Branch End
-   @>
-  : Branch End
-  @>
- : When [No]
-  @>
- : Branch End
- @>Jump to Label: Choice
- @>
-: When [No]
+@>Script: pbSeijaShop
+@>Conditional Branch: Self Switch B == OFF
+ @>Text: \xn[\pn]...How did they even let you set up a stand here to begin with...
+ @>Control Self Switch: B =ON
  @>
 : Branch End
 @>
@@ -34631,15 +34688,15 @@ List of Event Commands:
  @>
 : Branch End
 @>Label: Fight?
-@>Text: \cn\xn[Lyrica]For 10 FP, you can have a go at the Doppeldevice!
+@>Text: \pt\xn[Lyrica]For 10 FP, you can have a go at the Doppeldevice!
  :    : Given how familiar with it you are, I shouldn't have to go into
  :    : further depth about it!
 @>Show Choices: Sure, Info, Maybe later
 (When Cancel: Choice 3)
 : When [Sure]
- @>Conditional Branch: Script: $player.coins>10
-  @>Script: $player.coins-=10
-  @>Text: \cn\xn[Lyrica]Let me just heal your Puppets first, and...
+ @>Conditional Branch: Script: $player.battle_points>10
+  @>Script: $player.battle_points-=10
+  @>Text: \pt\xn[Lyrica]Let me just heal your Puppets first, and...
   @>Recover All: Entire Party
   @>Play SE: 'Mining found all', 100, 100
   @>Text: \cn\xn[Lyrica]... Alright! One round with the Doppeldevice, coming up!
@@ -34654,13 +34711,13 @@ List of Event Commands:
    @>Exit Event Processing
    @>
   : Branch End
-  @>Text: \cn\xn[Lyrica]As authentic as you remember, huh? Well,
+  @>Text: \pt\xn[Lyrica]As authentic as you remember, huh? Well,
    :    : if you want another go at the device, both it and I or my
    :    : sisters will be here all week!
   @>Exit Event Processing
   @>
  : Else
-  @>Text: \cn\xn[Lyrica]It doesn't look like you have enough
+  @>Text: \pt\xn[Lyrica]It doesn't look like you have enough
    :    : Festival Points right now! That's okay, we'll be here
    :    : all week!
   @>Exit Event Processing
@@ -35530,6 +35587,24 @@ List of Event Commands:
 :       : $game_variables[3] = nil
 @>
 
+Page #3
+Conditions
+Switch 0123: Medicine Beaten is ON
+
+Graphic: Person_Sanae
+
+Autonomous Movement
+Type: Fixed
+Speed: 3: Slow
+Freq: 3: Low
+Options Enabled
+Move Animation
+Trigger: Action Button
+
+List of Event Commands:
+@>Script: pbSanaeShop
+@>
+
 #------------------------------------------------------------------------------
 Event ID: 059
 Event Name: LobbyTrainer
@@ -35955,6 +36030,28 @@ List of Event Commands:
 :       : ])
 @>
 
+Page #3
+Conditions
+None
+
+Graphic: TPDP_NPC 39
+
+Autonomous Movement
+Type: Fixed
+Speed: 3: Slow
+Freq: 3: Low
+Options Enabled
+Move Animation
+Trigger: Action Button
+
+List of Event Commands:
+@>Text: Welcome to the Human Village Rest Stop. We have a
+ :    : variety of goods to select from.
+@>Script: setPrice(:RARECANDY,9800)
+@>Script: setPrice(:MAXREVIVE,9800)
+@>Script: pbTFoCShop
+@>
+
 #------------------------------------------------------------------------------
 Event ID: 004
 Event Name: EV004
@@ -36297,9 +36394,12 @@ Speed: 3: Slow
 Freq: 3: Low
 Options Enabled
 Move Animation
+Direction Fix
 Trigger: Action Button
 
 List of Event Commands:
+@>Text: Of course child! Now let's see, it all began with the twin shrine 
+ :    : maidens, Meira and Seira...
 @>
 
 #------------------------------------------------------------------------------
@@ -36319,9 +36419,11 @@ Speed: 3: Slow
 Freq: 3: Low
 Options Enabled
 Move Animation
+Direction Fix
 Trigger: Action Button
 
 List of Event Commands:
+@>Text: Gran, can you tell me the story of the formation of the Barrier again?
 @>
 
 #------------------------------------------------------------------------------
@@ -36344,6 +36446,10 @@ Move Animation
 Trigger: Action Button
 
 List of Event Commands:
+@>Text: I thought I would show off my knowledge of Gensokyo's history by taking on
+ :    : this challenge!
+@>Text: But it's... it's unreal how obscure some of these questions are.
+@>Text: Lady Kamishirasawa spared no trivia making this quiz hall.
 @>
 
 #------------------------------------------------------------------------------
@@ -36366,6 +36472,8 @@ Move Animation
 Trigger: Action Button
 
 List of Event Commands:
+@>Text: If I just study all of these books, surely I'll be able to best the teacher
+ :    : at her own game!
 @>
 
 #------------------------------------------------------------------------------
@@ -36647,7 +36755,7 @@ List of Event Commands:
 
 Page #4
 Conditions
-Switch 0123: Medicine Beaten is ON
+None
 
 Graphic: Person_Alice
 
@@ -36665,27 +36773,7 @@ List of Event Commands:
 @>Text: \xn[Alice]All of our products are made with Puppet comfort in 
  :    : mind, so you can rest easy knowing that your Puppets will be 
  :    : in good hands.
-@>Control Switches: [0125: Custom Shop Dialogue] = ON
-@>Script: # --- Can't afford dialogue
-:       : $game_variables[1] = "I'm not running a charity here! Please return when you have more Festival Points!"
-:       : # --- Purchase Dialogue
-:       : $game_variables[2] = "Thank you for your business!" # Purchase dialogue
-:       : # --- Make Room dialogue
-:       : $game_variables[3] = "You should perhaps make some additional room in your bag before I give you these!"
-@>Script: pbBattlePointShop([
-:       : :BUNNYSUIT,:MAIDCOSTUME,:SWEATER,:CAMOUFLAGE,:BLAZER,:MISTRESS,:NINJA,:NURSE,:SWIMSUIT,
-:       : :STEWARDESS,:THICKFUR,:KIMONO,:WITCH,:GOTHIC,:BRIDALGOWN,:PRIESTESS,:CHINADRESS,
-:       : :HEMATITEHAIRPIN,:QUARTZHAIRPIN,:ONYXHAIRPIN,:MALACHITEHAIRPIN,:GOLDHAIRPIN,:OBSIDIANHAIRPIN,:JADEHAIRPIN,
-:       : :AMETHYSTHAIRPIN,:AQUAMARINEHAIRPIN,:DIAMONDHAIRPIN,:LAPISHAIRPIN,:SUGILITEHAIRPIN,:OPALHAIRPIN,:GARNETHAIRPIN,
-:       : :MORGANITEHAIRPIN,:TOPAZHAIRPIN,:MOONSTONEHAIRPIN
-:       : ])
-@>Control Switches: [0125: Custom Shop Dialogue] = OFF
-@>Script: # --- Can't afford dialogue
-:       : $game_variables[1] = nil
-:       : # --- Purchase Dialogue
-:       : $game_variables[2] = nil
-:       : # --- Make Room dialogue
-:       : $game_variables[3] = nil
+@>Script: pbAliceFestivalStore
 @>
 
 #------------------------------------------------------------------------------
@@ -36854,29 +36942,29 @@ Move Animation
 Trigger: Action Button
 
 List of Event Commands:
-@>Text: \cn\xn[Shizuha]Welcome to Shizuha's Leaf Pile! Where picking up
+@>Text: \pt\xn[Shizuha]Welcome to Shizuha's Leaf Pile! Where picking up
  :    : freshly fallen leaves can be fun and rewarding!
 @>Label: Enter?
-@>Text: \cn\xn[Shizuha]Would you like to enter the collection grounds?
+@>Text: \pt\xn[Shizuha]Would you like to enter the collection grounds?
 @>Show Choices: Enter (40 FP), Information, Exchange Leaves, No
 (When Cancel: Choice 4)
 : When [Enter (40 FP)]
- @>Text: \cn\xn[Shizuha]To enter it'll cost 40 FP, is that acceptable?
+ @>Text: \pt\xn[Shizuha]To enter it'll cost 40 FP, is that acceptable?
  @>Show Choices: Yes, No
  (When Cancel: Choice 2)
  : When [Yes]
   @>Conditional Branch: Script: $player.battle_points < 40
-   @>Text: \cn\xn[Shizuha]Oh, uh, it doesn't appear as if you have enough
+   @>Text: \pt\xn[Shizuha]Oh, uh, it doesn't appear as if you have enough
     :    : Festival Points...
-   @>Text: \cn\xn[Shizuha]Well, if you get enough, feel free to come
+   @>Text: \pt\xn[Shizuha]Well, if you get enough, feel free to come
     :    : on back!
    @>Exit Event Processing
    @>
   : Else
    @>Script: $player.battle_points-=40
-   @>Text: \cn\xn[Shizuha]Let's see... Yep, 40 Festival Points, all 
+   @>Text: \pt\xn[Shizuha]Let's see... Yep, 40 Festival Points, all 
     :    : here!
-   @>Text: \cn\xn[Shizuha]Allow me to show you into the collection 
+   @>Text: \pt\xn[Shizuha]Allow me to show you into the collection 
     :    : grounds! Please enjoy yourself in there!
    @>Control Self Switch: A =ON
    @>Play SE: 'Door exit', 100, 100
@@ -36889,48 +36977,48 @@ List of Event Commands:
   : Branch End
   @>
  : When [No]
-  @>Text: \cn\xn[Shizuha]I understand, please come again if you change
+  @>Text: \pt\xn[Shizuha]I understand, please come again if you change
    :    : your mind in the future!
   @>Exit Event Processing
   @>
  : Branch End
  @>
 : When [Information]
- @>Text: \cn\xn[Shizuha]In the collection grounds, you will be able to
+ @>Text: \pt\xn[Shizuha]In the collection grounds, you will be able to
   :    : collect up to nine leaves, which can be brought back here
   :    : to be exchanged for Festival Points.
- @>Text: \cn\xn[Shizuha]Though, if you happen to find any stray Autumn 
+ @>Text: \pt\xn[Shizuha]Though, if you happen to find any stray Autumn 
   :    : Leaves outside of the challenge, you can still exchange them
   :    : here!
- @>Text: \cn\xn[Shizuha]This will allow me to paint more leaves for
+ @>Text: \pt\xn[Shizuha]This will allow me to paint more leaves for
   :    : the collection grounds to be collected!
- @>Text: \cn\xn[Shizuha]To enter the collection grounds though, you
+ @>Text: \pt\xn[Shizuha]To enter the collection grounds though, you
   :    : will need to spend 40 Festival Points per entry.
- @>Text: \cn\xn[Shizuha]I promise it'll be worth the price of admission at
+ @>Text: \pt\xn[Shizuha]I promise it'll be worth the price of admission at
   :    : the very least!
- @>Text: \cn\xn[Shizuha]If you would like to see the exchange rate on
+ @>Text: \pt\xn[Shizuha]If you would like to see the exchange rate on
   :    : the leaves, please consult the board next to me.
  @>Jump to Label: Enter?
  @>
 : When [Exchange Leaves]
- @>Text: \cn\xn[Shizuha]Which leaf type would you like to exchange?
+ @>Text: \pt\xn[Shizuha]Which leaf type would you like to exchange?
  @>Show Choices: Gold-Painted Leaf (20 FP), Silver-Painted Leaf (10 FP), Autumn Leaf (5 FP), Nevermind
  (When Cancel: Choice 4)
  : When [Gold-Painted Leaf (20 FP)]
   @>Conditional Branch: Script: $bag.has?(:GOLDLEAF)
    @>Script: $game_variables[1] = $bag.quantity(:GOLDLEAF)
    :       : $game_variables[2] = pbGet(1) * 20
-   @>Text: \cn\xn[Shizuha]Hmm... For that many Gold-Painted Leaves, I can
+   @>Text: \pt\xn[Shizuha]Hmm... For that many Gold-Painted Leaves, I can
     :    : give you \v[2] Festival Points. Does that sound good?
    @>Show Choices: Yes, No
    (When Cancel: Choice 2)
    : When [Yes]
     @>Script: $bag.remove(:GOLDLEAF,pbGet(1))
     :       : $player.battle_points+= pbGet(2)
-    @>Text: \cn\pn was given \v[2] Festival Points in exchange for the leaves!\me[BP Fanfare]\wtnp[80]
-    @>Text: \cn\xn[Shizuha]Wonderful! Thank you for the leaves! 
+    @>Text: \pt\pn was given \v[2] Festival Points in exchange for the leaves!\me[BP Fanfare]\wtnp[80]
+    @>Text: \pt\xn[Shizuha]Wonderful! Thank you for the leaves! 
      :    : They sure are pretty, wouldn't you agree?
-    @>Text: \cn\xn[Shizuha]If you have any other leaves that need
+    @>Text: \pt\xn[Shizuha]If you have any other leaves that need
      :    : to be exchanged, feel free to come back anytime!
     @>
    : When [No]
@@ -36943,9 +37031,9 @@ List of Event Commands:
    : Branch End
    @>
   : Else
-   @>Text: \cn\xn[Shizuha]Oh, it would appear you don't have any
+   @>Text: \pt\xn[Shizuha]Oh, it would appear you don't have any
     :    : of these leaves.
-   @>Text: \cn\xn[Shizuha]That's okay! If you happen to come across 
+   @>Text: \pt\xn[Shizuha]That's okay! If you happen to come across 
     :    : any, be sure to bring them here and I'll gladly accept 
     :    : them!
    @>Exit Event Processing
@@ -36956,31 +37044,31 @@ List of Event Commands:
   @>Conditional Branch: Script: $bag.has?(:SILVERLEAF)
    @>Script: $game_variables[1] = $bag.quantity(:SILVERLEAF)
    :       : $game_variables[2] = pbGet(1) * 10
-   @>Text: \cn\xn[Shizuha]Hmm... For that many Silver-Painted Leaves, I can
+   @>Text: \pt\xn[Shizuha]Hmm... For that many Silver-Painted Leaves, I can
     :    : give you \v[2] Festival Points. Does that sound good?
    @>Show Choices: Yes, No
    (When Cancel: Choice 2)
    : When [Yes]
-    @>Script: $bag.remove (:SILVERLEAF,pbGet(1))
+    @>Script: $bag.remove(:SILVERLEAF,pbGet(1))
     :       : $player.battle_points+= pbGet(2)
-    @>Text: \cn\pn was given \v[2] Festival Points in exchange for the leaves!\me[BP Fanfare]\wtnp[80]
-    @>Text: \cn\xn[Shizuha]Wonderful! Thank you for the leaves! 
+    @>Text: \pt\pn was given \v[2] Festival Points in exchange for the leaves!\me[BP Fanfare]\wtnp[80]
+    @>Text: \pt\xn[Shizuha]Wonderful! Thank you for the leaves! 
      :    : They sure are pretty, wouldn't you agree?
-    @>Text: \cn\xn[Shizuha]If you have any other leaves that need
+    @>Text: \pt\xn[Shizuha]If you have any other leaves that need
      :    : to be exchanged, feel free to come back anytime!
     @>
    : When [No]
-    @>Text: \cn\xn[Shizuha]N-No? Well... Alright then, I suppose if
+    @>Text: \pt\xn[Shizuha]N-No? Well... Alright then, I suppose if
      :    : you want to hold onto them, that's fine too!
-    @>Text: \cn\xn[Shizuha]If you change your mind, you can bring 
+    @>Text: \pt\xn[Shizuha]If you change your mind, you can bring 
      :    : them here at any time!
     @>
    : Branch End
    @>
   : Else
-   @>Text: \cn\xn[Shizuha]Oh, it would appear you don't have any
+   @>Text: \pt\xn[Shizuha]Oh, it would appear you don't have any
     :    : of these leaves.
-   @>Text: \cn\xn[Shizuha]That's okay! If you happen to come across 
+   @>Text: \pt\xn[Shizuha]That's okay! If you happen to come across 
     :    : any, be sure to bring them here and I'll gladly accept 
     :    : them!
    @>Exit Event Processing
@@ -36991,32 +37079,32 @@ List of Event Commands:
   @>Conditional Branch: Script: $bag.has?(:AUTUMNLEAF)
    @>Script: $game_variables[1] = $bag.quantity(:AUTUMNLEAF)
    :       : $game_variables[2] = pbGet(1) * 5
-   @>Text: \cn\xn[Shizuha]Hmm... For that many Autumn Leaves, I can
+   @>Text: \pt\xn[Shizuha]Hmm... For that many Autumn Leaves, I can
     :    : give you \v[2] Festival Points. Does that sound good?
    @>Show Choices: Yes, No
    (When Cancel: Choice 2)
    : When [Yes]
     @>Script: $bag.remove(:AUTUMNLEAF,pbGet(1))
     :       : $player.battle_points+= pbGet(2)
-    @>Text: \cn\pn was given \v[2] Festival Points in exchange for the leaves!\me[BP Fanfare]\wtnp[80]
-    @>Text: \cn\xn[Shizuha]Wonderful! Thank you for the leaves! 
+    @>Text: \pt\pn was given \v[2] Festival Points in exchange for the leaves!\me[BP Fanfare]\wtnp[80]
+    @>Text: \pt\xn[Shizuha]Wonderful! Thank you for the leaves! 
      :    : They sure are pretty, wouldn't you agree?
-    @>Text: \cn\xn[Shizuha]If you have any other leaves that need
+    @>Text: \pt\xn[Shizuha]If you have any other leaves that need
      :    : to be exchanged, feel free to come back anytime!
     @>
    : When [No]
-    @>Text: \cn\xn[Shizuha]N-No? Well... Alright then, I suppose if
+    @>Text: \pt\xn[Shizuha]N-No? Well... Alright then, I suppose if
      :    : you want to hold onto them, that's fine too!
-    @>Text: \cn\xn[Shizuha]If you change your mind, you can bring 
+    @>Text: \pt\xn[Shizuha]If you change your mind, you can bring 
      :    : them here at any time!
     @>Exit Event Processing
     @>
    : Branch End
    @>
   : Else
-   @>Text: \cn\xn[Shizuha]Oh, it would appear you don't have any
+   @>Text: \pt\xn[Shizuha]Oh, it would appear you don't have any
     :    : of these leaves.
-   @>Text: \cn\xn[Shizuha]That's okay! If you happen to come across 
+   @>Text: \pt\xn[Shizuha]That's okay! If you happen to come across 
     :    : any, be sure to bring them here and I'll gladly accept 
     :    : them!
    @>Exit Event Processing
@@ -37029,7 +37117,7 @@ List of Event Commands:
  : Branch End
  @>
 : When [No]
- @>Text: \cn\xn[Shizuha]I understand, please come again if you change
+ @>Text: \pt\xn[Shizuha]I understand, please come again if you change
   :    : your mind in the future!
  @>
 : Branch End
@@ -37515,7 +37603,7 @@ List of Event Commands:
  :              : $>Move Down
  :              : $>Move Down
 @>Wait for Move's Completion
-@>Script: $player.coins+=100
+@>Script: $player.battle_points+=100
 @>Text: \pn was awarded 100 Festival points!\me[BP Fanfare]\wtnp[80]
 @>Text: \xn[Announcer]Thank you for coming everyone! We hope to
  :    : see you back here again real soon!
@@ -37603,153 +37691,158 @@ List of Event Commands:
 @>Control Switches: [0104: Transition Handler] = ON
 @>Control Variables: [0103: Vs. Transition ID] = 11
 @>Control Variables: [0104: Vs. Transition - Pkmn] = 4
-@>Script: TrainerBattle.start(:MINORIKO, "Minoriko Aki", 10+(pbGet(99) * 10))
-@>Control Switches: [0119: Minoriko Beaten] = ON
-@>Script: pbSetSelfSwitch(23,"A",true)
-@>Text: \xn[Announcer]What an incredible match that was folks! I've 
- :    : never seen a battle quite as energetic as that one!
-@>Text: \xn[Announcer]With all of their opponent's puppets knocked
- :    : out, the victor of this special exhibition match is \pn!
-@>Text: \xn[Announcer]And what a pulse pounding battle it 
- :    : was, wouldn't you agree?
-@>Set Move Route: Player
- :              : $>Move Right
- :              : $>Move Right
- :              : $>Move Right
- :              : $>Move Right
-@>Set Move Route: [Opposing Trainer]
- :              : $>Move Left
- :              : $>Move Left
- :              : $>Move Left
- :              : $>Move Left
-@>Text: \xn[Minoriko]You are quite the battler, \pn! You might even be
- :    : strong enough to go toe to toe with some of the Mountain's
- :    : residents!
-@>Text: \xn[\pn]Thank you for the complements! That battle was every 
- :    : bit as engaging as I'd expet from a God of your stature!
-@>Script: pbSetSelfSwitch(23,"A",false)
-@>Text: \xn[Minoriko]Oh please, you flatter me with your words!
-@>Text: \xn[Minoriko]At any rate, as you were the victor of this match,
- :    : I award you with the true prize of this exhibition!
-@>Text: \xn[Minoriko]Several jars of my homemade, specially crafted
- :    : jam! Made with the finest ingredients you'd get from the harvest
- :    : season!
-@>Script: pbReceiveItem(:MINORIKOJAM,3)
-@>Text: \xn[\pn]It smells absolutely incredible! I can't wait to try it
- :    : out!
-@>Text: \xn[Minoriko]If you would ever like more, you can always
- :    : purchase some more at my shop in the Festival Grounds!
-@>Text: \xn[Announcer]And there you have it, folks! Let's give it up 
- :    : once more for \pn and Miss Minoriko!
-@>Script: pbSetSelfSwitch(23,"A",true)
-@>Wait: 40 frame(s)
-@>Text: \xn[Announcer]It's been a pleasure to be your announcer for 
- :    : this special exhibition match! I'll see you all again at the next 
- :    : tournament!
-@>Change Screen Color Tone: (-255,-255,-255,0), @6
-@>Script: pbSetSelfSwitch(23,"A",false)
-@>Wait: 16 frame(s)
-@>Script: pbSetSelfSwitch(2, "A", true)
-@>Script: 4.upto(22) do |i|
-:       :     pbSetSelfSwitch(i, "A", true)
-:       : end
-@>Transfer Player:[044: Festival Tournament Arena], (014,012), Down, No Fade
-@>Set Event Location: [Opposing Trainer],(015,012), Down
-@>Set Event Location: [Shinji],(013,014), Up
-@>Set Event Location: [Kota],(015,014), Up
-@>Set Event Location: [Maya],(014,014), Up
-@>Set Move Route: [Shinji]
- :              : $>Change Opacity: 255
-@>Set Move Route: [Kota]
- :              : $>Change Opacity: 255
-@>Set Move Route: [Maya]
- :              : $>Change Opacity: 255
-@>Change Screen Color Tone: (0,0,0,0), @6
-@>Fade Out BGM: 5 sec.
-@>Text: \xn[Kota]That fight was really crazy to watch! It was like 
- :    : watching the Shrine Maiden deal with incidents! You both
- :    : were incredible!
-@>Text: \xn[Maya]\pn sure has put a lot of effort into becoming a
- :    : proficent Puppet Handler! Some are even saying she's one
- :    : of the strongest in the Village right now.
-@>Text: \xn[Shinji]Against the tactics that Miss Minoriko was employing,
- :    : and how quickly \pn managed to adapt to it, I can agree with 
- :    : that claim wholeheartedly!
-@>Text: \xn[\pn]Aw, you guys... I know I'm good, but I'm not <i>that</i>
- :    : good!
-@>Set Move Route: [Opposing Trainer]
- :              : $>Turn Left
-@>Text: \xn[Minoriko]I'm in agreement with them, \pn! You might just
- :    : be strong enough to take on the Gensokyo Challenge Circuit!
-@>Set Move Route: Player
- :              : $>Turn Right
-@>Text: \xn[\pn]Y-You really think so...!?
-@>Set Event Location: [Keine],(014,021), Up
-@>Set Event Location: [Mr. Kirisame],(015,021), Up
-@>Set Move Route: [Keine]
- :              : $>Change Opacity: 255
- :              : $>Move Up
- :              : $>Move Up
- :              : $>Move Up
- :              : $>Move Up
- :              : $>Move Up
- :              : $>Move Up
-@>Set Move Route: [Mr. Kirisame]
- :              : $>Change Opacity: 255
- :              : $>Move Up
- :              : $>Move Up
- :              : $>Move Up
- :              : $>Move Up
- :              : $>Move Up
- :              : $>Move Up
-@>Scroll Map: Down, 2, 3
-@>Text: \xn[Minoriko]Absolutely! Why, I believe you have the potential
- :    : to take on the Grand Ha-\^
-@>Text: \xn[Keine]Oh thank the gods, we found you!
-@>Set Move Route: Player
- :              : $>Turn Down
-@>Set Move Route: [Opposing Trainer]
- :              : $>Turn Down
-@>Set Move Route: [Shinji]
- :              : $>Turn Down
-@>Set Move Route: [Kota]
- :              : $>Turn Down
-@>Set Move Route: [Maya]
- :              : $>Turn Down
-@>Text: \xn[\pn]Miss Keine? Is everything alright? You look like
- :    : you're out of breath...
-@>Text: \xn[Maya]Wait, what's Mr. Kirisame doing here? I thought
- :    : he had something urgent to attend to?
-@>Text: \xn[Keine]He did, and that's exactly why we're both here!
- :    : There's been an incident!
-@>Text: \xn[Minoriko]Just settle down Miss Kamishirasawa... Would
- :    : you mind telling us what happened?
-@>Text: \xn[Keine]The crops\..\..\..\wt[20] they've all been poisoned!\wt[20] The Village's 
- :    : harvest is decaying as we speak!
-@>Show Animation: Player, [Exclaim bubble]
-@>Show Animation: [Opposing Trainer], [Exclaim bubble]
-@>Show Animation: [Shinji], [Exclaim bubble]
-@>Show Animation: [Kota], [Exclaim bubble]
-@>Show Animation: [Maya], [Exclaim bubble]
-@>Text: \xn[\pn]W-What!? Poisoned!?
-@>Text: \xn[Kota]Y-You're joking, right!?
-@>Text: \xn[Minoriko]Oh dear, this sounds serious... I think you had
- :    : best tell us everything from the beginning. It sounds like
- :    : you have more to say.
-@>Text: \xn[Keine]Yes, I do! If you'll just follow me, we can go over
- :    : exactly what has happened...
-@>Play SE: 'Door exit', 100, 100
-@>Change Screen Color Tone: (-255,-255,-255,0), @6
-@>Recover All: Entire Party
-@>Wait: 6 frame(s)
-@>Script: pbSetSelfSwitch(2, "A", false)
-@>Script: 4.upto(22) do |i|
-:       :     pbSetSelfSwitch(i, "A", false)
-:       : end
-@>Control Self Switch: B =ON
-@>Transfer Player:[045: Village Confrence Room], (009,009)
-@>Change Transparent Flag: Transparency
-@>Change Screen Color Tone: (0,0,0,0), @6
+@>Conditional Branch: Script: TrainerBattle.start(:MINORIKO, "Minoriko Aki", 10+(pbGet(99) * 10))
+ @>Control Switches: [0119: Minoriko Beaten] = ON
+ @>Script: pbSetSelfSwitch(23,"A",true)
+ @>Text: \xn[Announcer]What an incredible match that was folks! I've 
+  :    : never seen a battle quite as energetic as that one!
+ @>Text: \xn[Announcer]With all of their opponent's puppets knocked
+  :    : out, the victor of this special exhibition match is \pn!
+ @>Text: \xn[Announcer]And what a pulse pounding battle it 
+  :    : was, wouldn't you agree?
+ @>Set Move Route: Player
+  :              : $>Move Right
+  :              : $>Move Right
+  :              : $>Move Right
+  :              : $>Move Right
+ @>Set Move Route: [Opposing Trainer]
+  :              : $>Move Left
+  :              : $>Move Left
+  :              : $>Move Left
+  :              : $>Move Left
+ @>Text: \xn[Minoriko]You are quite the battler, \pn! You might even be
+  :    : strong enough to go toe to toe with some of the Mountain's
+  :    : residents!
+ @>Text: \xn[\pn]Thank you for the complements! That battle was every 
+  :    : bit as engaging as I'd expet from a God of your stature!
+ @>Script: pbSetSelfSwitch(23,"A",false)
+ @>Text: \xn[Minoriko]Oh please, you flatter me with your words!
+ @>Text: \xn[Minoriko]At any rate, as you were the victor of this match,
+  :    : I award you with the true prize of this exhibition!
+ @>Text: \xn[Minoriko]Several jars of my homemade, specially crafted
+  :    : jam! Made with the finest ingredients you'd get from the harvest
+  :    : season!
+ @>Script: pbReceiveItem(:MINORIKOJAM,3)
+ @>Text: \xn[\pn]It smells absolutely incredible! I can't wait to try it
+  :    : out!
+ @>Text: \xn[Minoriko]If you would ever like more, you can always
+  :    : purchase some more at my shop in the Festival Grounds!
+ @>Text: \xn[Announcer]And there you have it, folks! Let's give it up 
+  :    : once more for \pn and Miss Minoriko!
+ @>Script: pbSetSelfSwitch(23,"A",true)
+ @>Wait: 40 frame(s)
+ @>Text: \xn[Announcer]It's been a pleasure to be your announcer for 
+  :    : this special exhibition match! I'll see you all again at the next 
+  :    : tournament!
+ @>Change Screen Color Tone: (-255,-255,-255,0), @6
+ @>Script: pbSetSelfSwitch(23,"A",false)
+ @>Wait: 16 frame(s)
+ @>Script: pbSetSelfSwitch(2, "A", true)
+ @>Script: 4.upto(22) do |i|
+ :       :     pbSetSelfSwitch(i, "A", true)
+ :       : end
+ @>Transfer Player:[044: Festival Tournament Arena], (014,012), Down, No Fade
+ @>Set Event Location: [Opposing Trainer],(015,012), Down
+ @>Set Event Location: [Shinji],(013,014), Up
+ @>Set Event Location: [Kota],(015,014), Up
+ @>Set Event Location: [Maya],(014,014), Up
+ @>Set Move Route: [Shinji]
+  :              : $>Change Opacity: 255
+ @>Set Move Route: [Kota]
+  :              : $>Change Opacity: 255
+ @>Set Move Route: [Maya]
+  :              : $>Change Opacity: 255
+ @>Change Screen Color Tone: (0,0,0,0), @6
+ @>Fade Out BGM: 5 sec.
+ @>Text: \xn[Kota]That fight was really crazy to watch! It was like 
+  :    : watching the Shrine Maiden deal with incidents! You both
+  :    : were incredible!
+ @>Text: \xn[Maya]\pn sure has put a lot of effort into becoming a
+  :    : proficent Puppet Handler! Some are even saying she's one
+  :    : of the strongest in the Village right now.
+ @>Text: \xn[Shinji]Against the tactics that Miss Minoriko was employing,
+  :    : and how quickly \pn managed to adapt to it, I can agree with 
+  :    : that claim wholeheartedly!
+ @>Text: \xn[\pn]Aw, you guys... I know I'm good, but I'm not <i>that</i>
+  :    : good!
+ @>Set Move Route: [Opposing Trainer]
+  :              : $>Turn Left
+ @>Text: \xn[Minoriko]I'm in agreement with them, \pn! You might just
+  :    : be strong enough to take on the Gensokyo Challenge Circuit!
+ @>Set Move Route: Player
+  :              : $>Turn Right
+ @>Text: \xn[\pn]Y-You really think so...!?
+ @>Set Event Location: [Keine],(014,021), Up
+ @>Set Event Location: [Mr. Kirisame],(015,021), Up
+ @>Set Move Route: [Keine]
+  :              : $>Change Opacity: 255
+  :              : $>Move Up
+  :              : $>Move Up
+  :              : $>Move Up
+  :              : $>Move Up
+  :              : $>Move Up
+  :              : $>Move Up
+ @>Set Move Route: [Mr. Kirisame]
+  :              : $>Change Opacity: 255
+  :              : $>Move Up
+  :              : $>Move Up
+  :              : $>Move Up
+  :              : $>Move Up
+  :              : $>Move Up
+  :              : $>Move Up
+ @>Scroll Map: Down, 2, 3
+ @>Text: \xn[Minoriko]Absolutely! Why, I believe you have the potential
+  :    : to take on the Grand Ha-\^
+ @>Text: \xn[Keine]Oh thank the gods, we found you!
+ @>Set Move Route: Player
+  :              : $>Turn Down
+ @>Set Move Route: [Opposing Trainer]
+  :              : $>Turn Down
+ @>Set Move Route: [Shinji]
+  :              : $>Turn Down
+ @>Set Move Route: [Kota]
+  :              : $>Turn Down
+ @>Set Move Route: [Maya]
+  :              : $>Turn Down
+ @>Text: \xn[\pn]Miss Keine? Is everything alright? You look like
+  :    : you're out of breath...
+ @>Text: \xn[Maya]Wait, what's Mr. Kirisame doing here? I thought
+  :    : he had something urgent to attend to?
+ @>Text: \xn[Keine]He did, and that's exactly why we're both here!
+  :    : There's been an incident!
+ @>Text: \xn[Minoriko]Just settle down Miss Kamishirasawa... Would
+  :    : you mind telling us what happened?
+ @>Text: \xn[Keine]The crops\..\..\..\wt[20] they've all been poisoned!\wt[20] The Village's 
+  :    : harvest is decaying as we speak!
+ @>Show Animation: Player, [Exclaim bubble]
+ @>Show Animation: [Opposing Trainer], [Exclaim bubble]
+ @>Show Animation: [Shinji], [Exclaim bubble]
+ @>Show Animation: [Kota], [Exclaim bubble]
+ @>Show Animation: [Maya], [Exclaim bubble]
+ @>Text: \xn[\pn]W-What!? Poisoned!?
+ @>Text: \xn[Kota]Y-You're joking, right!?
+ @>Text: \xn[Minoriko]Oh dear, this sounds serious... I think you had
+  :    : best tell us everything from the beginning. It sounds like
+  :    : you have more to say.
+ @>Text: \xn[Keine]Yes, I do! If you'll just follow me, we can go over
+  :    : exactly what has happened...
+ @>Play SE: 'Door exit', 100, 100
+ @>Change Screen Color Tone: (-255,-255,-255,0), @6
+ @>Recover All: Entire Party
+ @>Wait: 6 frame(s)
+ @>Script: pbSetSelfSwitch(2, "A", false)
+ @>Script: 4.upto(22) do |i|
+ :       :     pbSetSelfSwitch(i, "A", false)
+ :       : end
+ @>Control Self Switch: B =ON
+ @>Transfer Player:[045: Village Confrence Room], (009,009)
+ @>Change Transparent Flag: Transparency
+ @>Change Screen Color Tone: (0,0,0,0), @6
+ @>
+: Else
+ @>Exit Event Processing
+ @>
+: Branch End
 @>
 
 Page #3
@@ -38639,6 +38732,7 @@ Map ID: 045
 Map Name: Village Confrence Room
 Tileset: 029: Interior (General)
 Width: 20, Height: 25
+Auto-Change BGM: W-018. This Dull World's Unchanging Pessemism (Village)
 
 #------------------------------------------------------------------------------
 Event ID: 001
@@ -39325,7 +39419,7 @@ List of Event Commands:
 @>Text: \xn[Keine]However, we were starting to notice that there were
  :    : more fairies than we could reasonably keep track of.
 @>Text: \xn[Akyuu]Under normal circumstances, this wouldn't be an 
- :    : issue. Fairies tnd to frequent the village fairly often.
+ :    : issue. Fairies tend to frequent the village fairly often.
 @>Text: \xn[Keine]Right. But, the problems started arising when the 
  :    : Fairies begun to do coordinated pranks and challenge 
  :    : Puppet Handlers to battles in swarms.
@@ -39484,7 +39578,7 @@ List of Event Commands:
 
 Page #3
 Conditions
-Variable 0109: Lamprey Count is 4 or above
+Variable 0115: 3 Fairies defeated is 4 or above
 
 Graphic: Person_Akyuu
 
@@ -40761,7 +40855,7 @@ List of Event Commands:
 
 #------------------------------------------------------------------------------
 Event ID: 015
-Event Name: Trainer(2)
+Event Name: Trainer(2) 82,28R
 (X,Y): (082,028)
 
 Page #1
@@ -40809,7 +40903,7 @@ List of Event Commands:
 
 #------------------------------------------------------------------------------
 Event ID: 016
-Event Name: Trainer(3)
+Event Name: Trainer(3) 60,23L
 (X,Y): (060,023)
 
 Page #1
@@ -40858,7 +40952,7 @@ List of Event Commands:
 
 #------------------------------------------------------------------------------
 Event ID: 017
-Event Name: Trainer(3)
+Event Name: Trainer(3) 48,35D
 (X,Y): (048,035)
 
 Page #1
@@ -40883,7 +40977,7 @@ List of Event Commands:
 @>Script: pbTrainerIntro(:FAIRY_1_ALT)
 @>Script: pbNoticePlayer(get_self)
 @>Text: Behold the unbreakable alliance!
-@>Conditional Branch: Script: TrainerBattle.start(:FAIRY_1, "Melia",pbGet(99))
+@>Conditional Branch: Script: TrainerBattle.start(:FAIRY_1_ALT, "Melia",pbGet(99))
  @>Control Self Switch: A =ON
  @>
 : Branch End
@@ -40915,7 +41009,7 @@ List of Event Commands:
 
 #------------------------------------------------------------------------------
 Event ID: 018
-Event Name: Trainer(3)
+Event Name: Trainer(3) 86,41R
 (X,Y): (086,041)
 
 Page #1
@@ -40965,7 +41059,7 @@ List of Event Commands:
 
 #------------------------------------------------------------------------------
 Event ID: 019
-Event Name: Trainer(3)
+Event Name: Trainer(3) 60,46U
 (X,Y): (060,046)
 
 Page #1
@@ -41013,7 +41107,7 @@ List of Event Commands:
 
 #------------------------------------------------------------------------------
 Event ID: 020
-Event Name: Trainer(5)
+Event Name: Trainer(5) 76,44D
 (X,Y): (076,044)
 
 Page #1
@@ -41061,7 +41155,7 @@ List of Event Commands:
 
 #------------------------------------------------------------------------------
 Event ID: 021
-Event Name: Trainer(5)
+Event Name: Trainer(5) 76,50U
 (X,Y): (076,050)
 
 Page #1
@@ -41110,7 +41204,7 @@ List of Event Commands:
 
 #------------------------------------------------------------------------------
 Event ID: 022
-Event Name: Trainer(3)
+Event Name: Trainer(3) 24,45L
 (X,Y): (024,045)
 
 Page #1
@@ -41168,7 +41262,7 @@ List of Event Commands:
 
 #------------------------------------------------------------------------------
 Event ID: 023
-Event Name: Trainer(2)
+Event Name: Trainer(2) 29,12R
 (X,Y): (029,012)
 
 Page #1
@@ -41463,7 +41557,7 @@ List of Event Commands:
 #------------------------------------------------------------------------------
 Event ID: 030
 Event Name: EV030
-(X,Y): (099,000)
+(X,Y): (079,026)
 
 Page #1
 Conditions
@@ -41517,6 +41611,15 @@ Trigger: Action Button
 List of Event Commands:
 @>Script: pbSetPokemonCenter
 @>Call Common Event: Akyuu Shrines
+@>Set Event Location: [Trainer(2) 82,28R],(082,028), Right
+@>Set Event Location: [Trainer(3) 60,23L],(060,023), Left
+@>Set Event Location: [Trainer(3) 48,35D],(048,035), Down
+@>Set Event Location: [Trainer(3) 86,41R],(086,041), Right
+@>Set Event Location: [Trainer(3) 60,46U],(060,046), Up
+@>Set Event Location: [Trainer(5) 76,44D],(076,044), Down
+@>Set Event Location: [Trainer(5) 76,50U],(076,050), Up
+@>Set Event Location: [Trainer(3) 24,45L],(024,045), Left
+@>Set Event Location: [Trainer(2) 29,12R],(029,012), Right
 @>
 
 #------------------------------------------------------------------------------
@@ -41822,6 +41925,26 @@ List of Event Commands:
 @>
 
 #------------------------------------------------------------------------------
+Event ID: 036
+Event Name: Impassable size(3,1)
+(X,Y): (057,014)
+
+Page #1
+Conditions
+None
+
+Autonomous Movement
+Type: Fixed
+Speed: 3: Slow
+Freq: 3: Low
+Options Enabled
+Move Animation
+Trigger: Action Button
+
+List of Event Commands:
+@>
+
+#------------------------------------------------------------------------------
 Event ID: 037
 Event Name: EV037
 (X,Y): (100,000)
@@ -42107,6 +42230,26 @@ List of Event Commands:
 :       : :SWIFTSHARD,:SUPPORTSHARD,:SOLARSHARD,
 :       : :CHROMESHARD
 :       : ])
+@>
+
+Page #3
+Conditions
+Switch 0107: New Game + is ON
+
+Graphic: TPDP_NPC 39
+
+Autonomous Movement
+Type: Fixed
+Speed: 3: Slow
+Freq: 3: Low
+Options Enabled
+Move Animation
+Trigger: Action Button
+
+List of Event Commands:
+@>Script: setPrice(:RARECANDY,9800)
+@>Script: setPrice(:MAXREVIVE,9800)
+@>Script: pbTFoCShop
 @>
 
 #------------------------------------------------------------------------------
@@ -45875,7 +46018,7 @@ Move Animation
 Trigger: Action Button
 
 List of Event Commands:
-@>Script: pbTrainerIntro(:STAR)
+@>Script: pbTrainerIntro(:START)
 @>Script: pbNoticePlayer(get_self)
 @>Text: \xn[Star]Oh no, a human from the Village!
 @>Text: \xn[Star]Well, I don't care much for battling, but desperate
@@ -45883,7 +46026,7 @@ List of Event Commands:
 @>Control Switches: [0104: Transition Handler] = ON
 @>Control Variables: [0103: Vs. Transition ID] = 15
 @>Control Variables: [0104: Vs. Transition - Pkmn] = 3
-@>Conditional Branch: Script: TrainerBattle.start(:STAR, "Star Sapphire", 10+(pbGet(99) * 10))
+@>Conditional Branch: Script: TrainerBattle.start(:START, "Star Sapphire", 10+(pbGet(99) * 10))
  @>Text: \xn[Star]I should have fled when I had the chance!
  @>Text: \xn[Star]Maybe they've been possessed the same way
   :    : as the other fairies! That curse sure is doing a number on
@@ -45946,14 +46089,14 @@ Move Animation
 Trigger: Action Button
 
 List of Event Commands:
-@>Script: pbTrainerIntro(:LUNA)
+@>Script: pbTrainerIntro(:LUNAT)
 @>Script: pbNoticePlayer(get_self)
 @>Text: \xn[Luna]You must have come from the Village! Great!
 @>Text: \xn[Luna]I was just looking for someone to prank~
 @>Control Switches: [0104: Transition Handler] = ON
 @>Control Variables: [0103: Vs. Transition ID] = 16
 @>Control Variables: [0104: Vs. Transition - Pkmn] = 3
-@>Conditional Branch: Script: TrainerBattle.start(:LUNA, "Luna Child", 10+(pbGet(99) * 10))
+@>Conditional Branch: Script: TrainerBattle.start(:LUNAT, "Luna Child", 10+(pbGet(99) * 10))
  @>Text: \xn[Luna]Oh well, time to find a new target!
  @>Text: \xn[Luna]Perhaps if you were around last night, you
   :    : may have even been able to drive off the person
@@ -46015,14 +46158,14 @@ Move Animation
 Trigger: Action Button
 
 List of Event Commands:
-@>Script: pbTrainerIntro(:SUNNY)
+@>Script: pbTrainerIntro(:SUNNYT)
 @>Script: pbNoticePlayer(get_self)
 @>Text: \xn[Sunny]Hehe, you look like a fun target! C'mon, let me dazzle 
  :    : you with my light show! 
 @>Control Switches: [0104: Transition Handler] = ON
 @>Control Variables: [0103: Vs. Transition ID] = 17
 @>Control Variables: [0104: Vs. Transition - Pkmn] = 3
-@>Conditional Branch: Script: TrainerBattle.start(:SUNNY, "Sunny Milk", 10+(pbGet(99) * 10))
+@>Conditional Branch: Script: TrainerBattle.start(:SUNNYT, "Sunny Milk", 10+(pbGet(99) * 10))
  @>Text: \xn[Sunny]Puppet Handlers sure are strong! I guess that's
   :    : what happens when you train a lot of Puppets.
  @>Text: \xn[Sunny]That must mean that person who had a legion
@@ -46245,7 +46388,11 @@ None
 Graphic: TPDP_NPC 18
 
 Autonomous Movement
-Type: Random
+Type: Custom
+Custom Move Route:
+(Repeat Action)
+$>Script: move_random_range(2,2)
+
 Speed: 3: Slow
 Freq: 4: High
 Options Enabled
@@ -46270,7 +46417,11 @@ Self Switch A is ON
 Graphic: TPDP_NPC 18
 
 Autonomous Movement
-Type: Random
+Type: Custom
+Custom Move Route:
+(Repeat Action)
+$>Script: move_random_range(2,2)
+
 Speed: 3: Slow
 Freq: 4: High
 Options Enabled
@@ -47995,7 +48146,7 @@ List of Event Commands:
 
 #------------------------------------------------------------------------------
 Event ID: 007
-Event Name: Size(3,1)
+Event Name: size(3,1)
 (X,Y): (023,027)
 
 Page #1
@@ -48014,6 +48165,7 @@ List of Event Commands:
 @>Set Move Route: Player
  :              : $>Move Up
  :              : $>Move Up
+ :              : $>Through OFF
 @>Text: \xn[\pn]\b(Ah-ha, there they are! Now all I gotta do is sneak up on 
  :    : them and...)
 @>Text: \xn[Star]Hold it right there, Human!
@@ -48160,12 +48312,14 @@ Speed: 3: Slow
 Freq: 3: Low
 Options Enabled
 Move Animation
-Trigger: Event Touch
+Trigger: Player Touch
 
 List of Event Commands:
 @>Set Move Route: Player
+ :              : $>Through ON
  :              : $>Move Up
  :              : $>Move Up
+ :              : $>Through OFF
 @>Text: \xn[\pn]\b(Okay, maybe this time I'll be able to approach, 
  :    : and...)
 @>Text: \xn[Star]Did you forget that I can sense you approaching!
@@ -48286,8 +48440,8 @@ List of Event Commands:
 
 #------------------------------------------------------------------------------
 Event ID: 008
-Event Name: Counter(1)
-(X,Y): (026,027)
+Event Name: counter(1)
+(X,Y): (027,027)
 
 Page #1
 Conditions
@@ -48457,7 +48611,7 @@ Speed: 3: Slow
 Freq: 3: Low
 Options Enabled
 Move Animation
-Trigger: Event Touch
+Trigger: Player Touch
 
 List of Event Commands:
 @>Set Move Route: Player
@@ -52671,7 +52825,6 @@ List of Event Commands:
  @>Script: # $game_variables[1] = $GameSpeed
  :       : # pbDisallowSpeedup
  :       : # $GameSpeed = 0
- @>Control Switches: [0103: Hide AI Level] = ON
  @>Change Map Settings:Fog = 'PurpleFog', 0, 200, Normal, 200, 0, 0
  @>Change Screen Color Tone: (51,17,-34,255), @10
  @>Play BGM: 'W-029. Unknown Flower, Mesmerizing Journey', 70, 100
@@ -55165,8 +55318,6 @@ List of Event Commands:
 @>Text: \bProceeding past this point will trigger the final cutscene
  :    : and final fight of the game.
 @>Text: \bIt is highly advised that you prepare yourself beforehand.
-@>Text: \bUpon finishing the final battle, you will be returned to your
- :    : last save point.
 @>Text: \bDo you wish to proceed?
 @>Show Choices: Yes, No
 (When Cancel: Choice 2)
@@ -55282,8 +55433,6 @@ List of Event Commands:
 @>Text: \bProceeding past this point will trigger the final cutscene
  :    : and final fight of the game.
 @>Text: \bIt is highly advised that you prepare yourself beforehand.
-@>Text: \bUpon finishing the final battle, you will be returned to your
- :    : last save point.
 @>Text: \bDo you wish to proceed?
 @>Show Choices: Yes, No
 (When Cancel: Choice 2)
@@ -106788,7 +106937,7 @@ List of Event Commands:
  @>Show Choices: Yes, No
  (When Cancel: Choice 2)
  : When [Yes]
-  @>Script: $game_variables[1] = (:CKAGEROU, 15)
+  @>Script: $game_variables[1] = Pokemon.new(:CKAGEROU, 15)
   @>Jump to Label: Continue Intro
   @>
  : When [No]
@@ -108354,10 +108503,6 @@ Common Event Name: Vs. Three Fairies
 Trigger: None
 
 List of Event Commands:
-@>Script: # $game_variables[1] = $GameSpeed
-:       : # pbDisallowSpeedup
-:       : # $GameSpeed = 0
-@>Control Switches: [0103: Hide AI Level] = ON
 @>Change Text Options: Middle, Hide
 @>Comment: --- Pre-Battle Intro Setup
 @>Call Common Event: Vs. Transition - Flash
@@ -108374,20 +108519,20 @@ List of Event Commands:
 @>Play SE: 'Vs flash', 80, 100
 @>Screen Flash: (255,255,255,255), @10
 @>Script: pbShowPicture(3,"Transitions/PTs/Char_Luna2S.png",1,256,192,zoomX=100,zoomY=100,opacity=255,blendType=0)
-@>Text: \se[]\ts[]<i>Star light...</i>\wtnp[25]
+@>Text: \se[]\ts[]<i>Star light...</i>\wtnp[30]
 @>Screen Flash: (255,255,255,255), @10
 @>Play SE: 'Vs flash', 80, 120
 @>Script: pbShowPicture(3,"Transitions/PTs/Char_Star2S.png",1,256,192,zoomX=100,zoomY=100,opacity=255,blendType=0)
-@>Text: \se[]\ts[]<i><ar>Star bright...</ar></i>\wtnp[25]
+@>Text: \se[]\ts[]<i><ar>Star bright...</ar></i>\wtnp[26]
 @>Screen Flash: (255,255,255,255), @10
 @>Play SE: 'Vs flash', 80, 80
 @>Screen Flash: (255,255,255,255), @10
 @>Script: pbShowPicture(3,"Transitions/PTs/Char_Sunny2S.png",1,256,192,zoomX=100,zoomY=100,opacity=255,blendType=0)
-@>Text: \se[]\ts[]<i><ac>\l[3]We're the three brightest stars in the sky tonight!</ac></i>\wtnp[50]
+@>Text: \se[]\ts[]<i><ac>\l[3]We're the three brightest stars in the sky tonight!</ac></i>\wtnp[54]
 @>Play SE: 'Vs flash', 80, 100
 @>Screen Flash: (255,255,255,255), @10
 @>Script: pbShowPicture(3,"Transitions/PTs/Char_ThreeFairiesS.png",1,256,192,zoomX=100,zoomY=100,opacity=255,blendType=0)
-@>Text: \se[]\ts[]<i><ac>Ready, let's settle this once and for all!</ac></i>\wtnp[125]
+@>Text: \se[]\ts[]<i><ac>Ready, let's settle this once and for all!</ac></i>\wtnp[130]
 @>Screen Flash: (255,255,255,255), @10
 @>Play SE: 'Vs sword', 80, 100
 @>Script: pbShowPicture(5,"Transitions/PTs/Char_ThreeFairies.png",1,256,192,zoomX=100,zoomY=100,opacity=255,blendType=0)
@@ -108432,10 +108577,7 @@ List of Event Commands:
 @>Change Screen Color Tone: (0,0,0,0), @10
 @>Comment: --- Pre-Battle Intro Conclusion
 @>Control Switches: [0104: Transition Handler] = OFF
-@>Control Switches: [0103: Hide AI Level] = OFF
 @>Change Text Options: Bottom, Show
-@>Script: # pbAllowSpeedup
-:       : # $GameSpeed = pbGet(1)
 @>
 
 #==============================================================================

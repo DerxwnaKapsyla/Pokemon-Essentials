@@ -19,26 +19,21 @@
 	  #-------------------------------------
 	  when "RoundStartAttack_foe"
 	    next if rand(100) < 80
-	    atk_stats = [:ATTACK, :SPECIAL_ATTACK]
+	    scene.pbStartSpeech(1)
+		battle.pbDisplayPaused(_INTL("Experimental augment, activate!"))
+		scene.pbForceEndSpeech
+		atk_stats = [:ATTACK, :SPECIAL_ATTACK]
 	    def_stats = [:DEFENSE, :SPECIAL_DEFENSE]
 	    showAnim = true
 	    if rand(2) == 1 # Attack Boost
   	      atk_stats.each do |stat|
 		    next if !foe.pbCanRaiseStatStage?(stat, foe)
-		    if showAnim
-		      scene.pbStartSpeech(1)
-		      battle.pbDisplayPaused(_INTL("Defense augment, activate!"))
-		    end
 		    showAnim = false
 		    foe.pbRaiseStatStage(stat, 1, foe, showAnim)
 	      end
 	    else # Defense Boost
 	      def_stats.each do |stat|
 		    next if !foe.pbCanRaiseStatStage?(stat, foe)
-		    if showAnim
-		      scene.pbStartSpeech(1)
-		      battle.pbDisplayPaused(_INTL("Attack augment, activate!"))
-		    end
 		    showAnim = false
 		    foe.pbRaiseStatStage(stat, 1, foe, showAnim)
 	      end
@@ -58,14 +53,14 @@ MidbattleHandlers.add(:midbattle_global, :miasma_field,
       when "RoundEnd_player"
         if rand(100) <= 25
 		  battle.pbDisplayPaused(_INTL("The miasma crept closer to your party..."))    
-		  case rand(4) # Determining Status Condition
+		  case rand(3) # Determining Status Condition
 		  when 0 then player.pbPoison if player.pbCanInflictStatus?(:POISON, player, true)
 		  when 1 then player.pbBurn if player.pbCanInflictStatus?(:BURN, player, true)
 		  when 2 then player.pbParalyze if player.pbCanInflictStatus?(:PARALYSIS, player, true)
-		  when 3 
-		    battle.pbAnimation(:GRUDGE, player, player)
-		    battle.pbDisplayPaused(_INTL("{1} was inflicted with a curse!", player.pbThis))
-		    player.effects[PBEffects::Curse] = true
+		  # when 3 
+		    # battle.pbAnimation(:GRUDGE, player, player)
+		    # battle.pbDisplayPaused(_INTL("{1} was inflicted with a curse!", player.pbThis))
+		    # player.effects[PBEffects::Curse] = true
 		  end
         end	    
       end
@@ -136,9 +131,9 @@ MidbattleHandlers.add(:midbattle_global, :miasma_field,
 	  scene.pbForceEndSpeech
 	  battle.pbDisplayPaused(_INTL("Medicine uses the Tome of Curses to boost her party's strength!"))
 	  showAnim = true
-	  [:ATTACK, :SPECIAL_ATTACK, :SPEED, :ACCURACY].each do |stat|
+	  [:ATTACK, :SPECIAL_ATTACK, :ACCURACY].each do |stat|
 	    next if !medi.pbCanRaiseStatStage?(stat, medi)
-		medi.pbRaiseStatStage(stat, 2, medi, showAnim)
+		medi.pbRaiseStatStage(stat, 1, medi, showAnim)
 		showAnim = false
 	  end
 	#-----------------------------------------------------------------
@@ -154,9 +149,9 @@ MidbattleHandlers.add(:midbattle_global, :miasma_field,
 	  scene.pbForceEndSpeech
 	  battle.pbDisplayPaused(_INTL("Medicine uses the Tome of Curses to boost her party's strength!"))
 	  showAnim = true
-	  [:ATTACK, :SPECIAL_ATTACK, :SPEED, :ACCURACY].each do |stat|
+	  [:ATTACK, :SPECIAL_ATTACK, :ACCURACY].each do |stat|
 	    next if !medi.pbCanRaiseStatStage?(stat, medi)
-		medi.pbRaiseStatStage(stat, 2, medi, showAnim)
+		medi.pbRaiseStatStage(stat, 1, medi, showAnim)
 		showAnim = false
 	  end
 	  battle.midbattleVariable = 0
@@ -179,32 +174,32 @@ MidbattleHandlers.add(:midbattle_global, :miasma_field,
 		battle.pbDisplayPaused(_INTL("Medicine lays a curse upon your party!"))
 		  if rand(100) <= 85 # Non-Rebound Effect
 		    if rand(100) <= 75 # Status Conditions
-			  case rand(7) # Determining Status Condition
+			  case rand(5) # Determining Status Condition
 			  when 0 then player.pbParalyze if player.pbCanInflictStatus?(:PARALYSIS, player, true)
 			  when 1 then player.pbFreeze if player.pbCanInflictStatus?(:FREEZE, player, true)
 			  when 2 then player.pbBurn if player.pbCanInflictStatus?(:BURN, player, true)
 			  when 3 then player.pbPoison if player.pbCanInflictStatus?(:POISON, player, true)
 			  when 4 then player.pbSleep if player.pbCanInflictStatus?(:SLEEP, player, true)
-			  when 5 then player.pbConfuse if player.pbCanConfuse?(player, false)
-			  when 6 
-			    battle.pbAnimation(:GRUDGE, player, player)
-				player.effects[PBEffects::Curse]
-				battle.pbDisplayPaused(_INTL("{1} was inflicted with a curse!", player.pbThis))
+			  #when 5 then player.pbConfuse if player.pbCanConfuse?(player, false)
+			  # when 6 
+			    # battle.pbAnimation(:GRUDGE, player, player)
+				# player.effects[PBEffects::Curse]
+				# battle.pbDisplayPaused(_INTL("{1} was inflicted with a curse!", player.pbThis))
 			  end
 			else # Stat Decreasers
-			  case rand(3) # Determining Stats to lower
+			  case rand(5) # Determining Stats to lower
 			  when 0
-	            showAnim = true
-			    [:ATTACK, :SPECIAL_ATTACK].each do |stat|
+	            [:ATTACK].each do |stat|
+				showAnim = true
 	            next if !player.pbCanLowerStatStage?(stat, player)
-	              player.pbLowerStatStage(stat, 1, player, showAnim)
+	              player.pbLowerStatStage(:ATTACK, 1, player, showAnim)
 	              showAnim = false
 	            end
 			  when 1
-	            showAnim = true
-			    [:DEFENSE, :SPECIAL_DEFENSE].each do |stat|
+	            [:DEFENSE].each do |stat|
+				showAnim = true
 	            next if !player.pbCanLowerStatStage?(stat, player)
-	              player.pbLowerStatStage(stat, 1, player, showAnim)
+	              player.pbLowerStatStage(:DEFENSE, 1, player, showAnim)
 	              showAnim = false
 	            end
 		  	  when 2
@@ -214,6 +209,20 @@ MidbattleHandlers.add(:midbattle_global, :miasma_field,
 	              player.pbLowerStatStage(stat, 1, player, showAnim)
 	              showAnim = false
 	            end
+			  when 3
+	            [:ATTACK].each do |stat|
+				showAnim = true
+	            next if !player.pbCanLowerStatStage?(stat, player)
+	              player.pbLowerStatStage(:SPECIAL_ATTACK, 1, player, showAnim)
+	              showAnim = false
+	            end			  
+			  when 4
+	            [:SPECIAL_DEFENSE].each do |stat|
+				showAnim = true
+	            next if !player.pbCanLowerStatStage?(stat, player)
+	              player.pbLowerStatStage(:SPECIAL_DEFENSE, 1, player, showAnim)
+	              showAnim = false
+	            end			  
 			  end
 			end
 		  else # Rebound Effect
@@ -222,30 +231,30 @@ MidbattleHandlers.add(:midbattle_global, :miasma_field,
 			pbWait(1)
 			battle.pbDisplayPaused(_INTL("...Except, the effect rebounded!"))
 			if rand(100) <= 75 # Status Conditions
-			  case rand(7) # Determining Status Condition
+			  case rand(5) # Determining Status Condition
 			  when 0 then medi.pbParalyze if medi.pbCanInflictStatus?(:PARALYSIS, medi, true)
 			  when 1 then medi.pbFreeze if medi.pbCanInflictStatus?(:FREEZE, medi, true)
 			  when 2 then medi.pbBurn if medi.pbCanInflictStatus?(:BURN, medi, true)
 			  when 3 then medi.pbPoison if medi.pbCanInflictStatus?(:POISON, medi, true)
 			  when 4 then medi.pbSleep if medi.pbCanInflictStatus?(:SLEEP, medi, true)
-			  when 5 then medi.pbConfuse if medi.pbCanConfuse?(medi, false)
-			  when 6 
-			    battle.pbAnimation(:GRUDGE, medi, medi)
-				medi.effects[PBEffects::Curse]
-				battle.pbDisplayPaused(_INTL("{1} was inflicted with a curse!", medi.pbThis))
+			  # when 5 then medi.pbConfuse if medi.pbCanConfuse?(medi, false)
+			  # when 6 
+			    # battle.pbAnimation(:GRUDGE, medi, medi)
+				# medi.effects[PBEffects::Curse]
+				# battle.pbDisplayPaused(_INTL("{1} was inflicted with a curse!", medi.pbThis))
 			  end
 			else # Stat Decreasers
-			  case rand(3) # Determining Stats to lower
+			  case rand(5) # Determining Stats to lower
 			  when 0
 	            showAnim = true
-			    [:ATTACK, :SPECIAL_ATTACK].each do |stat|
+				[:ATTACK].each do |stat|
 	            next if !medi.pbCanLowerStatStage?(stat, medi)
 	              medi.pbLowerStatStage(stat, 1, medi, showAnim)
 	              showAnim = false
 	            end
 			  when 1
-	            showAnim = true
-			    [:DEFENSE, :SPECIAL_DEFENSE].each do |stat|
+	            [:DEFENSE].each do |stat|
+				showAnim = true
 	            next if !medi.pbCanLowerStatStage?(stat, medi)
 	              medi.pbLowerStatStage(stat, 1, medi, showAnim)
 	              showAnim = false
@@ -253,6 +262,20 @@ MidbattleHandlers.add(:midbattle_global, :miasma_field,
 		  	  when 2
 	            showAnim = true
 			    [:SPEED].each do |stat|
+	            next if !medi.pbCanLowerStatStage?(stat, medi)
+	              medi.pbLowerStatStage(stat, 1, medi, showAnim)
+	              showAnim = false
+	            end
+			  when 3
+	            showAnim = true
+				[:SPECIAL_ATTACK].each do |stat|
+	            next if !medi.pbCanLowerStatStage?(stat, medi)
+	              medi.pbLowerStatStage(stat, 1, medi, showAnim)
+	              showAnim = false
+	            end
+			  when 4
+	            [:SPECIAL_DEFENSE].each do |stat|
+				showAnim = true
 	            next if !medi.pbCanLowerStatStage?(stat, medi)
 	              medi.pbLowerStatStage(stat, 1, medi, showAnim)
 	              showAnim = false
@@ -277,17 +300,17 @@ MidbattleHandlers.add(:midbattle_global, :miasma_field,
 		  scene.pbForceEndSpeech
 		  battle.pbDisplayPaused(_INTL("Medicine boosts the stats of her party!"))
 		  if rand(100) <= 85 # Non-Rebound Effect
-			case rand(3) # Determining Stats to Raise
+			case rand(5) # Determining Stats to Raise
 			when 0
 	          showAnim = true
-			  [:ATTACK, :SPECIAL_ATTACK].each do |stat|
+			  [:ATTACK].each do |stat|
 	          next if !medi.pbCanRaiseStatStage?(stat, medi)
 	            medi.pbRaiseStatStage(stat, 1, medi, showAnim)
 	            showAnim = false
 	          end
 			when 1
 	          showAnim = true
-			  [:DEFENSE, :SPECIAL_DEFENSE].each do |stat|
+			  [:DEFENSE].each do |stat|
 	          next if !medi.pbCanRaiseStatStage?(stat, medi)
 	            medi.pbRaiseStatStage(stat, 1, medi, showAnim)
 	            showAnim = false
@@ -295,6 +318,20 @@ MidbattleHandlers.add(:midbattle_global, :miasma_field,
 		  	when 2
 	          showAnim = true
 			  [:SPEED].each do |stat|
+	          next if !medi.pbCanRaiseStatStage?(stat, medi)
+	            medi.pbRaiseStatStage(stat, 1, medi, showAnim)
+	            showAnim = false
+	          end
+			when 3
+	          showAnim = true
+			  [:SPECIAL_ATTACK].each do |stat|
+	          next if !medi.pbCanRaiseStatStage?(stat, medi)
+	            medi.pbRaiseStatStage(stat, 1, medi, showAnim)
+	            showAnim = false
+	          end
+			when 4
+	          showAnim = true
+			  [:SPECIAL_DEFENSE].each do |stat|
 	          next if !medi.pbCanRaiseStatStage?(stat, medi)
 	            medi.pbRaiseStatStage(stat, 1, medi, showAnim)
 	            showAnim = false
@@ -305,17 +342,17 @@ MidbattleHandlers.add(:midbattle_global, :miasma_field,
 			p $game_variables[117]
 			pbWait(1)
 			battle.pbDisplayPaused(_INTL("...Except, the effect rebounded!"))
-			case rand(3) # Determining Stats to Raise
+			case rand(5) # Determining Stats to Raise
 			when 0
 	          showAnim = true
-			  [:ATTACK, :SPECIAL_ATTACK].each do |stat|
+			  [:ATTACK].each do |stat|
 	          next if !player.pbCanRaiseStatStage?(stat, player)
 	            player.pbRaiseStatStage(stat, 1, player, showAnim)
 	            showAnim = false
 	          end
 			when 1
 	          showAnim = true
-			  [:DEFENSE, :SPECIAL_DEFENSE].each do |stat|
+			  [:DEFENSE].each do |stat|
 	          next if !player.pbCanRaiseStatStage?(stat, player)
 	            player.pbRaiseStatStage(stat, 1, player, showAnim)
 	            showAnim = false
@@ -323,6 +360,20 @@ MidbattleHandlers.add(:midbattle_global, :miasma_field,
 		  	when 2
 	          showAnim = true
 			  [:SPEED].each do |stat|
+	          next if !player.pbCanRaiseStatStage?(stat, player)
+	            player.pbRaiseStatStage(stat, 1, player, showAnim)
+	            showAnim = false
+	          end
+			when 3
+	          showAnim = true
+			  [:SPECIAL_ATTACK].each do |stat|
+	          next if !player.pbCanRaiseStatStage?(stat, player)
+	            player.pbRaiseStatStage(stat, 1, player, showAnim)
+	            showAnim = false
+	          end
+			when 4
+	          showAnim = true
+			  [:SPECIAL_DEFENSE].each do |stat|
 	          next if !player.pbCanRaiseStatStage?(stat, player)
 	            player.pbRaiseStatStage(stat, 1, player, showAnim)
 	            showAnim = false
@@ -361,7 +412,7 @@ MidbattleHandlers.add(:midbattle_global, :miasma_field,
 	    showAnim = false
 	  end
 	  battle.midbattleVariable = 1
-	  p battle.midbattleVariable
+	  #p battle.midbattleVariable
 	  
 	  
 	#-----------------------------------------------------------------
@@ -383,7 +434,7 @@ MidbattleHandlers.add(:midbattle_global, :miasma_field,
 	  end
 	  player.effects[PBEffects::Curse]
 	  $game_variables[118] += 1
-	  p $game_variables[118]
+	  #p $game_variables[118]
 	  
 	#-----------------------------------------------------------------
 	# Final Foe Sendout: Medicine taunts the player and superboosts
@@ -401,7 +452,7 @@ MidbattleHandlers.add(:midbattle_global, :miasma_field,
 	  showAnim = true
 	  [:DEFENSE, :SPECIAL_DEFENSE, :ATTACK, :SPECIAL_ATTACK].each do |stat|
 	  next if !medi.pbCanRaiseStatStage?(stat, medi)
-	    medi.pbRaiseStatStage(stat, 4, medi, showAnim)
+	    medi.pbRaiseStatStage(stat, 2, medi, showAnim)
 	    showAnim = false
 	  end
 	  medi.effects[PBEffects::Ingrain] = true

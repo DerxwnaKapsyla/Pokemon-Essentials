@@ -31,7 +31,7 @@ module APMSettings
 	"Battle Utility" => {
       :items => [:ANTIMETAL,:ANTIEARTH,:ANTIBEAST,:ANTINATURE,:ANTIHEART,:ANTIUMBRAL,:ANTIWIND,:ANTIMIASMA,:ANTIHYDRO,:ANTIAERO,:ANTICRYO,:ANTINETHER,:ANTIREASON,:ANTIPYRO,:ANTIILLUSION,:ANTIFAITH,:ANTIDREAM],
       :order => 17
-	},
+	}
   }
 
   BadgesForItems = {
@@ -49,13 +49,13 @@ module APMSettings
     },
     26 => [0, 1, 4, 7, 11],
     :COUPONB => {
-    29 => [10, 8, 6, 4, 2, 0, -2, -4, -6, -8, -10, -12]
+      29 => [10, 8, 6, 4, 2, 0, -2, -4, -6, -8, -10, -12]
     }
   }
 
   BonusItems = {
     # :POKEBALL => {
-      # :amount => 10,
+      # :amount => 5,
       # :item => :PREMIERBALL
     # },
     # :GREATBALL => {
@@ -112,6 +112,8 @@ module APMSettings
     # }
   }
 
+  BillSwitch = 79
+
   ProSeller = {
     # Text when talking to them. This is the default one.
     IntroText: ["Good Day, welcome how may I serve you?", "Hello, welcome, what can I mean for you?", "Hello, Welcome what can I get for you?"],
@@ -120,15 +122,15 @@ module APMSettings
     # Text when choosing amount of item. {1} = item name.
     BuyItemAmount: ["So how many {1}?", "How many {1} would you like?"],
     # Text when choosing amount of item with discount. {1} = item name {2} = discount price {3} = original price.
-    BuyItemAmountDiscount: ["There's a discount on {1}, they're ${2} instead of ${3}. How many would you like?"],
+    BuyItemAmountDiscount: ["There's a discount on {1}, they're {2} instead of {3}. How many would you like?"],
     # Text when choosing amount of item with overcharge. {1} = item name {2} = overcharge price {3} = original price.
-    BuyItemAmountOvercharge: ["There's overcharge on {1}, you must pay ${2} instead of ${3}. So how many?"],
+    BuyItemAmountOvercharge: ["There's overcharge on {1}, you must pay {2} instead of {3}. So how many?"],
     # Text when buying 1 of an item. {1} = item vowel {2} = item name {3} = price.
-    BuyItem: ["So you want {1} {2}?\nIt'll be ${3}. All right?", "So you would like to buy {1} {2}?\nThat's going to cost you ${3}!"],
+    BuyItem: ["So you want {1} {2}?\nIt'll be {3}. All right?", "So you would like to buy {1} {2}?\nThat's going to cost you {3}!"],
     # Text when buying 2 or more of an item. {1} = amount {2} = item name (plural) {3} = price.
-    BuyItemMult: ["So you want {1} {2}?\nThey'll be ${3}. All right?"],
+    BuyItemMult: ["So you want {1} {2}?\nThey'll be {3}. All right?"],
     # Text when buying important item (that you can only buy 1 off). {1} = item name {2} = price.
-    BuyItemImportant: ["So you want {1}?\nIt'll be ${2} . All right?"],
+    BuyItemImportant: ["So you want {1}?\nIt'll be {2} . All right?"],
     # Text when wanted item is out of stock. {1} = item name (plural) {2} = time in days (tomorrow, in 2 days, in x days, in a week, next week etc.)
     BuyOutOfStock: ["We're really sorry, this item is currently out of stock. Come back {2}!", "We're sorry but we don't have any {1} left. Come back {2}!", "Come back {2} when we have more {1}."],
     # Text when bought item.
@@ -142,51 +144,49 @@ module APMSettings
     # Text when selecting an item to sell. {1} = item name
     SellItemAmount: ["How many {1} would you like to sell?"],
     # Text when confirming amount of selected item to sell. {1} = price
-    SellItem: ["I can pay ${1}.\nWould that be OK?"],
+    SellItem: ["I can pay {1}.\nWould that be OK?"],
     # Text when unable to sell selected item. {1} = item name
     CantSellItem: ["Oh, no. I can't buy {1}."],
     # Text when returning to menu to choose either buying, selling or exit.
     MenuReturnText: ["Is there anything else I can do for you?", "What else could I mean for you today?"],
+    # Text when the NPC is checking the items in the basket. {1} = list of each amount and item {2} = total price to pay.
+    BillCheckOut: ["Your basket contains {1} which comes to a total of {2}, please."],
     # Text when exiting.
     OutroText: ["Do come again!", "Thank you, I hope to see you again.", "Thank you for your purchase, come again!"],
     OutroTextSaturday: ["Thank you for your purchase. \nEnjoy the rest of your Saturday."]
   }
 
-  BerrySeller = {
-    # Text when talking to them.
-    IntroText: ["Welcome to the Berry Shop! Locally grown berries is all I sell. How can I help you today?"],
-    # Text when choosing to buy item. (optional: If you make this empty( [] ), you'll go to the buy screen directly.)
-    CategoryText: [], # or CategoryText: [],
-    # Text when choosing amount of item. {1} = item name.
-    BuyItemConfirm: ["So you want how many of {1}?"],
-    # Text when buying 1 of an item. {1} = item vowel {2} = item name {3} = price.
-    BuyItem: ["So you want {1} {2}?\nIt'll be ${3}. Sound good?", "So you would like to buy {1} {2}?\nThat's going to cost you ${3}!"],
-    # Text when buying 2 or more of an item. {1} = amount {2} = item name (plural) {3} = price.
-    BuyItemMult: ["So you want {1} {2}?\nThey'll be ${3}. All right?"],
-    # Text when buying important item (that you can only buy 1 off). {1} = item name {2} = price.
-    BuyItemImportant: ["So you want {1}?\nIt'll be ${2}. All right?"],
-    # Text when wanted item is out of stock. {1} = item name (plural) {2} = time in days (tomorrow, in 2 days, in x days, in a week, next week etc.)
-    BuyOutOfStock: ["Oh man, we're fresh out of those! You'll have to come back {2} and we'll have more {1} in stock!", "Looks like you bought out all of the {1} we had. Come back {2}!", "Come back {2} when we have more {1}."],
-    # Text when bought item.
-    BuyThanks: ["I hope you enjoy your delicious berries!"],
-    # Text when x or more of a kind of item is bought and is defined in BonusItems Setting. {1} = Bonus Item(s) name(s).
-    BuyBonusMult: ["And have {1} on the house!"],
-    # Text when you don't have enough money to buy x item(s).
-    NotEnoughMoney: ["You don't have enough money."],
-    # Text when you don't have enough room in your bag. (Only used if you have an item limit).
-    NoRoomInBag: ["You have no room in your Bag."],
-    # Text when selecting an item to sell. {1} = item name
-    SellItem: ["How many {1} would you like to sell?"],
-    # Text when confirming amount of selected item to sell. {1} = price
-    SellItemConfirm: ["I can pay ${1}.\nWould that be OK?"],
-    # Text when unable to sell selected item. {1} = item name
-    CantSellItem: ["Oh, no. I can't buy {1}."],
-    # Text when returning to menu to choose either buying, selling or exit.
-    MenuReturnText: ["Is there anything else I can do for you?", "What else could I get for you today?"],
-    # Text when exiting.
-    OutroText: ["Do come again!", "Thank you, I hope to see you again.", "Thank you for your purchase, come again!"],
+  ShelfOne = {
+    # Text when talking to a shelf in the mart.
+    IntroShelf: ["Is there anything catching your eye?", "How nice, you can buy items from the shelf now too! :P"],
+    # Text when selecting an item that you haven't added to your basket yet. {1} = item name
+    ShelfAmountItem: ["How many {1} would you like to add to your basket?"],
+    # Text when selecting an item that you have already x amount of in your basket. {1} = item name {2} = amount of that item.
+    ShelfChangeAmountItem: ["You currently have {2} {1} in your basket, change it to how many?"],
+    # Text when selecting an item that you have the max amount of in your basket (only when using item limits for that item). {1} item name
+    ShelfLimitAmountItem: ["Your basket has all {1} in stock, change it to how many?"],
+    # Text when selecting an item that is out of stock (after check out). {1} = item name (plural) {2} = time in days (tomorrow, in 2 days, in x days, in a week, next week etc.)
+    ShelfOutOfStock: ["{1} are currently out of stock, come back {2}."],
+    # Text when selecting an item that has a discount. {1} = item name
+    ShelfItemAmountDiscount: ["There's a discount on {2}, how many would you like?"],
+    # Text when selecting an item that has an overcharge. {1} = item name
+    ShelfItemAmountOvercharge: ["There's an overcharge on {2}, how many would you like?"],
+    # Text when selecting an item that you can't buy because you don't have enough money. {1} = currency {2} item name (plural)
+    NotEnoughMoney: ["You don't have enough {1} to add any {2} to your basket."],
+    # Text when selecting an item that you can't buy more off because you don't have enough money. {1} = currency {2} = item name (plural).
+    NotEnoughMoneyItem: ["You are out of {1}. Change the quantity of {2} you have in your basket?"],
+    # Text when changing amount of item that you couldn't buy more off because you don't have enough money. {1} = item name (plural)
+    NotEnoughMoneyAmount: ["Change the amount of {1} in your basket to how many?"],
+    # Text when increasing the amount of an item {1} = quantity {2} item name {3} bill increased by x amount.
+    ShelfIncreaseAmountItem: ["You added {1} {2} to your basket. Your bill was increased by {3}", "{1} {2} have been added to your basket. Your bill was increased by {3}"],
+    # Text when decreasing the amount of an item {1} = quantity {2} item name {3} bill decreased by x amount.
+    ShelfDecreaseAmountItem: ["You took {1} {2} out of your basket. Your bill was decreased by {3}"],
+    # Text when removing an item from your basket (changing the amount to 0). {1} = quantity {2} item name {3} bill decreased by x amount.
+    ShelfRemoveAmountItem: ["You removed {1} {2} from you basket. Your bill was decreased by {3}", "{1} {2} were removed from your basket. Your bill has decrease by {3}"],
   }
-  
+  #-----------------------------------------
+  # The Adventures of Ayaka
+  #-----------------------------------------
   AliceShop = {
     # Text when talking to them. This is the default one.
     IntroText: ["\\xn[Alice]May I interest you in one of our products? Please, don't be shy!"],
@@ -199,11 +199,11 @@ module APMSettings
     # Text when choosing amount of item with overcharge. {1} = item name {2} = overcharge price {3} = original price.
     BuyItemAmountOvercharge: [],
     # Text when buying 1 of an item. {1} = item vowel {2} = item name {3} = price.
-    BuyItem: ["So you want {1} {2}?\nIt'll be ${3}. All right?"],
+    BuyItem: ["So you want {1} {2}?\nIt'll be {3}. All right?"],
     # Text when buying 2 or more of an item. {1} = amount {2} = item name (plural) {3} = price.
-    BuyItemMult: ["So you want {1} {2}?\nThey'll be ${3}. All right?"],
+    BuyItemMult: ["So you want {1} {2}?\nThey'll be {3}. All right?"],
     # Text when buying important item (that you can only buy 1 off). {1} = item name {2} = price.
-    BuyItemImportant: ["So you want {1}?\nIt'll be ${2} . All right?"],
+    BuyItemImportant: ["So you want {1}?\nIt'll be {2} . All right?"],
     # Text when wanted item is out of stock. {1} = item name (plural) {2} = time in days (tomorrow, in 2 days, in x days, in a week, next week etc.)
     BuyOutOfStock: [],
     # Text when bought item.
@@ -342,100 +342,128 @@ module APMSettings
     # Text when exiting.
     OutroText: ["\\se[MUSHARNA]The Musharna makes a pleasant noise, like it's telling you to have a good day!"],
   }
+  
+  KappaShop = {
+    # Text when talking to them. This is the default one.
+    IntroText: ["Welcome back to the Kappa Inventions Stall! Are you here to pick up another fine invention of ours to assist in training your Puppets?"],
+    # Text when choosing to buy item. (optional: If you make this empty( [] ), you'll go to the buy screen directly.)
+    CategoryText: [], # or CategoryText: [],
+    # Text when choosing amount of item. {1} = item name.
+    BuyItemAmount: ["{1}? We can do that, how many would you like?"],
+    # Text when choosing amount of item with discount. {1} = item name {2} = discount price {3} = original price.
+    BuyItemAmountDiscount: [],
+    # Text when choosing amount of item with overcharge. {1} = item name {2} = overcharge price {3} = original price.
+    BuyItemAmountOvercharge: [],
+    # Text when buying 1 of an item. {1} = item vowel {2} = item name {3} = price.
+    BuyItem: ["So you want {1} {2}?\nIt'll be {3}. All right?"],
+    # Text when buying 2 or more of an item. {1} = amount {2} = item name (plural) {3} = price.
+    BuyItemMult: ["So you want {1} {2}?\nThey'll be {3}. All right?"],
+    # Text when buying important item (that you can only buy 1 off). {1} = item name {2} = price.
+    BuyItemImportant: ["So you want {1}?\nIt'll be {2}. All right?"],
+    # Text when wanted item is out of stock. {1} = item name (plural) {2} = time in days (tomorrow, in 2 days, in x days, in a week, next week etc.)
+    BuyOutOfStock: [],
+    # Text when bought item.
+    BuyThanks: ["Your patronage is appreciated! Please enjoy your new item!"],
+    # Text when x or more of a kind of item is bought and is defined in BonusItems Setting. {1} = Bonus Item(s) name(s).
+    BuyBonusMult: [],
+    # Text when you don't have enough money to buy x item(s).
+    NotEnoughMoney: ["Sorry friend, it doesn't seem like you have enough FP! Come on back when you have some more!"],
+    # Text when you don't have enough room in your bag. (Only used if you have an item limit).
+    NoRoomInBag: ["Ah, it doesn't seem like you have room to carry anymore... Feel free to come on back when you make more room in your bag!"],
+    # Text when selecting an item to sell. {1} = item name
+    SellItemAmount: [],
+    # Text when confirming amount of selected item to sell. {1} = price
+    SellItem: [],
+    # Text when unable to sell selected item. {1} = item name
+    CantSellItem: [],
+    # Text when returning to menu to choose either buying, selling or exit.
+    MenuReturnText: [],
+    # Text when exiting.
+    OutroText: ["Have a great day friend! Remember us for all your cutting edge technological needs!"],
+  }
+  
+  SanaeShop = {
+    # Text when talking to them. This is the default one.
+    IntroText: ["\\xn[Sanae]Welcome to the Moriya Talisman Shop! All of our goods are specially made to help give your Puppets the edge in battle! How can we help you today?"],
+    # Text when choosing to buy item. (optional: If you make this empty( [] ), you'll go to the buy screen directly.)
+    CategoryText: [], # or CategoryText: [],
+    # Text when choosing amount of item. {1} = item name.
+    BuyItemAmount: ["Ah! A {1}? We can do that, how many would you like?"],
+    # Text when choosing amount of item with discount. {1} = item name {2} = discount price {3} = original price.
+    BuyItemAmountDiscount: [],
+    # Text when choosing amount of item with overcharge. {1} = item name {2} = overcharge price {3} = original price.
+    BuyItemAmountOvercharge: [],
+    # Text when buying 1 of an item. {1} = item vowel {2} = item name {3} = price.
+    BuyItem: ["Just one of our {2}, then?\nOkay! How does {3} sound?"],
+    # Text when buying 2 or more of an item. {1} = amount {2} = item name (plural) {3} = price.
+    BuyItemMult: ["{1} of our {2}, then?\nOkay! How does {3} sound?"],
+    # Text when buying important item (that you can only buy 1 off). {1} = item name {2} = price.
+    BuyItemImportant: ["So you want {1}?\nOkay! How does {3} sound?"],
+    # Text when wanted item is out of stock. {1} = item name (plural) {2} = time in days (tomorrow, in 2 days, in x days, in a week, next week etc.)
+    BuyOutOfStock: [],
+    # Text when bought item.
+    BuyThanks: ["Please enjoy your new talisman. May it bring good fortune to your Puppets!"],
+    # Text when x or more of a kind of item is bought and is defined in BonusItems Setting. {1} = Bonus Item(s) name(s).
+    BuyBonusMult: [],
+    # Text when you don't have enough money to buy x item(s).
+    NotEnoughMoney: ["Unfortunately it looks like you don't have enough Festival Points..."],
+    # Text when you don't have enough room in your bag. (Only used if you have an item limit).
+    NoRoomInBag: ["I know talismans are lightweight, but your bag looks so full that if you cram it in, the talisman may tear up!"],
+    # Text when selecting an item to sell. {1} = item name
+    SellItemAmount: [],
+    # Text when confirming amount of selected item to sell. {1} = price
+    SellItem: [],
+    # Text when unable to sell selected item. {1} = item name
+    CantSellItem: [],
+    # Text when returning to menu to choose either buying, selling or exit.
+    MenuReturnText: [],
+    # Text when exiting.
+    OutroText: ["\\xn[Sanae]Thank you for shopping with us at the Moriya Talisman Shop! All proceeds go directly towards the Moriya Shrine's efforts to revolutionize Gensokyo!"],
+  }
+  
+  SeijaShop = {
+    # Text when talking to them. This is the default one.
+    IntroText: ["\\xn[Seija]Welcome to my stand of forbidden items! Care to browse my dangerous wares?"],
+    # Text when choosing to buy item. (optional: If you make this empty( [] ), you'll go to the buy screen directly.)
+    CategoryText: [], # or CategoryText: [],
+    # Text when choosing amount of item. {1} = item name.
+    BuyItemAmount: ["The {1} Hope you know what you're getting into!"],
+    # Text when choosing amount of item with discount. {1} = item name {2} = discount price {3} = original price.
+    BuyItemAmountDiscount: [],
+    # Text when choosing amount of item with overcharge. {1} = item name {2} = overcharge price {3} = original price.
+    BuyItemAmountOvercharge: [],
+    # Text when buying 1 of an item. {1} = item vowel {2} = item name {3} = price.
+    BuyItem: ["Surely you can do more than one {2} No? Fine! That'll be {3}."],
+    # Text when buying 2 or more of an item. {1} = amount {2} = item name (plural) {3} = price.
+    BuyItemMult: ["Surely you can do more than {1} {2} No? Fine! That'll be {3}."],
+    # Text when buying important item (that you can only buy 1 off). {1} = item name {2} = price.
+    BuyItemImportant: ["So you want {1}?\nOkay! How does {3} sound?"],
+    # Text when wanted item is out of stock. {1} = item name (plural) {2} = time in days (tomorrow, in 2 days, in x days, in a week, next week etc.)
+    BuyOutOfStock: [],
+    # Text when bought item.
+    BuyThanks: ["No refunds!"],
+    # Text when x or more of a kind of item is bought and is defined in BonusItems Setting. {1} = Bonus Item(s) name(s).
+    BuyBonusMult: [],
+    # Text when you don't have enough money to buy x item(s).
+    NotEnoughMoney: ["I know I'm a rule breaker, but even I abide by the laws of currency!"],
+    # Text when you don't have enough room in your bag. (Only used if you have an item limit).
+    NoRoomInBag: ["Unless you plan to make these float around you, your bag is kinda full."],
+    # Text when selecting an item to sell. {1} = item name
+    SellItemAmount: [],
+    # Text when confirming amount of selected item to sell. {1} = price
+    SellItem: [],
+    # Text when unable to sell selected item. {1} = item name
+    CantSellItem: [],
+    # Text when returning to menu to choose either buying, selling or exit.
+    MenuReturnText: [],
+    # Text when exiting.
+    OutroText: ["\\xn[Seija]A pleasure doing business with you! And remember:\\nAll proceeds go to funding the Youkai Uprising that will overthrow the power strucutre of Gensokyo!"],
+  }
 end
 
 # If it would be easier to setup stores here then you only need to add an event script line saying pbStore1 or whatever you called the method.
 # Since you're more limited in space in the event, it could be easier to manage your stores here (or you can make .rb files for each store)
-
-# the arguments are as following pbPokemonMart(["refresh type", [:ITEM, min, max], :ITEM], "SellerClass", true, false)
-# "refresh type" = this can either be "random", "daily", "2daily" or "weekly" or if you don't want limited stock just don't include this at all.
-# [:ITEM, min, max] = an array containing the item and a min and max amount
-# (the min and max values will be used to generate a random amount between these number which will decide the limited amount of stock for this item)
-# :ITEM = just the item and no item limit is given (this item won't run out of stock)
-# "SellerClass" like the examples above ProSeller or BerrySeller these are classes, this is required if you want to use custom speeches for your saleman.
-# true = item categories are enabled (items will be devided in categories which might look more orginized).
-# false = can't sell is disabled or just don't put this at all (true is enabled)
-def pbStore1
-  pbPokemonMart(
-  ["random",
-    :POTION,
-    [:SUPERPOTION],
-    [:HYPERPOTION, 15, 10],
-    :MAXPOTION,
-    :FULLRESTORE,
-    :REVIVE,
-    :ANTIDOTE,
-    :PARALYZEHEAL,
-    :BURNHEAL,
-    :ICEHEAL,
-    :AWAKENING,
-    :FULLHEAL,
-    :POKEBALL,
-    :GREATBALL,
-    :ULTRABALL,
-    :REPEL,
-    :SUPERREPEL,
-    :MAXREPEL,
-    :GRASSMAIL,
-    :FLAMEMAIL,
-    :BUBBLEMAIL,
-    :SPACEMAIL,
-    :FIRESTONE,
-    :THUNDERSTONE,
-    :WATERSTONE,
-    :LEAFSTONE,
-    :MOONSTONE,
-    :SUNSTONE,
-    :DUSKSTONE,
-    :DAWNSTONE,
-    :SHINYSTONE,
-    :ICESTONE,
-    :FLAMEPLATE,
-    :SPLASHPLATE,
-    :ZAPPLATE,
-    :MEADOWPLATE,
-    :ICICLEPLATE,
-    :FISTPLATE,
-    :TOXICPLATE,
-    :EARTHPLATE,
-    :SKYPLATE,
-    :MINDPLATE,
-    :INSECTPLATE,
-    :STONEPLATE,
-    :SPOOKYPLATE,
-    :DRACOPLATE,
-    :DREADPLATE,
-    :IRONPLATE,
-    :PIXIEPLATE,
-    :FIREGEM,
-    :WATERGEM,
-    :ELECTRICGEM,
-    :GRASSGEM,
-    :ICEGEM,
-    :FIGHTINGGEM,
-    :POISONGEM,
-    :GROUNDGEM,
-    :FLYINGGEM,
-    :PSYCHICGEM,
-    :BUGGEM,
-    :ROCKGEM,
-    :GHOSTGEM,
-    :DRAGONGEM,
-    :DARKGEM,
-    :STEELGEM,
-    :FAIRYGEM,
-    :NORMALGEM
-  ], "ProSeller", true)
-end
-
-def pbStore2
-  pbPokemonMart(
-  ["random",
-    :ORANBERRY,
-    :CHESTOBERRY,
-    :PECHABERRY
-  ], "BerrySeller", true)
-end
+# For the different option Arguments, check the guide as it's explained in detail in there.
 
 def pbSomeMart
   pbPokemonMart(["daily",
@@ -446,134 +474,19 @@ def pbSomeMart
     :FULLHEAL,
     :REPEL, :SUPERREPEL, :MAXREPEL,
     :ESCAPEROPE
-  ], "ProSeller", true, 26)
+  ], speech: "ProSeller", discount: 26, useCat: true)
 end
 
-def pbAliceStore
-  pbPokemonMart([
-    :BUNNYSUIT,:MAIDCOSTUME,:SWEATER,
-	:CAMOUFLAGE,:BLAZER,:MISTRESS,
-	:NINJA,:NURSE,:SWIMSUIT,
-    :STEWARDESS,:THICKFUR,:KIMONO,
-	:WITCH,:GOTHIC,:BRIDALGOWN,
-	:PRIESTESS,:CHINADRESS,
-    :HEMATITEHAIRPIN,:QUARTZHAIRPIN,
-	:ONYXHAIRPIN,:MALACHITEHAIRPIN,
-	:GOLDHAIRPIN,:OBSIDIANHAIRPIN,
-	:JADEHAIRPIN,:AMETHYSTHAIRPIN,
-	:AQUAMARINEHAIRPIN,:DIAMONDHAIRPIN,
-	:LAPISHAIRPIN,:SUGILITEHAIRPIN,
-	:OPALHAIRPIN,:GARNETHAIRPIN,
-    :MORGANITEHAIRPIN,:TOPAZHAIRPIN,
-	:MOONSTONEHAIRPIN
-  ], "AliceShop", true)
+def pbSomeShelf
+  pbShelfMart(["daily",[:POTION, 11], :SUPERPOTION,
+    [:POKEBALL, 10, 15], :GREATBALL,
+    :REPEL,
+    :ANTIDOTE, :BURNHEAL, :ICEHEAL, :AWAKENING, :PARALYZEHEAL
+  ], speech: "ShelfOne", discount: 29)
 end
 
-def pbKirisameStore
-  pbPokemonMart([
-    :SC01,:SC02,:SC03,:SC04,:SC05,:SC06,:SC07,:SC08,:SC09,:SC10,
-    :SC11,:SC12,:SC13,:SC14,:SC15,:SC16,:SC17,:SC18,:SC19,:SC20,
-    :SC21,:SC22,:SC23,:SC24,:SC25,:SC26,:SC27,:SC28,:SC29,:SC30,
-    :SC31,:SC32,:SC33,:SC34,:SC35,:SC36,:SC37,:SC38,:SC39,:SC40,
-    :SC41,:SC42,:SC43,:SC44,:SC45,:SC46,:SC47,:SC48,:SC49,:SC50,
-	:ANTIMETAL,:ANTIEARTH,:ANTIBEAST,:ANTINATURE,
-	:ANTIHEART,:ANTIUMBRAL,:ANTIWIND,:ANTIMIASMA,
-    :ANTIHYDRO,:ANTIAERO,:ANTICRYO,:ANTINETHER,
-	:ANTIREASON,:ANTIPYRO,:ANTIILLUSION,:ANTIFAITH,
-    :ANTIDREAM
-  ], "KirisameShop", true)
-end
-
-def pbTavernShop
-    if pbGet(121) < 20
-	  pbPokemonMart([
-      :BEER,
-	  :SAKE,
-	  :ONIKILLERSAKE
-    ], "TavernShop", true)
-	elsif pbGet(121) >= 20
-	  pbPokemonMart([
-      :BEER,
-	  :SAKE,
-	  :ONIKILLERSAKE,
-	  :GOLDENRICESAKE
-    ], "TavernShop", true)
-	else $game_switches[107]
-	  pbPokemonMart([
-      :BEER,
-	  :SAKE,
-	  :ONIKILLERSAKE,
-	  :GOLDENRICESAKE,
-	  :GOLDENPEACHSAKE
-    ], "TavernShop", true)
-	end
-end
-
-def pbRestStop
-    if !$game_switches[99]
-	  pbPokemonMart([
-      :PUPPETORB,:GREATORB,:ULTRAORB,
-      :POTION,:SUPERPOTION,:HYPERPOTION,
-      :REVIVE,:FULLHEAL,
-      :REPEL,:SUPERREPEL,
-      :POWERSHARD,:DEFENSESHARD,:TECHSHARD,
-      :SWIFTSHARD,:SUPPORTSHARD,:SOLARSHARD,
-      :CHROMESHARD
-    ], true)
-	else
-	  pbPokemonMart([
-      :PUPPETORB,:GREATORB,:ULTRAORB,
-      :POTION,:SUPERPOTION,:HYPERPOTION,
-      :REVIVE,:MAXREVIVE,
-      :FULLHEAL,:FULLRESTORE,
-      :ETHER,:MAXETHER,:ELIXIR,:MAXELIXIR,
-      :REPEL,:SUPERREPEL,:MAXREPEL,
-      :PPUP,:RARECANDY,
-      :POWERSHARD,:DEFENSESHARD,:TECHSHARD,
-      :SWIFTSHARD,:SUPPORTSHARD,:SOLARSHARD,
-      :CHROMESHARD
-    ], true)
-	end
-end
-
-def pbMusharnaShop
-	  pbPokemonMart([
-      :PUPPETORB,:GREATORB,:ULTRAORB,:MOONBALL,
-      :POTION,:SUPERPOTION,:HYPERPOTION,
-      :REVIVE,:MAXREVIVE,
-      :FULLHEAL,:FULLRESTORE,
-      :ETHER,:MAXETHER,:ELIXIR,:MAXELIXIR,
-      :REPEL,:SUPERREPEL,:MAXREPEL,
-      :PPUP,:RARECANDY,
-      :POWERSHARD,:DEFENSESHARD,:TECHSHARD,
-      :SWIFTSHARD,:SUPPORTSHARD,:SOLARSHARD,
-      :CHROMESHARD
-    ], "Musharna", true)
-end
-
-def pbRestStopMoon
-	  pbPokemonMart([
-      :PUPPETORB,:GREATORB,:ULTRAORB,:MOONBALL,
-      :POTION,:SUPERPOTION,:HYPERPOTION,:SAKE,:BEER,:ONIKILLERSAKE,
-      :REVIVE,:MAXREVIVE,
-      :FULLHEAL,:FULLRESTORE,
-      :ETHER,:MAXETHER,:ELIXIR,:MAXELIXIR,
-      :REPEL,:SUPERREPEL,:MAXREPEL,
-      :PPUP,:RARECANDY,
-      :POWERSHARD,:DEFENSESHARD,:TECHSHARD,
-      :SWIFTSHARD,:SUPPORTSHARD,:SOLARSHARD,
-      :CHROMESHARD
-    ], true)
-end
-
-def pbPalaceShop
-  pbPokemonMart([
-    :HYPERPOTION,:ONIKILLERSAKE,:GOLDENRICESAKE,:REVIVE,:GOLDENPEACHSAKE,:FULLRESTORE,
-	:FULLHEAL,:MAXETHER,:MAXELIXIR,:PPUP,:RARECANDY,:ABILITYCAPSULE,
-	:SC01,:SC02,:SC03,:SC04,:SC05,:SC06,:SC07,:SC08,:SC09,:SC10,
-    :SC11,:SC12,:SC13,:SC14,:SC15,:SC16,:SC17,:SC18,:SC19,:SC20,
-    :SC21,:SC22,:SC23,:SC24,:SC25,:SC26,:SC27,:SC28,:SC29,:SC30,
-    :SC31,:SC32,:SC33,:SC34,:SC35,:SC36,:SC37,:SC38,:SC39,:SC40,
-    :SC41,:SC42,:SC43,:SC44,:SC45,:SC46,:SC47,:SC48,:SC49,:SC50,
-  ], true)
+def pbSomeShelf2
+  pbShelfMart([:POTION,
+    :POKEBALL, :REPEL
+  ], discount: 26, currency: "Coins")
 end

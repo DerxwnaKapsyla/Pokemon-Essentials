@@ -44,3 +44,57 @@ ItemHandlers::UseOnPokemon.add(:ONIKILLERSAKE, proc { |item, qty, pkmn, scene|
   next pbHPItem(pkmn, pkmn.totalhp - pkmn.hp, scene)
   pkmn.changeHappiness("battleitem") if pkmn.species_data.has_flag?("Oni")
 })
+
+ItemHandlers::UseOnPokemon.add(:STRAWBERRYJAM, proc { |item, qty, pkmn, scene|
+  if pkmn.fainted? || (pkmn.hp == pkmn.totalhp && pkmn.status == :NONE)
+    scene.pbDisplay(_INTL("It won't have any effect."))
+    next false
+  end
+  pbSEPlay("Use item in party")
+  hpgain = pbItemRestoreHP(pkmn, pkmn.totalhp - pkmn.hp)
+  pkmn.heal_status
+  scene.pbRefresh
+  if hpgain > 0
+    scene.pbDisplay(_INTL("{1}'s HP was restored by {2} points.", pkmn.name, hpgain))
+  else
+    scene.pbDisplay(_INTL("{1} became healthy.", pkmn.name))
+  end
+  pkmn.changeHappiness("jam")
+  next true
+})
+
+ItemHandlers::UseOnPokemon.add(:MAXETHER, proc { |item, qty, pkmn, scene|
+  move = scene.pbChooseMove(pkmn, _INTL("Restore which move?"))
+  next false if move < 0
+  if pbRestorePP(pkmn, move, pkmn.moves[move].total_pp - pkmn.moves[move].pp) == 0
+    scene.pbDisplay(_INTL("It won't have any effect."))
+    next false
+  end
+  pbSEPlay("Use item in party")
+  scene.pbDisplay(_INTL("PP was restored."))
+  pkmn.changeHappiness("jam")
+  next true
+})
+
+ItemHandlers::UseOnPokemon.add(:MINORIKOJAM, proc { |item, qty, pkmn, scene|
+  pprestored = 0
+  pkmn.moves.length.times do |i|
+    pprestored += pbRestorePP(pkmn, i, pkmn.moves[i].total_pp - pkmn.moves[i].pp)
+  end
+  if pkmn.fainted? || (pkmn.hp == pkmn.totalhp && pkmn.status == :NONE)
+    scene.pbDisplay(_INTL("It won't have any effect."))
+    next false
+  end
+  pbSEPlay("Use item in party")
+  hpgain = pbItemRestoreHP(pkmn, pkmn.totalhp - pkmn.hp)
+  pkmn.heal_status
+  scene.pbRefresh
+  if hpgain > 0
+    scene.pbDisplay(_INTL("{1}'s HP was restored by {2} points.", pkmn.name, hpgain))
+  else
+    scene.pbDisplay(_INTL("{1} became healthy.", pkmn.name))
+  end
+  next true
+  scene.pbDisplay(_INTL("PP was restored."))
+  next true
+})

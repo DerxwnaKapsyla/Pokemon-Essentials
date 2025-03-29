@@ -60,3 +60,31 @@ Battle::PokeBallEffects::OnCatch.add(:GLITTERBALL, proc { |ball, battle, pkmn|
 Battle::PokeBallEffects::OnCatch.add(:DREAMBALL, proc { |ball, battle, pkmn|
   pkmn.ability_index = 2
 })
+
+#----------------------------------------
+# The Festival of Curses
+#----------------------------------------
+Battle::PokeBallEffects::ModifyCatchRate.add(:GREATORB2,proc { |ball,catchRate,battle,battler,ultraBeast|
+  next catchRate*1.5
+})
+
+Battle::PokeBallEffects::ModifyCatchRate.add(:INVERSEORB,proc { |ball,catchRate,battle,battler,ultraBeast|
+  next catchRate*1.5
+})
+
+Battle::PokeBallEffects::OnCatch.add(:PUPPETORB2,proc { |ball,battle,pkmn|
+  pkmn.happiness = 0
+})
+
+Battle::PokeBallEffects::OnCatch.add(:GREATORB2,proc { |ball,battle,pkmn|
+  stats = GameData::Stats.each_main.map(&:id)
+  stat1, stat2 = stats.sample(2)
+  pkmn.iv[stat1] = 0
+  pkmn.iv[stat2] = 31
+})
+
+Battle::PokeBallEffects::OnCatch.add(:INVERSEORB,proc { |ball,battle,pkmn|
+  if rand(100) > 85
+	pkmn.makeShiny
+  end
+})

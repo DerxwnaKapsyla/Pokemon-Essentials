@@ -75,19 +75,19 @@ module MidbattleScripts
   VS_THREE_FAIRIES = {
     "RoundStartCommand_1_player" => {
 	  "speech"            => "Hey, wait! Doesn't three against one seem kinda unfair?!",
-	  "setSpeaker_A"      => :STAR,
+	  "setSpeaker_A"      => :START,
 	  "editWindow_A"      => "Star Sapphire",
 	  "speech_A"          => "Nuh uh! It's totally fair!",
-	  "editSpeaker_B"     => :LUNA,
+	  "editSpeaker_B"     => :LUNAT,
 	  "editWindow_B"      => "Luna Child",
 	  "speech_B"          => "You've beat us individually. That's only one third of our total strength!",
-	  "editSpeaker_C"     => :SUNNY,
+	  "editSpeaker_C"     => :SUNNYT,
 	  "editWindow_C"      => "Sunny Milk",
 	  "speech_C"          => "This time we'll fight you all together-",
 	  "editSpeaker_D"     => :Opposing,
 	  "editWindow_D"      => "Three Fairies of Light",
 	  "speech_D"          => "-one on one!",
-	  "setSpeaker_E"     => :Self,
+	  "setSpeaker_E"      => :Self,
 	  "speech_E"          => "That-... That logic doesn't make any sense! But fine, we'll play by your rules! And when I win, you'll tell me everything you know!"
 	}
   }

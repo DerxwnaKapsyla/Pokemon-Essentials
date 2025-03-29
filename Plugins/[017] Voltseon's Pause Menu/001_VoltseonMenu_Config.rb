@@ -10,14 +10,14 @@
 # Made for people who dont want
 # to have ugly pause menus
 # so here's a really cool one!
-# Version: 1.8
+# Version: 2.2
 #
 #
 #-------------------------------------------------------------------------------
 # Menu Options
 #-------------------------------------------------------------------------------
 # Main file path for the menu
-MENU_FILE_PATH = "Graphics/Pictures/VPM/"
+MENU_FILE_PATH = "Graphics/UI/VPM/"
 
 # An array of aLL the Menu Component Classes from 004_VoltseonMenu_Components
 # that need to be loaded

@@ -58,3 +58,19 @@ def pbShowCommandsWithIcon(msgwindow, commands = nil, cmdIfCancel = 0, defaultCm
   Input.update
   return ret
 end
+
+def pbDisplayBattlePointsWindow(msgwindow)
+  pointsString = ($player) ? $player.battle_points.to_s_formatted : "0"
+  pointswindow = Window_AdvancedTextPokemon.new(_INTL("Festival Points:\n<ar>{1}</ar>", pointsString))
+  pointswindow.setSkin("Graphics/Windowskins/goldskin")
+  pointswindow.resizeToFit(pointswindow.text, Graphics.width)
+  pointswindow.width = 160 if pointswindow.width <= 160
+  if msgwindow.y == 0
+    pointswindow.y = Graphics.height - pointswindow.height
+  else
+    pointswindow.y = 0
+  end
+  pointswindow.viewport = msgwindow.viewport
+  pointswindow.z = msgwindow.z
+  return pointswindow
+end

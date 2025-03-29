@@ -13321,3 +13321,365 @@ Backtrace:
 001_Utilities.rb:534:in `block in pbCommonEvent'
 001_Utilities.rb:531:in `loop'
 001_Utilities.rb:531:in `pbCommonEvent'
+
+=================
+
+[2025-03-27 18:33:27 -0700]
+[Pokémon Essentials version 21.1]
+[v21.1 Hotfixes 1.0.9]
+
+Script error in event 1 (coords 0,0), map 4 (The Festival of Curses)
+Exception: SyntaxError
+Message: (eval):1: syntax error, unexpected ',', expecting ')'
+...game_variables[1] = (:CKAGEROU, 15)
+...                              ^
+
+
+***Full script:
+$game_variables[1] = (:CKAGEROU, 15)
+
+=================
+
+[2025-03-27 18:40:48 -0700]
+[Pokémon Essentials version 21.1]
+[v21.1 Hotfixes 1.0.9]
+
+Script error in event 1 (coords 0,0), map 3 (The Mansion of Mystery)
+Exception: SyntaxError
+Message: (eval):1: syntax error, unexpected ',', expecting ')'
+...game_variables[1] = (:CKAGEROU, 15)
+...                              ^
+
+
+***Full script:
+$game_variables[1] = (:CKAGEROU, 15)
+
+=================
+
+[2025-03-27 18:47:52 -0700]
+[Pokémon Essentials version 21.1]
+[v21.1 Hotfixes 1.0.9]
+
+Script error in event 45 (coords 53,30), map 37 (Human Village)
+Exception: NameError
+Message: uninitialized constant Interpreter::MAX_BATTLE_POINTS
+
+***Full script:
+$player.battle_points+100>=MAX_BATTLE_POINTS
+Backtrace:
+(eval):1:in `execute_script'
+003_Interpreter.rb:140:in `eval'
+003_Interpreter.rb:140:in `execute_script'
+004_Interpreter_Commands.rb:434:in `command_111'
+004_Interpreter_Commands.rb:29:in `execute_command'
+003_Interpreter.rb:132:in `block in update'
+003_Interpreter.rb:86:in `loop'
+003_Interpreter.rb:86:in `update'
+002_Scene_Map.rb:167:in `block in update'
+002_Scene_Map.rb:166:in `loop'
+
+=================
+
+[2025-03-27 18:50:18 -0700]
+[Pokémon Essentials version 21.1]
+[v21.1 Hotfixes 1.0.9]
+
+Script error in event 45 (coords 53,30), map 37 (Human Village)
+Exception: NameError
+Message: uninitialized constant Interpreter::MAX_BATTLE_POINTS
+
+***Full script:
+$player.battle_points+10>=MAX_BATTLE_POINTS
+Backtrace:
+(eval):1:in `execute_script'
+003_Interpreter.rb:140:in `eval'
+003_Interpreter.rb:140:in `execute_script'
+004_Interpreter_Commands.rb:434:in `command_111'
+004_Interpreter_Commands.rb:29:in `execute_command'
+003_Interpreter.rb:132:in `block in update'
+003_Interpreter.rb:86:in `loop'
+003_Interpreter.rb:86:in `update'
+002_Scene_Map.rb:167:in `block in update'
+002_Scene_Map.rb:166:in `loop'
+
+=================
+
+[2025-03-27 18:52:23 -0700]
+[Pokémon Essentials version 21.1]
+[v21.1 Hotfixes 1.0.9]
+
+Script error in event 45 (coords 53,30), map 37 (Human Village)
+Exception: NameError
+Message: uninitialized constant Interpreter::MAX_BATTLE_POINTS
+
+***Full script:
+$player.battle_points+10>=MAX_BATTLE_POINTS
+Backtrace:
+(eval):1:in `execute_script'
+003_Interpreter.rb:140:in `eval'
+003_Interpreter.rb:140:in `execute_script'
+004_Interpreter_Commands.rb:434:in `command_111'
+004_Interpreter_Commands.rb:29:in `execute_command'
+003_Interpreter.rb:132:in `block in update'
+003_Interpreter.rb:86:in `loop'
+003_Interpreter.rb:86:in `update'
+002_Scene_Map.rb:167:in `block in update'
+002_Scene_Map.rb:166:in `loop'
+
+=================
+
+[2025-03-28 01:48:29 -0700]
+[Pokémon Essentials version 21.1]
+[v21.1 Hotfixes 1.0.9]
+
+Script error in event 1 (coords 14,11), map 42 (Alice's Puppet Boutique)
+Exception: ArgumentError
+Message: wrong number of arguments (given 6, expected 7..9)
+
+***Full script:
+# --- Can't afford dialogue
+$game_variables[1] = "I'm not running a charity here! Please return when you have more Festival Points!"
+# --- Purchase Dialogue
+$game_variables[2] = "Thank you for your business!" # Purchase dialogue
+# --- Make Room dialogue
+$game_variables[3] = "You should perhaps make some additional room in your bag before I give you these!"
+setPrice(:BUNNYSUIT,10);setPrice(:MAIDCOSTUME,10);setPrice(:SWEATER,10);setPrice(:CAMOUFLAGE,10);
+setPrice(:BLAZER,10);setPrice(:MISTRESS,10);setPrice(:NINJA,10);setPrice(:NURSE,10);
+setPrice(:STEWARDESS,10);setPrice(:THICKFUR,10);setPrice(:KIMONO,10);setPrice(:WITCH,10);
+setPrice(:GOTHIC,10);setPrice(:BRIDALGOWN,10);setPrice(:PRIESTESS,10);setPrice(:CHINADRESS,10);
+setPrice(:SWIMSUIT,10)
+pbCoinMart([
+:BUNNYSUIT,:MAIDCOSTUME,:SWEATER,:CAMOUFLAGE,:BLAZER,:MISTRESS,:NINJA,:NURSE,:SWIMSUIT,
+:STEWARDESS,:THICKFUR,:KIMONO,:WITCH,:GOTHIC,:BRIDALGOWN,:PRIESTESS,:CHINADRESS
+])
+
+Backtrace:
+[Arcky's Poke Market] 001_PokeMarket_Main.rb:896:in `initialize'
+[TAoA Core] 005_Coin_Mart.rb:238:in `new'
+[TAoA Core] 005_Coin_Mart.rb:238:in `pbStartBuyOrSellScene'
+[TAoA Core] 005_Coin_Mart.rb:284:in `pbStartBuyScene'
+[TAoA Core] 005_Coin_Mart.rb:583:in `pbBuyScreen'
+[TAoA Core] 005_Coin_Mart.rb:737:in `block in pbCoinMart'
+[TAoA Core] 005_Coin_Mart.rb:733:in `loop'
+[TAoA Core] 005_Coin_Mart.rb:733:in `pbCoinMart'
+(eval):12:in `execute_script'
+003_Interpreter.rb:140:in `eval'
+
+=================
+
+[2025-03-28 03:56:40 -0700]
+[Pokémon Essentials version 21.1]
+[v21.1 Hotfixes 1.0.9]
+
+Script error in event 1 (coords 14,11), map 42 (Alice's Puppet Boutique)
+Exception: NameError
+Message: undefined local variable or method `bp' for #<Interpreter @event_id: 1>
+
+***Full script:
+pbAliceFestivalStore
+
+Backtrace:
+[Arcky's Poke Market] 003_PokeMarket_TAoA.rb:62:in `pbAliceFestivalStore'
+(eval):1:in `execute_script'
+003_Interpreter.rb:140:in `eval'
+003_Interpreter.rb:140:in `execute_script'
+004_Interpreter_Commands.rb:1177:in `command_355'
+004_Interpreter_Commands.rb:116:in `execute_command'
+003_Interpreter.rb:132:in `block in update'
+003_Interpreter.rb:86:in `loop'
+003_Interpreter.rb:86:in `update'
+002_Scene_Map.rb:167:in `block in update'
+
+=================
+
+[2025-03-28 03:57:05 -0700]
+[Pokémon Essentials version 21.1]
+[v21.1 Hotfixes 1.0.9]
+
+Script error in event 1 (coords 14,11), map 42 (Alice's Puppet Boutique)
+Exception: NameError
+Message: undefined local variable or method `bp' for #<Interpreter @event_id: 1>
+
+***Full script:
+pbAliceFestivalStore
+
+Backtrace:
+[Arcky's Poke Market] 003_PokeMarket_TAoA.rb:62:in `pbAliceFestivalStore'
+(eval):1:in `execute_script'
+003_Interpreter.rb:140:in `eval'
+003_Interpreter.rb:140:in `execute_script'
+004_Interpreter_Commands.rb:1177:in `command_355'
+004_Interpreter_Commands.rb:116:in `execute_command'
+003_Interpreter.rb:132:in `block in update'
+003_Interpreter.rb:86:in `loop'
+003_Interpreter.rb:86:in `update'
+002_Scene_Map.rb:167:in `block in update'
+
+=================
+
+[2025-03-28 15:00:48 -0700]
+[Pokémon Essentials version 21.1]
+
+Error in Plugin: [Touhoumon Essentials Development Kit]
+Exception: NameError
+Message: uninitialized constant BallHandlers
+
+Backtrace:
+[Touhoumon Essentials Development Kit] 010_Battle_PokeBallEffects.rb:67:in `<main>'
+005_PluginManager.rb:635:in `eval'
+005_PluginManager.rb:635:in `block (2 levels) in runPlugins'
+005_PluginManager.rb:625:in `each'
+005_PluginManager.rb:625:in `block in runPlugins'
+005_PluginManager.rb:616:in `each'
+005_PluginManager.rb:616:in `runPlugins'
+999_Main.rb:35:in `mainFunctionDebug'
+999_Main.rb:19:in `block in mainFunction'
+003_Errors.rb:79:in `pbCriticalCode'
+
+=================
+
+[2025-03-28 15:05:31 -0700]
+[Pokémon Essentials version 21.1]
+[v21.1 Hotfixes 1.0.9]
+
+Script error in event 1 (coords 12,7), map 43 (Shizuha's Leaf Pile)
+Exception: SyntaxError
+Message: (eval):1: syntax error, unexpected ',', expecting ')'
+$bag.remove (:SILVERLEAF,pbGet(1))
+                        ^
+(eval):1: syntax error, unexpected ')', expecting end-of-input
+...g.remove (:SILVERLEAF,pbGet(1))
+...                              ^
+
+
+***Full script:
+$bag.remove (:SILVERLEAF,pbGet(1))
+$player.battle_points+= pbGet(2)
+
+=================
+
+[2025-03-28 16:06:53 -0700]
+[Pokémon Essentials version 21.1]
+[v21.1 Hotfixes 1.0.9]
+
+Script error in event 17 (coords 48,31), map 48 (Misty Lake)
+Exception: RuntimeError
+Message: Trainer type FAIRY_1 does not exist.
+
+***Full script:
+TrainerBattle.start(:FAIRY_1, "Melia",pbGet(99))
+Backtrace:
+001_Overworld_BattleStarting.rb:594:in `block in generate_foes'
+001_Overworld_BattleStarting.rb:538:in `each'
+001_Overworld_BattleStarting.rb:538:in `each_with_index'
+001_Overworld_BattleStarting.rb:538:in `generate_foes'
+001_Overworld_BattleStarting.rb:504:in `start_core'
+001_Overworld_BattleStarting.rb:487:in `start'
+(eval):1:in `execute_script'
+003_Interpreter.rb:140:in `eval'
+003_Interpreter.rb:140:in `execute_script'
+004_Interpreter_Commands.rb:434:in `command_111'
+
+=================
+
+[2025-03-28 16:07:26 -0700]
+[Pokémon Essentials version 21.1]
+[v21.1 Hotfixes 1.0.9]
+
+Script error in event 17 (coords 49,33), map 48 (Misty Lake)
+Exception: RuntimeError
+Message: Trainer type FAIRY_1 does not exist.
+
+***Full script:
+TrainerBattle.start(:FAIRY_1, "Melia",pbGet(99))
+Backtrace:
+001_Overworld_BattleStarting.rb:594:in `block in generate_foes'
+001_Overworld_BattleStarting.rb:538:in `each'
+001_Overworld_BattleStarting.rb:538:in `each_with_index'
+001_Overworld_BattleStarting.rb:538:in `generate_foes'
+001_Overworld_BattleStarting.rb:504:in `start_core'
+001_Overworld_BattleStarting.rb:487:in `start'
+(eval):1:in `execute_script'
+003_Interpreter.rb:140:in `eval'
+003_Interpreter.rb:140:in `execute_script'
+004_Interpreter_Commands.rb:434:in `command_111'
+
+=================
+
+[2025-03-29 00:41:18 -0700]
+[Pokémon Essentials version 21.1]
+[v21.1 Hotfixes 1.0.9]
+
+Error in Plugin: [Deluxe Battle Kit]
+Exception: SyntaxError
+Message: [Deluxe Battle Kit] 002 MidBattleHandler Scripts.rb:298: syntax error, unexpected `else', expecting `end'
+    else # Buff Effect
+    ^~~~
+[Deluxe Battle Kit] 002 MidBattleHandler Scripts.rb:402: syntax error, unexpected `when', expecting `end'
+  when "TargetHPHalf_foe"
+  ^~~~
+[Deluxe Battle Kit] 002 MidBattleHandler Scripts.rb:422: syntax error, unexpected `when', expecting `end'
+  when "BattlerFainted_foe"
+  ^~~~
+[Deluxe Battle Kit] 002 MidBattleHandler Scripts.rb:445: syntax error, unexpected `when', expecting `end'
+  when "AfterLastSendOut_foe"
+  ^~~~
+[Deluxe Battle Kit] 002 MidBattleHandler Scripts.rb:475: syntax error, unexpected `when', expecting `end'
+  when "LastTargetHPLow_foe"
+  ^~~~
+[Deluxe Battle Kit] 002 MidBattleHandler Scripts.rb:518: syntax error, unexpected '}', expecting `end'
+    }
+    ^
+[Deluxe Battle Kit] 002 MidBattleHandler Scripts.rb:1084: syntax error, unexpected end-of-input, expecting `end'
+
+Backtrace:
+005_PluginManager.rb:635:in `eval'
+005_PluginManager.rb:635:in `block (2 levels) in runPlugins'
+005_PluginManager.rb:625:in `each'
+005_PluginManager.rb:625:in `block in runPlugins'
+005_PluginManager.rb:616:in `each'
+005_PluginManager.rb:616:in `runPlugins'
+999_Main.rb:35:in `mainFunctionDebug'
+999_Main.rb:19:in `block in mainFunction'
+003_Errors.rb:79:in `pbCriticalCode'
+999_Main.rb:19:in `mainFunction'
+
+=================
+
+[2025-03-29 00:46:24 -0700]
+[Pokémon Essentials version 21.1]
+[v21.1 Hotfixes 1.0.9]
+
+Error in Plugin: [Deluxe Battle Kit]
+Exception: SyntaxError
+Message: [Deluxe Battle Kit] 002 MidBattleHandler Scripts.rb:298: syntax error, unexpected `else', expecting `end'
+    else # Buff Effect
+    ^~~~
+[Deluxe Battle Kit] 002 MidBattleHandler Scripts.rb:402: syntax error, unexpected `when', expecting `end'
+  when "TargetHPHalf_foe"
+  ^~~~
+[Deluxe Battle Kit] 002 MidBattleHandler Scripts.rb:422: syntax error, unexpected `when', expecting `end'
+  when "BattlerFainted_foe"
+  ^~~~
+[Deluxe Battle Kit] 002 MidBattleHandler Scripts.rb:445: syntax error, unexpected `when', expecting `end'
+  when "AfterLastSendOut_foe"
+  ^~~~
+[Deluxe Battle Kit] 002 MidBattleHandler Scripts.rb:475: syntax error, unexpected `when', expecting `end'
+  when "LastTargetHPLow_foe"
+  ^~~~
+[Deluxe Battle Kit] 002 MidBattleHandler Scripts.rb:518: syntax error, unexpected '}', expecting `end'
+    }
+    ^
+[Deluxe Battle Kit] 002 MidBattleHandler Scripts.rb:1084: syntax error, unexpected end-of-input, expecting `end'
+
+Backtrace:
+005_PluginManager.rb:635:in `eval'
+005_PluginManager.rb:635:in `block (2 levels) in runPlugins'
+005_PluginManager.rb:625:in `each'
+005_PluginManager.rb:625:in `block in runPlugins'
+005_PluginManager.rb:616:in `each'
+005_PluginManager.rb:616:in `runPlugins'
+999_Main.rb:35:in `mainFunctionDebug'
+999_Main.rb:19:in `block in mainFunction'
+003_Errors.rb:79:in `pbCriticalCode'
+999_Main.rb:19:in `mainFunction'

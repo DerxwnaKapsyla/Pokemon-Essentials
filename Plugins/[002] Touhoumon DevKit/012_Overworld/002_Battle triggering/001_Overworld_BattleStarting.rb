@@ -91,3 +91,36 @@ def pbPotatoHarvest(pkmn)
   return unless rand(100) < chance
   pkmn.item = :POTATO
 end
+
+def pbPickup(pkmn)
+  return if pkmn.egg? || !pkmn.hasAbility?(:PICKUP)
+  return if pkmn.hasItem?
+  return unless rand(100) < 10   # 10% chance for Pickup to trigger
+  num_rarity_levels = 10
+  # Ensure common and rare item lists contain defined items
+  common_items = pbDynamicItemList(*PICKUP_COMMON_ITEMS)
+  rare_items = pbDynamicItemList(*PICKUP_RARE_ITEMS)
+  return if common_items.length < num_rarity_levels - 1 + PICKUP_COMMON_ITEM_CHANCES.length
+  return if rare_items.length < num_rarity_levels - 1 + PICKUP_RARE_ITEM_CHANCES.length
+  # Determine the starting point for adding items from the above arrays into the
+  # pool
+  start_index = [([100, pkmn.level].min - 1) * num_rarity_levels / 100, 0].max
+  # Generate a pool of items depending on the Pokémon's level
+  items = []
+  PICKUP_COMMON_ITEM_CHANCES.length.times { |i| items.push(common_items[start_index + i]) }
+  PICKUP_RARE_ITEM_CHANCES.length.times { |i| items.push(rare_items[start_index + i]) }
+  # Randomly choose an item from the pool to give to the Pokémon
+  all_chances = PICKUP_COMMON_ITEM_CHANCES + PICKUP_RARE_ITEM_CHANCES
+  rnd = rand(all_chances.sum)
+  cumul = 0
+  all_chances.each_with_index do |c, i|
+    cumul += c
+    next if rnd >= cumul
+    if rand(100) < 10 && GameData::MapMetadata.get($game_map.map_id)&.has_flag?("TFoC")
+	  pkmn.item = :AUTUMNLEAF
+	else
+	  pkmn.item = items[i]
+	end
+    break
+  end
+end
