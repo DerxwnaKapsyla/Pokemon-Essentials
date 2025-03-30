@@ -40188,7 +40188,7 @@ Page #1
 Conditions
 None
 
-Graphic: TPDP_NPC 06
+Graphic: NPC_Maya
 
 Autonomous Movement
 Type: Fixed
@@ -41416,7 +41416,7 @@ List of Event Commands:
  @>Play SE: 'Door exit', 100, 100
  @>Change Screen Color Tone: (-255,-255,-255,0), @6
  @>Wait: 8 frame(s)
- @>Transfer Player:[013: Rooms], (021,020), Down, No Fade
+ @>Transfer Player:[049: Misty Lake], (021,020), Down, No Fade
  @>Change Screen Color Tone: (0,0,0,0), @6
  @>
 : When [Road of Liminality]
@@ -42402,7 +42402,7 @@ List of Event Commands:
 
 #------------------------------------------------------------------------------
 Event ID: 002
-Event Name: Trainer(3)
+Event Name: Trainer(3) 28,64R
 (X,Y): (028,064)
 
 Page #1
@@ -42450,7 +42450,7 @@ List of Event Commands:
 
 #------------------------------------------------------------------------------
 Event ID: 003
-Event Name: Trainer(3)
+Event Name: Trainer(3) 57,59R
 (X,Y): (057,059)
 
 Page #1
@@ -42498,7 +42498,7 @@ List of Event Commands:
 
 #------------------------------------------------------------------------------
 Event ID: 004
-Event Name: Trainer(3)
+Event Name: Trainer(3) 16,23U
 (X,Y): (016,023)
 
 Page #1
@@ -42548,7 +42548,7 @@ List of Event Commands:
 
 #------------------------------------------------------------------------------
 Event ID: 005
-Event Name: Trainer(2)
+Event Name: Trainer(2) 27,28R
 (X,Y): (027,028)
 
 Page #1
@@ -42597,7 +42597,7 @@ List of Event Commands:
 
 #------------------------------------------------------------------------------
 Event ID: 006
-Event Name: Trainer(3)
+Event Name: Trainer(3) 56.24L
 (X,Y): (056,024)
 
 Page #1
@@ -42647,7 +42647,7 @@ List of Event Commands:
 
 #------------------------------------------------------------------------------
 Event ID: 007
-Event Name: Trainer(3)
+Event Name: Trainer(3) 52,42L
 (X,Y): (052,042)
 
 Page #1
@@ -42705,7 +42705,7 @@ List of Event Commands:
 
 #------------------------------------------------------------------------------
 Event ID: 008
-Event Name: Trainer(3)
+Event Name: Trainer(3) 17,48L
 (X,Y): (017,048)
 
 Page #1
@@ -42754,7 +42754,7 @@ List of Event Commands:
 
 #------------------------------------------------------------------------------
 Event ID: 009
-Event Name: Trainer(3)
+Event Name: Trainer(3) 30,53D
 (X,Y): (030,053)
 
 Page #1
@@ -42812,7 +42812,7 @@ List of Event Commands:
 
 #------------------------------------------------------------------------------
 Event ID: 010
-Event Name: Trainer(3)
+Event Name: Trainer(3) 19,36L
 (X,Y): (019,036)
 
 Page #1
@@ -43738,7 +43738,7 @@ List of Event Commands:
 
 #------------------------------------------------------------------------------
 Event ID: 032
-Event Name: Trainer(3)
+Event Name: Trainer(3)16,20D
 (X,Y): (016,020)
 
 Page #1
@@ -44203,6 +44203,32 @@ Trigger: Action Button
 List of Event Commands:
 @>Script: pbSetPokemonCenter
 @>Call Common Event: Akyuu Shrines
+@>
+
+Page #2
+Conditions
+Switch 0001: Starting over is ON
+
+Autonomous Movement
+Type: Fixed
+Speed: 3: Slow
+Freq: 3: Low
+Options Enabled
+Move Animation
+Trigger: Autorun
+
+List of Event Commands:
+@>Control Switches: [0001: Starting over] = OFF
+@>Set Event Location: [Trainer(3) 28,64R],(028,064), Right
+@>Set Event Location: [Trainer(3) 57,59R],(057,059), Right
+@>Set Event Location: [Trainer(3) 16,23U],(016,023), Up
+@>Set Event Location: [Trainer(2) 27,28R],(027,028), Right
+@>Set Event Location: [Trainer(3) 56.24L],(056,024), Left
+@>Set Event Location: [Trainer(3) 52,42L],(052,042), Left
+@>Set Event Location: [Trainer(3) 17,48L],(017,048), Left
+@>Set Event Location: [Trainer(3) 30,53D],(030,053), Down
+@>Set Event Location: [Trainer(3) 19,36L],(019,036), Left
+@>Set Event Location: [Trainer(3)16,20D],(016,020), Down
 @>
 
 #------------------------------------------------------------------------------
@@ -51255,6 +51281,22 @@ List of Event Commands:
 @>Call Common Event: Akyuu Shrines
 @>
 
+Page #2
+Conditions
+Switch 0001: Starting over is ON
+
+Autonomous Movement
+Type: Fixed
+Speed: 3: Slow
+Freq: 3: Low
+Options Enabled
+Move Animation
+Trigger: Autorun
+
+List of Event Commands:
+@>Control Switches: [0001: Starting over] = OFF
+@>
+
 #------------------------------------------------------------------------------
 Event ID: 026
 Event Name: Counter(8)
@@ -55985,34 +56027,6 @@ List of Event Commands:
 @>
 
 #------------------------------------------------------------------------------
-Event ID: 022
-Event Name: EV022
-(X,Y): (044,009)
-
-Page #1
-Conditions
-None
-
-Graphic: Object ball
-
-Autonomous Movement
-Type: Fixed
-Speed: 3: Slow
-Freq: 3: Low
-Options Enabled
-Move Animation
-Trigger: Action Button
-
-List of Event Commands:
-@>Control Variables: [0141: Scenarios Cleared] = 3
-@>Fade Out BGM: 2 sec.
-@>Change Screen Color Tone: (-255,-255,-255,0), @8
-@>Wait: 30 frame(s)
-@>Transfer Player:[019: World of Fantasies], (019,020), Down
-@>Change Screen Color Tone: (0,0,0,0), @8
-@>
-
-#------------------------------------------------------------------------------
 
 #==============================================================================
 Map ID: 068
@@ -59376,12 +59390,11 @@ Move Animation
 Trigger: Parallel Process
 
 List of Event Commands:
-@>Script: $scene = Scene_Credits.new
+@>Script: $scene = Scene_Credits_TFoC.new
 @>Wait: 20 frame(s)
 @>Script: TFoCPostgameScene.new
 @>Script: # pbAllowSpeedup
 :       : # $GameSpeed = pbGet(1)
-@>Control Switches: [0103: Hide AI Level] = OFF
 @>Change Transparent Flag: Normal
 @>Transfer Player:[047: \PN's Room], (004,007), Right
 @>Change Screen Color Tone: (0,0,0,0), @6

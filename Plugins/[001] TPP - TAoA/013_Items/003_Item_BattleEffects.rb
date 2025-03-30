@@ -74,3 +74,52 @@ ItemHandlers::BattleUseOnPokemon.add(:ONIKILLERSAKE, proc { |item, pokemon, batt
 })
 
 ItemHandlers::BattleUseOnPokemon.copy(:MAXREVIVE,:GOLDENRICESAKE)
+
+ItemHandlers::CanUseInBattle.copy(:FULLRESTORE,:STRAWBERRYJAM)
+ItemHandlers::CanUseInBattle.copy(:ETHER,:MAXETHER,:LEPPABERRY,:BLUEBERRYJAM) # Derx: Addition of Blueberry Jam to Ether-like duplicate checks
+
+# ------ Derx: New item - Minoriko's Speciality. Full Restore + Max Elixir, raises happiness.
+ItemHandlers::BattleUseOnPokemon.add(:MINORIKOJAM, proc { |item, pokemon, battler, choices, scene|
+  pokemon.heal_status
+  battler&.pbCureStatus(false)
+  battler&.pbCureConfusion
+  name = (battler) ? battler.pbThis : pokemon.name
+  pokemon.moves.length.times do |i|
+    pbBattleRestorePP(pokemon, battler, i, pokemon.moves[i].total_pp)
+  end
+  if pokemon.hp < pokemon.totalhp
+    pbBattleHPItem(pokemon, battler, pokemon.totalhp, scene)
+  else
+    scene.pbRefresh
+    scene.pbDisplay(_INTL("{1} was revitalized.", name))
+	pokemon.changeHappiness("jam")
+  end
+})
+# ------ Derx: End of Minoriko's Speciality addition
+
+# ------ Derx: New item - Minoriko's Speciality. Full Restore + Max Elixir, raises happiness.
+ItemHandlers::CanUseInBattle.add(:MINORIKOJAM, proc { |item, pokemon, battler, move, firstAction, battle, scene, showMessages|
+  if !pokemon.able?
+    scene.pbDisplay(_INTL("It won't have any effect.")) if showMessages
+    next false
+  end
+  canRestore = false
+  pokemon.moves.each do |m|
+    next if m.id == 0
+    next if m.total_pp <= 0 || m.pp == m.total_pp
+    canRestore = true
+    break
+  end
+  if !canRestore
+    scene.pbDisplay(_INTL("It won't have any effect.")) if showMessages
+    next false
+  end
+  if !pokemon.able? ||
+     (pokemon.hp == pokemon.totalhp && pokemon.status == :NONE &&
+     (!battler || battler.effects[PBEffects::Confusion] == 0))
+    scene.pbDisplay(_INTL("It won't have any effect.")) if showMessages
+    next false
+  end
+  next true
+})
+# ------ Derx: End of Minoriko's Speciality addition

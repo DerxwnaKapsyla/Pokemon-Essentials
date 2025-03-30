@@ -63,7 +63,7 @@ ItemHandlers::UseOnPokemon.add(:STRAWBERRYJAM, proc { |item, qty, pkmn, scene|
   next true
 })
 
-ItemHandlers::UseOnPokemon.add(:MAXETHER, proc { |item, qty, pkmn, scene|
+ItemHandlers::UseOnPokemon.add(:BLUEBERRYJAM, proc { |item, qty, pkmn, scene|
   move = scene.pbChooseMove(pkmn, _INTL("Restore which move?"))
   next false if move < 0
   if pbRestorePP(pkmn, move, pkmn.moves[move].total_pp - pkmn.moves[move].pp) == 0
@@ -96,5 +96,6 @@ ItemHandlers::UseOnPokemon.add(:MINORIKOJAM, proc { |item, qty, pkmn, scene|
   end
   next true
   scene.pbDisplay(_INTL("PP was restored."))
+  pkmn.changeHappiness("jam")
   next true
 })
