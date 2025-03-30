@@ -55061,6 +55061,86 @@ List of Event Commands:
 @>
 
 #------------------------------------------------------------------------------
+Event ID: 008
+Event Name: size(3,1)
+(X,Y): (017,017)
+
+Page #1
+Conditions
+None
+
+Autonomous Movement
+Type: Fixed
+Speed: 3: Slow
+Freq: 3: Low
+Options Enabled
+Move Animation
+Trigger: Action Button
+
+List of Event Commands:
+@>
+
+#------------------------------------------------------------------------------
+Event ID: 009
+Event Name: size(3,1)
+(X,Y): (026,017)
+
+Page #1
+Conditions
+None
+
+Autonomous Movement
+Type: Fixed
+Speed: 3: Slow
+Freq: 3: Low
+Options Enabled
+Move Animation
+Trigger: Action Button
+
+List of Event Commands:
+@>
+
+#------------------------------------------------------------------------------
+Event ID: 010
+Event Name: size(3,1)
+(X,Y): (026,016)
+
+Page #1
+Conditions
+None
+
+Autonomous Movement
+Type: Fixed
+Speed: 3: Slow
+Freq: 3: Low
+Options Enabled
+Move Animation
+Trigger: Action Button
+
+List of Event Commands:
+@>
+
+#------------------------------------------------------------------------------
+Event ID: 011
+Event Name: size(3,1)
+(X,Y): (017,016)
+
+Page #1
+Conditions
+None
+
+Autonomous Movement
+Type: Fixed
+Speed: 3: Slow
+Freq: 3: Low
+Options Enabled
+Move Animation
+Trigger: Action Button
+
+List of Event Commands:
+@>
+
+#------------------------------------------------------------------------------
 
 #==============================================================================
 Map ID: 067
@@ -56137,76 +56217,50 @@ Trigger: Autorun
 
 List of Event Commands:
 @>Scroll Map: Down, 18, 2
-@>Conditional Branch: Self Switch A == OFF
- @>Wait: 1 frame(s)
- @>Text: \xn[Yuuka]So, tell me \pn. How are you enjoying my home?
- @>Text: \xn[\pn]It's... certainly unlike anything I've ever seen before.
- @>Text: \xn[\pn]But, it is quite breathtakingly beautiful.
- @>Text: \xn[\pn]Never have I ever seen such an arrangement of 
-  :    : flowers and crops all in one area, especially not as well
-  :    : cared for.
- @>Text: \xn[Yuuka]My, you flatter me! I am but a simple Youkai that enjoys
-  :    : flowers!
- @>Text: \xn[Yuuka]I have put a lot of love and care into my garden, so I will
-  :    : accept the complement you have so graciously given out.
- @>Text: \xn[\pn]\b(No, seriously, can this really be the same Yuuka
-  :    : Kazami I've heard rumors about?)
- @>Text: \xn[\pn]\b(I know I've also heard that she's polite, but this
-  :    : feels so eerily out of place with the stories I've heard.)
- @>Control Self Switch: A =ON
- @>
-: Branch End
+@>Wait: 1 frame(s)
+@>Text: \xn[Yuuka]So, tell me \pn. How are you enjoying my home?\wtnp[30]
+@>Text: \xn[\pn]It's... certainly unlike anything I've ever seen before.\wtnp[30]
+@>Text: \xn[\pn]But, it is quite breathtakingly beautiful.\wtnp[30]
+@>Text: \l[3]\xn[\pn]Never have I ever seen such an arrangement of 
+ :    : flowers and crops all in one area, especially not as well
+ :    : cared for.\wtnp[30]
+@>Text: \xn[Yuuka]My, you flatter me! I am but a simple Youkai that enjoys
+ :    : flowers!\wtnp[30]
+@>Text: \l[3]\xn[Yuuka]I have put a lot of love and care into my garden, so I will
+ :    : accept the complement you have so graciously given out.\wtnp[30]
+@>Text: \l[3]\xn[\pn]\b(...No, seriously, can this really be the same Yuuka
+ :    : Kazami I've heard rumors about?)\wtnp[30]
+@>Text: \l[3]\xn[\pn]\b(I know I've also heard that she's polite, but this
+ :    : feels so eerily out of place with the stories I've heard.)\wtnp[30]
 @>Script: $game_map.start_scroll(0,0,0)
-@>Control Variables: [0005: Temp Text Entry] += 1
-@>
-
-Page #2
-Conditions
-Variable 0005: Temp Text Entry is 1 or above
-Self Switch A is ON
-
-Autonomous Movement
-Type: Fixed
-Speed: 3: Slow
-Freq: 3: Low
-Options Enabled
-Move Animation
-Trigger: Autorun
-
-List of Event Commands:
 @>Change Screen Color Tone: (-255,-255,-255,0), @6
 @>Wait: 8 frame(s)
 @>Transfer Player:[068: Mugenkan (Back Garden)], (008,042), Up, No Fade
 @>Change Screen Color Tone: (0,0,0,0), @6
 @>Scroll Map: Right, 26, 2
-@>Conditional Branch: Self Switch B == OFF
- @>Text: \xn[Yuuka]How are the snacks and tea that have been served?
- @>Text: \xn[\pn]They're quite delicious, honestly! I wasn't sure what to
-  :    : expect, but it's really something else?
- @>Text: \xn[\pn]What exactly is this? I'd love to know so I can
-  :    : try and replicate the meal at home?
- @>Text: \xn[Yuuka]It's a blend of various berries from my garden!
- @>Text: \xn[Yuuka]The tea you're drinking is my specialty, made from a 
-  :    : blend of Occa, Yache, and Starf Berries.
- @>Text: \xn[\pn]Wow... I have no idea what those berries even are,
-  :    : where did you get them?
- @>Text: \xn[Yuuka]From one of my many excursions to the outside world, of
-  :    : course!
- @>Text: \xn[\pn]You can visit the Outside World!?
- @>Text: \xn[Yuuka]It's not a question of can I, but rather of who's able 
-  :    : to stop me~?
- @>Text: \xn[\pn]\b(I guess that's fair...)
- @>Control Self Switch: B =ON
- @>
-: Branch End
+@>Text: \xn[Yuuka]How are the snacks and tea that have been served?\wtnp[30]
+@>Text: \l[3]\xn[\pn]They're quite delicious, honestly! I wasn't sure what to
+ :    : expect, but it's really something else?\wtnp[30]
+@>Text: \xn[\pn]What exactly is this? I'd love to know so I can
+ :    : try and replicate the meal at home?\wtnp[30]
+@>Text: \xn[Yuuka]It's a blend of various berries from my garden!\wtnp[30]
+@>Text: \l[3]\xn[Yuuka]The tea you're drinking is my specialty, made from a 
+ :    : blend of Occa, Yache, and Starf Berries.\wtnp[30]
+@>Text: \xn[\pn]Wow... I have no idea what those berries even are,
+ :    : where did you get them?\wtnp[30]
+@>Text: \xn[Yuuka]From one of my many excursions to the outside world, of
+ :    : course!\wtnp[30]
+@>Text: \xn[\pn]You can visit the Outside World!?\wtnp[30]
+@>Text: \xn[Yuuka]It's not a question of can I, but rather of who's able 
+ :    : to stop me~?\wtnp[30]
+@>Text: \xn[\pn]\b(I guess that's fair...)\wtnp[30]
 @>Script: $game_map.start_scroll(0,0,0)
-@>Control Variables: [0005: Temp Text Entry] += 1
+@>Control Self Switch: A =ON
 @>
 
-Page #3
+Page #2
 Conditions
-Variable 0005: Temp Text Entry is 2 or above
-Self Switch B is ON
+Self Switch A is ON
 
 Autonomous Movement
 Type: Fixed
@@ -56271,7 +56325,7 @@ List of Event Commands:
 @>Text: \xn[Yuuka]Getting back to the original topic...
 @>Text: \xn[\pn]\b(And she immediately topic shifts without a second 
  :    : thought, too! Elder Youkai really are something else entirely...)
-@>Fade Out BGM: 15 sec.
+@>Fade Out BGM: 10 sec.
 @>Text: \xn[Yuuka]You see, \pn. After hearing all of these stories about
  :    : you, I am very interested in what you can do.
 @>Text: \xn[\pn]In... what I can do? I'm just a simple Human, what 
@@ -56365,7 +56419,300 @@ List of Event Commands:
   :    : our refreshments?
  @>Text: \xn[\pn]Y-Yeah, sure\..\..\..\wtnp[40]
  @>Wait: 20 frame(s)
- @>Control Switches: [0103: Hide AI Level] = ON
+ @>Change Screen Color Tone: (51,17,-34,255), @10
+ @>Play BGM: 'W-029. Unknown Flower, Mesmerizing Journey', 70, 100
+ @>Wait: 10 frame(s)
+ @>Change Text Options: Bottom, Show
+ @>Text: \w[dark]\c[12]\se[]\l[3]With that battle concluded, \pn had finally realized the truth
+  :    : of what everyone had been saying.\wtnp[40]
+ @>Text: \w[dark]\c[12]\se[]\l[3]The responsibility of wielding power isn't just in using it correctly,
+  :    : it's in knowing what comes as a result of wielding it.\wtnp[40]
+ @>Text: \w[dark]\c[12]\se[]\l[3]And in this case, the result would be becoming one of
+  :    : Gensokyo's strongest trainers, sought out by many for battles.\wtnp[40]
+ @>Text: \w[dark]\c[12]\se[]\l[3]But for now, she continued her pleasant, if a bit unsettling,
+  :    : day with Yuuka, until it was time for her to head back home.\wtnp[40]
+ @>Change Screen Color Tone: (-255,-255,-255,0), @6
+ @>Wait: 6 frame(s)
+ @>Change Text Options: Middle, Hide
+ @>Text: <ac>\w[dark]\c[12]\se[]\l[4]Though she didn't know it at the time, her schedule was
+  :    : about to become a lot less free than it used to be.\wtnp[40]</ac>
+ @>Text: <ac>\w[dark]\c[12]\se[]\l[3]That, however, would be a worry for another
+  :    : day...\wtnp[40]</ac>
+ @>Fade Out BGM: 5 sec.
+ @>Wait: 50 frame(s)
+ @>Change Text Options: Middle, Hide
+ @>Call Common Event: TFoC True Credits
+ @>Control Self Switch: B =ON
+ @>
+: Else
+ @>Change Transparent Flag: Normal
+ @>Exit Event Processing
+ @>
+: Branch End
+@>
+
+Page #3
+Conditions
+Self Switch B is ON
+
+Autonomous Movement
+Type: Fixed
+Speed: 3: Slow
+Freq: 3: Low
+Options Enabled
+Move Animation
+Trigger: Action Button
+
+List of Event Commands:
+@>
+
+#------------------------------------------------------------------------------
+Event ID: 006
+Event Name: Autorun Backup
+(X,Y): (045,049)
+
+Page #1
+Conditions
+None
+
+Autonomous Movement
+Type: Fixed
+Speed: 3: Slow
+Freq: 3: Low
+Options Enabled
+Move Animation
+Trigger: Action Button
+
+List of Event Commands:
+@>Scroll Map: Down, 18, 2
+@>Conditional Branch: Self Switch A == OFF
+ @>Wait: 1 frame(s)
+ @>Text: \xn[Yuuka]So, tell me \pn. How are you enjoying my home?\wtnp[30]
+ @>Text: \xn[\pn]It's... certainly unlike anything I've ever seen before.\wtnp[30]
+ @>Text: \xn[\pn]But, it is quite breathtakingly beautiful.\wtnp[30]
+ @>Text: \l[3]\xn[\pn]Never have I ever seen such an arrangement of 
+  :    : flowers and crops all in one area, especially not as well
+  :    : cared for.\wtnp[30]
+ @>Text: \xn[Yuuka]My, you flatter me! I am but a simple Youkai that enjoys
+  :    : flowers!\wtnp[30]
+ @>Text: \l[3]\xn[Yuuka]I have put a lot of love and care into my garden, so I will
+  :    : accept the complement you have so graciously given out.\wtnp[30]
+ @>Text: \l[3]\xn[\pn]\b(...No, seriously, can this really be the same Yuuka
+  :    : Kazami I've heard rumors about?)\wtnp[30]
+ @>Text: \l[3]\xn[\pn]\b(I know I've also heard that she's polite, but this
+  :    : feels so eerily out of place with the stories I've heard.)\wtnp[30]
+ @>Control Self Switch: A =ON
+ @>
+: Branch End
+@>Script: $game_map.start_scroll(0,0,0)
+@>Control Variables: [0005: Temp Text Entry] += 1
+@>
+
+Page #2
+Conditions
+Variable 0005: Temp Text Entry is 1 or above
+Self Switch A is ON
+
+Autonomous Movement
+Type: Fixed
+Speed: 3: Slow
+Freq: 3: Low
+Options Enabled
+Move Animation
+Trigger: Action Button
+
+List of Event Commands:
+@>Change Screen Color Tone: (-255,-255,-255,0), @6
+@>Wait: 8 frame(s)
+@>Transfer Player:[068: Mugenkan (Back Garden)], (008,042), Up, No Fade
+@>Change Screen Color Tone: (0,0,0,0), @6
+@>Scroll Map: Right, 26, 2
+@>Conditional Branch: Self Switch B == OFF
+ @>Text: \xn[Yuuka]How are the snacks and tea that have been served?
+ @>Text: \xn[\pn]They're quite delicious, honestly! I wasn't sure what to
+  :    : expect, but it's really something else?
+ @>Text: \xn[\pn]What exactly is this? I'd love to know so I can
+  :    : try and replicate the meal at home?
+ @>Text: \xn[Yuuka]It's a blend of various berries from my garden!
+ @>Text: \xn[Yuuka]The tea you're drinking is my specialty, made from a 
+  :    : blend of Occa, Yache, and Starf Berries.
+ @>Text: \xn[\pn]Wow... I have no idea what those berries even are,
+  :    : where did you get them?
+ @>Text: \xn[Yuuka]From one of my many excursions to the outside world, of
+  :    : course!
+ @>Text: \xn[\pn]You can visit the Outside World!?
+ @>Text: \xn[Yuuka]It's not a question of can I, but rather of who's able 
+  :    : to stop me~?
+ @>Text: \xn[\pn]\b(I guess that's fair...)
+ @>Control Self Switch: B =ON
+ @>
+: Branch End
+@>Script: $game_map.start_scroll(0,0,0)
+@>Control Variables: [0005: Temp Text Entry] += 1
+@>
+
+Page #3
+Conditions
+Variable 0005: Temp Text Entry is 2 or above
+Self Switch B is ON
+
+Autonomous Movement
+Type: Fixed
+Speed: 3: Slow
+Freq: 3: Low
+Options Enabled
+Move Animation
+Trigger: Action Button
+
+List of Event Commands:
+@>Change Screen Color Tone: (-255,-255,-255,0), @6
+@>Wait: 8 frame(s)
+@>Transfer Player:[068: Mugenkan (Back Garden)], (023,032), Down, No Fade
+@>Change Screen Color Tone: (0,0,0,0), @6
+@>Text: \xn[Yuuka]Tell me, \pn. You know why I called you here today,
+ :    : correct?
+@>Text: \xn[\pn]Well, if memory serves correctly, the letter said that you
+ :    : wished to battle me.
+@>Text: \xn[Yuuka]Precisely. You see, \pn, I've heard about you and 
+ :    : your talents.
+@>Text: \xn[Yuuka]It's not very often that one can just brave the
+ :    : curse-filled domain of the Great Youkai Forest, or the
+ :    : miasma-laden Suzuran Field and walk away unscathed.
+@>Text: \xn[Yuuka]Especially when one is dealing with a fledgling Youkai
+ :    : such as Medicine.
+@>Text: \xn[Yuuka]Not to mention, of course, being able to convince her 
+ :    : to stand down. You must truly be something else to tackle all
+ :    : of that!
+@>Text: \xn[\pn]Thanks, I guess! I just did what had to be do-\.. Wait 
+ :    : a second.
+@>Text: \xn[\pn]How did you know about my battle with Medicine?
+@>Text: \xn[\pn]I didn't include that in my interview with the Tengu 
+ :    : reporter, and Miss Keine instructed me to keep that under 
+ :    : wraps until further notice.
+@>Text: \xn[Yuuka]When one lives so close to the home of the person
+ :    : who was plotting to curse and overrun the Village, one tends to
+ :    : overhear many interesting things.
+@>Text: \xn[\pn]Wait, so you knew all along that Medicine was behind
+ :    : the incident in the Village?
+@>Text: \xn[Yuuka]Well of course I did! It made for quite the interesting
+ :    : series of events.
+@>Text: \xn[\pn]So... If you knew, how come you didn't mention it to 
+ :    : anyone in the Village?
+@>Text: \xn[Yuuka]Well that's really quite simple to answer.
+@>Text: \xn[Yuuka]You see, the affairs of what happens in the Human 
+ :    : Village mean very little to me.
+@>Text: \xn[Yuuka]I couldn't care less what happens to them, be it good 
+ :    : or bad.
+@>Text: \xn[Yuuka]I could go to bed one evening with the Village 
+ :    : perfectly safe, then wake up the next and overhear that it's 
+ :    : been destroyed by some malevolent Youkai.
+@>Text: \xn[Yuuka]And it wouldn't mean a thing to me.
+@>Text: \xn[\pn]...I... That's...
+@>Text: \xn[Yuuka]Oh, come now! Did you forget? I'm a Youkai! We
+ :    : are Humanity's greatest predator.
+@>Text: \xn[Yuuka]Sure, I might not lift a finger to harm the Village, but 
+ :    : that doesn't mean I'll lift a finger to <i>protect</i> it, either.
+@>Text: \xn[Yuuka]Well, not unless something about what's befalling it 
+ :    : interests me personally, of course.
+@>Text: \xn[\pn]\b(Yep! Okay! She's every bit as terrifying as the stories
+ :    : make her out to be! I don't even know what to say here!)
+@>Text: \xn[Yuuka]Getting back to the original topic...
+@>Text: \xn[\pn]\b(And she immediately topic shifts without a second 
+ :    : thought, too! Elder Youkai really are something else entirely...)
+@>Fade Out BGM: 10 sec.
+@>Text: \xn[Yuuka]You see, \pn. After hearing all of these stories about
+ :    : you, I am very interested in what you can do.
+@>Text: \xn[\pn]In... what I can do? I'm just a simple Human, what 
+ :    : <i>can</i> I do that has you so interested in me?
+@>Text: \xn[Yuuka]I've seen many a trainer in the outside world with
+ :    : command over Puppets, exceptional command over them.
+ :    : Much like you, even.
+@>Text: \xn[Yuuka]These individuals have toppled organisations left and
+ :    : right with their mastery over Puppets.
+@>Text: \xn[Yuuka]Of course, I try not to interact with the Outside World 
+ :    : too much. Gensokyo and the Outside World were separated for a
+ :    : reason, afterall!
+@>Text: \xn[Yuuka]And it wouldn't do for a Youkai like me to suddenly
+ :    : start terrorizing the Humans beyond the barrier.
+@>Text: \xn[Yuuka]This has left me yearning for a chance to test my
+ :    : skills against a trainer of equal calibur here in Gensokyo.
+@>Text: \xn[Yuuka]And, to my surprise, I wouldn't have to wait too long!
+@>Text: \xn[\pn]You mean me, of course. But am I really that strong?
+@>Text: \xn[Yuuka]Oh make no mistake, \pn. You are absolutely one
+ :    : of the strongest trainers in Gensokyo right now.
+@>Text: \xn[Yuuka]...At least, among the ordinary folk. Which is what 
+ :    : makes you so fascinating. As well as what made me reach out
+ :    : to you for a battle.
+@>Play BGM: 'P-004. Sleeping Terror', 100, 100
+@>Text: \xn[Yuuka]I appreciate strength in an individual. Power. 
+ :    : Determination. And you exude all of that.
+@>Text: \xn[Yuuka]You don't rely on cheap tricks to win. Just your own
+ :    : strength, and the strength of your Puppets.
+@>Text: \xn[Yuuka]And I would just <i>love</i> to see that first hand.
+@>Set Move Route: [Yuuka]
+ :              : $>Move Up
+ :              : $>Turn Right
+ :              : $>Move Right
+@>Wait for Move's Completion
+@>Text: \xn[Yuuka]Shall we?
+@>Wait: 20 frame(s)
+@>Text: \xn[\pn]Being completely honest here, half of me is terrified
+ :    : beyond all compare right now.
+@>Text: \xn[Yuuka]And what does the other half think?
+@>Set Move Route: [Ayaka]
+ :              : $>Wait: 40 frame(s)
+ :              : $>Move Up
+ :              : $>Move Left
+@>Text: \xn[\pn]The other half...?\wt[30] What the hell, why not? How
+ :    : often does one get the oportunity to do something like this?
+@>Text: \xn[\pn]I'd probably regret it for the rest of my life if I didn't
+ :    : take the plunge here!
+@>Text: \xn[Yuuka]Ahaha~, that's what I like to hear!
+@>Text: \xn[Yuuka]Then follow me, \pn! And let us have a battle where
+ :    : neither of us hold back in the slightest!
+@>Wait for Move's Completion
+@>Change Screen Color Tone: (-255,-255,-255,0), @6
+@>Wait: 8 frame(s)
+@>Set Event Location: [Ayaka],(019,040), Right
+@>Set Event Location: [Yuuka],(026,040), Left
+@>Transfer Player:[068: Mugenkan (Back Garden)], (022,040), Down, No Fade
+@>Change Screen Color Tone: (0,0,0,0), @6
+@>Text: \xn[Yuuka]No more words need be spoken! From now, let us
+ :    : let our Puppets do the talking for one another!
+@>Control Switches: [0104: Transition Handler] = ON
+@>Control Variables: [0103: Vs. Transition ID] = 21
+@>Control Variables: [0104: Vs. Transition - Pkmn] = 6
+@>Script: setBattleRule("base","mugenkan_brick")
+@>Script: pbBGMStop(0.1)
+@>Conditional Branch: Script: TrainerBattle.start(:YUUKA, "Yuuka Kazami", 10 + pbGet(99) * 10)
+ @>Text: \xn[Yuuka]Ah, now that was certainly a delightful battle! Wouldnt you agree?
+ @>Text: \xn[\pn]A battle is <i>hardly</I> how I would describe that! 
+  :    : That felt like I was throwing myself against a wall and 
+  :    : trying to punch my way through it!
+ @>Text: \xn[Yuuka]But you did manage to break down said wall, did 
+  :    : you not?
+ @>Text: \xn[Yuuka]And look what happened because of it~ How does
+  :    : it feel taking victory?
+ @>Text: \xn[\pn]Really good, honestly! That battle was probably my 
+  :    : most exhilarating one yet!
+ @>Text: \xn[\pn]I'm amazed that I managed to pull it off, but I guess it
+  :    : is like you and everyone else have been saying!
+ @>Text: \xn[Yuuka]Looks like you're starting to better understand the
+  :    : power you wield and just how much strength it gives you!
+ @>Text: \xn[Yuuka]Which'll be good for the next time we fight.
+ @>Show Animation: [Ayaka], [Exclaim bubble]
+ @>Text: \xn[\pn]N-Next time!?
+ @>Text: \xn[Yuuka]Of course! You didn't think I'd be satisfied with just 
+  :    : one battle against you ever, did you?
+ @>Text: \xn[Yuuka]Especially when I lost, oh no. I need to make sure 
+  :    : the next time we fight, I'm in much better form.
+ @>Text: \xn[\pn]\b(Oh gods, what have I gotten myself into...)
+ @>Text: \xn[Yuuka]Well, that's something that can be left for another 
+  :    : day!
+ @>Text: \xn[Yuuka]This day is still young, afterall. Shall we return to
+  :    : our refreshments?
+ @>Text: \xn[\pn]Y-Yeah, sure\..\..\..\wtnp[40]
+ @>Wait: 20 frame(s)
  @>Change Screen Color Tone: (51,17,-34,255), @10
  @>Play BGM: 'W-029. Unknown Flower, Mesmerizing Journey', 70, 100
  @>Wait: 10 frame(s)
@@ -56408,7 +56755,7 @@ Speed: 3: Slow
 Freq: 3: Low
 Options Enabled
 Move Animation
-Trigger: Autorun
+Trigger: Action Button
 
 List of Event Commands:
 @>
