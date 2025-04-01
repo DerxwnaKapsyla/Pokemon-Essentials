@@ -13,11 +13,7 @@ PWT_LOBBY_EVENT = 59
 # ID of the event used to display an optional even if the player wins the PWT
 PWT_FANFARE_EVENT = 23
 # If marked as true, it will apply a multiplier based on the player's current win streak. Defeault to false.
-PWT_STREAK_MULT = false
-# If marked as true, it will use DeltaTime, otherwise, it will use the old frame system
-PWT_USE_DELTA_TIME = false
-# Target framerate. By default it's usually 60 fps with MKXP-Z.
-PWT_DEFAULT_FRAMERATE = 60
+PWT_STREAK_MULT = true
 end
 
 module GameData
@@ -108,24 +104,24 @@ GameData::PWTTournament.register({
   :id => :Easy_Diff,
   :name => _INTL("Easy"),
   :trainers => [
-                [:PWT_YOUTH_M,"Shouta","Player Victory Dialogue.","Player Lose Dialogue.",100,"Lobby Dialogue.","Pre-Battle Dialogue.","Post-Battle Dialogue"], # Human Youth M
-                [:PWT_YOUTH_M,"Yuuichi","Player Victory Dialogue.","Player Lose Dialogue.",100,"Lobby Dialogue.","Pre-Battle Dialogue.","Post-Battle Dialogue"], # Human Youth M
-                [:PWT_YOUTH_M,"Osamu","Player Victory Dialogue.","Player Lose Dialogue.",100,"Lobby Dialogue.","Pre-Battle Dialogue.","Post-Battle Dialogue"], # Human Youth M
-                [:PWT_YOUTH_M,"Ryusei","Player Victory Dialogue.","Player Lose Dialogue.",100,"Lobby Dialogue.","Pre-Battle Dialogue.","Post-Battle Dialogue"], # Human Youth F
-                [:PWT_YOUTH_F,"Mirin","Player Victory Dialogue.","Player Lose Dialogue.",100,"Lobby Dialogue.","Pre-Battle Dialogue.","Post-Battle Dialogue"], # Human Youth F
-                [:PWT_YOUTH_F,"Sachie","Player Victory Dialogue.","Player Lose Dialogue.",100,"Lobby Dialogue.","Pre-Battle Dialogue.","Post-Battle Dialogue"], # Human Youth F
-				[:PWT_YOUTH_F,"Yuzu","Player Victory Dialogue.","Player Lose Dialogue.",100,"Lobby Dialogue.","Pre-Battle Dialogue.","Post-Battle Dialogue"], # Fairy 1
-                [:PWT_YOUTH_F,"Azumi","Player Victory Dialogue.","Player Lose Dialogue.",100,"Lobby Dialogue.","Pre-Battle Dialogue.","Post-Battle Dialogue"], # Fairy 1
-                [:PWT_FAIRY_1,"Mirai","Player Victory Dialogue.","Player Lose Dialogue.",100,"Lobby Dialogue.","Pre-Battle Dialogue.","Post-Battle Dialogue"], # Fairy 1
-                [:PWT_FAIRY_1,"Himawari","Player Victory Dialogue.","Player Lose Dialogue.",100,"Lobby Dialogue.","Pre-Battle Dialogue.","Post-Battle Dialogue"], # Fairy 2
-                [:PWT_FAIRY_1,"Koko","Player Victory Dialogue.","Player Lose Dialogue.",100,"Lobby Dialogue.","Pre-Battle Dialogue.","Post-Battle Dialogue"], # Fairy 2
-                [:PWT_FAIRY_2,"Ami","Player Victory Dialogue.","Player Lose Dialogue.",100,"Lobby Dialogue.","Pre-Battle Dialogue.","Post-Battle Dialogue"], # Fairy 2
-                [:PWT_FAIRY_2,"Miru","Player Victory Dialogue.","Player Lose Dialogue.",100,"Lobby Dialogue.","Pre-Battle Dialogue.","Post-Battle Dialogue"], # Festival Supervisor M
-				[:PWT_FAIRY_2,"Seles","Player Victory Dialogue.","Player Lose Dialogue.",100,"Lobby Dialogue.","Pre-Battle Dialogue.","Post-Battle Dialogue"], # Festival Supervisor M
-				[:PWT_SUPERVISOR_M,"Rolo","Player Victory Dialogue.","Player Lose Dialogue.",100,"Lobby Dialogue.","Pre-Battle Dialogue.","Post-Battle Dialogue"], # Festival Supervisor M
-				[:PWT_SUPERVISOR_M,"Kengo","Player Victory Dialogue.","Player Lose Dialogue.",100,"Lobby Dialogue.","Pre-Battle Dialogue.","Post-Battle Dialogue"], # Festival Supervisor F
-				[:PWT_SUPERVISOR_F,"Rei","Player Victory Dialogue.","Player Lose Dialogue.",100,"Lobby Dialogue.","Pre-Battle Dialogue.","Post-Battle Dialogue"], # Festival Supervisor F
-				[:PWT_SUPERVISOR_F,"Hinoka","Player Victory Dialogue.","Player Lose Dialogue.",100,"Lobby Dialogue.","Pre-Battle Dialogue.","Post-Battle Dialogue"], # Festival Supervisor F
+                [:ID,"Trainer Name","Player Victory Dialogue.","Player Lose Dialogue.",100,"Lobby Dialogue.","Pre-Battle Dialogue.","Post-Battle Dialogue"], # Human Youth M
+                [:ID,"Trainer Name","Player Victory Dialogue.","Player Lose Dialogue.",100,"Lobby Dialogue.","Pre-Battle Dialogue.","Post-Battle Dialogue"], # Human Youth M
+                [:ID,"Trainer Name","Player Victory Dialogue.","Player Lose Dialogue.",100,"Lobby Dialogue.","Pre-Battle Dialogue.","Post-Battle Dialogue"], # Human Youth M
+                [:ID,"Trainer Name","Player Victory Dialogue.","Player Lose Dialogue.",100,"Lobby Dialogue.","Pre-Battle Dialogue.","Post-Battle Dialogue"], # Human Youth F
+                [:ID,"Trainer Name","Player Victory Dialogue.","Player Lose Dialogue.",100,"Lobby Dialogue.","Pre-Battle Dialogue.","Post-Battle Dialogue"], # Human Youth F
+                [:ID,"Trainer Name","Player Victory Dialogue.","Player Lose Dialogue.",100,"Lobby Dialogue.","Pre-Battle Dialogue.","Post-Battle Dialogue"], # Human Youth F
+				[:ID,"Trainer Name","Player Victory Dialogue.","Player Lose Dialogue.",100,"Lobby Dialogue.","Pre-Battle Dialogue.","Post-Battle Dialogue"], # Fairy 1
+                [:ID,"Trainer Name","Player Victory Dialogue.","Player Lose Dialogue.",100,"Lobby Dialogue.","Pre-Battle Dialogue.","Post-Battle Dialogue"], # Fairy 1
+                [:ID,"Trainer Name","Player Victory Dialogue.","Player Lose Dialogue.",100,"Lobby Dialogue.","Pre-Battle Dialogue.","Post-Battle Dialogue"], # Fairy 1
+                [:ID,"Trainer Name","Player Victory Dialogue.","Player Lose Dialogue.",100,"Lobby Dialogue.","Pre-Battle Dialogue.","Post-Battle Dialogue"], # Fairy 2
+                [:ID,"Trainer Name","Player Victory Dialogue.","Player Lose Dialogue.",100,"Lobby Dialogue.","Pre-Battle Dialogue.","Post-Battle Dialogue"], # Fairy 2
+                [:ID,"Trainer Name","Player Victory Dialogue.","Player Lose Dialogue.",100,"Lobby Dialogue.","Pre-Battle Dialogue.","Post-Battle Dialogue"], # Fairy 2
+                [:ID,"Trainer Name","Player Victory Dialogue.","Player Lose Dialogue.",100,"Lobby Dialogue.","Pre-Battle Dialogue.","Post-Battle Dialogue"], # Festival Supervisor M
+				[:ID,"Trainer Name","Player Victory Dialogue.","Player Lose Dialogue.",100,"Lobby Dialogue.","Pre-Battle Dialogue.","Post-Battle Dialogue"], # Festival Supervisor M
+				[:ID,"Trainer Name","Player Victory Dialogue.","Player Lose Dialogue.",100,"Lobby Dialogue.","Pre-Battle Dialogue.","Post-Battle Dialogue"], # Festival Supervisor M
+				[:ID,"Trainer Name","Player Victory Dialogue.","Player Lose Dialogue.",100,"Lobby Dialogue.","Pre-Battle Dialogue.","Post-Battle Dialogue"], # Festival Supervisor F
+				[:ID,"Trainer Name","Player Victory Dialogue.","Player Lose Dialogue.",100,"Lobby Dialogue.","Pre-Battle Dialogue.","Post-Battle Dialogue"], # Festival Supervisor F
+				[:ID,"Trainer Name","Player Victory Dialogue.","Player Lose Dialogue.",100,"Lobby Dialogue.","Pre-Battle Dialogue.","Post-Battle Dialogue"], # Festival Supervisor F
 				# ---- Gensokyo's Finest
                 [:KOKORO,"Kokoro","Hahaha, t'was a memorable dance indeed!","Though your show ends here, your performance was remarkable!",100] # Kokoro
                ],

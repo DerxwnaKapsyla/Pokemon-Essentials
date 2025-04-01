@@ -97,12 +97,12 @@ class Battle
     end
     return if exp <= 0
     # Pokémon gain more Exp from trainer battles
-    exp = (exp * 1.5).floor #if Settings::MORE_EXP_FROM_TRAINER_POKEMON && trainerBattle? # Derx: Formerly 1.5
+    exp = (exp * 1.5).floor #if Settings::MORE_EXP_FROM_TRAINER_POKEMON && trainerBattle? # Derx: Formerly 1.5 # Derx: What do you MEAN formerly??? It's 1.5 NOW! Was it 1.7???? 1.3??? HECK IF I KNOW
     # Scale the gained Exp based on the gainer's level (or not)
     if Settings::SCALED_EXP_FORMULA
       exp /= 5
       levelAdjust = ((2 * level) + 10.0) / (pkmn.level + level + 10.0)
-      levelAdjust = levelAdjust**5
+      levelAdjust **= 5
       levelAdjust = Math.sqrt(levelAdjust)
       exp *= levelAdjust
       exp = exp.floor
@@ -134,8 +134,22 @@ class Battle
       isOutsider = true   # To show the "boosted Exp" message
     end
 	# Multiply experience if relevant variable is on and set to a value greater than 1
+	# Used in the Lunar Training Simulator
 	if $game_variables[97] > 1
 	  exp = exp * $game_variables[97]
+	end
+	# Multiply experience depending on the New Game Loop instance
+	# Loop 0 - 1x
+	# Loop 1 - 1.5x
+	# Loop 2 - 1.7x
+	# Loop 3 (Endgame) - 2x
+	case pbGet(99)
+	when 1
+	  exp = exp * 1.5
+	when 2
+	  exp = exp * 1.7
+	when 3
+	  exp = exp * 2
 	end
     # Make sure Exp doesn't exceed the maximum
     expFinal = growth_rate.add_exp(pkmn.exp, exp)
@@ -194,8 +208,7 @@ class Battle
       pkmn.calc_stats
       battler&.pbUpdate(false)
       @scene.pbRefreshOne(battler.index) if battler
-	  pbSEPlay("Pkmn move learnt")
-      pbDisplayPaused(_INTL("{1} grew to Lv. {2}!", pkmn.name, curLevel))
+      pbDisplayPaused(_INTL("{1} grew to Lv. {2}!", pkmn.name, curLevel)) { pbSEPlay("Pkmn level up") }
       @scene.pbLevelUp(pkmn, battler, oldTotalHP, oldAttack, oldDefense,
                        oldSpAtk, oldSpDef, oldSpeed)
       # Learn all moves learned at this level

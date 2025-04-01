@@ -15983,7 +15983,7 @@ List of Event Commands:
 
 Page #4
 Conditions
-Switch 0118: 1st Tourney. beat is ON
+Variable 0107: TMoM Plot Variable is 11 or above
 
 Autonomous Movement
 Type: Fixed
@@ -16155,7 +16155,7 @@ List of Event Commands:
 
 Page #4
 Conditions
-Switch 0118: 1st Tourney. beat is ON
+Variable 0107: TMoM Plot Variable is 11 or above
 
 Autonomous Movement
 Type: Fixed
@@ -16635,7 +16635,7 @@ List of Event Commands:
 
 Page #4
 Conditions
-Switch 0118: 1st Tourney. beat is ON
+Variable 0107: TMoM Plot Variable is 11 or above
 
 Autonomous Movement
 Type: Fixed
@@ -16721,7 +16721,7 @@ List of Event Commands:
 
 Page #4
 Conditions
-Switch 0118: 1st Tourney. beat is ON
+Variable 0107: TMoM Plot Variable is 11 or above
 
 Autonomous Movement
 Type: Fixed
@@ -16807,7 +16807,7 @@ List of Event Commands:
 
 Page #4
 Conditions
-Switch 0118: 1st Tourney. beat is ON
+Variable 0107: TMoM Plot Variable is 11 or above
 
 Autonomous Movement
 Type: Fixed
@@ -17773,7 +17773,6 @@ List of Event Commands:
 @>Script: $player.new_game_plus = true
 :       : $player.scenario_name = "None"
 @>Control Switches: [0107: New Game +] = ON
-@>Control Variables: [0099: NG+ Loop] = 1
 @>
 
 Page #2
@@ -17801,7 +17800,7 @@ Speed: 3: Slow
 Freq: 3: Low
 Options Enabled
 Move Animation
-Trigger: Action Button
+Trigger: Autorun
 
 List of Event Commands:
 @>Text: \xn[\pn]Well, I'm back here again...
@@ -17810,7 +17809,6 @@ List of Event Commands:
  :    : more challenging..
 @>Text: \xn[\pn]Well, from the looks of things, there's one more platform I 
  :    : can access...
-@>Control Variables: [0099: NG+ Loop] = 2
 @>Control Self Switch: B =ON
 @>
 
@@ -17928,7 +17926,7 @@ List of Event Commands:
 @>Script: $game_variables[1] = $game_switches[126] ? "Yes" : "No"
 :       : $game_variables[2] = $game_switches[127] ? "Yes" : "No"
 :       : $game_variables[3] = $game_switches[128] ? "Yes" : "No"
-@>Conditional Branch: Variable [0116: TFoC Plot Variable] >= 99
+@>Conditional Branch: Switch [0139: TFoC Cleared] == ON
  @>Text: \sign[signskin]\l[5]<ac>The Festival of Curses</ac>\nStatus: Cleared
   :    : \nGensokyo's Brightest: \v[1]
   :    : \nVillage's Strongest: \v[2]
@@ -18134,6 +18132,45 @@ List of Event Commands:
 : Branch End
 @>
 
+Page #2
+Conditions
+None
+
+Autonomous Movement
+Type: Fixed
+Speed: 3: Slow
+Freq: 3: Low
+Options Enabled
+Move Animation
+Trigger: Player Touch
+
+List of Event Commands:
+@>Show Picture: 1, 'TMoM', Upper Left (0,0), (100%,100%), 0, Normal
+@>Move Picture: 1, @20, Upper Left (0,0), (100%,100%), 255, Normal
+@>Wait: 60 frame(s)
+@>Change Text Options: Bottom, Show
+@>Text: The Mansion of Mystery.\wt[20]\nIs this the adventure you'd like to play?
+@>Show Choices: Yes, No
+(When Cancel: Choice 2)
+: When [Yes]
+ @>Fade Out BGM: 1 sec.
+ @>Control Variables: [0105: Game Selected] = 1
+ @>Move Picture: 1, @20, Upper Left (0,0), (100%,100%), 0, Normal
+ @>Wait: 20 frame(s)
+ @>Script: $player.scenario_name = "The Mansion of Mystery"
+ @>Change Transparent Flag: Transparency
+ @>Transfer Player:[003: The Mansion of Mystery], (001,001)
+ @>Control Variables: [0107..0110] = 0
+ @>Control Switches: [0109..0112] = OFF
+ @>Script: $PokemonGlobal.clear_reset_maps
+ @>
+: When [No]
+ @>Move Picture: 1, @20, Upper Left (0,0), (100%,100%), 0, Normal
+ @>Wait: 20 frame(s)
+ @>
+: Branch End
+@>
+
 #------------------------------------------------------------------------------
 Event ID: 009
 Event Name: EV009
@@ -18213,6 +18250,88 @@ List of Event Commands:
  @>Move Picture: 1, @20, Upper Left (0,0), (100%,100%), 0, Normal
  @>Wait: 20 frame(s)
  @>Jump to Label: Start
+ @>
+: Branch End
+@>
+
+Page #3
+Conditions
+None
+
+Autonomous Movement
+Type: Fixed
+Speed: 3: Slow
+Freq: 3: Low
+Options Enabled
+Move Animation
+Trigger: Player Touch
+
+List of Event Commands:
+@>Show Picture: 1, 'TFoC', Upper Left (0,0), (100%,100%), 0, Normal
+@>Move Picture: 1, @20, Upper Left (0,0), (100%,100%), 255, Normal
+@>Wait: 60 frame(s)
+@>Change Text Options: Bottom, Show
+@>Text: The Festival of Curses.\wt[20]\nIs this the adventure you'd like to play?
+@>Show Choices: Yes, No
+(When Cancel: Choice 2)
+: When [Yes]
+ @>Fade Out BGM: 1 sec.
+ @>Control Variables: [0105: Game Selected] = 2
+ @>Move Picture: 1, @20, Upper Left (0,0), (100%,100%), 0, Normal
+ @>Wait: 20 frame(s)
+ @>Script: $player.scenario_name = "The Festival of Curses"
+ @>Change Transparent Flag: Transparency
+ @>Transfer Player:[004: The Festival of Curses], (001,001)
+ @>Conditional Branch: Switch [0139: TFoC Cleared] == OFF
+  @>Control Variables: [0099: NG+ Loop] += 1
+  @>
+ : Branch End
+ @>Control Variables: [0113..0116] = 0
+ @>Control Switches: [0118..0125] = OFF
+ @>Script: $PokemonGlobal.clear_reset_maps
+ @>
+: When [No]
+ @>Move Picture: 1, @20, Upper Left (0,0), (100%,100%), 0, Normal
+ @>Wait: 20 frame(s)
+ @>
+: Branch End
+@>
+
+Page #4
+Conditions
+None
+
+Autonomous Movement
+Type: Fixed
+Speed: 3: Slow
+Freq: 3: Low
+Options Enabled
+Move Animation
+Trigger: Player Touch
+
+List of Event Commands:
+@>Show Picture: 1, 'TFoC', Upper Left (0,0), (100%,100%), 0, Normal
+@>Move Picture: 1, @20, Upper Left (0,0), (100%,100%), 255, Normal
+@>Wait: 60 frame(s)
+@>Change Text Options: Bottom, Show
+@>Text: The Festival of Curses.\wt[20]\nIs this the adventure you'd like to play?
+@>Show Choices: Yes, No
+(When Cancel: Choice 2)
+: When [Yes]
+ @>Fade Out BGM: 1 sec.
+ @>Control Variables: [0105: Game Selected] = 2
+ @>Move Picture: 1, @20, Upper Left (0,0), (100%,100%), 0, Normal
+ @>Wait: 20 frame(s)
+ @>Script: $player.scenario_name = "The Festival of Curses"
+ @>Change Transparent Flag: Transparency
+ @>Transfer Player:[004: The Festival of Curses], (001,001)
+ @>Control Variables: [0113..0116] = 0
+ @>Control Switches: [0118..0125] = OFF
+ @>Script: $PokemonGlobal.clear_reset_maps
+ @>
+: When [No]
+ @>Move Picture: 1, @20, Upper Left (0,0), (100%,100%), 0, Normal
+ @>Wait: 20 frame(s)
  @>
 : Branch End
 @>
@@ -34911,6 +35030,10 @@ List of Event Commands:
 @>Text: \xn[Minoriko]Perhaps in due time! However, as you four have 
  :    : made a purchase, all four of you can draw from the lottery
  :    : to win a prize!
+@>Script: self_switch("Kota",false)
+:       : self_switch("Shinji",false)
+:       : self_switch("Maya",false)
+:       : self_switch("Player",false)
 @>Comment: ---------------
 @>Call Common Event: Friend Choice Selection
 @>Comment: ---------------
@@ -111545,7 +111668,7 @@ List of Event Commands:
 @>Wait: 16 frame(s)
 @>Comment: --- Human Village ---
 @>Transfer Player:[077: Credits - Village], (023,009)
-@>Script: pbShowPicture(1,"Credits/BGs/BGVillage.png",1,256,192,zoomX=100,zoomY=100,opacity=0,blendType=0)
+@>Script: pbShowPicture(1,"Credits/TFoC/BGs/BGVillage.png",1,256,192,zoomX=100,zoomY=100,opacity=0,blendType=0)
 @>Wait: 10 frame(s)
 @>Move Picture: 1, @10, Center (256,192), (100%,100%), 255, Normal
 @>Wait: 40 frame(s)
@@ -111623,13 +111746,19 @@ List of Event Commands:
 @>Wait: 40 frame(s)
 @>Script: CreditsFin.new
 @>Wait: 40 frame(s)
-@>Change Text Options: Middle, Hide
-@>Text: \se[]...But who said the journey had to end so soon?\wtnp[20]
+@>Conditional Branch: Switch [0139: TFoC Cleared] == OFF
+ @>Control Switches: [0139: TFoC Cleared] = ON
+ @>Control Variables: [0141: Scenarios Cleared] += 1
+ @>Change Text Options: Middle, Hide
+ @>Call Common Event: Ending Stinger
+ @>
+: Else
+ @>Transfer Player:[019: World of Fantasies], (019,020), Down
+ @>Change Transparent Flag: Normal
+ @>Change Screen Color Tone: (0,0,0,0), @8
+ @>
+: Branch End
 @>Change Text Options: Bottom, Show
-@>Control Switches: [0103: Hide AI Level] = OFF
-@>Script: # pbAllowSpeedup
-:       : # $GameSpeed = pbGet(1)
-@>Transfer Player:[019: World of Fantasies], (019,020), Down
 @>
 
 #==============================================================================

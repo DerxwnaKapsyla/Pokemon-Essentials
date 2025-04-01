@@ -451,9 +451,9 @@ class AdvancedWorldTournament
         self.displayScoreboard(trainer)
         pbMessage(_INTL("\\xn[Announcer]Alright! It's all set!\\1"))
         pbMessage(_INTL("\\xn[Announcer]The final match of this tournament will be between {1} and {2}.\\1",$player.name,trainer.name))
-		pbSEPlay("Applause")
         self.visualRound(trainer)
         pbMessage(trainer.beforebattle) if !trainer.beforebattle.nil?
+		pbSEPlay("Applause")
         pbMessage(_INTL("\\xn[Announcer]May the best trainer win!"))
 		$PokemonGlobal.nextBattleBGM = "B-028. Theme of Eastern Story"
 		$PokemonGlobal.nextBattleVictoryBGM = "U-006. Victory! Final Round"
@@ -530,48 +530,14 @@ class AdvancedWorldTournament
       self.wait(1)
     end
   end
-
-  def pbWaitWithFrames(frames = 1)
+    
+  def wait(frames)
     frames.times do
       Graphics.update
       Input.update
       pbUpdateSceneMap
     end
   end
-  
-  # duration is in seconds
-  def pbWaitWithDeltaTime(duration)
-    timer_start = System.uptime
-    until System.uptime - timer_start >= duration
-      # do sth
-      Graphics.update
-      Input.update
-      pbUpdateSceneMap
-    end
-  end
-
-  def wait(frames = 1)
-    mult = Graphics.frame_rate/PWTSettings::PWT_DEFAULT_FRAMERATE 
-    frames = frames * mult
-
-    if PWTSettings::PWT_USE_DELTA_TIME
-      if frames <= 0
-        self.update
-        Graphics.update
-        pbUpdateSceneMap
-      else 
-        pbWaitWithDeltaTime(pbGetFramesClampedDuration(frames))
-      end
-    else
-      pbWaitWithFrames(frames)
-    end
-  end
-
-  def pbGetFramesClampedDuration(frames = 1)
-    duration = frames.to_f / Graphics.frame_rate
-    duration = 0.01 if duration <= 0
-    return duration
-  end   
 end
 #-------------------------------------------------------------------------------
 # Trainer objects to be used in tournaments
@@ -644,12 +610,6 @@ class MiniBoard
     @s["over"].z = 50
   end
   
-  def pbGetFramesClampedDuration(frames = 1)
-    duration = frames.to_f/Graphics.frame_rate
-    duration = 0.01 if duration <= 0
-    return duration
-  end   
-
   def update(x, y)
     @viewport.rect.x = x
     @viewport.rect.y = y
@@ -678,7 +638,6 @@ class MiniBoard
   end
   
   def vsSequence(trainer)
-    multFPS = pbGetFramesClampedDuration(1)
     @inSequence = true
     @s["vs1"].bitmap.clear
     @s["vs1"].bitmap.blt(0,0,RPG::Cache.picture("PWT/pwtMiniBoard_vs1"),Rect.new(0,0,6*32,3*32))
@@ -701,9 +660,9 @@ class MiniBoard
       @s["vs"].zoom_x -= 1/16.0
       @s["vs"].zoom_y -= 1/16.0
       @s["vs"].opacity += 16
-      pbWait(multFPS)
+      pbWait(0.025)
     end
-    pbWait(multFPS * 64)
+    pbWait(1.5)
     @inSequence = false
   end
   
@@ -826,7 +785,7 @@ def pbPWTBattle(pwt_trainer,challenge_rules,outcomeVar=1)
   setBattleRule("canLose")
   setBattleRule("noMoney")
   setBattleRule("noExp")
-  setBattleRule("backdrop", "autumn_city") if pbResolveBitmap(sprintf("Graphics/Battlebacks/autumn_city_bg"))
+  setBattleRule("backdrop", "PWT") if pbResolveBitmap(sprintf("Graphics/Battlebacks/PWT_bg"))
   # set up challenge rules
   challenge_rules = PokemonChallengeRules.new if !challenge_rules
   oldlevels = challenge_rules.adjustLevels($player.party, npc_trainer.party)
