@@ -328,7 +328,11 @@ class AdvancedWorldTournament
         opacity = 80 if !(nlist.include?(@trainer_list_int[i][0]))
 		opacity_shadow = 80 if !(nlist.include?(@trainer_list_int[i][0]))
         trainer = Tournament_Trainer.new(*@trainer_list_int[i][1])
-        trname = trainer.name
+		if !trainer.shortname
+          trname = trainer.name
+		else
+		  trname = trainer.shortname
+		end
         #bitmap = RPG::Cache.load_bitmap("Graphics/Characters/",GameData::TrainerType.charset_filename_brief(trainer.id))
       end
       #@board.bitmap.blt(24+(gwidth-44-(bitmap.width/4))*x,24+(gheight/6)*y,bitmap,Rect.new(0,0,bitmap.width/4,bitmap.height/4),opacity)
@@ -585,9 +589,10 @@ class Tournament_Trainer
   attr_reader :lobbyspeech
   attr_reader :beforebattle
   attr_reader :afterbattle
+  attr_reader :shortname
   
   def initialize(*args)
-    trainerid, name, endspeech, winspeech, variant, lobbyspeech, beforebattle, afterbattle = args
+    trainerid, name, endspeech, winspeech, variant, lobbyspeech, beforebattle, afterbattle, shortname = args
     tr_type_data = GameData::TrainerType.try_get(trainerid)
     raise "No valid Trainer ID has been specified" if !tr_type_data
     @id = tr_type_data.id
@@ -598,6 +603,7 @@ class Tournament_Trainer
     @lobbyspeech = lobbyspeech
     @beforebattle = beforebattle
     @afterbattle = afterbattle
+	@shortname = shortname
   end
   
 end

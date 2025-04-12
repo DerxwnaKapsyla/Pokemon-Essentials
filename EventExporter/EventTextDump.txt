@@ -11565,7 +11565,7 @@ List of Event Commands:
 #------------------------------------------------------------------------------
 Event ID: 035
 Event Name: EV035
-(X,Y): (021,006)
+(X,Y): (026,012)
 
 Page #1
 Conditions
@@ -18150,7 +18150,7 @@ List of Event Commands:
 @>Wait: 60 frame(s)
 @>Change Text Options: Bottom, Show
 @>Text: The Mansion of Mystery.\wt[20]\nIs this the adventure you'd like to play?
-@>Show Choices: Yes, No
+@>Show Choices: Yes, No, Free Roam
 (When Cancel: Choice 2)
 : When [Yes]
  @>Fade Out BGM: 1 sec.
@@ -18167,6 +18167,15 @@ List of Event Commands:
 : When [No]
  @>Move Picture: 1, @20, Upper Left (0,0), (100%,100%), 0, Normal
  @>Wait: 20 frame(s)
+ @>
+: When [Free Roam]
+ @>Conditional Branch: Switch [0116: TMoM Cleared] == OFF
+  @>Text: Free Roam inaccessable for The Mansion of Mystery. 
+   :    : Please clear this adventure first.
+  @>
+ : Else
+  @>
+ : Branch End
  @>
 : Branch End
 @>
@@ -18884,6 +18893,60 @@ List of Event Commands:
 @>Wait: 8 frame(s)
 @>Transfer Player:[114: Credits - Village Concert Stage], (015,008), No Fade
 @>Change Screen Color Tone: (0,0,0,0), @6
+@>
+
+#------------------------------------------------------------------------------
+Event ID: 018
+Event Name: EV018
+(X,Y): (013,013)
+
+Page #1
+Conditions
+None
+
+Graphic: TPDP_NPC 35
+
+Autonomous Movement
+Type: Random
+Speed: 3: Slow
+Freq: 3: Low
+Options Enabled
+Move Animation
+Trigger: Action Button
+
+List of Event Commands:
+@>Text: Oh, we haven't had guests here in a long time! I'm one of the caretakers
+ :    : of the Tower.
+@>Text: Would you like an explanation of any of the services available to you?
+@>Show Choices: New Game +, Free Roam, Reincarnation, I'm good
+(When Cancel: Choice 4)
+: When [New Game +]
+ @>Text: New Game+, or NG+, is a function of the Tower of Adventures that
+  :    : allows individuals to relive past experiences at higher difficulties.
+ @>Text: Everything in the experience is reset to the way it was at the time of the
+  :    : start of the individual's experience. Any items collected, any Handlers battled,
+  :    : everything is fresh.
+ @>Text: The only thing you bring in is your bag with items, and your 
+  :    : Puppets.
+ @>
+: When [Free Roam]
+ @>Text: Free Roam allows you to return to an adventure you've already
+  :    : experienced and roam about it in a completed state.
+ @>Text: The experience will not reset, so it will stay as it was from the last
+  :    : time you completed it, meaning any unfound items or unbattled handlers
+  :    : will still remain as they were.
+ @>Text: However, as you may have gleamed, you will need to have cleared the
+  :    : adventure at least once. Otherwise, you can visit it with NG+.
+ @>
+: When [Reincarnation]
+ @>Text: Reincarnation is a system which allows you to reset your Puppet's level
+  :    : and stats. With it, you can fine-tune their IVs and Natures.
+ @>Text: There are a variety of items that let you further control the nature and IVs
+  :    : that the Puppet gets.
+ @>
+: When [I'm good]
+ @>
+: Branch End
 @>
 
 #------------------------------------------------------------------------------
@@ -112303,6 +112366,18 @@ List of Event Commands:
  : Branch End
  @>
 : Branch End
+@>
+
+#==============================================================================
+Common Event ID: 108
+Common Event Name: Free Roam Explanation
+
+Trigger: None
+
+List of Event Commands:
+@>Text: \bFree Roam allows you to re-enter the adventure at the point of completion on 
+ :    : the current itteration. This may be useful for various purposes. No flags will
+ :    : be reset, but you must have completed the episode first.
 @>
 
 #==============================================================================
