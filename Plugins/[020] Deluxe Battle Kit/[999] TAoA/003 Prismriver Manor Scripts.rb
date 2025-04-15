@@ -19,16 +19,54 @@
 # Every floor will determine its Floor Effect upon the first time visiting
 # it, and it will always be different every run. 
 #-------------------------------------------------------------------------------
-# Floor Effects:
+# Per Floor Effects:
 #-------------------------------------------------------------------------------
 # Phantom Weather:
 # * Will apply the effects of weather to all battles on that floor.
+# * Weathers that can be applied: Rain. Sun. Sand. Hail.
 #
 # Blindness:
 # * Makes it so all Puppets have -1 Accuracy.
 #
 # Phantom Terrain:
 # * Will apply Field Effects to all battles on that floor.
+# * Terrains and Fields that can be applied: Trick Room. Inverse Battle. Grassy Terrain. Electric Terrain.
+#   Misty Terrain. Psychic Terrain. 
+# 
+# Phantom Lockdown:
+# * Makes it so the Player's active battler cannot switch out or flee.
+#
+#
 #-------------------------------------------------------------------------------
-# Floor Effects:
+# Per Battle Effects:
 #-------------------------------------------------------------------------------
+# Spectral Status:
+# * Will apply a random status condition to one or both sides.
+# * Statuses that can be applied: Poison. Paralysis. Burn. Sleep. Freeze.
+#
+# Spectral Stats:
+# * Will raise or lower a random stat to one or both sides.
+# * Stats that can be adjusted: Attack. Defense. Speed. Special Attack. Special Defense. Accuracy.
+# * Stats will be adjusted by the following values: +1. +2. -1. -2.
+#
+# Spectral Abilities:
+# * Will "add" a second ability to one or both sides. (Might not be actual ability.)
+# * Spectral Abilities will be based off of existing abilities but renamed from vanilla counterparts.
+# * Abilitires that can be added: Spectre's Guard (Wonder Guard). Spectral Image (Sturdy). 
+#   Spectral Touch (Rough Skin). Spectre's Strike (Parental Bond). Trickster Specter (Contrary). 
+#   Spectre's Charm (Cute Charm).
+#-------------------------------------------------------------------------------
+
+MidbattleHandlers.add(:midbattle_global, :battle_effects,
+  proc { |battle, idxBattler, idxTarget, trigger|
+    scene   = battle.scene
+	player  = battle.battlers[0]
+	foe     = battle.battlers[1]
+
+)
+
+
+MidbattleHandlers.add(:midbattle_global, :floor1_effects,
+
+
+)
