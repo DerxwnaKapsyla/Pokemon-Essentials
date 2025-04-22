@@ -35,8 +35,6 @@
 # 
 # Phantom Lockdown:
 # * Makes it so the Player's active battler cannot switch out or flee.
-#
-#
 #-------------------------------------------------------------------------------
 # Per Battle Effects:
 #-------------------------------------------------------------------------------
@@ -57,16 +55,26 @@
 #   Spectre's Charm (Cute Charm).
 #-------------------------------------------------------------------------------
 
-MidbattleHandlers.add(:midbattle_global, :battle_effects,
-  proc { |battle, idxBattler, idxTarget, trigger|
-    scene   = battle.scene
-	player  = battle.battlers[0]
-	foe     = battle.battlers[1]
+#MidbattleHandlers.add(:midbattle_global, :battle_effects,
+  # proc { |battle, idxBattler, idxTarget, trigger|
+    # scene   = battle.scene
+	# player  = battle.battlers[0]
+	# foe     = battle.battlers[1]
+    # case trigger
+	# when "RoundStartCommand_1_foe"
+	#-------------------------------------
+	# Run a Random Number Generation here to determine effect.
+	#-------------------------------------
+	# battle.pbDisplayPaused(_INTL("The field has become haunted by spirits!"))
+	# pbSet(1) = rand(3)
+	#-------------------------------------
+	# Battle Effect 1: Spectral Status
+	#-------------------------------------
 
-)
+#)
 
 
-MidbattleHandlers.add(:midbattle_global, :floor1_effects,
+#MidbattleHandlers.add(:midbattle_global, :floor1_effects,
 
 
-)
+#)
