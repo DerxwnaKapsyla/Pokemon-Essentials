@@ -72,6 +72,10 @@ Battle::PokeBallEffects::ModifyCatchRate.add(:INVERSEORB,proc { |ball,catchRate,
   next catchRate*1.5
 })
 
+Battle::PokeBallEffects::ModifyCatchRate.add(:PRISMORB, proc { |ball, catchRate, battle, battler|
+  next catchRate * 1.5
+})
+
 Battle::PokeBallEffects::OnCatch.add(:PUPPETORB2,proc { |ball,battle,pkmn|
   pkmn.happiness = 0
 })

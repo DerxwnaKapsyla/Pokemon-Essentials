@@ -42090,24 +42090,88 @@ List of Event Commands:
   :    : period of time.
  @>Text: \xn[Merlin]You'll have to use Puppet Orbs we provide, though! 
   :    : And if you run out of those, it'll be game over!
- @>Text: \xn[Merlin]The other challenge is more interesting!
+ @>Text: \xn[Merlin]The other challenge is more interesting.
  @>Text: \xn[Merlin]You'll be allowed to take your own Puppet Orbs in
   :    : to catch Puppets with those, but every so often you may be
   :    : afflicted with a random curse!
- @>Text: \xn[Merlin]No, nothing as serious as what's going on at the
-  :    : Village right now!
+ @>Text: \xn[Merlin]...Oh, no! nothing as serious as what's going on at the
+  :    : Village right now.
  @>Text: \xn[Merlin]Essentially, your Puppets will be aflicted with status
   :    : conditions, which'll make battling much more difficult.
  @>Text: \xn[Merlin]Or, you might get unlucky and the enemy Puppet
   :    : is much stronger than usual!
  @>Text: \xn[Merlin]Though, perhaps you could get lucky and the
-  :    : opposing Puppet is aflicted with a status condition!
- @>Text: \xn[Merlin]We're still setting it up right now though, so you'll
-  :    : have to come back later if you want to try it out!
- @>
-: Else
+  :    : opposing Puppet is aflicted with a status condition.
+ @>Text: \xn[Merlin]If you'd like to give it a try, just let me know!
+ @>Control Self Switch: A =ON
  @>
 : Branch End
+@>
+
+Page #2
+Conditions
+Self Switch A is ON
+
+Graphic: Person_Merlin
+
+Autonomous Movement
+Type: Fixed
+Speed: 3: Slow
+Freq: 3: Low
+Options Enabled
+Move Animation
+Trigger: Action Button
+
+List of Event Commands:
+@>Text: \xn[Merlin]\ptWelcome to the Prismriver Haunted Manor, where you can catch
+ :    : all sorts of dastardly and devious Puppets within these spooky halls!
+@>Text: \xn[Merlin]\ptFor the price of 30 FP, we have two different routes that 
+ :    : brave explorers can undertake through the manor...
+@>Label: y/n/e
+@>Text: \xn[Merlin]\ptAre you brave enough to traverse this mansion of mysteries?
+@>Show Choices: Yes, No, Explain more
+(When Cancel: Choice 2)
+: When [Yes]
+ @>
+: When [No]
+ @>
+: When [Explain more]
+ @>Text: \xn[Merlin]\ptBefore exploring, you can between choose two different
+  :    : modes per excursion.
+ @>Text: \xn[Merlin]\ptThe first one has you travel through the mansion, but you
+  :    : have a limited amount of time per visit. You are also given a limited 
+  :    : number of Puppet Orbs.
+ @>Text: \xn[Merlin]\ptOnce you run out of either of those, it's game over! You'll
+  :    : have to return back here and talk to me again for another run.
+ @>Text: \xn[Merlin]\ptThe second one is what we're calling the Cursed Experience,
+  :    : and is where the real interesting stuff happens!
+ @>Text: \xn[Merlin]\ptFirstly, there is no time limit or Puppet Orb restrictions, you
+  :    : have full reign of the manor at your own leisure.
+ @>Text: \xn[Merlin]\ptHowever! You will find that battles here are not so simple.
+ @>Text: \xn[Merlin]\ptEvery battle will be a different experience, where a series
+  :    : of different effects could occur. Status conditions, extra abilities...
+ @>Text: \xn[Merlin]\ptAlso! Every visit to a new floor will institute a different curse effect
+  :    : that applies to every battle on that floor! Weather conditions, terrain effects... All
+  :    : very scary things~
+ @>Jump to Label: y/n/e
+ @>
+: Branch End
+@>
+
+Page #3
+Conditions
+None
+
+Autonomous Movement
+Type: Fixed
+Speed: 3: Slow
+Freq: 3: Low
+Options Enabled
+Move Animation
+Trigger: Action Button
+
+List of Event Commands:
+@>Script: pbSafariState.pbStart(30)
 @>
 
 #------------------------------------------------------------------------------
@@ -42171,6 +42235,93 @@ Move Animation
 Trigger: Action Button
 
 List of Event Commands:
+@>
+
+#------------------------------------------------------------------------------
+Event ID: 038
+Event Name: EV038
+(X,Y): (055,011)
+
+Page #1
+Conditions
+None
+
+Graphic: Person_Lunasa
+
+Autonomous Movement
+Type: Fixed
+Speed: 3: Slow
+Freq: 3: Low
+Options Enabled
+Move Animation
+Trigger: Action Button
+
+List of Event Commands:
+@>Text: \xn[Lunasa]Greetings, \pn! I can exchange your money for
+ :    : Festival Points here if you'd like.
+@>Text: \xn[Lunasa]\G\ptHow many would you like?
+@>Show Choices: 10 FP [$100], 100 FP [$1,000], 500 FP [$5,000], Exit
+(When Cancel: Choice 4)
+: When [10 FP [$100]]
+ @>Conditional Branch: Script: $player.battle_points+10>=Settings::MAX_BATTLE_POINTS
+  @>Text: \xn[Lunasa]\G\ptWhoops!\nYou can't have any more points!
+  @>
+ : Else
+  @>Conditional Branch: Gold 99 or less
+   @>Text: \xn[Lunasa]\G\ptYou can't afford the Festival Points.
+   @>
+  : Else
+   @>Change Gold: - 100
+   @>Script: $player.battle_points+=10
+   @>Text: \xn[Lunasa]\G\ptThank you, here are your Festival Points!
+   @>Text: \g\pt\pn recieved 10 Festival Points!\me[BP Fanfare]
+   @>
+  : Branch End
+  @>
+ : Branch End
+ @>
+: When [100 FP [$1,000]]
+ @>Conditional Branch: Script: $player.battle_points+100>=Settings::MAX_BATTLE_POINTS
+  @>Text: \xn[Lunasa]\G\ptWhoops!\nYou can't have any more points!
+  @>
+ : Else
+  @>Conditional Branch: Gold 999 or less
+   @>Text: \xn[Lunasa]\G\ptYou can't afford the Festival Points.
+   @>
+  : Else
+   @>Change Gold: - 1000
+   @>Script: $player.battle_points+=100
+   @>Text: \xn[Lunasa]\G\ptThank you, here are your Festival Points!
+   @>Text: \g\pt\pn recieved 100 Festival Points!\me[BP Fanfare]
+   @>
+  : Branch End
+  @>
+ : Branch End
+ @>
+: When [500 FP [$5,000]]
+ @>Conditional Branch: Script: $player.battle_points+500>=Settings::MAX_BATTLE_POINTS
+  @>Text: \xn[Lunasa]\G\ptWhoops!\nYou can't have any more points!
+  @>
+ : Else
+  @>Conditional Branch: Gold 4999 or less
+   @>Text: \xn[Lunasa]\G\ptYou can't afford the Festival Points.
+   @>
+  : Else
+   @>Change Gold: - 5000
+   @>Script: $player.battle_points+=500
+   @>Text: \xn[Lunasa]\G\ptThank you, here are your Festival Points!
+   @>Text: \g\pt\pn recieved 500 Festival Points!\me[BP Fanfare]
+   @>
+  : Branch End
+  @>
+ : Branch End
+ @>
+: When [Exit]
+ @>Text: \xn[Lunasa]\G\ptEnjoy the rest of your day, \pn! Remember to check 
+  :    : out Prismriver Haunted Manor, our attraction for the Harvest Festival.
+ @>Exit Event Processing
+ @>
+: Branch End
 @>
 
 #------------------------------------------------------------------------------
@@ -42522,11 +42673,1467 @@ Map Name: Prismriver Manor (F1)
 Tileset: 037: Ruined Western Mansion
 Width: 51, Height: 40
 
+#------------------------------------------------------------------------------
+Event ID: 001
+Event Name: Basic Door
+(X,Y): (017,024)
+
+Page #1
+Conditions
+None
+
+Graphic: Doors_TPDP2
+
+Autonomous Movement
+Type: Fixed
+Speed: 3: Slow
+Freq: 3: Low
+Options Enabled
+Move Animation
+Trigger: Player Touch
+
+List of Event Commands:
+@>Set Move Route: This event
+                  (Ignore If Can't Move)
+ :              : $>SE: 'Door enter', 100, 100
+ :              : $>Wait: 2 frame(s)
+ :              : $>Turn Left
+ :              : $>Wait: 2 frame(s)
+ :              : $>Turn Right
+ :              : $>Wait: 2 frame(s)
+ :              : $>Turn Up
+ :              : $>Wait: 2 frame(s)
+@>Wait for Move's Completion
+@>Set Move Route: Player
+                  (Ignore If Can't Move)
+ :              : $>Through ON
+ :              : $>Move Up
+ :              : $>Through OFF
+@>Wait for Move's Completion
+@>Change Transparent Flag: Transparency
+@>Set Move Route: This event
+                  (Ignore If Can't Move)
+ :              : $>Wait: 2 frame(s)
+ :              : $>Turn Right
+ :              : $>Wait: 2 frame(s)
+ :              : $>Turn Left
+ :              : $>Wait: 2 frame(s)
+ :              : $>Turn Down
+ :              : $>Wait: 2 frame(s)
+@>Wait for Move's Completion
+@>Play SE: 'Door exit', 100, 100
+@>Change Screen Color Tone: (-255,-255,-255,0), @6
+@>Wait: 8 frame(s)
+@>Change Transparent Flag: Normal
+@>Transfer Player:[051: Prismriver Manor (F1 - Rooms)], (022,010), Up, No Fade
+@>Change Screen Color Tone: (0,0,0,0), @6
+@>
+
+Page #2
+Conditions
+Switch 0022: s:tsOff?("A") is ON
+
+Graphic: Doors_TPDP2
+
+Autonomous Movement
+Type: Fixed
+Speed: 3: Slow
+Freq: 3: Low
+Options Enabled
+Move Animation
+Trigger: Autorun
+
+List of Event Commands:
+@>Conditional Branch: Script: get_self.onEvent?
+ @>Change Transparent Flag: Transparency
+ @>Set Move Route: This event
+                   (Ignore If Can't Move)
+  :              : $>SE: 'Door enter', 100, 100
+  :              : $>Wait: 2 frame(s)
+  :              : $>Turn Left
+  :              : $>Wait: 2 frame(s)
+  :              : $>Turn Right
+  :              : $>Wait: 2 frame(s)
+  :              : $>Turn Up
+  :              : $>Wait: 2 frame(s)
+ @>Wait for Move's Completion
+ @>Change Transparent Flag: Normal
+ @>Set Move Route: Player
+                   (Ignore If Can't Move)
+  :              : $>Move Down
+ @>Wait for Move's Completion
+ @>Set Move Route: This event
+                   (Ignore If Can't Move)
+  :              : $>Turn Right
+  :              : $>Wait: 2 frame(s)
+  :              : $>Turn Left
+  :              : $>Wait: 2 frame(s)
+  :              : $>Turn Down
+  :              : $>Wait: 2 frame(s)
+ @>Wait for Move's Completion
+ @>
+: Branch End
+@>Script: setTempSwitchOn("A")
+@>
+
+#------------------------------------------------------------------------------
+Event ID: 002
+Event Name: Basic Door
+(X,Y): (007,029)
+
+Page #1
+Conditions
+None
+
+Graphic: Doors_TPDP2
+
+Autonomous Movement
+Type: Fixed
+Speed: 3: Slow
+Freq: 3: Low
+Options Enabled
+Move Animation
+Trigger: Player Touch
+
+List of Event Commands:
+@>Set Move Route: This event
+                  (Ignore If Can't Move)
+ :              : $>SE: 'Door enter', 100, 100
+ :              : $>Wait: 2 frame(s)
+ :              : $>Turn Left
+ :              : $>Wait: 2 frame(s)
+ :              : $>Turn Right
+ :              : $>Wait: 2 frame(s)
+ :              : $>Turn Up
+ :              : $>Wait: 2 frame(s)
+@>Wait for Move's Completion
+@>Set Move Route: Player
+                  (Ignore If Can't Move)
+ :              : $>Through ON
+ :              : $>Move Up
+ :              : $>Through OFF
+@>Wait for Move's Completion
+@>Change Transparent Flag: Transparency
+@>Set Move Route: This event
+                  (Ignore If Can't Move)
+ :              : $>Wait: 2 frame(s)
+ :              : $>Turn Right
+ :              : $>Wait: 2 frame(s)
+ :              : $>Turn Left
+ :              : $>Wait: 2 frame(s)
+ :              : $>Turn Down
+ :              : $>Wait: 2 frame(s)
+@>Wait for Move's Completion
+@>Play SE: 'Door exit', 100, 100
+@>Change Screen Color Tone: (-255,-255,-255,0), @6
+@>Wait: 8 frame(s)
+@>Change Transparent Flag: Normal
+@>Transfer Player:[051: Prismriver Manor (F1 - Rooms)], (007,020), Up, No Fade
+@>Change Screen Color Tone: (0,0,0,0), @6
+@>
+
+Page #2
+Conditions
+Switch 0022: s:tsOff?("A") is ON
+
+Graphic: Doors_TPDP2
+
+Autonomous Movement
+Type: Fixed
+Speed: 3: Slow
+Freq: 3: Low
+Options Enabled
+Move Animation
+Trigger: Autorun
+
+List of Event Commands:
+@>Conditional Branch: Script: get_self.onEvent?
+ @>Change Transparent Flag: Transparency
+ @>Set Move Route: This event
+                   (Ignore If Can't Move)
+  :              : $>SE: 'Door enter', 100, 100
+  :              : $>Wait: 2 frame(s)
+  :              : $>Turn Left
+  :              : $>Wait: 2 frame(s)
+  :              : $>Turn Right
+  :              : $>Wait: 2 frame(s)
+  :              : $>Turn Up
+  :              : $>Wait: 2 frame(s)
+ @>Wait for Move's Completion
+ @>Change Transparent Flag: Normal
+ @>Set Move Route: Player
+                   (Ignore If Can't Move)
+  :              : $>Move Down
+ @>Wait for Move's Completion
+ @>Set Move Route: This event
+                   (Ignore If Can't Move)
+  :              : $>Turn Right
+  :              : $>Wait: 2 frame(s)
+  :              : $>Turn Left
+  :              : $>Wait: 2 frame(s)
+  :              : $>Turn Down
+  :              : $>Wait: 2 frame(s)
+ @>Wait for Move's Completion
+ @>
+: Branch End
+@>Script: setTempSwitchOn("A")
+@>
+
+#------------------------------------------------------------------------------
+Event ID: 003
+Event Name: Basic Door
+(X,Y): (027,024)
+
+Page #1
+Conditions
+None
+
+Graphic: Doors_TPDP2
+
+Autonomous Movement
+Type: Fixed
+Speed: 3: Slow
+Freq: 3: Low
+Options Enabled
+Move Animation
+Trigger: Player Touch
+
+List of Event Commands:
+@>Set Move Route: This event
+                  (Ignore If Can't Move)
+ :              : $>SE: 'Door enter', 100, 100
+ :              : $>Wait: 2 frame(s)
+ :              : $>Turn Left
+ :              : $>Wait: 2 frame(s)
+ :              : $>Turn Right
+ :              : $>Wait: 2 frame(s)
+ :              : $>Turn Up
+ :              : $>Wait: 2 frame(s)
+@>Wait for Move's Completion
+@>Set Move Route: Player
+                  (Ignore If Can't Move)
+ :              : $>Through ON
+ :              : $>Move Up
+ :              : $>Through OFF
+@>Wait for Move's Completion
+@>Change Transparent Flag: Transparency
+@>Set Move Route: This event
+                  (Ignore If Can't Move)
+ :              : $>Wait: 2 frame(s)
+ :              : $>Turn Right
+ :              : $>Wait: 2 frame(s)
+ :              : $>Turn Left
+ :              : $>Wait: 2 frame(s)
+ :              : $>Turn Down
+ :              : $>Wait: 2 frame(s)
+@>Wait for Move's Completion
+@>Play SE: 'Door exit', 100, 100
+@>Change Screen Color Tone: (-255,-255,-255,0), @6
+@>Wait: 8 frame(s)
+@>Change Transparent Flag: Normal
+@>Transfer Player:[051: Prismriver Manor (F1 - Rooms)], (052,026), Up, No Fade
+@>Change Screen Color Tone: (0,0,0,0), @6
+@>
+
+Page #2
+Conditions
+Switch 0022: s:tsOff?("A") is ON
+
+Graphic: Doors_TPDP2
+
+Autonomous Movement
+Type: Fixed
+Speed: 3: Slow
+Freq: 3: Low
+Options Enabled
+Move Animation
+Trigger: Autorun
+
+List of Event Commands:
+@>Conditional Branch: Script: get_self.onEvent?
+ @>Change Transparent Flag: Transparency
+ @>Set Move Route: This event
+                   (Ignore If Can't Move)
+  :              : $>SE: 'Door enter', 100, 100
+  :              : $>Wait: 2 frame(s)
+  :              : $>Turn Left
+  :              : $>Wait: 2 frame(s)
+  :              : $>Turn Right
+  :              : $>Wait: 2 frame(s)
+  :              : $>Turn Up
+  :              : $>Wait: 2 frame(s)
+ @>Wait for Move's Completion
+ @>Change Transparent Flag: Normal
+ @>Set Move Route: Player
+                   (Ignore If Can't Move)
+  :              : $>Move Down
+ @>Wait for Move's Completion
+ @>Set Move Route: This event
+                   (Ignore If Can't Move)
+  :              : $>Turn Right
+  :              : $>Wait: 2 frame(s)
+  :              : $>Turn Left
+  :              : $>Wait: 2 frame(s)
+  :              : $>Turn Down
+  :              : $>Wait: 2 frame(s)
+ @>Wait for Move's Completion
+ @>
+: Branch End
+@>Script: setTempSwitchOn("A")
+@>
+
+#------------------------------------------------------------------------------
+Event ID: 004
+Event Name: Basic Door
+(X,Y): (035,024)
+
+Page #1
+Conditions
+None
+
+Graphic: Doors_TPDP2
+
+Autonomous Movement
+Type: Fixed
+Speed: 3: Slow
+Freq: 3: Low
+Options Enabled
+Move Animation
+Trigger: Player Touch
+
+List of Event Commands:
+@>Set Move Route: This event
+                  (Ignore If Can't Move)
+ :              : $>SE: 'Door enter', 100, 100
+ :              : $>Wait: 2 frame(s)
+ :              : $>Turn Left
+ :              : $>Wait: 2 frame(s)
+ :              : $>Turn Right
+ :              : $>Wait: 2 frame(s)
+ :              : $>Turn Up
+ :              : $>Wait: 2 frame(s)
+@>Wait for Move's Completion
+@>Set Move Route: Player
+                  (Ignore If Can't Move)
+ :              : $>Through ON
+ :              : $>Move Up
+ :              : $>Through OFF
+@>Wait for Move's Completion
+@>Change Transparent Flag: Transparency
+@>Set Move Route: This event
+                  (Ignore If Can't Move)
+ :              : $>Wait: 2 frame(s)
+ :              : $>Turn Right
+ :              : $>Wait: 2 frame(s)
+ :              : $>Turn Left
+ :              : $>Wait: 2 frame(s)
+ :              : $>Turn Down
+ :              : $>Wait: 2 frame(s)
+@>Wait for Move's Completion
+@>Play SE: 'Door exit', 100, 100
+@>Change Screen Color Tone: (-255,-255,-255,0), @6
+@>Wait: 8 frame(s)
+@>Change Transparent Flag: Normal
+@>Transfer Player:[051: Prismriver Manor (F1 - Rooms)], (071,026), Up, No Fade
+@>Change Screen Color Tone: (0,0,0,0), @6
+@>
+
+Page #2
+Conditions
+Switch 0022: s:tsOff?("A") is ON
+
+Graphic: Doors_TPDP2
+
+Autonomous Movement
+Type: Fixed
+Speed: 3: Slow
+Freq: 3: Low
+Options Enabled
+Move Animation
+Trigger: Autorun
+
+List of Event Commands:
+@>Conditional Branch: Script: get_self.onEvent?
+ @>Change Transparent Flag: Transparency
+ @>Set Move Route: This event
+                   (Ignore If Can't Move)
+  :              : $>SE: 'Door enter', 100, 100
+  :              : $>Wait: 2 frame(s)
+  :              : $>Turn Left
+  :              : $>Wait: 2 frame(s)
+  :              : $>Turn Right
+  :              : $>Wait: 2 frame(s)
+  :              : $>Turn Up
+  :              : $>Wait: 2 frame(s)
+ @>Wait for Move's Completion
+ @>Change Transparent Flag: Normal
+ @>Set Move Route: Player
+                   (Ignore If Can't Move)
+  :              : $>Move Down
+ @>Wait for Move's Completion
+ @>Set Move Route: This event
+                   (Ignore If Can't Move)
+  :              : $>Turn Right
+  :              : $>Wait: 2 frame(s)
+  :              : $>Turn Left
+  :              : $>Wait: 2 frame(s)
+  :              : $>Turn Down
+  :              : $>Wait: 2 frame(s)
+ @>Wait for Move's Completion
+ @>
+: Branch End
+@>Script: setTempSwitchOn("A")
+@>
+
+#------------------------------------------------------------------------------
+Event ID: 005
+Event Name: Basic Door
+(X,Y): (031,012)
+
+Page #1
+Conditions
+None
+
+Graphic: Doors_TPDP2
+
+Autonomous Movement
+Type: Fixed
+Speed: 3: Slow
+Freq: 3: Low
+Options Enabled
+Move Animation
+Trigger: Player Touch
+
+List of Event Commands:
+@>Set Move Route: This event
+                  (Ignore If Can't Move)
+ :              : $>SE: 'Door enter', 100, 100
+ :              : $>Wait: 2 frame(s)
+ :              : $>Turn Left
+ :              : $>Wait: 2 frame(s)
+ :              : $>Turn Right
+ :              : $>Wait: 2 frame(s)
+ :              : $>Turn Up
+ :              : $>Wait: 2 frame(s)
+@>Wait for Move's Completion
+@>Set Move Route: Player
+                  (Ignore If Can't Move)
+ :              : $>Through ON
+ :              : $>Move Up
+ :              : $>Through OFF
+@>Wait for Move's Completion
+@>Change Transparent Flag: Transparency
+@>Set Move Route: This event
+                  (Ignore If Can't Move)
+ :              : $>Wait: 2 frame(s)
+ :              : $>Turn Right
+ :              : $>Wait: 2 frame(s)
+ :              : $>Turn Left
+ :              : $>Wait: 2 frame(s)
+ :              : $>Turn Down
+ :              : $>Wait: 2 frame(s)
+@>Wait for Move's Completion
+@>Play SE: 'Door exit', 100, 100
+@>Change Screen Color Tone: (-255,-255,-255,0), @6
+@>Wait: 8 frame(s)
+@>Change Transparent Flag: Normal
+@>Transfer Player:[051: Prismriver Manor (F1 - Rooms)], (005,070), Up, No Fade
+@>Change Screen Color Tone: (0,0,0,0), @6
+@>
+
+Page #2
+Conditions
+Switch 0022: s:tsOff?("A") is ON
+
+Graphic: Doors_TPDP2
+
+Autonomous Movement
+Type: Fixed
+Speed: 3: Slow
+Freq: 3: Low
+Options Enabled
+Move Animation
+Trigger: Autorun
+
+List of Event Commands:
+@>Conditional Branch: Script: get_self.onEvent?
+ @>Change Transparent Flag: Transparency
+ @>Set Move Route: This event
+                   (Ignore If Can't Move)
+  :              : $>SE: 'Door enter', 100, 100
+  :              : $>Wait: 2 frame(s)
+  :              : $>Turn Left
+  :              : $>Wait: 2 frame(s)
+  :              : $>Turn Right
+  :              : $>Wait: 2 frame(s)
+  :              : $>Turn Up
+  :              : $>Wait: 2 frame(s)
+ @>Wait for Move's Completion
+ @>Change Transparent Flag: Normal
+ @>Set Move Route: Player
+                   (Ignore If Can't Move)
+  :              : $>Move Down
+ @>Wait for Move's Completion
+ @>Set Move Route: This event
+                   (Ignore If Can't Move)
+  :              : $>Turn Right
+  :              : $>Wait: 2 frame(s)
+  :              : $>Turn Left
+  :              : $>Wait: 2 frame(s)
+  :              : $>Turn Down
+  :              : $>Wait: 2 frame(s)
+ @>Wait for Move's Completion
+ @>
+: Branch End
+@>Script: setTempSwitchOn("A")
+@>
+
+#------------------------------------------------------------------------------
+Event ID: 006
+Event Name: Basic Door
+(X,Y): (008,011)
+
+Page #1
+Conditions
+None
+
+Graphic: Doors_TPDP2
+
+Autonomous Movement
+Type: Fixed
+Speed: 3: Slow
+Freq: 3: Low
+Options Enabled
+Move Animation
+Trigger: Player Touch
+
+List of Event Commands:
+@>Set Move Route: This event
+                  (Ignore If Can't Move)
+ :              : $>SE: 'Door enter', 100, 100
+ :              : $>Wait: 2 frame(s)
+ :              : $>Turn Left
+ :              : $>Wait: 2 frame(s)
+ :              : $>Turn Right
+ :              : $>Wait: 2 frame(s)
+ :              : $>Turn Up
+ :              : $>Wait: 2 frame(s)
+@>Wait for Move's Completion
+@>Set Move Route: Player
+                  (Ignore If Can't Move)
+ :              : $>Through ON
+ :              : $>Move Up
+ :              : $>Through OFF
+@>Wait for Move's Completion
+@>Change Transparent Flag: Transparency
+@>Set Move Route: This event
+                  (Ignore If Can't Move)
+ :              : $>Wait: 2 frame(s)
+ :              : $>Turn Right
+ :              : $>Wait: 2 frame(s)
+ :              : $>Turn Left
+ :              : $>Wait: 2 frame(s)
+ :              : $>Turn Down
+ :              : $>Wait: 2 frame(s)
+@>Wait for Move's Completion
+@>Play SE: 'Door exit', 100, 100
+@>Change Screen Color Tone: (-255,-255,-255,0), @6
+@>Wait: 8 frame(s)
+@>Change Transparent Flag: Normal
+@>Transfer Player:[051: Prismriver Manor (F1 - Rooms)], (045,053), Up, No Fade
+@>Change Screen Color Tone: (0,0,0,0), @6
+@>
+
+Page #2
+Conditions
+Switch 0022: s:tsOff?("A") is ON
+
+Graphic: Doors_TPDP2
+
+Autonomous Movement
+Type: Fixed
+Speed: 3: Slow
+Freq: 3: Low
+Options Enabled
+Move Animation
+Trigger: Autorun
+
+List of Event Commands:
+@>Conditional Branch: Script: get_self.onEvent?
+ @>Change Transparent Flag: Transparency
+ @>Set Move Route: This event
+                   (Ignore If Can't Move)
+  :              : $>SE: 'Door enter', 100, 100
+  :              : $>Wait: 2 frame(s)
+  :              : $>Turn Left
+  :              : $>Wait: 2 frame(s)
+  :              : $>Turn Right
+  :              : $>Wait: 2 frame(s)
+  :              : $>Turn Up
+  :              : $>Wait: 2 frame(s)
+ @>Wait for Move's Completion
+ @>Change Transparent Flag: Normal
+ @>Set Move Route: Player
+                   (Ignore If Can't Move)
+  :              : $>Move Down
+ @>Wait for Move's Completion
+ @>Set Move Route: This event
+                   (Ignore If Can't Move)
+  :              : $>Turn Right
+  :              : $>Wait: 2 frame(s)
+  :              : $>Turn Left
+  :              : $>Wait: 2 frame(s)
+  :              : $>Turn Down
+  :              : $>Wait: 2 frame(s)
+ @>Wait for Move's Completion
+ @>
+: Branch End
+@>Script: setTempSwitchOn("A")
+@>
+
+#------------------------------------------------------------------------------
+Event ID: 007
+Event Name: ExitArrow
+(X,Y): (007,017)
+
+Page #1
+Conditions
+None
+
+Graphic: Exitarrow_red
+
+Autonomous Movement
+Type: Fixed
+Speed: 3: Slow
+Freq: 3: Low
+Options Enabled
+Move Animation
+Stop Animation
+Trigger: Player Touch
+
+List of Event Commands:
+@>Conditional Branch: Player is facing Down
+ @>Text: The door is blocked on the other side, and won't 
+  :    : open up.
+ @>
+: Branch End
+@>
+
+#------------------------------------------------------------------------------
+Event ID: 008
+Event Name: ExitArrow
+(X,Y): (027,017)
+
+Page #1
+Conditions
+None
+
+Graphic: Exitarrow_red
+
+Autonomous Movement
+Type: Fixed
+Speed: 3: Slow
+Freq: 3: Low
+Options Enabled
+Move Animation
+Stop Animation
+Trigger: Player Touch
+
+List of Event Commands:
+@>Conditional Branch: Player is facing Down
+ @>Play SE: 'Door exit', 100, 100
+ @>Change Screen Color Tone: (-255,-255,-255,0), @6
+ @>Wait: 8 frame(s)
+ @>Transfer Player:[051: Prismriver Manor (F1 - Rooms)], (052,004), Down, No Fade
+ @>Change Screen Color Tone: (0,0,0,0), @6
+ @>
+: Branch End
+@>
+
+#------------------------------------------------------------------------------
+Event ID: 009
+Event Name: ExitArrow
+(X,Y): (035,017)
+
+Page #1
+Conditions
+None
+
+Graphic: Exitarrow_red
+
+Autonomous Movement
+Type: Fixed
+Speed: 3: Slow
+Freq: 3: Low
+Options Enabled
+Move Animation
+Stop Animation
+Trigger: Player Touch
+
+List of Event Commands:
+@>Conditional Branch: Player is facing Down
+ @>Play SE: 'Door exit', 100, 100
+ @>Change Screen Color Tone: (-255,-255,-255,0), @6
+ @>Wait: 8 frame(s)
+ @>Transfer Player:[051: Prismriver Manor (F1 - Rooms)], (071,004), Down, No Fade
+ @>Change Screen Color Tone: (0,0,0,0), @6
+ @>
+: Branch End
+@>
+
+#------------------------------------------------------------------------------
+Event ID: 010
+Event Name: ExitArrow
+(X,Y): (038,029)
+
+Page #1
+Conditions
+None
+
+Graphic: Exitarrow_red
+
+Autonomous Movement
+Type: Fixed
+Speed: 3: Slow
+Freq: 3: Low
+Options Enabled
+Move Animation
+Stop Animation
+Trigger: Player Touch
+
+List of Event Commands:
+@>Conditional Branch: Player is facing Down
+ @>Play SE: 'Door exit', 100, 100
+ @>Change Screen Color Tone: (-255,-255,-255,0), @6
+ @>Wait: 8 frame(s)
+ @>Transfer Player:[051: Prismriver Manor (F1 - Rooms)], (004,035), Down, No Fade
+ @>Change Screen Color Tone: (0,0,0,0), @6
+ @>
+: Branch End
+@>
+
+#------------------------------------------------------------------------------
+Event ID: 011
+Event Name: Counter(3)
+(X,Y): (011,011)
+
+Page #1
+Conditions
+None
+
+Graphic: Object ball
+
+Autonomous Movement
+Type: Fixed
+Speed: 3: Slow
+Freq: 3: Low
+Options Enabled
+Move Animation
+Trigger: Event Touch
+
+List of Event Commands:
+@>Play SE: 'Exit Door', 80, 100
+@>Change Screen Color Tone: (-255,-255,-255,0), @6
+@>Wait: 8 frame(s)
+@>Transfer Player:[052: Prismriver Manor (F2)], (007,015), No Fade
+@>Change Screen Color Tone: (0,0,0,0), @6
+@>Set Move Route: Player
+ :              : $>Move Up
+@>
+
+#------------------------------------------------------------------------------
+Event ID: 012
+Event Name: ExitArrow
+(X,Y): (024,038)
+
+Page #1
+Conditions
+None
+
+Graphic: Exitarrow_red
+
+Autonomous Movement
+Type: Fixed
+Speed: 3: Slow
+Freq: 3: Low
+Options Enabled
+Move Animation
+Stop Animation
+Trigger: Player Touch
+
+List of Event Commands:
+@>Conditional Branch: Player is facing Down
+ @>Text: Would you like to leave Prismriver Manor?
+ @>Show Choices: Yes, No
+ (When Cancel: Choice 2)
+ : When [Yes]
+  @>Play SE: 'Door exit', 100, 100
+  @>Change Screen Color Tone: (-255,-255,-255,0), @6
+  @>Wait: 8 frame(s)
+  @>Transfer Player:[010: Misty Lake], (058,010), Down, No Fade
+  @>Change Screen Color Tone: (0,0,0,0), @6
+  @>
+ : When [No]
+  @>Set Move Route: Player
+   :              : $>Move Up
+  @>
+ : Branch End
+ @>
+: Branch End
+@>
+
+#------------------------------------------------------------------------------
+Event ID: 013
+Event Name: F1 Battle Effect
+(X,Y): (025,029)
+
+Page #1
+Conditions
+Switch 0132: RWM Challenge Mode is ON
+
+Autonomous Movement
+Type: Fixed
+Speed: 3: Slow
+Freq: 3: Low
+Options Enabled
+Move Animation
+Trigger: Autorun
+
+List of Event Commands:
+@>Screen Flash: (255,255,255,255), @2
+@>Play SE: 'gust', 80, 100
+@>
+
+Page #2
+Conditions
+None
+
+Autonomous Movement
+Type: Fixed
+Speed: 3: Slow
+Freq: 3: Low
+Options Enabled
+Move Animation
+Trigger: Action Button
+
+List of Event Commands:
+@>
+
+#------------------------------------------------------------------------------
+Event ID: 014
+Event Name: Ghost Assistant
+(X,Y): (050,039)
+
+Page #1
+Conditions
+None
+
+Graphic: TPDP_NPC 26
+
+Autonomous Movement
+Type: Fixed
+Speed: 3: Slow
+Freq: 3: Low
+Options Enabled
+Move Animation
+Trigger: Action Button
+
+List of Event Commands:
+@>
+
+#------------------------------------------------------------------------------
+Event ID: 015
+Event Name: Ghost Assistant
+(X,Y): (030,033)
+
+Page #1
+Conditions
+Switch 0132: RWM Challenge Mode is ON
+
+Graphic: TPDP_NPC 26
+
+Autonomous Movement
+Type: Fixed
+Speed: 3: Slow
+Freq: 3: Low
+Options Enabled
+Move Animation
+Trigger: Action Button
+
+List of Event Commands:
+@>Text: Would you like a reminder of what your curse for this floor is?
+@>Show Choices: Yes, No
+(When Cancel: Choice 2)
+: When [Yes]
+ @>Text: Let me commune with my kin...
+ @>Wait: 10 frame(s)
+ @>Text: ...Right, so your challenge for this floor was...
+ @>Script: pbSet(1) = pbGet(152)
+ @>Conditional Branch: Variable [0001: Temp Pokemon Choice] == 0
+  @>
+ : Else
+  @>
+ : Branch End
+ @>
+: When [No]
+ @>
+: Branch End
+@>
+
+#------------------------------------------------------------------------------
+Event ID: 016
+Event Name: EV016
+(X,Y): (005,021)
+
+Page #1
+Conditions
+None
+
+Autonomous Movement
+Type: Fixed
+Speed: 3: Slow
+Freq: 3: Low
+Options Enabled
+Move Animation
+Trigger: Action Button
+
+List of Event Commands:
+@>Script: pbSet(152, rand(4))
+@>
+
+#------------------------------------------------------------------------------
+
 #==============================================================================
 Map ID: 051
 Map Name: Prismriver Manor (F1 - Rooms)
 Tileset: 037: Ruined Western Mansion
 Width: 82, Height: 75
+
+#------------------------------------------------------------------------------
+Event ID: 001
+Event Name: Basic Door
+(X,Y): (004,035)
+
+Page #1
+Conditions
+None
+
+Graphic: Doors_TPDP2
+
+Autonomous Movement
+Type: Fixed
+Speed: 3: Slow
+Freq: 3: Low
+Options Enabled
+Move Animation
+Trigger: Player Touch
+
+List of Event Commands:
+@>Set Move Route: This event
+                  (Ignore If Can't Move)
+ :              : $>SE: 'Door enter', 100, 100
+ :              : $>Wait: 2 frame(s)
+ :              : $>Turn Left
+ :              : $>Wait: 2 frame(s)
+ :              : $>Turn Right
+ :              : $>Wait: 2 frame(s)
+ :              : $>Turn Up
+ :              : $>Wait: 2 frame(s)
+@>Wait for Move's Completion
+@>Set Move Route: Player
+                  (Ignore If Can't Move)
+ :              : $>Through ON
+ :              : $>Move Up
+ :              : $>Through OFF
+@>Wait for Move's Completion
+@>Change Transparent Flag: Transparency
+@>Set Move Route: This event
+                  (Ignore If Can't Move)
+ :              : $>Wait: 2 frame(s)
+ :              : $>Turn Right
+ :              : $>Wait: 2 frame(s)
+ :              : $>Turn Left
+ :              : $>Wait: 2 frame(s)
+ :              : $>Turn Down
+ :              : $>Wait: 2 frame(s)
+@>Wait for Move's Completion
+@>Play SE: 'Door exit', 100, 100
+@>Change Screen Color Tone: (-255,-255,-255,0), @6
+@>Wait: 8 frame(s)
+@>Change Transparent Flag: Normal
+@>Transfer Player:[050: Prismriver Manor (F1)], (038,027), Up, No Fade
+@>Change Screen Color Tone: (0,0,0,0), @6
+@>
+
+Page #2
+Conditions
+Switch 0022: s:tsOff?("A") is ON
+
+Graphic: Doors_TPDP2
+
+Autonomous Movement
+Type: Fixed
+Speed: 3: Slow
+Freq: 3: Low
+Options Enabled
+Move Animation
+Trigger: Autorun
+
+List of Event Commands:
+@>Conditional Branch: Script: get_self.onEvent?
+ @>Change Transparent Flag: Transparency
+ @>Set Move Route: This event
+                   (Ignore If Can't Move)
+  :              : $>SE: 'Door enter', 100, 100
+  :              : $>Wait: 2 frame(s)
+  :              : $>Turn Left
+  :              : $>Wait: 2 frame(s)
+  :              : $>Turn Right
+  :              : $>Wait: 2 frame(s)
+  :              : $>Turn Up
+  :              : $>Wait: 2 frame(s)
+ @>Wait for Move's Completion
+ @>Change Transparent Flag: Normal
+ @>Set Move Route: Player
+                   (Ignore If Can't Move)
+  :              : $>Move Down
+ @>Wait for Move's Completion
+ @>Set Move Route: This event
+                   (Ignore If Can't Move)
+  :              : $>Turn Right
+  :              : $>Wait: 2 frame(s)
+  :              : $>Turn Left
+  :              : $>Wait: 2 frame(s)
+  :              : $>Turn Down
+  :              : $>Wait: 2 frame(s)
+ @>Wait for Move's Completion
+ @>
+: Branch End
+@>Script: setTempSwitchOn("A")
+@>
+
+#------------------------------------------------------------------------------
+Event ID: 002
+Event Name: Basic Door
+(X,Y): (052,004)
+
+Page #1
+Conditions
+None
+
+Graphic: Doors_TPDP2
+
+Autonomous Movement
+Type: Fixed
+Speed: 3: Slow
+Freq: 3: Low
+Options Enabled
+Move Animation
+Trigger: Player Touch
+
+List of Event Commands:
+@>Set Move Route: This event
+                  (Ignore If Can't Move)
+ :              : $>SE: 'Door enter', 100, 100
+ :              : $>Wait: 2 frame(s)
+ :              : $>Turn Left
+ :              : $>Wait: 2 frame(s)
+ :              : $>Turn Right
+ :              : $>Wait: 2 frame(s)
+ :              : $>Turn Up
+ :              : $>Wait: 2 frame(s)
+@>Wait for Move's Completion
+@>Set Move Route: Player
+                  (Ignore If Can't Move)
+ :              : $>Through ON
+ :              : $>Move Up
+ :              : $>Through OFF
+@>Wait for Move's Completion
+@>Change Transparent Flag: Transparency
+@>Set Move Route: This event
+                  (Ignore If Can't Move)
+ :              : $>Wait: 2 frame(s)
+ :              : $>Turn Right
+ :              : $>Wait: 2 frame(s)
+ :              : $>Turn Left
+ :              : $>Wait: 2 frame(s)
+ :              : $>Turn Down
+ :              : $>Wait: 2 frame(s)
+@>Wait for Move's Completion
+@>Play SE: 'Door exit', 100, 100
+@>Change Screen Color Tone: (-255,-255,-255,0), @6
+@>Wait: 8 frame(s)
+@>Change Transparent Flag: Normal
+@>Transfer Player:[050: Prismriver Manor (F1)], (027,015), Up, No Fade
+@>Change Screen Color Tone: (0,0,0,0), @6
+@>
+
+Page #2
+Conditions
+Switch 0022: s:tsOff?("A") is ON
+
+Graphic: Doors_TPDP2
+
+Autonomous Movement
+Type: Fixed
+Speed: 3: Slow
+Freq: 3: Low
+Options Enabled
+Move Animation
+Trigger: Autorun
+
+List of Event Commands:
+@>Conditional Branch: Script: get_self.onEvent?
+ @>Change Transparent Flag: Transparency
+ @>Set Move Route: This event
+                   (Ignore If Can't Move)
+  :              : $>SE: 'Door enter', 100, 100
+  :              : $>Wait: 2 frame(s)
+  :              : $>Turn Left
+  :              : $>Wait: 2 frame(s)
+  :              : $>Turn Right
+  :              : $>Wait: 2 frame(s)
+  :              : $>Turn Up
+  :              : $>Wait: 2 frame(s)
+ @>Wait for Move's Completion
+ @>Change Transparent Flag: Normal
+ @>Set Move Route: Player
+                   (Ignore If Can't Move)
+  :              : $>Move Down
+ @>Wait for Move's Completion
+ @>Set Move Route: This event
+                   (Ignore If Can't Move)
+  :              : $>Turn Right
+  :              : $>Wait: 2 frame(s)
+  :              : $>Turn Left
+  :              : $>Wait: 2 frame(s)
+  :              : $>Turn Down
+  :              : $>Wait: 2 frame(s)
+ @>Wait for Move's Completion
+ @>
+: Branch End
+@>Script: setTempSwitchOn("A")
+@>
+
+#------------------------------------------------------------------------------
+Event ID: 003
+Event Name: Basic Door
+(X,Y): (071,004)
+
+Page #1
+Conditions
+None
+
+Graphic: Doors_TPDP2
+
+Autonomous Movement
+Type: Fixed
+Speed: 3: Slow
+Freq: 3: Low
+Options Enabled
+Move Animation
+Trigger: Player Touch
+
+List of Event Commands:
+@>Set Move Route: This event
+                  (Ignore If Can't Move)
+ :              : $>SE: 'Door enter', 100, 100
+ :              : $>Wait: 2 frame(s)
+ :              : $>Turn Left
+ :              : $>Wait: 2 frame(s)
+ :              : $>Turn Right
+ :              : $>Wait: 2 frame(s)
+ :              : $>Turn Up
+ :              : $>Wait: 2 frame(s)
+@>Wait for Move's Completion
+@>Set Move Route: Player
+                  (Ignore If Can't Move)
+ :              : $>Through ON
+ :              : $>Move Up
+ :              : $>Through OFF
+@>Wait for Move's Completion
+@>Change Transparent Flag: Transparency
+@>Set Move Route: This event
+                  (Ignore If Can't Move)
+ :              : $>Wait: 2 frame(s)
+ :              : $>Turn Right
+ :              : $>Wait: 2 frame(s)
+ :              : $>Turn Left
+ :              : $>Wait: 2 frame(s)
+ :              : $>Turn Down
+ :              : $>Wait: 2 frame(s)
+@>Wait for Move's Completion
+@>Play SE: 'Door exit', 100, 100
+@>Change Screen Color Tone: (-255,-255,-255,0), @6
+@>Wait: 8 frame(s)
+@>Change Transparent Flag: Normal
+@>Transfer Player:[050: Prismriver Manor (F1)], (035,015), Up, No Fade
+@>Change Screen Color Tone: (0,0,0,0), @6
+@>
+
+Page #2
+Conditions
+Switch 0022: s:tsOff?("A") is ON
+
+Graphic: Doors_TPDP2
+
+Autonomous Movement
+Type: Fixed
+Speed: 3: Slow
+Freq: 3: Low
+Options Enabled
+Move Animation
+Trigger: Autorun
+
+List of Event Commands:
+@>Conditional Branch: Script: get_self.onEvent?
+ @>Change Transparent Flag: Transparency
+ @>Set Move Route: This event
+                   (Ignore If Can't Move)
+  :              : $>SE: 'Door enter', 100, 100
+  :              : $>Wait: 2 frame(s)
+  :              : $>Turn Left
+  :              : $>Wait: 2 frame(s)
+  :              : $>Turn Right
+  :              : $>Wait: 2 frame(s)
+  :              : $>Turn Up
+  :              : $>Wait: 2 frame(s)
+ @>Wait for Move's Completion
+ @>Change Transparent Flag: Normal
+ @>Set Move Route: Player
+                   (Ignore If Can't Move)
+  :              : $>Move Down
+ @>Wait for Move's Completion
+ @>Set Move Route: This event
+                   (Ignore If Can't Move)
+  :              : $>Turn Right
+  :              : $>Wait: 2 frame(s)
+  :              : $>Turn Left
+  :              : $>Wait: 2 frame(s)
+  :              : $>Turn Down
+  :              : $>Wait: 2 frame(s)
+ @>Wait for Move's Completion
+ @>
+: Branch End
+@>Script: setTempSwitchOn("A")
+@>
+
+#------------------------------------------------------------------------------
+Event ID: 004
+Event Name: ExitArrow
+(X,Y): (007,022)
+
+Page #1
+Conditions
+None
+
+Graphic: Exitarrow_red
+
+Autonomous Movement
+Type: Fixed
+Speed: 3: Slow
+Freq: 3: Low
+Options Enabled
+Move Animation
+Stop Animation
+Trigger: Player Touch
+
+List of Event Commands:
+@>Conditional Branch: Player is facing Down
+ @>Play SE: 'Door exit', 100, 100
+ @>Change Screen Color Tone: (-255,-255,-255,0), @6
+ @>Wait: 8 frame(s)
+ @>Transfer Player:[050: Prismriver Manor (F1)], (007,029), Down, No Fade
+ @>Change Screen Color Tone: (0,0,0,0), @6
+ @>
+: Branch End
+@>
+
+#------------------------------------------------------------------------------
+Event ID: 005
+Event Name: ExitArrow
+(X,Y): (052,028)
+
+Page #1
+Conditions
+None
+
+Graphic: Exitarrow_red
+
+Autonomous Movement
+Type: Fixed
+Speed: 3: Slow
+Freq: 3: Low
+Options Enabled
+Move Animation
+Stop Animation
+Trigger: Player Touch
+
+List of Event Commands:
+@>Conditional Branch: Player is facing Down
+ @>Play SE: 'Door exit', 100, 100
+ @>Change Screen Color Tone: (-255,-255,-255,0), @6
+ @>Wait: 8 frame(s)
+ @>Transfer Player:[050: Prismriver Manor (F1)], (027,024), Down, No Fade
+ @>Change Screen Color Tone: (0,0,0,0), @6
+ @>
+: Branch End
+@>
+
+#------------------------------------------------------------------------------
+Event ID: 006
+Event Name: ExitArrow
+(X,Y): (071,028)
+
+Page #1
+Conditions
+None
+
+Graphic: Exitarrow_red
+
+Autonomous Movement
+Type: Fixed
+Speed: 3: Slow
+Freq: 3: Low
+Options Enabled
+Move Animation
+Stop Animation
+Trigger: Player Touch
+
+List of Event Commands:
+@>Conditional Branch: Player is facing Down
+ @>Play SE: 'Door exit', 100, 100
+ @>Change Screen Color Tone: (-255,-255,-255,0), @6
+ @>Wait: 8 frame(s)
+ @>Transfer Player:[050: Prismriver Manor (F1)], (035,024), Down, No Fade
+ @>Change Screen Color Tone: (0,0,0,0), @6
+ @>
+: Branch End
+@>
+
+#------------------------------------------------------------------------------
+Event ID: 007
+Event Name: ExitArrow
+(X,Y): (022,012)
+
+Page #1
+Conditions
+None
+
+Graphic: Exitarrow_red
+
+Autonomous Movement
+Type: Fixed
+Speed: 3: Slow
+Freq: 3: Low
+Options Enabled
+Move Animation
+Stop Animation
+Trigger: Player Touch
+
+List of Event Commands:
+@>Conditional Branch: Player is facing Down
+ @>Play SE: 'Door exit', 100, 100
+ @>Change Screen Color Tone: (-255,-255,-255,0), @6
+ @>Wait: 8 frame(s)
+ @>Transfer Player:[050: Prismriver Manor (F1)], (017,024), Down, No Fade
+ @>Change Screen Color Tone: (0,0,0,0), @6
+ @>
+: Branch End
+@>
+
+#------------------------------------------------------------------------------
+Event ID: 008
+Event Name: ExitArrow
+(X,Y): (005,072)
+
+Page #1
+Conditions
+None
+
+Graphic: Exitarrow_red
+
+Autonomous Movement
+Type: Fixed
+Speed: 3: Slow
+Freq: 3: Low
+Options Enabled
+Move Animation
+Stop Animation
+Trigger: Player Touch
+
+List of Event Commands:
+@>Conditional Branch: Player is facing Down
+ @>Play SE: 'Door exit', 100, 100
+ @>Change Screen Color Tone: (-255,-255,-255,0), @6
+ @>Wait: 8 frame(s)
+ @>Transfer Player:[050: Prismriver Manor (F1)], (031,012), Down, No Fade
+ @>Change Screen Color Tone: (0,0,0,0), @6
+ @>
+: Branch End
+@>
+
+#------------------------------------------------------------------------------
+Event ID: 009
+Event Name: ExitArrow
+(X,Y): (045,055)
+
+Page #1
+Conditions
+None
+
+Graphic: Exitarrow_red
+
+Autonomous Movement
+Type: Fixed
+Speed: 3: Slow
+Freq: 3: Low
+Options Enabled
+Move Animation
+Stop Animation
+Trigger: Player Touch
+
+List of Event Commands:
+@>Conditional Branch: Player is facing Down
+ @>Play SE: 'Door exit', 100, 100
+ @>Change Screen Color Tone: (-255,-255,-255,0), @6
+ @>Wait: 8 frame(s)
+ @>Transfer Player:[050: Prismriver Manor (F1)], (008,011), Down, No Fade
+ @>Change Screen Color Tone: (0,0,0,0), @6
+ @>
+: Branch End
+@>
+
+#------------------------------------------------------------------------------
+Event ID: 010
+Event Name: Counter(3)
+(X,Y): (051,049)
+
+Page #1
+Conditions
+None
+
+Graphic: Object ball
+
+Autonomous Movement
+Type: Fixed
+Speed: 3: Slow
+Freq: 3: Low
+Options Enabled
+Move Animation
+Trigger: Event Touch
+
+List of Event Commands:
+@>Play SE: 'Exit Door', 80, 100
+@>Change Screen Color Tone: (-255,-255,-255,0), @6
+@>Wait: 8 frame(s)
+@>Transfer Player:[056: Prismriver Manor (B1F)], (013,061), No Fade
+@>Set Move Route: Player
+ :              : $>Move Down
+@>Change Screen Color Tone: (-102,-102,-102,0), @6
+@>
+
+#------------------------------------------------------------------------------
 
 #==============================================================================
 Map ID: 052
@@ -42534,11 +44141,1005 @@ Map Name: Prismriver Manor (F2)
 Tileset: 037: Ruined Western Mansion
 Width: 51, Height: 40
 
+#------------------------------------------------------------------------------
+Event ID: 001
+Event Name: Basic Door
+(X,Y): (020,005)
+
+Page #1
+Conditions
+None
+
+Graphic: Doors_TPDP2
+
+Autonomous Movement
+Type: Fixed
+Speed: 3: Slow
+Freq: 3: Low
+Options Enabled
+Move Animation
+Trigger: Player Touch
+
+List of Event Commands:
+@>Set Move Route: This event
+                  (Ignore If Can't Move)
+ :              : $>SE: 'Door enter', 100, 100
+ :              : $>Wait: 2 frame(s)
+ :              : $>Turn Left
+ :              : $>Wait: 2 frame(s)
+ :              : $>Turn Right
+ :              : $>Wait: 2 frame(s)
+ :              : $>Turn Up
+ :              : $>Wait: 2 frame(s)
+@>Wait for Move's Completion
+@>Set Move Route: Player
+                  (Ignore If Can't Move)
+ :              : $>Through ON
+ :              : $>Move Up
+ :              : $>Through OFF
+@>Wait for Move's Completion
+@>Change Transparent Flag: Transparency
+@>Set Move Route: This event
+                  (Ignore If Can't Move)
+ :              : $>Wait: 2 frame(s)
+ :              : $>Turn Right
+ :              : $>Wait: 2 frame(s)
+ :              : $>Turn Left
+ :              : $>Wait: 2 frame(s)
+ :              : $>Turn Down
+ :              : $>Wait: 2 frame(s)
+@>Wait for Move's Completion
+@>Play SE: 'Door exit', 100, 100
+@>Change Screen Color Tone: (-255,-255,-255,0), @6
+@>Wait: 8 frame(s)
+@>Change Transparent Flag: Normal
+@>Transfer Player:[053: Prismriver Manor (F2 - Rooms)], (007,008), Up, No Fade
+@>Change Screen Color Tone: (0,0,0,0), @6
+@>
+
+Page #2
+Conditions
+Switch 0022: s:tsOff?("A") is ON
+
+Graphic: Doors_TPDP2
+
+Autonomous Movement
+Type: Fixed
+Speed: 3: Slow
+Freq: 3: Low
+Options Enabled
+Move Animation
+Trigger: Autorun
+
+List of Event Commands:
+@>Conditional Branch: Script: get_self.onEvent?
+ @>Change Transparent Flag: Transparency
+ @>Set Move Route: This event
+                   (Ignore If Can't Move)
+  :              : $>SE: 'Door enter', 100, 100
+  :              : $>Wait: 2 frame(s)
+  :              : $>Turn Left
+  :              : $>Wait: 2 frame(s)
+  :              : $>Turn Right
+  :              : $>Wait: 2 frame(s)
+  :              : $>Turn Up
+  :              : $>Wait: 2 frame(s)
+ @>Wait for Move's Completion
+ @>Change Transparent Flag: Normal
+ @>Set Move Route: Player
+                   (Ignore If Can't Move)
+  :              : $>Move Down
+ @>Wait for Move's Completion
+ @>Set Move Route: This event
+                   (Ignore If Can't Move)
+  :              : $>Turn Right
+  :              : $>Wait: 2 frame(s)
+  :              : $>Turn Left
+  :              : $>Wait: 2 frame(s)
+  :              : $>Turn Down
+  :              : $>Wait: 2 frame(s)
+ @>Wait for Move's Completion
+ @>
+: Branch End
+@>Script: setTempSwitchOn("A")
+@>
+
+#------------------------------------------------------------------------------
+Event ID: 002
+Event Name: Basic Door
+(X,Y): (022,024)
+
+Page #1
+Conditions
+None
+
+Graphic: Doors_TPDP2
+
+Autonomous Movement
+Type: Fixed
+Speed: 3: Slow
+Freq: 3: Low
+Options Enabled
+Move Animation
+Trigger: Player Touch
+
+List of Event Commands:
+@>Set Move Route: This event
+                  (Ignore If Can't Move)
+ :              : $>SE: 'Door enter', 100, 100
+ :              : $>Wait: 2 frame(s)
+ :              : $>Turn Left
+ :              : $>Wait: 2 frame(s)
+ :              : $>Turn Right
+ :              : $>Wait: 2 frame(s)
+ :              : $>Turn Up
+ :              : $>Wait: 2 frame(s)
+@>Wait for Move's Completion
+@>Set Move Route: Player
+                  (Ignore If Can't Move)
+ :              : $>Through ON
+ :              : $>Move Up
+ :              : $>Through OFF
+@>Wait for Move's Completion
+@>Change Transparent Flag: Transparency
+@>Set Move Route: This event
+                  (Ignore If Can't Move)
+ :              : $>Wait: 2 frame(s)
+ :              : $>Turn Right
+ :              : $>Wait: 2 frame(s)
+ :              : $>Turn Left
+ :              : $>Wait: 2 frame(s)
+ :              : $>Turn Down
+ :              : $>Wait: 2 frame(s)
+@>Wait for Move's Completion
+@>Play SE: 'Door exit', 100, 100
+@>Change Screen Color Tone: (-255,-255,-255,0), @6
+@>Wait: 8 frame(s)
+@>Change Transparent Flag: Normal
+@>Transfer Player:[053: Prismriver Manor (F2 - Rooms)], (008,048), Up, No Fade
+@>Change Screen Color Tone: (0,0,0,0), @6
+@>
+
+Page #2
+Conditions
+Switch 0022: s:tsOff?("A") is ON
+
+Graphic: Doors_TPDP2
+
+Autonomous Movement
+Type: Fixed
+Speed: 3: Slow
+Freq: 3: Low
+Options Enabled
+Move Animation
+Trigger: Autorun
+
+List of Event Commands:
+@>Conditional Branch: Script: get_self.onEvent?
+ @>Change Transparent Flag: Transparency
+ @>Set Move Route: This event
+                   (Ignore If Can't Move)
+  :              : $>SE: 'Door enter', 100, 100
+  :              : $>Wait: 2 frame(s)
+  :              : $>Turn Left
+  :              : $>Wait: 2 frame(s)
+  :              : $>Turn Right
+  :              : $>Wait: 2 frame(s)
+  :              : $>Turn Up
+  :              : $>Wait: 2 frame(s)
+ @>Wait for Move's Completion
+ @>Change Transparent Flag: Normal
+ @>Set Move Route: Player
+                   (Ignore If Can't Move)
+  :              : $>Move Down
+ @>Wait for Move's Completion
+ @>Set Move Route: This event
+                   (Ignore If Can't Move)
+  :              : $>Turn Right
+  :              : $>Wait: 2 frame(s)
+  :              : $>Turn Left
+  :              : $>Wait: 2 frame(s)
+  :              : $>Turn Down
+  :              : $>Wait: 2 frame(s)
+ @>Wait for Move's Completion
+ @>
+: Branch End
+@>Script: setTempSwitchOn("A")
+@>
+
+#------------------------------------------------------------------------------
+Event ID: 003
+Event Name: Basic Door
+(X,Y): (039,024)
+
+Page #1
+Conditions
+None
+
+Graphic: Doors_TPDP2
+
+Autonomous Movement
+Type: Fixed
+Speed: 3: Slow
+Freq: 3: Low
+Options Enabled
+Move Animation
+Trigger: Player Touch
+
+List of Event Commands:
+@>Set Move Route: This event
+                  (Ignore If Can't Move)
+ :              : $>SE: 'Door enter', 100, 100
+ :              : $>Wait: 2 frame(s)
+ :              : $>Turn Left
+ :              : $>Wait: 2 frame(s)
+ :              : $>Turn Right
+ :              : $>Wait: 2 frame(s)
+ :              : $>Turn Up
+ :              : $>Wait: 2 frame(s)
+@>Wait for Move's Completion
+@>Set Move Route: Player
+                  (Ignore If Can't Move)
+ :              : $>Through ON
+ :              : $>Move Up
+ :              : $>Through OFF
+@>Wait for Move's Completion
+@>Change Transparent Flag: Transparency
+@>Set Move Route: This event
+                  (Ignore If Can't Move)
+ :              : $>Wait: 2 frame(s)
+ :              : $>Turn Right
+ :              : $>Wait: 2 frame(s)
+ :              : $>Turn Left
+ :              : $>Wait: 2 frame(s)
+ :              : $>Turn Down
+ :              : $>Wait: 2 frame(s)
+@>Wait for Move's Completion
+@>Play SE: 'Door exit', 100, 100
+@>Change Screen Color Tone: (-255,-255,-255,0), @6
+@>Wait: 8 frame(s)
+@>Change Transparent Flag: Normal
+@>Transfer Player:[053: Prismriver Manor (F2 - Rooms)], (026,048), Up, No Fade
+@>Change Screen Color Tone: (0,0,0,0), @6
+@>
+
+Page #2
+Conditions
+Switch 0022: s:tsOff?("A") is ON
+
+Graphic: Doors_TPDP2
+
+Autonomous Movement
+Type: Fixed
+Speed: 3: Slow
+Freq: 3: Low
+Options Enabled
+Move Animation
+Trigger: Autorun
+
+List of Event Commands:
+@>Conditional Branch: Script: get_self.onEvent?
+ @>Change Transparent Flag: Transparency
+ @>Set Move Route: This event
+                   (Ignore If Can't Move)
+  :              : $>SE: 'Door enter', 100, 100
+  :              : $>Wait: 2 frame(s)
+  :              : $>Turn Left
+  :              : $>Wait: 2 frame(s)
+  :              : $>Turn Right
+  :              : $>Wait: 2 frame(s)
+  :              : $>Turn Up
+  :              : $>Wait: 2 frame(s)
+ @>Wait for Move's Completion
+ @>Change Transparent Flag: Normal
+ @>Set Move Route: Player
+                   (Ignore If Can't Move)
+  :              : $>Move Down
+ @>Wait for Move's Completion
+ @>Set Move Route: This event
+                   (Ignore If Can't Move)
+  :              : $>Turn Right
+  :              : $>Wait: 2 frame(s)
+  :              : $>Turn Left
+  :              : $>Wait: 2 frame(s)
+  :              : $>Turn Down
+  :              : $>Wait: 2 frame(s)
+ @>Wait for Move's Completion
+ @>
+: Branch End
+@>Script: setTempSwitchOn("A")
+@>
+
+#------------------------------------------------------------------------------
+Event ID: 004
+Event Name: Basic Door
+(X,Y): (047,014)
+
+Page #1
+Conditions
+None
+
+Graphic: Doors_TPDP2
+
+Autonomous Movement
+Type: Fixed
+Speed: 3: Slow
+Freq: 3: Low
+Options Enabled
+Move Animation
+Trigger: Player Touch
+
+List of Event Commands:
+@>Set Move Route: This event
+                  (Ignore If Can't Move)
+ :              : $>SE: 'Door enter', 100, 100
+ :              : $>Wait: 2 frame(s)
+ :              : $>Turn Left
+ :              : $>Wait: 2 frame(s)
+ :              : $>Turn Right
+ :              : $>Wait: 2 frame(s)
+ :              : $>Turn Up
+ :              : $>Wait: 2 frame(s)
+@>Wait for Move's Completion
+@>Set Move Route: Player
+                  (Ignore If Can't Move)
+ :              : $>Through ON
+ :              : $>Move Up
+ :              : $>Through OFF
+@>Wait for Move's Completion
+@>Change Transparent Flag: Transparency
+@>Set Move Route: This event
+                  (Ignore If Can't Move)
+ :              : $>Wait: 2 frame(s)
+ :              : $>Turn Right
+ :              : $>Wait: 2 frame(s)
+ :              : $>Turn Left
+ :              : $>Wait: 2 frame(s)
+ :              : $>Turn Down
+ :              : $>Wait: 2 frame(s)
+@>Wait for Move's Completion
+@>Play SE: 'Door exit', 100, 100
+@>Change Screen Color Tone: (-255,-255,-255,0), @6
+@>Wait: 8 frame(s)
+@>Change Transparent Flag: Normal
+@>Transfer Player:[053: Prismriver Manor (F2 - Rooms)], (030,019), Up, No Fade
+@>Change Screen Color Tone: (0,0,0,0), @6
+@>
+
+Page #2
+Conditions
+Switch 0022: s:tsOff?("A") is ON
+
+Graphic: Doors_TPDP2
+
+Autonomous Movement
+Type: Fixed
+Speed: 3: Slow
+Freq: 3: Low
+Options Enabled
+Move Animation
+Trigger: Autorun
+
+List of Event Commands:
+@>Conditional Branch: Script: get_self.onEvent?
+ @>Change Transparent Flag: Transparency
+ @>Set Move Route: This event
+                   (Ignore If Can't Move)
+  :              : $>SE: 'Door enter', 100, 100
+  :              : $>Wait: 2 frame(s)
+  :              : $>Turn Left
+  :              : $>Wait: 2 frame(s)
+  :              : $>Turn Right
+  :              : $>Wait: 2 frame(s)
+  :              : $>Turn Up
+  :              : $>Wait: 2 frame(s)
+ @>Wait for Move's Completion
+ @>Change Transparent Flag: Normal
+ @>Set Move Route: Player
+                   (Ignore If Can't Move)
+  :              : $>Move Down
+ @>Wait for Move's Completion
+ @>Set Move Route: This event
+                   (Ignore If Can't Move)
+  :              : $>Turn Right
+  :              : $>Wait: 2 frame(s)
+  :              : $>Turn Left
+  :              : $>Wait: 2 frame(s)
+  :              : $>Turn Down
+  :              : $>Wait: 2 frame(s)
+ @>Wait for Move's Completion
+ @>
+: Branch End
+@>Script: setTempSwitchOn("A")
+@>
+
+#------------------------------------------------------------------------------
+Event ID: 005
+Event Name: ExitArrow
+(X,Y): (020,011)
+
+Page #1
+Conditions
+None
+
+Graphic: Exitarrow_red
+
+Autonomous Movement
+Type: Fixed
+Speed: 3: Slow
+Freq: 3: Low
+Options Enabled
+Move Animation
+Stop Animation
+Trigger: Player Touch
+
+List of Event Commands:
+@>Conditional Branch: Player is facing Down
+ @>Play SE: 'Door exit', 100, 100
+ @>Change Screen Color Tone: (-255,-255,-255,0), @6
+ @>Wait: 8 frame(s)
+ @>Transfer Player:[053: Prismriver Manor (F2 - Rooms)], (006,035), Down, No Fade
+ @>Change Screen Color Tone: (0,0,0,0), @6
+ @>
+: Branch End
+@>
+
+#------------------------------------------------------------------------------
+Event ID: 006
+Event Name: ExitArrow
+(X,Y): (017,017)
+
+Page #1
+Conditions
+None
+
+Graphic: Exitarrow_red
+
+Autonomous Movement
+Type: Fixed
+Speed: 3: Slow
+Freq: 3: Low
+Options Enabled
+Move Animation
+Stop Animation
+Always on Top
+Trigger: Player Touch
+
+List of Event Commands:
+@>Conditional Branch: Player is facing Right
+ @>Play SE: 'Door exit', 100, 100
+ @>Change Screen Color Tone: (-255,-255,-255,0), @6
+ @>Wait: 8 frame(s)
+ @>Transfer Player:[052: Prismriver Manor (F2)], (016,017), No Fade
+ @>Change Screen Color Tone: (0,0,0,0), @6
+ @>
+: Branch End
+@>
+
+#------------------------------------------------------------------------------
+Event ID: 007
+Event Name: ExitArrow
+(X,Y): (044,017)
+
+Page #1
+Conditions
+None
+
+Graphic: Exitarrow_red
+
+Autonomous Movement
+Type: Fixed
+Speed: 3: Slow
+Freq: 3: Low
+Options Enabled
+Move Animation
+Stop Animation
+Always on Top
+Trigger: Player Touch
+
+List of Event Commands:
+@>Conditional Branch: Player is facing Left
+ @>Play SE: 'Door exit', 100, 100
+ @>Change Screen Color Tone: (-255,-255,-255,0), @6
+ @>Wait: 8 frame(s)
+ @>Transfer Player:[053: Prismriver Manor (F2 - Rooms)], (033,042), No Fade
+ @>Change Screen Color Tone: (0,0,0,0), @6
+ @>
+: Branch End
+@>
+
+#------------------------------------------------------------------------------
+Event ID: 008
+Event Name: Counter(3)
+(X,Y): (005,015)
+
+Page #1
+Conditions
+None
+
+Graphic: Object ball
+
+Autonomous Movement
+Type: Fixed
+Speed: 3: Slow
+Freq: 3: Low
+Options Enabled
+Move Animation
+Trigger: Event Touch
+
+List of Event Commands:
+@>Play SE: 'Exit Door', 80, 100
+@>Change Screen Color Tone: (-255,-255,-255,0), @6
+@>Wait: 8 frame(s)
+@>Transfer Player:[050: Prismriver Manor (F1)], (013,011), No Fade
+@>Set Move Route: Player
+ :              : $>Move Down
+@>Change Screen Color Tone: (0,0,0,0), @6
+@>
+
+#------------------------------------------------------------------------------
+Event ID: 009
+Event Name: Counter(3)
+(X,Y): (005,021)
+
+Page #1
+Conditions
+None
+
+Graphic: Object ball
+
+Autonomous Movement
+Type: Fixed
+Speed: 3: Slow
+Freq: 3: Low
+Options Enabled
+Move Animation
+Trigger: Event Touch
+
+List of Event Commands:
+@>Play SE: 'Exit Door', 80, 100
+@>Change Screen Color Tone: (-255,-255,-255,0), @6
+@>Wait: 8 frame(s)
+@>Transfer Player:[054: Prismriver Manor (F3)], (003,014), No Fade
+@>Change Screen Color Tone: (0,0,0,0), @6
+@>Set Move Route: Player
+ :              : $>Move Up
+@>
+
+#------------------------------------------------------------------------------
+
 #==============================================================================
 Map ID: 053
 Map Name: Prismriver Manor (F2 - Rooms)
 Tileset: 037: Ruined Western Mansion
 Width: 36, Height: 60
+
+#------------------------------------------------------------------------------
+Event ID: 001
+Event Name: Basic Door
+(X,Y): (006,035)
+
+Page #1
+Conditions
+None
+
+Graphic: Doors_TPDP2
+
+Autonomous Movement
+Type: Fixed
+Speed: 3: Slow
+Freq: 3: Low
+Options Enabled
+Move Animation
+Trigger: Player Touch
+
+List of Event Commands:
+@>Set Move Route: This event
+                  (Ignore If Can't Move)
+ :              : $>SE: 'Door enter', 100, 100
+ :              : $>Wait: 2 frame(s)
+ :              : $>Turn Left
+ :              : $>Wait: 2 frame(s)
+ :              : $>Turn Right
+ :              : $>Wait: 2 frame(s)
+ :              : $>Turn Up
+ :              : $>Wait: 2 frame(s)
+@>Wait for Move's Completion
+@>Set Move Route: Player
+                  (Ignore If Can't Move)
+ :              : $>Through ON
+ :              : $>Move Up
+ :              : $>Through OFF
+@>Wait for Move's Completion
+@>Change Transparent Flag: Transparency
+@>Set Move Route: This event
+                  (Ignore If Can't Move)
+ :              : $>Wait: 2 frame(s)
+ :              : $>Turn Right
+ :              : $>Wait: 2 frame(s)
+ :              : $>Turn Left
+ :              : $>Wait: 2 frame(s)
+ :              : $>Turn Down
+ :              : $>Wait: 2 frame(s)
+@>Wait for Move's Completion
+@>Play SE: 'Door exit', 100, 100
+@>Change Screen Color Tone: (-255,-255,-255,0), @6
+@>Wait: 8 frame(s)
+@>Change Transparent Flag: Normal
+@>Transfer Player:[052: Prismriver Manor (F2)], (020,009), Up, No Fade
+@>Change Screen Color Tone: (0,0,0,0), @6
+@>
+
+Page #2
+Conditions
+Switch 0022: s:tsOff?("A") is ON
+
+Graphic: Doors_TPDP2
+
+Autonomous Movement
+Type: Fixed
+Speed: 3: Slow
+Freq: 3: Low
+Options Enabled
+Move Animation
+Trigger: Autorun
+
+List of Event Commands:
+@>Conditional Branch: Script: get_self.onEvent?
+ @>Change Transparent Flag: Transparency
+ @>Set Move Route: This event
+                   (Ignore If Can't Move)
+  :              : $>SE: 'Door enter', 100, 100
+  :              : $>Wait: 2 frame(s)
+  :              : $>Turn Left
+  :              : $>Wait: 2 frame(s)
+  :              : $>Turn Right
+  :              : $>Wait: 2 frame(s)
+  :              : $>Turn Up
+  :              : $>Wait: 2 frame(s)
+ @>Wait for Move's Completion
+ @>Change Transparent Flag: Normal
+ @>Set Move Route: Player
+                   (Ignore If Can't Move)
+  :              : $>Move Down
+ @>Wait for Move's Completion
+ @>Set Move Route: This event
+                   (Ignore If Can't Move)
+  :              : $>Turn Right
+  :              : $>Wait: 2 frame(s)
+  :              : $>Turn Left
+  :              : $>Wait: 2 frame(s)
+  :              : $>Turn Down
+  :              : $>Wait: 2 frame(s)
+ @>Wait for Move's Completion
+ @>
+: Branch End
+@>Script: setTempSwitchOn("A")
+@>
+
+#------------------------------------------------------------------------------
+Event ID: 002
+Event Name: Basic Door
+(X,Y): (029,035)
+
+Page #1
+Conditions
+None
+
+Graphic: Doors_TPDP2
+
+Autonomous Movement
+Type: Fixed
+Speed: 3: Slow
+Freq: 3: Low
+Options Enabled
+Move Animation
+Trigger: Player Touch
+
+List of Event Commands:
+@>Set Move Route: This event
+                  (Ignore If Can't Move)
+ :              : $>SE: 'Door enter', 100, 100
+ :              : $>Wait: 2 frame(s)
+ :              : $>Turn Left
+ :              : $>Wait: 2 frame(s)
+ :              : $>Turn Right
+ :              : $>Wait: 2 frame(s)
+ :              : $>Turn Up
+ :              : $>Wait: 2 frame(s)
+@>Wait for Move's Completion
+@>Set Move Route: Player
+                  (Ignore If Can't Move)
+ :              : $>Through ON
+ :              : $>Move Up
+ :              : $>Through OFF
+@>Wait for Move's Completion
+@>Change Transparent Flag: Transparency
+@>Set Move Route: This event
+                  (Ignore If Can't Move)
+ :              : $>Wait: 2 frame(s)
+ :              : $>Turn Right
+ :              : $>Wait: 2 frame(s)
+ :              : $>Turn Left
+ :              : $>Wait: 2 frame(s)
+ :              : $>Turn Down
+ :              : $>Wait: 2 frame(s)
+@>Wait for Move's Completion
+@>Play SE: 'Door exit', 100, 100
+@>Change Screen Color Tone: (-255,-255,-255,0), @6
+@>Wait: 8 frame(s)
+@>Change Transparent Flag: Normal
+@>Transfer Player:[053: Prismriver Manor (F2 - Rooms)], (030,019), Up, No Fade
+@>Change Screen Color Tone: (0,0,0,0), @6
+@>
+
+Page #2
+Conditions
+Switch 0022: s:tsOff?("A") is ON
+
+Graphic: Doors_TPDP2
+
+Autonomous Movement
+Type: Fixed
+Speed: 3: Slow
+Freq: 3: Low
+Options Enabled
+Move Animation
+Trigger: Autorun
+
+List of Event Commands:
+@>Conditional Branch: Script: get_self.onEvent?
+ @>Change Transparent Flag: Transparency
+ @>Set Move Route: This event
+                   (Ignore If Can't Move)
+  :              : $>SE: 'Door enter', 100, 100
+  :              : $>Wait: 2 frame(s)
+  :              : $>Turn Left
+  :              : $>Wait: 2 frame(s)
+  :              : $>Turn Right
+  :              : $>Wait: 2 frame(s)
+  :              : $>Turn Up
+  :              : $>Wait: 2 frame(s)
+ @>Wait for Move's Completion
+ @>Change Transparent Flag: Normal
+ @>Set Move Route: Player
+                   (Ignore If Can't Move)
+  :              : $>Move Down
+ @>Wait for Move's Completion
+ @>Set Move Route: This event
+                   (Ignore If Can't Move)
+  :              : $>Turn Right
+  :              : $>Wait: 2 frame(s)
+  :              : $>Turn Left
+  :              : $>Wait: 2 frame(s)
+  :              : $>Turn Down
+  :              : $>Wait: 2 frame(s)
+ @>Wait for Move's Completion
+ @>
+: Branch End
+@>Script: setTempSwitchOn("A")
+@>
+
+#------------------------------------------------------------------------------
+Event ID: 003
+Event Name: ExitArrow
+(X,Y): (007,010)
+
+Page #1
+Conditions
+None
+
+Graphic: Exitarrow_red
+
+Autonomous Movement
+Type: Fixed
+Speed: 3: Slow
+Freq: 3: Low
+Options Enabled
+Move Animation
+Stop Animation
+Trigger: Player Touch
+
+List of Event Commands:
+@>Conditional Branch: Player is facing Down
+ @>Play SE: 'Door exit', 100, 100
+ @>Change Screen Color Tone: (-255,-255,-255,0), @6
+ @>Wait: 8 frame(s)
+ @>Transfer Player:[052: Prismriver Manor (F2)], (020,005), Down, No Fade
+ @>Change Screen Color Tone: (0,0,0,0), @6
+ @>
+: Branch End
+@>
+
+#------------------------------------------------------------------------------
+Event ID: 004
+Event Name: ExitArrow
+(X,Y): (020,021)
+
+Page #1
+Conditions
+None
+
+Graphic: Exitarrow_red
+
+Autonomous Movement
+Type: Fixed
+Speed: 3: Slow
+Freq: 3: Low
+Options Enabled
+Move Animation
+Stop Animation
+Trigger: Player Touch
+
+List of Event Commands:
+@>Conditional Branch: Player is facing Down
+ @>Play SE: 'Door exit', 100, 100
+ @>Change Screen Color Tone: (-255,-255,-255,0), @6
+ @>Wait: 8 frame(s)
+ @>Transfer Player:[053: Prismriver Manor (F2 - Rooms)], (029,035), Down, No Fade
+ @>Change Screen Color Tone: (0,0,0,0), @6
+ @>
+: Branch End
+@>
+
+#------------------------------------------------------------------------------
+Event ID: 005
+Event Name: ExitArrow
+(X,Y): (030,021)
+
+Page #1
+Conditions
+None
+
+Graphic: Exitarrow_red
+
+Autonomous Movement
+Type: Fixed
+Speed: 3: Slow
+Freq: 3: Low
+Options Enabled
+Move Animation
+Stop Animation
+Trigger: Player Touch
+
+List of Event Commands:
+@>Conditional Branch: Player is facing Down
+ @>Play SE: 'Door exit', 100, 100
+ @>Change Screen Color Tone: (-255,-255,-255,0), @6
+ @>Wait: 8 frame(s)
+ @>Transfer Player:[052: Prismriver Manor (F2)], (047,014), Down, No Fade
+ @>Change Screen Color Tone: (0,0,0,0), @6
+ @>
+: Branch End
+@>
+
+#------------------------------------------------------------------------------
+Event ID: 006
+Event Name: ExitArrow
+(X,Y): (008,050)
+
+Page #1
+Conditions
+None
+
+Graphic: Exitarrow_red
+
+Autonomous Movement
+Type: Fixed
+Speed: 3: Slow
+Freq: 3: Low
+Options Enabled
+Move Animation
+Stop Animation
+Trigger: Player Touch
+
+List of Event Commands:
+@>Conditional Branch: Player is facing Down
+ @>Play SE: 'Door exit', 100, 100
+ @>Change Screen Color Tone: (-255,-255,-255,0), @6
+ @>Wait: 8 frame(s)
+ @>Transfer Player:[052: Prismriver Manor (F2)], (022,024), Down, No Fade
+ @>Change Screen Color Tone: (0,0,0,0), @6
+ @>
+: Branch End
+@>
+
+#------------------------------------------------------------------------------
+Event ID: 007
+Event Name: ExitArrow
+(X,Y): (026,050)
+
+Page #1
+Conditions
+None
+
+Graphic: Exitarrow_red
+
+Autonomous Movement
+Type: Fixed
+Speed: 3: Slow
+Freq: 3: Low
+Options Enabled
+Move Animation
+Stop Animation
+Trigger: Player Touch
+
+List of Event Commands:
+@>Conditional Branch: Player is facing Down
+ @>Play SE: 'Door exit', 100, 100
+ @>Change Screen Color Tone: (-255,-255,-255,0), @6
+ @>Wait: 8 frame(s)
+ @>Transfer Player:[052: Prismriver Manor (F2)], (039,024), Down, No Fade
+ @>Change Screen Color Tone: (0,0,0,0), @6
+ @>
+: Branch End
+@>
+
+#------------------------------------------------------------------------------
+Event ID: 008
+Event Name: ExitArrow
+(X,Y): (001,042)
+
+Page #1
+Conditions
+None
+
+Graphic: Exitarrow_red
+
+Autonomous Movement
+Type: Fixed
+Speed: 3: Slow
+Freq: 3: Low
+Options Enabled
+Move Animation
+Stop Animation
+Always on Top
+Trigger: Player Touch
+
+List of Event Commands:
+@>Conditional Branch: Player is facing Left
+ @>Play SE: 'Door exit', 100, 100
+ @>Change Screen Color Tone: (-255,-255,-255,0), @6
+ @>Wait: 8 frame(s)
+ @>Transfer Player:[052: Prismriver Manor (F2)], (016,017), No Fade
+ @>Change Screen Color Tone: (0,0,0,0), @6
+ @>
+: Branch End
+@>
+
+#------------------------------------------------------------------------------
+Event ID: 009
+Event Name: ExitArrow
+(X,Y): (034,042)
+
+Page #1
+Conditions
+None
+
+Graphic: Exitarrow_red
+
+Autonomous Movement
+Type: Fixed
+Speed: 3: Slow
+Freq: 3: Low
+Options Enabled
+Move Animation
+Stop Animation
+Always on Top
+Trigger: Player Touch
+
+List of Event Commands:
+@>Conditional Branch: Player is facing Right
+ @>Play SE: 'Door exit', 100, 100
+ @>Change Screen Color Tone: (-255,-255,-255,0), @6
+ @>Wait: 8 frame(s)
+ @>Transfer Player:[052: Prismriver Manor (F2)], (045,017), No Fade
+ @>Change Screen Color Tone: (0,0,0,0), @6
+ @>
+: Branch End
+@>
+
+#------------------------------------------------------------------------------
 
 #==============================================================================
 Map ID: 054
@@ -42546,17 +45147,994 @@ Map Name: Prismriver Manor (F3)
 Tileset: 037: Ruined Western Mansion
 Width: 61, Height: 40
 
+#------------------------------------------------------------------------------
+Event ID: 001
+Event Name: ExitArrow
+(X,Y): (013,025)
+
+Page #1
+Conditions
+None
+
+Graphic: Exitarrow_red
+
+Autonomous Movement
+Type: Fixed
+Speed: 3: Slow
+Freq: 3: Low
+Options Enabled
+Move Animation
+Stop Animation
+Always on Top
+Trigger: Player Touch
+
+List of Event Commands:
+@>Conditional Branch: Player is facing Left
+ @>Play SE: 'Door exit', 100, 100
+ @>Change Screen Color Tone: (-255,-255,-255,0), @6
+ @>Wait: 8 frame(s)
+ @>Transfer Player:[055: Prismriver Manor (F3 - Rooms)], (013,027), No Fade
+ @>Change Screen Color Tone: (0,0,0,0), @6
+ @>
+: Branch End
+@>
+
+#------------------------------------------------------------------------------
+Event ID: 002
+Event Name: ExitArrow
+(X,Y): (023,037)
+
+Page #1
+Conditions
+None
+
+Graphic: Exitarrow_red
+
+Autonomous Movement
+Type: Fixed
+Speed: 3: Slow
+Freq: 3: Low
+Options Enabled
+Move Animation
+Stop Animation
+Trigger: Player Touch
+
+List of Event Commands:
+@>Conditional Branch: Player is facing Down
+ @>Play SE: 'Door exit', 100, 100
+ @>Change Screen Color Tone: (-255,-255,-255,0), @6
+ @>Wait: 8 frame(s)
+ @>Transfer Player:[055: Prismriver Manor (F3 - Rooms)], (016,044), Down, No Fade
+ @>Change Screen Color Tone: (0,0,0,0), @6
+ @>
+: Branch End
+@>
+
+#------------------------------------------------------------------------------
+Event ID: 003
+Event Name: ExitArrow
+(X,Y): (037,037)
+
+Page #1
+Conditions
+None
+
+Graphic: Exitarrow_red
+
+Autonomous Movement
+Type: Fixed
+Speed: 3: Slow
+Freq: 3: Low
+Options Enabled
+Move Animation
+Stop Animation
+Trigger: Player Touch
+
+List of Event Commands:
+@>Conditional Branch: Player is facing Down
+ @>Play SE: 'Door exit', 100, 100
+ @>Change Screen Color Tone: (-255,-255,-255,0), @6
+ @>Wait: 8 frame(s)
+ @>Transfer Player:[055: Prismriver Manor (F3 - Rooms)], (044,044), Down, No Fade
+ @>Change Screen Color Tone: (0,0,0,0), @6
+ @>
+: Branch End
+@>
+
+#------------------------------------------------------------------------------
+Event ID: 004
+Event Name: ExitArrow
+(X,Y): (047,014)
+
+Page #1
+Conditions
+None
+
+Graphic: Exitarrow_red
+
+Autonomous Movement
+Type: Fixed
+Speed: 3: Slow
+Freq: 3: Low
+Options Enabled
+Move Animation
+Stop Animation
+Always on Top
+Trigger: Player Touch
+
+List of Event Commands:
+@>Conditional Branch: Player is facing Right
+ @>Play SE: 'Door exit', 100, 100
+ @>Change Screen Color Tone: (-255,-255,-255,0), @6
+ @>Wait: 8 frame(s)
+ @>Transfer Player:[055: Prismriver Manor (F3 - Rooms)], (047,028), No Fade
+ @>Change Screen Color Tone: (0,0,0,0), @6
+ @>
+: Branch End
+@>
+
+#------------------------------------------------------------------------------
+Event ID: 005
+Event Name: Basic Door
+(X,Y): (030,003)
+
+Page #1
+Conditions
+None
+
+Graphic: Doors_TPDP2
+
+Autonomous Movement
+Type: Fixed
+Speed: 3: Slow
+Freq: 3: Low
+Options Enabled
+Move Animation
+Trigger: Player Touch
+
+List of Event Commands:
+@>Set Move Route: This event
+                  (Ignore If Can't Move)
+ :              : $>SE: 'Door enter', 100, 100
+ :              : $>Wait: 2 frame(s)
+ :              : $>Turn Left
+ :              : $>Wait: 2 frame(s)
+ :              : $>Turn Right
+ :              : $>Wait: 2 frame(s)
+ :              : $>Turn Up
+ :              : $>Wait: 2 frame(s)
+@>Wait for Move's Completion
+@>Set Move Route: Player
+                  (Ignore If Can't Move)
+ :              : $>Through ON
+ :              : $>Move Up
+ :              : $>Through OFF
+@>Wait for Move's Completion
+@>Change Transparent Flag: Transparency
+@>Set Move Route: This event
+                  (Ignore If Can't Move)
+ :              : $>Wait: 2 frame(s)
+ :              : $>Turn Right
+ :              : $>Wait: 2 frame(s)
+ :              : $>Turn Left
+ :              : $>Wait: 2 frame(s)
+ :              : $>Turn Down
+ :              : $>Wait: 2 frame(s)
+@>Wait for Move's Completion
+@>Play SE: 'Door exit', 100, 100
+@>Change Screen Color Tone: (-255,-255,-255,0), @6
+@>Wait: 8 frame(s)
+@>Change Transparent Flag: Normal
+@>Transfer Player:[055: Prismriver Manor (F3 - Rooms)], (030,011), Up, No Fade
+@>Change Screen Color Tone: (0,0,0,0), @6
+@>
+
+Page #2
+Conditions
+Switch 0022: s:tsOff?("A") is ON
+
+Graphic: Doors_TPDP2
+
+Autonomous Movement
+Type: Fixed
+Speed: 3: Slow
+Freq: 3: Low
+Options Enabled
+Move Animation
+Trigger: Autorun
+
+List of Event Commands:
+@>Conditional Branch: Script: get_self.onEvent?
+ @>Change Transparent Flag: Transparency
+ @>Set Move Route: This event
+                   (Ignore If Can't Move)
+  :              : $>SE: 'Door enter', 100, 100
+  :              : $>Wait: 2 frame(s)
+  :              : $>Turn Left
+  :              : $>Wait: 2 frame(s)
+  :              : $>Turn Right
+  :              : $>Wait: 2 frame(s)
+  :              : $>Turn Up
+  :              : $>Wait: 2 frame(s)
+ @>Wait for Move's Completion
+ @>Change Transparent Flag: Normal
+ @>Set Move Route: Player
+                   (Ignore If Can't Move)
+  :              : $>Move Down
+ @>Wait for Move's Completion
+ @>Set Move Route: This event
+                   (Ignore If Can't Move)
+  :              : $>Turn Right
+  :              : $>Wait: 2 frame(s)
+  :              : $>Turn Left
+  :              : $>Wait: 2 frame(s)
+  :              : $>Turn Down
+  :              : $>Wait: 2 frame(s)
+ @>Wait for Move's Completion
+ @>
+: Branch End
+@>Script: setTempSwitchOn("A")
+@>
+
+#------------------------------------------------------------------------------
+Event ID: 006
+Event Name: Basic Door
+(X,Y): (030,029)
+
+Page #1
+Conditions
+None
+
+Graphic: Doors_TPDP2
+
+Autonomous Movement
+Type: Fixed
+Speed: 3: Slow
+Freq: 3: Low
+Options Enabled
+Move Animation
+Trigger: Player Touch
+
+List of Event Commands:
+@>Set Move Route: This event
+                  (Ignore If Can't Move)
+ :              : $>SE: 'Door enter', 100, 100
+ :              : $>Wait: 2 frame(s)
+ :              : $>Turn Left
+ :              : $>Wait: 2 frame(s)
+ :              : $>Turn Right
+ :              : $>Wait: 2 frame(s)
+ :              : $>Turn Up
+ :              : $>Wait: 2 frame(s)
+@>Wait for Move's Completion
+@>Set Move Route: Player
+                  (Ignore If Can't Move)
+ :              : $>Through ON
+ :              : $>Move Up
+ :              : $>Through OFF
+@>Wait for Move's Completion
+@>Change Transparent Flag: Transparency
+@>Set Move Route: This event
+                  (Ignore If Can't Move)
+ :              : $>Wait: 2 frame(s)
+ :              : $>Turn Right
+ :              : $>Wait: 2 frame(s)
+ :              : $>Turn Left
+ :              : $>Wait: 2 frame(s)
+ :              : $>Turn Down
+ :              : $>Wait: 2 frame(s)
+@>Wait for Move's Completion
+@>Play SE: 'Door exit', 100, 100
+@>Change Screen Color Tone: (-255,-255,-255,0), @6
+@>Wait: 8 frame(s)
+@>Change Transparent Flag: Normal
+@>Transfer Player:[146: Prismriver Manor (F3 - Performance Hall)], (015,025), Up, No Fade
+@>Change Screen Color Tone: (0,0,0,0), @6
+@>
+
+Page #2
+Conditions
+Switch 0022: s:tsOff?("A") is ON
+
+Graphic: Doors_TPDP2
+
+Autonomous Movement
+Type: Fixed
+Speed: 3: Slow
+Freq: 3: Low
+Options Enabled
+Move Animation
+Trigger: Autorun
+
+List of Event Commands:
+@>Conditional Branch: Script: get_self.onEvent?
+ @>Change Transparent Flag: Transparency
+ @>Set Move Route: This event
+                   (Ignore If Can't Move)
+  :              : $>SE: 'Door enter', 100, 100
+  :              : $>Wait: 2 frame(s)
+  :              : $>Turn Left
+  :              : $>Wait: 2 frame(s)
+  :              : $>Turn Right
+  :              : $>Wait: 2 frame(s)
+  :              : $>Turn Up
+  :              : $>Wait: 2 frame(s)
+ @>Wait for Move's Completion
+ @>Change Transparent Flag: Normal
+ @>Set Move Route: Player
+                   (Ignore If Can't Move)
+  :              : $>Move Down
+ @>Wait for Move's Completion
+ @>Set Move Route: This event
+                   (Ignore If Can't Move)
+  :              : $>Turn Right
+  :              : $>Wait: 2 frame(s)
+  :              : $>Turn Left
+  :              : $>Wait: 2 frame(s)
+  :              : $>Turn Down
+  :              : $>Wait: 2 frame(s)
+ @>Wait for Move's Completion
+ @>
+: Branch End
+@>Script: setTempSwitchOn("A")
+@>
+
+#------------------------------------------------------------------------------
+Event ID: 007
+Event Name: Counter(3)
+(X,Y): (001,014)
+
+Page #1
+Conditions
+None
+
+Graphic: Object ball
+
+Autonomous Movement
+Type: Fixed
+Speed: 3: Slow
+Freq: 3: Low
+Options Enabled
+Move Animation
+Trigger: Event Touch
+
+List of Event Commands:
+@>Play SE: 'Exit Door', 80, 100
+@>Change Screen Color Tone: (-255,-255,-255,0), @6
+@>Wait: 8 frame(s)
+@>Transfer Player:[052: Prismriver Manor (F2)], (007,021), No Fade
+@>Set Move Route: Player
+ :              : $>Move Down
+@>Change Screen Color Tone: (0,0,0,0), @6
+@>
+
+#------------------------------------------------------------------------------
+Event ID: 008
+Event Name: Counter(3)
+(X,Y): (052,029)
+
+Page #1
+Conditions
+None
+
+Graphic: Object ball
+
+Autonomous Movement
+Type: Fixed
+Speed: 3: Slow
+Freq: 3: Low
+Options Enabled
+Move Animation
+Trigger: Event Touch
+
+List of Event Commands:
+@>Play SE: 'Exit Door', 80, 100
+@>Change Screen Color Tone: (-255,-255,-255,0), @6
+@>Wait: 8 frame(s)
+@>Transfer Player:[147: Stairs to Roof], (010,012), No Fade
+@>Change Screen Color Tone: (0,0,0,0), @6
+@>Set Move Route: Player
+ :              : $>Move Up
+@>
+
+#------------------------------------------------------------------------------
+
 #==============================================================================
 Map ID: 055
 Map Name: Prismriver Manor (F3 - Rooms)
 Tileset: 037: Ruined Western Mansion
 Width: 61, Height: 60
 
+#------------------------------------------------------------------------------
+Event ID: 001
+Event Name: ExitArrow
+(X,Y): (030,013)
+
+Page #1
+Conditions
+None
+
+Graphic: Exitarrow_red
+
+Autonomous Movement
+Type: Fixed
+Speed: 3: Slow
+Freq: 3: Low
+Options Enabled
+Move Animation
+Stop Animation
+Trigger: Player Touch
+
+List of Event Commands:
+@>Conditional Branch: Player is facing Down
+ @>Play SE: 'Door exit', 100, 100
+ @>Change Screen Color Tone: (-255,-255,-255,0), @6
+ @>Wait: 8 frame(s)
+ @>Transfer Player:[023: Third Floor], (030,003), Down, No Fade
+ @>Change Screen Color Tone: (0,0,0,0), @6
+ @>
+: Branch End
+@>
+
+#------------------------------------------------------------------------------
+Event ID: 002
+Event Name: Basic Door
+(X,Y): (016,044)
+
+Page #1
+Conditions
+None
+
+Graphic: Doors_TPDP2
+
+Autonomous Movement
+Type: Fixed
+Speed: 3: Slow
+Freq: 3: Low
+Options Enabled
+Move Animation
+Trigger: Player Touch
+
+List of Event Commands:
+@>Set Move Route: This event
+                  (Ignore If Can't Move)
+ :              : $>SE: 'Door enter', 100, 100
+ :              : $>Wait: 2 frame(s)
+ :              : $>Turn Left
+ :              : $>Wait: 2 frame(s)
+ :              : $>Turn Right
+ :              : $>Wait: 2 frame(s)
+ :              : $>Turn Up
+ :              : $>Wait: 2 frame(s)
+@>Wait for Move's Completion
+@>Set Move Route: Player
+                  (Ignore If Can't Move)
+ :              : $>Through ON
+ :              : $>Move Up
+ :              : $>Through OFF
+@>Wait for Move's Completion
+@>Change Transparent Flag: Transparency
+@>Set Move Route: This event
+                  (Ignore If Can't Move)
+ :              : $>Wait: 2 frame(s)
+ :              : $>Turn Right
+ :              : $>Wait: 2 frame(s)
+ :              : $>Turn Left
+ :              : $>Wait: 2 frame(s)
+ :              : $>Turn Down
+ :              : $>Wait: 2 frame(s)
+@>Wait for Move's Completion
+@>Play SE: 'Door exit', 100, 100
+@>Change Screen Color Tone: (-255,-255,-255,0), @6
+@>Wait: 8 frame(s)
+@>Change Transparent Flag: Normal
+@>Transfer Player:[054: Prismriver Manor (F3)], (023,035), Up, No Fade
+@>Change Screen Color Tone: (0,0,0,0), @6
+@>
+
+Page #2
+Conditions
+Switch 0022: s:tsOff?("A") is ON
+
+Graphic: Doors_TPDP2
+
+Autonomous Movement
+Type: Fixed
+Speed: 3: Slow
+Freq: 3: Low
+Options Enabled
+Move Animation
+Trigger: Autorun
+
+List of Event Commands:
+@>Conditional Branch: Script: get_self.onEvent?
+ @>Change Transparent Flag: Transparency
+ @>Set Move Route: This event
+                   (Ignore If Can't Move)
+  :              : $>SE: 'Door enter', 100, 100
+  :              : $>Wait: 2 frame(s)
+  :              : $>Turn Left
+  :              : $>Wait: 2 frame(s)
+  :              : $>Turn Right
+  :              : $>Wait: 2 frame(s)
+  :              : $>Turn Up
+  :              : $>Wait: 2 frame(s)
+ @>Wait for Move's Completion
+ @>Change Transparent Flag: Normal
+ @>Set Move Route: Player
+                   (Ignore If Can't Move)
+  :              : $>Move Down
+ @>Wait for Move's Completion
+ @>Set Move Route: This event
+                   (Ignore If Can't Move)
+  :              : $>Turn Right
+  :              : $>Wait: 2 frame(s)
+  :              : $>Turn Left
+  :              : $>Wait: 2 frame(s)
+  :              : $>Turn Down
+  :              : $>Wait: 2 frame(s)
+ @>Wait for Move's Completion
+ @>
+: Branch End
+@>Script: setTempSwitchOn("A")
+@>
+
+#------------------------------------------------------------------------------
+Event ID: 003
+Event Name: Basic Door
+(X,Y): (044,044)
+
+Page #1
+Conditions
+None
+
+Graphic: Doors_TPDP2
+
+Autonomous Movement
+Type: Fixed
+Speed: 3: Slow
+Freq: 3: Low
+Options Enabled
+Move Animation
+Trigger: Player Touch
+
+List of Event Commands:
+@>Set Move Route: This event
+                  (Ignore If Can't Move)
+ :              : $>SE: 'Door enter', 100, 100
+ :              : $>Wait: 2 frame(s)
+ :              : $>Turn Left
+ :              : $>Wait: 2 frame(s)
+ :              : $>Turn Right
+ :              : $>Wait: 2 frame(s)
+ :              : $>Turn Up
+ :              : $>Wait: 2 frame(s)
+@>Wait for Move's Completion
+@>Set Move Route: Player
+                  (Ignore If Can't Move)
+ :              : $>Through ON
+ :              : $>Move Up
+ :              : $>Through OFF
+@>Wait for Move's Completion
+@>Change Transparent Flag: Transparency
+@>Set Move Route: This event
+                  (Ignore If Can't Move)
+ :              : $>Wait: 2 frame(s)
+ :              : $>Turn Right
+ :              : $>Wait: 2 frame(s)
+ :              : $>Turn Left
+ :              : $>Wait: 2 frame(s)
+ :              : $>Turn Down
+ :              : $>Wait: 2 frame(s)
+@>Wait for Move's Completion
+@>Play SE: 'Door exit', 100, 100
+@>Change Screen Color Tone: (-255,-255,-255,0), @6
+@>Wait: 8 frame(s)
+@>Change Transparent Flag: Normal
+@>Transfer Player:[054: Prismriver Manor (F3)], (037,035), Up, No Fade
+@>Change Screen Color Tone: (0,0,0,0), @6
+@>
+
+Page #2
+Conditions
+Switch 0022: s:tsOff?("A") is ON
+
+Graphic: Doors_TPDP2
+
+Autonomous Movement
+Type: Fixed
+Speed: 3: Slow
+Freq: 3: Low
+Options Enabled
+Move Animation
+Trigger: Autorun
+
+List of Event Commands:
+@>Conditional Branch: Script: get_self.onEvent?
+ @>Change Transparent Flag: Transparency
+ @>Set Move Route: This event
+                   (Ignore If Can't Move)
+  :              : $>SE: 'Door enter', 100, 100
+  :              : $>Wait: 2 frame(s)
+  :              : $>Turn Left
+  :              : $>Wait: 2 frame(s)
+  :              : $>Turn Right
+  :              : $>Wait: 2 frame(s)
+  :              : $>Turn Up
+  :              : $>Wait: 2 frame(s)
+ @>Wait for Move's Completion
+ @>Change Transparent Flag: Normal
+ @>Set Move Route: Player
+                   (Ignore If Can't Move)
+  :              : $>Move Down
+ @>Wait for Move's Completion
+ @>Set Move Route: This event
+                   (Ignore If Can't Move)
+  :              : $>Turn Right
+  :              : $>Wait: 2 frame(s)
+  :              : $>Turn Left
+  :              : $>Wait: 2 frame(s)
+  :              : $>Turn Down
+  :              : $>Wait: 2 frame(s)
+ @>Wait for Move's Completion
+ @>
+: Branch End
+@>Script: setTempSwitchOn("A")
+@>
+
+#------------------------------------------------------------------------------
+Event ID: 004
+Event Name: ExitArrow
+(X,Y): (014,027)
+
+Page #1
+Conditions
+None
+
+Graphic: Exitarrow_red
+
+Autonomous Movement
+Type: Fixed
+Speed: 3: Slow
+Freq: 3: Low
+Options Enabled
+Move Animation
+Stop Animation
+Always on Top
+Trigger: Player Touch
+
+List of Event Commands:
+@>Conditional Branch: Player is facing Right
+ @>Play SE: 'Door exit', 100, 100
+ @>Change Screen Color Tone: (-255,-255,-255,0), @6
+ @>Wait: 8 frame(s)
+ @>Transfer Player:[054: Prismriver Manor (F3)], (014,025), No Fade
+ @>Change Screen Color Tone: (0,0,0,0), @6
+ @>
+: Branch End
+@>
+
+#------------------------------------------------------------------------------
+Event ID: 005
+Event Name: ExitArrow
+(X,Y): (046,028)
+
+Page #1
+Conditions
+None
+
+Graphic: Exitarrow_red
+
+Autonomous Movement
+Type: Fixed
+Speed: 3: Slow
+Freq: 3: Low
+Options Enabled
+Move Animation
+Stop Animation
+Always on Top
+Trigger: Player Touch
+
+List of Event Commands:
+@>Conditional Branch: Player is facing Left
+ @>Play SE: 'Door exit', 100, 100
+ @>Change Screen Color Tone: (-255,-255,-255,0), @6
+ @>Wait: 8 frame(s)
+ @>Transfer Player:[054: Prismriver Manor (F3)], (046,014), No Fade
+ @>Change Screen Color Tone: (0,0,0,0), @6
+ @>
+: Branch End
+@>
+
+#------------------------------------------------------------------------------
+
 #==============================================================================
 Map ID: 056
 Map Name: Prismriver Manor (B1F)
 Tileset: 037: Ruined Western Mansion
 Width: 80, Height: 100
+
+#------------------------------------------------------------------------------
+Event ID: 001
+Event Name: CShinki
+(X,Y): (069,086)
+
+Page #1
+Conditions
+None
+
+Graphic: Puppet_Shinki
+
+Autonomous Movement
+Type: Fixed
+Speed: 3: Slow
+Freq: 3: Low
+Options Enabled
+Move Animation
+Trigger: Action Button
+
+List of Event Commands:
+@>
+
+#------------------------------------------------------------------------------
+Event ID: 002
+Event Name: EV002
+(X,Y): (045,056)
+
+Page #1
+Conditions
+None
+
+Autonomous Movement
+Type: Fixed
+Speed: 3: Slow
+Freq: 3: Low
+Options Enabled
+Move Animation
+Trigger: Player Touch
+
+List of Event Commands:
+@>Play SE: 'Door exit', 80, 100
+@>Change Screen Color Tone: (-255,-255,-255,0), @6
+@>Wait: 8 frame(s)
+@>Transfer Player:[056: Prismriver Manor (B1F)], (045,045), Up, No Fade
+@>Change Screen Color Tone: (-102,-102,-102,0), @6
+@>
+
+#------------------------------------------------------------------------------
+Event ID: 003
+Event Name: EV003
+(X,Y): (036,082)
+
+Page #1
+Conditions
+None
+
+Autonomous Movement
+Type: Fixed
+Speed: 3: Slow
+Freq: 3: Low
+Options Enabled
+Move Animation
+Trigger: Player Touch
+
+List of Event Commands:
+@>Play SE: 'Door exit', 80, 100
+@>Change Screen Color Tone: (-255,-255,-255,0), @6
+@>Wait: 8 frame(s)
+@>Transfer Player:[056: Prismriver Manor (B1F)], (069,092), Up, No Fade
+@>Change Screen Color Tone: (-102,-102,-102,0), @6
+@>
+
+#------------------------------------------------------------------------------
+Event ID: 004
+Event Name: ExitArrow
+(X,Y): (045,047)
+
+Page #1
+Conditions
+None
+
+Graphic: Exitarrow_red
+
+Autonomous Movement
+Type: Fixed
+Speed: 3: Slow
+Freq: 3: Low
+Options Enabled
+Move Animation
+Stop Animation
+Trigger: Player Touch
+
+List of Event Commands:
+@>Conditional Branch: Player is facing Down
+ @>Play SE: 'Door exit', 100, 100
+ @>Change Screen Color Tone: (-255,-255,-255,0), @6
+ @>Wait: 8 frame(s)
+ @>Transfer Player:[056: Prismriver Manor (B1F)], (045,056), Down, No Fade
+ @>Change Screen Color Tone: (-102,-102,-102,0), @6
+ @>Set Move Route: Player
+  :              : $>Move Down
+ @>
+: Branch End
+@>
+
+#------------------------------------------------------------------------------
+Event ID: 005
+Event Name: ExitArrow
+(X,Y): (069,093)
+
+Page #1
+Conditions
+None
+
+Graphic: Exitarrow_red
+
+Autonomous Movement
+Type: Fixed
+Speed: 3: Slow
+Freq: 3: Low
+Options Enabled
+Move Animation
+Stop Animation
+Trigger: Player Touch
+
+List of Event Commands:
+@>Conditional Branch: Player is facing Down
+ @>Play SE: 'Door exit', 100, 100
+ @>Change Screen Color Tone: (-255,-255,-255,0), @6
+ @>Wait: 8 frame(s)
+ @>Transfer Player:[056: Prismriver Manor (B1F)], (036,082), Down, No Fade
+ @>Change Screen Color Tone: (-102,-102,-102,0), @6
+ @>Set Move Route: Player
+  :              : $>Move Down
+ @>
+: Branch End
+@>
+
+#------------------------------------------------------------------------------
+Event ID: 006
+Event Name: Warp A->B
+(X,Y): (058,006)
+
+Page #1
+Conditions
+None
+
+Autonomous Movement
+Type: Fixed
+Speed: 3: Slow
+Freq: 3: Low
+Options Enabled
+Move Animation
+Trigger: Player Touch
+
+List of Event Commands:
+@>Text: Transfer to the connected teleporter?
+@>Show Choices: Yes, No
+(When Cancel: Choice 2)
+: When [Yes]
+ @>Play SE: 'teleporter', 100, 100
+ @>Change Screen Color Tone: (-255,-255,-255,0), @6
+ @>Wait: 8 frame(s)
+ @>Transfer Player:[056: Prismriver Manor (B1F)], (011,082), Down, No Fade
+ @>Change Screen Color Tone: (-102,-102,-102,0), @6
+ @>
+: When [No]
+ @>Set Move Route: Player
+  :              : $>Move Down
+ @>
+: Branch End
+@>
+
+#------------------------------------------------------------------------------
+Event ID: 007
+Event Name: Warp B->A
+(X,Y): (011,082)
+
+Page #1
+Conditions
+None
+
+Autonomous Movement
+Type: Fixed
+Speed: 3: Slow
+Freq: 3: Low
+Options Enabled
+Move Animation
+Trigger: Player Touch
+
+List of Event Commands:
+@>Text: Transfer to the connected teleporter?
+@>Show Choices: Yes, No
+(When Cancel: Choice 2)
+: When [Yes]
+ @>Play SE: 'teleporter', 100, 100
+ @>Change Screen Color Tone: (-255,-255,-255,0), @6
+ @>Wait: 8 frame(s)
+ @>Transfer Player:[056: Prismriver Manor (B1F)], (058,006), Down, No Fade
+ @>Change Screen Color Tone: (-102,-102,-102,0), @6
+ @>
+: When [No]
+ @>Set Move Route: Player
+  :              : $>Move Down
+ @>
+: Branch End
+@>
+
+#------------------------------------------------------------------------------
+Event ID: 008
+Event Name: Counter(3)
+(X,Y): (011,061)
+
+Page #1
+Conditions
+None
+
+Graphic: Object ball
+
+Autonomous Movement
+Type: Fixed
+Speed: 3: Slow
+Freq: 3: Low
+Options Enabled
+Move Animation
+Trigger: Event Touch
+
+List of Event Commands:
+@>Play SE: 'Exit Door', 80, 100
+@>Change Screen Color Tone: (-255,-255,-255,0), @6
+@>Wait: 8 frame(s)
+@>Transfer Player:[051: Prismriver Manor (F1 - Rooms)], (052,049), No Fade
+@>Change Screen Color Tone: (0,0,0,0), @6
+@>Set Move Route: Player
+ :              : $>Move Up
+@>
+
+#------------------------------------------------------------------------------
+Event ID: 009
+Event Name: EV009
+(X,Y): (053,005)
+
+Page #1
+Conditions
+None
+
+Autonomous Movement
+Type: Fixed
+Speed: 3: Slow
+Freq: 3: Low
+Options Enabled
+Move Animation
+Trigger: Action Button
+
+List of Event Commands:
+@>Text: It appears to be a diary of some sort. Most
+ :    : of the pages appear to be ripped out.
+@>Text: Except for one.
+@>Text: Read it?
+@>Show Choices: Yes, No
+(When Cancel: Choice 2)
+: When [Yes]
+ @>Text: \rI've figured it out! I've figured out how it might
+  :    : be possible to create an artificial lifeform!
+ @>Text: \rIt's impossible through our current level of scientific
+  :    : discovery.
+ @>Text: \rAlchemy and magic. That's where my answers
+  :    : await me.
+ @>Text: \rOne of father's old history books talks about
+  :    : a region where youkai and magic ran rampant.
+ @>Text: \rI will head to where this region of land was
+  :    : and study what I can. And when I return, I will
+  :    : bring them back.
+ @>Text: \rLayla Prismriver, October 27th, 1952
+ @>
+: When [No]
+ @>
+: Branch End
+@>
+
+#------------------------------------------------------------------------------
 
 #==============================================================================
 Map ID: 057
@@ -107002,6 +110580,213 @@ Map ID: 146
 Map Name: Prismriver Manor (F3 - Performance Hall)
 Tileset: 037: Ruined Western Mansion
 Width: 31, Height: 31
+
+#------------------------------------------------------------------------------
+Event ID: 001
+Event Name: ExitArrow
+(X,Y): (015,027)
+
+Page #1
+Conditions
+None
+
+Graphic: Exitarrow_red
+
+Autonomous Movement
+Type: Fixed
+Speed: 3: Slow
+Freq: 3: Low
+Options Enabled
+Move Animation
+Stop Animation
+Trigger: Player Touch
+
+List of Event Commands:
+@>Conditional Branch: Player is facing Down
+ @>Play SE: 'Door exit', 100, 100
+ @>Change Screen Color Tone: (-255,-255,-255,0), @6
+ @>Wait: 8 frame(s)
+ @>Transfer Player:[023: Third Floor], (030,029), Down, No Fade
+ @>Change Screen Color Tone: (0,0,0,0), @6
+ @>
+: Branch End
+@>
+
+#------------------------------------------------------------------------------
+
+#==============================================================================
+Map ID: 147
+Map Name: Stairs to Roof
+Tileset: 037: Ruined Western Mansion
+Width: 20, Height: 15
+Auto-Change BGM: X-001. Moonlight Sonata (3rd Movement)
+
+#------------------------------------------------------------------------------
+Event ID: 003
+Event Name: Basic Door
+(X,Y): (010,005)
+
+Page #1
+Conditions
+None
+
+Graphic: Doors_TPDP2
+
+Autonomous Movement
+Type: Fixed
+Speed: 3: Slow
+Freq: 3: Low
+Options Enabled
+Move Animation
+Trigger: Player Touch
+
+List of Event Commands:
+@>Set Move Route: This event
+                  (Ignore If Can't Move)
+ :              : $>SE: 'Door enter', 100, 100
+ :              : $>Wait: 2 frame(s)
+ :              : $>Turn Left
+ :              : $>Wait: 2 frame(s)
+ :              : $>Turn Right
+ :              : $>Wait: 2 frame(s)
+ :              : $>Turn Up
+ :              : $>Wait: 2 frame(s)
+@>Wait for Move's Completion
+@>Set Move Route: Player
+                  (Ignore If Can't Move)
+ :              : $>Through ON
+ :              : $>Move Up
+ :              : $>Through OFF
+@>Wait for Move's Completion
+@>Change Transparent Flag: Transparency
+@>Set Move Route: This event
+                  (Ignore If Can't Move)
+ :              : $>Wait: 2 frame(s)
+ :              : $>Turn Right
+ :              : $>Wait: 2 frame(s)
+ :              : $>Turn Left
+ :              : $>Wait: 2 frame(s)
+ :              : $>Turn Down
+ :              : $>Wait: 2 frame(s)
+@>Wait for Move's Completion
+@>Play SE: 'Door exit', 100, 100
+@>Change Screen Color Tone: (-255,-255,-255,0), @6
+@>Wait: 8 frame(s)
+@>Change Transparent Flag: Normal
+@>Transfer Player:[148: Roof], (017,020), Up, No Fade
+@>Change Screen Color Tone: (0,0,0,0), @6
+@>
+
+Page #2
+Conditions
+Switch 0022: s:tsOff?("A") is ON
+
+Graphic: Doors_TPDP2
+
+Autonomous Movement
+Type: Fixed
+Speed: 3: Slow
+Freq: 3: Low
+Options Enabled
+Move Animation
+Trigger: Autorun
+
+List of Event Commands:
+@>Conditional Branch: Script: get_self.onEvent?
+ @>Change Transparent Flag: Transparency
+ @>Set Move Route: This event
+                   (Ignore If Can't Move)
+  :              : $>SE: 'Door enter', 100, 100
+  :              : $>Wait: 2 frame(s)
+  :              : $>Turn Left
+  :              : $>Wait: 2 frame(s)
+  :              : $>Turn Right
+  :              : $>Wait: 2 frame(s)
+  :              : $>Turn Up
+  :              : $>Wait: 2 frame(s)
+ @>Wait for Move's Completion
+ @>Change Transparent Flag: Normal
+ @>Set Move Route: Player
+                   (Ignore If Can't Move)
+  :              : $>Move Down
+ @>Wait for Move's Completion
+ @>Set Move Route: This event
+                   (Ignore If Can't Move)
+  :              : $>Turn Right
+  :              : $>Wait: 2 frame(s)
+  :              : $>Turn Left
+  :              : $>Wait: 2 frame(s)
+  :              : $>Turn Down
+  :              : $>Wait: 2 frame(s)
+ @>Wait for Move's Completion
+ @>
+: Branch End
+@>Script: setTempSwitchOn("A")
+@>
+
+#------------------------------------------------------------------------------
+
+#==============================================================================
+Map ID: 148
+Map Name: Roof
+Tileset: 037: Ruined Western Mansion
+Width: 35, Height: 29
+Auto-Change BGM: W-012. Hourai Illusion ~ Far East
+
+#------------------------------------------------------------------------------
+Event ID: 001
+Event Name: CSariel
+(X,Y): (017,011)
+
+Page #1
+Conditions
+None
+
+Graphic: Puppet_Sariel
+
+Autonomous Movement
+Type: Fixed
+Speed: 3: Slow
+Freq: 3: Low
+Options Enabled
+Move Animation
+Trigger: Action Button
+
+List of Event Commands:
+@>
+
+#------------------------------------------------------------------------------
+Event ID: 002
+Event Name: ExitArrow
+(X,Y): (017,022)
+
+Page #1
+Conditions
+None
+
+Graphic: Exitarrow_red
+
+Autonomous Movement
+Type: Fixed
+Speed: 3: Slow
+Freq: 3: Low
+Options Enabled
+Move Animation
+Stop Animation
+Trigger: Player Touch
+
+List of Event Commands:
+@>Conditional Branch: Player is facing Down
+ @>Play SE: 'Door exit', 100, 100
+ @>Change Screen Color Tone: (-255,-255,-255,0), @6
+ @>Wait: 8 frame(s)
+ @>Transfer Player:[147: Stairs to Roof], (010,005), Down, No Fade
+ @>Change Screen Color Tone: (0,0,0,0), @6
+ @>
+: Branch End
+@>
+
+#------------------------------------------------------------------------------
 
 #==============================================================================
 

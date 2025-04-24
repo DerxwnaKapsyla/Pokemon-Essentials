@@ -426,7 +426,7 @@ class SafariBattle
       @scene.pbSafariStart
       weather_data = GameData::BattleWeather.try_get(@weather)
       @scene.pbCommonAnimation(weather_data.animation) if weather_data
-      safariBall = GameData::Item.get(:SAFARIBALL).id
+      safariBall = GameData::Item.get(:PRISMORB).id
       catch_rate = pkmn.species_data.catch_rate
       catchFactor  = (catch_rate * 100) / 1275
       catchFactor  = [[catchFactor, 3].max, 20].min
