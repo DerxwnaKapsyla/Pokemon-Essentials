@@ -137,7 +137,7 @@ def pbSafariBattle(pkmn, level = 1)
   pbSafariState.ballcount = battle.ballCount
   if pbSafariState.ballcount <= 0
     if decision != 2   # Last Safari Ball was used to catch the wild Pokémon
-      pbMessage(_INTL("Announcer: You're out of Safari Balls! Game over!"))
+      pbMessage(_INTL("Attendant: You're out of orbs! Game over!"))
     end
     pbSafariState.decision = 1
     pbSafariState.pbGoToStart

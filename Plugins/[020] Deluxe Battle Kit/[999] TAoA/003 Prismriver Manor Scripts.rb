@@ -57,7 +57,7 @@
 
 MidbattleHandlers.add(:midbattle_global, :battle_effects,
   proc { |battle, idxBattler, idxTarget, trigger|
-    if GameData::MapMetadata.get($game_map.map_id)&.has_flag?("PrismriverManor")
+    if GameData::MapMetadata.get($game_map.map_id)&.has_flag?("PrismriverManor") && $game_switches[132]
 	  scene     = battle.scene
 	  player    = battle.battlers[0]
 	  foe       = battle.battlers[1]
@@ -207,5 +207,6 @@ def pbFloorTerrain
   when 5 then rand_terrain = :Grassy
   when 6 then rand_terrain = :Misty
   when 7 then rand_terrain = :Psychic
+  end
   battle.pbStartTerrain(battler, rand_terrain, false)
 end

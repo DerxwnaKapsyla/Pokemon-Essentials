@@ -22,7 +22,11 @@ class Battle::Scene::PokemonDataBox < Sprite
   def draw_gender
     gender = @battler.displayGender
     return if ![0, 1].include?(gender)
-	pkmn_data = GameData::Species.get_species_form(@battler.species, @battler.form)
+	if @battler.instance_of?(Battle::FakeBattler)
+      pkmn_data = GameData::Species.get_species_form(@battler.species, 0)
+    else
+      pkmn_data = GameData::Species.get_species_form(@battler.species, @battler.form)
+    end
 	if pkmn_data.has_flag?("Puppet")
 	  gender_text  = (gender == 0) ? _INTL("¹") : _INTL("²")
 	else

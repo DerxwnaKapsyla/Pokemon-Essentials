@@ -6,9 +6,10 @@ class Battle::Scene
   # Toggles the visibility of the Poke Ball selection menu.
   #-----------------------------------------------------------------------------
   def pbToggleBallInfo(idxBattler)
+    return false if pbInSafari?
     return false if !@battle.pbCanUsePokeBall?(idxBattler)
     ballPocket = $bag.get_ball_pocket
-    return false if ballPocket < 0
+    return false if $bag.get_ball_pocket < 0
     pbHideInfoUI if @enhancedUIToggle != :ball
     @enhancedUIToggle = (@enhancedUIToggle.nil?) ? :ball : nil
     (@enhancedUIToggle) ? pbSEPlay("GUI party switch") : pbPlayCloseMenuSE
@@ -39,9 +40,9 @@ class Battle::Scene
     @enhancedUIOverlay.clear
     return if @enhancedUIToggle != :ball
     ypos = @sprites["messageBox"].y - 128
-    imagePos = [[@path + "select_ball_bg", 0, ypos]]
-    imagePos.push([@path + "select_ball_desc", 0, ypos - 72]) if showDesc
-    textY = (showDesc) ? ypos - 58 : ypos + 14
+    imagePos = [[@path + "pokeball_bg", 0, ypos]]
+    imagePos.push([@path + "pokeball_desc", 0, ypos - 69]) if showDesc
+    textY = (showDesc) ? ypos - 55 : ypos + 14
     action = (showDesc) ? _INTL("Z: Hide") : _INTL("Z: Details")
     item = GameData::Item.try_get(items[index][0])
     name = (item) ? _INTL("{1}", item.name) : _INTL("Return")
@@ -49,7 +50,7 @@ class Battle::Scene
     textPos = [
       [_INTL("C: Use"), 46, textY, :center, BASE_LIGHT],
       [action, Graphics.width - 46, textY, :center, BASE_LIGHT],
-      [name, Graphics.width / 2, textY, :center, BASE_LIGHT, SHADOW_LIGHT]
+      [name, Graphics.width / 2, textY, :center, BASE_LIGHT, SHADOW_LIGHT, :outline]
     ]
     ballY = @sprites["messageBox"].y - 25
     range = ((index - 2)..(index + 2)).to_a
@@ -61,14 +62,16 @@ class Battle::Scene
         pbUpdateBallIcon(i, try_item)
         if try_item
           x = @sprites["ball_icon#{i}"].x
-          textPos.push([items[pos][1].to_s, x, ballY, :center, BASE_LIGHT, SHADOW_LIGHT])
+          x += 2 if i == index
+          text_colors = (pos == index) ? [BASE_LIGHT, SHADOW_LIGHT, :outline] : [BASE_DARK, SHADOW_DARK]
+          textPos.push([items[pos][1].to_s, x, ballY, :center, *text_colors])
         end
       end
     end
     pbDrawImagePositions(@enhancedUIOverlay, imagePos)
     pbDrawTextPositions(@enhancedUIOverlay, textPos)
-    drawTextEx(@enhancedUIOverlay, 10, ypos - 24, Graphics.width - 10, 2, 
-      desc, BASE_LIGHT, SHADOW_LIGHT) if showDesc
+    drawTextEx(@enhancedUIOverlay, 10, ypos - 21, Graphics.width - 10, 2, 
+      desc, BASE_DARK, SHADOW_DARK) if showDesc
   end
   
   #-----------------------------------------------------------------------------
@@ -92,7 +95,7 @@ class Battle::Scene
     @sprites["rightarrow"].y = @sprites["ball_icon0"].y
     loop do
       pbUpdate
-      pbUpdateSpriteHash(@sprites)
+      pbUpdateInfoSprites
       dorefresh = false
       item = items[index][0]
       @sprites["leftarrow"].visible = index > 0
@@ -156,10 +159,11 @@ class Battle
   # Utility for checking if Poke Balls are usable.
   #-----------------------------------------------------------------------------
   def pbCanUsePokeBall?(idxBattler)
-    return false if pbInSafari?
+    return false if pbInSafari? || pbInBugContest?
     return false if !@internalBattle
     return false if @disablePokeBalls
     return false if trainerBattle?
+    return false if $bag.get_ball_pocket < 0
     idxBattler = idxBattler.index if idxBattler.respond_to?("index")
     return false if !pbOwnedByPlayer?(idxBattler || 0)
     return false if pbOpposingBattlerCount(idxBattler || 0) > 1

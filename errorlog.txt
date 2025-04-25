@@ -16487,3 +16487,151 @@ Backtrace:
 999_Main.rb:19:in `block in mainFunction'
 003_Errors.rb:79:in `pbCriticalCode'
 999_Main.rb:19:in `mainFunction'
+
+=================
+
+[2025-04-24 13:31:19 -0700]
+[Pokémon Essentials version 21.1]
+[v21.1 Hotfixes 1.0.9]
+
+Error in Plugin: [Deluxe Battle Kit]
+Exception: SyntaxError
+Message: [Deluxe Battle Kit] 003 Prismriver Manor Scripts.rb:211: syntax error, unexpected end-of-input, expecting `end'
+
+Backtrace:
+005_PluginManager.rb:635:in `eval'
+005_PluginManager.rb:635:in `block (2 levels) in runPlugins'
+005_PluginManager.rb:625:in `each'
+005_PluginManager.rb:625:in `block in runPlugins'
+005_PluginManager.rb:616:in `each'
+005_PluginManager.rb:616:in `runPlugins'
+999_Main.rb:35:in `mainFunctionDebug'
+999_Main.rb:19:in `block in mainFunction'
+003_Errors.rb:79:in `pbCriticalCode'
+999_Main.rb:19:in `mainFunction'
+
+=================
+
+[2025-04-25 00:49:25 -0700]
+[Pokémon Essentials version 21.1]
+[v21.1 Hotfixes 1.0.9]
+
+Exception: NoMethodError
+Message: undefined method `form' for #<Battle::FakeBattler>
+
+Backtrace:
+[Touhoumon Essentials Development Kit] 006_Battle_Scene_Objects.rb:25:in `draw_gender'
+006_Battle_Scene_Objects.rb:292:in `refresh'
+006_Battle_Scene_Objects.rb:40:in `initialize'
+002_Scene_Initialize.rb:79:in `new'
+002_Scene_Initialize.rb:79:in `block in pbInitSprites'
+002_Scene_Initialize.rb:77:in `each'
+002_Scene_Initialize.rb:77:in `each_with_index'
+002_Scene_Initialize.rb:77:in `pbInitSprites'
+002_BugContestBattle.rb:8:in `pbInitSprites'
+[Deluxe Battle Kit] [000] Midbattle Animations.rb:10:in `pbInitSprites'
+
+=================
+
+[2025-04-25 01:22:04 -0700]
+[Pokémon Essentials version 21.1]
+[v21.1 Hotfixes 1.0.9]
+
+Exception: NoMethodError
+Message: undefined method `form' for #<Battle::FakeBattler>
+
+Backtrace:
+[Touhoumon Essentials Development Kit] 006_Battle_Scene_Objects.rb:25:in `draw_gender'
+006_Battle_Scene_Objects.rb:292:in `refresh'
+006_Battle_Scene_Objects.rb:40:in `initialize'
+002_Scene_Initialize.rb:79:in `new'
+002_Scene_Initialize.rb:79:in `block in pbInitSprites'
+002_Scene_Initialize.rb:77:in `each'
+002_Scene_Initialize.rb:77:in `each_with_index'
+002_Scene_Initialize.rb:77:in `pbInitSprites'
+002_BugContestBattle.rb:8:in `pbInitSprites'
+[Deluxe Battle Kit] [000] Midbattle Animations.rb:10:in `pbInitSprites'
+
+=================
+
+[2025-04-25 01:27:12 -0700]
+[Pokémon Essentials version 21.1]
+[v21.1 Hotfixes 1.0.9]
+
+Exception: NoMethodError
+Message: undefined method `form' for #<Battle::FakeBattler>
+
+Backtrace:
+[Touhoumon Essentials Development Kit] 006_Battle_Scene_Objects.rb:25:in `draw_gender'
+006_Battle_Scene_Objects.rb:292:in `refresh'
+006_Battle_Scene_Objects.rb:40:in `initialize'
+002_Scene_Initialize.rb:79:in `new'
+002_Scene_Initialize.rb:79:in `block in pbInitSprites'
+002_Scene_Initialize.rb:77:in `each'
+002_Scene_Initialize.rb:77:in `each_with_index'
+002_Scene_Initialize.rb:77:in `pbInitSprites'
+002_BugContestBattle.rb:8:in `pbInitSprites'
+[Deluxe Battle Kit] [000] Midbattle Animations.rb:10:in `pbInitSprites'
+
+=================
+
+[2025-04-25 02:00:14 -0700]
+[Pokémon Essentials version 21.1]
+[v21.1 Hotfixes 1.0.9]
+
+Exception: RuntimeError
+Message: Battle rule "changeDataboxes" does not exist.
+
+Backtrace:
+001_Overworld_BattleStarting.rb:62:in `add_battle_rule'
+[Sky Battles + Inverse Battles] Script.rb:83:in `add_battle_rule'
+[Deluxe Battle Kit] [003] Deluxe Battle Rules.rb:36:in `add_battle_rule'
+[[DBK] SOS Battles] [003] Deluxe Additions.rb:15:in `add_battle_rule'
+[Deluxe Battle Kit] [003] Deluxe Battle Rules.rb:71:in `block in setBattleRule'
+[Deluxe Battle Kit] [003] Deluxe Battle Rules.rb:43:in `each'
+[Deluxe Battle Kit] [003] Deluxe Battle Rules.rb:43:in `setBattleRule'
+[Touhoumon Essentials Development Kit] 004_Overworld_EncounterModifiers.rb:121:in `block in <main>'
+005_Event_Handlers.rb:89:in `block in trigger'
+005_Event_Handlers.rb:89:in `each_value'
+
+=================
+
+[2025-04-25 02:01:58 -0700]
+[Pokémon Essentials version 21.1]
+[v21.1 Hotfixes 1.0.9]
+
+Exception: RuntimeError
+Message: Battle rule "databoxStyle" does not exist.
+
+Backtrace:
+001_Overworld_BattleStarting.rb:62:in `add_battle_rule'
+[Sky Battles + Inverse Battles] Script.rb:83:in `add_battle_rule'
+[Deluxe Battle Kit] [003] Deluxe Battle Rules.rb:36:in `add_battle_rule'
+[[DBK] SOS Battles] [003] Deluxe Additions.rb:15:in `add_battle_rule'
+[Deluxe Battle Kit] [003] Deluxe Battle Rules.rb:71:in `block in setBattleRule'
+[Deluxe Battle Kit] [003] Deluxe Battle Rules.rb:43:in `each'
+[Deluxe Battle Kit] [003] Deluxe Battle Rules.rb:43:in `setBattleRule'
+[Touhoumon Essentials Development Kit] 004_Overworld_EncounterModifiers.rb:121:in `block in <main>'
+005_Event_Handlers.rb:89:in `block in trigger'
+005_Event_Handlers.rb:89:in `each_value'
+
+=================
+
+[2025-04-25 02:02:47 -0700]
+[Pokémon Essentials version 21.1]
+[v21.1 Hotfixes 1.0.9]
+
+Exception: RuntimeError
+Message: Battle rule "databoxStyle" does not exist.
+
+Backtrace:
+001_Overworld_BattleStarting.rb:62:in `add_battle_rule'
+[Sky Battles + Inverse Battles] Script.rb:83:in `add_battle_rule'
+[Deluxe Battle Kit] [003] Deluxe Battle Rules.rb:36:in `add_battle_rule'
+[[DBK] SOS Battles] [003] Deluxe Additions.rb:15:in `add_battle_rule'
+[Deluxe Battle Kit] [003] Deluxe Battle Rules.rb:71:in `block in setBattleRule'
+[Deluxe Battle Kit] [003] Deluxe Battle Rules.rb:43:in `each'
+[Deluxe Battle Kit] [003] Deluxe Battle Rules.rb:43:in `setBattleRule'
+[Touhoumon Essentials Development Kit] 004_Overworld_EncounterModifiers.rb:121:in `block in <main>'
+005_Event_Handlers.rb:89:in `block in trigger'
+005_Event_Handlers.rb:89:in `each_value'

@@ -42132,8 +42132,91 @@ List of Event Commands:
 @>Show Choices: Yes, No, Explain more
 (When Cancel: Choice 2)
 : When [Yes]
+ @>Text: \xn[Merlin]\ptWould you like to do the Catching Game or the Cursed Experience?
+ @>Show Choices: Catching Game, Cursed Experience, Nevermind
+ (When Cancel: Choice 3)
+ : When [Catching Game]
+  @>Text: \xn[Merlin]\ptAnd that will be 30 FP, is that alright?
+  @>Show Choices: Yes, No
+  (When Cancel: Choice 2)
+  : When [Yes]
+   @>Comment: --- Catching Game ---
+   @>Conditional Branch: Script: $player.battle_points < 30
+    @>Text: \xn[Merlin]\ptOh no! You don't have enough Festival Points!
+    @>Text: \xn[Merlin]\ptYou can exchange for some beside me with Lunasa for money, and return
+     :    : when you have enough!
+    @>Exit Event Processing
+    @>
+   : Else
+    @>Comment: --- Subtract 30 FP here
+    @>Script: $player.battle_points -= 30
+    @>Play SE: 'Mart buy item', 100, 100
+    @>Text: \xn[Merlin]\ptHere you go, \pn! 60 custom made Prismriver Orbs for use within the Manor!
+    @>Text: \pt\PN received 60 Prismriver Orbs from Merlin.
+     :    : \me[Item get]\wtnp[40]
+    @>Text: \xn[Merlin]\ptOne of the ghostly attendants will notify you when you're out of steps or orbs to return here.
+    @>Text: \xn[Merlin]\ptGood luck~ Don't get too scared!
+    @>Script: pbSafariState.pbStart(60)
+    @>Play SE: 'Door exit', 80, 100
+    @>Change Screen Color Tone: (-255,-255,-255,0), @6
+    @>Wait: 8 frame(s)
+    @>Set Move Route: Player
+     :              : $>Change Opacity: 255
+    @>Transfer Player:[050: Prismriver Manor (F1)], (024,037), No Fade
+    @>Change Screen Color Tone: (0,0,0,0), @6
+    @>Control Self Switch: B =ON
+    @>Exit Event Processing
+    @>
+   : Branch End
+   @>
+  : When [No]
+   @>Jump to Label: End
+   @>
+  : Branch End
+  @>
+ : When [Cursed Experience]
+  @>Text: \xn[Merlin]\ptAnd that will be 30 FP, is that alright?
+  @>Show Choices: Yes, No
+  (When Cancel: Choice 2)
+  : When [Yes]
+   @>Comment: --- Cursed Experience ---
+   @>Conditional Branch: Script: $player.battle_points < 30
+    @>Text: \xn[Merlin]\ptOh no! You don't have enough Festival Points!
+    @>Text: \xn[Merlin]\ptYou can exchange for some beside me with Lunasa for money, and return
+     :    : when you have enough!
+    @>Exit Event Processing
+    @>
+   : Else
+    @>Script: $player.battle_points -= 30
+    @>Play SE: 'Mart buy item', 100, 100
+    @>Text: \xn[Merlin]\ptLooks like everything is in order! Good luck in there, \pn!
+    @>Text: \xn[Merlin]\ptDon't get too cursed~
+    @>Control Switches: [0132: RWM Challenge Mode] = ON
+    @>Control Variables: [0152..0155] = 0
+    @>Play SE: 'Door exit', 80, 100
+    @>Change Screen Color Tone: (-255,-255,-255,0), @6
+    @>Wait: 8 frame(s)
+    @>Set Move Route: Player
+     :              : $>Change Opacity: 255
+    @>Transfer Player:[050: Prismriver Manor (F1)], (024,037), No Fade
+    @>Change Screen Color Tone: (0,0,0,0), @6
+    @>Control Self Switch: B =ON
+    @>Exit Event Processing
+    @>
+   : Branch End
+   @>
+  : When [No]
+   @>Jump to Label: End
+   @>
+  : Branch End
+  @>
+ : When [Nevermind]
+  @>Jump to Label: End
+  @>
+ : Branch End
  @>
 : When [No]
+ @>Jump to Label: End
  @>
 : When [Explain more]
  @>Text: \xn[Merlin]\ptBefore exploring, you can between choose two different
@@ -42156,11 +42239,16 @@ List of Event Commands:
  @>Jump to Label: y/n/e
  @>
 : Branch End
+@>Label: End
+@>Text: \xn[Merlin]\ptFeel free to come back any time, we'll be here all festival
+ :    : long!
 @>
 
 Page #3
 Conditions
-None
+Self Switch B is ON
+
+Graphic: Person_Merlin
 
 Autonomous Movement
 Type: Fixed
@@ -42168,10 +42256,15 @@ Speed: 3: Slow
 Freq: 3: Low
 Options Enabled
 Move Animation
-Trigger: Action Button
+Trigger: Autorun
 
 List of Event Commands:
-@>Script: pbSafariState.pbStart(30)
+@>Text: \xn[Merlin]Did you have fun inside our home? Catch your fair share of Puppets?
+@>Text: \xn[Merlin]Feel free to come back any time, we'll be here all festival
+ :    : long!
+@>Script: pbSafariState.pbEnd
+@>Control Self Switch: B =OFF
+@>Control Switches: [0132: RWM Challenge Mode] = ON
 @>
 
 #------------------------------------------------------------------------------
@@ -43470,12 +43563,10 @@ List of Event Commands:
   @>Play SE: 'Door exit', 100, 100
   @>Change Screen Color Tone: (-255,-255,-255,0), @6
   @>Wait: 8 frame(s)
-  @>Transfer Player:[010: Misty Lake], (058,010), Down, No Fade
+  @>Transfer Player:[048: Misty Lake], (058,012), Up, No Fade
   @>Change Screen Color Tone: (0,0,0,0), @6
   @>
  : When [No]
-  @>Set Move Route: Player
-   :              : $>Move Up
   @>
  : Branch End
  @>
@@ -43578,27 +43669,6 @@ List of Event Commands:
 : When [No]
  @>
 : Branch End
-@>
-
-#------------------------------------------------------------------------------
-Event ID: 016
-Event Name: EV016
-(X,Y): (005,021)
-
-Page #1
-Conditions
-None
-
-Autonomous Movement
-Type: Fixed
-Speed: 3: Slow
-Freq: 3: Low
-Options Enabled
-Move Animation
-Trigger: Action Button
-
-List of Event Commands:
-@>Script: pbSet(152, rand(4))
 @>
 
 #------------------------------------------------------------------------------
