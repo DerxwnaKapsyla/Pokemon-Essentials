@@ -51,8 +51,7 @@
 # * Will "add" a second ability to one or both sides. (Might not be actual ability.)
 # * Spectral Abilities will be based off of existing abilities but renamed from vanilla counterparts.
 # * Abilitires that can be added: Spectre's Guard (Wonder Guard). Spectral Image (Sturdy). 
-#   Spectral Touch (Rough Skin). Spectre's Strike (Parental Bond). Trickster Specter (Contrary). 
-#   Spectre's Enchant (Cute Charm).
+#   Spectral Touch (Rough Skin). Spectre's Strike (Parental Bond). Spectre's Enchant (Cute Charm).
 #-------------------------------------------------------------------------------
 
 MidbattleHandlers.add(:midbattle_global, :battle_effects,
@@ -62,7 +61,7 @@ MidbattleHandlers.add(:midbattle_global, :battle_effects,
 	  player    = battle.battlers[0]
 	  foe       = battle.battlers[1]
 	  s_stats   = nil
-	  s_ability = [:SPECTRALGUARD, :SPECTRALTWIN, :SPECTRALTOUCH, :SPECTRALSTRIKE, :TRICKSTERSPECTER, :SPECTRALENCHANT]
+	  s_ability = [:SPECTRALGUARD, :SPECTRALTWIN, :SPECTRALTOUCH, :SPECTRALSTRIKE, :SPECTRALENCHANT]
       case trigger
 	  when "RoundStartCommand_1_foe"
 	  #-------------------------------------

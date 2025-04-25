@@ -31,6 +31,9 @@ class Battle::Move
         if target.hasActiveAbility?(:STURDY) && !@battle.moldBreaker
           target.damageState.sturdy = true
           damage -= 1
+        elsif target.hasActiveAbility?(:SPECTRALTWIN) && !@battle.moldBreaker
+          target.damageState.sturdy = true
+          damage -= 1
         elsif target.hasActiveItem?(:FOCUSSASH) && target.hp == target.totalhp
           target.damageState.focusSash = true
           damage -= 1

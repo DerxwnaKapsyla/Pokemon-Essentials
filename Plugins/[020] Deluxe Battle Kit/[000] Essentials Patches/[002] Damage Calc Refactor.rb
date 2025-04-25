@@ -817,6 +817,9 @@ class Battle::AI::AIMove
     if user.has_active_ability?(:PARENTALBOND)
       multipliers[:power_multiplier] *= (Settings::MECHANICS_GENERATION >= 7) ? 1.25 : 1.5
     end
+    if user.has_active_ability?(:SPECTRALSTRIKE)
+      multipliers[:power_multiplier] *= (Settings::MECHANICS_GENERATION >= 7) ? 1.25 : 1.5
+    end
     ##### Field effects, Terrain, Badge boosts and miscellaneous effects #####
     calc_other_mults(*args, multipliers)
     calc_field_mults(*args, multipliers)

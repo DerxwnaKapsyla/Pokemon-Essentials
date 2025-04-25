@@ -111,6 +111,7 @@ Battle::AbilityEffects::MoveImmunity.add(:WATERABSORB,
 )
 
 Battle::AbilityEffects::MoveImmunity.copy(:WONDERGUARD,:PLAYGHOST)
+Battle::AbilityEffects::MoveImmunity.copy(:WONDERGUARD,:SPECTRALGUARD)
 
 Battle::AbilityEffects::AccuracyCalcFromUser.copy(:COMPOUNDEYES,:FOCUS)
 
@@ -224,6 +225,8 @@ Battle::AbilityEffects::CriticalCalcFromTarget.copy(:BATTLEARMOR,:SHELLARMOR,:GU
 
 Battle::AbilityEffects::OnBeingHit.copy(:EFFECTSPORE,:INFECTIOUS)
 
+Battle::AbilityEffects::OnBeingHit.copy(:CUTECHARM, :SPECTRALENCHANT)
+
 Battle::AbilityEffects::OnBeingHit.add(:DOLLWALL,
   proc { |ability, user, target, move, battle|
     next if !move.pbContactMove?(user)
@@ -242,6 +245,8 @@ Battle::AbilityEffects::OnBeingHit.add(:DOLLWALL,
     battle.pbHideAbilitySplash(target)
   }
 )
+
+Battle::AbilityEffects::OnBeingHit.copy(:DOLLWALL, :SPECTRALTOUCH)
 
 Battle::AbilityEffects::OnBeingHit.add(:RETRIBUTION,
   proc { |ability, user, target, move, battle|
@@ -480,7 +485,7 @@ Battle::AbilityEffects::ChangeOnBattlerFainting.add(:POWEROFALCHEMY,
   proc { |ability, battler, fainted, battle|
     next if battler.opposes?(fainted)
     next if fainted.ungainableAbility? ||
-       [:POWEROFALCHEMY, :RECEIVER, :TRACE, :WONDERGUARD, :PLAYGHOST].include?(fainted.ability_id)
+       [:POWEROFALCHEMY, :RECEIVER, :TRACE, :WONDERGUARD, :PLAYGHOST, :SPECTRALGUARD].include?(fainted.ability_id)
     battle.pbShowAbilitySplash(battler, true)
     battler.ability = fainted.ability
     battle.pbReplaceAbilitySplash(battler)

@@ -260,6 +260,7 @@ Battle::AI::Handlers::MoveFailureAgainstTargetCheck.add("OHKO",
   proc { |move, user, target, ai, battle|
     next true if target.level > user.level
     next true if !battle.moldBreaker && target.has_active_ability?(:STURDY)
+    next true if !battle.moldBreaker && target.has_active_ability?(:SPECTRALTWIN)
     next true if target.battler.pokemon.immunities.include?(:OHKO)
     next true if target.battler.dynamax?
     next false

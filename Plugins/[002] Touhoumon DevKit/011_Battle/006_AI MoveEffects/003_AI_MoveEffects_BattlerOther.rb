@@ -275,6 +275,7 @@ Battle::AI::Handlers::MoveEffectAgainstTargetScore.add("AttractTarget",
                      user.battler.pbCanAttract?(target.battler, false)
       # Don't prefer if the user has another way to infatuate the target
       score -= 15 if move.statusMove? && user.has_active_ability?(:CUTECHARM)
+      score -= 15 if move.statusMove? && user.has_active_ability?(:SPECTRALENCHANT)
     end
     next score
   }
@@ -285,7 +286,8 @@ Battle::AI::Handlers::MoveFailureAgainstTargetCheck.add("UserTargetSwapAbilities
   proc { |move, user, target, ai, battle|
     next true if !user.ability || user.battler.unstoppableAbility? ||
                  user.battler.ungainableAbility? || (user.ability_id == :WONDERGUARD || 
-				                                     user.ability_id == :PLAYGHOST)
+                                                     user.ability_id == :PLAYGHOST ||
+                                                     user.ability_id == :SPECTRALGUARD ||)
     next move.move.pbFailsAgainstTarget?(user.battler, target.battler, false)
   }
 )

@@ -146,6 +146,10 @@ class Battle::AI::AITrainer
     if user.has_active_ability?(:PARENTALBOND)
       multipliers[:power_multiplier] *= (Settings::MECHANICS_GENERATION >= 7) ? 1.25 : 1.5
     end
+    # Spectral Strike
+    if user.has_active_ability?(:SPECTRALSTRIKE)
+      multipliers[:power_multiplier] *= (Settings::MECHANICS_GENERATION >= 7) ? 1.25 : 1.5
+    end
     # Me First - n/a because can't predict the move Me First will use
     # Helping Hand - n/a
     # Charge
