@@ -56,12 +56,15 @@
 
 MidbattleHandlers.add(:midbattle_global, :battle_effects,
   proc { |battle, idxBattler, idxTarget, trigger|
-    if GameData::MapMetadata.get($game_map.map_id)&.has_flag?("PrismriverManor") && $game_switches[132]
+    if GameData::MapMetadata.get($game_map.map_id)&.has_flag?("PrismriverManor") &&
+	   GameData::MapMetadata.get($game_map.map_id)&.has_flag?("TFoC") && $game_switches[132]
 	  scene     = battle.scene
 	  player    = battle.battlers[0]
 	  foe       = battle.battlers[1]
 	  s_stats   = nil
 	  s_ability = [:SPECTRALGUARD, :SPECTRALTWIN, :SPECTRALTOUCH, :SPECTRALSTRIKE, :SPECTRALENCHANT]
+	  side_rand = rand(3)
+	  $game_variables[5] = 0
       case trigger
 	  when "RoundStartCommand_1_foe"
 	  #-------------------------------------
@@ -74,23 +77,61 @@ MidbattleHandlers.add(:midbattle_global, :battle_effects,
 	    #-------------------------------------
 	    when 0
 	      # Determine status condition and side to affect here
-		  side_rand = rand(3)
 		  case rand(5)
-		  when 0 
-		    player.pbParalyze if player.pbCanInflictStatus?(:PARALYSIS, player, true) if side_rand == 0 || 2
-		    foe.pbParalyze if foe.pbCanInflictStatus?(:PARALYSIS, foe, true) if side_rand == 1 || 2
-		  when 1 
-  		    player.pbFreeze if player.pbCanInflictStatus?(:FREEZE, player, true) if side_rand == 0 || 2
-		    foe.pbFreeze if foe.pbCanInflictStatus?(:FREEZE, foe, true) if side_rand == 1 || 2
+		  when 0
+		    if side_rand == 0
+		      player.pbParalyze if player.pbCanInflictStatus?(:PARALYSIS, player, true)
+			  pbSet(5,1)
+			elsif side_rand == 1
+		      foe.pbParalyze if foe.pbCanInflictStatus?(:PARALYSIS, foe, true)
+			elsif side_rand == 2
+			  player.pbParalyze if player.pbCanInflictStatus?(:PARALYSIS, player, true)
+			  foe.pbParalyze if foe.pbCanInflictStatus?(:PARALYSIS, foe, true)
+			  pbSet(5,1)
+			end
+		  when 1
+  		    if side_rand == 0
+			  player.pbFreeze if player.pbCanInflictStatus?(:FREEZE, player, true)
+			  pbSet(5,2)
+			elsif side_rand == 1
+		      foe.pbFreeze if foe.pbCanInflictStatus?(:FREEZE, foe, true)
+			elsif side_rand == 2
+			  player.pbFreeze if player.pbCanInflictStatus?(:FREEZE, player, true)
+			  foe.pbFreeze if foe.pbCanInflictStatus?(:FREEZE, foe, true)
+			  pbSet(5,2)
+			end
 		  when 2
-		    player.pbBurn if player.pbCanInflictStatus?(:BURN, player, true) if side_rand == 0 || 2
-		    foe.pbBurn if foe.pbCanInflictStatus?(:BURN, foe, true) if side_rand == 1 || 2
+  		    if side_rand == 0
+			  player.pbBurn if player.pbCanInflictStatus?(:BURN, player, true)
+			  pbSet(5,3)
+			elsif side_rand == 1
+			  foe.pbBurn if foe.pbCanInflictStatus?(:BURN, foe, true)
+			elsif side_rand == 2
+			  player.pbBurn if player.pbCanInflictStatus?(:BURN, player, true)
+			  foe.pbBurn if foe.pbCanInflictStatus?(:BURN, foe, true)
+			  pbSet(5,3)
+			end
 		  when 3
-		    player.pbPoison if player.pbCanInflictStatus?(:POISON, player, true) if side_rand == 0 || 2
-		    foe.pbPoison if foe.pbCanInflictStatus?(:POISON, foe, true) if side_rand == 1 || 2
+		    if side_rand == 0
+			  player.pbPoison if player.pbCanInflictStatus?(:POISON, player, true)
+			  pbSet(5,4)
+			elsif side_rand == 1
+			  foe.pbPoison if foe.pbCanInflictStatus?(:POISON, foe, true)
+			elsif side_rand == 2
+			  player.pbPoison if player.pbCanInflictStatus?(:POISON, player, true)
+			  pbSet(5,4)
+			end
 		  when 4 
-		    player.pbSleep if player.pbCanInflictStatus?(:SLEEP, player, true) if side_rand == 0 || 2
-		    foe.pbSleep if foe.pbCanInflictStatus?(:SLEEP, foe, true) if side_rand == 1 || 2
+		    if side_rand == 0
+			  player.pbSleep if player.pbCanInflictStatus?(:SLEEP, player, true)
+			  pbSet(5,5)
+			elsif side_rand == 1
+			  foe.pbSleep if foe.pbCanInflictStatus?(:SLEEP, foe, true)
+			elsif side_rand == 2
+			  player.pbSleep if player.pbCanInflictStatus?(:SLEEP, player, true)
+			  foe.pbSleep if foe.pbCanInflictStatus?(:SLEEP, foe, true)
+			  pbSet(5,5)
+			end
 		  end
 	    #-------------------------------------
 	    # Battle Effect 2: Spectral Stats
@@ -110,11 +151,27 @@ MidbattleHandlers.add(:midbattle_global, :battle_effects,
 		  value_rand = rand(2)
 		  case rand(2)
 		  when 0 # Raise Stats
-		    player.pbRaiseStatStage(s_stats, value_rand + 1, player, showAnim) if side_rand == 0 || 2
-		    foe.pbRaiseStatStage(s_stats, value_rand + 1, foe, showAnim) if side_rand == 1 || 2
+		    if side_rand == 0
+			  player.pbRaiseStatStage(s_stats, value_rand + 1, player)
+			  pbSet(5,6)
+			elsif side_rand == 1
+			  foe.pbRaiseStatStage(s_stats, value_rand + 1, foe)
+			elsif side_rand == 2
+			  player.pbRaiseStatStage(s_stats, value_rand + 1, player)
+			  foe.pbRaiseStatStage(s_stats, value_rand + 1, foe)
+			  pbSet(5,6)
+			end
 		  when 1 # Lower Stats
-		    player.pbLowerStatStage(s_stats, value_rand + 1, player, showAnim) if side_rand == 0 || 2
-		    foe.pbLowerStatStage(s_stats, value_rand + 1, foe, showAnim) if side_rand == 1 || 2
+		    if side_rand == 0
+			  player.pbLowerStatStage(s_stats, value_rand + 1, player)
+			  pbSet(5,7)
+			elsif side_rand == 1
+			  foe.pbLowerStatStage(s_stats, value_rand + 1, foe)
+			elsif side_rand == 2
+			  player.pbLowerStatStage(s_stats, value_rand + 1, player)
+			  foe.pbLowerStatStage(s_stats, value_rand + 1, foe)
+			  pbSet(5,7)
+			end
 		  end
 	    #-------------------------------------
 	    # Battle Effect 3: Spectral Abilities
@@ -124,16 +181,39 @@ MidbattleHandlers.add(:midbattle_global, :battle_effects,
 		  set_ability = s_ability.sample
 		  # Execute the ability change to the relevant side
 		  side_rand  = rand(3)
-	      player.ability = set_ability if side_rand == 0 || 2
-		  foe.ability = set_ability if side_rand == 1 || 2
+		  pbSet(5,8)
 		  if side_rand == 0
+	        player.ability = set_ability
 		    battle.pbDisplay(_INTL("The spirits changed your active ability to {1}!", player.abilityName))
 		  elsif side_rand == 1
+		    foe.ability = set_ability
 		    battle.pbDisplay(_INTL("The spirits changed your foe's active ability to {1}!", foe.abilityName))
 		  else
+		    player.ability = set_ability
+			foe.ability = set_ability
 		    battle.pbDisplay(_INTL("The spirits changed both battler's active ability to {1}!", player.abilityName))
 		  end
 	    end
+	  when "AfterSendOut_player"
+	    battle.pbDisplayPaused(_INTL("The spirits continue to haunt the battlefield!")) if pbGet(5) != 0
+		case pbGet(5)
+		when 1
+		  player.pbParalyze if player.pbCanInflictStatus?(:PARALYSIS, player, true)
+		when 2
+		  player.pbFreeze if player.pbCanInflictStatus?(:FREEZE, player, true)
+		when 3
+		  player.pbBurn if player.pbCanInflictStatus?(:BURN, player, true)
+		when 4
+		  player.pbPoison if player.pbCanInflictStatus?(:POISON, player, true)
+		when 5
+		  player.pbSleep if player.pbCanInflictStatus?(:SLEEP, player, true)
+		when 6
+		  player.pbRaiseStatStage(s_stats, value_rand + 1, player)
+		when 7
+		  player.pbLowerStatStage(s_stats, value_rand + 1, player)
+		when 8
+		  battle.pbDisplay(_INTL("The spirits changed your active ability to {1}!", player.abilityName))
+		end
 	  end
 	end
   }
@@ -149,63 +229,120 @@ MidbattleHandlers.add(:midbattle_global, :floor_effects,
     floor_one   = GameData::MapMetadata.get($game_map.map_id)&.has_flag?("FloorOne")
     floor_two   = GameData::MapMetadata.get($game_map.map_id)&.has_flag?("FloorTwo")
     floor_three = GameData::MapMetadata.get($game_map.map_id)&.has_flag?("FloorThree")
-    basement    = GameData::MapMetadata.get($game_map.map_id)&.has_flag?("Basement")
+    basement    = GameData::MapMetadata.get($game_map.map_id)&.has_flag?("BasementFloor")
 	
-    if GameData::MapMetadata.get($game_map.map_id)&.has_flag?("PrismriverManor") && $game_switches[132]
+    if GameData::MapMetadata.get($game_map.map_id)&.has_flag?("PrismriverManor") && 
+	   GameData::MapMetadata.get($game_map.map_id)&.has_flag?("TFoC") && $game_switches[132] 
 	  case trigger
 	  when "RoundStartCommand_1_foe"
 	  #-------------------------------------
 	  # Initate floor check here
 	  #-------------------------------------
-        pbFloorCheck
+        floor = 152
+        if basement 
+          floor = 155
+        elsif floor_three 
+          floor = 154
+        elsif floor_two 
+          floor = 153
+        end
+  
+        case pbGet(floor)
+        when 0, 1, 2, 3
+          rand_weather = nil
+          case pbGet(floor)
+          when 0 then rand_weather = :Rain
+          when 1 then rand_weather = :Sun
+          when 2 then rand_weather = :Sandstorm
+          when 3 then rand_weather = :Hail
+          end
+          battle.defaultWeather = rand_weather
+		  battle.pbDisplay(_INTL("The spirits have influenced the weather within the mansion!"))
+        when 4, 5, 6, 7
+          rand_terrain = nil
+          case pbGet(floor)
+          when 4 then rand_terrain = :Electric
+          when 5 then rand_terrain = :Grassy
+          when 6 then rand_terrain = :Misty
+          when 7 then rand_terrain = :Psychic
+          end
+          battle.defaultTerrain = rand_terrain
+		  battle.pbDisplay(_INTL("The spirits have influenced the terrain within the mansion!"))
+        when 8
+          battle.field.effects[PBEffects::TrickRoom] = -1
+		  battle.pbDisplay(_INTL("The spirits have influenced the terrain within the mansion!"))
+		  battle.pbDisplay(_INTL("Slower battlers now move first."))
+        when 9
+          $game_temp.battle_inverse = true
+		  battle.pbDisplay(_INTL("The spirits have influenced the terrain within the mansion!"))
+		  battle.pbDisplay(_INTL("Type effectiveness was inverted."))
+        when 10
+	      battle.pbDisplay(_INTL("The spirits have influenced the brightness within the mansion!"))
+		  player.pbLowerStatStage(:ACCURACY, 1, player)
+	      foe.pbLowerStatStage(:ACCURACY, 1, foe)
+        when 11
+	      battle.pbDisplay(_INTL("The spirits have latched onto your Puppet and have prevented it from escaping!"))
+		  battle.canRun = false
+    	  battle.canSwitch = false
+        end
+      when "AfterSendOut_player"
+        floor = 152
+        if basement 
+          floor = 155
+        elsif floor_three 
+          floor = 154
+        elsif floor_two 
+          floor = 153
+        end
+		
+        case pbGet(floor)
+        when 10
+	      battle.pbDisplay(_INTL("{1}'s vision was impared thanks to the spirits anticts!", player.pbThis))
+		  player.pbLowerStatStage(:ACCURACY, 1, player)
+		end
 	  end	
     end
   }
 )
 
-def pbFloorCheck
-  floor = 152
-  if basement floor = 155
-  elsif floor_three floor = 154
-  elsif floor_two floor = 153
-  end
-  
-  case pbGet(floor)
-  when 0, 1, 2, 3
-	pbFloorWeather
-  when 4, 5, 6, 7
-	pbFloorTerrain
-  when 8
-    battle.field.effects[PBEffects::TrickRoom] = -1
-  when 9
-    $game_temp.battle_inverse = true
-  when 10
-	player.pbLowerStatStage(:ACCURACY, 1, player, showAnim)
-	foe.pbLowerStatStage(:ACCURACY, 1, foe, showAnim)
-  when 11
-	battle.canRun = false
-	battle.canSwitch = false
-  end
+def pbGetFloorEffectText(id)
+  # Attempt 1: Writing the text to an array, calling the array in the event
+  effect = ["Phantom Weather: Rain", "Phantom Weather: Sun", "Phantom Weather: Sand", "Phantom Weather: Hail", 
+            "Phantom Terrain: Grassy", "Phantom Terrain: Electric", "Phantom Terrain: Misty", "Phantom Terrain: Psychic",
+			"Phantom Terrain: Trick", "Phantom Terrain: Inverse", "Phantom Blindness: -1 Accuracy", "Phantom Lockdown: Cannot swap or flee"]
+  return effect[id]
 end
 
-def pbFloorWeather
-  rand_weather = nil
-  case pbGet(152)
-  when 0 then rand_weather = :Rain
-  when 1 then rand_weather = :Sun
-  when 2 then rand_weather = :Sandstorm
-  when 3 then rand_weather = :Hail
-  end
-  battle.pbStartWeather(battler, rand_weather, false)
-end
+EventHandlers.add(:on_player_step_taken_can_transfer, :safari_game_counter,
+  proc { |handled|
+    # handled is an array: [nil]. If [true], a transfer has happened because of
+    # this event, so don't do anything that might cause another one
+    next if handled[0]
+    next if Settings::SAFARI_STEPS == 0 || !pbInSafari? || pbSafariState.decision != 0
+    pbSafariState.steps -= 1
+    next if pbSafariState.steps > 0
+    pbMessage("\\se[Safari Zone end]" + _INTL("Attendant: Ding-dong!") + "\1")
+    pbMessage(_INTL("Attendant: Your catching game is over!"))
+    pbSafariState.decision = 1
+    pbSafariState.pbGoToStart
+    handled[0] = true
+  }
+)
 
-def pbFloorTerrain
-  rand_terrain = nil
-  case pbGet(152)
-  when 4 then rand_terrain = :Electric
-  when 5 then rand_terrain = :Grassy
-  when 6 then rand_terrain = :Misty
-  when 7 then rand_terrain = :Psychic
-  end
-  battle.pbStartTerrain(battler, rand_terrain, false)
-end
+MenuHandlers.add(:pause_menu, :quit_safari_game, {
+  "name"      => _INTL("Quit"),
+  "order"     => 60,
+  "condition" => proc { next pbInSafari? },
+  "effect"    => proc { |menu|
+    menu.pbHideMenu
+    if pbConfirmMessage(_INTL("Would you like to leave the catching game right now?"))
+      menu.pbEndScene
+      pbSafariState.decision = 1
+      pbSafariState.pbGoToStart
+      next true
+    end
+    menu.pbRefresh
+    menu.pbShowMenu
+    next false
+  }
+})

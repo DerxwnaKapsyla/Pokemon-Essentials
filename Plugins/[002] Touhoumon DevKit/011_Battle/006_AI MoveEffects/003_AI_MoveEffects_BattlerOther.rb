@@ -287,7 +287,7 @@ Battle::AI::Handlers::MoveFailureAgainstTargetCheck.add("UserTargetSwapAbilities
     next true if !user.ability || user.battler.unstoppableAbility? ||
                  user.battler.ungainableAbility? || (user.ability_id == :WONDERGUARD || 
                                                      user.ability_id == :PLAYGHOST ||
-                                                     user.ability_id == :SPECTRALGUARD ||)
+                                                     user.ability_id == :SPECTRALGUARD)
     next move.move.pbFailsAgainstTarget?(user.battler, target.battler, false)
   }
 )

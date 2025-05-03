@@ -32,7 +32,7 @@ class SafariState
         $game_temp.player_new_map_id    = @start[0]
         $game_temp.player_new_x         = @start[1]
         $game_temp.player_new_y         = @start[2]
-        $game_temp.player_new_direction = 2
+        $game_temp.player_new_direction = 0
         pbDismountBike
         $scene.transfer_player
       end

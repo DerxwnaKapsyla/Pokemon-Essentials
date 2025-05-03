@@ -42151,20 +42151,21 @@ List of Event Commands:
     @>Comment: --- Subtract 30 FP here
     @>Script: $player.battle_points -= 30
     @>Play SE: 'Mart buy item', 100, 100
-    @>Text: \xn[Merlin]\ptHere you go, \pn! 60 custom made Prismriver Orbs for use within the Manor!
+    @>Text: \xn[Merlin]\ptHere you go, \pn! 40 custom made 
+     :    : Prismriver Orbs for use within the Manor!
     @>Text: \pt\PN received 60 Prismriver Orbs from Merlin.
      :    : \me[Item get]\wtnp[40]
     @>Text: \xn[Merlin]\ptOne of the ghostly attendants will notify you when you're out of steps or orbs to return here.
     @>Text: \xn[Merlin]\ptGood luck~ Don't get too scared!
-    @>Script: pbSafariState.pbStart(60)
+    @>Script: pbSafariState.pbStart(30)
     @>Play SE: 'Door exit', 80, 100
     @>Change Screen Color Tone: (-255,-255,-255,0), @6
     @>Wait: 8 frame(s)
+    @>Control Self Switch: B =ON
     @>Set Move Route: Player
      :              : $>Change Opacity: 255
     @>Transfer Player:[050: Prismriver Manor (F1)], (024,037), No Fade
-    @>Change Screen Color Tone: (0,0,0,0), @6
-    @>Control Self Switch: B =ON
+    @>Change Screen Color Tone: (-50,-50,-50,0), @6
     @>Exit Event Processing
     @>
    : Branch End
@@ -42196,11 +42197,12 @@ List of Event Commands:
     @>Play SE: 'Door exit', 80, 100
     @>Change Screen Color Tone: (-255,-255,-255,0), @6
     @>Wait: 8 frame(s)
+    @>Control Self Switch: B =ON
     @>Set Move Route: Player
      :              : $>Change Opacity: 255
     @>Transfer Player:[050: Prismriver Manor (F1)], (024,037), No Fade
-    @>Change Screen Color Tone: (0,0,0,0), @6
-    @>Control Self Switch: B =ON
+    @>Change Screen Color Tone: (-50,-50,-50,0), @6
+    @>Change Save Access: Disable
     @>Exit Event Processing
     @>
    : Branch End
@@ -42263,6 +42265,7 @@ List of Event Commands:
 @>Text: \xn[Merlin]Feel free to come back any time, we'll be here all festival
  :    : long!
 @>Script: pbSafariState.pbEnd
+@>Change Save Access: Enable
 @>Control Self Switch: B =OFF
 @>Control Switches: [0132: RWM Challenge Mode] = ON
 @>
@@ -42415,6 +42418,26 @@ List of Event Commands:
  @>Exit Event Processing
  @>
 : Branch End
+@>
+
+#------------------------------------------------------------------------------
+Event ID: 039
+Event Name: Impassable size(3,1)
+(X,Y): (057,015)
+
+Page #1
+Conditions
+None
+
+Autonomous Movement
+Type: Fixed
+Speed: 3: Slow
+Freq: 3: Low
+Options Enabled
+Move Animation
+Trigger: Action Button
+
+List of Event Commands:
 @>
 
 #------------------------------------------------------------------------------
@@ -42765,6 +42788,7 @@ Map ID: 050
 Map Name: Prismriver Manor (F1)
 Tileset: 037: Ruined Western Mansion
 Width: 51, Height: 40
+Auto-Change BGM: W-027. Alice Maestra
 
 #------------------------------------------------------------------------------
 Event ID: 001
@@ -42819,7 +42843,7 @@ List of Event Commands:
 @>Wait: 8 frame(s)
 @>Change Transparent Flag: Normal
 @>Transfer Player:[051: Prismriver Manor (F1 - Rooms)], (022,010), Up, No Fade
-@>Change Screen Color Tone: (0,0,0,0), @6
+@>Change Screen Color Tone: (-50,-50,-50,0), @6
 @>
 
 Page #2
@@ -42922,7 +42946,7 @@ List of Event Commands:
 @>Wait: 8 frame(s)
 @>Change Transparent Flag: Normal
 @>Transfer Player:[051: Prismriver Manor (F1 - Rooms)], (007,020), Up, No Fade
-@>Change Screen Color Tone: (0,0,0,0), @6
+@>Change Screen Color Tone: (-50,-50,-50,0), @6
 @>
 
 Page #2
@@ -43025,7 +43049,7 @@ List of Event Commands:
 @>Wait: 8 frame(s)
 @>Change Transparent Flag: Normal
 @>Transfer Player:[051: Prismriver Manor (F1 - Rooms)], (052,026), Up, No Fade
-@>Change Screen Color Tone: (0,0,0,0), @6
+@>Change Screen Color Tone: (-50,-50,-50,0), @6
 @>
 
 Page #2
@@ -43128,7 +43152,7 @@ List of Event Commands:
 @>Wait: 8 frame(s)
 @>Change Transparent Flag: Normal
 @>Transfer Player:[051: Prismriver Manor (F1 - Rooms)], (071,026), Up, No Fade
-@>Change Screen Color Tone: (0,0,0,0), @6
+@>Change Screen Color Tone: (-50,-50,-50,0), @6
 @>
 
 Page #2
@@ -43231,7 +43255,7 @@ List of Event Commands:
 @>Wait: 8 frame(s)
 @>Change Transparent Flag: Normal
 @>Transfer Player:[051: Prismriver Manor (F1 - Rooms)], (005,070), Up, No Fade
-@>Change Screen Color Tone: (0,0,0,0), @6
+@>Change Screen Color Tone: (-50,-50,-50,0), @6
 @>
 
 Page #2
@@ -43334,7 +43358,7 @@ List of Event Commands:
 @>Wait: 8 frame(s)
 @>Change Transparent Flag: Normal
 @>Transfer Player:[051: Prismriver Manor (F1 - Rooms)], (045,053), Up, No Fade
-@>Change Screen Color Tone: (0,0,0,0), @6
+@>Change Screen Color Tone: (-50,-50,-50,0), @6
 @>
 
 Page #2
@@ -43438,7 +43462,7 @@ List of Event Commands:
  @>Change Screen Color Tone: (-255,-255,-255,0), @6
  @>Wait: 8 frame(s)
  @>Transfer Player:[051: Prismriver Manor (F1 - Rooms)], (052,004), Down, No Fade
- @>Change Screen Color Tone: (0,0,0,0), @6
+ @>Change Screen Color Tone: (-50,-50,-50,0), @6
  @>
 : Branch End
 @>
@@ -43469,7 +43493,7 @@ List of Event Commands:
  @>Change Screen Color Tone: (-255,-255,-255,0), @6
  @>Wait: 8 frame(s)
  @>Transfer Player:[051: Prismriver Manor (F1 - Rooms)], (071,004), Down, No Fade
- @>Change Screen Color Tone: (0,0,0,0), @6
+ @>Change Screen Color Tone: (-50,-50,-50,0), @6
  @>
 : Branch End
 @>
@@ -43500,7 +43524,7 @@ List of Event Commands:
  @>Change Screen Color Tone: (-255,-255,-255,0), @6
  @>Wait: 8 frame(s)
  @>Transfer Player:[051: Prismriver Manor (F1 - Rooms)], (004,035), Down, No Fade
- @>Change Screen Color Tone: (0,0,0,0), @6
+ @>Change Screen Color Tone: (-50,-50,-50,0), @6
  @>
 : Branch End
 @>
@@ -43525,11 +43549,11 @@ Move Animation
 Trigger: Event Touch
 
 List of Event Commands:
-@>Play SE: 'Exit Door', 80, 100
+@>Play SE: 'Door exit', 80, 100
 @>Change Screen Color Tone: (-255,-255,-255,0), @6
 @>Wait: 8 frame(s)
 @>Transfer Player:[052: Prismriver Manor (F2)], (007,015), No Fade
-@>Change Screen Color Tone: (0,0,0,0), @6
+@>Change Screen Color Tone: (-50,-50,-50,0), @6
 @>Set Move Route: Player
  :              : $>Move Up
 @>
@@ -43575,12 +43599,14 @@ List of Event Commands:
 
 #------------------------------------------------------------------------------
 Event ID: 013
-Event Name: F1 Battle Effect
-(X,Y): (025,029)
+Event Name: Ghost Assistant (Auto)
+(X,Y): (050,039)
 
 Page #1
 Conditions
 Switch 0132: RWM Challenge Mode is ON
+
+Graphic: TPDP_NPC 26
 
 Autonomous Movement
 Type: Fixed
@@ -43591,13 +43617,101 @@ Move Animation
 Trigger: Autorun
 
 List of Event Commands:
+@>Script: $game_variables[152], $game_variables[153], $game_variables[154], $game_variables[155] = (0...12).to_a.sample(4)
+@>Wait: 10 frame(s)
 @>Screen Flash: (255,255,255,255), @2
-@>Play SE: 'gust', 80, 100
+@>Play SE: 'PRSFX- Teleport', 80, 75
+@>Set Event Location: This event,(024,035), Down
+@>Text: Welcome to the Prismriver Manor Cursed Experience!
+@>Text: Are you ready for a ghoulish time?
+@>Text: My friends and I will be laying curses on you through your time here... Do
+ :    : you have the guts to deal with our trials?
+@>Text: It's never too late to turn back! But before that-
+@>Script: pbSEPlay("Anim/PRSFX- Grudge")
+@>Show Animation: Player, [Exclaim bubble]
+@>Set Move Route: Player
+ :              : $>Graphic: "Ayaka_Walk', 10, 8, 0
+ :              : $>Wait: 1 frame(s)
+ :              : $>Graphic: "Ayaka_Walk', 20, 8, 0
+ :              : $>Wait: 1 frame(s)
+ :              : $>Graphic: "Ayaka_Walk', 30, 8, 0
+ :              : $>Wait: 1 frame(s)
+ :              : $>Graphic: "Ayaka_Walk', 40, 8, 0
+ :              : $>Wait: 1 frame(s)
+ :              : $>Graphic: "Ayaka_Walk', 50, 8, 0
+ :              : $>Wait: 1 frame(s)
+ :              : $>Graphic: "Ayaka_Walk', 60, 8, 0
+ :              : $>Wait: 1 frame(s)
+ :              : $>Graphic: "Ayaka_Walk', 70, 8, 0
+ :              : $>Wait: 1 frame(s)
+ :              : $>Graphic: "Ayaka_Walk', 80, 8, 0
+ :              : $>Wait: 1 frame(s)
+ :              : $>Graphic: "Ayaka_Walk', 90, 8, 0
+ :              : $>Wait: 1 frame(s)
+ :              : $>Graphic: "Ayaka_Walk', 100, 8, 0
+ :              : $>Wait: 1 frame(s)
+ :              : $>Graphic: "Ayaka_Walk', 110, 8, 0
+ :              : $>Wait: 1 frame(s)
+ :              : $>Graphic: "Ayaka_Walk', 120, 8, 0
+ :              : $>Wait: 1 frame(s)
+ :              : $>Graphic: "Ayaka_Walk', 130, 8, 0
+ :              : $>Wait: 1 frame(s)
+ :              : $>Graphic: "Ayaka_Walk', 140, 8, 0
+ :              : $>Wait: 1 frame(s)
+ :              : $>Graphic: "Ayaka_Walk', 150, 8, 0
+ :              : $>Wait: 1 frame(s)
+ :              : $>Graphic: "Ayaka_Walk', 160, 8, 0
+ :              : $>Wait: 1 frame(s)
+ :              : $>Graphic: "Ayaka_Walk', 170, 8, 0
+ :              : $>Wait: 1 frame(s)
+ :              : $>Graphic: "Ayaka_Walk', 180, 8, 0
+ :              : $>Wait: 1 frame(s)
+ :              : $>Graphic: "Ayaka_Walk', 190, 8, 0
+ :              : $>Wait: 1 frame(s)
+ :              : $>Graphic: "Ayaka_Walk', 200, 8, 0
+ :              : $>Wait: 1 frame(s)
+ :              : $>Graphic: "Ayaka_Walk', 210, 8, 0
+ :              : $>Wait: 1 frame(s)
+ :              : $>Graphic: "Ayaka_Walk', 220, 8, 0
+ :              : $>Wait: 1 frame(s)
+ :              : $>Graphic: "Ayaka_Walk', 230, 8, 0
+ :              : $>Wait: 1 frame(s)
+ :              : $>Graphic: "Ayaka_Walk', 240, 8, 0
+ :              : $>Wait: 1 frame(s)
+ :              : $>Graphic: "Ayaka_Walk', 250, 8, 0
+ :              : $>Wait: 1 frame(s)
+ :              : $>Graphic: "Ayaka_Walk', 260, 8, 0
+ :              : $>Wait: 1 frame(s)
+ :              : $>Graphic: "Ayaka_Walk', 270, 8, 0
+ :              : $>Wait: 1 frame(s)
+ :              : $>Graphic: "Ayaka_Walk', 280, 8, 0
+ :              : $>Wait: 1 frame(s)
+ :              : $>Graphic: "Ayaka_Walk', 290, 8, 0
+ :              : $>Wait: 1 frame(s)
+ :              : $>Graphic: "Ayaka_Walk', 300, 8, 0
+ :              : $>Wait: 1 frame(s)
+ :              : $>Graphic: "Ayaka_Walk', 310, 8, 0
+ :              : $>Wait: 1 frame(s)
+ :              : $>Graphic: "Ayaka_Walk', 320, 8, 0
+ :              : $>Wait: 1 frame(s)
+ :              : $>Graphic: "Ayaka_Walk', 330, 8, 0
+ :              : $>Wait: 1 frame(s)
+ :              : $>Graphic: "Ayaka_Walk', 340, 8, 0
+ :              : $>Wait: 1 frame(s)
+ :              : $>Graphic: "Ayaka_Walk', 350, 8, 0
+ :              : $>Wait: 1 frame(s)
+ :              : $>Graphic: "Ayaka_Walk', 360, 8, 0
+@>Wait for Move's Completion
+@>Text: -your curse has now been laid upon you... Take caution...
+@>Text: Mwahahaha...~
+@>Screen Flash: (255,255,255,255), @2
+@>Play SE: 'PRSFX- Teleport', 80, 75
+@>Control Self Switch: A =ON
 @>
 
 Page #2
 Conditions
-None
+Self Switch A is ON
 
 Autonomous Movement
 Type: Fixed
@@ -43613,11 +43727,11 @@ List of Event Commands:
 #------------------------------------------------------------------------------
 Event ID: 014
 Event Name: Ghost Assistant
-(X,Y): (050,039)
+(X,Y): (010,012)
 
 Page #1
 Conditions
-None
+Switch 0132: RWM Challenge Mode is ON
 
 Graphic: TPDP_NPC 26
 
@@ -43630,6 +43744,25 @@ Move Animation
 Trigger: Action Button
 
 List of Event Commands:
+@>Script: pbSet(1, pbGetFloorEffectText(pbGet(152)))
+:       : pbSet(2, pbGetFloorEffectText(pbGet(153)))
+:       : pbSet(3, pbGetFloorEffectText(pbGet(154)))
+:       : pbSet(4, pbGetFloorEffectText(pbGet(155)))
+@>Text: Would you like to be reminded of what your curses for each floor are?
+@>Show Choices: Yes, No
+(When Cancel: Choice 2)
+: When [Yes]
+ @>Text: Let me commune with my kin across the nethersphere...
+ @>Wait: 10 frame(s)
+ @>Text: ...Right, so your challenges for this run were...
+ @>Text: \sign[signskin]\l[4]1F: \v[1]
+  :    : \n2F: \v[2]
+  :    : \n3F: \v[3]
+  :    : \nB1F: \v[4]
+ @>
+: When [No]
+ @>
+: Branch End
 @>
 
 #------------------------------------------------------------------------------
@@ -43652,23 +43785,354 @@ Move Animation
 Trigger: Action Button
 
 List of Event Commands:
-@>Text: Would you like a reminder of what your curse for this floor is?
+@>Script: pbSet(1, pbGetFloorEffectText(pbGet(152)))
+:       : pbSet(2, pbGetFloorEffectText(pbGet(153)))
+:       : pbSet(3, pbGetFloorEffectText(pbGet(154)))
+:       : pbSet(4, pbGetFloorEffectText(pbGet(155)))
+@>Text: Would you like to be reminded of what your curses for each floor are?
 @>Show Choices: Yes, No
 (When Cancel: Choice 2)
 : When [Yes]
- @>Text: Let me commune with my kin...
+ @>Text: Let me commune with my kin across the nethersphere...
  @>Wait: 10 frame(s)
- @>Text: ...Right, so your challenge for this floor was...
- @>Script: pbSet(1) = pbGet(152)
- @>Conditional Branch: Variable [0001: Temp Pokemon Choice] == 0
-  @>
- : Else
-  @>
- : Branch End
+ @>Text: ...Right, so your challenges for this run were...
+ @>Text: \sign[signskin]\l[4]1F: \v[1]
+  :    : \n2F: \v[2]
+  :    : \n3F: \v[3]
+  :    : \nB1F: \v[4]
  @>
 : When [No]
  @>
 : Branch End
+@>
+
+#------------------------------------------------------------------------------
+Event ID: 016
+Event Name: EV016
+(X,Y): (016,036)
+
+Page #1
+Conditions
+None
+
+Autonomous Movement
+Type: Fixed
+Speed: 3: Slow
+Freq: 3: Low
+Options Enabled
+Move Animation
+Trigger: Action Button
+
+List of Event Commands:
+@>Script: pbSet(1, pbGetFloorEffectText(152))
+:       : pbSet(2, pbGetFloorEffectText(153))
+:       : pbSet(3, pbGetFloorEffectText(154))
+:       : pbSet(4, pbGetFloorEffectText(155))
+@>Text: \sign[signskin]\l[4]Floor One: \v[1]
+ :    : \nFloor Two: \v[2]
+ :    : \nFloor Three: \v[3]
+ :    : \nBasement Floor: \v[4]
+@>
+
+#------------------------------------------------------------------------------
+Event ID: 017
+Event Name: EV017
+(X,Y): (050,038)
+
+Page #1
+Conditions
+None
+
+Graphic: Object ball
+
+Autonomous Movement
+Type: Fixed
+Speed: 3: Slow
+Freq: 3: Low
+Options Enabled
+Move Animation
+Trigger: Action Button
+
+List of Event Commands:
+@>Script: pbSet(1, pbGetFloorEffectText(pbGet(152)))
+:       : pbSet(2, pbGetFloorEffectText(pbGet(153)))
+:       : pbSet(3, pbGetFloorEffectText(pbGet(154)))
+:       : pbSet(4, pbGetFloorEffectText(pbGet(155)))
+@>Text: \sign[signskin]\l[4]1F: \v[1]
+ :    : \n2F: \v[2]
+ :    : \n3F: \v[3]
+ :    : \nB1F: \v[4]
+@>
+
+#------------------------------------------------------------------------------
+Event ID: 018
+Event Name: EV018
+(X,Y): (027,012)
+
+Page #1
+Conditions
+None
+
+Autonomous Movement
+Type: Fixed
+Speed: 3: Slow
+Freq: 3: Low
+Options Enabled
+Move Animation
+Trigger: Action Button
+
+List of Event Commands:
+@>Call Common Event: Akyuu Shrines
+@>
+
+Page #2
+Conditions
+Switch 0001: Starting over is ON
+
+Autonomous Movement
+Type: Fixed
+Speed: 3: Slow
+Freq: 3: Low
+Options Enabled
+Move Animation
+Trigger: Autorun
+
+List of Event Commands:
+@>Control Switches: [0001: Starting over] = OFF
+@>
+
+#------------------------------------------------------------------------------
+Event ID: 019
+Event Name: EV019
+(X,Y): (024,032)
+
+Page #1
+Conditions
+None
+
+Autonomous Movement
+Type: Fixed
+Speed: 3: Slow
+Freq: 3: Low
+Options Enabled
+Move Animation
+Trigger: Action Button
+
+List of Event Commands:
+@>Call Common Event: Akyuu Shrines
+@>
+
+Page #2
+Conditions
+Switch 0001: Starting over is ON
+
+Autonomous Movement
+Type: Fixed
+Speed: 3: Slow
+Freq: 3: Low
+Options Enabled
+Move Animation
+Trigger: Autorun
+
+List of Event Commands:
+@>Control Switches: [0001: Starting over] = OFF
+@>
+
+#------------------------------------------------------------------------------
+Event ID: 020
+Event Name: Item
+(X,Y): (012,030)
+
+Page #1
+Conditions
+None
+
+Graphic: Object ball
+
+Autonomous Movement
+Type: Fixed
+Speed: 3: Slow
+Freq: 3: Low
+Options Enabled
+Move Animation
+Trigger: Action Button
+
+List of Event Commands:
+@>Conditional Branch: Script: pbItemBall(:SUPERPOTION)
+ @>Control Self Switch: A =ON
+ @>
+: Else
+ @>
+: Branch End
+@>
+
+Page #2
+Conditions
+Self Switch A is ON
+
+Autonomous Movement
+Type: Fixed
+Speed: 3: Slow
+Freq: 3: Low
+Options Enabled
+Move Animation
+Trigger: Action Button
+
+List of Event Commands:
+@>
+
+#------------------------------------------------------------------------------
+Event ID: 021
+Event Name: HiddenItem
+(X,Y): (022,021)
+
+Page #1
+Conditions
+None
+
+Autonomous Movement
+Type: Fixed
+Speed: 3: Slow
+Freq: 3: Low
+Options Enabled
+Move Animation
+Trigger: Action Button
+
+List of Event Commands:
+@>Conditional Branch: Script: pbItemBall(:RARECANDY)
+ @>Control Self Switch: A =ON
+ @>
+: Else
+ @>
+: Branch End
+@>
+
+Page #2
+Conditions
+Self Switch A is ON
+
+Autonomous Movement
+Type: Fixed
+Speed: 3: Slow
+Freq: 3: Low
+Options Enabled
+Move Animation
+Trigger: Action Button
+
+List of Event Commands:
+@>
+
+#------------------------------------------------------------------------------
+Event ID: 022
+Event Name: Item
+(X,Y): (023,018)
+
+Page #1
+Conditions
+None
+
+Graphic: Object ball
+
+Autonomous Movement
+Type: Fixed
+Speed: 3: Slow
+Freq: 3: Low
+Options Enabled
+Move Animation
+Trigger: Action Button
+
+List of Event Commands:
+@>Conditional Branch: Script: pbItemBall(:XSPEED)
+ @>Control Self Switch: A =ON
+ @>
+: Else
+ @>
+: Branch End
+@>
+
+Page #2
+Conditions
+Self Switch A is ON
+
+Autonomous Movement
+Type: Fixed
+Speed: 3: Slow
+Freq: 3: Low
+Options Enabled
+Move Animation
+Trigger: Action Button
+
+List of Event Commands:
+@>
+
+#------------------------------------------------------------------------------
+Event ID: 023
+Event Name: Item
+(X,Y): (023,008)
+
+Page #1
+Conditions
+None
+
+Graphic: Object ball
+
+Autonomous Movement
+Type: Fixed
+Speed: 3: Slow
+Freq: 3: Low
+Options Enabled
+Move Animation
+Trigger: Action Button
+
+List of Event Commands:
+@>Conditional Branch: Script: pbItemBall(:SC46)
+ @>Control Self Switch: A =ON
+ @>
+: Else
+ @>
+: Branch End
+@>
+
+Page #2
+Conditions
+Self Switch A is ON
+
+Autonomous Movement
+Type: Fixed
+Speed: 3: Slow
+Freq: 3: Low
+Options Enabled
+Move Animation
+Trigger: Action Button
+
+List of Event Commands:
+@>
+
+#------------------------------------------------------------------------------
+Event ID: 024
+Event Name: EV024
+(X,Y): (015,026)
+
+Page #1
+Conditions
+None
+
+Graphic: TPDP_NPC 01
+
+Autonomous Movement
+Type: Custom
+Custom Move Route:
+(Repeat Action)
+$>Turn at Random
+
+Speed: 3: Slow
+Freq: 4: High
+Options Enabled
+Move Animation
+Trigger: Action Button
+
+List of Event Commands:
+@>Text: This mansion isn't that spooky, I'm not sure what all the hype about it is...
 @>
 
 #------------------------------------------------------------------------------
@@ -43678,6 +44142,7 @@ Map ID: 051
 Map Name: Prismriver Manor (F1 - Rooms)
 Tileset: 037: Ruined Western Mansion
 Width: 82, Height: 75
+Auto-Change BGM: W-027. Alice Maestra
 
 #------------------------------------------------------------------------------
 Event ID: 001
@@ -43732,7 +44197,7 @@ List of Event Commands:
 @>Wait: 8 frame(s)
 @>Change Transparent Flag: Normal
 @>Transfer Player:[050: Prismriver Manor (F1)], (038,027), Up, No Fade
-@>Change Screen Color Tone: (0,0,0,0), @6
+@>Change Screen Color Tone: (-50,-50,-50,0), @6
 @>
 
 Page #2
@@ -43835,7 +44300,7 @@ List of Event Commands:
 @>Wait: 8 frame(s)
 @>Change Transparent Flag: Normal
 @>Transfer Player:[050: Prismriver Manor (F1)], (027,015), Up, No Fade
-@>Change Screen Color Tone: (0,0,0,0), @6
+@>Change Screen Color Tone: (-50,-50,-50,0), @6
 @>
 
 Page #2
@@ -43938,7 +44403,7 @@ List of Event Commands:
 @>Wait: 8 frame(s)
 @>Change Transparent Flag: Normal
 @>Transfer Player:[050: Prismriver Manor (F1)], (035,015), Up, No Fade
-@>Change Screen Color Tone: (0,0,0,0), @6
+@>Change Screen Color Tone: (-50,-50,-50,0), @6
 @>
 
 Page #2
@@ -44014,7 +44479,7 @@ List of Event Commands:
  @>Change Screen Color Tone: (-255,-255,-255,0), @6
  @>Wait: 8 frame(s)
  @>Transfer Player:[050: Prismriver Manor (F1)], (007,029), Down, No Fade
- @>Change Screen Color Tone: (0,0,0,0), @6
+ @>Change Screen Color Tone: (-50,-50,-50,0), @6
  @>
 : Branch End
 @>
@@ -44045,7 +44510,7 @@ List of Event Commands:
  @>Change Screen Color Tone: (-255,-255,-255,0), @6
  @>Wait: 8 frame(s)
  @>Transfer Player:[050: Prismriver Manor (F1)], (027,024), Down, No Fade
- @>Change Screen Color Tone: (0,0,0,0), @6
+ @>Change Screen Color Tone: (-50,-50,-50,0), @6
  @>
 : Branch End
 @>
@@ -44076,7 +44541,7 @@ List of Event Commands:
  @>Change Screen Color Tone: (-255,-255,-255,0), @6
  @>Wait: 8 frame(s)
  @>Transfer Player:[050: Prismriver Manor (F1)], (035,024), Down, No Fade
- @>Change Screen Color Tone: (0,0,0,0), @6
+ @>Change Screen Color Tone: (-50,-50,-50,0), @6
  @>
 : Branch End
 @>
@@ -44107,7 +44572,7 @@ List of Event Commands:
  @>Change Screen Color Tone: (-255,-255,-255,0), @6
  @>Wait: 8 frame(s)
  @>Transfer Player:[050: Prismriver Manor (F1)], (017,024), Down, No Fade
- @>Change Screen Color Tone: (0,0,0,0), @6
+ @>Change Screen Color Tone: (-50,-50,-50,0), @6
  @>
 : Branch End
 @>
@@ -44138,7 +44603,7 @@ List of Event Commands:
  @>Change Screen Color Tone: (-255,-255,-255,0), @6
  @>Wait: 8 frame(s)
  @>Transfer Player:[050: Prismriver Manor (F1)], (031,012), Down, No Fade
- @>Change Screen Color Tone: (0,0,0,0), @6
+ @>Change Screen Color Tone: (-50,-50,-50,0), @6
  @>
 : Branch End
 @>
@@ -44169,7 +44634,7 @@ List of Event Commands:
  @>Change Screen Color Tone: (-255,-255,-255,0), @6
  @>Wait: 8 frame(s)
  @>Transfer Player:[050: Prismriver Manor (F1)], (008,011), Down, No Fade
- @>Change Screen Color Tone: (0,0,0,0), @6
+ @>Change Screen Color Tone: (-50,-50,-50,0), @6
  @>
 : Branch End
 @>
@@ -44194,7 +44659,7 @@ Move Animation
 Trigger: Event Touch
 
 List of Event Commands:
-@>Play SE: 'Exit Door', 80, 100
+@>Play SE: 'Door exit', 80, 100
 @>Change Screen Color Tone: (-255,-255,-255,0), @6
 @>Wait: 8 frame(s)
 @>Transfer Player:[056: Prismriver Manor (B1F)], (013,061), No Fade
@@ -44204,12 +44669,463 @@ List of Event Commands:
 @>
 
 #------------------------------------------------------------------------------
+Event ID: 011
+Event Name: Item
+(X,Y): (011,037)
+
+Page #1
+Conditions
+None
+
+Graphic: Object ball
+
+Autonomous Movement
+Type: Fixed
+Speed: 3: Slow
+Freq: 3: Low
+Options Enabled
+Move Animation
+Trigger: Action Button
+
+List of Event Commands:
+@>Conditional Branch: Script: pbItemBall(:ETHER)
+ @>Control Self Switch: A =ON
+ @>
+: Else
+ @>
+: Branch End
+@>
+
+Page #2
+Conditions
+Self Switch A is ON
+
+Autonomous Movement
+Type: Fixed
+Speed: 3: Slow
+Freq: 3: Low
+Options Enabled
+Move Animation
+Trigger: Action Button
+
+List of Event Commands:
+@>
+
+#------------------------------------------------------------------------------
+Event ID: 012
+Event Name: Item
+(X,Y): (016,042)
+
+Page #1
+Conditions
+None
+
+Graphic: Object ball
+
+Autonomous Movement
+Type: Fixed
+Speed: 3: Slow
+Freq: 3: Low
+Options Enabled
+Move Animation
+Trigger: Action Button
+
+List of Event Commands:
+@>Conditional Branch: Script: pbItemBall(:ANTINETHER)
+ @>Control Self Switch: A =ON
+ @>
+: Else
+ @>
+: Branch End
+@>
+
+Page #2
+Conditions
+Self Switch A is ON
+
+Autonomous Movement
+Type: Fixed
+Speed: 3: Slow
+Freq: 3: Low
+Options Enabled
+Move Animation
+Trigger: Action Button
+
+List of Event Commands:
+@>
+
+#------------------------------------------------------------------------------
+Event ID: 013
+Event Name: Item
+(X,Y): (017,060)
+
+Page #1
+Conditions
+None
+
+Graphic: Object ball
+
+Autonomous Movement
+Type: Fixed
+Speed: 3: Slow
+Freq: 3: Low
+Options Enabled
+Move Animation
+Trigger: Action Button
+
+List of Event Commands:
+@>Conditional Branch: Script: pbItemBall(:METRONOME)
+ @>Control Self Switch: A =ON
+ @>
+: Else
+ @>
+: Branch End
+@>
+
+Page #2
+Conditions
+Self Switch A is ON
+
+Autonomous Movement
+Type: Fixed
+Speed: 3: Slow
+Freq: 3: Low
+Options Enabled
+Move Animation
+Trigger: Action Button
+
+List of Event Commands:
+@>
+
+#------------------------------------------------------------------------------
+Event ID: 014
+Event Name: HiddenItem
+(X,Y): (058,017)
+
+Page #1
+Conditions
+None
+
+Autonomous Movement
+Type: Fixed
+Speed: 3: Slow
+Freq: 3: Low
+Options Enabled
+Move Animation
+Trigger: Action Button
+
+List of Event Commands:
+@>Conditional Branch: Script: pbItemBall(:CURSEDRIBBON)
+ @>Control Self Switch: A =ON
+ @>
+: Else
+ @>
+: Branch End
+@>
+
+Page #2
+Conditions
+Self Switch A is ON
+
+Autonomous Movement
+Type: Fixed
+Speed: 3: Slow
+Freq: 3: Low
+Options Enabled
+Move Animation
+Trigger: Action Button
+
+List of Event Commands:
+@>
+
+#------------------------------------------------------------------------------
+Event ID: 015
+Event Name: Item
+(X,Y): (073,020)
+
+Page #1
+Conditions
+None
+
+Graphic: Object ball
+
+Autonomous Movement
+Type: Fixed
+Speed: 3: Slow
+Freq: 3: Low
+Options Enabled
+Move Animation
+Trigger: Action Button
+
+List of Event Commands:
+@>Conditional Branch: Script: pbItemBall(:FULLRESTORE)
+ @>Control Self Switch: A =ON
+ @>
+: Else
+ @>
+: Branch End
+@>
+
+Page #2
+Conditions
+Self Switch A is ON
+
+Autonomous Movement
+Type: Fixed
+Speed: 3: Slow
+Freq: 3: Low
+Options Enabled
+Move Animation
+Trigger: Action Button
+
+List of Event Commands:
+@>
+
+#------------------------------------------------------------------------------
+Event ID: 016
+Event Name: Item
+(X,Y): (053,011)
+
+Page #1
+Conditions
+None
+
+Graphic: Object ball
+
+Autonomous Movement
+Type: Fixed
+Speed: 3: Slow
+Freq: 3: Low
+Options Enabled
+Move Animation
+Trigger: Action Button
+
+List of Event Commands:
+@>Conditional Branch: Script: pbItemBall(:GREATORB)
+ @>Control Self Switch: A =ON
+ @>
+: Else
+ @>
+: Branch End
+@>
+
+Page #2
+Conditions
+Self Switch A is ON
+
+Autonomous Movement
+Type: Fixed
+Speed: 3: Slow
+Freq: 3: Low
+Options Enabled
+Move Animation
+Trigger: Action Button
+
+List of Event Commands:
+@>
+
+#------------------------------------------------------------------------------
+Event ID: 017
+Event Name: Item
+(X,Y): (009,005)
+
+Page #1
+Conditions
+None
+
+Graphic: Object ball
+
+Autonomous Movement
+Type: Fixed
+Speed: 3: Slow
+Freq: 3: Low
+Options Enabled
+Move Animation
+Trigger: Action Button
+
+List of Event Commands:
+@>Conditional Branch: Script: pbItemBall(:LEFTOVERS)
+ @>Control Self Switch: A =ON
+ @>
+: Else
+ @>
+: Branch End
+@>
+
+Page #2
+Conditions
+Self Switch A is ON
+
+Autonomous Movement
+Type: Fixed
+Speed: 3: Slow
+Freq: 3: Low
+Options Enabled
+Move Animation
+Trigger: Action Button
+
+List of Event Commands:
+@>
+
+#------------------------------------------------------------------------------
+Event ID: 018
+Event Name: EV018
+(X,Y): (059,025)
+
+Page #1
+Conditions
+None
+
+Graphic: TPDP_NPC 13
+
+Autonomous Movement
+Type: Fixed
+Speed: 3: Slow
+Freq: 4: High
+Options Enabled
+Move Animation
+Trigger: Action Button
+
+List of Event Commands:
+@>Text: There's a lot of interesting books here, some dating back even before
+ :    : the formation of the Great Hakurei Barrier.
+@>
+
+#------------------------------------------------------------------------------
+Event ID: 019
+Event Name: EV019
+(X,Y): (003,005)
+
+Page #1
+Conditions
+None
+
+Graphic: TPDP_NPC 28
+
+Autonomous Movement
+Type: Fixed
+Speed: 3: Slow
+Freq: 4: High
+Options Enabled
+Move Animation
+Trigger: Action Button
+
+List of Event Commands:
+@>Text: This must be one of those devices that Lady Kanako was talking about,
+ :    : something that could help keep food from going bad.
+@>Text: ...I believe she called it a Microwave? Or was it an Automobile...
+@>
+
+#------------------------------------------------------------------------------
+Event ID: 020
+Event Name: EV020
+(X,Y): (013,037)
+
+Page #1
+Conditions
+None
+
+Graphic: TPDP_NPC 02
+
+Autonomous Movement
+Type: Fixed
+Speed: 3: Slow
+Freq: 4: High
+Options Enabled
+Move Animation
+Trigger: Action Button
+
+List of Event Commands:
+@>Text: For being a house occupied by ghosts, this is quite the well taken care of piano.
+@>Text: Perhaps the owner really loved music and that carried over into the ghosts
+ :    : that live here now.
+@>
+
+#------------------------------------------------------------------------------
+Event ID: 021
+Event Name: Layla
+(X,Y): (014,059)
+
+Page #1
+Conditions
+None
+
+Graphic: Person_Layla
+
+Autonomous Movement
+Type: Fixed
+Speed: 3: Slow
+Freq: 3: Low
+Options Enabled
+Move Animation
+Trigger: Action Button
+
+List of Event Commands:
+@>Text: \xn[Layla]Oh, greetings \pn. It's a pleasure to see you again.
+@>Text: \xn[Layla]Don't mind me, I'm just spending some time here in the
+ :    : study while relaxing.
+@>Text: \xn[Layla]...I may also be having some harmless fun scaring some
+ :    : of the people who come into here. Not that you would be easily
+ :    : scared by me, right?
+@>Text: \xn[\pn]\b(I don't know, battling you was pretty terrifying...)
+@>Text: \xn[Layla]My sisters have put great care into this idea of theirs for
+ :    : the Harvest Festival, I can't help but get involved in my own way~!
+@>Text: \xn[Layla]I did hear that some really rare Puppets have been spotted
+ :    : in the manor somewhere, maybe you'll come across them!
+@>Control Self Switch: A =ON
+@>
+
+Page #2
+Conditions
+Self Switch A is ON
+
+Graphic: Person_Layla
+
+Autonomous Movement
+Type: Fixed
+Speed: 3: Slow
+Freq: 3: Low
+Options Enabled
+Move Animation
+Trigger: Action Button
+
+List of Event Commands:
+@>Text: \xn[Layla]I did hear that some really rare Puppets have been spotted
+ :    : in the manor somewhere, maybe you'll come across them!
+@>
+
+#------------------------------------------------------------------------------
+Event ID: 022
+Event Name: EV022
+(X,Y): (045,045)
+
+Page #1
+Conditions
+None
+
+Graphic: TPDP_NPC 06
+
+Autonomous Movement
+Type: Random
+Speed: 3: Slow
+Freq: 4: High
+Options Enabled
+Move Animation
+Trigger: Action Button
+
+List of Event Commands:
+@>Text: I heard some really ominous noises coming from the basement...
+ :    : There's no way I'm going down there!
+@>
+
+#------------------------------------------------------------------------------
 
 #==============================================================================
 Map ID: 052
 Map Name: Prismriver Manor (F2)
 Tileset: 037: Ruined Western Mansion
 Width: 51, Height: 40
+Auto-Change BGM: W-027. Alice Maestra
 
 #------------------------------------------------------------------------------
 Event ID: 001
@@ -44264,7 +45180,7 @@ List of Event Commands:
 @>Wait: 8 frame(s)
 @>Change Transparent Flag: Normal
 @>Transfer Player:[053: Prismriver Manor (F2 - Rooms)], (007,008), Up, No Fade
-@>Change Screen Color Tone: (0,0,0,0), @6
+@>Change Screen Color Tone: (-50,-50,-50,0), @6
 @>
 
 Page #2
@@ -44367,7 +45283,7 @@ List of Event Commands:
 @>Wait: 8 frame(s)
 @>Change Transparent Flag: Normal
 @>Transfer Player:[053: Prismriver Manor (F2 - Rooms)], (008,048), Up, No Fade
-@>Change Screen Color Tone: (0,0,0,0), @6
+@>Change Screen Color Tone: (-50,-50,-50,0), @6
 @>
 
 Page #2
@@ -44470,7 +45386,7 @@ List of Event Commands:
 @>Wait: 8 frame(s)
 @>Change Transparent Flag: Normal
 @>Transfer Player:[053: Prismriver Manor (F2 - Rooms)], (026,048), Up, No Fade
-@>Change Screen Color Tone: (0,0,0,0), @6
+@>Change Screen Color Tone: (-50,-50,-50,0), @6
 @>
 
 Page #2
@@ -44573,7 +45489,7 @@ List of Event Commands:
 @>Wait: 8 frame(s)
 @>Change Transparent Flag: Normal
 @>Transfer Player:[053: Prismriver Manor (F2 - Rooms)], (030,019), Up, No Fade
-@>Change Screen Color Tone: (0,0,0,0), @6
+@>Change Screen Color Tone: (-50,-50,-50,0), @6
 @>
 
 Page #2
@@ -44649,7 +45565,7 @@ List of Event Commands:
  @>Change Screen Color Tone: (-255,-255,-255,0), @6
  @>Wait: 8 frame(s)
  @>Transfer Player:[053: Prismriver Manor (F2 - Rooms)], (006,035), Down, No Fade
- @>Change Screen Color Tone: (0,0,0,0), @6
+ @>Change Screen Color Tone: (-50,-50,-50,0), @6
  @>
 : Branch End
 @>
@@ -44680,8 +45596,8 @@ List of Event Commands:
  @>Play SE: 'Door exit', 100, 100
  @>Change Screen Color Tone: (-255,-255,-255,0), @6
  @>Wait: 8 frame(s)
- @>Transfer Player:[052: Prismriver Manor (F2)], (016,017), No Fade
- @>Change Screen Color Tone: (0,0,0,0), @6
+ @>Transfer Player:[053: Prismriver Manor (F2 - Rooms)], (002,042), No Fade
+ @>Change Screen Color Tone: (-50,-50,-50,0), @6
  @>
 : Branch End
 @>
@@ -44738,13 +45654,13 @@ Move Animation
 Trigger: Event Touch
 
 List of Event Commands:
-@>Play SE: 'Exit Door', 80, 100
+@>Play SE: 'Door exit', 80, 100
 @>Change Screen Color Tone: (-255,-255,-255,0), @6
 @>Wait: 8 frame(s)
 @>Transfer Player:[050: Prismriver Manor (F1)], (013,011), No Fade
 @>Set Move Route: Player
  :              : $>Move Down
-@>Change Screen Color Tone: (0,0,0,0), @6
+@>Change Screen Color Tone: (-50,-50,-50,0), @6
 @>
 
 #------------------------------------------------------------------------------
@@ -44767,13 +45683,255 @@ Move Animation
 Trigger: Event Touch
 
 List of Event Commands:
-@>Play SE: 'Exit Door', 80, 100
+@>Play SE: 'Door exit', 80, 100
 @>Change Screen Color Tone: (-255,-255,-255,0), @6
 @>Wait: 8 frame(s)
 @>Transfer Player:[054: Prismriver Manor (F3)], (003,014), No Fade
-@>Change Screen Color Tone: (0,0,0,0), @6
+@>Change Screen Color Tone: (-50,-50,-50,0), @6
 @>Set Move Route: Player
  :              : $>Move Up
+@>
+
+#------------------------------------------------------------------------------
+Event ID: 010
+Event Name: Ghost Assistant
+(X,Y): (003,010)
+
+Page #1
+Conditions
+Switch 0132: RWM Challenge Mode is ON
+
+Graphic: TPDP_NPC 26
+
+Autonomous Movement
+Type: Fixed
+Speed: 3: Slow
+Freq: 3: Low
+Options Enabled
+Move Animation
+Trigger: Action Button
+
+List of Event Commands:
+@>Script: pbSet(1, pbGetFloorEffectText(pbGet(152)))
+:       : pbSet(2, pbGetFloorEffectText(pbGet(153)))
+:       : pbSet(3, pbGetFloorEffectText(pbGet(154)))
+:       : pbSet(4, pbGetFloorEffectText(pbGet(155)))
+@>Text: Would you like to be reminded of what your curses for each floor are?
+@>Show Choices: Yes, No
+(When Cancel: Choice 2)
+: When [Yes]
+ @>Text: Let me commune with my kin across the nethersphere...
+ @>Wait: 10 frame(s)
+ @>Text: ...Right, so your challenges for this run were...
+ @>Text: \sign[signskin]\l[4]1F: \v[1]
+  :    : \n2F: \v[2]
+  :    : \n3F: \v[3]
+  :    : \nB1F: \v[4]
+ @>
+: When [No]
+ @>
+: Branch End
+@>
+
+#------------------------------------------------------------------------------
+Event ID: 011
+Event Name: Ghost Assistant
+(X,Y): (010,022)
+
+Page #1
+Conditions
+Switch 0132: RWM Challenge Mode is ON
+
+Graphic: TPDP_NPC 26
+
+Autonomous Movement
+Type: Fixed
+Speed: 3: Slow
+Freq: 3: Low
+Options Enabled
+Move Animation
+Trigger: Action Button
+
+List of Event Commands:
+@>Script: pbSet(1, pbGetFloorEffectText(pbGet(152)))
+:       : pbSet(2, pbGetFloorEffectText(pbGet(153)))
+:       : pbSet(3, pbGetFloorEffectText(pbGet(154)))
+:       : pbSet(4, pbGetFloorEffectText(pbGet(155)))
+@>Text: Would you like to be reminded of what your curses for each floor are?
+@>Show Choices: Yes, No
+(When Cancel: Choice 2)
+: When [Yes]
+ @>Text: Let me commune with my kin across the nethersphere...
+ @>Wait: 10 frame(s)
+ @>Text: ...Right, so your challenges for this run were...
+ @>Text: \sign[signskin]\l[4]1F: \v[1]
+  :    : \n2F: \v[2]
+  :    : \n3F: \v[3]
+  :    : \nB1F: \v[4]
+ @>
+: When [No]
+ @>
+: Branch End
+@>
+
+#------------------------------------------------------------------------------
+Event ID: 012
+Event Name: EV012
+(X,Y): (002,009)
+
+Page #1
+Conditions
+None
+
+Autonomous Movement
+Type: Fixed
+Speed: 3: Slow
+Freq: 3: Low
+Options Enabled
+Move Animation
+Trigger: Action Button
+
+List of Event Commands:
+@>Call Common Event: Akyuu Shrines
+@>
+
+Page #2
+Conditions
+Switch 0001: Starting over is ON
+
+Autonomous Movement
+Type: Fixed
+Speed: 3: Slow
+Freq: 3: Low
+Options Enabled
+Move Animation
+Trigger: Autorun
+
+List of Event Commands:
+@>Control Switches: [0001: Starting over] = OFF
+@>
+
+#------------------------------------------------------------------------------
+Event ID: 013
+Event Name: EV013
+(X,Y): (025,024)
+
+Page #1
+Conditions
+None
+
+Autonomous Movement
+Type: Fixed
+Speed: 3: Slow
+Freq: 3: Low
+Options Enabled
+Move Animation
+Trigger: Action Button
+
+List of Event Commands:
+@>Call Common Event: Akyuu Shrines
+@>
+
+Page #2
+Conditions
+Switch 0001: Starting over is ON
+
+Autonomous Movement
+Type: Fixed
+Speed: 3: Slow
+Freq: 3: Low
+Options Enabled
+Move Animation
+Trigger: Autorun
+
+List of Event Commands:
+@>Control Switches: [0001: Starting over] = OFF
+@>
+
+#------------------------------------------------------------------------------
+Event ID: 014
+Event Name: Item
+(X,Y): (049,016)
+
+Page #1
+Conditions
+None
+
+Graphic: Object ball
+
+Autonomous Movement
+Type: Fixed
+Speed: 3: Slow
+Freq: 3: Low
+Options Enabled
+Move Animation
+Trigger: Action Button
+
+List of Event Commands:
+@>Conditional Branch: Script: pbItemBall(:TOXICORB)
+ @>Control Self Switch: A =ON
+ @>
+: Else
+ @>
+: Branch End
+@>
+
+Page #2
+Conditions
+Self Switch A is ON
+
+Autonomous Movement
+Type: Fixed
+Speed: 3: Slow
+Freq: 3: Low
+Options Enabled
+Move Animation
+Trigger: Action Button
+
+List of Event Commands:
+@>
+
+#------------------------------------------------------------------------------
+Event ID: 015
+Event Name: Item
+(X,Y): (022,007)
+
+Page #1
+Conditions
+None
+
+Graphic: Object ball
+
+Autonomous Movement
+Type: Fixed
+Speed: 3: Slow
+Freq: 3: Low
+Options Enabled
+Move Animation
+Trigger: Action Button
+
+List of Event Commands:
+@>Conditional Branch: Script: pbItemBall(:SUPERREPEL)
+ @>Control Self Switch: A =ON
+ @>
+: Else
+ @>
+: Branch End
+@>
+
+Page #2
+Conditions
+Self Switch A is ON
+
+Autonomous Movement
+Type: Fixed
+Speed: 3: Slow
+Freq: 3: Low
+Options Enabled
+Move Animation
+Trigger: Action Button
+
+List of Event Commands:
 @>
 
 #------------------------------------------------------------------------------
@@ -44783,6 +45941,7 @@ Map ID: 053
 Map Name: Prismriver Manor (F2 - Rooms)
 Tileset: 037: Ruined Western Mansion
 Width: 36, Height: 60
+Auto-Change BGM: W-027. Alice Maestra
 
 #------------------------------------------------------------------------------
 Event ID: 001
@@ -44837,7 +45996,7 @@ List of Event Commands:
 @>Wait: 8 frame(s)
 @>Change Transparent Flag: Normal
 @>Transfer Player:[052: Prismriver Manor (F2)], (020,009), Up, No Fade
-@>Change Screen Color Tone: (0,0,0,0), @6
+@>Change Screen Color Tone: (-50,-50,-50,0), @6
 @>
 
 Page #2
@@ -44940,7 +46099,7 @@ List of Event Commands:
 @>Wait: 8 frame(s)
 @>Change Transparent Flag: Normal
 @>Transfer Player:[053: Prismriver Manor (F2 - Rooms)], (030,019), Up, No Fade
-@>Change Screen Color Tone: (0,0,0,0), @6
+@>Change Screen Color Tone: (-50,-50,-50,0), @6
 @>
 
 Page #2
@@ -45016,7 +46175,7 @@ List of Event Commands:
  @>Change Screen Color Tone: (-255,-255,-255,0), @6
  @>Wait: 8 frame(s)
  @>Transfer Player:[052: Prismriver Manor (F2)], (020,005), Down, No Fade
- @>Change Screen Color Tone: (0,0,0,0), @6
+ @>Change Screen Color Tone: (-50,-50,-50,0), @6
  @>
 : Branch End
 @>
@@ -45046,8 +46205,8 @@ List of Event Commands:
  @>Play SE: 'Door exit', 100, 100
  @>Change Screen Color Tone: (-255,-255,-255,0), @6
  @>Wait: 8 frame(s)
- @>Transfer Player:[053: Prismriver Manor (F2 - Rooms)], (029,035), Down, No Fade
- @>Change Screen Color Tone: (0,0,0,0), @6
+ @>Transfer Player:[053: Prismriver Manor (F2 - Rooms)], (029,036), Down, No Fade
+ @>Change Screen Color Tone: (-50,-50,-50,0), @6
  @>
 : Branch End
 @>
@@ -45078,7 +46237,7 @@ List of Event Commands:
  @>Change Screen Color Tone: (-255,-255,-255,0), @6
  @>Wait: 8 frame(s)
  @>Transfer Player:[052: Prismriver Manor (F2)], (047,014), Down, No Fade
- @>Change Screen Color Tone: (0,0,0,0), @6
+ @>Change Screen Color Tone: (-50,-50,-50,0), @6
  @>
 : Branch End
 @>
@@ -45109,7 +46268,7 @@ List of Event Commands:
  @>Change Screen Color Tone: (-255,-255,-255,0), @6
  @>Wait: 8 frame(s)
  @>Transfer Player:[052: Prismriver Manor (F2)], (022,024), Down, No Fade
- @>Change Screen Color Tone: (0,0,0,0), @6
+ @>Change Screen Color Tone: (-50,-50,-50,0), @6
  @>
 : Branch End
 @>
@@ -45140,7 +46299,7 @@ List of Event Commands:
  @>Change Screen Color Tone: (-255,-255,-255,0), @6
  @>Wait: 8 frame(s)
  @>Transfer Player:[052: Prismriver Manor (F2)], (039,024), Down, No Fade
- @>Change Screen Color Tone: (0,0,0,0), @6
+ @>Change Screen Color Tone: (-50,-50,-50,0), @6
  @>
 : Branch End
 @>
@@ -45172,7 +46331,7 @@ List of Event Commands:
  @>Change Screen Color Tone: (-255,-255,-255,0), @6
  @>Wait: 8 frame(s)
  @>Transfer Player:[052: Prismriver Manor (F2)], (016,017), No Fade
- @>Change Screen Color Tone: (0,0,0,0), @6
+ @>Change Screen Color Tone: (-50,-50,-50,0), @6
  @>
 : Branch End
 @>
@@ -45204,9 +46363,328 @@ List of Event Commands:
  @>Change Screen Color Tone: (-255,-255,-255,0), @6
  @>Wait: 8 frame(s)
  @>Transfer Player:[052: Prismriver Manor (F2)], (045,017), No Fade
- @>Change Screen Color Tone: (0,0,0,0), @6
+ @>Change Screen Color Tone: (-50,-50,-50,0), @6
  @>
 : Branch End
+@>
+
+#------------------------------------------------------------------------------
+Event ID: 010
+Event Name: Item
+(X,Y): (032,008)
+
+Page #1
+Conditions
+None
+
+Graphic: Object ball
+
+Autonomous Movement
+Type: Fixed
+Speed: 3: Slow
+Freq: 3: Low
+Options Enabled
+Move Animation
+Trigger: Action Button
+
+List of Event Commands:
+@>Conditional Branch: Script: pbItemBall(:GRILLEDLAMPREY)
+ @>Control Self Switch: A =ON
+ @>
+: Else
+ @>
+: Branch End
+@>
+
+Page #2
+Conditions
+Self Switch A is ON
+
+Autonomous Movement
+Type: Fixed
+Speed: 3: Slow
+Freq: 3: Low
+Options Enabled
+Move Animation
+Trigger: Action Button
+
+List of Event Commands:
+@>
+
+#------------------------------------------------------------------------------
+Event ID: 011
+Event Name: HiddenItem
+(X,Y): (008,004)
+
+Page #1
+Conditions
+None
+
+Autonomous Movement
+Type: Fixed
+Speed: 3: Slow
+Freq: 3: Low
+Options Enabled
+Move Animation
+Trigger: Action Button
+
+List of Event Commands:
+@>Conditional Branch: Script: pbItemBall(:LEPPABERRY)
+ @>Control Self Switch: A =ON
+ @>
+: Else
+ @>
+: Branch End
+@>
+
+Page #2
+Conditions
+Self Switch A is ON
+
+Autonomous Movement
+Type: Fixed
+Speed: 3: Slow
+Freq: 3: Low
+Options Enabled
+Move Animation
+Trigger: Action Button
+
+List of Event Commands:
+@>
+
+#------------------------------------------------------------------------------
+Event ID: 012
+Event Name: Item
+(X,Y): (008,036)
+
+Page #1
+Conditions
+None
+
+Graphic: Object ball
+
+Autonomous Movement
+Type: Fixed
+Speed: 3: Slow
+Freq: 3: Low
+Options Enabled
+Move Animation
+Trigger: Action Button
+
+List of Event Commands:
+@>Conditional Branch: Script: pbItemBall(:MOONSTONEGEM)
+ @>Control Self Switch: A =ON
+ @>
+: Else
+ @>
+: Branch End
+@>
+
+Page #2
+Conditions
+Self Switch A is ON
+
+Autonomous Movement
+Type: Fixed
+Speed: 3: Slow
+Freq: 3: Low
+Options Enabled
+Move Animation
+Trigger: Action Button
+
+List of Event Commands:
+@>
+
+#------------------------------------------------------------------------------
+Event ID: 013
+Event Name: Item
+(X,Y): (010,040)
+
+Page #1
+Conditions
+None
+
+Graphic: Object ball
+
+Autonomous Movement
+Type: Fixed
+Speed: 3: Slow
+Freq: 3: Low
+Options Enabled
+Move Animation
+Trigger: Action Button
+
+List of Event Commands:
+@>Conditional Branch: Script: pbItemBall(:SC30)
+ @>Control Self Switch: A =ON
+ @>
+: Else
+ @>
+: Branch End
+@>
+
+Page #2
+Conditions
+Self Switch A is ON
+
+Autonomous Movement
+Type: Fixed
+Speed: 3: Slow
+Freq: 3: Low
+Options Enabled
+Move Animation
+Trigger: Action Button
+
+List of Event Commands:
+@>
+
+#------------------------------------------------------------------------------
+Event ID: 014
+Event Name: HiddenItem
+(X,Y): (020,042)
+
+Page #1
+Conditions
+None
+
+Autonomous Movement
+Type: Fixed
+Speed: 3: Slow
+Freq: 3: Low
+Options Enabled
+Move Animation
+Trigger: Action Button
+
+List of Event Commands:
+@>Conditional Branch: Script: pbItemBall(:MAXELIXIR)
+ @>Control Self Switch: A =ON
+ @>
+: Else
+ @>
+: Branch End
+@>
+
+Page #2
+Conditions
+Self Switch A is ON
+
+Autonomous Movement
+Type: Fixed
+Speed: 3: Slow
+Freq: 3: Low
+Options Enabled
+Move Animation
+Trigger: Action Button
+
+List of Event Commands:
+@>
+
+#------------------------------------------------------------------------------
+Event ID: 015
+Event Name: HiddenItem
+(X,Y): (016,041)
+
+Page #1
+Conditions
+None
+
+Autonomous Movement
+Type: Fixed
+Speed: 3: Slow
+Freq: 3: Low
+Options Enabled
+Move Animation
+Trigger: Action Button
+
+List of Event Commands:
+@>Conditional Branch: Script: pbItemBall(:BIGMUSHROOM)
+ @>Control Self Switch: A =ON
+ @>
+: Else
+ @>
+: Branch End
+@>
+
+Page #2
+Conditions
+Self Switch A is ON
+
+Autonomous Movement
+Type: Fixed
+Speed: 3: Slow
+Freq: 3: Low
+Options Enabled
+Move Animation
+Trigger: Action Button
+
+List of Event Commands:
+@>
+
+#------------------------------------------------------------------------------
+Event ID: 016
+Event Name: Item
+(X,Y): (030,044)
+
+Page #1
+Conditions
+None
+
+Graphic: Object ball
+
+Autonomous Movement
+Type: Fixed
+Speed: 3: Slow
+Freq: 3: Low
+Options Enabled
+Move Animation
+Trigger: Action Button
+
+List of Event Commands:
+@>Conditional Branch: Script: pbItemBall(:PRISMORB)
+ @>Control Self Switch: A =ON
+ @>
+: Else
+ @>
+: Branch End
+@>
+
+Page #2
+Conditions
+Self Switch A is ON
+
+Autonomous Movement
+Type: Fixed
+Speed: 3: Slow
+Freq: 3: Low
+Options Enabled
+Move Animation
+Trigger: Action Button
+
+List of Event Commands:
+@>
+
+#------------------------------------------------------------------------------
+Event ID: 017
+Event Name: EV017
+(X,Y): (019,006)
+
+Page #1
+Conditions
+None
+
+Graphic: TPDP_NPC 37
+
+Autonomous Movement
+Type: Random
+Speed: 3: Slow
+Freq: 4: High
+Options Enabled
+Move Animation
+Trigger: Action Button
+
+List of Event Commands:
+@>Text: This is a really big kitchen and dining room... The owners of this
+ :    : mansion must have been loaded.
 @>
 
 #------------------------------------------------------------------------------
@@ -45216,6 +46694,7 @@ Map ID: 054
 Map Name: Prismriver Manor (F3)
 Tileset: 037: Ruined Western Mansion
 Width: 61, Height: 40
+Auto-Change BGM: W-027. Alice Maestra
 
 #------------------------------------------------------------------------------
 Event ID: 001
@@ -45244,7 +46723,7 @@ List of Event Commands:
  @>Change Screen Color Tone: (-255,-255,-255,0), @6
  @>Wait: 8 frame(s)
  @>Transfer Player:[055: Prismriver Manor (F3 - Rooms)], (013,027), No Fade
- @>Change Screen Color Tone: (0,0,0,0), @6
+ @>Change Screen Color Tone: (-50,-50,-50,0), @6
  @>
 : Branch End
 @>
@@ -45275,7 +46754,7 @@ List of Event Commands:
  @>Change Screen Color Tone: (-255,-255,-255,0), @6
  @>Wait: 8 frame(s)
  @>Transfer Player:[055: Prismriver Manor (F3 - Rooms)], (016,044), Down, No Fade
- @>Change Screen Color Tone: (0,0,0,0), @6
+ @>Change Screen Color Tone: (-50,-50,-50,0), @6
  @>
 : Branch End
 @>
@@ -45306,7 +46785,7 @@ List of Event Commands:
  @>Change Screen Color Tone: (-255,-255,-255,0), @6
  @>Wait: 8 frame(s)
  @>Transfer Player:[055: Prismriver Manor (F3 - Rooms)], (044,044), Down, No Fade
- @>Change Screen Color Tone: (0,0,0,0), @6
+ @>Change Screen Color Tone: (-50,-50,-50,0), @6
  @>
 : Branch End
 @>
@@ -45338,7 +46817,7 @@ List of Event Commands:
  @>Change Screen Color Tone: (-255,-255,-255,0), @6
  @>Wait: 8 frame(s)
  @>Transfer Player:[055: Prismriver Manor (F3 - Rooms)], (047,028), No Fade
- @>Change Screen Color Tone: (0,0,0,0), @6
+ @>Change Screen Color Tone: (-50,-50,-50,0), @6
  @>
 : Branch End
 @>
@@ -45396,7 +46875,7 @@ List of Event Commands:
 @>Wait: 8 frame(s)
 @>Change Transparent Flag: Normal
 @>Transfer Player:[055: Prismriver Manor (F3 - Rooms)], (030,011), Up, No Fade
-@>Change Screen Color Tone: (0,0,0,0), @6
+@>Change Screen Color Tone: (-50,-50,-50,0), @6
 @>
 
 Page #2
@@ -45499,7 +46978,7 @@ List of Event Commands:
 @>Wait: 8 frame(s)
 @>Change Transparent Flag: Normal
 @>Transfer Player:[146: Prismriver Manor (F3 - Performance Hall)], (015,025), Up, No Fade
-@>Change Screen Color Tone: (0,0,0,0), @6
+@>Change Screen Color Tone: (-50,-50,-50,0), @6
 @>
 
 Page #2
@@ -45569,13 +47048,13 @@ Move Animation
 Trigger: Event Touch
 
 List of Event Commands:
-@>Play SE: 'Exit Door', 80, 100
+@>Play SE: 'Door exit', 80, 100
 @>Change Screen Color Tone: (-255,-255,-255,0), @6
 @>Wait: 8 frame(s)
 @>Transfer Player:[052: Prismriver Manor (F2)], (007,021), No Fade
 @>Set Move Route: Player
  :              : $>Move Down
-@>Change Screen Color Tone: (0,0,0,0), @6
+@>Change Screen Color Tone: (-50,-50,-50,0), @6
 @>
 
 #------------------------------------------------------------------------------
@@ -45598,13 +47077,132 @@ Move Animation
 Trigger: Event Touch
 
 List of Event Commands:
-@>Play SE: 'Exit Door', 80, 100
+@>Play SE: 'Door exit', 80, 100
 @>Change Screen Color Tone: (-255,-255,-255,0), @6
 @>Wait: 8 frame(s)
 @>Transfer Player:[147: Stairs to Roof], (010,012), No Fade
-@>Change Screen Color Tone: (0,0,0,0), @6
+@>Change Screen Color Tone: (-50,-50,-50,0), @6
 @>Set Move Route: Player
  :              : $>Move Up
+@>
+
+#------------------------------------------------------------------------------
+Event ID: 009
+Event Name: Ghost Assistant
+(X,Y): (008,010)
+
+Page #1
+Conditions
+Switch 0132: RWM Challenge Mode is ON
+
+Graphic: TPDP_NPC 26
+
+Autonomous Movement
+Type: Fixed
+Speed: 3: Slow
+Freq: 3: Low
+Options Enabled
+Move Animation
+Trigger: Action Button
+
+List of Event Commands:
+@>Script: pbSet(1, pbGetFloorEffectText(pbGet(152)))
+:       : pbSet(2, pbGetFloorEffectText(pbGet(153)))
+:       : pbSet(3, pbGetFloorEffectText(pbGet(154)))
+:       : pbSet(4, pbGetFloorEffectText(pbGet(155)))
+@>Text: Would you like to be reminded of what your curses for each floor are?
+@>Show Choices: Yes, No
+(When Cancel: Choice 2)
+: When [Yes]
+ @>Text: Let me commune with my kin across the nethersphere...
+ @>Wait: 10 frame(s)
+ @>Text: ...Right, so your challenges for this run were...
+ @>Text: \sign[signskin]\l[4]1F: \v[1]
+  :    : \n2F: \v[2]
+  :    : \n3F: \v[3]
+  :    : \nB1F: \v[4]
+ @>
+: When [No]
+ @>
+: Branch End
+@>
+
+#------------------------------------------------------------------------------
+Event ID: 010
+Event Name: Ghost Assistant
+(X,Y): (056,031)
+
+Page #1
+Conditions
+Switch 0132: RWM Challenge Mode is ON
+
+Graphic: TPDP_NPC 26
+
+Autonomous Movement
+Type: Fixed
+Speed: 3: Slow
+Freq: 3: Low
+Options Enabled
+Move Animation
+Trigger: Action Button
+
+List of Event Commands:
+@>Script: pbSet(1, pbGetFloorEffectText(pbGet(152)))
+:       : pbSet(2, pbGetFloorEffectText(pbGet(153)))
+:       : pbSet(3, pbGetFloorEffectText(pbGet(154)))
+:       : pbSet(4, pbGetFloorEffectText(pbGet(155)))
+@>Text: Would you like to be reminded of what your curses for each floor are?
+@>Show Choices: Yes, No
+(When Cancel: Choice 2)
+: When [Yes]
+ @>Text: Let me commune with my kin across the nethersphere...
+ @>Wait: 10 frame(s)
+ @>Text: ...Right, so your challenges for this run were...
+ @>Text: \sign[signskin]\l[4]1F: \v[1]
+  :    : \n2F: \v[2]
+  :    : \n3F: \v[3]
+  :    : \nB1F: \v[4]
+ @>
+: When [No]
+ @>
+: Branch End
+@>
+
+#------------------------------------------------------------------------------
+Event ID: 011
+Event Name: EV011
+(X,Y): (009,009)
+
+Page #1
+Conditions
+None
+
+Autonomous Movement
+Type: Fixed
+Speed: 3: Slow
+Freq: 3: Low
+Options Enabled
+Move Animation
+Trigger: Action Button
+
+List of Event Commands:
+@>Call Common Event: Akyuu Shrines
+@>
+
+Page #2
+Conditions
+Switch 0001: Starting over is ON
+
+Autonomous Movement
+Type: Fixed
+Speed: 3: Slow
+Freq: 3: Low
+Options Enabled
+Move Animation
+Trigger: Autorun
+
+List of Event Commands:
+@>Control Switches: [0001: Starting over] = OFF
 @>
 
 #------------------------------------------------------------------------------
@@ -45614,6 +47212,7 @@ Map ID: 055
 Map Name: Prismriver Manor (F3 - Rooms)
 Tileset: 037: Ruined Western Mansion
 Width: 61, Height: 60
+Auto-Change BGM: W-027. Alice Maestra
 
 #------------------------------------------------------------------------------
 Event ID: 001
@@ -45641,7 +47240,7 @@ List of Event Commands:
  @>Change Screen Color Tone: (-255,-255,-255,0), @6
  @>Wait: 8 frame(s)
  @>Transfer Player:[023: Third Floor], (030,003), Down, No Fade
- @>Change Screen Color Tone: (0,0,0,0), @6
+ @>Change Screen Color Tone: (-50,-50,-50,0), @6
  @>
 : Branch End
 @>
@@ -45699,7 +47298,7 @@ List of Event Commands:
 @>Wait: 8 frame(s)
 @>Change Transparent Flag: Normal
 @>Transfer Player:[054: Prismriver Manor (F3)], (023,035), Up, No Fade
-@>Change Screen Color Tone: (0,0,0,0), @6
+@>Change Screen Color Tone: (-50,-50,-50,0), @6
 @>
 
 Page #2
@@ -45802,7 +47401,7 @@ List of Event Commands:
 @>Wait: 8 frame(s)
 @>Change Transparent Flag: Normal
 @>Transfer Player:[054: Prismriver Manor (F3)], (037,035), Up, No Fade
-@>Change Screen Color Tone: (0,0,0,0), @6
+@>Change Screen Color Tone: (-50,-50,-50,0), @6
 @>
 
 Page #2
@@ -45879,7 +47478,7 @@ List of Event Commands:
  @>Change Screen Color Tone: (-255,-255,-255,0), @6
  @>Wait: 8 frame(s)
  @>Transfer Player:[054: Prismriver Manor (F3)], (014,025), No Fade
- @>Change Screen Color Tone: (0,0,0,0), @6
+ @>Change Screen Color Tone: (-50,-50,-50,0), @6
  @>
 : Branch End
 @>
@@ -45911,9 +47510,181 @@ List of Event Commands:
  @>Change Screen Color Tone: (-255,-255,-255,0), @6
  @>Wait: 8 frame(s)
  @>Transfer Player:[054: Prismriver Manor (F3)], (046,014), No Fade
- @>Change Screen Color Tone: (0,0,0,0), @6
+ @>Change Screen Color Tone: (-50,-50,-50,0), @6
  @>
 : Branch End
+@>
+
+#------------------------------------------------------------------------------
+Event ID: 006
+Event Name: Item
+(X,Y): (002,024)
+
+Page #1
+Conditions
+None
+
+Graphic: Object ball
+
+Autonomous Movement
+Type: Fixed
+Speed: 3: Slow
+Freq: 3: Low
+Options Enabled
+Move Animation
+Trigger: Action Button
+
+List of Event Commands:
+@>Conditional Branch: Script: pbItemBall(:OPAL)
+ @>Control Self Switch: A =ON
+ @>
+: Else
+ @>
+: Branch End
+@>
+
+Page #2
+Conditions
+Self Switch A is ON
+
+Autonomous Movement
+Type: Fixed
+Speed: 3: Slow
+Freq: 3: Low
+Options Enabled
+Move Animation
+Trigger: Action Button
+
+List of Event Commands:
+@>
+
+#------------------------------------------------------------------------------
+Event ID: 007
+Event Name: Item
+(X,Y): (053,025)
+
+Page #1
+Conditions
+None
+
+Graphic: Object ball
+
+Autonomous Movement
+Type: Fixed
+Speed: 3: Slow
+Freq: 3: Low
+Options Enabled
+Move Animation
+Trigger: Action Button
+
+List of Event Commands:
+@>Conditional Branch: Script: pbItemBall(:POWERRIBBON)
+ @>Control Self Switch: A =ON
+ @>
+: Else
+ @>
+: Branch End
+@>
+
+Page #2
+Conditions
+Self Switch A is ON
+
+Autonomous Movement
+Type: Fixed
+Speed: 3: Slow
+Freq: 3: Low
+Options Enabled
+Move Animation
+Trigger: Action Button
+
+List of Event Commands:
+@>
+
+#------------------------------------------------------------------------------
+Event ID: 008
+Event Name: Item
+(X,Y): (020,049)
+
+Page #1
+Conditions
+None
+
+Graphic: Object ball
+
+Autonomous Movement
+Type: Fixed
+Speed: 3: Slow
+Freq: 3: Low
+Options Enabled
+Move Animation
+Trigger: Action Button
+
+List of Event Commands:
+@>Conditional Branch: Script: pbItemBall(:ABILITYCAPSULE)
+ @>Control Self Switch: A =ON
+ @>
+: Else
+ @>
+: Branch End
+@>
+
+Page #2
+Conditions
+Self Switch A is ON
+
+Autonomous Movement
+Type: Fixed
+Speed: 3: Slow
+Freq: 3: Low
+Options Enabled
+Move Animation
+Trigger: Action Button
+
+List of Event Commands:
+@>
+
+#------------------------------------------------------------------------------
+Event ID: 009
+Event Name: Item
+(X,Y): (050,051)
+
+Page #1
+Conditions
+None
+
+Graphic: Object ball
+
+Autonomous Movement
+Type: Fixed
+Speed: 3: Slow
+Freq: 3: Low
+Options Enabled
+Move Animation
+Trigger: Action Button
+
+List of Event Commands:
+@>Conditional Branch: Script: pbItemBall(:TECHSHARD)
+ @>Control Self Switch: A =ON
+ @>
+: Else
+ @>
+: Branch End
+@>
+
+Page #2
+Conditions
+Self Switch A is ON
+
+Autonomous Movement
+Type: Fixed
+Speed: 3: Slow
+Freq: 3: Low
+Options Enabled
+Move Animation
+Trigger: Action Button
+
+List of Event Commands:
 @>
 
 #------------------------------------------------------------------------------
@@ -45923,6 +47694,7 @@ Map ID: 056
 Map Name: Prismriver Manor (B1F)
 Tileset: 037: Ruined Western Mansion
 Width: 80, Height: 100
+Auto-Change BGM: W-027. Alice Maestra
 
 #------------------------------------------------------------------------------
 Event ID: 001
@@ -45944,6 +47716,7 @@ Move Animation
 Trigger: Action Button
 
 List of Event Commands:
+@>Change Battle BGM: 'B-015. Magical Girl's Crusade', 100, 100
 @>
 
 #------------------------------------------------------------------------------
@@ -46152,11 +47925,11 @@ Move Animation
 Trigger: Event Touch
 
 List of Event Commands:
-@>Play SE: 'Exit Door', 80, 100
+@>Play SE: 'Door exit', 80, 100
 @>Change Screen Color Tone: (-255,-255,-255,0), @6
 @>Wait: 8 frame(s)
 @>Transfer Player:[051: Prismriver Manor (F1 - Rooms)], (052,049), No Fade
-@>Change Screen Color Tone: (0,0,0,0), @6
+@>Change Screen Color Tone: (-50,-50,-50,0), @6
 @>Set Move Route: Player
  :              : $>Move Up
 @>
@@ -46202,6 +47975,405 @@ List of Event Commands:
 : When [No]
  @>
 : Branch End
+@>
+
+#------------------------------------------------------------------------------
+Event ID: 010
+Event Name: Ghost Assistant
+(X,Y): (011,063)
+
+Page #1
+Conditions
+Switch 0132: RWM Challenge Mode is ON
+
+Graphic: TPDP_NPC 26
+
+Autonomous Movement
+Type: Fixed
+Speed: 3: Slow
+Freq: 3: Low
+Options Enabled
+Move Animation
+Trigger: Action Button
+
+List of Event Commands:
+@>Script: pbSet(1, pbGetFloorEffectText(pbGet(152)))
+:       : pbSet(2, pbGetFloorEffectText(pbGet(153)))
+:       : pbSet(3, pbGetFloorEffectText(pbGet(154)))
+:       : pbSet(4, pbGetFloorEffectText(pbGet(155)))
+@>Text: Would you like to be reminded of what your curses for each floor are?
+@>Show Choices: Yes, No
+(When Cancel: Choice 2)
+: When [Yes]
+ @>Text: Let me commune with my kin across the nethersphere...
+ @>Wait: 10 frame(s)
+ @>Text: ...Right, so your challenges for this run were...
+ @>Text: \sign[signskin]\l[4]1F: \v[1]
+  :    : \n2F: \v[2]
+  :    : \n3F: \v[3]
+  :    : \nB1F: \v[4]
+ @>
+: When [No]
+ @>
+: Branch End
+@>
+
+#------------------------------------------------------------------------------
+Event ID: 011
+Event Name: EV011
+(X,Y): (019,065)
+
+Page #1
+Conditions
+None
+
+Autonomous Movement
+Type: Fixed
+Speed: 3: Slow
+Freq: 3: Low
+Options Enabled
+Move Animation
+Trigger: Action Button
+
+List of Event Commands:
+@>Call Common Event: Akyuu Shrines
+@>
+
+Page #2
+Conditions
+Switch 0001: Starting over is ON
+
+Autonomous Movement
+Type: Fixed
+Speed: 3: Slow
+Freq: 3: Low
+Options Enabled
+Move Animation
+Trigger: Autorun
+
+List of Event Commands:
+@>Control Switches: [0001: Starting over] = OFF
+@>
+
+#------------------------------------------------------------------------------
+Event ID: 012
+Event Name: Item
+(X,Y): (031,060)
+
+Page #1
+Conditions
+None
+
+Graphic: Object ball
+
+Autonomous Movement
+Type: Fixed
+Speed: 3: Slow
+Freq: 3: Low
+Options Enabled
+Move Animation
+Trigger: Action Button
+
+List of Event Commands:
+@>Conditional Branch: Script: pbItemBall(:REVIVE)
+ @>Control Self Switch: A =ON
+ @>
+: Else
+ @>
+: Branch End
+@>
+
+Page #2
+Conditions
+Self Switch A is ON
+
+Autonomous Movement
+Type: Fixed
+Speed: 3: Slow
+Freq: 3: Low
+Options Enabled
+Move Animation
+Trigger: Action Button
+
+List of Event Commands:
+@>
+
+#------------------------------------------------------------------------------
+Event ID: 013
+Event Name: HiddenItem
+(X,Y): (051,067)
+
+Page #1
+Conditions
+None
+
+Autonomous Movement
+Type: Fixed
+Speed: 3: Slow
+Freq: 3: Low
+Options Enabled
+Move Animation
+Trigger: Action Button
+
+List of Event Commands:
+@>Conditional Branch: Script: pbItemBall(:NUGGET)
+ @>Control Self Switch: A =ON
+ @>
+: Else
+ @>
+: Branch End
+@>
+
+Page #2
+Conditions
+Self Switch A is ON
+
+Autonomous Movement
+Type: Fixed
+Speed: 3: Slow
+Freq: 3: Low
+Options Enabled
+Move Animation
+Trigger: Action Button
+
+List of Event Commands:
+@>
+
+#------------------------------------------------------------------------------
+Event ID: 014
+Event Name: Item
+(X,Y): (050,023)
+
+Page #1
+Conditions
+None
+
+Graphic: Object ball
+
+Autonomous Movement
+Type: Fixed
+Speed: 3: Slow
+Freq: 3: Low
+Options Enabled
+Move Animation
+Trigger: Action Button
+
+List of Event Commands:
+@>Conditional Branch: Script: pbItemBall(:RARECANDY)
+ @>Control Self Switch: A =ON
+ @>
+: Else
+ @>
+: Branch End
+@>
+
+Page #2
+Conditions
+Self Switch A is ON
+
+Autonomous Movement
+Type: Fixed
+Speed: 3: Slow
+Freq: 3: Low
+Options Enabled
+Move Animation
+Trigger: Action Button
+
+List of Event Commands:
+@>
+
+#------------------------------------------------------------------------------
+Event ID: 015
+Event Name: Item
+(X,Y): (073,033)
+
+Page #1
+Conditions
+None
+
+Graphic: Object ball
+
+Autonomous Movement
+Type: Fixed
+Speed: 3: Slow
+Freq: 3: Low
+Options Enabled
+Move Animation
+Trigger: Action Button
+
+List of Event Commands:
+@>Conditional Branch: Script: pbItemBall(:FULLHEAL)
+ @>Control Self Switch: A =ON
+ @>
+: Else
+ @>
+: Branch End
+@>
+
+Page #2
+Conditions
+Self Switch A is ON
+
+Autonomous Movement
+Type: Fixed
+Speed: 3: Slow
+Freq: 3: Low
+Options Enabled
+Move Animation
+Trigger: Action Button
+
+List of Event Commands:
+@>
+
+#------------------------------------------------------------------------------
+Event ID: 016
+Event Name: HiddenItem
+(X,Y): (013,023)
+
+Page #1
+Conditions
+None
+
+Autonomous Movement
+Type: Fixed
+Speed: 3: Slow
+Freq: 3: Low
+Options Enabled
+Move Animation
+Trigger: Action Button
+
+List of Event Commands:
+@>Conditional Branch: Script: pbItemBall(:GOTHIC)
+ @>Control Self Switch: A =ON
+ @>
+: Else
+ @>
+: Branch End
+@>
+
+Page #2
+Conditions
+Self Switch A is ON
+
+Autonomous Movement
+Type: Fixed
+Speed: 3: Slow
+Freq: 3: Low
+Options Enabled
+Move Animation
+Trigger: Action Button
+
+List of Event Commands:
+@>
+
+#------------------------------------------------------------------------------
+Event ID: 017
+Event Name: Item
+(X,Y): (064,082)
+
+Page #1
+Conditions
+None
+
+Graphic: Object ball
+
+Autonomous Movement
+Type: Fixed
+Speed: 3: Slow
+Freq: 3: Low
+Options Enabled
+Move Animation
+Trigger: Action Button
+
+List of Event Commands:
+@>Conditional Branch: Script: pbItemBall(:EVIOLITE)
+ @>Control Self Switch: A =ON
+ @>
+: Else
+ @>
+: Branch End
+@>
+
+Page #2
+Conditions
+Self Switch A is ON
+
+Autonomous Movement
+Type: Fixed
+Speed: 3: Slow
+Freq: 3: Low
+Options Enabled
+Move Animation
+Trigger: Action Button
+
+List of Event Commands:
+@>
+
+#------------------------------------------------------------------------------
+Event ID: 018
+Event Name: Item
+(X,Y): (063,004)
+
+Page #1
+Conditions
+None
+
+Graphic: Object ball
+
+Autonomous Movement
+Type: Fixed
+Speed: 3: Slow
+Freq: 3: Low
+Options Enabled
+Move Animation
+Trigger: Action Button
+
+List of Event Commands:
+@>Conditional Branch: Script: pbItemBall(:RELICVASE)
+ @>Control Self Switch: A =ON
+ @>
+: Else
+ @>
+: Branch End
+@>
+
+Page #2
+Conditions
+Self Switch A is ON
+
+Autonomous Movement
+Type: Fixed
+Speed: 3: Slow
+Freq: 3: Low
+Options Enabled
+Move Animation
+Trigger: Action Button
+
+List of Event Commands:
+@>
+
+#------------------------------------------------------------------------------
+Event ID: 019
+Event Name: EV019
+(X,Y): (014,021)
+
+Page #1
+Conditions
+None
+
+Graphic: TPDP_NPC 42
+
+Autonomous Movement
+Type: Random
+Speed: 3: Slow
+Freq: 4: High
+Options Enabled
+Move Animation
+Trigger: Action Button
+
+List of Event Commands:
+@>Text: I wonder what these contraptions were used for... there's another one
+ :    : on the other side of the basement.
 @>
 
 #------------------------------------------------------------------------------
@@ -110650,6 +112822,7 @@ Map ID: 146
 Map Name: Prismriver Manor (F3 - Performance Hall)
 Tileset: 037: Ruined Western Mansion
 Width: 31, Height: 31
+Auto-Change BGM: W-027. Alice Maestra
 
 #------------------------------------------------------------------------------
 Event ID: 001
@@ -110676,10 +112849,223 @@ List of Event Commands:
  @>Play SE: 'Door exit', 100, 100
  @>Change Screen Color Tone: (-255,-255,-255,0), @6
  @>Wait: 8 frame(s)
- @>Transfer Player:[023: Third Floor], (030,029), Down, No Fade
- @>Change Screen Color Tone: (0,0,0,0), @6
+ @>Transfer Player:[054: Prismriver Manor (F3)], (030,029), Down, No Fade
+ @>Change Screen Color Tone: (-50,-50,-50,0), @6
  @>
 : Branch End
+@>
+
+#------------------------------------------------------------------------------
+Event ID: 002
+Event Name: HiddenItem
+(X,Y): (026,009)
+
+Page #1
+Conditions
+None
+
+Autonomous Movement
+Type: Fixed
+Speed: 3: Slow
+Freq: 3: Low
+Options Enabled
+Move Animation
+Trigger: Action Button
+
+List of Event Commands:
+@>Conditional Branch: Script: pbItemBall(:MASTERORB)
+ @>Control Self Switch: A =ON
+ @>
+: Else
+ @>
+: Branch End
+@>
+
+Page #2
+Conditions
+Self Switch A is ON
+
+Autonomous Movement
+Type: Fixed
+Speed: 3: Slow
+Freq: 3: Low
+Options Enabled
+Move Animation
+Trigger: Action Button
+
+List of Event Commands:
+@>
+
+#------------------------------------------------------------------------------
+Event ID: 003
+Event Name: Item
+(X,Y): (015,007)
+
+Page #1
+Conditions
+None
+
+Graphic: Object ball
+
+Autonomous Movement
+Type: Fixed
+Speed: 3: Slow
+Freq: 3: Low
+Options Enabled
+Move Animation
+Trigger: Action Button
+
+List of Event Commands:
+@>Conditional Branch: Script: pbItemBall(:HC03)
+ @>Control Self Switch: A =ON
+ @>
+: Else
+ @>
+: Branch End
+@>
+
+Page #2
+Conditions
+Self Switch A is ON
+
+Autonomous Movement
+Type: Fixed
+Speed: 3: Slow
+Freq: 3: Low
+Options Enabled
+Move Animation
+Trigger: Action Button
+
+List of Event Commands:
+@>
+
+#------------------------------------------------------------------------------
+Event ID: 004
+Event Name: Item
+(X,Y): (004,027)
+
+Page #1
+Conditions
+None
+
+Graphic: Object ball
+
+Autonomous Movement
+Type: Fixed
+Speed: 3: Slow
+Freq: 3: Low
+Options Enabled
+Move Animation
+Trigger: Action Button
+
+List of Event Commands:
+@>Conditional Branch: Script: pbItemBall(:HYPERPOTION)
+ @>Control Self Switch: A =ON
+ @>
+: Else
+ @>
+: Branch End
+@>
+
+Page #2
+Conditions
+Self Switch A is ON
+
+Autonomous Movement
+Type: Fixed
+Speed: 3: Slow
+Freq: 3: Low
+Options Enabled
+Move Animation
+Trigger: Action Button
+
+List of Event Commands:
+@>
+
+#------------------------------------------------------------------------------
+Event ID: 005
+Event Name: Item
+(X,Y): (022,027)
+
+Page #1
+Conditions
+None
+
+Graphic: Object ball
+
+Autonomous Movement
+Type: Fixed
+Speed: 3: Slow
+Freq: 3: Low
+Options Enabled
+Move Animation
+Trigger: Action Button
+
+List of Event Commands:
+@>Conditional Branch: Script: pbItemBall(:XATTACK)
+ @>Control Self Switch: A =ON
+ @>
+: Else
+ @>
+: Branch End
+@>
+
+Page #2
+Conditions
+Self Switch A is ON
+
+Autonomous Movement
+Type: Fixed
+Speed: 3: Slow
+Freq: 3: Low
+Options Enabled
+Move Animation
+Trigger: Action Button
+
+List of Event Commands:
+@>
+
+#------------------------------------------------------------------------------
+Event ID: 006
+Event Name: Item
+(X,Y): (003,011)
+
+Page #1
+Conditions
+None
+
+Graphic: Object ball
+
+Autonomous Movement
+Type: Fixed
+Speed: 3: Slow
+Freq: 3: Low
+Options Enabled
+Move Animation
+Trigger: Action Button
+
+List of Event Commands:
+@>Conditional Branch: Script: pbItemBall(:DEFENSESHARD)
+ @>Control Self Switch: A =ON
+ @>
+: Else
+ @>
+: Branch End
+@>
+
+Page #2
+Conditions
+Self Switch A is ON
+
+Autonomous Movement
+Type: Fixed
+Speed: 3: Slow
+Freq: 3: Low
+Options Enabled
+Move Animation
+Trigger: Action Button
+
+List of Event Commands:
 @>
 
 #------------------------------------------------------------------------------
@@ -110689,7 +113075,36 @@ Map ID: 147
 Map Name: Stairs to Roof
 Tileset: 037: Ruined Western Mansion
 Width: 20, Height: 15
-Auto-Change BGM: X-001. Moonlight Sonata (3rd Movement)
+Auto-Change BGM: W-027. Alice Maestra
+
+#------------------------------------------------------------------------------
+Event ID: 001
+Event Name: Counter(3)
+(X,Y): (008,012)
+
+Page #1
+Conditions
+None
+
+Graphic: Object ball
+
+Autonomous Movement
+Type: Fixed
+Speed: 3: Slow
+Freq: 3: Low
+Options Enabled
+Move Animation
+Trigger: Event Touch
+
+List of Event Commands:
+@>Play SE: 'Door exit', 80, 100
+@>Change Screen Color Tone: (-255,-255,-255,0), @6
+@>Wait: 8 frame(s)
+@>Transfer Player:[054: Prismriver Manor (F3)], (054,029), No Fade
+@>Set Move Route: Player
+ :              : $>Move Down
+@>Change Screen Color Tone: (-50,-50,-50,0), @6
+@>
 
 #------------------------------------------------------------------------------
 Event ID: 003
@@ -110801,7 +113216,7 @@ Map ID: 148
 Map Name: Roof
 Tileset: 037: Ruined Western Mansion
 Width: 35, Height: 29
-Auto-Change BGM: W-012. Hourai Illusion ~ Far East
+Auto-Change BGM: W-027. Alice Maestra
 
 #------------------------------------------------------------------------------
 Event ID: 001
@@ -110823,6 +113238,7 @@ Move Animation
 Trigger: Action Button
 
 List of Event Commands:
+@>Change Battle BGM: 'B-015. Magical Girl's Crusade', 100, 100
 @>
 
 #------------------------------------------------------------------------------
@@ -110851,9 +113267,52 @@ List of Event Commands:
  @>Change Screen Color Tone: (-255,-255,-255,0), @6
  @>Wait: 8 frame(s)
  @>Transfer Player:[147: Stairs to Roof], (010,005), Down, No Fade
- @>Change Screen Color Tone: (0,0,0,0), @6
+ @>Change Screen Color Tone: (-50,-50,-50,0), @6
  @>
 : Branch End
+@>
+
+#------------------------------------------------------------------------------
+Event ID: 003
+Event Name: Item
+(X,Y): (025,016)
+
+Page #1
+Conditions
+None
+
+Graphic: Object ball
+
+Autonomous Movement
+Type: Fixed
+Speed: 3: Slow
+Freq: 3: Low
+Options Enabled
+Move Animation
+Trigger: Action Button
+
+List of Event Commands:
+@>Conditional Branch: Script: pbItemBall(:LIFEORB)
+ @>Control Self Switch: A =ON
+ @>
+: Else
+ @>
+: Branch End
+@>
+
+Page #2
+Conditions
+Self Switch A is ON
+
+Autonomous Movement
+Type: Fixed
+Speed: 3: Slow
+Freq: 3: Low
+Options Enabled
+Move Animation
+Trigger: Action Button
+
+List of Event Commands:
 @>
 
 #------------------------------------------------------------------------------
@@ -116059,11 +118518,17 @@ List of Event Commands:
  @>Wait: 8 frame(s)
  @>Play ME: 'Pkmn healing', 100, 100
  @>Wait: 60 frame(s)
- @>Conditional Branch: Script: GameData::MapMetadata.get($game_map.map_id)&.has_flag?("Basement")
+ @>Conditional Branch: Script: GameData::MapMetadata.get($game_map.map_id)&.has_flag?("Basement") || GameData::MapMetadata.get($game_map.map_id)&.has_flag?("BasementFloor")
   @>Change Screen Color Tone: (-102,-102,-102,0), @6
   @>
  : Else
-  @>Change Screen Color Tone: (0,0,0,0), @6
+  @>Conditional Branch: Script: GameData::MapMetadata.get($game_map.map_id)&.has_flag?("PrismriverManor")
+   @>Change Screen Color Tone: (-50,-50,-50,0), @6
+   @>
+  : Else
+   @>Change Screen Color Tone: (0,0,0,0), @6
+   @>
+  : Branch End
   @>
  : Branch End
  @>Text: \pn's entire party was healed!

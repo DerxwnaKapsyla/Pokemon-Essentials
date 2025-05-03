@@ -16635,3 +16635,619 @@ Backtrace:
 [Touhoumon Essentials Development Kit] 004_Overworld_EncounterModifiers.rb:121:in `block in <main>'
 005_Event_Handlers.rb:89:in `block in trigger'
 005_Event_Handlers.rb:89:in `each_value'
+
+=================
+
+[2025-04-25 14:56:41 -0700]
+[Pokémon Essentials version 21.1]
+
+Error in Plugin: [Touhoumon Essentials Development Kit]
+Exception: SyntaxError
+Message: [Touhoumon Essentials Development Kit] 008_AI_Utilities.rb:111: syntax error, unexpected symbol literal
+..., :FLOWOFTIME, :SPECTRALTWIN. :SPECTRALTOUCH],
+...                              ^
+[Touhoumon Essentials Development Kit] 008_AI_Utilities.rb:121: syntax error, unexpected [, expecting local variable or method
+    4  => [:ANGERPOINT, :BADDREAMS, :CHE...
+          ^
+[Touhoumon Essentials Development Kit] 008_AI_Utilities.rb:128: syntax error, unexpected ',', expecting `end'
+...IKO, :INFECTIOUS, :POISONBODY],
+...                              ^
+[Touhoumon Essentials Development Kit] 008_AI_Utilities.rb:138: syntax error, unexpected [, expecting local variable or method
+    2  => [:BATTLEARMOR, :COLORCHANGE, :...
+          ^
+[Touhoumon Essentials Development Kit] 008_AI_Utilities.rb:143: syntax error, unexpected ',', expecting `end'
+...:GUARDARMOR, :SPECTRALENCHANT],
+...                              ^
+[Touhoumon Essentials Development Kit] 008_AI_Utilities.rb:148: syntax error, unexpected [, expecting local variable or method
+    0  => [:ANTICIPATION, :ASONECHILLING...
+          ^
+[Touhoumon Essentials Development Kit] 008_AI_Utilities.rb:153: syntax error, unexpected ',', expecting `end'
+...    :JEALOUSY, :POTATOHARVEST],
+...                              ^
+[Touhoumon Essentials Development Kit] 008_AI_Utilities.rb:158: syntax error, unexpected [, expecting local variable or method
+    -2 => [:SLOWSTART, :TRUANT,
+          ^
+[Touhoumon Essentials Development Kit] 008_AI_Utilities.rb:160: syntax error, unexpected '}', expecting `end'
+
+Backtrace:
+005_PluginManager.rb:635:in `eval'
+005_PluginManager.rb:635:in `block (2 levels) in runPlugins'
+005_PluginManager.rb:625:in `each'
+005_PluginManager.rb:625:in `block in runPlugins'
+005_PluginManager.rb:616:in `each'
+005_PluginManager.rb:616:in `runPlugins'
+999_Main.rb:35:in `mainFunctionDebug'
+999_Main.rb:19:in `block in mainFunction'
+003_Errors.rb:79:in `pbCriticalCode'
+999_Main.rb:19:in `mainFunction'
+
+=================
+
+[2025-04-25 14:58:33 -0700]
+[Pokémon Essentials version 21.1]
+
+Error in Plugin: [Touhoumon Essentials Development Kit]
+Exception: SyntaxError
+Message: [Touhoumon Essentials Development Kit] 003_AI_MoveEffects_BattlerOther.rb:290: syntax error, unexpected ')'
+...bility_id == :SPECTRALGUARD ||)
+...                              ^
+[Touhoumon Essentials Development Kit] 003_AI_MoveEffects_BattlerOther.rb:292: syntax error, unexpected '}', expecting ')'
+[Touhoumon Essentials Development Kit] 003_AI_MoveEffects_BattlerOther.rb:434: syntax error, unexpected end-of-input, expecting ')'
+
+Backtrace:
+005_PluginManager.rb:635:in `eval'
+005_PluginManager.rb:635:in `block (2 levels) in runPlugins'
+005_PluginManager.rb:625:in `each'
+005_PluginManager.rb:625:in `block in runPlugins'
+005_PluginManager.rb:616:in `each'
+005_PluginManager.rb:616:in `runPlugins'
+999_Main.rb:35:in `mainFunctionDebug'
+999_Main.rb:19:in `block in mainFunction'
+003_Errors.rb:79:in `pbCriticalCode'
+999_Main.rb:19:in `mainFunction'
+
+=================
+
+[2025-04-25 20:26:51 -0700]
+[Pokémon Essentials version 21.1]
+[v21.1 Hotfixes 1.0.9]
+
+Script error in event 13 (coords 50,39), map 50 (Prismriver Manor (F1))
+Exception: NoMethodError
+Message: undefined method `[]=' for nil:NilClass
+
+***Full script:
+#pbSet(152,rand(12)) # 1st Floor Challenge
+#pbSet(153,rand(12)) # 2nd Floor Challenge
+#pbSet(154,rand(12)) # 3rd Floor Challenge
+#pbSet(155,rand(12)) # Basement Challenge
+
+$game_variable[152], $game_variable[153], $game_variable[154], $game_variable[155] = (0...11).to_a.sample(4)
+
+Backtrace:
+(eval):6:in `execute_script'
+003_Interpreter.rb:140:in `eval'
+003_Interpreter.rb:140:in `execute_script'
+004_Interpreter_Commands.rb:1177:in `command_355'
+004_Interpreter_Commands.rb:116:in `execute_command'
+003_Interpreter.rb:132:in `block in update'
+003_Interpreter.rb:86:in `loop'
+003_Interpreter.rb:86:in `update'
+002_Scene_Map.rb:167:in `block in update'
+002_Scene_Map.rb:166:in `loop'
+
+=================
+
+[2025-04-25 20:28:10 -0700]
+[Pokémon Essentials version 21.1]
+[v21.1 Hotfixes 1.0.9]
+
+Script error in event 13 (coords 50,39), map 50 (Prismriver Manor (F1))
+Exception: NoMethodError
+Message: undefined method `[]=' for nil:NilClass
+
+***Full script:
+$game_variable[152], $game_variable[153], $game_variable[154], $game_variable[155] = (0...12).to_a.sample(4)
+
+Backtrace:
+(eval):1:in `execute_script'
+003_Interpreter.rb:140:in `eval'
+003_Interpreter.rb:140:in `execute_script'
+004_Interpreter_Commands.rb:1177:in `command_355'
+004_Interpreter_Commands.rb:116:in `execute_command'
+003_Interpreter.rb:132:in `block in update'
+003_Interpreter.rb:86:in `loop'
+003_Interpreter.rb:86:in `update'
+002_Scene_Map.rb:167:in `block in update'
+002_Scene_Map.rb:166:in `loop'
+
+=================
+
+[2025-04-25 20:31:20 -0700]
+[Pokémon Essentials version 21.1]
+[v21.1 Hotfixes 1.0.9]
+
+Script error in event 13 (coords 50,39), map 50 (Prismriver Manor (F1))
+Exception: NoMethodError
+Message: undefined method `[]=' for nil:NilClass
+
+***Full script:
+$game_variable[152], $game_variable[153], $game_variable[154], $game_variable[155] = (0...12).to_a.sample(4)
+
+Backtrace:
+(eval):1:in `execute_script'
+003_Interpreter.rb:140:in `eval'
+003_Interpreter.rb:140:in `execute_script'
+004_Interpreter_Commands.rb:1177:in `command_355'
+004_Interpreter_Commands.rb:116:in `execute_command'
+003_Interpreter.rb:132:in `block in update'
+003_Interpreter.rb:86:in `loop'
+003_Interpreter.rb:86:in `update'
+002_Scene_Map.rb:167:in `block in update'
+002_Scene_Map.rb:166:in `loop'
+
+=================
+
+[2025-04-25 20:32:28 -0700]
+[Pokémon Essentials version 21.1]
+[v21.1 Hotfixes 1.0.9]
+
+Exception: NameError
+Message: undefined local variable or method `showAnim' for main:Object
+
+Backtrace:
+[Deluxe Battle Kit] 003 Prismriver Manor Scripts.rb:113:in `block in <main>'
+[Deluxe Battle Kit] [002] Midbattle Triggers.rb:42:in `block in trigger_each'
+[Deluxe Battle Kit] [002] Midbattle Triggers.rb:41:in `each'
+[Deluxe Battle Kit] [002] Midbattle Triggers.rb:41:in `trigger_each'
+[Deluxe Battle Kit] [001] Midbattle Overwrites.rb:153:in `block (2 levels) in pbMidbattleScripting'
+[Deluxe Battle Kit] [001] Midbattle Overwrites.rb:152:in `each'
+[Deluxe Battle Kit] [001] Midbattle Overwrites.rb:152:in `block in pbMidbattleScripting'
+[Deluxe Battle Kit] [001] Midbattle Overwrites.rb:148:in `loop'
+[Deluxe Battle Kit] [001] Midbattle Overwrites.rb:148:in `pbMidbattleScripting'
+[Deluxe Battle Kit] [001] Midbattle Overwrites.rb:111:in `pbDeluxeTriggers'
+
+=================
+
+[2025-04-25 20:33:44 -0700]
+[Pokémon Essentials version 21.1]
+[v21.1 Hotfixes 1.0.9]
+
+Exception: NoMethodError
+Message: undefined method `basement' for main:Object
+
+Backtrace:
+[Deluxe Battle Kit] 003 Prismriver Manor Scripts.rb:168:in `pbFloorCheck'
+[Deluxe Battle Kit] 003 Prismriver Manor Scripts.rb:160:in `block in <main>'
+[Deluxe Battle Kit] [002] Midbattle Triggers.rb:42:in `block in trigger_each'
+[Deluxe Battle Kit] [002] Midbattle Triggers.rb:41:in `each'
+[Deluxe Battle Kit] [002] Midbattle Triggers.rb:41:in `trigger_each'
+[Deluxe Battle Kit] [001] Midbattle Overwrites.rb:153:in `block (2 levels) in pbMidbattleScripting'
+[Deluxe Battle Kit] [001] Midbattle Overwrites.rb:152:in `each'
+[Deluxe Battle Kit] [001] Midbattle Overwrites.rb:152:in `block in pbMidbattleScripting'
+[Deluxe Battle Kit] [001] Midbattle Overwrites.rb:148:in `loop'
+[Deluxe Battle Kit] [001] Midbattle Overwrites.rb:148:in `pbMidbattleScripting'
+
+=================
+
+[2025-04-25 20:34:57 -0700]
+[Pokémon Essentials version 21.1]
+[v21.1 Hotfixes 1.0.9]
+
+Exception: NoMethodError
+Message: undefined method `basement' for main:Object
+
+Backtrace:
+[Deluxe Battle Kit] 003 Prismriver Manor Scripts.rb:173:in `pbFloorCheck'
+[Deluxe Battle Kit] 003 Prismriver Manor Scripts.rb:160:in `block in <main>'
+[Deluxe Battle Kit] [002] Midbattle Triggers.rb:42:in `block in trigger_each'
+[Deluxe Battle Kit] [002] Midbattle Triggers.rb:41:in `each'
+[Deluxe Battle Kit] [002] Midbattle Triggers.rb:41:in `trigger_each'
+[Deluxe Battle Kit] [001] Midbattle Overwrites.rb:153:in `block (2 levels) in pbMidbattleScripting'
+[Deluxe Battle Kit] [001] Midbattle Overwrites.rb:152:in `each'
+[Deluxe Battle Kit] [001] Midbattle Overwrites.rb:152:in `block in pbMidbattleScripting'
+[Deluxe Battle Kit] [001] Midbattle Overwrites.rb:148:in `loop'
+[Deluxe Battle Kit] [001] Midbattle Overwrites.rb:148:in `pbMidbattleScripting'
+
+=================
+
+[2025-04-25 20:36:38 -0700]
+[Pokémon Essentials version 21.1]
+[v21.1 Hotfixes 1.0.9]
+
+Exception: NameError
+Message: undefined local variable or method `battle' for main:Object
+
+Backtrace:
+[Deluxe Battle Kit] 003 Prismriver Manor Scripts.rb:218:in `pbFloorTerrain'
+[Deluxe Battle Kit] 003 Prismriver Manor Scripts.rb:185:in `pbFloorCheck'
+[Deluxe Battle Kit] 003 Prismriver Manor Scripts.rb:160:in `block in <main>'
+[Deluxe Battle Kit] [002] Midbattle Triggers.rb:42:in `block in trigger_each'
+[Deluxe Battle Kit] [002] Midbattle Triggers.rb:41:in `each'
+[Deluxe Battle Kit] [002] Midbattle Triggers.rb:41:in `trigger_each'
+[Deluxe Battle Kit] [001] Midbattle Overwrites.rb:153:in `block (2 levels) in pbMidbattleScripting'
+[Deluxe Battle Kit] [001] Midbattle Overwrites.rb:152:in `each'
+[Deluxe Battle Kit] [001] Midbattle Overwrites.rb:152:in `block in pbMidbattleScripting'
+[Deluxe Battle Kit] [001] Midbattle Overwrites.rb:148:in `loop'
+
+=================
+
+[2025-04-25 20:37:45 -0700]
+[Pokémon Essentials version 21.1]
+[v21.1 Hotfixes 1.0.9]
+
+Exception: NameError
+Message: undefined local variable or method `player' for main:Object
+
+Backtrace:
+[Deluxe Battle Kit] 003 Prismriver Manor Scripts.rb:191:in `pbFloorCheck'
+[Deluxe Battle Kit] 003 Prismriver Manor Scripts.rb:160:in `block in <main>'
+[Deluxe Battle Kit] [002] Midbattle Triggers.rb:42:in `block in trigger_each'
+[Deluxe Battle Kit] [002] Midbattle Triggers.rb:41:in `each'
+[Deluxe Battle Kit] [002] Midbattle Triggers.rb:41:in `trigger_each'
+[Deluxe Battle Kit] [001] Midbattle Overwrites.rb:153:in `block (2 levels) in pbMidbattleScripting'
+[Deluxe Battle Kit] [001] Midbattle Overwrites.rb:152:in `each'
+[Deluxe Battle Kit] [001] Midbattle Overwrites.rb:152:in `block in pbMidbattleScripting'
+[Deluxe Battle Kit] [001] Midbattle Overwrites.rb:148:in `loop'
+[Deluxe Battle Kit] [001] Midbattle Overwrites.rb:148:in `pbMidbattleScripting'
+
+=================
+
+[2025-04-25 20:39:16 -0700]
+[Pokémon Essentials version 21.1]
+[v21.1 Hotfixes 1.0.9]
+
+Exception: NameError
+Message: undefined local variable or method `battle' for main:Object
+
+Backtrace:
+[Deluxe Battle Kit] 003 Prismriver Manor Scripts.rb:172:in `pbFloorCheck'
+[Deluxe Battle Kit] 003 Prismriver Manor Scripts.rb:160:in `block in <main>'
+[Deluxe Battle Kit] [002] Midbattle Triggers.rb:42:in `block in trigger_each'
+[Deluxe Battle Kit] [002] Midbattle Triggers.rb:41:in `each'
+[Deluxe Battle Kit] [002] Midbattle Triggers.rb:41:in `trigger_each'
+[Deluxe Battle Kit] [001] Midbattle Overwrites.rb:153:in `block (2 levels) in pbMidbattleScripting'
+[Deluxe Battle Kit] [001] Midbattle Overwrites.rb:152:in `each'
+[Deluxe Battle Kit] [001] Midbattle Overwrites.rb:152:in `block in pbMidbattleScripting'
+[Deluxe Battle Kit] [001] Midbattle Overwrites.rb:148:in `loop'
+[Deluxe Battle Kit] [001] Midbattle Overwrites.rb:148:in `pbMidbattleScripting'
+
+=================
+
+[2025-04-25 20:41:15 -0700]
+[Pokémon Essentials version 21.1]
+[v21.1 Hotfixes 1.0.9]
+
+Exception: NameError
+Message: undefined local variable or method `battler' for main:Object
+
+Backtrace:
+[Deluxe Battle Kit] 003 Prismriver Manor Scripts.rb:221:in `pbFloorTerrain'
+[Deluxe Battle Kit] 003 Prismriver Manor Scripts.rb:188:in `pbFloorCheck'
+[Deluxe Battle Kit] 003 Prismriver Manor Scripts.rb:160:in `block in <main>'
+[Deluxe Battle Kit] [002] Midbattle Triggers.rb:42:in `block in trigger_each'
+[Deluxe Battle Kit] [002] Midbattle Triggers.rb:41:in `each'
+[Deluxe Battle Kit] [002] Midbattle Triggers.rb:41:in `trigger_each'
+[Deluxe Battle Kit] [001] Midbattle Overwrites.rb:153:in `block (2 levels) in pbMidbattleScripting'
+[Deluxe Battle Kit] [001] Midbattle Overwrites.rb:152:in `each'
+[Deluxe Battle Kit] [001] Midbattle Overwrites.rb:152:in `block in pbMidbattleScripting'
+[Deluxe Battle Kit] [001] Midbattle Overwrites.rb:148:in `loop'
+
+=================
+
+[2025-04-25 20:42:57 -0700]
+[Pokémon Essentials version 21.1]
+[v21.1 Hotfixes 1.0.9]
+
+Exception: NameError
+Message: undefined local variable or method `battle' for main:Object
+
+Backtrace:
+[Deluxe Battle Kit] 003 Prismriver Manor Scripts.rb:194:in `pbFloorCheck'
+[Deluxe Battle Kit] 003 Prismriver Manor Scripts.rb:160:in `block in <main>'
+[Deluxe Battle Kit] [002] Midbattle Triggers.rb:42:in `block in trigger_each'
+[Deluxe Battle Kit] [002] Midbattle Triggers.rb:41:in `each'
+[Deluxe Battle Kit] [002] Midbattle Triggers.rb:41:in `trigger_each'
+[Deluxe Battle Kit] [001] Midbattle Overwrites.rb:153:in `block (2 levels) in pbMidbattleScripting'
+[Deluxe Battle Kit] [001] Midbattle Overwrites.rb:152:in `each'
+[Deluxe Battle Kit] [001] Midbattle Overwrites.rb:152:in `block in pbMidbattleScripting'
+[Deluxe Battle Kit] [001] Midbattle Overwrites.rb:148:in `loop'
+[Deluxe Battle Kit] [001] Midbattle Overwrites.rb:148:in `pbMidbattleScripting'
+
+=================
+
+[2025-04-25 20:43:43 -0700]
+[Pokémon Essentials version 21.1]
+[v21.1 Hotfixes 1.0.9]
+
+Exception: NoMethodError
+Message: undefined method `pbStartTerrain' for nil:NilClass
+
+Backtrace:
+[Deluxe Battle Kit] 003 Prismriver Manor Scripts.rb:221:in `pbFloorTerrain'
+[Deluxe Battle Kit] 003 Prismriver Manor Scripts.rb:188:in `pbFloorCheck'
+[Deluxe Battle Kit] 003 Prismriver Manor Scripts.rb:160:in `block in <main>'
+[Deluxe Battle Kit] [002] Midbattle Triggers.rb:42:in `block in trigger_each'
+[Deluxe Battle Kit] [002] Midbattle Triggers.rb:41:in `each'
+[Deluxe Battle Kit] [002] Midbattle Triggers.rb:41:in `trigger_each'
+[Deluxe Battle Kit] [001] Midbattle Overwrites.rb:153:in `block (2 levels) in pbMidbattleScripting'
+[Deluxe Battle Kit] [001] Midbattle Overwrites.rb:152:in `each'
+[Deluxe Battle Kit] [001] Midbattle Overwrites.rb:152:in `block in pbMidbattleScripting'
+[Deluxe Battle Kit] [001] Midbattle Overwrites.rb:148:in `loop'
+
+=================
+
+[2025-04-25 20:47:06 -0700]
+[Pokémon Essentials version 21.1]
+[v21.1 Hotfixes 1.0.9]
+
+Exception: NameError
+Message: undefined local variable or method `battler' for main:Object
+
+Backtrace:
+[Deluxe Battle Kit] 003 Prismriver Manor Scripts.rb:210:in `pbFloorWeather'
+[Deluxe Battle Kit] 003 Prismriver Manor Scripts.rb:186:in `pbFloorCheck'
+[Deluxe Battle Kit] 003 Prismriver Manor Scripts.rb:160:in `block in <main>'
+[Deluxe Battle Kit] [002] Midbattle Triggers.rb:42:in `block in trigger_each'
+[Deluxe Battle Kit] [002] Midbattle Triggers.rb:41:in `each'
+[Deluxe Battle Kit] [002] Midbattle Triggers.rb:41:in `trigger_each'
+[Deluxe Battle Kit] [001] Midbattle Overwrites.rb:153:in `block (2 levels) in pbMidbattleScripting'
+[Deluxe Battle Kit] [001] Midbattle Overwrites.rb:152:in `each'
+[Deluxe Battle Kit] [001] Midbattle Overwrites.rb:152:in `block in pbMidbattleScripting'
+[Deluxe Battle Kit] [001] Midbattle Overwrites.rb:148:in `loop'
+
+=================
+
+[2025-04-25 20:48:27 -0700]
+[Pokémon Essentials version 21.1]
+[v21.1 Hotfixes 1.0.9]
+
+Exception: NoMethodError
+Message: undefined method `pbStartWeather' for nil:NilClass
+
+Backtrace:
+[Deluxe Battle Kit] 003 Prismriver Manor Scripts.rb:210:in `pbFloorWeather'
+[Deluxe Battle Kit] 003 Prismriver Manor Scripts.rb:186:in `pbFloorCheck'
+[Deluxe Battle Kit] 003 Prismriver Manor Scripts.rb:160:in `block in <main>'
+[Deluxe Battle Kit] [002] Midbattle Triggers.rb:42:in `block in trigger_each'
+[Deluxe Battle Kit] [002] Midbattle Triggers.rb:41:in `each'
+[Deluxe Battle Kit] [002] Midbattle Triggers.rb:41:in `trigger_each'
+[Deluxe Battle Kit] [001] Midbattle Overwrites.rb:153:in `block (2 levels) in pbMidbattleScripting'
+[Deluxe Battle Kit] [001] Midbattle Overwrites.rb:152:in `each'
+[Deluxe Battle Kit] [001] Midbattle Overwrites.rb:152:in `block in pbMidbattleScripting'
+[Deluxe Battle Kit] [001] Midbattle Overwrites.rb:148:in `loop'
+
+=================
+
+[2025-04-25 21:31:34 -0700]
+[Pokémon Essentials version 21.1]
+[v21.1 Hotfixes 1.0.9]
+
+Script error in event 13 (coords 50,39), map 50 (Prismriver Manor (F1))
+Exception: SyntaxError
+Message: (eval):1: syntax error, unexpected ',', expecting end-of-input
+pbGet(152), pbGet(153), pbGet(154), $gam...
+          ^
+
+
+***Full script:
+pbGet(152), pbGet(153), pbGet(154), $game_variables[155] = (0...12).to_a.sample(4)
+
+=================
+
+[2025-04-25 21:32:36 -0700]
+[Pokémon Essentials version 21.1]
+[v21.1 Hotfixes 1.0.9]
+
+Script error in event 13 (coords 50,39), map 50 (Prismriver Manor (F1))
+Exception: SyntaxError
+Message: (eval):1: syntax error, unexpected ',', expecting end-of-input
+pbGet(152), pbGet(153), pbGet(154), $gam...
+          ^
+
+
+***Full script:
+pbGet(152), pbGet(153), pbGet(154), $game_variables[155] = (0...12).to_a.sample(4)
+
+=================
+
+[2025-04-25 21:33:46 -0700]
+[Pokémon Essentials version 21.1]
+[v21.1 Hotfixes 1.0.9]
+
+Script error in event 13 (coords 50,39), map 50 (Prismriver Manor (F1))
+Exception: SyntaxError
+Message: (eval):1: syntax error, unexpected ',', expecting end-of-input
+pbSet(152), pbSet(153), pbSet(154), pbSe...
+          ^
+
+
+***Full script:
+pbSet(152), pbSet(153), pbSet(154), pbSet(155) = (0...12).to_a.sample(4)
+
+=================
+
+[2025-04-25 21:35:13 -0700]
+[Pokémon Essentials version 21.1]
+[v21.1 Hotfixes 1.0.9]
+
+Exception: NameError
+Message: undefined local variable or method `battler' for main:Object
+
+Backtrace:
+[Deluxe Battle Kit] 003 Prismriver Manor Scripts.rb:178:in `block in <main>'
+[Deluxe Battle Kit] [002] Midbattle Triggers.rb:42:in `block in trigger_each'
+[Deluxe Battle Kit] [002] Midbattle Triggers.rb:41:in `each'
+[Deluxe Battle Kit] [002] Midbattle Triggers.rb:41:in `trigger_each'
+[Deluxe Battle Kit] [001] Midbattle Overwrites.rb:153:in `block (2 levels) in pbMidbattleScripting'
+[Deluxe Battle Kit] [001] Midbattle Overwrites.rb:152:in `each'
+[Deluxe Battle Kit] [001] Midbattle Overwrites.rb:152:in `block in pbMidbattleScripting'
+[Deluxe Battle Kit] [001] Midbattle Overwrites.rb:148:in `loop'
+[Deluxe Battle Kit] [001] Midbattle Overwrites.rb:148:in `pbMidbattleScripting'
+[Deluxe Battle Kit] [001] Midbattle Overwrites.rb:111:in `pbDeluxeTriggers'
+
+=================
+
+[2025-04-25 21:53:34 -0700]
+[Pokémon Essentials version 21.1]
+[v21.1 Hotfixes 1.0.9]
+
+Exception: NameError
+Message: undefined local variable or method `battler' for main:Object
+
+Backtrace:
+[Deluxe Battle Kit] 003 Prismriver Manor Scripts.rb:178:in `block in <main>'
+[Deluxe Battle Kit] [002] Midbattle Triggers.rb:42:in `block in trigger_each'
+[Deluxe Battle Kit] [002] Midbattle Triggers.rb:41:in `each'
+[Deluxe Battle Kit] [002] Midbattle Triggers.rb:41:in `trigger_each'
+[Deluxe Battle Kit] [001] Midbattle Overwrites.rb:153:in `block (2 levels) in pbMidbattleScripting'
+[Deluxe Battle Kit] [001] Midbattle Overwrites.rb:152:in `each'
+[Deluxe Battle Kit] [001] Midbattle Overwrites.rb:152:in `block in pbMidbattleScripting'
+[Deluxe Battle Kit] [001] Midbattle Overwrites.rb:148:in `loop'
+[Deluxe Battle Kit] [001] Midbattle Overwrites.rb:148:in `pbMidbattleScripting'
+[Deluxe Battle Kit] [001] Midbattle Overwrites.rb:111:in `pbDeluxeTriggers'
+
+=================
+
+[2025-04-25 21:55:54 -0700]
+[Pokémon Essentials version 21.1]
+[v21.1 Hotfixes 1.0.9]
+
+Exception: NoMethodError
+Message: undefined method `pbStartWeather' for nil:NilClass
+
+Backtrace:
+[Deluxe Battle Kit] 003 Prismriver Manor Scripts.rb:178:in `block in <main>'
+[Deluxe Battle Kit] [002] Midbattle Triggers.rb:42:in `block in trigger_each'
+[Deluxe Battle Kit] [002] Midbattle Triggers.rb:41:in `each'
+[Deluxe Battle Kit] [002] Midbattle Triggers.rb:41:in `trigger_each'
+[Deluxe Battle Kit] [001] Midbattle Overwrites.rb:153:in `block (2 levels) in pbMidbattleScripting'
+[Deluxe Battle Kit] [001] Midbattle Overwrites.rb:152:in `each'
+[Deluxe Battle Kit] [001] Midbattle Overwrites.rb:152:in `block in pbMidbattleScripting'
+[Deluxe Battle Kit] [001] Midbattle Overwrites.rb:148:in `loop'
+[Deluxe Battle Kit] [001] Midbattle Overwrites.rb:148:in `pbMidbattleScripting'
+[Deluxe Battle Kit] [001] Midbattle Overwrites.rb:111:in `pbDeluxeTriggers'
+
+=================
+
+[2025-04-25 21:58:37 -0700]
+[Pokémon Essentials version 21.1]
+[v21.1 Hotfixes 1.0.9]
+
+Exception: NoMethodError
+Message: undefined method `pbStartTerrain' for nil:NilClass
+
+Backtrace:
+[Deluxe Battle Kit] 003 Prismriver Manor Scripts.rb:187:in `block in <main>'
+[Deluxe Battle Kit] [002] Midbattle Triggers.rb:42:in `block in trigger_each'
+[Deluxe Battle Kit] [002] Midbattle Triggers.rb:41:in `each'
+[Deluxe Battle Kit] [002] Midbattle Triggers.rb:41:in `trigger_each'
+[Deluxe Battle Kit] [001] Midbattle Overwrites.rb:153:in `block (2 levels) in pbMidbattleScripting'
+[Deluxe Battle Kit] [001] Midbattle Overwrites.rb:152:in `each'
+[Deluxe Battle Kit] [001] Midbattle Overwrites.rb:152:in `block in pbMidbattleScripting'
+[Deluxe Battle Kit] [001] Midbattle Overwrites.rb:148:in `loop'
+[Deluxe Battle Kit] [001] Midbattle Overwrites.rb:148:in `pbMidbattleScripting'
+[Deluxe Battle Kit] [001] Midbattle Overwrites.rb:111:in `pbDeluxeTriggers'
+
+=================
+
+[2025-04-25 22:55:26 -0700]
+[Pokémon Essentials version 21.1]
+[v21.1 Hotfixes 1.0.9]
+
+Error in Plugin: [Deluxe Battle Kit]
+Exception: SyntaxError
+Message: [Deluxe Battle Kit] 003 Prismriver Manor Scripts.rb:260: syntax error, unexpected '}', expecting `end'
+[Deluxe Battle Kit] 003 Prismriver Manor Scripts.rb:269: syntax error, unexpected end-of-input, expecting `end'
+
+Backtrace:
+005_PluginManager.rb:635:in `eval'
+005_PluginManager.rb:635:in `block (2 levels) in runPlugins'
+005_PluginManager.rb:625:in `each'
+005_PluginManager.rb:625:in `block in runPlugins'
+005_PluginManager.rb:616:in `each'
+005_PluginManager.rb:616:in `runPlugins'
+999_Main.rb:35:in `mainFunctionDebug'
+999_Main.rb:19:in `block in mainFunction'
+003_Errors.rb:79:in `pbCriticalCode'
+999_Main.rb:19:in `mainFunction'
+
+=================
+
+[2025-04-25 22:58:47 -0700]
+[Pokémon Essentials version 21.1]
+[v21.1 Hotfixes 1.0.9]
+
+Error in Plugin: [Deluxe Battle Kit]
+Exception: SyntaxError
+Message: [Deluxe Battle Kit] 003 Prismriver Manor Scripts.rb:260: syntax error, unexpected '}', expecting `end'
+[Deluxe Battle Kit] 003 Prismriver Manor Scripts.rb:269: syntax error, unexpected end-of-input, expecting `end'
+
+Backtrace:
+005_PluginManager.rb:635:in `eval'
+005_PluginManager.rb:635:in `block (2 levels) in runPlugins'
+005_PluginManager.rb:625:in `each'
+005_PluginManager.rb:625:in `block in runPlugins'
+005_PluginManager.rb:616:in `each'
+005_PluginManager.rb:616:in `runPlugins'
+999_Main.rb:35:in `mainFunctionDebug'
+999_Main.rb:19:in `block in mainFunction'
+003_Errors.rb:79:in `pbCriticalCode'
+999_Main.rb:19:in `mainFunction'
+
+=================
+
+[2025-04-25 23:22:12 -0700]
+[Pokémon Essentials version 21.1]
+[v21.1 Hotfixes 1.0.9]
+
+Error in Plugin: [Deluxe Battle Kit]
+Exception: SyntaxError
+Message: [Deluxe Battle Kit] 003 Prismriver Manor Scripts.rb:92: syntax error, unexpected `when', expecting `end'
+      when 1 
+      ^~~~
+[Deluxe Battle Kit] 003 Prismriver Manor Scripts.rb:96: syntax error, unexpected `when', expecting `end'
+      when 2
+      ^~~~
+[Deluxe Battle Kit] 003 Prismriver Manor Scripts.rb:100: syntax error, unexpected `when', expecting `end'
+      when 3
+      ^~~~
+[Deluxe Battle Kit] 003 Prismriver Manor Scripts.rb:104: syntax error, unexpected `when', expecting `end'
+      when 4 
+      ^~~~
+[Deluxe Battle Kit] 003 Prismriver Manor Scripts.rb:112: syntax error, unexpected `when', expecting `end'
+      when 1
+      ^~~~
+[Deluxe Battle Kit] 003 Prismriver Manor Scripts.rb:138: syntax error, unexpected `when', expecting `end'
+      when 2
+      ^~~~
+[Deluxe Battle Kit] 003 Prismriver Manor Scripts.rb:176: syntax error, unexpected '}', expecting `end'
+[Deluxe Battle Kit] 003 Prismriver Manor Scripts.rb:270: syntax error, unexpected end-of-input, expecting `end'
+
+Backtrace:
+005_PluginManager.rb:635:in `eval'
+005_PluginManager.rb:635:in `block (2 levels) in runPlugins'
+005_PluginManager.rb:625:in `each'
+005_PluginManager.rb:625:in `block in runPlugins'
+005_PluginManager.rb:616:in `each'
+005_PluginManager.rb:616:in `runPlugins'
+999_Main.rb:35:in `mainFunctionDebug'
+999_Main.rb:19:in `block in mainFunction'
+003_Errors.rb:79:in `pbCriticalCode'
+999_Main.rb:19:in `mainFunction'
+
+=================
+
+[2025-04-26 00:47:41 -0700]
+[Pokémon Essentials version 21.1]
+[v21.1 Hotfixes 1.0.9]
+
+Script error in event 13 (coords 50,39), map 50 (Prismriver Manor (F1))
+Exception: SyntaxError
+Message: (eval):1: syntax error, unexpected ',', expecting end-of-input
+pbGet(152), pbGet(153), pbGet(154), $gam...
+          ^
+
+
+***Full script:
+pbGet(152), pbGet(153), pbGet(154), $game_variables[155] = (0...12).to_a.sample(4)
