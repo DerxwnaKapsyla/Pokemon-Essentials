@@ -32807,7 +32807,7 @@ List of Event Commands:
 
 #------------------------------------------------------------------------------
 Event ID: 011
-Event Name: EV011
+Event Name: size(2,1)
 (X,Y): (068,017)
 
 Page #1
@@ -32823,14 +32823,17 @@ Move Animation
 Trigger: Action Button
 
 List of Event Commands:
-@>Text: This board shows the total win streak of participants.
-@>Conditional Branch: Self Switch A == ON
- @>Comment: \pn's Win Streak\n
-  :       : Easy: (Variable to store Easy Wins/Loss/Streak)\n
-  :       : Normal: (Variable to store Normal Wins/Loss/Streak)\n
-  :       : Hard: (Variable to store Hard Wins/Loss/Streak)\n
-  :       : Lunatic: (Variable to store Lunatic Wins/Loss/Streak)\n
-  :       : Extra: (Variable to store Extra Wins/Loss/Streak)
+@>Conditional Branch: Player is facing Up
+ @>Text: This board shows the statistics of the tournament participants.
+ @>Conditional Branch: Switch [0118: 1st Tourney. beat] == ON
+  @>Script:     pbPlayDecisionSE
+  :       :     pbFadeOutIn do
+  :       :       scene = PWTStreak_Scene.new
+  :       :       screen = PWTStreakScreen.new(scene)
+  :       :       screen.pbStartScreen
+  :       :     end
+  @>
+ : Branch End
  @>
 : Branch End
 @>
@@ -35463,35 +35466,6 @@ List of Event Commands:
 @>Text: Talk about massive pressure!
 @>Set Move Route: This event
  :              : $>Turn Up
-@>
-
-#------------------------------------------------------------------------------
-Event ID: 052
-Event Name: EV052
-(X,Y): (069,017)
-
-Page #1
-Conditions
-None
-
-Autonomous Movement
-Type: Fixed
-Speed: 3: Slow
-Freq: 3: Low
-Options Enabled
-Move Animation
-Trigger: Action Button
-
-List of Event Commands:
-@>Text: This board shows the total win streak of participants.
-@>Conditional Branch: Self Switch A == ON
- @>Comment: \pn's Win Streak\n
-  :       : Easy: (Variable to store Easy Win Streak) wins\n
-  :       : Normal: (Variable to store Normal Win Streak) wins\n
-  :       : Hard: (Variable to store Hard Win Streak) wins\n
-  :       : Lunatic: (Variable to store Lunatic Win Streak) wins
- @>
-: Branch End
 @>
 
 #------------------------------------------------------------------------------
@@ -42151,9 +42125,9 @@ List of Event Commands:
     @>Comment: --- Subtract 30 FP here
     @>Script: $player.battle_points -= 30
     @>Play SE: 'Mart buy item', 100, 100
-    @>Text: \xn[Merlin]\ptHere you go, \pn! 40 custom made 
+    @>Text: \xn[Merlin]\ptHere you go, \pn! 30 custom made 
      :    : Prismriver Orbs for use within the Manor!
-    @>Text: \pt\PN received 60 Prismriver Orbs from Merlin.
+    @>Text: \pt\PN received 30 Prismriver Orbs from Merlin.
      :    : \me[Item get]\wtnp[40]
     @>Text: \xn[Merlin]\ptOne of the ghostly attendants will notify you when you're out of steps or orbs to return here.
     @>Text: \xn[Merlin]\ptGood luck~ Don't get too scared!
@@ -42189,6 +42163,9 @@ List of Event Commands:
     @>
    : Else
     @>Script: $player.battle_points -= 30
+    :       : 
+    :       : pbSetSelfSwitch2(56,1,"A",false)
+    :       : pbSetSelfSwitch2(148,1,"A",false)
     @>Play SE: 'Mart buy item', 100, 100
     @>Text: \xn[Merlin]\ptLooks like everything is in order! Good luck in there, \pn!
     @>Text: \xn[Merlin]\ptDon't get too cursed~
@@ -42438,6 +42415,69 @@ Move Animation
 Trigger: Action Button
 
 List of Event Commands:
+@>
+
+#------------------------------------------------------------------------------
+Event ID: 040
+Event Name: EV040
+(X,Y): (057,018)
+
+Page #1
+Conditions
+None
+
+Graphic: Object ball
+
+Autonomous Movement
+Type: Fixed
+Speed: 3: Slow
+Freq: 3: Low
+Options Enabled
+Move Animation
+Trigger: Action Button
+
+List of Event Commands:
+@>Script: pbSet(1, $stats.pwt_wins[:Easy_Diff])
+:       : pbSet(2, $stats.pwt_win_streak[:Normal_Diff])
+@>Text: \v[1] \v[2]
+@>
+
+Page #2
+Conditions
+None
+
+Graphic: Object ball
+
+Autonomous Movement
+Type: Fixed
+Speed: 3: Slow
+Freq: 3: Low
+Options Enabled
+Move Animation
+Trigger: Action Button
+
+List of Event Commands:
+@>Script: $stats.pwt_wins[:Easy_Diff] = 151
+:       : $stats.pwt_wins[:Normal_Diff] = 252
+:       : $stats.pwt_wins[:Hard_Diff] = 386
+:       : $stats.pwt_wins[:Lunatic_Diff] = 493
+:       : $stats.pwt_wins[:Extra_Mode] = 514
+@>Script: $stats.pwt_loss[:Easy_Diff] = rand(2500)
+:       : $stats.pwt_loss[:Normal_Diff] = rand(2500)
+:       : $stats.pwt_loss[:Hard_Diff] = rand(2500)
+:       : $stats.pwt_loss[:Lunatic_Diff] = rand(2500)
+:       : $stats.pwt_loss[:Extra_Mode] = rand(2500)
+@>Script: $stats.pwt_win_streak[:Easy_Diff] = rand(1000)
+:       : $stats.pwt_win_streak[:Normal_Diff] = rand(1000)
+:       : $stats.pwt_win_streak[:Hard_Diff] = rand(1000)
+:       : $stats.pwt_win_streak[:Lunatic_Diff] = rand(1000)
+:       : $stats.pwt_win_streak[:Extra_Mode] = rand(1000)
+@>Script:     pbPlayDecisionSE
+:       :     pbFadeOutIn do
+:       :       scene = PWTStreak_Scene.new
+:       :       screen = PWTStreakScreen.new(scene)
+:       :       screen.pbStartScreen
+:       :     end
 @>
 
 #------------------------------------------------------------------------------
@@ -47703,7 +47743,7 @@ Event Name: CShinki
 
 Page #1
 Conditions
-None
+Switch 0132: RWM Challenge Mode is ON
 
 Graphic: Puppet_Shinki
 
@@ -47717,6 +47757,49 @@ Trigger: Action Button
 
 List of Event Commands:
 @>Change Battle BGM: 'B-015. Magical Girl's Crusade', 100, 100
+@>Script: Pokemon.play_cry(:CSHINKI)
+@>Wait: 30 frame(s)
+@>Script: setBattleRule("outcome", 1)
+:       : 
+:       : WildBattle.start(:CSHINKI,35)
+@>Conditional Branch: Variable [0001: Temp Pokemon Choice] == 1
+ @>Text: The wild CShinki fled!
+ @>Control Self Switch: A =ON
+ @>
+: Else
+ @>Control Self Switch: B =ON
+ @>
+: Branch End
+@>
+
+Page #2
+Conditions
+Self Switch A is ON
+
+Autonomous Movement
+Type: Fixed
+Speed: 3: Slow
+Freq: 3: Low
+Options Enabled
+Move Animation
+Trigger: Action Button
+
+List of Event Commands:
+@>
+
+Page #3
+Conditions
+Self Switch B is ON
+
+Autonomous Movement
+Type: Fixed
+Speed: 3: Slow
+Freq: 3: Low
+Options Enabled
+Move Animation
+Trigger: Action Button
+
+List of Event Commands:
 @>
 
 #------------------------------------------------------------------------------
@@ -113225,7 +113308,7 @@ Event Name: CSariel
 
 Page #1
 Conditions
-None
+Switch 0132: RWM Challenge Mode is ON
 
 Graphic: Puppet_Sariel
 
@@ -113239,6 +113322,49 @@ Trigger: Action Button
 
 List of Event Commands:
 @>Change Battle BGM: 'B-015. Magical Girl's Crusade', 100, 100
+@>Script: Pokemon.play_cry(:CSARIEL)
+@>Wait: 30 frame(s)
+@>Script: setBattleRule("outcome", 1)
+:       : 
+:       : WildBattle.start(:CSARIEL,35)
+@>Conditional Branch: Variable [0001: Temp Pokemon Choice] == 1
+ @>Text: The wild CSariel fled!
+ @>Control Self Switch: A =ON
+ @>
+: Else
+ @>Control Self Switch: B =ON
+ @>
+: Branch End
+@>
+
+Page #2
+Conditions
+Self Switch A is ON
+
+Autonomous Movement
+Type: Fixed
+Speed: 3: Slow
+Freq: 3: Low
+Options Enabled
+Move Animation
+Trigger: Action Button
+
+List of Event Commands:
+@>
+
+Page #3
+Conditions
+Self Switch B is ON
+
+Autonomous Movement
+Type: Fixed
+Speed: 3: Slow
+Freq: 3: Low
+Options Enabled
+Move Animation
+Trigger: Action Button
+
+List of Event Commands:
 @>
 
 #------------------------------------------------------------------------------

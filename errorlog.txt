@@ -17251,3 +17251,698 @@ pbGet(152), pbGet(153), pbGet(154), $gam...
 
 ***Full script:
 pbGet(152), pbGet(153), pbGet(154), $game_variables[155] = (0...12).to_a.sample(4)
+
+=================
+
+[2025-05-03 15:07:46 -0700]
+[Pokémon Essentials version 21.1]
+
+Error in Plugin: [TAoA Core]
+Exception: SyntaxError
+Message: [TAoA Core] 008_UI_PWTStreak.rb:38: syntax error, unexpected back reference, expecting ']'
+    [$player.name $+ _INTL("'s Willage Tournament...
+                  ^~
+[TAoA Core] 008_UI_PWTStreak.rb:38: syntax error, unexpected ',', expecting `end'
+...s Willage Tournament Results"), 255, 52, :center, baseColor,...
+...                              ^
+[TAoA Core] 008_UI_PWTStreak.rb:38: syntax error, unexpected ']', expecting '='
+...center, baseColor, shadowColor],
+...                              ^
+
+
+Backtrace:
+005_PluginManager.rb:635:in `eval'
+005_PluginManager.rb:635:in `block (2 levels) in runPlugins'
+005_PluginManager.rb:625:in `each'
+005_PluginManager.rb:625:in `block in runPlugins'
+005_PluginManager.rb:616:in `each'
+005_PluginManager.rb:616:in `runPlugins'
+999_Main.rb:35:in `mainFunctionDebug'
+999_Main.rb:19:in `block in mainFunction'
+003_Errors.rb:79:in `pbCriticalCode'
+999_Main.rb:19:in `mainFunction'
+
+=================
+
+[2025-05-03 15:07:59 -0700]
+[Pokémon Essentials version 21.1]
+
+Error in Plugin: [TAoA Core]
+Exception: SyntaxError
+Message: [TAoA Core] 008_UI_PWTStreak.rb:38: syntax error, unexpected back reference, expecting ']'
+    [$player.name $+ _INTL("'s Willage Tournament...
+                  ^~
+[TAoA Core] 008_UI_PWTStreak.rb:38: syntax error, unexpected ',', expecting `end'
+...s Willage Tournament Results"), 255, 52, :center, baseColor,...
+...                              ^
+[TAoA Core] 008_UI_PWTStreak.rb:38: syntax error, unexpected ']', expecting '='
+...center, baseColor, shadowColor]
+...                              ^
+
+
+Backtrace:
+005_PluginManager.rb:635:in `eval'
+005_PluginManager.rb:635:in `block (2 levels) in runPlugins'
+005_PluginManager.rb:625:in `each'
+005_PluginManager.rb:625:in `block in runPlugins'
+005_PluginManager.rb:616:in `each'
+005_PluginManager.rb:616:in `runPlugins'
+999_Main.rb:35:in `mainFunctionDebug'
+999_Main.rb:19:in `block in mainFunction'
+003_Errors.rb:79:in `pbCriticalCode'
+999_Main.rb:19:in `mainFunction'
+
+=================
+
+[2025-05-03 15:11:40 -0700]
+[Pokémon Essentials version 21.1]
+[v21.1 Hotfixes 1.0.9]
+
+Script error in event 40 (coords 57,18), map 48 (Misty Lake)
+Exception: NameError
+Message: undefined local variable or method `pbStreakScreen' for #<Interpreter @event_id: 40>
+
+***Full script:
+pbStreakScreen
+
+Backtrace:
+(eval):1:in `execute_script'
+003_Interpreter.rb:140:in `eval'
+003_Interpreter.rb:140:in `execute_script'
+004_Interpreter_Commands.rb:1177:in `command_355'
+004_Interpreter_Commands.rb:116:in `execute_command'
+003_Interpreter.rb:132:in `block in update'
+003_Interpreter.rb:86:in `loop'
+003_Interpreter.rb:86:in `update'
+002_Scene_Map.rb:167:in `block in update'
+002_Scene_Map.rb:166:in `loop'
+
+=================
+
+[2025-05-03 15:12:16 -0700]
+[Pokémon Essentials version 21.1]
+[v21.1 Hotfixes 1.0.9]
+
+Script error in event 40 (coords 57,18), map 48 (Misty Lake)
+Exception: NameError
+Message: undefined local variable or method `pbStreakScreen' for #<Interpreter @event_id: 40>
+
+***Full script:
+pbStreakScreen
+
+Backtrace:
+(eval):1:in `execute_script'
+003_Interpreter.rb:140:in `eval'
+003_Interpreter.rb:140:in `execute_script'
+004_Interpreter_Commands.rb:1177:in `command_355'
+004_Interpreter_Commands.rb:116:in `execute_command'
+003_Interpreter.rb:132:in `block in update'
+003_Interpreter.rb:86:in `loop'
+003_Interpreter.rb:86:in `update'
+002_Scene_Map.rb:167:in `block in update'
+002_Scene_Map.rb:166:in `loop'
+
+=================
+
+[2025-05-03 15:34:03 -0700]
+[Pokémon Essentials version 21.1]
+[v21.1 Hotfixes 1.0.9]
+
+Script error in event 40 (coords 57,18), map 48 (Misty Lake)
+Exception: NameError
+Message: undefined local variable or method `menu' for #<Interpreter @event_id: 40>
+
+***Full script:
+    pbPlayDecisionSE
+    pbFadeOutIn do
+      scene = PokemonTrainerCard_Scene.new
+      screen = PokemonTrainerCardScreen.new(scene)
+      screen.pbStartScreen
+      menu.pbRefresh
+    end
+
+Backtrace:
+(eval):6:in `block in execute_script'
+002_MessageConfig.rb:575:in `pbFadeOutIn'
+(eval):2:in `execute_script'
+003_Interpreter.rb:140:in `eval'
+003_Interpreter.rb:140:in `execute_script'
+004_Interpreter_Commands.rb:1177:in `command_355'
+004_Interpreter_Commands.rb:116:in `execute_command'
+003_Interpreter.rb:132:in `block in update'
+003_Interpreter.rb:86:in `loop'
+003_Interpreter.rb:86:in `update'
+
+=================
+
+[2025-05-03 15:35:44 -0700]
+[Pokémon Essentials version 21.1]
+[v21.1 Hotfixes 1.0.9]
+
+Script error in event 40 (coords 57,18), map 48 (Misty Lake)
+Exception: NoMethodError
+Message: undefined method `pwt_streak' for #<GameStats>
+
+***Full script:
+    pbPlayDecisionSE
+    pbFadeOutIn do
+      scene = PWTStreak_Scene.new
+      screen = PWTStreakScreen.new(scene)
+      screen.pbStartScreen
+      menu.pbRefresh
+    end
+
+Backtrace:
+[TAoA Core] 008_UI_PWTStreak.rb:24:in `pbDrawStreakScreen'
+[TAoA Core] 008_UI_PWTStreak.rb:13:in `pbStartScene'
+[TAoA Core] 008_UI_PWTStreak.rb:99:in `pbStartScreen'
+(eval):5:in `block in execute_script'
+002_MessageConfig.rb:575:in `pbFadeOutIn'
+(eval):2:in `execute_script'
+003_Interpreter.rb:140:in `eval'
+003_Interpreter.rb:140:in `execute_script'
+004_Interpreter_Commands.rb:1177:in `command_355'
+004_Interpreter_Commands.rb:116:in `execute_command'
+
+=================
+
+[2025-05-03 15:37:27 -0700]
+[Pokémon Essentials version 21.1]
+[v21.1 Hotfixes 1.0.9]
+
+Script error in event 40 (coords 57,18), map 48 (Misty Lake)
+Exception: NoMethodError
+Message: undefined method `pwtwin_streak' for #<GameStats>
+
+***Full script:
+    pbPlayDecisionSE
+    pbFadeOutIn do
+      scene = PWTStreak_Scene.new
+      screen = PWTStreakScreen.new(scene)
+      screen.pbStartScreen
+      menu.pbRefresh
+    end
+
+Backtrace:
+[TAoA Core] 008_UI_PWTStreak.rb:24:in `pbDrawStreakScreen'
+[TAoA Core] 008_UI_PWTStreak.rb:13:in `pbStartScene'
+[TAoA Core] 008_UI_PWTStreak.rb:99:in `pbStartScreen'
+(eval):5:in `block in execute_script'
+002_MessageConfig.rb:575:in `pbFadeOutIn'
+(eval):2:in `execute_script'
+003_Interpreter.rb:140:in `eval'
+003_Interpreter.rb:140:in `execute_script'
+004_Interpreter_Commands.rb:1177:in `command_355'
+004_Interpreter_Commands.rb:116:in `execute_command'
+
+=================
+
+[2025-05-03 15:38:06 -0700]
+[Pokémon Essentials version 21.1]
+[v21.1 Hotfixes 1.0.9]
+
+Script error in event 40 (coords 57,18), map 48 (Misty Lake)
+Exception: NoMethodError
+Message: undefined method `>' for nil:NilClass
+
+***Full script:
+    pbPlayDecisionSE
+    pbFadeOutIn do
+      scene = PWTStreak_Scene.new
+      screen = PWTStreakScreen.new(scene)
+      screen.pbStartScreen
+      menu.pbRefresh
+    end
+
+Backtrace:
+[TAoA Core] 008_UI_PWTStreak.rb:25:in `pbDrawStreakScreen'
+[TAoA Core] 008_UI_PWTStreak.rb:13:in `pbStartScene'
+[TAoA Core] 008_UI_PWTStreak.rb:99:in `pbStartScreen'
+(eval):5:in `block in execute_script'
+002_MessageConfig.rb:575:in `pbFadeOutIn'
+(eval):2:in `execute_script'
+003_Interpreter.rb:140:in `eval'
+003_Interpreter.rb:140:in `execute_script'
+004_Interpreter_Commands.rb:1177:in `command_355'
+004_Interpreter_Commands.rb:116:in `execute_command'
+
+=================
+
+[2025-05-03 15:43:07 -0700]
+[Pokémon Essentials version 21.1]
+[v21.1 Hotfixes 1.0.9]
+
+Script error in event 40 (coords 57,18), map 48 (Misty Lake)
+Exception: NoMethodError
+Message: undefined method `>' for nil:NilClass
+
+***Full script:
+    pbPlayDecisionSE
+    pbFadeOutIn do
+      scene = PWTStreak_Scene.new
+      screen = PWTStreakScreen.new(scene)
+      screen.pbStartScreen
+      menu.pbRefresh
+    end
+
+Backtrace:
+[TAoA Core] 008_UI_PWTStreak.rb:25:in `pbDrawStreakScreen'
+[TAoA Core] 008_UI_PWTStreak.rb:13:in `pbStartScene'
+[TAoA Core] 008_UI_PWTStreak.rb:99:in `pbStartScreen'
+(eval):5:in `block in execute_script'
+002_MessageConfig.rb:575:in `pbFadeOutIn'
+(eval):2:in `execute_script'
+003_Interpreter.rb:140:in `eval'
+003_Interpreter.rb:140:in `execute_script'
+004_Interpreter_Commands.rb:1177:in `command_355'
+004_Interpreter_Commands.rb:116:in `execute_command'
+
+=================
+
+[2025-05-03 15:54:29 -0700]
+[Pokémon Essentials version 21.1]
+[v21.1 Hotfixes 1.0.9]
+
+Script error in event 40 (coords 57,18), map 48 (Misty Lake)
+Exception: NoMethodError
+Message: undefined method `>' for nil:NilClass
+
+***Full script:
+    pbPlayDecisionSE
+    pbFadeOutIn do
+      scene = PWTStreak_Scene.new
+      screen = PWTStreakScreen.new(scene)
+      screen.pbStartScreen
+      menu.pbRefresh
+    end
+
+Backtrace:
+[TAoA Core] 008_UI_PWTStreak.rb:25:in `pbDrawStreakScreen'
+[TAoA Core] 008_UI_PWTStreak.rb:13:in `pbStartScene'
+[TAoA Core] 008_UI_PWTStreak.rb:99:in `pbStartScreen'
+(eval):5:in `block in execute_script'
+002_MessageConfig.rb:575:in `pbFadeOutIn'
+(eval):2:in `execute_script'
+003_Interpreter.rb:140:in `eval'
+003_Interpreter.rb:140:in `execute_script'
+004_Interpreter_Commands.rb:1177:in `command_355'
+004_Interpreter_Commands.rb:116:in `execute_command'
+
+=================
+
+[2025-05-03 15:59:08 -0700]
+[Pokémon Essentials version 21.1]
+[v21.1 Hotfixes 1.0.9]
+
+Script error in event 40 (coords 57,18), map 48 (Misty Lake)
+Exception: NameError
+Message: undefined local variable or method `textPositions' for #<PWTStreak_Scene>
+
+***Full script:
+    pbPlayDecisionSE
+    pbFadeOutIn do
+      scene = PWTStreak_Scene.new
+      screen = PWTStreakScreen.new(scene)
+      screen.pbStartScreen
+      menu.pbRefresh
+    end
+
+Backtrace:
+[TAoA Core] 008_UI_PWTStreak.rb:70:in `pbDrawStreakScreen'
+[TAoA Core] 008_UI_PWTStreak.rb:13:in `pbStartScene'
+[TAoA Core] 008_UI_PWTStreak.rb:99:in `pbStartScreen'
+(eval):5:in `block in execute_script'
+002_MessageConfig.rb:575:in `pbFadeOutIn'
+(eval):2:in `execute_script'
+003_Interpreter.rb:140:in `eval'
+003_Interpreter.rb:140:in `execute_script'
+004_Interpreter_Commands.rb:1177:in `command_355'
+004_Interpreter_Commands.rb:116:in `execute_command'
+
+=================
+
+[2025-05-03 15:59:50 -0700]
+[Pokémon Essentials version 21.1]
+[v21.1 Hotfixes 1.0.9]
+
+Script error in event 40 (coords 57,18), map 48 (Misty Lake)
+Exception: NameError
+Message: uninitialized constant PWTStreak_Scene::Graphic
+
+***Full script:
+    pbPlayDecisionSE
+    pbFadeOutIn do
+      scene = PWTStreak_Scene.new
+      screen = PWTStreakScreen.new(scene)
+      screen.pbStartScreen
+      menu.pbRefresh
+    end
+
+Backtrace:
+[TAoA Core] 008_UI_PWTStreak.rb:76:in `block in pbStreakScreen'
+[TAoA Core] 008_UI_PWTStreak.rb:75:in `loop'
+[TAoA Core] 008_UI_PWTStreak.rb:75:in `pbStreakScreen'
+[TAoA Core] 008_UI_PWTStreak.rb:100:in `pbStartScreen'
+(eval):5:in `block in execute_script'
+002_MessageConfig.rb:575:in `pbFadeOutIn'
+(eval):2:in `execute_script'
+003_Interpreter.rb:140:in `eval'
+003_Interpreter.rb:140:in `execute_script'
+004_Interpreter_Commands.rb:1177:in `command_355'
+
+=================
+
+[2025-05-03 16:02:46 -0700]
+[Pokémon Essentials version 21.1]
+[v21.1 Hotfixes 1.0.9]
+
+Script error in event 40 (coords 57,18), map 48 (Misty Lake)
+Exception: NameError
+Message: uninitialized constant PWTStreak_Scene::Graphic
+
+***Full script:
+    pbPlayDecisionSE
+    pbFadeOutIn do
+      scene = PWTStreak_Scene.new
+      screen = PWTStreakScreen.new(scene)
+      screen.pbStartScreen
+      menu.pbRefresh
+    end
+
+Backtrace:
+[TAoA Core] 008_UI_PWTStreak.rb:76:in `block in pbStreakScreen'
+[TAoA Core] 008_UI_PWTStreak.rb:75:in `loop'
+[TAoA Core] 008_UI_PWTStreak.rb:75:in `pbStreakScreen'
+[TAoA Core] 008_UI_PWTStreak.rb:100:in `pbStartScreen'
+(eval):5:in `block in execute_script'
+002_MessageConfig.rb:575:in `pbFadeOutIn'
+(eval):2:in `execute_script'
+003_Interpreter.rb:140:in `eval'
+003_Interpreter.rb:140:in `execute_script'
+004_Interpreter_Commands.rb:1177:in `command_355'
+
+=================
+
+[2025-05-03 16:03:49 -0700]
+[Pokémon Essentials version 21.1]
+[v21.1 Hotfixes 1.0.9]
+
+Script error in event 40 (coords 57,18), map 48 (Misty Lake)
+Exception: NoMethodError
+Message: undefined method `dipose' for #<Viewport>
+
+***Full script:
+    pbPlayDecisionSE
+    pbFadeOutIn do
+      scene = PWTStreak_Scene.new
+      screen = PWTStreakScreen.new(scene)
+      screen.pbStartScreen
+      menu.pbRefresh
+    end
+
+Backtrace:
+[TAoA Core] 008_UI_PWTStreak.rb:89:in `pbEndScene'
+[TAoA Core] 008_UI_PWTStreak.rb:101:in `pbStartScreen'
+(eval):5:in `block in execute_script'
+002_MessageConfig.rb:575:in `pbFadeOutIn'
+(eval):2:in `execute_script'
+003_Interpreter.rb:140:in `eval'
+003_Interpreter.rb:140:in `execute_script'
+004_Interpreter_Commands.rb:1177:in `command_355'
+004_Interpreter_Commands.rb:116:in `execute_command'
+003_Interpreter.rb:132:in `block in update'
+
+=================
+
+[2025-05-03 16:04:12 -0700]
+[Pokémon Essentials version 21.1]
+[v21.1 Hotfixes 1.0.9]
+
+Script error in event 40 (coords 57,18), map 48 (Misty Lake)
+Exception: NameError
+Message: undefined local variable or method `menu' for #<Interpreter @event_id: 40>
+
+***Full script:
+    pbPlayDecisionSE
+    pbFadeOutIn do
+      scene = PWTStreak_Scene.new
+      screen = PWTStreakScreen.new(scene)
+      screen.pbStartScreen
+      menu.pbRefresh
+    end
+
+Backtrace:
+(eval):6:in `block in execute_script'
+002_MessageConfig.rb:575:in `pbFadeOutIn'
+(eval):2:in `execute_script'
+003_Interpreter.rb:140:in `eval'
+003_Interpreter.rb:140:in `execute_script'
+004_Interpreter_Commands.rb:1177:in `command_355'
+004_Interpreter_Commands.rb:116:in `execute_command'
+003_Interpreter.rb:132:in `block in update'
+003_Interpreter.rb:86:in `loop'
+003_Interpreter.rb:86:in `update'
+
+=================
+
+[2025-05-03 16:04:45 -0700]
+[Pokémon Essentials version 21.1]
+[v21.1 Hotfixes 1.0.9]
+
+Script error in event 40 (coords 57,18), map 48 (Misty Lake)
+Exception: NameError
+Message: undefined local variable or method `pbRefresh' for #<Interpreter @event_id: 40>
+
+***Full script:
+    pbPlayDecisionSE
+    pbFadeOutIn do
+      scene = PWTStreak_Scene.new
+      screen = PWTStreakScreen.new(scene)
+      screen.pbStartScreen
+      pbRefresh
+    end
+
+Backtrace:
+(eval):6:in `block in execute_script'
+002_MessageConfig.rb:575:in `pbFadeOutIn'
+(eval):2:in `execute_script'
+003_Interpreter.rb:140:in `eval'
+003_Interpreter.rb:140:in `execute_script'
+004_Interpreter_Commands.rb:1177:in `command_355'
+004_Interpreter_Commands.rb:116:in `execute_command'
+003_Interpreter.rb:132:in `block in update'
+003_Interpreter.rb:86:in `loop'
+003_Interpreter.rb:86:in `update'
+
+=================
+
+[2025-05-03 20:43:16 -0700]
+[Pokémon Essentials version 21.1]
+[v21.1 Hotfixes 1.0.9]
+
+Script error in event 40 (coords 57,18), map 48 (Misty Lake)
+Exception: NoMethodError
+Message: undefined method `>' for nil:NilClass
+
+***Full script:
+    pbPlayDecisionSE
+    pbFadeOutIn do
+      scene = PWTStreak_Scene.new
+      screen = PWTStreakScreen.new(scene)
+      screen.pbStartScreen
+    end
+
+Backtrace:
+[TAoA Core] 008_UI_PWTStreak.rb:25:in `pbDrawStreakScreen'
+[TAoA Core] 008_UI_PWTStreak.rb:13:in `pbStartScene'
+[TAoA Core] 008_UI_PWTStreak.rb:99:in `pbStartScreen'
+(eval):5:in `block in execute_script'
+002_MessageConfig.rb:575:in `pbFadeOutIn'
+(eval):2:in `execute_script'
+003_Interpreter.rb:140:in `eval'
+003_Interpreter.rb:140:in `execute_script'
+004_Interpreter_Commands.rb:1177:in `command_355'
+004_Interpreter_Commands.rb:116:in `execute_command'
+
+=================
+
+[2025-05-03 21:35:31 -0700]
+[Pokémon Essentials version 21.1]
+[v21.1 Hotfixes 1.0.9]
+
+Script error in event 40 (coords 57,18), map 48 (Misty Lake)
+Exception: NoMethodError
+Message: undefined method `>' for nil:NilClass
+
+***Full script:
+    pbPlayDecisionSE
+    pbFadeOutIn do
+      scene = PWTStreak_Scene.new
+      screen = PWTStreakScreen.new(scene)
+      screen.pbStartScreen
+    end
+
+Backtrace:
+[TAoA Core] 008_UI_PWTStreak.rb:25:in `pbDrawStreakScreen'
+[TAoA Core] 008_UI_PWTStreak.rb:13:in `pbStartScene'
+[TAoA Core] 008_UI_PWTStreak.rb:99:in `pbStartScreen'
+(eval):5:in `block in execute_script'
+002_MessageConfig.rb:575:in `pbFadeOutIn'
+(eval):2:in `execute_script'
+003_Interpreter.rb:140:in `eval'
+003_Interpreter.rb:140:in `execute_script'
+004_Interpreter_Commands.rb:1177:in `command_355'
+004_Interpreter_Commands.rb:116:in `execute_command'
+
+=================
+
+[2025-05-03 22:13:08 -0700]
+[Pokémon Essentials version 21.1]
+
+Error in Plugin: [TAoA Core]
+Exception: SyntaxError
+Message: [TAoA Core] 008_UI_PWTStreak.rb:46: syntax error, unexpected ')', expecting ']'
+... :left, baseColor, shadowColor),
+...                              ^
+
+
+Backtrace:
+005_PluginManager.rb:635:in `eval'
+005_PluginManager.rb:635:in `block (2 levels) in runPlugins'
+005_PluginManager.rb:625:in `each'
+005_PluginManager.rb:625:in `block in runPlugins'
+005_PluginManager.rb:616:in `each'
+005_PluginManager.rb:616:in `runPlugins'
+999_Main.rb:35:in `mainFunctionDebug'
+999_Main.rb:19:in `block in mainFunction'
+003_Errors.rb:79:in `pbCriticalCode'
+999_Main.rb:19:in `mainFunction'
+
+=================
+
+[2025-05-03 22:33:33 -0700]
+[Pokémon Essentials version 21.1]
+[v21.1 Hotfixes 1.0.9]
+
+Script error in event 40 (coords 57,18), map 48 (Misty Lake)
+Exception: TypeError
+Message: Argument 0: Expected string
+
+***Full script:
+    pbPlayDecisionSE
+    pbFadeOutIn do
+      scene = PWTStreak_Scene.new
+      screen = PWTStreakScreen.new(scene)
+      screen.pbStartScreen
+    end
+
+Backtrace:
+010_DrawText.rb:1109:in `text_size'
+010_DrawText.rb:1109:in `block in pbDrawTextPositions'
+010_DrawText.rb:1108:in `each'
+010_DrawText.rb:1108:in `pbDrawTextPositions'
+[TAoA Core] 008_UI_PWTStreak.rb:77:in `pbDrawStreakScreen'
+[TAoA Core] 008_UI_PWTStreak.rb:13:in `pbStartScene'
+[TAoA Core] 008_UI_PWTStreak.rb:106:in `pbStartScreen'
+(eval):5:in `block in execute_script'
+002_MessageConfig.rb:575:in `pbFadeOutIn'
+(eval):2:in `execute_script'
+
+=================
+
+[2025-05-03 22:34:59 -0700]
+[Pokémon Essentials version 21.1]
+
+Error in Plugin: [TAoA Core]
+Exception: SyntaxError
+Message: [TAoA Core] 008_UI_PWTStreak.rb:61: syntax error, unexpected ']', expecting ')'
+...center, baseColor, shadowColor],
+...                              ^
+
+
+Backtrace:
+005_PluginManager.rb:635:in `eval'
+005_PluginManager.rb:635:in `block (2 levels) in runPlugins'
+005_PluginManager.rb:625:in `each'
+005_PluginManager.rb:625:in `block in runPlugins'
+005_PluginManager.rb:616:in `each'
+005_PluginManager.rb:616:in `runPlugins'
+999_Main.rb:35:in `mainFunctionDebug'
+999_Main.rb:19:in `block in mainFunction'
+003_Errors.rb:79:in `pbCriticalCode'
+999_Main.rb:19:in `mainFunction'
+
+=================
+
+[2025-05-03 22:35:42 -0700]
+[Pokémon Essentials version 21.1]
+[v21.1 Hotfixes 1.0.9]
+
+Script error in event 40 (coords 57,18), map 48 (Misty Lake)
+Exception: TypeError
+Message: Argument 0: Expected string
+
+***Full script:
+    pbPlayDecisionSE
+    pbFadeOutIn do
+      scene = PWTStreak_Scene.new
+      screen = PWTStreakScreen.new(scene)
+      screen.pbStartScreen
+    end
+
+Backtrace:
+010_DrawText.rb:1109:in `text_size'
+010_DrawText.rb:1109:in `block in pbDrawTextPositions'
+010_DrawText.rb:1108:in `each'
+010_DrawText.rb:1108:in `pbDrawTextPositions'
+[TAoA Core] 008_UI_PWTStreak.rb:77:in `pbDrawStreakScreen'
+[TAoA Core] 008_UI_PWTStreak.rb:13:in `pbStartScene'
+[TAoA Core] 008_UI_PWTStreak.rb:106:in `pbStartScreen'
+(eval):5:in `block in execute_script'
+002_MessageConfig.rb:575:in `pbFadeOutIn'
+(eval):2:in `execute_script'
+
+=================
+
+[2025-05-03 22:53:57 -0700]
+[Pokémon Essentials version 21.1]
+[v21.1 Hotfixes 1.0.9]
+
+Script error in event 40 (coords 57,18), map 48 (Misty Lake)
+Exception: NoMethodError
+Message: undefined method `pwt_wins_treak' for #<GameStats>
+
+***Full script:
+$stats.pwt_wins[:Easy_Diff] = 151
+$stats.pwt_wins[:Normal_Diff] = 252
+$stats.pwt_wins[:Hard_Diff] = 386
+$stats.pwt_wins[:Lunatic_Diff] = 493
+$stats.pwt_wins[:Extra_Mode] = 514
+$stats.pwt_loss[:Easy_Diff] = rand(2500)
+$stats.pwt_loss[:Normal_Diff] = rand(2500)
+$stats.pwt_loss[:Hard_Diff] = rand(2500)
+$stats.pwt_loss[:Lunatic_Diff] = rand(2500)
+$stats.pwt_loss[:Extra_Mode] = rand(2500)
+$stats.pwt_win_streak[:Easy_Diff] = rand(1000)
+$stats.pwt_wins_treak[:Normal_Diff] = rand(1000)
+$stats.pwt_win_streak[:Hard_Diff] = rand(1000)
+$stats.pwt_win_streak[:Lunatic_Diff] = rand(1000)
+$stats.pwt_win_streak[:Extra_Mode] = rand(1000)
+    pbPlayDecisionSE
+    pbFadeOutIn do
+      scene = PWTStreak_Scene.new
+      screen = PWTStreakScreen.new(scene)
+      screen.pbStartScreen
+    end
+
+Backtrace:
+(eval):12:in `execute_script'
+003_Interpreter.rb:140:in `eval'
+003_Interpreter.rb:140:in `execute_script'
+004_Interpreter_Commands.rb:1177:in `command_355'
+004_Interpreter_Commands.rb:116:in `execute_command'
+003_Interpreter.rb:132:in `block in update'
+003_Interpreter.rb:86:in `loop'
+003_Interpreter.rb:86:in `update'
+002_Scene_Map.rb:167:in `block in update'
+002_Scene_Map.rb:166:in `loop'
