@@ -346,3 +346,11 @@ MenuHandlers.add(:pause_menu, :quit_safari_game, {
     next false
   }
 })
+
+def generate_floor_effects
+  arr = (0...12).to_a.sample(4)
+  pbSet(152,arr[0])
+  pbSet(153,arr[1])
+  pbSet(154,arr[2])
+  pbSet(155,arr[3])
+end

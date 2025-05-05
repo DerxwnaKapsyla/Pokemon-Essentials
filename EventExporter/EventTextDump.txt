@@ -36659,18 +36659,82 @@ List of Event Commands:
 @>Text: Welcome to Keine Kamishirasawa's Quiz Hall!
 @>Text: Here you will answer questions about the history of Gensokyo,
  :    : as well as its inhabitants.
-@>Text: The amount of FP you are awarded is depndant on numerous 
- :    : factors.
-@>Text: First, for every correct question you will recieve 2 FP. There
- :    : are a total of 5 questions, so you can earn a maximum of 10
- :    : FP per course.
-@>Text: Next off, the difficulty of the course you take will determine the FP
- :    : you are awarded. Of course, the higher the difficulty, the harder 
- :    : the questions. Hopefully you studied hard!
-@>Text: Depending on the difficulty, you can only get a specific number
- :    : of questions wrong. If you get more than that wrong, you are
- :    : immediately disqualified and forefit all of the points you've earned.
-@>Text: Good luck in there!
+@>Label: Start
+@>Text: Would you like to participate?
+@>Show Choices: Yes, No, More Information
+(When Cancel: Choice 2)
+: When [Yes]
+ @>Text: Which difficulty would you like to challenge?
+ @>Show Choices: Novice, Intermediate, Expert, Nevermind
+ (When Cancel: Choice 4)
+ : When [Novice]
+  @>Text: The Novice difficulty, correct?
+  @>Show Choices: Yes, No
+  (When Cancel: Choice 2)
+  : When [Yes]
+   @>Text: Good luck in there!
+   @>Comment: -- Variable set to Novice
+   @>
+  : When [No]
+   @>Text: Please feel free to come back when you've studied up more!
+   @>
+  : Branch End
+  @>
+ : When [Intermediate]
+  @>Text: The Intermediate difficulty, correct?
+  @>Show Choices: Yes, No
+  (When Cancel: Choice 2)
+  : When [Yes]
+   @>Text: Good luck in there!
+   @>Comment: -- Variable set to Intermediate
+   @>
+  : When [No]
+   @>Text: Please feel free to come back when you've studied up more!
+   @>
+  : Branch End
+  @>
+ : When [Expert]
+  @>Text: The Expert difficulty, correct?
+  @>Show Choices: Yes, No
+  (When Cancel: Choice 2)
+  : When [Yes]
+   @>Text: Good luck in there!
+   @>Comment: -- Variable set to Expert
+   @>
+  : When [No]
+   @>Text: Please feel free to come back when you've studied up more!
+   @>
+  : Branch End
+  @>
+ : When [Nevermind]
+  @>Text: Please feel free to come back when you've studied up more!
+  @>
+ : Branch End
+ @>
+: When [No]
+ @>Text: Please feel free to come back when you've studied up more!
+ @>
+: When [More Information]
+ @>Text: The way the Quiz Hall works is that Miss Kamishirasawa will
+  :    : ask you a series of questions that revolve around Gensokyo-
+  :    : its history, its inhabitants, stuff of that nature.
+ @>Text: Festival Points will be awarded at the end for every
+  :    : question answered correctly.
+ @>Text: The amount of FP you are awarded is depndant on numerous 
+  :    : factors.
+ @>Text: First, for every correct question you will recieve 2 FP. There
+  :    : are a total of 5 questions, so you can earn a maximum of 10
+  :    : FP per course.
+ @>Text: Next off, the difficulty of the course you take will determine the FP
+  :    : you are awarded. Of course, the higher the difficulty, the harder 
+  :    : the questions. Hopefully you studied hard!
+ @>Text: Depending on the difficulty, you can only get a specific number
+  :    : of questions wrong. If you get more than that wrong, you are
+  :    : immediately disqualified and forefit all of the points you've earned.
+ @>Text: Good luck in there!
+ @>Jump to Label: Start
+ @>
+: Branch End
 @>
 
 #------------------------------------------------------------------------------
@@ -36733,6 +36797,47 @@ List of Event Commands:
  @>Change Screen Color Tone: (0,0,0,0), @6
  @>
 : Branch End
+@>
+
+#------------------------------------------------------------------------------
+Event ID: 010
+Event Name: EV010
+(X,Y): (022,011)
+
+Page #1
+Conditions
+None
+
+Autonomous Movement
+Type: Fixed
+Speed: 3: Slow
+Freq: 3: Low
+Options Enabled
+Move Animation
+Trigger: Action Button
+
+List of Event Commands:
+@>Scroll Map: Up, 4, 3
+@>Wait: 20 frame(s)
+@>Change Text Options: Middle, Show
+@>Text: \xn[Keine]Are you ready, \pn? Let's begin.\wtnp[20]
+@>Change Text Options: Bottom, Show
+@>Script: pbShowPicture(1,"Quiz/QuizKeine_Neutral.png",0,-512,0,100,100,255,0)
+:       : pbShowPicture(2,"Quiz/QuizAyaka_Neutral.png",0,512,0,100,100,255,0)
+@>Move Picture: 1, @5, Upper Left (0,0), (100%,100%), 255, Normal
+@>Move Picture: 2, @5, Upper Left (0,0), (100%,100%), 255, Normal
+@>Wait: 5 frame(s)
+@>Play SE: 'Voltorb Flip explosion', 80, 100
+@>Control Variables: [0004: Temp Move Name] = 1
+@>Control Variables: [0003: Temp Pokemon Name] = 4
+@>Wait: 10 frame(s)
+@>Memorize BGM/BGS
+@>Play BGM: 'U-007. Nostalgic Blood of the East ~ Old World', 100, 100
+@>Wait: 10 frame(s)
+@>Script: pbQuizShow
+@>Restore BGM/BGS
+@>Scroll Map: Down, 4, 3
+@>Exit Event Processing
 @>
 
 #------------------------------------------------------------------------------
@@ -42420,7 +42525,7 @@ List of Event Commands:
 #------------------------------------------------------------------------------
 Event ID: 040
 Event Name: EV040
-(X,Y): (057,018)
+(X,Y): (058,021)
 
 Page #1
 Conditions
@@ -42437,12 +42542,47 @@ Move Animation
 Trigger: Action Button
 
 List of Event Commands:
-@>Script: pbSet(1, $stats.pwt_wins[:Easy_Diff])
-:       : pbSet(2, $stats.pwt_win_streak[:Normal_Diff])
-@>Text: \v[1] \v[2]
+@>Control Variables: [0004: Temp Move Name] = 1
+@>Script: pbShuffleTriviaQuestion
+@>Script: pbShowPicture(1,"Quiz/QuizKeine_Neutral.png",0,0,0,100,100,255,0)
+:       : pbShowPicture(2,"Quiz/QuizAyaka_Neutral.png",0,0,0,100,100,255,0)
+@>Script: anTriviaQuestion(question1)
+@>Script: pbShowPicture(1,"Quiz/QuizKeine_Neutral.png",0,0,0,100,100,255,0)
+:       : pbShowPicture(2,"Quiz/QuizAyaka_Neutral.png",0,0,0,100,100,255,0)
+@>Script: anTriviaQuestion(question2)
+@>Script: pbShowPicture(1,"Quiz/QuizKeine_Neutral.png",0,0,0,100,100,255,0)
+:       : pbShowPicture(2,"Quiz/QuizAyaka_Neutral.png",0,0,0,100,100,255,0)
+@>Script: anTriviaQuestion(question3)
+@>Script: pbShowPicture(1,"Quiz/QuizKeine_Neutral.png",0,0,0,100,100,255,0)
+:       : pbShowPicture(2,"Quiz/QuizAyaka_Neutral.png",0,0,0,100,100,255,0)
+@>Script: anTriviaQuestion(question4)
+@>Script: pbShowPicture(1,"Quiz/QuizKeine_Neutral.png",0,0,0,100,100,255,0)
+:       : pbShowPicture(2,"Quiz/QuizAyaka_Neutral.png",0,0,0,100,100,255,0)
+@>Script: anTriviaQuestion(question5)
+@>Erase Picture: 1
+@>Erase Picture: 2
 @>
 
 Page #2
+Conditions
+Self Switch A is ON
+
+Graphic: Object ball
+
+Autonomous Movement
+Type: Fixed
+Speed: 3: Slow
+Freq: 3: Low
+Options Enabled
+Move Animation
+Trigger: Action Button
+
+List of Event Commands:
+@>Control Variables: [0004: Temp Move Name] = 1
+@>Script: pbShuffleTriviaQuestion
+@>
+
+Page #3
 Conditions
 None
 
@@ -42457,27 +42597,11 @@ Move Animation
 Trigger: Action Button
 
 List of Event Commands:
-@>Script: $stats.pwt_wins[:Easy_Diff] = 151
-:       : $stats.pwt_wins[:Normal_Diff] = 252
-:       : $stats.pwt_wins[:Hard_Diff] = 386
-:       : $stats.pwt_wins[:Lunatic_Diff] = 493
-:       : $stats.pwt_wins[:Extra_Mode] = 514
-@>Script: $stats.pwt_loss[:Easy_Diff] = rand(2500)
-:       : $stats.pwt_loss[:Normal_Diff] = rand(2500)
-:       : $stats.pwt_loss[:Hard_Diff] = rand(2500)
-:       : $stats.pwt_loss[:Lunatic_Diff] = rand(2500)
-:       : $stats.pwt_loss[:Extra_Mode] = rand(2500)
-@>Script: $stats.pwt_win_streak[:Easy_Diff] = rand(1000)
-:       : $stats.pwt_win_streak[:Normal_Diff] = rand(1000)
-:       : $stats.pwt_win_streak[:Hard_Diff] = rand(1000)
-:       : $stats.pwt_win_streak[:Lunatic_Diff] = rand(1000)
-:       : $stats.pwt_win_streak[:Extra_Mode] = rand(1000)
-@>Script:     pbPlayDecisionSE
-:       :     pbFadeOutIn do
-:       :       scene = PWTStreak_Scene.new
-:       :       screen = PWTStreakScreen.new(scene)
-:       :       screen.pbStartScreen
-:       :     end
+@>Control Variables: [0004: Temp Move Name] = 1
+@>Control Variables: [0003: Temp Pokemon Name] = 4
+@>Script: pbQuizShow
+@>Erase Picture: 1
+@>Erase Picture: 2
 @>
 
 #------------------------------------------------------------------------------
@@ -43657,7 +43781,10 @@ Move Animation
 Trigger: Autorun
 
 List of Event Commands:
-@>Script: $game_variables[152], $game_variables[153], $game_variables[154], $game_variables[155] = (0...12).to_a.sample(4)
+@>Comment: $game_variables[152], $game_variables[153], $game_variables[154], $game_variables[155] = (0...12).to_a.sample(4)
+ :       : 
+ :       : IN CASE THIS BREAKS AGAIN
+@>Script: generate_floor_effects
 @>Wait: 10 frame(s)
 @>Screen Flash: (255,255,255,255), @2
 @>Play SE: 'PRSFX- Teleport', 80, 75

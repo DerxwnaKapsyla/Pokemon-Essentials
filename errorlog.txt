@@ -17946,3 +17946,293 @@ Backtrace:
 003_Interpreter.rb:86:in `update'
 002_Scene_Map.rb:167:in `block in update'
 002_Scene_Map.rb:166:in `loop'
+
+=================
+
+[2025-05-04 03:14:14 -0700]
+[Pokémon Essentials version 21.1]
+[v21.1 Hotfixes 1.0.9]
+
+Script error in event 40 (coords 58,21), map 48 (Misty Lake)
+Exception: RuntimeError
+Message: Filename is nil (missing graphic).
+
+***Full script:
+pbShowPicture(1,"Quiz/QuizKeine_Neutral.png",0,0,0,100,100,255,0)
+pbShowPicture(2,"Quiz/QuizAyaka_Neutral.png",0,0,0,100,100,255,0)
+anTriviaQuestion(:Novice_12)
+
+Backtrace:
+008_AnimatedBitmap.rb:6:in `initialize'
+011_Messages.rb:219:in `new'
+011_Messages.rb:219:in `initialize'
+[Name Boxes] Name Windows.rb:279:in `new'
+[Name Boxes] Name Windows.rb:279:in `block in pbMessageDisplay'
+[Name Boxes] Name Windows.rb:264:in `times'
+[Name Boxes] Name Windows.rb:264:in `pbMessageDisplay'
+[Delta Speed Up] _Main_Script.rb:122:in `pbMessage'
+[Astralneko's Trivia] 000 Trivia Script.rb:47:in `anTriviaQuestion'
+(eval):3:in `execute_script'
+
+=================
+
+[2025-05-04 03:14:49 -0700]
+[Pokémon Essentials version 21.1]
+[v21.1 Hotfixes 1.0.9]
+
+Script error in event 40 (coords 58,21), map 48 (Misty Lake)
+Exception: RuntimeError
+Message: Filename is nil (missing graphic).
+
+***Full script:
+pbShowPicture(1,"Quiz/QuizKeine_Neutral.png",0,0,0,100,100,255,0)
+pbShowPicture(2,"Quiz/QuizAyaka_Neutral.png",0,0,0,100,100,255,0)
+anTriviaQuestion(:Novice_12)
+
+Backtrace:
+008_AnimatedBitmap.rb:6:in `initialize'
+011_Messages.rb:219:in `new'
+011_Messages.rb:219:in `initialize'
+[Name Boxes] Name Windows.rb:279:in `new'
+[Name Boxes] Name Windows.rb:279:in `block in pbMessageDisplay'
+[Name Boxes] Name Windows.rb:264:in `times'
+[Name Boxes] Name Windows.rb:264:in `pbMessageDisplay'
+[Delta Speed Up] _Main_Script.rb:122:in `pbMessage'
+[Astralneko's Trivia] 000 Trivia Script.rb:47:in `anTriviaQuestion'
+(eval):3:in `execute_script'
+
+=================
+
+[2025-05-04 13:55:04 -0700]
+[Pokémon Essentials version 21.1]
+[v21.1 Hotfixes 1.0.9]
+
+Script error in event 13 (coords 50,39), map 50 (Prismriver Manor (F1))
+Exception: SyntaxError
+Message: (eval):1: syntax error, unexpected ',', expecting end-of-input
+pbGet(152), pbGet(153), pbGet(154), $gam...
+          ^
+
+
+***Full script:
+pbGet(152), pbGet(153), pbGet(154), $game_variables[155] = (0...12).to_a.sample(4)
+
+=================
+
+[2025-05-04 13:59:02 -0700]
+[Pokémon Essentials version 21.1]
+[v21.1 Hotfixes 1.0.9]
+
+Script error in event 13 (coords 50,39), map 50 (Prismriver Manor (F1))
+Exception: SyntaxError
+Message: (eval):1: syntax error, unexpected ',', expecting end-of-input
+pbGet(152), pbGet(153), pbGet(154), $gam...
+          ^
+
+
+***Full script:
+pbGet(152), pbGet(153), pbGet(154), $game_variables[155] = (0...12).to_a.sample(4)
+
+=================
+
+[2025-05-04 15:41:28 -0700]
+[Pokémon Essentials version 21.1]
+[v21.1 Hotfixes 1.0.9]
+
+Script error in event 40 (coords 58,21), map 48 (Misty Lake)
+Exception: NameError
+Message: undefined local variable or method `trivia_question_shuffle' for #<Interpreter @event_id: 40>
+
+***Full script:
+trivia_question_shuffle
+
+Backtrace:
+(eval):1:in `execute_script'
+003_Interpreter.rb:140:in `eval'
+003_Interpreter.rb:140:in `execute_script'
+004_Interpreter_Commands.rb:1177:in `command_355'
+004_Interpreter_Commands.rb:116:in `execute_command'
+003_Interpreter.rb:132:in `block in update'
+003_Interpreter.rb:86:in `loop'
+003_Interpreter.rb:86:in `update'
+002_Scene_Map.rb:167:in `block in update'
+002_Scene_Map.rb:166:in `loop'
+
+=================
+
+[2025-05-04 16:05:43 -0700]
+[Pokémon Essentials version 21.1]
+[v21.1 Hotfixes 1.0.9]
+
+Script error in event 40 (coords 58,21), map 48 (Misty Lake)
+Exception: NameError
+Message: undefined local variable or method `question1' for #<Interpreter @event_id: 40>
+
+***Full script:
+pbShuffleTriviaQuestion
+pbShowPicture(1,"Quiz/QuizKeine_Neutral.png",0,0,0,100,100,255,0)
+pbShowPicture(2,"Quiz/QuizAyaka_Neutral.png",0,0,0,100,100,255,0)
+anTriviaQuestion(question1)
+pbShowPicture(1,"Quiz/QuizKeine_Neutral.png",0,0,0,100,100,255,0)
+pbShowPicture(2,"Quiz/QuizAyaka_Neutral.png",0,0,0,100,100,255,0)
+anTriviaQuestion(question2)
+pbShowPicture(1,"Quiz/QuizKeine_Neutral.png",0,0,0,100,100,255,0)
+pbShowPicture(2,"Quiz/QuizAyaka_Neutral.png",0,0,0,100,100,255,0)
+anTriviaQuestion(question3)
+pbShowPicture(1,"Quiz/QuizKeine_Neutral.png",0,0,0,100,100,255,0)
+pbShowPicture(2,"Quiz/QuizAyaka_Neutral.png",0,0,0,100,100,255,0)
+anTriviaQuestion(question4)
+pbShowPicture(1,"Quiz/QuizKeine_Neutral.png",0,0,0,100,100,255,0)
+pbShowPicture(2,"Quiz/QuizAyaka_Neutral.png",0,0,0,100,100,255,0)
+anTriviaQuestion(question5)
+
+Backtrace:
+(eval):4:in `execute_script'
+003_Interpreter.rb:140:in `eval'
+003_Interpreter.rb:140:in `execute_script'
+004_Interpreter_Commands.rb:1177:in `command_355'
+004_Interpreter_Commands.rb:116:in `execute_command'
+003_Interpreter.rb:132:in `block in update'
+003_Interpreter.rb:86:in `loop'
+003_Interpreter.rb:86:in `update'
+002_Scene_Map.rb:167:in `block in update'
+002_Scene_Map.rb:166:in `loop'
+
+=================
+
+[2025-05-04 16:08:06 -0700]
+[Pokémon Essentials version 21.1]
+[v21.1 Hotfixes 1.0.9]
+
+Script error in event 40 (coords 58,21), map 48 (Misty Lake)
+Exception: NameError
+Message: undefined local variable or method `question1' for #<Interpreter @event_id: 40>
+
+***Full script:
+pbQuizShow
+
+Backtrace:
+[TAoA Core] 009_TriviaControl.rb:43:in `pbQuizShow'
+(eval):1:in `execute_script'
+003_Interpreter.rb:140:in `eval'
+003_Interpreter.rb:140:in `execute_script'
+004_Interpreter_Commands.rb:1177:in `command_355'
+004_Interpreter_Commands.rb:116:in `execute_command'
+003_Interpreter.rb:132:in `block in update'
+003_Interpreter.rb:86:in `loop'
+003_Interpreter.rb:86:in `update'
+002_Scene_Map.rb:167:in `block in update'
+
+=================
+
+[2025-05-04 16:59:50 -0700]
+[Pokémon Essentials version 21.1]
+
+Error in Plugin: [TAoA Core]
+Exception: SyntaxError
+Message: [TAoA Core] 009_TriviaControl.rb:2: syntax error, unexpected '=', expecting `end'
+  pbSet(1) = 0
+           ^
+[TAoA Core] 009_TriviaControl.rb:3: syntax error, unexpected '=', expecting `end'
+  pbSet(2) = 0
+           ^
+[TAoA Core] 009_TriviaControl.rb:4: syntax error, unexpected '=', expecting `end'
+  pbSet(3) = 0
+           ^
+
+
+Backtrace:
+005_PluginManager.rb:635:in `eval'
+005_PluginManager.rb:635:in `block (2 levels) in runPlugins'
+005_PluginManager.rb:625:in `each'
+005_PluginManager.rb:625:in `block in runPlugins'
+005_PluginManager.rb:616:in `each'
+005_PluginManager.rb:616:in `runPlugins'
+999_Main.rb:35:in `mainFunctionDebug'
+999_Main.rb:19:in `block in mainFunction'
+003_Errors.rb:79:in `pbCriticalCode'
+999_Main.rb:19:in `mainFunction'
+
+=================
+
+[2025-05-04 17:00:15 -0700]
+[Pokémon Essentials version 21.1]
+
+Error in Plugin: [TAoA Core]
+Exception: SyntaxError
+Message: [TAoA Core] 009_TriviaControl.rb:2: syntax error, unexpected ',', expecting `end'
+  pbSet(1), pbSet(2), pbSet(3) = 0
+          ^
+[TAoA Core] 009_TriviaControl.rb:2: syntax error, unexpected ',', expecting `end'
+  pbSet(1), pbSet(2), pbSet(3) = 0
+                    ^
+[TAoA Core] 009_TriviaControl.rb:2: syntax error, unexpected '=', expecting `end'
+... pbSet(1), pbSet(2), pbSet(3) = 0
+...                              ^
+
+
+Backtrace:
+005_PluginManager.rb:635:in `eval'
+005_PluginManager.rb:635:in `block (2 levels) in runPlugins'
+005_PluginManager.rb:625:in `each'
+005_PluginManager.rb:625:in `block in runPlugins'
+005_PluginManager.rb:616:in `each'
+005_PluginManager.rb:616:in `runPlugins'
+999_Main.rb:35:in `mainFunctionDebug'
+999_Main.rb:19:in `block in mainFunction'
+003_Errors.rb:79:in `pbCriticalCode'
+999_Main.rb:19:in `mainFunction'
+
+=================
+
+[2025-05-04 17:01:05 -0700]
+[Pokémon Essentials version 21.1]
+
+Error in Plugin: [TAoA Core]
+Exception: SyntaxError
+Message: [TAoA Core] 009_TriviaControl.rb:2: syntax error, unexpected '=', expecting `end'
+  pbSet(1) = 0
+           ^
+[TAoA Core] 009_TriviaControl.rb:3: syntax error, unexpected '=', expecting `end'
+  pbSet(2) = 0
+           ^
+[TAoA Core] 009_TriviaControl.rb:4: syntax error, unexpected '=', expecting `end'
+  pbSet(3) = 0
+           ^
+
+
+Backtrace:
+005_PluginManager.rb:635:in `eval'
+005_PluginManager.rb:635:in `block (2 levels) in runPlugins'
+005_PluginManager.rb:625:in `each'
+005_PluginManager.rb:625:in `block in runPlugins'
+005_PluginManager.rb:616:in `each'
+005_PluginManager.rb:616:in `runPlugins'
+999_Main.rb:35:in `mainFunctionDebug'
+999_Main.rb:19:in `block in mainFunction'
+003_Errors.rb:79:in `pbCriticalCode'
+999_Main.rb:19:in `mainFunction'
+
+=================
+
+[2025-05-04 17:43:46 -0700]
+[Pokémon Essentials version 21.1]
+
+Error in Plugin: [TAoA Core]
+Exception: SyntaxError
+Message: [TAoA Core] 009_TriviaControl.rb:41: Invalid next
+
+Backtrace:
+[TAoA Core] 009_TriviaControl.rb
+
+=================
+
+[2025-05-04 17:43:58 -0700]
+[Pokémon Essentials version 21.1]
+
+Error in Plugin: [TAoA Core]
+Exception: SyntaxError
+Message: [TAoA Core] 009_TriviaControl.rb:41: Invalid break
+
+Backtrace:
+[TAoA Core] 009_TriviaControl.rb

@@ -19,10 +19,10 @@ end
 # Add trivia path to AstralnekoConfig
 module AstralnekoConfig
 	CORRECT_ANSWER_SPEECHES = [
-		_INTL("Leto: \\rNice! You got it right!")
+		_INTL("\\xn[Keine]\\bThat's correct!")
 	]
 	INCORRECT_ANSWER_SPEECHES = [
-		_INTL("Leto: \\rAw... That's incorrect...")
+		_INTL("\\xn[Keine]\\bI'm afraid that's incorrect...")
 	]
 	TRIVIA_PATH = "PBS/default_trivia.txt" # DO NOT EDIT THIS
 	TRIVIA_LOADING_LOG = true
@@ -45,13 +45,24 @@ def anTriviaQuestion(id)
 	chosen_answer = pbMessage(question, answers, cancelAnswer)
 	case chosen_answer
 		when -1
+		    pbShowPicture(1,"Quiz/QuizKeine_Mad.png",0,0,0,100,100,255,0)
+			pbShowPicture(2,"Quiz/QuizAyaka_Sad.png",0,0,0,100,100,255,0)
 			pbMessage(AstralnekoConfig::INCORRECT_ANSWER_SPEECHES.sample)
+			$game_variables[2] += 1
 			return false
 		when correctAnswerId
+			pbSEPlay("Pkmn move learnt")
+			pbShowPicture(1,"Quiz/QuizKeine_Happy.png",0,0,0,100,100,255,0)
+			pbShowPicture(2,"Quiz/QuizAyaka_Happy.png",0,0,0,100,100,255,0)
 			pbMessage(AstralnekoConfig::CORRECT_ANSWER_SPEECHES.sample)
+			$game_variables[1] += 1
 			return true
 		else
+			pbSEPlay("GUI sel buzzer")
+			pbShowPicture(1,"Quiz/QuizKeine_Mad.png",0,0,0,100,100,255,0)
+			pbShowPicture(2,"Quiz/QuizAyaka_Sad.png",0,0,0,100,100,255,0)
 			pbMessage(AstralnekoConfig::INCORRECT_ANSWER_SPEECHES.sample)
+			$game_variables[2] += 1
 			return false
 	end
 end
