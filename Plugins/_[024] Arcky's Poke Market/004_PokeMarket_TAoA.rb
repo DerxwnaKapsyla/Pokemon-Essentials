@@ -1,0 +1,278 @@
+#-------------------------------------------
+# The Mansion of Mystery
+#-------------------------------------------
+def pbTMoMShop
+  if pbGet(107) >= 12 || $game_switches[107]
+    pbPokemonMart([
+      :PUPPETORB,:GREATORB,:ULTRAORB,
+      :POTION,:SUPERPOTION,:HYPERPOTION,:MAXPOTION,:FULLRESTORE,
+      :REVIVE,:MAXREVIVE,:FULLHEAL,
+      :REPEL,:SUPERREPEL,
+      :RARECANDY,:PPUP
+    ], useCat: true)
+  else
+    pbPokemonMart([
+      :PUPPETORB,:GREATORB,:ULTRAORB,
+      :POTION,:SUPERPOTION,:HYPERPOTION,
+      :REVIVE,:FULLHEAL,
+      :REPEL,:SUPERREPEL
+    ], useCat: true)
+  end
+end
+
+#-------------------------------------------
+# The Festival of Curses
+#-------------------------------------------
+def pbTFoCShop
+  if pbGet(115) == 4 || $game_switches[107]
+    pbPokemonMart([
+      :PUPPETORB,:GREATORB,:ULTRAORB,
+      :POTION,:SUPERPOTION,:HYPERPOTION,
+      :REVIVE,:MAXREVIVE,
+      :FULLHEAL,:FULLRESTORE,
+      :ETHER,:MAXETHER,:ELIXIR,:MAXELIXIR,
+      :REPEL,:SUPERREPEL,:MAXREPEL,
+      :PPUP,:RARECANDY,
+      :POWERSHARD,:DEFENSESHARD,:TECHSHARD,
+      :SWIFTSHARD,:SUPPORTSHARD,:SOLARSHARD,
+      :CHROMESHARD
+    ], useCat: true)
+  else
+    pbPokemonMart([
+      :PUPPETORB,:GREATORB,:ULTRAORB,
+      :POTION,:SUPERPOTION,:HYPERPOTION,
+      :REVIVE,:FULLHEAL,
+      :REPEL,:SUPERREPEL,
+      :POWERSHARD,:DEFENSESHARD,:TECHSHARD,
+      :SWIFTSHARD,:SUPPORTSHARD,:SOLARSHARD,
+      :CHROMESHARD
+    ], useCat: true)
+  end
+end
+
+def pbAliceFestivalStore
+  if !$game_switches[123]
+    pbPokemonMart([
+      :BUNNYSUIT,:MAIDCOSTUME,:SWEATER,
+	  :CAMOUFLAGE,:BLAZER,:MISTRESS,
+	  :NINJA,:NURSE,:SWIMSUIT,
+      :STEWARDESS,:THICKFUR,:KIMONO,
+	  :WITCH,:GOTHIC,:BRIDALGOWN,
+	  :PRIESTESS,:CHINADRESS,
+	], speech: "AliceShop", currency: "bp", useCat: true, cantSell: true)
+  else
+    pbPokemonMart([
+      :BUNNYSUIT,:MAIDCOSTUME,:SWEATER,
+	  :CAMOUFLAGE,:BLAZER,:MISTRESS,
+	  :NINJA,:NURSE,:SWIMSUIT,
+      :STEWARDESS,:THICKFUR,:KIMONO,
+	  :WITCH,:GOTHIC,:BRIDALGOWN,
+	  :PRIESTESS,:CHINADRESS,
+      :HEMATITEHAIRPIN,:QUARTZHAIRPIN,
+	  :ONYXHAIRPIN,:MALACHITEHAIRPIN,
+	  :GOLDHAIRPIN,:OBSIDIANHAIRPIN,
+	  :JADEHAIRPIN,:AMETHYSTHAIRPIN,
+	  :AQUAMARINEHAIRPIN,:DIAMONDHAIRPIN,
+	  :LAPISHAIRPIN,:SUGILITEHAIRPIN,
+	  :OPALHAIRPIN,:GARNETHAIRPIN,
+      :MORGANITEHAIRPIN,:TOPAZHAIRPIN,
+	  :MOONSTONEHAIRPIN
+    ], speech: "AliceShop", currency: "bp", useCat: true, cantSell: true)
+  end
+end
+
+def pbKappaShop
+  if !$game_switches[121]
+    pbPokemonMart([
+      :LUCKYEGG,
+	  :EXPSHARE
+    ], speech: "KappaShop", currency: "bp", cantSell: true)
+  else
+    pbPokemonMart([
+      :LUCKYEGG,
+	  :EXPSHARE,
+	  :ABILITYCAPSULE
+    ], speech: "KappaShop", currency: "bp", cantSell: true)
+  end
+end
+
+def pbJamShop
+  pbPokemonMart([
+	:STRAWBERRYJAM,
+    :BLUEBERRYJAM,
+	:MINORIKOJAM
+  ], speech: "MinorikoShop", currency: "bp", cantSell: true)
+end
+
+def pbSanaeShop
+  pbPokemonMart([
+    :ANTIMETAL,:ANTIEARTH,:ANTIBEAST,
+	:ANTINATURE,:ANTIHEART,:ANTIUMBRAL,
+	:ANTIWIND,:ANTIMIASMA,:ANTIHYDRO,
+	:ANTIAERO,:ANTICRYO,:ANTINETHER,
+	:ANTIREASON,:ANTIPYRO,:ANTIILLUSION,
+	:ANTIFAITH,:ANTIDREAM
+  ], speech: "SanaeShop", currency: "bp", useCat: true, cantSell: true)
+end
+
+def pbSeijaShop
+  pbPokemonMart([
+    :PUPPETORB2,
+	:GREATORB2,
+	:INVERSEORB
+	], speech: "SeijaShop", currency: "bp", cantSell: true)
+end
+
+def pbSkillShop
+  pbPokemonMart([
+    :SC01,:SC02,:SC03,:SC04,:SC05,:SC06,:SC07,:SC08,:SC09,:SC10,
+    :SC11,:SC12,:SC13,:SC14,:SC15,:SC16,:SC17,:SC18,:SC19,:SC20,
+    :SC21,:SC22,:SC23,:SC24,:SC25,:SC26,:SC27,:SC28,:SC29,:SC30,
+    :SC31,:SC32,:SC33,:SC34,:SC35,:SC36,:SC37,:SC38,:SC39,:SC40,
+    :SC41,:SC42,:SC43,:SC44,:SC45,:SC46,:SC47,:SC48,:SC49,:SC50,
+  ], currency: "bp", cantSell: true)
+end
+
+def pbBattleShop
+# Battle Items
+end
+
+#-------------------------------------------
+# The Kingdom of Lunacy
+#-------------------------------------------
+def pbRestStop
+    if !$game_switches[99]
+	  pbPokemonMart([
+      :PUPPETORB,:GREATORB,:ULTRAORB,
+      :POTION,:SUPERPOTION,:HYPERPOTION,
+      :REVIVE,:FULLHEAL,
+      :REPEL,:SUPERREPEL,
+      :POWERSHARD,:DEFENSESHARD,:TECHSHARD,
+      :SWIFTSHARD,:SUPPORTSHARD,:SOLARSHARD,
+      :CHROMESHARD
+    ], useCat: true)
+	else
+	  pbPokemonMart([
+      :PUPPETORB,:GREATORB,:ULTRAORB,
+      :POTION,:SUPERPOTION,:HYPERPOTION,
+      :REVIVE,:MAXREVIVE,
+      :FULLHEAL,:FULLRESTORE,
+      :ETHER,:MAXETHER,:ELIXIR,:MAXELIXIR,
+      :REPEL,:SUPERREPEL,:MAXREPEL,
+      :PPUP,:RARECANDY,
+      :POWERSHARD,:DEFENSESHARD,:TECHSHARD,
+      :SWIFTSHARD,:SUPPORTSHARD,:SOLARSHARD,
+      :CHROMESHARD
+    ], useCat: true)
+	end
+end
+
+def pbAliceStore
+  pbPokemonMart([
+    :BUNNYSUIT,:MAIDCOSTUME,:SWEATER,
+	:CAMOUFLAGE,:BLAZER,:MISTRESS,
+	:NINJA,:NURSE,:SWIMSUIT,
+    :STEWARDESS,:THICKFUR,:KIMONO,
+	:WITCH,:GOTHIC,:BRIDALGOWN,
+	:PRIESTESS,:CHINADRESS,
+    :HEMATITEHAIRPIN,:QUARTZHAIRPIN,
+	:ONYXHAIRPIN,:MALACHITEHAIRPIN,
+	:GOLDHAIRPIN,:OBSIDIANHAIRPIN,
+	:JADEHAIRPIN,:AMETHYSTHAIRPIN,
+	:AQUAMARINEHAIRPIN,:DIAMONDHAIRPIN,
+	:LAPISHAIRPIN,:SUGILITEHAIRPIN,
+	:OPALHAIRPIN,:GARNETHAIRPIN,
+    :MORGANITEHAIRPIN,:TOPAZHAIRPIN,
+	:MOONSTONEHAIRPIN
+  ], speech: "AliceShop", useCat: true)
+end
+
+def pbKirisameStore
+  pbPokemonMart([
+    :SC01,:SC02,:SC03,:SC04,:SC05,:SC06,:SC07,:SC08,:SC09,:SC10,
+    :SC11,:SC12,:SC13,:SC14,:SC15,:SC16,:SC17,:SC18,:SC19,:SC20,
+    :SC21,:SC22,:SC23,:SC24,:SC25,:SC26,:SC27,:SC28,:SC29,:SC30,
+    :SC31,:SC32,:SC33,:SC34,:SC35,:SC36,:SC37,:SC38,:SC39,:SC40,
+    :SC41,:SC42,:SC43,:SC44,:SC45,:SC46,:SC47,:SC48,:SC49,:SC50,
+	:ANTIMETAL,:ANTIEARTH,:ANTIBEAST,:ANTINATURE,
+	:ANTIHEART,:ANTIUMBRAL,:ANTIWIND,:ANTIMIASMA,
+    :ANTIHYDRO,:ANTIAERO,:ANTICRYO,:ANTINETHER,
+	:ANTIREASON,:ANTIPYRO,:ANTIILLUSION,:ANTIFAITH,
+    :ANTIDREAM
+  ], speech: "KirisameShop", useCat: true)
+end
+
+def pbTavernShop
+    if pbGet(121) < 20
+	  pbPokemonMart([
+      :BEER,
+	  :SAKE,
+	  :ONIKILLERSAKE
+    ], speech: "TavernShop", useCat: true)
+	elsif pbGet(121) >= 20
+	  pbPokemonMart([
+      :BEER,
+	  :SAKE,
+	  :ONIKILLERSAKE,
+	  :GOLDENRICESAKE
+    ], speech: "TavernShop", useCat: true)
+	else $game_switches[107]
+	  pbPokemonMart([
+      :BEER,
+	  :SAKE,
+	  :ONIKILLERSAKE,
+	  :GOLDENRICESAKE,
+	  :GOLDENPEACHSAKE
+    ], speech: "TavernShop", useCat: true)
+	end
+end
+
+
+def pbMusharnaShop
+	  pbPokemonMart([
+      :PUPPETORB,:GREATORB,:ULTRAORB,:MOONBALL,
+      :POTION,:SUPERPOTION,:HYPERPOTION,
+      :REVIVE,:MAXREVIVE,
+      :FULLHEAL,:FULLRESTORE,
+      :ETHER,:MAXETHER,:ELIXIR,:MAXELIXIR,
+      :REPEL,:SUPERREPEL,:MAXREPEL,
+      :PPUP,:RARECANDY,
+      :POWERSHARD,:DEFENSESHARD,:TECHSHARD,
+      :SWIFTSHARD,:SUPPORTSHARD,:SOLARSHARD,
+      :CHROMESHARD
+    ], speech: "Musharna", useCat: true)
+end
+
+def pbRestStopMoon
+	  pbPokemonMart([
+      :PUPPETORB,:GREATORB,:ULTRAORB,:MOONBALL,
+      :POTION,:SUPERPOTION,:HYPERPOTION,:SAKE,:BEER,:ONIKILLERSAKE,
+      :REVIVE,:MAXREVIVE,
+      :FULLHEAL,:FULLRESTORE,
+      :ETHER,:MAXETHER,:ELIXIR,:MAXELIXIR,
+      :REPEL,:SUPERREPEL,:MAXREPEL,
+      :PPUP,:RARECANDY,
+      :POWERSHARD,:DEFENSESHARD,:TECHSHARD,
+      :SWIFTSHARD,:SUPPORTSHARD,:SOLARSHARD,
+      :CHROMESHARD
+    ], useCat: true)
+end
+
+def pbPalaceShop
+  pbPokemonMart([
+    :HYPERPOTION,:ONIKILLERSAKE,:GOLDENRICESAKE,:REVIVE,:GOLDENPEACHSAKE,:FULLRESTORE,
+	:FULLHEAL,:MAXETHER,:MAXELIXIR,:PPUP,:RARECANDY,:ABILITYCAPSULE,
+	:SC01,:SC02,:SC03,:SC04,:SC05,:SC06,:SC07,:SC08,:SC09,:SC10,
+    :SC11,:SC12,:SC13,:SC14,:SC15,:SC16,:SC17,:SC18,:SC19,:SC20,
+    :SC21,:SC22,:SC23,:SC24,:SC25,:SC26,:SC27,:SC28,:SC29,:SC30,
+    :SC31,:SC32,:SC33,:SC34,:SC35,:SC36,:SC37,:SC38,:SC39,:SC40,
+    :SC41,:SC42,:SC43,:SC44,:SC45,:SC46,:SC47,:SC48,:SC49,:SC50,
+  ], useCat: true)
+end
+#-------------------------------------------
+# The Last Adventure
+#-------------------------------------------
+def pbTLAShop
+# Everything from other shops since you can't go back to them.
+# Rest Stops, Skill Cards, Festival Shops, etc.
+end

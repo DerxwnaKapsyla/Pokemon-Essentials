@@ -251,6 +251,7 @@ def registerSpecies(type, species, gender, form, shiny)
   mapID = $game_map.map_id
   return if [speciesID, gender, shiny].all?(&:nil?)
   spCounter, spMapCounter, lastSpCounter, lastSpMapCounter = getCounters(type, mapID)
+  return if !spCounter
   spCounter[speciesID] ||= [[[], []], [[], []]]
   spCounter[speciesID][gender][shiny][form] ||= 0
   spCounter[speciesID][gender][shiny][form] += 1

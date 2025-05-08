@@ -36456,12 +36456,9 @@ Trigger: Action Button
 
 List of Event Commands:
 @>Text: \xn[Keine]Good afternoon, \pn! If you've come to try out the Quiz
- :    : Hall, it isn't fully set up yet.
-@>Text: \xn[Keine]If you come back later, everything should be fully
- :    : ready!
-@>Text: \xn[Keine]You can use this time to study. You might pull good
- :    : grades in class, but this will be unlike anything you're ready
- :    : for.
+ :    : Hall, please speak to the attendant outside this room.
+@>Text: \xn[Keine]Make sure you take this time to study. You might pull good
+ :    : grades in class, but this will be unlike anything I've taught you in class!
 @>
 
 #------------------------------------------------------------------------------
@@ -36673,7 +36670,9 @@ List of Event Commands:
   (When Cancel: Choice 2)
   : When [Yes]
    @>Text: Good luck in there!
-   @>Comment: -- Variable set to Novice
+   @>Script: pbSet(4,1) # Novice Difficulty
+   :       : pbSet(3,4) # Incorrect Question Count
+   @>Script: pbSetSelfSwitch(10,"A",true)
    @>
   : When [No]
    @>Text: Please feel free to come back when you've studied up more!
@@ -36686,7 +36685,9 @@ List of Event Commands:
   (When Cancel: Choice 2)
   : When [Yes]
    @>Text: Good luck in there!
-   @>Comment: -- Variable set to Intermediate
+   @>Script: pbSet(4,2) # Intermediate Difficulty
+   :       : pbSet(3,3) # Incorrect Question Count
+   @>Script: pbSetSelfSwitch(10,"A",true)
    @>
   : When [No]
    @>Text: Please feel free to come back when you've studied up more!
@@ -36699,7 +36700,9 @@ List of Event Commands:
   (When Cancel: Choice 2)
   : When [Yes]
    @>Text: Good luck in there!
-   @>Comment: -- Variable set to Expert
+   @>Script: pbSet(4,3) # Expert Difficulty
+   :       : pbSet(3,2) # Incorrect Question Count
+   @>Script: pbSetSelfSwitch(10,"A",true)
    @>
   : When [No]
    @>Text: Please feel free to come back when you've studied up more!
@@ -36723,7 +36726,7 @@ List of Event Commands:
  @>Text: The amount of FP you are awarded is depndant on numerous 
   :    : factors.
  @>Text: First, for every correct question you will recieve 2 FP. There
-  :    : are a total of 5 questions, so you can earn a maximum of 10
+  :    : are a total of 7 questions, so you can earn a maximum of 14
   :    : FP per course.
  @>Text: Next off, the difficulty of the course you take will determine the FP
   :    : you are awarded. Of course, the higher the difficulty, the harder 
@@ -36801,12 +36804,12 @@ List of Event Commands:
 
 #------------------------------------------------------------------------------
 Event ID: 010
-Event Name: EV010
+Event Name: Quiz Controller Script
 (X,Y): (022,011)
 
 Page #1
 Conditions
-None
+Self Switch D is ON
 
 Autonomous Movement
 Type: Fixed
@@ -36838,6 +36841,108 @@ List of Event Commands:
 @>Restore BGM/BGS
 @>Scroll Map: Down, 4, 3
 @>Exit Event Processing
+@>
+
+Page #2
+Conditions
+Self Switch A is ON
+
+Autonomous Movement
+Type: Fixed
+Speed: 3: Slow
+Freq: 3: Low
+Options Enabled
+Move Animation
+Trigger: Autorun
+
+List of Event Commands:
+@>Change Screen Color Tone: (-255,-255,-255,0), @6
+@>Wait: 8 frame(s)
+@>Transfer Player:[041: Keine's Quiz Hall], (022,012), Up, No Fade
+@>Change Screen Color Tone: (0,0,0,0), @6
+@>Scroll Map: Up, 4, 3
+@>Wait: 20 frame(s)
+@>Change Text Options: Middle, Show
+@>Conditional Branch: Self Switch B == OFF
+ @>Text: \xn[Keine]I see you've shown up here, \pn! I'm glad to know at least one
+  :    : of my pupils has the courage to take on this challenge.
+ @>Text: \xn[Keine]However, this won't be like your lessons in class. Are you ready?
+  :    : I hope you studied well.
+ @>Control Self Switch: B =ON
+ @>
+: Else
+ @>Text: \xn[Keine]Welcome back, \pn! I see you've returned for another round
+  :    : of my questions.
+ @>Text: \xn[Keine]Show me that all your hours in the classroom aren't put to
+  :    : waste!
+ @>
+: Branch End
+@>Change Text Options: Bottom, Show
+@>Script: pbShowPicture(1,"Quiz/QuizKeine_Neutral.png",0,-512,0,100,100,255,0)
+:       : pbShowPicture(2,"Quiz/QuizAyaka_Neutral.png",0,512,0,100,100,255,0)
+@>Move Picture: 1, @5, Upper Left (0,0), (100%,100%), 255, Normal
+@>Move Picture: 2, @5, Upper Left (0,0), (100%,100%), 255, Normal
+@>Wait: 5 frame(s)
+@>Play SE: 'Voltorb Flip explosion', 80, 100
+@>Wait: 5 frame(s)
+@>Text: \xn[Keine]Are you ready, \pn? Let's begin.\wtnp[20]
+@>Wait: 10 frame(s)
+@>Memorize BGM/BGS
+@>Play BGM: 'U-007. Nostalgic Blood of the East ~ Old World', 100, 100
+@>Wait: 10 frame(s)
+@>Script: pbQuizShow
+@>Restore BGM/BGS
+@>Scroll Map: Down, 4, 3
+@>Control Self Switch: A =OFF
+@>Exit Event Processing
+@>
+
+#------------------------------------------------------------------------------
+Event ID: 011
+Event Name: EV011
+(X,Y): (023,012)
+
+Page #1
+Conditions
+None
+
+Graphic: Object ball
+
+Autonomous Movement
+Type: Fixed
+Speed: 3: Slow
+Freq: 3: Low
+Options Enabled
+Move Animation
+Trigger: Action Button
+
+List of Event Commands:
+@>Script: pbDebugVariables(1)
+:       : textbook(pbGet(1))
+@>
+
+#------------------------------------------------------------------------------
+Event ID: 012
+Event Name: Books size(3,1)
+(X,Y): (002,003)
+
+Page #1
+Conditions
+None
+
+Autonomous Movement
+Type: Fixed
+Speed: 3: Slow
+Freq: 3: Low
+Options Enabled
+Move Animation
+Trigger: Action Button
+
+List of Event Commands:
+@>Comment: Event Indicator
+ :       : investigate 0 -32
+@>Script: pbDebugVariables(1)
+:       : textbook(pbGet(1))
 @>
 
 #------------------------------------------------------------------------------
@@ -96465,7 +96570,7 @@ List of Event Commands:
     :    : but why is everyone self-aware about it and pointing it 
     :    : out!?}
    @>Wait: 20 frame(s)
-   @>Text: \xn[Eirin]Nevertheless, I do have the ability to wake you 
+   @>Text: \xn[Eirin]Nevertheless, I do not have the ability to wake you 
     :    : from your dream. Only one has that power, and you are 
     :    : on track to find them.
    @>Text: \xn[Eirin]Once you encounter her, I am positive that she will 

@@ -48,6 +48,7 @@ def anTriviaQuestion(id)
 		    pbShowPicture(1,"Quiz/QuizKeine_Mad.png",0,0,0,100,100,255,0)
 			pbShowPicture(2,"Quiz/QuizAyaka_Sad.png",0,0,0,100,100,255,0)
 			pbMessage(AstralnekoConfig::INCORRECT_ANSWER_SPEECHES.sample)
+			pbExplainAnswerIncorrect
 			$game_variables[2] += 1
 			return false
 		when correctAnswerId
@@ -55,6 +56,7 @@ def anTriviaQuestion(id)
 			pbShowPicture(1,"Quiz/QuizKeine_Happy.png",0,0,0,100,100,255,0)
 			pbShowPicture(2,"Quiz/QuizAyaka_Happy.png",0,0,0,100,100,255,0)
 			pbMessage(AstralnekoConfig::CORRECT_ANSWER_SPEECHES.sample)
+			pbExplainAnswerCorrect
 			$game_variables[1] += 1
 			return true
 		else
@@ -62,6 +64,7 @@ def anTriviaQuestion(id)
 			pbShowPicture(1,"Quiz/QuizKeine_Mad.png",0,0,0,100,100,255,0)
 			pbShowPicture(2,"Quiz/QuizAyaka_Sad.png",0,0,0,100,100,255,0)
 			pbMessage(AstralnekoConfig::INCORRECT_ANSWER_SPEECHES.sample)
+			pbExplainAnswerIncorrect
 			$game_variables[2] += 1
 			return false
 	end

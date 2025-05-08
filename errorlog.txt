@@ -18236,3 +18236,247 @@ Message: [TAoA Core] 009_TriviaControl.rb:41: Invalid break
 
 Backtrace:
 [TAoA Core] 009_TriviaControl.rb
+
+=================
+
+[2025-05-05 01:31:38 -0700]
+[Pokémon Essentials version 21.1]
+
+Error in Plugin: [TAoA Core]
+Exception: SyntaxError
+Message: [TAoA Core] 009_TriviaControl.rb:107: syntax error, unexpected end-of-input, expecting `end'
+
+Backtrace:
+005_PluginManager.rb:635:in `eval'
+005_PluginManager.rb:635:in `block (2 levels) in runPlugins'
+005_PluginManager.rb:625:in `each'
+005_PluginManager.rb:625:in `block in runPlugins'
+005_PluginManager.rb:616:in `each'
+005_PluginManager.rb:616:in `runPlugins'
+999_Main.rb:35:in `mainFunctionDebug'
+999_Main.rb:19:in `block in mainFunction'
+003_Errors.rb:79:in `pbCriticalCode'
+999_Main.rb:19:in `mainFunction'
+
+=================
+
+[2025-05-05 01:32:18 -0700]
+[Pokémon Essentials version 21.1]
+[v21.1 Hotfixes 1.0.9]
+
+Script error in event 10 (coords 22,11), map 41 (Keine's Quiz Hall)
+Exception: NameError
+Message: undefined local variable or method `question' for #<Interpreter @event_id: 10>
+
+***Full script:
+pbQuizShow
+
+Backtrace:
+[TAoA Core] 009_TriviaControl.rb:64:in `pbExplainAnswerIncorrect'
+[Astralneko's Trivia] 000 Trivia Script.rb:67:in `anTriviaQuestion'
+[TAoA Core] 009_TriviaControl.rb:31:in `block in pbQuizShow'
+[TAoA Core] 009_TriviaControl.rb:26:in `each'
+[TAoA Core] 009_TriviaControl.rb:26:in `pbQuizShow'
+(eval):1:in `execute_script'
+003_Interpreter.rb:140:in `eval'
+003_Interpreter.rb:140:in `execute_script'
+004_Interpreter_Commands.rb:1177:in `command_355'
+004_Interpreter_Commands.rb:116:in `execute_command'
+
+=================
+
+[2025-05-05 23:45:00 -0700]
+[Pokémon Essentials version 21.1]
+
+Error in Plugin: [Textbook Script]
+Exception: SyntaxError
+Message: [Textbook Script] 001_Textbook Script.rb:44: syntax error, unexpected constant, expecting ']'
+Books = [
+^~~~~
+[Textbook Script] 001_Textbook Script.rb:49: syntax error, unexpected constant, expecting ']'
+  GensokyoChronicle1,
+  ^~~~~~~~~~~~~~~~~~
+[Textbook Script] 001_Textbook Script.rb:59: syntax error, unexpected ']', expecting '='
+
+Backtrace:
+005_PluginManager.rb:635:in `eval'
+005_PluginManager.rb:635:in `block (2 levels) in runPlugins'
+005_PluginManager.rb:625:in `each'
+005_PluginManager.rb:625:in `block in runPlugins'
+005_PluginManager.rb:616:in `each'
+005_PluginManager.rb:616:in `runPlugins'
+999_Main.rb:35:in `mainFunctionDebug'
+999_Main.rb:19:in `block in mainFunction'
+003_Errors.rb:79:in `pbCriticalCode'
+999_Main.rb:19:in `mainFunction'
+
+=================
+
+[2025-05-05 23:45:24 -0700]
+[Pokémon Essentials version 21.1]
+
+Error in Plugin: [Textbook Script]
+Exception: SyntaxError
+Message: [Textbook Script] 001_Textbook Script.rb:44: syntax error, unexpected constant, expecting ']'
+Books = [
+^~~~~
+
+
+Backtrace:
+005_PluginManager.rb:635:in `eval'
+005_PluginManager.rb:635:in `block (2 levels) in runPlugins'
+005_PluginManager.rb:625:in `each'
+005_PluginManager.rb:625:in `block in runPlugins'
+005_PluginManager.rb:616:in `each'
+005_PluginManager.rb:616:in `runPlugins'
+999_Main.rb:35:in `mainFunctionDebug'
+999_Main.rb:19:in `block in mainFunction'
+003_Errors.rb:79:in `pbCriticalCode'
+999_Main.rb:19:in `mainFunction'
+
+=================
+
+[2025-05-05 23:45:40 -0700]
+[Pokémon Essentials version 21.1]
+
+Error in Plugin: [Textbook Script]
+Exception: NameError
+Message: uninitialized constant HakureiClanHistory
+
+Backtrace:
+[Textbook Script] 001_Textbook Script.rb:48:in `<main>'
+005_PluginManager.rb:635:in `eval'
+005_PluginManager.rb:635:in `block (2 levels) in runPlugins'
+005_PluginManager.rb:625:in `each'
+005_PluginManager.rb:625:in `block in runPlugins'
+005_PluginManager.rb:616:in `each'
+005_PluginManager.rb:616:in `runPlugins'
+999_Main.rb:35:in `mainFunctionDebug'
+999_Main.rb:19:in `block in mainFunction'
+003_Errors.rb:79:in `pbCriticalCode'
+
+=================
+
+[2025-05-05 23:58:36 -0700]
+[Pokémon Essentials version 21.1]
+
+Error in Plugin: [Textbook Script]
+Exception: SyntaxError
+Message: [Textbook Script] 001_Textbook Script.rb:49: syntax error, unexpected string literal, expecting ']'
+"History of the Hakurei Clan",...
+^
+[Textbook Script] 001_Textbook Script.rb:49: syntax error, unexpected ',', expecting end-of-input
+"History of the Hakurei Clan","Under the protection of the ...
+                             ^
+
+
+Backtrace:
+005_PluginManager.rb:635:in `eval'
+005_PluginManager.rb:635:in `block (2 levels) in runPlugins'
+005_PluginManager.rb:625:in `each'
+005_PluginManager.rb:625:in `block in runPlugins'
+005_PluginManager.rb:616:in `each'
+005_PluginManager.rb:616:in `runPlugins'
+999_Main.rb:35:in `mainFunctionDebug'
+999_Main.rb:19:in `block in mainFunction'
+003_Errors.rb:79:in `pbCriticalCode'
+999_Main.rb:19:in `mainFunction'
+
+=================
+
+[2025-05-07 12:55:52 -0700]
+[Pokémon Essentials version 21.1]
+[v21.1 Hotfixes 1.0.9]
+
+Script error in event 11 (coords 23,12), map 41 (Keine's Quiz Hall)
+Exception: TypeError
+Message: no implicit conversion of String into Integer
+
+***Full script:
+pbTextEntry("Book",1,3,1)
+textbook(pbGet(1))
+
+Backtrace:
+[Textbook Script] 001_Textbook Script.rb:528:in `pbStartTextbookScene'
+[Textbook Script] 001_Textbook Script.rb:17:in `pbStartTextbookScreen'
+[Textbook Script] 001_Textbook Script.rb:5:in `textbook'
+(eval):2:in `execute_script'
+003_Interpreter.rb:140:in `eval'
+003_Interpreter.rb:140:in `execute_script'
+004_Interpreter_Commands.rb:1177:in `command_355'
+004_Interpreter_Commands.rb:116:in `execute_command'
+003_Interpreter.rb:132:in `block in update'
+003_Interpreter.rb:86:in `loop'
+
+=================
+
+[2025-05-07 14:13:20 -0700]
+[Pokémon Essentials version 21.1]
+
+Error in Plugin: [Textbook Script]
+Exception: NameError
+Message: undefined local variable or method `textbookbg' for Textbook_Scene:Class
+
+Backtrace:
+[Textbook Script] 001_Textbook Script.rb:517:in `<class:Textbook_Scene>'
+[Textbook Script] 001_Textbook Script.rb:516:in `<main>'
+005_PluginManager.rb:635:in `eval'
+005_PluginManager.rb:635:in `block (2 levels) in runPlugins'
+005_PluginManager.rb:625:in `each'
+005_PluginManager.rb:625:in `block in runPlugins'
+005_PluginManager.rb:616:in `each'
+005_PluginManager.rb:616:in `runPlugins'
+999_Main.rb:35:in `mainFunctionDebug'
+999_Main.rb:19:in `block in mainFunction'
+
+=================
+
+[2025-05-07 14:31:27 -0700]
+[Pokémon Essentials version 21.1]
+[v21.1 Hotfixes 1.0.9]
+
+Script error in event 11 (coords 23,12), map 41 (Keine's Quiz Hall)
+Exception: NoMethodError
+Message: undefined method `exists?' for "Graphics/UI/Book/Book_1/TBbg_0":String
+
+***Full script:
+pbDebugVariables(1)
+textbook(pbGet(1))
+
+Backtrace:
+[Textbook Script] 001_Textbook Script.rb:565:in `drawTextbookPage'
+[Textbook Script] 001_Textbook Script.rb:545:in `pbStartTextbookScene'
+[Textbook Script] 001_Textbook Script.rb:17:in `pbStartTextbookScreen'
+[Textbook Script] 001_Textbook Script.rb:5:in `textbook'
+(eval):2:in `execute_script'
+003_Interpreter.rb:140:in `eval'
+003_Interpreter.rb:140:in `execute_script'
+004_Interpreter_Commands.rb:1177:in `command_355'
+004_Interpreter_Commands.rb:116:in `execute_command'
+003_Interpreter.rb:132:in `block in update'
+
+=================
+
+[2025-05-07 14:33:25 -0700]
+[Pokémon Essentials version 21.1]
+[v21.1 Hotfixes 1.0.9]
+
+Script error in event 11 (coords 23,12), map 41 (Keine's Quiz Hall)
+Exception: NoMethodError
+Message: undefined method `exists' for "Graphics/UI/Book/Book_1/TBbg_0":String
+
+***Full script:
+pbDebugVariables(1)
+textbook(pbGet(1))
+
+Backtrace:
+[Textbook Script] 001_Textbook Script.rb:565:in `drawTextbookPage'
+[Textbook Script] 001_Textbook Script.rb:545:in `pbStartTextbookScene'
+[Textbook Script] 001_Textbook Script.rb:17:in `pbStartTextbookScreen'
+[Textbook Script] 001_Textbook Script.rb:5:in `textbook'
+(eval):2:in `execute_script'
+003_Interpreter.rb:140:in `eval'
+003_Interpreter.rb:140:in `execute_script'
+004_Interpreter_Commands.rb:1177:in `command_355'
+004_Interpreter_Commands.rb:116:in `execute_command'
+003_Interpreter.rb:132:in `block in update'
