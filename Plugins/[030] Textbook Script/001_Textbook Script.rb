@@ -1,10 +1,10 @@
 def textbook(book)
-   # oldsprites = pbFadeOutAndHide(@sprites)
+  pbFadeOutIn {
     scene = Textbook_Scene.new
     screen = TextbookScreen.new(scene)
     screen.pbStartTextbookScreen(book)
     yield if block_given?
-    pbFadeInAndShow(@sprites)#,oldsprites)
+  }
 end
 
 
@@ -46,7 +46,7 @@ HistoryOfGensokyo = [
 HakureiClanHistory = [
 "History of the Hakurei Clan","The Hakurei Shrine has existed for several hundred years and has served as the maintainer of balance between Humans and Youkai since its inception. Initially a regular shrine, the marriage between a priest of one shrine and priestess of another shrine gave birth to the joint shrine which would later become known as the Hakurei Shrine. Under the protection of the God of the Hakurei Clan, [REDACTED], those born with the blood of the Hakurei running through them were",
 
-"History of the Hakurei Clan","blessed with the ability to 'separate from reality', which they often used as a way to arbitrate incidents between Humans and Youkai. Later down the line, they were the only ones who could effectively control the Divine Relic of the Hakurei Clan, the Hakurei Yin-Yang Orb. Spiritual power tends to flow the strongest in the women of the Hakurei Clan, but there have been known cases where males have been blessed with strong spiritual presence. ",
+"History of the Hakurei Clan","blessed with the ability to \"separate from reality\", which they often used as a way to arbitrate incidents between Humans and Youkai. Later down the line, they were the only ones who could effectively control the Divine Relic of the Hakurei Clan, the Hakurei Yin-Yang Orb. Spiritual power tends to flow the strongest in the women of the Hakurei Clan, but there have been known cases where males have been blessed with strong spiritual presence. ",
 
 "History of the Hakurei Clan","Those who marry into the Hakurei Clan adopt the surname of Hakurei, as do all children born within the clan. While most of the Hakurei Shrine Priests and Priestesses lived relatively obscure existences, there were several of them that are well known throughout Gensokyo's history. A short list of them are as follows:",
 
@@ -64,7 +64,9 @@ HakureiClanHistory = [
 ]
 
 IncidentHistory = [
-"History of Gensokyo's Incidents","Gensokyo has played host to several incidents across the many centuries. This document serves as a comprehensive list of the most well known incidents and events in recent history.",
+"History of Gensokyo's Incidents","Gensokyo has played host to several incidents across the many centuries. This document serves as a comprehensive list of the most well known incidents and events in modern Gensokyo history.",
+
+"History of Gensokyo's Incidents","The Great Barrier Disturbance, 1885. This marks the official date that Gensokyo was sealed off from the Outside World, thanks to the creation of the Great Hakurei Barrier. Marks the beginning of the Gensokyo calendar system, with this being Season 0.",
 
 "History of Gensokyo's Incidents","Invasion of the Hakurei Shrine - Spring, Season 116. This incident revolved around the unsealing of the Vengeful Spirit, Mima, which led to the swarm of Youkai and Ghosts invading the Hakurei Shrine.",
 
@@ -475,42 +477,557 @@ GensokyoChronicle_Colophon = [
 "Gensokyo Chronicle - Colophon","<ac>Gensokyo Chronicle</ac>\nPublished in the one hundred twenty-first season.\nAuthor: Hieda no Akyuu\nPrior authors: Hieda no Aya, Hieda no Anana, Hieda no Amu, Hieda no Ago, Hieda no Ayo, Hieda no Ami, Hieda no Ani, Hieda no Aichi\nSupervisor: Hieda no Are\nAnd many other youkai\nAll rights reserved"
 ]
 
+GrimoireOfMarisa_Reimu = [
+"Grimoire of Marisa - Reimu","<fs=30><ac>Dream Sign \"Evil Sealing Circle\"</ac></fs>\n* User: Reimu Hakurei\n* Notes: Often seen, movement stress type\n* Reference level: ★★\nA Spell Card where your movement is restricted by amulets. You're bound in place by the amulets and slowly strangled to death.\nThe fast charms aren't aiming for you, so it's not as difficult as it looks. Why doesn't she just aim them straight at you?",
+
+"Grimoire of Marisa - Reimu","<fs=30><ac>Dream Sign \"Evil Sealing Circle\"</ac></fs>\nBit of a tangent, but the amulets that Reimu uses for evil-sealing are booby-trapped. They look like gift envelopes with \"full house\" written on them, which makes you want to grab 'em, but there's nothing especially interesting in there. It's just a trap. ",
+
+"Grimoire of Marisa - Reimu","<fs=30><ac>Dream Sign \"Duplex Barrier\"</ac></fs>\n* User: Reimu Hakurei\n* Notes: Confirmed during the Eternal Night Incident, theatrical type\n* Reference level: ★★★\nA Spell Card with a mysterious power that turns space inside-out. I'm jealous.\nIf I had an area enclosed in that barrier, my magic's range would also widen.I indirectly asked Reimu about it, but it was pointless.\n",
+
+"Grimoire of Marisa - Reimu","<fs=30><ac>Dream Sign \"Duplex Barrier\"</ac></fs>\nApparently, a barrier is a boundary line between things, and having two barriers on top of each other is equivalent to a world with no boundaries. If you can find the gaps in space that are hiding just about everywhere, you'll be able to set up a duplex barrier.\nIn other words, she's bad at explaining things.",
+
+"Grimoire of Marisa - Reimu","<fs=30><ac>Boundary \"Duplex Danmaku Barrier\"</ac></fs>\n* User: Reimu Hakurei\n* Notes: Confirmed during the Eternal Night Incident, theatrical type\n* Blowhard Level: ★★★★\nA large-scale version of Duplex Barrier. This time I'm trapped in the inside part of the barrier too.\nHonestly, the regular Duplex Barrier is stronger and more scary.",
+
+"Grimoire of Marisa - Reimu","<fs=30><ac>Boundary \"Duplex Danmaku Barrier\"</ac></fs>\nThis is the kind of thing people mean by 'a tactician getting caught up in his own schemes'.",
+
+"Grimoire of Marisa - Reimu","<fs=30><ac>Untitled \"Flying Mysterious Shrine Maiden\"</ac></fs>\n* User: Reimu Hakurei\n* Notes: Rare, theatrical type \n* Reference level: ★\nA desperation Spell Card that Reimu whips out while in an unconscious state. Hardly ever seen.\nShe never looks at you while the spell card is in effect, so you're limited to retreating.\nHer attack is omnidirectional danmaku with no",
+
+"Grimoire of Marisa - Reimu","<fs=30><ac>Untitled \"Flying Mysterious Shrine Maiden\"</ac></fs>\nblind spots, just sprayed everywhere at random. She's not looking, so I guess that's bound to happen.\nY'know, I always think this, but I don't see the benefit of not looking your opponent during a battle. Feels like it'd just be a disadvantage, but...",
+
+"Grimoire of Marisa - Reimu","<fs=30><ac>Divine Spirit \"Dream Seal -Blink-\"</ac></fs>\n* User: Reimu Hakurei\n* Notes: Long distance marathon \n* Reference level: Only Reimu can do it, so it's no good as a reference\nReimu herself only moves in a straight line, but somehow she completely surrounds you. Just as you think she passed behind you, she pops out from in front.",
+
+"Grimoire of Marisa - Reimu","<fs=30><ac>Divine Spirit \"Dream Seal -Blink-\"</ac></fs>\nThe tengu and Sakuya do something similar, but for the tengu, it's just speed, and for Sakuya, it's just teleportation. Reimu's technique isn't something cheap like that. You probably don't get what I'm talking about, but I don't really get it myself.\nReimu says that \"you can't normally see the boundary that this barrier encloses, so it looks like there's countless copies of the",
+
+"Grimoire of Marisa - Reimu","<fs=30><ac>Divine Spirit \"Dream Seal -Blink-\"</ac></fs>\nenemy.\" Is it like a small world that loops around on itself? Or maybe it's something like two mirrors facing each other?\nReimu has lots of Spell Cards like this. They don't aim directly at you, so it's like being made fun of.",
+
+"Grimoire of Marisa - Reimu","<fs=30><ac>Divine Spirit \"Dream Seal\"</ac></fs>\n* User: Reimu Hakurei\n* Notes: Often seen\n* Reference level: ★★★★\nA Spell Card that forcibly seals you with bullets of light that ignore the laws of physics. It can supposedly exterminate any and all youkai, no questions asked. Apparently, it's a wonderful light that youkai hate more than anything, but even for humans",
+
+"Grimoire of Marisa - Reimu","<fs=30><ac>Divine Spirit \"Dream Seal\"</ac></fs>\nit still kinda hurts. But what is \"sealing,\" anyway? Putting stuff in a rice jar?",
+
+"Grimoire of Marisa - Reimu","<fs=30><ac>Holy Relic \"Yin-Yang Kishin Orb\"</ac></fs>\n* User: Reimu Hakurei\n* Notes: Mainly used as a trick at parties \n* Reference level: ★★★★★\nA Spell Card where she throws a giant yin-yang orb that was tucked away who-the-heck-knows-where. Unusually heavy lifting for Reimu.\nGetting hit by the yin-yang orb hurts. Like, physically. 'Cause it's a plain old, hard, heavy",
+
+"Grimoire of Marisa - Reimu","<fs=30><ac>Holy Relic \"Yin-Yang Kishin Orb\"</ac></fs>\nball. The orb she uses in this spell card is particularly hot and heavy, but a human who gets hit with it won't get squashed flat or anything.",
+
+"Grimoire of Marisa - Reimu","<fs=30><ac>Divine Arts \"Omnidirectional Oni-Binding Circle\"</ac></fs>\n* User: Reimu Hakurei\n* Notes: Often used when angry\n* Reference level: ★★★★\nA Spell Card in which mysterious powers take away your freedom of movement. Apparently it's for binding demons, but it binds humans just as well. Once this technique begins, all freedom will be lost until Reimu stops it.",
+
+"Grimoire of Marisa - Reimu","<fs=30><ac>Divine Arts \"Omnidirectional Oni-Binding Circle\"</ac></fs>\nBut because Reimu can't move too, capturing this spell card is easy. All you gotta do is watch from a distance. But do I have the self-restraint to stay still and do nothing while Reimu's sitting there like an idiot? That's the biggest problem.",
+
+"Grimoire of Marisa - Reimu","<fs=30><ac>\"Innate Dream\"</ac></fs>\n* User: Reimu Hakurei\n* Notes: Rare, theatrical type \n* 36th Stratagem Level: ★★★★★★★\nReimu becomes completely impossible to touch. She enters a visible \"invisible man\" state.\nIt's her ultimate secret technique, apparently, but it looks like she just closes her eyes while the danmaku fires itself towards the enemy automatically. ",
+
+"Grimoire of Marisa - Reimu","<fs=30><ac>\"Innate Dream\"</ac></fs>\nBy the way, this wasn't even a Spell Card at first, but I gameified it by giving it a proper Spell Card name. Otherwise, there'd be no way to win.\nThis is the one single Spell Card that can only be used via the innate ability Reimu was born with. Hence the name \"tensei (lit. innate from birth)\".",
+]
+
+GrimoireOfMarisa_Rin = [
+"Grimoire of Marisa - Rin",
+"<fs=30><ac>Cat Sign \"Cat's Walk\"</ac></fs>
+* User: Orin
+* Notes: Can see it above ground too recently, theatrical type
+* Unpleasantness: Prolly got fleas 
+A cat scampering around outside in the courtyard. The cat's movements are real hard to read, but the danmaku's movement is easy.
+It's no big deal if you just stay calm and dodge, but her movements are more cat-like ",
+
+"Grimoire of Marisa - Rin",
+"<fs=30><ac>Cat Sign \"Cat's Walk\"</ac></fs>
+than Chen's, so don't let 'er confuse you.",
+
+"Grimoire of Marisa - Rin",
+"<fs=30><ac>Malicious Spirit \"Spleen Eater\"</ac></fs>
+* User: Orin
+* Notes: Feels like I'm gonna get eaten, self-destructing slave-type 
+* Reference level: Noooo thank you
+She summons a bunch of vengeful spirits that love eating humans' negative emotions, like anger an' hatred. 
+The spleen is the organ where humans store their emotions, apparently. ",
+
+"Grimoire of Marisa - Rin",
+"<fs=30><ac>Malicious Spirit \"Spleen Eater\"</ac></fs>
+If a human with emotions comes, they'll pop outta nowhere and slowly pounce upon 'em. If they beat ya an' eat yer negative emotions, you'll feel... refreshed, maybe?",
+
+"Grimoire of Marisa - Rin",
+"<fs=30><ac>Attonment \"Needle Mountain of a Former Hell\"</ac></fs>
+* User: Orin
+* Notes: Definitely Hell
+* Painfulness: ★★★★★
+A Spell Card where a bunch of spirits writhe around in pain over a mountain of countless needles. 
+The needle mountain hurts like heck, even if you're not a spirit. I feel like this Spell Card",
+
+"Grimoire of Marisa - Rin",
+"<fs=30><ac>Attonment \"Needle Mountain of a Former Hell\"</ac></fs>
+can give you a taste of a very Hell-esque Hell. That aside, even the pained spirits are pretty painful to get hit by. Is this what the Hell of Needle Mountains is like?",
+
+"Grimoire of Marisa - Rin",
+"<fs=30><ac>Cursed Sprite \"Zombie Fairy\"</ac></fs>
+* User: Orin
+* Notes: The zombies are gonna party it up tonight, slave-type 
+* Good cheer: ★★★★★★ 
+A Spell Card where it... seems like a bunch of fairy corpses get possessed by vengeful spirits and come back to life.
+It's actually just a bunch of fun-loving fairies playing along by pretending to be",
+
+"Grimoire of Marisa - Rin",
+"<fs=30><ac>Cursed Sprite \"Zombie Fairy\"</ac></fs>
+zombies and attacking you. A typical slave-type. If there aren't any fun-loving fairies around, it won't go anywhere."]
+
+GrimoireOfMarisa_Suwako = [
+"Grimoire of Marisa - Suwako",
+"<fs=30><ac>Native God \"Lord Long-Arm and Lord Long-Leg\"</ac></fs>
+* User: Suwako Moriya
+* Notes: Strange-looking gods, movement stress type 
+* Strange-Looking Level: ★★★★★★ 
+A Spell Card that blocks your escape routes with the power of some long-limbed, youkai-like gods.
+\"Native gods\" are basically country bumpkin",
+
+"Grimoire of Marisa - Suwako",
+"<fs=30><ac>Native God \"Lord Long-Arm and Lord Long-Leg\"</ac></fs>
+gods. I think the gods from those rural areas are so strange-looking because they're actually youkai pretending to be gods.",
+
+"Grimoire of Marisa - Suwako",
+"<fs=30><ac>Divine Tool \"Moriya's Iron Ring\"</ac></fs>
+* User: Suwako Moriya
+* Notes: Big, but thinner than I thought 
+* Reference Level: ★★★★ 
+A Spell Card that throws super-huge iron rings. 
+It's a simple, bold attack; my favorite. They're so big that it freaks me out a little, though. 
+When I asked her what the iron rings actually",
+
+"Grimoire of Marisa - Suwako",
+"<fs=30><ac>Divine Tool \"Moriya's Iron Ring\"</ac></fs>
+are, though, she said that they're hula-hoops. Dang, that's native gods for ya. ",
+
+"Grimoire of Marisa - Suwako",
+"<fs=30><ac>Spring Sign \"Jade of the Horrid River\"</ac></fs>
+* User: Suwako Moriya
+* Notes: You can swim like a fish at the shrine on top of the mountain 
+* Reference Level: ★★★★★
+There's apparently a place called Itoigawa in the Outside World, where you can harvest a bunch of jade. And it's got a real storied past, too...
+This Spell Card is apparently based on that",
+
+"Grimoire of Marisa - Suwako",
+"<fs=30><ac>Spring Sign \"Jade of the Horrid River\"</ac></fs>
+river's current, but the danmaku doesn't flow like a river. It forces me to either get dragged along by the current or fight against it, which is pretty unique.
+Jade isn't very hard, but it has the property of being very hard to break. Even if it hits the ground, it won't shatter. I actually like jade a lot! ",
+
+"Grimoire of Marisa - Suwako",
+"<fs=30><ac>Frog Hunt \"The Snake Eats the Croaking Frog\"</ac></fs>
+* User: Suwako Moriya
+* Notes: At the shrine on top of the mountain, theatrical type 
+* Croaking Volume: ★★★★★★★
+A Spell Card where a frog strikes back after getting eaten by a snake. Or a big, noisy mass of frogs, I suppose. 
+In this Spell Card, when one frog cries out,",
+
+"Grimoire of Marisa - Suwako",
+"<fs=30><ac>Frog Hunt \"The Snake Eats the Croaking Frog\"</ac></fs>
+they all start croakin' in a chain reaction, and attack whoever's nearby. So you have to get really far away from the frogs before they start making a commotion. Interestingly enough, as you're trying to dodge them, you end up leaping right into Suwako's face. It's a counterattack from the frogs the snake ate, so I s'pose the frogs eat the human in turn? ",
+
+"Grimoire of Marisa - Suwako",
+"<fs=30><ac>\"Suwa War - Native Myth vs Central Myth\"</ac></fs>
+* User: Suwako Moriya
+* Notes: \"Wait, I'm a civilian!\", theatrical type 
+* Dragged-Into-It Level: ★★★★★★★ 
+A Spell Card that flings you into a battlefield you've never heard of before. Extremely bothersome. 
+The battle unfolds with essentially zero concern for you. If you wanna win, you just ",
+
+"Grimoire of Marisa - Suwako",
+"<fs=30><ac>\"Suwa War - Native Myth vs Central Myth\"</ac></fs>
+have to keep dodging the stray bullets. So it's a Spell Card where you can't do anything but run. 
+As for what kind of battlefield it is, there's weeds that spring up one after another, and iron blades that chop them down. Which represents... the drudgery of gardening? Maybe? ",
+
+"Grimoire of Marisa - Suwako",
+"<fs=30><ac>Scourge Sign \"Mishaguji-sama\"</ac></fs>
+* User: Suwako Moriya
+* Notes: At the shrine on top of the mountain
+* Reference Level: ★★ 
+Another native god, apparently. So a youkai, in my book. 
+This particular god mainly seems to govern crops. Visually speaking, I suppose the danmaku represents crops rustling in the breeze. ",
+
+"Grimoire of Marisa - Suwako",
+"<fs=30><ac>Scourge Sign \"Mishaguji-sama\"</ac></fs>
+Beautiful in its extreme simplicity. It's not particularly strong as a result, but if you mock this god, it apparently changes dramatically. The soil turns barren, and the crops wither in the blink of an eye. I guess that'd make it into a much pricklier Spell Card, huh?
+I wanna try makin' her mad so I can see that new spell. May as well, right? Although the",
+
+"Grimoire of Marisa - Suwako",
+"<fs=30><ac>Scourge Sign \"Mishaguji-sama\"</ac></fs>
+crops withering would be a bit of a problem. ",
+]
+
+GrimoireOfMarisa_Cirno = [
+"Grimoire of Marisa - Cirno",
+"<fs=30><ac>Freeze Sign \"Perfect Freeze\"</ac></fs>
+* User: Cirno
+* Notes: Seen very frequently, theatrical type
+* Temperature: ★
+An unexpectedly amazing Spell Card that instantly freezes danmaku of any kind.
+After being frozen, the bullets gradually start moving around, like melting ice sliding at random. No one can predict what'll happen",
+
+"Grimoire of Marisa - Cirno",
+"<fs=30><ac>Freeze Sign \"Perfect Freeze\"</ac></fs>
+after the bullets thaw... including Cirno, of course. 
+In other words, it's all up to the ice to decide whether the danmaku becomes more difficult or actually gets easier. It's amazing as heck, but I definitely can't use it. ",
+
+"Grimoire of Marisa - Cirno",
+"<fs=30><ac>Freeze Sign \"Minus K\"</ac></fs>
+* User: Cirno
+* Notes: Sometimes seen above the lake
+* Temperature Impossible to measure
+A Spell Card where she drastically chills the danmaku, creating a difference in density between the inside and outside of the bullets, which causes them to crack and forcefully explode. 
+Using the smallest possible danmaku to make",
+
+"Grimoire of Marisa - Cirno",
+"<fs=30><ac>Freeze Sign \"Minus K\"</ac></fs>
+the biggest possible attack. Dang, that's good.
+The bullets are pretty sparse before they explode, though, so you'll almost never get hit if you stay close to her. Well, she's only a fairy, after all. If you put more thought into the balance between the shooting volume and the density, I think it'd become stronger, but... ",
+
+"Grimoire of Marisa - Cirno",
+"<fs=30><ac>Freeze Sign \"Minus K\"</ac></fs>
+Maybe I oughta get someone to teach me how to calculate this stuff.",
+]
+
+GrimoireOfMarisa_Parsee = [
+"Grimoire of Marisa - Parsee",
+"<fs=30><ac>Jealousy Sign \"Green-Eyed Monster\"</ac></fs>
+* User: Parsee Mizuhashi
+* Notes: Saw it on the way to the underworld, slave-type (invisible)
+* Jealousy Level: ★★★ 
+A spell that hits you with the sheer panic of running from an unidentifiable monster. 
+If you look closely, Parsee just sits still and leaves the monster to do everything. Must be nice. ",
+
+"Grimoire of Marisa - Parsee",
+"<fs=30><ac>Jealousy Sign \"Green-Eyed Monster\"</ac></fs>
+This is an invisible slave-type spell. I feel like I wanna have at least one of this type of Spell Card. If I were to develop a slave-type spell, what should I use as the slave? I wanna live with my eyes peeled for potential slaves.",
+
+"Grimoire of Marisa - Parsee",
+"<fs=30><ac>Grandpa Hanasaka \"Shiro's Ashes\"</ac></fs>
+* User: Parsee Mizuhashi
+* Notes:  One of several party tricks, theatrical type 
+* Jealousy Level: ★★★★ 
+She sprinkles the burnt ashes of... something, and flowers bloom in its wake. They bloom regardless of the season or the type of tree. 
+Everyone's always amazed by the pretty",
+
+"Grimoire of Marisa - Parsee",
+"<fs=30><ac>Grandpa Hanasaka \"Shiro's Ashes\"</ac></fs>
+flowers, but what's really amazing are the ashes. I wonder where she hides those. I'm jealous. 
+The actual attack is nothing special, by the way. I could dodge flower petals in my sleep. ",
+
+"Grimoire of Marisa - Parsee",
+"<fs=30><ac>Tongue-Cut Sparrow \"Large Box and Small Box\"</ac></fs>
+* User: Parsee Mizuhashi
+* Notes: Mostly old folktales, slave-type
+* Jealousy Level: ★★
+A clone technique that makes a fake Parsee appear.
+Even fairies know that the big one is the wrong one.
+But, y'know, I'd like to choose the big one on",
+
+"Grimoire of Marisa - Parsee",
+"<fs=30><ac>Tongue-Cut Sparrow \"Large Box and Small Box\"</ac></fs>
+ purpose. There's just something better about getting youkai from the large box rather than coins from the small box.",
+
+"Grimoire of Marisa - Parsee",
+"<fs=30><ac>Malice Sign \"Shrine Visit in the Dead of Night\"</ac></fs>
+* User: Parsee Mizuhashi
+* Notes: Seen often at shrines and such 
+* Jealousy Level: Not jealous of that 
+An unfortunate spell that's supposed to be ominous, but actually looks pretty.
+The flames of jealousy shooting out from the five-inch nails of spite are, ironically, quite brilliant.",
+
+"Grimoire of Marisa - Parsee",
+"<fs=30><ac>Malice Sign \"Shrine Visit in the Dead of Night\"</ac></fs>
+Maybe it'd be fun to give that whole \"midnight shrine visit\" thing a try. I wonder who I should have a grudge against? "
+]
+
+GrimoireOfMarisa_Letty = [
+"Grimoire of Marisa - Letty",
+"<fs=30><ac>Cold Sign \"Cold Snap\"</ac></fs>
+* User: Letty Whiterock
+* Notes: Often seen in late winter 
+* Reference Level: ★★ (but limited to winter)
+Really cold. The snow on cold days is really small and fine. \"Cold snap\" means a cold wave.
+On a cold day like this, you've gotta curl up in the kotatsu while looking sideways at the dog frolicking outside.
+But meeting her on a terribly cold day would ",
+
+"Grimoire of Marisa - Letty",
+"<fs=30><ac>Cold Sign \"Cold Snap\"</ac></fs>
+be the worst. You'd have no choice but to run around like the dog to keep warm.",
+
+"Grimoire of Marisa - Letty",
+"<fs=30><ac>Winter Sign \"Flower Wither Away\"</ac></fs>
+* User: Letty Whiterock
+* Notes: Seen from autumn to winter 
+* Reference Level: ★ (but limited to winter)
+A Spell Card that's meant to feel like a bunch of flowers all withering at once, apparently. 
+This kind of wilted danmaku is no match for me. 
+But... I ain't good with the cold. ",
+]
+
+GrimoireOfMarisa_Aya = [
+"Grimoire of Marisa - Aya",
+"<fs=30><ac>Crossroad Sign \"Crossroads of Heaven\"</ac></fs>
+* User: Aya Shameimaru
+* Notes: Often seen when I get chased away on mountain paths
+* Reference Level: ★★★ 
+A path that was already treacherous is made even more treacherous by the tengu. 
+This danmaku has a pretty strong \"dead end\" vibe to it, but if you look closely, there's a path right in the middle. Guiding people is part",
+
+"Grimoire of Marisa - Aya",
+"<fs=30><ac>Crossroad Sign \"Crossroads of Heaven\"</ac></fs>
+of a tengu's duty, so that's pretty fitting.
+If it were up to me, I'd put a Master Spark through the middle.",
+
+"Grimoire of Marisa - Aya",
+"<fs=30><ac>Wind God \"Wind God's Leaf-Veiling\"</ac></fs>
+* User: Aya Shameimaru
+* Notes: Often used when Aya runs away
+* Reference Level: ★★★★
+A Spell Card that obscures Aya's form with a massive number of leaves. One of the classic youkai arts. 
+But for something that's supposed to be camouflage, I can't help but think that it's just making her position more apparent. She's",
+
+"Grimoire of Marisa - Aya",
+"<fs=30><ac>Wind God \"Wind God's Leaf-Veiling\"</ac></fs>
+probably a real show-off at heart. 
+But for something that's supposed to be camouflage, I can't help but think that it's just making her position more apparent. She's probably a real show-off at heart. 
+There's next to no leeway to approach Aya, so you've just gotta dart back and forth between the sharp leaves from a distance.
+There's next to no leeway to approach Aya, so",
+
+"Grimoire of Marisa - Aya",
+"<fs=30><ac>Wind God \"Wind God's Leaf-Veiling\"</ac></fs>
+you've just gotta dart back and forth between the sharp leaves from a distance. ",
+
+"Grimoire of Marisa - Aya",
+"<fs=30><ac>\"Illusionary Dominance\"</ac></fs>
+* User: Aya Shameimaru
+* Notes: Bet she'll get pulled over for speeding, theatrical type
+* Speed: ★★★★★★★
+Her most befitting Spell Card, where she flies around at ultra-high speeds.
+Her speed is just extraordinary; it's downright impossible to land an attack on her. If she can move at this speed without even",
+
+"Grimoire of Marisa - Aya",
+"<fs=30><ac>\"Illusionary Dominance\"</ac></fs>
+being doped up on anything, then there's practically nothin' she can't do. Dunno why she sits around doing boring stuff like journalism all day.
+By the way, this danmaku is totally useless as a reference for my magic, and there's obviously no particular trick to dodging it besides \"try real hard\" either. ",
+]
+
+GrimoireOfMarisa_Suika = [
+"Grimoire of Marisa - Suika",
+"<fs=30><ac>Kishin \"Missing Purple Power\"</ac></fs>
+* User: Suika Ibuki
+* Notes: Usually seen at parties, doping type (alcohol)
+* Reference Level: As if 
+She gets bigger, usually when she's drunk at parties. I mean, she's always drunk, but y'know.
+This sorta thing ain't danmaku. Totally useless as a reference. She really is just a monster.",
+
+"Grimoire of Marisa - Suika",
+"<fs=30><ac>Oni Sign \"Complete Massacre on Mt.Ooe\"</ac></fs>
+* User: Suika Ibuki
+* Notes: Usually seen at parties, a real spicy drunk
+* Reference Level: Won't
+She catches and throws you, usually when she's drunk at parties.
+Again: not danmaku. Hurts a ton, too.",
+
+"Grimoire of Marisa - Suika",
+"<fs=30><ac>Ghastly Air \"Deep Fog Labyrinth\"</ac></fs>
+* User: Suika Ibuki
+* Notes: Usually seen at parties
+* Reference Level: Doesn't seem likely 
+She shows off a trick where she disperses her body like mist, usually when she's drunk at parties. 
+A monstrously crafty Spell Card where you can't touch her at all, but she can attack all she wants. ",
+
+"Grimoire of Marisa - Suika",
+"<fs=30><ac>Ghastly Air \"Deep Fog Labyrinth\"</ac></fs>
+I wonder how the world looks to her while she's in mist form?
+As always, I can't use this as a reference. ",
+
+"Grimoire of Marisa - Suika",
+"<fs=30><ac>\"Night Parade of a Million Demons\"</ac></fs>
+* User: Suika Ibuki
+* Notes: Usually seen at parties
+* Reference Level: ★★★ 
+Suika's only danmaku-like danmaku.
+Even though it's her only one, it attacks with nothing but projectile quantity, making it the most danmaku-like danmaku in Gensokyo.
+It just flattens you with pure power, so forget tryin' to strategize your way through",
+
+"Grimoire of Marisa - Suika",
+"<fs=30><ac>\"Night Parade of a Million Demons\"</ac></fs>
+it. It's pretty difficult to imitate, too.
+She hardly uses any Spell-Card-like Spell Cards, but when she does decide to use one once in a while, she throws out this sort of overpowered mess. Oni really are behind the times. They don't understand these newfangled pastimes of ours at all."
+]
+
+GrimoireOfMarisa_Iku = [
+"Grimoire of Marisa - Iku",
+"<fs=30><ac>Thorn Sign \"Thundercloud Stickleback\"</ac></fs>
+* User: Iku Nagae
+* Notes: Saw it in the clouds, \"I personally\" type
+* Reference Level: ★★★
+A Spell Card where she turns herself into a giant bullet and bodyslams ya. 
+She ignores all your attacks an' just charges straight at ya. Simple, but surprisingly strong.",
+
+"Grimoire of Marisa - Iku",
+"<fs=30><ac>Thorn Sign \"Thundercloud Stickleback\"</ac></fs>
+This one reaffirmed to me that even a single bullet can be plenty strong enough.",
+
+"Grimoire of Marisa - Iku",
+"<fs=30><ac>Light Orb \"Dragon's Gleaming Eyes\"</ac></fs>
+* User: Iku Nagae
+* Notes: Saw it in the clouds 
+* Reference Level: ★
+A Spell Card based on the image of a dragon flying through thunderclouds, its eyes gleaming.
+...So do dragons spin while they fly?",
+
+"Grimoire of Marisa - Iku",
+"<fs=30><ac>Cloud Realm \"Thunder Court in the Sea of Abstruse Clouds\"</ac></fs>
+* User: Iku Nagae
+* Notes: It's all up to the lightning
+* Reference Level: ★★★
+A Spell Card where it feels like you've plunged into a thundercloud.
+You're forced to fight while lightning bolts streak around ya in every direction. 
+Lightning strikes high places, apparently. In",
+
+"Grimoire of Marisa - Iku",
+"<fs=30><ac>Cloud Realm \"Thunder Court in the Sea of Abstruse Clouds\"</ac></fs>
+other words, the nail that sticks out gets hammered down (by lightning).",
+
+"Grimoire of Marisa - Iku",
+"<fs=30><ac>Dragon Fish \"Oarfish's Swimming Shot\"</ac></fs>
+* User: Iku Nagae
+* Notes: Electrifyin' 
+* Shoulder Relief Level: None 
+A Spell Card that shoots rotating light bullets in all directions. Probably meant to feel like fish leisurely swimmin' around. 
+It's a Spell Card with no blind spots, but since it's slow, it's not especially scary. 
+Lightning's still pretty scary, though. I",
+
+"Grimoire of Marisa - Iku",
+"<fs=30><ac>Dragon Fish \"Oarfish's Swimming Shot\"</ac></fs>
+wanna avoid gettin' hit with this as much as possible. "
+]
+
+GrimoireOfMarisa_Kisume = [
+"Grimoire of Marisa - Kisume",
+"<fs=30><ac>Horror \"Tsurube-Otoshi Apparition\"</ac></fs>
+* User: Kisume
+* Notes: Seen in the evening from fall to winter
+* Reference Level: It's only a jerk-in-the-box
+A Spell Card where she just suddenly lunges at you from somewhere like the top of a tree, or the ceiling of a cave. As long as she doesn't catch you by surprise, there's absolutely nothing to be frightened of. ",
+]
+
+GrimoireOfMarisa_Marisa = [
+"Grimoire of Marisa - Marisa",
+"<fs=30><ac>Magic Sign \"Milky Way\"</ac></fs>
+* User: Me
+* Notes: Not that tiring 
+* Usage: ★★★★★ 
+A Spell Card where I leave everything up to the star pieces floatin' around. 
+Everyone else seems to hate this Spell Card, but it's actually got a flaw: its strength varies wildly depending on the concentration of star particles in the atmosphere. ",
+
+"Grimoire of Marisa - Marisa",
+"<fs=30><ac>Magic Sign \"Milky Way\"</ac></fs>
+It's no good as a finishin' move.",
+
+"Grimoire of Marisa - Marisa",
+"<fs=30><ac>Black Magic \"Event Horizon\"</ac></fs>
+* User: Me
+* Notes: Tiring, slave-type 
+* Usage: ★★★
+My slave-type. Seems like I'm only capable of handlin' slaves that just go around me in circles.
+This Spell Card is the result of me takin' those slaves with limited movement, and trying my darnedest to make it as hard as possible. 
+Still got a long way to go.",
+
+"Grimoire of Marisa - Marisa",
+"<fs=30><ac>Love Sign \"Master Spark\"</ac></fs>
+* User: Me
+* Notes: Fun
+* Usage: ★★★★★★★ 
+A Spell Card where I shoot through the opponent with super-high firepower. It feels great, so I use it most often. But in spite of how good it feels, it leaves me wide open, so I can't manage to make it very difficult. That's a flaw it has. 
+",
+
+"Grimoire of Marisa - Marisa",
+"<fs=30><ac>Love Sign \"Master Spark\"</ac></fs>
+But in spite of how good it feels, it leaves me wide open, so I can't manage to make it very difficult. That's a flaw it has. 
+Incidentally, I'm using the mini-Hakkero to create the laser, but I'm researchin' how to modify it to shoot a diffusional Master Spark.
+Even if it doesn't hit as hard, scattered is more powerful. That's what danmaku is, after all. ",
+
+"Grimoire of Marisa - Marisa",
+"<fs=30><ac>Light Blast \"Shoot the Moon\"</ac></fs>
+* User: Me
+* Notes: So-so
+* Usage: ★★ 
+A Spell Card where I toss bullets that emit light in straight lines, which shoot lasers up at the sky upon impact. 
+I crammed magic energy into the light bullets, using Alice's exploding-doll attack as a reference. 
+",
+
+"Grimoire of Marisa - Marisa",
+"<fs=30><ac>Light Blast \"Shoot the Moon\"</ac></fs>
+I'm not a monster, though, so there's no need to make 'em shaped like people. 
+",
+
+"Grimoire of Marisa - Marisa",
+"<fs=30><ac>\"Blazing Star\"</ac></fs>
+* User: Me
+* Notes: Ride like the wind, \"I personally\" type
+* Usage: ★★★★★
+A Spell Card where I fire a Master Spark backwards, using the thrust from it to soar through the sky.
+Flyin' at extreme speed feels great. I wonder if tengu feel like this, too.
+The thought of bodyslammin' something at",
+
+"Grimoire of Marisa - Marisa",
+"<fs=30><ac>\"Blazing Star\"</ac></fs>
+that speed is a little scary, though... 'specially in forests or buildings.
+",
+
+
+"Grimoire of Marisa - Marisa",
+"<fs=30><ac>Star Sign \"Dragon Meteor\"</ac></fs>
+* User: Me
+* Notes: And to the stars!
+* Usage: ★★
+A Spell Card where I fire a Master Spark downwards, using it to hover in midair. 
+Shooting from a position of absolute safety is WAY too much fun. 
+It's hard to score a hit with the laser, of course, but that doesn't matter one bit. 
+",
+
+"Grimoire of Marisa - Marisa",
+"<fs=30><ac>Star Sign \"Dragon Meteor\"</ac></fs>
+Even if you lose a Spell Card battle, you win as long as it feels fun. It's a game, after all. Games aren't something that you sit and wait to be entertained by; they're something you go out of your way to enjoy.
+Maybe when you reach the point when you can enjoy anything, that's when you see the true appeal of Spell Cards for the first time. ",
+]
+
 Books = [
-	GensouKyouEdict,
-	HistoryOfGensokyo,
-	HakureiClanHistory,
-	IncidentHistory,
-	GensokyoChronicle_Rumia,
-	GensokyoChronicle_Nue,
-	GensokyoChronicle_Medicine,
-	GensokyoChronicle_Yuuka,
-	GensokyoChronicle_Yamame,
-	GensokyoChronicle_Yukari,
-	GensokyoChronicle_Koishi,
-	GensokyoChronicle_Nazrin,
-	GensokyoChronicle_Reimu,
-	GensokyoChronicle_Marisa,
-	GensokyoChronicle_Eirin,
-	GensokyoChronicle_Sanae,
-	GensokyoChronicle_Byakuren,
-	GensokyoChronicle_Keine,
-	GensokyoChronicle_Kanako,
-	GensokyoChronicle_Minoriko,
-	GensokyoChronicle_Eiki,
-	GensokyoChronicle_HumanVillage,
-	GensokyoChronicle_HakureiShrine,
-	GensokyoChronicle_ForestOfMagic,
-	GensokyoChronicle_SDMansion,
-	GensokyoChronicle_Hakugyokurou,
-	GensokyoChronicle_Eientei,
-	GensokyoChronicle_LunarCapital,
-	GensokyoChronicle_SpellCardDraft,
-	GensokyoChronicle_Colophon,
-	# GrimoireOfMarisa1,
-	# GrimoireOfMarisa2,
-	# GrimoireOfMarisa3,
-	# GrimoireOfMarisa4,
-	# GrimoireOfMarisa5
+	GensouKyouEdict,                    # 0
+	HistoryOfGensokyo,                  # 1
+	HakureiClanHistory,                 # 2
+	IncidentHistory,                    # 3
+	GensokyoChronicle_Rumia,            # 4
+	GensokyoChronicle_Nue,              # 5
+	GensokyoChronicle_Medicine,         # 6
+	GensokyoChronicle_Yuuka,            # 7
+	GensokyoChronicle_Yamame,           # 8
+	GensokyoChronicle_Yukari,           # 9
+	GensokyoChronicle_Koishi,           # 10
+	GensokyoChronicle_Nazrin,           # 11
+	GensokyoChronicle_Reimu,            # 12
+	GensokyoChronicle_Marisa,           # 13
+	GensokyoChronicle_Eirin,            # 14
+	GensokyoChronicle_Sanae,            # 15
+	GensokyoChronicle_Byakuren,         # 16
+	GensokyoChronicle_Keine,            # 17
+	GensokyoChronicle_Kanako,           # 18
+	GensokyoChronicle_Minoriko,         # 19
+	GensokyoChronicle_Eiki,             # 20
+	GensokyoChronicle_HumanVillage,     # 21
+	GensokyoChronicle_HakureiShrine,    # 22
+	GensokyoChronicle_ForestOfMagic,    # 23
+	GensokyoChronicle_SDMansion,        # 24
+	GensokyoChronicle_Hakugyokurou,     # 25
+	GensokyoChronicle_Eientei,          # 26
+	GensokyoChronicle_LunarCapital,     # 27
+	GensokyoChronicle_SpellCardDraft,   # 28
+	GensokyoChronicle_Colophon,         # 29
+	GrimoireOfMarisa_Reimu,             # 30
+	GrimoireOfMarisa_Rin,               # 31
+	GrimoireOfMarisa_Suwako,            # 32
+	GrimoireOfMarisa_Cirno,             # 33
+	GrimoireOfMarisa_Parsee,            # 34
+	GrimoireOfMarisa_Letty,             # 35
+	GrimoireOfMarisa_Aya,               # 36
+	GrimoireOfMarisa_Suika,             # 37
+	GrimoireOfMarisa_Iku,               # 38
+	GrimoireOfMarisa_Kisume,            # 39
+	GrimoireOfMarisa_Marisa             # 40
 ]
 
 class Textbook_Scene
@@ -526,9 +1043,7 @@ DEFAULT_BG = "textbookbg"
     @page = 0
     @book = book
     @bookarray= Books[book]
-    @max=Books[book].length#)+4)/2
-    #@max+=4
-    #@max/=2
+    @max=Books[book].length
     @sprites = {}
     @sprites["background"] = IconSprite.new(0,0,@viewport)
     @sprites["overlay"] = BitmapSprite.new(Graphics.width,Graphics.height,@viewport)

@@ -18480,3 +18480,68 @@ Backtrace:
 004_Interpreter_Commands.rb:1177:in `command_355'
 004_Interpreter_Commands.rb:116:in `execute_command'
 003_Interpreter.rb:132:in `block in update'
+
+=================
+
+[2025-05-07 18:29:21 -0700]
+[Pokémon Essentials version 21.1]
+[v21.1 Hotfixes 1.0.9]
+
+Script error in event 12 (coords 2,3), map 41 (Keine's Quiz Hall)
+Exception: SyntaxError
+Message: (eval):2: Can't escape from eval with next
+
+***Full script:
+textbook(1)
+next 1
+
+=================
+
+[2025-05-07 18:35:22 -0700]
+[Pokémon Essentials version 21.1]
+
+Error in Plugin: [Textbook Script]
+Exception: SyntaxError
+Message: [Textbook Script] 001_Textbook Script.rb:551: Invalid next
+
+Backtrace:
+[Textbook Script] 001_Textbook Script.rb
+
+=================
+
+[2025-05-07 18:35:39 -0700]
+[Pokémon Essentials version 21.1]
+[v21.1 Hotfixes 1.0.9]
+
+Script error in event 12 (coords 2,3), map 41 (Keine's Quiz Hall)
+Exception: SyntaxError
+Message: (eval):2: Can't escape from eval with next
+
+***Full script:
+textbook(1)
+next 1
+
+=================
+
+[2025-05-08 14:21:17 -0700]
+[Pokémon Essentials version 21.1]
+[v21.1 Hotfixes 1.0.9]
+
+Script error in event 15 (coords 18,9), map 41 (Keine's Quiz Hall)
+Exception: NoMethodError
+Message: undefined method `length' for nil:NilClass
+
+***Full script:
+textbook(30)
+
+Backtrace:
+[Textbook Script] 001_Textbook Script.rb:563:in `pbStartTextbookScene'
+[Textbook Script] 001_Textbook Script.rb:17:in `pbStartTextbookScreen'
+[Textbook Script] 001_Textbook Script.rb:5:in `block in textbook'
+002_MessageConfig.rb:575:in `pbFadeOutIn'
+[Textbook Script] 001_Textbook Script.rb:2:in `textbook'
+(eval):1:in `execute_script'
+003_Interpreter.rb:140:in `eval'
+003_Interpreter.rb:140:in `execute_script'
+004_Interpreter_Commands.rb:1177:in `command_355'
+004_Interpreter_Commands.rb:116:in `execute_command'

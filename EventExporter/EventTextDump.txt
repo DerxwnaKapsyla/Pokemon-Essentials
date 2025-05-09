@@ -36900,13 +36900,11 @@ List of Event Commands:
 #------------------------------------------------------------------------------
 Event ID: 011
 Event Name: EV011
-(X,Y): (023,012)
+(X,Y): (009,006)
 
 Page #1
 Conditions
 None
-
-Graphic: Object ball
 
 Autonomous Movement
 Type: Fixed
@@ -36917,8 +36915,18 @@ Move Animation
 Trigger: Action Button
 
 List of Event Commands:
-@>Script: pbDebugVariables(1)
-:       : textbook(pbGet(1))
+@>Comment: Event Indicator
+ :       : investigate
+@>Text: It looks like somebody left their notes here... Take a look?
+@>Show Choices: Yes, No
+(When Cancel: Choice 2)
+: When [Yes]
+ @>Text: \sign[signskin]\l[8]<icon=earthglyph.png> Earth\n<icon=fireglyph.png> Fire\n<icon=heavenglyph.png> Heaven\n<icon=lakeglyph.png> Lake
+  :    : \n<icon=mountainglyph.png> Mountain\n<icon=thunderglyph.png> Thunder\n<icon=waterglyph.png> Water\n<icon=windglyph.png> Wind
+ @>
+: When [No]
+ @>
+: Branch End
 @>
 
 #------------------------------------------------------------------------------
@@ -36941,8 +36949,219 @@ Trigger: Action Button
 List of Event Commands:
 @>Comment: Event Indicator
  :       : investigate 0 -32
-@>Script: pbDebugVariables(1)
-:       : textbook(pbGet(1))
+@>Text: Lots of books line the shelves...
+@>Show Choices: Gensokyo Chronicle - Youkai, History of Gensokyo, Grimoire of Marisa, Nevermind
+(When Cancel: Choice 4)
+: When [Gensokyo Chronicle - Youkai]
+ @>Text: It's a republished version of the Gensokyo Chronicle, 9th edition.
+ @>Text: It's way too large to read all in one sitting... I'll just flip to specific sections.
+ @>Show Choices: Rumia, Nue Houjuu, Medicine Melancholy, Yuuka Kazami
+ (When Cancel: Disallow)
+ : When [Rumia]
+  @>Script: textbook(4)
+  @>
+ : When [Nue Houjuu]
+  @>Script: textbook(5)
+  @>
+ : When [Medicine Melancholy]
+  @>Script: textbook(6)
+  @>
+ : When [Yuuka Kazami]
+  @>Script: textbook(7)
+  @>
+ : Branch End
+ @>Show Choices: Yamame Kurodani, Yukari Yakumo, Koishi Komeiji, Nazrin
+ (When Cancel: Disallow)
+ : When [Yamame Kurodani]
+  @>Script: textbook(8)
+  @>
+ : When [Yukari Yakumo]
+  @>Script: textbook(9)
+  @>
+ : When [Koishi Komeiji]
+  @>Script: textbook(10)
+  @>
+ : When [Nazrin]
+  @>Script: textbook(11)
+  @>
+ : Branch End
+ @>Show Choices: Nevermind
+ (When Cancel: Choice 1)
+ : When [Nevermind]
+  @>
+ : Branch End
+ @>Comment: -------------
+ @>
+: When [History of Gensokyo]
+ @>Script: textbook(1)
+ @>
+: When [Grimoire of Marisa]
+ @>Text: It's a republished version of the Grimoire of Marisa.
+ @>Text: It's way too large to read all in one sitting... I'll just flip to specific sections.
+ @>Call Common Event: Grimoire of Marisa
+ @>
+: When [Nevermind]
+ @>
+: Branch End
+@>
+
+#------------------------------------------------------------------------------
+Event ID: 013
+Event Name: Books size(3,1)
+(X,Y): (006,003)
+
+Page #1
+Conditions
+None
+
+Autonomous Movement
+Type: Fixed
+Speed: 3: Slow
+Freq: 3: Low
+Options Enabled
+Move Animation
+Trigger: Action Button
+
+List of Event Commands:
+@>Comment: Event Indicator
+ :       : investigate 0 -32
+@>Text: Lots of books line the shelves...
+@>Show Choices: Gensokyo Chronicle - Youkai, Gensokyo Chronicle - Divinity, Hakurei Clan History, History of Incidents
+(When Cancel: Disallow)
+: When [Gensokyo Chronicle - Youkai]
+ @>Text: It's a republished version of the Gensokyo Chronicle, 9th edition.
+ @>Text: It's way too large to read all in one sitting... I'll just flip to specific sections.
+ @>Show Choices: Reimu Hakurei, Marisa Kirisame, Eirin Yagokoro, Sanae Kochiya
+ (When Cancel: Disallow)
+ : When [Reimu Hakurei]
+  @>Script: textbook(12)
+  @>
+ : When [Marisa Kirisame]
+  @>Script: textbook(13)
+  @>
+ : When [Eirin Yagokoro]
+  @>Script: textbook(14)
+  @>
+ : When [Sanae Kochiya]
+  @>Script: textbook(15)
+  @>
+ : Branch End
+ @>Show Choices: Byakuren Hijiri, Keine Kamishirasawa, Nevermind
+ (When Cancel: Disallow)
+ : When [Byakuren Hijiri]
+  @>Script: textbook(16)
+  @>
+ : When [Keine Kamishirasawa]
+  @>Script: textbook(17)
+  @>
+ : When [Nevermind]
+  @>
+ : Branch End
+ @>Comment: -------------
+ @>
+: When [Gensokyo Chronicle - Divinity]
+ @>Text: It's a republished version of the Gensokyo Chronicle, 9th edition.
+ @>Text: It's way too large to read all in one sitting... I'll just flip to specific sections.
+ @>Show Choices: Kanako Yasaka, Minoriko Aki, Eiki Shiki, Yamaxanadu, Nevermind
+ (When Cancel: Choice 4)
+ : When [Kanako Yasaka]
+  @>Script: textbook(18)
+  @>
+ : When [Minoriko Aki]
+  @>Script: textbook(19)
+  @>
+ : When [Eiki Shiki, Yamaxanadu]
+  @>Script: textbook(20)
+  @>
+ : When [Nevermind]
+  @>
+ : Branch End
+ @>
+: When [Hakurei Clan History]
+ @>Script: textbook(2)
+ @>
+: When [History of Incidents]
+ @>Script: textbook(3)
+ @>
+: Branch End
+@>Show Choices: Nevermind
+(When Cancel: Disallow)
+: When [Nevermind]
+ @>
+: Branch End
+@>
+
+#------------------------------------------------------------------------------
+Event ID: 014
+Event Name: Books size(3,1)
+(X,Y): (010,003)
+
+Page #1
+Conditions
+None
+
+Autonomous Movement
+Type: Fixed
+Speed: 3: Slow
+Freq: 3: Low
+Options Enabled
+Move Animation
+Trigger: Action Button
+
+List of Event Commands:
+@>Comment: Event Indicator
+ :       : investigate 0 -32
+@>Text: Lots of books line the shelves...
+@>Show Choices: Gensokyo Chronicle - Locations, Gensokyo Chronicle - Spell Card Draft, Gensokyo Chronicle - Colophon, Gensou Kyou Edict
+(When Cancel: Disallow)
+: When [Gensokyo Chronicle - Locations]
+ @>Text: It's a republished version of the Gensokyo Chronicle, 9th edition.
+ @>Text: It's way too large to read all in one sitting... I'll just flip to specific sections.
+ @>Show Choices: Human Village, Hakurei Shrine, Forest of Magic, Scarlet Devil Mansion
+ (When Cancel: Choice 1)
+ : When [Human Village]
+  @>Script: textbook(21)
+  @>
+ : When [Hakurei Shrine]
+  @>Script: textbook(22)
+  @>
+ : When [Forest of Magic]
+  @>Script: textbook(23)
+  @>
+ : When [Scarlet Devil Mansion]
+  @>Script: textbook(24)
+  @>
+ : Branch End
+ @>Show Choices: Hakugyoukurou, Eientei, Lunar Capital, Nevermind
+ (When Cancel: Choice 4)
+ : When [Hakugyoukurou]
+  @>Script: textbook(25)
+  @>
+ : When [Eientei]
+  @>Script: textbook(26)
+  @>
+ : When [Lunar Capital]
+  @>Script: textbook(27)
+  @>
+ : When [Nevermind]
+  @>
+ : Branch End
+ @>
+: When [Gensokyo Chronicle - Spell Card Draft]
+ @>Script: textbook(28)
+ @>
+: When [Gensokyo Chronicle - Colophon]
+ @>Script: textbook(29)
+ @>
+: When [Gensou Kyou Edict]
+ @>Script: textbook(0)
+ @>
+: Branch End
+@>Show Choices: Nevermind
+(When Cancel: Choice 1)
+: When [Nevermind]
+ @>
+: Branch End
 @>
 
 #------------------------------------------------------------------------------
@@ -116180,11 +116399,57 @@ List of Event Commands:
 
 #==============================================================================
 Common Event ID: 053
-Common Event Name: Reserved:RWM1
+Common Event Name: Grimoire of Marisa
 
 Trigger: None
 
 List of Event Commands:
+@>Comment: I just CBA to shove this all into an event so it'll be here in a Common Event
+@>Show Choices: Reimu Hakurei, Rin Kaenbyou, Suwako Moriya, Cirno
+(When Cancel: Disallow)
+: When [Reimu Hakurei]
+ @>Script: textbook(30)
+ @>
+: When [Rin Kaenbyou]
+ @>Script: textbook(31)
+ @>
+: When [Suwako Moriya]
+ @>Script: textbook(32)
+ @>
+: When [Cirno]
+ @>Script: textbook(33)
+ @>
+: Branch End
+@>Show Choices: Parsee Mizuhashi, Letty Whiterock, Aya Shameimaru, Suika Ibuki
+(When Cancel: Disallow)
+: When [Parsee Mizuhashi]
+ @>Script: textbook(34)
+ @>
+: When [Letty Whiterock]
+ @>Script: textbook(35)
+ @>
+: When [Aya Shameimaru]
+ @>Script: textbook(36)
+ @>
+: When [Suika Ibuki]
+ @>Script: textbook(37)
+ @>
+: Branch End
+@>Show Choices: Iku Nagae, Kisume, Marisa Kirisame, Nevermind
+(When Cancel: Choice 4)
+: When [Iku Nagae]
+ @>Script: textbook(38)
+ @>
+: When [Kisume]
+ @>Script: textbook(39)
+ @>
+: When [Marisa Kirisame]
+ @>Script: textbook(40)
+ @>
+: When [Nevermind]
+ @>Exit Event Processing
+ @>
+: Branch End
 @>
 
 #==============================================================================

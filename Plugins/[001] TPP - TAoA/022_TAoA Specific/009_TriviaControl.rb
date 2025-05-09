@@ -48,10 +48,10 @@ def pbQuizShow
 	pbShowPicture(2,"Quiz/QuizAyaka_Happy.png",0,0,0,100,100,255,0)
     pbMessage(_INTL("\\xn[Keine]\\bCongratulations on passing, \\pn! I knew you had it in you!"))
     pbMessage(_INTL("\\xn[Keine]\\bFor clearing this quiz, I award you with these Festival Points."))
-    pts = pbGet(1) * 2   # Correct questions, max of 10 points
+    pts = pbGet(1) * 2   # Correct questions, max of 14 points
     pts = pts * pbGet(4) # Selected difficulty. Novice - 1x, Interm. - 2x, Expert - 3x.
     $player.battle_points += pts
-    pbMessage(_INTL("\\pn recieved {1} Festival Points!\\me[BP Fanfare]\\wtnp[10]",pts))
+    pbMessage(_INTL("\\pn received {1} Festival Points!\\me[BP Fanfare]\\wtnp[10]",pts))
 	pbShowPicture(1,"Quiz/QuizKeine_Neutral.png",0,0,0,100,100,255,0)
     pbShowPicture(2,"Quiz/QuizAyaka_Neutral.png",0,0,0,100,100,255,0)
 	pbMessage(_INTL("\\xn[Keine]\\bI'll be here if you decide you want to test your knowledge again!"))
@@ -75,6 +75,10 @@ def pbExplainAnswerIncorrect
     pbMessage(_INTL("\\xn[Keine]\\bAs a reminder, the Child of Miare is usually named numerically."))
   when :Intermediate_06
     pbMessage(_INTL("\\xn[Keine]\\bThis one may be challenging to remember, as we have been using the Gensokyo Epoch as the standard for nearly the past one-hundred and thirty years."))
+  when :Intermediate_09
+    pbMessage(_INTL("\\xn[Keine]\\bAll of these tiles have been used to refer to Yuuka Kazami in the past, however only one of these is recorded in the Gensokyo Chronicle."))
+	pbShowPicture(1,"Quiz/QuizKeine_Dejected.png",0,0,0,100,100,255,0)
+	pbMessage(_INTL("\\xn[Keine]\\bI feel like I should give you points for knowing those titles, but that would be going against the spirit of the challenge."))
   when :Expert_10
     pbMessage(_INTL("\\xn[Keine]\\bIt might seem tempting to just pick a certain answer here, but if you pay close attention to the history books, it will tell you the exact attributed cause."))
   end
@@ -96,6 +100,8 @@ def pbExplainAnswerCorrect
     pbMessage(_INTL("\\xn[Keine]\\bAll three of these are indeed relics of the Hakurei Shrine, only the Hakurei Yin-Yang Orb is defined as its sacred treasure, as it is said that the unknown deity of the Shrine manifests its power through it."))
   when :Intermediate_07
     pbMessage(_INTL("\\xn[Keine]\\bThis one was a trick question, as the Love Sign-type Spell Card is usually reserved for Marisa's signature attack, the Master Spark. Final Spark, however, is classified as Magicannon-type."))
+  when :Intermediate_10
+    pbMessage(_INTL("\\xn[Keine]\\bWhile the ultimate goal was the unsealing of Byakuren Hijiri, the Magician Priestess, the phenomenon itself was a result of the antics of Nue Houjuu."))
   when :Expert_01
     pbMessage(_INTL("\\xn[Keine]\\bThe direction you started counting from mattered little, as you would have landed on the Heaven trigram regardless."))
   when :Expert_05
@@ -106,5 +112,9 @@ def pbExplainAnswerCorrect
     pbMessage(_INTL("\\xn[Keine]\\bFun fact! The combined name for the landmass that the Kanto and Johto Regions occupy is known as the \"Tohjo Continent\"."))
   when :Expert_10
     pbMessage(_INTL("\\xn[Keine]\\bThough the Great Tohjo War was going on at the time, it was not the reason why the Gensokyo Edict was drafted up. This was a result of the Youkai raid on Brass Tower, as well as Humans advancing in technology and losing their fear of Youkai and belief of Gods."))
+  when :Expert_12
+    pbMessage(_INTL("\\xn[Keine]\\bRin Kaenbyou, the Kasha in question, sent forth the spirits from the underground to attract the attention of Reimu so she would come down and deal with Utsuho Reiuji, a hell raven that gained the power of the Yatagarasu."))
+  when :Expert_15
+    pbMessage(_INTL("\\xn[Keine]\\bA straightforward ability, but it suits someone as straightforward as Reimu."))
   end
 end
