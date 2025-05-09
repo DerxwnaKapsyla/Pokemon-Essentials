@@ -165,7 +165,7 @@ class Battle::Battler
 # Changes in this section include the following:
 #	* Adds the various Touhoumon type immunities for Synchronize
 #==============================================================================#
-  def pbCanSynchronizeStatus?(newStatus, target)
+  def pbCanSynchronizeStatus?(newStatus, user)
     return false if fainted?
     # Trying to replace a status problem with another one
     return false if self.status != :NONE

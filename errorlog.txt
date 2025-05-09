@@ -18566,3 +18566,24 @@ Backtrace:
 [Reincarnation] 003_Reincarnation_UI.rb:7:in `show_reincarnation_scene'
 [TAoA Core] 01_UI_PauseMenu.rb:8:in `block (2 levels) in <main>'
 002_MessageConfig.rb:575:in `pbFadeOutIn'
+
+=================
+
+[2025-05-09 14:05:03 -0700]
+[Pokémon Essentials version 21.1]
+[v21.1 Hotfixes 1.0.9]
+
+Exception: NameError
+Message: undefined local variable or method `user' for #<Battle::Battler>
+
+Backtrace:
+[Touhoumon Essentials Development Kit] 004_Battler_Statuses.rb:179:in `pbCanSynchronizeStatus?'
+[Deluxe Battle Kit] [004] Wild Boss Attributes.rb:140:in `pbCanSynchronizeStatus?'
+004_Battler_Statuses.rb:339:in `pbCanPoisonSynchronize?'
+008_Battle_AbilityEffects.rb:520:in `block (2 levels) in load_scripts_from_folder'
+005_Event_Handlers.rb:195:in `trigger'
+008_Battle_AbilityEffects.rb:109:in `triggerOnStatusInflicted'
+004_Battler_Statuses.rb:257:in `pbInflictStatus'
+[Deluxe Battle Kit] [001] Midbattle Overwrites.rb:597:in `pbInflictStatus'
+004_Battler_Statuses.rb:343:in `pbPoison'
+007_MoveEffects_BattlerOther.rb:90:in `pbEffectAgainstTarget'
