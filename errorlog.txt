@@ -18545,3 +18545,24 @@ Backtrace:
 003_Interpreter.rb:140:in `execute_script'
 004_Interpreter_Commands.rb:1177:in `command_355'
 004_Interpreter_Commands.rb:116:in `execute_command'
+
+=================
+
+[2025-05-09 03:21:55 -0700]
+[Pokémon Essentials version 21.1]
+[v21.1 Hotfixes 1.0.9]
+
+Exception: NameError
+Message: undefined local variable or method `lv_refund' for #<Reincarnation_UI>
+
+Backtrace:
+[Reincarnation] 003_Reincarnation_UI.rb:336:in `block in main'
+[Reincarnation] 003_Reincarnation_UI.rb:260:in `loop'
+[Reincarnation] 003_Reincarnation_UI.rb:260:in `main'
+[Reincarnation] 003_Reincarnation_UI.rb:12:in `block in show_reincarnation_scene'
+002_MessageConfig.rb:636:in `block in pbFadeOutInWithMusic'
+002_MessageConfig.rb:575:in `pbFadeOutIn'
+002_MessageConfig.rb:635:in `pbFadeOutInWithMusic'
+[Reincarnation] 003_Reincarnation_UI.rb:7:in `show_reincarnation_scene'
+[TAoA Core] 01_UI_PauseMenu.rb:8:in `block (2 levels) in <main>'
+002_MessageConfig.rb:575:in `pbFadeOutIn'

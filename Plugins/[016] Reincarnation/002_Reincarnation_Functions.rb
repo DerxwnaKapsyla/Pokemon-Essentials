@@ -135,11 +135,15 @@ module Reincarnation
     $bag.remove(boon_item) if boon_item && !GameData::Item.try_get(boon_item).is_important?
     $bag.remove(bane_item) if boon_item && !GameData::Item.try_get(boon_item).is_important?
     $bag.remove(COST_ITEM, COST_AMOUNT) if has_cost?
+	level_refund = pkmn.level - 1
     pkmn.level = Reincarnation::SET_TO_LEVEL if SET_TO_LEVEL.is_a?(Numeric)
     pkmn.species = pkmn.species_data.get_baby_species if REVERT_EVOLUTION
     pkmn.reset_moves if REVERT_MOVES
     pkmn.iv = new_ivs
     pkmn.nature = reincarnate_nature if reincarnate_nature
     pkmn.calc_stats
+	if level_refund != 0
+	  $bag.add(:RARECANDY,level_refund)
 	end
+  end
 end

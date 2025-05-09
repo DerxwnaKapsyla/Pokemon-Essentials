@@ -78,7 +78,7 @@ module Settings
             :y_adjustment => 4
         },
         "question" => {
-            :graphic => "Graphics/UI/Event Indicators/event_question",
+            :graphic => "Graphics/UI/Event Indicators/event_question.gif",
             :always_visible => true,
             :ignore_time_shading => true
         },

@@ -18483,8 +18483,6 @@ Page #1
 Conditions
 Variable 0141: Scenarios Cleared is 3 or above
 
-Graphic: Object_RebornObelisk
-
 Autonomous Movement
 Type: Fixed
 Speed: 3: Slow
@@ -18493,9 +18491,13 @@ Options Enabled
 Move Animation
 Stop Animation
 Direction Fix
-Trigger: Action Button
+Trigger: Event Touch
 
 List of Event Commands:
+@>Comment: Event Indicator
+ :       : question
+@>Set Move Route: Player
+ :              : $>Turn Down
 @>Fade Out BGM: 1 sec.
 @>Show Picture: 1, 'TLABg', Upper Left (0,0), (100%,100%), 0, Normal
 @>Show Picture: 2, 'TLA', Upper Left (0,0), (100%,100%), 0, Normal
@@ -18529,6 +18531,8 @@ List of Event Commands:
  @>Change Screen Color Tone: (0,0,0,0), @8
  @>
 : When [No]
+ @>Set Move Route: Player
+  :              : $>Move Up
  @>
 : Branch End
 @>
@@ -36840,7 +36844,6 @@ List of Event Commands:
 @>Script: pbQuizShow
 @>Restore BGM/BGS
 @>Scroll Map: Down, 4, 3
-@>Exit Event Processing
 @>
 
 Page #2
@@ -36894,7 +36897,6 @@ List of Event Commands:
 @>Restore BGM/BGS
 @>Scroll Map: Down, 4, 3
 @>Control Self Switch: A =OFF
-@>Exit Event Processing
 @>
 
 #------------------------------------------------------------------------------
@@ -93403,7 +93405,7 @@ List of Event Commands:
 @>Change Text Options: Middle, Hide
 @>Text: \pn. If you're reading this note, then you are avoiding the 
  :    : situation at hand.
-@>Text: No doubt by this point you will have come across fault
+@>Text: No doubt by this point you will have come across faulty
  :    : and incorrect memories.
 @>Text: The Dream World is being affected by this incident, and so I 
  :    : will not be available to stick to the script any longer.
@@ -112976,7 +112978,7 @@ List of Event Commands:
  :    : to happen.\wtnp[20]
 @>Show Animation: [Shion], [Exclaim bubble]
 @>Text: \xn[Shion]\se[]Y-You! How are you moving freely?!\wtnp[20]
-@>Text: \xn[Shion]\se[]You were supposed to become Joon's save and have
+@>Text: \xn[Shion]\se[]You were supposed to become Joon's slave and have
  :    : your freedom taken away...\wtnp[20]
 @>Text: \xn[Reimu]\se[]True, you have the power to guarantee defeat for anyone
  :    : you possess...\wtnp[20]

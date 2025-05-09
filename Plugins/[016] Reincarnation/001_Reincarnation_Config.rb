@@ -10,7 +10,7 @@ module Reincarnation
 
   # After reincarnation set Pokemon to this level, if nil, will not change level.
   SET_TO_LEVEL        = Settings::EGG_LEVEL # Default: 1
-  REVERT_EVOLUTION    = true
+  REVERT_EVOLUTION    = false
   REVERT_MOVES        = false
 
   # Nuzlocke X Support 
