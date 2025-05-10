@@ -18587,3 +18587,156 @@ Backtrace:
 [Deluxe Battle Kit] [001] Midbattle Overwrites.rb:597:in `pbInflictStatus'
 004_Battler_Statuses.rb:343:in `pbPoison'
 007_MoveEffects_BattlerOther.rb:90:in `pbEffectAgainstTarget'
+
+=================
+
+[2025-05-10 02:10:27 -0700]
+[Pokémon Essentials version 21.1]
+[v21.1 Hotfixes 1.0.9]
+
+Exception: NoMethodError
+Message: undefined method `show_player_response' for main:Object
+
+Backtrace:
+[Deluxe Battle Kit] 004 Clownpiece Battle.rb:88:in `block in <main>'
+[Deluxe Battle Kit] [002] Midbattle Triggers.rb:36:in `trigger'
+[Deluxe Battle Kit] [001] Midbattle Overwrites.rb:218:in `block (2 levels) in pbMidbattleScripting'
+[Deluxe Battle Kit] [001] Midbattle Overwrites.rb:217:in `each'
+[Deluxe Battle Kit] [001] Midbattle Overwrites.rb:217:in `block in pbMidbattleScripting'
+[Deluxe Battle Kit] [001] Midbattle Overwrites.rb:148:in `loop'
+[Deluxe Battle Kit] [001] Midbattle Overwrites.rb:148:in `pbMidbattleScripting'
+[Deluxe Battle Kit] [001] Midbattle Overwrites.rb:111:in `pbDeluxeTriggers'
+[Deluxe Battle Kit] [001] Midbattle Overwrites.rb:667:in `pbAbilitiesOnFainting'
+003_Battler_ChangeSelf.rb:96:in `pbFaint'
+
+=================
+
+[2025-05-10 02:12:51 -0700]
+[Pokémon Essentials version 21.1]
+[v21.1 Hotfixes 1.0.9]
+
+Exception: ArgumentError
+Message: wrong number of arguments (given 3, expected 0)
+
+Backtrace:
+[Deluxe Battle Kit] 004 Clownpiece Battle.rb:145:in `show_player_reaction'
+[Deluxe Battle Kit] 004 Clownpiece Battle.rb:88:in `block in <main>'
+[Deluxe Battle Kit] [002] Midbattle Triggers.rb:36:in `trigger'
+[Deluxe Battle Kit] [001] Midbattle Overwrites.rb:218:in `block (2 levels) in pbMidbattleScripting'
+[Deluxe Battle Kit] [001] Midbattle Overwrites.rb:217:in `each'
+[Deluxe Battle Kit] [001] Midbattle Overwrites.rb:217:in `block in pbMidbattleScripting'
+[Deluxe Battle Kit] [001] Midbattle Overwrites.rb:148:in `loop'
+[Deluxe Battle Kit] [001] Midbattle Overwrites.rb:148:in `pbMidbattleScripting'
+[Deluxe Battle Kit] [001] Midbattle Overwrites.rb:111:in `pbDeluxeTriggers'
+[Deluxe Battle Kit] [001] Midbattle Overwrites.rb:667:in `pbAbilitiesOnFainting'
+
+=================
+
+[2025-05-10 02:21:46 -0700]
+[Pokémon Essentials version 21.1]
+[v21.1 Hotfixes 1.0.9]
+
+Exception: ArgumentError
+Message: wrong number of arguments (given 2, expected 1)
+
+Backtrace:
+002_DebugConsole.rb:42:in `echoln'
+[Deluxe Battle Kit] 004 Clownpiece Battle.rb:85:in `block in <main>'
+[Deluxe Battle Kit] [002] Midbattle Triggers.rb:36:in `trigger'
+[Deluxe Battle Kit] [001] Midbattle Overwrites.rb:218:in `block (2 levels) in pbMidbattleScripting'
+[Deluxe Battle Kit] [001] Midbattle Overwrites.rb:217:in `each'
+[Deluxe Battle Kit] [001] Midbattle Overwrites.rb:217:in `block in pbMidbattleScripting'
+[Deluxe Battle Kit] [001] Midbattle Overwrites.rb:148:in `loop'
+[Deluxe Battle Kit] [001] Midbattle Overwrites.rb:148:in `pbMidbattleScripting'
+[Deluxe Battle Kit] [001] Midbattle Overwrites.rb:111:in `pbDeluxeTriggers'
+[Deluxe Battle Kit] [001] Midbattle Overwrites.rb:667:in `pbAbilitiesOnFainting'
+
+=================
+
+[2025-05-10 02:23:27 -0700]
+[Pokémon Essentials version 21.1]
+[v21.1 Hotfixes 1.0.9]
+
+Error in Plugin: [Deluxe Battle Kit]
+Exception: SyntaxError
+Message: [Deluxe Battle Kit] 004 Clownpiece Battle.rb:85: syntax error, unexpected ',', expecting `end'
+...oln("Hell Fairy {1} is next."),name
+...                              ^
+
+
+Backtrace:
+005_PluginManager.rb:635:in `eval'
+005_PluginManager.rb:635:in `block (2 levels) in runPlugins'
+005_PluginManager.rb:625:in `each'
+005_PluginManager.rb:625:in `block in runPlugins'
+005_PluginManager.rb:616:in `each'
+005_PluginManager.rb:616:in `runPlugins'
+999_Main.rb:35:in `mainFunctionDebug'
+999_Main.rb:19:in `block in mainFunction'
+003_Errors.rb:79:in `pbCriticalCode'
+999_Main.rb:19:in `mainFunction'
+
+=================
+
+[2025-05-10 02:24:53 -0700]
+[Pokémon Essentials version 21.1]
+[v21.1 Hotfixes 1.0.9]
+
+Exception: ArgumentError
+Message: wrong number of arguments (given 2, expected 1)
+
+Backtrace:
+002_DebugConsole.rb:42:in `echoln'
+[Deluxe Battle Kit] 004 Clownpiece Battle.rb:85:in `block in <main>'
+[Deluxe Battle Kit] [002] Midbattle Triggers.rb:36:in `trigger'
+[Deluxe Battle Kit] [001] Midbattle Overwrites.rb:218:in `block (2 levels) in pbMidbattleScripting'
+[Deluxe Battle Kit] [001] Midbattle Overwrites.rb:217:in `each'
+[Deluxe Battle Kit] [001] Midbattle Overwrites.rb:217:in `block in pbMidbattleScripting'
+[Deluxe Battle Kit] [001] Midbattle Overwrites.rb:148:in `loop'
+[Deluxe Battle Kit] [001] Midbattle Overwrites.rb:148:in `pbMidbattleScripting'
+[Deluxe Battle Kit] [001] Midbattle Overwrites.rb:111:in `pbDeluxeTriggers'
+[Deluxe Battle Kit] [001] Midbattle Overwrites.rb:667:in `pbAbilitiesOnFainting'
+
+=================
+
+[2025-05-10 02:35:03 -0700]
+[Pokémon Essentials version 21.1]
+[v21.1 Hotfixes 1.0.9]
+
+Exception: ArgumentError
+Message: wrong number of arguments (given 2, expected 0)
+
+Backtrace:
+[Deluxe Battle Kit] 004 Clownpiece Battle.rb:170:in `stop_exp_gain'
+[Deluxe Battle Kit] 004 Clownpiece Battle.rb:91:in `block in <main>'
+[Deluxe Battle Kit] [002] Midbattle Triggers.rb:36:in `trigger'
+[Deluxe Battle Kit] [001] Midbattle Overwrites.rb:218:in `block (2 levels) in pbMidbattleScripting'
+[Deluxe Battle Kit] [001] Midbattle Overwrites.rb:217:in `each'
+[Deluxe Battle Kit] [001] Midbattle Overwrites.rb:217:in `block in pbMidbattleScripting'
+[Deluxe Battle Kit] [001] Midbattle Overwrites.rb:148:in `loop'
+[Deluxe Battle Kit] [001] Midbattle Overwrites.rb:148:in `pbMidbattleScripting'
+[Deluxe Battle Kit] [001] Midbattle Overwrites.rb:111:in `pbDeluxeTriggers'
+[Deluxe Battle Kit] [001] Midbattle Overwrites.rb:667:in `pbAbilitiesOnFainting'
+
+=================
+
+[2025-05-10 13:57:07 -0700]
+[Pokémon Essentials version 21.1]
+[v21.1 Hotfixes 1.0.9]
+
+Error in Plugin: [Deluxe Battle Kit]
+Exception: SyntaxError
+Message: [Deluxe Battle Kit] 002 MidBattleHandler Scripts.rb:559: syntax error, unexpected '}', expecting `end'
+[Deluxe Battle Kit] 002 MidBattleHandler Scripts.rb:912: syntax error, unexpected end-of-input, expecting '}'
+
+Backtrace:
+005_PluginManager.rb:635:in `eval'
+005_PluginManager.rb:635:in `block (2 levels) in runPlugins'
+005_PluginManager.rb:625:in `each'
+005_PluginManager.rb:625:in `block in runPlugins'
+005_PluginManager.rb:616:in `each'
+005_PluginManager.rb:616:in `runPlugins'
+999_Main.rb:35:in `mainFunctionDebug'
+999_Main.rb:19:in `block in mainFunction'
+003_Errors.rb:79:in `pbCriticalCode'
+999_Main.rb:19:in `mainFunction'
