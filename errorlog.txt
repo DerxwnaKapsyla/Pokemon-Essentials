@@ -18740,3 +18740,28 @@ Backtrace:
 999_Main.rb:19:in `block in mainFunction'
 003_Errors.rb:79:in `pbCriticalCode'
 999_Main.rb:19:in `mainFunction'
+
+=================
+
+[2025-05-10 19:40:12 -0700]
+[Pokémon Essentials version 21.1]
+[v21.1 Hotfixes 1.0.9]
+
+Script error in event 3 (coords 32,16), map 127 (Training Simulator (Cave))
+Exception: RuntimeError
+Message: Species SHINGYOKU does not exist.
+
+***Full script:
+WildBattle.start(pbGet(131), 35)
+
+Backtrace:
+001_Overworld_BattleStarting.rb:433:in `block in generate_foes'
+001_Overworld_BattleStarting.rb:414:in `each'
+001_Overworld_BattleStarting.rb:414:in `generate_foes'
+001_Overworld_BattleStarting.rb:357:in `start'
+(eval):1:in `execute_script'
+003_Interpreter.rb:140:in `eval'
+003_Interpreter.rb:140:in `execute_script'
+004_Interpreter_Commands.rb:1177:in `command_355'
+004_Interpreter_Commands.rb:116:in `execute_command'
+003_Interpreter.rb:132:in `block in update'

@@ -19051,7 +19051,11 @@ None
 Graphic: TPDP_NPC 35
 
 Autonomous Movement
-Type: Random
+Type: Custom
+Custom Move Route:
+(Repeat Action)
+$>Turn at Random
+
 Speed: 3: Slow
 Freq: 3: Low
 Options Enabled
@@ -85089,7 +85093,7 @@ Trigger: Event Touch
 List of Event Commands:
 @>Script: pbTrainerIntro(:HELLFAIRY)
 @>Script: pbNoticePlayer(get_self)
-@>Text: Placeholder
+@>Text: This crystal powers the barrier guarding Lady Hecatia's Fortress!
 @>Conditional Branch: Script: TrainerBattle.start(:HELLFAIRY, "Eris")
  @>Control Self Switch: A =ON
  @>
@@ -85112,7 +85116,7 @@ Move Animation
 Trigger: Action Button
 
 List of Event Commands:
-@>Text: Placeholder
+@>Text: You might burn your hand! I'm just looking out for your safety.
 @>
 
 Page #3
@@ -85152,7 +85156,7 @@ Trigger: Event Touch
 List of Event Commands:
 @>Script: pbTrainerIntro(:HELLFAIRY)
 @>Script: pbNoticePlayer(get_self)
-@>Text: Placeholder
+@>Text: Lady Hecatia tasked us to guard these Crystals, stay back!
 @>Conditional Branch: Script: TrainerBattle.start(:HELLFAIRY, "Hypatia")
  @>Control Self Switch: A =ON
  @>
@@ -85175,7 +85179,8 @@ Move Animation
 Trigger: Action Button
 
 List of Event Commands:
-@>Text: Placeholder
+@>Text: Clownpiece has told us she can hear the crystals calling her,
+ :    : but I have no idea what that means!
 @>
 
 Page #3
@@ -85234,7 +85239,7 @@ List of Event Commands:
 #------------------------------------------------------------------------------
 Event ID: 008
 Event Name: EV008
-(X,Y): (041,028)
+(X,Y): (048,016)
 
 Page #1
 Conditions
@@ -85319,7 +85324,7 @@ List of Event Commands:
 #------------------------------------------------------------------------------
 Event ID: 011
 Event Name: EV011
-(X,Y): (038,028)
+(X,Y): (031,016)
 
 Page #1
 Conditions
@@ -87528,7 +87533,7 @@ Trigger: Event Touch
 List of Event Commands:
 @>Script: pbTrainerIntro(:HELLFAIRY)
 @>Script: pbNoticePlayer(get_self)
-@>Text: Placeholder
+@>Text: You're the Puppet Handler that defeated Clownpiece, aren't you?
 @>Conditional Branch: Script: TrainerBattle.start(:HELLFAIRY, "Aphrodite")
  @>Control Self Switch: A =ON
  @>
@@ -87551,7 +87556,8 @@ Move Animation
 Trigger: Action Button
 
 List of Event Commands:
-@>Text: Placeholder
+@>Text: Clownpiece may have been leading us, but she wasn't the strongest
+ :    : among us!
 @>
 
 Page #3
@@ -87591,7 +87597,7 @@ Trigger: Event Touch
 List of Event Commands:
 @>Script: pbTrainerIntro(:HELLFAIRY)
 @>Script: pbNoticePlayer(get_self)
-@>Text: Placeholder
+@>Text: Hell Fairies are way different from normal fairies!
 @>Conditional Branch: Script: TrainerBattle.start(:HELLFAIRY, "Ares")
  @>Control Self Switch: A =ON
  @>
@@ -87614,7 +87620,7 @@ Move Animation
 Trigger: Action Button
 
 List of Event Commands:
-@>Text: Placeholder
+@>Text: Just look at our outfits- aren't they way more radical?
 @>
 
 Page #3
@@ -87654,7 +87660,8 @@ Trigger: Event Touch
 List of Event Commands:
 @>Script: pbTrainerIntro(:HELLFAIRY)
 @>Script: pbNoticePlayer(get_self)
-@>Text: Placeholder
+@>Text: Our Honorable Friend is past this cave! On orders of Lady Hecatia,
+ :    : we are not allowed to let anybody through without a fight!
 @>Conditional Branch: Script: TrainerBattle.start(:HELLFAIRY, "Ouranos")
  @>Control Self Switch: A =ON
  @>
@@ -87677,7 +87684,7 @@ Move Animation
 Trigger: Action Button
 
 List of Event Commands:
-@>Text: Placeholder
+@>Text: Lady Hecatia isn't mean or anything, I just feel bad letting her down!
 @>
 
 Page #3
@@ -88448,7 +88455,7 @@ List of Event Commands:
 Map ID: 099
 Map Name: Lunar Palace - Main Hall
 Tileset: 048: Lunar Capital Palace
-Width: 44, Height: 40
+Width: 44, Height: 46
 Auto-Change BGM: W-034. Frozen Capital of Eternity
 
 #------------------------------------------------------------------------------
@@ -88628,7 +88635,7 @@ Event Name: Rei'sen
 
 Page #1
 Conditions
-Variable 0121: TKoL Plot Variable is 24 or above
+Variable 0121: TKoL Plot Variable is 25 or above
 
 Graphic: Person_Rei'sen
 
@@ -88677,7 +88684,7 @@ List of Event Commands:
  @>Text: \xn[\pn]You were just fine! Don't worry about it!
  @>Text: \xn[\pn]\b(I hope this doesn't count as bullying the inhabitants of the
   :    : Capital...)
- @>Control Variables: [0121: TKoL Plot Variable] = 25
+ @>Control Variables: [0121: TKoL Plot Variable] = 26
  @>
 : Else
  @>Script: pbTrainerEnd
@@ -88688,7 +88695,7 @@ List of Event Commands:
 
 Page #2
 Conditions
-Variable 0121: TKoL Plot Variable is 25 or above
+Variable 0121: TKoL Plot Variable is 26 or above
 
 Graphic: Person_Rei'sen
 
@@ -88762,7 +88769,7 @@ Stop Animation
 Trigger: Player Touch
 
 List of Event Commands:
-@>Conditional Branch: Player is facing Down
+@>Conditional Branch: Player is facing Right
  @>Play SE: 'Door exit', 80, 100
  @>Change Screen Color Tone: (-255,-255,-255,0), @8
  @>Wait: 8 frame(s)
@@ -88793,7 +88800,7 @@ Stop Animation
 Trigger: Player Touch
 
 List of Event Commands:
-@>Conditional Branch: Player is facing Down
+@>Conditional Branch: Player is facing Right
  @>Play SE: 'Door exit', 80, 100
  @>Change Screen Color Tone: (-255,-255,-255,0), @8
  @>Wait: 8 frame(s)
@@ -89013,6 +89020,29 @@ List of Event Commands:
 @>
 
 #------------------------------------------------------------------------------
+Event ID: 016
+Event Name: EV016
+(X,Y): (024,008)
+
+Page #1
+Conditions
+None
+
+Graphic: Object ball
+
+Autonomous Movement
+Type: Fixed
+Speed: 3: Slow
+Freq: 3: Low
+Options Enabled
+Move Animation
+Trigger: Action Button
+
+List of Event Commands:
+@>Control Variables: [0121: TKoL Plot Variable] = 26
+@>
+
+#------------------------------------------------------------------------------
 
 #==============================================================================
 Map ID: 100
@@ -89203,7 +89233,7 @@ Event Name: Autorun
 
 Page #1
 Conditions
-Variable 0121: TKoL Plot Variable is 25 or above
+Variable 0121: TKoL Plot Variable is 26 or above
 
 Autonomous Movement
 Type: Fixed
@@ -89487,7 +89517,7 @@ List of Event Commands:
  @>Script: pbSetSelfSwitch(17,"A",false)
  @>Text: Will both sides please take their positions on the field before we
   :    : begin?
- @>Control Variables: [0121: TKoL Plot Variable] = 26
+ @>Control Variables: [0121: TKoL Plot Variable] = 27
  @>
 : Else
  @>Script: pbTrainerEnd
@@ -89498,7 +89528,7 @@ List of Event Commands:
 
 Page #2
 Conditions
-Variable 0121: TKoL Plot Variable is 26 or above
+Variable 0121: TKoL Plot Variable is 27 or above
 
 Autonomous Movement
 Type: Fixed
@@ -100503,8 +100533,11 @@ Trigger: Action Button
 List of Event Commands:
 @>Script: pbTrainerIntro(:HELLFAIRY)
 @>Script: pbNoticePlayer(get_self)
-@>Text: Placeholder
+@>Text: I am Lady Hecatia's strongest soldier! You will not pass here, or
+ :    : my name is not Helios!
 @>Conditional Branch: Script: TrainerBattle.start(:HELLFAIRY, "Helia")
+ @>Text: Very well Human, you may pass! But don't expect my mistress and
+  :    : her friend to go easy on you.
  @>Change Screen Color Tone: (-255,-255,-255,0), @8
  @>Wait: 8 frame(s)
  @>Control Self Switch: A =ON
@@ -100946,6 +100979,7 @@ List of Event Commands:
   @>Exit Event Processing
   @>
  : Branch End
+ @>Exit Event Processing
  @>
 : Branch End
 @>
@@ -101603,7 +101637,7 @@ List of Event Commands:
 #------------------------------------------------------------------------------
 Event ID: 026
 Event Name: EV026
-(X,Y): (001,017)
+(X,Y): (000,013)
 
 Page #1
 Conditions
@@ -101633,7 +101667,7 @@ List of Event Commands:
 #------------------------------------------------------------------------------
 Event ID: 027
 Event Name: EV027
-(X,Y): (001,018)
+(X,Y): (000,014)
 
 Page #1
 Conditions
@@ -101648,16 +101682,74 @@ Move Animation
 Trigger: Player Touch
 
 List of Event Commands:
-@>Conditional Branch: Variable [0128: TKoL Hallway Variable] < 4
- @>Control Variables: [0128: TKoL Hallway Variable] = 0
- @>
-: Branch End
 @>Play SE: 'Door exit', 80, 100
 @>Change Screen Color Tone: (-255,-255,-255,0), @8
 @>Wait: 8 frame(s)
 @>Transfer Player:[099: Lunar Palace - Main Hall], (042,021)
 @>Wait: 8 frame(s)
 @>Change Screen Color Tone: (0,0,0,0), @8
+@>
+
+#------------------------------------------------------------------------------
+Event ID: 028
+Event Name: ExitArrow
+(X,Y): (001,017)
+
+Page #1
+Conditions
+None
+
+Graphic: Exitarrow_red
+
+Autonomous Movement
+Type: Fixed
+Speed: 3: Slow
+Freq: 3: Low
+Options Enabled
+Move Animation
+Stop Animation
+Trigger: Player Touch
+
+List of Event Commands:
+@>Conditional Branch: Player is facing Left
+ @>Play SE: 'Door exit', 80, 100
+ @>Change Screen Color Tone: (-255,-255,-255,0), @8
+ @>Wait: 8 frame(s)
+ @>Transfer Player:[099: Lunar Palace - Main Hall], (042,020)
+ @>Change Screen Color Tone: (0,0,0,0), @8
+ @>
+: Branch End
+@>
+
+#------------------------------------------------------------------------------
+Event ID: 029
+Event Name: ExitArrow
+(X,Y): (001,018)
+
+Page #1
+Conditions
+None
+
+Graphic: Exitarrow_red
+
+Autonomous Movement
+Type: Fixed
+Speed: 3: Slow
+Freq: 3: Low
+Options Enabled
+Move Animation
+Stop Animation
+Trigger: Player Touch
+
+List of Event Commands:
+@>Conditional Branch: Player is facing Left
+ @>Play SE: 'Door exit', 80, 100
+ @>Change Screen Color Tone: (-255,-255,-255,0), @8
+ @>Wait: 8 frame(s)
+ @>Transfer Player:[099: Lunar Palace - Main Hall], (042,021)
+ @>Change Screen Color Tone: (0,0,0,0), @8
+ @>
+: Branch End
 @>
 
 #------------------------------------------------------------------------------
@@ -102642,7 +102734,7 @@ List of Event Commands:
    :    : last second, after all!
   @>Text: \xn[???]Like a blazin' star, streakin' 'cross the night sky...
   @>Set Event Location: [Partner],(020,016), Up
-  @>Scroll Map: Down, 4, 4
+  @>Scroll Map: Down, 6, 4
   @>Wait: 40 frame(s)
   @>Play BGM: 'X-009. Vessel of Stars ~ Casket of Star', 100, 100
   @>Show Animation: Player, [Exclaim bubble]
@@ -106501,7 +106593,7 @@ Trigger: Parallel Process
 
 List of Event Commands:
 @>Conditional Branch: Variable [0130: Puppets Defeated] >= Variable [0129: Puppets To Defeat]
- @>Script: puppet = [:SHINGYOKU,:MAGAN,:MIMA,:ELIS,
+ @>Script: puppet = [:SHINGYOKUO,:MAGAN,:MIMA,:ELIS,
  :       :                :KIKURI,:GENGETSU,:SHINKI,:HECATIA,
  :       :                :AKOISHI]
  :       : rand_puppet = puppet.sample
@@ -106509,7 +106601,7 @@ List of Event Commands:
  :       : 
  :       : Pokemon.play_cry(pbGet(131))
  :       : echoln "Boss Puppet: #{pbGet(131)}"
- @>Script:     if pbGet(131) == :SHINGYOKU then pbSet(132,1)
+ @>Script:     if pbGet(131) == :SHINGYOKUO then pbSet(132,1)
  :       :     elsif pbGet(131) == :MAGAN then pbSet(132,2)
  :       :     elsif pbGet(131) == :MIMA then pbSet(132,3)
  :       :     elsif pbGet(131) == :ELIS then pbSet(132,4)
@@ -107717,7 +107809,7 @@ Trigger: Event Touch
 List of Event Commands:
 @>Script: pbTrainerIntro(:HELLFAIRY)
 @>Script: pbNoticePlayer(get_self)
-@>Text: Placeholder
+@>Text: Once I beat you, I'm gonna set up a secret base here!
 @>Conditional Branch: Script: TrainerBattle.start(:HELLFAIRY, "Hermia")
  @>Control Self Switch: A =ON
  @>
@@ -107747,7 +107839,8 @@ Move Animation
 Trigger: Action Button
 
 List of Event Commands:
-@>Text: Placeholder
+@>Text: I guess I could make one on the near side of the moon...
+@>Text: But then I have to deal with more weird Humans!
 @>
 
 Page #3
@@ -107794,7 +107887,8 @@ Trigger: Event Touch
 List of Event Commands:
 @>Script: pbTrainerIntro(:HELLFAIRY)
 @>Script: pbNoticePlayer(get_self)
-@>Text: Placeholder
+@>Text: Puppets are really cool, how could the Lunarians have made anything
+ :    : this cool?
 @>Conditional Branch: Script: TrainerBattle.start(:HELLFAIRY, "Rhea")
  @>Control Self Switch: A =ON
  @>
@@ -107824,7 +107918,7 @@ Move Animation
 Trigger: Action Button
 
 List of Event Commands:
-@>Text: Placeholder
+@>Text: I'm gonna travel to Genskyo and set up a Puppet Fan Club!
 @>
 
 Page #3
@@ -107871,7 +107965,7 @@ Trigger: Event Touch
 List of Event Commands:
 @>Script: pbTrainerIntro(:HELLFAIRY)
 @>Script: pbNoticePlayer(get_self)
-@>Text: Placeholder
+@>Text: I'm gonna impress my partner over there by beating you!
 @>Conditional Branch: Script: TrainerBattle.start(:HELLFAIRY, "Dione")
  @>Control Self Switch: A =ON
  @>
@@ -107901,7 +107995,7 @@ Move Animation
 Trigger: Action Button
 
 List of Event Commands:
-@>Text: Placeholder
+@>Text: I hope she noticed me...
 @>
 
 Page #3
@@ -107941,7 +108035,7 @@ Trigger: Event Touch
 List of Event Commands:
 @>Script: pbTrainerIntro(:HELLFAIRY)
 @>Script: pbNoticePlayer(get_self)
-@>Text: Placeholder
+@>Text: I'm gonna impress my partner over there by beating you!
 @>Conditional Branch: Script: TrainerBattle.start(:HELLFAIRY, "Macaria")
  @>Control Self Switch: A =ON
  @>
@@ -107964,7 +108058,7 @@ Move Animation
 Trigger: Action Button
 
 List of Event Commands:
-@>Text: Placeholder
+@>Text: I hope she noticed me...
 @>
 
 Page #3
@@ -108008,7 +108102,8 @@ Trigger: Event Touch
 List of Event Commands:
 @>Script: pbTrainerIntro(:HELLFAIRY)
 @>Script: pbNoticePlayer(get_self)
-@>Text: Placeholder
+@>Text: We're gearing up for another raid on the Capital, you won't be
+ :    : able to beat us all!
 @>Conditional Branch: Script: TrainerBattle.start(:HELLFAIRY, "Amphitrite")
  @>Control Self Switch: A =ON
  @>
@@ -108035,7 +108130,7 @@ Move Animation
 Trigger: Action Button
 
 List of Event Commands:
-@>Text: Placeholder
+@>Text: Surely we aren't the only ones left, right?
 @>
 
 Page #3
@@ -108075,7 +108170,7 @@ Trigger: Event Touch
 List of Event Commands:
 @>Script: pbTrainerIntro(:HELLFAIRY)
 @>Script: pbNoticePlayer(get_self)
-@>Text: Placeholder
+@>Text: Your conquest ends here!
 @>Conditional Branch: Script: TrainerBattle.start(:HELLFAIRY, "Gaia")
  @>Control Self Switch: A =ON
  @>
@@ -108098,7 +108193,7 @@ Move Animation
 Trigger: Action Button
 
 List of Event Commands:
-@>Text: Placeholder
+@>Text: I had no chance against such a powerful Puppet Handler...
 @>
 
 Page #3
@@ -108744,14 +108839,6 @@ Move Animation
 Trigger: Autorun
 
 List of Event Commands:
-@>Set Event Location: [ExitArrow],(017,052)
-@>Set Event Location: [ExitArrow],(029,044)
-@>Set Event Location: [ExitArrow],(051,051)
-@>Set Event Location: [ExitArrow],(057,040)
-@>Set Event Location: [Healing Statue],(031,032)
-@>Set Event Location: [EV006],(015,020)
-@>Set Event Location: [EV007],(049,020)
-@>Set Event Location: [],(064,010)
 @>Control Switches: [0001: Starting over] = OFF
 @>
 
