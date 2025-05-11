@@ -18765,3 +18765,24 @@ Backtrace:
 004_Interpreter_Commands.rb:1177:in `command_355'
 004_Interpreter_Commands.rb:116:in `execute_command'
 003_Interpreter.rb:132:in `block in update'
+
+=================
+
+[2025-05-11 00:09:10 -0700]
+[Pokémon Essentials version 21.1]
+[v21.1 Hotfixes 1.0.9]
+
+Exception: NoMethodError
+Message: undefined method `echiln' for #<Battle>
+
+Backtrace:
+[Touhoumon Essentials Development Kit] 003_Battle_ExpAndMoveLearning.rb:154:in `pbGainExpOne'
+[Touhoumon Essentials Development Kit] 003_Battle_ExpAndMoveLearning.rb:44:in `block (2 levels) in pbGainExp'
+001_Battle.rb:411:in `block in eachInTeam'
+001_Battle.rb:411:in `each'
+001_Battle.rb:411:in `each_with_index'
+001_Battle.rb:411:in `eachInTeam'
+[Touhoumon Essentials Development Kit] 003_Battle_ExpAndMoveLearning.rb:40:in `block in pbGainExp'
+[Touhoumon Essentials Development Kit] 003_Battle_ExpAndMoveLearning.rb:18:in `each'
+[Touhoumon Essentials Development Kit] 003_Battle_ExpAndMoveLearning.rb:18:in `pbGainExp'
+[Touhoumon Essentials Development Kit] 007_Battler_UseMove.rb:397:in `pbUseMove'

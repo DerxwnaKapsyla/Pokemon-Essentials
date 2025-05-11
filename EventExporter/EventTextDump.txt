@@ -18300,6 +18300,10 @@ List of Event Commands:
  @>Script: $player.scenario_name = "The Mansion of Mystery"
  @>Change Transparent Flag: Transparency
  @>Transfer Player:[003: The Mansion of Mystery], (001,001)
+ @>Conditional Branch: Switch [0116: TMoM Cleared] == OFF
+  @>Control Variables: [0099: NG+ Loop] += 1
+  @>
+ : Branch End
  @>Control Variables: [0107..0110] = 0
  @>Control Switches: [0109..0112] = OFF
  @>Script: $PokemonGlobal.clear_reset_maps
@@ -18474,6 +18478,10 @@ List of Event Commands:
  @>Script: $player.scenario_name = "The Festival of Curses"
  @>Change Transparent Flag: Transparency
  @>Transfer Player:[004: The Festival of Curses], (001,001)
+ @>Conditional Branch: Switch [0139: TFoC Cleared] == OFF
+  @>Control Variables: [0099: NG+ Loop] += 1
+  @>
+ : Branch End
  @>Control Variables: [0113..0116] = 0
  @>Control Switches: [0118..0125] = OFF
  @>Script: $PokemonGlobal.clear_reset_maps
@@ -18750,6 +18758,10 @@ List of Event Commands:
  @>Move Picture: 1, @20, Upper Left (0,0), (100%,100%), 0, Normal
  @>Wait: 20 frame(s)
  @>Transfer Player:[005: The Kingdom of Lunacy], (001,001)
+ @>Conditional Branch: Switch [0147: TKoL Cleared] == OFF
+  @>Control Variables: [0099: NG+ Loop] += 1
+  @>
+ : Branch End
  @>Control Variables: [0121..0135] = 0
  @>Control Switches: [0141..0142] = OFF
  @>Control Switches: [0144: Clownpiece Checkpoint] = OFF
@@ -84686,7 +84698,7 @@ Map ID: 096
 Map Name: Mare Marginis
 Tileset: 043: Hecatia's Lunar Fortress
 Width: 80, Height: 60
-Auto-Change BGM: W-031. Flight of the Bamboo Cutter ~ Lunatic Princess
+Auto-Change BGM: W-038. A World Of Nightmares Never Seen Before
 
 #------------------------------------------------------------------------------
 Event ID: 001
@@ -89730,11 +89742,6 @@ List of Event Commands:
 @>Change Screen Color Tone: (51,17,-34,255), @10
 @>Play BGM: 'W-039. The Moon as Seen from the Shrine', 70, 100
 @>Wait: 15 frame(s)
-@>Conditional Branch: Switch [0155: Junko Beaten] == OFF
- @>Control Variables: [0141: Scenarios Cleared] += 1
- @>Control Switches: [0155: Junko Beaten] = ON
- @>
-: Branch End
 @>Change Text Options: Bottom, Show
 @>Text: \w[dark]\c[12]\se[]\l[4]With her trial resolved, and an offer of unbelievable
  :    : magnitude presented to her, \pn departed from the Moon, back to her
@@ -89748,7 +89755,19 @@ List of Event Commands:
 @>Wait: 25 frame(s)
 @>Fade Out BGM: 2 sec.
 @>Wait: 40 frame(s)
-@>Call Common Event: Ending Stinger
+@>Conditional Branch: Switch [0147: TKoL Cleared] == OFF
+ @>Control Switches: [0155: Junko Beaten] = ON
+ @>Control Switches: [0147: TKoL Cleared] = ON
+ @>Control Variables: [0141: Scenarios Cleared] += 1
+ @>Change Text Options: Middle, Hide
+ @>Call Common Event: Ending Stinger
+ @>
+: Else
+ @>Transfer Player:[019: World of Fantasies], (019,020), Down
+ @>Change Transparent Flag: Normal
+ @>Change Screen Color Tone: (0,0,0,0), @8
+ @>
+: Branch End
 @>
 
 #------------------------------------------------------------------------------
@@ -90241,7 +90260,7 @@ List of Event Commands:
 #------------------------------------------------------------------------------
 Event ID: 032
 Event Name: Dream Observer
-(X,Y): (020,022)
+(X,Y): (021,026)
 
 Page #1
 Conditions
@@ -108719,6 +108738,7 @@ Map ID: 133
 Map Name: Lunar Palace - Rooms
 Tileset: 048: Lunar Capital Palace
 Width: 55, Height: 25
+Auto-Change BGM: W-034. Frozen Capital of Eternity
 
 #------------------------------------------------------------------------------
 Event ID: 001
