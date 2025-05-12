@@ -18786,3 +18786,49 @@ Backtrace:
 [Touhoumon Essentials Development Kit] 003_Battle_ExpAndMoveLearning.rb:18:in `each'
 [Touhoumon Essentials Development Kit] 003_Battle_ExpAndMoveLearning.rb:18:in `pbGainExp'
 [Touhoumon Essentials Development Kit] 007_Battler_UseMove.rb:397:in `pbUseMove'
+
+=================
+
+[2025-05-11 14:27:37 -0700]
+[Pokémon Essentials version 21.1]
+
+Error in Plugin: [RMXP Event Exporter]
+Exception: SystemExit
+Message:  
+
+Backtrace:
+001_Transitions.rb:39:in `update'
+001_Transitions.rb:39:in `update'
+[RMXP Event Exporter] script.rb:504:in `writeEventCommands'
+[RMXP Event Exporter] script.rb:289:in `writeEventPage'
+[RMXP Event Exporter] script.rb:135:in `block (4 levels) in export'
+[RMXP Event Exporter] script.rb:132:in `each'
+[RMXP Event Exporter] script.rb:132:in `block (3 levels) in export'
+[RMXP Event Exporter] script.rb:126:in `each'
+[RMXP Event Exporter] script.rb:126:in `block (2 levels) in export'
+[RMXP Event Exporter] script.rb:103:in `each'
+
+=================
+
+[2025-05-11 15:34:06 -0700]
+[Pokémon Essentials version 21.1]
+[v21.1 Hotfixes 1.0.9]
+
+Script error in event 1 (coords 0,0), map 3 (The Mansion of Mystery)
+Exception: NameError
+Message: undefined local variable or method `pbStarterSelection' for #<Interpreter @event_id: 1>
+
+***Full script:
+pbStarterSelection
+
+Backtrace:
+(eval):1:in `execute_script'
+003_Interpreter.rb:140:in `eval'
+003_Interpreter.rb:140:in `execute_script'
+004_Interpreter_Commands.rb:1177:in `command_355'
+004_Interpreter_Commands.rb:116:in `execute_command'
+003_Interpreter.rb:132:in `block in update'
+003_Interpreter.rb:86:in `loop'
+003_Interpreter.rb:86:in `update'
+003_Interpreter.rb:99:in `block in update'
+003_Interpreter.rb:86:in `loop'

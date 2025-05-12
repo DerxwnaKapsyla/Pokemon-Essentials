@@ -54877,7 +54877,7 @@ List of Event Commands:
 @>Script: pbShowPicture(5,"Transitions/PTs/Char_ThreeFairies.png",1,256,192,zoomX=100,zoomY=100,opacity=255,blendType=0)
 @>Script: pbShowPicture(7,"Transitions/Names/Name_Three Fairies.png",1,256,192,zoomX=100,zoomY=100,opacity=255,blendType=0)
 @>Move Picture: 3, @30, Center (250,192), (100%,100%), 255, Normal
-@>Call Common Event: 
+@>Call Common Event: Starter Selection (Backup)
 @>Wait: 60 frame(s)
 @>Move Picture: 1, @5, Center (256,192), (100%,100%), 0, Normal
 @>Move Picture: 2, @5, Center (250,192), (100%,100%), 0, Normal
@@ -89757,7 +89757,6 @@ List of Event Commands:
 @>Fade Out BGM: 2 sec.
 @>Wait: 40 frame(s)
 @>Conditional Branch: Switch [0147: TKoL Cleared] == OFF
- @>Control Switches: [0155: Junko Beaten] = ON
  @>Control Switches: [0147: TKoL Cleared] = ON
  @>Control Variables: [0141: Scenarios Cleared] += 1
  @>Change Text Options: Middle, Hide
@@ -93821,7 +93820,7 @@ List of Event Commands:
  :    : right now...
 @>Text: \xn[\pn]So that's what this all is? Someone has taken an interest in
  :    : me, and trapped me in this world?
-@>Text: \xn[Yuuka]That my dear is a mystery you'll havve to solve on 
+@>Text: \xn[Yuuka]That my dear is a mystery you'll have to solve on 
  :    : your own~. What fun would it be if I just gave you all the answers!
 @>Text: \xn[Yuuka]Unless, of course, you're willing to duel me for
  :    : those answers... It has been a while since our last match,
@@ -94459,11 +94458,7 @@ List of Event Commands:
  @>Change Screen Color Tone: (-255,-255,-255,0), @8
  @>Play SE: 'Pollen', 100, 150
  @>Wait: 8 frame(s)
- @>Set Move Route: [Lyrica]
-  :              : $>Change Opacity: 0
- @>Set Move Route: [Lunasa]
-  :              : $>Change Opacity: 0
- @>Set Move Route: [Merlin]
+ @>Set Move Route: [Medicine]
   :              : $>Change Opacity: 0
  @>Change Screen Color Tone: (0,0,0,0), @8
  @>Wait: 8 frame(s)
@@ -94532,11 +94527,7 @@ List of Event Commands:
  @>Change Screen Color Tone: (-255,-255,-255,0), @8
  @>Play SE: 'Pollen', 100, 150
  @>Wait: 8 frame(s)
- @>Set Move Route: [Lyrica]
-  :              : $>Change Opacity: 0
- @>Set Move Route: [Lunasa]
-  :              : $>Change Opacity: 0
- @>Set Move Route: [Merlin]
+ @>Set Move Route: [Junko]
   :              : $>Change Opacity: 0
  @>Change Screen Color Tone: (0,0,0,0), @8
  @>Wait: 8 frame(s)
@@ -94606,11 +94597,7 @@ List of Event Commands:
  @>Change Screen Color Tone: (-255,-255,-255,0), @8
  @>Play SE: 'Pollen', 100, 150
  @>Wait: 8 frame(s)
- @>Set Move Route: [Lyrica]
-  :              : $>Change Opacity: 0
- @>Set Move Route: [Lunasa]
-  :              : $>Change Opacity: 0
- @>Set Move Route: [Merlin]
+ @>Set Move Route: [Hecatia]
   :              : $>Change Opacity: 0
  @>Change Screen Color Tone: (0,0,0,0), @8
  @>Wait: 8 frame(s)
@@ -109351,7 +109338,7 @@ List of Event Commands:
  @>Set Move Route: [Mima]
   :              : $>Move Down
  @>Wait for Move's Completion
- @>Text: \xn[\pn]\b(...But, what happens wen the dream self dies...?)
+ @>Text: \xn[\pn]\b(...But, what happens when the dream self dies...?)
  @>Set Move Route: [Mima]
   :              : $>Move Down
   :              : $>Wait: 4 frame(s)
@@ -109399,7 +109386,7 @@ List of Event Commands:
  @>Change Screen Color Tone: (-255,-255,-255,0), @8
  @>Wait: 8 frame(s)
  @>Change Transparent Flag: Transparency
- @>Transfer Player:[138: Reimadne - Cutscene], (015,017)
+ @>Transfer Player:[138: Reimaedn - Cutscene], (015,017)
  @>Wait: 4 frame(s)
  @>Control Self Switch: A =ON
  @>
@@ -109433,7 +109420,7 @@ List of Event Commands:
 @>Text: \xn[Mima]Precisely! So, I trust you know what needs to be done?
 @>Show Animation: Player, [Exclaim bubble]
 @>Text: \xn[\pn]Huh? No! I don't! I still don't see how this is my responsibility
- :    : to fx, especially when you were the one who trained her!
+ :    : to fix, especially when you were the one who trained her!
 @>Text: \xn[Mima]If I could have stopped her, don't you think I would have by
  :    : now?
 @>Text: \xn[Mima]No, only you can resolve this, as the one at the center
@@ -109471,7 +109458,7 @@ List of Event Commands:
  :    : as my new apprentice!
 @>Text: \xn[\pn]...Thanks for the vote of confidence!
 @>Text: \xn[Mima]You're going to want to take the teleporter down the 
- :    : left hallway. The one on the right doesn't lead anywhere.
+ :    : left hallway. The one on the right doesn't lead anywhere important.
 @>Text: \xn[Mima]I'll meet you at the destination!
 @>Change Screen Color Tone: (-255,-255,-255,0), @8
 @>Play SE: 'PRSFX- Teleport', 80, 100
@@ -110227,7 +110214,7 @@ List of Event Commands:
 @>Text: \xn[\pn]So, it was you who's been pulling me into this realm...
 @>Text: \xn[Meimu]Well you're here at just the right time! Just as soon as
  :    : I close this rift, I'll have fulfilled my goals and become real!
-@>Text: \xn[\pn]Are you not real right ow? You're standing before me, 
+@>Text: \xn[\pn]Are you not real right now? You're standing before me, 
  :    : aren't you?
 @>Set Move Route: [Meimu]
  :              : $>Turn Left
@@ -110301,8 +110288,8 @@ List of Event Commands:
 @>Wait for Move's Completion
 @>Text: \xn[Meimu]I may not be able to fully manipulate reality yet... But
  :    : I can at least do this much!
-@>Text: \xn[\pn]\b(She's determined no matter what to become real, even
- :    : if it means ignoring the reality in front of her...)
+@>Text: \xn[\pn]\b(She's determined no matter what to see her goals through to
+ :    : completion, even if it means ignoring the reality in front of her...)
 @>Text: \xn[Meimu]I know all of your tactics.\wt[10] All of your strategies.\wt[10]
  :    : I've seen them all and more! I won't let you stop me!
 @>Text: \xn[\pn]Then, as the person you look up to... The person you
@@ -110442,7 +110429,7 @@ List of Event Commands:
  :    : promise to take us on your next big realm saving adventure?
 @>Text: \xn[Maya]You left us out when you went to the Moon! We
  :    : had to be here for this one!
-@>Text: \xn[\pn]You guys... I don't know whyat to say...
+@>Text: \xn[\pn]You guys... I don't know what to say...
 @>Text: \xn[\pn]But... I don't know if I have the strength to take Meimu 
  :    : down...
 @>Text: \xn[\pn]She's a supernatural being with the ability to manipulate
@@ -111929,7 +111916,7 @@ List of Event Commands:
 
 #==============================================================================
 Map ID: 138
-Map Name: Reimadne - Cutscene
+Map Name: Reimaedn - Cutscene
 Tileset: 049: World of Fantasies (alt)
 Width: 31, Height: 27
 
@@ -112048,7 +112035,7 @@ List of Event Commands:
 @>Set Event Location: [Mima],(015,017)
 @>Set Event Location: [Meimu (Formless)],(001,000)
 @>Set Event Location: [Meimu (Formed)],(015,010)
-@>Transfer Player:[138: Reimadne - Cutscene], (015,017)
+@>Transfer Player:[138: Reimaedn - Cutscene], (015,017)
 @>Change Screen Color Tone: (0,0,0,255), @8
 @>Text: \xn[Mima]They were so proficent at it, that one day they created
  :    : a form for themselves out of the aether.
@@ -112079,8 +112066,8 @@ List of Event Commands:
 @>Text: \xn[Mima]She could enter a person's dreams, observe them, and
  :    : manifest concepts inside of them, or recreate them in the real world.
 @>Show Animation: [Puppet 1], [Berry plant sparkle]
-@>Show Animation: [Puppet 1], [Berry plant sparkle]
-@>Show Animation: [Puppet 1], [Berry plant sparkle]
+@>Show Animation: [Puppet 2], [Berry plant sparkle]
+@>Show Animation: [Puppet 3], [Berry plant sparkle]
 @>Set Move Route: [Puppet 1]
  :              : $>Wait: 20 frame(s)
  :              : $>Change Opacity: 255
@@ -115540,95 +115527,7 @@ List of Event Commands:
 
 #==============================================================================
 Common Event ID: 004
-Common Event Name: 
-
-Trigger: None
-
-List of Event Commands:
-@>Text: zdgfshj
-@>
-
-#==============================================================================
-Common Event ID: 005
-Common Event Name: ---------
-
-Trigger: None
-
-List of Event Commands:
-@>
-
-#==============================================================================
-Common Event ID: 006
-Common Event Name: Want to know?
-
-Trigger: None
-
-List of Event Commands:
-@>Label: Know more?
-@>Text: \l[3]Would you like a basic overview of the Touhou Project series, or 
- :    : of Touhoumon Generation 1.8?
-@>Show Choices: Touhou Series, Touhoumon 1.8, No thanks
-(When Cancel: Choice 3)
-: When [Touhou Series]
- @>Text: Touhou Project is a doujin series produced by ZUN of Team
-  :    : Shanghai Alice. The official games are traditionally of the 
-  :    : 2D-style shoot-em-up genre, with the occasional break for
-  :    : fighting games.
- @>Text: There is also an amalgamate of print works and Music CDs 
-  :    : that are officially released by Team Shanghai Alice.
- @>Text: The setting is Gensokyo, a haunted region of Japan, that houses 
-  :    : Humans, Youkai, Gods, and other supernatural and mythical
-  :    : entities.
- @>Text: The plot of these games is self contained, usually not
-  :    : connecting to future or past games aside from one-off
-  :    : references, unless otherwise part of an arc.
- @>Text: As such, there is no definitive "order" to playing the games.
- @>Text: They usually revolve around the protagonists, Reimu Hakurei
-  :    : and Marisa Kirisame, traveling through 6 normal stages, 
-  :    : attempting to resolve the current incident of the game.
- @>Text: Incidents such as the Scarlet Mist incident, the Divine Spirits 
-  :    : incident, the Urban Legend incident, and the Second Genso-Lunar
-  :    : War, just to name a few.
- @>Text: To learn more about the franchise, you can visit the wiki at
-  :    : https://en.touhouwiki.net/wiki/Touhou_Wiki
- @>Jump to Label: Know more?
- @>
-: When [Touhoumon 1.8]
- @>Text: Touhoumon Generation 1.8 was a radical shift in the Touhoumon department.
-  :    : It was the introduction of several new concepts, and mechanics. The
-  :    : most notable addition was the Diamond/Pearl Skill Split System, or
-  :    : as it's called in English communities, the Physical/Special Split.
- @>Text: Alongside the Physical/Special Split came a completely overhauled 
-  :    : type chart, featuring several new types that weren't in Pokemon 
-  :    : (Such as Faith, Dream, Illusion, Heart), and replacing some of the 
-  :    : older types with the new ones (Like Dragon, Bug, Normal, and Fighting).
- @>Text: The 1.8 Generation also had a more streamlined evolution system. Unlike 
-  :    : the previous Touhoumon generations, where Touhoumon would evolve in 3 Stages 
-  :    : (Chibi-Normal-EX), with some special evolutions, (Final, Advent, Last Word, this 
-  :    : system had Touhoumon evolve from Chibi into several different forms.
- @>Text: A vast majority of Puppets have Shard Evolutions, which evolve them 
-  :    : into specialized forms, such as Attack Forms, Defense Forms, and Speed Forms.
- @>Text: There are other, more non-specific, stone roles, such as  Helper Forms, 
-  :    : Technical Forms, and Advent Forms. These roles cover a much different 
-  :    : playstyle than the basic Attack, Defense, and Speed roles.
- @>Text: Provided with the game is a Type Chart in the traditional and 
-  :    : streamlined format, both present in the Useful Stuff folder, as
-  :    : well as an explanation file for how to rationalize the type chart,
-  :    : made by DoesntKnowHowToPlay.
- @>Text: If you would like to learn more about Touhoumon, be it the 1.5 or
-  :    : 1.8 Generations, the fangame scene, the sequel (Gensou Ningyou
-  :    : Enbu), or any other aspect, you can visit the English Forums at
-  :    : https://thpp.miraheze.org/wiki/Main_Page
- @>Jump to Label: Know more?
- @>
-: When [No thanks]
- @>
-: Branch End
-@>
-
-#==============================================================================
-Common Event ID: 007
-Common Event Name: Starter Selection
+Common Event Name: Starter Selection (Backup)
 
 Trigger: None
 
@@ -115972,6 +115871,94 @@ List of Event Commands:
 :       : pbAddPokemonSilent(pkmn)
 :       : 
 :       : $game_variables[1] = nil
+@>
+
+#==============================================================================
+Common Event ID: 005
+Common Event Name: ---------
+
+Trigger: None
+
+List of Event Commands:
+@>
+
+#==============================================================================
+Common Event ID: 006
+Common Event Name: Want to know?
+
+Trigger: None
+
+List of Event Commands:
+@>Label: Know more?
+@>Text: \l[3]Would you like a basic overview of the Touhou Project series, or 
+ :    : of Touhoumon Generation 1.8?
+@>Show Choices: Touhou Series, Touhoumon 1.8, No thanks
+(When Cancel: Choice 3)
+: When [Touhou Series]
+ @>Text: Touhou Project is a doujin series produced by ZUN of Team
+  :    : Shanghai Alice. The official games are traditionally of the 
+  :    : 2D-style shoot-em-up genre, with the occasional break for
+  :    : fighting games.
+ @>Text: There is also an amalgamate of print works and Music CDs 
+  :    : that are officially released by Team Shanghai Alice.
+ @>Text: The setting is Gensokyo, a haunted region of Japan, that houses 
+  :    : Humans, Youkai, Gods, and other supernatural and mythical
+  :    : entities.
+ @>Text: The plot of these games is self contained, usually not
+  :    : connecting to future or past games aside from one-off
+  :    : references, unless otherwise part of an arc.
+ @>Text: As such, there is no definitive "order" to playing the games.
+ @>Text: They usually revolve around the protagonists, Reimu Hakurei
+  :    : and Marisa Kirisame, traveling through 6 normal stages, 
+  :    : attempting to resolve the current incident of the game.
+ @>Text: Incidents such as the Scarlet Mist incident, the Divine Spirits 
+  :    : incident, the Urban Legend incident, and the Second Genso-Lunar
+  :    : War, just to name a few.
+ @>Text: To learn more about the franchise, you can visit the wiki at
+  :    : https://en.touhouwiki.net/wiki/Touhou_Wiki
+ @>Jump to Label: Know more?
+ @>
+: When [Touhoumon 1.8]
+ @>Text: Touhoumon Generation 1.8 was a radical shift in the Touhoumon department.
+  :    : It was the introduction of several new concepts, and mechanics. The
+  :    : most notable addition was the Diamond/Pearl Skill Split System, or
+  :    : as it's called in English communities, the Physical/Special Split.
+ @>Text: Alongside the Physical/Special Split came a completely overhauled 
+  :    : type chart, featuring several new types that weren't in Pokemon 
+  :    : (Such as Faith, Dream, Illusion, Heart), and replacing some of the 
+  :    : older types with the new ones (Like Dragon, Bug, Normal, and Fighting).
+ @>Text: The 1.8 Generation also had a more streamlined evolution system. Unlike 
+  :    : the previous Touhoumon generations, where Touhoumon would evolve in 3 Stages 
+  :    : (Chibi-Normal-EX), with some special evolutions, (Final, Advent, Last Word, this 
+  :    : system had Touhoumon evolve from Chibi into several different forms.
+ @>Text: A vast majority of Puppets have Shard Evolutions, which evolve them 
+  :    : into specialized forms, such as Attack Forms, Defense Forms, and Speed Forms.
+ @>Text: There are other, more non-specific, stone roles, such as  Helper Forms, 
+  :    : Technical Forms, and Advent Forms. These roles cover a much different 
+  :    : playstyle than the basic Attack, Defense, and Speed roles.
+ @>Text: Provided with the game is a Type Chart in the traditional and 
+  :    : streamlined format, both present in the Useful Stuff folder, as
+  :    : well as an explanation file for how to rationalize the type chart,
+  :    : made by DoesntKnowHowToPlay.
+ @>Text: If you would like to learn more about Touhoumon, be it the 1.5 or
+  :    : 1.8 Generations, the fangame scene, the sequel (Gensou Ningyou
+  :    : Enbu), or any other aspect, you can visit the English Forums at
+  :    : https://thpp.miraheze.org/wiki/Main_Page
+ @>Jump to Label: Know more?
+ @>
+: When [No thanks]
+ @>
+: Branch End
+@>
+
+#==============================================================================
+Common Event ID: 007
+Common Event Name: Starter Selection
+
+Trigger: None
+
+List of Event Commands:
+@>Script: pbStarterSelection
 @>
 
 #==============================================================================
