@@ -20,7 +20,7 @@ EventHandlers.add(:on_player_step_taken, :divebomb_fairies,
   proc { |event|
   if $game_map.map_id == 37 && $game_switches[122] == true # Human Village and Divebomb Fairies set to be true
     $PokemonTemp.randBatt = rand(50..70) if $PokemonTemp.randBatt == nil
-	#p $PokemonTemp.randBatt
+	echoln $PokemonTemp.randBatt
     if $PokemonTemp.randBatt > 0 
       $PokemonTemp.randBatt -= 1
     else

@@ -5256,6 +5256,29 @@ List of Event Commands:
 @>
 
 #------------------------------------------------------------------------------
+Event ID: 051
+Event Name: EV051
+(X,Y): (072,000)
+
+Page #1
+Conditions
+None
+
+Graphic: Object ball
+
+Autonomous Movement
+Type: Fixed
+Speed: 3: Slow
+Freq: 3: Low
+Options Enabled
+Move Animation
+Trigger: Action Button
+
+List of Event Commands:
+@>Script: $PokemonGlobal.encounter_version = pbGet(99)
+@>
+
+#------------------------------------------------------------------------------
 
 #==============================================================================
 Map ID: 007
@@ -18264,6 +18287,7 @@ List of Event Commands:
  @>Control Variables: [0107..0110] = 0
  @>Control Switches: [0109..0112] = OFF
  @>Script: $PokemonGlobal.clear_reset_maps
+ @>Script: $PokemonGlobal.encounter_version = pbGet(99)
  @>
 : When [No]
  @>Move Picture: 1, @20, Upper Left (0,0), (100%,100%), 0, Normal
@@ -18307,6 +18331,7 @@ List of Event Commands:
  @>Control Variables: [0107..0110] = 0
  @>Control Switches: [0109..0112] = OFF
  @>Script: $PokemonGlobal.clear_reset_maps
+ @>Script: $PokemonGlobal.encounter_version = pbGet(99)
  @>
 : When [No]
  @>Move Picture: 1, @20, Upper Left (0,0), (100%,100%), 0, Normal
@@ -18442,6 +18467,7 @@ List of Event Commands:
  @>Control Variables: [0113..0116] = 0
  @>Control Switches: [0118..0125] = OFF
  @>Script: $PokemonGlobal.clear_reset_maps
+ @>Script: $PokemonGlobal.encounter_version = pbGet(99)
  @>
 : When [No]
  @>Move Picture: 1, @20, Upper Left (0,0), (100%,100%), 0, Normal
@@ -18485,6 +18511,7 @@ List of Event Commands:
  @>Control Variables: [0113..0116] = 0
  @>Control Switches: [0118..0125] = OFF
  @>Script: $PokemonGlobal.clear_reset_maps
+ @>Script: $PokemonGlobal.encounter_version = pbGet(99)
  @>
 : When [No]
  @>Move Picture: 1, @20, Upper Left (0,0), (100%,100%), 0, Normal
@@ -18765,6 +18792,8 @@ List of Event Commands:
  @>Control Variables: [0121..0135] = 0
  @>Control Switches: [0141..0142] = OFF
  @>Control Switches: [0144: Clownpiece Checkpoint] = OFF
+ @>Script: $PokemonGlobal.clear_reset_maps
+ @>Script: $PokemonGlobal.encounter_version = pbGet(99)
  @>
 : When [No]
  @>Move Picture: 1, @20, Upper Left (0,0), (100%,100%), 0, Normal
@@ -49709,7 +49738,7 @@ List of Event Commands:
 @>Script: pbTrainerIntro(:FAIRY_1_ALT)
 @>Script: pbNoticePlayer(get_self)
 @>Text: Tag, you're it!
-@>Conditional Branch: Script: TrainerBattle.start(:FAIRY_1_ALT, "Kali")
+@>Conditional Branch: Script: TrainerBattle.start(:FAIRY_1_ALT, "Kali",pbGet(99))
  @>Control Self Switch: A =ON
  @>
 : Branch End
@@ -54700,35 +54729,6 @@ List of Event Commands:
 @>
 
 #------------------------------------------------------------------------------
-Event ID: 034
-Event Name: EV034
-(X,Y): (011,003)
-
-Page #1
-Conditions
-None
-
-Autonomous Movement
-Type: Fixed
-Speed: 3: Slow
-Freq: 3: Low
-Options Enabled
-Move Animation
-Trigger: Action Button
-
-List of Event Commands:
-@>Script: setBattleRule("2v3")
-:       : BattleScripting.setInScript("sendout1Opp",:ThreeFairies_Intro)
-@>Control Switches: [0104: Transition Handler] = ON
-@>Control Variables: [0103: Vs. Transition ID] = 8
-@>Control Variables: [0104: Vs. Transition - Pkmn] = 6
-@>Conditional Branch: Script: TrainerBattle.start(:THREEFAIRY, "of Light")
- @>Control Self Switch: A =ON
- @>
-: Branch End
-@>
-
-#------------------------------------------------------------------------------
 Event ID: 035
 Event Name: Item
 (X,Y): (044,012)
@@ -54769,150 +54769,6 @@ Move Animation
 Trigger: Action Button
 
 List of Event Commands:
-@>
-
-#------------------------------------------------------------------------------
-Event ID: 036
-Event Name: EV036
-(X,Y): (010,012)
-
-Page #1
-Conditions
-None
-
-Autonomous Movement
-Type: Fixed
-Speed: 3: Slow
-Freq: 3: Low
-Options Enabled
-Move Animation
-Trigger: Action Button
-
-List of Event Commands:
-@>Comment: --- Pre-Battle Intro Setup
-@>Change Screen Color Tone: (-255,-255,-255,0), @6
-@>Wait: 6 frame(s)
-@>Show Picture: 4, '_Bars', Center (256,192), (100%,100%), 230, Normal
-@>Move Picture: 4, @5, Center (256,192), (100%,100%), 230, Normal
-@>Wait: 5 frame(s)
-@>Show Picture: 1, '_PerformanceBG', Center (256,192), (100%,100%), 0, Normal
-@>Wait: 5 frame(s)
-@>Move Picture: 1, @5, Center (256,192), (100%,100%), 255, Normal
-@>Wait: 15 frame(s)
-@>Screen Flash: (255,255,255,255), @10
-@>Show Picture: 2, 'CharLyrica2_S', Center (256,192), (100%,100%), 255, Normal
-@>Wait: 25 frame(s)
-@>Screen Flash: (255,255,255,255), @10
-@>Show Picture: 2, 'CharMerlin_S', Center (256,192), (100%,100%), 255, Normal
-@>Wait: 25 frame(s)
-@>Screen Flash: (255,255,255,255), @10
-@>Show Picture: 2, 'CharLunasa_S', Center (256,192), (100%,100%), 255, Normal
-@>Wait: 35 frame(s)
-@>Screen Flash: (255,255,255,255), @10
-@>Show Picture: 2, 'CharSisters_S', Center (256,192), (100%,100%), 255, Normal
-@>Wait: 45 frame(s)
-@>Screen Flash: (255,255,255,255), @10
-@>Show Picture: 3, 'CharSisters', Center (256,192), (100%,100%), 255, Normal
-@>Show Picture: 5, '_Name_Sisters', Center (256,192), (100%,100%), 255, Normal
-@>Move Picture: 2, @30, Center (250,192), (100%,100%), 255, Normal
-@>Wait: 60 frame(s)
-@>Move Picture: 1, @5, Center (256,192), (100%,100%), 0, Normal
-@>Move Picture: 2, @5, Center (250,192), (100%,100%), 0, Normal
-@>Move Picture: 3, @5, Center (256,192), (100%,100%), 0, Normal
-@>Move Picture: 4, @5, Center (256,192), (100%,100%), 0, Normal
-@>Move Picture: 5, @5, Center (256,192), (100%,100%), 0, Normal
-@>Wait: 15 frame(s)
-@>Erase Picture: 1
-@>Erase Picture: 2
-@>Erase Picture: 3
-@>Erase Picture: 4
-@>Erase Picture: 5
-@>Comment: --- Pre-Battle Intro Conclusion
-@>
-
-Page #2
-Conditions
-None
-
-Autonomous Movement
-Type: Fixed
-Speed: 3: Slow
-Freq: 3: Low
-Options Enabled
-Move Animation
-Trigger: Action Button
-
-List of Event Commands:
-@>Comment: --- Pre-Battle Intro Setup
-@>Call Common Event: ---------
-@>Change Screen Color Tone: (-255,-255,-255,0), @6
-@>Wait: 6 frame(s)
-@>Script: pbShowPicture(6,"Transitions/Bars.png",1,256,192,zoomX=100,zoomY=100,opacity=230,blendType=0)
-@>Move Picture: 5, @5, Center (256,192), (100%,100%), 230, Normal
-@>Wait: 5 frame(s)
-@>Script: pbShowPicture(1,"Transitions/BGs/BGPlains.png",1,256,192,zoomX=100,zoomY=100,opacity=0,blendType=0)
-@>Wait: 5 frame(s)
-@>Move Picture: 1, @5, Center (256,192), (100%,100%), 255, Normal
-@>Wait: 15 frame(s)
-@>Play SE: 'Vs flash', 80, 100
-@>Screen Flash: (255,255,255,255), @10
-@>Script: pbShowPicture(3,"Transitions/PTs/Char_Star2S.png",1,256,192,zoomX=100,zoomY=100,opacity=255,blendType=0)
-@>Wait: 25 frame(s)
-@>Play SE: 'Vs flash', 80, 100
-@>Screen Flash: (255,255,255,255), @10
-@>Script: pbShowPicture(3,"Transitions/PTs/Char_Luna2S.png",1,256,192,zoomX=100,zoomY=100,opacity=255,blendType=0)
-@>Wait: 25 frame(s)
-@>Play SE: 'Vs flash', 80, 100
-@>Screen Flash: (255,255,255,255), @10
-@>Script: pbShowPicture(3,"Transitions/PTs/Char_Sunny2S.png",1,256,192,zoomX=100,zoomY=100,opacity=255,blendType=0)
-@>Wait: 25 frame(s)
-@>Play SE: 'Vs flash', 80, 100
-@>Screen Flash: (255,255,255,255), @10
-@>Script: pbShowPicture(2,"Transitions/PTs/Char_Star2S.png",1,256,192,zoomX=100,zoomY=100,opacity=255,blendType=0)
-@>Script: pbShowPicture(3,"Transitions/PTs/Char_Luna2S.png",1,256,192,zoomX=100,zoomY=100,opacity=255,blendType=0)
-@>Script: pbShowPicture(4,"Transitions/PTs/Char_Sunny2S.png",1,256,192,zoomX=100,zoomY=100,opacity=255,blendType=0)
-@>Wait: 25 frame(s)
-@>Screen Flash: (255,255,255,255), @10
-@>Play SE: 'Vs sword', 80, 100
-@>Script: pbShowPicture(5,"Transitions/PTs/Char_ThreeFairies.png",1,256,192,zoomX=100,zoomY=100,opacity=255,blendType=0)
-@>Script: pbShowPicture(7,"Transitions/Names/Name_Three Fairies.png",1,256,192,zoomX=100,zoomY=100,opacity=255,blendType=0)
-@>Move Picture: 3, @30, Center (250,192), (100%,100%), 255, Normal
-@>Call Common Event: Starter Selection (Backup)
-@>Wait: 60 frame(s)
-@>Move Picture: 1, @5, Center (256,192), (100%,100%), 0, Normal
-@>Move Picture: 2, @5, Center (250,192), (100%,100%), 0, Normal
-@>Move Picture: 3, @5, Center (250,192), (100%,100%), 0, Normal
-@>Move Picture: 4, @5, Center (250,192), (100%,100%), 0, Normal
-@>Move Picture: 5, @5, Center (256,192), (100%,100%), 0, Normal
-@>Move Picture: 6, @5, Center (256,192), (100%,100%), 0, Normal
-@>Move Picture: 7, @5, Center (256,192), (100%,100%), 0, Normal
-@>Move Picture: 8, @5, Center (256,192), (100%,100%), 0, Normal
-@>Change Picture Color Tone: 10, (-255,-255,-255,0), @5
-@>Change Picture Color Tone: 11, (-255,-255,-255,0), @5
-@>Change Picture Color Tone: 12, (-255,-255,-255,0), @5
-@>Change Picture Color Tone: 13, (-255,-255,-255,0), @5
-@>Change Picture Color Tone: 14, (-255,-255,-255,0), @5
-@>Change Picture Color Tone: 15, (-255,-255,-255,0), @5
-@>Change Picture Color Tone: 16, (-255,-255,-255,0), @5
-@>Wait: 6 frame(s)
-@>Erase Picture: 1
-@>Erase Picture: 2
-@>Erase Picture: 3
-@>Erase Picture: 4
-@>Erase Picture: 5
-@>Erase Picture: 6
-@>Erase Picture: 7
-@>Erase Picture: 8
-@>Erase Picture: 10
-@>Erase Picture: 11
-@>Erase Picture: 12
-@>Erase Picture: 13
-@>Erase Picture: 14
-@>Erase Picture: 15
-@>Erase Picture: 16
-@>Change Screen Color Tone: (0,0,0,0), @10
-@>Comment: --- Pre-Battle Intro Conclusion
-@>Control Switches: [0104: Transition Handler] = OFF
 @>
 
 #------------------------------------------------------------------------------
@@ -109386,7 +109242,7 @@ List of Event Commands:
  @>Change Screen Color Tone: (-255,-255,-255,0), @8
  @>Wait: 8 frame(s)
  @>Change Transparent Flag: Transparency
- @>Transfer Player:[138: Reimaedn - Cutscene], (015,017)
+ @>Transfer Player:[138: Reimaden - Cutscene], (015,017)
  @>Wait: 4 frame(s)
  @>Control Self Switch: A =ON
  @>
@@ -111916,7 +111772,7 @@ List of Event Commands:
 
 #==============================================================================
 Map ID: 138
-Map Name: Reimaedn - Cutscene
+Map Name: Reimaden - Cutscene
 Tileset: 049: World of Fantasies (alt)
 Width: 31, Height: 27
 
@@ -112035,7 +111891,7 @@ List of Event Commands:
 @>Set Event Location: [Mima],(015,017)
 @>Set Event Location: [Meimu (Formless)],(001,000)
 @>Set Event Location: [Meimu (Formed)],(015,010)
-@>Transfer Player:[138: Reimaedn - Cutscene], (015,017)
+@>Transfer Player:[138: Reimaden - Cutscene], (015,017)
 @>Change Screen Color Tone: (0,0,0,255), @8
 @>Text: \xn[Mima]They were so proficent at it, that one day they created
  :    : a form for themselves out of the aether.
