@@ -389,18 +389,15 @@ _END_
   end
 
   def update
-    delta = Graphics.delta_s
-    @counter += delta
     # Go to next slide
-    if @counter >= SECONDS_PER_BACKGROUND
-      @counter -= SECONDS_PER_BACKGROUND
-      @bg_index += 1
-      @bg_index = 0 if @bg_index >= BACKGROUNDS_LIST.length
-      @background_sprite.setBitmap("Graphics/Titles/TFoC/" + BACKGROUNDS_LIST[@bg_index])
+    new_bg_index = ((System.uptime - @timer_start) / SECONDS_PER_BACKGROUND) % BACKGROUNDS_LIST.length
+    if @bg_index != new_bg_index
+      @bg_index = new_bg_index
+      @background_sprite.setBitmap("Graphics/Titles/" + BACKGROUNDS_LIST[@bg_index])
     end
     return if cancel?
     return if last?
-    @realOY += SCROLL_SPEED * delta
+    @realOY = (SCROLL_SPEED * (System.uptime - @timer_start)) - Graphics.height + @trim
     @credit_sprites.each_with_index { |s, i| s.oy = @realOY - (@bitmap_height * i) }
   end
 end

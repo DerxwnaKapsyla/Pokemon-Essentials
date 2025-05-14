@@ -59554,8 +59554,7 @@ List of Event Commands:
  :    : really is!
 @>Control Switches: [0102: Special Battle Switch] = ON
 @>Control Variables: [0102: Special Battle Variable] = 0
-@>Comment: EndSpeech: pbGet(99)
-@>Conditional Branch: Script: TrainerBattle.start(:PUPPETS_1, "Stun Legion")
+@>Conditional Branch: Script: TrainerBattle.start(:PUPPETS_1, "Stun Legion", pbGet(99))
  @>
 : Else
  @>Control Switches: [0102: Special Battle Switch] = OFF
@@ -59575,8 +59574,7 @@ List of Event Commands:
 @>Text: \xn[Medicine]Hardly.\wt[10] Burn Legion, prepare to engage!
 @>Set Move Route: Player
  :              : $>Turn Right
-@>Comment: EndSpeech: pbGet(99)
-@>Conditional Branch: Script: TrainerBattle.start(:PUPPETS_2, "Burn Legion")
+@>Conditional Branch: Script: TrainerBattle.start(:PUPPETS_2, "Burn Legion", pbGet(99))
  @>
 : Else
  @>Control Switches: [0102: Special Battle Switch] = OFF
@@ -59598,8 +59596,7 @@ List of Event Commands:
 @>Text: \xn[Medicine]Hmph! Frost Legion! Put her in her place!
 @>Set Move Route: Player
  :              : $>Turn Left
-@>Comment: EndSpeech: pbGet(99)
-@>Conditional Branch: Script: TrainerBattle.start(:PUPPETS_3, "Frost Legion")
+@>Conditional Branch: Script: TrainerBattle.start(:PUPPETS_3, "Frost Legion", pbGet(99))
  @>
 : Else
  @>Control Switches: [0102: Special Battle Switch] = OFF
@@ -60797,7 +60794,7 @@ List of Event Commands:
 @>Script: pbTrainerIntro(:FAIRY_G_ALT)
 @>Script: pbNoticePlayer(get_self)
 @>Text: The Fairy of Death descends upon the battlefield once more!
-@>Conditional Branch: Script: TrainerBattle.start(:FAIRY_G_ALT, "Keri")
+@>Conditional Branch: Script: TrainerBattle.start(:FAIRY_G_ALT, "Keri", pbGet(99))
  @>Control Self Switch: A =ON
  @>
 : Branch End
@@ -60852,7 +60849,7 @@ List of Event Commands:
 @>Script: pbTrainerIntro(:FAIRY_Z_ALT)
 @>Script: pbNoticePlayer(get_self)
 @>Text: Punch, punch, punch. Kick, kick, kick! Our workout regiment is never over!
-@>Conditional Branch: Script: TrainerBattle.start(:FAIRY_Z_ALT, "Miyra")
+@>Conditional Branch: Script: TrainerBattle.start(:FAIRY_Z_ALT, "Miyra", pbGet(99))
  @>Control Self Switch: A =ON
  @>
 : Branch End
@@ -60907,7 +60904,7 @@ List of Event Commands:
 @>Script: pbTrainerIntro(:FAIRY_Z_ALT)
 @>Script: pbNoticePlayer(get_self)
 @>Text: I call upon the mystic powers of the gods... So I can kick your ass in Smash!
-@>Conditional Branch: Script: TrainerBattle.start(:FAIRY_Z_ALT, "Mana")
+@>Conditional Branch: Script: TrainerBattle.start(:FAIRY_Z_ALT, "Mana", pbGet(99))
  @>Control Self Switch: A =ON
  @>
 : Branch End
@@ -60956,7 +60953,7 @@ List of Event Commands:
 @>Script: pbTrainerIntro(:FAIRY_Z_ALT)
 @>Script: pbNoticePlayer(get_self)
 @>Text: I'm the stongest fairy in all of the realms! Fight me!
-@>Conditional Branch: Script: TrainerBattle.start(:FAIRY_Z_ALT, "Amira")
+@>Conditional Branch: Script: TrainerBattle.start(:FAIRY_Z_ALT, "Amira", pbGet(99))
  @>Control Self Switch: A =ON
  @>
 : Branch End
@@ -61008,7 +61005,7 @@ List of Event Commands:
 @>Script: pbTrainerIntro(:FAIRY_Z_ALT)
 @>Script: pbNoticePlayer(get_self)
 @>Text: Hold still! I have inspiration for my next piece!
-@>Conditional Branch: Script: TrainerBattle.start(:FAIRY_Z_ALT, "Katou")
+@>Conditional Branch: Script: TrainerBattle.start(:FAIRY_Z_ALT, "Katou", pbGet(99))
  @>Control Self Switch: A =ON
  @>
 : Branch End
@@ -61059,7 +61056,7 @@ List of Event Commands:
 @>Script: pbTrainerIntro(:FAIRY_G_ALT)
 @>Script: pbNoticePlayer(get_self)
 @>Text: Behold Gensokyo's first Reaper Fairy!
-@>Conditional Branch: Script: TrainerBattle.start(:FAIRY_G_ALT, "Callie")
+@>Conditional Branch: Script: TrainerBattle.start(:FAIRY_G_ALT, "Callie", pbGet(99))
  @>Control Self Switch: A =ON
  @>
 : Branch End
@@ -61107,7 +61104,7 @@ List of Event Commands:
 @>Script: pbTrainerIntro(:FAIRY_G_ALT)
 @>Script: pbNoticePlayer(get_self)
 @>Text: Take note! The full might of the Lunar Empire shall fall upon you, puny mortal!
-@>Conditional Branch: Script: TrainerBattle.start(:FAIRY_G_ALT, "Maria")
+@>Conditional Branch: Script: TrainerBattle.start(:FAIRY_G_ALT, "Maria", pbGet(99))
  @>Control Self Switch: A =ON
  @>
 : Branch End
@@ -61159,7 +61156,7 @@ List of Event Commands:
 @>Script: pbTrainerIntro(:FAIRY_G_ALT)
 @>Script: pbNoticePlayer(get_self)
 @>Text: Do... Do... Do...!
-@>Conditional Branch: Script: TrainerBattle.start(:FAIRY_G_ALT, "Hanabi")
+@>Conditional Branch: Script: TrainerBattle.start(:FAIRY_G_ALT, "Hanabi", pbGet(99))
  @>Control Self Switch: A =ON
  @>
 : Branch End
@@ -61211,7 +61208,7 @@ List of Event Commands:
 @>Script: pbTrainerIntro(:FAIRY_G_ALT)
 @>Script: pbNoticePlayer(get_self)
 @>Text: Let's play a game! I'll go first!
-@>Conditional Branch: Script: TrainerBattle.start(:FAIRY_G_ALT, "Zima")
+@>Conditional Branch: Script: TrainerBattle.start(:FAIRY_G_ALT, "Zima", pbGet(99))
  @>Control Self Switch: A =ON
  @>
 : Branch End
@@ -61259,7 +61256,7 @@ List of Event Commands:
 @>Script: pbTrainerIntro(:FAIRY_Z_ALT)
 @>Script: pbNoticePlayer(get_self)
 @>Text: Halt! As the Fairy of Light, I can't allow your deeds to go uncheck any longer!
-@>Conditional Branch: Script: TrainerBattle.start(:FAIRY_Z_ALT, "Reda")
+@>Conditional Branch: Script: TrainerBattle.start(:FAIRY_Z_ALT, "Reda", pbGet(99))
  @>Control Self Switch: A =ON
  @>
 : Branch End
@@ -66832,7 +66829,7 @@ Move Animation
 Trigger: Parallel Process
 
 List of Event Commands:
-@>Script: $scene = Scene_Credits_TFoC.new
+@>Script: $scene = Scene_Credits.new
 @>Wait: 20 frame(s)
 @>Script: TFoCPostgameScene.new
 @>Script: # pbAllowSpeedup
