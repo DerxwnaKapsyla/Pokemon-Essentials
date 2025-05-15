@@ -2520,6 +2520,8 @@ List of Event Commands:
 :       : when 3 then pbSet(126, "Sanae")
 :       : when 4 then pbSet(126, "Reisen")
 :       : end
+:       : 
+:       : echoln Partner Trainer is #{pbGet(126}
 @>Transfer Player:[116: Exhibition Arena], (011,013), Right
 @>Change Screen Color Tone: (0,0,0,0), @6
 @>
@@ -80327,13 +80329,13 @@ Autonomous Movement
 Type: Custom
 Custom Move Route:
 (Repeat Action)
-$>Wait: 200 frame(s)
+$>Wait: 500 frame(s)
 $>Move Right
 $>Move Right
 $>Move Right
 $>Move Right
 $>Turn Left
-$>Wait: 200 frame(s)
+$>Wait: 500 frame(s)
 $>Move Left
 $>Move Left
 $>Move Left
@@ -84965,7 +84967,7 @@ List of Event Commands:
 @>Script: pbTrainerIntro(:HELLFAIRY)
 @>Script: pbNoticePlayer(get_self)
 @>Text: This crystal powers the barrier guarding Lady Hecatia's Fortress!
-@>Conditional Branch: Script: TrainerBattle.start(:HELLFAIRY, "Eris")
+@>Conditional Branch: Script: TrainerBattle.start(:HELLFAIRY, "Eris", pbGet(99))
  @>Control Self Switch: A =ON
  @>
 : Branch End
@@ -85028,7 +85030,7 @@ List of Event Commands:
 @>Script: pbTrainerIntro(:HELLFAIRY)
 @>Script: pbNoticePlayer(get_self)
 @>Text: Lady Hecatia tasked us to guard these Crystals, stay back!
-@>Conditional Branch: Script: TrainerBattle.start(:HELLFAIRY, "Hypatia")
+@>Conditional Branch: Script: TrainerBattle.start(:HELLFAIRY, "Hypatia", pbGet(99))
  @>Control Self Switch: A =ON
  @>
 : Branch End
@@ -87445,7 +87447,7 @@ List of Event Commands:
 @>Script: pbTrainerIntro(:HELLFAIRY)
 @>Script: pbNoticePlayer(get_self)
 @>Text: You're the Puppet Handler that defeated Clownpiece, aren't you?
-@>Conditional Branch: Script: TrainerBattle.start(:HELLFAIRY, "Aphrodite")
+@>Conditional Branch: Script: TrainerBattle.start(:HELLFAIRY, "Aphrodite", pbGet(99))
  @>Control Self Switch: A =ON
  @>
 : Branch End
@@ -87509,7 +87511,7 @@ List of Event Commands:
 @>Script: pbTrainerIntro(:HELLFAIRY)
 @>Script: pbNoticePlayer(get_self)
 @>Text: Hell Fairies are way different from normal fairies!
-@>Conditional Branch: Script: TrainerBattle.start(:HELLFAIRY, "Ares")
+@>Conditional Branch: Script: TrainerBattle.start(:HELLFAIRY, "Ares", pbGet(99))
  @>Control Self Switch: A =ON
  @>
 : Branch End
@@ -87563,7 +87565,7 @@ Graphic: TPDP_NPC 53
 Autonomous Movement
 Type: Fixed
 Speed: 3: Slow
-Freq: 3: Low
+Freq: 4: High
 Options Enabled
 Move Animation
 Trigger: Event Touch
@@ -87573,7 +87575,7 @@ List of Event Commands:
 @>Script: pbNoticePlayer(get_self)
 @>Text: Our Honorable Friend is past this cave! On orders of Lady Hecatia,
  :    : we are not allowed to let anybody through without a fight!
-@>Conditional Branch: Script: TrainerBattle.start(:HELLFAIRY, "Ouranos")
+@>Conditional Branch: Script: TrainerBattle.start(:HELLFAIRY, "Ouranos", pbGet(99))
  @>Control Self Switch: A =ON
  @>
 : Branch End
@@ -100618,7 +100620,7 @@ List of Event Commands:
 @>Script: pbNoticePlayer(get_self)
 @>Text: I am Lady Hecatia's strongest soldier! You will not pass here, or
  :    : my name is not Helios!
-@>Conditional Branch: Script: TrainerBattle.start(:HELLFAIRY, "Helia")
+@>Conditional Branch: Script: TrainerBattle.start(:HELLFAIRY, "Helia", pbGet(99))
  @>Text: Very well Human, you may pass! But don't expect my mistress and
   :    : her friend to go easy on you.
  @>Change Screen Color Tone: (-255,-255,-255,0), @8
@@ -101698,7 +101700,7 @@ List of Event Commands:
 
 Page #2
 Conditions
-Variable 0128: TKoL Hallway Variable is 2 or above
+Variable 0128: TKoL Hallway Variable is 4 or above
 
 Autonomous Movement
 Type: Fixed
@@ -107893,7 +107895,7 @@ List of Event Commands:
 @>Script: pbTrainerIntro(:HELLFAIRY)
 @>Script: pbNoticePlayer(get_self)
 @>Text: Once I beat you, I'm gonna set up a secret base here!
-@>Conditional Branch: Script: TrainerBattle.start(:HELLFAIRY, "Hermia")
+@>Conditional Branch: Script: TrainerBattle.start(:HELLFAIRY, "Hermia", pbGet(99))
  @>Control Self Switch: A =ON
  @>
 : Branch End
@@ -107972,7 +107974,7 @@ List of Event Commands:
 @>Script: pbNoticePlayer(get_self)
 @>Text: Puppets are really cool, how could the Lunarians have made anything
  :    : this cool?
-@>Conditional Branch: Script: TrainerBattle.start(:HELLFAIRY, "Rhea")
+@>Conditional Branch: Script: TrainerBattle.start(:HELLFAIRY, "Rhea", pbGet(99))
  @>Control Self Switch: A =ON
  @>
 : Branch End
@@ -108049,7 +108051,7 @@ List of Event Commands:
 @>Script: pbTrainerIntro(:HELLFAIRY)
 @>Script: pbNoticePlayer(get_self)
 @>Text: I'm gonna impress my partner over there by beating you!
-@>Conditional Branch: Script: TrainerBattle.start(:HELLFAIRY, "Dione")
+@>Conditional Branch: Script: TrainerBattle.start(:HELLFAIRY, "Dione", pbGet(99))
  @>Control Self Switch: A =ON
  @>
 : Branch End
@@ -108119,7 +108121,7 @@ List of Event Commands:
 @>Script: pbTrainerIntro(:HELLFAIRY)
 @>Script: pbNoticePlayer(get_self)
 @>Text: I'm gonna impress my partner over there by beating you!
-@>Conditional Branch: Script: TrainerBattle.start(:HELLFAIRY, "Macaria")
+@>Conditional Branch: Script: TrainerBattle.start(:HELLFAIRY, "Macaria", pbGet(99))
  @>Control Self Switch: A =ON
  @>
 : Branch End
@@ -108187,7 +108189,7 @@ List of Event Commands:
 @>Script: pbNoticePlayer(get_self)
 @>Text: We're gearing up for another raid on the Capital, you won't be
  :    : able to beat us all!
-@>Conditional Branch: Script: TrainerBattle.start(:HELLFAIRY, "Amphitrite")
+@>Conditional Branch: Script: TrainerBattle.start(:HELLFAIRY, "Amphitrite", pbGet(99))
  @>Control Self Switch: A =ON
  @>
 : Branch End
@@ -108254,7 +108256,7 @@ List of Event Commands:
 @>Script: pbTrainerIntro(:HELLFAIRY)
 @>Script: pbNoticePlayer(get_self)
 @>Text: Your conquest ends here!
-@>Conditional Branch: Script: TrainerBattle.start(:HELLFAIRY, "Gaia")
+@>Conditional Branch: Script: TrainerBattle.start(:HELLFAIRY, "Gaia", pbGet(99))
  @>Control Self Switch: A =ON
  @>
 : Branch End
