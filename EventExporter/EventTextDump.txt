@@ -8359,6 +8359,7 @@ List of Event Commands:
 @>Set Event Location: [Kota],(055,041), Up
 @>Set Event Location: [Shinji],(054,042), Up
 @>Set Event Location: [Maya],(054,040), Up
+@>Script: pbTrainerEnd
 @>Text: \xn[\pn]Will you please listen to me! I'm not a ghost!
 @>Comment: --------------------
 @>Text: \xn[???]D-Do you really mean it...?
@@ -8735,6 +8736,7 @@ List of Event Commands:
 @>Set Event Location: [Shinji],(054,042), Up
 @>Set Event Location: [Maya],(054,040), Up
 @>Text: \xn[\pn]Will you please listen to me! I'm not a ghost!
+@>Script: pbTrainerEnd
 @>Comment: --------------------
 @>Text: \xn[???]D-Do you really mean it...?
 @>Set Move Route: [Maya]
@@ -18742,6 +18744,7 @@ List of Event Commands:
  @>Fade Out BGM: 1 sec.
  @>Move Picture: 1, @20, Upper Left (0,0), (100%,100%), 0, Normal
  @>Wait: 20 frame(s)
+ @>Change Transparent Flag: Transparency
  @>Transfer Player:[005: The Kingdom of Lunacy], (001,001)
  @>Conditional Branch: Switch [0147: TKoL Cleared] == OFF
   @>Control Variables: [0099: NG+ Loop] += 1
@@ -18784,6 +18787,7 @@ List of Event Commands:
  @>Fade Out BGM: 1 sec.
  @>Move Picture: 1, @20, Upper Left (0,0), (100%,100%), 0, Normal
  @>Wait: 20 frame(s)
+ @>Change Transparent Flag: Transparency
  @>Transfer Player:[005: The Kingdom of Lunacy], (001,001)
  @>Conditional Branch: Switch [0147: TKoL Cleared] == OFF
   @>Control Variables: [0099: NG+ Loop] += 1
@@ -74071,7 +74075,7 @@ List of Event Commands:
 @>Script: pbNoticePlayer(get_self)
 @>Text: As the Number One fan of Choujuu Gigaku, I
  :    : won't lose! I'm gonna fight the powers that be!
-@>Conditional Branch: Script: TrainerBattle.start(:EARTHRABBIT,"Ibuki",pbGet(99))
+@>Conditional Branch: Script: TrainerBattle.start(:EARTHRABBIT,"Ibuki", pbGet(99))
  @>Control Self Switch: A =ON
  @>
 : Branch End
@@ -76391,7 +76395,7 @@ List of Event Commands:
 @>Script: pbTrainerIntro(:YOUKAI_1)
 @>Script: pbNoticePlayer(get_self)
 @>Text: Silent, but deadly.
-@>Conditional Branch: Script: TrainerBattle.start(:YOUKAI_1,"Suzuran",pbGet(99))
+@>Conditional Branch: Script: TrainerBattle.start(:YOUKAI_1,"Suzuran", pbGet(99))
  @>Control Self Switch: A =ON
  @>
 : Branch End
@@ -79199,6 +79203,7 @@ List of Event Commands:
  @>Text: \xn[\pn]\b(Just... where are they? I don't see any bridges or 
   :    : doors around here...)
  @>Control Variables: [0121: TKoL Plot Variable] = 11
+ @>Script: pbTrainerEnd
  @>
 : Else
  @>Script: pbTrainerEnd
@@ -95191,6 +95196,37 @@ List of Event Commands:
 @>
 
 #------------------------------------------------------------------------------
+Event ID: 010
+Event Name: Musharna Shop
+(X,Y): (021,010)
+
+Page #1
+Conditions
+None
+
+Graphic: 518
+
+Autonomous Movement
+Type: Fixed
+Speed: 3: Slow
+Freq: 3: Low
+Options Enabled
+Move Animation
+Stop Animation
+Trigger: Action Button
+
+List of Event Commands:
+@>Conditional Branch: Self Switch A == OFF
+ @>Text: \xn[\pn]Hey, isn't this one of Doremy's familiars?
+ @>Text: \xn[\pn]Wait, there's some kind of sign on it.
+ @>Text: \w[signskin]You may have need of this one's assistance. Good luck.
+ @>Control Self Switch: A =ON
+ @>
+: Branch End
+@>Script: pbMusharnaShop
+@>
+
+#------------------------------------------------------------------------------
 
 #==============================================================================
 Map ID: 113
@@ -98927,7 +98963,7 @@ List of Event Commands:
 @>Script: pbNoticePlayer(get_self)
 @>Text: EXCUSE THEY'RE RUN\n
  :    : FAR UNAVOIDABLE CURSE
-@>Conditional Branch: Script: TrainerBattle.start(:PUPPETEER_M,"Asahi")
+@>Conditional Branch: Script: TrainerBattle.start(:PUPPETEER_M,"Asahi", pbGet(99))
  @>Control Self Switch: A =ON
  @>
 : Branch End
@@ -98973,7 +99009,7 @@ List of Event Commands:
 @>Script: pbNoticePlayer(get_self)
 @>Text: YESTERDAY LOVELY KISS COULDN'T\n
  :    : PRESENT GOOD WHEN I WIN
-@>Conditional Branch: Script: TrainerBattle.start(:PUPPETEER_F,"Mariko")
+@>Conditional Branch: Script: TrainerBattle.start(:PUPPETEER_F,"Mariko", pbGet(99))
  @>Control Self Switch: A =ON
  @>
 : Branch End
@@ -99019,7 +99055,7 @@ List of Event Commands:
 @>Script: pbNoticePlayer(get_self)
 @>Text: BEEN UP ABOVE\n
  :    : AN EXCUSE ME WORLD.
-@>Conditional Branch: Script: TrainerBattle.start(:PUPPETEER_F,"Wakana")
+@>Conditional Branch: Script: TrainerBattle.start(:PUPPETEER_F,"Wakana", pbGet(99))
  @>Control Self Switch: A =ON
  @>
 : Branch End
@@ -99065,7 +99101,7 @@ List of Event Commands:
 @>Script: pbNoticePlayer(get_self)
 @>Text: I'm supposed to prevent suspicious people from getting
  :    : close to this terminal. And you're looking mighty sussy.
-@>Conditional Branch: Script: TrainerBattle.start(:MOONRABBIT,"Amokusu")
+@>Conditional Branch: Script: TrainerBattle.start(:MOONRABBIT,"Amokusu", pbGet(99))
  @>Control Self Switch: A =ON
  @>
 : Branch End
@@ -99118,7 +99154,7 @@ List of Event Commands:
 @>Script: pbTrainerIntro(:FAIRY_G_ALT)
 @>Script: pbNoticePlayer(get_self)
 @>Text: Driew os gnikaeps era ew yhw aedi on evah I.
-@>Conditional Branch: Script: TrainerBattle.start(:FAIRY_G_ALT,"Hanako")
+@>Conditional Branch: Script: TrainerBattle.start(:FAIRY_G_ALT,"Hanako", pbGet(99))
  @>Control Self Switch: A =ON
  @>
 : Branch End
@@ -99172,7 +99208,7 @@ List of Event Commands:
 @>Script: pbTrainerIntro(:FAIRY_G_ALT)
 @>Script: pbNoticePlayer(get_self)
 @>Text: Em taeb tsum uoy, emag eht niw ot.
-@>Conditional Branch: Script: TrainerBattle.start(:FAIRY_G_ALT,"Ritsuko")
+@>Conditional Branch: Script: TrainerBattle.start(:FAIRY_G_ALT,"Ritsuko", pbGet(99))
  @>Control Self Switch: A =ON
  @>
 : Branch End
@@ -99221,7 +99257,7 @@ List of Event Commands:
 @>Script: pbTrainerIntro(:FAIRY_G_ALT)
 @>Script: pbNoticePlayer(get_self)
 @>Text: Seramthgin ruoy uoy wohs l'li dna smaerd ruoy em llet~
-@>Conditional Branch: Script: TrainerBattle.start(:FAIRY_G_ALT,"Lydia")
+@>Conditional Branch: Script: TrainerBattle.start(:FAIRY_G_ALT,"Lydia", pbGet(99))
  @>Control Self Switch: A =ON
  @>
 : Branch End
@@ -99271,7 +99307,7 @@ List of Event Commands:
 @>Script: pbNoticePlayer(get_self)
 @>Text: With the Capital's specially created Puppets, guarding this
  :    : station will be a cinch!
-@>Conditional Branch: Script: TrainerBattle.start(:MOONRABBIT,"Kaori")
+@>Conditional Branch: Script: TrainerBattle.start(:MOONRABBIT,"Kaori", pbGet(99))
  @>Control Self Switch: A =ON
  @>
 : Branch End
@@ -100077,6 +100113,153 @@ List of Event Commands:
 @>
 
 Page #2
+Conditions
+Switch 0107: New Game + is ON
+Variable 0121: TKoL Plot Variable is 11 or above
+
+Autonomous Movement
+Type: Fixed
+Speed: 3: Slow
+Freq: 3: Low
+Options Enabled
+Move Animation
+Trigger: Player Touch
+
+List of Event Commands:
+@>Set Move Route: Player
+ :              : $>Move Down
+ :              : $>Move Down
+ :              : $>Move Down
+@>Wait for Move's Completion
+@>Conditional Branch: Switch [0147: TKoL Cleared] == OFF
+ @>Text: \xn[???]Oh! It's not often I see an ordinary dreamer come
+  :    : out this far.
+ @>Set Move Route: Player
+  :              : $>Turn Right
+ @>Text: \xn[???]Oh, wait... You're no ordinary dreamer, are you?
+ @>Set Move Route: [Doremy]
+  :              : $>Move Up
+  :              : $>Move Left
+  :              : $>Move Left
+  :              : $>Move Left
+  :              : $>Move Left
+  :              : $>Move Down
+  :              : $>Turn Left
+ @>Wait for Move's Completion
+ @>Text: \xn[???]Hm, yes... You're definitely dreaming, but... This is quite
+  :    : strange.
+ @>Text: \xn[???]Are you experiencing some sort of lucid nightmare?
+ @>Text: \xn[\pn]Uhm... No?
+ @>Text: \xn[\pn]I was just on my way toward the Lunar Capital...
+ @>Text: \xn[\pn]\b{How does she know I'm dreaming?}
+ @>Text: \xn[???]The Lunar Capital, is it...
+ @>Set Move Route: [Doremy]
+  :              : $>Turn Right
+ @>Wait for Move's Completion
+ @>Wait: 10 frame(s)
+ @>Text: \xn[???]...Oh-ho, I see now. Yes, I remember now.
+ @>Text: \xn[\pn]Miss...?
+ @>Text: \xn[???]Doremy Sweet, Ruler of the Dream World.
+ @>Set Move Route: [Doremy]
+  :              : $>Turn Left
+ @>Script: pbTrainerIntro(:DOREMY)
+ @>Text: \xn[Doremy]And unfortunately for you right now, your worst 
+  :    : nightmare!
+ @>Text: \xn[Doremy]For you see, I must now dispel this lunatic dream
+  :    : of yours!
+ @>Text: \xn[\pn]But, I need to get to the Lunar Capital! Gensokyo might 
+  :    : be in danger!
+ @>Text: \xn[Doremy]So long as the Capital is able to deal with the threat 
+  :    : to it, then no permanent harm will befall Gensokyo.
+ @>Text: \xn[Doremy]Now, be a good girl and have a nice, long sleep...
+  :    : Forget about everything...
+ @>Text: \xn[Doremy]If a kingdom is what you seek, then I shall
+  :    : craft your Kaian now!
+ @>
+: Else
+ @>Control Switches: [0145: Doremy Deja Vu] = ON
+ @>Text: \xn[Doremy]...I see you've returned, Miss \pn.
+ @>Set Move Route: Player
+  :              : $>Turn Right
+ @>Text: \xn[\pn]Uhm, excuse me, have we met?
+ @>Text: \xn[\pn]\b{Isn't that Doremy? The Ruler of the Dream World?}
+ @>Text: \xn[Doremy]Yes, we have! More than once now!
+ @>Set Move Route: [Doremy]
+  :              : $>Move Up
+  :              : $>Move Left
+  :              : $>Move Left
+  :              : $>Move Left
+  :              : $>Move Left
+  :              : $>Move Down
+  :              : $>Turn Left
+ @>Text: \xn[Doremy]You are definitely having some sort of quasi-lucid dream,
+  :    : and you appear to be repeating events within these dreams.
+ @>Text: \xn[Doremy]Truly fascinating... and concerning.
+ @>Text: \xn[\pn]O...kay?
+ @>Text: \xn[\pn]\b{How does she know I'm dreaming?}
+ @>Text: \xn[Doremy]You seek passage into the Lunar Capital, yes?
+ @>Script: pbTrainerIntro(:DOREMY)
+ @>Text: \xn[Doremy]Allow me to wake you then so you can remember
+  :    : this experience already unfolded!
+ @>
+: Branch End
+@>Control Switches: [0104: Transition Handler] = ON
+@>Control Variables: [0103: Vs. Transition ID] = 44
+@>Conditional Branch: Switch [0107: New Game +] == OFF
+ @>Control Variables: [0104: Vs. Transition - Pkmn] = 4
+ @>
+: Else
+ @>Control Variables: [0104: Vs. Transition - Pkmn] = 5
+ @>
+: Branch End
+@>Conditional Branch: Script: TrainerBattle.start(:DOREMY, "Doremy Sweet", 10+(pbGet(99) * 10))
+ @>Conditional Branch: Switch [0147: TKoL Cleared] == OFF
+  @>Text: \xn[Doremy]Resisting the urge to awaken, even in this world of
+   :    : dreams... You must have a strong will to maintain control through
+   :    : all of that.
+  @>Text: \xn[\pn]Thanks... I guess?
+  @>Text: \xn[\pn]So, does that mean you'll let me on to the Lunar 
+   :    : Capital.
+  @>Text: \xn[Doremy]If you will not desist on this, then you must
+   :    : be made aware that a nightmare even more dangerous
+   :    : than those here awaits you at the Capital.
+  @>Text: \xn[Doremy]A nightmare so dangerous it is worthy of being 
+   :    : called a "Lunatic Dream".
+  @>Text: \xn[Doremy]You would do to prepare yourself well, dreaming
+   :    : human of the physical world.
+  @>Text: \xn[\pn]So the Capital is dangerous then, alright. I'll make 
+   :    : sure to be extra careful!
+  @>Text: \xn[\pn]How can I reach the Capital from here? I didn't see 
+   :    : any sort of exit while I was navigating.
+  @>Text: \xn[Doremy]If you continue traveling down this path, you
+   :    : shall reach the exit into the domain of lunatics.
+  @>Text: \xn[Doremy]I shall wish you safe travels and pleasant dreams.
+  @>
+ : Else
+  @>Text: \xn[Doremy]Despite being asleep, you are quite the formidable 
+   :    : Puppet Handler!
+  @>Text: \xn[\pn]Thanks... I guess?
+  @>Text: \xn[\pn]So... does that mean you'll let me on to the Lunar 
+   :    : Capital.
+  @>Text: \xn[Doremy]If you will not awaken, then you must
+   :    : be made aware that a nightmare even more dangerous
+   :    : than those here awaits you at the Capital.
+  @>Text: \xn[Doremy]But, you already know that, do you not?
+  @>Text: \xn[Doremy]If you continue traveling down this path, you
+   :    : shall reach the exit into the domain of lunatics.
+  @>
+ : Branch End
+ @>Script: pbTrainerEnd
+ @>
+: Else
+ @>Script: pbTrainerEnd
+ @>Exit Event Processing
+ @>
+: Branch End
+@>Control Variables: [0121: TKoL Plot Variable] = 12
+@>
+
+Page #3
 Conditions
 Variable 0121: TKoL Plot Variable is 12 or above
 
