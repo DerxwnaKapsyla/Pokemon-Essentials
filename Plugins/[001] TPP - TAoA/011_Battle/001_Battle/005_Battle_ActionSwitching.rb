@@ -43,7 +43,7 @@ class Battle
     else
       owner = pbGetOwnerFromBattlerIndex(idxBattler)
 	  if $game_map.map_id == 64 && $game_switches[102] == true # Derx: For the Medicine's Legion fights.
-		pbDisplayBrief(_INTL("Medicine: {1}, lead the charge!", newPkmnName))
+		pbDisplayBrief(_INTL("Medicine: {1}, take point on the field!", newPkmnName))
 	  else
 		pbDisplayBrief(_INTL("{1} sent out {2}!", owner.full_name, newPkmnName))
 	  end

@@ -86,7 +86,11 @@ module Settings
 		    :graphic => "Graphics/UI/Event Indicators/magnify_search.gif",
 			:always_visible => true,
 			:ignore_time_shading => true
-		}
+		},
+        "question_alt" => {
+            :graphic => "Graphics/UI/Event Indicators/event_question.gif",
+            :ignore_time_shading => true
+        },
     }
 
     #------------------------------------------------------------------------------------
