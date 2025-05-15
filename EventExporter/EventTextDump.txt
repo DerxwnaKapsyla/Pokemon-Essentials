@@ -4396,13 +4396,12 @@ List of Event Commands:
   :    : Alright then teacher, let's go!
  @>Control Switches: [0104: Transition Handler] = ON
  @>Control Variables: [0103: Vs. Transition ID] = 0
- @>Conditional Branch: Switch [0107: New Game +] == OFF
-  @>Control Variables: [0104: Vs. Transition - Pkmn] = 3
-  @>
- : Else
-  @>Control Variables: [0104: Vs. Transition - Pkmn] = 5
-  @>
- : Branch End
+ @>Script: case pbGet(141)
+ :       : when 0 then pbSet(104, 3)
+ :       : when 1 then pbSet(104, 5)
+ :       : when 2 then pbSet(104, 6)
+ :       : else then pbSet(104, 6)
+ :       : end
  @>Conditional Branch: Script: TrainerBattle.start(:KEINE, "Keine Kamishirasawa", 10+(pbGet(99) * 10))
   @>
  : Else
@@ -4440,6 +4439,7 @@ List of Event Commands:
  : Branch End
  @>
 : Branch End
+@>Script: pbTrainerEnd
 @>Change Screen Color Tone: (0,0,0,0), @6
 @>Text: \xn[Keine]Alright fine, I concede! You have what it
  :    : takes to watch yourself.
@@ -6949,7 +6949,12 @@ List of Event Commands:
 : Branch End
 @>Control Switches: [0104: Transition Handler] = ON
 @>Control Variables: [0103: Vs. Transition ID] = 1
-@>Control Variables: [0104: Vs. Transition - Pkmn] = 3
+@>Script: case pbGet(141)
+:       : when 0 then pbSet(104, 3)
+:       : when 1 then pbSet(104, 5)
+:       : when 2 then pbSet(104, 6)
+:       : else then pbSet(104, 6)
+:       : end
 @>Conditional Branch: Script: TrainerBattle.start(:MARISA, "Marisa Kirisame", 10+(pbGet(99) * 10))
  @>
 : Else
@@ -6958,6 +6963,7 @@ List of Event Commands:
  @>Exit Event Processing
  @>
 : Branch End
+@>Script: pbTrainerEnd
 @>Comment: Battle Won
 @>Text: \xn[Marisa]Yeah now that's the ticket! A good battle like 
  :    : that always gets me riled up!
@@ -8349,7 +8355,12 @@ List of Event Commands:
 @>Control Switches: [0109: Met Youmu] = ON
 @>Control Switches: [0104: Transition Handler] = ON
 @>Control Variables: [0103: Vs. Transition ID] = 2
-@>Control Variables: [0104: Vs. Transition - Pkmn] = 4
+@>Script: case pbGet(141)
+:       : when 0 then pbSet(104, 4)
+:       : when 1 then pbSet(104, 5)
+:       : when 2 then pbSet(104, 6)
+:       : else then pbSet(104, 6)
+:       : end
 @>Conditional Branch: Script: TrainerBattle.start(:YOUMU, "Youmu Konpaku", 10+(pbGet(99) * 10))
  @>
 : Else
@@ -8725,7 +8736,12 @@ List of Event Commands:
  :    : I'll be sure to dispel you properly!
 @>Control Switches: [0104: Transition Handler] = ON
 @>Control Variables: [0103: Vs. Transition ID] = 2
-@>Control Variables: [0104: Vs. Transition - Pkmn] = 4
+@>Script: case pbGet(141)
+:       : when 0 then pbSet(104, 4)
+:       : when 1 then pbSet(104, 5)
+:       : when 2 then pbSet(104, 6)
+:       : else then pbSet(104, 6)
+:       : end
 @>Conditional Branch: Script: TrainerBattle.start(:YOUMU, "Youmu Konpaku", 10+(pbGet(99) * 10))
  @>
 : Else
@@ -13092,7 +13108,12 @@ List of Event Commands:
 @>Control Self Switch: A =ON
 @>Control Switches: [0104: Transition Handler] = ON
 @>Control Variables: [0103: Vs. Transition ID] = 3
-@>Control Variables: [0104: Vs. Transition - Pkmn] = 4
+@>Script: case pbGet(141)
+:       : when 0 then pbSet(104, 4)
+:       : when 1 then pbSet(104, 5)
+:       : when 2 then pbSet(104, 6)
+:       : else then pbSet(104, 6)
+:       : end
 @>Comment: EndSpeech: Lyrica: Hehe, you certainly are one strong trainer~
 @>Conditional Branch: Script: TrainerBattle.start(:LYRICA, "Lyrica Prismriver", 10+(pbGet(99) * 10))
  @>
@@ -13101,6 +13122,7 @@ List of Event Commands:
  @>Exit Event Processing
  @>
 : Branch End
+@>Script: pbTrainerEnd
 @>Text: \xn[Lyrica]That was such a musical battle! But I
  :    : can't help but feel it was missing something...
 @>Wait: 10 frame(s)
@@ -13271,7 +13293,12 @@ List of Event Commands:
  :    : leading... Let's just battle already!
 @>Control Switches: [0104: Transition Handler] = ON
 @>Control Variables: [0103: Vs. Transition ID] = 3
-@>Control Variables: [0104: Vs. Transition - Pkmn] = 4
+@>Script: case pbGet(141)
+:       : when 0 then pbSet(104, 4)
+:       : when 1 then pbSet(104, 5)
+:       : when 2 then pbSet(104, 6)
+:       : else then pbSet(104, 6)
+:       : end
 @>Conditional Branch: Script: TrainerBattle.start(:LYRICA, "Lyrica Prismriver", 10+(pbGet(99) * 10))
  @>
 : Else
@@ -13279,6 +13306,7 @@ List of Event Commands:
  @>Exit Event Processing
  @>
 : Branch End
+@>Exit Event Processing
 @>Text: \xn[Lyrica]That was such a musical battle! But I
  :    : can't help but feel it was missing something...
 @>Wait: 10 frame(s)
@@ -15270,7 +15298,12 @@ List of Event Commands:
  :    : old fashioned way!
 @>Control Switches: [0104: Transition Handler] = ON
 @>Control Variables: [0103: Vs. Transition ID] = 4
-@>Control Variables: [0104: Vs. Transition - Pkmn] = 5
+@>Script: case pbGet(141)
+:       : when 0 then pbSet(104, 5)
+:       : when 1 then pbSet(104, 5)
+:       : when 2 then pbSet(104, 6)
+:       : else then pbSet(104, 6)
+:       : end
 @>Conditional Branch: Script: TrainerBattle.start(:MYSTIA, "Mystia Lorelei", 10+(pbGet(99) * 10))
  @>
 : Else
@@ -15278,6 +15311,7 @@ List of Event Commands:
  @>Exit Event Processing
  @>
 : Branch End
+@>Script: pbTrainerEnd
 @>Text: \xn[Mystia]I can't scare you off, I can't chase you off, I 
  :    : failed in my job as gatekeeper!
 @>Text: \xn[\pn]Can I please explain what I'm doing here at 
@@ -15478,7 +15512,12 @@ List of Event Commands:
  :    : you won't be able to beat me!
 @>Control Switches: [0104: Transition Handler] = ON
 @>Control Variables: [0103: Vs. Transition ID] = 4
-@>Control Variables: [0104: Vs. Transition - Pkmn] = 5
+@>Script: case pbGet(141)
+:       : when 0 then pbSet(104, 5)
+:       : when 1 then pbSet(104, 5)
+:       : when 2 then pbSet(104, 6)
+:       : else then pbSet(104, 6)
+:       : end
 @>Conditional Branch: Script: TrainerBattle.start(:MYSTIA, "Mystia Lorelei", 10+(pbGet(99) * 10))
  @>
 : Else
@@ -15486,6 +15525,7 @@ List of Event Commands:
  @>Exit Event Processing
  @>
 : Branch End
+@>Exit Event Processing
 @>Text: \xn[Mystia]I can't scare you off, I can't chase you off, I 
  :    : failed in my job as gatekeeper!
 @>Text: \xn[\pn]Can I please explain what I'm doing here at 
@@ -20970,6 +21010,7 @@ List of Event Commands:
   @>Exit Event Processing
   @>
  : Branch End
+ @>Script: pbTrainerEnd
  @>Text: \xn[Lyrica]Yep, you're definitely good to go! Alright \PN, 
   :    : I'll see you inside~
  @>Set Move Route: [Lyrica]
@@ -24729,6 +24770,7 @@ List of Event Commands:
  @>Exit Event Processing
  @>
 : Branch End
+@>Script: pbTrainerEnd
 @>Comment: ------ THE REAL MESS BEGINS NOW ------
 @>Text: \xn[Lyrica]I never thought we could actually lose in a 
  :    : Puppet Battle when it was three on one...
@@ -26258,7 +26300,12 @@ List of Event Commands:
 @>Control Self Switch: A =ON
 @>Control Switches: [0104: Transition Handler] = ON
 @>Control Variables: [0103: Vs. Transition ID] = 6
-@>Control Variables: [0104: Vs. Transition - Pkmn] = 5
+@>Script: case pbGet(141)
+:       : when 0 then pbSet(104, 5)
+:       : when 1 then pbSet(104, 5)
+:       : when 2 then pbSet(104, 6)
+:       : else then pbSet(104, 6)
+:       : end
 @>Conditional Branch: Script: TrainerBattle.start(:NUE, "Nue Houjuu", 10+(pbGet(99) * 10))
  @>
 : Else
@@ -26266,6 +26313,7 @@ List of Event Commands:
  @>Exit Event Processing
  @>
 : Branch End
+@>Script: pbTrainerEnd
 @>Text: \xn[Nue]Hmm, not the best battle I've had, but definitely up 
  :    : there!
 @>Text: \xn[Nue]But to fight back against my tricks like that, you sure 
@@ -26648,7 +26696,12 @@ List of Event Commands:
  :    : all my illusions!
 @>Control Switches: [0104: Transition Handler] = ON
 @>Control Variables: [0103: Vs. Transition ID] = 6
-@>Control Variables: [0104: Vs. Transition - Pkmn] = 5
+@>Script: case pbGet(141)
+:       : when 0 then pbSet(104, 5)
+:       : when 1 then pbSet(104, 5)
+:       : when 2 then pbSet(104, 6)
+:       : else then pbSet(104, 6)
+:       : end
 @>Conditional Branch: Script: TrainerBattle.start(:NUE, "Nue Houjuu", 10+(pbGet(99) * 10))
  @>
 : Else
@@ -26656,6 +26709,7 @@ List of Event Commands:
  @>Exit Event Processing
  @>
 : Branch End
+@>Script: pbTrainerEnd
 @>Text: \xn[Nue]Hmm, not the best battle I've had, but definitely up 
  :    : there!
 @>Text: \xn[Nue]But to fight back against my tricks like that, you sure 
@@ -27221,6 +27275,7 @@ List of Event Commands:
   @>Exit Event Processing
   @>
  : Branch End
+ @>Script: pbTrainerEnd
  @>Recover All: Entire Party
  @>Comment: --- Pre-Battle Intro Conclusion
  @>Comment: ---------- FUNLAND BEGINS AGAIN
@@ -27520,6 +27575,7 @@ List of Event Commands:
  @>Exit Event Processing
  @>
 : Branch End
+@>Script: pbTrainerEnd
 @>Control Switches: [0115: Layla Beaten] = ON
 @>Text: \xn[Layla]Oh, I haven't felt that alive since... well, when I 
  :    : was alive!
@@ -27664,6 +27720,7 @@ List of Event Commands:
  @>Exit Event Processing
  @>
 : Branch End
+@>Script: pbTrainerEnd
 @>Control Switches: [0115: Layla Beaten] = ON
 @>Text: \xn[Layla]Oh, I haven't felt that alive since... well, when I 
  :    : was alive!
@@ -38614,14 +38671,21 @@ List of Event Commands:
 @>Text: \xn[Announcer]Begin!
 @>Control Switches: [0104: Transition Handler] = ON
 @>Control Variables: [0103: Vs. Transition ID] = 10
-@>Control Variables: [0104: Vs. Transition - Pkmn] = 3
+@>Script: case pbGet(141)
+:       : when 0 then pbSet(104, 3)
+:       : when 1 then pbSet(104, 4)
+:       : when 2 then pbSet(104, 6)
+:       : else then pbSet(104, 6)
+:       : end
 @>Change Battle BGM: 'B-017. The Lost Emotion', 100, 100
 @>Conditional Branch: Script: TrainerBattle.start(:KOKORO, "Hata no Kokoro", 10+(pbGet(99) * 10))
  @>
 : Else
+ @>Script: pbTrainerEnd
  @>Exit Event Processing
  @>
 : Branch End
+@>Script: pbTrainerEnd
 @>Text: \xn[Announcer]Folks we have ourselves a winner!
 @>Control Switches: [0118: 1st Tourney. beat] = ON
 @>Text: \xn[Announcer]With all of their opponent's Puppets fainted, the
@@ -38753,7 +38817,12 @@ List of Event Commands:
 @>Text: \xn[Announcer]Begin!
 @>Control Switches: [0104: Transition Handler] = ON
 @>Control Variables: [0103: Vs. Transition ID] = 11
-@>Control Variables: [0104: Vs. Transition - Pkmn] = 4
+@>Script: case pbGet(141)
+:       : when 0 then pbSet(104, 4)
+:       : when 1 then pbSet(104, 4)
+:       : when 2 then pbSet(104, 6)
+:       : else then pbSet(104, 6)
+:       : end
 @>Conditional Branch: Script: TrainerBattle.start(:MINORIKO, "Minoriko Aki", 10+(pbGet(99) * 10))
  @>Control Switches: [0119: Minoriko Beaten] = ON
  @>Script: pbSetSelfSwitch(23,"A",true)
@@ -38903,9 +38972,11 @@ List of Event Commands:
  @>Change Screen Color Tone: (0,0,0,0), @6
  @>
 : Else
+ @>Script: pbTrainerEnd
  @>Exit Event Processing
  @>
 : Branch End
+@>Script: pbTrainerEnd
 @>
 
 Page #3
@@ -42853,15 +42924,22 @@ List of Event Commands:
 @>Text: \xn[Nitori]Kawashiro Experimental Augments, activate!
 @>Control Switches: [0104: Transition Handler] = ON
 @>Control Variables: [0103: Vs. Transition ID] = 12
-@>Control Variables: [0104: Vs. Transition - Pkmn] = 4
+@>Script: case pbGet(141)
+:       : when 0 then pbSet(104, 4)
+:       : when 1 then pbSet(104, 5)
+:       : when 2 then pbSet(104, 6)
+:       : else then pbSet(104, 6)
+:       : end
 @>Script: $PokemonGlobal.nextBattleBack="nitori"
 :       : setBattleRule("base","nitori")
 @>Conditional Branch: Script: TrainerBattle.start(:NITORI, "Nitori Kawashiro", 10+(pbGet(99) * 10))
  @>
 : Else
+ @>Script: pbTrainerEnd
  @>Exit Event Processing
  @>
 : Branch End
+@>Script: pbTrainerEnd
 @>Text: \xn[\pn]Wow, those augments were sure something!
 @>Text: \xn[Nitori]They could stand to be a bit more powerful, it seems like
  :    : a Puppet's full potential isn't being brought out by them.
@@ -42943,7 +43021,12 @@ List of Event Commands:
 @>Text: \xn[Nitori]Kawashiro Experimental Augments, activate!
 @>Control Switches: [0104: Transition Handler] = ON
 @>Control Variables: [0103: Vs. Transition ID] = 12
-@>Control Variables: [0104: Vs. Transition - Pkmn] = 4
+@>Script: case pbGet(141)
+:       : when 0 then pbSet(104, 4)
+:       : when 1 then pbSet(104, 5)
+:       : when 2 then pbSet(104, 6)
+:       : else then pbSet(104, 6)
+:       : end
 @>Script: $PokemonGlobal.nextBattleBack="nitori"
 :       : setBattleRule("base","nitori")
 :       : setBattleRule("backdrop", "nitori")
@@ -42951,9 +43034,11 @@ List of Event Commands:
 @>Conditional Branch: Script: TrainerBattle.start(:NITORI_Tr, "Nitori Kawashiro", 10+(pbGet(99) * 10))
  @>
 : Else
+ @>Script: pbTrainerEnd
  @>Exit Event Processing
  @>
 : Branch End
+@>Script: pbTrainerEnd
 @>Text: \xn[\pn]Wow, those augments were sure something!
 @>Text: \xn[Nitori]They could stand to be a bit more powerful, it seems like
  :    : a Puppet's full potential isn't being brought out by them.
@@ -43374,88 +43459,6 @@ Move Animation
 Trigger: Action Button
 
 List of Event Commands:
-@>
-
-#------------------------------------------------------------------------------
-Event ID: 040
-Event Name: EV040
-(X,Y): (058,021)
-
-Page #1
-Conditions
-None
-
-Graphic: Object ball
-
-Autonomous Movement
-Type: Fixed
-Speed: 3: Slow
-Freq: 3: Low
-Options Enabled
-Move Animation
-Trigger: Action Button
-
-List of Event Commands:
-@>Control Variables: [0004: Temp Move Name] = 1
-@>Script: pbShuffleTriviaQuestion
-@>Script: pbShowPicture(1,"Quiz/QuizKeine_Neutral.png",0,0,0,100,100,255,0)
-:       : pbShowPicture(2,"Quiz/QuizAyaka_Neutral.png",0,0,0,100,100,255,0)
-@>Script: anTriviaQuestion(question1)
-@>Script: pbShowPicture(1,"Quiz/QuizKeine_Neutral.png",0,0,0,100,100,255,0)
-:       : pbShowPicture(2,"Quiz/QuizAyaka_Neutral.png",0,0,0,100,100,255,0)
-@>Script: anTriviaQuestion(question2)
-@>Script: pbShowPicture(1,"Quiz/QuizKeine_Neutral.png",0,0,0,100,100,255,0)
-:       : pbShowPicture(2,"Quiz/QuizAyaka_Neutral.png",0,0,0,100,100,255,0)
-@>Script: anTriviaQuestion(question3)
-@>Script: pbShowPicture(1,"Quiz/QuizKeine_Neutral.png",0,0,0,100,100,255,0)
-:       : pbShowPicture(2,"Quiz/QuizAyaka_Neutral.png",0,0,0,100,100,255,0)
-@>Script: anTriviaQuestion(question4)
-@>Script: pbShowPicture(1,"Quiz/QuizKeine_Neutral.png",0,0,0,100,100,255,0)
-:       : pbShowPicture(2,"Quiz/QuizAyaka_Neutral.png",0,0,0,100,100,255,0)
-@>Script: anTriviaQuestion(question5)
-@>Erase Picture: 1
-@>Erase Picture: 2
-@>
-
-Page #2
-Conditions
-Self Switch A is ON
-
-Graphic: Object ball
-
-Autonomous Movement
-Type: Fixed
-Speed: 3: Slow
-Freq: 3: Low
-Options Enabled
-Move Animation
-Trigger: Action Button
-
-List of Event Commands:
-@>Control Variables: [0004: Temp Move Name] = 1
-@>Script: pbShuffleTriviaQuestion
-@>
-
-Page #3
-Conditions
-None
-
-Graphic: Object ball
-
-Autonomous Movement
-Type: Fixed
-Speed: 3: Slow
-Freq: 3: Low
-Options Enabled
-Move Animation
-Trigger: Action Button
-
-List of Event Commands:
-@>Control Variables: [0004: Temp Move Name] = 1
-@>Control Variables: [0003: Temp Pokemon Name] = 4
-@>Script: pbQuizShow
-@>Erase Picture: 1
-@>Erase Picture: 2
 @>
 
 #------------------------------------------------------------------------------
@@ -50969,7 +50972,12 @@ List of Event Commands:
 @>Text: \xn[\pn]You're lucky I like battling a lot!
 @>Control Switches: [0104: Transition Handler] = ON
 @>Control Variables: [0103: Vs. Transition ID] = 13
-@>Control Variables: [0104: Vs. Transition - Pkmn] = 4
+@>Script: case pbGet(141)
+:       : when 0 then pbSet(104, 4)
+:       : when 1 then pbSet(104, 5)
+:       : when 2 then pbSet(104, 6)
+:       : else then pbSet(104, 6)
+:       : end
 @>Conditional Branch: Script: TrainerBattle.start(:HATATE, "Hatate Himekaidou", 10+(pbGet(99) * 10))
  @>Text: \xn[Hatate]Ah, that was quite a battle! Even though I lost,
   :    : knowing I won at least once against the Village's strongest
@@ -51010,6 +51018,7 @@ List of Event Commands:
   :    : the depths of this forest!
  @>
 : Branch End
+@>Script: pbTrainerEnd
 @>
 
 Page #3
@@ -51154,7 +51163,12 @@ List of Event Commands:
 @>Text: \xn[Hatate]I was thinking the exact same thing~!
 @>Control Switches: [0104: Transition Handler] = ON
 @>Control Variables: [0103: Vs. Transition ID] = 13
-@>Control Variables: [0104: Vs. Transition - Pkmn] = 4
+@>Script: case pbGet(141)
+:       : when 0 then pbSet(104, 4)
+:       : when 1 then pbSet(104, 5)
+:       : when 2 then pbSet(104, 6)
+:       : else then pbSet(104, 6)
+:       : end
 @>Control Self Switch: A =ON
 @>Conditional Branch: Script: TrainerBattle.start(:HATATE, "Hatate Himekaidou", 10+(pbGet(99) * 10))
  @>Comment: --- Player wins on Attempt 1
@@ -51190,9 +51204,12 @@ List of Event Commands:
  @>
 : Else
  @>Comment: --- Player loses on Attempt 1
+ @>Script: pbTrainerEnd
  @>Set Event Location: [Hatate],(031,009), Down
+ @>Exit Event Processing
  @>
 : Branch End
+@>Script: pbTrainerEnd
 @>
 
 Page #2
@@ -51720,7 +51737,12 @@ List of Event Commands:
 @>Text: \xn[\pn]Well, let's do this then! One exorcism, coming up!
 @>Control Switches: [0104: Transition Handler] = ON
 @>Control Variables: [0103: Vs. Transition ID] = 14
-@>Control Variables: [0104: Vs. Transition - Pkmn] = 4
+@>Script: case pbGet(141)
+:       : when 0 then pbSet(104, 4)
+:       : when 1 then pbSet(104, 5)
+:       : when 2 then pbSet(104, 6)
+:       : else then pbSet(104, 6)
+:       : end
 @>Script: setBattleRule("battleIntroText", "{1} came spinning at you!")
 :       : setBattleRule("midbattleScript", :VS_FAKE_HINA)
 @>Conditional Branch: Script: TrainerBattle.start(:HINA_F, "Hina Kagiyama", 10+(pbGet(99) * 10))
@@ -51797,8 +51819,11 @@ List of Event Commands:
   :              : $>Direction Fix ON
   :              : $>Graphic: "Person_Hina', 20, 8, 0
  @>Set Event Location: [Hina (Real)],(017,000)
+ @>Script: pbTrainerEnd
+ @>Exit Event Processing
  @>
 : Branch End
+@>Script: pbTrainerEnd
 @>
 
 Page #4
@@ -55332,6 +55357,7 @@ List of Event Commands:
  @>Change Screen Color Tone: (0,0,0,0), @6
  @>
 : Branch End
+@>Script: pbTrainerEnd
 @>
 
 Page #2
@@ -55456,6 +55482,7 @@ List of Event Commands:
  @>Change Screen Color Tone: (0,0,0,0), @6
  @>
 : Branch End
+@>Script: pbTrainerEnd
 @>
 
 Page #3
@@ -55631,6 +55658,7 @@ List of Event Commands:
  @>Change Screen Color Tone: (0,0,0,0), @6
  @>
 : Branch End
+@>Script: pbTrainerEnd
 @>
 
 Page #2
@@ -55754,6 +55782,7 @@ List of Event Commands:
  @>Change Screen Color Tone: (0,0,0,0), @6
  @>
 : Branch End
+@>Script: pbTrainerEnd
 @>
 
 Page #3
@@ -59567,6 +59596,7 @@ List of Event Commands:
  @>Exit Event Processing
  @>
 : Branch End
+@>Script: pbTrainerEnd
 @>Change Screen Color Tone: (-255,-255,-255,0), @6
 @>Wait: 8 frame(s)
 @>Set Move Route: [Tojiko]
@@ -59587,6 +59617,7 @@ List of Event Commands:
  @>Exit Event Processing
  @>
 : Branch End
+@>Script: pbTrainerEnd
 @>Change Screen Color Tone: (-255,-255,-255,0), @6
 @>Wait: 8 frame(s)
 @>Set Move Route: [Suika]
@@ -59609,6 +59640,7 @@ List of Event Commands:
  @>Exit Event Processing
  @>
 : Branch End
+@>Script: pbTrainerEnd
 @>Control Switches: [0102: Special Battle Switch] = OFF
 @>Change Screen Color Tone: (-255,-255,-255,0), @6
 @>Wait: 8 frame(s)
@@ -59917,9 +59949,11 @@ List of Event Commands:
  @>Change Screen Color Tone: (51,17,-34,255), @6
  @>
 : Else
+ @>Script: pbTrainerEnd
  @>Exit Event Processing
  @>
 : Branch End
+@>Script: pbTrainerEnd
 @>
 
 #------------------------------------------------------------------------------
@@ -61767,7 +61801,12 @@ List of Event Commands:
 : Branch End
 @>Control Switches: [0104: Transition Handler] = ON
 @>Control Variables: [0103: Vs. Transition ID] = 20
-@>Control Variables: [0104: Vs. Transition - Pkmn] = 5
+@>Script: case pbGet(141)
+:       : when 0 then pbSet(104, 5)
+:       : when 1 then pbSet(104, 5)
+:       : when 2 then pbSet(104, 6)
+:       : else then pbSet(104, 6)
+:       : end
 @>Script: setBattleRule("base","mugenkan_brick")
 @>Conditional Branch: Script: TrainerBattle.start(:ELLY, "Elly", 10 + pbGet(99) * 10)
  @>Text: \xn[Elly]Remarkable! I can see what Lady Yuuka sees in you!
@@ -61779,6 +61818,7 @@ List of Event Commands:
  @>Control Self Switch: B =ON
  @>
 : Branch End
+@>Script: pbTrainerEnd
 @>
 
 Page #2
@@ -63388,7 +63428,7 @@ List of Event Commands:
 @>Conditional Branch: Switch [0107: New Game +] == ON
  @>Set Move Route: [Yuuka]
   :              : $>Turn Up
-  :              : $>Wait: 10 frame(s)
+  :              : $>Wait: 20 frame(s)
   :              : $>Turn Right
  @>
 : Branch End
@@ -63516,9 +63556,11 @@ List of Event Commands:
  @>
 : Else
  @>Change Transparent Flag: Normal
+ @>Script: pbTrainerEnd
  @>Exit Event Processing
  @>
 : Branch End
+@>Script: pbTrainerEnd
 @>
 
 Page #3
@@ -77433,13 +77475,12 @@ List of Event Commands:
  :    : the Moon, where not even making a single mistake is allowed!
 @>Control Switches: [0104: Transition Handler] = ON
 @>Control Variables: [0103: Vs. Transition ID] = 43
-@>Conditional Branch: Switch [0107: New Game +] == OFF
- @>Control Variables: [0104: Vs. Transition - Pkmn] = 3
- @>
-: Else
- @>Control Variables: [0104: Vs. Transition - Pkmn] = 5
- @>
-: Branch End
+@>Script: case pbGet(141)
+:       : when 0 then pbSet(104, 3)
+:       : when 1 then pbSet(104, 5)
+:       : when 2 then pbSet(104, 6)
+:       : else then pbSet(104, 6)
+:       : end
 @>Conditional Branch: Script: TrainerBattle.start(:RINGO, "Ringo", 10+(pbGet(99) * 10))
  @>Text: \xn[Ringo]Looks like I lost. Oh well, that's that I guess!
  @>Set Move Route: [Seiran 2]
@@ -77550,6 +77591,7 @@ List of Event Commands:
  @>Exit Event Processing
  @>
 : Branch End
+@>Script: pbTrainerEnd
 @>
 
 Page #2
@@ -77662,13 +77704,12 @@ List of Event Commands:
  :    : Eagle Ravi unit!
 @>Control Switches: [0104: Transition Handler] = ON
 @>Control Variables: [0103: Vs. Transition ID] = 42
-@>Conditional Branch: Switch [0107: New Game +] == OFF
- @>Control Variables: [0104: Vs. Transition - Pkmn] = 3
- @>
-: Else
- @>Control Variables: [0104: Vs. Transition - Pkmn] = 5
- @>
-: Branch End
+@>Script: case pbGet(141)
+:       : when 0 then pbSet(104, 3)
+:       : when 1 then pbSet(104, 5)
+:       : when 2 then pbSet(104, 6)
+:       : else then pbSet(104, 6)
+:       : end
 @>Conditional Branch: Script: TrainerBattle.start(:SEIRAN, "Seiran", 10+(pbGet(99) * 10))
  @>Text: \xn[Seiran]Oh, you earthlings sure are strong...
  @>Text: \xn[\pn]When you say 'earthlings', does that imply you 
@@ -77691,6 +77732,7 @@ List of Event Commands:
  @>Exit Event Processing
  @>
 : Branch End
+@>Script: pbTrainerEnd
 @>
 
 Page #2
@@ -78108,13 +78150,12 @@ List of Event Commands:
  :    : Eagle Ravi unit!
 @>Control Switches: [0104: Transition Handler] = ON
 @>Control Variables: [0103: Vs. Transition ID] = 42
-@>Conditional Branch: Switch [0107: New Game +] == OFF
- @>Control Variables: [0104: Vs. Transition - Pkmn] = 3
- @>
-: Else
- @>Control Variables: [0104: Vs. Transition - Pkmn] = 5
- @>
-: Branch End
+@>Script: case pbGet(141)
+:       : when 0 then pbSet(104, 3)
+:       : when 1 then pbSet(104, 5)
+:       : when 2 then pbSet(104, 6)
+:       : else then pbSet(104, 6)
+:       : end
 @>Conditional Branch: Script: TrainerBattle.start(:SEIRAN, "Seiran", 10+(pbGet(99) * 10))
  @>Text: \xn[Seiran]Oh, you earthlings sure are strong...
  @>Text: \xn[\pn]When you say 'earthlings', does that imply you 
@@ -78133,6 +78174,7 @@ List of Event Commands:
  @>Exit Event Processing
  @>
 : Branch End
+@>Script: pbTrainerEnd
 @>
 
 Page #2
@@ -85696,9 +85738,6 @@ List of Event Commands:
 @>Play SE: 'Mining collapse', 80, 50
 @>Screen Shake: 8, 5, @120
 @>Script: pbTrainerIntro(:JUNKO)
-@>Control Switches: [0104: Transition Handler] = ON
-@>Control Variables: [0103: Vs. Transition ID] = 46
-@>Control Variables: [0104: Vs. Transition - Pkmn] = 6
 @>Wait: 2 frame(s)
 @>Show Animation: Player, [Exclaim bubble]
 @>Change Text Options: Middle, Show
@@ -85716,13 +85755,12 @@ List of Event Commands:
 :       : setBattleRule("setSlideSprite","top")
 @>Control Switches: [0104: Transition Handler] = ON
 @>Control Variables: [0103: Vs. Transition ID] = 46
-@>Conditional Branch: Switch [0107: New Game +] == OFF
- @>Control Variables: [0104: Vs. Transition - Pkmn] = 5
- @>
-: Else
- @>Control Variables: [0104: Vs. Transition - Pkmn] = 6
- @>
-: Branch End
+@>Script: case pbGet(141)
+:       : when 0 then pbSet(104, 5)
+:       : when 1 then pbSet(104, 6)
+:       : when 2 then pbSet(104, 6)
+:       : else then pbSet(104, 6)
+:       : end
 @>Conditional Branch: Script: TrainerBattle.start(:JUNKO, "Junko", 10+(pbGet(99) * 10))
  @>Fade Out BGM: 1 sec.
  @>Screen Flash: (255,255,255,255), @10
@@ -85831,6 +85869,7 @@ List of Event Commands:
   :    : indulge you for a bit.
  @>Screen Flash: (255,255,255,255), @5
  @>Play SE: 'Stare', 80, 100
+ @>Script: pbTrainerEnd
  @>Control Variables: [0121: TKoL Plot Variable] = 19
  @>Wait: 10 frame(s)
  @>Text: \xn[Hecatia]This will take you straight to where my Lunar
@@ -85854,6 +85893,7 @@ List of Event Commands:
  @>Exit Event Processing
  @>
 : Branch End
+@>Script: pbTrainerEnd
 @>
 
 Page #3
@@ -88590,7 +88630,12 @@ List of Event Commands:
  :    : of a Handler yet...
 @>Control Switches: [0104: Transition Handler] = ON
 @>Control Variables: [0103: Vs. Transition ID] = 48
-@>Control Variables: [0104: Vs. Transition - Pkmn] = 4
+@>Script: case pbGet(141)
+:       : when 0 then pbSet(104, 3)
+:       : when 1 then pbSet(104, 3)
+:       : when 2 then pbSet(104, 6)
+:       : else then pbSet(104, 6)
+:       : end
 @>Conditional Branch: Script: TrainerBattle.start(:REISEN2, "Rei'sen", 10+(pbGet(99) * 10))
  @>Text: \xn[Rei'sen]I-I apologize for holding you up! If you want to go through,
   :    : just let me know!
@@ -88604,6 +88649,7 @@ List of Event Commands:
  @>Exit Event Processing
  @>
 : Branch End
+@>Script: pbTrainerEnd
 @>
 
 Page #2
@@ -88930,29 +88976,6 @@ List of Event Commands:
  @>
 : Branch End
 @>Script: setTempSwitchOn("A")
-@>
-
-#------------------------------------------------------------------------------
-Event ID: 016
-Event Name: EV016
-(X,Y): (024,008)
-
-Page #1
-Conditions
-None
-
-Graphic: Object ball
-
-Autonomous Movement
-Type: Fixed
-Speed: 3: Slow
-Freq: 3: Low
-Options Enabled
-Move Animation
-Trigger: Action Button
-
-List of Event Commands:
-@>Control Variables: [0121: TKoL Plot Variable] = 26
 @>
 
 #------------------------------------------------------------------------------
@@ -89321,7 +89344,12 @@ List of Event Commands:
  :    : fight an interesting one!
 @>Control Switches: [0104: Transition Handler] = ON
 @>Control Variables: [0103: Vs. Transition ID] = 49
-@>Control Variables: [0104: Vs. Transition - Pkmn] = 4
+@>Script: case pbGet(141)
+:       : when 0 then pbSet(104, 4)
+:       : when 1 then pbSet(104, 4)
+:       : when 2 then pbSet(104, 6)
+:       : else then pbSet(104, 6)
+:       : end
 @>Conditional Branch: Script: TrainerBattle.start(:SAGUME, "Sagume Kishin", 10+(pbGet(99) * 10))
  @>Text: What a battle folks! In a stunning spectacular, \pn has overcome 
   :    : Lady Sagume in a Puppet Battle!
@@ -89437,6 +89465,7 @@ List of Event Commands:
  @>Exit Event Processing
  @>
 : Branch End
+@>Script: pbTrainerEnd
 @>
 
 Page #2
@@ -89584,6 +89613,7 @@ List of Event Commands:
  @>Exit Event Processing
  @>
 : Branch End
+@>Script: pbTrainerEnd
 @>
 
 Page #3
@@ -89628,6 +89658,7 @@ List of Event Commands:
  @>Change Screen Color Tone: (0,0,0,0), @8
  @>
 : Branch End
+@>Change Text Options: Bottom, Show
 @>
 
 #------------------------------------------------------------------------------
@@ -97663,13 +97694,12 @@ List of Event Commands:
    :    : what it takes to overcome the power of purity incarnate!
   @>Control Switches: [0104: Transition Handler] = ON
   @>Control Variables: [0103: Vs. Transition ID] = 41
-  @>Conditional Branch: Switch [0107: New Game +] == OFF
-   @>Control Variables: [0104: Vs. Transition - Pkmn] = 4
-   @>
-  : Else
-   @>Control Variables: [0104: Vs. Transition - Pkmn] = 6
-   @>
-  : Branch End
+  @>Script: case pbGet(141)
+  :       : when 0 then pbSet(104, 4)
+  :       : when 1 then pbSet(104, 4)
+  :       : when 2 then pbSet(104, 6)
+  :       : else then pbSet(104, 6)
+  :       : end
   @>Conditional Branch: Script: !pbCanDoubleBattle?
    @>Script: setBattleRule("1v2")
    @>
@@ -97849,6 +97879,7 @@ List of Event Commands:
    @>Exit Event Processing
    @>
   : Branch End
+  @>Script: pbTrainerEnd
   @>
  : When [No]
   @>
@@ -97904,13 +97935,12 @@ List of Event Commands:
    :    : what it takes to overcome the power of purity incarnate!
   @>Control Switches: [0104: Transition Handler] = ON
   @>Control Variables: [0103: Vs. Transition ID] = 41
-  @>Conditional Branch: Switch [0107: New Game +] == OFF
-   @>Control Variables: [0104: Vs. Transition - Pkmn] = 4
-   @>
-  : Else
-   @>Control Variables: [0104: Vs. Transition - Pkmn] = 6
-   @>
-  : Branch End
+  @>Script: case pbGet(141)
+  :       : when 0 then pbSet(104, 4)
+  :       : when 1 then pbSet(104, 4)
+  :       : when 2 then pbSet(104, 6)
+  :       : else then pbSet(104, 6)
+  :       : end
   @>Conditional Branch: Script: !pbCanDoubleBattle?
    @>Script: setBattleRule("1v2")
    @>
@@ -98039,6 +98069,7 @@ List of Event Commands:
    @>Exit Event Processing
    @>
   : Branch End
+  @>Script: pbTrainerEnd
   @>
  : When [No]
   @>
@@ -100077,13 +100108,12 @@ List of Event Commands:
  :    : craft your Kaian now!
 @>Control Switches: [0104: Transition Handler] = ON
 @>Control Variables: [0103: Vs. Transition ID] = 44
-@>Conditional Branch: Switch [0107: New Game +] == OFF
- @>Control Variables: [0104: Vs. Transition - Pkmn] = 4
- @>
-: Else
- @>Control Variables: [0104: Vs. Transition - Pkmn] = 5
- @>
-: Branch End
+@>Script: case pbGet(141)
+:       : when 0 then pbSet(104, 4)
+:       : when 1 then pbSet(104, 5)
+:       : when 2 then pbSet(104, 6)
+:       : else then pbSet(104, 6)
+:       : end
 @>Conditional Branch: Script: TrainerBattle.start(:DOREMY, "Doremy Sweet", 10+(pbGet(99) * 10))
  @>Text: \xn[Doremy]Resisting the urge to sleep, even in this world of
   :    : dreams... You must have a strong will to maintain control through
@@ -100112,6 +100142,7 @@ List of Event Commands:
  @>Exit Event Processing
  @>
 : Branch End
+@>Script: pbTrainerEnd
 @>
 
 Page #2
@@ -100207,13 +100238,12 @@ List of Event Commands:
 : Branch End
 @>Control Switches: [0104: Transition Handler] = ON
 @>Control Variables: [0103: Vs. Transition ID] = 44
-@>Conditional Branch: Switch [0107: New Game +] == OFF
- @>Control Variables: [0104: Vs. Transition - Pkmn] = 4
- @>
-: Else
- @>Control Variables: [0104: Vs. Transition - Pkmn] = 5
- @>
-: Branch End
+@>Script: case pbGet(141)
+:       : when 0 then pbSet(104, 4)
+:       : when 1 then pbSet(104, 5)
+:       : when 2 then pbSet(104, 6)
+:       : else then pbSet(104, 6)
+:       : end
 @>Conditional Branch: Script: TrainerBattle.start(:DOREMY, "Doremy Sweet", 10+(pbGet(99) * 10))
  @>Conditional Branch: Switch [0147: TKoL Cleared] == OFF
   @>Text: \xn[Doremy]Resisting the urge to awaken, even in this world of
@@ -100258,6 +100288,7 @@ List of Event Commands:
  @>Exit Event Processing
  @>
 : Branch End
+@>Script: pbTrainerEnd
 @>Control Variables: [0121: TKoL Plot Variable] = 12
 @>
 
@@ -101067,6 +101098,7 @@ List of Event Commands:
  @>Exit Event Processing
  @>
 : Branch End
+@>Script: pbTrainerEnd
 @>
 
 Page #4
@@ -103049,6 +103081,7 @@ List of Event Commands:
 @>Change Battle BGM: 'B-037. Pandemonic Furies', 100, 100
 @>Script: setBattleRule("backdrop", "starlightJunko")
 @>Conditional Branch: Script: TrainerBattle.start(:HECATIA, "Hecatia Lapislazuli", 10+(pbGet(99) * 10), :JUNKO, "Junko", 11+(pbGet(99) * 10))
+ @>Script: pbTrainerEnd
  @>Comment: After Battle
  @>Fade Out BGM: 1 sec.
  @>Text: \xn[\pn]There! We bested you both! It's over.
@@ -103358,6 +103391,7 @@ List of Event Commands:
  @>Exit Event Processing
  @>
 : Branch End
+@>Script: pbTrainerEnd
 @>
 
 Page #3
