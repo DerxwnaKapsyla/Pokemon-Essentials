@@ -22,10 +22,10 @@ class PokemonLoadPanel < Sprite
       if @isContinue
 		if @trainer.new_game_plus
 		  textpos.push([@title, 32, 16, 0, TEXTCOLOR_NGP, TEXT_SHADOW_COLOR])
-		  textpos.push([_INTL("Losses:"), 32, 150, 0, TEXTCOLOR_NGP, TEXT_SHADOW_COLOR])
-		  textpos.push([$stats.trainer_battles_lost.to_s, 206, 150, 1, TEXTCOLOR_NGP, TEXT_SHADOW_COLOR])
-		  textpos.push([_INTL("Scenario:"), 32, 182, 0, TEXTCOLOR_NGP, TEXT_SHADOW_COLOR])
-		  textpos.push([@trainer.scenario_name, 152, 182, 0, TEXTCOLOR_NGP, TEXT_SHADOW_COLOR])
+		  #textpos.push([_INTL("Losses:"), 32, 150, 0, TEXTCOLOR_NGP, TEXT_SHADOW_COLOR])
+		  #textpos.push([$stats.trainer_battles_lost.to_s, 206, 150, 1, TEXTCOLOR_NGP, TEXT_SHADOW_COLOR])
+		  textpos.push([_INTL("Scenario:"), 32, 150, 0, TEXTCOLOR_NGP, TEXT_SHADOW_COLOR])
+		  textpos.push([@trainer.scenario_name, 152, 150, 0, TEXTCOLOR_NGP, TEXT_SHADOW_COLOR])
 		  textpos.push([_INTL("Time:"), 32, 118, 0, TEXTCOLOR_NGP, TEXT_SHADOW_COLOR])
 		  hour = @totalsec / 60 / 60
 		  min  = @totalsec / 60 % 60
@@ -46,10 +46,10 @@ class PokemonLoadPanel < Sprite
 		  textpos.push([mapname, 386, 16, 1, TEXTCOLOR_NGP, TEXT_SHADOW_COLOR])
 		else
 		  textpos.push([@title, 32, 16, 0, TEXT_COLOR, TEXT_SHADOW_COLOR])
-		  textpos.push([_INTL("Losses:"), 32, 150, 0, TEXT_COLOR, TEXT_SHADOW_COLOR])
-		  textpos.push([$stats.trainer_battles_lost.to_s, 206, 150, 1, TEXT_COLOR, TEXT_SHADOW_COLOR])
-		  textpos.push([_INTL("Scenario:"), 32, 182, 0, TEXT_COLOR, TEXT_SHADOW_COLOR])
-		  textpos.push([@trainer.scenario_name, 152, 182, 0, TEXT_COLOR, TEXT_SHADOW_COLOR])
+		  #textpos.push([_INTL("Losses:"), 32, 150, 0, TEXT_COLOR, TEXT_SHADOW_COLOR])
+		  #textpos.push([$stats.trainer_battles_lost.to_s, 206, 150, 1, TEXT_COLOR, TEXT_SHADOW_COLOR])
+		  textpos.push([_INTL("Scenario:"), 32, 150, 0, TEXT_COLOR, TEXT_SHADOW_COLOR])
+		  textpos.push([@trainer.scenario_name, 152, 150, 0, TEXT_COLOR, TEXT_SHADOW_COLOR])
 		  textpos.push([_INTL("Time:"), 32, 118, 0, TEXT_COLOR, TEXT_SHADOW_COLOR])
 		  hour = @totalsec / 60 / 60
 		  min  = @totalsec / 60 % 60
@@ -59,9 +59,9 @@ class PokemonLoadPanel < Sprite
             textpos.push([_INTL("{1}m", min), 206, 118, 1, TEXT_COLOR, TEXT_SHADOW_COLOR])
 		  end
 		  if @trainer.male?
-            textpos.push([@trainer.name, 112, 70, 0, MALE_TEXT_COLOR, MALE_TEXT_SHADOW_COLOR])
+            textpos.push([@trainer.name, 112, 70, 0, TEXT_COLOR, TEXT_SHADOW_COLOR])
 		  elsif @trainer.female?
-            textpos.push([@trainer.name, 112, 70, 0, FEMALE_TEXT_COLOR, MALE_TEXT_SHADOW_COLOR])
+            textpos.push([@trainer.name, 112, 70, 0, TEXT_COLOR, TEXT_SHADOW_COLOR])
 		  else
             textpos.push([@trainer.name, 112, 70, 0, TEXT_COLOR, TEXT_SHADOW_COLOR])
 		  end

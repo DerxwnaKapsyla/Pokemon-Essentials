@@ -16,7 +16,9 @@ class PokemonSave_Scene
     else
       loctext += _INTL("Time<r><c3={1}>{2}m</c3><br>", textColor, min)
     end
-    loctext += _INTL("Losses<r><c3={1}>{2}</c3><br>", textColor, $stats.trainer_battles_lost)
+	if $player.scenario_name == "The Mansion of Mystery"  && $stats.trainer_battles_lost_tmom != 0
+      loctext += _INTL("Losses<r><c3={1}>{2}</c3><br>", textColor, $stats.trainer_battles_lost_tmom) 
+	end
     if $player.has_pokedex
       loctext += _INTL("Pokédex<r><c3={1}>{2}/{3}</c3>", textColor, $player.pokedex.owned_count, $player.pokedex.seen_count)
     end

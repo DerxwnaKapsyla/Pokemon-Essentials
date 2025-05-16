@@ -11,3 +11,14 @@ MenuHandlers.add(:pause_menu, :reincarnation, {
     next false
   }
 })
+
+MenuHandlers.add(:pause_menu, :jukebox, {
+  "name"      => _INTL("Music Room"),
+  "order"     => 41,
+  "effect"    => proc { |menu|
+    pbFadeOutIn {
+      EnhancedJukebox.new
+    }
+    next false
+  }
+})

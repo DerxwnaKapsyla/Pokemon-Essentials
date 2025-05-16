@@ -354,3 +354,20 @@ def generate_floor_effects
   pbSet(154,arr[2])
   pbSet(155,arr[3])
 end
+
+class SafariState
+  def pbGoToStart
+    if $scene.is_a?(Scene_Map)
+      pbFadeOutIn do
+        $game_temp.player_transferring   = true
+        $game_temp.transition_processing = true
+        $game_temp.player_new_map_id    = @start[0]
+        $game_temp.player_new_x         = @start[1]
+        $game_temp.player_new_y         = @start[2]
+        $game_temp.player_new_direction = 1
+        pbDismountBike
+        $scene.transfer_player
+      end
+    end
+  end
+end

@@ -51,6 +51,9 @@ def pbQuizShow
     pts = pbGet(1) * 2   # Correct questions, max of 14 points
     pts = pts * pbGet(4) # Selected difficulty. Novice - 1x, Interm. - 2x, Expert - 3x.
     $player.battle_points += pts
+	if $game_switches[130]
+	  $game_switches[126] = true # Trivia Master achievement
+	end
     pbMessage(_INTL("\\pn received {1} Festival Points!\\me[BP Fanfare]\\wtnp[10]",pts))
 	pbShowPicture(1,"Quiz/QuizKeine_Neutral.png",0,0,0,100,100,255,0)
     pbShowPicture(2,"Quiz/QuizAyaka_Neutral.png",0,0,0,100,100,255,0)

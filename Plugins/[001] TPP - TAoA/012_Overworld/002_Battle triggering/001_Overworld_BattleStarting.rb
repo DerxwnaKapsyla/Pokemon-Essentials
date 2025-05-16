@@ -11,6 +11,7 @@ module BattleCreationHelperMethods
     when 2, 3, 5   # Lost, fled, draw
       $stats.wild_battles_lost += 1 if !trainer_battle
       $stats.trainer_battles_lost += 1 if trainer_battle
+	  $stats.trainer_battles_lost_tmom += 1 if $player.scenario_name == "The Mansion of Mystery"
     end
     pbSet(outcome_variable, outcome)
   end

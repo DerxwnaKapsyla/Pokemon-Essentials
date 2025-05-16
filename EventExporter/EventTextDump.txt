@@ -1252,6 +1252,7 @@ List of Event Commands:
 @>Script: $player.seen_storage_creator = true
 @>Script: $player.has_running_shoes = true
 @>Script: $player.scenario_name = "The Mansion of Mystery"
+@>Script: $stats.trainer_battles_lost_tmom = 0
 @>Conditional Branch: Switch [0107: New Game +] == ON
  @>Jump to Label: Start
  @>
@@ -1425,6 +1426,7 @@ List of Event Commands:
 @>Script: $player.has_running_shoes = true
 @>Script: $player.scenario_name = "The Mansion of Mystery"
 @>Script: $player.name = "Ayaka"
+@>Script: $stats.trainer_battles_lost_tmom = 0
 @>Conditional Branch: Switch [0107: New Game +] == ON
  @>Jump to Label: Start
  @>
@@ -1579,6 +1581,7 @@ List of Event Commands:
 @>Fade Out BGM: 2 sec.
 @>Wait: 20 frame(s)
 @>Script: $player.scenario_name = "The Mansion of Mystery"
+@>Script: $stats.trainer_battles_lost_tmom = 0
 @>Text: Skip the intro cinematic?
 @>Show Choices: Yes, No
 (When Cancel: Choice 2)
@@ -8641,6 +8644,8 @@ Direction Fix
 Trigger: Action Button
 
 List of Event Commands:
+@>Comment: Event Indicator
+ :       : question_alt 
 @>Text: It's a small bush... but I have nothing to cut it down 
  :    : with.
 @>Conditional Branch: Variable [0107: TMoM Plot Variable] == 5
@@ -8666,7 +8671,7 @@ List of Event Commands:
 
 #------------------------------------------------------------------------------
 Event ID: 020
-Event Name: Cut Tree
+Event Name: \
 (X,Y): (053,025)
 
 Page #1
@@ -8685,6 +8690,8 @@ Direction Fix
 Trigger: Action Button
 
 List of Event Commands:
+@>Comment: Event Indicator
+ :       : question_alt 
 @>Text: It's a small bush... but I have nothing to cut it down 
  :    : with.
 @>Conditional Branch: Variable [0107: TMoM Plot Variable] == 5
@@ -9382,7 +9389,7 @@ List of Event Commands:
 @>Wait: 8 frame(s)
 @>Change Transparent Flag: Normal
 @>Transfer Player:[012: First Floor], (024,037), Up, No Fade
-@>Change Screen Color Tone: (0,0,0,0), @6
+@>Change Screen Color Tone: (-50,-50,-50,0), @6
 @>
 
 Page #2
@@ -10462,7 +10469,7 @@ List of Event Commands:
 @>Wait: 8 frame(s)
 @>Change Transparent Flag: Normal
 @>Transfer Player:[013: Rooms], (007,020), Up, No Fade
-@>Change Screen Color Tone: (0,0,0,0), @6
+@>Change Screen Color Tone: (-50,-50,-50,0), @6
 @>
 
 Page #2
@@ -10565,7 +10572,7 @@ List of Event Commands:
 @>Wait: 8 frame(s)
 @>Change Transparent Flag: Normal
 @>Transfer Player:[013: Rooms], (022,010), Up, No Fade
-@>Change Screen Color Tone: (0,0,0,0), @6
+@>Change Screen Color Tone: (-50,-50,-50,0), @6
 @>
 
 Page #2
@@ -10668,7 +10675,7 @@ List of Event Commands:
 @>Wait: 8 frame(s)
 @>Change Transparent Flag: Normal
 @>Transfer Player:[013: Rooms], (052,026), Up, No Fade
-@>Change Screen Color Tone: (0,0,0,0), @6
+@>Change Screen Color Tone: (-50,-50,-50,0), @6
 @>
 
 Page #2
@@ -10771,7 +10778,7 @@ List of Event Commands:
 @>Wait: 8 frame(s)
 @>Change Transparent Flag: Normal
 @>Transfer Player:[013: Rooms], (071,026), Up, No Fade
-@>Change Screen Color Tone: (0,0,0,0), @6
+@>Change Screen Color Tone: (-50,-50,-50,0), @6
 @>
 
 Page #2
@@ -10875,7 +10882,7 @@ List of Event Commands:
  @>Wait: 8 frame(s)
  @>Change Transparent Flag: Normal
  @>Transfer Player:[014: Study], (005,015), Up, No Fade
- @>Change Screen Color Tone: (0,0,0,0), @6
+ @>Change Screen Color Tone: (-50,-50,-50,0), @6
  @>
 : Else
  @>Text: The door is locked. Looks like it needs a key.
@@ -11001,7 +11008,7 @@ List of Event Commands:
 @>Wait: 8 frame(s)
 @>Change Transparent Flag: Normal
 @>Transfer Player:[015: Stairs to Basement], (003,012), Up, No Fade
-@>Change Screen Color Tone: (0,0,0,0), @6
+@>Change Screen Color Tone: (-50,-50,-50,0), @6
 @>
 
 Page #3
@@ -11077,7 +11084,7 @@ List of Event Commands:
  @>Change Screen Color Tone: (-255,-255,-255,0), @6
  @>Wait: 8 frame(s)
  @>Transfer Player:[013: Rooms], (052,004), Down, No Fade
- @>Change Screen Color Tone: (0,0,0,0), @6
+ @>Change Screen Color Tone: (-50,-50,-50,0), @6
  @>
 : Branch End
 @>
@@ -11108,7 +11115,7 @@ List of Event Commands:
  @>Change Screen Color Tone: (-255,-255,-255,0), @6
  @>Wait: 8 frame(s)
  @>Transfer Player:[013: Rooms], (071,004), Down, No Fade
- @>Change Screen Color Tone: (0,0,0,0), @6
+ @>Change Screen Color Tone: (-50,-50,-50,0), @6
  @>
 : Branch End
 @>
@@ -11139,7 +11146,7 @@ List of Event Commands:
  @>Change Screen Color Tone: (-255,-255,-255,0), @6
  @>Wait: 8 frame(s)
  @>Transfer Player:[013: Rooms], (004,035), Down, No Fade
- @>Change Screen Color Tone: (0,0,0,0), @6
+ @>Change Screen Color Tone: (-50,-50,-50,0), @6
  @>
 : Branch End
 @>
@@ -11168,6 +11175,32 @@ List of Event Commands:
 @>Conditional Branch: Player is facing Down
  @>Text: The door is blocked on the other side, and won't 
   :    : open up.
+ @>
+: Branch End
+@>
+
+Page #2
+Conditions
+Variable 0107: TMoM Plot Variable is 8 or above
+
+Graphic: Exitarrow_red
+
+Autonomous Movement
+Type: Fixed
+Speed: 3: Slow
+Freq: 3: Low
+Options Enabled
+Move Animation
+Stop Animation
+Trigger: Player Touch
+
+List of Event Commands:
+@>Conditional Branch: Player is facing Down
+ @>Play SE: 'Door exit', 100, 100
+ @>Change Screen Color Tone: (-255,-255,-255,0), @6
+ @>Wait: 8 frame(s)
+ @>Transfer Player:[013: Rooms], (052,004), Down, No Fade
+ @>Change Screen Color Tone: (-50,-50,-50,0), @6
  @>
 : Branch End
 @>
@@ -11311,7 +11344,7 @@ List of Event Commands:
 :       : pbSetSelfSwitch(4,"A",true)
 :       : pbSetSelfSwitch(8,"A",true)
 @>Transfer Player:[016: Second Floor], (007,015), No Fade
-@>Change Screen Color Tone: (0,0,0,0), @6
+@>Change Screen Color Tone: (-50,-50,-50,0), @6
 @>
 
 Page #2
@@ -11605,7 +11638,7 @@ List of Event Commands:
 @>Wait: 8 frame(s)
 @>Script: beginDarkCircle
 @>Transfer Player:[016: Second Floor], (007,015), No Fade
-@>Change Screen Color Tone: (0,0,0,0), @6
+@>Change Screen Color Tone: (-50,-50,-50,0), @6
 @>Set Move Route: Player
  :              : $>Move Up
 @>
@@ -11629,7 +11662,7 @@ List of Event Commands:
 @>Change Screen Color Tone: (-255,-255,-255,0), @6
 @>Wait: 8 frame(s)
 @>Transfer Player:[016: Second Floor], (007,015), No Fade
-@>Change Screen Color Tone: (0,0,0,0), @6
+@>Change Screen Color Tone: (-50,-50,-50,0), @6
 @>Set Move Route: Player
  :              : $>Move Up
 @>
@@ -11653,7 +11686,7 @@ List of Event Commands:
 @>Change Screen Color Tone: (-255,-255,-255,0), @6
 @>Wait: 8 frame(s)
 @>Transfer Player:[016: Second Floor], (007,015), No Fade
-@>Change Screen Color Tone: (0,0,0,0), @6
+@>Change Screen Color Tone: (-50,-50,-50,0), @6
 @>Set Move Route: Player
  :              : $>Move Up
 @>
@@ -12536,7 +12569,7 @@ List of Event Commands:
  @>Change Screen Color Tone: (-255,-255,-255,0), @6
  @>Wait: 8 frame(s)
  @>Transfer Player:[012: First Floor], (007,029), Down, No Fade
- @>Change Screen Color Tone: (0,0,0,0), @6
+ @>Change Screen Color Tone: (-50,-50,-50,0), @6
  @>
 : Branch End
 @>
@@ -12567,7 +12600,7 @@ List of Event Commands:
  @>Change Screen Color Tone: (-255,-255,-255,0), @6
  @>Wait: 8 frame(s)
  @>Transfer Player:[012: First Floor], (017,024), Down, No Fade
- @>Change Screen Color Tone: (0,0,0,0), @6
+ @>Change Screen Color Tone: (-50,-50,-50,0), @6
  @>
 : Branch End
 @>
@@ -12598,7 +12631,7 @@ List of Event Commands:
  @>Change Screen Color Tone: (-255,-255,-255,0), @6
  @>Wait: 8 frame(s)
  @>Transfer Player:[012: First Floor], (027,024), Down, No Fade
- @>Change Screen Color Tone: (0,0,0,0), @6
+ @>Change Screen Color Tone: (-50,-50,-50,0), @6
  @>
 : Branch End
 @>
@@ -12629,7 +12662,7 @@ List of Event Commands:
  @>Change Screen Color Tone: (-255,-255,-255,0), @6
  @>Wait: 8 frame(s)
  @>Transfer Player:[012: First Floor], (035,024), Down, No Fade
- @>Change Screen Color Tone: (0,0,0,0), @6
+ @>Change Screen Color Tone: (-50,-50,-50,0), @6
  @>
 : Branch End
 @>
@@ -12687,7 +12720,7 @@ List of Event Commands:
 @>Wait: 8 frame(s)
 @>Change Transparent Flag: Normal
 @>Transfer Player:[012: First Floor], (038,027), Up, No Fade
-@>Change Screen Color Tone: (0,0,0,0), @6
+@>Change Screen Color Tone: (-50,-50,-50,0), @6
 @>
 
 Page #2
@@ -12744,7 +12777,7 @@ Event Name: Basic Door
 
 Page #1
 Conditions
-None
+Variable 0107: TMoM Plot Variable is 8 or above
 
 Graphic: Doors_TPDP2
 
@@ -12790,12 +12823,13 @@ List of Event Commands:
 @>Wait: 8 frame(s)
 @>Change Transparent Flag: Normal
 @>Transfer Player:[012: First Floor], (027,015), Up, No Fade
-@>Change Screen Color Tone: (0,0,0,0), @6
+@>Change Screen Color Tone: (-50,-50,-50,0), @6
 @>
 
 Page #2
 Conditions
 Switch 0022: s:tsOff?("A") is ON
+Variable 0107: TMoM Plot Variable is 8 or above
 
 Graphic: Doors_TPDP2
 
@@ -12893,10 +12927,185 @@ List of Event Commands:
 @>Wait: 8 frame(s)
 @>Change Transparent Flag: Normal
 @>Transfer Player:[012: First Floor], (035,015), Up, No Fade
-@>Change Screen Color Tone: (0,0,0,0), @6
+@>Change Screen Color Tone: (-50,-50,-50,0), @6
 @>
 
 Page #2
+Conditions
+Switch 0022: s:tsOff?("A") is ON
+
+Graphic: Doors_TPDP2
+
+Autonomous Movement
+Type: Fixed
+Speed: 3: Slow
+Freq: 3: Low
+Options Enabled
+Move Animation
+Trigger: Autorun
+
+List of Event Commands:
+@>Conditional Branch: Script: get_self.onEvent?
+ @>Change Transparent Flag: Transparency
+ @>Set Move Route: This event
+                   (Ignore If Can't Move)
+  :              : $>SE: 'Door enter', 100, 100
+  :              : $>Wait: 2 frame(s)
+  :              : $>Turn Left
+  :              : $>Wait: 2 frame(s)
+  :              : $>Turn Right
+  :              : $>Wait: 2 frame(s)
+  :              : $>Turn Up
+  :              : $>Wait: 2 frame(s)
+ @>Wait for Move's Completion
+ @>Change Transparent Flag: Normal
+ @>Set Move Route: Player
+                   (Ignore If Can't Move)
+  :              : $>Move Down
+ @>Wait for Move's Completion
+ @>Set Move Route: This event
+                   (Ignore If Can't Move)
+  :              : $>Turn Right
+  :              : $>Wait: 2 frame(s)
+  :              : $>Turn Left
+  :              : $>Wait: 2 frame(s)
+  :              : $>Turn Down
+  :              : $>Wait: 2 frame(s)
+ @>Wait for Move's Completion
+ @>
+: Branch End
+@>Script: setTempSwitchOn("A")
+@>
+
+#------------------------------------------------------------------------------
+Event ID: 022
+Event Name: size(2,3)
+(X,Y): (006,005)
+
+Page #1
+Conditions
+None
+
+Autonomous Movement
+Type: Fixed
+Speed: 3: Slow
+Freq: 3: Low
+Options Enabled
+Move Animation
+Trigger: Action Button
+
+List of Event Commands:
+@>
+
+Page #2
+Conditions
+Variable 0107: TMoM Plot Variable is 8 or above
+
+Autonomous Movement
+Type: Fixed
+Speed: 3: Slow
+Freq: 3: Low
+Options Enabled
+Move Animation
+Trigger: Action Button
+
+List of Event Commands:
+@>
+
+#------------------------------------------------------------------------------
+Event ID: 023
+Event Name: size(2,3)
+(X,Y): (005,005)
+
+Page #1
+Conditions
+Variable 0107: TMoM Plot Variable is 8 or above
+
+Autonomous Movement
+Type: Fixed
+Speed: 3: Slow
+Freq: 3: Low
+Options Enabled
+Move Animation
+Trigger: Action Button
+
+List of Event Commands:
+@>
+
+#------------------------------------------------------------------------------
+Event ID: 024
+Event Name: Basic Door
+(X,Y): (007,004)
+
+Page #1
+Conditions
+None
+
+Graphic: Doors_TPDP2
+
+Autonomous Movement
+Type: Fixed
+Speed: 3: Slow
+Freq: 3: Low
+Options Enabled
+Move Animation
+Trigger: Action Button
+
+List of Event Commands:
+@>
+
+Page #2
+Conditions
+Variable 0107: TMoM Plot Variable is 8 or above
+
+Graphic: Doors_TPDP2
+
+Autonomous Movement
+Type: Fixed
+Speed: 3: Slow
+Freq: 3: Low
+Options Enabled
+Move Animation
+Trigger: Player Touch
+
+List of Event Commands:
+@>Set Move Route: This event
+                  (Ignore If Can't Move)
+ :              : $>SE: 'Door enter', 100, 100
+ :              : $>Wait: 2 frame(s)
+ :              : $>Turn Left
+ :              : $>Wait: 2 frame(s)
+ :              : $>Turn Right
+ :              : $>Wait: 2 frame(s)
+ :              : $>Turn Up
+ :              : $>Wait: 2 frame(s)
+@>Wait for Move's Completion
+@>Set Move Route: Player
+                  (Ignore If Can't Move)
+ :              : $>Through ON
+ :              : $>Move Up
+ :              : $>Through OFF
+@>Wait for Move's Completion
+@>Change Transparent Flag: Transparency
+@>Set Move Route: This event
+                  (Ignore If Can't Move)
+ :              : $>Wait: 2 frame(s)
+ :              : $>Turn Right
+ :              : $>Wait: 2 frame(s)
+ :              : $>Turn Left
+ :              : $>Wait: 2 frame(s)
+ :              : $>Turn Down
+ :              : $>Wait: 2 frame(s)
+@>Wait for Move's Completion
+@>Play SE: 'Door exit', 100, 100
+@>Change Screen Color Tone: (-255,-255,-255,0), @6
+@>Wait: 8 frame(s)
+@>Change Transparent Flag: Normal
+@>Transfer Player:[012: First Floor], (007,015), Up, No Fade
+@>Change Screen Color Tone: (-50,-50,-50,0), @6
+@>
+
+Page #3
 Conditions
 Switch 0022: s:tsOff?("A") is ON
 
@@ -13376,7 +13585,7 @@ List of Event Commands:
  @>Change Screen Color Tone: (-255,-255,-255,0), @6
  @>Wait: 8 frame(s)
  @>Transfer Player:[012: First Floor], (031,012), Down, No Fade
- @>Change Screen Color Tone: (0,0,0,0), @6
+ @>Change Screen Color Tone: (-50,-50,-50,0), @6
  @>
 : Branch End
 @>
@@ -13416,7 +13625,7 @@ List of Event Commands:
  @>Change Screen Color Tone: (-255,-255,-255,0), @6
  @>Wait: 8 frame(s)
  @>Transfer Player:[012: First Floor], (008,011), Down, No Fade
- @>Change Screen Color Tone: (0,0,0,0), @6
+ @>Change Screen Color Tone: (-50,-50,-50,0), @6
  @>
 : Branch End
 @>
@@ -14272,7 +14481,7 @@ List of Event Commands:
 @>Transfer Player:[012: First Floor], (013,011), No Fade
 @>Set Move Route: Player
  :              : $>Move Down
-@>Change Screen Color Tone: (0,0,0,0), @6
+@>Change Screen Color Tone: (-50,-50,-50,0), @6
 @>
 
 Page #2
@@ -14296,7 +14505,7 @@ List of Event Commands:
 @>Transfer Player:[012: First Floor], (013,011), No Fade
 @>Set Move Route: Player
  :              : $>Move Down
-@>Change Screen Color Tone: (0,0,0,0), @6
+@>Change Screen Color Tone: (-50,-50,-50,0), @6
 @>
 
 Page #3
@@ -14320,7 +14529,7 @@ List of Event Commands:
 @>Transfer Player:[012: First Floor], (013,011), No Fade
 @>Set Move Route: Player
  :              : $>Move Down
-@>Change Screen Color Tone: (0,0,0,0), @6
+@>Change Screen Color Tone: (-50,-50,-50,0), @6
 @>
 
 #------------------------------------------------------------------------------
@@ -14452,7 +14661,7 @@ List of Event Commands:
 @>Wait: 8 frame(s)
 @>Change Transparent Flag: Normal
 @>Transfer Player:[017: Kitchen], (007,008), Up, No Fade
-@>Change Screen Color Tone: (0,0,0,0), @6
+@>Change Screen Color Tone: (-50,-50,-50,0), @6
 @>
 
 Page #2
@@ -14555,7 +14764,7 @@ List of Event Commands:
 @>Wait: 8 frame(s)
 @>Change Transparent Flag: Normal
 @>Transfer Player:[018: Dining Hall], (015,022), Up, No Fade
-@>Change Screen Color Tone: (0,0,0,0), @6
+@>Change Screen Color Tone: (-50,-50,-50,0), @6
 @>
 
 Page #2
@@ -14658,7 +14867,7 @@ List of Event Commands:
 @>Wait: 8 frame(s)
 @>Change Transparent Flag: Normal
 @>Transfer Player:[018: Dining Hall], (033,022), Up, No Fade
-@>Change Screen Color Tone: (0,0,0,0), @6
+@>Change Screen Color Tone: (-50,-50,-50,0), @6
 @>
 
 Page #2
@@ -14761,7 +14970,7 @@ List of Event Commands:
 @>Wait: 8 frame(s)
 @>Change Transparent Flag: Normal
 @>Transfer Player:[017: Kitchen], (030,019), Up, No Fade
-@>Change Screen Color Tone: (0,0,0,0), @6
+@>Change Screen Color Tone: (-50,-50,-50,0), @6
 @>
 
 Page #2
@@ -14837,7 +15046,7 @@ List of Event Commands:
  @>Change Screen Color Tone: (-255,-255,-255,0), @6
  @>Wait: 8 frame(s)
  @>Transfer Player:[018: Dining Hall], (013,009), Down, No Fade
- @>Change Screen Color Tone: (0,0,0,0), @6
+ @>Change Screen Color Tone: (-50,-50,-50,0), @6
  @>
 : Branch End
 @>
@@ -15273,7 +15482,7 @@ List of Event Commands:
 @>Change Screen Color Tone: (-255,-255,-255,0), @6
 @>Wait: 8 frame(s)
 @>Control Switches: [0111: Met Mystia] = ON
-@>Change Screen Color Tone: (0,0,0,0), @6
+@>Change Screen Color Tone: (-50,-50,-50,0), @6
 @>Change Text Options: Bottom, Show
 @>Text: \xn[???]Tell me, do you fear the dark?
 @>Show Animation: Player, [Exclaim bubble]
@@ -15360,7 +15569,7 @@ List of Event Commands:
 @>Set Event Location: [Maya],(016,019), Down
 @>Set Event Location: [Shinji],(013,019), Down
 @>Set Event Location: [Youmu],(014,020), Down
-@>Change Screen Color Tone: (0,0,0,0), @20
+@>Change Screen Color Tone: (-50,-50,-50,0), @6
 @>Text: \xn[Maya]Hey, my vision is back to normal!
 @>Text: \xn[\pn]Yeah, so is mine! I guess that stunt Youmu pulled 
  :    : distracted miss night sparrow here enough to drop 
@@ -15422,7 +15631,7 @@ List of Event Commands:
 @>Wait: 8 frame(s)
 @>Script: pbSetSelfSwitch(2,"A",true)
 :       : pbSetSelfSwitch(34,"A",true)
-@>Change Screen Color Tone: (0,0,0,0), @6
+@>Change Screen Color Tone: (-50,-50,-50,0), @6
 @>Wait: 20 frame(s)
 @>Text: \xn[Kota]Looks like it's just us again.
 @>Set Move Route: [Kota]
@@ -15445,7 +15654,7 @@ List of Event Commands:
 @>Wait: 8 frame(s)
 @>Control Variables: [0107: TMoM Plot Variable] = 11
 @>Transfer Player:[023: Third Floor], (003,014), Up, No Fade
-@>Change Screen Color Tone: (0,0,0,0), @6
+@>Change Screen Color Tone: (-50,-50,-50,0), @6
 @>Set Move Route: Player
  :              : $>Move Up
 @>
@@ -15574,7 +15783,7 @@ List of Event Commands:
 @>Set Event Location: [Maya],(016,019), Down
 @>Set Event Location: [Shinji],(013,019), Down
 @>Set Event Location: [Youmu],(014,020), Down
-@>Change Screen Color Tone: (0,0,0,0), @20
+@>Change Screen Color Tone: (-50,-50,-50,0), @6
 @>Text: \xn[Maya]Hey, my vision is back to normal!
 @>Text: \xn[\pn]Yeah, so is mine! I guess that stunt Youmu pulled 
  :    : distracted miss night sparrow here enough to drop 
@@ -15634,7 +15843,7 @@ List of Event Commands:
 @>Wait: 8 frame(s)
 @>Script: pbSetSelfSwitch(2,"A",true)
 :       : pbSetSelfSwitch(34,"A",true)
-@>Change Screen Color Tone: (0,0,0,0), @6
+@>Change Screen Color Tone: (-50,-50,-50,0), @6
 @>Wait: 20 frame(s)
 @>Text: \xn[Kota]Looks like it's just us again.
 @>Set Move Route: [Kota]
@@ -15657,7 +15866,7 @@ List of Event Commands:
 @>Wait: 8 frame(s)
 @>Control Variables: [0107: TMoM Plot Variable] = 11
 @>Transfer Player:[023: Third Floor], (003,014), Up, No Fade
-@>Change Screen Color Tone: (0,0,0,0), @6
+@>Change Screen Color Tone: (-50,-50,-50,0), @6
 @>Set Move Route: Player
  :              : $>Move Up
 @>
@@ -15914,7 +16123,7 @@ List of Event Commands:
  @>Change Screen Color Tone: (-255,-255,-255,0), @6
  @>Wait: 8 frame(s)
  @>Transfer Player:[018: Dining Hall], (040,016), No Fade
- @>Change Screen Color Tone: (0,0,0,0), @6
+ @>Change Screen Color Tone: (-50,-50,-50,0), @6
  @>
 : Branch End
 @>
@@ -15946,7 +16155,7 @@ List of Event Commands:
  @>Change Screen Color Tone: (-255,-255,-255,0), @6
  @>Wait: 8 frame(s)
  @>Transfer Player:[018: Dining Hall], (009,016), No Fade
- @>Change Screen Color Tone: (0,0,0,0), @6
+ @>Change Screen Color Tone: (-50,-50,-50,0), @6
  @>
 : Branch End
 @>
@@ -16023,7 +16232,7 @@ List of Event Commands:
 @>Change Screen Color Tone: (-255,-255,-255,0), @6
 @>Wait: 8 frame(s)
 @>Transfer Player:[023: Third Floor], (003,014), No Fade
-@>Change Screen Color Tone: (0,0,0,0), @6
+@>Change Screen Color Tone: (-50,-50,-50,0), @6
 @>Set Move Route: Player
  :              : $>Move Up
 @>
@@ -16401,7 +16610,7 @@ List of Event Commands:
  @>Change Screen Color Tone: (-255,-255,-255,0), @6
  @>Wait: 8 frame(s)
  @>Transfer Player:[018: Dining Hall], (036,009), Down, No Fade
- @>Change Screen Color Tone: (0,0,0,0), @6
+ @>Change Screen Color Tone: (-50,-50,-50,0), @6
  @>
 : Branch End
 @>
@@ -16432,7 +16641,7 @@ List of Event Commands:
  @>Change Screen Color Tone: (-255,-255,-255,0), @6
  @>Wait: 8 frame(s)
  @>Transfer Player:[016: Second Floor], (047,014), Down, No Fade
- @>Change Screen Color Tone: (0,0,0,0), @6
+ @>Change Screen Color Tone: (-50,-50,-50,0), @6
  @>
 : Branch End
 @>
@@ -16463,7 +16672,7 @@ List of Event Commands:
  @>Change Screen Color Tone: (-255,-255,-255,0), @6
  @>Wait: 8 frame(s)
  @>Transfer Player:[016: Second Floor], (020,005), Down, No Fade
- @>Change Screen Color Tone: (0,0,0,0), @6
+ @>Change Screen Color Tone: (-50,-50,-50,0), @6
  @>
 : Branch End
 @>
@@ -17080,7 +17289,7 @@ List of Event Commands:
 @>Wait: 8 frame(s)
 @>Change Transparent Flag: Normal
 @>Transfer Player:[016: Second Floor], (020,009), Up, No Fade
-@>Change Screen Color Tone: (0,0,0,0), @6
+@>Change Screen Color Tone: (-50,-50,-50,0), @6
 @>
 
 Page #2
@@ -17183,7 +17392,7 @@ List of Event Commands:
 @>Wait: 8 frame(s)
 @>Change Transparent Flag: Normal
 @>Transfer Player:[017: Kitchen], (020,019), Up, No Fade
-@>Change Screen Color Tone: (0,0,0,0), @6
+@>Change Screen Color Tone: (-50,-50,-50,0), @6
 @>
 
 Page #2
@@ -17260,7 +17469,7 @@ List of Event Commands:
  @>Change Screen Color Tone: (-255,-255,-255,0), @6
  @>Wait: 8 frame(s)
  @>Transfer Player:[016: Second Floor], (016,017), No Fade
- @>Change Screen Color Tone: (0,0,0,0), @6
+ @>Change Screen Color Tone: (-50,-50,-50,0), @6
  @>
 : Branch End
 @>
@@ -17292,7 +17501,7 @@ List of Event Commands:
  @>Change Screen Color Tone: (-255,-255,-255,0), @6
  @>Wait: 8 frame(s)
  @>Transfer Player:[016: Second Floor], (045,017), No Fade
- @>Change Screen Color Tone: (0,0,0,0), @6
+ @>Change Screen Color Tone: (-50,-50,-50,0), @6
  @>
 : Branch End
 @>
@@ -17323,7 +17532,7 @@ List of Event Commands:
  @>Change Screen Color Tone: (-255,-255,-255,0), @6
  @>Wait: 8 frame(s)
  @>Transfer Player:[016: Second Floor], (022,024), Down, No Fade
- @>Change Screen Color Tone: (0,0,0,0), @6
+ @>Change Screen Color Tone: (-50,-50,-50,0), @6
  @>
 : Branch End
 @>
@@ -17354,7 +17563,7 @@ List of Event Commands:
  @>Change Screen Color Tone: (-255,-255,-255,0), @6
  @>Wait: 8 frame(s)
  @>Transfer Player:[016: Second Floor], (039,024), Down, No Fade
- @>Change Screen Color Tone: (0,0,0,0), @6
+ @>Change Screen Color Tone: (-50,-50,-50,0), @6
  @>
 : Branch End
 @>
@@ -17917,7 +18126,7 @@ List of Event Commands:
 @>Text: \xn[\pn]That easy, huh? Okay, I'll give it a whirl!
 @>Text: \xn[Stone #4]SPLENDID. BEFORE YOU GO THOUGH, WE WOULD
  :    : LIKE TO GIVE YOU A MEMENTO OF YOUR TIME HERE.
-@>Script: pkmn = Pokemon.new(:MAGISTONES, 40)
+@>Script: pkmn = Pokemon.new(:MAGISTONES, 50)
 :       : pkmn.item = :KNOWLEDGESPHERE
 :       : pkmn.poke_ball = :MASTERORB
 :       : pkmn.obtain_text = "World of Fantasies"
@@ -18131,7 +18340,7 @@ Trigger: Action Button
 
 List of Event Commands:
 @>Script: $game_variables[1] = $game_switches[126] ? "Yes" : "No"
-:       : $game_variables[2] = $game_switches[127] ? "Yes" : "No"
+:       : $game_variables[2] = $stats.pwt_wins[:Lunatic_Diff] > 0 ? "Yes" : "No"
 :       : $game_variables[3] = $game_switches[128] ? "Yes" : "No"
 @>Conditional Branch: Switch [0139: TFoC Cleared] == ON
  @>Text: \sign[signskin]\l[5]<ac>The Festival of Curses</ac>\nStatus: Cleared
@@ -18171,7 +18380,7 @@ List of Event Commands:
  @>Text: \sign[signskin]\l[5]<ac>The Kingdom of Lunacy</ac>\nStatus: Cleared
   :    : \nWent Off Script: \v[1]
   :    : \nForward and Back: \v[2]
-  :    : \n-----: \v[3]
+  :    : \nFound a friend!: \v[3]
  @>
 : Else
  @>Text: \sign[signskin]<ac>The Kingdom of Lunacy</ac>\n
@@ -19182,6 +19391,27 @@ List of Event Commands:
 : When [I'm good]
  @>
 : Branch End
+@>
+
+#------------------------------------------------------------------------------
+Event ID: 019
+Event Name: EV019
+(X,Y): (019,019)
+
+Page #1
+Conditions
+None
+
+Autonomous Movement
+Type: Fixed
+Speed: 3: Slow
+Freq: 3: Low
+Options Enabled
+Move Animation
+Trigger: Action Button
+
+List of Event Commands:
+@>Change Text Options: Bottom, Show
 @>
 
 #------------------------------------------------------------------------------
@@ -22103,7 +22333,7 @@ List of Event Commands:
 @>Wait: 8 frame(s)
 @>Change Transparent Flag: Normal
 @>Transfer Player:[024: Rooms], (030,011), Up, No Fade
-@>Change Screen Color Tone: (0,0,0,0), @6
+@>Change Screen Color Tone: (-50,-50,-50,0), @6
 @>
 
 Page #2
@@ -22180,7 +22410,7 @@ List of Event Commands:
  @>Change Screen Color Tone: (-255,-255,-255,0), @6
  @>Wait: 8 frame(s)
  @>Transfer Player:[024: Rooms], (047,028), No Fade
- @>Change Screen Color Tone: (0,0,0,0), @6
+ @>Change Screen Color Tone: (-50,-50,-50,0), @6
  @>
 : Branch End
 @>
@@ -22212,7 +22442,7 @@ List of Event Commands:
  @>Change Screen Color Tone: (-255,-255,-255,0), @6
  @>Wait: 8 frame(s)
  @>Transfer Player:[024: Rooms], (013,027), No Fade
- @>Change Screen Color Tone: (0,0,0,0), @6
+ @>Change Screen Color Tone: (-50,-50,-50,0), @6
  @>
 : Branch End
 @>
@@ -22305,7 +22535,7 @@ List of Event Commands:
 @>Transfer Player:[016: Second Floor], (007,021), No Fade
 @>Set Move Route: Player
  :              : $>Move Down
-@>Change Screen Color Tone: (0,0,0,0), @6
+@>Change Screen Color Tone: (-50,-50,-50,0), @6
 @>
 
 #------------------------------------------------------------------------------
@@ -22398,6 +22628,7 @@ Speed: 3: Slow
 Freq: 3: Low
 Options Enabled
 Move Animation
+Direction Fix
 Trigger: Action Button
 
 List of Event Commands:
@@ -22444,7 +22675,7 @@ List of Event Commands:
 @>Change Screen Color Tone: (-255,-255,-255,0), @6
 @>Wait: 8 frame(s)
 @>Transfer Player:[026: Stairs to Roof], (010,012), No Fade
-@>Change Screen Color Tone: (0,0,0,0), @6
+@>Change Screen Color Tone: (-50,-50,-50,0), @6
 @>Set Move Route: Player
  :              : $>Move Up
 @>
@@ -22883,7 +23114,7 @@ List of Event Commands:
  @>Change Screen Color Tone: (-255,-255,-255,0), @6
  @>Wait: 8 frame(s)
  @>Transfer Player:[023: Third Floor], (046,014), No Fade
- @>Change Screen Color Tone: (0,0,0,0), @6
+ @>Change Screen Color Tone: (-50,-50,-50,0), @6
  @>
 : Branch End
 @>
@@ -22915,7 +23146,7 @@ List of Event Commands:
  @>Change Screen Color Tone: (-255,-255,-255,0), @6
  @>Wait: 8 frame(s)
  @>Transfer Player:[023: Third Floor], (014,025), No Fade
- @>Change Screen Color Tone: (0,0,0,0), @6
+ @>Change Screen Color Tone: (-50,-50,-50,0), @6
  @>
 : Branch End
 @>
@@ -22946,7 +23177,7 @@ List of Event Commands:
  @>Change Screen Color Tone: (-255,-255,-255,0), @6
  @>Wait: 8 frame(s)
  @>Transfer Player:[023: Third Floor], (030,003), Down, No Fade
- @>Change Screen Color Tone: (0,0,0,0), @6
+ @>Change Screen Color Tone: (-50,-50,-50,0), @6
  @>
 : Branch End
 @>
@@ -23004,7 +23235,7 @@ List of Event Commands:
 @>Wait: 8 frame(s)
 @>Change Transparent Flag: Normal
 @>Transfer Player:[023: Third Floor], (023,035), Up, No Fade
-@>Change Screen Color Tone: (0,0,0,0), @6
+@>Change Screen Color Tone: (-50,-50,-50,0), @6
 @>
 
 Page #2
@@ -23107,7 +23338,7 @@ List of Event Commands:
 @>Wait: 8 frame(s)
 @>Change Transparent Flag: Normal
 @>Transfer Player:[023: Third Floor], (037,035), Up, No Fade
-@>Change Screen Color Tone: (0,0,0,0), @6
+@>Change Screen Color Tone: (-50,-50,-50,0), @6
 @>
 
 Page #2
@@ -23660,7 +23891,7 @@ List of Event Commands:
  @>Change Screen Color Tone: (-255,-255,-255,0), @6
  @>Wait: 8 frame(s)
  @>Transfer Player:[023: Third Floor], (030,029), Down, No Fade
- @>Change Screen Color Tone: (0,0,0,0), @6
+ @>Change Screen Color Tone: (-50,-50,-50,0), @6
  @>
 : Branch End
 @>
@@ -24796,10 +25027,10 @@ List of Event Commands:
  @>Text: \bDEBUG ONLY TEXT: Set the defeat count.
  @>Input Number: [0001: Temp Pokemon Choice], 2 digit(s)
  @>Text: \bSetting losses to \v[1].
- @>Script: $stats.trainer_battles_lost = pbGet(1)
+ @>Script: $stats.trainer_battles_lost_tmom = pbGet(1)
  @>
 : Branch End
-@>Conditional Branch: Script: $stats.trainer_battles_lost >= 10
+@>Conditional Branch: Script: $stats.trainer_battles_lost_tmom >= 10
  @>Control Variables: [0107: TMoM Plot Variable] = 20
  @>Control Switches: [0113: Bad End Seen] = ON
  @>Comment: ------ ENGAGE BAD END A ------
@@ -24913,7 +25144,7 @@ List of Event Commands:
   @>Control Self Switch: A =ON
   @>Control Variables: [0107: TMoM Plot Variable] = 14
   @>Transfer Player:[012: First Floor], (008,013), Up
-  @>Change Screen Color Tone: (0,0,0,0), @6
+  @>Change Screen Color Tone: (-50,-50,-50,0), @6
   @>Text: \xn[Lyrica]And there, the door should be unlocked now~
   @>Text: \xn[Lyrica]Honestly, I can't tell you what'll be waiting for you
    :    : in the basement. It's been so long since my sisters or
@@ -24924,7 +25155,7 @@ List of Event Commands:
   @>Change Screen Color Tone: (-255,-255,-255,0), @6
   @>Wait: 8 frame(s)
   @>Script: pbSetSelfSwitch2(12,36,"A",true)
-  @>Change Screen Color Tone: (0,0,0,0), @6
+  @>Change Screen Color Tone: (-50,-50,-50,0), @6
   @>
  : When [No]
   @>Text: \xn[Lyrica]Don't keep me waiting too long~!
@@ -24937,6 +25168,21 @@ List of Event Commands:
  : Branch End
  @>
 : Branch End
+@>
+
+Page #5
+Conditions
+Variable 0107: TMoM Plot Variable is 14 or above
+
+Autonomous Movement
+Type: Fixed
+Speed: 3: Slow
+Freq: 3: Low
+Options Enabled
+Move Animation
+Trigger: Action Button
+
+List of Event Commands:
 @>
 
 #------------------------------------------------------------------------------
@@ -25170,7 +25416,7 @@ List of Event Commands:
 @>Transfer Player:[023: Third Floor], (054,029), No Fade
 @>Set Move Route: Player
  :              : $>Move Down
-@>Change Screen Color Tone: (0,0,0,0), @6
+@>Change Screen Color Tone: (-50,-50,-50,0), @6
 @>
 
 #------------------------------------------------------------------------------
@@ -25460,11 +25706,11 @@ List of Event Commands:
 @>Set Event Location: [Trainer(3)],(074,034), Left
 @>Set Event Location: [Trainer(3)],(051,029), Down
 @>Set Event Location: [Trainer(2)],(031,029), Right
-@>Set Event Location: [Trainer(3)],(013,023), Right
-@>Set Event Location: [Trainer(3)],(017,023), Left
-@>Set Event Location: [Trainer(1)],(032,019), Left
-@>Set Event Location: [Trainer(3)],(044,023), Left
-@>Set Event Location: [Trainer(3)],(060,017), Right
+@>Set Event Location: [Trainer(3) R],(013,023), Right
+@>Set Event Location: [Trainer(3) L],(017,023), Left
+@>Set Event Location: [Trainer(1) 32,19R],(032,019), Right
+@>Set Event Location: [Trainer(3) 44,23R],(044,023), Right
+@>Set Event Location: [Trainer(3) 60,17L],(060,017), Left
 @>Set Event Location: [Nue],(058,005), Down
 @>Control Switches: [0001: Starting over] = OFF
 @>
@@ -25726,7 +25972,11 @@ None
 Graphic: TPDP_NPC 18
 
 Autonomous Movement
-Type: Random
+Type: Custom
+Custom Move Route:
+(Repeat Action)
+$>Script: move_random_range(3,3)
+
 Speed: 3: Slow
 Freq: 4: High
 Options Enabled
@@ -25752,7 +26002,11 @@ Self Switch A is ON
 Graphic: TPDP_NPC 18
 
 Autonomous Movement
-Type: Random
+Type: Custom
+Custom Move Route:
+(Repeat Action)
+$>Script: move_random_range(3,3)
+
 Speed: 3: Slow
 Freq: 4: High
 Options Enabled
@@ -25814,7 +26068,7 @@ List of Event Commands:
 
 #------------------------------------------------------------------------------
 Event ID: 010
-Event Name: Trainer(3)
+Event Name: Trainer(3) R
 (X,Y): (013,023)
 
 Page #1
@@ -25863,7 +26117,7 @@ List of Event Commands:
 
 #------------------------------------------------------------------------------
 Event ID: 011
-Event Name: Trainer(3)
+Event Name: Trainer(3) L
 (X,Y): (017,023)
 
 Page #1
@@ -25912,7 +26166,7 @@ List of Event Commands:
 
 #------------------------------------------------------------------------------
 Event ID: 012
-Event Name: Trainer(1)
+Event Name: Trainer(1) 32,19R
 (X,Y): (032,019)
 
 Page #1
@@ -25961,7 +26215,7 @@ List of Event Commands:
 
 #------------------------------------------------------------------------------
 Event ID: 013
-Event Name: Trainer(3)
+Event Name: Trainer(3) 44,23R
 (X,Y): (044,023)
 
 Page #1
@@ -26010,7 +26264,7 @@ List of Event Commands:
 
 #------------------------------------------------------------------------------
 Event ID: 014
-Event Name: Trainer(3)
+Event Name: Trainer(3) 60,17L
 (X,Y): (060,017)
 
 Page #1
@@ -27294,10 +27548,10 @@ List of Event Commands:
   @>Text: \bDEBUG ONLY TEXT: Set the defeat count.
   @>Input Number: [0001: Temp Pokemon Choice], 2 digit(s)
   @>Text: \bSetting losses to \v[1].
-  @>Script: $stats.trainer_battles_lost = pbGet(1)
+  @>Script: $stats.trainer_battles_lost_tmom = pbGet(1)
   @>
  : Branch End
- @>Conditional Branch: Script: $stats.trainer_battles_lost >= 10
+ @>Conditional Branch: Script: $stats.trainer_battles_lost_tmom >= 10
   @>Control Switches: [0113: Bad End Seen] = ON
   @>Comment: ---------- BAD END VARIANT B
   @>Text: \xn[Kogasa]Besides, it's not like you can scare 
@@ -27491,7 +27745,7 @@ List of Event Commands:
 @>Change Screen Color Tone: (-255,-255,-255,0), @6
 @>Wait: 8 frame(s)
 @>Transfer Player:[015: Stairs to Basement], (010,008), No Fade
-@>Change Screen Color Tone: (0,0,0,0), @6
+@>Change Screen Color Tone: (-50,-50,-50,0), @6
 @>Set Move Route: Player
  :              : $>Move Up
 @>
@@ -27794,7 +28048,7 @@ List of Event Commands:
  @>Change Screen Color Tone: (-255,-255,-255,0), @6
  @>Wait: 8 frame(s)
  @>Transfer Player:[026: Stairs to Roof], (010,005), Down, No Fade
- @>Change Screen Color Tone: (0,0,0,0), @6
+ @>Change Screen Color Tone: (-50,-50,-50,0), @6
  @>
 : Branch End
 @>
@@ -33400,7 +33654,7 @@ List of Event Commands:
  :    : you like to try some of the Youkai Mountain's homemade goodies?
 @>Text: \xn[Minoriko]Each purchase will award you with a
  :    : a special delicacy that you can take home for free!
-@>Text: \cn\xn[Minoriko]Please, take your time!\ch[1,4,Strawberry Jam - 30 FP,
+@>Text: \pt\xn[Minoriko]Please, take your time!\ch[1,4,Strawberry Jam - 30 FP,
  :    : Blueberry Jam - 30 FP,Minoriko's Jam - 50 FP,No thanks]
 @>Script: item=[:STRAWBERRYJAM,:BLUEBERRYJAM,:MINORIKOJAM,0][pbGet(1)]
 :       : price=[30,30,50,0][pbGet(1)]
@@ -33495,12 +33749,12 @@ Move Animation
 Trigger: Action Button
 
 List of Event Commands:
-@>Text: \CN\xn[Minoriko]Hello and welcome to Minoriko's Delicacies Shop! Would
+@>Text: \pt\xn[Minoriko]Hello and welcome to Minoriko's Delicacies Shop! Would
  :    : you like to try some of the Youkai Mountain's homemade goodies?
-@>Text: \CN\xn[Minoriko]Each purchase will award you with a
+@>Text: \pt\xn[Minoriko]Each purchase will award you with a
  :    : a special delicacy that you can take home for free!
 @>Label: Choice
-@>Text: \CN\xn[Minoriko]Please take your time!
+@>Text: \pt\xn[Minoriko]Please take your time!
 @>Show Choices: Strawberry Jam, Blueberry Jam, Festival Special, No Thanks
 (When Cancel: Choice 4)
 : When [Strawberry Jam]
@@ -33524,24 +33778,24 @@ List of Event Commands:
 @>Comment: ================================
 @>Script: itm = GameData::Item.get(pbGet(1))
 :       : pbSet(3, itm.name)
-@>Text: \CN\xn[Minoriko]A jar of \v[3], right?
+@>Text: \pt\xn[Minoriko]A jar of \v[3], right?
 @>Show Choices: Yes, No
 (When Cancel: Choice 2)
 : When [Yes]
  @>Conditional Branch: Script: pbGet(2) > $player.battle_points
-  @>Text: \cn\xn[Minoriko]Sorry, \pn! I can't give credit! You should 
+  @>Text: \pt\xn[Minoriko]Sorry, \pn! I can't give credit! You should 
    :    : try stopping by my sister's booth to get some more FP!
   @>
  : Else
   @>Conditional Branch: Script: $bag.can_add?(pbGet(1))
-   @>Text: \CN\xn[Minoriko]Yep, all of the FP is here! Please enjoy 
+   @>Text: \pt\xn[Minoriko]Yep, all of the FP is here! Please enjoy 
     :    : your jar of \v[3]!
    @>Play SE: 'Mart buy item', 100, 100
    @>Script: $player.battle_points -= pbGet(2)
    @>Script: pbBuyPrize(pbGet(1))
-   @>Text: \CN\xn[Minoriko]Oh, and don't forget your purchase 
+   @>Text: \pt\xn[Minoriko]Oh, and don't forget your purchase 
     :    : reward!
-   @>Text: \CN\xn[Minoriko]Your reward this time is\..\..\..\wtnp[20]
+   @>Text: \pt\xn[Minoriko]Your reward this time is\..\..\..\wtnp[20]
    @>Play SE: 'Battle catch click', 100, 100
    @>Wait: 40 frame(s)
    @>Conditional Branch: Script: rand(40) < 30
@@ -33554,7 +33808,7 @@ List of Event Commands:
     :       : pbSet(2, plural)
     @>Play ME: 'Egg get', 100, 100
     @>Wait: 20 frame(s)
-    @>Text: \CN\xn[Minoriko]Oh, it appears as if you won a normal prize!\wt[20]
+    @>Text: \pt\xn[Minoriko]Oh, it appears as if you won a normal prize!\wt[20]
      :    : Please enjoy these additional \v[2]!
     @>Script: pbReceiveItem(pbGet(1),5)
     @>
@@ -33567,7 +33821,7 @@ List of Event Commands:
     :       : pbSet(2, plural)
     @>Play ME: 'Slots big win', 100, 100
     @>Wait: 20 frame(s)
-    @>Text: \CN\xn[Minoriko]Oh, it appears as if you won a rare prize!\wt[20]
+    @>Text: \pt\xn[Minoriko]Oh, it appears as if you won a rare prize!\wt[20]
      :    : Congratulations! Please enjoy these additional \v[2]!
     @>Script: pbReceiveItem(pbGet(1),5)
     @>
@@ -33575,9 +33829,9 @@ List of Event Commands:
    @>Exit Event Processing
    @>
   : Else
-   @>Text: \CN\xn[Minoriko]Oh no! It looks like you're out of 
+   @>Text: \pt\xn[Minoriko]Oh no! It looks like you're out of 
     :    : space in your bag!
-   @>Text: \CN\xn[Minoriko]Well, these things happen! I'll be sure 
+   @>Text: \pt\xn[Minoriko]Well, these things happen! I'll be sure 
     :    : to set this jar aside for you until you empty your bag!
    @>Exit Event Processing
    @>
@@ -33616,7 +33870,7 @@ List of Event Commands:
  :    : none of my products are actually for sale.
 @>Text: \xn[Rinnosuke]However, I was coerced into setting up a stall
  :    : here this year.
-@>Text: \cn\xn[Rinnosuke]As such, you may browse my wares, but please
+@>Text: \pt\xn[Rinnosuke]As such, you may browse my wares, but please
  :    : do not entertain the idea of buying them, for I will not sell.\ch[1,5,
  :    : Handheld Console - 9999 FP,Large Television - 9999 FP,Portable Phone - 9999 FP,Collapsable Bike - 9999 FP,Nevermind]
 @>Conditional Branch: Variable [0001: Temp Pokemon Choice] > -1
@@ -35388,7 +35642,7 @@ List of Event Commands:
   @>Text: \pt\xn[Lyrica]Let me just heal your Puppets first, and...
   @>Recover All: Entire Party
   @>Play SE: 'Mining found all', 100, 100
-  @>Text: \cn\xn[Lyrica]... Alright! One round with the Doppeldevice, coming up!
+  @>Text: \pt\xn[Lyrica]... Alright! One round with the Doppeldevice, coming up!
   @>Change Battle BGM: 'B-016. The Ground's Color is Yellow (BW Remix)', 100, 100
   @>Script: setBattleRule("canLose")
   :       : setBattleRule("noMoney")
@@ -36993,6 +37247,21 @@ List of Event Commands:
  :    : grades in class, but this will be unlike anything I've taught you in class!
 @>
 
+Page #2
+Conditions
+Switch 0129: Keine absent from Quiz is ON
+
+Autonomous Movement
+Type: Fixed
+Speed: 3: Slow
+Freq: 3: Low
+Options Enabled
+Move Animation
+Trigger: Action Button
+
+List of Event Commands:
+@>
+
 #------------------------------------------------------------------------------
 Event ID: 002
 Event Name: Shinji
@@ -37217,6 +37486,7 @@ List of Event Commands:
   (When Cancel: Choice 2)
   : When [Yes]
    @>Text: Good luck in there!
+   @>Control Switches: [0130: Expert Quiz On] = ON
    @>Script: pbSet(4,2) # Intermediate Difficulty
    :       : pbSet(3,3) # Incorrect Question Count
    @>Script: pbSetSelfSwitch(10,"A",true)
@@ -37270,6 +37540,26 @@ List of Event Commands:
  @>Jump to Label: Start
  @>
 : Branch End
+@>
+
+Page #2
+Conditions
+Switch 0129: Keine absent from Quiz is ON
+
+Graphic: TPDP_NPC 14
+
+Autonomous Movement
+Type: Fixed
+Speed: 3: Slow
+Freq: 3: Low
+Options Enabled
+Move Animation
+Trigger: Action Button
+
+List of Event Commands:
+@>Text: Welcome to Keine Kamishirasawa's Quiz Hall!
+@>Text: Unfortunately, Keine is not present right now. You will have to
+ :    : come back later!
 @>
 
 #------------------------------------------------------------------------------
@@ -40689,6 +40979,7 @@ List of Event Commands:
 :       : pbSetSelfSwitch(4,"A",true)
 :       : pbSetSelfSwitch(5,"A",true)
 :       : pbSetSelfSwitch2(39,36,"A",true)
+@>Control Switches: [0129: Keine absent from Quiz] = ON
 @>Change Screen Color Tone: (0,0,0,0), @6
 @>
 
@@ -41245,6 +41536,7 @@ List of Event Commands:
 @>Text: \xn[Keine]Good luck, \pn. The whole of the Human Village
  :    : is resting on your shoulders with this.
 @>Text: \xn[\pn]\b(Yeah, no pressure...)
+@>Control Switches: [0129: Keine absent from Quiz] = OFF
 @>Script: pbSetSelfSwitch2(3,11,"A",true)
 @>Control Self Switch: A =ON
 @>Play SE: 'Door exit', 100, 100
@@ -43053,6 +43345,7 @@ List of Event Commands:
 @>Text: \xn[\pn]\b(Technically, that wasn't the promise we made...)
 @>Text: \xn[Nitori]If you're ready to hop on over to the Forest, just
  :    : say the word, and I'll be waiting for you here!
+@>Control Switches: [0133: Nitori Beaten (Music Room)] = ON
 @>Control Self Switch: A =ON
 @>
 
@@ -48319,7 +48612,7 @@ List of Event Commands:
  @>Play SE: 'Door exit', 100, 100
  @>Change Screen Color Tone: (-255,-255,-255,0), @6
  @>Wait: 8 frame(s)
- @>Transfer Player:[023: Third Floor], (030,003), Down, No Fade
+ @>Transfer Player:[054: Prismriver Manor (F3)], (030,003), Down, No Fade
  @>Change Screen Color Tone: (-50,-50,-50,0), @6
  @>
 : Branch End
@@ -48804,9 +49097,11 @@ List of Event Commands:
 :       : WildBattle.start(:CSHINKI,35)
 @>Conditional Branch: Variable [0001: Temp Pokemon Choice] == 1
  @>Text: The wild CShinki fled!
+ @>Control Switches: [0128: Cleared Prismriver Manor] = ON
  @>Control Self Switch: A =ON
  @>
 : Else
+ @>Control Switches: [0128: Cleared Prismriver Manor] = ON
  @>Control Self Switch: B =ON
  @>
 : Branch End
@@ -51456,6 +51751,8 @@ List of Event Commands:
  :    : hiding in the tall grass around here.
 @>Text: \xn[Hina]Be careful! They're much stronger than the normal
  :    : Puppets in the area!
+@>Set Move Route: This event
+ :              : $>Turn Up
 @>
 
 Page #2
@@ -52088,6 +52385,8 @@ List of Event Commands:
  :    : their senses, so all you'll have to do is knock them out.
 @>Text: \xn[\pn]\b(A simple battle, huh? Yeah that's definitely within my 
  :    : skillset. What could go wrong?)
+@>Set Move Route: [Hina (Fake)]
+ :              : $>Turn Up
 @>Script: pbSetSelfSwitch(4,"A",true)
 :       : pbSetSelfSwitch(8,"A",true)
 :       : pbSetSelfSwitch(9,"A",true)
@@ -61816,6 +62115,7 @@ List of Event Commands:
  @>Text: \xn[Elly]Let me hold you up no longer, then! Feel free to 
   :    : pass, \pn. Mugenkan awaits you.
  @>Control Self Switch: B =ON
+ @>Control Switches: [0134: Elly Beaten (Music Room)] = ON
  @>
 : Branch End
 @>Script: pbTrainerEnd
@@ -62402,19 +62702,25 @@ Speed: 3: Slow
 Freq: 3: Low
 Options Enabled
 Move Animation
-Trigger: Player Touch
+Trigger: Action Button
 
 List of Event Commands:
-@>Recover All: Entire Party
-@>Change Screen Color Tone: (-255,-255,-255,0), @6
-@>Wait: 8 frame(s)
-@>Play ME: 'Pkmn healing', 100, 100
-@>Wait: 80 frame(s)
-@>Set Move Route: Player
- :              : $>1 Step Forward
-@>Change Screen Color Tone: (0,0,0,0), @6
-@>Text: Your Puppets were fully healed!
-@>Script: pbSetPokemonCenter
+@>Text: Would you like to rest up?
+@>Show Choices: Yes, No
+(When Cancel: Choice 2)
+: When [Yes]
+ @>Recover All: Entire Party
+ @>Change Screen Color Tone: (-255,-255,-255,0), @6
+ @>Wait: 8 frame(s)
+ @>Play ME: 'Pkmn healing', 100, 100
+ @>Wait: 80 frame(s)
+ @>Change Screen Color Tone: (0,0,0,0), @6
+ @>Text: Your Puppets were fully healed!
+ @>Script: pbSetPokemonCenter
+ @>
+: When [No]
+ @>
+: Branch End
 @>
 
 #------------------------------------------------------------------------------
@@ -62432,19 +62738,25 @@ Speed: 3: Slow
 Freq: 3: Low
 Options Enabled
 Move Animation
-Trigger: Player Touch
+Trigger: Action Button
 
 List of Event Commands:
-@>Recover All: Entire Party
-@>Change Screen Color Tone: (-255,-255,-255,0), @6
-@>Wait: 8 frame(s)
-@>Play ME: 'Pkmn healing', 100, 100
-@>Wait: 80 frame(s)
-@>Set Move Route: Player
- :              : $>1 Step Forward
-@>Change Screen Color Tone: (0,0,0,0), @6
-@>Text: Your Puppets were fully healed!
-@>Script: pbSetPokemonCenter
+@>Text: Would you like to rest up?
+@>Show Choices: Yes, No
+(When Cancel: Choice 2)
+: When [Yes]
+ @>Recover All: Entire Party
+ @>Change Screen Color Tone: (-255,-255,-255,0), @6
+ @>Wait: 8 frame(s)
+ @>Play ME: 'Pkmn healing', 100, 100
+ @>Wait: 80 frame(s)
+ @>Change Screen Color Tone: (0,0,0,0), @6
+ @>Text: Your Puppets were fully healed!
+ @>Script: pbSetPokemonCenter
+ @>
+: When [No]
+ @>
+: Branch End
 @>
 
 #------------------------------------------------------------------------------
@@ -70354,21 +70666,44 @@ Trigger: Autorun
 
 List of Event Commands:
 @>Script: pbSetPokemonCenter
-@>Script: pkmn = Pokemon.new(:CICHIRIN,20)
-:       : pkmn.item = :LUCKYEGG
-:       : pkmn.poke_ball = :GREATORB
-:       : pkmn.obtain_text = "Gensokyo Wilderness"
-@>Script: pkmn.iv[:HP] = 31
-:       : pkmn.iv[:ATTACK] = 31
-:       : pkmn.iv[:DEFENSE] = 31
-:       : pkmn.iv[:SPATK] = 31
-:       : pkmn.iv[:SPDEF] = 31
-:       : pkmn.iv[:SPEED] = 31
-:       : pkmn.calc_stats
-:       : pkmn.reset_moves
-:       : pbAddPokemonSilent(pkmn)
-:       : 
-:       : $game_variables[1] = nil
+@>Conditional Branch: Switch [0147: TKoL Cleared] == OFF
+ @>Conditional Branch: Variable [0141: Scenarios Cleared] >= 1
+  @>Script: pkmn = Pokemon.new(:ICHIRIN,50)
+  :       : pkmn.item = :LUCKYEGG
+  :       : pkmn.poke_ball = :GREATORB
+  :       : pkmn.obtain_text = "Gensokyo Wilderness"
+  @>Script: pkmn.iv[:HP] = 31
+  :       : pkmn.iv[:ATTACK] = 31
+  :       : pkmn.iv[:DEFENSE] = 31
+  :       : pkmn.iv[:SPATK] = 31
+  :       : pkmn.iv[:SPDEF] = 31
+  :       : pkmn.iv[:SPEED] = 31
+  :       : pkmn.calc_stats
+  :       : pkmn.reset_moves
+  :       : pbAddPokemonSilent(pkmn)
+  :       : 
+  :       : $game_variables[1] = nil
+  @>
+ : Else
+  @>Script: pkmn = Pokemon.new(:CICHIRIN,20)
+  :       : pkmn.item = :LUCKYEGG
+  :       : pkmn.poke_ball = :GREATORB
+  :       : pkmn.obtain_text = "Gensokyo Wilderness"
+  @>Script: pkmn.iv[:HP] = 31
+  :       : pkmn.iv[:ATTACK] = 31
+  :       : pkmn.iv[:DEFENSE] = 31
+  :       : pkmn.iv[:SPATK] = 31
+  :       : pkmn.iv[:SPDEF] = 31
+  :       : pkmn.iv[:SPEED] = 31
+  :       : pkmn.calc_stats
+  :       : pkmn.reset_moves
+  :       : pbAddPokemonSilent(pkmn)
+  :       : 
+  :       : $game_variables[1] = nil
+  @>
+ : Branch End
+ @>
+: Branch End
 @>Text: \xn[Maya]I'm not sure how you do it, \pn; putting up with
  :    : all those battles so frequently.
 @>Text: \xn[Maya]Even with all the training that Kota, Shinji, and I have 
@@ -76753,7 +77088,7 @@ List of Event Commands:
 
 #------------------------------------------------------------------------------
 Event ID: 010
-Event Name: Trainer(3)
+Event Name: Trainer(2)
 (X,Y): (068,029)
 
 Page #1
@@ -78624,7 +78959,7 @@ List of Event Commands:
 @>Set Event Location: [Trainer(2)],(026,033), Left
 @>Set Event Location: [Trainer(1)],(017,017), Down
 @>Set Event Location: [Trainer(2)],(033,022), Right
-@>Set Event Location: [Trainer(3)],(068,029), Left
+@>Set Event Location: [Trainer(2)],(068,029), Left
 @>Set Event Location: [Trainer(3)],(064,041), Left
 @>Control Switches: [0001: Starting over] = OFF
 @>
@@ -79345,12 +79680,31 @@ List of Event Commands:
 
 #------------------------------------------------------------------------------
 Event ID: 015
-Event Name: A Friend
+Event Name: A Friend counter(6)
 (X,Y): (035,017)
 
 Page #1
 Conditions
 None
+
+Graphic: bb
+
+Autonomous Movement
+Type: Fixed
+Speed: 3: Slow
+Freq: 3: Low
+Options Enabled
+Move Animation
+Trigger: Player Touch
+
+List of Event Commands:
+@>Control Switches: [0146: Found a friend!] = ON
+@>Control Self Switch: A =ON
+@>
+
+Page #2
+Conditions
+Self Switch A is ON
 
 Graphic: bb
 
@@ -87466,7 +87820,7 @@ List of Event Commands:
 
 #------------------------------------------------------------------------------
 Event ID: 028
-Event Name: Trainer(2)
+Event Name: Trainer(2) 24,35D
 (X,Y): (024,035)
 
 Page #1
@@ -87530,7 +87884,7 @@ List of Event Commands:
 
 #------------------------------------------------------------------------------
 Event ID: 029
-Event Name: Trainer(3)
+Event Name: Trainer(3) 24,40U
 (X,Y): (024,040)
 
 Page #1
@@ -87593,7 +87947,7 @@ List of Event Commands:
 
 #------------------------------------------------------------------------------
 Event ID: 030
-Event Name: Trainer(1)
+Event Name: Trainer(1) 40,40R
 (X,Y): (040,040)
 
 Page #1
@@ -87827,6 +88181,9 @@ Move Animation
 Trigger: Autorun
 
 List of Event Commands:
+@>Set Event Location: [Trainer(2) 24,35D],(024,035), Down
+@>Set Event Location: [Trainer(3) 24,40U],(024,040), Up
+@>Set Event Location: [Trainer(1) 40,40R],(040,040), Right
 @>Control Switches: [0001: Starting over] = OFF
 @>
 
