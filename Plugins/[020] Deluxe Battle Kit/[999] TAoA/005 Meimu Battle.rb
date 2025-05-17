@@ -29,7 +29,7 @@
      }
   ) 
   
-  MidbattleHandlers.add(:midbattle_scripts, :vs_meimu_final,
+  MidbattleHandlers.add(:midbattle_scripts, :vs_meimu_final_old,
     proc { |battle, idxBattler, idxTarget, trigger|
       scene  = battle.scene
 	  player = battle.battlers[0]

@@ -1,0 +1,550 @@
+# See the documentation on the wiki to learn how to edit this file.
+#-------------------------------
+# The Kingdom of Lunacy
+# Loop 2 - No New Game +
+#-------------------------------
+# Stage 1: Human Village
+#-------------------------------
+[TENGUC_M,Daichi]
+LoseText = Ack!
+Items = HYPERPOTION,HYPERPOTION,FULLRESTORE
+Pokemon = SLILYBLACK,50
+	Moves = DARKPULSE18,NASTYPLOT18,OMINOUSWIND18,SHADOWBALL18
+	IV = 31,31,31,31,31,31
+	Ability = SPEEDBOOST
+Pokemon = DREISEN,50
+	Moves = MIRRORCOAT18,SIGNALBEAM18,NIGHTMARE18,LIGHTSCREEN18
+	IV = 31,31,31,31,31,31
+	Ability = KEENEYE
+Pokemon = SUNNY,50
+	Moves = SUNNYDAY18,SOLARBEAM18,LAVAPLUME18,SUBSTITUTE18
+	IV = 31,31,31,31,31,31
+	Ability = FLASHFIRE
+
+#-------------------------------
+# Stage 1: Bamboo Forest
+#-------------------------------
+[EARTHRABBIT,Nagi,2]
+LoseText = Why didn't you warn me you were strong!
+Pokemon = KAGEROU,48
+Pokemon = REISEN,49
+#-------------------------------
+[EARTHRABBIT,Hiiragi,2]
+LoseText = I shouldn't have wasted time battling...
+Pokemon = LILYWHITE,50
+#-------------------------------
+[EARTHRABBIT,Ibuki,2]
+LoseText = Okay, alright, I'll behave!
+Pokemon = MYSTIA,49
+Pokemon = KYOUKO,49
+#-------------------------------
+[EARTHRABBIT,Kaya,2]
+LoseText = If it's not you, then... ...Oh, right.
+Pokemon = YUKI,50
+Pokemon = SHIZUHA,50
+Pokemon = WAKASAGI,52
+#-------------------------------
+[EARTHRABBIT,Mao,2]
+LoseText = Now now, let's not jump to conclusions!
+Pokemon = EIRIN,53
+#-------------------------------
+[EARTHRABBIT,Mugi,2]
+LoseText = Eep! My Puppets!
+Pokemon = TEWI,51
+Pokemon = HATATE,51
+Pokemon = KASEN,51
+#-------------------------------
+[EARTHRABBIT,Inako,2]
+LoseText = So much for that prank...
+Pokemon = NAZRIN,49
+Pokemon = TEWI,51
+#-------------------------------
+[EARTHRABBIT,Yura,2]
+LoseText = Wait, what do you mean it's supposed to be a rabbit instead!?
+Pokemon = MARISA,53
+#-------------------------------
+# Boss: Reisen U. Inaba
+#-------------------------------
+[REISEN,Reisen U. Inaba,30]
+LoseText = I heard you were strong, but wow...
+Pokemon = SYOUMU,53
+Pokemon = REISEN,55
+#-------------------------------
+# Boss: Eirin Yagokoro
+#-------------------------------
+[EIRIN,Eirin Yagokoro,30]
+LoseText = I see... Yes, you'll do just fine.
+Pokemon = DKAGUYA,53
+Pokemon = EIRIN,55
+#-------------------------------
+# Stage 2: Youkai Mountain
+#-------------------------------
+[YOUKAI_1,Suzuran,2]
+Pokemon = MEDICINE,53
+Pokemon = HINA,54
+Pokemon = YAMAME,55
+LoseText = Oh... what do you have against toxins, eh?
+#-------------------------------
+[FAIRY_1_ALT,Kuroko,2]
+Pokemon = LILYBLACK,54
+Pokemon = RUMIA,56
+LoseText = You may not be, but I sure am!
+#-------------------------------
+[FAIRY_1_ALT,Rito,2]
+Pokemon = HATATE,55
+Pokemon = YUYUKO,55
+Pokemon = NITORI,55
+LoseText = Human on... I forgot what came next!
+#-------------------------------
+[FAIRY_2_ALT,Shiroko,2]
+Pokemon = MOMIJI,55
+Pokemon = LILYWHITE,57
+Pokemon = LUNA,57
+LoseText = ...Too much? Not enough?
+#-------------------------------
+[YOUKAI_2,Kazune,2]
+Pokemon = AYA,56
+Pokemon = IKU,56
+Pokemon = TAYA,58
+LoseText = Oh no, a tailwind!
+#-------------------------------
+[YOUKAI_1,Kaede,2]
+Pokemon = SANAE,56
+Pokemon = REIMU,56
+Pokemon = TRRENKO,56
+LoseText = Is it because I'm a youkai that I can't channel the gods?
+#-------------------------------
+[FAIRY_1_ALT,Filia,2]
+Pokemon = YUUGI,57
+Pokemon = MEILING,57
+Pokemon = SARA,57
+LoseText = You blocked my overhead!
+#-------------------------------
+[YOUKAI_2,Kokonoe,2]
+Pokemon = RIN,56
+Pokemon = MOMIJI,56
+Pokemon = KAGEROU,58
+Pokemon = CHEN,58
+LoseText = C-Calm down! We weren't going to eat you!
+#-------------------------------
+# Midboss: Seiran
+#-------------------------------
+[SEIRAN,Seiran,30]
+LoseText = Mayday, mayday! This is a state of emergency!
+Pokemon = REISEN,58
+    Ball = MOONBALL
+Pokemon = HATATE,58
+    Ball = MOONBALL
+Pokemon = SEIRAN,59
+    Ball = MOONBALL
+Pokemon = YORIHIME,60
+    Ball = MOONBALL
+
+#-------------------------------
+# Boss: Ringo
+#-------------------------------
+[RINGO,Ringo,30]
+LoseText = The Earth really does have a bunch of strong people on it, doesn't it?
+Pokemon = YUYUKO,59
+    Ball = MOONBALL
+Pokemon = TOYOHIME,60
+    Ball = MOONBALL
+Pokemon = HMYSTIA,59
+    Ball = MOONBALL
+Pokemon = RINGO,61
+	Moves = CRUNCH18,BULKUP18,PINMISSILE18,BULLETSEED18
+	Ball = MOONBALL
+
+#-------------------------------
+# Stage 3: Kaian Passageway
+#-------------------------------
+[MOONRABBIT,Asuna,2]
+LoseText = Major emergency! Fall back to central command!
+Items = HYPERPOTION,HYPERPOTION,FULLHEAL
+Pokemon = MARISA,57
+	Ball = MOONBALL
+Pokemon = DOREMY,59
+	Ball = MOONBALL
+Pokemon = RIKA,60
+	Ball = MOONBALL
+#-------------------------------
+[PUPPETEER_M,Asahi,2]
+LoseText = LISTENING BEEN SAID: REAR BEST WITHDRAW.
+Pokemon = MOMIJI,57
+Pokemon = RIKA,57
+Pokemon = SHIKIEIKI,57
+Pokemon = KANA,57
+#-------------------------------
+[PUPPETEER_F,Mariko,2]
+LoseText = WHY SEEK HAPPINESS? DESIGN ANOTHER TOURNAMENT.
+Pokemon = KANAKO,59
+Pokemon = TYAMAME,59
+#-------------------------------
+[PUPPETEER_F,Wakana,2]
+LoseText = HOBBY ISN'T PERFECT. HERE I COME WIRELESS WORLD.
+Pokemon = SARA,58
+Pokemon = MERLIN,60
+Pokemon = AHINA,58
+#-------------------------------
+[MOONRABBIT,Amokusu,2]
+LoseText = I was given one task to do, then you came along and ruined it!
+Items = HYPERPOTION,HYPERPOTION,FULLHEAL
+Pokemon = SAGUME,58
+	Ball = MOONBALL
+Pokemon = YORIHIME,60
+	Ball = MOONBALL
+Pokemon = SAGUME,62
+	Moves = HAZE18,ENCORE18,DECISION18,BINDINGVOICE18
+	Ball = MOONBALL
+#-------------------------------
+[FAIRY_G_ALT,Hanako,2]
+LoseText = Yzal tog tsuj ylbaborp rotaerc eht!
+Pokemon = SSHIZUHA,58
+Pokemon = TYUUKA,58
+#-------------------------------
+[FAIRY_G_ALT,Ritsuko,2]
+LoseText = Em taeb uoy eveileb t'nac I!
+Pokemon = MARGATROID,57
+Pokemon = TCIRNO,57
+Pokemon = HECATIA,59
+#-------------------------------
+[FAIRY_G_ALT,Lydia,2]
+LoseText = Niaga ti trats, revo trats l'li dna, pots ot em llet~
+Pokemon = LYRICA,57
+Pokemon = TRMARIBEL,57
+Pokemon = DSEIJA,58
+#-------------------------------
+[MOONRABBIT,Kaori,2]
+LoseText = Our Puppets... Is this why we're losing against the invasion?
+Items = HYPERPOTION,HYPERPOTION,FULLHEAL
+Pokemon = SAGUME,58
+	Ball = MOONBALL
+Pokemon = TOYOHIME,60
+	Ball = MOONBALL
+Pokemon = SAGUME,62
+	Moves = HAZE18,ENCORE18,DECISION18,BINDINGVOICE18
+	Ball = MOONBALL
+#-------------------------------
+# Boss: Doremy Sweet
+#-------------------------------
+[DOREMY,Doremy Sweet,30]
+LoseText = I see... Well, I have done my job, so that's enough I suppose.
+Items = HYPERPOTION,HYPERPOTION,FULLRESTORE,FULLHEAL,FULLHEAL
+Pokemon = DOREMY,61
+	Ball = DREAMBALL
+	Name = R.E.M.
+Pokemon = GENGETSU,63
+    Ball = DREAMBALL
+	Name = Lucidity
+Pokemon = MAGISTONES,62
+	Name = Tumbler~
+	Ball = DREAMBALL
+Pokemon = KAZAMI,63
+	Name = Nighterror
+	Ball = DREAMBALL
+Pokemon = DOREMY,65
+	Name = Dreamweave
+	Moves = REST18,SLEEPTALK18,NIGHTMARE18,DIZZYPUNCH18
+	Shiny = yes
+	Item = CHESTOBERRY
+	Ball = DREAMBALL
+
+#-------------------------------
+# Stage 4: Lunar Capital
+#-------------------------------
+[HELLFAIRY,Reika,2]
+LoseText = There's more where we came from!
+Pokemon = SRIN,61
+Pokemon = SATORI,63
+[HELLFAIRY,Sienna,2]
+LoseText = You can't beat us all~
+Pokemon = AUTSUHO,61
+Pokemon = KOISHI,63
+[HELLFAIRY,Clarise,2]
+LoseText = Thanks for playing, see you around~
+Pokemon = DMOMIJI,61
+Pokemon = KANAKO,63
+[HELLFAIRY,Makiko,2]
+LoseText = That was fun!
+Pokemon = TAYA,61
+Pokemon = SUWAKO,63
+
+#-------------------------------
+# Boss: Clownpiece + Hell Fairy Backup
+# The three fairies will cycle back in every time after being defeated
+# EXP Stops being gained after beating the cycle three times
+#-------------------------------
+[CLOWNPIECET,Clownpiece,30]
+LoseText = No way! That didn't just happen!
+Items = HYPERPOTION,HYPERPOTION,FULLHEAL,FULLHEAL
+Pokemon = ALUNA,64
+Pokemon = HECATIA,67
+Pokemon = CLOWNPIECE,67
+Pokemon = CLOWNPIECE,69
+[HELLFAIRY,Lucia,2]
+LoseText = Retreat, retreat!
+Pokemon = DYUUGI,63
+Pokemon = LUNA,65
+[HELLFAIRY,Astera,2]
+LoseText = Retreat, retreat!
+Pokemon = THATATE,63
+Pokemon = SUNNY,65
+[HELLFAIRY,Olivia,2]
+LoseText = Retreat, retreat!
+Pokemon = SSARIEL,63
+Pokemon = STAR,65
+
+#-------------------------------
+# Stage 5: Sea of Tranquility
+#-------------------------------
+[HELLFAIRY,Aphrodite,2]
+LoseText = I see how you managed to beat her!
+Pokemon = DAIYOUSEI,63
+Pokemon = SANAE,65
+
+[HELLFAIRY,Ares,2]
+LoseText = Just look at us, we're so much cooler!
+Pokemon = KANAKO,64
+Pokemon = SUWAKO,64
+Pokemon = EIRIN,66
+
+[HELLFAIRY,Ouranos,2]
+LoseText = Forgive us milady...!
+Pokemon = LILYWHITE,64
+Pokemon = TENMA,64
+Pokemon = UTSUHO,64
+
+[HELLFAIRY,Hermia,2]
+LoseText = My secret base has fallen!
+Pokemon = SAKUYA,62
+Pokemon = FUTO,63
+Pokemon = AYA,64
+
+[HELLFAIRY,Rhea,2]
+LoseText = Oh, Gensokyo made them? That makes more sense!
+Pokemon = KOMACHI,63
+Pokemon = KOMACHI,63
+Pokemon = SKOMACHI,65
+Pokemon = AKOMACHI,65
+
+[HELLFAIRY,Amphitrite,2]
+LoseText = Wait, what do you mean the others already retreated?
+Pokemon = NITORI,64
+Pokemon = MURASA,64
+Pokemon = ASTAR,67
+
+[HELLFAIRY,Macaria,2]
+LoseText = Eek! How will Dione notice me now!
+Pokemon = DSHIKIEIKI,64
+Pokemon = SARIEL,66
+
+[HELLFAIRY,Dione,2]
+LoseText = Macaria was so much cooler than I was...!
+Pokemon = ATENSHI,64
+Pokemon = HAKUREI,66
+
+[HELLFAIRY,Gaia,2]
+LoseText = Drat! Your conquest doesn't end here!
+Pokemon = MINORIKO,65
+Pokemon = SHIZUHA,65
+Pokemon = AKISISTERS,67
+Pokemon = AKAZAMI,68
+
+#-------------------------------
+# Boss: Junko
+#-------------------------------
+[JUNKO,Junko,30]
+LoseText = As the fates dictated, but no matter.
+Pokemon = AMOKOU,66
+	Name = Wrath
+Pokemon = TPARSEE,68
+	Name = Invidia
+Pokemon = ASUWAKO,68
+	Name = Pestilence
+Pokemon = JUNKO,70
+	Name = Fury
+Pokemon = DARKALICE,72
+	Name = Pride
+
+#-------------------------------
+# Stage 6: Sea of the Edge: Hecatia's Fortress
+#-------------------------------
+[HELLFAIRY,Hypatia,2]
+LoseText = What's so special about crystals anyway?
+Pokemon = ADMARISA,63
+Pokemon = AEIRIN,61
+Pokemon = SMARISA,61
+
+[HELLFAIRY,Eris,2]
+LoseText = Whatever you do, don't touch it!
+Pokemon = SSEIGA,60
+Pokemon = SEIJA,62
+Pokemon = ANUE,63
+
+[HELLFAIRY,Helia,2]
+LoseText = Oh right, my name isn't Helios anymore! Duh!
+Pokemon = AUTSUHO,65
+Pokemon = AKANAKO,67
+Pokemon = SSARIEL,67
+Pokemon = HECATIA,69
+
+#-------------------------------
+# Boss: Junko
+#-------------------------------
+[JUNKO,Junko,21]
+LoseText = ... Chang'e, is this truly your answer to me?
+Pokemon = AMOKOU,66
+	Name = Wrath
+Pokemon = TPARSEE,68
+	Name = Invidia
+Pokemon = ASUWAKO,68
+	Name = Pestilence
+Pokemon = JUNKO,70
+	Name = Fury
+Pokemon = DARKALICE,72
+	Name = Pride
+Pokemon = SARIEL,74
+	Name = Death
+#-------------------------------
+# Boss: Hecatia Lapislazuli
+#-------------------------------
+[HECATIA,Hecatia Lapislazuli,30]
+LoseText = Maybe I should have brought in all three of my bodies!
+Pokemon = CLOWNPIECE,66
+Pokemon = TSATORI,68
+Pokemon = KIKURI,68
+Pokemon = HECATIA,70
+Pokemon = SHINKI,72
+Pokemon = KONNGARA,74
+
+#-------------------------------
+# Partner: Reimu Hakurei
+#-------------------------------
+[REIMU,Reimu Hakurei,30]
+LoseText = ...
+Pokemon = DYUKARI,67
+Pokemon = SMARISA,67
+Pokemon = REIMU,68
+Pokemon = ASUIKA,70
+Pokemon = SENDAI,72
+Pokemon = AREIMU,74
+
+#-------------------------------
+# Partner: Marisa Kirisame
+#-------------------------------
+[MARISA_2,Marisa Kirisame,30]
+LoseText = ...
+Pokemon = TALICE,67
+Pokemon = MAGISTONES,67
+Pokemon = KIRISAME,68
+Pokemon = RINNOSUKE,70
+Pokemon = MIMA,72
+Pokemon = AMARISA,74
+
+#-------------------------------
+# Partner: Sanae Kochiya
+#-------------------------------
+[SANAE_2,Sanae Kochiya,30]
+LoseText = ...
+Pokemon = TNITORI,67
+Pokemon = RIKA,67
+Pokemon = TENSOKU,68
+Pokemon = AKANAKO,70
+Pokemon = DSUWAKO,72
+Pokemon = ASANAE,74
+
+#-------------------------------
+# Partner: Reisen U. Inaba
+#-------------------------------
+[REISEN_2,Reisen U. Inaba,30]
+LoseText = ...
+Pokemon = SMEDICINE,67
+Pokemon = DKAGUYA,67
+Pokemon = SAGUME,68
+Pokemon = SYOUMU,70
+Pokemon = AEIRIN,72
+Pokemon = ADREISEN,74
+
+#-------------------------------
+# Stage EX: Lunarian Palace
+#-------------------------------
+[MOONRABBIT_Och,Och,2]
+LoseText = Oh no, we were defeated!
+Pokemon = RIKAKO,64
+Pokemon = RIKA,65
+Pokemon = YUMEMI,67
+Pokemon = SMEILING,69
+	Form = 1
+	Shiny = yes
+[MOONRABBIT_Phul,Phul,2]
+LoseText = Maybe we taunted her a bit too much.
+Pokemon = MARGATROID,65
+Pokemon = APATCHOULI,65
+Pokemon = SMARISA,67
+Pokemon = SENDAI,69
+	Form = 1
+	Shiny = yes
+
+#-------------------------------
+# Midboss: Rei'sen
+#-------------------------------
+[REISEN2,Rei'sen,30]
+LoseText = I told you I wasn't that strong!
+Pokemon = SAGUME,65
+	Ball = MOONBALL
+Pokemon = TOYOHIME,66
+	Ball = MOONBALL
+Pokemon = TREISEN,68
+	Ball = MOONBALL
+
+#-------------------------------
+# Midboss: Sagume Kishin
+#-------------------------------
+[SAGUME,Sagume Kishin,30]
+LoseText = ... Not even spoken word would have overturned this victory.
+Pokemon = SAGUME,67
+	Ball = MOONBALL
+Pokemon = DHINA,69
+	Ball = MOONBALL
+Pokemon = DOREMY,69
+	Ball = DREAMBALL
+Pokemon = AEIRIN,72
+	Name = Omoikane
+	Ball = MOONBALL
+	Moves = GUNKSHOT18,DARKPULSE18,MANABURST18,LIGHTSCREEN18
+
+#-------------------------------
+# Boss: Watatsuki no Toyohime
+#-------------------------------
+[TOYOHIME,Watatsuki no Toyohime,30]
+LoseText = Such power! Wouldn't you agree sister?
+Pokemon = HEIRIN,71
+	Ball = MOONBALL
+Pokemon = ADYUKARI,71
+	Ball = MOONBALL
+Pokemon = SKOMACHI,73
+	Ball = MOONBALL
+Pokemon = YUMEMI,74
+	Ball = MOONBALL
+Pokemon = TSAKUYA,75
+	Ball = MOONBALL
+Pokemon = TTOYOHIME,77
+	Ball = MOONBALL
+
+#-------------------------------
+# Boss: Watatsuki no Yorihime
+#-------------------------------
+[YORIHIME,Watatsuki no Yorihime,30]
+LoseText = Yes, quite. So, this is the potential of Gensokyo's Puppet Handlers...
+Pokemon = AKAGUYA,71
+	Ball = MOONBALL
+Pokemon = AMIKO,71
+	Ball = MOONBALL
+Pokemon = DMOMIJI,73
+	Ball = MOONBALL
+Pokemon = SYOUMU,79
+	Ball = MOONBALL
+Pokemon = ATENSHI,75
+	Ball = MOONBALL
+Pokemon = SYORIHIME,77
+	Ball = MOONBALL

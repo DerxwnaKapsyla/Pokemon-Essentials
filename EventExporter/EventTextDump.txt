@@ -4400,10 +4400,14 @@ List of Event Commands:
  @>Control Switches: [0104: Transition Handler] = ON
  @>Control Variables: [0103: Vs. Transition ID] = 0
  @>Script: case pbGet(141)
- :       : when 0 then pbSet(104, 3)
- :       : when 1 then pbSet(104, 5)
- :       : when 2 then pbSet(104, 6)
- :       : else then pbSet(104, 6)
+ :       : when 0
+ :       :  pbSet(104, 3)
+ :       : when
+ :       :  pbSet(104, 5)
+ :       : when
+ :       :  pbSet(104, 6)
+ :       : else
+ :       :  pbSet(104, 6)
  :       : end
  @>Conditional Branch: Script: TrainerBattle.start(:KEINE, "Keine Kamishirasawa", 10+(pbGet(99) * 10))
   @>
@@ -6953,10 +6957,14 @@ List of Event Commands:
 @>Control Switches: [0104: Transition Handler] = ON
 @>Control Variables: [0103: Vs. Transition ID] = 1
 @>Script: case pbGet(141)
-:       : when 0 then pbSet(104, 3)
-:       : when 1 then pbSet(104, 5)
-:       : when 2 then pbSet(104, 6)
-:       : else then pbSet(104, 6)
+:       : when 0 
+:       :  pbSet(104, 3)
+:       : when
+:       :  pbSet(104, 5)
+:       : when
+:       :  pbSet(104, 6)
+:       : else
+:       :  pbSet(104, 6)
 :       : end
 @>Conditional Branch: Script: TrainerBattle.start(:MARISA, "Marisa Kirisame", 10+(pbGet(99) * 10))
  @>
@@ -8359,10 +8367,14 @@ List of Event Commands:
 @>Control Switches: [0104: Transition Handler] = ON
 @>Control Variables: [0103: Vs. Transition ID] = 2
 @>Script: case pbGet(141)
-:       : when 0 then pbSet(104, 4)
-:       : when 1 then pbSet(104, 5)
-:       : when 2 then pbSet(104, 6)
-:       : else then pbSet(104, 6)
+:       : when 0
+:       :  pbSet(104, 4)
+:       : when 1
+:       :  pbSet(104, 5)
+:       : when 2
+:       :  pbSet(104, 6)
+:       : else
+:       :  pbSet(104, 6)
 :       : end
 @>Conditional Branch: Script: TrainerBattle.start(:YOUMU, "Youmu Konpaku", 10+(pbGet(99) * 10))
  @>
@@ -8744,10 +8756,14 @@ List of Event Commands:
 @>Control Switches: [0104: Transition Handler] = ON
 @>Control Variables: [0103: Vs. Transition ID] = 2
 @>Script: case pbGet(141)
-:       : when 0 then pbSet(104, 4)
-:       : when 1 then pbSet(104, 5)
-:       : when 2 then pbSet(104, 6)
-:       : else then pbSet(104, 6)
+:       : when 0
+:       :  pbSet(104, 4)
+:       : when 1
+:       :  pbSet(104, 5)
+:       : when 2
+:       :  pbSet(104, 6)
+:       : else
+:       :  pbSet(104, 6)
 :       : end
 @>Conditional Branch: Script: TrainerBattle.start(:YOUMU, "Youmu Konpaku", 10+(pbGet(99) * 10))
  @>
@@ -13318,10 +13334,14 @@ List of Event Commands:
 @>Control Switches: [0104: Transition Handler] = ON
 @>Control Variables: [0103: Vs. Transition ID] = 3
 @>Script: case pbGet(141)
-:       : when 0 then pbSet(104, 4)
-:       : when 1 then pbSet(104, 5)
-:       : when 2 then pbSet(104, 6)
-:       : else then pbSet(104, 6)
+:       : when 0 
+:       :  pbSet(104, 4)
+:       : when
+:       :  pbSet(104, 5)
+:       : when
+:       :  pbSet(104, 6)
+:       : else
+:       :  pbSet(104, 6)
 :       : end
 @>Comment: EndSpeech: Lyrica: Hehe, you certainly are one strong trainer~
 @>Conditional Branch: Script: TrainerBattle.start(:LYRICA, "Lyrica Prismriver", 10+(pbGet(99) * 10))
@@ -13503,10 +13523,14 @@ List of Event Commands:
 @>Control Switches: [0104: Transition Handler] = ON
 @>Control Variables: [0103: Vs. Transition ID] = 3
 @>Script: case pbGet(141)
-:       : when 0 then pbSet(104, 4)
-:       : when 1 then pbSet(104, 5)
-:       : when 2 then pbSet(104, 6)
-:       : else then pbSet(104, 6)
+:       : when 0 
+:       :  pbSet(104, 4)
+:       : when
+:       :  pbSet(104, 5)
+:       : when
+:       :  pbSet(104, 6)
+:       : else
+:       :  pbSet(104, 6)
 :       : end
 @>Conditional Branch: Script: TrainerBattle.start(:LYRICA, "Lyrica Prismriver", 10+(pbGet(99) * 10))
  @>
@@ -15508,10 +15532,14 @@ List of Event Commands:
 @>Control Switches: [0104: Transition Handler] = ON
 @>Control Variables: [0103: Vs. Transition ID] = 4
 @>Script: case pbGet(141)
-:       : when 0 then pbSet(104, 5)
-:       : when 1 then pbSet(104, 5)
-:       : when 2 then pbSet(104, 6)
-:       : else then pbSet(104, 6)
+:       : when 0
+:       :  pbSet(104, 5)
+:       : when 1
+:       :  pbSet(104, 5)
+:       : when 2
+:       :  pbSet(104, 6)
+:       : else
+:       :  pbSet(104, 6)
 :       : end
 @>Conditional Branch: Script: TrainerBattle.start(:MYSTIA, "Mystia Lorelei", 10+(pbGet(99) * 10))
  @>
@@ -15722,10 +15750,14 @@ List of Event Commands:
 @>Control Switches: [0104: Transition Handler] = ON
 @>Control Variables: [0103: Vs. Transition ID] = 4
 @>Script: case pbGet(141)
-:       : when 0 then pbSet(104, 5)
-:       : when 1 then pbSet(104, 5)
-:       : when 2 then pbSet(104, 6)
-:       : else then pbSet(104, 6)
+:       : when 0
+:       :  pbSet(104, 5)
+:       : when 1
+:       :  pbSet(104, 5)
+:       : when 2
+:       :  pbSet(104, 6)
+:       : else
+:       :  pbSet(104, 6)
 :       : end
 @>Conditional Branch: Script: TrainerBattle.start(:MYSTIA, "Mystia Lorelei", 10+(pbGet(99) * 10))
  @>
@@ -18566,6 +18598,7 @@ List of Event Commands:
 @>Move Picture: 1, @20, Upper Left (0,0), (100%,100%), 255, Normal
 @>Wait: 60 frame(s)
 @>Change Text Options: Bottom, Show
+@>Label: Choose
 @>Text: The Mansion of Mystery.\wt[20]\nIs this the adventure you'd like to play?
 @>Show Choices: Yes, No, Free Roam
 (When Cancel: Choice 2)
@@ -18585,6 +18618,8 @@ List of Event Commands:
  @>Control Switches: [0109..0112] = OFF
  @>Script: $PokemonGlobal.clear_reset_maps
  @>Script: $PokemonGlobal.encounter_version = pbGet(99)
+ :       : echoln pbGet(99)
+ :       : echoln $PokemonGlobal.encounter_version
  @>
 : When [No]
  @>Move Picture: 1, @20, Upper Left (0,0), (100%,100%), 0, Normal
@@ -18594,6 +18629,7 @@ List of Event Commands:
  @>Conditional Branch: Switch [0116: TMoM Cleared] == OFF
   @>Text: Free Roam inaccessable for The Mansion of Mystery. 
    :    : Please clear this adventure first.
+  @>Jump to Label: Choose
   @>
  : Else
   @>
@@ -18765,6 +18801,8 @@ List of Event Commands:
  @>Control Switches: [0118..0125] = OFF
  @>Script: $PokemonGlobal.clear_reset_maps
  @>Script: $PokemonGlobal.encounter_version = pbGet(99)
+ :       : echoln pbGet(99)
+ :       : echoln $PokemonGlobal.encounter_version
  @>
 : When [No]
  @>Move Picture: 1, @20, Upper Left (0,0), (100%,100%), 0, Normal
@@ -19049,6 +19087,8 @@ List of Event Commands:
  @>Control Switches: [0144: Clownpiece Checkpoint] = OFF
  @>Script: $PokemonGlobal.clear_reset_maps
  @>Script: $PokemonGlobal.encounter_version = pbGet(99)
+ :       : echoln pbGet(99)
+ :       : echoln $PokemonGlobal.encounter_version
  @>
 : When [No]
  @>Move Picture: 1, @20, Upper Left (0,0), (100%,100%), 0, Normal
@@ -26555,10 +26595,14 @@ List of Event Commands:
 @>Control Switches: [0104: Transition Handler] = ON
 @>Control Variables: [0103: Vs. Transition ID] = 6
 @>Script: case pbGet(141)
-:       : when 0 then pbSet(104, 5)
-:       : when 1 then pbSet(104, 5)
-:       : when 2 then pbSet(104, 6)
-:       : else then pbSet(104, 6)
+:       : when 0
+:       :  pbSet(104, 5)
+:       : when 1
+:       :  pbSet(104, 5)
+:       : when 2
+:       :  pbSet(104, 6)
+:       : else
+:       :  pbSet(104, 6)
 :       : end
 @>Conditional Branch: Script: TrainerBattle.start(:NUE, "Nue Houjuu", 10+(pbGet(99) * 10))
  @>
@@ -26951,10 +26995,14 @@ List of Event Commands:
 @>Control Switches: [0104: Transition Handler] = ON
 @>Control Variables: [0103: Vs. Transition ID] = 6
 @>Script: case pbGet(141)
-:       : when 0 then pbSet(104, 5)
-:       : when 1 then pbSet(104, 5)
-:       : when 2 then pbSet(104, 6)
-:       : else then pbSet(104, 6)
+:       : when 0
+:       :  pbSet(104, 5)
+:       : when 1
+:       :  pbSet(104, 5)
+:       : when 2
+:       :  pbSet(104, 6)
+:       : else
+:       :  pbSet(104, 6)
 :       : end
 @>Conditional Branch: Script: TrainerBattle.start(:NUE, "Nue Houjuu", 10+(pbGet(99) * 10))
  @>
@@ -38962,10 +39010,14 @@ List of Event Commands:
 @>Control Switches: [0104: Transition Handler] = ON
 @>Control Variables: [0103: Vs. Transition ID] = 10
 @>Script: case pbGet(141)
-:       : when 0 then pbSet(104, 3)
-:       : when 1 then pbSet(104, 4)
-:       : when 2 then pbSet(104, 6)
-:       : else then pbSet(104, 6)
+:       : when 0
+:       :  pbSet(104, 3)
+:       : when 1
+:       :  pbSet(104, 4)
+:       : when 2
+:       :  pbSet(104, 6)
+:       : else
+:       :  pbSet(104, 6)
 :       : end
 @>Change Battle BGM: 'B-017. The Lost Emotion', 100, 100
 @>Conditional Branch: Script: TrainerBattle.start(:KOKORO, "Hata no Kokoro", 10+(pbGet(99) * 10))
@@ -39108,10 +39160,14 @@ List of Event Commands:
 @>Control Switches: [0104: Transition Handler] = ON
 @>Control Variables: [0103: Vs. Transition ID] = 11
 @>Script: case pbGet(141)
-:       : when 0 then pbSet(104, 4)
-:       : when 1 then pbSet(104, 4)
-:       : when 2 then pbSet(104, 6)
-:       : else then pbSet(104, 6)
+:       : when 0
+:       :  pbSet(104, 4)
+:       : when 1
+:       :  pbSet(104, 4)
+:       : when 2
+:       :  pbSet(104, 6)
+:       : else
+:       :  pbSet(104, 6)
 :       : end
 @>Conditional Branch: Script: TrainerBattle.start(:MINORIKO, "Minoriko Aki", 10+(pbGet(99) * 10))
  @>Control Switches: [0119: Minoriko Beaten] = ON
@@ -43217,10 +43273,14 @@ List of Event Commands:
 @>Control Switches: [0104: Transition Handler] = ON
 @>Control Variables: [0103: Vs. Transition ID] = 12
 @>Script: case pbGet(141)
-:       : when 0 then pbSet(104, 4)
-:       : when 1 then pbSet(104, 5)
-:       : when 2 then pbSet(104, 6)
-:       : else then pbSet(104, 6)
+:       : when 0
+:       :  pbSet(104, 4)
+:       : when 1
+:       :  pbSet(104, 5)
+:       : when 2
+:       :  pbSet(104, 6)
+:       : else
+:       :  pbSet(104, 6)
 :       : end
 @>Script: $PokemonGlobal.nextBattleBack="nitori"
 :       : setBattleRule("base","nitori")
@@ -43314,10 +43374,14 @@ List of Event Commands:
 @>Control Switches: [0104: Transition Handler] = ON
 @>Control Variables: [0103: Vs. Transition ID] = 12
 @>Script: case pbGet(141)
-:       : when 0 then pbSet(104, 4)
-:       : when 1 then pbSet(104, 5)
-:       : when 2 then pbSet(104, 6)
-:       : else then pbSet(104, 6)
+:       : when 0
+:       :  pbSet(104, 4)
+:       : when 1
+:       :  pbSet(104, 5)
+:       : when 2
+:       :  pbSet(104, 6)
+:       : else
+:       :  pbSet(104, 6)
 :       : end
 @>Script: $PokemonGlobal.nextBattleBack="nitori"
 :       : setBattleRule("base","nitori")
@@ -51268,10 +51332,14 @@ List of Event Commands:
 @>Control Switches: [0104: Transition Handler] = ON
 @>Control Variables: [0103: Vs. Transition ID] = 13
 @>Script: case pbGet(141)
-:       : when 0 then pbSet(104, 4)
-:       : when 1 then pbSet(104, 5)
-:       : when 2 then pbSet(104, 6)
-:       : else then pbSet(104, 6)
+:       : when 0
+:       :  pbSet(104, 4)
+:       : when 1
+:       :  pbSet(104, 5)
+:       : when 2
+:       :  pbSet(104, 6)
+:       : else
+:       :  pbSet(104, 6)
 :       : end
 @>Conditional Branch: Script: TrainerBattle.start(:HATATE, "Hatate Himekaidou", 10+(pbGet(99) * 10))
  @>Text: \xn[Hatate]Ah, that was quite a battle! Even though I lost,
@@ -51459,10 +51527,14 @@ List of Event Commands:
 @>Control Switches: [0104: Transition Handler] = ON
 @>Control Variables: [0103: Vs. Transition ID] = 13
 @>Script: case pbGet(141)
-:       : when 0 then pbSet(104, 4)
-:       : when 1 then pbSet(104, 5)
-:       : when 2 then pbSet(104, 6)
-:       : else then pbSet(104, 6)
+:       : when 0
+:       :  pbSet(104, 4)
+:       : when 1
+:       :  pbSet(104, 5)
+:       : when 2
+:       :  pbSet(104, 6)
+:       : else
+:       :  pbSet(104, 6)
 :       : end
 @>Control Self Switch: A =ON
 @>Conditional Branch: Script: TrainerBattle.start(:HATATE, "Hatate Himekaidou", 10+(pbGet(99) * 10))
@@ -52035,10 +52107,14 @@ List of Event Commands:
 @>Control Switches: [0104: Transition Handler] = ON
 @>Control Variables: [0103: Vs. Transition ID] = 14
 @>Script: case pbGet(141)
-:       : when 0 then pbSet(104, 4)
-:       : when 1 then pbSet(104, 5)
-:       : when 2 then pbSet(104, 6)
-:       : else then pbSet(104, 6)
+:       : when 0
+:       :  pbSet(104, 4)
+:       : when 1
+:       :  pbSet(104, 5)
+:       : when 2
+:       :  pbSet(104, 6)
+:       : else
+:       :  pbSet(104, 6)
 :       : end
 @>Script: setBattleRule("battleIntroText", "{1} came spinning at you!")
 :       : setBattleRule("midbattleScript", :VS_FAKE_HINA)
@@ -62101,10 +62177,14 @@ List of Event Commands:
 @>Control Switches: [0104: Transition Handler] = ON
 @>Control Variables: [0103: Vs. Transition ID] = 20
 @>Script: case pbGet(141)
-:       : when 0 then pbSet(104, 5)
-:       : when 1 then pbSet(104, 5)
-:       : when 2 then pbSet(104, 6)
-:       : else then pbSet(104, 6)
+:       : when 0
+:       :  pbSet(104, 5)
+:       : when 1
+:       :  pbSet(104, 5)
+:       : when 2
+:       :  pbSet(104, 6)
+:       : else
+:       :  pbSet(104, 6)
 :       : end
 @>Script: setBattleRule("base","mugenkan_brick")
 @>Conditional Branch: Script: TrainerBattle.start(:ELLY, "Elly", 10 + pbGet(99) * 10)
@@ -77811,10 +77891,14 @@ List of Event Commands:
 @>Control Switches: [0104: Transition Handler] = ON
 @>Control Variables: [0103: Vs. Transition ID] = 43
 @>Script: case pbGet(141)
-:       : when 0 then pbSet(104, 3)
-:       : when 1 then pbSet(104, 5)
-:       : when 2 then pbSet(104, 6)
-:       : else then pbSet(104, 6)
+:       : when 0
+:       :  pbSet(104, 3)
+:       : when 1
+:       :  pbSet(104, 5)
+:       : when 2
+:       :  pbSet(104, 6)
+:       : else
+:       :  pbSet(104, 6)
 :       : end
 @>Conditional Branch: Script: TrainerBattle.start(:RINGO, "Ringo", 10+(pbGet(99) * 10))
  @>Text: \xn[Ringo]Looks like I lost. Oh well, that's that I guess!
@@ -78040,10 +78124,14 @@ List of Event Commands:
 @>Control Switches: [0104: Transition Handler] = ON
 @>Control Variables: [0103: Vs. Transition ID] = 42
 @>Script: case pbGet(141)
-:       : when 0 then pbSet(104, 3)
-:       : when 1 then pbSet(104, 5)
-:       : when 2 then pbSet(104, 6)
-:       : else then pbSet(104, 6)
+:       : when 0
+:       :  pbSet(104, 3)
+:       : when 1
+:       :  pbSet(104, 5)
+:       : when 2
+:       :  pbSet(104, 6)
+:       : else
+:       :  pbSet(104, 6)
 :       : end
 @>Conditional Branch: Script: TrainerBattle.start(:SEIRAN, "Seiran", 10+(pbGet(99) * 10))
  @>Text: \xn[Seiran]Oh, you earthlings sure are strong...
@@ -78486,10 +78574,14 @@ List of Event Commands:
 @>Control Switches: [0104: Transition Handler] = ON
 @>Control Variables: [0103: Vs. Transition ID] = 42
 @>Script: case pbGet(141)
-:       : when 0 then pbSet(104, 3)
-:       : when 1 then pbSet(104, 5)
-:       : when 2 then pbSet(104, 6)
-:       : else then pbSet(104, 6)
+:       : when 0
+:       :  pbSet(104, 3)
+:       : when 1
+:       :  pbSet(104, 5)
+:       : when 2
+:       :  pbSet(104, 6)
+:       : else
+:       :  pbSet(104, 6)
 :       : end
 @>Conditional Branch: Script: TrainerBattle.start(:SEIRAN, "Seiran", 10+(pbGet(99) * 10))
  @>Text: \xn[Seiran]Oh, you earthlings sure are strong...
@@ -86110,10 +86202,14 @@ List of Event Commands:
 @>Control Switches: [0104: Transition Handler] = ON
 @>Control Variables: [0103: Vs. Transition ID] = 46
 @>Script: case pbGet(141)
-:       : when 0 then pbSet(104, 5)
-:       : when 1 then pbSet(104, 6)
-:       : when 2 then pbSet(104, 6)
-:       : else then pbSet(104, 6)
+:       : when 0
+:       :  pbSet(104, 5)
+:       : when 1
+:       :  pbSet(104, 6)
+:       : when 2
+:       :  pbSet(104, 6)
+:       : else
+:       :  pbSet(104, 6)
 :       : end
 @>Conditional Branch: Script: TrainerBattle.start(:JUNKO, "Junko", 10+(pbGet(99) * 10))
  @>Fade Out BGM: 1 sec.
@@ -88988,10 +89084,14 @@ List of Event Commands:
 @>Control Switches: [0104: Transition Handler] = ON
 @>Control Variables: [0103: Vs. Transition ID] = 48
 @>Script: case pbGet(141)
-:       : when 0 then pbSet(104, 3)
-:       : when 1 then pbSet(104, 3)
-:       : when 2 then pbSet(104, 6)
-:       : else then pbSet(104, 6)
+:       : when 0
+:       :  pbSet(104, 3)
+:       : when 1
+:       :  pbSet(104, 3)
+:       : when 2
+:       :  pbSet(104, 6)
+:       : else
+:       :  pbSet(104, 6)
 :       : end
 @>Conditional Branch: Script: TrainerBattle.start(:REISEN2, "Rei'sen", 10+(pbGet(99) * 10))
  @>Text: \xn[Rei'sen]I-I apologize for holding you up! If you want to go through,
@@ -89702,10 +89802,14 @@ List of Event Commands:
 @>Control Switches: [0104: Transition Handler] = ON
 @>Control Variables: [0103: Vs. Transition ID] = 49
 @>Script: case pbGet(141)
-:       : when 0 then pbSet(104, 4)
-:       : when 1 then pbSet(104, 4)
-:       : when 2 then pbSet(104, 6)
-:       : else then pbSet(104, 6)
+:       : when 0
+:       :  pbSet(104, 4)
+:       : when 1
+:       :  pbSet(104, 4)
+:       : when 2
+:       :  pbSet(104, 6)
+:       : else
+:       :  pbSet(104, 6)
 :       : end
 @>Conditional Branch: Script: TrainerBattle.start(:SAGUME, "Sagume Kishin", 10+(pbGet(99) * 10))
  @>Text: What a battle folks! In a stunning spectacular, \pn has overcome 
@@ -95519,9 +95623,9 @@ List of Event Commands:
   @>Play SE: 'Door exit final', 100, 80
   @>Change Screen Color Tone: (255,255,255,0), @24
   @>Fade Out BGM: 1 sec.
-  @>Wait: 24 frame(s)
-  @>Transfer Player:[137: Reimaden - Final Room], (015,036), No Fade
-  @>Change Screen Color Tone: (0,0,0,0), @24
+  @>Wait: 48 frame(s)
+  @>Transfer Player:[137: Reimaden - Final Room], (046,028), No Fade
+  @>Comment: Originally had a fade in here. Removed- do I need it?
   @>
  : When [No]
   @>
@@ -98052,10 +98156,14 @@ List of Event Commands:
   @>Control Switches: [0104: Transition Handler] = ON
   @>Control Variables: [0103: Vs. Transition ID] = 41
   @>Script: case pbGet(141)
-  :       : when 0 then pbSet(104, 4)
-  :       : when 1 then pbSet(104, 4)
-  :       : when 2 then pbSet(104, 6)
-  :       : else then pbSet(104, 6)
+  :       : when 0
+  :       :  pbSet(104, 4)
+  :       : when 1
+  :       :  pbSet(104, 4)
+  :       : when 2
+  :       :  pbSet(104, 6)
+  :       : else
+  :       :  pbSet(104, 6)
   :       : end
   @>Conditional Branch: Script: !pbCanDoubleBattle?
    @>Script: setBattleRule("1v2")
@@ -98293,10 +98401,14 @@ List of Event Commands:
   @>Control Switches: [0104: Transition Handler] = ON
   @>Control Variables: [0103: Vs. Transition ID] = 41
   @>Script: case pbGet(141)
-  :       : when 0 then pbSet(104, 4)
-  :       : when 1 then pbSet(104, 4)
-  :       : when 2 then pbSet(104, 6)
-  :       : else then pbSet(104, 6)
+  :       : when 0
+  :       :  pbSet(104, 4)
+  :       : when 1
+  :       :  pbSet(104, 4)
+  :       : when 2
+  :       :  pbSet(104, 6)
+  :       : else
+  :       :  pbSet(104, 6)
   :       : end
   @>Conditional Branch: Script: !pbCanDoubleBattle?
    @>Script: setBattleRule("1v2")
@@ -100466,10 +100578,14 @@ List of Event Commands:
 @>Control Switches: [0104: Transition Handler] = ON
 @>Control Variables: [0103: Vs. Transition ID] = 44
 @>Script: case pbGet(141)
-:       : when 0 then pbSet(104, 4)
-:       : when 1 then pbSet(104, 5)
-:       : when 2 then pbSet(104, 6)
-:       : else then pbSet(104, 6)
+:       : when 0
+:       :  pbSet(104, 4)
+:       : when 1
+:       :  pbSet(104, 5)
+:       : when 2
+:       :  pbSet(104, 6)
+:       : else
+:       :  pbSet(104, 6)
 :       : end
 @>Conditional Branch: Script: TrainerBattle.start(:DOREMY, "Doremy Sweet", 10+(pbGet(99) * 10))
  @>Text: \xn[Doremy]Resisting the urge to sleep, even in this world of
@@ -100596,10 +100712,14 @@ List of Event Commands:
 @>Control Switches: [0104: Transition Handler] = ON
 @>Control Variables: [0103: Vs. Transition ID] = 44
 @>Script: case pbGet(141)
-:       : when 0 then pbSet(104, 4)
-:       : when 1 then pbSet(104, 5)
-:       : when 2 then pbSet(104, 6)
-:       : else then pbSet(104, 6)
+:       : when 0
+:       :  pbSet(104, 4)
+:       : when 1
+:       :  pbSet(104, 5)
+:       : when 2
+:       :  pbSet(104, 6)
+:       : else
+:       :  pbSet(104, 6)
 :       : end
 @>Conditional Branch: Script: TrainerBattle.start(:DOREMY, "Doremy Sweet", 10+(pbGet(99) * 10))
  @>Conditional Branch: Switch [0147: TKoL Cleared] == OFF
