@@ -20133,3 +20133,626 @@ Backtrace:
 002_Scene_Map.rb:123:in `miniupdate'
 011_Messages.rb:19:in `pbUpdateSceneMap'
 [PWT System (E21)] 002_CoreSystem.rb:772:in `pbUpdateSceneMap'
+
+=================
+
+[2025-05-17 03:27:07 -0700]
+[Pokémon Essentials version 21.1]
+[v21.1 Hotfixes 1.0.9]
+
+Exception: NoMethodError
+Message: undefined method `refreshEventIndicator' for nil:NilClass
+
+Backtrace:
+[Event Indicators] 001_Script.rb:128:in `refresh'
+007_Game_Event.rb:28:in `initialize'
+004_Game_Map.rb:65:in `new'
+004_Game_Map.rb:65:in `block in setup'
+004_Game_Map.rb:64:in `each_key'
+004_Game_Map.rb:64:in `setup'
+005_Game_MapFactory.rb:24:in `setup'
+002_Scene_Map.rb:79:in `transfer_player'
+[Deluxe Battle Kit] 005_Meimu.rb:202:in `block in <main>'
+[Deluxe Battle Kit] [002] Midbattle Triggers.rb:36:in `trigger'
+
+=================
+
+[2025-05-17 03:34:42 -0700]
+[Pokémon Essentials version 21.1]
+[v21.1 Hotfixes 1.0.9]
+
+Exception: NoMethodError
+Message: undefined method `refreshEventIndicator' for nil:NilClass
+
+Backtrace:
+[Event Indicators] 001_Script.rb:128:in `refresh'
+007_Game_Event.rb:28:in `initialize'
+004_Game_Map.rb:65:in `new'
+004_Game_Map.rb:65:in `block in setup'
+004_Game_Map.rb:64:in `each_key'
+004_Game_Map.rb:64:in `setup'
+005_Game_MapFactory.rb:24:in `setup'
+002_Scene_Map.rb:79:in `transfer_player'
+[Deluxe Battle Kit] 005_Meimu.rb:202:in `block in <main>'
+[Deluxe Battle Kit] [002] Midbattle Triggers.rb:36:in `trigger'
+
+=================
+
+[2025-05-17 03:38:16 -0700]
+[Pokémon Essentials version 21.1]
+[v21.1 Hotfixes 1.0.9]
+
+Exception: NoMethodError
+Message: undefined method `refreshEventIndicator' for nil:NilClass
+
+Backtrace:
+[Event Indicators] 001_Script.rb:128:in `refresh'
+004_Game_Map.rb:431:in `block in refresh'
+004_Game_Map.rb:430:in `each_value'
+004_Game_Map.rb:430:in `refresh'
+[Deluxe Battle Kit] 005_Meimu.rb:203:in `block in <main>'
+[Deluxe Battle Kit] [002] Midbattle Triggers.rb:36:in `trigger'
+[Deluxe Battle Kit] [001] Midbattle Overwrites.rb:218:in `block (2 levels) in pbMidbattleScripting'
+[Deluxe Battle Kit] [001] Midbattle Overwrites.rb:217:in `each'
+[Deluxe Battle Kit] [001] Midbattle Overwrites.rb:217:in `block in pbMidbattleScripting'
+[Deluxe Battle Kit] [001] Midbattle Overwrites.rb:148:in `loop'
+
+=================
+
+[2025-05-17 03:57:43 -0700]
+[Pokémon Essentials version 21.1]
+[v21.1 Hotfixes 1.0.9]
+
+Script error in event 4 (coords 2,26), map 137 (Reimaden - Final Room)
+Exception: NameError
+Message: undefined local variable or method `game_switches' for WildBattle:Class
+
+***Full script:
+WildBattle.start(:MEIMU, 100)
+Backtrace:
+[TAoA Core] 002_Overworld_BattleIntroAnim.rb:96:in `pbBattleAnimation'
+001_Overworld_BattleStarting.rb:401:in `start_core'
+001_Overworld_BattleStarting.rb:366:in `start'
+(eval):1:in `execute_script'
+003_Interpreter.rb:140:in `eval'
+003_Interpreter.rb:140:in `execute_script'
+004_Interpreter_Commands.rb:434:in `command_111'
+004_Interpreter_Commands.rb:29:in `execute_command'
+003_Interpreter.rb:132:in `block in update'
+003_Interpreter.rb:86:in `loop'
+
+=================
+
+[2025-05-17 14:22:51 -0700]
+[Pokémon Essentials version 21.1]
+[v21.1 Hotfixes 1.0.9]
+
+Exception: NameError
+Message: undefined local variable or method `battle' for #<MeimuOutro>
+
+Backtrace:
+[TAoA Core] 001_Scene_Cutscene.rb:1098:in `main'
+[TAoA Core] 001_Scene_Cutscene.rb:1086:in `initialize'
+[Deluxe Battle Kit] 005_Meimu.rb:206:in `new'
+[Deluxe Battle Kit] 005_Meimu.rb:206:in `block in <main>'
+[Deluxe Battle Kit] [002] Midbattle Triggers.rb:36:in `trigger'
+[Deluxe Battle Kit] [001] Midbattle Overwrites.rb:218:in `block (2 levels) in pbMidbattleScripting'
+[Deluxe Battle Kit] [001] Midbattle Overwrites.rb:217:in `each'
+[Deluxe Battle Kit] [001] Midbattle Overwrites.rb:217:in `block in pbMidbattleScripting'
+[Deluxe Battle Kit] [001] Midbattle Overwrites.rb:148:in `loop'
+[Deluxe Battle Kit] [001] Midbattle Overwrites.rb:148:in `pbMidbattleScripting'
+
+=================
+
+[2025-05-17 14:49:43 -0700]
+[Pokémon Essentials version 21.1]
+[v21.1 Hotfixes 1.0.9]
+
+Exception: NoMethodError
+Message: undefined method `refreshEventIndicator' for nil:NilClass
+
+Backtrace:
+[Event Indicators] 001_Script.rb:128:in `refresh'
+007_Game_Event.rb:28:in `initialize'
+004_Game_Map.rb:65:in `new'
+004_Game_Map.rb:65:in `block in setup'
+004_Game_Map.rb:64:in `each_key'
+004_Game_Map.rb:64:in `setup'
+005_Game_MapFactory.rb:24:in `setup'
+002_Scene_Map.rb:79:in `transfer_player'
+[TAoA Core] 001_Scene_Cutscene.rb:1174:in `performPostBattleTransfer'
+[TAoA Core] 001_Scene_Cutscene.rb:1142:in `main'
+
+=================
+
+[2025-05-17 14:49:54 -0700]
+[Pokémon Essentials version 21.1]
+[v21.1 Hotfixes 1.0.9]
+
+Script error in Common Event, map 145 (Dummy Map 2)
+Exception: NoMethodError
+Message: undefined method `each_value' for nil:NilClass
+
+***Full script:
+WildBattle.start(:MEIMU, 100)
+Backtrace:
+004_Game_Map.rb:465:in `update'
+[Delta Speed Up] _Main_Script.rb:157:in `update'
+002_Scene_Map.rb:138:in `block in updateMaps'
+002_Scene_Map.rb:137:in `each'
+002_Scene_Map.rb:137:in `updateMaps'
+002_Scene_Map.rb:125:in `block in miniupdate'
+002_Scene_Map.rb:123:in `loop'
+002_Scene_Map.rb:123:in `miniupdate'
+011_Messages.rb:19:in `pbUpdateSceneMap'
+[PWT System (E21)] 002_CoreSystem.rb:772:in `pbUpdateSceneMap'
+
+=================
+
+[2025-05-17 14:55:11 -0700]
+[Pokémon Essentials version 21.1]
+
+Error in Plugin: [TAoA Core]
+Exception: SyntaxError
+Message: [TAoA Core] 001_Scene_Cutscene.rb:1142: syntax error, unexpected `end', expecting end-of-input
+
+Backtrace:
+005_PluginManager.rb:635:in `eval'
+005_PluginManager.rb:635:in `block (2 levels) in runPlugins'
+005_PluginManager.rb:625:in `each'
+005_PluginManager.rb:625:in `block in runPlugins'
+005_PluginManager.rb:616:in `each'
+005_PluginManager.rb:616:in `runPlugins'
+999_Main.rb:35:in `mainFunctionDebug'
+999_Main.rb:19:in `block in mainFunction'
+003_Errors.rb:79:in `pbCriticalCode'
+999_Main.rb:19:in `mainFunction'
+
+=================
+
+[2025-05-17 14:57:56 -0700]
+[Pokémon Essentials version 21.1]
+[v21.1 Hotfixes 1.0.9]
+
+Exception: LocalJumpError
+Message: unexpected return
+
+Backtrace:
+[Deluxe Battle Kit] 005_Meimu.rb:204:in `block in <main>'
+[Deluxe Battle Kit] [002] Midbattle Triggers.rb:36:in `trigger'
+[Deluxe Battle Kit] [001] Midbattle Overwrites.rb:218:in `block (2 levels) in pbMidbattleScripting'
+[Deluxe Battle Kit] [001] Midbattle Overwrites.rb:217:in `each'
+[Deluxe Battle Kit] [001] Midbattle Overwrites.rb:217:in `block in pbMidbattleScripting'
+[Deluxe Battle Kit] [001] Midbattle Overwrites.rb:148:in `loop'
+[Deluxe Battle Kit] [001] Midbattle Overwrites.rb:148:in `pbMidbattleScripting'
+[Deluxe Battle Kit] [001] Midbattle Overwrites.rb:111:in `pbDeluxeTriggers'
+[Deluxe Battle Kit] [001] Midbattle Overwrites.rb:552:in `block in pbEffectsAfterMove'
+[Deluxe Battle Kit] [001] Midbattle Overwrites.rb:551:in `each'
+
+=================
+
+[2025-05-17 15:16:27 -0700]
+[Pokémon Essentials version 21.1]
+[v21.1 Hotfixes 1.0.9]
+
+Exception: NameError
+Message: undefined local variable or method `battle' for #<MeimuOutro>
+
+Backtrace:
+[TAoA Core] 001_Scene_Cutscene.rb:1121:in `main'
+[TAoA Core] 001_Scene_Cutscene.rb:1084:in `initialize'
+[Deluxe Battle Kit] 005_Meimu.rb:198:in `new'
+[Deluxe Battle Kit] 005_Meimu.rb:198:in `block in <main>'
+[Deluxe Battle Kit] [002] Midbattle Triggers.rb:36:in `trigger'
+[Deluxe Battle Kit] [001] Midbattle Overwrites.rb:218:in `block (2 levels) in pbMidbattleScripting'
+[Deluxe Battle Kit] [001] Midbattle Overwrites.rb:217:in `each'
+[Deluxe Battle Kit] [001] Midbattle Overwrites.rb:217:in `block in pbMidbattleScripting'
+[Deluxe Battle Kit] [001] Midbattle Overwrites.rb:148:in `loop'
+[Deluxe Battle Kit] [001] Midbattle Overwrites.rb:148:in `pbMidbattleScripting'
+
+=================
+
+[2025-05-17 19:46:03 -0700]
+[Pokémon Essentials version 21.1]
+[v21.1 Hotfixes 1.0.9]
+
+Exception: NoMethodError
+Message: undefined method `[]' for nil:NilClass
+
+Backtrace:
+[TAoA Core] 002_MessageConfig.rb:2:in `pbFadeOutAndHide'
+013_UI_Load.rb:202:in `pbEndScene'
+[Touhoumon Essentials Development Kit] 013_UI_Load.rb:75:in `block in pbStartLoadScreen'
+[Touhoumon Essentials Development Kit] 013_UI_Load.rb:70:in `loop'
+[Touhoumon Essentials Development Kit] 013_UI_Load.rb:70:in `pbStartLoadScreen'
+001_UI_SplashesAndTitleScreen.rb:96:in `close_title_screen'
+005_Event_Handlers.rb:47:in `call'
+005_Event_Handlers.rb:47:in `block in trigger'
+005_Event_Handlers.rb:42:in `each'
+005_Event_Handlers.rb:42:in `trigger'
+
+=================
+
+[2025-05-17 19:47:51 -0700]
+[Pokémon Essentials version 21.1]
+[v21.1 Hotfixes 1.0.9]
+
+Exception: NoMethodError
+Message: undefined method `[]' for nil:NilClass
+
+Backtrace:
+[TAoA Core] 002_MessageConfig.rb:2:in `pbFadeOutAndHide'
+013_UI_Load.rb:202:in `pbEndScene'
+[Touhoumon Essentials Development Kit] 013_UI_Load.rb:75:in `block in pbStartLoadScreen'
+[Touhoumon Essentials Development Kit] 013_UI_Load.rb:70:in `loop'
+[Touhoumon Essentials Development Kit] 013_UI_Load.rb:70:in `pbStartLoadScreen'
+001_UI_SplashesAndTitleScreen.rb:96:in `close_title_screen'
+005_Event_Handlers.rb:47:in `call'
+005_Event_Handlers.rb:47:in `block in trigger'
+005_Event_Handlers.rb:42:in `each'
+005_Event_Handlers.rb:42:in `trigger'
+
+=================
+
+[2025-05-18 00:10:49 -0700]
+[Pokémon Essentials version 21.1]
+[v21.1 Hotfixes 1.0.9]
+
+Exception: RuntimeError
+Message: Undefined value SNOWARNING in GameData::Ability.
+File PBS/pokemon_thmn.txt, section YUYUKOO, key Abilities
+SNOWARNING
+
+
+
+Backtrace:
+001_Compiler.rb:454:in `checkEnumField'
+[v21.1 Hotfixes] Compiler bug fixes.rb:53:in `cast_csv_value'
+001_Compiler.rb:724:in `block (2 levels) in get_csv_record'
+001_Compiler.rb:710:in `each'
+001_Compiler.rb:710:in `block in get_csv_record'
+001_Compiler.rb:708:in `loop'
+001_Compiler.rb:708:in `get_csv_record'
+002_Compiler_CompilePBS.rb:49:in `block (4 levels) in compile_PBS_file_generic'
+002_Compiler_CompilePBS.rb:31:in `each_key'
+002_Compiler_CompilePBS.rb:31:in `block (3 levels) in compile_PBS_file_generic'
+
+=================
+
+[2025-05-18 00:10:51 -0700]
+[Pokémon Essentials version 21.1]
+[v21.1 Hotfixes 1.0.9]
+
+Exception: RuntimeError
+Message: Unknown exception when compiling.
+
+Backtrace:
+001_Compiler.rb:1114:in `rescue in main'
+001_Compiler.rb:1041:in `main'
+999_Main.rb:36:in `mainFunctionDebug'
+999_Main.rb:19:in `block in mainFunction'
+003_Errors.rb:79:in `pbCriticalCode'
+999_Main.rb:19:in `mainFunction'
+999_Main.rb:52:in `block (2 levels) in load_scripts_from_folder'
+999_Main.rb:51:in `loop'
+999_Main.rb:51:in `block in load_scripts_from_folder'
+Main:35:in `eval'
+
+=================
+
+[2025-05-18 00:11:20 -0700]
+[Pokémon Essentials version 21.1]
+[v21.1 Hotfixes 1.0.9]
+
+Exception: RuntimeError
+Message: Undefined value  in GameData::Move.
+File PBS/pokemon_thmn.txt, section MEIMU, key Moves
+1,ULTIMATEDREAM,1,ENERGYBALL18,1,EXTRASENSORY18,1
+
+
+
+Backtrace:
+001_Compiler.rb:454:in `checkEnumField'
+[v21.1 Hotfixes] Compiler bug fixes.rb:53:in `cast_csv_value'
+001_Compiler.rb:724:in `block (2 levels) in get_csv_record'
+001_Compiler.rb:710:in `each'
+001_Compiler.rb:710:in `block in get_csv_record'
+001_Compiler.rb:708:in `loop'
+001_Compiler.rb:708:in `get_csv_record'
+002_Compiler_CompilePBS.rb:49:in `block (4 levels) in compile_PBS_file_generic'
+002_Compiler_CompilePBS.rb:31:in `each_key'
+002_Compiler_CompilePBS.rb:31:in `block (3 levels) in compile_PBS_file_generic'
+
+=================
+
+[2025-05-18 00:11:24 -0700]
+[Pokémon Essentials version 21.1]
+[v21.1 Hotfixes 1.0.9]
+
+Exception: RuntimeError
+Message: Unknown exception when compiling.
+
+Backtrace:
+001_Compiler.rb:1114:in `rescue in main'
+001_Compiler.rb:1041:in `main'
+999_Main.rb:36:in `mainFunctionDebug'
+999_Main.rb:19:in `block in mainFunction'
+003_Errors.rb:79:in `pbCriticalCode'
+999_Main.rb:19:in `mainFunction'
+999_Main.rb:52:in `block (2 levels) in load_scripts_from_folder'
+999_Main.rb:51:in `loop'
+999_Main.rb:51:in `block in load_scripts_from_folder'
+Main:35:in `eval'
+
+=================
+
+[2025-05-18 00:12:06 -0700]
+[Pokémon Essentials version 21.1]
+[v21.1 Hotfixes 1.0.9]
+
+Script error in event 11 (coords 24,8), map 112 (Reimaden - Edge of Dreams)
+Exception: NoMethodError
+Message: undefined method `[]' for nil:NilClass
+
+***Full script:
+$stats.pwt_wins[:Lunatic_Diff] ||= 0
+
+$game_variables[1] = $game_switches[126] ? "Yes" : "No"
+$game_variables[2] = $stats.pwt_wins[:Lunatic_Diff] > 0 ? "Yes" : "No"
+$game_variables[3] = $game_switches[128] ? "Yes" : "No"
+
+Backtrace:
+(eval):1:in `execute_script'
+003_Interpreter.rb:140:in `eval'
+003_Interpreter.rb:140:in `execute_script'
+004_Interpreter_Commands.rb:1177:in `command_355'
+004_Interpreter_Commands.rb:116:in `execute_command'
+003_Interpreter.rb:132:in `block in update'
+003_Interpreter.rb:86:in `loop'
+003_Interpreter.rb:86:in `update'
+002_Scene_Map.rb:167:in `block in update'
+002_Scene_Map.rb:166:in `loop'
+
+=================
+
+[2025-05-18 00:13:14 -0700]
+[Pokémon Essentials version 21.1]
+[v21.1 Hotfixes 1.0.9]
+
+Script error in event 11 (coords 24,8), map 112 (Reimaden - Edge of Dreams)
+Exception: NoMethodError
+Message: undefined method `[]' for nil:NilClass
+
+***Full script:
+$stats.pwt_wins[:Lunatic_Diff] ||= 0
+echoln $stats.pwt_wins[:Lunatic_Diff]
+$game_variables[1] = $game_switches[126] ? "Yes" : "No"
+$game_variables[2] = $stats.pwt_wins[:Lunatic_Diff] > 0 ? "Yes" : "No"
+$game_variables[3] = $game_switches[128] ? "Yes" : "No"
+
+Backtrace:
+(eval):1:in `execute_script'
+003_Interpreter.rb:140:in `eval'
+003_Interpreter.rb:140:in `execute_script'
+004_Interpreter_Commands.rb:1177:in `command_355'
+004_Interpreter_Commands.rb:116:in `execute_command'
+003_Interpreter.rb:132:in `block in update'
+003_Interpreter.rb:86:in `loop'
+003_Interpreter.rb:86:in `update'
+002_Scene_Map.rb:167:in `block in update'
+002_Scene_Map.rb:166:in `loop'
+
+=================
+
+[2025-05-18 00:13:47 -0700]
+[Pokémon Essentials version 21.1]
+[v21.1 Hotfixes 1.0.9]
+
+Script error in event 11 (coords 24,8), map 112 (Reimaden - Edge of Dreams)
+Exception: NoMethodError
+Message: undefined method `[]' for nil:NilClass
+
+***Full script:
+$stats.pwt_wins[:Lunatic_Diff] ||= 0
+p $stats.pwt_wins[:Lunatic_Diff]
+$game_variables[1] = $game_switches[126] ? "Yes" : "No"
+$game_variables[2] = $stats.pwt_wins[:Lunatic_Diff] > 0 ? "Yes" : "No"
+$game_variables[3] = $game_switches[128] ? "Yes" : "No"
+
+Backtrace:
+(eval):1:in `execute_script'
+003_Interpreter.rb:140:in `eval'
+003_Interpreter.rb:140:in `execute_script'
+004_Interpreter_Commands.rb:1177:in `command_355'
+004_Interpreter_Commands.rb:116:in `execute_command'
+003_Interpreter.rb:132:in `block in update'
+003_Interpreter.rb:86:in `loop'
+003_Interpreter.rb:86:in `update'
+002_Scene_Map.rb:167:in `block in update'
+002_Scene_Map.rb:166:in `loop'
+
+=================
+
+[2025-05-18 00:17:29 -0700]
+[Pokémon Essentials version 21.1]
+[v21.1 Hotfixes 1.0.9]
+
+Script error in event 11 (coords 24,8), map 112 (Reimaden - Edge of Dreams)
+Exception: NoMethodError
+Message: undefined method `[]' for nil:NilClass
+
+***Full script:
+$stats.pwt_wins[:Lunatic_Diff] == nil
+Backtrace:
+(eval):1:in `execute_script'
+003_Interpreter.rb:140:in `eval'
+003_Interpreter.rb:140:in `execute_script'
+004_Interpreter_Commands.rb:434:in `command_111'
+004_Interpreter_Commands.rb:29:in `execute_command'
+003_Interpreter.rb:132:in `block in update'
+003_Interpreter.rb:86:in `loop'
+003_Interpreter.rb:86:in `update'
+002_Scene_Map.rb:167:in `block in update'
+002_Scene_Map.rb:166:in `loop'
+
+=================
+
+[2025-05-18 00:26:45 -0700]
+[Pokémon Essentials version 21.1]
+[v21.1 Hotfixes 1.0.9]
+
+Script error in event 11 (coords 24,8), map 112 (Reimaden - Edge of Dreams)
+Exception: NoMethodError
+Message: undefined method `[]' for nil:NilClass
+
+***Full script:
+check_lunatic_stats
+$game_variables[1] = $game_switches[126] ? "Yes" : "No"
+$game_variables[2] = $game_switches[127] ? "Yes" : "No"
+$game_variables[3] = $game_switches[128] ? "Yes" : "No"
+
+Backtrace:
+[TAoA Core] 007_One Offs.rb:38:in `check_lunatic_stats'
+(eval):1:in `execute_script'
+003_Interpreter.rb:140:in `eval'
+003_Interpreter.rb:140:in `execute_script'
+004_Interpreter_Commands.rb:1177:in `command_355'
+004_Interpreter_Commands.rb:116:in `execute_command'
+003_Interpreter.rb:132:in `block in update'
+003_Interpreter.rb:86:in `loop'
+003_Interpreter.rb:86:in `update'
+002_Scene_Map.rb:167:in `block in update'
+
+=================
+
+[2025-05-18 00:28:01 -0700]
+[Pokémon Essentials version 21.1]
+[v21.1 Hotfixes 1.0.9]
+
+Script error in event 11 (coords 24,8), map 112 (Reimaden - Edge of Dreams)
+Exception: NoMethodError
+Message: undefined method `[]' for nil:NilClass
+
+***Full script:
+echoln $stats.pwt_wins[:Lunatic_Diff]
+
+Backtrace:
+(eval):1:in `execute_script'
+003_Interpreter.rb:140:in `eval'
+003_Interpreter.rb:140:in `execute_script'
+004_Interpreter_Commands.rb:1177:in `command_355'
+004_Interpreter_Commands.rb:116:in `execute_command'
+003_Interpreter.rb:132:in `block in update'
+003_Interpreter.rb:86:in `loop'
+003_Interpreter.rb:86:in `update'
+002_Scene_Map.rb:167:in `block in update'
+002_Scene_Map.rb:166:in `loop'
+
+=================
+
+[2025-05-18 00:29:25 -0700]
+[Pokémon Essentials version 21.1]
+[v21.1 Hotfixes 1.0.9]
+
+Script error in event 11 (coords 24,8), map 112 (Reimaden - Edge of Dreams)
+Exception: NoMethodError
+Message: undefined method `[]' for nil:NilClass
+
+***Full script:
+    pbPlayDecisionSE
+    pbFadeOutIn do
+      scene = PWTStreak_Scene.new
+      screen = PWTStreakScreen.new(scene)
+      screen.pbStartScreen
+    end
+
+Backtrace:
+[TAoA Core] 008_UI_PWTStreak.rb:24:in `block in pbDrawStreakScreen'
+[TAoA Core] 008_UI_PWTStreak.rb:23:in `each'
+[TAoA Core] 008_UI_PWTStreak.rb:23:in `pbDrawStreakScreen'
+[TAoA Core] 008_UI_PWTStreak.rb:13:in `pbStartScene'
+[TAoA Core] 008_UI_PWTStreak.rb:106:in `pbStartScreen'
+(eval):5:in `block in execute_script'
+002_MessageConfig.rb:575:in `pbFadeOutIn'
+(eval):2:in `execute_script'
+003_Interpreter.rb:140:in `eval'
+003_Interpreter.rb:140:in `execute_script'
+
+=================
+
+[2025-05-18 00:42:46 -0700]
+[Pokémon Essentials version 21.1]
+
+Error in Plugin: [TAoA Core]
+Exception: SyntaxError
+Message: [TAoA Core] 012_Game_Stats.rb:6: syntax error, unexpected local variable or method, expecting `end'
+  def initialize
+      ^~~~~~~~~~
+[TAoA Core] 012_Game_Stats.rb:10: syntax error, unexpected `end', expecting end-of-input
+
+Backtrace:
+005_PluginManager.rb:635:in `eval'
+005_PluginManager.rb:635:in `block (2 levels) in runPlugins'
+005_PluginManager.rb:625:in `each'
+005_PluginManager.rb:625:in `block in runPlugins'
+005_PluginManager.rb:616:in `each'
+005_PluginManager.rb:616:in `runPlugins'
+999_Main.rb:35:in `mainFunctionDebug'
+999_Main.rb:19:in `block in mainFunction'
+003_Errors.rb:79:in `pbCriticalCode'
+999_Main.rb:19:in `mainFunction'
+
+=================
+
+[2025-05-18 00:43:49 -0700]
+[Pokémon Essentials version 21.1]
+[v21.1 Hotfixes 1.0.9]
+
+Script error in event 11 (coords 24,8), map 112 (Reimaden - Edge of Dreams)
+Exception: NoMethodError
+Message: undefined method `[]=' for nil:NilClass
+
+***Full script:
+initialize_pwt_stats
+
+Backtrace:
+[TAoA Core] 007_One Offs.rb:38:in `initialize_pwt_stats'
+(eval):1:in `execute_script'
+003_Interpreter.rb:140:in `eval'
+003_Interpreter.rb:140:in `execute_script'
+004_Interpreter_Commands.rb:1177:in `command_355'
+004_Interpreter_Commands.rb:116:in `execute_command'
+003_Interpreter.rb:132:in `block in update'
+003_Interpreter.rb:86:in `loop'
+003_Interpreter.rb:86:in `update'
+002_Scene_Map.rb:167:in `block in update'
+
+=================
+
+[2025-05-18 01:07:46 -0700]
+[Pokémon Essentials version 21.1]
+
+Error in Plugin: [Arcky's Poke Market]
+Exception: SyntaxError
+Message: [Arcky's Poke Market] 004_PokeMarket_TAoA.rb:313: syntax error, unexpected symbol literal, expecting ']'
+  :YATAMIRROR, :KUSANAGI,
+  ^
+[Arcky's Poke Market] 004_PokeMarket_TAoA.rb:330: syntax error, unexpected ']', expecting `end'
+    ], speech: "Musharna", useCat:...
+    ^
+[Arcky's Poke Market] 004_PokeMarket_TAoA.rb:330: syntax error, unexpected ',', expecting `end'
+    ], speech: "Musharna", useCat: true)
+                         ^
+
+
+Backtrace:
+005_PluginManager.rb:635:in `eval'
+005_PluginManager.rb:635:in `block (2 levels) in runPlugins'
+005_PluginManager.rb:625:in `each'
+005_PluginManager.rb:625:in `block in runPlugins'
+005_PluginManager.rb:616:in `each'
+005_PluginManager.rb:616:in `runPlugins'
+999_Main.rb:35:in `mainFunctionDebug'
+999_Main.rb:19:in `block in mainFunction'
+003_Errors.rb:79:in `pbCriticalCode'
+999_Main.rb:19:in `mainFunction'

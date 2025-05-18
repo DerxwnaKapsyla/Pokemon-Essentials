@@ -34,7 +34,7 @@ class GameStats
   attr_accessor :shadow_pokemon_purified
   # Battles
   attr_accessor :wild_battles_won, :wild_battles_lost   # Lost includes fled from
-  attr_accessor :trainer_battles_won, :trainer_battles_lost, :trainer_battles_lost_tmom # Derx: I'm lazy.
+  attr_accessor :trainer_battles_won, :trainer_battles_lost
   attr_accessor :total_exp_gained
   attr_accessor :battle_money_gained, :battle_money_lost
   attr_accessor :blacked_out_count
@@ -113,7 +113,6 @@ class GameStats
     @wild_battles_lost             = 0
     @trainer_battles_won           = 0
     @trainer_battles_lost          = 0
-	@trainer_battles_lost_tmom     = 0 # Derx: I'm lazy.
     @total_exp_gained              = 0
     @battle_money_gained           = 0
     @battle_money_lost             = 0

@@ -124,7 +124,7 @@ class Game_Event < Game_Character
     alias event_indicator_e_refresh refresh
     def refresh
         event_indicator_e_refresh
-        if $scene.is_a?(Scene_Map) && $scene.spritesets
+        if $scene.is_a?(Scene_Map) && $scene.spriteset
             $scene.spriteset.refreshEventIndicator(self)
         end
     end

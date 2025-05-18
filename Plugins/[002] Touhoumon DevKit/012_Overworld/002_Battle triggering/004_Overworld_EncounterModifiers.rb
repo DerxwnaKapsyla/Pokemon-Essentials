@@ -99,11 +99,11 @@ EventHandlers.add(:on_trainer_load, :trainer_music_override,
 
 EventHandlers.add(:on_trainer_load, :meimu_master_override,
   proc { |trainer|
-    next if !$game_switches[157]
-    #setBattleRule("battleBGM", "B-043. Irreplacable World.ogg") # Sets Meimu's Battle Theme
+    next if !$game_switches[157] # Fighting Meimu switch
+	next if !$game_map.map_id == 137 # Main map
     setBattleRule("backdrop", "meimu")                          # Sets Meimu's Battle Background
     setBattleRule("base", "meimu")                              # Sets Meimu's Battle Base
-    setBattleRule("midbattleScript", :vs_meimu)
+    #setBattleRule("midbattleScript", :vs_meimu)
     if $game_variables[143] > 1                                 # Have Meimu's sprite stay in the same spot for subsequent battles.
       setBattleRule("setSlideSprite", "still")
     end

@@ -59,7 +59,7 @@ ItemHandlers::UseOnPokemon.add(:STRAWBERRYJAM, proc { |item, qty, pkmn, scene|
   else
     scene.pbDisplay(_INTL("{1} became healthy.", pkmn.name))
   end
-  pkmn.changeHappiness("jam")
+  pkmn.changeHappiness("evberry")
   next true
 })
 
@@ -72,7 +72,7 @@ ItemHandlers::UseOnPokemon.add(:BLUEBERRYJAM, proc { |item, qty, pkmn, scene|
   end
   pbSEPlay("Use item in party")
   scene.pbDisplay(_INTL("PP was restored."))
-  pkmn.changeHappiness("jam")
+  pkmn.changeHappiness("evberry")
   next true
 })
 
@@ -96,6 +96,6 @@ ItemHandlers::UseOnPokemon.add(:MINORIKOJAM, proc { |item, qty, pkmn, scene|
   end
   next true
   scene.pbDisplay(_INTL("PP was restored."))
-  pkmn.changeHappiness("jam")
+  pkmn.changeHappiness("evberry")
   next true
 })

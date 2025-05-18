@@ -68,7 +68,7 @@ module Settings
     #------------------------------------------------------------------------------------
     EVENT_INDICATORS = {
         "quest" => {
-            :graphic => "Graphics/UI/Event Indicators/quest_available"
+            :graphic => "Graphics/UI/Event Indicators/quest_available.gif"
         },
         "questsimple" => {
             :graphic => "Graphics/UI/Event Indicators/quest_available_simple"

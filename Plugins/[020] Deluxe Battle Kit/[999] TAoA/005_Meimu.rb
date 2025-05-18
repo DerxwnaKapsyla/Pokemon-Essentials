@@ -4,36 +4,34 @@ MidbattleHandlers.add(:midbattle_scripts, :vs_meimu,
 	player = battle.battlers[0]
 	foe    = battle.battlers[1]
 	case trigger
-	when "BattleEndWin"
-	  if pbGet(143) != 5 # How many of Meimu's battles have we gone through?
-	    $game_variables[143] += 1 # Increment battle counter by 1
-		echoln pbGet(143)
-	  else
-	    $game_switches[157] = false # No longer fighting Meimu.
-		$game_switches[98] = false # Turn off the Music Override.
-		$game_variables[143] = 6 # Safety check so it doesn't continue to itterate into a battle that doesn't exist
-		echoln $game_switches[98]
-		echoln $game_switches[157]
+	when "RoundStartCommand"
+	  if pbGet(143) == 1
+	    $game_temp.player_new_map_id    = 137 # Dummy Warp Map 2
+	    $game_temp.player_new_x         = 15
+	    $game_temp.player_new_y         = 26
+	    $game_temp.player_new_direction = 2
+	    $scene.transfer_player if $scene.is_a?(Scene_Map)
+	    $game_temp.transition_processing = false
+	    $game_map.refresh
 	  end
 	end
 	}
 )
 
 
+# This controls where the player is teleported to after the battle scene is erased.
+
 MidbattleHandlers.add(:midbattle_scripts, :vs_meimu_final,
   proc { |battle, idxBattler, idxTarget, trigger|
-    scene  = battle.scene
-	player = battle.battlers[0]
-	meimu  = battle.battlers[1]
+    scene       = battle.scene
+	player      = battle.battlers[0]
+	meimu       = battle.battlers[1]
+	partner     = battle.battlers[3]
 	rand_puppet = [:MEEKO, :MAKURA, :MITORI, :TORAKO, :SASHA, :SUGAR, :KAREN, :MASHA]
-	def_stats = [:DEFENSE, :SPECIAL_DEFENSE]
+	def_stats   = [:DEFENSE, :SPECIAL_DEFENSE]
 	@inverse_turn_count = 0 if @inverse_turn_count.nil?
     @bbfar_turn_count   = 0 if @bbfar_turn_count.nil?
     @doe_turn_count     = 0 if @doe_turn_count.nil?
-	# $game_switches[158] = false
-	# $game_switches[159] = false
-	# $game_switches[160] = false
-	# $game_temp.battle_inverse = false
 	case trigger
 	#----------------------------------------------
 	# Round 1 Start: Meimu's intro dialogue
@@ -213,8 +211,6 @@ MidbattleHandlers.add(:midbattle_scripts, :vs_meimu_final,
 	# Round End Effects
 	#---------------------------------------------------------
 	when "RoundEnd_foe1"
-	  echoln "RoundEnd_foe1"
-	  echoln "Switch 158 value: #{$game_switches[158].inspect}"
 	  if $game_switches[158] # Inverse Battle Active Check
 	  echoln "Checking Inverse Battle status"
 	    if @inverse_turn_count != 4
@@ -291,6 +287,9 @@ MidbattleHandlers.add(:midbattle_scripts, :vs_meimu_final,
 		  card_doe(scene, battle)
 		end
 	  end
+	# when "BattlerFainted_foe"
+	  # echoln "Battler Fainted"
+	  # battle.databoxStyle = :Long
 	end
    }
   )
@@ -309,7 +308,6 @@ def card_fantasy_summoning(scene, battle)
   battle.pbDisplayPaused(_INTL("Meimu materialized a Puppet out of thin air!"))
   battle.pbAddNewBattler(rand_puppet.sample, 100)
 end
-
 
 #---------------------------------------------------------
 # Manipulation - Inversion of Perception

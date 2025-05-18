@@ -90,7 +90,7 @@ class TMoMIntroScene
     :clear,
     :wait, 120,
     [
-      "Spring, Season 130 of the Gensokyo Calendar",
+      "Spring, Season 131 of the Gensokyo Calendar",
       "Human Village, Evening"
     ],
     :wait, 60
