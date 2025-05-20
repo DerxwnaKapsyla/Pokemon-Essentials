@@ -15,13 +15,13 @@
       case trigger
 	  #-------------------------------------
 	  when "BattleEndWin"
-	    if pbGet(143) != 5
+	    if pbGet(143) != 4
 		  $game_variables[143] += 1
 		  #p $game_variables[143]
 		else
 		  $game_switches[157] = false
 		  $game_switches[98] = false
-		  $game_variables[143] = 6
+		  $game_variables[143] = 5
 		  #p $game_switches[98]
 		  #p $game_switches[157]
 		end

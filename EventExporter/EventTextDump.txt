@@ -19501,6 +19501,29 @@ List of Event Commands:
 @>
 
 #------------------------------------------------------------------------------
+Event ID: 020
+Event Name: The Finetuner
+(X,Y): (021,019)
+
+Page #1
+Conditions
+None
+
+Graphic: TPDP_NPC 45
+
+Autonomous Movement
+Type: Fixed
+Speed: 3: Slow
+Freq: 3: Low
+Options Enabled
+Move Animation
+Trigger: Action Button
+
+List of Event Commands:
+@>Script: pbEVShop
+@>
+
+#------------------------------------------------------------------------------
 
 #==============================================================================
 Map ID: 020
@@ -111016,7 +111039,7 @@ List of Event Commands:
 @>Control Variables: [0103: Vs. Transition ID] = 56
 @>Control Variables: [0104: Vs. Transition - Pkmn] = 6
 @>Loop
- @>Conditional Branch: Variable [0143: Meimu Battle Count] == 4
+ @>Conditional Branch: Variable [0143: Meimu Battle Count] == 3
   @>Script: setBattleRule("double")
   @>
  : Branch End
@@ -111030,7 +111053,7 @@ List of Event Commands:
   @>Exit Event Processing
   @>
  : Branch End
- @>Conditional Branch: Variable [0143: Meimu Battle Count] == 6
+ @>Conditional Branch: Variable [0143: Meimu Battle Count] == 5
   @>Script: echoln pbGet(143)
   @>Break Loop
   @>

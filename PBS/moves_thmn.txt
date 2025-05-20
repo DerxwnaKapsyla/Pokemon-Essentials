@@ -4344,134 +4344,140 @@ Description = An attack that makes use of the land's hidden power. Its effects v
 #-------------------------------
 [UNCOUNTABLESHEEP]
 Name = Uncountable Sheep
-Type = ILLUSION18
-Category = Physical
-Power = 40
+Type = PHANTASM
+Category = Special
+Power = 70
 Accuracy = 100
-TotalPP = 40
-Target = NearOther
-FunctionCode = None
-Flags = Contact,CanProtect,CanMirrorMove
+TotalPP = 5
+Target = AllNearFoes
+FunctionCode = SleepTarget
+Flags = CanProtect,CanMirrorMove
+EffectChance = 60
 Description = The target is run over by an endless horde of sleep. Can cause sleep.
 #-------------------------------
 [ABYSSOFCHAOS]
 Name = Abyss of Chaos
-Type = ILLUSION18
-Category = Physical
-Power = 40
+Type = PHANTASM
+Category = Special
+Power = 60
 Accuracy = 100
-TotalPP = 40
-Target = NearOther
-FunctionCode = None
-Flags = Contact,CanProtect,CanMirrorMove
-Description = Drains health from sleeping foes.
+TotalPP = 5
+Target = AllNearFoes
+FunctionCode = DoublePowerIfTargetAsleep
+Flags = CanProtect,CanMirrorMove
+Description = Double damage to sleeping foes.
 #-------------------------------
 [ENCHANTINGCONE]
 Name = Enchanting Cone
-Type = ILLUSION18
+Type = PHANTASM
 Category = Physical
-Power = 40
+Power = 50
 Accuracy = 100
-TotalPP = 40
+TotalPP = 10
 Target = NearOther
-FunctionCode = None
+FunctionCode = EnchantingCone
 Flags = Contact,CanProtect,CanMirrorMove
 Description = Causes infatuation in target regardless of gender or spiritual alignment.
+Priority = 1
+EffectChance = 25
 #-------------------------------
 [SPIRALABYSS]
 Name = Spiral Abyss
-Type = ILLUSION18
+Type = PHANTASM
 Category = Physical
-Power = 40
+Power = 90
 Accuracy = 100
 TotalPP = 40
 Target = NearOther
-FunctionCode = None
+FunctionCode = SpiralAbyss
 Flags = Contact,CanProtect,CanMirrorMove
 Description = Ensnares the foe in a trap which will either inflict a random status condition or lower a random stat by one.
+Priority = -1
+EffectChance = 50
 #-------------------------------
 [PROHIBITORYSIGNBOARD]
 Name = Prohibitory Signboard
-Type = ILLUSION18
-Category = Physical
-Power = 40
+Type = PHANTASM
+Category = Special
+Power = 80
 Accuracy = 100
-TotalPP = 40
+TotalPP = 10
 Target = NearOther
-FunctionCode = None
+FunctionCode = ProhibitorySignboard
 Flags = Contact,CanProtect,CanMirrorMove
 Description = Charges energy to paralyze the foe. If interupted, disables the move it was hit by.
+EffectChance = 50
 #-------------------------------
 [WALPURGISNIGHT]
 Name = Walpurgis Night
-Type = ILLUSION18
+Type = PHANTASM
 Category = Physical
-Power = 40
+Power = 1
 Accuracy = 100
-TotalPP = 40
+TotalPP = 10
 Target = NearOther
-FunctionCode = None
-Flags = Contact,CanProtect,CanMirrorMove
+FunctionCode = WalpurgisNight
+Flags = CanProtect,CanMirrorMove
 Description = Summons the spirit of fallen allies to harass the foe.
 #-------------------------------
 [LIGHTSPEED]
 Name = Lightspeed
-Type = ILLUSION18
-Category = Physical
-Power = 40
-Accuracy = 100
-TotalPP = 40
+Type = PHANTASM
+Category = Special
+Power = 140
+Accuracy = 80
+TotalPP = 10
 Target = NearOther
-FunctionCode = None
+FunctionCode = CrashDamageIfFailsUnusableInGravity # Lightspeed
 Flags = Contact,CanProtect,CanMirrorMove
 Description = Slams into the foe at nigh-unobservable speeds. If it misses, it will do damage to the user.
+Priority = 3
 #-------------------------------
 [CREEPINGMYCELIUM]
 Name = Creeping Mycelium
-Type = ILLUSION18
-Category = Physical
-Power = 40
-Accuracy = 100
-TotalPP = 40
-Target = NearOther
-FunctionCode = None
-Flags = Contact,CanProtect,CanMirrorMove
+Type = PHANTASM
+Category = Status
+Accuracy = 0
+TotalPP = 10
+Target = FoeSide
+FunctionCode = CreepingMycelium
 Description = Spreads a miasma over the field which will inflict a random status condition on a foe.
 #-------------------------------
 [FAETRICKERY]
 Name = Fae Trickery
-Type = ILLUSION18
-Category = Physical
-Power = 40
-Accuracy = 100
-TotalPP = 40
-Target = NearOther
-FunctionCode = None
-Flags = Contact,CanProtect,CanMirrorMove
+Type = PHANTASM
+Category = Special
+Power = 90
+Accuracy = 90
+TotalPP = 10
+Target = AllNearFoes
+FunctionCode = ResetTargetStatStages # FaeTrickery
+Flags = CanProtect,CanMirrorMove
 Description = Clears all of the foe's stat changes.
 #-------------------------------
 [ULTIMATEDREAM]
 Name = Ultimate Dream
-Type = ILLUSION18
-Category = Physical
-Power = 40
-Accuracy = 100
-TotalPP = 40
+Type = PHANTASM
+Category = Special
+Power = 110
+Accuracy = 85
+TotalPP = 99
 Target = NearOther
-FunctionCode = None
-Flags = Contact,CanProtect,CanMirrorMove
-Description = I am not bothering to put a description in here. This move has too much going on.
+FunctionCode = UltimateDream
+Flags = CanProtect,CanMirrorMove
+Description = Steal stat changes, set up Sub. If SLP, heal 1/2 dmg dealt, set up Aurora Veil.
 #-------------------------------
-[MYRAIDDREAMS]
+[MYRIADDREAMS]
 Name = All the Myraid Dreams of Paradise
 Type = PHANTASM
 Category = Special
-Power = 130
+Power = 80
 Accuracy = 50
 TotalPP = 5
 Target = NearOther
 FunctionCode = MyraidDreams
 Description = All of Fantasy is at your beck and call. With it by your side, there is nothing you can't do.
+EffectChance = 100
 #-------------------------------
 [SUPERNOVA18]
 Name = Supernova

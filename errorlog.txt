@@ -20756,3 +20756,955 @@ Backtrace:
 999_Main.rb:19:in `block in mainFunction'
 003_Errors.rb:79:in `pbCriticalCode'
 999_Main.rb:19:in `mainFunction'
+
+=================
+
+[2025-05-18 13:41:56 -0700]
+[Pokémon Essentials version 21.1]
+[v21.1 Hotfixes 1.0.9]
+
+Exception: ArgumentError
+Message: wrong number of arguments (given 5, expected 4)
+
+Backtrace:
+[TAoA Core] 001_Item_Utilities.rb:1:in `pbLowerEV'
+[TAoA Core] 002_Item_Effects.rb:157:in `block (2 levels) in <main>'
+[TAoA Core] 002_Item_Effects.rb:156:in `each'
+[TAoA Core] 002_Item_Effects.rb:156:in `block in <main>'
+005_Event_Handlers.rb:195:in `trigger'
+001_Item_Utilities.rb:86:in `triggerUseOnPokemon'
+[Bag Screen w/int. Party] Script.rb:1727:in `pbBagUseItem'
+[Bag Screen w/int. Party] Script.rb:1226:in `block in pbChoosePoke'
+[Bag Screen w/int. Party] Script.rb:1194:in `loop'
+[Bag Screen w/int. Party] Script.rb:1194:in `pbChoosePoke'
+
+=================
+
+[2025-05-18 15:57:59 -0700]
+[Pokémon Essentials version 21.1]
+
+Error in Plugin: [Arcky's Poke Market]
+Exception: SyntaxError
+Message: [Arcky's Poke Market] 004_PokeMarket_TAoA.rb:8: syntax error, unexpected symbol literal, expecting ']'
+    :SPETALISMAN, :SPATKTALISMAN, ...
+    ^
+[Arcky's Poke Market] 004_PokeMarket_TAoA.rb:9: syntax error, unexpected ']', expecting `end'
+    ], peech: "EVShop", useCat: fa...
+    ^
+[Arcky's Poke Market] 004_PokeMarket_TAoA.rb:9: syntax error, unexpected ',', expecting `end'
+    ], peech: "EVShop", useCat: false)
+                      ^
+[Arcky's Poke Market] 004_PokeMarket_TAoA.rb:342: syntax error, unexpected end-of-input, expecting `end'
+
+Backtrace:
+005_PluginManager.rb:635:in `eval'
+005_PluginManager.rb:635:in `block (2 levels) in runPlugins'
+005_PluginManager.rb:625:in `each'
+005_PluginManager.rb:625:in `block in runPlugins'
+005_PluginManager.rb:616:in `each'
+005_PluginManager.rb:616:in `runPlugins'
+999_Main.rb:35:in `mainFunctionDebug'
+999_Main.rb:19:in `block in mainFunction'
+003_Errors.rb:79:in `pbCriticalCode'
+999_Main.rb:19:in `mainFunction'
+
+=================
+
+[2025-05-18 15:58:30 -0700]
+[Pokémon Essentials version 21.1]
+
+Error in Plugin: [Arcky's Poke Market]
+Exception: SyntaxError
+Message: [Arcky's Poke Market] 004_PokeMarket_TAoA.rb:8: syntax error, unexpected symbol literal, expecting ']'
+    :SPETALISMAN, :SPATKTALISMAN, ...
+    ^
+[Arcky's Poke Market] 004_PokeMarket_TAoA.rb:9: syntax error, unexpected ']', expecting `end'
+    ], speech: "EVShop", useCat: f...
+    ^
+[Arcky's Poke Market] 004_PokeMarket_TAoA.rb:9: syntax error, unexpected ',', expecting `end'
+    ], speech: "EVShop", useCat: false)
+                       ^
+[Arcky's Poke Market] 004_PokeMarket_TAoA.rb:342: syntax error, unexpected end-of-input, expecting `end'
+
+Backtrace:
+005_PluginManager.rb:635:in `eval'
+005_PluginManager.rb:635:in `block (2 levels) in runPlugins'
+005_PluginManager.rb:625:in `each'
+005_PluginManager.rb:625:in `block in runPlugins'
+005_PluginManager.rb:616:in `each'
+005_PluginManager.rb:616:in `runPlugins'
+999_Main.rb:35:in `mainFunctionDebug'
+999_Main.rb:19:in `block in mainFunction'
+003_Errors.rb:79:in `pbCriticalCode'
+999_Main.rb:19:in `mainFunction'
+
+=================
+
+[2025-05-18 15:59:27 -0700]
+[Pokémon Essentials version 21.1]
+[v21.1 Hotfixes 1.0.9]
+
+Script error in event 11 (coords 24,8), map 112 (Reimaden - Edge of Dreams)
+Exception: RuntimeError
+Message: Unknown ID SPETALISMAN.
+
+***Full script:
+pbEVShop
+
+Backtrace:
+001_GameData.rb:103:in `get'
+[Arcky's Poke Market] 001_PokeMarket_Main.rb:662:in `block in editStockBadgeOrImportant'
+[Arcky's Poke Market] 001_PokeMarket_Main.rb:662:in `delete_if'
+[Arcky's Poke Market] 001_PokeMarket_Main.rb:662:in `editStockBadgeOrImportant'
+[Arcky's Poke Market] 001_PokeMarket_Main.rb:561:in `pbPokemonMart'
+[Arcky's Poke Market] 004_PokeMarket_TAoA.rb:5:in `pbEVShop'
+(eval):1:in `execute_script'
+003_Interpreter.rb:140:in `eval'
+003_Interpreter.rb:140:in `execute_script'
+004_Interpreter_Commands.rb:1177:in `command_355'
+
+=================
+
+[2025-05-18 16:59:18 -0700]
+[Pokémon Essentials version 21.1]
+[v21.1 Hotfixes 1.0.9]
+
+Exception: NoMethodError
+Message: undefined method `each_value' for nil:NilClass
+
+Backtrace:
+002_Scene_Map.rb:12:in `spriteset'
+[Event Indicators] 001_Script.rb:127:in `refresh'
+007_Game_Event.rb:28:in `initialize'
+004_Game_Map.rb:65:in `new'
+004_Game_Map.rb:65:in `block in setup'
+004_Game_Map.rb:64:in `each_key'
+004_Game_Map.rb:64:in `setup'
+005_Game_MapFactory.rb:24:in `setup'
+005_Game_MapFactory.rb:11:in `initialize'
+001_StartGame.rb:51:in `new'
+
+=================
+
+[2025-05-18 17:01:55 -0700]
+[Pokémon Essentials version 21.1]
+[v21.1 Hotfixes 1.0.9]
+
+Exception: NoMethodError
+Message: undefined method `each_value' for nil:NilClass
+
+Backtrace:
+002_Scene_Map.rb:12:in `spriteset'
+[Event Indicators] 001_Script.rb:127:in `refresh'
+007_Game_Event.rb:28:in `initialize'
+004_Game_Map.rb:65:in `new'
+004_Game_Map.rb:65:in `block in setup'
+004_Game_Map.rb:64:in `each_key'
+004_Game_Map.rb:64:in `setup'
+005_Game_MapFactory.rb:24:in `setup'
+005_Game_MapFactory.rb:11:in `initialize'
+001_StartGame.rb:51:in `new'
+
+=================
+
+[2025-05-19 15:10:32 -0700]
+[Pokémon Essentials version 21.1]
+
+Error in Plugin: [TAoA Core]
+Exception: ArgumentError
+Message: comparison of Symbol with Class failed
+
+Backtrace:
+[TAoA Core] 015_MoveEffects_TAoA.rb:67:in `<'
+[TAoA Core] 015_MoveEffects_TAoA.rb:67:in `<class:Move>'
+[TAoA Core] 015_MoveEffects_TAoA.rb:67:in `<main>'
+005_PluginManager.rb:635:in `eval'
+005_PluginManager.rb:635:in `block (2 levels) in runPlugins'
+005_PluginManager.rb:625:in `each'
+005_PluginManager.rb:625:in `block in runPlugins'
+005_PluginManager.rb:616:in `each'
+005_PluginManager.rb:616:in `runPlugins'
+999_Main.rb:35:in `mainFunctionDebug'
+
+=================
+
+[2025-05-19 15:12:05 -0700]
+[Pokémon Essentials version 21.1]
+[v21.1 Hotfixes 1.0.9]
+
+Exception: RuntimeError
+Message: Undefined value Phantasm in GameData::Type.
+File PBS/moves_thmn.txt, section LIGHTSPEED, key Type
+Phantasm
+
+
+
+Backtrace:
+001_Compiler.rb:454:in `checkEnumField'
+[v21.1 Hotfixes] Compiler bug fixes.rb:53:in `cast_csv_value'
+001_Compiler.rb:724:in `block (2 levels) in get_csv_record'
+001_Compiler.rb:710:in `each'
+001_Compiler.rb:710:in `block in get_csv_record'
+001_Compiler.rb:708:in `loop'
+001_Compiler.rb:708:in `get_csv_record'
+002_Compiler_CompilePBS.rb:49:in `block (4 levels) in compile_PBS_file_generic'
+002_Compiler_CompilePBS.rb:31:in `each_key'
+002_Compiler_CompilePBS.rb:31:in `block (3 levels) in compile_PBS_file_generic'
+
+=================
+
+[2025-05-19 15:12:43 -0700]
+[Pokémon Essentials version 21.1]
+[v21.1 Hotfixes 1.0.9]
+
+Exception: RuntimeError
+Message: Unknown exception when compiling.
+
+Backtrace:
+001_Compiler.rb:1114:in `rescue in main'
+001_Compiler.rb:1041:in `main'
+999_Main.rb:36:in `mainFunctionDebug'
+999_Main.rb:19:in `block in mainFunction'
+003_Errors.rb:79:in `pbCriticalCode'
+999_Main.rb:19:in `mainFunction'
+999_Main.rb:52:in `block (2 levels) in load_scripts_from_folder'
+999_Main.rb:51:in `loop'
+999_Main.rb:51:in `block in load_scripts_from_folder'
+Main:35:in `eval'
+
+=================
+
+[2025-05-19 15:15:48 -0700]
+[Pokémon Essentials version 21.1]
+[v21.1 Hotfixes 1.0.9]
+
+Exception: NameError
+Message: uninitialized constant PBEffects::Miasma
+
+Backtrace:
+[TAoA Core] 015_MoveEffects_TAoA.rb:204:in `pbMoveFailed?'
+[Touhoumon Essentials Development Kit] 007_Battler_UseMove.rb:176:in `pbUseMove'
+[Deluxe Battle Kit] [001] Animation Utilities.rb:278:in `block in pbProcessTurn'
+001_PBDebug.rb:6:in `logonerr'
+[Deluxe Battle Kit] [001] Animation Utilities.rb:278:in `pbProcessTurn'
+010_Battle_AttackPhase.rb:128:in `block (2 levels) in pbAttackPhaseMoves'
+010_Battle_AttackPhase.rb:124:in `each'
+010_Battle_AttackPhase.rb:124:in `block in pbAttackPhaseMoves'
+010_Battle_AttackPhase.rb:110:in `loop'
+010_Battle_AttackPhase.rb:110:in `pbAttackPhaseMoves'
+
+=================
+
+[2025-05-19 15:17:23 -0700]
+[Pokémon Essentials version 21.1]
+[v21.1 Hotfixes 1.0.9]
+
+Exception: NameError
+Message: uninitialized constant PBEffects::Miasma
+
+Backtrace:
+[TAoA Core] 015_MoveEffects_TAoA.rb:204:in `pbMoveFailed?'
+[Touhoumon Essentials Development Kit] 007_Battler_UseMove.rb:176:in `pbUseMove'
+[Deluxe Battle Kit] [001] Animation Utilities.rb:278:in `block in pbProcessTurn'
+001_PBDebug.rb:6:in `logonerr'
+[Deluxe Battle Kit] [001] Animation Utilities.rb:278:in `pbProcessTurn'
+010_Battle_AttackPhase.rb:128:in `block (2 levels) in pbAttackPhaseMoves'
+010_Battle_AttackPhase.rb:124:in `each'
+010_Battle_AttackPhase.rb:124:in `block in pbAttackPhaseMoves'
+010_Battle_AttackPhase.rb:110:in `loop'
+010_Battle_AttackPhase.rb:110:in `pbAttackPhaseMoves'
+
+=================
+
+[2025-05-19 15:17:26 -0700]
+[Pokémon Essentials version 21.1]
+[v21.1 Hotfixes 1.0.9]
+
+Exception: NameError
+Message: uninitialized constant PBEffects::Miasma
+
+Backtrace:
+[TAoA Core] 015_MoveEffects_TAoA.rb:204:in `pbMoveFailed?'
+[Touhoumon Essentials Development Kit] 007_Battler_UseMove.rb:176:in `pbUseMove'
+[Deluxe Battle Kit] [001] Animation Utilities.rb:278:in `block in pbProcessTurn'
+001_PBDebug.rb:6:in `logonerr'
+[Deluxe Battle Kit] [001] Animation Utilities.rb:278:in `pbProcessTurn'
+010_Battle_AttackPhase.rb:128:in `block (2 levels) in pbAttackPhaseMoves'
+010_Battle_AttackPhase.rb:124:in `each'
+010_Battle_AttackPhase.rb:124:in `block in pbAttackPhaseMoves'
+010_Battle_AttackPhase.rb:110:in `loop'
+010_Battle_AttackPhase.rb:110:in `pbAttackPhaseMoves'
+
+=================
+
+[2025-05-19 15:17:28 -0700]
+[Pokémon Essentials version 21.1]
+[v21.1 Hotfixes 1.0.9]
+
+Exception: NameError
+Message: uninitialized constant PBEffects::Miasma
+
+Backtrace:
+[TAoA Core] 015_MoveEffects_TAoA.rb:204:in `pbMoveFailed?'
+[Touhoumon Essentials Development Kit] 007_Battler_UseMove.rb:176:in `pbUseMove'
+[Deluxe Battle Kit] [001] Animation Utilities.rb:278:in `block in pbProcessTurn'
+001_PBDebug.rb:6:in `logonerr'
+[Deluxe Battle Kit] [001] Animation Utilities.rb:278:in `pbProcessTurn'
+010_Battle_AttackPhase.rb:128:in `block (2 levels) in pbAttackPhaseMoves'
+010_Battle_AttackPhase.rb:124:in `each'
+010_Battle_AttackPhase.rb:124:in `block in pbAttackPhaseMoves'
+010_Battle_AttackPhase.rb:110:in `loop'
+010_Battle_AttackPhase.rb:110:in `pbAttackPhaseMoves'
+
+=================
+
+[2025-05-19 15:17:30 -0700]
+[Pokémon Essentials version 21.1]
+[v21.1 Hotfixes 1.0.9]
+
+Exception: NameError
+Message: uninitialized constant PBEffects::Miasma
+
+Backtrace:
+[TAoA Core] 015_MoveEffects_TAoA.rb:204:in `pbMoveFailed?'
+[Touhoumon Essentials Development Kit] 007_Battler_UseMove.rb:176:in `pbUseMove'
+[Deluxe Battle Kit] [001] Animation Utilities.rb:278:in `block in pbProcessTurn'
+001_PBDebug.rb:6:in `logonerr'
+[Deluxe Battle Kit] [001] Animation Utilities.rb:278:in `pbProcessTurn'
+010_Battle_AttackPhase.rb:128:in `block (2 levels) in pbAttackPhaseMoves'
+010_Battle_AttackPhase.rb:124:in `each'
+010_Battle_AttackPhase.rb:124:in `block in pbAttackPhaseMoves'
+010_Battle_AttackPhase.rb:110:in `loop'
+010_Battle_AttackPhase.rb:110:in `pbAttackPhaseMoves'
+
+=================
+
+[2025-05-19 15:17:32 -0700]
+[Pokémon Essentials version 21.1]
+[v21.1 Hotfixes 1.0.9]
+
+Exception: NameError
+Message: uninitialized constant PBEffects::Miasma
+
+Backtrace:
+[TAoA Core] 015_MoveEffects_TAoA.rb:204:in `pbMoveFailed?'
+[Touhoumon Essentials Development Kit] 007_Battler_UseMove.rb:176:in `pbUseMove'
+[Deluxe Battle Kit] [001] Animation Utilities.rb:278:in `block in pbProcessTurn'
+001_PBDebug.rb:6:in `logonerr'
+[Deluxe Battle Kit] [001] Animation Utilities.rb:278:in `pbProcessTurn'
+010_Battle_AttackPhase.rb:128:in `block (2 levels) in pbAttackPhaseMoves'
+010_Battle_AttackPhase.rb:124:in `each'
+010_Battle_AttackPhase.rb:124:in `block in pbAttackPhaseMoves'
+010_Battle_AttackPhase.rb:110:in `loop'
+010_Battle_AttackPhase.rb:110:in `pbAttackPhaseMoves'
+
+=================
+
+[2025-05-19 15:17:34 -0700]
+[Pokémon Essentials version 21.1]
+[v21.1 Hotfixes 1.0.9]
+
+Exception: NameError
+Message: uninitialized constant PBEffects::Miasma
+
+Backtrace:
+[TAoA Core] 015_MoveEffects_TAoA.rb:204:in `pbMoveFailed?'
+[Touhoumon Essentials Development Kit] 007_Battler_UseMove.rb:176:in `pbUseMove'
+[Deluxe Battle Kit] [001] Animation Utilities.rb:278:in `block in pbProcessTurn'
+001_PBDebug.rb:6:in `logonerr'
+[Deluxe Battle Kit] [001] Animation Utilities.rb:278:in `pbProcessTurn'
+010_Battle_AttackPhase.rb:128:in `block (2 levels) in pbAttackPhaseMoves'
+010_Battle_AttackPhase.rb:124:in `each'
+010_Battle_AttackPhase.rb:124:in `block in pbAttackPhaseMoves'
+010_Battle_AttackPhase.rb:110:in `loop'
+010_Battle_AttackPhase.rb:110:in `pbAttackPhaseMoves'
+
+=================
+
+[2025-05-19 15:17:37 -0700]
+[Pokémon Essentials version 21.1]
+[v21.1 Hotfixes 1.0.9]
+
+Exception: NameError
+Message: uninitialized constant PBEffects::Miasma
+
+Backtrace:
+[TAoA Core] 015_MoveEffects_TAoA.rb:204:in `pbMoveFailed?'
+[Touhoumon Essentials Development Kit] 007_Battler_UseMove.rb:176:in `pbUseMove'
+[Deluxe Battle Kit] [001] Animation Utilities.rb:278:in `block in pbProcessTurn'
+001_PBDebug.rb:6:in `logonerr'
+[Deluxe Battle Kit] [001] Animation Utilities.rb:278:in `pbProcessTurn'
+010_Battle_AttackPhase.rb:128:in `block (2 levels) in pbAttackPhaseMoves'
+010_Battle_AttackPhase.rb:124:in `each'
+010_Battle_AttackPhase.rb:124:in `block in pbAttackPhaseMoves'
+010_Battle_AttackPhase.rb:110:in `loop'
+010_Battle_AttackPhase.rb:110:in `pbAttackPhaseMoves'
+
+=================
+
+[2025-05-19 15:17:39 -0700]
+[Pokémon Essentials version 21.1]
+[v21.1 Hotfixes 1.0.9]
+
+Exception: NameError
+Message: uninitialized constant PBEffects::Miasma
+
+Backtrace:
+[TAoA Core] 015_MoveEffects_TAoA.rb:204:in `pbMoveFailed?'
+[Touhoumon Essentials Development Kit] 007_Battler_UseMove.rb:176:in `pbUseMove'
+[Deluxe Battle Kit] [001] Animation Utilities.rb:278:in `block in pbProcessTurn'
+001_PBDebug.rb:6:in `logonerr'
+[Deluxe Battle Kit] [001] Animation Utilities.rb:278:in `pbProcessTurn'
+010_Battle_AttackPhase.rb:128:in `block (2 levels) in pbAttackPhaseMoves'
+010_Battle_AttackPhase.rb:124:in `each'
+010_Battle_AttackPhase.rb:124:in `block in pbAttackPhaseMoves'
+010_Battle_AttackPhase.rb:110:in `loop'
+010_Battle_AttackPhase.rb:110:in `pbAttackPhaseMoves'
+
+=================
+
+[2025-05-19 15:17:42 -0700]
+[Pokémon Essentials version 21.1]
+[v21.1 Hotfixes 1.0.9]
+
+Exception: NameError
+Message: uninitialized constant PBEffects::Miasma
+
+Backtrace:
+[TAoA Core] 015_MoveEffects_TAoA.rb:204:in `pbMoveFailed?'
+[Touhoumon Essentials Development Kit] 007_Battler_UseMove.rb:176:in `pbUseMove'
+[Deluxe Battle Kit] [001] Animation Utilities.rb:278:in `block in pbProcessTurn'
+001_PBDebug.rb:6:in `logonerr'
+[Deluxe Battle Kit] [001] Animation Utilities.rb:278:in `pbProcessTurn'
+010_Battle_AttackPhase.rb:128:in `block (2 levels) in pbAttackPhaseMoves'
+010_Battle_AttackPhase.rb:124:in `each'
+010_Battle_AttackPhase.rb:124:in `block in pbAttackPhaseMoves'
+010_Battle_AttackPhase.rb:110:in `loop'
+010_Battle_AttackPhase.rb:110:in `pbAttackPhaseMoves'
+
+=================
+
+[2025-05-19 15:23:31 -0700]
+[Pokémon Essentials version 21.1]
+[v21.1 Hotfixes 1.0.9]
+
+Exception: NoMethodError
+Message: undefined method `empty?' for #<Battle::Battler>
+
+Backtrace:
+004_Battler_Statuses.rb:232:in `pbInflictStatus'
+[Deluxe Battle Kit] [001] Midbattle Overwrites.rb:597:in `pbInflictStatus'
+004_Battler_Statuses.rb:314:in `pbSleep'
+[TAoA Core] 015_MoveEffects_TAoA.rb:94:in `pbAdditionalEffect'
+[Touhoumon Essentials Development Kit] 007_Battler_UseMove.rb:608:in `block in pbProcessMoveHit'
+[Touhoumon Essentials Development Kit] 007_Battler_UseMove.rb:604:in `each'
+[Touhoumon Essentials Development Kit] 007_Battler_UseMove.rb:604:in `pbProcessMoveHit'
+[Touhoumon Essentials Development Kit] 007_Battler_UseMove.rb:292:in `block in pbUseMove'
+[Touhoumon Essentials Development Kit] 007_Battler_UseMove.rb:290:in `times'
+[Touhoumon Essentials Development Kit] 007_Battler_UseMove.rb:290:in `pbUseMove'
+
+=================
+
+[2025-05-19 15:41:13 -0700]
+[Pokémon Essentials version 21.1]
+[v21.1 Hotfixes 1.0.9]
+
+Exception: NameError
+Message: uninitialized constant PBEffects::ProhibitorySignboard
+
+Backtrace:
+[TAoA Core] 015_MoveEffects_TAoA.rb:107:in `pbDisplayChargeMessage'
+010_Battle_AttackPhase.rb:107:in `block in pbAttackPhaseMoves'
+010_Battle_AttackPhase.rb:104:in `each'
+010_Battle_AttackPhase.rb:104:in `pbAttackPhaseMoves'
+[Deluxe Battle Kit] [003] Command Menu Refactor.rb:409:in `pbAttackPhase'
+002_Battle_StartAndEnd.rb:339:in `block (2 levels) in pbBattleLoop'
+001_PBDebug.rb:6:in `logonerr'
+002_Battle_StartAndEnd.rb:339:in `block in pbBattleLoop'
+002_Battle_StartAndEnd.rb:324:in `loop'
+002_Battle_StartAndEnd.rb:324:in `pbBattleLoop'
+
+=================
+
+[2025-05-19 15:43:16 -0700]
+[Pokémon Essentials version 21.1]
+[v21.1 Hotfixes 1.0.9]
+
+Exception: NameError
+Message: wrong constant name CrashDamageIfFailsUnusableInGravity ; Lightspeed
+
+Backtrace:
+001_Battle_Move.rb:65:in `const_defined?'
+001_Battle_Move.rb:65:in `from_pokemon_move'
+[Touhoumon Essentials Development Kit] 002_Battler_Initialize.rb:63:in `block in pbInitPokemon'
+[Touhoumon Essentials Development Kit] 002_Battler_Initialize.rb:62:in `each'
+[Touhoumon Essentials Development Kit] 002_Battler_Initialize.rb:62:in `each_with_index'
+[Touhoumon Essentials Development Kit] 002_Battler_Initialize.rb:62:in `pbInitPokemon'
+[Touhoumon Essentials Development Kit] 002_Battler_Initialize.rb:35:in `pbInitialize'
+005_Battle_ActionSwitching.rb:278:in `pbReplace'
+[Deluxe Battle Kit] [001] Midbattle Overwrites.rb:345:in `pbReplace'
+005_Battle_ActionSwitching.rb:225:in `pbRecallAndReplace'
+
+=================
+
+[2025-05-19 15:44:25 -0700]
+[Pokémon Essentials version 21.1]
+[v21.1 Hotfixes 1.0.9]
+
+Exception: NameError
+Message: wrong constant name CrashDamageIfFailsUnusableInGravity ; Lightspeed
+
+Backtrace:
+001_Battle_Move.rb:65:in `const_defined?'
+001_Battle_Move.rb:65:in `from_pokemon_move'
+[Touhoumon Essentials Development Kit] 002_Battler_Initialize.rb:63:in `block in pbInitPokemon'
+[Touhoumon Essentials Development Kit] 002_Battler_Initialize.rb:62:in `each'
+[Touhoumon Essentials Development Kit] 002_Battler_Initialize.rb:62:in `each_with_index'
+[Touhoumon Essentials Development Kit] 002_Battler_Initialize.rb:62:in `pbInitPokemon'
+[Touhoumon Essentials Development Kit] 002_Battler_Initialize.rb:35:in `pbInitialize'
+002_Battle_StartAndEnd.rb:117:in `pbCreateBattler'
+002_Battle_StartAndEnd.rb:126:in `block (2 levels) in pbSetUpSides'
+002_Battle_StartAndEnd.rb:125:in `each'
+
+=================
+
+[2025-05-19 15:44:56 -0700]
+[Pokémon Essentials version 21.1]
+[v21.1 Hotfixes 1.0.9]
+
+Exception: NameError
+Message: wrong constant name CrashDamageIfFailsUnusableInGravity ; Lightspeed
+
+Backtrace:
+001_Battle_Move.rb:65:in `const_defined?'
+001_Battle_Move.rb:65:in `from_pokemon_move'
+[Touhoumon Essentials Development Kit] 002_Battler_Initialize.rb:63:in `block in pbInitPokemon'
+[Touhoumon Essentials Development Kit] 002_Battler_Initialize.rb:62:in `each'
+[Touhoumon Essentials Development Kit] 002_Battler_Initialize.rb:62:in `each_with_index'
+[Touhoumon Essentials Development Kit] 002_Battler_Initialize.rb:62:in `pbInitPokemon'
+[Touhoumon Essentials Development Kit] 002_Battler_Initialize.rb:35:in `pbInitialize'
+002_Battle_StartAndEnd.rb:117:in `pbCreateBattler'
+002_Battle_StartAndEnd.rb:126:in `block (2 levels) in pbSetUpSides'
+002_Battle_StartAndEnd.rb:125:in `each'
+
+=================
+
+[2025-05-19 19:20:01 -0700]
+[Pokémon Essentials version 21.1]
+
+Error in Plugin: [TAoA Core]
+Exception: SyntaxError
+Message: [TAoA Core] 001_Boss abilities.rb:68: syntax error, unexpected `end', expecting ')'
+    end
+    ^~~
+[TAoA Core] 001_Boss abilities.rb:71: syntax error, unexpected '}', expecting `end'
+[TAoA Core] 001_Boss abilities.rb:208: syntax error, unexpected end-of-input, expecting `end'
+
+Backtrace:
+005_PluginManager.rb:635:in `eval'
+005_PluginManager.rb:635:in `block (2 levels) in runPlugins'
+005_PluginManager.rb:625:in `each'
+005_PluginManager.rb:625:in `block in runPlugins'
+005_PluginManager.rb:616:in `each'
+005_PluginManager.rb:616:in `runPlugins'
+999_Main.rb:35:in `mainFunctionDebug'
+999_Main.rb:19:in `block in mainFunction'
+003_Errors.rb:79:in `pbCriticalCode'
+999_Main.rb:19:in `mainFunction'
+
+=================
+
+[2025-05-19 19:23:15 -0700]
+[Pokémon Essentials version 21.1]
+
+Error in Plugin: [TAoA Core]
+Exception: SyntaxError
+Message: [TAoA Core] 001_Boss abilities.rb:68: syntax error, unexpected `end', expecting ')'
+    end
+    ^~~
+[TAoA Core] 001_Boss abilities.rb:71: syntax error, unexpected '}', expecting `end'
+[TAoA Core] 001_Boss abilities.rb:208: syntax error, unexpected end-of-input, expecting `end'
+
+Backtrace:
+005_PluginManager.rb:635:in `eval'
+005_PluginManager.rb:635:in `block (2 levels) in runPlugins'
+005_PluginManager.rb:625:in `each'
+005_PluginManager.rb:625:in `block in runPlugins'
+005_PluginManager.rb:616:in `each'
+005_PluginManager.rb:616:in `runPlugins'
+999_Main.rb:35:in `mainFunctionDebug'
+999_Main.rb:19:in `block in mainFunction'
+003_Errors.rb:79:in `pbCriticalCode'
+999_Main.rb:19:in `mainFunction'
+
+=================
+
+[2025-05-19 19:34:38 -0700]
+[Pokémon Essentials version 21.1]
+[v21.1 Hotfixes 1.0.9]
+
+Exception: NameError
+Message: undefined local variable or method `battler_side' for #<Battle>
+
+Backtrace:
+[M.A.G (Moves & Abilities Galore)] 015_MoveEffects_TAoA.rb:356:in `pbEntryHazards'
+005_Battle_ActionSwitching.rb:338:in `block in pbOnBattlerEnteringBattle'
+005_Battle_ActionSwitching.rb:332:in `each'
+005_Battle_ActionSwitching.rb:332:in `pbOnBattlerEnteringBattle'
+005_Battle_ActionSwitching.rb:307:in `pbOnAllBattlersEnteringBattle'
+002_Battle_StartAndEnd.rb:314:in `pbStartBattleCore'
+002_Battle_StartAndEnd.rb:271:in `pbStartBattle'
+001_Overworld_BattleStarting.rb:402:in `block (2 levels) in start_core'
+002_Overworld_BattleIntroAnim.rb:55:in `pbSceneStandby'
+001_Overworld_BattleStarting.rb:402:in `block in start_core'
+
+=================
+
+[2025-05-19 22:33:49 -0700]
+[Pokémon Essentials version 21.1]
+[v21.1 Hotfixes 1.0.9]
+
+Exception: NameError
+Message: undefined local variable or method `hp_drained' for main:Object
+
+Backtrace:
+[TAoA Core] 001_Boss abilities.rb:31:in `block in <main>'
+005_Event_Handlers.rb:195:in `trigger'
+008_Battle_AbilityEffects.rb:247:in `triggerEndOfRoundEffect'
+011_Battle_EndOfRoundPhase.rb:689:in `block in pbEndOfRoundPhase'
+011_Battle_EndOfRoundPhase.rb:684:in `each'
+011_Battle_EndOfRoundPhase.rb:684:in `pbEndOfRoundPhase'
+006_Battle_Clauses.rb:41:in `pbEndOfRoundPhase'
+[Deluxe Battle Kit] [001] Midbattle Overwrites.rb:459:in `pbEndOfRoundPhase'
+[[DBK] SOS Battles] [004] Battle.rb:528:in `pbEndOfRoundPhase'
+002_Battle_StartAndEnd.rb:342:in `block (2 levels) in pbBattleLoop'
+
+=================
+
+[2025-05-19 23:23:32 -0700]
+[Pokémon Essentials version 21.1]
+[v21.1 Hotfixes 1.0.9]
+
+Exception: NoMethodError
+Message: undefined method `pbCanRaiseStatStage?' for :NearOther:Symbol
+
+Backtrace:
+[M.A.G (Moves & Abilities Galore)] MoveEffects_TAoA.rb:312:in `block in pbEffectGeneral'
+[M.A.G (Moves & Abilities Galore)] MoveEffects_TAoA.rb:311:in `each'
+[M.A.G (Moves & Abilities Galore)] MoveEffects_TAoA.rb:311:in `pbEffectGeneral'
+[Touhoumon Essentials Development Kit] 007_Battler_UseMove.rb:599:in `pbProcessMoveHit'
+[Touhoumon Essentials Development Kit] 007_Battler_UseMove.rb:292:in `block in pbUseMove'
+[Touhoumon Essentials Development Kit] 007_Battler_UseMove.rb:290:in `times'
+[Touhoumon Essentials Development Kit] 007_Battler_UseMove.rb:290:in `pbUseMove'
+007_Battler_UseMove.rb:148:in `pbUseMoveSimple'
+[M.A.G (Moves & Abilities Galore)] MoveEffects_TAoA.rb:68:in `pbEffectAgainstTarget'
+[Touhoumon Essentials Development Kit] 007_Battler_UseMove.rb:597:in `block in pbProcessMoveHit'
+
+=================
+
+[2025-05-19 23:25:38 -0700]
+[Pokémon Essentials version 21.1]
+[v21.1 Hotfixes 1.0.9]
+
+Exception: NoMethodError
+Message: undefined method `>=' for nil:NilClass
+
+Backtrace:
+005_Battler_StatStages.rb:6:in `statStageAtMax?'
+005_Battler_StatStages.rb:16:in `pbCanRaiseStatStage?'
+[M.A.G (Moves & Abilities Galore)] MoveEffects_TAoA.rb:314:in `block in pbEffectGeneral'
+[M.A.G (Moves & Abilities Galore)] MoveEffects_TAoA.rb:313:in `each'
+[M.A.G (Moves & Abilities Galore)] MoveEffects_TAoA.rb:313:in `pbEffectGeneral'
+[Touhoumon Essentials Development Kit] 007_Battler_UseMove.rb:599:in `pbProcessMoveHit'
+[Touhoumon Essentials Development Kit] 007_Battler_UseMove.rb:292:in `block in pbUseMove'
+[Touhoumon Essentials Development Kit] 007_Battler_UseMove.rb:290:in `times'
+[Touhoumon Essentials Development Kit] 007_Battler_UseMove.rb:290:in `pbUseMove'
+007_Battler_UseMove.rb:148:in `pbUseMoveSimple'
+
+=================
+
+[2025-05-19 23:29:57 -0700]
+[Pokémon Essentials version 21.1]
+[v21.1 Hotfixes 1.0.9]
+
+Exception: NoMethodError
+Message: undefined method `>=' for nil:NilClass
+
+Backtrace:
+005_Battler_StatStages.rb:6:in `statStageAtMax?'
+005_Battler_StatStages.rb:16:in `pbCanRaiseStatStage?'
+[M.A.G (Moves & Abilities Galore)] MoveEffects_TAoA.rb:310:in `block in pbEffectGeneral'
+[M.A.G (Moves & Abilities Galore)] MoveEffects_TAoA.rb:309:in `each'
+[M.A.G (Moves & Abilities Galore)] MoveEffects_TAoA.rb:309:in `pbEffectGeneral'
+[Touhoumon Essentials Development Kit] 007_Battler_UseMove.rb:599:in `pbProcessMoveHit'
+[Touhoumon Essentials Development Kit] 007_Battler_UseMove.rb:292:in `block in pbUseMove'
+[Touhoumon Essentials Development Kit] 007_Battler_UseMove.rb:290:in `times'
+[Touhoumon Essentials Development Kit] 007_Battler_UseMove.rb:290:in `pbUseMove'
+007_Battler_UseMove.rb:148:in `pbUseMoveSimple'
+
+=================
+
+[2025-05-19 23:31:59 -0700]
+[Pokémon Essentials version 21.1]
+[v21.1 Hotfixes 1.0.9]
+
+Exception: NoMethodError
+Message: undefined method `pbRandom' for #<Battle::Move::UseMoveDependingOnEnvironmentThmn>
+
+Backtrace:
+[M.A.G (Moves & Abilities Galore)] MoveEffects_TAoA.rb:70:in `pbEffectAgainstTarget'
+[Touhoumon Essentials Development Kit] 007_Battler_UseMove.rb:597:in `block in pbProcessMoveHit'
+[Touhoumon Essentials Development Kit] 007_Battler_UseMove.rb:595:in `each'
+[Touhoumon Essentials Development Kit] 007_Battler_UseMove.rb:595:in `pbProcessMoveHit'
+[Touhoumon Essentials Development Kit] 007_Battler_UseMove.rb:292:in `block in pbUseMove'
+[Touhoumon Essentials Development Kit] 007_Battler_UseMove.rb:290:in `times'
+[Touhoumon Essentials Development Kit] 007_Battler_UseMove.rb:290:in `pbUseMove'
+[Deluxe Battle Kit] [001] Animation Utilities.rb:278:in `block in pbProcessTurn'
+001_PBDebug.rb:6:in `logonerr'
+[Deluxe Battle Kit] [001] Animation Utilities.rb:278:in `pbProcessTurn'
+
+=================
+
+[2025-05-19 23:34:12 -0700]
+[Pokémon Essentials version 21.1]
+[v21.1 Hotfixes 1.0.9]
+
+Error in Plugin: [M.A.G (Moves & Abilities Galore)]
+Exception: SyntaxError
+Message: [M.A.G (Moves & Abilities Galore)] MoveEffects_TAoA.rb:72: Invalid next
+
+Backtrace:
+[M.A.G (Moves & Abilities Galore)] MoveEffects_TAoA.rb
+
+=================
+
+[2025-05-19 23:45:32 -0700]
+[Pokémon Essentials version 21.1]
+[v21.1 Hotfixes 1.0.9]
+
+Error in Plugin: [M.A.G (Moves & Abilities Galore)]
+Exception: SyntaxError
+Message: [M.A.G (Moves & Abilities Galore)] MoveEffects_TAoA.rb:69: syntax error, unexpected `end', expecting end-of-input
+
+Backtrace:
+005_PluginManager.rb:635:in `eval'
+005_PluginManager.rb:635:in `block (2 levels) in runPlugins'
+005_PluginManager.rb:625:in `each'
+005_PluginManager.rb:625:in `block in runPlugins'
+005_PluginManager.rb:616:in `each'
+005_PluginManager.rb:616:in `runPlugins'
+999_Main.rb:35:in `mainFunctionDebug'
+999_Main.rb:19:in `block in mainFunction'
+003_Errors.rb:79:in `pbCriticalCode'
+999_Main.rb:19:in `mainFunction'
+
+=================
+
+[2025-05-19 23:46:01 -0700]
+[Pokémon Essentials version 21.1]
+[v21.1 Hotfixes 1.0.9]
+
+Error in Plugin: [M.A.G (Moves & Abilities Galore)]
+Exception: SyntaxError
+Message: [M.A.G (Moves & Abilities Galore)] MoveEffects_TAoA.rb:69: syntax error, unexpected `end', expecting end-of-input
+
+Backtrace:
+005_PluginManager.rb:635:in `eval'
+005_PluginManager.rb:635:in `block (2 levels) in runPlugins'
+005_PluginManager.rb:625:in `each'
+005_PluginManager.rb:625:in `block in runPlugins'
+005_PluginManager.rb:616:in `each'
+005_PluginManager.rb:616:in `runPlugins'
+999_Main.rb:35:in `mainFunctionDebug'
+999_Main.rb:19:in `block in mainFunction'
+003_Errors.rb:79:in `pbCriticalCode'
+999_Main.rb:19:in `mainFunction'
+
+=================
+
+[2025-05-20 00:12:48 -0700]
+[Pokémon Essentials version 21.1]
+[v21.1 Hotfixes 1.0.9]
+
+Exception: NoMethodError
+Message: undefined method `fainted?' for :NearOther:Symbol
+
+Backtrace:
+[M.A.G (Moves & Abilities Galore)] MoveEffects_TAoA.rb:302:in `pbEffectGeneral'
+[Touhoumon Essentials Development Kit] 007_Battler_UseMove.rb:599:in `pbProcessMoveHit'
+[Touhoumon Essentials Development Kit] 007_Battler_UseMove.rb:292:in `block in pbUseMove'
+[Touhoumon Essentials Development Kit] 007_Battler_UseMove.rb:290:in `times'
+[Touhoumon Essentials Development Kit] 007_Battler_UseMove.rb:290:in `pbUseMove'
+007_Battler_UseMove.rb:148:in `pbUseMoveSimple'
+[M.A.G (Moves & Abilities Galore)] MoveEffects_TAoA.rb:66:in `pbEffectAgainstTarget'
+[Touhoumon Essentials Development Kit] 007_Battler_UseMove.rb:597:in `block in pbProcessMoveHit'
+[Touhoumon Essentials Development Kit] 007_Battler_UseMove.rb:595:in `each'
+[Touhoumon Essentials Development Kit] 007_Battler_UseMove.rb:595:in `pbProcessMoveHit'
+
+=================
+
+[2025-05-20 00:41:59 -0700]
+[Pokémon Essentials version 21.1]
+[v21.1 Hotfixes 1.0.9]
+
+Exception: NoMethodError
+Message: undefined method `effects' for :NearOther:Symbol
+
+Backtrace:
+[M.A.G (Moves & Abilities Galore)] MoveEffects_TAoA.rb:130:in `pbMoveFailed?'
+[Touhoumon Essentials Development Kit] 007_Battler_UseMove.rb:176:in `pbUseMove'
+[Deluxe Battle Kit] [001] Animation Utilities.rb:278:in `block in pbProcessTurn'
+001_PBDebug.rb:6:in `logonerr'
+[Deluxe Battle Kit] [001] Animation Utilities.rb:278:in `pbProcessTurn'
+010_Battle_AttackPhase.rb:128:in `block (2 levels) in pbAttackPhaseMoves'
+010_Battle_AttackPhase.rb:124:in `each'
+010_Battle_AttackPhase.rb:124:in `block in pbAttackPhaseMoves'
+010_Battle_AttackPhase.rb:110:in `loop'
+010_Battle_AttackPhase.rb:110:in `pbAttackPhaseMoves'
+
+=================
+
+[2025-05-20 00:45:10 -0700]
+[Pokémon Essentials version 21.1]
+[v21.1 Hotfixes 1.0.9]
+
+Exception: NoMethodError
+Message: undefined method `effects' for :NearOther:Symbol
+
+Backtrace:
+[M.A.G (Moves & Abilities Galore)] MoveEffects_TAoA.rb:130:in `pbMoveFailed?'
+[Touhoumon Essentials Development Kit] 007_Battler_UseMove.rb:176:in `pbUseMove'
+[Deluxe Battle Kit] [001] Animation Utilities.rb:278:in `block in pbProcessTurn'
+001_PBDebug.rb:6:in `logonerr'
+[Deluxe Battle Kit] [001] Animation Utilities.rb:278:in `pbProcessTurn'
+010_Battle_AttackPhase.rb:128:in `block (2 levels) in pbAttackPhaseMoves'
+010_Battle_AttackPhase.rb:124:in `each'
+010_Battle_AttackPhase.rb:124:in `block in pbAttackPhaseMoves'
+010_Battle_AttackPhase.rb:110:in `loop'
+010_Battle_AttackPhase.rb:110:in `pbAttackPhaseMoves'
+
+=================
+
+[2025-05-20 00:45:33 -0700]
+[Pokémon Essentials version 21.1]
+[v21.1 Hotfixes 1.0.9]
+
+Exception: NoMethodError
+Message: undefined method `effects' for :NearOther:Symbol
+
+Backtrace:
+[M.A.G (Moves & Abilities Galore)] MoveEffects_TAoA.rb:130:in `pbMoveFailed?'
+[Touhoumon Essentials Development Kit] 007_Battler_UseMove.rb:176:in `pbUseMove'
+[Deluxe Battle Kit] [001] Animation Utilities.rb:278:in `block in pbProcessTurn'
+001_PBDebug.rb:6:in `logonerr'
+[Deluxe Battle Kit] [001] Animation Utilities.rb:278:in `pbProcessTurn'
+010_Battle_AttackPhase.rb:128:in `block (2 levels) in pbAttackPhaseMoves'
+010_Battle_AttackPhase.rb:124:in `each'
+010_Battle_AttackPhase.rb:124:in `block in pbAttackPhaseMoves'
+010_Battle_AttackPhase.rb:110:in `loop'
+010_Battle_AttackPhase.rb:110:in `pbAttackPhaseMoves'
+
+=================
+
+[2025-05-20 00:45:36 -0700]
+[Pokémon Essentials version 21.1]
+[v21.1 Hotfixes 1.0.9]
+
+Exception: NoMethodError
+Message: undefined method `effects' for :NearOther:Symbol
+
+Backtrace:
+[M.A.G (Moves & Abilities Galore)] MoveEffects_TAoA.rb:130:in `pbMoveFailed?'
+[Touhoumon Essentials Development Kit] 007_Battler_UseMove.rb:176:in `pbUseMove'
+[Deluxe Battle Kit] [001] Animation Utilities.rb:278:in `block in pbProcessTurn'
+001_PBDebug.rb:6:in `logonerr'
+[Deluxe Battle Kit] [001] Animation Utilities.rb:278:in `pbProcessTurn'
+010_Battle_AttackPhase.rb:128:in `block (2 levels) in pbAttackPhaseMoves'
+010_Battle_AttackPhase.rb:124:in `each'
+010_Battle_AttackPhase.rb:124:in `block in pbAttackPhaseMoves'
+010_Battle_AttackPhase.rb:110:in `loop'
+010_Battle_AttackPhase.rb:110:in `pbAttackPhaseMoves'
+
+=================
+
+[2025-05-20 00:45:37 -0700]
+[Pokémon Essentials version 21.1]
+[v21.1 Hotfixes 1.0.9]
+
+Exception: NoMethodError
+Message: undefined method `effects' for :NearOther:Symbol
+
+Backtrace:
+[M.A.G (Moves & Abilities Galore)] MoveEffects_TAoA.rb:130:in `pbMoveFailed?'
+[Touhoumon Essentials Development Kit] 007_Battler_UseMove.rb:176:in `pbUseMove'
+[Deluxe Battle Kit] [001] Animation Utilities.rb:278:in `block in pbProcessTurn'
+001_PBDebug.rb:6:in `logonerr'
+[Deluxe Battle Kit] [001] Animation Utilities.rb:278:in `pbProcessTurn'
+010_Battle_AttackPhase.rb:128:in `block (2 levels) in pbAttackPhaseMoves'
+010_Battle_AttackPhase.rb:124:in `each'
+010_Battle_AttackPhase.rb:124:in `block in pbAttackPhaseMoves'
+010_Battle_AttackPhase.rb:110:in `loop'
+010_Battle_AttackPhase.rb:110:in `pbAttackPhaseMoves'
+
+=================
+
+[2025-05-20 00:47:11 -0700]
+[Pokémon Essentials version 21.1]
+[v21.1 Hotfixes 1.0.9]
+
+Exception: NoMethodError
+Message: undefined method `effects' for :NearOther:Symbol
+
+Backtrace:
+[M.A.G (Moves & Abilities Galore)] MoveEffects_TAoA.rb:132:in `pbMoveFailed?'
+[Touhoumon Essentials Development Kit] 007_Battler_UseMove.rb:176:in `pbUseMove'
+[Deluxe Battle Kit] [001] Animation Utilities.rb:278:in `block in pbProcessTurn'
+001_PBDebug.rb:6:in `logonerr'
+[Deluxe Battle Kit] [001] Animation Utilities.rb:278:in `pbProcessTurn'
+010_Battle_AttackPhase.rb:128:in `block (2 levels) in pbAttackPhaseMoves'
+010_Battle_AttackPhase.rb:124:in `each'
+010_Battle_AttackPhase.rb:124:in `block in pbAttackPhaseMoves'
+010_Battle_AttackPhase.rb:110:in `loop'
+010_Battle_AttackPhase.rb:110:in `pbAttackPhaseMoves'
+
+=================
+
+[2025-05-20 00:50:44 -0700]
+[Pokémon Essentials version 21.1]
+[v21.1 Hotfixes 1.0.9]
+
+Exception: NoMethodError
+Message: undefined method `effects' for [#<Battle::Battler>]:Array
+
+Backtrace:
+[M.A.G (Moves & Abilities Galore)] MoveEffects_TAoA.rb:132:in `pbMoveFailed?'
+[Touhoumon Essentials Development Kit] 007_Battler_UseMove.rb:176:in `pbUseMove'
+[Deluxe Battle Kit] [001] Animation Utilities.rb:278:in `block in pbProcessTurn'
+001_PBDebug.rb:6:in `logonerr'
+[Deluxe Battle Kit] [001] Animation Utilities.rb:278:in `pbProcessTurn'
+010_Battle_AttackPhase.rb:128:in `block (2 levels) in pbAttackPhaseMoves'
+010_Battle_AttackPhase.rb:124:in `each'
+010_Battle_AttackPhase.rb:124:in `block in pbAttackPhaseMoves'
+010_Battle_AttackPhase.rb:110:in `loop'
+010_Battle_AttackPhase.rb:110:in `pbAttackPhaseMoves'
+
+=================
+
+[2025-05-20 00:52:36 -0700]
+[Pokémon Essentials version 21.1]
+[v21.1 Hotfixes 1.0.9]
+
+Exception: NoMethodError
+Message: undefined method `effects' for [#<Battle::Battler>]:Array
+
+Backtrace:
+[M.A.G (Moves & Abilities Galore)] MoveEffects_TAoA.rb:132:in `pbMoveFailed?'
+[Touhoumon Essentials Development Kit] 007_Battler_UseMove.rb:176:in `pbUseMove'
+[Deluxe Battle Kit] [001] Animation Utilities.rb:278:in `block in pbProcessTurn'
+001_PBDebug.rb:6:in `logonerr'
+[Deluxe Battle Kit] [001] Animation Utilities.rb:278:in `pbProcessTurn'
+010_Battle_AttackPhase.rb:128:in `block (2 levels) in pbAttackPhaseMoves'
+010_Battle_AttackPhase.rb:124:in `each'
+010_Battle_AttackPhase.rb:124:in `block in pbAttackPhaseMoves'
+010_Battle_AttackPhase.rb:110:in `loop'
+010_Battle_AttackPhase.rb:110:in `pbAttackPhaseMoves'

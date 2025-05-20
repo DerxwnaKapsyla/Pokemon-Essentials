@@ -459,6 +459,45 @@ module APMSettings
     # Text when exiting.
     OutroText: ["\\xn[Seija]A pleasure doing business with you! And remember:\\nAll proceeds go to funding the Youkai Uprising that will overthrow the power strucutre of Gensokyo!"],
   }
+  
+  EVShop = {
+    # Text when talking to them. This is the default one.
+    IntroText: ["Welcome to my shop... I sell talismans that promote Puppet growth. Would you like some?"],
+    # Text when choosing to buy item. (optional: If you make this empty( [] ), you'll go to the buy screen directly.)
+    CategoryText: [], # or CategoryText: [],
+    # Text when choosing amount of item. {1} = item name.
+    BuyItemAmount: ["{1}? I see... How many would you like?"],
+    # Text when choosing amount of item with discount. {1} = item name {2} = discount price {3} = original price.
+    BuyItemAmountDiscount: [],
+    # Text when choosing amount of item with overcharge. {1} = item name {2} = overcharge price {3} = original price.
+    BuyItemAmountOvercharge: [],
+    # Text when buying 1 of an item. {1} = item vowel {2} = item name {3} = price.
+    BuyItem: ["One {2}... It'll be {3}. Is this alright?"],
+    # Text when buying 2 or more of an item. {1} = amount {2} = item name (plural) {3} = price.
+    BuyItemMult: ["{1} {2}... It'll be {3}. Is this alright?"],
+    # Text when buying important item (that you can only buy 1 off). {1} = item name {2} = price.
+    BuyItemImportant: ["{1}... It'll be {2}. Is this alright?"],
+    # Text when wanted item is out of stock. {1} = item name (plural) {2} = time in days (tomorrow, in 2 days, in x days, in a week, next week etc.)
+    BuyOutOfStock: [],
+    # Text when bought item.
+    BuyThanks: ["Thank you for your purchase... I hope it serves you well."],
+    # Text when x or more of a kind of item is bought and is defined in BonusItems Setting. {1} = Bonus Item(s) name(s).
+    BuyBonusMult: [],
+    # Text when you don't have enough money to buy x item(s).
+    NotEnoughMoney: ["Ah... You don't have enough money for this."],
+    # Text when you don't have enough room in your bag. (Only used if you have an item limit).
+    NoRoomInBag: ["It looks like your bag is too full for these..."],
+    # Text when selecting an item to sell. {1} = item name
+    SellItemAmount: [],
+    # Text when confirming amount of selected item to sell. {1} = price
+    SellItem: [],
+    # Text when unable to sell selected item. {1} = item name
+    CantSellItem: [],
+    # Text when returning to menu to choose either buying, selling or exit.
+    MenuReturnText: [],
+    # Text when exiting.
+    OutroText: ["Mmm, have a great rest of your day... We look forward to serving you again."],
+  }
 end
 
 # If it would be easier to setup stores here then you only need to add an event script line saying pbStore1 or whatever you called the method.

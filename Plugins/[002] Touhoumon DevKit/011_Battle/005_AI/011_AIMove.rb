@@ -249,6 +249,9 @@ class Battle::AI::AITrainer
       else
         multipliers[:final_damage_multiplier] *= 1.5
       end
+	# TAoA Final Boss Ability
+	elsif user.has_active_ability?([:ULTIMATEDREAM_1,:ULTIMATEDREAM_2,:ULTIMATEDREAM_3])
+      multipliers[:final_damage_multiplier] *= 1.5
     end
     # Type effectiveness
     typemod = target.effectiveness_of_type_against_battler(calc_type, user, @move)

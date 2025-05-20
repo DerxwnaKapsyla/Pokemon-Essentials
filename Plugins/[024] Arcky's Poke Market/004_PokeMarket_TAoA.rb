@@ -1,4 +1,15 @@
 #-------------------------------------------
+# Tower of Adventure - Hub
+#-------------------------------------------
+def pbEVShop
+	  pbPokemonMart([
+      :RESETTALISMAN, 
+	  :HPTALISMAN, :ATKTALISMAN, :DEFTALISMAN,
+	  :SPDTALISMAN, :SPATKTALISMAN, :SPDEFTALISMAN
+    ], speech: "EVShop", useCat: false)
+end
+
+#-------------------------------------------
 # The Mansion of Mystery
 #-------------------------------------------
 def pbTMoMShop

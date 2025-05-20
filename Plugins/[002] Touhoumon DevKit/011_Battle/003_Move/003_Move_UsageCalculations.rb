@@ -258,6 +258,9 @@ class Battle::Move
       else
         multipliers[:final_damage_multiplier] *= 1.5
       end
+	# TAoA Final Boss Ability
+	elsif user.hasActiveAbility?([:ULTIMATEDREAM_1,:ULTIMATEDREAM_2,:ULTIMATEDREAM_3])
+	  multipliers[:final_damage_multiplier] *= 1.5
     end
     # Type effectiveness
     multipliers[:final_damage_multiplier] *= target.damageState.typeMod
