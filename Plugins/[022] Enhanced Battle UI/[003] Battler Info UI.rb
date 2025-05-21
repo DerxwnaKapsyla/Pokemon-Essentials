@@ -385,7 +385,7 @@ class Battle::Scene
     #---------------------------------------------------------------------------
     # Damage gates for scripted battles.
     if battler.damageThreshold
-      desc = _INTL("The Pokémon's HP won't fall below {1}% when attacked.", battler.damageThreshold)
+      desc = _INTL("The Puppet's HP won't fall below {1}% when attacked.", battler.damageThreshold)
       display_effects.push([_INTL("Damage Gate"), "--", desc])
     end
     #---------------------------------------------------------------------------
@@ -396,11 +396,11 @@ class Battle::Scene
       else
         tick = "--"
       end
-      desc = _INTL("The Pokémon is in the Dynamax state.")
+      desc = _INTL("The Puppet is in the Dynamax state.")
       display_effects.push([_INTL("Dynamax"), tick, desc])
     elsif battler.tera?
       data = GameData::Type.get(battler.tera_type).name
-      desc = _INTL("The Pokémon is Terastallized into the {1} type.", data)
+      desc = _INTL("The Puppet is Terastallized into the {1} type.", data)
       display_effects.push([_INTL("Terastallization"), "--", desc])
     end
     #---------------------------------------------------------------------------
@@ -431,7 +431,7 @@ class Battle::Scene
         when :Snow        then desc = _INTL("Boosts Def of Ice types. Blizzard always hits.")
         when :Sandstorm   then desc = _INTL("Boosts Rock type Sp. Def. Damages unless Rock/Ground/Steel.")
         when :StrongWinds then desc = _INTL("Flying types won't take super effective damage.")
-        when :ShadowSky   then desc = _INTL("Boosts Shadow moves. Non-Shadow Pokémon damaged each turn.")
+        when :ShadowSky   then desc = _INTL("Boosts Shadow moves. Non-Shadow Puppet damaged each turn.")
         else                   desc = _INTL("Unknown weather.")
         end
       end
@@ -446,8 +446,8 @@ class Battle::Scene
       tick = @battle.field.terrainDuration
       tick = (tick > 0) ? sprintf("%d/%d", tick, 5) : "--"
       case @battle.field.terrain
-      when :Electric then desc = _INTL("Grounded Pokémon immune to sleep. Boosts Electric moves.")
-      when :Grassy   then desc = _INTL("Grounded Pokémon recover HP each turn. Boosts Grass moves.")
+      when :Electric then desc = _INTL("Grounded Puppet immune to sleep. Boosts Electric moves.")
+      when :Grassy   then desc = _INTL("Grounded Puppet recover HP each turn. Boosts Grass moves.")
       when :Psychic  then desc = _INTL("Priority moves fail on grounded targets. Boosts Psychic moves.")
       when :Misty    then desc = _INTL("Status can't be changed when grounded. Weakens Dragon moves.")
 	  else                desc = _INTL("Unknown terrain.")
@@ -458,17 +458,17 @@ class Battle::Scene
     # Battler effects that affect other Pokemon.
     if @battle.allBattlers.any? { |b| b.effects[PBEffects::Imprison] }
       name = GameData::Move.get(:IMPRISON).name
-      desc = _INTL("Pokémon can't use moves known by an opposing {1} user.", name)
+      desc = _INTL("Puppet can't use moves known by an opposing {1} user.", name)
       display_effects.push([name, "--", desc])
     end
     if @battle.allBattlers.any? { |b| b.effects[PBEffects::Uproar] > 0 }
       name = GameData::Move.get(:UPROAR).name
-      desc = _INTL("Pokémon cannot fall asleep during an uproar.")
+      desc = _INTL("Puppet cannot fall asleep during an uproar.")
       display_effects.push([name, "--", desc])
     end
     if @battle.allBattlers.any? { |b| b.effects[PBEffects::JawLock] == battler.index }
       name = _INTL("No Escape")
-      desc = _INTL("The Pokémon can't flee or be switched out.")
+      desc = _INTL("The Puppet can't flee or be switched out.")
       display_effects.push([name, "--", desc])
     end
     #---------------------------------------------------------------------------
@@ -494,166 +494,166 @@ class Battle::Scene
           #---------------------------------------------------------------------
           when :AquaRing
             name = GameData::Move.get(:AQUARING).name
-            desc = _INTL("The Pokémon regains some HP at the end of each turn.")
+            desc = _INTL("The Puppet regains some HP at the end of each turn.")
           #---------------------------------------------------------------------
           when :Ingrain
             name = GameData::Move.get(:INGRAIN).name
-            desc = _INTL("The Pokémon regains some HP every turn, but cannot switch out.")
+            desc = _INTL("The Puppet regains some HP every turn, but cannot switch out.")
           #---------------------------------------------------------------------
           when :LeechSeed
             name = GameData::Move.get(:LEECHSEED).name
-            desc = _INTL("The Pokémon's HP is leeched every turn to heal {1}.", @battle.battlers[value].name)
+            desc = _INTL("The Puppet's HP is leeched every turn to heal {1}.", @battle.battlers[value].name)
           #---------------------------------------------------------------------
           when :Curse
             name = GameData::Move.get(:CURSE).name
-            desc = _INTL("The Pokémon takes damage at the end of each turn.")
+            desc = _INTL("The Puppet takes damage at the end of each turn.")
           #---------------------------------------------------------------------
           when :SaltCure
             name = GameData::Move.get(:SALTCURE).name
-            desc = _INTL("The Pokémon takes damage at the end of each turn.")
+            desc = _INTL("The Puppet takes damage at the end of each turn.")
           #---------------------------------------------------------------------
           when :Nightmare
             name = GameData::Move.get(:NIGHTMARE).name
-            desc = _INTL("The Pokémon takes damage each turn it spends asleep.")
+            desc = _INTL("The Puppet takes damage each turn it spends asleep.")
           #---------------------------------------------------------------------
           when :Rage
             name = GameData::Move.get(:RAGE).name
-            desc = _INTL("The Pokémon's Attack stat increases whenever it's hit.")
+            desc = _INTL("The Puppet's Attack stat increases whenever it's hit.")
           #---------------------------------------------------------------------
           when :HelpingHand
             name = GameData::Move.get(:HELPINGHAND).name
-            desc = _INTL("The Pokémon's damage output is being increased.")
+            desc = _INTL("The Puppet's damage output is being increased.")
           #---------------------------------------------------------------------
           when :PowerTrick
             name = GameData::Move.get(:POWERTRICK).name
-            desc = _INTL("The Pokémon's Atk and Def are swapped.")
+            desc = _INTL("The Puppet's Atk and Def are swapped.")
           #---------------------------------------------------------------------
           when :Torment
             name = GameData::Move.get(:TORMENT).name
-            desc = _INTL("The Pokémon can't use the same move twice in a row.")
+            desc = _INTL("The Puppet can't use the same move twice in a row.")
           #---------------------------------------------------------------------
           when :Charge
             name = GameData::Move.get(:CHARGE).name
-            desc = _INTL("The Pokémon's next Electric move will double in power.")
+            desc = _INTL("The Puppet's next Electric move will double in power.")
           #---------------------------------------------------------------------
           when :Electrify
             name = GameData::Move.get(:ELECTRIFY).name
-            desc = _INTL("The Pokémon's next move will be Electric type.")
+            desc = _INTL("The Puppet's next move will be Electric type.")
           #---------------------------------------------------------------------
           when :IonDeluge
             name = GameData::Move.get(:IONDELUGE).name
-            desc = _INTL("The Pokémon's Normal type moves become Electric type.")
+            desc = _INTL("The Puppet's Normal type moves become Electric type.")
           #---------------------------------------------------------------------
           when :Minimize
             name = GameData::Move.get(:MINIMIZE).name
-            desc = _INTL("The Pokémon shrunk and now takes more damage when squished.")
+            desc = _INTL("The Puppet shrunk and now takes more damage when squished.")
           #---------------------------------------------------------------------
           when :SkyDrop
             name = GameData::Move.get(:SKYDROP).name
-            desc = _INTL("The Pokémon is being lifted in the air by {1}.", @battle.battlers[value].name)
+            desc = _INTL("The Puppet is being lifted in the air by {1}.", @battle.battlers[value].name)
           #---------------------------------------------------------------------
           when :TarShot
             name = GameData::Move.get(:TARSHOT).name
-            desc = _INTL("The Pokémon has been made weaker to Fire type moves.")
+            desc = _INTL("The Puppet has been made weaker to Fire type moves.")
           #---------------------------------------------------------------------
           when :Powder
             name = GameData::Move.get(:POWDER).name
-            desc = _INTL("The Pokémon takes damage when it uses a Fire type move.")
+            desc = _INTL("The Puppet takes damage when it uses a Fire type move.")
           #---------------------------------------------------------------------
           when :Wish
             name = GameData::Move.get(:WISH).name
-            desc = _INTL("The Pokémon in this spot restores HP on the next turn.")
+            desc = _INTL("The Puppet in this spot restores HP on the next turn.")
           #---------------------------------------------------------------------
           when :HealingWish
             name = GameData::Move.get(:HEALINGWISH).name
-            desc = _INTL("Fully heals a Pokémon switching into this spot.")
+            desc = _INTL("Fully heals a Puppet switching into this spot.")
           #---------------------------------------------------------------------
           when :LunarDance
             name = GameData::Move.get(:LUNARDANCE).name
-            desc = _INTL("Fully heals a Pokémon switching into this spot.")
+            desc = _INTL("Fully heals a Puppet switching into this spot.")
           #---------------------------------------------------------------------
           when :Endure
             name = GameData::Move.get(:ENDURE).name
-            desc = _INTL("The Pokémon will survive all incoming attacks with 1 HP.")
+            desc = _INTL("The Puppet will survive all incoming attacks with 1 HP.")
           #---------------------------------------------------------------------
           when :Substitute
             name = GameData::Move.get(:SUBSTITUTE).name
-            desc = _INTL("The Pokémon's substitute will take any incoming moves.")
+            desc = _INTL("The Puppet's substitute will take any incoming moves.")
           #---------------------------------------------------------------------
           when :MagicCoat
             name = GameData::Move.get(:MAGICCOAT).name
-            desc = _INTL("The Pokémon bounces back any incoming status moves.")
+            desc = _INTL("The Puppet bounces back any incoming status moves.")
           #---------------------------------------------------------------------
           when :CraftyShield
             name = GameData::Move.get(:CRAFTYSHIELD).name
-            desc = _INTL("The Pokémon is protected from all status moves.")
+            desc = _INTL("The Puppet is protected from all status moves.")
           #---------------------------------------------------------------------
           when :QuickGuard
             name = GameData::Move.get(:QUICKGUARD).name
-            desc = _INTL("The Pokémon is protected from all priority moves.")
+            desc = _INTL("The Puppet is protected from all priority moves.")
           #---------------------------------------------------------------------
           when :WideGuard
             name = GameData::Move.get(:WIDEGUARD).name
-            desc = _INTL("The Pokémon is protected from all spread moves.")
+            desc = _INTL("The Puppet is protected from all spread moves.")
           #---------------------------------------------------------------------
           when :Foresight
             name = GameData::Move.get(:FORESIGHT).name
             if battler.pbHasType?(:GHOST)
-              desc = _INTL("The Pokémon's Ghost immunities and evasion boosts are ignored.")
+              desc = _INTL("The Puppet's Ghost immunities and evasion boosts are ignored.")
             else
-              desc = _INTL("The Pokémon's evasion boosts are ignored.")
+              desc = _INTL("The Puppet's evasion boosts are ignored.")
             end
           #---------------------------------------------------------------------
           when :MiracleEye
             name = GameData::Move.get(:MIRACLEEYE).name
             if battler.pbHasType?(:DARK)
-              desc = _INTL("The Pokémon's Dark immunities and evasion boosts are ignored.")
+              desc = _INTL("The Puppet's Dark immunities and evasion boosts are ignored.")
             else
-              desc = _INTL("The Pokémon's evasion boosts are ignored.")
+              desc = _INTL("The Puppet's evasion boosts are ignored.")
             end
           #---------------------------------------------------------------------
           when :SmackDown
             name = GameData::Move.get(:SMACKDOWN).name
             if battler.pbHasType?(:FLYING)
-              desc = _INTL("The Pokémon is grounded and its Flying immunities are ignored.")
+              desc = _INTL("The Puppet is grounded and its Flying immunities are ignored.")
             else
-              desc = _INTL("The Pokémon is grounded.")
+              desc = _INTL("The Puppet is grounded.")
             end
           #---------------------------------------------------------------------
           when :Stockpile
             name = GameData::Move.get(:STOCKPILE).name
             tick = sprintf("+%d", value)
-            desc = _INTL("Stockpiling increases the Pokémon's defensive stats.")
+            desc = _INTL("Stockpiling increases the Puppet's defensive stats.")
           #---------------------------------------------------------------------
           when :Spikes
             name = GameData::Move.get(:SPIKES).name
             tick = sprintf("+%d", value)
-            desc = _INTL("Grounded Pokémon that switch into battle will take damage.")
+            desc = _INTL("Grounded Puppet that switch into battle will take damage.")
           #---------------------------------------------------------------------
           when :ToxicSpikes
             name = GameData::Move.get(:TOXICSPIKES).name
             tick = sprintf("+%d", value)
-            desc = _INTL("Grounded Pokémon that switch into battle will be poisoned.")
+            desc = _INTL("Grounded Puppet that switch into battle will be poisoned.")
           #---------------------------------------------------------------------
           when :StealthRock
             name = GameData::Move.get(:STEALTHROCK).name
             tick = _INTL("+1")
-            desc = _INTL("Pokémon that switch into battle will take damage.")
+            desc = _INTL("Puppet that switch into battle will take damage.")
           #---------------------------------------------------------------------
           when :Steelsurge
             name = GameData::Move.get(:GMAXSTEELSURGE).name
             tick = _INTL("+1")
-            desc = _INTL("Pokémon that switch into battle will take damage.")
+            desc = _INTL("Puppet that switch into battle will take damage.")
           #---------------------------------------------------------------------
           when :StickyWeb
             name = GameData::Move.get(:STICKYWEB).name
             tick = _INTL("+1")
-            desc = _INTL("Pokémon that switch into battle will have their Speed lowered.")
+            desc = _INTL("Puppet that switch into battle will have their Speed lowered.")
           #---------------------------------------------------------------------
           when :LaserFocus
             name = GameData::Move.get(:LASERFOCUS).name
             tick = sprintf("%d/%d", value, 2)
-            desc = _INTL("The Pokémon's next attack is a guaranteed critical hit.")
+            desc = _INTL("The Puppet's next attack is a guaranteed critical hit.")
           #---------------------------------------------------------------------
           when :LockOn
             name = GameData::Move.get(:LOCKON).name
@@ -663,68 +663,68 @@ class Battle::Scene
           when :ThroatChop
             name = GameData::Move.get(:THROATCHOP).name
             tick = sprintf("%d/%d", value, 2)
-            desc = _INTL("The Pokémon can't use any sound-based moves.")
+            desc = _INTL("The Puppet can't use any sound-based moves.")
           #---------------------------------------------------------------------
           when :FairyLock
             name = GameData::Move.get(:FAIRYLOCK).name
             tick = sprintf("%d/%d", value, 2)
-            desc = _INTL("No Pokémon can flee.")
+            desc = _INTL("No Puppet can flee.")
           #---------------------------------------------------------------------
           when :Telekinesis
             name = GameData::Move.get(:TELEKINESIS).name
             tick = sprintf("%d/%d", value, 3)
-            desc = _INTL("The Pokémon has been made airborne, but it cannot evade attacks.")
+            desc = _INTL("The Puppet has been made airborne, but it cannot evade attacks.")
           #---------------------------------------------------------------------
           when :Encore
             name = GameData::Move.get(:ENCORE).name
             data = GameData::Move.get(battler.effects[PBEffects::EncoreMove]).name
             tick = sprintf("%d/%d", value, 3)
-            desc = _INTL("Due to {1}, the Pokémon can only use {2}.", name, data)
+            desc = _INTL("Due to {1}, the Puppet can only use {2}.", name, data)
           #---------------------------------------------------------------------
           when :Taunt
             name = GameData::Move.get(:TAUNT).name
             tick = sprintf("%d/%d", value, 4)
-            desc = _INTL("The Pokémon can only use moves that deal damage.")
+            desc = _INTL("The Puppet can only use moves that deal damage.")
           #---------------------------------------------------------------------
           when :Tailwind
             name = GameData::Move.get(:TAILWIND).name
             tick = sprintf("%d/%d", value, 4)
-            desc = _INTL("The Pokémon's Speed stat is doubled.")
+            desc = _INTL("The Puppet's Speed stat is doubled.")
           #---------------------------------------------------------------------
           when :VineLash
             name = GameData::Move.get(:GMAXVINELASH).name
             tick = sprintf("%d/%d", value, 4)
-            desc = _INTL("Pokémon that are not Grass types take damage every turn.")
+            desc = _INTL("Puppet that are not Grass types take damage every turn.")
           #---------------------------------------------------------------------
           when :Wildfire
             name = GameData::Move.get(:GMAXWILDFIRE).name
             tick = sprintf("%d/%d", value, 4)
-            desc = _INTL("Pokémon that are not Fire types take damage every turn.")
+            desc = _INTL("Puppet that are not Fire types take damage every turn.")
           #---------------------------------------------------------------------
           when :Cannonade
             name = GameData::Move.get(:GMAXCANNONADE).name
             tick = sprintf("%d/%d", value, 4)
-            desc = _INTL("Pokémon that are not Water types take damage every turn.")
+            desc = _INTL("Puppet that are not Water types take damage every turn.")
           #---------------------------------------------------------------------
           when :Volcalith
             name = GameData::Move.get(:GMAXVOLCALITH).name
             tick = sprintf("%d/%d", value, 4)
-            desc = _INTL("Pokémon that are not Rock types take damage every turn.")
+            desc = _INTL("Puppet that are not Rock types take damage every turn.")
           #---------------------------------------------------------------------
           when :MagnetRise
             name = GameData::Move.get(:MAGNETRISE).name
             tick = sprintf("%d/%d", value, 5)
-            desc = _INTL("The Pokémon is airborne and immune to Ground moves.")
+            desc = _INTL("The Puppet is airborne and immune to Ground moves.")
           #---------------------------------------------------------------------
           when :HealBlock
             name = GameData::Move.get(:HEALBLOCK).name
             tick = sprintf("%d/%d", value, 5)
-            desc = _INTL("The Pokémon's HP cannot be restored by healing effects.")
+            desc = _INTL("The Puppet's HP cannot be restored by healing effects.")
           #---------------------------------------------------------------------
           when :Embargo
             name = GameData::Move.get(:EMBARGO).name
             tick = sprintf("%d/%d", value, 5)
-            desc = _INTL("Items cannot be used on or by the Pokémon.")
+            desc = _INTL("Items cannot be used on or by the Puppet.")
           #---------------------------------------------------------------------
           when :MudSport, :MudSportField
             name = GameData::Move.get(:MUDSPORT).name
@@ -739,146 +739,146 @@ class Battle::Scene
           when :AuroraVeil
             name = GameData::Move.get(:AURORAVEIL).name
             tick = sprintf("%d/%d", value, 5)
-            desc = _INTL("The Pokémon takes half damage from physical and special moves.")
+            desc = _INTL("The Puppet takes half damage from physical and special moves.")
           #---------------------------------------------------------------------
           when :Reflect
             name = GameData::Move.get(:REFLECT).name
             tick = sprintf("%d/%d", value, 5)
-            desc = _INTL("The Pokémon takes half damage from physical moves.")
+            desc = _INTL("The Puppet takes half damage from physical moves.")
           #---------------------------------------------------------------------
           when :LightScreen
             name = GameData::Move.get(:LIGHTSCREEN).name
             tick = sprintf("%d/%d", value, 5)
-            desc = _INTL("The Pokémon takes half damage from special moves.")
+            desc = _INTL("The Puppet takes half damage from special moves.")
           #---------------------------------------------------------------------
           when :Safeguard
             name = GameData::Move.get(:SAFEGUARD).name
             tick = sprintf("%d/%d", value, 5)
-            desc = _INTL("The Pokémon is protected from status conditions.")
+            desc = _INTL("The Puppet is protected from status conditions.")
           #---------------------------------------------------------------------
           when :Mist
             name = GameData::Move.get(:MIST).name
             tick = sprintf("%d/%d", value, 5)
-            desc = _INTL("The Pokémon's stats cannot be lowered.")
+            desc = _INTL("The Puppet's stats cannot be lowered.")
           #---------------------------------------------------------------------
           when :LuckyChant
             name = GameData::Move.get(:LUCKYCHANT).name
             tick = sprintf("%d/%d", value, 5)
-            desc = _INTL("The Pokémon is immune to critical hits.")
+            desc = _INTL("The Puppet is immune to critical hits.")
           #---------------------------------------------------------------------
           when :Gravity
             name = GameData::Move.get(:GRAVITY).name
             tick = sprintf("%d/%d", value, 5)
-            desc = _INTL("Grounds Pokémon. Prevents midair actions. Increases accuracy.")
+            desc = _INTL("Grounds Puppet. Prevents midair actions. Increases accuracy.")
           #---------------------------------------------------------------------
           when :MagicRoom
             name = GameData::Move.get(:MAGICROOM).name
             tick = sprintf("%d/%d", value, 5)
-            desc = _INTL("No Pokémon can use their held items.")
+            desc = _INTL("No Puppet can use their held items.")
           #---------------------------------------------------------------------
           when :WonderRoom
             name = GameData::Move.get(:WONDERROOM).name
             tick = sprintf("%d/%d", value, 5)
-            desc = _INTL("All Pokémon swap their Def and Sp. Def stats.")
+            desc = _INTL("All Puppet swap their Def and Sp. Def stats.")
           #---------------------------------------------------------------------
           when :TrickRoom
             name = GameData::Move.get(:TRICKROOM).name
             tick = sprintf("%d/%d", value, 5)
-            desc = _INTL("Slower Pokémon get to move first.")
+            desc = _INTL("Slower Puppet get to move first.")
           #---------------------------------------------------------------------
           when :Trapping
             name = _INTL("Bound")
-            desc = _INTL("The Pokémon is bound and takes damage every turn.")
+            desc = _INTL("The Puppet is bound and takes damage every turn.")
           #---------------------------------------------------------------------
           when :Toxic
             name = _INTL("Badly Poisoned")
-            desc = _INTL("Damage the Pokémon takes from its poison worsens every turn.")
+            desc = _INTL("Damage the Puppet takes from its poison worsens every turn.")
           #---------------------------------------------------------------------
           when :Confusion
             name = _INTL("Confusion")
-            desc = _INTL("The Pokémon may hurt itself in its confusion.")
+            desc = _INTL("The Puppet may hurt itself in its confusion.")
           #---------------------------------------------------------------------
           when :Outrage
             name = _INTL("Rampaging")
-            desc = _INTL("The Pokémon rampages for 2-3 turns. It then becomes confused.")
+            desc = _INTL("The Puppet rampages for 2-3 turns. It then becomes confused.")
           #---------------------------------------------------------------------
           when :GastroAcid
             name = _INTL("No Ability")
-            desc = _INTL("The Pokémon's Ability loses its effect.")
+            desc = _INTL("The Puppet's Ability loses its effect.")
           #---------------------------------------------------------------------
           when :FocusEnergy
             name = _INTL("Critical Hit Boost")
-            desc = _INTL("The Pokémon is more likely to land critical hits.")
+            desc = _INTL("The Puppet is more likely to land critical hits.")
           #---------------------------------------------------------------------
           when :Attract
             name = _INTL("Infatuation")
-            desc = _INTL("The Pokémon is less likely to attack {1}.", @battle.battlers[value].name)
+            desc = _INTL("The Puppet is less likely to attack {1}.", @battle.battlers[value].name)
           #---------------------------------------------------------------------
           when :WeightChange
             name = _INTL("Weight Changed")
-            desc = _INTL("The Pokémon's weight has been {1}.", (value > 0) ? "increased" : "decreased")
+            desc = _INTL("The Puppet's weight has been {1}.", (value > 0) ? "increased" : "decreased")
           #---------------------------------------------------------------------
           when :MeanLook, :NoRetreat, :JawLock, :Octolock
             name = _INTL("No Escape")
-            desc = _INTL("The Pokémon can't flee or be switched out.")
+            desc = _INTL("The Puppet can't flee or be switched out.")
           #---------------------------------------------------------------------
           when :Protect, :SpikyShield, :BanefulBunker
             name = _INTL("Full Protect")
-            desc = _INTL("The Pokémon is protected from all incoming moves.")
+            desc = _INTL("The Puppet is protected from all incoming moves.")
           #---------------------------------------------------------------------
           when :KingsShield, :Obstruct, :SilkTrap, :BurningBulwark, :MatBlock
             name = _INTL("Damage Protect")
-            desc = _INTL("The Pokémon is protected from all incoming damage.")
+            desc = _INTL("The Puppet is protected from all incoming damage.")
           #---------------------------------------------------------------------
           when :ZHealing
             name = _INTL("Z-Healing")
-            desc = _INTL("A Pokémon switching into this spot will recover its HP.")
+            desc = _INTL("A Puppet switching into this spot will recover its HP.")
           #---------------------------------------------------------------------
           when :TwoTurnAttack
             if battler.semiInvulnerable?
               name = _INTL("Semi-Invulnerable")
-              desc = _INTL("The Pokémon cannot be hit by most attacks.")
+              desc = _INTL("The Puppet cannot be hit by most attacks.")
             end
           #---------------------------------------------------------------------
           when :PerishSong
             name = _INTL("Counting Down")
             tick = value.to_s
-            desc = _INTL("All Pokémon in this battle state will faint after 3 turns.")
+            desc = _INTL("All Puppet in this battle state will faint after 3 turns.")
           #---------------------------------------------------------------------
           when :FutureSightCounter
             name = _INTL("Future Attack")
             tick = value.to_s
-            desc = _INTL("The Pokémon in this spot will be attacked in 2 turns.")
+            desc = _INTL("The Puppet in this spot will be attacked in 2 turns.")
           #---------------------------------------------------------------------
           when :Syrupy
             name = _INTL("Speed Down")
             tick = value.to_s
-            desc = _INTL("The Pokémon's Speed is lowered for 3 turns.", )
+            desc = _INTL("The Puppet's Speed is lowered for 3 turns.", )
           #---------------------------------------------------------------------
           when :SlowStart
             name = GameData::Ability.get(:SLOWSTART).name
             tick = value.to_s
-            desc = _INTL("The Pokémon gets its act together in 5 turns.")
+            desc = _INTL("The Puppet gets its act together in 5 turns.")
           #---------------------------------------------------------------------
           when :Yawn
             name = _INTL("Drowsy")
             tick = sprintf("%d/%d", value, 2)
-            desc = _INTL("The Pokémon will fall asleep at the end of the next turn.")
+            desc = _INTL("The Puppet will fall asleep at the end of the next turn.")
           #---------------------------------------------------------------------
           when :HyperBeam
             name = _INTL("Recharging")
             tick = sprintf("%d/%d", value, 2)
-            desc = _INTL("The Pokémon cannot move until it recharges from its last attack.")
+            desc = _INTL("The Puppet cannot move until it recharges from its last attack.")
           #---------------------------------------------------------------------
           when :GlaiveRush
             name = _INTL("Vulnerable")
             tick = sprintf("%d/%d", value, 2)
-            desc = _INTL("The Pokémon cannot evade and takes double damage.")
+            desc = _INTL("The Puppet cannot evade and takes double damage.")
           #---------------------------------------------------------------------
           when :Splinters
             name = _INTL("Splinters")
             tick = sprintf("%d/%d", value, 3)
-            desc = _INTL("The Pokémon takes damage at the end of each turn.")
+            desc = _INTL("The Puppet takes damage at the end of each turn.")
           #---------------------------------------------------------------------
           when :Disable
             name = _INTL("Move Disabled")
@@ -899,38 +899,47 @@ class Battle::Scene
           when :SeaOfFire
             name = _INTL("Sea of Fire")
             tick = sprintf("%d/%d", value, 4)
-            desc = _INTL("Pokémon that are not Fire types take damage every turn.")
+            desc = _INTL("Puppet that are not Fire types take damage every turn.")
           #---------------------------------------------------------------------
           when :CheerOffense1
             name = _INTL("Offense Cheer 1")
             tick = sprintf("%d/%d", value, 3)
-            desc = _INTL("The Pokémon's attacks deal increased damage.")
+            desc = _INTL("The Puppet's attacks deal increased damage.")
           #---------------------------------------------------------------------
           when :CheerOffense2
             name = _INTL("Offense Cheer 2")
             tick = sprintf("%d/%d", value, 3)
-            desc = _INTL("The Pokémon's attacks will trigger effects & critically hit.")
+            desc = _INTL("The Puppet's attacks will trigger effects & critically hit.")
           #---------------------------------------------------------------------
           when :CheerOffense3
             name = _INTL("Offense Cheer 3")
             tick = sprintf("%d/%d", value, 3)
-            desc = _INTL("The Pokémon's attacks bypass effects like Protect & Substitute.")
+            desc = _INTL("The Puppet's attacks bypass effects like Protect & Substitute.")
           #---------------------------------------------------------------------
           when :CheerDefense1
             name = _INTL("Defense Cheer 1")
             tick = sprintf("%d/%d", value, 3)
-            desc = _INTL("The Pokémon takes reduced damage from attacks.")
+            desc = _INTL("The Puppet takes reduced damage from attacks.")
           #---------------------------------------------------------------------
           when :CheerDefense2
             name = _INTL("Defense Cheer 2")
             tick = sprintf("%d/%d", value, 3)
-            desc = _INTL("The Pokémon is immune to critical hits and move effects.")
+            desc = _INTL("The Puppet is immune to critical hits and move effects.")
           #---------------------------------------------------------------------
           when :CheerDefense3
             name = _INTL("Defense Cheer 3")
             tick = sprintf("%d/%d", value, 3)
-            desc = _INTL("The Pokémon will survive all incoming attacks with 1 HP.")
+            desc = _INTL("The Puppet will survive all incoming attacks with 1 HP.")
           #---------------------------------------------------------------------
+          when :Miasma
+            name = _INTL("Spore Swarm")
+            desc = _INTL("Puppets that switch in will be subject to random statuses.")
+		  #---------------------------------------------------------------------
+		  when :DreamAura
+            name = _INTL("Dream Aura")
+            desc = _INTL("The Puppet regains some HP at the end of each turn.")
+		  #---------------------------------------------------------------------
+		  
           else next
           end
           tick = "--" if type == :counter && value < 0

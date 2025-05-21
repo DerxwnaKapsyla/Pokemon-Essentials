@@ -111294,6 +111294,8 @@ List of Event Commands:
 :       : #playSpecialBGM("meimu")
 :       : #setBattleRule("battleBGM", "B-044. Finale ~ For The End.ogg")
 :       : setBattleRule("databoxStyle", :Basic)
+:       : $game_variables[70] = $PokemonSystem.battlescene
+:       : $PokemonSystem.battlescene = true
 @>Script: setBattleRule("editWildPokemon", {
 :       :   :hp_level => 3,
 :       :   :immunities => [:OHKO, :ITEMREMOVAL, :POISON, :ATTRACT, :PPLOSS, :TYPECHANGE, :ABILITYREMOVAL, :INDIRECT, 
@@ -111311,6 +111313,11 @@ List of Event Commands:
 @>Control Switches: [0104: Transition Handler] = ON
 @>Control Variables: [0103: Vs. Transition ID] = 57
 @>Conditional Branch: Script: WildBattle.start(:MEIMU, 100)
+ @>Script: $PokemonSystem.battlescene = pbGet(70)
+ @>
+: Else
+ @>Script: $PokemonSystem.battlescene = pbGet(70)
+ @>Exit Event Processing
  @>
 : Branch End
 @>Control Self Switch: D =ON

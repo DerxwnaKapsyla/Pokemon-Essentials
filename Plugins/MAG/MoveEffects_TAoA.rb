@@ -200,10 +200,12 @@ end
 # (Enchantiing Cone)
 #===============================================================================
 class Battle::Move::EnchantingCone < Battle::Move
+  def ignoresSubstitute?(user); return true; end
+
 	def pbAdditionalEffect(user, target)
 	return if target.damageState.substitute
     return if target.fainted?
-		target.pbAttract(user)
+    target.pbAttract(user) if target.pbCanAttract?(user, false)
 	end
 end
 
@@ -240,12 +242,12 @@ class Battle::Move::CreepingMycelium < Battle::Move
   def pbEffectGeneral(user)
     if user.pbOpposingSide.effects[PBEffects::Miasma] == false
       user.pbOpposingSide.effects[PBEffects::Miasma] = true
-      @battle.pbDisplay(_INTL("Magical miasma is in the air around {1}!",
+      @battle.pbDisplay(_INTL("Spores scatered in the air around {1}!",
                               user.pbOpposingTeam(true)))
     end
     if user.pbOwnSide.effects[PBEffects::Miasma] == false
       user.pbOwnSide.effects[PBEffects::Miasma] = true
-      @battle.pbDisplay(_INTL("Magical miasma is in the air around {1}!",
+      @battle.pbDisplay(_INTL("Spores scattered in the air around {1}!",
                               user.pbTeam(true)))
     end
   end
@@ -278,12 +280,11 @@ class Battle::Move::UltimateDream < Battle::Move
   def pbEffectAgainstTarget(user, target)
     if user.asleep?
       return if target.damageState.hpLost <= 0
-      hpGain = (target.damageState.hpLost / 2.0).round
+      hpGain = (target.damageState.hpLost).round
       user.pbRecoverHPFromDrain(hpGain, target)
       user.pbOwnSide.effects[PBEffects::AuroraVeil] = 5
       user.pbOwnSide.effects[PBEffects::AuroraVeil] = 8 if user.hasActiveItem?(:LIGHTCLAY)
-      @battle.pbDisplay(_INTL("{1} made {2} stronger against physical and special moves!",
-                              @name, user.pbTeam(true)))
+      #@battle.pbDisplay(_INTL("{1} made {2} stronger against physical and special moves!",@name, user.pbTeam(true)))
     end
   end
   
@@ -309,33 +310,37 @@ class Battle::Move::UltimateDream < Battle::Move
 end
 
 #===============================================================================
-# If the move connects, boost user's stats by +2, then apply Focus Energy, Endure,
-# and Aqua Ring.
+# If the move connects, boost user's stats by +2, then apply Focus Energy,
+# Aurora Veil, and Dream Aura.
 # (All the Myriad Dreams of Paradise)
 #===============================================================================
- class Battle::Move::MyraidDreams < Battle::Move::MultiStatUpMove
+ class Battle::Move::MyriadDreams < Battle::Move::MultiStatUpMove
   def initialize(battle, move)
 	super
     @statUp = [:ATTACK, 2, :DEFENSE, 2, :SPECIAL_ATTACK, 2, :SPECIAL_DEFENSE, 2, :SPEED, 2]
   end
   
   def pbAdditionalEffect(user, target)
-  return if target.fainted?
-  @battle.pbDisplay(_INTL("{1} was blessed by the power of dreams!", user.pbThis))
-  if !user.effects[PBEffects::AquaRing]
-    user.effects[PBEffects::AquaRing] = true
-	# user.effects[PBEffects::DreamAura] = true
-    #@battle.pbDisplay(_INTL("{1} surrounded itself with a veil of water!", user.pbThis))
+    return if target.fainted?
+    @battle.pbDisplay(_INTL("{1} was blessed by the power of dreams!", user.pbThis))
+    @statUp = [:ATTACK, 2, :DEFENSE, 2, :SPECIAL_ATTACK, 2, :SPECIAL_DEFENSE, 2, :SPEED, 2]    
+    showAnim = true
+    (@statUp.length / 2).times do |i|
+      next if !user.pbCanRaiseStatStage?(@statUp[i * 2], user, self)
+      if user.pbRaiseStatStage(@statUp[i * 2], @statUp[(i * 2) + 1], user, showAnim)
+        showAnim = false
+      end
+    end
+    if !user.effects[PBEffects::DreamAura]
+      user.effects[PBEffects::DreamAura] = true
+    end
+    if user.effects[PBEffects::FocusEnergy] == 0
+      user.effects[PBEffects::FocusEnergy] = 1
+    end
+    if user.pbOwnSide.effects[PBEffects::AuroraVeil] == 0
+      user.pbOwnSide.effects[PBEffects::AuroraVeil] = 5
+    end
   end
-  if user.effects[PBEffects::FocusEnergy] == 0
-    user.effects[PBEffects::FocusEnergy] = 1
-    #@battle.pbDisplay(_INTL("{1} is getting pumped!", user.pbThis))
-  end
-  if !user.pbOwnSide.effects[PBEffects::AuroraVeil] > 0
-    user.pbOwnSide.effects[PBEffects::AuroraVeil] = 5
-	#@battle.pbDisplay(_INTL("{1} braced itself!", user.pbThis))
-  end
- end
 end
 
 #===============================================================================
@@ -359,11 +364,13 @@ alias mag_initialize initialize
   def initialize
   	mag_initialize
 	@effects[PBEffects::Miasma] = false
+	@effects[PBEffects::DreamAura] = false
   end
 end
 
 module PBEffects
   Miasma               = 1213
+  DreamAura            = 1213
   ProhibitorySignboard = 3000
 end
 
@@ -373,10 +380,17 @@ BATTLER_EFFECTS[PBEffects::ProhibitorySignboard] = {
   default: false
 }
 
+BATTLER_EFFECTS[PBEffects::DreamAura] = {
+  name: "Dream Aura applied",
+  default: false
+}
+
 SIDE_EFFECTS[PBEffects::Miasma] = {
   name: "Miasma exists",
   default: false
 }
+
+
 end
 
 class Battle
@@ -399,6 +413,19 @@ class Battle
 	  if battler.pbCanFreeze?(nil, false) && effect == 3
 	    battler.pbFreeze(nil, _INTL("{1} was poisoned by the cloud of spores!", battler.pbThis))
 	  end
+    end
+  end
+  
+  alias thmn_pbEORHealingEffects pbEORHealingEffects
+  def pbEORHealingEffects(priority)
+    thmn_pbEORHealingEffects(priority)
+    # Dream Aura
+    priority.each do |battler|
+      next if !battler.effects[PBEffects::DreamAura]
+      next if !battler.canHeal?
+      hpGain = battler.totalhp / 8
+      battler.pbRecoverHP(hpGain)
+      pbDisplay(_INTL("Dream Aura restored {1}'s HP!", battler.pbThis(true)))
     end
   end
 end

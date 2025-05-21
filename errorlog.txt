@@ -21708,3 +21708,163 @@ Backtrace:
 010_Battle_AttackPhase.rb:124:in `block in pbAttackPhaseMoves'
 010_Battle_AttackPhase.rb:110:in `loop'
 010_Battle_AttackPhase.rb:110:in `pbAttackPhaseMoves'
+
+=================
+
+[2025-05-20 01:29:18 -0700]
+[Pokémon Essentials version 21.1]
+[v21.1 Hotfixes 1.0.9]
+
+Exception: NoMethodError
+Message: undefined method `>' for false:FalseClass
+
+Backtrace:
+[M.A.G (Moves & Abilities Galore)] MoveEffects_TAoA.rb:334:in `pbAdditionalEffect'
+[Touhoumon Essentials Development Kit] 007_Battler_UseMove.rb:608:in `block in pbProcessMoveHit'
+[Touhoumon Essentials Development Kit] 007_Battler_UseMove.rb:604:in `each'
+[Touhoumon Essentials Development Kit] 007_Battler_UseMove.rb:604:in `pbProcessMoveHit'
+[Touhoumon Essentials Development Kit] 007_Battler_UseMove.rb:292:in `block in pbUseMove'
+[Touhoumon Essentials Development Kit] 007_Battler_UseMove.rb:290:in `times'
+[Touhoumon Essentials Development Kit] 007_Battler_UseMove.rb:290:in `pbUseMove'
+007_Battler_UseMove.rb:148:in `pbUseMoveSimple'
+[M.A.G (Moves & Abilities Galore)] MoveEffects_TAoA.rb:66:in `pbEffectAgainstTarget'
+[Touhoumon Essentials Development Kit] 007_Battler_UseMove.rb:597:in `block in pbProcessMoveHit'
+
+=================
+
+[2025-05-21 12:10:54 -0700]
+[Pokémon Essentials version 21.1]
+[v21.1 Hotfixes 1.0.9]
+
+Exception: NoMethodError
+Message: undefined method `>' for false:FalseClass
+
+Backtrace:
+[M.A.G (Moves & Abilities Galore)] MoveEffects_TAoA.rb:336:in `pbAdditionalEffect'
+[Touhoumon Essentials Development Kit] 007_Battler_UseMove.rb:608:in `block in pbProcessMoveHit'
+[Touhoumon Essentials Development Kit] 007_Battler_UseMove.rb:604:in `each'
+[Touhoumon Essentials Development Kit] 007_Battler_UseMove.rb:604:in `pbProcessMoveHit'
+[Touhoumon Essentials Development Kit] 007_Battler_UseMove.rb:292:in `block in pbUseMove'
+[Touhoumon Essentials Development Kit] 007_Battler_UseMove.rb:290:in `times'
+[Touhoumon Essentials Development Kit] 007_Battler_UseMove.rb:290:in `pbUseMove'
+[Deluxe Battle Kit] [001] Animation Utilities.rb:278:in `block in pbProcessTurn'
+001_PBDebug.rb:6:in `logonerr'
+[Deluxe Battle Kit] [001] Animation Utilities.rb:278:in `pbProcessTurn'
+
+=================
+
+[2025-05-21 12:29:14 -0700]
+[Pokémon Essentials version 21.1]
+[v21.1 Hotfixes 1.0.9]
+
+Error in Plugin: [M.A.G (Moves & Abilities Galore)]
+Exception: SyntaxError
+Message: [M.A.G (Moves & Abilities Galore)] MoveEffects_TAoA.rb:288: syntax error, unexpected ')', expecting '.' or &. or :: or '['
+...      @name, user.pbTeam(true)))
+...                              ^
+[M.A.G (Moves & Abilities Galore)] MoveEffects_TAoA.rb:318: class definition in method body
+...lass Battle::Move::MyriadDreams < Battle::Move::MultiStatUpM...
+...^~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+[M.A.G (Moves & Abilities Galore)] MoveEffects_TAoA.rb:346: class definition in method body
+...Move::DoublePowerIfTargetAsleep < Battle::Move
+...^~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+[M.A.G (Moves & Abilities Galore)] MoveEffects_TAoA.rb:359: class definition in method body
+class Battle::ActiveSide
+^~~~~~~~~~~~~~~~~~~~~~~~
+[M.A.G (Moves & Abilities Galore)] MoveEffects_TAoA.rb:367: module definition in method body
+module PBEffects
+^~~~~~~~~~~~~~~~
+[M.A.G (Moves & Abilities Galore)] MoveEffects_TAoA.rb:368: dynamic constant assignment
+  Miasma               = 1213
+  ^~~~~~
+[M.A.G (Moves & Abilities Galore)] MoveEffects_TAoA.rb:369: dynamic constant assignment
+  ProhibitorySignboard = 3000
+  ^~~~~~~~~~~~~~~~~~~~
+[M.A.G (Moves & Abilities Galore)] MoveEffects_TAoA.rb:372: module definition in method body
+module Battle::DebugVariables
+^~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+[M.A.G (Moves & Abilities Galore)] MoveEffects_TAoA.rb:384: class definition in method body
+class Battle
+^~~~~~~~~~~~
+[M.A.G (Moves & Abilities Galore)] MoveEffects_TAoA.rb:407: syntax error, unexpected end-of-input, expecting `end'
+
+Backtrace:
+005_PluginManager.rb:635:in `eval'
+005_PluginManager.rb:635:in `block (2 levels) in runPlugins'
+005_PluginManager.rb:625:in `each'
+005_PluginManager.rb:625:in `block in runPlugins'
+005_PluginManager.rb:616:in `each'
+005_PluginManager.rb:616:in `runPlugins'
+999_Main.rb:35:in `mainFunctionDebug'
+999_Main.rb:19:in `block in mainFunction'
+003_Errors.rb:79:in `pbCriticalCode'
+999_Main.rb:19:in `mainFunction'
+
+=================
+
+[2025-05-21 12:31:16 -0700]
+[Pokémon Essentials version 21.1]
+[v21.1 Hotfixes 1.0.9]
+
+Exception: NameError
+Message: undefined local variable or method `hp_drained' for main:Object
+
+Backtrace:
+[TAoA Core] 001_Boss abilities.rb:31:in `block in <main>'
+005_Event_Handlers.rb:195:in `trigger'
+008_Battle_AbilityEffects.rb:247:in `triggerEndOfRoundEffect'
+011_Battle_EndOfRoundPhase.rb:689:in `block in pbEndOfRoundPhase'
+011_Battle_EndOfRoundPhase.rb:684:in `each'
+011_Battle_EndOfRoundPhase.rb:684:in `pbEndOfRoundPhase'
+006_Battle_Clauses.rb:41:in `pbEndOfRoundPhase'
+[Deluxe Battle Kit] [001] Midbattle Overwrites.rb:459:in `pbEndOfRoundPhase'
+[[DBK] SOS Battles] [004] Battle.rb:528:in `pbEndOfRoundPhase'
+002_Battle_StartAndEnd.rb:342:in `block (2 levels) in pbBattleLoop'
+
+=================
+
+[2025-05-21 13:33:32 -0700]
+[Pokémon Essentials version 21.1]
+[v21.1 Hotfixes 1.0.9]
+
+Error in Plugin: [M.A.G (Moves & Abilities Galore)]
+Exception: SyntaxError
+Message: [M.A.G (Moves & Abilities Galore)] MoveEffects_TAoA.rb:386: syntax error, unexpected '}', expecting `end'
+[M.A.G (Moves & Abilities Galore)] MoveEffects_TAoA.rb:391: syntax error, unexpected '}', expecting '}'
+[M.A.G (Moves & Abilities Galore)] MoveEffects_TAoA.rb:432: syntax error, unexpected end-of-input, expecting `end'
+
+Backtrace:
+005_PluginManager.rb:635:in `eval'
+005_PluginManager.rb:635:in `block (2 levels) in runPlugins'
+005_PluginManager.rb:625:in `each'
+005_PluginManager.rb:625:in `block in runPlugins'
+005_PluginManager.rb:616:in `each'
+005_PluginManager.rb:616:in `runPlugins'
+999_Main.rb:35:in `mainFunctionDebug'
+999_Main.rb:19:in `block in mainFunction'
+003_Errors.rb:79:in `pbCriticalCode'
+999_Main.rb:19:in `mainFunction'
+
+=================
+
+[2025-05-21 13:33:40 -0700]
+[Pokémon Essentials version 21.1]
+[v21.1 Hotfixes 1.0.9]
+
+Error in Plugin: [M.A.G (Moves & Abilities Galore)]
+Exception: SyntaxError
+Message: [M.A.G (Moves & Abilities Galore)] MoveEffects_TAoA.rb:386: syntax error, unexpected '}', expecting `end'
+[M.A.G (Moves & Abilities Galore)] MoveEffects_TAoA.rb:391: syntax error, unexpected '}', expecting '}'
+[M.A.G (Moves & Abilities Galore)] MoveEffects_TAoA.rb:432: syntax error, unexpected end-of-input, expecting `end'
+
+Backtrace:
+005_PluginManager.rb:635:in `eval'
+005_PluginManager.rb:635:in `block (2 levels) in runPlugins'
+005_PluginManager.rb:625:in `each'
+005_PluginManager.rb:625:in `block in runPlugins'
+005_PluginManager.rb:616:in `each'
+005_PluginManager.rb:616:in `runPlugins'
+999_Main.rb:35:in `mainFunctionDebug'
+999_Main.rb:19:in `block in mainFunction'
+003_Errors.rb:79:in `pbCriticalCode'
+999_Main.rb:19:in `mainFunction'

@@ -13,11 +13,11 @@
 #============================================================================
 Battle::AbilityEffects::EndOfRoundEffect.add(:ABYSSALDREAM,
   proc { |ability, battler, battle|
+	hp_drained = 0
     battle.allOtherSideBattlers(battler.index).each do |b|
       next if !b.near?(battler) || !b.asleep?
       battle.pbShowAbilitySplash(battler)
       next if !b.takesIndirectDamage?(Battle::Scene::USE_ABILITY_SPLASH)
-	  hp_drained = 0
       b.pbTakeEffectDamage(b.totalhp / 8) do |hp_lost|
         if Battle::Scene::USE_ABILITY_SPLASH
           battle.pbDisplay(_INTL("{1} is tormented!", b.pbThis))
@@ -30,7 +30,7 @@ Battle::AbilityEffects::EndOfRoundEffect.add(:ABYSSALDREAM,
     end
     next if hp_drained < 0
     hp_restored = hp_drained / 2
-    battle.pbDisplay(_INTL("{1} absorbed their foe's dreams!", battler.pbThis(true)))
+    battle.pbDisplay(_INTL("{1} absorbed their foe's dreams!", battler.pbThis))
     battle.allSameSideBattlers(battler.index).each do |b|
       battler.pbRecoverHP(hp_restored)
     end
