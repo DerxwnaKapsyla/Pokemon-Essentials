@@ -32,6 +32,7 @@ MidbattleHandlers.add(:midbattle_scripts, :vs_meimu_final,
 	@inverse_turn_count = 0 if @inverse_turn_count.nil?
     @bbfar_turn_count   = 0 if @bbfar_turn_count.nil?
     @doe_turn_count     = 0 if @doe_turn_count.nil?
+	@meimu_sleep        = false if @meimu_sleep.nil?
 	case trigger
 	#----------------------------------------------
 	# Round 1 Start: Meimu's intro dialogue
@@ -239,7 +240,8 @@ MidbattleHandlers.add(:midbattle_scripts, :vs_meimu_final,
 		  meimu.pbChangeForm(1, nil)
 		  battle.pbDisplayPaused(_INTL("Meimu reappears!"))
 		  meimu.pbChangeTypes(:PHANTASM)
-		  #reset stats
+		  meimu.ability = :PHANTASMDREAM_ALT2
+		  meimu.pbResetStatStages
 		  showAnim = true
 	      def_stats.each do |stat|
 	        next if !meimu.pbCanRaiseStatStage?(stat, meimu)
@@ -290,6 +292,20 @@ MidbattleHandlers.add(:midbattle_scripts, :vs_meimu_final,
 	# when "BattlerFainted_foe"
 	  # echoln "Battler Fainted"
 	  # battle.databoxStyle = :Long
+	#---------------------------------------------------------
+	# Special Scenes
+	#---------------------------------------------------------
+	# Condition: Meimu is put to sleep
+	#---------------------------------------------------------
+	when "BattlerStatusChange_foe"
+	  if meimu.status == :SLEEP
+	    if @meimu_sleep == false
+		scene.pbStartSpeech(1)
+		battle.pbDisplayPaused(_INTL("Did you forget? I was born from all of the dreams of every Gensokyo across time and space!"))
+		battle.pbDisplayPaused(_INTL("Being put to sleep is nothing to me!"))
+		@meimu_sleep = true
+		end
+	  end
 	end
    }
   )
@@ -374,7 +390,7 @@ def card_bbfar(scene, battle)
   battle.pbAnimation(:TELEPORT, meimu, meimu)
   meimu.pbChangeForm(2, _INTL("Meimu vanishes before your eyes!"))
   meimu.pbChangeTypes(:PHANTASM)
-  meimu.ability = :WONDERGUARD
+  meimu.ability = :PHANTASMDREAM_ALT1
   showAnim = true
   atk_stats.each do |stat|
     next if !meimu.pbCanRaiseStatStage?(stat, meimu)

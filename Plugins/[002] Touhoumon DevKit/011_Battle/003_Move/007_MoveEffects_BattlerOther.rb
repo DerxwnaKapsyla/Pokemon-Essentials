@@ -111,7 +111,7 @@ class Battle::Move::UserTargetSwapAbilities < Battle::Move
       @battle.pbDisplay(_INTL("But it failed!")) if show_message
       return true
     end
-    if target.ungainableAbility? || target.ability == [:WONDERGUARD, :PLAYGHOST, :SPECTRALGUARD, :ULTIMATEDREAM_2].include?(user.ability_id)
+    if target.ungainableAbility? || target.ability == [:WONDERGUARD, :PLAYGHOST, :SPECTRALGUARD, :PHANTASMDREAM_ALT1].include?(user.ability_id)
       @battle.pbDisplay(_INTL("But it failed!")) if show_message
       return true
     end

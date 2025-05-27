@@ -485,7 +485,7 @@ Battle::AbilityEffects::ChangeOnBattlerFainting.add(:POWEROFALCHEMY,
   proc { |ability, battler, fainted, battle|
     next if battler.opposes?(fainted)
     next if fainted.ungainableAbility? ||
-       [:POWEROFALCHEMY, :RECEIVER, :TRACE, :WONDERGUARD, :PLAYGHOST, :SPECTRALGUARD, :ULTIMATEDREAM_2].include?(fainted.ability_id)
+       [:POWEROFALCHEMY, :RECEIVER, :TRACE, :WONDERGUARD, :PLAYGHOST, :SPECTRALGUARD, :PHANTASMDREAM_ALT1].include?(fainted.ability_id)
     battle.pbShowAbilitySplash(battler, true)
     battler.ability = fainted.ability
     battle.pbReplaceAbilitySplash(battler)

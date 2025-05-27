@@ -288,7 +288,7 @@ Battle::AI::Handlers::MoveFailureAgainstTargetCheck.add("UserTargetSwapAbilities
                  user.battler.ungainableAbility? || (user.ability_id == :WONDERGUARD || 
                                                      user.ability_id == :PLAYGHOST ||
                                                      user.ability_id == :SPECTRALGUARD ||
-													 user.ability_id == :ULTIMATEDREAM_2)
+													 user.ability_id == :PHANTASMDREAM_ALT1)
     next move.move.pbFailsAgainstTarget?(user.battler, target.battler, false)
   }
 )

@@ -95738,6 +95738,8 @@ List of Event Commands:
   @>Fade Out BGM: 1 sec.
   @>Wait: 48 frame(s)
   @>Transfer Player:[137: Reimaden - Final Room], (046,028), No Fade
+  @>Scroll Map: Up, 2, 6
+  @>Wait: 5 frame(s)
   @>Control Switches: [0161: Dummy Switch] = ON
   @>
  : When [No]
@@ -110840,8 +110842,8 @@ List of Event Commands:
 
 #------------------------------------------------------------------------------
 Event ID: 003
-Event Name: Meimu
-(X,Y): (015,021)
+Event Name: Meimu 1
+(X,Y): (015,023)
 
 Page #1
 Conditions
@@ -110883,7 +110885,8 @@ List of Event Commands:
 @>Wait: 20 frame(s)
 @>Set Event Location: [Ayaka (Cutscene)],(015,031)
 @>Scroll Map: Down, 9, 2
-@>Set Move Route: [Meimu]
+@>Set Event Location: [Meimu 1],(015,021)
+@>Set Move Route: [Meimu 1]
  :              : $>Turn Up
 @>Text: \xn[Meimu]C'mon, just a little more juice Meimu, you can do 
  :    : this...\wtnp[20]
@@ -110897,13 +110900,13 @@ List of Event Commands:
  :              : $>Move Up
  :              : $>Wait: 15 frame(s)
 @>Wait for Move's Completion
-@>Show Animation: [Meimu], [Question bubble]
+@>Show Animation: [Meimu 1], [Question bubble]
 @>Wait: 8 frame(s)
-@>Set Move Route: [Meimu]
+@>Set Move Route: [Meimu 1]
  :              : $>Turn Down
 @>Wait for Move's Completion
 @>Wait: 10 frame(s)
-@>Set Move Route: [Meimu]
+@>Set Move Route: [Meimu 1]
  :              : $>Move Down
  :              : $>Move Down
 @>Text: \xn[Meimu]Y-\wt[10]You! It's you! ...Is it really you?
@@ -110915,7 +110918,7 @@ List of Event Commands:
  :    : I close this rift, I'll have fulfilled my goals and become real!
 @>Text: \xn[\pn]Are you not real right now? You're standing before me, 
  :    : aren't you?
-@>Set Move Route: [Meimu]
+@>Set Move Route: [Meimu 1]
  :              : $>Turn Left
  :              : $>Wait: 25 frame(s)
  :              : $>Turn Down
@@ -110926,7 +110929,7 @@ List of Event Commands:
 @>Wait for Move's Completion
 @>Text: \xn[\pn]But... Don't you see what's going on around you? 
  :    : The realm is-\wtnp[2]
-@>Set Move Route: [Meimu]
+@>Set Move Route: [Meimu 1]
  :              : $>Turn Up
  :              : $>Wait: 30 frame(s)
  :              : $>Turn Down
@@ -110938,7 +110941,7 @@ List of Event Commands:
  :    : in the first place!
 @>Text: \xn[\pn]And if you keep this up, then there won't <i>be</i>
  :    : a reality to fix!
-@>Set Move Route: [Meimu]
+@>Set Move Route: [Meimu 1]
  :              : $>Move Up
  :              : $>Move Up
 @>Text: \xn[Meimu]I'm so close though! Just a bit more and-\wtnp[4]
@@ -110959,7 +110962,7 @@ List of Event Commands:
 @>Text: \xn[Meimu]...But, you won't accept that as an answer, will you?
 @>Text: \xn[Meimu]No... I know you... I've seen into your dreams.\wt[10]
  :    : I know your resolve.\wt[10] I know what you'll do.
-@>Set Move Route: [Meimu]
+@>Set Move Route: [Meimu 1]
  :              : $>Turn Down
 @>Text: \xn[Meimu]You, the Legend of Gensokyo... The Savior of the 
  :    : Moon...
@@ -111087,7 +111090,7 @@ List of Event Commands:
  :    : strength...
 @>Text: \xn[Meimu]But I can't... I can't fall here!
 @>Show Animation: [Ayaka (Cutscene)], [Exclaim bubble]
-@>Set Move Route: [Meimu]
+@>Set Move Route: [Meimu 1]
  :              : $>Wait: 30 frame(s)
 @>Change Screen Color Tone: (170,170,170,0), @20
 @>Play SE: 'PRSFX- Aura Sphere1', 80, 50
@@ -111107,7 +111110,8 @@ List of Event Commands:
 @>Script: playSpecialBGM("quiet_time")
 @>Change Transparent Flag: Normal
 @>Transfer Player:[137: Reimaden - Final Room], (046,028)
-@>Set Event Location: [Meimu],(046,024)
+@>Set Event Location: [Meimu 2],(061,000)
+@>Set Event Location: [Meimu 1],(046,024)
 @>Wait: 10 frame(s)
 @>Script: pbSetSelfSwitch(57,"A",false)
 @>Change Screen Color Tone: (0,0,0,0), @16
@@ -111230,7 +111234,7 @@ List of Event Commands:
  :              : $>Move Up
 @>Scroll Map: Up, 8, 2
 @>Wait for Move's Completion
-@>Show Animation: [Meimu], [Exclaim bubble]
+@>Show Animation: [Meimu 1], [Exclaim bubble]
 @>Text: \xn[Meimu]I said don't come any closer!
 @>Text: \xn[Meimu]I don't... I don't want to hurt you... 
 @>Text: \xn[Meimu]Please just let me do this!
@@ -111243,7 +111247,7 @@ List of Event Commands:
  :              : $>Change Speed: 2
  :              : $>Move Up
 @>Text: \xn[\pn]But, that isn't always so simple...
-@>Set Move Route: [Meimu]
+@>Set Move Route: [Meimu 1]
  :              : $>Direction Fix ON
  :              : $>Move Up
  :              : $>Move Up
@@ -111277,7 +111281,7 @@ Trigger: Autorun
 
 List of Event Commands:
 @>Conditional Branch: Switch [0161: Dummy Switch] == ON
- @>Set Event Location: [Meimu],(015,024), Down
+ @>Set Event Location: [Meimu 1],(015,024), Down
  @>Control Switches: [0161: Dummy Switch] = OFF
  @>
 : Branch End
@@ -111295,7 +111299,7 @@ List of Event Commands:
 :       : #setBattleRule("battleBGM", "B-044. Finale ~ For The End.ogg")
 :       : setBattleRule("databoxStyle", :Basic)
 :       : $game_variables[70] = $PokemonSystem.battlescene
-:       : $PokemonSystem.battlescene = true
+:       : $PokemonSystem.battlescene = 0
 @>Script: setBattleRule("editWildPokemon", {
 :       :   :hp_level => 3,
 :       :   :immunities => [:OHKO, :ITEMREMOVAL, :POISON, :ATTRACT, :PPLOSS, :TYPECHANGE, :ABILITYREMOVAL, :INDIRECT, 
@@ -111314,12 +111318,15 @@ List of Event Commands:
 @>Control Variables: [0103: Vs. Transition ID] = 57
 @>Conditional Branch: Script: WildBattle.start(:MEIMU, 100)
  @>Script: $PokemonSystem.battlescene = pbGet(70)
+ @>Control Switches: [0103: Hide AI Level] = OFF
  @>
 : Else
  @>Script: $PokemonSystem.battlescene = pbGet(70)
+ @>Control Switches: [0103: Hide AI Level] = OFF
  @>Exit Event Processing
  @>
 : Branch End
+@>Control Switches: [0103: Hide AI Level] = OFF
 @>Control Self Switch: D =ON
 @>
 
@@ -112724,13 +112731,13 @@ List of Event Commands:
  :              : $>Move Up
  :              : $>Wait: 15 frame(s)
 @>Wait for Move's Completion
-@>Show Animation: [Meimu], [Question bubble]
+@>Show Animation: [Meimu 1], [Question bubble]
 @>Wait: 8 frame(s)
-@>Set Move Route: [Meimu]
+@>Set Move Route: [Meimu 1]
  :              : $>Turn Down
 @>Wait for Move's Completion
 @>Wait: 10 frame(s)
-@>Set Move Route: [Meimu]
+@>Set Move Route: [Meimu 1]
  :              : $>Move Down
  :              : $>Move Down
 @>Text: \xn[Meimu]Y-\wt[10]You! It's you! ...Is it really you?
@@ -112742,7 +112749,7 @@ List of Event Commands:
  :    : I close this rift, I'll have fulfilled my goals and become real!
 @>Text: \xn[\pn]Are you not real right now? You're standing before me, 
  :    : aren't you?
-@>Set Move Route: [Meimu]
+@>Set Move Route: [Meimu 1]
  :              : $>Turn Left
  :              : $>Wait: 25 frame(s)
  :              : $>Turn Down
@@ -112753,7 +112760,7 @@ List of Event Commands:
 @>Wait for Move's Completion
 @>Text: \xn[\pn]But... Don't you see what's going on around you? 
  :    : The realm is-\wtnp[2]
-@>Set Move Route: [Meimu]
+@>Set Move Route: [Meimu 1]
  :              : $>Turn Up
  :              : $>Wait: 30 frame(s)
  :              : $>Turn Down
@@ -112765,7 +112772,7 @@ List of Event Commands:
  :    : in the first place!
 @>Text: \xn[\pn]And if you keep this up, then there won't <i>be</i>
  :    : a reality to fix!
-@>Set Move Route: [Meimu]
+@>Set Move Route: [Meimu 1]
  :              : $>Move Up
  :              : $>Move Up
 @>Text: \xn[Meimu]I'm so close though! Just a bit more and-\wtnp[4]
@@ -112786,7 +112793,7 @@ List of Event Commands:
 @>Text: \xn[Meimu]...But, you won't accept that as an answer, will you?
 @>Text: \xn[Meimu]No... I know you... I've seen into your dreams.\wt[10]
  :    : I know your resolve.\wt[10] I know what you'll do.
-@>Set Move Route: [Meimu]
+@>Set Move Route: [Meimu 1]
  :              : $>Turn Down
 @>Text: \xn[Meimu]You, the Legend of Gensokyo... The Savior of the 
  :    : Moon...
@@ -112868,7 +112875,7 @@ List of Event Commands:
  :    : strength...
 @>Text: \xn[Meimu]But I can't... I can't fall here!
 @>Show Animation: [Ayaka (Cutscene)], [Exclaim bubble]
-@>Set Move Route: [Meimu]
+@>Set Move Route: [Meimu 1]
  :              : $>Wait: 30 frame(s)
 @>Change Screen Color Tone: (170,170,170,0), @20
 @>Play SE: 'PRSFX- Aura Sphere1', 80, 50
@@ -112888,7 +112895,7 @@ List of Event Commands:
 @>Script: playSpecialBGM("quiet_time")
 @>Change Transparent Flag: Normal
 @>Transfer Player:[137: Reimaden - Final Room], (046,028)
-@>Set Event Location: [Meimu],(046,024)
+@>Set Event Location: [Meimu 1],(046,024)
 @>Wait: 10 frame(s)
 @>Script: pbSetSelfSwitch(57,"A",false)
 @>Change Screen Color Tone: (0,0,0,0), @16
@@ -113011,7 +113018,7 @@ List of Event Commands:
  :              : $>Move Up
 @>Scroll Map: Up, 8, 2
 @>Wait for Move's Completion
-@>Show Animation: [Meimu], [Exclaim bubble]
+@>Show Animation: [Meimu 1], [Exclaim bubble]
 @>Text: \xn[Meimu]I said don't come any closer!
 @>Text: \xn[Meimu]I don't... I don't want to hurt you... 
 @>Text: \xn[Meimu]Please just let me do this!
@@ -113024,7 +113031,7 @@ List of Event Commands:
  :              : $>Change Speed: 2
  :              : $>Move Up
 @>Text: \xn[\pn]But, that isn't always so simple...
-@>Set Move Route: [Meimu]
+@>Set Move Route: [Meimu 1]
  :              : $>Direction Fix ON
  :              : $>Move Up
  :              : $>Move Up
@@ -113091,6 +113098,28 @@ List of Event Commands:
 Page #4
 Conditions
 Self Switch D is ON
+
+Autonomous Movement
+Type: Fixed
+Speed: 3: Slow
+Freq: 3: Low
+Options Enabled
+Move Animation
+Trigger: Action Button
+
+List of Event Commands:
+@>
+
+#------------------------------------------------------------------------------
+Event ID: 063
+Event Name: Meimu 2
+(X,Y): (046,023)
+
+Page #1
+Conditions
+None
+
+Graphic: Person_Meimu
 
 Autonomous Movement
 Type: Fixed

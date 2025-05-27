@@ -56,14 +56,7 @@ class Battle::Move::UseMoveDependingOnEnvironmentThmn < Battle::Move
 
   def pbEffectAgainstTarget(user, target)
     @battle.pbDisplay(_INTL("{1} turned into {2}!", @name, GameData::Move.get(@npMove).name))
-	if @npMove == :MYRIADDREAMS && rand(1..100) > 50
-	  echoln "false"
-	else
-	  echoln "true"
-	  @battle.pbDisplay(_INTL("But it failed!"))
-	  return true
-	end
-    user.pbUseMoveSimple(@npMove, target.index)
+    user.pbUseMoveSimple(@npMove, target.index, -1, false)
   end
 end
 
