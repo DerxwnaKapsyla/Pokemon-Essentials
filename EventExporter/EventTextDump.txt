@@ -18302,6 +18302,7 @@ List of Event Commands:
  :    : more challenging..
 @>Text: \xn[\pn]Well, from the looks of things, there's one more platform I 
  :    : can access...
+@>Script: $player.scenario_name = "None"
 @>Control Self Switch: B =ON
 @>
 
@@ -18345,6 +18346,7 @@ List of Event Commands:
 @>Text: \xn[\pn]... What's that in the sky up there?
 @>Text: \xn[\pn]I can probably get a better vantage point from the edge
  :    : of the tower.
+@>Script: $player.scenario_name = "None"
 @>Control Variables: [0099: NG+ Loop] = 3
 @>Control Self Switch: C =ON
 @>
@@ -19032,6 +19034,7 @@ List of Event Commands:
 @>Show Choices: Yes, No
 (When Cancel: Choice 2)
 : When [Yes]
+ @>Script: $player.scenario_name = "The Last Adventure"
  @>Script: playSpecialBGM("quiet_time")
  @>Move Picture: 2, @30, Upper Left (0,0), (100%,100%), 0, Normal
  @>Wait: 30 frame(s)
@@ -19118,6 +19121,7 @@ List of Event Commands:
 @>Show Choices: Yes, No
 (When Cancel: Choice 2)
 : When [Yes]
+ @>Script: $player.scenario_name = "The Kingdom of Lunacy"
  @>Control Variables: [0105: Game Selected] = 3
  @>Fade Out BGM: 1 sec.
  @>Move Picture: 1, @20, Upper Left (0,0), (100%,100%), 0, Normal
