@@ -97,6 +97,15 @@ EventHandlers.add(:on_trainer_load, :trainer_music_override,
   }
 )
 
+EventHandlers.add(:on_trainer_load, :anomaly_override,
+  proc { |trainer|
+	if GameData::MapMetadata.get($game_map.map_id)&.has_flag?("CanRunFromTrainers")
+      setBattleRule("battleIntroText", "A {1} appeared out of nowhere!")
+      setBattleRule("setSlideSprite", "still")
+    end
+  }
+)
+
 EventHandlers.add(:on_trainer_load, :meimu_master_override,
   proc { |trainer|
     next if !$game_switches[157] # Fighting Meimu switch

@@ -16,6 +16,8 @@ class Battle
       owner = pbGetOwnerName(battler.index)
 	  if $game_map.map_id == 64 && $game_switches[102] == true # Derx: For the Medicine's Legion fights.
 		pbDisplayBrief(_INTL("Medicine: {1}, retreat from the field!", battler.name))
+	  elsif GameData::MapMetadata.get($game_map.map_id)&.has_flag?("CanRunFromTrainers")
+	    pbDisplayBrief(_INTL("The {1} disappeared back inside the Anomaly!", battler.name))
 	  else
 		pbDisplayBrief(_INTL("{1} withdrew {2}!", owner, battler.name))
 	  end
@@ -44,6 +46,8 @@ class Battle
       owner = pbGetOwnerFromBattlerIndex(idxBattler)
 	  if $game_map.map_id == 64 && $game_switches[102] == true # Derx: For the Medicine's Legion fights.
 		pbDisplayBrief(_INTL("Medicine: {1}, take point on the field!", newPkmnName))
+	  elsif GameData::MapMetadata.get($game_map.map_id)&.has_flag?("CanRunFromTrainers")
+	    pbDisplayBrief(_INTL("The Anomaly spat out {1}!", newPkmnName))
 	  else
 		pbDisplayBrief(_INTL("{1} sent out {2}!", owner.full_name, newPkmnName))
 	  end

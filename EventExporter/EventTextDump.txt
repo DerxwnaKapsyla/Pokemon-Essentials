@@ -93168,19 +93168,11 @@ Move Animation
 Trigger: Player Touch
 
 List of Event Commands:
-@>Text: Descend down the tower?
-@>Show Choices: Yes, No
-(When Cancel: Choice 2)
-: When [Yes]
- @>Play SE: 'PRSFX- Teleport', 60, 100
- @>Change Screen Color Tone: (-255,-255,-255,0), @6
- @>Wait: 8 frame(s)
- @>Transfer Player:[109: Tower of Adventure (Entrance)], (025,025), Up, No Fade
- @>Change Screen Color Tone: (0,0,0,0), @6
- @>
-: When [No]
- @>
-: Branch End
+@>Play SE: 'PRSFX- Teleport', 60, 100
+@>Change Screen Color Tone: (-255,-255,-255,0), @6
+@>Wait: 8 frame(s)
+@>Transfer Player:[109: Tower of Adventure (Entrance)], (025,025), Up, No Fade
+@>Change Screen Color Tone: (0,0,0,0), @6
 @>
 
 #------------------------------------------------------------------------------
@@ -95540,7 +95532,7 @@ Event Name: EV005
 
 Page #1
 Conditions
-Variable 0142: TLA Plot Variable is 1 or above
+Variable 0142: TLA Plot Variable is 2 or above
 
 Autonomous Movement
 Type: Fixed
@@ -95551,19 +95543,11 @@ Move Animation
 Trigger: Player Touch
 
 List of Event Commands:
-@>Text: Descend down the tower?
-@>Show Choices: Yes, No
-(When Cancel: Choice 2)
-: When [Yes]
- @>Play SE: 'PRSFX- Teleport', 60, 100
- @>Change Screen Color Tone: (-255,-255,-255,0), @6
- @>Wait: 8 frame(s)
- @>Transfer Player:[134: Reimaden], (013,033), Up, No Fade
- @>Change Screen Color Tone: (0,0,0,0), @6
- @>
-: When [No]
- @>
-: Branch End
+@>Play SE: 'PRSFX- Teleport', 60, 100
+@>Change Screen Color Tone: (-255,-255,-255,0), @6
+@>Wait: 8 frame(s)
+@>Transfer Player:[134: Reimaden], (013,033), Up, No Fade
+@>Change Screen Color Tone: (0,0,0,0), @6
 @>
 
 #------------------------------------------------------------------------------

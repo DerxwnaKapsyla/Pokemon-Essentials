@@ -501,7 +501,11 @@ class Battle
             msg += "Go! "
             sent = sendOuts[side][0]
           else
-            msg += "#{t.full_name} sent out "
+		    if GameData::MapMetadata.get($game_map.map_id)&.has_flag?("CanRunFromTrainers")
+              msg += "The Anomaly spat out "
+			else
+			  msg += "#{t.full_name} sent out "
+			end
             sent = (side == 0) ? sendOuts[0][1] : sendOuts[1][i]
           end
           sent.each_with_index do |idxBattler, j|

@@ -190,7 +190,7 @@ end
 
 #===============================================================================
 # Apply attraction regardless of gender/alignment.
-# (Enchantiing Cone)
+# (Enchanting Cone)
 #===============================================================================
 class Battle::Move::EnchantingCone < Battle::Move
   def ignoresSubstitute?(user); return true; end
@@ -219,7 +219,7 @@ class Battle::Move::Lightspeed < Battle::Move
 end
 
 #===============================================================================
-	# Creeping Mycelium
+# Creeping Mycelium
 #===============================================================================
 class Battle::Move::CreepingMycelium < Battle::Move
   def canMagicCoat?; return true; end

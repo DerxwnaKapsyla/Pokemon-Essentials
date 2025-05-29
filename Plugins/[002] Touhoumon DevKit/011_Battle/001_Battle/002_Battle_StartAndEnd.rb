@@ -9,34 +9,20 @@
 #	  (Switch 31). Will disable itself when it notices its on.
 #==============================================================================#
 class Battle
-  def pbStartBattleSendOut(sendOuts)	
-        if $game_switches[Settings::SPECIAL_BATTLE_SWITCH]
-          case $game_variables[Settings::SPECIAL_BATTLE_VARIABLE]
-                when 1        then sbName = "The territorial"
-                when 2        then sbName = "The aggressive"
-                when 3        then sbName = "Celadon Gym's"
-                when 4        then sbName = "A trainer's"
-                else               sbName = "Oh! A wild"
-          end
-        else
-          sbName = "Oh! A wild"
-        end 
+  def pbStartBattleSendOut(sendOuts)
     # "Want to battle" messages
     if wildBattle?
       foeParty = pbParty(1)
       case foeParty.length
       when 1
-        pbDisplayPaused(_INTL("{2} {1} appeared!", foeParty[0].name, sbName))
+        pbDisplayPaused(_INTL("Oh! A wild {1} appeared!", foeParty[0].name))
       when 2
-        pbDisplayPaused(_INTL("{3} {1} and {2} appeared!", foeParty[0].name,
-                              foeParty[1].name, sbName))
+        pbDisplayPaused(_INTL("Oh! A wild {1} and {2} appeared!", foeParty[0].name,
+                              foeParty[1].name))
       when 3
-        pbDisplayPaused(_INTL("{4} {1}, {2} and {3} appeared!", foeParty[0].name,
-                              foeParty[1].name, foeParty[2].name, sbName))
+        pbDisplayPaused(_INTL("Oh! A wild {1}, {2} and {3} appeared!", foeParty[0].name,
+                              foeParty[1].name, foeParty[2].name))
       end
-	  #if $game_switches[Settings::SHINY_WILD_POKEMON_SWITCH] # Used for the "Make Any Pokemon Shiny" passcode
-	  #  $game_switches[Settings::SHINY_WILD_POKEMON_SWITCH] = false
-	  #end
     else   # Trainer battle
       case @opponent.length
       when 1
@@ -63,7 +49,9 @@ class Battle
         case sent.length
         when 1
 		  if $game_map.map_id == 64 && $game_switches[102] == true # Derx: For the Medicine's Legion fights.
-		    msg += _INTL("Medicine: {1}, lead the charge!",@battlers[sent[0]].name) # Derx: For the Medicine's Legion fights.
+		    msg += _INTL("Medicine: {1}, lead the charge!",@battlers[sent[0]].name)
+		  elsif GameData::MapMetadata.get($game_map.map_id)&.has_flag?("CanRunFromTrainers")
+		    msg += _INTL("The Anomaly spat out {2}!", t.full_name, @battlers[sent[0]].name)
 		  else
 			msg += _INTL("{1} sent out {2}!", t.full_name, @battlers[sent[0]].name)
 		  end
@@ -137,7 +125,11 @@ class Battle
         @scene.pbTrainerBattleSuccess
         case @opponent.length
         when 1
-          pbDisplayPaused(_INTL("You defeated {1}!", @opponent[0].full_name))
+		  if GameData::MapMetadata.get($game_map.map_id)&.has_flag?("CanRunFromTrainers")
+		    pbDisplayPaused(_INTL("The Anomaly dissipated!", @opponent[0].full_name))
+		  else
+            pbDisplayPaused(_INTL("You defeated {1}!", @opponent[0].full_name))
+		  end
         when 2
           pbDisplayPaused(_INTL("You defeated {1} and {2}!", @opponent[0].full_name,
                                 @opponent[1].full_name))
@@ -145,12 +137,14 @@ class Battle
           pbDisplayPaused(_INTL("You defeated {1}, {2} and {3}!", @opponent[0].full_name,
                                 @opponent[1].full_name, @opponent[2].full_name))
         end
-        @opponent.each_with_index do |trainer, i|
-          @scene.pbShowOpponent(i)
-          msg = trainer.lose_text
-          msg = "..." if !msg || msg.empty?
-          pbDisplayPaused(msg.gsub(/\\[Pp][Nn]/, pbPlayer.name))
-        end
+		if !GameData::MapMetadata.get($game_map.map_id)&.has_flag?("CanRunFromTrainers")
+          @opponent.each_with_index do |trainer, i|
+            @scene.pbShowOpponent(i)
+            msg = trainer.lose_text
+            msg = "..." if !msg || msg.empty?
+            pbDisplayPaused(msg.gsub(/\\[Pp][Nn]/, pbPlayer.name))
+          end
+		end
         PBDebug.log("")
       end
       # Gain money from winning a trainer battle, and from Pay Day

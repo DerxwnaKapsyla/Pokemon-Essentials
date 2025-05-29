@@ -22689,3 +22689,150 @@ setBattleRule("disablePokeBalls")
 setBattleRule("battleIntroText", "This is the end.")
 setBattleRule("victoryBGM", "")
 setBattleRule("midbattleScript", :vs_meimu_final)
+
+=================
+
+[2025-05-28 16:13:12 -0700]
+[Pokémon Essentials version 21.1]
+
+Error in Plugin: [TAoA Core]
+Exception: NameError
+Message: undefined method `pbCalcDamageMults_Field' for class `Battle::Move'
+
+Backtrace:
+[TAoA Core] 002_Damage Calc Refactor.rb:17:in `<class:Move>'
+[TAoA Core] 002_Damage Calc Refactor.rb:7:in `<main>'
+005_PluginManager.rb:635:in `eval'
+005_PluginManager.rb:635:in `block (2 levels) in runPlugins'
+005_PluginManager.rb:625:in `each'
+005_PluginManager.rb:625:in `block in runPlugins'
+005_PluginManager.rb:616:in `each'
+005_PluginManager.rb:616:in `runPlugins'
+999_Main.rb:35:in `mainFunctionDebug'
+999_Main.rb:19:in `block in mainFunction'
+
+=================
+
+[2025-05-28 16:14:17 -0700]
+[Pokémon Essentials version 21.1]
+
+Error in Plugin: [TAoA Core]
+Exception: NameError
+Message: undefined method `pbCalcDamageMults_Field' for class `Battle::Move'
+
+Backtrace:
+[TAoA Core] 002_Damage Calc Refactor.rb:17:in `<class:Move>'
+[TAoA Core] 002_Damage Calc Refactor.rb:7:in `<main>'
+005_PluginManager.rb:635:in `eval'
+005_PluginManager.rb:635:in `block (2 levels) in runPlugins'
+005_PluginManager.rb:625:in `each'
+005_PluginManager.rb:625:in `block in runPlugins'
+005_PluginManager.rb:616:in `each'
+005_PluginManager.rb:616:in `runPlugins'
+999_Main.rb:35:in `mainFunctionDebug'
+999_Main.rb:19:in `block in mainFunction'
+
+=================
+
+[2025-05-28 16:16:02 -0700]
+[Pokémon Essentials version 21.1]
+[v21.1 Hotfixes 1.0.9]
+
+Exception: ArgumentError
+Message: wrong number of arguments (given 0, expected 6)
+
+Backtrace:
+[Deluxe Battle Kit] [002] Damage Calc Refactor.rb:669:in `calc_weather_mults'
+[Deluxe Battle Kit] 002_Damage Calc Refactor.rb:191:in `calc_weather_mults'
+[Deluxe Battle Kit] [002] Damage Calc Refactor.rb:831:in `rough_damage'
+007_AI_ChooseMove_OtherScores.rb:300:in `block (2 levels) in load_scripts_from_folder'
+001_Battle_AI.rb:130:in `block in apply_general_move_against_target_score_modifiers'
+005_Event_Handlers.rb:129:in `block in each'
+005_Event_Handlers.rb:129:in `each_pair'
+005_Event_Handlers.rb:129:in `each'
+001_Battle_AI.rb:129:in `apply_general_move_against_target_score_modifiers'
+[Deluxe Battle Kit] [002] Misc Utilities.rb:532:in `pbGetMoveScoreAgainstTarget'
+
+=================
+
+[2025-05-28 16:16:03 -0700]
+[Pokémon Essentials version 21.1]
+[v21.1 Hotfixes 1.0.9]
+
+Exception: ArgumentError
+Message: wrong number of arguments (given 0, expected 6)
+
+Backtrace:
+[Deluxe Battle Kit] [002] Damage Calc Refactor.rb:669:in `calc_weather_mults'
+[Deluxe Battle Kit] 002_Damage Calc Refactor.rb:191:in `calc_weather_mults'
+[Deluxe Battle Kit] [002] Damage Calc Refactor.rb:831:in `rough_damage'
+007_AI_ChooseMove_OtherScores.rb:300:in `block (2 levels) in load_scripts_from_folder'
+001_Battle_AI.rb:130:in `block in apply_general_move_against_target_score_modifiers'
+005_Event_Handlers.rb:129:in `block in each'
+005_Event_Handlers.rb:129:in `each_pair'
+005_Event_Handlers.rb:129:in `each'
+001_Battle_AI.rb:129:in `apply_general_move_against_target_score_modifiers'
+[Deluxe Battle Kit] [002] Misc Utilities.rb:532:in `pbGetMoveScoreAgainstTarget'
+
+=================
+
+[2025-05-28 16:16:24 -0700]
+[Pokémon Essentials version 21.1]
+[v21.1 Hotfixes 1.0.9]
+
+Exception: ArgumentError
+Message: wrong number of arguments (given 0, expected 6)
+
+Backtrace:
+[Deluxe Battle Kit] [002] Damage Calc Refactor.rb:669:in `calc_weather_mults'
+[Deluxe Battle Kit] 002_Damage Calc Refactor.rb:191:in `calc_weather_mults'
+[Deluxe Battle Kit] [002] Damage Calc Refactor.rb:831:in `rough_damage'
+007_AI_ChooseMove_OtherScores.rb:300:in `block (2 levels) in load_scripts_from_folder'
+001_Battle_AI.rb:130:in `block in apply_general_move_against_target_score_modifiers'
+005_Event_Handlers.rb:129:in `block in each'
+005_Event_Handlers.rb:129:in `each_pair'
+005_Event_Handlers.rb:129:in `each'
+001_Battle_AI.rb:129:in `apply_general_move_against_target_score_modifiers'
+[Deluxe Battle Kit] [002] Misc Utilities.rb:532:in `pbGetMoveScoreAgainstTarget'
+
+=================
+
+[2025-05-28 16:16:44 -0700]
+[Pokémon Essentials version 21.1]
+[v21.1 Hotfixes 1.0.9]
+
+Exception: ArgumentError
+Message: wrong number of arguments (given 0, expected 6)
+
+Backtrace:
+[Deluxe Battle Kit] [002] Damage Calc Refactor.rb:669:in `calc_weather_mults'
+[Deluxe Battle Kit] 002_Damage Calc Refactor.rb:191:in `calc_weather_mults'
+[Deluxe Battle Kit] [002] Damage Calc Refactor.rb:831:in `rough_damage'
+007_AI_ChooseMove_OtherScores.rb:300:in `block (2 levels) in load_scripts_from_folder'
+001_Battle_AI.rb:130:in `block in apply_general_move_against_target_score_modifiers'
+005_Event_Handlers.rb:129:in `block in each'
+005_Event_Handlers.rb:129:in `each_pair'
+005_Event_Handlers.rb:129:in `each'
+001_Battle_AI.rb:129:in `apply_general_move_against_target_score_modifiers'
+[Deluxe Battle Kit] [002] Misc Utilities.rb:532:in `pbGetMoveScoreAgainstTarget'
+
+=================
+
+[2025-05-28 16:17:31 -0700]
+[Pokémon Essentials version 21.1]
+[v21.1 Hotfixes 1.0.9]
+
+Exception: NoMethodError
+Message: undefined method `has_type' for #<Battle::AI::AIBattler>
+
+Backtrace:
+[Deluxe Battle Kit] 002_Damage Calc Refactor.rb:240:in `calc_type_mults'
+[Deluxe Battle Kit] [002] Damage Calc Refactor.rb:833:in `rough_damage'
+007_AI_ChooseMove_OtherScores.rb:300:in `block (2 levels) in load_scripts_from_folder'
+001_Battle_AI.rb:130:in `block in apply_general_move_against_target_score_modifiers'
+005_Event_Handlers.rb:129:in `block in each'
+005_Event_Handlers.rb:129:in `each_pair'
+005_Event_Handlers.rb:129:in `each'
+001_Battle_AI.rb:129:in `apply_general_move_against_target_score_modifiers'
+[Deluxe Battle Kit] [002] Misc Utilities.rb:532:in `pbGetMoveScoreAgainstTarget'
+005_AI_ChooseMove.rb:245:in `block in pbGetMoveScore'

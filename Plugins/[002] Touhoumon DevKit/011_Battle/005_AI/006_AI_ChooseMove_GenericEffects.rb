@@ -245,7 +245,8 @@ class Battle::AI
         if b.has_move_with_function?("EffectDependsOnEnvironment",
                                      "SetUserTypesBasedOnEnvironment",
                                      "TypeAndPowerDependOnTerrain",
-                                     "UseMoveDependingOnEnvironment")
+                                     "UseMoveDependingOnEnvironment",)
+									 "UseMoveDependingOnEnvironmentThmn"
           ret += (b.opposes?(move_user)) ? -5 : 5
         end
         if good_moves && b.has_move_with_function?(*good_moves)

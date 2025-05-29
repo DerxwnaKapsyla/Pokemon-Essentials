@@ -125,12 +125,16 @@ class Battle
               new_index = pbLastInTeam(idxBattler)
               idxPartyForName = new_index if new_index >= 0 && new_index != idxPartyNew
             end
-			msg = _INTL("{1} is about to send in {2}. Will you switch?",
-                                      opponent.full_name, enemyParty[idxPartyForName].name)
 			if $game_switches[97]
 			  msg = _INTL("You can't see what {1} is about to send out. Will you switch?",
                                       opponent.full_name)
-			end
+		    elsif GameData::MapMetadata.get($game_map.map_id)&.has_flag?("CanRunFromTrainers")
+			  msg = _INTL("The Anomaly is fluctuating. Will you switch?",
+                                      opponent.full_name)
+			else
+			  msg = _INTL("{1} is about to send in {2}. Will you switch?",
+                                      opponent.full_name, enemyParty[idxPartyForName].name)
+		    end
             if pbDisplayConfirm(msg)
               idxPlayerPartyNew = pbSwitchInBetween(0, false, true)
               if idxPlayerPartyNew >= 0

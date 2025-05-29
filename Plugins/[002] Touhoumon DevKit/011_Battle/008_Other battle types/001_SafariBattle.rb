@@ -1,3 +1,18 @@
+class Battle::Scene::SafariDataBox < Sprite
+  alias rename_refresh refresh  
+  def refresh
+    rename_refresh
+    self.bitmap.clear
+    self.bitmap.blt(0, 0, @databox.bitmap, Rect.new(0, 0, @databox.width, @databox.height))
+    base   = Color.new(72, 72, 72)
+    shadow = Color.new(184, 184, 184)
+    textpos = []
+    textpos.push([_INTL("Prismriver Orbs"), 30, 14, :left, base, shadow])
+    textpos.push([_INTL("Left: {1}", @battle.ballCount), 30, 44, :left, base, shadow])
+    pbDrawTextPositions(self.bitmap, textpos)
+  end
+end
+
 class SafariBattle
   def pbStartBattle
     begin
