@@ -43700,6 +43700,148 @@ List of Event Commands:
 
 Page #3
 Conditions
+Switch 0123: Medicine Beaten is ON
+Self Switch A is ON
+
+Graphic: Person_Merlin
+
+Autonomous Movement
+Type: Fixed
+Speed: 3: Slow
+Freq: 3: Low
+Options Enabled
+Move Animation
+Trigger: Action Button
+
+List of Event Commands:
+@>Text: \xn[Merlin]\ptWelcome to the Prismriver Haunted Manor, where you can catch
+ :    : all sorts of dastardly and devious Puppets within these spooky halls!
+@>Text: \xn[Merlin]\ptFor the price of 30 FP, we have two different routes that 
+ :    : brave explorers can undertake through the manor...
+@>Label: y/n/e
+@>Text: \xn[Merlin]\ptAre you brave enough to traverse this mansion of mysteries?
+@>Show Choices: Yes, No, Explain more
+(When Cancel: Choice 2)
+: When [Yes]
+ @>Text: \xn[Merlin]\ptWould you like to do the Catching Game or the Cursed Experience?
+ @>Show Choices: Catching Game, Cursed Experience, Nevermind
+ (When Cancel: Choice 3)
+ : When [Catching Game]
+  @>Text: \xn[Merlin]\ptAnd that will be 30 FP, is that alright?
+  @>Show Choices: Yes, No
+  (When Cancel: Choice 2)
+  : When [Yes]
+   @>Comment: --- Catching Game ---
+   @>Conditional Branch: Script: $player.battle_points < 30
+    @>Text: \xn[Merlin]\ptOh no! You don't have enough Festival Points!
+    @>Text: \xn[Merlin]\ptYou can exchange for some beside me with Lunasa for money, and return
+     :    : when you have enough!
+    @>Exit Event Processing
+    @>
+   : Else
+    @>Comment: --- Subtract 30 FP here
+    @>Script: $player.battle_points -= 30
+    @>Play SE: 'Mart buy item', 100, 100
+    @>Text: \xn[Merlin]\ptHere you go, \pn! 30 custom made 
+     :    : Prismriver Orbs for use within the Manor!
+    @>Text: \pt\PN received 30 Prismriver Orbs from Merlin.
+     :    : \me[Item get]\wtnp[40]
+    @>Text: \xn[Merlin]\ptOne of the ghostly attendants will notify you when you're out of steps or orbs to return here.
+    @>Text: \xn[Merlin]\ptGood luck~ Don't get too scared!
+    @>Script: pbSafariState.pbStart(30)
+    @>Play SE: 'Door exit', 80, 100
+    @>Change Screen Color Tone: (-255,-255,-255,0), @6
+    @>Wait: 8 frame(s)
+    @>Control Self Switch: B =ON
+    @>Set Move Route: Player
+     :              : $>Change Opacity: 255
+    @>Transfer Player:[050: Prismriver Manor (F1)], (024,037), No Fade
+    @>Change Screen Color Tone: (-50,-50,-50,0), @6
+    @>Exit Event Processing
+    @>
+   : Branch End
+   @>
+  : When [No]
+   @>Jump to Label: End
+   @>
+  : Branch End
+  @>
+ : When [Cursed Experience]
+  @>Text: \xn[Merlin]\ptAnd that will be 30 FP, is that alright?
+  @>Show Choices: Yes, No
+  (When Cancel: Choice 2)
+  : When [Yes]
+   @>Comment: --- Cursed Experience ---
+   @>Conditional Branch: Script: $player.battle_points < 30
+    @>Text: \xn[Merlin]\ptOh no! You don't have enough Festival Points!
+    @>Text: \xn[Merlin]\ptYou can exchange for some beside me with Lunasa for money, and return
+     :    : when you have enough!
+    @>Exit Event Processing
+    @>
+   : Else
+    @>Script: $player.battle_points -= 30
+    :       : 
+    :       : pbSetSelfSwitch2(56,1,"A",false)
+    :       : pbSetSelfSwitch2(148,1,"A",false)
+    @>Play SE: 'Mart buy item', 100, 100
+    @>Text: \xn[Merlin]\ptLooks like everything is in order! Good luck in there, \pn!
+    @>Text: \xn[Merlin]\ptDon't get too cursed~
+    @>Control Switches: [0132: RWM Challenge Mode] = ON
+    @>Control Variables: [0152..0155] = 0
+    @>Play SE: 'Door exit', 80, 100
+    @>Change Screen Color Tone: (-255,-255,-255,0), @6
+    @>Wait: 8 frame(s)
+    @>Control Self Switch: B =ON
+    @>Set Move Route: Player
+     :              : $>Change Opacity: 255
+    @>Transfer Player:[050: Prismriver Manor (F1)], (024,037), No Fade
+    @>Change Screen Color Tone: (-50,-50,-50,0), @6
+    @>Change Save Access: Disable
+    @>Exit Event Processing
+    @>
+   : Branch End
+   @>
+  : When [No]
+   @>Jump to Label: End
+   @>
+  : Branch End
+  @>
+ : When [Nevermind]
+  @>Jump to Label: End
+  @>
+ : Branch End
+ @>
+: When [No]
+ @>Jump to Label: End
+ @>
+: When [Explain more]
+ @>Text: \xn[Merlin]\ptBefore exploring, you can between choose two different
+  :    : modes per excursion.
+ @>Text: \xn[Merlin]\ptThe first one has you travel through the mansion, but you
+  :    : have a limited amount of time per visit. You are also given a limited 
+  :    : number of Puppet Orbs.
+ @>Text: \xn[Merlin]\ptOnce you run out of either of those, it's game over! You'll
+  :    : have to return back here and talk to me again for another run.
+ @>Text: \xn[Merlin]\ptThe second one is what we're calling the Cursed Experience,
+  :    : and is where the real interesting stuff happens!
+ @>Text: \xn[Merlin]\ptFirstly, there is no time limit or Puppet Orb restrictions, you
+  :    : have full reign of the manor at your own leisure.
+ @>Text: \xn[Merlin]\ptHowever! You will find that battles here are not so simple.
+ @>Text: \xn[Merlin]\ptEvery battle will be a different experience, where a series
+  :    : of different effects could occur. Status conditions, extra abilities...
+ @>Text: \xn[Merlin]\ptAlso! Every visit to a new floor will institute a different curse effect
+  :    : that applies to every battle on that floor! Weather conditions, terrain effects... All
+  :    : very scary things~
+ @>Jump to Label: y/n/e
+ @>
+: Branch End
+@>Label: End
+@>Text: \xn[Merlin]\ptFeel free to come back any time, we'll be here all festival
+ :    : long!
+@>
+
+Page #4
+Conditions
 Self Switch B is ON
 
 Graphic: Person_Merlin
@@ -43713,13 +43855,15 @@ Move Animation
 Trigger: Autorun
 
 List of Event Commands:
+@>Set Move Route: Player
+ :              : $>Turn Up
 @>Text: \xn[Merlin]Did you have fun inside our home? Catch your fair share of Puppets?
 @>Text: \xn[Merlin]Feel free to come back any time, we'll be here all festival
  :    : long!
 @>Script: pbSafariState.pbEnd
 @>Change Save Access: Enable
 @>Control Self Switch: B =OFF
-@>Control Switches: [0132: RWM Challenge Mode] = ON
+@>Control Switches: [0132: RWM Challenge Mode] = OFF
 @>
 
 #------------------------------------------------------------------------------
@@ -95847,6 +95991,83 @@ List of Event Commands:
 @>
 
 #------------------------------------------------------------------------------
+Event ID: 011
+Event Name: EV011
+(X,Y): (023,013)
+
+Page #1
+Conditions
+None
+
+Graphic: Object ball
+
+Autonomous Movement
+Type: Fixed
+Speed: 3: Slow
+Freq: 3: Low
+Options Enabled
+Move Animation
+Trigger: Action Button
+
+List of Event Commands:
+@>Script: $game_variables[96] = "E"
+@>Conditional Branch: Script: TrainerBattle.start(:REISEN, "Reisen U. Inaba", 10, :EIRIN, "Eirin Yagokoro", 10)
+ @>
+: Else
+ @>Script: pbTrainerEnd
+ @>Exit Event Processing
+ @>
+: Branch End
+@>
+
+Page #2
+Conditions
+None
+
+Graphic: Object ball
+
+Autonomous Movement
+Type: Fixed
+Speed: 3: Slow
+Freq: 3: Low
+Options Enabled
+Move Animation
+Trigger: Action Button
+
+List of Event Commands:
+@>Script: $game_temp.vs_transition_bg = "Eientei"
+@>Conditional Branch: Script: TrainerBattle.start(:SUNNYT, "Sunny Milk", 10, :START, "Star Sapphire", 10, :LUNAT, "Luna Child", 10,)
+ @>
+: Else
+ @>Script: pbTrainerEnd
+ @>Exit Event Processing
+ @>
+: Branch End
+@>
+
+Page #3
+Conditions
+None
+
+Graphic: Object ball
+
+Autonomous Movement
+Type: Fixed
+Speed: 3: Slow
+Freq: 3: Low
+Options Enabled
+Move Animation
+Trigger: Action Button
+
+List of Event Commands:
+@>Play SE: 'Exit Door', 80, 100
+@>Change Screen Color Tone: (-255,-255,-255,0), @6
+@>Wait: 8 frame(s)
+@>Transfer Player:[149: Testing Map], (010,001), No Fade
+@>Change Screen Color Tone: (0,0,0,0), @6
+@>
+
+#------------------------------------------------------------------------------
 
 #==============================================================================
 Map ID: 113
@@ -116600,6 +116821,1471 @@ Move Animation
 Trigger: Action Button
 
 List of Event Commands:
+@>
+
+#------------------------------------------------------------------------------
+
+#==============================================================================
+Map ID: 149
+Map Name: Testing Map
+Tileset: 027: Human Village
+Width: 25, Height: 26
+Auto-Change BGM: W-042. Primate Spirit Garden
+
+#------------------------------------------------------------------------------
+Event ID: 001
+Event Name: Keine
+(X,Y): (002,002)
+
+Page #1
+Conditions
+None
+
+Graphic: Person_Keine
+
+Autonomous Movement
+Type: Fixed
+Speed: 3: Slow
+Freq: 3: Low
+Options Enabled
+Move Animation
+Trigger: Action Button
+
+List of Event Commands:
+@>Script: $game_temp.vs_transition_bg = "Village"
+@>Conditional Branch: Script: TrainerBattle.start(:KEINE, "Keine Kamishirasawa", 10)
+ @>
+: Else
+ @>Script: pbTrainerEnd
+ @>Exit Event Processing
+ @>
+: Branch End
+@>
+
+#------------------------------------------------------------------------------
+Event ID: 002
+Event Name: Marisa
+(X,Y): (002,005)
+
+Page #1
+Conditions
+None
+
+Graphic: Person_Marisa
+
+Autonomous Movement
+Type: Fixed
+Speed: 3: Slow
+Freq: 3: Low
+Options Enabled
+Move Animation
+Trigger: Action Button
+
+List of Event Commands:
+@>Script: $game_temp.vs_transition_bg = "ForestOfMagic"
+@>Conditional Branch: Script: TrainerBattle.start(:MARISA, "Marisa Kirisame", 10)
+ @>
+: Else
+ @>Script: pbTrainerEnd
+ @>Exit Event Processing
+ @>
+: Branch End
+@>
+
+#------------------------------------------------------------------------------
+Event ID: 003
+Event Name: Youmu
+(X,Y): (002,008)
+
+Page #1
+Conditions
+None
+
+Graphic: Person_Youmu
+
+Autonomous Movement
+Type: Fixed
+Speed: 3: Slow
+Freq: 3: Low
+Options Enabled
+Move Animation
+Trigger: Action Button
+
+List of Event Commands:
+@>Script: $game_temp.vs_transition_bg = "MistyLake"
+@>Conditional Branch: Script: TrainerBattle.start(:YOUMU, "Youmu Konpaku", 10)
+ @>
+: Else
+ @>Script: pbTrainerEnd
+ @>Exit Event Processing
+ @>
+: Branch End
+@>
+
+#------------------------------------------------------------------------------
+Event ID: 004
+Event Name: Lyrica
+(X,Y): (002,011)
+
+Page #1
+Conditions
+None
+
+Graphic: Person_Lyrica
+
+Autonomous Movement
+Type: Fixed
+Speed: 3: Slow
+Freq: 3: Low
+Options Enabled
+Move Animation
+Trigger: Action Button
+
+List of Event Commands:
+@>Script: $game_temp.vs_transition_bg = "RWM_1"
+@>Conditional Branch: Script: TrainerBattle.start(:LYRICA, "Lyrica Prismriver", 10)
+ @>
+: Else
+ @>Script: pbTrainerEnd
+ @>Exit Event Processing
+ @>
+: Branch End
+@>
+
+#------------------------------------------------------------------------------
+Event ID: 005
+Event Name: Mystia
+(X,Y): (002,014)
+
+Page #1
+Conditions
+None
+
+Graphic: Person_Mystia
+
+Autonomous Movement
+Type: Fixed
+Speed: 3: Slow
+Freq: 3: Low
+Options Enabled
+Move Animation
+Trigger: Action Button
+
+List of Event Commands:
+@>Script: $game_temp.vs_transition_bg = "RWM"
+@>Conditional Branch: Script: TrainerBattle.start(:MYSTIA, "Mystia Lorelei", 10)
+ @>
+: Else
+ @>Script: pbTrainerEnd
+ @>Exit Event Processing
+ @>
+: Branch End
+@>
+
+#------------------------------------------------------------------------------
+Event ID: 006
+Event Name: Nue
+(X,Y): (002,017)
+
+Page #1
+Conditions
+None
+
+Graphic: Person_Nue
+
+Autonomous Movement
+Type: Fixed
+Speed: 3: Slow
+Freq: 3: Low
+Options Enabled
+Move Animation
+Trigger: Action Button
+
+List of Event Commands:
+@>Script: $game_temp.vs_transition_bg = "Basement"
+@>Conditional Branch: Script: TrainerBattle.start(:NUE, "Nue Houjuu", 10)
+ @>
+: Else
+ @>Script: pbTrainerEnd
+ @>Exit Event Processing
+ @>
+: Branch End
+@>
+
+#------------------------------------------------------------------------------
+Event ID: 007
+Event Name: Kogasa
+(X,Y): (002,020)
+
+Page #1
+Conditions
+None
+
+Graphic: Person_Kogasa
+
+Autonomous Movement
+Type: Fixed
+Speed: 3: Slow
+Freq: 3: Low
+Options Enabled
+Move Animation
+Trigger: Action Button
+
+List of Event Commands:
+@>Script: $game_temp.vs_transition_bg = "Basement"
+@>Conditional Branch: Script: TrainerBattle.start(:KOGASA, "Kogasa Tatara", 10)
+ @>
+: Else
+ @>Script: pbTrainerEnd
+ @>Exit Event Processing
+ @>
+: Branch End
+@>
+
+#------------------------------------------------------------------------------
+Event ID: 008
+Event Name: Layla
+(X,Y): (002,023)
+
+Page #1
+Conditions
+None
+
+Graphic: Person_Layla
+
+Autonomous Movement
+Type: Fixed
+Speed: 3: Slow
+Freq: 3: Low
+Options Enabled
+Move Animation
+Trigger: Action Button
+
+List of Event Commands:
+@>Script: $game_temp.vs_transition_bg = "Spectral"
+@>Conditional Branch: Script: TrainerBattle.start(:LAYLA, "Layla Prismriver", 10)
+ @>
+: Else
+ @>Script: pbTrainerEnd
+ @>Exit Event Processing
+ @>
+: Branch End
+@>
+
+#------------------------------------------------------------------------------
+Event ID: 009
+Event Name: Kokoro
+(X,Y): (006,002)
+
+Page #1
+Conditions
+None
+
+Graphic: Person_Kokoro
+
+Autonomous Movement
+Type: Fixed
+Speed: 3: Slow
+Freq: 3: Low
+Options Enabled
+Move Animation
+Trigger: Action Button
+
+List of Event Commands:
+@>Script: $game_temp.vs_transition_bg = "Festival"
+@>Conditional Branch: Script: TrainerBattle.start(:KOKORO, "Hata no Kokoro", 10)
+ @>
+: Else
+ @>Script: pbTrainerEnd
+ @>Exit Event Processing
+ @>
+: Branch End
+@>
+
+#------------------------------------------------------------------------------
+Event ID: 010
+Event Name: Minoriko
+(X,Y): (006,005)
+
+Page #1
+Conditions
+None
+
+Graphic: Person_Minoriko
+
+Autonomous Movement
+Type: Fixed
+Speed: 3: Slow
+Freq: 3: Low
+Options Enabled
+Move Animation
+Trigger: Action Button
+
+List of Event Commands:
+@>Script: $game_temp.vs_transition_bg = "Festival"
+@>Conditional Branch: Script: TrainerBattle.start(:MINORIKO, "Minoriko Aki", 10)
+ @>
+: Else
+ @>Script: pbTrainerEnd
+ @>Exit Event Processing
+ @>
+: Branch End
+@>
+
+#------------------------------------------------------------------------------
+Event ID: 011
+Event Name: Nitori
+(X,Y): (006,008)
+
+Page #1
+Conditions
+None
+
+Graphic: Person_Nitori
+
+Autonomous Movement
+Type: Fixed
+Speed: 3: Slow
+Freq: 3: Low
+Options Enabled
+Move Animation
+Trigger: Action Button
+
+List of Event Commands:
+@>Script: $game_temp.vs_transition_bg = "MistyLake"
+@>Conditional Branch: Script: TrainerBattle.start(:NITORI_Tr, "Nitori Kawashiro", 10)
+ @>
+: Else
+ @>Script: pbTrainerEnd
+ @>Exit Event Processing
+ @>
+: Branch End
+@>
+
+#------------------------------------------------------------------------------
+Event ID: 012
+Event Name: Hatate
+(X,Y): (006,011)
+
+Page #1
+Conditions
+None
+
+Graphic: Person_Hatate
+
+Autonomous Movement
+Type: Fixed
+Speed: 3: Slow
+Freq: 3: Low
+Options Enabled
+Move Animation
+Trigger: Action Button
+
+List of Event Commands:
+@>Script: $game_temp.vs_transition_bg = "YoukaiWoods1"
+@>Conditional Branch: Script: TrainerBattle.start(:HATATE, "Hatate Himekaidou", 10)
+ @>
+: Else
+ @>Script: pbTrainerEnd
+ @>Exit Event Processing
+ @>
+: Branch End
+@>
+
+#------------------------------------------------------------------------------
+Event ID: 013
+Event Name: Hina
+(X,Y): (006,014)
+
+Page #1
+Conditions
+None
+
+Graphic: Person_Hina
+
+Autonomous Movement
+Type: Fixed
+Speed: 3: Slow
+Freq: 3: Low
+Options Enabled
+Move Animation
+Trigger: Action Button
+
+List of Event Commands:
+@>Script: $game_temp.vs_transition_bg = "YoukaiWoods2"
+@>Conditional Branch: Script: TrainerBattle.start(:HINA_F, "Hina Kagiyama", 10)
+ @>
+: Else
+ @>Script: pbTrainerEnd
+ @>Exit Event Processing
+ @>
+: Branch End
+@>Script: $game_temp.vs_transition_bg = "Festival"
+@>Conditional Branch: Script: TrainerBattle.start(:HINA_T, "Hina Kagiyama", 300)
+ @>
+: Else
+ @>Script: pbTrainerEnd
+ @>Exit Event Processing
+ @>
+: Branch End
+@>
+
+#------------------------------------------------------------------------------
+Event ID: 014
+Event Name: Sunny
+(X,Y): (006,017)
+
+Page #1
+Conditions
+None
+
+Graphic: Person_Sunny
+
+Autonomous Movement
+Type: Fixed
+Speed: 3: Slow
+Freq: 3: Low
+Options Enabled
+Move Animation
+Trigger: Action Button
+
+List of Event Commands:
+@>Script: $game_temp.vs_transition_bg = "Plains"
+@>Conditional Branch: Script: TrainerBattle.start(:SUNNYT, "Sunny Milk", 10)
+ @>
+: Else
+ @>Script: pbTrainerEnd
+ @>Exit Event Processing
+ @>
+: Branch End
+@>
+
+#------------------------------------------------------------------------------
+Event ID: 015
+Event Name: Luna
+(X,Y): (006,020)
+
+Page #1
+Conditions
+None
+
+Graphic: Person_Luna
+
+Autonomous Movement
+Type: Fixed
+Speed: 3: Slow
+Freq: 3: Low
+Options Enabled
+Move Animation
+Trigger: Action Button
+
+List of Event Commands:
+@>Script: $game_temp.vs_transition_bg = "Plains"
+@>Conditional Branch: Script: TrainerBattle.start(:LUNAT, "Luna Child", 10)
+ @>
+: Else
+ @>Script: pbTrainerEnd
+ @>Exit Event Processing
+ @>
+: Branch End
+@>
+
+#------------------------------------------------------------------------------
+Event ID: 016
+Event Name: Star
+(X,Y): (006,023)
+
+Page #1
+Conditions
+None
+
+Graphic: Person_Star
+
+Autonomous Movement
+Type: Fixed
+Speed: 3: Slow
+Freq: 3: Low
+Options Enabled
+Move Animation
+Trigger: Action Button
+
+List of Event Commands:
+@>Script: $game_temp.vs_transition_bg = "Plains"
+@>Conditional Branch: Script: TrainerBattle.start(:START, "Star Sapphire", 10)
+ @>
+: Else
+ @>Script: pbTrainerEnd
+ @>Exit Event Processing
+ @>
+: Branch End
+@>
+
+#------------------------------------------------------------------------------
+Event ID: 017
+Event Name: Medicine
+(X,Y): (008,002)
+
+Page #1
+Conditions
+None
+
+Graphic: Person_Medicine
+
+Autonomous Movement
+Type: Fixed
+Speed: 3: Slow
+Freq: 3: Low
+Options Enabled
+Move Animation
+Trigger: Action Button
+
+List of Event Commands:
+@>Script: $game_temp.vs_transition_bg = "Suzuran"
+@>Conditional Branch: Script: TrainerBattle.start(:MEDICINE_Tr, "Medicine Melancholy", 10)
+ @>
+: Else
+ @>Script: pbTrainerEnd
+ @>Exit Event Processing
+ @>
+: Branch End
+@>
+
+#------------------------------------------------------------------------------
+Event ID: 018
+Event Name: Elly
+(X,Y): (008,005)
+
+Page #1
+Conditions
+None
+
+Graphic: Person_Elly
+
+Autonomous Movement
+Type: Fixed
+Speed: 3: Slow
+Freq: 3: Low
+Options Enabled
+Move Animation
+Trigger: Action Button
+
+List of Event Commands:
+@>Script: $game_temp.vs_transition_bg = "Mugenkan"
+@>Conditional Branch: Script: TrainerBattle.start(:ELLY, "Elly", 10)
+ @>
+: Else
+ @>Script: pbTrainerEnd
+ @>Exit Event Processing
+ @>
+: Branch End
+@>
+
+#------------------------------------------------------------------------------
+Event ID: 019
+Event Name: Yuuka
+(X,Y): (008,008)
+
+Page #1
+Conditions
+None
+
+Graphic: Person_Yuuka
+
+Autonomous Movement
+Type: Fixed
+Speed: 3: Slow
+Freq: 3: Low
+Options Enabled
+Move Animation
+Trigger: Action Button
+
+List of Event Commands:
+@>Script: $game_temp.vs_transition_bg = "Garden"
+@>Conditional Branch: Script: TrainerBattle.start(:YUUKA, "Yuuka Kazami", 10)
+ @>
+: Else
+ @>Script: pbTrainerEnd
+ @>Exit Event Processing
+ @>
+: Branch End
+@>
+
+#------------------------------------------------------------------------------
+Event ID: 020
+Event Name: Eirin & Reisen
+(X,Y): (012,002)
+
+Page #1
+Conditions
+None
+
+Graphic: Person_Reisen
+
+Autonomous Movement
+Type: Fixed
+Speed: 3: Slow
+Freq: 3: Low
+Options Enabled
+Move Animation
+Trigger: Action Button
+
+List of Event Commands:
+@>Script: $game_temp.vs_transition_bg = "Eientei"
+@>Conditional Branch: Script: TrainerBattle.start(:REISEN, "Reisen U. Inaba", 10, :EIRIN, "Eirin Yagokoro", 10)
+ @>
+: Else
+ @>Script: pbTrainerEnd
+ @>Exit Event Processing
+ @>
+: Branch End
+@>
+
+#------------------------------------------------------------------------------
+Event ID: 021
+Event Name: Seiran
+(X,Y): (012,005)
+
+Page #1
+Conditions
+None
+
+Graphic: Person_Seiran
+
+Autonomous Movement
+Type: Fixed
+Speed: 3: Slow
+Freq: 3: Low
+Options Enabled
+Move Animation
+Trigger: Action Button
+
+List of Event Commands:
+@>Script: $game_temp.vs_transition_bg = "YoukaiWoods1"
+@>Conditional Branch: Script: TrainerBattle.start(:SEIRAN, "Seiran", 10)
+ @>
+: Else
+ @>Script: pbTrainerEnd
+ @>Exit Event Processing
+ @>
+: Branch End
+@>
+
+#------------------------------------------------------------------------------
+Event ID: 022
+Event Name: Ringo
+(X,Y): (012,008)
+
+Page #1
+Conditions
+None
+
+Graphic: Person_Ringo
+
+Autonomous Movement
+Type: Fixed
+Speed: 3: Slow
+Freq: 3: Low
+Options Enabled
+Move Animation
+Trigger: Action Button
+
+List of Event Commands:
+@>Script: $game_temp.vs_transition_bg = "YoukaiWoods1"
+@>Conditional Branch: Script: TrainerBattle.start(:RINGO, "Ringo", 10)
+ @>
+: Else
+ @>Script: pbTrainerEnd
+ @>Exit Event Processing
+ @>
+: Branch End
+@>
+
+#------------------------------------------------------------------------------
+Event ID: 023
+Event Name: Doremy
+(X,Y): (012,011)
+
+Page #1
+Conditions
+None
+
+Graphic: Person_Doremy
+
+Autonomous Movement
+Type: Fixed
+Speed: 3: Slow
+Freq: 3: Low
+Options Enabled
+Move Animation
+Trigger: Action Button
+
+List of Event Commands:
+@>Script: $game_temp.vs_transition_bg = "DreamWorld"
+@>Conditional Branch: Script: TrainerBattle.start(:DOREMY, "Doremy Sweet", 10)
+ @>
+: Else
+ @>Script: pbTrainerEnd
+ @>Exit Event Processing
+ @>
+: Branch End
+@>
+
+#------------------------------------------------------------------------------
+Event ID: 024
+Event Name: Clownpiece
+(X,Y): (012,014)
+
+Page #1
+Conditions
+None
+
+Graphic: Person_Clownpiece
+
+Autonomous Movement
+Type: Fixed
+Speed: 3: Slow
+Freq: 3: Low
+Options Enabled
+Move Animation
+Trigger: Action Button
+
+List of Event Commands:
+@>Script: $game_temp.vs_transition_bg = "Capital"
+@>Conditional Branch: Script: TrainerBattle.start(:CLOWNPIECET, "Clownpiece", 10)
+ @>
+: Else
+ @>Script: pbTrainerEnd
+ @>Exit Event Processing
+ @>
+: Branch End
+@>
+
+#------------------------------------------------------------------------------
+Event ID: 025
+Event Name: Junko
+(X,Y): (012,017)
+
+Page #1
+Conditions
+None
+
+Graphic: Person_Junko
+
+Autonomous Movement
+Type: Fixed
+Speed: 3: Slow
+Freq: 3: Low
+Options Enabled
+Move Animation
+Trigger: Action Button
+
+List of Event Commands:
+@>Script: $game_temp.vs_transition_bg = "Tranquility"
+@>Conditional Branch: Script: TrainerBattle.start(:JUNKO, "Junko", 10)
+ @>
+: Else
+ @>Script: pbTrainerEnd
+ @>Exit Event Processing
+ @>
+: Branch End
+@>
+
+#------------------------------------------------------------------------------
+Event ID: 026
+Event Name: Junko & Hecatia
+(X,Y): (012,020)
+
+Page #1
+Conditions
+None
+
+Graphic: Person_Hecatia
+
+Autonomous Movement
+Type: Fixed
+Speed: 3: Slow
+Freq: 3: Low
+Options Enabled
+Move Animation
+Trigger: Action Button
+
+List of Event Commands:
+@>Change Battle BGM: 'B-037. Pandemonic Furies', 100, 100
+@>Script: $game_temp.vs_transition_bg = "Tranquility"
+@>Conditional Branch: Script: TrainerBattle.start(:HECATIA, "Hecatia Lapislazuli", 10, :JUNKO, "Junko", 11)
+ @>
+: Else
+ @>Script: pbTrainerEnd
+ @>Exit Event Processing
+ @>
+: Branch End
+@>
+
+#------------------------------------------------------------------------------
+Event ID: 027
+Event Name: Rei'sen
+(X,Y): (012,023)
+
+Page #1
+Conditions
+None
+
+Graphic: Person_Rei'sen
+
+Autonomous Movement
+Type: Fixed
+Speed: 3: Slow
+Freq: 3: Low
+Options Enabled
+Move Animation
+Trigger: Action Button
+
+List of Event Commands:
+@>Script: $game_temp.vs_transition_bg = "Palace"
+@>Conditional Branch: Script: TrainerBattle.start(:REISEN2, "Rei'sen", 10)
+ @>
+: Else
+ @>Script: pbTrainerEnd
+ @>Exit Event Processing
+ @>
+: Branch End
+@>
+
+#------------------------------------------------------------------------------
+Event ID: 028
+Event Name: Sagume
+(X,Y): (014,002)
+
+Page #1
+Conditions
+None
+
+Graphic: Person_Sagume
+
+Autonomous Movement
+Type: Fixed
+Speed: 3: Slow
+Freq: 3: Low
+Options Enabled
+Move Animation
+Trigger: Action Button
+
+List of Event Commands:
+@>Script: $game_temp.vs_transition_bg = "Elite"
+@>Conditional Branch: Script: TrainerBattle.start(:SAGUME, "Sagume Kishin", 10)
+ @>
+: Else
+ @>Script: pbTrainerEnd
+ @>Exit Event Processing
+ @>
+: Branch End
+@>
+
+#------------------------------------------------------------------------------
+Event ID: 029
+Event Name: Toyohime & Yorihime
+(X,Y): (014,005)
+
+Page #1
+Conditions
+None
+
+Graphic: Person_Yorihime
+
+Autonomous Movement
+Type: Fixed
+Speed: 3: Slow
+Freq: 3: Low
+Options Enabled
+Move Animation
+Trigger: Action Button
+
+List of Event Commands:
+@>Script: $game_temp.vs_transition_bg = "Elite"
+@>Conditional Branch: Script: TrainerBattle.start(:TOYOHIME, "Watatsuki no Toyohime", 10, :YORIHIME, "Watatsuki no Yorihime", 10)
+ @>
+: Else
+ @>Script: pbTrainerEnd
+ @>Exit Event Processing
+ @>
+: Branch End
+@>
+
+#------------------------------------------------------------------------------
+Event ID: 030
+Event Name: Mima
+(X,Y): (024,000)
+
+Page #1
+Conditions
+None
+
+Graphic: Person_Mima
+
+Autonomous Movement
+Type: Fixed
+Speed: 3: Slow
+Freq: 3: Low
+Options Enabled
+Move Animation
+Trigger: Action Button
+
+List of Event Commands:
+@>Script: $game_temp.vs_transition_bg = "WorldOfFantasy"
+@>Conditional Branch: Script: TrainerBattle.start(:MIMA, "Mima")
+ @>
+: Else
+ @>Script: pbTrainerEnd
+ @>Exit Event Processing
+ @>
+: Branch End
+@>
+
+#------------------------------------------------------------------------------
+Event ID: 031
+Event Name: Alice
+(X,Y): (018,002)
+
+Page #1
+Conditions
+None
+
+Graphic: Person_Alice
+
+Autonomous Movement
+Type: Fixed
+Speed: 3: Slow
+Freq: 3: Low
+Options Enabled
+Move Animation
+Trigger: Action Button
+
+List of Event Commands:
+@>Change Battle BGM: 'B-034. Battle vs. Trainer (Dreams)', 100, 100
+@>Script: $game_temp.vs_transition_bg = "Festival"
+@>Conditional Branch: Script: TrainerBattle.start(:ALICE, "Alice Margatroid", 400)
+ @>
+: Else
+ @>Script: pbTrainerEnd
+ @>Exit Event Processing
+ @>
+: Branch End
+@>
+
+#------------------------------------------------------------------------------
+Event ID: 032
+Event Name: Suika
+(X,Y): (018,005)
+
+Page #1
+Conditions
+None
+
+Graphic: Person_Suika
+
+Autonomous Movement
+Type: Fixed
+Speed: 3: Slow
+Freq: 3: Low
+Options Enabled
+Move Animation
+Trigger: Action Button
+
+List of Event Commands:
+@>Change Battle BGM: 'B-016. The Ground's Color is Yellow (BW Remix)', 100, 100
+@>Script: $game_temp.vs_transition_bg = "Festival"
+@>Conditional Branch: Script: TrainerBattle.start(:SUIKA, "Suika Ibuki", 400)
+ @>
+: Else
+ @>Script: pbTrainerEnd
+ @>Exit Event Processing
+ @>
+: Branch End
+@>
+
+#------------------------------------------------------------------------------
+Event ID: 033
+Event Name: Sanae
+(X,Y): (018,008)
+
+Page #1
+Conditions
+None
+
+Graphic: Person_Sanae
+
+Autonomous Movement
+Type: Fixed
+Speed: 3: Slow
+Freq: 3: Low
+Options Enabled
+Move Animation
+Trigger: Action Button
+
+List of Event Commands:
+@>Change Battle BGM: 'X-010. The Primal Scene of Japan the Girl Saw', 100, 100
+@>Script: $game_temp.vs_transition_bg = "Festival"
+@>Conditional Branch: Script: TrainerBattle.start(:SANAE, "Sanae Kochiya", 400)
+ @>
+: Else
+ @>Script: pbTrainerEnd
+ @>Exit Event Processing
+ @>
+: Branch End
+@>
+
+#------------------------------------------------------------------------------
+Event ID: 034
+Event Name: Seija
+(X,Y): (018,011)
+
+Page #1
+Conditions
+None
+
+Graphic: Person_Seija
+
+Autonomous Movement
+Type: Fixed
+Speed: 3: Slow
+Freq: 3: Low
+Options Enabled
+Move Animation
+Trigger: Action Button
+
+List of Event Commands:
+@>Change Battle BGM: 'B-021. Reverse Ideology', 100, 100
+@>Script: $game_temp.vs_transition_bg = "Festival"
+@>Conditional Branch: Script: TrainerBattle.start(:SEIJA, "Seija Kijin", 400)
+ @>
+: Else
+ @>Script: pbTrainerEnd
+ @>Exit Event Processing
+ @>
+: Branch End
+@>
+
+#------------------------------------------------------------------------------
+Event ID: 035
+Event Name: Sumireko
+(X,Y): (018,014)
+
+Page #1
+Conditions
+None
+
+Graphic: Person_Sumireko
+
+Autonomous Movement
+Type: Fixed
+Speed: 3: Slow
+Freq: 3: Low
+Options Enabled
+Move Animation
+Trigger: Action Button
+
+List of Event Commands:
+@>Change Battle BGM: 'X-001. Moonlight Sonata (3rd Movement)', 100, 100
+@>Script: $game_temp.vs_transition_bg = "Festival"
+@>Conditional Branch: Script: TrainerBattle.start(:SUMIREKO, "Sumireko Usami", 400)
+ @>
+: Else
+ @>Script: pbTrainerEnd
+ @>Exit Event Processing
+ @>
+: Branch End
+@>
+
+#------------------------------------------------------------------------------
+Event ID: 036
+Event Name: Maribel
+(X,Y): (018,017)
+
+Page #1
+Conditions
+None
+
+Graphic: Person_Maribel
+
+Autonomous Movement
+Type: Fixed
+Speed: 3: Slow
+Freq: 3: Low
+Options Enabled
+Move Animation
+Trigger: Action Button
+
+List of Event Commands:
+@>Change Battle BGM: 'B-014. Poltergeist Circus ~ Reverie', 100, 100
+@>Script: $game_temp.vs_transition_bg = "Festival"
+@>Conditional Branch: Script: TrainerBattle.start(:SCMary, "Maribel Hearn", 400)
+ @>
+: Else
+ @>Script: pbTrainerEnd
+ @>Exit Event Processing
+ @>
+: Branch End
+@>
+
+#------------------------------------------------------------------------------
+Event ID: 037
+Event Name: Renko
+(X,Y): (018,020)
+
+Page #1
+Conditions
+None
+
+Graphic: Person_Renko
+
+Autonomous Movement
+Type: Fixed
+Speed: 3: Slow
+Freq: 3: Low
+Options Enabled
+Move Animation
+Trigger: Action Button
+
+List of Event Commands:
+@>Change Battle BGM: 'B-014. Poltergeist Circus ~ Reverie', 100, 100
+@>Script: $game_temp.vs_transition_bg = "Festival"
+@>Conditional Branch: Script: TrainerBattle.start(:SCRenko, "Renko Usami", 400)
+ @>
+: Else
+ @>Script: pbTrainerEnd
+ @>Exit Event Processing
+ @>
+: Branch End
+@>
+
+#------------------------------------------------------------------------------
+Event ID: 038
+Event Name: Amira
+(X,Y): (018,023)
+
+Page #1
+Conditions
+None
+
+Graphic: trainer_ABYSSALSOVEREIGN
+
+Autonomous Movement
+Type: Fixed
+Speed: 3: Slow
+Freq: 3: Low
+Options Enabled
+Move Animation
+Trigger: Action Button
+
+List of Event Commands:
+@>Script: $game_temp.vs_transition_bg = "WorldOfFantasy"
+@>Conditional Branch: Script: TrainerBattle.start(:ABYSSALSOVEREIGN, "Amira Naxeroth")
+ @>
+: Else
+ @>Script: pbTrainerEnd
+ @>Exit Event Processing
+ @>
+: Branch End
+@>
+
+#------------------------------------------------------------------------------
+Event ID: 039
+Event Name: Doppeldevice
+(X,Y): (010,000)
+
+Page #1
+Conditions
+None
+
+Graphic: OW_DoppelDevice
+
+Autonomous Movement
+Type: Fixed
+Speed: 3: Slow
+Freq: 3: Low
+Options Enabled
+Move Animation
+Trigger: Action Button
+
+List of Event Commands:
+@>Script: $game_temp.vs_transition_bg = "DreamWorld"
+@>Conditional Branch: Script: TrainerBattle.start(:DOPPELDEVICE, "Doppel")
+ @>
+: Else
+ @>Script: pbTrainerEnd
+ @>Exit Event Processing
+ @>
+: Branch End
+@>
+
+#------------------------------------------------------------------------------
+Event ID: 040
+Event Name: CShinki
+(X,Y): (024,025)
+
+Page #1
+Conditions
+None
+
+Graphic: Puppet_Shinki
+
+Autonomous Movement
+Type: Fixed
+Speed: 3: Slow
+Freq: 3: Low
+Options Enabled
+Move Animation
+Trigger: Action Button
+
+List of Event Commands:
+@>Change Battle BGM: 'B-015. Magical Girl's Crusade', 100, 100
+@>Script: Pokemon.play_cry(:CSHINKI)
+@>Wait: 30 frame(s)
+@>Script: $game_temp.vs_transition_bg = "Basement"
+@>Script: setBattleRule("outcome", 1)
+:       : 
+:       : WildBattle.start(:CSHINKI,35)
+@>
+
+#------------------------------------------------------------------------------
+Event ID: 041
+Event Name: EV041
+(X,Y): (003,000)
+
+Page #1
+Conditions
+None
+
+Graphic: 386_0
+
+Autonomous Movement
+Type: Fixed
+Speed: 3: Slow
+Freq: 3: Low
+Options Enabled
+Move Animation
+Trigger: Action Button
+
+List of Event Commands:
+@>Script: Pokemon.play_cry(:DEOXYS)
+@>Wait: 30 frame(s)
+@>Change Battle BGM: 'X-012. Vs. Deoxys', 100, 100
+@>Script: setBattleRule("backdrop", "starlightJunko")
+@>Script: $game_temp.vs_transition_bg = "LunarSurface"
+@>Script: WildBattle.start(:DEOXYS,45)
+@>
+
+#------------------------------------------------------------------------------
+Event ID: 042
+Event Name: EV042
+(X,Y): (001,000)
+
+Page #1
+Conditions
+None
+
+Graphic: Object ball
+
+Autonomous Movement
+Type: Fixed
+Speed: 3: Slow
+Freq: 3: Low
+Options Enabled
+Move Animation
+Trigger: Action Button
+
+List of Event Commands:
+@>Change Screen Color Tone: (-255,-255,-255,0), @1
+@>Fade Out BGM: 1 sec.
+@>Wait: 10 frame(s)
+@>Transfer Player:[150: Showcase Map], (008,013), Up
+@>Change Screen Color Tone: (0,0,0,0), @8
+@>
+
+#------------------------------------------------------------------------------
+Event ID: 043
+Event Name: EV043
+(X,Y): (004,000)
+
+Page #1
+Conditions
+None
+
+Graphic: 386_1
+
+Autonomous Movement
+Type: Fixed
+Speed: 3: Slow
+Freq: 3: Low
+Options Enabled
+Move Animation
+Trigger: Action Button
+
+List of Event Commands:
+@>Script: Pokemon.play_cry(:DEOXYS)
+@>Wait: 30 frame(s)
+@>Change Battle BGM: 'X-012. Vs. Deoxys', 100, 100
+@>Script: setBattleRule("backdrop", "starlightJunko")
+@>Script: $game_temp.vs_transition_bg = "LunarSurface"
+@>Script: WildBattle.start(:DEOXYS_1,45)
+@>
+
+#------------------------------------------------------------------------------
+Event ID: 044
+Event Name: EV044
+(X,Y): (005,000)
+
+Page #1
+Conditions
+None
+
+Graphic: 386_2
+
+Autonomous Movement
+Type: Fixed
+Speed: 3: Slow
+Freq: 3: Low
+Options Enabled
+Move Animation
+Trigger: Action Button
+
+List of Event Commands:
+@>Script: Pokemon.play_cry(:DEOXYS)
+@>Wait: 30 frame(s)
+@>Change Battle BGM: 'X-012. Vs. Deoxys', 100, 100
+@>Script: setBattleRule("backdrop", "starlightJunko")
+@>Script: $game_temp.vs_transition_bg = "LunarSurface"
+@>Script: WildBattle.start(:DEOXYS_2,45)
+@>
+
+#------------------------------------------------------------------------------
+Event ID: 045
+Event Name: EV045
+(X,Y): (006,000)
+
+Page #1
+Conditions
+None
+
+Graphic: 386_3
+
+Autonomous Movement
+Type: Fixed
+Speed: 3: Slow
+Freq: 3: Low
+Options Enabled
+Move Animation
+Trigger: Action Button
+
+List of Event Commands:
+@>Script: Pokemon.play_cry(:DEOXYS)
+@>Wait: 30 frame(s)
+@>Change Battle BGM: 'X-012. Vs. Deoxys', 100, 100
+@>Script: setBattleRule("backdrop", "starlightJunko")
+@>Script: $game_temp.vs_transition_bg = "LunarSurface"
+@>Script: WildBattle.start(:DEOXYS_3,45)
+@>
+
+#------------------------------------------------------------------------------
+
+#==============================================================================
+Map ID: 150
+Map Name: Showcase Map
+Tileset: 042: The Moon
+Width: 20, Height: 30
+Auto-Change BGM: W-037. The Sea Where One's Home Planet Reflects
+
+#------------------------------------------------------------------------------
+Event ID: 001
+Event Name: Deoxys
+(X,Y): (008,000)
+
+Page #1
+Conditions
+None
+
+Graphic: 386_0
+
+Autonomous Movement
+Type: Fixed
+Speed: 3: Slow
+Freq: 3: Low
+Options Enabled
+Move Animation
+Stop Animation
+Direction Fix
+Trigger: Action Button
+
+List of Event Commands:
+@>Script: Pokemon.play_cry(:DEOXYS)
+@>Wait: 30 frame(s)
+@>Change Battle BGM: 'X-012. Vs. Deoxys', 100, 100
+@>Script: setBattleRule("backdrop", "starlightJunko")
+@>Script: $game_temp.vs_transition_bg = "LunarSurface"
+@>Script: WildBattle.start(:DEOXYS,45)
+@>
+
+#------------------------------------------------------------------------------
+Event ID: 002
+Event Name: EV002
+(X,Y): (019,000)
+
+Page #1
+Conditions
+None
+
+Autonomous Movement
+Type: Fixed
+Speed: 3: Slow
+Freq: 3: Low
+Options Enabled
+Move Animation
+Trigger: Parallel Process
+
+List of Event Commands:
+@>Change Map Settings:Panorama = 'Stars1', 0
+@>
+
+#------------------------------------------------------------------------------
+Event ID: 003
+Event Name: size(8,1)
+(X,Y): (007,012)
+
+Page #1
+Conditions
+None
+
+Autonomous Movement
+Type: Fixed
+Speed: 3: Slow
+Freq: 3: Low
+Options Enabled
+Move Animation
+Trigger: Player Touch
+
+List of Event Commands:
+@>Set Move Route: Player
+ :              : $>Change Speed: 3
+ :              : $>Move Up
+ :              : $>Move Up
+@>Wait for Move's Completion
+@>Scroll Map: Up, 5, 2
+@>Wait: 30 frame(s)
+@>Set Move Route: [Deoxys]
+ :              : $>Through ON
+ :              : $>Change Speed: 2
+ :              : $>Move Down
+ :              : $>Move Down
+ :              : $>Move Down
+ :              : $>Move Down
+@>Wait for Move's Completion
+@>Wait: 40 frame(s)
+@>Script: Pokemon.play_cry(:DEOXYS)
+@>Wait: 30 frame(s)
+@>Change Battle BGM: 'X-012. Vs. Deoxys', 100, 100
+@>Script: setBattleRule("backdrop", "starlightJunko")
+@>Script: $game_temp.vs_transition_bg = "LunarSurface"
+@>Script: WildBattle.start(:DEOXYS,45)
 @>
 
 #------------------------------------------------------------------------------

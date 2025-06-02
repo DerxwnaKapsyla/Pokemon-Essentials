@@ -295,8 +295,8 @@ GameData::PWTTournament.register({
 				[:YOUMU,"Youmu Konpaku","Player Victory Dialogue.","Player Lose Dialogue.",400,"Lobby Dialogue.","Pre-Battle Dialogue.","Post-Battle Dialogue","Youmu"], # Youmu
 				[:LYRICA,"Lyrica Prismriver","Player Victory Dialogue.","Player Lose Dialogue.",400,"Lobby Dialogue.","Pre-Battle Dialogue.","Post-Battle Dialogue","Lyrica"], # Lyrica
 				[:MYSTIA,"Mystia Lorelei","Player Victory Dialogue.","Player Lose Dialogue.",400,"Lobby Dialogue.","Pre-Battle Dialogue.","Post-Battle Dialogue","Mystia"], # Mystia
-				[:LUNASA,"Lunasa Prismriver","Player Victory Dialogue.","Player Lose Dialogue.",400,"Lobby Dialogue.","Pre-Battle Dialogue.","Post-Battle Dialogue","Lunasa"], # Lunasa
-				[:MERLIN,"Merlin Prismriver","Player Victory Dialogue.","Player Lose Dialogue.",400,"Lobby Dialogue.","Pre-Battle Dialogue.","Post-Battle Dialogue","Merlin"], # Merlin
+				# [:LUNASA,"Lunasa Prismriver","Player Victory Dialogue.","Player Lose Dialogue.",400,"Lobby Dialogue.","Pre-Battle Dialogue.","Post-Battle Dialogue","Lunasa"], # Lunasa
+				# [:MERLIN,"Merlin Prismriver","Player Victory Dialogue.","Player Lose Dialogue.",400,"Lobby Dialogue.","Pre-Battle Dialogue.","Post-Battle Dialogue","Merlin"], # Merlin
 				# Bonus Trainers!
 				[:ALICE,"Alice Margatroid","Player Victory Dialogue.","Player Lose Dialogue.",400,"Lobby Dialogue.","Pre-Battle Dialogue.","Post-Battle Dialogue","Alice"], # Alice
 				[:SANAE,"Sanae Kochiya","Player Victory Dialogue.","Player Lose Dialogue.",400,"Lobby Dialogue.","Pre-Battle Dialogue.","Post-Battle Dialogue","Sanae"], # Sanae
