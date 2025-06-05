@@ -1,15 +1,25 @@
 class Game_Temp
   attr_accessor :vs_transition_bg
+  attr_accessor :vs_name
+  
+  alias vs_initialize initialize
+  def initialize
+    vs_initialize
+    @vs_name = nil
+  end
   
   def get_vs_transition_bg
     vs_transition_bg || "Plains"
   end
+  
+  def get_vs_name
+    vs_name || "Default"
+  end
 end
 
-def dkDisplayBallCount(viewport,foe)
+def dkDisplayBallCount(viewport,foe,team_index)
   ball_sprites = []
-  foe_party = foe[0].party
-  foe2_party = foe[1]&.party
+  foe_party = foe[team_index].party
   Settings::MAX_PARTY_SIZE.times do |i|
     graphicFilename = "Battle/icon_ball_empty"
     if foe_party[i]
@@ -24,11 +34,90 @@ def dkDisplayBallCount(viewport,foe)
     ball_sprite = Sprite.new(viewport)
     ball_sprite.bitmap = RPG::Cache.ui(graphicFilename)
     ball_sprite.x = ((Settings::MAX_PARTY_SIZE - i) * 32) - (Graphics.width/2) # to push it off screen to the left
-    ball_sprite.y = Graphics.height - 96 # arbritrary
-	ball_sprite.z  = 99999
+    ball_sprite.y = Graphics.height - 90 - (46 * team_index) # arbritrary
+    ball_sprite.z  = 99999
     ball_sprites.push(ball_sprite)
   end
   return ball_sprites # for the calling method
+end
+
+def dkGetTrainerName(foe)
+  vs_name1 = foe[0]&.name
+  vs_name2 = foe[1]&.name
+  vs_name3 = foe[2]&.name
+
+  if vs_name3
+    vs_name = "Vs. #{vs_name1}, #{vs_name2}, & #{vs_name3}"
+  elsif vs_name2
+    vs_name = "Vs. #{vs_name1} & #{vs_name2}"
+  else
+    vs_name = "Vs. #{vs_name1}"
+  end
+
+  return vs_name
+end
+
+def dkGetSpeciesName(foe)
+  vs_name1 = foe[0]&.name
+  vs_name2 = foe[1]&.name
+  vs_name3 = foe[2]&.name
+
+  if vs_name3
+    vs_name = "Vs. #{vs_name1}, #{vs_name2}, & #{vs_name3}"
+  elsif vs_name2
+    vs_name = "Vs. #{vs_name1} & #{vs_name2}"
+  else
+    vs_name = "Vs. #{vs_name1}"
+  end
+  
+  return vs_name
+end
+
+def dkConvertNameToBitmap(viewport, foe, battle_type)
+  namesprite = Sprite.new(viewport)
+  namesprite.z = 99999
+
+  base_path = "Graphics/Transitions/DTS/Names/"
+  image_name = nil
+
+  enc_name = foe.compact.map { |s|
+    [1, 3].include?(battle_type) ? s.trainer_type : "#{s.species}_W"
+  }
+
+  case enc_name.length
+  when 3
+    image_name = "Name_#{enc_name[0]}_#{enc_name[1]}_#{enc_name[2]}"
+  when 2
+    image_name = "Name_#{enc_name[0]}_#{enc_name[1]}"
+  when 1
+    image_name = "Name_#{enc_name[0]}"
+  end
+  
+  echoln image_name
+  
+  full_path = "#{base_path}#{image_name}"
+
+  if image_name && pbResolveBitmap(full_path)
+    namesprite.bitmap = RPG::Cache.transition("DTS/Names/#{image_name}")
+  else
+    pbMessage("vs_name = #{$game_temp.vs_name.inspect}")
+    # Fallback to text
+    text = $game_temp.vs_name ||
+           ([0, 2].include?(battle_type) ? dkGetSpeciesName(foe) : dkGetTrainerName(foe))
+    bmp = Bitmap.new(Graphics.width, Graphics.height)
+    pbSetSystemFont(bmp)
+    bmp.font.size = 40
+
+    textpos = [
+      [text, Graphics.width / 2, Graphics.height - 38, :center,
+       Color.new(248, 248, 248), Color.new(72, 80, 88)]
+    ]
+    pbDrawTextPositions(bmp, textpos)
+    namesprite.bitmap = bmp
+  end
+  
+  namesprite.y = Graphics.height - namesprite.bitmap.height
+  return namesprite
 end
 
 #===============================================================================
@@ -42,22 +131,21 @@ SpecialBattleIntroAnimations.register("vs_boss_solo", 80,   # Priority 80
     next pbResolveBitmap("Graphics/Transitions/DTS/PTs/Char_#{tr_type}") # Character cut-in
   },
   proc { |viewport, battle_type, foe, location|   # Animation
-    # Determine filenames of graphics to be used
+	#$game_temp.vs_name = dkGetTrainerName(foe)
+	# Determine filenames of graphics to be used
     BAR_DISPLAY_WIDTH = 248
-	tr_type = foe[0].trainer_type
-    bg_name = $game_temp.get_vs_transition_bg
-    bg_graphic     = sprintf("DTS/BGs/BG%s", bg_name.to_s) rescue nil
+	tr_type        = foe[0].trainer_type
+    bg_name        = $game_temp.get_vs_transition_bg
     bg_graphic     = sprintf("DTS/BGs/BG%s", bg_name.to_s) rescue nil
     tr_graphic     = sprintf("DTS/PTs/Char_%s", tr_type.to_s) rescue nil
-    tr_name        = sprintf("DTS/Names/Name_%s", tr_type.to_s) rescue nil
     black_bars     = sprintf("DTS/BorderBars") rescue nil
     # Set up sprites
-	ball_sprites    = dkDisplayBallCount(viewport, foe) # Create the ball count for a trainer
-	ball_bar        = Sprite.new(viewport)
-    ball_bar.bitmap = RPG::Cache.ui("Battle/overlay_lineup.png")
-    ball_bar.x      = -440
-    ball_bar.y      = 324
-	ball_bar.z      = 99997
+	ball_sprites     = dkDisplayBallCount(viewport, foe, 0) # Create the ball count for a trainer
+	ball_bar         = Sprite.new(viewport)
+    ball_bar.bitmap  = RPG::Cache.transition("DTS/Balls/overlay_lineup.png")
+    ball_bar.x       = -440
+    ball_bar.y       = 292
+	ball_bar.z       = 99998
     # Background Graphic
     background              = Sprite.new(viewport)
     background.bitmap       = RPG::Cache.transition(bg_graphic)
@@ -93,15 +181,14 @@ SpecialBattleIntroAnimations.register("vs_boss_solo", 80,   # Priority 80
     bartop.opacity    = 0
     barbottom.opacity = 0   
     # Name graphic
-    charname         = Sprite.new(viewport)
-    charname.bitmap  = RPG::Cache.transition(tr_name)
-    charname.z       = barbottom.z += 1
-    charname.opacity = 0    
+    charname = dkConvertNameToBitmap(viewport, foe, battle_type)
+    charname.z = barbottom.z + 2
+    charname.opacity = 0
     # Flash graphic
     flash = Sprite.new(viewport)
     flash.bitmap  = RPG::Cache.transition("vsFlash")
     flash.opacity = 0
-    flash.z       = 99999
+    flash.z       = 9999999
 	
     # Initial screen flashing
 	num_flashes = 2
@@ -153,7 +240,7 @@ SpecialBattleIntroAnimations.register("vs_boss_solo", 80,   # Priority 80
       portrait_shadow.opacity = 192
     end
     
-    # Flash the screen again, display the character's portrait. Begin shifting shadow leftward.
+    # Flash the screen again, display the character's portrait and name. Begin shifting shadow leftward.
     pbSEPlay("Vs sword")
     flash.opacity = 255
     
@@ -172,7 +259,7 @@ SpecialBattleIntroAnimations.register("vs_boss_solo", 80,   # Priority 80
     # Fade out all graphics, then change their color tone to black (Is that still necessary?)
     flash.tone = Tone.new(-255, -255, -255)
     pbWait(0.3) do |delta_t|
-      flash.opacity = lerp(0, 255, 0.25, delta_t)
+	  flash.opacity = lerp(0, 255, 0.25, delta_t)
     end
 
     # End of animation
@@ -185,6 +272,7 @@ SpecialBattleIntroAnimations.register("vs_boss_solo", 80,   # Priority 80
     barbottom.dispose
 	ball_bar.dispose
 	ball_sprites.each {|s| s.dispose}
+	$game_temp.vs_name = nil
 
     viewport.color = Color.black   # Ensure screen is black
   }
@@ -197,31 +285,33 @@ SpecialBattleIntroAnimations.register("vs_boss_duo", 81,   # Priority 81
     tr_type   = foe[0].trainer_type
 	tr_type2  = foe[1].trainer_type
     next pbResolveBitmap("Graphics/Transitions/DTS/PTs/Char_#{tr_type}") && # Character cut-in
-	     pbResolveBitmap("Graphics/Transitions/DTS/PTs/Char_#{tr_type2}") &&
-		 pbResolveBitmap("Graphics/Transitions/DTS/Names/Name_#{tr_type}_#{tr_type2}")
-    echoln "Conditions cleared. executing transition."
+	     pbResolveBitmap("Graphics/Transitions/DTS/PTs/Char_#{tr_type2}")
   },
   proc { |viewport, battle_type, foe, location|   # Animation
-    # Determine filenames of graphics to be used
+    #$game_temp.vs_name = dkGetTrainerName(foe)
+	# Determine filenames of graphics to be used
     BAR_DISPLAY_WIDTH = 248
 	tr_type  = foe[0].trainer_type
 	tr_type2 = foe[1].trainer_type
     bg_name = $game_temp.get_vs_transition_bg
     bg_graphic     = sprintf("DTS/BGs/BG%s", bg_name.to_s) rescue nil
-    bg_graphic     = sprintf("DTS/BGs/BG%s", bg_name.to_s) rescue nil
     tr1_graphic    = sprintf("DTS/PTs/Char_%s", tr_type.to_s) rescue nil
-	tr1_graphic    = sprintf("DTS/PTs/Char_%s", tr_type.to_s) rescue nil
-	tr2_graphic    = sprintf("DTS/PTs/Char_%s", tr_type2.to_s) rescue nil
 	tr2_graphic    = sprintf("DTS/PTs/Char_%s", tr_type2.to_s) rescue nil
     tr_name        = sprintf("DTS/Names/Name_%s_%s", tr_type.to_s, tr_type2.to_s) rescue nil
     black_bars     = sprintf("DTS/BorderBars") rescue nil
     # Set up sprites
-	ball_sprites    = dkDisplayBallCount(viewport, foe) # Create the ball count for a trainer
-	ball_bar        = Sprite.new(viewport)
-    ball_bar.bitmap = RPG::Cache.ui("Battle/overlay_lineup.png")
-    ball_bar.x      = -440
-    ball_bar.y      = 324
-	ball_bar.z      = 99997
+	ball_sprites     = dkDisplayBallCount(viewport, foe, 0) # Create the ball count for trainer 0
+	ball_sprites2    = dkDisplayBallCount(viewport, foe, 1) # Create the ball count for trainer 1
+	ball_bar         = Sprite.new(viewport)
+    ball_bar.bitmap  = RPG::Cache.transition("DTS/Balls/overlay_lineup.png")
+    ball_bar.x       = -440
+    ball_bar.y       = 292
+	ball_bar.z       = 99998
+	ball_bar2        = Sprite.new(viewport)
+    ball_bar2.bitmap = ball_bar.bitmap
+    ball_bar2.x      = ball_bar.x
+    ball_bar2.y      = ball_bar.y - 46
+	ball_bar2.z      = ball_bar.z
     # Background Graphic
     background              = Sprite.new(viewport)
     background.bitmap       = RPG::Cache.transition(bg_graphic)
@@ -275,15 +365,19 @@ SpecialBattleIntroAnimations.register("vs_boss_duo", 81,   # Priority 81
     bartop.opacity    = 0
     barbottom.opacity = 0   
     # Name graphic
-    charname         = Sprite.new(viewport)
-    charname.bitmap  = RPG::Cache.transition(tr_name)
-    charname.z       = barbottom.z += 1
-    charname.opacity = 0    
+    if pbResolveBitmap("Graphics/Transitions/DTS/Names/Name_#{tr_type}_#{tr_type2}")
+      charname = Sprite.new(viewport)
+      charname.bitmap = RPG::Cache.transition("DTS/Names/Name_#{tr_type}_#{tr_type2}")
+    else
+      charname = dkConvertNameToBitmap(viewport, foe, battle_type)
+    end
+    charname.z = barbottom.z + 2
+    charname.opacity = 0
     # Flash graphic
     flash = Sprite.new(viewport)
     flash.bitmap  = RPG::Cache.transition("vsFlash")
     flash.opacity = 0
-    flash.z       = 99999
+    flash.z       = 9999999
 	
     # Initial screen flashing
 	num_flashes = 2
@@ -352,7 +446,11 @@ SpecialBattleIntroAnimations.register("vs_boss_duo", 81,   # Priority 81
       ball_sprites.each_with_index do |s,i|
         s.x = lerp(((Settings::MAX_PARTY_SIZE - i) * 32) - (Graphics.width/2), ((Settings::MAX_PARTY_SIZE - i) * 32), 0.4, delta_t)
       end
-	  ball_bar.x = lerp(-440, -192, 0.4, delta_t)
+	  ball_sprites2.each_with_index do |s,i|
+        s.x = lerp(((Settings::MAX_PARTY_SIZE - i) * 32) - (Graphics.width/2), ((Settings::MAX_PARTY_SIZE - i) * 32), 0.4, delta_t)
+      end
+	  ball_bar.x  = lerp(-440, -192, 0.4, delta_t)
+	  ball_bar2.x = lerp(-440, -192, 0.4, delta_t)
     end    
     
     # Fade out all graphics, then change their color tone to black (Is that still necessary?)
@@ -372,7 +470,10 @@ SpecialBattleIntroAnimations.register("vs_boss_duo", 81,   # Priority 81
     bartop.dispose
     barbottom.dispose
 	ball_bar.dispose
+	ball_bar2.dispose
 	ball_sprites.each {|s| s.dispose}
+	ball_sprites2.each {|s| s.dispose}
+	$game_temp.vs_name = nil
 
     viewport.color = Color.black   # Ensure screen is black
   }
@@ -387,11 +488,10 @@ SpecialBattleIntroAnimations.register("vs_boss_trio", 82,   # Priority 82
 	tr_type3 = foe[2].trainer_type
     next pbResolveBitmap("Graphics/Transitions/DTS/PTs/Char_#{tr_type}") && # Character cut-in
 	     pbResolveBitmap("Graphics/Transitions/DTS/PTs/Char_#{tr_type2}") &&
-		 pbResolveBitmap("Graphics/Transitions/DTS/PTs/Char_#{tr_type3}") &&
-		 pbResolveBitmap("Graphics/Transitions/DTS/Names/Name_#{tr_type}_#{tr_type2}_#{tr_type3}")
-    echoln "Conditions cleared. executing transition."
+		 pbResolveBitmap("Graphics/Transitions/DTS/PTs/Char_#{tr_type3}")
   },
   proc { |viewport, battle_type, foe, location|   # Animation
+    #$game_temp.vs_name = dkGetTrainerName(foe)
     # Determine filenames of graphics to be used
     BAR_DISPLAY_WIDTH = 248
 	tr_type  = foe[0].trainer_type
@@ -399,22 +499,30 @@ SpecialBattleIntroAnimations.register("vs_boss_trio", 82,   # Priority 82
 	tr_type3 = foe[2].trainer_type
     bg_name        = $game_temp.get_vs_transition_bg
     bg_graphic     = sprintf("DTS/BGs/BG%s", bg_name.to_s) rescue nil
-    bg_graphic     = sprintf("DTS/BGs/BG%s", bg_name.to_s) rescue nil
-    tr1_graphic    = sprintf("DTS/PTs/Char_%s", tr_type.to_s) rescue nil
 	tr1_graphic    = sprintf("DTS/PTs/Char_%s", tr_type.to_s) rescue nil
 	tr2_graphic    = sprintf("DTS/PTs/Char_%s", tr_type2.to_s) rescue nil
-	tr2_graphic    = sprintf("DTS/PTs/Char_%s", tr_type2.to_s) rescue nil
-	tr3_graphic    = sprintf("DTS/PTs/Char_%s", tr_type3.to_s) rescue nil
 	tr3_graphic    = sprintf("DTS/PTs/Char_%s", tr_type3.to_s) rescue nil
     tr_name        = sprintf("DTS/Names/Name_%s_%s_%s", tr_type.to_s, tr_type2.to_s, tr_type3.to_s) rescue nil
     black_bars     = sprintf("DTS/BorderBars") rescue nil
     # Set up sprites
-	ball_sprites    = dkDisplayBallCount(viewport, foe) # Create the ball count for a trainer
-	ball_bar        = Sprite.new(viewport)
-    ball_bar.bitmap = RPG::Cache.ui("Battle/overlay_lineup.png")
-    ball_bar.x      = -440
-    ball_bar.y      = 324
-	ball_bar.z      = 99999
+	ball_sprites     = dkDisplayBallCount(viewport, foe, 0) # Create the ball count for trainer 0
+	ball_sprites2    = dkDisplayBallCount(viewport, foe, 1) # Create the ball count for trainer 1
+	ball_sprites3    = dkDisplayBallCount(viewport, foe, 2) # Create the ball count for trainer 2
+	ball_bar         = Sprite.new(viewport)
+    ball_bar.bitmap  = RPG::Cache.transition("DTS/Balls/overlay_lineup.png")
+    ball_bar.x       = -440
+    ball_bar.y       = 292
+	ball_bar.z       = 99998
+	ball_bar2        = Sprite.new(viewport)
+    ball_bar2.bitmap = ball_bar.bitmap
+    ball_bar2.x      = ball_bar.x
+    ball_bar2.y      = ball_bar.y - 46
+	ball_bar2.z      = ball_bar.z
+	ball_bar3        = Sprite.new(viewport)
+    ball_bar3.bitmap = ball_bar.bitmap
+    ball_bar3.x      = ball_bar.x
+    ball_bar3.y      = ball_bar2.y - 46
+	ball_bar3.z      = ball_bar.z
     # Background Graphic
     background              = Sprite.new(viewport)
     background.bitmap       = RPG::Cache.transition(bg_graphic)
@@ -486,15 +594,19 @@ SpecialBattleIntroAnimations.register("vs_boss_trio", 82,   # Priority 82
     bartop.opacity    = 0
     barbottom.opacity = 0   
     # Name graphic
-    charname         = Sprite.new(viewport)
-    charname.bitmap  = RPG::Cache.transition(tr_name)
-    charname.z       = barbottom.z += 1
-    charname.opacity = 0    
+    if pbResolveBitmap("Graphics/Transitions/DTS/Names/Name_#{tr_type}_#{tr_type2}_#{tr_type3}")
+      charname = Sprite.new(viewport)
+      charname.bitmap = RPG::Cache.transition("Graphics/Transitions/DTS/Names/Name_#{tr_type}_#{tr_type2}_#{tr_type3}")
+    else
+      charname = dkConvertNameToBitmap(viewport, foe, battle_type)
+    end
+    charname.z = barbottom.z + 2
+    charname.opacity = 0
     # Flash graphic
     flash = Sprite.new(viewport)
     flash.bitmap  = RPG::Cache.transition("vsFlash")
     flash.opacity = 0
-    flash.z       = 99999
+    flash.z       = 9999999
 	
     # Initial screen flashing
 	num_flashes = 2
@@ -567,7 +679,15 @@ SpecialBattleIntroAnimations.register("vs_boss_trio", 82,   # Priority 82
       ball_sprites.each_with_index do |s,i|
         s.x = lerp(((Settings::MAX_PARTY_SIZE - i) * 32) - (Graphics.width/2), ((Settings::MAX_PARTY_SIZE - i) * 32), 0.4, delta_t)
       end
+	  ball_sprites2.each_with_index do |s,i|
+        s.x = lerp(((Settings::MAX_PARTY_SIZE - i) * 32) - (Graphics.width/2), ((Settings::MAX_PARTY_SIZE - i) * 32), 0.4, delta_t)
+      end
+	  ball_sprites3.each_with_index do |s,i|
+        s.x = lerp(((Settings::MAX_PARTY_SIZE - i) * 32) - (Graphics.width/2), ((Settings::MAX_PARTY_SIZE - i) * 32), 0.4, delta_t)
+      end
 	  ball_bar.x = lerp(-440, -192, 0.4, delta_t)
+	  ball_bar2.x = lerp(-440, -192, 0.4, delta_t)
+	  ball_bar3.x = lerp(-440, -192, 0.4, delta_t)
     end    
     
     # Fade out all graphics, then change their color tone to black (Is that still necessary?)
@@ -589,7 +709,12 @@ SpecialBattleIntroAnimations.register("vs_boss_trio", 82,   # Priority 82
     bartop.dispose
     barbottom.dispose
 	ball_bar.dispose
+	ball_bar2.dispose
+	ball_bar3.dispose
 	ball_sprites.each {|s| s.dispose}
+	ball_sprites2.each {|s| s.dispose}
+	ball_sprites3.each {|s| s.dispose}
+	$game_temp.vs_name = nil
 
     viewport.color = Color.black   # Ensure screen is black
   }
@@ -608,7 +733,8 @@ SpecialBattleIntroAnimations.register("vs_wild_boss", 80,   # Priority 80
 	next has_form_graphic || has_species_graphic
   },
   proc { |viewport, battle_type, foe, location|   # Animation
-    $game_temp.transition_animation_data = [foe[0].species, foe[0].form]
+    #$game_temp.vs_name = dkGetSpeciesName(foe)
+	$game_temp.transition_animation_data = [foe[0].species, foe[0].form]
     # Determine filenames of graphics to be used
     species        = foe[0].species
 	form           = foe[0].form
@@ -658,15 +784,14 @@ SpecialBattleIntroAnimations.register("vs_wild_boss", 80,   # Priority 80
     bartop.opacity    = 0
     barbottom.opacity = 0   
     # Name graphic
-    wildname         = Sprite.new(viewport)
-    wildname.bitmap  = RPG::Cache.transition(wld_name)
-    wildname.z       = barbottom.z += 1
+    wildname         = dkConvertNameToBitmap(viewport, foe, battle_type)
+    wildname.z       = barbottom.z += 2
     wildname.opacity = 0    
     # Flash graphic
     flash = Sprite.new(viewport)
     flash.bitmap  = RPG::Cache.transition("vsFlash")
     flash.opacity = 0
-    flash.z       = 99999
+    flash.z       = 9999999
 	
     # Initial screen flashing
 	num_flashes = 2
@@ -744,6 +869,8 @@ SpecialBattleIntroAnimations.register("vs_wild_boss", 80,   # Priority 80
     portrait_shadow.dispose
     bartop.dispose
     barbottom.dispose
+	$game_temp.vs_name = nil
+	$game_temp.transition_animation_data = nil
 
     viewport.color = Color.black   # Ensure screen is black
   }

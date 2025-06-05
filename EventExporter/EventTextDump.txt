@@ -117491,6 +117491,8 @@ Trigger: Action Button
 
 List of Event Commands:
 @>Script: $game_temp.vs_transition_bg = "YoukaiWoods1"
+@>Script: $game_temp.vs_name = "Vs. Commander Ringo"
+:       : #echoln $game_temp.vs_name
 @>Conditional Branch: Script: TrainerBattle.start(:RINGO, "Ringo", 10)
  @>
 : Else
@@ -118184,6 +118186,154 @@ List of Event Commands:
 @>Script: setBattleRule("backdrop", "starlightJunko")
 @>Script: $game_temp.vs_transition_bg = "LunarSurface"
 @>Script: WildBattle.start(:DEOXYS_3,45)
+@>
+
+#------------------------------------------------------------------------------
+Event ID: 046
+Event Name: EV046
+(X,Y): (015,006)
+
+Page #1
+Conditions
+None
+
+Graphic: Person_Sunny
+
+Autonomous Movement
+Type: Fixed
+Speed: 3: Slow
+Freq: 3: Low
+Options Enabled
+Move Animation
+Trigger: Action Button
+
+List of Event Commands:
+@>Script: $game_temp.vs_transition_bg = "Plains"
+@>Conditional Branch: Script: TrainerBattle.start(:SUNNYT, "Sunny Milk", 10, :START, "Star Sapphire", 10, :LUNAT, "Luna Child", 10)
+ @>
+: Else
+ @>Script: pbTrainerEnd
+ @>Exit Event Processing
+ @>
+: Branch End
+@>
+
+#------------------------------------------------------------------------------
+Event ID: 047
+Event Name: EV047
+(X,Y): (014,007)
+
+Page #1
+Conditions
+None
+
+Graphic: 386_3
+
+Autonomous Movement
+Type: Fixed
+Speed: 3: Slow
+Freq: 3: Low
+Options Enabled
+Move Animation
+Trigger: Action Button
+
+List of Event Commands:
+@>Script: $game_temp.vs_name = "Vs. Deoxys (Speed)"
+:       : echoln $game_temp.vs_name
+@>Script: Pokemon.play_cry(:DEOXYS)
+@>Wait: 30 frame(s)
+@>Change Battle BGM: 'X-012. Vs. Deoxys', 100, 100
+@>Script: setBattleRule("backdrop", "starlightJunko")
+@>Script: $game_temp.vs_transition_bg = "LunarSurface"
+@>Script: WildBattle.start(:DEOXYS_3,45)
+@>
+
+#------------------------------------------------------------------------------
+Event ID: 048
+Event Name: EV048
+(X,Y): (014,008)
+
+Page #1
+Conditions
+None
+
+Graphic: 386_0
+
+Autonomous Movement
+Type: Fixed
+Speed: 3: Slow
+Freq: 3: Low
+Options Enabled
+Move Animation
+Trigger: Action Button
+
+List of Event Commands:
+@>Script: $game_temp.vs_name = "Vs. Deoxys"
+:       : echoln $game_temp.vs_name
+@>Script: Pokemon.play_cry(:DEOXYS)
+@>Wait: 30 frame(s)
+@>Change Battle BGM: 'X-012. Vs. Deoxys', 100, 100
+@>Script: setBattleRule("backdrop", "starlightJunko")
+@>Script: $game_temp.vs_transition_bg = "LunarSurface"
+@>Script: WildBattle.start(:DEOXYS,45)
+@>
+
+#------------------------------------------------------------------------------
+Event ID: 049
+Event Name: EV049
+(X,Y): (014,009)
+
+Page #1
+Conditions
+None
+
+Graphic: 386_2
+
+Autonomous Movement
+Type: Fixed
+Speed: 3: Slow
+Freq: 3: Low
+Options Enabled
+Move Animation
+Trigger: Action Button
+
+List of Event Commands:
+@>Script: Pokemon.play_cry(:DEOXYS)
+@>Wait: 30 frame(s)
+@>Change Battle BGM: 'X-012. Vs. Deoxys', 100, 100
+@>Script: setBattleRule("backdrop", "starlightJunko")
+@>Script: $game_temp.vs_transition_bg = "LunarSurface"
+@>Script: WildBattle.start(:DEOXYS_2,45)
+@>
+
+#------------------------------------------------------------------------------
+Event ID: 050
+Event Name: EV050
+(X,Y): (014,011)
+
+Page #1
+Conditions
+None
+
+Graphic: Object_RebornObelisk
+
+Autonomous Movement
+Type: Fixed
+Speed: 3: Slow
+Freq: 3: Low
+Options Enabled
+Move Animation
+Trigger: Action Button
+
+List of Event Commands:
+@>Script: $game_temp.vs_name = "Vs. Arceus (Steel)"
+:       : #echoln $game_temp.vs_name
+@>Script: Pokemon.play_cry(:ARCEUS)
+@>Wait: 30 frame(s)
+@>Change Battle BGM: 'X-012. Vs. Deoxys', 100, 100
+@>Script: setBattleRule("backdrop", "starlightJunko")
+@>Script: $game_temp.vs_transition_bg = "DreamWorld"
+@>Script: WildBattle.start(:ARCEUS,45)
 @>
 
 #------------------------------------------------------------------------------
