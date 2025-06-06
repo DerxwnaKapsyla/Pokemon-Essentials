@@ -4485,6 +4485,143 @@ List of Event Commands:
 
 Page #3
 Conditions
+Variable 0107: TMoM Plot Variable is 2 or above
+
+Graphic: Object ball
+
+Autonomous Movement
+Type: Fixed
+Speed: 3: Slow
+Freq: 3: Low
+Options Enabled
+Move Animation
+Trigger: Event Touch
+
+List of Event Commands:
+@>Control Switches: [0098: Music Override] = OFF
+@>Set Move Route: Player
+ :              : $>Move Down
+ :              : $>Move Down
+ :              : $>Move Down
+ :              : $>Change Speed: 4
+@>Text: \xn[\pn]Alright! I'm almost there!\wtnp[5]
+@>Wait for Move's Completion
+@>Text: \xn[???]Hold it right there!
+@>Script: pbSetSelfSwitch(28,"A",true)
+@>Wait: 10 frame(s)
+@>Show Animation: Player, [Exclaim bubble]
+@>Set Move Route: [Keine]
+ :              : $>Move Up
+ :              : $>Move Up
+ :              : $>Move Up
+ :              : $>Move Up
+ :              : $>Move Up
+ :              : $>Move Up
+@>Wait for Move's Completion
+@>Conditional Branch: Self Switch A == OFF
+ @>Control Self Switch: A =ON
+ @>Text: \xn[Keine]So, it is you \PN. I suppose I should have
+  :    : expected this after your conversations in class.
+ @>Text: \xn[\pn]M-Miss Keine... What are you doing here?
+ @>Text: \xn[Keine]Don't play dumb with me! You know that
+  :    : aside from being your teacher, I'm also in charge
+  :    : of the Village Patrol.
+ @>Text: \xn[Keine]Honestly, how did you all really expect to sneak
+  :    : out of the village without being spotted at all?
+ @>Text: \xn[\pn]We were kinda hoping that...\^
+ @>Text: \xn[Keine]It's reckless and foolish, that's what it was!
+ @>Text: \xn[Keine]Beyond the village is extremely unsafe, especially
+  :    : at night. All manner of youkai and creatures are
+  :    : wandering about.
+ @>Text: \xn[\pn]But I have my Puppets with me! I'll be fine! They'll
+  :    : protect me if I should come across harm!
+ @>Text: \xn[Keine]Is that really what you think? That just because
+  :    : you hold a form of power, that you know how to use
+  :    : it responsibly? Do you remember nothing I've taught you
+  :    : in class?
+ @>Text: \xn[\pn]Well...
+ @>Text: \xn[Keine]If you're so insistant on it, then fine, show
+  :    : me just how capable you and your Puppets are!
+ @>Script: pbTrainerIntro(:KEINE)
+ @>Wait: 10 frame(s)
+ @>Text: \xn[\pn]...Wait, what?
+ @>Text: \xn[Keine]That's right. If you want out of this village,
+  :    : you'll just have to beat me in battle.
+ @>Text: \xn[Keine]It should be no problem, right? You have your
+  :    : Puppets afterall.
+ @>Text: \xn[\pn]...\wt[15]Looks like I don't have a choice in the matter.\wt[15]
+  :    : Alright then teacher, let's go!
+ @>Script: #$game_temp.vs_name = "Vs. Keine Kamishirasawa"
+ :       : $game_temp.vs_transition_bg = "Village"
+ @>Conditional Branch: Script: TrainerBattle.start(:KEINE, "Keine Kamishirasawa", 10+(pbGet(99) * 10))
+  @>
+ : Else
+  @>Script: pbTrainerEnd
+  @>Exit Event Processing
+  @>
+ : Branch End
+ @>
+: Else
+ @>Text: \xn[Keine]Even though you lost, you're still trying to
+  :    : sneak out?
+ @>Text: \xn[\pn]I'm not going to give up that easily, and neither
+  :    : are my Puppets!
+ @>Text: \xn[Keine]Perhaps the threat of detention will keep you
+  :    : in the village.
+ @>Text: \xn[Keine]But if you insist on keeping this up...
+ @>Script: pbTrainerIntro(:KEINE)
+ @>Text: \xn[Keine]Then I'll have no choice but to keep showing you
+  :    : how unprepared you are!
+ @>Script: #$game_temp.vs_name = "Vs. Keine Kamishirasawa"
+ :       : $game_temp.vs_transition_bg = "Village"
+ @>Conditional Branch: Script: TrainerBattle.start(:KEINE, "Keine Kamishirasawa", 11+(pbGet(99) * 10))
+  @>
+ : Else
+  @>Script: pbTrainerEnd
+  @>Exit Event Processing
+  @>
+ : Branch End
+ @>
+: Branch End
+@>Script: pbTrainerEnd
+@>Change Screen Color Tone: (0,0,0,0), @6
+@>Text: \xn[Keine]Alright fine, I concede! You have what it
+ :    : takes to watch yourself.
+@>Text: \xn[\pn]So that means you'll let us go then?
+@>Text: \xn[Keine]As much as I am loathe to it, you and your
+ :    : friends are free to go out.
+@>Text: \xn[\pn]Awesome! Thanks Miss Keine, you're the best
+ :    : teacher!
+@>Text: \xn[Keine]I'm your only teacher!
+@>Play SE: 'Exit Door', 80, 100
+@>Change Screen Color Tone: (-255,-255,-255,0), @6
+@>Wait: 7 frame(s)
+@>Script: pbBGMFade(3)
+@>Script: deactivateSpecialBGM("S1_Escape")
+@>Change Transparent Flag: Transparency
+@>Change Screen Color Tone: (0,0,0,0), @6
+@>Wait: 20 frame(s)
+@>Text: \xn[Keine]...<i>sigh</i>.
+@>Wait: 10 frame(s)
+@>Set Move Route: [Keine]
+ :              : $>Turn Down
+@>Text: \xn[Keine]Maybe this really is the next step in Gensokyo's
+ :    : progression...
+@>Text: \xn[Keine]I should discuss this with Akyuu. Maybe it is time for
+ :    : a change.
+@>Change Screen Color Tone: (-255,-255,-255,0), @6
+@>Wait: 7 frame(s)
+@>Change Transparent Flag: Normal
+@>Wait: 1 frame(s)
+@>Transfer Player:[009: Forest of Magic], (072,007)
+@>Control Variables: [0107: TMoM Plot Variable] = 3
+@>Change Screen Color Tone: (0,0,0,0), @6
+@>Set Move Route: Player
+ :              : $>Move Down
+@>
+
+Page #4
+Conditions
 Variable 0107: TMoM Plot Variable is 3 or above
 
 Graphic: Object ball
@@ -4511,7 +4648,7 @@ List of Event Commands:
 : Branch End
 @>
 
-Page #4
+Page #5
 Conditions
 Variable 0107: TMoM Plot Variable is 5 or above
 
@@ -6958,18 +7095,8 @@ List of Event Commands:
   :    : intend to do exactly what I set out to do!
  @>
 : Branch End
-@>Control Switches: [0104: Transition Handler] = ON
-@>Control Variables: [0103: Vs. Transition ID] = 1
-@>Script: case pbGet(141)
-:       : when 0 
-:       :  pbSet(104, 3)
-:       : when
-:       :  pbSet(104, 5)
-:       : when
-:       :  pbSet(104, 6)
-:       : else
-:       :  pbSet(104, 6)
-:       : end
+@>Script: $game_temp.vs_transition_bg = "ForestOfMagic"
+:       : #$game_temp.vs_name = "Vs. Marisa Kirisame"
 @>Conditional Branch: Script: TrainerBattle.start(:MARISA, "Marisa Kirisame", 10+(pbGet(99) * 10))
  @>
 : Else
@@ -8368,18 +8495,8 @@ List of Event Commands:
 @>Text: \xn[???]I'll dispel you right now, with my swords that can cut 
  :    : through anything!
 @>Control Switches: [0109: Met Youmu] = ON
-@>Control Switches: [0104: Transition Handler] = ON
-@>Control Variables: [0103: Vs. Transition ID] = 2
-@>Script: case pbGet(141)
-:       : when 0
-:       :  pbSet(104, 4)
-:       : when 1
-:       :  pbSet(104, 5)
-:       : when 2
-:       :  pbSet(104, 6)
-:       : else
-:       :  pbSet(104, 6)
-:       : end
+@>Script: $game_temp.vs_transition_bg = "MistyLake"
+:       : #$game_temp.vs_name = "Vs. Youmu Konpaku"
 @>Conditional Branch: Script: TrainerBattle.start(:YOUMU, "Youmu Konpaku", 10+(pbGet(99) * 10))
  @>
 : Else
@@ -8757,18 +8874,8 @@ List of Event Commands:
 @>Script: pbTrainerIntro(:YOUMU)
 @>Text: \xn[???]Then why do you keep haunting me!? This time 
  :    : I'll be sure to dispel you properly!
-@>Control Switches: [0104: Transition Handler] = ON
-@>Control Variables: [0103: Vs. Transition ID] = 2
-@>Script: case pbGet(141)
-:       : when 0
-:       :  pbSet(104, 4)
-:       : when 1
-:       :  pbSet(104, 5)
-:       : when 2
-:       :  pbSet(104, 6)
-:       : else
-:       :  pbSet(104, 6)
-:       : end
+@>Script: $game_temp.vs_transition_bg = "MistyLake"
+:       : #$game_temp.vs_name = "Vs. Youmu Konpaku"
 @>Conditional Branch: Script: TrainerBattle.start(:YOUMU, "Youmu Konpaku", 10+(pbGet(99) * 10))
  @>
 : Else
@@ -13182,6 +13289,8 @@ Page #1
 Conditions
 None
 
+Graphic: Object ball
+
 Autonomous Movement
 Type: Fixed
 Speed: 3: Slow
@@ -13201,6 +13310,8 @@ Event Name: EV026
 Page #1
 Conditions
 None
+
+Graphic: Object ball
 
 Autonomous Movement
 Type: Fixed
@@ -13376,19 +13487,8 @@ List of Event Commands:
 @>Text: \xn[\pn]Well if I have no choice, then what else is there 
  :    : to do!
 @>Control Self Switch: A =ON
-@>Control Switches: [0104: Transition Handler] = ON
-@>Control Variables: [0103: Vs. Transition ID] = 3
-@>Script: case pbGet(141)
-:       : when 0 
-:       :  pbSet(104, 4)
-:       : when
-:       :  pbSet(104, 5)
-:       : when
-:       :  pbSet(104, 6)
-:       : else
-:       :  pbSet(104, 6)
-:       : end
-@>Comment: EndSpeech: Lyrica: Hehe, you certainly are one strong trainer~
+@>Script: $game_temp.vs_transition_bg = "RWM"
+:       : #$game_temp.vs_name = "Vs. Lyrica Prismriver"
 @>Conditional Branch: Script: TrainerBattle.start(:LYRICA, "Lyrica Prismriver", 10+(pbGet(99) * 10))
  @>
 : Else
@@ -13565,18 +13665,8 @@ List of Event Commands:
  :    : do~
 @>Text: \xn[\pn]...I don't think I want to know where this is 
  :    : leading... Let's just battle already!
-@>Control Switches: [0104: Transition Handler] = ON
-@>Control Variables: [0103: Vs. Transition ID] = 3
-@>Script: case pbGet(141)
-:       : when 0 
-:       :  pbSet(104, 4)
-:       : when
-:       :  pbSet(104, 5)
-:       : when
-:       :  pbSet(104, 6)
-:       : else
-:       :  pbSet(104, 6)
-:       : end
+@>Script: $game_temp.vs_transition_bg = "RWM"
+:       : #$game_temp.vs_name = "Vs. Lyrica Prismriver"
 @>Conditional Branch: Script: TrainerBattle.start(:LYRICA, "Lyrica Prismriver", 10+(pbGet(99) * 10))
  @>
 : Else
@@ -15574,18 +15664,8 @@ List of Event Commands:
 @>Text: \xn[Mystia]I will not let you pass me! And if scaring you 
  :    : off won't work, then I'll just have to drive you off the 
  :    : old fashioned way!
-@>Control Switches: [0104: Transition Handler] = ON
-@>Control Variables: [0103: Vs. Transition ID] = 4
-@>Script: case pbGet(141)
-:       : when 0
-:       :  pbSet(104, 5)
-:       : when 1
-:       :  pbSet(104, 5)
-:       : when 2
-:       :  pbSet(104, 6)
-:       : else
-:       :  pbSet(104, 6)
-:       : end
+@>Script: $game_temp.vs_transition_bg = "RWM"
+:       : #$game_temp.vs_name = "Vs. Mystia Lorelei"
 @>Conditional Branch: Script: TrainerBattle.start(:MYSTIA, "Mystia Lorelei", 10+(pbGet(99) * 10))
  @>
 : Else
@@ -15792,18 +15872,8 @@ List of Event Commands:
  :    : gate for me! I've come too far to turn back now!
 @>Text: \xn[Mystia]Then duel once more we will, but know that 
  :    : you won't be able to beat me!
-@>Control Switches: [0104: Transition Handler] = ON
-@>Control Variables: [0103: Vs. Transition ID] = 4
-@>Script: case pbGet(141)
-:       : when 0
-:       :  pbSet(104, 5)
-:       : when 1
-:       :  pbSet(104, 5)
-:       : when 2
-:       :  pbSet(104, 6)
-:       : else
-:       :  pbSet(104, 6)
-:       : end
+@>Script: $game_temp.vs_transition_bg = "RWM"
+:       : #$game_temp.vs_name = "Vs. Mystia Lorelei"
 @>Conditional Branch: Script: TrainerBattle.start(:MYSTIA, "Mystia Lorelei", 10+(pbGet(99) * 10))
  @>
 : Else
@@ -21343,9 +21413,8 @@ List of Event Commands:
  @>Change Battle BGM: 'W-010. Alice Maestra', 100, 100
  @>Text: \xn[Lyrica]Awesome! Alright \PN, let's see if you've 
   :    : gotten any stronger since I last saw you~
- @>Control Switches: [0104: Transition Handler] = ON
- @>Control Variables: [0103: Vs. Transition ID] = 3
- @>Control Variables: [0104: Vs. Transition - Pkmn] = 3
+ @>Script: $game_temp.vs_transition_bg = "RWM"
+ :       : #$game_temp.vs_name = "Vs. Lyrica Prismriver"
  @>Conditional Branch: Script: TrainerBattle.start(:LYRICA, "Lyrica Prismriver", 11+(pbGet(99) * 10))
   @>
  : Else
@@ -21421,9 +21490,8 @@ List of Event Commands:
  @>Change Battle BGM: '712. Alice Maestra', 100, 100
  @>Text: \xn[Lyrica]Awesome! Alright \PN, let's see if you've 
   :    : gotten any stronger since I last saw you~
- @>Control Switches: [0104: Transition Handler] = ON
- @>Control Variables: [0103: Vs. Transition ID] = 3
- @>Control Variables: [0104: Vs. Transition - Pkmn] = 3
+ @>Script: $game_temp.vs_transition_bg = "RWM"
+ :       : #$game_temp.vs_name = "Vs. Lyrica Prismriver"
  @>Conditional Branch: Script: TrainerBattle.start(:LYRICA, "Lyrica Prismriver", 11+(pbGet(99) * 10))
   @>
  : Else
@@ -26666,18 +26734,8 @@ List of Event Commands:
  :    : illusions I use in battle!
 @>Comment: --- Pre-Battle Intro Conclusion
 @>Control Self Switch: A =ON
-@>Control Switches: [0104: Transition Handler] = ON
-@>Control Variables: [0103: Vs. Transition ID] = 6
-@>Script: case pbGet(141)
-:       : when 0
-:       :  pbSet(104, 5)
-:       : when 1
-:       :  pbSet(104, 5)
-:       : when 2
-:       :  pbSet(104, 6)
-:       : else
-:       :  pbSet(104, 6)
-:       : end
+@>Script: $game_temp.vs_transition_bg = "Basement"
+:       : #$game_temp.vs_name = "Vs. Nue Houjuu"
 @>Conditional Branch: Script: TrainerBattle.start(:NUE, "Nue Houjuu", 10+(pbGet(99) * 10))
  @>
 : Else
@@ -27066,18 +27124,8 @@ List of Event Commands:
  :    : throw at me, mark my words!
 @>Text: \xn[Nue]Ahahaha! Then come at me, let's see you try to debunk
  :    : all my illusions!
-@>Control Switches: [0104: Transition Handler] = ON
-@>Control Variables: [0103: Vs. Transition ID] = 6
-@>Script: case pbGet(141)
-:       : when 0
-:       :  pbSet(104, 5)
-:       : when 1
-:       :  pbSet(104, 5)
-:       : when 2
-:       :  pbSet(104, 6)
-:       : else
-:       :  pbSet(104, 6)
-:       : end
+@>Script: $game_temp.vs_transition_bg = "Basement"
+:       : #$game_temp.vs_name = "Vs. Nue Houjuu"
 @>Conditional Branch: Script: TrainerBattle.start(:NUE, "Nue Houjuu", 10+(pbGet(99) * 10))
  @>
 : Else
@@ -27641,9 +27689,8 @@ List of Event Commands:
   @>
  : Branch End
  @>Comment: --- Pre-Battle Intro Setup
- @>Control Switches: [0104: Transition Handler] = ON
- @>Control Variables: [0103: Vs. Transition ID] = 7
- @>Control Variables: [0104: Vs. Transition - Pkmn] = 6
+ @>Script: $game_temp.vs_transition_bg = "Basement"
+ :       : #$game_temp.vs_name = "Vs. Kogasa Tatara"
  @>Conditional Branch: Script: TrainerBattle.start(:KOGASA, "Kogasa Tatara", 10+(pbGet(99) * 10))
   @>
  : Else
@@ -27941,9 +27988,8 @@ List of Event Commands:
  :    : not at all!
 @>Text: \xn[Layla]That does sound like something they'd say... 
  :    : Alright then, let's have another go at it!
-@>Control Switches: [0104: Transition Handler] = ON
-@>Control Variables: [0103: Vs. Transition ID] = 8
-@>Control Variables: [0104: Vs. Transition - Pkmn] = 6
+@>Script: $game_temp.vs_transition_bg = "Spectral"
+:       : #$game_temp.vs_name = "Vs. Layla Prismriver"
 @>Conditional Branch: Script: TrainerBattle.start(:LAYLA, "Layla Prismriver", 10+(pbGet(99) * 10))
  @>
 : Else
@@ -28086,9 +28132,8 @@ List of Event Commands:
  :    : a knack for it.
 @>Text: \xn[\pn]Poké-\^
 @>Text: \xn[Layla]Shall we begin?
-@>Control Switches: [0104: Transition Handler] = ON
-@>Control Variables: [0103: Vs. Transition ID] = 8
-@>Control Variables: [0104: Vs. Transition - Pkmn] = 6
+@>Script: $game_temp.vs_transition_bg = "Spectral"
+:       : #$game_temp.vs_name = "Vs. Layla Prismriver"
 @>Conditional Branch: Script: TrainerBattle.start(:LAYLA, "Layla Prismriver", 10+(pbGet(99) * 10))
  @>
 : Else
@@ -39081,18 +39126,8 @@ List of Event Commands:
  :              : $>Wait: 10 frame(s)
 @>Wait for Move's Completion
 @>Text: \xn[Announcer]Begin!
-@>Control Switches: [0104: Transition Handler] = ON
-@>Control Variables: [0103: Vs. Transition ID] = 10
-@>Script: case pbGet(141)
-:       : when 0
-:       :  pbSet(104, 3)
-:       : when 1
-:       :  pbSet(104, 4)
-:       : when 2
-:       :  pbSet(104, 6)
-:       : else
-:       :  pbSet(104, 6)
-:       : end
+@>Script: $game_temp.vs_transition_bg = "Festival"
+:       : #$game_temp.vs_name = "Vs. Hata no Kokoro"
 @>Change Battle BGM: 'B-017. The Lost Emotion', 100, 100
 @>Conditional Branch: Script: TrainerBattle.start(:KOKORO, "Hata no Kokoro", 10+(pbGet(99) * 10))
  @>
@@ -39231,18 +39266,8 @@ List of Event Commands:
  :              : $>Wait: 10 frame(s)
 @>Wait for Move's Completion
 @>Text: \xn[Announcer]Begin!
-@>Control Switches: [0104: Transition Handler] = ON
-@>Control Variables: [0103: Vs. Transition ID] = 11
-@>Script: case pbGet(141)
-:       : when 0
-:       :  pbSet(104, 4)
-:       : when 1
-:       :  pbSet(104, 4)
-:       : when 2
-:       :  pbSet(104, 6)
-:       : else
-:       :  pbSet(104, 6)
-:       : end
+@>Script: $game_temp.vs_transition_bg = "Festival"
+:       : #$game_temp.vs_name = "Vs. Minoriko Aki"
 @>Conditional Branch: Script: TrainerBattle.start(:MINORIKO, "Minoriko Aki", 10+(pbGet(99) * 10))
  @>Control Switches: [0119: Minoriko Beaten] = ON
  @>Script: pbSetSelfSwitch(23,"A",true)
@@ -43445,18 +43470,8 @@ List of Event Commands:
 @>Text: \xn[\pn]Yeah, sure, why not! It can't be that bad!
 @>Text: \xn[Nitori]Great! Let's do this then!
 @>Text: \xn[Nitori]Kawashiro Experimental Augments, activate!
-@>Control Switches: [0104: Transition Handler] = ON
-@>Control Variables: [0103: Vs. Transition ID] = 12
-@>Script: case pbGet(141)
-:       : when 0
-:       :  pbSet(104, 4)
-:       : when 1
-:       :  pbSet(104, 5)
-:       : when 2
-:       :  pbSet(104, 6)
-:       : else
-:       :  pbSet(104, 6)
-:       : end
+@>Script: $game_temp.vs_transition_bg = "MistyLake"
+:       : #$game_temp.vs_name = "Vs. Nitori Kawashiro"
 @>Script: $PokemonGlobal.nextBattleBack="nitori"
 :       : setBattleRule("base","nitori")
 :       : setBattleRule("backdrop", "nitori")
@@ -51547,18 +51562,8 @@ List of Event Commands:
 @>Text: \xn[Hatate]Comes with the job! Now pull out your
  :    : Puppet Orbs and let's go again!
 @>Text: \xn[\pn]You're lucky I like battling a lot!
-@>Control Switches: [0104: Transition Handler] = ON
-@>Control Variables: [0103: Vs. Transition ID] = 13
-@>Script: case pbGet(141)
-:       : when 0
-:       :  pbSet(104, 4)
-:       : when 1
-:       :  pbSet(104, 5)
-:       : when 2
-:       :  pbSet(104, 6)
-:       : else
-:       :  pbSet(104, 6)
-:       : end
+@>Script: $game_temp.vs_transition_bg = "YoukaiWoods1"
+:       : #$game_temp.vs_name = "Vs. Hatate Himekaidou"
 @>Conditional Branch: Script: TrainerBattle.start(:HATATE, "Hatate Himekaidou", 10+(pbGet(99) * 10))
  @>Text: \xn[Hatate]Ah, that was quite a battle! Even though I lost,
   :    : knowing I won at least once against the Village's strongest
@@ -51742,18 +51747,8 @@ List of Event Commands:
 @>Text: \xn[\pn]Oh, fine then! But definitely don't expect me to go easy
  :    : on you!
 @>Text: \xn[Hatate]I was thinking the exact same thing~!
-@>Control Switches: [0104: Transition Handler] = ON
-@>Control Variables: [0103: Vs. Transition ID] = 13
-@>Script: case pbGet(141)
-:       : when 0
-:       :  pbSet(104, 4)
-:       : when 1
-:       :  pbSet(104, 5)
-:       : when 2
-:       :  pbSet(104, 6)
-:       : else
-:       :  pbSet(104, 6)
-:       : end
+@>Script: $game_temp.vs_transition_bg = "YoukaiWoods1"
+:       : #$game_temp.vs_name = "Vs. Hatate Himekaidou"
 @>Control Self Switch: A =ON
 @>Conditional Branch: Script: TrainerBattle.start(:HATATE, "Hatate Himekaidou", 10+(pbGet(99) * 10))
  @>Comment: --- Player wins on Attempt 1
@@ -52086,8 +52081,9 @@ List of Event Commands:
 @>Set Move Route: Player
  :              : $>Turn Up
 @>Text: \xn[\pn]Miss Kagiyama is everything alright?
-@>Set Event Location: [Hina (Real)],(028,023), Up
+@>Set Event Location: [Hina (Real)],(028,021), Up
 @>Set Move Route: [Hina (Real)]
+ :              : $>Through ON
  :              : $>Change Opacity: 255
  :              : $>Move Up
  :              : $>Move Up
@@ -52095,6 +52091,7 @@ List of Event Commands:
  :              : $>Move Up
  :              : $>Move Up
  :              : $>Move Up
+ :              : $>Through OFF
 @>Wait for Move's Completion
 @>Text: \xn[Hina]\pn! Watch out, that isn't me!
 @>Show Animation: Player, [Question bubble]
@@ -52267,15 +52264,17 @@ List of Event Commands:
 @>Set Move Route: Player
  :              : $>Turn Up
 @>Text: \xn[\pn]Miss Kagiyama is everything alright?
-@>Set Event Location: [Hina (Real)],(028,023), Up
+@>Set Event Location: [Hina (Real)],(028,022), Up
 @>Set Move Route: [Hina (Real)]
  :              : $>Change Opacity: 255
+ :              : $>Through ON
  :              : $>Move Up
  :              : $>Move Up
  :              : $>Move Up
  :              : $>Move Up
  :              : $>Move Up
  :              : $>Move Up
+ :              : $>Through OFF
 @>Wait for Move's Completion
 @>Text: \xn[Hina]\pn! Watch out, that isn't me!
 @>Show Animation: Player, [Question bubble]
@@ -52322,18 +52321,8 @@ List of Event Commands:
 @>Text: \xn[Hina]It needs to be defeated if we want the spirits
  :    : in this area to settle down!
 @>Text: \xn[\pn]Well, let's do this then! One exorcism, coming up!
-@>Control Switches: [0104: Transition Handler] = ON
-@>Control Variables: [0103: Vs. Transition ID] = 14
-@>Script: case pbGet(141)
-:       : when 0
-:       :  pbSet(104, 4)
-:       : when 1
-:       :  pbSet(104, 5)
-:       : when 2
-:       :  pbSet(104, 6)
-:       : else
-:       :  pbSet(104, 6)
-:       : end
+@>Script: $game_temp.vs_transition_bg = "YoukaiWoods2"
+:       : $game_temp.vs_name = "Vs. Hina (Doppelganger)"
 @>Script: setBattleRule("battleIntroText", "{1} came spinning at you!")
 :       : setBattleRule("midbattleScript", :VS_FAKE_HINA)
 @>Conditional Branch: Script: TrainerBattle.start(:HINA_F, "Hina Kagiyama", 10+(pbGet(99) * 10))
@@ -52997,7 +52986,7 @@ List of Event Commands:
 
 Page #2
 Conditions
-Switch 0109: Met Youmu is ON
+Switch 0121: Hina Defeated is ON
 
 Autonomous Movement
 Type: Fixed
@@ -53778,6 +53767,43 @@ List of Event Commands:
 @>
 
 #------------------------------------------------------------------------------
+Event ID: 026
+Event Name: size(3,1)
+(X,Y): (026,024)
+
+Page #1
+Conditions
+Variable 0114: Cursed Puppets defeated is 3 or above
+
+Autonomous Movement
+Type: Fixed
+Speed: 3: Slow
+Freq: 3: Low
+Options Enabled
+Move Animation
+Trigger: Player Touch
+
+List of Event Commands:
+@>Set Move Route: [Hina (Fake)]
+ :              : $>Turn Up
+@>
+
+Page #2
+Conditions
+Switch 0121: Hina Defeated is ON
+
+Autonomous Movement
+Type: Fixed
+Speed: 3: Slow
+Freq: 3: Low
+Options Enabled
+Move Animation
+Trigger: Action Button
+
+List of Event Commands:
+@>
+
+#------------------------------------------------------------------------------
 
 #==============================================================================
 Map ID: 059
@@ -53821,9 +53847,8 @@ List of Event Commands:
 @>Text: \xn[Star]Oh no, a human from the Village!
 @>Text: \xn[Star]Well, I don't care much for battling, but desperate
  :    : times call for desperate measures!
-@>Control Switches: [0104: Transition Handler] = ON
-@>Control Variables: [0103: Vs. Transition ID] = 15
-@>Control Variables: [0104: Vs. Transition - Pkmn] = 3
+@>Script: $game_temp.vs_transition_bg = "Plains"
+:       : #$game_temp.vs_name = "Vs. Star Sapphire"
 @>Conditional Branch: Script: TrainerBattle.start(:START, "Star Sapphire", 10+(pbGet(99) * 10))
  @>Text: \xn[Star]I should have fled when I had the chance!
  @>Text: \xn[Star]Maybe they've been possessed the same way
@@ -53891,9 +53916,8 @@ List of Event Commands:
 @>Script: pbNoticePlayer(get_self)
 @>Text: \xn[Luna]You must have come from the Village! Great!
 @>Text: \xn[Luna]I was just looking for someone to prank~
-@>Control Switches: [0104: Transition Handler] = ON
-@>Control Variables: [0103: Vs. Transition ID] = 16
-@>Control Variables: [0104: Vs. Transition - Pkmn] = 3
+@>Script: $game_temp.vs_transition_bg = "Plains"
+:       : #$game_temp.vs_name = "Vs. Luna Child"
 @>Conditional Branch: Script: TrainerBattle.start(:LUNAT, "Luna Child", 10+(pbGet(99) * 10))
  @>Text: \xn[Luna]Oh well, time to find a new target!
  @>Text: \xn[Luna]Perhaps if you were around last night, you
@@ -53960,9 +53984,8 @@ List of Event Commands:
 @>Script: pbNoticePlayer(get_self)
 @>Text: \xn[Sunny]Hehe, you look like a fun target! C'mon, let me dazzle 
  :    : you with my light show! 
-@>Control Switches: [0104: Transition Handler] = ON
-@>Control Variables: [0103: Vs. Transition ID] = 17
-@>Control Variables: [0104: Vs. Transition - Pkmn] = 3
+@>Script: $game_temp.vs_transition_bg = "Plains"
+:       : #$game_temp.vs_name = "Vs. Sunny Milk"
 @>Conditional Branch: Script: TrainerBattle.start(:SUNNYT, "Sunny Milk", 10+(pbGet(99) * 10))
  @>Text: \xn[Sunny]Puppet Handlers sure are strong! I guess that's
   :    : what happens when you train a lot of Puppets.
@@ -55799,8 +55822,8 @@ List of Event Commands:
 
 #------------------------------------------------------------------------------
 Event ID: 007
-Event Name: size(3,1)
-(X,Y): (023,027)
+Event Name: size(2,1)
+(X,Y): (024,027)
 
 Page #1
 Conditions
@@ -60452,9 +60475,8 @@ List of Event Commands:
  :    : among you have the power to stop me!
 @>Control Switches: [0131: Medi Final Puppet Check] = OFF
 @>Control Variables: [0117..0118] = 0
-@>Control Switches: [0104: Transition Handler] = ON
-@>Control Variables: [0103: Vs. Transition ID] = 19
-@>Control Variables: [0104: Vs. Transition - Pkmn] = 6
+@>Script: $game_temp.vs_transition_bg = "Suzuran"
+:       : #$game_temp.vs_name = "Vs. Medicine Melancholy"
 @>Script: setBattleRule("midbattleScript", :vs_medicine)
 :       : setBattleRule("battleIntroText", "Medicine Melancholy, leader of the Puppet Rebellion, challenges you and your 
 :       : ideals!")
@@ -62392,18 +62414,8 @@ List of Event Commands:
  @>Text: \xn[Elly]Great! Let's get back to it then!
  @>
 : Branch End
-@>Control Switches: [0104: Transition Handler] = ON
-@>Control Variables: [0103: Vs. Transition ID] = 20
-@>Script: case pbGet(141)
-:       : when 0
-:       :  pbSet(104, 5)
-:       : when 1
-:       :  pbSet(104, 5)
-:       : when 2
-:       :  pbSet(104, 6)
-:       : else
-:       :  pbSet(104, 6)
-:       : end
+@>Script: $game_temp.vs_transition_bg = "Mugenkan"
+:       : #$game_temp.vs_name = "Vs. Elly"
 @>Script: setBattleRule("base","mugenkan_brick")
 @>Conditional Branch: Script: TrainerBattle.start(:ELLY, "Elly", 10 + pbGet(99) * 10)
  @>Text: \xn[Elly]Remarkable! I can see what Lady Yuuka sees in you!
@@ -64105,9 +64117,8 @@ List of Event Commands:
 @>Change Screen Color Tone: (0,0,0,0), @6
 @>Text: \xn[Yuuka]No more words need be spoken! From now, let us
  :    : let our Puppets do the talking for one another!
-@>Control Switches: [0104: Transition Handler] = ON
-@>Control Variables: [0103: Vs. Transition ID] = 21
-@>Control Variables: [0104: Vs. Transition - Pkmn] = 6
+@>Script: $game_temp.vs_transition_bg = "Garden"
+:       : #$game_temp.vs_name = "Vs. Yuuka Kazami"
 @>Script: setBattleRule("base","mugenkan_brick")
 @>Script: pbBGMStop(0.1)
 @>Conditional Branch: Script: TrainerBattle.start(:YUUKA, "Yuuka Kazami", 10 + pbGet(99) * 10)
@@ -73627,7 +73638,7 @@ List of Event Commands:
  :    : about to interview me here.
 @>Text: \xn[Daichi]No, but I do have some questions for you.
 @>Text: \xn[\pn]Alright, let's hear them then.
-@>Play SE: 'Electronic Malfunction', 20, 100
+@>Play SE: 'Electronic Malfunction', 40, 100
 @>Text: \xn[Daichi]Tell me, what are your thoughts on Dreamwalking?
 @>Set Event Location: [Moving NPC],(006,008), Left
 @>Set Move Route: [Moving NPC]
@@ -76971,6 +76982,21 @@ Trigger: Action Button
 List of Event Commands:
 @>
 
+Page #3
+Conditions
+Variable 0142: TLA Plot Variable is 1 or above
+
+Autonomous Movement
+Type: Fixed
+Speed: 3: Slow
+Freq: 3: Low
+Options Enabled
+Move Animation
+Trigger: Action Button
+
+List of Event Commands:
+@>
+
 #------------------------------------------------------------------------------
 Event ID: 002
 Event Name: Seiran 2
@@ -77008,6 +77034,21 @@ Trigger: Action Button
 List of Event Commands:
 @>
 
+Page #3
+Conditions
+Variable 0142: TLA Plot Variable is 1 or above
+
+Autonomous Movement
+Type: Fixed
+Speed: 3: Slow
+Freq: 3: Low
+Options Enabled
+Move Animation
+Trigger: Action Button
+
+List of Event Commands:
+@>
+
 #------------------------------------------------------------------------------
 Event ID: 003
 Event Name: Ringo
@@ -77033,6 +77074,21 @@ List of Event Commands:
 Page #2
 Conditions
 Variable 0121: TKoL Plot Variable is 10 or above
+
+Autonomous Movement
+Type: Fixed
+Speed: 3: Slow
+Freq: 3: Low
+Options Enabled
+Move Animation
+Trigger: Action Button
+
+List of Event Commands:
+@>
+
+Page #3
+Conditions
+Variable 0142: TLA Plot Variable is 1 or above
 
 Autonomous Movement
 Type: Fixed
@@ -77105,6 +77161,22 @@ List of Event Commands:
  :    : very harmful!
 @>
 
+Page #3
+Conditions
+Switch 0147: TKoL Cleared is ON
+Variable 0142: TLA Plot Variable is 1 or above
+
+Autonomous Movement
+Type: Fixed
+Speed: 3: Slow
+Freq: 3: Low
+Options Enabled
+Move Animation
+Trigger: Action Button
+
+List of Event Commands:
+@>
+
 #------------------------------------------------------------------------------
 Event ID: 005
 Event Name: Trainer(3)
@@ -77153,6 +77225,22 @@ List of Event Commands:
 @>Text: I use Umbral-type Puppets to overcome my fear of 
  :    : the dark!
 @>Text: It hasn't been helping...
+@>
+
+Page #3
+Conditions
+Switch 0147: TKoL Cleared is ON
+Variable 0142: TLA Plot Variable is 1 or above
+
+Autonomous Movement
+Type: Fixed
+Speed: 3: Slow
+Freq: 3: Low
+Options Enabled
+Move Animation
+Trigger: Action Button
+
+List of Event Commands:
 @>
 
 #------------------------------------------------------------------------------
@@ -77213,6 +77301,22 @@ List of Event Commands:
 @>Text: I'm trying to be like my friend Rose, but it's hard...
 @>
 
+Page #3
+Conditions
+Switch 0147: TKoL Cleared is ON
+Variable 0142: TLA Plot Variable is 1 or above
+
+Autonomous Movement
+Type: Fixed
+Speed: 3: Slow
+Freq: 3: Low
+Options Enabled
+Move Animation
+Trigger: Action Button
+
+List of Event Commands:
+@>
+
 #------------------------------------------------------------------------------
 Event ID: 007
 Event Name: Trainer(2)
@@ -77270,6 +77374,64 @@ List of Event Commands:
  :    : white...
 @>
 
+Page #3
+Conditions
+Switch 0147: TKoL Cleared is ON
+Variable 0142: TLA Plot Variable is 1 or above
+
+Graphic: TPDP_NPC 18
+
+Autonomous Movement
+Type: Custom
+Custom Move Route:
+(Repeat Action)
+$>Turn at Random
+
+Speed: 3: Slow
+Freq: 5: Higher
+Options Enabled
+Move Animation
+Trigger: Event Touch
+
+List of Event Commands:
+@>Memorize BGM/BGS
+@>Play BGM: 'P-003. Year-Round Absorbed Curiosity', 100, 50
+@>Show Animation: This event, [Question bubble]
+@>Set Move Route: This event
+                  (Ignore If Can't Move)
+ :              : $>Move toward Player
+ :              : $>Move toward Player
+@>Wait for Move's Completion
+@>Text: ?!ton et-yhw ,lleW ?od I steppuP eht esu I od yhW
+@>Play SE: 'Electronic Malfunction', 40, 100
+@>Show Animation: This event, [Exclaim bubble]
+@>Text: ?!ton et-yhw ,lleW ?od I steppuP eht esu I od yhW
+@>Text: ?!ton et-yhw ,lleW ?od I steppuP eht esu I od yhW
+@>Text: ?yhW ?yhW ?yhW ?yhW ?yhW ?yhW ?yhW ?yhW ?yhW 
+ :    : ?yhW ?yhW ?yhW ?yhW ?yhW ?yhW ?yhW ?yhW ?yhW
+@>Text: !pu ekaW ?pu ekaw uoy t'now yhW
+@>Play SE: 'Pollen', 80, 100
+@>Restore BGM/BGS
+@>Control Self Switch: A =ON
+@>
+
+Page #4
+Conditions
+Switch 0147: TKoL Cleared is ON
+Variable 0142: TLA Plot Variable is 1 or above
+Self Switch A is ON
+
+Autonomous Movement
+Type: Fixed
+Speed: 3: Slow
+Freq: 3: Low
+Options Enabled
+Move Animation
+Trigger: Action Button
+
+List of Event Commands:
+@>
+
 #------------------------------------------------------------------------------
 Event ID: 008
 Event Name: Trainer(1)
@@ -77324,6 +77486,22 @@ Trigger: Action Button
 
 List of Event Commands:
 @>Text: I'll just have to find a way to summon a hurricane!
+@>
+
+Page #3
+Conditions
+Switch 0147: TKoL Cleared is ON
+Variable 0142: TLA Plot Variable is 1 or above
+
+Autonomous Movement
+Type: Fixed
+Speed: 3: Slow
+Freq: 3: Low
+Options Enabled
+Move Animation
+Trigger: Action Button
+
+List of Event Commands:
 @>
 
 #------------------------------------------------------------------------------
@@ -77385,6 +77563,22 @@ List of Event Commands:
  :    : associated with a shrine...
 @>
 
+Page #3
+Conditions
+Switch 0147: TKoL Cleared is ON
+Variable 0142: TLA Plot Variable is 1 or above
+
+Autonomous Movement
+Type: Fixed
+Speed: 3: Slow
+Freq: 3: Low
+Options Enabled
+Move Animation
+Trigger: Action Button
+
+List of Event Commands:
+@>
+
 #------------------------------------------------------------------------------
 Event ID: 010
 Event Name: Trainer(2)
@@ -77432,6 +77626,68 @@ Trigger: Action Button
 List of Event Commands:
 @>Text: My Puppets love to fight, so I've had to practice my 
  :    : own moves, but I'm not very good at it.
+@>
+
+Page #3
+Conditions
+Switch 0147: TKoL Cleared is ON
+Variable 0142: TLA Plot Variable is 1 or above
+
+Graphic: TPDP_NPC 17
+
+Autonomous Movement
+Type: Fixed
+Speed: 3: Slow
+Freq: 3: Low
+Options Enabled
+Move Animation
+Trigger: Event Touch
+
+List of Event Commands:
+@>Memorize BGM/BGS
+@>Play BGM: 'P-003. Year-Round Absorbed Curiosity', 100, 50
+@>Show Animation: This event, [Question bubble]
+@>Set Move Route: This event
+                  (Ignore If Can't Move)
+ :              : $>Move toward Player
+ :              : $>Move toward Player
+@>Text: Square up! I'm gonna dropkick you!
+@>Play SE: 'Electronic Malfunction', 40, 100
+@>Show Animation: This event, [Question bubble]
+@>Text: Square down! I'm gonna droppunch you!
+@>Show Animation: This event, [Question bubble]
+@>Text: Up square! You dropkick gonna I'm!
+@>Show Animation: This event, [Question bubble]
+@>Text: You! square I'm! dropkick gonna up
+@>Show Animation: This event, [Question bubble]
+@>Text: You? You? You? You? You? You? You? You? You? You? You? 
+@>Show Animation: This event, [Question bubble]
+@>Text: You??? You??? You???
+@>Show Animation: This event, [Exclaim bubble]
+@>Show Animation: This event, [Exclaim bubble]
+@>Show Animation: This event, [Exclaim bubble]
+@>Text: UP!!!!!!
+@>Play SE: 'Pollen', 80, 100
+@>Restore BGM/BGS
+@>Control Self Switch: A =ON
+@>Wait for Move's Completion
+@>
+
+Page #4
+Conditions
+Switch 0147: TKoL Cleared is ON
+Variable 0142: TLA Plot Variable is 1 or above
+Self Switch A is ON
+
+Autonomous Movement
+Type: Fixed
+Speed: 3: Slow
+Freq: 3: Low
+Options Enabled
+Move Animation
+Trigger: Action Button
+
+List of Event Commands:
 @>
 
 #------------------------------------------------------------------------------
@@ -77489,6 +77745,22 @@ Trigger: Action Button
 List of Event Commands:
 @>Text: I love to go out hunting with my Puppets! Our favorite 
  :    : activity is hide and seek!
+@>
+
+Page #3
+Conditions
+Switch 0147: TKoL Cleared is ON
+Variable 0142: TLA Plot Variable is 1 or above
+
+Autonomous Movement
+Type: Fixed
+Speed: 3: Slow
+Freq: 3: Low
+Options Enabled
+Move Animation
+Trigger: Action Button
+
+List of Event Commands:
 @>
 
 #------------------------------------------------------------------------------
@@ -78107,18 +78379,8 @@ List of Event Commands:
 @>Script: pbTrainerIntro(:RINGO)
 @>Text: \xn[Ringo]Now, stand in awe of the lunatic fighting style of 
  :    : the Moon, where not even making a single mistake is allowed!
-@>Control Switches: [0104: Transition Handler] = ON
-@>Control Variables: [0103: Vs. Transition ID] = 43
-@>Script: case pbGet(141)
-:       : when 0
-:       :  pbSet(104, 3)
-:       : when 1
-:       :  pbSet(104, 5)
-:       : when 2
-:       :  pbSet(104, 6)
-:       : else
-:       :  pbSet(104, 6)
-:       : end
+@>Script: $game_temp.vs_transition_bg = "YoukaiWoods1"
+:       : #$game_temp.vs_name = "Vs. Seiran"
 @>Conditional Branch: Script: TrainerBattle.start(:RINGO, "Ringo", 10+(pbGet(99) * 10))
  @>Text: \xn[Ringo]Looks like I lost. Oh well, that's that I guess!
  @>Set Move Route: [Seiran 2]
@@ -78247,6 +78509,44 @@ Trigger: Action Button
 List of Event Commands:
 @>
 
+Page #3
+Conditions
+Variable 0142: TLA Plot Variable is 1 or above
+
+Autonomous Movement
+Type: Fixed
+Speed: 4: Fast
+Freq: 3: Low
+Options Enabled
+Move Animation
+Trigger: Player Touch
+
+List of Event Commands:
+@>Set Move Route: Player
+ :              : $>Move Down
+ :              : $>Move Down
+ :              : $>Move Down
+@>Wait for Move's Completion
+@>Wait: 20 frame(s)
+@>Text: ...
+@>Control Self Switch: A =ON
+@>
+
+Page #4
+Conditions
+Self Switch A is ON
+
+Autonomous Movement
+Type: Fixed
+Speed: 3: Slow
+Freq: 3: Low
+Options Enabled
+Move Animation
+Trigger: Action Button
+
+List of Event Commands:
+@>
+
 #------------------------------------------------------------------------------
 Event ID: 028
 Event Name: size(1,3)
@@ -78340,18 +78640,8 @@ List of Event Commands:
 @>Script: pbTrainerIntro(:SEIRAN)
 @>Text: \xn[Seiran]Prepare to get beaten back by a member of the 
  :    : Eagle Ravi unit!
-@>Control Switches: [0104: Transition Handler] = ON
-@>Control Variables: [0103: Vs. Transition ID] = 42
-@>Script: case pbGet(141)
-:       : when 0
-:       :  pbSet(104, 3)
-:       : when 1
-:       :  pbSet(104, 5)
-:       : when 2
-:       :  pbSet(104, 6)
-:       : else
-:       :  pbSet(104, 6)
-:       : end
+@>Script: $game_temp.vs_transition_bg = "YoukaiWoods1"
+:       : #$game_temp.vs_name = "Vs. Seiran"
 @>Conditional Branch: Script: TrainerBattle.start(:SEIRAN, "Seiran", 10+(pbGet(99) * 10))
  @>Text: \xn[Seiran]Oh, you earthlings sure are strong...
  @>Text: \xn[\pn]When you say 'earthlings', does that imply you 
@@ -78392,6 +78682,41 @@ Trigger: Action Button
 List of Event Commands:
 @>
 
+Page #3
+Conditions
+Variable 0142: TLA Plot Variable is 1 or above
+
+Autonomous Movement
+Type: Fixed
+Speed: 3: Slow
+Freq: 3: Low
+Options Enabled
+Move Animation
+Trigger: Player Touch
+
+List of Event Commands:
+@>Play SE: 'Electronic Malfunction', 40, 100
+@>Text: \xn[\pn]\b{...There's nobody here? That's... strange.}
+@>Text: \xn[\pn]\b{Everything about this just keeps getting weirder and weirder...}
+@>Control Self Switch: A =ON
+@>Script: pbSetSelfSwitch(37,"A",true)
+@>
+
+Page #4
+Conditions
+Self Switch A is ON
+
+Autonomous Movement
+Type: Fixed
+Speed: 3: Slow
+Freq: 3: Low
+Options Enabled
+Move Animation
+Trigger: Action Button
+
+List of Event Commands:
+@>
+
 #------------------------------------------------------------------------------
 Event ID: 031
 Event Name: size(8,5)
@@ -78415,6 +78740,21 @@ List of Event Commands:
 Page #2
 Conditions
 Self Switch A is ON
+
+Autonomous Movement
+Type: Fixed
+Speed: 3: Slow
+Freq: 3: Low
+Options Enabled
+Move Animation
+Trigger: Action Button
+
+List of Event Commands:
+@>
+
+Page #3
+Conditions
+Variable 0142: TLA Plot Variable is 1 or above
 
 Autonomous Movement
 Type: Fixed
@@ -78790,18 +79130,8 @@ List of Event Commands:
 @>Script: pbTrainerIntro(:SEIRAN)
 @>Text: \xn[Seiran]Prepare to get beaten back by a member of the 
  :    : Eagle Ravi unit!
-@>Control Switches: [0104: Transition Handler] = ON
-@>Control Variables: [0103: Vs. Transition ID] = 42
-@>Script: case pbGet(141)
-:       : when 0
-:       :  pbSet(104, 3)
-:       : when 1
-:       :  pbSet(104, 5)
-:       : when 2
-:       :  pbSet(104, 6)
-:       : else
-:       :  pbSet(104, 6)
-:       : end
+@>Script: $game_temp.vs_transition_bg = "YoukaiWoods1"
+:       : #$game_temp.vs_name = "Vs. Seiran"
 @>Conditional Branch: Script: TrainerBattle.start(:SEIRAN, "Seiran", 10+(pbGet(99) * 10))
  @>Text: \xn[Seiran]Oh, you earthlings sure are strong...
  @>Text: \xn[\pn]When you say 'earthlings', does that imply you 
@@ -78826,6 +79156,41 @@ List of Event Commands:
 Page #2
 Conditions
 Variable 0121: TKoL Plot Variable is 8 or above
+
+Autonomous Movement
+Type: Fixed
+Speed: 3: Slow
+Freq: 3: Low
+Options Enabled
+Move Animation
+Trigger: Action Button
+
+List of Event Commands:
+@>
+
+Page #3
+Conditions
+Variable 0142: TLA Plot Variable is 1 or above
+
+Autonomous Movement
+Type: Fixed
+Speed: 3: Slow
+Freq: 3: Low
+Options Enabled
+Move Animation
+Trigger: Player Touch
+
+List of Event Commands:
+@>Play SE: 'Electronic Malfunction', 40, 100
+@>Text: \xn[\pn]\b{...There's nobody here? That's... strange.}
+@>Text: \xn[\pn]\b{Everything about this just keeps getting weirder and weirder...}
+@>Control Self Switch: A =ON
+@>Script: pbSetSelfSwitch(30,"A",true)
+@>
+
+Page #4
+Conditions
+Self Switch A is ON
 
 Autonomous Movement
 Type: Fixed
@@ -79049,6 +79414,27 @@ List of Event Commands:
 @>Change Screen Color Tone: (-255,-255,-255,0), @60
 @>Wait: 70 frame(s)
 @>Transfer Player:[090: Kaian Passageway], (019,073), Up, No Fade
+@>Change Screen Color Tone: (0,0,0,0), @20
+@>
+
+Page #2
+Conditions
+Variable 0142: TLA Plot Variable is 1 or above
+
+Autonomous Movement
+Type: Fixed
+Speed: 3: Slow
+Freq: 3: Low
+Options Enabled
+Move Animation
+Trigger: Event Touch
+
+List of Event Commands:
+@>Fade Out BGM: 3 sec.
+@>Play SE: 'PRSFX- LTBTS1', 90, 70
+@>Change Screen Color Tone: (-255,-255,-255,0), @60
+@>Wait: 70 frame(s)
+@>Transfer Player:[111: Dream World], (020,043), Up, No Fade
 @>Change Screen Color Tone: (0,0,0,0), @20
 @>
 
@@ -79359,6 +79745,27 @@ Move Animation
 Trigger: Action Button
 
 List of Event Commands:
+@>
+
+#------------------------------------------------------------------------------
+Event ID: 056
+Event Name: EV056
+(X,Y): (035,064)
+
+Page #1
+Conditions
+Variable 0142: TLA Plot Variable is 1 or above
+
+Autonomous Movement
+Type: Fixed
+Speed: 3: Slow
+Freq: 3: Low
+Options Enabled
+Move Animation
+Trigger: Parallel Process
+
+List of Event Commands:
+@>Change Map Settings:Fog = 'PurpleFog', 50, 192, Normal, 200, 1, 1
 @>
 
 #------------------------------------------------------------------------------
@@ -86418,18 +86825,8 @@ List of Event Commands:
 @>Script: setBattleRule("backdrop", "starlightJunko")
 :       : setBattleRule("battleIntroText","{1} descends in a graceful, fit of rage!")
 :       : setBattleRule("setSlideSprite","top")
-@>Control Switches: [0104: Transition Handler] = ON
-@>Control Variables: [0103: Vs. Transition ID] = 46
-@>Script: case pbGet(141)
-:       : when 0
-:       :  pbSet(104, 5)
-:       : when 1
-:       :  pbSet(104, 6)
-:       : when 2
-:       :  pbSet(104, 6)
-:       : else
-:       :  pbSet(104, 6)
-:       : end
+@>Script: $game_temp.vs_transition_bg = "LunarSea"
+:       : $game_temp.vs_name = "Vs. Junko"
 @>Conditional Branch: Script: TrainerBattle.start(:JUNKO, "Junko", 10+(pbGet(99) * 10))
  @>Fade Out BGM: 1 sec.
  @>Screen Flash: (255,255,255,255), @10
@@ -89300,18 +89697,8 @@ List of Event Commands:
  :    : proving myself anyway...
 @>Text: \xn[Rei'sen]Well, just don't be too rough on me! I'm not that strong 
  :    : of a Handler yet...
-@>Control Switches: [0104: Transition Handler] = ON
-@>Control Variables: [0103: Vs. Transition ID] = 48
-@>Script: case pbGet(141)
-:       : when 0
-:       :  pbSet(104, 3)
-:       : when 1
-:       :  pbSet(104, 3)
-:       : when 2
-:       :  pbSet(104, 6)
-:       : else
-:       :  pbSet(104, 6)
-:       : end
+@>Script: $game_temp.vs_transition_bg = "Palace"
+:       : #$game_temp.vs_name = "Vs. Rei'sen"
 @>Conditional Branch: Script: TrainerBattle.start(:REISEN2, "Rei'sen", 10+(pbGet(99) * 10))
  @>Text: \xn[Rei'sen]I-I apologize for holding you up! If you want to go through,
   :    : just let me know!
@@ -90018,18 +90405,8 @@ List of Event Commands:
 @>Text: This will be a free-for-all battle, with substitutions allowed.
 @>Text: \xn[Sagume]Come now, Savior of the Moon... Let's make this
  :    : fight an interesting one!
-@>Control Switches: [0104: Transition Handler] = ON
-@>Control Variables: [0103: Vs. Transition ID] = 49
-@>Script: case pbGet(141)
-:       : when 0
-:       :  pbSet(104, 4)
-:       : when 1
-:       :  pbSet(104, 4)
-:       : when 2
-:       :  pbSet(104, 6)
-:       : else
-:       :  pbSet(104, 6)
-:       : end
+@>Script: $game_temp.vs_transition_bg = "Palace"
+:       : #$game_temp.vs_name = "Vs. Sagume Kishin"
 @>Conditional Branch: Script: TrainerBattle.start(:SAGUME, "Sagume Kishin", 10+(pbGet(99) * 10))
  @>Text: What a battle folks! In a stunning spectacular, \pn has overcome 
   :    : Lady Sagume in a Puppet Battle!
@@ -90210,9 +90587,8 @@ List of Event Commands:
 @>Text: Begin!
 @>Change Text Options: Bottom, Show
 @>Script: pbTrainerIntro(:TOYOHIME)
-@>Control Switches: [0104: Transition Handler] = ON
-@>Control Variables: [0103: Vs. Transition ID] = 50
-@>Control Variables: [0104: Vs. Transition - Pkmn] = 6
+@>Script: $game_temp.vs_transition_bg = "Palace"
+:       : $game_temp.vs_name = "Vs. Watatsuki Sisters"
 @>Conditional Branch: Script: TrainerBattle.start(:YORIHIME, "Watatsuki no Yorihime", 10+(pbGet(99) * 10), :TOYOHIME, "Watatsuki no Toyohime", 10+(pbGet(99) * 10))
  @>Script: pbTrainerEnd
  @>Change Text Options: Middle, Show
@@ -90499,7 +90875,7 @@ List of Event Commands:
 #------------------------------------------------------------------------------
 Event ID: 017
 Event Name: Applause
-(X,Y): (029,025)
+(X,Y): (030,027)
 
 Page #1
 Conditions
@@ -94451,6 +94827,36 @@ List of Event Commands:
 @>
 
 #------------------------------------------------------------------------------
+Event ID: 006
+Event Name: size(3,1)
+(X,Y): (024,007)
+
+Page #1
+Conditions
+None
+
+Autonomous Movement
+Type: Fixed
+Speed: 3: Slow
+Freq: 3: Low
+Options Enabled
+Move Animation
+Trigger: Action Button
+
+List of Event Commands:
+@>Conditional Branch: Player is facing Up
+ @>Play SE: 'Door exit', 100, 100
+ @>Change Screen Color Tone: (-255,-255,-255,0), @6
+ @>Wait: 8 frame(s)
+ @>Transfer Player:[110: Tower of Adventure (Floors)], (168,032), No Fade
+ @>Change Screen Color Tone: (0,0,0,0), @6
+ @>Set Move Route: Player
+  :              : $>Move Up
+ @>
+: Branch End
+@>
+
+#------------------------------------------------------------------------------
 
 #==============================================================================
 Map ID: 110
@@ -94605,9 +95011,8 @@ List of Event Commands:
 @>Change Text Options: Bottom, Show
 @>Control Switches: [0098: Music Override] = ON
 @>Script: setBattleRule("victoryBGM", "")
-@>Control Switches: [0104: Transition Handler] = ON
-@>Control Variables: [0103: Vs. Transition ID] = 51
-@>Control Variables: [0104: Vs. Transition - Pkmn] = 6
+@>Script: $game_temp.vs_transition_bg = "Elite"
+:       : $game_temp.vs_name = "Vs. Prismriver Sisters?"
 @>Conditional Branch: Script: TrainerBattle.start(:FALSEPRISMRIVER, "Prismriver Sisters", 99)
  @>Wait: 5 frame(s)
  @>Change Screen Color Tone: (-255,-255,-255,0), @8
@@ -95014,9 +95419,8 @@ List of Event Commands:
 @>Change Text Options: Bottom, Show
 @>Control Switches: [0098: Music Override] = ON
 @>Script: setBattleRule("victoryBGM", "")
-@>Control Switches: [0104: Transition Handler] = ON
-@>Control Variables: [0103: Vs. Transition ID] = 52
-@>Control Variables: [0104: Vs. Transition - Pkmn] = 6
+@>Script: $game_temp.vs_transition_bg = "Elite"
+:       : $game_temp.vs_name = "Vs. Medicine Melancholy?"
 @>Conditional Branch: Script: TrainerBattle.start(:FALSEMEDICINE, "Medicine Melancholy", 99)
  @>Wait: 5 frame(s)
  @>Change Screen Color Tone: (-255,-255,-255,0), @8
@@ -95083,9 +95487,8 @@ List of Event Commands:
 @>Change Text Options: Bottom, Show
 @>Control Switches: [0098: Music Override] = ON
 @>Script: setBattleRule("victoryBGM", "")
-@>Control Switches: [0104: Transition Handler] = ON
-@>Control Variables: [0103: Vs. Transition ID] = 53
-@>Control Variables: [0104: Vs. Transition - Pkmn] = 6
+@>Script: $game_temp.vs_transition_bg = "Elite"
+:       : $game_temp.vs_name = "Vs. Junko?"
 @>Conditional Branch: Script: TrainerBattle.start(:FALSEJUNKO, "Junko", 99)
  @>Wait: 5 frame(s)
  @>Change Screen Color Tone: (-255,-255,-255,0), @8
@@ -95153,9 +95556,8 @@ List of Event Commands:
 @>Change Text Options: Bottom, Show
 @>Control Switches: [0098: Music Override] = ON
 @>Script: setBattleRule("victoryBGM", "")
-@>Control Switches: [0104: Transition Handler] = ON
-@>Control Variables: [0103: Vs. Transition ID] = 54
-@>Control Variables: [0104: Vs. Transition - Pkmn] = 6
+@>Script: $game_temp.vs_transition_bg = "Elite"
+:       : $game_temp.vs_name = "Vs. Hecatia Lapislazuli?"
 @>Conditional Branch: Script: TrainerBattle.start(:FALSEHECATIA, "Hecatia Lapislazuli", 99)
  @>Wait: 5 frame(s)
  @>Change Screen Color Tone: (-255,-255,-255,0), @8
@@ -95266,6 +95668,7 @@ List of Event Commands:
  :    : will not be available to stick to the script any longer.
 @>Text: For your persistence, I have left you an incentive to move 
  :    : forward.
+@>Change Text Options: Bottom, Show
 @>Change Screen Color Tone: (0,0,0,0), @10
 @>Wait: 10 frame(s)
 @>Script: pkmn = Pokemon.new(:DOREMY,100)
@@ -95292,6 +95695,7 @@ List of Event Commands:
 :       : pbAddPokemon(pkmn)
 @>Change Screen Color Tone: (-60,-60,-60,255), @10
 @>Wait: 10 frame(s)
+@>Change Text Options: Middle, Hide
 @>Text: Take this Puppet, it may come in handy when dealing with
  :    : the situation at hand.
 @>Text: You are, of course, entitled to continue your lunatic dream, but
@@ -95300,8 +95704,10 @@ List of Event Commands:
  :    : Fantasies.
 @>Text: I trust you will know what to do.
 @>Text: - Doremy Sweet
-@>Control Variables: [0121: TKoL Plot Variable] = 12
+@>Change Text Options: Bottom, Show
+@>Control Variables: [0121: TKoL Plot Variable] = 99
 @>Script: pbSetSelfSwitch(2,"A",true)
+@>Change Screen Color Tone: (0,0,0,0), @10
 @>Control Self Switch: A =ON
 @>
 
@@ -95322,7 +95728,7 @@ List of Event Commands:
 
 #------------------------------------------------------------------------------
 Event ID: 002
-Event Name: EV002
+Event Name: size(3,1)
 (X,Y): (019,020)
 
 Page #1
@@ -95381,25 +95787,34 @@ Direction Fix
 Trigger: Player Touch
 
 List of Event Commands:
-@>Play SE: 'teleporter', 60, 100
-@>Change Screen Color Tone: (-255,-255,-255,0), @6
-@>Wait: 8 frame(s)
-@>Transfer Player:[136: Tower of Adventure (Roof)], (019,012), No Fade
-@>Change Screen Color Tone: (0,0,0,0), @6
-@>Text: \xn[\pn]... I'm back at the Tower of Adventure...
-@>Wait: 4 frame(s)
-@>Set Move Route: Player
- :              : $>Turn Up
-@>Text: \xn[\pn]... Just to be sure...
-@>Set Move Route: Player
- :              : $>Move Up
-@>Play SE: 'GUI sel buzzer', 80, 50
-@>Text: \xn[\pn]Nope, looks like this platform isn't working anymore now.
-@>Text: \xn[\pn]Guess I have no choice but to move on.
-@>Set Move Route: Player
- :              : $>Move Down
-@>Wait for Move's Completion
-@>Script: pbSetSelfSwitch(3,"A",true)
+@>Conditional Branch: Variable [0142: TLA Plot Variable] >= 99
+ @>Play SE: 'teleporter', 60, 100
+ @>Change Screen Color Tone: (-255,-255,-255,0), @6
+ @>Wait: 8 frame(s)
+ @>Transfer Player:[136: Tower of Adventure (Roof)], (019,012), No Fade
+ @>Change Screen Color Tone: (0,0,0,0), @6
+ @>Text: \xn[\pn]... I'm back at the Tower of Adventure...
+ @>Wait: 4 frame(s)
+ @>Set Move Route: Player
+  :              : $>Turn Up
+ @>Text: \xn[\pn]... Just to be sure...
+ @>Set Move Route: Player
+  :              : $>Move Up
+ @>Play SE: 'GUI sel buzzer', 80, 50
+ @>Text: \xn[\pn]Nope, looks like this platform isn't working anymore now.
+ @>Text: \xn[\pn]Guess I have no choice but to move on.
+ @>Set Move Route: Player
+  :              : $>Move Down
+ @>Wait for Move's Completion
+ @>Control Switches: [0163: No Going Back] = ON
+ @>
+: Else
+ @>Text: \xn[\pn]\b{Something really isn't right here, I should look around
+  :    : a bit more first.}
+ @>Set Move Route: Player
+  :              : $>1 Step Backward
+ @>
+: Branch End
 @>
 
 #------------------------------------------------------------------------------
@@ -95437,10 +95852,11 @@ List of Event Commands:
  :              : $>Move Up
 @>Wait for Move's Completion
 @>Wait: 20 frame(s)
-@>Play SE: 'Electronic Malfunction', 40, 100
+@>Play SE: 'Electronic Malfunction', 60, 100
 @>Screen Flash: (255,255,255,255), @2
 @>Text: \xn[\pn]\b{... ... No, this... This isn't right... A Moon Rabbit is
  :    : supposed to show up here...}
+@>Wait: 20 frame(s)
 @>Text: \xn[\pn]\b{This area... is it...?}
 @>Control Self Switch: A =ON
 @>
@@ -95506,7 +95922,7 @@ List of Event Commands:
 @>Play SE: 'PRSFX- LTBTS1', 90, 70
 @>Change Screen Color Tone: (-255,-255,-255,0), @60
 @>Wait: 70 frame(s)
-@>Transfer Player:[122: Storehouse], (004,003), Right, No Fade
+@>Transfer Player:[089: Youkai Mountain], (073,059), Down, No Fade
 @>Change Screen Color Tone: (0,0,0,0), @20
 @>
 
@@ -95553,8 +95969,25 @@ List of Event Commands:
 @>Play SE: 'Door exit', 60, 100
 @>Change Screen Color Tone: (-255,-255,-255,0), @6
 @>Wait: 8 frame(s)
-@>Transfer Player:[122: Storehouse], (004,003), Right, No Fade
+@>Transfer Player:[150: The Moon?], (008,013), Right, No Fade
 @>Change Screen Color Tone: (0,0,0,0), @6
+@>
+
+Page #2
+Conditions
+Switch 0162: Ayylmao caught is ON
+
+Autonomous Movement
+Type: Fixed
+Speed: 3: Slow
+Freq: 3: Low
+Options Enabled
+Move Animation
+Trigger: Player Touch
+
+List of Event Commands:
+@>Set Move Route: Player
+ :              : $>1 Step Backward
 @>
 
 #------------------------------------------------------------------------------
@@ -96010,56 +96443,6 @@ Move Animation
 Trigger: Action Button
 
 List of Event Commands:
-@>Script: $game_variables[96] = "E"
-@>Conditional Branch: Script: TrainerBattle.start(:REISEN, "Reisen U. Inaba", 10, :EIRIN, "Eirin Yagokoro", 10)
- @>
-: Else
- @>Script: pbTrainerEnd
- @>Exit Event Processing
- @>
-: Branch End
-@>
-
-Page #2
-Conditions
-None
-
-Graphic: Object ball
-
-Autonomous Movement
-Type: Fixed
-Speed: 3: Slow
-Freq: 3: Low
-Options Enabled
-Move Animation
-Trigger: Action Button
-
-List of Event Commands:
-@>Script: $game_temp.vs_transition_bg = "Eientei"
-@>Conditional Branch: Script: TrainerBattle.start(:SUNNYT, "Sunny Milk", 10, :START, "Star Sapphire", 10, :LUNAT, "Luna Child", 10,)
- @>
-: Else
- @>Script: pbTrainerEnd
- @>Exit Event Processing
- @>
-: Branch End
-@>
-
-Page #3
-Conditions
-None
-
-Graphic: Object ball
-
-Autonomous Movement
-Type: Fixed
-Speed: 3: Slow
-Freq: 3: Low
-Options Enabled
-Move Animation
-Trigger: Action Button
-
-List of Event Commands:
 @>Play SE: 'Exit Door', 80, 100
 @>Change Screen Color Tone: (-255,-255,-255,0), @6
 @>Wait: 8 frame(s)
@@ -96071,7 +96454,7 @@ List of Event Commands:
 
 #==============================================================================
 Map ID: 113
-Map Name: Ending Filler Map
+Map Name: Credits - Ayaka's Room
 Tileset: 029: Interior (General)
 Width: 20, Height: 15
 
@@ -96218,7 +96601,7 @@ List of Event Commands:
 @>Text: \xn[Maya]\se[]You better not still be asleep! Don't make me come 
  :    : in there and shake you awake!\wtnp[40]
 @>Text: \xn[\pn]\se[]I'm awake, I'm awake! Just give me a moment!\wtnp[40]
-@>Text: \xn[Maya]\se[]Don't take too long! The Shrine Maiden and her friends
+@>Text: \xn[Maya]\se[]\l[3]Don't take too long! The Shrine Maiden and her friends
  :    : are already out there ahead of you!\wtnp[40]
 @>Set Move Route: [Ayaka]
  :              : $>Move Right
@@ -96245,8 +96628,8 @@ List of Event Commands:
 @>Text: \xn[Meimu]\se[]I'm sorry! Besides, you did say you'd find another way
  :    : to make me real...\wtnp[40]
 @>Text: \xn[Meimu]\se[]Does this not count?\wtnp[40]
-@>Text: \xn[\pn]\se[]When I said "Make you real", I didn't have you suddenly
- :    : latching onto my soul in mind!\wtnp[40]
+@>Text: \xn[\pn]\se[]\l[3]When I said "Make you real", I didn't have you suddenly
+ :    : <i>latching onto my soul</i> in mind!\wtnp[40]
 @>Text: \xn[\pn]\se[]But whatever... I'm sure you'll be able to manifest
  :    : yourself properly one day!\wtnp[40]
 @>Change Screen Color Tone: (0,0,0,255), @10
@@ -96260,9 +96643,9 @@ List of Event Commands:
  :    : how I'm still here...\wtnp[40]
 @>Text: \xn[Meimu]\se[]After our battle, I was convinced I would fade away back
  :    : into non-existence...\wtnp[40]
-@>Text: \xn[Meimu]\se[]But, I noticed a bright, purple light, and when I followed it, it
+@>Text: \xn[Meimu]\se[]\l[3]But, I noticed a bright, purple light, and when I followed it, it
  :    : led me back to Reimaden, where I still had a form.\wtnp[40]
-@>Text: \xn[Meimu]\se[]But I also discovered that, when I enter a dream-like trance,
+@>Text: \xn[Meimu]\se[]\l[3]I also discovered that, when I enter a dream-like trance,
  :    : I could see through \pn's eyes whenever they were awake.\wtnp[40]
 @>Text: \xn[\pn]\se[]You nearly gave me a heart attack the first time I saw you
  :    : in the Village!\wtnp[40]
@@ -96281,11 +96664,12 @@ List of Event Commands:
  :              : $>Jump: +0,+0
 @>Text: \xn[Meimu]\se[]Are you going to join them!?\wtnp[40]
 @>Text: \xn[\pn]\se[]You could ask with a little less anticipation in your voice...\wtnp[40]
-@>Set Move Route: Player
+@>Set Move Route: [Ayaka]
  :              : $>Turn Left
 @>Text: \xn[\pn]\se[]But I don't know, I could just sit back and watch...\wtnp[40]
+@>Text: \xn[\pn]\se[]Get some more sleep...\wtnp[40]
 @>Wait: 10 frame(s)
-@>Set Move Route: Player
+@>Set Move Route: [Ayaka]
  :              : $>Wait: 4 frame(s)
  :              : $>Turn Right
 @>Text: \xn[\pn]\se[]...However, where would the fun in that be!\wtnp[40]
@@ -96310,7 +96694,7 @@ List of Event Commands:
 @>Text: \xn[\pn]\se[]People were getting taken over by another person in their
  :    : entirety.\wtnp[40]
 @>Text: \xn[\pn]\se[]Meimu... had a lot of fun with this incident.\wtnp[40]
-@>Text: \xn[\pn]\se[]It ultimately came down to Miss Reimu and Miss Yakumo
+@>Text: \xn[\pn]\se[]\l[3]It ultimately came down to Miss Reimu and Miss Yakumo
  :    : dealing the final blow to the two who manipulated the phenomenon.\wtnp[40]
 @>Text: \xn[\pn]\se[]I believe it was the Pestilence Goddess and the Poverty Goddess?\wtnp[40]
 @>Text: \xn[\pn]\se[]That doesn't mean I didn't help out, though!\wtnp[40]
@@ -96318,6 +96702,16 @@ List of Event Commands:
 @>Play BGM: 'W-045. Above and Beyond - Loop', 40, 100
 @>Text: \xn[\pn]\se[]...But that's an <b>adventure of mine</b> for another day!\wtnp[40]
 @>Wait: 60 frame(s)
+@>Show Picture: 1, 'black box', Upper Left (0,200), (100%,100%), 192, Normal
+@>Wait: 10 frame(s)
+@>Scroll Map: Down, 1, 2
+@>Change Screen Color Tone: (51,17,-34,255), @20
+@>Move Picture: 1, @40, Upper Left (0,0), (100%,100%), 255, Normal
+@>Control Variables: [0144: TAoA Credits Variable] = 1
+@>Call Common Event: TLA Credits
+@>Wait: 10 frame(s)
+@>Transfer Player:[114: Credits - Village Concert Stage], (015,016)
+@>Change Transparent Flag: Transparency
 @>
 
 #------------------------------------------------------------------------------
@@ -96425,6 +96819,8 @@ Page #1
 Conditions
 None
 
+Graphic: TPDP_NPC 01
+
 Autonomous Movement
 Type: Fixed
 Speed: 3: Slow
@@ -96444,6 +96840,8 @@ Event Name: Attendant
 Page #1
 Conditions
 None
+
+Graphic: TPDP_NPC 04
 
 Autonomous Movement
 Type: Fixed
@@ -96465,6 +96863,8 @@ Page #1
 Conditions
 None
 
+Graphic: TPDP_NPC 20
+
 Autonomous Movement
 Type: Fixed
 Speed: 3: Slow
@@ -96484,6 +96884,8 @@ Event Name: Attendant
 Page #1
 Conditions
 None
+
+Graphic: TPDP_NPC 11
 
 Autonomous Movement
 Type: Fixed
@@ -96505,6 +96907,8 @@ Page #1
 Conditions
 None
 
+Graphic: TPDP_NPC 06
+
 Autonomous Movement
 Type: Fixed
 Speed: 3: Slow
@@ -96524,6 +96928,8 @@ Event Name: Attendant
 Page #1
 Conditions
 None
+
+Graphic: TPDP_NPC 10
 
 Autonomous Movement
 Type: Fixed
@@ -96545,6 +96951,8 @@ Page #1
 Conditions
 None
 
+Graphic: TPDP_NPC 13
+
 Autonomous Movement
 Type: Fixed
 Speed: 3: Slow
@@ -96564,6 +96972,8 @@ Event Name: Attendant
 Page #1
 Conditions
 None
+
+Graphic: TPDP_NPC 01
 
 Autonomous Movement
 Type: Fixed
@@ -96585,6 +96995,8 @@ Page #1
 Conditions
 None
 
+Graphic: TPDP_NPC 07
+
 Autonomous Movement
 Type: Fixed
 Speed: 3: Slow
@@ -96604,6 +97016,8 @@ Event Name: Attendant
 Page #1
 Conditions
 None
+
+Graphic: TPDP_NPC 06
 
 Autonomous Movement
 Type: Fixed
@@ -96625,6 +97039,8 @@ Page #1
 Conditions
 None
 
+Graphic: TPDP_NPC 14
+
 Autonomous Movement
 Type: Fixed
 Speed: 3: Slow
@@ -96644,6 +97060,8 @@ Event Name: Attendant
 Page #1
 Conditions
 None
+
+Graphic: TPDP_NPC 01
 
 Autonomous Movement
 Type: Fixed
@@ -96665,6 +97083,8 @@ Page #1
 Conditions
 None
 
+Graphic: TPDP_NPC 28
+
 Autonomous Movement
 Type: Fixed
 Speed: 3: Slow
@@ -96684,6 +97104,8 @@ Event Name: Attendant
 Page #1
 Conditions
 None
+
+Graphic: TPDP_NPC 09
 
 Autonomous Movement
 Type: Fixed
@@ -96705,6 +97127,8 @@ Page #1
 Conditions
 None
 
+Graphic: TPDP_NPC 07
+
 Autonomous Movement
 Type: Fixed
 Speed: 3: Slow
@@ -96724,6 +97148,8 @@ Event Name: Attendant
 Page #1
 Conditions
 None
+
+Graphic: TPDP_NPC 14
 
 Autonomous Movement
 Type: Fixed
@@ -96745,6 +97171,8 @@ Page #1
 Conditions
 None
 
+Graphic: TPDP_NPC 11
+
 Autonomous Movement
 Type: Fixed
 Speed: 3: Slow
@@ -96764,6 +97192,8 @@ Event Name: Attendant
 Page #1
 Conditions
 None
+
+Graphic: TPDP_NPC 04
 
 Autonomous Movement
 Type: Fixed
@@ -96785,6 +97215,8 @@ Page #1
 Conditions
 None
 
+Graphic: TPDP_NPC 09
+
 Autonomous Movement
 Type: Fixed
 Speed: 3: Slow
@@ -96804,6 +97236,8 @@ Event Name: Attendant
 Page #1
 Conditions
 None
+
+Graphic: TPDP_NPC 13
 
 Autonomous Movement
 Type: Fixed
@@ -96825,6 +97259,8 @@ Page #1
 Conditions
 None
 
+Graphic: TPDP_NPC 07
+
 Autonomous Movement
 Type: Fixed
 Speed: 3: Slow
@@ -96844,6 +97280,8 @@ Event Name: Attendant
 Page #1
 Conditions
 None
+
+Graphic: TPDP_NPC 04
 
 Autonomous Movement
 Type: Fixed
@@ -96865,6 +97303,8 @@ Page #1
 Conditions
 None
 
+Graphic: TPDP_NPC 14
+
 Autonomous Movement
 Type: Fixed
 Speed: 3: Slow
@@ -96884,6 +97324,8 @@ Event Name: Attendant
 Page #1
 Conditions
 None
+
+Graphic: TPDP_NPC 28
 
 Autonomous Movement
 Type: Fixed
@@ -96905,6 +97347,8 @@ Page #1
 Conditions
 None
 
+Graphic: TPDP_NPC 01
+
 Autonomous Movement
 Type: Fixed
 Speed: 3: Slow
@@ -96924,6 +97368,8 @@ Event Name: Attendant
 Page #1
 Conditions
 None
+
+Graphic: TPDP_NPC 06
 
 Autonomous Movement
 Type: Fixed
@@ -96945,6 +97391,8 @@ Page #1
 Conditions
 None
 
+Graphic: TPDP_NPC 11
+
 Autonomous Movement
 Type: Fixed
 Speed: 3: Slow
@@ -96964,6 +97412,8 @@ Event Name: Attendant
 Page #1
 Conditions
 None
+
+Graphic: TPDP_NPC 01
 
 Autonomous Movement
 Type: Fixed
@@ -96985,6 +97435,8 @@ Page #1
 Conditions
 None
 
+Graphic: TPDP_NPC 20
+
 Autonomous Movement
 Type: Fixed
 Speed: 3: Slow
@@ -97004,6 +97456,8 @@ Event Name: Attendant
 Page #1
 Conditions
 None
+
+Graphic: TPDP_NPC 13
 
 Autonomous Movement
 Type: Fixed
@@ -97025,6 +97479,8 @@ Page #1
 Conditions
 None
 
+Graphic: TPDP_NPC 10
+
 Autonomous Movement
 Type: Fixed
 Speed: 3: Slow
@@ -97044,6 +97500,8 @@ Event Name: Attendant
 Page #1
 Conditions
 None
+
+Graphic: TPDP_NPC 20
 
 Autonomous Movement
 Type: Fixed
@@ -97065,6 +97523,8 @@ Page #1
 Conditions
 None
 
+Graphic: TPDP_NPC 07
+
 Autonomous Movement
 Type: Fixed
 Speed: 3: Slow
@@ -97084,6 +97544,8 @@ Event Name: Attendant
 Page #1
 Conditions
 None
+
+Graphic: TPDP_NPC 13
 
 Autonomous Movement
 Type: Fixed
@@ -97105,6 +97567,8 @@ Page #1
 Conditions
 None
 
+Graphic: TPDP_NPC 04
+
 Autonomous Movement
 Type: Fixed
 Speed: 3: Slow
@@ -97124,6 +97588,8 @@ Event Name: Attendant
 Page #1
 Conditions
 None
+
+Graphic: TPDP_NPC 14
 
 Autonomous Movement
 Type: Fixed
@@ -97154,14 +97620,22 @@ Move Animation
 Trigger: Autorun
 
 List of Event Commands:
+@>Script: pbShowPicture(1,"Credits/TAoA/BGs/BGFestival.png",1,256,192,100,100,0,0)
+@>Wait: 10 frame(s)
+@>Move Picture: 1, @10, Center (256,192), (100%,100%), 255, Normal
+@>Wait: 40 frame(s)
+@>Move Picture: 1, @10, Center (256,192), (100%,100%), 0, Normal
+@>Change Screen Color Tone: (0,0,0,0), @20
+@>Wait: 20 frame(s)
+@>Scroll Map: Up, 6, 2
 @>Change Text Options: Middle, Show
-@>Text: \xn[Raiko]\se[]It starts with a seed in the dark of the night.\wtnp[20]
-@>Text: \xn[Raiko]\se[]You wait for a sunbeam to bring it to light.\wtnp[20]
-@>Text: \xn[Raiko]\se[]The birth of a legend where you are the star...\wtnp[20]
-@>Text: \xn[Raiko]\se[]The moment defining the person you are...\wtnp[20]
-@>Text: \xn[Raiko]\se[]Then, in that moment, the record is set.\wtnp[20]
-@>Text: \xn[Raiko]\se[]Are you that person, or did you forget?\wtnp[20]
-@>Text: \xn[Raiko]\se[]What could possess you to do such a thing;\wtnp[20]
+@>Text: \xn[Raiko]\se[]\ts[2]\w[dark]It starts with a seed in the dark of the night.\wtnp[30]
+@>Text: \xn[Raiko]\se[]\ts[2]\w[dark]You wait for a sunbeam to bring it to light.\wtnp[30]
+@>Text: \xn[Raiko]\se[]\ts[2]\w[dark]The birth of a legend where you are the star...\wtnp[30]
+@>Text: \xn[Raiko]\se[]\ts[2]\w[dark]The moment defining the person you are...\wtnp[30]
+@>Text: \xn[Raiko]\se[]\ts[2]\w[dark]Then, in that moment, the record is set.\wtnp[30]
+@>Text: \xn[Raiko]\se[]\ts[2]\w[dark]Are you that person, or did you forget?\wtnp[30]
+@>Text: \xn[Raiko]\se[]\ts[2]\w[dark]What could possess you to do such a thing;\wtnp[30]
 @>Screen Flash: (255,255,255,255), @1
 @>Play SE: 'Vs flash', 80, 100
 @>Show Picture: 1, 'PrismH', Upper Left (0,0), (100%,100%), 255, Normal
@@ -97171,10 +97645,26 @@ List of Event Commands:
  :              : $>Change Opacity: 255
 @>Set Move Route: [Merlin]
  :              : $>Change Opacity: 255
-@>Text: \xn[Raiko]\se[]A spirit of fate has been playing your strings!\wtnp[20]
+@>Text: \xn[Raiko]\se[]\ts[2]\w[dark]A spirit of fate has been playing your strings!\wtnp[30]
 @>Play SE: 'Applause', 80, 100
 @>Erase Picture: 1
-@>Text: \xn[Raiko]\se[]Oh, are you listening, are you listening...~\wtnp[40]
+@>Text: \xn[Raiko]\se[]\ts[2]\w[dark]Oh, are you listening, are you listening...~\wtnp[40]
+@>Wait: 10 frame(s)
+@>Change Text Options: Middle, Show
+@>Text: \xn[Raiko]\se[]Are you listening, Gensokyo?\wtnp[20]
+@>Text: \xn[Raiko]\se[]Let's make some noise!\se[Applause]\wtnp[20]
+@>Change Text Options: Bottom, Show
+@>Wait: 10 frame(s)
+@>Show Picture: 1, 'black box', Upper Left (0,200), (100%,100%), 192, Normal
+@>Wait: 10 frame(s)
+@>Scroll Map: Down, 1, 2
+@>Change Screen Color Tone: (51,17,-34,255), @20
+@>Move Picture: 1, @40, Upper Left (0,0), (100%,100%), 255, Normal
+@>Control Variables: [0144: TAoA Credits Variable] = 2
+@>Call Common Event: TLA Credits
+@>Wait: 10 frame(s)
+@>Transfer Player:[139: Credits - Mugenkan Garden], (024,007)
+@>Change Transparent Flag: Transparency
 @>
 
 #------------------------------------------------------------------------------
@@ -97271,6 +97761,7 @@ Move Animation
 Trigger: Autorun
 
 List of Event Commands:
+@>Call Common Event: Preserve player party
 @>Scroll Map: Right, 3, 3
 @>Text: \xn[Announcer]Welcome back to today's special exhibition match! We
  :    : are currently in the final round, with the Village Prodigy, \pn, once again
@@ -97394,6 +97885,7 @@ List of Event Commands:
 @>Text: \xn[Announcer]Remember to clean up after yourselves before
  :    : leaving the venue. I hope to see you all again for the next grand
  :    : exhibition!
+@>Script: echoln pbGet(2)
 @>Script: $player.party.clear
 :       : $player.party = pbGet(2)
 @>Play SE: 'Door exit', 100, 100
@@ -97492,7 +97984,7 @@ Speed: 3: Slow
 Freq: 3: Low
 Options Enabled
 Move Animation
-Trigger: Autorun
+Trigger: Action Button
 
 List of Event Commands:
 @>Script: $game_variables[2] = $player.party.clone
@@ -98501,18 +98993,8 @@ List of Event Commands:
   @>Script: pbTrainerIntro(:EIRIN)
   @>Text: \xn[Eirin]As the Sage of the Moon, I shall see if you have 
    :    : what it takes to overcome the power of purity incarnate!
-  @>Control Switches: [0104: Transition Handler] = ON
-  @>Control Variables: [0103: Vs. Transition ID] = 41
-  @>Script: case pbGet(141)
-  :       : when 0
-  :       :  pbSet(104, 4)
-  :       : when 1
-  :       :  pbSet(104, 4)
-  :       : when 2
-  :       :  pbSet(104, 6)
-  :       : else
-  :       :  pbSet(104, 6)
-  :       : end
+  @>Script: $game_temp.vs_transition_bg = "Eientei"
+  :       : $game_temp.vs_name = "Vs. Eirin & Reisen"
   @>Conditional Branch: Script: !pbCanDoubleBattle?
    @>Script: setBattleRule("1v2")
    @>
@@ -98733,7 +99215,7 @@ List of Event Commands:
   :              : $>Turn Down
  @>Text: \xn[Eirin]Are you ready for your test, \pn? Be warned, neither
   :    : Udonge or I shall pull any punches.
- @>Play SE: 'Electronic Malfunction', 20, 100
+ @>Play SE: 'Electronic Malfunction', 40, 100
  @>Text: \xn[Eirin]But then, you knew that already, didn't you?
  @>Text: \xn[\pn]\b{Seriously, what is going on here? None of this is how
   :    : I remember it!}
@@ -98746,18 +99228,8 @@ List of Event Commands:
   @>Script: pbTrainerIntro(:EIRIN)
   @>Text: \xn[Eirin]As the Sage of the Moon, I shall see if you have 
    :    : what it takes to overcome the power of purity incarnate!
-  @>Control Switches: [0104: Transition Handler] = ON
-  @>Control Variables: [0103: Vs. Transition ID] = 41
-  @>Script: case pbGet(141)
-  :       : when 0
-  :       :  pbSet(104, 4)
-  :       : when 1
-  :       :  pbSet(104, 4)
-  :       : when 2
-  :       :  pbSet(104, 6)
-  :       : else
-  :       :  pbSet(104, 6)
-  :       : end
+  @>Script: $game_temp.vs_transition_bg = "Eientei"
+  :       : $game_temp.vs_name = "Vs. Eirin & Reisen"
   @>Conditional Branch: Script: !pbCanDoubleBattle?
    @>Script: setBattleRule("1v2")
    @>
@@ -98765,7 +99237,7 @@ List of Event Commands:
    @>Script: setBattleRule("2v2")
    @>
   : Branch End
-  @>Conditional Branch: Script: TrainerBattle.start(:REISEN, "Reisen U. Inaba", 10+(pbGet(99) * 10), :EIRIN, "Eirin Yagokoro", 10+(pbGet(99) * 10))
+  @>Conditional Branch: Script: TrainerBattle.start(:REISEN, "Reisen U. Inaba", 30, :EIRIN, "Eirin Yagokoro", 30)
    @>Text: \xn[Eirin]I must say, Miss \pn. The stories about you 
     :    : were true. You are quite the formidable Puppet Handler.
    @>Text: \xn[\pn]Well, thanks, I guess! Battling just sort of comes 
@@ -99409,7 +99881,7 @@ List of Event Commands:
   :              : $>Turn Down
   :              : $>Wait: 10 frame(s)
  @>Wait for Move's Completion
- @>Play SE: 'Electronic Malfunction', 20, 100
+ @>Play SE: 'Electronic Malfunction', 40, 100
  @>Text: \xn[Eirin]Ah, welcome back Miss \pn.
  @>Set Move Route: [Reisen]
   :              : $>Turn Down
@@ -100923,18 +101395,8 @@ List of Event Commands:
  :    : Forget about everything...
 @>Text: \xn[Doremy]If a kingdom is what you seek, then I shall
  :    : craft your Kaian now!
-@>Control Switches: [0104: Transition Handler] = ON
-@>Control Variables: [0103: Vs. Transition ID] = 44
-@>Script: case pbGet(141)
-:       : when 0
-:       :  pbSet(104, 4)
-:       : when 1
-:       :  pbSet(104, 5)
-:       : when 2
-:       :  pbSet(104, 6)
-:       : else
-:       :  pbSet(104, 6)
-:       : end
+@>Script: $game_temp.vs_transition_bg = "DreamWorld"
+:       : #$game_temp.vs_name = "Vs. Doremy Sweet"
 @>Conditional Branch: Script: TrainerBattle.start(:DOREMY, "Doremy Sweet", 10+(pbGet(99) * 10))
  @>Text: \xn[Doremy]Resisting the urge to sleep, even in this world of
   :    : dreams... You must have a strong will to maintain control through
@@ -101057,18 +101519,8 @@ List of Event Commands:
   :    : this experience already unfolded!
  @>
 : Branch End
-@>Control Switches: [0104: Transition Handler] = ON
-@>Control Variables: [0103: Vs. Transition ID] = 44
-@>Script: case pbGet(141)
-:       : when 0
-:       :  pbSet(104, 4)
-:       : when 1
-:       :  pbSet(104, 5)
-:       : when 2
-:       :  pbSet(104, 6)
-:       : else
-:       :  pbSet(104, 6)
-:       : end
+@>Script: $game_temp.vs_transition_bg = "DreamWorld"
+:       : #$game_temp.vs_name = "Vs. Doremy Sweet"
 @>Conditional Branch: Script: TrainerBattle.start(:DOREMY, "Doremy Sweet", 10+(pbGet(99) * 10))
  @>Conditional Branch: Switch [0147: TKoL Cleared] == OFF
   @>Text: \xn[Doremy]Resisting the urge to awaken, even in this world of
@@ -103900,9 +104352,8 @@ List of Event Commands:
   :    : shall know true suffering!
  @>
 : Branch End
-@>Control Switches: [0104: Transition Handler] = ON
-@>Control Variables: [0103: Vs. Transition ID] = 47
-@>Control Variables: [0104: Vs. Transition - Pkmn] = 6
+@>Script: $game_temp.vs_transition_bg = "Tranquility"
+:       : #$game_temp.vs_name = "Vs. Junko & Hecatia Lapislazuli"
 @>Change Battle BGM: 'B-037. Pandemonic Furies', 100, 100
 @>Script: setBattleRule("backdrop", "starlightJunko")
 @>Conditional Branch: Script: TrainerBattle.start(:HECATIA, "Hecatia Lapislazuli", 10+(pbGet(99) * 10), :JUNKO, "Junko", 11+(pbGet(99) * 10))
@@ -106882,8 +107333,8 @@ List of Event Commands:
  :    : let's get ready to crank things up!
 @>Text: \xn[Clownpiece]It's lunatic time! I'll show you a true world
  :    : of madness!
-@>Control Switches: [0104: Transition Handler] = ON
-@>Control Variables: [0103: Vs. Transition ID] = 45
+@>Script: $game_temp.vs_transition_bg = "Capital"
+:       : $game_temp.vs_name = "Vs. Clownpiece"
 @>Conditional Branch: Switch [0107: New Game +] == OFF
  @>Control Variables: [0104: Vs. Transition - Pkmn] = 4
  @>
@@ -110218,9 +110669,8 @@ List of Event Commands:
 @>Text: \xn[Mima]Against the ultimate terror of the night, the eternally sworn
  :    : enemy of the Human race- I, the great magician Mima, shall rend
  :    : you asunder!
-@>Control Switches: [0104: Transition Handler] = ON
-@>Control Variables: [0103: Vs. Transition ID] = 55
-@>Control Variables: [0104: Vs. Transition - Pkmn] = 6
+@>Script: $game_temp.vs_transition_bg = "WorldOfFantasy"
+:       : #$game_temp.vs_name = "Vs. Mima"
 @>Conditional Branch: Script: TrainerBattle.start(:MIMA, "Mima")
  @>Text: \xn[\pn]Haah... Haah... There, I won! Now will you please explain
   :    : to me what in the world is going on!?
@@ -110641,7 +111091,69 @@ List of Event Commands:
 
 Page #2
 Conditions
-Self Switch A is ON
+None
+
+Autonomous Movement
+Type: Fixed
+Speed: 3: Slow
+Freq: 3: Low
+Options Enabled
+Move Animation
+Trigger: Player Touch
+
+List of Event Commands:
+@>Text: This teleporter... seems to still be working!
+@>Show Picture: 1, 'TKoL', Upper Left (0,0), (100%,100%), 0, Normal
+@>Move Picture: 1, @20, Upper Left (0,0), (100%,100%), 255, Normal
+@>Wait: 60 frame(s)
+@>Change Text Options: Bottom, Show
+@>Text: The Kingdom of Lunacy.\wt[20]\nIs this the adventure you'd like to play?
+@>Show Choices: Yes, No
+(When Cancel: Choice 2)
+: When [Yes]
+ @>Text: And you're sure about this? Don't you have better things to do
+  :    : right now?
+ @>Show Choices: Yes, No
+ (When Cancel: Choice 2)
+ : When [Yes]
+  @>Text: ...Understood. Enjoy your lunatic dream for as long as it lasts.
+  @>Control Variables: [0105: Game Selected] = 3
+  @>Fade Out BGM: 1 sec.
+  @>Move Picture: 1, @20, Upper Left (0,0), (100%,100%), 0, Normal
+  @>Wait: 20 frame(s)
+  @>Change Transparent Flag: Transparency
+  @>Transfer Player:[005: The Kingdom of Lunacy], (001,001)
+  @>Conditional Branch: Switch [0147: TKoL Cleared] == OFF
+   @>Control Variables: [0099: NG+ Loop] += 1
+   @>
+  : Branch End
+  @>Control Switches: [0098: Music Override] = OFF
+  @>Control Variables: [0121..0135] = 0
+  @>Control Switches: [0141..0142] = OFF
+  @>Control Switches: [0144: Clownpiece Checkpoint] = OFF
+  @>Script: $PokemonGlobal.clear_reset_maps
+  @>Script: $PokemonGlobal.encounter_version = pbGet(99)
+  :       : echoln pbGet(99)
+  :       : echoln $PokemonGlobal.encounter_version
+  @>
+ : When [No]
+  @>Move Picture: 1, @20, Upper Left (0,0), (100%,100%), 0, Normal
+  @>Wait: 20 frame(s)
+  @>Jump to Label: Start
+  @>
+ : Branch End
+ @>
+: When [No]
+ @>Move Picture: 1, @20, Upper Left (0,0), (100%,100%), 0, Normal
+ @>Wait: 20 frame(s)
+ @>Jump to Label: Start
+ @>
+: Branch End
+@>
+
+Page #3
+Conditions
+Switch 0163: No Going Back is ON
 
 Autonomous Movement
 Type: Fixed
@@ -111008,6 +111520,102 @@ List of Event Commands:
 @>
 
 #------------------------------------------------------------------------------
+Event ID: 012
+Event Name: EV012
+(X,Y): (020,006)
+
+Page #1
+Conditions
+None
+
+Autonomous Movement
+Type: Fixed
+Speed: 3: Slow
+Freq: 3: Low
+Options Enabled
+Move Animation
+Trigger: Player Touch
+
+List of Event Commands:
+@>Show Picture: 1, 'TKoL', Upper Left (0,0), (100%,100%), 0, Normal
+@>Move Picture: 1, @20, Upper Left (0,0), (100%,100%), 255, Normal
+@>Wait: 60 frame(s)
+@>Change Text Options: Bottom, Show
+@>Text: The Kingdom of Lunacy.\wt[20]\nIs this the adventure you'd like to play?
+@>Show Choices: Yes, No
+(When Cancel: Choice 2)
+: When [Yes]
+ @>Control Variables: [0105: Game Selected] = 3
+ @>Fade Out BGM: 1 sec.
+ @>Move Picture: 1, @20, Upper Left (0,0), (100%,100%), 0, Normal
+ @>Wait: 20 frame(s)
+ @>Change Transparent Flag: Transparency
+ @>Transfer Player:[005: The Kingdom of Lunacy], (001,001)
+ @>Conditional Branch: Switch [0147: TKoL Cleared] == OFF
+  @>Control Variables: [0099: NG+ Loop] += 1
+  @>
+ : Branch End
+ @>Control Variables: [0121..0135] = 0
+ @>Control Switches: [0141..0142] = OFF
+ @>Control Switches: [0144: Clownpiece Checkpoint] = OFF
+ @>
+: When [No]
+ @>Move Picture: 1, @20, Upper Left (0,0), (100%,100%), 0, Normal
+ @>Wait: 20 frame(s)
+ @>Jump to Label: Start
+ @>
+: Branch End
+@>
+
+Page #2
+Conditions
+None
+
+Autonomous Movement
+Type: Fixed
+Speed: 3: Slow
+Freq: 3: Low
+Options Enabled
+Move Animation
+Trigger: Player Touch
+
+List of Event Commands:
+@>Show Picture: 1, 'TKoL', Upper Left (0,0), (100%,100%), 0, Normal
+@>Move Picture: 1, @20, Upper Left (0,0), (100%,100%), 255, Normal
+@>Wait: 60 frame(s)
+@>Change Text Options: Bottom, Show
+@>Text: The Kingdom of Lunacy.\wt[20]\nIs this the adventure you'd like to play?
+@>Show Choices: Yes, No
+(When Cancel: Choice 2)
+: When [Yes]
+ @>Script: $player.scenario_name = "The Kingdom of Lunacy"
+ @>Control Variables: [0105: Game Selected] = 3
+ @>Fade Out BGM: 1 sec.
+ @>Move Picture: 1, @20, Upper Left (0,0), (100%,100%), 0, Normal
+ @>Wait: 20 frame(s)
+ @>Change Transparent Flag: Transparency
+ @>Transfer Player:[005: The Kingdom of Lunacy], (001,001)
+ @>Conditional Branch: Switch [0147: TKoL Cleared] == OFF
+  @>Control Variables: [0099: NG+ Loop] += 1
+  @>
+ : Branch End
+ @>Control Variables: [0121..0135] = 0
+ @>Control Switches: [0141..0142] = OFF
+ @>Control Switches: [0144: Clownpiece Checkpoint] = OFF
+ @>Script: $PokemonGlobal.clear_reset_maps
+ @>Script: $PokemonGlobal.encounter_version = pbGet(99)
+ :       : echoln pbGet(99)
+ :       : echoln $PokemonGlobal.encounter_version
+ @>
+: When [No]
+ @>Move Picture: 1, @20, Upper Left (0,0), (100%,100%), 0, Normal
+ @>Wait: 20 frame(s)
+ @>Jump to Label: Start
+ @>
+: Branch End
+@>
+
+#------------------------------------------------------------------------------
 
 #==============================================================================
 Map ID: 137
@@ -111268,11 +111876,9 @@ List of Event Commands:
 @>Script: pbTrainerIntro(:MEIMU)
 @>Change Transparent Flag: Normal
 @>Play BGS: 'Vortex', 0, 100
-@>Control Switches: [0104: Transition Handler] = ON
-@>Control Variables: [0103: Vs. Transition ID] = 56
-@>Control Variables: [0104: Vs. Transition - Pkmn] = 6
 @>Loop
- @>Conditional Branch: Variable [0143: Meimu Battle Count] == 3
+ @>Script: $game_temp.vs_transition_bg = "WorldOfFantasy"
+ @>Conditional Branch: Variable [0143: Meimu Battle Count] == 4
   @>Script: setBattleRule("double")
   @>
  : Branch End
@@ -111544,8 +112150,7 @@ List of Event Commands:
 :       : setBattleRule("battleIntroText", "This is the end.")
 :       : setBattleRule("victoryBGM", "")
 :       : setBattleRule("midbattleScript", :vs_meimu_final)
-@>Control Switches: [0104: Transition Handler] = ON
-@>Control Variables: [0103: Vs. Transition ID] = 57
+@>Script: #$game_temp.vs_transition_bg = "WorldOfFantasy"
 @>Conditional Branch: Script: WildBattle.start(:MEIMU, 100)
  @>Script: $PokemonSystem.battlescene = pbGet(70)
  @>Control Switches: [0103: Hide AI Level] = OFF
@@ -113350,6 +113955,489 @@ Conditions
 None
 
 Graphic: Person_Meimu
+
+Autonomous Movement
+Type: Fixed
+Speed: 3: Slow
+Freq: 3: Low
+Options Enabled
+Move Animation
+Trigger: Action Button
+
+List of Event Commands:
+@>
+
+#------------------------------------------------------------------------------
+Event ID: 064
+Event Name: Autorun Backup2
+(X,Y): (002,044)
+
+Page #1
+Conditions
+Variable 0142: TLA Plot Variable is 5 or above
+
+Autonomous Movement
+Type: Fixed
+Speed: 3: Slow
+Freq: 3: Low
+Options Enabled
+Move Animation
+Trigger: Action Button
+
+List of Event Commands:
+@>Play BGS: 'Vortex', 80, 100
+@>Script: pbSetSelfSwitch(36,"A",false)
+@>Wait: 20 frame(s)
+@>Set Event Location: [Ayaka (Cutscene)],(015,031)
+@>Scroll Map: Down, 9, 2
+@>Set Event Location: [Meimu 1],(015,021)
+@>Set Move Route: [Meimu 1]
+ :              : $>Turn Up
+@>Text: \xn[Meimu]C'mon, just a little more juice Meimu, you can do 
+ :    : this...\wtnp[20]
+@>Wait: 20 frame(s)
+@>Text: \xn[Meimu]Why\..\..\..\. Why won't this rift close...!\wtnp[20]
+@>Wait: 80 frame(s)
+@>Text: \xn[\pn]Hey! What do you think you're doing?
+@>Scroll Map: Down, 5, 3
+@>Set Move Route: [Ayaka (Cutscene)]
+ :              : $>Move Up
+ :              : $>Move Up
+ :              : $>Wait: 15 frame(s)
+@>Wait for Move's Completion
+@>Show Animation: [Meimu 1], [Question bubble]
+@>Wait: 8 frame(s)
+@>Set Move Route: [Meimu 1]
+ :              : $>Turn Down
+@>Wait for Move's Completion
+@>Wait: 10 frame(s)
+@>Set Move Route: [Meimu 1]
+ :              : $>Move Down
+ :              : $>Move Down
+@>Text: \xn[Meimu]Y-\wt[10]You! It's you! ...Is it really you?
+@>Change Text Options: Middle, Show
+@>Text: \xn[Meimu]But what are you doing here, I didn't pull your dream self
+ :    : in this time...
+@>Text: \xn[\pn]So, it was you who's been pulling me into this realm...
+@>Text: \xn[Meimu]Well you're here at just the right time! Just as soon as
+ :    : I close this rift, I'll have fulfilled my goals and become real!
+@>Text: \xn[\pn]Are you not real right now? You're standing before me, 
+ :    : aren't you?
+@>Set Move Route: [Meimu 1]
+ :              : $>Turn Left
+ :              : $>Wait: 25 frame(s)
+ :              : $>Turn Down
+@>Text: \xn[Meimu]This form... it's-...\wt[10] It's temporary... If I don't keep up my efforts,
+ :    : I'll fade back into the aether of non-existence.
+@>Text: \xn[Meimu]That's why I've been practicing and focusing my
+ :    : powers every day under Lady Mima's tutelage!
+@>Wait for Move's Completion
+@>Text: \xn[\pn]But... Don't you see what's going on around you? 
+ :    : The realm is-\wtnp[2]
+@>Set Move Route: [Meimu 1]
+ :              : $>Turn Up
+ :              : $>Wait: 30 frame(s)
+ :              : $>Turn Down
+@>Text: \xn[Meimu]I can fix it!\wt[10] I know I can fix it!\wt[10] I just need to try harder,
+ :    : and when I have mastery of my ability to manipulate reality.
+ :    : I can fix the damage!
+@>Wait for Move's Completion
+@>Text: \xn[\pn]It's your efforts that are causing the realm to fall apart
+ :    : in the first place!
+@>Text: \xn[\pn]And if you keep this up, then there won't <i>be</i>
+ :    : a reality to fix!
+@>Set Move Route: [Meimu 1]
+ :              : $>Move Up
+ :              : $>Move Up
+@>Text: \xn[Meimu]I'm so close though! Just a bit more and-\wtnp[4]
+@>Screen Flash: (255,255,255,255), @5
+@>Play SE: 'OWThunder1', 100, 100
+@>Wait: 5 frame(s)
+@>Play SE: 'Mining collapse', 80, 50
+@>Screen Shake: 8, 7, @40
+@>Text: \xn[\pn]\b(This place is going to blow if she doesn't stop soon...!)
+@>Set Move Route: [Ayaka (Cutscene)]
+ :              : $>Move Up
+ :              : $>Move Up
+@>Scroll Map: Up, 2, 4
+@>Text: \xn[\pn]Meimu, please! You need to stop!
+@>Text: \xn[Meimu]No! I won't stop!
+@>Fade Out BGM: 3 sec.
+@>Wait: 20 frame(s)
+@>Text: \xn[Meimu]...But, you won't accept that as an answer, will you?
+@>Text: \xn[Meimu]No... I know you... I've seen into your dreams.\wt[10]
+ :    : I know your resolve.\wt[10] I know what you'll do.
+@>Set Move Route: [Meimu 1]
+ :              : $>Turn Down
+@>Text: \xn[Meimu]You, the Legend of Gensokyo... The Savior of the 
+ :    : Moon...
+@>Text: \xn[Meimu]You think you get to just walk in here and tell me
+ :    : that what I'm doing is wrong, and that you'll stop me...
+@>Text: \xn[Meimu]Well I won't allow it! Not when I've come so far!
+@>Play SE: 'Vs flash', 80, 100
+@>Screen Flash: (255,255,255,255), @10
+@>Script: pbSetSelfSwitch(36,"A",true) # Event controller for reloacting Puppet OWs
+@>Script: pbTrainerIntro(:MEIMU)
+@>Show Animation: [Ayaka (Cutscene)], [Exclaim bubble]
+@>Wait: 15 frame(s)
+@>Set Move Route: [Ayaka (Cutscene)]
+ :              : $>Turn Left
+ :              : $>Wait: 15 frame(s)
+ :              : $>Turn Right
+ :              : $>Wait: 15 frame(s)
+ :              : $>Turn Down
+ :              : $>Wait: 15 frame(s)
+ :              : $>Turn Up
+ :              : $>Wait: 15 frame(s)
+@>Wait: 10 frame(s)
+@>Text: \xn[\pn]\b(Where did all these Puppets come from!? Did...
+ :    : Did she materialize them all out of thin air?)
+@>Wait for Move's Completion
+@>Text: \xn[Meimu]I may not be able to fully manipulate reality yet... But
+ :    : I can at least do this much!
+@>Text: \xn[\pn]\b(She's determined no matter what to see her goals through to
+ :    : completion, even if it means ignoring the reality in front of her...)
+@>Text: \xn[Meimu]I know all of your tactics.\wt[10] All of your strategies.\wt[10]
+ :    : I've seen them all and more! I won't let you stop me!
+@>Text: \xn[\pn]Then, as the person you look up to... The person you
+ :    : claim to idolize...\wtnp[15]
+@>Set Move Route: [Ayaka (Cutscene)]
+ :              : $>Move Up
+@>Wait for Move's Completion
+@>Wait: 10 frame(s)
+@>Change Text Options: Bottom, Show
+@>Text: \xn[\pn]I'm going to teach you a lesson, and I'll help you
+ :    : find a better way to become real!
+@>Wait: 10 frame(s)
+@>Text: \xn[Meimu]\..\..\..\wt[10]I guess this is why they say you should never meet
+ :    : your idols...
+@>Text: \xn[Meimu]Fine then! Come at me, Oh Great Legend of Gensokyo!
+ :    : Allow me to show you the power of those born from non-existence!
+@>Control Variables: [0143: Meimu Battle Count] = 1
+@>Control Switches: [0098: Music Override] = ON
+@>Control Switches: [0157: Battling Meimu] = ON
+@>Script: setBattleRule("backdrop", "meimu")
+:       : setBattleRule("base", "meimu")
+:       : #playSpecialBGM("meimu")
+@>
+
+Page #2
+Conditions
+Switch 0157: Battling Meimu is ON
+Variable 0142: TLA Plot Variable is 5 or above
+
+Autonomous Movement
+Type: Fixed
+Speed: 3: Slow
+Freq: 3: Low
+Options Enabled
+Move Animation
+Trigger: Action Button
+
+List of Event Commands:
+@>Conditional Branch: Switch [0161: Dummy Switch] == ON
+ @>Fade Out BGM: 1 sec.
+ @>Control Switches: [0161: Dummy Switch] = OFF
+ @>
+: Branch End
+@>Script: pbTrainerIntro(:MEIMU)
+@>Change Transparent Flag: Normal
+@>Play BGS: 'Vortex', 0, 100
+@>Control Switches: [0104: Transition Handler] = ON
+@>Control Variables: [0103: Vs. Transition ID] = 56
+@>Control Variables: [0104: Vs. Transition - Pkmn] = 6
+@>Loop
+ @>Conditional Branch: Variable [0143: Meimu Battle Count] == 4
+  @>Script: setBattleRule("double")
+  @>
+ : Branch End
+ @>Conditional Branch: Script: TrainerBattle.start(:MEIMU,"Meimu",pbGet(143))
+  @>Control Variables: [0143: Meimu Battle Count] += 1
+  @>Script: echoln pbGet(143)
+  @>Recover All: Entire Party
+  @>Script: pbTrainerEnd
+  @>
+ : Else
+  @>Exit Event Processing
+  @>
+ : Branch End
+ @>Conditional Branch: Variable [0143: Meimu Battle Count] == 5
+  @>Script: echoln pbGet(143)
+  @>Break Loop
+  @>
+ : Branch End
+ @>
+: Repeat Above
+@>Script: pbTrainerEnd
+@>Control Switches: [0098: Music Override] = OFF
+@>Control Switches: [0157: Battling Meimu] = OFF
+@>Control Variables: [0142: TLA Plot Variable] = 6
+@>Script: echoln pbGet(142)
+@>
+
+Page #3
+Conditions
+Variable 0142: TLA Plot Variable is 6 or above
+
+Autonomous Movement
+Type: Fixed
+Speed: 3: Slow
+Freq: 3: Low
+Options Enabled
+Move Animation
+Trigger: Action Button
+
+List of Event Commands:
+@>Script: pbBGMStop
+@>Play BGS: 'Vortex', 0, 100
+@>Text: \xn[\pn]\b(I think... I've finally taken down all of her Puppets...)
+@>Text: \xn[Meimu]Haah\..\..\..\. Haah\..\..\..\. This is taxing... all of my
+ :    : strength...
+@>Text: \xn[Meimu]But I can't... I can't fall here!
+@>Show Animation: [Ayaka (Cutscene)], [Exclaim bubble]
+@>Set Move Route: [Meimu 1]
+ :              : $>Wait: 30 frame(s)
+@>Change Screen Color Tone: (170,170,170,0), @20
+@>Play SE: 'PRSFX- Aura Sphere1', 80, 50
+@>Wait for Move's Completion
+@>Wait: 25 frame(s)
+@>Script: pbSetSelfSwitch(57,"A",true)
+@>Screen Flash: (255,255,255,255), @10
+@>Play SE: 'OWThunder1', 80, 100
+@>Wait: 18 frame(s)
+@>Screen Flash: (255,255,255,255), @10
+@>Play SE: 'OWThunder2', 100, 100
+@>Wait: 18 frame(s)
+@>Change Screen Color Tone: (255,255,255,0), @2
+@>Play SE: 'OWThunder1', 100, 100
+@>Play SE: 'OWThunder2', 80, 100
+@>Wait: 20 frame(s)
+@>Script: playSpecialBGM("quiet_time")
+@>Change Transparent Flag: Normal
+@>Transfer Player:[137: Reimaden - Final Room], (046,028)
+@>Set Event Location: [Meimu 2],(061,000)
+@>Set Event Location: [Meimu 1],(046,024)
+@>Wait: 10 frame(s)
+@>Script: pbSetSelfSwitch(57,"A",false)
+@>Change Screen Color Tone: (0,0,0,0), @16
+@>Play BGS: 'Vortex', 80, 150
+@>Wait: 16 frame(s)
+@>Show Animation: Player, [Exclaim bubble]
+@>Text: \xn[\pn]\b(She- She's going berserk...! I have to do something!)
+@>Set Move Route: Player
+ :              : $>Change Speed: 2
+ :              : $>Move Up
+ :              : $>Wait: 10 frame(s)
+ :              : $>Move Up
+@>Wait for Move's Completion
+@>Text: \xn[Meimu]<b>COME NO CLOSER!</b>
+@>Screen Flash: (255,255,255,255), @20
+@>Play SE: 'OWThunder1', 80, 100
+@>Set Move Route: Player
+ :              : $>Move Animation OFF
+ :              : $>Direction Fix ON
+ :              : $>Change Speed: 6
+ :              : $>Move Down
+ :              : $>Move Down
+ :              : $>Move Down
+ :              : $>Move Down
+ :              : $>Move Down
+ :              : $>Move Down
+ :              : $>Move Down
+ :              : $>Move Down
+ :              : $>Move Animation ON
+ :              : $>Direction Fix OFF
+ :              : $>SE: 'Battle damage super', 80, 100
+@>Wait for Move's Completion
+@>Text: \xn[\pn]\b(Ghk... I can't... I can't even approach her...)
+@>Change Screen Color Tone: (-255,-255,-255,0), @20
+@>Text: \xn[\pn]\b(Is this... really the limits of what I can do...?)\wtnp[40]
+@>Wait: 40 frame(s)
+@>Fade Out BGS: 2 sec.
+@>Transfer Player:[137: Reimaden - Final Room], (031,060), Down, No Fade
+@>Set Event Location: [Kota],(030,058)
+@>Set Event Location: [Maya],(031,057)
+@>Set Event Location: [Shinji],(032,058)
+@>Text: \xn[Male Voice #1]C'mon \pn, you can't give up now!
+@>Text: \xn[\pn]--! W-Was that...?!
+@>Text: \xn[Female Voice]You're the strongest Puppet Handler in all of
+ :    : Gensokyo! You've done things most could only dream of!
+@>Change Screen Color Tone: (0,0,0,0), @1
+@>Script: deactivateSpecialBGM("quiet_time")
+@>Play BGM: 'W-002. Memory of Forgathering Dream', 100, 50
+@>Set Move Route: Player
+ :              : $>Turn Up
+@>Text: \xn[\pn]Maya!? Kota?! Shinji!? What are you three doing here!?
+ :    : <i>HOW</i> are you even here!?
+@>Text: \xn[Maya]Did you really think we would't be here? We're here to 
+ :    : witness your greatest hour! We're here to-\wtnp[4]
+@>Text: \xn[Shinji]Miss Doremy showed up in our dreams and informed us
+ :    : of the situation.
+@>Text: \xn[Shinji]She asked us to come here and provide support to you.
+@>Text: \xn[Shinji]Naturally, all three of us emphatically agreed.
+@>Text: \xn[Maya]Shinji! You <i>always</i> ruin my fun- the suspense!
+ :    : The moment! Do these mean <i>nothing</i> to you!?
+@>Text: \xn[Maya]...Ahem! But yes, Miss Doremy informed us of what
+ :    : was going on, and we came as fast as we could.
+@>Text: \xn[Maya]Besides, why wouldn't we be here? Didn't you
+ :    : promise to take us on your next big realm saving adventure?
+@>Text: \xn[Maya]You left us out when you went to the Moon! We
+ :    : had to be here for this one!
+@>Text: \xn[\pn]You guys... I don't know what to say...
+@>Text: \xn[\pn]But... I don't know if I have the strength to take Meimu 
+ :    : down...
+@>Text: \xn[\pn]She's a supernatural being with the ability to manipulate
+ :    : reality and is currently going berserk!
+@>Text: \xn[\pn]I'm just... a regular human from the village, who just
+ :    : happens to be a really good Puppet Handler...
+@>Text: \xn[Kota]\pn, you're the <i>only</i> one who can- Your command
+ :    : over your Puppets, your mastery of them, the bonds you've forged
+ :    : with them...
+@>Text: \xn[Kota]It's what makes it so that you are the only one who can
+ :    : take her down!
+@>Wait: 10 frame(s)
+@>Text: \xn[\pn]That logic...\wt[10] It makes no sense!
+@>Text: \xn[Kota]With your Puppets, you can do anything!
+@>Text: \xn[Kota]Sure, a human with no magical powers might not be
+ :    : able to stand against her, but...
+@>Wait: 10 frame(s)
+@>Text: \xn[\pn]...Are you saying that I should use my Puppets? My
+ :    : partners? To <i>attack</i> another person directly!?
+@>Text: \xn[\pn]But that's-\wtnp[6]
+@>Text: \xn[Shinji]Not unheard of. The Shrine Maiden and other incident
+ :    : solvers have used Puppets to deal with hostile Youkai in the
+ :    : past.
+@>Text: \xn[Shinji]Puppets are the new way of resolving conflicts
+ :    : in Gensokyo, after all. Everyone is on a completely even
+ :    : playing field.
+@>Text: \xn[\pn]But that's different! They are-\wtnp[6]
+@>Text: \xn[Maya]Just like you! People who have a form of strength, and
+ :    : they use that strength to protect others!
+@>Text: \xn[Maya]This form of strength just happen to look like adorable
+ :    : little critters!
+@>Text: \xn[\pn]I-\..\..\..\. I suppose so...
+@>Text: \xn[Kota]\pn, we all believe in you. We know you can handle this.
+@>Text: \xn[Kota]You and your Puppets, the ones you've put all your
+ :    : trust and care into.
+@>Text: \xn[Kota]Let them show you the efforts of your training and
+ :    : care!
+@>Wait: 20 frame(s)
+@>Text: \xn[\pn]...\wt[10]You're right.
+@>Text: \xn[\pn]Miss Keine told me all those years ago on our first adventure,
+ :    : that wielding power requires using it responsibly...
+@>Text: \xn[\pn]And as someone who's here right now, as someone 
+ :    : who's done so much and more...\wtnp[20]
+@>Script: playSpecialBGM("quiet_time")
+@>Play BGS: 'Vortex', 100, 150
+@>Change Screen Color Tone: (0,0,0,0), @1
+@>Transfer Player:[137: Reimaden - Final Room], (046,034), No Fade
+@>Text: \xn[\pn]It's my responsibility to save my home!
+@>Set Move Route: Player
+ :              : $>Change Speed: 2
+ :              : $>Move Up
+ :              : $>Wait: 8 frame(s)
+ :              : $>Move Up
+@>Scroll Map: Up, 8, 2
+@>Wait for Move's Completion
+@>Show Animation: [Meimu 1], [Exclaim bubble]
+@>Text: \xn[Meimu]I said don't come any closer!
+@>Text: \xn[Meimu]I don't... I don't want to hurt you... 
+@>Text: \xn[Meimu]Please just let me do this!
+@>Set Move Route: Player
+ :              : $>Change Speed: 2
+ :              : $>Move Up
+@>Text: \xn[\pn]You think that... Just because you wield a power...
+ :    : you know how to use it right...
+@>Set Move Route: Player
+ :              : $>Change Speed: 2
+ :              : $>Move Up
+@>Text: \xn[\pn]But, that isn't always so simple...
+@>Set Move Route: [Meimu 1]
+ :              : $>Direction Fix ON
+ :              : $>Move Up
+ :              : $>Move Up
+ :              : $>Direction Fix OFF
+@>Text: \xn[Meimu]Stop it! Please just stop it!
+@>Text: \xn[\pn]I won't... I can't give up... So many people have placed
+ :    : their faith in me...
+@>Text: \xn[\pn]And for their sakes...\wtnp[20]
+@>Script: deactivateSpecialBGM("quiet_time")
+@>Play BGM: 'B-044. Finale ~ For The End', 100, 100
+@>Change Battle BGM: 'B-044. Finale ~ For The End', 100, 100
+@>Change Text Options: Middle, Show
+@>Show Picture: 1, 'Name_Final', Upper Left (0,0), (100%,100%), 255, Normal
+@>Text: <ac>I can't afford to lose!\wtnp[20]</ac>
+@>Erase Picture: 1
+@>Change Text Options: Bottom, Show
+@>Control Variables: [0142: TLA Plot Variable] = 7
+@>
+
+Page #4
+Conditions
+Variable 0142: TLA Plot Variable is 7 or above
+
+Autonomous Movement
+Type: Fixed
+Speed: 3: Slow
+Freq: 3: Low
+Options Enabled
+Move Animation
+Trigger: Action Button
+
+List of Event Commands:
+@>Conditional Branch: Switch [0161: Dummy Switch] == ON
+ @>Set Event Location: [Meimu 1],(015,024), Down
+ @>Control Switches: [0161: Dummy Switch] = OFF
+ @>
+: Branch End
+@>Control Switches: [0158: Inverse Battle Active] = OFF
+@>Control Switches: [0159: BBFAR Check] = OFF
+@>Control Switches: [0160: DOE Check] = OFF
+@>Control Switches: [0098: Music Override] = OFF
+@>Control Switches: [0103: Hide AI Level] = ON
+@>Control Switches: [0102: Special Battle Switch] = ON
+@>Control Variables: [0102: Special Battle Variable] = 5
+@>Change Battle BGM: 'B-044. Finale ~ For The End', 100, 100
+@>Script: setBattleRule("backdrop", "meimu")
+:       : setBattleRule("base", "meimu")
+:       : #playSpecialBGM("meimu")
+:       : #setBattleRule("battleBGM", "B-044. Finale ~ For The End.ogg")
+:       : setBattleRule("databoxStyle", :Basic)
+:       : $game_variables[70] = $PokemonSystem.battlescene
+:       : $PokemonSystem.battlescene = 0
+@>Script: setBattleRule("editWildPokemon", {
+:       :   :hp_level => 3,
+:       :   :immunities => [:OHKO, :ITEMREMOVAL, :POISON, :ATTRACT, :PPLOSS, :TYPECHANGE, :ABILITYREMOVAL, :INDIRECT, 
+:       :                   :DISABLE, :SELFKO, :TRANSFORM, :ESCAPE],
+:       :   :gender => 1,
+:       :   :shiny => false,
+:       :   :iv => 31,
+:       :   :ev => 252
+:       : })
+@>Script: setBattleRule("cannotRun")
+:       : setBattleRule("disablePokeBalls")
+:       : setBattleRule("battleIntroText", "This is the end.")
+:       : setBattleRule("victoryBGM", "")
+:       : setBattleRule("midbattleScript", :vs_meimu_final)
+@>Control Switches: [0104: Transition Handler] = ON
+@>Control Variables: [0103: Vs. Transition ID] = 57
+@>Conditional Branch: Script: WildBattle.start(:MEIMU, 100)
+ @>Script: $PokemonSystem.battlescene = pbGet(70)
+ @>Control Switches: [0103: Hide AI Level] = OFF
+ @>
+: Else
+ @>Script: $PokemonSystem.battlescene = pbGet(70)
+ @>Control Switches: [0103: Hide AI Level] = OFF
+ @>Exit Event Processing
+ @>
+: Branch End
+@>Control Switches: [0103: Hide AI Level] = OFF
+@>Control Self Switch: D =ON
+@>
+
+Page #5
+Conditions
+Self Switch D is ON
 
 Autonomous Movement
 Type: Fixed
@@ -115249,26 +116337,33 @@ Speed: 3: Slow
 Freq: 3: Low
 Options Enabled
 Move Animation
-Trigger: Action Button
+Trigger: Autorun
 
 List of Event Commands:
-@>Text: \xn[Yuuka]\se[]It is quite the lovely day today~ Wouldn't you agree 
- :    : Elly?\wtnp[20]
-@>Text: \xn[Elly]\se[]Yes Lady Yuuka, it is. Ever since that one human settled
- :    : the crisis in the dream world, things seem to have calmed down.\wtnp[20]
-@>Text: \xn[Yuuka]\se[]Yes, \pn... She is quite the radiant flower.\wtnp[20]
+@>Script: pbShowPicture(1,"Credits/TAoA/BGs/BGMugenkan.png",1,256,192,100,100,0,0)
 @>Wait: 10 frame(s)
-@>Text: \xn[Yuuka]\se[]Ah, on days like this, it's such a waste to remain inside.
- :    : I think I shall go out for a stroll.\wtnp[20]
-@>Text: \xn[Elly]\se[]Oh, to anywhere in specific Lady Yuuka?\wtnp[20]
+@>Move Picture: 1, @10, Center (256,192), (100%,100%), 255, Normal
+@>Wait: 40 frame(s)
+@>Move Picture: 1, @10, Center (256,192), (100%,100%), 0, Normal
+@>Change Screen Color Tone: (0,0,0,0), @20
+@>Wait: 20 frame(s)
+@>Text: \xn[Yuuka]\se[]It is quite the lovely day today~ Wouldn't you agree 
+ :    : Elly?\wtnp[30]
+@>Text: \xn[Elly]\se[]\l[3]Yes Lady Yuuka, it is. Ever since that one human settled
+ :    : the crisis in the dream world, things seem to have calmed down.\wtnp[30]
+@>Text: \xn[Yuuka]\se[]Yes, \pn... She is quite the radiant flower.\wtnp[30]
+@>Wait: 10 frame(s)
+@>Text: \xn[Yuuka]\se[]\l[3]Ah, on days like this, it's such a waste to remain inside.
+ :    : I think I shall go out for a stroll.\wtnp[30]
+@>Text: \xn[Elly]\se[]Oh, to anywhere in specific Lady Yuuka?\wtnp[30]
 @>Text: \xn[Yuuka]\se[]I've heard that the Hoenn Region is quite beautiful at this
- :    : time of year...\wtnp[20]
-@>Text: \xn[Yuuka]\se[]And that they've finished renovating their battle facilities
+ :    : time of year...\wtnp[30]
+@>Text: \xn[Yuuka]\se[]\l[4]And that they've finished renovating their battle facilities
  :    : to accomidate Puppets. Perhaps I'll find some entertainment while
- :    : I'm out~.\wtnp[20]
-@>Text: \xn[Elly]\se[]Will you be requiring any accompaniment today, ma'am?\wtnp[20]
+ :    : I'm out~.\wtnp[30]
+@>Text: \xn[Elly]\se[]Will you be requiring any accompaniment today, ma'am?\wtnp[30]
 @>Text: \xn[Yuuka]\se[]No, not today. Just be sure to keep an eye on the mansion
- :    : while I'm gone.\wtnp[20]
+ :    : while I'm gone.\wtnp[30]
 @>Set Move Route: [Yuuka]
  :              : $>Through ON
  :              : $>Move Right
@@ -115279,18 +116374,18 @@ List of Event Commands:
 @>Screen Flash: (255,255,255,255), @2
 @>Set Move Route: [Portal]
  :              : $>Change Opacity: 255
-@>Wait: 20 frame(s)
+@>Wait: 30 frame(s)
 @>Set Move Route: [Yuuka]
- :              : $>Wait: 5 frame(s)
+ :              : $>Wait: 10 frame(s)
  :              : $>Turn Right
 @>Text: \xn[Yuuka]\se[]Oh, and do remember to water the garden while
- :    : I'm gone.\wtnp[20]
-@>Text: \xn[Yuuka]\se[]I would hate to come back and see all my precious
- :    : plants withered away.\wtnp[20]
-@>Text: \xn[Yuuka]\se[]<i>Don't you agree, Elly</i>?\wtnp[20]
+ :    : I'm gone.\wtnp[30]
+@>Text: \xn[Yuuka]\se[]I would <i>hate</i> to come back and see all my precious
+ :    : plants withered away.\wtnp[30]
+@>Text: \xn[Yuuka]\se[]<i>Don't you agree, Elly</i>?\wtnp[30]
 @>Show Animation: [Elly], [Exclaim bubble]
-@>Text: \xn[Elly]\se[]Y-Yes Lady Yuuka, I understand.\wtnp[20]
-@>Text: \xn[Yuuka]\se[]Splendid! Well, don't wait up for me~.\wtnp[20]
+@>Text: \xn[Elly]\se[]Y-Yes Lady Yuuka, I understand.\wtnp[30]
+@>Text: \xn[Yuuka]\se[]Splendid! Well, don't wait up for me~.\wtnp[30]
 @>Set Move Route: [Yuuka]
  :              : $>Move Up
  :              : $>Change Opacity: 0
@@ -115317,8 +116412,19 @@ List of Event Commands:
  :              : $>Wait: 2 frame(s)
  :              : $>Change Opacity: 0
 @>Wait for Move's Completion
+@>Wait: 20 frame(s)
+@>Text: \xn[Elly]\se[]...<i>Sigh</i>.\wt[10] You forget to water the flowers one time...\wtnp[30]
+@>Wait: 20 frame(s)
+@>Show Picture: 1, 'black box', Upper Left (0,200), (100%,100%), 192, Normal
 @>Wait: 10 frame(s)
-@>Text: \xn[Elly]\se[]...<i>Sigh</i> You forget to water the flowers one time...\wtnp[20]
+@>Scroll Map: Down, 1, 2
+@>Change Screen Color Tone: (51,17,-34,255), @20
+@>Move Picture: 1, @40, Upper Left (0,0), (100%,100%), 255, Normal
+@>Control Variables: [0144: TAoA Credits Variable] = 3
+@>Call Common Event: TLA Credits
+@>Wait: 10 frame(s)
+@>Transfer Player:[140: Credits - Lunar Capital], (015,022)
+@>Change Transparent Flag: Transparency
 @>
 
 #------------------------------------------------------------------------------
@@ -115622,24 +116728,50 @@ Move Animation
 Trigger: Autorun
 
 List of Event Commands:
-@>Scroll Map: Up, 15, 3
+@>Script: pbShowPicture(1,"Credits/TAoA/BGs/BGPalace.png",1,256,192,100,100,0,0)
+@>Wait: 10 frame(s)
+@>Move Picture: 1, @10, Center (256,192), (100%,100%), 255, Normal
+@>Wait: 40 frame(s)
+@>Move Picture: 1, @10, Center (256,192), (100%,100%), 0, Normal
+@>Change Screen Color Tone: (0,0,0,0), @20
+@>Wait: 10 frame(s)
+@>Scroll Map: Up, 17, 2
 @>Wait: 15 frame(s)
-@>Text: \xn[Toyohime]\se[]Keep it up recruits!\wtnp[20]
-@>Text: \xn[Toyohime]\se[]Remember, the group that suceeds will be eligible
- :    : to challenge the Emmisary of Gensokyo to a battle when she returns!\wtnp[20]
-@>Text: \xn[Yorihime]\se[]Using \pn as an incentive to drive the army to
+@>Text: \xn[Toyohime]\se[]Keep it up recruits!\wtnp[30]
+@>Text: \xn[Toyohime]\se[]\l[3]Remember, the group that suceeds will be eligible
+ :    : to challenge the Emmisary of Gensokyo to a battle when she returns!\wtnp[30]
+@>Text: \xn[Yorihime]\se[]\l[3]Using \pn as an incentive to drive the army to
  :    : train harder is quite the methodology, sister.\wtnp[30]
-@>Text: \xn[Yorihime]\se[]Especially as the council stilll doesn't approve
+@>Text: \xn[Yorihime]\se[]\l[3]Especially as the Council stilll doesn't approve
  :    : of her being here as frequent as she is.\wtnp[30]
-@>Text: \xn[Toyohime]\se[]Well the Council can look at the army's retention
- :    : since she showed up for themselves~ it works very well!\wtnp[20]
+@>Text: \xn[Toyohime]\se[]\l[3]Well the Council can look at the army's retention
+ :    : since she showed up for themselves~ it works very well!\wtnp[30]
+@>Set Move Route: [Toyohime]
+ :              : $>Turn Right
 @>Text: \xn[Toyohime]\se[]We've also recieved fascinating intel from Gensokyo
- :    : as well!\wtnp[20]
+ :    : as well!\wtnp[30]
+@>Set Move Route: [Yorihime]
+ :              : $>Turn Left
 @>Text: \xn[Yorihime]\se[]Oh? and what might that be?\wtnp[30]
 @>Text: \xn[Toyohime]\se[]They have so many different ways to prepare and
- :    : utilize peaches in meals!\wtnp[20]
+ :    : utilize peaches in meals!\wtnp[30]
+@>Set Move Route: [Yorihime]
+ :              : $>Turn Down
 @>Wait: 40 frame(s)
+@>Set Move Route: [Yorihime]
+ :              : $>Turn Left
 @>Text: \xn[Yorihime]\se[]...Is that really all you think about, Sister...\wtnp[30]
+@>Wait: 20 frame(s)
+@>Show Picture: 1, 'black box', Upper Left (0,200), (100%,100%), 192, Normal
+@>Wait: 20 frame(s)
+@>Scroll Map: Down, 1, 2
+@>Change Screen Color Tone: (51,17,-34,255), @20
+@>Move Picture: 1, @40, Upper Left (0,0), (100%,100%), 255, Normal
+@>Control Variables: [0144: TAoA Credits Variable] = 4
+@>Call Common Event: TLA Credits
+@>Wait: 10 frame(s)
+@>Transfer Player:[141: Credits - Village Concert Stage], (015,016)
+@>Change Transparent Flag: Transparency
 @>
 
 #------------------------------------------------------------------------------
@@ -115885,15 +117017,22 @@ Speed: 3: Slow
 Freq: 3: Low
 Options Enabled
 Move Animation
-Trigger: Action Button
+Trigger: Autorun
 
 List of Event Commands:
+@>Script: pbShowPicture(1,"Credits/TAoA/BGs/BGFestivalNight.png",1,256,192,100,100,0,0)
+@>Wait: 10 frame(s)
+@>Move Picture: 1, @10, Center (256,192), (100%,100%), 255, Normal
+@>Wait: 40 frame(s)
+@>Move Picture: 1, @10, Center (256,192), (100%,100%), 0, Normal
+@>Change Screen Color Tone: (-70,-70,11,68), @20
+@>Wait: 20 frame(s)
 @>Text: \xn[Shion]\se[]All right, you're possessed! Now Joon's victory is
- :    : assured!\wtnp[20]
+ :    : assured!\wtnp[30]
 @>Wait: 20 frame(s)
 @>Show Animation: [Shion], [Question bubble]
 @>Wait: 5 frame(s)
-@>Set Move Route: [Jo'on]
+@>Set Move Route: [Shion]
  :              : $>Turn Up
  :              : $>Wait: 5 frame(s)
  :              : $>Turn Down
@@ -115901,37 +117040,48 @@ List of Event Commands:
  :              : $>Turn Right
  :              : $>Wait: 5 frame(s)
  :              : $>Turn Left
-@>Text: \xn[Shion]\se[]...Wait, Joon? Where'd you go?\wtnp[20]
-@>Text: \xn[Reimu]\se[]Oh... So <i>that's</i> what it was.\wtnp[20]
+@>Text: \xn[Shion]\se[]...Wait, Joon? Where'd you go?\wtnp[30]
+@>Wait: 5 frame(s)
+@>Set Move Route: [Reimu]
+ :              : $>Wait: 9 frame(s)
+ :              : $>Turn Up
+ :              : $>Wait: 9 frame(s)
+ :              : $>Turn Down
+ :              : $>Wait: 9 frame(s)
+ :              : $>Turn Right
+@>Text: \xn[Reimu]\se[]Oh...\wt[5] So <i>that's</i> what it was.\wtnp[30]
 @>Text: \xn[Reimu]\se[]Yukari's explanation gave me no clue what was going
- :    : to happen.\wtnp[20]
+ :    : to happen.\wtnp[30]
+@>Wait for Move's Completion
 @>Show Animation: [Shion], [Exclaim bubble]
-@>Text: \xn[Shion]\se[]Y-You! How are you moving freely?!\wtnp[20]
-@>Text: \xn[Shion]\se[]You were supposed to become Joon's slave and have
- :    : your freedom taken away...\wtnp[20]
+@>Text: \xn[Shion]\se[]Y-You! How are you moving freely?!\wtnp[30]
+@>Text: \xn[Shion]\se[]\l[3]You were supposed to become Joon's slave and have
+ :    : your freedom taken away...\wtnp[30]
 @>Text: \xn[Reimu]\se[]True, you have the power to guarantee defeat for anyone
- :    : you possess...\wtnp[20]
-@>Text: \xn[Reimu]\se[]And your sister, the pestilence goddess, can switch slaves,
- :    : forcing you on someone else...\wtnp[20]
+ :    : you possess...\wtnp[30]
+@>Text: \xn[Reimu]\se[]\l[3]And your sister, the pestilence goddess, can switch slaves,
+ :    : forcing you on someone else...\wtnp[30]
 @>Text: \xn[Reimu]\se[]In other words, you can force defeat on any opponent. 
- :    : Absolutely.\wtnp[20]
-@>Text: \xn[Reimu]\se[]You really are the worst, most disastrous combo.\wtnp[20]
-@>Text: \xn[Reimu]\se[]But you were no match for tro truly strong people.\wtnp[20]
+ :    : Absolutely.\wtnp[30]
+@>Text: \xn[Reimu]\se[]You really are the worst, most disastrous combo.\wtnp[30]
+@>Text: \xn[Reimu]\se[]But you were no match for tro truly strong people.\wtnp[30]
 @>Text: \xn[Shion]\se[]You were supposed to lose control of your body when
- :    : you possessed Joon...\wtnp[20]
+ :    : you possessed Joon...\wtnp[30]
 @>Show Animation: [Shion], [Question bubble]
 @>Set Move Route: [Shion]
  :              : $>Jump: +0,+0
-@>Text: \xn[Shion]\se[]But how?! How are you still <i>moving</i>!\wtnp[20]
-@>Text: \xn[Reimu]\se[]Look closely. <i>You're</i> the master now.\wtnp[20]
+ :              : $>Wait: 4 frame(s)
+ :              : $>Jump: +0,+0
+@>Text: \xn[Shion]\se[]But how?! How are you still <i>moving</i>!\wtnp[30]
+@>Text: \xn[Reimu]\se[]Look closely. <i>You're</i> the master now.\wtnp[30]
 @>Show Animation: [Ayaka], [Question bubble]
 @>Show Animation: [Meimu], [Question bubble]
 @>Wait: 15 frame(s)
-@>Text: \xn[Shion]\se[]...Eh?\wtnp[20]
+@>Text: \xn[Shion]\se[]...Eh?\wtnp[30]
 @>Text: \xn[Reimu]\se[]And I'm a master too. Yukari flipped the border of master
- :    : and slave.\wtnp[20]
+ :    : and slave.\wtnp[30]
 @>Text: \xn[Reimu]\se[]So the partners who were switched were Yukari and
- :    : your sister.\wtnp[20]
+ :    : your sister.\wtnp[30]
 @>Play SE: 'PRSFX- Teleport', 80, 100
 @>Screen Flash: (255,255,255,255), @2
 @>Set Move Route: [Reimu]
@@ -115939,10 +117089,10 @@ List of Event Commands:
 @>Set Move Route: [Jo'on]
  :              : $>Change Opacity: 255
 @>Show Animation: [Shion], [Exclaim bubble]
-@>Text: \xn[Joon]\se[]Crap! It was a trap! I'm the enemy's slave now!\wtnp[20]
-@>Text: \xn[Shion]\se[]What?!\wtnp[20]
-@>Text: \xn[Shion]\se[]So I'm not possessing Yukari then...?\wtnp[20]
-@>Text: \xn[Shion]\se[]Wait, then my slave must be-\wtnp[20]
+@>Text: \xn[Joon]\se[]Crap! It was a trap! I'm the enemy's slave now!\wtnp[30]
+@>Text: \xn[Shion]\se[]What?!\wtnp[30]
+@>Text: \xn[Shion]\se[]So I'm not possessing Yukari then...?\wtnp[30]
+@>Text: \xn[Shion]\se[]Wait, then my slave must be-\wtnp[30]
 @>Play SE: 'PRSFX- Teleport', 80, 100
 @>Screen Flash: (255,255,255,255), @2
 @>Set Move Route: [Shion]
@@ -115950,19 +117100,30 @@ List of Event Commands:
 @>Set Move Route: [Yukari]
  :              : $>Change Opacity: 255
 @>Show Animation: [Jo'on], [Exclaim bubble]
-@>Text: \xn[Yukari]\se[]Right answer~! Like this, both your power as a poverty goddess
- :    : and her power as a pestilence goddess are meaningless.\wtnp[20]
-@>Text: \xn[Yukari]\se[]Now Reimu, I won't be able to offer you any more assistance.\wtnp[20]
-@>Text: \xn[Yukari]\se[]Take care of this poverty god~.\wtnp[20]
+@>Text: \xn[Yukari]\se[]\l[3]Right answer~! Like this, both your power as a poverty goddess
+ :    : and her power as a pestilence goddess are meaningless.\wtnp[30]
+@>Text: \xn[Yukari]\se[]Now Reimu, I won't be able to offer you any more assistance.\wtnp[30]
+@>Text: \xn[Yukari]\se[]Take care of this poverty god~.\wtnp[30]
 @>Play SE: 'PRSFX- Teleport', 80, 100
 @>Screen Flash: (255,255,255,255), @2
 @>Set Move Route: [Shion]
  :              : $>Change Opacity: 255
 @>Set Move Route: [Yukari]
  :              : $>Change Opacity: 0
-@>Text: \xn[Shion]\se[]They switched the master and slave? They can do that?
- :    : There's someone who can do that?\wtnp[20]
-@>Text: \xn[\pn & Meimu]\se[]\b(So cool...)\wtnp[20]
+@>Text: \xn[Shion]\se[]\l[3]They switched the master and slave? They can do that?
+ :    : <i>There's someone who can do that!?</i>\wtnp[30]
+@>Text: \xn[\pn & Meimu]\se[]\b(So cool...)\wtnp[30]
+@>Wait: 20 frame(s)
+@>Show Picture: 1, 'black box', Upper Left (0,200), (100%,100%), 192, Normal
+@>Wait: 20 frame(s)
+@>Scroll Map: Down, 1, 2
+@>Change Screen Color Tone: (51,17,-34,255), @20
+@>Move Picture: 1, @40, Upper Left (0,0), (100%,100%), 255, Normal
+@>Control Variables: [0144: TAoA Credits Variable] = 5
+@>Call Common Event: TLA Credits
+@>Wait: 10 frame(s)
+@>Transfer Player:[142: Credits - World of Fantasies], (035,034)
+@>Change Transparent Flag: Transparency
 @>
 
 #------------------------------------------------------------------------------
@@ -116032,16 +117193,22 @@ Speed: 3: Slow
 Freq: 3: Low
 Options Enabled
 Move Animation
-Trigger: Action Button
+Trigger: Autorun
 
 List of Event Commands:
-@>Text: \xn[Reimu]\se[]...What's this weird portal doing here?\wtnp[20]
+@>Script: pbShowPicture(1,"Credits/TAoA/BGs/BGWOF.png",1,256,192,100,100,0,0)
+@>Wait: 10 frame(s)
+@>Move Picture: 1, @10, Center (256,192), (100%,100%), 255, Normal
+@>Wait: 40 frame(s)
+@>Move Picture: 1, @10, Center (256,192), (100%,100%), 0, Normal
+@>Wait: 20 frame(s)
+@>Text: \xn[Reimu]\se[]...What's this weird portal doing here?\wtnp[30]
 @>Play SE: 'PRSFX- Teleport', 80, 100
 @>Wait: 10 frame(s)
 @>Change Screen Color Tone: (0,0,0,0), @8
 @>Wait: 8 frame(s)
 @>Show Animation: [Reimu], [Exclaim bubble]
-@>Text: \xn[Reimu]\se[]...! Wait a second, isn't this...\wtnp[20]
+@>Text: \xn[Reimu]\se[]...! Wait a second, isn't this...\wtnp[30]
 @>Set Move Route: [Reimu]
  :              : $>Move Up
  :              : $>Move Up
@@ -116062,7 +117229,7 @@ List of Event Commands:
  :              : $>Move Up
  :              : $>Move Up
  :              : $>Move Up
-@>Scroll Map: Up, 19, 4
+@>Scroll Map: Up, 20, 4
 @>Wait for Move's Completion
 @>Set Move Route: [Reimu]
  :              : $>Move Left
@@ -116073,21 +117240,23 @@ List of Event Commands:
  :              : $>Move Left
  :              : $>Move Left
  :              : $>Move Left
-@>Scroll Map: Left, 8, 4
+@>Scroll Map: Left, 10, 4
 @>Wait for Move's Completion
 @>Show Animation: [Reimu], [Exclaim bubble]
-@>Text: \xn[Reimu]\se[]I knew it! This is your doing!\wtnp[20]
+@>Text: \xn[Reimu]\se[]Mima, I knew it! This is your doing!\wtnp[30]
 @>Show Animation: [Mima], [Question bubble]
 @>Wait: 15 frame(s)
 @>Show Animation: [Mima], [Exclaim bubble]
+@>Set Move Route: [Mima]
+ :              : $>Turn Right
 @>Text: \xn[Mima]\se[]R-Reimu Hakurei!? What are you doing here?
- :    : Come to visit an old friend?\wtnp[20]
-@>Text: \xn[Reimu]\se[]Cut the act Mima! What in the world is a teleporter 
- :    : directly to my shrine doing in your realm!?\wtnp[20]
-@>Text: \xn[Reimu]\se[]What are you planning <i>this</i> time!?\wtnp[20]
-@>Text: \xn[Mima]\se[]Uhm...\wtnp[20]
+ :    : Come to visit an old friend?\wtnp[30]
+@>Text: \xn[Reimu]\se[]\l[3]Cut the act Mima! What in the world is a teleporter 
+ :    : directly to my shrine doing in your realm!?\wtnp[30]
+@>Text: \xn[Reimu]\se[]What are you planning <i>this</i> time!?\wtnp[30]
+@>Text: \xn[Mima]\se[]Uhm...\wtnp[30]
 @>Wait: 20 frame(s)
-@>Text: \xn[Mima]\se[]Bye!\wtnp[20]
+@>Text: \xn[Mima]\se[]Bye!\wtnp[30]
 @>Set Move Route: [Mima]
  :              : $>SE: 'PRSFX- Teleport', 80, 100
  :              : $>Change Opacity: 255
@@ -116111,15 +117280,26 @@ List of Event Commands:
 @>Set Move Route: [Reimu]
  :              : $>Through ON
  :              : $>Change Speed: 6
- :              : $>Wait: 10 frame(s)
+ :              : $>Wait: 12 frame(s)
  :              : $>Move Left
  :              : $>Move Left
  :              : $>Move Left
  :              : $>Move Left
-@>Text: \xn[Reimu]\se[]Hey, get back here!\wtnp[20]
+@>Text: \xn[Reimu]\se[]Hey, get back here!\wtnp[30]
 @>Wait for Move's Completion
-@>Text: \xn[Reimu]\se[]Ugh, just when I thought I was finally free of her...\wtnp[20]
-@>Text: \xn[Reimu]\se[]Looks like I'll need to reinforce the Shrine's barrier.\wt[10] <i>Again!</i>\wtnp[20]
+@>Text: \xn[Reimu]\se[]Ugh, just when I thought I was finally free of her...\wtnp[30]
+@>Text: \xn[Reimu]\se[]Looks like I'll need to reinforce the Shrine's barrier.\wt[10] <i>Again!</i>\wtnp[30]
+@>Wait: 20 frame(s)
+@>Show Picture: 1, 'black box', Upper Left (0,200), (100%,100%), 192, Normal
+@>Wait: 20 frame(s)
+@>Scroll Map: Down, 1, 2
+@>Change Screen Color Tone: (51,17,-34,255), @20
+@>Move Picture: 1, @40, Upper Left (0,0), (100%,100%), 255, Normal
+@>Control Variables: [0144: TAoA Credits Variable] = 6
+@>Call Common Event: TLA Credits
+@>Wait: 10 frame(s)
+@>Transfer Player:[143: Credits - Land of the Back Door], (017,017)
+@>Change Transparent Flag: Transparency
 @>
 
 #------------------------------------------------------------------------------
@@ -116170,11 +117350,29 @@ Move Animation
 Trigger: Autorun
 
 List of Event Commands:
+@>Script: pbShowPicture(1,"Credits/TAoA/BGs/BGBackDoor.png",1,256,192,100,100,0,0)
+@>Wait: 10 frame(s)
+@>Move Picture: 1, @10, Center (256,192), (100%,100%), 255, Normal
+@>Wait: 40 frame(s)
+@>Move Picture: 1, @10, Center (256,192), (100%,100%), 0, Normal
+@>Change Screen Color Tone: (0,0,0,0), @20
+@>Wait: 20 frame(s)
 @>Text: \xn[?????]\se[]I see, quite interesting...\wtnp[40]
 @>Text: \xn[?????]\se[]Looks like the Gensokyo I'll be returning to is quite
  :    : different than the one I left.\wtnp[40]
-@>Text: \xn[?????]\se[]It's time to remind them that there's more Sages than just 
- :    : that old gap maker~!\wtnp[40]
+@>Text: \xn[?????]\se[]\l[3]It's time to remind them that there's more Sages than just 
+ :    : that old gap demon~!\wtnp[40]
+@>Wait: 20 frame(s)
+@>Show Picture: 1, 'black box', Upper Left (0,200), (100%,100%), 192, Normal
+@>Wait: 20 frame(s)
+@>Scroll Map: Down, 1, 2
+@>Change Screen Color Tone: (51,17,-34,255), @20
+@>Move Picture: 1, @40, Upper Left (0,0), (100%,100%), 255, Normal
+@>Control Variables: [0144: TAoA Credits Variable] = 7
+@>Call Common Event: TLA Credits
+@>Wait: 10 frame(s)
+@>Transfer Player:[144: Credits - Mima's Training Grounds], (015,010)
+@>Change Transparent Flag: Transparency
 @>
 
 #------------------------------------------------------------------------------
@@ -116248,6 +117446,45 @@ Move Animation
 Trigger: Action Button
 
 List of Event Commands:
+@>
+
+#------------------------------------------------------------------------------
+Event ID: 003
+Event Name: EV003
+(X,Y): (015,009)
+
+Page #1
+Conditions
+None
+
+Autonomous Movement
+Type: Fixed
+Speed: 3: Slow
+Freq: 3: Low
+Options Enabled
+Move Animation
+Trigger: Autorun
+
+List of Event Commands:
+@>Script: pbShowPicture(1,"Credits/TAoA/BGs/BGDreamWorld.png",1,256,192,100,100,0,0)
+@>Wait: 10 frame(s)
+@>Move Picture: 1, @10, Center (256,192), (100%,100%), 255, Normal
+@>Wait: 40 frame(s)
+@>Move Picture: 1, @10, Center (256,192), (100%,100%), 0, Normal
+@>Change Screen Color Tone: (0,0,0,0), @20
+@>Wait: 20 frame(s)
+@>Comment: ?????
+@>Wait: 20 frame(s)
+@>Show Picture: 1, 'black box', Upper Left (0,200), (100%,100%), 192, Normal
+@>Wait: 10 frame(s)
+@>Scroll Map: Down, 1, 2
+@>Change Screen Color Tone: (51,17,-34,255), @20
+@>Move Picture: 1, @40, Upper Left (0,0), (100%,100%), 255, Normal
+@>Control Variables: [0144: TAoA Credits Variable] = 8
+@>Call Common Event: TLA Credits
+@>Wait: 10 frame(s)
+@>Control Variables: [0144: TAoA Credits Variable] = 9
+@>Call Common Event: TLA Credits
 @>
 
 #------------------------------------------------------------------------------
@@ -117553,7 +118790,8 @@ Trigger: Action Button
 
 List of Event Commands:
 @>Script: $game_temp.vs_transition_bg = "Capital"
-@>Conditional Branch: Script: TrainerBattle.start(:CLOWNPIECET, "Clownpiece", 10)
+:       : $game_temp.vs_name = "Vs. Clownpiece"
+@>Conditional Branch: Script: TrainerBattle.start(:CLOWNPIECET, "Clownpiece", 10, :HELLFAIRY, "Lucia", 1)
  @>
 : Else
  @>Script: pbTrainerEnd
@@ -118100,7 +119338,7 @@ List of Event Commands:
 @>Change Screen Color Tone: (-255,-255,-255,0), @1
 @>Fade Out BGM: 1 sec.
 @>Wait: 10 frame(s)
-@>Transfer Player:[150: Showcase Map], (008,013), Up
+@>Transfer Player:[150: The Moon?], (008,013), Up
 @>Change Screen Color Tone: (0,0,0,0), @8
 @>
 
@@ -118191,7 +119429,7 @@ List of Event Commands:
 #------------------------------------------------------------------------------
 Event ID: 046
 Event Name: EV046
-(X,Y): (015,006)
+(X,Y): (024,002)
 
 Page #1
 Conditions
@@ -118221,13 +119459,13 @@ List of Event Commands:
 #------------------------------------------------------------------------------
 Event ID: 047
 Event Name: EV047
-(X,Y): (014,007)
+(X,Y): (011,000)
 
 Page #1
 Conditions
 None
 
-Graphic: 386_3
+Graphic: Object HP Ball
 
 Autonomous Movement
 Type: Fixed
@@ -118238,26 +119476,23 @@ Move Animation
 Trigger: Action Button
 
 List of Event Commands:
-@>Script: $game_temp.vs_name = "Vs. Deoxys (Speed)"
-:       : echoln $game_temp.vs_name
-@>Script: Pokemon.play_cry(:DEOXYS)
-@>Wait: 30 frame(s)
-@>Change Battle BGM: 'X-012. Vs. Deoxys', 100, 100
-@>Script: setBattleRule("backdrop", "starlightJunko")
-@>Script: $game_temp.vs_transition_bg = "LunarSurface"
-@>Script: WildBattle.start(:DEOXYS_3,45)
+@>Change Screen Color Tone: (-255,-255,-255,0), @1
+@>Fade Out BGM: 1 sec.
+@>Wait: 10 frame(s)
+@>Transfer Player:[112: Reimaden - Edge of Dreams], (023,010), Up
+@>Change Screen Color Tone: (0,0,0,0), @8
 @>
 
 #------------------------------------------------------------------------------
 Event ID: 048
-Event Name: EV048
-(X,Y): (014,008)
+Event Name: Meimu (Phase 1-4)
+(X,Y): (024,004)
 
 Page #1
 Conditions
 None
 
-Graphic: 386_0
+Graphic: Person_Meimu
 
 Autonomous Movement
 Type: Fixed
@@ -118268,26 +119503,45 @@ Move Animation
 Trigger: Action Button
 
 List of Event Commands:
-@>Script: $game_temp.vs_name = "Vs. Deoxys"
-:       : echoln $game_temp.vs_name
-@>Script: Pokemon.play_cry(:DEOXYS)
-@>Wait: 30 frame(s)
-@>Change Battle BGM: 'X-012. Vs. Deoxys', 100, 100
-@>Script: setBattleRule("backdrop", "starlightJunko")
-@>Script: $game_temp.vs_transition_bg = "LunarSurface"
-@>Script: WildBattle.start(:DEOXYS,45)
+@>Script: $game_temp.vs_transition_bg = "WorldOfFantasy"
+@>Control Variables: [0143: Meimu Battle Count] = 1
+@>Loop
+ @>Conditional Branch: Variable [0143: Meimu Battle Count] == 4
+  @>Script: setBattleRule("double")
+  @>
+ : Branch End
+ @>Conditional Branch: Script: TrainerBattle.start(:MEIMU,"Meimu",pbGet(143))
+  @>Control Variables: [0143: Meimu Battle Count] += 1
+  @>Script: echoln pbGet(143)
+  @>Recover All: Entire Party
+  @>Script: pbTrainerEnd
+  @>
+ : Else
+  @>Control Variables: [0143: Meimu Battle Count] = 0
+  @>Script: pbTrainerEnd
+  @>Exit Event Processing
+  @>
+ : Branch End
+ @>Conditional Branch: Variable [0143: Meimu Battle Count] == 5
+  @>Script: echoln pbGet(143)
+  @>Break Loop
+  @>
+ : Branch End
+ @>
+: Repeat Above
+@>Control Variables: [0143: Meimu Battle Count] = 0
 @>
 
 #------------------------------------------------------------------------------
 Event ID: 049
-Event Name: EV049
-(X,Y): (014,009)
+Event Name: Meimu (Phase 5)
+(X,Y): (024,006)
 
 Page #1
 Conditions
 None
 
-Graphic: 386_2
+Graphic: Person_Meimu
 
 Autonomous Movement
 Type: Fixed
@@ -118298,18 +119552,54 @@ Move Animation
 Trigger: Action Button
 
 List of Event Commands:
-@>Script: Pokemon.play_cry(:DEOXYS)
-@>Wait: 30 frame(s)
-@>Change Battle BGM: 'X-012. Vs. Deoxys', 100, 100
-@>Script: setBattleRule("backdrop", "starlightJunko")
-@>Script: $game_temp.vs_transition_bg = "LunarSurface"
-@>Script: WildBattle.start(:DEOXYS_2,45)
+@>Script: #$game_temp.vs_transition_bg = "WorldOfFantasy"
+@>Control Variables: [0142: TLA Plot Variable] = 7
+@>Control Switches: [0158: Inverse Battle Active] = OFF
+@>Control Switches: [0159: BBFAR Check] = OFF
+@>Control Switches: [0160: DOE Check] = OFF
+@>Control Switches: [0098: Music Override] = OFF
+@>Control Switches: [0103: Hide AI Level] = ON
+@>Control Switches: [0102: Special Battle Switch] = ON
+@>Control Variables: [0102: Special Battle Variable] = 5
+@>Change Battle BGM: 'B-044. Finale ~ For The End', 100, 100
+@>Script: setBattleRule("backdrop", "meimu")
+:       : setBattleRule("base", "meimu")
+:       : #playSpecialBGM("meimu")
+:       : #setBattleRule("battleBGM", "B-044. Finale ~ For The End.ogg")
+:       : setBattleRule("databoxStyle", :Basic)
+:       : $game_variables[70] = $PokemonSystem.battlescene
+:       : $PokemonSystem.battlescene = 0
+@>Script: setBattleRule("editWildPokemon", {
+:       :   :hp_level => 3,
+:       :   :immunities => [:OHKO, :ITEMREMOVAL, :POISON, :ATTRACT, :PPLOSS, :TYPECHANGE, :ABILITYREMOVAL, :INDIRECT, 
+:       :                   :DISABLE, :SELFKO, :TRANSFORM, :ESCAPE],
+:       :   :gender => 1,
+:       :   :shiny => false,
+:       :   :iv => 31,
+:       :   :ev => 252
+:       : })
+@>Script: setBattleRule("cannotRun")
+:       : setBattleRule("disablePokeBalls")
+:       : setBattleRule("battleIntroText", "This is the end.")
+:       : setBattleRule("victoryBGM", "")
+:       : setBattleRule("midbattleScript", :vs_meimu_final)
+@>Conditional Branch: Script: WildBattle.start(:MEIMU, 100)
+ @>Script: $PokemonSystem.battlescene = pbGet(70)
+ @>Control Switches: [0103: Hide AI Level] = OFF
+ @>
+: Else
+ @>Script: $PokemonSystem.battlescene = pbGet(70)
+ @>Control Switches: [0103: Hide AI Level] = OFF
+ @>Exit Event Processing
+ @>
+: Branch End
+@>Control Switches: [0103: Hide AI Level] = OFF
 @>
 
 #------------------------------------------------------------------------------
 Event ID: 050
 Event Name: EV050
-(X,Y): (014,011)
+(X,Y): (024,023)
 
 Page #1
 Conditions
@@ -118340,7 +119630,7 @@ List of Event Commands:
 
 #==============================================================================
 Map ID: 150
-Map Name: Showcase Map
+Map Name: The Moon?
 Tileset: 042: The Moon
 Width: 20, Height: 30
 Auto-Change BGM: W-037. The Sea Where One's Home Planet Reflects
@@ -118367,12 +119657,21 @@ Direction Fix
 Trigger: Action Button
 
 List of Event Commands:
-@>Script: Pokemon.play_cry(:DEOXYS)
-@>Wait: 30 frame(s)
-@>Change Battle BGM: 'X-012. Vs. Deoxys', 100, 100
-@>Script: setBattleRule("backdrop", "starlightJunko")
-@>Script: $game_temp.vs_transition_bg = "LunarSurface"
-@>Script: WildBattle.start(:DEOXYS,45)
+@>
+
+Page #2
+Conditions
+Self Switch A is ON
+
+Autonomous Movement
+Type: Fixed
+Speed: 3: Slow
+Freq: 3: Low
+Options Enabled
+Move Animation
+Trigger: Action Button
+
+List of Event Commands:
 @>
 
 #------------------------------------------------------------------------------
@@ -118435,7 +119734,613 @@ List of Event Commands:
 @>Change Battle BGM: 'X-012. Vs. Deoxys', 100, 100
 @>Script: setBattleRule("backdrop", "starlightJunko")
 @>Script: $game_temp.vs_transition_bg = "LunarSurface"
+@>Script: WildBattle.start(:DEOXYS,95)
+@>Conditional Branch: Variable [0001: Temp Pokemon Choice] == 4
+ @>Script: pbSetSelfSwitch(1,"A",true)
+ @>Play SE: 'gust', 70, 100
+ @>Wait: 8 frame(s)
+ @>Control Switches: [0162: Ayylmao caught] = ON
+ @>Control Self Switch: A =ON
+ @>Transfer Player:[111: Dream World], (020,009), No Fade
+ @>Change Screen Color Tone: (0,0,0,0), @6
+ @>
+: Else
+ @>Script: Pokemon.play_cry(:DEOXYS)
+ @>Wait: 30 frame(s)
+ @>Change Screen Color Tone: (-255,-255,-255,0), @6
+ @>Play SE: 'gust', 70, 100
+ @>Wait: 8 frame(s)
+ @>Transfer Player:[111: Dream World], (020,009), No Fade
+ @>Change Screen Color Tone: (0,0,0,0), @6
+ @>
+: Branch End
+@>
+
+Page #2
+Conditions
+Self Switch A is ON
+
+Autonomous Movement
+Type: Fixed
+Speed: 3: Slow
+Freq: 3: Low
+Options Enabled
+Move Animation
+Trigger: Action Button
+
+List of Event Commands:
+@>
+
+#------------------------------------------------------------------------------
+Event ID: 004
+Event Name: size(4,1)
+(X,Y): (007,014)
+
+Page #1
+Conditions
+None
+
+Autonomous Movement
+Type: Fixed
+Speed: 3: Slow
+Freq: 3: Low
+Options Enabled
+Move Animation
+Trigger: Player Touch
+
+List of Event Commands:
+@>Conditional Branch: Player is facing Down
+ @>Play SE: 'Door exit', 100, 100
+ @>Change Screen Color Tone: (-255,-255,-255,0), @6
+ @>Wait: 8 frame(s)
+ @>Transfer Player:[111: Dream World], (020,009), No Fade
+ @>Change Screen Color Tone: (0,0,0,0), @6
+ @>
+: Branch End
+@>
+
+#------------------------------------------------------------------------------
+
+#==============================================================================
+Map ID: 151
+Map Name: Demo Map
+Tileset: 001: Outside
+Width: 25, Height: 25
+
+#------------------------------------------------------------------------------
+Event ID: 001
+Event Name: Red
+(X,Y): (006,007)
+
+Page #1
+Conditions
+None
+
+Graphic: trainer_POKEMONTRAINER_Red
+
+Autonomous Movement
+Type: Fixed
+Speed: 3: Slow
+Freq: 3: Low
+Options Enabled
+Move Animation
+Trigger: Action Button
+
+List of Event Commands:
+@>Conditional Branch: Script: TrainerBattle.start(:POKEMONTRAINER_Red, "Red", 100)
+ @>
+: Else
+ @>Script: pbTrainerEnd
+ @>Exit Event Processing
+ @>
+: Branch End
+@>
+
+#------------------------------------------------------------------------------
+Event ID: 002
+Event Name: Leaf
+(X,Y): (008,007)
+
+Page #1
+Conditions
+None
+
+Graphic: trainer_POKEMONTRAINER_Leaf
+
+Autonomous Movement
+Type: Fixed
+Speed: 3: Slow
+Freq: 3: Low
+Options Enabled
+Move Animation
+Trigger: Action Button
+
+List of Event Commands:
+@>Script: $game_temp.vs_name = "Vs. Leaf, the Evolver"
+@>Conditional Branch: Script: TrainerBattle.start(:POKEMONTRAINER_Leaf, "Leaf", 100)
+ @>
+: Else
+ @>Script: pbTrainerEnd
+ @>Exit Event Processing
+ @>
+: Branch End
+@>
+
+#------------------------------------------------------------------------------
+Event ID: 003
+Event Name: Blue
+(X,Y): (010,007)
+
+Page #1
+Conditions
+None
+
+Graphic: trainer_RIVAL1
+
+Autonomous Movement
+Type: Fixed
+Speed: 3: Slow
+Freq: 3: Low
+Options Enabled
+Move Animation
+Trigger: Action Button
+
+List of Event Commands:
+@>Conditional Branch: Script: TrainerBattle.start(:RIVAL1, "Blue Oak", 100)
+ @>
+: Else
+ @>Script: pbTrainerEnd
+ @>Exit Event Processing
+ @>
+: Branch End
+@>
+
+#------------------------------------------------------------------------------
+Event ID: 004
+Event Name: Giovanni
+(X,Y): (012,007)
+
+Page #1
+Conditions
+None
+
+Graphic: trainer_ROCKETBOSS
+
+Autonomous Movement
+Type: Fixed
+Speed: 3: Slow
+Freq: 3: Low
+Options Enabled
+Move Animation
+Trigger: Action Button
+
+List of Event Commands:
+@>Script: $game_temp.vs_transition_bg = "Rocket"
+@>Conditional Branch: Script: TrainerBattle.start(:LEADER_Giovanni, "Giovanni", 100)
+ @>
+: Else
+ @>Script: pbTrainerEnd
+ @>Exit Event Processing
+ @>
+: Branch End
+@>
+
+#------------------------------------------------------------------------------
+Event ID: 005
+Event Name: Deoxys
+(X,Y): (014,007)
+
+Page #1
+Conditions
+None
+
+Graphic: Object rock
+
+Autonomous Movement
+Type: Fixed
+Speed: 3: Slow
+Freq: 3: Low
+Options Enabled
+Move Animation
+Direction Fix
+Trigger: Action Button
+
+List of Event Commands:
+@>Script: Pokemon.play_cry(:DEOXYS)
+@>Wait: 30 frame(s)
+@>Script: setBattleRule("backdrop", "distortion")
+@>Script: $game_temp.vs_transition_bg = "Deoxys"
 @>Script: WildBattle.start(:DEOXYS,45)
+@>
+
+#------------------------------------------------------------------------------
+Event ID: 006
+Event Name: Arceus Steel (Flying)
+(X,Y): (016,007)
+
+Page #1
+Conditions
+None
+
+Graphic: Object boulder
+
+Autonomous Movement
+Type: Fixed
+Speed: 3: Slow
+Freq: 3: Low
+Options Enabled
+Move Animation
+Trigger: Action Button
+
+List of Event Commands:
+@>Script: $game_temp.vs_name = "Vs. Arceus (Steel)"
+:       : #echoln $game_temp.vs_name
+@>Script: Pokemon.play_cry(:ARCEUS)
+@>Wait: 30 frame(s)
+@>Script: setBattleRule("backdrop", "Champion2")
+@>Script: $game_temp.vs_transition_bg = "Arceus"
+@>Script: WildBattle.start(:ARCEUS,75)
+@>
+
+#------------------------------------------------------------------------------
+Event ID: 007
+Event Name: Red (vs2)
+(X,Y): (010,014)
+
+Page #1
+Conditions
+None
+
+Graphic: trainer_POKEMONTRAINER_Red
+
+Autonomous Movement
+Type: Fixed
+Speed: 3: Slow
+Freq: 3: Low
+Options Enabled
+Move Animation
+Trigger: Action Button
+
+List of Event Commands:
+@>Script: case rand(1..2)
+:       : when 1 then $game_temp.vs_transition_bg = "MtSilver"
+:       : when 2 then $game_temp.vs_transition_bg = "VictoryRoad"
+:       : end
+@>Conditional Branch: Script: TrainerBattle.start(:POKEMONTRAINER_Red, "Red", 100, :POKEMONTRAINER_Leaf, "Leaf", 100)
+ @>
+: Else
+ @>Script: pbTrainerEnd
+ @>Exit Event Processing
+ @>
+: Branch End
+@>
+
+#------------------------------------------------------------------------------
+Event ID: 009
+Event Name: EV009
+(X,Y): (006,010)
+
+Page #1
+Conditions
+None
+
+Autonomous Movement
+Type: Fixed
+Speed: 3: Slow
+Freq: 3: Low
+Options Enabled
+Move Animation
+Trigger: Action Button
+
+List of Event Commands:
+@>Text: Example 1-A: Single Trainer with Name Graphic
+@>
+
+#------------------------------------------------------------------------------
+Event ID: 010
+Event Name: EV010
+(X,Y): (008,010)
+
+Page #1
+Conditions
+None
+
+Autonomous Movement
+Type: Fixed
+Speed: 3: Slow
+Freq: 3: Low
+Options Enabled
+Move Animation
+Trigger: Action Button
+
+List of Event Commands:
+@>Text: Example 1-B: Single Trainer with Pre-Defined Name
+@>Text: This name is set with "$game_temp.vs_name = (name)"
+@>
+
+#------------------------------------------------------------------------------
+Event ID: 011
+Event Name: EV011
+(X,Y): (010,010)
+
+Page #1
+Conditions
+None
+
+Autonomous Movement
+Type: Fixed
+Speed: 3: Slow
+Freq: 3: Low
+Options Enabled
+Move Animation
+Trigger: Action Button
+
+List of Event Commands:
+@>Text: Example 1-C: Single Trainer with Data-Driven Name
+@>Text: The name is pulled from the actual trainer name.
+@>
+
+#------------------------------------------------------------------------------
+Event ID: 013
+Event Name: Blue (vs3)
+(X,Y): (014,014)
+
+Page #1
+Conditions
+None
+
+Graphic: trainer_RIVAL1
+
+Autonomous Movement
+Type: Fixed
+Speed: 3: Slow
+Freq: 3: Low
+Options Enabled
+Move Animation
+Trigger: Action Button
+
+List of Event Commands:
+@>Script: case rand(1..3)
+:       : when 1 then $game_temp.vs_transition_bg = "MtSilver"
+:       : when 2 then $game_temp.vs_transition_bg = "VictoryRoad"
+:       : when 3 then $game_temp.vs_transition_bg = "Champion"
+:       : end
+@>Conditional Branch: Script: TrainerBattle.start(:POKEMONTRAINER_Red, "Red", 100, :POKEMONTRAINER_Leaf, "Leaf", 100, :RIVAL1, "Blue Oak", 100)
+ @>
+: Else
+ @>Script: pbTrainerEnd
+ @>Exit Event Processing
+ @>
+: Branch End
+@>
+
+#------------------------------------------------------------------------------
+Event ID: 015
+Event Name: EV015
+(X,Y): (012,010)
+
+Page #1
+Conditions
+None
+
+Autonomous Movement
+Type: Fixed
+Speed: 3: Slow
+Freq: 3: Low
+Options Enabled
+Move Animation
+Trigger: Action Button
+
+List of Event Commands:
+@>Text: Example 1-D: Single Trainer with Pre-defined background image
+@>Text: The background image is defined with "$game_temp.vs_transition_bg".
+@>Text: If not defined, it will default to "Plains". This file has been provided
+ :    : with the plugin.
+@>
+
+#------------------------------------------------------------------------------
+Event ID: 016
+Event Name: EV016
+(X,Y): (014,010)
+
+Page #1
+Conditions
+None
+
+Autonomous Movement
+Type: Fixed
+Speed: 3: Slow
+Freq: 3: Low
+Options Enabled
+Move Animation
+Trigger: Action Button
+
+List of Event Commands:
+@>Text: Example 2-A: Wild Battle with Name Graphic
+@>
+
+#------------------------------------------------------------------------------
+Event ID: 017
+Event Name: EV017
+(X,Y): (016,010)
+
+Page #1
+Conditions
+None
+
+Autonomous Movement
+Type: Fixed
+Speed: 3: Slow
+Freq: 3: Low
+Options Enabled
+Move Animation
+Trigger: Action Button
+
+List of Event Commands:
+@>Text: Example 2-B: Wild Battle with Pre-Defined Name
+@>Text: This name is set with "$game_temp.vs_name = (name)"
+@>Text: (This is not Arceus Steel. It is Arceus Flying.)
+@>
+
+#------------------------------------------------------------------------------
+Event ID: 018
+Event Name: Deoxys (Attack)
+(X,Y): (018,007)
+
+Page #1
+Conditions
+None
+
+Graphic: Object rock
+
+Autonomous Movement
+Type: Fixed
+Speed: 3: Slow
+Freq: 3: Low
+Options Enabled
+Move Animation
+Trigger: Action Button
+
+List of Event Commands:
+@>Script: Pokemon.play_cry(:DEOXYS)
+@>Wait: 30 frame(s)
+@>Script: setBattleRule("backdrop", "distortion")
+@>Script: $game_temp.vs_transition_bg = "Deoxys"
+@>Script: WildBattle.start(:DEOXYS_1,45)
+@>
+
+#------------------------------------------------------------------------------
+Event ID: 019
+Event Name: EV019
+(X,Y): (018,010)
+
+Page #1
+Conditions
+None
+
+Autonomous Movement
+Type: Fixed
+Speed: 3: Slow
+Freq: 3: Low
+Options Enabled
+Move Animation
+Trigger: Action Button
+
+List of Event Commands:
+@>Text: Example 2-A: Wild Battle with defined name, utilizing Form-specific
+ :    : Portrait
+@>Text: This can be achieved the same way as normal form graphics, by appending
+ :    : "_X", where X stands for the form ID.
+@>
+
+#------------------------------------------------------------------------------
+Event ID: 020
+Event Name: Tutorial
+(X,Y): (012,012)
+
+Page #1
+Conditions
+None
+
+Graphic: trainer_SCIENTIST
+
+Autonomous Movement
+Type: Fixed
+Speed: 3: Slow
+Freq: 3: Low
+Options Enabled
+Move Animation
+Trigger: Action Button
+
+List of Event Commands:
+@>Text: Welcome to Derxwna's Vs. Transition System, shorthanded to the 
+ :    : DTS!
+@>Text: You can use the DTS to make more cinematic cut-ins before
+ :    : a specific battle.
+@>Text: The system is very easy to use! All you need to do is follow this 
+ :    : basic format;
+@>Text: All relevant graphics go into the DTS Folder in the Transitions 
+ :    : directory in your Graphics Folder.
+@>Text: In there are four folders. Balls, BGs, Names, and PTs.
+@>Text: Balls is (currently) only used for the special overlay bar.\nBGs is 
+ :    : used for the Vs. Transition backgrounds.\nNames is used for if 
+ :    : you have custom name graphics for trainers.\nPTs is for the 
+ :    : trainer portraits.
+@>Text: For Backgrounds, all of them are prefaced with "BG" before the 
+ :    : graphic name.
+@>Text: For names, these are handled by prefixing the filename with 
+ :    : "Name_". If this is for a Wild Pokemon, then there needs to be 
+ :    : a suffixed "_W" at the end of the filename.
+@>Text: For for portraits, these are prefixed with "Char_' for trainers, and 
+ :    : "Wild_" for Wild Pokemon.
+@>Text: For Wild Pokemon, you can indicate the form to use by appending 
+ :    : "_X" to the end of the filename, where "X" is the Form ID.
+@>Text: All of this information can be found on the forum thread as well
+ :    : as the readme in meta.txt.
+@>Text: Please have fun using this plugin! I've put a LOT of time into this
+ :    : system over the years, and am immensely proud of it.
+@>
+
+#------------------------------------------------------------------------------
+Event ID: 021
+Event Name: EV021
+(X,Y): (010,016)
+
+Page #1
+Conditions
+None
+
+Autonomous Movement
+Type: Fixed
+Speed: 3: Slow
+Freq: 3: Low
+Options Enabled
+Move Animation
+Trigger: Action Button
+
+List of Event Commands:
+@>Text: Example 3-A: Trainer Double Battle
+@>Text: As a note, if you use graphics for the name file here,
+@>Text: you will\nneed to make a combined name graphic that follows this naming
+ :    : format:
+ :    : "Name_(Trainer1)_(Trainer2)".
+@>Text: Doing it in reverse will not display the animation with the graphic,
+ :    : and will instead display a default name.
+@>
+
+#------------------------------------------------------------------------------
+Event ID: 022
+Event Name: EV022
+(X,Y): (014,016)
+
+Page #1
+Conditions
+None
+
+Autonomous Movement
+Type: Fixed
+Speed: 3: Slow
+Freq: 3: Low
+Options Enabled
+Move Animation
+Trigger: Action Button
+
+List of Event Commands:
+@>Text: Example 3-A: Trainer Triple Battle
+@>Text: As a note, if you use graphics for the name file here,
+@>Text: you will\nneed to make a combined name graphic that follows this naming
+ :    : format:
+ :    : "Name_(Trainer1)_(Trainer2)_(Trainer3)".
+@>Text: Doing it in any other order will not display the animation with the 
+ :    : graphic, and will instead display a default name.
+@>Text: Please take note, triple battles are a bit clunky due to the limitations
+ :    : of screen real estate.
+@>Text: This will not look good in some cases, as in the example shown here.
+@>Text: You could make it look better by moving trainers around, but 
+ :    : this is dependant on how you handle the trainer event 
+ :    : itself.
+@>Text: The name graphic filename will need to match this as well. Keep 
+ :    : this in mind.
 @>
 
 #------------------------------------------------------------------------------
@@ -122609,96 +124514,117 @@ List of Event Commands:
  @>Move Picture: 1, @10, Center (256,192), (100%,100%), 0, Normal
  @>Wait: 16 frame(s)
  @>Change Transparent Flag: Transparency
- @>Transfer Player:[113: Ending Filler Map], (008,007), No Fade
+ @>Transfer Player:[113: Credits - Ayaka's Room], (008,007), No Fade
  @>
 : Branch End
 @>Conditional Branch: Variable [0144: TAoA Credits Variable] == 1
+ @>Text: Credits not finished.
+ @>Change Screen Color Tone: (-255,-255,-255,0), @10
+ @>Comment: Scene: Ayaka's Bedroom, during AoCF
+ @>
+: Branch End
+@>Conditional Branch: Variable [0144: TAoA Credits Variable] == 2
+ @>Text: Credits not finished.
+ @>Change Screen Color Tone: (-255,-255,-255,0), @10
  @>Comment: Warp: Village Tournament Arena
   :       : Scene: Prismrivers holding a concert
  @>
 : Branch End
-@>Conditional Branch: Variable [0144: TAoA Credits Variable] == 2
+@>Conditional Branch: Variable [0144: TAoA Credits Variable] == 3
+ @>Text: Credits not finished.
+ @>Change Screen Color Tone: (-255,-255,-255,0), @10
  @>Comment: Warp: Mugenkan Back Garden
   :       : Scene: Yuuka and Medicine walking through the berry garden
  @>
 : Branch End
-@>Conditional Branch: Variable [0144: TAoA Credits Variable] == 3
+@>Conditional Branch: Variable [0144: TAoA Credits Variable] == 4
+ @>Text: Credits not finished.
+ @>Change Screen Color Tone: (-255,-255,-255,0), @10
  @>Comment: Warp: Lunar Capital Training Grounds
   :       : Scene: Yorihime & Toyohime observing the LDC
  @>
 : Branch End
-@>Conditional Branch: Variable [0144: TAoA Credits Variable] == 4
+@>Conditional Branch: Variable [0144: TAoA Credits Variable] == 5
+ @>Text: Credits not finished.
+ @>Change Screen Color Tone: (-255,-255,-255,0), @10
  @>Comment: Warp: Human Village
   :       : Scene: Reimu & Yukari fighting Jo'on & Shion, with
   :       : Ayaka off to the side
  @>
 : Branch End
-@>Conditional Branch: Variable [0144: TAoA Credits Variable] == 5
+@>Conditional Branch: Variable [0144: TAoA Credits Variable] == 6
+ @>Text: Credits not finished.
+ @>Change Screen Color Tone: (-255,-255,-255,0), @10
  @>Comment: Warp: Mugenkan
   :       : Scene: Reimu stumbling into the secret teleporter and encountering
   :       : Mima
  @>
 : Branch End
-@>Conditional Branch: Variable [0144: TAoA Credits Variable] == 6
+@>Conditional Branch: Variable [0144: TAoA Credits Variable] == 7
+ @>Text: Credits not finished.
+ @>Change Screen Color Tone: (-255,-255,-255,0), @10
  @>Comment: Warp: Land of the Back Door
   :       : Scene: Okina watching events unfold through a door
  @>
 : Branch End
-@>Conditional Branch: Variable [0144: TAoA Credits Variable] == 7
+@>Conditional Branch: Variable [0144: TAoA Credits Variable] == 8
+ @>Text: Credits not finished.
+ @>Change Screen Color Tone: (-255,-255,-255,0), @10
  @>Comment: Warp: Mugenkan - Mima's Training Grounds
   :       : Scene: Ayaka and Meimu overlooking the cliff as the final
   :       : batch of credits plays
  @>
 : Branch End
-@>Conditional Branch: Variable [0144: TAoA Credits Variable] == 8
+@>Conditional Branch: Variable [0144: TAoA Credits Variable] == 9
+ @>Fade Out BGM: 2 sec.
  @>Show Picture: 1, 'end', Upper Left (0,0), (100%,100%), 0, Normal
- @>Text: \xn[?????]\s[]Another happy ending for Gensokyo it would appear!\wtnp[40]
- @>Text: \xn[Yukari]\s[]Until the next incident, of course.\wtnp[40]
- @>Text: \xn[Yukari]\s[]Perhaps your Shrine Maiden will get involved in the next
+ @>Text: \xn[?????]\se[]Another happy ending for Gensokyo it would appear!\wtnp[40]
+ @>Text: \xn[Yukari]\se[]Until the next incident, of course.\wtnp[40]
+ @>Text: \xn[Yukari]\se[]Perhaps your Shrine Maiden will get involved in the next
   :    : one, too.\wtnp[40]
- @>Text: \xn[?????]\s[]Hey! You could have had Reimu deal with Meimu, you know!\wtnp[40]
- @>Text: \xn[?????]\s[]So, why didn't you?\wtnp[40]
- @>Text: \xn[Yukari]\s[]While I have no doubt she could have taken care of it,
+ @>Text: \xn[?????]\se[]Hey! You could have had Reimu deal with Meimu, you know!\wtnp[40]
+ @>Text: \xn[?????]\se[]So, why didn't you?\wtnp[40]
+ @>Text: \xn[Yukari]\se[]\l[4]While I have no doubt she could have taken care of it,
   :    : I decided to take a gamble on that human's chances of success.\wtnp[40]
- @>Text: \xn[Yukari]\s[]I believe she was the more effective soluton in the end.\wtnp[40]
- @>Text: \xn[Yukari]\s[]And if she failed, well... I was prepared to step in if necessary.\wtnp[40]
- @>Text: \xn[Yukari]\s[]I can't just have someone barging in on my domain~.\wtnp[40]
- @>Text: \xn[?????]\s[]Right... So then, why did you save her?\wtnp[40]
- @>Text: \xn[Yukari]\s[]Hm? Come again~?\wtnp[40]
- @>Text: \xn[?????]\s[]Don't play coy with me Yukari!\wtnp[40]
- @>Text: \xn[?????]\s[]You know as well as I do that Meimu would have faded back
+ @>Text: \xn[Yukari]\se[]I believe she was the more effective soluton in the end.\wtnp[40]
+ @>Text: \xn[Yukari]\se[]And if she failed, well... I was prepared to step in if necessary.\wtnp[40]
+ @>Text: \xn[Yukari]\se[]I can't just have someone barging in on my domain~.\wtnp[40]
+ @>Text: \xn[?????]\se[]Right... So then, why did you save her?\wtnp[40]
+ @>Text: \xn[Yukari]\se[]Hm? Come again~?\wtnp[40]
+ @>Text: \xn[?????]\se[]Don't play coy with me Yukari!\wtnp[40]
+ @>Text: \xn[?????]\se[]\l[3]You know as well as I do that Meimu would have faded back
   :    : into the aether if you didn't get involved in some way.\wtnp[40]
- @>Text: \xn[Yukari]\s[]All I did was manipulate a few boundaries here and there- her will to
+ @>Text: \xn[Yukari]\se[]\l[3]All I did was manipulate a few boundaries here and there- her will to
   :    : live was what allowed her to sustain herself.\wtnp[40]
- @>Text: \xn[Yukari]\s[]She, like everyone in Gensokyo, was presented with an opportunity.\wtnp[40]
- @>Text: \xn[?????]\s[]Your philosophy.\wtnp[40]
- @>Text: \xn[Yukari]\s[]Gensokyo accepts all. While this can be a very cruel statement,
+ @>Text: \xn[Yukari]\se[]She, like everyone in Gensokyo, was presented with an opportunity.\wtnp[40]
+ @>Text: \xn[?????]\se[]Your philosophy.\wtnp[40]
+ @>Text: \xn[Yukari]\se[]\l[3]Gensokyo accepts all. While this can be a very cruel statement,
   :    : it can also be a beautiful one.\wtnp[40]
- @>Text: \xn[Yukari]\s[]It is here in this realm that the supernatural and the ordinary
+ @>Text: \xn[Yukari]\se[]\l[3]It is here in this realm that the supernatural and the ordinary
   :    : can exist together.\wtnp[40]
  @>Move Picture: 1, @20, Upper Left (0,0), (100%,100%), 255, Normal
- @>Text: \xn[Yukari]\s[]A place where one can live free from the persecution
+ @>Text: \xn[Yukari]\se[]\l[3]A place where one can live free from the persecution
   :    : and sterility of the world beyond the barrier.\wtnp[40]
- @>Text: \xn[Yukari]\s[]Where those who don't have a place, or in this
+ @>Text: \xn[Yukari]\se[]Where those who don't have a place, or in this
   :    : case don't exist, can call respite.\wtnp[40]
- @>Text: \xn[Yukari]\s[]A magical place, but also a very simple and plain one.\wtnp[40]
- @>Text: \xn[Yukari]\s[]Good or bad, nobody is excluded from our forsaken paradise.\wtnp[40]
- @>Text: \xn[Yukari]\s[]Our realm accepts everyone that is willing to adhere to this
+ @>Text: \xn[Yukari]\se[]A magical place, but also a very simple and plain one.\wtnp[40]
+ @>Text: \xn[Yukari]\se[]Good or bad, nobody is excluded from our forsaken paradise.\wtnp[40]
+ @>Text: \xn[Yukari]\se[]Our realm accepts everyone that is willing to adhere to this
   :    : contract.\wtnp[40]
- @>Text: \xn[Yukari]\s[]Humans.\wt[10] Youkai.\wt[10] Gods.\wt[10] Puppets.\wt[10]
+ @>Text: \xn[Yukari]\se[]Humans.\wt[10] Youkai.\wt[10] Gods.\wt[10] Puppets.\wt[10]
   :    : Indiscriminately, without exception.\wtnp[40]
- @>Text: \xn[?????]\s[]The Paradox of Tolerance. So even though Meimu nearly ripped
+ @>Text: \xn[?????]\se[]\l[3]The Paradox of Tolerance. So even though Meimu nearly ripped
   :    : the realm apart-\wtnp[40]
- @>Text: \xn[Yukari]\s[]If she is willing to adapt proper to Gensokyo, its norms and traditions,
+ @>Text: \xn[Yukari]\se[]\l[4]If she is willing to adapt proper to Gensokyo, its norms and traditions,
   :    : then there's no reason not to welcome her here.\wtnp[40]
- @>Text: \xn[Yukari]\s[]At any rate, it would seem that an old friend of ours is
+ @>Text: \xn[Yukari]\se[]At any rate, it would seem that an old friend of ours is
   :    : making moves again.\wtnp[40]
- @>Text: \xn[Yukari]\s[]I've noticed her trademark doors appearing across the
+ @>Text: \xn[Yukari]\se[]I've noticed her trademark doors appearing across the
   :    : realm.\wtnp[40]
- @>Text: \xn[?????]\s[]Huh... We have't heard from her in decades, I wonder
+ @>Text: \xn[?????]\se[]Huh... We have't heard from her in decades, I wonder
   :    : what she's planning.\wtnp[40]
- @>Text: \xn[Yukari]\s[]I'm sure we'll find out in due time, darling~.\wtnp[40]
- @>Text: \xn[Yukari]\s[]For now, let's just enjoy the rest of our date night- we 
+ @>Text: \xn[Yukari]\se[]I'm sure we'll find out in due time, darling~.\wtnp[40]
+ @>Text: \xn[Yukari]\se[]\l[3]For now, let's just enjoy the rest of our date night- we 
   :    : so seldom get these as of late...\wtnp[40]
  @>Move Picture: 1, @20, Upper Left (0,0), (100%,100%), 0, Normal
  @>Wait: 20 frame(s)
@@ -122707,12 +124633,12 @@ List of Event Commands:
   :    : shouldn't exist in our world.\wtnp[40]
  @>Text: \c[12]\se[]\l[2]Filled with wondrous thngs beyond your wildest
   :    : imagination.\wtnp[40]
- @>Text: \c[12]\se[]\l[2]It is here in this realm that we followed the tale of a
+ @>Text: \c[12]\se[]\l[3]It is here in this realm that we followed the tale of a
   :    : woman from the Human Village.\wtnp[40]
  @>Text: \c[12]\se[]\l[4]Witnessed her legacy, from humble beginnings, as
   :    : naught but a child with a sense of adventure, as she blossomed into who
   :    : she is today.\wtnp[40]
- @>Text: \c[12]\se[]\l[2]A champion.\wt[10] A savior.\wt[10] An idol.\wt[10]. A legend.\wtnp[40]
+ @>Text: \c[12]\se[]\l[2]A champion.\wt[20] A savior.\wt[20] An idol.\wt[20] A legend.\wtnp[40]
  @>Text: \c[12]\se[]\l[2]In this mystical world, anything is possible.\wt[10] Everything is possible.\wtnp[40]
  @>Text: \c[12]\se[]\l[2]All you need to do... is believe.\wtnp[40]
  @>Comment: Display the ending cg for TAoA here.
@@ -122731,6 +124657,17 @@ List of Event Commands:
  @>Text: You will be returned to the World of Fantasies. All four episodes will
   :    : be in a playable state if you wish to replay them.
  @>Text: Your game will be saved upon reloading into the area.
+ @>Conditional Branch: Switch [0152: TLA Cleared] == OFF
+  @>Control Switches: [0152: TLA Cleared] = ON
+  @>Control Variables: [0141: Scenarios Cleared] += 1
+  @>Change Text Options: Middle, Hide
+  @>
+ : Else
+  @>Transfer Player:[019: World of Fantasies], (019,020), Down
+  @>Change Transparent Flag: Normal
+  @>Change Screen Color Tone: (0,0,0,0), @8
+  @>
+ : Branch End
  @>
 : Branch End
 @>
@@ -123873,6 +125810,80 @@ List of Event Commands:
 @>Text: \bFree Roam allows you to re-enter the adventure at the point of completion on 
  :    : the current itteration. This may be useful for various purposes. No flags will
  :    : be reset, but you must have completed the episode first.
+@>
+
+#==============================================================================
+Common Event ID: 109
+Common Event Name: Preserve player party
+
+Trigger: None
+
+List of Event Commands:
+@>Script: $game_variables[2] = $player.party.clone
+@>Script: echoln pbGet(2)
+@>Comment: #####################################
+@>Script: $player.party.clear
+@>Comment: #####################################
+@>Script: pkmn1 = Pokemon.new(:TRRENKO, 50)
+:       : pkmn1.poke_ball = :ULTRAORB
+:       : pkmn1.obtain_text = nil
+:       : pkmn1.owner.name = "Shinji"
+:       : pkmn1.owner.id = $player.id
+:       : pkmn1.owner.gender = 0
+:       : pkmn1.iv[:HP] = 31
+:       : pkmn1.iv[:ATTACK] = 31
+:       : pkmn1.iv[:DEFENSE] = 31
+:       : pkmn1.iv[:SPECIAL_ATTACK] = 31
+:       : pkmn1.iv[:SPECIAL_DEFENSE] = 31
+:       : pkmn1.iv[:SPEED] = 31
+@>Script: pkmn1.calc_stats
+:       : pkmn1.learn_move(:EXTRASENSORY18)
+:       : pkmn1.learn_move(:IRONDEFENSE18)
+:       : pkmn1.learn_move(:SILVERWIND18)
+:       : pkmn1.learn_move(:LIGHTSCREEN18)
+:       : pbAddToPartySilent(pkmn1)
+@>Comment: #####################################
+@>Script: pkmn2 = Pokemon.new(:SYOUMU, 50)
+:       : pkmn2.poke_ball = :ULTRAORB
+:       : pkmn2.obtain_text = nil
+:       : pkmn2.owner.name = "Shinji"
+:       : pkmn2.owner.id = $player.id
+:       : pkmn2.owner.gender = 0
+:       : pkmn2.iv[:HP] = 31
+:       : pkmn2.iv[:ATTACK] = 31
+:       : pkmn2.iv[:DEFENSE] = 31
+:       : pkmn2.iv[:SPECIAL_ATTACK] = 31
+:       : pkmn2.iv[:SPECIAL_DEFENSE] = 31
+:       : pkmn2.iv[:SPEED] = 31
+@>Script: pkmn2.ability = :INNERFOCUS
+:       : pkmn2.calc_stats
+:       : pkmn2.learn_move(:SHADOWDANCE18)
+:       : pkmn2.learn_move(:SLASH18)
+:       : pkmn2.learn_move(:BATTLECHANT18)
+:       : pkmn2.learn_move(:CONFUSERAY18)
+:       : pbAddToPartySilent(pkmn2)
+@>Comment: #####################################
+@>Script: pkmn3 = Pokemon.new(:SARA, 50)
+:       : pkmn3.poke_ball = :ULTRAORB
+:       : pkmn3.obtain_text = nil
+:       : pkmn3.owner.name = "Shinji"
+:       : pkmn3.owner.id = $player.id
+:       : pkmn3.owner.gender = 0
+:       : pkmn3.iv[:HP] = 31
+:       : pkmn3.iv[:ATTACK] = 31
+:       : pkmn3.iv[:DEFENSE] = 31
+:       : pkmn3.iv[:SPECIAL_ATTACK] = 31
+:       : pkmn3.iv[:SPECIAL_DEFENSE] = 31
+:       : pkmn3.iv[:SPEED] = 31
+@>Script: pkmn3.ability = :GUTS
+:       : pkmn3.calc_stats
+:       : pkmn3.learn_move(:BELLYDRUM18)
+:       : pkmn3.learn_move(:CROSSCHOP18)
+:       : pkmn3.learn_move(:THUNDERPUNCH18)
+:       : pkmn3.learn_move(:TAUNT18)
+:       : pbAddToPartySilent(pkmn3)
+@>Comment: #####################################
+@>Control Self Switch: A =ON
 @>
 
 #==============================================================================

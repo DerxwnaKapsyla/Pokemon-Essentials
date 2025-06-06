@@ -128,7 +128,7 @@ MAX_BATTLE_POINTS    = 99_999
 	elsif pbGet(105) == 2
 	  return [
         _INTL("---- Touhou Puppet Play ----"),
-        _INTL("--- The Mansion of Mystery ---"),
+        _INTL("--- The Festival of Curses ---"),
         _INTL("Credits"),
 		"",
         _INTL("--- Game Director ---"),

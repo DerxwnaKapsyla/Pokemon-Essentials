@@ -17,6 +17,10 @@ class Game_Temp
   end
 end
 
+#===============================================================================
+# Helper Methods
+# Do not touch unless you know what you're doing.
+#===============================================================================
 def dkDisplayBallCount(viewport,foe,team_index)
   ball_sprites = []
   foe_party = foe[team_index].party
@@ -100,7 +104,7 @@ def dkConvertNameToBitmap(viewport, foe, battle_type)
   if image_name && pbResolveBitmap(full_path)
     namesprite.bitmap = RPG::Cache.transition("DTS/Names/#{image_name}")
   else
-    pbMessage("vs_name = #{$game_temp.vs_name.inspect}")
+    #pbMessage("vs_name = #{$game_temp.vs_name.inspect}")
     # Fallback to text
     text = $game_temp.vs_name ||
            ([0, 2].include?(battle_type) ? dkGetSpeciesName(foe) : dkGetTrainerName(foe))
@@ -121,13 +125,14 @@ def dkConvertNameToBitmap(viewport, foe, battle_type)
 end
 
 #===============================================================================
-# Derxwna's Modified Battle Transitions for Single Trainers
+# Single Trainer Battle
 #===============================================================================
-SpecialBattleIntroAnimations.register("vs_boss_solo", 80,   # Priority 80
+SpecialBattleIntroAnimations.register("vs_boss_solo", 90,   # Priority 80
   proc { |battle_type, foe, location|   # Condition
     next false if ![1, 3].include?(battle_type)   # Trainer battles only
 	next false if foe.length != 1 # Multi-Battles Only
     tr_type  = foe[0].trainer_type
+	next false if tr_type == :MEIMU
     next pbResolveBitmap("Graphics/Transitions/DTS/PTs/Char_#{tr_type}") # Character cut-in
   },
   proc { |viewport, battle_type, foe, location|   # Animation
@@ -273,12 +278,16 @@ SpecialBattleIntroAnimations.register("vs_boss_solo", 80,   # Priority 80
 	ball_bar.dispose
 	ball_sprites.each {|s| s.dispose}
 	$game_temp.vs_name = nil
+	$game_temp.transition_animation_data = nil
 
     viewport.color = Color.black   # Ensure screen is black
   }
 )
 
-SpecialBattleIntroAnimations.register("vs_boss_duo", 81,   # Priority 81
+#===============================================================================
+# Double Trainer Battle
+#===============================================================================
+SpecialBattleIntroAnimations.register("vs_boss_duo", 91,   # Priority 81
   proc { |battle_type, foe, location|   # Condition
     next false if ![1, 3].include?(battle_type)   # Trainer battles only
 	next false if foe.length == 1 # Multi-Battles Only
@@ -474,12 +483,16 @@ SpecialBattleIntroAnimations.register("vs_boss_duo", 81,   # Priority 81
 	ball_sprites.each {|s| s.dispose}
 	ball_sprites2.each {|s| s.dispose}
 	$game_temp.vs_name = nil
+	$game_temp.transition_animation_data = nil
 
     viewport.color = Color.black   # Ensure screen is black
   }
 )
 
-SpecialBattleIntroAnimations.register("vs_boss_trio", 82,   # Priority 82
+#===============================================================================
+# Triple Trainer Battle
+#===============================================================================
+SpecialBattleIntroAnimations.register("vs_boss_trio", 92,   # Priority 82
   proc { |battle_type, foe, location|   # Condition
     next false if ![1, 3].include?(battle_type)   # Trainer battles only
 	next false if foe.length != 3 # Triple Battles Only
@@ -715,12 +728,16 @@ SpecialBattleIntroAnimations.register("vs_boss_trio", 82,   # Priority 82
 	ball_sprites2.each {|s| s.dispose}
 	ball_sprites3.each {|s| s.dispose}
 	$game_temp.vs_name = nil
+	$game_temp.transition_animation_data = nil
 
     viewport.color = Color.black   # Ensure screen is black
   }
 )
 
-SpecialBattleIntroAnimations.register("vs_wild_boss", 80,   # Priority 80
+#===============================================================================
+# Single Wild Battle
+#===============================================================================
+SpecialBattleIntroAnimations.register("vs_wild_boss", 90,   # Priority 80
   proc { |battle_type, foe, location|   # Condition
     next false if ![0, 2].include?(battle_type)   # Wild Encounters Only
     species = foe[0].species
@@ -870,6 +887,7 @@ SpecialBattleIntroAnimations.register("vs_wild_boss", 80,   # Priority 80
     bartop.dispose
     barbottom.dispose
 	$game_temp.vs_name = nil
+	$game_temp.transition_animation_data = nil
 	$game_temp.transition_animation_data = nil
 
     viewport.color = Color.black   # Ensure screen is black

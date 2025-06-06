@@ -25335,3 +25335,855 @@ Backtrace:
 002_Overworld_BattleIntroAnim.rb:31:in `block in each'
 002_Overworld_BattleIntroAnim.rb:31:in `each'
 002_Overworld_BattleIntroAnim.rb:31:in `each'
+
+=================
+
+[2025-06-04 19:43:21 -0700]
+[Pokémon Essentials version 21.1]
+[v21.1 Hotfixes 1.0.9]
+
+Exception: RuntimeError
+Message: Undefined value LEADER_Giovanni in GameData::TrainerType.
+File PBS/trainers_DTS_Example.txt, section LEADER_Giovanni,Giovanni,100
+[LEADER_Giovanni,Giovanni,100]
+
+
+
+Backtrace:
+001_Compiler.rb:454:in `checkEnumField'
+[v21.1 Hotfixes] Compiler bug fixes.rb:53:in `cast_csv_value'
+001_Compiler.rb:724:in `block (2 levels) in get_csv_record'
+001_Compiler.rb:710:in `each'
+001_Compiler.rb:710:in `block in get_csv_record'
+001_Compiler.rb:708:in `loop'
+001_Compiler.rb:708:in `get_csv_record'
+002_Compiler_CompilePBS.rb:823:in `block (2 levels) in compile_trainers'
+001_Compiler.rb:244:in `block (2 levels) in pbCompilerEachPreppedLine'
+001_Compiler.rb:236:in `each_line'
+
+=================
+
+[2025-06-04 19:43:42 -0700]
+[Pokémon Essentials version 21.1]
+[v21.1 Hotfixes 1.0.9]
+
+Exception: RuntimeError
+Message: Unknown exception when compiling.
+
+Backtrace:
+001_Compiler.rb:1114:in `rescue in main'
+001_Compiler.rb:1041:in `main'
+999_Main.rb:36:in `mainFunctionDebug'
+999_Main.rb:19:in `block in mainFunction'
+003_Errors.rb:79:in `pbCriticalCode'
+999_Main.rb:19:in `mainFunction'
+999_Main.rb:52:in `block (2 levels) in load_scripts_from_folder'
+999_Main.rb:51:in `loop'
+999_Main.rb:51:in `block in load_scripts_from_folder'
+Main:35:in `eval'
+
+=================
+
+[2025-06-04 19:44:02 -0700]
+[Pokémon Essentials version 21.1]
+[v21.1 Hotfixes 1.0.9]
+
+Exception: RuntimeError
+Message: Section name 'POKEMONTRAINER_Red' is used twice.
+File PBS/trainer_types_DTS_example.txt, section POKEMONTRAINER_Red, key VictoryBGM
+
+
+
+
+Backtrace:
+002_Compiler_CompilePBS.rb:57:in `block (3 levels) in compile_PBS_file_generic'
+001_Compiler.rb:143:in `block in pbEachFileSection'
+001_Compiler.rb:108:in `block in pbEachFileSectionEx'
+001_Compiler.rb:100:in `each_line'
+001_Compiler.rb:100:in `pbEachFileSectionEx'
+001_Compiler.rb:142:in `pbEachFileSection'
+002_Compiler_CompilePBS.rb:22:in `block (2 levels) in compile_PBS_file_generic'
+002_Compiler_CompilePBS.rb:16:in `open'
+002_Compiler_CompilePBS.rb:16:in `block in compile_PBS_file_generic'
+002_Compiler_CompilePBS.rb:11:in `each'
+
+=================
+
+[2025-06-04 19:44:04 -0700]
+[Pokémon Essentials version 21.1]
+[v21.1 Hotfixes 1.0.9]
+
+Exception: RuntimeError
+Message: Unknown exception when compiling.
+
+Backtrace:
+001_Compiler.rb:1114:in `rescue in main'
+001_Compiler.rb:1041:in `main'
+999_Main.rb:36:in `mainFunctionDebug'
+999_Main.rb:19:in `block in mainFunction'
+003_Errors.rb:79:in `pbCriticalCode'
+999_Main.rb:19:in `mainFunction'
+999_Main.rb:52:in `block (2 levels) in load_scripts_from_folder'
+999_Main.rb:51:in `loop'
+999_Main.rb:51:in `block in load_scripts_from_folder'
+Main:35:in `eval'
+
+=================
+
+[2025-06-04 19:44:50 -0700]
+[Pokémon Essentials version 21.1]
+[v21.1 Hotfixes 1.0.9]
+
+Script error in event 1 (coords 6,7), map 151 (Demo Map)
+Exception: Errno::ENOENT
+Message: File Graphics/Transitions/vsBar_AYAKA not found.
+
+***Full script:
+TrainerBattle.start(:POKEMONTRAINER_Red, "Red", 100)
+Backtrace:
+001_RPG_Cache.rb:127:in `initialize'
+001_RPG_Cache.rb:127:in `initialize'
+001_RPG_Cache.rb:46:in `new'
+001_RPG_Cache.rb:46:in `load_bitmap'
+001_RPG_Cache.rb:90:in `transition'
+002_Overworld_BattleIntroAnim.rb:316:in `block (2 levels) in load_scripts_from_folder'
+[TAoA Core] 002_Overworld_BattleIntroAnim.rb:37:in `block in pbBattleAnimation'
+002_Overworld_BattleIntroAnim.rb:31:in `block in each'
+002_Overworld_BattleIntroAnim.rb:31:in `each'
+002_Overworld_BattleIntroAnim.rb:31:in `each'
+
+=================
+
+[2025-06-04 19:45:56 -0700]
+[Pokémon Essentials version 21.1]
+[v21.1 Hotfixes 1.0.9]
+
+Script error in event 1 (coords 6,7), map 151 (Demo Map)
+Exception: Errno::ENOENT
+Message: File Graphics/Transitions/vsBar_AYAKA not found.
+
+***Full script:
+TrainerBattle.start(:POKEMONTRAINER_Red, "Red", 100)
+Backtrace:
+001_RPG_Cache.rb:127:in `initialize'
+001_RPG_Cache.rb:127:in `initialize'
+001_RPG_Cache.rb:46:in `new'
+001_RPG_Cache.rb:46:in `load_bitmap'
+001_RPG_Cache.rb:90:in `transition'
+002_Overworld_BattleIntroAnim.rb:316:in `block (2 levels) in load_scripts_from_folder'
+[TAoA Core] 002_Overworld_BattleIntroAnim.rb:37:in `block in pbBattleAnimation'
+002_Overworld_BattleIntroAnim.rb:31:in `block in each'
+002_Overworld_BattleIntroAnim.rb:31:in `each'
+002_Overworld_BattleIntroAnim.rb:31:in `each'
+
+=================
+
+[2025-06-04 19:50:04 -0700]
+[Pokémon Essentials version 21.1]
+[v21.1 Hotfixes 1.0.9]
+
+Script error in event 4 (coords 12,7), map 151 (Demo Map)
+Exception: Errno::ENOENT
+Message: File Graphics/Transitions/DTS/BGs/BGGiovanni not found.
+
+***Full script:
+TrainerBattle.start(:LEADER_Giovanni, "Giovanni", 100)
+Backtrace:
+001_RPG_Cache.rb:127:in `initialize'
+001_RPG_Cache.rb:127:in `initialize'
+001_RPG_Cache.rb:46:in `new'
+001_RPG_Cache.rb:46:in `load_bitmap'
+001_RPG_Cache.rb:90:in `transition'
+[Derxwna's Custom Vs. Transitions System] 001_VsTransitions.rb:151:in `block in <main>'
+[TAoA Core] 002_Overworld_BattleIntroAnim.rb:37:in `block in pbBattleAnimation'
+002_Overworld_BattleIntroAnim.rb:31:in `block in each'
+002_Overworld_BattleIntroAnim.rb:31:in `each'
+002_Overworld_BattleIntroAnim.rb:31:in `each'
+
+=================
+
+[2025-06-04 20:04:22 -0700]
+[Pokémon Essentials version 21.1]
+[v21.1 Hotfixes 1.0.9]
+
+Script error in event 7 (coords 10,14), map 151 (Demo Map)
+Exception: SyntaxError
+Message: (eval):4: syntax error, unexpected end-of-input, expecting `end'
+...emp.vs_transition_bg = "Rocket"
+...                               ^
+
+
+***Full script:
+case rand(1..2)
+when 1 then $game_temp.vs_transition_bg = "MtSilver"
+when 2 then $game_temp.vs_transition_bg = "VictoryRoad"
+$game_temp.vs_transition_bg = "Rocket"
+
+=================
+
+[2025-06-05 00:54:30 -0700]
+[Pokémon Essentials version 21.1]
+[v21.1 Hotfixes 1.0.9]
+
+Script error in event 34 (coords 24,11), map 57 (Great Youkai Forest)
+Exception: Errno::ENOENT
+Message: File Graphics/Transitions/DTS/BGs/BGYoukaiWoods not found.
+
+***Full script:
+TrainerBattle.start(:HATATE, "Hatate Himekaidou", 10+(pbGet(99) * 10))
+Backtrace:
+001_RPG_Cache.rb:127:in `initialize'
+001_RPG_Cache.rb:127:in `initialize'
+001_RPG_Cache.rb:46:in `new'
+001_RPG_Cache.rb:46:in `load_bitmap'
+001_RPG_Cache.rb:90:in `transition'
+[Derxwna's Custom Vs. Transitions System] 001_VsTransitions.rb:155:in `block in <main>'
+[TAoA Core] 002_Overworld_BattleIntroAnim.rb:37:in `block in pbBattleAnimation'
+002_Overworld_BattleIntroAnim.rb:31:in `block in each'
+002_Overworld_BattleIntroAnim.rb:31:in `each'
+002_Overworld_BattleIntroAnim.rb:31:in `each'
+
+=================
+
+[2025-06-05 02:30:42 -0700]
+[Pokémon Essentials version 21.1]
+[v21.1 Hotfixes 1.0.9]
+
+Exception: NoMethodError
+Message: undefined method `none?' for "Yes":String
+
+Backtrace:
+001_Overworld.rb:7:in `block (2 levels) in load_scripts_from_folder'
+005_Event_Handlers.rb:89:in `block in trigger'
+005_Event_Handlers.rb:89:in `each_value'
+005_Event_Handlers.rb:89:in `trigger'
+006_Event_HandlerCollections.rb:63:in `trigger'
+002_Scene_Map.rb:162:in `updateSpritesets'
+002_Scene_Map.rb:176:in `update'
+002_Scene_Map.rb:238:in `block in main'
+002_Scene_Map.rb:235:in `loop'
+002_Scene_Map.rb:235:in `main'
+
+=================
+
+[2025-06-05 03:22:06 -0700]
+[Pokémon Essentials version 21.1]
+[v21.1 Hotfixes 1.0.9]
+
+Script error in event 1 (coords 14,13), map 119 (Eientei (Rooms))
+Exception: RuntimeError
+Message: Trainer for data 'REISEN, Reisen U. Inaba, 40' is not defined.
+
+***Full script:
+TrainerBattle.start(:REISEN, "Reisen U. Inaba", 10+(pbGet(99) * 10), :EIRIN, "Eirin Yagokoro", 10+(pbGet(99) * 10))
+Backtrace:
+001_Overworld_BattleStarting.rb:566:in `block in generate_foes'
+001_Overworld_BattleStarting.rb:538:in `each'
+001_Overworld_BattleStarting.rb:538:in `each_with_index'
+001_Overworld_BattleStarting.rb:538:in `generate_foes'
+001_Overworld_BattleStarting.rb:504:in `start_core'
+001_Overworld_BattleStarting.rb:487:in `start'
+(eval):1:in `execute_script'
+003_Interpreter.rb:140:in `eval'
+003_Interpreter.rb:140:in `execute_script'
+004_Interpreter_Commands.rb:434:in `command_111'
+
+=================
+
+[2025-06-05 13:23:24 -0700]
+[Pokémon Essentials version 21.1]
+[v21.1 Hotfixes 1.0.9]
+
+Script error in event 1 (coords 14,13), map 119 (Eientei (Rooms))
+Exception: SyntaxError
+Message: (eval):1: syntax error, unexpected ',', expecting end-of-input
+...REISEN, "Reisen U. Inaba", 30), :EIRIN, "Eirin Yagokoro", 30...
+...                              ^
+
+
+***Full script:
+TrainerBattle.start(:REISEN, "Reisen U. Inaba", 30), :EIRIN, "Eirin Yagokoro", 30))
+=================
+
+[2025-06-06 02:04:32 -0700]
+[Pokémon Essentials version 21.1]
+[v21.1 Hotfixes 1.0.9]
+
+Exception: SystemStackError
+Message: stack level too deep
+
+Backtrace:
+[Derxwna's Custom Vs. Transitions System] 001_VsTransitions.rb:7:in `initialize'
+[Derxwna's Custom Vs. Transitions System] 001_VsTransitions.rb:7:in `initialize'
+[Derxwna's Custom Vs. Transitions System] 001_VsTransitions.rb:7:in `initialize'
+[Derxwna's Custom Vs. Transitions System] 001_VsTransitions.rb:7:in `initialize'
+[Derxwna's Custom Vs. Transitions System] 001_VsTransitions.rb:7:in `initialize'
+[Derxwna's Custom Vs. Transitions System] 001_VsTransitions.rb:7:in `initialize'
+[Derxwna's Custom Vs. Transitions System] 001_VsTransitions.rb:7:in `initialize'
+[Derxwna's Custom Vs. Transitions System] 001_VsTransitions.rb:7:in `initialize'
+[Derxwna's Custom Vs. Transitions System] 001_VsTransitions.rb:7:in `initialize'
+[Derxwna's Custom Vs. Transitions System] 001_VsTransitions.rb:7:in `initialize'
+
+=================
+
+[2025-06-06 02:09:53 -0700]
+[Pokémon Essentials version 21.1]
+[v21.1 Hotfixes 1.0.9]
+
+Script error in event 24 (coords 12,14), map 149 (Testing Map)
+Exception: SyntaxError
+Message: (eval):1: syntax error, unexpected ',', expecting end-of-input
+...CLOWNPIECET, "Clownpiece", 10), :HELLFAIRY, "Lucia", pbGet(9...
+...                              ^
+
+
+***Full script:
+TrainerBattle.start(:CLOWNPIECET, "Clownpiece", 10), :HELLFAIRY, "Lucia", pbGet(99))
+=================
+
+[2025-06-06 02:11:01 -0700]
+[Pokémon Essentials version 21.1]
+[v21.1 Hotfixes 1.0.9]
+
+Script error in event 24 (coords 12,14), map 149 (Testing Map)
+Exception: RuntimeError
+Message: Trainer for data 'HELLFAIRY, Lucia, 3' is not defined.
+
+***Full script:
+TrainerBattle.start(:CLOWNPIECET, "Clownpiece", 10, :HELLFAIRY, "Lucia", 3)
+Backtrace:
+001_Overworld_BattleStarting.rb:566:in `block in generate_foes'
+001_Overworld_BattleStarting.rb:538:in `each'
+001_Overworld_BattleStarting.rb:538:in `each_with_index'
+001_Overworld_BattleStarting.rb:538:in `generate_foes'
+001_Overworld_BattleStarting.rb:504:in `start_core'
+001_Overworld_BattleStarting.rb:487:in `start'
+(eval):1:in `execute_script'
+003_Interpreter.rb:140:in `eval'
+003_Interpreter.rb:140:in `execute_script'
+004_Interpreter_Commands.rb:434:in `command_111'
+
+=================
+
+[2025-06-06 03:25:40 -0700]
+[Pokémon Essentials version 21.1]
+[v21.1 Hotfixes 1.0.9]
+
+Script error in event 48 (coords 24,4), map 149 (Testing Map)
+Exception: NoMethodError
+Message: undefined method `opacity=' for "DTS/Balls/icon_ball24":String
+
+***Full script:
+TrainerBattle.start(:MEIMU,"Meimu",pbGet(143))
+Backtrace:
+[Derxwna's Custom Vs. Transitions System] 002_TAoA Specific.rb:206:in `block in <main>'
+[TAoA Core] 002_Overworld_BattleIntroAnim.rb:37:in `block in pbBattleAnimation'
+002_Overworld_BattleIntroAnim.rb:31:in `block in each'
+002_Overworld_BattleIntroAnim.rb:31:in `each'
+002_Overworld_BattleIntroAnim.rb:31:in `each'
+[TAoA Core] 002_Overworld_BattleIntroAnim.rb:35:in `pbBattleAnimation'
+001_Overworld_BattleStarting.rb:521:in `start_core'
+001_Overworld_BattleStarting.rb:487:in `start'
+(eval):1:in `execute_script'
+003_Interpreter.rb:140:in `eval'
+
+=================
+
+[2025-06-06 03:26:45 -0700]
+[Pokémon Essentials version 21.1]
+[v21.1 Hotfixes 1.0.9]
+
+Script error in event 48 (coords 24,4), map 149 (Testing Map)
+Exception: TypeError
+Message: Can't convert String into Bitmap
+
+***Full script:
+TrainerBattle.start(:MEIMU,"Meimu",pbGet(143))
+Backtrace:
+[Derxwna's Custom Vs. Transitions System] 002_TAoA Specific.rb:206:in `bitmap='
+[Derxwna's Custom Vs. Transitions System] 002_TAoA Specific.rb:206:in `block in <main>'
+[TAoA Core] 002_Overworld_BattleIntroAnim.rb:37:in `block in pbBattleAnimation'
+002_Overworld_BattleIntroAnim.rb:31:in `block in each'
+002_Overworld_BattleIntroAnim.rb:31:in `each'
+002_Overworld_BattleIntroAnim.rb:31:in `each'
+[TAoA Core] 002_Overworld_BattleIntroAnim.rb:35:in `pbBattleAnimation'
+001_Overworld_BattleStarting.rb:521:in `start_core'
+001_Overworld_BattleStarting.rb:487:in `start'
+(eval):1:in `execute_script'
+
+=================
+
+[2025-06-06 03:32:48 -0700]
+[Pokémon Essentials version 21.1]
+[v21.1 Hotfixes 1.0.9]
+
+Script error in event 48 (coords 24,4), map 149 (Testing Map)
+Exception: TypeError
+Message: Argument 0: Expected fixnum
+
+***Full script:
+TrainerBattle.start(:MEIMU,"Meimu",pbGet(143))
+Backtrace:
+[Derxwna's Custom Vs. Transitions System] 002_TAoA Specific.rb:333:in `y='
+[Derxwna's Custom Vs. Transitions System] 002_TAoA Specific.rb:333:in `block (2 levels) in <main>'
+[Arcky's Utilities] 000_Main.rb:375:in `pbWait'
+[Derxwna's Custom Vs. Transitions System] 002_TAoA Specific.rb:330:in `block in <main>'
+[TAoA Core] 002_Overworld_BattleIntroAnim.rb:37:in `block in pbBattleAnimation'
+002_Overworld_BattleIntroAnim.rb:31:in `block in each'
+002_Overworld_BattleIntroAnim.rb:31:in `each'
+002_Overworld_BattleIntroAnim.rb:31:in `each'
+[TAoA Core] 002_Overworld_BattleIntroAnim.rb:35:in `pbBattleAnimation'
+001_Overworld_BattleStarting.rb:521:in `start_core'
+
+=================
+
+[2025-06-06 03:36:45 -0700]
+[Pokémon Essentials version 21.1]
+[v21.1 Hotfixes 1.0.9]
+
+Script error in event 48 (coords 24,4), map 149 (Testing Map)
+Exception: NameError
+Message: undefined local variable or method `i' for main:Object
+
+***Full script:
+TrainerBattle.start(:MEIMU,"Meimu",pbGet(143))
+Backtrace:
+[Derxwna's Custom Vs. Transitions System] 002_TAoA Specific.rb:333:in `block (2 levels) in <main>'
+[Arcky's Utilities] 000_Main.rb:375:in `pbWait'
+[Derxwna's Custom Vs. Transitions System] 002_TAoA Specific.rb:330:in `block in <main>'
+[TAoA Core] 002_Overworld_BattleIntroAnim.rb:37:in `block in pbBattleAnimation'
+002_Overworld_BattleIntroAnim.rb:31:in `block in each'
+002_Overworld_BattleIntroAnim.rb:31:in `each'
+002_Overworld_BattleIntroAnim.rb:31:in `each'
+[TAoA Core] 002_Overworld_BattleIntroAnim.rb:35:in `pbBattleAnimation'
+001_Overworld_BattleStarting.rb:521:in `start_core'
+001_Overworld_BattleStarting.rb:487:in `start'
+
+=================
+
+[2025-06-06 03:46:33 -0700]
+[Pokémon Essentials version 21.1]
+[v21.1 Hotfixes 1.0.9]
+
+Script error in event 48 (coords 24,4), map 149 (Testing Map)
+Exception: NameError
+Message: undefined local variable or method `team_index' for main:Object
+
+***Full script:
+TrainerBattle.start(:MEIMU,"Meimu",pbGet(143))
+Backtrace:
+[Derxwna's Custom Vs. Transitions System] 002_TAoA Specific.rb:208:in `block in <main>'
+[TAoA Core] 002_Overworld_BattleIntroAnim.rb:37:in `block in pbBattleAnimation'
+002_Overworld_BattleIntroAnim.rb:31:in `block in each'
+002_Overworld_BattleIntroAnim.rb:31:in `each'
+002_Overworld_BattleIntroAnim.rb:31:in `each'
+[TAoA Core] 002_Overworld_BattleIntroAnim.rb:35:in `pbBattleAnimation'
+001_Overworld_BattleStarting.rb:521:in `start_core'
+001_Overworld_BattleStarting.rb:487:in `start'
+(eval):1:in `execute_script'
+003_Interpreter.rb:140:in `eval'
+
+=================
+
+[2025-06-06 12:58:47 -0700]
+[Pokémon Essentials version 21.1]
+
+Error in Plugin: [Derxwna's Custom Vs. Transitions System]
+Exception: SyntaxError
+Message: [Derxwna's Custom Vs. Transitions System] 002_TAoA Specific.rb:476: syntax error, unexpected end-of-input, expecting '}'
+    flash.opacity = 255
+                       ^
+
+
+Backtrace:
+005_PluginManager.rb:635:in `eval'
+005_PluginManager.rb:635:in `block (2 levels) in runPlugins'
+005_PluginManager.rb:625:in `each'
+005_PluginManager.rb:625:in `block in runPlugins'
+005_PluginManager.rb:616:in `each'
+005_PluginManager.rb:616:in `runPlugins'
+999_Main.rb:35:in `mainFunctionDebug'
+999_Main.rb:19:in `block in mainFunction'
+003_Errors.rb:79:in `pbCriticalCode'
+999_Main.rb:19:in `mainFunction'
+
+=================
+
+[2025-06-06 13:07:27 -0700]
+[Pokémon Essentials version 21.1]
+[v21.1 Hotfixes 1.0.9]
+
+Script error in event 49 (coords 24,6), map 149 (Testing Map)
+Exception: NoMethodError
+Message: undefined method `trainer_type' for #<Pokemon MEIMU Lv.100>
+
+***Full script:
+WildBattle.start(:MEIMU, 100)
+Backtrace:
+[Derxwna's Custom Vs. Transitions System] 002_TAoA Specific.rb:181:in `block in <main>'
+[TAoA Core] 002_Overworld_BattleIntroAnim.rb:36:in `block in pbBattleAnimation'
+002_Overworld_BattleIntroAnim.rb:31:in `block in each'
+002_Overworld_BattleIntroAnim.rb:31:in `each'
+002_Overworld_BattleIntroAnim.rb:31:in `each'
+[TAoA Core] 002_Overworld_BattleIntroAnim.rb:35:in `pbBattleAnimation'
+001_Overworld_BattleStarting.rb:401:in `start_core'
+001_Overworld_BattleStarting.rb:366:in `start'
+(eval):1:in `execute_script'
+003_Interpreter.rb:140:in `eval'
+
+=================
+
+[2025-06-06 13:08:09 -0700]
+[Pokémon Essentials version 21.1]
+[v21.1 Hotfixes 1.0.9]
+
+Script error in event 49 (coords 24,6), map 149 (Testing Map)
+Exception: NoMethodError
+Message: undefined method `trainer_type' for #<Pokemon MEIMU Lv.100>
+
+***Full script:
+WildBattle.start(:MEIMU, 100)
+Backtrace:
+[Derxwna's Custom Vs. Transitions System] 002_TAoA Specific.rb:181:in `block in <main>'
+[TAoA Core] 002_Overworld_BattleIntroAnim.rb:36:in `block in pbBattleAnimation'
+002_Overworld_BattleIntroAnim.rb:31:in `block in each'
+002_Overworld_BattleIntroAnim.rb:31:in `each'
+002_Overworld_BattleIntroAnim.rb:31:in `each'
+[TAoA Core] 002_Overworld_BattleIntroAnim.rb:35:in `pbBattleAnimation'
+001_Overworld_BattleStarting.rb:401:in `start_core'
+001_Overworld_BattleStarting.rb:366:in `start'
+(eval):1:in `execute_script'
+003_Interpreter.rb:140:in `eval'
+
+=================
+
+[2025-06-06 13:09:30 -0700]
+[Pokémon Essentials version 21.1]
+[v21.1 Hotfixes 1.0.9]
+
+Script error in event 49 (coords 24,6), map 149 (Testing Map)
+Exception: NoMethodError
+Message: undefined method `trainer_type' for #<Pokemon MEIMU Lv.100>
+
+***Full script:
+WildBattle.start(:MEIMU, 100)
+Backtrace:
+[Derxwna's Custom Vs. Transitions System] 002_TAoA Specific.rb:181:in `block in <main>'
+[TAoA Core] 002_Overworld_BattleIntroAnim.rb:36:in `block in pbBattleAnimation'
+002_Overworld_BattleIntroAnim.rb:31:in `block in each'
+002_Overworld_BattleIntroAnim.rb:31:in `each'
+002_Overworld_BattleIntroAnim.rb:31:in `each'
+[TAoA Core] 002_Overworld_BattleIntroAnim.rb:35:in `pbBattleAnimation'
+001_Overworld_BattleStarting.rb:401:in `start_core'
+001_Overworld_BattleStarting.rb:366:in `start'
+(eval):1:in `execute_script'
+003_Interpreter.rb:140:in `eval'
+
+=================
+
+[2025-06-06 13:10:52 -0700]
+[Pokémon Essentials version 21.1]
+[v21.1 Hotfixes 1.0.9]
+
+Script error in event 49 (coords 24,6), map 149 (Testing Map)
+Exception: NoMethodError
+Message: undefined method `trainer_type' for #<Pokemon MEIMU Lv.100>
+
+***Full script:
+WildBattle.start(:MEIMU, 100)
+Backtrace:
+[Derxwna's Custom Vs. Transitions System] 002_TAoA Specific.rb:8:in `block in <main>'
+[TAoA Core] 002_Overworld_BattleIntroAnim.rb:36:in `block in pbBattleAnimation'
+002_Overworld_BattleIntroAnim.rb:31:in `block in each'
+002_Overworld_BattleIntroAnim.rb:31:in `each'
+002_Overworld_BattleIntroAnim.rb:31:in `each'
+[TAoA Core] 002_Overworld_BattleIntroAnim.rb:35:in `pbBattleAnimation'
+001_Overworld_BattleStarting.rb:401:in `start_core'
+001_Overworld_BattleStarting.rb:366:in `start'
+(eval):1:in `execute_script'
+003_Interpreter.rb:140:in `eval'
+
+=================
+
+[2025-06-06 13:11:32 -0700]
+[Pokémon Essentials version 21.1]
+[v21.1 Hotfixes 1.0.9]
+
+Script error in event 49 (coords 24,6), map 149 (Testing Map)
+Exception: NameError
+Message: undefined local variable or method `tr_type' for main:Object
+
+***Full script:
+WildBattle.start(:MEIMU, 100)
+Backtrace:
+[Derxwna's Custom Vs. Transitions System] 002_TAoA Specific.rb:375:in `block in <main>'
+[TAoA Core] 002_Overworld_BattleIntroAnim.rb:36:in `block in pbBattleAnimation'
+002_Overworld_BattleIntroAnim.rb:31:in `block in each'
+002_Overworld_BattleIntroAnim.rb:31:in `each'
+002_Overworld_BattleIntroAnim.rb:31:in `each'
+[TAoA Core] 002_Overworld_BattleIntroAnim.rb:35:in `pbBattleAnimation'
+001_Overworld_BattleStarting.rb:401:in `start_core'
+001_Overworld_BattleStarting.rb:366:in `start'
+(eval):1:in `execute_script'
+003_Interpreter.rb:140:in `eval'
+
+=================
+
+[2025-06-06 13:12:50 -0700]
+[Pokémon Essentials version 21.1]
+[v21.1 Hotfixes 1.0.9]
+
+Script error in event 48 (coords 24,4), map 149 (Testing Map)
+Exception: NoMethodError
+Message: undefined method `species' for #<NPCTrainer Anomalous Existence Meimu @party=[:MASHA, :KYOUKO, :SUGAR, :MARGATROID, :TORAKO, :ASUKUNA]>
+
+***Full script:
+TrainerBattle.start(:MEIMU,"Meimu",pbGet(143))
+Backtrace:
+[Derxwna's Custom Vs. Transitions System] 002_TAoA Specific.rb:371:in `block in <main>'
+[TAoA Core] 002_Overworld_BattleIntroAnim.rb:36:in `block in pbBattleAnimation'
+002_Overworld_BattleIntroAnim.rb:31:in `block in each'
+002_Overworld_BattleIntroAnim.rb:31:in `each'
+002_Overworld_BattleIntroAnim.rb:31:in `each'
+[TAoA Core] 002_Overworld_BattleIntroAnim.rb:35:in `pbBattleAnimation'
+001_Overworld_BattleStarting.rb:521:in `start_core'
+001_Overworld_BattleStarting.rb:487:in `start'
+(eval):1:in `execute_script'
+003_Interpreter.rb:140:in `eval'
+
+=================
+
+[2025-06-06 13:23:14 -0700]
+[Pokémon Essentials version 21.1]
+[v21.1 Hotfixes 1.0.9]
+
+Script error in event 49 (coords 24,6), map 149 (Testing Map)
+Exception: NoMethodError
+Message: undefined method `trainer_type' for #<Pokemon MEIMU Lv.100>
+
+***Full script:
+WildBattle.start(:MEIMU, 100)
+Backtrace:
+[Derxwna's Custom Vs. Transitions System] 002_TAoA Specific.rb:371:in `block in <main>'
+[TAoA Core] 002_Overworld_BattleIntroAnim.rb:36:in `block in pbBattleAnimation'
+002_Overworld_BattleIntroAnim.rb:31:in `block in each'
+002_Overworld_BattleIntroAnim.rb:31:in `each'
+002_Overworld_BattleIntroAnim.rb:31:in `each'
+[TAoA Core] 002_Overworld_BattleIntroAnim.rb:35:in `pbBattleAnimation'
+001_Overworld_BattleStarting.rb:401:in `start_core'
+001_Overworld_BattleStarting.rb:366:in `start'
+(eval):1:in `execute_script'
+003_Interpreter.rb:140:in `eval'
+
+=================
+
+[2025-06-06 13:23:35 -0700]
+[Pokémon Essentials version 21.1]
+[v21.1 Hotfixes 1.0.9]
+
+Script error in event 49 (coords 24,6), map 149 (Testing Map)
+Exception: NoMethodError
+Message: undefined method `trainer_type' for #<Pokemon MEIMU Lv.100>
+
+***Full script:
+WildBattle.start(:MEIMU, 100)
+Backtrace:
+[Derxwna's Custom Vs. Transitions System] 002_TAoA Specific.rb:371:in `block in <main>'
+[TAoA Core] 002_Overworld_BattleIntroAnim.rb:36:in `block in pbBattleAnimation'
+002_Overworld_BattleIntroAnim.rb:31:in `block in each'
+002_Overworld_BattleIntroAnim.rb:31:in `each'
+002_Overworld_BattleIntroAnim.rb:31:in `each'
+[TAoA Core] 002_Overworld_BattleIntroAnim.rb:35:in `pbBattleAnimation'
+001_Overworld_BattleStarting.rb:401:in `start_core'
+001_Overworld_BattleStarting.rb:366:in `start'
+(eval):1:in `execute_script'
+003_Interpreter.rb:140:in `eval'
+
+=================
+
+[2025-06-06 13:25:00 -0700]
+[Pokémon Essentials version 21.1]
+[v21.1 Hotfixes 1.0.9]
+
+Script error in event 49 (coords 24,6), map 149 (Testing Map)
+Exception: NoMethodError
+Message: undefined method `trainer_type' for #<Pokemon MEIMU Lv.100>
+
+***Full script:
+WildBattle.start(:MEIMU, 100)
+Backtrace:
+[Derxwna's Custom Vs. Transitions System] 002_TAoA Specific.rb:8:in `block in <main>'
+[TAoA Core] 002_Overworld_BattleIntroAnim.rb:36:in `block in pbBattleAnimation'
+002_Overworld_BattleIntroAnim.rb:31:in `block in each'
+002_Overworld_BattleIntroAnim.rb:31:in `each'
+002_Overworld_BattleIntroAnim.rb:31:in `each'
+[TAoA Core] 002_Overworld_BattleIntroAnim.rb:35:in `pbBattleAnimation'
+001_Overworld_BattleStarting.rb:401:in `start_core'
+001_Overworld_BattleStarting.rb:366:in `start'
+(eval):1:in `execute_script'
+003_Interpreter.rb:140:in `eval'
+
+=================
+
+[2025-06-06 13:25:29 -0700]
+[Pokémon Essentials version 21.1]
+[v21.1 Hotfixes 1.0.9]
+
+Script error in event 49 (coords 24,6), map 149 (Testing Map)
+Exception: NoMethodError
+Message: undefined method `trainer_type' for #<Pokemon MEIMU Lv.100>
+
+***Full script:
+WildBattle.start(:MEIMU, 100)
+Backtrace:
+[Derxwna's Custom Vs. Transitions System] 002_TAoA Specific.rb:8:in `block in <main>'
+[TAoA Core] 002_Overworld_BattleIntroAnim.rb:36:in `block in pbBattleAnimation'
+002_Overworld_BattleIntroAnim.rb:31:in `block in each'
+002_Overworld_BattleIntroAnim.rb:31:in `each'
+002_Overworld_BattleIntroAnim.rb:31:in `each'
+[TAoA Core] 002_Overworld_BattleIntroAnim.rb:35:in `pbBattleAnimation'
+001_Overworld_BattleStarting.rb:401:in `start_core'
+001_Overworld_BattleStarting.rb:366:in `start'
+(eval):1:in `execute_script'
+003_Interpreter.rb:140:in `eval'
+
+=================
+
+[2025-06-06 13:26:07 -0700]
+[Pokémon Essentials version 21.1]
+[v21.1 Hotfixes 1.0.9]
+
+Script error in event 49 (coords 24,6), map 149 (Testing Map)
+Exception: NoMethodError
+Message: undefined method `trainer_type' for #<Pokemon MEIMU Lv.100>
+
+***Full script:
+WildBattle.start(:MEIMU, 100)
+Backtrace:
+[Derxwna's Custom Vs. Transitions System] 002_TAoA Specific.rb:8:in `block in <main>'
+[TAoA Core] 002_Overworld_BattleIntroAnim.rb:36:in `block in pbBattleAnimation'
+002_Overworld_BattleIntroAnim.rb:31:in `block in each'
+002_Overworld_BattleIntroAnim.rb:31:in `each'
+002_Overworld_BattleIntroAnim.rb:31:in `each'
+[TAoA Core] 002_Overworld_BattleIntroAnim.rb:35:in `pbBattleAnimation'
+001_Overworld_BattleStarting.rb:401:in `start_core'
+001_Overworld_BattleStarting.rb:366:in `start'
+(eval):1:in `execute_script'
+003_Interpreter.rb:140:in `eval'
+
+=================
+
+[2025-06-06 13:32:03 -0700]
+[Pokémon Essentials version 21.1]
+[v21.1 Hotfixes 1.0.9]
+
+Script error in event 49 (coords 24,6), map 149 (Testing Map)
+Exception: NameError
+Message: undefined local variable or method `pbGet143' for main:Object
+
+***Full script:
+WildBattle.start(:MEIMU, 100)
+Backtrace:
+[Derxwna's Custom Vs. Transitions System] 002_TAoA Specific.rb:372:in `block in <main>'
+[TAoA Core] 002_Overworld_BattleIntroAnim.rb:36:in `block in pbBattleAnimation'
+002_Overworld_BattleIntroAnim.rb:31:in `block in each'
+002_Overworld_BattleIntroAnim.rb:31:in `each'
+002_Overworld_BattleIntroAnim.rb:31:in `each'
+[TAoA Core] 002_Overworld_BattleIntroAnim.rb:35:in `pbBattleAnimation'
+001_Overworld_BattleStarting.rb:401:in `start_core'
+001_Overworld_BattleStarting.rb:366:in `start'
+(eval):1:in `execute_script'
+003_Interpreter.rb:140:in `eval'
+
+=================
+
+[2025-06-06 13:32:33 -0700]
+[Pokémon Essentials version 21.1]
+[v21.1 Hotfixes 1.0.9]
+
+Script error in event 49 (coords 24,6), map 149 (Testing Map)
+Exception: NoMethodError
+Message: undefined method `trainer_type' for #<Pokemon MEIMU Lv.100>
+
+***Full script:
+WildBattle.start(:MEIMU, 100)
+Backtrace:
+[Derxwna's Custom Vs. Transitions System] 002_TAoA Specific.rb:374:in `block in <main>'
+[TAoA Core] 002_Overworld_BattleIntroAnim.rb:36:in `block in pbBattleAnimation'
+002_Overworld_BattleIntroAnim.rb:31:in `block in each'
+002_Overworld_BattleIntroAnim.rb:31:in `each'
+002_Overworld_BattleIntroAnim.rb:31:in `each'
+[TAoA Core] 002_Overworld_BattleIntroAnim.rb:35:in `pbBattleAnimation'
+001_Overworld_BattleStarting.rb:401:in `start_core'
+001_Overworld_BattleStarting.rb:366:in `start'
+(eval):1:in `execute_script'
+003_Interpreter.rb:140:in `eval'
+
+=================
+
+[2025-06-06 13:33:14 -0700]
+[Pokémon Essentials version 21.1]
+[v21.1 Hotfixes 1.0.9]
+
+Script error in event 49 (coords 24,6), map 149 (Testing Map)
+Exception: NoMethodError
+Message: undefined method `trainer_type' for #<Pokemon MEIMU Lv.100>
+
+***Full script:
+WildBattle.start(:MEIMU, 100)
+Backtrace:
+[Derxwna's Custom Vs. Transitions System] 002_TAoA Specific.rb:374:in `block in <main>'
+[TAoA Core] 002_Overworld_BattleIntroAnim.rb:36:in `block in pbBattleAnimation'
+002_Overworld_BattleIntroAnim.rb:31:in `block in each'
+002_Overworld_BattleIntroAnim.rb:31:in `each'
+002_Overworld_BattleIntroAnim.rb:31:in `each'
+[TAoA Core] 002_Overworld_BattleIntroAnim.rb:35:in `pbBattleAnimation'
+001_Overworld_BattleStarting.rb:401:in `start_core'
+001_Overworld_BattleStarting.rb:366:in `start'
+(eval):1:in `execute_script'
+003_Interpreter.rb:140:in `eval'
+
+=================
+
+[2025-06-06 13:42:53 -0700]
+[Pokémon Essentials version 21.1]
+[v21.1 Hotfixes 1.0.9]
+
+Script error in event 48 (coords 24,4), map 149 (Testing Map)
+Exception: NameError
+Message: undefined local variable or method `flash' for main:Object
+
+***Full script:
+TrainerBattle.start(:MEIMU,"Meimu",pbGet(143))
+Backtrace:
+[Derxwna's Custom Vs. Transitions System] 002_TAoA Specific.rb:378:in `block in <main>'
+[TAoA Core] 002_Overworld_BattleIntroAnim.rb:37:in `block in pbBattleAnimation'
+002_Overworld_BattleIntroAnim.rb:31:in `block in each'
+002_Overworld_BattleIntroAnim.rb:31:in `each'
+002_Overworld_BattleIntroAnim.rb:31:in `each'
+[TAoA Core] 002_Overworld_BattleIntroAnim.rb:35:in `pbBattleAnimation'
+001_Overworld_BattleStarting.rb:521:in `start_core'
+001_Overworld_BattleStarting.rb:487:in `start'
+(eval):1:in `execute_script'
+003_Interpreter.rb:140:in `eval'
+
+=================
+
+[2025-06-06 14:57:56 -0700]
+[Pokémon Essentials version 21.1]
+[v21.1 Hotfixes 1.0.9]
+
+Exception: RuntimeError
+Message: Unknown ID 139.
+
+Backtrace:
+001_GameData.rb:176:in `get'
+[TAoA Core] 002_Overworld_Time.rb:18:in `pbGetTimeNow'
+[Voltseon's Pause Menu] 004_VoltseonMenu_Components.rb:169:in `initialize'
+[Voltseon's Pause Menu] 002_VoltseonMenu_Main.rb:85:in `new'
+[Voltseon's Pause Menu] 002_VoltseonMenu_Main.rb:85:in `block in pbStartScene'
+[Voltseon's Pause Menu] 002_VoltseonMenu_Main.rb:83:in `each'
+[Voltseon's Pause Menu] 002_VoltseonMenu_Main.rb:83:in `pbStartScene'
+[Voltseon's Pause Menu] 002_VoltseonMenu_Main.rb:296:in `pbStartPokemonMenu'
+[Voltseon's Pause Menu] 002_VoltseonMenu_Main.rb:288:in `call_menu'
+002_Scene_Map.rb:207:in `update'
