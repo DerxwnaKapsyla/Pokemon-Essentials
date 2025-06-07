@@ -96574,29 +96574,6 @@ List of Event Commands:
 @>
 
 #------------------------------------------------------------------------------
-Event ID: 012
-Event Name: EV012
-(X,Y): (023,013)
-
-Page #1
-Conditions
-None
-
-Graphic: TPDP_NPC 32
-
-Autonomous Movement
-Type: Fixed
-Speed: 3: Slow
-Freq: 3: Low
-Options Enabled
-Move Animation
-Trigger: Action Button
-
-List of Event Commands:
-@>Script: pbBattleShop
-@>
-
-#------------------------------------------------------------------------------
 
 #==============================================================================
 Map ID: 113
@@ -107481,13 +107458,6 @@ List of Event Commands:
  :    : of madness!
 @>Script: $game_temp.vs_transition_bg = "Capital"
 :       : $game_temp.vs_name = "Vs. Clownpiece"
-@>Conditional Branch: Switch [0107: New Game +] == OFF
- @>Control Variables: [0104: Vs. Transition - Pkmn] = 4
- @>
-: Else
- @>Control Variables: [0104: Vs. Transition - Pkmn] = 4
- @>
-: Branch End
 @>Script: setBattleRule("midbattleScript", :vs_clownpiece)
 @>Conditional Branch: Script: TrainerBattle.start(:CLOWNPIECET, "Clownpiece", 10+(pbGet(99) * 10), :HELLFAIRY, "Lucia", pbGet(99))
  @>Show Animation: [Hell Fairy (Twintail) (Bottom)], [Exclaim bubble]
@@ -112022,6 +111992,8 @@ List of Event Commands:
 @>Script: pbTrainerIntro(:MEIMU)
 @>Change Transparent Flag: Normal
 @>Play BGS: 'Vortex', 0, 100
+@>Change Screen Color Tone: (-255,-255,-255,0), @12
+@>Script: setBattleRule("battleIntroText", "An armada of Puppets materializes between you and Meimu!")
 @>Loop
  @>Script: $game_temp.vs_transition_bg = "WorldOfFantasy"
  @>Conditional Branch: Variable [0143: Meimu Battle Count] == 4
@@ -112065,6 +112037,7 @@ Move Animation
 Trigger: Autorun
 
 List of Event Commands:
+@>Change Screen Color Tone: (-255,-255,-255,0), @12
 @>Script: pbBGMStop
 @>Play BGS: 'Vortex', 0, 100
 @>Text: \xn[\pn]\b(I think... I've finally taken down all of her Puppets...)
@@ -112357,7 +112330,7 @@ Page #1
 Conditions
 None
 
-Graphic: Object ball
+Graphic: Object FakeOrb
 
 Autonomous Movement
 Type: Fixed
@@ -112379,7 +112352,7 @@ Page #1
 Conditions
 None
 
-Graphic: Object ball
+Graphic: Object FakeOrb
 
 Autonomous Movement
 Type: Fixed
@@ -112401,7 +112374,7 @@ Page #1
 Conditions
 None
 
-Graphic: Object ball
+Graphic: Object FakeOrb
 
 Autonomous Movement
 Type: Fixed
@@ -112423,7 +112396,7 @@ Page #1
 Conditions
 None
 
-Graphic: Object ball
+Graphic: Object FakeOrb
 
 Autonomous Movement
 Type: Fixed
@@ -112445,7 +112418,7 @@ Page #1
 Conditions
 None
 
-Graphic: Object ball
+Graphic: Object FakeOrb
 
 Autonomous Movement
 Type: Fixed
@@ -112467,7 +112440,7 @@ Page #1
 Conditions
 None
 
-Graphic: Object ball
+Graphic: Object FakeOrb
 
 Autonomous Movement
 Type: Fixed
@@ -112489,7 +112462,7 @@ Page #1
 Conditions
 None
 
-Graphic: Object ball
+Graphic: Object FakeOrb
 
 Autonomous Movement
 Type: Fixed
@@ -112511,7 +112484,7 @@ Page #1
 Conditions
 None
 
-Graphic: Object ball
+Graphic: Object FakeOrb
 
 Autonomous Movement
 Type: Fixed
@@ -112533,7 +112506,7 @@ Page #1
 Conditions
 None
 
-Graphic: Object ball
+Graphic: Object FakeOrb
 
 Autonomous Movement
 Type: Fixed
@@ -112555,7 +112528,7 @@ Page #1
 Conditions
 None
 
-Graphic: Object ball
+Graphic: Object FakeOrb
 
 Autonomous Movement
 Type: Fixed
@@ -112577,7 +112550,7 @@ Page #1
 Conditions
 None
 
-Graphic: Object ball
+Graphic: Object FakeOrb
 
 Autonomous Movement
 Type: Fixed
@@ -112599,7 +112572,7 @@ Page #1
 Conditions
 None
 
-Graphic: Object ball
+Graphic: Object FakeOrb
 
 Autonomous Movement
 Type: Fixed
@@ -112621,7 +112594,7 @@ Page #1
 Conditions
 None
 
-Graphic: Object ball
+Graphic: Object FakeOrb
 
 Autonomous Movement
 Type: Fixed
@@ -112643,7 +112616,7 @@ Page #1
 Conditions
 None
 
-Graphic: Object ball
+Graphic: Object FakeOrb
 
 Autonomous Movement
 Type: Fixed
@@ -112665,7 +112638,7 @@ Page #1
 Conditions
 None
 
-Graphic: Object ball
+Graphic: Object FakeOrb
 
 Autonomous Movement
 Type: Fixed
@@ -112687,7 +112660,7 @@ Page #1
 Conditions
 None
 
-Graphic: Object ball
+Graphic: Object FakeOrb
 
 Autonomous Movement
 Type: Fixed
@@ -112709,7 +112682,7 @@ Page #1
 Conditions
 None
 
-Graphic: Object ball
+Graphic: Object FakeOrb
 
 Autonomous Movement
 Type: Fixed
@@ -112731,7 +112704,7 @@ Page #1
 Conditions
 None
 
-Graphic: Object ball
+Graphic: Object FakeOrb
 
 Autonomous Movement
 Type: Fixed
@@ -112753,7 +112726,7 @@ Page #1
 Conditions
 None
 
-Graphic: Object ball
+Graphic: Object FakeOrb
 
 Autonomous Movement
 Type: Fixed
@@ -112775,7 +112748,7 @@ Page #1
 Conditions
 None
 
-Graphic: Object ball
+Graphic: Object FakeOrb
 
 Autonomous Movement
 Type: Fixed
@@ -112797,7 +112770,7 @@ Page #1
 Conditions
 None
 
-Graphic: Object ball
+Graphic: Object FakeOrb
 
 Autonomous Movement
 Type: Fixed
@@ -112819,7 +112792,7 @@ Page #1
 Conditions
 None
 
-Graphic: Object ball
+Graphic: Object FakeOrb
 
 Autonomous Movement
 Type: Fixed
@@ -112841,7 +112814,7 @@ Page #1
 Conditions
 None
 
-Graphic: Object ball
+Graphic: Object FakeOrb
 
 Autonomous Movement
 Type: Fixed
@@ -112863,7 +112836,7 @@ Page #1
 Conditions
 None
 
-Graphic: Object ball
+Graphic: Object FakeOrb
 
 Autonomous Movement
 Type: Fixed
@@ -112885,7 +112858,7 @@ Page #1
 Conditions
 None
 
-Graphic: Object ball
+Graphic: Object FakeOrb
 
 Autonomous Movement
 Type: Fixed
@@ -112907,7 +112880,7 @@ Page #1
 Conditions
 None
 
-Graphic: Object ball
+Graphic: Object FakeOrb
 
 Autonomous Movement
 Type: Fixed
@@ -112929,7 +112902,7 @@ Page #1
 Conditions
 None
 
-Graphic: Object ball
+Graphic: Object FakeOrb
 
 Autonomous Movement
 Type: Fixed
@@ -112951,7 +112924,7 @@ Page #1
 Conditions
 None
 
-Graphic: Object ball
+Graphic: Object FakeOrb
 
 Autonomous Movement
 Type: Fixed
@@ -112973,7 +112946,7 @@ Page #1
 Conditions
 None
 
-Graphic: Object ball
+Graphic: Object FakeOrb
 
 Autonomous Movement
 Type: Fixed
@@ -112995,7 +112968,7 @@ Page #1
 Conditions
 None
 
-Graphic: Object ball
+Graphic: Object FakeOrb
 
 Autonomous Movement
 Type: Fixed

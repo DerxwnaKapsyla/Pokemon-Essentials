@@ -26,7 +26,15 @@ class Battle
     else   # Trainer battle
       case @opponent.length
       when 1
-        pbDisplayPaused(_INTL("You are challenged by {1}!", @opponent[0].full_name))
+	    if GameData::MapMetadata.get($game_map.map_id)&.has_flag?("FinalBattle")
+		  if pbGet(143) >= 2
+		    # Skip intro message during Phase 2-4 of Meimu's battle
+		  else
+		    pbDisplayPaused(_INTL("You are challenged by {1}!", @opponent[0].full_name))
+		  end
+		else
+		  pbDisplayPaused(_INTL("You are challenged by {1}!", @opponent[0].full_name))
+		end
       when 2
         pbDisplayPaused(_INTL("You are challenged by {1} and {2}!", @opponent[0].full_name,
                               @opponent[1].full_name))
@@ -127,6 +135,10 @@ class Battle
         when 1
 		  if GameData::MapMetadata.get($game_map.map_id)&.has_flag?("CanRunFromTrainers")
 		    pbDisplayPaused(_INTL("The Anomaly dissipated!", @opponent[0].full_name))
+		  elsif GameData::MapMetadata.get($game_map.map_id)&.has_flag?("FinalBattle")
+		    if pbGet(143) == 4
+			  pbDisplayPaused(_INTL("You finally overcame {1}'s onslaught!", @opponent[0].name))
+			end
 		  else
             pbDisplayPaused(_INTL("You defeated {1}!", @opponent[0].full_name))
 		  end
@@ -137,7 +149,10 @@ class Battle
           pbDisplayPaused(_INTL("You defeated {1}, {2} and {3}!", @opponent[0].full_name,
                                 @opponent[1].full_name, @opponent[2].full_name))
         end
-		if !GameData::MapMetadata.get($game_map.map_id)&.has_flag?("CanRunFromTrainers")
+        map_metadata = GameData::MapMetadata.get($game_map.map_id)
+        can_run = map_metadata&.has_flag?("CanRunFromTrainers")
+        is_final = map_metadata&.has_flag?("FinalBattle")
+		unless can_run || is_final
           @opponent.each_with_index do |trainer, i|
             @scene.pbShowOpponent(i)
             msg = trainer.lose_text
