@@ -44,7 +44,7 @@ def pbCanUseLunarSake?
   # Can't use Lunar Sake if it has run out and needs to refill
   if $PokemonGlobal.sake_counter && $PokemonGlobal.sake_counter > 0
     pbMessage(_INTL("The sake has run out!\nFor it to refill, you need to walk another {1} steps.",
-                    $PokemonGlobal.pokeradarBattery))
+                    $PokemonGlobal.sake_counter))
     return false
   end
   return true
