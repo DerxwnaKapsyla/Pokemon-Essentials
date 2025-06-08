@@ -107,10 +107,12 @@ class Battle
     return if !$game_switches[107]
 	return if !Settings::GAIN_MAGICAL_FRAGMENTS_AFTER_BATTLE
 	$bag.add(:MAGFRAG, Settings::MAGICAL_FRAGMENT_REWARD_COUNT)
-	if Settings::MAGICAL_FRAGMENT_REWARD_COUNT > 1
-	  pbDisplayPaused(_INTL("You picked up {1} Magical Fragments!", Settings::MAGICAL_FRAGMENT_REWARD_COUNT))
-	else
-	  pbDisplayPaused(_INTL("You picked up {1} Magical Fragment!", Settings::MAGICAL_FRAGMENT_REWARD_COUNT))
+	if !$game_switches[157]
+	  if Settings::MAGICAL_FRAGMENT_REWARD_COUNT > 1
+	    pbDisplayPaused(_INTL("You picked up {1} Magical Fragments!", Settings::MAGICAL_FRAGMENT_REWARD_COUNT))
+	  else
+	    pbDisplayPaused(_INTL("You picked up {1} Magical Fragment!", Settings::MAGICAL_FRAGMENT_REWARD_COUNT))
+	  end
 	end
   end
   

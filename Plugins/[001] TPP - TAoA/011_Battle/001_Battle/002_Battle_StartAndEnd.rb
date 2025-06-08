@@ -14,7 +14,9 @@ class Battle
       moneyGained = pbPlayer.money - oldMoney
       if moneyGained > 0
         $stats.battle_money_gained += moneyGained
-        pbDisplayPaused(_INTL("You got ${1} for winning!", moneyGained.to_s_formatted))
+		if !$game_switches[157]
+          pbDisplayPaused(_INTL("You got ${1} for winning!", moneyGained.to_s_formatted))
+		end
       end
     end
     # Pick up money scattered by Pay Day
@@ -26,7 +28,9 @@ class Battle
       moneyGained = pbPlayer.money - oldMoney
       if moneyGained > 0
         $stats.battle_money_gained += moneyGained
-        pbDisplayPaused(_INTL("You picked up ${1}!", moneyGained.to_s_formatted))
+		if !$game_switches[157]
+          pbDisplayPaused(_INTL("You picked up ${1}!", moneyGained.to_s_formatted))
+		end
       end
     end
   end

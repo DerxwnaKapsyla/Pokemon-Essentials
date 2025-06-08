@@ -114,7 +114,7 @@ EventHandlers.add(:on_trainer_load, :meimu_master_override,
     setBattleRule("base", "meimu")                              # Sets Meimu's Battle Base
     #setBattleRule("midbattleScript", :vs_meimu)
     if $game_variables[143] > 1                                 # Have Meimu's sprite stay in the same spot for subsequent battles.
-      setBattleRule("setSlideSprite", "still")
+      setBattleRule("setSlideSprite", "all-still")
     end
     if $game_variables[143] < 4
       setBattleRule("victoryBGM", "")                             # Nulls out victory music so theme can continue

@@ -95488,6 +95488,7 @@ List of Event Commands:
   @>Fade Out BGM: 1 sec.
   @>Wait: 48 frame(s)
   @>Change Transparent Flag: Transparency
+  @>Control Switches: [0157: Battling Meimu] = ON
   @>Transfer Player:[137: Reimaden - Final Room], (015,026), No Fade
   @>Control Switches: [0161: Dummy Switch] = ON
   @>
@@ -111086,6 +111087,7 @@ List of Event Commands:
   @>Script: pbTrainerEnd
   @>
  : Else
+  @>Control Switches: [0157: Battling Meimu] = OFF
   @>Exit Event Processing
   @>
  : Branch End
@@ -119656,6 +119658,28 @@ List of Event Commands:
  @>Jump to Label: Challenge?
  @>
 : Branch End
+@>
+
+#------------------------------------------------------------------------------
+Event ID: 002
+Event Name: Megashop
+(X,Y): (011,010)
+
+Page #1
+Conditions
+None
+
+Graphic: TPDP_NPC 22
+
+Autonomous Movement
+Type: Fixed
+Speed: 3: Slow
+Freq: 3: Low
+Options Enabled
+Move Animation
+Trigger: Action Button
+
+List of Event Commands:
 @>
 
 #------------------------------------------------------------------------------

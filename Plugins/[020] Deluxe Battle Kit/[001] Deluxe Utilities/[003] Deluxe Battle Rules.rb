@@ -544,62 +544,74 @@ class Battle::Scene::Animation::Intro < Battle::Scene::Animation
     return if !@sprites[spriteName]
     s = addSprite(@sprites[spriteName], origin)
     style = (pbInSafari?) ? nil : @battle.slideSpriteStyle
-    if !style.nil? && deltaMult < 0
+    if !style.nil?
       style = style.split("_")
       base = spriteName.include?("base_") || spriteName.include?("shadow_")
       hideBase = style[1] == "hideBase"
-      case style[0]
-      #-------------------------------------------------------------------------
-      when "still"  # Sprite doesn't slide in.
-        s.setVisible(0, false) if base && hideBase
-        s.setDelta(0, 0, (Graphics.height * deltaMult).floor)
-        s.moveDelta(0, 0, 0, (-Graphics.height * deltaMult).floor)
-      #-------------------------------------------------------------------------
-      when "side"   # Sprite slides in from the side.
-        s.setVisible(0, false) if base && hideBase
-        s.setDelta(0, (Graphics.width * deltaMult).floor, 0)
-        s.moveDelta(0, appearTime, (-Graphics.width * deltaMult).floor, 0)
-      #-------------------------------------------------------------------------
-      when "top"    # Sprite slides in from top.
-        if hideBase
-          s.setVisible(0, false) if base
-        elsif spriteName.include?("shadow_")
-          s.setOpacity(0, 0)
-          s.moveOpacity(0, appearTime, 255)
-        end
-        appearTime = 0 if base
-        s.setDelta(0, 0, (Graphics.height * deltaMult).floor)
-        s.moveDelta(0, appearTime, 0, (-Graphics.height * deltaMult).floor)
-      #-------------------------------------------------------------------------
-      when "bottom" # Sprite slides in from bottom.
-        if spriteName.include?("base_")
-          s.setVisible(0, false) if hideBase
+      if deltaMult < 0 # opposing side
+        case style[0]
+        #-------------------------------------------------------------------------
+        when "still","all-still"  # Sprite doesn't slide in.
+          s.setVisible(0, false) if base && hideBase
           s.setDelta(0, 0, (Graphics.height * deltaMult).floor)
           s.moveDelta(0, 0, 0, (-Graphics.height * deltaMult).floor)
-        elsif spriteName.include?("shadow_")
-          s.setVisible(0, false)
+        #-------------------------------------------------------------------------
+        when "side"   # Sprite slides in from the side.
+          s.setVisible(0, false) if base && hideBase
+          s.setDelta(0, (Graphics.width * deltaMult).floor, 0)
+          s.moveDelta(0, appearTime, (-Graphics.width * deltaMult).floor, 0)
+        #-------------------------------------------------------------------------
+        when "top"    # Sprite slides in from top.
+          if hideBase
+            s.setVisible(0, false) if base
+          elsif spriteName.include?("shadow_")
+            s.setOpacity(0, 0)
+            s.moveOpacity(0, appearTime, 255)
+          end
+          appearTime = 0 if base
           s.setDelta(0, 0, (Graphics.height * deltaMult).floor)
-          s.moveDelta(0, 0, 0, (-Graphics.height * deltaMult).floor)
-          s.setVisible(appearTime, true) if !hideBase
-        else
-          bitmap = @sprites[spriteName].bitmap
-          f = 0
-          w = bitmap.width
-          h = bitmap.height
-          deltaY = h - findTop(bitmap)
-          s.setDelta(0, 0, deltaY)
-          s.moveDelta(0, appearTime - 3, 0, (deltaY * deltaMult).floor)
-          appearTime.times do |i|
-            if i + 1 < appearTime
-              s.setSrcSize(i, w, f)
-              f += (h / appearTime).floor
-            else
-              s.setSrcSize(i, w, h)
+          s.moveDelta(0, appearTime, 0, (-Graphics.height * deltaMult).floor)
+        #-------------------------------------------------------------------------
+        when "bottom" # Sprite slides in from bottom.
+          if spriteName.include?("base_")
+            s.setVisible(0, false) if hideBase
+            s.setDelta(0, 0, (Graphics.height * deltaMult).floor)
+            s.moveDelta(0, 0, 0, (-Graphics.height * deltaMult).floor)
+          elsif spriteName.include?("shadow_")
+            s.setVisible(0, false)
+            s.setDelta(0, 0, (Graphics.height * deltaMult).floor)
+            s.moveDelta(0, 0, 0, (-Graphics.height * deltaMult).floor)
+            s.setVisible(appearTime, true) if !hideBase
+          else
+            bitmap = @sprites[spriteName].bitmap
+            f = 0
+            w = bitmap.width
+            h = bitmap.height
+            deltaY = h - findTop(bitmap)
+            s.setDelta(0, 0, deltaY)
+            s.moveDelta(0, appearTime - 3, 0, (deltaY * deltaMult).floor)
+            appearTime.times do |i|
+              if i + 1 < appearTime
+                s.setSrcSize(i, w, f)
+                f += (h / appearTime).floor
+              else
+                s.setSrcSize(i, w, h)
+              end
             end
           end
         end
+        #-------------------------------------------------------------------------
+      else # player side
+        case style[0]
+        when "all-still"
+          s.setVisible(0, false) if base && hideBase
+          s.setDelta(0, 0, (Graphics.height * deltaMult).floor)
+          s.moveDelta(0, 0, 0, (-Graphics.height * deltaMult).floor)
+        else
+          s.setDelta(0, (Graphics.width * deltaMult).floor, 0)
+          s.moveDelta(0, appearTime, (-Graphics.width * deltaMult).floor, 0)
+        end
       end
-      #-------------------------------------------------------------------------
     else
       s.setDelta(0, (Graphics.width * deltaMult).floor, 0)
       s.moveDelta(0, appearTime, (-Graphics.width * deltaMult).floor, 0)
