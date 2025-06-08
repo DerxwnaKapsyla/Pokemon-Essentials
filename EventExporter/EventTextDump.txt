@@ -265,7 +265,7 @@ Width: 20, Height: 15
 #------------------------------------------------------------------------------
 Event ID: 001
 Event Name: Basic Door - Automatic
-(X,Y): (001,002)
+(X,Y): (002,000)
 
 Page #1
 Conditions
@@ -367,7 +367,7 @@ List of Event Commands:
 #------------------------------------------------------------------------------
 Event ID: 002
 Event Name: Basic Door
-(X,Y): (002,002)
+(X,Y): (003,000)
 
 Page #1
 Conditions
@@ -468,360 +468,9 @@ List of Event Commands:
 @>
 
 #------------------------------------------------------------------------------
-Event ID: 003
-Event Name: Stairs up (R-to-L)
-(X,Y): (001,004)
-
-Page #1
-Conditions
-None
-
-Autonomous Movement
-Type: Fixed
-Speed: 3: Slow
-Freq: 3: Low
-Options Enabled
-Move Animation
-Trigger: Player Touch
-
-List of Event Commands:
-@>Set Move Route: Player
- :              : $>Through ON
- :              : $>Always on Top ON
- :              : $>Move Left
- :              : $>Turn Left
- :              : $>Move Upper Left
- :              : $>Through OFF
- :              : $>Always on Top OFF
-@>Wait for Move's Completion
-@>Play SE: 'Exit Door', 80, 100
-@>Change Screen Color Tone: (-255,-255,-255,0), @6
-@>Wait: 8 frame(s)
-@>Transfer Player:[002: Prefab Map], (001,000), Up, No Fade
-@>Change Screen Color Tone: (0,0,0,0), @6
-@>
-
-#------------------------------------------------------------------------------
-Event ID: 004
-Event Name: Stairs up (L-to-R)
-(X,Y): (002,004)
-
-Page #1
-Conditions
-None
-
-Autonomous Movement
-Type: Fixed
-Speed: 3: Slow
-Freq: 3: Low
-Options Enabled
-Move Animation
-Trigger: Player Touch
-
-List of Event Commands:
-@>Set Move Route: Player
- :              : $>Through ON
- :              : $>Always on Top ON
- :              : $>Turn Right
- :              : $>Move Right
- :              : $>Move Upper Right
- :              : $>Through OFF
- :              : $>Always on Top OFF
-@>Wait for Move's Completion
-@>Play SE: 'Exit Door', 80, 100
-@>Change Screen Color Tone: (-255,-255,-255,0), @6
-@>Wait: 8 frame(s)
-@>Transfer Player:[002: Prefab Map], (001,000), Up, No Fade
-@>Change Screen Color Tone: (0,0,0,0), @6
-@>
-
-#------------------------------------------------------------------------------
-Event ID: 005
-Event Name: Stairs down (R-to-L)
-(X,Y): (001,005)
-
-Page #1
-Conditions
-None
-
-Autonomous Movement
-Type: Fixed
-Speed: 3: Slow
-Freq: 3: Low
-Options Enabled
-Move Animation
-Trigger: Player Touch
-
-List of Event Commands:
-@>Set Move Route: Player
- :              : $>Through ON
- :              : $>Always on Top ON
- :              : $>Turn Left
- :              : $>Move Left
- :              : $>Through OFF
- :              : $>Always on Top OFF
-@>Wait for Move's Completion
-@>Play SE: 'Exit Door', 80, 100
-@>Change Screen Color Tone: (-255,-255,-255,0), @6
-@>Wait: 8 frame(s)
-@>Transfer Player:[002: Prefab Map], (001,000), Up, No Fade
-@>Change Screen Color Tone: (0,0,0,0), @6
-@>
-
-#------------------------------------------------------------------------------
-Event ID: 006
-Event Name: Stairs down (L-to-R)
-(X,Y): (002,005)
-
-Page #1
-Conditions
-None
-
-Autonomous Movement
-Type: Fixed
-Speed: 3: Slow
-Freq: 3: Low
-Options Enabled
-Move Animation
-Trigger: Player Touch
-
-List of Event Commands:
-@>Set Move Route: Player
- :              : $>Through ON
- :              : $>Always on Top ON
- :              : $>Turn Right
- :              : $>Move Right
- :              : $>Through OFF
- :              : $>Always on Top OFF
-@>Wait for Move's Completion
-@>Play SE: 'Exit Door', 80, 100
-@>Change Screen Color Tone: (-255,-255,-255,0), @6
-@>Wait: 8 frame(s)
-@>Transfer Player:[002: Prefab Map], (001,000), Up, No Fade
-@>Change Screen Color Tone: (0,0,0,0), @6
-@>
-
-#------------------------------------------------------------------------------
-Event ID: 007
-Event Name: Cave entrance
-(X,Y): (001,007)
-
-Page #1
-Conditions
-None
-
-Autonomous Movement
-Type: Fixed
-Speed: 3: Slow
-Freq: 3: Low
-Options Enabled
-Move Animation
-Trigger: Player Touch
-
-List of Event Commands:
-@>Change Screen Color Tone: (255,255,255,255), @6
-@>Play SE: 'Exit Door', 100, 100
-@>Wait: 8 frame(s)
-@>Script: pbCaveEntrance
-@>Transfer Player:[002: Prefab Map], (001,000), Up, No Fade
-@>Change Screen Color Tone: (0,0,0,0), @6
-@>
-
-Page #2
-Conditions
-Switch 0022: s:tsOff?("A") is ON
-
-Autonomous Movement
-Type: Fixed
-Speed: 3: Slow
-Freq: 3: Low
-Options Enabled
-Move Animation
-Trigger: Autorun
-
-List of Event Commands:
-@>Conditional Branch: Script: get_self.onEvent?
- @>Set Move Route: Player
-                   (Ignore If Can't Move)
-  :              : $>Move Down
- @>Wait for Move's Completion
- @>
-: Branch End
-@>Script: setTempSwitchOn("A")
-@>
-
-#------------------------------------------------------------------------------
-Event ID: 008
-Event Name: Cave Exi
-(X,Y): (001,008)
-
-Page #1
-Conditions
-None
-
-Autonomous Movement
-Type: Fixed
-Speed: 3: Slow
-Freq: 3: Low
-Options Enabled
-Move Animation
-Trigger: Player Touch
-
-List of Event Commands:
-@>Change Screen Color Tone: (-255,-255,-255,0), @6
-@>Play SE: 'Exit Door', 100, 100
-@>Wait: 8 frame(s)
-@>Script: pbCaveExit
-@>Transfer Player:[002: Prefab Map], (001,000), Up, No Fade
-@>Change Screen Color Tone: (0,0,0,0), @6
-@>
-
-#------------------------------------------------------------------------------
-Event ID: 009
-Event Name: Nurse
-(X,Y): (012,002)
-
-Page #1
-Conditions
-None
-
-Graphic: NPC 16
-
-Autonomous Movement
-Type: Fixed
-Speed: 3: Slow
-Freq: 3: Low
-Options Enabled
-Move Animation
-Trigger: Action Button
-
-List of Event Commands:
-@>Comment: This line of code sets the player's current position as 
- :       : the spot they will return to after they lose a battle 
- :       : and lack out.
- :       : Page 2 of this event detects when this happens, and 
- :       : heals the player's Pokémon and wishes them better 
- :       : luck in future.
-@>Script: pbSetPokemonCenter
-@>Text: \rHello, and welcome to the Pokémon Center.
-@>Text: \rWe restore your tired Pokémon to full health.
-@>Text: \rWould you like to rest your Pokémon?
-@>Show Choices: Yes, No
-(When Cancel: Choice 2)
-: When [Yes]
- @>Text: \rOK, I'll take your Pokémon for a few seconds.
- @>Recover All: Entire Party
- @>Set Move Route: This event
-  :              : $>Turn Left
-  :              : $>Wait: 2 frame(s)
- @>Wait for Move's Completion
- @>Control Variables: [0006: Poké Center healing ball count] = 0
- @>Script: count = $player.pokemon_count
- :       : for i in 1..count
- :       :   pbSet(6, i)
- :       :   pbSEPlay("Battle ball shake")
- :       :   pbWait(16)
- :       : end
- @>Set Move Route: [Stairs up (L-to-R)]
-  :              : $>Stop Animation ON
- @>Play ME: 'Pkmn healing', 100, 100
- @>Wait: 58 frame(s)
- @>Control Variables: [0006: Poké Center healing ball count] = 0
- @>Script: get_character(4).pattern = 0
- @>Set Move Route: [Stairs up (L-to-R)]
-  :              : $>Stop Animation OFF
- @>Set Move Route: This event
-  :              : $>Wait: 15 frame(s)
-  :              : $>Turn Down
- @>Wait for Move's Completion
- @>Conditional Branch: Script: pbPokerus?
-  @>Text: \rYour Pokémon may be infected by PokeRus.
-  @>Text: \rLittle is known about the PokeRus except that they 
-   :    : are microscopic life-forms that attach to Pokémon.
-  @>Text: \rWhile infected, Pokémon are said to grow 
-   :    : exceptionally well.
-  @>Control Switches: [0002: Seen Pokérus in Poké Center] = ON
-  @>
- : Else
-  @>Text: \rThank you for waiting.
-  @>Text: \rWe've restored your Pokémon to full health.
-  @>Set Move Route: This event
-   :              : $>Graphic: "NPC 16', 0, 2, 1
-   :              : $>Wait: 10 frame(s)
-   :              : $>Graphic: "NPC 16', 0, 2, 0
-  @>Wait for Move's Completion
-  @>Text: \rWe hope to see you again!
-  @>
- : Branch End
- @>
-: When [No]
- @>Text: \rWe hope to see you again!
- @>
-: Branch End
-@>
-
-Page #2
-Conditions
-Switch 0001: Starting over is ON
-
-Graphic: NPC 16
-
-Autonomous Movement
-Type: Fixed
-Speed: 3: Slow
-Freq: 3: Low
-Options Enabled
-Move Animation
-Trigger: Autorun
-
-List of Event Commands:
-@>Comment: Every map you can end up in after having all your 
- :       : Pokémon faint (typically Poké Centers and home) 
- :       : must have an Autorun event in it like this one.
- :       : This event fully heals all the player's Pokémon, says 
- :       : something to that effect, and turns the "Starting 
- :       : over" switch OFF again.
-@>Comment: For convenience, this can be a single page in an 
- :       : NPC's event (e.g. Mom, a nurse).
-@>Text: \rFirst, you should restore your Pokémon to full 
- :    : health.
-@>Recover All: Entire Party
-@>Set Move Route: This event
- :              : $>Turn Left
- :              : $>Wait: 2 frame(s)
-@>Wait for Move's Completion
-@>Control Variables: [0006: Poké Center healing ball count] = 0
-@>Script: for i in 1..$player.pokemon_count
-:       :   pbSet(6, i)
-:       :   pbSEPlay("Battle ball shake")
-:       :   pbWait(16)
-:       : end
-@>Set Move Route: [Stairs up (L-to-R)]
- :              : $>Stop Animation ON
-@>Play ME: 'Pkmn healing', 100, 100
-@>Wait: 58 frame(s)
-@>Control Variables: [0006: Poké Center healing ball count] = 0
-@>Script: get_character(4).pattern = 0
-@>Set Move Route: [Stairs up (L-to-R)]
- :              : $>Stop Animation OFF
-@>Set Move Route: This event
- :              : $>Wait: 15 frame(s)
- :              : $>Turn Down
-@>Wait for Move's Completion
-@>Text: \rYour Pokémon have been healed to perfect health.
-@>Set Move Route: This event
- :              : $>Graphic: "NPC 16', 0, 2, 1
- :              : $>Wait: 10 frame(s)
- :              : $>Graphic: "NPC 16', 0, 2, 0
-@>Wait for Move's Completion
-@>Text: \rWe hope you excel!
-@>Control Switches: [0001: Starting over] = OFF
-@>
-
-#------------------------------------------------------------------------------
 Event ID: 010
 Event Name: TM Item Ball
-(X,Y): (006,004)
+(X,Y): (006,000)
 
 Page #1
 Conditions
@@ -863,120 +512,6 @@ List of Event Commands:
 @>
 
 #------------------------------------------------------------------------------
-Event ID: 011
-Event Name: Item Ball
-(X,Y): (007,004)
-
-Page #1
-Conditions
-None
-
-Graphic: Object ball
-
-Autonomous Movement
-Type: Fixed
-Speed: 3: Slow
-Freq: 3: Low
-Options Enabled
-Move Animation
-Trigger: Action Button
-
-List of Event Commands:
-@>Conditional Branch: Script: pbItemBall(:POTION)
- @>Control Self Switch: A =ON
- @>
-: Else
- @>
-: Branch End
-@>
-
-Page #2
-Conditions
-Self Switch A is ON
-
-Autonomous Movement
-Type: Fixed
-Speed: 3: Slow
-Freq: 3: Low
-Options Enabled
-Move Animation
-Trigger: Action Button
-
-List of Event Commands:
-@>
-
-#------------------------------------------------------------------------------
-Event ID: 012
-Event Name: Hidden Item
-(X,Y): (007,005)
-
-Page #1
-Conditions
-None
-
-Autonomous Movement
-Type: Fixed
-Speed: 3: Slow
-Freq: 3: Low
-Options Enabled
-Move Animation
-Trigger: Action Button
-
-List of Event Commands:
-@>Conditional Branch: Script: pbItemBall(:POTION)
- @>Control Self Switch: A =ON
- @>
-: Else
- @>
-: Branch End
-@>
-
-Page #2
-Conditions
-Self Switch A is ON
-
-Autonomous Movement
-Type: Fixed
-Speed: 3: Slow
-Freq: 3: Low
-Options Enabled
-Move Animation
-Trigger: Action Button
-
-List of Event Commands:
-@>
-
-#------------------------------------------------------------------------------
-Event ID: 014
-Event Name: Cashier top
-(X,Y): (014,002)
-
-Page #1
-Conditions
-None
-
-Graphic: NPC 19
-
-Autonomous Movement
-Type: Fixed
-Speed: 3: Slow
-Freq: 3: Low
-Options Enabled
-Move Animation
-Trigger: Action Button
-
-List of Event Commands:
-@>Script: pbPokemonMart([
-:       : :POTION,:SUPERPOTION,
-:       : :HYPERPOTION,:MAXPOTION,
-:       : :FULLRESTORE,:REVIVE,
-:       : :ANTIDOTE,:PARLYZHEAL,
-:       : :BURNHEAL,:ICEHEAL,
-:       : :AWAKENING,:FULLHEAL
-:       : ])
-@>
-
-#------------------------------------------------------------------------------
 Event ID: 015
 Event Name: Yin/Yang glyphs
 (X,Y): (000,000)
@@ -1002,7 +537,7 @@ List of Event Commands:
 #------------------------------------------------------------------------------
 Event ID: 016
 Event Name: Exit
-(X,Y): (003,002)
+(X,Y): (004,000)
 
 Page #1
 Conditions
@@ -1022,205 +557,6 @@ List of Event Commands:
 @>Wait: 8 frame(s)
 @>Transfer Player:[002: Prefab Map], (001,000), Up, No Fade
 @>Change Screen Color Tone: (0,0,0,0), @6
-@>
-
-#------------------------------------------------------------------------------
-Event ID: 018
-Event Name: Norm.Gym leader prefab
-(X,Y): (008,002)
-
-Page #1
-Conditions
-None
-
-Graphic: trainer_LEADER_Surge
-
-Autonomous Movement
-Type: Fixed
-Speed: 3: Slow
-Freq: 3: Low
-Options Enabled
-Move Animation
-Trigger: Action Button
-
-List of Event Commands:
-@>Text: Pre-Battle Text
-@>Comment: EndSpeech: Defeat Text
-@>Conditional Branch: Script: TrainerBattle.start(PBTrainers::LEADER_Surge, "Lt. Surge")
- @>Text: Post-Defeat Text
- @>Text: Badge grant text
- @>Text: \me[003. Fanfare.ogg]\PN earned the Thunder Badge!\wt[80]
- @>Script: $player.badges[2]=true
- @>Text: TM Grant text
- @>Script: pbReceiveItem(PBItems::TM24)
- @>Text: Description of TM
- @>
-: Branch End
-@>
-
-Page #2
-Conditions
-Switch 0125: Custom Shop Dialogue is ON
-
-Graphic: trainer_LEADER_Surge
-
-Autonomous Movement
-Type: Fixed
-Speed: 3: Slow
-Freq: 3: Low
-Options Enabled
-Move Animation
-Trigger: Action Button
-
-List of Event Commands:
-@>Text: Post-Battle text
-@>
-
-#------------------------------------------------------------------------------
-Event ID: 021
-Event Name: OutdoorLight
-(X,Y): (001,010)
-
-Page #1
-Conditions
-None
-
-Autonomous Movement
-Type: Fixed
-Speed: 3: Slow
-Freq: 3: Low
-Options Enabled
-Move Animation
-Trigger: Action Button
-
-List of Event Commands:
-@>Comment: Mining Minigame
-@>Text: This rock looks like it can be dug into. Dig into it?
-@>Show Choices: Yes, No
-(When Cancel: Choice 2)
-: When [Yes]
- @>Script: pbMiningGame
- @>Script: pbSetEventTime
- @>
-: When [No]
- @>
-: Branch End
-@>
-
-Page #2
-Conditions
-Self Switch A is ON
-
-Autonomous Movement
-Type: Fixed
-Speed: 3: Slow
-Freq: 3: Low
-Options Enabled
-Move Animation
-Trigger: Action Button
-
-List of Event Commands:
-@>Text: You can't dig in this rock more than once a day.
-@>
-
-Page #3
-Conditions
-Switch 0023: s:cooledDown?(86400) is ON
-Self Switch A is ON
-
-Autonomous Movement
-Type: Fixed
-Speed: 3: Slow
-Freq: 3: Low
-Options Enabled
-Move Animation
-Trigger: Autorun
-
-List of Event Commands:
-@>Control Self Switch: A =OFF
-@>Script: setTempSwitchOn("A")
-@>
-
-#------------------------------------------------------------------------------
-Event ID: 022
-Event Name: Water Encounter
-(X,Y): (006,007)
-
-Page #1
-Conditions
-None
-
-Autonomous Movement
-Type: Fixed
-Speed: 3: Slow
-Freq: 3: Low
-Options Enabled
-Move Animation
-Through
-Trigger: Player Touch
-
-List of Event Commands:
-@>Comment: Might not work. Haven't tested, don't care enough to right now!
-@>Script: enctype=EncounterTypes::Water
-:       : pbEncounter(enctype)
-@>Script: pbSetEventTime
-@>
-
-Page #2
-Conditions
-Self Switch A is ON
-
-Autonomous Movement
-Type: Fixed
-Speed: 3: Slow
-Freq: 3: Low
-Options Enabled
-Move Animation
-Trigger: Action Button
-
-List of Event Commands:
-@>
-
-Page #3
-Conditions
-Switch 0121: Hina Defeated is ON
-Self Switch A is ON
-
-Autonomous Movement
-Type: Fixed
-Speed: 3: Slow
-Freq: 3: Low
-Options Enabled
-Move Animation
-Trigger: Autorun
-
-List of Event Commands:
-@>Control Self Switch: A =OFF
-@>Script: setTempSwitchOn("A")
-@>
-
-#------------------------------------------------------------------------------
-Event ID: 025
-Event Name: Event w/ Vs. Transition
-(X,Y): (012,005)
-
-Page #1
-Conditions
-None
-
-Autonomous Movement
-Type: Fixed
-Speed: 3: Slow
-Freq: 3: Low
-Options Enabled
-Move Animation
-Trigger: Action Button
-
-List of Event Commands:
-@>Control Switches: [0104: Transition Handler] = ON
-@>Control Variables: [0103: Vs. Transition ID] = 0
-@>Control Variables: [0104: Vs. Transition - Pkmn] = 1
-@>Comment: Trainer Battle Here
 @>
 
 #------------------------------------------------------------------------------
@@ -18622,11 +17958,11 @@ List of Event Commands:
 #------------------------------------------------------------------------------
 Event ID: 007
 Event Name: EV007
-(X,Y): (038,022)
+(X,Y): (019,021)
 
 Page #1
 Conditions
-None
+Switch 0152: TLA Cleared is ON
 
 Autonomous Movement
 Type: Fixed
@@ -18634,19 +17970,20 @@ Speed: 3: Slow
 Freq: 3: Low
 Options Enabled
 Move Animation
-Trigger: Action Button
+Trigger: Player Touch
 
 List of Event Commands:
-@>Show Choices: Bad End, Good End, Layla
+@>Text: Proceed into the Tower?
+@>Show Choices: Yes, No
 (When Cancel: Choice 2)
-: When [Bad End]
- @>Control Switches: [0113: Bad End Seen] = ON
+: When [Yes]
+ @>Play SE: 'teleporter', 60, 100
+ @>Change Screen Color Tone: (-255,-255,-255,0), @6
+ @>Wait: 8 frame(s)
+ @>Transfer Player:[152: Tower of Adventure], (012,012), Down, No Fade
+ @>Change Screen Color Tone: (0,0,0,0), @6
  @>
-: When [Good End]
- @>Control Switches: [0114: Good End Seen] = ON
- @>
-: When [Layla]
- @>Control Switches: [0115: Layla Beaten] = ON
+: When [No]
  @>
 : Branch End
 @>
@@ -18923,7 +18260,7 @@ List of Event Commands:
 #------------------------------------------------------------------------------
 Event ID: 010
 Event Name: EV010
-(X,Y): (038,005)
+(X,Y): (000,000)
 
 Page #1
 Conditions
@@ -19024,29 +18361,6 @@ List of Event Commands:
 @>Script: p pbGet(1)
 :       : p $player.party
 @>Control Self Switch: A =OFF
-@>
-
-#------------------------------------------------------------------------------
-Event ID: 011
-Event Name: EV011
-(X,Y): (035,013)
-
-Page #1
-Conditions
-None
-
-Autonomous Movement
-Type: Fixed
-Speed: 3: Slow
-Freq: 3: Low
-Options Enabled
-Move Animation
-Trigger: Action Button
-
-List of Event Commands:
-@>Control Variables: [0121: TKoL Plot Variable] = 99
-@>Control Variables: [0116: TFoC Plot Variable] = 99
-@>Control Variables: [0107: TMoM Plot Variable] = 99
 @>
 
 #------------------------------------------------------------------------------
@@ -19248,245 +18562,6 @@ List of Event Commands:
 @>
 
 #------------------------------------------------------------------------------
-Event ID: 015
-Event Name: EV015
-(X,Y): (038,033)
-
-Page #1
-Conditions
-None
-
-Graphic: Person_Meimu
-
-Autonomous Movement
-Type: Fixed
-Speed: 3: Slow
-Freq: 3: Low
-Options Enabled
-Move Animation
-Trigger: Action Button
-
-List of Event Commands:
-@>Control Variables: [0142: TLA Plot Variable] = 5
-@>Play SE: 'Door exit final', 70, 80
-@>Change Screen Color Tone: (-255,-255,-255,0), @12
-@>Fade Out BGM: 1 sec.
-@>Wait: 12 frame(s)
-@>Change Transparent Flag: Transparency
-@>Transfer Player:[137: Reimaden - Final Room], (015,012), No Fade
-@>Change Screen Color Tone: (0,0,0,0), @12
-@>
-
-Page #2
-Conditions
-None
-
-Graphic: Person_Meimu
-
-Autonomous Movement
-Type: Fixed
-Speed: 3: Slow
-Freq: 3: Low
-Options Enabled
-Move Animation
-Trigger: Action Button
-
-List of Event Commands:
-@>Play BGM: 'B-044. Finale ~ For The End', 100, 100
-@>Change Battle BGM: 'B-044. Finale ~ For The End', 100, 100
-@>Change Text Options: Middle, Show
-@>Show Picture: 1, 'Name_Final', Upper Left (0,0), (100%,100%), 255, Normal
-@>Text: <ac>I can't afford to lose!\wtnp[20]</ac>
-@>Erase Picture: 1
-@>Change Text Options: Bottom, Show
-@>Control Switches: [0098: Music Override] = OFF
-@>Control Switches: [0103: Hide AI Level] = ON
-@>Control Switches: [0102: Special Battle Switch] = ON
-@>Control Variables: [0102: Special Battle Variable] = 5
-@>Control Variables: [0001..0005] = 0
-@>Change Battle BGM: 'B-044. Finale ~ For The End', 100, 100
-@>Script: setBattleRule("backdrop", "meimu")
-:       : setBattleRule("base", "meimu")
-:       : #playSpecialBGM("meimu")
-:       : #setBattleRule("battleBGM", "B-044. Finale ~ For The End.ogg")
-@>Script: setBattleRule("editWildPokemon", {
-:       :   :hp_level => 4,
-:       :   :immunities => [:OHKO, :ITEMREMOVAL, :POISON, :ATTRACT, :PPLOSS, :TYPECHANGE, :ABILITYREMOVAL, :INDIRECT, 
-:       :                   :DISABLE, :SELFKO, :TRANSFORM, :ESCAPE],
-:       :   :gender => 1,
-:       :   :shiny => false,
-:       :   :iv => 31,
-:       :   :ev => 252
-:       : })
-@>Script: setBattleRule("cannotRun")
-:       : setBattleRule("disablePokeBalls")
-:       : setBattleRule("battleIntroText", "This is the end.")
-:       : setBattleRule("victoryBGM", "")
-:       : setBattleRule("midbattleScript", :vs_meimu_final)
-@>Control Switches: [0104: Transition Handler] = ON
-@>Control Variables: [0103: Vs. Transition ID] = 57
-@>Conditional Branch: Script: WildBattle.start(:MEIMU, 100)
- @>
-: Branch End
-@>
-
-Page #3
-Conditions
-Self Switch A is ON
-
-Graphic: Person_Meimu
-
-Autonomous Movement
-Type: Fixed
-Speed: 3: Slow
-Freq: 3: Low
-Options Enabled
-Move Animation
-Trigger: Action Button
-
-List of Event Commands:
-@>Script: setBattleRule("backdrop", "meimu")
-:       : setBattleRule("base", "meimu")
-:       : #playSpecialBGM("meimu")
-@>Control Variables: [0143: Meimu Battle Count] = 1
-@>Control Switches: [0098: Music Override] = ON
-@>Control Switches: [0157: Battling Meimu] = ON
-@>Control Switches: [0104: Transition Handler] = ON
-@>Control Variables: [0103: Vs. Transition ID] = 56
-@>Control Variables: [0104: Vs. Transition - Pkmn] = 6
-@>Conditional Branch: Script: TrainerBattle.start(:MEIMU, "Meimu", 1)
- @>
-: Else
- @>Change Screen Color Tone: (-255,-255,-255,0), @0
- @>Text: a
- @>Script: pbTrainerEnd
- @>Exit Event Processing
- @>
-: Branch End
-@>Text: b
-@>
-
-#------------------------------------------------------------------------------
-Event ID: 016
-Event Name: 
-(X,Y): (038,000)
-
-Page #1
-Conditions
-None
-
-Graphic: TPDP_NPC 38
-
-Autonomous Movement
-Type: Fixed
-Speed: 3: Slow
-Freq: 6: Highest
-Options Enabled
-Move Animation
-Trigger: Action Button
-
-List of Event Commands:
-@>Conditional Branch: Script: TrainerBattle.start(:PATROL2F, "Riko",pbGet(99))
- @>Control Self Switch: A =ON
- @>
-: Branch End
-@>Script: pbTrainerEnd
-@>
-
-Page #2
-Conditions
-Self Switch A is ON
-
-Graphic: TPDP_NPC 38
-
-Autonomous Movement
-Type: Custom
-Custom Move Route:
-(Repeat Action)
-$>Move Down
-$>Move Down
-$>Move Down
-$>Wait: 4 frame(s)
-$>Turn Left
-$>Wait: 4 frame(s)
-$>Turn Right
-$>Wait: 4 frame(s)
-$>Turn Down
-$>Wait: 4 frame(s)
-$>Move Up
-$>Move Up
-$>Move Up
-$>Move Up
-$>Move Up
-$>Move Up
-$>Move Up
-$>Wait: 4 frame(s)
-$>Turn Left
-$>Wait: 4 frame(s)
-$>Turn Right
-$>Wait: 4 frame(s)
-$>Turn Up
-$>Wait: 4 frame(s)
-$>Move Down
-$>Move Down
-$>Move Down
-$>Move Down
-
-Speed: 3: Slow
-Freq: 6: Highest
-Options Enabled
-Move Animation
-Trigger: Action Button
-
-List of Event Commands:
-@>Text: Can't you just return home? Please? For
- :    : big sis Riko?
-@>
-
-#------------------------------------------------------------------------------
-Event ID: 017
-Event Name: EV017
-(X,Y): (038,028)
-
-Page #1
-Conditions
-Variable 0142: TLA Plot Variable is 8 or above
-
-Autonomous Movement
-Type: Fixed
-Speed: 3: Slow
-Freq: 3: Low
-Options Enabled
-Move Animation
-Trigger: Parallel Process
-
-List of Event Commands:
-@>Call Common Event: TLA Credits
-@>
-
-Page #2
-Conditions
-None
-
-Graphic: Object ball
-
-Autonomous Movement
-Type: Fixed
-Speed: 3: Slow
-Freq: 3: Low
-Options Enabled
-Move Animation
-Trigger: Action Button
-
-List of Event Commands:
-@>Play SE: 'Exit Door', 80, 100
-@>Change Screen Color Tone: (-255,-255,-255,0), @6
-@>Wait: 8 frame(s)
-@>Transfer Player:[114: Credits - Village Concert Stage], (015,008), No Fade
-@>Change Screen Color Tone: (0,0,0,0), @6
-@>
-
-#------------------------------------------------------------------------------
 Event ID: 018
 Event Name: EV018
 (X,Y): (013,013)
@@ -19592,30 +18667,9 @@ List of Event Commands:
 @>
 
 #------------------------------------------------------------------------------
-Event ID: 019
-Event Name: EV019
-(X,Y): (019,019)
-
-Page #1
-Conditions
-None
-
-Autonomous Movement
-Type: Fixed
-Speed: 3: Slow
-Freq: 3: Low
-Options Enabled
-Move Animation
-Trigger: Action Button
-
-List of Event Commands:
-@>Change Text Options: Bottom, Show
-@>
-
-#------------------------------------------------------------------------------
 Event ID: 020
 Event Name: The Finetuner
-(X,Y): (021,019)
+(X,Y): (026,014)
 
 Page #1
 Conditions
@@ -19624,9 +18678,13 @@ None
 Graphic: TPDP_NPC 45
 
 Autonomous Movement
-Type: Fixed
+Type: Custom
+Custom Move Route:
+(Repeat Action)
+$>Turn at Random
+
 Speed: 3: Slow
-Freq: 3: Low
+Freq: 4: High
 Options Enabled
 Move Animation
 Trigger: Action Button
@@ -120491,7 +119549,7 @@ Map ID: 152
 Map Name: Tower of Adventure
 Tileset: 038: World of Fantasies
 Width: 25, Height: 39
-Auto-Change BGM: W-044. World of Empty Dreams
+Auto-Change BGM: W-043. Rural Makai City Esoteria
 
 #------------------------------------------------------------------------------
 Event ID: 001
@@ -120513,6 +119571,91 @@ Move Animation
 Trigger: Action Button
 
 List of Event Commands:
+@>Text: Hey, how did you get back here!
+@>
+
+Page #2
+Conditions
+Switch 0152: TLA Cleared is ON
+
+Graphic: TPDP_NPC 35
+
+Autonomous Movement
+Type: Fixed
+Speed: 3: Slow
+Freq: 3: Low
+Options Enabled
+Move Animation
+Trigger: Action Button
+
+List of Event Commands:
+@>Text: Hey, how did you get back here! Access to the top of the tower is
+ :    : restricted right now.
+@>Text: Well, I guess it doesn't matter, you're the first guest we've had here
+ :    : in a long time.
+@>Text: We also just finished repairing the Ultimate Trial protocol after it 
+ :    : got hijacked during the Reality Distortion Incident.
+@>Text: So, if you'd like to take on the Ultimate Trial, just talk to me again!
+@>Control Self Switch: A =ON
+@>
+
+Page #3
+Conditions
+Switch 0152: TLA Cleared is ON
+Self Switch A is ON
+
+Graphic: TPDP_NPC 35
+
+Autonomous Movement
+Type: Fixed
+Speed: 3: Slow
+Freq: 3: Low
+Options Enabled
+Move Animation
+Trigger: Action Button
+
+List of Event Commands:
+@>Text: Welcome back to The Ultimate Trial chambers!
+@>Label: Challenge?
+@>Text: Are you interested in taking on The Ultimate Trial?
+@>Show Choices: Yes, No, Explain
+(When Cancel: Choice 2)
+: When [Yes]
+ @>
+: When [No]
+ @>Text: Understandable, nobody has ever cleared this in all the time
+  :    : it's been a thing.
+ @>Text: If you ever change your mind, we'll be here!
+ @>
+: When [Explain]
+ @>Text: The Ultimate Trial is what we here in the Tower of Adventure use
+  :    : to refer to the collective challenge of one's greatest victories.
+ @>Text: Some people have taken to calling it "Boss Rush Mode".
+ @>Text: The Tower will analyze your past, and from it manifest all of
+  :    : your greatest victories.
+ @>Text: They will all be at the highest possible potential level that the Tower
+  :    : can simulate.
+ @>Text: ...Which, in your case, looks to be maxxed out levels, specific 
+  :    : movepools, held items, and fixed IVs and EVs for their Puppets.
+ @>Text: You've got your work cut out for you!
+ @>Text: \w[dark]Please take note. While undergoing The Ultimate Trial, you
+  :    : will not be able to pause your attempts. It must be cleared in one
+  :    : attempt.
+ @>Text: \w[dark]You will only be healed to full between different arcs.
+  :    : Each of the four episodes counts as an arc.
+ @>Text: \w[dark]You will be given a chance to use items to heal up between
+  :    : individual battles, but beyond that you will not recieve healing until
+  :    : those checkpoints.
+ @>Text: \w[dark]This challenge is not intended to be taken lightly. This 
+  :    : is a gauntlet of 34 back-to-back boss-level trainers. It is 100%
+  :    : optional. There is no story content locked behind this.
+ @>Text: \w[dark]If you do clear it, you will unlock another transferable 
+  :    : reward for Touhoumon Asteria.
+ @>Show Animation: [EV001], [Question bubble]
+ @>Text: Hey! Who said all that?
+ @>Jump to Label: Challenge?
+ @>
+: Branch End
 @>
 
 #------------------------------------------------------------------------------
@@ -120536,32 +119679,7 @@ List of Event Commands:
 @>Play SE: 'teleporter', 60, 100
 @>Change Screen Color Tone: (-255,-255,-255,0), @6
 @>Wait: 8 frame(s)
-@>Transfer Player:[136: Tower of Adventure (Roof)], (019,021), Down, No Fade
-@>Change Screen Color Tone: (0,0,0,0), @6
-@>
-
-#------------------------------------------------------------------------------
-Event ID: 009
-Event Name: EV009
-(X,Y): (012,030)
-
-Page #1
-Conditions
-None
-
-Autonomous Movement
-Type: Fixed
-Speed: 3: Slow
-Freq: 3: Low
-Options Enabled
-Move Animation
-Trigger: Player Touch
-
-List of Event Commands:
-@>Play SE: 'teleporter', 60, 100
-@>Change Screen Color Tone: (-255,-255,-255,0), @6
-@>Wait: 8 frame(s)
-@>Transfer Player:[110: Tower of Adventure (Floors)], (051,012), Down, No Fade
+@>Transfer Player:[019: World of Fantasies], (019,021), Down, No Fade
 @>Change Screen Color Tone: (0,0,0,0), @6
 @>
 
