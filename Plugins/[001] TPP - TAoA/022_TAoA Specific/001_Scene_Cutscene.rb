@@ -719,7 +719,7 @@ class TFoCIntroScene1 < TMoMIntroScene
 	  "",
 	  "Made for the Relic Castle Winter Game Jam"
     ],
-    :wait, 120,
+    :wait, 180,
     :clear,
     :wait, 60
   ]
@@ -735,7 +735,7 @@ class TFoCIntroScene2
       "Autumn, Season 132 of the Gensokyo Calendar",
       "First Day of the Harvest Festival"
     ],
-    :wait, 60
+    :wait, 180
   ]
   
   def initialize

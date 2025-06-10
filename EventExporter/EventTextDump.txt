@@ -7,6 +7,7 @@ Map ID: 001
 Map Name: Intro
 Tileset: 004: Poke Center
 Width: 20, Height: 15
+Auto-Change BGM: W-017. Seeds of the Incident
 
 #------------------------------------------------------------------------------
 Event ID: 002
@@ -70,20 +71,17 @@ Trigger: Autorun
 
 List of Event Commands:
 @>Change Screen Color Tone: (-255,-255,-255,0), @0
-@>Fade Out BGM: 1 sec.
 @>Wait: 20 frame(s)
 @>Change Transparent Flag: Transparency
+@>Script: set_menu_theme("dark")
 @>Comment: ------------------------------------------------------
 @>Change Text Options: Bottom, Show
 @>Call Common Event: Want to know?
 @>Comment: ------------------------------------------------------
-@>Change Text Options: Bottom, Hide
-@>Text: The Adventures of Ayaka is a series of games that revolve around
+@>Text: \l[3]\w[dark]The Adventures of Ayaka is a series of games that revolve around
  :    : the main character, Ayaka, and her adventures across Gensokyo.
 @>Label: Start
-@>Text: Which of these adventures would you like to play through?
-@>Text: \l[3]Do note, this cannot be changed later, and can only be done on
- :    : a separate save file.
+@>Text: \w[dark]Which of these adventures would you like to play through?
 @>Show Choices: The Mansion of Mystery, The Festival of Curses, The Kingdom of Lunacy
 (When Cancel: Disallow)
 : When [The Mansion of Mystery]
@@ -92,7 +90,7 @@ List of Event Commands:
  @>Move Picture: 1, @20, Upper Left (0,0), (100%,100%), 255, Normal
  @>Wait: 60 frame(s)
  @>Change Text Options: Bottom, Show
- @>Text: The Mansion of Mystery.\wt[20]\nIs this the adventure you'd like to play?
+ @>Text: \w[dark]The Mansion of Mystery.\wt[20]\nIs this the adventure you'd like to play?
  @>Show Choices: Yes, No
  (When Cancel: Choice 2)
  : When [Yes]
@@ -114,7 +112,7 @@ List of Event Commands:
  @>Move Picture: 1, @20, Upper Left (0,0), (100%,100%), 255, Normal
  @>Wait: 60 frame(s)
  @>Change Text Options: Bottom, Show
- @>Text: The Festival of Curses.\wt[20]\nIs this the adventure you'd like to play?
+ @>Text: \w[dark]The Festival of Curses.\wt[20]\nIs this the adventure you'd like to play?
  @>Show Choices: Yes, No
  (When Cancel: Choice 2)
  : When [Yes]
@@ -136,7 +134,7 @@ List of Event Commands:
  @>Move Picture: 1, @20, Upper Left (0,0), (100%,100%), 255, Normal
  @>Wait: 60 frame(s)
  @>Change Text Options: Bottom, Show
- @>Text: The Kingdom of Lunacy.\wt[20]\nIs this the adventure you'd like to play?
+ @>Text: \w[dark]The Kingdom of Lunacy.\wt[20]\nIs this the adventure you'd like to play?
  @>Show Choices: Yes, No
  (When Cancel: Choice 2)
  : When [Yes]
@@ -153,6 +151,7 @@ List of Event Commands:
  : Branch End
  @>
 : Branch End
+@>Script: reset_menu_theme
 @>
 
 Page #2
@@ -585,194 +584,24 @@ Move Animation
 Trigger: Autorun
 
 List of Event Commands:
-@>Script: $player.seen_storage_creator = true
-@>Script: $player.has_running_shoes = true
 @>Script: $player.scenario_name = "The Mansion of Mystery"
-@>Script: $stats.trainer_battles_lost_tmom = 0
-@>Conditional Branch: Switch [0107: New Game +] == ON
- @>Jump to Label: Start
- @>
-: Branch End
-@>Fade Out BGM: 2 sec.
-@>Script: pbChangePlayer(0)
-@>Change Text Options: Middle, Hide
-@>Text: What is your name?
-@>Label: Enter Name
-@>Script: pbTrainerName
-@>Wait: 5 frame(s)
-@>Text: \PN.\wtnp[10] Is that correct?
-@>Show Choices: Yes, No
-(When Cancel: Choice 2)
-: When [Yes]
- @>Call Common Event: Player Name Easter Eggs
- @>
-: When [No]
- @>Text: What is your name?
- @>Jump to Label: Enter Name
- @>
-: Branch End
-@>Conditional Branch: Switch [0106: Name Easter Egg] == OFF
+:       : $stats.trainer_battles_lost_tmom = 0
+:       : 
+:       : set_menu_theme("dark")
+@>Conditional Branch: Switch [0107: New Game +] == OFF
+ @>Script: $player.seen_storage_creator = true
+ :       : $player.has_running_shoes = true
+ :       : $player.name = "Ayaka"
+ @>Script: pbChangePlayer(0)
  @>Call Common Event: Starter Selection
  @>
-: Branch End
-@>Comment: ------------------------------------------------------
-@>Label: Start
-@>Text: Skip the intro cinematic?
-@>Show Choices: Yes, No
-(When Cancel: Choice 2)
-: When [Yes]
- @>Jump to Label: Title drop
- @>
-: When [No]
- @>
-: Branch End
-@>Wait: 10 frame(s)
-@>Comment: ------------------------------------------------------
-@>Play BGM: 'W-002. Memory of Forgathering Dream', 100, 100
-@>Script: pbShowPicture(1,"Intro Cutscene/TMoM/Gensokyo.png",1,256,192,100,100,0,0)
-@>Wait: 10 frame(s)
-@>Change Text Options: Bottom, Show
-@>Move Picture: 1, @10, Center (256,192), (100%,100%), 255, Normal
-@>Wait: 10 frame(s)
-@>Text: \w[dark]\c[12]\se[]\l[3]\wtnp[5]With the consequences of the Urban Legends incident long past, 
- :    : so too comes an end to the 130th Season of the realm known as Gensokyo.\wtnp[60]
-@>Wait: 10 frame(s)
-@>Text: \w[dark]\c[12]\se[]\wtnp[5]The realm returns, once again, to the relative peace it is familiar with.\wtnp[60]
-@>Wait: 10 frame(s)
-@>Text: \w[dark]\c[12]\se[]\l[3]\wtnp[5]But even here in this wonderland known as Gensokyo, things do not always remain at ease.\wtnp[60]
-@>Wait: 10 frame(s)
-@>Move Picture: 1, @10, Center (256,192), (100%,100%), 0, Normal
-@>Wait: 10 frame(s)
-@>Erase Picture: 1
-@>Comment: ------------------------------------------------------
-@>Script: pbShowPicture(1,"Intro Cutscene/TMoM/Alice's House.png",1,256,192,100,100,0,0)
-@>Wait: 10 frame(s)
-@>Move Picture: 1, @10, Center (256,192), (100%,100%), 255, Normal
-@>Text: \w[dark]\c[12]\se[]\l[3]\wtnp[5]The local Youkai Magician who controls puppets, one day, managed to create a perfectly autonomus doll.\wtnp[60]
-@>Wait: 10 frame(s)
-@>Text: \w[dark]\c[12]\se[]\l[2]\wtnp[5]A doll that could move of its own accord, her life's dream and ambition finally fufilled.\wtnp[60]
-@>Wait: 10 frame(s)
-@>Move Picture: 1, @10, Center (256,192), (100%,100%), 0, Normal
-@>Wait: 10 frame(s)
-@>Erase Picture: 1
-@>Comment: ------------------------------------------------------
-@>Script: pbShowPicture(1,"Intro Cutscene/TMoM/Marisa's House.png",1,256,192,100,100,0,0)
-@>Wait: 10 frame(s)
-@>Move Picture: 1, @10, Center (256,192), (100%,100%), 255, Normal
-@>Text: \w[dark]\c[12]\se[]\l[4]\wtnp[6]When a certain Ordinary Magician learned of this, she managed to procure the 
- :    : knowledge for it herself, and managed to create an autonomous doll in her likeness.\wtnp[60]
-@>Wait: 10 frame(s)
-@>Text: \w[dark]\c[12]\se[]\l[3]\wtnp[5]This allowed the magician to double her productivity in all areas, but things like these don't go unnoticed.\wtnp[60]
-@>Wait: 10 frame(s)
-@>Move Picture: 1, @10, Center (256,192), (100%,100%), 0, Normal
-@>Wait: 10 frame(s)
-@>Erase Picture: 1
-@>Comment: ------------------------------------------------------
-@>Script: pbShowPicture(1,"Intro Cutscene/TMoM/Human Village.png",1,256,192,100,100,0,0)
-@>Wait: 10 frame(s)
-@>Move Picture: 1, @10, Center (256,192), (100%,100%), 255, Normal
-@>Wait: 10 frame(s)
-@>Text: \w[dark]\c[12]\se[]\l[4]\wtnp[5]Thanks to a certain Tengu Reporter, word of the puppeteer's success went viral, 
- :    : and people from the human village began flocking to her for puppets of their own.\wtnp[60]
-@>Wait: 10 frame(s)
-@>Text: \w[dark]\c[12]\se[]\l[5]\wtnp[6]These puppets were based off of the prominent Gensokyo inhabitants - the Shrine Maiden, 
- :    : the Incident Solvers, those who started the incidents, and even the related and unrelated Third Parties.\wtnp[60]
-@>Wait: 10 frame(s)
-@>Move Picture: 1, @10, Center (256,192), (100%,100%), 0, Normal
-@>Wait: 10 frame(s)
-@>Erase Picture: 1
-@>Comment: ------------------------------------------------------
-@>Script: pbShowPicture(1,"Intro Cutscene/TMoM/Hakurei Shrine.png",1,256,192,100,100,0,0)
-@>Wait: 10 frame(s)
-@>Move Picture: 1, @10, Center (256,192), (100%,100%), 255, Normal
-@>Wait: 10 frame(s)
-@>Text: \w[dark]\c[12]\se[]\l[5]\wtnp[5]This caused the big names in Gensokyo to take notice, and even they too began to obtain 
- :    : puppets for themselves, and engage in the rapidly growing style that were Puppet Battles.\wtnp[60]
-@>Wait: 10 frame(s)
-@>Text: \w[dark]\c[12]\se[]\l[4]\wtnp[5]Eventually, this became the new standard for resolving incidents within Gensokyo. 
- :    : The Spell Card rule was changed to only be invoked in dire emergancies.\wtnp[60]
-@>Wait: 10 frame(s)
-@>Text: \w[dark]\c[12]\se[]\l[3]\wtnp[5]As such, the last incident to be resolved with Spell Cards properly in any sort of capacity was the Urban
- :    : Legend Incident.\wtnp[60]
-@>Wait: 10 frame(s)
-@>Text: \w[dark]\c[12]\se[]\wtnp[2] After that, Puppets had total control of the scene.\wtnp[60]
-@>Wait: 10 frame(s)
-@>Text: \w[dark]\c[12]\se[]\l[5]\wtnp[5]Humans could now rely on themselves to solve incidents and not have to trouble the 
- :    : Shrine Maiden, though this didn't stop the Shrine Maiden from occasionally stepping in to handle cases.\wtnp[60]
-@>Wait: 10 frame(s)
-@>Move Picture: 1, @10, Center (256,192), (100%,100%), 0, Normal
-@>Wait: 10 frame(s)
-@>Erase Picture: 1
-@>Comment: ------------------------------------------------------
-@>Script: pbShowPicture(1,"Intro Cutscene/TMoM/Bamboo Forest.png",1,256,192,100,100,0,0)
-@>Wait: 10 frame(s)
-@>Move Picture: 1, @10, Center (256,192), (100%,100%), 255, Normal
-@>Wait: 10 frame(s)
-@>Text: \w[dark]\c[12]\se[]\l[4]\wtnp[5]As the months drew onward, it became commonplace to see puppets wandering around 
- :    : in the wild. They started to fill each and every corner of Gensokyo.\wtnp[60]
-@>Wait: 10 frame(s)
-@>Text: \w[dark]\c[12]\se[]\l[3]\wtnp[5]They blended in seemlessly with the native Human, Youkai, and everything else that existed within the mystical realm.\wtnp[60]
-@>Wait: 10 frame(s)
-@>Text: \w[dark]\c[12]\se[]\l[2]\wtnp[5]Life, as always, was good in the illusionary wonderland of Gensokyo.\wtnp[60]
-@>Wait: 10 frame(s)
-@>Move Picture: 1, @10, Center (256,192), (100%,100%), 0, Normal
-@>Wait: 10 frame(s)
-@>Erase Picture: 1
-@>Comment: ------------------------------------------------------
-@>Text: \w[dark]\c[12]\se[]\l[4]\wtnp[5]But like always, things do not remain perfect forever, and the fate of 
- :    : Gensokyo now rests in the hands of those who command the Puppets.\wtnp[60]
-@>Script: pbShowPicture(1,"Intro Cutscene/TMoM/Human Village.png",1,256,192,100,100,0,0)
-@>Wait: 10 frame(s)
-@>Move Picture: 1, @10, Center (256,192), (100%,100%), 255, Normal
-@>Wait: 10 frame(s)
-@>Text: \w[dark]\c[12]\se[]\l[4]\wtnp[5]This tale is about a youth from the Human 
- :    : Village, and their journey outside their familiar walls 
- :    : to uncover the truth behind a mystery.\wtnp[60]
-@>Wait: 10 frame(s)
-@>Text: \w[dark]\c[12]\se[]\l[1]\wtnp[5]Thus beginning their legacy...\wtnp[60]
-@>Wait: 10 frame(s)
-@>Move Picture: 1, @10, Center (256,192), (100%,100%), 0, Normal
-@>Wait: 10 frame(s)
-@>Erase Picture: 1
-@>Comment: ------------------------------------------------------
-@>Label: Title drop
-@>Script: TMoMIntroScene.new
-@>Wait: 20 frame(s)
-@>Change Text Options: Bottom, Show
-@>Change Transparent Flag: Normal
-@>Control Self Switch: A =ON
-@>Transfer Player:[007: \PN's Room], (004,007), Right
-@>Change Screen Color Tone: (0,0,0,0), @6
-@>
-
-Page #2
-Conditions
-None
-
-Autonomous Movement
-Type: Fixed
-Speed: 3: Slow
-Freq: 3: Low
-Options Enabled
-Move Animation
-Trigger: Autorun
-
-List of Event Commands:
-@>Script: $player.seen_storage_creator = true
-@>Script: $player.has_running_shoes = true
-@>Script: $player.scenario_name = "The Mansion of Mystery"
-@>Script: $player.name = "Ayaka"
-@>Script: $stats.trainer_battles_lost_tmom = 0
-@>Conditional Branch: Switch [0107: New Game +] == ON
+: Else
  @>Jump to Label: Start
  @>
 : Branch End
 @>Fade Out BGM: 2 sec.
-@>Script: pbChangePlayer(0)
-@>Call Common Event: Starter Selection
-@>Comment: ------------------------------------------------------
 @>Label: Start
-@>Text: Skip the intro cinematic?
+@>Text: \w[dark]Skip the intro cinematic?
 @>Show Choices: Yes, No
 (When Cancel: Choice 2)
 : When [Yes]
@@ -783,258 +612,7 @@ List of Event Commands:
 : Branch End
 @>Wait: 10 frame(s)
 @>Comment: ------------------------------------------------------
-@>Play BGM: 'W-002. Memory of Forgathering Dream', 100, 100
-@>Script: pbShowPicture(1,"Intro Cutscene/TMoM/Gensokyo.png",1,256,192,100,100,0,0)
-@>Wait: 10 frame(s)
-@>Change Text Options: Bottom, Show
-@>Move Picture: 1, @10, Center (256,192), (100%,100%), 255, Normal
-@>Wait: 10 frame(s)
-@>Text: \w[dark]\c[12]\se[]\l[3]\wtnp[5]With the consequences of the Urban Legends incident long past, 
- :    : so too comes an end to the 130th Season of the realm known as Gensokyo.\wtnp[40]
-@>Wait: 10 frame(s)
-@>Text: \w[dark]\c[12]\se[]\wtnp[5]The realm returns, once again, to the relative peace it is familiar with.\wtnp[40]
-@>Wait: 10 frame(s)
-@>Text: \w[dark]\c[12]\se[]\l[3]\wtnp[5]But even here in this wonderland known as Gensokyo, things do not always remain at ease.\wtnp[40]
-@>Wait: 10 frame(s)
-@>Move Picture: 1, @10, Center (256,192), (100%,100%), 0, Normal
-@>Wait: 10 frame(s)
-@>Erase Picture: 1
-@>Comment: ------------------------------------------------------
-@>Script: pbShowPicture(1,"Intro Cutscene/TMoM/Alice's House.png",1,256,192,100,100,0,0)
-@>Wait: 10 frame(s)
-@>Move Picture: 1, @10, Center (256,192), (100%,100%), 255, Normal
-@>Text: \w[dark]\c[12]\se[]\l[3]\wtnp[5]The local Youkai Magician who controls puppets, one day, managed to create a perfectly autonomus doll.\wtnp[40]
-@>Wait: 10 frame(s)
-@>Text: \w[dark]\c[12]\se[]\l[2]\wtnp[5]A doll that could move of its own accord, her life's dream and ambition finally fufilled.\wtnp[40]
-@>Wait: 10 frame(s)
-@>Move Picture: 1, @10, Center (256,192), (100%,100%), 0, Normal
-@>Wait: 10 frame(s)
-@>Erase Picture: 1
-@>Comment: ------------------------------------------------------
-@>Script: pbShowPicture(1,"Intro Cutscene/TMoM/Marisa's House.png",1,256,192,100,100,0,0)
-@>Wait: 10 frame(s)
-@>Move Picture: 1, @10, Center (256,192), (100%,100%), 255, Normal
-@>Text: \w[dark]\c[12]\se[]\l[4]\wtnp[6]When a certain Ordinary Magician learned of this, she managed to procure the 
- :    : knowledge for it herself, and managed to create an autonomous doll in her likeness.\wtnp[40]
-@>Wait: 10 frame(s)
-@>Text: \w[dark]\c[12]\se[]\l[3]\wtnp[5]This allowed the magician to double her productivity in all areas, but things like these don't go unnoticed.\wtnp[40]
-@>Wait: 10 frame(s)
-@>Move Picture: 1, @10, Center (256,192), (100%,100%), 0, Normal
-@>Wait: 10 frame(s)
-@>Erase Picture: 1
-@>Comment: ------------------------------------------------------
-@>Script: pbShowPicture(1,"Intro Cutscene/TMoM/Human Village.png",1,256,192,100,100,0,0)
-@>Wait: 10 frame(s)
-@>Move Picture: 1, @10, Center (256,192), (100%,100%), 255, Normal
-@>Wait: 10 frame(s)
-@>Text: \w[dark]\c[12]\se[]\l[4]\wtnp[5]Thanks to a certain Tengu Reporter, word of the puppeteer's success went viral, 
- :    : and people from the human village began flocking to her for puppets of their own.\wtnp[40]
-@>Wait: 10 frame(s)
-@>Text: \w[dark]\c[12]\se[]\l[5]\wtnp[6]These puppets were based off of the prominent Gensokyo inhabitants - the Shrine Maiden, 
- :    : the Incident Solvers, those who started the incidents, and even the related and unrelated Third Parties.\wtnp[40]
-@>Wait: 10 frame(s)
-@>Move Picture: 1, @10, Center (256,192), (100%,100%), 0, Normal
-@>Wait: 10 frame(s)
-@>Erase Picture: 1
-@>Comment: ------------------------------------------------------
-@>Script: pbShowPicture(1,"Intro Cutscene/TMoM/Hakurei Shrine.png",1,256,192,100,100,0,0)
-@>Wait: 10 frame(s)
-@>Move Picture: 1, @10, Center (256,192), (100%,100%), 255, Normal
-@>Wait: 10 frame(s)
-@>Text: \w[dark]\c[12]\se[]\l[5]\wtnp[5]This caused the big names in Gensokyo to take notice, and even they too began to obtain 
- :    : puppets for themselves, and engage in the rapidly growing style that were Puppet Battles.\wtnp[40]
-@>Wait: 10 frame(s)
-@>Text: \w[dark]\c[12]\se[]\l[4]\wtnp[5]Eventually, this became the new standard for resolving incidents within Gensokyo. 
- :    : The Spell Card rule was changed to only be invoked in dire emergancies.\wtnp[40]
-@>Wait: 10 frame(s)
-@>Text: \w[dark]\c[12]\se[]\l[3]\wtnp[5]As such, the last incident to be resolved with Spell Cards properly in any sort of capacity was the Urban
- :    : Legend Incident.\wtnp[40]
-@>Wait: 10 frame(s)
-@>Text: \w[dark]\c[12]\se[]\wtnp[2] After that, Puppets had total control of the scene.\wtnp[40]
-@>Wait: 10 frame(s)
-@>Text: \w[dark]\c[12]\se[]\l[5]\wtnp[5]Humans could now rely on themselves to solve incidents and not have to trouble the 
- :    : Shrine Maiden, though this didn't stop the Shrine Maiden from occasionally stepping in to handle cases.\wtnp[40]
-@>Wait: 10 frame(s)
-@>Move Picture: 1, @10, Center (256,192), (100%,100%), 0, Normal
-@>Wait: 10 frame(s)
-@>Erase Picture: 1
-@>Comment: ------------------------------------------------------
-@>Script: pbShowPicture(1,"Intro Cutscene/TMoM/Bamboo Forest.png",1,256,192,100,100,0,0)
-@>Wait: 10 frame(s)
-@>Move Picture: 1, @10, Center (256,192), (100%,100%), 255, Normal
-@>Wait: 10 frame(s)
-@>Text: \w[dark]\c[12]\se[]\l[4]\wtnp[5]As the months drew onward, it became commonplace to see puppets wandering around 
- :    : in the wild. They started to fill each and every corner of Gensokyo.\wtnp[40]
-@>Wait: 10 frame(s)
-@>Text: \w[dark]\c[12]\se[]\l[3]\wtnp[5]They blended in seemlessly with the native Human, Youkai, and everything else that existed within the mystical realm.\wtnp[40]
-@>Wait: 10 frame(s)
-@>Text: \w[dark]\c[12]\se[]\l[2]\wtnp[5]Life, as always, was good in the illusionary wonderland of Gensokyo.\wtnp[40]
-@>Wait: 10 frame(s)
-@>Move Picture: 1, @10, Center (256,192), (100%,100%), 0, Normal
-@>Wait: 10 frame(s)
-@>Erase Picture: 1
-@>Comment: ------------------------------------------------------
-@>Text: \w[dark]\c[12]\se[]\l[4]\wtnp[5]But like always, things do not remain perfect forever, and the fate of 
- :    : Gensokyo now rests in the hands of those who command the Puppets.\wtnp[40]
-@>Script: pbShowPicture(1,"Intro Cutscene/TMoM/Human Village.png",1,256,192,100,100,0,0)
-@>Wait: 10 frame(s)
-@>Move Picture: 1, @10, Center (256,192), (100%,100%), 255, Normal
-@>Wait: 10 frame(s)
-@>Text: \w[dark]\c[12]\se[]\l[4]\wtnp[5]This tale is about a youth from the Human 
- :    : Village, and their journey outside their familiar walls 
- :    : to uncover the truth behind a mystery.\wtnp[40]
-@>Wait: 10 frame(s)
-@>Text: \w[dark]\c[12]\se[]\l[1]\wtnp[5]Thus beginning their legacy...\wtnp[40]
-@>Wait: 10 frame(s)
-@>Move Picture: 1, @10, Center (256,192), (100%,100%), 0, Normal
-@>Wait: 10 frame(s)
-@>Erase Picture: 1
-@>Comment: ------------------------------------------------------
-@>Label: Title drop
-@>Script: TMoMIntroScene.new
-@>Wait: 20 frame(s)
-@>Change Text Options: Bottom, Show
-@>Change Transparent Flag: Normal
-@>Control Self Switch: A =ON
-@>Transfer Player:[007: \PN's Room], (004,007), Right
-@>Change Screen Color Tone: (0,0,0,0), @6
-@>
-
-Page #3
-Conditions
-Switch 0107: New Game + is ON
-Self Switch A is ON
-
-Autonomous Movement
-Type: Fixed
-Speed: 3: Slow
-Freq: 3: Low
-Options Enabled
-Move Animation
-Trigger: Autorun
-
-List of Event Commands:
-@>Fade Out BGM: 2 sec.
-@>Wait: 20 frame(s)
-@>Script: $player.scenario_name = "The Mansion of Mystery"
-@>Script: $stats.trainer_battles_lost_tmom = 0
-@>Text: Skip the intro cinematic?
-@>Show Choices: Yes, No
-(When Cancel: Choice 2)
-: When [Yes]
- @>Jump to Label: Title drop
- @>
-: When [No]
- @>
-: Branch End
-@>Wait: 10 frame(s)
-@>Comment: ------------------------------------------------------
-@>Play BGM: 'W-002. Memory of Forgathering Dream', 100, 100
-@>Script: pbShowPicture(1,"Intro Cutscene/TMoM/Gensokyo.png",1,256,192,100,100,0,0)
-@>Wait: 10 frame(s)
-@>Change Text Options: Bottom, Show
-@>Move Picture: 1, @10, Center (256,192), (100%,100%), 255, Normal
-@>Wait: 10 frame(s)
-@>Text: \w[dark]\c[12]\se[]\l[3]\wtnp[5]With the consequences of the Urban Legends incident long past, 
- :    : so too comes an end to the 130th Season of the realm known as Gensokyo.\wtnp[40]
-@>Wait: 10 frame(s)
-@>Text: \w[dark]\c[12]\se[]\wtnp[5]The realm returns, once again, to the relative peace it is familiar with.\wtnp[40]
-@>Wait: 10 frame(s)
-@>Text: \w[dark]\c[12]\se[]\l[3]\wtnp[5]But even here in this wonderland known as Gensokyo, things do not always remain at ease.\wtnp[40]
-@>Wait: 10 frame(s)
-@>Move Picture: 1, @10, Center (256,192), (100%,100%), 0, Normal
-@>Wait: 10 frame(s)
-@>Erase Picture: 1
-@>Comment: ------------------------------------------------------
-@>Script: pbShowPicture(1,"Intro Cutscene/TMoM/Alice's House.png",1,256,192,100,100,0,0)
-@>Wait: 10 frame(s)
-@>Move Picture: 1, @10, Center (256,192), (100%,100%), 255, Normal
-@>Text: \w[dark]\c[12]\se[]\l[3]\wtnp[5]The local Youkai Magician who controls puppets, one day, managed to create a perfectly autonomus doll.\wtnp[40]
-@>Wait: 10 frame(s)
-@>Text: \w[dark]\c[12]\se[]\l[2]\wtnp[5]A doll that could move of its own accord, her life's dream and ambition finally fufilled.\wtnp[40]
-@>Wait: 10 frame(s)
-@>Move Picture: 1, @10, Center (256,192), (100%,100%), 0, Normal
-@>Wait: 10 frame(s)
-@>Erase Picture: 1
-@>Comment: ------------------------------------------------------
-@>Script: pbShowPicture(1,"Intro Cutscene/TMoM/Marisa's House.png",1,256,192,100,100,0,0)
-@>Wait: 10 frame(s)
-@>Move Picture: 1, @10, Center (256,192), (100%,100%), 255, Normal
-@>Text: \w[dark]\c[12]\se[]\l[4]\wtnp[6]When a certain Ordinary Magician learned of this, she managed to procure the 
- :    : knowledge for it herself, and managed to create an autonomous doll in her likeness.\wtnp[40]
-@>Wait: 10 frame(s)
-@>Text: \w[dark]\c[12]\se[]\l[3]\wtnp[5]This allowed the magician to double her productivity in all areas, but things like these don't go unnoticed.\wtnp[40]
-@>Wait: 10 frame(s)
-@>Move Picture: 1, @10, Center (256,192), (100%,100%), 0, Normal
-@>Wait: 10 frame(s)
-@>Erase Picture: 1
-@>Comment: ------------------------------------------------------
-@>Script: pbShowPicture(1,"Intro Cutscene/TMoM/Human Village.png",1,256,192,100,100,0,0)
-@>Wait: 10 frame(s)
-@>Move Picture: 1, @10, Center (256,192), (100%,100%), 255, Normal
-@>Wait: 10 frame(s)
-@>Text: \w[dark]\c[12]\se[]\l[4]\wtnp[5]Thanks to a certain Tengu Reporter, word of the puppeteer's success went viral, 
- :    : and people from the human village began flocking to her for puppets of their own.\wtnp[40]
-@>Wait: 10 frame(s)
-@>Text: \w[dark]\c[12]\se[]\l[5]\wtnp[6]These puppets were based off of the prominent Gensokyo inhabitants - the Shrine Maiden, 
- :    : the Incident Solvers, those who started the incidents, and even the related and unrelated Third Parties.\wtnp[40]
-@>Wait: 10 frame(s)
-@>Move Picture: 1, @10, Center (256,192), (100%,100%), 0, Normal
-@>Wait: 10 frame(s)
-@>Erase Picture: 1
-@>Comment: ------------------------------------------------------
-@>Script: pbShowPicture(1,"Intro Cutscene/TMoM/Hakurei Shrine.png",1,256,192,100,100,0,0)
-@>Wait: 10 frame(s)
-@>Move Picture: 1, @10, Center (256,192), (100%,100%), 255, Normal
-@>Wait: 10 frame(s)
-@>Text: \w[dark]\c[12]\se[]\l[5]\wtnp[5]This caused the big names in Gensokyo to take notice, and even they too began to obtain 
- :    : puppets for themselves, and engage in the rapidly growing style that were Puppet Battles.\wtnp[40]
-@>Wait: 10 frame(s)
-@>Text: \w[dark]\c[12]\se[]\l[4]\wtnp[5]Eventually, this became the new standard for resolving incidents within Gensokyo. 
- :    : The Spell Card rule was changed to only be invoked in dire emergancies.\wtnp[40]
-@>Wait: 10 frame(s)
-@>Text: \w[dark]\c[12]\se[]\l[3]\wtnp[5]As such, the last incident to be resolved with Spell Cards properly in any sort of capacity was the Urban
- :    : Legend Incident.\wtnp[40]
-@>Wait: 10 frame(s)
-@>Text: \w[dark]\c[12]\se[]\wtnp[2] After that, Puppets had total control of the scene.\wtnp[40]
-@>Wait: 10 frame(s)
-@>Text: \w[dark]\c[12]\se[]\l[5]\wtnp[5]Humans could now rely on themselves to solve incidents and not have to trouble the 
- :    : Shrine Maiden, though this didn't stop the Shrine Maiden from occasionally stepping in to handle cases.\wtnp[40]
-@>Wait: 10 frame(s)
-@>Move Picture: 1, @10, Center (256,192), (100%,100%), 0, Normal
-@>Wait: 10 frame(s)
-@>Erase Picture: 1
-@>Comment: ------------------------------------------------------
-@>Script: pbShowPicture(1,"Intro Cutscene/TMoM/Bamboo Forest.png",1,256,192,100,100,0,0)
-@>Wait: 10 frame(s)
-@>Move Picture: 1, @10, Center (256,192), (100%,100%), 255, Normal
-@>Wait: 10 frame(s)
-@>Text: \w[dark]\c[12]\se[]\l[4]\wtnp[5]As the months drew onward, it became commonplace to see puppets wandering around 
- :    : in the wild. They started to fill each and every corner of Gensokyo.\wtnp[40]
-@>Wait: 10 frame(s)
-@>Text: \w[dark]\c[12]\se[]\l[3]\wtnp[5]They blended in seemlessly with the native Human, Youkai, and everything else that existed within the mystical realm.\wtnp[40]
-@>Wait: 10 frame(s)
-@>Text: \w[dark]\c[12]\se[]\l[2]\wtnp[5]Life, as always, was good in the illusionary wonderland of Gensokyo.\wtnp[40]
-@>Wait: 10 frame(s)
-@>Move Picture: 1, @10, Center (256,192), (100%,100%), 0, Normal
-@>Wait: 10 frame(s)
-@>Erase Picture: 1
-@>Comment: ------------------------------------------------------
-@>Text: \w[dark]\c[12]\se[]\l[4]\wtnp[5]But like always, things do not remain perfect forever, and the fate of 
- :    : Gensokyo now rests in the hands of those who command the Puppets.\wtnp[40]
-@>Script: pbShowPicture(1,"Intro Cutscene/TMoM/Human Village.png",1,256,192,100,100,0,0)
-@>Wait: 10 frame(s)
-@>Move Picture: 1, @10, Center (256,192), (100%,100%), 255, Normal
-@>Wait: 10 frame(s)
-@>Text: \w[dark]\c[12]\se[]\l[4]\wtnp[5]This tale is about a youth from the Human 
- :    : Village, and their journey outside their familiar walls 
- :    : to uncover the truth behind a mystery.\wtnp[40]
-@>Wait: 10 frame(s)
-@>Text: \w[dark]\c[12]\se[]\l[1]\wtnp[5]Thus beginning their legacy...\wtnp[40]
-@>Wait: 10 frame(s)
-@>Move Picture: 1, @10, Center (256,192), (100%,100%), 0, Normal
-@>Wait: 10 frame(s)
-@>Erase Picture: 1
+@>Call Common Event: TMoM Intro
 @>Comment: ------------------------------------------------------
 @>Label: Title drop
 @>Script: TMoMIntroScene.new
@@ -1043,6 +621,7 @@ List of Event Commands:
 @>Change Transparent Flag: Normal
 @>Transfer Player:[007: \PN's Room], (004,007), Right
 @>Change Screen Color Tone: (0,0,0,0), @6
+@>Script: reset_menu_theme
 @>
 
 #------------------------------------------------------------------------------
@@ -1243,6 +822,484 @@ List of Event Commands:
 @>
 
 #------------------------------------------------------------------------------
+Event ID: 003
+Event Name: TMoM Intro (Backup)
+(X,Y): (004,000)
+
+Page #1
+Conditions
+None
+
+Autonomous Movement
+Type: Fixed
+Speed: 3: Slow
+Freq: 3: Low
+Options Enabled
+Move Animation
+Trigger: Action Button
+
+List of Event Commands:
+@>Script: $player.seen_storage_creator = true
+@>Script: $player.has_running_shoes = true
+@>Script: $player.scenario_name = "The Mansion of Mystery"
+@>Script: $stats.trainer_battles_lost_tmom = 0
+@>Conditional Branch: Switch [0107: New Game +] == ON
+ @>Jump to Label: Start
+ @>
+: Branch End
+@>Fade Out BGM: 2 sec.
+@>Script: pbChangePlayer(0)
+@>Change Text Options: Middle, Hide
+@>Text: What is your name?
+@>Label: Enter Name
+@>Script: pbTrainerName
+@>Wait: 5 frame(s)
+@>Text: \PN.\wtnp[10] Is that correct?
+@>Show Choices: Yes, No
+(When Cancel: Choice 2)
+: When [Yes]
+ @>Call Common Event: Player Name Easter Eggs
+ @>
+: When [No]
+ @>Text: What is your name?
+ @>Jump to Label: Enter Name
+ @>
+: Branch End
+@>Conditional Branch: Switch [0106: Name Easter Egg] == OFF
+ @>Call Common Event: Starter Selection
+ @>
+: Branch End
+@>Comment: ------------------------------------------------------
+@>Label: Start
+@>Text: Skip the intro cinematic?
+@>Show Choices: Yes, No
+(When Cancel: Choice 2)
+: When [Yes]
+ @>Jump to Label: Title drop
+ @>
+: When [No]
+ @>
+: Branch End
+@>Wait: 10 frame(s)
+@>Comment: ------------------------------------------------------
+@>Play BGM: 'W-002. Memory of Forgathering Dream', 100, 100
+@>Script: pbShowPicture(1,"Intro Cutscene/TMoM/Gensokyo.png",1,256,192,100,100,0,0)
+@>Wait: 10 frame(s)
+@>Change Text Options: Bottom, Show
+@>Move Picture: 1, @10, Center (256,192), (100%,100%), 255, Normal
+@>Wait: 10 frame(s)
+@>Text: \w[dark]\c[12]\se[]\l[3]\wtnp[5]With the consequences of the Urban Legends incident long past, 
+ :    : so too comes an end to the 130th Season of the realm known as Gensokyo.\wtnp[60]
+@>Wait: 10 frame(s)
+@>Text: \w[dark]\c[12]\se[]\wtnp[5]The realm returns, once again, to the relative peace it is familiar with.\wtnp[60]
+@>Wait: 10 frame(s)
+@>Text: \w[dark]\c[12]\se[]\l[3]\wtnp[5]But even here in this wonderland known as Gensokyo, things do not always remain at ease.\wtnp[60]
+@>Wait: 10 frame(s)
+@>Move Picture: 1, @10, Center (256,192), (100%,100%), 0, Normal
+@>Wait: 10 frame(s)
+@>Erase Picture: 1
+@>Comment: ------------------------------------------------------
+@>Script: pbShowPicture(1,"Intro Cutscene/TMoM/Alice's House.png",1,256,192,100,100,0,0)
+@>Wait: 10 frame(s)
+@>Move Picture: 1, @10, Center (256,192), (100%,100%), 255, Normal
+@>Text: \w[dark]\c[12]\se[]\l[3]\wtnp[5]The local Youkai Magician who controls puppets, one day, managed to create a perfectly autonomus doll.\wtnp[60]
+@>Wait: 10 frame(s)
+@>Text: \w[dark]\c[12]\se[]\l[2]\wtnp[5]A doll that could move of its own accord, her life's dream and ambition finally fufilled.\wtnp[60]
+@>Wait: 10 frame(s)
+@>Move Picture: 1, @10, Center (256,192), (100%,100%), 0, Normal
+@>Wait: 10 frame(s)
+@>Erase Picture: 1
+@>Comment: ------------------------------------------------------
+@>Script: pbShowPicture(1,"Intro Cutscene/TMoM/Marisa's House.png",1,256,192,100,100,0,0)
+@>Wait: 10 frame(s)
+@>Move Picture: 1, @10, Center (256,192), (100%,100%), 255, Normal
+@>Text: \w[dark]\c[12]\se[]\l[4]\wtnp[6]When a certain Ordinary Magician learned of this, she managed to procure the 
+ :    : knowledge for it herself, and managed to create an autonomous doll in her likeness.\wtnp[60]
+@>Wait: 10 frame(s)
+@>Text: \w[dark]\c[12]\se[]\l[3]\wtnp[5]This allowed the magician to double her productivity in all areas, but things like these don't go unnoticed.\wtnp[60]
+@>Wait: 10 frame(s)
+@>Move Picture: 1, @10, Center (256,192), (100%,100%), 0, Normal
+@>Wait: 10 frame(s)
+@>Erase Picture: 1
+@>Comment: ------------------------------------------------------
+@>Script: pbShowPicture(1,"Intro Cutscene/TMoM/Human Village.png",1,256,192,100,100,0,0)
+@>Wait: 10 frame(s)
+@>Move Picture: 1, @10, Center (256,192), (100%,100%), 255, Normal
+@>Wait: 10 frame(s)
+@>Text: \w[dark]\c[12]\se[]\l[4]\wtnp[5]Thanks to a certain Tengu Reporter, word of the puppeteer's success went viral, 
+ :    : and people from the human village began flocking to her for puppets of their own.\wtnp[60]
+@>Wait: 10 frame(s)
+@>Text: \w[dark]\c[12]\se[]\l[5]\wtnp[6]These puppets were based off of the prominent Gensokyo inhabitants - the Shrine Maiden, 
+ :    : the Incident Solvers, those who started the incidents, and even the related and unrelated Third Parties.\wtnp[60]
+@>Wait: 10 frame(s)
+@>Move Picture: 1, @10, Center (256,192), (100%,100%), 0, Normal
+@>Wait: 10 frame(s)
+@>Erase Picture: 1
+@>Comment: ------------------------------------------------------
+@>Script: pbShowPicture(1,"Intro Cutscene/TMoM/Hakurei Shrine.png",1,256,192,100,100,0,0)
+@>Wait: 10 frame(s)
+@>Move Picture: 1, @10, Center (256,192), (100%,100%), 255, Normal
+@>Wait: 10 frame(s)
+@>Text: \w[dark]\c[12]\se[]\l[5]\wtnp[5]This caused the big names in Gensokyo to take notice, and even they too began to obtain 
+ :    : puppets for themselves, and engage in the rapidly growing style that were Puppet Battles.\wtnp[60]
+@>Wait: 10 frame(s)
+@>Text: \w[dark]\c[12]\se[]\l[4]\wtnp[5]Eventually, this became the new standard for resolving incidents within Gensokyo. 
+ :    : The Spell Card rule was changed to only be invoked in dire emergancies.\wtnp[60]
+@>Wait: 10 frame(s)
+@>Text: \w[dark]\c[12]\se[]\l[3]\wtnp[5]As such, the last incident to be resolved with Spell Cards properly in any sort of capacity was the Urban
+ :    : Legend Incident.\wtnp[60]
+@>Wait: 10 frame(s)
+@>Text: \w[dark]\c[12]\se[]\wtnp[2] After that, Puppets had total control of the scene.\wtnp[60]
+@>Wait: 10 frame(s)
+@>Text: \w[dark]\c[12]\se[]\l[5]\wtnp[5]Humans could now rely on themselves to solve incidents and not have to trouble the 
+ :    : Shrine Maiden, though this didn't stop the Shrine Maiden from occasionally stepping in to handle cases.\wtnp[60]
+@>Wait: 10 frame(s)
+@>Move Picture: 1, @10, Center (256,192), (100%,100%), 0, Normal
+@>Wait: 10 frame(s)
+@>Erase Picture: 1
+@>Comment: ------------------------------------------------------
+@>Script: pbShowPicture(1,"Intro Cutscene/TMoM/Bamboo Forest.png",1,256,192,100,100,0,0)
+@>Wait: 10 frame(s)
+@>Move Picture: 1, @10, Center (256,192), (100%,100%), 255, Normal
+@>Wait: 10 frame(s)
+@>Text: \w[dark]\c[12]\se[]\l[4]\wtnp[5]As the months drew onward, it became commonplace to see puppets wandering around 
+ :    : in the wild. They started to fill each and every corner of Gensokyo.\wtnp[60]
+@>Wait: 10 frame(s)
+@>Text: \w[dark]\c[12]\se[]\l[3]\wtnp[5]They blended in seemlessly with the native Human, Youkai, and everything else that existed within the mystical realm.\wtnp[60]
+@>Wait: 10 frame(s)
+@>Text: \w[dark]\c[12]\se[]\l[2]\wtnp[5]Life, as always, was good in the illusionary wonderland of Gensokyo.\wtnp[60]
+@>Wait: 10 frame(s)
+@>Move Picture: 1, @10, Center (256,192), (100%,100%), 0, Normal
+@>Wait: 10 frame(s)
+@>Erase Picture: 1
+@>Comment: ------------------------------------------------------
+@>Text: \w[dark]\c[12]\se[]\l[4]\wtnp[5]But like always, things do not remain perfect forever, and the fate of 
+ :    : Gensokyo now rests in the hands of those who command the Puppets.\wtnp[60]
+@>Script: pbShowPicture(1,"Intro Cutscene/TMoM/Human Village.png",1,256,192,100,100,0,0)
+@>Wait: 10 frame(s)
+@>Move Picture: 1, @10, Center (256,192), (100%,100%), 255, Normal
+@>Wait: 10 frame(s)
+@>Text: \w[dark]\c[12]\se[]\l[4]\wtnp[5]This tale is about a youth from the Human 
+ :    : Village, and their journey outside their familiar walls 
+ :    : to uncover the truth behind a mystery.\wtnp[60]
+@>Wait: 10 frame(s)
+@>Text: \w[dark]\c[12]\se[]\l[1]\wtnp[5]Thus beginning their legacy...\wtnp[60]
+@>Wait: 10 frame(s)
+@>Move Picture: 1, @10, Center (256,192), (100%,100%), 0, Normal
+@>Wait: 10 frame(s)
+@>Erase Picture: 1
+@>Comment: ------------------------------------------------------
+@>Label: Title drop
+@>Script: TMoMIntroScene.new
+@>Wait: 20 frame(s)
+@>Change Text Options: Bottom, Show
+@>Change Transparent Flag: Normal
+@>Control Self Switch: A =ON
+@>Transfer Player:[007: \PN's Room], (004,007), Right
+@>Change Screen Color Tone: (0,0,0,0), @6
+@>
+
+Page #2
+Conditions
+None
+
+Autonomous Movement
+Type: Fixed
+Speed: 3: Slow
+Freq: 3: Low
+Options Enabled
+Move Animation
+Trigger: Action Button
+
+List of Event Commands:
+@>Script: $player.seen_storage_creator = true
+@>Script: $player.has_running_shoes = true
+@>Script: $player.scenario_name = "The Mansion of Mystery"
+@>Script: $player.name = "Ayaka"
+@>Script: $stats.trainer_battles_lost_tmom = 0
+@>Conditional Branch: Switch [0107: New Game +] == ON
+ @>Jump to Label: Start
+ @>
+: Branch End
+@>Fade Out BGM: 2 sec.
+@>Script: pbChangePlayer(0)
+@>Call Common Event: Starter Selection
+@>Comment: ------------------------------------------------------
+@>Label: Start
+@>Text: Skip the intro cinematic?
+@>Show Choices: Yes, No
+(When Cancel: Choice 2)
+: When [Yes]
+ @>Jump to Label: Title drop
+ @>
+: When [No]
+ @>
+: Branch End
+@>Wait: 10 frame(s)
+@>Comment: ------------------------------------------------------
+@>Play BGM: 'W-002. Memory of Forgathering Dream', 100, 100
+@>Script: pbShowPicture(1,"Intro Cutscene/TMoM/Gensokyo.png",1,256,192,100,100,0,0)
+@>Wait: 10 frame(s)
+@>Change Text Options: Bottom, Show
+@>Move Picture: 1, @10, Center (256,192), (100%,100%), 255, Normal
+@>Wait: 10 frame(s)
+@>Text: \w[dark]\c[12]\se[]\l[3]\wtnp[5]With the consequences of the Urban Legends incident long past, 
+ :    : so too comes an end to the 130th Season of the realm known as Gensokyo.\wtnp[40]
+@>Wait: 10 frame(s)
+@>Text: \w[dark]\c[12]\se[]\wtnp[5]The realm returns, once again, to the relative peace it is familiar with.\wtnp[40]
+@>Wait: 10 frame(s)
+@>Text: \w[dark]\c[12]\se[]\l[3]\wtnp[5]But even here in this wonderland known as Gensokyo, things do not always remain at ease.\wtnp[40]
+@>Wait: 10 frame(s)
+@>Move Picture: 1, @10, Center (256,192), (100%,100%), 0, Normal
+@>Wait: 10 frame(s)
+@>Erase Picture: 1
+@>Comment: ------------------------------------------------------
+@>Script: pbShowPicture(1,"Intro Cutscene/TMoM/Alice's House.png",1,256,192,100,100,0,0)
+@>Wait: 10 frame(s)
+@>Move Picture: 1, @10, Center (256,192), (100%,100%), 255, Normal
+@>Text: \w[dark]\c[12]\se[]\l[3]\wtnp[5]The local Youkai Magician who controls puppets, one day, managed to create a perfectly autonomus doll.\wtnp[40]
+@>Wait: 10 frame(s)
+@>Text: \w[dark]\c[12]\se[]\l[2]\wtnp[5]A doll that could move of its own accord, her life's dream and ambition finally fufilled.\wtnp[40]
+@>Wait: 10 frame(s)
+@>Move Picture: 1, @10, Center (256,192), (100%,100%), 0, Normal
+@>Wait: 10 frame(s)
+@>Erase Picture: 1
+@>Comment: ------------------------------------------------------
+@>Script: pbShowPicture(1,"Intro Cutscene/TMoM/Marisa's House.png",1,256,192,100,100,0,0)
+@>Wait: 10 frame(s)
+@>Move Picture: 1, @10, Center (256,192), (100%,100%), 255, Normal
+@>Text: \w[dark]\c[12]\se[]\l[4]\wtnp[6]When a certain Ordinary Magician learned of this, she managed to procure the 
+ :    : knowledge for it herself, and managed to create an autonomous doll in her likeness.\wtnp[40]
+@>Wait: 10 frame(s)
+@>Text: \w[dark]\c[12]\se[]\l[3]\wtnp[5]This allowed the magician to double her productivity in all areas, but things like these don't go unnoticed.\wtnp[40]
+@>Wait: 10 frame(s)
+@>Move Picture: 1, @10, Center (256,192), (100%,100%), 0, Normal
+@>Wait: 10 frame(s)
+@>Erase Picture: 1
+@>Comment: ------------------------------------------------------
+@>Script: pbShowPicture(1,"Intro Cutscene/TMoM/Human Village.png",1,256,192,100,100,0,0)
+@>Wait: 10 frame(s)
+@>Move Picture: 1, @10, Center (256,192), (100%,100%), 255, Normal
+@>Wait: 10 frame(s)
+@>Text: \w[dark]\c[12]\se[]\l[4]\wtnp[5]Thanks to a certain Tengu Reporter, word of the puppeteer's success went viral, 
+ :    : and people from the human village began flocking to her for puppets of their own.\wtnp[40]
+@>Wait: 10 frame(s)
+@>Text: \w[dark]\c[12]\se[]\l[5]\wtnp[6]These puppets were based off of the prominent Gensokyo inhabitants - the Shrine Maiden, 
+ :    : the Incident Solvers, those who started the incidents, and even the related and unrelated Third Parties.\wtnp[40]
+@>Wait: 10 frame(s)
+@>Move Picture: 1, @10, Center (256,192), (100%,100%), 0, Normal
+@>Wait: 10 frame(s)
+@>Erase Picture: 1
+@>Comment: ------------------------------------------------------
+@>Script: pbShowPicture(1,"Intro Cutscene/TMoM/Hakurei Shrine.png",1,256,192,100,100,0,0)
+@>Wait: 10 frame(s)
+@>Move Picture: 1, @10, Center (256,192), (100%,100%), 255, Normal
+@>Wait: 10 frame(s)
+@>Text: \w[dark]\c[12]\se[]\l[5]\wtnp[5]This caused the big names in Gensokyo to take notice, and even they too began to obtain 
+ :    : puppets for themselves, and engage in the rapidly growing style that were Puppet Battles.\wtnp[40]
+@>Wait: 10 frame(s)
+@>Text: \w[dark]\c[12]\se[]\l[4]\wtnp[5]Eventually, this became the new standard for resolving incidents within Gensokyo. 
+ :    : The Spell Card rule was changed to only be invoked in dire emergancies.\wtnp[40]
+@>Wait: 10 frame(s)
+@>Text: \w[dark]\c[12]\se[]\l[3]\wtnp[5]As such, the last incident to be resolved with Spell Cards properly in any sort of capacity was the Urban
+ :    : Legend Incident.\wtnp[40]
+@>Wait: 10 frame(s)
+@>Text: \w[dark]\c[12]\se[]\wtnp[2] After that, Puppets had total control of the scene.\wtnp[40]
+@>Wait: 10 frame(s)
+@>Text: \w[dark]\c[12]\se[]\l[5]\wtnp[5]Humans could now rely on themselves to solve incidents and not have to trouble the 
+ :    : Shrine Maiden, though this didn't stop the Shrine Maiden from occasionally stepping in to handle cases.\wtnp[40]
+@>Wait: 10 frame(s)
+@>Move Picture: 1, @10, Center (256,192), (100%,100%), 0, Normal
+@>Wait: 10 frame(s)
+@>Erase Picture: 1
+@>Comment: ------------------------------------------------------
+@>Script: pbShowPicture(1,"Intro Cutscene/TMoM/Bamboo Forest.png",1,256,192,100,100,0,0)
+@>Wait: 10 frame(s)
+@>Move Picture: 1, @10, Center (256,192), (100%,100%), 255, Normal
+@>Wait: 10 frame(s)
+@>Text: \w[dark]\c[12]\se[]\l[4]\wtnp[5]As the months drew onward, it became commonplace to see puppets wandering around 
+ :    : in the wild. They started to fill each and every corner of Gensokyo.\wtnp[40]
+@>Wait: 10 frame(s)
+@>Text: \w[dark]\c[12]\se[]\l[3]\wtnp[5]They blended in seemlessly with the native Human, Youkai, and everything else that existed within the mystical realm.\wtnp[40]
+@>Wait: 10 frame(s)
+@>Text: \w[dark]\c[12]\se[]\l[2]\wtnp[5]Life, as always, was good in the illusionary wonderland of Gensokyo.\wtnp[40]
+@>Wait: 10 frame(s)
+@>Move Picture: 1, @10, Center (256,192), (100%,100%), 0, Normal
+@>Wait: 10 frame(s)
+@>Erase Picture: 1
+@>Comment: ------------------------------------------------------
+@>Text: \w[dark]\c[12]\se[]\l[4]\wtnp[5]But like always, things do not remain perfect forever, and the fate of 
+ :    : Gensokyo now rests in the hands of those who command the Puppets.\wtnp[40]
+@>Script: pbShowPicture(1,"Intro Cutscene/TMoM/Human Village.png",1,256,192,100,100,0,0)
+@>Wait: 10 frame(s)
+@>Move Picture: 1, @10, Center (256,192), (100%,100%), 255, Normal
+@>Wait: 10 frame(s)
+@>Text: \w[dark]\c[12]\se[]\l[4]\wtnp[5]This tale is about a youth from the Human 
+ :    : Village, and their journey outside their familiar walls 
+ :    : to uncover the truth behind a mystery.\wtnp[40]
+@>Wait: 10 frame(s)
+@>Text: \w[dark]\c[12]\se[]\l[1]\wtnp[5]Thus beginning their legacy...\wtnp[40]
+@>Wait: 10 frame(s)
+@>Move Picture: 1, @10, Center (256,192), (100%,100%), 0, Normal
+@>Wait: 10 frame(s)
+@>Erase Picture: 1
+@>Comment: ------------------------------------------------------
+@>Label: Title drop
+@>Script: TMoMIntroScene.new
+@>Wait: 20 frame(s)
+@>Change Text Options: Bottom, Show
+@>Change Transparent Flag: Normal
+@>Control Self Switch: A =ON
+@>Transfer Player:[007: \PN's Room], (004,007), Right
+@>Change Screen Color Tone: (0,0,0,0), @6
+@>
+
+Page #3
+Conditions
+Switch 0107: New Game + is ON
+Self Switch A is ON
+
+Autonomous Movement
+Type: Fixed
+Speed: 3: Slow
+Freq: 3: Low
+Options Enabled
+Move Animation
+Trigger: Action Button
+
+List of Event Commands:
+@>Fade Out BGM: 2 sec.
+@>Wait: 20 frame(s)
+@>Script: $player.scenario_name = "The Mansion of Mystery"
+@>Script: $stats.trainer_battles_lost_tmom = 0
+@>Text: Skip the intro cinematic?
+@>Show Choices: Yes, No
+(When Cancel: Choice 2)
+: When [Yes]
+ @>Jump to Label: Title drop
+ @>
+: When [No]
+ @>
+: Branch End
+@>Wait: 10 frame(s)
+@>Comment: ------------------------------------------------------
+@>Play BGM: 'W-002. Memory of Forgathering Dream', 100, 100
+@>Script: pbShowPicture(1,"Intro Cutscene/TMoM/Gensokyo.png",1,256,192,100,100,0,0)
+@>Wait: 10 frame(s)
+@>Change Text Options: Bottom, Show
+@>Move Picture: 1, @10, Center (256,192), (100%,100%), 255, Normal
+@>Wait: 10 frame(s)
+@>Text: \w[dark]\c[12]\se[]\l[3]\wtnp[5]With the consequences of the Urban Legends incident long past, 
+ :    : so too comes an end to the 130th Season of the realm known as Gensokyo.\wtnp[40]
+@>Wait: 10 frame(s)
+@>Text: \w[dark]\c[12]\se[]\wtnp[5]The realm returns, once again, to the relative peace it is familiar with.\wtnp[40]
+@>Wait: 10 frame(s)
+@>Text: \w[dark]\c[12]\se[]\l[3]\wtnp[5]But even here in this wonderland known as Gensokyo, things do not always remain at ease.\wtnp[40]
+@>Wait: 10 frame(s)
+@>Move Picture: 1, @10, Center (256,192), (100%,100%), 0, Normal
+@>Wait: 10 frame(s)
+@>Erase Picture: 1
+@>Comment: ------------------------------------------------------
+@>Script: pbShowPicture(1,"Intro Cutscene/TMoM/Alice's House.png",1,256,192,100,100,0,0)
+@>Wait: 10 frame(s)
+@>Move Picture: 1, @10, Center (256,192), (100%,100%), 255, Normal
+@>Text: \w[dark]\c[12]\se[]\l[3]\wtnp[5]The local Youkai Magician who controls puppets, one day, managed to create a perfectly autonomus doll.\wtnp[40]
+@>Wait: 10 frame(s)
+@>Text: \w[dark]\c[12]\se[]\l[2]\wtnp[5]A doll that could move of its own accord, her life's dream and ambition finally fufilled.\wtnp[40]
+@>Wait: 10 frame(s)
+@>Move Picture: 1, @10, Center (256,192), (100%,100%), 0, Normal
+@>Wait: 10 frame(s)
+@>Erase Picture: 1
+@>Comment: ------------------------------------------------------
+@>Script: pbShowPicture(1,"Intro Cutscene/TMoM/Marisa's House.png",1,256,192,100,100,0,0)
+@>Wait: 10 frame(s)
+@>Move Picture: 1, @10, Center (256,192), (100%,100%), 255, Normal
+@>Text: \w[dark]\c[12]\se[]\l[4]\wtnp[6]When a certain Ordinary Magician learned of this, she managed to procure the 
+ :    : knowledge for it herself, and managed to create an autonomous doll in her likeness.\wtnp[40]
+@>Wait: 10 frame(s)
+@>Text: \w[dark]\c[12]\se[]\l[3]\wtnp[5]This allowed the magician to double her productivity in all areas, but things like these don't go unnoticed.\wtnp[40]
+@>Wait: 10 frame(s)
+@>Move Picture: 1, @10, Center (256,192), (100%,100%), 0, Normal
+@>Wait: 10 frame(s)
+@>Erase Picture: 1
+@>Comment: ------------------------------------------------------
+@>Script: pbShowPicture(1,"Intro Cutscene/TMoM/Human Village.png",1,256,192,100,100,0,0)
+@>Wait: 10 frame(s)
+@>Move Picture: 1, @10, Center (256,192), (100%,100%), 255, Normal
+@>Wait: 10 frame(s)
+@>Text: \w[dark]\c[12]\se[]\l[4]\wtnp[5]Thanks to a certain Tengu Reporter, word of the puppeteer's success went viral, 
+ :    : and people from the human village began flocking to her for puppets of their own.\wtnp[40]
+@>Wait: 10 frame(s)
+@>Text: \w[dark]\c[12]\se[]\l[5]\wtnp[6]These puppets were based off of the prominent Gensokyo inhabitants - the Shrine Maiden, 
+ :    : the Incident Solvers, those who started the incidents, and even the related and unrelated Third Parties.\wtnp[40]
+@>Wait: 10 frame(s)
+@>Move Picture: 1, @10, Center (256,192), (100%,100%), 0, Normal
+@>Wait: 10 frame(s)
+@>Erase Picture: 1
+@>Comment: ------------------------------------------------------
+@>Script: pbShowPicture(1,"Intro Cutscene/TMoM/Hakurei Shrine.png",1,256,192,100,100,0,0)
+@>Wait: 10 frame(s)
+@>Move Picture: 1, @10, Center (256,192), (100%,100%), 255, Normal
+@>Wait: 10 frame(s)
+@>Text: \w[dark]\c[12]\se[]\l[5]\wtnp[5]This caused the big names in Gensokyo to take notice, and even they too began to obtain 
+ :    : puppets for themselves, and engage in the rapidly growing style that were Puppet Battles.\wtnp[40]
+@>Wait: 10 frame(s)
+@>Text: \w[dark]\c[12]\se[]\l[4]\wtnp[5]Eventually, this became the new standard for resolving incidents within Gensokyo. 
+ :    : The Spell Card rule was changed to only be invoked in dire emergancies.\wtnp[40]
+@>Wait: 10 frame(s)
+@>Text: \w[dark]\c[12]\se[]\l[3]\wtnp[5]As such, the last incident to be resolved with Spell Cards properly in any sort of capacity was the Urban
+ :    : Legend Incident.\wtnp[40]
+@>Wait: 10 frame(s)
+@>Text: \w[dark]\c[12]\se[]\wtnp[2] After that, Puppets had total control of the scene.\wtnp[40]
+@>Wait: 10 frame(s)
+@>Text: \w[dark]\c[12]\se[]\l[5]\wtnp[5]Humans could now rely on themselves to solve incidents and not have to trouble the 
+ :    : Shrine Maiden, though this didn't stop the Shrine Maiden from occasionally stepping in to handle cases.\wtnp[40]
+@>Wait: 10 frame(s)
+@>Move Picture: 1, @10, Center (256,192), (100%,100%), 0, Normal
+@>Wait: 10 frame(s)
+@>Erase Picture: 1
+@>Comment: ------------------------------------------------------
+@>Script: pbShowPicture(1,"Intro Cutscene/TMoM/Bamboo Forest.png",1,256,192,100,100,0,0)
+@>Wait: 10 frame(s)
+@>Move Picture: 1, @10, Center (256,192), (100%,100%), 255, Normal
+@>Wait: 10 frame(s)
+@>Text: \w[dark]\c[12]\se[]\l[4]\wtnp[5]As the months drew onward, it became commonplace to see puppets wandering around 
+ :    : in the wild. They started to fill each and every corner of Gensokyo.\wtnp[40]
+@>Wait: 10 frame(s)
+@>Text: \w[dark]\c[12]\se[]\l[3]\wtnp[5]They blended in seemlessly with the native Human, Youkai, and everything else that existed within the mystical realm.\wtnp[40]
+@>Wait: 10 frame(s)
+@>Text: \w[dark]\c[12]\se[]\l[2]\wtnp[5]Life, as always, was good in the illusionary wonderland of Gensokyo.\wtnp[40]
+@>Wait: 10 frame(s)
+@>Move Picture: 1, @10, Center (256,192), (100%,100%), 0, Normal
+@>Wait: 10 frame(s)
+@>Erase Picture: 1
+@>Comment: ------------------------------------------------------
+@>Text: \w[dark]\c[12]\se[]\l[4]\wtnp[5]But like always, things do not remain perfect forever, and the fate of 
+ :    : Gensokyo now rests in the hands of those who command the Puppets.\wtnp[40]
+@>Script: pbShowPicture(1,"Intro Cutscene/TMoM/Human Village.png",1,256,192,100,100,0,0)
+@>Wait: 10 frame(s)
+@>Move Picture: 1, @10, Center (256,192), (100%,100%), 255, Normal
+@>Wait: 10 frame(s)
+@>Text: \w[dark]\c[12]\se[]\l[4]\wtnp[5]This tale is about a youth from the Human 
+ :    : Village, and their journey outside their familiar walls 
+ :    : to uncover the truth behind a mystery.\wtnp[40]
+@>Wait: 10 frame(s)
+@>Text: \w[dark]\c[12]\se[]\l[1]\wtnp[5]Thus beginning their legacy...\wtnp[40]
+@>Wait: 10 frame(s)
+@>Move Picture: 1, @10, Center (256,192), (100%,100%), 0, Normal
+@>Wait: 10 frame(s)
+@>Erase Picture: 1
+@>Comment: ------------------------------------------------------
+@>Label: Title drop
+@>Script: TMoMIntroScene.new
+@>Wait: 20 frame(s)
+@>Change Text Options: Bottom, Show
+@>Change Transparent Flag: Normal
+@>Transfer Player:[007: \PN's Room], (004,007), Right
+@>Change Screen Color Tone: (0,0,0,0), @6
+@>
+
+#------------------------------------------------------------------------------
 
 #==============================================================================
 Map ID: 004
@@ -1266,6 +1323,72 @@ Freq: 3: Low
 Options Enabled
 Move Animation
 Trigger: Autorun
+
+List of Event Commands:
+@>Script: $player.scenario_name = "The Festival of Curses"
+:       : 
+:       : set_menu_theme("dark")
+@>Conditional Branch: Switch [0107: New Game +] == OFF
+ @>Script: $player.seen_storage_creator = true
+ :       : $player.has_running_shoes = true
+ :       : $player.name = "Ayaka"
+ @>Script: pbChangePlayer(0)
+ @>Call Common Event: Starter Selection
+ @>
+: Else
+ @>Jump to Label: Start
+ @>
+: Branch End
+@>Fade Out BGM: 2 sec.
+@>Label: Start
+@>Script: $bag.add(:POTION,5)
+:       : $bag.add(:SUPERPOTION,2)
+:       : $bag.add(:REVIVE,1)
+:       : $bag.add(:PUPPETORB,7)
+:       : $bag.add(:GREATORB,3)
+:       : $bag.add(:ITEMFINDER)
+:       : $bag.add(:GOODROD)
+@>Text: \w[dark]Skip the intro cinematic?
+@>Show Choices: Yes, No
+(When Cancel: Choice 2)
+: When [Yes]
+ @>Jump to Label: Title drop
+ @>
+: When [No]
+ @>
+: Branch End
+@>Wait: 10 frame(s)
+@>Comment: ------------------------------------------------------
+@>Call Common Event: TFoC Intro
+@>Comment: ------------------------------------------------------
+@>Label: Title drop
+@>Script: TFoCIntroScene1.new
+:       : pbWait(1)
+:       : TFoCIntroScene2.new
+@>Wait: 20 frame(s)
+@>Change Text Options: Bottom, Show
+@>Change Transparent Flag: Normal
+@>Transfer Player:[037: Human Village], (021,063), Down
+@>Change Screen Color Tone: (0,0,0,0), @6
+@>Script: reset_menu_theme
+@>
+
+#------------------------------------------------------------------------------
+Event ID: 002
+Event Name: TFoC Intro (Backup)
+(X,Y): (002,000)
+
+Page #1
+Conditions
+None
+
+Autonomous Movement
+Type: Fixed
+Speed: 3: Slow
+Freq: 3: Low
+Options Enabled
+Move Animation
+Trigger: Action Button
 
 List of Event Commands:
 @>Script: $player.seen_storage_creator = true
@@ -1412,7 +1535,7 @@ Speed: 3: Slow
 Freq: 3: Low
 Options Enabled
 Move Animation
-Trigger: Autorun
+Trigger: Action Button
 
 List of Event Commands:
 @>Script: $player.seen_storage_creator = true
@@ -1543,7 +1666,7 @@ Speed: 3: Slow
 Freq: 3: Low
 Options Enabled
 Move Animation
-Trigger: Autorun
+Trigger: Action Button
 
 List of Event Commands:
 @>Fade Out BGM: 2 sec.
@@ -1700,6 +1823,139 @@ Freq: 3: Low
 Options Enabled
 Move Animation
 Trigger: Autorun
+
+List of Event Commands:
+@>Script: $player.scenario_name = "The Kingdom of Lunacy"
+:       : 
+:       : set_menu_theme("dark")
+@>Conditional Branch: Switch [0107: New Game +] == OFF
+ @>Script: $player.seen_storage_creator = true
+ :       : $player.has_running_shoes = true
+ :       : $player.name = "Ayaka"
+ @>Script: pbChangePlayer(0)
+ @>Call Common Event: Starter Selection
+ @>
+: Else
+ @>Jump to Label: Start
+ @>
+: Branch End
+@>Fade Out BGM: 2 sec.
+@>Label: Start
+@>Script: $bag.add(:POTION,10)
+:       : $bag.add(:SUPERPOTION,5)
+:       : $bag.add(:HYPERPOTION,3)
+:       : $bag.add(:REVIVE,2)
+:       : $bag.add(:PUPPETORB,10)
+:       : $bag.add(:GREATORB,5)
+:       : $bag.add(:ULTRAORB,3)
+:       : $bag.add(:ITEMFINDER)
+:       : $bag.add(:GOODROD)
+:       : $bag.add(:BICYCLE)
+:       : $bag.add(:LUCKYEGG)
+:       : $bag.add(:EXPSHARE)
+@>Text: \w[dark]Skip the intro cinematic?
+@>Show Choices: Yes, No
+(When Cancel: Choice 2)
+: When [Yes]
+ @>Jump to Label: Title drop
+ @>
+: When [No]
+ @>
+: Branch End
+@>Wait: 10 frame(s)
+@>Comment: ------------------------------------------------------
+@>Call Common Event: TKoL Intro
+@>Comment: ------------------------------------------------------
+@>Label: Title drop
+@>Script: TKoLIntroScene1.new
+@>Wait: 20 frame(s)
+@>Change Text Options: Bottom, Show
+@>Change Transparent Flag: Normal
+@>Script: $game_variable[122] = rand(3)+1 # Stage 6 Partner
+:       : case pbGet(122)
+:       : when 1 then pbSet(126, "Reimu")
+:       : when 2 then pbSet(126, "Marisa")
+:       : when 3 then pbSet(126, "Sanae")
+:       : when 4 then pbSet(126, "Reisen")
+:       : end
+:       : 
+:       : echoln Partner Trainer is #{pbGet(126}
+@>Transfer Player:[116: Exhibition Arena], (011,013), Right
+@>Change Screen Color Tone: (0,0,0,0), @6
+@>Script: reset_menu_theme
+@>
+
+#------------------------------------------------------------------------------
+Event ID: 002
+Event Name: TMoM Intro
+(X,Y): (000,002)
+
+Page #1
+Conditions
+None
+
+Autonomous Movement
+Type: Fixed
+Speed: 3: Slow
+Freq: 3: Low
+Options Enabled
+Move Animation
+Trigger: Autorun
+
+List of Event Commands:
+@>Script: $player.scenario_name = "The Mansion of Mystery"
+:       : $stats.trainer_battles_lost_tmom = 0
+@>Conditional Branch: Switch [0107: New Game +] == OFF
+ @>Script: $player.seen_storage_creator = true
+ :       : $player.has_running_shoes = true
+ :       : $player.name = "Ayaka"
+ @>Script: pbChangePlayer(0)
+ @>Call Common Event: Starter Selection
+ @>
+: Else
+ @>Jump to Label: Start
+ @>
+: Branch End
+@>Fade Out BGM: 2 sec.
+@>Label: Start
+@>Text: Skip the intro cinematic?
+@>Show Choices: Yes, No
+(When Cancel: Choice 2)
+: When [Yes]
+ @>Jump to Label: Title drop
+ @>
+: When [No]
+ @>
+: Branch End
+@>Wait: 10 frame(s)
+@>Comment: ------------------------------------------------------
+@>Call Common Event: TMoM Intro
+@>Comment: ------------------------------------------------------
+@>Label: Title drop
+@>Script: TMoMIntroScene.new
+@>Wait: 20 frame(s)
+@>Change Text Options: Bottom, Show
+@>Change Transparent Flag: Normal
+@>Transfer Player:[007: \PN's Room], (004,007), Right
+@>Change Screen Color Tone: (0,0,0,0), @6
+@>
+
+#------------------------------------------------------------------------------
+Event ID: 003
+Event Name: TFoC Intro (Backup)
+(X,Y): (002,000)
+
+Page #1
+Conditions
+None
+
+Autonomous Movement
+Type: Fixed
+Speed: 3: Slow
+Freq: 3: Low
+Options Enabled
+Move Animation
+Trigger: Action Button
 
 List of Event Commands:
 @>Script: $player.seen_storage_creator = true
@@ -1875,7 +2131,7 @@ Speed: 3: Slow
 Freq: 3: Low
 Options Enabled
 Move Animation
-Trigger: Autorun
+Trigger: Action Button
 
 List of Event Commands:
 @>Script: $player.seen_storage_creator = true
@@ -2032,7 +2288,7 @@ Speed: 3: Slow
 Freq: 3: Low
 Options Enabled
 Move Animation
-Trigger: Autorun
+Trigger: Action Button
 
 List of Event Commands:
 @>Fade Out BGM: 2 sec.
@@ -18054,7 +18310,6 @@ List of Event Commands:
 @>Move Picture: 1, @20, Upper Left (0,0), (100%,100%), 255, Normal
 @>Wait: 60 frame(s)
 @>Change Text Options: Bottom, Show
-@>Label: Choose
 @>Text: The Mansion of Mystery.\wt[20]\nIs this the adventure you'd like to play?
 @>Show Choices: Yes, No
 (When Cancel: Choice 2)
@@ -18090,128 +18345,6 @@ Event Name: EV009
 (X,Y): (025,020)
 
 Page #1
-Conditions
-None
-
-Autonomous Movement
-Type: Fixed
-Speed: 3: Slow
-Freq: 3: Low
-Options Enabled
-Move Animation
-Trigger: Player Touch
-
-List of Event Commands:
-@>Show Picture: 1, 'TFoC', Upper Left (0,0), (100%,100%), 0, Normal
-@>Move Picture: 1, @20, Upper Left (0,0), (100%,100%), 255, Normal
-@>Wait: 60 frame(s)
-@>Change Text Options: Bottom, Show
-@>Text: The Festival of Curses.\wt[20]\nIs this the adventure you'd like to play?
-@>Show Choices: Yes, No
-(When Cancel: Choice 2)
-: When [Yes]
- @>Fade Out BGM: 1 sec.
- @>Control Variables: [0105: Game Selected] = 2
- @>Move Picture: 1, @20, Upper Left (0,0), (100%,100%), 0, Normal
- @>Wait: 20 frame(s)
- @>Transfer Player:[004: The Festival of Curses], (001,001)
- @>Conditional Branch: Switch [0139: TFoC Cleared] == ON
-  @>Control Variables: [0099: NG+ Loop] += 1
-  @>
- : Branch End
- @>Control Variables: [0113..0116] = 0
- @>Control Switches: [0118..0125] = OFF
- @>
-: When [No]
- @>Move Picture: 1, @20, Upper Left (0,0), (100%,100%), 0, Normal
- @>Wait: 20 frame(s)
- @>Jump to Label: Start
- @>
-: Branch End
-@>
-
-Page #2
-Conditions
-None
-
-Autonomous Movement
-Type: Fixed
-Speed: 3: Slow
-Freq: 3: Low
-Options Enabled
-Move Animation
-Trigger: Player Touch
-
-List of Event Commands:
-@>Show Picture: 1, 'TFoC', Upper Left (0,0), (100%,100%), 0, Normal
-@>Move Picture: 1, @20, Upper Left (0,0), (100%,100%), 255, Normal
-@>Wait: 60 frame(s)
-@>Change Text Options: Bottom, Show
-@>Text: The Festival of Curses.\wt[20]\nIs this the adventure you'd like to play?
-@>Show Choices: Yes, No
-(When Cancel: Choice 2)
-: When [Yes]
- @>Fade Out BGM: 1 sec.
- @>Control Variables: [0105: Game Selected] = 2
- @>Move Picture: 1, @20, Upper Left (0,0), (100%,100%), 0, Normal
- @>Wait: 20 frame(s)
- @>Transfer Player:[004: The Festival of Curses], (001,001)
- @>Control Variables: [0113..0116] = 0
- @>Control Switches: [0118..0125] = OFF
- @>
-: When [No]
- @>Move Picture: 1, @20, Upper Left (0,0), (100%,100%), 0, Normal
- @>Wait: 20 frame(s)
- @>Jump to Label: Start
- @>
-: Branch End
-@>
-
-Page #3
-Conditions
-None
-
-Autonomous Movement
-Type: Fixed
-Speed: 3: Slow
-Freq: 3: Low
-Options Enabled
-Move Animation
-Trigger: Player Touch
-
-List of Event Commands:
-@>Show Picture: 1, 'TFoC', Upper Left (0,0), (100%,100%), 0, Normal
-@>Move Picture: 1, @20, Upper Left (0,0), (100%,100%), 255, Normal
-@>Wait: 60 frame(s)
-@>Change Text Options: Bottom, Show
-@>Text: The Festival of Curses.\wt[20]\nIs this the adventure you'd like to play?
-@>Show Choices: Yes, No
-(When Cancel: Choice 2)
-: When [Yes]
- @>Fade Out BGM: 1 sec.
- @>Control Variables: [0105: Game Selected] = 2
- @>Move Picture: 1, @20, Upper Left (0,0), (100%,100%), 0, Normal
- @>Wait: 20 frame(s)
- @>Script: $player.scenario_name = "The Festival of Curses"
- @>Change Transparent Flag: Transparency
- @>Transfer Player:[004: The Festival of Curses], (001,001)
- @>Conditional Branch: Switch [0139: TFoC Cleared] == OFF
-  @>Control Variables: [0099: NG+ Loop] += 1
-  @>
- : Branch End
- @>Control Variables: [0113..0116] = 0
- @>Control Switches: [0118..0125] = OFF
- @>Script: $PokemonGlobal.clear_reset_maps
- @>Script: $PokemonGlobal.encounter_version = pbGet(99)
- @>
-: When [No]
- @>Move Picture: 1, @20, Upper Left (0,0), (100%,100%), 0, Normal
- @>Wait: 20 frame(s)
- @>
-: Branch End
-@>
-
-Page #4
 Conditions
 None
 
@@ -18399,13 +18532,13 @@ List of Event Commands:
 @>Move Picture: 2, @30, Upper Left (0,0), (100%,100%), 255, Normal
 @>Wait: 70 frame(s)
 @>Move Picture: 1, @1, Upper Left (0,0), (100%,100%), 0, Normal
-@>Text: Proceeding past this point will trigger the final segment of The 
+@>Text: \w[dark]Proceeding past this point will trigger the final segment of The 
  :    : Adventures of Ayaka.
-@>Text: You will not be able to return to the prior three episodes once 
+@>Text: \w[dark]You will not be able to return to the prior three episodes once 
  :    : this starts.
-@>Text: I highly recommend you make absolutely certain that you are 
+@>Text: \w[dark]It is highly recommend that you make absolutely certain that you are 
  :    : ready to progress.
-@>Text: Proceed into endgame?
+@>Text: \w[dark]Proceed into endgame?
 @>Show Choices: Yes, No
 (When Cancel: Choice 2)
 : When [Yes]
@@ -18433,49 +18566,6 @@ Event Name: EV013
 (X,Y): (019,011)
 
 Page #1
-Conditions
-None
-
-Autonomous Movement
-Type: Fixed
-Speed: 3: Slow
-Freq: 3: Low
-Options Enabled
-Move Animation
-Trigger: Player Touch
-
-List of Event Commands:
-@>Show Picture: 1, 'TKoL', Upper Left (0,0), (100%,100%), 0, Normal
-@>Move Picture: 1, @20, Upper Left (0,0), (100%,100%), 255, Normal
-@>Wait: 60 frame(s)
-@>Change Text Options: Bottom, Show
-@>Text: The Kingdom of Lunacy.\wt[20]\nIs this the adventure you'd like to play?
-@>Show Choices: Yes, No
-(When Cancel: Choice 2)
-: When [Yes]
- @>Control Variables: [0105: Game Selected] = 3
- @>Fade Out BGM: 1 sec.
- @>Move Picture: 1, @20, Upper Left (0,0), (100%,100%), 0, Normal
- @>Wait: 20 frame(s)
- @>Change Transparent Flag: Transparency
- @>Transfer Player:[005: The Kingdom of Lunacy], (001,001)
- @>Conditional Branch: Switch [0147: TKoL Cleared] == OFF
-  @>Control Variables: [0099: NG+ Loop] += 1
-  @>
- : Branch End
- @>Control Variables: [0121..0135] = 0
- @>Control Switches: [0141..0142] = OFF
- @>Control Switches: [0144: Clownpiece Checkpoint] = OFF
- @>
-: When [No]
- @>Move Picture: 1, @20, Upper Left (0,0), (100%,100%), 0, Normal
- @>Wait: 20 frame(s)
- @>Jump to Label: Start
- @>
-: Branch End
-@>
-
-Page #2
 Conditions
 None
 
@@ -110991,15 +111081,15 @@ List of Event Commands:
 @>Scroll Map: Up, 2, 4
 @>Text: \xn[\pn]Meimu, please! You need to stop!
 @>Text: \xn[Meimu]No! I won't stop!
-@>Fade Out BGM: 3 sec.
+@>Fade Out BGM: 2 sec.
 @>Wait: 20 frame(s)
 @>Text: \xn[Meimu]...But, you won't accept that as an answer, will you?
 @>Text: \xn[Meimu]No... I know you... I've seen into your dreams.\wt[10]
  :    : I know your resolve.\wt[10] I know what you'll do.
-@>Set Move Route: [Meimu 1]
- :              : $>Turn Down
 @>Text: \xn[Meimu]You, the Legend of Gensokyo... The Savior of the 
  :    : Moon...
+@>Set Move Route: [Meimu 1]
+ :              : $>Turn Down
 @>Text: \xn[Meimu]You think you get to just walk in here and tell me
  :    : that what I'm doing is wrong, and that you'll stop me...
 @>Text: \xn[Meimu]Well I won't allow it! Not when I've come so far!
@@ -111019,8 +111109,9 @@ List of Event Commands:
  :              : $>Turn Up
  :              : $>Wait: 15 frame(s)
 @>Wait: 10 frame(s)
-@>Text: \xn[\pn]\b(Where did all these Puppets come from!? Did...
- :    : Did she materialize them all out of thin air?)
+@>Text: \xn[\pn]\b(Where did all these Puppet Orbs come from...?)
+@>Text: \xn[\pn]\b(--No way! Did... Did she materialize them all out
+ :    : of thin air!?)
 @>Wait for Move's Completion
 @>Text: \xn[Meimu]I may not be able to fully manipulate reality yet... But
  :    : I can at least do this much!
@@ -119663,7 +119754,7 @@ List of Event Commands:
 #------------------------------------------------------------------------------
 Event ID: 002
 Event Name: Megashop
-(X,Y): (011,010)
+(X,Y): (004,013)
 
 Page #1
 Conditions
@@ -120224,60 +120315,59 @@ Trigger: None
 
 List of Event Commands:
 @>Label: Know more?
-@>Text: \l[3]Would you like a basic overview of the Touhou Project series, or 
+@>Text: \w[dark]\l[3]Would you like a basic overview of the Touhou Project series, or 
  :    : of Touhoumon Generation 1.8?
 @>Show Choices: Touhou Series, Touhoumon 1.8, No thanks
 (When Cancel: Choice 3)
 : When [Touhou Series]
- @>Text: Touhou Project is a doujin series produced by ZUN of Team
-  :    : Shanghai Alice. The official games are traditionally of the 
-  :    : 2D-style shoot-em-up genre, with the occasional break for
-  :    : fighting games.
- @>Text: There is also an amalgamate of print works and Music CDs 
+ @>Text: \w[dark]Touhou Project is a doujin series produced by ZUN of Team
+  :    : Shanghai Alice.
+ @>Text: \w[dark]\l[3]The official games are traditionally of the 2D-style 
+  :    : shoot-em-up genre, with the occasional break for fighting games.
+ @>Text: \w[dark]\l[3]There is also an amalgamate of print works and Music CDs 
   :    : that are officially released by Team Shanghai Alice.
- @>Text: The setting is Gensokyo, a haunted region of Japan, that houses 
+ @>Text: \w[dark]\l[3]The setting is Gensokyo, a haunted region of Japan, that houses 
   :    : Humans, Youkai, Gods, and other supernatural and mythical
   :    : entities.
- @>Text: The plot of these games is self contained, usually not
+ @>Text: \w[dark]\l[4]The plot of these games is self contained, usually not
   :    : connecting to future or past games aside from one-off
   :    : references, unless otherwise part of an arc.
- @>Text: As such, there is no definitive "order" to playing the games.
- @>Text: They usually revolve around the protagonists, Reimu Hakurei
+ @>Text: \w[dark]As such, there is no definitive "order" to playing the games.
+ @>Text: \w[dark]\l[4]They usually revolve around the protagonists, Reimu Hakurei
   :    : and Marisa Kirisame, traveling through 6 normal stages, 
   :    : attempting to resolve the current incident of the game.
- @>Text: Incidents such as the Scarlet Mist incident, the Divine Spirits 
+ @>Text: \w[dark]\l[4]Incidents such as the Scarlet Mist incident, the Divine Spirits 
   :    : incident, the Urban Legend incident, and the Second Genso-Lunar
   :    : War, just to name a few.
- @>Text: To learn more about the franchise, you can visit the wiki at
+ @>Text: \w[dark]\l[3]To learn more about the franchise, you can visit the wiki at
   :    : https://en.touhouwiki.net/wiki/Touhou_Wiki
  @>Jump to Label: Know more?
  @>
 : When [Touhoumon 1.8]
- @>Text: Touhoumon Generation 1.8 was a radical shift in the Touhoumon department.
-  :    : It was the introduction of several new concepts, and mechanics. The
-  :    : most notable addition was the Diamond/Pearl Skill Split System, or
-  :    : as it's called in English communities, the Physical/Special Split.
- @>Text: Alongside the Physical/Special Split came a completely overhauled 
-  :    : type chart, featuring several new types that weren't in Pokemon 
-  :    : (Such as Faith, Dream, Illusion, Heart), and replacing some of the 
-  :    : older types with the new ones (Like Dragon, Bug, Normal, and Fighting).
- @>Text: The 1.8 Generation also had a more streamlined evolution system. Unlike 
-  :    : the previous Touhoumon generations, where Touhoumon would evolve in 3 Stages 
-  :    : (Chibi-Normal-EX), with some special evolutions, (Final, Advent, Last Word, this 
-  :    : system had Touhoumon evolve from Chibi into several different forms.
- @>Text: A vast majority of Puppets have Shard Evolutions, which evolve them 
-  :    : into specialized forms, such as Attack Forms, Defense Forms, and Speed Forms.
- @>Text: There are other, more non-specific, stone roles, such as  Helper Forms, 
-  :    : Technical Forms, and Advent Forms. These roles cover a much different 
+ @>Text: \w[dark]\l[4]Touhoumon Generation 1.8 was a radical shift in the Touhoumon department.
+  :    : It was the introduction of several new concepts, and mechanics.
+ @>Text: \w[dark]\l[4]The most notable addition was the Diamond/Pearl Skill 
+  :    : Split System, or as it's called in English communities, the 
+  :    : Physical/Special Split.
+ @>Text: \w[dark]\l[5]Alongside the Physical/Special Split came a completely overhauled 
+  :    : type chart, featuring several new types that weren't in Pokemon and 
+  :    : replacing some of the older types with the new ones.
+ @>Text: \w[dark]The 1.8 Generation also had a more streamlined evolution system.
+ @>Text: \w[dark]\l[5]Unlike the previous Touhoumon generations, where 
+  :    : Touhoumon would evolve in 3 Stages (Chibi-Normal-EX), with some 
+  :    : special evolutions, this  system had Touhoumon evolve from Chibi 
+  :    : into several different forms.
+ @>Text: \w[dark]\l[4]A vast majority of Puppets have Shard Evolutions, which evolve them 
+  :    : into specialized forms, such as [A]ttack Forms, [D]efense Forms, and [S]peed Forms.
+ @>Text: \w[dark]\l[5]There are other, more non-specific, stone roles, such as [H]elper Forms, 
+  :    : [T]echnical Forms, and [A]dvent Forms. These roles cover a much different 
   :    : playstyle than the basic Attack, Defense, and Speed roles.
- @>Text: Provided with the game is a Type Chart in the traditional and 
+ @>Text: \w[dark]\l[5]Provided with the game is a Type Chart in the traditional and 
   :    : streamlined format, both present in the Useful Stuff folder, as
   :    : well as an explanation file for how to rationalize the type chart,
   :    : made by DoesntKnowHowToPlay.
- @>Text: If you would like to learn more about Touhoumon, be it the 1.5 or
-  :    : 1.8 Generations, the fangame scene, the sequel (Gensou Ningyou
-  :    : Enbu), or any other aspect, you can visit the English Forums at
-  :    : https://thpp.miraheze.org/wiki/Main_Page
+ @>Text: \w[dark]\l[3]If you would like to learn more about Touhoumon 1.8,
+  :    : you can visit the wiki: https://thpp.miraheze.org/wiki/Main_Page
  @>Jump to Label: Know more?
  @>
 : When [No thanks]
@@ -125250,6 +125340,306 @@ List of Event Commands:
 :       : pbAddToPartySilent(pkmn3)
 @>Comment: #####################################
 @>Control Self Switch: A =ON
+@>
+
+#==============================================================================
+Common Event ID: 110
+Common Event Name: TMoM Intro
+
+Trigger: None
+
+List of Event Commands:
+@>Comment: ------------------------------------------------------
+@>Play BGM: 'W-002. Memory of Forgathering Dream', 100, 100
+@>Script: pbShowPicture(1,"Intro Cutscene/TMoM/Gensokyo.png",1,256,192,100,100,0,0)
+@>Wait: 10 frame(s)
+@>Change Text Options: Bottom, Show
+@>Move Picture: 1, @10, Center (256,192), (100%,100%), 255, Normal
+@>Wait: 10 frame(s)
+@>Text: \w[dark]\c[12]\se[]\l[3]\wtnp[5]With the consequences of the Urban Legends incident long past, 
+ :    : so too comes an end to the 130th Season of the realm known as Gensokyo.\wtnp[60]
+@>Wait: 10 frame(s)
+@>Text: \w[dark]\c[12]\se[]\wtnp[5]The realm returns, once again, to the relative peace it is familiar with.\wtnp[60]
+@>Wait: 10 frame(s)
+@>Text: \w[dark]\c[12]\se[]\l[3]\wtnp[5]But even here in this wonderland known as Gensokyo, things do not always remain at ease.\wtnp[60]
+@>Wait: 10 frame(s)
+@>Move Picture: 1, @10, Center (256,192), (100%,100%), 0, Normal
+@>Wait: 10 frame(s)
+@>Erase Picture: 1
+@>Comment: ------------------------------------------------------
+@>Script: pbShowPicture(1,"Intro Cutscene/TMoM/Alice's House.png",1,256,192,100,100,0,0)
+@>Wait: 10 frame(s)
+@>Move Picture: 1, @10, Center (256,192), (100%,100%), 255, Normal
+@>Text: \w[dark]\c[12]\se[]\l[3]\wtnp[5]The local Youkai Magician who controls puppets, one day, managed to create a perfectly autonomus doll.\wtnp[60]
+@>Wait: 10 frame(s)
+@>Text: \w[dark]\c[12]\se[]\l[2]\wtnp[5]A doll that could move of its own accord, her life's dream and ambition finally fufilled.\wtnp[60]
+@>Wait: 10 frame(s)
+@>Move Picture: 1, @10, Center (256,192), (100%,100%), 0, Normal
+@>Wait: 10 frame(s)
+@>Erase Picture: 1
+@>Comment: ------------------------------------------------------
+@>Script: pbShowPicture(1,"Intro Cutscene/TMoM/Marisa's House.png",1,256,192,100,100,0,0)
+@>Wait: 10 frame(s)
+@>Move Picture: 1, @10, Center (256,192), (100%,100%), 255, Normal
+@>Text: \w[dark]\c[12]\se[]\l[4]\wtnp[6]When a certain Ordinary Magician learned of this, she managed to procure the 
+ :    : knowledge for it herself, and managed to create an autonomous doll in her likeness.\wtnp[60]
+@>Wait: 10 frame(s)
+@>Text: \w[dark]\c[12]\se[]\l[3]\wtnp[5]This allowed the magician to double her productivity in all areas, but things like these don't go unnoticed.\wtnp[60]
+@>Wait: 10 frame(s)
+@>Move Picture: 1, @10, Center (256,192), (100%,100%), 0, Normal
+@>Wait: 10 frame(s)
+@>Erase Picture: 1
+@>Comment: ------------------------------------------------------
+@>Script: pbShowPicture(1,"Intro Cutscene/TMoM/Human Village.png",1,256,192,100,100,0,0)
+@>Wait: 10 frame(s)
+@>Move Picture: 1, @10, Center (256,192), (100%,100%), 255, Normal
+@>Wait: 10 frame(s)
+@>Text: \w[dark]\c[12]\se[]\l[4]\wtnp[5]Thanks to a certain Tengu Reporter, word of the puppeteer's success went viral, 
+ :    : and people from the human village began flocking to her for puppets of their own.\wtnp[60]
+@>Wait: 10 frame(s)
+@>Text: \w[dark]\c[12]\se[]\l[5]\wtnp[6]These puppets were based off of the prominent Gensokyo inhabitants - the Shrine Maiden, 
+ :    : the Incident Solvers, those who started the incidents, and even the related and unrelated Third Parties.\wtnp[60]
+@>Wait: 10 frame(s)
+@>Move Picture: 1, @10, Center (256,192), (100%,100%), 0, Normal
+@>Wait: 10 frame(s)
+@>Erase Picture: 1
+@>Comment: ------------------------------------------------------
+@>Script: pbShowPicture(1,"Intro Cutscene/TMoM/Hakurei Shrine.png",1,256,192,100,100,0,0)
+@>Wait: 10 frame(s)
+@>Move Picture: 1, @10, Center (256,192), (100%,100%), 255, Normal
+@>Wait: 10 frame(s)
+@>Text: \w[dark]\c[12]\se[]\l[5]\wtnp[5]This caused the big names in Gensokyo to take notice, and even they too began to obtain 
+ :    : puppets for themselves, and engage in the rapidly growing style that were Puppet Battles.\wtnp[60]
+@>Wait: 10 frame(s)
+@>Text: \w[dark]\c[12]\se[]\l[4]\wtnp[5]Eventually, this became the new standard for resolving incidents within Gensokyo. 
+ :    : The Spell Card rule was changed to only be invoked in dire emergancies.\wtnp[60]
+@>Wait: 10 frame(s)
+@>Text: \w[dark]\c[12]\se[]\l[3]\wtnp[5]As such, the last incident to be resolved with Spell Cards properly in any sort of capacity was the Urban
+ :    : Legend Incident.\wtnp[60]
+@>Wait: 10 frame(s)
+@>Text: \w[dark]\c[12]\se[]\wtnp[2] After that, Puppets had total control of the scene.\wtnp[60]
+@>Wait: 10 frame(s)
+@>Text: \w[dark]\c[12]\se[]\l[5]\wtnp[5]Humans could now rely on themselves to solve incidents and not have to trouble the 
+ :    : Shrine Maiden, though this didn't stop the Shrine Maiden from occasionally stepping in to handle cases.\wtnp[60]
+@>Wait: 10 frame(s)
+@>Move Picture: 1, @10, Center (256,192), (100%,100%), 0, Normal
+@>Wait: 10 frame(s)
+@>Erase Picture: 1
+@>Comment: ------------------------------------------------------
+@>Script: pbShowPicture(1,"Intro Cutscene/TMoM/Bamboo Forest.png",1,256,192,100,100,0,0)
+@>Wait: 10 frame(s)
+@>Move Picture: 1, @10, Center (256,192), (100%,100%), 255, Normal
+@>Wait: 10 frame(s)
+@>Text: \w[dark]\c[12]\se[]\l[4]\wtnp[5]As the months drew onward, it became commonplace to see puppets wandering around 
+ :    : in the wild. They started to fill each and every corner of Gensokyo.\wtnp[60]
+@>Wait: 10 frame(s)
+@>Text: \w[dark]\c[12]\se[]\l[3]\wtnp[5]They blended in seemlessly with the native Human, Youkai, and everything else that existed within the mystical realm.\wtnp[60]
+@>Wait: 10 frame(s)
+@>Text: \w[dark]\c[12]\se[]\l[2]\wtnp[5]Life, as always, was good in the illusionary wonderland of Gensokyo.\wtnp[60]
+@>Wait: 10 frame(s)
+@>Move Picture: 1, @10, Center (256,192), (100%,100%), 0, Normal
+@>Wait: 10 frame(s)
+@>Erase Picture: 1
+@>Comment: ------------------------------------------------------
+@>Text: \w[dark]\c[12]\se[]\l[4]\wtnp[5]But like always, things do not remain perfect forever, and the fate of 
+ :    : Gensokyo now rests in the hands of those who command the Puppets.\wtnp[60]
+@>Script: pbShowPicture(1,"Intro Cutscene/TMoM/Human Village.png",1,256,192,100,100,0,0)
+@>Wait: 10 frame(s)
+@>Move Picture: 1, @10, Center (256,192), (100%,100%), 255, Normal
+@>Wait: 10 frame(s)
+@>Text: \w[dark]\c[12]\se[]\l[4]\wtnp[5]This tale is about a youth from the Human 
+ :    : Village, and their journey outside their familiar walls 
+ :    : to uncover the truth behind a mystery.\wtnp[60]
+@>Wait: 10 frame(s)
+@>Text: \w[dark]\c[12]\se[]\l[1]\wtnp[5]Thus beginning their legacy...\wtnp[60]
+@>Wait: 10 frame(s)
+@>Move Picture: 1, @10, Center (256,192), (100%,100%), 0, Normal
+@>Wait: 10 frame(s)
+@>Erase Picture: 1
+@>Comment: ------------------------------------------------------
+@>Label: Title drop
+@>
+
+#==============================================================================
+Common Event ID: 111
+Common Event Name: TFoC Intro
+
+Trigger: None
+
+List of Event Commands:
+@>Play BGM: 'W-017. Seeds of the Incident', 100, 100
+@>Script: pbShowPicture(1,"Intro Cutscene/TFoC/Gensokyo.png",1,256,192,zoomX=100,zoomY=100,opacity=0,blendType=0)
+@>Wait: 10 frame(s)
+@>Change Text Options: Bottom, Show
+@>Move Picture: 1, @10, Center (256,192), (100%,100%), 255, Normal
+@>Wait: 10 frame(s)
+@>Text: \w[dark]\c[12]\se[]\l[4]Gensokyo.\wtnp[30]\se[] A paradise for all things phantasmal and out of the ordinary.\wtnp[30]\se[] 
+ :    : A land where the supernatural can exist alongside the natural.\wtnp[60]
+@>Wait: 10 frame(s)
+@>Move Picture: 1, @10, Center (256,192), (100%,100%), 0, Normal
+@>Wait: 10 frame(s)
+@>Erase Picture: 1
+@>Comment: ------------------------------------------------------
+@>Script: pbShowPicture(1,"Intro Cutscene/TFoC/Shrine of the Wind.png",1,256,192,zoomX=100,zoomY=100,opacity=0,blendType=0)
+@>Wait: 10 frame(s)
+@>Move Picture: 1, @10, Center (256,192), (100%,100%), 255, Normal
+@>Wait: 10 frame(s)
+@>Text: \w[dark]\c[12]\se[]\l[4]Mere months ago, the incident involving Gensokyo and the Outside World came to a conclusion before anything serious could occur.\wtnp[60]
+@>Wait: 10 frame(s)
+@>Text: \w[dark]\c[12]\se[]\l[3]Thanks to that, the Puppet Era continued without issue, and continued to bring forth changes to the wonderful realm.\wtnp[60]
+@>Wait: 10 frame(s)
+@>Text: \w[dark]\c[12]\se[]\l[3]While things have changed with the existence of the Puppets, several things remain the same.\wtnp[60]
+@>Wait: 10 frame(s)
+@>Move Picture: 1, @10, Center (256,192), (100%,100%), 0, Normal
+@>Wait: 10 frame(s)
+@>Erase Picture: 1
+@>Comment: ------------------------------------------------------
+@>Script: pbShowPicture(1,"Intro Cutscene/TFoC/Festival Grounds.png",1,256,192,zoomX=100,zoomY=100,opacity=0,blendType=0)
+@>Wait: 10 frame(s)
+@>Move Picture: 1, @10, Center (256,192), (100%,100%), 255, Normal
+@>Wait: 10 frame(s)
+@>Text: \w[dark]\c[12]\se[]\l[4]Once more, the time has come for the Harvest Season, where inhabitants of the magical realm 
+ :    : gather in their communities to celebrate the bounty that the earth has given them.\wtnp[60]
+@>Wait: 10 frame(s)
+@>Text: \w[dark]\c[12]\se[]\l[4]As tradition is embraced, new ones form alongside the existence of the Puppets, to commemorate
+ :    : their existence into this realm that accepts all.\wtnp[60]
+@>Wait: 10 frame(s)
+@>Move Picture: 1, @10, Center (256,192), (100%,100%), 0, Normal
+@>Wait: 10 frame(s)
+@>Erase Picture: 1
+@>Text: \w[dark]\c[12]\se[]\l[3]But, as is usual with Gensokyo, something is always lurking in the shadows to disrupt even the most simple of peace.\wtnp[60]
+@>Comment: ------------------------------------------------------
+@>Wait: 10 frame(s)
+@>Script: pbShowPicture(1,"Intro Cutscene/TFoC/Forest.png",1,256,192,zoomX=100,zoomY=100,opacity=0,blendType=0)
+@>Wait: 10 frame(s)
+@>Move Picture: 1, @10, Center (256,192), (100%,100%), 255, Normal
+@>Wait: 10 frame(s)
+@>Text: \w[dark]\c[12]\se[]\l[3]Observing the gathering of humans is a scorned individual, tormented by the sight of humans using Puppets as they wish.\wtnp[60]
+@>Wait: 10 frame(s)
+@>Text: \w[dark]\c[12]\se[]\l[3]"They've had their way for too long... Soon, I will free them from their captivity, and show them who really wields power."\wtnp[60]
+@>Wait: 10 frame(s)
+@>Text: \w[dark]\c[12]\se[]\l[3]The individual says to themselves, as they plan to break the momentary peace once more.\wtnp[60]
+@>Wait: 10 frame(s)
+@>Move Picture: 1, @10, Center (256,192), (100%,100%), 0, Normal
+@>Wait: 10 frame(s)
+@>Erase Picture: 1
+@>Comment: ------------------------------------------------------
+@>Wait: 10 frame(s)
+@>Script: pbShowPicture(1,"Intro Cutscene/TFoC/Human Village.png",1,256,192,zoomX=100,zoomY=100,opacity=0,blendType=0)
+@>Wait: 10 frame(s)
+@>Move Picture: 1, @10, Center (256,192), (100%,100%), 255, Normal
+@>Wait: 10 frame(s)
+@>Text: \w[dark]\c[12]\se[]\l[2]And so, our story begins here, in the Human Village.\wtnp[60]
+@>Wait: 10 frame(s)
+@>Text: \w[dark]\c[12]\se[]\l[3]Once more, we follow the adventures of \pn, who solved the mystery behind the mansion of 
+ :    : mysterious music...\wtnp[60]
+@>Wait: 10 frame(s)
+@>Text: \w[dark]\c[12]\se[]\l[2]...On the dawn of one particularly eventful Harvest Festival...\wtnp[60]
+@>Wait: 10 frame(s)
+@>Move Picture: 1, @10, Center (256,192), (100%,100%), 0, Normal
+@>Wait: 10 frame(s)
+@>Erase Picture: 1
+@>Comment: ------------------------------------------------------
+@>
+
+#==============================================================================
+Common Event ID: 112
+Common Event Name: TKoL Intro
+
+Trigger: None
+
+List of Event Commands:
+@>Comment: ------------------------------------------------------
+@>Play BGM: 'W-017. Seeds of the Incident', 100, 100
+@>Script: pbShowPicture(1,"Intro Cutscene/TKoL/Gensokyo.png",1,256,192,100,100,0,0)
+@>Wait: 10 frame(s)
+@>Change Text Options: Bottom, Show
+@>Move Picture: 1, @10, Center (256,192), (100%,100%), 255, Normal
+@>Wait: 10 frame(s)
+@>Text: \w[dark]\c[12]\se[]\l[3]Gensokyo.\wtnp[30]\se[] A wonderous paradise for the phantasmal.\wtnp[30]\se[] 
+ :    : The first and last bastion for all things unbelievable.\wtnp[60]
+@>Wait: 10 frame(s)
+@>Text: \w[dark]\c[12]\se[]\l[4]Peaceful isn't the word to describe this realm.\wtnp[30]\se[] Lively.\wtnp[30]\se[] 
+ :    : Radiant.\wtnp[30]\se[] Chaotic.\wtnp[30]\se[] There is seldom a dull moment in this land.\wtnp[30]\se[]
+ :    : An impure, but beautiful place.\wtnp[60]
+@>Wait: 10 frame(s)
+@>Move Picture: 1, @10, Center (256,192), (100%,100%), 0, Normal
+@>Wait: 10 frame(s)
+@>Erase Picture: 1
+@>Comment: ------------------------------------------------------
+@>Script: pbShowPicture(1,"Intro Cutscene/TKoL/Festival Grounds.png",1,256,192,100,100,0,0)
+@>Wait: 10 frame(s)
+@>Move Picture: 1, @10, Center (256,192), (100%,100%), 255, Normal
+@>Wait: 10 frame(s)
+@>Text: \w[dark]\c[12]\se[]\l[4]It's been over a year now since the Incident where nefarious individuals invaded 
+ :    : from the outside world, and many months since the Village Harvest Festival Incident.\wtnp[60]
+@>Wait: 10 frame(s)
+@>Text: \w[dark]\c[12]\se[]\l[5]All the incidents revolving around the Puppets, autonomous dolls designed in the likeness of individuals.\wtnp[30]\se[] 
+ :    : They exist at the root of the prosperities and hardships that have graced Gensokyo. \wtnp[60]
+@>Wait: 10 frame(s)
+@>Move Picture: 1, @10, Center (256,192), (100%,100%), 0, Normal
+@>Wait: 10 frame(s)
+@>Erase Picture: 1
+@>Text: \w[dark]\c[12]\se[]\l[3]But strange things have been afoot in this land of already strange occurances.\wtnp[60]
+@>Comment: ------------------------------------------------------
+@>Script: pbShowPicture(1,"Intro Cutscene/TKoL/Forest.png",1,256,192,100,100,0,0)
+@>Wait: 10 frame(s)
+@>Move Picture: 1, @10, Center (256,192), (100%,100%), 255, Normal
+@>Wait: 10 frame(s)
+@>Text: \w[dark]\c[12]\se[]\l[3]Recently, the Puppets have begun vanishing from Gensokyo, with nobody able to determine where they've gone.\wtnp[60]
+@>Wait: 10 frame(s)
+@>Text: \w[dark]\c[12]\se[]\l[3]With the barrier fully repaired, they shouldn't be spilling through to the Outside World as often anymore.\wtnp[60]
+@>Wait: 10 frame(s)
+@>Move Picture: 1, @10, Center (256,192), (100%,100%), 0, Normal
+@>Wait: 10 frame(s)
+@>Erase Picture: 1
+@>Comment: ------------------------------------------------------
+@>Wait: 10 frame(s)
+@>Script: pbShowPicture(1,"Intro Cutscene/TKoL/Youkai Mountain.png",1,256,192,100,100,0,0)
+@>Wait: 10 frame(s)
+@>Move Picture: 1, @10, Center (256,192), (100%,100%), 255, Normal
+@>Wait: 10 frame(s)
+@>Text: \w[dark]\c[12]\se[]\l[4]Meanwhile, atop Youkai Mountain, strange mechanical constructs have been spotted roaming the lands.\wtnp[30]\se[] 
+ :    : Could they be related?\wtnp[30]\se[]  Nobody knows.\wtnp[60]
+@>Wait: 10 frame(s)
+@>Text: \w[dark]\c[12]\se[]\l[4]Nobody... except the inhabitants of Eientei, which have been keeping close watch on the Mountain for weeks.\wtnp[30]\se[]
+ :    : And the conclusion they have come to is most dire.\wtnp[60]
+@>Wait: 10 frame(s)
+@>Move Picture: 1, @10, Center (256,192), (100%,100%), 0, Normal
+@>Wait: 10 frame(s)
+@>Erase Picture: 1
+@>Comment: ------------------------------------------------------
+@>Wait: 10 frame(s)
+@>Script: pbShowPicture(1,"Intro Cutscene/TKoL/Lunar Capital.png",1,256,192,100,100,0,0)
+@>Wait: 10 frame(s)
+@>Move Picture: 1, @10, Center (256,192), (100%,100%), 255, Normal
+@>Wait: 10 frame(s)
+@>Text: \w[dark]\c[12]\se[]\l[4]High above the realm, an incident which should have unfolded years ago is now reaching a new boiling point.\wtnp[30]\se[]
+ :    : And once again, the Puppets are at the center of it all.\wtnp[60]
+@>Wait: 10 frame(s)
+@>Text: \w[dark]\c[12]\se[]\l[3]And as usual, the fate of Gensokyo, and this time even more, resides in the 
+ :    : hands of those who tame these creatures.\wtnp[60]
+@>Wait: 10 frame(s)
+@>Move Picture: 1, @10, Center (256,192), (100%,100%), 0, Normal
+@>Wait: 10 frame(s)
+@>Erase Picture: 1
+@>Comment: ------------------------------------------------------
+@>Wait: 10 frame(s)
+@>Script: pbShowPicture(1,"Intro Cutscene/TKoL/Human Village.png",1,256,192,100,100,0,0)
+@>Wait: 10 frame(s)
+@>Move Picture: 1, @10, Center (256,192), (100%,100%), 255, Normal
+@>Wait: 10 frame(s)
+@>Text: \w[dark]\c[12]\se[]\l[4]Namely, the Legend of the Human Village, \pn.\wtnp[30]\se[]
+ :    : She who has conquered the Mansion in the mists.\wtnp[30]\se[]
+ :    : She who tamed the doll dabbling in Curses.\wtnp[60]
+@>Wait: 10 frame(s)
+@>Text: \w[dark]\c[12]\se[]\l[2]And now she who will bring purity back to the currently impure Kingdom of Lunacy.\wtnp[60]
+@>Wait: 10 frame(s)
+@>Text: \w[dark]\c[12]\se[]\l[1]And so, another day dawns in Gensokyo...\wtnp[60]
+@>Wait: 10 frame(s)
+@>Move Picture: 1, @10, Center (256,192), (100%,100%), 0, Normal
+@>Wait: 10 frame(s)
+@>Erase Picture: 1
 @>
 
 #==============================================================================

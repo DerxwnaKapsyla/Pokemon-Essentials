@@ -1,11 +1,6 @@
 class Game_Temp
-  attr_accessor :enduredInKazami
   attr_accessor :inertItem
-
-  def enduredInKazami
-    @enduredInKazami = false if !@enduredInKazami
-    return @enduredInKazami
-  end
+  attr_accessor :old_menu_frame
   
   def inertItem
 	@inertItem = false if !@inertItem
@@ -70,4 +65,16 @@ def initialize_pwt_stats
   $stats.pwt_wins[:Extra_Mode]       = 0
   $stats.pwt_loss[:Extra_Mode]       = 0
   $stats.pwt_win_streak[:Extra_Mode] = 0
+end
+
+def set_menu_theme(value)
+  $game_temp.old_menu_frame = $PokemonSystem.frame
+  MessageConfig.pbSetSystemFrame("Graphics/Windowskins/" + value)
+end
+
+def reset_menu_theme
+  if $game_temp.old_menu_frame
+    $PokemonSystem.frame = $game_temp.old_menu_frame
+    MessageConfig.pbSetSystemFrame("Graphics/Windowskins/" + Settings::MENU_WINDOWSKINS[$PokemonSystem.frame])
+  end
 end

@@ -26,7 +26,7 @@ class StarterSelection
   }
 
   def pbChooseStarter
-    pbMessage(_INTL("Before we start, you'll need to answer a couple of questions."))
+    pbMessage(_INTL("\\w[dark]Before we start, you'll need to answer a couple of questions."))
     loop do
       @character_choice = choose_favorite_character
       break if confirm_starter_selection
@@ -44,15 +44,15 @@ class StarterSelection
 	  _INTL("Sekibanki"), _INTL("Kagerou Imaizumi"), _INTL("Kosuzu Motoori"),
 	  _INTL("Hata no Kokoro"), _INTL("Sumireko Usami"), _INTL("None of these")
 	]
-    pbMessage(_INTL("Firstly, if you had to pick, who is your favorite Touhou Project character from this list?"))
-    return pbMessage(_INTL("Choose a character:"), characters, characters.length)
+    pbMessage(_INTL("\\w[dark]Firstly, if you had to pick, who is your favorite Touhou Project character from this list?"))
+    return pbMessage(_INTL("\\w[dark]Choose a character:"), characters, characters.length)
   end
   
   def confirm_starter_selection
     if @character_choice == 20
-	  pbMessage(_INTL("Understandable. This is a very limiting list, or you might not know any of these characters."))
-	  pbMessage(_INTL("That being said, with this option you leave your destiny up to chance."))
-	  if pbConfirmMessage(_INTL("Is that acceptable?"))
+	  pbMessage(_INTL("\\w[dark]Understandable. This is a very limiting list, or you might not know any of these characters."))
+	  pbMessage(_INTL("\\w[dark]That being said, with this option you leave your destiny up to chance."))
+	  if pbConfirmMessage(_INTL("\\w[dark]Is that acceptable?"))
 	    id = CHARACTER_TO_STARTER.values.sample
 		@starter_choice = Pokemon.new(id, 20)
 		echoln "Selected Starter: #{id}"
@@ -72,16 +72,16 @@ class StarterSelection
 	  "Hata no Kokoro", "Sumireko Usami"
 	]
 	name = _INTL(characters[@character_choice])
-	if pbConfirmMessage(_INTL("Is {1} your favorite?", name))
+	if pbConfirmMessage(_INTL("\\w[dark]Is {1} your favorite?", name))
 	  id = CHARACTER_TO_STARTER[@character_choice]
 	  @starter_choice = Pokemon.new(id, 20)
 	  case @character_choice
 	  when 9 # Hieda no Akyuu
-	    pbMessage(_INTL("Good luck."))
+	    pbMessage(_INTL("\\w[dark]Good luck."))
 	  when 12 # Koishi Komeiji
-	    pbMessage(_INTL("Berigoo!"))
+	    pbMessage(_INTL("\\w[dark]Berigoo!"))
 	  when 19 # Sumireko Usami
-	    pbMessage(_INTL("Welcome to the club!"))
+	    pbMessage(_INTL("\\w[dark]Welcome to the club!"))
 	  end
 	  echoln "Selected Starter: #{id}"
 	  return true
