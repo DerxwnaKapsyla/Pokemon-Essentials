@@ -309,6 +309,209 @@ MidbattleHandlers.add(:midbattle_scripts, :vs_meimu_final,
 	end
    }
   )
+  
+#---------------------------------------------------------
+# Vs. Meimu (Final) - Boss Rush Variant
+# This version strips out 90% of the dialogue as it is
+# contextually irrelevent here.
+#---------------------------------------------------------
+MidbattleHandlers.add(:midbattle_scripts, :vs_meimu_bossrush,
+  proc { |battle, idxBattler, idxTarget, trigger|
+    scene       = battle.scene
+	player      = battle.battlers[0]
+	meimu       = battle.battlers[1]
+	partner     = battle.battlers[3]
+	rand_puppet = [:MEEKO, :MAKURA, :MITORI, :TORAKO, :SASHA, :SUGAR, :KAREN, :MASHA]
+	def_stats   = [:DEFENSE, :SPECIAL_DEFENSE]
+	@inverse_turn_count = 0 if @inverse_turn_count.nil?
+    @bbfar_turn_count   = 0 if @bbfar_turn_count.nil?
+    @doe_turn_count     = 0 if @doe_turn_count.nil?
+	@meimu_sleep        = false if @meimu_sleep.nil?
+	case trigger
+	#---------------------------------------------------------------
+	# HP Thresholds
+	#---------------------------------------------------------------
+	when "RoundStartCommand_1_foe"
+	  meimu.damageThreshold = 80 # Meimu's HP Bar should not go down below 80% her Max HP
+	  echoln "* Meimu's Damage Threshold: #{meimu.damageThreshold}"
+	when "BattlerReachedHPCap"
+	#---------------------------------------------------------------
+	# Threshold 1: Spell Card: 
+	# Phantasmagoria - Fantasy Summoning
+	#---------------------------------------------------------------
+	  if battle.midbattleVariable == 0
+	    next if battle.midbattleVariable != 0
+		scene.pbStartSpeech(1)
+		pbSEPlay("Spell Card Activation.ogg")
+		battle.pbDisplayPaused(_INTL("Spell Card Activate!"))
+		battle.pbDisplayPaused(_INTL("Phantasmagoria \"Fantasy Summoning!\""))
+		scene.pbForceEndSpeech
+		card_fantasy_summoning(battle.scene, battle) # Handled in separate method
+		battle.midbattleVariable += 1 # Increments variable to 1.
+		meimu.damageThreshold = 60 # Meimu's HP Bar should not go down below 60% her Max HP
+		echoln "* Mid Battle Variable: #{battle.midbattleVariable}"
+		echoln "* Meimu's Damage Threshold: #{meimu.damageThreshold}"
+	#---------------------------------------------------------------
+	# Threshold 2: Spell Card: 
+	# Manipulation - Inversion of Perception
+	#---------------------------------------------------------------
+	  elsif battle.midbattleVariable == 1
+	    next if battle.midbattleVariable != 1
+		scene.pbStartSpeech(1)
+		pbSEPlay("Spell Card Activation.ogg")
+		battle.pbDisplayPaused(_INTL("Spell Card Activate!"))
+		battle.pbDisplayPaused(_INTL("Manipulation \"Inversion of Perception\"!"))
+		scene.pbForceEndSpeech
+		card_inversion_perception(battle.scene, battle) # Handled in separate method
+		battle.midbattleVariable += 1 # Increments variable to 2.
+		meimu.damageThreshold = 40 # Meimu's HP Bar should not go down below 40% her Max HP
+		echoln "* Mid Battle Variable: #{battle.midbattleVariable}"
+		echoln "* Meimu's Damage Threshold: #{meimu.damageThreshold}"
+	#---------------------------------------------------------------
+	# Threshold 3: Spell Card: 
+	# Deep Sleep - Nightmare of the Non-Existant
+	#---------------------------------------------------------------
+	  elsif battle.midbattleVariable == 2
+	    next if battle.midbattleVariable != 2
+		scene.pbStartSpeech(1)
+		pbSEPlay("Spell Card Activation.ogg")
+		battle.pbDisplayPaused(_INTL("Spell Card Activate!"))
+		battle.pbDisplayPaused(_INTL("Deep Sleep \"Nightmare of the Non-Existant\"!"))
+		scene.pbForceEndSpeech
+		card_deep_sleep(battle.scene, battle) # Handled in separate method
+		battle.midbattleVariable += 1 # Increments variable to 3.
+		meimu.damageThreshold = 20 # Meimu's HP Bar should not go down below 20% her Max HP
+		echoln "* Mid Battle Variable: #{battle.midbattleVariable}"
+		echoln "* Meimu's Damage Threshold: #{meimu.damageThreshold}"
+	#---------------------------------------------------------------
+	# Threshold 4: Spell Card: 
+	# Tale of a Cruel, Unforgiving Reality
+	#---------------------------------------------------------------
+	  elsif battle.midbattleVariable == 3
+	    next if battle.midbattleVariable != 3
+		scene.pbStartSpeech(1)
+		pbSEPlay("Spell Card Activation.ogg")
+		battle.pbDisplayPaused(_INTL("Spell Card Activate!"))
+		battle.pbDisplayPaused(_INTL("Tale of a Cruel, Unforgiving Reality!"))
+		scene.pbForceEndSpeech
+		card_toacur(battle.scene, battle) # Handled in separate method
+		battle.midbattleVariable += 1 # Increments variable to 4.
+		meimu.damageThreshold = 10 # Meimu's HP Bar should not go down below 10% her Max HP
+		echoln "* Mid Battle Variable: #{battle.midbattleVariable}"
+		echoln "* Meimu's Damage Threshold: #{meimu.damageThreshold}"
+	#---------------------------------------------------------------
+	# Threshold 5: Spell Card: 
+	# Phantasm - Boundary Between Fantasy and Reality
+	#---------------------------------------------------------------
+	  elsif battle.midbattleVariable == 4
+	    next if battle.midbattleVariable != 4
+		scene.pbStartSpeech(1)
+		pbSEPlay("Spell Card Activation.ogg")
+		battle.pbDisplayPaused(_INTL("Spell Card Activate!"))
+		battle.pbDisplayPaused(_INTL("Phantasm \"Boundary Between Fantasy and Reality\"!"))
+		scene.pbForceEndSpeech
+		card_bbfar(battle.scene, battle) # Handled in separate method
+		battle.pbDisplayPaused(_INTL("Meimu became completely untouchable!"))
+		scene.pbForceEndSpeech
+		battle.midbattleVariable += 1 # Increments variable to 5.
+		meimu.damageThreshold = 10 # Safety-check, but ultimately irrelevent. Meimu physically cannot take damage in this state.
+		echoln "* Mid Battle Variable: #{battle.midbattleVariable}"
+		echoln "* Meimu's Damage Threshold: #{meimu.damageThreshold}"
+	  end
+	#---------------------------------------------------------
+	# Round End Effects
+	#---------------------------------------------------------
+	when "RoundEnd_foe1"
+	  if $game_switches[158] # Inverse Battle Active Check
+	  echoln "Checking Inverse Battle status"
+	    if @inverse_turn_count != 4
+		  @inverse_turn_count += 1
+		  echoln "Inverse Battle Turn Count: #{@inverse_turn_count}/4"
+		else
+		  echoln "Inverse Battle Turn Count: #{@inverse_turn_count}/4"
+		  battle.pbDisplayPaused(_INTL("Type effectiveness inversion has stopped."))
+		  $game_temp.battle_inverse = false
+		  @inverse_turn_count = 0
+		  $game_switches[158] = false
+		end
+	  end
+	  
+	  if $game_switches[159] # Boundary Between Fantasy and Reality Check
+	  echoln "Checking BBFAR status"
+	    if @bbfar_turn_count < 4
+		  @bbfar_turn_count += 1
+		  meimu.damageThreshold = 10
+		  echoln "Boundary Between Fantasy and Reality Turn Count: #{@bbfar_turn_count}/5"
+		else
+		  echoln "Boundary Between Fantasy and Reality Turn Count: #{@bbfar_turn_count}/5"
+		  battle.pbCommonAnimation("MeimuTF", meimu)
+		  meimu.pbChangeForm(1, nil)
+		  battle.pbDisplayPaused(_INTL("Meimu reappears!"))
+		  meimu.pbChangeTypes(:PHANTASM)
+		  meimu.ability = :PHANTASMDREAM_ALT2
+		  meimu.pbResetStatStages
+		  showAnim = true
+	      def_stats.each do |stat|
+	        next if !meimu.pbCanRaiseStatStage?(stat, meimu)
+		    meimu.pbRaiseStatStage(stat, 2, meimu, showAnim)
+		    showAnim = false
+	      end
+		  scene.pbStartSpeech(1)
+		  pbSEPlay("Spell Card Activation.ogg")
+		  battle.pbDisplayPaused(_INTL("Final Spell Card Activate!"))
+		  battle.pbDisplayPaused(_INTL("Declaration of Existence!"))
+		  scene.pbForceEndSpeech
+		  #battle.pbDisplayPaused(_INTL("Meimu begins charging energy for her ultimate attack!"))
+		  #Find a decent animation to play here
+		  $game_switches[160] = true # Enables charging of Declaration of Existence
+		  $game_switches[159] = false # No longer need bbfar being checked
+		  battle.midbattleVariable += 1 # Increments variable to 6.
+		  meimu.damageThreshold = 0 # Meimu should not drop below 1 HP.
+		  echoln "* Mid Battle Variable: #{battle.midbattleVariable}"
+		  echoln "* Meimu's Damage Threshold: #{meimu.damageThreshold}"
+		  @doe_turn_count = 0
+		end
+	  end
+	  
+	  if $game_switches[160] # Declaration of Existence Check
+	  echoln "Checking Declaration of Existence status"
+	    case @doe_turn_count
+		when 0
+		  battle.pbDisplayPaused(_INTL("Meimu begins charging energy for her ultimate attack!"))
+		  #Find a decent animation to play here
+		  @doe_turn_count += 1
+		when 1
+		  battle.pbDisplayPaused(_INTL("Meimu prepares to unleash her ultimate attack!"))
+		  #Find a decent animation to play here
+		  @doe_turn_count += 1
+		when 2
+		  battle.pbDisplayPaused(_INTL("Meimu will unleash her ultimate attack next turn!"))
+		  #Find a decent animation to play here
+		  @doe_turn_count += 1
+		when 3
+		  card_doe(scene, battle)
+		end
+	  end
+	# when "BattlerFainted_foe"
+	  # echoln "Battler Fainted"
+	  # battle.databoxStyle = :Long
+	#---------------------------------------------------------
+	# Special Scenes
+	#---------------------------------------------------------
+	# Condition: Meimu is put to sleep
+	#---------------------------------------------------------
+	when "BattlerStatusChange_foe"
+	  if meimu.status == :SLEEP
+	    if @meimu_sleep == false
+		scene.pbStartSpeech(1)
+		battle.pbDisplayPaused(_INTL("Did you forget? I was born from all of the dreams of every Gensokyo across time and space!"))
+		battle.pbDisplayPaused(_INTL("Being put to sleep is nothing to me!"))
+		@meimu_sleep = true
+		end
+	  end
+	end
+   }
+  )
 
 #---------------------------------------------------------
 # Phantasmagoria - Fantasy Summoning

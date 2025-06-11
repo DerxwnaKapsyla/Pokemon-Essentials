@@ -22,3 +22,12 @@ MenuHandlers.add(:pause_menu, :jukebox, {
     next false
   }
 })
+
+MenuHandlers.add(:pause_menu, :pc, {
+  "name"      => _INTL("Portable Storage"),
+  "order"     => 42,
+  "effect"    => proc { |menu|
+    pbPokeCenterPC
+    next false
+  }
+})

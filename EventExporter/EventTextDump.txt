@@ -93914,6 +93914,277 @@ List of Event Commands:
 @>
 
 #------------------------------------------------------------------------------
+Event ID: 023
+Event Name: Item
+(X,Y): (004,063)
+
+Page #1
+Conditions
+None
+
+Graphic: Object ball
+
+Autonomous Movement
+Type: Fixed
+Speed: 3: Slow
+Freq: 3: Low
+Options Enabled
+Move Animation
+Trigger: Action Button
+
+List of Event Commands:
+@>Conditional Branch: Script: pbItemBall(:MAXREVIVE)
+ @>Control Self Switch: A =ON
+ @>
+: Else
+ @>
+: Branch End
+@>
+
+Page #2
+Conditions
+Self Switch A is ON
+
+Autonomous Movement
+Type: Fixed
+Speed: 3: Slow
+Freq: 3: Low
+Options Enabled
+Move Animation
+Trigger: Action Button
+
+List of Event Commands:
+@>
+
+#------------------------------------------------------------------------------
+Event ID: 024
+Event Name: Item
+(X,Y): (010,055)
+
+Page #1
+Conditions
+None
+
+Graphic: Object ball
+
+Autonomous Movement
+Type: Fixed
+Speed: 3: Slow
+Freq: 3: Low
+Options Enabled
+Move Animation
+Trigger: Action Button
+
+List of Event Commands:
+@>Conditional Branch: Script: pbItemBall(:FULLRESTORE)
+ @>Control Self Switch: A =ON
+ @>
+: Else
+ @>
+: Branch End
+@>
+
+Page #2
+Conditions
+Self Switch A is ON
+
+Autonomous Movement
+Type: Fixed
+Speed: 3: Slow
+Freq: 3: Low
+Options Enabled
+Move Animation
+Trigger: Action Button
+
+List of Event Commands:
+@>
+
+#------------------------------------------------------------------------------
+Event ID: 025
+Event Name: Item
+(X,Y): (054,026)
+
+Page #1
+Conditions
+None
+
+Graphic: Object ball
+
+Autonomous Movement
+Type: Fixed
+Speed: 3: Slow
+Freq: 3: Low
+Options Enabled
+Move Animation
+Trigger: Action Button
+
+List of Event Commands:
+@>Conditional Branch: Script: pbItemBall(:MAXELIXIR)
+ @>Control Self Switch: A =ON
+ @>
+: Else
+ @>
+: Branch End
+@>
+
+Page #2
+Conditions
+Self Switch A is ON
+
+Autonomous Movement
+Type: Fixed
+Speed: 3: Slow
+Freq: 3: Low
+Options Enabled
+Move Animation
+Trigger: Action Button
+
+List of Event Commands:
+@>
+
+#------------------------------------------------------------------------------
+Event ID: 026
+Event Name: HiddenItem
+(X,Y): (037,012)
+
+Page #1
+Conditions
+None
+
+Autonomous Movement
+Type: Fixed
+Speed: 3: Slow
+Freq: 3: Low
+Options Enabled
+Move Animation
+Trigger: Action Button
+
+List of Event Commands:
+@>Conditional Branch: Script: pbItemBall(:FULLRESTORE)
+ @>Control Self Switch: A =ON
+ @>
+: Else
+ @>
+: Branch End
+@>
+
+Page #2
+Conditions
+Self Switch A is ON
+
+Autonomous Movement
+Type: Fixed
+Speed: 3: Slow
+Freq: 3: Low
+Options Enabled
+Move Animation
+Trigger: Action Button
+
+List of Event Commands:
+@>
+
+#------------------------------------------------------------------------------
+Event ID: 027
+Event Name: HiddenItem
+(X,Y): (013,028)
+
+Page #1
+Conditions
+None
+
+Autonomous Movement
+Type: Fixed
+Speed: 3: Slow
+Freq: 3: Low
+Options Enabled
+Move Animation
+Trigger: Action Button
+
+List of Event Commands:
+@>Conditional Branch: Script: pbItemBall(:HYPERPOTION)
+ @>Control Self Switch: A =ON
+ @>
+: Else
+ @>
+: Branch End
+@>
+
+Page #2
+Conditions
+Self Switch A is ON
+
+Autonomous Movement
+Type: Fixed
+Speed: 3: Slow
+Freq: 3: Low
+Options Enabled
+Move Animation
+Trigger: Action Button
+
+List of Event Commands:
+@>
+
+#------------------------------------------------------------------------------
+Event ID: 028
+Event Name: HiddenItem:LUMBERRY,5
+(X,Y): (025,060)
+
+Page #1
+Conditions
+None
+
+Autonomous Movement
+Type: Fixed
+Speed: 3: Slow
+Freq: 3: Low
+Options Enabled
+Move Animation
+Trigger: Action Button
+
+List of Event Commands:
+@>
+
+#------------------------------------------------------------------------------
+Event ID: 029
+Event Name: HiddenItem:STARFBERRY,5
+(X,Y): (075,066)
+
+Page #1
+Conditions
+None
+
+Autonomous Movement
+Type: Fixed
+Speed: 3: Slow
+Freq: 3: Low
+Options Enabled
+Move Animation
+Trigger: Action Button
+
+List of Event Commands:
+@>
+
+#------------------------------------------------------------------------------
+Event ID: 030
+Event Name: HiddenItem:SITRUSBERRY,5
+(X,Y): (056,027)
+
+Page #1
+Conditions
+None
+
+Autonomous Movement
+Type: Fixed
+Speed: 3: Slow
+Freq: 3: Low
+Options Enabled
+Move Animation
+Trigger: Action Button
+
+List of Event Commands:
+@>
+
+#------------------------------------------------------------------------------
 
 #==============================================================================
 Map ID: 109
@@ -95487,6 +95758,11 @@ Trigger: Action Button
 List of Event Commands:
 @>Conditional Branch: Script: pbItemBall(:PC01)
  @>Control Switches: [0165: Hidden Power Awakened] = ON
+ @>Change Screen Color Tone: (-255,-255,-255,0), @8
+ @>Play SE: 'PRSFX- Teleport', 80, 100
+ @>Wait: 8 frame(s)
+ @>Transfer Player:[112: Reimaden - Edge of Dreams], (023,017)
+ @>Change Screen Color Tone: (0,0,0,0), @8
  @>
 : Else
  @>
@@ -95740,6 +96016,33 @@ List of Event Commands:
 @>Change Screen Color Tone: (-255,-255,-255,0), @6
 @>Wait: 8 frame(s)
 @>Transfer Player:[149: Testing Map], (010,001), No Fade
+@>Change Screen Color Tone: (0,0,0,0), @6
+@>
+
+#------------------------------------------------------------------------------
+Event ID: 012
+Event Name: EV012
+(X,Y): (023,009)
+
+Page #1
+Conditions
+None
+
+Graphic: Object ball
+
+Autonomous Movement
+Type: Fixed
+Speed: 3: Slow
+Freq: 3: Low
+Options Enabled
+Move Animation
+Trigger: Action Button
+
+List of Event Commands:
+@>Play SE: 'Exit Door', 80, 100
+@>Change Screen Color Tone: (-255,-255,-255,0), @6
+@>Wait: 8 frame(s)
+@>Transfer Player:[149: Testing Map], (021,009), No Fade
 @>Change Screen Color Tone: (0,0,0,0), @6
 @>
 
@@ -118919,6 +119222,50 @@ List of Event Commands:
 @>
 
 #------------------------------------------------------------------------------
+Event ID: 051
+Event Name: EV051
+(X,Y): (021,008)
+
+Page #1
+Conditions
+None
+
+Graphic: Object ball
+
+Autonomous Movement
+Type: Fixed
+Speed: 3: Slow
+Freq: 3: Low
+Options Enabled
+Move Animation
+Trigger: Action Button
+
+List of Event Commands:
+@>Text: Initiating boss rush.
+@>Text: Setting 145 to 0.
+@>Text: Setting "Settings::HEAL_STORED_POKEMON" to false.
+ :    : Setting 145 to 0.
+@>Script: pbSet(145,0)
+:       : Settings::HEAL_STORED_POKEMON = false
+:       : echoln pbGet(145)
+:       : echoln Settings::HEAL_STORED_POKEMON
+@>Loop
+ @>Script: dkBossRush
+ @>Conditional Branch: Variable [0145: Boss Rush Variable] == 34
+  @>Break Loop
+  @>
+ : Branch End
+ @>
+: Repeat Above
+@>Conditional Branch: Variable [0145: Boss Rush Variable] == 34
+ @>Text: You won!
+ @>
+: Branch End
+@>Script: Settings::HEAL_STORED_POKEMON = false
+:       : echoln Settings::HEAL_STORED_POKEMON
+@>
+
+#------------------------------------------------------------------------------
 
 #==============================================================================
 Map ID: 150
@@ -119646,7 +119993,7 @@ Auto-Change BGM: W-043. Rural Makai City Esoteria
 
 #------------------------------------------------------------------------------
 Event ID: 001
-Event Name: EV001
+Event Name: Ulti. Trial Receptionist
 (X,Y): (012,014)
 
 Page #1
@@ -119669,7 +120016,7 @@ List of Event Commands:
 
 Page #2
 Conditions
-Switch 0152: TLA Cleared is ON
+None
 
 Graphic: TPDP_NPC 35
 
@@ -119694,7 +120041,6 @@ List of Event Commands:
 
 Page #3
 Conditions
-Switch 0152: TLA Cleared is ON
 Self Switch A is ON
 
 Graphic: TPDP_NPC 35
@@ -119714,6 +120060,15 @@ List of Event Commands:
 @>Show Choices: Yes, No, Explain
 (When Cancel: Choice 2)
 : When [Yes]
+ @>Conditional Branch: Self Switch B == OFF
+  @>Show Animation: This event, [Exclaim bubble]
+  @>Text: R-Really? You're actually going to do it?
+  @>Text: Well, I won't stop you! You seem to know what you're doing...
+  @>
+ : Branch End
+ @>Recover All: Entire Party
+ @>Text: Good luck then, Challenger!
+ @>Control Switches: [0168: Ulti.Trial Active] = ON
  @>
 : When [No]
  @>Text: Understandable, nobody has ever cleared this in all the time
@@ -119744,7 +120099,7 @@ List of Event Commands:
   :    : optional. There is no story content locked behind this.
  @>Text: \w[dark]If you do clear it, you will unlock another transferable 
   :    : reward for Touhoumon Asteria.
- @>Show Animation: [EV001], [Question bubble]
+ @>Show Animation: [Ulti. Trial Receptionist], [Question bubble]
  @>Text: Hey! Who said all that?
  @>Jump to Label: Challenge?
  @>
@@ -119771,6 +120126,790 @@ Move Animation
 Trigger: Action Button
 
 List of Event Commands:
+@>
+
+#------------------------------------------------------------------------------
+Event ID: 004
+Event Name: Trainer 1
+(X,Y): (012,029)
+
+Page #1
+Conditions
+Switch 0168: Ulti.Trial Active is ON
+Variable 0145: Boss Rush Variable is 0 or above
+
+Graphic: Person_Keine
+
+Autonomous Movement
+Type: Fixed
+Speed: 3: Slow
+Freq: 3: Low
+Options Enabled
+Move Animation
+Trigger: Action Button
+
+List of Event Commands:
+@>
+
+Page #2
+Conditions
+Switch 0168: Ulti.Trial Active is ON
+Variable 0145: Boss Rush Variable is 1 or above
+
+Graphic: Person_Marisa
+
+Autonomous Movement
+Type: Fixed
+Speed: 3: Slow
+Freq: 3: Low
+Options Enabled
+Move Animation
+Trigger: Action Button
+
+List of Event Commands:
+@>
+
+Page #3
+Conditions
+Switch 0168: Ulti.Trial Active is ON
+Variable 0145: Boss Rush Variable is 2 or above
+
+Graphic: Person_Youmu
+
+Autonomous Movement
+Type: Fixed
+Speed: 3: Slow
+Freq: 3: Low
+Options Enabled
+Move Animation
+Trigger: Action Button
+
+List of Event Commands:
+@>
+
+Page #4
+Conditions
+Switch 0168: Ulti.Trial Active is ON
+Variable 0145: Boss Rush Variable is 3 or above
+
+Graphic: Person_Lyrica
+
+Autonomous Movement
+Type: Fixed
+Speed: 3: Slow
+Freq: 3: Low
+Options Enabled
+Move Animation
+Trigger: Action Button
+
+List of Event Commands:
+@>
+
+Page #5
+Conditions
+Switch 0168: Ulti.Trial Active is ON
+Variable 0145: Boss Rush Variable is 4 or above
+
+Graphic: Person_Mystia
+
+Autonomous Movement
+Type: Fixed
+Speed: 3: Slow
+Freq: 3: Low
+Options Enabled
+Move Animation
+Trigger: Action Button
+
+List of Event Commands:
+@>
+
+Page #6
+Conditions
+Switch 0168: Ulti.Trial Active is ON
+Variable 0145: Boss Rush Variable is 5 or above
+
+Graphic: Person_Lunasa
+
+Autonomous Movement
+Type: Fixed
+Speed: 3: Slow
+Freq: 3: Low
+Options Enabled
+Move Animation
+Trigger: Action Button
+
+List of Event Commands:
+@>
+
+Page #7
+Conditions
+Switch 0168: Ulti.Trial Active is ON
+Variable 0145: Boss Rush Variable is 6 or above
+
+Graphic: Person_Nue
+
+Autonomous Movement
+Type: Fixed
+Speed: 3: Slow
+Freq: 3: Low
+Options Enabled
+Move Animation
+Trigger: Action Button
+
+List of Event Commands:
+@>
+
+Page #8
+Conditions
+Switch 0168: Ulti.Trial Active is ON
+Variable 0145: Boss Rush Variable is 7 or above
+
+Graphic: Person_Kogasa
+
+Autonomous Movement
+Type: Fixed
+Speed: 3: Slow
+Freq: 3: Low
+Options Enabled
+Move Animation
+Trigger: Action Button
+
+List of Event Commands:
+@>
+
+Page #9
+Conditions
+Switch 0168: Ulti.Trial Active is ON
+Variable 0145: Boss Rush Variable is 8 or above
+
+Graphic: Person_Layla
+
+Autonomous Movement
+Type: Fixed
+Speed: 3: Slow
+Freq: 3: Low
+Options Enabled
+Move Animation
+Trigger: Action Button
+
+List of Event Commands:
+@>
+
+Page #10
+Conditions
+Switch 0168: Ulti.Trial Active is ON
+Variable 0145: Boss Rush Variable is 9 or above
+
+Graphic: Person_Kokoro
+
+Autonomous Movement
+Type: Fixed
+Speed: 3: Slow
+Freq: 3: Low
+Options Enabled
+Move Animation
+Trigger: Action Button
+
+List of Event Commands:
+@>
+
+Page #11
+Conditions
+Switch 0168: Ulti.Trial Active is ON
+Variable 0145: Boss Rush Variable is 10 or above
+
+Graphic: Person_Minoriko
+
+Autonomous Movement
+Type: Fixed
+Speed: 3: Slow
+Freq: 3: Low
+Options Enabled
+Move Animation
+Trigger: Action Button
+
+List of Event Commands:
+@>
+
+Page #12
+Conditions
+Switch 0168: Ulti.Trial Active is ON
+Variable 0145: Boss Rush Variable is 11 or above
+
+Graphic: Person_Nitori
+
+Autonomous Movement
+Type: Fixed
+Speed: 3: Slow
+Freq: 3: Low
+Options Enabled
+Move Animation
+Trigger: Action Button
+
+List of Event Commands:
+@>
+
+Page #13
+Conditions
+Switch 0168: Ulti.Trial Active is ON
+Variable 0145: Boss Rush Variable is 12 or above
+
+Graphic: Person_Hatate
+
+Autonomous Movement
+Type: Fixed
+Speed: 3: Slow
+Freq: 3: Low
+Options Enabled
+Move Animation
+Trigger: Action Button
+
+List of Event Commands:
+@>
+
+Page #14
+Conditions
+Switch 0168: Ulti.Trial Active is ON
+Variable 0145: Boss Rush Variable is 13 or above
+
+Graphic: Person_Hina
+
+Autonomous Movement
+Type: Fixed
+Speed: 3: Slow
+Freq: 3: Low
+Options Enabled
+Move Animation
+Trigger: Action Button
+
+List of Event Commands:
+@>
+
+Page #15
+Conditions
+Switch 0168: Ulti.Trial Active is ON
+Variable 0145: Boss Rush Variable is 14 or above
+
+Graphic: Person_Sunny
+
+Autonomous Movement
+Type: Fixed
+Speed: 3: Slow
+Freq: 3: Low
+Options Enabled
+Move Animation
+Trigger: Action Button
+
+List of Event Commands:
+@>
+
+Page #16
+Conditions
+Switch 0168: Ulti.Trial Active is ON
+Variable 0145: Boss Rush Variable is 15 or above
+
+Graphic: Person_Medicine
+
+Autonomous Movement
+Type: Fixed
+Speed: 3: Slow
+Freq: 3: Low
+Options Enabled
+Move Animation
+Trigger: Action Button
+
+List of Event Commands:
+@>
+
+Page #17
+Conditions
+Switch 0168: Ulti.Trial Active is ON
+Variable 0145: Boss Rush Variable is 16 or above
+
+Graphic: Person_Elly
+
+Autonomous Movement
+Type: Fixed
+Speed: 3: Slow
+Freq: 3: Low
+Options Enabled
+Move Animation
+Trigger: Action Button
+
+List of Event Commands:
+@>
+
+Page #18
+Conditions
+Switch 0168: Ulti.Trial Active is ON
+Variable 0145: Boss Rush Variable is 17 or above
+
+Graphic: Person_Yuuka
+
+Autonomous Movement
+Type: Fixed
+Speed: 3: Slow
+Freq: 3: Low
+Options Enabled
+Move Animation
+Trigger: Action Button
+
+List of Event Commands:
+@>
+
+Page #19
+Conditions
+Switch 0168: Ulti.Trial Active is ON
+Variable 0145: Boss Rush Variable is 19 or above
+
+Graphic: Person_Seiran
+
+Autonomous Movement
+Type: Fixed
+Speed: 3: Slow
+Freq: 3: Low
+Options Enabled
+Move Animation
+Trigger: Action Button
+
+List of Event Commands:
+@>
+
+Page #20
+Conditions
+Switch 0168: Ulti.Trial Active is ON
+Variable 0145: Boss Rush Variable is 20 or above
+
+Graphic: Person_Ringo
+
+Autonomous Movement
+Type: Fixed
+Speed: 3: Slow
+Freq: 3: Low
+Options Enabled
+Move Animation
+Trigger: Action Button
+
+List of Event Commands:
+@>
+
+Page #21
+Conditions
+Switch 0168: Ulti.Trial Active is ON
+Variable 0145: Boss Rush Variable is 21 or above
+
+Graphic: Person_Doremy
+
+Autonomous Movement
+Type: Fixed
+Speed: 3: Slow
+Freq: 3: Low
+Options Enabled
+Move Animation
+Trigger: Action Button
+
+List of Event Commands:
+@>
+
+Page #22
+Conditions
+Switch 0168: Ulti.Trial Active is ON
+Variable 0145: Boss Rush Variable is 22 or above
+
+Graphic: Person_Clownpiece
+
+Autonomous Movement
+Type: Fixed
+Speed: 3: Slow
+Freq: 3: Low
+Options Enabled
+Move Animation
+Trigger: Action Button
+
+List of Event Commands:
+@>
+
+Page #23
+Conditions
+Switch 0168: Ulti.Trial Active is ON
+Variable 0145: Boss Rush Variable is 23 or above
+
+Graphic: Person_Junko
+
+Autonomous Movement
+Type: Fixed
+Speed: 3: Slow
+Freq: 3: Low
+Options Enabled
+Move Animation
+Trigger: Action Button
+
+List of Event Commands:
+@>
+
+Page #24
+Conditions
+Switch 0168: Ulti.Trial Active is ON
+Variable 0145: Boss Rush Variable is 25 or above
+
+Graphic: Person_Rei'sen
+
+Autonomous Movement
+Type: Fixed
+Speed: 3: Slow
+Freq: 3: Low
+Options Enabled
+Move Animation
+Trigger: Action Button
+
+List of Event Commands:
+@>
+
+Page #25
+Conditions
+Switch 0168: Ulti.Trial Active is ON
+Variable 0145: Boss Rush Variable is 26 or above
+
+Graphic: Person_Sagume
+
+Autonomous Movement
+Type: Fixed
+Speed: 3: Slow
+Freq: 3: Low
+Options Enabled
+Move Animation
+Trigger: Action Button
+
+List of Event Commands:
+@>
+
+Page #26
+Conditions
+Switch 0168: Ulti.Trial Active is ON
+Variable 0145: Boss Rush Variable is 28 or above
+
+Graphic: Person_Mima
+
+Autonomous Movement
+Type: Fixed
+Speed: 3: Slow
+Freq: 3: Low
+Options Enabled
+Move Animation
+Trigger: Action Button
+
+List of Event Commands:
+@>
+
+Page #27
+Conditions
+Switch 0168: Ulti.Trial Active is ON
+Variable 0145: Boss Rush Variable is 29 or above
+
+Graphic: Person_Meimu
+
+Autonomous Movement
+Type: Fixed
+Speed: 3: Slow
+Freq: 3: Low
+Options Enabled
+Move Animation
+Trigger: Action Button
+
+List of Event Commands:
+@>
+
+Page #28
+Conditions
+Self Switch A is ON
+
+Autonomous Movement
+Type: Fixed
+Speed: 3: Slow
+Freq: 3: Low
+Options Enabled
+Move Animation
+Trigger: Action Button
+
+List of Event Commands:
+@>
+
+#------------------------------------------------------------------------------
+Event ID: 005
+Event Name: Trainer 2
+(X,Y): (011,029)
+
+Page #1
+Conditions
+Switch 0168: Ulti.Trial Active is ON
+Variable 0145: Boss Rush Variable is 5 or above
+Self Switch A is ON
+
+Graphic: Person_Merlin
+
+Autonomous Movement
+Type: Fixed
+Speed: 3: Slow
+Freq: 3: Low
+Options Enabled
+Move Animation
+Trigger: Action Button
+
+List of Event Commands:
+@>
+
+Page #2
+Conditions
+Switch 0168: Ulti.Trial Active is ON
+Variable 0145: Boss Rush Variable is 14 or above
+Self Switch A is ON
+
+Graphic: Person_Luna
+
+Autonomous Movement
+Type: Fixed
+Speed: 3: Slow
+Freq: 3: Low
+Options Enabled
+Move Animation
+Trigger: Action Button
+
+List of Event Commands:
+@>
+
+Page #3
+Conditions
+Switch 0168: Ulti.Trial Active is ON
+Variable 0145: Boss Rush Variable is 18 or above
+Self Switch A is ON
+
+Graphic: Person_Reisen
+
+Autonomous Movement
+Type: Fixed
+Speed: 3: Slow
+Freq: 3: Low
+Options Enabled
+Move Animation
+Trigger: Action Button
+
+List of Event Commands:
+@>
+
+Page #4
+Conditions
+Switch 0168: Ulti.Trial Active is ON
+Variable 0145: Boss Rush Variable is 24 or above
+Self Switch A is ON
+
+Graphic: Person_Junko_Alt2
+
+Autonomous Movement
+Type: Fixed
+Speed: 3: Slow
+Freq: 3: Low
+Options Enabled
+Move Animation
+Trigger: Action Button
+
+List of Event Commands:
+@>
+
+Page #5
+Conditions
+Switch 0168: Ulti.Trial Active is ON
+Variable 0145: Boss Rush Variable is 27 or above
+Self Switch A is ON
+
+Graphic: Person_Yorihime
+
+Autonomous Movement
+Type: Fixed
+Speed: 3: Slow
+Freq: 3: Low
+Options Enabled
+Move Animation
+Trigger: Action Button
+
+List of Event Commands:
+@>
+
+#------------------------------------------------------------------------------
+Event ID: 006
+Event Name: Trainer 3
+(X,Y): (013,029)
+
+Page #1
+Conditions
+Switch 0168: Ulti.Trial Active is ON
+Variable 0145: Boss Rush Variable is 5 or above
+Self Switch A is ON
+
+Graphic: Person_Lyrica
+
+Autonomous Movement
+Type: Fixed
+Speed: 3: Slow
+Freq: 3: Low
+Options Enabled
+Move Animation
+Trigger: Action Button
+
+List of Event Commands:
+@>
+
+Page #2
+Conditions
+Switch 0168: Ulti.Trial Active is ON
+Variable 0145: Boss Rush Variable is 14 or above
+Self Switch A is ON
+
+Graphic: Person_Star
+
+Autonomous Movement
+Type: Fixed
+Speed: 3: Slow
+Freq: 3: Low
+Options Enabled
+Move Animation
+Trigger: Action Button
+
+List of Event Commands:
+@>
+
+Page #3
+Conditions
+Switch 0168: Ulti.Trial Active is ON
+Variable 0145: Boss Rush Variable is 18 or above
+Self Switch A is ON
+
+Graphic: Person_Eirin
+
+Autonomous Movement
+Type: Fixed
+Speed: 3: Slow
+Freq: 3: Low
+Options Enabled
+Move Animation
+Trigger: Action Button
+
+List of Event Commands:
+@>
+
+Page #4
+Conditions
+Switch 0168: Ulti.Trial Active is ON
+Variable 0145: Boss Rush Variable is 24 or above
+Self Switch A is ON
+
+Graphic: Person_Hecatia
+
+Autonomous Movement
+Type: Fixed
+Speed: 3: Slow
+Freq: 3: Low
+Options Enabled
+Move Animation
+Trigger: Action Button
+
+List of Event Commands:
+@>
+
+Page #5
+Conditions
+Switch 0168: Ulti.Trial Active is ON
+Variable 0145: Boss Rush Variable is 27 or above
+Self Switch A is ON
+
+Graphic: Person_Toyohime
+
+Autonomous Movement
+Type: Fixed
+Speed: 3: Slow
+Freq: 3: Low
+Options Enabled
+Move Animation
+Trigger: Action Button
+
+List of Event Commands:
+@>
+
+#------------------------------------------------------------------------------
+Event ID: 007
+Event Name: Ultimate Trial Controller
+(X,Y): (024,033)
+
+Page #1
+Conditions
+Switch 0168: Ulti.Trial Active is ON
+
+Autonomous Movement
+Type: Fixed
+Speed: 3: Slow
+Freq: 3: Low
+Options Enabled
+Move Animation
+Trigger: Autorun
+
+List of Event Commands:
+@>Set Move Route: [Ulti. Trial Receptionist]
+ :              : $>Move Down
+ :              : $>Move Left
+ :              : $>Turn Right
+@>Wait for Move's Completion
+@>Set Move Route: Player
+ :              : $>Move Down
+ :              : $>Move Down
+ :              : $>Move Down
+ :              : $>Move Down
+ :              : $>Move Down
+ :              : $>Move Down
+@>Wait for Move's Completion
+@>Comment: --------------------------------
+@>Script: pbSet(145,0)
+:       : Settings::HEAL_STORED_POKEMON = false
+:       : echoln pbGet(145)
+:       : echoln Settings::HEAL_STORED_POKEMON
+@>Scroll Map: Down, 2, 3
+@>Set Move Route: [Trainer 1]
+ :              : $>Move Up
+ :              : $>Move Up
+ :              : $>Move Up
+ :              : $>Move Up
+@>Set Move Route: [Trainer 2]
+ :              : $>Move Up
+ :              : $>Move Up
+ :              : $>Move Up
+ :              : $>Move Up
+@>Set Move Route: [Trainer 3]
+ :              : $>Move Up
+ :              : $>Move Up
+ :              : $>Move Up
+ :              : $>Move Up
+@>Wait for Move's Completion
+@>Loop
+ @>Wait: 10 frame(s)
+ @>Script: dkBossRush
+ @>Conditional Branch: Variable [0145: Boss Rush Variable] == 34
+  @>Break Loop
+  @>
+ : Branch End
+ @>Script: deactivate_trainer_sprites
+ @>Script: activate_trainer_sprites
+ @>Show Animation: [Trainer 1], [Berry plant sparkle]
+ @>Show Animation: [Trainer 2], [Berry plant sparkle]
+ @>Show Animation: [Trainer 3], [Berry plant sparkle]
+ @>Play SE: 'Vs flash', 100, 150
+ @>Script: bossrush_intermission
+ @>
+: Repeat Above
+@>Conditional Branch: Variable [0145: Boss Rush Variable] == 34
+ @>Text: You won!
+ @>Recover All: Entire Party
+ @>
+: Branch End
+@>Script: Settings::HEAL_STORED_POKEMON = false
+:       : echoln Settings::HEAL_STORED_POKEMON
 @>
 
 #------------------------------------------------------------------------------

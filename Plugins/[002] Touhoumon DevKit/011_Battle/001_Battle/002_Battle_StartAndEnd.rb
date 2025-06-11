@@ -152,9 +152,9 @@ class Battle
                                 @opponent[1].full_name, @opponent[2].full_name))
         end
         map_metadata = GameData::MapMetadata.get($game_map.map_id)
-        can_run = map_metadata&.has_flag?("CanRunFromTrainers")
-        is_final = map_metadata&.has_flag?("FinalBattle")
-		unless can_run || is_final
+        do_not_show = ["CanRunFromTrainers", "FinalBattle", "BossRush"]
+		skip_display = do_not_show.any? { |flag| map_metadata&.has_flag?(flag) }
+		unless skip_display
           @opponent.each_with_index do |trainer, i|
             @scene.pbShowOpponent(i)
             msg = trainer.lose_text
