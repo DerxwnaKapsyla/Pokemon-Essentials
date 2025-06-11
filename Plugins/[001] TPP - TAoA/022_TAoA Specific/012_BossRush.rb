@@ -134,7 +134,7 @@ def bossrush_intermission
   index = $game_variables[BossRush::BOSS_FIGHT_VARIABLE]
   # Heal the player after finishing each arc of bosses and before Final Meimu.
   case index
-    when 8, 17, 27, 32
+    when 9, 18, 28, 33
 	  $player.heal_party
       pbMessage(_INTL("\\wm\\w[dark]Your party has been healed."))
 	end
