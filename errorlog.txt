@@ -26902,3 +26902,860 @@ Backtrace:
 003_Interpreter.rb:86:in `loop'
 003_Interpreter.rb:86:in `update'
 002_Scene_Map.rb:167:in `block in update'
+
+=================
+
+[2025-06-13 12:35:49 -0700]
+[Pokémon Essentials version 21.1]
+[v21.1 Hotfixes 1.0.9]
+
+Exception: NoMethodError
+Message: undefined method `font' for " 281 / 281":String
+
+Backtrace:
+002_MessageConfig.rb:423:in `pbSetSmallFont'
+[LA Party Evolver] LAEVO.rb:274:in `draw_hp'
+[LA Party Evolver] LAEVO.rb:233:in `refresh_overlay_information'
+[LA Party Evolver] LAEVO.rb:331:in `refresh'
+[LA Party Evolver] LAEVO.rb:71:in `initialize'
+[LA Party Evolver] LAEVO.rb:385:in `new'
+[LA Party Evolver] LAEVO.rb:385:in `block in pbStartScene'
+[LA Party Evolver] LAEVO.rb:383:in `times'
+[LA Party Evolver] LAEVO.rb:383:in `pbStartScene'
+[Modular UI Scenes] UI Party Commands.rb:49:in `pbPokemonScreen'
+
+=================
+
+[2025-06-13 14:01:09 -0700]
+[Pokémon Essentials version 21.1]
+[v21.1 Hotfixes 1.0.9]
+
+Error in Plugin: [Modular UI Scenes]
+Exception: SyntaxError
+Message: [Modular UI Scenes] UI Party Commands.rb:151: Invalid return in class/module body
+    return ret
+    ^~~~~~
+[Modular UI Scenes] UI Party Commands.rb:153: syntax error, unexpected `end', expecting end-of-input
+
+Backtrace:
+005_PluginManager.rb:635:in `eval'
+005_PluginManager.rb:635:in `block (2 levels) in runPlugins'
+005_PluginManager.rb:625:in `each'
+005_PluginManager.rb:625:in `block in runPlugins'
+005_PluginManager.rb:616:in `each'
+005_PluginManager.rb:616:in `runPlugins'
+999_Main.rb:35:in `mainFunctionDebug'
+999_Main.rb:19:in `block in mainFunction'
+003_Errors.rb:79:in `pbCriticalCode'
+999_Main.rb:19:in `mainFunction'
+
+=================
+
+[2025-06-13 14:01:36 -0700]
+[Pokémon Essentials version 21.1]
+[v21.1 Hotfixes 1.0.9]
+
+Exception: NoMethodError
+Message: undefined method `[]' for nil:NilClass
+
+Backtrace:
+[LA Party Evolver] LAEVO.rb:623:in `block in pbChoosePokemon'
+[LA Party Evolver] LAEVO.rb:622:in `times'
+[LA Party Evolver] LAEVO.rb:622:in `pbChoosePokemon'
+[Modular UI Scenes] UI Party Commands.rb:54:in `block in pbPokemonScreen'
+[Modular UI Scenes] UI Party Commands.rb:52:in `loop'
+[Modular UI Scenes] UI Party Commands.rb:52:in `pbPokemonScreen'
+[Touhoumon Essentials Development Kit] 001_UI_PauseMenu.rb:19:in `block (2 levels) in <main>'
+002_MessageConfig.rb:575:in `pbFadeOutIn'
+[Touhoumon Essentials Development Kit] 001_UI_PauseMenu.rb:16:in `block in <main>'
+[Voltseon's Pause Menu] 003_VoltseonMenu_Menu.rb:54:in `update'
+
+=================
+
+[2025-06-13 16:01:29 -0700]
+[Pokémon Essentials version 21.1]
+[v21.1 Hotfixes 1.0.9]
+
+Exception: ArgumentError
+Message: wrong number of arguments (given 4, expected 2..3)
+
+Backtrace:
+[Experimental Party UI] 001_UI_Party.rb:6:in `initialize'
+[LA Party Evolver] LAEVO.rb:386:in `new'
+[LA Party Evolver] LAEVO.rb:386:in `block in pbStartScene'
+[LA Party Evolver] LAEVO.rb:384:in `times'
+[LA Party Evolver] LAEVO.rb:384:in `pbStartScene'
+[Modular UI Scenes] UI Party Commands.rb:49:in `pbPokemonScreen'
+[Touhoumon Essentials Development Kit] 001_UI_PauseMenu.rb:19:in `block (2 levels) in <main>'
+002_MessageConfig.rb:575:in `pbFadeOutIn'
+[Touhoumon Essentials Development Kit] 001_UI_PauseMenu.rb:16:in `block in <main>'
+[Voltseon's Pause Menu] 003_VoltseonMenu_Menu.rb:54:in `update'
+
+=================
+
+[2025-06-13 22:36:13 -0700]
+[Pokémon Essentials version 21.1]
+[v21.1 Hotfixes 1.0.9]
+
+Exception: RuntimeError
+Message: Encounters for map '108' are defined twice.
+File PBS/encounters_taoa_end.txt, line 3
+[108]
+
+
+
+Backtrace:
+002_Compiler_CompilePBS.rb:715:in `block (2 levels) in compile_encounters'
+001_Compiler.rb:244:in `block (2 levels) in pbCompilerEachPreppedLine'
+001_Compiler.rb:236:in `each_line'
+001_Compiler.rb:236:in `block in pbCompilerEachPreppedLine'
+001_Compiler.rb:233:in `open'
+001_Compiler.rb:233:in `pbCompilerEachPreppedLine'
+002_Compiler_CompilePBS.rb:668:in `block in compile_encounters'
+002_Compiler_CompilePBS.rb:661:in `each'
+002_Compiler_CompilePBS.rb:661:in `compile_encounters'
+001_Compiler.rb:1009:in `compile_pbs_files'
+
+=================
+
+[2025-06-13 22:36:21 -0700]
+[Pokémon Essentials version 21.1]
+[v21.1 Hotfixes 1.0.9]
+
+Exception: RuntimeError
+Message: Unknown exception when compiling.
+
+Backtrace:
+001_Compiler.rb:1114:in `rescue in main'
+001_Compiler.rb:1041:in `main'
+999_Main.rb:36:in `mainFunctionDebug'
+999_Main.rb:19:in `block in mainFunction'
+003_Errors.rb:79:in `pbCriticalCode'
+999_Main.rb:19:in `mainFunction'
+999_Main.rb:52:in `block (2 levels) in load_scripts_from_folder'
+999_Main.rb:51:in `loop'
+999_Main.rb:51:in `block in load_scripts_from_folder'
+000:Main:35:in `eval'
+
+=================
+
+[2025-06-13 22:36:52 -0700]
+[Pokémon Essentials version 21.1]
+[v21.1 Hotfixes 1.0.9]
+
+Exception: RuntimeError
+Message: Encounters for map '108' are defined twice.
+File PBS/encounters_tla.txt, line 4
+[108]
+
+
+
+Backtrace:
+002_Compiler_CompilePBS.rb:715:in `block (2 levels) in compile_encounters'
+001_Compiler.rb:244:in `block (2 levels) in pbCompilerEachPreppedLine'
+001_Compiler.rb:236:in `each_line'
+001_Compiler.rb:236:in `block in pbCompilerEachPreppedLine'
+001_Compiler.rb:233:in `open'
+001_Compiler.rb:233:in `pbCompilerEachPreppedLine'
+002_Compiler_CompilePBS.rb:668:in `block in compile_encounters'
+002_Compiler_CompilePBS.rb:661:in `each'
+002_Compiler_CompilePBS.rb:661:in `compile_encounters'
+001_Compiler.rb:1009:in `compile_pbs_files'
+
+=================
+
+[2025-06-13 22:36:57 -0700]
+[Pokémon Essentials version 21.1]
+[v21.1 Hotfixes 1.0.9]
+
+Exception: RuntimeError
+Message: Unknown exception when compiling.
+
+Backtrace:
+001_Compiler.rb:1114:in `rescue in main'
+001_Compiler.rb:1041:in `main'
+999_Main.rb:36:in `mainFunctionDebug'
+999_Main.rb:19:in `block in mainFunction'
+003_Errors.rb:79:in `pbCriticalCode'
+999_Main.rb:19:in `mainFunction'
+999_Main.rb:52:in `block (2 levels) in load_scripts_from_folder'
+999_Main.rb:51:in `loop'
+999_Main.rb:51:in `block in load_scripts_from_folder'
+000:Main:35:in `eval'
+
+=================
+
+[2025-06-14 00:54:21 -0700]
+[Pokémon Essentials version 21.1]
+[v21.1 Hotfixes 1.0.9]
+
+Exception: RuntimeError
+Message: Expected a species entry line for encounter type Land for map 153.
+File PBS/encounters_taoa.txt, line 53
+50,CLOWNPIECE
+
+
+
+Backtrace:
+002_Compiler_CompilePBS.rb:676:in `block (2 levels) in compile_encounters'
+001_Compiler.rb:244:in `block (2 levels) in pbCompilerEachPreppedLine'
+001_Compiler.rb:236:in `each_line'
+001_Compiler.rb:236:in `block in pbCompilerEachPreppedLine'
+001_Compiler.rb:233:in `open'
+001_Compiler.rb:233:in `pbCompilerEachPreppedLine'
+002_Compiler_CompilePBS.rb:668:in `block in compile_encounters'
+002_Compiler_CompilePBS.rb:661:in `each'
+002_Compiler_CompilePBS.rb:661:in `compile_encounters'
+001_Compiler.rb:1009:in `compile_pbs_files'
+
+=================
+
+[2025-06-14 01:17:17 -0700]
+[Pokémon Essentials version 21.1]
+
+Error in Plugin: [Touhoumon Essentials Development Kit]
+Exception: SyntaxError
+Message: [Touhoumon Essentials Development Kit] 004_Overworld_EncounterModifiers.rb:140: syntax error, unexpected `end', expecting ')'
+
+Backtrace:
+005_PluginManager.rb:635:in `eval'
+005_PluginManager.rb:635:in `block (2 levels) in runPlugins'
+005_PluginManager.rb:625:in `each'
+005_PluginManager.rb:625:in `block in runPlugins'
+005_PluginManager.rb:616:in `each'
+005_PluginManager.rb:616:in `runPlugins'
+999_Main.rb:35:in `mainFunctionDebug'
+999_Main.rb:19:in `block in mainFunction'
+003_Errors.rb:79:in `pbCriticalCode'
+999_Main.rb:19:in `mainFunction'
+
+=================
+
+[2025-06-14 01:17:31 -0700]
+[Pokémon Essentials version 21.1]
+
+Error in Plugin: [Touhoumon Essentials Development Kit]
+Exception: SyntaxError
+Message: [Touhoumon Essentials Development Kit] 004_Overworld_EncounterModifiers.rb:140: syntax error, unexpected `end', expecting ')'
+
+Backtrace:
+005_PluginManager.rb:635:in `eval'
+005_PluginManager.rb:635:in `block (2 levels) in runPlugins'
+005_PluginManager.rb:625:in `each'
+005_PluginManager.rb:625:in `block in runPlugins'
+005_PluginManager.rb:616:in `each'
+005_PluginManager.rb:616:in `runPlugins'
+999_Main.rb:35:in `mainFunctionDebug'
+999_Main.rb:19:in `block in mainFunction'
+003_Errors.rb:79:in `pbCriticalCode'
+999_Main.rb:19:in `mainFunction'
+
+=================
+
+[2025-06-14 01:18:24 -0700]
+[Pokémon Essentials version 21.1]
+[v21.1 Hotfixes 1.0.9]
+
+Exception: SystemStackError
+Message: stack level too deep
+
+Backtrace:
+
+=================
+
+[2025-06-14 01:18:49 -0700]
+[Pokémon Essentials version 21.1]
+[v21.1 Hotfixes 1.0.9]
+
+Exception: SystemStackError
+Message: stack level too deep
+
+Backtrace:
+
+=================
+
+[2025-06-14 01:26:12 -0700]
+[Pokémon Essentials version 21.1]
+[v21.1 Hotfixes 1.0.9]
+
+Exception: NoMethodError
+Message: undefined method `encounter_data' for #<PokemonEncounters>
+
+Backtrace:
+[Touhoumon Essentials Development Kit] 004_Overworld_EncounterModifiers.rb:131:in `block in <main>'
+005_Event_Handlers.rb:89:in `block in trigger'
+005_Event_Handlers.rb:89:in `each_value'
+005_Event_Handlers.rb:89:in `trigger'
+006_Event_HandlerCollections.rb:63:in `trigger'
+[TAoA Core] 001_Overworld.rb:9:in `pbBattleOnStepTaken'
+[Delta Speed Up] _Main_Script.rb:83:in `pbBattleOnStepTaken'
+001_Overworld.rb:185:in `pbOnStepTaken'
+008_Game_Player.rb:552:in `update_event_triggering'
+008_Game_Player.rb:428:in `update'
+
+=================
+
+[2025-06-14 01:26:57 -0700]
+[Pokémon Essentials version 21.1]
+
+Error in Plugin: [Touhoumon Essentials Development Kit]
+Exception: SyntaxError
+Message: [Touhoumon Essentials Development Kit] 004_Overworld_EncounterModifiers.rb:127: syntax error, unexpected ':', expecting ')'
+...s.add(:on_wild_species_chosen :get_unique_encounter,
+...                              ^
+[Touhoumon Essentials Development Kit] 004_Overworld_EncounterModifiers.rb:139: syntax error, unexpected '\n', expecting '.' or &. or :: or '['
+
+Backtrace:
+005_PluginManager.rb:635:in `eval'
+005_PluginManager.rb:635:in `block (2 levels) in runPlugins'
+005_PluginManager.rb:625:in `each'
+005_PluginManager.rb:625:in `block in runPlugins'
+005_PluginManager.rb:616:in `each'
+005_PluginManager.rb:616:in `runPlugins'
+999_Main.rb:35:in `mainFunctionDebug'
+999_Main.rb:19:in `block in mainFunction'
+003_Errors.rb:79:in `pbCriticalCode'
+999_Main.rb:19:in `mainFunction'
+
+=================
+
+[2025-06-14 01:27:15 -0700]
+[Pokémon Essentials version 21.1]
+
+Error in Plugin: [Touhoumon Essentials Development Kit]
+Exception: SyntaxError
+Message: [Touhoumon Essentials Development Kit] 004_Overworld_EncounterModifiers.rb:127: syntax error, unexpected ':', expecting ')'
+...s.add(:on_wild_species_chosen :get_unique_encounter,
+...                              ^
+[Touhoumon Essentials Development Kit] 004_Overworld_EncounterModifiers.rb:139: syntax error, unexpected '\n', expecting '.' or &. or :: or '['
+
+Backtrace:
+005_PluginManager.rb:635:in `eval'
+005_PluginManager.rb:635:in `block (2 levels) in runPlugins'
+005_PluginManager.rb:625:in `each'
+005_PluginManager.rb:625:in `block in runPlugins'
+005_PluginManager.rb:616:in `each'
+005_PluginManager.rb:616:in `runPlugins'
+999_Main.rb:35:in `mainFunctionDebug'
+999_Main.rb:19:in `block in mainFunction'
+003_Errors.rb:79:in `pbCriticalCode'
+999_Main.rb:19:in `mainFunction'
+
+=================
+
+[2025-06-14 01:27:50 -0700]
+[Pokémon Essentials version 21.1]
+[v21.1 Hotfixes 1.0.9]
+
+Exception: NoMethodError
+Message: undefined method `species' for [:AREIMU, 100]:Array
+
+Backtrace:
+[Touhoumon Essentials Development Kit] 004_Overworld_EncounterModifiers.rb:133:in `block (2 levels) in <main>'
+[Touhoumon Essentials Development Kit] 004_Overworld_EncounterModifiers.rb:132:in `times'
+[Touhoumon Essentials Development Kit] 004_Overworld_EncounterModifiers.rb:132:in `block in <main>'
+005_Event_Handlers.rb:89:in `block in trigger'
+005_Event_Handlers.rb:89:in `each_value'
+005_Event_Handlers.rb:89:in `trigger'
+006_Event_HandlerCollections.rb:63:in `trigger'
+[TAoA Core] 001_Overworld.rb:9:in `pbBattleOnStepTaken'
+[Delta Speed Up] _Main_Script.rb:83:in `pbBattleOnStepTaken'
+001_Overworld.rb:193:in `block (2 levels) in load_scripts_from_folder'
+
+=================
+
+[2025-06-14 01:29:41 -0700]
+[Pokémon Essentials version 21.1]
+[v21.1 Hotfixes 1.0.9]
+
+Exception: SystemStackError
+Message: stack level too deep
+
+Backtrace:
+
+=================
+
+[2025-06-14 01:30:39 -0700]
+[Pokémon Essentials version 21.1]
+[v21.1 Hotfixes 1.0.9]
+
+Exception: ArgumentError
+Message: wrong number of arguments (given 1, expected 2..3)
+
+Backtrace:
+003_Overworld_WildEncounters.rb:383:in `pbGenerateWildPokemon'
+[Touhoumon Essentials Development Kit] 004_Overworld_EncounterModifiers.rb:135:in `block (2 levels) in <main>'
+[Touhoumon Essentials Development Kit] 004_Overworld_EncounterModifiers.rb:133:in `times'
+[Touhoumon Essentials Development Kit] 004_Overworld_EncounterModifiers.rb:133:in `block in <main>'
+005_Event_Handlers.rb:89:in `block in trigger'
+005_Event_Handlers.rb:89:in `each_value'
+005_Event_Handlers.rb:89:in `trigger'
+006_Event_HandlerCollections.rb:63:in `trigger'
+003_Overworld_WildEncounters.rb:447:in `pbGenerateWildPokemon'
+001_Overworld_BattleStarting.rb:422:in `block in generate_foes'
+
+=================
+
+[2025-06-14 01:32:07 -0700]
+[Pokémon Essentials version 21.1]
+[v21.1 Hotfixes 1.0.9]
+
+Exception: ArgumentError
+Message: wrong number of arguments (given 1, expected 2..3)
+
+Backtrace:
+003_Overworld_WildEncounters.rb:383:in `pbGenerateWildPokemon'
+[Touhoumon Essentials Development Kit] 004_Overworld_EncounterModifiers.rb:132:in `block (2 levels) in <main>'
+[Touhoumon Essentials Development Kit] 004_Overworld_EncounterModifiers.rb:130:in `times'
+[Touhoumon Essentials Development Kit] 004_Overworld_EncounterModifiers.rb:130:in `block in <main>'
+005_Event_Handlers.rb:89:in `block in trigger'
+005_Event_Handlers.rb:89:in `each_value'
+005_Event_Handlers.rb:89:in `trigger'
+006_Event_HandlerCollections.rb:63:in `trigger'
+003_Overworld_WildEncounters.rb:447:in `pbGenerateWildPokemon'
+001_Overworld_BattleStarting.rb:422:in `block in generate_foes'
+
+=================
+
+[2025-06-14 01:35:22 -0700]
+[Pokémon Essentials version 21.1]
+[v21.1 Hotfixes 1.0.9]
+
+Exception: RuntimeError
+Message: Unknown ID Land.
+
+Backtrace:
+001_GameData.rb:103:in `get'
+001_Pokemon.rb:1160:in `initialize'
+003_Overworld_WildEncounters.rb:384:in `new'
+003_Overworld_WildEncounters.rb:384:in `pbGenerateWildPokemon'
+[Touhoumon Essentials Development Kit] 004_Overworld_EncounterModifiers.rb:132:in `block (2 levels) in <main>'
+[Touhoumon Essentials Development Kit] 004_Overworld_EncounterModifiers.rb:130:in `times'
+[Touhoumon Essentials Development Kit] 004_Overworld_EncounterModifiers.rb:130:in `block in <main>'
+005_Event_Handlers.rb:89:in `block in trigger'
+005_Event_Handlers.rb:89:in `each_value'
+005_Event_Handlers.rb:89:in `trigger'
+
+=================
+
+[2025-06-14 01:37:26 -0700]
+[Pokémon Essentials version 21.1]
+[v21.1 Hotfixes 1.0.9]
+
+Exception: RuntimeError
+Message: Unknown ID Land.
+
+Backtrace:
+001_GameData.rb:103:in `get'
+001_Pokemon.rb:1160:in `initialize'
+003_Overworld_WildEncounters.rb:384:in `new'
+003_Overworld_WildEncounters.rb:384:in `pbGenerateWildPokemon'
+[Touhoumon Essentials Development Kit] 004_Overworld_EncounterModifiers.rb:133:in `block (2 levels) in <main>'
+[Touhoumon Essentials Development Kit] 004_Overworld_EncounterModifiers.rb:131:in `times'
+[Touhoumon Essentials Development Kit] 004_Overworld_EncounterModifiers.rb:131:in `block in <main>'
+005_Event_Handlers.rb:89:in `block in trigger'
+005_Event_Handlers.rb:89:in `each_value'
+005_Event_Handlers.rb:89:in `trigger'
+
+=================
+
+[2025-06-14 01:40:50 -0700]
+[Pokémon Essentials version 21.1]
+[v21.1 Hotfixes 1.0.9]
+
+Exception: NoMethodError
+Message: undefined method `species' for [:MIMA, 100]:Array
+
+Backtrace:
+[Touhoumon Essentials Development Kit] 004_Overworld_EncounterModifiers.rb:132:in `block (2 levels) in <main>'
+[Touhoumon Essentials Development Kit] 004_Overworld_EncounterModifiers.rb:131:in `times'
+[Touhoumon Essentials Development Kit] 004_Overworld_EncounterModifiers.rb:131:in `block in <main>'
+005_Event_Handlers.rb:89:in `block in trigger'
+005_Event_Handlers.rb:89:in `each_value'
+005_Event_Handlers.rb:89:in `trigger'
+006_Event_HandlerCollections.rb:63:in `trigger'
+[TAoA Core] 001_Overworld.rb:9:in `pbBattleOnStepTaken'
+[Delta Speed Up] _Main_Script.rb:83:in `pbBattleOnStepTaken'
+001_Overworld.rb:185:in `pbOnStepTaken'
+
+=================
+
+[2025-06-14 01:45:25 -0700]
+[Pokémon Essentials version 21.1]
+[v21.1 Hotfixes 1.0.9]
+
+Exception: NoMethodError
+Message: undefined method `species' for [:SANAE, 100]:Array
+
+Backtrace:
+[Touhoumon Essentials Development Kit] 004_Overworld_EncounterModifiers.rb:132:in `block (2 levels) in <main>'
+[Touhoumon Essentials Development Kit] 004_Overworld_EncounterModifiers.rb:131:in `times'
+[Touhoumon Essentials Development Kit] 004_Overworld_EncounterModifiers.rb:131:in `block in <main>'
+005_Event_Handlers.rb:89:in `block in trigger'
+005_Event_Handlers.rb:89:in `each_value'
+005_Event_Handlers.rb:89:in `trigger'
+006_Event_HandlerCollections.rb:63:in `trigger'
+[TAoA Core] 001_Overworld.rb:9:in `pbBattleOnStepTaken'
+[Delta Speed Up] _Main_Script.rb:83:in `pbBattleOnStepTaken'
+001_Overworld.rb:185:in `pbOnStepTaken'
+
+=================
+
+[2025-06-14 01:46:15 -0700]
+[Pokémon Essentials version 21.1]
+[v21.1 Hotfixes 1.0.9]
+
+Exception: RuntimeError
+Message: Unknown ID Land.
+
+Backtrace:
+001_GameData.rb:103:in `get'
+001_Pokemon.rb:1160:in `initialize'
+003_Overworld_WildEncounters.rb:384:in `new'
+003_Overworld_WildEncounters.rb:384:in `pbGenerateWildPokemon'
+[Touhoumon Essentials Development Kit] 004_Overworld_EncounterModifiers.rb:135:in `block (2 levels) in <main>'
+[Touhoumon Essentials Development Kit] 004_Overworld_EncounterModifiers.rb:131:in `times'
+[Touhoumon Essentials Development Kit] 004_Overworld_EncounterModifiers.rb:131:in `block in <main>'
+005_Event_Handlers.rb:89:in `block in trigger'
+005_Event_Handlers.rb:89:in `each_value'
+005_Event_Handlers.rb:89:in `trigger'
+
+=================
+
+[2025-06-14 01:48:53 -0700]
+[Pokémon Essentials version 21.1]
+[v21.1 Hotfixes 1.0.9]
+
+Exception: ArgumentError
+Message: Invalid argument passed to method.
+Expected [:MOMIJI, 100] to be one of [Symbol, GameData::Species, String], but got Array.
+
+Backtrace:
+004_Validation.rb:29:in `validate'
+001_GameData.rb:100:in `get'
+001_Pokemon.rb:1160:in `initialize'
+003_Overworld_WildEncounters.rb:384:in `new'
+003_Overworld_WildEncounters.rb:384:in `pbGenerateWildPokemon'
+[Touhoumon Essentials Development Kit] 004_Overworld_EncounterModifiers.rb:135:in `block (2 levels) in <main>'
+[Touhoumon Essentials Development Kit] 004_Overworld_EncounterModifiers.rb:131:in `times'
+[Touhoumon Essentials Development Kit] 004_Overworld_EncounterModifiers.rb:131:in `block in <main>'
+005_Event_Handlers.rb:89:in `block in trigger'
+005_Event_Handlers.rb:89:in `each_value'
+
+=================
+
+[2025-06-14 01:52:15 -0700]
+[Pokémon Essentials version 21.1]
+[v21.1 Hotfixes 1.0.9]
+
+Exception: NoMethodError
+Message: undefined method `[]' for #<Pokemon ZFAIRY Lv.100>
+
+Backtrace:
+[Touhoumon Essentials Development Kit] 004_Overworld_EncounterModifiers.rb:138:in `block (2 levels) in <main>'
+[Touhoumon Essentials Development Kit] 004_Overworld_EncounterModifiers.rb:131:in `times'
+[Touhoumon Essentials Development Kit] 004_Overworld_EncounterModifiers.rb:131:in `block in <main>'
+005_Event_Handlers.rb:89:in `block in trigger'
+005_Event_Handlers.rb:89:in `each_value'
+005_Event_Handlers.rb:89:in `trigger'
+006_Event_HandlerCollections.rb:63:in `trigger'
+003_Overworld_WildEncounters.rb:447:in `pbGenerateWildPokemon'
+001_Overworld_BattleStarting.rb:422:in `block in generate_foes'
+001_Overworld_BattleStarting.rb:414:in `each'
+
+=================
+
+[2025-06-14 01:54:14 -0700]
+[Pokémon Essentials version 21.1]
+[v21.1 Hotfixes 1.0.9]
+
+Exception: SystemStackError
+Message: stack level too deep
+
+Backtrace:
+
+=================
+
+[2025-06-14 01:55:33 -0700]
+[Pokémon Essentials version 21.1]
+[v21.1 Hotfixes 1.0.9]
+
+Exception: SystemStackError
+Message: stack level too deep
+
+Backtrace:
+
+=================
+
+[2025-06-14 01:56:38 -0700]
+[Pokémon Essentials version 21.1]
+[v21.1 Hotfixes 1.0.9]
+
+Exception: SystemStackError
+Message: stack level too deep
+
+Backtrace:
+
+=================
+
+[2025-06-14 01:58:26 -0700]
+[Pokémon Essentials version 21.1]
+[v21.1 Hotfixes 1.0.9]
+
+Exception: SystemStackError
+Message: stack level too deep
+
+Backtrace:
+
+=================
+
+[2025-06-14 01:59:14 -0700]
+[Pokémon Essentials version 21.1]
+[v21.1 Hotfixes 1.0.9]
+
+Exception: SystemStackError
+Message: stack level too deep
+
+Backtrace:
+
+=================
+
+[2025-06-14 01:59:43 -0700]
+[Pokémon Essentials version 21.1]
+[v21.1 Hotfixes 1.0.9]
+
+Exception: SystemStackError
+Message: stack level too deep
+
+Backtrace:
+
+=================
+
+[2025-06-14 02:00:31 -0700]
+[Pokémon Essentials version 21.1]
+[v21.1 Hotfixes 1.0.9]
+
+Exception: LocalJumpError
+Message: break from proc-closure
+
+Backtrace:
+[Touhoumon Essentials Development Kit] 004_Overworld_EncounterModifiers.rb:145:in `block in <main>'
+005_Event_Handlers.rb:89:in `block in trigger'
+005_Event_Handlers.rb:89:in `each_value'
+005_Event_Handlers.rb:89:in `trigger'
+006_Event_HandlerCollections.rb:63:in `trigger'
+003_Overworld_WildEncounters.rb:447:in `pbGenerateWildPokemon'
+001_Overworld_BattleStarting.rb:422:in `block in generate_foes'
+001_Overworld_BattleStarting.rb:414:in `each'
+001_Overworld_BattleStarting.rb:414:in `generate_foes'
+001_Overworld_BattleStarting.rb:357:in `start'
+
+=================
+
+[2025-06-14 02:00:57 -0700]
+[Pokémon Essentials version 21.1]
+[v21.1 Hotfixes 1.0.9]
+
+Exception: LocalJumpError
+Message: unexpected return
+
+Backtrace:
+[Touhoumon Essentials Development Kit] 004_Overworld_EncounterModifiers.rb:145:in `block in <main>'
+005_Event_Handlers.rb:89:in `block in trigger'
+005_Event_Handlers.rb:89:in `each_value'
+005_Event_Handlers.rb:89:in `trigger'
+006_Event_HandlerCollections.rb:63:in `trigger'
+003_Overworld_WildEncounters.rb:447:in `pbGenerateWildPokemon'
+001_Overworld_BattleStarting.rb:422:in `block in generate_foes'
+001_Overworld_BattleStarting.rb:414:in `each'
+001_Overworld_BattleStarting.rb:414:in `generate_foes'
+001_Overworld_BattleStarting.rb:357:in `start'
+
+=================
+
+[2025-06-14 02:03:01 -0700]
+[Pokémon Essentials version 21.1]
+[v21.1 Hotfixes 1.0.9]
+
+Exception: NoMethodError
+Message: undefined method `species' for [:MOKOU, 100]:Array
+
+Backtrace:
+[Touhoumon Essentials Development Kit] 004_Overworld_EncounterModifiers.rb:132:in `block (2 levels) in <main>'
+[Touhoumon Essentials Development Kit] 004_Overworld_EncounterModifiers.rb:131:in `times'
+[Touhoumon Essentials Development Kit] 004_Overworld_EncounterModifiers.rb:131:in `block in <main>'
+005_Event_Handlers.rb:89:in `block in trigger'
+005_Event_Handlers.rb:89:in `each_value'
+005_Event_Handlers.rb:89:in `trigger'
+006_Event_HandlerCollections.rb:63:in `trigger'
+[TAoA Core] 001_Overworld.rb:9:in `pbBattleOnStepTaken'
+[Delta Speed Up] _Main_Script.rb:83:in `pbBattleOnStepTaken'
+001_Overworld.rb:185:in `pbOnStepTaken'
+
+=================
+
+[2025-06-14 02:03:33 -0700]
+[Pokémon Essentials version 21.1]
+[v21.1 Hotfixes 1.0.9]
+
+Exception: NoMethodError
+Message: undefined method `species' for :LUNA:Symbol
+
+Backtrace:
+[Touhoumon Essentials Development Kit] 004_Overworld_EncounterModifiers.rb:132:in `block (2 levels) in <main>'
+[Touhoumon Essentials Development Kit] 004_Overworld_EncounterModifiers.rb:131:in `times'
+[Touhoumon Essentials Development Kit] 004_Overworld_EncounterModifiers.rb:131:in `block in <main>'
+005_Event_Handlers.rb:89:in `block in trigger'
+005_Event_Handlers.rb:89:in `each_value'
+005_Event_Handlers.rb:89:in `trigger'
+006_Event_HandlerCollections.rb:63:in `trigger'
+[TAoA Core] 001_Overworld.rb:9:in `pbBattleOnStepTaken'
+[Delta Speed Up] _Main_Script.rb:83:in `pbBattleOnStepTaken'
+001_Overworld.rb:185:in `pbOnStepTaken'
+
+=================
+
+[2025-06-14 02:04:06 -0700]
+[Pokémon Essentials version 21.1]
+[v21.1 Hotfixes 1.0.9]
+
+Exception: NoMethodError
+Message: undefined method `species' for [:ALICE, 100]:Array
+
+Backtrace:
+[Touhoumon Essentials Development Kit] 004_Overworld_EncounterModifiers.rb:132:in `block (2 levels) in <main>'
+[Touhoumon Essentials Development Kit] 004_Overworld_EncounterModifiers.rb:131:in `times'
+[Touhoumon Essentials Development Kit] 004_Overworld_EncounterModifiers.rb:131:in `block in <main>'
+005_Event_Handlers.rb:89:in `block in trigger'
+005_Event_Handlers.rb:89:in `each_value'
+005_Event_Handlers.rb:89:in `trigger'
+006_Event_HandlerCollections.rb:63:in `trigger'
+[TAoA Core] 001_Overworld.rb:9:in `pbBattleOnStepTaken'
+[Delta Speed Up] _Main_Script.rb:83:in `pbBattleOnStepTaken'
+001_Overworld.rb:185:in `pbOnStepTaken'
+
+=================
+
+[2025-06-14 02:06:25 -0700]
+[Pokémon Essentials version 21.1]
+[v21.1 Hotfixes 1.0.9]
+
+Exception: NoMethodError
+Message: undefined method `encounter_data' for #<PokemonEncounters>
+
+Backtrace:
+[Touhoumon Essentials Development Kit] 004_Overworld_EncounterModifiers.rb:136:in `block in <main>'
+005_Event_Handlers.rb:89:in `block in trigger'
+005_Event_Handlers.rb:89:in `each_value'
+005_Event_Handlers.rb:89:in `trigger'
+006_Event_HandlerCollections.rb:63:in `trigger'
+[TAoA Core] 001_Overworld.rb:9:in `pbBattleOnStepTaken'
+[Delta Speed Up] _Main_Script.rb:83:in `pbBattleOnStepTaken'
+001_Overworld.rb:185:in `pbOnStepTaken'
+008_Game_Player.rb:552:in `update_event_triggering'
+008_Game_Player.rb:428:in `update'
+
+=================
+
+[2025-06-14 02:07:36 -0700]
+[Pokémon Essentials version 21.1]
+[v21.1 Hotfixes 1.0.9]
+
+Exception: NoMethodError
+Message: undefined method `enctypes' for #<PokemonEncounters>
+
+Backtrace:
+[Touhoumon Essentials Development Kit] 004_Overworld_EncounterModifiers.rb:136:in `block in <main>'
+005_Event_Handlers.rb:89:in `block in trigger'
+005_Event_Handlers.rb:89:in `each_value'
+005_Event_Handlers.rb:89:in `trigger'
+006_Event_HandlerCollections.rb:63:in `trigger'
+[TAoA Core] 001_Overworld.rb:9:in `pbBattleOnStepTaken'
+[Delta Speed Up] _Main_Script.rb:83:in `pbBattleOnStepTaken'
+001_Overworld.rb:185:in `pbOnStepTaken'
+008_Game_Player.rb:552:in `update_event_triggering'
+008_Game_Player.rb:428:in `update'
+
+=================
+
+[2025-06-14 02:16:52 -0700]
+[Pokémon Essentials version 21.1]
+
+Error in Plugin: [Touhoumon Essentials Development Kit]
+Exception: SyntaxError
+Message: [Touhoumon Essentials Development Kit] 004_Overworld_EncounterModifiers.rb:155: syntax error, unexpected '}'
+
+Backtrace:
+005_PluginManager.rb:635:in `eval'
+005_PluginManager.rb:635:in `block (2 levels) in runPlugins'
+005_PluginManager.rb:625:in `each'
+005_PluginManager.rb:625:in `block in runPlugins'
+005_PluginManager.rb:616:in `each'
+005_PluginManager.rb:616:in `runPlugins'
+999_Main.rb:35:in `mainFunctionDebug'
+999_Main.rb:19:in `block in mainFunction'
+003_Errors.rb:79:in `pbCriticalCode'
+999_Main.rb:19:in `mainFunction'
+
+=================
+
+[2025-06-14 02:18:32 -0700]
+[Pokémon Essentials version 21.1]
+[v21.1 Hotfixes 1.0.9]
+
+Exception: NoMethodError
+Message: undefined method `owned' for #<Player Puppet Handler Ayaka @party=[:ADREISEN, :ASUMIREKO, :RIKAKO, :NEPGEAR, :SAYA, :SHINKI]>
+
+Backtrace:
+[Touhoumon Essentials Development Kit] 004_Overworld_EncounterModifiers.rb:156:in `block in <main>'
+005_Event_Handlers.rb:89:in `block in trigger'
+005_Event_Handlers.rb:89:in `each_value'
+005_Event_Handlers.rb:89:in `trigger'
+006_Event_HandlerCollections.rb:63:in `trigger'
+[TAoA Core] 001_Overworld.rb:9:in `pbBattleOnStepTaken'
+[Delta Speed Up] _Main_Script.rb:83:in `pbBattleOnStepTaken'
+001_Overworld.rb:185:in `pbOnStepTaken'
+008_Game_Player.rb:552:in `update_event_triggering'
+008_Game_Player.rb:428:in `update'
+
+=================
+
+[2025-06-14 02:33:12 -0700]
+[Pokémon Essentials version 21.1]
+[v21.1 Hotfixes 1.0.9]
+
+Exception: NoMethodError
+Message: undefined method `owned' for #<Player Puppet Handler Ayaka @party=[:ADREISEN, :ASUMIREKO, :RIKAKO, :NEPGEAR, :SAYA, :SHINKI]>
+
+Backtrace:
+[Touhoumon Essentials Development Kit] 004_Overworld_EncounterModifiers.rb:163:in `block (2 levels) in <main>'
+[Touhoumon Essentials Development Kit] 004_Overworld_EncounterModifiers.rb:160:in `times'
+[Touhoumon Essentials Development Kit] 004_Overworld_EncounterModifiers.rb:160:in `block in <main>'
+005_Event_Handlers.rb:89:in `block in trigger'
+005_Event_Handlers.rb:89:in `each_value'
+005_Event_Handlers.rb:89:in `trigger'
+006_Event_HandlerCollections.rb:63:in `trigger'
+[TAoA Core] 001_Overworld.rb:9:in `pbBattleOnStepTaken'
+[Delta Speed Up] _Main_Script.rb:83:in `pbBattleOnStepTaken'
+001_Overworld.rb:185:in `pbOnStepTaken'
+
+=================
+
+[2025-06-14 02:37:36 -0700]
+[Pokémon Essentials version 21.1]
+[v21.1 Hotfixes 1.0.9]
+
+Exception: NameError
+Message: undefined local variable or method `new_enc' for main:Object
+
+Backtrace:
+[Touhoumon Essentials Development Kit] 004_Overworld_EncounterModifiers.rb:167:in `block in <main>'
+005_Event_Handlers.rb:89:in `block in trigger'
+005_Event_Handlers.rb:89:in `each_value'
+005_Event_Handlers.rb:89:in `trigger'
+006_Event_HandlerCollections.rb:63:in `trigger'
+[TAoA Core] 001_Overworld.rb:9:in `pbBattleOnStepTaken'
+[Delta Speed Up] _Main_Script.rb:83:in `pbBattleOnStepTaken'
+001_Overworld.rb:193:in `block (2 levels) in load_scripts_from_folder'
+005_Event_Handlers.rb:89:in `block in trigger'
+005_Event_Handlers.rb:89:in `each_value'

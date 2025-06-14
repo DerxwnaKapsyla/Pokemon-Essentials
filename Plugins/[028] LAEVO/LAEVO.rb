@@ -271,9 +271,11 @@ class PokemonPartyPanel < Sprite
     return if @pokemon.egg? || (@text && @text.length > 0)
     # HP numbers
     hp_text = sprintf("% 3d /% 3d", @pokemon.hp, @pokemon.totalhp)
+	pbSetSmallFont(@overlaysprite.bitmap)
     pbDrawTextPositions(@overlaysprite.bitmap,
                         [[hp_text, 224, 66, :right, TEXT_BASE_COLOR, TEXT_SHADOW_COLOR]])
-    # HP bar
+    pbSetSystemFont(@overlaysprite.bitmap)
+	# HP bar
     if @pokemon.able?
       w = @pokemon.hp * HP_BAR_WIDTH / @pokemon.totalhp.to_f
       w = 1 if w < 1

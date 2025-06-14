@@ -63,6 +63,7 @@ def deactivate_trainer_sprites
 end
 
 def dkBossRush
+  setBattleRule("canLose")
   index = $game_variables[BossRush::BOSS_FIGHT_VARIABLE]
   $game_temp.vs_transition_bg = "Elite"
   setBattleRule("setSlideSprite", "still")
@@ -121,11 +122,15 @@ def dkBossRush
     trainer_string = VALUE_TO_FIGHT[index]
     if eval("TrainerBattle.start(#{trainer_string})")
       $game_variables[BossRush::BOSS_FIGHT_VARIABLE] += 1
+	else
+	  $game_variables[BossRush::BOSS_FIGHT_VARIABLE] = 99
     end
   else # Once all trainer battles are finished, start the final Meimu battle
     if eval("WildBattle.start(:MEIMU, 100)")
 	  $game_variables[BossRush::BOSS_FIGHT_VARIABLE] += 1
-	end
+	else
+	  $game_variables[BossRush::BOSS_FIGHT_VARIABLE] = 99
+    end
   end
   pbTrainerEnd
 end

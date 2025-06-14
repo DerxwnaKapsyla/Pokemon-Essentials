@@ -120129,6 +120129,58 @@ List of Event Commands:
 @>
 
 #------------------------------------------------------------------------------
+Event ID: 003
+Event Name: EV003
+(X,Y): (019,016)
+
+Page #1
+Conditions
+None
+
+Autonomous Movement
+Type: Fixed
+Speed: 3: Slow
+Freq: 3: Low
+Options Enabled
+Move Animation
+Trigger: Action Button
+
+List of Event Commands:
+@>Script: cn1 = name1
+:       : cn2 = name2
+:       : cn3 = name3
+:       : ...
+:       : cn12 = name12
+:       : 
+:       : c1 = 0
+:       : c2 = 0
+:       : c3 = 0
+@>Loop
+ @>Text: \ts[]\c[c1,c2,c3] \v[cn1] \v[cn2] \v[cn3]
+ @>Control Variables: [0001: Temp Pokemon Choice] += 1
+ @>Conditional Branch: Variable [0001: Temp Pokemon Choice] == 20
+  @>
+ : Branch End
+ @>Script: c1 += 10
+ :       : c2 += 10
+ :       : c3 += 10
+ @>
+: Repeat Above
+@>Wait: 20 frame(s)
+@>Loop
+ @>Text: \ts[]\c[c1,c2,c3] \v[cn1] \v[cn2] \v[cn3]
+ @>Control Variables: [0001: Temp Pokemon Choice] += 1
+ @>Conditional Branch: Variable [0001: Temp Pokemon Choice] == 20
+  @>
+ : Branch End
+ @>Script: c1 -= 10
+ :       : c2 -= 10
+ :       : c3 -= 10
+ @>
+: Repeat Above
+@>
+
+#------------------------------------------------------------------------------
 Event ID: 004
 Event Name: Trainer 1
 (X,Y): (012,029)
@@ -120890,7 +120942,7 @@ List of Event Commands:
 @>Loop
  @>Wait: 10 frame(s)
  @>Script: dkBossRush
- @>Conditional Branch: Variable [0145: Boss Rush Variable] == 34
+ @>Conditional Branch: Variable [0145: Boss Rush Variable] >= 34
   @>Break Loop
   @>
  : Branch End
@@ -120907,9 +120959,43 @@ List of Event Commands:
  @>Text: You won!
  @>Recover All: Entire Party
  @>
+: Else
+ @>Text: You lost...
+ @>Set Move Route: Player
+  :              : $>Move Up
+  :              : $>Move Up
+  :              : $>Move Up
+  :              : $>Move Up
+  :              : $>Move Up
+  :              : $>Move Up
+ @>Wait for Move's Completion
+ @>Set Move Route: [Ulti. Trial Receptionist]
+  :              : $>Move Right
+  :              : $>Move Up
+ @>Wait for Move's Completion
+ @>Set Move Route: [Trainer 1]
+  :              : $>Move Down
+  :              : $>Move Down
+  :              : $>Move Down
+  :              : $>Move Down
+ @>Set Move Route: [Trainer 2]
+  :              : $>Move Down
+  :              : $>Move Down
+  :              : $>Move Down
+  :              : $>Move Down
+ @>Set Move Route: [Trainer 3]
+  :              : $>Move Down
+  :              : $>Move Down
+  :              : $>Move Down
+  :              : $>Move Down
+ @>Wait for Move's Completion
+ @>Control Variables: [0145: Boss Rush Variable] = 0
+ @>Script: deactivate_trainer_sprites
+ @>
 : Branch End
 @>Script: Settings::HEAL_STORED_POKEMON = false
 :       : echoln Settings::HEAL_STORED_POKEMON
+@>Control Switches: [0168: Ulti.Trial Active] = OFF
 @>
 
 #------------------------------------------------------------------------------
@@ -120935,6 +121021,133 @@ List of Event Commands:
 @>Wait: 8 frame(s)
 @>Transfer Player:[019: World of Fantasies], (019,021), Down, No Fade
 @>Change Screen Color Tone: (0,0,0,0), @6
+@>
+
+#------------------------------------------------------------------------------
+
+#==============================================================================
+Map ID: 153
+Map Name: World of Fantasies
+Tileset: 038: World of Fantasies
+Width: 36, Height: 50
+Auto-Change BGM: W-042. Primate Spirit Garden
+
+#------------------------------------------------------------------------------
+Event ID: 001
+Event Name: Item
+(X,Y): (018,015)
+
+Page #1
+Conditions
+None
+
+Graphic: Object ball
+
+Autonomous Movement
+Type: Fixed
+Speed: 3: Slow
+Freq: 3: Low
+Options Enabled
+Move Animation
+Trigger: Action Button
+
+List of Event Commands:
+@>Conditional Branch: Script: pbItemBall(:MASTERORB)
+ @>Control Self Switch: A =ON
+ @>
+: Else
+ @>
+: Branch End
+@>
+
+Page #2
+Conditions
+Self Switch A is ON
+
+Autonomous Movement
+Type: Fixed
+Speed: 3: Slow
+Freq: 3: Low
+Options Enabled
+Move Animation
+Trigger: Action Button
+
+List of Event Commands:
+@>
+
+#------------------------------------------------------------------------------
+Event ID: 002
+Event Name: EV002
+(X,Y): (017,037)
+
+Page #1
+Conditions
+None
+
+Autonomous Movement
+Type: Fixed
+Speed: 3: Slow
+Freq: 3: Low
+Options Enabled
+Move Animation
+Trigger: Parallel Process
+
+List of Event Commands:
+@>Change Map Settings:Panorama = 'WoF', 0
+@>
+
+#------------------------------------------------------------------------------
+Event ID: 003
+Event Name: EV003
+(X,Y): (017,022)
+
+Page #1
+Conditions
+None
+
+Autonomous Movement
+Type: Fixed
+Speed: 3: Slow
+Freq: 3: Low
+Options Enabled
+Move Animation
+Trigger: Action Button
+
+List of Event Commands:
+@>Text: \sign[sign]Garden of Dreams\nPuppets from across your 
+ :    : journey can be found here!
+@>
+
+#------------------------------------------------------------------------------
+Event ID: 004
+Event Name: EV004
+(X,Y): (013,012)
+
+Page #1
+Conditions
+None
+
+Graphic: TPDP_NPC 34
+
+Autonomous Movement
+Type: Custom
+Custom Move Route:
+(Repeat Action)
+$>Turn at Random
+
+Speed: 3: Slow
+Freq: 4: High
+Options Enabled
+Move Animation
+Trigger: Action Button
+
+List of Event Commands:
+@>Text: I heard that the people on the Moon have this elixir that can draw 
+ :    : out Puppets you haven't caught before.
+@>Text: There's also rumors that it "blesses them with the power of the
+ :    : stars", whatever that means.
+@>Text: You won't catch me trying to invade the Moon though! I've heard
+ :    : the horror stories.
 @>
 
 #------------------------------------------------------------------------------

@@ -123,3 +123,43 @@ EventHandlers.add(:on_trainer_load, :meimu_master_override,
     end
   }
 )
+
+EventHandlers.add(:on_wild_species_chosen, :get_unique_encounter,
+  proc { |pkmn|
+  
+  species = pkmn[0]
+  level   = pkmn[1]
+  
+  echoln "Checking if player has relevant item..."
+  next false if !$bag.has?(:ANCIENTLUNARSAKE)
+  echoln "Confirmed. Player has relevant item. Proceeding with modifier."
+  
+  echoln "Initial encounter: #{species}, Level #{level}."
+  echoln "Checking if player owns #{species}..."
+  
+  if $player.owned?(species)
+    echoln "Confirmed. #{species} is owned by the player."
+	echoln "Executing reroll procedure."
+	
+	new_enc = nil
+	500.times do
+	  try_enc = $PokemonEncounters.choose_wild_pokemon($PokemonEncounters.encounter_type, 1)
+	  echoln "New encounter: #{try_enc}"
+	  unless $player.owned?(try_enc[0])
+	    new_enc = try_enc
+		break
+	  end
+	end
+	
+	if new_enc
+	  echoln "Setting new encounter to #{new_enc[0]}."
+	  pkmn[0] = new_enc[0]
+	  pkmn[1] = new_enc[1]
+	else
+	  echoln "Limit on checks reached. Keeping original encounter."
+	end
+  else
+    echoln "Negative. #{species} is not owned by the player."
+  end
+  }
+)
