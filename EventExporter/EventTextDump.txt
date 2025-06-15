@@ -32805,7 +32805,7 @@ Auto-Change BGM: W-019. This Dull World's Unchanging Pessemism (Alternate) (TPDP
 #------------------------------------------------------------------------------
 Event ID: 001
 Event Name: EV001
-(X,Y): (033,016)
+(X,Y): (026,016)
 
 Page #1
 Conditions
@@ -41850,7 +41850,7 @@ Trigger: Event Touch
 List of Event Commands:
 @>Script: pbTrainerIntro(:FAIRY_2_ALT)
 @>Script: pbNoticePlayer(get_self)
-@>Text: Would you like to play? :bunnylover:
+@>Text: Would you like to play? <icon=bunnylover.png>\[ffffffff].
 @>Conditional Branch: Script: TrainerBattle.start(:FAIRY_2_ALT, "Miru",pbGet(99))
  @>Control Self Switch: A =ON
  @>
@@ -121147,6 +121147,204 @@ List of Event Commands:
  :    : stars", whatever that means.
 @>Text: You won't catch me trying to invade the Moon though! I've heard
  :    : the horror stories.
+@>
+
+#------------------------------------------------------------------------------
+Event ID: 005
+Event Name: Tournament Clerk
+(X,Y): (018,022)
+
+Page #1
+Conditions
+None
+
+Graphic: TPDP_NPC 08
+
+Autonomous Movement
+Type: Fixed
+Speed: 3: Slow
+Freq: 3: Low
+Options Enabled
+Move Animation
+Trigger: Action Button
+
+List of Event Commands:
+@>Label: Signup?
+@>Text: Welcome to the Festival Tournament registration kiosk!
+@>Text: Are you here to sign up for the Tournament?
+@>Show Choices: Yes, Rules, No
+(When Cancel: Choice 3)
+: When [Yes]
+ @>Text: Well, you're just in time, we needed one more participant for this
+  :    : upcoming tournament! If you're fully prepared, I can show you to the
+  :    : arena.
+ @>Show Choices: I'm ready to enter!, I need more time...
+ (When Cancel: Choice 2)
+ : When [I'm ready to enter!]
+  @>Text: Wonderful! Allow me to show you in, then!
+  @>Play SE: 'Door exit', 100, 100
+  @>Change Screen Color Tone: (-255,-255,-255,0), @6
+  @>Wait: 8 frame(s)
+  @>Transfer Player:[044: Festival Tournament Arena], (014,021), Up, No Fade
+  @>Change Screen Color Tone: (0,0,0,0), @6
+  @>
+ : When [I need more time...]
+  @>Text: Well, hurry back! We only have one more available slot, 
+   :    : and it might get taken!
+  @>
+ : Branch End
+ @>
+: When [Rules]
+ @>Text: The rules are simple! You may enter with any number of
+  :    : Puppets, and have to fight your way through three rounds
+  :    : of battles. 
+ @>Text: In our innaugural tournament, the final fight will be against the
+  :    : leader of the Tournament.
+ @>Text: If you lose any fight, your run will be forefit and you
+  :    : will have to start over from the beginning.
+ @>Text: If you win, you will be awarded with Festival Points, which can
+  :    : be exchanged for goods provided at the festival.
+ @>Jump to Label: Signup?
+ @>
+: When [No]
+ @>
+: Branch End
+@>
+
+Page #2
+Conditions
+Switch 0118: 1st Tourney. beat is ON
+
+Graphic: TPDP_NPC 08
+
+Autonomous Movement
+Type: Fixed
+Speed: 3: Slow
+Freq: 3: Low
+Options Enabled
+Move Animation
+Trigger: Action Button
+
+List of Event Commands:
+@>Label: Signup?
+@>Text: Welcome to the Festival Tournament registration kiosk!
+@>Text: Are you here to register for a tournament?
+@>Show Choices: Yes, Explain Rules, No
+(When Cancel: Choice 3)
+: When [Yes]
+ @>Script: startPWT
+ @>
+: When [Explain Rules]
+ @>Text: The rules are simple! 
+ @>Text: Those associated with the Tournament Committe have established
+  :    : four difficulty brackets for prospective challengers. Within each of
+  :    : those brackets you may choose a specific party ruleset to complete
+  :    : your registration.
+ @>Text: The rulesets are Singles, which is where all participants bring in
+  :    : three Puppets and do battles one on one.
+ @>Text: Doubles, where participants bring in four Puppets and do
+  :    : battles two on two.
+ @>Text: Full, which is where Participants can bring in up to their entire
+  :    : party and do battles one on one.
+ @>Text: And Sudden Death, which is where all participants bring in
+  :    : one Puppet and do battle with that one Puppet for the entire
+  :    : Tournament.
+ @>Text: If you win, you will be awarded with Festival Points relative
+  :    : to the difficulty you have registered for. Plus, if you maintain
+  :    : a consistent win streak then your points will be multiplied!
+ @>Text: However, if you lose, your run will be forefit and your
+  :    : win streak will also reset.
+ @>Text: With that said...
+ @>Jump to Label: Signup?
+ @>
+: When [No]
+ @>
+: Branch End
+@>
+
+Page #3
+Conditions
+Self Switch A is ON
+
+Graphic: TPDP_NPC 08
+
+Autonomous Movement
+Type: Fixed
+Speed: 3: Slow
+Freq: 3: Low
+Options Enabled
+Move Animation
+Trigger: Action Button
+
+List of Event Commands:
+@>Text: You're just in time! Everyone is already gathered inside the
+ :    : Arena and is waiting for your match with Miss Minoriko!
+@>Text: Are you ready to enter?
+@>Show Choices: I'm ready to enter!, I need more time...
+(When Cancel: Choice 2)
+: When [I'm ready to enter!]
+ @>Text: Alright, good luck in there!
+ @>Play SE: 'Door exit', 100, 100
+ @>Change Screen Color Tone: (-255,-255,-255,0), @6
+ @>Wait: 8 frame(s)
+ @>Transfer Player:[044: Festival Tournament Arena], (010,013), Right, No Fade
+ @>
+: When [I need more time...]
+ @>Text: Don't take too long! This is probably the most anticipated
+  :    : event of the festival right now!
+ @>
+: Branch End
+@>
+
+Page #4
+Conditions
+Switch 0119: Minoriko Beaten is ON
+
+Graphic: TPDP_NPC 08
+
+Autonomous Movement
+Type: Fixed
+Speed: 3: Slow
+Freq: 3: Low
+Options Enabled
+Move Animation
+Trigger: Action Button
+
+List of Event Commands:
+@>Label: Signup?
+@>Text: Welcome to the Festival Tournament registration kiosk!
+@>Text: Are you here to register for a tournament?
+@>Show Choices: Yes, Explain Rules, No
+(When Cancel: Choice 3)
+: When [Yes]
+ @>Script: startPWT
+ @>
+: When [Explain Rules]
+ @>Text: The rules are simple! 
+ @>Text: Those associated with the Tournament Committe have established
+  :    : four difficulty brackets for prospective challengers. Within each of
+  :    : those brackets you may choose a specific party ruleset to complete
+  :    : your registration.
+ @>Text: The rulesets are Singles, which is where all participants bring in
+  :    : three Puppets and do battles one on one.
+ @>Text: Doubles, where participants bring in four Puppets and do
+  :    : battles two on two.
+ @>Text: Full, which is where Participants can bring in up to their entire
+  :    : party and do battles one on one.
+ @>Text: And Sudden Death, which is where all participants bring in
+  :    : one Puppet and do battle with that one Puppet for the entire
+  :    : Tournament.
+ @>Text: If you win, you will be awarded with Festival Points relative
+  :    : to the difficulty you have registered for. Plus, if you maintain
+  :    : a consistent win streak then your points will be multiplied!
+ @>Text: However, if you lose, your run will be forefit and your
+  :    : win streak will also reset.
+ @>Text: With that said...
+ @>Jump to Label: Signup?
+ @>
+: When [No]
+ @>
+: Branch End
 @>
 
 #------------------------------------------------------------------------------
