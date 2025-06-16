@@ -12138,7 +12138,7 @@ Trigger: Event Touch
 List of Event Commands:
 @>Script: pbTrainerIntro(:FAIRY2)
 @>Script: pbNoticePlayer(get_self)
-@>Text: People say you can clip flying-type Puppets' wings with a jolt of electricity...I won't allow such insults!
+@>Text: People say you can clip Aero-type Puppets' wings with a jolt of electricity...I won't allow such insults!
 @>Comment: EndSpeech: ...Darn! My cherished bird Puppets...
 @>Conditional Branch: Script: TrainerBattle.start(:FAIRY2, "Aria",pbGet(99))
  @>Control Self Switch: A =ON
@@ -16006,25 +16006,7 @@ List of Event Commands:
 @>Comment: However, unlike the other batch, this one will increase your 
  :       : team's Accuracy for the next seven battles.
 @>Comment: Just a small thing to take advantage of Essentials Deluxe!
-@>Conditional Branch: Switch [0110: Lamprey Eaten] == ON
- @>Text: You can't eat another plate, you're too full!
- @>
-: Else
- @>Text: There seems to be a bunch of Grilled Lamprey here.
- @>Text: Eat some?
- @>Show Choices: Yes, No
- (When Cancel: Choice 2)
- : When [Yes]
-  @>Text: Upon eating the lamprey, you notice that the darkness 
-   :    : begins to shrink!
-  @>Script: changeDarkCircleRadiusSlowly(192)
-  @>Control Switches: [0110: Lamprey Eaten] = ON
-  @>
- : When [No]
-  @>
- : Branch End
- @>
-: Branch End
+@>Call Common Event: Lamprey Event
 @>
 
 Page #2
