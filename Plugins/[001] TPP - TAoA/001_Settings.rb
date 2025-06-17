@@ -10,6 +10,7 @@
 #==============================================================================#
 module Settings
 MAX_BATTLE_POINTS    = 99_999
+SMARTER_WILD_LEGENDARY_POKEMON = true
 #  SHINY_POKEMON_CHANCE = $PokemonGlobal.sake ? 256 : 16 # If active, increase rate 16-fold.
                                                         # This should be a reasonable amount, right?
 														

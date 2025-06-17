@@ -103,7 +103,7 @@ def dkBossRush
     $PokemonSystem.battlescene = 0
     setBattleRule("editWildPokemon", {
       :hp_level => 3,
-      :immunities => [:OHKO, :ITEMREMOVAL, :POISON, :ATTRACT, :PPLOSS, :TYPECHANGE, :ABILITYREMOVAL,                :INDIRECT, :DISABLE, :SELFKO, :TRANSFORM, :ESCAPE],
+      :immunities => [:OHKO, :ITEMREMOVAL, :POISON, :ATTRACT, :PPLOSS, :TYPECHANGE, :ABILITYREMOVAL,:INDIRECT, :DISABLE, :SELFKO, :TRANSFORM, :ESCAPE],
       :gender => 1,
       :shiny => false,
       :iv => 31,
@@ -116,6 +116,8 @@ def dkBossRush
     setBattleRule("victoryBGM", "")
     setBattleRule("midbattleScript", :vs_meimu_bossrush)
 	$PokemonGlobal.nextBattleBGM = "B-044. Finale ~ For The End.ogg"
+	$game_switches[Settings::SPECIAL_BATTLE_SWITCH] = true
+	pbSet(Settings::SPECIAL_BATTLE_VARIABLE,5)
   end
   
   if index < VALUE_TO_FIGHT.length

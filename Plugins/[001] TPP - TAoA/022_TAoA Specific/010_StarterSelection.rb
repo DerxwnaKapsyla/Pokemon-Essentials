@@ -12,7 +12,7 @@ class StarterSelection
     6  => :CREISEN,
     7  => :CMOKOU,
     8  => :CRINNOSUKE,
-    9  => :CAKYUU,
+    9  => :AKYUU,
     10 => :CAYA,
     11 => :CSANAE,
     12 => :CKOISHI,

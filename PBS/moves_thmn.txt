@@ -4461,7 +4461,7 @@ Type = PHANTASM
 Category = Special
 Power = 110
 Accuracy = 85
-TotalPP = 99
+TotalPP = 10
 Target = NearOther
 FunctionCode = UltimateDream
 Flags = CanProtect,CanMirrorMove
@@ -4504,3 +4504,13 @@ FunctionCode = TrapTargetAndInflictPerishSong
 Flags = CanProtect,CanMirrorMove
 EffectChance = 100
 Description = The foe falls into a trance that will entrap them and may result in them fainting in three turns.
+#-------------------------------
+[METRONOME18_alt]
+Name = Metronome
+Type = PHANTASM
+Category = Status
+Accuracy = 0
+TotalPP = 10
+Target = User
+FunctionCode = UseRandomMove_alt
+Description = The user waggles a finger and stimulates its brain into randomly using nearly any move.

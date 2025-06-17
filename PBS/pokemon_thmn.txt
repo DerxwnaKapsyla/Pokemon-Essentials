@@ -11888,7 +11888,7 @@ Shape = Bipedal
 Category = Sheep
 Pokedex = A Puppet based off Meeko, a girl who doesn't exist in this reality. Supposedly she has the ability to induce sleep in foes. Has a strong affinity with Makura Puppets.
 Generation = 20
-Flags = Puppet,Mythical
+Flags = ExcludeFromRandomSearch,Puppet,Mythical,CannotReincarnate
 #-------------------------------
 [MAKURA]
 Name = Makura
@@ -11910,7 +11910,7 @@ Color = Blue
 Category = Baku
 Pokedex = A Puppet based off of Makura Muwatari, a girl who doesn't exist in this reality. Supposedly has the ability to manipulate dreams. Has a strong affinity with Meeko Puppets.
 Generation = 20
-Flags = Puppet,Mythical
+Flags = ExcludeFromRandomSearch,Puppet,Mythical,CannotReincarnate
 #-------------------------------
 [MITORI]
 Name = Mitori
@@ -11932,7 +11932,7 @@ Color = Red
 Category = Kappa
 Pokedex = A Puppet based off of Mitori Kawashiro, a girl who doesn't exist in this reality. Supposedly has the ability to prohibit anything. Shunned by Humans and Youkai as a result of being a half-breed.
 Generation = 20
-Flags = Puppet,Mythical
+Flags = ExcludeFromRandomSearch,Puppet,Mythical,CannotReincarnate
 #-------------------------------
 [SASHA]
 Name = Sasha
@@ -11954,7 +11954,7 @@ Color = Blue
 Category = Daidarabotchi
 Pokedex = A Puppet based off of Sasha Sashiromiya, a girl who doesn't exist in this reality. Supposedly has the ability to manipulate shadows. Claims that she was almost responsible for an incident once.
 Generation = 20
-Flags = Puppet,Mythical
+Flags = ExcludeFromRandomSearch,Puppet,Mythical,CannotReincarnate
 #-------------------------------
 [KAREN]
 Name = Karen
@@ -11976,7 +11976,7 @@ Color = Yellow
 Category = Bodhisattva
 Pokedex = A Puppet based off of Karen Yawata, a girl who doesn't exist in this reality. Supposedly capable of traveling faster than the speed of light. Not much else is known about her.
 Generation = 20
-Flags = Puppet,Mythical
+Flags = ExcludeFromRandomSearch,Puppet,Mythical,CannotReincarnate
 #-------------------------------
 [NEJIRETA]
 Name = Nejireta
@@ -11997,6 +11997,7 @@ Weight = 200.0
 Color = Black
 Category = Eldritch
 Pokedex = A Puppet based off of Nejireta Uzumaki, a girl who doesn't exist in this reality. Supposedly has the ability to manipulate helixes, whatever that means. Does not get along with Satsuki Puppets.
+Flags = ExcludeFromRandomSearch,Puppet,Mythical,CannotReincarnate
 #-------------------------------
 [MASHA]
 Name = Masha
@@ -12017,7 +12018,7 @@ Weight = 130.0
 Color = Red
 Category = Mushroom
 Pokedex = A Puppet based off of Masha Kinoko, a girl who doesn't exist in this reality. Supposedly able to use mushrooms and their spores to influence others.
-Flags = Puppet,Mythical
+Flags = ExcludeFromRandomSearch,Puppet,Mythical,CannotReincarnate
 #-------------------------------
 [SUGAR]
 Name = Sugar
@@ -12036,8 +12037,9 @@ HatchSteps = 5120
 Height = 1.5
 Weight = 130.0
 Color = Purple
-Category = Filtered
+Category = Filtering
 Pokedex = A Puppet based off of Sugar Satellite, a girl who doesn't exist in this reality. Supposedly has the ability to alter one's perception, but is not very good at it. The fourth of the Three Fairies of Light.
+Flags = ExcludeFromRandomSearch,Puppet,Mythical,CannotReincarnate
 #-------------------------------
 [TORAKO]
 Name = Torako
@@ -12058,7 +12060,7 @@ Weight = 130.0
 Color = Red
 Category = Traffic Cone
 Pokedex = A Puppet based off of Torako, a girl who doesn't exist in this reality. Abilities are entirely unknown, as any who approach her are overwhelmed by her adorableness. Appreciation days have been set up in her honor.
-Flags = Puppet,Mythical
+Flags = ExcludeFromRandomSearch,Puppet,Mythical,CannotReincarnate
 #-------------------------------
 [MEIMU]
 Name = Meimu
@@ -12067,11 +12069,11 @@ BaseStats = 150,110,125,140,120,100
 GenderRatio = Genderless
 GrowthRate = Parabolic
 BaseExp = 255
-EVs = HP,3
+EVs = HP,3,SPECIAL_ATTACK,3,SPECIAL_DEFENSE,3
 CatchRate = 1
 Happiness = 0
 Abilities = PHANTASMDREAM
-Moves = 1,ULTIMATEDREAM,1,ENERGYBALL18,1,EXTRASENSORY18
+Moves = 1,ULTIMATEDREAM,1,ENERGYBALL18,1,EXTRASENSORY18,1,METRONOME18_alt
 EggGroups = Undiscovered
 HatchSteps = 5120
 Height = 1.3
@@ -12081,4 +12083,4 @@ Shape = Bipedal
 Category = Dream
 Pokedex = A Puppet based off of Meimu, a girl who doesn't exist in this reality. Supposedly has the ability to manipulate the boundary between fantasy and reality.
 Generation = 20
-Flags = Puppet,Mythical
+Flags = ExcludeFromRandomSearch,Puppet,Mythical,CannotReincarnate,SmarterWildAI

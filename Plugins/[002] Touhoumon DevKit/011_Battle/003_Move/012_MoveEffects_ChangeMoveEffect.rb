@@ -134,6 +134,7 @@ class Battle::Move::UseLastMoveUsed < Battle::Move
       "UseRandomUserMoveIfAsleep",                         # Sleep Talk
       "UseRandomMoveFromUserParty",                        # Assist
       "UseRandomMove",                                     # Metronome
+	  "UseRandomMove_alt",                                 # Metronome (alt)
       # Move-redirecting and stealing moves
       "BounceBackProblemCausingStatusMoves",               # Magic Coat         # Not listed on Bulbapedia
       "StealAndUseBeneficialStatusMove",                   # Snatch
@@ -211,6 +212,7 @@ class Battle::Move::UseRandomMove < Battle::Move
       "UseRandomUserMoveIfAsleep",                         # Sleep Talk
       "UseRandomMoveFromUserParty",                        # Assist
       "UseRandomMove",                                     # Metronome
+	  "UseRandomMove_alt",                                 # Metronome (alt)
       # Move-redirecting and stealing moves
       "BounceBackProblemCausingStatusMoves",               # Magic Coat         # Not listed on Bulbapedia
       "StealAndUseBeneficialStatusMove",                   # Snatch
@@ -277,6 +279,7 @@ class Battle::Move::UseRandomMoveFromUserParty < Battle::Move
       "UseRandomUserMoveIfAsleep",                         # Sleep Talk
       "UseRandomMoveFromUserParty",                        # Assist
       "UseRandomMove",                                     # Metronome
+	  "UseRandomMove_alt",                                 # Metronome (alt)
       # Move-redirecting and stealing moves
       "BounceBackProblemCausingStatusMoves",               # Magic Coat         # Not listed on Bulbapedia
       "StealAndUseBeneficialStatusMove",                   # Snatch
