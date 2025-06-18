@@ -743,6 +743,7 @@ SpecialBattleIntroAnimations.register("vs_wild_boss", 90,   # Priority 80
     species = foe[0].species
 	form    = foe[0].form
 	base_path = "Graphics/Transitions/DTS/PTs"
+	next false if species == :MEIMU
 	
 	has_form_graphic = pbResolveBitmap("#{base_path}/Wild_#{species}_#{form}")
     has_species_graphic = pbResolveBitmap("#{base_path}/Wild_#{species}")

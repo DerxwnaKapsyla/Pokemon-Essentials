@@ -70,6 +70,7 @@ def dkBossRush
   # Vs. Transition Name Override
   case index
   when 13 then $game_temp.vs_name = "Vs. Hina Doppelganger"
+  when 14 then $game_temp.vs_name = "Vs. Three Fairies of Light"
   when 18 then $game_temp.vs_name = "Vs. Eirin & Reisen"
   when 24 then $game_temp.vs_name = "Vs. Junko & Hecatia Lapislazuli"
   when 27 then $game_temp.vs_name = "Vs. Watatsuki Sisters"

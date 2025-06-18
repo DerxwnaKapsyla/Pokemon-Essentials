@@ -770,7 +770,7 @@ List of Event Commands:
 @>Wait: 20 frame(s)
 @>Change Text Options: Bottom, Show
 @>Change Transparent Flag: Normal
-@>Script: $game_variable[122] = rand(3)+1 # Stage 6 Partner
+@>Script: pbSet(122,rand(3)+1) # Stage 6 Partner
 :       : case pbGet(122)
 :       : when 1 then pbSet(126, "Reimu")
 :       : when 2 then pbSet(126, "Marisa")
@@ -778,7 +778,7 @@ List of Event Commands:
 :       : when 4 then pbSet(126, "Reisen")
 :       : end
 :       : 
-:       : echoln Partner Trainer is #{pbGet(126}
+:       : echoln "Partner Trainer is #{pbGet(126)}"
 @>Transfer Player:[116: Exhibition Arena], (011,013), Right
 @>Change Screen Color Tone: (0,0,0,0), @6
 @>Script: reset_menu_theme
@@ -16546,6 +16546,71 @@ List of Event Commands:
 : Branch End
 @>
 
+Page #2
+Conditions
+Switch 0152: TLA Cleared is ON
+
+Autonomous Movement
+Type: Fixed
+Speed: 3: Slow
+Freq: 3: Low
+Options Enabled
+Move Animation
+Stop Animation
+Direction Fix
+Trigger: Event Touch
+
+List of Event Commands:
+@>Comment: Event Indicator
+ :       : question
+@>Set Move Route: Player
+ :              : $>Turn Down
+@>Fade Out BGM: 1 sec.
+@>Show Picture: 1, 'TLABg', Upper Left (0,0), (100%,100%), 0, Normal
+@>Show Picture: 2, 'TLA', Upper Left (0,0), (100%,100%), 0, Normal
+@>Change Screen Color Tone: (-255,-255,-255,0), @8
+@>Wait: 8 frame(s)
+@>Move Picture: 1, @8, Upper Left (0,0), (100%,100%), 255, Normal
+@>Wait: 20 frame(s)
+@>Move Picture: 2, @30, Upper Left (0,0), (100%,100%), 255, Normal
+@>Wait: 70 frame(s)
+@>Move Picture: 1, @1, Upper Left (0,0), (100%,100%), 0, Normal
+@>Text: \w[dark]Proceeding past this point will trigger the final segment of The 
+ :    : Adventures of Ayaka.
+@>Text: \w[dark]You will not be able to return to the prior three episodes once 
+ :    : this starts.
+@>Text: \w[dark]It is highly recommend that you make absolutely certain that you are 
+ :    : ready to progress.
+@>Text: \w[dark]Proceed into endgame?
+@>Show Choices: Yes, No
+(When Cancel: Choice 2)
+: When [Yes]
+ @>Script: $player.scenario_name = "The Last Adventure"
+ @>Script: playSpecialBGM("quiet_time")
+ @>Move Picture: 2, @30, Upper Left (0,0), (100%,100%), 0, Normal
+ @>Wait: 30 frame(s)
+ @>Change Screen Color Tone: (-255,-255,-255,0), @8
+ @>Wait: 15 frame(s)
+ @>Script: TLAIntroScene.new
+ @>Wait: 1 frame(s)
+ @>Control Switches: [0095: White Fade Out] = OFF
+ @>Control Switches: [0096: Stop Music Refresh] = OFF
+ @>Control Variables: [0142..0144] = 0
+ @>Control Switches: [0153..0161] = OFF
+ @>Script: $PokemonGlobal.clear_reset_maps
+ @>Script: $PokemonGlobal.encounter_version = pbGet(99)
+ :       : echoln pbGet(99)
+ :       : echoln $PokemonGlobal.encounter_version
+ @>Transfer Player:[136: Tower of Adventure (Roof)], (019,029)
+ @>Change Screen Color Tone: (0,0,0,0), @8
+ @>
+: When [No]
+ @>Set Move Route: Player
+  :              : $>Move Up
+ @>
+: Branch End
+@>
+
 #------------------------------------------------------------------------------
 Event ID: 013
 Event Name: EV013
@@ -16840,7 +16905,7 @@ Event Name: The Adventures of Ayaka
 
 Page #1
 Conditions
-None
+Switch 0152: TLA Cleared is ON
 
 Autonomous Movement
 Type: Fixed
@@ -21671,9 +21736,8 @@ List of Event Commands:
 @>Text: \xn[\pn]All... three at once?\wt[20] Alright, let's do this then!
 @>Script: setBattleRule("double")
 @>Recover All: Entire Party
-@>Control Switches: [0104: Transition Handler] = ON
-@>Control Variables: [0103: Vs. Transition ID] = 5
-@>Control Variables: [0104: Vs. Transition - Pkmn] = 6
+@>Script: $game_temp.vs_transition_bg = "RWM_1"
+:       : $game_temp.vs_name = "Vs. Prismriver Sisters"
 @>Conditional Branch: Script: TrainerBattle.start(:PRISMRIVER, "Prismriver Sisters", 10+(pbGet(99) * 10))
  @>
 : Else
@@ -32737,12 +32801,35 @@ List of Event Commands:
 
 #------------------------------------------------------------------------------
 Event ID: 049
-Event Name: Item:REVIVE
+Event Name: Item
 (X,Y): (055,029)
 
 Page #1
 Conditions
 None
+
+Graphic: Object ball
+
+Autonomous Movement
+Type: Fixed
+Speed: 3: Slow
+Freq: 3: Low
+Options Enabled
+Move Animation
+Trigger: Action Button
+
+List of Event Commands:
+@>Conditional Branch: Script: pbItemBall(:REVIVE)
+ @>Control Self Switch: A =ON
+ @>
+: Else
+ @>
+: Branch End
+@>
+
+Page #2
+Conditions
+Self Switch A is ON
 
 Autonomous Movement
 Type: Fixed
@@ -32757,12 +32844,35 @@ List of Event Commands:
 
 #------------------------------------------------------------------------------
 Event ID: 050
-Event Name: Item:ULTRAORB
+Event Name: Item
 (X,Y): (032,022)
 
 Page #1
 Conditions
 None
+
+Graphic: Object ball
+
+Autonomous Movement
+Type: Fixed
+Speed: 3: Slow
+Freq: 3: Low
+Options Enabled
+Move Animation
+Trigger: Action Button
+
+List of Event Commands:
+@>Conditional Branch: Script: pbItemBall(:ULTRAORB)
+ @>Control Self Switch: A =ON
+ @>
+: Else
+ @>
+: Branch End
+@>
+
+Page #2
+Conditions
+Self Switch A is ON
 
 Autonomous Movement
 Type: Fixed
@@ -52211,14 +52321,15 @@ List of Event Commands:
  :    : our true power!
 @>Wait for Move's Completion
 @>Text: \xn[Sunny]Combined, we three can't ever be beat!
-@>Control Switches: [0104: Transition Handler] = ON
-@>Control Variables: [0103: Vs. Transition ID] = 18
-@>Control Variables: [0104: Vs. Transition - Pkmn] = 6
+@>Script: $game_temp.vs_transition_bg = "Plains"
+:       : $game_temp.vs_name = "Vs. Three Fairies of Light"
+@>Change Text Options: Middle, Show
 @>Script: setBattleRule("2v3")
 :       : setBattleRule("midbattleScript", :VS_THREE_FAIRIES)
 @>Control Self Switch: A =ON
 @>Conditional Branch: Script: TrainerBattle.start(:THREEFAIRY,"of Light", 10+(pbGet(99) * 10))
  @>Control Self Switch: B =ON
+ @>Change Text Options: Bottom, Show
  @>Text: \xn[\pn]Hah... hah... There, I won!
  @>Text: \xn[Sunny]Wow! It's been a long time since someone managed
   :    : to beat the three of us at the same time!
@@ -52287,6 +52398,7 @@ List of Event Commands:
  @>
 : Branch End
 @>Script: pbTrainerEnd
+@>Change Text Options: Bottom, Show
 @>
 
 Page #2
@@ -52337,12 +52449,13 @@ List of Event Commands:
  :              : $>Turn Down
 @>Text: \xn[Sunny]Star!\wt[20] Luna!\wt[16] Let's show this Human
  :    : why they shouldn't mess with us three!
-@>Control Switches: [0104: Transition Handler] = ON
-@>Control Variables: [0103: Vs. Transition ID] = 18
-@>Control Variables: [0104: Vs. Transition - Pkmn] = 6
+@>Script: $game_temp.vs_transition_bg = "Plains"
+:       : $game_temp.vs_name = "Vs. Three Fairies of Light"
+@>Change Text Options: Middle, Show
 @>Script: setBattleRule("2v3")
 @>Control Self Switch: A =ON
 @>Conditional Branch: Script: TrainerBattle.start(:THREEFAIRY,"of Light", 10+(pbGet(99) * 10))
+ @>Change Text Options: Bottom, Show
  @>Control Self Switch: B =ON
  @>Text: \xn[\pn]Hah... hah... There, I won!
  @>Text: \xn[Sunny]Wow! It's been a long time since someone managed
@@ -52412,6 +52525,7 @@ List of Event Commands:
  @>
 : Branch End
 @>Script: pbTrainerEnd
+@>Change Text Options: Bottom, Show
 @>
 
 Page #3
@@ -89669,7 +89783,6 @@ List of Event Commands:
 @>Text: - Doremy Sweet
 @>Change Text Options: Bottom, Show
 @>Control Switches: [0164: Dreams within Dreams] = ON
-@>Control Variables: [0121: TKoL Plot Variable] = 99
 @>Script: pbSetSelfSwitch(2,"A",true)
 @>Change Screen Color Tone: (0,0,0,0), @10
 @>Control Self Switch: A =ON
@@ -89751,7 +89864,8 @@ Direction Fix
 Trigger: Player Touch
 
 List of Event Commands:
-@>Conditional Branch: Variable [0142: TLA Plot Variable] >= 99
+@>Conditional Branch: Switch [0164: Dreams within Dreams] == ON
+ @>Script: playSpecialBGM("quiet_time")
  @>Play SE: 'teleporter', 60, 100
  @>Change Screen Color Tone: (-255,-255,-255,0), @6
  @>Wait: 8 frame(s)
@@ -89770,6 +89884,8 @@ List of Event Commands:
  @>Set Move Route: Player
   :              : $>Move Down
  @>Wait for Move's Completion
+ @>Script: deactivateSpecialBGM("quiet_time")
+ @>Script: playSpecialBGM("MotT")
  @>Control Switches: [0163: No Going Back] = ON
  @>
 : Else
@@ -90391,60 +90507,6 @@ List of Event Commands:
  @>
 : Branch End
 @>Script: pbMusharnaShop_tla
-@>
-
-#------------------------------------------------------------------------------
-Event ID: 011
-Event Name: EV011
-(X,Y): (000,017)
-
-Page #1
-Conditions
-None
-
-Graphic: Object ball
-
-Autonomous Movement
-Type: Fixed
-Speed: 3: Slow
-Freq: 3: Low
-Options Enabled
-Move Animation
-Trigger: Action Button
-
-List of Event Commands:
-@>Play SE: 'Exit Door', 80, 100
-@>Change Screen Color Tone: (-255,-255,-255,0), @6
-@>Wait: 8 frame(s)
-@>Transfer Player:[149: Testing Map], (010,001), No Fade
-@>Change Screen Color Tone: (0,0,0,0), @6
-@>
-
-#------------------------------------------------------------------------------
-Event ID: 012
-Event Name: EV012
-(X,Y): (023,009)
-
-Page #1
-Conditions
-None
-
-Graphic: Object ball
-
-Autonomous Movement
-Type: Fixed
-Speed: 3: Slow
-Freq: 3: Low
-Options Enabled
-Move Animation
-Trigger: Action Button
-
-List of Event Commands:
-@>Play SE: 'Exit Door', 80, 100
-@>Change Screen Color Tone: (-255,-255,-255,0), @6
-@>Wait: 8 frame(s)
-@>Transfer Player:[149: Testing Map], (021,009), No Fade
-@>Change Screen Color Tone: (0,0,0,0), @6
 @>
 
 #------------------------------------------------------------------------------
@@ -103950,17 +104012,20 @@ List of Event Commands:
  : When [Yes]
   @>Text: ...Understood. Enjoy your lunatic dream for as long as it lasts.
   @>Control Variables: [0105: Game Selected] = 3
+  @>Fade Out BGM: 1 sec.
   @>Move Picture: 1, @20, Upper Left (0,0), (100%,100%), 0, Normal
   @>Wait: 20 frame(s)
+  @>Change Transparent Flag: Transparency
   @>Transfer Player:[005: The Kingdom of Lunacy], (001,001)
-  @>Conditional Branch: Switch [0147: TKoL Cleared] == OFF
-   @>Control Variables: [0099: NG+ Loop] += 1
-   @>
-  : Branch End
   @>Control Switches: [0098: Music Override] = OFF
   @>Control Variables: [0121..0135] = 0
   @>Control Switches: [0141..0142] = OFF
   @>Control Switches: [0144: Clownpiece Checkpoint] = OFF
+  @>Script: $PokemonGlobal.clear_reset_maps
+  @>Script: $PokemonGlobal.encounter_version = pbGet(99)
+  :       : echoln pbGet(99)
+  :       : echoln $PokemonGlobal.encounter_version
+  :       : deactivateSpecialBGM("MotT")
   @>
  : When [No]
   @>Move Picture: 1, @20, Upper Left (0,0), (100%,100%), 0, Normal
@@ -103978,68 +104043,6 @@ List of Event Commands:
 @>
 
 Page #2
-Conditions
-None
-
-Autonomous Movement
-Type: Fixed
-Speed: 3: Slow
-Freq: 3: Low
-Options Enabled
-Move Animation
-Trigger: Player Touch
-
-List of Event Commands:
-@>Text: This teleporter... seems to still be working!
-@>Show Picture: 1, 'TKoL', Upper Left (0,0), (100%,100%), 0, Normal
-@>Move Picture: 1, @20, Upper Left (0,0), (100%,100%), 255, Normal
-@>Wait: 60 frame(s)
-@>Change Text Options: Bottom, Show
-@>Text: The Kingdom of Lunacy.\wt[20]\nIs this the adventure you'd like to play?
-@>Show Choices: Yes, No
-(When Cancel: Choice 2)
-: When [Yes]
- @>Text: And you're sure about this? Don't you have better things to do
-  :    : right now?
- @>Show Choices: Yes, No
- (When Cancel: Choice 2)
- : When [Yes]
-  @>Text: ...Understood. Enjoy your lunatic dream for as long as it lasts.
-  @>Control Variables: [0105: Game Selected] = 3
-  @>Fade Out BGM: 1 sec.
-  @>Move Picture: 1, @20, Upper Left (0,0), (100%,100%), 0, Normal
-  @>Wait: 20 frame(s)
-  @>Change Transparent Flag: Transparency
-  @>Transfer Player:[005: The Kingdom of Lunacy], (001,001)
-  @>Conditional Branch: Switch [0147: TKoL Cleared] == OFF
-   @>Control Variables: [0099: NG+ Loop] += 1
-   @>
-  : Branch End
-  @>Control Switches: [0098: Music Override] = OFF
-  @>Control Variables: [0121..0135] = 0
-  @>Control Switches: [0141..0142] = OFF
-  @>Control Switches: [0144: Clownpiece Checkpoint] = OFF
-  @>Script: $PokemonGlobal.clear_reset_maps
-  @>Script: $PokemonGlobal.encounter_version = pbGet(99)
-  :       : echoln pbGet(99)
-  :       : echoln $PokemonGlobal.encounter_version
-  @>
- : When [No]
-  @>Move Picture: 1, @20, Upper Left (0,0), (100%,100%), 0, Normal
-  @>Wait: 20 frame(s)
-  @>Jump to Label: Start
-  @>
- : Branch End
- @>
-: When [No]
- @>Move Picture: 1, @20, Upper Left (0,0), (100%,100%), 0, Normal
- @>Wait: 20 frame(s)
- @>Jump to Label: Start
- @>
-: Branch End
-@>
-
-Page #3
 Conditions
 Switch 0163: No Going Back is ON
 
@@ -104109,10 +104112,11 @@ Move Animation
 Trigger: Action Button
 
 List of Event Commands:
+@>Script: initialize_pwt_stats
 @>Script: $game_variables[1] = $game_switches[126] ? "Yes" : "No"
-:       : $game_variables[2] = $game_switches[127] ? "Yes" : "No"
+:       : $game_variables[2] = $stats.pwt_wins[:Lunatic_Diff] > 0 ? "Yes" : "No"
 :       : $game_variables[3] = $game_switches[128] ? "Yes" : "No"
-@>Conditional Branch: Variable [0116: TFoC Plot Variable] >= 99
+@>Conditional Branch: Switch [0139: TFoC Cleared] == ON
  @>Text: \sign[signskin]\l[5]<ac>The Festival of Curses</ac>\nStatus: Cleared
   :    : \nGensokyo's Brightest: \v[1]
   :    : \nVillage's Strongest: \v[2]
@@ -104150,7 +104154,7 @@ List of Event Commands:
  @>Text: \sign[signskin]\l[5]<ac>The Kingdom of Lunacy</ac>\nStatus: Cleared
   :    : \nWent Off Script: \v[1]
   :    : \nForward and Back: \v[2]
-  :    : \n-----: \v[3]
+  :    : \nFound a friend!: \v[3]
  @>
 : Else
  @>Text: \sign[signskin]<ac>The Kingdom of Lunacy</ac>\n
@@ -104408,102 +104412,6 @@ List of Event Commands:
 @>
 
 #------------------------------------------------------------------------------
-Event ID: 012
-Event Name: EV012
-(X,Y): (020,006)
-
-Page #1
-Conditions
-None
-
-Autonomous Movement
-Type: Fixed
-Speed: 3: Slow
-Freq: 3: Low
-Options Enabled
-Move Animation
-Trigger: Player Touch
-
-List of Event Commands:
-@>Show Picture: 1, 'TKoL', Upper Left (0,0), (100%,100%), 0, Normal
-@>Move Picture: 1, @20, Upper Left (0,0), (100%,100%), 255, Normal
-@>Wait: 60 frame(s)
-@>Change Text Options: Bottom, Show
-@>Text: The Kingdom of Lunacy.\wt[20]\nIs this the adventure you'd like to play?
-@>Show Choices: Yes, No
-(When Cancel: Choice 2)
-: When [Yes]
- @>Control Variables: [0105: Game Selected] = 3
- @>Fade Out BGM: 1 sec.
- @>Move Picture: 1, @20, Upper Left (0,0), (100%,100%), 0, Normal
- @>Wait: 20 frame(s)
- @>Change Transparent Flag: Transparency
- @>Transfer Player:[005: The Kingdom of Lunacy], (001,001)
- @>Conditional Branch: Switch [0147: TKoL Cleared] == OFF
-  @>Control Variables: [0099: NG+ Loop] += 1
-  @>
- : Branch End
- @>Control Variables: [0121..0135] = 0
- @>Control Switches: [0141..0142] = OFF
- @>Control Switches: [0144: Clownpiece Checkpoint] = OFF
- @>
-: When [No]
- @>Move Picture: 1, @20, Upper Left (0,0), (100%,100%), 0, Normal
- @>Wait: 20 frame(s)
- @>Jump to Label: Start
- @>
-: Branch End
-@>
-
-Page #2
-Conditions
-None
-
-Autonomous Movement
-Type: Fixed
-Speed: 3: Slow
-Freq: 3: Low
-Options Enabled
-Move Animation
-Trigger: Player Touch
-
-List of Event Commands:
-@>Show Picture: 1, 'TKoL', Upper Left (0,0), (100%,100%), 0, Normal
-@>Move Picture: 1, @20, Upper Left (0,0), (100%,100%), 255, Normal
-@>Wait: 60 frame(s)
-@>Change Text Options: Bottom, Show
-@>Text: The Kingdom of Lunacy.\wt[20]\nIs this the adventure you'd like to play?
-@>Show Choices: Yes, No
-(When Cancel: Choice 2)
-: When [Yes]
- @>Script: $player.scenario_name = "The Kingdom of Lunacy"
- @>Control Variables: [0105: Game Selected] = 3
- @>Fade Out BGM: 1 sec.
- @>Move Picture: 1, @20, Upper Left (0,0), (100%,100%), 0, Normal
- @>Wait: 20 frame(s)
- @>Change Transparent Flag: Transparency
- @>Transfer Player:[005: The Kingdom of Lunacy], (001,001)
- @>Conditional Branch: Switch [0147: TKoL Cleared] == OFF
-  @>Control Variables: [0099: NG+ Loop] += 1
-  @>
- : Branch End
- @>Control Variables: [0121..0135] = 0
- @>Control Switches: [0141..0142] = OFF
- @>Control Switches: [0144: Clownpiece Checkpoint] = OFF
- @>Script: $PokemonGlobal.clear_reset_maps
- @>Script: $PokemonGlobal.encounter_version = pbGet(99)
- :       : echoln pbGet(99)
- :       : echoln $PokemonGlobal.encounter_version
- @>
-: When [No]
- @>Move Picture: 1, @20, Upper Left (0,0), (100%,100%), 0, Normal
- @>Wait: 20 frame(s)
- @>Jump to Label: Start
- @>
-: Branch End
-@>
-
-#------------------------------------------------------------------------------
 
 #==============================================================================
 Map ID: 137
@@ -104515,7 +104423,7 @@ Auto-Change BGM: W-017. Seeds of the Incident
 #------------------------------------------------------------------------------
 Event ID: 001
 Event Name: The Rift
-(X,Y): (015,012)
+(X,Y): (015,020)
 
 Page #1
 Conditions
@@ -104608,7 +104516,7 @@ Trigger: Autorun
 List of Event Commands:
 @>Play BGS: 'Vortex', 80, 100
 @>Script: pbSetSelfSwitch(36,"A",false)
-@>Wait: 20 frame(s)
+@>Wait: 25 frame(s)
 @>Set Event Location: [Ayaka (Cutscene)],(015,031)
 @>Scroll Map: Down, 9, 2
 @>Set Event Location: [Meimu 1],(015,021)
@@ -111444,9 +111352,14 @@ Trigger: Action Button
 
 List of Event Commands:
 @>Script: $game_temp.vs_transition_bg = "Plains"
+:       : $game_temp.vs_name = "Vs. Three Fairies of Light"
+@>Change Text Options: Middle, Show
+@>Change Battle BGM: 'B-024. Great Fairy Wars', 100, 100
 @>Conditional Branch: Script: TrainerBattle.start(:SUNNYT, "Sunny Milk", 10, :START, "Star Sapphire", 10, :LUNAT, "Luna Child", 10)
+ @>Change Text Options: Bottom, Show
  @>
 : Else
+ @>Change Text Options: Bottom, Show
  @>Script: pbTrainerEnd
  @>Exit Event Processing
  @>
@@ -111667,6 +111580,95 @@ List of Event Commands:
 :       : echoln Settings::HEAL_STORED_POKEMON
 @>
 
+Page #2
+Conditions
+None
+
+Graphic: Object ball
+
+Autonomous Movement
+Type: Fixed
+Speed: 3: Slow
+Freq: 3: Low
+Options Enabled
+Move Animation
+Trigger: Action Button
+
+List of Event Commands:
+@>Control Switches: [0095: White Fade Out] = OFF
+@>Control Switches: [0096: Stop Music Refresh] = OFF
+@>Control Variables: [0142: TLA Plot Variable] = 0
+@>Control Variables: [0143: Meimu Battle Count] = 0
+@>Control Switches: [0157: Battling Meimu] = OFF
+@>
+
+#------------------------------------------------------------------------------
+Event ID: 052
+Event Name: EV052
+(X,Y): (024,008)
+
+Page #1
+Conditions
+None
+
+Graphic: Person_Sunny
+
+Autonomous Movement
+Type: Fixed
+Speed: 3: Slow
+Freq: 3: Low
+Options Enabled
+Move Animation
+Trigger: Action Button
+
+List of Event Commands:
+@>Script: $game_temp.vs_transition_bg = "Plains"
+:       : $game_temp.vs_name = "Vs. Three Fairies of Light"
+@>Change Text Options: Middle, Show
+@>Change Battle BGM: 'B-024. Great Fairy Wars', 100, 100
+@>Conditional Branch: Script: TrainerBattle.start(:THREEFAIRY,"of Light", 30)
+ @>Change Text Options: Bottom, Show
+ @>
+: Else
+ @>Change Text Options: Bottom, Show
+ @>Script: pbTrainerEnd
+ @>Exit Event Processing
+ @>
+: Branch End
+@>
+
+#------------------------------------------------------------------------------
+Event ID: 053
+Event Name: EV053
+(X,Y): (024,010)
+
+Page #1
+Conditions
+None
+
+Graphic: Person_Lunasa
+
+Autonomous Movement
+Type: Fixed
+Speed: 3: Slow
+Freq: 3: Low
+Options Enabled
+Move Animation
+Trigger: Action Button
+
+List of Event Commands:
+@>Script: $game_temp.vs_transition_bg = "RWM_1"
+:       : $game_temp.vs_name = "Vs. Prismriver Sisters"
+@>Conditional Branch: Script: TrainerBattle.start(:PRISMRIVER, "Prismriver Sisters", 30)
+ @>Script: pbTrainerEnd
+ @>Exit Event Processing
+ @>
+: Else
+ @>Script: pbTrainerEnd
+ @>
+: Branch End
+@>
+
 #------------------------------------------------------------------------------
 
 #==============================================================================
@@ -111702,7 +111704,7 @@ List of Event Commands:
 
 Page #2
 Conditions
-Self Switch A is ON
+Switch 0162: Ayylmao caught is ON
 
 Autonomous Movement
 Type: Fixed
@@ -111777,10 +111779,10 @@ List of Event Commands:
 @>Script: $game_temp.vs_transition_bg = "LunarSurface"
 @>Script: WildBattle.start(:DEOXYS,95)
 @>Conditional Branch: Variable [0001: Temp Pokemon Choice] == 4
- @>Script: pbSetSelfSwitch(1,"A",true)
- @>Play SE: 'gust', 70, 100
- @>Wait: 8 frame(s)
  @>Control Switches: [0162: Ayylmao caught] = ON
+ @>Play SE: 'gust', 70, 100
+ @>Change Screen Color Tone: (-255,-255,-255,0), @8
+ @>Wait: 8 frame(s)
  @>Control Self Switch: A =ON
  @>Transfer Player:[111: Dream World], (020,009), No Fade
  @>Change Screen Color Tone: (0,0,0,0), @6
@@ -112418,7 +112420,7 @@ List of Event Commands:
 
 Page #2
 Conditions
-None
+Switch 0152: TLA Cleared is ON
 
 Graphic: TPDP_NPC 35
 
@@ -118084,7 +118086,13 @@ List of Event Commands:
   @>Control Variables: [0141: Scenarios Cleared] += 1
   @>
  : Branch End
+ @>Control Switches: [0095: White Fade Out] = OFF
+ @>Control Switches: [0096: Stop Music Refresh] = OFF
+ @>Control Variables: [0142: TLA Plot Variable] = 0
+ @>Control Variables: [0143: Meimu Battle Count] = 0
+ @>Control Switches: [0157: Battling Meimu] = OFF
  @>Change Text Options: Bottom, Show
+ @>Script: $player.scenario_name = "None"
  @>Transfer Player:[019: World of Fantasies], (019,020), Down
  @>Change Transparent Flag: Normal
  @>Change Screen Color Tone: (0,0,0,0), @8
