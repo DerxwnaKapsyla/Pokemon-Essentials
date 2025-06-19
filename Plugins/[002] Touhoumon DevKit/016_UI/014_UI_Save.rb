@@ -22,6 +22,10 @@ class PokemonSave_Scene
     if $player.has_pokedex
       loctext += _INTL("Pokédex<r><c3={1}>{2}/{3}</c3>", textColor, $player.pokedex.owned_count, $player.pokedex.seen_count)
     end
+	if $player.scenario_name != "None"
+	  loctext += _INTL("Episode Name:\n")
+	  loctext += _INTL("  <c3={1}>{2}</c3>",textColor, $player.scenario_name)
+	end
     @sprites["locwindow"] = Window_AdvancedTextPokemon.new(loctext)
     @sprites["locwindow"].viewport = @viewport
     @sprites["locwindow"].x = 0

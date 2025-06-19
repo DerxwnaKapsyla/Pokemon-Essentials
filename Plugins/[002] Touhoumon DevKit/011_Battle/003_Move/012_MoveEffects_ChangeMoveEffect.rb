@@ -153,13 +153,29 @@ class Battle::Move::UseLastMoveUsed < Battle::Move
       "BurnAttackerBeforeUserActs",                        # Beak Blast
       # Event moves that do nothing
       "DoesNothingFailsIfNoAlly",                          # Hold Hands
-      "DoesNothingCongratulations"                         # Celebrate
+      "DoesNothingCongratulations",                        # Celebrate
+	  # Final Boss Do Not Use These Moves Pls K Thx Bye
+	  "ProhibitorySignboard",                              # Do not call on Prohobitory Signboard.
+	  "WalpurgisNight",                                    # Do not call on Walpurgis Night.
+	  "Lightspeed",                                        # Do not call on Lightspeed.
+	  "CreepingMycelium",                                  # Do not call on Creeping Mycelium.
+	  "UltimateDream",                                     # I mean this one goes without saying!
+	  "MyriadDreams"                                       # Do not call on All The Myriad Dreams of Paradise.
     ]
     if Settings::MECHANICS_GENERATION >= 6
       @moveBlacklist += [
         # Target-switching moves
         "SwitchOutTargetStatusMove",                       # Roar, Whirlwind
         "SwitchOutTargetDamagingMove"                      # Circle Throw, Dragon Tail
+      ]
+	end
+	if $game_switches[102] &&
+	   pbGet(102, 5)       &&
+	   pbGet(142, 7)
+      @moveBlacklist += [
+	  # Do not call on moves that allow you to use ATMDOP
+	  "UseMoveDependingOnEnvironment",                     
+	  "UseMoveDependingOnEnvironmentThmn"
       ]
     end
   end

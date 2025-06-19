@@ -17023,7 +17023,7 @@ List of Event Commands:
 @>Fade Out BGM: 2 sec.
 @>Wait: 50 frame(s)
 @>Change Text Options: Middle, Hide
-@>Text: \se[]\l[3]<ac>Bad End: Unable To Beat Time\wt[30]\nNext time try for less than 20 defeats!!</ac>\wtnp[40]
+@>Text: \se[]\l[3]<ac>Bad End: Unable To Beat Time\wt[30]\nNext time try for less than 20 defeats!</ac>\wtnp[40]
 @>Wait: 20 frame(s)
 @>Script: $scene = Scene_Credits_TMoM.new
 @>Wait: 20 frame(s)
@@ -21775,7 +21775,7 @@ List of Event Commands:
  @>Script: $stats.trainer_battles_lost_tmom = pbGet(1)
  @>
 : Branch End
-@>Conditional Branch: Script: $stats.trainer_battles_lost_tmom >= 10
+@>Conditional Branch: Script: $stats.trainer_battles_lost_tmom >= 20
  @>Control Variables: [0107: TMoM Plot Variable] = 20
  @>Control Switches: [0113: Bad End Seen] = ON
  @>Comment: ------ ENGAGE BAD END A ------
@@ -24283,7 +24283,7 @@ List of Event Commands:
   @>Script: $stats.trainer_battles_lost_tmom = pbGet(1)
   @>
  : Branch End
- @>Conditional Branch: Script: $stats.trainer_battles_lost_tmom >= 10
+ @>Conditional Branch: Script: $stats.trainer_battles_lost_tmom >= 20
   @>Control Switches: [0113: Bad End Seen] = ON
   @>Comment: ---------- BAD END VARIANT B
   @>Text: \xn[Kogasa]Besides, it's not like you can scare 
@@ -118096,6 +118096,8 @@ List of Event Commands:
  @>Transfer Player:[019: World of Fantasies], (019,020), Down
  @>Change Transparent Flag: Normal
  @>Change Screen Color Tone: (0,0,0,0), @8
+ @>Script: Game.save
+ @>Recover All: Entire Party
  @>
 : Branch End
 @>
