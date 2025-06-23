@@ -130,7 +130,7 @@ module BattleAnimationEditor
       320, 0, 320, 128, canvas.viewport
     )
     maxsizewindow = ControlWindow.new(0, 416, 320, 32 * 3)
-    maxsizewindow.addSlider(_INTL("Total Animations:"), 1, 2000, animations.length)
+    maxsizewindow.addSlider(_INTL("Total Animations:"), 1, 3000, animations.length)
     maxsizewindow.addButton(_INTL("Resize Animation List"))
     maxsizewindow.opacity = 224
     maxsizewindow.viewport = canvas.viewport
@@ -1133,7 +1133,7 @@ module BattleAnimationEditor
         animwin.refresh
         sliderwin.refresh
       end
-      if sidewin.changed?(13)
+      if sidewin.changed?(13) || Input.press?(Input::SHIFT)
         pbExportAnim(animation)
         bottomwindow.refresh
         animwin.refresh

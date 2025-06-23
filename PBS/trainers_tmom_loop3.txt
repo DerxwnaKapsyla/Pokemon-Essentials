@@ -1,0 +1,975 @@
+﻿# See the documentation on the wiki to learn how to edit this file.
+#-------------------------------
+# The Mansion of Mystery
+# Loop 2 of New Game +
+#-------------------------------
+# Stage 1: Human Village
+#-------------------------------
+[PATROL2M,Kengo,3]
+LoseText = Bad, no!
+Pokemon = TNAZRIN,100
+Pokemon = KOSUZU,100
+Pokemon = AKEINE,100
+#-------------------
+[PATROL1M,Ryou,3]
+LoseText = Maybe you are going somewhere!
+Pokemon = SEIRAN,100
+Pokemon = MAMIZOU,100
+Pokemon = ADCHEN,100
+#-------------------
+[PATROL1M,Taketo,3]
+LoseText = What reason would you have to sneak out of the village to begin with!?
+Pokemon = KEINE,100
+Pokemon = AKYUU,100
+  Moves = MANABURST18,DRAINPUNCH18,ZENHEADBUTT18,AEROBLAST18
+Pokemon = DKEINE,100
+#-------------------
+[PATROL2M,Takumi,3]
+LoseText = Does nothing we say reach you?
+Pokemon = KYOUKO,100
+Pokemon = KOGASA,100
+Pokemon = DREIMU,100
+#-------------------
+[PATROL1F,Tsukimi,3]
+LoseText = Or you can walk off, I guess...
+Pokemon = NAZRIN,100
+Pokemon = KOGASA,100
+Pokemon = ADRAN,100
+#-------------------
+[PATROL1F,Asami,3]
+LoseText = Negatory, I lost them.
+Pokemon = KOSUZU,100
+Pokemon = RIKAKO,100
+Pokemon = HECATIA,100
+#-------------------
+[PATROL2F,Riko,3]
+LoseText = Mom and dad aren't gonna like this!
+Pokemon = TKYOUKO,100
+Pokemon = AKYUU,100
+  Moves = HYPERVOICE18,EXTRASENSORY18,PINMISSILE18,WISH18
+Pokemon = TRRENKO,100
+#-------------------
+[PATROL2F,Hinoka,3]
+LoseText =  "Let's go" did not mean run away from me!
+Pokemon = KOTOHIME,100
+Pokemon = MAMIZOU,100
+Pokemon = SMARISA,100
+Pokemon = TAYA,100
+#-------------------------------
+# Boss: Keine Kamishirasawa
+#-------------------------------
+[KEINE,Keine Kamishirasawa,40]
+LoseText = Keine: I suppose you do know how to use them responsibly after all!
+Pokemon = KEINE,100
+	Moves = SONICBOOM18,MANABURST18,CALMMIND18,WISH18
+	Nature = CALM
+	Item = LUMBERRY
+	IV = 31,31,31,31,31,31
+	EV = 252,0,0,0,4,252
+	Ability = GUARDARMOR
+Pokemon = DMOKOU,100
+	Moves = HEATWAVE18,ENERGYBALL18,RECOVER18,WILLOWISP18
+	Nature = BOLD
+	Item = LEFTOVERS
+	IV = 31,31,31,31,31,31
+	EV = 252,0,252,0,0,4
+	Ability = NATURALCURE
+Pokemon = KOSUZU,100
+	Moves = TRIATTACK18,ICEBEAM18,TOXIC18,SLACKOFF18
+	Nature = CALM
+	Item = ANTIFAITH
+	IV = 31,31,31,31,31,31
+	EV = 252,0,4,0,0,252
+	Ability = OWNTEMPO
+Pokemon = RINNOSUKE,100
+	Moves = DRAWNLINE18,IRONDEFENSE18,STRENGTH18,MIRRORCOAT18
+	Nature = IMPISH
+	Item = YATAMIRROR
+	IV = 31,31,31,31,31,31
+	EV = 252,4,252,0,0,0
+	Ability = COLLECTOR
+Pokemon = AREIMU,100
+    Moves = SOAR18,HIJUMPKICK18,OUTRAGE18,TAILWIND18
+	Nature = JOLLY
+	Item = LIFEORB
+	IV = 31,31,31,31,31,31
+	EV = 4,252,0,252,0,0
+Pokemon = AKEINE,100
+	Moves = DOUBLEEDGE18,HEADSMASH18,THUNDERPUNCH18,FIREPUNCH18
+	Nature = ADAMANT
+	Item = CHOICEBAND
+	IV = 31,31,31,31,31,31
+	EV = 4,252,0,252,0,0
+	Ability = ROCKHEAD
+#-------------------------------
+[KEINE,Keine Kamishirasawa,41]
+LoseText = Keine: I suppose being persistent is a form of responsibility...
+Pokemon = KEINE,100
+	Moves = SONICBOOM18,MANABURST18,CALMMIND18,WISH18
+	Nature = CALM
+	Item = LUMBERRY
+	IV = 31,31,31,31,31,31
+	EV = 252,0,0,0,4,252
+	Ability = GUARDARMOR
+Pokemon = DMOKOU,100
+	Moves = HEATWAVE18,ENERGYBALL18,RECOVER18,WILLOWISP18
+	Nature = BOLD
+	Item = LEFTOVERS
+	IV = 31,31,31,31,31,31
+	EV = 252,0,252,0,0,4
+	Ability = NATURALCURE
+Pokemon = KOSUZU,100
+	Moves = TRIATTACK18,ICEBEAM18,TOXIC18,SLACKOFF18
+	Nature = CALM
+	Item = ANTIFAITH
+	IV = 31,31,31,31,31,31
+	EV = 252,0,4,0,0,252
+	Ability = OWNTEMPO
+Pokemon = RINNOSUKE,100
+	Moves = DRAWNLINE18,IRONDEFENSE18,STRENGTH18,MIRRORCOAT18
+	Nature = IMPISH
+	Item = YATAMIRROR
+	IV = 31,31,31,31,31,31
+	EV = 252,4,252,0,0,0
+	Ability = COLLECTOR
+Pokemon = AREIMU,100
+    Moves = SOAR18,HIJUMPKICK18,OUTRAGE18,TAILWIND18
+	Nature = JOLLY
+	Item = LIFEORB
+	IV = 31,31,31,31,31,31
+	EV = 4,252,0,252,0,0
+Pokemon = AKEINE,100
+	Moves = DOUBLEEDGE18,HEADSMASH18,THUNDERPUNCH18,FIREPUNCH18
+	Nature = ADAMANT
+	Item = CHOICEBAND
+	IV = 31,31,31,31,31,31
+	EV = 4,252,0,252,0,0
+	Ability = ROCKHEAD
+#-------------------------------
+# Stage 2: Forest of Magic
+#-------------------------------
+[FAIRY1,Koko,3]
+LoseText = Pretty, and strong as well!
+Pokemon = AMYSTIA,100
+Pokemon = SCIRNO,100
+Pokemon = ADMYSTIA,100
+Pokemon = ADCIRNO,100
+#-------------------
+[FAIRY2,Tail,3]
+LoseText = White flag! White flag! All units retreat!
+Pokemon = RINGO,100
+Pokemon = ADAIYOUSEI,100
+Pokemon = SWRIGGLE,100
+Pokemon = STAR,100
+Pokemon = CIRNO,100
+#-------------------
+[FAIRY1,Rose,3]
+LoseText = A human in the forest...
+Pokemon = ALILYWHITE,100
+Pokemon = ALUNA,100
+Pokemon = ASTAR,100
+Pokemon = ASUNNY,100
+#-------------------
+[FAIRY1,Miria,3]
+LoseText = [Placeholder Dialogue]...?
+Pokemon = WRIGGLE,100
+Pokemon = SWRIGGLE,100
+Pokemon = DWRIGGLE,100
+#-------------------
+[FAIRY1,Honoka,3]
+LoseText = A...A-choo!
+Pokemon = DDAIYOUSEI,100
+Pokemon = SCIRNO,100
+Pokemon = MYSTIA,10
+Pokemon = SRUMIA,100
+Pokemon = WRIGGLE,100
+#-------------------
+[FAIRY2,Ibuki,3]
+LoseText = Nooo! My birdie's all hurt now!
+Pokemon = ADMYSTIA,100
+Pokemon = ATOKIKO,100
+#-------------------
+[FAIRY1,Aniya,3]
+LoseText = Eek! Is that dirt on my sleeve?!
+Pokemon = LUNA,100
+Pokemon = ALUNA,100
+Pokemon = TLUNA,100
+#-------------------------------
+# Boss: Marisa Kirisame
+#-------------------------------
+[MARISA,Marisa Kirisame,40]
+LoseText = Marisa: Not bad kiddo, not bad 't all.
+Pokemon = PATCHOULI,100
+    Moves = MANABURST18,FLAMETHROWER18,EARTHPOWER18,TRIATTACK18
+	Nature = MODEST
+	Item = ASSAULTVEST
+	IV = 31,31,31,31,31,31
+	EV = 252,0,0,0,252,4
+Pokemon = TALICE,100
+	Moves = MAGICKNIFE18,SWORDSDANCE18,ICEPUNCH18,FIREPUNCH18
+	Nature = JOLLY
+	Item = LUMBERRY
+	IV = 31,31,31,31,31,31
+	EV = 4,252,0,252,0,0
+	Ability = BARRIER
+Pokemon = RINNOSUKE,100
+	Moves = DRAWNLINE18,MINDBOMB18,SWORDSDANCE18,SHADOWHIT18
+	Nature = ADAMANT
+	Item = KUSANAGI
+	IV = 31,31,31,31,31,31
+	EV = 252,252,4,0,0,0
+	Ability = COLLECTOR
+Pokemon = ANITORI,100
+	Moves = WATERFALL18,VOLTTACKLE18,ICEPUNCH18,HEARTBREAK18
+	Nature = ADAMANT
+	Item = CHOICESCARF
+	IV = 31,31,31,31,31,31
+	EV = 4,252,0,252,0,0
+	Ability = RAINDISH
+Pokemon = MIMA,100
+	Moves = HYPERBEAM18,SHADOWBALL18,THUNDERBOLT18,TAUNT18
+	Nature = MODEST
+	Item = LEFTOVERS
+	IV = 31,31,31,31,31,31
+	EV = 252,0,0,0,252,4
+Pokemon = AMARISA,100
+	Moves = THUNDERBOLT18,HEATWAVE18,NASTYPLOT18,HYPERBEAM18
+	Nature = TIMID
+	Item = EXPERTBELT
+	IV = 31,31,31,31,31,31
+	EV = 4,0,0,252,252,0
+	Ability = COLLECTOR
+#-------------------------------
+# Stage 3: Misty Lake
+#-------------------------------
+[FAIRY1,Erina,3]
+LoseText = Eh? What do you mean that's the wrong kind of Misty?
+Pokemon = SMEILING,100
+Pokemon = LUNASA,100
+Pokemon = TFUTO,100
+Pokemon = SEIRAN,100
+#-------------------------------
+[FAIRY1,Noelle,3]
+LoseText = Our synergy wasn't enough? Unbelievable!
+Pokemon = ADAIYOUSEI,100
+Pokemon = SCIRNO,100
+Pokemon = SLILYBLACK,100
+Pokemon = ALILYWHITE,100
+#-------------------------------
+[FAIRY2,Rena,3]
+LoseText = Aw, is that a no?
+Pokemon = MUGETSU,100
+Pokemon = MOKOU,100
+Pokemon = HMYSTIA,100
+Pokemon = YUMEKO,100
+Pokemon = TSAKUYA,100
+#-------------------------------
+[FAIRY2,Izumi,3]
+LoseText = Ow! Ah biiht maah tunngue...
+Pokemon = KEINE,100
+Pokemon = DKANAKO,100
+Pokemon = AKASEN,100
+Pokemon = MAMIZOU,100
+#-------------------------------
+[FAIRY1,Himawari,3]
+LoseText = It...it IS spring, isn't it?
+Pokemon = LILYBLACK,100
+Pokemon = LILYWHITE,100
+Pokemon = SLILYBLACK,100
+Pokemon = ALILYWHITE,100
+#-------------------------------
+[FAIRY2,Kotori,3]
+LoseText = O8O Chiiirp!?
+Pokemon = AMYSTIA,100
+Pokemon = ATOKIKO,100
+Pokemon = THATATE,100
+Pokemon = TORI,100
+Pokemon = SUTSUHO,100
+#-------------------------------
+[FAIRY1,Aki,3]
+LoseText = Trampled like a fallen leaf...
+Pokemon = DMOMIJI,100
+Pokemon = KOGASA,100
+Pokemon = TKOKORO,100
+#-------------------------------
+[FAIRY1,Saya,3]
+LoseText = Wait, my IVs weren't good enough?
+Pokemon = KASEN,100
+Pokemon = APATCHOULI,100
+Pokemon = LYRICA,100
+Pokemon = TAYA,100
+#-------------------------------
+# Boss: Youmu Konpaku
+#-------------------------------
+[YOUMU,Youmu Konpaku,40]
+LoseText = Youmu: M-Maybe you aren't a ghost afterall...
+Pokemon = MEIRA,100
+    Moves = DRAWNLINE18,LEAFBLADE18,BRICKBREAK18,NIGHTSLASH18
+	Nature = ADAMANT
+	Item = CHOICEBAND
+	IV = 31,31,31,31,31,31
+	EV = 4,252,0,252,0,0
+Pokemon = YOUMU,100
+    Moves = BATTLECHANT18,SHADOWHIT18,VITALTHROW18,HIJUMPKICK18
+	Nature = ADAMANT
+	Item = EXPERTBELT
+	IV = 31,31,31,31,31,31
+	EV = 4,252,0,252,0,0
+	Ability = INNERFOCUS
+Pokemon = DMOMIJI,100
+    Moves = BRAVER18,CRUNCH18,REST18,SLEEPTALK18
+	Nature = IMPISH
+	Item = CHESTOBERRY
+	IV = 31,31,31,31,31,31
+	EV = 252,4,252,0,0,0
+	Ability = EARLYBIRD
+Pokemon = TREISEN,100
+    Moves = HYPNOSIS18,MISTBALL18,ICEBEAM18,LIGHTSCREEN18
+	Nature = TIMID
+	Item = WIDELENS
+	IV = 31,31,31,31,31,31
+	EV = 4,0,0,252,252,0
+Pokemon = SYOUMU,100
+    Moves = SWORDSDANCE18,BATTLECHANT18,SHADOWHIT18,POISONJAB18
+	Nature = JOLLY
+	Item = LUMBERRY
+	IV = 31,31,31,31,31,31
+	EV = 4,252,0,252,0,0
+Pokemon = DYUYUKO,100
+    Moves = SHADOWBALL18,GIGADRAIN18,CURSE18,REST18
+	Nature = CALM
+	Item = LEFTOVERS
+	IV = 31,31,31,31,31,31
+	EV = 252,0,4,0,0,252
+#-------------------------------
+# Stage 4: Ruined Western Mansion
+#		   Floor 1
+#-------------------------------
+[FAIRY3,Nozomi,3]
+LoseText = I couldn't even get within grasping distance!
+Pokemon = KANA,100
+Pokemon = YOUMU,100
+Pokemon = KANA,100
+Pokemon = DYOUMU,100
+#-------------------------------
+[FAIRY1,Uzuki,3]
+LoseText = Yeah, me neither!
+Pokemon = TEWI,100
+Pokemon = RUMIA,100
+Pokemon = ATEWI,100
+Pokemon = SRUMIA,100
+#-------------------------------
+[FAIRY1,Midori,3]
+LoseText = Uwaah...you're not a greenhorn after all.
+Pokemon = DMEILING,100
+Pokemon = TOJIKO,100
+Pokemon = UTSUHO,100
+#-------------------------------
+[FAIRY3,Akane,3]
+LoseText = You red my every move!
+Pokemon = KOGASA,100
+Pokemon = SRIN,100
+Pokemon = AMIKO,100
+#-------------------------------
+[FAIRY2,Naomi,3]
+LoseText = The real treasures here are your Puppets!
+Pokemon = MOKOU,100
+Pokemon = AREIMU,100
+Pokemon = TYUUKA,100
+Pokemon = TKYOUKO,100
+#-------------------------------
+[FAIRY2,Haruna,3]
+LoseText = That fight wasn't cool at all...
+Pokemon = ADCIRNO,100
+Pokemon = ADLETTY,100
+#-------------------------------
+[FAIRY1,Chiyori,3]
+LoseText = [Placeholder Dialogue]
+Pokemon = SUNNY,100
+Pokemon = SWRIGGLE,100
+Pokemon = KASEN,100
+Pokemon = SFLANDRE,100
+#-------------------------------
+[FAIRY1,Pino,3]
+LoseText = I guess the fluff was not enough...
+Pokemon = ELLEN,100
+Pokemon = ELLEN,100
+Pokemon = ELLEN,100
+  Shiny = yes
+#-------------------------------
+[FAIRY2,Avril,3]
+LoseText = See you later, human!
+Pokemon = RAIKO,100
+Pokemon = TKYOUKO,100
+Pokemon = ADMYSTIA,100
+#-------------------------------
+[FAIRY3,Acretia,3]
+LoseText = Humans are so brave!
+Pokemon = KANA,100
+Pokemon = LUNASA,100
+Pokemon = LAYLA,100
+Pokemon = TSATORI,100
+Pokemon = CLOWNPIECE,100
+#-------------------------------
+[FAIRY2,Aria,3]
+LoseText = ...Darn! My cherished bird Puppets...
+Pokemon = AMYSTIA,100
+Pokemon = AYA,100
+Pokemon = UTSUHO,100
+Pokemon = TNUE,100
+#-------------------------------
+[FAIRY1,Suzuha,3]
+LoseText = OK, fine, you can go now.
+Pokemon = TSAKUYA,100
+Pokemon = RIKA,100
+Pokemon = AKOMACHI,100
+#-------------------------------
+[FAIRY3,Megami,3]
+LoseText = See, if you'd let me eat your brains first, I totally would have won.
+Pokemon = SKOISHI,100
+Pokemon = DSHIKIEIKI,100
+Pokemon = YUUKA,100
+Pokemon = GENGETSU,100
+#-------------------------------
+# Boss: Lyrica Prismriver
+#-------------------------------
+[LYRICA,Lyrica Prismriver,40]
+LoseText = Lyrica: Hehe, you certainly are one strong trainer~
+Pokemon = HMYSTIA,100
+    Moves = JAMMING18,AIRSLASH18,ROOST18,PERISHSONG18
+	Nature = BOLD
+	Item = SITRUSBERRY
+	IV = 31,31,31,31,31,31
+	EV = 252,0,252,4,0,0
+	Ability = CUTECHARM
+Pokemon = STAR,100
+    Moves = RECOVER18,GIGADRAIN18,WATERPULSE18,ICEBEAM18
+	Nature = CALM
+	Item = ANTIMIASMA
+	IV = 31,31,31,31,31,31
+	EV = 252,0,4,0,0,252
+Pokemon = KANA,100
+    Moves = PERISHSONG18,CONFUSERAY18,SHADOWBALL18,HYPERVOICE18
+	Nature = CALM
+	Item = LUMBERRY
+	IV = 31,31,31,31,31,31
+	EV = 252,0,0,0,4,252
+	Ability = SOUNDPROOF
+Pokemon = TKYOUKO,100
+    Moves = BRICKBREAK18,BODYSLAM18,FORCEPALM18,TOXIC18
+	Nature = IMPISH
+	Item = LEFTOVERS
+	IV = 31,31,31,31,31,31
+	EV = 252,0,252,0,0,4
+	Ability = SOUNDPROOF
+Pokemon = RAIKO,100
+    Moves = SHADOWBALL18,AEROBLAST18,MANABURST18,TRIATTACK18
+	Nature = MODEST
+	Item = EXPERTBELT
+	IV = 31,31,31,31,31,31
+	EV = 4,0,0,252,252,0
+	Ability = LEVITATE
+Pokemon = LYRICA,100
+    Moves = SHADOWBALL18,HYPERVOICE18,THUNDERBOLT18,SONICBOOM18
+	Nature = TIMID
+	Item = LIFEORB
+	IV = 31,31,31,31,31,31
+	EV = 4,0,0,252,252,0
+	Ability = SOUNDPROOF
+#-------------------------------
+# Stage 5: Ruined Western Mansion
+#		   Floor 2
+#-------------------------------
+[FAIRY1,Ruu,3]
+LoseText = Somehow, you found the route to victory!
+Pokemon = ELLEN,100
+Pokemon = KOTOHIME,100
+Pokemon = RIKAKO,100
+Pokemon = CHIYURI,100
+#-------------------------------
+[FAIRY1,Kokoa,3]
+LoseText = Ah, that fight really hit the spot.
+Pokemon = HMYSTIA,100
+Pokemon = DMOKOU,100
+Pokemon = RINGO,100
+Pokemon = REISENII,100
+#-------------------------------
+[FAIRY2,Kuro,3]
+LoseText = No! I'm...blacking out!
+Pokemon = PARSEE,100
+Pokemon = LILYBLACK,100
+Pokemon = TPARSEE,100
+Pokemon = ALILYBLACK,100
+#-------------------------------
+[FAIRY1,Seiko,3]
+LoseText = Uh-oh! Looks like my cogs are rusty!
+Pokemon = SMEILING,100
+Pokemon = LUNASA,100
+Pokemon = EIRIN,100
+Pokemon = ARAN,100
+#-------------------------------
+[FAIRY1,Mika,3]
+LoseText = Looks like the party's over...
+Pokemon = TSUIKA,100
+Pokemon = DLETTY,100
+Pokemon = SYAMAME,100
+Pokemon = AYUUGI,100
+#-------------------------------
+[FAIRY1,Aika,3]
+LoseText = Stop the presses...
+Pokemon = SAYA,100
+Pokemon = TOKIKO,100
+Pokemon = DHATATE,100
+#-------------------------------
+[FAIRY1,Rina,3]
+LoseText = Aaaah! My eyes, my eyes!
+Pokemon = RIKA,100
+Pokemon = TNITORI,100
+Pokemon = RIKAKO,100
+#-------------------------------
+[FAIRY2,Saphira,3]
+LoseText = What's that? You’re not the master of the house?
+Pokemon = SKOMACHI,100
+Pokemon = TENSHI,100
+Pokemon = SEIGA,100
+Pokemon = AREMILIA,100
+#-------------------------------
+[FAIRY2,Ayana,3]
+LoseText = Wait. She's MY Puppet, so wouldn't it be a taste of MY own medicine?
+Pokemon = AMEDICINE,100
+#-------------------------------
+[FAIRY1,Umi,3]
+LoseText = Shameless! Absolutely shameless!
+Pokemon = TOYOHIME,100
+Pokemon = AMURASA,100
+Pokemon = HEIRIN,100
+#-------------------------------
+[FAIRY1,Eli,3]
+LoseText = Horosho...
+Pokemon = KOTOHIME,100
+Pokemon = DKAGUYA,100
+Pokemon = ASUKUNA,100
+#-------------------------------
+[FAIRY2,Dia,3]
+LoseText = Impossible! My strategies were flawless!
+Pokemon = DYOUMU,100
+Pokemon = MYSTIA,100
+Pokemon = KOTOHIME,100
+#-------------------------------
+[FAIRY2,Ruby,3]
+LoseText = Oh, I lost...
+Pokemon = AKANAKO,100
+Pokemon = CHEN,100
+Pokemon = YOSHIKA,100
+#-------------------------------
+# Boss: Mystia Lorelei
+#-------------------------------
+[MYSTIA,Mystia Lorelei,40]
+LoseText = Mystia: How do humans always beat me!?
+Pokemon = MYSTIA,100
+    Moves = FURYSWIPES18,SOAR18,HEARTBREAK18,ROOST18
+	Nature = JOLLY
+	Item = EXPERTBELT
+	IV = 31,31,31,31,31,31
+	EV = 4,252,0,252,0,0
+	Ability = CUTECHARM
+Pokemon = SWRIGGLE,100
+    Moves = NATURESOUND18,HEATWAVE18,AEROBLAST18,POISONBOMB18
+	Nature = MODEST
+	Item = CHOICESPECS
+	IV = 31,31,31,31,31,31
+	EV = 4,0,0,252,252,0
+Pokemon = ARUMIA,100
+    Moves = SWORDSDANCE18,NIGHTSLASH18,POISONJAB18,FIREPUNCH18
+	Nature = ADAMANT
+	Item = LUMBERRY
+	IV = 31,31,31,31,31,31
+	EV = 4,252,0,252,0,0
+Pokemon = SCIRNO,100
+    Moves = AQUAJET18,SUPERPOWER18,ICEBEAM18,THUNDERPUNCH18
+	Nature = NAUGHTY
+	Item = WEAKNESSPOLICY
+	IV = 31,31,31,31,31,31
+	EV = 0,252,0,252,4,0
+	Ability = GUTS
+Pokemon = KYOUKO,100
+    Moves = HYPERVOICE18,NATURESOUND18,BINDINGVOICE18,SIGNALBEAM18
+	Nature = MODEST
+	Item = ASSAULTVEST
+	IV = 31,31,31,31,31,31
+	EV = 4,0,0,0,252,252
+	Ability = SOUNDPROOF
+Pokemon = ADMYSTIA,100
+    Moves = SAFEGUARD18,ROOST18,CHARGEBEAM18,AIRSLASH18
+	Nature = BOLD
+	Item = LEFTOVERS
+	IV = 31,31,31,31,31,31
+	EV = 252,0,252,0,4,0
+#-------------------------------
+# Stage 6: Ruined Western Mansion
+#		   Floor 3
+#-------------------------------
+[FAIRY3,Lumaria,3]
+LoseText = Oh no~
+Pokemon = KEINE,100
+Pokemon = REISEN,100
+Pokemon = HLUNASA,100
+#-------------------------------
+[FAIRY3,Maria,3]
+LoseText = Oh no~
+Pokemon = KOISHI,100
+Pokemon = MIKO,100
+Pokemon = HMERLIN,100
+#-------------------------------
+[FAIRY3,Lydia,3]
+LoseText = Oh no~
+Pokemon = SATORI,100
+Pokemon = YUKI,100
+Pokemon = HLYRICA,100
+#-------------------------------
+[FAIRY3,Layla,3]
+LoseText = Oh no~
+Pokemon = YOSHIKA,100
+Pokemon = YUKARI,100
+Pokemon = DLAYLA,100
+#-------------------------------
+[FAIRY3,Countess,3]
+LoseText = Oh no, my beautiful mansion~!
+Pokemon = LUNASA,100
+Pokemon = MERLIN,100
+Pokemon = LYRICA,100
+Pokemon = LAYLA,100
+#-------------------------------
+[FAIRY1,Hanayo,3]
+LoseText = Nooo! Somebody help meeeee!
+Pokemon = SHIZUHA,100
+Pokemon = MINORIKO,100
+Pokemon = RINGO,100
+#-------------------------------
+[FAIRY1,Rin,3]
+LoseText = Oops, I let the cat out of the bag...
+Pokemon = DMOMIJI,100
+Pokemon = AYA,100
+Pokemon = TCHEN,100
+Pokemon = SRIN,100
+#-------------------------------
+[FAIRY1,Sayaka,3]
+LoseText = But your skills are even sharper!
+Pokemon = MEIRA,100
+Pokemon = ATENSHI,100
+Pokemon = KONNGARA,100
+Pokemon = SYOUMU,100
+#-------------------------------
+[FAIRY2,Yohane,3]
+LoseText = No, no, no! You're supposed to lose, you dummy!
+Pokemon = MUGETSU,100
+Pokemon = KOAKUMA,100
+Pokemon = YOSHIKA,100
+Pokemon = GENGETSU,100
+Pokemon = SSARIEL,100
+#-------------------------------
+[FAIRY2,Hanamaru,3]
+LoseText = Dagyaaaah!
+Pokemon = CHIYURI,100
+Pokemon = AKOMACHI,100
+Pokemon = ELLY,100
+Pokemon = SEIRAN,100
+#-------------------------------
+[FAIRY1,Kaya,3]
+LoseText = No way! I lost, even after all my waiting!?
+Pokemon = DTEWI,100
+Pokemon = LUIZE,100
+Pokemon = KISUME,100
+Pokemon = DAIYOUSEI,100
+#-------------------------------
+[FAIRY2,Maki,3]
+LoseText = How did you beat me? I don’t get it at all!
+Pokemon = LUIZE,100
+Pokemon = PARSEE,100
+Pokemon = DSHIKIEIKI,100
+Pokemon = DARKALICE,100
+#-------------------------------
+# Midboss: Lyrica Prismriver
+#-------------------------------
+[LYRICA,Lyrica Prismriver,40]
+LoseText = Lyrica: Well it looks like you have!
+Pokemon = TKYOUKO,100
+    Moves = BRICKBREAK18,BODYSLAM18,FORCEPALM18,TOXIC18
+	Nature = IMPISH
+	Item = LEFTOVERS
+	IV = 31,31,31,31,31,31
+	EV = 252,0,252,0,0,4
+	Ability = SOUNDPROOF
+Pokemon = LYRICA,100
+    Moves = SHADOWBALL18,HYPERVOICE18,THUNDERBOLT18,SONICBOOM18
+	Nature = TIMID
+	Item = LIFEORB
+	IV = 31,31,31,31,31,31
+	EV = 4,0,0,252,252,0
+	Ability = SOUNDPROOF
+Pokemon = LAYLA,100
+    Moves = CALMMIND18,MANABURST18,SHADOWBALL18,HYPERVOICE18
+	Nature = MODEST
+	Item = WEAKNESSPOLICY
+	IV = 31,31,31,31,31,31
+	EV = 4,0,0,252,252,0
+#-------------------------------
+# Boss: Prismriver Sisters
+#-------------------------------
+[PRISMRIVER,Prismriver Sisters,40]
+LoseText = Lunasa: Not even a three-on-one battle slows you down!
+Pokemon = RAIKO,100
+    Moves = SHADOWBALL18,AEROBLAST18,MANABURST18,TRIATTACK18
+	Nature = MODEST
+	Item = EXPERTBELT
+	IV = 31,31,31,31,31,31
+	EV = 4,0,0,252,252,0
+	Ability = LEVITATE
+Pokemon = LYRICA,100
+    Moves = SHADOWBALL18,HYPERVOICE18,THUNDERBOLT18,SONICBOOM18
+	Nature = TIMID
+	Item = LIFEORB
+	IV = 31,31,31,31,31,31
+	EV = 4,0,0,252,252,0
+	Ability = SOUNDPROOF
+Pokemon = LUNA,100
+    Moves = NASTYPLOT18,THUNDERBOLT18,ENERGYLIGHT18,LUNATIC18
+	Nature = TIMID
+	Item = LIFEORB
+	IV = 31,31,31,31,31,31
+	EV = 4,0,0,252,252,0
+Pokemon = LUNASA,100
+    Moves = ICYWIND18,PAINSPLIT18,POISONBOMB18,SHADOWBALL18
+	Nature = MODEST
+	Item = ANTINETHER
+	IV = 31,31,31,31,31,31
+	EV = 252,0,0,0,252,4
+	Ability = GUARDARMOR
+Pokemon = RIN,100
+    Moves = FLAREBLITZ18,CRUNCH18,SHADOWHIT18,SUNNYDAY18
+	Nature = JOLLY
+	Item = HEATROCK
+	IV = 31,31,31,31,31,31
+	EV = 4,252,0,252,0,0
+	Ability = INTIMIDATE
+Pokemon = MERLIN,100
+    Moves = PERFORMANCE18,SIGNALBEAM18,NASTYPLOT18,THUNDERWAVE18
+	Nature = TIMID
+	Item = LIFEORB
+	IV = 31,31,31,31,31,31
+	EV = 4,0,0,252,252,0
+	Ability = SERENEGRACE
+Pokemon = LAYLA,100
+    Moves = CALMMIND18,MANABURST18,SHADOWBALL18,HYPERVOICE18
+	Nature = MODEST
+	Item = WEAKNESSPOLICY
+	IV = 31,31,31,31,31,31
+	EV = 4,0,0,252,252,0
+#-------------------------------
+# Stage EX: Ruined Western Mansion
+#		    Basement
+#-------------------------------
+[FAIRY2,Mari,3]
+LoseText = Eh? That's not a Puppet? What do you mean?
+Pokemon = KOTOHIME,100
+Pokemon = YUKARI,100
+Pokemon = LUIZE,100
+Pokemon = EMPOLEON,100
+	Moves = SCALD,FURYATTACK,METALCLAW,ATTRACT
+	Shiny = true
+#-------------------------------
+[FAIRY1,Oxanna,3]
+LoseText = Dead and back, trainer. Dead and back.
+Pokemon = HEIRIN,100
+Pokemon = RIKAKO,100
+Pokemon = CHIYURI,100
+Pokemon = MEIRA,100
+#-------------------------------
+[FAIRY2,Watanabe,3]
+LoseText = I wish uniforms were more help during Puppet battles...
+Pokemon = SANAE,100
+Pokemon = SUWAKO,100
+Pokemon = AMURASA,100
+Pokemon = JKSANAE,100
+#-------------------------------
+[FAIRY2,Kanan,3]
+LoseText = I'm the one who got washed out!
+Pokemon = DWAKASAGI,100
+Pokemon = NAMAZU,100
+Pokemon = ANITORI,100
+#-------------------------------
+[FAIRY2,Rafania,3]
+LoseText = Aaah, my fighting spirit wilted...
+Pokemon = ELLY,100
+Pokemon = YUUKA,100
+Pokemon = AKAZAMI,100
+#-------------------------------
+[FAIRY1,Suigintou,3]
+LoseText = No! My strings have been cut!
+Pokemon = MARGATROID,100
+Pokemon = SMEDICINE,100
+Pokemon = GOLIATH,100
+Pokemon = DARKALICE,100
+#-------------------------------
+[FAIRY1,Nayuki,3]
+LoseText = Does this mean I'm not awesome enough?
+Pokemon = YUKI,100
+Pokemon = RIKA,100
+Pokemon = KASEN,100
+Pokemon = ELLEN,100
+#-------------------------------
+[FAIRY1,Stella,3]
+LoseText = I've hit rock bottom!
+Pokemon = MAGISTONES,100
+#-------------------------------
+[FAIRY1,Paula,3]
+LoseText = My hopes have been shot down! They're earth-bound!
+Pokemon = MYSTIA,100
+Pokemon = UTSUHO,100
+Pokemon = CIRNO,100
+Pokemon = TOJIKO,100
+#-------------------------------
+[FAIRY3,Kalypsa,3]
+LoseText = Alright, alright! I give!
+Pokemon = TRRENKO,100
+Pokemon = DMAMIZOU,100
+Pokemon = TRMARIBEL,100
+Pokemon = HECATIA,100
+#-------------------------------
+[FAIRY1,Ayame,3]
+LoseText = So powerful!
+Pokemon = SENDAI,100
+	Moves = SMELLINGSALT18,DOUBLEKICK18,SAFEGUARD18,TAUNT18
+#-------------------------------
+[FAIRY1,Mikoto,3]
+LoseText = Too much!
+Pokemon = TENMA,100
+	Moves = TWISTER18,SUBSTITUTE18,HEATWAVE18,ROOST18
+#-------------------------------
+[ZEPHYR,Nico,3]
+LoseText = N-No! I was supposed to be the best!
+Pokemon = KOTOHIME,100
+Pokemon = ADMYSTIA,100
+Pokemon = TKYOUKO,100
+Pokemon = DHATATE,100
+Pokemon = HSTAR,100
+Pokemon = AMYSTIA,100
+#-------------------------------
+# Midboss: Nue Houjuu
+#-------------------------------
+[NUE,Nue Houjuu,40]
+LoseText = Nue: All my tricks went up in smoke!
+Pokemon = MAMIZOU,100
+	Moves = SPIKES18,BELLYDRUM18,BATONPASS18,NATUREPOWER18
+	Nature = TIMID
+	Item = SITRUSBERRY
+	IV = 31,31,31,31,31,31
+	EV = 252,0,0,252,4,0
+	Ability = KEENEYE
+Pokemon = TNUE,100
+	Moves = NASTYPLOT18,POISONBOMB18,THUNDERBOLT18,FLAMETHROWER18
+	Nature = TIMID
+	Item = EXPERTBELT
+	IV = 31,31,31,31,31,31
+	EV = 4,0,0,252,252,0
+	Ability = PRESSURE
+Pokemon = SSEIGA,100
+	Moves = WISH18,MANABURST18,DARKPULSE18,TOXIC18
+	Nature = TIMID
+	Item = MISTRESS
+	IV = 31,31,31,31,31,31
+	EV = 4,0,0,252,252,0
+Pokemon = SEIJA,100
+    Moves = OUTRAGE18,MINDBOMB18,BRICKBREAK18,FOCUSPUNCH18
+	Nature = JOLLY
+	Item = LIFEORB
+	IV = 31,31,31,31,31,31
+	EV = 4,252,0,252,0,0
+	Ability = OWNTEMPO
+Pokemon = DSATORI,100
+	Moves = COUNTER18,MIRRORCOAT18,ENCORE18,DESTINYBOND18
+	Nature = CALM
+	Item = LEFTOVERS
+	IV = 31,31,31,31,31,31
+	EV = 252,0,4,0,0,252
+Pokemon = ANUE,100
+	Moves = SWORDSDANCE18,BRAVEBIRD18,POISONJAB18,ICEPUNCH18
+	Nature = JOLLY
+	Item = LUMBERRY
+	IV = 31,31,31,31,31,31
+	EV = 4,252,0,252,0,0
+	Ability = PRESSURE
+#-------------------------------
+# Boss: Kogasa Tatara
+#-------------------------------
+[KOGASA,Kogasa Tatara,40]
+LoseText = Kogasa: My scare tactics fell apart!
+Pokemon = HYOSHIKA,100
+	Moves = WILLOWISP18,WISH18,POISONJAB18,SHADOWHIT18
+	Nature = CAREFUL
+	Item = LEFTOVERS
+	IV = 31,31,31,31,31,31
+	EV = 252,4,0,0,0,252
+	Ability = PRESSURE
+Pokemon = SANAE,100
+	Moves = EXTRASENSORY18,CALMMIND18,WISH18,AEROBLAST18
+	Nature = MODEST
+	Item = WEAKNESSPOLICY
+	IV = 31,31,31,31,31,31
+	EV = 252,0,4,0,252,0
+Pokemon = DREIMU,100
+	Moves = FORCEPALM18,DRAINPUNCH18,CURSE18,ROCKBULLET18
+	Nature = ADAMANT
+	Item = EXPERTBELT
+	IV = 31,31,31,31,31,31
+	EV = 252,252,4,0,0,0
+Pokemon = TPARSEE,100
+	Moves = POISONBOMB18,WILLOWISP18,SIGNALBEAM18,DESTINYBOND18
+	Nature = BOLD
+	Item = ANTIEARTH
+	IV = 31,31,31,31,31,31
+	EV = 252,0,252,0,4,0
+	Ability = INSOMNIA
+Pokemon = MIMA,100
+	Moves = HYPERBEAM18,SHADOWBALL18,THUNDERBOLT18,SECRETPOWER18
+	Nature = MODEST
+	Item = ASSAULTVEST
+	IV = 31,31,31,31,31,31
+	EV = 252,0,0,0,252,4
+Pokemon = SKOGASA,100
+	Moves = DISABLE18,SHADOWBALL18,DESTINYBOND18,ICEBEAM18
+	Nature = TIMID
+	Item = LUMBERRY
+	IV = 31,31,31,31,31,31
+	EV = 4,0,0,252,252,0
+#-------------------------------
+# Stage EX: Ruined Western Mansion
+#		    Roof
+#-------------------------------
+[ZEPHYR,Saya,3]
+LoseText = Oh no, a tailwind!
+Pokemon = DDAIYOUSEI,100
+Pokemon = TIKU,100
+Pokemon = STOJIKO,100
+Pokemon = AMARISA,100
+Pokemon = SWRIGGLE,100
+Pokemon = ASANAE,100
+#-------------------------------
+# Boss: Layla Prismriver
+#-------------------------------
+[LAYLA,Layla Prismriver,40]
+LoseText = Layla: I haven't felt this alive in ages!
+Pokemon = YUMEMI,100
+	Moves = ICEBEAM18,MIRRORCOAT18,MANABURST18,FIREBLAST18
+Pokemon = RIKAKO,100
+	Moves = AGILITY18,MANABURST18,DISCHARGE18,MAGICCOAT18
+Pokemon = AEIRIN,100
+	Moves = POISONJAB18,ZENHEADBUTT18,BURNPOWDER18,CURSE18
+Pokemon = SSEIGA,100
+	Moves = MANABURST18,DARKPULSE18,NASTYPLOT18,LUSTERPURGE18
+Pokemon = AYAKASHI,100
+	Moves = SYNTHESIS18,POWERWHIP18,LEECHSEED18,SHADOWBALL18
+	Ability = ABYSSALDRAIN
+Pokemon = LAYLA,100
+	Moves = PSYCHOBOOST18,CALMMIND18,PERFORMANCE18,CURSE18
+	Shiny = true

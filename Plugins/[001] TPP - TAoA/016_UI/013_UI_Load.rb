@@ -19,6 +19,7 @@ class PokemonLoadPanel < Sprite
         self.bitmap.blt(0, 0, @bgbitmap.bitmap, Rect.new(0, 444 + ((@selected) ? 46 : 0), @bgbitmap.width, 46))
       end
       textpos = []
+	  imagepos = []
       if @isContinue
 		if @trainer.new_game_plus
 		  textpos.push([@title, 32, 16, 0, TEXTCOLOR_NGP, TEXT_SHADOW_COLOR])
@@ -27,6 +28,7 @@ class PokemonLoadPanel < Sprite
 		  textpos.push([_INTL("Scenario:"), 32, 150, 0, TEXTCOLOR_NGP, TEXT_SHADOW_COLOR])
 		  textpos.push([@trainer.scenario_name, 152, 150, 0, TEXTCOLOR_NGP, TEXT_SHADOW_COLOR])
 		  textpos.push([_INTL("Time:"), 32, 118, 0, TEXTCOLOR_NGP, TEXT_SHADOW_COLOR])
+		  textpos.push([_INTL("Cleared:"), 32, 182, 0, TEXTCOLOR_NGP, TEXT_SHADOW_COLOR])
 		  hour = @totalsec / 60 / 60
 		  min  = @totalsec / 60 % 60
 		  if hour > 0
@@ -35,9 +37,9 @@ class PokemonLoadPanel < Sprite
             textpos.push([_INTL("{1}m", min), 206, 118, 1, TEXTCOLOR_NGP, TEXT_SHADOW_COLOR])
 		  end
 		  if @trainer.male?
-            textpos.push([@trainer.name, 112, 70, 0, MALE_TEXT_COLOR, MALE_TEXT_SHADOW_COLOR])
+            textpos.push([@trainer.name, 112, 70, 0, TEXTCOLOR_NGP, MALE_TEXT_SHADOW_COLOR])
 		  elsif @trainer.female?
-            textpos.push([@trainer.name, 112, 70, 0, FEMALE_TEXT_COLOR, FEMALE_TEXT_SHADOW_COLOR])
+            textpos.push([@trainer.name, 112, 70, 0, TEXTCOLOR_NGP, FEMALE_TEXT_SHADOW_COLOR])
 		  else
             textpos.push([@trainer.name, 112, 70, 0, TEXTCOLOR_NGP, TEXT_SHADOW_COLOR])
 		  end
@@ -51,6 +53,7 @@ class PokemonLoadPanel < Sprite
 		  textpos.push([_INTL("Scenario:"), 32, 150, 0, TEXT_COLOR, TEXT_SHADOW_COLOR])
 		  textpos.push([@trainer.scenario_name, 152, 150, 0, TEXT_COLOR, TEXT_SHADOW_COLOR])
 		  textpos.push([_INTL("Time:"), 32, 118, 0, TEXT_COLOR, TEXT_SHADOW_COLOR])
+		  textpos.push([_INTL("Cleared:"), 32, 182, 0, TEXT_COLOR, TEXT_SHADOW_COLOR])
 		  hour = @totalsec / 60 / 60
 		  min  = @totalsec / 60 % 60
 		  if hour > 0
@@ -69,10 +72,32 @@ class PokemonLoadPanel < Sprite
 		  mapname.gsub!(/\\PN/, @trainer.name)
 		  textpos.push([mapname, 386, 16, 1, TEXT_COLOR, TEXT_SHADOW_COLOR])
 		end
+		y = 172
+		if @trainer.tmom_cleared
+		  imagepos.push(["Graphics/UI/Load/tmom_clear", 155, y])
+		else
+		  imagepos.push(["Graphics/UI/Load/tmom_not_clear", 155, y])
+		end
+		if @trainer.tfoc_cleared
+		  imagepos.push(["Graphics/UI/Load/tfoc_clear", 205, y])
+		else
+		  imagepos.push(["Graphics/UI/Load/tfoc_not_clear", 205, y])
+		end
+		if @trainer.tkol_cleared
+		  imagepos.push(["Graphics/UI/Load/tkol_clear", 255, y])
+		else
+		  imagepos.push(["Graphics/UI/Load/tkol_not_clear", 255, y])
+		end
+		if @trainer.tla_cleared
+		  imagepos.push(["Graphics/UI/Load/tla_clear", 305, y])
+		#else # Do I want to keep TLA hidden? Yeah kinda.
+		  #imagepos.push(["Graphics/UI/Load/tla_not_clear", 305, y]) 
+		end
       else
         textpos.push([@title, 32, 14, 0, TEXT_COLOR, TEXT_SHADOW_COLOR])
       end
       pbDrawTextPositions(self.bitmap, textpos)
+	  pbDrawImagePositions(self.bitmap, imagepos)
     end
     @refreshing = false
   end

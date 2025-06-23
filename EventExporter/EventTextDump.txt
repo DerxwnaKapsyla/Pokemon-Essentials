@@ -13477,7 +13477,7 @@ List of Event Commands:
  @>Exit Event Processing
  @>
 : Branch End
-@>Exit Event Processing
+@>Script: pbTrainerEnd
 @>Text: \xn[Mystia]I can't scare you off, I can't chase you off, I 
  :    : failed in my job as gatekeeper!
 @>Text: \xn[\pn]Can I please explain what I'm doing here at 
@@ -17025,6 +17025,23 @@ List of Event Commands:
 @>Change Text Options: Middle, Hide
 @>Text: \se[]\l[3]<ac>Bad End: Unable To Beat Time\wt[30]\nNext time try for less than 20 defeats!</ac>\wtnp[40]
 @>Wait: 20 frame(s)
+@>Conditional Branch: Switch [0116: TMoM Cleared] == ON
+ @>Script: set_menu_theme("dark")
+ @>Text: \w[black]Would you like to skip the credits?
+ @>Show Choices: Yes, No
+ (When Cancel: Choice 2)
+ : When [Yes]
+  @>Script: reset_menu_theme
+  @>Transfer Player:[019: World of Fantasies], (019,020), Down
+  @>Change Transparent Flag: Normal
+  @>Change Screen Color Tone: (0,0,0,0), @8
+  @>Exit Event Processing
+  @>
+ : When [No]
+  @>
+ : Branch End
+ @>
+: Branch End
 @>Script: $scene = Scene_Credits_TMoM.new
 @>Wait: 20 frame(s)
 @>Conditional Branch: Switch [0116: TMoM Cleared] == OFF
@@ -17282,6 +17299,24 @@ List of Event Commands:
 @>Fade Out BGM: 2 sec.
 @>Change Screen Color Tone: (-255,-255,-255,0), @20
 @>Wait: 20 frame(s)
+@>Conditional Branch: Switch [0116: TMoM Cleared] == ON
+ @>Script: set_menu_theme("dark")
+ @>Text: \w[black]Would you like to skip the credits?
+ @>Show Choices: Yes, No
+ (When Cancel: Choice 2)
+ : When [Yes]
+  @>Script: reset_menu_theme
+  @>Transfer Player:[019: World of Fantasies], (019,020), Down
+  @>Change Transparent Flag: Normal
+  @>Change Screen Color Tone: (0,0,0,0), @8
+  @>Exit Event Processing
+  @>
+ : When [No]
+  @>
+ : Branch End
+ @>
+: Branch End
+@>Script: reset_menu_theme
 @>Change Transparent Flag: Transparency
 @>Script: pbShowPicture(1,"Credits/Gensokyo.png",1,256,192,zoomX=100,zoomY=100,opacity=0,blendType=0)
 @>Wait: 10 frame(s)
@@ -59739,8 +59774,6 @@ List of Event Commands:
  @>Fade Out BGM: 5 sec.
  @>Wait: 50 frame(s)
  @>Change Text Options: Middle, Hide
- @>Recover All: Entire Party
- @>Call Common Event: TFoC True Credits
  @>Control Self Switch: B =ON
  @>
 : Else
@@ -59762,9 +59795,28 @@ Speed: 3: Slow
 Freq: 3: Low
 Options Enabled
 Move Animation
-Trigger: Action Button
+Trigger: Autorun
 
 List of Event Commands:
+@>Recover All: Entire Party
+@>Conditional Branch: Switch [0139: TFoC Cleared] == ON
+ @>Script: set_menu_theme("dark")
+ @>Text: \w[black]Would you like to skip the credits?
+ @>Show Choices: Yes, No
+ (When Cancel: Choice 2)
+ : When [Yes]
+  @>Script: reset_menu_theme
+  @>Transfer Player:[019: World of Fantasies], (019,020), Down
+  @>Change Transparent Flag: Normal
+  @>Change Screen Color Tone: (0,0,0,0), @8
+  @>Exit Event Processing
+  @>
+ : When [No]
+  @>
+ : Branch End
+ @>
+: Branch End
+@>Call Common Event: TFoC True Credits
 @>
 
 #------------------------------------------------------------------------------
@@ -74509,31 +74561,12 @@ List of Event Commands:
 
 #------------------------------------------------------------------------------
 Event ID: 015
-Event Name: A Friend counter(6)
+Event Name: A Friend
 (X,Y): (035,017)
 
 Page #1
 Conditions
 None
-
-Graphic: bb
-
-Autonomous Movement
-Type: Fixed
-Speed: 3: Slow
-Freq: 3: Low
-Options Enabled
-Move Animation
-Trigger: Player Touch
-
-List of Event Commands:
-@>Control Switches: [0146: Found a friend!] = ON
-@>Control Self Switch: A =ON
-@>
-
-Page #2
-Conditions
-Self Switch A is ON
 
 Graphic: bb
 
@@ -74602,6 +74635,42 @@ List of Event Commands:
 Page #2
 Conditions
 Variable 0141: Scenarios Cleared is 3 or above
+
+Autonomous Movement
+Type: Fixed
+Speed: 3: Slow
+Freq: 3: Low
+Options Enabled
+Move Animation
+Trigger: Action Button
+
+List of Event Commands:
+@>
+
+#------------------------------------------------------------------------------
+Event ID: 018
+Event Name: size(3,1) A Friend
+(X,Y): (028,019)
+
+Page #1
+Conditions
+None
+
+Autonomous Movement
+Type: Fixed
+Speed: 3: Slow
+Freq: 3: Low
+Options Enabled
+Move Animation
+Trigger: Player Touch
+
+List of Event Commands:
+@>Control Switches: [0146: Found a friend!] = ON
+@>
+
+Page #2
+Conditions
+Switch 0146: Found a friend! is ON
 
 Autonomous Movement
 Type: Fixed
@@ -103001,7 +103070,30 @@ Move Animation
 Trigger: Autorun
 
 List of Event Commands:
+@>Conditional Branch: Switch [0147: TKoL Cleared] == ON
+ @>Script: set_menu_theme("dark")
+ @>Text: \w[black]Would you like to skip the credits?
+ @>Show Choices: Yes, No
+ (When Cancel: Choice 2)
+ : When [Yes]
+  @>Script: reset_menu_theme
+  @>Call Common Event: Toyoyori Cutscene
+  @>Wait: 20 frame(s)
+  @>Change Text Options: Bottom, Show
+  @>Script: TKoLPostgameScene.new
+  @>Control Variables: [0121: TKoL Plot Variable] = 22
+  @>Transfer Player:[118: \PN's Room], (004,007), Right
+  @>Change Transparent Flag: Normal
+  @>Change Screen Color Tone: (0,0,0,0), @8
+  @>Exit Event Processing
+  @>
+ : When [No]
+  @>
+ : Branch End
+ @>
+: Branch End
 @>Change Text Options: Middle, Hide
+@>Script: reset_menu_theme
 @>Call Common Event: TKoL Credits
 @>Wait: 20 frame(s)
 @>Script: TKoLPostgameScene.new
@@ -109419,6 +109511,23 @@ Trigger: Autorun
 
 List of Event Commands:
 @>Script: MeimuOutro.new
+@>Control Variables: [0102: Special Battle Variable] = 0
+@>Control Switches: [0102: Special Battle Switch] = OFF
+@>Conditional Branch: Switch [0152: TLA Cleared] == ON
+ @>Script: set_menu_theme("dark")
+ @>Text: \w[black]Would you like to skip the credits?
+ @>Show Choices: Yes, No
+ (When Cancel: Choice 2)
+ : When [Yes]
+  @>Change Screen Color Tone: (-255,-255,-255,0), @10
+  @>Control Variables: [0144: TAoA Credits Variable] = 9
+  @>
+ : When [No]
+  @>
+ : Branch End
+ @>
+: Branch End
+@>Script: reset_menu_theme
 @>Call Common Event: TLA Credits
 @>
 
@@ -111667,6 +111776,131 @@ List of Event Commands:
  @>Script: pbTrainerEnd
  @>
 : Branch End
+@>
+
+#------------------------------------------------------------------------------
+Event ID: 054
+Event Name: EV054
+(X,Y): (024,014)
+
+Page #1
+Conditions
+None
+
+Graphic: Object ball
+
+Autonomous Movement
+Type: Fixed
+Speed: 3: Slow
+Freq: 3: Low
+Options Enabled
+Move Animation
+Trigger: Action Button
+
+List of Event Commands:
+@>Text: Test
+@>Change Screen Color Tone: (-255,-255,-255,0), @1
+@>Wait: 20 frame(s)
+@>Script: CreditsNames.new
+@>
+
+Page #2
+Conditions
+None
+
+Graphic: Object ball
+
+Autonomous Movement
+Type: Fixed
+Speed: 3: Slow
+Freq: 3: Low
+Options Enabled
+Move Animation
+Trigger: Action Button
+
+List of Event Commands:
+@>Change Battle BGM: 'W-042. Primate Spirit Garden', 50, 100
+@>Script: setBattleRule("editWildPokemon",{:hp_level => 10})
+:       : setBattleRule("editWildPokemon", {
+:       :   :moves   => [:BLASTBURN18, :BLAZEKICK18, :EMBER18, :ERUPTION18],
+:       : })
+@>Script: setBattleRule("editWildPokemon2",{:hp_level => 10})
+:       : setBattleRule("editWildPokemon2", {
+:       :   :moves   => [:FIREBLAST18, :FIREPUNCH18, :FIRESPIN18, :FLAMEWHEEL18],
+:       : })
+@>Script: setBattleRule("editWildPokemon3",{:hp_level => 10})
+:       : setBattleRule("editWildPokemon3", {
+:       :   :moves   => [:FLAMETHROWER18, :FLAREBLITZ18, :HEATWAVE18, :LAVAPLUME18],
+:       : })
+@>Conditional Branch: Script: WildBattle.start(:CSATORI, 100, :CSATORI, 100, :CSATORI, 100)
+ @>
+: Branch End
+@>
+
+Page #3
+Conditions
+None
+
+Graphic: Object ball
+
+Autonomous Movement
+Type: Fixed
+Speed: 3: Slow
+Freq: 3: Low
+Options Enabled
+Move Animation
+Trigger: Action Button
+
+List of Event Commands:
+@>Change Battle BGM: 'W-042. Primate Spirit Garden', 50, 100
+@>Script: test_anim_battle
+@>
+
+#------------------------------------------------------------------------------
+Event ID: 055
+Event Name: EV055
+(X,Y): (022,016)
+
+Page #1
+Conditions
+None
+
+Graphic: Object boulder
+
+Autonomous Movement
+Type: Fixed
+Speed: 3: Slow
+Freq: 3: Low
+Options Enabled
+Move Animation
+Trigger: Action Button
+
+List of Event Commands:
+@>Script: $player.tmom_cleared = true
+:       : $player.tfoc_cleared = true
+:       : $player.tkol_cleared = true
+:       : $player.tla_cleared = true
+@>
+
+Page #2
+Conditions
+Self Switch A is ON
+
+Graphic: Object boulder
+
+Autonomous Movement
+Type: Fixed
+Speed: 3: Slow
+Freq: 3: Low
+Options Enabled
+Move Animation
+Trigger: Action Button
+
+List of Event Commands:
+@>Script: $player.tmom_cleared = false
+:       : $player.tfoc_cleared = false
+:       : $player.tkol_cleared = false
+:       : $player.tla_cleared = false
 @>
 
 #------------------------------------------------------------------------------
@@ -118974,40 +119208,8 @@ List of Event Commands:
 @>Wait: 15 frame(s)
 @>Script: CreditsOutro_TKoL.new
 @>Wait: 8 frame(s)
-@>Change Screen Color Tone: (-255,-255,-255,0), @40
 @>Change Text Options: Bottom, Show
-@>Wait: 60 frame(s)
-@>Script: TKoLPostgameStinger.new
-@>Wait: 20 frame(s)
-@>Show Picture: 1, 'Toyoyori', Upper Left (256,192), (100%,100%), 0, Normal
-@>Text: \xn[Female Voice #1]That Human that came to the moon-- \pn was her name?\wtnp[30]
-@>Text: \l[3]Yes, your highness. It seems she was acting on behalf of the fugitives on the planet's surface.\wtnp[30]
-@>Text: \xn[Female Voice #2]I see... That will be all for now, soldier. You're dismissed.\wtnp[30]
-@>Text: Ma'am, yes ma'am!\wtnp[30]
-@>Wait: 20 frame(s)
-@>Text: \xn[Female Voice #1]...So, Eirin sent her up to the Moon, huh?\wtnp[30]
-@>Text: \xn[Female Voice #2]It would seem that way, sister.\wtnp[30]
-@>Text: \xn[Female Voice #1]\l[3]She wouldn't do that without good reason- no, it's thanks to her that the 
- :    : capital was saved after all.\wtnp[30]
-@>Text: \xn[Female Voice #1]...As unfortunate as it is that we had to resort to outside
- :    : assistance.\wtnp[30]
-@>Wait: 20 frame(s)
-@>Text: \xn[Female Voice #1]\l[4]Should we do anything about this? If we don't act, the stuck
- :    : up elders in the council may see this as an act of war from the Earth.\wtnp[30]
-@>Text: \xn[Female Voice #2]...\wtnp[30]
-@>Wait: 20 frame(s)
-@>Text: \xn[Female Voice #1]...Yorihime?\wtnp[30]
-@>Move Picture: 1, @20, Center (256,192), (100%,100%), 255, Normal
-@>Wait: 25 frame(s)
-@>Text: \xn[Female Voice #2]... Send an envoy to Gensokyo to retrieve her.\wtnp[30]
-@>Text: \xn[Female Voice #2]\l[3]We shall put this hero of theirs to the test the way the Capital
- :    : has always done so.\wtnp[30]
-@>Text: \xn[Female Voice #1]Alright~ I look forward to seeing their so called hero for myself.\wtnp[30]
-@>Text: \xn[Female Voice #1]No hogging them like you did the last time we had guests from
- :    : the Earth!\wtnp[30]
-@>Move Picture: 1, @20, Center (256,192), (100%,100%), 0, Normal
-@>Wait: 25 frame(s)
-@>Erase Picture: 1
+@>Call Common Event: Toyoyori Cutscene
 @>
 
 #==============================================================================
@@ -119232,11 +119434,44 @@ List of Event Commands:
 
 #==============================================================================
 Common Event ID: 108
-Common Event Name: 
+Common Event Name: Toyoyori Cutscene
 
 Trigger: None
 
 List of Event Commands:
+@>Change Screen Color Tone: (-255,-255,-255,0), @40
+@>Wait: 60 frame(s)
+@>Script: TKoLPostgameStinger.new
+@>Wait: 20 frame(s)
+@>Show Picture: 1, 'Toyoyori', Upper Left (256,192), (100%,100%), 0, Normal
+@>Text: \xn[Female Voice #1]That Human that came to the moon-- \pn was her name?\wtnp[30]
+@>Text: \l[3]Yes, your highness. It seems she was acting on behalf of the fugitives on the planet's surface.\wtnp[30]
+@>Text: \xn[Female Voice #2]I see... That will be all for now, soldier. You're dismissed.\wtnp[30]
+@>Text: Ma'am, yes ma'am!\wtnp[30]
+@>Wait: 20 frame(s)
+@>Text: \xn[Female Voice #1]...So, Eirin sent her up to the Moon, huh?\wtnp[30]
+@>Text: \xn[Female Voice #2]It would seem that way, sister.\wtnp[30]
+@>Text: \xn[Female Voice #1]\l[3]She wouldn't do that without good reason- no, it's thanks to her that the 
+ :    : capital was saved after all.\wtnp[30]
+@>Text: \xn[Female Voice #1]...As unfortunate as it is that we had to resort to outside
+ :    : assistance.\wtnp[30]
+@>Wait: 20 frame(s)
+@>Text: \xn[Female Voice #1]\l[4]Should we do anything about this? If we don't act, the stuck
+ :    : up elders in the council may see this as an act of war from the Earth.\wtnp[30]
+@>Text: \xn[Female Voice #2]...\wtnp[30]
+@>Wait: 20 frame(s)
+@>Text: \xn[Female Voice #1]...Yorihime?\wtnp[30]
+@>Move Picture: 1, @20, Center (256,192), (100%,100%), 255, Normal
+@>Wait: 25 frame(s)
+@>Text: \xn[Female Voice #2]... Send an envoy to Gensokyo to retrieve her.\wtnp[30]
+@>Text: \xn[Female Voice #2]\l[3]We shall put this hero of theirs to the test the way the Capital
+ :    : has always done so.\wtnp[30]
+@>Text: \xn[Female Voice #1]Alright~ I look forward to seeing their so called hero for myself.\wtnp[30]
+@>Text: \xn[Female Voice #1]No hogging them like you did the last time we had guests from
+ :    : the Earth!\wtnp[30]
+@>Move Picture: 1, @20, Center (256,192), (100%,100%), 0, Normal
+@>Wait: 25 frame(s)
+@>Erase Picture: 1
 @>
 
 #==============================================================================
@@ -119610,6 +119845,336 @@ List of Event Commands:
 @>Wait: 10 frame(s)
 @>Move Picture: 1, @10, Center (256,192), (100%,100%), 0, Normal
 @>Wait: 10 frame(s)
+@>Erase Picture: 1
+@>
+
+#==============================================================================
+Common Event ID: 113
+Common Event Name: TKoL Credits (backup)
+
+Trigger: None
+
+List of Event Commands:
+@>Fade Out BGM: 2 sec.
+@>Change Screen Color Tone: (-255,-255,-255,0), @20
+@>Wait: 15 frame(s)
+@>Change Transparent Flag: Transparency
+@>Script: pbShowPicture(1,"Credits/Gensokyo.png",1,256,192,100,100,0,0)
+@>Wait: 8 frame(s)
+@>Move Picture: 1, @10, Center (256,192), (100%,100%), 255, Normal
+@>Play BGM: 'W-040. The Space Shrine Maiden Returns Home', 100, 100
+@>Wait: 15 frame(s)
+@>Script: CreditsIntro_TKoL.new
+@>Wait: 15 frame(s)
+@>Move Picture: 1, @10, Center (256,192), (100%,100%), 0, Normal
+@>Wait: 12 frame(s)
+@>Comment: --- Human Village ---
+@>Transfer Player:[102: Credits - Human Village], (032,061)
+@>Script: pbShowPicture(1,"Credits/TKoL/BGs/BGVillage.png",1,256,192,100,100,0,0)
+@>Wait: 8 frame(s)
+@>Move Picture: 1, @10, Center (256,192), (100%,100%), 255, Normal
+@>Wait: 30 frame(s)
+@>Move Picture: 1, @10, Center (256,192), (100%,100%), 0, Normal
+@>Change Screen Color Tone: (51,17,-34,255), @6
+@>Scroll Map: Up, 50, 2
+@>Script: pbShowPicture(2,"Credits/TKoL/BGs/BGTransparent.png",0,0,384,100,100,0,0)
+@>Move Picture: 2, @10, Upper Left (0,240), (100%,100%), 255, Normal
+@>Wait: 15 frame(s)
+@>Script: pbShowPicture(3,"Credits/TKoL/Headers/1_AudComp.png",1,256,192,100,100,0,0)
+@>Script: pbShowPicture(4,"Credits/TKoL/People/1_AudComp_1.png",1,256,192,100,100,0,0)
+@>Wait: 30 frame(s)
+@>Move Picture: 3, @15, Center (256,192), (100%,100%), 255, Normal
+@>Wait: 37 frame(s)
+@>Move Picture: 4, @15, Center (256,192), (100%,100%), 255, Normal
+@>Wait: 90 frame(s)
+@>Move Picture: 4, @15, Center (256,192), (100%,100%), 0, Normal
+@>Wait: 15 frame(s)
+@>Script: pbShowPicture(4,"Credits/TKoL/People/1_AudComp_2.png",1,256,192,100,100,0,0)
+@>Wait: 37 frame(s)
+@>Move Picture: 4, @15, Center (256,192), (100%,100%), 255, Normal
+@>Wait: 90 frame(s)
+@>Move Picture: 3, @15, Center (256,192), (100%,100%), 0, Normal
+@>Move Picture: 4, @15, Center (256,192), (100%,100%), 0, Normal
+@>Wait: 15 frame(s)
+@>Script: pbShowPicture(3,"Credits/TKoL/Headers/2_SFX.png",1,256,192,100,100,0,0)
+@>Script: pbShowPicture(4,"Credits/TKoL/People/2_SFX_1.png",1,256,192,100,100,0,0)
+@>Wait: 30 frame(s)
+@>Move Picture: 3, @15, Center (256,192), (100%,100%), 255, Normal
+@>Wait: 37 frame(s)
+@>Move Picture: 4, @15, Center (256,192), (100%,100%), 255, Normal
+@>Wait: 90 frame(s)
+@>Move Picture: 3, @15, Center (256,192), (100%,100%), 0, Normal
+@>Move Picture: 4, @15, Center (256,192), (100%,100%), 0, Normal
+@>Wait: 15 frame(s)
+@>Script: pbShowPicture(3,"Credits/TKoL/Headers/3_ProgDev.png",1,256,192,100,100,0,0)
+@>Script: pbShowPicture(4,"Credits/TKoL/People/3_ProgDev_1.png",1,256,192,100,100,0,0)
+@>Wait: 30 frame(s)
+@>Move Picture: 3, @15, Center (256,192), (100%,100%), 255, Normal
+@>Wait: 37 frame(s)
+@>Move Picture: 4, @15, Center (256,192), (100%,100%), 255, Normal
+@>Wait: 90 frame(s)
+@>Move Picture: 3, @15, Center (256,192), (100%,100%), 0, Normal
+@>Move Picture: 4, @15, Center (256,192), (100%,100%), 0, Normal
+@>Wait: 15 frame(s)
+@>Script: pbShowPicture(3,"Credits/TKoL/Headers/4_PlotMap.png",1,256,192,100,100,0,0)
+@>Script: pbShowPicture(4,"Credits/TKoL/People/4_PlotMap_1.png",1,256,192,100,100,0,0)
+@>Wait: 30 frame(s)
+@>Move Picture: 3, @15, Center (256,192), (100%,100%), 255, Normal
+@>Wait: 13 frame(s)
+@>Move Picture: 4, @15, Center (256,192), (100%,100%), 255, Normal
+@>Wait: 90 frame(s)
+@>Move Picture: 3, @15, Center (256,192), (100%,100%), 0, Normal
+@>Move Picture: 4, @15, Center (256,192), (100%,100%), 0, Normal
+@>Wait: 11 frame(s)
+@>Move Picture: 2, @10, Upper Left (0,384), (100%,100%), 255, Normal
+@>Change Screen Color Tone: (-255,-255,-255,0), @10
+@>Wait: 8 frame(s)
+@>Script: $game_map.start_scroll(0,0,0)
+@>Wait: 16 frame(s)
+@>Comment: --- Bamboo Forest ---
+@>Transfer Player:[132: Credits - Bamboo Forest], (010,022)
+@>Script: pbShowPicture(1,"Credits/TKoL/BGs/BGBamboo.png",1,256,192,100,100,0,0)
+@>Wait: 8 frame(s)
+@>Move Picture: 1, @10, Center (256,192), (100%,100%), 255, Normal
+@>Wait: 30 frame(s)
+@>Move Picture: 1, @10, Center (256,192), (100%,100%), 0, Normal
+@>Change Screen Color Tone: (51,17,-34,255), @6
+@>Scroll Map: Right, 50, 2
+@>Script: pbShowPicture(2,"Credits/TKoL/BGs/BGTransparent.png",0,0,384,100,100,0,0)
+@>Move Picture: 2, @10, Upper Left (0,240), (100%,100%), 255, Normal
+@>Wait: 15 frame(s)
+@>Script: pbShowPicture(3,"Credits/TKoL/Headers/5_Species.png",1,256,192,100,100,0,0)
+@>Script: pbShowPicture(4,"Credits/TKoL/People/5_Species_1.png",1,256,192,100,100,0,0)
+@>Wait: 30 frame(s)
+@>Move Picture: 3, @15, Center (256,192), (100%,100%), 255, Normal
+@>Wait: 37 frame(s)
+@>Move Picture: 4, @15, Center (256,192), (100%,100%), 255, Normal
+@>Wait: 90 frame(s)
+@>Move Picture: 4, @15, Center (256,192), (100%,100%), 0, Normal
+@>Wait: 15 frame(s)
+@>Script: pbShowPicture(4,"Credits/TKoL/People/5_Species_2.png",1,256,192,100,100,0,0)
+@>Wait: 13 frame(s)
+@>Move Picture: 4, @15, Center (256,192), (100%,100%), 255, Normal
+@>Wait: 90 frame(s)
+@>Move Picture: 3, @15, Center (256,192), (100%,100%), 0, Normal
+@>Move Picture: 4, @15, Center (256,192), (100%,100%), 0, Normal
+@>Wait: 15 frame(s)
+@>Script: pbShowPicture(3,"Credits/TKoL/Headers/6_TSA.png",1,256,192,100,100,0,0)
+@>Script: pbShowPicture(4,"Credits/TKoL/People/6_TSA_1.png",1,256,192,100,100,0,0)
+@>Wait: 30 frame(s)
+@>Move Picture: 3, @15, Center (256,192), (100%,100%), 255, Normal
+@>Wait: 37 frame(s)
+@>Move Picture: 4, @15, Center (256,192), (100%,100%), 255, Normal
+@>Wait: 90 frame(s)
+@>Move Picture: 3, @15, Center (256,192), (100%,100%), 0, Normal
+@>Move Picture: 4, @15, Center (256,192), (100%,100%), 0, Normal
+@>Wait: 11 frame(s)
+@>Move Picture: 2, @10, Upper Left (0,384), (100%,100%), 255, Normal
+@>Change Screen Color Tone: (-255,-255,-255,0), @10
+@>Wait: 10 frame(s)
+@>Script: $game_map.start_scroll(0,0,0)
+@>Wait: 16 frame(s)
+@>Comment: --- Dream World ---
+@>Transfer Player:[104: Credits - Kaian Passageway], (019,071)
+@>Script: pbShowPicture(1,"Credits/TKoL/BGs/BGDreamWorld.png",1,256,192,100,100,0,0)
+@>Wait: 8 frame(s)
+@>Move Picture: 1, @10, Center (256,192), (100%,100%), 255, Normal
+@>Wait: 30 frame(s)
+@>Move Picture: 1, @10, Center (256,192), (100%,100%), 0, Normal
+@>Change Screen Color Tone: (51,17,-34,255), @6
+@>Scroll Map: Up, 70, 2
+@>Script: pbShowPicture(2,"Credits/TKoL/BGs/BGTransparent.png",0,0,384,100,100,0,0)
+@>Move Picture: 2, @10, Upper Left (0,240), (100%,100%), 255, Normal
+@>Wait: 15 frame(s)
+@>Script: pbShowPicture(3,"Credits/TKoL/Headers/7_Art.png",1,256,192,100,100,0,0)
+@>Script: pbShowPicture(4,"Credits/TKoL/People/7_Art_1.png",1,256,192,100,100,0,0)
+@>Wait: 30 frame(s)
+@>Move Picture: 3, @15, Center (256,192), (100%,100%), 255, Normal
+@>Wait: 37 frame(s)
+@>Move Picture: 4, @15, Center (256,192), (100%,100%), 255, Normal
+@>Wait: 90 frame(s)
+@>Move Picture: 4, @15, Center (256,192), (100%,100%), 0, Normal
+@>Wait: 15 frame(s)
+@>Script: pbShowPicture(4,"Credits/TKoL/People/7_Art_2.png",1,256,192,100,100,0,0)
+@>Wait: 37 frame(s)
+@>Move Picture: 4, @15, Center (256,192), (100%,100%), 255, Normal
+@>Wait: 90 frame(s)
+@>Move Picture: 4, @15, Center (256,192), (100%,100%), 0, Normal
+@>Wait: 15 frame(s)
+@>Script: pbShowPicture(4,"Credits/TKoL/People/7_Art_3.png",1,256,192,100,100,0,0)
+@>Wait: 37 frame(s)
+@>Move Picture: 4, @15, Center (256,192), (100%,100%), 255, Normal
+@>Wait: 90 frame(s)
+@>Move Picture: 4, @15, Center (256,192), (100%,100%), 0, Normal
+@>Wait: 15 frame(s)
+@>Script: pbShowPicture(4,"Credits/TKoL/People/7_Art_4.png",1,256,192,100,100,0,0)
+@>Wait: 37 frame(s)
+@>Move Picture: 4, @15, Center (256,192), (100%,100%), 255, Normal
+@>Wait: 90 frame(s)
+@>Move Picture: 3, @15, Center (256,192), (100%,100%), 0, Normal
+@>Move Picture: 4, @15, Center (256,192), (100%,100%), 0, Normal
+@>Wait: 11 frame(s)
+@>Move Picture: 2, @10, Upper Left (0,384), (100%,100%), 255, Normal
+@>Change Screen Color Tone: (-255,-255,-255,0), @10
+@>Wait: 8 frame(s)
+@>Script: $game_map.start_scroll(0,0,0)
+@>Wait: 12 frame(s)
+@>Comment: --- Lunar Capital ---
+@>Transfer Player:[105: Credits - Lunar Capital], (035,020)
+@>Script: pbShowPicture(1,"Credits/TKoL/BGs/BGCapital.png",1,256,192,100,100,0,0)
+@>Wait: 8 frame(s)
+@>Move Picture: 1, @10, Center (256,192), (100%,100%), 255, Normal
+@>Wait: 30 frame(s)
+@>Move Picture: 1, @10, Center (256,192), (100%,100%), 0, Normal
+@>Change Screen Color Tone: (51,17,-34,255), @6
+@>Scroll Map: Down, 50, 2
+@>Script: pbShowPicture(2,"Credits/TKoL/BGs/BGTransparent.png",0,0,384,100,100,0,0)
+@>Move Picture: 2, @10, Upper Left (0,240), (100%,100%), 255, Normal
+@>Wait: 15 frame(s)
+@>Move Picture: 2, @10, Upper Left (0,240), (100%,100%), 255, Normal
+@>Wait: 15 frame(s)
+@>Script: pbShowPicture(3,"Credits/TKoL/Headers/8_Scripts.png",1,256,192,100,100,0,0)
+@>Script: pbShowPicture(4,"Credits/TKoL/People/8_Scripters_1.png",1,256,192,100,100,0,0)
+@>Wait: 30 frame(s)
+@>Move Picture: 3, @15, Center (256,192), (100%,100%), 255, Normal
+@>Wait: 37 frame(s)
+@>Move Picture: 4, @15, Center (256,192), (100%,100%), 255, Normal
+@>Wait: 90 frame(s)
+@>Move Picture: 4, @15, Center (256,192), (100%,100%), 0, Normal
+@>Wait: 15 frame(s)
+@>Script: pbShowPicture(4,"Credits/TKoL/People/8_Scripters_2.png",1,256,192,100,100,0,0)
+@>Wait: 37 frame(s)
+@>Move Picture: 4, @15, Center (256,192), (100%,100%), 255, Normal
+@>Wait: 90 frame(s)
+@>Move Picture: 4, @15, Center (256,192), (100%,100%), 0, Normal
+@>Wait: 15 frame(s)
+@>Script: pbShowPicture(4,"Credits/TKoL/People/8_Scripters_3.png",1,256,192,100,100,0,0)
+@>Wait: 37 frame(s)
+@>Move Picture: 4, @15, Center (256,192), (100%,100%), 255, Normal
+@>Wait: 90 frame(s)
+@>Move Picture: 4, @15, Center (256,192), (100%,100%), 0, Normal
+@>Wait: 15 frame(s)
+@>Script: pbShowPicture(4,"Credits/TKoL/People/8_Scripters_4.png",1,256,192,100,100,0,0)
+@>Wait: 37 frame(s)
+@>Move Picture: 4, @15, Center (256,192), (100%,100%), 255, Normal
+@>Wait: 90 frame(s)
+@>Move Picture: 3, @15, Center (256,192), (100%,100%), 0, Normal
+@>Move Picture: 4, @15, Center (256,192), (100%,100%), 0, Normal
+@>Wait: 11 frame(s)
+@>Move Picture: 2, @10, Upper Left (0,384), (100%,100%), 255, Normal
+@>Change Screen Color Tone: (-255,-255,-255,0), @10
+@>Wait: 8 frame(s)
+@>Script: $game_map.start_scroll(0,0,0)
+@>Wait: 12 frame(s)
+@>Comment: --- Sea of Tranquility ---
+@>Transfer Player:[106: Credits - Sea of Tranquility], (027,040)
+@>Script: pbShowPicture(1,"Credits/TKoL/BGs/BGTranquility.png",1,256,192,100,100,0,0)
+@>Wait: 8 frame(s)
+@>Move Picture: 1, @10, Center (256,192), (100%,100%), 255, Normal
+@>Wait: 30 frame(s)
+@>Move Picture: 1, @10, Center (256,192), (100%,100%), 0, Normal
+@>Change Screen Color Tone: (51,17,-34,255), @6
+@>Scroll Map: Up, 30, 2
+@>Script: pbShowPicture(2,"Credits/TKoL/BGs/BGTransparent.png",0,0,384,100,100,0,0)
+@>Move Picture: 2, @10, Upper Left (0,240), (100%,100%), 255, Normal
+@>Wait: 15 frame(s)
+@>Script: pbShowPicture(3,"Credits/TKoL/Headers/9_Director.png",1,256,192,100,100,0,0)
+@>Script: pbShowPicture(4,"Credits/TKoL/People/9_Director_1.png",1,256,192,100,100,0,0)
+@>Wait: 30 frame(s)
+@>Move Picture: 3, @15, Center (256,192), (100%,100%), 255, Normal
+@>Wait: 52 frame(s)
+@>Move Picture: 4, @15, Center (256,192), (100%,100%), 255, Normal
+@>Wait: 90 frame(s)
+@>Move Picture: 3, @15, Center (256,192), (100%,100%), 0, Normal
+@>Move Picture: 4, @15, Center (256,192), (100%,100%), 0, Normal
+@>Wait: 15 frame(s)
+@>Script: pbShowPicture(3,"Credits/TKoL/Headers/10_Thanks.png",1,256,192,100,100,0,0)
+@>Script: pbShowPicture(4,"Credits/TKoL/People/10_Thanks_1.png",1,256,192,100,100,0,0)
+@>Wait: 30 frame(s)
+@>Move Picture: 3, @15, Center (256,192), (100%,100%), 255, Normal
+@>Wait: 52 frame(s)
+@>Move Picture: 4, @15, Center (256,192), (100%,100%), 255, Normal
+@>Wait: 90 frame(s)
+@>Move Picture: 4, @15, Center (256,192), (100%,100%), 0, Normal
+@>Wait: 15 frame(s)
+@>Script: pbShowPicture(4,"Credits/TKoL/People/10_Thanks_2.png",1,256,192,100,100,0,0)
+@>Wait: 52 frame(s)
+@>Move Picture: 4, @15, Center (256,192), (100%,100%), 255, Normal
+@>Wait: 90 frame(s)
+@>Move Picture: 4, @15, Center (256,192), (100%,100%), 0, Normal
+@>Wait: 15 frame(s)
+@>Script: pbShowPicture(4,"Credits/TKoL/People/10_Thanks_3.png",1,256,192,100,100,0,0)
+@>Wait: 52 frame(s)
+@>Move Picture: 4, @15, Center (256,192), (100%,100%), 255, Normal
+@>Wait: 90 frame(s)
+@>Move Picture: 4, @15, Center (256,192), (100%,100%), 0, Normal
+@>Wait: 15 frame(s)
+@>Script: pbShowPicture(4,"Credits/TKoL/People/10_Thanks_4.png",1,256,192,100,100,0,0)
+@>Wait: 52 frame(s)
+@>Move Picture: 4, @15, Center (256,192), (100%,100%), 255, Normal
+@>Wait: 90 frame(s)
+@>Move Picture: 4, @15, Center (256,192), (100%,100%), 0, Normal
+@>Wait: 15 frame(s)
+@>Script: pbShowPicture(4,"Credits/TKoL/People/10_Thanks_5.png",1,256,192,100,100,0,0)
+@>Wait: 52 frame(s)
+@>Move Picture: 4, @15, Center (256,192), (100%,100%), 255, Normal
+@>Wait: 90 frame(s)
+@>Move Picture: 4, @15, Center (256,192), (100%,100%), 0, Normal
+@>Wait: 15 frame(s)
+@>Script: pbShowPicture(4,"Credits/TKoL/People/10_Thanks_6.png",1,256,192,100,100,0,0)
+@>Wait: 50 frame(s)
+@>Move Picture: 4, @15, Center (256,192), (100%,100%), 255, Normal
+@>Wait: 100 frame(s)
+@>Move Picture: 3, @15, Center (256,192), (100%,100%), 0, Normal
+@>Move Picture: 4, @15, Center (256,192), (100%,100%), 0, Normal
+@>Wait: 11 frame(s)
+@>Move Picture: 2, @10, Upper Left (0,384), (100%,100%), 255, Normal
+@>Wait: 30 frame(s)
+@>Change Screen Color Tone: (-255,-255,-255,0), @10
+@>Wait: 8 frame(s)
+@>Script: $game_map.start_scroll(0,0,0)
+@>Wait: 12 frame(s)
+@>Comment: --- Hecatia's Fortress ---
+@>Transfer Player:[135: Credits - Hecatia's Fortress], (019,006)
+@>Wait: 37 frame(s)
+@>Change Screen Color Tone: (51,17,-34,255), @6
+@>Fade Out BGM: 10 sec.
+@>Wait: 15 frame(s)
+@>Script: CreditsOutro_TKoL.new
+@>Wait: 8 frame(s)
+@>Change Text Options: Bottom, Show
+@>Change Screen Color Tone: (-255,-255,-255,0), @40
+@>Wait: 60 frame(s)
+@>Script: TKoLPostgameStinger.new
+@>Wait: 20 frame(s)
+@>Show Picture: 1, 'Toyoyori', Upper Left (256,192), (100%,100%), 0, Normal
+@>Text: \xn[Female Voice #1]That Human that came to the moon-- \pn was her name?\wtnp[30]
+@>Text: \l[3]Yes, your highness. It seems she was acting on behalf of the fugitives on the planet's surface.\wtnp[30]
+@>Text: \xn[Female Voice #2]I see... That will be all for now, soldier. You're dismissed.\wtnp[30]
+@>Text: Ma'am, yes ma'am!\wtnp[30]
+@>Wait: 20 frame(s)
+@>Text: \xn[Female Voice #1]...So, Eirin sent her up to the Moon, huh?\wtnp[30]
+@>Text: \xn[Female Voice #2]It would seem that way, sister.\wtnp[30]
+@>Text: \xn[Female Voice #1]\l[3]She wouldn't do that without good reason- no, it's thanks to her that the 
+ :    : capital was saved after all.\wtnp[30]
+@>Text: \xn[Female Voice #1]...As unfortunate as it is that we had to resort to outside
+ :    : assistance.\wtnp[30]
+@>Wait: 20 frame(s)
+@>Text: \xn[Female Voice #1]\l[4]Should we do anything about this? If we don't act, the stuck
+ :    : up elders in the council may see this as an act of war from the Earth.\wtnp[30]
+@>Text: \xn[Female Voice #2]...\wtnp[30]
+@>Wait: 20 frame(s)
+@>Text: \xn[Female Voice #1]...Yorihime?\wtnp[30]
+@>Move Picture: 1, @20, Center (256,192), (100%,100%), 255, Normal
+@>Wait: 25 frame(s)
+@>Text: \xn[Female Voice #2]... Send an envoy to Gensokyo to retrieve her.\wtnp[30]
+@>Text: \xn[Female Voice #2]\l[3]We shall put this hero of theirs to the test the way the Capital
+ :    : has always done so.\wtnp[30]
+@>Text: \xn[Female Voice #1]Alright~ I look forward to seeing their so called hero for myself.\wtnp[30]
+@>Text: \xn[Female Voice #1]No hogging them like you did the last time we had guests from
+ :    : the Earth!\wtnp[30]
+@>Move Picture: 1, @20, Center (256,192), (100%,100%), 0, Normal
+@>Wait: 25 frame(s)
 @>Erase Picture: 1
 @>
 

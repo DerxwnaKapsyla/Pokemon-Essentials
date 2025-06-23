@@ -12,14 +12,7 @@ class PokemonLoad_Scene
     @sprites = {}
     @viewport = Viewport.new(0, 0, Graphics.width, Graphics.height)
     @viewport.z = 99998
-	# ------ Array code provided by Marin, who pointed out an alternate way of doing it
-	bgs = [
-		"load_orb",		# Yin-Yang Orb
-		"load_hakkero"	# Mini-Hakkero
-	]	
-	loadbg = bgs[rand(bgs.size)]
-    addBackgroundOrColoredPlane(@sprites, "background", "Load/" + loadbg, Color.new(248, 248, 248), @viewport) # This line was changed so that loadbg is now a variable instead of a direct file
-    # ------ Derx: End of randomized load backgrounds
+    addBackgroundOrColoredPlane(@sprites, "background", "Load/loadbg", Color.new(248, 248, 248), @viewport)
     y = 32
     commands.length.times do |i|
       @sprites["panel#{i}"] = PokemonLoadPanel.new(

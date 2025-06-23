@@ -11,7 +11,7 @@ class StarterSelection
     5  => :CKEINE,
     6  => :CREISEN,
     7  => :CMOKOU,
-    8  => :CRINNOSUKE,
+    8  => :RINNOSUKE,
     9  => :AKYUU,
     10 => :CAYA,
     11 => :CSANAE,
@@ -90,10 +90,116 @@ class StarterSelection
 	end
   end
   
+  def determine_starting_moves(pkmn)
+    case CHARACTER_TO_STARTER[@character_choice]
+    when :CREIMU
+      pkmn.learn_move(:BARRAGE18)
+	  pkmn.learn_move(:DECISION18)
+	  pkmn.learn_move(:FORESIGHT18)
+	  pkmn.learn_move(:RAZORWIND18)
+    when :CMARISA
+      pkmn.learn_move(:SHOCKWAVE18)
+	  pkmn.learn_move(:MIMIC18)
+	  pkmn.learn_move(:THIEF18)
+	  pkmn.learn_move(:AURORABEAM18)
+    when :CSAKUYA
+      pkmn.learn_move(:KNIFETHROW18)
+	  pkmn.learn_move(:DETECT18)
+	  pkmn.learn_move(:DOUBLEKICK18)
+	  pkmn.learn_move(:THIEF18)
+    when :CALICE
+      pkmn.learn_move(:PSYBEAM1818)
+	  pkmn.learn_move(:MAGICKNIFE18)
+	  pkmn.learn_move(:AURORABEAM18)
+	  pkmn.learn_move(:MAGICALLEAF18)
+    when :CYOUMU
+      pkmn.learn_move(:NIGHTSLASH18)
+	  pkmn.learn_move(:FURCUTTER18)
+	  pkmn.learn_move(:DOUBLETEAM18)
+	  pkmn.learn_move(:RAZORWIND18)
+    when :CKEINE
+      pkmn.learn_move(:PSYBEAM18)
+	  pkmn.learn_move(:HEADBUTT18)
+	  pkmn.learn_move(:SHARPEN18)
+	  pkmn.learn_move(:DECISION18)
+    when :CREISEN
+      pkmn.learn_move(:CHARGEBEAM18)
+	  pkmn.learn_move(:MINDBOMB18)
+	  pkmn.learn_move(:CONFUSERAY18)
+	  pkmn.learn_move(:PSYBEAM18)
+    when :CMOKOU
+      pkmn.learn_move(:FLAMEWHEEL18)
+	  pkmn.learn_move(:LEER18)
+	  pkmn.learn_move(:DOUBLEKICK18)
+	  pkmn.learn_move(:BRICKBREAK18)
+    when :RINNOSUKE
+      pkmn.learn_move(:CHARGEBEAM18)
+	  pkmn.learn_move(:SHADOWHIT18)
+	  pkmn.learn_move(:RECYCLE18)
+	  pkmn.learn_move(:SECRETPOWER18)
+    when :AKYUU
+      pkmn.learn_move(:SKETCH18)
+	  pkmn.learn_move(:MIMIC18)
+	  pkmn.learn_move(:SLEEPPOWDER18)
+	  pkmn.learn_move(:RECOLLECTION18)
+    when :CAYA
+      pkmn.learn_move(:WINGATTACK18)
+	  pkmn.learn_move(:WHIRLWIND18)
+	  pkmn.learn_move(:GALE18)
+	  pkmn.learn_move(:TWISTER18)
+    when :CSANAE
+      pkmn.learn_move(:WATERPULSE18)
+	  pkmn.learn_move(:DECISION18)
+	  pkmn.learn_move(:NATUREPOWER18)
+	  pkmn.learn_move(:GUST18)
+    when :CKOISHI
+      pkmn.learn_move(:CONVERSION18)
+	  pkmn.learn_move(:MIRRORSHOT18)
+	  pkmn.learn_move(:PSYSHOT18)
+	  pkmn.learn_move(:DREAMEATER18)
+    when :CKOGASA
+      pkmn.learn_move(:TWISTER18)
+	  pkmn.learn_move(:POWDERSNOW18)
+	  pkmn.learn_move(:WATERPULSE18)
+	  pkmn.learn_move(:SHADOWHIT18)
+    when :CFUTO
+      pkmn.learn_move(:WATERGUN18)
+	  pkmn.learn_move(:FOCUSENERGY18)
+	  pkmn.learn_move(:DECISION18)
+	  pkmn.learn_move(:COMETPUNCH18)
+    when :CSEKIBANKI
+      pkmn.learn_move(:BLACKRIPPLE18)
+	  pkmn.learn_move(:SCARYFACE18)
+	  pkmn.learn_move(:HEADBUTT18)
+	  pkmn.learn_move(:WILLOWISP18)
+    when :CKAGEROU
+      pkmn.learn_move(:HOWL18)
+	  pkmn.learn_move(:BITE18)
+	  pkmn.learn_move(:FURYSWIPES18)
+	  pkmn.learn_move(:PURSUIT18)
+    when :CKOSUZU
+	  pkmn.learn_move(:METRONOME18)
+      pkmn.learn_move(:FLAIL18)
+	  pkmn.learn_move(:SKETCH18)
+	  pkmn.learn_move(:MINDBOMB18)
+    when :CKOKORO
+      pkmn.learn_move(:PSYCHOCUT18)
+	  pkmn.learn_move(:SCARYFACE18)
+	  pkmn.learn_move(:SHADOWHIT18)
+	  pkmn.learn_move(:PERISHSONG18)
+    when :CSUMIREKO
+      pkmn.learn_move(:PSYBEAM18)
+	  pkmn.learn_move(:WATERGUN18)
+	  pkmn.learn_move(:KNOCKOFF18)
+	  pkmn.learn_move(:YAWN18)
+    else
+      return
+    end
+  end
   
   def pbGiveStarter
     pkmn = @starter_choice
-    pkmn.item = :ORANBERRY
+    pkmn.item = :SITRUSBERRY
     pkmn.poke_ball = :PUPPETORB
     pkmn.obtain_text = "Gensokyo Wilderness"
 	
@@ -105,8 +211,8 @@ class StarterSelection
     pkmn.iv[:SPEED] = 31
     pkmn.calc_stats
     pkmn.reset_moves
+	determine_starting_moves(pkmn)
     pbAddPokemonSilent(pkmn)
-
   end
 end
 
