@@ -172,7 +172,7 @@
 	  pbWait(2)
 	  battle.pbDisplayPaused(_INTL("Why... Why aren't you working anymore?!"))
 	  scene.pbForceEndSpeech
-	  if $game_variables[117] = 0
+	  if $game_variables[117] == 0
 	    scene.pbStartSpeech(0)
 	    battle.pbDisplayPaused(_INTL("(It's just like Miss Hina said... she doesn't have true control over the Tome!)"))
 		scene.pbForceEndSpeech
