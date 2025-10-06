@@ -24563,7 +24563,7 @@ Page #1
 Conditions
 None
 
-Graphic: OW - Layla Prismriver
+Graphic: Person_Layla
 
 Autonomous Movement
 Type: Fixed
@@ -26825,7 +26825,7 @@ Page #1
 Conditions
 None
 
-Graphic: OW - Layla Prismriver
+Graphic: Person_Layla
 
 Autonomous Movement
 Type: Fixed
@@ -90688,7 +90688,7 @@ Page #1
 Conditions
 None
 
-Graphic: Person_Meimu
+Graphic: Person_Meimu2
 
 Autonomous Movement
 Type: Fixed
@@ -108898,7 +108898,7 @@ Page #1
 Conditions
 None
 
-Graphic: Person_Meimu
+Graphic: Person_Meimu2
 
 Autonomous Movement
 Type: Fixed
@@ -109432,7 +109432,7 @@ Page #1
 Conditions
 None
 
-Graphic: Person_Meimu
+Graphic: Person_Meimu2
 
 Autonomous Movement
 Type: Fixed
@@ -110314,6 +110314,7 @@ Trigger: Action Button
 
 List of Event Commands:
 @>Script: $game_temp.vs_transition_bg = "Spectral"
+:       : $PokemonGlobal.nextBattleBack="Layla"
 @>Conditional Branch: Script: TrainerBattle.start(:LAYLA, "Layla Prismriver", 10)
  @>
 : Else
@@ -111523,6 +111524,8 @@ Trigger: Action Button
 
 List of Event Commands:
 @>Script: $game_temp.vs_transition_bg = "WorldOfFantasy"
+:       : setBattleRule("backdrop", "meimu")
+:       : setBattleRule("base", "meimu")
 @>Control Variables: [0143: Meimu Battle Count] = 1
 @>Loop
  @>Conditional Branch: Variable [0143: Meimu Battle Count] == 4
@@ -111530,6 +111533,8 @@ List of Event Commands:
   @>
  : Branch End
  @>Conditional Branch: Script: TrainerBattle.start(:MEIMU,"Meimu",pbGet(143))
+  @>Script: setBattleRule("backdrop", "meimu")
+  :       : setBattleRule("base", "meimu")
   @>Control Variables: [0143: Meimu Battle Count] += 1
   @>Script: echoln pbGet(143)
   @>Recover All: Entire Party
@@ -111560,7 +111565,7 @@ Page #1
 Conditions
 None
 
-Graphic: Person_Meimu
+Graphic: Person_Meimu2
 
 Autonomous Movement
 Type: Fixed
@@ -113754,7 +113759,7 @@ Page #1
 Conditions
 None
 
-Graphic: Person_Meimu
+Graphic: Person_Meimu2
 
 Autonomous Movement
 Type: Fixed

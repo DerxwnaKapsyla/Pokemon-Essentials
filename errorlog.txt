@@ -28966,3 +28966,24 @@ Backtrace:
 [Deluxe Battle Kit] [003] Deluxe Battle Rules.rb:769:in `each'
 [Deluxe Battle Kit] [003] Deluxe Battle Rules.rb:769:in `block (2 levels) in <main>'
 [Deluxe Battle Kit] [003] Deluxe Battle Rules.rb:767:in `each'
+
+=================
+
+[2025-10-04 12:54:35 -0700]
+[Pokémon Essentials version 21.1]
+[v21.1 Hotfixes 1.0.9]
+
+Exception: NoMethodError
+Message: undefined method `[]' for nil:NilClass
+
+Backtrace:
+[Voltseon's Pause Menu] 003_VoltseonMenu_Menu.rb:261:in `block in refresh_menu'
+[Voltseon's Pause Menu] 003_VoltseonMenu_Menu.rb:260:in `each'
+[Voltseon's Pause Menu] 003_VoltseonMenu_Menu.rb:260:in `each_with_index'
+[Voltseon's Pause Menu] 003_VoltseonMenu_Menu.rb:260:in `refresh_menu'
+[Voltseon's Pause Menu] 002_VoltseonMenu_Main.rb:94:in `pbStartScene'
+[Voltseon's Pause Menu] 002_VoltseonMenu_Main.rb:296:in `pbStartPokemonMenu'
+[Voltseon's Pause Menu] 002_VoltseonMenu_Main.rb:288:in `call_menu'
+002_Scene_Map.rb:207:in `update'
+002_Scene_Map.rb:238:in `block in main'
+002_Scene_Map.rb:235:in `loop'
