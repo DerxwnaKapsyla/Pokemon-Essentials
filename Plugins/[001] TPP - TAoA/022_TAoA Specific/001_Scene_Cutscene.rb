@@ -366,7 +366,6 @@ class CreditsNames
     [
       "DerxwnaKapsyla",
 	  "ChaoticInfinity Development",
-	  "Overseer Household",
     ],
     :wait, 120,
     :clear,
@@ -537,8 +536,7 @@ class CreditsOutro_TMoM
       "The Mansion of Mystery",
 	  "",
 	  "2021-2024         DerxwnaKapsyla ",
-	  "2021-2021          ChaoticInfinity",
-	  "2021-2024   Overseer Household",
+	  "2021-2021          ChaoticInfinity"
     ],
     :wait, 160,
     :clear,
@@ -547,8 +545,7 @@ class CreditsOutro_TMoM
       "Touhoumon Essentials",
       "",
 	  "2011-2024         DerxwnaKapsyla ",
-	  "2011-2021          ChaoticInfinity",
-	  "2020-2024   Overseer Household",
+	  "2011-2025          ChaoticInfinity"
     ],
     :wait, 160,
     :clear,
@@ -883,8 +880,7 @@ class CreditsOutro_TFoC < CreditsOutro_TMoM
       "The Festival of Curses",
 	  "",
 	  "2021-2024         DerxwnaKapsyla ",
-	  "2021-2021          ChaoticInfinity",
-	  "2021-2024   Overseer Household",
+	  "2021-2021          ChaoticInfinity"
     ],
     :wait, 160,
     :clear,
@@ -893,8 +889,7 @@ class CreditsOutro_TFoC < CreditsOutro_TMoM
       "Touhoumon Essentials",
       "",
 	  "2011-2024         DerxwnaKapsyla ",
-	  "2011-2021          ChaoticInfinity",
-	  "2020-2024   Overseer Household",
+	  "2011-2025          ChaoticInfinity"
     ],
     :wait, 160,
     :clear,
@@ -962,8 +957,7 @@ class CreditsOutro_TKoL < CreditsOutro_TMoM
       "The Kingdom of Lunacy",
 	  "",
 	  "2021-2024         DerxwnaKapsyla ",
-	  "2021-2021          ChaoticInfinity",
-	  "2021-2024   Overseer Household",
+	  "2021-2021          ChaoticInfinity"
     ],
     :wait, 160,
     :clear,
@@ -972,8 +966,7 @@ class CreditsOutro_TKoL < CreditsOutro_TMoM
       "Touhoumon Essentials",
       "",
 	  "2011-2024         DerxwnaKapsyla ",
-	  "2011-2021          ChaoticInfinity",
-	  "2020-2024   Overseer Household",
+	  "2011-2025          ChaoticInfinity"
     ],
     :wait, 160,
     :clear,
@@ -1074,7 +1067,43 @@ class MeimuOutro < TMoMIntroScene
   ]
 end
 
-class CreditsIntro_TAoA < CreditsIntro_TFoC
+class CreditsOutro_TAoA < CreditsOutro_TMoM
+  TEXT = [
+    [
+      "Touhou Puppet Play",
+      "The Adventures of Ayaka",
+	  "",
+	  "2021-2025         DerxwnaKapsyla ",
+	  "2021-2025          ChaoticInfinity"
+    ],
+    :wait, 160,
+    :clear,
+    :wait, 60,
+    [
+      "Touhoumon Essentials",
+      "",
+	  "2011-2025         DerxwnaKapsyla ",
+	  "2011-2025          ChaoticInfinity",
+    ],
+    :wait, 160,
+    :clear,
+    :wait, 60,
+    [
+      "Pokemon Essentials",
+      "",
+	  "2007-2010        Peter O.",
+	  "2010-2025          Maruno",
+	  "Based on work by Flameguru",
+    ],
+    :wait, 160,
+    :clear,
+	:wait, 60,
+  ]
+end
+
+class CreditsIntro_TAoA
+  BASECOLOR = Color.new(248, 248, 248)
+  SHADOWCOLOR = Color.new(72, 72, 72)
   TEXT = [
     [
       "Touhou Puppet Play",
@@ -1084,7 +1113,7 @@ class CreditsIntro_TAoA < CreditsIntro_TFoC
     ],
     :wait, 160,
     :clear,
-    :wait, 100,
+    :wait, 80,
     [
       "--- The Mansion of Mystery ---",
 	  "--- Development Team and Testers ---",
@@ -1094,7 +1123,7 @@ class CreditsIntro_TAoA < CreditsIntro_TFoC
     ],
     :wait, 160,
     :clear,
-    :wait, 100,
+    :wait, 80,
     [
       "--- The Festival of Curses ---",
 	  "--- Development Team and Testers ---",
@@ -1104,7 +1133,7 @@ class CreditsIntro_TAoA < CreditsIntro_TFoC
     ],
     :wait, 160,
     :clear,
-    :wait, 100,
+    :wait, 80,
     [
       "--- The Kingdom of Lunacy ---",
 	  "--- Development Team and Testers ---",
@@ -1113,14 +1142,187 @@ class CreditsIntro_TAoA < CreditsIntro_TFoC
     ],
     :wait, 160,
     :clear,
-    :wait, 100,
+    :wait, 80,
     [
       "--- The Last Adventure ---",
 	  "--- Development Team and Testers ---",
-      "DerxwnaKapsyla",
-	  "Chirei"
+      "DerxwnaKapsyla"
     ],
-    :wait, 400,
+    :wait, 160,
     :clear,
+  ]
+  def initialize
+    @viewport = Viewport.new(0, 0, Graphics.width, Graphics.height)
+    @viewport.z = 999999999
+    @text = TextSprite.new(@viewport)
+    @idx = 0
+    main
+  end
+  
+  def main
+    while @idx < self.class::TEXT.size
+      if self.class::TEXT[@idx] == :wait
+        self.class::TEXT[@idx + 1].times do
+          Graphics.update
+          Input.update
+        end
+        @idx += 2
+      elsif self.class::TEXT[@idx] == :clear
+        for i in 0...64
+		echoln i
+          Graphics.update
+          Input.update
+          @text.opacity -= 4
+        end
+        @idx += 1
+      elsif self.class::TEXT[@idx].is_a?(Array)
+        @text.opacity = 0
+        lines = self.class::TEXT[@idx]
+        @text.clear
+        for i in 0...lines.size
+          y = [
+            nil,
+            [-16],
+            [-26, 6],
+            [-48, -16, 16],
+            [-64, -32, 0, 32],
+			[-80, -48, -16, 16, 48],
+			[-96, -64, -32, 0, 32, 64]
+          ][lines.size][i]
+          @text.draw([
+            lines[i],
+            Graphics.width / 2,
+            Graphics.height / 2 + y,
+            2,
+            self.class::BASECOLOR,
+            self.class::SHADOWCOLOR
+          ])
+        end
+        for i in 0...32
+		echoln i
+          Graphics.update
+          Input.update
+          @text.opacity += 8
+        end
+        @idx += 1
+      end
+    end
+    for i in 0...32
+	echoln i
+      Graphics.update
+      Input.update
+      @text.opacity -= 8
+    end
+    dispose
+  end
+  
+  def dispose
+    @text.dispose
+    @viewport.dispose
+  end
+end
+
+class CreditsNamesFinal < CreditsNames
+  TEXT = [
+    # Species Designers
+	[
+      "HemoglobinA1C | Reimufate",
+      "Stuffman | Masa",
+	  "Agastya | EXSariel",
+	  "Tye"
+    ],
+    :wait, 160,
+    :clear,
+    :wait, 100,
+	[
+      "DoesntKnowHowToPlay",
+      "DerxwnaKapsyla"
+    ],
+    :wait, 160,
+    :clear,
+    :wait, 100,
+	# Team Shanghai Alice
+	[
+      "Team Shanghai Alice"
+    ],
+    :wait, 160,
+    :clear,
+    :wait, 100,
+	# Art (Missing, whoops)
+	[
+      "Game Freak",
+      "Relic Castle Game Jam Staff",
+	  "Team Shanghai Alice",
+	  "Twilight Frontier"
+    ],
+    :wait, 160,
+    :clear,
+    :wait, 100,
+	# Director
+	[
+      "ChaoticInfinity Development"
+    ],
+    :wait, 160,
+    :clear,
+    :wait, 100,
+	# Special Thanks
+	[
+      "HemoglobinA1C:",
+      "Developer of Touhou Puppet Play",
+	  "Agastya & EXSariel:",
+	  "Localization of Touhoumon 1.812"
+    ],
+    :wait, 160,
+    :clear,
+    :wait, 100,
+	[
+      "DoesntKnowHowToPlay:",
+      "Developer of Touhoumon Unnamed",
+	  "Reimufate:",
+	  "Developer of Touhoumon Reimufate Version"
+    ],
+    :wait, 160,
+    :clear,
+    :wait, 100,
+	[
+      "FocasLens & The Fantasy Puppet Theater:",
+      "The Gensou Ningyou Enbu Asset Pack"
+    ],
+    :wait, 160,
+    :clear,
+    :wait, 100,
+	[
+      "Dirty Cog Crew:",
+      "Emotional support, motivation, and validation",
+	  "Eevee Expo Discord Server:",
+	  "Being an amazing community full of creative people"
+    ],
+    :wait, 160,
+    :clear,
+    :wait, 100,
+	[
+      "Flameguru & Poccil (Peter O.):",
+      "Prior developers of Essentials",
+	  "Maruno:",
+	  "Current developer of Essentials"
+    ],
+    :wait, 160,
+    :clear,
+    :wait, 100,
+	[
+      "Enterbrain: Producers of \"RPG Maker XP\"",
+      "Game Freak: Developers of \"Pokemon\"",
+	  "FocasLens: \"Developers of Gensou Ningyou Enbu\"",
+	  "ZUN: Developer of \"Touhou Project\""
+    ],
+    :wait, 160,
+    :clear,
+    :wait, 100,
+	[
+      "And YOU..."
+    ],
+    :wait, 160,
+    :clear,
+    #:wait, 100,
   ]
 end

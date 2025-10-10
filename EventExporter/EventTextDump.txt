@@ -16483,6 +16483,30 @@ List of Event Commands:
 @>
 
 #------------------------------------------------------------------------------
+Event ID: 011
+Event Name: EV011
+(X,Y): (020,020)
+
+Page #1
+Conditions
+None
+
+Graphic: Object ball
+
+Autonomous Movement
+Type: Fixed
+Speed: 3: Slow
+Freq: 3: Low
+Options Enabled
+Move Animation
+Trigger: Action Button
+
+List of Event Commands:
+@>Control Variables: [0144: TAoA Credits Variable] = 0
+@>Call Common Event: TLA Credits
+@>
+
+#------------------------------------------------------------------------------
 Event ID: 012
 Event Name: EV012
 (X,Y): (019,029)
@@ -90826,15 +90850,15 @@ List of Event Commands:
  :    : dealing the final blow to the two who manipulated the phenomenon.\wtnp[40]
 @>Text: \xn[\pn]\se[]I believe it was the Pestilence Goddess and the Poverty Goddess?\wtnp[40]
 @>Text: \xn[\pn]\se[]That doesn't mean I didn't help out, though!\wtnp[40]
-@>Text: \xn[\pn]\se[]And the spectacles that followed were sure ones to behold!\wtnp[40]
+@>Text: \xn[\pn]\se[]And the spectacles that followed were amazing to behold!\wtnp[40]
 @>Play BGM: 'W-045. Above and Beyond - Loop', 40, 100
 @>Text: \xn[\pn]\se[]...But that's an <b>adventure of mine</b> for another day!\wtnp[40]
-@>Wait: 60 frame(s)
+@>Wait: 5 frame(s)
 @>Show Picture: 1, 'black box', Upper Left (0,200), (100%,100%), 192, Normal
 @>Wait: 10 frame(s)
 @>Scroll Map: Down, 1, 2
 @>Change Screen Color Tone: (51,17,-34,255), @20
-@>Move Picture: 1, @40, Upper Left (0,0), (100%,100%), 255, Normal
+@>Move Picture: 1, @40, Upper Left (0,0), (100%,100%), 192, Normal
 @>Control Variables: [0144: TAoA Credits Variable] = 1
 @>Call Common Event: TLA Credits
 @>Wait: 10 frame(s)
@@ -109470,7 +109494,7 @@ List of Event Commands:
 @>Move Picture: 1, @10, Center (256,192), (100%,100%), 0, Normal
 @>Change Screen Color Tone: (0,0,0,0), @20
 @>Wait: 20 frame(s)
-@>Comment: ?????
+@>Change Screen Color Tone: (51,17,-34,255), @20
 @>Wait: 20 frame(s)
 @>Show Picture: 1, 'black box', Upper Left (0,200), (100%,100%), 192, Normal
 @>Wait: 10 frame(s)
@@ -109523,6 +109547,7 @@ List of Event Commands:
   @>Control Variables: [0144: TAoA Credits Variable] = 9
   @>
  : When [No]
+  @>Control Variables: [0144: TAoA Credits Variable] = 0
   @>
  : Branch End
  @>
@@ -111906,6 +111931,65 @@ List of Event Commands:
 :       : $player.tfoc_cleared = false
 :       : $player.tkol_cleared = false
 :       : $player.tla_cleared = false
+@>
+
+#------------------------------------------------------------------------------
+Event ID: 056
+Event Name: EV056
+(X,Y): (024,021)
+
+Page #1
+Conditions
+None
+
+Graphic: Object boulder
+
+Autonomous Movement
+Type: Fixed
+Speed: 3: Slow
+Freq: 3: Low
+Options Enabled
+Move Animation
+Trigger: Action Button
+
+List of Event Commands:
+@>Change Screen Color Tone: (-255,255,255,0), @1
+@>Wait: 4 frame(s)
+@>Script: CreditsNamesFinal.new
+@>
+
+Page #2
+Conditions
+None
+
+Graphic: Object boulder
+
+Autonomous Movement
+Type: Fixed
+Speed: 3: Slow
+Freq: 3: Low
+Options Enabled
+Move Animation
+Trigger: Action Button
+
+List of Event Commands:
+@>Conditional Branch: Switch [0152: TLA Cleared] == ON
+ @>Script: set_menu_theme("dark")
+ @>Text: \w[black]Would you like to skip the credits?
+ @>Show Choices: Yes, No
+ (When Cancel: Choice 2)
+ : When [Yes]
+  @>Change Screen Color Tone: (-255,-255,-255,0), @10
+  @>Control Variables: [0144: TAoA Credits Variable] = 9
+  @>
+ : When [No]
+  @>Control Variables: [0144: TAoA Credits Variable] = 0
+  @>
+ : Branch End
+ @>
+: Branch End
+@>Script: reset_menu_theme
+@>Call Common Event: TLA Credits
 @>
 
 #------------------------------------------------------------------------------
@@ -118147,6 +118231,7 @@ Common Event Name:
 Trigger: None
 
 List of Event Commands:
+@>Move Picture: 2, @10, Upper Left (0,384), (100%,100%), 192, Normal
 @>
 
 #==============================================================================
@@ -118162,49 +118247,211 @@ List of Event Commands:
  @>Comment: 20
  @>Change Transparent Flag: Transparency
  @>Script: pbShowPicture(1,"Credits/Gensokyo.png",1,256,192,zoomX=100,zoomY=100,opacity=0,blendType=0)
+ @>Script: pbShowPicture(50,"black.png",1,256,192,100,100,0,0)
  @>Wait: 20 frame(s)
  @>Comment: 10
  @>Move Picture: 1, @10, Center (256,192), (100%,100%), 255, Normal
+ @>Move Picture: 50, @10, Center (256,192), (100%,100%), 126, Normal
  @>Play BGM: 'W-045. Above and Beyond - Intro', 100, 100
- @>Wait: 10 frame(s)
- @>Comment: 10
+ @>Wait: 15 frame(s)
  @>Script: CreditsIntro_TAoA.new
  @>Wait: 20 frame(s)
  @>Move Picture: 1, @10, Center (256,192), (100%,100%), 0, Normal
+ @>Move Picture: 50, @10, Center (256,192), (100%,100%), 0, Normal
  @>Wait: 16 frame(s)
  @>Change Transparent Flag: Transparency
  @>Transfer Player:[113: Credits - Ayaka's Room], (008,007), No Fade
  @>
 : Branch End
 @>Conditional Branch: Variable [0144: TAoA Credits Variable] == 1
- @>Text: Credits not finished.
+ @>Comment: ---- Director, Programmer/Developer, Scenario Designer
+ @>Wait: 15 frame(s)
+ @>Script: pbShowPicture(3,"Credits/TAoA/Headers/9_Director.png",1,256,192,100,100,0,0)
+ @>Script: pbShowPicture(4,"Credits/TAoA/People/9_Director_1.png",1,256,192,100,100,0,0)
+ @>Wait: 20 frame(s)
+ @>Move Picture: 3, @15, Center (256,192), (100%,100%), 255, Normal
+ @>Wait: 20 frame(s)
+ @>Move Picture: 4, @15, Center (256,192), (100%,100%), 255, Normal
+ @>Wait: 35 frame(s)
+ @>Move Picture: 3, @15, Center (256,192), (100%,100%), 0, Normal
+ @>Move Picture: 4, @15, Center (256,192), (100%,100%), 0, Normal
+ @>Wait: 15 frame(s)
+ @>Script: pbShowPicture(3,"Credits/TAoA/Headers/3_ProgDev.png",1,256,192,100,100,0,0)
+ @>Script: pbShowPicture(4,"Credits/TAoA/People/3_ProgDev_1.png",1,256,192,100,100,0,0)
+ @>Wait: 20 frame(s)
+ @>Move Picture: 3, @15, Center (256,192), (100%,100%), 255, Normal
+ @>Wait: 20 frame(s)
+ @>Move Picture: 4, @15, Center (256,192), (100%,100%), 255, Normal
+ @>Wait: 35 frame(s)
+ @>Move Picture: 3, @15, Center (256,192), (100%,100%), 0, Normal
+ @>Move Picture: 4, @15, Center (256,192), (100%,100%), 0, Normal
+ @>Wait: 15 frame(s)
+ @>Script: pbShowPicture(3,"Credits/TAoA/Headers/4_PlotMap.png",1,256,192,100,100,0,0)
+ @>Script: pbShowPicture(4,"Credits/TAoA/People/4_PlotMap_1.png",1,256,192,100,100,0,0)
+ @>Wait: 20 frame(s)
+ @>Move Picture: 3, @15, Center (256,192), (100%,100%), 255, Normal
+ @>Wait: 20 frame(s)
+ @>Move Picture: 4, @15, Center (256,192), (100%,100%), 255, Normal
+ @>Wait: 35 frame(s)
+ @>Move Picture: 3, @15, Center (256,192), (100%,100%), 0, Normal
+ @>Move Picture: 4, @15, Center (256,192), (100%,100%), 0, Normal
+ @>Wait: 15 frame(s)
+ @>Comment: ---
  @>Change Screen Color Tone: (-255,-255,-255,0), @10
  @>Comment: Scene: Ayaka's Bedroom, during AoCF
  @>
 : Branch End
 @>Conditional Branch: Variable [0144: TAoA Credits Variable] == 2
- @>Text: Credits not finished.
+ @>Comment: ---- Music, SFX
+ @>Wait: 15 frame(s)
+ @>Script: pbShowPicture(3,"Credits/TAoA/Headers/1_AudComp.png",1,256,192,100,100,0,0)
+ @>Script: pbShowPicture(4,"Credits/TAoA/People/1_AudComp_1.png",1,256,192,100,100,0,0)
+ @>Wait: 20 frame(s)
+ @>Move Picture: 3, @15, Center (256,192), (100%,100%), 255, Normal
+ @>Wait: 20 frame(s)
+ @>Move Picture: 4, @15, Center (256,192), (100%,100%), 255, Normal
+ @>Wait: 35 frame(s)
+ @>Move Picture: 4, @15, Center (256,192), (100%,100%), 0, Normal
+ @>Wait: 15 frame(s)
+ @>Script: pbShowPicture(4,"Credits/TAoA/People/1_AudComp_2.png",1,256,192,100,100,0,0)
+ @>Wait: 20 frame(s)
+ @>Move Picture: 4, @15, Center (256,192), (100%,100%), 255, Normal
+ @>Wait: 35 frame(s)
+ @>Move Picture: 4, @15, Center (256,192), (100%,100%), 0, Normal
+ @>Wait: 15 frame(s)
+ @>Script: pbShowPicture(4,"Credits/TAoA/People/1_AudComp_3.png",1,256,192,100,100,0,0)
+ @>Wait: 20 frame(s)
+ @>Move Picture: 4, @15, Center (256,192), (100%,100%), 255, Normal
+ @>Wait: 35 frame(s)
+ @>Move Picture: 3, @15, Center (256,192), (100%,100%), 0, Normal
+ @>Move Picture: 4, @15, Center (256,192), (100%,100%), 0, Normal
+ @>Wait: 15 frame(s)
+ @>Script: pbShowPicture(3,"Credits/TAoA/Headers/2_SFX.png",1,256,192,100,100,0,0)
+ @>Script: pbShowPicture(4,"Credits/TAoA/People/2_SFX_1.png",1,256,192,100,100,0,0)
+ @>Wait: 20 frame(s)
+ @>Move Picture: 3, @15, Center (256,192), (100%,100%), 255, Normal
+ @>Wait: 40 frame(s)
+ @>Move Picture: 4, @15, Center (256,192), (100%,100%), 255, Normal
+ @>Wait: 40 frame(s)
+ @>Move Picture: 4, @15, Center (256,192), (100%,100%), 0, Normal
+ @>Wait: 15 frame(s)
+ @>Script: pbShowPicture(4,"Credits/TAoA/People/2_SFX_2.png",1,256,192,100,100,0,0)
+ @>Wait: 20 frame(s)
+ @>Move Picture: 4, @15, Center (256,192), (100%,100%), 255, Normal
+ @>Wait: 40 frame(s)
+ @>Move Picture: 3, @15, Center (256,192), (100%,100%), 0, Normal
+ @>Move Picture: 4, @15, Center (256,192), (100%,100%), 0, Normal
+ @>Wait: 15 frame(s)
+ @>Comment: ---
  @>Change Screen Color Tone: (-255,-255,-255,0), @10
  @>Comment: Warp: Village Tournament Arena
   :       : Scene: Prismrivers holding a concert
  @>
 : Branch End
 @>Conditional Branch: Variable [0144: TAoA Credits Variable] == 3
- @>Text: Credits not finished.
+ @>Comment: ---- Art
+ @>Wait: 15 frame(s)
+ @>Script: pbShowPicture(3,"Credits/TAoA/Headers/7_Art.png",1,256,192,100,100,0,0)
+ @>Script: pbShowPicture(4,"Credits/TAoA/People/7_Art_1.png",1,256,192,100,100,0,0)
+ @>Wait: 20 frame(s)
+ @>Move Picture: 3, @15, Center (256,192), (100%,100%), 255, Normal
+ @>Wait: 20 frame(s)
+ @>Move Picture: 4, @15, Center (256,192), (100%,100%), 255, Normal
+ @>Wait: 35 frame(s)
+ @>Move Picture: 4, @15, Center (256,192), (100%,100%), 0, Normal
+ @>Wait: 15 frame(s)
+ @>Script: pbShowPicture(4,"Credits/TAoA/People/7_Art_2.png",1,256,192,100,100,0,0)
+ @>Wait: 20 frame(s)
+ @>Move Picture: 4, @15, Center (256,192), (100%,100%), 255, Normal
+ @>Wait: 35 frame(s)
+ @>Move Picture: 4, @15, Center (256,192), (100%,100%), 0, Normal
+ @>Wait: 15 frame(s)
+ @>Script: pbShowPicture(4,"Credits/TAoA/People/7_Art_3.png",1,256,192,100,100,0,0)
+ @>Wait: 20 frame(s)
+ @>Move Picture: 4, @15, Center (256,192), (100%,100%), 255, Normal
+ @>Wait: 35 frame(s)
+ @>Move Picture: 4, @15, Center (256,192), (100%,100%), 0, Normal
+ @>Wait: 15 frame(s)
+ @>Script: pbShowPicture(4,"Credits/TAoA/People/7_Art_4.png",1,256,192,100,100,0,0)
+ @>Wait: 20 frame(s)
+ @>Move Picture: 4, @15, Center (256,192), (100%,100%), 255, Normal
+ @>Wait: 35 frame(s)
+ @>Move Picture: 4, @15, Center (256,192), (100%,100%), 0, Normal
+ @>Wait: 15 frame(s)
+ @>Script: pbShowPicture(4,"Credits/TAoA/People/7_Art_5.png",1,256,192,100,100,0,0)
+ @>Wait: 20 frame(s)
+ @>Move Picture: 4, @15, Center (256,192), (100%,100%), 255, Normal
+ @>Wait: 35 frame(s)
+ @>Move Picture: 3, @15, Center (256,192), (100%,100%), 0, Normal
+ @>Move Picture: 4, @15, Center (256,192), (100%,100%), 0, Normal
+ @>Wait: 15 frame(s)
+ @>Comment: ---
  @>Change Screen Color Tone: (-255,-255,-255,0), @10
  @>Comment: Warp: Mugenkan Back Garden
   :       : Scene: Yuuka and Medicine walking through the berry garden
  @>
 : Branch End
 @>Conditional Branch: Variable [0144: TAoA Credits Variable] == 4
- @>Text: Credits not finished.
+ @>Comment: ---- Species, TSA
+ @>Wait: 15 frame(s)
+ @>Script: pbShowPicture(3,"Credits/TAoA/Headers/5_Species.png",1,256,192,100,100,0,0)
+ @>Script: pbShowPicture(4,"Credits/TAoA/People/5_Species_1.png",1,256,192,100,100,0,0)
+ @>Wait: 20 frame(s)
+ @>Move Picture: 3, @15, Center (256,192), (100%,100%), 255, Normal
+ @>Wait: 20 frame(s)
+ @>Move Picture: 4, @15, Center (256,192), (100%,100%), 255, Normal
+ @>Wait: 35 frame(s)
+ @>Move Picture: 4, @15, Center (256,192), (100%,100%), 0, Normal
+ @>Wait: 15 frame(s)
+ @>Script: pbShowPicture(4,"Credits/TAoA/People/5_Species_2.png",1,256,192,100,100,0,0)
+ @>Wait: 20 frame(s)
+ @>Move Picture: 4, @15, Center (256,192), (100%,100%), 255, Normal
+ @>Wait: 35 frame(s)
+ @>Move Picture: 3, @15, Center (256,192), (100%,100%), 0, Normal
+ @>Move Picture: 4, @15, Center (256,192), (100%,100%), 0, Normal
+ @>Wait: 15 frame(s)
+ @>Script: pbShowPicture(3,"Credits/TAoA/Headers/6_TSA.png",1,256,192,100,100,0,0)
+ @>Script: pbShowPicture(4,"Credits/TAoA/People/6_TSA_1.png",1,256,192,100,100,0,0)
+ @>Wait: 20 frame(s)
+ @>Move Picture: 3, @15, Center (256,192), (100%,100%), 255, Normal
+ @>Wait: 20 frame(s)
+ @>Move Picture: 4, @15, Center (256,192), (100%,100%), 255, Normal
+ @>Wait: 35 frame(s)
+ @>Move Picture: 3, @15, Center (256,192), (100%,100%), 0, Normal
+ @>Move Picture: 4, @15, Center (256,192), (100%,100%), 0, Normal
+ @>Wait: 15 frame(s)
+ @>Comment: ---
  @>Change Screen Color Tone: (-255,-255,-255,0), @10
  @>Comment: Warp: Lunar Capital Training Grounds
   :       : Scene: Yorihime & Toyohime observing the LDC
  @>
 : Branch End
 @>Conditional Branch: Variable [0144: TAoA Credits Variable] == 5
- @>Text: Credits not finished.
+ @>Comment: ---- Scripters
+ @>Wait: 15 frame(s)
+ @>Script: pbShowPicture(3,"Credits/TAoA/Headers/8_Scripts.png",1,256,192,100,100,0,0)
+ @>Script: pbShowPicture(4,"Credits/TAoA/People/8_Scripters_1.png",1,256,192,100,100,0,0)
+ @>Wait: 20 frame(s)
+ @>Move Picture: 3, @15, Center (256,192), (100%,100%), 255, Normal
+ @>Wait: 20 frame(s)
+ @>Move Picture: 4, @15, Center (256,192), (100%,100%), 255, Normal
+ @>Wait: 35 frame(s)
+ @>Move Picture: 4, @15, Center (256,192), (100%,100%), 0, Normal
+ @>Wait: 15 frame(s)
+ @>Script: pbShowPicture(4,"Credits/TAoA/People/8_Scripters_2.png",1,256,192,100,100,0,0)
+ @>Wait: 20 frame(s)
+ @>Move Picture: 4, @15, Center (256,192), (100%,100%), 255, Normal
+ @>Wait: 35 frame(s)
+ @>Move Picture: 4, @15, Center (256,192), (100%,100%), 0, Normal
+ @>Wait: 15 frame(s)
+ @>Script: pbShowPicture(4,"Credits/TAoA/People/8_Scripters_3.png",1,256,192,100,100,0,0)
+ @>Wait: 20 frame(s)
+ @>Move Picture: 4, @15, Center (256,192), (100%,100%), 255, Normal
+ @>Wait: 35 frame(s)
+ @>Move Picture: 3, @15, Center (256,192), (100%,100%), 0, Normal
+ @>Move Picture: 4, @15, Center (256,192), (100%,100%), 0, Normal
+ @>Wait: 15 frame(s)
+ @>Comment: ---
  @>Change Screen Color Tone: (-255,-255,-255,0), @10
  @>Comment: Warp: Human Village
   :       : Scene: Reimu & Yukari fighting Jo'on & Shion, with
@@ -118212,7 +118459,49 @@ List of Event Commands:
  @>
 : Branch End
 @>Conditional Branch: Variable [0144: TAoA Credits Variable] == 6
- @>Text: Credits not finished.
+ @>Comment: ---- Thanks
+ @>Wait: 15 frame(s)
+ @>Script: pbShowPicture(3,"Credits/TAoA/Headers/10_Thanks.png",1,256,192,100,100,0,0)
+ @>Script: pbShowPicture(4,"Credits/TAoA/People/10_Thanks_1.png",1,256,192,100,100,0,0)
+ @>Wait: 20 frame(s)
+ @>Move Picture: 3, @15, Center (256,192), (100%,100%), 255, Normal
+ @>Wait: 20 frame(s)
+ @>Move Picture: 4, @15, Center (256,192), (100%,100%), 255, Normal
+ @>Wait: 35 frame(s)
+ @>Move Picture: 4, @15, Center (256,192), (100%,100%), 0, Normal
+ @>Wait: 15 frame(s)
+ @>Script: pbShowPicture(4,"Credits/TAoA/People/10_Thanks_2.png",1,256,192,100,100,0,0)
+ @>Wait: 20 frame(s)
+ @>Move Picture: 4, @15, Center (256,192), (100%,100%), 255, Normal
+ @>Wait: 35 frame(s)
+ @>Move Picture: 4, @15, Center (256,192), (100%,100%), 0, Normal
+ @>Wait: 15 frame(s)
+ @>Script: pbShowPicture(4,"Credits/TAoA/People/10_Thanks_3.png",1,256,192,100,100,0,0)
+ @>Wait: 20 frame(s)
+ @>Move Picture: 4, @15, Center (256,192), (100%,100%), 255, Normal
+ @>Wait: 35 frame(s)
+ @>Move Picture: 4, @15, Center (256,192), (100%,100%), 0, Normal
+ @>Wait: 15 frame(s)
+ @>Script: pbShowPicture(4,"Credits/TAoA/People/10_Thanks_4.png",1,256,192,100,100,0,0)
+ @>Wait: 20 frame(s)
+ @>Move Picture: 4, @15, Center (256,192), (100%,100%), 255, Normal
+ @>Wait: 35 frame(s)
+ @>Move Picture: 4, @15, Center (256,192), (100%,100%), 0, Normal
+ @>Wait: 15 frame(s)
+ @>Script: pbShowPicture(4,"Credits/TAoA/People/10_Thanks_5.png",1,256,192,100,100,0,0)
+ @>Wait: 20 frame(s)
+ @>Move Picture: 4, @15, Center (256,192), (100%,100%), 255, Normal
+ @>Wait: 35 frame(s)
+ @>Move Picture: 4, @15, Center (256,192), (100%,100%), 0, Normal
+ @>Wait: 15 frame(s)
+ @>Script: pbShowPicture(4,"Credits/TAoA/People/10_Thanks_6.png",1,256,192,100,100,0,0)
+ @>Wait: 20 frame(s)
+ @>Move Picture: 4, @15, Center (256,192), (100%,100%), 255, Normal
+ @>Wait: 35 frame(s)
+ @>Move Picture: 3, @15, Center (256,192), (100%,100%), 0, Normal
+ @>Move Picture: 4, @15, Center (256,192), (100%,100%), 0, Normal
+ @>Wait: 15 frame(s)
+ @>Comment: ---
  @>Change Screen Color Tone: (-255,-255,-255,0), @10
  @>Comment: Warp: Mugenkan
   :       : Scene: Reimu stumbling into the secret teleporter and encountering
@@ -118220,15 +118509,62 @@ List of Event Commands:
  @>
 : Branch End
 @>Conditional Branch: Variable [0144: TAoA Credits Variable] == 7
- @>Text: Credits not finished.
+ @>Comment: ---- General Credits
+ @>Wait: 15 frame(s)
+ @>Script: pbShowPicture(3,"Credits/TMoM/Headers/10_Thanks.png",1,256,192,zoomX=100,zoomY=100,opacity=0,blendType=0)
+ @>Script: pbShowPicture(4,"Credits/Gen_Credits_1.png",1,256,192,zoomX=100,zoomY=100,opacity=0,blendType=0)
+ @>Wait: 20 frame(s)
+ @>Move Picture: 3, @15, Center (256,192), (100%,100%), 255, Normal
+ @>Wait: 20 frame(s)
+ @>Move Picture: 4, @15, Center (256,192), (100%,100%), 255, Normal
+ @>Wait: 35 frame(s)
+ @>Move Picture: 4, @15, Center (256,192), (100%,100%), 0, Normal
+ @>Wait: 15 frame(s)
+ @>Script: pbShowPicture(4,"Credits/Gen_Credits_2.png",1,256,192,zoomX=100,zoomY=100,opacity=0,blendType=0)
+ @>Wait: 20 frame(s)
+ @>Move Picture: 4, @15, Center (256,192), (100%,100%), 255, Normal
+ @>Wait: 40 frame(s)
+ @>Move Picture: 3, @15, Center (256,192), (100%,100%), 0, Normal
+ @>Move Picture: 4, @15, Center (256,192), (100%,100%), 0, Normal
+ @>Wait: 15 frame(s)
+ @>Script: pbShowPicture(4,"Credits/Gen_Credits_4.png",1,256,192,zoomX=100,zoomY=100,opacity=0,blendType=0)
+ @>Wait: 20 frame(s)
+ @>Move Picture: 4, @15, Center (256,192), (100%,100%), 255, Normal
+ @>Wait: 35 frame(s)
+ @>Move Picture: 4, @15, Center (256,192), (100%,100%), 0, Normal
+ @>Wait: 15 frame(s)
+ @>Script: pbShowPicture(4,"Credits/Gen_Credits_5.png",1,256,192,zoomX=100,zoomY=100,opacity=0,blendType=0)
+ @>Wait: 20 frame(s)
+ @>Move Picture: 4, @15, Center (256,192), (100%,100%), 255, Normal
+ @>Wait: 35 frame(s)
+ @>Move Picture: 4, @15, Center (256,192), (100%,100%), 0, Normal
+ @>Wait: 15 frame(s)
+ @>Script: pbShowPicture(4,"Credits/Gen_Credits_6.png",1,256,192,zoomX=100,zoomY=100,opacity=0,blendType=0)
+ @>Wait: 20 frame(s)
+ @>Move Picture: 4, @15, Center (256,192), (100%,100%), 255, Normal
+ @>Wait: 35 frame(s)
+ @>Move Picture: 4, @15, Center (256,192), (100%,100%), 0, Normal
+ @>Wait: 15 frame(s)
+ @>Script: pbShowPicture(4,"Credits/Gen_Credits_7.png",1,256,192,zoomX=100,zoomY=100,opacity=0,blendType=0)
+ @>Wait: 40 frame(s)
+ @>Move Picture: 4, @15, Center (256,192), (100%,100%), 255, Normal
+ @>Wait: 60 frame(s)
+ @>Move Picture: 4, @15, Center (256,192), (100%,100%), 0, Normal
+ @>Wait: 15 frame(s)
+ @>Comment: ---
  @>Change Screen Color Tone: (-255,-255,-255,0), @10
  @>Comment: Warp: Land of the Back Door
   :       : Scene: Okina watching events unfold through a door
  @>
 : Branch End
 @>Conditional Branch: Variable [0144: TAoA Credits Variable] == 8
- @>Text: Credits not finished.
+ @>Comment: ---- Final Closing (Title/Dates/Etc)
+ @>Script: CreditsOutro_TAoA.new
+ @>Comment: ---
+ @>Fade Out BGM: 3 sec.
  @>Change Screen Color Tone: (-255,-255,-255,0), @10
+ @>Wait: 40 frame(s)
+ @>Script: CreditsFin.new
  @>Comment: Warp: Mugenkan - Mima's Training Grounds
   :       : Scene: Ayaka and Meimu overlooking the cliff as the final
   :       : batch of credits plays

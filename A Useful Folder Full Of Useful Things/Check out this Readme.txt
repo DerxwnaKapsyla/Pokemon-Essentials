@@ -135,8 +135,6 @@ LEVEL 4 - I CANNOT FIX THESE:
 
 LEVEL 3 - HIGH PRIORITY:
 * Various graphics are missing or are using placeholder assets.
-* The Human Village Tournament in The Festival of Curses and Loop 2 of 
-  every episode are incomplete in terms of sets.
 * Audio balancing may be too loud or quiet. Inform me of what sounds off
   as well as your volume levels at the time of experiencing it.
 
