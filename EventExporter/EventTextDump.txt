@@ -1773,6 +1773,8 @@ Move Animation
 Trigger: Action Button
 
 List of Event Commands:
+@>Comment: Event Indicator
+ :       : investigate
 @>Text: \xn[\pn]Oh, it looks to be a box full of fishing rods... Surely they
  :    : won't notice if one goes missing!
 @>Script: pbReceiveItem(:GOODROD)
@@ -3360,7 +3362,7 @@ List of Event Commands:
 #------------------------------------------------------------------------------
 Event ID: 002
 Event Name: EV002
-(X,Y): (003,014)
+(X,Y): (015,008)
 
 Page #1
 Conditions
@@ -3895,6 +3897,79 @@ List of Event Commands:
 : When [No]
  @>
 : Branch End
+@>
+
+#------------------------------------------------------------------------------
+Event ID: 013
+Event Name: Move Relearner
+(X,Y): (004,014)
+
+Page #1
+Conditions
+None
+
+Graphic: TPDP_NPC 09
+
+Autonomous Movement
+Type: Fixed
+Speed: 3: Slow
+Freq: 3: Low
+Options Enabled
+Move Animation
+Trigger: Action Button
+
+List of Event Commands:
+@>Text: I'm the Move Maniac. I know every single move that a Puppet can learn
+ :    : as it levels up.
+@>Text: Let me guess, you want me to teach one of your Puppets a move?
+@>Show Choices: Yes, No
+(When Cancel: Choice 2)
+: When [Yes]
+ @>Label: ChoosePokemon
+ @>Text: Which Puppet needs tutoring?
+ @>Script: pbChoosePokemon(1, 3,
+ :       :   proc { |pkmn|
+ :       :     pkmn.can_relearn_move?
+ :       :   },
+ :       :   true
+ :       : )
+ @>Comment: If Game Variable 1 is less than 0, it means the player 
+  :       : has canceled choosing a Pokémon.
+ @>Conditional Branch: Variable [0001: Temp Pokemon Choice] < 0
+  @>Text: If your Puppets need to learn a move, come back with a Heart Scale.
+  @>
+ : Else
+  @>Conditional Branch: Script: pbGetPokemon(1).egg?
+   @>Text: Hunh? There isn't a single move that I can teach an Egg.
+   @>Jump to Label: ChoosePokemon
+   @>
+  : Branch End
+  @>Conditional Branch: Script: pbGetPokemon(1).shadowPokemon?
+   @>Text: No way, I don't want to go near ... whatever that thing is.
+   @>Jump to Label: ChoosePokemon
+   @>
+  : Branch End
+  @>Conditional Branch: Script: !pbGetPokemon(1).can_relearn_move?
+   @>Text: Sorry...
+   @>Text: It doesn't appear as if I have any move I can teach to your \v[3].
+   @>Jump to Label: ChoosePokemon
+   @>
+  : Branch End
+  @>Text: Which move should I teach to your \v[3]?
+  @>Conditional Branch: Script: pbRelearnMoveScreen(pbGetPokemon(1))
+   @>Text: If your Puppets need to learn a move, come back anytime.
+   @>
+  : Else
+   @>Text: If your Puppets need to learn a move, come back anytime.
+   @>
+  : Branch End
+  @>
+ : Branch End
+ @>
+: When [No]
+ @>
+: Branch End
+@>Text: If your Puppets need to learn a move, come back anytime.
 @>
 
 #------------------------------------------------------------------------------
@@ -16484,14 +16559,14 @@ List of Event Commands:
 
 #------------------------------------------------------------------------------
 Event ID: 011
-Event Name: EV011
-(X,Y): (020,020)
+Event Name: Move Relearner
+(X,Y): (008,019)
 
 Page #1
 Conditions
 None
 
-Graphic: Object ball
+Graphic: TPDP_NPC 33
 
 Autonomous Movement
 Type: Fixed
@@ -16502,8 +16577,57 @@ Move Animation
 Trigger: Action Button
 
 List of Event Commands:
-@>Control Variables: [0144: TAoA Credits Variable] = 0
-@>Call Common Event: TLA Credits
+@>Text: I'm the Move Maniac. I know every single move that a Puppet can learn
+ :    : as it levels up.
+@>Text: Let me guess, you want me to teach one of your Puppets a move?
+@>Show Choices: Yes, No
+(When Cancel: Choice 2)
+: When [Yes]
+ @>Label: ChoosePokemon
+ @>Text: Which Puppet needs tutoring?
+ @>Script: pbChoosePokemon(1, 3,
+ :       :   proc { |pkmn|
+ :       :     pkmn.can_relearn_move?
+ :       :   },
+ :       :   true
+ :       : )
+ @>Comment: If Game Variable 1 is less than 0, it means the player 
+  :       : has canceled choosing a Pokémon.
+ @>Conditional Branch: Variable [0001: Temp Pokemon Choice] < 0
+  @>Text: If your Puppets need to learn a move, come back with a Heart Scale.
+  @>
+ : Else
+  @>Conditional Branch: Script: pbGetPokemon(1).egg?
+   @>Text: Hunh? There isn't a single move that I can teach an Egg.
+   @>Jump to Label: ChoosePokemon
+   @>
+  : Branch End
+  @>Conditional Branch: Script: pbGetPokemon(1).shadowPokemon?
+   @>Text: No way, I don't want to go near ... whatever that thing is.
+   @>Jump to Label: ChoosePokemon
+   @>
+  : Branch End
+  @>Conditional Branch: Script: !pbGetPokemon(1).can_relearn_move?
+   @>Text: Sorry...
+   @>Text: It doesn't appear as if I have any move I can teach to your \v[3].
+   @>Jump to Label: ChoosePokemon
+   @>
+  : Branch End
+  @>Text: Which move should I teach to your \v[3]?
+  @>Conditional Branch: Script: pbRelearnMoveScreen(pbGetPokemon(1))
+   @>Text: If your Puppets need to learn a move, come back anytime.
+   @>
+  : Else
+   @>Text: If your Puppets need to learn a move, come back anytime.
+   @>
+  : Branch End
+  @>
+ : Branch End
+ @>
+: When [No]
+ @>
+: Branch End
+@>Text: If your Puppets need to learn a move, come back anytime.
 @>
 
 #------------------------------------------------------------------------------
@@ -29990,6 +30114,109 @@ List of Event Commands:
 #------------------------------------------------------------------------------
 Event ID: 009
 Event Name: Name Rater
+(X,Y): (020,008)
+
+Page #1
+Conditions
+None
+
+Graphic: TPDP_NPC 09
+
+Autonomous Movement
+Type: Fixed
+Speed: 3: Slow
+Freq: 3: Low
+Options Enabled
+Move Animation
+Trigger: Action Button
+
+List of Event Commands:
+@>Text: Hello, hello!\nI am the official Name Rater!
+@>Text: Want me to rate the nicknames of your Puppets?
+@>Show Choices: Yes, No
+(When Cancel: Choice 2)
+: When [Yes]
+ @>Text: Which Puppet's nickname should I critique?
+ @>Script: pbChoosePokemon(1, 3)
+ @>Conditional Branch: Variable [0001: Temp Pokemon Choice] < 0
+  @>Text: I see.\nDo come visit again.
+  @>Exit Event Processing
+  @>
+ : Branch End
+ @>Comment: Check for eggs.
+ @>Conditional Branch: Script: pbGetPokemon(1).egg?
+  @>Text: Now, now... That is merely an Egg!
+  @>Exit Event Processing
+  @>
+ : Branch End
+ @>Comment: Check for Shadow Pokémon.
+ @>Conditional Branch: Script: pbGetPokemon(1).shadowPokemon?
+  @>Text: I wouldn't dare critique this creature's name!
+  @>Exit Event Processing
+  @>
+ : Branch End
+ @>Conditional Branch: Script: pbGetPokemon(1).foreign?($player)
+  @>Text: Hmmm... \v[3] it is!
+  @>Text: This is a magnificent nickname! It is impeccably beyond reproach!
+  @>Text: You'll do well to cherish your \v[3] now and beyond.
+  @>Exit Event Processing
+  @>
+ : Branch End
+ @>Text: \v[3], is it?\nThat is a decent nickname!
+ @>Text: But, would you like me to give it a nicer name?
+ @>Text: How about it?
+ @>Show Choices: Yes, No
+ (When Cancel: Choice 2)
+ : When [Yes]
+  @>Text: Ah, good. Then, what shall the new nickname be?
+  @>Script: pkmn = pbGetPokemon(1)
+  :       : species = pkmn.speciesName
+  :       : pbSet(4, species)
+  :       : pbTextEntry("#{species}'s nickname?",
+  :       :   0, Pokemon::MAX_NAME_SIZE, 5)
+  @>Conditional Branch: Script: pbGet(5) == pbGet(3) || (pbGet(5) == "" && pbGet(3) == pbGet(4))
+   @>Comment: The Pokémon's nickname wasn't changed.
+   @>Text: I see. You're right, there's no need to change this 
+    :    : Pokémon's nickname.
+   @>Text: It already had a superb name!
+   @>
+  : Else
+   @>Conditional Branch: Script: pbGet(5) == "" || pbGet(5) == pbGet(4)
+    @>Comment: Resets the Pokémon's nickname to the species name.
+    @>Script: pkmn = pbGetPokemon(1)
+    :       : pkmn.name = nil
+    :       : pbSet(3, pkmn.name)
+    @>Text: Done! From now on, this Pokémon shall be known as \v[3]!
+    @>Text: It looks no different from before, and yet, this is vastly superior!
+    @>Text: How fortunate for you!
+    @>
+   : Else
+    @>Comment: Retrieves the Pokémon whose party index is stored in 
+     :       : Game Variable 1, and changes its name to the name 
+     :       : stored in Game Variable 5.
+    @>Script: pkmn = pbGetPokemon(1)
+    :       : pkmn.name = pbGet(5)
+    @>Text: Done! From now on, this Pokémon shall be known as \v[5]!
+    @>Text: It is a better name than before!\nHow fortunate for you!
+    @>
+   : Branch End
+   @>
+  : Branch End
+  @>
+ : When [No]
+  @>Text: I see.\nDo come visit again.
+  @>
+ : Branch End
+ @>
+: When [No]
+ @>Text: I see.\nDo come visit again.
+ @>
+: Branch End
+@>
+
+#------------------------------------------------------------------------------
+Event ID: 010
+Event Name: Move Relearner
 (X,Y): (004,014)
 
 Page #1
@@ -30007,98 +30234,57 @@ Move Animation
 Trigger: Action Button
 
 List of Event Commands:
-@>Text: \bHello, hello!\nI am the official Name Rater!
-@>Text: \bWant me to rate the nicknames of your Pokémon?
+@>Text: I'm the Move Maniac. I know every single move that a Puppet can learn
+ :    : as it levels up.
+@>Text: Let me guess, you want me to teach one of your Puppets a move?
 @>Show Choices: Yes, No
 (When Cancel: Choice 2)
 : When [Yes]
- @>Text: \bWhich Pokémon's nickname should I critique?
- @>Comment: Opens a screen for choosing a Pokémon. The index 
-  :       : is stored in Game Variable 1, and the name in Game 
-  :       : Variable 3.
- @>Script: pbChoosePokemon(1, 3)
+ @>Label: ChoosePokemon
+ @>Text: Which Puppet needs tutoring?
+ @>Script: pbChoosePokemon(1, 3,
+ :       :   proc { |pkmn|
+ :       :     pkmn.can_relearn_move?
+ :       :   },
+ :       :   true
+ :       : )
  @>Comment: If Game Variable 1 is less than 0, it means the player 
   :       : has canceled choosing a Pokémon.
  @>Conditional Branch: Variable [0001: Temp Pokemon Choice] < 0
-  @>Text: \bI see.\nDo come visit again.
-  @>Exit Event Processing
+  @>Text: If your Puppets need to learn a move, come back with a Heart Scale.
   @>
- : Branch End
- @>Comment: Check for eggs.
- @>Conditional Branch: Script: pbGetPokemon(1).egg?
-  @>Text: \bNow, now... That is merely an Egg!
-  @>Exit Event Processing
-  @>
- : Branch End
- @>Comment: Check for Shadow Pokémon.
- @>Conditional Branch: Script: pbGetPokemon(1).shadowPokemon?
-  @>Text: \bI wouldn't dare critique a Shadow Pokémon's name!
-  @>Exit Event Processing
-  @>
- : Branch End
- @>Conditional Branch: Script: pbGetPokemon(1).foreign?($player)
-  @>Text: \bHmmm... \v[3] it is!
-  @>Text: \bThis is a magnificent nickname! It is impeccably 
-   :    : beyond reproach!
-  @>Text: \bYou'll do well to cherish your \v[3] now and 
-   :    : beyond.
-  @>Exit Event Processing
-  @>
- : Branch End
- @>Text: \b\v[3], is it?\nThat is a decent nickname!
- @>Text: \bBut, would you like me to give it a nicer name?
- @>Text: \bHow about it?
- @>Show Choices: Yes, No
- (When Cancel: Choice 2)
- : When [Yes]
-  @>Text: \bAh, good. Then, what shall the new nickname be?
-  @>Script: pkmn = pbGetPokemon(1)
-  :       : species = pkmn.speciesName
-  :       : pbSet(4, species)
-  :       : pbTextEntry("#{species}'s nickname?",
-  :       :   0, Pokemon::MAX_NAME_SIZE, 5)
-  @>Conditional Branch: Script: pbGet(5) == pbGet(3) || (pbGet(5) == "" && pbGet(3) == pbGet(4))
-   @>Comment: The Pokémon's nickname wasn't changed.
-   @>Text: \bI see. You're right, there's no need to change this 
-    :    : Pokémon's nickname.
-   @>Text: \bIt already had a superb name!
-   @>
-  : Else
-   @>Conditional Branch: Script: pbGet(5) == "" || pbGet(5) == pbGet(4)
-    @>Comment: Resets the Pokémon's nickname to the species name.
-    @>Script: pkmn = pbGetPokemon(1)
-    :       : pkmn.name = nil
-    :       : pbSet(3, pkmn.name)
-    @>Text: \bDone! From now on, this Pokémon shall be known
-     :    : as \v[3]!
-    @>Text: \bIt looks no different from before, and yet, this is 
-     :    : vastly superior!
-    @>Text: \bHow fortunate for you!
-    @>
-   : Else
-    @>Comment: Retrieves the Pokémon whose party index is stored in 
-     :       : Game Variable 1, and changes its name to the name 
-     :       : stored in Game Variable 5.
-    @>Script: pkmn = pbGetPokemon(1)
-    :       : pkmn.name = pbGet(5)
-    @>Text: \bDone! From now on, this Pokémon shall be known
-     :    : as \v[5]!
-    @>Text: \bIt is a better name than before!\nHow fortunate for 
-     :    : you!
-    @>
-   : Branch End
+ : Else
+  @>Conditional Branch: Script: pbGetPokemon(1).egg?
+   @>Text: Hunh? There isn't a single move that I can teach an Egg.
+   @>Jump to Label: ChoosePokemon
    @>
   : Branch End
-  @>
- : When [No]
-  @>Text: \bI see.\nDo come visit again.
+  @>Conditional Branch: Script: pbGetPokemon(1).shadowPokemon?
+   @>Text: No way, I don't want to go near ... whatever that thing is.
+   @>Jump to Label: ChoosePokemon
+   @>
+  : Branch End
+  @>Conditional Branch: Script: !pbGetPokemon(1).can_relearn_move?
+   @>Text: Sorry...
+   @>Text: It doesn't appear as if I have any move I can teach to your \v[3].
+   @>Jump to Label: ChoosePokemon
+   @>
+  : Branch End
+  @>Text: Which move should I teach to your \v[3]?
+  @>Conditional Branch: Script: pbRelearnMoveScreen(pbGetPokemon(1))
+   @>Text: If your Puppets need to learn a move, come back anytime.
+   @>
+  : Else
+   @>Text: If your Puppets need to learn a move, come back anytime.
+   @>
+  : Branch End
   @>
  : Branch End
  @>
 : When [No]
- @>Text: \bI see.\nDo come visit again.
  @>
 : Branch End
+@>Text: If your Puppets need to learn a move, come back anytime.
 @>
 
 #------------------------------------------------------------------------------
@@ -67452,8 +67638,8 @@ List of Event Commands:
 @>
 
 #------------------------------------------------------------------------------
-Event ID: 009
-Event Name: Name Rater
+Event ID: 007
+Event Name: Move Relearner
 (X,Y): (004,014)
 
 Page #1
@@ -67471,51 +67657,117 @@ Move Animation
 Trigger: Action Button
 
 List of Event Commands:
-@>Text: \bHello, hello!\nI am the official Name Rater!
-@>Text: \bWant me to rate the nicknames of your Pokémon?
+@>Text: I'm the Move Maniac. I know every single move that a Puppet can learn
+ :    : as it levels up.
+@>Text: Let me guess, you want me to teach one of your Puppets a move?
 @>Show Choices: Yes, No
 (When Cancel: Choice 2)
 : When [Yes]
- @>Text: \bWhich Pokémon's nickname should I critique?
- @>Comment: Opens a screen for choosing a Pokémon. The index 
-  :       : is stored in Game Variable 1, and the name in Game 
-  :       : Variable 3.
- @>Script: pbChoosePokemon(1, 3)
+ @>Label: ChoosePokemon
+ @>Text: Which Puppet needs tutoring?
+ @>Script: pbChoosePokemon(1, 3,
+ :       :   proc { |pkmn|
+ :       :     pkmn.can_relearn_move?
+ :       :   },
+ :       :   true
+ :       : )
  @>Comment: If Game Variable 1 is less than 0, it means the player 
   :       : has canceled choosing a Pokémon.
  @>Conditional Branch: Variable [0001: Temp Pokemon Choice] < 0
-  @>Text: \bI see.\nDo come visit again.
+  @>Text: If your Puppets need to learn a move, come back with a Heart Scale.
+  @>
+ : Else
+  @>Conditional Branch: Script: pbGetPokemon(1).egg?
+   @>Text: Hunh? There isn't a single move that I can teach an Egg.
+   @>Jump to Label: ChoosePokemon
+   @>
+  : Branch End
+  @>Conditional Branch: Script: pbGetPokemon(1).shadowPokemon?
+   @>Text: No way, I don't want to go near ... whatever that thing is.
+   @>Jump to Label: ChoosePokemon
+   @>
+  : Branch End
+  @>Conditional Branch: Script: !pbGetPokemon(1).can_relearn_move?
+   @>Text: Sorry...
+   @>Text: It doesn't appear as if I have any move I can teach to your \v[3].
+   @>Jump to Label: ChoosePokemon
+   @>
+  : Branch End
+  @>Text: Which move should I teach to your \v[3]?
+  @>Conditional Branch: Script: pbRelearnMoveScreen(pbGetPokemon(1))
+   @>Text: If your Puppets need to learn a move, come back anytime.
+   @>
+  : Else
+   @>Text: If your Puppets need to learn a move, come back anytime.
+   @>
+  : Branch End
+  @>
+ : Branch End
+ @>
+: When [No]
+ @>
+: Branch End
+@>Text: If your Puppets need to learn a move, come back anytime.
+@>
+
+#------------------------------------------------------------------------------
+Event ID: 008
+Event Name: Name Rater
+(X,Y): (020,008)
+
+Page #1
+Conditions
+None
+
+Graphic: TPDP_NPC 09
+
+Autonomous Movement
+Type: Fixed
+Speed: 3: Slow
+Freq: 3: Low
+Options Enabled
+Move Animation
+Trigger: Action Button
+
+List of Event Commands:
+@>Text: Hello, hello!\nI am the official Name Rater!
+@>Text: Want me to rate the nicknames of your Puppets?
+@>Show Choices: Yes, No
+(When Cancel: Choice 2)
+: When [Yes]
+ @>Text: Which Puppet's nickname should I critique?
+ @>Script: pbChoosePokemon(1, 3)
+ @>Conditional Branch: Variable [0001: Temp Pokemon Choice] < 0
+  @>Text: I see.\nDo come visit again.
   @>Exit Event Processing
   @>
  : Branch End
  @>Comment: Check for eggs.
  @>Conditional Branch: Script: pbGetPokemon(1).egg?
-  @>Text: \bNow, now... That is merely an Egg!
+  @>Text: Now, now... That is merely an Egg!
   @>Exit Event Processing
   @>
  : Branch End
  @>Comment: Check for Shadow Pokémon.
  @>Conditional Branch: Script: pbGetPokemon(1).shadowPokemon?
-  @>Text: \bI wouldn't dare critique a Shadow Pokémon's name!
+  @>Text: I wouldn't dare critique this creature's name!
   @>Exit Event Processing
   @>
  : Branch End
  @>Conditional Branch: Script: pbGetPokemon(1).foreign?($player)
-  @>Text: \bHmmm... \v[3] it is!
-  @>Text: \bThis is a magnificent nickname! It is impeccably 
-   :    : beyond reproach!
-  @>Text: \bYou'll do well to cherish your \v[3] now and 
-   :    : beyond.
+  @>Text: Hmmm... \v[3] it is!
+  @>Text: This is a magnificent nickname! It is impeccably beyond reproach!
+  @>Text: You'll do well to cherish your \v[3] now and beyond.
   @>Exit Event Processing
   @>
  : Branch End
- @>Text: \b\v[3], is it?\nThat is a decent nickname!
- @>Text: \bBut, would you like me to give it a nicer name?
- @>Text: \bHow about it?
+ @>Text: \v[3], is it?\nThat is a decent nickname!
+ @>Text: But, would you like me to give it a nicer name?
+ @>Text: How about it?
  @>Show Choices: Yes, No
  (When Cancel: Choice 2)
  : When [Yes]
-  @>Text: \bAh, good. Then, what shall the new nickname be?
+  @>Text: Ah, good. Then, what shall the new nickname be?
   @>Script: pkmn = pbGetPokemon(1)
   :       : species = pkmn.speciesName
   :       : pbSet(4, species)
@@ -67523,9 +67775,9 @@ List of Event Commands:
   :       :   0, Pokemon::MAX_NAME_SIZE, 5)
   @>Conditional Branch: Script: pbGet(5) == pbGet(3) || (pbGet(5) == "" && pbGet(3) == pbGet(4))
    @>Comment: The Pokémon's nickname wasn't changed.
-   @>Text: \bI see. You're right, there's no need to change this 
+   @>Text: I see. You're right, there's no need to change this 
     :    : Pokémon's nickname.
-   @>Text: \bIt already had a superb name!
+   @>Text: It already had a superb name!
    @>
   : Else
    @>Conditional Branch: Script: pbGet(5) == "" || pbGet(5) == pbGet(4)
@@ -67533,11 +67785,9 @@ List of Event Commands:
     @>Script: pkmn = pbGetPokemon(1)
     :       : pkmn.name = nil
     :       : pbSet(3, pkmn.name)
-    @>Text: \bDone! From now on, this Pokémon shall be known
-     :    : as \v[3]!
-    @>Text: \bIt looks no different from before, and yet, this is 
-     :    : vastly superior!
-    @>Text: \bHow fortunate for you!
+    @>Text: Done! From now on, this Pokémon shall be known as \v[3]!
+    @>Text: It looks no different from before, and yet, this is vastly superior!
+    @>Text: How fortunate for you!
     @>
    : Else
     @>Comment: Retrieves the Pokémon whose party index is stored in 
@@ -67545,22 +67795,20 @@ List of Event Commands:
      :       : stored in Game Variable 5.
     @>Script: pkmn = pbGetPokemon(1)
     :       : pkmn.name = pbGet(5)
-    @>Text: \bDone! From now on, this Pokémon shall be known
-     :    : as \v[5]!
-    @>Text: \bIt is a better name than before!\nHow fortunate for 
-     :    : you!
+    @>Text: Done! From now on, this Pokémon shall be known as \v[5]!
+    @>Text: It is a better name than before!\nHow fortunate for you!
     @>
    : Branch End
    @>
   : Branch End
   @>
  : When [No]
-  @>Text: \bI see.\nDo come visit again.
+  @>Text: I see.\nDo come visit again.
   @>
  : Branch End
  @>
 : When [No]
- @>Text: \bI see.\nDo come visit again.
+ @>Text: I see.\nDo come visit again.
  @>
 : Branch End
 @>
@@ -90600,6 +90848,79 @@ List of Event Commands:
  @>
 : Branch End
 @>Script: pbMusharnaShop_tla
+@>
+
+#------------------------------------------------------------------------------
+Event ID: 011
+Event Name: Move Relearner
+(X,Y): (025,067)
+
+Page #1
+Conditions
+None
+
+Graphic: TPDP_NPC 33
+
+Autonomous Movement
+Type: Fixed
+Speed: 3: Slow
+Freq: 3: Low
+Options Enabled
+Move Animation
+Trigger: Action Button
+
+List of Event Commands:
+@>Text: I'm the Move Maniac. I know every single move that a Puppet can learn
+ :    : as it levels up.
+@>Text: Let me guess, you want me to teach one of your Puppets a move?
+@>Show Choices: Yes, No
+(When Cancel: Choice 2)
+: When [Yes]
+ @>Label: ChoosePokemon
+ @>Text: Which Puppet needs tutoring?
+ @>Script: pbChoosePokemon(1, 3,
+ :       :   proc { |pkmn|
+ :       :     pkmn.can_relearn_move?
+ :       :   },
+ :       :   true
+ :       : )
+ @>Comment: If Game Variable 1 is less than 0, it means the player 
+  :       : has canceled choosing a Pokémon.
+ @>Conditional Branch: Variable [0001: Temp Pokemon Choice] < 0
+  @>Text: If your Puppets need to learn a move, come back with a Heart Scale.
+  @>
+ : Else
+  @>Conditional Branch: Script: pbGetPokemon(1).egg?
+   @>Text: Hunh? There isn't a single move that I can teach an Egg.
+   @>Jump to Label: ChoosePokemon
+   @>
+  : Branch End
+  @>Conditional Branch: Script: pbGetPokemon(1).shadowPokemon?
+   @>Text: No way, I don't want to go near ... whatever that thing is.
+   @>Jump to Label: ChoosePokemon
+   @>
+  : Branch End
+  @>Conditional Branch: Script: !pbGetPokemon(1).can_relearn_move?
+   @>Text: Sorry...
+   @>Text: It doesn't appear as if I have any move I can teach to your \v[3].
+   @>Jump to Label: ChoosePokemon
+   @>
+  : Branch End
+  @>Text: Which move should I teach to your \v[3]?
+  @>Conditional Branch: Script: pbRelearnMoveScreen(pbGetPokemon(1))
+   @>Text: If your Puppets need to learn a move, come back anytime.
+   @>
+  : Else
+   @>Text: If your Puppets need to learn a move, come back anytime.
+   @>
+  : Branch End
+  @>
+ : Branch End
+ @>
+: When [No]
+ @>
+: Branch End
+@>Text: If your Puppets need to learn a move, come back anytime.
 @>
 
 #------------------------------------------------------------------------------
@@ -114649,7 +114970,7 @@ List of Event Commands:
  @>Text: \w[dark]\l[4]A vast majority of Puppets have Shard Evolutions, which evolve them 
   :    : into specialized forms, such as [A]ttack Forms, [D]efense Forms, and [S]peed Forms.
  @>Text: \w[dark]\l[5]There are other, more non-specific, stone roles, such as [H]elper Forms, 
-  :    : [T]echnical Forms, and [A]dvent Forms. These roles cover a much different 
+  :    : [T]echnical Forms, and [Ad]vent Forms. These roles cover a much different 
   :    : playstyle than the basic Attack, Defense, and Speed roles.
  @>Text: \w[dark]\l[5]Provided with the game is a Type Chart in the traditional and 
   :    : streamlined format, both present in the Useful Stuff folder, as
@@ -119904,11 +120225,11 @@ List of Event Commands:
 @>Move Picture: 1, @10, Center (256,192), (100%,100%), 255, Normal
 @>Wait: 10 frame(s)
 @>Text: \w[dark]\c[12]\se[]\l[3]\wtnp[5]With the consequences of the Urban Legends incident long past, 
- :    : so too comes an end to the 130th Season of the realm known as Gensokyo.\wtnp[60]
+ :    : so too comes an end to the 130th Season of the realm known as Gensokyo.\wtnp[90]
 @>Wait: 10 frame(s)
-@>Text: \w[dark]\c[12]\se[]\wtnp[5]The realm returns, once again, to the relative peace it is familiar with.\wtnp[60]
+@>Text: \w[dark]\c[12]\se[]\wtnp[5]The realm returns, once again, to the relative peace it is familiar with.\wtnp[90]
 @>Wait: 10 frame(s)
-@>Text: \w[dark]\c[12]\se[]\l[3]\wtnp[5]But even here in this wonderland known as Gensokyo, things do not always remain at ease.\wtnp[60]
+@>Text: \w[dark]\c[12]\se[]\l[3]\wtnp[5]But even here in this wonderland known as Gensokyo, things do not always remain at ease.\wtnp[90]
 @>Wait: 10 frame(s)
 @>Move Picture: 1, @10, Center (256,192), (100%,100%), 0, Normal
 @>Wait: 10 frame(s)
@@ -119917,9 +120238,9 @@ List of Event Commands:
 @>Script: pbShowPicture(1,"Intro Cutscene/TMoM/Alice's House.png",1,256,192,100,100,0,0)
 @>Wait: 10 frame(s)
 @>Move Picture: 1, @10, Center (256,192), (100%,100%), 255, Normal
-@>Text: \w[dark]\c[12]\se[]\l[3]\wtnp[5]The local Youkai Magician who controls puppets, one day, managed to create a perfectly autonomous doll.\wtnp[60]
+@>Text: \w[dark]\c[12]\se[]\l[3]\wtnp[5]The local Youkai Magician who controls puppets, one day, managed to create a perfectly autonomous doll.\wtnp[90]
 @>Wait: 10 frame(s)
-@>Text: \w[dark]\c[12]\se[]\l[2]\wtnp[5]A doll that could move of its own accord, her life's dream and ambition finally fulfilled.\wtnp[60]
+@>Text: \w[dark]\c[12]\se[]\l[2]\wtnp[5]A doll that could move of its own accord, her life's dream and ambition finally fulfilled.\wtnp[90]
 @>Wait: 10 frame(s)
 @>Move Picture: 1, @10, Center (256,192), (100%,100%), 0, Normal
 @>Wait: 10 frame(s)
@@ -119929,9 +120250,9 @@ List of Event Commands:
 @>Wait: 10 frame(s)
 @>Move Picture: 1, @10, Center (256,192), (100%,100%), 255, Normal
 @>Text: \w[dark]\c[12]\se[]\l[4]\wtnp[6]When a certain Ordinary Magician learned of this, she managed to procure the 
- :    : knowledge for it herself, and managed to create an autonomous doll in her likeness.\wtnp[60]
+ :    : knowledge for it herself, and managed to create an autonomous doll in her likeness.\wtnp[90]
 @>Wait: 10 frame(s)
-@>Text: \w[dark]\c[12]\se[]\l[3]\wtnp[5]This allowed the magician to double her productivity in all areas, but things like these don't go unnoticed.\wtnp[60]
+@>Text: \w[dark]\c[12]\se[]\l[3]\wtnp[5]This allowed the magician to double her productivity in all areas, but things like these don't go unnoticed.\wtnp[90]
 @>Wait: 10 frame(s)
 @>Move Picture: 1, @10, Center (256,192), (100%,100%), 0, Normal
 @>Wait: 10 frame(s)
@@ -119942,10 +120263,10 @@ List of Event Commands:
 @>Move Picture: 1, @10, Center (256,192), (100%,100%), 255, Normal
 @>Wait: 10 frame(s)
 @>Text: \w[dark]\c[12]\se[]\l[4]\wtnp[5]Thanks to a certain Tengu Reporter, word of the puppeteer's success went viral, 
- :    : and people from the human village began flocking to her for puppets of their own.\wtnp[60]
+ :    : and people from the human village began flocking to her for puppets of their own.\wtnp[90]
 @>Wait: 10 frame(s)
 @>Text: \w[dark]\c[12]\se[]\l[5]\wtnp[6]These puppets were based off of the prominent Gensokyo inhabitants - the Shrine Maiden, 
- :    : the Incident Solvers, those who started the incidents, and even the related and unrelated Third Parties.\wtnp[60]
+ :    : the Incident Solvers, those who started the incidents, and even the related and unrelated Third Parties.\wtnp[90]
 @>Wait: 10 frame(s)
 @>Move Picture: 1, @10, Center (256,192), (100%,100%), 0, Normal
 @>Wait: 10 frame(s)
@@ -119956,18 +120277,18 @@ List of Event Commands:
 @>Move Picture: 1, @10, Center (256,192), (100%,100%), 255, Normal
 @>Wait: 10 frame(s)
 @>Text: \w[dark]\c[12]\se[]\l[5]\wtnp[5]This caused the big names in Gensokyo to take notice, and even they too began to obtain 
- :    : puppets for themselves, and engage in the rapidly growing style that were Puppet Battles.\wtnp[60]
+ :    : puppets for themselves, and engage in the rapidly growing style that were Puppet Battles.\wtnp[90]
 @>Wait: 10 frame(s)
 @>Text: \w[dark]\c[12]\se[]\l[4]\wtnp[5]Eventually, this became the new standard for resolving incidents within Gensokyo. 
- :    : The Spell Card rule was changed to only be invoked in dire emergencies.\wtnp[60]
+ :    : The Spell Card rule was changed to only be invoked in dire emergencies.\wtnp[90]
 @>Wait: 10 frame(s)
 @>Text: \w[dark]\c[12]\se[]\l[3]\wtnp[5]As such, the last incident to be resolved with Spell Cards properly in any sort of capacity was the Urban
- :    : Legend Incident.\wtnp[60]
+ :    : Legend Incident.\wtnp[90]
 @>Wait: 10 frame(s)
-@>Text: \w[dark]\c[12]\se[]\wtnp[2] After that, Puppets had total control of the scene.\wtnp[60]
+@>Text: \w[dark]\c[12]\se[]\wtnp[2] After that, Puppets had total control of the scene.\wtnp[90]
 @>Wait: 10 frame(s)
 @>Text: \w[dark]\c[12]\se[]\l[5]\wtnp[5]Humans could now rely on themselves to solve incidents and not have to trouble the 
- :    : Shrine Maiden, though this didn't stop the Shrine Maiden from occasionally stepping in to handle cases.\wtnp[60]
+ :    : Shrine Maiden, though this didn't stop the Shrine Maiden from occasionally stepping in to handle cases.\wtnp[90]
 @>Wait: 10 frame(s)
 @>Move Picture: 1, @10, Center (256,192), (100%,100%), 0, Normal
 @>Wait: 10 frame(s)
@@ -119978,27 +120299,27 @@ List of Event Commands:
 @>Move Picture: 1, @10, Center (256,192), (100%,100%), 255, Normal
 @>Wait: 10 frame(s)
 @>Text: \w[dark]\c[12]\se[]\l[4]\wtnp[5]As the months drew onward, it became commonplace to see puppets wandering around 
- :    : in the wild. They started to fill each and every corner of Gensokyo.\wtnp[60]
+ :    : in the wild. They started to fill each and every corner of Gensokyo.\wtnp[90]
 @>Wait: 10 frame(s)
-@>Text: \w[dark]\c[12]\se[]\l[3]\wtnp[5]They blended in seamlessly with the native Human, Youkai, and everything else that existed within the mystical realm.\wtnp[60]
+@>Text: \w[dark]\c[12]\se[]\l[3]\wtnp[5]They blended in seamlessly with the native Human, Youkai, and everything else that existed within the mystical realm.\wtnp[90]
 @>Wait: 10 frame(s)
-@>Text: \w[dark]\c[12]\se[]\l[2]\wtnp[5]Life, as always, was good in the illusionary wonderland of Gensokyo.\wtnp[60]
+@>Text: \w[dark]\c[12]\se[]\l[2]\wtnp[5]Life, as always, was good in the illusionary wonderland of Gensokyo.\wtnp[90]
 @>Wait: 10 frame(s)
 @>Move Picture: 1, @10, Center (256,192), (100%,100%), 0, Normal
 @>Wait: 10 frame(s)
 @>Erase Picture: 1
 @>Comment: ------------------------------------------------------
 @>Text: \w[dark]\c[12]\se[]\l[4]\wtnp[5]But like always, things do not remain perfect forever, and the fate of 
- :    : Gensokyo now rests in the hands of those who command the Puppets.\wtnp[60]
+ :    : Gensokyo now rests in the hands of those who command the Puppets.\wtnp[90]
 @>Script: pbShowPicture(1,"Intro Cutscene/TMoM/Human Village.png",1,256,192,100,100,0,0)
 @>Wait: 10 frame(s)
 @>Move Picture: 1, @10, Center (256,192), (100%,100%), 255, Normal
 @>Wait: 10 frame(s)
 @>Text: \w[dark]\c[12]\se[]\l[4]\wtnp[5]This tale is about a youth from the Human 
  :    : Village, and their journey outside their familiar walls 
- :    : to uncover the truth behind a mystery.\wtnp[60]
+ :    : to uncover the truth behind a mystery.\wtnp[90]
 @>Wait: 10 frame(s)
-@>Text: \w[dark]\c[12]\se[]\l[1]\wtnp[5]Thus beginning their legacy...\wtnp[60]
+@>Text: \w[dark]\c[12]\se[]\l[1]\wtnp[5]Thus beginning their legacy...\wtnp[90]
 @>Wait: 10 frame(s)
 @>Move Picture: 1, @10, Center (256,192), (100%,100%), 0, Normal
 @>Wait: 10 frame(s)
@@ -120021,7 +120342,7 @@ List of Event Commands:
 @>Move Picture: 1, @10, Center (256,192), (100%,100%), 255, Normal
 @>Wait: 10 frame(s)
 @>Text: \w[dark]\c[12]\se[]\l[4]Gensokyo.\wtnp[30]\se[] A paradise for all things phantasmal and out of the ordinary.\wtnp[30]\se[] 
- :    : A land where the supernatural can exist alongside the natural.\wtnp[60]
+ :    : A land where the supernatural can exist alongside the natural.\wtnp[90]
 @>Wait: 10 frame(s)
 @>Move Picture: 1, @10, Center (256,192), (100%,100%), 0, Normal
 @>Wait: 10 frame(s)
@@ -120031,11 +120352,11 @@ List of Event Commands:
 @>Wait: 10 frame(s)
 @>Move Picture: 1, @10, Center (256,192), (100%,100%), 255, Normal
 @>Wait: 10 frame(s)
-@>Text: \w[dark]\c[12]\se[]\l[4]Mere months ago, the incident involving Gensokyo and the Outside World came to a conclusion before anything serious could occur.\wtnp[60]
+@>Text: \w[dark]\c[12]\se[]\l[4]Mere months ago, the incident involving Gensokyo and the Outside World came to a conclusion before anything serious could occur.\wtnp[90]
 @>Wait: 10 frame(s)
-@>Text: \w[dark]\c[12]\se[]\l[3]Thanks to that, the Puppet Era continued without issue, and continued to bring forth changes to the wonderful realm.\wtnp[60]
+@>Text: \w[dark]\c[12]\se[]\l[3]Thanks to that, the Puppet Era continued without issue, and continued to bring forth changes to the wonderful realm.\wtnp[90]
 @>Wait: 10 frame(s)
-@>Text: \w[dark]\c[12]\se[]\l[3]While things have changed with the existence of the Puppets, several things remain the same.\wtnp[60]
+@>Text: \w[dark]\c[12]\se[]\l[3]While things have changed with the existence of the Puppets, several things remain the same.\wtnp[90]
 @>Wait: 10 frame(s)
 @>Move Picture: 1, @10, Center (256,192), (100%,100%), 0, Normal
 @>Wait: 10 frame(s)
@@ -120046,26 +120367,26 @@ List of Event Commands:
 @>Move Picture: 1, @10, Center (256,192), (100%,100%), 255, Normal
 @>Wait: 10 frame(s)
 @>Text: \w[dark]\c[12]\se[]\l[4]Once more, the time has come for the Harvest Season, where inhabitants of the magical realm 
- :    : gather in their communities to celebrate the bounty that the earth has given them.\wtnp[60]
+ :    : gather in their communities to celebrate the bounty that the earth has given them.\wtnp[90]
 @>Wait: 10 frame(s)
 @>Text: \w[dark]\c[12]\se[]\l[4]As tradition is embraced, new ones form alongside the existence of the Puppets, to commemorate
- :    : their existence into this realm that accepts all.\wtnp[60]
+ :    : their existence into this realm that accepts all.\wtnp[90]
 @>Wait: 10 frame(s)
 @>Move Picture: 1, @10, Center (256,192), (100%,100%), 0, Normal
 @>Wait: 10 frame(s)
 @>Erase Picture: 1
-@>Text: \w[dark]\c[12]\se[]\l[3]But, as is usual with Gensokyo, something is always lurking in the shadows to disrupt even the most simple of peace.\wtnp[60]
+@>Text: \w[dark]\c[12]\se[]\l[3]But, as is usual with Gensokyo, something is always lurking in the shadows to disrupt even the most simple of peace.\wtnp[90]
 @>Comment: ------------------------------------------------------
 @>Wait: 10 frame(s)
 @>Script: pbShowPicture(1,"Intro Cutscene/TFoC/Forest.png",1,256,192,zoomX=100,zoomY=100,opacity=0,blendType=0)
 @>Wait: 10 frame(s)
 @>Move Picture: 1, @10, Center (256,192), (100%,100%), 255, Normal
 @>Wait: 10 frame(s)
-@>Text: \w[dark]\c[12]\se[]\l[3]Observing the gathering of humans is a scorned individual, tormented by the sight of humans using Puppets as they wish.\wtnp[60]
+@>Text: \w[dark]\c[12]\se[]\l[3]Observing the gathering of humans is a scorned individual, tormented by the sight of humans using Puppets as they wish.\wtnp[90]
 @>Wait: 10 frame(s)
-@>Text: \w[dark]\c[12]\se[]\l[3]"They've had their way for too long... Soon, I will free them from their captivity, and show them who really wields power."\wtnp[60]
+@>Text: \w[dark]\c[12]\se[]\l[3]"They've had their way for too long... Soon, I will free them from their captivity, and show them who really wields power."\wtnp[90]
 @>Wait: 10 frame(s)
-@>Text: \w[dark]\c[12]\se[]\l[3]The individual says to themselves, as they plan to break the momentary peace once more.\wtnp[60]
+@>Text: \w[dark]\c[12]\se[]\l[3]The individual says to themselves, as they plan to break the momentary peace once more.\wtnp[90]
 @>Wait: 10 frame(s)
 @>Move Picture: 1, @10, Center (256,192), (100%,100%), 0, Normal
 @>Wait: 10 frame(s)
@@ -120076,12 +120397,12 @@ List of Event Commands:
 @>Wait: 10 frame(s)
 @>Move Picture: 1, @10, Center (256,192), (100%,100%), 255, Normal
 @>Wait: 10 frame(s)
-@>Text: \w[dark]\c[12]\se[]\l[2]And so, our story begins here, in the Human Village.\wtnp[60]
+@>Text: \w[dark]\c[12]\se[]\l[2]And so, our story begins here, in the Human Village.\wtnp[90]
 @>Wait: 10 frame(s)
 @>Text: \w[dark]\c[12]\se[]\l[3]Once more, we follow the adventures of \pn, who solved the mystery behind the mansion of 
- :    : mysterious music...\wtnp[60]
+ :    : mysterious music...\wtnp[90]
 @>Wait: 10 frame(s)
-@>Text: \w[dark]\c[12]\se[]\l[2]...On the dawn of one particularly eventful Harvest Festival...\wtnp[60]
+@>Text: \w[dark]\c[12]\se[]\l[2]...On the dawn of one particularly eventful Harvest Festival...\wtnp[90]
 @>Wait: 10 frame(s)
 @>Move Picture: 1, @10, Center (256,192), (100%,100%), 0, Normal
 @>Wait: 10 frame(s)
@@ -120104,11 +120425,11 @@ List of Event Commands:
 @>Move Picture: 1, @10, Center (256,192), (100%,100%), 255, Normal
 @>Wait: 10 frame(s)
 @>Text: \w[dark]\c[12]\se[]\l[3]Gensokyo.\wtnp[30]\se[] A wondrous paradise for the phantasmal.\wtnp[30]\se[] 
- :    : The first and last bastion for all things unbelievable.\wtnp[60]
+ :    : The first and last bastion for all things unbelievable.\wtnp[90]
 @>Wait: 10 frame(s)
 @>Text: \w[dark]\c[12]\se[]\l[4]Peaceful isn't the word to describe this realm.\wtnp[30]\se[] Lively.\wtnp[30]\se[] 
  :    : Radiant.\wtnp[30]\se[] Chaotic.\wtnp[30]\se[] There is seldom a dull moment in this land.\wtnp[30]\se[]
- :    : An impure, but beautiful place.\wtnp[60]
+ :    : An impure, but beautiful place.\wtnp[90]
 @>Wait: 10 frame(s)
 @>Move Picture: 1, @10, Center (256,192), (100%,100%), 0, Normal
 @>Wait: 10 frame(s)
@@ -120119,23 +120440,23 @@ List of Event Commands:
 @>Move Picture: 1, @10, Center (256,192), (100%,100%), 255, Normal
 @>Wait: 10 frame(s)
 @>Text: \w[dark]\c[12]\se[]\l[4]It's been over a year now since the Incident where nefarious individuals invaded 
- :    : from the outside world, and many months since the Village Harvest Festival Incident.\wtnp[60]
+ :    : from the outside world, and many months since the Village Harvest Festival Incident.\wtnp[90]
 @>Wait: 10 frame(s)
 @>Text: \w[dark]\c[12]\se[]\l[5]All the incidents revolving around the Puppets, autonomous dolls designed in the likeness of individuals.\wtnp[30]\se[] 
- :    : They exist at the root of the prosperities and hardships that have graced Gensokyo. \wtnp[60]
+ :    : They exist at the root of the prosperities and hardships that have graced Gensokyo. \wtnp[90]
 @>Wait: 10 frame(s)
 @>Move Picture: 1, @10, Center (256,192), (100%,100%), 0, Normal
 @>Wait: 10 frame(s)
 @>Erase Picture: 1
-@>Text: \w[dark]\c[12]\se[]\l[3]But strange things have been afoot in this land of already strange occurrences.\wtnp[60]
+@>Text: \w[dark]\c[12]\se[]\l[3]But strange things have been afoot in this land of already strange occurrences.\wtnp[90]
 @>Comment: ------------------------------------------------------
 @>Script: pbShowPicture(1,"Intro Cutscene/TKoL/Forest.png",1,256,192,100,100,0,0)
 @>Wait: 10 frame(s)
 @>Move Picture: 1, @10, Center (256,192), (100%,100%), 255, Normal
 @>Wait: 10 frame(s)
-@>Text: \w[dark]\c[12]\se[]\l[3]Recently, the Puppets have begun vanishing from Gensokyo, with nobody able to determine where they've gone.\wtnp[60]
+@>Text: \w[dark]\c[12]\se[]\l[3]Recently, the Puppets have begun vanishing from Gensokyo, with nobody able to determine where they've gone.\wtnp[90]
 @>Wait: 10 frame(s)
-@>Text: \w[dark]\c[12]\se[]\l[3]With the barrier fully repaired, they shouldn't be spilling through to the Outside World as often anymore.\wtnp[60]
+@>Text: \w[dark]\c[12]\se[]\l[3]With the barrier fully repaired, they shouldn't be spilling through to the Outside World as often anymore.\wtnp[90]
 @>Wait: 10 frame(s)
 @>Move Picture: 1, @10, Center (256,192), (100%,100%), 0, Normal
 @>Wait: 10 frame(s)
@@ -120147,10 +120468,10 @@ List of Event Commands:
 @>Move Picture: 1, @10, Center (256,192), (100%,100%), 255, Normal
 @>Wait: 10 frame(s)
 @>Text: \w[dark]\c[12]\se[]\l[4]Meanwhile, atop Youkai Mountain, strange mechanical constructs have been spotted roaming the lands.\wtnp[30]\se[] 
- :    : Could they be related?\wtnp[30]\se[]  Nobody knows.\wtnp[60]
+ :    : Could they be related?\wtnp[30]\se[]  Nobody knows.\wtnp[90]
 @>Wait: 10 frame(s)
 @>Text: \w[dark]\c[12]\se[]\l[4]Nobody... except the inhabitants of Eientei, which have been keeping close watch on the Mountain for weeks.\wtnp[30]\se[]
- :    : And the conclusion they have come to is most dire.\wtnp[60]
+ :    : And the conclusion they have come to is most dire.\wtnp[90]
 @>Wait: 10 frame(s)
 @>Move Picture: 1, @10, Center (256,192), (100%,100%), 0, Normal
 @>Wait: 10 frame(s)
@@ -120162,10 +120483,10 @@ List of Event Commands:
 @>Move Picture: 1, @10, Center (256,192), (100%,100%), 255, Normal
 @>Wait: 10 frame(s)
 @>Text: \w[dark]\c[12]\se[]\l[4]High above the realm, an incident which should have unfolded years ago is now reaching a new boiling point.\wtnp[30]\se[]
- :    : And once again, the Puppets are at the center of it all.\wtnp[60]
+ :    : And once again, the Puppets are at the center of it all.\wtnp[\90]
 @>Wait: 10 frame(s)
 @>Text: \w[dark]\c[12]\se[]\l[3]And as usual, the fate of Gensokyo, and this time even more, resides in the 
- :    : hands of those who tame these creatures.\wtnp[60]
+ :    : hands of those who tame these creatures.\wtnp[90]
 @>Wait: 10 frame(s)
 @>Move Picture: 1, @10, Center (256,192), (100%,100%), 0, Normal
 @>Wait: 10 frame(s)
@@ -120178,11 +120499,11 @@ List of Event Commands:
 @>Wait: 10 frame(s)
 @>Text: \w[dark]\c[12]\se[]\l[4]Namely, the Legend of the Human Village, \pn.\wtnp[30]\se[]
  :    : She who has conquered the Mansion in the mists.\wtnp[30]\se[]
- :    : She who tamed the doll dabbling in Curses.\wtnp[60]
+ :    : She who tamed the doll dabbling in Curses.\wtnp[90]
 @>Wait: 10 frame(s)
-@>Text: \w[dark]\c[12]\se[]\l[2]And now she who will bring purity back to the currently impure Kingdom of Lunacy.\wtnp[60]
+@>Text: \w[dark]\c[12]\se[]\l[2]And now she who will bring purity back to the currently impure Kingdom of Lunacy.\wtnp[90]
 @>Wait: 10 frame(s)
-@>Text: \w[dark]\c[12]\se[]\l[1]And so, another day dawns in Gensokyo...\wtnp[60]
+@>Text: \w[dark]\c[12]\se[]\l[1]And so, another day dawns in Gensokyo...\wtnp[90]
 @>Wait: 10 frame(s)
 @>Move Picture: 1, @10, Center (256,192), (100%,100%), 0, Normal
 @>Wait: 10 frame(s)

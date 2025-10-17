@@ -29263,3 +29263,90 @@ Backtrace:
 003_Interpreter.rb:140:in `execute_script'
 004_Interpreter_Commands.rb:1177:in `command_355'
 004_Interpreter_Commands.rb:116:in `execute_command'
+
+=================
+
+[2025-10-16 02:19:35 -0700]
+[Pokémon Essentials version 21.1]
+[v21.1 Hotfixes 1.0.9]
+
+Error in Plugin: [Marin's Map Exporter]
+Exception: NoMethodError
+Message: undefined method `name' for nil:NilClass
+
+Backtrace:
+[Marin's Map Exporter] script.rb:18:in `<main>'
+005_PluginManager.rb:635:in `eval'
+005_PluginManager.rb:635:in `block (2 levels) in runPlugins'
+005_PluginManager.rb:625:in `each'
+005_PluginManager.rb:625:in `block in runPlugins'
+005_PluginManager.rb:616:in `each'
+005_PluginManager.rb:616:in `runPlugins'
+999_Main.rb:35:in `mainFunctionDebug'
+999_Main.rb:19:in `block in mainFunction'
+003_Errors.rb:79:in `pbCriticalCode'
+
+=================
+
+[2025-10-16 02:20:41 -0700]
+[Pokémon Essentials version 21.1]
+[v21.1 Hotfixes 1.0.9]
+
+Error in Plugin: [Marin's Map Exporter]
+Exception: NoMethodError
+Message: undefined method `name' for nil:NilClass
+
+Backtrace:
+[Marin's Map Exporter] script.rb:18:in `<main>'
+005_PluginManager.rb:635:in `eval'
+005_PluginManager.rb:635:in `block (2 levels) in runPlugins'
+005_PluginManager.rb:625:in `each'
+005_PluginManager.rb:625:in `block in runPlugins'
+005_PluginManager.rb:616:in `each'
+005_PluginManager.rb:616:in `runPlugins'
+999_Main.rb:35:in `mainFunctionDebug'
+999_Main.rb:19:in `block in mainFunction'
+003_Errors.rb:79:in `pbCriticalCode'
+
+=================
+
+[2025-10-16 02:22:59 -0700]
+[Pokémon Essentials version 21.1]
+[v21.1 Hotfixes 1.0.9]
+
+Error in Plugin: [Marin's Map Exporter]
+Exception: NoMethodError
+Message: undefined method `map_id' for nil:NilClass
+
+Backtrace:
+[Marin's Map Exporter] script.rb:18:in `<main>'
+005_PluginManager.rb:635:in `eval'
+005_PluginManager.rb:635:in `block (2 levels) in runPlugins'
+005_PluginManager.rb:625:in `each'
+005_PluginManager.rb:625:in `block in runPlugins'
+005_PluginManager.rb:616:in `each'
+005_PluginManager.rb:616:in `runPlugins'
+999_Main.rb:35:in `mainFunctionDebug'
+999_Main.rb:19:in `block in mainFunction'
+003_Errors.rb:79:in `pbCriticalCode'
+
+=================
+
+[2025-10-16 02:30:27 -0700]
+[Pokémon Essentials version 21.1]
+[v21.1 Hotfixes 1.0.9]
+
+Exception: NoMethodError
+Message: undefined method `name' for #<RPG::Map>
+
+Backtrace:
+[Marin's Map Exporter] script.rb:137:in `initialize'
+[Marin's Map Exporter] script.rb:17:in `new'
+[Marin's Map Exporter] script.rb:17:in `pbExportMap'
+[Marin's Map Exporter] script.rb:48:in `block in pbExportAMap'
+[Marin's Map Exporter] script.rb:35:in `loop'
+[Marin's Map Exporter] script.rb:35:in `pbExportAMap'
+[Marin's Map Exporter] script.rb:79:in `block in <main>'
+006_Event_HandlerCollections.rb:121:in `call'
+001_Debug_Menus.rb:138:in `block in pbDebugMenu'
+001_Debug_Menus.rb:100:in `loop'
