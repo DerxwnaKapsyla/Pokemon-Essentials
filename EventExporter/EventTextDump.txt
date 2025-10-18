@@ -16901,7 +16901,7 @@ List of Event Commands:
 
 Page #2
 Conditions
-None
+Switch 0152: TLA Cleared is ON
 
 Graphic: TPDP_NPC 35
 
@@ -17080,7 +17080,7 @@ Event Name: The Last Adventure
 
 Page #1
 Conditions
-None
+Switch 0152: TLA Cleared is ON
 
 Autonomous Movement
 Type: Fixed
@@ -17131,47 +17131,47 @@ List of Event Commands:
 @>Wait: 10 frame(s)
 @>Text: \w[dark]\c[12]\se[]\l[3]Immediately after returning back to the 
  :    : village, the parents of the displaced children quickly recollected 
- :    : them.\wtnp[40]
+ :    : them.\wtnp[90]
 @>Text: \w[dark]\c[12]\se[]Each one was punished - to varying degrees of 
- :    : severity.\wtnp[40]
+ :    : severity.\wtnp[90]
 @>Set Move Route: [Player's Mother]
  :              : $>Move Down
  :              : $>Move Down
  :              : $>Wait: 4 frame(s)
  :              : $>Change Opacity: 0
 @>Text: \w[dark]\c[12]\se[]\PN's punishment was being grounded for several 
- :    : months.\wtnp[40]
+ :    : months.\wtnp[90]
 @>Set Move Route: Player
  :              : $>Turn Up
 @>Text: \w[dark]\c[12]\se[]No allowance, no leaving the house unless it was for 
- :    : school.\wtnp[40]
+ :    : school.\wtnp[90]
 @>Text: \w[dark]\c[12]\se[]Any money she made during their escapade was 
- :    : turned over to her parents- for safekeeping.\wtnp[40]
+ :    : turned over to her parents- for safekeeping.\wtnp[90]
 @>Change Screen Color Tone: (-255,-255,-255,0), @6
 @>Text: \w[dark]\c[12]\se[]\l[2]Speaking of school, there was one punishment that 
- :    : was shared between the four of them...\wtnp[40]
+ :    : was shared between the four of them...\wtnp[90]
 @>Wait: 10 frame(s)
 @>Transfer Player:[020: Ending Filler Map (Bad) - 2], (008,029), Left
 @>Change Screen Color Tone: (51,17,-34,255), @6
 @>Wait: 6 frame(s)
 @>Text: \w[dark]\c[12]\se[]\l[3]As part of their punishment, the four would-be 
  :    : adventurers had to spend several hours after school 
- :    : in detention.\wtnp[40]
-@>Text: \w[dark]\c[12]\se[]This would last the entire duration of their grounding.\wtnp[40]
+ :    : in detention.\wtnp[90]
+@>Text: \w[dark]\c[12]\se[]This would last the entire duration of their grounding.\wtnp[90]
 @>Text: \w[dark]\c[12]\se[]\l[3]Certainly, all of this was a rather extreme 
- :    : punishment, unprecedented in the entire village.\wtnp[40]
+ :    : punishment, unprecedented in the entire village.\wtnp[90]
 @>Text: \w[dark]\c[12]\se[]\l[2]However, if you asked these four if the crime was 
- :    : worth the time...\wt[15] They'd all agree: It was.\wtnp[40]
+ :    : worth the time...\wt[15] They'd all agree: It was.\wtnp[90]
 @>Change Screen Color Tone: (-255,-255,-255,0), @6
 @>Text: \w[dark]\c[12]\se[]\l[3]But still, they wonder. Throughout their entire duration 
  :    : of punishment, one collective thought crosses their 
- :    : minds.\wtnp[40]
+ :    : minds.\wtnp[90]
 @>Text: \w[dark]\c[12]\se[]\l[3]<ac>"<i>How could we have done that faster? Is it even 
- :    : possible? Who knows...</i>"</ac>\wtnp[40]
+ :    : possible? Who knows...</i>"</ac>\wtnp[90]
 @>Fade Out BGM: 2 sec.
 @>Wait: 50 frame(s)
 @>Change Text Options: Middle, Hide
-@>Text: \se[]\l[3]<ac>Bad End: Unable To Beat Time\wt[30]\nNext time try for less than 20 defeats!</ac>\wtnp[40]
+@>Text: \se[]\l[3]<ac>Bad End: Unable To Beat Time\wt[30]\nNext time try for less than 20 defeats!</ac>\wtnp[80]
 @>Wait: 20 frame(s)
 @>Conditional Branch: Switch [0116: TMoM Cleared] == ON
  @>Script: set_menu_theme("dark")
@@ -17353,21 +17353,21 @@ List of Event Commands:
  :              : $>Move Up
  :              : $>Move Up
 @>Text: \w[dark]\c[12]\se[]\l[2]The four managed to slip back into the village
- :    : while the moon was still in the sky.\wtnp[40]
+ :    : while the moon was still in the sky.\wtnp[90]
 @>Text: \w[dark]\c[12]\se[]\l[4]Not a single soul was out patrolling the southern half
  :    : of the village. And most importantly, their parents
- :    : were all still at home. Asleep.\wtnp[40]
+ :    : were all still at home. Asleep.\wtnp[90]
 @>Text: \w[dark]\c[12]\se[]\l[4]To them, the night was a complete success. They
  :    : achieved their goals and managed to make it back
- :    : to the village safe and out of trouble.\wtnp[40]
+ :    : to the village safe and out of trouble.\wtnp[90]
 @>Text: \w[dark]\c[12]\se[]Sure, they had bumps getting to their end point, but
- :    : as Maya put it:\wtnp[40]
+ :    : as Maya put it:\wtnp[90]
 @>Text: \w[dark]\c[12]\se[]\l[2]<ac>"What great adventure doesn't have some twist
- :    : and turns!"</ac>\wtnp[40]
+ :    : and turns!"</ac>\wtnp[90]
 @>Change Screen Color Tone: (-255,-255,-255,0), @6
 @>Text: \w[dark]\c[12]\se[]\l[4]The four of them decided not to linger around the entrance,
  :    : lest they be discovered\..\..\..\| But not before Maya decided to
- :    : propose the idea of another expedition.\wtnp[40]
+ :    : propose the idea of another expedition.\wtnp[90]
 @>Wait: 6 frame(s)
 @>Transfer Player:[021: Ending Filler Map (Good) -2], (019,057), Left
 @>Set Event Location: [Kota],(016,056), Right
@@ -17376,10 +17376,10 @@ List of Event Commands:
 @>Wait: 6 frame(s)
 @>Change Screen Color Tone: (51,17,-34,255), @10
 @>Text: \w[dark]\c[12]\se[]\l[3]The four returned to their respective houses, all
- :    : worn out from their eventful evening.\wtnp[40]
+ :    : worn out from their eventful evening.\wtnp[90]
 @>Text: \w[dark]\c[12]\se[]\l[3]They made sure to walk the closest person back to
  :    : their house, just to be on the safe side. The first
- :    : to depart was \PN.\wtnp[40]
+ :    : to depart was \PN.\wtnp[90]
 @>Set Move Route: [Kota]
  :              : $>Move Up
  :              : $>Move Up
@@ -17409,7 +17409,7 @@ List of Event Commands:
  :              : $>Move Up
 @>Text: \w[dark]\c[12]\se[]\l[3]\PN wished her departing friends,
  :    : a decent evening and a good rest as they all went on
- :    : their way home.\wtnp[40]
+ :    : their way home.\wtnp[90]
 @>Wait: 10 frame(s)
 @>Set Move Route: Player
  :              : $>Move Right
@@ -17421,12 +17421,12 @@ List of Event Commands:
 @>Wait: 5 frame(s)
 @>Change Screen Color Tone: (-255,-255,-255,0), @6
 @>Text: \w[dark]\c[12]\se[]\l[3]As they all departed to their respective homes, a
- :    : similar thought was running through their minds.\wtnp[40]
-@>Text: \w[dark]\c[12]\se[]<ac>"<i>Another expedition, huh?\wt[15] I can't wait!</i>"</ac>\wtnp[40]
+ :    : similar thought was running through their minds.\wtnp[90]
+@>Text: \w[dark]\c[12]\se[]<ac>"<i>Another expedition, huh?\wt[15] I can't wait!</i>"</ac>\wtnp[90]
 @>Fade Out BGM: 2 sec.
 @>Wait: 50 frame(s)
 @>Change Text Options: Middle, Hide
-@>Text: \se[]\l[3]<ac>Good End: The Thrill of Adventure\wt[30]\nCongratulations on completing the game!</ac>\wtnp[40]
+@>Text: \se[]\l[3]<ac>Good End: The Thrill of Adventure\wt[30]\nCongratulations on completing the game!</ac>\wtnp[80]
 @>Wait: 20 frame(s)
 @>Control Self Switch: A =ON
 @>
@@ -21041,6 +21041,8 @@ Direction Fix
 Trigger: Action Button
 
 List of Event Commands:
+@>Comment: Event Indicator
+ :       : investigate
 @>Conditional Branch: Player is facing Up
  @>Text: The statue gives off a menacing presence, and 
   :    : suddenly starts speaking!
@@ -21079,6 +21081,7 @@ List of Event Commands:
    @>
   : Branch End
   @>Screen Flash: (255,255,255,255), @10
+  @>Change Screen Color Tone: (0,0,0,0), @8
   @>Set Move Route: This event
    :              : $>Graphic: "OW_DoppelDevice', 0, 2, 1
   @>Text: \rRETURNING TO STAND-BY MODE.
@@ -21109,6 +21112,8 @@ Move Animation
 Trigger: Action Button
 
 List of Event Commands:
+@>Comment: Event Indicator
+ :       : investigate
 @>Text: It's some kind of machine with blinking lights.
 @>Text: It appears to have a button labeled "Doppel Device 
  :    : Enabler".
@@ -22196,9 +22201,9 @@ List of Event Commands:
  @>Change Text Options: Bottom, Hide
  @>Text: \w[dark]\c[12]\se[]\l[6]When \PN and their friends realized that it was now 
   :    : early morning, they immediately rushed out of 
-  :    : Prismriver Manor to return to the village.\wtnp[40]
+  :    : Prismriver Manor to return to the village.\wtnp[90]
  @>Text: \w[dark]\c[12]\se[]\l[3]They hoped that there was still enough time before 
-  :    : people would notice they went missing.\wtnp[40]
+  :    : people would notice they went missing.\wtnp[90]
  @>Change Screen Color Tone: (-255,-255,-255,0), @6
  @>Wait: 6 frame(s)
  @>Transfer Player:[030: Ending Filler Map (Bad)], (013,018), Up
@@ -24488,17 +24493,17 @@ List of Event Commands:
   @>Change Text Options: Bottom, Hide
   @>Text: \w[dark]\c[12]\se[]\l[4]\PN go so wrapped up in helping the Prismriver
    :    : Sisters deal with their haunted mansion problems,
-   :    : that they forgot something important.\wtnp[40]
+   :    : that they forgot something important.\wtnp[90]
   @>Text: \w[dark]\c[12]\se[]\l[3]By the time they realized, they could only hope
-   :    : it wasn't too late to return back to the village.\wtnp[40]
+   :    : it wasn't too late to return back to the village.\wtnp[90]
   @>Change Screen Color Tone: (-255,-255,-255,0), @6
   @>Wait: 6 frame(s)
   @>Text: \w[dark]\c[12]\se[]\l[4]As \PN climbed their way back to the first floor of the
    :    : mansion, they bumped into their friends, who had also
-   :    : realized what time it was.\wtnp[40]
+   :    : realized what time it was.\wtnp[90]
   @>Text: \w[dark]\c[12]\se[]\l[3]After regrouping, the four of them made a mad
    :    : dash for the village, praying that time was still
-   :    : on their side.\wtnp[40]
+   :    : on their side.\wtnp[90]
   @>Wait: 6 frame(s)
   @>Transfer Player:[030: Ending Filler Map (Bad)], (013,019), Up
   @>Change Screen Color Tone: (51,17,-34,255), @6
@@ -24515,17 +24520,17 @@ List of Event Commands:
    :    : The Sisters probably will want to hear that
    :    : the problem is solved.
   @>Text: \xn[\pn]And after that, we can finally head home!
-  @>Text: \xn[\pn]Ahhh... What a long night this has been...\wtnp[40]
+  @>Text: \xn[\pn]Ahhh... What a long night this has been...\wtnp[60]
   @>Wait: 20 frame(s)
   @>Change Screen Color Tone: (51,17,-34,255), @10
   @>Play BGM: 'W-013. Evening Primrose', 100, 100
   @>Text: \w[dark]\c[12]\se[]\l[3]With their task finished, \PN began their journey
-   :    : out of the basement, and up to the top floor once more.\wtnp[40]
+   :    : out of the basement, and up to the top floor once more.\wtnp[90]
   @>Change Screen Color Tone: (-255,-255,-255,0), @6
   @>Wait: 6 frame(s)
   @>Text: \w[dark]\c[12]\se[]\l[4]As they made their climb back up, they took in the
    :    : sights of the mansion one more time- rather hurriedly,
-   :    : as they were still pressed for time.\wtnp[40]
+   :    : as they were still pressed for time.\wtnp[90]
   @>Wait: 6 frame(s)
   @>Transfer Player:[029: Ending Filler Map (Good)], (015,015), Up
   @>Change Screen Color Tone: (51,17,-34,255), @6
@@ -25176,9 +25181,9 @@ Trigger: Autorun
 List of Event Commands:
 @>Text: \w[dark]\c[12]\se[]\l[3]\PN returned to the performance hall and informed the
  :    : Prismriver Sisters that the disturbance in the basement
- :    : was handled.\wtnp[40]
+ :    : was handled.\wtnp[90]
 @>Text: \w[dark]\c[12]\se[]\l[3]With that load off their backs, the Sisters were able
- :    : to resume their practice without any issues whatsoever.\wtnp[40]
+ :    : to resume their practice without any issues whatsoever.\wtnp[90]
 @>Set Move Route: [Shinji]
  :              : $>Move Left
  :              : $>Move Down
@@ -25213,7 +25218,7 @@ List of Event Commands:
 @>Text: \w[dark]\c[12]\se[]\l[4]With all of their affairs handled, and the goal of the
  :    : night achieved, the group of four from the village
  :    : said their farewells and made for their trip back
- :    : home.\wtnp[40]
+ :    : home.\wtnp[90]
 @>Wait: 10 frame(s)
 @>Set Move Route: Player
  :              : $>Move Left
@@ -25273,7 +25278,7 @@ List of Event Commands:
  :              : $>Move Up
  :              : $>Move Up
 @>Text: \w[dark]\c[12]\se[]\l[2]They hoped they could sneak back into the village, 
- :    : completely unannounced.\wtnp[40]
+ :    : completely unannounced.\wtnp[90]
 @>Wait for Move's Completion
 @>Set Move Route: Player
  :              : $>Change Speed: 4
@@ -25281,14 +25286,14 @@ List of Event Commands:
  :              : $>Move Up
  :              : $>Move Up
 @>Text: \w[dark]\c[12]\se[]\l[2]Unfortunately, their parents were already waiting at 
- :    : the entrance.\wtnp[40]
+ :    : the entrance.\wtnp[90]
 @>Wait for Move's Completion
 @>Text: \w[dark]\c[12]\se[]\l[4]The four night adventurers were faced with the most 
  :    : dangerous challenge of all.\wt[10] Explaining to their parents 
- :    : just where they've been all night.\wtnp[40]
+ :    : just where they've been all night.\wtnp[90]
 @>Change Screen Color Tone: (-255,-255,-255,0), @6
 @>Wait: 3 frame(s)
-@>Text: \w[dark]\c[12]\se[]\l[1]Needless to say... they lost that battle.\wtnp[40]
+@>Text: \w[dark]\c[12]\se[]\l[1]Needless to say... they lost that battle.\wtnp[90]
 @>Wait: 10 frame(s)
 @>Transfer Player:[020: Ending Filler Map (Bad) - 2], (009,008), Down
 @>Change Screen Color Tone: (51,17,-34,255), @6
@@ -27554,6 +27559,7 @@ List of Event Commands:
 @>Fade Out BGM: 2 sec.
 @>Script: CreditsFin.new
 @>Wait: 20 frame(s)
+@>Script: $player.tmom_cleared = true
 @>Conditional Branch: Switch [0116: TMoM Cleared] == OFF
  @>Control Switches: [0116: TMoM Cleared] = ON
  @>Control Variables: [0141: Scenarios Cleared] += 1
@@ -57068,9 +57074,9 @@ List of Event Commands:
  @>Wait: 10 frame(s)
  @>Change Text Options: Bottom, Show
  @>Text: \w[dark]\c[12]\se[]\l[2]And so, just like that, \pn once again brought a close to
-  :    : yet another epic of theirs.\wtnp[40]
+  :    : yet another epic of theirs.\wtnp[90]
  @>Text: \w[dark]\c[12]\se[]\l[3]With Medicine defeated, and the Tome of Curses in her
-  :    : possession, \pn set off for the Human Village once more.\wtnp[40]
+  :    : possession, \pn set off for the Human Village once more.\wtnp[90]
  @>Change Screen Color Tone: (-255,-255,-255,0), @6
  @>Wait: 6 frame(s)
  @>Change Transparent Flag: Transparency
@@ -59967,20 +59973,20 @@ List of Event Commands:
  @>Wait: 10 frame(s)
  @>Change Text Options: Bottom, Show
  @>Text: \w[dark]\c[12]\se[]\l[3]With that battle concluded, \pn had finally realized the truth
-  :    : of what everyone had been saying.\wtnp[40]
+  :    : of what everyone had been saying.\wtnp[90]
  @>Text: \w[dark]\c[12]\se[]\l[3]The responsibility of wielding power isn't just in using it correctly,
-  :    : it's in knowing what comes as a result of wielding it.\wtnp[40]
+  :    : it's in knowing what comes as a result of wielding it.\wtnp[90]
  @>Text: \w[dark]\c[12]\se[]\l[3]And in this case, the result would be becoming one of
-  :    : Gensokyo's strongest trainers, sought out by many for battles.\wtnp[40]
+  :    : Gensokyo's strongest trainers, sought out by many for battles.\wtnp[90]
  @>Text: \w[dark]\c[12]\se[]\l[3]But for now, she continued her pleasant, if a bit unsettling,
-  :    : day with Yuuka, until it was time for her to head back home.\wtnp[40]
+  :    : day with Yuuka, until it was time for her to head back home.\wtnp[90]
  @>Change Screen Color Tone: (-255,-255,-255,0), @6
  @>Wait: 6 frame(s)
  @>Change Text Options: Middle, Hide
  @>Text: <ac>\w[dark]\c[12]\se[]\l[4]Though she didn't know it at the time, her schedule was
-  :    : about to become a lot less free than it used to be.\wtnp[40]</ac>
+  :    : about to become a lot less free than it used to be.\wtnp[90]</ac>
  @>Text: <ac>\w[dark]\c[12]\se[]\l[3]That, however, would be a worry for another
-  :    : day...\wtnp[40]</ac>
+  :    : day...\wtnp[90]</ac>
  @>Fade Out BGM: 5 sec.
  @>Wait: 50 frame(s)
  @>Change Text Options: Middle, Hide
@@ -62933,13 +62939,13 @@ Trigger: Autorun
 
 List of Event Commands:
 @>Text: \w[dark]\c[12]\se[]\l[3]Upon returning home to the Village, \pn was greeted
- :    : with the sight of her companions in this endeavour.\wtnp[40]
+ :    : with the sight of her companions in this endeavour.\wtnp[90]
 @>Text: \w[dark]\c[12]\se[]\l[3]Though most of the Village would never know just what
  :    : she had done, among those who did she was hailed as a hero and
- :    : a savior.\wtnp[40]
+ :    : a savior.\wtnp[90]
 @>Text: \w[dark]\c[12]\se[]\l[3]But that was fine. \pn didn't need praise, nor did she
  :    : want it. Just knowing she was able to keep the village safe was
- :    : enough for her.\wtnp[40]
+ :    : enough for her.\wtnp[90]
 @>Change Screen Color Tone: (-255,-255,-255,0), @6
 @>Wait: 6 frame(s)
 @>
@@ -62965,17 +62971,17 @@ List of Event Commands:
 @>Change Text Options: Bottom, Show
 @>Text: \w[dark]\c[12]\se[]\l[3]With the Village safe, \pn and her friends were able to
  :    : enjoy the Harvest Festival in its entirety now- a well earned 
- :    : reward.\wtnp[40]
+ :    : reward.\wtnp[90]
 @>Text: \w[dark]\c[12]\se[]\l[3]As they enjoyed the festival, \pn regaled her friends
- :    : of the adventure they couldn't join in on.\wtnp[40]
+ :    : of the adventure they couldn't join in on.\wtnp[90]
 @>Text: \w[dark]\c[12]\se[]\l[3]In return, they informed \pn of the exploits they
- :    : got up to while she was away saving the Village.\wtnp[40]
+ :    : got up to while she was away saving the Village.\wtnp[90]
 @>Text: \w[dark]\c[12]\se[]\l[2]Being the enthusiast for adventure she is, Maya chimed in
- :    : with her own remarks.\wtnp[40]
+ :    : with her own remarks.\wtnp[90]
 @>Text: \w[dark]\c[12]\se[]\l[2]"Next time, you have to take us on your realm saving
- :    : adventures!"\wtnp[40]
+ :    : adventures!"\wtnp[90]
 @>Text: \w[dark]\c[12]\se[]\l[3]Secretly, \pn was hoping there wouldn't have to be another
- :    : of those for a good long time, if ever.\wtnp[40]
+ :    : of those for a good long time, if ever.\wtnp[90]
 @>Change Screen Color Tone: (-255,-255,-255,0), @6
 @>Wait: 6 frame(s)
 @>
@@ -63000,22 +63006,22 @@ List of Event Commands:
 @>Change Text Options: Bottom, Show
 @>Text: \w[dark]\c[12]\se[]\l[3]The Harvest Festival went off without any other
  :    : incidents occurring, and a wondrous time was had by all
- :    : who attended.\wtnp[40]
+ :    : who attended.\wtnp[90]
 @>Text: \w[dark]\c[12]\se[]\l[2]As is usual in Gensokyo, even when an incident befalls
- :    : it, it always wraps up decently.\wtnp[40]
+ :    : it, it always wraps up decently.\wtnp[90]
 @>Text: \w[dark]\c[12]\se[]\l[3]And those who solve the incident are allowed to relax
- :    : once again, knowing that they did a good job.\wtnp[40]
+ :    : once again, knowing that they did a good job.\wtnp[90]
 @>Text: \w[dark]\c[12]\se[]\l[2]Knowing that, once again, they managed to bring
- :    : Gensokyo back to its peaceful state.\wtnp[40]
+ :    : Gensokyo back to its peaceful state.\wtnp[90]
 @>Text: \w[dark]\c[12]\se[]\l[2]A peaceful realm for all who inhabit it.\wt[20] Human.\wt[20] Youkai.\wt[20]
- :    : Puppets.\wt[20] Everyone.\wtnp[40]
+ :    : Puppets.\wt[20] Everyone.\wtnp[90]
 @>Change Screen Color Tone: (-255,-255,-255,255), @6
 @>Change Text Options: Middle, Hide
 @>Text: <ac>\se[]\l[4]Though, of course. Peace doesn't mean uneventful. 
  :    : Who knows when the next exciting series of events would
- :    : occur!\wtnp[40]</ac>
+ :    : occur!\wtnp[90]</ac>
 @>Text: \se[]\l[3]<ac>But, at the very least, the book can be closed on this 
- :    : \c[10]Festival of Curses\c[12].\wtnp[40]</ac>
+ :    : \c[10]Festival of Curses\c[12].\wtnp[90]</ac>
 @>Fade Out BGM: 5 sec.
 @>Wait: 50 frame(s)
 @>Control Self Switch: C =ON
@@ -84840,16 +84846,17 @@ List of Event Commands:
 @>Change Text Options: Bottom, Show
 @>Text: \w[dark]\c[12]\se[]\l[4]With her trial resolved, and an offer of unbelievable
  :    : magnitude presented to her, \pn departed from the Moon, back to her
- :    : life in Gensokyo.\wtnp[60]
+ :    : life in Gensokyo.\wtnp[90]
 @>Change Screen Color Tone: (-255,-255,-255,0), @6
 @>Text: \w[dark]\c[12]\se[]\l[2]What happened after that? Well, those are
- :    : stories best left for another time.\wtnp[60]
+ :    : stories best left for another time.\wtnp[90]
 @>Text: \w[dark]\c[12]\se[]\l[4]But, despite the state of her life, or where her
  :    : future led her, \pn never stopped enjoying being a Puppet Handler,
  :    : or spending time around the critters.\wtnp[80]
 @>Wait: 25 frame(s)
 @>Fade Out BGM: 2 sec.
 @>Wait: 40 frame(s)
+@>Script: $player.tkol_cleared = true
 @>Conditional Branch: Switch [0147: TKoL Cleared] == OFF
  @>Control Switches: [0147: TKoL Cleared] = ON
  @>Control Variables: [0141: Scenarios Cleared] += 1
@@ -87386,9 +87393,9 @@ List of Event Commands:
 @>Set Move Route: [Sagume]
  :              : $>Turn Down
 @>Text: \w[dark]\c[12]\se[]\l[3]Now that Junko and Hecatia were driven 
- :    : off the moon, and the citizens freed from captivity....\wtnp[40]
+ :    : off the moon, and the citizens freed from captivity....\wtnp[90]
 @>Text: \w[dark]\c[12]\se[]\l[3]...Sagume upheld her end of the bargain, and
- :    : recalled all of the Lunarians stationed within Gensokyo.\wtnp[40]
+ :    : recalled all of the Lunarians stationed within Gensokyo.\wtnp[90]
 @>Set Move Route: [Player]
  :              : $>Move Down
  :              : $>Move Down
@@ -87415,7 +87422,7 @@ List of Event Commands:
  :              : $>Move Up
 @>Text: \w[dark]\c[12]\se[]\l[4]The pair traversed back through the Dream World,
  :    : taking in the sights of the bizarre realm one last time, before ultimately
- :    : waving goodbye to the Capital as a whole.\wtnp[40]
+ :    : waving goodbye to the Capital as a whole.\wtnp[90]
 @>Change Screen Color Tone: (-255,-255,-255,0), @6
 @>Wait: 6 frame(s)
 @>Wait for Move's Completion
@@ -98600,9 +98607,9 @@ List of Event Commands:
 @>Wait: 15 frame(s)
 @>Change Text Options: Bottom, Show
 @>Text: \w[dark]\c[12]\se[]\l[3]And so wraps up another incident, with \pn
- :    : adding another adventure to their ever growing legacy.\wtnp[40]
+ :    : adding another adventure to their ever growing legacy.\wtnp[90]
 @>Text: \w[dark]\c[12]\se[]\l[4]An adventure that was tiring, and exhausting, but most importantly,
- :    : exhilarating. Traveling to the Moon was something she never imagined could happen.\wtnp[40]
+ :    : exhilarating. Traveling to the Moon was something she never imagined could happen.\wtnp[90]
 @>Set Move Route: Player
  :              : $>Move Down
  :              : $>Move Down
@@ -98616,7 +98623,7 @@ List of Event Commands:
 @>Change Screen Color Tone: (-255,-255,-255,0), @6
 @>Text: \w[dark]\c[12]\se[]\l[4]She and \v[126] departed from Hecatia's fortress at the Mare
  :    : Marginis, and make their way back to the Capital so they can give Sagume the
- :    : news.\wtnp[40]
+ :    : news.\wtnp[90]
 @>Wait: 6 frame(s)
 @>Wait for Move's Completion
 @>Change Transparent Flag: Transparency
@@ -103216,17 +103223,17 @@ List of Event Commands:
 @>Set Move Route: [Partner]
  :              : $>Turn Left
 @>Text: \w[dark]\c[12]\se[]\l[3]Not even a second after the pair returned back to Gensokyo,
- :    : \pn was accosted by the tengu she had met during the tournament.\wtnp[40]
+ :    : \pn was accosted by the tengu she had met during the tournament.\wtnp[90]
 @>Text: \w[dark]\c[12]\se[]\l[3]"Ah, welcome home Honored \pn. About that 
- :    : exclusive interview... I trust you'll have plenty of story to tell."\wtnp[40]
+ :    : exclusive interview... I trust you'll have plenty of story to tell."\wtnp[90]
 @>Comment: Sweatdrop anim over player
 @>Text: \w[dark]\c[12]\se[]\l[4]\pn knew in the back of her mind that this 
  :    : was coming, what with how certain Tengu were about breaking 
- :    : news... Never a dull moment in her life these days.\wtnp[40]
+ :    : news... Never a dull moment in her life these days.\wtnp[90]
 @>Change Screen Color Tone: (-255,-255,-255,0), @6
 @>Text: \w[dark]\c[12]\se[]\l[4]As \pn was indulging Daichi in his interview, \v[126]
  :    : took their leave to return to their own home, and the tengu reporter escorted
- :    : \pn back to the Bamboo Forest of the Lost.\wtnp[40]
+ :    : \pn back to the Bamboo Forest of the Lost.\wtnp[90]
 @>Wait: 6 frame(s)
 @>Wait for Move's Completion
 @>Change Transparent Flag: Transparency
@@ -103370,33 +103377,33 @@ Trigger: Autorun
 
 List of Event Commands:
 @>Text: \w[dark]\c[12]\se[]\l[3]After returning to Eientei, \pn relayed the status of
- :    : the Capital to Eirin... With some concerns of her own.\wtnp[40]
+ :    : the Capital to Eirin... With some concerns of her own.\wtnp[90]
 @>Text: \w[dark]\c[12]\se[]\l[3]"I don't mean to be rude Doctor Yagokoro, but...
- :    : You could have just told me that the Capital was in danger as well."\wtnp[40]
+ :    : You could have just told me that the Capital was in danger as well."\wtnp[90]
 @>Text: \w[dark]\c[12]\se[]\l[2]Of course, the Lunar Sage had expected this, and in
- :    : turn asked the following:\wtnp[40]
+ :    : turn asked the following:\wtnp[90]
 @>Set Move Route: [Eirin]
  :              : $>Wait: 10 frame(s)
  :              : $>Turn Down
 @>Text: \w[dark]\c[12]\se[]\l[2]"If you didn't know that Gensokyo was also in danger,
- :    : would you have agreed to go?"\wtnp[40]
+ :    : would you have agreed to go?"\wtnp[90]
 @>Text: \w[dark]\c[12]\se[]\l[3]Truthfully, \pn didn't have an answer. She would jump to
- :    : protect Gensokyo in a heartbeat, but...\wtnp[40]
+ :    : protect Gensokyo in a heartbeat, but...\wtnp[90]
 @>Text: \w[dark]\c[12]\se[]\l[3]Would she do the same for a group of people
  :    : far away she knew nothing about? Especially those who were purifying
- :    : all of Gensokyo?\wtnp[40]
+ :    : all of Gensokyo?\wtnp[90]
 @>Text: \w[dark]\c[12]\se[]\l[3]Perhaps, \pn figured, she wasn't experienced enough
- :    : to have an answer to such questions yet.\wtnp[40]
+ :    : to have an answer to such questions yet.\wtnp[90]
 @>Text: \w[dark]\c[12]\se[]\l[4]Nevertheless, the doctor had thanked \pn for her efforts,
  :    : and promised to compensate her for going out of her way, and then sent her
- :    : back to the Village.\wtnp[40]
+ :    : back to the Village.\wtnp[90]
 @>Change Screen Color Tone: (-255,-255,-255,0), @6
 @>Text: \w[dark]\c[12]\se[]\l[4]It wouldn't take more than a few days before Daichi's newspaper
- :    : hit the presses, and the entirety of Gensokyo was made aware of \pn's latest exploits.\wtnp[40]
+ :    : hit the presses, and the entirety of Gensokyo was made aware of \pn's latest exploits.\wtnp[90]
 @>Text: \w[dark]\c[12]\se[]\l[3]\pn decided to spend the following few days in her room,
- :    : allowing her to have a well deserved, and needed, rest.\wtnp[40]
+ :    : allowing her to have a well deserved, and needed, rest.\wtnp[90]
 @>Text: \w[dark]\c[12]\se[]\l[2]At least the worst of it was over, and she could 
- :    : leave that kingdom of lunacy behind her!\wtnp[40]
+ :    : leave that kingdom of lunacy behind her!\wtnp[90]
 @>Fade Out BGM: 5 sec.
 @>Wait: 10 frame(s)
 @>Control Self Switch: A =ON
@@ -118977,6 +118984,10 @@ List of Event Commands:
  @>Text: \l[3]You will be returned to the World of Fantasies. All four episodes will
   :    : be in a playable state if you wish to replay them.
  @>Text: Your game will be saved upon reloading into the area.
+ @>Script: $player.tmom_cleared = true
+ :       : $player.tfoc_cleared = true
+ :       : $player.tkol_cleared = true
+ :       : $player.tla_cleared = true
  @>Conditional Branch: Switch [0152: TLA Cleared] == OFF
   @>Control Switches: [0152: TLA Cleared] = ON
   @>Control Variables: [0141: Scenarios Cleared] += 1
@@ -119561,6 +119572,7 @@ List of Event Commands:
 @>Wait: 40 frame(s)
 @>Script: CreditsFin.new
 @>Wait: 40 frame(s)
+@>Script: $player.tfoc_cleared = true
 @>Conditional Branch: Switch [0139: TFoC Cleared] == OFF
  @>Control Switches: [0139: TFoC Cleared] = ON
  @>Control Variables: [0141: Scenarios Cleared] += 1
