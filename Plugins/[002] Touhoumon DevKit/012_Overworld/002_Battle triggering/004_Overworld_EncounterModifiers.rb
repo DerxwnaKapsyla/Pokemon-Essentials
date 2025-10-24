@@ -37,6 +37,14 @@ EventHandlers.add(:on_wild_pokemon_created, :alter_shiny_rate,
   }
 )
 
+EventHandlers.add(:on_trainer_load, :spirits_of_aggrivation,
+  proc { |trainer|
+    if trainer.trainer_type == :SPIRIT
+        trainer.name = "Spirit"
+    end
+    }
+)
+
 
 # EventHandlers.add(:on_wild_pokemon_created, :pokemon_encounter,
     # proc { |pkmn|

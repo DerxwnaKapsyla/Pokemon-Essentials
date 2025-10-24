@@ -467,6 +467,29 @@ List of Event Commands:
 @>
 
 #------------------------------------------------------------------------------
+Event ID: 003
+Event Name: EV003
+(X,Y): (009,000)
+
+Page #1
+Conditions
+None
+
+Autonomous Movement
+Type: Fixed
+Speed: 3: Slow
+Freq: 3: Low
+Options Enabled
+Move Animation
+Trigger: Action Button
+
+List of Event Commands:
+@>Text: \l[4]\w[dark]Upon proceeding, a lengthy sequence will unfold with
+ :    : no time to save in between. It is recommended to set aside sufficent
+ :    : time before continuing.
+@>
+
+#------------------------------------------------------------------------------
 Event ID: 010
 Event Name: TM Item Ball
 (X,Y): (006,000)
@@ -890,6 +913,8 @@ Move Animation
 Trigger: Action Button
 
 List of Event Commands:
+@>Comment: Event Indicator
+ :       : quest
 @>Conditional Branch: Player is facing Left
  @>Set Move Route: Player
   :              : $>Move Down
@@ -3176,8 +3201,7 @@ List of Event Commands:
 :       : $bag.add(:PUPPETORB,7)
 :       : $bag.add(:GREATORB,3)
 :       : $bag.add(:ITEMFINDER)
-@>Text: \me[Item get]\PN placed the prepared items in their 
- :    : bag!\wtnp[80]
+@>Text: \me[Item get]\PN placed the prepared items in their \bbag\c[0]!\wtnp[80]
 @>Text: \xn[\pn]Now I should head outside and meet with the 
  :    : others.
 @>Text: \xn[\pn]I\..\..\..\. probably shouldn't go through the front door. 
@@ -15969,6 +15993,7 @@ List of Event Commands:
 :       : $bag.add(:GREENMARK)
 @>Script: $bag.add(:GREYMARK)
 :       : $bag.add(:MAGFRAG,10)
+:       : $bag.add(:DREAMFLUTE)
 @>Text: \me[Item get]\PN received the entire suite of Reincarnation
  :    : related items, as well as 10 Magical Fragments!\wtnp[80]
 @>Text: \xn[Stone #5]YOU SHOULD START NOTICING MAGICAL
@@ -19004,18 +19029,16 @@ Move Animation
 Trigger: Player Touch
 
 List of Event Commands:
-@>Text: \bEntering this door may begin the final sequence of 
- :    : the game.
-@>Text: \bIt is highly advised that you ready yourself for what 
- :    : lies ahead. If you feel you are fully prepared, then 
- :    : you may proceed.
-@>Text: \bFor example, you may want to shop at the Human 
- :    : Village Rest Stop again. Their stock has been slightly 
- :    : modified.
-@>Text: \bPlease also be aware that if you enter the room 
- :    : with Speed Up turned on, the following cutscene will 
- :    : desync.
-@>Text: \bWith that information in mind...
+@>Text: \l[4]\w[dark]Upon proceeding, a lengthy sequence will unfold with
+ :    : no time to save in between. It is recommended to set aside sufficent
+ :    : time before continuing.
+@>Text: \w[dark]Further, It is highly advised that you ready yourself for what 
+ :    : lies ahead, as this may be the final sequence of The Mansion of Mystery
+ :    : depending on your total number of losses.
+@>Text: \w[dark]If you need to stock up on items, do so now. 
+@>Text: \w[dark]Also, please also be aware that if you enter the room 
+ :    : with Speed Up turned on, the following cutscene will desync.
+@>Text: \w[dark]With that information in mind...
 @>Text: \bAdvance into the Performance Hall?
 @>Show Choices: I'm ready, I'm not ready
 (When Cancel: Choice 2)
@@ -21080,8 +21103,8 @@ List of Event Commands:
    @>Exit Event Processing
    @>
   : Branch End
-  @>Screen Flash: (255,255,255,255), @10
   @>Change Screen Color Tone: (0,0,0,0), @8
+  @>Screen Flash: (255,255,255,255), @10
   @>Set Move Route: This event
    :              : $>Graphic: "OW_DoppelDevice', 0, 2, 1
   @>Text: \rRETURNING TO STAND-BY MODE.
@@ -24322,12 +24345,12 @@ Move Animation
 Trigger: Player Touch
 
 List of Event Commands:
-@>Text: \bProceding beyond this point will trigger the last 
- :    : battle of the game, and thus the final sequence of the 
- :    : game.
-@>Text: \bIt is highly advised that you ready yourself for what 
- :    : lies ahead. If you feel you are fully prepared, then 
- :    : you may proceed.
+@>Text: \l[4]\w[dark]Upon proceeding, a lengthy sequence will unfold with
+ :    : no time to save in between. It is recommended to set aside sufficent
+ :    : time before continuing.
+@>Text: \w[dark]Continuing will trigger the final battle of The Mansion
+ :    : of Mystery. It is advised that you prepare yourself if you feel
+ :    : unprepared.
 @>Text: \bAdvance to the final battle?
 @>Show Choices: I'm ready, I'm not ready
 (When Cancel: Choice 2)
@@ -27886,6 +27909,9 @@ Trigger: Action Button
 
 List of Event Commands:
 @>Text: \xn[\pn]Should I enter Hieda Manor?
+@>Text: \l[4]\w[dark]Upon proceeding, a lengthy sequence will unfold with
+ :    : no time to save in between. It is recommended to set aside sufficent
+ :    : time before continuing.
 @>Show Choices: Yes, No
 (When Cancel: Choice 2)
 : When [Yes]
@@ -28029,6 +28055,30 @@ List of Event Commands:
 : Else
  @>
 : Branch End
+@>
+
+#------------------------------------------------------------------------------
+Event ID: 017
+Event Name: EV017
+(X,Y): (022,008)
+
+Page #1
+Conditions
+None
+
+Graphic: Object ball
+
+Autonomous Movement
+Type: Fixed
+Speed: 3: Slow
+Freq: 3: Low
+Options Enabled
+Move Animation
+Trigger: Action Button
+
+List of Event Commands:
+@>Script: pbSet(1,$PokemonGlobal.encounter_version)
+:       : echoln pbGet(1)
 @>
 
 #------------------------------------------------------------------------------
@@ -31414,6 +31464,9 @@ List of Event Commands:
 @>Text: You're just in time! Everyone is already gathered inside the
  :    : Arena and is waiting for your match with Miss Minoriko!
 @>Text: Are you ready to enter?
+@>Text: \l[4]\w[dark]Upon proceeding, a lengthy sequence will unfold with
+ :    : no time to save in between. It is recommended to set aside sufficent
+ :    : time before continuing.
 @>Show Choices: I'm ready to enter!, I need more time...
 (When Cancel: Choice 2)
 : When [I'm ready to enter!]
@@ -32007,6 +32060,29 @@ List of Event Commands:
  @>Control Self Switch: B =ON
  @>
 : Branch End
+@>
+
+#------------------------------------------------------------------------------
+Event ID: 028
+Event Name: EV028
+(X,Y): (043,015)
+
+Page #1
+Conditions
+None
+
+Graphic: TPDP_NPC 37
+
+Autonomous Movement
+Type: Fixed
+Speed: 3: Slow
+Freq: 3: Low
+Options Enabled
+Move Animation
+Trigger: Action Button
+
+List of Event Commands:
+@>Script: pbBerryMerchant
 @>
 
 #------------------------------------------------------------------------------
@@ -43271,7 +43347,7 @@ List of Event Commands:
 #------------------------------------------------------------------------------
 Event ID: 017
 Event Name: Item
-(X,Y): (009,005)
+(X,Y): (013,005)
 
 Page #1
 Conditions
@@ -49729,7 +49805,7 @@ List of Event Commands:
 @>Script: pbTrainerIntro(:SPIRIT)
 @>Script: pbNoticePlayer(get_self)
 @>Text: ...
-@>Conditional Branch: Script: TrainerBattle.start(:SPIRIT, "Spirit", 11+(pbGet(99) * 10))
+@>Conditional Branch: Script: TrainerBattle.start(:SPIRIT, "Spirit B",pbGet(99))
  @>Control Self Switch: A =ON
  @>
 : Branch End
@@ -49932,7 +50008,7 @@ List of Event Commands:
 @>Script: pbTrainerIntro(:SPIRIT)
 @>Script: pbNoticePlayer(get_self)
 @>Text: ...
-@>Conditional Branch: Script: TrainerBattle.start(:SPIRIT, "Spirit", 10+(pbGet(99) * 10))
+@>Conditional Branch: Script: TrainerBattle.start(:SPIRIT, "Spirit A",pbGet(99))
  @>Control Self Switch: A =ON
  @>
 : Branch End
@@ -51977,6 +52053,12 @@ Direction Fix
 Trigger: Event Touch
 
 List of Event Commands:
+@>Conditional Branch: Variable [0115: 3 Fairies defeated] < 4
+ @>Text: \l[4]\w[dark]Upon proceeding, a lengthy sequence will unfold with
+  :    : no time to save in between. It is recommended to set aside sufficent
+  :    : time before continuing.
+ @>
+: Branch End
 @>Conditional Branch: Player is facing Up
  @>Play SE: 'Door exit', 100, 100
  @>Change Screen Color Tone: (-255,-255,-255,0), @6
@@ -52047,6 +52129,28 @@ Trigger: Event Touch
 List of Event Commands:
 @>Text: Once you've finished up, head on back to Hieda Manor to
  :    : report in.
+@>
+
+#------------------------------------------------------------------------------
+Event ID: 034
+Event Name: Healing Statue
+(X,Y): (059,006)
+
+Page #1
+Conditions
+None
+
+Autonomous Movement
+Type: Fixed
+Speed: 3: Slow
+Freq: 3: Low
+Options Enabled
+Move Animation
+Trigger: Action Button
+
+List of Event Commands:
+@>Script: pbSetPokemonCenter
+@>Call Common Event: Akyuu Shrines
 @>
 
 #------------------------------------------------------------------------------
@@ -54366,7 +54470,7 @@ List of Event Commands:
 
 Page #2
 Conditions
-Switch 0111: Met Mystia is ON
+Switch 0123: Medicine Beaten is ON
 
 Autonomous Movement
 Type: Fixed
@@ -54428,7 +54532,7 @@ List of Event Commands:
 
 Page #2
 Conditions
-Switch 0111: Met Mystia is ON
+Switch 0123: Medicine Beaten is ON
 
 Autonomous Movement
 Type: Fixed
@@ -54476,7 +54580,7 @@ List of Event Commands:
 
 Page #2
 Conditions
-Switch 0111: Met Mystia is ON
+Switch 0123: Medicine Beaten is ON
 
 Autonomous Movement
 Type: Fixed
@@ -54532,7 +54636,7 @@ List of Event Commands:
 
 Page #2
 Conditions
-Switch 0111: Met Mystia is ON
+Switch 0123: Medicine Beaten is ON
 
 Autonomous Movement
 Type: Fixed
@@ -54582,7 +54686,7 @@ List of Event Commands:
 
 Page #2
 Conditions
-Switch 0111: Met Mystia is ON
+Switch 0123: Medicine Beaten is ON
 
 Autonomous Movement
 Type: Fixed
@@ -54644,7 +54748,7 @@ List of Event Commands:
 
 Page #2
 Conditions
-Switch 0111: Met Mystia is ON
+Switch 0123: Medicine Beaten is ON
 
 Autonomous Movement
 Type: Fixed
@@ -54687,7 +54791,7 @@ List of Event Commands:
 
 Page #2
 Conditions
-Switch 0111: Met Mystia is ON
+Switch 0123: Medicine Beaten is ON
 
 Autonomous Movement
 Type: Fixed
@@ -55570,9 +55674,11 @@ Trigger: Event Touch
 
 List of Event Commands:
 @>Conditional Branch: Player is facing Up
- @>Text: \bProceeding past this point will trigger the final segment of
-  :    : Stage 6. It is highly advised you heal your Puppets before
-  :    : advancing.
+ @>Text: \l[4]\w[dark]Upon proceeding, a lengthy sequence will unfold with
+  :    : no time to save in between. It is recommended to set aside sufficent
+  :    : time before continuing.
+ @>Text: \w[dark]There will be a checkpoint in the middle of the sequence, but
+  :    : that will be your only reprieve.
  @>Text: \bAre you prepared to advance?
  @>Show Choices: Yes, No
  (When Cancel: Choice 2)
@@ -55706,7 +55812,7 @@ List of Event Commands:
 
 Page #2
 Conditions
-Switch 0111: Met Mystia is ON
+Switch 0123: Medicine Beaten is ON
 
 Autonomous Movement
 Type: Fixed
@@ -56883,6 +56989,7 @@ List of Event Commands:
  :    : really is!
 @>Control Switches: [0102: Special Battle Switch] = ON
 @>Control Variables: [0102: Special Battle Variable] = 0
+@>Recover All: Entire Party
 @>Conditional Branch: Script: TrainerBattle.start(:PUPPETS_1, "Stun Legion", pbGet(99))
  @>
 : Else
@@ -56904,6 +57011,7 @@ List of Event Commands:
 @>Text: \xn[Medicine]Hardly.\wt[10] Burn Legion, prepare to engage!
 @>Set Move Route: Player
  :              : $>Turn Right
+@>Recover All: Entire Party
 @>Conditional Branch: Script: TrainerBattle.start(:PUPPETS_2, "Burn Legion", pbGet(99))
  @>
 : Else
@@ -56927,6 +57035,7 @@ List of Event Commands:
 @>Text: \xn[Medicine]Hmph! Frost Legion! Put her in her place!
 @>Set Move Route: Player
  :              : $>Turn Left
+@>Recover All: Entire Party
 @>Conditional Branch: Script: TrainerBattle.start(:PUPPETS_3, "Frost Legion", pbGet(99))
  @>
 : Else
@@ -57000,6 +57109,7 @@ List of Event Commands:
 @>Script: setBattleRule("midbattleScript", :vs_medicine)
 :       : setBattleRule("battleIntroText", "Medicine Melancholy, leader of the Puppet Rebellion, challenges you and your 
 :       : ideals!")
+@>Control Switches: [0135: Battling Medicine] = ON
 @>Conditional Branch: Script: TrainerBattle.start(:MEDICINE_Tr, "Medicine Melancholy", 10 + pbGet(99) * 10)
  @>Control Switches: [0123: Medicine Beaten] = ON
  @>Fade Out BGM: 1 sec.
@@ -57064,6 +57174,7 @@ List of Event Commands:
   :    : Puppets by my side has done for me!
  @>Text: \xn[Medicine]Truly strange! Oh well! Su-san and I will be off 
   :    : now as well!
+ @>Control Switches: [0135: Battling Medicine] = OFF
  @>Script: pbSetSelfSwitch(1,"A",true)
  @>Script: # $game_variables[1] = $GameSpeed
  :       : # pbDisallowSpeedup
@@ -57084,10 +57195,12 @@ List of Event Commands:
  @>Change Screen Color Tone: (51,17,-34,255), @6
  @>
 : Else
+ @>Control Switches: [0135: Battling Medicine] = OFF
  @>Script: pbTrainerEnd
  @>Exit Event Processing
  @>
 : Branch End
+@>Control Switches: [0135: Battling Medicine] = OFF
 @>Script: pbTrainerEnd
 @>
 
@@ -58979,9 +59092,11 @@ Move Animation
 Trigger: Player Touch
 
 List of Event Commands:
-@>Text: \bProceeding past this point will trigger the final cutscene
- :    : and final fight of the game.
-@>Text: \bIt is highly advised that you prepare yourself beforehand.
+@>Text: \l[4]\w[dark]Upon proceeding, a lengthy sequence will unfold with
+ :    : no time to save in between. It is recommended to set aside sufficent
+ :    : time before continuing.
+@>Text: \l[4]\w[dark]This will mark the final battle of The Festival of Curses.
+ :    : It is advised that you prepare yourself beforehand.
 @>Text: \bDo you wish to proceed?
 @>Show Choices: Yes, No
 (When Cancel: Choice 2)
@@ -74210,6 +74325,139 @@ List of Event Commands:
 @>
 
 #------------------------------------------------------------------------------
+Event ID: 057
+Event Name: size(1,4)
+(X,Y): (024,014)
+
+Page #1
+Conditions
+Switch 0147: TKoL Cleared is ON
+Variable 0142: TLA Plot Variable is 1 or above
+
+Graphic: Object ball
+
+Autonomous Movement
+Type: Fixed
+Speed: 3: Slow
+Freq: 3: Low
+Options Enabled
+Move Animation
+Trigger: Event Touch
+
+List of Event Commands:
+@>Text: \l[4]\w[dark]Upon proceeding-\wtnp[2]
+@>Play SE: 'Electronic Malfunction', 40, 100
+@>Text: \w[dark]You shouldn't be here.
+@>Control Self Switch: A =ON
+@>
+
+Page #2
+Conditions
+Switch 0147: TKoL Cleared is ON
+Variable 0142: TLA Plot Variable is 1 or above
+Self Switch A is ON
+
+Autonomous Movement
+Type: Fixed
+Speed: 3: Slow
+Freq: 3: Low
+Options Enabled
+Move Animation
+Trigger: Action Button
+
+List of Event Commands:
+@>
+
+#------------------------------------------------------------------------------
+Event ID: 058
+Event Name: size(1,4)
+(X,Y): (033,021)
+
+Page #1
+Conditions
+Switch 0147: TKoL Cleared is ON
+Variable 0142: TLA Plot Variable is 1 or above
+
+Graphic: Object ball
+
+Autonomous Movement
+Type: Fixed
+Speed: 3: Slow
+Freq: 3: Low
+Options Enabled
+Move Animation
+Trigger: Event Touch
+
+List of Event Commands:
+@>Text: \l[4]\w[dark]Upon proceeding-\wtnp[2]
+@>Play SE: 'Electronic Malfunction', 40, 100
+@>Text: \w[dark]You need to wake up!
+@>Control Self Switch: A =ON
+@>
+
+Page #2
+Conditions
+Switch 0147: TKoL Cleared is ON
+Variable 0142: TLA Plot Variable is 1 or above
+Self Switch A is ON
+
+Autonomous Movement
+Type: Fixed
+Speed: 3: Slow
+Freq: 3: Low
+Options Enabled
+Move Animation
+Trigger: Action Button
+
+List of Event Commands:
+@>
+
+#------------------------------------------------------------------------------
+Event ID: 059
+Event Name: size(6,1)
+(X,Y): (067,047)
+
+Page #1
+Conditions
+Switch 0147: TKoL Cleared is ON
+Variable 0142: TLA Plot Variable is 1 or above
+
+Graphic: Object ball
+
+Autonomous Movement
+Type: Fixed
+Speed: 3: Slow
+Freq: 3: Low
+Options Enabled
+Move Animation
+Trigger: Event Touch
+
+List of Event Commands:
+@>Text: \l[4]\w[dark]Upon proceeding-\wtnp[2]
+@>Play SE: 'Electronic Malfunction', 40, 100
+@>Text: \w[dark]Wake up, \pn!
+@>Text: \w[dark]WAKE UP.
+@>Control Self Switch: A =ON
+@>
+
+Page #2
+Conditions
+Switch 0147: TKoL Cleared is ON
+Variable 0142: TLA Plot Variable is 1 or above
+Self Switch A is ON
+
+Autonomous Movement
+Type: Fixed
+Speed: 3: Slow
+Freq: 3: Low
+Options Enabled
+Move Animation
+Trigger: Action Button
+
+List of Event Commands:
+@>
+
+#------------------------------------------------------------------------------
 
 #==============================================================================
 Map ID: 090
@@ -77487,6 +77735,16 @@ Move Animation
 Trigger: Event Touch
 
 List of Event Commands:
+@>Conditional Branch: Variable [0121: TKoL Plot Variable] < 16
+ @>Text: \l[4]\w[dark]Upon proceeding, a lengthy sequence will unfold with
+  :    : no time to save in between. It is recommended to set aside sufficent
+  :    : time before continuing.
+ @>Text: \l[4]\w[dark]Once you start the sequence, you will be locked in
+  :    : and unable to return to any previous part of The Kingdom of Lunacy
+  :    : until finished.
+ @>Text: \w[dark]This is your only warning.
+ @>
+: Branch End
 @>Set Move Route: This event
                   (Ignore If Can't Move)
  :              : $>SE: 'Door enter', 100, 100
@@ -83884,9 +84142,12 @@ Trigger: Action Button
 
 List of Event Commands:
 @>Text: \xn[Rei'sen]Miss \pn! Are you ready to meet the Princesses?
-@>Text: \w[dark]Proceeding past this point will trigger the final segment of
- :    : The Kingdom of Lunacy. It is highly advised you heal your Puppets and 
- :    : take care of any unfinished business before advancing.
+@>Text: \l[4]\w[dark]Upon proceeding, a lengthy sequence will unfold with
+ :    : no time to save in between. It is recommended to set aside sufficent
+ :    : time before continuing.
+@>Text: \w[dark]This will trigger the final battle of The Kingdom of Lunacy.
+ :    : It is advised you heal your Puppets and take care of any unfinished
+ :    : business before advancing.
 @>Text: \w[dark]Are you prepared to advance?
 @>Show Choices: Yes, No
 (When Cancel: Choice 2)
@@ -88723,6 +88984,12 @@ Trigger: Player Touch
 
 List of Event Commands:
 @>Conditional Branch: Player is facing Up
+ @>Conditional Branch: Variable [0142: TLA Plot Variable] < 4
+  @>Text: \l[4]\w[dark]Upon proceeding, a lengthy sequence will unfold with
+   :    : no time to save in between. It is recommended to set aside sufficent
+   :    : time before continuing.
+  @>
+ : Branch End
  @>Play SE: 'Door exit', 100, 100
  @>Change Screen Color Tone: (-255,-255,-255,0), @6
  @>Wait: 8 frame(s)
@@ -90668,6 +90935,9 @@ Trigger: Player Touch
 
 List of Event Commands:
 @>Conditional Branch: Player is facing Up
+ @>Text: \l[4]\w[dark]Upon proceeding, a lengthy sequence will unfold with
+  :    : no time to save in between. It is recommended to set aside sufficent
+  :    : time before continuing.
  @>Text: \w[dark]Proceeding past this point will trigger the final battle
   :    : of The Adventures of Ayaka.
  @>Text: \w[dark]This is the end of the road.
@@ -90707,6 +90977,9 @@ Trigger: Player Touch
 
 List of Event Commands:
 @>Conditional Branch: Player is facing Up
+ @>Text: \l[4]\w[dark]Upon proceeding, a lengthy sequence will unfold with
+  :    : no time to save in between. It is recommended to set aside sufficent
+  :    : time before continuing.
  @>Text: \w[dark]Proceeding past this point will resume the final battle
   :    : of The Adventures of Ayaka.
  @>Text: \w[dark]This is the end of the road.
@@ -90746,6 +91019,9 @@ Trigger: Player Touch
 
 List of Event Commands:
 @>Conditional Branch: Player is facing Up
+ @>Text: \l[4]\w[dark]Upon proceeding, a lengthy sequence will unfold with
+  :    : no time to save in between. It is recommended to set aside sufficent
+  :    : time before continuing.
  @>Text: \w[dark]Proceeding past this point will resume the final battle
   :    : of The Adventures of Ayaka.
  @>Text: \w[dark]This is the end of the road.
@@ -93464,6 +93740,9 @@ List of Event Commands:
   :              : $>Turn Down
  @>Text: \xn[Eirin]Are you ready for your test, \pn? Be warned, neither
   :    : Udonge or I shall pull any punches.
+ @>Text: \l[4]\w[dark]Upon proceeding, a lengthy sequence will unfold with
+  :    : no time to save in between. It is recommended to set aside sufficent
+  :    : time before continuing.
  @>Text: \xn[\pn]\b(Am I ready to fight Doctor Yagokoro and Reisen...?)
  @>Show Choices: Yes, No
  (When Cancel: Choice 2)
@@ -93699,6 +93978,9 @@ List of Event Commands:
  @>Text: \xn[Eirin]But then, you knew that already, didn't you?
  @>Text: \xn[\pn]\b{Seriously, what is going on here? None of this is how
   :    : I remember it!}
+ @>Text: \l[4]\w[dark]Upon proceeding, a lengthy sequence will unfold with
+  :    : no time to save in between. It is recommended to set aside sufficent
+  :    : time before continuing.
  @>Text: \xn[\pn]\b(Am I ready to fight Doctor Yagokoro and Reisen...?)
  @>Show Choices: Yes, No
  (When Cancel: Choice 2)
@@ -96470,9 +96752,9 @@ Trigger: Player Touch
 
 List of Event Commands:
 @>Conditional Branch: Player is facing Up
- @>Text: \w[dark]Proceeding past this point will trigger the final segment of
-  :    : Stage 6. It is highly advised you heal your Puppets before
-  :    : advancing.
+ @>Text: \l[4]\w[dark]Upon proceeding, a lengthy sequence will unfold with
+  :    : no time to save in between. It is recommended to set aside sufficent
+  :    : time before continuing.
  @>Text: \w[dark]Are you prepared to advance?
  @>Show Choices: Yes, No
  (When Cancel: Choice 2)
@@ -120495,7 +120777,7 @@ List of Event Commands:
 @>Move Picture: 1, @10, Center (256,192), (100%,100%), 255, Normal
 @>Wait: 10 frame(s)
 @>Text: \w[dark]\c[12]\se[]\l[4]High above the realm, an incident which should have unfolded years ago is now reaching a new boiling point.\wtnp[30]\se[]
- :    : And once again, the Puppets are at the center of it all.\wtnp[\90]
+ :    : And once again, the Puppets are at the center of it all.\wtnp[90]
 @>Wait: 10 frame(s)
 @>Text: \w[dark]\c[12]\se[]\l[3]And as usual, the fate of Gensokyo, and this time even more, resides in the 
  :    : hands of those who tame these creatures.\wtnp[90]

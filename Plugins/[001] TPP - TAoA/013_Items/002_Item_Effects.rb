@@ -165,3 +165,20 @@ ItemHandlers::UseOnPokemon.add(:RESETTALISMAN, proc { |item, qty, pkmn, scene|
   scene.pbDisplay(_INTL("{1}'s stats were reset!", pkmn.name))
   next true
 })
+
+ItemHandlers::UseInField.add(:DREAMFLUTE, proc { |item|
+  pbUseItemMessage(item)
+  encounter_table = $PokemonGlobal.encounter_version
+  if encounter_table == pbGet(99) && pbGet(99) != 0
+    pbMessage(_INTL("Weaker Puppets seem to have become more common!"))
+    $PokemonGlobal.encounter_version = 0
+  elsif encounter_table == 0 && pbGet(99) != 0
+    pbMessage(_INTL("Stronger Puppets seem to have become more common!"))
+    $PokemonGlobal.encounter_version = pbGet(99)
+  elsif encounter_table == 0 && pbGet(99) == 0
+    pbMessage(_INTL("Nothing happened."))
+  else
+    pbMessage(_INTL("Nothing happened."))
+  end
+  next true
+})

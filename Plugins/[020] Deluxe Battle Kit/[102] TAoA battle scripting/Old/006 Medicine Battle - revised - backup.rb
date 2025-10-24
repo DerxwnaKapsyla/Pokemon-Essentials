@@ -1,0 +1,341 @@
+  #-----------------------------------------------------------------------------  
+  # Scene: Medicine Battle
+  #		* General taunts against the Player
+  #		* Buffs her Puppets at random intervals
+  #		* Inflicts Curse on the Player's Puppets
+  #		* Have a rebound effect at random, which either buffs the player or
+  #       debuffs Medicine
+  #		* On last Puppet, boosts both Atk. and Def. stats by +4, apply perma
+  #		  endure, Ingrain, and Aurora Veil
+  #		* When last Puppet is at low health, rebound effect and drop all buffs
+  #		  to final Puppet, play cutscene and change music
+  #-----------------------------------------------------------------------------    
+  MidbattleHandlers.add(:midbattle_scripts, :vs_medicine_revised_backup,
+    proc { |battle, idxBattler, idxTarget, trigger|
+    scene    = battle.scene
+    medi     = battle.battlers[1]
+    player   = battle.battlers[0]
+    stats = [:ATTACK, :DEFENSE, :SPEED, :SPECIAL_ATTACK, :SPECIAL_DEFENSE]
+	case trigger
+	#-----------------------------------------------------------------
+	# Battle Start: Medicine taunts the player, inflicts player side
+	#               with a curse.
+	#-----------------------------------------------------------------
+	when "RoundStartCommand_1_foe"
+	  scene.pbStartSpeech(1)
+      battle.pbDisplayPaused(_INTL("With this Tome of Curses, there's no way you'll be able to beat me!"))
+	  battle.pbDisplayPaused(_INTL("I call upon this Tome of Curses... smite my enemies!"))
+	  scene.pbForceEndSpeech
+	  battle.pbAnimation(:GRUDGE, player, player)
+	  player.effects[PBEffects::Curse] = true
+	  battle.pbDisplayPaused(_INTL("{1} was inflicted with a curse!", player.pbThis))
+	#-----------------------------------------------------------------
+	# Round Two: Medicine taunts the player, boosts stats of her
+	#            active Puppet.
+	#-----------------------------------------------------------------
+	when "RoundStartCommand_2_foe"
+	  scene.pbStartSpeech(1)
+	  battle.pbDisplayPaused(_INTL("I can do a lot more than just bring harm to my foes. Just watch!"))
+	  battle.pbDisplayPaused(_INTL("I call upon this Tome of Curses... bless my allies with power!"))
+	  scene.pbForceEndSpeech
+	  battle.pbDisplayPaused(_INTL("Medicine uses the Tome of Curses to boost her party's strength!"))
+	  showAnim = true
+	  [:ATTACK, :SPECIAL_ATTACK, :ACCURACY].each do |stat|
+	    next if !medi.pbCanRaiseStatStage?(stat, medi)
+		medi.pbRaiseStatStage(stat, 1, medi, showAnim)
+		showAnim = false
+	  end
+	#-----------------------------------------------------------------
+	# On Foe Sendout: Medicine uses the Tome of Curses to buff her
+	#                 sent-in Puppet.
+	#-----------------------------------------------------------------  
+	when "AfterSendOut_foe"
+	  next if !battle.pbTriggerActivated?("RoundStartCommand_2_foe")
+	  next if battle.pbTriggerActivated?("AfterLastSwitchIn_foe")
+	  hp_trigger = false
+	  scene.pbStartSpeech(1)
+	  battle.pbDisplayPaused(_INTL("I call upon this Tome of Curses... bless my allies with power!"))
+	  scene.pbForceEndSpeech
+	  battle.pbDisplayPaused(_INTL("Medicine uses the Tome of Curses to boost her party's strength!"))
+	  showAnim = true
+	  [:ATTACK, :SPECIAL_ATTACK, :ACCURACY].each do |stat|
+	    next if !medi.pbCanRaiseStatStage?(stat, medi)
+		medi.pbRaiseStatStage(stat, 1, medi, showAnim)
+		showAnim = false
+	  end
+	  battle.midbattleVariable = 0
+	  echoln "Condition Triggered: AfterSendOut_foe."
+	  echoln "> Mid Battle Variable is set to #{battle.midbattleVariable}"
+	#------------------------------------------------------------------------
+	# Random At Turn End: Medicine utilizes the Tome of Curses.
+	# Effects: * Debuff player's party (Stats 25%, Statuses 75%) 65%
+	#          * Buffs Medicine's party (Stats) 35%
+	#          * Rebound effect (Applies boon/bane to opposite side) 15%
+	#------------------------------------------------------------------------
+	when "RoundEnd_player"
+	  next if !battle.pbTriggerActivated?("RoundStartCommand_2_foe")
+	  next if $game_variables[118] == 5 # Number of Medicine's Puppets that have been KO'd
+	  if rand(300) <= 100 # Trigger the Tome of Curses
+        echoln "Activating the Tome of Curses"
+		determine_tome_effects(battle.scene, battle)
+	  end
+	#-----------------------------------------------------------------
+	# Foe's Puppet Half HP: Medicine inflicts a stat raising boon
+	#                       on her side.
+	#-----------------------------------------------------------------
+	when "TargetHPHalf_foe"
+	  next if battle.pbTriggerActivated?("AfterLastSendOut_foe") || battle.midbattleVariable > 0
+	  scene.pbStartSpeech(1)
+	  battle.pbDisplayPaused(_INTL("Try picking on someone your own size!"))
+	  scene.pbForceEndSpeech
+	  battle.pbDisplayPaused(_INTL("Medicine uses the Tome of Curses to boost her party's defenses!"))
+	  showAnim = true
+	  [:DEFENSE, :SPECIAL_DEFENSE].each do |stat|
+	  next if !medi.pbCanRaiseStatStage?(stat, medi)
+	    medi.pbRaiseStatStage(stat, 1, medi, showAnim)
+	    showAnim = false
+	  end
+	  battle.midbattleVariable = 1
+	  echoln "Condition Triggered: TargetHPHalf_foe."
+	  echoln "> Mid Battle Variable is set to #{battle.midbattleVariable}"
+	#-----------------------------------------------------------------
+	# Foe's Puppet Faints: Medicine inflicts a debuff curse on the
+	#                      player's side.
+	#-----------------------------------------------------------------
+	when "BattlerFainted_foe"
+	  next if battle.pbTriggerActivated?("AfterLastSendOut_foe")
+	  scene.pbStartSpeech(1)
+	  battle.pbDisplayPaused(_INTL("Grr... Let's see how you feel being weak!"))
+	  scene.pbForceEndSpeech
+	  battle.pbDisplayPaused(_INTL("Medicine lays a curse upon your party!"))
+	  battle.pbAnimation(:GRUDGE, player, player)
+	  showAnim = true
+	  [:DEFENSE, :SPECIAL_DEFENSE].each do |stat|
+	  next if !player.pbCanLowerStatStage?(stat, player)
+	    player.pbLowerStatStage(stat, 1, player, showAnim)
+	    showAnim = false
+	  end
+	  player.effects[PBEffects::Curse]
+	  $game_variables[118] += 1
+	  #p $game_variables[118]
+	  
+	#-----------------------------------------------------------------
+	# Final Foe Sendout: Medicine taunts the player and superboosts
+	#                    her final Puppet's stats, applys Ingrain, and
+	#                    sets Aurora Veil (can probably be replaced
+	#                    with general boss buff status)
+	#-----------------------------------------------------------------
+	when "AfterLastSendOut_foe"
+	  scene.pbStartSpeech(1)
+	  battle.pbDisplayPaused(_INTL("I will bring an end to this, here and now!"))
+	  battle.pbDisplayPaused(_INTL("Tome of Curses, grant my allies with unbreakable resolve and power!"))
+	  scene.pbForceEndSpeech
+	  battle.pbAnimation(:HARDEN, medi, medi)
+	  battle.pbDisplayPaused(_INTL("{1} glows with immense power!",medi.pbThis))
+	  showAnim = true
+	  [:DEFENSE, :SPECIAL_DEFENSE, :ATTACK, :SPECIAL_ATTACK].each do |stat|
+	  next if !medi.pbCanRaiseStatStage?(stat, medi)
+	    medi.pbRaiseStatStage(stat, 2, medi, showAnim)
+	    showAnim = false
+	  end
+	  medi.effects[PBEffects::Ingrain] = true
+	  medi.pbOwnSide.effects[PBEffects::AuroraVeil] = 99
+	  medi.pbOwnSide.effects[PBEffects::Mist] = 99
+	  medi.damageThreshold = -1
+	  scene.pbStartSpeech(1)
+	  battle.pbDisplayPaused(_INTL("There's no way you'll be able to overcome us now!"))
+	  scene.pbForceEndSpeech
+	  scene.pbStartSpeech(0)
+	  battle.pbDisplayPaused(_INTL("We're just going to have to try... Let's do this, {1}!", player.pbThis))
+	  scene.pbForceEndSpeech
+	
+	#-----------------------------------------------------------------
+	# Final Foe Low HP: Medicine taunts the player and attempts to
+	#                   use the Tome of Curses again, which does
+	#                   nothing and then rebounds, removing all of
+	#                   the last Puppet's boons.
+	#-----------------------------------------------------------------
+	when "LastTargetHPLow_foe"
+	  next if $game_switches[131] == true
+	  scene.pbStartSpeech(1)
+	  battle.pbDisplayPaused(_INTL("I can't... I won't let my kindred down!"))
+	  battle.pbDisplayPaused(_INTL("Tome of Curses, bring my foe to their knees!"))
+	  scene.pbForceEndSpeech
+	  battle.pbDisplayPaused(_INTL("Medicine calls upon the Tome of Curses one last time!"))
+	  pbBGMFade(1.0)
+	  pbWait(2)
+	  battle.pbDisplayPaused(_INTL("... Nothing happened."))
+	  pbBGMPlay("W-017. Seeds of the Incident")
+	  scene.pbStartSpeech(1)
+	  battle.pbDisplayPaused(_INTL("... Let's try that again!"))
+	  battle.pbDisplayPaused(_INTL("Tome of Curses! Bring my foe to their knees!"))
+	  pbWait(2)
+	  battle.pbDisplayPaused(_INTL("Why... Why aren't you working anymore?!"))
+	  scene.pbForceEndSpeech
+	  if $game_variables[117] == 0
+	    scene.pbStartSpeech(0)
+	    battle.pbDisplayPaused(_INTL("(It's just like Miss Hina said... she doesn't have true control over the Tome!)"))
+		scene.pbForceEndSpeech
+		scene.pbStartSpeech(1)
+	  end
+	  battle.pbDisplayPaused(_INTL("I call upon the Tome of Curses! Please, bring my foe to their knees!"))
+	  scene.pbForceEndSpeech
+	  pbWait(2)
+	  battle.pbDisplayPaused(_INTL("The Tome of Curses reacts!"))
+	  pbWait(2)
+	  battle.pbDisplayPaused(_INTL("... The effect rebounds."))
+	  battle.pbAnimation(:GRUDGE, medi, medi)
+	  medi.pbResetStatStages
+	  medi.effects[PBEffects::Ingrain] = false
+	  medi.pbOwnSide.effects[PBEffects::AuroraVeil] = 0
+	  medi.pbOwnSide.effects[PBEffects::Mist] = 0
+	  battle.pbDisplayPaused(_INTL("All of the protections surounding Medicine's team disappeared!"))
+	  scene.pbStartSpeech(1)
+	  battle.pbDisplayPaused(_INTL("N-No! That wasn't supposed to happen! Why is this happening now!?"))
+	  scene.pbForceEndSpeech
+	  scene.pbStartSpeech(0)
+	  battle.pbDisplayPaused(_INTL("(This is our chance to finish it!)"))
+	  scene.pbForceEndSpeech
+	  $game_switches[131] = true
+	end
+    }
+  )
+
+def determine_tome_effects(scene, battle)
+  if rand(100) <= 65 # Debuff Effect
+    echoln "Executing Debuff Code"
+    if rand(100) <= 85 # Non-Rebound Effect
+	  echoln "> Executing Medicine Debuff Effect - Success"
+	  medicine_debuff_success(scene, battle)
+	else # Rebound effect
+	  echoln "> Executing Medicine Debuff Effect - Rebound"
+	  medicine_debuff_backfire(scene, battle)
+	end
+  else # Buff Effect
+    echoln "Executing Buff Code"
+    if rand(100) <= 85 # Non-Rebound Effect
+	  echoln "> Executing Medicine Buff Effect - Success"
+	  medicine_buff_success(scene, battle)
+	else # Rebound effect
+	  echoln "> Executing Medicine Buff Effect - Rebound"
+	  medicine_buff_backfire(scene, battle)
+	end    
+  end
+end
+
+# Used when buff effect is successful
+def medicine_buff_success(scene, battle)
+  medi     = battle.battlers[1]
+  player   = battle.battlers[0]
+  stats = [:ATTACK, :DEFENSE, :SPEED, :SPECIAL_ATTACK, :SPECIAL_DEFENSE]
+  
+  scene.pbStartSpeech(1)
+  battle.pbDisplayPaused(_INTL("I call upon this Tome of Curses..."))
+  battle.pbDisplayPaused(_INTL("...Bless my allies with power!"))
+  scene.pbForceEndSpeech
+  battle.pbDisplayPaused(_INTL("Medicine boosts the stats of her party!"))
+  stat = stats.sample
+
+  if medi.pbCanRaiseStatStage?(stat, medi)
+    medi.pbRaiseStatStage(stat, 1, medi, true)
+  end  
+end
+
+# Used when debuff is successful
+def medicine_debuff_success(scene, battle)
+  medi     = battle.battlers[1]
+  player   = battle.battlers[0]
+  stats = [:ATTACK, :DEFENSE, :SPEED, :SPECIAL_ATTACK, :SPECIAL_DEFENSE]
+  
+  scene.pbStartSpeech(1)
+  battle.pbDisplayPaused(_INTL("I call upon this Tome of Curses..."))
+  battle.pbDisplayPaused(_INTL("...Smite my foes!"))
+  scene.pbForceEndSpeech
+  battle.pbDisplayPaused(_INTL("Medicine lays a curse upon your party!"))
+  if rand(100) <= 75 # Status Conditions
+    case rand(5) # Determine status condition
+    when 0 then player.pbParalyze if player.pbCanInflictStatus?(:PARALYSIS, player, true)
+    when 1 then player.pbFreeze if player.pbCanInflictStatus?(:FREEZE, player, true)
+    when 2 then player.pbBurn if player.pbCanInflictStatus?(:BURN, player, true)
+    when 3 then player.pbPoison if player.pbCanInflictStatus?(:POISON, player, true)
+    when 4 then player.pbSleep if player.pbCanInflictStatus?(:SLEEP, player, true)
+	end
+  else # Stat Lowering
+    stat = stats.sample
+    if player.pbCanLowerStatStage?(stat, player)
+      player.pbLowerStatStage(stat, 1, player, true)
+	end
+  end
+end
+
+
+# Used when buff effect backfires
+def medicine_buff_backfire(scene, battle)
+  medi     = battle.battlers[1]
+  player   = battle.battlers[0]
+  stats = [:ATTACK, :DEFENSE, :SPEED, :SPECIAL_ATTACK, :SPECIAL_DEFENSE]
+  
+  scene.pbStartSpeech(1)
+  battle.pbDisplayPaused(_INTL("I call upon this Tome of Curses..."))
+  battle.pbDisplayPaused(_INTL("...Bless my allies with power!"))
+  scene.pbForceEndSpeech
+  battle.pbDisplayPaused(_INTL("Medicine boosts the stats of her party!"))
+  battle.pbWait(1)
+  battle.pbDisplayPaused(_INTL("...Except, the effect rebounded!"))
+  stat = stats.sample
+	  
+  if player.pbCanRaiseStatStage?(stat, player)
+    player.pbRaiseStatStage(stat, 1, player, true)
+  end
+  $game_variables[117] += 1
+  medicine_rebound_response(scene, battle)
+end
+
+# Used when debuff effect backfires
+def medicine_debuff_backfire(scene, battle)
+  medi     = battle.battlers[1]
+  player   = battle.battlers[0]
+  stats = [:ATTACK, :DEFENSE, :SPEED, :SPECIAL_ATTACK, :SPECIAL_DEFENSE]
+  
+  scene.pbStartSpeech(1)
+  battle.pbDisplayPaused(_INTL("I call upon this Tome of Curses..."))
+  battle.pbDisplayPaused(_INTL("...Smite my foes!"))
+  scene.pbForceEndSpeech
+  battle.pbDisplayPaused(_INTL("Medicine lays a curse upon your party!"))
+  battle.pbWait(1)
+  battle.pbDisplayPaused(_INTL("...Except, the effect rebounded!"))
+  if rand(100) <= 75 # Status Conditions
+    case rand(5) # Determine status condition
+    when 0 then medi.pbParalyze if medi.pbCanInflictStatus?(:PARALYSIS, medi, true)
+    when 1 then medi.pbFreeze if medi.pbCanInflictStatus?(:FREEZE, medi, true)
+    when 2 then medi.pbBurn if medi.pbCanInflictStatus?(:BURN, medi, true)
+    when 3 then medi.pbPoison if medi.pbCanInflictStatus?(:POISON, medi, true)
+    when 4 then medi.pbSleep if medi.pbCanInflictStatus?(:SLEEP, medi, true)
+	end
+  else # Stat Lowering
+    stat = stats.sample
+    if medi.pbCanLowerStatStage?(stat, medi)
+      medi.pbLowerStatStage(stat, 1, medi, true)
+	end
+  end
+  $game_variables[117] += 1
+  medicine_rebound_response(scene, battle)
+end
+
+# Used when a curse rebounds, displays dialogue
+def medicine_rebound_response(scene, battle)
+  case $game_variables[117]
+  when 1
+    scene.pbStartSpeech(1)
+    battle.pbDisplayPaused(_INTL("No! That wasn't supposed to happen!"))
+	scene.pbForceEndSpeech
+    scene.pbStartSpeech(0)
+    battle.pbDisplayPaused(_INTL("(It's just like Miss Hina said, Medicine doesn't have true control of the tome..."))
+	battle.pbDisplayPaused(_INTL("The effects of the curse are rebounding!)"))
+	scene.pbForceEndSpeech
+  when 2
+    scene.pbStartSpeech(1)
+    battle.pbDisplayPaused(_INTL("Grr! Why does this keep happening!?"))
+    scene.pbForceEndSpeech
+  end
+end
