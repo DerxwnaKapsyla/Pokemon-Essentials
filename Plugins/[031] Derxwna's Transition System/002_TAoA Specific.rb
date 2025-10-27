@@ -22,7 +22,8 @@ SpecialBattleIntroAnimations.register("vs_clownpiece", 100,   # Priority 100
     black_bars     = sprintf("DTS/BorderBars") rescue nil
     # Set up sprites
 	ball_sprites     = dkDisplayBallCount(viewport, foe, 0) # Create the ball count for trainer 0
-	ball_bar         = Sprite.new(viewport)
+ball_sprites2    = dkDisplayBallCount(viewport, foe, 1) # Create the ball count for trainer 1
+ball_bar         = Sprite.new(viewport)
     ball_bar.bitmap  = RPG::Cache.transition("DTS/Balls/overlay_lineup.png")
     ball_bar.x       = -440
     ball_bar.y       = 292

@@ -70788,10 +70788,25 @@ List of Event Commands:
  :              : $>Change Opacity: 0
  :              : $>SE: 'Door exit', 80, 100
 @>Wait for Move's Completion
-@>Control Variables: [0121: TKoL Plot Variable] = 5
+@>Control Self Switch: A =ON
 @>
 
 Page #2
+Conditions
+Self Switch A is ON
+
+Autonomous Movement
+Type: Fixed
+Speed: 3: Slow
+Freq: 3: Low
+Options Enabled
+Move Animation
+Trigger: Action Button
+
+List of Event Commands:
+@>
+
+Page #3
 Conditions
 Variable 0121: TKoL Plot Variable is 5 or above
 
@@ -71325,6 +71340,10 @@ Move Animation
 Trigger: Player Touch
 
 List of Event Commands:
+@>Conditional Branch: Variable [0142: TLA Plot Variable] == 4
+ @>Control Variables: [0142: TLA Plot Variable] = 5
+ @>
+: Branch End
 @>Play SE: 'Door exit', 100, 100
 @>Change Screen Color Tone: (-255,-255,-255,0), @6
 @>Wait: 8 frame(s)
@@ -98983,7 +99002,6 @@ Move Animation
 Trigger: Action Button
 
 List of Event Commands:
-@>Text: e
 @>
 
 #------------------------------------------------------------------------------
