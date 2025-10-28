@@ -39558,7 +39558,8 @@ Move Animation
 Trigger: Action Button
 
 List of Event Commands:
-@>Text: [Placeholder]
+@>Text: Apparently tne Tengu are in a buzz right now... They're only like that
+ :    : when something big is going on!
 @>
 
 #------------------------------------------------------------------------------
@@ -70422,8 +70423,6 @@ List of Event Commands:
  :       : setPrice(:GOLDENRICESAKE, 14000)
  :       : setPrice(:PUPPETORB2, 600)
  :       : setPrice(:GREATORB2, 1800)
- :       : setPrice(:YATAMIRROR, 4000)
- :       : setPrice(:KUSANAGI, 4000)
  :       : setPrice(:QUICKCLAW, 1500)
  :       : setPrice(:KINGSROCK, 1500)
  :       : setPrice(:LUCKYEGG, 1500)
@@ -70432,7 +70431,6 @@ List of Event Commands:
  @>Script: pbPokemonMart([
  :       : :STRAWBERRYJAM,:BLUEBERRYJAM,:GOLDENRICESAKE,
  :       : :PUPPETORB2,:GREATORB2,:INVERSEORB,
- :       : :YATAMIRROR,:KUSANAGI,
  :       : :QUICKCLAW,:KINGSROCK,:LUCKYEGG,
  :       : :ROCKYHELMET,:LIFEORB
  :       : ])
@@ -73418,8 +73416,6 @@ List of Event Commands:
  :       : setPrice(:GOLDENRICESAKE, 14000)
  :       : setPrice(:PUPPETORB2, 600)
  :       : setPrice(:GREATORB2, 1800)
- :       : setPrice(:YATAMIRROR, 4000)
- :       : setPrice(:KUSANAGI, 4000)
  :       : setPrice(:QUICKCLAW, 1500)
  :       : setPrice(:KINGSROCK, 1500)
  :       : setPrice(:LUCKYEGG, 1500)
@@ -73428,7 +73424,6 @@ List of Event Commands:
  @>Script: pbPokemonMart([
  :       : :STRAWBERRYJAM,:BLUEBERRYJAM,:GOLDENRICESAKE,
  :       : :PUPPETORB2,:GREATORB2,:INVERSEORB,
- :       : :YATAMIRROR,:KUSANAGI,
  :       : :QUICKCLAW,:KINGSROCK,:LUCKYEGG,
  :       : :ROCKYHELMET,:LIFEORB
  :       : ])
@@ -114854,18 +114849,25 @@ List of Event Commands:
   :    : simple battle.
  @>Script: pbTrainerIntro(:ABYSSALSOVEREIGN)
  @>Text: \xn[Amira]That being said, I won't pull any punches! Let's go!
- @>Wait: 30 frame(s)
- @>Control Switches: [0104: Transition Handler] = ON
- @>Control Variables: [0103: Vs. Transition ID] = 34
- @>Control Variables: [0104: Vs. Transition - Pkmn] = 6
  @>Conditional Branch: Script: TrainerBattle.start(:ABYSSALSOVEREIGN, "Amira Naxeroth")
   @>Text: \xn[Amira]That battle will serve as great reference material for the 
    :    : story I'm writing! Nothing beats first hand experience after all.
   @>Text: \xn[Amira]Y'know, I want you to have this. I found her 
    :    : when I was traveling through different Universal Instances 
    :    : and she reminded me of a friend of mine.
+  @>Script: give_lucia
+  @>Text: Ayaka recieved Lucia from Amira!\me[Pkmn get]\wtnp[80]
+  @>Text: \xn[Amira]Please take good care of her! In this universe, she's
+   :    : basically one of a kind!
+  @>Text: \xn[Amira]Right now though, I should be heading back to my
+   :    : workstation. No doubt Rinoa is wondering where I am!
+  @>Text: \xn[Amira]You take care, Ayaka!
+  @>Change Screen Color Tone: (-255,-255,-255,0), @8
+  @>Play SE: 'Teleport', 80, 100
+  @>Wait: 10 frame(s)
   @>Control Switches: [0167: The Writer's Test] = ON
   @>Control Self Switch: A =ON
+  @>Change Screen Color Tone: (-255,-255,-255,0), @10
   @>
  : Branch End
  @>Script: pbTrainerEnd
@@ -114879,9 +114881,7 @@ List of Event Commands:
 
 Page #2
 Conditions
-Self Switch A is ON
-
-Graphic: trainer_ABYSSALSOVEREIGN
+None
 
 Autonomous Movement
 Type: Fixed
@@ -114892,7 +114892,6 @@ Move Animation
 Trigger: Action Button
 
 List of Event Commands:
-@>Text: \xn[Amira]Don't worry! This will be done one day!
 @>
 
 #------------------------------------------------------------------------------

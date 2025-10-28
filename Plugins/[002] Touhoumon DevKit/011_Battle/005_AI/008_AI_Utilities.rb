@@ -14,7 +14,7 @@ class Battle::AI
       move_data = GameData::Move.get(move.id)
       return move_data.has_flag?("Bomb")
     when :FLASHFIRE
-      return [:FIRE, :FIRE18].include?(move_type)
+	  return [:FIRE, :FIRE18].include?(move_type)
     when :LIGHTNINGROD, :MOTORDRIVE, :VOLTABSORB
 	  return [:ELECTRIC, :ELECTRIC18].include?(move_type)
     when :SAPSIPPER

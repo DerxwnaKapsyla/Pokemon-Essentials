@@ -89,6 +89,6 @@ Battle::PokeBallEffects::OnCatch.add(:GREATORB2,proc { |ball,battle,pkmn|
 
 Battle::PokeBallEffects::OnCatch.add(:INVERSEORB,proc { |ball,battle,pkmn|
   if rand(100) > 85
-	pkmn.makeShiny
+	pkmn.shiny = true
   end
 })

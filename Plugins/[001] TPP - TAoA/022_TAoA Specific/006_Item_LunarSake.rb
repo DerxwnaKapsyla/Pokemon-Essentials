@@ -1,6 +1,7 @@
 class PokemonGlobalMetadata
   attr_accessor :sake
   attr_accessor :sake_counter
+  attr_accessor :sake_active
   
   alias lunarsake_initialize initialize
   def initialize
