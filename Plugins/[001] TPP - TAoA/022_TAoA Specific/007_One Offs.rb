@@ -78,3 +78,38 @@ def reset_menu_theme
     MessageConfig.pbSetSystemFrame("Graphics/Windowskins/" + Settings::MENU_WINDOWSKINS[$PokemonSystem.frame])
   end
 end
+
+def give_lucia
+    pkmn = Pokemon.new(:GLACEON, 1)
+	pkmn.name = "Lucia"
+	pkmn.owner.gender = 1
+	pkmn.owner.id = 31459
+	pkmn.owner.name = "Amira"
+	pkmn.form = 1
+	pkmn.makeFemale
+	pkmn.happiness = 255
+    pkmn.item = :CHOICESPECS
+	pkmn.shiny = false
+	pkmn.super_shiny = false
+	pkmn.cannot_release = true
+	pkmn.obtain_method = 4
+	pkmn.obtain_text = nil
+    pkmn.poke_ball = :FRIENDBALL
+    pkmn.learn_move(:BLIZZARD)
+	pkmn.learn_move(:ICEBEAM)
+	pkmn.learn_move(:SHADOWBALL)
+	pkmn.learn_move(:AURORAVEIL)
+	pkmn.ability = :SNOWWARNING
+	pkmn.nature = :TIMID
+	pkmn.level = 1
+	pkmn.iv[:HP] = 31
+    pkmn.iv[:ATTACK] = 31
+    pkmn.iv[:DEFENSE] = 31
+    pkmn.iv[:SPECIAL_ATTACK] = 31
+    pkmn.iv[:SPECIAL_DEFENSE] = 31
+    pkmn.iv[:SPEED] = 31
+	pkmn.givePokerus
+	pkmn.record_first_moves
+    pkmn.calc_stats
+    pbAddPokemonSilent(pkmn)
+end

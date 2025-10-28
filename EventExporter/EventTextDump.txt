@@ -3076,7 +3076,7 @@ List of Event Commands:
 #------------------------------------------------------------------------------
 Event ID: 050
 Event Name: Dream Observer
-(X,Y): (035,028)
+(X,Y): (038,020)
 
 Page #1
 Conditions
@@ -16215,86 +16215,6 @@ List of Event Commands:
   :    : Status: Uncleared
  @>
 : Branch End
-@>
-
-#------------------------------------------------------------------------------
-Event ID: 006
-Event Name: EV006
-(X,Y): (024,009)
-
-Page #1
-Conditions
-Switch 0152: TLA Cleared is ON
-
-Graphic: trainer_ABYSSALSOVEREIGN
-
-Autonomous Movement
-Type: Fixed
-Speed: 3: Slow
-Freq: 3: Low
-Options Enabled
-Move Animation
-Trigger: Action Button
-
-List of Event Commands:
-@>Text: \xn[???]Oh- You're here!
-@>Text: \xn[???]I've been waiting for you to return!
-@>Text: \xn[???]...Pardon? Who am I? 
-@>Text: \xn[???]My name's Amira Naxeroth! I'm just a simple traveler of 
- :    : this vast Omniverse, chronicling all the interesting stories I've 
- :    : seen along the way.
-@>Text: \xn[Amira]And your story... I was deeply interested in it! So I swung
- :    : by this Universal Instance to document it!
-@>Text: \xn[Amira]You don't mind if I name it after you, right?
-@>Text: \xn[Amira]"The Adventures of Ayaka"! Simple, gets the point across!
-@>Text: \xn[Amira]Well hey, since you're here now... What do you say to a
- :    : battle? I'm itching to have a go against a legend like you!
-@>Text: \xn[Amira]What do you say? Will you indulge me?
-@>Show Choices: Yes, No
-(When Cancel: Choice 2)
-: When [Yes]
- @>Text: \xn[Amira]Great, thank you! I promise I'm not some wacko 
-  :    : superboss who will be impossible to beat! Just a nice,
-  :    : simple battle.
- @>Text: \xn[Amira]That being said, I won't pull any punches! You better
-  :    : be fast, because this battle will be...
- @>Fade Out BGM: 1 sec.
- @>Wait: 30 frame(s)
- @>Control Switches: [0104: Transition Handler] = ON
- @>Control Variables: [0103: Vs. Transition ID] = 34
- @>Control Variables: [0104: Vs. Transition - Pkmn] = 6
- @>Script: pbTrainerIntro(:ABYSSALSOVEREIGN)
- @>Text: \xn[Amira]...A test of your reflexes!
- @>Conditional Branch: Script: TrainerBattle.start(:ABYSSALSOVEREIGN, "Amira Naxeroth")
-  @>Control Switches: [0167: The Writer's Test] = ON
-  @>Control Self Switch: A =ON
-  @>
- : Branch End
- @>Script: pbTrainerEnd
- @>
-: When [No]
- @>Text: \xn[Amira]Aww, fine. I'll be here if you change your mind!
-  :    : After all, I have all the time in the Omniverse~.
- @>
-: Branch End
-@>
-
-Page #2
-Conditions
-Self Switch A is ON
-
-Graphic: trainer_ABYSSALSOVEREIGN
-
-Autonomous Movement
-Type: Fixed
-Speed: 3: Slow
-Freq: 3: Low
-Options Enabled
-Move Animation
-Trigger: Action Button
-
-List of Event Commands:
-@>Text: \xn[Amira]Don't worry! This will be done one day!
 @>
 
 #------------------------------------------------------------------------------
@@ -65268,6 +65188,83 @@ List of Event Commands:
 #------------------------------------------------------------------------------
 
 #==============================================================================
+Map ID: 080
+Map Name: World of Fantasies
+Tileset: 038: World of Fantasies
+Width: 36, Height: 50
+Auto-Change BGM: W-042. Primate Spirit Garden
+
+#------------------------------------------------------------------------------
+Event ID: 002
+Event Name: EV002
+(X,Y): (017,037)
+
+Page #1
+Conditions
+None
+
+Autonomous Movement
+Type: Fixed
+Speed: 3: Slow
+Freq: 3: Low
+Options Enabled
+Move Animation
+Trigger: Parallel Process
+
+List of Event Commands:
+@>Change Map Settings:Panorama = 'WoF', 0
+@>
+
+#------------------------------------------------------------------------------
+Event ID: 003
+Event Name: EV003
+(X,Y): (017,022)
+
+Page #1
+Conditions
+None
+
+Autonomous Movement
+Type: Fixed
+Speed: 3: Slow
+Freq: 3: Low
+Options Enabled
+Move Animation
+Trigger: Action Button
+
+List of Event Commands:
+@>Text: \l[3]\sign[sign]Garden of Dreams\nPuppets from across your 
+ :    : journey can be found here!
+@>
+
+#------------------------------------------------------------------------------
+Event ID: 006
+Event Name: EV006
+(X,Y): (017,031)
+
+Page #1
+Conditions
+None
+
+Autonomous Movement
+Type: Fixed
+Speed: 3: Slow
+Freq: 3: Low
+Options Enabled
+Move Animation
+Trigger: Player Touch
+
+List of Event Commands:
+@>Play SE: 'teleporter', 100, 100
+@>Change Screen Color Tone: (-255,-255,-255,0), @6
+@>Wait: 8 frame(s)
+@>Transfer Player:[136: Tower of Adventure (Roof)], (026,015), Down, No Fade
+@>Change Screen Color Tone: (0,0,0,0), @6
+@>
+
+#------------------------------------------------------------------------------
+
+#==============================================================================
 Map ID: 082
 Map Name: Human Village
 Tileset: 027: Human Village
@@ -78388,6 +78385,85 @@ List of Event Commands:
 @>
 
 #------------------------------------------------------------------------------
+Event ID: 003
+Event Name: EV003
+(X,Y): (013,021)
+
+Page #1
+Conditions
+None
+
+Graphic: trainer_ABYSSALSOVEREIGN
+
+Autonomous Movement
+Type: Fixed
+Speed: 3: Slow
+Freq: 3: Low
+Options Enabled
+Move Animation
+Trigger: Action Button
+
+List of Event Commands:
+@>Text: \xn[???]Oh- You're here!
+@>Text: \xn[???]I've been waiting for you to return!
+@>Text: \xn[???]...Pardon? Who am I? 
+@>Text: \xn[???]My name's Amira Naxeroth! I'm just a simple traveler of 
+ :    : this vast Omniverse, chronicling all the interesting stories I've 
+ :    : seen along the way.
+@>Text: \xn[Amira]And your story... I was deeply interested in it! So I swung
+ :    : by this Universal Instance to document it!
+@>Text: \xn[Amira]You don't mind if I name it after you, right?
+@>Text: \xn[Amira]"The Adventures of Ayaka"! Simple, gets the point across!
+@>Text: \xn[Amira]Well hey, since you're here now... What do you say to a
+ :    : battle? I'm itching to have a go against a legend like you!
+@>Text: \xn[Amira]What do you say? Will you indulge me?
+@>Show Choices: Yes, No
+(When Cancel: Choice 2)
+: When [Yes]
+ @>Text: \xn[Amira]Great, thank you! I promise I'm not some wacko 
+  :    : superboss who will be impossible to beat! Just a nice,
+  :    : simple battle.
+ @>Script: pbTrainerIntro(:ABYSSALSOVEREIGN)
+ @>Text: \xn[Amira]That being said, I won't pull any punches! Let's go!
+ @>Wait: 30 frame(s)
+ @>Conditional Branch: Script: TrainerBattle.start(:ABYSSALSOVEREIGN, "Amira Naxeroth")
+  @>Text: \xn[Amira]That battle will serve as great reference material for the 
+   :    : story I'm writing! Nothing beats first hand experience after all.
+  @>Text: \xn[Amira]Y'know, I want you to have this. I found her 
+   :    : when I was traveling through different Universal Instances 
+   :    : and she reminded me of a friend of mine.
+  @>Control Switches: [0167: The Writer's Test] = ON
+  @>Control Self Switch: A =ON
+  @>
+ : Branch End
+ @>Script: pbTrainerEnd
+ @>
+: When [No]
+ @>Text: \xn[Amira]Aww, fine. I'll be here if you change your mind!
+  :    : After all, I have all the time in the Omniverse~.
+ @>
+: Branch End
+@>
+
+Page #2
+Conditions
+Self Switch A is ON
+
+Graphic: trainer_ABYSSALSOVEREIGN
+
+Autonomous Movement
+Type: Fixed
+Speed: 3: Slow
+Freq: 3: Low
+Options Enabled
+Move Animation
+Trigger: Action Button
+
+List of Event Commands:
+@>Text: \xn[Amira]Don't worry! This will be done one day!
+@>
+
+#------------------------------------------------------------------------------
 Event ID: 005
 Event Name: NPC
 (X,Y): (020,013)
@@ -84940,7 +85016,7 @@ List of Event Commands:
  @>Text: Looks like we have an interesting development brewing here
   :    : folks! Our Savior of the Moon will be going head-to-head
   :    : against not just one, but both of the Princesses!
- @>Text: This will be a match remember for sure! Let's give it up for our 
+ @>Text: This will be a match to remember for sure! Let's give it up for our 
   :    : combatants!
  @>Script: pbSetSelfSwitch(17,"A",true)
  @>Wait: 45 frame(s)
@@ -89552,7 +89628,7 @@ Speed: 3: Slow
 Freq: 3: Low
 Options Enabled
 Move Animation
-Trigger: Action Button
+Trigger: Event Touch
 
 List of Event Commands:
 @>Conditional Branch: Player is facing Up
@@ -90520,6 +90596,7 @@ List of Event Commands:
  @>Wait for Move's Completion
  @>Script: deactivateSpecialBGM("quiet_time")
  @>Script: playSpecialBGM("MotT")
+ @>Script: $player.scenario_name = "The Last Adventure"
  @>Control Switches: [0163: No Going Back] = ON
  @>
 : Else
@@ -105156,6 +105233,51 @@ List of Event Commands:
 @>
 
 #------------------------------------------------------------------------------
+Event ID: 012
+Event Name: Wild Area Teleporter
+(X,Y): (026,014)
+
+Page #1
+Conditions
+None
+
+Graphic: TPDP_NPC 22
+
+Autonomous Movement
+Type: Random
+Speed: 3: Slow
+Freq: 3: Low
+Options Enabled
+Move Animation
+Trigger: Action Button
+
+List of Event Commands:
+@>Conditional Branch: Self Switch A == OFF
+ @>Text: Something strange is going on with the Tower of Adventure...
+ @>Text: It seems like The Ultimate Trial subroutine was hijacked somehow and is
+  :    : now spewing out challenges it shouldn't be.
+ @>Text: If you're going to go down the Tower, you might want to prepare yourself...
+ @>Text: I can teleport you to an area where you can get some additional 
+  :    : training in.
+ @>Control Self Switch: A =ON
+ @>
+: Branch End
+@>Text: Would you like me to teleport you to the Garden of Dreams?
+@>Show Choices: Yes, No
+(When Cancel: Choice 2)
+: When [Yes]
+ @>Play SE: 'teleporter', 100, 100
+ @>Change Screen Color Tone: (-255,-255,-255,0), @6
+ @>Wait: 8 frame(s)
+ @>Transfer Player:[080: World of Fantasies], (017,031), Up, No Fade
+ @>Change Screen Color Tone: (0,0,0,0), @6
+ @>
+: When [No]
+ @>
+: Branch End
+@>
+
+#------------------------------------------------------------------------------
 
 #==============================================================================
 Map ID: 137
@@ -105590,7 +105712,7 @@ List of Event Commands:
 @>Text: \xn[\pn]But that's different! They are-\wtnp[6]
 @>Text: \xn[Maya]Just like you! People who have a form of strength, and
  :    : they use that strength to protect others!
-@>Text: \xn[Maya]This form of strength just happen to look like adorable
+@>Text: \xn[Maya]This form of strength just happens to look like adorable
  :    : little critters!
 @>Text: \xn[\pn]I-\..\..\..\. I suppose so...
 @>Text: \xn[Kota]\pn, we all believe in you. We know you can handle this.
@@ -113486,6 +113608,7 @@ Move Animation
 Trigger: Action Button
 
 List of Event Commands:
+@>Script: pbMegaShop
 @>
 
 #------------------------------------------------------------------------------
@@ -114688,6 +114811,88 @@ List of Event Commands:
  :    : stars", whatever that means.
 @>Text: You won't catch me trying to invade the Moon though! I've heard
  :    : the horror stories.
+@>
+
+#------------------------------------------------------------------------------
+Event ID: 005
+Event Name: EV005
+(X,Y): (018,022)
+
+Page #1
+Conditions
+Switch 0152: TLA Cleared is ON
+
+Graphic: trainer_ABYSSALSOVEREIGN
+
+Autonomous Movement
+Type: Fixed
+Speed: 3: Slow
+Freq: 3: Low
+Options Enabled
+Move Animation
+Trigger: Action Button
+
+List of Event Commands:
+@>Text: \xn[???]Oh- You're here!
+@>Text: \xn[???]I've been waiting for you to return!
+@>Text: \xn[???]...Pardon? Who am I? 
+@>Text: \xn[???]My name's Amira Naxeroth! I'm just a simple traveler of 
+ :    : this vast Omniverse, chronicling all the interesting stories I've 
+ :    : seen along the way.
+@>Text: \xn[Amira]And your story... I was deeply interested in it! So I swung
+ :    : by this Universal Instance to document it!
+@>Text: \xn[Amira]You don't mind if I name it after you, right?
+@>Text: \xn[Amira]"The Adventures of Ayaka"! Simple, gets the point across!
+@>Text: \xn[Amira]Well hey, since you're here now... What do you say to a
+ :    : battle? I'm itching to have a go against a legend like you!
+@>Text: \xn[Amira]What do you say? Will you indulge me?
+@>Show Choices: Yes, No
+(When Cancel: Choice 2)
+: When [Yes]
+ @>Text: \xn[Amira]Great, thank you! I promise I'm not some wacko 
+  :    : superboss who will be impossible to beat! Just a nice,
+  :    : simple battle.
+ @>Script: pbTrainerIntro(:ABYSSALSOVEREIGN)
+ @>Text: \xn[Amira]That being said, I won't pull any punches! Let's go!
+ @>Wait: 30 frame(s)
+ @>Control Switches: [0104: Transition Handler] = ON
+ @>Control Variables: [0103: Vs. Transition ID] = 34
+ @>Control Variables: [0104: Vs. Transition - Pkmn] = 6
+ @>Conditional Branch: Script: TrainerBattle.start(:ABYSSALSOVEREIGN, "Amira Naxeroth")
+  @>Text: \xn[Amira]That battle will serve as great reference material for the 
+   :    : story I'm writing! Nothing beats first hand experience after all.
+  @>Text: \xn[Amira]Y'know, I want you to have this. I found her 
+   :    : when I was traveling through different Universal Instances 
+   :    : and she reminded me of a friend of mine.
+  @>Control Switches: [0167: The Writer's Test] = ON
+  @>Control Self Switch: A =ON
+  @>
+ : Branch End
+ @>Script: pbTrainerEnd
+ @>
+: When [No]
+ @>Text: \xn[Amira]Aww, fine. I'll be here if you change your mind!
+  :    : After all, I have all the time in the Omniverse~.
+ @>
+: Branch End
+@>
+
+Page #2
+Conditions
+Self Switch A is ON
+
+Graphic: trainer_ABYSSALSOVEREIGN
+
+Autonomous Movement
+Type: Fixed
+Speed: 3: Slow
+Freq: 3: Low
+Options Enabled
+Move Animation
+Trigger: Action Button
+
+List of Event Commands:
+@>Text: \xn[Amira]Don't worry! This will be done one day!
 @>
 
 #------------------------------------------------------------------------------

@@ -29621,3 +29621,54 @@ Backtrace:
 [TAoA Core] 002_Overworld_BattleIntroAnim.rb:35:in `pbBattleAnimation'
 001_Overworld_BattleStarting.rb:521:in `start_core'
 001_Overworld_BattleStarting.rb:487:in `start'
+
+=================
+
+[2025-10-28 00:36:33 -0700]
+[Pokémon Essentials version 21.1]
+[v21.1 Hotfixes 1.0.9]
+
+Script error in event 3 (coords 13,25), map 92 (Capital Puppet Center)
+Exception: NoMethodError
+Message: undefined method `name=' for :GLACEON:Symbol
+
+***Full script:
+give_lucia
+
+Backtrace:
+[TAoA Core] 007_One Offs.rb:84:in `give_lucia'
+(eval):1:in `execute_script'
+003_Interpreter.rb:140:in `eval'
+003_Interpreter.rb:140:in `execute_script'
+004_Interpreter_Commands.rb:1177:in `command_355'
+004_Interpreter_Commands.rb:116:in `execute_command'
+003_Interpreter.rb:132:in `block in update'
+003_Interpreter.rb:86:in `loop'
+003_Interpreter.rb:86:in `update'
+002_Scene_Map.rb:167:in `block in update'
+
+=================
+
+[2025-10-28 00:38:30 -0700]
+[Pokémon Essentials version 21.1]
+[v21.1 Hotfixes 1.0.9]
+
+Script error in event 3 (coords 13,25), map 92 (Capital Puppet Center)
+Exception: ArgumentError
+Message: Invalid argument passed to method.
+Expected "31459" to be a Integer, but got String.
+
+***Full script:
+give_lucia
+
+Backtrace:
+004_Validation.rb:29:in `validate'
+005_Pokemon_Owner.rb:46:in `id='
+[TAoA Core] 007_One Offs.rb:86:in `give_lucia'
+(eval):1:in `execute_script'
+003_Interpreter.rb:140:in `eval'
+003_Interpreter.rb:140:in `execute_script'
+004_Interpreter_Commands.rb:1177:in `command_355'
+004_Interpreter_Commands.rb:116:in `execute_command'
+003_Interpreter.rb:132:in `block in update'
+003_Interpreter.rb:86:in `loop'
