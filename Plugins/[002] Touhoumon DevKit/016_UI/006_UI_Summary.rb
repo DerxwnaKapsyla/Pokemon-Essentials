@@ -158,3 +158,16 @@ class PokemonSummary_Scene
     drawMarkings(overlay, 84, 292)
   end
 end
+
+class PokemonSummaryScreen
+  def pbStartForgetScreen(party, partyindex, move_to_learn)
+    ret = -1
+    @scene.pbStartForgetScene(party, partyindex, move_to_learn)
+    loop do
+      ret = @scene.pbChooseMoveToForget(move_to_learn)
+      break if ret < 0 || !move_to_learn
+    end
+    @scene.pbEndScene
+    return ret
+  end
+end

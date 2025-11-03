@@ -27978,30 +27978,6 @@ List of Event Commands:
 @>
 
 #------------------------------------------------------------------------------
-Event ID: 017
-Event Name: EV017
-(X,Y): (022,008)
-
-Page #1
-Conditions
-None
-
-Graphic: Object ball
-
-Autonomous Movement
-Type: Fixed
-Speed: 3: Slow
-Freq: 3: Low
-Options Enabled
-Move Animation
-Trigger: Action Button
-
-List of Event Commands:
-@>Script: pbSet(1,$PokemonGlobal.encounter_version)
-:       : echoln pbGet(1)
-@>
-
-#------------------------------------------------------------------------------
 Event ID: 018
 Event Name: Counter(3)
 (X,Y): (061,049)
@@ -39435,7 +39411,7 @@ Move Animation
 Trigger: Event Touch
 
 List of Event Commands:
-@>Script: pbTrainerIntro(:FAIRY_2)
+@>Script: pbTrainerIntro(:FAIRY_2_ALT)
 @>Script: pbNoticePlayer(get_self)
 @>Text: 'tis the season!
 @>Conditional Branch: Script: TrainerBattle.start(:FAIRY_2_ALT, "Seles",pbGet(99))
@@ -44439,7 +44415,7 @@ List of Event Commands:
 @>Change Screen Color Tone: (-255,-255,-255,0), @6
 @>Wait: 8 frame(s)
 @>Change Transparent Flag: Normal
-@>Transfer Player:[053: Prismriver Manor (F2 - Rooms)], (030,019), Up, No Fade
+@>Transfer Player:[053: Prismriver Manor (F2 - Rooms)], (020,019), Up, No Fade
 @>Change Screen Color Tone: (-50,-50,-50,0), @6
 @>
 
@@ -46065,11 +46041,14 @@ List of Event Commands:
 :       : WildBattle.start(:CSHINKI,35)
 @>Conditional Branch: Variable [0001: Temp Pokemon Choice] == 1
  @>Text: The wild CShinki fled!
- @>Control Switches: [0128: Cleared Prismriver Manor] = ON
  @>Control Self Switch: A =ON
  @>
 : Else
- @>Control Switches: [0128: Cleared Prismriver Manor] = ON
+ @>Control Switches: [0178: CShinki Captured] = ON
+ @>Conditional Branch: Switch [0177: CSariel Captured] == ON
+  @>Control Switches: [0128: Cleared Prismriver Manor] = ON
+  @>
+ : Branch End
  @>Control Self Switch: B =ON
  @>
 : Branch End
@@ -46760,6 +46739,43 @@ Trigger: Action Button
 List of Event Commands:
 @>Text: I wonder what these contraptions were used for... there's another one
  :    : on the other side of the basement.
+@>
+
+#------------------------------------------------------------------------------
+Event ID: 020
+Event Name: EV020
+(X,Y): (005,080)
+
+Page #1
+Conditions
+None
+
+Autonomous Movement
+Type: Fixed
+Speed: 3: Slow
+Freq: 3: Low
+Options Enabled
+Move Animation
+Trigger: Action Button
+
+List of Event Commands:
+@>Call Common Event: Akyuu Shrines
+@>
+
+Page #2
+Conditions
+Switch 0001: Starting over is ON
+
+Autonomous Movement
+Type: Fixed
+Speed: 3: Slow
+Freq: 3: Low
+Options Enabled
+Move Animation
+Trigger: Autorun
+
+List of Event Commands:
+@>Control Switches: [0001: Starting over] = OFF
 @>
 
 #------------------------------------------------------------------------------
@@ -110593,6 +110609,43 @@ List of Event Commands:
 @>
 
 #------------------------------------------------------------------------------
+Event ID: 002
+Event Name: EV002
+(X,Y): (008,005)
+
+Page #1
+Conditions
+None
+
+Autonomous Movement
+Type: Fixed
+Speed: 3: Slow
+Freq: 3: Low
+Options Enabled
+Move Animation
+Trigger: Action Button
+
+List of Event Commands:
+@>Call Common Event: Akyuu Shrines
+@>
+
+Page #2
+Conditions
+Switch 0001: Starting over is ON
+
+Autonomous Movement
+Type: Fixed
+Speed: 3: Slow
+Freq: 3: Low
+Options Enabled
+Move Animation
+Trigger: Autorun
+
+List of Event Commands:
+@>Control Switches: [0001: Starting over] = OFF
+@>
+
+#------------------------------------------------------------------------------
 Event ID: 003
 Event Name: Basic Door
 (X,Y): (010,005)
@@ -110735,6 +110788,11 @@ List of Event Commands:
  @>Control Self Switch: A =ON
  @>
 : Else
+ @>Control Switches: [0177: CSariel Captured] = ON
+ @>Conditional Branch: Switch [0178: CShinki Captured] == ON
+  @>Control Switches: [0128: Cleared Prismriver Manor] = ON
+  @>
+ : Branch End
  @>Control Self Switch: B =ON
  @>
 : Branch End

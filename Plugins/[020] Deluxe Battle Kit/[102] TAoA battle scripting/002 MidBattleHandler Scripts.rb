@@ -61,7 +61,7 @@ MidbattleHandlers.add(:midbattle_global, :miasma_field,
 		    battle.pbDisplayPaused(_INTL("...But your party stood firm and resisted the miasma!"))    
 			case rand(2)
 			when 0 
-			  battler.pbCureStatus(forced)
+			  player.pbCureStatus(forced)
 			  player.pbCureStatus
 			  player.pbCureConfusion
 			  player.pbCureAttract
