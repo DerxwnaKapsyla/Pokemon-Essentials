@@ -229,7 +229,7 @@ def pbPasswordCheck(helptext = "Input Password", minlength = 0, maxlength = 12, 
 	# --- Idol Yamame ---
 	when "bigigbiff"
 	  if $player.koishibuff
-		pbMessage(_INTL("\\bMy apologies Chirei, but I am all out of Igglybuffs to give. If you'd like, I can give you a Koikie (Koishi Cookie) instead?"))
+		pbMessage(_INTL("\\bThe Igglybuff with Tickle has alreeady been distributed. This code cannot be used again."))
 		return false
 	  else
 		pbMessage(_INTL("\\bThis code will add an Igglybuff that knows the move Tickle to your party."))
@@ -524,7 +524,7 @@ def pbPasswordCheck(helptext = "Input Password", minlength = 0, maxlength = 12, 
 		pbMessage(_INTL("\\bThe Tori with Draco Meteor has already been distributed. This code cannot be used again."))
 		return false
 	  else
-		pbMessage(_INTL("\\bThis code will add a Speed Aya with Bolt Beak to your party."))
+		pbMessage(_INTL("\\bThis code will add a Tori with Draco Meteor to your party."))
 		pbMessage(_INTL("\\bOnce claimed, you will not be able to renew this code again."))
 		if pbConfirmMessage(_INTL("\\bAre you capable of recieving this gift?"))
 		  pkmn=Pokemon.new(:TORI,10)
@@ -554,7 +554,7 @@ def pbPasswordCheck(helptext = "Input Password", minlength = 0, maxlength = 12, 
 		pbMessage(_INTL("\\bThe CYoshika with Agility has already been distributed. This code cannot be used again."))
 		return false
 	  else
-		pbMessage(_INTL("\\bThis code will add a Speed Aya with Bolt Beak to your party."))
+		pbMessage(_INTL("\\bThis code will add a Chibi Yoshika with Agility to your party."))
 		pbMessage(_INTL("\\bOnce claimed, you will not be able to renew this code again."))
 		if pbConfirmMessage(_INTL("\\bAre you capable of recieving this gift?"))
 		  pkmn=Pokemon.new(:CYOSHIKA,10)
@@ -612,7 +612,7 @@ def pbPasswordCheck(helptext = "Input Password", minlength = 0, maxlength = 12, 
 	  else
 		pbMessage(_INTL("\\bThis code will give you 50 Cherish Balls."))
 		pbMessage(_INTL("\\bOnce claimed, you will not be able to renew this code again."))
-		if pbConfirmMessage(_INTL("\\bWould you like to claim this code??"))
+		if pbConfirmMessage(_INTL("\\bWould you like to claim this code?"))
 		  pbReceiveItem(:CHERISHBALL,50)
 		  $player.cherish_balls_50 = true
 		  return true
@@ -626,9 +626,9 @@ def pbPasswordCheck(helptext = "Input Password", minlength = 0, maxlength = 12, 
 		pbMessage(_INTL("\\bYou have already redeemed the code for 50 Glitter Balls. This code cannot be used again."))
 		return false
 	  else
-		pbMessage(_INTL("\\bThis code will give you 50 Glitter Balls.."))
+		pbMessage(_INTL("\\bThis code will give you 50 Glitter Balls."))
 		pbMessage(_INTL("\\bOnce claimed, you will not be able to renew this code again."))
-		if pbConfirmMessage(_INTL("\\bWould you like to claim this code??"))
+		if pbConfirmMessage(_INTL("\\bWould you like to claim this code?"))
 		  pbReceiveItem(:GLITTERBALL,50)
 		  $player.glitter_balls_50 = true
 		  return true
@@ -644,7 +644,7 @@ def pbPasswordCheck(helptext = "Input Password", minlength = 0, maxlength = 12, 
 	  else
 		pbMessage(_INTL("\\bThis code will give you a pack of items that will help jumpstart your adventures as a Trainer."))
 		pbMessage(_INTL("\\bOnce claimed, you will not be able to renew this code again."))
-		if pbConfirmMessage(_INTL("\\bWould you like to claim this code??"))
+		if pbConfirmMessage(_INTL("\\bWould you like to claim this code?"))
 		  pbReceiveItem(:POKEBALL,20)
 		  pbReceiveItem(:GREATBALL,10)
 		  pbReceiveItem(:ULTRABALL,5)
@@ -670,7 +670,7 @@ def pbPasswordCheck(helptext = "Input Password", minlength = 0, maxlength = 12, 
 	#  else
 	#	pbMessage(_INTL("\\bThis code will give you a Pocket PokeCenter Item."))
 	#	pbMessage(_INTL("\\bOnce claimed, you will not be able to renew this code again."))
-	#	if pbConfirmMessage(_INTL("\\bWould you like to claim this code??"))
+	#	if pbConfirmMessage(_INTL("\\bWould you like to claim this code?"))
 	#	  pbReceiveItem(:POCKETPOKECENTER)
 	#	  $player.pocket_pokecenter = true
 	#	  return true
@@ -686,7 +686,7 @@ def pbPasswordCheck(helptext = "Input Password", minlength = 0, maxlength = 12, 
 	  else
 		pbMessage(_INTL("\\bThis code will give you a Portable PC."))
 		pbMessage(_INTL("\\bOnce claimed, you will not be able to renew this code again."))
-		if pbConfirmMessage(_INTL("\\bWould you like to claim this code??"))
+		if pbConfirmMessage(_INTL("\\bWould you like to claim this code?"))
 		  pbReceiveItem(:POKEMONBOXLINK)
 		  $player.portable_pc = true
 		  $player.has_box_link = true
@@ -703,7 +703,7 @@ def pbPasswordCheck(helptext = "Input Password", minlength = 0, maxlength = 12, 
 	  else
 		pbMessage(_INTL("\\bThis code will give you a full set of Power Items."))
 		pbMessage(_INTL("\\bOnce claimed, you will not be able to renew this code again."))
-		if pbConfirmMessage(_INTL("\\bWould you like to claim this code??"))
+		if pbConfirmMessage(_INTL("\\bWould you like to claim this code?"))
 		  pbReceiveItem(:POWERWEIGHT)
 		  pbReceiveItem(:POWERBRACER)
 		  pbReceiveItem(:POWERBELT)
@@ -724,7 +724,7 @@ def pbPasswordCheck(helptext = "Input Password", minlength = 0, maxlength = 12, 
 	  else
 		pbMessage(_INTL("\\bThis code will give you a Shiny Charm."))
 		pbMessage(_INTL("\\bOnce claimed, you will not be able to renew this code again."))
-		if pbConfirmMessage(_INTL("\\bWould you like to claim this code??"))
+		if pbConfirmMessage(_INTL("\\bWould you like to claim this code?"))
 		  pbReceiveItem(:SHINYCHARM)
 		  $player.shiny_charm = true
 		  return true
@@ -736,7 +736,7 @@ def pbPasswordCheck(helptext = "Input Password", minlength = 0, maxlength = 12, 
 	when "moreshiny"
 	  pbMessage(_INTL("\\bThis code will make the next Wild Encounter be shiny."))
 	  pbMessage(_INTL("\\bThis code can be reapplied however many times you like."))
-	  if pbConfirmMessage(_INTL("\\bWould you like to claim this code??"))
+	  if pbConfirmMessage(_INTL("\\bWould you like to claim this code?"))
 		pbMessage(_INTL("\\bThe next Wild Encounter will be Shiny."))
 		$player.next_wild_shiny = true
 		$game_switches[Settings::SHINY_WILD_POKEMON_SWITCH] = true

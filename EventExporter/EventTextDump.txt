@@ -2557,28 +2557,28 @@ Move Animation
 Trigger: Autorun
 
 List of Event Commands:
-@>Scroll Map: Up, 11, 3
+@>Scroll Map: Up, 11, 2
 @>Wait: 20 frame(s)
-@>Text: \xn[Gabby]\w[dark]Welcome back to our continued broadcast of the ongoing global crisis.\wtnp[40]
-@>Text: \xn[Gabby]\w[dark]We're reporting live from the emergency conference held in Lumiose City.\wtnp[40]
-@>Text: \xn[Gabby]\w[dark]Leaders and important figures from across the world have gathered here.\wtnp[40]
-@>Text: \xn[Gabby]\w[dark]Today marks day 35 of our continued coverage of the confrence.\wtnp[40]
-@>Text: \xn[Gabby]\w[dark]To our knowledge not a whole lot has changed since the last report.\wtnp[40]
-@>Text: \xn[Gabby]\w[dark]For those of you just tuning in...\wtnp[40]
-@>Text: \xn[Gabby]\w[dark]This confrence was called in response to the current ongoing crisis.\wtnp[40]
-@>Text: \xn[Gabby]\w[dark]Over two months ago, an unknown invasive species appeared out of nowhere.\wtnp[40]
-@>Text: \xn[Gabby]\w[dark]The number of these species have increased throughout the Hoenn Region...\wtnp[40]
-@>Text: \xn[Gabby]\w[dark]... and have been spotted in other regions as well.\wtnp[40]
-@>Text: \xn[Gabby]\w[dark]According to officials, these creatures are definitely not Pokemon.\wtnp[40]
-@>Text: \xn[Gabby]\w[dark]But beyond that everything else about them is entirely unknown.\wtnp[40]
-@>Text: \xn[Gabby]\w[dark]Where they came from, what they're capable of, it remains a mystery.\wtnp[40]
-@>Text: \xn[Gabby]\w[dark]Now, earlier this afternoon we recieved an tip from an anonymous source.\wtnp[40]
-@>Text: \xn[Gabby]\w[dark]It appears that Professor Samuel Oak will be proposing an idea to the council today.\wtnp[40]
-@>Text: \xn[Gabby]\w[dark]However, as of this moment, we have not verified these claims, or this idea.\wtnp[40]
-@>Text: \xn[Gabby]\w[dark]We will be bringing you the latest news as we have it.\wtnp[40]
-@>Text: \xn[Gabby]\w[dark]This is Gabby of Hoenn TV, reporting once again from the emergency confrence.\wtnp[40]
-@>Text: \xn[Gabby]\w[dark]Back to you in the studio, Dave.\wtnp[40]
-@>Text: \se[Tile Game cursor]*Click*\wtnp[40]
+@>Text: \xn[Gabby]\w[dark]Welcome back to our continued broadcast of the ongoing global crisis.\wtnp[80]
+@>Text: \xn[Gabby]\w[dark]We're reporting live from the emergency conference held in Lumiose City.\wtnp[80]
+@>Text: \xn[Gabby]\w[dark]Leaders and important figures from across the world have gathered here.\wtnp[80]
+@>Text: \xn[Gabby]\w[dark]Today marks day 35 of our continued coverage of the confrence.\wtnp[80]
+@>Text: \xn[Gabby]\w[dark]To our knowledge not a whole lot has changed since the last report.\wtnp[80]
+@>Text: \xn[Gabby]\w[dark]For those of you just tuning in...\wtnp[80]
+@>Text: \xn[Gabby]\w[dark]This confrence was called in response to the current ongoing crisis.\wtnp[80]
+@>Text: \xn[Gabby]\w[dark]Over two months ago, an unknown invasive species appeared out of nowhere.\wtnp[80]
+@>Text: \xn[Gabby]\w[dark]The number of these species have increased throughout the Hoenn Region...\wtnp[80]
+@>Text: \xn[Gabby]\w[dark]... and have been spotted in other regions as well.\wtnp[80]
+@>Text: \xn[Gabby]\w[dark]According to officials, these creatures are definitely not Pokemon.\wtnp[80]
+@>Text: \xn[Gabby]\w[dark]But beyond that everything else about them is entirely unknown.\wtnp[80]
+@>Text: \xn[Gabby]\w[dark]Where they came from, what they're capable of, it remains a mystery.\wtnp[80]
+@>Text: \xn[Gabby]\w[dark]Now, earlier this afternoon we recieved an tip from an anonymous source.\wtnp[80]
+@>Text: \xn[Gabby]\w[dark]It appears that Professor Samuel Oak will be proposing an idea to the council today.\wtnp[80]
+@>Text: \xn[Gabby]\w[dark]However, as of this moment, we have not verified these claims, or this idea.\wtnp[80]
+@>Text: \xn[Gabby]\w[dark]We will be bringing you the latest news as we have it.\wtnp[80]
+@>Text: \xn[Gabby]\w[dark]This is Gabby of Hoenn TV, reporting once again from the emergency confrence.\wtnp[80]
+@>Text: \xn[Gabby]\w[dark]Back to you in the studio, Dave.\wtnp[80]
+@>Text: \se[Tile Game cursor]*Click*\wtnp[80]
 @>Control Self Switch: A =ON
 @>
 
@@ -2978,9 +2978,9 @@ Trigger: Autorun
 
 List of Event Commands:
 @>Script: activateQuest(:Quest1)
-@>Text: \bYour Quest Journal has been updated! You can view 
+@>Text: \w[dark]\bYour Quest Journal has been updated! You can view 
  :    : the Quest Journal from the pause menu.
-@>Text: \bYou can also look for quest objectives in the 
+@>Text: \w[dark]\bYou can also look for quest objectives in the 
  :    : overworld by looking for an icon over them.
 @>Control Self Switch: B =ON
 @>
@@ -3002,7 +3002,7 @@ List of Event Commands:
 
 #------------------------------------------------------------------------------
 Event ID: 009
-Event Name: EV009
+Event Name: size(2,1)
 (X,Y): (023,006)
 
 Page #1
@@ -3018,8 +3018,8 @@ Move Animation
 Trigger: Player Touch
 
 List of Event Commands:
-@>Text: * I should check in with my Mom first before leaving 
- :    : town again.
+@>Text: \b(I should check in with my Mom first before leaving 
+ :    : town again.)
 @>Set Move Route: Player
  :              : $>Move Down
 @>
@@ -3037,7 +3037,7 @@ Move Animation
 Trigger: Player Touch
 
 List of Event Commands:
-@>Text: * This doesn't lead to Professor Oak's lab.
+@>Text: \b(This doesn't lead to Professor Oak's lab.)
 @>Set Move Route: Player
  :              : $>Move Down
 @>
@@ -3055,67 +3055,7 @@ Move Animation
 Trigger: Player Touch
 
 List of Event Commands:
-@>Text: * This doesn't lead to Professor Oak's lab.
-@>Set Move Route: Player
- :              : $>Move Down
-@>
-
-#------------------------------------------------------------------------------
-Event ID: 010
-Event Name: EV010
-(X,Y): (024,006)
-
-Page #1
-Conditions
-None
-
-Autonomous Movement
-Type: Fixed
-Speed: 3: Slow
-Freq: 3: Low
-Options Enabled
-Move Animation
-Trigger: Player Touch
-
-List of Event Commands:
-@>Text: * I should check in with my Mom first before leaving 
- :    : town again.
-@>Set Move Route: Player
- :              : $>Move Down
-@>
-
-Page #2
-Conditions
-Self Switch A is ON
-
-Autonomous Movement
-Type: Fixed
-Speed: 3: Slow
-Freq: 3: Low
-Options Enabled
-Move Animation
-Trigger: Player Touch
-
-List of Event Commands:
-@>Text: * This doesn't lead to Professor Oak's lab.
-@>Set Move Route: Player
- :              : $>Move Down
-@>
-
-Page #3
-Conditions
-Switch 0105: Intro Control Switch is ON
-
-Autonomous Movement
-Type: Fixed
-Speed: 3: Slow
-Freq: 3: Low
-Options Enabled
-Move Animation
-Trigger: Player Touch
-
-List of Event Commands:
-@>Text: * This doesn't lead to Professor Oak's lab.
+@>Text: \b(This doesn't lead to Professor Oak's lab.)
 @>Set Move Route: Player
  :              : $>Move Down
 @>
@@ -3140,7 +3080,7 @@ Move Animation
 Trigger: Player Touch
 
 List of Event Commands:
-@>Text: * This isn't where my house is.
+@>Text: \b(This isn't where my house is.)
 @>
 
 Page #2
@@ -3158,7 +3098,7 @@ Move Animation
 Trigger: Player Touch
 
 List of Event Commands:
-@>Text: * This doesn't lead to Professor Oak's lab.
+@>Text: \b(This doesn't lead to Professor Oak's lab.)
 @>
 
 Page #3
@@ -3176,7 +3116,7 @@ Move Animation
 Trigger: Player Touch
 
 List of Event Commands:
-@>Text: * This doesn't lead to Professor Oak's lab.
+@>Text: \b(This doesn't lead to Professor Oak's lab.)
 @>
 
 #------------------------------------------------------------------------------
@@ -3199,7 +3139,7 @@ Move Animation
 Trigger: Player Touch
 
 List of Event Commands:
-@>Text: * This isn't where my house is.
+@>Text: \b(This isn't where my house is.)
 @>
 
 Page #2
@@ -3217,7 +3157,7 @@ Move Animation
 Trigger: Player Touch
 
 List of Event Commands:
-@>Text: * This doesn't lead to Professor Oak's lab.
+@>Text: \b(This doesn't lead to Professor Oak's lab.)
 @>
 
 Page #3
@@ -3337,7 +3277,7 @@ Move Animation
 Trigger: Player Touch
 
 List of Event Commands:
-@>Text: * This isn't where my house is.
+@>Text: \b(This isn't where my house is.)
 @>
 
 Page #2
@@ -3355,7 +3295,7 @@ Move Animation
 Trigger: Player Touch
 
 List of Event Commands:
-@>Text: * This doesn't lead to Professor Oak's lab.
+@>Text: \b(This doesn't lead to Professor Oak's lab.)
 @>
 
 Page #3
@@ -3475,8 +3415,8 @@ Move Animation
 Trigger: Player Touch
 
 List of Event Commands:
-@>Text: * I should talk to my Mom before checking in with 
- :    : Professor Oak.
+@>Text: \b(I should talk to my Mom before checking in with 
+ :    : Professor Oak.)
 @>
 
 Page #2
@@ -4122,7 +4062,7 @@ Move Animation
 Trigger: Action Button
 
 List of Event Commands:
-@>Text: * It's my PC. I haven't used it in a long time.
+@>Text: \b(It's my PC. I haven't used it in a long time.)
 @>
 
 Page #2
@@ -4142,7 +4082,7 @@ List of Event Commands:
 
 #------------------------------------------------------------------------------
 Event ID: 002
-Event Name: EV002
+Event Name: size(2,1)
 (X,Y): (024,002)
 
 Page #1
@@ -4158,43 +4098,7 @@ Move Animation
 Trigger: Action Button
 
 List of Event Commands:
-@>Text: * All my books are still stacked just as I left them.
-@>
-
-Page #2
-Conditions
-Switch 0105: Intro Control Switch is ON
-
-Autonomous Movement
-Type: Fixed
-Speed: 3: Slow
-Freq: 3: Low
-Options Enabled
-Move Animation
-Trigger: Action Button
-
-List of Event Commands:
-@>
-
-#------------------------------------------------------------------------------
-Event ID: 003
-Event Name: EV003
-(X,Y): (025,002)
-
-Page #1
-Conditions
-None
-
-Autonomous Movement
-Type: Fixed
-Speed: 3: Slow
-Freq: 3: Low
-Options Enabled
-Move Animation
-Trigger: Action Button
-
-List of Event Commands:
-@>Text: * All my books are still stacked just as I left them.
+@>Text: \b(All my books are still stacked just as I left them.)
 @>
 
 Page #2
@@ -4230,9 +4134,9 @@ Move Animation
 Trigger: Action Button
 
 List of Event Commands:
-@>Text: * It's the picture that was taken right after I beat the 
- :    : Indigo League.
-@>Text: * ... It sure has been a long time since then.
+@>Text: \b(It's the picture that was taken right after I beat the 
+ :    : Indigo League.)
+@>Text: \b(... It sure has been a long time since then.)
 @>
 
 Page #2
@@ -4268,8 +4172,8 @@ Move Animation
 Trigger: Action Button
 
 List of Event Commands:
-@>Text: * My old NES, still functional.
-@>Text: * Perhaps I'll pick up a Switch one of these days.
+@>Text: \b(My old NES, still functional.)
+@>Text: \b(Perhaps I'll pick up a Switch one of these days.)
 @>
 
 Page #2
@@ -4305,8 +4209,8 @@ Move Animation
 Trigger: Action Button
 
 List of Event Commands:
-@>Text: * It's a movie about two people crossing into another 
- :    : dimension.
+@>Text: \b(It's a movie about two people crossing into another 
+ :    : dimension.)
 @>
 
 Page #2
@@ -4719,7 +4623,7 @@ Direction Fix
 Trigger: Action Button
 
 List of Event Commands:
-@>Text: * He's busy working, I shouldn't disturb him.
+@>Text: \b(He's busy working, I shouldn't disturb him.)
 @>
 
 Page #2
@@ -4758,7 +4662,7 @@ Move Animation
 Trigger: Player Touch
 
 List of Event Commands:
-@>Text: * This leads to the lounge. I don't think the Professor is in there right now.
+@>Text: \b(This leads to the lounge. I don't think the Professor is in there right now.)
 @>
 
 Page #2
@@ -4774,7 +4678,7 @@ Move Animation
 Trigger: Player Touch
 
 List of Event Commands:
-@>Text: * This isn't the way to Professor Oak's back garden!
+@>Text: \b(This isn't the way to Professor Oak's back garden!)
 @>
 
 #------------------------------------------------------------------------------
@@ -4795,8 +4699,8 @@ Move Animation
 Trigger: Player Touch
 
 List of Event Commands:
-@>Text: * This leads out to the Professor's back garden. I 
- :    : don't think he's out there right now.
+@>Text: \b(This leads out to the Professor's back garden. I 
+ :    : don't think he's out there right now.)
 @>
 
 Page #2
@@ -4847,7 +4751,7 @@ Move Animation
 Trigger: Player Touch
 
 List of Event Commands:
-@>Text: * This leads to where the Professor gives out Pokémon. It's unlikely the Professor is upstairs right now.
+@>Text: \b(This leads to where the Professor gives out Pokémon. It's unlikely the Professor is upstairs right now.)
 @>
 
 Page #2
@@ -4863,7 +4767,7 @@ Move Animation
 Trigger: Player Touch
 
 List of Event Commands:
-@>Text: * This isn't the way to Professor Oak's back garden!
+@>Text: \b(This isn't the way to Professor Oak's back garden!)
 @>
 
 #------------------------------------------------------------------------------
@@ -4884,7 +4788,7 @@ Move Animation
 Trigger: Player Touch
 
 List of Event Commands:
-@>Text: * This leads to where battles are held. It's unlikely the Professor is downstairs right now.
+@>Text: \b(This leads to where battles are held. It's unlikely the Professor is downstairs right now.)
 @>
 
 Page #2
@@ -4900,7 +4804,7 @@ Move Animation
 Trigger: Player Touch
 
 List of Event Commands:
-@>Text: * This isn't the way to Professor Oak's back garden!
+@>Text: \b(This isn't the way to Professor Oak's back garden!)
 @>
 
 #------------------------------------------------------------------------------
@@ -4948,7 +4852,7 @@ Move Animation
 Trigger: Player Touch
 
 List of Event Commands:
-@>Text: * This isn't the way to Professor Oak's back garden!
+@>Text: \b(This isn't the way to Professor Oak's back garden!)
 @>
 
 #------------------------------------------------------------------------------
@@ -7409,7 +7313,7 @@ List of Event Commands:
  :    : realm that exists alongside ours.
 @>Text: \xn[Maribel]We finally hit a breakthrough on our research, and we thought we found a way to break through the seal, but...
 @>Text: \xn[Renko]It looks like our efforts managed to get us here, instead! Who would have thought
- :    : there'd be another world adjacent to ours!
+ :    : there'd more than one world adjacent to ours!
 @>Text: \xn[Renko]After we arrived here, we thought we ended up in the right location at first, but...
 @>Text: \xn[Renko]None of my abilities to discern location lined up with any of my notes.
 @>Text: \xn[Renko]We set out to try and find civilization, but as we were, we got chased down by that tiny cat-like creature...
@@ -7554,7 +7458,7 @@ Move Animation
 Trigger: Action Button
 
 List of Event Commands:
-@>Text: * This laptop looks like it's running server software. 
+@>Text: This laptop looks like it's running server software. 
  :    : Best not to mess with it.
 @>
 
@@ -7732,9 +7636,9 @@ List of Event Commands:
 @>Wait: 20 frame(s)
 @>Change Screen Color Tone: (0,0,0,0), @20
 @>Wait: 1 frame(s)
-@>Text: \bYour Quest Journal has been updated! You can view 
+@>Text: \w[dark]\bYour Quest Journal has been updated! You can view 
  :    : the Quest Journal from the pause menu.
-@>Text: \bYou can also look for quest objectives in the 
+@>Text: \w[dark]\bYou can also look for quest objectives in the 
  :    : overworld by looking for an icon over them.
 @>Control Self Switch: A =ON
 @>
