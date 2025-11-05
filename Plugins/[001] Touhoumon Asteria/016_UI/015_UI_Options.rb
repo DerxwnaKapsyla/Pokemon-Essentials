@@ -19,8 +19,8 @@ class PokemonSystem
     @screensize    = (Settings::SCREEN_SCALE * 2).floor - 1   # 0=half size, 1=full size, 2=full-and-a-half size, 3=double size
     @language      = 0     # Language (see also Settings::LANGUAGES in script PokemonSystem)
     @runstyle      = 1     # Default movement speed (0=walk, 1=run)
-    @bgmvolume     = 100   # Volume of background music and ME
-    @sevolume      = 100   # Volume of sound effects
+    @bgmvolume     = 50    # Volume of background music and ME
+    @sevolume      = 80    # Volume of sound effects
     @textinput     = 0     # Text input mode (0=cursor, 1=keyboard)
   end
 end

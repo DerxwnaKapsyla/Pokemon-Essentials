@@ -13,12 +13,6 @@
 #                    Please give credit when using this.                       #
 #==============================================================================#
 
-# This is where the map will be exported to once it has been created.
-# If this file already exists, it is overwritten.
-EXPORTED_FILENAME = "exported.png"
-
-
-
 def pbExportMap(id = nil, options = [])
   MarinMapExporter.new(id, options)
 end
@@ -98,6 +92,10 @@ class MarinMapExporter
     @autotiles = @tilesetdata[@data.tileset_id].autotile_names
         .filter { |e| e && e.size > 0 }
         .map { |e| Bitmap.new("Graphics/Autotiles/#{e}") }
+    
+    # Load map name from MapInfos
+    @mapinfos = load_data("Data/MapInfos.rxdata")
+    @map_name = @mapinfos[@id] ? @mapinfos[@id].name : nil
     for z in 0..2
       for y in 0...@tiles.ysize
         for x in 0...@tiles.xsize
@@ -138,7 +136,14 @@ class MarinMapExporter
       @result.blt($game_player.x * 32 + 16 - bmp.width / 8, ($game_player.y + 1) * 32 - bmp.height / 4,
           bmp, Rect.new(0, bmp.height / 4 * (dir / 2 - 1), bmp.width / 4, bmp.height / 4))
     end
-    @result.save_to_png(EXPORTED_FILENAME)
+    
+    # Generate filename dynamically using map name
+    map_name = @map_name || "Map#{@id}"
+    # Sanitize filename to remove invalid characters
+    safe_name = map_name.gsub(/[^0-9A-Za-z.\-_ ]/, '_')
+    filename = "#{safe_name}.png"
+    
+    @result.save_to_png("Map Screenshots/#{filename}")
     Input.update
   end
   

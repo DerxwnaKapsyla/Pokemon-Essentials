@@ -95,7 +95,7 @@ class VoltseonsPauseMenu < Component
     end
     pbSEPlay(MENU_CURSOR_SOUND)
     # Animation stuff
-    duration = (Graphics.frame_rate / 8)
+    duration = (8 * (Graphics.average_frame_rate / 60.0)).floor
     middle   = @disp_indices.length / 2
     if @disp_indices.length < 3
       recalc_icon_positions

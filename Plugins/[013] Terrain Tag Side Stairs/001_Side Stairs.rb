@@ -1,11 +1,12 @@
 #-------------------------------------------------------------------------------
 # Boon's Terrain Tag Side Stairs
-# v1.4
+# v1.5a
 # By Boonzeet
 # Follower script by Vendily
 #-------------------------------------------------------------------------------
 # Sideways stairs with pseudo 'depth' effect. Please credit if used
 #-------------------------------------------------------------------------------
+# v1.5a - Updated for V21 (alpha)
 # v1.4 - Updated for V20
 # v1.3 - Updated for v19
 # v1.2 - Fixed bugs with ledges, surfing and map transfers
@@ -76,39 +77,27 @@ class Game_Character
   alias updatemovestairs update_move
 
   def update_move
-    # compatibility with existing saves
-    if @real_offset_x == nil || @real_offset_y == nil || @offset_y == nil || @offset_x == nil
-      @real_offset_x = 0
-      @real_offset_y = 0
-      @offset_x = 0
-      @offset_y = 0
-    end
+    @real_offset_x = 0 if @real_offset_x == nil
+    @real_offset_y = 0 if @real_offset_y == nil
+    
     if @real_offset_x != @offset_x || @real_offset_y != @offset_y
-      @real_offset_x = @real_offset_x - 2 if @real_offset_x > @offset_x
-      @real_offset_x = @real_offset_x + 2 if @real_offset_x < @offset_x
-      @real_offset_y = @real_offset_y + 2 if @real_offset_y < @offset_y
-      @real_offset_y = @real_offset_y - 2 if @real_offset_y > @offset_y
+      # Ensure real-time is used in both movement and offset applications
+      @real_offset_x = lerp(@real_offset_x, @offset_x, @move_time, @delta_t)
+      @real_offset_y = lerp(@real_offset_y, @offset_y, @move_time, @delta_t)
     end
+    
+    # Call original update logic
     updatemovestairs
   end
+
 
   alias movetostairs moveto
 
   def moveto(x, y)
-    # start edits
-    @real_offset_x = 0
-    @real_offset_y = 0
-    @offset_x = 0
-    @offset_y = 0
-    # end
-    @x = x % self.map.width
-    @y = y % self.map.height
-    @real_x = @x * Game_Map::REAL_RES_X
-    @real_y = @y * Game_Map::REAL_RES_Y
-    @prelock_direction = 0
-    @moveto_happened = true
-    calculate_bush_depth
-    triggerLeaveTile
+    # @real_offset_x = 0
+    # @real_offset_y = 0
+    # @offset_x = 0
+    # @offset_y = 0
     movetostairs(x, y)
   end
 
@@ -182,6 +171,18 @@ class Game_Character
       increase_steps
     end
   end
+
+  alias can_move_from_coordinate_stairs can_move_from_coordinate?
+  
+  def can_move_from_coordinate?(start_x, start_y, dir, strict = false)
+    # if upper right or upper left and on stairs, allow
+    if dir == 7 || dir == 1
+      return true if self.map.terrain_tag(start_x, start_y) == :StairLeft || self.map.terrain_tag(start_x, start_y) == :StairRight
+    elsif dir == 9 || dir == 3
+      return true if self.map.terrain_tag(start_x, start_y) == :StairRight || self.map.terrain_tag(start_x, start_y) == :StairLeft
+    end
+    return can_move_from_coordinate_stairs(start_x, start_y, dir, strict)
+  end
 end
 
 class Game_Player
@@ -194,34 +195,36 @@ def move_generic(dir, turn_enabled = true)
   new_x = @x
   new_y = @y
 
+  has_moved = false
   if dir == 4
     if old_tag == :StairLeft && passable?(@x - 1, @y + 1, 4) && self.map.terrain_tag(@x - 1, @y + 1) == :StairLeft
-      new_x = @x - 1
-      new_y = @y + 1
-  elsif old_tag == :StairRight && passable?(@x - 1, @y - 1, 6)
-      new_x = @x - 1
-      new_y = @y - 1
+      move_lower_left
+      has_moved = true
+    elsif old_tag == :StairRight && passable?(@x - 1, @y - 1, 6)
+      move_upper_left
+      has_moved = true
     end
   elsif dir == 6
     if old_tag == :StairLeft && passable?(@x + 1, @y - 1, 4)
-      new_x = @x + 1
-      new_y = @y - 1
+      move_upper_right
+      has_moved = true
     elsif old_tag == :StairRight && passable?(@x + 1, @y + 1, 6) && self.map.terrain_tag(@x + 1, @y + 1) == :StairRight
-      new_x = @x + 1
-      new_y = @y + 1
+      move_lower_right
+      has_moved = true
     end
   end
-  if old_x != new_x || old_y != new_y
-    moveto(new_x, new_y)
-  else
+  if !has_moved
     move_generic_stairs(dir, turn_enabled)
   end
   new_tag = self.map.terrain_tag(@x, @y)
+  
   if old_x != @x
     if old_tag != :StairLeft && new_tag == :StairLeft ||
        old_tag != :StairRight && new_tag == :StairRight
       self.offset_y = -16
-      @y += 1 if (new_tag == :StairLeft && dir == 4) || (new_tag == :StairRight && dir == 6)
+      if (new_tag == :StairLeft && dir == 4) || (new_tag == :StairRight && dir == 6)
+        @y += 1 
+      end
     elsif old_tag == :StairLeft && new_tag != :StairLeft ||
           old_tag == :StairRight && new_tag != :StairRight
       self.offset_y = 0

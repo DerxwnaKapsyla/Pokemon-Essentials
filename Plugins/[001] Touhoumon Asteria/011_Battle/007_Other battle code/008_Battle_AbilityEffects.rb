@@ -44,10 +44,9 @@ Battle::AbilityEffects::PriorityChange.add(:RADICALWAVES,
 
 Battle::AbilityEffects::MoveImmunity.add(:FLASHFIRE,
   proc { |ability, user, target, move, type, battle, show_message|
-    next false if user.index == target.index
-    next false if type != :FIRE
-    next false if type != :FIRE18
-    if show_message
+	next false if user.index == target.index
+    next false if ![:FIRE,:FIRE18].include?(type)
+	if show_message
       battle.pbShowAbilitySplash(target)
       if !target.effects[PBEffects::FlashFire]
         target.effects[PBEffects::FlashFire] = true

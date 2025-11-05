@@ -152,7 +152,9 @@ class Battle::Move::UseLastMoveUsed < Battle::Move
       "BurnAttackerBeforeUserActs",                        # Beak Blast
       # Event moves that do nothing
       "DoesNothingFailsIfNoAlly",                          # Hold Hands
-      "DoesNothingCongratulations"                         # Celebrate
+      "DoesNothingCongratulations",                        # Celebrate
+	  "UltimateDream",                                     # Exclusive to Meimu
+	  "MyriadDreams"                                       # Only called on by Thmn Hidden Power
     ]
     if Settings::MECHANICS_GENERATION >= 6
       @moveBlacklist += [

@@ -456,7 +456,7 @@ Description = A large and rare mushroom. It is sought after by collectors.
 Name = Balm Mushroom
 NamePlural = Balm Mushrooms
 Pocket = 1
-Price = 15000
+Price = 50000
 Flags = Fling_30
 Description = A rare mushroom which gives off a nice fragrance. A maniac will buy it for a high price.
 #-------------------------------
@@ -480,7 +480,7 @@ Description = A quite-large pearl that sparkles in a pretty silver color. It can
 Name = Pearl String
 NamePlural = Pearl Strings
 Pocket = 1
-Price = 20000
+Price = 50000
 Flags = Fling_30
 Description = Very large pearls that sparkle in a pretty silver color. A maniac will buy them for a high price.
 #-------------------------------
@@ -506,7 +506,7 @@ Description = A shard of a pretty gem that sparkles in a red color. It can be so
 Name = Comet Shard
 NamePlural = Comet Shards
 Pocket = 1
-Price = 25000
+Price = 120000
 Flags = Fling_30
 Description = A shard which fell to the ground when a comet approached. A maniac will buy it for a high price.
 #-------------------------------
@@ -545,7 +545,7 @@ Description = A very tasty tail of something. It can be sold at a high price to 
 Name = Rare Bone
 NamePlural = Rare Bones
 Pocket = 1
-Price = 5000
+Price = 10000
 Flags = Fling_100
 Description = A bone that is extremely valuable for Pokémon archaeology. It can be sold for a high price to shops.
 #-------------------------------
@@ -555,7 +555,7 @@ NamePlural = Relic Coppers
 PortionName = Relic Copper coin
 PortionNamePlural = Relic Copper coins
 Pocket = 1
-Price = 0
+Price = 2000
 Flags = Fling_30
 Description = A copper coin used in a civilization about 3,000 years ago. A maniac will buy it for a high price.
 #-------------------------------
@@ -565,7 +565,7 @@ NamePlural = Relic Silvers
 PortionName = Relic Silver coin
 PortionNamePlural = Relic Silver coins
 Pocket = 1
-Price = 0
+Price = 10000
 Flags = Fling_30
 Description = A silver coin used in a civilization about 3,000 years ago. A maniac will buy it for a high price.
 #-------------------------------
@@ -583,7 +583,7 @@ Description = A gold coin used in a civilization about 3,000 years ago. A maniac
 Name = Relic Vase
 NamePlural = Relic Vases
 Pocket = 1
-Price = 0
+Price = 100000
 Flags = Fling_30
 Description = A vase made in a civilization about 3,000 years ago. A maniac will buy it for a high price.
 #-------------------------------
@@ -591,7 +591,7 @@ Description = A vase made in a civilization about 3,000 years ago. A maniac will
 Name = Relic Band
 NamePlural = Relic Bands
 Pocket = 1
-Price = 0
+Price = 200000
 Flags = Fling_30
 Description = A bracelet made in a civilization about 3,000 years ago. A maniac will buy it for a high price.
 #-------------------------------
@@ -599,7 +599,7 @@ Description = A bracelet made in a civilization about 3,000 years ago. A maniac 
 Name = Relic Statue
 NamePlural = Relic Statues
 Pocket = 1
-Price = 0
+Price = 400000
 Flags = Fling_30
 Description = A stone figure made in a civilization about 3,000 years ago. A maniac will buy it for a high price.
 #-------------------------------
@@ -607,7 +607,7 @@ Description = A stone figure made in a civilization about 3,000 years ago. A man
 Name = Relic Crown
 NamePlural = Relic Crowns
 Pocket = 1
-Price = 0
+Price = 600000
 Flags = Fling_30
 Description = A crown made in a civilization about 3,000 years ago. A maniac will buy it for a high price.
 #-------------------------------
@@ -619,7 +619,7 @@ PortionNamePlural = bags of Growth Mulch
 Pocket = 1
 Price = 200
 Flags = Mulch,Fling_30
-Description = A fertilizer to be spread on soft soil in regions where Berries are grown. A maniac will buy it for a high price.
+Description = A plant fertilizer spread on soft soil. It speeds up the growth of Berries. However, it also dries the soil faster.
 #-------------------------------
 [DAMPMULCH]
 Name = Damp Mulch
@@ -629,7 +629,7 @@ PortionNamePlural = bags of Damp Mulch
 Pocket = 1
 Price = 200
 Flags = Mulch,Fling_30
-Description = A fertilizer to be spread on soft soil in regions where Berries are grown. A maniac will buy it for a high price.
+Description = A plant fertilizer spread on soft soil. It slows the growth of Berries and causes the soil to dry slower.
 #-------------------------------
 [STABLEMULCH]
 Name = Stable Mulch
@@ -639,7 +639,7 @@ PortionNamePlural = bags of Stable Mulch
 Pocket = 1
 Price = 200
 Flags = Mulch,Fling_30
-Description = A fertilizer to be spread on soft soil in regions where Berries are grown. A maniac will buy it for a high price.
+Description = A plant fertilizer spread on soft soil. It extends the time ripened Berries remain on their plants before falling.
 #-------------------------------
 [GOOEYMULCH]
 Name = Gooey Mulch
@@ -649,7 +649,7 @@ PortionNamePlural = bags of Gooey Mulch
 Pocket = 1
 Price = 200
 Flags = Mulch,Fling_30
-Description = A fertilizer to be spread on soft soil in regions where Berries are grown. A maniac will buy it for a high price.
+Description = A plant fertilizer spread on soft soil. It ups the number of times new plants grow where mature plants withered.
 #-------------------------------
 [SHOALSALT]
 Name = Shoal Salt
@@ -900,6 +900,7 @@ Name = Exp. Share
 NamePlural = Exp. Shares
 Pocket = 1
 Price = 3000
+BPPrice = 20
 Flags = Fling_30
 Description = An item to be held by a Pokémon. The holder gets a share of a battle's Exp. Points without battling.
 #-------------------------------
@@ -1416,8 +1417,8 @@ Name = Macho Brace
 NamePlural = Macho Braces
 Pocket = 1
 Price = 3000
-BPPrice = 10
-Flags = Fling_60
+BPPrice = 16
+Flags = Fling_60,EVBooster
 Description = An item to be held by a Pokémon. It is a stiff, heavy brace that promotes strong growth but lowers Speed.
 #-------------------------------
 [POWERWEIGHT]
@@ -1425,8 +1426,8 @@ Name = Power Weight
 NamePlural = Power Weights
 Pocket = 1
 Price = 3000
-BPPrice = 10
-Flags = Fling_70
+BPPrice = 16
+Flags = Fling_70,EVBooster
 Description = A Pokémon held item that promotes HP gain on leveling, but reduces the Speed stat.
 #-------------------------------
 [POWERBRACER]
@@ -1434,8 +1435,8 @@ Name = Power Bracer
 NamePlural = Power Bracers
 Pocket = 1
 Price = 3000
-BPPrice = 10
-Flags = Fling_70
+BPPrice = 16
+Flags = Fling_70,EVBooster
 Description = A Pokémon held item that promotes Attack gain on leveling, but reduces the Speed stat.
 #-------------------------------
 [POWERBELT]
@@ -1443,8 +1444,8 @@ Name = Power Belt
 NamePlural = Power Belts
 Pocket = 1
 Price = 3000
-BPPrice = 10
-Flags = Fling_70
+BPPrice = 16
+Flags = Fling_70,EVBooster
 Description = A Pokémon held item that promotes Defense gain on leveling, but reduces the Speed stat.
 #-------------------------------
 [POWERLENS]
@@ -1452,8 +1453,8 @@ Name = Power Lens
 NamePlural = Power Lenses
 Pocket = 1
 Price = 3000
-BPPrice = 10
-Flags = Fling_70
+BPPrice = 16
+Flags = Fling_70,EVBooster
 Description = A Pokémon held item that promotes Sp. Atk gain on leveling, but reduces the Speed stat.
 #-------------------------------
 [POWERBAND]
@@ -1461,8 +1462,8 @@ Name = Power Band
 NamePlural = Power Bands
 Pocket = 1
 Price = 3000
-BPPrice = 10
-Flags = Fling_70
+BPPrice = 16
+Flags = Fling_70,EVBooster
 Description = A Pokémon held item that promotes Sp. Def gain on leveling, but reduces the Speed stat.
 #-------------------------------
 [POWERANKLET]
@@ -1470,8 +1471,8 @@ Name = Power Anklet
 NamePlural = Power Anklets
 Pocket = 1
 Price = 3000
-BPPrice = 10
-Flags = Fling_70
+BPPrice = 16
+Flags = Fling_70,EVBooster
 Description = A Pokémon held item that promotes Speed gain on leveling, but reduces the Speed stat.
 #-------------------------------
 [LAXINCENSE]
@@ -1480,8 +1481,8 @@ NamePlural = Lax Incenses
 PortionName = jar of Lax Incense
 PortionNamePlural = jars of Lax Incense
 Pocket = 1
-Price = 5000
-Flags = Fling_10
+Price = 9600
+Flags = Fling_10,Incense
 Description = An item to be held by a Pokémon. The tricky aroma of this incense may make attacks miss the holder.
 #-------------------------------
 [FULLINCENSE]
@@ -1490,8 +1491,8 @@ NamePlural = Full Incenses
 PortionName = jar of Full Incense
 PortionNamePlural = jars of Full Incense
 Pocket = 1
-Price = 5000
-Flags = Fling_10
+Price = 9600
+Flags = Fling_10,Incense
 Description = An item to be held by a Pokémon. This exotic-smelling incense makes the holder bloated and slow moving.
 #-------------------------------
 [LUCKINCENSE]
@@ -1500,8 +1501,8 @@ NamePlural = Luck Incenses
 PortionName = jar of Luck Incense
 PortionNamePlural = jars of Luck Incense
 Pocket = 1
-Price = 11000
-Flags = Fling_10
+Price = 9600
+Flags = Fling_10,Incense
 Description = An item to be held by a Pokémon. It doubles a battle's prize money if the holding Pokémon joins in.
 #-------------------------------
 [PUREINCENSE]
@@ -1510,8 +1511,8 @@ NamePlural = Pure Incenses
 PortionName = jar of Pure Incense
 PortionNamePlural = jars of Pure Incense
 Pocket = 1
-Price = 6000
-Flags = Fling_10
+Price = 9600
+Flags = Fling_10,Incense
 Description = An item to be held by a Pokémon. It helps keep wild Pokémon away if the holder is the first one in the party.
 #-------------------------------
 [SEAINCENSE]
@@ -1520,8 +1521,8 @@ NamePlural = Sea Incenses
 PortionName = jar of Sea Incense
 PortionNamePlural = jars of Sea Incense
 Pocket = 1
-Price = 2000
-Flags = Fling_10
+Price = 9600
+Flags = Fling_10,Incense
 Description = An item to be held by a Pokémon. It has a curious aroma that boosts the power of Water-type moves.
 #-------------------------------
 [WAVEINCENSE]
@@ -1530,8 +1531,8 @@ NamePlural = Wave Incenses
 PortionName = jar of Wave Incense
 PortionNamePlural = jars of Wave Incense
 Pocket = 1
-Price = 2000
-Flags = Fling_10
+Price = 9600
+Flags = Fling_10,Incense
 Description = An item to be held by a Pokémon. It has a curious aroma that boosts the power of Water-type moves.
 #-------------------------------
 [ROSEINCENSE]
@@ -1540,8 +1541,8 @@ NamePlural = Rose Incenses
 PortionName = jar of Rose Incense
 PortionNamePlural = jars of Rose Incense
 Pocket = 1
-Price = 2000
-Flags = Fling_10
+Price = 9600
+Flags = Fling_10,Incense
 Description = An item to be held by a Pokémon. This exotic-smelling incense boosts the power of Grass-type moves.
 #-------------------------------
 [ODDINCENSE]
@@ -1550,8 +1551,8 @@ NamePlural = Odd Incenses
 PortionName = jar of Odd Incense
 PortionNamePlural = jars of Odd Incense
 Pocket = 1
-Price = 2000
-Flags = Fling_10
+Price = 9600
+Flags = Fling_10,Incense
 Description = An item to be held by a Pokémon. This exotic-smelling incense boosts the power of Psychic-type moves.
 #-------------------------------
 [ROCKINCENSE]
@@ -1560,8 +1561,8 @@ NamePlural = Rock Incenses
 PortionName = jar of Rock Incense
 PortionNamePlural = jars of Rock Incense
 Pocket = 1
-Price = 2000
-Flags = Fling_10
+Price = 9600
+Flags = Fling_10,Incense
 Description = An item to be held by a Pokémon. This exotic-smelling incense boosts the power of Rock-type moves.
 #-------------------------------
 [CHARCOAL]
@@ -2148,32 +2149,32 @@ Description = It is said that a hero used this shield to halt a disaster in anci
 Name = Douse Drive
 NamePlural = Douse Drives
 Pocket = 1
-Price = 0
-Flags = Fling_70
+Price = 1000
+Flags = Fling_70,Drive
 Description = A cassette to be held by Genesect. It changes Techno Blast to a Water-type move.
 #-------------------------------
 [SHOCKDRIVE]
 Name = Shock Drive
 NamePlural = Shock Drives
 Pocket = 1
-Price = 0
-Flags = Fling_70
+Price = 1000
+Flags = Fling_70,Drive
 Description = A cassette to be held by Genesect. It changes Techno Blast to an Electric-type move.
 #-------------------------------
 [BURNDRIVE]
 Name = Burn Drive
 NamePlural = Burn Drives
 Pocket = 1
-Price = 0
-Flags = Fling_70
+Price = 1000
+Flags = Fling_70,Drive
 Description = A cassette to be held by Genesect. It changes Techno Blast to a Fire-type move.
 #-------------------------------
 [CHILLDRIVE]
 Name = Chill Drive
 NamePlural = Chill Drives
 Pocket = 1
-Price = 0
-Flags = Fling_70
+Price = 1000
+Flags = Fling_70,Drive
 Description = A cassette to be held by Genesect. It changes Techno Blast to an Ice-type move.
 #-------------------------------
 [FIREMEMORY]
@@ -2946,7 +2947,7 @@ Pocket = 2
 Price = 200
 FieldUse = OnPokemon
 BattleUse = OnPokemon
-Flags = Fling_30
+Flags = Fling_30,Medicine
 Description = A spray-type medicine for treating wounds. It can be used to restore 20 HP to a single Pokémon.
 #-------------------------------
 [SUPERPOTION]
@@ -2956,7 +2957,7 @@ Pocket = 2
 Price = 700
 FieldUse = OnPokemon
 BattleUse = OnPokemon
-Flags = Fling_30
+Flags = Fling_30,Medicine
 Description = A spray-type medicine for treating wounds. It can be used to restore 60 HP to a single Pokémon.
 #-------------------------------
 [HYPERPOTION]
@@ -2966,8 +2967,8 @@ Pocket = 2
 Price = 1500
 FieldUse = OnPokemon
 BattleUse = OnPokemon
-Flags = Fling_30
-Description = A spray-type medicine for treating wounds. It can be used to restore 120 HP to a single Pokémon.
+Flags = Fling_30,Medicine
+Description = A spray-type medicine for treating wounds. It can be used to restore 200 HP to a single Pokémon.
 #-------------------------------
 [MAXPOTION]
 Name = Max Potion
@@ -2977,7 +2978,7 @@ Price = 2500
 BPPrice = 2
 FieldUse = OnPokemon
 BattleUse = OnPokemon
-Flags = Fling_30
+Flags = Fling_30,Medicine
 Description = A spray-type medicine for treating wounds. It can completely restore the max HP of a single Pokémon.
 #-------------------------------
 [FULLRESTORE]
@@ -2987,7 +2988,7 @@ Pocket = 2
 Price = 3000
 FieldUse = OnPokemon
 BattleUse = OnPokemon
-Flags = Fling_30
+Flags = Fling_30,Medicine
 Description = A medicine that fully restores the HP and heals any status problems of a single Pokémon.
 #-------------------------------
 [SACREDASH]
@@ -3008,7 +3009,7 @@ Pocket = 2
 Price = 200
 FieldUse = OnPokemon
 BattleUse = OnPokemon
-Flags = Fling_30
+Flags = Fling_30,Medicine
 Description = A spray-type medicine. It awakens a Pokémon from the clutches of sleep.
 #-------------------------------
 [ANTIDOTE]
@@ -3018,7 +3019,7 @@ Pocket = 2
 Price = 200
 FieldUse = OnPokemon
 BattleUse = OnPokemon
-Flags = Fling_30
+Flags = Fling_30,Medicine
 Description = A spray-type medicine. It lifts the effect of poison from one Pokémon.
 #-------------------------------
 [BURNHEAL]
@@ -3028,7 +3029,7 @@ Pocket = 2
 Price = 200
 FieldUse = OnPokemon
 BattleUse = OnPokemon
-Flags = Fling_30
+Flags = Fling_30,Medicine
 Description = A spray-type medicine. It heals a single Pokémon that is suffering from a burn.
 #-------------------------------
 [PARALYZEHEAL]
@@ -3038,7 +3039,7 @@ Pocket = 2
 Price = 200
 FieldUse = OnPokemon
 BattleUse = OnPokemon
-Flags = Fling_30
+Flags = Fling_30,Medicine
 Description = A spray-type medicine. It eliminates paralysis from a single Pokémon.
 #-------------------------------
 [ICEHEAL]
@@ -3048,7 +3049,7 @@ Pocket = 2
 Price = 200
 FieldUse = OnPokemon
 BattleUse = OnPokemon
-Flags = Fling_30
+Flags = Fling_30,Medicine
 Description = A spray-type medicine. It defrosts a Pokémon that has been frozen solid.
 #-------------------------------
 [FULLHEAL]
@@ -3058,7 +3059,7 @@ Pocket = 2
 Price = 400
 FieldUse = OnPokemon
 BattleUse = OnPokemon
-Flags = Fling_30
+Flags = Fling_30,Medicine
 Description = A spray-type medicine. It heals all the status problems of a single Pokémon.
 #-------------------------------
 [PEWTERCRUNCHIES]
@@ -3150,7 +3151,7 @@ Pocket = 2
 Price = 2000
 FieldUse = OnPokemon
 BattleUse = OnPokemon
-Flags = Fling_30
+Flags = Fling_30,Medicine
 Description = A medicine that revives a fainted Pokémon. It restores half the Pokémon's maximum HP.
 #-------------------------------
 [MAXREVIVE]
@@ -3161,7 +3162,7 @@ Price = 4000
 BPPrice = 20
 FieldUse = OnPokemon
 BattleUse = OnPokemon
-Flags = Fling_30
+Flags = Fling_30,Medicine
 Description = A medicine that revives a fainted Pokémon. It fully restores the Pokémon's HP.
 #-------------------------------
 [BERRYJUICE]
@@ -3244,7 +3245,7 @@ Pocket = 2
 Price = 500
 FieldUse = OnPokemon
 BattleUse = OnPokemon
-Flags = Fling_30
+Flags = Fling_30,Remedy
 Description = A very bitter medicinal powder. It can be used to restore 60 HP to a single Pokémon.
 #-------------------------------
 [ENERGYROOT]
@@ -3254,7 +3255,7 @@ Pocket = 2
 Price = 1200
 FieldUse = OnPokemon
 BattleUse = OnPokemon
-Flags = Fling_30
+Flags = Fling_30,Remedy
 Description = An extremely bitter medicinal root. It can be used to restore 120 HP to a single Pokémon.
 #-------------------------------
 [HEALPOWDER]
@@ -3266,7 +3267,7 @@ Pocket = 2
 Price = 300
 FieldUse = OnPokemon
 BattleUse = OnPokemon
-Flags = Fling_30
+Flags = Fling_30,Remedy
 Description = A very bitter medicine powder. It heals all the status problems of a single Pokémon.
 #-------------------------------
 [REVIVALHERB]
@@ -3276,7 +3277,7 @@ Pocket = 2
 Price = 2800
 FieldUse = OnPokemon
 BattleUse = OnPokemon
-Flags = Fling_30
+Flags = Fling_30,Remedy
 Description = A very bitter medicinal herb. It revives a fainted Pokémon, fully restoring its HP.
 #-------------------------------
 [MAXHONEY]
@@ -3299,7 +3300,7 @@ Price = 1200
 BPPrice = 4
 FieldUse = OnPokemon
 BattleUse = OnMove
-Flags = Fling_30
+Flags = Fling_30,Medicine
 Description = It restores the PP of a Pokémon's selected move by a maximum of 10 points.
 #-------------------------------
 [MAXETHER]
@@ -3309,7 +3310,7 @@ Pocket = 2
 Price = 2000
 FieldUse = OnPokemon
 BattleUse = OnMove
-Flags = Fling_30
+Flags = Fling_30,Medicine
 Description = It fully restores the PP of a single selected move that has been learned by the target Pokémon.
 #-------------------------------
 [ELIXIR]
@@ -3319,7 +3320,7 @@ Pocket = 2
 Price = 3000
 FieldUse = OnPokemon
 BattleUse = OnPokemon
-Flags = Fling_30
+Flags = Fling_30,Medicine
 Description = It restores the PP of all the moves learned by the targeted Pokémon by 10 points each.
 #-------------------------------
 [MAXELIXIR]
@@ -3329,7 +3330,7 @@ Pocket = 2
 Price = 4500
 FieldUse = OnPokemon
 BattleUse = OnPokemon
-Flags = Fling_30
+Flags = Fling_30,Medicine
 Description = It fully restores the PP of all the moves learned by the targeted Pokémon.
 #-------------------------------
 [PPUP]
@@ -3341,7 +3342,7 @@ Pocket = 2
 Price = 10000
 BPPrice = 10
 FieldUse = OnPokemon
-Flags = Fling_30
+Flags = Fling_30,Vitamin
 Description = It slightly raises the maximum PP of a selected move that has been learned by the target Pokémon.
 #-------------------------------
 [PPMAX]
@@ -3352,7 +3353,7 @@ PortionNamePlural = bottles of PP Max
 Pocket = 2
 Price = 10000
 FieldUse = OnPokemon
-Flags = Fling_30
+Flags = Fling_30,Vitamin
 Description = It maximally raises the top PP of a selected move that has been learned by the target Pokémon.
 #-------------------------------
 [HPUP]
@@ -3363,7 +3364,7 @@ PortionNamePlural = bottles of HP Up
 Pocket = 2
 Price = 10000
 FieldUse = OnPokemon
-Flags = Fling_30
+Flags = Fling_30,Vitamin
 Description = A nutritious drink for Pokémon. It raises the base HP of a single Pokémon.
 #-------------------------------
 [PROTEIN]
@@ -3374,7 +3375,7 @@ PortionNamePlural = bottles of Protein
 Pocket = 2
 Price = 10000
 FieldUse = OnPokemon
-Flags = Fling_30
+Flags = Fling_30,Vitamin
 Description = A nutritious drink for Pokémon. It raises the base Attack stat of a single Pokémon.
 #-------------------------------
 [IRON]
@@ -3385,7 +3386,7 @@ PortionNamePlural = bottles of Iron
 Pocket = 2
 Price = 10000
 FieldUse = OnPokemon
-Flags = Fling_30
+Flags = Fling_30,Vitamin
 Description = A nutritious drink for Pokémon. It raises the base Defense stat of a single Pokémon.
 #-------------------------------
 [CALCIUM]
@@ -3396,7 +3397,7 @@ PortionNamePlural = bottles of Calcium
 Pocket = 2
 Price = 10000
 FieldUse = OnPokemon
-Flags = Fling_30
+Flags = Fling_30,Vitamin
 Description = A nutritious drink for Pokémon. It raises the base Sp. Atk (Special Attack) stat of a single Pokémon.
 #-------------------------------
 [ZINC]
@@ -3407,7 +3408,7 @@ PortionNamePlural = bottles of Zinc
 Pocket = 2
 Price = 10000
 FieldUse = OnPokemon
-Flags = Fling_30
+Flags = Fling_30,Vitamin
 Description = A nutritious drink for Pokémon. It raises the base Sp. Def (Special Defense) stat of a single Pokémon.
 #-------------------------------
 [CARBOS]
@@ -3418,7 +3419,7 @@ PortionNamePlural = bottles of Carbos
 Pocket = 2
 Price = 10000
 FieldUse = OnPokemon
-Flags = Fling_30
+Flags = Fling_30,Vitamin
 Description = A nutritious drink for Pokémon. It raises the base Speed stat of a single Pokémon.
 #-------------------------------
 [HEALTHFEATHER]
@@ -3798,7 +3799,7 @@ Price = 10000
 BPPrice = 20
 FieldUse = OnPokemon
 Flags = Fling_30
-Description = A candy that is packed with energy. It raises the level of a single Pokémon by one.
+Description = A candy that is packed with energy. It raises the level of a single Pokémon or Puppet by one.
 #-------------------------------
 [MASTERBALL]
 Name = Master Ball
@@ -5074,7 +5075,7 @@ Pocket = 5
 Price = 20
 FieldUse = OnPokemon
 BattleUse = OnPokemon
-Flags = Berry,Fling_10,NaturalGift_FIRE_80
+Flags = Berry,Fling_10,NaturalGift_FIRE_60,StatusBerry
 Description = It may be used or held by a Pokémon to recover from paralysis.
 #-------------------------------
 [CHESTOBERRY]
@@ -5084,7 +5085,7 @@ Pocket = 5
 Price = 20
 FieldUse = OnPokemon
 BattleUse = OnPokemon
-Flags = Berry,Fling_10,NaturalGift_WATER_80
+Flags = Berry,Fling_10,NaturalGift_WATER_60,StatusBerry
 Description = It may be used or held by a Pokémon to recover from sleep.
 #-------------------------------
 [PECHABERRY]
@@ -5094,7 +5095,7 @@ Pocket = 5
 Price = 20
 FieldUse = OnPokemon
 BattleUse = OnPokemon
-Flags = Berry,Fling_10,NaturalGift_ELECTRIC_80
+Flags = Berry,Fling_10,NaturalGift_ELECTRIC_60,StatusBerry
 Description = It may be used or held by a Pokémon to recover from poison.
 #-------------------------------
 [RAWSTBERRY]
@@ -5104,7 +5105,7 @@ Pocket = 5
 Price = 20
 FieldUse = OnPokemon
 BattleUse = OnPokemon
-Flags = Berry,Fling_10,NaturalGift_GRASS_80
+Flags = Berry,Fling_10,NaturalGift_GRASS_60,StatusBerry
 Description = It may be used or held by a Pokémon to recover from a burn.
 #-------------------------------
 [ASPEARBERRY]
@@ -5114,7 +5115,7 @@ Pocket = 5
 Price = 20
 FieldUse = OnPokemon
 BattleUse = OnPokemon
-Flags = Berry,Fling_10,NaturalGift_ICE_80
+Flags = Berry,Fling_10,NaturalGift_ICE_60,StatusBerry
 Description = It may be used or held by a Pokémon to defrost it.
 #-------------------------------
 [LEPPABERRY]
@@ -5124,7 +5125,7 @@ Pocket = 5
 Price = 20
 FieldUse = OnPokemon
 BattleUse = OnMove
-Flags = Berry,Fling_10,NaturalGift_FIGHTING_80
+Flags = Berry,Fling_10,NaturalGift_FIGHTING_60
 Description = It may be used or held by a Pokémon to restore a move's PP by 10.
 #-------------------------------
 [ORANBERRY]
@@ -5134,7 +5135,7 @@ Pocket = 5
 Price = 20
 FieldUse = OnPokemon
 BattleUse = OnPokemon
-Flags = Berry,Fling_10,NaturalGift_POISON_80
+Flags = Berry,Fling_10,NaturalGift_POISON_60,HealBerry
 Description = It may be used or held by a Pokémon to heal the user by just 10 HP.
 #-------------------------------
 [PERSIMBERRY]
@@ -5143,7 +5144,7 @@ NamePlural = Persim Berries
 Pocket = 5
 Price = 20
 BattleUse = OnBattler
-Flags = Berry,Fling_10,NaturalGift_GROUND_80
+Flags = Berry,Fling_10,NaturalGift_GROUND_60,StatusBerry
 Description = It may be used or held by a Pokémon to recover from confusion.
 #-------------------------------
 [LUMBERRY]
@@ -5153,7 +5154,7 @@ Pocket = 5
 Price = 20
 FieldUse = OnPokemon
 BattleUse = OnPokemon
-Flags = Berry,Fling_10,NaturalGift_FLYING_80
+Flags = Berry,Fling_10,NaturalGift_FLYING_60,StatusBerry
 Description = It may be used or held by a Pokémon to recover from any status problem.
 #-------------------------------
 [SITRUSBERRY]
@@ -5163,7 +5164,7 @@ Pocket = 5
 Price = 20
 FieldUse = OnPokemon
 BattleUse = OnPokemon
-Flags = Berry,Fling_10,NaturalGift_PSYCHIC_80
+Flags = Berry,Fling_10,NaturalGift_PSYCHIC_60,HealBerry
 Description = It may be used or held by a Pokémon to heal the user's HP a little.
 #-------------------------------
 [FIGYBERRY]
@@ -5171,7 +5172,7 @@ Name = Figy Berry
 NamePlural = Figy Berries
 Pocket = 5
 Price = 20
-Flags = Berry,Fling_10,NaturalGift_BUG_80
+Flags = Berry,Fling_10,NaturalGift_BUG_60,HealBerry,FlavorBerry
 Description = If held by a Pokémon, it restores the user's HP in a pinch, but will cause confusion if it hates the taste.
 #-------------------------------
 [WIKIBERRY]
@@ -5179,7 +5180,7 @@ Name = Wiki Berry
 NamePlural = Wiki Berries
 Pocket = 5
 Price = 20
-Flags = Berry,Fling_10,NaturalGift_ROCK_80
+Flags = Berry,Fling_10,NaturalGift_ROCK_60,HealBerry,FlavorBerry
 Description = If held by a Pokémon, it restores the user's HP in a pinch, but will cause confusion if it hates the taste.
 #-------------------------------
 [MAGOBERRY]
@@ -5187,7 +5188,7 @@ Name = Mago Berry
 NamePlural = Mago Berries
 Pocket = 5
 Price = 20
-Flags = Berry,Fling_10,NaturalGift_GHOST_80
+Flags = Berry,Fling_10,NaturalGift_GHOST_60,HealBerry,FlavorBerry
 Description = If held by a Pokémon, it restores the user's HP in a pinch, but will cause confusion if it hates the taste.
 #-------------------------------
 [AGUAVBERRY]
@@ -5195,7 +5196,7 @@ Name = Aguav Berry
 NamePlural = Aguav Berries
 Pocket = 5
 Price = 20
-Flags = Berry,Fling_10,NaturalGift_DRAGON_80
+Flags = Berry,Fling_10,NaturalGift_DRAGON_60,HealBerry,FlavorBerry
 Description = If held by a Pokémon, it restores the user's HP in a pinch, but will cause confusion if it hates the taste.
 #-------------------------------
 [IAPAPABERRY]
@@ -5203,7 +5204,7 @@ Name = Iapapa Berry
 NamePlural = Iapapa Berries
 Pocket = 5
 Price = 20
-Flags = Berry,Fling_10,NaturalGift_DARK_80
+Flags = Berry,Fling_10,NaturalGift_DARK_60,HealBerry,FlavorBerry
 Description = If held by a Pokémon, it restores the user's HP in a pinch, but will cause confusion if it hates the taste.
 #-------------------------------
 [RAZZBERRY]
@@ -5211,7 +5212,7 @@ Name = Razz Berry
 NamePlural = Razz Berries
 Pocket = 5
 Price = 20
-Flags = Berry,Fling_10,NaturalGift_STEEL_80
+Flags = Berry,Fling_10,NaturalGift_STEEL_60
 Description = In the Sinnoh region, they like to make sweets known as Poffins with this Berry.
 #-------------------------------
 [BLUKBERRY]
@@ -5219,7 +5220,7 @@ Name = Bluk Berry
 NamePlural = Bluk Berries
 Pocket = 5
 Price = 20
-Flags = Berry,Fling_10,NaturalGift_FIRE_90
+Flags = Berry,Fling_10,NaturalGift_FIRE_70
 Description = In the Sinnoh region, they like to make sweets known as Poffins with this Berry.
 #-------------------------------
 [NANABBERRY]
@@ -5227,7 +5228,7 @@ Name = Nanab Berry
 NamePlural = Nanab Berries
 Pocket = 5
 Price = 20
-Flags = Berry,Fling_10,NaturalGift_WATER_90
+Flags = Berry,Fling_10,NaturalGift_WATER_70
 Description = In the Sinnoh region, they like to make sweets known as Poffins with this Berry.
 #-------------------------------
 [WEPEARBERRY]
@@ -5235,7 +5236,7 @@ Name = Wepear Berry
 NamePlural = Wepear Berries
 Pocket = 5
 Price = 20
-Flags = Berry,Fling_10,NaturalGift_ELECTRIC_90
+Flags = Berry,Fling_10,NaturalGift_ELECTRIC_70
 Description = In the Sinnoh region, they like to make sweets known as Poffins with this Berry.
 #-------------------------------
 [PINAPBERRY]
@@ -5243,7 +5244,7 @@ Name = Pinap Berry
 NamePlural = Pinap Berries
 Pocket = 5
 Price = 20
-Flags = Berry,Fling_10,NaturalGift_GRASS_90
+Flags = Berry,Fling_10,NaturalGift_GRASS_70
 Description = In the Sinnoh region, they like to make sweets known as Poffins with this Berry.
 #-------------------------------
 [POMEGBERRY]
@@ -5252,7 +5253,7 @@ NamePlural = Pomeg Berries
 Pocket = 5
 Price = 20
 FieldUse = OnPokemon
-Flags = Berry,Fling_10,NaturalGift_ICE_90
+Flags = Berry,Fling_10,NaturalGift_ICE_70,EVReduceBerry
 Description = Using it on a Pokémon makes it more friendly, but it also lowers its base HP.
 #-------------------------------
 [KELPSYBERRY]
@@ -5261,7 +5262,7 @@ NamePlural = Kelpsy Berries
 Pocket = 5
 Price = 20
 FieldUse = OnPokemon
-Flags = Berry,Fling_10,NaturalGift_FIGHTING_90
+Flags = Berry,Fling_10,NaturalGift_FIGHTING_70,EVReduceBerry
 Description = Using it on a Pokémon makes it more friendly, but it also lowers its base Attack stat.
 #-------------------------------
 [QUALOTBERRY]
@@ -5270,7 +5271,7 @@ NamePlural = Qualot Berries
 Pocket = 5
 Price = 20
 FieldUse = OnPokemon
-Flags = Berry,Fling_10,NaturalGift_POISON_90
+Flags = Berry,Fling_10,NaturalGift_POISON_70,EVReduceBerry
 Description = Using it on a Pokémon makes it more friendly, but it also lowers its base Defense stat.
 #-------------------------------
 [HONDEWBERRY]
@@ -5279,7 +5280,7 @@ NamePlural = Hondew Berries
 Pocket = 5
 Price = 20
 FieldUse = OnPokemon
-Flags = Berry,Fling_10,NaturalGift_GROUND_90
+Flags = Berry,Fling_10,NaturalGift_GROUND_70,EVReduceBerry
 Description = Using it on a Pokémon makes it more friendly, but it also lowers its base Sp. Atk stat.
 #-------------------------------
 [GREPABERRY]
@@ -5288,7 +5289,7 @@ NamePlural = Grepa Berries
 Pocket = 5
 Price = 20
 FieldUse = OnPokemon
-Flags = Berry,Fling_10,NaturalGift_FLYING_90
+Flags = Berry,Fling_10,NaturalGift_FLYING_70,EVReduceBerry
 Description = Using it on a Pokémon makes it more friendly, but it also lowers its base Sp. Def stat.
 #-------------------------------
 [TAMATOBERRY]
@@ -5297,7 +5298,7 @@ NamePlural = Tamato Berries
 Pocket = 5
 Price = 20
 FieldUse = OnPokemon
-Flags = Berry,Fling_10,NaturalGift_PSYCHIC_90
+Flags = Berry,Fling_10,NaturalGift_PSYCHIC_70
 Description = Using it on a Pokémon makes it more friendly, but it also lowers its base Speed stat.
 #-------------------------------
 [CORNNBERRY]
@@ -5305,7 +5306,7 @@ Name = Cornn Berry
 NamePlural = Cornn Berries
 Pocket = 5
 Price = 20
-Flags = Berry,Fling_10,NaturalGift_BUG_90
+Flags = Berry,Fling_10,NaturalGift_BUG_70
 Description = In the Sinnoh region, they like to make sweets known as Poffins with this Berry.
 #-------------------------------
 [MAGOSTBERRY]
@@ -5313,7 +5314,7 @@ Name = Magost Berry
 NamePlural = Magost Berries
 Pocket = 5
 Price = 20
-Flags = Berry,Fling_10,NaturalGift_ROCK_90
+Flags = Berry,Fling_10,NaturalGift_ROCK_70
 Description = In the Sinnoh region, they like to make sweets known as Poffins with this Berry.
 #-------------------------------
 [RABUTABERRY]
@@ -5321,7 +5322,7 @@ Name = Rabuta Berry
 NamePlural = Rabuta Berries
 Pocket = 5
 Price = 20
-Flags = Berry,Fling_10,NaturalGift_GHOST_90
+Flags = Berry,Fling_10,NaturalGift_GHOST_70
 Description = In the Sinnoh region, they like to make sweets known as Poffins with this Berry.
 #-------------------------------
 [NOMELBERRY]
@@ -5329,7 +5330,7 @@ Name = Nomel Berry
 NamePlural = Nomel Berries
 Pocket = 5
 Price = 20
-Flags = Berry,Fling_10,NaturalGift_DRAGON_90
+Flags = Berry,Fling_10,NaturalGift_DRAGON_70
 Description = In the Sinnoh region, they like to make sweets known as Poffins with this Berry.
 #-------------------------------
 [SPELONBERRY]
@@ -5337,7 +5338,7 @@ Name = Spelon Berry
 NamePlural = Spelon Berries
 Pocket = 5
 Price = 20
-Flags = Berry,Fling_10,NaturalGift_DARK_90
+Flags = Berry,Fling_10,NaturalGift_DARK_70
 Description = In the Sinnoh region, they like to make sweets known as Poffins with this Berry.
 #-------------------------------
 [PAMTREBERRY]
@@ -5345,7 +5346,7 @@ Name = Pamtre Berry
 NamePlural = Pamtre Berries
 Pocket = 5
 Price = 20
-Flags = Berry,Fling_10,NaturalGift_STEEL_90
+Flags = Berry,Fling_10,NaturalGift_STEEL_70
 Description = In the Sinnoh region, they like to make sweets known as Poffins with this Berry.
 #-------------------------------
 [WATMELBERRY]
@@ -5353,7 +5354,7 @@ Name = Watmel Berry
 NamePlural = Watmel Berries
 Pocket = 5
 Price = 20
-Flags = Berry,Fling_10,NaturalGift_FIRE_100
+Flags = Berry,Fling_10,NaturalGift_FIRE_80
 Description = In the Sinnoh region, they like to make sweets known as Poffins with this Berry.
 #-------------------------------
 [DURINBERRY]
@@ -5361,7 +5362,7 @@ Name = Durin Berry
 NamePlural = Durin Berries
 Pocket = 5
 Price = 20
-Flags = Berry,Fling_10,NaturalGift_WATER_100
+Flags = Berry,Fling_10,NaturalGift_WATER_80
 Description = In the Sinnoh region, they like to make sweets known as Poffins with this Berry.
 #-------------------------------
 [BELUEBERRY]
@@ -5369,7 +5370,7 @@ Name = Belue Berry
 NamePlural = Belue Berries
 Pocket = 5
 Price = 20
-Flags = Berry,Fling_10,NaturalGift_ELECTRIC_100
+Flags = Berry,Fling_10,NaturalGift_ELECTRIC_80
 Description = In the Sinnoh region, they like to make sweets known as Poffins with this Berry.
 #-------------------------------
 [OCCABERRY]
@@ -5377,7 +5378,7 @@ Name = Occa Berry
 NamePlural = Occa Berries
 Pocket = 5
 Price = 20
-Flags = Berry,Fling_10,NaturalGift_FIRE_80
+Flags = Berry,Fling_10,NaturalGift_FIRE_60,TypeReduceBerry
 Description = Weakens a supereffective Fire-type attack against the holding Pokémon.
 #-------------------------------
 [PASSHOBERRY]
@@ -5385,7 +5386,7 @@ Name = Passho Berry
 NamePlural = Passho Berries
 Pocket = 5
 Price = 20
-Flags = Berry,Fling_10,NaturalGift_WATER_80
+Flags = Berry,Fling_10,NaturalGift_WATER_60,TypeReduceBerry
 Description = Weakens a supereffective Water-type attack against the holding Pokémon.
 #-------------------------------
 [WACANBERRY]
@@ -5393,7 +5394,7 @@ Name = Wacan Berry
 NamePlural = Wacan Berries
 Pocket = 5
 Price = 20
-Flags = Berry,Fling_10,NaturalGift_ELECTRIC_80
+Flags = Berry,Fling_10,NaturalGift_ELECTRIC_60,TypeReduceBerry
 Description = Weakens a supereffective Electric-type attack against the holding Pokémon.
 #-------------------------------
 [RINDOBERRY]
@@ -5401,7 +5402,7 @@ Name = Rindo Berry
 NamePlural = Rindo Berries
 Pocket = 5
 Price = 20
-Flags = Berry,Fling_10,NaturalGift_GRASS_80
+Flags = Berry,Fling_10,NaturalGift_GRASS_60,TypeReduceBerry
 Description = Weakens a supereffective Grass-type attack against the holding Pokémon.
 #-------------------------------
 [YACHEBERRY]
@@ -5409,7 +5410,7 @@ Name = Yache Berry
 NamePlural = Yache Berries
 Pocket = 5
 Price = 20
-Flags = Berry,Fling_10,NaturalGift_ICE_80
+Flags = Berry,Fling_10,NaturalGift_ICE_60,TypeReduceBerry
 Description = Weakens a supereffective Ice-type attack against the holding Pokémon.
 #-------------------------------
 [CHOPLEBERRY]
@@ -5417,7 +5418,7 @@ Name = Chople Berry
 NamePlural = Chople Berries
 Pocket = 5
 Price = 20
-Flags = Berry,Fling_10,NaturalGift_FIGHTING_80
+Flags = Berry,Fling_10,NaturalGift_FIGHTING_60,TypeReduceBerry
 Description = Weakens a supereffective Fighting-type attack against the holding Pokémon.
 #-------------------------------
 [KEBIABERRY]
@@ -5425,7 +5426,7 @@ Name = Kebia Berry
 NamePlural = Kebia Berries
 Pocket = 5
 Price = 20
-Flags = Berry,Fling_10,NaturalGift_POISON_80
+Flags = Berry,Fling_10,NaturalGift_POISON_60,TypeReduceBerry
 Description = Weakens a supereffective Poison-type attack against the holding Pokémon.
 #-------------------------------
 [SHUCABERRY]
@@ -5433,7 +5434,7 @@ Name = Shuca Berry
 NamePlural = Shuca Berries
 Pocket = 5
 Price = 20
-Flags = Berry,Fling_10,NaturalGift_GROUND_80
+Flags = Berry,Fling_10,NaturalGift_GROUND_60,TypeReduceBerry
 Description = Weakens a supereffective Ground-type attack against the holding Pokémon.
 #-------------------------------
 [COBABERRY]
@@ -5441,7 +5442,7 @@ Name = Coba Berry
 NamePlural = Coba Berries
 Pocket = 5
 Price = 20
-Flags = Berry,Fling_10,NaturalGift_FLYING_80
+Flags = Berry,Fling_10,NaturalGift_FLYING_60,TypeReduceBerry
 Description = Weakens a supereffective Flying-type attack against the holding Pokémon.
 #-------------------------------
 [PAYAPABERRY]
@@ -5449,7 +5450,7 @@ Name = Payapa Berry
 NamePlural = Payapa Berries
 Pocket = 5
 Price = 20
-Flags = Berry,Fling_10,NaturalGift_PSYCHIC_80
+Flags = Berry,Fling_10,NaturalGift_PSYCHIC_60,TypeReduceBerry
 Description = Weakens a supereffective Psychic-type attack against the holding Pokémon.
 #-------------------------------
 [TANGABERRY]
@@ -5457,7 +5458,7 @@ Name = Tanga Berry
 NamePlural = Tanga Berries
 Pocket = 5
 Price = 20
-Flags = Berry,Fling_10,NaturalGift_BUG_80
+Flags = Berry,Fling_10,NaturalGift_BUG_60,TypeReduceBerry
 Description = Weakens a supereffective Bug-type attack against the holding Pokémon.
 #-------------------------------
 [CHARTIBERRY]
@@ -5465,7 +5466,7 @@ Name = Charti Berry
 NamePlural = Charti Berries
 Pocket = 5
 Price = 20
-Flags = Berry,Fling_10,NaturalGift_ROCK_80
+Flags = Berry,Fling_10,NaturalGift_ROCK_60,TypeReduceBerry
 Description = Weakens a supereffective Rock-type attack against the holding Pokémon.
 #-------------------------------
 [KASIBBERRY]
@@ -5473,7 +5474,7 @@ Name = Kasib Berry
 NamePlural = Kasib Berries
 Pocket = 5
 Price = 20
-Flags = Berry,Fling_10,NaturalGift_GHOST_80
+Flags = Berry,Fling_10,NaturalGift_GHOST_60,TypeReduceBerry
 Description = Weakens a supereffective Ghost-type attack against the holding Pokémon.
 #-------------------------------
 [HABANBERRY]
@@ -5481,7 +5482,7 @@ Name = Haban Berry
 NamePlural = Haban Berries
 Pocket = 5
 Price = 20
-Flags = Berry,Fling_10,NaturalGift_DRAGON_80
+Flags = Berry,Fling_10,NaturalGift_DRAGON_60,TypeReduceBerry
 Description = Weakens a supereffective Dragon-type attack against the holding Pokémon.
 #-------------------------------
 [COLBURBERRY]
@@ -5489,7 +5490,7 @@ Name = Colbur Berry
 NamePlural = Colbur Berries
 Pocket = 5
 Price = 20
-Flags = Berry,Fling_10,NaturalGift_DARK_80
+Flags = Berry,Fling_10,NaturalGift_DARK_60,TypeReduceBerry
 Description = Weakens a supereffective Dark-type attack against the holding Pokémon.
 #-------------------------------
 [BABIRIBERRY]
@@ -5497,7 +5498,7 @@ Name = Babiri Berry
 NamePlural = Babiri Berries
 Pocket = 5
 Price = 20
-Flags = Berry,Fling_10,NaturalGift_STEEL_80
+Flags = Berry,Fling_10,NaturalGift_STEEL_60,TypeReduceBerry
 Description = Weakens a supereffective Steel-type attack against the holding Pokémon.
 #-------------------------------
 [ROSELIBERRY]
@@ -5505,7 +5506,7 @@ Name = Roseli Berry
 NamePlural = Roseli Berries
 Pocket = 5
 Price = 20
-Flags = Berry,Fling_10,NaturalGift_FAIRY_80
+Flags = Berry,Fling_10,NaturalGift_FAIRY_80,TypeReduceBerry
 Description = If held by a Pokémon, this Berry will lessen the damage taken from one supereffective Fairy-type attack.
 #-------------------------------
 [CHILANBERRY]
@@ -5513,7 +5514,7 @@ Name = Chilan Berry
 NamePlural = Chilan Berries
 Pocket = 5
 Price = 20
-Flags = Berry,Fling_10,NaturalGift_NORMAL_80
+Flags = Berry,Fling_10,NaturalGift_NORMAL_60,TypeReduceBerry
 Description = Weakens a Normal-type attack against the Pokémon holding this berry.
 #-------------------------------
 [LIECHIBERRY]
@@ -5521,7 +5522,7 @@ Name = Liechi Berry
 NamePlural = Liechi Berries
 Pocket = 5
 Price = 20
-Flags = Berry,Fling_10,NaturalGift_GRASS_100
+Flags = Berry,Fling_10,NaturalGift_GRASS_80,PinchBerry
 Description = If held by a Pokémon, it raises its Attack stat in a pinch.
 #-------------------------------
 [GANLONBERRY]
@@ -5529,7 +5530,7 @@ Name = Ganlon Berry
 NamePlural = Ganlon Berries
 Pocket = 5
 Price = 20
-Flags = Berry,Fling_10,NaturalGift_ICE_100
+Flags = Berry,Fling_10,NaturalGift_ICE_80,PinchBerry
 Description = If held by a Pokémon, it raises its Defense stat in a pinch.
 #-------------------------------
 [SALACBERRY]
@@ -5537,7 +5538,7 @@ Name = Salac Berry
 NamePlural = Salac Berries
 Pocket = 5
 Price = 20
-Flags = Berry,Fling_10,NaturalGift_FIGHTING_100
+Flags = Berry,Fling_10,NaturalGift_FIGHTING_80,PinchBerry
 Description = If held by a Pokémon, it raises its Speed stat in a pinch.
 #-------------------------------
 [PETAYABERRY]
@@ -5545,7 +5546,7 @@ Name = Petaya Berry
 NamePlural = Petaya Berries
 Pocket = 5
 Price = 20
-Flags = Berry,Fling_10,NaturalGift_POISON_100
+Flags = Berry,Fling_10,NaturalGift_POISON_80,PinchBerry
 Description = If held by a Pokémon, it raises its Sp. Atk stat in a pinch.
 #-------------------------------
 [APICOTBERRY]
@@ -5553,7 +5554,7 @@ Name = Apicot Berry
 NamePlural = Apicot Berries
 Pocket = 5
 Price = 20
-Flags = Berry,Fling_10,NaturalGift_GROUND_100
+Flags = Berry,Fling_10,NaturalGift_GROUND_80,PinchBerry
 Description = If held by a Pokémon, it raises its Sp. Def stat in a pinch.
 #-------------------------------
 [LANSATBERRY]
@@ -5561,7 +5562,7 @@ Name = Lansat Berry
 NamePlural = Lansat Berries
 Pocket = 5
 Price = 20
-Flags = Berry,Fling_10,NaturalGift_FLYING_100
+Flags = Berry,Fling_10,NaturalGift_FLYING_80,PinchBerry
 Description = If held by a Pokémon, it raises its critical-hit ratio in a pinch.
 #-------------------------------
 [STARFBERRY]
@@ -5569,7 +5570,7 @@ Name = Starf Berry
 NamePlural = Starf Berries
 Pocket = 5
 Price = 20
-Flags = Berry,Fling_10,NaturalGift_PSYCHIC_100
+Flags = Berry,Fling_10,NaturalGift_PSYCHIC_80,PinchBerry
 Description = If held by a Pokémon, it sharply raises one of its stats in a pinch.
 #-------------------------------
 [ENIGMABERRY]
@@ -5577,7 +5578,7 @@ Name = Enigma Berry
 NamePlural = Enigma Berries
 Pocket = 5
 Price = 20
-Flags = Berry,Fling_10,NaturalGift_BUG_100
+Flags = Berry,Fling_10,NaturalGift_BUG_80
 Description = If held by a Pokémon, it restores its HP if it is hit by any supereffective attack.
 #-------------------------------
 [MICLEBERRY]
@@ -5585,7 +5586,7 @@ Name = Micle Berry
 NamePlural = Micle Berries
 Pocket = 5
 Price = 20
-Flags = Berry,Fling_10,NaturalGift_ROCK_100
+Flags = Berry,Fling_10,NaturalGift_ROCK_80,PinchBerry
 Description = If held by a Pokémon, it raises the accuracy of a move just once in a pinch.
 #-------------------------------
 [CUSTAPBERRY]
@@ -5593,7 +5594,7 @@ Name = Custap Berry
 NamePlural = Custap Berries
 Pocket = 5
 Price = 20
-Flags = Berry,Fling_10,NaturalGift_GHOST_100
+Flags = Berry,Fling_10,NaturalGift_GHOST_80,PinchBerry
 Description = If held by a Pokémon, it gets to move first just once in a pinch.
 #-------------------------------
 [JABOCABERRY]
@@ -5601,7 +5602,7 @@ Name = Jaboca Berry
 NamePlural = Jaboca Berries
 Pocket = 5
 Price = 20
-Flags = Berry,Fling_10,NaturalGift_DRAGON_100
+Flags = Berry,Fling_10,NaturalGift_DRAGON_80
 Description = If held by a Pokémon and a physical attack lands, the attacker also takes damage.
 #-------------------------------
 [ROWAPBERRY]
@@ -5609,7 +5610,7 @@ Name = Rowap Berry
 NamePlural = Rowap Berries
 Pocket = 5
 Price = 20
-Flags = Berry,Fling_10,NaturalGift_DARK_100
+Flags = Berry,Fling_10,NaturalGift_DARK_80
 Description = If held by a Pokémon and a special attack lands, the attacker also takes damage.
 #-------------------------------
 [KEEBERRY]
@@ -5617,7 +5618,7 @@ Name = Kee Berry
 NamePlural = Kee Berries
 Pocket = 5
 Price = 20
-Flags = Berry,Fling_10,NaturalGift_FAIRY_100
+Flags = Berry,Fling_10,NaturalGift_NORMAL_100
 Description = If held by a Pokémon, this Berry will increase the holder's Defense if it's hit with a physical move.
 #-------------------------------
 [MARANGABERRY]
@@ -5754,7 +5755,7 @@ NamePlural = X Attacks
 Pocket = 7
 Price = 1000
 BattleUse = OnBattler
-Flags = Fling_30
+Flags = Fling_30,BattleEnhancer
 Description = An item that sharply boosts the Attack stat of a Pokémon while it remains in battle.
 #-------------------------------
 [XATTACK2]
@@ -5763,7 +5764,7 @@ NamePlural = X Attack 2s
 Pocket = 7
 Price = 0
 BattleUse = OnBattler
-Flags = Fling_30
+Flags = Fling_30,BattleEnhancer
 Description = It sharply raises the Attack stat of a Pokémon in battle. It wears off if the Pokémon is withdrawn.
 #-------------------------------
 [XATTACK3]
@@ -5772,7 +5773,7 @@ NamePlural = X Attack 3s
 Pocket = 7
 Price = 0
 BattleUse = OnBattler
-Flags = Fling_30
+Flags = Fling_30,BattleEnhancer
 Description = It drastically raises the Attack stat of a Pokémon in battle. It wears off if the Pokémon is withdrawn.
 #-------------------------------
 [XATTACK6]
@@ -5781,7 +5782,7 @@ NamePlural = X Attack 6s
 Pocket = 7
 Price = 0
 BattleUse = OnBattler
-Flags = Fling_30
+Flags = Fling_30,BattleEnhancer
 Description = It raises the Attack stat of a Pokémon in battle immensely. It wears off if the Pokémon is withdrawn.
 #-------------------------------
 [XDEFENSE]
@@ -5790,7 +5791,7 @@ NamePlural = X Defenses
 Pocket = 7
 Price = 2000
 BattleUse = OnBattler
-Flags = Fling_30
+Flags = Fling_30,BattleEnhancer
 Description = An item that sharply boosts the Defense of a Pokémon while it remains in battle.
 #-------------------------------
 [XDEFENSE2]
@@ -5799,7 +5800,7 @@ NamePlural = X Defense 2s
 Pocket = 7
 Price = 0
 BattleUse = OnBattler
-Flags = Fling_30
+Flags = Fling_30,BattleEnhancer
 Description = It sharply raises the Defense stat of a Pokémon in battle. It wears off if the Pokémon is withdrawn.
 #-------------------------------
 [XDEFENSE3]
@@ -5808,7 +5809,7 @@ NamePlural = X Defense 3s
 Pocket = 7
 Price = 0
 BattleUse = OnBattler
-Flags = Fling_30
+Flags = Fling_30,BattleEnhancer
 Description = It drastically raises the Defense stat of a Pokémon in battle. It wears off if the Pokémon is withdrawn.
 #-------------------------------
 [XDEFENSE6]
@@ -5817,7 +5818,7 @@ NamePlural = X Defense 6s
 Pocket = 7
 Price = 0
 BattleUse = OnBattler
-Flags = Fling_30
+Flags = Fling_30,BattleEnhancer
 Description = It raises the Defense stat of a Pokémon in battle immensely. It wears off if the Pokémon is withdrawn.
 #-------------------------------
 [XSPATK]
@@ -5826,7 +5827,7 @@ NamePlural = X Sp. Atks
 Pocket = 7
 Price = 1000
 BattleUse = OnBattler
-Flags = Fling_30
+Flags = Fling_30,BattleEnhancer
 Description = An item that sharply boosts the Sp. Atk stat of a Pokémon while it remains in battle.
 #-------------------------------
 [XSPATK2]
@@ -5835,7 +5836,7 @@ NamePlural = X Sp. Atk 2s
 Pocket = 7
 Price = 0
 BattleUse = OnBattler
-Flags = Fling_30
+Flags = Fling_30,BattleEnhancer
 Description = It sharply raises the Sp. Atk stat of a Pokémon in battle. It wears off if the Pokémon is withdrawn.
 #-------------------------------
 [XSPATK3]
@@ -5844,7 +5845,7 @@ NamePlural = X Sp. Atk 3s
 Pocket = 7
 Price = 0
 BattleUse = OnBattler
-Flags = Fling_30
+Flags = Fling_30,BattleEnhancer
 Description = It drastically raises the Sp. Atk stat of a Pokémon in battle. It wears off if the Pokémon is withdrawn.
 #-------------------------------
 [XSPATK6]
@@ -5853,7 +5854,7 @@ NamePlural = X Sp. Atk 6s
 Pocket = 7
 Price = 0
 BattleUse = OnBattler
-Flags = Fling_30
+Flags = Fling_30,BattleEnhancer
 Description = It raises the Sp. Atk stat of a Pokémon in battle immensely. It wears off if the Pokémon is withdrawn.
 #-------------------------------
 [XSPDEF]
@@ -5862,7 +5863,7 @@ NamePlural = X Sp. Defs
 Pocket = 7
 Price = 2000
 BattleUse = OnBattler
-Flags = Fling_30
+Flags = Fling_30,BattleEnhancer
 Description = An item that sharply boosts the Sp. Def stat of a Pokémon while it remains in battle.
 #-------------------------------
 [XSPDEF2]
@@ -5871,7 +5872,7 @@ NamePlural = X Sp. Def 2s
 Pocket = 7
 Price = 0
 BattleUse = OnBattler
-Flags = Fling_30
+Flags = Fling_30,BattleEnhancer
 Description = It sharply raises the Sp. Def stat of a Pokémon in battle. It wears off if the Pokémon is withdrawn.
 #-------------------------------
 [XSPDEF3]
@@ -5880,7 +5881,7 @@ NamePlural = X Sp. Def 3s
 Pocket = 7
 Price = 0
 BattleUse = OnBattler
-Flags = Fling_30
+Flags = Fling_30,BattleEnhancer
 Description = It drastically raises the Sp. Def stat of a Pokémon in battle. It wears off if the Pokémon is withdrawn.
 #-------------------------------
 [XSPDEF6]
@@ -5889,7 +5890,7 @@ NamePlural = X Sp. Def 6s
 Pocket = 7
 Price = 0
 BattleUse = OnBattler
-Flags = Fling_30
+Flags = Fling_30,BattleEnhancer
 Description = It raises the Sp. Def stat of a Pokémon in battle immensely. It wears off if the Pokémon is withdrawn.
 #-------------------------------
 [XSPEED]
@@ -5898,7 +5899,7 @@ NamePlural = X Speeds
 Pocket = 7
 Price = 1000
 BattleUse = OnBattler
-Flags = Fling_30
+Flags = Fling_30,BattleEnhancer
 Description = An item that sharply boosts the Speed stat of a Pokémon while it remains in battle.
 #-------------------------------
 [XSPEED2]
@@ -5907,7 +5908,7 @@ NamePlural = X Speed 2s
 Pocket = 7
 Price = 0
 BattleUse = OnBattler
-Flags = Fling_30
+Flags = Fling_30,BattleEnhancer
 Description = It sharply raises the Speed stat of a Pokémon in battle. It wears off if the Pokémon is withdrawn.
 #-------------------------------
 [XSPEED3]
@@ -5916,7 +5917,7 @@ NamePlural = X Speed 3s
 Pocket = 7
 Price = 0
 BattleUse = OnBattler
-Flags = Fling_30
+Flags = Fling_30,BattleEnhancer
 Description = It drastically raises the Speed stat of a Pokémon in battle. It wears off if the Pokémon is withdrawn.
 #-------------------------------
 [XSPEED6]
@@ -5925,7 +5926,7 @@ NamePlural = X Speed 6s
 Pocket = 7
 Price = 0
 BattleUse = OnBattler
-Flags = Fling_30
+Flags = Fling_30,BattleEnhancer
 Description = It raises the Speed stat of a Pokémon in battle immensely. It wears off if the Pokémon is withdrawn.
 #-------------------------------
 [XACCURACY]
@@ -5934,7 +5935,7 @@ NamePlural = X Accuracies
 Pocket = 7
 Price = 1000
 BattleUse = OnBattler
-Flags = Fling_30
+Flags = Fling_30,BattleEnhancer
 Description = An item that sharply boosts the accuracy of a Pokémon while it remains in battle.
 #-------------------------------
 [XACCURACY2]
@@ -5943,7 +5944,7 @@ NamePlural = X Accuracy 2s
 Pocket = 7
 Price = 0
 BattleUse = OnBattler
-Flags = Fling_30
+Flags = Fling_30,BattleEnhancer
 Description = It sharply raises the accuracy of a Pokémon in battle. It wears off if the Pokémon is withdrawn.
 #-------------------------------
 [XACCURACY3]
@@ -5952,7 +5953,7 @@ NamePlural = X Accuracy 3s
 Pocket = 7
 Price = 0
 BattleUse = OnBattler
-Flags = Fling_30
+Flags = Fling_30,BattleEnhancer
 Description = It drastically raises the accuracy of a Pokémon in battle. It wears off if the Pokémon is withdrawn.
 #-------------------------------
 [XACCURACY6]
@@ -5961,7 +5962,7 @@ NamePlural = X Accuracy 6s
 Pocket = 7
 Price = 0
 BattleUse = OnBattler
-Flags = Fling_30
+Flags = Fling_30,BattleEnhancer
 Description = It raises the accuracy of a Pokémon in battle immensely. It wears off if the Pokémon is withdrawn.
 #-------------------------------
 [MAXMUSHROOMS]
@@ -5972,7 +5973,7 @@ PortionNamePlural = clusters of Max Mushrooms
 Pocket = 7
 Price = 8000
 BattleUse = OnBattler
-Flags = Fling_30
+Flags = Fling_30,BattleEnhancer
 Description = Mushrooms that boost all stats of a Pokémon during battle.
 #-------------------------------
 [DIREHIT]
@@ -5981,7 +5982,7 @@ NamePlural = Dire Hits
 Pocket = 7
 Price = 1000
 BattleUse = OnBattler
-Flags = Fling_30
+Flags = Fling_30,BattleEnhancer
 Description = An item that raises the critical-hit ratio greatly. It wears off if the Pokémon is withdrawn.
 #-------------------------------
 [DIREHIT2]
@@ -5990,7 +5991,7 @@ NamePlural = Dire Hit 2s
 Pocket = 7
 Price = 0
 BattleUse = OnBattler
-Flags = Fling_30
+Flags = Fling_30,BattleEnhancer
 Description = It sharply raises the critical-hit ratio. It wears off if the Pokémon is withdrawn.
 #-------------------------------
 [DIREHIT3]
@@ -5999,7 +6000,7 @@ NamePlural = Dire Hit 3s
 Pocket = 7
 Price = 0
 BattleUse = OnBattler
-Flags = Fling_30
+Flags = Fling_30,BattleEnhancer
 Description = It greatly raises the critical-hit ratio. It wears off if the Pokémon is withdrawn.
 #-------------------------------
 [GUARDSPEC]
@@ -6008,7 +6009,7 @@ NamePlural = Guard Specs.
 Pocket = 7
 Price = 1500
 BattleUse = Direct
-Flags = Fling_30
+Flags = Fling_30,BattleEnhancer
 Description = An item that prevents stat reduction among the Trainer's party Pokémon for five turns after use.
 #-------------------------------
 [RESETURGE]
@@ -6016,7 +6017,7 @@ Name = Reset Urge
 NamePlural = Reset Urges
 Pocket = 7
 Price = 0
-Flags = Fling_30
+Flags = Fling_30,BattleEnhancer
 Description = When used, it restores any stat changes of an ally Pokémon.
 #-------------------------------
 [ABILITYURGE]
@@ -6024,7 +6025,7 @@ Name = Ability Urge
 NamePlural = Ability Urges
 Pocket = 7
 Price = 0
-Flags = Fling_30
+Flags = Fling_30,BattleEnhancer
 Description = When used, it activates the Ability of an ally Pokémon.
 #-------------------------------
 [ITEMURGE]
@@ -6032,7 +6033,7 @@ Name = Item Urge
 NamePlural = Item Urges
 Pocket = 7
 Price = 0
-Flags = Fling_30
+Flags = Fling_30,BattleEnhancer
 Description = When used, it causes an ally Pokémon to use its held item.
 #-------------------------------
 [ITEMDROP]
@@ -6040,7 +6041,7 @@ Name = Item Drop
 NamePlural = Item Drops
 Pocket = 7
 Price = 0
-Flags = Fling_30
+Flags = Fling_30,BattleEnhancer
 Description = When used, it causes an ally Pokémon to drop a held item.
 #-------------------------------
 [BLUEFLUTE]
@@ -6050,8 +6051,8 @@ Pocket = 7
 Price = 20
 FieldUse = OnPokemon
 BattleUse = OnPokemon
-Flags = Fling_30
 Consumable = false
+Flags = Fling_30,Flute
 Description = A blue flute made from blown glass. Its melody awakens a single Pokémon from sleep.
 #-------------------------------
 [YELLOWFLUTE]
@@ -6060,8 +6061,8 @@ NamePlural = Yellow Flutes
 Pocket = 7
 Price = 20
 BattleUse = OnBattler
-Flags = Fling_30
 Consumable = false
+Flags = Fling_30,Flute
 Description = A yellow flute made from blown glass. Its melody snaps a single Pokémon out of confusion.
 #-------------------------------
 [REDFLUTE]
@@ -6070,8 +6071,8 @@ NamePlural = Red Flutes
 Pocket = 7
 Price = 20
 BattleUse = OnBattler
-Flags = Fling_30
 Consumable = false
+Flags = Fling_30,Flute
 Description = A red flute made from blown glass. Its melody snaps a single Pokémon out of infatuation.
 #-------------------------------
 [POKEDOLL]
@@ -6117,7 +6118,7 @@ Pocket = 8
 Price = 0
 FieldUse = Direct
 Flags = KeyItem
-Description = An old and beat-up fishing rod. Use it by any body of water to fish for wild aquatic Pokémon.
+Description = An old and beat-up fishing rod. Use it by any body of water to fish for wild aquatic Pokémon and Puppets.
 #-------------------------------
 [GOODROD]
 Name = Good Rod
@@ -6126,7 +6127,7 @@ Pocket = 8
 Price = 0
 FieldUse = Direct
 Flags = KeyItem
-Description = A new, good-quality fishing rod. Use it by any body of water to fish for wild aquatic Pokémon.
+Description = A new, good-quality fishing rod. Use it by any body of water to fish for wild aquatic Pokémon and Puppets.
 #-------------------------------
 [SUPERROD]
 Name = Super Rod
@@ -6135,7 +6136,7 @@ Pocket = 8
 Price = 0
 FieldUse = Direct
 Flags = KeyItem
-Description = An awesome, high-tech fishing rod. Use it by any body of water to fish for wild aquatic Pokémon.
+Description = An awesome, high-tech fishing rod. Use it by any body of water to fish for wild aquatic Pokémon and Puppets.
 #-------------------------------
 [ITEMFINDER]
 Name = Itemfinder
@@ -6199,7 +6200,7 @@ Price = 0
 FieldUse = OnPokemon
 BattleUse = Direct
 Flags = KeyItem
-Description = A flute that is said to instantly awaken any Pokémon. It has a lovely tone.
+Description = A flute that is said to instantly awaken any Pokémon or Puppet. It has a lovely tone.
 #-------------------------------
 [SOOTSACK]
 Name = Soot Sack
@@ -6392,7 +6393,7 @@ NamePlural = Shiny Charms
 Pocket = 8
 Price = 0
 Flags = KeyItem
-Description = A shiny charm said to increase the chance of finding a Shiny Pokémon.
+Description = A shiny charm said to increase the chance of finding a Shiny Pokémon or Puppet.
 #-------------------------------
 [CATCHINGCHARM]
 Name = Catching Charm
@@ -6408,7 +6409,7 @@ NamePlural = Exp. Charms
 Pocket = 8
 Price = 0
 Flags = KeyItem
-Description = A charm that increases the Exp. Points that Pokémon can get. A machine-like object is inside it.
+Description = A charm that increases the Exp. Points that Pokémon or Puppets can get. A machine-like object is inside it.
 #-------------------------------
 [MEGARING]
 Name = Mega Ring

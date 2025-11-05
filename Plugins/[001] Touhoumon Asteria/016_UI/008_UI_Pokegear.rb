@@ -40,3 +40,45 @@ MenuHandlers.add(:pokegear_menu, :checker, {
     next false
   }
 })
+
+
+MenuHandlers.add(:pokegear_menu, :encounter, {
+  "name"      => _INTL("Encounter Checker"),
+  "icon_name" => "checker",
+  "order"     => 30,
+  "effect"    => proc { |menu|
+    pbViewEncounters
+    next false
+  }
+})
+
+
+MenuHandlers.add(:pokegear_menu, :phone, {
+  "name"      => _INTL("Phone"),
+  "icon_name" => "phone",
+  "order"     => 20,
+  "condition" => proc { next $game_switches[1000] },
+  "effect"    => proc { |menu|
+    pbFadeOutIn do
+      scene = PokemonPhone_Scene.new
+      screen = PokemonPhoneScreen.new(scene)
+      screen.pbStartScreen
+    end
+    next false
+  }
+})
+
+MenuHandlers.add(:pokegear_menu, :jukebox, {
+  "name"      => _INTL("Jukebox"),
+  "icon_name" => "jukebox",
+  "order"     => 30,
+  "condition" => proc { next $game_switches[1000] },
+  "effect"    => proc { |menu|
+    pbFadeOutIn do
+      scene = PokemonJukebox_Scene.new
+      screen = PokemonJukeboxScreen.new(scene)
+      screen.pbStartScreen
+    end
+    next false
+  }
+})

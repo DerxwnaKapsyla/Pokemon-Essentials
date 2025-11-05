@@ -25,6 +25,7 @@ module Settings
   NEW_CAPTURE_CAN_REPLACE_PARTY_MEMBER = true
   CHECK_EVOLUTION_AFTER_ALL_BATTLES   = true
   
+  FOREIGN_HIGH_LEVEL_POKEMON_CAN_DISOBEY      = false
   # These may be outdated, as Essentials Deluxe will be doing this but better.
   SPECIAL_BATTLE_SWITCH			= 102	# Used for when you want to trigger a battle with special text for the encounter. (Ie; "N's Zoroark", "The aggressive Igglybuff", etc.)
   SPECIAL_BATTLE_VARIABLE		= 102	# Used in conjunction with the switch above. Determines the stringset to run. You can find existing ones by searching for these lines.

@@ -3,7 +3,7 @@ class Battle::AI
 
 #==============================================================================#
 # Changes in this section include the following:
-#	* Added various type interactions with ability absorption (NOT IMPLEMENTED)
+#	* Added various type interactions with ability absorption
 #==============================================================================#
   def pokemon_can_absorb_move?(pkmn, move, move_type)
     return false if pkmn.is_a?(Battle::AI::AIBattler) && !pkmn.ability_active?
@@ -14,16 +14,16 @@ class Battle::AI
       move_data = GameData::Move.get(move.id)
       return move_data.has_flag?("Bomb")
     when :FLASHFIRE
-      return move_type == :FIRE
+	  return [:FIRE, :FIRE18].include?(move_type)
     when :LIGHTNINGROD, :MOTORDRIVE, :VOLTABSORB
-      return move_type == :ELECTRIC
+	  return [:ELECTRIC, :ELECTRIC18].include?(move_type)
     when :SAPSIPPER
-      return move_type == :GRASS
+	  return [:GRASS, :GRASS18].include?(move_type)
     when :SOUNDPROOF
       move_data = GameData::Move.get(move.id)
       return move_data.has_flag?("Sound")
     when :STORMDRAIN, :WATERABSORB, :DRYSKIN
-      return move_type == :WATER
+	  return [:WATER, :WATER18].include?(move_type)
     when :TELEPATHY
       # NOTE: The move is being used by a foe of pkmn.
       return false
@@ -78,7 +78,8 @@ class Battle::AI
            :POWERCONSTRUCT, :PRIMORDIALSEA, :PUREPOWER, :SHADOWTAG,
            :STANCECHANGE, :WONDERGUARD,
 		   :DEATHLYFROST, :ARIDWASTES, :PLAYGHOST, :RETRIBUTION,
-		   :FANTASYNATURE, :FANTASYNATURE_ALT, :UNZAN],
+		   :FANTASYNATURE, :FANTASYNATURE_ALT, :UNZAN,
+		   :PHANTASMDREAM],
 		   
     9  => [:ARENATRAP, :DRIZZLE, :DROUGHT, :IMPOSTER, :MAGICBOUNCE, :MAGICGUARD,
            :MAGNETPULL, :SANDSTREAM, :SPEEDBOOST,

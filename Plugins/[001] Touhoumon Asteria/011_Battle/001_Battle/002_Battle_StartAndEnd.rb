@@ -9,30 +9,19 @@
 #	  (Switch 31). Will disable itself when it notices its on.
 #==============================================================================#
 class Battle
-  def pbStartBattleSendOut(sendOuts)	
-        if $game_switches[Settings::SPECIAL_BATTLE_SWITCH]
-          case $game_variables[Settings::SPECIAL_BATTLE_VARIABLE]
-                when 1        then sbName = "The territorial"
-                when 2        then sbName = "The aggressive"
-                when 3        then sbName = "Celadon Gym's"
-                when 4        then sbName = "A trainer's"
-                else               sbName = "Oh! A wild"
-          end
-        else
-          sbName = "Oh! A wild"
-        end 
+  def pbStartBattleSendOut(sendOuts)
     # "Want to battle" messages
     if wildBattle?
       foeParty = pbParty(1)
       case foeParty.length
       when 1
-        pbDisplayPaused(_INTL("{2} {1} appeared!", foeParty[0].name, sbName))
+        pbDisplayPaused(_INTL("Oh! A wild {1} appeared!", foeParty[0].name))
       when 2
-        pbDisplayPaused(_INTL("{3} {1} and {2} appeared!", foeParty[0].name,
-                              foeParty[1].name, sbName))
+        pbDisplayPaused(_INTL("Oh! A wild {1} and {2} appeared!", foeParty[0].name,
+                              foeParty[1].name))
       when 3
-        pbDisplayPaused(_INTL("{4} {1}, {2} and {3} appeared!", foeParty[0].name,
-                              foeParty[1].name, foeParty[2].name, sbName))
+        pbDisplayPaused(_INTL("Oh! A wild {1}, {2} and {3} appeared!", foeParty[0].name,
+                              foeParty[1].name, foeParty[2].name))
       end
 	  #if $game_switches[Settings::SHINY_WILD_POKEMON_SWITCH] # Used for the "Make Any Pokemon Shiny" passcode
 	  #  $game_switches[Settings::SHINY_WILD_POKEMON_SWITCH] = false

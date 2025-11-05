@@ -1,10 +1,10 @@
 def textbook(book)
-   # oldsprites = pbFadeOutAndHide(@sprites)
+  pbFadeOutIn {
     scene = Textbook_Scene.new
     screen = TextbookScreen.new(scene)
     screen.pbStartTextbookScreen(book)
     yield if block_given?
-    pbFadeInAndShow(@sprites)#,oldsprites)
+  }
 end
 
 
@@ -106,9 +106,7 @@ class Textbook_Scene
     @page = 0
     @book = book
     @bookarray= Books[book]
-    @max=Books[book].length#)+4)/2
-    #@max+=4
-    #@max/=2
+    @max=Books[book].length
     @sprites = {}
     @sprites["background"] = IconSprite.new(0,0,@viewport)
     @sprites["overlay"] = BitmapSprite.new(Graphics.width,Graphics.height,@viewport)
@@ -134,6 +132,8 @@ class Textbook_Scene
 
   def drawTextbookPage(page)
     book   = @book
+	background = "Graphics/UI/Book/Book_#{@book}/TBbg_#{@page}.png"
+	defaultbg = "Graphics/UI/Book/#{DEFAULT_BG}"
     @sprites["leftarrow"].visible = (@page>0)
     @sprites["rightarrow"].visible = (@page+3<@max)
     overlay = @sprites["overlay"].bitmap
@@ -141,19 +141,25 @@ class Textbook_Scene
     base   = Color.new(0,0,0)
     #base = Color.new(255,255,255)
     # Set background image
-    @sprites["background"].setBitmap("Graphics/UI/textbookbg")
+    if File.exist?(background)
+      #echoln "Using custom background: #{background}"
+	  @sprites["background"].setBitmap(background)
+    else
+	  #echoln "No custom background found. Using default."
+      @sprites["background"].setBitmap(defaultbg)
+    end
     imagepos=[]
     # Write various bits of text
     pagename = @bookarray[page]
     textpos = [
-       [pagename,Graphics.width/2,12,2,base]#,shadow]
+       [pagename,Graphics.width/2,11,2,base]#,shadow]
     ]
     #For title size
     @sprites["overlay"].bitmap.font.size=32
     pbDrawTextPositions(overlay,textpos)
     @sprites["overlay"].bitmap.font.size=26
     text=@bookarray[page+1]
-    drawFormattedTextEx(overlay,25,44,Graphics.width-40,text,base)#,shadow)
+    drawFormattedTextEx(overlay,25,45,Graphics.width-40,text,base)#,shadow)
   end
 
 
@@ -171,7 +177,7 @@ class Textbook_Scene
         @page -= 2
         @page = 0 if @page<0
         if @page!=oldpage   # Move to next page
-          pbSEPlay("GUI summary change page")
+          pbSEPlay("Page Turn")
           dorefresh = true
         end
       elsif Input.trigger?(Input::RIGHT)
@@ -179,7 +185,7 @@ class Textbook_Scene
         @page += 2
         @page = @max-2 if @page+3>@max
         if @page!=oldpage   # Move to next page
-          pbSEPlay("GUI summary change page")
+          pbSEPlay("Page Turn")
           dorefresh = true
         end
       end

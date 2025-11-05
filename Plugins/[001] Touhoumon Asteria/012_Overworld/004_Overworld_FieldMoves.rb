@@ -23,8 +23,7 @@ def pbCut
   	movefinder = $player.get_pokemon_with_move(m)
   	break if movefinder
   end
-  if !(pbCheckHiddenMoveBadge(Settings::BADGE_FOR_CUT, false) ||
-  	   pbCheckHiddenMoveBadge(Settings::ALT_BADGE_FOR_CUT, false)) || (!$DEBUG && !movefinder)
+  if !(pbCheckHiddenMoveBadge(Settings::BADGE_FOR_CUT, false)) || (!$DEBUG && !movefinder)
     pbMessage(_INTL("This tree looks like it can be cut down."))
     return false
   end
@@ -39,8 +38,7 @@ def pbCut
 end
 
 HiddenMoveHandlers::CanUseMove.add(:CUT, proc { |move, pkmn, showmsg|
-  next false if !(pbCheckHiddenMoveBadge(Settings::BADGE_FOR_CUT, showmsg) ||
-  				  pbCheckHiddenMoveBadge(Settings::ALT_BADGE_FOR_CUT, showmsg))
+  next false if !(pbCheckHiddenMoveBadge(Settings::BADGE_FOR_CUT, showmsg))
   facingEvent = $game_player.pbFacingEvent
   if !facingEvent || !facingEvent.name[/cuttree/i]
     pbMessage(_INTL("You can't use that here.")) if showmsg
@@ -53,8 +51,7 @@ HiddenMoveHandlers::CanUseMove.add(:CUT, proc { |move, pkmn, showmsg|
 # Flash
 #===============================================================================
 HiddenMoveHandlers::CanUseMove.add(:FLASH, proc { |move, pkmn, showmsg|
-  next false if !(pbCheckHiddenMoveBadge(Settings::BADGE_FOR_FLASH, showmsg) ||
-  				  pbCheckHiddenMoveBadge(Settings::ALT_BADGE_FOR_FLASH, showmsg))
+  next false if !(pbCheckHiddenMoveBadge(Settings::BADGE_FOR_FLASH, showmsg))
   if !$game_map.metadata&.dark_map
     pbMessage(_INTL("You can't use that here.")) if showmsg
     next false
@@ -70,8 +67,7 @@ HiddenMoveHandlers::CanUseMove.add(:FLASH, proc { |move, pkmn, showmsg|
 # Fly
 #===============================================================================
 def pbCanFly?(pkmn = nil, show_messages = false)
-  return false if !(pbCheckHiddenMoveBadge(Settings::BADGE_FOR_FLY, show_messages) ||
-  					pbCheckHiddenMoveBadge(Settings::ALT_BADGE_FOR_FLY, show_messages))
+  return false if !(pbCheckHiddenMoveBadge(Settings::BADGE_FOR_FLY, show_messages))
   return false if !$DEBUG && !pkmn && !$player.get_pokemon_with_move(:FLY)
   if !$game_player.can_map_transfer_with_follower?
     pbMessage(_INTL("It can't be used when you have someone with you.")) if show_messages
@@ -123,8 +119,7 @@ def pbRockSmash
 	movefinder=$player.get_pokemon_with_move(m)
 	break if movefinder
   end
-  if !(pbCheckHiddenMoveBadge(Settings::BADGE_FOR_ROCKSMASH, false) ||
-  	   pbCheckHiddenMoveBadge(Settings::ALT_BADGE_FOR_ROCKSMASH, false)) || (!$DEBUG && !movefinder)
+  if !(pbCheckHiddenMoveBadge(Settings::BADGE_FOR_ROCKSMASH, false)) || (!$DEBUG && !movefinder)
     pbMessage(_INTL("It's a rugged rock, but it may be able to be smashed."))
     return false
   end
@@ -139,8 +134,7 @@ def pbRockSmash
 end
 
 HiddenMoveHandlers::CanUseMove.add(:ROCKSMASH, proc { |move, pkmn, showmsg|
-  next false if !(pbCheckHiddenMoveBadge(Settings::BADGE_FOR_ROCKSMASH, showmsg) ||
-  				  pbCheckHiddenMoveBadge(Settings::ALT_BADGE_FOR_ROCKSMASH, showmsg))
+  next false if !(pbCheckHiddenMoveBadge(Settings::BADGE_FOR_ROCKSMASH, showmsg))
   facingEvent = $game_player.pbFacingEvent
   if !facingEvent || !facingEvent.name[/smashrock/i]
     pbMessage(_INTL("You can't use that here.")) if showmsg
@@ -165,8 +159,7 @@ def pbStrength
 	movefinder=$player.get_pokemon_with_move(m)
 	break if movefinder
   end
-  if !(pbCheckHiddenMoveBadge(Settings::BADGE_FOR_STRENGTH, false) ||
-  	   pbCheckHiddenMoveBadge(Settings::ALT_BADGE_FOR_STRENGTH, false)) || (!$DEBUG && !movefinder)
+  if !(pbCheckHiddenMoveBadge(Settings::BADGE_FOR_STRENGTH, false)) || (!$DEBUG && !movefinder)
     pbMessage(_INTL("It's a big boulder, but it may be able to be pushed aside."))
     return false
   end
@@ -183,8 +176,7 @@ def pbStrength
 end
 
 HiddenMoveHandlers::CanUseMove.add(:STRENGTH, proc { |move, pkmn, showmsg|
-  next false if !(pbCheckHiddenMoveBadge(Settings::BADGE_FOR_STRENGTH, showmsg) ||
-				  pbCheckHiddenMoveBadge(Settings::ALT_BADGE_FOR_STRENGTH, showmsg))
+  next false if !(pbCheckHiddenMoveBadge(Settings::BADGE_FOR_STRENGTH, showmsg))
   if $PokemonMap.strengthUsed
     pbMessage(_INTL("Strength is already being used.")) if showmsg
     next false
@@ -206,8 +198,7 @@ def pbSurf
 	movefinder=$player.get_pokemon_with_move(m)
 	break if movefinder
   end
-  if !(pbCheckHiddenMoveBadge(Settings::BADGE_FOR_SURF, false) ||
-  	   pbCheckHiddenMoveBadge(Settings::ALT_BADGE_FOR_SURF, false)) || (!$DEBUG && !movefinder)
+  if !(pbCheckHiddenMoveBadge(Settings::BADGE_FOR_SURF, false)) || (!$DEBUG && !movefinder)
     return false
   end
   if $game_map.metadata&.has_flag?("DisableSurf")
@@ -228,8 +219,7 @@ def pbSurf
 end
 
 HiddenMoveHandlers::CanUseMove.add(:SURF, proc { |move, pkmn, showmsg|
-  next false if !(pbCheckHiddenMoveBadge(Settings::BADGE_FOR_SURF, showmsg) ||
-				  pbCheckHiddenMoveBadge(Settings::ALT_BADGE_FOR_SURF, showmsg))
+  next false if !(pbCheckHiddenMoveBadge(Settings::BADGE_FOR_SURF, showmsg))
   if $PokemonGlobal.surfing
     pbMessage(_INTL("You're already surfing.")) if showmsg
     next false
@@ -262,8 +252,7 @@ def pbWaterfall
 	movefinder=$Trainer.get_pokemon_with_move(m)
 	break if movefinder
   end
-  if !(pbCheckHiddenMoveBadge(Settings::BADGE_FOR_WATERFALL, false) ||
-  	   pbCheckHiddenMoveBadge(Settings::ALT_BADGE_FOR_WATERFALL, false)) || (!$DEBUG && !movefinder)
+  if !(pbCheckHiddenMoveBadge(Settings::BADGE_FOR_WATERFALL, false)) || (!$DEBUG && !movefinder)
     pbMessage(_INTL("A wall of water is crashing down with a mighty roar."))
     return false
   end
@@ -278,8 +267,7 @@ def pbWaterfall
 end
 
 HiddenMoveHandlers::CanUseMove.add(:WATERFALL, proc { |move, pkmn, showmsg|
-  next false if !(pbCheckHiddenMoveBadge(Settings::BADGE_FOR_WATERFALL, showmsg) ||
-				  pbCheckHiddenMoveBadge(Settings::ALT_BADGE_FOR_WATERFALL, showmsg))
+  next false if !(pbCheckHiddenMoveBadge(Settings::BADGE_FOR_WATERFALL, showmsg))
   if !$game_player.pbFacingTerrainTag.waterfall
     pbMessage(_INTL("You can't use that here.")) if showmsg
     next false

@@ -3494,6 +3494,8 @@ Move Animation
 Trigger: Player Touch
 
 List of Event Commands:
+@>Comment: Event Indicator
+ :       : main_quest
 @>Set Move Route: This event
                   (Ignore If Can't Move)
  :              : $>SE: 'Door enter', 100, 100
@@ -3530,6 +3532,57 @@ List of Event Commands:
 @>
 
 Page #3
+Conditions
+Switch 0105: Intro Control Switch is ON
+Self Switch A is ON
+
+Graphic: doors3
+
+Autonomous Movement
+Type: Fixed
+Speed: 3: Slow
+Freq: 3: Low
+Options Enabled
+Move Animation
+Trigger: Player Touch
+
+List of Event Commands:
+@>Set Move Route: This event
+                  (Ignore If Can't Move)
+ :              : $>SE: 'Door enter', 100, 100
+ :              : $>Wait: 2 frame(s)
+ :              : $>Turn Left
+ :              : $>Wait: 2 frame(s)
+ :              : $>Turn Right
+ :              : $>Wait: 2 frame(s)
+ :              : $>Turn Up
+ :              : $>Wait: 2 frame(s)
+@>Wait for Move's Completion
+@>Set Move Route: Player
+                  (Ignore If Can't Move)
+ :              : $>Through ON
+ :              : $>Move Up
+ :              : $>Through OFF
+@>Wait for Move's Completion
+@>Change Transparent Flag: Transparency
+@>Set Move Route: This event
+                  (Ignore If Can't Move)
+ :              : $>Wait: 2 frame(s)
+ :              : $>Turn Right
+ :              : $>Wait: 2 frame(s)
+ :              : $>Turn Left
+ :              : $>Wait: 2 frame(s)
+ :              : $>Turn Down
+ :              : $>Wait: 2 frame(s)
+@>Wait for Move's Completion
+@>Change Screen Color Tone: (-255,-255,-255,0), @6
+@>Wait: 8 frame(s)
+@>Change Transparent Flag: Normal
+@>Transfer Player:[009: Professor Oak's Lab], (014,018), Up, No Fade
+@>Change Screen Color Tone: (0,0,0,0), @6
+@>
+
+Page #4
 Conditions
 Switch 0022: s:tsOff?("A") is ON
 
@@ -3622,92 +3675,6 @@ List of Event Commands:
 @>
 
 #------------------------------------------------------------------------------
-Event ID: 016
-Event Name: Quest Indicator: Main
-(X,Y): (000,000)
-
-Page #1
-Conditions
-None
-
-Graphic: questicon2
-
-Autonomous Movement
-Type: Fixed
-Speed: 3: Slow
-Freq: 3: Low
-Options Enabled
-Move Animation
-Stop Animation
-Direction Fix
-Through
-Always on Top
-Trigger: Parallel Process
-
-List of Event Commands:
-@>Set Event Location: This event,(016,011)
-@>
-
-Page #2
-Conditions
-Self Switch A is ON
-
-Graphic: questicon2
-
-Autonomous Movement
-Type: Fixed
-Speed: 3: Slow
-Freq: 3: Low
-Options Enabled
-Move Animation
-Stop Animation
-Direction Fix
-Through
-Always on Top
-Trigger: Parallel Process
-
-List of Event Commands:
-@>Set Event Location: This event,(043,009)
-@>
-
-Page #3
-Conditions
-Self Switch B is ON
-
-Autonomous Movement
-Type: Fixed
-Speed: 3: Slow
-Freq: 3: Low
-Options Enabled
-Move Animation
-Trigger: Action Button
-
-List of Event Commands:
-@>
-
-Page #4
-Conditions
-Self Switch C is ON
-
-Graphic: questicon2
-
-Autonomous Movement
-Type: Fixed
-Speed: 3: Slow
-Freq: 3: Low
-Options Enabled
-Move Animation
-Stop Animation
-Direction Fix
-Through
-Always on Top
-Trigger: Parallel Process
-
-List of Event Commands:
-@>Set Event Location: This event,(043,009)
-@>
-
-#------------------------------------------------------------------------------
 Event ID: 017
 Event Name: Home door
 (X,Y): (016,012)
@@ -3715,6 +3682,58 @@ Event Name: Home door
 Page #1
 Conditions
 None
+
+Graphic: doors5
+
+Autonomous Movement
+Type: Fixed
+Speed: 3: Slow
+Freq: 3: Low
+Options Enabled
+Move Animation
+Trigger: Player Touch
+
+List of Event Commands:
+@>Comment: Event Indicator
+ :       : main_quest
+@>Set Move Route: This event
+                  (Ignore If Can't Move)
+ :              : $>SE: 'Door enter', 100, 100
+ :              : $>Wait: 2 frame(s)
+ :              : $>Turn Left
+ :              : $>Wait: 2 frame(s)
+ :              : $>Turn Right
+ :              : $>Wait: 2 frame(s)
+ :              : $>Turn Up
+ :              : $>Wait: 2 frame(s)
+@>Wait for Move's Completion
+@>Set Move Route: Player
+                  (Ignore If Can't Move)
+ :              : $>Through ON
+ :              : $>Move Up
+ :              : $>Through OFF
+@>Wait for Move's Completion
+@>Change Transparent Flag: Transparency
+@>Set Move Route: This event
+                  (Ignore If Can't Move)
+ :              : $>Wait: 2 frame(s)
+ :              : $>Turn Right
+ :              : $>Wait: 2 frame(s)
+ :              : $>Turn Left
+ :              : $>Wait: 2 frame(s)
+ :              : $>Turn Down
+ :              : $>Wait: 2 frame(s)
+@>Wait for Move's Completion
+@>Change Screen Color Tone: (-255,-255,-255,0), @6
+@>Wait: 8 frame(s)
+@>Change Transparent Flag: Normal
+@>Transfer Player:[008: Red's House], (004,009), Up, No Fade
+@>Change Screen Color Tone: (0,0,0,0), @6
+@>
+
+Page #2
+Conditions
+Self Switch A is ON
 
 Graphic: doors5
 
@@ -3762,7 +3781,7 @@ List of Event Commands:
 @>Change Screen Color Tone: (0,0,0,0), @6
 @>
 
-Page #2
+Page #3
 Conditions
 Switch 0022: s:tsOff?("A") is ON
 
@@ -3830,6 +3849,8 @@ Move Animation
 Trigger: Action Button
 
 List of Event Commands:
+@>Comment: Event Indicator
+ :       : main_quest
 @>Text: \xn[Maribel]So, \PN! Are you ready to get our very first Puppet?\ch[1,2,Yes,No]
 @>Conditional Branch: Variable [0001: Temp Pokemon Choice] == 0
  @>Text: \xn[Maribel]Alright then! Let's hurry inside, I'm sure Proessor Oak is waiting for us!
@@ -3862,6 +3883,8 @@ Move Animation
 Trigger: Action Button
 
 List of Event Commands:
+@>Comment: Event Indicator
+ :       : main_quest
 @>Text: \xn[Renko]So, \PN! Are you ready to get our very first Puppet?\ch[1,2,Yes,No]
 @>Conditional Branch: Variable [0001: Temp Pokemon Choice] == 0
  @>Text: \xn[Renko]Alright then! Let's hurry inside, I'm sure Proessor Oak is waiting for us!
@@ -4321,7 +4344,8 @@ Move Animation
 Trigger: Action Button
 
 List of Event Commands:
-@>Script: pbSetSelfSwitch(8,"A",true)
+@>Comment: Event Indicator
+ :       : main_quest_vanish
 @>Text: \xn[Mom]Oh my, it is you! Why didn't you call and let me you were coming home?
 @>Text: \xn[Mom]I could have prepared your favorite meal for you and freshened up your room!
 @>Text: \xn[Mom]Well, I suppose it doesn't matter too much. As long as my boy is doing well, that's all that matters.
@@ -4332,7 +4356,7 @@ List of Event Commands:
 @>Comment: -- Update Journal
 @>Script: completeQuest(:Quest1)
 :       : activateQuest(:Quest2)
-@>Script: pbSetSelfSwitch2(7,16,"A",true)
+@>Script: pbSetSelfSwitch2(7,17,"A",true)
 @>Script: pbSetSelfSwitch2(7,14,"A",true)
 @>Script: # DOORS!!!!!!!!!
 :       : pbSetSelfSwitch2(7,9,"A",true)
@@ -4380,62 +4404,6 @@ List of Event Commands:
 @>Text: \xn[Red's Mom]Oh, hello there \pn! Are you looking for Professor Oak's lab?
 @>Text: \xn[Red's Mom]It's on the east side of town, just up the hill.
 @>Text: \xn[Red's Mom]You don't want to keep the Professor waiting too long!
-@>
-
-#------------------------------------------------------------------------------
-Event ID: 008
-Event Name: Quest Indicator: Main
-(X,Y): (008,004)
-
-Page #1
-Conditions
-None
-
-Graphic: questicon2
-
-Autonomous Movement
-Type: Fixed
-Speed: 3: Slow
-Freq: 3: Low
-Options Enabled
-Move Animation
-Stop Animation
-Direction Fix
-Through
-Always on Top
-Trigger: Action Button
-
-List of Event Commands:
-@>
-
-Page #2
-Conditions
-Self Switch A is ON
-
-Autonomous Movement
-Type: Fixed
-Speed: 3: Slow
-Freq: 3: Low
-Options Enabled
-Move Animation
-Trigger: Action Button
-
-List of Event Commands:
-@>
-
-Page #3
-Conditions
-Switch 0105: Intro Control Switch is ON
-
-Autonomous Movement
-Type: Fixed
-Speed: 3: Slow
-Freq: 3: Low
-Options Enabled
-Move Animation
-Trigger: Action Button
-
-List of Event Commands:
 @>
 
 #------------------------------------------------------------------------------
@@ -4691,6 +4659,8 @@ Move Animation
 Trigger: Action Button
 
 List of Event Commands:
+@>Comment: Event Indicator
+ :       : main_quest_vanish
 @>Script: pbSetSelfSwitch(9,"A",true)
 @>Text: \xn[Professor Oak]Well, if it isn't one of my best protégés! Red, it's a pleasure to see you again!
 @>Text: \xn[Professor Oak]How has life been treating you? I haven't heard from you since you decided to take up a training regiment in the Kalos Region almost two years 
@@ -4847,6 +4817,8 @@ Always on Top
 Trigger: Player Touch
 
 List of Event Commands:
+@>Comment: Event Indicator
+ :       : main_quest
 @>Conditional Branch: Player is facing Right
  @>Play SE: 'Door exit', 100, 100
  @>Change Screen Color Tone: (-255,-255,-255,0), @6
@@ -4977,70 +4949,6 @@ Trigger: Player Touch
 
 List of Event Commands:
 @>Text: * This isn't the way to Professor Oak's back garden!
-@>
-
-#------------------------------------------------------------------------------
-Event ID: 009
-Event Name: Quest Indicator: Main
-(X,Y): (024,024)
-
-Page #1
-Conditions
-None
-
-Graphic: questicon2
-
-Autonomous Movement
-Type: Fixed
-Speed: 3: Slow
-Freq: 3: Low
-Options Enabled
-Move Animation
-Stop Animation
-Direction Fix
-Through
-Always on Top
-Trigger: Parallel Process
-
-List of Event Commands:
-@>Set Event Location: This event,(019,003)
-@>
-
-Page #2
-Conditions
-Self Switch A is ON
-
-Autonomous Movement
-Type: Fixed
-Speed: 3: Slow
-Freq: 3: Low
-Options Enabled
-Move Animation
-Trigger: Action Button
-
-List of Event Commands:
-@>
-
-Page #3
-Conditions
-Self Switch B is ON
-
-Graphic: questicon2
-
-Autonomous Movement
-Type: Fixed
-Speed: 3: Slow
-Freq: 3: Low
-Options Enabled
-Move Animation
-Stop Animation
-Direction Fix
-Through
-Always on Top
-Trigger: Parallel Process
-
-List of Event Commands:
-@>Set Event Location: This event,(023,007)
 @>
 
 #------------------------------------------------------------------------------
@@ -5271,8 +5179,6 @@ List of Event Commands:
  :              : $>Turn Up
 @>Text: \xn[Professor Oak]Red, can you go check it out? That Puppet might need your help!
 @>Comment: -- Update Journal
-@>Set Event Location: [Quest Indicator: Main],(023,007)
-@>Script: pbSetSelfSwitch(9,"B",true)
 @>Script: completeQuest(:Quest2)
 :       : activateQuest(:Quest3)
 @>Script: pbSetSelfSwitch(1,"A",true)
@@ -7755,7 +7661,6 @@ List of Event Commands:
 @>Script: pbSetSelfSwitch(3,"A",true) # Cutscene Renko
 :       : pbSetSelfSwitch(4,"A",true) # Cutscene Maribel
 @>Script: pbSetSelfSwitch2(7,8,"B",true)
-:       : pbSetSelfSwitch2(7,16,"C",true)
 @>Control Switches: [0105: Intro Control Switch] = ON
 @>Comment: ------ Player Control
 @>Change Transparent Flag: Normal
@@ -7804,7 +7709,6 @@ List of Event Commands:
 @>Script: pbSetSelfSwitch(3,"A",true)
 :       : pbSetSelfSwitch(4,"A",true)
 @>Script: pbSetSelfSwitch2(7,8,"B",true)
-:       : pbSetSelfSwitch2(7,16,"C",true)
 @>Comment: ------ Player Control
 @>Change Transparent Flag: Normal
 @>Conditional Branch: Variable [0107: Chosen Protag] == 0
@@ -8343,7 +8247,6 @@ List of Event Commands:
 @>Text: \xn[Professor Oak]So, \PN, would you like Chibi Sanae, the Miko Puppet?\ch[1,2,Yes,No]
 @>Conditional Branch: Variable [0001: Temp Pokemon Choice] == 0
  @>Comment: Starter Chosen
- @>Script: pbSetSelfSwitch(4,"B",true)
  @>Text: \xn[Professor Oak]I'm sure you two will make a great pair!
  @>Script: p=Pokemon.new(:CSANAE,5,$player)
  :       : p.item=:ORANBERRY
@@ -8390,7 +8293,6 @@ List of Event Commands:
 @>Text: \xn[Professor Oak]So, \PN, would you like Chibi Sanae, the Miko Puppet?\ch[1,2,Yes,No]
 @>Conditional Branch: Variable [0001: Temp Pokemon Choice] == 0
  @>Comment: Starter Chosen
- @>Script: pbSetSelfSwitch(4,"B",true)
  @>Text: \xn[Professor Oak]I'm sure you two will make a great pair!
  @>Script: p=Pokemon.new(:CSANAE,5,$player)
  :       : p.item=:ORANBERRY
@@ -8479,7 +8381,6 @@ List of Event Commands:
 @>Text: \xn[Professor Oak]So, \PN, would you like Chibi Alice, the Puppeteer Puppet?\ch[1,2,Yes,No]
 @>Conditional Branch: Variable [0001: Temp Pokemon Choice] == 0
  @>Comment: Starter Chosen
- @>Script: pbSetSelfSwitch(4,"B",true)
  @>Text: \xn[Professor Oak]I'm sure you two will make a great pair!
  @>Script: p=Pokemon.new(:CALICE,5,$player)
  :       : p.item=:ORANBERRY
@@ -8526,7 +8427,6 @@ List of Event Commands:
 @>Text: \xn[Professor Oak]So, \PN, would you like Chibi Alice, the Puppeteer Puppet?\ch[1,2,Yes,No]
 @>Conditional Branch: Variable [0001: Temp Pokemon Choice] == 0
  @>Comment: Starter Chosen
- @>Script: pbSetSelfSwitch(4,"B",true)
  @>Text: \xn[Professor Oak]I'm sure you two will make a great pair!
  @>Script: p=Pokemon.new(:CALICE,5,$player)
  :       : p.item=:ORANBERRY
@@ -8611,11 +8511,12 @@ Move Animation
 Trigger: Action Button
 
 List of Event Commands:
+@>Comment: Event Indicator
+ :       : main_quest
 @>Script: pbShowPokedexEntry(:CREISEN)
 @>Text: \xn[Professor Oak]So, \PN, would you like Chibi Reisen, the Moon Rabbit Puppet?\ch[1,2,Yes,No]
 @>Conditional Branch: Variable [0001: Temp Pokemon Choice] == 0
  @>Comment: Starter Chosen
- @>Script: pbSetSelfSwitch(4,"B",true)
  @>Text: \xn[Professor Oak]I'm sure you two will make a great pair!
  @>Script: p=Pokemon.new(:CREISEN,5,$player)
  :       : p.item=:ORANBERRY
@@ -8658,11 +8559,12 @@ Move Animation
 Trigger: Action Button
 
 List of Event Commands:
+@>Comment: Event Indicator
+ :       : main_quest
 @>Script: pbShowPokedexEntry(:CREISEN)
 @>Text: \xn[Professor Oak]So, \PN, would you like Chibi Reisen, the Moon Rabbit Puppet?\ch[1,2,Yes,No]
 @>Conditional Branch: Variable [0001: Temp Pokemon Choice] == 0
  @>Comment: Starter Chosen
- @>Script: pbSetSelfSwitch(4,"B",true)
  @>Text: \xn[Professor Oak]I'm sure you two will make a great pair!
  @>Script: p=Pokemon.new(:CREISEN,5,$player)
  :       : p.item=:ORANBERRY
@@ -9000,6 +8902,8 @@ Move Animation
 Trigger: Player Touch
 
 List of Event Commands:
+@>Comment: Event Indicator
+ :       : main_quest
 @>Play SE: 'Door exit', 80, 100
 @>Fade Out BGM: 1 sec.
 @>Change Screen Color Tone: (-255,-255,-255,0), @6
@@ -9050,7 +8954,6 @@ List of Event Commands:
  @>
 : Branch End
 @>Script: activateQuest(:Quest6)
-@>Script: pbSetSelfSwitch(4,"A",true)
 @>Control Self Switch: A =ON
 @>
 
@@ -9085,18 +8988,24 @@ List of Event Commands:
 @>Text: \xn[\v[108]]Alright, it's my turn to choose now!
 @>Change Screen Color Tone: (-255,-255,-255,0), @10
 @>Wait: 10 frame(s)
-@>Conditional Branch: Variable [0007: Starter choice] == 0
- @>Script: pbSetSelfSwitch(2,"B",true)
- @>Script: pbSetSelfSwitch(3,"A",true)
+@>Conditional Branch: Variable [0007: Starter choice] == 1
+ @>Script: pbSetSelfSwitch(1,"A",true)
+ @>Script: pbSetSelfSwitch(2,"A",true)
+ @>Script: pbSetSelfSwitch(3,"B",true)
  @>
 : Else
- @>Conditional Branch: Variable [0007: Starter choice] == 1
-  @>Script: pbSetSelfSwitch(3,"B",true)
-  @>Script: pbSetSelfSwitch(1,"A",true)
+ @>Conditional Branch: Variable [0007: Starter choice] == 2
+  @>Script: pbSetSelfSwitch(2,"A",true)
+  @>Script: pbSetSelfSwitch(3,"A",true)
+  @>Script: pbSetSelfSwitch(1,"B",true)
   @>
  : Else
-  @>Script: pbSetSelfSwitch(1,"B",true)
-  @>Script: pbSetSelfSwitch(2,"A",true)
+  @>Conditional Branch: Variable [0007: Starter choice] == 3
+   @>Script: pbSetSelfSwitch(3,"A",true)
+   @>Script: pbSetSelfSwitch(1,"A",true)
+   @>Script: pbSetSelfSwitch(2,"B",true)
+   @>
+  : Branch End
   @>
  : Branch End
  @>
@@ -9150,7 +9059,6 @@ List of Event Commands:
 @>Change Screen Color Tone: (0,0,0,0), @10
 @>Script: completeQuest(:Quest6)
 :       : activateQuest(:Quest7)
-@>Script: pbSetSelfSwitch(4,"C",true)
 @>Control Self Switch: B =OFF
 @>
 
@@ -9572,6 +9480,37 @@ Trigger: Action Button
 
 List of Event Commands:
 @>Text: \v[1] \v[2] \v[3]
+@>
+
+#------------------------------------------------------------------------------
+Event ID: 018
+Event Name: EV018
+(X,Y): (000,000)
+
+Page #1
+Conditions
+None
+
+Autonomous Movement
+Type: Fixed
+Speed: 3: Slow
+Freq: 3: Low
+Options Enabled
+Move Animation
+Trigger: Action Button
+
+List of Event Commands:
+@>Script: case pbGet(7)
+:       : when 0
+:       :   pbSetSelfSwitch(2,"B",true)
+:       :   pbSetSelfSwitch(3,"B",true)
+:       : when 1
+:       :   pbSetSelfSwitch(3,"B",true)
+:       :   pbSetSelfSwitch(1,"B",true)
+:       : when 2
+:       :   pbSetSelfSwitch(1,"B",true)
+:       :   pbSetSelfSwitch(2,"B",true)
+:       : end
 @>
 
 #------------------------------------------------------------------------------
@@ -12761,6 +12700,8 @@ Move Animation
 Trigger: Player Touch
 
 List of Event Commands:
+@>Comment: Event Indicator
+ :       : main_quest
 @>Set Move Route: This event
                   (Ignore If Can't Move)
  :              : $>SE: 'Automatic Door', 100, 100
@@ -12797,6 +12738,56 @@ List of Event Commands:
 @>
 
 Page #2
+Conditions
+Variable 0110: Plot Control Variable is 1 or above
+
+Graphic: doors6
+
+Autonomous Movement
+Type: Fixed
+Speed: 3: Slow
+Freq: 3: Low
+Options Enabled
+Move Animation
+Trigger: Player Touch
+
+List of Event Commands:
+@>Set Move Route: This event
+                  (Ignore If Can't Move)
+ :              : $>SE: 'Automatic Door', 100, 100
+ :              : $>Wait: 2 frame(s)
+ :              : $>Turn Left
+ :              : $>Wait: 2 frame(s)
+ :              : $>Turn Right
+ :              : $>Wait: 2 frame(s)
+ :              : $>Turn Up
+ :              : $>Wait: 2 frame(s)
+@>Wait for Move's Completion
+@>Set Move Route: Player
+                  (Ignore If Can't Move)
+ :              : $>Through ON
+ :              : $>Move Up
+ :              : $>Through OFF
+@>Wait for Move's Completion
+@>Change Transparent Flag: Transparency
+@>Set Move Route: This event
+                  (Ignore If Can't Move)
+ :              : $>Wait: 2 frame(s)
+ :              : $>Turn Right
+ :              : $>Wait: 2 frame(s)
+ :              : $>Turn Left
+ :              : $>Wait: 2 frame(s)
+ :              : $>Turn Down
+ :              : $>Wait: 2 frame(s)
+@>Wait for Move's Completion
+@>Change Screen Color Tone: (-255,-255,-255,0), @6
+@>Wait: 8 frame(s)
+@>Change Transparent Flag: Normal
+@>Transfer Player:[177: Trainer Academy], (005,018), Up, No Fade
+@>Change Screen Color Tone: (0,0,0,0), @6
+@>
+
+Page #3
 Conditions
 Switch 0022: s:tsOff?("A") is ON
 
@@ -12943,47 +12934,6 @@ List of Event Commands:
  @>
 : Branch End
 @>Script: setTempSwitchOn("A")
-@>
-
-#------------------------------------------------------------------------------
-Event ID: 025
-Event Name: Quest Indicator: Main
-(X,Y): (016,030)
-
-Page #1
-Conditions
-None
-
-Graphic: questicon2
-
-Autonomous Movement
-Type: Fixed
-Speed: 3: Slow
-Freq: 3: Low
-Options Enabled
-Move Animation
-Stop Animation
-Direction Fix
-Through
-Always on Top
-Trigger: Action Button
-
-List of Event Commands:
-@>
-
-Page #2
-Conditions
-Variable 0110: Plot Control Variable is 1 or above
-
-Autonomous Movement
-Type: Fixed
-Speed: 3: Slow
-Freq: 3: Low
-Options Enabled
-Move Animation
-Trigger: Action Button
-
-List of Event Commands:
 @>
 
 #------------------------------------------------------------------------------
@@ -13325,7 +13275,7 @@ Speed: 3: Slow
 Freq: 3: Low
 Options Enabled
 Move Animation
-Trigger: Action Button
+Trigger: Player Touch
 
 List of Event Commands:
 @>Text: Hey, you there!
@@ -13335,6 +13285,7 @@ List of Event Commands:
  :    : special exhibit there!
 @>Set Move Route: Player
  :              : $>Move Left
+@>Wait for Move's Completion
 @>
 
 Page #2
@@ -13935,12 +13886,34 @@ List of Event Commands:
 
 #------------------------------------------------------------------------------
 Event ID: 033
-Event Name: 
+Event Name: Door
 (X,Y): (019,014)
 
 Page #1
 Conditions
 None
+
+Autonomous Movement
+Type: Fixed
+Speed: 3: Slow
+Freq: 3: Low
+Options Enabled
+Move Animation
+Trigger: Player Touch
+
+List of Event Commands:
+@>Comment: Event Indicator
+ :       : main_quest
+@>Play SE: 'Door exit', 100, 100
+@>Change Screen Color Tone: (-255,-255,-255,0), @6
+@>Wait: 8 frame(s)
+@>Transfer Player:[203: Pewter Museum F1], (017,020), Up, No Fade
+@>Change Screen Color Tone: (0,0,0,0), @6
+@>
+
+Page #2
+Conditions
+Variable 0110: Plot Control Variable is 2 or above
 
 Autonomous Movement
 Type: Fixed
@@ -13958,9 +13931,35 @@ List of Event Commands:
 @>Change Screen Color Tone: (0,0,0,0), @6
 @>
 
-Page #2
+Page #3
 Conditions
 Switch 0022: s:tsOff?("A") is ON
+
+Autonomous Movement
+Type: Fixed
+Speed: 3: Slow
+Freq: 3: Low
+Options Enabled
+Move Animation
+Trigger: Autorun
+
+List of Event Commands:
+@>Comment: Event Indicator
+ :       : main_quest
+@>Conditional Branch: Script: get_self.onEvent?
+ @>Set Move Route: Player
+                   (Ignore If Can't Move)
+  :              : $>Move Down
+ @>Wait for Move's Completion
+ @>
+: Branch End
+@>Script: setTempSwitchOn("A")
+@>
+
+Page #4
+Conditions
+Switch 0022: s:tsOff?("A") is ON
+Variable 0110: Plot Control Variable is 2 or above
 
 Autonomous Movement
 Type: Fixed
@@ -14690,54 +14689,13 @@ Speed: 3: Slow
 Freq: 3: Low
 Options Enabled
 Move Animation
-Trigger: Event Touch
+Trigger: Action Button
 
 List of Event Commands:
 @>Text: Have you checked up the museum? They're holding a 
  :    : special exhibit there!
 @>Set Move Route: This event
  :              : $>Turn Down
-@>
-
-Page #2
-Conditions
-Variable 0110: Plot Control Variable is 2 or above
-
-Autonomous Movement
-Type: Fixed
-Speed: 3: Slow
-Freq: 3: Low
-Options Enabled
-Move Animation
-Trigger: Action Button
-
-List of Event Commands:
-@>
-
-#------------------------------------------------------------------------------
-Event ID: 041
-Event Name: Quest Indicator: Main
-(X,Y): (019,013)
-
-Page #1
-Conditions
-Variable 0110: Plot Control Variable is 1 or above
-
-Graphic: questicon2
-
-Autonomous Movement
-Type: Fixed
-Speed: 3: Slow
-Freq: 3: Low
-Options Enabled
-Move Animation
-Stop Animation
-Direction Fix
-Through
-Always on Top
-Trigger: Action Button
-
-List of Event Commands:
 @>
 
 Page #2
@@ -27024,29 +26982,6 @@ List of Event Commands:
 @>
 
 #------------------------------------------------------------------------------
-Event ID: 018
-Event Name: EV018
-(X,Y): (034,026)
-
-Page #1
-Conditions
-None
-
-Graphic: Object ball
-
-Autonomous Movement
-Type: Fixed
-Speed: 3: Slow
-Freq: 3: Low
-Options Enabled
-Move Animation
-Trigger: Action Button
-
-List of Event Commands:
-@>Script: pbFieldApplyStatus(:POISON, 3, false, false)
-@>
-
-#------------------------------------------------------------------------------
 
 #==============================================================================
 Map ID: 046
@@ -27338,6 +27273,8 @@ Move Animation
 Trigger: Action Button
 
 List of Event Commands:
+@>Comment: Event Indicator
+ :       : side_quest
 @>Text: Oh, hello there! Isn't it a lovely day?
 @>Text: Of course, any day is lovely when you're surounded 
  :    : by the beauty that is nature.
@@ -27368,6 +27305,8 @@ Move Animation
 Trigger: Action Button
 
 List of Event Commands:
+@>Comment: Event Indicator
+ :       : side_quest
 @>Text: Did you manage to find an Oran Berry and Cheri 
  :    : Berry?
 @>Conditional Branch: Script: $bag.has?(:ORANBERRY) && $bag.has?(:CHERIBERRY)
@@ -27386,7 +27325,6 @@ List of Event Commands:
   :    : own miniature berry farm while you're traveling.
  @>Text: Be sure to put them to good use!
  @>Script: completeQuest(:Quest102)
- :       : pbSetSelfSwitch(15,"A",true)
  @>Control Self Switch: B =ON
  @>
 : Else
@@ -27728,49 +27666,6 @@ Trigger: Autorun
 List of Event Commands:
 @>Control Self Switch: A =OFF
 @>Script: setTempSwitchOn("A")
-@>
-
-#------------------------------------------------------------------------------
-Event ID: 015
-Event Name: Quest Indicator: Sidequest
-(X,Y): (012,026)
-
-Page #1
-Conditions
-None
-
-Graphic: questicon2
-
-Autonomous Movement
-Type: Fixed
-Speed: 3: Slow
-Freq: 3: Low
-Options Enabled
-Move Animation
-Stop Animation
-Direction Fix
-Through
-Always on Top
-Trigger: Action Button
-
-List of Event Commands:
-@>Comment: Relevant Sidequest: A Berry For Your Thoughts 
- :       : (Kanto)
-@>
-
-Page #2
-Conditions
-Self Switch A is ON
-
-Autonomous Movement
-Type: Fixed
-Speed: 3: Slow
-Freq: 3: Low
-Options Enabled
-Move Animation
-Trigger: Action Button
-
-List of Event Commands:
 @>
 
 #------------------------------------------------------------------------------
@@ -50547,47 +50442,6 @@ List of Event Commands:
 @>
 
 #------------------------------------------------------------------------------
-Event ID: 004
-Event Name: Quest Indicator: Main
-(X,Y): (018,004)
-
-Page #1
-Conditions
-None
-
-Graphic: questicon2
-
-Autonomous Movement
-Type: Fixed
-Speed: 3: Slow
-Freq: 3: Low
-Options Enabled
-Move Animation
-Stop Animation
-Direction Fix
-Through
-Always on Top
-Trigger: Action Button
-
-List of Event Commands:
-@>
-
-Page #2
-Conditions
-Variable 0110: Plot Control Variable is 1 or above
-
-Autonomous Movement
-Type: Fixed
-Speed: 3: Slow
-Freq: 3: Low
-Options Enabled
-Move Animation
-Trigger: Action Button
-
-List of Event Commands:
-@>
-
-#------------------------------------------------------------------------------
 Event ID: 005
 Event Name: EV005
 (X,Y): (016,016)
@@ -50715,6 +50569,8 @@ Move Animation
 Trigger: Action Button
 
 List of Event Commands:
+@>Comment: Event Indicator
+ :       : main_quest
 @>Memorize BGM/BGS
 @>Script: pbTrainerIntro(:SCMary)
 @>Conditional Branch: Self Switch A == OFF
@@ -50727,8 +50583,10 @@ List of Event Commands:
  @>Control Self Switch: A =ON
  @>
 : Branch End
-@>Text: \xn[Maribel]What do you say, Renko? Wanna have a battle right now?\ch[1,-1,Yes,No]
-@>Conditional Branch: Variable [0001: Temp Pokemon Choice] == 0
+@>Text: \xn[Maribel]What do you say, Renko? Wanna have a battle right now?
+@>Show Choices: Yes, No
+(When Cancel: Choice 2)
+: When [Yes]
  @>Comment: --- Yes
  @>Text: \xn[Maribel]Alright! Let's go, Renko!
  @>Comment: ==================
@@ -50766,8 +50624,7 @@ List of Event Commands:
  :       : activateQuest(:Quest9)
  @>Exit Event Processing
  @>
-: Branch End
-@>Conditional Branch: Variable [0001: Temp Pokemon Choice] == 1
+: When [No]
  @>Comment: --- No
  @>Script: pbTrainerEnd
  @>Text: \xn[Maribel]Okay then, I'll be here waiting if you change your mind! Until then, I'm going to continue reading some books.
@@ -50793,6 +50650,8 @@ Move Animation
 Trigger: Action Button
 
 List of Event Commands:
+@>Comment: Event Indicator
+ :       : main_quest
 @>Memorize BGM/BGS
 @>Script: pbTrainerIntro(:SCMary)
 @>Conditional Branch: Self Switch A == OFF
@@ -50806,8 +50665,10 @@ List of Event Commands:
  @>Control Self Switch: A =ON
  @>
 : Branch End
-@>Text: \xn[Renko]What do you say, Mary? Wanna go a round?\ch[1,-1,Yes,No]
-@>Conditional Branch: Variable [0001: Temp Pokemon Choice] == 0
+@>Text: \xn[Renko]What do you say, Mary? Wanna go a round?
+@>Show Choices: Yes, No
+(When Cancel: Choice 2)
+: When [Yes]
  @>Comment: --- Yes
  @>Text: \xn[Renko]Sweet! Let's do this, Mary!
  @>Comment: ==================
@@ -50845,8 +50706,7 @@ List of Event Commands:
  :       : activateQuest(:Quest9)
  @>Exit Event Processing
  @>
-: Branch End
-@>Conditional Branch: Variable [0001: Temp Pokemon Choice] == 1
+: When [No]
  @>Comment: --- No
  @>Script: pbTrainerEnd
  @>Text: \xn[Renko]That's fine! I'll be reading up on a few more books then until you're ready!
@@ -62728,7 +62588,7 @@ List of Event Commands:
 @>Script: pbNoticePlayer(get_self)
 @>Text: Hold it right there! You're leagues too early to consider challenging Brock!
 @>Comment: EndSpeech: Wait... Does leagues measure distance? Or is that just a turn of phrase?
-@>Conditional Branch: Script: TrainerBattle.start(:CAMPER, "Devin", 1+$trainer.badge_count)
+@>Conditional Branch: Script: TrainerBattle.start(:CAMPER, "Devin", 1+$player.badge_count)
  @>Control Self Switch: A =ON
  @>
 : Branch End
@@ -62825,7 +62685,7 @@ List of Event Commands:
  :    : Pewter Museum and Pewter Gym? Both have people
  :    : very dedicated to their work!
 @>Comment: EndSpeech: Dedication goes a long way, but even that doesn't ensure victory.
-@>Conditional Branch: Script: TrainerBattle.start(:RUINMANIAC, "Vic", 1+$trainer.badge_count)
+@>Conditional Branch: Script: TrainerBattle.start(:RUINMANIAC, "Vic", 1+$player.badge_count)
  @>Control Self Switch: A =ON
  @>
 : Branch End
@@ -63812,6 +63672,8 @@ Move Animation
 Trigger: Action Button
 
 List of Event Commands:
+@>Comment: Event Indicator
+ :       : side_quest
 @>Text: Hello there miss, tell me, do you know anything about
  :    : Mystic Gemstones?
 @>Text: Well, that's just the name I gave them I suppose.
@@ -63850,6 +63712,8 @@ Move Animation
 Trigger: Action Button
 
 List of Event Commands:
+@>Comment: Event Indicator
+ :       : side_quest
 @>Text: So, did you brig me those Mystic Gemstones I asked for?
 @>Conditional Branch: Script: $bag.quantity(:GREENSPHERE1)>=5 && $bag.quantity(:REDSPHERE1)>=5 && $bag.quantity(:BLUESPHERE1)>=5 && $bag.quantity(:PRISMSPHERE1)>=5 && $bag.quantity(:PALESPHERE1)>=5 && $bag.quantity(:GREENSPHERE2)>=5 && $bag.quantity(:REDSPHERE2)>=5 && $bag.quantity(:BLUESPHERE2)>=5 && $bag.quantity(:PRISMSPHERE2)>=5 && $bag.quantity(:PALESPHERE2)>=5
  @>Text: Oh, it looks like you have enough! Would you mind if I took them
@@ -64390,48 +64254,6 @@ Trigger: Action Button
 
 List of Event Commands:
 @>Text: \w[]\wm\c[14]\l[3]You scurry back home, protecting your exhausted partners from any further harm...
-@>
-
-#------------------------------------------------------------------------------
-Event ID: 020
-Event Name: Quest Indicator: Sidequest
-(X,Y): (024,016)
-
-Page #1
-Conditions
-None
-
-Graphic: questicon2
-
-Autonomous Movement
-Type: Fixed
-Speed: 3: Slow
-Freq: 3: Low
-Options Enabled
-Move Animation
-Stop Animation
-Direction Fix
-Through
-Always on Top
-Trigger: Action Button
-
-List of Event Commands:
-@>Comment: Relevant Sidequest: Sentimental Sedimentary
-@>
-
-Page #2
-Conditions
-Self Switch A is ON
-
-Autonomous Movement
-Type: Fixed
-Speed: 3: Slow
-Freq: 3: Low
-Options Enabled
-Move Animation
-Trigger: Action Button
-
-List of Event Commands:
 @>
 
 #------------------------------------------------------------------------------
@@ -65414,6 +65236,8 @@ Move Animation
 Trigger: Action Button
 
 List of Event Commands:
+@>Comment: Event Indicator
+ :       : main_quest
 @>Text: \xn[Miles]Oh, hello there. Who might you be?
 @>Text: \xn[Miles]\pn, huh? Well, I'm sorry you had to witness that just now.
 @>Text: \xn[Miles]That man who just left was Giovanni, the leader of an organization known as Team Rocket.
@@ -65710,48 +65534,6 @@ List of Event Commands:
 Page #2
 Conditions
 Self Switch A is ON
-
-Autonomous Movement
-Type: Fixed
-Speed: 3: Slow
-Freq: 3: Low
-Options Enabled
-Move Animation
-Trigger: Action Button
-
-List of Event Commands:
-@>
-
-#------------------------------------------------------------------------------
-Event ID: 012
-Event Name: Quest Indicator: Main
-(X,Y): (020,021)
-
-Page #1
-Conditions
-Self Switch A is ON
-
-Graphic: questicon2
-
-Autonomous Movement
-Type: Fixed
-Speed: 3: Slow
-Freq: 3: Low
-Options Enabled
-Move Animation
-Stop Animation
-Direction Fix
-Through
-Always on Top
-Trigger: Parallel Process
-
-List of Event Commands:
-@>Set Event Location: This event,(006,004)
-@>
-
-Page #2
-Conditions
-Variable 0110: Plot Control Variable is 2 or above
 
 Autonomous Movement
 Type: Fixed

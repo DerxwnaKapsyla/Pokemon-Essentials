@@ -87,7 +87,7 @@ class Battle::Move::HealUserByHalfOfDamageDoneThmn < Battle::Move
     return if target.damageState.hpLost <= 0
     hpGain = (target.damageState.hpLost / 2.0).round
     user.pbRecoverHPFromDrain(hpGain, target)
-	@battle.pbDisplay(_INTL("{1} sliced {2} with Gehaburn and absorbed its life force!",user.pbThis,target.pbThis(true)))
+	@battle.pbDisplay(_INTL("{1} sliced {2} and absorbed its life force!",user.pbThis,target.pbThis(true)))
   end
 end
 

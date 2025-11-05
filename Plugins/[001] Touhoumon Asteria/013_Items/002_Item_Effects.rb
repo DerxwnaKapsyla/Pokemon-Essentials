@@ -9,6 +9,83 @@
 #	* Added in items not present in Vanilla Touhoumon
 #	* Added sound effects to the Item Finder
 #==============================================================================#
+ItemHandlers::UseOnPokemon.copy(:MAXREVIVE,:GOLDENRICESAKE)
+ItemHandlers::UseInField.copy(:SACREDASH,:GOLDENPEACHSAKE)
+
+ItemHandlers::UseOnPokemon.add(:BEER, proc { |item, qty, pkmn, scene|
+  next pbHPItem(pkmn, 40, scene)
+})
+
+ItemHandlers::UseOnPokemon.add(:SAKE, proc { |item, qty, pkmn, scene|
+  next pbHPItem(pkmn, 80, scene)
+})
+
+ItemHandlers::UseOnPokemonMaximum.add(:HPTALISMAN, proc { |item, pkmn|
+  next pbMaxUsesOfEVRaisingItem(:HP, 252, pkmn, true)
+})
+
+ItemHandlers::UseOnPokemon.add(:HPTALISMAN, proc { |item, qty, pkmn, scene|
+  next pbUseEVRaisingItem(:HP, 252, qty, pkmn, "vitamin", scene, true)
+})
+
+ItemHandlers::UseOnPokemonMaximum.add(:ATKTALISMAN, proc { |item, pkmn|
+  next pbMaxUsesOfEVRaisingItem(:ATTACK, 252, pkmn, true)
+})
+
+ItemHandlers::UseOnPokemon.add(:ATKTALISMAN, proc { |item, qty, pkmn, scene|
+  next pbUseEVRaisingItem(:ATTACK, 252, qty, pkmn, "vitamin", scene, true)
+})
+
+ItemHandlers::UseOnPokemonMaximum.add(:DEFTALISMAN, proc { |item, pkmn|
+  next pbMaxUsesOfEVRaisingItem(:DEFENSE, 252, pkmn, true)
+})
+
+ItemHandlers::UseOnPokemon.add(:DEFTALISMAN, proc { |item, qty, pkmn, scene|
+  next pbUseEVRaisingItem(:DEFENSE, 252, qty, pkmn, "vitamin", scene, true)
+})
+
+ItemHandlers::UseOnPokemonMaximum.add(:SPATKTALISMAN, proc { |item, pkmn|
+  next pbMaxUsesOfEVRaisingItem(:SPECIAL_ATTACK, 252, pkmn, true)
+})
+
+ItemHandlers::UseOnPokemon.add(:SPATKTALISMAN, proc { |item, qty, pkmn, scene|
+  next pbUseEVRaisingItem(:SPECIAL_ATTACK, 252, qty, pkmn, "vitamin", scene, true)
+})
+
+ItemHandlers::UseOnPokemonMaximum.add(:SPDEFTALISMAN, proc { |item, pkmn|
+  next pbMaxUsesOfEVRaisingItem(:SPECIAL_DEFENSE, 252, pkmn, true)
+})
+
+ItemHandlers::UseOnPokemon.add(:SPDEFTALISMAN, proc { |item, qty, pkmn, scene|
+  next pbUseEVRaisingItem(:SPECIAL_DEFENSE, 252, qty, pkmn, "vitamin", scene, true)
+})
+
+ItemHandlers::UseOnPokemonMaximum.add(:SPDTALISMAN, proc { |item, pkmn|
+  next pbMaxUsesOfEVRaisingItem(:SPEED, 252, pkmn, true)
+})
+
+ItemHandlers::UseOnPokemon.add(:SPDTALISMAN, proc { |item, qty, pkmn, scene|
+  next pbUseEVRaisingItem(:SPEED, 252, qty, pkmn, "vitamin", scene, true)
+})
+
+# ItemHandlers::UseOnPokemonMaximum.add(:RESETTALISMAN, proc { |item, pkmn|
+  # next pbMaxUsesOfEVLoweringBerry(stat, pkmn)
+# })
+
+ItemHandlers::UseOnPokemon.add(:RESETTALISMAN, proc { |item, qty, pkmn, scene|
+  stats = [:HP, :ATTACK, :DEFENSE, :SPEED, :SPECIAL_ATTACK, :SPECIAL_DEFENSE]
+  has_evs = stats.any? { |stat| pkmn.ev[stat] > 0 }
+  if !has_evs
+    scene.pbDisplay(_INTL("It won't have any effect."))
+    next false
+  end
+  stats.each do |stat|
+    pbLowerEV(pkmn, scene, stat, qty, [])
+  end
+  scene.pbDisplay(_INTL("{1}'s stats were reset!", pkmn.name))
+  next true
+})
+
 ItemHandlers::UseInField.add(:BLACKFLUTE, proc { |item|
   pbUseItemMessage(item)
   if Settings::FLUTES_CHANGE_WILD_ENCOUNTER_LEVELS
@@ -112,3 +189,4 @@ ItemHandlers::UseOnPokemon.add(:LIQUIDREVIVE, proc { |item, qty, pkmn, scene|
   next true
 })
 # ------ Derx: End of Liquid Revive
+

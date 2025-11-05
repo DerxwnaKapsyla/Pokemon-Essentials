@@ -11,59 +11,53 @@
 #		* Iron Ball interactions with Touhoumon Flying
 #==============================================================================#
 class Battle::Move
+  alias orig_pbCalcTypeModSingle pbCalcTypeModSingle
   def pbCalcTypeModSingle(moveType, defType, user, target)
-    ret = Effectiveness.calculate(moveType, defType)
+    ret = orig_pbCalcTypeModSingle(moveType, defType, user, target)
     if Effectiveness.ineffective_type?(moveType, defType)
-      # Ring Target
-      if target.hasActiveItem?(:RINGTARGET)
-        ret = Effectiveness::NORMAL_EFFECTIVE_MULTIPLIER
-      end
       # Foresight
-      if (user.hasActiveAbility?(:SCRAPPY) || target.effects[PBEffects::Foresight]) &&
-         (defType == :GHOST || defType == :GHOST18)
+      if (user.hasActiveAbility?(:SCRAPPY) || 
+	      target.effects[PBEffects::Foresight]) &&
+         [:GHOST, :GHOST18].include?(defType)
         ret = Effectiveness::NORMAL_EFFECTIVE_MULTIPLIER
       end
       # Miracle Eye
-      if target.effects[PBEffects::MiracleEye] && defType == :DARK
+      if target.effects[PBEffects::MiracleEye] &&
+	     [:DARK, :DARK18].include?(defType)
         ret = Effectiveness::NORMAL_EFFECTIVE_MULTIPLIER
       end
     elsif Effectiveness.super_effective_type?(moveType, defType)
       # Delta Stream's weather
-      if target.effectiveWeather == :StrongWinds && (defType == :FLYING || defType == :FLYING18)
+      if target.effectiveWeather == :StrongWinds &&
+         [:FLYING, :FLYING18].include?(defType)
         ret = Effectiveness::NORMAL_EFFECTIVE_MULTIPLIER
 	  end
 	  # Derx: Yuyuko Omega's Deathly Frost weather. Removes Ghost and Nether weaknesses.
-      if target.effectiveWeather == :SevereHail && (defType == :GHOST || defType == :GHOST18)
+      if target.effectiveWeather == :SevereHail && 
+      [:GHOST, :GHOST18].include?(defType)
         ret = Effectiveness::NORMAL_EFFECTIVE_ONE
       end
     end
     # Grounded Flying-type Pokémon become susceptible to Ground moves
-    if !target.airborne? && (defType == :FLYING || defType == :FLYING18) && 
-    						(moveType == :GROUND || moveType == :EARTH18)
+    if !target.airborne? && [:FLYING, :FLYING18].include?(defType) && 
+	                        [:GROUND, :EARTH18].include?(moveType)
       ret = Effectiveness::NORMAL_EFFECTIVE_MULTIPLIER
     end
     return ret
   end
 
+  alias orig_pbCalcTypeMod pbCalcTypeMod
   def pbCalcTypeMod(moveType, user, target)
-    ret = Effectiveness::NORMAL_EFFECTIVE_MULTIPLIER
+    ret = orig_pbCalcTypeMod(moveType, user, target)
     return ret if !moveType
-    return ret if (moveType == :GROUND || moveType == :EARTH18) &&
-                                              (target.pbHasType?(:FLYING) || target.pbHasType?(:FLYING18)) &&
-                                              target.hasActiveItem?(:IRONBALL)
-
-    # Get effectivenesses
-    if moveType == :SHADOW
-      if target.shadowPokemon?
-        ret = Effectiveness::NOT_VERY_EFFECTIVE_MULTIPLIER
-      else
-        ret = Effectiveness::SUPER_EFFECTIVE_MULTIPLIER
-      end
-    else
-      target.pbTypes(true).each do |type|
-        ret *= pbCalcTypeModSingle(moveType, type, user, target)
-      end
-      ret *= 2 if target.effects[PBEffects::TarShot] && moveType == :FIRE
+    if moveType == :EARTH18 && target.pbHasType?(:FLYING18) && target.hasActiveItem?(:IRONBALL)
+      return Effectiveness::NORMAL_EFFECTIVE_MULTIPLIER
+    end
+    if moveType == :PHANTASM && !target.pbHasType?(:PHANTASM)
+      return Effectiveness::SUPER_EFFECTIVE_MULTIPLIER
+    end
+	if target.effects[PBEffects::TarShot] && moveType == :FIRE18
+      ret *= 2
     end
     return ret
   end
@@ -258,6 +252,11 @@ class Battle::Move
       else
         multipliers[:final_damage_multiplier] *= 1.5
       end
+    # Phantasm Dream
+	elsif user.hasActiveAbility?(:PHANTASMDREAM)
+	  multipliers[:final_damage_multiplier] *= 1.5
+	elsif type && user.pbHasType?(:PHANTASM) # This _should_ work?
+	  multipliers[:final_damage_multiplier] *= 1
     end
     # Type effectiveness
     multipliers[:final_damage_multiplier] *= target.damageState.typeMod

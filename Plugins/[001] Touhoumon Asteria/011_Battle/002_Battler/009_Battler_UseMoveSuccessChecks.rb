@@ -141,7 +141,8 @@ class Battle::Battler
       else
         pbContinueStatus
         if !move.usableWhenAsleep? &&  # Snore/Sleep Talk
-		   !hasActiveAbility?(:LUCIDDREAMING) # Derx: Should check if the user has Lucid Dreaming when determining if the user can act while asleep
+		   !(hasActiveAbility?(:LUCIDDREAMING) ||
+		     hasActiveAbility?(:PHANTASMDREAM)) # Derx: Should check if the user has Lucid Dreaming or Phantasm Dream when determining if the user can act while asleep
 		   PBDebug.log("[Move failed] #{pbThis} is asleep")
           @lastMoveFailed = true
           return false

@@ -6,6 +6,15 @@
 # Changes in this section include the following:
 #	* Removed explicit references to Pokemon
 #==============================================================================#
+def pbLowerEV(pkmn, scene, stat, qty, messages)
+  if pkmn.ev[stat] > 0
+    pkmn.ev[stat] = 0
+    pkmn.calc_stats
+  end
+  scene.pbRefresh
+  return true
+end
+
 def pbUseItem(bag, item, bagscene = nil)
   itm = GameData::Item.get(item)
   useType = itm.field_use

@@ -17,7 +17,7 @@
 # Menu Options
 #-------------------------------------------------------------------------------
 # Main file path for the menu
-MENU_FILE_PATH = "Graphics/Pictures/VPM/"
+MENU_FILE_PATH = "Graphics/UI/VPM/"
 
 # An array of aLL the Menu Component Classes from 004_VoltseonMenu_Components
 # that need to be loaded

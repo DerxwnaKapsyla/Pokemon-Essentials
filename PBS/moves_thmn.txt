@@ -1048,7 +1048,7 @@ Category = Special
 Power = 30
 Accuracy = 100
 TotalPP = 10
-Target = AllNearFoes
+Target = NearOther
 FunctionCode = LowerTargetAccuracy1
 Flags = CanProtect,CanMirrorMove
 EffectChance = 100
@@ -1289,7 +1289,7 @@ Accuracy = 0
 TotalPP = 30
 Target = UserSide
 FunctionCode = StartWeakenSpecialDamageAgainstUserSide
-Description = The user throws up a sturdy wall that sharply raises its Defense stat.
+Description = The user throws up a sturdy wall that sharply raises its Special Defense stat.
 #-------------------------------
 [LOWKICK18]
 Name = Low Kick
@@ -1571,7 +1571,7 @@ Accuracy = 0
 TotalPP = 5
 Target = BothSides
 FunctionCode = StartSunWeather
-Description = The user intensifies the sun for five turns, powering up Fire-type moves.
+Description = The user intensifies the sun for five turns, powering up Pyro-type moves.
 #-------------------------------
 [WILLOWISP18]
 Name = Will-o-Wisp
@@ -1797,7 +1797,7 @@ Accuracy = 0
 TotalPP = 10
 Target = User
 FunctionCode = CurseTargetOrLowerUserSpd1RaiseUserAtkDef1
-Description = A move that works differently for the Ghost type than for all the other types.
+Description = A move that works differently for the Nether type than for all the other types.
 #-------------------------------
 [DESTINYBOND18]
 Name = Destiny Bond
@@ -2377,7 +2377,7 @@ Accuracy = 0
 TotalPP = 10
 Target = User
 FunctionCode = StartHailWeather
-Description = The user summons a hail storm lasting five turns. It damages all battlers except the Ice type.
+Description = The user summons a hail storm lasting five turns. It damages all battlers except the Cryo type.
 #-------------------------------
 [HAZE18]
 Name = Haze
@@ -3411,7 +3411,7 @@ TotalPP = 40
 Target = NearOther
 FunctionCode = StartNegateTargetEvasionStatStageAndGhostImmunity
 Flags = CanProtect,CanMirrorMove
-Description = Enables the user to hit a Ghost type with any kind of move. It also enables the user to hit an evasive foe.
+Description = Enables the user to hit a Nether type with any kind of move. It also enables the user to hit an evasive foe.
 #-------------------------------
 [HYPNOSIS18]
 Name = Hypnosis
@@ -3810,7 +3810,7 @@ Accuracy = 0
 TotalPP = 30
 Target = User
 FunctionCode = RaiseUserAttack1
-Description = The user sharpens a blade to boost its Attack stat and accuracy.
+Description = The user sharpens a blade to boost its Attack stat.
 #-------------------------------
 [SKULLBASH18]
 Name = Skull Bash
@@ -3981,7 +3981,7 @@ Accuracy = 0
 TotalPP = 5
 Target = BothSides
 FunctionCode = StartRainWeather
-Description = The user summons a heavy rain that falls for five turns, powering up Water-type moves.
+Description = The user summons a heavy rain that falls for five turns, powering up Hydro-type moves.
 #-------------------------------
 [RECYCLE18]
 Name = Recycle
@@ -4283,6 +4283,40 @@ Target = NearOther
 FunctionCode = TypeAndPowerDependOnTerrain
 Flags = CanProtect,CanMirrorMove,Pulse
 Description = Utilizes the power of the terrain to attack. This move's type and power vary with the terrain.
+#-------------------------------
+[HIDDENPOWER18]
+Name = Hidden Power
+Type = PHANTASM
+Category = Status
+Accuracy = 0
+TotalPP = 20
+Target = NearOther
+FunctionCode = UseMoveDependingOnEnvironmentThmn
+Description = An attack that makes use of the land's hidden power. Its effects vary depending on the user's environment.
+#-------------------------------
+[ULTIMATEDREAM]
+Name = Ultimate Dream
+Type = PHANTASM
+Category = Special
+Power = 110
+Accuracy = 85
+TotalPP = 10
+Target = NearOther
+FunctionCode = UltimateDream
+Flags = CanProtect,CanMirrorMove
+Description = Steal stat changes, set up Sub. If SLP, heal 1/2 dmg dealt, set up Aurora Veil.
+#-------------------------------
+[MYRIADDREAMS]
+Name = All the Myriad Dreams of Paradise
+Type = PHANTASM
+Category = Special
+Power = 80
+Accuracy = 50
+TotalPP = 5
+Target = NearOther
+FunctionCode = MyriadDreams
+Description = All of Fantasy is at your beck and call. With it by your side, there is nothing you can't do.
+EffectChance = 100
 #-------------------------------
 [SUPERNOVA18]
 Name = Supernova

@@ -130,7 +130,7 @@ module BattleAnimationEditor
       320, 0, 320, 128, canvas.viewport
     )
     maxsizewindow = ControlWindow.new(0, 416, 320, 32 * 3)
-    maxsizewindow.addSlider(_INTL("Total Animations:"), 1, 2000, animations.length)
+    maxsizewindow.addSlider(_INTL("Total Animations:"), 1, 3000, animations.length)
     maxsizewindow.addButton(_INTL("Resize Animation List"))
     maxsizewindow.opacity = 224
     maxsizewindow.viewport = canvas.viewport
@@ -1096,7 +1096,7 @@ module BattleAnimationEditor
         animwin.refresh
         sliderwin.refresh
       end
-      if sliderwin.changed?(3)   # List of Animations
+      if sliderwin.changed?(3) || Input.press?(Input::CTRL)   # List of Animations
         pbAnimList(animation, canvas, animwin)
         sliderwin.controls[0].curvalue = canvas.currentframe + 1
         bottomwindow.refresh
@@ -1126,14 +1126,14 @@ module BattleAnimationEditor
       pbEntireSlide(canvas) if sidewin.changed?(8)
       canvas.play if sidewin.changed?(10)
       canvas.play(true) if sidewin.changed?(11)
-      if sidewin.changed?(12)
+      if sidewin.changed?(12) || Input.press?(Input::ALT)
         pbImportAnim(animation, canvas, animwin)
         sliderwin.controls[0].curvalue = canvas.currentframe + 1
         bottomwindow.refresh
         animwin.refresh
         sliderwin.refresh
       end
-      if sidewin.changed?(13)
+      if sidewin.changed?(13) || Input.press?(Input::SHIFT)
         pbExportAnim(animation)
         bottomwindow.refresh
         animwin.refresh

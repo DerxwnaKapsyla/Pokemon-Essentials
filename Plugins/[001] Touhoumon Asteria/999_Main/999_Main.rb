@@ -6,6 +6,11 @@
 # Changes in this section include the following:
 #	* Removed the quick jump to intro for if you're in Debug Mode.
 #==============================================================================#
+def mainFunction
+  pbCriticalCode { mainFunctionDebug }
+  return 1
+end
+
 def pbCallTitle
   return Scene_Intro.new
 end

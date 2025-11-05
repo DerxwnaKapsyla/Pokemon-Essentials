@@ -115,3 +115,40 @@ Battle::AI::Handlers::MoveEffectAgainstTargetScore.add("StartNegateTargetEvasion
 
 Battle::AI::Handlers::MoveBasePower.copy("TypeAndPowerDependOnWeather",
                                          "TypeAndPowerDependOnWeatherThmn")
+										 
+Battle::AI::Handlers::MoveEffectAgainstTargetScore.add("TargetMovesBecomeElectric",
+  proc { |score, move, user, target, ai, battle|
+    # Get Electric's effectiveness against the user
+    electric_eff = user.effectiveness_of_type_against_battler(:ELECTRIC, target)
+    electric_eff *= 1.5 if target.has_type?(:ELECTRIC)   # STAB
+    electric_eff = 0 if user.has_active_ability?([:LIGHTNINGROD, :MOTORDRIVE, :VOLTABSORB])
+    # For each of target's moves, get its effectiveness against the user and
+    # decide whether it is better or worse than Electric's effectiveness
+    old_type_better = 0
+    electric_type_better = 0
+    target.battler.eachMove do |m|
+      next if !m.damagingMove?
+      m_type = m.pbCalcType(target.battler)
+      next if m_type == :ELECTRIC
+      eff = user.effectiveness_of_type_against_battler(m_type, target, m)
+      eff *= 1.5 if target.has_type?(m_type)   # STAB
+      case m_type
+      when :FIRE, :FIRE18
+        eff = 0 if user.has_active_ability?(:FLASHFIRE)
+      when :GRASS, :GRASS18
+        eff = 0 if user.has_active_ability?(:SAPSIPPER)
+      when :WATER, :WATER18
+        eff = 0 if user.has_active_ability?([:STORMDRAIN, :WATERABSORB])
+      end
+      if eff > electric_eff
+        electric_type_better += 1
+      elsif eff < electric_eff
+        old_type_better += 1
+      end
+    end
+    next Battle::AI::MOVE_USELESS_SCORE if electric_type_better == 0
+    next Battle::AI::MOVE_USELESS_SCORE if electric_type_better < old_type_better
+    score += 10 * (electric_type_better - old_type_better)
+    next score
+  }
+)

@@ -1519,3 +1519,552 @@ Backtrace:
 [Touhoumon Asteria] 007_Battler_UseMove.rb:290:in `pbUseMove'
 [Deluxe Battle Kit] [001] Animation Utilities.rb:278:in `block in pbProcessTurn'
 001_PBDebug.rb:6:in `logonerr'
+
+=================
+
+[2025-11-03 17:20:04 -0700]
+[Pokémon Essentials version 21.1]
+
+Script error in event 5 (coords 0,0), map 19 (Professor Oak's Lab - B1F)
+Exception: ArgumentError
+Message: Invalid argument passed to method.
+Expected 1 to be one of [Symbol, GameData::TrainerType, String], but got Integer.
+
+***Full script:
+pbRegisterPartner(pbGet(1), pbGet(2), pbGet(3))
+setBattleRule("midbattleScript", :renmari_vs_red)
+setBattleRule("backdrop", "indoor2")
+setBattleRule("outcome", 1)
+setBattleRule("noMoney")
+setBattleRule("canLose")
+setBattleRule("2v2")
+
+TrainerBattle.start(:POKEMONTRAINER_Red, "Red")
+pbTrainerEnd
+pbDeregisterPartner
+
+Backtrace:
+004_Validation.rb:29:in `validate'
+001_GameData.rb:100:in `get'
+[Deluxe Battle Kit] [001] Trainer Editor Refactor.rb:129:in `pbRegisterPartner'
+(eval):1:in `execute_script'
+003_Interpreter.rb:140:in `eval'
+003_Interpreter.rb:140:in `execute_script'
+004_Interpreter_Commands.rb:1177:in `command_355'
+004_Interpreter_Commands.rb:116:in `execute_command'
+003_Interpreter.rb:132:in `block in update'
+003_Interpreter.rb:86:in `loop'
+
+=================
+
+[2025-11-03 18:58:10 -0700]
+[Pokémon Essentials version 21.1]
+
+Exception: NoMethodError
+Message: undefined method `cell_data' for nil:NilClass
+
+Backtrace:
+008_Sprite_AnimationSprite.rb:144:in `update_animation'
+008_Sprite_AnimationSprite.rb:131:in `update'
+006_RPG_Sprite.rb:79:in `block in update'
+006_RPG_Sprite.rb:79:in `each'
+006_RPG_Sprite.rb:79:in `update'
+008_Sprite_AnimationSprite.rb:284:in `update'
+008_Sprite_AnimationSprite.rb:328:in `block in update'
+008_Sprite_AnimationSprite.rb:328:in `each'
+008_Sprite_AnimationSprite.rb:328:in `update'
+002_Scene_Map.rb:151:in `block in updateSpritesets'
+
+=================
+
+[2025-11-03 19:22:13 -0700]
+[Pokémon Essentials version 21.1]
+
+Script error in event 11 (coords 3,1), map 178 (Pokémon Center)
+Exception: RuntimeError
+Message: Unknown ID GLITTERBALL.
+
+***Full script:
+pbPasswordCheck
+
+Backtrace:
+001_GameData.rb:103:in `get'
+001_Overworld.rb:707:in `pbReceiveItem'
+[Touhoumon Asteria] 004_Passwords.rb:632:in `pbPasswordCheck'
+(eval):1:in `execute_script'
+003_Interpreter.rb:140:in `eval'
+003_Interpreter.rb:140:in `execute_script'
+004_Interpreter_Commands.rb:1177:in `command_355'
+004_Interpreter_Commands.rb:116:in `execute_command'
+003_Interpreter.rb:132:in `block in update'
+003_Interpreter.rb:86:in `loop'
+
+=================
+
+[2025-11-03 19:48:44 -0700]
+[Pokémon Essentials version 21.1]
+
+Script error in event 9 (coords 11,5), map 188 (Hall of Representatives)
+Exception: NameError
+Message: uninitialized constant Interpreter::PBTrainers
+
+***Full script:
+TrainerBattle.start(PBTrainers::REP_M, "Slate", 0)
+Backtrace:
+(eval):1:in `execute_script'
+003_Interpreter.rb:140:in `eval'
+003_Interpreter.rb:140:in `execute_script'
+004_Interpreter_Commands.rb:434:in `command_111'
+004_Interpreter_Commands.rb:29:in `execute_command'
+003_Interpreter.rb:132:in `block in update'
+003_Interpreter.rb:86:in `loop'
+003_Interpreter.rb:86:in `update'
+[Touhoumon Asteria] 006_Vermilion Gym.rb:28:in `block in update'
+[Touhoumon Asteria] 006_Vermilion Gym.rb:27:in `loop'
+
+=================
+
+[2025-11-04 02:53:07 -0700]
+[Pokémon Essentials version 21.1]
+
+Exception: NoMethodError
+Message: undefined method `>' for nil:NilClass
+
+Backtrace:
+[Advanced Items - Field Moves] 01_Code.rb:2119:in `update'
+[Advanced Items - Field Moves] 01_Code.rb:2395:in `update'
+004_Game_Map.rb:462:in `block in update'
+004_Game_Map.rb:462:in `each_value'
+004_Game_Map.rb:462:in `update'
+[Advanced Items - Field Moves] 01_Code.rb:637:in `update'
+[Delta Speed Up] _Main_Script.rb:91:in `update'
+001_StartGame.rb:70:in `load'
+[Delta Speed Up] _Main_Script.rb:22:in `load'
+[Touhoumon Asteria] 013_UI_Load.rb:76:in `block in pbStartLoadScreen'
+
+=================
+
+[2025-11-04 03:12:28 -0700]
+[Pokémon Essentials version 21.1]
+
+Exception: Errno::ENOENT
+Message: File Graphics/Characters/truthshimmer not found.
+
+Backtrace:
+[Advanced Items - Field Moves] 01_Code.rb:2001:in `initialize'
+[Advanced Items - Field Moves] 01_Code.rb:2001:in `new'
+[Advanced Items - Field Moves] 01_Code.rb:2001:in `initialize'
+[Advanced Items - Field Moves] 01_Code.rb:2075:in `new'
+[Advanced Items - Field Moves] 01_Code.rb:2075:in `initialize'
+[Advanced Items - Field Moves] 05_Overworld Animation.rb:763:in `initialize'
+[Advanced Items - Field Moves] 05_Overworld Animation.rb:890:in `initialize'
+[Advanced Items - Field Moves] 05_Overworld Animation.rb:1169:in `initialize'
+[Advanced Items - Field Moves] 09_Better Use Item and Move.rb:117:in `initialize'
+[Advanced Items - Field Moves] 09_Better Use Item and Move.rb:220:in `initialize'
+
+=================
+
+[2025-11-04 03:13:45 -0700]
+[Pokémon Essentials version 21.1]
+
+Error in Plugin: [Advanced Items - Field Moves]
+Exception: NameError
+Message: uninitialized constant AdvancedItemsFieldMoves::SENSETRUTH_CONFIG
+
+Backtrace:
+[Advanced Items - Field Moves] 01_Code.rb:36:in `<main>'
+005_PluginManager.rb:635:in `eval'
+005_PluginManager.rb:635:in `block (2 levels) in runPlugins'
+005_PluginManager.rb:625:in `each'
+005_PluginManager.rb:625:in `block in runPlugins'
+005_PluginManager.rb:616:in `each'
+005_PluginManager.rb:616:in `runPlugins'
+999_Main.rb:35:in `mainFunctionDebug'
+999_Main.rb:19:in `block in mainFunction'
+003_Errors.rb:79:in `pbCriticalCode'
+
+=================
+
+[2025-11-04 03:21:16 -0700]
+[Pokémon Essentials version 21.1]
+
+Exception: RuntimeError
+Message: Bitmap's width (32) is not a multiple of frame width (40) [Bitmap=Graphics/UI/VPM/Theme 1/arrow_left]
+
+Backtrace:
+007_BitmapSprite.rb:44:in `initializeLong'
+007_BitmapSprite.rb:94:in `initialize'
+[Voltseon's Pause Menu] 002_VoltseonMenu_Main.rb:59:in `new'
+[Voltseon's Pause Menu] 002_VoltseonMenu_Main.rb:59:in `initialize'
+[Voltseon's Pause Menu] 002_VoltseonMenu_Main.rb:276:in `new'
+[Voltseon's Pause Menu] 002_VoltseonMenu_Main.rb:276:in `call_menu'
+[Advanced Items - Field Moves] 10_Overwrites.rb:74:in `update'
+002_Scene_Map.rb:238:in `block in main'
+002_Scene_Map.rb:235:in `loop'
+002_Scene_Map.rb:235:in `main'
+
+=================
+
+[2025-11-04 03:23:19 -0700]
+[Pokémon Essentials version 21.1]
+
+Exception: NoMethodError
+Message: undefined method `y' for nil:NilClass
+
+Backtrace:
+[Voltseon's Pause Menu] 004_VoltseonMenu_Components.rb:232:in `update'
+[Voltseon's Pause Menu] 002_VoltseonMenu_Main.rb:223:in `block (2 levels) in update'
+[Voltseon's Pause Menu] 002_VoltseonMenu_Main.rb:223:in `each'
+[Voltseon's Pause Menu] 002_VoltseonMenu_Main.rb:223:in `block in update'
+[Voltseon's Pause Menu] 002_VoltseonMenu_Main.rb:219:in `loop'
+[Voltseon's Pause Menu] 002_VoltseonMenu_Main.rb:219:in `update'
+[Voltseon's Pause Menu] 002_VoltseonMenu_Main.rb:297:in `pbStartPokemonMenu'
+[Voltseon's Pause Menu] 002_VoltseonMenu_Main.rb:288:in `call_menu'
+[Advanced Items - Field Moves] 10_Overwrites.rb:74:in `update'
+002_Scene_Map.rb:238:in `block in main'
+
+=================
+
+[2025-11-04 14:45:45 -0700]
+[Pokémon Essentials version 21.1]
+
+Exception: NoMethodError
+Message: undefined method `y' for nil:NilClass
+
+Backtrace:
+[Voltseon's Pause Menu] 004_VoltseonMenu_Components.rb:232:in `update'
+[Voltseon's Pause Menu] 002_VoltseonMenu_Main.rb:223:in `block (2 levels) in update'
+[Voltseon's Pause Menu] 002_VoltseonMenu_Main.rb:223:in `each'
+[Voltseon's Pause Menu] 002_VoltseonMenu_Main.rb:223:in `block in update'
+[Voltseon's Pause Menu] 002_VoltseonMenu_Main.rb:219:in `loop'
+[Voltseon's Pause Menu] 002_VoltseonMenu_Main.rb:219:in `update'
+[Voltseon's Pause Menu] 002_VoltseonMenu_Main.rb:297:in `pbStartPokemonMenu'
+[Voltseon's Pause Menu] 002_VoltseonMenu_Main.rb:288:in `call_menu'
+[Advanced Items - Field Moves] 10_Overwrites.rb:74:in `update'
+002_Scene_Map.rb:238:in `block in main'
+
+=================
+
+[2025-11-04 14:47:28 -0700]
+[Pokémon Essentials version 21.1]
+
+Script error in event 3 (coords 18,40), map 35 (Viridian City)
+Exception: NoMethodError
+Message: undefined method `[]' for nil:NilClass
+
+***Full script:
+pbCut
+Backtrace:
+[Advanced Items - Field Moves] 01_Code.rb:292:in `pbCut'
+(eval):1:in `execute_script'
+003_Interpreter.rb:140:in `eval'
+003_Interpreter.rb:140:in `execute_script'
+004_Interpreter_Commands.rb:434:in `command_111'
+004_Interpreter_Commands.rb:29:in `execute_command'
+003_Interpreter.rb:132:in `block in update'
+003_Interpreter.rb:86:in `loop'
+003_Interpreter.rb:86:in `update'
+[Advanced Items - Field Moves] 10_Overwrites.rb:34:in `block in update'
+
+=================
+
+[2025-11-04 14:48:26 -0700]
+[Pokémon Essentials version 21.1]
+
+Script error in event 3 (coords 18,40), map 35 (Viridian City)
+Exception: NoMethodError
+Message: undefined method `[]' for nil:NilClass
+
+***Full script:
+pbCut
+Backtrace:
+[Advanced Items - Field Moves] 01_Code.rb:292:in `pbCut'
+(eval):1:in `execute_script'
+003_Interpreter.rb:140:in `eval'
+003_Interpreter.rb:140:in `execute_script'
+004_Interpreter_Commands.rb:434:in `command_111'
+004_Interpreter_Commands.rb:29:in `execute_command'
+003_Interpreter.rb:132:in `block in update'
+003_Interpreter.rb:86:in `loop'
+003_Interpreter.rb:86:in `update'
+[Advanced Items - Field Moves] 10_Overwrites.rb:34:in `block in update'
+
+=================
+
+[2025-11-04 16:24:36 -0700]
+[Pokémon Essentials version 21.1]
+
+Exception: TypeError
+Message: Argument 0: Expected string
+
+Backtrace:
+010_DrawText.rb:1109:in `text_size'
+010_DrawText.rb:1109:in `block in pbDrawTextPositions'
+010_DrawText.rb:1108:in `each'
+010_DrawText.rb:1108:in `pbDrawTextPositions'
+008_UI_Pokegear.rb:50:in `refresh'
+008_UI_Pokegear.rb:27:in `initialize'
+008_UI_Pokegear.rb:82:in `new'
+008_UI_Pokegear.rb:82:in `block in pbStartScene'
+008_UI_Pokegear.rb:81:in `times'
+008_UI_Pokegear.rb:81:in `pbStartScene'
+
+=================
+
+[2025-11-04 16:25:20 -0700]
+[Pokémon Essentials version 21.1]
+
+Exception: TypeError
+Message: Argument 0: Expected string
+
+Backtrace:
+010_DrawText.rb:1109:in `text_size'
+010_DrawText.rb:1109:in `block in pbDrawTextPositions'
+010_DrawText.rb:1108:in `each'
+010_DrawText.rb:1108:in `pbDrawTextPositions'
+008_UI_Pokegear.rb:50:in `refresh'
+008_UI_Pokegear.rb:27:in `initialize'
+008_UI_Pokegear.rb:82:in `new'
+008_UI_Pokegear.rb:82:in `block in pbStartScene'
+008_UI_Pokegear.rb:81:in `times'
+008_UI_Pokegear.rb:81:in `pbStartScene'
+
+=================
+
+[2025-11-04 16:25:56 -0700]
+[Pokémon Essentials version 21.1]
+
+Exception: TypeError
+Message: Argument 0: Expected string
+
+Backtrace:
+010_DrawText.rb:1109:in `text_size'
+010_DrawText.rb:1109:in `block in pbDrawTextPositions'
+010_DrawText.rb:1108:in `each'
+010_DrawText.rb:1108:in `pbDrawTextPositions'
+008_UI_Pokegear.rb:50:in `refresh'
+008_UI_Pokegear.rb:27:in `initialize'
+008_UI_Pokegear.rb:82:in `new'
+008_UI_Pokegear.rb:82:in `block in pbStartScene'
+008_UI_Pokegear.rb:81:in `times'
+008_UI_Pokegear.rb:81:in `pbStartScene'
+
+=================
+
+[2025-11-04 16:26:59 -0700]
+[Pokémon Essentials version 21.1]
+
+Error in Plugin: [Touhoumon Asteria]
+Exception: SyntaxError
+Message: [Touhoumon Asteria] 008_UI_Pokegear.rb:61: syntax error, unexpected string literal, expecting '}'
+  "effect"    => proc { |menu|
+  ^
+[Touhoumon Asteria] 008_UI_Pokegear.rb:61: syntax error, unexpected '{', expecting end-of-input
+  "effect"    => proc { |menu|
+                      ^
+
+
+Backtrace:
+005_PluginManager.rb:635:in `eval'
+005_PluginManager.rb:635:in `block (2 levels) in runPlugins'
+005_PluginManager.rb:625:in `each'
+005_PluginManager.rb:625:in `block in runPlugins'
+005_PluginManager.rb:616:in `each'
+005_PluginManager.rb:616:in `runPlugins'
+999_Main.rb:35:in `mainFunctionDebug'
+999_Main.rb:19:in `block in mainFunction'
+003_Errors.rb:79:in `pbCriticalCode'
+999_Main.rb:19:in `mainFunction'
+
+=================
+
+[2025-11-04 16:27:30 -0700]
+[Pokémon Essentials version 21.1]
+
+Error in Plugin: [Touhoumon Asteria]
+Exception: NoMethodError
+Message: undefined method `[]' for nil:NilClass
+
+Backtrace:
+[Touhoumon Asteria] 008_UI_Pokegear.rb:60:in `<main>'
+005_PluginManager.rb:635:in `eval'
+005_PluginManager.rb:635:in `block (2 levels) in runPlugins'
+005_PluginManager.rb:625:in `each'
+005_PluginManager.rb:625:in `block in runPlugins'
+005_PluginManager.rb:616:in `each'
+005_PluginManager.rb:616:in `runPlugins'
+999_Main.rb:35:in `mainFunctionDebug'
+999_Main.rb:19:in `block in mainFunction'
+003_Errors.rb:79:in `pbCriticalCode'
+
+=================
+
+[2025-11-04 17:21:00 -0700]
+[Pokémon Essentials version 21.1]
+
+Exception: NameError
+Message: undefined local variable or method `refresh_evoreqs' for #<PokemonPartyPanel>
+
+Backtrace:
+[Experimental Party UI] 001_UI_Party.rb:17:in `initialize'
+005_UI_Party.rb:511:in `new'
+005_UI_Party.rb:511:in `block in pbStartScene'
+005_UI_Party.rb:509:in `times'
+005_UI_Party.rb:509:in `pbStartScene'
+005_UI_Party.rb:918:in `pbStartScene'
+[Touhoumon Asteria] 003_Scene_ChooseCommands.rb:37:in `pbPartyScreen'
+005_Battle_ActionSwitching.rb:115:in `pbPartyScreen'
+009_Battle_CommandPhase.rb:145:in `pbPartyMenu'
+009_Battle_CommandPhase.rb:237:in `block (2 levels) in pbCommandPhaseLoop'
+
+=================
+
+[2025-11-04 17:21:07 -0700]
+[Pokémon Essentials version 21.1]
+
+Exception: NameError
+Message: undefined local variable or method `refresh_evoreqs' for #<PokemonPartyPanel>
+
+Backtrace:
+[Experimental Party UI] 001_UI_Party.rb:17:in `initialize'
+005_UI_Party.rb:511:in `new'
+005_UI_Party.rb:511:in `block in pbStartScene'
+005_UI_Party.rb:509:in `times'
+005_UI_Party.rb:509:in `pbStartScene'
+005_UI_Party.rb:918:in `pbStartScene'
+[Touhoumon Asteria] 003_Scene_ChooseCommands.rb:37:in `pbPartyScreen'
+005_Battle_ActionSwitching.rb:115:in `pbPartyScreen'
+009_Battle_CommandPhase.rb:145:in `pbPartyMenu'
+009_Battle_CommandPhase.rb:237:in `block (2 levels) in pbCommandPhaseLoop'
+
+=================
+
+[2025-11-04 17:21:09 -0700]
+[Pokémon Essentials version 21.1]
+
+Exception: NameError
+Message: undefined local variable or method `refresh_evoreqs' for #<PokemonPartyPanel>
+
+Backtrace:
+[Experimental Party UI] 001_UI_Party.rb:17:in `initialize'
+005_UI_Party.rb:511:in `new'
+005_UI_Party.rb:511:in `block in pbStartScene'
+005_UI_Party.rb:509:in `times'
+005_UI_Party.rb:509:in `pbStartScene'
+005_UI_Party.rb:918:in `pbStartScene'
+[Touhoumon Asteria] 003_Scene_ChooseCommands.rb:37:in `pbPartyScreen'
+005_Battle_ActionSwitching.rb:115:in `pbPartyScreen'
+009_Battle_CommandPhase.rb:145:in `pbPartyMenu'
+009_Battle_CommandPhase.rb:237:in `block (2 levels) in pbCommandPhaseLoop'
+
+=================
+
+[2025-11-04 17:29:27 -0700]
+[Pokémon Essentials version 21.1]
+
+Exception: NameError
+Message: undefined local variable or method `refresh_evoreqs' for #<PokemonPartyPanel>
+
+Backtrace:
+[Experimental Party UI] 001_UI_Party.rb:17:in `initialize'
+005_UI_Party.rb:511:in `new'
+005_UI_Party.rb:511:in `block in pbStartScene'
+005_UI_Party.rb:509:in `times'
+005_UI_Party.rb:509:in `pbStartScene'
+[Modular UI Scenes] UI Party Commands.rb:49:in `pbPokemonScreen'
+[Touhoumon Asteria] 001_UI_PauseMenu.rb:19:in `block (2 levels) in <main>'
+002_MessageConfig.rb:575:in `pbFadeOutIn'
+[Touhoumon Asteria] 001_UI_PauseMenu.rb:16:in `block in <main>'
+[Voltseon's Pause Menu] 003_VoltseonMenu_Menu.rb:54:in `update'
+
+=================
+
+[2025-11-04 18:27:12 -0700]
+[Pokémon Essentials version 21.1]
+
+Script error in event 3 (coords 18,40), map 35 (Viridian City)
+Exception: NoMethodError
+Message: undefined method `>' for nil:NilClass
+
+***Full script:
+pbCut
+Backtrace:
+[Advanced Items - Field Moves] 01_Code.rb:2614:in `failMessage'
+[Advanced Items - Field Moves] 01_Code.rb:294:in `pbCut'
+(eval):1:in `execute_script'
+003_Interpreter.rb:140:in `eval'
+003_Interpreter.rb:140:in `execute_script'
+004_Interpreter_Commands.rb:434:in `command_111'
+004_Interpreter_Commands.rb:29:in `execute_command'
+003_Interpreter.rb:132:in `block in update'
+003_Interpreter.rb:86:in `loop'
+003_Interpreter.rb:86:in `update'
+
+=================
+
+[2025-11-04 18:28:54 -0700]
+[Pokémon Essentials version 21.1]
+
+Script error in event 3 (coords 18,40), map 35 (Viridian City)
+Exception: NameError
+Message: undefined local variable or method `item_badge' for #<Interpreter @event_id: 3>
+
+***Full script:
+pbCut
+Backtrace:
+[Advanced Items - Field Moves] 01_Code.rb:2645:in `failMessage'
+[Advanced Items - Field Moves] 01_Code.rb:294:in `pbCut'
+(eval):1:in `execute_script'
+003_Interpreter.rb:140:in `eval'
+003_Interpreter.rb:140:in `execute_script'
+004_Interpreter_Commands.rb:434:in `command_111'
+004_Interpreter_Commands.rb:29:in `execute_command'
+003_Interpreter.rb:132:in `block in update'
+003_Interpreter.rb:86:in `loop'
+003_Interpreter.rb:86:in `update'
+
+=================
+
+[2025-11-04 19:30:41 -0700]
+[Pokémon Essentials version 21.1]
+
+Script error in event 3 (coords 21,24), map 201 (Pewter Gym)
+Exception: NoMethodError
+Message: undefined method `badge_count' for nil:NilClass
+
+***Full script:
+TrainerBattle.start(:CAMPER, "Devin", 1+$trainer.badge_count)
+Backtrace:
+(eval):1:in `execute_script'
+003_Interpreter.rb:140:in `eval'
+003_Interpreter.rb:140:in `execute_script'
+004_Interpreter_Commands.rb:434:in `command_111'
+004_Interpreter_Commands.rb:29:in `execute_command'
+003_Interpreter.rb:132:in `block in update'
+003_Interpreter.rb:86:in `loop'
+003_Interpreter.rb:86:in `update'
+[Advanced Items - Field Moves] 10_Overwrites.rb:34:in `block in update'
+[Advanced Items - Field Moves] 10_Overwrites.rb:33:in `loop'
+
+=================
+
+[2025-11-04 19:47:18 -0700]
+[Pokémon Essentials version 21.1]
+
+Script error in event 4 (coords 16,12), map 201 (Pewter Gym)
+Exception: NoMethodError
+Message: undefined method `badge_count' for nil:NilClass
+
+***Full script:
+TrainerBattle.start(:RUINMANIAC, "Vic", 1+$trainer.badge_count)
+Backtrace:
+(eval):1:in `execute_script'
+003_Interpreter.rb:140:in `eval'
+003_Interpreter.rb:140:in `execute_script'
+004_Interpreter_Commands.rb:434:in `command_111'
+004_Interpreter_Commands.rb:29:in `execute_command'
+003_Interpreter.rb:132:in `block in update'
+003_Interpreter.rb:86:in `loop'
+003_Interpreter.rb:86:in `update'
+[Advanced Items - Field Moves] 10_Overwrites.rb:34:in `block in update'
+[Advanced Items - Field Moves] 10_Overwrites.rb:33:in `loop'
