@@ -43,9 +43,9 @@ module APMSettings
   }
 
   BadgesForSpecies = {
-    1 => [:GROWLITHE],
-    2 => [:BULBASAUR, :SQUIRTLE],
-    3 => [:CHARMANDER]
+    1 => [],
+    2 => [],
+    3 => []
   }
 
   StockItems = {
@@ -152,18 +152,17 @@ module APMSettings
   ShowShinySpecies = true 
   Discounts = {
     :COUPONA => {
-      26 => [0, 3, 6, 8, 10],
-      28 => [0, -2, -5]
+      #26 => [0, 3, 6, 8, 10],
+      #28 => [0, -2, -5]
     },
-    27 => [0, 1, 4, 7, 11],
+    #27 => [0, 1, 4, 7, 11],
     :COUPONB => {
-      29 => [10, 8, 6, 4, 2, 0, -2, -4, -6, -8, -10, -12]
+      #29 => [10, 8, 6, 4, 2, 0, -2, -4, -6, -8, -10, -12]
     }
   }
 
   ItemPurchaseCounter = {
-    101 => [:POKEBALL, :GREATBALL, :ULTRABALL],
-    102 => [:POTION, :SUPERPOTION, :HYPERPOTION]
+    
   }
 
   BonusItems = {

@@ -19350,7 +19350,7 @@ List of Event Commands:
 #------------------------------------------------------------------------------
 Event ID: 020
 Event Name: EV020
-(X,Y): (026,005)
+(X,Y): (026,013)
 
 Page #1
 Conditions
@@ -52628,15 +52628,30 @@ Move Animation
 Trigger: Action Button
 
 List of Event Commands:
-@>Text: Welcome to the Viridian City Mart. We have a variety 
- :    : of goods to select from.
-@>Script: pbPokemonMart([
-:       : :POKEBALL,
-:       : :POTION,
-:       : :ANTIDOTE,
-:       : :PARALYZEHEAL,
-:       : :BURNHEAL
-:       : ])
+@>Script: pbViridianMart
+@>
+
+#------------------------------------------------------------------------------
+Event ID: 003
+Event Name: Limited Merchant
+(X,Y): (002,002)
+
+Page #1
+Conditions
+None
+
+Graphic: NPC 20
+
+Autonomous Movement
+Type: Fixed
+Speed: 3: Slow
+Freq: 3: Low
+Options Enabled
+Move Animation
+Trigger: Action Button
+
+List of Event Commands:
+@>Script: pbViridianMart_Limited
 @>
 
 #------------------------------------------------------------------------------
@@ -63494,6 +63509,47 @@ List of Event Commands:
 :       : ])
 @>
 
+Page #2
+Conditions
+None
+
+Graphic: NPC 19
+
+Autonomous Movement
+Type: Fixed
+Speed: 3: Slow
+Freq: 3: Low
+Options Enabled
+Move Animation
+Trigger: Action Button
+
+List of Event Commands:
+@>Script: pbPewterMart
+@>
+
+#------------------------------------------------------------------------------
+Event ID: 003
+Event Name: Limited Merchant
+(X,Y): (002,002)
+
+Page #1
+Conditions
+None
+
+Graphic: NPC 20
+
+Autonomous Movement
+Type: Fixed
+Speed: 3: Slow
+Freq: 3: Low
+Options Enabled
+Move Animation
+Trigger: Action Button
+
+List of Event Commands:
+@>Script: pbPewterMart_Limited
+@>
+
 #------------------------------------------------------------------------------
 
 #==============================================================================
@@ -71585,7 +71641,7 @@ List of Event Commands:
 
 #------------------------------------------------------------------------------
 Event ID: 005
-Event Name: EV005
+Event Name: Password Terminal
 (X,Y): (003,001)
 
 Page #1
@@ -71601,16 +71657,7 @@ Move Animation
 Trigger: Action Button
 
 List of Event Commands:
-@>Text: It's a terminal that lets you input a code.
- :    : Try it out?
-@>Show Choices: Yes, No
-(When Cancel: Choice 2)
-: When [Yes]
- @>Call Common Event: Passcode System
- @>
-: When [No]
- @>
-: Branch End
+@>Script: pbPasswordCheck
 @>
 
 #------------------------------------------------------------------------------
@@ -71658,7 +71705,7 @@ List of Event Commands:
 #------------------------------------------------------------------------------
 Event ID: 008
 Event Name: EV008
-(X,Y): (004,007)
+(X,Y): (012,008)
 
 Page #1
 Conditions
@@ -71675,43 +71722,13 @@ Move Animation
 Trigger: Action Button
 
 List of Event Commands:
-@>Text: Greetings! I'm a traveling merchant, and I have some 
- :    : goods that you might be interested in.
-@>Text: They're a bit higher priced than usual, but it beats 
- :    : having to walk all the way back to Pewter City, and I 
- :    : gotta turn a profit somehow!
-@>Text: Would you like to have a look at my stock?
-@>Show Choices: Yes, No
-(When Cancel: Choice 2)
-: When [Yes]
- @>Script: setPrice(:POKEBALL,250)
- :       : setPrice(:POTION,350)
- :       : setPrice(:ANTIDOTE,150)
- :       : setPrice(:AWAKENING,300)
- :       : setPrice(:BURNHEAL,300)
- :       : setPrice(:PARALYZEHEAL,250)
- :       : setPrice(:REPEL,400)
- :       : setSellPrice(:ESCAPEROPE,0)
- @>Script: pbPokemonMart([
- :       : :POKEBALL,
- :       : :POTION,
- :       : :ANTIDOTE,
- :       : :AWAKENING,
- :       : :BURNHEAL,
- :       : :PARALYZEHEAL,
- :       : :REPEL
- :       : ])
- @>
-: When [No]
- @>Text: Perhaps another time then, take care!
- @>
-: Branch End
+@>Script: pbRoute4Mart
 @>
 
 #------------------------------------------------------------------------------
 Event ID: 009
 Event Name: EV009
-(X,Y): (012,006)
+(X,Y): (002,006)
 
 Page #1
 Conditions
@@ -105570,9 +105587,9 @@ List of Event Commands:
 @>
 
 #------------------------------------------------------------------------------
-Event ID: 017
-Event Name: EV017
-(X,Y): (014,012)
+Event ID: 018
+Event Name: EV018
+(X,Y): (015,015)
 
 Page #1
 Conditions
@@ -105584,14 +105601,29 @@ Speed: 3: Slow
 Freq: 3: Low
 Options Enabled
 Move Animation
-Trigger: Action Button
+Trigger: Player Touch
 
 List of Event Commands:
-@>Play SE: 'Exit Door', 80, 100
-@>Change Screen Color Tone: (-255,-255,-255,0), @6
-@>Wait: 8 frame(s)
-@>Transfer Player:[252: Lavender Town Gym], (010,024), No Fade
-@>Change Screen Color Tone: (0,0,0,0), @6
+@>Text: Where would you like to go?
+@>Show Choices: Return to previous location, 2F, Nevermind
+(When Cancel: Choice 3)
+: When [Return to previous location]
+ @>Play SE: 'teleporter', 60, 100
+ @>Change Screen Color Tone: (-255,-255,-255,0), @6
+ @>Wait: 8 frame(s)
+ @>Transfer Player:Variable [0100][0098][0099], Down, No Fade
+ @>Change Screen Color Tone: (0,0,0,0), @6
+ @>
+: When [2F]
+ @>Play SE: 'teleporter', 60, 100
+ @>Change Screen Color Tone: (-255,-255,-255,0), @6
+ @>Wait: 8 frame(s)
+ @>Transfer Player:[290: Sandbox Zone - F2], (015,009), Down, No Fade
+ @>Change Screen Color Tone: (0,0,0,0), @6
+ @>
+: When [Nevermind]
+ @>
+: Branch End
 @>
 
 #------------------------------------------------------------------------------
@@ -114702,6 +114734,46 @@ List of Event Commands:
   @>
  : Branch End
  @>Text: Shutting down the Sandbox Computer System.
+ @>
+: Branch End
+@>
+
+#------------------------------------------------------------------------------
+Event ID: 021
+Event Name: EV021
+(X,Y): (015,009)
+
+Page #1
+Conditions
+None
+
+Autonomous Movement
+Type: Fixed
+Speed: 3: Slow
+Freq: 3: Low
+Options Enabled
+Move Animation
+Trigger: Player Touch
+
+List of Event Commands:
+@>Text: Where would you like to go?
+@>Show Choices: Return to previous location, 1F, Nevermind
+(When Cancel: Choice 3)
+: When [Return to previous location]
+ @>Play SE: 'teleporter', 60, 100
+ @>Change Screen Color Tone: (-255,-255,-255,0), @6
+ @>Wait: 8 frame(s)
+ @>Transfer Player:Variable [0100][0098][0099], Down, No Fade
+ @>Change Screen Color Tone: (0,0,0,0), @6
+ @>
+: When [1F]
+ @>Play SE: 'teleporter', 60, 100
+ @>Change Screen Color Tone: (-255,-255,-255,0), @6
+ @>Wait: 8 frame(s)
+ @>Transfer Player:[274: Sandbox Zone - F1], (015,015), Up, No Fade
+ @>Change Screen Color Tone: (0,0,0,0), @6
+ @>
+: When [Nevermind]
  @>
 : Branch End
 @>

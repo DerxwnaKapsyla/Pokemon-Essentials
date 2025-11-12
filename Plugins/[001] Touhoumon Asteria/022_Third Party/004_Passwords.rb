@@ -40,6 +40,7 @@ class Player < Trainer
   attr_accessor :disable_cash_gain
   attr_accessor :enable_item_drops
   attr_accessor :next_wild_shiny
+  attr_accessor :sandbox_zone_unlocked
 end
 
 class Game_Temp
@@ -83,13 +84,14 @@ def pbPasswordCheck(helptext = "Input Password", minlength = 0, maxlength = 12, 
 	"debmodeoff",			# Disables Debug Mode
 	"debmodestate",			# Toggles the activation state of Debug Mode
 	"perfection",			# All Wild/Traded/Gifted Pokemon have 31 IVs in all stats
+	"coarse&rough",         # Unlocks Sandbox Zone
 	
   # --- Difficulty Altering ---
 	"worthyfight",			# All trainers have 31^6 IVs
 	"whatthefuck",			# All trainers have 252^6 EVs
 	"rebornmode",			# All trainers have 31^6 IVs and 252^6 EVs
-	"noexp",				# Removes EXP Gain from all battles
-	"noevs",				# Removes EV Gain from all battles
+	"noexp",				# Removes EXP and EV Gain from all battles
+	#"noevs",				# Removes EV Gain from all battles
 	"noitems",				# Removes item use from all battles
 	"nocash",				# Removes cash gain from all battles
 	"tpdpmode",				# Removes cash gain from all battles, but makes it so battles have a chance to drop items to sell
@@ -766,6 +768,32 @@ def pbPasswordCheck(helptext = "Input Password", minlength = 0, maxlength = 12, 
 		  return false
 		end
 	  end
+	# --- Enable access to the Sandbox Zone ---
+	when "coarse&rough"
+	  pbMessage(_INTL("\\rThis code will teleport you to the Sandbox Zone."))
+	  pbMessage(_INTL("\\rWhen you return, you will be at the location you accessed the Sandbox Zone from."))
+	  if pbConfirmMessage(_INTL("\\bWould you like to teleport to the Sandbox Zone?"))
+		pbMessage(_INTL("\\bTeleporting in now."))
+        pbSet(98, $game_player.x)           # Set current X Coordinate
+		pbSet(99, $game_player.y)           # Set current Y Coordinate
+		pbSet(100, $game_player.map.map_id) # Set current Map ID
+		echoln pbGet(98)
+		echoln pbGet(99)
+		echoln pbGet(100)
+        
+		pbSEPlay("teleporter", 60, 100)
+        pbToneChangeAll(Tone.new(-255, -255, -255, 0), 6)
+        pbWait(0.6)
+		$game_temp.player_new_map_id    = 274
+        $game_temp.player_new_x         = 15
+        $game_temp.player_new_y         = 15
+        $scene.transfer_player if $scene.is_a?(Scene_Map)
+        $game_map.refresh
+		pbToneChangeAll(Tone.new(0, 0, 0, 0), 6)
+		return true
+	  else
+		return false
+	  end
 	# --- All Player-Obtained Pokemon have 31 IVs in all stats ---
 	when "perfection"
 	  if $player.player_ivs_maxed
@@ -852,52 +880,48 @@ def pbPasswordCheck(helptext = "Input Password", minlength = 0, maxlength = 12, 
 		  return false
 		end
 	  end
-	# --- Disables the gaining of EXP from all sources ---
-	# Battle EXP, Rare Candies, XP Candies, Day Care
-	# All of the relevant sections will need to have their code updated to accomidate the new flag
+	# --- Disables the gaining of EXP and EVs from battle ---
 	when "noexp"
 	  if $player.disable_exp_gain
-		pbMessage(_INTL("\\bThe code for disabling EXP gain from all sources is currently active."))
+		pbMessage(_INTL("\\bThe code for disabling EXP and EV gain from battles is currently active."))
 		if pbConfirmMessage(_INTL("\\bWould you like to disable this code?"))
-		  pbMessage(_INTL("\\bThe code for disabling EXP gain from all sources has been turned off."))
+		  pbMessage(_INTL("\\bThe code for disabling EXP and EV gain from battles has been turned off."))
 		  $player.disable_exp_gain = false
 		  return true
 		else
 		  return false
 		end
 	  else
-		pbMessage(_INTL("\\bThe code for disabling EXP gain from all sources is currently inactive."))
+		pbMessage(_INTL("\\bThe code for disabling EXP and EV gain from battles is currently inactive."))
 		if pbConfirmMessage(_INTL("\\bWould you like to enable this code?"))
-		  pbMessage(_INTL("\\bThe code for disabling EXP gain from all sources has been turned on."))
+		  pbMessage(_INTL("\\bThe code for disabling EXP and EV gain from battles has been turned on."))
 		  $player.disable_exp_gain = true
 		  return true
 		else
 		  return false
 		end
 	  end
-	# --- Disables the gaining of EVs from all sources ---
-	# Battle EVs, Vitamins/Wings, EXP Share
-	# All of the relevant sections will need to have their code updated to accomidate the new flag
-	when "noevs"
-	  if $player.disable_ev_gain
-		pbMessage(_INTL("\\bThe code for disabling EV gain from all sources is currently active."))
-		if pbConfirmMessage(_INTL("\\bWould you like to disable this code?"))
-		  pbMessage(_INTL("\\bThe code for disabling EV gain from all sources has been turned off."))
-		  $player.disable_ev_gain = false
-		  return true
-		else
-		  return false
-		end
-	  else
-		pbMessage(_INTL("\\bThe code for disabling EV gain from all sources is currently inactive."))
-		if pbConfirmMessage(_INTL("\\bWould you like to enable this code?"))
-		  pbMessage(_INTL("\\bThe code for disabling EV gain from all sources has been turned on."))
-		  $player.disable_ev_gain = true
-		  return true
-		else
-		  return false
-		end
-	  end
+	# --- Disables the gaining of EVs from battle ---
+	# when "noevs"
+	  # if $game_switches[Settings::DISABLE_EV_GAIN_SWITCH]
+		# pbMessage(_INTL("\\bThe code for disabling EV gain from battles is currently active."))
+		# if pbConfirmMessage(_INTL("\\bWould you like to disable this code?"))
+		  # pbMessage(_INTL("\\bThe code for disabling EV gain from battles has been turned off."))
+		  # $game_switches[Settings::DISABLE_EV_GAIN_SWITCH] = false
+		  # return true
+		# else
+		  # return false
+		# end
+	  # else
+		# pbMessage(_INTL("\\bThe code for disabling EV gain from battles is currently inactive."))
+		# if pbConfirmMessage(_INTL("\\bWould you like to enable this code?"))
+		  # pbMessage(_INTL("\\bThe code for disabling EV gain from battles has been turned on."))
+		  # $game_switches[Settings::DISABLE_EV_GAIN_SWITCH] = true
+		  # return true
+		# else
+		  # return false
+		# end
+	  # end
 	# --- Disables the use of Non-Capture Device Items in battle ---
 	# All of the relevant sections will need to have their code updated to accomidate the new flag
 	when "noitems"
@@ -943,7 +967,7 @@ def pbPasswordCheck(helptext = "Input Password", minlength = 0, maxlength = 12, 
 		  return false
 		end
 	  end
-	# --- Disables cash gain from all battles, but makes special sellable items drop occasionally ---
+	# --- Disables cash gain from all battles, but makes valuable items drop ---
 	when "tpdpmode"
 	  if $player.disable_cash_gain && $player.enable_item_drops
 		pbMessage(_INTL("\\bThe code for alternate cash acquisition is currently active."))
@@ -978,6 +1002,7 @@ def pbPasswordCheck(helptext = "Input Password", minlength = 0, maxlength = 12, 
 		  $player.disable_ev_gain = false
 		  $player.disable_item_use = false
 		  $player.disable_cash_gain = false
+		  $player.enable_item_drops = false
 		  return true
 		else
 		  return false
@@ -992,6 +1017,7 @@ def pbPasswordCheck(helptext = "Input Password", minlength = 0, maxlength = 12, 
 		  $player.disable_ev_gain = true
 		  $player.disable_item_use = true
 		  $player.disable_cash_gain = true
+		  $player.enable_item_drops = true
 		  return true
 		else
 		  return false
@@ -1145,5 +1171,87 @@ EventHandlers.add(:on_wild_pokemon_created, :koishi_time_wild,
 	$PokemonGlobal.nextBattleBack = "Inverse"
 	$PokemonGlobal.nextBattleBGM = pbStringToAudioFile("X-004. Hartmann's Youkai Girl")  
 	end
+  }
+)
+
+EventHandlers.add(:on_trainer_load, :max_ev_trainers,
+  proc { |trainer|
+   if trainer   # check if you are facing a trainer
+    next if !$player.enemy_evs_maxed
+	for pkmn in trainer.party
+	  pkmn.ev[:HP]=252
+	  pkmn.ev[:ATTACK]=252
+	  pkmn.ev[:DEFENSE]=252
+	  pkmn.ev[:SPECIAL_ATTACK]=252
+	  pkmn.ev[:SPECIAL_DEFENSE]=252
+	  pkmn.ev[:SPEED]=252
+      pkmn.calc_stats
+	end
+   end
+  }
+)
+
+EventHandlers.add(:on_trainer_load, :max_iv_trainers,
+  proc { |trainer|
+   if trainer   # check if you are facing a trainer
+    next if !$player.enemy_ivs_maxed
+	for pkmn in trainer.party
+	  pkmn.iv[:HP]=31
+	  pkmn.iv[:ATTACK]=31
+	  pkmn.iv[:DEFENSE]=31
+	  pkmn.iv[:SPECIAL_ATTACK]=31
+	  pkmn.iv[:SPECIAL_DEFENSE]=31
+	  pkmn.iv[:SPEED]=31
+      pkmn.calc_stats
+	end
+   end
+  }
+)
+
+EventHandlers.add(:on_trainer_load, :disable_exp_gain,
+  proc { |trainer|
+   if trainer   # check if you are facing a trainer
+    if !$player.disable_exp_gain
+	  setBattleRule("noExp")
+	end
+   end
+  }
+)
+
+# EventHandlers.add(:on_trainer_load, :disable_ev_gain,
+  # proc { |trainer|
+   # if trainer   # check if you are facing a trainer
+    # if !$player.disable_ev_gain
+	# end
+   # end
+  # }
+# )
+
+EventHandlers.add(:on_trainer_load, :disable_item_use,
+  proc { |trainer|
+   if trainer   # check if you are facing a trainer
+    if !$player.disable_item_use
+	  setBattleRule("noBag")
+	end
+   end
+  }
+)
+
+EventHandlers.add(:on_trainer_load, :disable_cash_gain,
+  proc { |trainer|
+   if trainer   # check if you are facing a trainer
+    if !$player.disable_cash_gain
+	  setBattleRule("noMoney")
+	end
+   end
+  }
+)
+
+EventHandlers.add(:on_trainer_load, :enable_item_drops,
+  proc { |trainer|
+   if trainer   # check if you are facing a trainer
+    if !$player.enable_item_drops
+	end
+   end
   }
 )

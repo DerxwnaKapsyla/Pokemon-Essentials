@@ -2068,3 +2068,191 @@ Backtrace:
 003_Interpreter.rb:86:in `update'
 [Advanced Items - Field Moves] 10_Overwrites.rb:34:in `block in update'
 [Advanced Items - Field Moves] 10_Overwrites.rb:33:in `loop'
+
+=================
+
+[2025-11-06 00:34:03 -0700]
+[Pokémon Essentials version 21.1]
+
+Error in Plugin: [Arcky's Poke Market]
+Exception: SyntaxError
+Message: [Arcky's Poke Market] 005_PokeMarket_Asteria_Items.rb:50: syntax error, unexpected symbol literal, expecting ']'
+    :ANTIDOTE,:AWAKENING,:BURNHEAL...
+    ^
+[Arcky's Poke Market] 005_PokeMarket_Asteria_Items.rb:53: syntax error, unexpected ']', expecting `end'
+    ], useCat: true)
+    ^
+[Arcky's Poke Market] 005_PokeMarket_Asteria_Items.rb:60: syntax error, unexpected symbol literal, expecting ']'
+    :ANTIDOTE,:AWAKENING,:BURNHEAL...
+    ^
+[Arcky's Poke Market] 005_PokeMarket_Asteria_Items.rb:63: syntax error, unexpected ']', expecting `end'
+    ], useCat: true)
+    ^
+[Arcky's Poke Market] 005_PokeMarket_Asteria_Items.rb:273: syntax error, unexpected end-of-input, expecting `end'
+
+Backtrace:
+005_PluginManager.rb:635:in `eval'
+005_PluginManager.rb:635:in `block (2 levels) in runPlugins'
+005_PluginManager.rb:625:in `each'
+005_PluginManager.rb:625:in `block in runPlugins'
+005_PluginManager.rb:616:in `each'
+005_PluginManager.rb:616:in `runPlugins'
+999_Main.rb:35:in `mainFunctionDebug'
+999_Main.rb:19:in `block in mainFunction'
+003_Errors.rb:79:in `pbCriticalCode'
+999_Main.rb:19:in `mainFunction'
+
+=================
+
+[2025-11-06 00:35:06 -0700]
+[Pokémon Essentials version 21.1]
+
+Error in Plugin: [Arcky's Poke Market]
+Exception: SyntaxError
+Message: [Arcky's Poke Market] 005_PokeMarket_Asteria_Pokemon.rb:197: syntax error, unexpected ']', expecting ')'
+...      price: 3000, level: 10 }],
+...                              ^
+[Arcky's Poke Market] 005_PokeMarket_Asteria_Pokemon.rb:198: syntax error, unexpected ',', expecting `end'
+  speech: "GameCornerAlt", currency: "Coins"
+                         ^
+[Arcky's Poke Market] 005_PokeMarket_Asteria_Pokemon.rb:199: syntax error, unexpected ')', expecting `end'
+
+Backtrace:
+005_PluginManager.rb:635:in `eval'
+005_PluginManager.rb:635:in `block (2 levels) in runPlugins'
+005_PluginManager.rb:625:in `each'
+005_PluginManager.rb:625:in `block in runPlugins'
+005_PluginManager.rb:616:in `each'
+005_PluginManager.rb:616:in `runPlugins'
+999_Main.rb:35:in `mainFunctionDebug'
+999_Main.rb:19:in `block in mainFunction'
+003_Errors.rb:79:in `pbCriticalCode'
+999_Main.rb:19:in `mainFunction'
+
+=================
+
+[2025-11-06 00:36:14 -0700]
+[Pokémon Essentials version 21.1]
+
+Error in Plugin: [Arcky's Poke Market]
+Exception: SyntaxError
+Message: [Arcky's Poke Market] 005_PokeMarket_Asteria_core.rb:38: syntax error, unexpected symbol literal, expecting '}'
+    :GREATBALL => {
+    ^
+[Arcky's Poke Market] 005_PokeMarket_Asteria_core.rb:39: syntax error, unexpected symbol literal, expecting label or ** or **arg or string literal
+      :chance => 80
+      ^
+[Arcky's Poke Market] 005_PokeMarket_Asteria_core.rb:41: syntax error, unexpected '}', expecting `end'
+    }
+    ^
+
+
+Backtrace:
+005_PluginManager.rb:635:in `eval'
+005_PluginManager.rb:635:in `block (2 levels) in runPlugins'
+005_PluginManager.rb:625:in `each'
+005_PluginManager.rb:625:in `block in runPlugins'
+005_PluginManager.rb:616:in `each'
+005_PluginManager.rb:616:in `runPlugins'
+999_Main.rb:35:in `mainFunctionDebug'
+999_Main.rb:19:in `block in mainFunction'
+003_Errors.rb:79:in `pbCriticalCode'
+999_Main.rb:19:in `mainFunction'
+
+=================
+
+[2025-11-06 00:36:45 -0700]
+[Pokémon Essentials version 21.1]
+
+Error in Plugin: [Arcky's Poke Market]
+Exception: SyntaxError
+Message: [Arcky's Poke Market] 005_PokeMarket_Asteria_core.rb:40: syntax error, unexpected symbol literal, expecting '}'
+      :amount => 5
+      ^
+[Arcky's Poke Market] 005_PokeMarket_Asteria_core.rb:41: syntax error, unexpected '}', expecting `end'
+    }
+    ^
+
+
+Backtrace:
+005_PluginManager.rb:635:in `eval'
+005_PluginManager.rb:635:in `block (2 levels) in runPlugins'
+005_PluginManager.rb:625:in `each'
+005_PluginManager.rb:625:in `block in runPlugins'
+005_PluginManager.rb:616:in `each'
+005_PluginManager.rb:616:in `runPlugins'
+999_Main.rb:35:in `mainFunctionDebug'
+999_Main.rb:19:in `block in mainFunction'
+003_Errors.rb:79:in `pbCriticalCode'
+999_Main.rb:19:in `mainFunction'
+
+=================
+
+[2025-11-06 16:31:12 -0700]
+[Pokémon Essentials version 21.1]
+
+Script error in event 13 (coords 15,6), map 274 (Sandbox Zone - F1)
+Exception: NoMethodError
+Message: undefined method `gap' for #<Interpreter @event_id: 13>
+
+***Full script:
+gap(10,948,false)
+
+Backtrace:
+(eval):1:in `execute_script'
+003_Interpreter.rb:140:in `eval'
+003_Interpreter.rb:140:in `execute_script'
+004_Interpreter_Commands.rb:1177:in `command_355'
+004_Interpreter_Commands.rb:116:in `execute_command'
+003_Interpreter.rb:132:in `block in update'
+003_Interpreter.rb:86:in `loop'
+003_Interpreter.rb:86:in `update'
+[Advanced Items - Field Moves] 10_Overwrites.rb:34:in `block in update'
+[Advanced Items - Field Moves] 10_Overwrites.rb:33:in `loop'
+
+=================
+
+[2025-11-06 16:52:34 -0700]
+[Pokémon Essentials version 21.1]
+
+Exception: NameError
+Message: undefined local variable or method `pkmn' for main:Object
+
+Backtrace:
+[Touhoumon Asteria] 004_Passwords.rb:1183:in `block in <main>'
+005_Event_Handlers.rb:89:in `block in trigger'
+005_Event_Handlers.rb:89:in `each_value'
+005_Event_Handlers.rb:89:in `trigger'
+006_Event_HandlerCollections.rb:63:in `trigger'
+001_Overworld_BattleStarting.rb:567:in `block in generate_foes'
+001_Overworld_BattleStarting.rb:538:in `each'
+001_Overworld_BattleStarting.rb:538:in `each_with_index'
+001_Overworld_BattleStarting.rb:538:in `generate_foes'
+001_Overworld_BattleStarting.rb:504:in `start_core'
+
+=================
+
+[2025-11-07 22:07:17 -0700]
+[Pokémon Essentials version 21.1]
+
+Error in Plugin: [Touhoumon Asteria]
+Exception: SyntaxError
+Message: [Touhoumon Asteria] 009_Wild_Drops.rb:27: syntax error, unexpected local variable or method, expecting `end'
+  echoln "Items chosen: " items
+                          ^~~~~
+[Touhoumon Asteria] 009_Wild_Drops.rb:30: syntax error, unexpected local variable or method, expecting `end'
+..."Individual item chosen: " item
+...                           ^~~~
+[Touhoumon Asteria] 009_Wild_Drops.rb:46: syntax error, unexpected `end', expecting end-of-input
+
+Backtrace:
+005_PluginManager.rb:635:in `eval'
+005_PluginManager.rb:635:in `block (2 levels) in runPlugins'
+005_PluginManager.rb:625:in `each'
+005_PluginManager.rb:625:in `block in runPlugins'
+005_PluginManager.rb:616:in `each'
+005_PluginManager.rb:616:in `runPlugins'
+999_Main.rb:35:in `mainFunctionDebug'
+999_Main.rb:19:in `block in mainFunction'
+003_Errors.rb:79:in `pbCriticalCode'
+999_Main.rb:19:in `mainFunction'

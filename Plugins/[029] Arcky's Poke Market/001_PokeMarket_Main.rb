@@ -33,68 +33,81 @@ class PokemonMartAdapter
   end
 
   def getPrice(item, selling = false, discount = nil, qty = 1)
-    if selling.is_a?(Numeric)
-      discount = selling if selling
-      selling = false
-    end
-    gameVar = $game_variables[discount.abs] if discount
-    disc = 0
-    if discount && !gameVar.nil? && gameVar >= 0
-      APMSettings::Discounts.each do |key, value|
-        if key.is_a?(Symbol)
-          next unless $bag.has?(key)
-          next unless value.is_a?(Hash) && value.key?(discount)
-          if value[discount].is_a?(Array)
-            disc = value[discount][gameVar] || 0
-            if value[discount].length - 1 < gameVar
-              Console.echoln_li _INTL("Please check the value of game variable #{@discount}, it's too high according to it's Discounts values")
-            end
-          else
-            disc = value[discount]
-          end
-          break
-        elsif key == discount
-          if value.is_a?(Array)
-            disc = value[gameVar] || 0
-            if value.length - 1 < gameVar
-              Console.echoln_li _INTL("Please check the value of game variable #{@discount}, it's too high according to it's Discounts values")
-            end
-          else
-            disc = value
-          end
-        end
-      end
-    end
-    itemData = GameData::Item.try_get(item)
-    if itemData
-      case $currency.downcase
-      when "money", "gold"
-        price = itemData.price.to_f
-      when "coins"
-        price = itemData.coin_price.to_f
-      when "battle points", "bp"
-        price = itemData.bp_price.to_f
-      end
+    if $game_temp.mart_prices && $game_temp.mart_prices[item]
       if selling
-        case $currency.downcase
-        when "money", "gold"
-          return itemData.sell_price
-        when "coins"
-          return itemData.sell_coin_price
-        when "battle points", "bp"
-          return itemData.sell_bp_price
+        return $game_temp.mart_prices[item][1] if $game_temp.mart_prices[item][1] >= 0
+      elsif $game_temp.mart_prices[item][0] > 0
+        return $game_temp.mart_prices[item][0]
+      end
+    else 
+      if selling.is_a?(Numeric)
+        discount = selling if selling
+        selling = false
+      end
+      gameVar = $game_variables[discount.abs] if discount
+      disc = 0
+      if discount && !gameVar.nil? && gameVar >= 0
+        APMSettings::Discounts.each do |key, value|
+          if key.is_a?(Symbol)
+            next unless $bag.has?(key)
+            next unless value.is_a?(Hash) && value.key?(discount)
+            if value[discount].is_a?(Array)
+              disc = value[discount][gameVar] || 0
+              if value[discount].length - 1 < gameVar
+                Console.echoln_li _INTL("Please check the value of game variable #{@discount}, it's too high according to it's Discounts values")
+              end
+            else
+              disc = value[discount]
+            end
+            break
+          elsif key == discount
+            if value.is_a?(Array)
+              disc = value[gameVar] || 0
+              if value.length - 1 < gameVar
+                Console.echoln_li _INTL("Please check the value of game variable #{@discount}, it's too high according to it's Discounts values")
+              end
+            else
+              disc = value
+            end
+          end
         end
       end
-    else
-      speciesData = GameData::Species.try_get(item)
-      if speciesData
-        price = findSpecies(item)[:price] || 1000
+      itemData = GameData::Item.try_get(item)
+      if itemData
+        if $currency.is_a?(String)
+          case $currency.downcase
+          when "money", "gold"
+            price = itemData.price.to_f
+          when "coins"
+            price = itemData.coin_price.to_f
+          when "battle points", "bp"
+            price = itemData.bp_price.to_f
+          end
+          if selling
+            case $currency.downcase
+            when "money", "gold"
+              return itemData.sell_price
+            when "coins"
+              return itemData.sell_coin_price
+            when "battle points", "bp"
+              return itemData.sell_bp_price
+            end
+          end
+        else
+          itemPrice = $itemCurrencyPrizes.find { |i| i.key?(item) }&.[](item)
+          price = itemPrice || 1
+        end 
       else
-        price = 1
+        speciesData = GameData::Species.try_get(item)
+        if speciesData
+          price = findSpecies(item)[:price] || 1000
+        else
+          price = 1
+        end
       end
-    end
-    newPrice = (price * ((100 - disc).to_f / 100)).round(0) * qty
-    return newPrice
+      newPrice = (price * ((100 - disc).to_f / 100)).round(0) * qty
+      return newPrice
+    end 
   end
 
   def getDisplayPrice(item, selling = false, discount = nil, qty = 1)
@@ -458,7 +471,7 @@ class PokemonMartScreen
         end
         if !entry.nil? && entry[:limit] == 0
           quantity = 0
-          pbDisplayPaused(_INTL(@getSpeech[:BuyOutOfStock]&.sample || "I'm sorry, we are currently out of {1}. Come back {2}.", itemnameplural, $pokeMartTracker[:refresh]))
+          pbDisplayPaused(_INTL(@getSpeech[:BuyOutOfStock]&.sample || "I'm sorry, we are currently out of {1}.", itemnameplural, $pokeMartTracker[:refresh]))
         end
         if quantity == 0
           pbDisplayPaused(_INTL(@getSpeech[:NoRoomInBag]&.sample || "You have no room in your Bag.")) if totAddItems == 0

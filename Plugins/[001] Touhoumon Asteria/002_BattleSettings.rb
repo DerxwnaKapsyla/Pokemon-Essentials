@@ -30,6 +30,8 @@ module Settings
   SPECIAL_BATTLE_SWITCH			= 102	# Used for when you want to trigger a battle with special text for the encounter. (Ie; "N's Zoroark", "The aggressive Igglybuff", etc.)
   SPECIAL_BATTLE_VARIABLE		= 102	# Used in conjunction with the switch above. Determines the stringset to run. You can find existing ones by searching for these lines.
   
+  DISABLE_EV_GAIN_SWITCH        = 82
+  
   # This setting determines whether or not the player is awarded with Magical Fragments after battle concludes. Magical Fragments are used in the Reincarnation system.
   # This section also determines how many Magical Fragments are rewarded after battle
   GAIN_MAGICAL_FRAGMENTS_AFTER_BATTLE          = true
