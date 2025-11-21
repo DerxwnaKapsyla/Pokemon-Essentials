@@ -183,7 +183,7 @@ class VoltseonsPauseMenu_Scene
         yvals[cname][key] = sprite.y
       end
     end
-    duration = Graphics.frame_rate / 6
+    duration = (6 * (Graphics.average_frame_rate / 60.0)).floor
     duration.times do |i|
       factor = (i + 1).to_f / duration
       Graphics.update
@@ -272,7 +272,7 @@ class Scene_Map
     $game_temp.in_menu      = true
     $game_player.straighten
     $game_map.update
-    if safeExists?(MENU_FILE_PATH)
+    if FileTest.exist?(MENU_FILE_PATH)
       sscene = VoltseonsPauseMenu_Scene.new
     else
       if !$game_temp.menu_warining_done
@@ -290,7 +290,7 @@ class Scene_Map
   end
 end
 
-if safeExists?(MENU_FILE_PATH)
+if FileTest.exist?(MENU_FILE_PATH)
   class PokemonPauseMenu
     def pbStartPokemonMenu
       @scene.pbStartScene

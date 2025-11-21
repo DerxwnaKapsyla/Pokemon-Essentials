@@ -150,7 +150,7 @@ List of Event Commands:
 @>Wait: 20 frame(s)
 @>Script: completeQuest(:Quest1)
 @>Play ME: 'Register phone', 100, 100
-@>Text: \se[Register phone]\w[dark]You sent in your registration for the Yitria League!\wtnp[40]
+@>Text: \se[Register phone]\w[dark]\c[12]You sent in your registration for the Yitria League!\wtnp[40]
 @>Wait: 10 frame(s)
 @>Text: \xn[???]Hey, \PN! Come downstairs, mom wants you!
 @>Show Animation: Player, [Exclaim bubble]
@@ -160,1261 +160,10 @@ List of Event Commands:
 @>Script: pbSetSelfSwitch2(50,34,"A",true)
 @>Script: $bag.add(:POTION,1)
 @>Script: activateQuest(:Quest2)
-@>Text: \w[dark]Your Quest Journal has been updated! You can view 
+@>Text: \w[dark]\c[12]Your Quest Journal has been updated! You can view 
  :    : the Quest Journal from the pause menu.
-@>Text: \w[dark]You can also look for quest objectives in the 
+@>Text: \w[dark]\c[12]You can also look for quest objectives in the 
  :    : overworld by looking for an icon over them.
-@>Comment: ----------------- End of Intro
-@>
-
-Page #2
-Conditions
-Self Switch A is ON
-
-Autonomous Movement
-Type: Fixed
-Speed: 3: Slow
-Freq: 3: Low
-Options Enabled
-Move Animation
-Trigger: Action Button
-
-List of Event Commands:
-@>
-
-#------------------------------------------------------------------------------
-Event ID: 002
-Event Name: Intro
-(X,Y): (000,002)
-
-Page #1
-Conditions
-None
-
-Autonomous Movement
-Type: Fixed
-Speed: 3: Slow
-Freq: 3: Low
-Options Enabled
-Move Animation
-Trigger: Action Button
-
-List of Event Commands:
-@>Set Move Route: Player
- :              : $>Change Opacity: 0
-@>Prepare for Transition
-@>Play BGM: 'Oak's Theme', 50, 100
-@>Show Picture: 1, 'introbg', Upper Left (0,0), (100%,100%), 255, Normal
-@>Execute Transition
-@>Wait: 18 frame(s)
-@>Show Picture: 2, 'introBG1', Upper Left (0,0), (100%,100%), 0, Normal
-@>Wait: 18 frame(s)
-@>Show Picture: 3, 'introOak', Center (256,172), (100%,100%), 0, Normal
-@>Move Picture: 2, @15, Upper Left (0,0), (100%,100%), 255, Normal
-@>Wait: 18 frame(s)
-@>Move Picture: 3, @15, Center (256,172), (100%,100%), 255, Normal
-@>Wait: 18 frame(s)
-@>Text: Hello, and welcome to the Pokémon League 
- :    : Registration Website, I am an AI designed
- :    : in the likeness of Professor Oak.
-@>Text: I will be your guide through the process of registering
- :    : for the Pokémon League Challenge.
-@>Text: This world is inhabited by three prominent species. 
- :    : Humans, individuals like you and I...
-@>Wait: 10 frame(s)
-@>Show Picture: 4, 'introEevee', Center (170,220), (100%,100%), 0, Normal
-@>Move Picture: 4, @10, Center (170,220), (100%,100%), 255, Normal
-@>Play SE: 'Intro Eevee Cry', 80, 100
-@>Text: Pokémon, creatures that have existed for as long as 
- :    : we can remember...
-@>Wait: 10 frame(s)
-@>Show Picture: 5, 'introGoliath', Center (342,210), (100%,100%), 0, Normal
-@>Move Picture: 5, @10, Center (342,210), (100%,100%), 255, Normal
-@>Play SE: 'Intro Goliath Cry', 80, 100
-@>Text: And Puppets, a more recent addition to the critters of 
- :    : our world, but a welcomed one all the same.
-@>Text: Though Puppets are indeed a prominent fixture of the
- :    : world these days, they don't exist in every corner
- :    : of the world yet.
-@>Text: For several decades, these three species have existed
- :    : together in harmony.
-@>Text: Humans cohabitate with Pokémon and Puppets, they 
- :    : support one another, complement one another.
-@>Text: Most of our world revolves around the bond that we 
- :    : share with these creatures!
-@>Move Picture: 4, @10, Center (170,220), (100%,100%), 0, Normal
-@>Move Picture: 5, @10, Center (342,210), (100%,100%), 0, Normal
-@>Wait: 10 frame(s)
-@>Erase Picture: 4
-@>Erase Picture: 5
-@>Text: But, even to this day, we don't know everything 
- :    : about these remarkable creatures.
-@>Text: Where they came from, how they've persisted all 
- :    : these years... There's so many mysteries to solve.
-@>Text: That's why we study them every day.
-@>Move Picture: 3, @20, Center (256,172), (100%,100%), 0, Normal
-@>Wait: 20 frame(s)
-@>Erase Picture: 3
-@>Text: Now, it's time for you to submit the information for 
- :    : your trainer card.
-@>Text: Please answer the following questions to the best of 
- :    : your ability.
-@>Text: First off, please fill out your name in the relevant 
- :    : fields. Do note, this cannot be changed later.
-@>Label: Enter Name
-@>Script: pbTrainerName
-@>Text: \PN. Is this the correct name? Remember, this cannot 
- :    : be changed later.
-@>Show Choices: Yes, No
-(When Cancel: Choice 2)
-: When [Yes]
- @>
-: When [No]
- @>Text: Please fill out your name.
- @>Jump to Label: Enter Name
- @>
-: Branch End
-@>Script: pbToneChangeAll(Tone.new(-255,-255,-255,0),20)
-@>Wait: 20 frame(s)
-@>Erase Picture: 1
-@>Erase Picture: 2
-@>Wait: 5 frame(s)
-@>Show Picture: 1, 'introCharSel', Upper Left (0,0), (100%,100%), 0, Normal
-@>Wait: 5 frame(s)
-@>Move Picture: 1, @20, Upper Left (0,0), (100%,100%), 255, Normal
-@>Script: pbToneChangeAll(Tone.new(0,0,0,0),20)
-@>Comment: Transtion to avatar select screen
-@>Script: pbChangePlayer(0)
-@>Text: \PN, please upload a photo to go along with your 
- :    : trainer card application.
-@>Text: This will allow the Regional Professor to identify you 
- :    : when you come to claim your trainer card.
-@>Text: Future changes can be made to the picture on your 
- :    : trainer card at any Pokémon Center.
-@>Label: Who are you?
-@>Text: Which image are you uploading?
- :    : \ch[1,0,IMG_5281,IMG_5347]
-@>Conditional Branch: Variable [0001: Temp Pokemon Choice] == 0
- @>Control Variables: [0110: Player Avatar] = 0
- @>Control Switches: [0111: Male Avatar Selected] = ON
- @>Script: $player.outfit=0
- @>Script: pbSet(102,"MORGAN")
- @>Script: pbSet(103,"Morgan")
- @>Show Picture: 2, 'introCharSel1', Upper Left (0,0), (100%,100%), 255, Normal
- @>
-: Branch End
-@>Conditional Branch: Variable [0001: Temp Pokemon Choice] == 1
- @>Control Variables: [0110: Player Avatar] = 1
- @>Control Switches: [0112: Female Avatar Selected] = ON
- @>Script: $player.outfit=1
- @>Script: pbSet(102,"MORGAN")
- @>Script: pbSet(103,"Morgan")
- @>Show Picture: 2, 'introCharSel2', Upper Left (0,0), (100%,100%), 255, Normal
- @>
-: Branch End
-@>Wait: 10 frame(s)
-@>Text: Is this the correct photo to upload? Remember, this 
- :    : can be changed later at any Pokémon Center if need 
- :    : be.
-@>Text: Is this correct?
-@>Show Choices: Yes, No
-(When Cancel: Choice 2)
-: When [Yes]
- @>
-: When [No]
- @>Control Switches: [0111: Male Avatar Selected] = OFF
- @>Control Switches: [0112: Female Avatar Selected] = OFF
- @>Control Variables: [0001: Temp Pokemon Choice] = -1
- @>Text: Please upload the correct photo.
- @>Jump to Label: Who are you?
- @>
-: Branch End
-@>Script: pbToneChangeAll(Tone.new(-255,-255,-255,0),20)
-@>Fade Out BGM: 5 sec.
-@>Text: Next, please fill out your Date of Birth\..\..\..\.\^
-@>Comment: That text auto ends after a short period, while the 
- :       : screen fades to black.
-@>Comment: At this point, the screen transitions to the player in 
- :       : their room, staring at the computer.
-@>Wait: 20 frame(s)
-@>Erase Picture: 1
-@>Erase Picture: 2
-@>Set Move Route: Player
- :              : $>Change Opacity: 255
-@>Transfer Player:[050: Grace Family Household], (005,009), Left
-@>Script: pbToneChangeAll(Tone.new(0,0,0,0),20)
-@>Text: ...Wonderful! Your application has been completed!
-@>Text: \PN, according to your IP Address, your appliation 
- :    : has been sent to the closest regional professor, 
- :    : which is Professor Jeremiah Hawthorn of the Yitria 
- :    : Region.
-@>Text: Once properly processed, you shall recieve your 
- :    : trainer card, as well as your first Pokémon.
-@>Text: Are you ready, \PN?
-@>Text: Your very own story is about to unfold.
-@>Text: Fun times, tough challenges, these all lie ahead on 
- :    : your journey.
-@>Text: But, with your partners by your side, there is nothing 
- :    : you can't overcome!
-@>Text: A world of dreams and adventures await you, it's 
- :    : time to take your first steps into it!
-@>Text: \bThis AI system was brought to you by
- :    : the Infinity Corporation, which...\^
-@>Script: $player.has_pokegear = true
-:       : $player.has_running_shoes = true
-@>Wait: 20 frame(s)
-@>Script: pbAddQuest(0)
-@>Play ME: 'Register phone', 100, 100
-@>Text: You sent in your registration for the Yitria League!
-@>Wait: 10 frame(s)
-@>Text: \xn[???]Hey, \PN! Come downstairs, mom wants you!
-@>Show Animation: Player, [Exclaim bubble]
-@>Set Move Route: Player
- :              : $>Turn Right
-@>Wait for Move's Completion
-@>Script: pbSetSelfSwitch2(50,34,"A",true)
-@>Script: $bag.add(:POTION,1)
-@>Comment: ----------------- End of Intro
-@>
-
-Page #2
-Conditions
-Self Switch A is ON
-
-Autonomous Movement
-Type: Fixed
-Speed: 3: Slow
-Freq: 3: Low
-Options Enabled
-Move Animation
-Trigger: Action Button
-
-List of Event Commands:
-@>
-
-#------------------------------------------------------------------------------
-Event ID: 003
-Event Name: Intro - Backup
-(X,Y): (007,007)
-
-Page #1
-Conditions
-None
-
-Autonomous Movement
-Type: Fixed
-Speed: 3: Slow
-Freq: 3: Low
-Options Enabled
-Move Animation
-Trigger: Action Button
-
-List of Event Commands:
-@>Prepare for Transition
-@>Play BGM: 'static', 50, 100
-@>Show Picture: 1, 'introbg', Upper Left (0,0), (100%,100%), 255, Normal
-@>Execute Transition
-@>Wait: 18 frame(s)
-@>Show Picture: 2, 'introbase', Center (256,256), (100%,100%), 0, Normal
-@>Show Picture: 3, 'introOak', Center (256,172), (100%,100%), 0, Normal
-@>Move Picture: 2, @15, Center (256,256), (100%,100%), 255, Normal
-@>Move Picture: 3, @15, Center (256,172), (100%,100%), 255, Normal
-@>Wait: 18 frame(s)
-@>Text: Hello! Sorry to keep you waiting!
-@>Text: Welcome to Monsekai, home to Pokemon and Puppets 
- :    : alike!
-@>Text: My name is Oak.
-@>Text: Many years ago, I used to be a Professor who 
- :    : studied Pokemon and Puppets, but now the newer 
- :    : generation carries on my work.
-@>Text: I now live on as an automated Artificial Inteligence 
- :    : system, designed to help indoctrinate new trainers.
-@>Label: Help Choices
-@>Text: If you need help, I am certainly capable of giving it.
-@>Show Choices: Controls, Adventure, No info needed
-(When Cancel: Choice 3)
-: When [Controls]
- @>Script: pbEventScreen(ButtonEventScene)
- @>Jump to Label: Help Choices
- @>
-: When [Adventure]
- @>Text: Well then, without further ado...
- @>Script: pbToneChangeAll(Tone.new(-255,-255,-255,0),10)
- @>Wait: 10 frame(s)
- @>Show Picture: 4, 'helpadventurebg', Upper Left (0,0), (100%,100%), 0, Normal
- @>Move Picture: 4, @10, Upper Left (0,0), (100%,100%), 255, Normal
- @>Wait: 10 frame(s)
- @>Change Text Options: Middle, Hide
- @>Text: <ac>\c[0]\l[3]You are about to enter a world\nwhere 
-  :    : you will embark on a grand\nadventure of your very 
-  :    : own.
- @>Text: <ac>\c[0]\l[5]Speak to people and check things\n
-  :    : wherever you go, be it in towns,\nroads or caves.\n
-  :    : Gather information and hints from\n
-  :    : every possible source.
- @>Text: <ac>\c[0]\l[3]New paths will open to you when\n
-  :    : you help people in need, overcome\n
-  :    : challenges, and solve mysteries.
- @>Text: <ac>\c[0]\l[7]At times, you will be challenged\n
-  :    : by others to a battle.\n
-  :    : At other times, wild creatures\nmay stand in your way.\n\n
-  :    : By overcoming such hurdles,\nyou will gain great power.
- @>Text: <ac>\c[0]\l[2]However, your adventure is not\n
-  :    : solely about becoming powerful.
- @>Text: <ac>\c[0]\l[7]On your travels, we hope that\n
-  :    : you will meet countless people\n
-  :    : and, through them, achieve\npersonal growth.\n\n
-  :    : This is the most important\nobjective of this adventure.
- @>Move Picture: 4, @10, Upper Left (0,0), (100%,100%), 0, Normal
- @>Wait: 10 frame(s)
- @>Erase Picture: 4
- @>Script: pbToneChangeAll(Tone.new(0,0,0,0),10)
- @>Wait: 10 frame(s)
- @>Change Text Options: Bottom, Show
- @>Jump to Label: Help Choices
- @>
-: When [No info needed]
- @>
-: Branch End
-@>Wait: 5 frame(s)
-@>Move Picture: 3, @10, Center (256,172), (100%,100%), 0, Normal
-@>Wait: 10 frame(s)
-@>Erase Picture: 3
-@>Show Picture: 3, 'introMarill', Center (256,220), (100%,100%), 0, Normal
-@>Move Picture: 3, @10, Center (256,220), (100%,100%), 255, Normal
-@>Wait: 10 frame(s)
-@>Text: This world is inhabited by two specific species. The 
- :    : first is Pokemon.
-@>Move Picture: 3, @10, Center (256,220), (100%,100%), 0, Normal
-@>Wait: 10 frame(s)
-@>Erase Picture: 3
-@>Show Picture: 3, '642', Center (256,190), (100%,100%), 0, Normal
-@>Move Picture: 3, @10, Center (256,190), (100%,100%), 255, Normal
-@>Text: And the other is Puppets, a recent arrival to the 
- :    : beings residing on Monsekai.
-@>Text: For several hundred years, people have lived 
- :    : together with Pokemon and Puppets, supporting one 
- :    : another.
-@>Text: Some play with them like friends, some battle with 
- :    : them like comrades, they both go hand in hand.
-@>Wait: 5 frame(s)
-@>Move Picture: 3, @10, Center (256,190), (100%,100%), 0, Normal
-@>Wait: 10 frame(s)
-@>Erase Picture: 3
-@>Show Picture: 3, 'introOak', Center (256,172), (100%,100%), 0, Normal
-@>Move Picture: 3, @10, Center (256,172), (100%,100%), 255, Normal
-@>Wait: 10 frame(s)
-@>Text: But we don't know everything about these 
- :    : remarkable creatures yet.
-@>Text: There are still many mysteries to solve.
-@>Text: That's why we study them every day.
-@>Wait: 5 frame(s)
-@>Move Picture: 2, @10, Center (256,256), (100%,100%), 0, Normal
-@>Move Picture: 3, @10, Center (256,172), (100%,100%), 0, Normal
-@>Wait: 10 frame(s)
-@>Erase Picture: 3
-@>Wait: 15 frame(s)
-@>Text: Now it's time for you to fill out your identification card. 
- :    : Please answer the following questions to the best of 
- :    : your ability.
-@>Text: First off, are you male or female?
-@>Text: Please select from the list.\ch[1,0,Male,Female]
-@>Label: Who are you?
-@>Conditional Branch: Variable [0001: Temp Pokemon Choice] == 0
- @>Script: pbChangePlayer(0)
- @>Control Variables: [0101: --- Yitria Resurrection ---] = 0
- @>Control Switches: [0098] = ON
- @>Script: pbSet(102,"MARA")
- @>Script: pbSet(103,"Mara")
- @>Show Picture: 3, 'introBoy', Center (256,178), (100%,100%), 0, Normal
- @>
-: Branch End
-@>Conditional Branch: Variable [0001: Temp Pokemon Choice] == 1
- @>Script: pbChangePlayer(1)
- @>Control Variables: [0101: --- Yitria Resurrection ---] = 1
- @>Control Switches: [0099] = ON
- @>Script: pbSet(102,"MARU")
- @>Script: pbSet(103,"Maru")
- @>Show Picture: 3, 'introGirl', Center (256,178), (100%,100%), 0, Normal
- @>
-: Branch End
-@>Move Picture: 2, @10, Center (256,256), (100%,100%), 255, Normal
-@>Move Picture: 3, @10, Center (256,178), (100%,100%), 255, Normal
-@>Wait: 10 frame(s)
-@>Text: Is this correct?
-@>Show Choices: Yes, No
-(When Cancel: Choice 2)
-: When [Yes]
- @>
-: When [No]
- @>Control Switches: [0098] = OFF
- @>Control Switches: [0099] = OFF
- @>Control Variables: [0001: Temp Pokemon Choice] = -1
- @>Text: Please select from the list.\ch[1,0,Male,Female]
- @>Jump to Label: Who are you?
- @>
-: Branch End
-@>Text: Now what did you say your name was?
-@>Label: Enter Name
-@>Comment: Opens the name entry screen and initializes the 
- :       : trainer object
-@>Script: pbTrainerName
-@>Wait: 5 frame(s)
-@>Text: So you're \PN?
-@>Show Choices: Yes, No
-(When Cancel: Choice 2)
-: When [Yes]
- @>
-: When [No]
- @>Text: What is your name?
- @>Jump to Label: Enter Name
- @>
-: Branch End
-@>Text: According to your IP Address, you are accessing the 
- :    : registration website from Pharos City, Yitria Region.
-@>Text: Once the process is finished, your information will be sent to
- :    : the local Professor, Professor Hawthorne, and you shall be
- :    : able to pick up your first Pokemon.
-@>Text: \PN, are you ready?
-@>Text: Your very own story is about to unfold.
-@>Text: You'll face fun times and tough challenges.
-@>Text: A world of dreams and adventures with your partners
- :    : awaits!  Let's go!
-@>Fade Out BGM: 4 sec.
-@>Control Self Switch: A =ON
-@>Script: pbToneChangeAll(Tone.new(-255,-255,-255,0),20)
-@>Text: \bThis AI system was brought to you by 
- :    : Chaotic Infinity Conglomeration, which...\^
-@>Wait: 20 frame(s)
-@>Erase Picture: 1
-@>Erase Picture: 2
-@>Erase Picture: 3
-@>Transfer Player:[050: Grace Family Household], (005,009), Down
-@>Script: pbToneChangeAll(Tone.new(0,0,0,0),20)
-@>Wait: 20 frame(s)
-@>Play SE: 'Pkmn move learnt', 80, 100
-@>Text: \PN: And there! I'm all signed up for the Yitria League!
-@>Text: I should be all set to go now, I probably haven't 
- :    : forgotten anything...
-@>Wait: 10 frame(s)
-@>Text: ???: Hey, \PN! Come downstairs, mom wants you!
-@>Show Animation: Player, [Exclaim bubble]
-@>Set Move Route: Player
- :              : $>Turn Right
-@>Text: \PN: That sounded like \v[103]... I guess I should go 
- :    : check to see what they want.
-@>
-
-Page #2
-Conditions
-Self Switch A is ON
-
-Autonomous Movement
-Type: Fixed
-Speed: 3: Slow
-Freq: 3: Low
-Options Enabled
-Move Animation
-Trigger: Action Button
-
-List of Event Commands:
-@>
-
-#------------------------------------------------------------------------------
-Event ID: 005
-Event Name: Intro - Backup (new)
-(X,Y): (015,014)
-
-Page #1
-Conditions
-None
-
-Autonomous Movement
-Type: Fixed
-Speed: 3: Slow
-Freq: 3: Low
-Options Enabled
-Move Animation
-Trigger: Action Button
-
-List of Event Commands:
-@>Prepare for Transition
-@>Play BGM: 'static', 50, 100
-@>Show Picture: 1, 'introbg', Upper Left (0,0), (100%,100%), 255, Normal
-@>Execute Transition
-@>Wait: 18 frame(s)
-@>Show Picture: 2, 'introbase', Center (256,256), (100%,100%), 0, Normal
-@>Show Picture: 3, 'introOak', Center (256,172), (100%,100%), 0, Normal
-@>Move Picture: 2, @15, Center (256,256), (100%,100%), 255, Normal
-@>Move Picture: 3, @15, Center (256,172), (100%,100%), 255, Normal
-@>Wait: 18 frame(s)
-@>Text: Hello! Sorry to keep you waiting!
-@>Text: Welcome to Monsekai, home to Pokemon and Puppets 
- :    : alike!
-@>Text: My name is Oak.
-@>Text: Many years ago, I used to be a Professor who 
- :    : studied Pokemon and Puppets, but now the newer 
- :    : generation carries on my work.
-@>Text: I now live on as an automated Artificial Inteligence 
- :    : system, designed to help indoctrinate new trainers.
-@>Label: Help Choices
-@>Text: If you need help, I am certainly capable of giving it.
-@>Show Choices: Controls, Adventure, No info needed
-(When Cancel: Choice 3)
-: When [Controls]
- @>Script: pbEventScreen(ButtonEventScene)
- @>Jump to Label: Help Choices
- @>
-: When [Adventure]
- @>Text: Well then, without further ado...
- @>Script: pbToneChangeAll(Tone.new(-255,-255,-255,0),10)
- @>Wait: 10 frame(s)
- @>Show Picture: 4, 'helpadventurebg', Upper Left (0,0), (100%,100%), 0, Normal
- @>Move Picture: 4, @10, Upper Left (0,0), (100%,100%), 255, Normal
- @>Wait: 10 frame(s)
- @>Change Text Options: Middle, Hide
- @>Text: <ac>\c[0]\l[3]You are about to enter a world\nwhere 
-  :    : you will embark on a grand\nadventure of your very 
-  :    : own.
- @>Text: <ac>\c[0]\l[5]Speak to people and check things\n
-  :    : wherever you go, be it in towns,\nroads or caves.\n
-  :    : Gather information and hints from\n
-  :    : every possible source.
- @>Text: <ac>\c[0]\l[3]New paths will open to you when\n
-  :    : you help people in need, overcome\n
-  :    : challenges, and solve mysteries.
- @>Text: <ac>\c[0]\l[7]At times, you will be challenged\n
-  :    : by others to a battle.\n
-  :    : At other times, wild creatures\nmay stand in your way.\n\n
-  :    : By overcoming such hurdles,\nyou will gain great power.
- @>Text: <ac>\c[0]\l[2]However, your adventure is not\n
-  :    : solely about becoming powerful.
- @>Text: <ac>\c[0]\l[7]On your travels, we hope that\n
-  :    : you will meet countless people\n
-  :    : and, through them, achieve\npersonal growth.\n\n
-  :    : This is the most important\nobjective of this adventure.
- @>Move Picture: 4, @10, Upper Left (0,0), (100%,100%), 0, Normal
- @>Wait: 10 frame(s)
- @>Erase Picture: 4
- @>Script: pbToneChangeAll(Tone.new(0,0,0,0),10)
- @>Wait: 10 frame(s)
- @>Change Text Options: Bottom, Show
- @>Jump to Label: Help Choices
- @>
-: When [No info needed]
- @>
-: Branch End
-@>Wait: 5 frame(s)
-@>Move Picture: 3, @10, Center (256,172), (100%,100%), 0, Normal
-@>Wait: 10 frame(s)
-@>Erase Picture: 3
-@>Show Picture: 3, 'introMarill', Center (256,220), (100%,100%), 0, Normal
-@>Move Picture: 3, @10, Center (256,220), (100%,100%), 255, Normal
-@>Wait: 10 frame(s)
-@>Text: This world is inhabited by two specific species. The 
- :    : first is Pokemon.
-@>Move Picture: 3, @10, Center (256,220), (100%,100%), 0, Normal
-@>Wait: 10 frame(s)
-@>Erase Picture: 3
-@>Show Picture: 3, '642', Center (256,190), (100%,100%), 0, Normal
-@>Move Picture: 3, @10, Center (256,190), (100%,100%), 255, Normal
-@>Text: And the other is Puppets, a recent arrival to the 
- :    : beings residing on Monsekai.
-@>Text: For several hundred years, people have lived 
- :    : together with Pokemon and Puppets, supporting one 
- :    : another.
-@>Text: Some play with them like friends, some battle with 
- :    : them like comrades, they both go hand in hand.
-@>Wait: 5 frame(s)
-@>Move Picture: 3, @10, Center (256,190), (100%,100%), 0, Normal
-@>Wait: 10 frame(s)
-@>Erase Picture: 3
-@>Show Picture: 3, 'introOak', Center (256,172), (100%,100%), 0, Normal
-@>Move Picture: 3, @10, Center (256,172), (100%,100%), 255, Normal
-@>Wait: 10 frame(s)
-@>Text: But we don't know everything about these 
- :    : remarkable creatures yet.
-@>Text: There are still many mysteries to solve.
-@>Text: That's why we study them every day.
-@>Wait: 5 frame(s)
-@>Move Picture: 2, @10, Center (256,256), (100%,100%), 0, Normal
-@>Move Picture: 3, @10, Center (256,172), (100%,100%), 0, Normal
-@>Wait: 10 frame(s)
-@>Erase Picture: 3
-@>Wait: 15 frame(s)
-@>Text: Now it's time for you to fill out your identification card. 
- :    : Please answer the following questions to the best of 
- :    : your ability.
-@>Text: First off, are you male or female?
-@>Text: Please select from the list.\ch[1,0,Male,Female]
-@>Label: Who are you?
-@>Conditional Branch: Variable [0001: Temp Pokemon Choice] == 0
- @>Script: pbChangePlayer(0)
- @>Control Variables: [0101: --- Yitria Resurrection ---] = 0
- @>Control Switches: [0098] = ON
- @>Script: pbSet(102,"MARA")
- @>Script: pbSet(103,"Mara")
- @>Show Picture: 3, 'introBoy', Center (256,178), (100%,100%), 0, Normal
- @>
-: Branch End
-@>Conditional Branch: Variable [0001: Temp Pokemon Choice] == 1
- @>Script: pbChangePlayer(1)
- @>Control Variables: [0101: --- Yitria Resurrection ---] = 1
- @>Control Switches: [0099] = ON
- @>Script: pbSet(102,"MARU")
- @>Script: pbSet(103,"Maru")
- @>Show Picture: 3, 'introGirl', Center (256,178), (100%,100%), 0, Normal
- @>
-: Branch End
-@>Move Picture: 2, @10, Center (256,256), (100%,100%), 255, Normal
-@>Move Picture: 3, @10, Center (256,178), (100%,100%), 255, Normal
-@>Wait: 10 frame(s)
-@>Text: Is this correct?
-@>Show Choices: Yes, No
-(When Cancel: Choice 2)
-: When [Yes]
- @>
-: When [No]
- @>Control Switches: [0098] = OFF
- @>Control Switches: [0099] = OFF
- @>Control Variables: [0001: Temp Pokemon Choice] = -1
- @>Text: Please select from the list.\ch[1,0,Male,Female]
- @>Jump to Label: Who are you?
- @>
-: Branch End
-@>Text: Now what did you say your name was?
-@>Label: Enter Name
-@>Comment: Opens the name entry screen and initializes the 
- :       : trainer object
-@>Script: pbTrainerName
-@>Wait: 5 frame(s)
-@>Text: So you're \PN?
-@>Show Choices: Yes, No
-(When Cancel: Choice 2)
-: When [Yes]
- @>
-: When [No]
- @>Text: What is your name?
- @>Jump to Label: Enter Name
- @>
-: Branch End
-@>Text: According to your IP Address, you are accessing the 
- :    : registration website from Pharos City, Yitria Region.
-@>Text: Once the process is finished, your information will be sent to
- :    : the local Professor, Professor Hawthorne, and you shall be
- :    : able to pick up your first Pokemon.
-@>Text: \PN, are you ready?
-@>Text: Your very own story is about to unfold.
-@>Text: You'll face fun times and tough challenges.
-@>Text: A world of dreams and adventures with your partners
- :    : awaits!  Let's go!
-@>Fade Out BGM: 4 sec.
-@>Control Self Switch: A =ON
-@>Script: pbToneChangeAll(Tone.new(-255,-255,-255,0),20)
-@>Text: \bThis AI system was brought to you by 
- :    : Chaotic Infinity Conglomeration, which...\^
-@>Wait: 20 frame(s)
-@>Erase Picture: 1
-@>Erase Picture: 2
-@>Erase Picture: 3
-@>Transfer Player:[050: Grace Family Household], (005,009), Left
-@>Script: $player.pokegear=true
-:       : $PokemonGlobal.runningShoes=true
-@>Script: pbToneChangeAll(Tone.new(0,0,0,0),20)
-@>Wait: 20 frame(s)
-@>Script: pbAddQuest(0)
-@>Play SE: 'Pkmn move learnt', 80, 100
-@>Text: You are now officially registered with the Yitria 
- :    : League!
-@>Wait: 10 frame(s)
-@>Text: ???: Hey, \PN! Come downstairs, mom wants you!
-@>Show Animation: Player, [Exclaim bubble]
-@>Set Move Route: Player
- :              : $>Turn Right
-@>Wait for Move's Completion
-@>Script: pbSetSelfSwitch2(50,34,"A",true)
-@>
-
-Page #2
-Conditions
-Self Switch A is ON
-
-Autonomous Movement
-Type: Fixed
-Speed: 3: Slow
-Freq: 3: Low
-Options Enabled
-Move Animation
-Trigger: Action Button
-
-List of Event Commands:
-@>
-
-#------------------------------------------------------------------------------
-Event ID: 006
-Event Name: Intro
-(X,Y): (019,014)
-
-Page #1
-Conditions
-None
-
-Autonomous Movement
-Type: Fixed
-Speed: 3: Slow
-Freq: 3: Low
-Options Enabled
-Move Animation
-Trigger: Action Button
-
-List of Event Commands:
-@>Text: THIS MESSAGE IS HERE TO REMIND YOU THAT THE 
- :    : INTRO IS STILL INCOMPLETE.
-@>Script: pbChangePlayer(7)
-@>Set Move Route: Player
- :              : $>Change Opacity: 0
-@>Prepare for Transition
-@>Play BGM: 'Oak's Theme', 50, 100
-@>Show Picture: 1, 'introbg', Upper Left (0,0), (100%,100%), 255, Normal
-@>Execute Transition
-@>Wait: 18 frame(s)
-@>Show Picture: 2, 'introBG1', Upper Left (0,0), (100%,100%), 0, Normal
-@>Wait: 18 frame(s)
-@>Show Picture: 3, 'introOak', Center (256,172), (100%,100%), 0, Normal
-@>Move Picture: 2, @15, Upper Left (0,0), (100%,100%), 255, Normal
-@>Wait: 18 frame(s)
-@>Move Picture: 3, @15, Center (256,172), (100%,100%), 255, Normal
-@>Wait: 18 frame(s)
-@>Text: Hello, and welcome to the Pokemon League 
- :    : Registration Website, I am Professor Oak.
-@>Text: Many years ago, I was the professor of the Kanto 
- :    : Region.
-@>Text: In my time alive, I would study Pokemon and Puppets, 
- :    : and further the world's collective knowledge about 
- :    : these amazing species.
-@>Text: These days, I live on as an Artificial Inteligence, and 
- :    : the newer generation carries on my work for me.
-@>Text: As part of my role now, I help indoctrinate new 
- :    : trainers into the vast world of Monsekai, and register 
- :    : them for the Pokemon League Challenge.
-@>Text: This world is inhabited by three prominent species. 
- :    : Humans, individuals like you and I...
-@>Wait: 10 frame(s)
-@>Show Picture: 4, 'introEevee', Center (170,220), (100%,100%), 0, Normal
-@>Move Picture: 4, @10, Center (170,220), (100%,100%), 255, Normal
-@>Play SE: 'Intro Eevee Cry', 80, 100
-@>Text: Pokemon, creatures that have existed for as long as 
- :    : we can remember...
-@>Wait: 10 frame(s)
-@>Show Picture: 5, 'introGoliath', Center (342,210), (100%,100%), 0, Normal
-@>Move Picture: 5, @10, Center (342,210), (100%,100%), 255, Normal
-@>Play SE: 'Intro Goliath Cry', 80, 100
-@>Text: And Puppets, a more recent addition to the critters of 
- :    : our world, but a welcomed one all the same.
-@>Text: For several hundred years, these three species have 
- :    : existed together in harmony.
-@>Text: Humans cohabitate with Pokemon and Puppets, they 
- :    : support one another, complement one another.
-@>Text: Most of our world revolves around the bond that we 
- :    : share with these creatures!
-@>Move Picture: 4, @10, Center (170,220), (100%,100%), 0, Normal
-@>Move Picture: 5, @10, Center (342,210), (100%,100%), 0, Normal
-@>Wait: 10 frame(s)
-@>Erase Picture: 4
-@>Erase Picture: 5
-@>Text: But, even to this day, we don't know everything 
- :    : about these remarkable creatures.
-@>Text: Where they came from, how they've persisted all 
- :    : these years... There's so many mysteries to solve.
-@>Text: That's why we study them every day.
-@>Move Picture: 3, @20, Center (256,172), (100%,100%), 0, Normal
-@>Wait: 20 frame(s)
-@>Erase Picture: 3
-@>Text: Now, it's time for you to submit the information for 
- :    : your trainer card.
-@>Text: Please answer the following questions to the best of 
- :    : your ability.
-@>Text: First off, please fill out your name in the relevant 
- :    : fields. Do note, this cannot be changed later.
-@>Label: Enter Name
-@>Script: pbTrainerName
-@>Text: \PN. Is this the correct name? Remember, this cannot 
- :    : be changed later.
-@>Show Choices: Yes, No
-(When Cancel: Choice 2)
-: When [Yes]
- @>
-: When [No]
- @>Text: Please fill out your name.
- @>Jump to Label: Enter Name
- @>
-: Branch End
-@>Script: pbToneChangeAll(Tone.new(-255,-255,-255,0),20)
-@>Wait: 20 frame(s)
-@>Erase Picture: 1
-@>Erase Picture: 2
-@>Wait: 5 frame(s)
-@>Show Picture: 1, 'introCharSel', Upper Left (0,0), (100%,100%), 0, Normal
-@>Wait: 5 frame(s)
-@>Move Picture: 1, @20, Upper Left (0,0), (100%,100%), 255, Normal
-@>Script: pbToneChangeAll(Tone.new(0,0,0,0),20)
-@>Comment: Transtion to avatar select screen
-@>Text: \PN, please upload a photo to go along with your 
- :    : trainer card application.
-@>Text: This will allow the Regional Professor to identify you 
- :    : when you come to claim your trainer card.
-@>Text: Future changes can be made to the picture on your 
- :    : trainer card at any Pokemon Center.
-@>Label: Who are you?
-@>Text: Which image are you uploading?
- :    : \ch[1,0,IMG_5281,IMG_5347]
-@>Conditional Branch: Variable [0001: Temp Pokemon Choice] == 0
- @>Script: pbChangePlayer(0)
- @>Control Variables: [0101: --- Yitria Resurrection ---] = 0
- @>Control Switches: [0098] = ON
- @>Script: pbSet(102,"MARA")
- @>Script: pbSet(103,"Mara")
- @>Show Picture: 2, 'introCharSel1', Upper Left (0,0), (100%,100%), 255, Normal
- @>
-: Branch End
-@>Conditional Branch: Variable [0001: Temp Pokemon Choice] == 1
- @>Script: pbChangePlayer(1)
- @>Control Variables: [0101: --- Yitria Resurrection ---] = 1
- @>Control Switches: [0099] = ON
- @>Script: pbSet(102,"MARU")
- @>Script: pbSet(103,"Maru")
- @>Show Picture: 2, 'introCharSel2', Upper Left (0,0), (100%,100%), 255, Normal
- @>
-: Branch End
-@>Wait: 10 frame(s)
-@>Text: Is this the correct photo to upload? Remember, this 
- :    : can be changed later at any Pokemon Center if need 
- :    : be.
-@>Text: Is this correct?
-@>Show Choices: Yes, No
-(When Cancel: Choice 2)
-: When [Yes]
- @>
-: When [No]
- @>Control Switches: [0098] = OFF
- @>Control Switches: [0099] = OFF
- @>Control Variables: [0001: Temp Pokemon Choice] = -1
- @>Text: Please upload the correct photo.
- @>Jump to Label: Who are you?
- @>
-: Branch End
-@>Script: pbToneChangeAll(Tone.new(-255,-255,-255,0),20)
-@>Text: Next, please fill out your Date of Birth\..\..\..\.\^
-@>Comment: That text auto ends after a short period, while the 
- :       : screen fades to black.
-@>Comment: At this point, the screen transitions to the player in 
- :       : their room, staring at the computer.
-@>Wait: 20 frame(s)
-@>Erase Picture: 1
-@>Erase Picture: 2
-@>Set Move Route: Player
- :              : $>Change Opacity: 255
-@>Transfer Player:[050: Grace Family Household], (005,009), Left
-@>Script: pbToneChangeAll(Tone.new(0,0,0,0),20)
-@>Text: ...Wonderful! Your application has been completed!
-@>Text: \PN, according to your IP Address, your appliation 
- :    : has been sent to the closest regional professor, 
- :    : which is Professor Jerimiah Hawthorne of the Yitria 
- :    : Region.
-@>Text: Once properly processed, you shall recieve your 
- :    : trainer card, as well as your first Pokemon.
-@>Text: Are you ready, \PN?
-@>Text: Your very own story is about to unfold.
-@>Text: Fun times, tough challenges, these all lie ahead on 
- :    : your journey.
-@>Text: But, with your partners by your side, there is nothing 
- :    : you can't overcome!
-@>Text: A world of dreams and adventures await you, it's 
- :    : time to take your first steps into it!
-@>Text: \bThis AI system was brought to you by 
- :    : Chaotic Infinity Conglomeration, which...\^
-@>Script: $player.pokegear=true
-:       : $PokemonGlobal.runningShoes=true
-@>Wait: 20 frame(s)
-@>Script: pbAddQuest(0)
-@>Play SE: 'Pkmn move learnt', 80, 100
-@>Text: You are now officially registered with the Yitria 
- :    : League!
-@>Wait: 10 frame(s)
-@>Text: ???: Hey, \PN! Come downstairs, mom wants you!
-@>Show Animation: Player, [Exclaim bubble]
-@>Set Move Route: Player
- :              : $>Turn Right
-@>Wait for Move's Completion
-@>Script: pbSetSelfSwitch2(50,34,"A",true)
-@>Comment: ----------------- End of Intro
-@>Wait: 5 frame(s)
-@>Move Picture: 3, @10, Center (256,172), (100%,100%), 0, Normal
-@>Wait: 10 frame(s)
-@>Erase Picture: 3
-@>Show Picture: 3, 'introMarill', Center (256,220), (100%,100%), 0, Normal
-@>Move Picture: 3, @10, Center (256,220), (100%,100%), 255, Normal
-@>Wait: 10 frame(s)
-@>Text: This world is inhabited by two specific species. The 
- :    : first is Pokemon.
-@>Move Picture: 3, @10, Center (256,220), (100%,100%), 0, Normal
-@>Wait: 10 frame(s)
-@>Erase Picture: 3
-@>Show Picture: 3, '642', Center (256,190), (100%,100%), 0, Normal
-@>Move Picture: 3, @10, Center (256,190), (100%,100%), 255, Normal
-@>Text: And the other is Puppets, a recent arrival to the 
- :    : beings residing on Monsekai.
-@>Text: For several hundred years, people have lived 
- :    : together with Pokemon and Puppets, supporting one 
- :    : another.
-@>Text: Some play with them like friends, some battle with 
- :    : them like comrades, they both go hand in hand.
-@>Wait: 5 frame(s)
-@>Move Picture: 3, @10, Center (256,190), (100%,100%), 0, Normal
-@>Wait: 10 frame(s)
-@>Erase Picture: 3
-@>Show Picture: 3, 'introOak', Center (256,172), (100%,100%), 0, Normal
-@>Move Picture: 3, @10, Center (256,172), (100%,100%), 255, Normal
-@>Wait: 10 frame(s)
-@>Text: But we don't know everything about these 
- :    : remarkable creatures yet.
-@>Text: There are still many mysteries to solve.
-@>Text: That's why we study them every day.
-@>Wait: 5 frame(s)
-@>Move Picture: 2, @10, Center (256,256), (100%,100%), 0, Normal
-@>Move Picture: 3, @10, Center (256,172), (100%,100%), 0, Normal
-@>Wait: 10 frame(s)
-@>Erase Picture: 3
-@>Wait: 15 frame(s)
-@>Text: Now it's time for you to fill out your identification card. 
- :    : Please answer the following questions to the best of 
- :    : your ability.
-@>Text: First off, are you male or female?
-@>Text: Now what did you say your name was?
-@>Label: Enter Name
-@>Comment: Opens the name entry screen and initializes the 
- :       : trainer object
-@>Script: pbTrainerName
-@>Wait: 5 frame(s)
-@>Text: So you're \PN?
-@>Show Choices: Yes, No
-(When Cancel: Choice 2)
-: When [Yes]
- @>
-: When [No]
- @>Text: What is your name?
- @>Jump to Label: Enter Name
- @>
-: Branch End
-@>Text: According to your IP Address, you are accessing the 
- :    : registration website from Pharos City, Yitria Region.
-@>Text: Once the process is finished, your information will be sent to
- :    : the local Professor, Professor Hawthorne, and you shall be
- :    : able to pick up your first Pokemon.
-@>Text: \PN, are you ready?
-@>Text: Your very own story is about to unfold.
-@>Text: You'll face fun times and tough challenges.
-@>Text: A world of dreams and adventures with your partners
- :    : awaits!  Let's go!
-@>Fade Out BGM: 4 sec.
-@>Control Self Switch: A =ON
-@>Script: pbToneChangeAll(Tone.new(-255,-255,-255,0),20)
-@>Text: \bThis AI system was brought to you by 
- :    : Chaotic Infinity Conglomeration, which...\^
-@>Wait: 20 frame(s)
-@>Erase Picture: 1
-@>Erase Picture: 2
-@>Erase Picture: 3
-@>
-
-Page #2
-Conditions
-Self Switch A is ON
-
-Autonomous Movement
-Type: Fixed
-Speed: 3: Slow
-Freq: 3: Low
-Options Enabled
-Move Animation
-Trigger: Action Button
-
-List of Event Commands:
-@>
-
-#------------------------------------------------------------------------------
-Event ID: 007
-Event Name: Quick start intro
-(X,Y): (002,000)
-
-Page #1
-Conditions
-None
-
-Autonomous Movement
-Type: Fixed
-Speed: 3: Slow
-Freq: 3: Low
-Options Enabled
-Move Animation
-Trigger: Action Button
-
-List of Event Commands:
-@>Comment: This is the Debug intro, used to quickly start a game. 
- :       : The player's name and trainer type are chosen 
- :       : automatically.
-@>Script: pbChangePlayer(0)
-@>Script: pbTrainerName("Maru")
-@>Control Self Switch: A =ON
-@>Transfer Player:[050: Grace Family Household], (014,010), Up, No Fade
-@>Script: pbToneChangeAll(Tone.new(0,0,0,0),20)
-@>Text: ...Wonderful! Your application has been completed!
-@>Text: \PN, according to your IP Address, your appliation 
- :    : has been sent to the closest regional professor, 
- :    : which is Professor Jerimiah Hawthorne of the Yitria 
- :    : Region.
-@>Text: Once properly processed, you shall recieve your 
- :    : trainer card, as well as your first Pokemon.
-@>Text: Are you ready, \PN?
-@>Text: Your very own story is about to unfold.
-@>Text: Fun times, tough challenges, these all lie ahead on 
- :    : your journey.
-@>Text: But, with your partners by your side, there is nothing 
- :    : you can't overcome!
-@>Text: A world of dreams and adventures await you, it's 
- :    : time to take your first steps into it!
-@>Text: \bThis AI system was brought to you by 
- :    : Chaotic Infinity Conglomeration, which...\^
-@>Script: $player.pokegear=true
-:       : $PokemonGlobal.runningShoes=true
-@>Wait: 20 frame(s)
-@>Script: pbAddQuest(0)
-@>Play SE: 'Pkmn move learnt', 80, 100
-@>Text: You sent in your registration for the Yitria League!
-@>Wait: 10 frame(s)
-@>Script: pbMessageWithName(
-:       : "???","Hey, \\PN! Come downstairs, mom wants you!")
-@>Show Animation: Player, [Exclaim bubble]
-@>Set Move Route: Player
- :              : $>Turn Right
-@>Wait for Move's Completion
-@>Script: pbSetSelfSwitch2(50,34,"A",true)
-@>Script: $player.mysterygiftaccess=true
-@>Comment: ----------------- End of Intro
-@>
-
-Page #2
-Conditions
-Self Switch A is ON
-
-Autonomous Movement
-Type: Fixed
-Speed: 3: Slow
-Freq: 3: Low
-Options Enabled
-Move Animation
-Trigger: Action Button
-
-List of Event Commands:
-@>
-
-#------------------------------------------------------------------------------
-Event ID: 009
-Event Name: Intro (Backup)
-(X,Y): (000,014)
-
-Page #1
-Conditions
-None
-
-Autonomous Movement
-Type: Fixed
-Speed: 3: Slow
-Freq: 3: Low
-Options Enabled
-Move Animation
-Trigger: Action Button
-
-List of Event Commands:
-@>Set Move Route: Player
- :              : $>Change Opacity: 0
-@>Prepare for Transition
-@>Play BGM: 'Oak's Theme', 50, 100
-@>Show Picture: 1, 'introbg', Upper Left (0,0), (100%,100%), 255, Normal
-@>Execute Transition
-@>Wait: 18 frame(s)
-@>Show Picture: 2, 'introBG1', Upper Left (0,0), (100%,100%), 0, Normal
-@>Wait: 18 frame(s)
-@>Show Picture: 3, 'introOak', Center (256,172), (100%,100%), 0, Normal
-@>Move Picture: 2, @15, Upper Left (0,0), (100%,100%), 255, Normal
-@>Wait: 18 frame(s)
-@>Move Picture: 3, @15, Center (256,172), (100%,100%), 255, Normal
-@>Wait: 18 frame(s)
-@>Text: Hello, and welcome to the Pokemon League 
- :    : Registration Website, I am Professor Oak.
-@>Text: Many years ago, I was the professor of the Kanto 
- :    : Region.
-@>Text: In my time alive, I would study Pokemon and Puppets, 
- :    : and further the world's collective knowledge about 
- :    : these amazing species.
-@>Text: These days, I live on as an Artificial Inteligence, and 
- :    : the newer generation carries on my work for me.
-@>Text: As part of my role now, I help indoctrinate new 
- :    : trainers into the vast world of Monsekai, and register 
- :    : them for the Pokemon League Challenge.
-@>Text: This world is inhabited by three prominent species. 
- :    : Humans, individuals like you and I...
-@>Wait: 10 frame(s)
-@>Show Picture: 4, 'introEevee', Center (170,220), (100%,100%), 0, Normal
-@>Move Picture: 4, @10, Center (170,220), (100%,100%), 255, Normal
-@>Play SE: 'Intro Eevee Cry', 80, 100
-@>Text: Pokemon, creatures that have existed for as long as 
- :    : we can remember...
-@>Wait: 10 frame(s)
-@>Show Picture: 5, 'introGoliath', Center (342,210), (100%,100%), 0, Normal
-@>Move Picture: 5, @10, Center (342,210), (100%,100%), 255, Normal
-@>Play SE: 'Intro Goliath Cry', 80, 100
-@>Text: And Puppets, a more recent addition to the critters of 
- :    : our world, but a welcomed one all the same.
-@>Text: For several hundred years, these three species have 
- :    : existed together in harmony.
-@>Text: Humans cohabitate with Pokemon and Puppets, they 
- :    : support one another, complement one another.
-@>Text: Most of our world revolves around the bond that we 
- :    : share with these creatures!
-@>Move Picture: 4, @10, Center (170,220), (100%,100%), 0, Normal
-@>Move Picture: 5, @10, Center (342,210), (100%,100%), 0, Normal
-@>Wait: 10 frame(s)
-@>Erase Picture: 4
-@>Erase Picture: 5
-@>Text: But, even to this day, we don't know everything 
- :    : about these remarkable creatures.
-@>Text: Where they came from, how they've persisted all 
- :    : these years... There's so many mysteries to solve.
-@>Text: That's why we study them every day.
-@>Move Picture: 3, @20, Center (256,172), (100%,100%), 0, Normal
-@>Wait: 20 frame(s)
-@>Erase Picture: 3
-@>Text: Now, it's time for you to submit the information for 
- :    : your trainer card.
-@>Text: Please answer the following questions to the best of 
- :    : your ability.
-@>Text: First off, please fill out your name in the relevant 
- :    : fields. Do note, this cannot be changed later.
-@>Label: Enter Name
-@>Script: pbTrainerName
-@>Text: \PN. Is this the correct name? Remember, this cannot 
- :    : be changed later.
-@>Show Choices: Yes, No
-(When Cancel: Choice 2)
-: When [Yes]
- @>
-: When [No]
- @>Text: Please fill out your name.
- @>Jump to Label: Enter Name
- @>
-: Branch End
-@>Script: pbToneChangeAll(Tone.new(-255,-255,-255,0),20)
-@>Wait: 20 frame(s)
-@>Erase Picture: 1
-@>Erase Picture: 2
-@>Wait: 5 frame(s)
-@>Show Picture: 1, 'introCharSel', Upper Left (0,0), (100%,100%), 0, Normal
-@>Wait: 5 frame(s)
-@>Move Picture: 1, @20, Upper Left (0,0), (100%,100%), 255, Normal
-@>Script: pbToneChangeAll(Tone.new(0,0,0,0),20)
-@>Comment: Transtion to avatar select screen
-@>Script: pbChangePlayer(0)
-@>Text: \PN, please upload a photo to go along with your 
- :    : trainer card application.
-@>Text: This will allow the Regional Professor to identify you 
- :    : when you come to claim your trainer card.
-@>Text: Future changes can be made to the picture on your 
- :    : trainer card at any Pokemon Center.
-@>Label: Who are you?
-@>Text: Which image are you uploading?
- :    : \ch[1,0,IMG_5281,IMG_5347]
-@>Conditional Branch: Variable [0001: Temp Pokemon Choice] == 0
- @>Control Variables: [0101: --- Yitria Resurrection ---] = 0
- @>Control Switches: [0098] = ON
- @>Script: $player.outfit=0
- @>Script: pbSet(102,"MORGAN")
- @>Script: pbSet(103,"Morgan")
- @>Show Picture: 2, 'introCharSel1', Upper Left (0,0), (100%,100%), 255, Normal
- @>
-: Branch End
-@>Conditional Branch: Variable [0001: Temp Pokemon Choice] == 1
- @>Control Variables: [0101: --- Yitria Resurrection ---] = 1
- @>Control Switches: [0099] = ON
- @>Script: $player.outfit=1
- @>Script: pbSet(102,"MORGAN")
- @>Script: pbSet(103,"Morgan")
- @>Show Picture: 2, 'introCharSel2', Upper Left (0,0), (100%,100%), 255, Normal
- @>
-: Branch End
-@>Wait: 10 frame(s)
-@>Text: Is this the correct photo to upload? Remember, this 
- :    : can be changed later at any Pokemon Center if need 
- :    : be.
-@>Text: Is this correct?
-@>Show Choices: Yes, No
-(When Cancel: Choice 2)
-: When [Yes]
- @>
-: When [No]
- @>Control Switches: [0098] = OFF
- @>Control Switches: [0099] = OFF
- @>Control Variables: [0001: Temp Pokemon Choice] = -1
- @>Text: Please upload the correct photo.
- @>Jump to Label: Who are you?
- @>
-: Branch End
-@>Script: pbToneChangeAll(Tone.new(-255,-255,-255,0),20)
-@>Fade Out BGM: 10 sec.
-@>Text: Next, please fill out your Date of Birth\..\..\..\.\^
-@>Comment: That text auto ends after a short period, while the 
- :       : screen fades to black.
-@>Comment: At this point, the screen transitions to the player in 
- :       : their room, staring at the computer.
-@>Wait: 20 frame(s)
-@>Erase Picture: 1
-@>Erase Picture: 2
-@>Set Move Route: Player
- :              : $>Change Opacity: 255
-@>Transfer Player:[050: Grace Family Household], (005,009), Left
-@>Script: pbToneChangeAll(Tone.new(0,0,0,0),20)
-@>Text: ...Wonderful! Your application has been completed!
-@>Text: \PN, according to your IP Address, your appliation 
- :    : has been sent to the closest regional professor, 
- :    : which is Professor Jerimiah Hawthorne of the Yitria 
- :    : Region.
-@>Text: Once properly processed, you shall recieve your 
- :    : trainer card, as well as your first Pokemon.
-@>Text: Are you ready, \PN?
-@>Text: Your very own story is about to unfold.
-@>Text: Fun times, tough challenges, these all lie ahead on 
- :    : your journey.
-@>Text: But, with your partners by your side, there is nothing 
- :    : you can't overcome!
-@>Text: A world of dreams and adventures await you, it's 
- :    : time to take your first steps into it!
-@>Text: \bThis AI system was brought to you by 
- :    : Chaotic Infinity Conglomeration, which...\^
-@>Script: $player.pokegear=true
-:       : $PokemonGlobal.runningShoes=true
-@>Wait: 20 frame(s)
-@>Script: pbAddQuest(0)
-@>Play SE: 'Pkmn move learnt', 80, 100
-@>Text: You sent in your registration for the Yitria League!
-@>Wait: 10 frame(s)
-@>Script: pbMessageWithName(
-:       : "???","Hey, \\PN! Come downstairs, mom wants you!")
-@>Show Animation: Player, [Exclaim bubble]
-@>Set Move Route: Player
- :              : $>Turn Right
-@>Wait for Move's Completion
-@>Script: pbSetSelfSwitch2(50,34,"A",true)
-@>Script: $player.mysterygiftaccess=true
 @>Comment: ----------------- End of Intro
 @>
 
@@ -14311,47 +13060,6 @@ List of Event Commands:
 @>
 
 #------------------------------------------------------------------------------
-Event ID: 010
-Event Name: Quest Indicator: Main
-(X,Y): (017,003)
-
-Page #1
-Conditions
-Variable 0107: Plot Control Variable is 0 or above
-
-Graphic: questicon2
-
-Autonomous Movement
-Type: Fixed
-Speed: 3: Slow
-Freq: 3: Low
-Options Enabled
-Move Animation
-Stop Animation
-Direction Fix
-Through
-Always on Top
-Trigger: Action Button
-
-List of Event Commands:
-@>
-
-Page #2
-Conditions
-Variable 0107: Plot Control Variable is 1 or above
-
-Autonomous Movement
-Type: Fixed
-Speed: 3: Slow
-Freq: 3: Low
-Options Enabled
-Move Animation
-Trigger: Action Button
-
-List of Event Commands:
-@>
-
-#------------------------------------------------------------------------------
 Event ID: 011
 Event Name: Nameplate
 (X,Y): (015,005)
@@ -15549,17 +14257,8 @@ Trigger: Action Button
 
 List of Event Commands:
 @>Conditional Branch: Player is facing Up
- @>Conditional Branch: Variable [0101: --- Yitria Resurrection ---] == 0
-  @>Text: It's Mara's dresser. I shouldn't really be poking around 
-   :    : inside of it.
-  @>
- : Else
-  @>Text: It's Maru's dresser. I shouldn't really be poking around 
-   :    : inside of it.
-  @>
- : Branch End
- @>
-: Else
+ @>Text: It's Morgan's dresser. I shouldn't really be poking around 
+  :    : inside of it.
  @>
 : Branch End
 @>
@@ -32056,7 +30755,7 @@ List of Event Commands:
 
 Page #2
 Conditions
-Switch 0003: Starter Chosen is ON
+Switch 0003: Choosing starter is ON
 
 Graphic: NPC_ProfHawthorn
 
@@ -32128,7 +30827,7 @@ List of Event Commands:
  :       : p.reset_moves
  :       : 
  :       : pbAddPokemon(p)
- @>Control Switches: [0003: Starter Chosen] = ON
+ @>Control Switches: [0003: Choosing starter] = ON
  @>Control Self Switch: A =ON
  @>
 : When [No]
@@ -32138,7 +30837,7 @@ List of Event Commands:
 
 Page #2
 Conditions
-Switch 0003: Starter Chosen is ON
+Switch 0003: Choosing starter is ON
 
 Graphic: Object ball
 
@@ -32200,7 +30899,7 @@ List of Event Commands:
  :       : p.reset_moves
  :       : 
  :       : pbAddPokemon(p)
- @>Control Switches: [0003: Starter Chosen] = ON
+ @>Control Switches: [0003: Choosing starter] = ON
  @>Control Self Switch: A =ON
  @>
 : When [No]
@@ -32210,7 +30909,7 @@ List of Event Commands:
 
 Page #2
 Conditions
-Switch 0003: Starter Chosen is ON
+Switch 0003: Choosing starter is ON
 
 Graphic: Object ball
 
@@ -32272,7 +30971,7 @@ List of Event Commands:
  :       : p.reset_moves
  :       : 
  :       : pbAddPokemon(p)
- @>Control Switches: [0003: Starter Chosen] = ON
+ @>Control Switches: [0003: Choosing starter] = ON
  @>Control Self Switch: A =ON
  @>
 : When [No]
@@ -32282,7 +30981,7 @@ List of Event Commands:
 
 Page #2
 Conditions
-Switch 0003: Starter Chosen is ON
+Switch 0003: Choosing starter is ON
 
 Graphic: Object ball
 
@@ -32344,7 +31043,7 @@ List of Event Commands:
  :       : p.reset_moves
  :       : 
  :       : pbAddPokemon(p)
- @>Control Switches: [0003: Starter Chosen] = ON
+ @>Control Switches: [0003: Choosing starter] = ON
  @>Control Self Switch: A =ON
  @>
 : When [No]
@@ -32354,7 +31053,7 @@ List of Event Commands:
 
 Page #2
 Conditions
-Switch 0003: Starter Chosen is ON
+Switch 0003: Choosing starter is ON
 
 Graphic: Object ball
 
@@ -32416,7 +31115,7 @@ List of Event Commands:
  :       : p.reset_moves
  :       : 
  :       : pbAddPokemon(p)
- @>Control Switches: [0003: Starter Chosen] = ON
+ @>Control Switches: [0003: Choosing starter] = ON
  @>Control Self Switch: A =ON
  @>
 : When [No]
@@ -32426,7 +31125,7 @@ List of Event Commands:
 
 Page #2
 Conditions
-Switch 0003: Starter Chosen is ON
+Switch 0003: Choosing starter is ON
 
 Graphic: Object ball
 
@@ -32488,7 +31187,7 @@ List of Event Commands:
  :       : p.reset_moves
  :       : 
  :       : pbAddPokemon(p)
- @>Control Switches: [0003: Starter Chosen] = ON
+ @>Control Switches: [0003: Choosing starter] = ON
  @>Control Self Switch: A =ON
  @>
 : When [No]
@@ -32498,7 +31197,7 @@ List of Event Commands:
 
 Page #2
 Conditions
-Switch 0003: Starter Chosen is ON
+Switch 0003: Choosing starter is ON
 
 Graphic: Object ball
 
@@ -32560,7 +31259,7 @@ List of Event Commands:
  :       : p.reset_moves
  :       : 
  :       : pbAddPokemon(p)
- @>Control Switches: [0003: Starter Chosen] = ON
+ @>Control Switches: [0003: Choosing starter] = ON
  @>Control Self Switch: A =ON
  @>
 : When [No]
@@ -32570,7 +31269,7 @@ List of Event Commands:
 
 Page #2
 Conditions
-Switch 0003: Starter Chosen is ON
+Switch 0003: Choosing starter is ON
 
 Graphic: Object ball
 
@@ -32632,7 +31331,7 @@ List of Event Commands:
  :       : p.reset_moves
  :       : 
  :       : pbAddPokemon(p)
- @>Control Switches: [0003: Starter Chosen] = ON
+ @>Control Switches: [0003: Choosing starter] = ON
  @>Control Self Switch: A =ON
  @>
 : When [No]
@@ -32642,7 +31341,7 @@ List of Event Commands:
 
 Page #2
 Conditions
-Switch 0003: Starter Chosen is ON
+Switch 0003: Choosing starter is ON
 
 Graphic: Object ball
 
@@ -32704,7 +31403,7 @@ List of Event Commands:
  :       : p.reset_moves
  :       : 
  :       : pbAddPokemon(p)
- @>Control Switches: [0003: Starter Chosen] = ON
+ @>Control Switches: [0003: Choosing starter] = ON
  @>Control Self Switch: A =ON
  @>
 : When [No]
@@ -32714,7 +31413,7 @@ List of Event Commands:
 
 Page #2
 Conditions
-Switch 0003: Starter Chosen is ON
+Switch 0003: Choosing starter is ON
 
 Graphic: Object ball
 
@@ -32776,7 +31475,7 @@ List of Event Commands:
  :       : p.reset_moves
  :       : 
  :       : pbAddPokemon(p)
- @>Control Switches: [0003: Starter Chosen] = ON
+ @>Control Switches: [0003: Choosing starter] = ON
  @>Control Self Switch: A =ON
  @>
 : When [No]
@@ -32786,7 +31485,7 @@ List of Event Commands:
 
 Page #2
 Conditions
-Switch 0003: Starter Chosen is ON
+Switch 0003: Choosing starter is ON
 
 Graphic: Object ball
 
@@ -32848,7 +31547,7 @@ List of Event Commands:
  :       : p.reset_moves
  :       : 
  :       : pbAddPokemon(p)
- @>Control Switches: [0003: Starter Chosen] = ON
+ @>Control Switches: [0003: Choosing starter] = ON
  @>Control Self Switch: A =ON
  @>
 : When [No]
@@ -32858,7 +31557,7 @@ List of Event Commands:
 
 Page #2
 Conditions
-Switch 0003: Starter Chosen is ON
+Switch 0003: Choosing starter is ON
 
 Graphic: Object ball
 
@@ -32920,7 +31619,7 @@ List of Event Commands:
  :       : p.reset_moves
  :       : 
  :       : pbAddPokemon(p)
- @>Control Switches: [0003: Starter Chosen] = ON
+ @>Control Switches: [0003: Choosing starter] = ON
  @>Control Self Switch: A =ON
  @>
 : When [No]
@@ -32930,7 +31629,7 @@ List of Event Commands:
 
 Page #2
 Conditions
-Switch 0003: Starter Chosen is ON
+Switch 0003: Choosing starter is ON
 
 Graphic: Object ball
 
@@ -32992,7 +31691,7 @@ List of Event Commands:
  :       : p.reset_moves
  :       : 
  :       : pbAddPokemon(p)
- @>Control Switches: [0003: Starter Chosen] = ON
+ @>Control Switches: [0003: Choosing starter] = ON
  @>Control Self Switch: A =ON
  @>
 : When [No]
@@ -33002,7 +31701,7 @@ List of Event Commands:
 
 Page #2
 Conditions
-Switch 0003: Starter Chosen is ON
+Switch 0003: Choosing starter is ON
 
 Graphic: Object ball
 
@@ -33064,7 +31763,7 @@ List of Event Commands:
  :       : p.reset_moves
  :       : 
  :       : pbAddPokemon(p)
- @>Control Switches: [0003: Starter Chosen] = ON
+ @>Control Switches: [0003: Choosing starter] = ON
  @>Control Self Switch: A =ON
  @>
 : When [No]
@@ -33074,7 +31773,7 @@ List of Event Commands:
 
 Page #2
 Conditions
-Switch 0003: Starter Chosen is ON
+Switch 0003: Choosing starter is ON
 
 Graphic: Object ball
 
@@ -33136,7 +31835,7 @@ List of Event Commands:
  :       : p.reset_moves
  :       : 
  :       : pbAddPokemon(p)
- @>Control Switches: [0003: Starter Chosen] = ON
+ @>Control Switches: [0003: Choosing starter] = ON
  @>Control Self Switch: A =ON
  @>
 : When [No]
@@ -33146,7 +31845,7 @@ List of Event Commands:
 
 Page #2
 Conditions
-Switch 0003: Starter Chosen is ON
+Switch 0003: Choosing starter is ON
 
 Graphic: Object ball
 
@@ -33208,7 +31907,7 @@ List of Event Commands:
  :       : p.reset_moves
  :       : 
  :       : pbAddPokemon(p)
- @>Control Switches: [0003: Starter Chosen] = ON
+ @>Control Switches: [0003: Choosing starter] = ON
  @>Control Self Switch: A =ON
  @>
 : When [No]
@@ -33218,7 +31917,7 @@ List of Event Commands:
 
 Page #2
 Conditions
-Switch 0003: Starter Chosen is ON
+Switch 0003: Choosing starter is ON
 
 Graphic: Object ball
 
@@ -33280,7 +31979,7 @@ List of Event Commands:
  :       : p.reset_moves
  :       : 
  :       : pbAddPokemon(p)
- @>Control Switches: [0003: Starter Chosen] = ON
+ @>Control Switches: [0003: Choosing starter] = ON
  @>Control Self Switch: A =ON
  @>
 : When [No]
@@ -33290,7 +31989,7 @@ List of Event Commands:
 
 Page #2
 Conditions
-Switch 0003: Starter Chosen is ON
+Switch 0003: Choosing starter is ON
 
 Graphic: Object ball
 
@@ -33352,7 +32051,7 @@ List of Event Commands:
  :       : p.reset_moves
  :       : 
  :       : pbAddPokemon(p)
- @>Control Switches: [0003: Starter Chosen] = ON
+ @>Control Switches: [0003: Choosing starter] = ON
  @>Control Self Switch: A =ON
  @>
 : When [No]
@@ -33362,7 +32061,7 @@ List of Event Commands:
 
 Page #2
 Conditions
-Switch 0003: Starter Chosen is ON
+Switch 0003: Choosing starter is ON
 
 Graphic: Object ball
 
@@ -33424,7 +32123,7 @@ List of Event Commands:
  :       : p.reset_moves
  :       : 
  :       : pbAddPokemon(p)
- @>Control Switches: [0003: Starter Chosen] = ON
+ @>Control Switches: [0003: Choosing starter] = ON
  @>Control Self Switch: A =ON
  @>
 : When [No]
@@ -33434,7 +32133,7 @@ List of Event Commands:
 
 Page #2
 Conditions
-Switch 0003: Starter Chosen is ON
+Switch 0003: Choosing starter is ON
 
 Graphic: Object ball
 
@@ -33496,7 +32195,7 @@ List of Event Commands:
  :       : p.reset_moves
  :       : 
  :       : pbAddPokemon(p)
- @>Control Switches: [0003: Starter Chosen] = ON
+ @>Control Switches: [0003: Choosing starter] = ON
  @>Control Self Switch: A =ON
  @>
 : When [No]
@@ -33506,7 +32205,7 @@ List of Event Commands:
 
 Page #2
 Conditions
-Switch 0003: Starter Chosen is ON
+Switch 0003: Choosing starter is ON
 
 Graphic: Object ball
 
@@ -33568,7 +32267,7 @@ List of Event Commands:
  :       : p.reset_moves
  :       : 
  :       : pbAddPokemon(p)
- @>Control Switches: [0003: Starter Chosen] = ON
+ @>Control Switches: [0003: Choosing starter] = ON
  @>Control Self Switch: A =ON
  @>
 : When [No]
@@ -33578,7 +32277,7 @@ List of Event Commands:
 
 Page #2
 Conditions
-Switch 0003: Starter Chosen is ON
+Switch 0003: Choosing starter is ON
 
 Graphic: Object ball
 

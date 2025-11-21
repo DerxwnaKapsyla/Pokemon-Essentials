@@ -78,8 +78,10 @@ class Game_Map
   #if the bgm playing rn is different than the maps bgm, switch to the maps bgm
   def play_current_bgm
     bgm = $game_system.playing_bgm
-    if (!bgm || bgm.name != @map.bgm.name || bgm.name != @map.bgm.volume || bgm.name != @map.bgm.pitch)
-      pbCueBGM(@map.bgm.name,1.0,@map.bgm.volume,@map.bgm.pitch)
+    map = load_data(sprintf("Data/Map%03d.rxdata",@map_id))
+    if (!bgm || bgm.name != map.bgm.name || bgm.name != map.bgm.volume || bgm.name != map.bgm.pitch)
+      pbCueBGM(map.bgm.name,1.0,map.bgm.volume,map.bgm.pitch)
+	  @map.bgm = map.bgm
     end
   end
 end

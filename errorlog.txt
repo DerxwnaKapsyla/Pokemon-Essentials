@@ -1,0 +1,419 @@
+
+=================
+
+[2025-11-20 01:16:04 -0700]
+[Pokémon Essentials version 21.1]
+
+Error in Plugin: [RMXP Event Exporter]
+Exception: RuntimeError
+Message: INVALID EVENT COMMAND DATA
+
+Map ID: 001
+Map Name: Intro
+Event ID: 001
+Event Name: Intro
+(X,Y): (000,000)
+
+Line Number: 55
+
+Check the end of the event text file that was generated before the script crashed to see which event command has invalid data.
+
+Backtrace:
+[RMXP Event Exporter] script.rb:145:in `rescue in block (4 levels) in export'
+[RMXP Event Exporter] script.rb:134:in `block (4 levels) in export'
+[RMXP Event Exporter] script.rb:132:in `each'
+[RMXP Event Exporter] script.rb:132:in `block (3 levels) in export'
+[RMXP Event Exporter] script.rb:126:in `each'
+[RMXP Event Exporter] script.rb:126:in `block (2 levels) in export'
+[RMXP Event Exporter] script.rb:103:in `each'
+[RMXP Event Exporter] script.rb:103:in `block in export'
+[RMXP Event Exporter] script.rb:80:in `open'
+[RMXP Event Exporter] script.rb:80:in `export'
+
+=================
+
+[2025-11-20 01:19:43 -0700]
+[Pokémon Essentials version 21.1]
+
+Exception: RuntimeError
+Message: Undefined value MissingNo in GameData::GrowthRate.
+File PBS/pokemon_custom.txt, section MISSINGNO, key GrowthRate
+MissingNo
+
+
+
+Backtrace:
+001_Compiler.rb:454:in `checkEnumField'
+001_Compiler.rb:430:in `cast_csv_value'
+001_Compiler.rb:724:in `block (2 levels) in get_csv_record'
+001_Compiler.rb:710:in `each'
+001_Compiler.rb:710:in `block in get_csv_record'
+001_Compiler.rb:708:in `loop'
+001_Compiler.rb:708:in `get_csv_record'
+002_Compiler_CompilePBS.rb:49:in `block (4 levels) in compile_PBS_file_generic'
+002_Compiler_CompilePBS.rb:31:in `each_key'
+002_Compiler_CompilePBS.rb:31:in `block (3 levels) in compile_PBS_file_generic'
+
+=================
+
+[2025-11-20 01:19:57 -0700]
+[Pokémon Essentials version 21.1]
+
+Exception: RuntimeError
+Message: Unknown exception when compiling.
+
+Backtrace:
+001_Compiler.rb:1114:in `rescue in main'
+001_Compiler.rb:1041:in `main'
+999_Main.rb:35:in `mainFunctionDebug'
+999_Main.rb:18:in `block in mainFunction'
+003_Errors.rb:79:in `pbCriticalCode'
+999_Main.rb:18:in `mainFunction'
+999_Main.rb:51:in `block (2 levels) in load_scripts_from_folder'
+999_Main.rb:50:in `loop'
+999_Main.rb:50:in `block in load_scripts_from_folder'
+Main:35:in `eval'
+
+=================
+
+[2025-11-20 01:20:56 -0700]
+[Pokémon Essentials version 21.1]
+
+Exception: RuntimeError
+Message: Undefined value MISSINGNO in GameData::GrowthRate.
+File PBS/pokemon_custom.txt, section MISSINGNO, key GrowthRate
+MISSINGNO
+
+
+
+Backtrace:
+001_Compiler.rb:454:in `checkEnumField'
+001_Compiler.rb:430:in `cast_csv_value'
+001_Compiler.rb:724:in `block (2 levels) in get_csv_record'
+001_Compiler.rb:710:in `each'
+001_Compiler.rb:710:in `block in get_csv_record'
+001_Compiler.rb:708:in `loop'
+001_Compiler.rb:708:in `get_csv_record'
+002_Compiler_CompilePBS.rb:49:in `block (4 levels) in compile_PBS_file_generic'
+002_Compiler_CompilePBS.rb:31:in `each_key'
+002_Compiler_CompilePBS.rb:31:in `block (3 levels) in compile_PBS_file_generic'
+
+=================
+
+[2025-11-20 01:21:07 -0700]
+[Pokémon Essentials version 21.1]
+
+Exception: RuntimeError
+Message: Unknown exception when compiling.
+
+Backtrace:
+001_Compiler.rb:1114:in `rescue in main'
+001_Compiler.rb:1041:in `main'
+999_Main.rb:35:in `mainFunctionDebug'
+999_Main.rb:18:in `block in mainFunction'
+003_Errors.rb:79:in `pbCriticalCode'
+999_Main.rb:18:in `mainFunction'
+999_Main.rb:51:in `block (2 levels) in load_scripts_from_folder'
+999_Main.rb:50:in `loop'
+999_Main.rb:50:in `block in load_scripts_from_folder'
+Main:35:in `eval'
+
+=================
+
+[2025-11-20 01:21:37 -0700]
+[Pokémon Essentials version 21.1]
+
+Exception: RuntimeError
+Message: Undefined value MissingNo in GameData::GrowthRate.
+File PBS/pokemon_custom.txt, section MISSINGNO, key GrowthRate
+MissingNo
+
+
+
+Backtrace:
+001_Compiler.rb:454:in `checkEnumField'
+001_Compiler.rb:430:in `cast_csv_value'
+001_Compiler.rb:724:in `block (2 levels) in get_csv_record'
+001_Compiler.rb:710:in `each'
+001_Compiler.rb:710:in `block in get_csv_record'
+001_Compiler.rb:708:in `loop'
+001_Compiler.rb:708:in `get_csv_record'
+002_Compiler_CompilePBS.rb:49:in `block (4 levels) in compile_PBS_file_generic'
+002_Compiler_CompilePBS.rb:31:in `each_key'
+002_Compiler_CompilePBS.rb:31:in `block (3 levels) in compile_PBS_file_generic'
+
+=================
+
+[2025-11-20 01:21:56 -0700]
+[Pokémon Essentials version 21.1]
+
+Exception: RuntimeError
+Message: Unknown exception when compiling.
+
+Backtrace:
+001_Compiler.rb:1114:in `rescue in main'
+001_Compiler.rb:1041:in `main'
+999_Main.rb:35:in `mainFunctionDebug'
+999_Main.rb:18:in `block in mainFunction'
+003_Errors.rb:79:in `pbCriticalCode'
+999_Main.rb:18:in `mainFunction'
+999_Main.rb:51:in `block (2 levels) in load_scripts_from_folder'
+999_Main.rb:50:in `loop'
+999_Main.rb:50:in `block in load_scripts_from_folder'
+Main:35:in `eval'
+
+=================
+
+[2025-11-20 01:24:44 -0700]
+[Pokémon Essentials version 21.1]
+
+Exception: RuntimeError
+Message: Undefined value  in GameData::Evolution.
+File PBS/pokemon_custom.txt, section HIBAKTOL, key Evolutions
+
+
+
+
+Backtrace:
+001_Compiler.rb:454:in `checkEnumField'
+001_Compiler.rb:430:in `cast_csv_value'
+001_Compiler.rb:724:in `block (2 levels) in get_csv_record'
+001_Compiler.rb:710:in `each'
+001_Compiler.rb:710:in `block in get_csv_record'
+001_Compiler.rb:708:in `loop'
+001_Compiler.rb:708:in `get_csv_record'
+002_Compiler_CompilePBS.rb:49:in `block (4 levels) in compile_PBS_file_generic'
+002_Compiler_CompilePBS.rb:31:in `each_key'
+002_Compiler_CompilePBS.rb:31:in `block (3 levels) in compile_PBS_file_generic'
+
+=================
+
+[2025-11-20 01:25:40 -0700]
+[Pokémon Essentials version 21.1]
+
+Exception: RuntimeError
+Message: Undefined value  in GameData::Evolution.
+File PBS/pokemon_custom.txt, section HIBAKTOL, key Evolution
+[""]
+
+
+
+Backtrace:
+001_Compiler.rb:454:in `checkEnumField'
+001_Compiler.rb:430:in `cast_csv_value'
+001_Compiler.rb:724:in `block (2 levels) in get_csv_record'
+001_Compiler.rb:710:in `each'
+001_Compiler.rb:710:in `block in get_csv_record'
+001_Compiler.rb:708:in `loop'
+001_Compiler.rb:708:in `get_csv_record'
+002_Compiler_CompilePBS.rb:42:in `block (5 levels) in compile_PBS_file_generic'
+002_Compiler_CompilePBS.rb:41:in `each'
+002_Compiler_CompilePBS.rb:41:in `block (4 levels) in compile_PBS_file_generic'
+
+=================
+
+[2025-11-20 01:25:45 -0700]
+[Pokémon Essentials version 21.1]
+
+Exception: RuntimeError
+Message: Unknown exception when compiling.
+
+Backtrace:
+001_Compiler.rb:1114:in `rescue in main'
+001_Compiler.rb:1041:in `main'
+999_Main.rb:35:in `mainFunctionDebug'
+999_Main.rb:18:in `block in mainFunction'
+003_Errors.rb:79:in `pbCriticalCode'
+999_Main.rb:18:in `mainFunction'
+999_Main.rb:51:in `block (2 levels) in load_scripts_from_folder'
+999_Main.rb:50:in `loop'
+999_Main.rb:50:in `block in load_scripts_from_folder'
+Main:35:in `eval'
+
+=================
+
+[2025-11-20 01:26:15 -0700]
+[Pokémon Essentials version 21.1]
+
+Exception: RuntimeError
+Message: Undefined value TEAMROCKET_F in GameData::TrainerType.
+File PBS/cup_poke_trainers.txt, section 046, key Type
+TEAMROCKET_F
+
+
+
+Backtrace:
+001_Compiler.rb:454:in `checkEnumField'
+001_Compiler.rb:430:in `cast_csv_value'
+001_Compiler.rb:724:in `block (2 levels) in get_csv_record'
+001_Compiler.rb:710:in `each'
+001_Compiler.rb:710:in `block in get_csv_record'
+001_Compiler.rb:708:in `loop'
+001_Compiler.rb:708:in `get_csv_record'
+002_Compiler_CompilePBS.rb:1047:in `block (3 levels) in compile_battle_tower_trainers'
+002_Compiler_CompilePBS.rb:1043:in `each_key'
+002_Compiler_CompilePBS.rb:1043:in `block (2 levels) in compile_battle_tower_trainers'
+
+=================
+
+[2025-11-20 01:26:20 -0700]
+[Pokémon Essentials version 21.1]
+
+Exception: RuntimeError
+Message: Unknown exception when compiling.
+
+Backtrace:
+001_Compiler.rb:1114:in `rescue in main'
+001_Compiler.rb:1041:in `main'
+999_Main.rb:35:in `mainFunctionDebug'
+999_Main.rb:18:in `block in mainFunction'
+003_Errors.rb:79:in `pbCriticalCode'
+999_Main.rb:18:in `mainFunction'
+999_Main.rb:51:in `block (2 levels) in load_scripts_from_folder'
+999_Main.rb:50:in `loop'
+999_Main.rb:50:in `block in load_scripts_from_folder'
+Main:35:in `eval'
+
+=================
+
+[2025-11-20 01:26:53 -0700]
+[Pokémon Essentials version 21.1]
+
+Exception: NoMethodError
+Message: undefined method `name' for nil:NilClass
+
+Backtrace:
+002_Compiler_CompilePBS.rb:1182:in `validate_compiled_map_metadata'
+002_Compiler_CompilePBS.rb:1175:in `block in compile_map_metadata'
+002_Compiler_CompilePBS.rb:55:in `block (3 levels) in compile_PBS_file_generic'
+001_Compiler.rb:143:in `block in pbEachFileSection'
+001_Compiler.rb:108:in `block in pbEachFileSectionEx'
+001_Compiler.rb:100:in `each_line'
+001_Compiler.rb:100:in `pbEachFileSectionEx'
+001_Compiler.rb:142:in `pbEachFileSection'
+002_Compiler_CompilePBS.rb:22:in `block (2 levels) in compile_PBS_file_generic'
+002_Compiler_CompilePBS.rb:16:in `open'
+
+=================
+
+[2025-11-20 01:27:04 -0700]
+[Pokémon Essentials version 21.1]
+
+Exception: RuntimeError
+Message: Unknown exception when compiling.
+
+Backtrace:
+001_Compiler.rb:1114:in `rescue in main'
+001_Compiler.rb:1041:in `main'
+999_Main.rb:35:in `mainFunctionDebug'
+999_Main.rb:18:in `block in mainFunction'
+003_Errors.rb:79:in `pbCriticalCode'
+999_Main.rb:18:in `mainFunction'
+999_Main.rb:51:in `block (2 levels) in load_scripts_from_folder'
+999_Main.rb:50:in `loop'
+999_Main.rb:50:in `block in load_scripts_from_folder'
+Main:35:in `eval'
+
+=================
+
+[2025-11-20 01:27:57 -0700]
+[Pokémon Essentials version 21.1]
+
+Exception: NoMethodError
+Message: undefined method `name' for nil:NilClass
+
+Backtrace:
+002_Compiler_CompilePBS.rb:1182:in `validate_compiled_map_metadata'
+002_Compiler_CompilePBS.rb:1175:in `block in compile_map_metadata'
+002_Compiler_CompilePBS.rb:55:in `block (3 levels) in compile_PBS_file_generic'
+001_Compiler.rb:143:in `block in pbEachFileSection'
+001_Compiler.rb:108:in `block in pbEachFileSectionEx'
+001_Compiler.rb:100:in `each_line'
+001_Compiler.rb:100:in `pbEachFileSectionEx'
+001_Compiler.rb:142:in `pbEachFileSection'
+002_Compiler_CompilePBS.rb:22:in `block (2 levels) in compile_PBS_file_generic'
+002_Compiler_CompilePBS.rb:16:in `open'
+
+=================
+
+[2025-11-20 01:31:23 -0700]
+[Pokémon Essentials version 21.1]
+
+Exception: NameError
+Message: undefined local variable or method `m_width' for main:Object
+
+Backtrace:
+[Modular Messages] Name Tags + Advanced Portraits.rb:134:in `pbDisplayNameWindow'
+[Modular Messages] Name Tags + Advanced Portraits.rb:263:in `block in <main>'
+[Swdfm Utilities] Other.rb:148:in `trigger_sect'
+[Modular Messages] [003] Controls Methods.rb:108:in `block in controls_before_appears'
+[Modular Messages] [003] Controls Methods.rb:98:in `times'
+[Modular Messages] [003] Controls Methods.rb:98:in `controls_before_appears'
+[Modular Messages] [000] Main Script.rb:33:in `run'
+[Modular Messages] [005] pbMessageDisplay.rb:19:in `pbMessageDisplay'
+[Delta Speed Up] _Main_Script.rb:145:in `pbMessage'
+004_Interpreter_Commands.rb:205:in `command_101'
+
+=================
+
+[2025-11-20 01:47:13 -0700]
+[Pokémon Essentials version 21.1]
+
+Exception: NameError
+Message: undefined local variable or method `m_width' for main:Object
+
+Backtrace:
+[Modular Messages] Name Tags + Advanced Portraits.rb:134:in `pbDisplayNameWindow'
+[Modular Messages] Name Tags + Advanced Portraits.rb:263:in `block in <main>'
+[Swdfm Utilities] Other.rb:148:in `trigger_sect'
+[Modular Messages] [003] Controls Methods.rb:108:in `block in controls_before_appears'
+[Modular Messages] [003] Controls Methods.rb:98:in `times'
+[Modular Messages] [003] Controls Methods.rb:98:in `controls_before_appears'
+[Modular Messages] [000] Main Script.rb:33:in `run'
+[Modular Messages] [005] pbMessageDisplay.rb:19:in `pbMessageDisplay'
+[Delta Speed Up] _Main_Script.rb:145:in `pbMessage'
+004_Interpreter_Commands.rb:205:in `command_101'
+
+=================
+
+[2025-11-20 01:51:52 -0700]
+[Pokémon Essentials version 21.1]
+
+Exception: RuntimeError
+Message: Undefined value CANDIDATE_Protag_1 in GameData::TrainerType.
+File PBS/metadata.txt, section 2, key TrainerType
+CANDIDATE_Protag_1
+
+
+
+Backtrace:
+001_Compiler.rb:454:in `checkEnumField'
+001_Compiler.rb:430:in `cast_csv_value'
+001_Compiler.rb:724:in `block (2 levels) in get_csv_record'
+001_Compiler.rb:710:in `each'
+001_Compiler.rb:710:in `block in get_csv_record'
+001_Compiler.rb:708:in `loop'
+001_Compiler.rb:708:in `get_csv_record'
+002_Compiler_CompilePBS.rb:1113:in `block (4 levels) in compile_metadata'
+002_Compiler_CompilePBS.rb:1095:in `each_key'
+002_Compiler_CompilePBS.rb:1095:in `block (3 levels) in compile_metadata'
+
+=================
+
+[2025-11-20 01:51:54 -0700]
+[Pokémon Essentials version 21.1]
+
+Exception: RuntimeError
+Message: Unknown exception when compiling.
+
+Backtrace:
+001_Compiler.rb:1114:in `rescue in main'
+001_Compiler.rb:1041:in `main'
+999_Main.rb:35:in `mainFunctionDebug'
+999_Main.rb:18:in `block in mainFunction'
+003_Errors.rb:79:in `pbCriticalCode'
+999_Main.rb:18:in `mainFunction'
+999_Main.rb:51:in `block (2 levels) in load_scripts_from_folder'
+999_Main.rb:50:in `loop'
+999_Main.rb:50:in `block in load_scripts_from_folder'
+Main:35:in `eval'
