@@ -213,7 +213,106 @@ module Settings
             :graphic => "Graphics/UI/Event Indicators/event_question",
             :always_visible => true,
             :ignore_time_shading => true
-        }
+        },
+    #------------------------------------------------------------------------------------
+    # Main Scenario Quest Progression Specific Indicators
+    #------------------------------------------------------------------------------------
+		# Journey's Start
+		"msq2s1" => {
+            :graphic => "Graphics/UI/Event Indicators/mainquest_available",
+            :movement_speed => 20,
+			:always_visible => true,
+			:condition => proc { getCurrentStage(:Quest2)==1 }
+        },
+		# First Steps
+		"msq3s1" => {
+            :graphic => "Graphics/UI/Event Indicators/mainquest_available",
+            :movement_speed => 20,
+			:always_visible => true,
+			:condition => proc { getCurrentStage(:Quest3)==1 }
+        },
+		"msq3s2" => {
+            :graphic => "Graphics/UI/Event Indicators/mainquest_available",
+            :movement_speed => 20,
+			:always_visible => true,
+			:condition => proc { getCurrentStage(:Quest3)==2 }
+        },
+		"msq3s3" => {
+            :graphic => "Graphics/UI/Event Indicators/mainquest_available",
+            :movement_speed => 20,
+			:always_visible => true,
+			:condition => proc { getCurrentStage(:Quest3)==3 }
+        },
+		# Badgequest 20xx
+		
+    #------------------------------------------------------------------------------------
+    # Side Quest Progression Specific Indicators
+    #------------------------------------------------------------------------------------
+		"sq100s1" => {
+            :graphic => "Graphics/UI/Event Indicators/sidequest_available",
+            :movement_speed => 20,
+			:always_visible => true,
+			:condition => proc { getCurrentStage(:Quest100)==1 }
+        },
+		"sq100s2" => {
+            :graphic => "Graphics/UI/Event Indicators/anger_indicator",
+            :movement_speed => 20,
+			:always_visible => true,
+			:condition => proc { getCurrentStage(:Quest100)==2 }
+        },
+		
+		"sq101s0" => {
+            :graphic => "Graphics/UI/Event Indicators/sidequest_available",
+            :movement_speed => 20,
+			:always_visible => true,
+			:condition => proc { getCurrentStage(:Quest101)==0 }
+        },
+		"sq101s1" => {
+            :graphic => "Graphics/UI/Event Indicators/sidequest_available",
+            :movement_speed => 20,
+			:always_visible => true,
+			:condition => proc { getCurrentStage(:Quest101)==1 }
+        },
+		"sq101s2" => {
+            :graphic => "Graphics/UI/Event Indicators/sidequest_available",
+            :movement_speed => 20,
+			:always_visible => true,
+			:condition => proc { getCurrentStage(:Quest101)==2 }
+        },
+		
+    #------------------------------------------------------------------------------------
+    # Pandora's Box Progression Specific Indicators
+    #------------------------------------------------------------------------------------
+		"pb300s0" => {
+            :graphic => "Graphics/UI/Event Indicators/shiny_sparkle_a",
+            :movement_speed => 20,
+			:always_visible => true,
+			:condition => proc { pbGet(104) == 0 }
+        },
+		"pb300s1" => {
+            :graphic => "Graphics/UI/Event Indicators/shiny_sparkle_a",
+            :movement_speed => 20,
+			:always_visible => true,
+			:condition => proc { pbGet(104) == 1 }
+        },
+		"pb300s2" => {
+            :graphic => "Graphics/UI/Event Indicators/shiny_sparkle_a",
+            :movement_speed => 20,
+			:always_visible => true,
+			:condition => proc { pbGet(104) == 2 }
+        },
+		"pb300s3" => {
+            :graphic => "Graphics/UI/Event Indicators/shiny_sparkle_a",
+            :movement_speed => 20,
+			:always_visible => true,
+			:condition => proc { pbGet(104) == 3 }
+        },
+		"pb300s4" => {
+            :graphic => "Graphics/UI/Event Indicators/shiny_sparkle_a",
+            :movement_speed => 20,
+			:always_visible => true,
+			:condition => proc { pbGet(104) == 4 }
+        },
     }
 
     #------------------------------------------------------------------------------------

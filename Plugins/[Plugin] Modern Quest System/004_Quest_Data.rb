@@ -13,7 +13,7 @@ module QuestModule
     :QuestGiver => "Main Scenario Quest",
     :Stage1 => "Register for the Yitria League",
     :Location1 => "Pharos City",
-    :QuestDescription => "Today is the day I sign up for the Yitria League and follow in Dist's footsteps! I'm sure that one day I'll be just as great of a trainer as he was.",
+    :QuestDescription => "Today is the day I sign up for the Yitria League and follow in Darius's footsteps! I'm sure that one day I'll be just as great of a trainer as he was.",
     :RewardString => nil
   }
   
@@ -129,9 +129,9 @@ end
 def overwriteQuestDesc(quest)
   case quest
   when :Quest3
-	if $game_variables[1] == 1
+	if getCurrentStage(:Quest3) == 2
 		QuestModule.const_get(quest)[:QuestDescription] = _I("A note attached to Professor Hawthorn's Lab says that he's at the Library assisting with Storytime with the Lorekeepers. I haven't been to one of those in years... I wonder if it's changed any. Let's find out!")
-	elsif $game_variables[1] == 2
+	elsif getCurrentStage(:Quest3) == 3
 		QuestModule.const_get(quest)[:QuestDescription] = _I("Now that I've returned to the lab with Professor Hawthorn, I can finally choose my very first Pokémon! This is such an exciting moment, I need to think it over very carefully... When I'm done with that, I should talk to the professor again.")
 	end
 	

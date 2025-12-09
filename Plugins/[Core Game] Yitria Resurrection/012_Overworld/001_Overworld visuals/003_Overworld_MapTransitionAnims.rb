@@ -8,7 +8,7 @@ def pbStartOver(gameover = false)
   if $PokemonGlobal.pokecenterMapId && $PokemonGlobal.pokecenterMapId >= 0
     if gameover
       pbMessage(_INTL("\\w[]\\wm\\c[0]\\l[3]After the unfortunate defeat, you scurry back to a Pokémon Center."))
-	elsif $game_switches[109]
+	elsif $game_switches[104]
 	  pbMessage(_INTL("\\w[]\\wm\\c[0]\\l[3]You scurry back to the nearest safe spot to let your exhausted Pokémon recover from harm..."))
     else
       pbMessage(_INTL("\\w[]\\wm\\c[0]\\l[3]You scurry back to a Pokémon Center, protecting your exhausted Pokémon from any further harm..."))

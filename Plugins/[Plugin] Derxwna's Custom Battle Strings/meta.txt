@@ -1,0 +1,47 @@
+﻿Name       = Derxwna's Custom Battle Strings
+Version    = 1.0
+Website    = https://eeveeexpo.com/
+Credits    = DerxwnaKapsyla
+Essentials = 21.1
+Requires   = Deluxe Battle Kit,1.2.8
+#---------------------------------------------------------------------------------------------------
+# Derxwna's Custom Battle Strings for Essentials Version 21.1
+# Developed by Derxwna Kapsyla
+#---------------------------------------------------------------------------------------------------
+# This plugin allows developers to change various battle strings that appear in their game.
+# Specifically, the strings you are able to change are the following:
+# * "The wild Pokemon used move"
+#   - This can be changed to adjust the "prefix" of the Pokemon you're fighting. For example, 
+#     "Celadon Gym's Gloom used (move)." You can use this to denote special wild Pokemon.
+# * (Opponent trainer switching out Pokemon)
+#   - This can be changed to adjust the message that is displayed when the AI switches out their 
+#     Pokemon. For example, "Medicine: AdLetty, retreat from the battlefield!"
+# * "Trainer is about to switch in (Pokemon)."
+#   - This can be changed to adjust the way the message is displayed, or to outright remove the
+#     name of the Pokemon being swapped in. For example, "You can't tell what Proton is sending out.
+#     Will you risk switching?"
+# * (Opponent trainer switches in Pokemon)
+#   - This can be changed to adjust the message that is displayed when the AI has sent out their new
+#     Pokemon. For example, "Lisia: Take center stage, Altaria!"
+# * "You defeated Trainer!"
+#   - This can be changed to completely alter the message being displayed. For example, "You 
+#     overcame Giovanni's onslaught!", or "The Spatial Anomaly dissipated!"
+#   - You can also set this to false. This will completely remove the message from being displayed, 
+#     as well as displaying the trainer on screen.
+#  * "The wild Pokemon fainted!"
+#    - This can be changed to alter the message displayed when a Pokemon faints, wild or trainer.
+#      For example, it can be made to say: "The ascended Exploud got dunked on!".
+# This is used in conjunction with the Deluxe Battle Kit's functionality to change the battle start 
+# message. 
+# All of these are controlled via Battle Rules. The code you call for them is as follows:
+# * setBattleRule("setpkmnprefix", field)
+# * setBattleRule("setswapouttext", field)
+# * setBattleRule("setswitchtext", field)
+# * setBattleRule("setswitchintext", field)
+# * setBattleRule("setvictorytext", field)
+# * setBattleRule("setfaintedtext", field)
+#---------------------------------------------------------------------------------------------------
+# CHANGE LOG
+#---------------------------------------------------------------------------------------------------
+# 
+#---------------------------------------------------------------------------------------------------
