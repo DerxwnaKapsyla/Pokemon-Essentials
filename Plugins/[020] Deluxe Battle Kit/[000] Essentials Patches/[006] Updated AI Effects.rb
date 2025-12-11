@@ -49,7 +49,7 @@ Battle::AI::Handlers::GeneralMoveAgainstTargetScore.add(:knocking_out_a_destiny_
           old_score = score
           if target.effects[PBEffects::DestinyBond]
             next score if user.battler.dynamax?
-            next score if user.battler.pokemon.immunities.include?(:OHKO)
+            next score if user.battler.hasBossImmunity?(:OHKO)
             score -= 20
             score -= 10 if battle.pbAbleNonActiveCount(user.idxOwnSide) == 0
             PBDebug.log_score_change(score - old_score, "don't want to KO the Destiny Bonding target")
@@ -78,8 +78,7 @@ Battle::AI::Handlers::GeneralMoveAgainstTargetScore.add(:external_flinching_effe
       if user.has_active_item?([:KINGSROCK, :RAZORFANG]) ||
          user.has_active_ability?(:STENCH)
         flinchImmune = (
-          target.battler.dynamax? ||
-          target.battler.pokemon.immunities.include?(:FLINCH) ||
+          target.battler.dynamax? || target.battler.hasBossImmunity?(:FLINCH) ||
           (target.has_active_ability?([:INNERFOCUS, :SHIELDDUST]) && !battle.moldBreaker)
         )
         if !flinchImmune
@@ -260,8 +259,7 @@ Battle::AI::Handlers::MoveFailureAgainstTargetCheck.add("OHKO",
   proc { |move, user, target, ai, battle|
     next true if target.level > user.level
     next true if !battle.moldBreaker && target.has_active_ability?(:STURDY)
-    next true if !battle.moldBreaker && target.has_active_ability?(:SPECTRALTWIN)
-    next true if target.battler.pokemon.immunities.include?(:OHKO)
+    next true if target.battler.hasBossImmunity?(:OHKO)
     next true if target.battler.dynamax?
     next false
   }
@@ -324,7 +322,7 @@ Battle::AI::Handlers::MoveFailureCheck.add("UserLosesHalfOfTotalHPExplosive",
       next true if user.battler.pokemon.immunities.include?(:SELFKO) && 
                    user.battler.takesIndirectDamage? && user_hp <= total_hp / 2
     end
-    next user.battler.pokemon.immunities.include?(:SELFKO)
+    next user.battler.hasBossImmunity?(:SELFKO)
   }
 )
 
@@ -335,7 +333,7 @@ Battle::AI::Handlers::MoveFailureCheck.add("UserLosesHalfOfTotalHPExplosive",
 #-------------------------------------------------------------------------------
 Battle::AI::Handlers::MoveFailureCheck.add("UserFaintsFixedDamageUserHP",
   proc { |move, user, ai, battle|
-    next user.battler.pokemon.immunities.include?(:SELFKO)
+    next user.battler.hasBossImmunity?(:SELFKO)
   }
 )
 Battle::AI::Handlers::MoveFailureCheck.copy("UserFaintsFixedDamageUserHP",
@@ -350,8 +348,7 @@ Battle::AI::Handlers::MoveFailureCheck.copy("UserFaintsFixedDamageUserHP",
 Battle::AI::Handlers::MoveFailureAgainstTargetCheck.add("StartPerishCountsForAllBattlers",
   proc { |move, user, target, ai, battle|
     next true if target.effects[PBEffects::PerishSong] > 0
-    next true if user.battler.isRaidBoss? || target.battler.isRaidBoss?
-    next true if target.battler.pokemon.immunities.include?(:OHKO)
+    next true if battle.raidBattle? || target.battler.hasBossImmunity?(:OHKO)
     next false if !target.ability_active?
     next Battle::AbilityEffects.triggerMoveImmunity(target.ability, user.battler, target.battler,
                                                     move.move, move.rough_type, battle, false)
@@ -365,7 +362,7 @@ Battle::AI::Handlers::MoveFailureAgainstTargetCheck.add("StartPerishCountsForAll
 #-------------------------------------------------------------------------------
 Battle::AI::Handlers::MoveFailureCheck.add("AttackerFaintsIfUserFaints",
   proc { |move, user, ai, battle|
-    next true if user.battler.isRaidBoss?
+    next true if battle.raidBattle?
     next Settings::MECHANICS_GENERATION >= 7 && user.effects[PBEffects::DestinyBondPrevious]
   }
 )
@@ -378,7 +375,7 @@ Battle::AI::Handlers::MoveFailureCheck.add("AttackerFaintsIfUserFaints",
 Battle::AI::Handlers::MoveFailureCheck.add("UserMakeSubstitute",
   proc { |move, user, ai, battle|
     next true if user.effects[PBEffects::Substitute] > 0
-    next true if user.battler.isRaidBoss?
+    next true if user.battler.hasBossImmunity?
     next user.hp <= [user.totalhp / 4, 1].max
   }
 )
@@ -437,7 +434,7 @@ Battle::AI::Handlers::MoveEffectAgainstTargetScore.add("DestroyTargetBerryOrGem"
 #-------------------------------------------------------------------------------
 Battle::AI::Handlers::MoveFailureCheck.add("FleeFromBattle",
   proc { |move, user, ai, battle|
-    next true if user.battler.pokemon.immunities.include?(:ESCAPE)
+    next true if user.battler.hasBossImmunity?(:ESCAPE)
     next !battle.pbCanRun?(user.index) || (user.wild? && user.battler.allAllies.length > 0)
   }
 )
@@ -450,7 +447,7 @@ Battle::AI::Handlers::MoveFailureCheck.add("FleeFromBattle",
 Battle::AI::Handlers::MoveFailureCheck.add("SwitchOutUserStatusMove",
   proc { |move, user, ai, battle|
     if user.wild?
-      next true if user.battler.pokemon.immunities.include?(:ESCAPE)
+      next true if user.battler.hasBossImmunity?(:ESCAPE)
       next !battle.pbCanRun?(user.index) || user.battler.allAllies.length > 0
     end
     next !battle.pbCanChooseNonActive?(user.index)
@@ -468,7 +465,7 @@ Battle::AI::Handlers::MoveEffectAgainstTargetScore.add("SwitchOutTargetDamagingM
     next score if !battle.moldBreaker && target.has_active_ability?(:SUCTIONCUPS)
     next score if target.effects[PBEffects::Ingrain]
     next score if target.battler.dynamax?
-    next score if target.battler.pokemon.immunities.include?(:ESCAPE)
+    next score if target.battler.hasBossImmunity?(:ESCAPE)
     can_switch = false
     battle.eachInTeamFromBattlerIndex(target.index) do |_pkmn, i|
       can_switch = battle.pbCanSwitchIn?(target.index, i)
@@ -546,12 +543,13 @@ Battle::AI::Handlers::MoveEffectAgainstTargetScore.add("TwoTurnAttack",
 #-------------------------------------------------------------------------------
 Battle::AI::Handlers::MoveFailureAgainstTargetCheck.add("TwoTurnAttackInvulnerableInSkyTargetCannotAct",
   proc { |move, user, target, ai, battle|
+    next true if battle.raidBattle?
     next true if !target.opposes?(user)
     next true if target.effects[PBEffects::Substitute] > 0 && !move.move.ignoresSubstitute?(user.battler)
     next true if target.has_type?(:FLYING)
     next true if Settings::MECHANICS_GENERATION >= 6 && target.battler.pbWeight >= 2000
     next true if target.battler.semiInvulnerable? || target.effects[PBEffects::SkyDrop] >= 0
-    next true if target.battler.dynamax? || target.battler.isRaidBoss?
+    next true if target.battler.dynamax? || target.battler.hasBossImmunity?
     next false
   }
 )

@@ -221,7 +221,6 @@ module Battle::CatchAndStoreMixin
       pkmn.calc_stats
       pkmn.hp = pkmn.hp.clamp(1, pkmn.totalhp)
     end
-    pbResetRaidProperties(pkmn) if pkmn.immunities.include?(:RAIDBOSS)
     pkmn.immunities = nil
     pkmn.name = nil if pkmn.nicknamed?
     if @raidStyleCapture && !@caughtPokemon.empty?
@@ -333,12 +332,9 @@ class Battle::Battler
   def pbFaint(showMessage = true)
     if self.canRaidCapture?
       self.hp = 1
-      if defined?(@vanished)
+      if defined?(self.battlerSprite)
         @battle.scene.pbAnimateSubstitute(@index, :hide)
-        @effects[PBEffects::Substitute]    = 0
-        @effects[PBEffects::SkyDrop]       = -1
-        @effects[PBEffects::TwoTurnAttack] = nil
-        @battle.scene.pbChangePokemon(self, self.visiblePokemon, true)
+        @battle.scene.pbChangePokemon(self, self.visiblePokemon, 0)
       end
       raid = @battle.raidStyleCapture
       if raid.is_a?(Hash)
