@@ -642,7 +642,7 @@ List of Event Commands:
 @>Wait: 20 frame(s)
 @>Change Text Options: Bottom, Show
 @>Change Transparent Flag: Normal
-@>Transfer Player:[007: \PN's Room], (004,007), Right
+@>Transfer Player:[007: Ayaka's Room], (004,007), Right
 @>Change Screen Color Tone: (0,0,0,0), @6
 @>Script: reset_menu_theme
 @>
@@ -874,8 +874,8 @@ Move Animation
 Trigger: Action Button
 
 List of Event Commands:
-@>Text: \xn[Shinji]Hey \PN, you better hurry and talk to Maya. 
- :    : She's a bit miffed at how long it took you to get here.
+@>Text: \xn[Shinji]Hey \PN, you'd better hurry and talk to Maya. She's not 
+ :    : happy about how long you took to get here.
 @>
 
 Page #2
@@ -938,56 +938,50 @@ List of Event Commands:
  @>
 : Branch End
 @>Script: pbSetSelfSwitch(4,"A",true)
-@>Text: \xn[Maya]There you are \PN! We've been waiting for 
- :    : you, what took you so long?
-@>Text: \xn[\pn]Sorry, sorry! I was taking an early nap so I could 
- :    : be awake for this and only just now woke up!
+@>Text: \xn[Maya]About time, \PN! What took you so long?
+@>Text: \xn[\pn]Sorry, sorry! I tried sneaking in a nap so I'd be awake for 
+ :    : this and ended up sleeping in!
 @>Text: \xn[\pn]I didn't miss anything, right?
 @>Set Move Route: [Kota]
  :              : $>Turn Right
-@>Text: \xn[Kota]Not too much. We had just finished going over 
- :    : our provisions and getting last minute supplies.
-@>Text: \xn[Kota]Presumably you came prepared?
+@>Text: \xn[Kota]Not too much. We just did some last minute shopping 
+ :    : for supplies.
+@>Text: \xn[Kota]You're already prepared, I assume?
 @>Set Move Route: Player
  :              : $>Turn Left
-@>Text: \xn[\PN]I had stuff prepared for today in advance. Though
- :    : getting more supplies wouldn't hurt...
-@>Text: \xn[Kota]Just remember, the building right here can 
- :    : handle what you need. Aside from purchasing items 
- :    : here, you can also heal your Puppets.
+@>Text: \xn[\PN]Yeah, I bought stuff in advance. Though more supplies 
+ :    : would never hurt...
+@>Text: \xn[Kota]Just remember, the Rest Stop can handle anything you 
+ :    : need. Whether that's buying supplies or healing your Puppets.
 @>Set Move Route: Player
  :              : $>Turn Up
-@>Text: \xn[Maya]Anyways, let's go over the operation again. 
- :    : From the top.
+@>Text: \xn[Maya]Anyways! Now we're all here, let's go over the 
+ :    : operation from the top.
 @>Set Move Route: [Shinji]
  :              : $>Turn Up
-@>Text: \xn[Shinji]Tonight, the four of us will be sneaking out of 
- :    : the village and heading for the Misty Lake. 
+@>Text: \xn[Shinji]Step 1: Get out of the village without being seen and 
+ :    : head for the Misty Lake.
 @>Set Move Route: Player
  :              : $>Turn Down
-@>Text: \xn[Shinji]From there, we will be searching for the abandoned 
- :    : mansion, which is home to the mysterious music that 
- :    : people claim to hear from it.
-@>Text: \xn[Shinji]Our objective is to learn the truth behind this rumor. 
- :    : Simple, wouldn't you agree?
-@>Text: \xn[\pn]Simple, sure. Until you remember that we've 
- :    : never gone beyond the paths outside the village.
-@>Text: \xn[Kota]Not to mention, we still have to contend with 
- :    : the village patrol. If we get caught, we're probably 
- :    : going to be punished tremendously.
-@>Text: \xn[Maya]Guys guys, don't be such downers! We know 
- :    : what we have to do, so all that remains is to do it!
-@>Text: \xn[Shinji]Maya's right! If we put forth the determination, 
- :    : we'll surely have no problems!
-@>Text: \xn[Shinji]Besides. Most of the guards aren't patrolling this part 
- :    : of the village. 
+@>Text: \xn[Shinji]Step 2: Find this abandoned mansion people are talking 
+ :    : about. The one where you can hear music in the dead of night.
+@>Text: \xn[Shinji]Step 3: Find out if there's any truth to the rumor. Simple, right?
+@>Text: \xn[\pn]Yeah, except for the part where we've never been that 
+ :    : far from the village before.
+@>Text: \xn[Kota]And we have to get past the village patrol first. If we 
+ :    : get caught, we're going to be in all sorts of trouble...
+@>Text: \xn[Maya]Okay, guys, that's enough naysaying! Quit talking 
+ :    : about how things can go wrong before we've even started!
+@>Text: \xn[Shinji]...Maya's right. We've already come this far, so we 
+ :    : might as well go all the way.
+@>Text: \xn[Shinji]Besides. The guards aren't very active on this side of town. 
 @>Set Move Route: [Village Guard (Auto)]
  :              : $>Change Opacity: 255
  :              : $>Move Right
  :              : $>Move Right
  :              : $>Move Right
-@>Text: \xn[Shinji]So long as we avoid the ones in the south, there 
- :    : should be no issues...\^
+@>Text: \xn[Shinji]If we can get past the ones at the south gate, we 
+ :    : should be safe from there...\^
 @>Set Move Route: Player
  :              : $>Turn Left
 @>Set Move Route: [Maya]
@@ -996,18 +990,17 @@ List of Event Commands:
  :              : $>Turn Left
 @>Set Move Route: [Kota]
  :              : $>Turn Left
-@>Text: Hey, what are you kids doing there? You should be at home!
+@>Text: Hey, you kids over there! What are you doing outside at this hour?
 @>Wait: 10 frame(s)
-@>Text: \xn[Shinji]...Well, so much for the element of stealth.
+@>Text: \xn[Shinji]...I think we can give up on Step 1 of the plan.
 @>Text: \xn[Kota]Now what do we do!?
 @>Fade Out BGM: 1 sec.
 @>Wait: 20 frame(s)
 @>Control Switches: [0098: Music Override] = ON
 @>Script: playSpecialBGM("S1_Escape")
 @>Wait: 10 frame(s)
-@>Text: \xn[Maya]Quick, scatter! They can't catch us if we're not 
- :    : together!
-@>Text: \xn[Maya]We'll meet up south of here!
+@>Text: \xn[Maya]Quick, split up! They can't catch all of us at once!
+@>Text: \xn[Maya]We'll meet up south of the village!
 @>Change Screen Color Tone: (-255,-255,-255,0), @6
 @>Wait: 8 frame(s)
 @>Transfer Player:[006: Human Village], (054,017), Left, No Fade
@@ -1016,12 +1009,12 @@ List of Event Commands:
 @>Change Screen Color Tone: (0,0,0,0), @6
 @>Wait: 10 frame(s)
 @>Script: pbSetSelfSwitch(4,"A",false)
-@>Text: \xn[\pn]Hopefully I managed to get away from the patrol in time... 
- :    : But drat, this means the entire Village will be on alert now!
-@>Text: \xn[\pn]This means that...
+@>Text: \xn[\pn]I managed to lose the patrol for now... Rats, the whole 
+ :    : village is going to be looking for us!
+@>Text: \xn[\pn]And that means...
 @>Wait: 10 frame(s)
-@>Text: \xn[\pn]No!\wt[15] I can't afford to get shaken up by that! If I
- :    : see my sister, I'll just beat her in battle!
+@>Text: \xn[\pn]No!\wt[15] It's fine! If my sister tries to stop me, I'll just 
+ :    : beat her in a fight!
 @>Text: \xn[\pn]Simple! Now, off to the southern exit!
 @>
 
@@ -1095,9 +1088,9 @@ Move Animation
 Trigger: Autorun
 
 List of Event Commands:
-@>Text: \xn[\pn]Okay, if I remember correctly, the meet-up point was at 
- :    : the Rest Stop at the north end of the Village...
-@>Text: \xn[\pn]Hopefully the patrol isn't anywhere nearby.
+@>Text: \xn[\pn]Okay, if I remember correctly, we're meeting at the Rest Stop 
+ :    : at the north end of the Village...
+@>Text: \xn[\pn]Hopefully the patrol guards aren't in the area.
 @>Control Self Switch: A =ON
 @>
 
@@ -1139,7 +1132,7 @@ List of Event Commands:
 @>Text: Sorry, nobody's allowed in the tavern right now.
 @>Text: Someone lost control of their Suika and Yuugi Puppets, and
  :    : well...
-@>Text: <i>Shudders</i>, so much alcohol consumption...
+@>Text: <i>Aaaah,</i> restocking the alcohol's gonna cost me a fortune...
 @>
 
 #------------------------------------------------------------------------------
@@ -1162,18 +1155,14 @@ Move Animation
 Trigger: Action Button
 
 List of Event Commands:
-@>Text: Hey kid, I come from the Outside World. Tell me, have 
- :    : you ever heard of Halloween?
-@>Text: It's a holiday that gets celebrated where people 
- :    : dress up in all sorts of costumes and go from house 
- :    : to house collecting candy.
-@>Text: Ah, it's been so long since I've done that. 
-@>Text: Nobody here is able to appreciate the Halloween 
- :    : festivities we have back home.
-@>Text: Though I guess that can be chalked up to the fact 
- :    : that actual demons and monsters exist here. 
-@>Text: Makes it kind of hard to get into a holiday like that I'd 
- :    : guess...
+@>Text: Hey kid, have you ever heard of Halloween before?
+@>Text: It's a holiday we had in the Outside World. People dressed up as all 
+ :    : kinds of monsters and walked down the street collecting candy...
+@>Text: Man, I haven't done that in forever.
+@>Text: It never caught on in Gensokyo, though.
+@>Text: Though I guess that's because they've got real demons and 
+ :    : monsters here, huh?
+@>Text: Really dampens the holiday spirit, now that I think about it.
 @>Text: Anyways, in the spirit of Halloween, here, have this.
 @>Script: pbReceiveItem(:RARECANDY,rand(1..10))
 @>Control Self Switch: A =ON
@@ -1249,8 +1238,8 @@ Trigger: Event Touch
 
 List of Event Commands:
 @>Conditional Branch: Player is facing Left
- @>Text: This way leads to Myouren Temple. I don't need to 
-  :    : head that way.
+ @>Text: The Myouren Temple is in that direction. I don't need to head 
+  :    : that way.
  @>Set Move Route: Player
   :              : $>Move Right
  @>
@@ -1431,7 +1420,7 @@ Move Animation
 Trigger: Action Button
 
 List of Event Commands:
-@>Text: \sign[signskin]\l[3]<ac>Human Village - Rest House\nCome in and let you and your weary Puppets relax.
+@>Text: \sign[signskin]\l[3]<ac>Human Village - Rest House\nCome in and give your Puppets the break they deserve.
 @>
 
 #------------------------------------------------------------------------------
@@ -1454,7 +1443,7 @@ Trigger: Event Touch
 
 List of Event Commands:
 @>Conditional Branch: Player is facing Right
- @>Text: This way leads to the area we use for festivals.
+ @>Text: That's the area we use for festivals.
  @>Text: I don't have any purpose there.
  @>Set Move Route: Player
   :              : $>Move Left
@@ -1488,7 +1477,7 @@ Trigger: Event Touch
 List of Event Commands:
 @>Script: # pbTrainerIntro(:PATROL2M)
 @>Script: pbNoticePlayer(get_self)
-@>Text: You children need to return home now!
+@>Text: You kids need to head home now!
 @>Conditional Branch: Script: TrainerBattle.start(:PATROL2M, "Kengo",pbGet(99))
  @>Control Self Switch: A =ON
  @>
@@ -1629,7 +1618,7 @@ Move Animation
 Trigger: Action Button
 
 List of Event Commands:
-@>Text: Sigh. Returning to patrol.
+@>Text: Capture failed. Returning to patrol...sigh.
 @>
 
 #------------------------------------------------------------------------------
@@ -1654,7 +1643,7 @@ Trigger: Event Touch
 List of Event Commands:
 @>Script: #pbTrainerIntro(:PATROL1F)
 @>Script: pbNoticePlayer(get_self)
-@>Text: Just stay right there!
+@>Text: You're in a lot of trouble, little girl!
 @>Conditional Branch: Script: TrainerBattle.start(:PATROL1F, "Tsukimi",pbGet(99))
  @>Control Self Switch: A =ON
  @>
@@ -1677,8 +1666,8 @@ Move Animation
 Trigger: Action Button
 
 List of Event Commands:
-@>Text: It's fine, there's no way you'll be able to
- :    : make it past the rest of the patrol!
+@>Text: It's fine. There's no way you'll make it past the rest of the 
+ :    : patrol, anyway!
 @>
 
 #------------------------------------------------------------------------------
@@ -1726,8 +1715,7 @@ Move Animation
 Trigger: Action Button
 
 List of Event Commands:
-@>Text: The village patrol aren't going to let you
- :    : leave the village without a fight.
+@>Text: We're not going to let you stumble out of the village without a fight.
 @>
 
 #------------------------------------------------------------------------------
@@ -1752,8 +1740,7 @@ Trigger: Event Touch
 List of Event Commands:
 @>Script: #pbTrainerIntro(:PATROL1M)
 @>Script: pbNoticePlayer(get_self)
-@>Text: What could you possibly be doing awake at
- :    : this hour anyway!?
+@>Text: Why are kids like you even awake at this hour?!
 @>Conditional Branch: Script: TrainerBattle.start(:PATROL1M, "Taketo",pbGet(99))
  @>Control Self Switch: A =ON
  @>
@@ -1776,8 +1763,8 @@ Move Animation
 Trigger: Action Button
 
 List of Event Commands:
-@>Text: Sneaking out of the village is a bad thing
- :    : to do, imagine how your parents must feel!
+@>Text: Sneaking out of the village is bad behavior! How do you think your 
+ :    : parents will feel?
 @>
 
 #------------------------------------------------------------------------------
@@ -1800,8 +1787,8 @@ Trigger: Action Button
 List of Event Commands:
 @>Comment: Event Indicator
  :       : investigate
-@>Text: \xn[\pn]Oh, it looks to be a box full of fishing rods... Surely they
- :    : won't notice if one goes missing!
+@>Text: \xn[\pn]Looks like a box full of fishing rods... Nobody will notice if 
+ :    : one of them goes missing, right?
 @>Script: pbReceiveItem(:GOODROD)
 @>Control Self Switch: A =ON
 @>
@@ -1877,8 +1864,7 @@ Trigger: Event Touch
 List of Event Commands:
 @>Script: #pbTrainerIntro(:PATROL2F)
 @>Script: pbNoticePlayer(get_self)
-@>Text: It is my job to keep you from going anywhere,
- :    : so let's go!
+@>Text: It's my job to make sure you behave. Let's go!
 @>Conditional Branch: Script: TrainerBattle.start(:PATROL2F, "Hinoka",pbGet(99))
  @>Control Self Switch: A =ON
  @>
@@ -1934,9 +1920,8 @@ Move Animation
 Trigger: Action Button
 
 List of Event Commands:
-@>Text: Youth these days are so rambunctious...
- :    : Fine, get out of here! But don't let me catch you
- :    : again!
+@>Text: The nerve of kids these days... Fine, get out of here! But don't 
+ :    : let me catch you again!
 @>
 
 #------------------------------------------------------------------------------
@@ -1992,8 +1977,8 @@ Trigger: Event Touch
 List of Event Commands:
 @>Script: #pbTrainerIntro(:PATROL2F)
 @>Script: pbNoticePlayer(get_self)
-@>Text: Wait, \PN, you're the one sneaking out? Looks
- :    : like big sis is gonna have to be the one to stop you!
+@>Text: Wait, \PN, you're the kid everyone's looking for? Looks like it's up 
+ :    : to your big sis to stop you!
 @>Conditional Branch: Script: TrainerBattle.start(:PATROL2F, "Riko",pbGet(99))
  @>Control Self Switch: A =ON
  @>
@@ -2047,8 +2032,7 @@ Move Animation
 Trigger: Action Button
 
 List of Event Commands:
-@>Text: Can't you just return home? Please? For
- :    : big sis Riko?
+@>Text: Can't you just go home? Please? For your big sis Riko's sake?
 @>
 
 #------------------------------------------------------------------------------
@@ -2073,8 +2057,7 @@ Trigger: Event Touch
 List of Event Commands:
 @>Script: #pbTrainerIntro(:PATROL2M)
 @>Script: pbNoticePlayer(get_self)
-@>Text: You're getting too close to the exit for our
- :    : liking, and need to be stopped right now!
+@>Text: You've gone far enough! Turn around and head home right now!
 @>Conditional Branch: Script: TrainerBattle.start(:PATROL2M, "Takumi",pbGet(99))
  @>Control Self Switch: A =ON
  @>
@@ -2097,8 +2080,8 @@ Move Animation
 Trigger: Action Button
 
 List of Event Commands:
-@>Text: Malicious youkai wait outside the village.
- :    : You don't know what lies beyond the walls!
+@>Text: It's dangerous outside the village. You don't know what you're 
+ :    : getting yourself into!
 @>
 
 #------------------------------------------------------------------------------
@@ -2206,7 +2189,7 @@ List of Event Commands:
  :              : $>Change Speed: 4
 @>Text: \xn[\pn]Alright! I'm almost there!\wtnp[5]
 @>Wait for Move's Completion
-@>Text: \xn[???]Hold it right there!
+@>Text: \xn[???]Not another step!
 @>Script: pbSetSelfSwitch(28,"A",true)
 @>Wait: 10 frame(s)
 @>Show Animation: Player, [Exclaim bubble]
@@ -2220,37 +2203,33 @@ List of Event Commands:
 @>Wait for Move's Completion
 @>Conditional Branch: Self Switch A == OFF
  @>Control Self Switch: A =ON
- @>Text: \xn[Keine]So, it is you \PN. I suppose I should have
-  :    : expected this after your conversations in class.
+ @>Text: \xn[Keine]So it <i>is</i> you, \PN. I suppose your conversations 
+  :    : in class should have clued me in.
  @>Text: \xn[\pn]M-Miss Keine... What are you doing here?
- @>Text: \xn[Keine]Don't play dumb with me! You know that
-  :    : aside from being your teacher, I'm also in charge
-  :    : of the Village Patrol.
- @>Text: \xn[Keine]Honestly, how did you all really expect to sneak
-  :    : out of the village without being spotted at all?
- @>Text: \xn[\pn]We were kinda hoping that...\^
- @>Text: \xn[Keine]It's reckless and foolish, that's what it was!
- @>Text: \xn[Keine]Beyond the village is extremely unsafe, especially
-  :    : at night. All manner of youkai and creatures are
-  :    : wandering about.
- @>Text: \xn[\pn]But I have my Puppets with me! I'll be fine! They'll
-  :    : protect me if I should come across harm!
- @>Text: \xn[Keine]Is that really what you think? That just because
-  :    : you hold a form of power, that you know how to use
-  :    : it responsibly? Do you remember nothing I've taught you
-  :    : in class?
+ @>Text: \xn[Keine]Don't play dumb with me! You know that besides being 
+  :    : your teacher, I'm also in charge of the Village Patrol.
+ @>Text: \xn[Keine]Honestly, did you really think you'd make it out of the 
+  :    : village without anyone noticing you?
+ @>Text: \xn[\pn]I mean, we were kind of hoping that...\^
+ @>Text: \xn[Keine]Recklessness! Foolishness, even!
+ @>Text: \xn[Keine]It's dangerous outside the village, especially at night. 
+  :    : All sorts of youkai and monsters are lurking about.
+ @>Text: \xn[\pn]I'll be fine! I have my Puppets with me, don't I? 
+  :    : They'll protect me!
+ @>Text: \xn[Keine]Your Puppets are strong, yes. But do you have the 
+  :    : knowledge to wield that strength responsibly? Can you stake 
+  :    : your life on that claim?
  @>Text: \xn[\pn]Well...
- @>Text: \xn[Keine]If you're so insistent on it, then fine, show
-  :    : me just how capable you and your Puppets are!
+ @>Text: \xn[Keine]I suppose you'll just have to prove it to me by force.
  @>Script: pbTrainerIntro(:KEINE)
  @>Wait: 10 frame(s)
  @>Text: \xn[\pn]...Wait, what?
- @>Text: \xn[Keine]That's right. If you want out of this village,
-  :    : you'll just have to beat me in battle.
+ @>Text: \xn[Keine]That's right. If you want out of this village, you'll have 
+  :    : to defeat me first.
  @>Text: \xn[Keine]It should be no problem, right? You have your
   :    : Puppets after all.
- @>Text: \xn[\pn]...\wt[15]Looks like I don't have a choice in the matter.\wt[15]
-  :    : Alright then teacher, let's go!
+ @>Text: \xn[\pn]...\wt[15]Looks like I don't have a choice in the matter.\wt[15] 
+  :    : Alright then, teacher - let's go!
  @>Script: #$game_temp.vs_name = "Vs. Keine Kamishirasawa"
  :       : $game_temp.vs_transition_bg = "Village"
  @>Conditional Branch: Script: TrainerBattle.start(:KEINE, "Keine Kamishirasawa", 10+(pbGet(99) * 10))
@@ -2262,16 +2241,13 @@ List of Event Commands:
  : Branch End
  @>
 : Else
- @>Text: \xn[Keine]Even though you lost, you're still trying to
-  :    : sneak out?
+ @>Text: \xn[Keine]You've already lost, and you're still trying to sneak out?
  @>Text: \xn[\pn]I'm not going to give up that easily, and neither
   :    : are my Puppets!
- @>Text: \xn[Keine]Perhaps the threat of detention will keep you
-  :    : in the village.
- @>Text: \xn[Keine]But if you insist on keeping this up...
+ @>Text: \xn[Keine]...You can expect some time in detention after this.
+ @>Text: \xn[Keine]If you still haven't realised how unprepared you are...
  @>Script: pbTrainerIntro(:KEINE)
- @>Text: \xn[Keine]Then I'll have no choice but to keep showing you
-  :    : how unprepared you are!
+ @>Text: \xn[Keine]Then I'll just have to keep proving it to you!
  @>Script: #$game_temp.vs_name = "Vs. Keine Kamishirasawa"
  :       : $game_temp.vs_transition_bg = "Village"
  @>Conditional Branch: Script: TrainerBattle.start(:KEINE, "Keine Kamishirasawa", 11+(pbGet(99) * 10))
@@ -2285,14 +2261,14 @@ List of Event Commands:
 : Branch End
 @>Script: pbTrainerEnd
 @>Change Screen Color Tone: (0,0,0,0), @6
-@>Text: \xn[Keine]Alright fine, I concede! You have what it
- :    : takes to watch yourself.
-@>Text: \xn[\pn]So that means you'll let us go then?
-@>Text: \xn[Keine]As much as I am loathe to it, you and your
- :    : friends are free to go out.
+@>Text: \xn[Keine]Enough! I concede. You've proven you have the 
+ :    : strength to protect yourself.
+@>Text: \xn[\pn]Really? So that means you'll let us go?
+@>Text: \xn[Keine]I'm not happy about it, but yes. Make sure to keep 
+ :    : your friends safe, understood?
 @>Text: \xn[\pn]Awesome! Thanks Miss Keine, you're the best
  :    : teacher!
-@>Text: \xn[Keine]I'm your only teacher!
+@>Text: \xn[Keine]I'm your <i>only<i> teacher!
 @>Play SE: 'Exit Door', 80, 100
 @>Change Screen Color Tone: (-255,-255,-255,0), @6
 @>Wait: 7 frame(s)
@@ -2307,8 +2283,7 @@ List of Event Commands:
  :              : $>Turn Down
 @>Text: \xn[Keine]Maybe this really is the next step in Gensokyo's
  :    : progression...
-@>Text: \xn[Keine]I should discuss this with Akyuu. Maybe it is time for
- :    : a change.
+@>Text: \xn[Keine]I need to have a long talk with Akyuu about this.
 @>Change Screen Color Tone: (-255,-255,-255,0), @6
 @>Wait: 7 frame(s)
 @>Change Transparent Flag: Normal
@@ -2668,7 +2643,7 @@ Direction Fix
 Trigger: Event Touch
 
 List of Event Commands:
-@>Text: The door is locked. Well it is pretty late, I guess.
+@>Text: The door is locked. Makes sense at this hour, I guess.
 @>
 
 #------------------------------------------------------------------------------
@@ -2692,7 +2667,7 @@ Direction Fix
 Trigger: Event Touch
 
 List of Event Commands:
-@>Text: The door is locked. Well it is pretty late, I guess.
+@>Text: The door is locked. Makes sense at this hour, I guess.
 @>
 
 #------------------------------------------------------------------------------
@@ -2716,7 +2691,7 @@ Direction Fix
 Trigger: Event Touch
 
 List of Event Commands:
-@>Text: The door is locked. Well it is pretty late, I guess.
+@>Text: The door is locked. Makes sense at this hour, I guess.
 @>
 
 #------------------------------------------------------------------------------
@@ -2866,8 +2841,8 @@ Direction Fix
 Trigger: Event Touch
 
 List of Event Commands:
-@>Text: The schoolhouse is locked up. Just as well, no 
- :    : reason to go inside.
+@>Text: The schoolhouse is locked up. Though nobody's got a reason to 
+ :    : go inside at this hour.
 @>
 
 #------------------------------------------------------------------------------
@@ -2891,8 +2866,8 @@ Direction Fix
 Trigger: Event Touch
 
 List of Event Commands:
-@>Text: I have no reason to disrupt teacher this late at night. 
- :    : Especially if I'm sneaking out of the village.
+@>Text: I'm trying to sneak out of the village tonight... Definitely not the time 
+ :    : to talk to Miss Keine.
 @>
 
 #------------------------------------------------------------------------------
@@ -2963,8 +2938,8 @@ Direction Fix
 Trigger: Event Touch
 
 List of Event Commands:
-@>Text: If I walked back in through the front door my parents 
- :    : might kill me.
+@>Text: If I walked back in through the front door, my parents might actually 
+ :    : kill me.
 @>
 
 #------------------------------------------------------------------------------
@@ -3128,7 +3103,7 @@ List of Event Commands:
 
 #==============================================================================
 Map ID: 007
-Map Name: \PN's Room
+Map Name: Ayaka's Room
 Tileset: 029: Interior (General)
 Width: 20, Height: 15
 Auto-Change BGM: W-003. This Dull World's Unchanging Pessemism (Village)
@@ -3151,11 +3126,9 @@ Move Animation
 Trigger: Autorun
 
 List of Event Commands:
-@>Text: \xn[\pn]It's getting dark out... I should probably go meet 
- :    : up with my friends.
-@>Text: \xn[\pn]But before I do, it might be a good idea to get the stuff 
- :    : I packed away for tonight.
-@>Text: \xn[\pn]I think I put them all in a box close to the window...
+@>Text: \xn[\pn]It's already dark... My friends are probably waiting on me.
+@>Text: \xn[\pn]But first, I'd better grab the stuff I packed away for tonight.
+@>Text: \xn[\pn]It should be in that box next to the window...
 @>Control Self Switch: A =ON
 @>
 
@@ -3194,7 +3167,7 @@ Trigger: Action Button
 List of Event Commands:
 @>Comment: Event Indicator
  :       : investigate
-@>Text: \xn[\pn]Here we go, let's get these packed away...
+@>Text: \xn[\pn]Here we are. Let's get these packed away...
 @>Script: $bag.add(:POTION,5)
 :       : $bag.add(:SUPERPOTION,2)
 :       : $bag.add(:REVIVE,1)
@@ -3202,10 +3175,9 @@ List of Event Commands:
 :       : $bag.add(:GREATORB,3)
 :       : $bag.add(:ITEMFINDER)
 @>Text: \me[Item get]\PN placed the prepared items in their \bbag\c[0]!\wtnp[80]
-@>Text: \xn[\pn]Now I should head outside and meet with the 
- :    : others.
-@>Text: \xn[\pn]I\..\..\..\. probably shouldn't go through the front door. 
- :    : Can't risk waking my parents up and having them get angry.
+@>Text: \xn[\pn]Now to get outside and meet up with the others.
+@>Text: \xn[\pn]I\..\..\..\. probably shouldn't use the front door. I'd get the 
+ :    : lecture of a lifetime if I woke my parents up.
 @>Control Variables: [0107: TMoM Plot Variable] = 1
 @>Control Self Switch: A =ON
 @>
@@ -3291,8 +3263,8 @@ Trigger: Player Touch
 
 List of Event Commands:
 @>Conditional Branch: Player is facing Down
- @>Text: \xn[\pn]No, I should exit through the window... If I leave through the house, my
-  :    : parents will catch me.
+ @>Text: \xn[\pn]No, I should leave through the window... I'll definitely get 
+  :    : caught if I use the front entrance.
  @>
 : Branch End
 @>
@@ -3344,8 +3316,8 @@ Trigger: Player Touch
 
 List of Event Commands:
 @>Conditional Branch: Player is facing Down
- @>Text: \xn[\pn]No, I should exit through the window... If I leave through the house, my
-  :    : parents will catch me.
+ @>Text: \xn[\pn]No, I should leave through the window... I'll definitely get 
+  :    : caught if I use the front entrance.
  @>
 : Branch End
 @>
@@ -3403,10 +3375,9 @@ Move Animation
 Trigger: Action Button
 
 List of Event Commands:
-@>Text: I've heard that you can find extremely large 
- :    : mushrooms in the Forest of Magic.
-@>Text: Mushrooms of that size can fetch a huge amount of 
- :    : cash, so if you ever see one, you should sell it!
+@>Text: I've heard you can find some massive mushrooms in the Forest of Magic.
+@>Text: Mushrooms that big are worth a pretty penny, so you should 
+ :    : sell them if you ever find any!
 @>
 
 #------------------------------------------------------------------------------
@@ -3431,8 +3402,8 @@ Trigger: Action Button
 List of Event Commands:
 @>Text: Do you know how many rest stops there are across
  :    : Gensokyo?
-@>Text: Ever since the Puppets became a thing, there's a rest
- :    : stop on almost every route.
+@>Text: Ever since Puppet battles became popular, there's a rest stop 
+ :    : on almost every route.
 @>Text: Makes hiking up the mountains a lot easier!
 @>
 
@@ -3482,29 +3453,22 @@ Direction Fix
 Trigger: Action Button
 
 List of Event Commands:
-@>Text: I came from the outside world, you're probably
- :    : wondering what this is I'm holding, right?
-@>Text: It's a device that allows me to play video games
- :    : on the go.
-@>Text: Right now I'm playing this one rhythm game where
- :    : you collect characters and build up a team of nine
- :    : to clear songs.
-@>Text: It's based off a really popular series, but I don't really
- :    : care for the anime.
+@>Text: I came from the outside world. You see this thing I'm holding here?
+@>Text: It's a device that lets me play video games on the go.
+@>Text: Right now I'm playing this rhythm game where you clear songs 
+ :    : with your team of nine schoolgirls.
+@>Text: It's based on a really popular series, but I never really cared for 
+ :    : the anime.
 @>Text: The girls are cute though, and I guess the songs
  :    : are passable.
-@>Text: But you know what games could benefit from these 
- :    : days? A system to tell you how many times you've 
- :    : been defeated.
-@>Text: A lot of games lock things behind a defeat count, 
- :    : such as achievements, gear, even endings!
-@>Text: So many games do stuff like this, that you'd think 
- :    : they'd give the player the ability to see how they're 
- :    : doing.
-@>Text: Well, at least you don't have to worry about it with 
- :    : games like the one I'm playing.
-@>Text: ...Though, perhaps they could. Hmm. Food for 
- :    : thought!
+@>Text: But you know what games could benefit from these days? A 
+ :    : tracker for how many times you've lost.
+@>Text: Lots of games hide things behind losing enough times. 
+ :    : Achievements, gear, even endings!
+@>Text: This happens often enough that you'd think they would let you 
+ :    : see how many times you've been beaten.
+@>Text: Well, at least the game I'm playing now doesn't have that kind of feature.
+@>Text: ...Unless it does, and I've already died too many times. Uh-oh...
 @>
 
 #------------------------------------------------------------------------------
@@ -3550,18 +3514,18 @@ Trigger: Action Button
 
 List of Event Commands:
 @>Text: Technology sure is incredible!
-@>Text: The Kappa have invented technology that can
- :    : passively make your Puppets stronger.
-@>Text: One is called the Lucky Egg, another is called the
- :    : EXP Share.
+@>Text: The Kappa have come up with some handy gadgets that help 
+ :    : with training your Puppets.
+@>Text: There's the Lucky Egg for extra experience, and the EXP 
+ :    : Share to spread it out more.
 @>Text: It just so happens that I have both of these, but...
-@>Text: I'm not sure which one I want to use more.
-@>Text: \GTell you what. I'll offer you one of these for $2500.
- :    : You can pick whichever one you want!
+@>Text: Two of these gadgets feels sort of like cheating, you know?
+@>Text: \GTell you what. You can buy one from me for $2500, and I'll 
+ :    : hold onto the other.
 @>Conditional Branch: Gold 2499 or less
- @>Text: \GOr I would, if you had the money!
- @>Text: \GIf you manage to get enough, come back. My offer
-  :    : will still be open!
+ @>Text: \G...Though you don't have that kind of money on you, huh?
+ @>Text: \GCome back when you have the cash. I'll be here whenever 
+  :    : you're ready!
  @>
 : Else
  @>Text: \GSo what do you say?
@@ -3572,42 +3536,39 @@ List of Event Commands:
   @>Show Choices: Lucky Egg, EXP Share
   (When Cancel: Disallow)
   : When [Lucky Egg]
-   @>Text: \GThe Lucky Egg, you're sure?
+   @>Text: \GYou're sure you want the Lucky Egg?
    @>Show Choices: Yes, No
    (When Cancel: Choice 2)
    : When [Yes]
-    @>Text: \GExcellent, a pleasure doing business with you!
+    @>Text: \GExcellent! A pleasure doing business with you!
     @>Change Gold: - 2500
     @>Script: pbReceiveItem(:LUCKYEGG)
     @>Control Self Switch: A =ON
     @>
    : When [No]
-    @>Text: \GWell, if you change your mind, my offer'll still be 
-     :    : open!
+    @>Text: \GWell, if you change your mind, you know where to find me!
     @>
    : Branch End
    @>
   : When [EXP Share]
-   @>Text: \GThe EXP Share, you're sure?
+   @>Text: \GYou're sure you want the EXP Share?
    @>Show Choices: Yes, No
    (When Cancel: Choice 2)
    : When [Yes]
-    @>Text: \GExcellent, a pleasure doing business with you!
+    @>Text: \GExcellent! A pleasure doing business with you!
     @>Change Gold: - 2500
     @>Script: pbReceiveItem(:EXPSHARE)
     @>Control Self Switch: A =ON
     @>
    : When [No]
-    @>Text: \GWell, if you change your mind, my offer'll still be 
-     :    : open!
+    @>Text: \GWell, if you change your mind, you know where to find me!
     @>
    : Branch End
    @>
   : Branch End
   @>
  : When [No]
-  @>Text: \GWell, if you change your mind, my offer'll still be 
-   :    : open!
+  @>Text: \GWell, if you change your mind, you know where to find me!
   @>
  : Branch End
  @>
@@ -3629,7 +3590,7 @@ Move Animation
 Trigger: Action Button
 
 List of Event Commands:
-@>Text: Hopefully you enjoy your new item, and never forget:
+@>Text: Hope you enjoy your new item! And never forget:
 @>Text: Technology is incredible!
 @>
 
@@ -3747,8 +3708,7 @@ Trigger: Action Button
 List of Event Commands:
 @>Script: pbSetPokemonCenter
 @>Text: Hello, and welcome to the Human Village Rest Stop.
-@>Text: We restore your tired and worn out Puppets back to 
- :    : full health.
+@>Text: We restore your worn out Puppets back to full health.
 @>Text: Would you like to rest your Puppets?
 @>Show Choices: Yes, No
 (When Cancel: Choice 2)
@@ -3901,8 +3861,8 @@ Trigger: Action Button
 List of Event Commands:
 @>Conditional Branch: Self Switch A == OFF
  @>Text: Check this out, we've made a miniature teleporter device!
- @>Text: Right now it only functions between its companion system.
- @>Text: I believe that right now, it's in the Ruined Western Mansion...
+ @>Text: Though right now it's only linked to its partner system.
+ @>Text: I think it should be somewhere in the Ruined Western Mansion right now...?
  @>Control Self Switch: A =ON
  @>
 : Branch End
@@ -3959,7 +3919,7 @@ List of Event Commands:
  @>Comment: If Game Variable 1 is less than 0, it means the player 
   :       : has canceled choosing a Pokémon.
  @>Conditional Branch: Variable [0001: Temp Pokemon Choice] < 0
-  @>Text: If your Puppets need to learn a move, come back with a Heart Scale.
+  @>Text: If your Puppets need to learn a move, come back anytime.
   @>
  : Else
   @>Conditional Branch: Script: pbGetPokemon(1).egg?
@@ -3968,7 +3928,7 @@ List of Event Commands:
    @>
   : Branch End
   @>Conditional Branch: Script: pbGetPokemon(1).shadowPokemon?
-   @>Text: No way, I don't want to go near ... whatever that thing is.
+   @>Text: No way. I don't want to go near ... whatever that thing is.
    @>Jump to Label: ChoosePokemon
    @>
   : Branch End
@@ -4501,8 +4461,8 @@ Direction Fix
 Trigger: Action Button
 
 List of Event Commands:
-@>Text: \xn[Shinji]Try not to get lost, \PN. I get the feeling this 
- :    : forest is much bigger than we expect.
+@>Text: \xn[Shinji]Try not to get lost, \PN. I get the feeling this forest is 
+ :    : much larger than it seems.
 @>
 
 Page #2
@@ -4586,9 +4546,9 @@ List of Event Commands:
 @>Set Move Route: Player
  :              : $>Move Down
  :              : $>Move Down
-@>Text: \xn[Maya]Alright, all we need is for \PN to show up, 
- :    : and-\^
-@>Text: \xn[\pn]I'm here now! Sorry for taking so long!
+@>Text: \xn[Maya]Alright, now we just need to wait on \PN, and 
+ :    : we can-\^
+@>Text: \xn[\pn]I'm here, I'm here! Sorry for taking so long!
 @>Set Move Route: [Kota]
  :              : $>Direction Fix OFF
  :              : $>Turn Up
@@ -4601,54 +4561,51 @@ List of Event Commands:
  :              : $>Direction Fix OFF
  :              : $>Turn Up
  :              : $>Direction Fix ON
-@>Text: \xn[Kota]Oh thank the gods you actually made it out! 
- :    : What happened back there?
-@>Text: \xn[\pn]Nothing I couldn't handle, glad to see you three 
- :    : made it here safe too.
-@>Text: \xn[Shinji]We managed to dart out of the village before 
- :    : the patrol got a chance to get in place.
-@>Text: \xn[\pn]Well now that we're all together again, what's 
- :    : the plan?
-@>Text: \xn[Maya]Right, as I was saying just before you 
- :    : arrived...
-@>Text: \xn[Maya]According to my information, this should be the 
- :    : Forest of Magic, which is directly south of the 
- :    : village.
-@>Text: \xn[Maya]Presumably, the mansion we're looking for is in here. 
- :    : After all, we didn't see it on the way down here!
-@>Text: \xn[Kota]...Isn't it possible we may have gone too far 
- :    : south?
-@>Text: \xn[Kota]I know I remember there being a branch in the road 
- :    : back between here and the village.
-@>Text: \xn[Shinji]I suppose it is a possibility. We were running 
- :    : so fast from the village that we didn't stop to check 
- :    : any other paths.
-@>Text: \xn[Maya]No way! The mansion has to be in this forest, it's the 
- :    : perfect place for it!
-@>Text: \xn[Maya]An abandoned mansion, deep within haunted 
- :    : woods... Something about that seems so correct!
-@>Text: \xn[Kota]I think you've been reading one too many of that 
- :    : anonymous author's works...
-@>Text: \xn[\pn]We're getting a bit off topic!
-@>Text: \xn[\pn]Listen, I'll head into the forest and see what I can 
- :    : find. You guys just stay here.
-@>Text: \xn[\pn]I'll report back if I find anything of interest.
-@>Text: \xn[Kota]Is that really a good idea? What if you get lost!
-@>Text: \xn[\pn]Better than all four of us getting lost. Besides, we all
- :    : know I'm good at memorizing my surroundings! It's how I always
- :    : won at Youkai Hunter when we were children!
-@>Text: \xn[Shinji]You do make a fair point. Alright, \PN. Be safe.
-@>Text: \xn[Shinji]One more thing, before you go.
+@>Text: \xn[Kota]\PN, you made it out! What happened back there?
+@>Text: \xn[\pn]Eh, nothing I couldn't handle. I'm glad you three made 
+ :    : it out as well.
+@>Text: \xn[Shinji]We bolted out of the village while the patrol was 
+ :    : still getting prepared.
+@>Text: \xn[\pn]Well now that we're back together again, what's the 
+ :    : plan?
+@>Text: \xn[Maya]Right, I was just saying before you arrived:
+@>Text: \xn[Maya]We went straight south from the village, 
+ :    : so the area we're in now should be the Forest of Magic.
+@>Text: \xn[Maya]Most likely, the mansion we're looking for is in 
+ :    : here somewhere. Nobody saw it on the way here, right?
+@>Text: \xn[Kota]No, but...what if we took a wrong turn?
+@>Text: \xn[Kota]There was definitely another path we could've taken 
+ :    : on the way out of the village.
+@>Text: \xn[Shinji]It's certainly possible. With how fast we were 
+ :    : running, we could easily have taken the wrong route.
+@>Text: \xn[Maya]No way! The mansion's <i>got</i> to be in here! I can 
+ :    : feel it!
+@>Text: \xn[Maya]A long-abandoned mansion, hidden in haunted 
+ :    : woods... Isn't that just so <i>fitting</i>?
+@>Text: \xn[Kota]Maya, I think you're letting all those mystery novels 
+ :    : get to your head...
+@>Text: \xn[\pn]<i>Anyway</i>, back on topic for a second...
+@>Text: \xn[\pn]I'll head into the forest myself and take a look around. 
+ :    : The patrol won't chase us this far out of the village, so you 
+ :    : should be safe here.
+@>Text: \xn[\pn]If I find anything interesting, I'll run back here and let 
+ :    : you know.
+@>Text: \xn[Kota]Is that really a good idea? What if you get lost?
+@>Text: \xn[\pn]Better that than all four of us getting lost. Besides, 
+ :    : I've got a great sense of direction! How do you think I 
+ :    : always won at Youkai Hunter when we were kids?
+@>Text: \xn[Shinji]That's a fair point. Alright, \PN. Be safe.
+@>Text: \xn[Shinji]Oh, one more thing before you go...
 @>Set Move Route: [Shinji]
  :              : $>Direction Fix OFF
  :              : $>Turn Right
  :              : $>Direction Fix ON
-@>Text: \xn[Shinji]You might not be familiar with it yet, but those shrines have
- :    : been popping up all across Gensokyo.
-@>Text: \xn[Shinji]Supposedly if you pray at them, you'll be able to heal 
- :    : your Puppets as well as access the Kappa Storage Network.
-@>Text: \xn[Shinji]It might be a good idea for you to check it out 
- :    : before heading into the forest proper.
+@>Text: \xn[Shinji]You might not have seen them before, but these 
+ :    : shrines have been popping up all over Gensokyo.
+@>Text: \xn[Shinji]They say that praying at one of them will heal your 
+ :    : Puppets, as well as give you access to the Kappa Storage Network.
+@>Text: \xn[Shinji]You might want to give it a look before you disappear 
+ :    : into the forest.
 @>Change Text Options: Bottom, Show
 @>Set Move Route: [Shinji]
  :              : $>Direction Fix OFF
@@ -4799,70 +4756,70 @@ List of Event Commands:
  :              : $>Turn Up
 @>Wait for Move's Completion
 @>Conditional Branch: Self Switch A == OFF
- @>Text: \xn[Marisa]Oy, you. What're you doin' here?
+ @>Text: \xn[???]Hey, you. What're you doin' here?
  @>Set Move Route: [Marisa]
   :              : $>Move Up
   :              : $>Move Up
  @>Text: \xn[\pn]Who, me?
- @>Text: \xn[???]Well there's no one else 'round!
- @>Text: \xn[???]The forest is no place for someone from the village to 
-  :    : be, 'specially at night.
- @>Text: \xn[???]You should get y'self outta here before you get hurt. 
-  :    : I'll even help lead you back safely!
- @>Text: \xn[\pn]Thanks, but no thanks! My friends and I are on a 
-  :    : journey, and we can't go back to the village yet.
- @>Text: \xn[\pn]If it's so dangerous here, then why don't you leave 
-  :    : too? Aren't you from the village too?
- @>Text: \xn[???]Heh, I haven't lived in the village in ages, kid.
- @>Text: \xn[Marisa]The name's Marisa Kirisame, and this forest is where 
-  :    : I make home!
- @>Text: \xn[\pn]Wait, if you live in the forest, does that mean you 
-  :    : know how to navigate it?
- @>Text: \xn[Marisa]I reckon I do, I've lived here most of my life 
-  :    : after all.
- @>Text: \xn[\pn]Then you could help us navigate through it! See, 
-  :    : we're looking for something, and I'm positive it's in 
+ @>Text: \xn[???]You see anyone else 'round for me to be talkin' to?
+ @>Text: \xn[???]You villagers shouldn't be strollin' around the forest, 
+  :    : 'specially at night.
+ @>Text: \xn[???]You oughta head home before you get yerself hurt. 
+  :    : I'll even walk you home if I gotta!
+ @>Text: \xn[\pn]Thanks, but no thanks. My friends and I are on an 
+  :    : adventure right now, so we can't go home yet.
+ @>Text: \xn[\pn]And if it's that dangerous, what are <i>you</i> doing 
+  :    : here? Aren't you from the village too?
+ @>Text: \xn[???]Heh...I haven't lived in the village in ages, kid.
+ @>Text: \xn[Marisa]The name's Marisa Kirisame, and this forest is the 
+  :    : place I call home!
+ @>Text: \xn[\pn]Wait, if you live in the forest, you must know your way 
+  :    : around the place, right?
+ @>Text: \xn[Marisa]Sure I do. I've had plenty of time to learn the lay of 
+  :    : the land.
+ @>Text: \xn[\pn]Then maybe you could be our navigator! We're 
+  :    : looking for something, you see, and we're pretty sure it's in 
   :    : this forest.
- @>Text: \xn[Marisa]Y'er really set on exploring the forest, 
-  :    : arent'cha.
+ @>Text: \xn[Marisa]Yer really set on this little adventure, aren't ya...?
  @>Wait: 20 frame(s)
- @>Text: \xn[Marisa]Ah, what the hells, why not!
- @>Text: \xn[Marisa]You kids could use a guide regardless, and it looks 
-  :    : like you've no plans to turn back.
- @>Text: \xn[Marisa]But, y'know... Why make it so simple, eh?
+ @>Text: \xn[Marisa]Ah, what the hells. Why not!
+ @>Text: \xn[Marisa]Can't let you kids wander around by yerselves, 
+  :    : and it looks like you are't willin' to scurry on home.
+ @>Text: \xn[Marisa]But, well... I gotta make sure there's something in it 
+  :    : for me, y'know?
  @>Text: \xn[\pn]...What do you mean?
- @>Text: \xn[Marisa]Don't think I didn't notice what you have in 
-  :    : your possession.
- @>Text: \xn[Marisa]Puppet Orbs. Quite a few if I'm not mistaken.
- @>Text: \xn[Marisa]Y'er a Puppet Handler, aint'cha?
+ @>Text: \xn[Marisa]I couldn't help but notice what yer packin' over 
+  :    : there.
+ @>Text: \xn[Marisa]Puppet Orbs. A bunch of 'em, from the looks of it.
+ @>Text: \xn[Marisa]Yer a Puppet Handler, aren't ya?
  @>Text: \xn[\pn]I... guess I am? Why do you ask...?
- @>Text: \xn[Marisa]Well y'see, I just happen to be one as well. In 
-  :    : fact, y'could call me one of the first.
- @>Text: \xn[Marisa]'n if there's one thing I love as much as Danmaku 
-  :    : duels, it's Puppet battles.
- @>Text: \xn[Marisa]Y'get what I'm gettin' at here, right?
+ @>Text: \xn[Marisa]'Cause I happen to be a Handler as well. Heck, 
+  :    : y'could say I'm one of the first.
+ @>Text: \xn[Marisa]And if there's one thing I love as much as blastin' 
+  :    : stuff with danmaku, it's battlin' with Puppets.
+ @>Text: \xn[Marisa]I don't gotta spell it out for you, do I?
  @>Wait: 10 frame(s)
  @>Script: pbTrainerIntro(:MARISA)
- @>Text: \xn[\pn]...\wt[10]Yeah, I think I do. Alright then! If it's a battle 
-  :    : you want, it's a battle you'll get!
- @>Text: \xn[Marisa]Now that's what I'm talkin' 'bout! Bring it on!
+ @>Text: \xn[\pn]...\wt[10]No, I get it. Well, if it's a battle you want, then 
+  :    : I'll give it to you!
+ @>Text: \xn[Marisa]Now that's what I'm talkin' about! Bring it on!
  @>
 : Else
  @>Comment: A is On
- @>Text: \xn[Marisa]Well if it ain't the human from before!
+ @>Text: \xn[Marisa]Well, if it ain't the human from before!
  @>Set Move Route: [Marisa]
   :              : $>Move Up
   :              : $>Move Up
  @>Wait for Move's Completion
- @>Text: \xn[Marisa]I thought you went runnin' on back to the village after 
-  :    : our last battle.
- @>Text: \xn[\pn]No way! I'm not going to be that easily deterred!
- @>Text: \xn[Marisa]Heh, I like y'er spunk kid. But if you want my 
+ @>Text: \xn[Marisa]I thought you ran back to the village after I trounced 
+  :    : ya last time.
+ @>Text: \xn[\pn]No way! I'm not going to let one loss stop me!
+ @>Text: \xn[Marisa]Heh. You've got spunk, kid. But if you want my 
   :    : help...
  @>Script: pbTrainerIntro(:MARISA)
- @>Text: \xn[Marisa]Then y'know exactly what'cha gotta do then, right?
- @>Text: \xn[\pn]I'm no kid, the name's \PN! And don't worry, I 
-  :    : intend to do exactly what I set out to do!
+ @>Text: \xn[Marisa]Then y'know what you've gotta do to earn it, right?
+ @>Text: \xn[\pn]Stop calling me a kid! My name's \PN! And this time, 
+  :    : you're going down!
  @>
 : Branch End
 @>Script: $game_temp.vs_transition_bg = "ForestOfMagic"
@@ -4877,13 +4834,13 @@ List of Event Commands:
 : Branch End
 @>Script: pbTrainerEnd
 @>Comment: Battle Won
-@>Text: \xn[Marisa]Yeah now that's the ticket! A good battle like 
- :    : that always gets me riled up!
-@>Text: \xn[Marisa]Anyways, a deal's a deal. I'll help you guys through 
- :    : the forest. Jus' lead me to 'em an' I'll do the rest.
-@>Text: \xn[\pn]Wonderful, thank you Miss Kirisame!
-@>Text: \xn[Marisa]Please, Miss Kirisame was my mother. Jus' 
- :    : call me Marisa.
+@>Text: \xn[Marisa]Alright, that's what I'm talkin' about! Nothin' gets me 
+ :    : goin' faster than a good battle!
+@>Text: \xn[Marisa]Anyways, a deal's a deal. I'll help you and yer 
+ :    : friends through the forest. Just point me to 'em and I'll do the rest.
+@>Text: \xn[\pn]Great! Thank you, Miss Kirisame!
+@>Text: \xn[Marisa]Hey, 'Miss Kirisame' makes me sound like 
+ :    : someone's mom. Just call me Marisa.
 @>Change Screen Color Tone: (-255,-255,-255,0), @6
 @>Wait: 8 frame(s)
 @>Transfer Player:[009: Forest of Magic], (072,015), Up
@@ -4898,40 +4855,37 @@ List of Event Commands:
  :              : $>Turn Down
  :              : $>Direction Fix ON
 @>Change Screen Color Tone: (0,0,0,0), @6
-@>Text: \xn[\pn] ... and Marisa here said that she'll help us 
- :    : navigate through the forest, so we should be able to 
- :    : reach our destination.
-@>Text: \xn[Maya]Good work, \PN! With someone who knows 
- :    : the forest's layout, we'll make it in no time!
-@>Text: \xn[Marisa]So, I didn't really get a chance to ask 'fore 
- :    : but, just where are you four heading?
-@>Text: \xn[Shinji]We're looking into a village rumor, about a 
- :    : mansion that has music playing from it, despite being 
- :    : abandoned.
-@>Text: \xn[Marisa]Oh, yeah I know that place! I can lead you 
- :    : guys there. Jus' got one question though.
-@>Text: \xn[Marisa]Why'd y'come so far south of the village? That 
- :    : mansion's back up near the lake.
+@>Text: \xn[\pn] ... and Marisa here offered to show us around the 
+ :    : forest and find what we're looking for.
+@>Text: \xn[Maya]Good work, \PN! This'll save us a lot of time stumbling 
+ :    : around in the dark!
+@>Text: \xn[Marisa]So, where exactly are the four of you lookin' to go?
+@>Text: \xn[Shinji]We're looking into a rumour going around the village. 
+ :    : Supposedly there's an abandoned mansion where you can 
+ :    : hear music in the dead of night.
+@>Text: \xn[Marisa]Oh yeah, I know the place you're talkin' about! I 
+ :    : can lead you there no problem.
+@>Text: \xn[Marisa]Just one question... why'd you head this far south? 
+ :    : That mansion's over by the lake.
 @>Wait: 20 frame(s)
 @>Text: \xn[\pn]...What?
-@>Text: \xn[Kota]So it really was back north...
-@>Text: \xn[Maya]But I was so sure it would be in the forest! 
- :    : Maybe there's two?
-@>Text: \xn[Marisa]Nope, jus' the one. The only houses in the 
- :    : forest are mine as a fellow witch's.
+@>Text: \xn[Kota]So we really did take a wrong turn...
+@>Text: \xn[Maya]But the aesthetic of this place is so <i>right</i>! 
+ :    : Maybe there's a second haunted mansion you're thinking of?
+@>Text: \xn[Marisa]Nah, I doubt it. Only folk who live 'round here are 
+ :    : me and Alice.
 @>Set Move Route: [Maya]
  :              : $>Direction Fix OFF
  :              : $>Turn Up
  :              : $>Direction Fix ON
-@>Text: \xn[Marisa]If there was anyone else livin' in these woods, I'd 
- :    : know 'bout it.
-@>Text: \xn[Shinji]So our destination is back up north you said?
-@>Text: \xn[Marisa]Yeah, no worries though. I can lead you guys 
- :    : right to the lake without issue.
-@>Text: \xn[Kota]We would greatly appreciate the escort!
-@>Text: \xn[Marisa]Glad t'hear that! Y'all are ready to go then, 
- :    : right?
-@>Text: \xn[\pn]I'd say we are! So then, to the north?
+@>Text: \xn[Marisa]If there were anyone else in these woods, I'd know 
+ :    : all about 'em.
+@>Text: \xn[Shinji]So what you're saying is we need to head back north?
+@>Text: \xn[Marisa]Yup. Don't sweat it, though. I'll lead you right there, 
+ :    : straight as an arrow.
+@>Text: \xn[Kota]We'd really appreciate the help!
+@>Text: \xn[Marisa]You're welcome! Everyone set for the trip, then?
+@>Text: \xn[\pn]I'm ready! Maya, are you good to go?
 @>Wait: 5 frame(s)
 @>Set Move Route: [Shinji]
  :              : $>Direction Fix OFF
@@ -4950,10 +4904,10 @@ List of Event Commands:
  :              : $>Direction Fix OFF
  :              : $>Turn Down
  :              : $>Direction Fix ON
-@>Text: \xn[Maya]One little setback isn't enough to stop us! To the north 
- :    : we go!
-@>Text: \xn[Marisa]A'ight, jus' follow me and I'll get you there 
- :    : safely!
+@>Text: \xn[Maya]Can't let one little setback get me down! Onward 
+ :    : to adventure!
+@>Text: \xn[Marisa]Alright, then. Stick close to me and we'll be there 
+ :    : in a jiffy!
 @>Set Move Route: [Marisa]
  :              : $>Move Right
  :              : $>Move Up
@@ -5237,7 +5191,7 @@ Trigger: Action Button
 
 List of Event Commands:
 @>Text: I have no idea what placeholder dialogue means! I just heard 
- :    : someone say it once and liked it!
+ :    : someone say it and thought it sounded cool!
 @>
 
 #------------------------------------------------------------------------------
@@ -5548,25 +5502,26 @@ List of Event Commands:
 @>Recover All: Entire Party
 @>Text: \xn[Marisa]And here we are, this's the Misty Lake!
 @>Wait: 10 frame(s)
-@>Text: \xn[Shinji]Well I can certainly see why it has this name.
-@>Text: \xn[Kota]Is it always this foggy?
-@>Text: \xn[Marisa]You bet'cha! Sometimes it's worse, like back 
- :    : during the Scarlet Mist Incident.
-@>Text: \xn[Marisa]It can get pretty hard to see around these parts, so 
- :    : 'f I was you, I'd have some sort of light source to help navigate.
+@>Text: \xn[Shinji]...Well, I can certainly see why they call it that.
+@>Text: \xn[Kota]Is the fog always this heavy?
+@>Text: \xn[Marisa]You bet! Heck, it was even worse during the 
+ :    : Scarlet Mist Incident way back when.
+@>Text: \xn[Marisa]Visibility around here isn't great, so you might 
+ :    : wanna find a light source to help you get around.
 @>Text: \xn[Maya]We didn't think to bring a lantern...
 @>Text: \xn[\pn]Wait, does this mean you're heading back 
  :    : already?
-@>Text: \xn[Marisa]Yup. I was out looking for some 'shrooms for 
- :    : my latest concoction when I ran into y'all.
-@>Text: \xn[Marisa]'m sure you four are well suited to navigate here!
-@>Text: \xn[Maya]We really do appreciate the help you gave us 
- :    : Miss Kirisame, so thank you!
-@>Text: \xn[Marisa]Think nothin' of it. Also, I said it on the way 
- :    : here, jus' call me Marisa! I don't need no formal titles.
-@>Text: \xn[Marisa]If you four are ever in the forest again and need 
- :    : help navigating it, don't hesitate to drop by my place!
-@>Text: \xn[Marisa]'till next time, take care!
+@>Text: \xn[Marisa]Yup. I've gotta get back to hunting down some 
+ :    : mushrooms for my next concoction.
+@>Text: \xn[Marisa]I'm sure the four of you can make it from here! 
+ :    : You seem like real capable kids.
+@>Text: \xn[Maya]Thank you again, Miss Kirisame! We really do 
+ :    : appreciate the help.
+@>Text: \xn[Marisa]I told ya, knock it off with the 'Miss Kirisame' 
+ :    : nonsense! My pals call me Marisa, and so should you.
+@>Text: \xn[Marisa]Anywho, if you ever stumble into the forest again, 
+ :    : drop by my place and I'll show you around.
+@>Text: \xn[Marisa]Take care, kids! Don't do anything I'd do!
 @>Set Move Route: [Marisa]
  :              : $>Move Down
  :              : $>Move Down
@@ -5590,30 +5545,27 @@ List of Event Commands:
 @>Wait for Move's Completion
 @>Script: pbSetSelfSwitch(28,"A",true)
 @>Wait: 20 frame(s)
-@>Text: \xn[Maya]Right then, despite our little mistake earlier, our 
- :    : expedition has led us here, the Misty Lake!
+@>Text: \xn[Maya]Right then. We might have gotten a little lost earlier, 
+ :    : but we've made it to the Misty Lake!
 @>Text: \xn[Maya]Shinji, is there anything you can tell us about this 
  :    : place?
-@>Text: \xn[Shinji]Aside from the thick mist that coats the air?
-@>Text: \xn[Shinji]The lake is actually extremely large, and connects to 
- :    : the western half of Gensokyo.
-@>Text: \xn[Shinji]Most of the water comes down from the Waterfall 
- :    : atop Youkai Mountain, and flows out into the Sanzu River 
- :    : in the west.
-@>Text: \xn[Shinji]There's also apparently vampires hidden somewhere 
- :    : in the area, but-\^
+@>Text: \xn[Shinji]Well, I assume you're already familiar with the thick 
+ :    : mist that coats the whole lake.
+@>Text: \xn[Shinji]It's actually a very large body of water, carrying on 
+ :    : well into the western half of Gensokyo.
+@>Text: \xn[Shinji]The water travels here from the waterfall on 
+ :    : Youkai Mountain, then flows out to the Sanzu River in the west.
+@>Text: \xn[Shinji]There's also rumours of vampires living in the area, but-\^
 @>Text: \xn[Kota]Did you just say vampires!?
-@>Text: \xn[Shinji]Ahem! As I was saying, none of that is relevant 
- :    : to us, as supposedly our mansion is here on the 
- :    : eastern shore.
-@>Text: \xn[Maya]So then all we need to do is find the mansion 
- :    : here along the coast. That shouldn't be too hard.
-@>Text: \xn[\pn]I can head out again and see if I find anything. 
- :    : You guys just stay here, and I'll report back if I find it.
-@>Text: \xn[Kota]Alright \PN, just stay safe. Don't let the vampires 
- :    : get you!
-@>Text: \xn[Shinji]I really don't think \PN has to worry about 
- :    : vampires...
+@>Text: \xn[Shinji]...If you'll let me <i>finish</i>, we'd have to cross 
+ :    : the lake to run into them. And since the mansion's on the 
+ :    : eastern shore, that won't be a problem.
+@>Text: \xn[Maya]So we just need to look around for a big house on 
+ :    : the coast? That sounds pretty simple.
+@>Text: \xn[\pn]I'll scout the place out and see if I find anything. You 
+ :    : guys can stay here for now, and I'll come back if I find anything.
+@>Text: \xn[Kota]Alright. Stay safe, \PN. Don't let the vampires get you!
+@>Text: \xn[Shinji]I already said that vampires aren't going to be a problem...
 @>Control Self Switch: A =ON
 @>
 
@@ -6144,10 +6096,10 @@ Move Animation
 Trigger: Event Touch
 
 List of Event Commands:
-@>Text: \xn[\pn]Hmm... If the mansion is on this side of the coast,
- :    : I should definitely look everywhere.
-@>Text: \xn[\pn]Well, if my books have taught me anything,
- :    : I shouldn't leave any stone or bush untouched!
+@>Text: \xn[\pn]Hmm... Shinji wasn't lying. Even on this side of the 
+ :    : coast, there's a lot of ground to cover.
+@>Text: \xn[\pn]Well, guess that means I've just got to be thorough! 
+ :    : That's how it goes in all the stories, anyway.
 @>Control Self Switch: A =ON
 @>
 
@@ -6227,9 +6179,9 @@ Trigger: Event Touch
 
 List of Event Commands:
 @>Control Variables: [0001: Temp Pokemon Choice] = Player's Map X
-@>Text: \xn[\pn]Hmm... with that tree in the way it's impossible to 
- :    : keep checking in that direction.
-@>Text: \xn[\pn]There's gotta be a way around it...
+@>Text: \xn[\pn]Hmm... no point searching that direction with the tree 
+ :    : in the way.
+@>Text: \xn[\pn]There's gotta be another way around...
 @>Conditional Branch: Variable [0001: Temp Pokemon Choice] == 47
  @>Set Event Location: [Youmu],(047,036), Up
  @>
@@ -6255,15 +6207,15 @@ List of Event Commands:
  :              : $>Move Up
  :              : $>SE: 'Player bump', 100, 100
 @>Wait for Move's Completion
-@>Text: \xn[???]O-Ow... What did I run into...
+@>Text: \xn[???]O-Ow... Did I just walk into someone?
 @>Wait: 20 frame(s)
 @>Show Animation: [Youmu], [Exclaim bubble]
-@>Text: \xn[???]G-G-Ghost!
-@>Text: \xn[\pn]I am not a ghost! I'm a human!
-@>Text: \xn[???]Sure you aren't! That's what they all say!
+@>Text: \xn[???]<i>Ah!</i> G-G-Ghost!
+@>Text: \xn[\pn]Ghost? Wait, no, I'm a human!
+@>Text: \xn[???]You can't fool me! That's exactly what a ghost would say!
 @>Script: pbTrainerIntro(:YOUMU)
-@>Text: \xn[???]I'll dispel you right now, with my swords that can cut 
- :    : through anything!
+@>Text: \xn[???]I'll make quick work of you with these pristine blades 
+ :    : of mine!
 @>Control Switches: [0109: Met Youmu] = ON
 @>Script: $game_temp.vs_transition_bg = "MistyLake"
 :       : #$game_temp.vs_name = "Vs. Youmu Konpaku"
@@ -6279,9 +6231,9 @@ List of Event Commands:
 @>Set Event Location: [Shinji],(054,042), Up
 @>Set Event Location: [Maya],(054,040), Up
 @>Script: pbTrainerEnd
-@>Text: \xn[\pn]Will you please listen to me! I'm not a ghost!
+@>Text: \xn[\pn]Wait, wait, wait, wait! I promise you, I'm just an ordinary human!
 @>Comment: --------------------
-@>Text: \xn[???]D-Do you really mean it...?
+@>Text: \xn[???]Y-You are? You're not lying, are you?
 @>Set Move Route: [Maya]
  :              : $>Through ON
  :              : $>Move Up
@@ -6310,7 +6262,7 @@ List of Event Commands:
  :              : $>Turn Left
  :              : $>Through OFF
 @>Scroll Map: Down, 3, 4
-@>Text: \xn[\pn]Absolutely, I swear I'm not a-\^
+@>Text: \xn[\pn]Of course not! Why would I lie about-\^
 @>Wait for Move's Completion
 @>Text: \xn[Maya]There you are!
 @>Show Animation: Player, [Exclaim bubble]
@@ -6319,83 +6271,76 @@ List of Event Commands:
  :              : $>Turn Right
 @>Set Move Route: [Youmu]
  :              : $>Turn Right
-@>Text: \xn[???]More ghosts!
+@>Text: \xn[???]<i>Eek!</i> More ghosts!
 @>Text: \xn[Kota]Ghosts!? Where!?
 @>Text: \xn[Shinji]Surely you don't mean us...
 @>Wait: 20 frame(s)
-@>Text: \xn[Maya]So you've seen through my clever disguise, 
- :    : ohohoho~ I am the Queen of all Ghosts, Chinami! Fear 
- :    : me-\se[Bonk] Ow! What was that for!
+@>Text: \xn[Maya]<i>Ohoho...so you've seen through my clever disguise~! 
+ :    : I am Chinami, Queen of all Ghosts, and I-<i>\se[Bonk] Ow! What was that for?!
 @>Set Move Route: [Shinji]
  :              : $>Turn Up
-@>Text: \xn[Shinji]You're scaring the poor girl more.
+@>Text: \xn[Shinji]Can you see the poor girl's already scared out of her wits?
 @>Set Move Route: [Shinji]
  :              : $>Turn Left
-@>Text: \xn[\pn]What are you three doing here, I thought I said I'd 
- :    : be back if I found something?
-@>Text: \xn[Kota]We heard a loud noise come from this direction, 
- :    : so we wanted to make sure everything was okay!
-@>Text: \xn[Kota]We can't just abandon you if you're in trouble!
-@>Text: \xn[\pn]I'm fine, I just... ran into this person here when I 
- :    : was on my way back.
-@>Text: \xn[???]I have a name you know! It's Youmu! Youmu 
- :    : Konpaku!
-@>Text: \xn[Shinji]There's no need to shout Miss Konpaku, 
- :    : please.
-@>Text: \xn[Youmu]Right, sorry...
+@>Text: \xn[\pn]You guys? What are you doing here? I said I'd come 
+ :    : back once I found the mansion!
+@>Text: \xn[Kota]Yeah, but we heard a noise coming from this direction. 
+ :    : We had to make sure you were okay!
+@>Text: \xn[Kota]We're not just going to sit there if you're in trouble, you know?
+@>Text: \xn[\pn]Well, I'm fine. I just... bumped into this person while 
+ :    : I was looking around.
+@>Text: \xn[???]I have a name, for the record! It's Youmu! Youmu Konpaku!
+@>Text: \xn[Shinji]Miss Konpaku, there's no need to shout.
+@>Text: \xn[Youmu]Ah...my apologies.
 @>Set Move Route: Player
  :              : $>Turn Down
-@>Text: \xn[\pn]I apologize if we scared you, but I assure you 
- :    : none of us are ghosts.
-@>Text: \xn[\pn]In fact, we're here searching for something. We should 
- :    : probably get back to looking for it.
+@>Text: \xn[\pn]I'm sorry if we scared you, but I promise the four of us 
+ :    : are very much alive.
+@>Text: \xn[\pn]We won't bother you any more. For now, we've got a 
+ :    : search to get back to.
 @>Set Move Route: [Youmu]
  :              : $>Turn Up
-@>Text: \xn[Youmu]Wait, thinking about it, it is a bit strange that four 
- :    : kids from the Village are out at Misty Lake at night... What are 
- :    : you four searching for?
-@>Text: \xn[\pn]We're looking for a mansion that's supposedly on 
- :    : this side of Misty Lake.
-@>Text: \xn[\pn]Unfortunately, I've looked everywhere I can, but I 
- :    : haven't found it...
+@>Text: \xn[Youmu]Hrm...thinking about it, it's a bit odd for humans to 
+ :    : be out here at this hour... What are you searching for, exactly?
+@>Text: \xn[\pn]There's a haunted mansion on this side of the lake. 
+ :    : Or so the rumours say.
+@>Text: \xn[\pn]Unfortunately I've checked everywhere I could, 
+ :    : and there's no sign of it...
 @>Text: \xn[Youmu]A mansion on the lake...
 @>Wait: 10 frame(s)
 @>Show Animation: [Youmu], [Question bubble]
 @>Text: \xn[Youmu]Wait, do you mean Prismriver Manor? It's the only 
  :    : place here I can think of.
-@>Text: \xn[Kota]If it's the only place, then I suppose that's it!
-@>Text: \xn[Youmu]Well you're in luck, I actually happen to be 
- :    : heading there right now!
+@>Text: \xn[Kota]That sure sounds like what we're looking for!
+@>Text: \xn[Youmu]In that case, you're in luck! I happen to be 
+ :    : heading there right now.
 @>Show Animation: Player, [Exclaim bubble]
 @>Show Animation: [Kota], [Exclaim bubble]
 @>Show Animation: [Maya], [Exclaim bubble]
 @>Show Animation: [Shinji], [Exclaim bubble]
-@>Text: \xn[Maya]Does that mean you can take us there right 
- :    : now?
-@>Text: \xn[Youmu]That sounds like a good idea! You four could 
- :    : probably use a guardian, and I'm well versed in being 
- :    : an escort!
+@>Text: \xn[Maya]Are you offering to lead the way for us?
+@>Text: \xn[Youmu]Indeed! You humans could use the help, and I'm 
+ :    : quite skilled when it comes to being a bodyguard!
 @>Wait: 20 frame(s)
-@>Text: \xn[Youmu]...And I'm not just saying that because I'm terrified of 
- :    : ghosts. Not at all.
-@>Text: \xn[Kota]So... where exactly is the mansion then?
-@>Text: \xn[Youmu]It's just north of here after you take a right in 
- :    : the road.
-@>Text: \xn[\pn]But I was just up that way, there's trees in the 
- :    : way...
-@>Text: \xn[Youmu]Leave those trees to me! I'll clear them out, 
- :    : and you can meet me in front of the mansion.
+@>Text: \xn[Youmu]...And before you get any ideas, I'm not looking for 
+ :    : the company because I'm scared of being here all by myself.
+@>Text: \xn[Kota]So... which way is it to the mansion?
+@>Text: \xn[Youmu]You just head north from here, then take the path to the right.
+@>Text: \xn[\pn]But I tried that way already. There's a bunch of 
+ :    : trees blocking the road.
+@>Text: \xn[Youmu]Ah, I can take care of those! You can meet me at 
+ :    : the mansion once I've cleared the path.
 @>Change Screen Color Tone: (-255,-255,-255,0), @6
 @>Text: \xn[Youmu]After all...
 @>Wait: 10 frame(s)
 @>Text: \xn[Youmu]\se[Vs flash]The things that cannot be cut by my Roukanken, forged by youkai...\wtnp[10]
 @>Wait: 8 frame(s)
-@>Text: \xn[Youmu]Are close to none!\se[Cut]\wtnp[10]
+@>Text: \xn[Youmu]Are next to none!\se[Cut]\wtnp[10]
 @>Wait: 10 frame(s)
 @>Control Variables: [0107: TMoM Plot Variable] = 7
 @>Transfer Player:[010: Misty Lake], (051,025), Right
 @>Change Screen Color Tone: (0,0,0,0), @6
-@>Text: \xn[\pn]Well, I suppose that's one way of clearing the trees...
+@>Text: \xn[\pn]Well, that's certainly one way to deal with the trees...
 @>
 
 Page #2
@@ -6433,16 +6378,15 @@ Move Animation
 Trigger: Action Button
 
 List of Event Commands:
-@>Text: Do you need an explanation on what Shards are? My 
- :    : explanation is a bit long-winded.
+@>Text: Do you need an explanation on what Shards are? It might take 
+ :    : me a while to explain everything.
 @>Show Choices: Yes, No
 (When Cancel: Choice 2)
 : When [Yes]
  @>Text: Shards are like stones that can be used to bring out a 
   :    : Puppet's potential.
- @>Text: The process is very similar to if you let a Puppet 
-  :    : reach its natural evolution level.
- @>Text: There are seven in total.
+ @>Text: It's similar to the way a Puppet evolves if if gains enough levels.
+ @>Text: There are seven types of Shards in total:
  @>Text: Power Shards, which evolve Puppets into their 
   :    : Attack forms.
  @>Text: Defense Shards, which evolve Puppets into their 
@@ -6455,34 +6399,29 @@ List of Event Commands:
   :    : Technical forms.
  @>Text: Solar Shards, which evolve Puppets into their Advent 
   :    : forms.
- @>Text: And finally, Chrome Shards, which evolve Puppets 
-  :    : into special one-off forms.
- @>Text: Power, Defense, and Swift Shards are simple 
-  :    : enough to deduce what they do. They prioritize 
-  :    : Attack, Defense, and Speed.
- @>Text: The rest are not as straightforward.
- @>Text: Support Shards make Puppets more attuned for 
-  :    : supportive roles. They can be good for other 
-  :    : purposes, but are best suited at support.
- @>Text: Technical forms are... complicated. There is no clear 
-  :    : way to explain what they do, aside from 
-  :    : redistributing a Puppet's natural abilities.
- @>Text: Advent Forms are also interesting, in that there's no 
-  :    : clear way to define what they do as well.
- @>Text: They're like Tech forms, except they give Puppets the 
-  :    : Advent ability, which makes them immune to 
-  :    : secondary effects.
+ @>Text: And finally Chrome Shards, which evolve Puppets into 
+  :    : special one-off forms.
+ @>Text: Power, Defense and Swift Shards are self-explanatory. They 
+  :    : produce forms that prioritize Attack, Defense and Speed.
+ @>Text: The others are a bit less clear-cut.
+ @>Text: Support Shards make Puppets more attuned for supportive roles. 
+  :    : They can still fight if needed, but they're best suited for 
+  :    : powering up other Puppets.
+ @>Text: Technical forms switch up a Puppet's natural abilities, changing 
+  :    : the way they fight. The specifics change from one Puppet to the next.
+ @>Text: Advent forms are a unique option that only a small number of 
+  :    : Puppets has access to.
+ @>Text: Any Puppet in Advent form has the Advent ability, which 
+  :    : makes them immune to secondary effects.
  @>Text: Chrome Shards are peculiar. There's no rhyme or 
   :    : reason to what they evolve, or why their forms are 
   :    : dependent on it.
- @>Text: Advent and Chrome Shards have the least amount of 
-  :    : evolutions, so be aware of what Puppets evolve 
-  :    : from those before purchasing any.
- @>Text: \b(There should be a text file included with the game 
-  :    : that documents Shard Evolutions. Consult that list for 
-  :    : more information).
- @>Text: And that should be all there is to know about Shards! 
-  :    : Go out there and make full use of your Puppets!
+ @>Text: Very few Puppets have Advent or Chrome forms, so be sure 
+  :    : you know what you're doing before you buy any of those shards.
+ @>Text: \b(For a full list of Shard Evolution options, consult the 
+  :    : Shard Evolutions text file included with the game.)
+ @>Text: And that's everything there is to know about Shards! Now get 
+  :    : out there and make full use of your Puppets!
  @>
 : When [No]
  @>
@@ -6509,9 +6448,8 @@ Move Animation
 Trigger: Action Button
 
 List of Event Commands:
-@>Text: Hey kid, I have some goods here you may be 
- :    : interested in.
-@>Text: Care to browse my wares?
+@>Text: Hey, kid. You look like you could use some extra supplies.
+@>Text: Interested in doing a little business?
 @>Show Choices: Yes, No
 (When Cancel: Choice 2)
 : When [Yes]
@@ -6549,8 +6487,8 @@ Trigger: Action Button
 List of Event Commands:
 @>Comment: Event Indicator
  :       : question_alt 
-@>Text: It's a small bush... but I have nothing to cut it down 
- :    : with.
+@>Text: There's a bush blocking the way. If only I had something to 
+ :    : cut it down with...
 @>Conditional Branch: Variable [0107: TMoM Plot Variable] == 5
  @>Control Variables: [0107: TMoM Plot Variable] = 6
  @>
@@ -6595,8 +6533,8 @@ Trigger: Action Button
 List of Event Commands:
 @>Comment: Event Indicator
  :       : question_alt 
-@>Text: It's a small bush... but I have nothing to cut it down 
- :    : with.
+@>Text: There's a bush blocking the way. If only I had something to 
+ :    : cut it down with...
 @>Conditional Branch: Variable [0107: TMoM Plot Variable] == 5
  @>Control Variables: [0107: TMoM Plot Variable] = 6
  @>
@@ -6639,11 +6577,11 @@ Trigger: Action Button
 
 List of Event Commands:
 @>Text: \xn[\pn]Excuse me miss, are you alri-\^
-@>Text: \xn[???]Eeek! The ghost from earlier is back!
+@>Text: \xn[???]<i>Eeek!</i> The ghost from earlier is back!
 @>Text: \xn[\pn]I keep telling you, I'm not a ghost! 
 @>Script: pbTrainerIntro(:YOUMU)
-@>Text: \xn[???]Then why do you keep haunting me!? This time 
- :    : I'll be sure to dispel you properly!
+@>Text: \xn[???]Then why do you keep haunting me!? This time I'll 
+ :    : make sure to finish you off!
 @>Script: $game_temp.vs_transition_bg = "MistyLake"
 :       : #$game_temp.vs_name = "Vs. Youmu Konpaku"
 @>Conditional Branch: Script: TrainerBattle.start(:YOUMU, "Youmu Konpaku", 10+(pbGet(99) * 10))
@@ -6657,10 +6595,10 @@ List of Event Commands:
 @>Set Event Location: [Kota],(055,041), Up
 @>Set Event Location: [Shinji],(054,042), Up
 @>Set Event Location: [Maya],(054,040), Up
-@>Text: \xn[\pn]Will you please listen to me! I'm not a ghost!
+@>Text: \xn[\pn]Wait, wait, wait, wait! I promise you, I'm just an ordinary human!
 @>Script: pbTrainerEnd
 @>Comment: --------------------
-@>Text: \xn[???]D-Do you really mean it...?
+@>Text: \xn[???]Y-You are? You're not lying, are you?
 @>Set Move Route: [Maya]
  :              : $>Through ON
  :              : $>Move Up
@@ -6689,7 +6627,7 @@ List of Event Commands:
  :              : $>Turn Left
  :              : $>Through OFF
 @>Scroll Map: Down, 3, 4
-@>Text: \xn[\pn]Absolutely, I swear I'm not a-\^
+@>Text: \xn[\pn]Of course not! Why would I lie about-\^
 @>Wait for Move's Completion
 @>Text: \xn[Maya]There you are!
 @>Show Animation: Player, [Exclaim bubble]
@@ -6698,83 +6636,77 @@ List of Event Commands:
  :              : $>Turn Right
 @>Set Move Route: [Youmu]
  :              : $>Turn Right
-@>Text: \xn[???]More ghosts!
+@>Text: \xn[???]<i>Eek!</i> More ghosts!
 @>Text: \xn[Kota]Ghosts!? Where!?
 @>Text: \xn[Shinji]Surely you don't mean us...
 @>Wait: 20 frame(s)
-@>Text: \xn[Maya]So you've seen through my clever disguise, 
- :    : ohohoho~ I am the Queen of all Ghosts, Chinami! Fear 
- :    : me-\se[Bonk] Ow! What was that for!
+@>Text: \xn[Maya]<i>Ohoho...so you've seen through my clever disguise~! 
+ :    : I am Chinami, Queen of all Ghosts, and I-<i>\se[Bonk] Ow! What was that for?!
 @>Set Move Route: [Shinji]
  :              : $>Turn Up
-@>Text: \xn[Shinji]You're scaring the poor girl more.
+@>Text: \xn[Shinji]Can you see the poor girl's already scared out of her wits?
 @>Set Move Route: [Shinji]
  :              : $>Turn Left
-@>Text: \xn[\pn]What are you three doing here, I thought I said I'd 
- :    : be back if I found something?
-@>Text: \xn[Kota]We heard a loud noise come from this direction, 
- :    : so we wanted to make sure everything was okay!
-@>Text: \xn[Kota]We can't just abandon you if you're in trouble!
-@>Text: \xn[\pn]I'm fine, I just... ran into this person here when I 
- :    : was on my way back.
-@>Text: \xn[???]I have a name you know! It's Youmu! Youmu 
- :    : Konpaku!
-@>Text: \xn[Shinji]There's no need to shout Miss Konpaku, 
- :    : please.
-@>Text: \xn[Youmu]Right, sorry...
+@>Text: \xn[\pn]You guys? What are you doing here? I said I'd come 
+ :    : back once I found the mansion!
+@>Text: \xn[Kota]Yeah, but we heard a noise coming from this direction. 
+ :    : We had to make sure you were okay!
+@>Text: \xn[Kota]We're not just going to sit there if you're in trouble, you know?
+@>Text: \xn[\pn]Well, I'm fine. I just... bumped into this person while I 
+ :    : was looking around.
+@>Text: \xn[???]I have a name, for the record! It's Youmu! Youmu Konpaku!
+@>Text: \xn[Shinji]Miss Konpaku, there's no need to shout.
+@>Text: \xn[Youmu]Ah...my apologies.
 @>Set Move Route: Player
  :              : $>Turn Down
-@>Text: \xn[\pn]I apologize if we scared you, but I assure you 
- :    : none of us are ghosts.
-@>Text: \xn[\pn]In fact, we're here searching for something. We should 
- :    : probably get back to looking for it.
+@>Text: \xn[\pn]I'm sorry if we scared you, but I promise the four 
+ :    : of us are very much alive.
+@>Text: \xn[\pn]We won't bother you any more. For now, we've got a 
+ :    : search to get back to.
 @>Set Move Route: [Youmu]
  :              : $>Turn Up
-@>Text: \xn[Youmu]Wait, thinking about it, it is a bit strange that four 
- :    : kids from the Village are out at Misty Lake at night... What are 
- :    : you four searching for?
-@>Text: \xn[\pn]We're looking for a mansion that's supposedly on 
- :    : this side of Misty Lake.
-@>Text: \xn[\pn]Unfortunately, I've looked everywhere I can, but I 
- :    : haven't found it...
+@>Text: \xn[Youmu]Hrm...thinking about it, it's a bit odd for humans to 
+ :    : be out here at this hour... What are you searching for, exactly?
+@>Text: \xn[\pn]There's a haunted mansion on this side of the lake. Or 
+ :    : so the rumours say.
+@>Text: \xn[\pn]Unfortunately I've checked everywhere I could, and 
+ :    : there's no sign of it...
 @>Text: \xn[Youmu]A mansion on the lake...
 @>Wait: 10 frame(s)
 @>Show Animation: [Youmu], [Question bubble]
 @>Text: \xn[Youmu]Wait, do you mean Prismriver Manor? It's the only 
  :    : place here I can think of.
-@>Text: \xn[Kota]If it's the only place, then I suppose that's it!
-@>Text: \xn[Youmu]Well you're in luck, I actually happen to be 
- :    : heading there right now!
+@>Text: \xn[Kota]That sure sounds like what we're looking for!
+@>Text: \xn[Youmu]In that case, you're in luck! I happen to be heading 
+ :    : there right now.
 @>Show Animation: Player, [Exclaim bubble]
 @>Show Animation: [Kota], [Exclaim bubble]
 @>Show Animation: [Maya], [Exclaim bubble]
 @>Show Animation: [Shinji], [Exclaim bubble]
-@>Text: \xn[Maya]Does that mean you can take us there right 
- :    : now?
-@>Text: \xn[Youmu]That sounds like a good idea! You four could 
- :    : probably use a guardian, and I'm well versed in being 
- :    : an escort!
+@>Text: \xn[Maya]Are you offering to lead the way for us?
+@>Text: \xn[Youmu]Indeed! You humans could use the help, and I'm 
+ :    : quite skilled when it comes to being a bodyguard!
 @>Wait: 20 frame(s)
-@>Text: \xn[Youmu]...And I'm not just saying that because I'm terrified of 
- :    : ghosts. Not at all.
-@>Text: \xn[Kota]So... where exactly is the mansion then?
-@>Text: \xn[Youmu]It's just north of here after you take a right in 
- :    : the road.
-@>Text: \xn[\pn]But I was just up that way, there's trees in the 
- :    : way...
-@>Text: \xn[Youmu]Leave those trees to me! I'll clear them out, 
- :    : and you can meet me in front of the mansion.
+@>Text: \xn[Youmu]...And before you get any ideas, I'm not looking for 
+ :    : the company because I'm scared of being here all by myself.
+@>Text: \xn[Kota]So... which way is it to the mansion?
+@>Text: \xn[Youmu]You just head north from here, then take the path 
+ :    : to the right.
+@>Text: \xn[\pn]But I tried that way already. There's a bunch of 
+ :    : trees blocking the road.
+@>Text: \xn[Youmu]Ah, I can take care of those! You can meet me at 
+ :    : the mansion once I've cleared the path.
 @>Change Screen Color Tone: (-255,-255,-255,0), @6
 @>Text: \xn[Youmu]After all...
 @>Wait: 10 frame(s)
 @>Text: \xn[Youmu]\se[Vs flash]The things that cannot be cut by my Roukanken, forged by youkai...\wtnp[10]
 @>Wait: 8 frame(s)
-@>Text: \xn[Youmu]Are close to none!\se[Cut]\wtnp[10]
+@>Text: \xn[Youmu]Are next to none!\se[Cut]\wtnp[10]
 @>Wait: 10 frame(s)
 @>Control Variables: [0107: TMoM Plot Variable] = 7
 @>Transfer Player:[010: Misty Lake], (051,025), Right
 @>Change Screen Color Tone: (0,0,0,0), @6
-@>Text: \xn[\pn]Well, I suppose that's one way of clearing the trees...
+@>Text: \xn[\pn]Well, that's certainly one way to deal with the trees...
 @>
 
 Page #2
@@ -6964,8 +6896,8 @@ Move Animation
 Trigger: Action Button
 
 List of Event Commands:
-@>Text: \xn[\pn]I wonder what other things call this lake their 
- :    : home...
+@>Text: \xn[Kota]If there are vampires living here, what <i>other<i> 
+ :    : sorts of youkai are we going to run into? 
 @>
 
 Page #2
@@ -7003,8 +6935,7 @@ Move Animation
 Trigger: Action Button
 
 List of Event Commands:
-@>Text: \xn[Maya]We'll stay back here in case you find 
- :    : something, so don't worry \PN!
+@>Text: \xn[Maya]We'll hold the fort back here. Don't worry about us, \PN!
 @>
 
 Page #2
@@ -7150,16 +7081,16 @@ Move Animation
 Trigger: Action Button
 
 List of Event Commands:
-@>Text: \xn[Youmu]The others already went on in, are you ready 
- :    : to enter?
+@>Text: \xn[Youmu]The others have already gone inside. Are you 
+ :    : ready to enter?
 @>Show Choices: Yes, No
 (When Cancel: Choice 2)
 : When [Yes]
  @>Text: \xn[\pn]Yeah, let's head on in.
- @>Text: \xn[Youmu]Just stay close, you don't know what could 
-  :    : await inside this mansion... full of... ghosts...
+ @>Text: \xn[Youmu]Just stay close to me. You wouldn't want a 
+  :    : g-g-ghost to creep up on you...
  @>Wait: 20 frame(s)
- @>Text: \xn[Youmu]Right! Let's go!
+ @>Text: \xn[Youmu]A-Anyway! Let's go!
  @>Play SE: 'Exit Door', 80, 100
  @>Change Screen Color Tone: (-255,-255,-255,0), @6
  @>Wait: 8 frame(s)
@@ -7476,31 +7407,30 @@ List of Event Commands:
  :              : $>Move Up
  :              : $>Turn Right
 @>Text: \xn[Kota]So this is the mansion we've been looking for...
-@>Text: \xn[Shinji]Seems like it. It has a very... unique 
- :    : architecture.
-@>Text: \xn[Shinji]I don't think I've seen anything like this in any book I've 
- :    : read.
-@>Text: \xn[Maya]It looks just as I pictured it, mysterious and 
- :    : ruined, hidden deep in the night.
-@>Text: \xn[Maya]I bet it's teeming with ghosts and all sorts of other 
- :    : mysterious creatures!
+@>Text: \xn[Shinji]Seems like it. The architecture is...
+ :    : certainly unique.
+@>Text: \xn[Shinji]Even in all my reading, I've never seen anything 
+ :    : quite like.
+@>Text: \xn[Maya]Really? It looks just how I imagined it. This aura of 
+ :    : mystery, a long-forgotten home at the stroke of midnight...
+@>Text: \xn[Maya]I bet it's teeming with ghosts and all kinds of 
+ :    : spooky creatures!
 @>Show Animation: [Kota], [Exclaim bubble]
 @>Show Animation: [Youmu], [Exclaim bubble]
-@>Text: \xn[Kota]Please don't...
+@>Text: \xn[Kota]P-Personally, I really hope you're wrong about that...
 @>Wait: 20 frame(s)
 @>Text: \xn[\pn]So now that we're here, what exactly should 
  :    : we be looking for? 
-@>Text: \xn[\pn]I dunno about you guys, but this place gives off an 
- :    : air of being really large.
-@>Text: \xn[Youmu]If I remember correctly, there should be stairs 
- :    : which lead up to the second floor.
-@>Text: \xn[Youmu]But with how ruined the insides are, we may need to 
- :    : navigate through individual rooms to find the upstairs 
- :    : path.
-@>Text: \xn[Shinji]It might be a good idea for us to split up and 
- :    : look around.
-@>Text: \xn[Shinji]If any of us find anything, we should locate the others
- :    : and report our findings.
+@>Text: \xn[\pn]I dunno about you guys, but this place seems really, 
+ :    : really big.
+@>Text: \xn[Youmu]If I remember correctly, there should be a stairway 
+ :    : further in that leads to the second floor.
+@>Text: \xn[Youmu]But given the state of the manor and all this 
+ :    : rubble, we might have to look around for a clear path to it.
+@>Text: \xn[Shinji]Perhaps it'd be best for us to split up and cover 
+ :    : more ground.
+@>Text: \xn[Shinji]If anyone finds anything, they should track down the 
+ :    : others and let them know.
 @>Change Screen Color Tone: (-255,-255,-255,0), @6
 @>Wait: 7 frame(s)
 @>Set Event Location: [Kota],(012,025), Right
@@ -7546,13 +7476,11 @@ Move Animation
 Trigger: Action Button
 
 List of Event Commands:
-@>Text: \xn[Kota]Don't mind us \PN! Miss Youmu and I are just
- :    : staying in this corner to ensure we're safe from
- :    : ghosts!
-@>Text: \xn[\pn]...But can't ghosts travel through walls...?
+@>Text: \xn[Kota]Don't mind us, \PN! Miss Youmu and I are just hiding in 
+ :    : this corner so the ghosts can't surprise us!
+@>Text: \xn[\pn]...Can't ghosts travel through walls...?
 @>Wait: 10 frame(s)
-@>Text: \xn[Kota]...Please don't make this harder for us than
- :    : it already is...
+@>Text: \xn[Kota]...Please don't make this harder for us than it already is.
 @>
 
 Page #2
@@ -7570,13 +7498,13 @@ Move Animation
 Trigger: Action Button
 
 List of Event Commands:
-@>Text: \xn[Kota]You found the stairs upward and unlocked them?
- :    : Alright! Miss Youmu and I will head over there now.
-@>Text: \xn[Kota]Thanks \PN!
+@>Text: \xn[Kota]You found a way to get upstairs? Alright! Miss Youmu 
+ :    : and I will head over there now.
+@>Text: \xn[Kota]Thanks, \PN!
 @>Control Variables: [0108: Friends Spoken To] += 1
 @>Conditional Branch: Variable [0108: Friends Spoken To] == 3
- @>Text: \xn[Kota]Actually, I think I saw Shinji and Maya head over
-  :    : already, so you should just tag along with us!
+ @>Text: \xn[Kota]Actually, I think I saw Shinji and Maya heading over 
+  :    : already. So let's just go over together!
  @>Change Screen Color Tone: (-255,-255,-255,0), @6
  @>Wait: 7 frame(s)
  @>Control Self Switch: A =ON
@@ -7646,12 +7574,11 @@ Move Animation
 Trigger: Action Button
 
 List of Event Commands:
-@>Text: \xn[Youmu]Hello there \PN! Have you figured out how
- :    : to get upstairs yet?
-@>Text: \xn[\pn]Not yet, but I'm working on it. Why don't you
- :    : help me look!
+@>Text: \xn[Youmu]Good evening, \PN. Have you found a path upstairs yet?
+@>Text: \xn[\pn]Not yet, but I'm working on it. Why don't you look around 
+ :    : with me?
 @>Wait: 10 frame(s)
-@>Text: \xn[Youmu]...I think I'll stay right here if you don't mind!
+@>Text: \xn[Youmu]I, erm...actually, if you don't mind, I'll just stay right here...
 @>
 
 Page #2
@@ -7669,17 +7596,16 @@ Move Animation
 Trigger: Action Button
 
 List of Event Commands:
-@>Text: \xn[Youmu]I just realized I could have hacked the gate
- :    : away with my swords...
-@>Text: \xn[Youmu]Well, as long as we have the key, we should use it!
- :    : Kota and I will head over there now.
+@>Text: \xn[Youmu]I just realized I could have sliced the gate open with my 
+ :    : swords...
+@>Text: \xn[Youmu]But we may as well use the key now! Kota and I will 
+ :    : make our way over there.
 @>Text: \xn[Youmu]Thank you, \PN!
 @>Control Variables: [0108: Friends Spoken To] += 1
 @>Conditional Branch: Variable [0108: Friends Spoken To] == 3
  @>Text: \xn[Youmu]Actually, since you've already informed the
   :    : others, you should tag along!
- @>Text: \xn[Youmu]Larger groups of people makes traveling much
-  :    : safer!
+ @>Text: \xn[Youmu]We'll all be safer if we travel as a group!
  @>Change Screen Color Tone: (-255,-255,-255,0), @6
  @>Wait: 7 frame(s)
  @>Control Self Switch: A =ON
@@ -7770,15 +7696,14 @@ Move Animation
 Trigger: Action Button
 
 List of Event Commands:
-@>Text: \xn[Shinji]I thought I heard something, I suppose that
- :    : was you raising the gate.
-@>Text: \xn[Shinji]I will head on over right now, I appreciate the
- :    : heads up.
+@>Text: \xn[Shinji]I thought I heard something earlier. That must have been 
+ :    : you raising the gate.
+@>Text: \xn[Shinji]I'll head over right now. Thanks for letting me know.
 @>Control Variables: [0108: Friends Spoken To] += 1
 @>Conditional Branch: Variable [0108: Friends Spoken To] == 3
- @>Text: \xn[Shinji]Although, perhaps we should head on over together.
- @>Text: \xn[Shinji]I believe I saw Maya head past here, as well
-  :    : as Kota and Miss Youmu.
+ @>Text: \xn[Shinji]Although we might as well go together at this point.
+ @>Text: \xn[Shinji]I already saw the others go on ahead, so I guess 
+  :    : we're bringing up the rear.
  @>Change Screen Color Tone: (-255,-255,-255,0), @6
  @>Wait: 7 frame(s)
  @>Control Self Switch: A =ON
@@ -9123,8 +9048,7 @@ Trigger: Action Button
 List of Event Commands:
 @>Conditional Branch: Player is facing Up
  @>Conditional Branch: Script: $bag.has?(:GATEKEY)
-  @>Text: It appears to be a mechanism that controls the
-   :    : gate to the stairs.
+  @>Text: This mechanism seems to control the gate to the stairs.
   @>Text: Use the Gate Key to unlock it?
   @>Show Choices: Yes, No
   (When Cancel: Choice 2)
@@ -9199,26 +9123,21 @@ List of Event Commands:
 @>Set Move Route: [Youmu]
  :              : $>Turn Up
 @>Change Screen Color Tone: (-50,-50,-50,0), @6
-@>Text: \xn[Shinji]So this mansion has three floors, and waiting
- :    : at the top is this performance hall?
-@>Text: \xn[\pn]That's basically the gist of it. The woman
- :    : from earlier, Lyrica, said that she'd be waiting
- :    : at the top.
-@>Text: \xn[\pn]She also mentioned that she and her sisters were
- :    : responsible for the music, and invited us to come
- :    : check it out.
-@>Text: \xn[Kota]That's awfully kind of someone after we basically
- :    : broke into their home. What do you think they'll want
- :    : in return?
-@>Text: \xn[\pn]Knowing my luck tonight, she and her sisters
- :    : will probably challenge me to consecutive non-stop
- :    : battles until I vomit...
-@>Text: \xn[\pn]In all honesty, who knows what awaits us on
- :    : the floors above.
-@>Text: \xn[Maya]That's what makes this all the more exciting!
-@>Text: \xn[Maya]Not only did we learn what's making the music, but
- :    : now we have an invitation to see and hear it for ourselves!
-@>Text: \xn[Maya]Onwards companions! To the second floor we go!
+@>Text: \xn[Shinji]So there's three floors to the mansion, and the 
+ :    : performance hall is at the top.
+@>Text: \xn[\pn]Pretty much, yeah. The woman I ran into, Lyrica, said 
+ :    : she'd be waiting for us there.
+@>Text: \xn[\pn]She also said that she and her sisters were the ones 
+ :    : performing the music, and invited us to come watch them.
+@>Text: \xn[Kota]That's awfully kind given we just broke into their 
+ :    : home. What do you think they'll want in return?
+@>Text: \xn[\pn]Given how tonight's been going, they'll challenge me to 
+ :    : Puppet battles until I collapse...
+@>Text: \xn[\pn]But really, it could be anything up there.
+@>Text: \xn[Maya]That just makes it all the more exciting!
+@>Text: \xn[Maya]We didn't just confirm the rumor, but now we get to 
+ :    : see it for ourselves!
+@>Text: \xn[Maya]Onwards, companions! To the second floor!
 @>Fade Out BGM: 1 sec.
 @>Change Screen Color Tone: (-255,-255,-255,0), @6
 @>Set Move Route: Player
@@ -9229,12 +9148,12 @@ List of Event Commands:
 @>Wait for Move's Completion
 @>Play SE: 'Exit Door', 80, 100
 @>Wait: 40 frame(s)
-@>Text: \xn[???]So they're approaching the second floor now...?\wtnp[40]
+@>Text: \xn[???]So they're coming upstairs...?\wtnp[40]
 @>Wait: 20 frame(s)
-@>Text: \xn[???]I guess I actually have to take action now...\wtnp[40]
+@>Text: \xn[???]I guess I'll have to make my move, then.\wtnp[40]
 @>Wait: 20 frame(s)
-@>Text: \xn[???]Yes, come closer... close enough so that my song
- :    : will ensnare you...\wtnp[40]
+@>Text: \xn[???]Yes, come closer... close enough for my song to ensnare 
+ :    : you...\wtnp[40]
 @>Wait: 20 frame(s)
 @>Control Self Switch: A =ON
 @>Script: pbSetSelfSwitch(2,"A",true)
@@ -9678,13 +9597,12 @@ Move Animation
 Trigger: Action Button
 
 List of Event Commands:
-@>Text: \xn[Lyrica]You took too long! Just as well~ I unlocked
- :    : the door for you already.
-@>Text: \xn[Lyrica]Honestly, I can't tell you what'll be waiting for you
- :    : in the basement. It's been so long since my sisters or
- :    : I have been anywhere down there.
-@>Text: \xn[Lyrica]Be careful down there. We want you to come
- :    : see to our performance, but not as a ghost~!
+@>Text: \xn[Lyrica]What took you so long~? I went and opened the door 
+ :    : for you while I was waiting.
+@>Text: \xn[Lyrica]Honestly, I've got no idea what's down in the basement. 
+ :    : My sisters and I haven't been down there in forever.
+@>Text: \xn[Lyrica]Be careful. We want you to come see our show, but 
+ :    : preferably while you're still alive~!
 @>Play SE: 'Teleport', 80, 100
 @>Change Screen Color Tone: (-255,-255,-255,0), @6
 @>Wait: 8 frame(s)
@@ -10002,7 +9920,7 @@ List of Event Commands:
 
 #------------------------------------------------------------------------------
 Event ID: 007
-Event Name: Maya
+Event Name:  
 (X,Y): (003,015)
 
 Page #1
@@ -10020,8 +9938,7 @@ Move Animation
 Trigger: Action Button
 
 List of Event Commands:
-@>Text: \xn[Maya]Isn't this place just amazing, \PN! There's
- :    : so much to see!
+@>Text: \xn[Maya]Isn't this place just amazing, \PN? There's so much to see!
 @>Text: \xn[Maya]These books, for example. Take a look at them.
  :    : The titles are most peculiar...
 @>Text: \xn[Maya]'Chronicles of the Omniverse' sounds like a thriller! What 
@@ -10044,16 +9961,16 @@ Move Animation
 Trigger: Action Button
 
 List of Event Commands:
-@>Text: \xn[Maya]Oh \PN, I didn't notice you! I was engrossed with
- :    : this book here.
-@>Text: \xn[Maya]I'm not sure who this "Amira Naxeroth" is, but they 
- :    : sure have an interesting set of ideas!
-@>Text: \xn[Maya]Oh you opened the path upstairs, awesome!
- :    : I'll get over there right now, thanks \PN!
+@>Text: \xn[Maya]Oh \PN, I didn't see you there! I got really lost in this 
+ :    : book I found.
+@>Text: \xn[Maya]I'm not sure who this "Amira Naxeroth" is, but they've got 
+ :    : some interesting ideas!
+@>Text: \xn[Maya]Oh, you opened the path upstairs? Awesome! I'll 
+ :    : head over there right now!
 @>Control Variables: [0108: Friends Spoken To] += 1
 @>Conditional Branch: Variable [0108: Friends Spoken To] == 3
- @>Text: \xn[Maya]I assume you've told the others already though,
-  :    : so we should travel together.
+ @>Text: \xn[Maya]Actually, since you've already told everyone else, 
+  :    : we should head there together.
  @>Text: \xn[Maya]Just lemme stuff some of these books into my
   :    : backpack and... alright, let's go!
  @>Change Screen Color Tone: (-255,-255,-255,0), @6
@@ -10365,7 +10282,7 @@ Trigger: Event Touch
 List of Event Commands:
 @>Script: pbTrainerIntro(:FAIRY2)
 @>Script: pbNoticePlayer(get_self)
-@>Text: You're a trainer, and I'm a trainer. Can I make it any more obvious?
+@>Text: You're a handler, and I'm a handler. Can I make it any more obvious?
 @>Comment: EndSpeech: See you later, human!
 @>Conditional Branch: Script: TrainerBattle.start(:FAIRY2, "Avril",pbGet(99))
  @>Control Self Switch: A =ON
@@ -11122,7 +11039,7 @@ Move Animation
 Trigger: Event Touch
 
 List of Event Commands:
-@>Text: \xn[\pn]Maybe the gate key is in here...
+@>Text: \xn[\pn]Maybe the key to the gate is in here...
 @>Set Move Route: Player
  :              : $>Move Right
  :              : $>Move Right
@@ -11168,7 +11085,7 @@ List of Event Commands:
 @>Wait: 20 frame(s)
 @>Text: \xn[\pn]It's some kind of piano, but... it's playing music all 
  :    : on its own...
-@>Text: \xn[\pn]It's even starting to float...!?
+@>Text: \xn[\pn]And now it's floating...!?
 @>Text: \xn[\pn]How is that even-\^
 @>Text: \xn[???]Ah-ha! There it is!
 @>Scroll Map: Down, 2, 3
@@ -11183,8 +11100,8 @@ List of Event Commands:
  :              : $>Move Up
  :              : $>Through OFF
 @>Wait for Move's Completion
-@>Text: \xn[???]I knew I left it somewhere in the mansion! Now 
- :    : to head back upstairs and...
+@>Text: \xn[???]I knew it was in the mansion somewhere! Now to 
+ :    : head back upstairs and...
 @>Wait: 10 frame(s)
 @>Text: \xn[???]Wait a second, who are you? Come on over 
  :    : here!
@@ -11196,65 +11113,58 @@ List of Event Commands:
 :       : pbSetSelfSwitch(4,"A",true)
 @>Change Screen Color Tone: (0,0,0,0), @6
 @>Play BGM: 'W-008. Alice in Wonderland', 100, 100
-@>Text: \xn[???]So spill, who are you, and what are you doing in 
- :    : my home?
-@>Text: \xn[\pn]This mansion is your home!?
-@>Text: \xn[???]Well it's the shared home of my sisters and I 
- :    : but...
+@>Text: \xn[???]So spill the beans - who are you, and what are you 
+ :    : doing in my home?
+@>Text: \xn[\pn]You <i>live</i> in this mansion!?
+@>Text: \xn[???]Yup! Well technically it's me and my sisters, but...
 @>Text: \xn[???]Hey, don't change the subject! I asked you a question!
-@>Text: \xn[\pn]R-Right.. I'm \PN, I came here from the human 
- :    : village with a group of my friends.
-@>Text: \xn[???]Now what could a group of children from the 
- :    : village possibly want here this late at night?
-@>Text: \xn[\pn]Well... For a long time, one of the rumors that circulated
- :    : around the village is about an abandoned mansion that can be 
- :    : heard having music from it.
-@>Text: \xn[\pn]A group of my friends and I wanted to finally investigate 
- :    : these rumors and discover what the truth was.
-@>Text: \xn[???]Mysterious music...?
+@>Text: \xn[\pn]R-Right.. I'm \PN. Me and my friends came here from 
+ :    : the human village.
+@>Text: \xn[???]A group of human kids? What could you possibly want 
+ :    : out here this late at night?
+@>Text: \xn[\pn]Well... there's been a rumor going around the village 
+ :    : that you can hear music coming from this place when it's dark.
+@>Text: \xn[\pn]My friends and I came here to see what was actually going on.
+@>Text: \xn[???]Music, you say...?
 @>Wait: 20 frame(s)
 @>Show Animation: [Lyrica], [Exclaim bubble]
-@>Text: \xn[???]Oh, I get it! You came here because of the music that 
- :    : my sisters and I were playing!
-@>Text: \xn[\pn]So you're saying that you and your sisters are 
- :    : responsible for that music?
-@>Text: \xn[???]Yep! Lyrica Prismriver, the keyboardist for the 
- :    : Prismriver Ensemble!
-@>Text: \xn[Lyrica]My sisters and I have been practicing for a 
- :    : performance we're going to be putting on soon.
-@>Text: \xn[Lyrica]Since you all are here, why don't you head on 
- :    : upstairs and swing by the performance hall.
-@>Text: \xn[Lyrica]That way you can see for yourself exactly what 
- :    : we're doing!
+@>Text: \xn[???]Oh, I get it! You must have overheard our rehearsal!
+@>Text: \xn[\pn]Rehearsal? So you're the one who's been playing 
+ :    : all that music?
+@>Text: \xn[???]Yep! Lyrica Prismriver, keyboardist for the Prismriver 
+ :    : Ensemble!
+@>Text: \xn[Lyrica]My sisters and I are practicing for a performance 
+ :    : that's coming up soon.
+@>Text: \xn[Lyrica]Since you and your friends are already here, why 
+ :    : don't you head on upstairs and swing by the performance hall?
+@>Text: \xn[Lyrica]That way you can get a firsthand glimpse of what we're up to!
 @>Text: \xn[\pn]That actually sounds pretty fun, but... We can't 
  :    : get upstairs.
-@>Text: \xn[\pn]The gate leading to the stairs is down, and the key to 
- :    : unlock it is nowhere in sight.
-@>Text: \xn[Lyrica]Oh that's right! We normally kept the gate 
- :    : locked to keep intruders out.
-@>Text: \xn[Lyrica]Being ghosts and all mean we can just phase 
- :    : through solid surfaces whenever we please~
+@>Text: \xn[\pn]There's a gate in the way, and I can't find the key for it.
+@>Text: \xn[Lyrica]Oh, that's right! We keep the gate shut so 
+ :    : intruders can't barge in.
+@>Text: \xn[Lyrica]Doesn't bother us much. Ghosts can walk right 
+ :    : through walls, after all~
 @>Text: \xn[Lyrica]I'll go unlock the gate for you guys, just sit tight!
 @>Set Move Route: [Lyrica]
  :              : $>Move Down
  :              : $>Move Down
 @>Wait for Move's Completion
 @>Wait: 20 frame(s)
-@>Text: \xn[Lyrica]Actually, I just had a fun idea~
+@>Text: \xn[Lyrica]Although...you know what'd be a lot more fun~?
 @>Set Move Route: [Lyrica]
  :              : $>Move Up
  :              : $>Move Up
  :              : $>Turn Left
 @>Wait for Move's Completion
-@>Text: \xn[\pn]An... idea?
+@>Text: \xn[\pn]W-What?
 @>Text: \xn[Lyrica]How about I give you the key... after you beat 
  :    : me in a Puppet battle?
 @>Wait: 10 frame(s)
 @>Script: pbTrainerIntro(:LYRICA)
-@>Text: \xn[\pn]I'm not allowed to say no to this, am I?
+@>Text: \xn[\pn]I don't get a say in the matter, do I?
 @>Text: \xn[Lyrica]Nope!
-@>Text: \xn[\pn]Well if I have no choice, then what else is there 
- :    : to do!
+@>Text: \xn[\pn]Well in that case, I'll have to give you everything I've got!
 @>Control Self Switch: A =ON
 @>Script: $game_temp.vs_transition_bg = "RWM"
 :       : #$game_temp.vs_name = "Vs. Lyrica Prismriver"
@@ -11266,17 +11176,16 @@ List of Event Commands:
  @>
 : Branch End
 @>Script: pbTrainerEnd
-@>Text: \xn[Lyrica]That was such a musical battle! But I
- :    : can't help but feel it was missing something...
+@>Text: \xn[Lyrica]That battle had a nice beat to it! But I can't help but 
+ :    : feel it was missing something...
 @>Wait: 10 frame(s)
 @>Show Animation: [Lyrica], [Exclaim bubble]
-@>Text: \xn[Lyrica]Right, I know now! Of course that would be missing!
-@>Text: \xn[\pn]Uh, excuse me, Miss Lyrica...?
-@>Text: \xn[Lyrica]Oh, right! I forgot, we made a deal didn't we.
- :    : Here, catch!
+@>Text: \xn[Lyrica]Oh, right! No wonder it only felt like half a melody!
+@>Text: \xn[\pn]Um, Miss Lyrica...?
+@>Text: \xn[Lyrica]Oh, right! We had a deal, didn't we...here, catch!
 @>Script: pbReceiveItem(:GATEKEY)
-@>Text: \xn[Lyrica]That key will open up the gate leading upstairs.
-@>Text: \xn[Lyrica]I'll be waiting for you and your friends on the third 
+@>Text: \xn[Lyrica]That key will let you get up to the second floor.
+@>Text: \xn[Lyrica]Me and the girls will be waiting for you on the third 
  :    : floor. Don't keep us waiting~
 @>Set Move Route: [Lyrica]
  :              : $>Through ON
@@ -11288,8 +11197,8 @@ List of Event Commands:
  :              : $>Through OFF
 @>Wait for Move's Completion
 @>Wait: 20 frame(s)
-@>Text: \xn[\pn]Well now that I have the key, I should probably 
- :    : go unlock the gate and round up the others.
+@>Text: \xn[\pn]Alright, that's the way upstairs secured. Better 
+ :    : round up the others before I go any further.
 @>Script: pbSetSelfSwitch(4,"B",true)
 :       : pbSetSelfSwitch2(12,33,"A",true)
 @>
@@ -11427,13 +11336,12 @@ Trigger: Action Button
 
 List of Event Commands:
 @>Script: pbTrainerIntro(:LYRICA)
-@>Text: \xn[Lyrica]I see you're back to try and get the key!
-@>Text: \xn[\pn]You don't give me very many other options! I 
- :    : need it to get upstairs!
-@>Text: \xn[Lyrica]You could always just phase through it like we 
- :    : do~
-@>Text: \xn[\pn]...I don't think I want to know where this is 
- :    : leading... Let's just battle already!
+@>Text: \xn[Lyrica]I see you're back to take another shot at the key!
+@>Text: \xn[\pn]I don't have a choice! There's no other way to get upstairs!
+@>Text: \xn[Lyrica]I mean, if you wait for long enough, you can just 
+ :    : phase through it like we do~
+@>Text: \xn[\pn]...I don't like where you're going with that... Forget it, 
+ :    : let's just battle already!
 @>Script: $game_temp.vs_transition_bg = "RWM"
 :       : #$game_temp.vs_name = "Vs. Lyrica Prismriver"
 @>Conditional Branch: Script: TrainerBattle.start(:LYRICA, "Lyrica Prismriver", 10+(pbGet(99) * 10))
@@ -11444,18 +11352,18 @@ List of Event Commands:
  @>
 : Branch End
 @>Exit Event Processing
-@>Text: \xn[Lyrica]That was such a musical battle! But I
- :    : can't help but feel it was missing something...
+@>Text: \xn[Lyrica]That battle had a nice beat to it! But I can't help but 
+ :    : feel it was missing something...
 @>Wait: 10 frame(s)
 @>Show Animation: [Lyrica], [Exclaim bubble]
-@>Text: \xn[Lyrica]Right, I know now! Of course that would be missing!
-@>Text: \xn[\pn]Uh, excuse me, Miss Lyrica...?
-@>Text: \xn[Lyrica]Oh, right! I forgot, we made a deal didn't we.
- :    : Here, catch!
+@>Text: \xn[Lyrica]Oh, right! No wonder it only felt like half a melody!
+@>Text: \xn[\pn]Um, Miss Lyrica...?
+@>Text: \xn[Lyrica]Oh, right! We had a deal, didn't we...here, catch!
 @>Script: pbReceiveItem(:GATEKEY)
-@>Text: \xn[Lyrica]That key will open up the gate leading upstairs.
-@>Text: \xn[Lyrica]I'll be waiting for you and your friends on the third 
+@>Text: \xn[Lyrica]That key will let you get up to the second floor.
+@>Text: \xn[Lyrica]Me and the girls will be waiting for you on the third 
  :    : floor. Don't keep us waiting~
+@>Comment: 
 @>Set Move Route: [Lyrica]
  :              : $>Through ON
  :              : $>Move Down
@@ -11466,8 +11374,8 @@ List of Event Commands:
  :              : $>Through OFF
 @>Wait for Move's Completion
 @>Wait: 20 frame(s)
-@>Text: \xn[\pn]Well now that I have the key, I should probably 
- :    : go unlock the gate and round up the others.
+@>Text: \xn[\pn]Alright, that's the way upstairs secured. Better 
+ :    : round up the others before I go any further.
 @>Control Self Switch: B =ON
 @>Script: pbSetSelfSwitch2(12,33,"A",true)
 @>
@@ -27099,7 +27007,7 @@ List of Event Commands:
 @>Control Variables: [0110: TMoM Credits Variable] = 4
 @>Call Common Event: TMoM Credits (Good End)
 @>Wait: 10 frame(s)
-@>Transfer Player:[035: Credits - \PN's House], (009,012), Up
+@>Transfer Player:[035: Credits - Ayaka's Room], (009,012), Up
 @>Change Transparent Flag: Transparency
 @>
 
@@ -27144,7 +27052,7 @@ List of Event Commands:
 
 #==============================================================================
 Map ID: 035
-Map Name: Credits - \PN's House
+Map Name: Credits - Ayaka's Room
 Tileset: 029: Interior (General)
 Width: 20, Height: 15
 
@@ -29590,8 +29498,7 @@ Trigger: Action Button
 List of Event Commands:
 @>Script: pbSetPokemonCenter
 @>Text: Hello, and welcome to the Human Village Rest Stop.
-@>Text: We restore your tired and worn out Puppets back to 
- :    : full health.
+@>Text: We restore your worn out Puppets back to full health.
 @>Text: Would you like to rest your Puppets?
 @>Show Choices: Yes, No
 (When Cancel: Choice 2)
@@ -33734,8 +33641,7 @@ Trigger: Action Button
 List of Event Commands:
 @>Script: pbSetPokemonCenter
 @>Text: Hello, and welcome to the Human Village Rest Stop.
-@>Text: We restore your tired and worn out Puppets back to 
- :    : full health.
+@>Text: We restore your worn out Puppets back to full health.
 @>Text: Would you like to rest your Puppets?
 @>Show Choices: Yes, No
 (When Cancel: Choice 2)
@@ -38473,7 +38379,7 @@ List of Event Commands:
 
 #==============================================================================
 Map ID: 047
-Map Name: \PN's Room
+Map Name: Ayaka's Room
 Tileset: 029: Interior (General)
 Width: 20, Height: 15
 Auto-Change BGM: W-003. This Dull World's Unchanging Pessemism (Village)
@@ -63094,7 +63000,7 @@ List of Event Commands:
 @>Script: # pbAllowSpeedup
 :       : # $GameSpeed = pbGet(1)
 @>Change Transparent Flag: Normal
-@>Transfer Player:[047: \PN's Room], (004,007), Right
+@>Transfer Player:[047: Ayaka's Room], (004,007), Right
 @>Change Screen Color Tone: (0,0,0,0), @6
 @>
 
@@ -66339,7 +66245,7 @@ List of Event Commands:
 @>Change Screen Color Tone: (-255,-255,-255,0), @6
 @>Wait: 8 frame(s)
 @>Change Transparent Flag: Normal
-@>Transfer Player:[118: \PN's Room], (009,012), Up, No Fade
+@>Transfer Player:[118: Ayaka's Room], (009,012), Up, No Fade
 @>Change Screen Color Tone: (0,0,0,0), @6
 @>
 
@@ -67541,8 +67447,7 @@ Trigger: Action Button
 List of Event Commands:
 @>Script: pbSetPokemonCenter
 @>Text: Hello, and welcome to the Human Village Rest Stop.
-@>Text: We restore your tired and worn out Puppets back to 
- :    : full health.
+@>Text: We restore your worn out Puppets back to full health.
 @>Text: Would you like to rest your Puppets?
 @>Show Choices: Yes, No
 (When Cancel: Choice 2)
@@ -78714,8 +78619,7 @@ Trigger: Action Button
 List of Event Commands:
 @>Script: pbSetPokemonCenter
 @>Text: Hello, and welcome to the Capital Puppet Center.
-@>Text: We restore your tired and worn out Puppets back to 
- :    : full health.
+@>Text: We restore your worn out Puppets back to full health.
 @>Text: Would you like to rest your Puppets?
 @>Show Choices: Yes, No
 (When Cancel: Choice 2)
@@ -93535,7 +93439,7 @@ List of Event Commands:
 
 #==============================================================================
 Map ID: 118
-Map Name: \PN's Room
+Map Name: Ayaka's Room
 Tileset: 029: Interior (General)
 Width: 20, Height: 15
 Auto-Change BGM: W-003. This Dull World's Unchanging Pessemism (Village)
@@ -103817,7 +103721,7 @@ List of Event Commands:
   @>Change Text Options: Bottom, Show
   @>Script: TKoLPostgameScene.new
   @>Control Variables: [0121: TKoL Plot Variable] = 22
-  @>Transfer Player:[118: \PN's Room], (004,007), Right
+  @>Transfer Player:[118: Ayaka's Room], (004,007), Right
   @>Change Transparent Flag: Normal
   @>Change Screen Color Tone: (0,0,0,0), @8
   @>Exit Event Processing
@@ -103833,7 +103737,7 @@ List of Event Commands:
 @>Wait: 20 frame(s)
 @>Script: TKoLPostgameScene.new
 @>Control Variables: [0121: TKoL Plot Variable] = 22
-@>Transfer Player:[118: \PN's Room], (004,007), Right
+@>Transfer Player:[118: Ayaka's Room], (004,007), Right
 @>Change Transparent Flag: Normal
 @>Change Screen Color Tone: (0,0,0,0), @8
 @>

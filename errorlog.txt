@@ -29739,3 +29739,24 @@ Backtrace:
 003_Intl_Messages.rb:296:in `extract_text'
 002_Debug_MenuCommands.rb:1453:in `block (2 levels) in load_scripts_from_folder'
 006_Event_HandlerCollections.rb:121:in `call'
+
+=================
+
+[2025-12-11 18:26:48 -0700]
+[Pokémon Essentials version 21.1]
+[v21.1 Hotfixes 1.0.9]
+
+Exception: Errno::ENOENT
+Message: File No such file or directory @ rb_sysopen - Text_english_game/Map047 \PN's Room.txt not found.
+
+Backtrace:
+003_Intl_Messages.rb:306:in `initialize'
+003_Intl_Messages.rb:306:in `open'
+003_Intl_Messages.rb:306:in `block (2 levels) in extract_text'
+003_Intl_Messages.rb:302:in `each'
+003_Intl_Messages.rb:302:in `each_with_index'
+003_Intl_Messages.rb:302:in `block in extract_text'
+003_Intl_Messages.rb:296:in `times'
+003_Intl_Messages.rb:296:in `extract_text'
+002_Debug_MenuCommands.rb:1453:in `block (2 levels) in load_scripts_from_folder'
+006_Event_HandlerCollections.rb:121:in `call'
