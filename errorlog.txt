@@ -29760,3 +29760,28 @@ Backtrace:
 003_Intl_Messages.rb:296:in `extract_text'
 002_Debug_MenuCommands.rb:1453:in `block (2 levels) in load_scripts_from_folder'
 006_Event_HandlerCollections.rb:121:in `call'
+
+=================
+
+[2026-03-20 14:23:47 -0700]
+[Pokémon Essentials version 21.1]
+[v21.1 Hotfixes 1.0.9]
+
+Script error in event 6 (coords 20,19), map 19 (World of Fantasies)
+Exception: RuntimeError
+Message: Unknown ScreenShake speed symbol: NORMAl
+
+***Full script:
+ScreenShake.start_noise(:VERY_HEAVY, :VERY_HEAVY, :NORMAL, :NORMAl, 0.0, :ELASTIC)
+
+Backtrace:
+[Screen Shake] 001_Main.rb:54:in `get_speed'
+[Screen Shake] 001_Main.rb:75:in `start_basic'
+[Screen Shake] 001_Main.rb:112:in `start_noise'
+(eval):1:in `execute_script'
+003_Interpreter.rb:140:in `eval'
+003_Interpreter.rb:140:in `execute_script'
+004_Interpreter_Commands.rb:1177:in `command_355'
+004_Interpreter_Commands.rb:116:in `execute_command'
+003_Interpreter.rb:132:in `block in update'
+003_Interpreter.rb:86:in `loop'

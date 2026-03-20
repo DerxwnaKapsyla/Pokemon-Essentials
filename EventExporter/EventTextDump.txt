@@ -16124,6 +16124,29 @@ List of Event Commands:
 @>
 
 #------------------------------------------------------------------------------
+Event ID: 006
+Event Name: EV006
+(X,Y): (020,019)
+
+Page #1
+Conditions
+None
+
+Graphic: Person_Junko_Alt2
+
+Autonomous Movement
+Type: Fixed
+Speed: 3: Slow
+Freq: 3: Low
+Options Enabled
+Move Animation
+Trigger: Action Button
+
+List of Event Commands:
+@>Script: ScreenShake.start_noise(:HEAVY, :HEAVY, 0.175, 0.175, 0.0, :ELASTIC)
+@>
+
+#------------------------------------------------------------------------------
 Event ID: 007
 Event Name: EV007
 (X,Y): (019,021)
@@ -18855,12 +18878,12 @@ Move Animation
 Trigger: Player Touch
 
 List of Event Commands:
-@>Text: \l[4]\w[dark]Upon proceeding, a lengthy sequence will unfold with
- :    : no time to save in between. It is recommended to set aside sufficent
- :    : time before continuing.
-@>Text: \w[dark]Further, It is highly advised that you ready yourself for what 
- :    : lies ahead, as this may be the final sequence of The Mansion of Mystery
- :    : depending on your total number of losses.
+@>Text: \l[4]\w[dark]Upon proceeding, a lengthy sequence will 
+ :    : unfold with no time to save in between. It is recommended to 
+ :    : set aside sufficent time before continuing.
+@>Text: \w[dark]Further, It is highly advised that you ready yourself 
+ :    : for what lies ahead, as this may be the final sequence of The 
+ :    : Mansion of Mystery depending on your total number of losses.
 @>Text: \w[dark]If you need to stock up on items, do so now. 
 @>Text: \w[dark]Also, please also be aware that if you enter the room 
  :    : with Speed Up turned on, the following cutscene will desync.
@@ -81224,7 +81247,8 @@ List of Event Commands:
 @>Screen Flash: (255,255,255,255), @10
 @>Control Switches: [0142: Junko Descends] = ON
 @>Play SE: 'Mining collapse', 80, 50
-@>Screen Shake: 8, 5, @120
+@>Comment: Old Shake: 8, 5, 120
+@>Script: ScreenShake.start_noise(:HEAVY, :HEAVY, 0.175, 0.175, 0.0, :ELASTIC)
 @>Script: pbTrainerIntro(:JUNKO)
 @>Wait: 2 frame(s)
 @>Show Animation: Player, [Exclaim bubble]
@@ -81244,6 +81268,7 @@ List of Event Commands:
 @>Script: $game_temp.vs_transition_bg = "LunarSea"
 :       : $game_temp.vs_name = "Vs. Junko"
 @>Conditional Branch: Script: TrainerBattle.start(:JUNKO, "Junko", 10+(pbGet(99) * 10))
+ @>Script: ScreenShake.stop
  @>Fade Out BGM: 1 sec.
  @>Screen Flash: (255,255,255,255), @10
  @>Control Variables: [0121: TKoL Plot Variable] = 18
@@ -81369,12 +81394,14 @@ List of Event Commands:
  @>Control Switches: [0142: Junko Descends] = OFF
  @>
 : Else
+ @>Script: ScreenShake.stop
  @>Script: pbTrainerEnd
  @>Control Switches: [0142: Junko Descends] = OFF
  @>Set Event Location: [Junko],(027,007), Up
  @>Exit Event Processing
  @>
 : Branch End
+@>Script: ScreenShake.stop
 @>Script: pbTrainerEnd
 @>
 
