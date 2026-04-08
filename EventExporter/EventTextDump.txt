@@ -16007,6 +16007,45 @@ List of Event Commands:
 
 Page #6
 Conditions
+Variable 0141: Scenarios Cleared is 3 or above
+
+Autonomous Movement
+Type: Fixed
+Speed: 3: Slow
+Freq: 3: Low
+Options Enabled
+Move Animation
+Trigger: Autorun
+
+List of Event Commands:
+@>Wait: 10 frame(s)
+@>Text: \xn[\pn]Back again... But, there's nothing left to do...
+@>Text: \xn[\pn]I guess I could reexperience one of my adventures again,
+ :    : but... I can't fathom them posing any more of a challenge for me.
+@>Wait: 10 frame(s)
+@>Play SE: 'Mining collapse', 80, 50
+@>Script: ScreenShake.start_noise(:HEAVY, :HEAVY, 0.175, 0.175, 1.5, :ELASTIC)
+@>Show Animation: Player, [Exclaim bubble]
+@>Set Move Route: Player
+ :              : $>Turn Left
+ :              : $>Wait: 6 frame(s)
+ :              : $>Turn Right
+ :              : $>Wait: 6 frame(s)
+ :              : $>Turn Down
+@>Wait for Move's Completion
+@>Text: \xn[\pn]--Whoa! What was that!? An earthquake...?
+@>Wait: 10 frame(s)
+@>Show Animation: Player, [Question bubble]
+@>Text: \xn[\pn]...Hey, what's that in the sky up there?
+@>Text: \xn[\pn]I can probably get a better vantage point from the edge
+ :    : of the tower.
+@>Script: $player.scenario_name = "None"
+@>Control Variables: [0099: NG+ Loop] = 3
+@>Control Self Switch: C =ON
+@>
+
+Page #7
+Conditions
 Self Switch C is ON
 
 Autonomous Movement
@@ -16126,7 +16165,7 @@ List of Event Commands:
 #------------------------------------------------------------------------------
 Event ID: 006
 Event Name: EV006
-(X,Y): (020,019)
+(X,Y): (038,007)
 
 Page #1
 Conditions
@@ -16722,6 +16761,78 @@ Trigger: Autorun
 
 List of Event Commands:
 @>Control Switches: [0001: Starting over] = OFF
+@>
+
+#------------------------------------------------------------------------------
+Event ID: 015
+Event Name: EV015
+(X,Y): (019,020)
+
+Page #1
+Conditions
+None
+
+Autonomous Movement
+Type: Fixed
+Speed: 3: Slow
+Freq: 3: Low
+Options Enabled
+Move Animation
+Trigger: Action Button
+
+List of Event Commands:
+@>Change Screen Color Tone: (-255,-255,-255,0), @1
+@>Play BGM: 'B-001. Battle vs. Puppet (Early Game)', 0, 100
+@>Fade Out BGM: 1 sec.
+@>Wait: 10 frame(s)
+@>Change Screen Color Tone: (0,0,0,0), @10
+@>Play BGM: 'W-043. Rural Makai City Esoteria', 100, 100
+@>Wait: 10 frame(s)
+@>Text: \xn[\pn]Back again... But, there's nothing left to do...
+@>Text: \xn[\pn]I guess I could reexperience one of my adventures again,
+ :    : but... I can't fathom them posing any more of a challenge for me.
+@>Wait: 10 frame(s)
+@>Play SE: 'Mining collapse', 80, 50
+@>Script: ScreenShake.start_noise(:HEAVY, :HEAVY, 0.175, 0.175, 1.5, :ELASTIC)
+@>Show Animation: Player, [Exclaim bubble]
+@>Set Move Route: Player
+ :              : $>Turn Left
+ :              : $>Wait: 6 frame(s)
+ :              : $>Turn Right
+ :              : $>Wait: 6 frame(s)
+ :              : $>Turn Down
+@>Wait for Move's Completion
+@>Text: \xn[\pn]--Whoa! What was that!? An earthquake...?
+@>Wait: 10 frame(s)
+@>Show Animation: Player, [Question bubble]
+@>Text: \xn[\pn]...Hey, what's that in the sky up there?
+@>Text: \xn[\pn]I can probably get a better vantage point from the edge
+ :    : of the tower.
+@>Script: $player.scenario_name = "None"
+@>Control Variables: [0099: NG+ Loop] = 3
+@>Control Self Switch: C =ON
+@>
+
+Page #2
+Conditions
+None
+
+Autonomous Movement
+Type: Fixed
+Speed: 3: Slow
+Freq: 3: Low
+Options Enabled
+Move Animation
+Trigger: Action Button
+
+List of Event Commands:
+@>Control Variables: [0141: Scenarios Cleared] = 3
+@>Change Screen Color Tone: (-255,-255,-255,0), @1
+@>Play BGM: 'B-001. Battle vs. Puppet (Early Game)', 0, 100
+@>Fade Out BGM: 1 sec.
+@>Wait: 10 frame(s)
+@>Change Screen Color Tone: (0,0,0,0), @10
+@>Play BGM: 'W-043. Rural Makai City Esoteria', 100, 100
 @>
 
 #------------------------------------------------------------------------------
