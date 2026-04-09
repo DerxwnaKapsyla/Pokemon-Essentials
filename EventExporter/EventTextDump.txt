@@ -981,7 +981,7 @@ List of Event Commands:
  :              : $>Move Right
  :              : $>Move Right
 @>Text: \xn[Shinji]If we can get past the ones at the south gate, we 
- :    : should be safe from there...\^
+ :    : should be safe from there...-
 @>Set Move Route: Player
  :              : $>Turn Left
 @>Set Move Route: [Maya]
@@ -2210,7 +2210,7 @@ List of Event Commands:
   :    : your teacher, I'm also in charge of the Village Patrol.
  @>Text: \xn[Keine]Honestly, did you really think you'd make it out of the 
   :    : village without anyone noticing you?
- @>Text: \xn[\pn]I mean, we were kind of hoping that...\^
+ @>Text: \xn[\pn]I mean, we were kind of hoping that...-
  @>Text: \xn[Keine]Recklessness! Foolishness, even!
  @>Text: \xn[Keine]It's dangerous outside the village, especially at night. 
   :    : All sorts of youkai and monsters are lurking about.
@@ -4547,7 +4547,7 @@ List of Event Commands:
  :              : $>Move Down
  :              : $>Move Down
 @>Text: \xn[Maya]Alright, now we just need to wait on \PN, and 
- :    : we can-\^
+ :    : we can-
 @>Text: \xn[\pn]I'm here, I'm here! Sorry for taking so long!
 @>Set Move Route: [Kota]
  :              : $>Direction Fix OFF
@@ -5555,7 +5555,7 @@ List of Event Commands:
  :    : well into the western half of Gensokyo.
 @>Text: \xn[Shinji]The water travels here from the waterfall on 
  :    : Youkai Mountain, then flows out to the Sanzu River in the west.
-@>Text: \xn[Shinji]There's also rumours of vampires living in the area, but-\^
+@>Text: \xn[Shinji]There's also rumours of vampires living in the area, but-
 @>Text: \xn[Kota]Did you just say vampires!?
 @>Text: \xn[Shinji]...If you'll let me <i>finish</i>, we'd have to cross 
  :    : the lake to run into them. And since the mansion's on the 
@@ -6262,7 +6262,7 @@ List of Event Commands:
  :              : $>Turn Left
  :              : $>Through OFF
 @>Scroll Map: Down, 3, 4
-@>Text: \xn[\pn]Of course not! Why would I lie about-\^
+@>Text: \xn[\pn]Of course not! Why would I lie about-
 @>Wait for Move's Completion
 @>Text: \xn[Maya]There you are!
 @>Show Animation: Player, [Exclaim bubble]
@@ -6576,7 +6576,7 @@ Move Animation
 Trigger: Action Button
 
 List of Event Commands:
-@>Text: \xn[\pn]Excuse me miss, are you alri-\^
+@>Text: \xn[\pn]Excuse me miss, are you alri-
 @>Text: \xn[???]<i>Eeek!</i> The ghost from earlier is back!
 @>Text: \xn[\pn]I keep telling you, I'm not a ghost! 
 @>Script: pbTrainerIntro(:YOUMU)
@@ -6627,7 +6627,7 @@ List of Event Commands:
  :              : $>Turn Left
  :              : $>Through OFF
 @>Scroll Map: Down, 3, 4
-@>Text: \xn[\pn]Of course not! Why would I lie about-\^
+@>Text: \xn[\pn]Of course not! Why would I lie about-
 @>Wait for Move's Completion
 @>Text: \xn[Maya]There you are!
 @>Show Animation: Player, [Exclaim bubble]
@@ -11086,7 +11086,7 @@ List of Event Commands:
 @>Text: \xn[\pn]It's some kind of piano, but... it's playing music all 
  :    : on its own...
 @>Text: \xn[\pn]And now it's floating...!?
-@>Text: \xn[\pn]How is that even-\^
+@>Text: \xn[\pn]How is that even-
 @>Text: \xn[???]Ah-ha! There it is!
 @>Scroll Map: Down, 2, 3
 @>Wait: 10 frame(s)
@@ -13260,7 +13260,7 @@ List of Event Commands:
 @>Text: \xn[Mystia]And tonight, guard of this mansion! I'm under 
  :    : orders to find the disturbance in here and take care 
  :    : of it!
-@>Text: \xn[\pn]But-\^
+@>Text: \xn[\pn]But-
 @>Script: pbTrainerIntro(:MYSTIA)
 @>Text: \xn[Mystia]I will not let you pass me! And if scaring you 
  :    : off won't work, then I'll just have to drive you off the 
@@ -13281,7 +13281,7 @@ List of Event Commands:
  :    : least!?
 @>Text: \xn[Mystia]Aren't you here to cause a ruckus? That's 
  :    : what's been going on all night!
-@>Text: \xn[\pn]I have no idea what you're talking ab-\^
+@>Text: \xn[\pn]I have no idea what you're talking ab-
 @>Text: \xn[Youmu]Stand back everyone! I'm going to clear this 
  :    : debris!
 @>Show Animation: [Mystia], [Exclaim bubble]
@@ -13489,7 +13489,7 @@ List of Event Commands:
  :    : least!?
 @>Text: \xn[Mystia]Aren't you here to cause a ruckus? That's 
  :    : what's been going on all night!
-@>Text: \xn[\pn]I have no idea what you're talking ab-\^
+@>Text: \xn[\pn]I have no idea what you're talking ab-
 @>Text: \xn[Youmu]Stand back everyone! I'm going to clear this 
  :    : debris!
 @>Show Animation: [Mystia], [Exclaim bubble]
@@ -16761,78 +16761,6 @@ Trigger: Autorun
 
 List of Event Commands:
 @>Control Switches: [0001: Starting over] = OFF
-@>
-
-#------------------------------------------------------------------------------
-Event ID: 015
-Event Name: EV015
-(X,Y): (019,020)
-
-Page #1
-Conditions
-None
-
-Autonomous Movement
-Type: Fixed
-Speed: 3: Slow
-Freq: 3: Low
-Options Enabled
-Move Animation
-Trigger: Action Button
-
-List of Event Commands:
-@>Change Screen Color Tone: (-255,-255,-255,0), @1
-@>Play BGM: 'B-001. Battle vs. Puppet (Early Game)', 0, 100
-@>Fade Out BGM: 1 sec.
-@>Wait: 10 frame(s)
-@>Change Screen Color Tone: (0,0,0,0), @10
-@>Play BGM: 'W-043. Rural Makai City Esoteria', 100, 100
-@>Wait: 10 frame(s)
-@>Text: \xn[\pn]Back again... But, there's nothing left to do...
-@>Text: \xn[\pn]I guess I could reexperience one of my adventures again,
- :    : but... I can't fathom them posing any more of a challenge for me.
-@>Wait: 10 frame(s)
-@>Play SE: 'Mining collapse', 80, 50
-@>Script: ScreenShake.start_noise(:HEAVY, :HEAVY, 0.175, 0.175, 1.5, :ELASTIC)
-@>Show Animation: Player, [Exclaim bubble]
-@>Set Move Route: Player
- :              : $>Turn Left
- :              : $>Wait: 6 frame(s)
- :              : $>Turn Right
- :              : $>Wait: 6 frame(s)
- :              : $>Turn Down
-@>Wait for Move's Completion
-@>Text: \xn[\pn]--Whoa! What was that!? An earthquake...?
-@>Wait: 10 frame(s)
-@>Show Animation: Player, [Question bubble]
-@>Text: \xn[\pn]...Hey, what's that in the sky up there?
-@>Text: \xn[\pn]I can probably get a better vantage point from the edge
- :    : of the tower.
-@>Script: $player.scenario_name = "None"
-@>Control Variables: [0099: NG+ Loop] = 3
-@>Control Self Switch: C =ON
-@>
-
-Page #2
-Conditions
-None
-
-Autonomous Movement
-Type: Fixed
-Speed: 3: Slow
-Freq: 3: Low
-Options Enabled
-Move Animation
-Trigger: Action Button
-
-List of Event Commands:
-@>Control Variables: [0141: Scenarios Cleared] = 3
-@>Change Screen Color Tone: (-255,-255,-255,0), @1
-@>Play BGM: 'B-001. Battle vs. Puppet (Early Game)', 0, 100
-@>Fade Out BGM: 1 sec.
-@>Wait: 10 frame(s)
-@>Change Screen Color Tone: (0,0,0,0), @10
-@>Play BGM: 'W-043. Rural Makai City Esoteria', 100, 100
 @>
 
 #------------------------------------------------------------------------------
@@ -21959,7 +21887,7 @@ List of Event Commands:
   :              : $>Move Right
   :              : $>Move Right
  @>Text: \xn[\pn]I'm... really left speechless, I'm not sure what to 
-  :    : s-\^
+  :    : s-
  @>Text: \xn[Shinji]\PN! We have a problem!
  @>Set Move Route: Player
   :              : $>Turn Left
@@ -22158,7 +22086,7 @@ List of Event Commands:
   :              : $>Move Right
   :              : $>Move Right
  @>Text: \xn[\pn]I'm... really left speechless, I'm not sure what to 
-  :    : s-\^
+  :    : s-
  @>Text: \xn[Shinji]\PN! We have a problem!
  @>Set Move Route: Player
   :              : $>Turn Left
@@ -23315,7 +23243,7 @@ List of Event Commands:
 @>Text: \xn[???]My cohort and I have been watching you and your
  :    : friends all night. You've provided an amusing evening
  :    : for us!
-@>Text: \xn[\pn]Wait, cohort? What are you getting a-\^
+@>Text: \xn[\pn]Wait, cohort? What are you getting a-
 @>Text: \xn[???]Come on kid, don't you get it? Can't you see?
  :    : I'm a youkai! One that feeds off of the fear of the
  :    : unknown!
@@ -23494,7 +23422,7 @@ List of Event Commands:
  :    : anywhere down here...
 @>Text: \xn[Nue]Oh you humans, you can't realize the obvious 
  :    : even when it's right underneath you!
-@>Text: \xn[\pn]Wha-\^
+@>Text: \xn[\pn]Wha-
 @>Text: \xn[Nue]Literally, right beneath you! This sigil we're 
  :    : standing on is a magic teleporter. It'll warp you to 
  :    : another part of the basement.
@@ -23749,7 +23677,7 @@ List of Event Commands:
 @>Show Animation: Player, [Exclaim bubble]
 @>Set Move Route: Player
  :              : $>Turn Right
-@>Text: \xn[\pn]But how did you-\^
+@>Text: \xn[\pn]But how did you-
 @>Change Screen Color Tone: (-255,-255,-255,0), @6
 @>Wait: 8 frame(s)
 @>Set Move Route: [NueB]
@@ -23761,7 +23689,7 @@ List of Event Commands:
 @>Text: \xn[Nue]And that's just with my fingers alone~
 @>Set Move Route: Player
  :              : $>Turn Left
-@>Text: \xn[\pn]When did you-\^
+@>Text: \xn[\pn]When did you-
 @>Change Screen Color Tone: (-255,-255,-255,0), @6
 @>Wait: 8 frame(s)
 @>Change Screen Color Tone: (-102,-102,-102,0), @6
@@ -24338,7 +24266,7 @@ List of Event Commands:
   @>Wait: 20 frame(s)
   @>Text: \xn[???]Boo!
   @>Show Animation: Player, [Exclaim bubble]
-  @>Text: \xn[\pn]What?\^
+  @>Text: \xn[\pn]What-
   @>Change Screen Color Tone: (-255,-255,-255,0), @6
   @>Wait: 8 frame(s)
   @>Script: pbSetSelfSwitch(29,"A",true)
@@ -24374,7 +24302,7 @@ List of Event Commands:
    :    : them scared by what I was doing?
   @>Text: \xn[\pn]I... I guess Kota was...? We normally split paths 
    :    : so I can't vouch for anybody in specific.
-  @>Text: \xn[\pn]This is oddly off top-\^
+  @>Text: \xn[\pn]This is oddly off top-
   @>Text: \xn[Kogasa]Hmm, well, what about you then?
   @>Wait: 20 frame(s)
   @>Text: \xn[\pn]...Me?
@@ -24864,7 +24792,7 @@ List of Event Commands:
 @>Text: \xn[Layla]Oh, thank you! It's been a long time since I've 
  :    : engaged in a Pokémon Battle, so lets see if I still have 
  :    : a knack for it.
-@>Text: \xn[\pn]Poké-\^
+@>Text: \xn[\pn]Poké-
 @>Text: \xn[Layla]Shall we begin?
 @>Script: $game_temp.vs_transition_bg = "Spectral"
 :       : #$game_temp.vs_name = "Vs. Layla Prismriver"
@@ -36152,7 +36080,7 @@ List of Event Commands:
   :              : $>Move Up
  @>Scroll Map: Down, 2, 3
  @>Text: \xn[Minoriko]Absolutely! Why, I believe you have the potential
-  :    : to take on the Grand Ha-\^
+  :    : to take on the Grand Ha-
  @>Text: \xn[Keine]Oh thank the gods, we found you!
  @>Set Move Route: Player
   :              : $>Turn Down
@@ -38544,7 +38472,7 @@ List of Event Commands:
 @>Text: \xn[\pn]I could just take it easy and enjoy the remainder of the 
  :    : festival.
 @>Text: \xn[\pn]Honestly, not a bad idea in retrospect!
-@>Text: \xn[\pn]Yep! A nice, easy, relaxing, da\^
+@>Text: \xn[\pn]Yep! A nice, easy, relaxing, da-
 @>Text: \xn[Maya]\pn! I'm coming in!
 @>Show Animation: Player, [Exclaim bubble]
 @>Set Move Route: [Maya]
@@ -38619,69 +38547,6 @@ Move Animation
 Trigger: Action Button
 
 List of Event Commands:
-@>
-
-#------------------------------------------------------------------------------
-Event ID: 003
-Event Name: EV003
-(X,Y): (005,007)
-
-Page #1
-Conditions
-None
-
-Autonomous Movement
-Type: Fixed
-Speed: 3: Slow
-Freq: 3: Low
-Options Enabled
-Move Animation
-Trigger: Action Button
-
-List of Event Commands:
-@>Control Switches: [0112: Met Nue] = OFF
-@>Text: \xn[\pn]Hmm... What should I do today...
-@>Text: \xn[\pn]I could just take it easy and enjoy the remainder of the 
- :    : festival.
-@>Text: \xn[\pn]Honestly, not a bad idea in retrospect!
-@>Text: \xn[\pn]Yep! A nice, easy, relaxing, da\^
-@>Text: \xn[Maya]\pn! I'm coming in!
-@>Show Animation: Player, [Exclaim bubble]
-@>Set Move Route: [Maya]
- :              : $>Through ON
- :              : $>Move Up
- :              : $>Change Opacity: 255
-@>Wait for Move's Completion
-@>Text: \xn[\pn]Maya? What are you doing here?
-@>Set Move Route: [Maya]
- :              : $>Move Up
- :              : $>Move Up
- :              : $>Move Up
- :              : $>Move Up
- :              : $>Move Up
- :              : $>Move Left
- :              : $>Move Left
- :              : $>Move Left
- :              : $>Move Left
-@>Text: \xn[Maya]You're being called for! Apparently Miss Keine wants 
- :    : you for something.
-@>Text: \xn[\pn]Me? What could she want me for?
-@>Text: \xn[\pn]\b(And why do I have a bad feeling about this...)
-@>Wait for Move's Completion
-@>Text: \xn[Maya]No idea! But it sounded urgent! I'll go tell her 
- :    : you're on your way.
-@>Text: \xn[\pn]Where should I meet her at?
-@>Text: \xn[Maya]I think she said she would be waiting at the
- :    : Rest House in the Village. So hurry over there!
-@>Control Self Switch: A =ON
-@>Play SE: 'Door exit', 100, 100
-@>Change Screen Color Tone: (-255,-255,-255,0), @6
-@>Wait: 8 frame(s)
-@>Transfer Player:[003: The Mansion of Mystery], (021,063)
-@>Change Screen Color Tone: (0,0,0,0), @6
-@>Text: \xn[\pn]I should go see what Miss Keine wants with me...
-@>Text: \xn[\pn]Maya mentioned that she would be waiting in the Village
- :    : Rest House for me.
 @>
 
 #------------------------------------------------------------------------------
@@ -48398,9 +48263,9 @@ List of Event Commands:
 @>Change Screen Color Tone: (0,0,0,0), @6
 @>Text: \xn[Tengu]You wouldn't happen to be \pn from the Human 
  :    : Village, would you?
-@>Text: \xn[\pn]I- uhm, yes I am, but-\^
+@>Text: \xn[\pn]I- uhm, yes I am, but-
 @>Text: \xn[Tengu]Great! Would you mind giving me an interview?
-@>Text: \xn[\pn]H-Huh? An interview? But I-\^
+@>Text: \xn[\pn]H-Huh? An interview? But I-
 @>Text: \xn[Tengu]Oh, my bad! I never introduced myself!
 @>Text: \xn[Hatate]My name is Hatate Himekaidou, I run the Kakashi 
  :    : Spirit News!
@@ -48412,7 +48277,7 @@ List of Event Commands:
 @>Text: \xn[Hatate]Tell me, is it true that the crops in the Village
  :    : have all been poisoned, and that a curse has been laid
  :    : upon the Village?
-@>Text: \xn[\pn]I mean...\^
+@>Text: \xn[\pn]I mean...-
 @>Set Move Route: [Hatate]
  :              : $>Through ON
  :              : $>Move Down
@@ -48421,7 +48286,7 @@ List of Event Commands:
  :              : $>Move Down
 @>Text: \xn[Hatate]And is it true that you've been sent out to enlist
  :    : the aid of the local Curse Goddess, Hina Kagiyama?
-@>Text: \xn[\pn]How did you even-\^
+@>Text: \xn[\pn]How did you even-
 @>Set Move Route: [Hatate]
  :              : $>Move Down
 @>Set Move Route: Player
@@ -54825,7 +54690,7 @@ List of Event Commands:
 @>Text: \xn[???]Oh? Would you like to see my army?
 @>Text: \xn[???]Be careful what you wish for, human!
 @>Show Animation: Player, [Exclaim bubble]
-@>Text: \xn[\pn]Wait, who--\^
+@>Text: \xn[\pn]Wait, who--
 @>Change Screen Color Tone: (-255,-255,-255,0), @6
 @>Wait: 8 frame(s)
 @>Set Event Location: [Medi Puppet],(018,012), Left
@@ -54856,7 +54721,7 @@ List of Event Commands:
 @>Text: \xn[\pn]Wh-Where did all of these Puppets come from!?
 @>Text: \xn[???]Don't you remember? You asked to see my army!
 @>Wait for Move's Completion
-@>Text: \xn[\pn]Your Puppets? Does that mean...\^
+@>Text: \xn[\pn]Your Puppets? Does that mean...
 @>Set Move Route: [Medicine]
  :              : $>Move Left
  :              : $>Move Left
@@ -57058,7 +56923,7 @@ List of Event Commands:
  :    : us!?
 @>Text: \xn[Medicine]Very well... Perhaps there's some merit to your
  :    : words.
-@>Text: \xn[\pn]Does that mean you'll--\^
+@>Text: \xn[\pn]Does that mean you'll-
 @>Text: \xn[Medicine]However! I'm still not abandoning my plans!
 @>Text: \xn[\pn]Oh come <i>on</i>! What else do I have to do!
 @>Text: \xn[Medicine]If you want to have even a single hope of 
@@ -58289,7 +58154,7 @@ List of Event Commands:
   :    : are those that can fly in, so I can rough out their intentions
   :    : immediately!
  @>Text: \xn[Elly]All does seem to be in order for you to enter the Mansion!
- @>Text: \xn[\pn]Great! So I'll just head on in and-\^
+ @>Text: \xn[\pn]Great! So I'll just head on in and-
  @>Text: \xn[Elly]Nooooot so fast, kiddo.
  @>Text: \xn[\pn]Of course it wouldn't be that simple...
  @>Text: \xn[Elly]Lady Yuuka has instructed me of one other thing.
