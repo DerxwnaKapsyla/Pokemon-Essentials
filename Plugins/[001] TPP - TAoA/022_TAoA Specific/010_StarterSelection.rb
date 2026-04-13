@@ -44,12 +44,37 @@ class StarterSelection
 	  _INTL("Sekibanki"), _INTL("Kagerou Imaizumi"), _INTL("Kosuzu Motoori"),
 	  _INTL("Hata no Kokoro"), _INTL("Sumireko Usami"), _INTL("None of these")
 	]
-    pbMessage(_INTL("\\w[dark]Firstly, if you had to pick, who is your favorite Touhou Project character from this list?"))
+    
+	ChoiceHoverImages.set_hover_images([
+      "Graphics/Plugins/Choice Menu Images/Reimu.png",
+      "Graphics/Plugins/Choice Menu Images/Marisa.png",
+      "Graphics/Plugins/Choice Menu Images/Sakuya.png",
+	  "Graphics/Plugins/Choice Menu Images/Alice.png",
+      "Graphics/Plugins/Choice Menu Images/Youmu.png",
+      "Graphics/Plugins/Choice Menu Images/Keine.png",
+	  "Graphics/Plugins/Choice Menu Images/Reisen.png",
+      "Graphics/Plugins/Choice Menu Images/Mokou.png",
+      "Graphics/Plugins/Choice Menu Images/Rinnosuke.png",
+	  "Graphics/Plugins/Choice Menu Images/Akyuu.png",
+      "Graphics/Plugins/Choice Menu Images/Aya.png",
+      "Graphics/Plugins/Choice Menu Images/Sanae.png",
+	  "Graphics/Plugins/Choice Menu Images/Koishi.png",
+      "Graphics/Plugins/Choice Menu Images/Kogasa.png",
+      "Graphics/Plugins/Choice Menu Images/Futo.png",
+	  "Graphics/Plugins/Choice Menu Images/Sekibanki.png",
+      "Graphics/Plugins/Choice Menu Images/Kagerou.png",
+      "Graphics/Plugins/Choice Menu Images/Kosuzu.png",
+	  "Graphics/Plugins/Choice Menu Images/Kokoro.png",
+	  "Graphics/Plugins/Choice Menu Images/Sumireko.png"
+    ])
+	
+	pbMessage(_INTL("\\w[dark]Firstly, if you had to pick, who is your favorite Touhou Project character from this list?"))
     return pbMessage(_INTL("\\w[dark]Choose a character:"), characters, characters.length)
   end
   
   def confirm_starter_selection
     if @character_choice == 20
+	  ChoiceHoverImages.clear_hover_images
 	  pbMessage(_INTL("\\w[dark]Understandable. This is a very limiting list, or you might not know any of these characters."))
 	  pbMessage(_INTL("\\w[dark]That being said, with this option you leave your destiny up to chance."))
 	  if pbConfirmMessage(_INTL("\\w[dark]Is that acceptable?"))
@@ -58,6 +83,29 @@ class StarterSelection
 		echoln "Selected Starter: #{id}"
 		return true
       else
+	  ChoiceHoverImages.set_hover_images([
+        "Graphics/Plugins/Choice Menu Images/Reimu.png",
+        "Graphics/Plugins/Choice Menu Images/Marisa.png",
+        "Graphics/Plugins/Choice Menu Images/Sakuya.png",
+	    "Graphics/Plugins/Choice Menu Images/Alice.png",
+        "Graphics/Plugins/Choice Menu Images/Youmu.png",
+        "Graphics/Plugins/Choice Menu Images/Keine.png",
+	    "Graphics/Plugins/Choice Menu Images/Reisen.png",
+        "Graphics/Plugins/Choice Menu Images/Mokou.png",
+        "Graphics/Plugins/Choice Menu Images/Rinnosuke.png",
+	    "Graphics/Plugins/Choice Menu Images/Akyuu.png",
+        "Graphics/Plugins/Choice Menu Images/Aya.png",
+        "Graphics/Plugins/Choice Menu Images/Sanae.png",
+	    "Graphics/Plugins/Choice Menu Images/Koishi.png",
+        "Graphics/Plugins/Choice Menu Images/Kogasa.png",
+        "Graphics/Plugins/Choice Menu Images/Futo.png",
+	    "Graphics/Plugins/Choice Menu Images/Sekibanki.png",
+        "Graphics/Plugins/Choice Menu Images/Kagerou.png",
+        "Graphics/Plugins/Choice Menu Images/Kosuzu.png",
+	    "Graphics/Plugins/Choice Menu Images/Kokoro.png",
+	    "Graphics/Plugins/Choice Menu Images/Sumireko.png"
+      ])
+	
 	    return false
       end
 	end
@@ -72,6 +120,7 @@ class StarterSelection
 	  "Hata no Kokoro", "Sumireko Usami"
 	]
 	name = _INTL(characters[@character_choice])
+	ChoiceHoverImages.clear_hover_images
 	if pbConfirmMessage(_INTL("\\w[dark]Is {1} your favorite?", name))
 	  id = CHARACTER_TO_STARTER[@character_choice]
 	  @starter_choice = Pokemon.new(id, 20)
