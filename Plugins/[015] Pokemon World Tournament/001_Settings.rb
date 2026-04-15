@@ -127,7 +127,7 @@ GameData::PWTTournament.register({
 				[:PWT_SUPERVISOR_F,"Rei","A marvelous battle, well done.","",100], 
 				[:PWT_SUPERVISOR_F,"Hinoka","Commanding Puppets is an artform, and you look to be a talented artisan","",100], 
 				# ---- Gensokyo's Finest
-                [:KOKORO,"Hata no Kokoro","Hahaha, t'was a memorable dance indeed!","Though your show ends here, your performance was remarkable!",100,"A performance is ever changing with the times, how shall yours evolve I wonder?","Let us give this crowd a dance that shan't soon forget.!","Ohoho, I much look forward to seeing you come back. Having a partner like you would excite me to no end!","Kokoro"] # Kokoro
+                [:KOKORO,"Hata no Kokoro","Hahaha, t'was a memorable dance indeed!","Though your show ends here, your performance was remarkable!",100,"A performance is ever changing with the times, how shall yours evolve I wonder?","Let us give this crowd a dance that shan't soon forget!","Ohoho, I much look forward to seeing you come back. Having a partner like you would excite me to no end!","Kokoro"] # Kokoro
                ],
   :rules_proc => proc {|length|
     rules = PokemonChallengeRules.new
@@ -178,7 +178,7 @@ GameData::PWTTournament.register({
 				[:PWT_SUPERVISOR_F,"Rei","A marvelous battle, well done.","",200], 
 				[:PWT_SUPERVISOR_F,"Hinoka","Commanding Puppets is an artform, and you look to be a talented artisan","",200], 
 				# ---- Gensokyo's Finest
-                [:KOKORO,"Hata no Kokoro","Hahaha, t'was a memorable dance indeed!","Though your show ends here, your performance was remarkable!",200,"A performance is ever changing with the times, how shall yours evolve I wonder?","Let us give this crowd a dance that shan't soon forget.!","Ohoho, I much look forward to seeing you come back. Having a partner like you would excite me to no end!","Kokoro"] # Kokoro
+                [:KOKORO,"Hata no Kokoro","Hahaha, t'was a memorable dance indeed!","Though your show ends here, your performance was remarkable!",200,"A performance is ever changing with the times, how shall yours evolve I wonder?","Let us give this crowd a dance that shan't soon forget!","Ohoho, I much look forward to seeing you come back. Having a partner like you would excite me to no end!","Kokoro"] # Kokoro
                ],
   :rules_proc => proc {|length|
     rules = PokemonChallengeRules.new
@@ -233,7 +233,7 @@ GameData::PWTTournament.register({
 				[:PWT_SUPERVISOR_F,"Hinoka","Commanding Puppets is an artform, and you look to be a talented artisan","",300], 
 				[:PWT_SUPERVISOR_F,"Sakura","There's something soothing about being surounded by Shrine Maidens...","",300], 
 				# ---- Gensokyo's Finest
-                [:KOKORO,"Hata no Kokoro","Hahaha, t'was a memorable dance indeed!","Though your show ends here, your performance was remarkable!",300,"A performance is ever changing with the times, how shall yours evolve I wonder?","Let us give this crowd a dance that shan't soon forget.!","Ohoho, I much look forward to seeing you come back. Having a partner like you would excite me to no end!","Kokoro"],
+                [:KOKORO,"Hata no Kokoro","Hahaha, t'was a memorable dance indeed!","Though your show ends here, your performance was remarkable!",300,"A performance is ever changing with the times, how shall yours evolve I wonder?","Let us give this crowd a dance that shan't soon forget!","Ohoho, I much look forward to seeing you come back. Having a partner like you would excite me to no end!","Kokoro"],
 				[:MINORIKO,"Minoriko Aki","My word, you are quite the strong Puppet handler!","Oh, did I go too hard on you? My bad!",300,nil,"Are you ready to give the crowd a show befiting the stage of this Harvest Festival?","You are quite the battler! I look forward to challenging you again."],
 				[:NITORI_Tr,"Nitori Kawashiro","Remarkable! This will be excellent data!","Remarkable! This will be excellent data!",300,nil,"I need to get some data for my new inventions. Can you help me with that?","Your assistance is appreciated in furthering the ambitions of science!"],
 				[:HATATE,"Hatate Himekaidou","This battle would make for great news material!","Maybe because I beat you, I'll outdo the Bunbunmaru in sales!",300,"I've gotta get back to the mountain and start working on my next article!","If I beat you, you have to give me an interview!","Well... Can you still give me one? I need something good for my paper!"],
@@ -282,7 +282,7 @@ GameData::PWTTournament.register({
 				[:PWT_FAIRY_Z,"Miyra","Is there something else I should work into my regiment?","",400,nil,"Punch, punch, punch. Kick, kick, kick! Our workout regiment is never over!","Punch, punch, punch. Kick, kick, kick..."], 
 				[:PWT_FAIRY_Z,"Katou","Yes, yes this is perfect!","",400,nil,"Hold still! I have inspiration for my next piece!","Were you surprised by my Puppets moves? Akyuu is quite versatile and creative!"], 
 				# ---- Gensokyo's Finest
-                [:KOKORO,"Hata no Kokoro","Hahaha, t'was a memorable dance indeed!","Though your show ends here, your performance was remarkable!",400,"A performance is ever changing with the times, how shall yours evolve I wonder?","Let us give this crowd a dance that shan't soon forget.!","Ohoho, I much look forward to seeing you come back. Having a partner like you would excite me to no end!","Kokoro"],
+                [:KOKORO,"Hata no Kokoro","Hahaha, t'was a memorable dance indeed!","Though your show ends here, your performance was remarkable!",400,"A performance is ever changing with the times, how shall yours evolve I wonder?","Let us give this crowd a dance that shan't soon forget!","Ohoho, I much look forward to seeing you come back. Having a partner like you would excite me to no end!","Kokoro"],
 				[:MINORIKO,"Minoriko Aki","My word, you are quite the strong Puppet handler!","Oh, did I go too hard on you? My bad!",400,nil,"Are you ready to give the crowd a show befiting the stage of this Harvest Festival?","You are quite the battler! I look forward to challenging you again."],
 				[:NITORI_Tr,"Nitori Kawashiro","Remarkable! This will be excellent data!","Remarkable! This will be excellent data!",400,nil,"I need to get some data for my new inventions. Can you help me with that?","Your assistance is appreciated in furthering the ambitions of science!"],
 				[:HATATE,"Hatate Himekaidou","This battle would make for great news material!","Maybe because I beat you, I'll outdo the Bunbunmaru in sales!",400,"I've gotta get back to the mountain and start working on my next article!","If I beat you, you have to give me an interview!","Well... Can you still give me one? I need something good for my paper!"],

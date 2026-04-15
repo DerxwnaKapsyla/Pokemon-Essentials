@@ -16704,6 +16704,190 @@ List of Event Commands:
 @>
 
 #------------------------------------------------------------------------------
+Event ID: 015
+Event Name: EV015
+(X,Y): (028,013)
+
+Page #1
+Conditions
+None
+
+Graphic: Object ball
+
+Autonomous Movement
+Type: Fixed
+Speed: 3: Slow
+Freq: 3: Low
+Options Enabled
+Move Animation
+Trigger: Action Button
+
+List of Event Commands:
+@>Script: $scene = Scene_Credits.new
+@>
+
+Page #2
+Conditions
+None
+
+Graphic: Object ball
+
+Autonomous Movement
+Type: Fixed
+Speed: 3: Slow
+Freq: 3: Low
+Options Enabled
+Move Animation
+Trigger: Action Button
+
+List of Event Commands:
+@>Fade Out BGM: 3 sec.
+@>
+
+#------------------------------------------------------------------------------
+Event ID: 016
+Event Name: EV016
+(X,Y): (028,015)
+
+Page #1
+Conditions
+None
+
+Graphic: Person_Medicine
+
+Autonomous Movement
+Type: Fixed
+Speed: 3: Slow
+Freq: 3: Low
+Options Enabled
+Move Animation
+Trigger: Action Button
+
+List of Event Commands:
+@>Text: \xn[\pn]Hah... There! Got anything else you'd like to throw at 
+ :    : us!?
+@>Text: \xn[Medicine]Very well... Perhaps there's some merit to your
+ :    : words.
+@>Text: \xn[\pn]Does that mean you'll-
+@>Text: \xn[Medicine]However! I'm still not abandoning my plans!
+@>Text: \xn[\pn]Oh come <i>on</i>! What else do I have to do!
+@>Text: \xn[Medicine]If you want to have even a single hope of 
+ :    : defending the Village, you'll have to defeat me!
+@>Text: \xn[\pn]Is that really what it'll take? You'll drop that tome
+ :    : and stop your planned attack on the Village if I can beat you?
+@>Text: \xn[Medicine]That's if you can! Surely you're to the task, right?
+@>Text: \xn[\pn]My Puppets and I can take whatever you throw at us!
+@>Text: \xn[Medicine]Good! It wouldn't be any fun if you didn't
+ :    : fail while doing your best!
+@>Text: \xn[\pn]\b(How can one doll be so arrogant... But we'll show 
+ :    : her!)
+@>Text: \xn[Medicine]Come, Champion of the Human Village! Face me!
+@>Text: \xn[Medicine]Your defeat shall serve as proof of my ideals!
+@>Text: \xn[Medicine]It is only right that I liberate my kin... for none 
+ :    : among you have the power to stop me!
+@>Control Switches: [0131: Medi Final Puppet Check] = OFF
+@>Control Variables: [0117..0118] = 0
+@>Script: $game_temp.vs_transition_bg = "Suzuran"
+:       : #$game_temp.vs_name = "Vs. Medicine Melancholy"
+@>Script: setBattleRule("midbattleScript", :vs_medicine)
+:       : setBattleRule("battleIntroText", "Medicine Melancholy, leader of the Puppet Rebellion, challenges you and your 
+:       : ideals!")
+@>Control Switches: [0135: Battling Medicine] = ON
+@>Conditional Branch: Script: TrainerBattle.start(:MEDICINE_Tr, "Medicine Melancholy", 10 + pbGet(99) * 10)
+ @>Control Switches: [0123: Medicine Beaten] = ON
+ @>Fade Out BGM: 1 sec.
+ @>Text: \xn[Medicine]How... How could we lose? I was so sure that
+  :    : we could do this!
+ @>Text: \xn[\pn]Medicine... Just because you have a certain power 
+  :    : doesn't mean you know how to use it properly.
+ @>Text: \xn[\pn]The same could be said of us Humans who use 
+  :    : Puppets as well.
+ @>Text: \xn[\pn]Sure, there are some of my kind that are malicious 
+  :    : and will abuse their Puppets.
+ @>Text: \xn[\pn]And perhaps you might have even been able to
+  :    : overpower such a person.
+ @>Text: \xn[\pn]But, we were evenly matched. Not just in strength,
+  :    : but in our beliefs.
+ @>Text: \xn[\pn]Even without you giving your Puppets a boost via
+  :    : that tome, I believe the match could still have swung either
+  :    : way.
+ @>Text: \xn[\pn]I can see that you firmly believe in your ideals, but... 
+  :    : perhaps you could also stand to look at it from another 
+  :    : perspective as well!
+ @>Text: \xn[Medicine]Another perspective... You mean allow myself
+  :    : to be once again subjugated by Humans?
+ @>Text: \xn[\pn]No! No Human is going to want to subjugate or control
+  :    : you!
+ @>Text: \xn[\pn]All I'm saying is to consider that the malicious Humans 
+  :    : you've seen and experienced are a very small group.
+ @>Text: \xn[\pn]At the very least, if you can't trust in Humans as a
+  :    : whole to be kind and compassionate, put your trust in me.
+ @>Text: \xn[\pn]Sure, I'm just some random nobody from the Village,
+  :    : especially when compared to the likes of the regular Incident
+  :    : Solvers, but I'd like to believe I'm at least somewhat 
+  :    : trustworthy!
+ @>Text: \xn[\pn]So, what do you say? Will you call off your plans
+  :    : for the Village?
+ @>Text: \xn[Medicine]...\wt[40] ...Hmph! You've bested me in battle, and
+  :    : at the very least I'm willing to acknowledge that much!
+ @>Text: \xn[Medicine]I'll let you go, as well as your Village. This time.
+ @>Text: \xn[\pn]Thank you!
+ @>Text: \xn[Medicine]Make no mistake, if I see another Human attempt a
+  :    : grandiose power play with Puppets, I will not hesitate to act 
+  :    : again!
+ @>Text: \xn[\pn]Then I'll just have to make sure that such a threat 
+  :    : doesn't leave the Village and is put down before it can start!
+ @>Text: \xn[Medicine]Hmph! Here, take this Tome of Curses back!
+ @>Set Move Route: [The Mansion of Mystery]
+                   (Ignore If Can't Move)
+  :              : $>Through ON
+  :              : $>Move Down
+  :              : $>Move Down
+  :              : $>Move Down
+  :              : $>Move Down
+ @>Wait for Move's Completion
+ @>Text: \pn received the <c2=65467b14>Tome of Curses</c2> from Medicine!\me[Key item get.ogg]\wtnp[80]
+ @>Text: \xn[Medicine]We're done here! Take that tome and leave my 
+  :    : home before I change my mind!
+ @>Text: \xn[\pn]Yes ma'am! Please take care of yourself going 
+  :    : forward!
+ @>Text: \xn[Medicine]You're rather strange for a Human! Wishing well 
+  :    : upon a person who just threatened you and your Village!
+ @>Text: \xn[\pn]Ahaha, I guess that's another thing that having 
+  :    : Puppets by my side has done for me!
+ @>Text: \xn[Medicine]Truly strange! Oh well! Su-san and I will be off 
+  :    : now as well!
+ @>Control Switches: [0135: Battling Medicine] = OFF
+ @>Script: pbSetSelfSwitch(1,"A",true)
+ @>Script: # $game_variables[1] = $GameSpeed
+ :       : # pbDisallowSpeedup
+ :       : # $GameSpeed = 0
+ @>Change Map Settings:Fog = 'PurpleFog', 0, 200, Normal, 200, 0, 0
+ @>Change Screen Color Tone: (51,17,-34,255), @10
+ @>Play BGM: 'W-029. Unknown Flower, Mesmerizing Journey', 70, 100
+ @>Wait: 10 frame(s)
+ @>Change Text Options: Bottom, Show
+ @>Text: \w[dark]\c[12]\se[]\l[2]And so, just like that, \pn once again brought a close to
+  :    : yet another epic of theirs.\wtnp[90]
+ @>Text: \w[dark]\c[12]\se[]\l[3]With Medicine defeated, and the Tome of Curses in her
+  :    : possession, \pn set off for the Human Village once more.\wtnp[90]
+ @>Change Screen Color Tone: (-255,-255,-255,0), @6
+ @>Wait: 6 frame(s)
+ @>Change Transparent Flag: Transparency
+ @>Transfer Player:[069: Ending Filler Map 1 - Stage 6], (017,015)
+ @>Change Screen Color Tone: (51,17,-34,255), @6
+ @>
+: Else
+ @>Control Switches: [0135: Battling Medicine] = OFF
+ @>Script: pbTrainerEnd
+ @>Exit Event Processing
+ @>
+: Branch End
+@>Control Switches: [0135: Battling Medicine] = OFF
+@>Script: pbTrainerEnd
+@>
+
+#------------------------------------------------------------------------------
 Event ID: 018
 Event Name: EV018
 (X,Y): (013,013)
@@ -22353,6 +22537,7 @@ Move Animation
 Trigger: Autorun
 
 List of Event Commands:
+@>Change Screen Color Tone: (-102,-102,-102,0), @6
 @>Set Event Location: [Trainer(3)],(031,065), Down
 @>Set Event Location: [Trainer(7)],(031,062), Right
 @>Set Event Location: [Trainer(4)],(051,067), Right
@@ -30997,13 +31182,13 @@ List of Event Commands:
    @>
   : Else
    @>Conditional Branch: Script: $bag.can_add?(pbGet(1))
-    @>Text: \CN\xn[Minoriko]Yep, all of the FP is here! Please enjoy 
+    @>Text: \pt\xn[Minoriko]Yep, all of the FP is here! Please enjoy 
      :    : your jar of \v[3]!
     @>Script: $Player.coins-=pbGet(2)
     @>Script: pbReceiveItem(pbGet(1))
-    @>Text: \CN\xn[Minoriko]Oh, and don't forget your purchase 
+    @>Text: \pt\xn[Minoriko]Oh, and don't forget your purchase 
      :    : reward!
-    @>Text: \CN\xn[Minoriko]Your reward this time is\..\..\..\wtnp[20]
+    @>Text: \pt\xn[Minoriko]Your reward this time is\..\..\..\wtnp[20]
     @>Play SE: 'Battle catch click', 100, 100
     @>Wait: 40 frame(s)
     @>Conditional Branch: Script: rand(40) < 30
@@ -31018,7 +31203,7 @@ List of Event Commands:
      :       : pbSet(2,PBItems.getNamePlural(prize))
      @>Play ME: 'Egg get', 100, 100
      @>Wait: 20 frame(s)
-     @>Text: \CN\xn[Minoriko]Oh, it appears as if you won a normal prize!\wt[20]
+     @>Text: \pt\xn[Minoriko]Oh, it appears as if you won a normal prize!\wt[20]
       :    : Please enjoy these additional \v[2]!
      @>Script: pbReceiveItem(pbGet(1),5)
      @>
@@ -31033,16 +31218,16 @@ List of Event Commands:
      :       : pbSet(2,PBItems.getNamePlural(prize))
      @>Play ME: 'Slots big win', 100, 100
      @>Wait: 20 frame(s)
-     @>Text: \CN\xn[Minoriko]Oh, it appears as if you won a rare prize!\wt[20]
+     @>Text: \pt\xn[Minoriko]Oh, it appears as if you won a rare prize!\wt[20]
       :    : Congratulations! Please enjoy these additional \v[2]!
      @>Script: pbReceiveItem(pbGet(1),5)
      @>
     : Branch End
     @>
    : Else
-    @>Text: \CN\xn[Minoriko]Oh no! It looks like you're out of 
+    @>Text: \pt\xn[Minoriko]Oh no! It looks like you're out of 
      :    : space in your bag!
-    @>Text: \CN\xn[Minoriko]Well, these things happen! I'll be sure 
+    @>Text: \pt\xn[Minoriko]Well, these things happen! I'll be sure 
      :    : to set this jar aside for you until you empty your bag!
     @>
    : Branch End
@@ -34083,6 +34268,94 @@ List of Event Commands:
 : Branch End
 @>
 
+Page #3
+Conditions
+Switch 0107: New Game + is ON
+
+Graphic: TPDP_NPC 13
+
+Autonomous Movement
+Type: Fixed
+Speed: 3: Slow
+Freq: 3: Low
+Options Enabled
+Move Animation
+Trigger: Action Button
+
+List of Event Commands:
+@>Text: Would you like a more elaborate explanation about the
+ :    : Tournament brackets?
+@>Show Choices: Yes, No
+(When Cancel: Choice 2)
+: When [Yes]
+ @>Text: Which Tournament would you like to know more about specifically?
+ @>Show Choices: Easy Difficulty, Normal Difficulty, Hard Difficulty, Lunatic Difficulty
+ (When Cancel: Disallow)
+ : When [Easy Difficulty]
+  @>Text: In Easy Difficulty, levels are capped out 25. 
+  @>Text: Handlers in this bracket are expected to be fledgling 
+   :    : Villagers and lower tier Fairies, as well as Festival 
+   :    : Supervisors.
+  @>Text: Lady Kokoro also has a chance of showing up in the 
+   :    : matchups as well.
+  @>
+ : When [Normal Difficulty]
+  @>Text: In Normal Difficulty, levels are capped out 50.
+  @>Text: Handlers in this bracket are expected to be fledgling 
+   :    : Villagers, lower tier Fairies, Village Aces, Greater
+   :    : Fairies, and Festival Supervisors.
+  @>Text: Lady Kokoro also has a chance of showing up in the 
+   :    : matchups as well.
+  @>
+ : When [Hard Difficulty]
+  @>Text: In Hard Difficulty, levels are capped out 75.
+  @>Text: Handlers in this bracket are expected to be Village Aces,
+   :    : Greater and Zephyr Fairies, adept Youkai, and Festival
+   :    : Supervisors.
+  @>Text: It's also be noted that some of the big names of Gensokyo 
+   :    : have registered for this bracket as well.
+  @>
+ : When [Lunatic Difficulty]
+  @>Text: In Lunatic Difficulty, levels are capped out 100.
+  @>Text: This bracket is dominated entirely by the big names of
+   :    : Gensokyo.
+  @>Text: People such as Lady Kokoro, Miss Alice, even the Shrine 
+   :    : Maiden from Youkai Mountain has been spotted in the 
+   :    : sign-up sheet.
+  @>
+ : Branch End
+ @>Show Choices: General Rules, Extra?, Nevermind
+ (When Cancel: Choice 3)
+ : When [General Rules]
+  @>Text: The committee has decided on adopting these rules across all the
+   :    : brackets.
+  @>Text: Firstly, No "Exotic Pokémon or Puppets"... whatever that 
+   :    : means. 
+  @>Text: \b(Standard banlist from Pokémon, as well as Nepgear and 
+   :    : DLwRuukoto. Not like they're obtainable.)
+  @>Text: Secondly, "No Eggs", as they can't participate in battle.
+  @>Text: And finally, Puppets that participate in battle will not gain 
+   :    : any experience, and money will not be won or lost in any 
+   :    : of these battles.
+  @>
+ : When [Extra?]
+  @>Text: This... is a very strange bracket. Somehow it just appeared 
+   :    : in our paperwork the other day.
+  @>Text: Regardless, this bracket caps out at Level 100.
+  @>Text: Looking at the list of people who have registered for this 
+   :    : bracket unfortunately gives me no clue as to who these 
+   :    : people are.
+  @>Text: Is this bracket even legal? This may require investigation...
+  @>
+ : When [Nevermind]
+  @>
+ : Branch End
+ @>
+: When [No]
+ @>
+: Branch End
+@>
+
 #------------------------------------------------------------------------------
 Event ID: 061
 Event Name: EV061
@@ -34103,6 +34376,48 @@ Move Animation
 Trigger: Action Button
 
 List of Event Commands:
+@>
+
+#------------------------------------------------------------------------------
+Event ID: 062
+Event Name: EV062
+(X,Y): (026,034)
+
+Page #1
+Conditions
+Switch 0123: Medicine Beaten is ON
+
+Autonomous Movement
+Type: Fixed
+Speed: 3: Slow
+Freq: 3: Low
+Options Enabled
+Move Animation
+Trigger: Action Button
+
+List of Event Commands:
+@>Text: \sign[signskin]\l[2]<ac>Moriya Talisman Shop\nNow works with Puppets!
+@>
+
+#------------------------------------------------------------------------------
+Event ID: 063
+Event Name: EV063
+(X,Y): (055,034)
+
+Page #1
+Conditions
+None
+
+Autonomous Movement
+Type: Fixed
+Speed: 3: Slow
+Freq: 3: Low
+Options Enabled
+Move Animation
+Trigger: Action Button
+
+List of Event Commands:
+@>Text: \sign[signskin]\l[2]<ac>The Doppeldevice\nCan you win in battle against yourself?
 @>
 
 #------------------------------------------------------------------------------
@@ -42556,6 +42871,7 @@ Move Animation
 Trigger: Action Button
 
 List of Event Commands:
+@>Change Screen Color Tone: (-50,-50,-50,0), @6
 @>Call Common Event: Akyuu Shrines
 @>
 
@@ -42609,6 +42925,7 @@ Move Animation
 Trigger: Autorun
 
 List of Event Commands:
+@>Change Screen Color Tone: (-50,-50,-50,0), @6
 @>Control Switches: [0001: Starting over] = OFF
 @>
 
@@ -44482,6 +44799,7 @@ Move Animation
 Trigger: Autorun
 
 List of Event Commands:
+@>Change Screen Color Tone: (-50,-50,-50,0), @6
 @>Control Switches: [0001: Starting over] = OFF
 @>
 
@@ -44519,6 +44837,7 @@ Move Animation
 Trigger: Autorun
 
 List of Event Commands:
+@>Change Screen Color Tone: (-50,-50,-50,0), @6
 @>Control Switches: [0001: Starting over] = OFF
 @>
 
@@ -45876,6 +46195,7 @@ Move Animation
 Trigger: Autorun
 
 List of Event Commands:
+@>Change Screen Color Tone: (-50,-50,-50,0), @6
 @>Control Switches: [0001: Starting over] = OFF
 @>
 
@@ -46362,6 +46682,28 @@ List of Event Commands:
 @>
 
 #------------------------------------------------------------------------------
+Event ID: 010
+Event Name: EV010
+(X,Y): (033,003)
+
+Page #1
+Conditions
+None
+
+Graphic: Object ball
+
+Autonomous Movement
+Type: Fixed
+Speed: 3: Slow
+Freq: 3: Low
+Options Enabled
+Move Animation
+Trigger: Action Button
+
+List of Event Commands:
+@>
+
+#------------------------------------------------------------------------------
 
 #==============================================================================
 Map ID: 056
@@ -46774,6 +47116,7 @@ Move Animation
 Trigger: Autorun
 
 List of Event Commands:
+@>Change Screen Color Tone: (-102,-102,-102,0), @6
 @>Control Switches: [0001: Starting over] = OFF
 @>
 
@@ -47132,6 +47475,7 @@ Move Animation
 Trigger: Autorun
 
 List of Event Commands:
+@>Change Screen Color Tone: (-102,-102,-102,0), @6
 @>Control Switches: [0001: Starting over] = OFF
 @>
 
@@ -47470,7 +47814,7 @@ List of Event Commands:
 
 #------------------------------------------------------------------------------
 Event ID: 008
-Event Name: Trainer(3) 17,48L
+Event Name: Trainer(4) 17,48L
 (X,Y): (017,048)
 
 Page #1
@@ -48992,7 +49336,7 @@ List of Event Commands:
 @>Set Event Location: [Trainer(2) 27,28R],(027,028), Right
 @>Set Event Location: [Trainer(3) 56.24L],(056,024), Left
 @>Set Event Location: [Trainer(3) 52,42L],(052,042), Left
-@>Set Event Location: [Trainer(3) 17,48L],(017,048), Left
+@>Set Event Location: [Trainer(4) 17,48L],(017,048), Left
 @>Set Event Location: [Trainer(3) 30,53D],(030,053), Down
 @>Set Event Location: [Trainer(3) 19,36L],(019,036), Left
 @>Set Event Location: [Trainer(3)16,20D],(016,020), Down
@@ -52347,7 +52691,7 @@ Direction Fix
 Trigger: Event Touch
 
 List of Event Commands:
-@>Conditional Branch: Variable [0115: 3 Fairies defeated] < 4
+@>Conditional Branch: Variable [0115: 3 Fairies defeated] == 3
  @>Text: \l[4]\w[dark]Upon proceeding, a lengthy sequence will unfold with
   :    : no time to save in between. It is recommended to set aside sufficent
   :    : time before continuing.
@@ -52418,7 +52762,7 @@ Speed: 3: Slow
 Freq: 3: Low
 Options Enabled
 Move Animation
-Trigger: Event Touch
+Trigger: Action Button
 
 List of Event Commands:
 @>Text: Once you've finished up, head on back to Hieda Manor to
@@ -59077,6 +59421,50 @@ List of Event Commands:
 @>
 
 #------------------------------------------------------------------------------
+Event ID: 012
+Event Name: EV012
+(X,Y): (035,016)
+
+Page #1
+Conditions
+None
+
+Graphic: Object ball
+
+Autonomous Movement
+Type: Fixed
+Speed: 3: Slow
+Freq: 3: Low
+Options Enabled
+Move Animation
+Trigger: Action Button
+
+List of Event Commands:
+@>
+
+#------------------------------------------------------------------------------
+Event ID: 013
+Event Name: EV013
+(X,Y): (010,016)
+
+Page #1
+Conditions
+None
+
+Graphic: Object ball
+
+Autonomous Movement
+Type: Fixed
+Speed: 3: Slow
+Freq: 3: Low
+Options Enabled
+Move Animation
+Trigger: Action Button
+
+List of Event Commands:
+@>
+
+#------------------------------------------------------------------------------
 
 #==============================================================================
 Map ID: 067
@@ -59385,15 +59773,17 @@ Move Animation
 Trigger: Player Touch
 
 List of Event Commands:
+@>Script: set_menu_theme("dark")
 @>Text: \l[4]\w[dark]Upon proceeding, a lengthy sequence will unfold with
  :    : no time to save in between. It is recommended to set aside sufficent
  :    : time before continuing.
 @>Text: \l[4]\w[dark]This will mark the final battle of The Festival of Curses.
  :    : It is advised that you prepare yourself beforehand.
-@>Text: \bDo you wish to proceed?
+@>Text: \w[dark]\bDo you wish to proceed?
 @>Show Choices: Yes, No
 (When Cancel: Choice 2)
 : When [Yes]
+ @>Script: reset_menu_theme
  @>Set Move Route: This event
                    (Ignore If Can't Move)
   :              : $>SE: 'Door enter', 100, 100
@@ -59433,6 +59823,7 @@ List of Event Commands:
 : When [No]
  @>
 : Branch End
+@>Script: reset_menu_theme
 @>
 
 Page #2
@@ -59502,13 +59893,17 @@ Move Animation
 Trigger: Player Touch
 
 List of Event Commands:
-@>Text: \bProceeding past this point will trigger the final cutscene
- :    : and final fight of the game.
-@>Text: \bIt is highly advised that you prepare yourself beforehand.
-@>Text: \bDo you wish to proceed?
+@>Script: set_menu_theme("dark")
+@>Text: \l[4]\w[dark]Upon proceeding, a lengthy sequence will unfold with
+ :    : no time to save in between. It is recommended to set aside sufficent
+ :    : time before continuing.
+@>Text: \l[4]\w[dark]This will mark the final battle of The Festival of Curses.
+ :    : It is advised that you prepare yourself beforehand.
+@>Text: \w[dark]\bDo you wish to proceed?
 @>Show Choices: Yes, No
 (When Cancel: Choice 2)
 : When [Yes]
+ @>Script: reset_menu_theme
  @>Set Move Route: This event
                    (Ignore If Can't Move)
   :              : $>SE: 'Door enter', 100, 100
@@ -59548,6 +59943,7 @@ List of Event Commands:
 : When [No]
  @>
 : Branch End
+@>Script: reset_menu_theme
 @>
 
 Page #2
@@ -60053,6 +60449,42 @@ List of Event Commands:
 @>Text: \se[]\l[4]You will now be returned to the Title Screen. 
  :    : When you resume the game, you will be at your last 
  :    : save point.
+@>Change Text Options: Bottom, Show
+@>
+
+#------------------------------------------------------------------------------
+Event ID: 022
+Event Name: EV022
+(X,Y): (004,010)
+
+Page #1
+Conditions
+None
+
+Autonomous Movement
+Type: Fixed
+Speed: 3: Slow
+Freq: 3: Low
+Options Enabled
+Move Animation
+Trigger: Action Button
+
+List of Event Commands:
+@>Change Screen Color Tone: (-60,-60,-60,255), @10
+@>Wait: 10 frame(s)
+@>Change Text Options: Middle, Show
+@>Text: \w[dark]<i>\l[4]Dear Old Friend,\nHow have you been? It has been quite 
+ :    : some time since we've last gotten together to have a chat.</i>
+@>Text: \w[dark]<i>\l[3]I hear you've found yourself a new apprentice. Is she part
+ :    : of your schemes to "defeat that Shrine Maiden"?</i>
+@>Text: \w[dark]<i>\l[5]Hopefully she turns out better than your last one - no ill
+ :    : will against the aspiring magician, of course. She has been doing well,
+ :    : and has made quite the name for herself in Gensokyo since you've been gone.</i>
+@>Text: \w[dark]<i>\l[3]We really should catch up one of these days, I have so many
+ :    : stories to tell you about what's been going on!</i>
+@>Text: \w[dark]<i>\l[2]Until we next meet,\n- Yuuka Kazami</i>
+@>Change Screen Color Tone: (0,0,0,0), @10
+@>Wait: 10 frame(s)
 @>Change Text Options: Bottom, Show
 @>
 
@@ -63448,7 +63880,7 @@ Move Animation
 Trigger: Parallel Process
 
 List of Event Commands:
-@>Script: $scene = Scene_Credits.new
+@>Script: $scene = Scene_Credits_TFoC.new
 @>Wait: 20 frame(s)
 @>Script: TFoCPostgameScene.new
 @>Script: # pbAllowSpeedup
@@ -111170,6 +111602,7 @@ Move Animation
 Trigger: Autorun
 
 List of Event Commands:
+@>Change Screen Color Tone: (-50,-50,-50,0), @6
 @>Control Switches: [0001: Starting over] = OFF
 @>
 

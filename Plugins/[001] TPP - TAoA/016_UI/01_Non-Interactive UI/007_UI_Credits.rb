@@ -1,6 +1,6 @@
 class Scene_Credits
   BGM                    = "W-012. Hourai Illusion ~ Far East.ogg"
-  BACKGROUNDS_LIST       = ["credits1", "credits2", "credits3", "credits4", "credits5"]
+  BACKGROUNDS_LIST       = ["Gensokyo"]
   def get_text
     ret = Settings.game_credits || []
     # Add plugin credits

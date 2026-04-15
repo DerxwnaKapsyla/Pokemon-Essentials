@@ -45,7 +45,7 @@
   
 MidbattleHandlers.add(:midbattle_global, :miasma_field,
   proc { |battle, idxBattler, idxTarget, trigger|
-    if GameData::MapMetadata.get($game_map.map_id)&.has_flag?("SuzuranField")
+    #if GameData::MapMetadata.get($game_map.map_id)&.has_flag?("SuzuranField")
 	  player = battle.battlers[0]
 	  ratio_value = 25
       case trigger
@@ -53,15 +53,20 @@ MidbattleHandlers.add(:midbattle_global, :miasma_field,
         battle.pbDisplayPaused(_INTL("The field is choked in a thick miasma!"))    
       when "RoundEnd_player"
 	    if $game_switches[135] # Are we battling Medicine? If not, skip and execute as normal
-		  ratio_value = 5 # Set to 5% as opposed to 25%
+		  ratio_value = 100 # Set to 5% as opposed to 25%
 		end
+		echoln "Executing Miasma Field Check"
         if rand(100) <= ratio_value
+		echoln "> Miasma Field Check: Success"
 		  battle.pbDisplayPaused(_INTL("The miasma crept closer to your party..."))    
+		  echoln "Executing Miasma Field Effect Check"
 		  if rand(100) <= 25 # 25% chance that you'll get a positive effect. 75% for negative effect.
 		    battle.pbDisplayPaused(_INTL("...But your party stood firm and resisted the miasma!"))    
+			echoln "> Miasma Field Effect Check: Resist"
+			echoln "Executing Miasma Field Effect Type"
 			case rand(2)
 			when 0 
-			  player.pbCureStatus(forced)
+			  echoln "> Miasma Field Effect Type: Affliction Removal"
 			  player.pbCureStatus
 			  player.pbCureConfusion
 			  player.pbCureAttract
@@ -70,21 +75,26 @@ MidbattleHandlers.add(:midbattle_global, :miasma_field,
 			  player.effects[PBEffects::Disable] = 0
 			  battle.pbDisplayPaused(_INTL("{1} was cured of all negative afflictions!", player.pbThis))    
 			when 1 # Boost the active party member's stats by 1 stage. Attack/Special Attack, Defense/Special Defense, Speed/Evasion
+			  echoln "> Miasma Field Effect Type: Stat Increase"
+			  showAnim = true
 			  case rand(3) 
 			  when 1 # Boost Attack and Special Attack
+			    echoln "> Boosting Attacks"
 			  	[:ATTACK, :SPECIAL_ATTACK].each do |stat|
                   next if !player.pbCanRaiseStatStage?(stat, player)
 	              player.pbRaiseStatStage(stat, 1, player, showAnim)
                   showAnim = false
 	             end
 			  when 2 # Boost Defense and Special Defense
-			  	[:DEFENSE, :SPECIAL_DEFENSE].each do |stat|
+			  	echoln "> Boosting Defenses"
+				[:DEFENSE, :SPECIAL_DEFENSE].each do |stat|
                   next if !player.pbCanRaiseStatStage?(stat, player)
 	              player.pbRaiseStatStage(stat, 1, player, showAnim)
                   showAnim = false
 	             end
 			  when 3 # Boost Speed and Evasion
-			  	[:SPEED, :EVASION].each do |stat|
+			  	echoln "> Boosting Speed/Evasion"
+				[:SPEED, :EVASION].each do |stat|
                   next if !player.pbCanRaiseStatStage?(stat, player)
 	              player.pbRaiseStatStage(stat, 1, player, showAnim)
                   showAnim = false
@@ -92,19 +102,28 @@ MidbattleHandlers.add(:midbattle_global, :miasma_field,
 			  end
 			end
 		  else
-		    case rand(3) # Determining Status Condition
-		    when 0 then player.pbPoison if player.pbCanInflictStatus?(:POISON, player, true)
-		    when 1 then player.pbBurn if player.pbCanInflictStatus?(:BURN, player, true)
-		    when 2 then player.pbParalyze if player.pbCanInflictStatus?(:PARALYSIS, player, true)
+		    echoln "> Miasma Field Effect Check: Afflict"
+			case rand(3) # Determining Status Condition
+		    when 0
+			  player.pbPoison if player.pbCanInflictStatus?(:POISON, player, true) 
+			  echoln "> Applying Poison if possible"
+		    when 1
+			  player.pbBurn if player.pbCanInflictStatus?(:BURN, player, true) 
+			  echoln "> Applying Burn if possible"
+		    when 2 
+			  player.pbParalyze if player.pbCanInflictStatus?(:PARALYSIS, player, true)
+			  echoln "> Applying Paralysis if possible"
 		    # when 3 
 		      # battle.pbAnimation(:GRUDGE, player, player)
 		      # battle.pbDisplayPaused(_INTL("{1} was inflicted with a curse!", player.pbThis))
 		      # player.effects[PBEffects::Curse] = true
 		    end
           end	    
+		else
+		  echoln "> Miasma Field Check: Failed"
 		end
       end
-	end
+	#end
   }
 )
 
