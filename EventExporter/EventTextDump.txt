@@ -16704,190 +16704,6 @@ List of Event Commands:
 @>
 
 #------------------------------------------------------------------------------
-Event ID: 015
-Event Name: EV015
-(X,Y): (028,013)
-
-Page #1
-Conditions
-None
-
-Graphic: Object ball
-
-Autonomous Movement
-Type: Fixed
-Speed: 3: Slow
-Freq: 3: Low
-Options Enabled
-Move Animation
-Trigger: Action Button
-
-List of Event Commands:
-@>Script: $scene = Scene_Credits.new
-@>
-
-Page #2
-Conditions
-None
-
-Graphic: Object ball
-
-Autonomous Movement
-Type: Fixed
-Speed: 3: Slow
-Freq: 3: Low
-Options Enabled
-Move Animation
-Trigger: Action Button
-
-List of Event Commands:
-@>Fade Out BGM: 3 sec.
-@>
-
-#------------------------------------------------------------------------------
-Event ID: 016
-Event Name: EV016
-(X,Y): (028,015)
-
-Page #1
-Conditions
-None
-
-Graphic: Person_Medicine
-
-Autonomous Movement
-Type: Fixed
-Speed: 3: Slow
-Freq: 3: Low
-Options Enabled
-Move Animation
-Trigger: Action Button
-
-List of Event Commands:
-@>Text: \xn[\pn]Hah... There! Got anything else you'd like to throw at 
- :    : us!?
-@>Text: \xn[Medicine]Very well... Perhaps there's some merit to your
- :    : words.
-@>Text: \xn[\pn]Does that mean you'll-
-@>Text: \xn[Medicine]However! I'm still not abandoning my plans!
-@>Text: \xn[\pn]Oh come <i>on</i>! What else do I have to do!
-@>Text: \xn[Medicine]If you want to have even a single hope of 
- :    : defending the Village, you'll have to defeat me!
-@>Text: \xn[\pn]Is that really what it'll take? You'll drop that tome
- :    : and stop your planned attack on the Village if I can beat you?
-@>Text: \xn[Medicine]That's if you can! Surely you're to the task, right?
-@>Text: \xn[\pn]My Puppets and I can take whatever you throw at us!
-@>Text: \xn[Medicine]Good! It wouldn't be any fun if you didn't
- :    : fail while doing your best!
-@>Text: \xn[\pn]\b(How can one doll be so arrogant... But we'll show 
- :    : her!)
-@>Text: \xn[Medicine]Come, Champion of the Human Village! Face me!
-@>Text: \xn[Medicine]Your defeat shall serve as proof of my ideals!
-@>Text: \xn[Medicine]It is only right that I liberate my kin... for none 
- :    : among you have the power to stop me!
-@>Control Switches: [0131: Medi Final Puppet Check] = OFF
-@>Control Variables: [0117..0118] = 0
-@>Script: $game_temp.vs_transition_bg = "Suzuran"
-:       : #$game_temp.vs_name = "Vs. Medicine Melancholy"
-@>Script: setBattleRule("midbattleScript", :vs_medicine)
-:       : setBattleRule("battleIntroText", "Medicine Melancholy, leader of the Puppet Rebellion, challenges you and your 
-:       : ideals!")
-@>Control Switches: [0135: Battling Medicine] = ON
-@>Conditional Branch: Script: TrainerBattle.start(:MEDICINE_Tr, "Medicine Melancholy", 10 + pbGet(99) * 10)
- @>Control Switches: [0123: Medicine Beaten] = ON
- @>Fade Out BGM: 1 sec.
- @>Text: \xn[Medicine]How... How could we lose? I was so sure that
-  :    : we could do this!
- @>Text: \xn[\pn]Medicine... Just because you have a certain power 
-  :    : doesn't mean you know how to use it properly.
- @>Text: \xn[\pn]The same could be said of us Humans who use 
-  :    : Puppets as well.
- @>Text: \xn[\pn]Sure, there are some of my kind that are malicious 
-  :    : and will abuse their Puppets.
- @>Text: \xn[\pn]And perhaps you might have even been able to
-  :    : overpower such a person.
- @>Text: \xn[\pn]But, we were evenly matched. Not just in strength,
-  :    : but in our beliefs.
- @>Text: \xn[\pn]Even without you giving your Puppets a boost via
-  :    : that tome, I believe the match could still have swung either
-  :    : way.
- @>Text: \xn[\pn]I can see that you firmly believe in your ideals, but... 
-  :    : perhaps you could also stand to look at it from another 
-  :    : perspective as well!
- @>Text: \xn[Medicine]Another perspective... You mean allow myself
-  :    : to be once again subjugated by Humans?
- @>Text: \xn[\pn]No! No Human is going to want to subjugate or control
-  :    : you!
- @>Text: \xn[\pn]All I'm saying is to consider that the malicious Humans 
-  :    : you've seen and experienced are a very small group.
- @>Text: \xn[\pn]At the very least, if you can't trust in Humans as a
-  :    : whole to be kind and compassionate, put your trust in me.
- @>Text: \xn[\pn]Sure, I'm just some random nobody from the Village,
-  :    : especially when compared to the likes of the regular Incident
-  :    : Solvers, but I'd like to believe I'm at least somewhat 
-  :    : trustworthy!
- @>Text: \xn[\pn]So, what do you say? Will you call off your plans
-  :    : for the Village?
- @>Text: \xn[Medicine]...\wt[40] ...Hmph! You've bested me in battle, and
-  :    : at the very least I'm willing to acknowledge that much!
- @>Text: \xn[Medicine]I'll let you go, as well as your Village. This time.
- @>Text: \xn[\pn]Thank you!
- @>Text: \xn[Medicine]Make no mistake, if I see another Human attempt a
-  :    : grandiose power play with Puppets, I will not hesitate to act 
-  :    : again!
- @>Text: \xn[\pn]Then I'll just have to make sure that such a threat 
-  :    : doesn't leave the Village and is put down before it can start!
- @>Text: \xn[Medicine]Hmph! Here, take this Tome of Curses back!
- @>Set Move Route: [The Mansion of Mystery]
-                   (Ignore If Can't Move)
-  :              : $>Through ON
-  :              : $>Move Down
-  :              : $>Move Down
-  :              : $>Move Down
-  :              : $>Move Down
- @>Wait for Move's Completion
- @>Text: \pn received the <c2=65467b14>Tome of Curses</c2> from Medicine!\me[Key item get.ogg]\wtnp[80]
- @>Text: \xn[Medicine]We're done here! Take that tome and leave my 
-  :    : home before I change my mind!
- @>Text: \xn[\pn]Yes ma'am! Please take care of yourself going 
-  :    : forward!
- @>Text: \xn[Medicine]You're rather strange for a Human! Wishing well 
-  :    : upon a person who just threatened you and your Village!
- @>Text: \xn[\pn]Ahaha, I guess that's another thing that having 
-  :    : Puppets by my side has done for me!
- @>Text: \xn[Medicine]Truly strange! Oh well! Su-san and I will be off 
-  :    : now as well!
- @>Control Switches: [0135: Battling Medicine] = OFF
- @>Script: pbSetSelfSwitch(1,"A",true)
- @>Script: # $game_variables[1] = $GameSpeed
- :       : # pbDisallowSpeedup
- :       : # $GameSpeed = 0
- @>Change Map Settings:Fog = 'PurpleFog', 0, 200, Normal, 200, 0, 0
- @>Change Screen Color Tone: (51,17,-34,255), @10
- @>Play BGM: 'W-029. Unknown Flower, Mesmerizing Journey', 70, 100
- @>Wait: 10 frame(s)
- @>Change Text Options: Bottom, Show
- @>Text: \w[dark]\c[12]\se[]\l[2]And so, just like that, \pn once again brought a close to
-  :    : yet another epic of theirs.\wtnp[90]
- @>Text: \w[dark]\c[12]\se[]\l[3]With Medicine defeated, and the Tome of Curses in her
-  :    : possession, \pn set off for the Human Village once more.\wtnp[90]
- @>Change Screen Color Tone: (-255,-255,-255,0), @6
- @>Wait: 6 frame(s)
- @>Change Transparent Flag: Transparency
- @>Transfer Player:[069: Ending Filler Map 1 - Stage 6], (017,015)
- @>Change Screen Color Tone: (51,17,-34,255), @6
- @>
-: Else
- @>Control Switches: [0135: Battling Medicine] = OFF
- @>Script: pbTrainerEnd
- @>Exit Event Processing
- @>
-: Branch End
-@>Control Switches: [0135: Battling Medicine] = OFF
-@>Script: pbTrainerEnd
-@>
-
-#------------------------------------------------------------------------------
 Event ID: 018
 Event Name: EV018
 (X,Y): (013,013)
@@ -68498,7 +68314,7 @@ Move Animation
 Trigger: Action Button
 
 List of Event Commands:
-@>Script: pbRestStop
+@>Script: pbTKoLShop
 @>
 
 #------------------------------------------------------------------------------
@@ -68996,6 +68812,7 @@ List of Event Commands:
 @>Text: \xn[\pn]Alright, let's hear them then.
 @>Play SE: 'Electronic Malfunction', 40, 100
 @>Text: \xn[Daichi]Tell me, what are your thoughts on Dreamwalking?
+@>Script: $player.scenario_name = "The Kingdom of Lunacy?"
 @>Set Event Location: [Moving NPC],(006,008), Left
 @>Set Move Route: [Moving NPC]
  :              : $>Change Opacity: 255
@@ -71877,6 +71694,28 @@ List of Event Commands:
 : Branch End
 @>
 
+Page #2
+Conditions
+Variable 0142: TLA Plot Variable is 1 or above
+
+Graphic: Exitarrow_red
+
+Autonomous Movement
+Type: Fixed
+Speed: 3: Slow
+Freq: 3: Low
+Options Enabled
+Move Animation
+Stop Animation
+Trigger: Player Touch
+
+List of Event Commands:
+@>Conditional Branch: Player is facing Left
+ @>Text: The door is locked?
+ @>
+: Branch End
+@>
+
 #------------------------------------------------------------------------------
 Event ID: 010
 Event Name: ExitArrow
@@ -71904,6 +71743,28 @@ List of Event Commands:
  @>Wait: 8 frame(s)
  @>Transfer Player:[119: Eientei (Rooms)], (015,035), No Fade
  @>Change Screen Color Tone: (0,0,0,0), @6
+ @>
+: Branch End
+@>
+
+Page #2
+Conditions
+Variable 0142: TLA Plot Variable is 1 or above
+
+Graphic: Exitarrow_red
+
+Autonomous Movement
+Type: Fixed
+Speed: 3: Slow
+Freq: 3: Low
+Options Enabled
+Move Animation
+Stop Animation
+Trigger: Player Touch
+
+List of Event Commands:
+@>Conditional Branch: Player is facing Left
+ @>Text: The door is locked?
  @>
 : Branch End
 @>
@@ -71939,6 +71800,28 @@ List of Event Commands:
 : Branch End
 @>
 
+Page #2
+Conditions
+Variable 0142: TLA Plot Variable is 1 or above
+
+Graphic: Exitarrow_red
+
+Autonomous Movement
+Type: Fixed
+Speed: 3: Slow
+Freq: 3: Low
+Options Enabled
+Move Animation
+Stop Animation
+Trigger: Player Touch
+
+List of Event Commands:
+@>Conditional Branch: Player is facing Down
+ @>Text: The door is locked?
+ @>
+: Branch End
+@>
+
 #------------------------------------------------------------------------------
 Event ID: 012
 Event Name: ExitArrow
@@ -71966,6 +71849,28 @@ List of Event Commands:
  @>Wait: 8 frame(s)
  @>Transfer Player:[119: Eientei (Rooms)], (029,028), Down, No Fade
  @>Change Screen Color Tone: (0,0,0,0), @6
+ @>
+: Branch End
+@>
+
+Page #2
+Conditions
+Variable 0142: TLA Plot Variable is 1 or above
+
+Graphic: Exitarrow_red
+
+Autonomous Movement
+Type: Fixed
+Speed: 3: Slow
+Freq: 3: Low
+Options Enabled
+Move Animation
+Stop Animation
+Trigger: Player Touch
+
+List of Event Commands:
+@>Conditional Branch: Player is facing Down
+ @>Text: The door is locked?
  @>
 : Branch End
 @>
@@ -72137,8 +72042,8 @@ Move Animation
 Trigger: Player Touch
 
 List of Event Commands:
-@>Conditional Branch: Variable [0142: TLA Plot Variable] == 4
- @>Control Variables: [0142: TLA Plot Variable] = 5
+@>Conditional Branch: Variable [0121: TKoL Plot Variable] == 4
+ @>Control Variables: [0121: TKoL Plot Variable] = 5
  @>
 : Branch End
 @>Play SE: 'Door exit', 100, 100
@@ -72221,6 +72126,26 @@ List of Event Commands:
  @>
 : Branch End
 @>Script: setTempSwitchOn("A")
+@>
+
+Page #3
+Conditions
+Variable 0142: TLA Plot Variable is 1 or above
+
+Autonomous Movement
+Type: Fixed
+Speed: 3: Slow
+Freq: 3: Low
+Options Enabled
+Move Animation
+Trigger: Player Touch
+
+List of Event Commands:
+@>Text: There's... nothing in there?
+@>Text: Not even a room?
+@>Text: What?
+@>Set Move Route: Player
+ :              : $>Move Down
 @>
 
 #------------------------------------------------------------------------------
@@ -75016,7 +74941,7 @@ Move Animation
 Trigger: Autorun
 
 List of Event Commands:
-@>Set Event Location: [Seiran],(028,040)
+@>Set Event Location: [Seiran],(028,040), Right
 @>Set Event Location: [Seiran 2],(062,060), Right
 @>Set Event Location: [Ringo],(064,060), Left
 @>Set Event Location: [Trainer(4)],(024,054), Down
@@ -76104,7 +76029,6 @@ Move Animation
 Trigger: Action Button
 
 List of Event Commands:
-@>Text: e
 @>
 
 #------------------------------------------------------------------------------
@@ -79179,85 +79103,6 @@ List of Event Commands:
 @>Text: I've heard a rumor that if you defeat enough Puppets in the simulator,
  :    : then a stronger Puppet will make an appearance.
 @>Text: I haven't tested that though, I can't seem to last too long in there.
-@>
-
-#------------------------------------------------------------------------------
-Event ID: 003
-Event Name: EV003
-(X,Y): (013,021)
-
-Page #1
-Conditions
-None
-
-Graphic: trainer_ABYSSALSOVEREIGN
-
-Autonomous Movement
-Type: Fixed
-Speed: 3: Slow
-Freq: 3: Low
-Options Enabled
-Move Animation
-Trigger: Action Button
-
-List of Event Commands:
-@>Text: \xn[???]Oh- You're here!
-@>Text: \xn[???]I've been waiting for you to return!
-@>Text: \xn[???]...Pardon? Who am I? 
-@>Text: \xn[???]My name's Amira Naxeroth! I'm just a simple traveler of 
- :    : this vast Omniverse, chronicling all the interesting stories I've 
- :    : seen along the way.
-@>Text: \xn[Amira]And your story... I was deeply interested in it! So I swung
- :    : by this Universal Instance to document it!
-@>Text: \xn[Amira]You don't mind if I name it after you, right?
-@>Text: \xn[Amira]"The Adventures of Ayaka"! Simple, gets the point across!
-@>Text: \xn[Amira]Well hey, since you're here now... What do you say to a
- :    : battle? I'm itching to have a go against a legend like you!
-@>Text: \xn[Amira]What do you say? Will you indulge me?
-@>Show Choices: Yes, No
-(When Cancel: Choice 2)
-: When [Yes]
- @>Text: \xn[Amira]Great, thank you! I promise I'm not some wacko 
-  :    : superboss who will be impossible to beat! Just a nice,
-  :    : simple battle.
- @>Script: pbTrainerIntro(:ABYSSALSOVEREIGN)
- @>Text: \xn[Amira]That being said, I won't pull any punches! Let's go!
- @>Wait: 30 frame(s)
- @>Conditional Branch: Script: TrainerBattle.start(:ABYSSALSOVEREIGN, "Amira Naxeroth")
-  @>Text: \xn[Amira]That battle will serve as great reference material for the 
-   :    : story I'm writing! Nothing beats first hand experience after all.
-  @>Text: \xn[Amira]Y'know, I want you to have this. I found her 
-   :    : when I was traveling through different Universal Instances 
-   :    : and she reminded me of a friend of mine.
-  @>Control Switches: [0167: The Writer's Test] = ON
-  @>Control Self Switch: A =ON
-  @>
- : Branch End
- @>Script: pbTrainerEnd
- @>
-: When [No]
- @>Text: \xn[Amira]Aww, fine. I'll be here if you change your mind!
-  :    : After all, I have all the time in the Omniverse~.
- @>
-: Branch End
-@>
-
-Page #2
-Conditions
-Self Switch A is ON
-
-Graphic: trainer_ABYSSALSOVEREIGN
-
-Autonomous Movement
-Type: Fixed
-Speed: 3: Slow
-Freq: 3: Low
-Options Enabled
-Move Animation
-Trigger: Action Button
-
-List of Event Commands:
-@>Text: \xn[Amira]Don't worry! This will be done one day!
 @>
 
 #------------------------------------------------------------------------------
@@ -91449,6 +91294,7 @@ List of Event Commands:
  :    : supposed to show up here...}
 @>Wait: 20 frame(s)
 @>Text: \xn[\pn]\b{This area... is it...?}
+@>Script: $player.scenario_name = "You shouldn't be here. Leave, now."
 @>Control Self Switch: A =ON
 @>
 
@@ -91560,7 +91406,7 @@ List of Event Commands:
 @>Play SE: 'Door exit', 60, 100
 @>Change Screen Color Tone: (-255,-255,-255,0), @6
 @>Wait: 8 frame(s)
-@>Transfer Player:[150: The Moon?], (008,013), Right, No Fade
+@>Transfer Player:[150: The Moon?], (008,013), Up, No Fade
 @>Change Screen Color Tone: (0,0,0,0), @6
 @>
 
@@ -91753,14 +91599,7 @@ Move Animation
 Trigger: Autorun
 
 List of Event Commands:
-@>Set Event Location: [Mima],(017,052)
-@>Set Event Location: [EV002],(029,044)
-@>Set Event Location: [EV003],(051,051)
-@>Set Event Location: [EV004],(057,040)
-@>Set Event Location: [EV005],(031,032)
-@>Set Event Location: [Healing Statue],(015,020)
-@>Set Event Location: [PC01: Hidden Power],(049,020)
-@>Set Event Location: [],(064,010)
+@>Change Screen Color Tone: (0,0,0,0), @8
 @>Control Switches: [0001: Starting over] = OFF
 @>
 
@@ -95541,6 +95380,7 @@ List of Event Commands:
  @>Wait for Move's Completion
  @>Play SE: 'Electronic Malfunction', 40, 100
  @>Text: \xn[Eirin]Ah, welcome back Miss \pn.
+ @>Script: $player.scenario_name = "??? ???? ?????????"
  @>Set Move Route: [Reisen]
   :              : $>Turn Down
  @>Text: \xn[\pn]Welcome back...? Isn't this the first time I've been here?
@@ -97338,7 +97178,9 @@ List of Event Commands:
 @>Transfer Player:[090: Kaian Passageway], (019,008), No Fade
 @>Change Screen Color Tone: (0,0,0,0), @6
 @>Set Move Route: Player
+ :              : $>Through ON
  :              : $>Move Down
+ :              : $>Through OFF
 @>
 
 #------------------------------------------------------------------------------
@@ -106180,7 +106022,7 @@ Move Animation
 Trigger: Autorun
 
 List of Event Commands:
-@>Play BGS: 'Vortex', 80, 100
+@>Play BGS: 'Vortex', 50, 100
 @>Script: pbSetSelfSwitch(36,"A",false)
 @>Wait: 25 frame(s)
 @>Set Event Location: [Ayaka (Cutscene)],(015,031)
@@ -115143,6 +114985,22 @@ List of Event Commands:
 
 Page #28
 Conditions
+Switch 0168: Ulti.Trial Active is ON
+Variable 0145: Boss Rush Variable is 99 or above
+
+Autonomous Movement
+Type: Fixed
+Speed: 3: Slow
+Freq: 3: Low
+Options Enabled
+Move Animation
+Trigger: Action Button
+
+List of Event Commands:
+@>
+
+Page #29
+Conditions
 Self Switch A is ON
 
 Autonomous Movement
@@ -115441,6 +115299,7 @@ List of Event Commands:
  @>Recover All: Entire Party
  @>
 : Else
+ @>Script: echoln $game_variables[145]
  @>Text: Oh dear, it looks like you lost...
  @>Text: Well, it happens, this is a brutal challenge after all!
  @>
@@ -115473,6 +115332,8 @@ List of Event Commands:
 @>Set Move Route: [Ulti. Trial Receptionist]
  :              : $>Move Right
  :              : $>Move Up
+@>Set Move Route: [Trainer 1]
+ :              : $>Change Opacity: 255
 @>Wait for Move's Completion
 @>Scroll Map: Up, 1, 3
 @>Conditional Branch: Variable [0145: Boss Rush Variable] == 34
@@ -115874,7 +115735,7 @@ List of Event Commands:
   @>Text: \xn[Amira]Y'know, I want you to have this. I found her 
    :    : when I was traveling through different Universal Instances 
    :    : and she reminded me of a friend of mine.
-  @>Script: give_lucia
+  @>Script: dkGiveLucia
   @>Text: Ayaka recieved Lucia from Amira!\me[Pkmn get]\wtnp[80]
   @>Text: \xn[Amira]Please take good care of her! In this universe, she's
    :    : basically one of a kind!
@@ -115886,7 +115747,7 @@ List of Event Commands:
   @>Wait: 10 frame(s)
   @>Control Switches: [0167: The Writer's Test] = ON
   @>Control Self Switch: A =ON
-  @>Change Screen Color Tone: (-255,-255,-255,0), @10
+  @>Change Screen Color Tone: (0,0,0,0), @10
   @>
  : Branch End
  @>Script: pbTrainerEnd
@@ -115900,7 +115761,7 @@ List of Event Commands:
 
 Page #2
 Conditions
-None
+Self Switch A is ON
 
 Autonomous Movement
 Type: Fixed
@@ -115936,6 +115797,40 @@ List of Event Commands:
 @>Wait: 8 frame(s)
 @>Transfer Player:[152: Tower of Adventure], (019,017), Up, No Fade
 @>Change Screen Color Tone: (0,0,0,0), @6
+@>
+
+#------------------------------------------------------------------------------
+Event ID: 007
+Event Name: EV007
+(X,Y): (035,024)
+
+Page #1
+Conditions
+None
+
+Autonomous Movement
+Type: Fixed
+Speed: 3: Slow
+Freq: 3: Low
+Options Enabled
+Move Animation
+Trigger: Action Button
+
+List of Event Commands:
+@>Show Choices: Scenario 1, Scenario 2, Scenario 3, Exit
+(When Cancel: Choice 4)
+: When [Scenario 1]
+ @>Script: $player.scenario_name = "The Kingdom of Lunacy?"
+ @>
+: When [Scenario 2]
+ @>Script: $player.scenario_name = "?????????"
+ @>
+: When [Scenario 3]
+ @>Script: $player.scenario_name = "You shouldn't be here. Leave, now."
+ @>
+: When [Exit]
+ @>
+: Branch End
 @>
 
 #------------------------------------------------------------------------------

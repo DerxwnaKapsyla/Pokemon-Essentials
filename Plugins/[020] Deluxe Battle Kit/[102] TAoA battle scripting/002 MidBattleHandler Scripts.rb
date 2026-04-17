@@ -45,7 +45,7 @@
   
 MidbattleHandlers.add(:midbattle_global, :miasma_field,
   proc { |battle, idxBattler, idxTarget, trigger|
-    #if GameData::MapMetadata.get($game_map.map_id)&.has_flag?("SuzuranField")
+    if GameData::MapMetadata.get($game_map.map_id)&.has_flag?("SuzuranField")
 	  player = battle.battlers[0]
 	  ratio_value = 25
       case trigger
@@ -53,7 +53,7 @@ MidbattleHandlers.add(:midbattle_global, :miasma_field,
         battle.pbDisplayPaused(_INTL("The field is choked in a thick miasma!"))    
       when "RoundEnd_player"
 	    if $game_switches[135] # Are we battling Medicine? If not, skip and execute as normal
-		  ratio_value = 100 # Set to 5% as opposed to 25%
+		  ratio_value = 5 # Set to 5% as opposed to 25%
 		end
 		echoln "Executing Miasma Field Check"
         if rand(100) <= ratio_value
@@ -123,7 +123,7 @@ MidbattleHandlers.add(:midbattle_global, :miasma_field,
 		  echoln "> Miasma Field Check: Failed"
 		end
       end
-	#end
+	end
   }
 )
 

@@ -53,6 +53,8 @@ end
 
 def pbUseLunarSake
   return false if !pbCanUseLunarSake?
+  pbMessage(_INTL("\\pn popped open the Ancient Lunar Sake."))
+  pbMessage(_INTL("The chance of encountering a Rare Puppet has increased temporarily."))
   $PokemonGlobal.sake_counter = 600
   $PokemonGlobal.sake_active = true
   return true

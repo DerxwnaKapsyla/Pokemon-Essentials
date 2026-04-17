@@ -79,7 +79,7 @@ def reset_menu_theme
   end
 end
 
-def give_lucia
+def dkGiveLucia
     pkmn = Pokemon.new(:GLACEON, 1)
 	pkmn.name = "Lucia"
 	pkmn.owner.gender = 1

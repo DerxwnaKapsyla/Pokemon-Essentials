@@ -316,11 +316,11 @@ module APMSettings
     # Text when choosing amount of item with overcharge. {1} = item name {2} = overcharge price {3} = original price.
     BuyItemAmountOvercharge: [],
     # Text when buying 1 of an item. {1} = item vowel {2} = item name {3} = price.
-    BuyItem: ["The Musharna makes a confirming noise, almost like it's asking if you want {1} {2}, and that it'll be ${3}."],
+    BuyItem: ["The Musharna makes a confirming noise, almost like it's asking if you want {1} {2}, and that it'll be {3}."],
     # Text when buying 2 or more of an item. {1} = amount {2} = item name (plural) {3} = price.
-    BuyItemMult: ["The Musharna makes a confirming noise, almost like it's asking if you want {1} {2}, and that it'll be ${3}."],
+    BuyItemMult: ["The Musharna makes a confirming noise, almost like it's asking if you want {1} {2}, and that it'll be {3}."],
     # Text when buying important item (that you can only buy 1 off). {1} = item name {2} = price.
-    BuyItemImportant: ["The Musharna makes a confirming noise, almost like it's asking if you want {1}, and that it'll be ${2}."],
+    BuyItemImportant: ["The Musharna makes a confirming noise, almost like it's asking if you want {1}, and that it'll be {2}."],
     # Text when wanted item is out of stock. {1} = item name (plural) {2} = time in days (tomorrow, in 2 days, in x days, in a week, next week etc.)
     BuyOutOfStock: [],
     # Text when bought item.
@@ -334,7 +334,7 @@ module APMSettings
     # Text when selecting an item to sell. {1} = item name
     SellItemAmount: ["The Musharna makes a questioning noise, almost like it's asking how many {1} you want to sell?"],
     # Text when confirming amount of selected item to sell. {1} = price
-    SellItem: ["The Musharna makes a confirming noise, almost like it's telling you that they pay ${1} for the items."],
+    SellItem: ["The Musharna makes a confirming noise, almost like it's telling you that they pay {1} for the items."],
     # Text when unable to sell selected item. {1} = item name
     CantSellItem: ["The Musharna makes a confused noise, as if to tell you that it can't buy the {1}."],
     # Text when returning to menu to choose either buying, selling or exit.

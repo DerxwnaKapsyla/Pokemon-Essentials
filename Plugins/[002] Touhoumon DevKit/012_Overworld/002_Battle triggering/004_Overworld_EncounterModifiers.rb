@@ -31,8 +31,17 @@ EventHandlers.add(:on_trainer_load, :shameless_self_insert,
 
 EventHandlers.add(:on_wild_pokemon_created, :alter_shiny_rate,
   proc { |pkmn|
-    if $PokemonGlobal.sake_counter >= 300
-      pkmn.shiny = (rand(256) == 0)
+    if $PokemonGlobal.sake_active
+      if rand(256) == 0
+	    pkmn.shiny = true
+		echoln "-------------------------------------------------------------------------------"
+		echoln "Ancient Lunar Sake: Shiny Puppet generated."
+		echoln "-------------------------------------------------------------------------------"
+	  else
+	    echoln "-------------------------------------------------------------------------------"
+		echoln "Ancient Lunar Sake: Shiny Puppet not generated."
+		echoln "-------------------------------------------------------------------------------"
+	  end
     end
   }
 )
@@ -138,6 +147,7 @@ EventHandlers.add(:on_wild_species_chosen, :get_unique_encounter,
   species = pkmn[0]
   level   = pkmn[1]
   
+  echoln "-------------------------------------------------------------------------------"
   echoln "Checking if player has relevant item..."
   next false if !$bag.has?(:ANCIENTLUNARSAKE)
   echoln "Confirmed. Player has relevant item. Proceeding with modifier."
@@ -161,13 +171,16 @@ EventHandlers.add(:on_wild_species_chosen, :get_unique_encounter,
 	
 	if new_enc
 	  echoln "Setting new encounter to #{new_enc[0]}."
+	  echoln "-------------------------------------------------------------------------------"
 	  pkmn[0] = new_enc[0]
 	  pkmn[1] = new_enc[1]
 	else
 	  echoln "Limit on checks reached. Keeping original encounter."
+	  echoln "-------------------------------------------------------------------------------"
 	end
   else
     echoln "Negative. #{species} is not owned by the player."
+	echoln "-------------------------------------------------------------------------------"
   end
   }
 )

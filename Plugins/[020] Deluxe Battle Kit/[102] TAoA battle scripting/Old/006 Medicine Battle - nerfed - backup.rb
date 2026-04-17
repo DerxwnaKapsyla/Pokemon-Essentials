@@ -253,12 +253,12 @@ def medicine_debuff_success(scene, battle)
   scene.pbForceEndSpeech
   battle.pbDisplayPaused(_INTL("Medicine lays a curse upon your party!"))
   if rand(100) <= 75 # Status Conditions
-    case rand(3) # Determine status condition
+    case rand(5) # Determine status condition
     when 0 then player.pbParalyze if player.pbCanInflictStatus?(:PARALYSIS, player, true)
-    when 1 then player.pbBurn if player.pbCanInflictStatus?(:BURN, player, true)
-    when 2 then player.pbPoison if player.pbCanInflictStatus?(:POISON, player, true)
-    #when 1 then player.pbFreeze if player.pbCanInflictStatus?(:FREEZE, player, true)
-    #when 4 then player.pbSleep if player.pbCanInflictStatus?(:SLEEP, player, true)
+    when 1 then player.pbFreeze if player.pbCanInflictStatus?(:FREEZE, player, true)
+    when 2 then player.pbBurn if player.pbCanInflictStatus?(:BURN, player, true)
+    when 3 then player.pbPoison if player.pbCanInflictStatus?(:POISON, player, true)
+    when 4 then player.pbSleep if player.pbCanInflictStatus?(:SLEEP, player, true)
 	end
   else # Stat Lowering
     stat = stats.sample
@@ -307,10 +307,10 @@ def medicine_debuff_backfire(scene, battle)
   if rand(100) <= 75 # Status Conditions
     case rand(5) # Determine status condition
     when 0 then medi.pbParalyze if medi.pbCanInflictStatus?(:PARALYSIS, medi, true)
-    when 1 then medi.pbBurn if medi.pbCanInflictStatus?(:BURN, medi, true)
-    when 2 then medi.pbPoison if medi.pbCanInflictStatus?(:POISON, medi, true)
-    #when 1 then medi.pbFreeze if medi.pbCanInflictStatus?(:FREEZE, medi, true)
-    #when 4 then medi.pbSleep if medi.pbCanInflictStatus?(:SLEEP, medi, true)
+    when 1 then medi.pbFreeze if medi.pbCanInflictStatus?(:FREEZE, medi, true)
+    when 2 then medi.pbBurn if medi.pbCanInflictStatus?(:BURN, medi, true)
+    when 3 then medi.pbPoison if medi.pbCanInflictStatus?(:POISON, medi, true)
+    when 4 then medi.pbSleep if medi.pbCanInflictStatus?(:SLEEP, medi, true)
 	end
   else # Stat Lowering
     stat = stats.sample
