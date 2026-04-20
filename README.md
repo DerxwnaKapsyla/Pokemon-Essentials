@@ -1,42 +1,33 @@
-﻿# Pokémon Essentials
+﻿# Touhou Puppet Play ~ The Adventures of Ayaka
 
-Based on Essentials v21.1.
+Touhou Puppet Play ~ The Adventures of Ayaka is a Touhou Project-centric fangame built on v21.1 of the Essentials Engine for RPG Maker XP. It is a series of episodic games that revolve around the protagonist, Ayaka, and her adventures through Gensokyo, the setting of the Touhou Project. There are three episodes to play through, as well as a conclusion episode, and a very small postgame.
 
-You can build your fangame on top of a fork of this repository. Doing so will let you update your fangame with improvements made to this repo as soon as they are made.
+This game was developed with Windows PCs in mind as the intended means of playing it. There is no guarantee that this will work on other operating systems or devices. Attempt to do so at your own peril- I will not be able to provide support in getting the game to function.
 
-## Usage
+## Story
 
-1. Fork this repo.
-2. Get a copy of Essentials v21.1 (a download link cannot be provided here).
-3. Clone your forked repo into the Essentials v21.1 folder, replacing the existing files with the ones from the repo.
+This fangame has three episodes as well as a final episode to wrap things up. The three episodes are The Mansion of Mystery, The Festival of Curses, and the Kingdom of Lunacy. These three episodes can be played in any order, and finishing all three of them allows you to access The Last Adventure, the final episode.
 
-From here, you can edit this project to turn it into your fangame/develop mods. When this repo is updated, you can pull the changes to update your fork and get the updates into your fangame/modding environment.
+The Mansion of Mystery: Ayaka and her friends have heard rumors of a mansion deep within the woods with mysterious singing coming from it. They decide to break out of the Human Village late at night to try and uncover the truth behind this mystery.
 
-## Scripts
+The Festival of Curses: Disaster strikes the Human Village during its annual Harvest Festival! All of the crops have been cursed and are wilting away as the hours pass. It's up to Ayaka to locate the Goddess of Curses to help dispel the curse that was placed on the Village, and to discover the perpetrator who seeks to "Liberate their kin from the clutches of Humanity."
 
-The scripts no longer live in the Scripts.rxdata file. They have been extracted into separate files and placed in the Data/Scripts/ folder (and subfolders within). This makes it easier to work with other people and keep track of changes.
+The Kingdom of Lunacy: Abnormalities have been spotted across Gensokyo. Puppets have been going missing, weird spider-like machines are roaming the lands. Are they related? One such physician from the Bamboo Forest seems to believe so, and they enlist Ayaka, the Legend of the Human Village, to discover just what might be going on 380,000 kilometers above the earth.
 
-The scripts are loaded into the game alphanumerically, starting from the top folder (Data/Scripts/) and going depth-first. That is, all scripts in a given folder are loaded, and then each of its subfolder is checked in turn (again in alphanumerical order) for files/folders to load/check.
+The Last Adventure: All stories have an ending. This one is no different. One can only hope that this ending won't bring about the end of all of Fantasy.
 
-### Extracting and reintegrating scripts
+## Screenshots and Videos
 
-This repo contains two script files in the main folder:
+TO BE ADDED. 
 
-* scripts_extract.rb - Run this to extract all scripts from Scripts.rxdata into individual .rb files (any existing individual .rb files are deleted).
-  * Scripts.rxdata is backed up to ScriptsBackup.rxdata, and is then replaced with a version that reads the individual .rb files and does nothing else.
-* scripts_combine.rb - Run this to reintegrate all the individual .rb files back into Scripts.rxdata.
-  * The individual .rb files are left where they are, but they no longer do anything.
+## Features
 
-You will need Ruby installed to run these scripts. The intention is to replace these with something more user-friendly.
+* All Touhou characters up to Legacy of Lunatic Kingdom as Puppets. However, the nature of the game means they are not all obtainable. 
+* A Reincarnation system, which allows the player to reset their Puppet's stats and level to 1. This allows for streamlined IV grinding!
+* A Music Room system that replaces Essentials default jukebox scripts.
+* Completed saves will have eventual compatibility with Touhoumon Asteria.
+* Episodes will scale to your progression. Beating one episode will make the remaining two harder, while also scaling up the one you just cleared. This will cap out at 100, with trainers having EVs, IVs, defined movepools, and held items to make things more challenging!
 
-## Files not in the repo
+## Credits
 
-The .gitignore file lists the files that will not be included in this repo. These are:
-
-* The Audio/, Graphics/, Plugins/ and Screenshots/ folders and everything in them.
-* Everything in the Data/ folder, except for:
-  * The Data/Scripts/ folder and everything in there.
-  * Scripts.rxdata (a special version that just loads the individual script files).
-  * messages_core.dat, which contains common messages and is useful for translation projects.
-* A few files in the main project folder (two of the Game.xxx files, the RGSS dll file and errorlog.txt).
-* Temporary files.
+The credits can be found in the "A Useful Folder Full Of Useful Things", but a pastebin to it can be found here. https://pastebin.com/raw/CGZd9REX
