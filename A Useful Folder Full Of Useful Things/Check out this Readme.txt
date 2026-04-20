@@ -102,7 +102,7 @@ Z Button/Shift Button
 H Button
 	* Press to use a registered Key Item.
 
-q Button
+Q Button
 	* Enable Turbo mode, increases the FPS of the game. Has three 
 	  different states. 
 
@@ -128,24 +128,23 @@ Remember: A reported bug eventually* gets fixed, an unreported bug
 stays unnoticed forever.
 
 LEVEL 4 - I CANNOT FIX THESE:
-* Clownpiece's battle in The Kingdom of Lunacy does not work as intended.
-  After defeating the first partner trainer, all partner trainers stop
-  giving out experience early. This is an issue with the SOS Plugin.
-  I do not possess the knowledge to fix this.
+* None at present time!
 
 LEVEL 3 - HIGH PRIORITY:
-* Various graphics are missing or are using placeholder assets.
 * Audio balancing may be too loud or quiet. Inform me of what sounds off
   as well as your volume levels at the time of experiencing it.
+* There is a weird issue with music where, when it fades out, it just
+  abruptly stops. I have not figured out why this is happening.
 
 LEVEL 2 - MEDIUM PRIORITY:
-* Move animations are a work in progress.
-* Credits are not fully up to date.
 * Some maps may still be displaying a black void at the edges of the maps.
   If you see any, let me know.
+* Youkai Mountain in The Kingdom of Lunacy seems to be breaking the bridge
+  permissions somehow. I have not figured out what is causing it or how
+  to reproduce it. If you are able to reproduce it, please let me know.
 
 LEVEL 1 - LOW PRIORITY:
-* Nothing, yet!
+* Nothing at present time!
 
 LEVEL 0 - THIS ISN'T A BUG:
 * :)
@@ -153,6 +152,10 @@ LEVEL 0 - THIS ISN'T A BUG:
 ----------------------------------------------------------------------
 AY07. CHANGE LOG
 ----------------------------------------------------------------------
+Version 1.0 - June 6th, 2026:
+* Completion of internal bug testing and adjustments.
+* Full release to the public.
+
 Beta 0.9 - June 6th, 2025:
 * Completion of all game mechanics and story progression.
 * Internal release to testers.

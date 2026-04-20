@@ -26,11 +26,11 @@ module ChoiceHoverImages
 end
 
 class Window_CommandPokemon
-  alias original_initialize initialize
-  alias original_update update
+  alias cmi_initialize initialize unless method_defined?(:cmi_initialize)
+  alias cmi_update update unless method_defined?(:cmi_update)
 
   def initialize(commands, width = 198)
-    original_initialize(commands, width)
+    cmi_initialize(commands, width)
     create_hover_sprite
     @current_image_path = nil
   end
@@ -43,7 +43,7 @@ class Window_CommandPokemon
   end
 
   def update
-    original_update
+    cmi_update
 
     return unless self.active && self.visible
     create_hover_sprite if @hover_sprite.nil?

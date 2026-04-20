@@ -67,6 +67,7 @@ def dkBossRush
   index = $game_variables[BossRush::BOSS_FIGHT_VARIABLE]
   $game_temp.vs_transition_bg = "Elite"
   setBattleRule("setSlideSprite", "still")
+  setBattleRule("victoryBGM", "U-003. Victory! Gensokyo's Finest")
   # Vs. Transition Name Override
   case index
   when 13 then $game_temp.vs_name = "Vs. Hina Doppelganger"

@@ -30443,3 +30443,104 @@ Backtrace:
 999_Main.rb:19:in `block in mainFunction'
 003_Errors.rb:79:in `pbCriticalCode'
 999_Main.rb:19:in `mainFunction'
+
+=================
+
+[2026-04-17 04:41:58 -0700]
+[Pokémon Essentials version 21.1]
+
+Error in Plugin: [RMXP Event Exporter]
+Exception: Reset
+Message:  
+
+Backtrace:
+001_Transitions.rb:39:in `update'
+001_Transitions.rb:39:in `update'
+[RMXP Event Exporter] script.rb:504:in `writeEventCommands'
+[RMXP Event Exporter] script.rb:289:in `writeEventPage'
+[RMXP Event Exporter] script.rb:135:in `block (4 levels) in export'
+[RMXP Event Exporter] script.rb:132:in `each'
+[RMXP Event Exporter] script.rb:132:in `block (3 levels) in export'
+[RMXP Event Exporter] script.rb:126:in `each'
+[RMXP Event Exporter] script.rb:126:in `block (2 levels) in export'
+[RMXP Event Exporter] script.rb:103:in `each'
+
+=================
+
+[2026-04-17 04:42:19 -0700]
+[Pokémon Essentials version 21.1]
+[v21.1 Hotfixes 1.0.9]
+
+Exception: SystemStackError
+Message: stack level too deep
+
+Backtrace:
+[Choice Menu Images] 001_main.rb:46:in `update'
+[Choice Menu Images] 001_main.rb:46:in `update'
+[Choice Menu Images] 001_main.rb:46:in `update'
+[Choice Menu Images] 001_main.rb:46:in `update'
+[Choice Menu Images] 001_main.rb:46:in `update'
+[Choice Menu Images] 001_main.rb:46:in `update'
+[Choice Menu Images] 001_main.rb:46:in `update'
+[Choice Menu Images] 001_main.rb:46:in `update'
+[Choice Menu Images] 001_main.rb:46:in `update'
+[Choice Menu Images] 001_main.rb:46:in `update'
+
+=================
+
+[2026-04-17 04:47:37 -0700]
+[Pokémon Essentials version 21.1]
+[v21.1 Hotfixes 1.0.9]
+
+Exception: SystemStackError
+Message: stack level too deep
+
+Backtrace:
+[Choice Menu Images] 001_main.rb:46:in `update'
+[Choice Menu Images] 001_main.rb:46:in `update'
+[Choice Menu Images] 001_main.rb:46:in `update'
+[Choice Menu Images] 001_main.rb:46:in `update'
+[Choice Menu Images] 001_main.rb:46:in `update'
+[Choice Menu Images] 001_main.rb:46:in `update'
+[Choice Menu Images] 001_main.rb:46:in `update'
+[Choice Menu Images] 001_main.rb:46:in `update'
+[Choice Menu Images] 001_main.rb:46:in `update'
+[Choice Menu Images] 001_main.rb:46:in `update'
+
+=================
+
+[2026-04-17 04:48:50 -0700]
+[Pokémon Essentials version 21.1]
+[v21.1 Hotfixes 1.0.9]
+
+Exception: SystemStackError
+Message: stack level too deep
+
+Backtrace:
+[Choice Menu Images] 001_main.rb:46:in `update'
+[Choice Menu Images] 001_main.rb:46:in `update'
+[Choice Menu Images] 001_main.rb:46:in `update'
+[Choice Menu Images] 001_main.rb:46:in `update'
+[Choice Menu Images] 001_main.rb:46:in `update'
+[Choice Menu Images] 001_main.rb:46:in `update'
+[Choice Menu Images] 001_main.rb:46:in `update'
+[Choice Menu Images] 001_main.rb:46:in `update'
+[Choice Menu Images] 001_main.rb:46:in `update'
+[Choice Menu Images] 001_main.rb:46:in `update'
+
+=================
+
+[2026-04-17 21:19:56 -0700]
+[Pokémon Essentials version 21.1]
+[v21.1 Hotfixes 1.0.9]
+
+Script error in event 15 (coords 21,26), map 19 (World of Fantasies)
+Exception: SyntaxError
+Message: (eval):1: syntax error, unexpected '<'
+<icon=bunnylover.png>
+^
+
+
+***Full script:
+<icon=bunnylover.png>
+$player.scenario_name = "Bogos Binted? <icon=bunnylover.png>"

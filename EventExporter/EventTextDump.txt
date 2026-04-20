@@ -16033,6 +16033,35 @@ List of Event Commands:
 : Branch End
 @>
 
+Page #2
+Conditions
+None
+
+Autonomous Movement
+Type: Fixed
+Speed: 3: Slow
+Freq: 3: Low
+Options Enabled
+Move Animation
+Trigger: Action Button
+
+List of Event Commands:
+@>Script: $game_variables[1] = $game_switches[113] ? "Yes" : "No"
+:       : $game_variables[2] = $game_switches[114] ? "Yes" : "No"
+:       : $game_variables[3] = $game_switches[115] ? "Yes" : "No"
+@>Conditional Branch: Switch [0116: TMoM Cleared] == ON
+ @>Text: \sign[signskin]\l[5]<ac>The Mansion of Mystery</ac>\nStatus: Cleared
+  :    : \nBad End Seen: \v[1]
+  :    : \nGood End Seen: \v[2]
+  :    : \nBonus Boss Beaten: \v[3]
+ @>
+: Else
+ @>Text: \sign[signskin]<ac>The Mansion of Mystery</ac>\n
+  :    : Status: Uncleared
+ @>
+: Branch End
+@>
+
 #------------------------------------------------------------------------------
 Event ID: 004
 Event Name: The Mansion of Mystery
@@ -16090,6 +16119,35 @@ List of Event Commands:
 :       : $game_variables[2] = $game_switches[143] ? "Yes" : "No"
 :       : $game_variables[3] = $game_switches[146] ? "Yes" : "No"
 @>Conditional Branch: Variable [0121: TKoL Plot Variable] >= 26
+ @>Text: \sign[signskin]\l[5]<ac>The Kingdom of Lunacy</ac>\nStatus: Cleared
+  :    : \nWent Off Script: \v[1]
+  :    : \nForward and Back: \v[2]
+  :    : \nFound a friend!: \v[3]
+ @>
+: Else
+ @>Text: \sign[signskin]<ac>The Kingdom of Lunacy</ac>\n
+  :    : Status: Uncleared
+ @>
+: Branch End
+@>
+
+Page #2
+Conditions
+None
+
+Autonomous Movement
+Type: Fixed
+Speed: 3: Slow
+Freq: 3: Low
+Options Enabled
+Move Animation
+Trigger: Action Button
+
+List of Event Commands:
+@>Script: $game_variables[1] = $game_switches[145] ? "Yes" : "No"
+:       : $game_variables[2] = $game_switches[143] ? "Yes" : "No"
+:       : $game_variables[3] = $game_switches[146] ? "Yes" : "No"
+@>Conditional Branch: Switch [0147: TKoL Cleared] == ON
  @>Text: \sign[signskin]\l[5]<ac>The Kingdom of Lunacy</ac>\nStatus: Cleared
   :    : \nWent Off Script: \v[1]
   :    : \nForward and Back: \v[2]
@@ -16586,6 +16644,7 @@ List of Event Commands:
 @>Show Choices: Yes, No
 (When Cancel: Choice 2)
 : When [Yes]
+ @>Control Switches: [0163: No Going Back] = OFF
  @>Script: $player.scenario_name = "The Last Adventure"
  @>Script: playSpecialBGM("quiet_time")
  @>Move Picture: 2, @30, Upper Left (0,0), (100%,100%), 0, Normal
@@ -16701,6 +16760,48 @@ Trigger: Autorun
 
 List of Event Commands:
 @>Control Switches: [0001: Starting over] = OFF
+@>
+
+#------------------------------------------------------------------------------
+Event ID: 015
+Event Name: EV015
+(X,Y): (020,019)
+
+Page #1
+Conditions
+None
+
+Graphic: Object ball
+
+Autonomous Movement
+Type: Fixed
+Speed: 3: Slow
+Freq: 3: Low
+Options Enabled
+Move Animation
+Trigger: Autorun
+
+List of Event Commands:
+@>Script: MeimuOutro.new
+@>Control Variables: [0102: Special Battle Variable] = 0
+@>Control Switches: [0102: Special Battle Switch] = OFF
+@>Conditional Branch: Switch [0152: TLA Cleared] == ON
+ @>Script: set_menu_theme("dark")
+ @>Text: \w[black]Would you like to skip the credits?
+ @>Show Choices: Yes, No
+ (When Cancel: Choice 2)
+ : When [Yes]
+  @>Change Screen Color Tone: (-255,-255,-255,0), @10
+  @>Control Variables: [0144: TAoA Credits Variable] = 9
+  @>
+ : When [No]
+  @>Control Variables: [0144: TAoA Credits Variable] = 0
+  @>
+ : Branch End
+ @>
+: Branch End
+@>Script: reset_menu_theme
+@>Call Common Event: TLA Credits
 @>
 
 #------------------------------------------------------------------------------
@@ -68811,8 +68912,8 @@ List of Event Commands:
 @>Text: \xn[Daichi]No, but I do have some questions for you.
 @>Text: \xn[\pn]Alright, let's hear them then.
 @>Play SE: 'Electronic Malfunction', 40, 100
+@>Script: $player.scenario_name = "What are you doing here?"
 @>Text: \xn[Daichi]Tell me, what are your thoughts on Dreamwalking?
-@>Script: $player.scenario_name = "The Kingdom of Lunacy?"
 @>Set Event Location: [Moving NPC],(006,008), Left
 @>Set Move Route: [Moving NPC]
  :              : $>Change Opacity: 255
@@ -73208,6 +73309,25 @@ List of Event Commands:
  :    : - Takane Yamashiro
 @>
 
+Page #2
+Conditions
+Switch 0147: TKoL Cleared is ON
+Variable 0142: TLA Plot Variable is 1 or above
+
+Autonomous Movement
+Type: Fixed
+Speed: 3: Slow
+Freq: 3: Low
+Options Enabled
+Move Animation
+Trigger: Action Button
+
+List of Event Commands:
+@>Text: CAUTION: BRIDGE UNSTABLE
+@>Text: Perhaps now might be a good time to wake up.\n
+ :    : - ????????????
+@>
+
 #------------------------------------------------------------------------------
 Event ID: 016
 Event Name: TM Item
@@ -73826,6 +73946,7 @@ List of Event Commands:
 @>Wait for Move's Completion
 @>Wait: 20 frame(s)
 @>Text: ...
+@>Script: $player.scenario_name = "But you know that, don't you."
 @>Control Self Switch: A =ON
 @>
 
@@ -73995,6 +74116,7 @@ List of Event Commands:
 @>Play SE: 'Electronic Malfunction', 40, 100
 @>Text: \xn[\pn]\b{...There's nobody here? That's... strange.}
 @>Text: \xn[\pn]\b{Everything about this just keeps getting weirder and weirder...}
+@>Script: $player.scenario_name = "Nothingness lies ahead."
 @>Control Self Switch: A =ON
 @>Script: pbSetSelfSwitch(37,"A",true)
 @>
@@ -74478,6 +74600,7 @@ List of Event Commands:
 @>Play SE: 'Electronic Malfunction', 40, 100
 @>Text: \xn[\pn]\b{...There's nobody here? That's... strange.}
 @>Text: \xn[\pn]\b{Everything about this just keeps getting weirder and weirder...}
+@>Script: $player.scenario_name = "Nothingness lies ahead."
 @>Control Self Switch: A =ON
 @>Script: pbSetSelfSwitch(30,"A",true)
 @>
@@ -74520,6 +74643,25 @@ List of Event Commands:
  :    : - Takane Yamashiro
 @>
 
+Page #2
+Conditions
+Switch 0147: TKoL Cleared is ON
+Variable 0142: TLA Plot Variable is 1 or above
+
+Autonomous Movement
+Type: Fixed
+Speed: 3: Slow
+Freq: 3: Low
+Options Enabled
+Move Animation
+Trigger: Action Button
+
+List of Event Commands:
+@>Text: WARNING: UNSTABLE MENTAL STATE AHEAD
+@>Text: Please avoid doing anything that would further damage your fragile psyche.\n
+ :    : - ????????????
+@>
+
 #------------------------------------------------------------------------------
 Event ID: 039
 Event Name: Sign
@@ -74541,6 +74683,23 @@ List of Event Commands:
 @>Text: CAUTION: BRIDGE UNSTABLE
 @>Text: Please take the long way around for the time being.\n
  :    : - Takane Yamashiro
+@>
+
+Page #2
+Conditions
+Switch 0147: TKoL Cleared is ON
+Variable 0142: TLA Plot Variable is 1 or above
+
+Autonomous Movement
+Type: Fixed
+Speed: 3: Slow
+Freq: 3: Low
+Options Enabled
+Move Animation
+Trigger: Action Button
+
+List of Event Commands:
+@>Text: You don't listen, do you?
 @>
 
 #------------------------------------------------------------------------------
@@ -75065,14 +75224,12 @@ List of Event Commands:
 #------------------------------------------------------------------------------
 Event ID: 057
 Event Name: size(1,4)
-(X,Y): (024,014)
+(X,Y): (014,050)
 
 Page #1
 Conditions
 Switch 0147: TKoL Cleared is ON
 Variable 0142: TLA Plot Variable is 1 or above
-
-Graphic: Object ball
 
 Autonomous Movement
 Type: Fixed
@@ -75080,7 +75237,7 @@ Speed: 3: Slow
 Freq: 3: Low
 Options Enabled
 Move Animation
-Trigger: Event Touch
+Trigger: Player Touch
 
 List of Event Commands:
 @>Text: \l[4]\w[dark]Upon proceeding-\wtnp[2]
@@ -75109,7 +75266,7 @@ List of Event Commands:
 #------------------------------------------------------------------------------
 Event ID: 058
 Event Name: size(1,4)
-(X,Y): (033,021)
+(X,Y): (033,025)
 
 Page #1
 Conditions
@@ -75152,7 +75309,7 @@ List of Event Commands:
 
 #------------------------------------------------------------------------------
 Event ID: 059
-Event Name: size(6,1)
+Event Name: size(1,6)
 (X,Y): (067,047)
 
 Page #1
@@ -91136,8 +91293,10 @@ List of Event Commands:
  :    : Fantasies.
 @>Text: I trust you will know what to do.
 @>Text: - Doremy Sweet
+@>Script: $player.scenario_name = "Leave, now."
 @>Change Text Options: Bottom, Show
 @>Control Switches: [0164: Dreams within Dreams] = ON
+@>Control Switches: [0163: No Going Back] = ON
 @>Script: pbSetSelfSwitch(2,"A",true)
 @>Change Screen Color Tone: (0,0,0,0), @10
 @>Control Self Switch: A =ON
@@ -91219,7 +91378,7 @@ Direction Fix
 Trigger: Player Touch
 
 List of Event Commands:
-@>Conditional Branch: Switch [0164: Dreams within Dreams] == ON
+@>Conditional Branch: Switch [0163: No Going Back] == ON
  @>Script: playSpecialBGM("quiet_time")
  @>Play SE: 'teleporter', 60, 100
  @>Change Screen Color Tone: (-255,-255,-255,0), @6
@@ -91242,7 +91401,6 @@ List of Event Commands:
  @>Script: deactivateSpecialBGM("quiet_time")
  @>Script: playSpecialBGM("MotT")
  @>Script: $player.scenario_name = "The Last Adventure"
- @>Control Switches: [0163: No Going Back] = ON
  @>
 : Else
  @>Text: \xn[\pn]\b{Something really isn't right here, I should look around
@@ -91294,7 +91452,6 @@ List of Event Commands:
  :    : supposed to show up here...}
 @>Wait: 20 frame(s)
 @>Text: \xn[\pn]\b{This area... is it...?}
-@>Script: $player.scenario_name = "You shouldn't be here. Leave, now."
 @>Control Self Switch: A =ON
 @>
 
@@ -95380,7 +95537,7 @@ List of Event Commands:
  @>Wait for Move's Completion
  @>Play SE: 'Electronic Malfunction', 40, 100
  @>Text: \xn[Eirin]Ah, welcome back Miss \pn.
- @>Script: $player.scenario_name = "??? ???? ?????????"
+ @>Script: $player.scenario_name = "You shouldn't be here."
  @>Set Move Route: [Reisen]
   :              : $>Turn Down
  @>Text: \xn[\pn]Welcome back...? Isn't this the first time I've been here?
@@ -113709,6 +113866,7 @@ List of Event Commands:
 @>Script: WildBattle.start(:DEOXYS,95)
 @>Conditional Branch: Variable [0001: Temp Pokemon Choice] == 4
  @>Control Switches: [0162: Ayylmao caught] = ON
+ @>Script: $player.scenario_name = "Bogos Binted?"
  @>Play SE: 'gust', 70, 100
  @>Change Screen Color Tone: (-255,-255,-255,0), @8
  @>Wait: 8 frame(s)
@@ -115299,7 +115457,7 @@ List of Event Commands:
  @>Recover All: Entire Party
  @>
 : Else
- @>Script: echoln $game_variables[145]
+ @>Script: echoln pbGet(145)
  @>Text: Oh dear, it looks like you lost...
  @>Text: Well, it happens, this is a brutal challenge after all!
  @>
