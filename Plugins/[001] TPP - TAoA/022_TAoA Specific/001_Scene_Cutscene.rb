@@ -535,8 +535,8 @@ class CreditsOutro_TMoM
       "Touhou Puppet Play",
       "The Mansion of Mystery",
 	  "",
-	  "2021-2024         DerxwnaKapsyla ",
-	  "2021-2021          ChaoticInfinity"
+	  "2021-2026         DerxwnaKapsyla ",
+	  "2021-2026          ChaoticInfinity"
     ],
     :wait, 160,
     :clear,
@@ -544,8 +544,8 @@ class CreditsOutro_TMoM
     [
       "Touhoumon Essentials",
       "",
-	  "2011-2024         DerxwnaKapsyla ",
-	  "2011-2025          ChaoticInfinity"
+	  "2011-2026         DerxwnaKapsyla ",
+	  "2011-2026          ChaoticInfinity"
     ],
     :wait, 160,
     :clear,
@@ -879,8 +879,8 @@ class CreditsOutro_TFoC < CreditsOutro_TMoM
       "Touhou Puppet Play",
       "The Festival of Curses",
 	  "",
-	  "2021-2024         DerxwnaKapsyla ",
-	  "2021-2021          ChaoticInfinity"
+	  "2021-2026         DerxwnaKapsyla ",
+	  "2021-2026          ChaoticInfinity"
     ],
     :wait, 160,
     :clear,
@@ -888,8 +888,8 @@ class CreditsOutro_TFoC < CreditsOutro_TMoM
     [
       "Touhoumon Essentials",
       "",
-	  "2011-2024         DerxwnaKapsyla ",
-	  "2011-2025          ChaoticInfinity"
+	  "2011-2026         DerxwnaKapsyla ",
+	  "2011-2026          ChaoticInfinity"
     ],
     :wait, 160,
     :clear,
@@ -956,8 +956,8 @@ class CreditsOutro_TKoL < CreditsOutro_TMoM
       "Touhou Puppet Play",
       "The Kingdom of Lunacy",
 	  "",
-	  "2021-2024         DerxwnaKapsyla ",
-	  "2021-2021          ChaoticInfinity"
+	  "2021-2026         DerxwnaKapsyla ",
+	  "2021-2026          ChaoticInfinity"
     ],
     :wait, 160,
     :clear,
@@ -965,8 +965,8 @@ class CreditsOutro_TKoL < CreditsOutro_TMoM
     [
       "Touhoumon Essentials",
       "",
-	  "2011-2024         DerxwnaKapsyla ",
-	  "2011-2025          ChaoticInfinity"
+	  "2011-2026         DerxwnaKapsyla ",
+	  "2011-2026          ChaoticInfinity"
     ],
     :wait, 160,
     :clear,
@@ -1073,8 +1073,8 @@ class CreditsOutro_TAoA < CreditsOutro_TMoM
       "Touhou Puppet Play",
       "The Adventures of Ayaka",
 	  "",
-	  "2021-2025         DerxwnaKapsyla ",
-	  "2021-2025          ChaoticInfinity"
+	  "2021-2026         DerxwnaKapsyla ",
+	  "2021-2026          ChaoticInfinity"
     ],
     :wait, 160,
     :clear,
@@ -1082,8 +1082,8 @@ class CreditsOutro_TAoA < CreditsOutro_TMoM
     [
       "Touhoumon Essentials",
       "",
-	  "2011-2025         DerxwnaKapsyla ",
-	  "2011-2025          ChaoticInfinity",
+	  "2011-2026         DerxwnaKapsyla ",
+	  "2011-2026          ChaoticInfinity",
     ],
     :wait, 160,
     :clear,

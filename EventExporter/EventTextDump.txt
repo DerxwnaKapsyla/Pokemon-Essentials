@@ -16763,48 +16763,6 @@ List of Event Commands:
 @>
 
 #------------------------------------------------------------------------------
-Event ID: 015
-Event Name: EV015
-(X,Y): (020,019)
-
-Page #1
-Conditions
-None
-
-Graphic: Object ball
-
-Autonomous Movement
-Type: Fixed
-Speed: 3: Slow
-Freq: 3: Low
-Options Enabled
-Move Animation
-Trigger: Autorun
-
-List of Event Commands:
-@>Script: MeimuOutro.new
-@>Control Variables: [0102: Special Battle Variable] = 0
-@>Control Switches: [0102: Special Battle Switch] = OFF
-@>Conditional Branch: Switch [0152: TLA Cleared] == ON
- @>Script: set_menu_theme("dark")
- @>Text: \w[black]Would you like to skip the credits?
- @>Show Choices: Yes, No
- (When Cancel: Choice 2)
- : When [Yes]
-  @>Change Screen Color Tone: (-255,-255,-255,0), @10
-  @>Control Variables: [0144: TAoA Credits Variable] = 9
-  @>
- : When [No]
-  @>Control Variables: [0144: TAoA Credits Variable] = 0
-  @>
- : Branch End
- @>
-: Branch End
-@>Script: reset_menu_theme
-@>Call Common Event: TLA Credits
-@>
-
-#------------------------------------------------------------------------------
 Event ID: 018
 Event Name: EV018
 (X,Y): (013,013)
@@ -111259,7 +111217,7 @@ List of Event Commands:
 @>Control Switches: [0102: Special Battle Switch] = OFF
 @>Conditional Branch: Switch [0152: TLA Cleared] == ON
  @>Script: set_menu_theme("dark")
- @>Text: \w[black]Would you like to skip the credits?
+ @>Text: \w[dark]Would you like to skip the credits?
  @>Show Choices: Yes, No
  (When Cancel: Choice 2)
  : When [Yes]
