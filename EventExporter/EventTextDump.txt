@@ -88784,7 +88784,7 @@ List of Event Commands:
  @>Text: \w[dark]\l[4]The Ancient Lunar Sake has the passive ability to generate
   :    : unique wild encounters on specific maps. By default, this feature 
   :    : is turned off.
- @>Text: \w[dark]\l[5]This is because it can cause the game lag while it
+ @>Text: \w[dark]\l[4]This is because it can cause the game lag while it
   :    : attempts to generate a new encounter. If you would like to turn 
   :    : it back on, you can do so in the options menu.
  @>Text: \w[dark]It also has... one other effect. You can use it to
@@ -116185,48 +116185,6 @@ Trigger: Autorun
 
 List of Event Commands:
 @>Control Switches: [0001: Starting over] = OFF
-@>
-
-#------------------------------------------------------------------------------
-Event ID: 009
-Event Name: EV009
-(X,Y): (026,014)
-
-Page #1
-Conditions
-None
-
-Graphic: Object ball
-
-Autonomous Movement
-Type: Fixed
-Speed: 3: Slow
-Freq: 3: Low
-Options Enabled
-Move Animation
-Trigger: Action Button
-
-List of Event Commands:
-@>Text: There's an object enshrined here.
-@>Text: Take it?
-@>Show Choices: Yes, No
-(When Cancel: Choice 2)
-: When [Yes]
- @>Script: pbReceiveItem(:ANCIENTLUNARSAKE)
- @>Control Switches: [0143: Ancient Lunar Sake Get] = ON
- @>Text: \xn[\pn]... Wow! That's one strong aroma!
- @>Text: \w[dark]\l[4]The Ancient Lunar Sake has the passive ability to generate
-  :    : unique wild encounters on specific maps. By default, this feature 
-  :    : is turned off.
- @>Text: \w[dark]\l[5]This is because it can cause the game lag while it
-  :    : attempts to generate a new encounter. If you would like to turn 
-  :    : it back on, you can do so in the options menu.
- @>Text: \w[dark]It also has... one other effect. You can use it to
-  :    : figure out what it is.
- @>
-: When [No]
- @>
-: Branch End
 @>
 
 #------------------------------------------------------------------------------
