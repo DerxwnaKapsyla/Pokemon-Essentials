@@ -115747,6 +115747,8 @@ Trigger: Action Button
 List of Event Commands:
 @>Text: \l[3]\sign[sign]Garden of Dreams\nPuppets from across your 
  :    : journey can be found here!
+@>Script: pbSet(1,$player.pokedex.owned_count.to_s)
+@>Text: Progress towards capture completion: \v[1] out of 337
 @>
 
 #------------------------------------------------------------------------------
@@ -115784,7 +115786,7 @@ List of Event Commands:
 #------------------------------------------------------------------------------
 Event ID: 005
 Event Name: EV005
-(X,Y): (018,022)
+(X,Y): (024,012)
 
 Page #1
 Conditions
@@ -115839,7 +115841,6 @@ List of Event Commands:
   @>Play SE: 'Teleport', 80, 100
   @>Wait: 10 frame(s)
   @>Control Switches: [0167: The Writer's Test] = ON
-  @>Control Self Switch: A =ON
   @>Change Screen Color Tone: (0,0,0,0), @10
   @>
  : Branch End
@@ -115854,7 +115855,7 @@ List of Event Commands:
 
 Page #2
 Conditions
-Self Switch A is ON
+Switch 0167: The Writer's Test is ON
 
 Autonomous Movement
 Type: Fixed
@@ -115924,6 +115925,44 @@ List of Event Commands:
 : When [Exit]
  @>
 : Branch End
+@>
+
+#------------------------------------------------------------------------------
+Event ID: 008
+Event Name: EV008
+(X,Y): (017,019)
+
+Page #1
+Conditions
+None
+
+Autonomous Movement
+Type: Fixed
+Speed: 3: Slow
+Freq: 3: Low
+Options Enabled
+Move Animation
+Trigger: Action Button
+
+List of Event Commands:
+@>Script: pbSetPokemonCenter
+@>Call Common Event: Akyuu Shrines
+@>
+
+Page #2
+Conditions
+Switch 0001: Starting over is ON
+
+Autonomous Movement
+Type: Fixed
+Speed: 3: Slow
+Freq: 3: Low
+Options Enabled
+Move Animation
+Trigger: Autorun
+
+List of Event Commands:
+@>Control Switches: [0001: Starting over] = OFF
 @>
 
 #------------------------------------------------------------------------------

@@ -29,6 +29,26 @@ EventHandlers.add(:on_player_step_taken, :sake_counter,
 ################################################################################
 # Using the Ancient Lunar Sake
 ################################################################################
+def pbRepel(item, steps)
+  # Updating the Repel code to account for Ancient Lunar Sake
+  if $PokemonGlobal.sake_active == true
+    pbMessage(_INTL("The effect of the sake used earlier is still lingering."))
+	pbMessage(_INTL("Steps remaining: {1}.", $PokemonGlobal.sake_counter - 300))
+    return false
+  end
+  # Making Repel display the total steps remaining.
+  if $PokemonGlobal.repel > 0
+    pbMessage(_INTL("But a repellent's effect still lingers from earlier."))
+	pbMessage(_INTL("Steps remaining: {1}.", $PokemonGlobal.repel))
+    return false
+  end
+  pbSEPlay("Repel")
+  $stats.repel_count += 1
+  pbUseItemMessage(item)
+  $PokemonGlobal.repel = steps
+  return true
+end
+
 def pbCanUseLunarSake?
   # Can't use if a repellant is active
   if $PokemonGlobal.repel > 0
@@ -38,6 +58,7 @@ def pbCanUseLunarSake?
   # Can't use if sake is currently active
   if $PokemonGlobal.sake_active == true
     pbMessage(_INTL("The effect of the sake used earlier is still lingering."))
+	pbMessage(_INTL("Steps remaining: {1}.", $PokemonGlobal.sake_counter - 300))
     return false
   end
   # Debug
