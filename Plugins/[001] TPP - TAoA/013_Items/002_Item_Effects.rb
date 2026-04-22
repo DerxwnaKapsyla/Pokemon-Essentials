@@ -172,9 +172,15 @@ ItemHandlers::UseInField.add(:DREAMFLUTE, proc { |item|
   if encounter_table == pbGet(99) && pbGet(99) != 0
     pbMessage(_INTL("Weaker Puppets seem to have become more common!"))
     $PokemonGlobal.encounter_version = 0
+	if $DEBUG
+	  pbMessage(_INTL("Current encounter table: {1}",$PokemonGlobal.encounter_version))
+	end
   elsif encounter_table == 0 && pbGet(99) != 0
     pbMessage(_INTL("Stronger Puppets seem to have become more common!"))
     $PokemonGlobal.encounter_version = pbGet(99)
+	if $DEBUG
+	  pbMessage(_INTL("Current encounter table: {1}",$PokemonGlobal.encounter_version))
+	end
   elsif encounter_table == 0 && pbGet(99) == 0
     pbMessage(_INTL("Nothing happened."))
   else

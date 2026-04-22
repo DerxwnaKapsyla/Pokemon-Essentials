@@ -30544,3 +30544,57 @@ Message: (eval):1: syntax error, unexpected '<'
 ***Full script:
 <icon=bunnylover.png>
 $player.scenario_name = "Bogos Binted? <icon=bunnylover.png>"
+
+=================
+
+[2026-04-22 03:08:48 -0700]
+[Pokémon Essentials version 21.1]
+
+Error in Plugin: [TAoA Core]
+Exception: SyntaxError
+Message: [TAoA Core] 002_Item_Effects.rb:175: syntax error, unexpected `if' modifier, expecting ')'
+...table: {1}",encounter_table) if $DEBUG
+...                             ^~
+[TAoA Core] 002_Item_Effects.rb:179: syntax error, unexpected `if' modifier, expecting ')'
+...table: {1}",encounter_table) if $DEBUG
+...                             ^~
+
+
+Backtrace:
+005_PluginManager.rb:635:in `eval'
+005_PluginManager.rb:635:in `block (2 levels) in runPlugins'
+005_PluginManager.rb:625:in `each'
+005_PluginManager.rb:625:in `block in runPlugins'
+005_PluginManager.rb:616:in `each'
+005_PluginManager.rb:616:in `runPlugins'
+999_Main.rb:35:in `mainFunctionDebug'
+999_Main.rb:19:in `block in mainFunction'
+003_Errors.rb:79:in `pbCriticalCode'
+999_Main.rb:19:in `mainFunction'
+
+=================
+
+[2026-04-22 03:09:27 -0700]
+[Pokémon Essentials version 21.1]
+
+Error in Plugin: [TAoA Core]
+Exception: SyntaxError
+Message: [TAoA Core] 002_Item_Effects.rb:177: syntax error, unexpected `end', expecting ')'
+  end
+  ^~~
+[TAoA Core] 002_Item_Effects.rb:183: syntax error, unexpected `end', expecting ')'
+  end
+  ^~~
+[TAoA Core] 002_Item_Effects.rb:190: syntax error, unexpected '}', expecting `end'
+
+Backtrace:
+005_PluginManager.rb:635:in `eval'
+005_PluginManager.rb:635:in `block (2 levels) in runPlugins'
+005_PluginManager.rb:625:in `each'
+005_PluginManager.rb:625:in `block in runPlugins'
+005_PluginManager.rb:616:in `each'
+005_PluginManager.rb:616:in `runPlugins'
+999_Main.rb:35:in `mainFunctionDebug'
+999_Main.rb:19:in `block in mainFunction'
+003_Errors.rb:79:in `pbCriticalCode'
+999_Main.rb:19:in `mainFunction'
