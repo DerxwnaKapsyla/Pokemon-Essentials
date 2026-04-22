@@ -55281,6 +55281,21 @@ List of Event Commands:
 
 Page #2
 Conditions
+Self Switch A is ON
+
+Autonomous Movement
+Type: Fixed
+Speed: 3: Slow
+Freq: 3: Low
+Options Enabled
+Move Animation
+Trigger: Action Button
+
+List of Event Commands:
+@>
+
+Page #3
+Conditions
 Switch 0123: Medicine Beaten is ON
 
 Autonomous Movement
@@ -57200,6 +57215,7 @@ Move Animation
 Trigger: Autorun
 
 List of Event Commands:
+@>Script: pbSetSelfSwitch2(63,8,"A",true)
 @>Text: \xn[Medicine]No longer will we be forsaken for another's sake!
  :    : Today, we make our stand!
 @>Change Screen Color Tone: (-255,-255,-255,0), @6
