@@ -65852,6 +65852,31 @@ Width: 36, Height: 50
 Auto-Change BGM: W-042. Primate Spirit Garden
 
 #------------------------------------------------------------------------------
+Event ID: 001
+Event Name: EV001
+(X,Y): (012,015)
+
+Page #1
+Conditions
+None
+
+Graphic: TPDP_NPC 35
+
+Autonomous Movement
+Type: Fixed
+Speed: 3: Slow
+Freq: 3: Low
+Options Enabled
+Move Animation
+Trigger: Action Button
+
+List of Event Commands:
+@>Text: I came out here to relax, but...
+@>Text: How can anybody relax with that giant rift in the sky?
+@>Text: Where did it even come from?
+@>
+
+#------------------------------------------------------------------------------
 Event ID: 002
 Event Name: EV002
 (X,Y): (017,037)
@@ -68584,6 +68609,62 @@ List of Event Commands:
  @>Text: I see.\nDo come visit again.
  @>
 : Branch End
+@>
+
+#------------------------------------------------------------------------------
+Event ID: 009
+Event Name: Kappa Teleporter
+(X,Y): (010,011)
+
+Page #1
+Conditions
+Variable 0121: TKoL Plot Variable is 13 or above
+
+Graphic: TPDP_NPC 27
+
+Autonomous Movement
+Type: Fixed
+Speed: 3: Slow
+Freq: 3: Low
+Options Enabled
+Move Animation
+Trigger: Action Button
+
+List of Event Commands:
+@>Conditional Branch: Self Switch A == OFF
+ @>Text: Say no more, I know what you need.
+ @>Control Self Switch: A =ON
+ @>
+: Branch End
+@>Text: Do you want to return to the Lunar Capital?
+@>Show Choices: Yes, No
+(When Cancel: Choice 2)
+: When [Yes]
+ @>Text: Alright! Hold on to your cucumbers, this might be a bit bumpy!
+ @>Play SE: 'teleporter', 80, 100
+ @>Change Screen Color Tone: (-255,-255,-255,0), @6
+ @>Wait: 8 frame(s)
+ @>Transfer Player:[092: Capital Puppet Center], (003,009), Down, No Fade
+ @>Change Screen Color Tone: (0,0,0,0), @6
+ @>
+: When [No]
+ @>
+: Branch End
+@>
+
+Page #2
+Conditions
+Variable 0121: TKoL Plot Variable is 22 or above
+
+Autonomous Movement
+Type: Fixed
+Speed: 3: Slow
+Freq: 3: Low
+Options Enabled
+Move Animation
+Trigger: Action Button
+
+List of Event Commands:
 @>
 
 #------------------------------------------------------------------------------
@@ -79198,6 +79279,66 @@ List of Event Commands:
 @>
 
 #------------------------------------------------------------------------------
+Event ID: 003
+Event Name: Kappa Teleporter
+(X,Y): (002,009)
+
+Page #1
+Conditions
+Variable 0121: TKoL Plot Variable is 13 or above
+
+Graphic: TPDP_NPC 27
+
+Autonomous Movement
+Type: Fixed
+Speed: 3: Slow
+Freq: 3: Low
+Options Enabled
+Move Animation
+Trigger: Action Button
+
+List of Event Commands:
+@>Text: Hey, shh! Don't blow my cover!
+@>Conditional Branch: Self Switch A == OFF
+ @>Text: I'm testing out a new cloaking prototype.
+ @>Text: Figured you could use our assistance.
+ @>Text: I've got a partner back in Gensokyo that you can teleport to if you
+  :    : need to go back for any reason.
+ @>Control Self Switch: A =ON
+ @>
+: Branch End
+@>Text: Do you want to return to Gensokyo?
+@>Show Choices: Yes, No
+(When Cancel: Choice 2)
+: When [Yes]
+ @>Text: Alright! Hold on to your cucumbers, this might be a bit bumpy!
+ @>Play SE: 'teleporter', 80, 100
+ @>Change Screen Color Tone: (-255,-255,-255,0), @6
+ @>Wait: 8 frame(s)
+ @>Transfer Player:[083: Human Village Rest House], (010,012), Down, No Fade
+ @>Change Screen Color Tone: (0,0,0,0), @6
+ @>
+: When [No]
+ @>
+: Branch End
+@>
+
+Page #2
+Conditions
+Variable 0121: TKoL Plot Variable is 22 or above
+
+Autonomous Movement
+Type: Fixed
+Speed: 3: Slow
+Freq: 3: Low
+Options Enabled
+Move Animation
+Trigger: Action Button
+
+List of Event Commands:
+@>
+
+#------------------------------------------------------------------------------
 Event ID: 005
 Event Name: NPC
 (X,Y): (020,013)
@@ -79748,6 +79889,7 @@ Trigger: Autorun
 List of Event Commands:
 @>Text: \xn[\pn]\b(Now to find this 'Lady Sagume' and get to the bottom 
  :    : of all this...)
+@>Script: pbSetPokemonCenter
 @>Control Self Switch: A =ON
 @>
 
@@ -79950,6 +80092,21 @@ List of Event Commands:
 Page #2
 Conditions
 Self Switch A is ON
+
+Autonomous Movement
+Type: Fixed
+Speed: 3: Slow
+Freq: 3: Low
+Options Enabled
+Move Animation
+Trigger: Action Button
+
+List of Event Commands:
+@>
+
+Page #3
+Conditions
+Variable 0121: TKoL Plot Variable is 16 or above
 
 Autonomous Movement
 Type: Fixed
@@ -97488,6 +97645,47 @@ List of Event Commands:
 @>
 
 #------------------------------------------------------------------------------
+Event ID: 007
+Event Name: EV007
+(X,Y): (009,003)
+
+Page #1
+Conditions
+Variable 0121: TKoL Plot Variable is 16 or above
+
+Graphic: TPDP_NPC 51
+
+Autonomous Movement
+Type: Fixed
+Speed: 3: Slow
+Freq: 3: Low
+Options Enabled
+Move Animation
+Direction Fix
+Trigger: Action Button
+
+List of Event Commands:
+@>Text: Oooh, I wonder if Lady Hecatia would like this brand of sake...
+@>Text: Golden Peach Sake sounds so delicious!
+@>Text: \xn[\pn]\b(Looks like I'm not going this way anytime soon...)
+@>
+
+Page #2
+Conditions
+Variable 0121: TKoL Plot Variable is 15 or above
+
+Autonomous Movement
+Type: Fixed
+Speed: 3: Slow
+Freq: 3: Low
+Options Enabled
+Move Animation
+Trigger: Action Button
+
+List of Event Commands:
+@>
+
+#------------------------------------------------------------------------------
 
 #==============================================================================
 Map ID: 123
@@ -114582,7 +114780,6 @@ List of Event Commands:
 @>Change Screen Color Tone: (-255,-255,-255,0), @6
 @>Wait: 8 frame(s)
 @>Transfer Player:[153: World of Fantasies], (017,031), Up, No Fade
-@>Script: $PokemonGlobal.encounter_version = pbGet(99)
 @>Change Screen Color Tone: (0,0,0,0), @6
 @>
 
