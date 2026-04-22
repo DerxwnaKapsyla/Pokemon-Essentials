@@ -146,11 +146,13 @@ EventHandlers.add(:on_wild_species_chosen, :get_unique_encounter,
   
   species = pkmn[0]
   level   = pkmn[1]
-  
   echoln "-------------------------------------------------------------------------------"
-  echoln "Checking if player has relevant item..."
-  next false if !$bag.has?(:ANCIENTLUNARSAKE)
-  echoln "Confirmed. Player has relevant item. Proceeding with modifier."
+  echoln "Checking if player has enabled the option for the Ancient Lunar Sake."
+  next false if !$PokemonSystem.lunarsakepassive
+  echoln "-------------------------------------------------------------------------------"
+  echoln "Checking if player has relevant item and is on either of the Garden of Dreams maps..."
+  next false if !$bag.has?(:ANCIENTLUNARSAKE) || !$game_map.metadata&.has_flag?("AllEncounters")
+  echoln "Confirmed. Player has relevant item and is on correct map. Proceeding with modifier."
   
   echoln "Initial encounter: #{species}, Level #{level}."
   echoln "Checking if player owns #{species}..."
@@ -184,3 +186,24 @@ EventHandlers.add(:on_wild_species_chosen, :get_unique_encounter,
   end
   }
 )
+
+class PokemonSystem
+  attr_accessor :lunarsakepassive
+
+
+  alias als_initialize initialize
+  def initialize
+    als_initialize
+	@lunarsakepassive = 0 # Off or On.
+  end
+end
+
+MenuHandlers.add(:options_menu, :lunar_sake_passive, {
+  "name"        => _INTL("Lunar Sake Passive"),
+  "order"       => 200,
+  "type"        => EnumOption,
+  "parameters"  => [_INTL("No"), _INTL("Yes")],
+  "description" => _INTL("Should the Ancient Lunar Sake attempt to generate unique encounters?"),
+  "get_proc"    => proc { next $PokemonSystem.lunarsakepassive },
+  "set_proc"    => proc { |value, _scene| $PokemonSystem.lunarsakepassive = value }
+})
