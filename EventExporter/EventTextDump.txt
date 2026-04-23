@@ -116188,6 +116188,51 @@ List of Event Commands:
 @>
 
 #------------------------------------------------------------------------------
+Event ID: 009
+Event Name: EV009
+(X,Y): (026,014)
+
+Page #1
+Conditions
+None
+
+Graphic: Object ball
+
+Autonomous Movement
+Type: Fixed
+Speed: 3: Slow
+Freq: 3: Low
+Options Enabled
+Move Animation
+Trigger: Action Button
+
+List of Event Commands:
+@>Script: pbEncounter(:GoodRod)
+@>
+
+#------------------------------------------------------------------------------
+Event ID: 010
+Event Name: EV010
+(X,Y): (023,010)
+
+Page #1
+Conditions
+Switch 0191: ???????????? is ON
+
+Graphic: Object ball
+
+Autonomous Movement
+Type: Fixed
+Speed: 3: Slow
+Freq: 3: Low
+Options Enabled
+Move Animation
+Trigger: Action Button
+
+List of Event Commands:
+@>
+
+#------------------------------------------------------------------------------
 
 #==============================================================================
 

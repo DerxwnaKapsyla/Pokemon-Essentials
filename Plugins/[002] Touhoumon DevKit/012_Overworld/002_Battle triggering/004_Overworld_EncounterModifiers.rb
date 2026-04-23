@@ -163,7 +163,11 @@ EventHandlers.add(:on_wild_species_chosen, :get_unique_encounter,
 	
 	new_enc = nil
 	500.times do
-	  try_enc = $PokemonEncounters.choose_wild_pokemon($PokemonEncounters.encounter_type, 1)
+	  if $game_switches[191]
+	    try_enc = $PokemonEncounters.choose_wild_pokemon(:GoodRod)
+	  else
+	    try_enc = $PokemonEncounters.choose_wild_pokemon($PokemonEncounters.encounter_type, 1)
+	  end
 	  echoln "New encounter: #{try_enc}"
 	  unless $player.owned?(try_enc[0])
 	    new_enc = try_enc
@@ -184,6 +188,7 @@ EventHandlers.add(:on_wild_species_chosen, :get_unique_encounter,
     echoln "Negative. #{species} is not owned by the player."
 	echoln "-------------------------------------------------------------------------------"
   end
+  $game_temp.fishing_success = false
   }
 )
 
@@ -207,3 +212,13 @@ MenuHandlers.add(:options_menu, :lunar_sake_passive, {
   "get_proc"    => proc { next $PokemonSystem.lunarsakepassive },
   "set_proc"    => proc { |value, _scene| $PokemonSystem.lunarsakepassive = value }
 })
+
+class Game_Temp
+  attr_accessor :fishing_success             # Is the player in a post-successful fishing state
+  
+  alias als_initialize initialize
+  def initialize
+    als_initialize
+	@fishing_success = false
+  end
+end

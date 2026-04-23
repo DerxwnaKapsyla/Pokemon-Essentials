@@ -30646,3 +30646,249 @@ Backtrace:
 999_Main.rb:19:in `block in mainFunction'
 003_Errors.rb:79:in `pbCriticalCode'
 999_Main.rb:19:in `mainFunction'
+
+=================
+
+[2026-04-22 16:27:21 -0700]
+[Pokémon Essentials version 21.1]
+[v21.1 Hotfixes 1.0.9]
+
+Exception: ArgumentError
+Message: Encounter type  does not exist
+
+Backtrace:
+[Touhoumon Essentials Development Kit] 003_Overworld_WildEncounters.rb:102:in `choose_wild_pokemon'
+[Touhoumon Essentials Development Kit] 004_Overworld_EncounterModifiers.rb:166:in `block (2 levels) in <main>'
+[Touhoumon Essentials Development Kit] 004_Overworld_EncounterModifiers.rb:165:in `times'
+[Touhoumon Essentials Development Kit] 004_Overworld_EncounterModifiers.rb:165:in `block in <main>'
+005_Event_Handlers.rb:89:in `block in trigger'
+005_Event_Handlers.rb:89:in `each_value'
+005_Event_Handlers.rb:89:in `trigger'
+006_Event_HandlerCollections.rb:63:in `trigger'
+003_Overworld_WildEncounters.rb:456:in `pbEncounter'
+002_Item_Effects.rb:299:in `block (2 levels) in load_scripts_from_folder'
+
+=================
+
+[2026-04-22 17:37:31 -0700]
+[Pokémon Essentials version 21.1]
+
+Error in Plugin: [Touhoumon Essentials Development Kit]
+Exception: SyntaxError
+Message: [Touhoumon Essentials Development Kit] 004_Overworld_EncounterModifiers.rb:189: else without rescue is useless
+  else
+  ^~~~
+[Touhoumon Essentials Development Kit] 004_Overworld_EncounterModifiers.rb:193: syntax error, unexpected '}', expecting `end'
+[Touhoumon Essentials Development Kit] 004_Overworld_EncounterModifiers.rb:215: syntax error, unexpected end-of-input, expecting `end'
+
+Backtrace:
+005_PluginManager.rb:635:in `eval'
+005_PluginManager.rb:635:in `block (2 levels) in runPlugins'
+005_PluginManager.rb:625:in `each'
+005_PluginManager.rb:625:in `block in runPlugins'
+005_PluginManager.rb:616:in `each'
+005_PluginManager.rb:616:in `runPlugins'
+999_Main.rb:35:in `mainFunctionDebug'
+999_Main.rb:19:in `block in mainFunction'
+003_Errors.rb:79:in `pbCriticalCode'
+999_Main.rb:19:in `mainFunction'
+
+=================
+
+[2026-04-22 17:38:03 -0700]
+[Pokémon Essentials version 21.1]
+[v21.1 Hotfixes 1.0.9]
+
+Script error in event 9 (coords 26,14), map 153 (World of Fantasies)
+Exception: ArgumentError
+Message: Encounter type fishing does not exist
+
+***Full script:
+pbEncounter(:fishing)
+
+Backtrace:
+[Touhoumon Essentials Development Kit] 003_Overworld_WildEncounters.rb:102:in `choose_wild_pokemon'
+003_Overworld_WildEncounters.rb:455:in `pbEncounter'
+(eval):1:in `execute_script'
+003_Interpreter.rb:140:in `eval'
+003_Interpreter.rb:140:in `execute_script'
+004_Interpreter_Commands.rb:1177:in `command_355'
+004_Interpreter_Commands.rb:116:in `execute_command'
+003_Interpreter.rb:132:in `block in update'
+003_Interpreter.rb:86:in `loop'
+003_Interpreter.rb:86:in `update'
+
+=================
+
+[2026-04-22 17:40:21 -0700]
+[Pokémon Essentials version 21.1]
+[v21.1 Hotfixes 1.0.9]
+
+Script error in event 9 (coords 26,14), map 153 (World of Fantasies)
+Exception: NameError
+Message: undefined local variable or method `enc_type' for main:Object
+
+***Full script:
+pbEncounter(:GoodRod)
+
+Backtrace:
+[Touhoumon Essentials Development Kit] 004_Overworld_EncounterModifiers.rb:166:in `block (2 levels) in <main>'
+[Touhoumon Essentials Development Kit] 004_Overworld_EncounterModifiers.rb:165:in `times'
+[Touhoumon Essentials Development Kit] 004_Overworld_EncounterModifiers.rb:165:in `block in <main>'
+005_Event_Handlers.rb:89:in `block in trigger'
+005_Event_Handlers.rb:89:in `each_value'
+005_Event_Handlers.rb:89:in `trigger'
+006_Event_HandlerCollections.rb:63:in `trigger'
+003_Overworld_WildEncounters.rb:456:in `pbEncounter'
+(eval):1:in `execute_script'
+003_Interpreter.rb:140:in `eval'
+
+=================
+
+[2026-04-22 17:45:22 -0700]
+[Pokémon Essentials version 21.1]
+[v21.1 Hotfixes 1.0.9]
+
+Exception: ArgumentError
+Message: Encounter type  does not exist
+
+Backtrace:
+[Touhoumon Essentials Development Kit] 003_Overworld_WildEncounters.rb:102:in `choose_wild_pokemon'
+[Touhoumon Essentials Development Kit] 004_Overworld_EncounterModifiers.rb:169:in `block (2 levels) in <main>'
+[Touhoumon Essentials Development Kit] 004_Overworld_EncounterModifiers.rb:165:in `times'
+[Touhoumon Essentials Development Kit] 004_Overworld_EncounterModifiers.rb:165:in `block in <main>'
+005_Event_Handlers.rb:89:in `block in trigger'
+005_Event_Handlers.rb:89:in `each_value'
+005_Event_Handlers.rb:89:in `trigger'
+006_Event_HandlerCollections.rb:63:in `trigger'
+003_Overworld_WildEncounters.rb:456:in `pbEncounter'
+002_Item_Effects.rb:299:in `block (2 levels) in load_scripts_from_folder'
+
+=================
+
+[2026-04-22 17:46:24 -0700]
+[Pokémon Essentials version 21.1]
+[v21.1 Hotfixes 1.0.9]
+
+Exception: ArgumentError
+Message: wrong number of arguments (given 0, expected 1..2)
+
+Backtrace:
+[Touhoumon Essentials Development Kit] 005_Overworld_Fishing.rb:11:in `pbFishing'
+[Touhoumon Essentials Development Kit] 004_Overworld_EncounterModifiers.rb:166:in `block (2 levels) in <main>'
+[Touhoumon Essentials Development Kit] 004_Overworld_EncounterModifiers.rb:165:in `times'
+[Touhoumon Essentials Development Kit] 004_Overworld_EncounterModifiers.rb:165:in `block in <main>'
+005_Event_Handlers.rb:89:in `block in trigger'
+005_Event_Handlers.rb:89:in `each_value'
+005_Event_Handlers.rb:89:in `trigger'
+006_Event_HandlerCollections.rb:63:in `trigger'
+003_Overworld_WildEncounters.rb:456:in `pbEncounter'
+002_Item_Effects.rb:299:in `block (2 levels) in load_scripts_from_folder'
+
+=================
+
+[2026-04-22 17:52:22 -0700]
+[Pokémon Essentials version 21.1]
+[v21.1 Hotfixes 1.0.9]
+
+Exception: ArgumentError
+Message: Encounter type  does not exist
+
+Backtrace:
+[Touhoumon Essentials Development Kit] 003_Overworld_WildEncounters.rb:102:in `choose_wild_pokemon'
+[Touhoumon Essentials Development Kit] 004_Overworld_EncounterModifiers.rb:169:in `block (2 levels) in <main>'
+[Touhoumon Essentials Development Kit] 004_Overworld_EncounterModifiers.rb:165:in `times'
+[Touhoumon Essentials Development Kit] 004_Overworld_EncounterModifiers.rb:165:in `block in <main>'
+005_Event_Handlers.rb:89:in `block in trigger'
+005_Event_Handlers.rb:89:in `each_value'
+005_Event_Handlers.rb:89:in `trigger'
+006_Event_HandlerCollections.rb:63:in `trigger'
+003_Overworld_WildEncounters.rb:456:in `pbEncounter'
+002_Item_Effects.rb:299:in `block (2 levels) in load_scripts_from_folder'
+
+=================
+
+[2026-04-22 17:56:05 -0700]
+[Pokémon Essentials version 21.1]
+[v21.1 Hotfixes 1.0.9]
+
+Exception: ArgumentError
+Message: Encounter type  does not exist
+
+Backtrace:
+[Touhoumon Essentials Development Kit] 003_Overworld_WildEncounters.rb:102:in `choose_wild_pokemon'
+[Touhoumon Essentials Development Kit] 004_Overworld_EncounterModifiers.rb:169:in `block (2 levels) in <main>'
+[Touhoumon Essentials Development Kit] 004_Overworld_EncounterModifiers.rb:165:in `times'
+[Touhoumon Essentials Development Kit] 004_Overworld_EncounterModifiers.rb:165:in `block in <main>'
+005_Event_Handlers.rb:89:in `block in trigger'
+005_Event_Handlers.rb:89:in `each_value'
+005_Event_Handlers.rb:89:in `trigger'
+006_Event_HandlerCollections.rb:63:in `trigger'
+003_Overworld_WildEncounters.rb:456:in `pbEncounter'
+002_Item_Effects.rb:299:in `block (2 levels) in load_scripts_from_folder'
+
+=================
+
+[2026-04-22 17:57:00 -0700]
+[Pokémon Essentials version 21.1]
+[v21.1 Hotfixes 1.0.9]
+
+Exception: ArgumentError
+Message: Encounter type  does not exist
+
+Backtrace:
+[Touhoumon Essentials Development Kit] 003_Overworld_WildEncounters.rb:102:in `choose_wild_pokemon'
+[Touhoumon Essentials Development Kit] 004_Overworld_EncounterModifiers.rb:169:in `block (2 levels) in <main>'
+[Touhoumon Essentials Development Kit] 004_Overworld_EncounterModifiers.rb:165:in `times'
+[Touhoumon Essentials Development Kit] 004_Overworld_EncounterModifiers.rb:165:in `block in <main>'
+005_Event_Handlers.rb:89:in `block in trigger'
+005_Event_Handlers.rb:89:in `each_value'
+005_Event_Handlers.rb:89:in `trigger'
+006_Event_HandlerCollections.rb:63:in `trigger'
+003_Overworld_WildEncounters.rb:456:in `pbEncounter'
+002_Item_Effects.rb:299:in `block (2 levels) in load_scripts_from_folder'
+
+=================
+
+[2026-04-22 17:58:40 -0700]
+[Pokémon Essentials version 21.1]
+[v21.1 Hotfixes 1.0.9]
+
+Exception: ArgumentError
+Message: Encounter type  does not exist
+
+Backtrace:
+[Touhoumon Essentials Development Kit] 003_Overworld_WildEncounters.rb:102:in `choose_wild_pokemon'
+[Touhoumon Essentials Development Kit] 004_Overworld_EncounterModifiers.rb:169:in `block (2 levels) in <main>'
+[Touhoumon Essentials Development Kit] 004_Overworld_EncounterModifiers.rb:165:in `times'
+[Touhoumon Essentials Development Kit] 004_Overworld_EncounterModifiers.rb:165:in `block in <main>'
+005_Event_Handlers.rb:89:in `block in trigger'
+005_Event_Handlers.rb:89:in `each_value'
+005_Event_Handlers.rb:89:in `trigger'
+006_Event_HandlerCollections.rb:63:in `trigger'
+003_Overworld_WildEncounters.rb:456:in `pbEncounter'
+002_Item_Effects.rb:299:in `block (2 levels) in load_scripts_from_folder'
+
+=================
+
+[2026-04-22 18:16:30 -0700]
+[Pokémon Essentials version 21.1]
+
+Error in Plugin: [Touhoumon Essentials Development Kit]
+Exception: SyntaxError
+Message: [Touhoumon Essentials Development Kit] 004_Overworld_EncounterModifiers.rb:223: syntax error, unexpected end-of-input, expecting `end'
+  end
+     ^
+
+
+Backtrace:
+005_PluginManager.rb:635:in `eval'
+005_PluginManager.rb:635:in `block (2 levels) in runPlugins'
+005_PluginManager.rb:625:in `each'
+005_PluginManager.rb:625:in `block in runPlugins'
+005_PluginManager.rb:616:in `each'
+005_PluginManager.rb:616:in `runPlugins'
+999_Main.rb:35:in `mainFunctionDebug'
+999_Main.rb:19:in `block in mainFunction'
+003_Errors.rb:79:in `pbCriticalCode'
+999_Main.rb:19:in `mainFunction'
