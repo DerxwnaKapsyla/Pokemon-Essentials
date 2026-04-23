@@ -115724,11 +115724,28 @@ List of Event Commands:
   :       :     pkmn.reset_moves
   :       :     pbAddPokemon(pkmn)
   @>Comment: --- Finish sequence ---
+  @>Text: Before you go, let me just record your name and team into
+   :    : the Tower's database. The first person to conquer the Tower's
+   :    : strongest training protocol.
+  @>Text: Welcome to the Hall of Fame!
+  @>Change Screen Color Tone: (-255,-255,-255,0), @6
+  @>Wait: 6 frame(s)
+  @>Script: pbHallOfFameEntry
+  @>Wait: 6 frame(s)
+  @>Change Screen Color Tone: (0,0,0,0), @6
   @>Control Switches: [0166: The Ultimate Trial] = ON
   @>
  : Else
   @>Text: Unfortunately, we don't have anything else we can offer you... I am terribly
    :    : sorry!
+  @>Text: Before you go, let me just record your name and team into
+   :    : the Tower's database once more!
+  @>Text: Welcome to the Hall of Fame!
+  @>Change Screen Color Tone: (-255,-255,-255,0), @6
+  @>Wait: 6 frame(s)
+  @>Script: pbHallOfFameEntry
+  @>Wait: 6 frame(s)
+  @>Change Screen Color Tone: (0,0,0,0), @6
   @>
  : Branch End
  @>Text: Congratulations once again on conquering the Tower and all it has to
@@ -115877,6 +115894,44 @@ List of Event Commands:
 @>
 
 #------------------------------------------------------------------------------
+Event ID: 012
+Event Name: EV012
+(X,Y): (012,010)
+
+Page #1
+Conditions
+None
+
+Autonomous Movement
+Type: Fixed
+Speed: 3: Slow
+Freq: 3: Low
+Options Enabled
+Move Animation
+Trigger: Action Button
+
+List of Event Commands:
+@>Script: pbSetPokemonCenter
+@>Call Common Event: Akyuu Shrines
+@>
+
+Page #2
+Conditions
+Switch 0001: Starting over is ON
+
+Autonomous Movement
+Type: Fixed
+Speed: 3: Slow
+Freq: 3: Low
+Options Enabled
+Move Animation
+Trigger: Autorun
+
+List of Event Commands:
+@>Control Switches: [0001: Starting over] = OFF
+@>
+
+#------------------------------------------------------------------------------
 
 #==============================================================================
 Map ID: 153
@@ -115969,8 +116024,66 @@ Trigger: Action Button
 List of Event Commands:
 @>Text: \l[3]\sign[sign]Garden of Dreams\nPuppets from across your 
  :    : journey can be found here!
-@>Script: pbSet(1,$player.pokedex.owned_count.to_s)
+@>Script: pbSet(1,$player.pokedex.owned_count)
 @>Text: Progress towards capture completion: \v[1] out of 340
+@>Conditional Branch: Variable [0001: Temp Pokemon Choice] >= 340
+ @>Text: \w[dark]...What do you mean you caught everything?
+ @>Text: \w[dark]Even the hidden Deoxys? As well as Amira's Glaceon?
+ @>Text: \w[dark]...I mean, sure, you could, but.
+ @>Text: \w[dark]You went through all that effort?
+ @>Text: \w[dark]I'm impressed!
+ @>Text: \w[dark]There's... not really anything I can offer you!
+ @>Text: \w[dark]Well, I suppose I can give you a hint toward something.
+ @>Text: \w[dark]I lied- there isn't 340 encounters.
+ @>Text: \w[dark]There's 341.
+ @>Text: \w[dark]I won't tell you where, you'll have to figure that out!
+ @>Text: \w[dark]But, if you've paid attention, you should already know
+  :    : where #341 is.
+ @>Conditional Branch: Script: $player.owned?(:MEIMU)
+  @>Text: \w[dark]...Oh, you already found her!
+  @>Text: \w[dark]Well, now I have egg on my face!
+  @>Text: \w[dark]Though, wow. You caught everything <i>AND</i> beat The
+   :    : Ultimate Trial.
+  @>Text: \w[dark]I really can't give you anything else!
+  @>Text: \w[dark]Tell you what. If you can send me proof of clearing The
+   :    : Ultimate Trial and having captured everything, I'll throw you into
+   :    : the World Tournament in Asteria.
+  @>Text: \w[dark]Clearly you belong there for all your insane work.
+  @>Text: \w[dark]Thank you so much for playing the game to this point.
+  @>Text: \w[dark]Seriously, I mean it from the bottom of my heart.
+  @>Text: \w[dark]I put so much of myself into this game, even for things
+   :    : the average person won't see.
+  @>Text: \w[dark]So, knowing you made it to this point... It's means I've
+   :    : done something right!
+  @>Text: \w[dark]...Or something <i>very</i> wrong. I hope it's not that though!
+  @>Text: \w[dark]I hope you enjoyed the game. It would mean the world to me
+   :    : if you did.
+  @>Text: \w[dark]Thank you.
+  @>Control Self Switch: A =ON
+  @>
+ : Branch End
+ @>Text: \w[dark]- DerxwnaKapsyla
+ @>
+: Branch End
+@>
+
+Page #2
+Conditions
+Self Switch A is ON
+
+Autonomous Movement
+Type: Fixed
+Speed: 3: Slow
+Freq: 3: Low
+Options Enabled
+Move Animation
+Trigger: Action Button
+
+List of Event Commands:
+@>Text: \l[3]\sign[sign]Garden of Dreams\nPuppets from across your 
+ :    : journey can be found here!
+@>Script: pbSet(1,$player.pokedex.owned_count.to_s)
+@>Text: Progress towards capture completion: \v[1] out of 341
 @>
 
 #------------------------------------------------------------------------------
@@ -116113,40 +116226,6 @@ List of Event Commands:
 @>Wait: 8 frame(s)
 @>Transfer Player:[152: Tower of Adventure], (019,017), Up, No Fade
 @>Change Screen Color Tone: (0,0,0,0), @6
-@>
-
-#------------------------------------------------------------------------------
-Event ID: 007
-Event Name: EV007
-(X,Y): (035,024)
-
-Page #1
-Conditions
-None
-
-Autonomous Movement
-Type: Fixed
-Speed: 3: Slow
-Freq: 3: Low
-Options Enabled
-Move Animation
-Trigger: Action Button
-
-List of Event Commands:
-@>Show Choices: Scenario 1, Scenario 2, Scenario 3, Exit
-(When Cancel: Choice 4)
-: When [Scenario 1]
- @>Script: $player.scenario_name = "The Kingdom of Lunacy?"
- @>
-: When [Scenario 2]
- @>Script: $player.scenario_name = "?????????"
- @>
-: When [Scenario 3]
- @>Script: $player.scenario_name = "You shouldn't be here. Leave, now."
- @>
-: When [Exit]
- @>
-: Branch End
 @>
 
 #------------------------------------------------------------------------------
