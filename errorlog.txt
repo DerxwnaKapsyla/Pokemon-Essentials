@@ -31083,3 +31083,134 @@ Backtrace:
 (eval):1:in `execute_script'
 003_Interpreter.rb:140:in `eval'
 003_Interpreter.rb:140:in `execute_script'
+
+=================
+
+[2026-04-23 14:16:18 -0700]
+[Pokémon Essentials version 21.1]
+[v21.1 Hotfixes 1.0.9]
+
+Exception: SystemStackError
+Message: stack level too deep
+
+Backtrace:
+[Delta Speed Up] _Main_Script.rb:52:in `uptime'
+[Caruban's Dynamic Darkness] Dynamic Darkness.rb:493:in `update'
+[Caruban's Dynamic Darkness] Dynamic Darkness.rb:497:in `update'
+[Caruban's Dynamic Darkness] Dynamic Darkness.rb:497:in `update'
+[Caruban's Dynamic Darkness] Dynamic Darkness.rb:497:in `update'
+[Caruban's Dynamic Darkness] Dynamic Darkness.rb:497:in `update'
+[Caruban's Dynamic Darkness] Dynamic Darkness.rb:497:in `update'
+[Caruban's Dynamic Darkness] Dynamic Darkness.rb:497:in `update'
+[Caruban's Dynamic Darkness] Dynamic Darkness.rb:497:in `update'
+[Caruban's Dynamic Darkness] Dynamic Darkness.rb:497:in `update'
+
+=================
+
+[2026-04-23 19:49:47 -0700]
+[Pokémon Essentials version 21.1]
+[v21.1 Hotfixes 1.0.9]
+
+Error in Plugin: [Choice Menu Images]
+Exception: NoMethodError
+Message: super called outside of method
+
+Backtrace:
+[Choice Menu Images] 001_main.rb:29:in `<class:Window_CommandPokemon_cmi>'
+[Choice Menu Images] 001_main.rb:28:in `<main>'
+005_PluginManager.rb:635:in `eval'
+005_PluginManager.rb:635:in `block (2 levels) in runPlugins'
+005_PluginManager.rb:625:in `each'
+005_PluginManager.rb:625:in `block in runPlugins'
+005_PluginManager.rb:616:in `each'
+005_PluginManager.rb:616:in `runPlugins'
+999_Main.rb:35:in `mainFunctionDebug'
+999_Main.rb:19:in `block in mainFunction'
+
+=================
+
+[2026-04-24 00:11:05 -0700]
+[Pokémon Essentials version 21.1]
+[v21.1 Hotfixes 1.0.9]
+
+Script error in event 5 (coords 17,37), map 81 (Discarded Ideas)
+Exception: NoMethodError
+Message: undefined method `[]' for nil:NilClass
+
+***Full script:
+textbook(41)
+
+Backtrace:
+[Textbook Script] 001_Textbook Script.rb:1110:in `drawTextbookPage'
+[Textbook Script] 001_Textbook Script.rb:1090:in `pbStartTextbookScene'
+[Textbook Script] 001_Textbook Script.rb:17:in `pbStartTextbookScreen'
+[Textbook Script] 001_Textbook Script.rb:5:in `block in textbook'
+002_MessageConfig.rb:575:in `pbFadeOutIn'
+[Textbook Script] 001_Textbook Script.rb:2:in `textbook'
+(eval):1:in `execute_script'
+003_Interpreter.rb:140:in `eval'
+003_Interpreter.rb:140:in `execute_script'
+004_Interpreter_Commands.rb:1177:in `command_355'
+
+=================
+
+[2026-04-24 17:16:47 -0700]
+[Pokémon Essentials version 21.1]
+[v21.1 Hotfixes 1.0.9]
+
+Exception: Errno::ENOENT
+Message: File No such file or directory @ rb_sysopen - Map Screenshots/Human Village.png not found.
+
+Backtrace:
+[Marin's Scripting Utilities] script.rb:772:in `initialize'
+[Marin's Scripting Utilities] script.rb:772:in `new'
+[Marin's Scripting Utilities] script.rb:772:in `initialize'
+[Marin's Scripting Utilities] script.rb:812:in `new'
+[Marin's Scripting Utilities] script.rb:812:in `save_to_png'
+[Marin's Map Exporter] script.rb:146:in `initialize'
+[Marin's Map Exporter] script.rb:17:in `new'
+[Marin's Map Exporter] script.rb:17:in `pbExportMap'
+[Marin's Map Exporter] script.rb:48:in `block in pbExportAMap'
+[Marin's Map Exporter] script.rb:35:in `loop'
+
+=================
+
+[2026-04-24 17:17:29 -0700]
+[Pokémon Essentials version 21.1]
+[v21.1 Hotfixes 1.0.9]
+
+Exception: Errno::ENOENT
+Message: File No such file or directory @ rb_sysopen - Map Screenshots/Tower of Adventure.png not found.
+
+Backtrace:
+[Marin's Scripting Utilities] script.rb:772:in `initialize'
+[Marin's Scripting Utilities] script.rb:772:in `new'
+[Marin's Scripting Utilities] script.rb:772:in `initialize'
+[Marin's Scripting Utilities] script.rb:812:in `new'
+[Marin's Scripting Utilities] script.rb:812:in `save_to_png'
+[Marin's Map Exporter] script.rb:146:in `initialize'
+[Marin's Map Exporter] script.rb:17:in `new'
+[Marin's Map Exporter] script.rb:17:in `pbExportMap'
+[Marin's Map Exporter] script.rb:48:in `block in pbExportAMap'
+[Marin's Map Exporter] script.rb:35:in `loop'
+
+=================
+
+[2026-04-24 19:42:14 -0700]
+[Pokémon Essentials version 21.1]
+[v21.1 Hotfixes 1.0.9]
+
+Exception: NoMethodError
+Message: undefined method `pbSetSelfSwitch' for #<Game_Player>
+
+Backtrace:
+(eval):1:in `block in move_type_custom'
+006_Game_Character.rb:540:in `eval'
+006_Game_Character.rb:540:in `block in move_type_custom'
+006_Game_Character.rb:431:in `times'
+006_Game_Character.rb:431:in `move_type_custom'
+006_Game_Character.rb:919:in `update_command'
+006_Game_Character.rb:905:in `update'
+008_Game_Player.rb:420:in `update'
+002_Scene_Map.rb:168:in `block in update'
+002_Scene_Map.rb:166:in `loop'

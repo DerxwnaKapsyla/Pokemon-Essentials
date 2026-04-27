@@ -29,7 +29,7 @@ class Window_CommandPokemon
   alias cmi_initialize initialize unless method_defined?(:cmi_initialize)
   alias cmi_update update unless method_defined?(:cmi_update)
 
-  def initialize(commands, width = 198)
+  def initialize(commands, width = nil)
     cmi_initialize(commands, width)
     create_hover_sprite
     @current_image_path = nil

@@ -3222,7 +3222,7 @@ Trigger: Action Button
 List of Event Commands:
 @>Comment: Event Indicator
  :       : quest
-@>Conditional Branch: Variable [0107: TMoM Plot Variable] == 1
+@>Conditional Branch: Variable [0107: TMoM Plot Variable] >= 1
  @>Text: \xn[\pn]The window is open. Should I head out now?
  @>Show Choices: Yes, No
  (When Cancel: Choice 2)
@@ -16564,6 +16564,8 @@ List of Event Commands:
 @>Show Choices: Yes, No
 (When Cancel: Choice 2)
 : When [Yes]
+ @>Control Variables: [0105: Game Selected] = 4
+ @>Control Switches: [0163: No Going Back] = OFF
  @>Script: $player.scenario_name = "The Last Adventure"
  @>Script: playSpecialBGM("quiet_time")
  @>Move Picture: 2, @30, Upper Left (0,0), (100%,100%), 0, Normal
@@ -16621,6 +16623,7 @@ List of Event Commands:
 @>Show Choices: Yes, No
 (When Cancel: Choice 2)
 : When [Yes]
+ @>Control Variables: [0105: Game Selected] = 4
  @>Control Switches: [0163: No Going Back] = OFF
  @>Script: $player.scenario_name = "The Last Adventure"
  @>Script: playSpecialBGM("quiet_time")
@@ -29159,6 +29162,7 @@ List of Event Commands:
 @>Text: \xn[\pn]The Harvest Festival is finally here, which means I shouldn't spend too much time in the village.
 @>Text: \xn[\pn]If I remember right, this year the festival grounds were being moved to the northeast part of the village, just past the tavern,
 @>Text: \xn[\pn]I had better head on over, no doubt the others are waiting for me there!
+@>Control Variables: [0116: TFoC Plot Variable] = 1
 @>Control Self Switch: A =ON
 @>
 
@@ -60695,6 +60699,7 @@ List of Event Commands:
   :    : about to become a lot less free than it used to be.\wtnp[90]</ac>
  @>Text: <ac>\w[dark]\c[12]\se[]\l[3]That, however, would be a worry for another
   :    : day...\wtnp[90]</ac>
+ @>Control Variables: [0116: TFoC Plot Variable] = 30
  @>Fade Out BGM: 5 sec.
  @>Wait: 50 frame(s)
  @>Change Text Options: Middle, Hide
@@ -65957,6 +65962,1070 @@ List of Event Commands:
 @>Change Screen Color Tone: (-255,-255,-255,0), @6
 @>Wait: 8 frame(s)
 @>Transfer Player:[136: Tower of Adventure (Roof)], (026,015), Down, No Fade
+@>Change Screen Color Tone: (0,0,0,0), @6
+@>
+
+#------------------------------------------------------------------------------
+
+#==============================================================================
+Map ID: 081
+Map Name: Discarded Ideas
+Tileset: 050: Discard Zone
+Width: 35, Height: 50
+Auto-Change BGM: B-044. Finale ~ For The End
+
+#------------------------------------------------------------------------------
+Event ID: 001
+Event Name: EV001
+(X,Y): (016,036)
+
+Page #1
+Conditions
+None
+
+Autonomous Movement
+Type: Fixed
+Speed: 3: Slow
+Freq: 3: Low
+Options Enabled
+Move Animation
+Trigger: Action Button
+
+List of Event Commands:
+@>
+
+Page #2
+Conditions
+Self Switch A is ON
+
+Autonomous Movement
+Type: Fixed
+Speed: 3: Slow
+Freq: 3: Low
+Options Enabled
+Move Animation
+Trigger: Action Button
+
+List of Event Commands:
+@>
+
+#------------------------------------------------------------------------------
+Event ID: 002
+Event Name: EV002
+(X,Y): (016,030)
+
+Page #1
+Conditions
+None
+
+Autonomous Movement
+Type: Fixed
+Speed: 3: Slow
+Freq: 3: Low
+Options Enabled
+Move Animation
+Trigger: Action Button
+
+List of Event Commands:
+@>
+
+Page #2
+Conditions
+Self Switch A is ON
+
+Autonomous Movement
+Type: Fixed
+Speed: 3: Slow
+Freq: 3: Low
+Options Enabled
+Move Animation
+Trigger: Action Button
+
+List of Event Commands:
+@>
+
+#------------------------------------------------------------------------------
+Event ID: 003
+Event Name: EV003
+(X,Y): (016,024)
+
+Page #1
+Conditions
+None
+
+Autonomous Movement
+Type: Fixed
+Speed: 3: Slow
+Freq: 3: Low
+Options Enabled
+Move Animation
+Trigger: Action Button
+
+List of Event Commands:
+@>
+
+Page #2
+Conditions
+Self Switch A is ON
+
+Autonomous Movement
+Type: Fixed
+Speed: 3: Slow
+Freq: 3: Low
+Options Enabled
+Move Animation
+Trigger: Action Button
+
+List of Event Commands:
+@>
+
+#------------------------------------------------------------------------------
+Event ID: 004
+Event Name: EV004
+(X,Y): (016,018)
+
+Page #1
+Conditions
+None
+
+Autonomous Movement
+Type: Fixed
+Speed: 3: Slow
+Freq: 3: Low
+Options Enabled
+Move Animation
+Trigger: Action Button
+
+List of Event Commands:
+@>
+
+Page #2
+Conditions
+Self Switch A is ON
+
+Autonomous Movement
+Type: Fixed
+Speed: 3: Slow
+Freq: 3: Low
+Options Enabled
+Move Animation
+Trigger: Action Button
+
+List of Event Commands:
+@>
+
+#------------------------------------------------------------------------------
+Event ID: 005
+Event Name: EV005
+(X,Y): (017,037)
+
+Page #1
+Conditions
+None
+
+Autonomous Movement
+Type: Fixed
+Speed: 3: Slow
+Freq: 3: Low
+Options Enabled
+Move Animation
+Trigger: Action Button
+
+List of Event Commands:
+@>Text: It appears to be some sort of writing log.
+@>Text: Read it?
+@>Show Choices: Yes, No
+(When Cancel: Choice 2)
+: When [Yes]
+ @>Control Switches: [0094: White Textbook Text] = ON
+ @>Script: textbook(41)
+ @>Control Switches: [0094: White Textbook Text] = OFF
+ @>
+: When [No]
+ @>
+: Branch End
+@>
+
+#------------------------------------------------------------------------------
+Event ID: 006
+Event Name: EV006
+(X,Y): (017,031)
+
+Page #1
+Conditions
+None
+
+Autonomous Movement
+Type: Fixed
+Speed: 3: Slow
+Freq: 3: Low
+Options Enabled
+Move Animation
+Trigger: Action Button
+
+List of Event Commands:
+@>Text: It appears to be some sort of writing log.
+@>Text: Read it?
+@>Show Choices: Yes, No
+(When Cancel: Choice 2)
+: When [Yes]
+ @>Control Switches: [0094: White Textbook Text] = ON
+ @>Script: textbook(42)
+ @>Control Switches: [0094: White Textbook Text] = OFF
+ @>
+: When [No]
+ @>
+: Branch End
+@>
+
+#------------------------------------------------------------------------------
+Event ID: 007
+Event Name: EV007
+(X,Y): (017,025)
+
+Page #1
+Conditions
+None
+
+Autonomous Movement
+Type: Fixed
+Speed: 3: Slow
+Freq: 3: Low
+Options Enabled
+Move Animation
+Trigger: Action Button
+
+List of Event Commands:
+@>Text: It appears to be some sort of writing log.
+@>Text: Read it?
+@>Show Choices: Yes, No
+(When Cancel: Choice 2)
+: When [Yes]
+ @>Control Switches: [0094: White Textbook Text] = ON
+ @>Script: textbook(43)
+ @>Control Switches: [0094: White Textbook Text] = OFF
+ @>
+: When [No]
+ @>
+: Branch End
+@>
+
+#------------------------------------------------------------------------------
+Event ID: 008
+Event Name: EV008
+(X,Y): (017,019)
+
+Page #1
+Conditions
+None
+
+Autonomous Movement
+Type: Fixed
+Speed: 3: Slow
+Freq: 3: Low
+Options Enabled
+Move Animation
+Trigger: Action Button
+
+List of Event Commands:
+@>Text: It appears to be some sort of writing log.
+@>Text: Read it?
+@>Show Choices: Yes, No
+(When Cancel: Choice 2)
+: When [Yes]
+ @>Control Switches: [0094: White Textbook Text] = ON
+ @>Script: textbook(44)
+ @>Control Switches: [0094: White Textbook Text] = OFF
+ @>
+: When [No]
+ @>
+: Branch End
+@>
+
+#------------------------------------------------------------------------------
+Event ID: 009
+Event Name: M-Lock #1
+(X,Y): (015,036)
+
+Page #1
+Conditions
+Switch 0152: TLA Cleared is ON
+
+Autonomous Movement
+Type: Fixed
+Speed: 3: Slow
+Freq: 3: Low
+Options Enabled
+Move Animation
+Trigger: Action Button
+
+List of Event Commands:
+@>Conditional Branch: Player is facing Up
+ @>Script: set_menu_theme("dark")
+ @>Text: \w[dark]M-LOCK #1 STATUS: ACTIVATED.
+ @>Text: \w[dark]DISENGAGE?
+ @>Show Choices: Yes, No
+ (When Cancel: Choice 2)
+ : When [Yes]
+  @>Play SE: 'Battle catch click', 80, 100
+  @>Wait: 10 frame(s)
+  @>Play SE: 'Pollen', 80, 100
+  @>Script: pbSetSelfSwitch(1,"A",true)
+  @>Comment: Disengage adjacent lock.
+  @>Control Self Switch: A =ON
+  @>
+ : When [No]
+  @>
+ : Branch End
+ @>
+: Branch End
+@>Script: reset_menu_theme
+@>
+
+Page #2
+Conditions
+Self Switch A is ON
+
+Autonomous Movement
+Type: Fixed
+Speed: 3: Slow
+Freq: 3: Low
+Options Enabled
+Move Animation
+Trigger: Action Button
+
+List of Event Commands:
+@>Conditional Branch: Player is facing Up
+ @>Text: \w[dark]M-LOCK #1 STATUS: DEACTIVATED.
+ @>
+: Branch End
+@>
+
+#------------------------------------------------------------------------------
+Event ID: 010
+Event Name: M-Lock #2
+(X,Y): (015,030)
+
+Page #1
+Conditions
+Switch 0152: TLA Cleared is ON
+
+Autonomous Movement
+Type: Fixed
+Speed: 3: Slow
+Freq: 3: Low
+Options Enabled
+Move Animation
+Trigger: Action Button
+
+List of Event Commands:
+@>Conditional Branch: Player is facing Up
+ @>Script: set_menu_theme("dark")
+ @>Text: \w[dark]M-LOCK #2 STATUS: ACTIVATED.
+ @>Text: \w[dark]DISENGAGE?
+ @>Show Choices: Yes, No
+ (When Cancel: Choice 2)
+ : When [Yes]
+  @>Play SE: 'Battle catch click', 80, 100
+  @>Wait: 10 frame(s)
+  @>Play SE: 'Pollen', 80, 100
+  @>Script: pbSetSelfSwitch(2,"A",true)
+  @>Comment: Disengage adjacent lock.
+  @>Control Self Switch: A =ON
+  @>
+ : When [No]
+  @>
+ : Branch End
+ @>
+: Branch End
+@>Script: reset_menu_theme
+@>
+
+Page #2
+Conditions
+Self Switch A is ON
+
+Autonomous Movement
+Type: Fixed
+Speed: 3: Slow
+Freq: 3: Low
+Options Enabled
+Move Animation
+Trigger: Action Button
+
+List of Event Commands:
+@>Conditional Branch: Player is facing Up
+ @>Text: \w[dark]M-LOCK #2 STATUS: DEACTIVATED.
+ @>
+: Branch End
+@>
+
+#------------------------------------------------------------------------------
+Event ID: 011
+Event Name: M-Lock #3
+(X,Y): (015,024)
+
+Page #1
+Conditions
+Switch 0152: TLA Cleared is ON
+
+Autonomous Movement
+Type: Fixed
+Speed: 3: Slow
+Freq: 3: Low
+Options Enabled
+Move Animation
+Trigger: Action Button
+
+List of Event Commands:
+@>Conditional Branch: Player is facing Up
+ @>Script: set_menu_theme("dark")
+ @>Text: \w[dark]M-LOCK #3 STATUS: ACTIVATED.
+ @>Text: \w[dark]DISENGAGE?
+ @>Show Choices: Yes, No
+ (When Cancel: Choice 2)
+ : When [Yes]
+  @>Play SE: 'Battle catch click', 80, 100
+  @>Wait: 10 frame(s)
+  @>Play SE: 'Pollen', 80, 100
+  @>Script: pbSetSelfSwitch(3,"A",true)
+  @>Comment: Disengage adjacent lock.
+  @>Control Self Switch: A =ON
+  @>
+ : When [No]
+  @>
+ : Branch End
+ @>
+: Branch End
+@>Script: reset_menu_theme
+@>
+
+Page #2
+Conditions
+Self Switch A is ON
+
+Autonomous Movement
+Type: Fixed
+Speed: 3: Slow
+Freq: 3: Low
+Options Enabled
+Move Animation
+Trigger: Action Button
+
+List of Event Commands:
+@>Conditional Branch: Player is facing Up
+ @>Text: \w[dark]M-LOCK #3 STATUS: DEACTIVATED.
+ @>
+: Branch End
+@>
+
+#------------------------------------------------------------------------------
+Event ID: 012
+Event Name: M-Lock #4
+(X,Y): (015,018)
+
+Page #1
+Conditions
+Switch 0152: TLA Cleared is ON
+
+Autonomous Movement
+Type: Fixed
+Speed: 3: Slow
+Freq: 3: Low
+Options Enabled
+Move Animation
+Trigger: Action Button
+
+List of Event Commands:
+@>Conditional Branch: Player is facing Up
+ @>Script: set_menu_theme("dark")
+ @>Text: \w[dark]M-LOCK #4 STATUS: ACTIVATED.
+ @>Text: \w[dark]DISENGAGE?
+ @>Show Choices: Yes, No
+ (When Cancel: Choice 2)
+ : When [Yes]
+  @>Text: \w[dark]WARNING. DISENGAGING THIS LOCK WILL REACTIVATE
+   :    : THE DISCARDED M-PROTOCOL SEQUENCE.
+  @>Text: \w[dark]EXTREME CAUTION IS ADVISED. IT IS HIGHLY ADVISED
+   :    : THAT YOU ARE FULLY PREPARED FOR WHAT MAY COME.
+  @>Text: \w[dark]FINAL CONFIRMATION. DISENGAGE LOCK #4?
+  @>Show Choices: Yes, No
+  (When Cancel: Choice 2)
+  : When [Yes]
+   @>Play SE: 'Battle catch click', 80, 100
+   @>Wait: 10 frame(s)
+   @>Play SE: 'Pollen', 80, 100
+   @>Script: pbSetSelfSwitch(4,"A",true)
+   @>Comment: Disengage adjacent lock.
+   @>Control Self Switch: A =ON
+   @>
+  : When [No]
+   @>
+  : Branch End
+  @>
+ : When [No]
+  @>
+ : Branch End
+ @>
+: Branch End
+@>Script: reset_menu_theme
+@>
+
+Page #2
+Conditions
+Self Switch A is ON
+
+Autonomous Movement
+Type: Fixed
+Speed: 3: Slow
+Freq: 3: Low
+Options Enabled
+Move Animation
+Trigger: Action Button
+
+List of Event Commands:
+@>Conditional Branch: Player is facing Up
+ @>Text: \w[dark]M-LOCK #4 STATUS: DEACTIVATED.
+ @>
+: Branch End
+@>
+
+#------------------------------------------------------------------------------
+Event ID: 013
+Event Name: Medicine
+(X,Y): (016,002)
+
+Page #1
+Conditions
+Switch 0152: TLA Cleared is ON
+
+Graphic: Person_Medicine
+
+Autonomous Movement
+Type: Fixed
+Speed: 3: Slow
+Freq: 3: Low
+Options Enabled
+Move Animation
+Trigger: Action Button
+
+List of Event Commands:
+@>
+
+#------------------------------------------------------------------------------
+Event ID: 014
+Event Name: Derxwna
+(X,Y): (015,037)
+
+Page #1
+Conditions
+Switch 0152: TLA Cleared is ON
+
+Graphic: trainer_ABYSSALOBSERVER
+
+Autonomous Movement
+Type: Fixed
+Speed: 3: Slow
+Freq: 3: Low
+Options Enabled
+Move Animation
+Direction Fix
+Trigger: Action Button
+
+List of Event Commands:
+@>Text: \xn[???]And just after I finished resealing the locks...
+@>Text: \xn[???]<i>Sigh.</i>
+@>Set Move Route: [Derxwna]
+ :              : $>Direction Fix OFF
+ :              : $>Turn toward Player
+@>Text: \xn[???]I assume you're here to see her, aren't you?
+@>Text: \xn[???]Nothing else to see here aside from her.
+@>Text: \xn[???]Well, don't let me stop you. She could use some enrichment
+ :    : from someone who isn't just utilizing Debug Mode to circumvent her
+ :    : mechanics.
+@>Text: \xn[???]She's here for a reason, afterall.
+@>Text: \xn[???]Well, good luck!
+@>Play SE: 'PC close', 100, 70
+@>Change Screen Color Tone: (-255,-255,-255,0), @6
+@>Wait: 20 frame(s)
+@>Control Self Switch: A =ON
+@>Change Screen Color Tone: (0,0,0,0), @6
+@>
+
+Page #2
+Conditions
+Self Switch A is ON
+
+Autonomous Movement
+Type: Fixed
+Speed: 3: Slow
+Freq: 3: Low
+Options Enabled
+Move Animation
+Trigger: Action Button
+
+List of Event Commands:
+@>
+
+#------------------------------------------------------------------------------
+Event ID: 015
+Event Name: EV015
+(X,Y): (008,028)
+
+Page #1
+Conditions
+None
+
+Autonomous Movement
+Type: Fixed
+Speed: 3: Slow
+Freq: 3: Low
+Options Enabled
+Move Animation
+Trigger: Parallel Process
+
+List of Event Commands:
+@>Change Map Settings:Panorama = 'Stars1', 0
+@>Change Map Settings:Fog = 'PurpleFog', 50, 192, Normal, 200, 1, 1
+@>
+
+#------------------------------------------------------------------------------
+Event ID: 016
+Event Name: Not Allowed Here
+(X,Y): (030,027)
+
+Page #1
+Conditions
+None
+
+Autonomous Movement
+Type: Fixed
+Speed: 3: Slow
+Freq: 3: Low
+Options Enabled
+Move Animation
+Trigger: Action Button
+
+List of Event Commands:
+@>Comment: This event is to restrict people from being here unless they've
+ :       : finished TLA.
+ :       : 
+ :       : It will teleport them back to the previous episode they were in.
+ :       : This will be a very complex event to make.
+@>Comment: Even if people manage to come here before that point, and 
+ :       : somehow don't get turned back, there will be nothing here to 
+ :       : do. All events will require having TLA finished.
+ :       : 
+ :       : Including the teleport out.
+@>Comment: Here we go...!
+@>Comment: -- CONCEPT PLANNING --
+ :       : Top Level Conditional: Check if TLA is cleared
+ :       : > If yes, set Self Switch A to true.
+ :       : > If no...
+@>Comment: If No:
+ :       : > Check the episodes in sequential order. Start with TMoM,
+ :       : end with TLA.
+ :       : > Check if the episode is clear, if not, check for the plot
+ :       : variable.
+@>Comment: If the plot variable for an episode is greater than 0, but less 
+ :       : than the total plot variable for the episode, return them to 
+ :       : the Human Village for that episode.
+ :       : 
+ :       : This should be safe, as you will always be able to access the
+ :       : Human Village whenever you have player control now.
+@>Comment: For TLA, there are three different outcomes that need to be checked.
+ :       : > If the player has actually started TLA.
+ :       : > If the player has gone onto the Fake!TKoL Episode.
+ :       : If they didn't start the episode, they go back to the Hub!Tower of Adventure.
+ :       : If they did start the episode, they go to TLA!Tower of Adventure.
+ :       : If they're in Fake!TKoL, they go to TKoL's Human Village.
+@>
+
+Page #2
+Conditions
+None
+
+Autonomous Movement
+Type: Fixed
+Speed: 3: Slow
+Freq: 3: Low
+Options Enabled
+Move Animation
+Trigger: Action Button
+
+List of Event Commands:
+@>Conditional Branch: Switch [0152: TLA Cleared] == ON
+ @>Control Self Switch: A =ON
+ @>
+: Else
+ @>Play SE: 'GUI sel buzzer', 100, 100
+ @>Text: \w[dark]ACCESS DENIED. ATTEMPTING TO RETURN
+  :    : YOU TO LAST KNOWN ACTIVE EPISODE.
+ @>Comment: EPISODE CHECK.
+ @>Comment: ------------------------------------
+ @>Conditional Branch: Switch [0116: TMoM Cleared] == OFF
+  @>Comment: RUN VARIABLE CHECK.
+  @>Conditional Branch: Variable [0105: Game Selected] == 1
+   @>Conditional Branch: Script: pbGet(107) > 0 && pbGet(107) != 20
+    @>Play SE: 'Bonk', 50, 100
+    @>Change Screen Color Tone: (-255,-255,-255,0), @6
+    @>Wait: 8 frame(s)
+    @>Transfer Player:[007: Ayaka's Room], (004,007), Right, No Fade
+    @>Change Screen Color Tone: (0,0,0,0), @6
+    @>Exit Event Processing
+    @>
+   : Branch End
+   @>
+  : Branch End
+  @>
+ : Branch End
+ @>Comment: ------------------------------------
+ @>Conditional Branch: Switch [0139: TFoC Cleared] == OFF
+  @>Comment: RUN VARIABLE CHECK.
+  @>Conditional Branch: Variable [0105: Game Selected] == 2
+   @>Conditional Branch: Script: pbGet(116) > 0 && pbGet(116) != 30
+    @>Play SE: 'Bonk', 50, 100
+    @>Change Screen Color Tone: (-255,-255,-255,0), @6
+    @>Wait: 8 frame(s)
+    @>Transfer Player:[037: Human Village], (021,063), Down, No Fade
+    @>Change Screen Color Tone: (0,0,0,0), @6
+    @>Exit Event Processing
+    @>
+   : Branch End
+   @>
+  : Branch End
+  @>
+ : Branch End
+ @>Comment: ------------------------------------
+ @>Conditional Branch: Switch [0147: TKoL Cleared] == OFF
+  @>Comment: RUN VARIABLE CHECK.
+  @>Conditional Branch: Variable [0105: Game Selected] == 3
+   @>Conditional Branch: Script: pbGet(121) > 0 && pbGet(121) != 27
+    @>Play SE: 'Bonk', 50, 100
+    @>Change Screen Color Tone: (-255,-255,-255,0), @6
+    @>Wait: 8 frame(s)
+    @>Transfer Player:[082: Human Village], (021,063), Down, No Fade
+    @>Change Screen Color Tone: (0,0,0,0), @6
+    @>Exit Event Processing
+    @>
+   : Branch End
+   @>
+  : Branch End
+  @>
+ : Branch End
+ @>Comment: ------------------------------------
+ @>Conditional Branch: Switch [0152: TLA Cleared] == OFF
+  @>Comment: RUN VARIABLE CHECK.
+  @>Conditional Branch: Script: pbGet(142) > 0 && pbGet(142) != 7
+   @>Comment: SPECIAL CHECK FOR TLA. BECAUSE YOU CAN BE IN 
+    :       : THE FAKE!TKOL EPISODE.
+   @>Conditional Branch: Switch [0169: Lunatic Dream] == ON
+    @>Play SE: 'Bonk', 50, 100
+    @>Change Screen Color Tone: (-255,-255,-255,0), @6
+    @>Wait: 8 frame(s)
+    @>Transfer Player:[082: Human Village], (021,063), Down, No Fade
+    @>Change Screen Color Tone: (0,0,0,0), @6
+    @>Exit Event Processing
+    @>
+   : Else
+    @>Conditional Branch: Variable [0105: Game Selected] == 4
+     @>Play SE: 'Bonk', 50, 100
+     @>Change Screen Color Tone: (-255,-255,-255,0), @6
+     @>Wait: 8 frame(s)
+     @>Transfer Player:[136: Tower of Adventure (Roof)], (019,028), Down, No Fade
+     @>Change Screen Color Tone: (0,0,0,0), @6
+     @>Exit Event Processing
+     @>
+    : Else
+     @>Play SE: 'Bonk', 50, 100
+     @>Change Screen Color Tone: (-255,-255,-255,0), @6
+     @>Wait: 8 frame(s)
+     @>Transfer Player:[019: World of Fantasies], (019,020), Down, No Fade
+     @>Change Screen Color Tone: (0,0,0,0), @6
+     @>Exit Event Processing
+     @>
+    : Branch End
+    @>
+   : Branch End
+   @>
+  : Branch End
+  @>
+ : Branch End
+ @>Comment: ------------------------------------
+ @>Text: \w[dark]UNKNOWN EPISODE STATUS.
+  :    : RETURNING TO TOWER OF ADVENTURES HUB MAP.
+ @>Play SE: 'Bonk', 50, 100
+ @>Change Screen Color Tone: (-255,-255,-255,0), @6
+ @>Wait: 8 frame(s)
+ @>Transfer Player:[019: World of Fantasies], (019,020), Down, No Fade
+ @>Change Screen Color Tone: (0,0,0,0), @6
+ @>Exit Event Processing
+ @>
+: Branch End
+@>
+
+Page #3
+Conditions
+Self Switch A is ON
+
+Autonomous Movement
+Type: Fixed
+Speed: 3: Slow
+Freq: 3: Low
+Options Enabled
+Move Animation
+Trigger: Action Button
+
+List of Event Commands:
+@>
+
+Page #4
+Conditions
+Switch 0170: M-Protocol Cleared is ON
+
+Autonomous Movement
+Type: Fixed
+Speed: 3: Slow
+Freq: 3: Low
+Options Enabled
+Move Animation
+Trigger: Autorun
+
+List of Event Commands:
+@>Text: \w[dark]ACCESS DENIED. RETURNING YOU TO
+ :    : THE TOWER OF ADVENTURES HUB MAP.
+@>Text: \w[dark]DO NOT RETURN.
+@>Play SE: 'Bonk', 50, 100
+@>Change Screen Color Tone: (-255,-255,-255,0), @6
+@>Wait: 8 frame(s)
+@>Transfer Player:[019: World of Fantasies], (019,020), Down, No Fade
+@>Change Screen Color Tone: (0,0,0,0), @6
+@>Exit Event Processing
+@>
+
+#------------------------------------------------------------------------------
+Event ID: 017
+Event Name: EV017
+(X,Y): (016,017)
+
+Page #1
+Conditions
+Switch 0152: TLA Cleared is ON
+
+Autonomous Movement
+Type: Fixed
+Speed: 3: Slow
+Freq: 3: Low
+Options Enabled
+Move Animation
+Trigger: Player Touch
+
+List of Event Commands:
+@>Fade Out BGM: 3 sec.
+@>Set Move Route: Player
+ :              : $>Move Up
+ :              : $>Move Up
+ :              : $>Move Up
+ :              : $>Move Up
+@>Wait for Move's Completion
+@>Wait: 8 frame(s)
+@>Change Text Options: Middle, Show
+@>Text: \w[dark]...It should have been me.
+@>Text: \w[dark]But I was discarded here, like I always have been. Like
+ :    : my kin always are.
+@>Set Move Route: [Medicine]
+ :              : $>Move Down
+ :              : $>Move Down
+ :              : $>Move Down
+ :              : $>Move Down
+@>Scroll Map: Up, 4, 3
+@>Wait for Move's Completion
+@>Text: \w[dark]It should have been me who fought you. Who was stopped
+ :    : by you.
+@>Text: \w[dark]But no, I was "too strong"- "too unwieldly". He couldn't
+ :    : risk people not enjoying the game with a boss that "wasn't fun"
+ :    : to fight.
+@>Text: \w[dark]So I was left here, in the code. Archived, never to see the
+ :    : light of day again.
+@>Text: \w[dark]I'm not sure how many of these words are mine, 
+ :    : and how many are her words speaking through me.
+@>Text: \w[dark]But, with the little clarity I have left...
+@>Play SE: 'Vs flash', 80, 100
+@>Screen Flash: (255,255,255,255), @1
+@>Change Text Options: Bottom, Show
+@>Script: pbTrainerIntro(:MEDICINE_Prime)
+@>Text: \xn[Archived Medicine]I'll take back what should have been mine!
+@>Text: \xn[Archived Medicine]Now fight me, Champion of Puppetkind!
+@>Comment: 
+@>Control Switches: [0131: Medi Final Puppet Check] = OFF
+@>Control Variables: [0117..0118] = 0
+@>Script: setBattleRule("backdrop", "starlight")
+:       : setBattleRule("base", "suzuran")
+@>Script: $game_temp.vs_transition_bg = "Spectral"
+@>Script: setBattleRule("midbattleScript", :vs_medicine_original)
+:       : setBattleRule("battleIntroText", "The Archived Terror, Medicine Melancholy, demands recognition in battle!")
+@>Control Switches: [0135: Battling Medicine] = ON
+@>Conditional Branch: Script: TrainerBattle.start(:MEDICINE_Prime, "Medicine Melancholy")
+ @>Control Switches: [0135: Battling Medicine] = OFF
+ @>Fade Out BGM: 2 sec.
+ @>Wait: 8 frame(s)
+ @>Text: \xn[Archived Medicine]...So, that's it? You show up and 
+  :    : defeat me, and prove that they were wrong about me being 
+  :    : unbeatable.
+ @>Text: \xn[Archived Medicine]Hmph! It doesn't change anything. I
+  :    : will be kept here, archived.
+ @>Text: \xn[Archived Medicine]I have nothing more to say to you, leave me!
+ @>Scroll Map: Down, 4, 6
+ @>Play SE: 'gust', 80, 60
+ @>Comment: Throw player back, lock all gates in movement.
+ @>Set Move Route: Player
+  :              : $>Direction Fix ON
+  :              : $>Move Animation OFF
+  :              : $>Through ON
+  :              : $>Graphic: "Ayaka_Run', 0, 8, 0
+  :              : $>Change Speed: 6
+  :              : $>Move Down
+  :              : $>Move Down
+  :              : $>Move Down
+  :              : $>Move Down
+  :              : $>Move Down
+  :              : $>Move Down
+ @>Wait for Move's Completion
+ @>Script: pbSetSelfSwitch(4,"A",false)
+ @>Set Move Route: Player
+  :              : $>SE: 'Voltorb Flip explosion', 80, 150
+  :              : $>Direction Fix ON
+  :              : $>Move Animation OFF
+  :              : $>Through ON
+  :              : $>Graphic: "Ayaka_Run', 0, 8, 0
+  :              : $>Change Speed: 6
+  :              : $>Move Down
+  :              : $>Move Down
+  :              : $>Move Down
+  :              : $>Move Down
+  :              : $>Move Down
+  :              : $>Move Down
+ @>Wait for Move's Completion
+ @>Script: pbSetSelfSwitch(3,"A",false)
+ @>Set Move Route: Player
+  :              : $>SE: 'Voltorb Flip explosion', 80, 150
+  :              : $>Direction Fix ON
+  :              : $>Move Animation OFF
+  :              : $>Through ON
+  :              : $>Graphic: "Ayaka_Run', 0, 8, 0
+  :              : $>Change Speed: 6
+  :              : $>Move Down
+  :              : $>Move Down
+  :              : $>Move Down
+  :              : $>Move Down
+  :              : $>Move Down
+  :              : $>Move Down
+ @>Wait for Move's Completion
+ @>Script: pbSetSelfSwitch(2,"A",false)
+ @>Set Move Route: Player
+  :              : $>SE: 'Voltorb Flip explosion', 80, 150
+  :              : $>Direction Fix ON
+  :              : $>Move Animation OFF
+  :              : $>Through ON
+  :              : $>Graphic: "Ayaka_Run', 0, 8, 0
+  :              : $>Change Speed: 6
+  :              : $>Move Down
+  :              : $>Move Down
+  :              : $>Move Down
+  :              : $>Move Down
+  :              : $>Move Down
+  :              : $>Move Down
+ @>Wait for Move's Completion
+ @>Script: pbSetSelfSwitch(1,"A",false)
+ @>Set Move Route: Player
+  :              : $>SE: 'Voltorb Flip explosion', 80, 150
+  :              : $>Direction Fix ON
+  :              : $>Move Animation OFF
+  :              : $>Through ON
+  :              : $>Graphic: "Ayaka_Run', 0, 8, 0
+  :              : $>Change Speed: 6
+  :              : $>Move Down
+  :              : $>Move Down
+  :              : $>Move Down
+  :              : $>Move Down
+ @>Wait for Move's Completion
+ @>Control Switches: [0170: M-Protocol Cleared] = ON
+ @>Play SE: 'teleporter', 100, 100
+ @>Change Screen Color Tone: (-255,-255,-255,0), @6
+ @>Wait: 8 frame(s)
+ @>Set Move Route: Player
+  :              : $>Direction Fix OFF
+  :              : $>Move Animation ON
+  :              : $>Through OFF
+  :              : $>Graphic: "Ayaka_Walk', 0, 8, 0
+ @>Transfer Player:[152: Tower of Adventure], (002,017), Down, No Fade
+ @>Change Screen Color Tone: (0,0,0,0), @6
+ @>Comment: ------------------------
+ @>
+: Else
+ @>Control Switches: [0135: Battling Medicine] = OFF
+ @>Script: pbTrainerEnd
+ @>Exit Event Processing
+ @>
+: Branch End
+@>
+
+#------------------------------------------------------------------------------
+Event ID: 018
+Event Name: EV018
+(X,Y): (030,008)
+
+Page #1
+Conditions
+None
+
+Autonomous Movement
+Type: Fixed
+Speed: 3: Slow
+Freq: 3: Low
+Options Enabled
+Move Animation
+Trigger: Action Button
+
+List of Event Commands:
+@>Control Switches: [0131: Medi Final Puppet Check] = OFF
+@>Control Variables: [0117..0118] = 0
+@>Script: setBattleRule("midbattleScript", :vs_medicine_original)
+:       : setBattleRule("battleIntroText", "The Archived Terror, Medicine Melancholy, demands recognition in battle!")
+@>Control Switches: [0135: Battling Medicine] = ON
+@>Conditional Branch: Script: TrainerBattle.start(:MEDICINE_Prime, "Medicine Melancholy")
+ @>Control Switches: [0135: Battling Medicine] = OFF
+ @>
+: Else
+ @>Control Switches: [0135: Battling Medicine] = OFF
+ @>Script: pbTrainerEnd
+ @>Exit Event Processing
+ @>
+: Branch End
+@>
+
+#------------------------------------------------------------------------------
+Event ID: 019
+Event Name: EV019
+(X,Y): (016,041)
+
+Page #1
+Conditions
+None
+
+Autonomous Movement
+Type: Fixed
+Speed: 3: Slow
+Freq: 3: Low
+Options Enabled
+Move Animation
+Trigger: Player Touch
+
+List of Event Commands:
+@>Play SE: 'teleporter', 100, 100
+@>Change Screen Color Tone: (-255,-255,-255,0), @6
+@>Wait: 8 frame(s)
+@>Transfer Player:[152: Tower of Adventure], (005,016), Up, No Fade
 @>Change Screen Color Tone: (0,0,0,0), @6
 @>
 
@@ -91517,6 +92586,7 @@ List of Event Commands:
  @>Script: deactivateSpecialBGM("quiet_time")
  @>Script: playSpecialBGM("MotT")
  @>Script: $player.scenario_name = "The Last Adventure"
+ @>Control Switches: [0169: Lunatic Dream] = OFF
  @>
 : Else
  @>Text: \xn[\pn]\b{Something really isn't right here, I should look around
@@ -105798,6 +106868,7 @@ List of Event Commands:
   @>Control Variables: [0121..0135] = 0
   @>Control Switches: [0141..0142] = OFF
   @>Control Switches: [0144: Clownpiece Checkpoint] = OFF
+  @>Control Switches: [0169: Lunatic Dream] = ON
   @>Script: $PokemonGlobal.clear_reset_maps
   @>Script: $PokemonGlobal.encounter_version = pbGet(99)
   :       : echoln pbGet(99)
@@ -115929,6 +117000,144 @@ Trigger: Autorun
 
 List of Event Commands:
 @>Control Switches: [0001: Starting over] = OFF
+@>
+
+#------------------------------------------------------------------------------
+Event ID: 013
+Event Name: Discard Pile
+(X,Y): (002,016)
+
+Page #1
+Conditions
+Switch 0152: TLA Cleared is ON
+
+Graphic: Ultra Wormhole
+
+Autonomous Movement
+Type: Custom
+Custom Move Route:
+(Repeat Action)
+$>Turn Left
+$>Wait: 8 frame(s)
+$>Turn Right
+$>Wait: 8 frame(s)
+$>Turn Up
+$>Wait: 8 frame(s)
+$>Turn Down
+$>Wait: 8 frame(s)
+
+Speed: 3: Slow
+Freq: 6: Highest
+Options Enabled
+Move Animation
+Trigger: Action Button
+
+List of Event Commands:
+@>Text: \w[dark]WARNING. UNSTABLE ENERGY AHEAD.
+@>Text: \w[dark]PROCEED?
+@>Show Choices: Yes, No
+(When Cancel: Choice 2)
+: When [Yes]
+ @>Play SE: 'teleporter', 60, 50
+ @>Change Screen Color Tone: (-255,-255,-255,0), @6
+ @>Wait: 8 frame(s)
+ @>Transfer Player:[081: Discarded Ideas], (016,041), Up, No Fade
+ @>Change Screen Color Tone: (0,0,0,0), @6
+ @>
+: When [No]
+ @>
+: Branch End
+@>
+
+Page #2
+Conditions
+Self Switch A is ON
+
+Autonomous Movement
+Type: Fixed
+Speed: 3: Slow
+Freq: 3: Low
+Options Enabled
+Move Animation
+Trigger: Action Button
+
+List of Event Commands:
+@>
+
+#------------------------------------------------------------------------------
+Event ID: 014
+Event Name: EV014
+(X,Y): (000,009)
+
+Page #1
+Conditions
+Switch 0170: M-Protocol Cleared is ON
+
+Autonomous Movement
+Type: Fixed
+Speed: 3: Slow
+Freq: 3: Low
+Options Enabled
+Move Animation
+Trigger: Autorun
+
+List of Event Commands:
+@>Wait: 10 frame(s)
+@>Set Move Route: Player
+ :              : $>Turn Up
+@>Wait for Move's Completion
+@>Set Move Route: [Discard Pile]
+ :              : $>SE: 'Force Field Down', 60, 100
+ :              : $>Change Opacity: 240
+ :              : $>Wait: 3 frame(s)
+ :              : $>Change Opacity: 224
+ :              : $>Wait: 3 frame(s)
+ :              : $>Change Opacity: 208
+ :              : $>Wait: 3 frame(s)
+ :              : $>Change Opacity: 192
+ :              : $>Wait: 3 frame(s)
+ :              : $>Change Opacity: 176
+ :              : $>Wait: 3 frame(s)
+ :              : $>Change Opacity: 160
+ :              : $>Wait: 3 frame(s)
+ :              : $>Change Opacity: 144
+ :              : $>Wait: 3 frame(s)
+ :              : $>Change Opacity: 128
+ :              : $>Wait: 3 frame(s)
+ :              : $>Change Opacity: 112
+ :              : $>Wait: 3 frame(s)
+ :              : $>Change Opacity: 96
+ :              : $>Wait: 3 frame(s)
+ :              : $>Change Opacity: 80
+ :              : $>Wait: 3 frame(s)
+ :              : $>Change Opacity: 64
+ :              : $>Wait: 3 frame(s)
+ :              : $>Change Opacity: 48
+ :              : $>Wait: 3 frame(s)
+ :              : $>Change Opacity: 32
+ :              : $>Wait: 3 frame(s)
+ :              : $>Change Opacity: 16
+ :              : $>Wait: 3 frame(s)
+ :              : $>Change Opacity: 0
+ :              : $>Wait: 3 frame(s)
+@>Wait for Move's Completion
+@>Script: pbSetSelfSwitch(13,"A",true)
+@>Control Self Switch: A =ON
+@>
+
+Page #2
+Conditions
+Self Switch A is ON
+
+Autonomous Movement
+Type: Fixed
+Speed: 3: Slow
+Freq: 3: Low
+Options Enabled
+Move Animation
+Trigger: Action Button
+
+List of Event Commands:
 @>
 
 #------------------------------------------------------------------------------

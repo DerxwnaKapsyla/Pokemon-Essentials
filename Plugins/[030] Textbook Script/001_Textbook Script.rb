@@ -986,6 +986,32 @@ Even if you lose a Spell Card battle, you win as long as it feels fun. It's a ga
 Maybe when you reach the point when you can enjoy anything, that's when you see the true appeal of Spell Cards for the first time. ",
 ]
 
+MPrimeLog1 = [
+"M-Protocol - Log 1","Yes, I know exactly how I want to make her! Utilizing the mechanics given to me thanks to Goli's plugin, I should be able to make the boss fight I'm envisioning! Oh, I'm so glad that this plugin came out when it did, it's given me so many ideas...! Given the entire game is built around the idea of curses, her fight should revolve around cursing the player at any given opportunity.",
+"M-Protocol - Log 1","I can prepare the player for this by implementing other fights that use these mechanics... Nitori and Hina would be good conduits for this- oh, I could also utilize Prismriver Manor and create a safari zone-like place that also curses the player! ...Mmm, I might not be able to get that done before the game jam ends though... For now, those two will be enough.",
+"M-Protocol - Log 1","I'll need to ask Jelo to make me some assets for the area, I really want to make the fight against her stand out amongst everything else. I just hope I can pull it off decently..."
+]
+
+MPrimeLog2 = [
+"M-Protocol - Log 2","The fight works! It works it works it works! Oh my god I can't believe I pulled it off! I had to make some compromises, I don't quite understand the coding enough to do it in hard code, but thankfully there was an easier way of doing it. It just meant that some of the mechanics had to be scrapped or adjusted.",
+"M-Protocol - Log 2","I was also able to clear it... Though, it was pretty rough. Hopefully that won't be too much of an issue. Well, I can always make adjustments if people have issues! I want to make something hard, but not so hard that people tear their hair out! I think I did that... ...Right?"
+]
+
+MPrimeLog3 = [
+"M-Protocol - Log 3","...Alright, the time has come to port the game to TAoA. Unfortunately, Goli's plugin doesn't exist anymore- but! Lucidious has a plugin that works even better! I can make her fight even more accurate to what I had in mind, especially since I've been experimenting with it while making the Omega Puppets in Asteria.",
+"M-Protocol - Log 3","Oh, all the ideas I can execute... At the very least, let's just do a clean recreation first. I'll get the enhancements and adjustments in after the fact. Need to make sure the fight WORKS first after all!",
+"M-Protocol - Log 3","...",
+"M-Protocol - Log 3","...",
+"M-Protocol - Log 3","...Okay, the fight's done! The mechanics should be a lot tighter and clean up errant things I didn't account for. The rebound mechanic also works a lot better now, a lot more robust. Preliminary tests of it are successful... though, I had to use debug mechanics to bypass a lot of mechanics so I could test the fight. I... don't remember it being this hard. I hope it's just a case of me being bad at my own games, haha! ...Yeah..."
+]
+
+MPrimeLog4 = [
+"M-Protocol - Log 4","...She's too strong. Her fight was hard, but this feels otherworldly. I***r had a massive crash out while testing the fight. I didn't want for that to happen... No, this isn't what I wanted at all... But, can I nerf the fight without taking away what makes it unique?",
+"M-Protocol - Log 4","Maybe the miasma effect is too strong? Is it the stats she gives her Puppets? Is it their movepools? I'll need to research this... Maybe I***r can give me some feedback- he was the one who made the teams and movepools for TAoA, he might have some insight. But, either way... The fight can't stay in this condition.",
+"M-Protocol - Log 4","I'll... back up the original fight. Use it as reference. As a learning experience. But this fight cannot be used as it is. If I have to, I will nerf it into the ground. I will find a way to make it more manageable for the player without ruining its identity. I will... ...Now I just have to hope I didn't make Meimu's segment too difficult..."
+]
+
+
 Books = [
 	GensouKyouEdict,                    # 0
 	HistoryOfGensokyo,                  # 1
@@ -1027,7 +1053,11 @@ Books = [
 	GrimoireOfMarisa_Suika,             # 37
 	GrimoireOfMarisa_Iku,               # 38
 	GrimoireOfMarisa_Kisume,            # 39
-	GrimoireOfMarisa_Marisa             # 40
+	GrimoireOfMarisa_Marisa,            # 40
+	MPrimeLog1,                         # 41
+	MPrimeLog2,                         # 42
+	MPrimeLog3,                         # 43
+	MPrimeLog4,                         # 44
 ]
 
 class Textbook_Scene
@@ -1075,8 +1105,13 @@ DEFAULT_BG = "textbookbg"
     @sprites["rightarrow"].visible = (@page+3<@max)
     overlay = @sprites["overlay"].bitmap
     overlay.clear
-    base   = Color.new(0,0,0)
-    #base = Color.new(255,255,255)
+	if !$game_switches[94]
+      base   = Color.new(0, 0, 0)
+	  shadow = Color.new(160, 160, 168)
+	else
+      base   = Color.new(248, 248, 248)
+	  shadow = Color.new(72, 80, 88)
+	end
     # Set background image
     if File.exist?(background)
       #echoln "Using custom background: #{background}"
@@ -1096,7 +1131,7 @@ DEFAULT_BG = "textbookbg"
     pbDrawTextPositions(overlay,textpos)
     @sprites["overlay"].bitmap.font.size=26
     text=@bookarray[page+1]
-    drawFormattedTextEx(overlay,25,45,Graphics.width-40,text,base)#,shadow)
+    drawFormattedTextEx(overlay,25,45,Graphics.width-40,text,base,shadow)
   end
 
 
