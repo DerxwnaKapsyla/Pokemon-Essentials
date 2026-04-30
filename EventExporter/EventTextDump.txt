@@ -10897,6 +10897,29 @@ List of Event Commands:
 @>
 
 #------------------------------------------------------------------------------
+Event ID: 015
+Event Name: Password Terminal
+(X,Y): (037,017)
+
+Page #1
+Conditions
+None
+
+Graphic: Object ball
+
+Autonomous Movement
+Type: Fixed
+Speed: 3: Slow
+Freq: 3: Low
+Options Enabled
+Move Animation
+Trigger: Action Button
+
+List of Event Commands:
+@>Script: pbPasswordCheck
+@>
+
+#------------------------------------------------------------------------------
 Event ID: 016
 Event Name: EV016
 (X,Y): (037,023)

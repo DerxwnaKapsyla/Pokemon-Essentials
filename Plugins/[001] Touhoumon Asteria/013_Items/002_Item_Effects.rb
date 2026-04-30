@@ -20,6 +20,66 @@ ItemHandlers::UseOnPokemon.add(:SAKE, proc { |item, qty, pkmn, scene|
   next pbHPItem(pkmn, 80, scene)
 })
 
+ItemHandlers::UseOnPokemon.add(:ONIKILLERSAKE, proc { |item, qty, pkmn, scene|
+  next pbHPItem(pkmn, pkmn.totalhp - pkmn.hp, scene)
+  pkmn.changeHappiness("battleitem") if pkmn.species_data.has_flag?("Oni")
+})
+
+ItemHandlers::UseOnPokemon.add(:STRAWBERRYJAM, proc { |item, qty, pkmn, scene|
+  if pkmn.fainted? || (pkmn.hp == pkmn.totalhp && pkmn.status == :NONE)
+    scene.pbDisplay(_INTL("It won't have any effect."))
+    next false
+  end
+  pbSEPlay("Use item in party")
+  hpgain = pbItemRestoreHP(pkmn, pkmn.totalhp - pkmn.hp)
+  pkmn.heal_status
+  scene.pbRefresh
+  if hpgain > 0
+    scene.pbDisplay(_INTL("{1}'s HP was restored by {2} points.", pkmn.name, hpgain))
+  else
+    scene.pbDisplay(_INTL("{1} became healthy.", pkmn.name))
+  end
+  pkmn.changeHappiness("evberry")
+  next true
+})
+
+ItemHandlers::UseOnPokemon.add(:BLUEBERRYJAM, proc { |item, qty, pkmn, scene|
+  move = scene.pbChooseMove(pkmn, _INTL("Restore which move?"))
+  next false if move < 0
+  if pbRestorePP(pkmn, move, pkmn.moves[move].total_pp - pkmn.moves[move].pp) == 0
+    scene.pbDisplay(_INTL("It won't have any effect."))
+    next false
+  end
+  pbSEPlay("Use item in party")
+  scene.pbDisplay(_INTL("PP was restored."))
+  pkmn.changeHappiness("evberry")
+  next true
+})
+
+ItemHandlers::UseOnPokemon.add(:MINORIKOJAM, proc { |item, qty, pkmn, scene|
+  pprestored = 0
+  pkmn.moves.length.times do |i|
+    pprestored += pbRestorePP(pkmn, i, pkmn.moves[i].total_pp - pkmn.moves[i].pp)
+  end
+  if pkmn.fainted? || (pkmn.hp == pkmn.totalhp && pkmn.status == :NONE)
+    scene.pbDisplay(_INTL("It won't have any effect."))
+    next false
+  end
+  pbSEPlay("Use item in party")
+  hpgain = pbItemRestoreHP(pkmn, pkmn.totalhp - pkmn.hp)
+  pkmn.heal_status
+  scene.pbRefresh
+  if hpgain > 0
+    scene.pbDisplay(_INTL("{1}'s HP was restored by {2} points.", pkmn.name, hpgain))
+  else
+    scene.pbDisplay(_INTL("{1} became healthy.", pkmn.name))
+  end
+  next true
+  scene.pbDisplay(_INTL("PP was restored."))
+  pkmn.changeHappiness("evberry")
+  next true
+})
+
 ItemHandlers::UseOnPokemonMaximum.add(:HPTALISMAN, proc { |item, pkmn|
   next pbMaxUsesOfEVRaisingItem(:HP, 252, pkmn, true)
 })
@@ -83,6 +143,30 @@ ItemHandlers::UseOnPokemon.add(:RESETTALISMAN, proc { |item, qty, pkmn, scene|
     pbLowerEV(pkmn, scene, stat, qty, [])
   end
   scene.pbDisplay(_INTL("{1}'s stats were reset!", pkmn.name))
+  next true
+})
+
+# Derx: This will need changing if the Dream Flute is ever used in Asteria
+ItemHandlers::UseInField.add(:DREAMFLUTE, proc { |item|
+  pbUseItemMessage(item)
+  encounter_table = $PokemonGlobal.encounter_version
+  if encounter_table == pbGet(99) && pbGet(99) != 0
+    pbMessage(_INTL("Weaker Puppets seem to have become more common!"))
+    $PokemonGlobal.encounter_version = 0
+	if $DEBUG
+	  pbMessage(_INTL("Current encounter table: {1}",$PokemonGlobal.encounter_version))
+	end
+  elsif encounter_table == 0 && pbGet(99) != 0
+    pbMessage(_INTL("Stronger Puppets seem to have become more common!"))
+    $PokemonGlobal.encounter_version = pbGet(99)
+	if $DEBUG
+	  pbMessage(_INTL("Current encounter table: {1}",$PokemonGlobal.encounter_version))
+	end
+  elsif encounter_table == 0 && pbGet(99) == 0
+    pbMessage(_INTL("Nothing happened."))
+  else
+    pbMessage(_INTL("Nothing happened."))
+  end
   next true
 })
 

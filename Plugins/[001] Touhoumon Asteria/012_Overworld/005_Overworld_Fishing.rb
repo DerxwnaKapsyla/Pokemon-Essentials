@@ -34,6 +34,7 @@ def pbFishing(hasEncounter, rodType = 1)
         break
       end
       if Settings::FISHING_AUTO_HOOK || rand(100) < hookChance
+	    $game_temp.fishing_success = true
         pbFishingEnd do
           pbMessageDisplay(msgWindow, _INTL("Landed something!")) if !Settings::FISHING_AUTO_HOOK
         end

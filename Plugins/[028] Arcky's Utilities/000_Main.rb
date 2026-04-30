@@ -388,3 +388,24 @@ def setCurrency(currency)
     return "money"
   end
 end
+
+def pbDrawImagePositionsScalable(bitmap, textpos)
+  textpos.each do |i|
+    srcbitmap = AnimatedBitmap.new(pbBitmapName(i[0]))
+    x      = i[1]
+    y      = i[2]
+    srcx   = i[3] || 0
+    srcy   = i[4] || 0
+    srcw   = (i[5] && i[5] >= 0) ? i[5] : srcbitmap.width
+    srch   = (i[6] && i[6] >= 0) ? i[6] : srcbitmap.height
+
+    destw  = i[7] || srcw   # new
+    desth  = i[8] || srch   # new
+
+    src_rect  = Rect.new(srcx, srcy, srcw, srch)
+    dest_rect = Rect.new(x, y, destw, desth)
+
+    bitmap.stretch_blt(dest_rect, srcbitmap.bitmap, src_rect)
+    srcbitmap.dispose
+  end
+end

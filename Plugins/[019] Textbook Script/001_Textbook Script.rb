@@ -95,6 +95,7 @@ Books = [
 ]
 
 class Textbook_Scene
+DEFAULT_BG = "textbookbg"
 
   def pbUpdate
     pbUpdateSpriteHash(@sprites)
@@ -139,7 +140,7 @@ class Textbook_Scene
     overlay = @sprites["overlay"].bitmap
     overlay.clear
     base   = Color.new(0,0,0)
-    #base = Color.new(255,255,255)
+    shadow = Color.new(160, 160, 168)
     # Set background image
     if File.exist?(background)
       #echoln "Using custom background: #{background}"
@@ -159,7 +160,7 @@ class Textbook_Scene
     pbDrawTextPositions(overlay,textpos)
     @sprites["overlay"].bitmap.font.size=26
     text=@bookarray[page+1]
-    drawFormattedTextEx(overlay,25,45,Graphics.width-40,text,base)#,shadow)
+    drawFormattedTextEx(overlay,25,45,Graphics.width-40,text,base,shadow)
   end
 
 

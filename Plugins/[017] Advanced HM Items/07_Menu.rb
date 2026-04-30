@@ -27,7 +27,7 @@ def pbUseKeyItem
   moves.concat(AIFM_Lift[:move_name])
   moves.concat(AIFM_SenseTruth[:move_name])
   moves.concat(AIFM_Bomb[:move_name])
-  moves.concat(AIFM_SecretBase[:move_name]) if PluginManager.installed?("Secret Bases Remade")
+  moves.concat(AIFM_SecretBase[:move_name]) if PluginManager.findDirectory("Secret Bases Remade")
   moves.sort!
   real_moves = []
   moves.each do |move|
@@ -255,13 +255,13 @@ class PokemonSystem < PokemonSystem
   alias aifm_initialize initialize
   def initialize
     aifm_initialize
-    @animation_item       = AIFM_Option_Boot[:item_animation]
-    @animation_type       = AIFM_Option_Boot[:item_animation_type]
-    @animation_move       = AIFM_Option_Boot[:move_animation]
-    @ask_text             = AIFM_Option_Boot[:ask_text]
-    @moves_option         = AIFM_Option_Boot[:moves_option]
+    @animation_item       = 0
+    @animation_type       = 0
+    @animation_move       = 0
+    @moves_option         = 0
+    @ask_text             = 0
     @camouflaged          = AIFM_Camouflage[:transpernt] - AIFM_Camouflage[:transpernt_min]
-    @surf_option          = 0 # Not in use atm there is a bug with it
+    @surf_option          = 0
   end
 end
 
@@ -548,7 +548,7 @@ MenuHandlers.add(:aifm_menu, :camouflage, {
     setCamouflaged = ($PokemonSystem.camouflaged / 100.0) * 255
     if $PokemonGlobal && $PokemonGlobal.camouflage
       pbMoveRoute($game_player, [PBMoveRoute::OPACITY, setCamouflaged])
-      pbMoveRoute(FollowingPkmn.get_event, [PBMoveRoute::OPACITY, setCamouflaged]) if PluginManager.installed?("Following Pokemon EX")
+      pbMoveRoute(FollowingPkmn.get_event, [PBMoveRoute::OPACITY, setCamouflaged]) if PluginManager.findDirectory("Following Pokemon EX")
     end
   }
 })

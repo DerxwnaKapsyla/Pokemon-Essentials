@@ -114,7 +114,7 @@ class SpeciesTypeMatch_Scene
     weak = []
     resist = []
     immune = []
-    GameData::Type.each { |t| arr.push(Effectiveness.calculate(t.id,s.types[0],s.types[1])) if !t.pseudo_type }
+    GameData::Type.each { |t| arr.push(Effectiveness.calculate(t.id,*s.types)) if !t.pseudo_type }
     arr.each_with_index do |z, i|
       currType = @types[i]
       weak.push(currType) if Effectiveness.super_effective?(z)

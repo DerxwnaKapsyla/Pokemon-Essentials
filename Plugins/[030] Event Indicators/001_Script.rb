@@ -38,6 +38,7 @@ class EventIndicator
         @must_face = data[:must_face] if data[:must_face]
         @must_look_away = data[:must_look_away] if data[:must_look_away]
         @text_bubble = data[:text] if data[:text]
+        @show_end_arrow = data[:text_show_pause_indicator] if data[:text_show_pause_indicator]
 
         if can_vertical_move?
             @movement_speed = data[:movement_speed] || Settings::EVENT_INDICATOR_DEFAULT_MOVEMENT_SPEED
@@ -78,6 +79,7 @@ class EventIndicator
             @flair_pad_bottom = 8 if Settings::EVENT_INDICATOR_TEXT_CONSISTENT_Y
             @flair_pad_sides = (@flair ? 8 : 0)
             @text = text_replacements(@text)
+            @text += "   " if @show_end_arrow
             max_segments = ((data[:text_max_width] ? data[:text_max_width] : Settings::EVENT_INDICATOR_MAX_TEXT_WIDTH) / 16).floor
             max_lines = Settings::EVENT_INDICATOR_MAX_TEXT_LINES
             lines = 0
@@ -164,8 +166,18 @@ class EventIndicator
             window_color = @indicator.bitmap.get_pixel(@indicator.width / 2, @indicator.height / 2)
             if ((window_color.red * 0.299) + (window_color.green * 0.587) + (window_color.blue * 0.114)) < 160
                 text_colors = [MessageConfig::LIGHT_TEXT_MAIN_COLOR, MessageConfig::LIGHT_TEXT_SHADOW_COLOR]
+                if @show_end_arrow
+                  s = "Graphics/UI/Event Indicators/pause_light"
+                  s = data[:graphic] + "_pause" if pbResolveBitmap(data[:graphic] + "_pause")
+                  pbDrawImagePositions(@indicator.bitmap, [[s, @indicator.width - 32, @indicator.height - 28]]) 
+                end
             else
                 text_colors = [MessageConfig::DARK_TEXT_MAIN_COLOR, MessageConfig::DARK_TEXT_SHADOW_COLOR]
+                if @show_end_arrow
+                  s = "Graphics/UI/Event Indicators/pause"
+                  s = data[:graphic] + "_pause" if pbResolveBitmap(data[:graphic] + "_pause")
+                  pbDrawImagePositions(@indicator.bitmap, [[s, @indicator.width - 32, @indicator.height - 28]])
+                end
             end
             if @text.is_a?(Array)
                 textpos = []
@@ -270,6 +282,9 @@ class EventIndicator
         text.gsub!(/\\pn/i,  $player.name) if $player
         text.gsub!(/\\pm/i,  _INTL("${1}", $player.money.to_s_formatted)) if $player
         text.gsub!(/\\n/i,   " \\n")
+        old_text = text.clone
+        text.gsub!(/\\1/i,   "")
+        @show_end_arrow = true if text != old_text
         text.gsub!(/\\sc\[(.*?)\]/i) {(eval($1) rescue "").to_s}
         loop do
             last_text = text.clone

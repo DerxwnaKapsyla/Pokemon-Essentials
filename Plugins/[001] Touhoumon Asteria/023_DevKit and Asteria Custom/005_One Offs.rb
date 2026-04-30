@@ -3,6 +3,7 @@
 class Game_Temp
   attr_accessor :enduredInKazami
   attr_accessor :inertItem
+  attr_accessor :old_menu_frame
 
   def enduredInKazami
     @enduredInKazami = false if !@enduredInKazami
@@ -76,4 +77,16 @@ def pbShowPokedexEntry(species)
       screen.pbDexEntry(species)
     }
   $player.pokedex.set_owned(species, true, false)
+end
+
+def set_menu_theme(value)
+  $game_temp.old_menu_frame = $PokemonSystem.frame
+  MessageConfig.pbSetSystemFrame("Graphics/Windowskins/" + value)
+end
+
+def reset_menu_theme
+  if $game_temp.old_menu_frame
+    $PokemonSystem.frame = $game_temp.old_menu_frame
+    MessageConfig.pbSetSystemFrame("Graphics/Windowskins/" + Settings::MENU_WINDOWSKINS[$PokemonSystem.frame])
+  end
 end

@@ -1,4 +1,4 @@
-if PluginManager.installed?("Secret Bases Remade")
+if PluginManager.findDirectory("Secret Bases Remade")
 
 #Secret Base
 module AdvancedItemsFieldMoves

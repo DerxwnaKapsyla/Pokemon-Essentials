@@ -2,7 +2,6 @@
 # Shortcut
 #===============================================================================
 AIFM_Option                               = AdvancedItemsFieldMoves::MENU_CONFIG
-AIFM_Option_Boot                          = AdvancedItemsFieldMoves::OPTION_BOOT
 #Obstacle Smash
 AIFM_RockSmash      = Show_RockSmash      = AdvancedItemsFieldMoves::ROCKSMASH_CONFIG
 AIFM_Cut            = Show_Cut            = AdvancedItemsFieldMoves::CUT_CONFIG
@@ -52,7 +51,7 @@ class MoveHandlerHash
 end
 
 def pbCheckForBadge(badge = -1)
-  return true if badge <= 0   # No badge requirement
+  return true if badge < 0   # No badge requirement
   if (AdvancedItemsFieldMoves::BADGE_COUNT) ? $player.badge_count >= badge : $player.badges[badge-1]
     return true
   end
@@ -704,7 +703,7 @@ def pbVanishCheck
 
   # Set the opacity of the player and following Pokémon
   pbMoveRoute($game_player, opacities.map { |opacity| [PBMoveRoute::OPACITY, opacity, PBMoveRoute::WAIT, wait_time] }.flatten)
-  pbMoveRoute(FollowingPkmn.get_event, opacities.map { |opacity| [PBMoveRoute::OPACITY, opacity, PBMoveRoute::WAIT, wait_time] }.flatten) if PluginManager.installed?("Following Pokemon EX")
+  pbMoveRoute(FollowingPkmn.get_event, opacities.map { |opacity| [PBMoveRoute::OPACITY, opacity, PBMoveRoute::WAIT, wait_time] }.flatten) if PluginManager.findDirectory("Following Pokemon EX")
 
   # Toggle camouflage
   $PokemonGlobal.camouflage = !$PokemonGlobal.camouflage
@@ -2637,16 +2636,15 @@ def failMessage(config_name, item_name, move_name, event_name = nil, extra = nil
 
   # Only item required
   if config_name[:item] && !config_name[:move]
-    if !$bag.has?(config_name[:internal_name])
+    if !$bag.has?(config_name[:internal_name]) && !pbCheckForItem(config_name)
       puts "Fail (Item - 1)" if $DEBUG
       pbMessage(_INTL("{1}", config_name[:"missing_element_item#{suffix}"], item_name, event_name))
-    elsif !pbCheckForItem(config_name)
+    else
       puts "Fail (Item - 2)" if $DEBUG
       pbMessage(_INTL("{1}", config_name[:missing_bagde_item], config_name[:item_needed_badge], item_badge, item_name))
     end
     return false
   end
-
 
   # Only move required
   if !config_name[:item] && config_name[:move]

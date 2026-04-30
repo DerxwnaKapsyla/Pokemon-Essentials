@@ -1118,6 +1118,7 @@ end
 EventHandlers.add(:on_wild_pokemon_created, :perfect_ivs,
   proc { |pkmn|
     next if !$player.player_ivs_maxed
+	echoln "Wild Encounter IVs are maxed for this battle."
 	pkmn.iv[:HP]=31
 	pkmn.iv[:ATTACK]=31
 	pkmn.iv[:DEFENSE]=31
@@ -1177,7 +1178,7 @@ EventHandlers.add(:on_wild_pokemon_created, :koishi_time_wild,
 EventHandlers.add(:on_trainer_load, :max_ev_trainers,
   proc { |trainer|
    if trainer   # check if you are facing a trainer
-    next if !$player.enemy_evs_maxed
+    next false if !$player.enemy_evs_maxed
 	for pkmn in trainer.party
 	  pkmn.ev[:HP]=252
 	  pkmn.ev[:ATTACK]=252
@@ -1187,6 +1188,7 @@ EventHandlers.add(:on_trainer_load, :max_ev_trainers,
 	  pkmn.ev[:SPEED]=252
       pkmn.calc_stats
 	end
+	echoln "Enemy EVs are maxed for this battle."
    end
   }
 )
@@ -1194,7 +1196,7 @@ EventHandlers.add(:on_trainer_load, :max_ev_trainers,
 EventHandlers.add(:on_trainer_load, :max_iv_trainers,
   proc { |trainer|
    if trainer   # check if you are facing a trainer
-    next if !$player.enemy_ivs_maxed
+    next false if !$player.enemy_ivs_maxed
 	for pkmn in trainer.party
 	  pkmn.iv[:HP]=31
 	  pkmn.iv[:ATTACK]=31
@@ -1204,6 +1206,7 @@ EventHandlers.add(:on_trainer_load, :max_iv_trainers,
 	  pkmn.iv[:SPEED]=31
       pkmn.calc_stats
 	end
+	echoln "Enemy IVs are maxed for this battle."
    end
   }
 )
@@ -1211,9 +1214,9 @@ EventHandlers.add(:on_trainer_load, :max_iv_trainers,
 EventHandlers.add(:on_trainer_load, :disable_exp_gain,
   proc { |trainer|
    if trainer   # check if you are facing a trainer
-    if !$player.disable_exp_gain
-	  setBattleRule("noExp")
-	end
+     next false if !$player.disable_exp_gain
+	 setBattleRule("noExp")
+	 echoln "EXP Gain is disabled for this battle."
    end
   }
 )
@@ -1222,6 +1225,7 @@ EventHandlers.add(:on_trainer_load, :disable_exp_gain,
   # proc { |trainer|
    # if trainer   # check if you are facing a trainer
     # if !$player.disable_ev_gain
+	# echoln "EV Gain is disabled for this battle."
 	# end
    # end
   # }
@@ -1230,9 +1234,9 @@ EventHandlers.add(:on_trainer_load, :disable_exp_gain,
 EventHandlers.add(:on_trainer_load, :disable_item_use,
   proc { |trainer|
    if trainer   # check if you are facing a trainer
-    if !$player.disable_item_use
-	  setBattleRule("noBag")
-	end
+     next false if !$player.disable_item_use
+	 setBattleRule("noBag")
+	 echoln "Item use is disabled for this battle."
    end
   }
 )
@@ -1240,9 +1244,9 @@ EventHandlers.add(:on_trainer_load, :disable_item_use,
 EventHandlers.add(:on_trainer_load, :disable_cash_gain,
   proc { |trainer|
    if trainer   # check if you are facing a trainer
-    if !$player.disable_cash_gain
-	  setBattleRule("noMoney")
-	end
+     next false if !$player.disable_cash_gain
+	 setBattleRule("noMoney")
+	 echoln "Prize Money is disabled for this battle."
    end
   }
 )
@@ -1250,8 +1254,8 @@ EventHandlers.add(:on_trainer_load, :disable_cash_gain,
 EventHandlers.add(:on_trainer_load, :enable_item_drops,
   proc { |trainer|
    if trainer   # check if you are facing a trainer
-    if !$player.enable_item_drops
-	end
+     next false if !$player.enable_item_drops
+	 echoln "Item Drops are enabled for this battle."
    end
   }
 )

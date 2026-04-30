@@ -54,7 +54,7 @@ module Battle::CatchAndStoreMixin
     # Outcome message
     case numShakes
     when 0
-      pbDisplay(_INTL("Oh no! The Pokémon broke free!"))
+      pbDisplay(_INTL("Oh no! They broke free!"))
       Battle::PokeBallEffects.onFailCatch(ball, self, battler)
     when 1
       pbDisplay(_INTL("Aww! It appeared to be caught!"))

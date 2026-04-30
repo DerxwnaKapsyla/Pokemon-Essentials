@@ -1,5 +1,11 @@
 ===Change Log===
-2.2 ***
+2.3 
+- New Feature: Pause Arrows. To help indicate that an NPC has something more to say, you can now add "pause arrows" to the end of a text bubble indicator, similar to normal text boxes. There are two ways to add these:
+-- Add :text_show_pause_indicator to the indicator definition to make the arrow appear to all uses of an indicator.
+-- Add "\t" to the end of the text used in any text bubble indicator.
+- Fixed translation issue where having any event indicators on a map cleared out all other strings for that map.
+
+2.2 
 - New feature: Some Text Modification Support. Text bubbles now support some text modification commands:
 -- \PN pulls in the player's name.
 -- \PM pulls in the player's current money.

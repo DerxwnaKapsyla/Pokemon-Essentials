@@ -47,7 +47,7 @@ def pbCompileIndicatorTexts
                 end
             end
             next if items.empty?
-            MessageTypes.setMapMessagesAsHash(id, items)
+            MessageTypes.addMapMessagesAsHash(id, items)
         end
     rescue Hangup
     end

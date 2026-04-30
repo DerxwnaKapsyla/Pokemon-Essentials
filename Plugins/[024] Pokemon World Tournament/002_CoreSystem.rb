@@ -99,9 +99,9 @@ class AdvancedWorldTournament
     @modified_party = self.choosePokemon
     # Generates the scoreboard
     if @modified_party == "notEligible"
-      pbMessage(_INTL("We're terribly sorry, but your Pokémon are not eligible for the Tournament.\\1"))
+      pbMessage(_INTL("We're terribly sorry, but your party is not eligible for the Tournament.\\1"))
       GameData::PWTTournament.get(@tournament_id).call_ban_reason
-      pbMessage(_INTL("Please come back once your Pokémon Party has been adjusted.\\1"))
+      pbMessage(_INTL("Please come back once your party has been adjusted.\\1"))
     elsif !@modified_party
       cancelEntry
     else
@@ -206,7 +206,7 @@ class AdvancedWorldTournament
   def choosePokemon
     ret = false
     return "notEligible" if !@challenge_rules.ruleset.hasValidTeam?($player.party)
-    pbMessage(_INTL("Please choose the Pokémon you would like to participate."))
+    pbMessage(_INTL("Please choose who you would like to participate."))
     pbFadeOutIn(99999){
        scene = PokemonParty_Scene.new
        screen = PokemonPartyScreen.new(scene,$player.party)

@@ -23,15 +23,7 @@ module AdvancedItemsFieldMoves
     :text_option                        => true,                    # Default: true
     :moves_option                       => true,                    # Default: true
     :camouflage_option                  => true,                    # Default: true
-# Not in use atm    :surf_option                        => true,                    # Default: true
-  }
-
-  OPTION_BOOT = {
-    :item_animation                     => 0, # Item animation is Always shown when used.   0 = Always 1  = Disable
-    :item_animation_type                => 0, # New Item animation type, Rock Smash or Cut. 0 = New 1     = Old
-    :move_animation                     => 0, # Move animation is Always shown when used.   0 = Always    = Disable
-    :ask_text                           => 0, # Ask if you like to use Item or Move.        0 = Normal    = Disable
-    :moves_option                       => 0 # Multiple Hidden moves Menu Show or Fastest   0 = Show      = Fastest
+    :surf_option                        => true,                    # Default: true
   }
 
 #===============================================================================

@@ -258,7 +258,7 @@ module APMSettings
     # Text when x or more of a kind of item is bought and is defined in BonusItems Setting. {1} = Bonus Item(s) name(s).
     BuyBonusMult: ["And have {1} on the house!"],
     # Text when you don't have enough money to buy x item(s).
-    NotEnoughMoney: ["You don't have enough money."],
+    NotEnoughMoney: ["You don't have enough {1}."],
     # Text when you don't have enough room in your bag. (Only used if you have an item limit).
     NoRoomInBag: ["You have no room in your Bag."],
     # Text when selecting an item to sell. {1} = item name
@@ -337,18 +337,18 @@ end
 
 def pbSomeMart
   pbPokemonMart(["2daily",
-    [:POKEBALL, 10, 15], :GREATBALL, :ULTRABALL,
+    [:POKEBALL, 10, 15], [:GREATBALL, 5], :ULTRABALL,
     [:POTION, 12, 19], :SUPERPOTION, :HYPERPOTION, :MAXPOTION,
     :FULLRESTORE, :REVIVE,
     :ANTIDOTE, :PARALYZEHEAL, :AWAKENING, :BURNHEAL, :ICEHEAL,
     :FULLHEAL,
     :REPEL, :SUPERREPEL, :MAXREPEL,
     :ESCAPEROPE, :TM11
-  ], speech: "ProSeller", discount: 29, useCat: true, billEnd: true)
+  ], speech: "ProSeller", discount: 27, useCat: true, billEnd: true, currency: "money")
 end
 
 def pbStoreWithRandom
-  pbPokemonMart("randomStore", random: ["daily", rand(1..4)], speech: "ProSeller", useCat: true, cantSell: true)
+  pbPokemonMart("randomStore", random: ["daily", rand(1..4)], speech: "ProSeller", useCat: true, cantSell: true, currency: "coins")
 end
 
 def pbSomeShelf
@@ -368,12 +368,18 @@ end
 def pbTmShelf
   pbShelfMart(
     ["daily",
-      [:TM01, 3], :TM02, :TM03, :TM04, :TM05, :TM06, :TM07, :ESCAPEROPE
-    ], currency: "coins")
+      :TM01, :TM02, :TM03, :TM04, :TM05, :TM06, :TM07, :ESCAPEROPE
+    ])
 end
 
 def pbSomeSpeciesMart
   pbSpeciesMart(
     "pokemonStore", speech: "PokeSeller", discount: 27, currency: "money",
   )
+end
+
+def apricornShop
+  pbPokemonMart([
+    [:HEAVYBALL, [1, :BLACKAPRICORN]], [:LUREBALL, [1, :BLUEAPRICORN]], [:FRIENDBALL, [1, :GREENAPRICORN]], [:LOVEBALL, [1, :PINKAPRICORN]], [:LEVELBALL, [1, :REDAPRICORN]], [:FASTBALL, [1, :WHITEAPRICORN]], [:MOONBALL, [1, :YELLOWAPRICORN]]
+  ], speech: "ProSeller", useCat: true, currency: :YELLOWAPRICORN )
 end

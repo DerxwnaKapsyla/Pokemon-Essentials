@@ -9,7 +9,7 @@
 #	* Made it so an applause SE plays like in official games
 #==============================================================================#
 class HallOfFame_Scene
-  ENTRYMUSIC = "U-005. Broken Moon (Hall of Fame Mix).ogg" # Derx: Hall of Fame music changed
+  HALL_OF_FAME_BGM = "U-010. Broken Moon" # Derx: Hall of Fame music changed
   
   def writePokemonData(pokemon, hallNumber = -1)
     overlay = @sprites["overlay"].bitmap

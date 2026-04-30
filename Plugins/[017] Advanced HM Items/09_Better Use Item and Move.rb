@@ -83,8 +83,7 @@ class Sprite_RockSmashAnimation
     return if !@sprite
     @sprite.bitmap = @rocksmash_animation_bitmap
     @frame_counter += 1
-    puts "#{@frame_counter}"
-    if @frame_counter >= 6  # default 6
+    if @frame_counter >= 30
       @frame_counter = 0
       @frame_index += 1
       if @frame_index >= 6 # Make sure you have at least 6 frames
@@ -187,7 +186,7 @@ class Sprite_CutAnimation
     return if !@sprite
     @sprite.bitmap = @cut_animation_bitmap
     @frame_counter += 1
-    if @frame_counter >= 6 # default 6
+    if @frame_counter >= 30
       @frame_counter = 0
       @frame_index += 1
       if @frame_index >= 6 # Make sure you have at least 6 frames

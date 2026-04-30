@@ -98,6 +98,14 @@
 #                       have an arrow pointing to the event. If not set or set to false, 
 #                       the arrow will appear if there is a graphic named the same as the
 #                       :graphic file with "_arrow" at the end of the file name.
+#   - :text_show_pause_indicator => (Optional) Boolean - If true, a pause arrow will appear 
+#                       at the end of the text bubble, similar to normal text boxes. If you
+#                       don't set it for the indicator definition, you can always add
+#                       "\1" to the end of your text to add it for specific messages.
+#                       By default, the "pause" graphic will be used (or "pause_light"
+#                       if the text is using light font colors). If there is a graphic
+#                       named the same as the :graphic file with "_pause" at the end of 
+#                       the file name, that will be used, instead.
 #   - :text_bubble_flair => (Optional) String or Hash - Add a graphic to a text bubble
 #                       indicator to provide more information (a "flair"). The graphic must
 #                       be no larger than 28px tall or wide. 

@@ -139,7 +139,7 @@ GameData::PWTTournament.register({
                                                       :DEOXYS,:JIRACHI,:DIALGA,:PALKIA,:GIRATINA,:REGIGIGAS,:HEATRAN,:DARKRAI,
                                                       :SHAYMIN,:ARCEUS,:ZEKROM,:RESHIRAM,:KYUREM,:LANDORUS,:MELOETTA,
                                                       :KELDEO,:GENESECT,
-													  :MARISAO,:YUYUKOO,:ONIDEVASO,:KANAKOO,:REIMUO,:SARIELO,:AYAKASHI))
+													  :MARISAO,:YUYUKOO,:ONIDEVASO,:KANAKOO,:REIMUO,:SARIELO,:AYAKASHI,:MEIMU))
     rules.addPokemonRule(NonEggRestriction.new)
     rules.addPokemonRule(AblePokemonRestriction.new)
     rules.setNumber(length)

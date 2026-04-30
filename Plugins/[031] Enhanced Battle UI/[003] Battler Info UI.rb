@@ -261,7 +261,7 @@ class Battle::Scene
   def pbAddTypesDisplay(xpos, ypos, battler, poke)
     #---------------------------------------------------------------------------
     # Gets display types (considers Illusion)
-    illusion = battler.effects[PBEffects::Illusion] && !battler.pbOwnedByPlayer?
+    illusion = battler.effects[PBEffects::Illusion] && battler.opposes?
     if battler.tera?
       displayTypes = (illusion) ? poke.types.clone : battler.pbPreTeraTypes
     elsif illusion
@@ -295,16 +295,12 @@ class Battle::Scene
     end
     #---------------------------------------------------------------------------
     # Draws Tera type.
-    if battler.tera?
-      showTera = true
-    else
-      showTera = defined?(battler.tera_type) && battler.pokemon.terastal_able?
-      showTera = ((@battle.internalBattle) ? !battler.opposes? : true) if showTera
-    end
-    if showTera
-      pkmn = (illusion) ? poke : battler
-      pbDrawImagePositions(@enhancedUIOverlay, [[@path + "info_extra", xpos + 182, ypos + 95]])
-      pbDisplayTeraType(pkmn, @enhancedUIOverlay, xpos + 186, ypos + 97, true)
+    if PluginManager.installed?("[DBK] Terastallization")
+      if battler.tera? || battler.pokemon.terastal_able? && ((@battle.internalBattle) ? !battler.opposes? : true)
+        pkmn = (illusion) ? poke : battler
+        pbDrawImagePositions(@enhancedUIOverlay, [[@path + "info_extra", xpos + 182, ypos + 95]])
+        pbDisplayTeraType(pkmn, @enhancedUIOverlay, xpos + 186, ypos + 97, true)
+      end
     end
   end
   

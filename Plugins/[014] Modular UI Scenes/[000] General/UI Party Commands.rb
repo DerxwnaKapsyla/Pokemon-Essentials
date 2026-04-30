@@ -47,10 +47,10 @@ class PokemonPartyScreen
       can_access_storage = true
     end
     @scene.pbStartScene(@party,
-                        (@party.length > 1) ? _INTL("Choose a Pokémon.") : _INTL("Choose Pokémon or cancel."),
+                        (@party.length > 1) ? _INTL("Choose a party member.") : _INTL("Choose party member or cancel."),
                         nil, false, can_access_storage)
     loop do
-      @scene.pbSetHelpText((@party.length > 1) ? _INTL("Choose a Pokémon.") : _INTL("Choose Pokémon or cancel."))
+      @scene.pbSetHelpText((@party.length > 1) ? _INTL("Choose a party member.") : _INTL("Choose party member or cancel."))
       party_idx = @scene.pbChoosePokemon(false, -1, 1)
       break if (party_idx.is_a?(Numeric) && party_idx < 0) || (party_idx.is_a?(Array) && party_idx[1] < 0)
       if party_idx.is_a?(Array) && party_idx[0] == 1
@@ -115,7 +115,7 @@ class PokemonPartyScreen
             elsif newpkmn.egg?
               pbDisplay(_INTL("{1} can't be used on an Egg!", movename))
             elsif newpkmn.fainted? || newpkmn.hp == newpkmn.totalhp
-              pbDisplay(_INTL("{1} can't be used on that Pokémon.", movename))
+              pbDisplay(_INTL("{1} can't be used on that party member.", movename))
             else
               pkmn.hp -= amt
               hpgain = pbItemRestoreHP(newpkmn, amt)
@@ -138,7 +138,7 @@ class PokemonPartyScreen
                 return [pkmn, move.id]
               end
               @scene.pbStartScene(
-                @party, (@party.length > 1) ? _INTL("Choose a Pokémon.") : _INTL("Choose Pokémon or cancel.")
+                @party, (@party.length > 1) ? _INTL("Choose a party member.") : _INTL("Choose party member or cancel.")
               )
               next
             end

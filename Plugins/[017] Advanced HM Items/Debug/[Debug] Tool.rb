@@ -43,7 +43,7 @@ def showGameStats
       { name: "Bomb", stat_name: "bomb", config_name: :Show_Bomb },
     ]
 
-    configs.concat([{ name: "Secret Base", stat_name: "secret_power", config_name: :Show_SecretBase, moved: "moved_secret_base_count" }]) if PluginManager.installed?("Secret Bases Remade")
+    configs.concat([{ name: "Secret Base", stat_name: "secret_power", config_name: :Show_SecretBase, moved: "moved_secret_base_count" }]) if PluginManager.findDirectory("Secret Bases Remade")
 
     if $DEBUG
       puts ""
@@ -90,7 +90,7 @@ def aifm_configurations
     :Show_Lift, :Show_SenseTruth, :Show_Bomb                                    # Zelda Stuff
   ]
 
-  ordered_configs.concat([:Show_SecretBase]) if PluginManager.installed?("Secret Bases Remade")
+  ordered_configs.concat([:Show_SecretBase]) if PluginManager.findDirectory("Secret Bases Remade")
 
   puts "\e[33m     Advanced Items & Field Moves Configurations:\e[0m"
   ordered_configs.each do |config_name|

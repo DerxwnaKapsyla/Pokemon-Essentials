@@ -8,7 +8,9 @@ class PokemonPokedexInfo_Scene
   def pbDataPageMenu
     pbPlayDecisionSE
     pbDrawDataNotes
-    species = GameData::Species.get_species_form(@species, @form).id
+    species_data = GameData::Species.get_species_form(@species, @form)
+    special_form, _check_form, _check_item = pbGetSpecialFormData(species_data)
+    species_id = species_data.id
     loop do
       Graphics.update
       Input.update
@@ -24,17 +26,17 @@ class PokemonPokedexInfo_Scene
         #-----------------------------------------------------------------------
         # Displays move lists.
         when :moves
-          next if !$player.owned?(species)
-          pbChooseMove
+          next if !$player.owned?(species_id)
+          pbChooseMove(species_data, special_form)
         #-----------------------------------------------------------------------
         # Displays item/ability lists.
         when :item, :ability
-          next if !$player.owned?(species)
-          pbChooseDataList
+          next if !$player.owned?(species_id)
+          pbChooseDataList(special_form)
         #-----------------------------------------------------------------------
         # Displays compatible species lists.
         when :general, :family, :stats, :habitat, :egg, :shape
-          next if !$player.owned?(species)
+          next if !$player.owned?(species_id)
           pbChooseSpeciesDataList
         end
         break if @forceRefresh
