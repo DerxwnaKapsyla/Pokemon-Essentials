@@ -684,16 +684,15 @@ def pbPasswordCheck(helptext = "Input Password", minlength = 0, maxlength = 12, 
 	#  end
 	# --- Portable PC ---
 	when "billspride"
-	  if $player.portable_pc || $player.has_box_link
+	  if $player.portable_pc
 		pbMessage(_INTL("\\bYou have already redeemed the code for the Portable PC. This code cannot be used again."))
 		return false
 	  else
-		pbMessage(_INTL("\\bThis code will give you a Portable PC."))
+		pbMessage(_INTL("\\bThis code will give you access to a Portable PC, which can be access from the menu."))
 		pbMessage(_INTL("\\bOnce claimed, you will not be able to renew this code again."))
 		if pbConfirmMessage(_INTL("\\bWould you like to claim this code?"))
-		  pbReceiveItem(:POKEMONBOXLINK)
+		  pbMessage(_INTL("\\bAccess to the Portable PC has been enabled."))
 		  $player.portable_pc = true
-		  $player.has_box_link = true
 		  return true
 		else
 		  return false
