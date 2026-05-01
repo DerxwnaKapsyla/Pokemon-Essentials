@@ -568,7 +568,7 @@ class SpeciesMartScreen < PokemonMartScreen
         pbDisplayPaused(_INTL(@getSpeech[:NotEnoughMoney]&.sample ||"You don't have enought {1}", @adapter.getCurrency, speciesName))
         next
       end
-      entry[:limit] -= quantity if !entry.nil? && quantity != 0
+      entry[:limit] = 1 # -= quantity if !entry.nil? && quantity != 0
       unless pbBoxesFull?
         $stats.money_spent_at_marts += speciesPrice
         $amount = @adapter.setChangeMoney(@adapter.getMoney - speciesPrice)

@@ -41,6 +41,7 @@ class Player < Trainer
   attr_accessor :enable_item_drops
   attr_accessor :next_wild_shiny
   attr_accessor :sandbox_zone_unlocked
+  attr_accessor :ancient_lunar_sake
 end
 
 class Game_Temp
@@ -77,6 +78,7 @@ def pbPasswordCheck(helptext = "Input Password", minlength = 0, maxlength = 12, 
 	"billspride",			# Portable PC
 	"poweredup",			# Full Power Item set
 	"shinypls",				# Shiny Charm
+	"lunarpurity",          # Ancient Lunar Sake
 	
   # --- Utility and Quality of Life ---
 	"moreshiny",			# Next Wild Encounter is shiny
@@ -729,6 +731,22 @@ def pbPasswordCheck(helptext = "Input Password", minlength = 0, maxlength = 12, 
 		if pbConfirmMessage(_INTL("\\bWould you like to claim this code?"))
 		  pbReceiveItem(:SHINYCHARM)
 		  $player.shiny_charm = true
+		  return true
+		else
+		  return false
+		end
+	  end
+	# --- Ancient Lunar Sake ---
+	when "lunarpurity"
+	  if $player.ancient_lunar_sake
+		pbMessage(_INTL("\\bYou have already redeemed the code for the Ancient Lunar Sake. This code cannot be used again."))
+		return false
+	  else
+		pbMessage(_INTL("\\bThis code will give you the Ancient Lunar Sake."))
+		pbMessage(_INTL("\\bOnce claimed, you will not be able to renew this code again."))
+		if pbConfirmMessage(_INTL("\\bWould you like to claim this code?"))
+		  pbReceiveItem(:ANCIENTLUNARSAKE)
+		  $player.ancient_lunar_sake = true
 		  return true
 		else
 		  return false

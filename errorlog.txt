@@ -2787,3 +2787,112 @@ Backtrace:
 [Voltseon's Pause Menu] 002_VoltseonMenu_Main.rb:288:in `call_menu'
 [Advanced Items - Field Moves] 10_Overwrites.rb:74:in `update'
 002_Scene_Map.rb:238:in `block in main'
+
+=================
+
+[2026-04-29 19:57:24 -0700]
+[Pokémon Essentials version 21.1]
+
+Exception: NoMethodError
+Message: undefined method `y' for nil:NilClass
+
+Backtrace:
+[Voltseon's Pause Menu] 004_VoltseonMenu_Components.rb:230:in `update'
+[Voltseon's Pause Menu] 002_VoltseonMenu_Main.rb:223:in `block (2 levels) in update'
+[Voltseon's Pause Menu] 002_VoltseonMenu_Main.rb:223:in `each'
+[Voltseon's Pause Menu] 002_VoltseonMenu_Main.rb:223:in `block in update'
+[Voltseon's Pause Menu] 002_VoltseonMenu_Main.rb:219:in `loop'
+[Voltseon's Pause Menu] 002_VoltseonMenu_Main.rb:219:in `update'
+[Voltseon's Pause Menu] 002_VoltseonMenu_Main.rb:297:in `pbStartPokemonMenu'
+[Voltseon's Pause Menu] 002_VoltseonMenu_Main.rb:288:in `call_menu'
+[Advanced Items - Field Moves] 10_Overwrites.rb:74:in `update'
+002_Scene_Map.rb:238:in `block in main'
+
+=================
+
+[2026-04-30 03:50:09 -0700]
+[Pokémon Essentials version 21.1]
+
+Script error in event 42 (coords 13,6), map 177 (Trainer Academy)
+Exception: NoMethodError
+Message: undefined method `animated_transition_bg=' for #<Game_Temp>
+
+***Full script:
+$game_temp.animated_transition_bg = true
+
+Backtrace:
+(eval):1:in `execute_script'
+003_Interpreter.rb:140:in `eval'
+003_Interpreter.rb:140:in `execute_script'
+004_Interpreter_Commands.rb:1177:in `command_355'
+004_Interpreter_Commands.rb:116:in `execute_command'
+003_Interpreter.rb:132:in `block in update'
+003_Interpreter.rb:86:in `loop'
+003_Interpreter.rb:86:in `update'
+[Advanced Items - Field Moves] 10_Overwrites.rb:34:in `block in update'
+[Advanced Items - Field Moves] 10_Overwrites.rb:33:in `loop'
+
+=================
+
+[2026-04-30 04:03:11 -0700]
+[Pokémon Essentials version 21.1]
+
+Script error in event 41 (coords 13,5), map 177 (Trainer Academy)
+Exception: NoMethodError
+Message: undefined method `should_bg_animate=' for #<Game_Temp>
+
+***Full script:
+$game_temp.vs_transition_bg = "Leader_Misty"
+TrainerBattle.start(:LEADER_Brock, "Brock", 1+$player.badge_count)
+
+Backtrace:
+[Derxwna's Custom Vs. Transitions System] 002_Asteria Custom.rb:167:in `block in <main>'
+002_Overworld_BattleIntroAnim.rb:95:in `block in pbBattleAnimation'
+002_Overworld_BattleIntroAnim.rb:31:in `block in each'
+002_Overworld_BattleIntroAnim.rb:31:in `each'
+002_Overworld_BattleIntroAnim.rb:31:in `each'
+002_Overworld_BattleIntroAnim.rb:93:in `pbBattleAnimation'
+001_Overworld_BattleStarting.rb:521:in `start_core'
+001_Overworld_BattleStarting.rb:487:in `start'
+(eval):2:in `execute_script'
+003_Interpreter.rb:140:in `eval'
+
+=================
+
+[2026-04-30 16:55:26 -0700]
+[Pokémon Essentials version 21.1]
+
+Exception: NoMethodError
+Message: undefined method `y' for nil:NilClass
+
+Backtrace:
+[Voltseon's Pause Menu] 004_VoltseonMenu_Components.rb:232:in `update'
+[Voltseon's Pause Menu] 002_VoltseonMenu_Main.rb:223:in `block (2 levels) in update'
+[Voltseon's Pause Menu] 002_VoltseonMenu_Main.rb:223:in `each'
+[Voltseon's Pause Menu] 002_VoltseonMenu_Main.rb:223:in `block in update'
+[Voltseon's Pause Menu] 002_VoltseonMenu_Main.rb:219:in `loop'
+[Voltseon's Pause Menu] 002_VoltseonMenu_Main.rb:219:in `update'
+[Voltseon's Pause Menu] 002_VoltseonMenu_Main.rb:297:in `pbStartPokemonMenu'
+[Voltseon's Pause Menu] 002_VoltseonMenu_Main.rb:288:in `call_menu'
+[Advanced Items - Field Moves] 10_Overwrites.rb:74:in `update'
+002_Scene_Map.rb:238:in `block in main'
+
+=================
+
+[2026-04-30 19:29:39 -0700]
+[Pokémon Essentials version 21.1]
+
+Exception: NoMethodError
+Message: undefined method `y' for nil:NilClass
+
+Backtrace:
+[Voltseon's Pause Menu] 004_VoltseonMenu_Components.rb:232:in `update'
+[Voltseon's Pause Menu] 002_VoltseonMenu_Main.rb:223:in `block (2 levels) in update'
+[Voltseon's Pause Menu] 002_VoltseonMenu_Main.rb:223:in `each'
+[Voltseon's Pause Menu] 002_VoltseonMenu_Main.rb:223:in `block in update'
+[Voltseon's Pause Menu] 002_VoltseonMenu_Main.rb:219:in `loop'
+[Voltseon's Pause Menu] 002_VoltseonMenu_Main.rb:219:in `update'
+[Voltseon's Pause Menu] 002_VoltseonMenu_Main.rb:297:in `pbStartPokemonMenu'
+[Voltseon's Pause Menu] 002_VoltseonMenu_Main.rb:288:in `call_menu'
+[Advanced Items - Field Moves] 10_Overwrites.rb:74:in `update'
+002_Scene_Map.rb:238:in `block in main'

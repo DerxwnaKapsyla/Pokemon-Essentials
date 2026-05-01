@@ -60,9 +60,9 @@ EventHandlers.add(:on_wild_species_chosen, :get_unique_encounter,
   next false if $PokemonSystem.lunarsakepassive != 1
   echoln "Confirmed. Player has activated the passive effect of the Ancient Lunar Sake."
   echoln "-------------------------------------------------------------------------------"
-  echoln "Checking if player has relevant item and is on either of the Garden of Dreams maps..."
-  next false if !$bag.has?(:ANCIENTLUNARSAKE) || !$game_map.metadata&.has_flag?("AllEncounters")
-  echoln "Confirmed. Player has relevant item and is on correct map. Proceeding with modifier."
+  echoln "Checking if player has relevant item..."
+  next false if !$bag.has?(:ANCIENTLUNARSAKE)
+  echoln "Confirmed. Player has relevant item. Proceeding with modifier."
   echoln "-------------------------------------------------------------------------------"
   echoln "Initial encounter: #{species}, Level #{level}."
   echoln "Checking if player owns #{species}..."

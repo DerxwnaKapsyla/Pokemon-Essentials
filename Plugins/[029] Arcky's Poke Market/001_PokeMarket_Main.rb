@@ -102,11 +102,11 @@ class PokemonMartAdapter
           if selling
             case $currency.downcase
             when "money", "gold"
-              return itemData.sell_price
+              return itemData.sell_price * qty
             when "coins"
-              return itemData.sell_coin_price
+              return itemData.sell_coin_price * qty
             when "battle points", "bp"
-              return itemData.sell_bp_price
+              return itemData.sell_bp_price * qty
             end
           end
         else
@@ -126,12 +126,15 @@ class PokemonMartAdapter
         end
       end
       newPrice = (price * ((100 - disc).to_f / 100)).round(0) * qty
+      #echoln("newPrice: #{newPrice}")
       return newPrice
     end 
   end
 
   def getDisplayPrice(item, selling = false, discount = nil, qty = 1)
+    #echoln("selling: #{selling} qty: #{qty}")
     price = getPrice(item, selling, discount, qty).to_s_formatted
+    #echoln("Price: #{price}")
     if $currency.is_a?(String)
       case $currency.downcase
       when "money", "gold"
@@ -439,7 +442,7 @@ class PokemonMart_Scene
       numwindow.height = 64
       numwindow.baseColor = Color.new(88, 88, 80)
       numwindow.shadowColor = Color.new(168, 184, 184)
-      numwindow.text = _INTL("x{1}<r>{2}", curnumber, @adapter.getDisplayPrice(item, false, @discount, curnumber))
+      numwindow.text = _INTL("x{1}<r>{2}", curnumber, @adapter.getDisplayPrice(item, !@buying, @discount, curnumber))
       pbBottomRight(numwindow)
       numwindow.y -= helpwindow.height
       loop do
@@ -452,28 +455,28 @@ class PokemonMart_Scene
           curnumber -= 10
           curnumber = minimum if curnumber < minimum
           if curnumber != oldnumber
-            numwindow.text = _INTL("x{1}<r>{2}", curnumber, @adapter.getDisplayPrice(item, false, @discount, curnumber))
+            numwindow.text = _INTL("x{1}<r>{2}", curnumber, @adapter.getDisplayPrice(item, !@buying, @discount, curnumber))
             pbPlayCursorSE
           end
         elsif Input.repeat?(Input::RIGHT)
           curnumber += 10
           curnumber = maximum if curnumber > maximum
           if curnumber != oldnumber
-            numwindow.text = _INTL("x{1}<r>{2}", curnumber, @adapter.getDisplayPrice(item, false, @discount, curnumber))
+            numwindow.text = _INTL("x{1}<r>{2}", curnumber, @adapter.getDisplayPrice(item, !@buying, @discount, curnumber))
             pbPlayCursorSE
           end
         elsif Input.repeat?(Input::UP)
           curnumber += 1
           curnumber = minimum if curnumber > maximum
           if curnumber != oldnumber
-            numwindow.text = _INTL("x{1}<r>{2}", curnumber, @adapter.getDisplayPrice(item, false, @discount, curnumber))
+            numwindow.text = _INTL("x{1}<r>{2}", curnumber, @adapter.getDisplayPrice(item, !@buying, @discount, curnumber))
             pbPlayCursorSE
           end
         elsif Input.repeat?(Input::DOWN)
           curnumber -= 1
           curnumber = maximum if curnumber < minimum
           if curnumber != oldnumber
-            numwindow.text = _INTL("x{1}<r>{2}", curnumber, @adapter.getDisplayPrice(item, false, @discount, curnumber))
+            numwindow.text = _INTL("x{1}<r>{2}", curnumber, @adapter.getDisplayPrice(item, !@buying, @discount, curnumber))
             pbPlayCursorSE
           end
         elsif Input.trigger?(Input::USE)
@@ -538,9 +541,13 @@ class PokemonMartScreen
               item, maxafford) unless maxafford == 0
           end
         else
-          quantity = @scene.pbChooseNumber(
-            _INTL(@getSpeech[:BuyItemAmount]&.sample || "So how many {1}?", itemnameplural),
-            item, maxafford) unless maxafford == 0
+          if maxafford >= 2
+            quantity = @scene.pbChooseNumber(
+              _INTL(@getSpeech[:BuyItemAmount]&.sample || "So how many {1}?", itemnameplural),
+              item, maxafford) unless maxafford == 0
+          else 
+            quantity = 1
+          end 
           if price == 1 && !@discount.nil?
             Console.echoln_li _INTL("Be aware that when an item has a price of 1, discounts don't work.")
           end
@@ -637,6 +644,7 @@ class PokemonMartScreen
         next
       end
       price = @adapter.getPrice(item, true, @discount)
+      #echoln(price)
       qty = @adapter.getQuantity(item)
       next if qty == 0
       @scene.pbShowMoney
@@ -824,6 +832,7 @@ def pbPokemonMart(stockWithLimit, speech: nil, useCat: false, discount: nil, cur
         cmdQuit = 2
         cmd = cmdQuit
       end
+      break
     else
       commands, cmdBuy, cmdSell, cmdBill, cmdQuit = setCommands(cantSell, getSpeech, stock, canCheckOut)
       cmd = pbMessage(_INTL(getSpeech[:MenuReturnText]&.sample || "Is there anything else I can do for you?"), commands, cmdQuit + 1)

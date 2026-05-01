@@ -1,15 +1,21 @@
 class Game_Temp
   attr_accessor :vs_transition_bg
   attr_accessor :vs_name
+  attr_accessor :animated_transition_bg
   
   alias vs_initialize initialize
   def initialize
     vs_initialize
-    @vs_name = nil
+    @vs_name                = nil
+	@animated_transition_bg = false
   end
   
   def get_vs_transition_bg
     vs_transition_bg || "Plains"
+  end
+  
+  def should_bg_animate
+    @animated_transition_bg
   end
   
   def get_vs_name
@@ -279,6 +285,7 @@ SpecialBattleIntroAnimations.register("vs_boss_solo", 90,   # Priority 80
 	ball_sprites.each {|s| s.dispose}
 	$game_temp.vs_name = nil
 	$game_temp.transition_animation_data = nil
+	$game_temp.animated_transition_bg = false
 
     viewport.color = Color.black   # Ensure screen is black
   }
@@ -484,6 +491,7 @@ SpecialBattleIntroAnimations.register("vs_boss_duo", 91,   # Priority 81
 	ball_sprites2.each {|s| s.dispose}
 	$game_temp.vs_name = nil
 	$game_temp.transition_animation_data = nil
+	$game_temp.animated_transition_bg = false
 
     viewport.color = Color.black   # Ensure screen is black
   }
@@ -729,6 +737,7 @@ SpecialBattleIntroAnimations.register("vs_boss_trio", 92,   # Priority 82
 	ball_sprites3.each {|s| s.dispose}
 	$game_temp.vs_name = nil
 	$game_temp.transition_animation_data = nil
+	$game_temp.animated_transition_bg = false
 
     viewport.color = Color.black   # Ensure screen is black
   }
@@ -890,6 +899,7 @@ SpecialBattleIntroAnimations.register("vs_wild_boss", 90,   # Priority 80
 	$game_temp.vs_name = nil
 	$game_temp.transition_animation_data = nil
 	$game_temp.transition_animation_data = nil
+	$game_temp.animated_transition_bg = false
 
     viewport.color = Color.black   # Ensure screen is black
   }
