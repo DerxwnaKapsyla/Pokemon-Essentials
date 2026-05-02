@@ -71552,6 +71552,35 @@ List of Event Commands:
 @>
 
 #------------------------------------------------------------------------------
+Event ID: 010
+Event Name: EV010
+(X,Y): (010,004)
+
+Page #1
+Conditions
+None
+
+Graphic: Object ball
+
+Autonomous Movement
+Type: Fixed
+Speed: 3: Slow
+Freq: 3: Low
+Options Enabled
+Move Animation
+Trigger: Action Button
+
+List of Event Commands:
+@>Script: $game_temp.animated_transition_bg = true
+@>Script: $game_temp.vs_transition_bg = "Leader_Sabrina"
+@>Conditional Branch: Script: TrainerBattle.start(:LEADER_Sabrina_FrLg, "Sabrina", 1+$player.badge_count, :LEADER_Sabrina_HgSs, "Sabrina", 1+$player.badge_count)
+ @>
+: Else
+ @>
+: Branch End
+@>
+
+#------------------------------------------------------------------------------
 
 #==============================================================================
 Map ID: 217
@@ -71596,11 +71625,8 @@ List of Event Commands:
 @>Text: \xn[Misty]But get ready, my Water and Hydro-types aren't going to go 
  :    : easy on you!
 @>Script: setBattleRule("backdrop", "cerulean")
-@>Control Switches: [0104: Transition Handler] = ON
-@>Control Variables: [0103: Vs. Transition ID] = 3
-@>Call Common Event: Vs. Transition - Badge to Ball Check
-@>Control Variables: [0113: Vs. Transition - Badge] = 1
-@>Control Variables: [0114: Vs. Transition - Leader] = 1
+@>Script: $game_temp.animated_transition_bg = true
+@>Script: $game_temp.vs_transition_bg = "Leader_Misty"
 @>Comment: EndSpeech: You're way too good for me!
 @>Conditional Branch: Script: TrainerBattle.start(:LEADER_Misty, "Misty", 1+$player.badge_count)
  @>
@@ -71678,11 +71704,8 @@ List of Event Commands:
 @>Text: \xn[Misty]Are you all set? I've been training hard since our last
  :    : battle!
 @>Script: setBattleRule("backdrop", "cerulean")
-@>Control Switches: [0104: Transition Handler] = ON
-@>Control Variables: [0103: Vs. Transition ID] = 3
-@>Call Common Event: Vs. Transition - Rematch to Ball Check
-@>Control Variables: [0113: Vs. Transition - Badge] = 1
-@>Control Variables: [0114: Vs. Transition - Leader] = 1
+@>Script: $game_temp.animated_transition_bg = true
+@>Script: $game_temp.vs_transition_bg = "Leader_Misty"
 @>Comment: EndSpeech: You're even better than before!
 @>Conditional Branch: Script: TrainerBattle.start(:LEADER_Misty, "Misty", pbGet(128))
  @>Text: \xn[Misty]Haha, you're quite enjoyable to battle! I'll look forward to
@@ -83154,11 +83177,8 @@ List of Event Commands:
 @>Text: \xn[Lt. Surge]You think you have what it takes to cut my
  :    : circuits? Hah! You may have guts, but let's see how well
  :    : you fare in actual combat!
-@>Control Switches: [0104: Transition Handler] = ON
-@>Control Variables: [0103: Vs. Transition ID] = 3
-@>Call Common Event: Vs. Transition - Badge to Ball Check
-@>Control Variables: [0113: Vs. Transition - Badge] = 2
-@>Control Variables: [0114: Vs. Transition - Leader] = 2
+@>Script: $game_temp.animated_transition_bg = true
+@>Script: $game_temp.vs_transition_bg = "Leader_Surge"
 @>Comment: ------------
 @>Comment: EndSpeech: Now that was a shocking turn of events! Not bad at all, kid!
 @>Conditional Branch: Script: TrainerBattle.start(:LEADER_Surge, "Lt. Surge", 1+$player.badge_count)
@@ -83241,11 +83261,8 @@ Trigger: Action Button
 List of Event Commands:
 @>Text: \xn[Lt. Surge]Back for a rematch, huh? Haha, you've got spunk, kid!
 @>Text: \xn[Lt. Surge]They say lightning doesn't strike twice, let's put that old saying to the test!
-@>Control Switches: [0104: Transition Handler] = ON
-@>Control Variables: [0103: Vs. Transition ID] = 3
-@>Call Common Event: Vs. Transition - Rematch to Ball Check
-@>Control Variables: [0113: Vs. Transition - Badge] = 2
-@>Control Variables: [0114: Vs. Transition - Leader] = 2
+@>Script: $game_temp.animated_transition_bg = true
+@>Script: $game_temp.vs_transition_bg = "Leader_Surge"
 @>Comment: EndSpeech: I've been thoroughly shocked! You're good, kid!
 @>Conditional Branch: Script: TrainerBattle.start(:LEADER_Surge, "Lt. Surge", pbGet(128))
  @>Text: \xn[Brock]Haha, you're a real spectacle, kid! You'll go far as a trainer!
@@ -122459,11 +122476,8 @@ List of Event Commands:
  :    : gardening.
 @>Text: \xn[Erika]But, as much as I love gardening, I love battling as well.
  :    : So I shall accept your challenge as Gym Leader!
-@>Control Switches: [0104: Transition Handler] = ON
-@>Control Variables: [0103: Vs. Transition ID] = 3
-@>Call Common Event: Vs. Transition - Badge to Ball Check
-@>Control Variables: [0113: Vs. Transition - Badge] = 3
-@>Control Variables: [0114: Vs. Transition - Leader] = 3
+@>Script: $game_temp.animated_transition_bg = true
+@>Script: $game_temp.vs_transition_bg = "Leader_Erika"
 @>Comment: EndSpeech: Oh! I concede defeat. You are remarkably strong.
 @>Conditional Branch: Script: TrainerBattle.start(:LEADER_Erika, "Erika", 1+$player.badge_count)
  @>Text: \xn[Erika]You have quite an elegant and refined battling style, I
@@ -122535,11 +122549,8 @@ List of Event Commands:
 @>Text: \xn[Erika]Oh, pardon me, I must have dozed off again...
 @>Text: \xn[Erika]A rematch? I suppose I can indulge that for a while.
 @>Text: \xn[Erika]Don't take me lightly because I just woke up!
-@>Control Switches: [0104: Transition Handler] = ON
-@>Control Variables: [0103: Vs. Transition ID] = 3
-@>Call Common Event: Vs. Transition - Badge to Ball Check
-@>Control Variables: [0113: Vs. Transition - Badge] = 3
-@>Control Variables: [0114: Vs. Transition - Leader] = 3
+@>Script: $game_temp.animated_transition_bg = true
+@>Script: $game_temp.vs_transition_bg = "Leader_Erika"
 @>Comment: EndSpeech: Oh! I concede defeat.
 @>Conditional Branch: Script: TrainerBattle.start(:LEADER_Erika, "Erika", pbGet(128))
  @>Text: \xn[Erika]What a good battle that was, thank you for coming by here
@@ -127297,11 +127308,8 @@ List of Event Commands:
  :    : a reward.
 @>Text: \xn[Janine]You're good at seeing through traps and disguises,
  :    : now let's see if you can unveil the tricks I use in battle!
-@>Control Switches: [0104: Transition Handler] = ON
-@>Control Variables: [0103: Vs. Transition ID] = 3
-@>Call Common Event: Vs. Transition - Badge to Ball Check
-@>Control Variables: [0113: Vs. Transition - Badge] = 4
-@>Control Variables: [0114: Vs. Transition - Leader] = 4
+@>Script: $game_temp.animated_transition_bg = true
+@>Script: $game_temp.vs_transition_bg = "Leader_Janine"
 @>Comment: EndSpeech: So perceptive, you're able to see through a ninja's tricks!
 @>Conditional Branch: Script: TrainerBattle.start(:LEADER_Janine, "Janine", 1+$player.badge_count)
  @>Text: \xn[Janine]Very impressive, challenger... \PN, right? 
@@ -127380,11 +127388,8 @@ List of Event Commands:
 @>Text: \xn[Janine]Tee-hee, looks like you got it right again!
 @>Text: \xn[Janine]Show me your skills at dispelling my tricks once again,
  :    : challenger \pn!
-@>Control Switches: [0104: Transition Handler] = ON
-@>Control Variables: [0103: Vs. Transition ID] = 3
-@>Call Common Event: Vs. Transition - Badge to Ball Check
-@>Control Variables: [0113: Vs. Transition - Badge] = 4
-@>Control Variables: [0114: Vs. Transition - Leader] = 4
+@>Script: $game_temp.animated_transition_bg = true
+@>Script: $game_temp.vs_transition_bg = "Leader_Janine"
 @>Comment: EndSpeech: So perceptive, you're able to see through a ninja's tricks!
 @>Conditional Branch: Script: TrainerBattle.start(:LEADER_Janine, "Janine", pbGet(128))
  @>Text: \xn[Janine]I'll need to come up with better tricks if I want to best
@@ -136686,11 +136691,8 @@ List of Event Commands:
  @>
 : Else
  @>Comment: #-------------------------
- @>Control Switches: [0104: Transition Handler] = ON
- @>Control Variables: [0103: Vs. Transition ID] = 3
- @>Call Common Event: Vs. Transition - Badge to Ball Check
- @>Control Variables: [0113: Vs. Transition - Badge] = 5
- @>Control Variables: [0114: Vs. Transition - Leader] = 5
+ @>Script: $game_temp.animated_transition_bg = true
+ @>Script: $game_temp.vs_transition_bg = "Leader_Sabrina"
  @>Conditional Branch: Script: TrainerBattle.start(:LEADER_Sabrina, "Sabrina", 1+$player.badge_count)
   @>Text: \xnb[Sabrina]I see... You possess quite remarkable power.
   @>Text: \xnb[Sabrina]You are worthy of the badge I oversee, the Marsh Badge.
@@ -136846,11 +136848,8 @@ List of Event Commands:
  :    : This is unexpected, but not surprising.
 @>Text: \xnb[Sabrina]Very well then. I shall put my further honed
  :    : abilities to test against you!
-@>Control Switches: [0104: Transition Handler] = ON
-@>Control Variables: [0103: Vs. Transition ID] = 3
-@>Call Common Event: Vs. Transition - Badge to Ball Check
-@>Control Variables: [0113: Vs. Transition - Badge] = 5
-@>Control Variables: [0114: Vs. Transition - Leader] = 5
+@>Script: $game_temp.animated_transition_bg = true
+@>Script: $game_temp.vs_transition_bg = "Leader_Sabrina"
 @>Conditional Branch: Script: TrainerBattle.start(:LEADER_Sabrina, "Sabrina", pbGet(128))
  @>Text: \xnb[Sabrina]I see... I must continue my training further. Thank you
   :    : for showing me where the gaps in my knowledge are.
