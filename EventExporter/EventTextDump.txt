@@ -2978,9 +2978,9 @@ Trigger: Autorun
 
 List of Event Commands:
 @>Script: activateQuest(:Quest1)
-@>Text: \w[dark]\bYour Quest Journal has been updated! You can view 
+@>Text: \w[dark]Your Quest Journal has been updated! You can view 
  :    : the Quest Journal from the pause menu.
-@>Text: \w[dark]\bYou can also look for quest objectives in the 
+@>Text: \w[dark]You can also look for quest objectives in the 
  :    : overworld by looking for an icon over them.
 @>Control Self Switch: B =ON
 @>
@@ -7636,9 +7636,9 @@ List of Event Commands:
 @>Wait: 20 frame(s)
 @>Change Screen Color Tone: (0,0,0,0), @20
 @>Wait: 1 frame(s)
-@>Text: \w[dark]\bYour Quest Journal has been updated! You can view 
+@>Text: \w[dark]Your Quest Journal has been updated! You can view 
  :    : the Quest Journal from the pause menu.
-@>Text: \w[dark]\bYou can also look for quest objectives in the 
+@>Text: \w[dark]You can also look for quest objectives in the 
  :    : overworld by looking for an icon over them.
 @>Control Self Switch: A =ON
 @>
@@ -53230,9 +53230,7 @@ List of Event Commands:
  @>Text: That HC contains the move Waterfall. It will allow you 
   :    : to scale large, imposing waterfalls that you may 
   :    : encounter.
- @>Text: Seeing as how it's my badge that permits the use of Waterfall,
-  :    : I figured I may as well be the one to hand it out to people
-  :    : who beat me as well.
+ @>Text: [You'll need it on your journey to the Pokemon League]
  @>Control Switches: [0137] = ON
  @>
 : Branch End
@@ -62622,10 +62620,7 @@ List of Event Commands:
  @>Text: \xn[Brock]Not bad at all, challenger! I applaud your skills! As proof of your victory, I confer upon you the Boulder Badge!
  @>Text: \me[Badge get]You earned the Boulder Badge!\wtnp[90]
  @>Script: $player.badges[0]=true # Boulder Badge
- @>Text: \xn[Brock]Having the Boulder Badge will allow your Pokémon or Puppets to use the move Flash outside of battle.
- @>Text: \xn[Brock]Flash is a skill that Pokémon and Puppets can learn that will illuminate dark
-  :    : areas, such as caves.
- @>Text: \xn[Brock]Speaking of TMs and SCs, here, take these as well!
+ @>Text: \xn[Brock]Here, take these as well!
  @>Script: pbReceiveItem(:TM39) # Rock Tomb, Pokemon
  :       : pbReceiveItem(:SC39) # Rock Tomb, Puppet
  @>Conditional Branch: Switch [0108: TM/SC Explanation] == OFF
@@ -72518,38 +72513,26 @@ List of Event Commands:
 : Branch End
 @>Conditional Branch: Variable [0001: Temp Pokemon Choice] == 0
  @>Text: Pewter City Gym\nLeader: Brock\nBadge: Boulder Badge\nType: Earth and Rock
- @>Text: Beating the Pewter Gym gives you the ability
-  :    : to use the Field Move, Flash, outside of battle.
  @>
 : Branch End
 @>Conditional Branch: Variable [0001: Temp Pokemon Choice] == 1
  @>Text: Cerulean City Gym\nLeader: Misty\nBadge: Cascade Badge\nType: Water and Hydro
- @>Text: Beating the Cerulean Gym gives you the ability
-  :    : to use the Field Move, Cut, outside of battle.
  @>
 : Branch End
 @>Conditional Branch: Variable [0001: Temp Pokemon Choice] == 2
  @>Text: Vermilion City Gym\nLeader: Lt. Surge\nBadge: Thunder Badge\nType: Wind and Electric
- @>Text: Beating the Vermilion Gym gives you the ability
-  :    : to use the Field Move, Fly, outside of battle.
  @>
 : Branch End
 @>Conditional Branch: Variable [0001: Temp Pokemon Choice] == 3
  @>Text: Celadon City Gym\nLeader: Erika\nBadge: Rainbow Badge\nType: Nature and Grass
- @>Text: Beating the Celadon Gym gives you the ability
-  :    : to use the Field Move, Strength, outside of battle.
  @>
 : Branch End
 @>Conditional Branch: Variable [0001: Temp Pokemon Choice] == 4
  @>Text: Fuschia City Gym\nLeader: Janine\nBadge: Soul Badge\nType: Miasma and Poison
- @>Text: Beating the Fuchisa Gym gives you the ability
-  :    : to use the Field Move, Surf, outside of battle.
  @>
 : Branch End
 @>Conditional Branch: Variable [0001: Temp Pokemon Choice] == 5
  @>Text: Saffron City Gym\nLeader: Sabrina\nBadge: Marsh Badge\nType: Reason and Psychic
- @>Text: Beating the Saffron Gym gives you the ability
-  :    : to use the Field Move, Rock Smash, outside of battle.
  @>
 : Branch End
 @>Conditional Branch: Variable [0001: Temp Pokemon Choice] == 6
@@ -72558,8 +72541,6 @@ List of Event Commands:
 : Branch End
 @>Conditional Branch: Variable [0001: Temp Pokemon Choice] == 7
  @>Text: Viridian City Gym\nLeader: Green\nBadge: Earth Badge\nType: Variety
- @>Text: Beating the Viridian Gym gives you the ability
-  :    : to use the Field Move, Waterfall, outside of battle.
  @>
 : Branch End
 @>Conditional Branch: Variable [0001: Temp Pokemon Choice] == 8
@@ -72649,44 +72630,30 @@ List of Event Commands:
 : Branch End
 @>Conditional Branch: Variable [0001: Temp Pokemon Choice] == 0
  @>Text: Violet City Gym\nLeader: Falkner\nBadge: Zephyr Badge\nType: Flying and Aero
- @>Text: Beating the Violet Gym gives you the ability
-  :    : to use the Field Move, Flash, outside of battle.
  @>
 : Branch End
 @>Conditional Branch: Variable [0001: Temp Pokemon Choice] == 1
  @>Text: Azalea City Gym\nLeader: Bugsy\nBadge: Hive Badge\nType: Nature and Bug
- @>Text: Beating the Azalea Gym gives you the ability
-  :    : to use the Field Move, Cut, outside of battle.
  @>
 : Branch End
 @>Conditional Branch: Variable [0001: Temp Pokemon Choice] == 2
  @>Text: Goldenrod City Gym\nLeader: Whitney\nBadge: Plain Badge\nType: Heart and Normal
- @>Text: Beating the Goldenrod Gym gives you the ability
-  :    : to use the Field Move, Strength, outside of battle.
  @>
 : Branch End
 @>Conditional Branch: Variable [0001: Temp Pokemon Choice] == 3
  @>Text: Ecruteak City Gym\nLeader: Morty\nBadge: Fog Badge\nType: Ghost and Nether
- @>Text: Beating the Ecruteak Gym gives you the ability
-  :    : to use the Field Move, Surf, outside of battle.
  @>
 : Branch End
 @>Conditional Branch: Variable [0001: Temp Pokemon Choice] == 4
  @>Text: Cianwood City Gym\nLeader: Chuck\nBadge: Storm Badge\nType: Dream and Fighting
- @>Text: Beating the Cianwood Gym gives you the ability
-  :    : to use the Field Move, Fly, outside of battle.
  @>
 : Branch End
 @>Conditional Branch: Variable [0001: Temp Pokemon Choice] == 5
  @>Text: Olivine City Gym\nLeader: Jasmine\nBadge: Mineral Badge\nType: Steel and Metal
- @>Text: Beating the Olivine Gym gives you the ability
-  :    : to use the Field Move, Rock Smash, outside of battle.
  @>
 : Branch End
 @>Conditional Branch: Variable [0001: Temp Pokemon Choice] == 6
  @>Text: Mahogany Town Gym\nLeader: Pryce\nBadge: Glacier Badge\nType: Ice and Cryo
- @>Text: Beating the Mahogany Gym gives you the ability
-  :    : to use the Field Move, Whirlpool, outside of battle.
  @>Text: Addendum 1: Pryce is no longer the Gym Leader of Mahogany
   :    : Gym. While a proper replacement is found, Glacia of the Hoenn
   :    : Elite Four has taken his spot.
@@ -72694,8 +72661,6 @@ List of Event Commands:
 : Branch End
 @>Conditional Branch: Variable [0001: Temp Pokemon Choice] == 7
  @>Text: Blackthorn City Gym\nLeader: Clair\nBadge: Rising Badge\nType: Faith and Dragon
- @>Text: Beating the Blackthorn Gym gives you the ability
-  :    : to use the Field Move, Waterfall, outside of battle.
  @>
 : Branch End
 @>
@@ -73073,8 +73038,8 @@ Move Animation
 Trigger: Action Button
 
 List of Event Commands:
-@>Comment: This book doesn't show up until Ep.2 of the Faith & Prayer post game
- :       : Or whichever episode is it that starts the Gensokyo League
+@>Comment: This book doesn't show up until the player is able to
+ :       : start doing the Gensokyo League.
 @>
 
 Page #2
@@ -76592,8 +76557,6 @@ List of Event Commands:
  @>Text: \xn[Bill]Those would be the Hidden Machine and the Hidden 
   :    : Skill Card variants of Cut, which you can teach to your 
   :    : Pokémon and Puppets.
- @>Text: \xn[Bill]You will need the badge from the Cerulean Gym to 
-  :    : use them, however.
  @>Script: advanceQuestToStage(:Quest103, 2)
  @>
 : Branch End
@@ -76658,8 +76621,6 @@ List of Event Commands:
  @>Text: \xn[Bill]Those would be the Hidden Machine and the Hidden 
   :    : Skill Card variants of Cut, which you can teach to your 
   :    : Pokémon and Puppets.
- @>Text: \xn[Bill]You will need the badge from the Cerulean Gym to 
-  :    : use them, however.
  @>Script: advanceQuestToStage(:Quest103,2)
  @>
 : Else
@@ -76692,94 +76653,6 @@ Trigger: Action Button
 
 List of Event Commands:
 @>Script: pbPokeCenterPC
-@>
-
-#------------------------------------------------------------------------------
-Event ID: 007
-Event Name: Bill (2-a)
-(X,Y): (019,014)
-
-Page #1
-Conditions
-Self Switch A is ON
-
-Graphic: NPC 25
-
-Autonomous Movement
-Type: Fixed
-Speed: 3: Slow
-Freq: 3: Low
-Options Enabled
-Move Animation
-Trigger: Action Button
-
-List of Event Commands:
-@>Text: \xn[Bill] Oh I'm sorry, I didn't hear you come in!
-@>Text: \xn[Bill]My name is Bill, I'm the one who developed
- :    : the Kanto and Johto PC Storage System!
-@>Script: $PokemonGlobal.seenStorageCreator=true
-@>Text: \xn[Bill]May I ask why you've come here?
-@>Text: ...
-@>Text: Bill: So you were sent here to deliver my
- :    : package? Splendid!
-@>Text: \PN hands over Bill's Package.
-@>Script: $bag.remove(PBItems::PACKAGE)
-@>Control Switches: [0119: Celadon Sidequest Flag] = ON
-@>Text: Bill: Excellent, this was the part I needed
- :    : to continue working on my latest project!
-@>Text: By the way, how would you like to know
- :    : what it is I'm working on?
-@>Text: How would you like to live in a world where people 
- :    : could visit one another in a matter of moments, even 
- :    : if they were regions apart?
-@>Text: This device of mine will rectify that! I
- :    : present the prototype of the very first
- :    : Regional Teleporter!
-@>Text: Currently it only teleports within a short
- :    : distance, but if my calculations were
- :    : correct,
-@>Text: a few more adjustments and
- :    : regional teleportation will be a thing of
- :    : the present!
-@>Set Move Route: [Bill (2)]
- :              : $>Turn Up
-@>Text: Oh the possibilities of such technology,
- :    : and to think I'll be the one to have done it...
-@>Show Animation: [Bill (2)], [Exclaim bubble]
-@>Set Move Route: [Bill (2)]
- :              : $>Turn toward Player
-@>Text: Oh my, I didn't realize I was rambling! I just get 
- :    : so caught up in talking about my inventions that 
- :    : I lose track of time!
-@>Text: Do forgive me for taking up your time. Please, 
- :    : take this as a token of my appologies.
-@>Script: pbReceiveItem(PBItems::G18HM01)
-@>Text: That would be the Cut HC. It can be used to slice 
- :    : down small trees along the roadside.
-@>Text: You need the badge from the Cerulean Gym to use it, however.
-@>Text: I do hope you'll use the teleporter when it's finished.
-@>Control Self Switch: B =ON
-@>
-
-Page #2
-Conditions
-Self Switch B is ON
-
-Graphic: NPC 25
-
-Autonomous Movement
-Type: Fixed
-Speed: 3: Slow
-Freq: 3: Low
-Options Enabled
-Move Animation
-Trigger: Action Button
-
-List of Event Commands:
-@>Text: Hello there, \PN! I trust you aren't having
- :    : any troubles with using the storage system?
-@>Text: I'm still working on the Teleporter, but when I finish
- :    : I'll be sure to let you know.
 @>
 
 #------------------------------------------------------------------------------
@@ -92893,8 +92766,6 @@ List of Event Commands:
 @>Text: These can be used to teach Strength to your Pokémon or Puppets.
  :    : They can then use Strength to push aside heavy objects, such as
  :    : boulders.
-@>Text: However, it requires a Gym Badge to be used outside of battle... 
- :    : I'm afraid I can't remember which badge it is.
 @>Control Self Switch: A =ON
 @>
 
@@ -122601,10 +122472,7 @@ List of Event Commands:
   :    : you with the Rainbow Badge. You've earned it!
  @>Text: \me[Badge get]You earned the Rainbow Badge!\wtnp[90]
  @>Script: $player.badges[3]=true # Rainbow Badge
- @>Text: \xn[Erika]Having the Rainbow Badge will allow your Pokémon or Puppets to use the move Strength outside of battle.
- @>Text: \xn[Erika]Strength is a skill that Pokémon and Puppets can learn that can be used to
-  :    : push around heavy objects, like boulders or large flower pots.
- @>Text: \xn[Erika]Speaking of which, I would like to give you these as well.
+ @>Text: \xn[Erika]I would like to give you these as well.
  @>Script: pbReceiveItem(:TM86) # Grass Knot, Pokemon
  :       : pbReceiveItem(:SC19) # Giga Drain, Puppet
  @>Conditional Branch: Switch [0108: TM/SC Explanation] == OFF
@@ -122650,7 +122518,7 @@ Page #3
 Conditions
 Self Switch B is ON
 
-Graphic: trainer_LEADER_Sabrina
+Graphic: trainer_LEADER_Erika
 
 Autonomous Movement
 Type: Fixed
@@ -127445,9 +127313,6 @@ List of Event Commands:
   :    : honored to present you with this badge!
  @>Text: \me[Badge get]You earned the Soul Badge!\wtnp[90]
  @>Script: $player.badges[4]=true # Soul Badge
- @>Text: \xn[Janine]With the Soul Badge, you now gain the ability 
-  :    : to use the Field Move Surf outside of battle, which will allow 
-  :    : you to cross bodies of water.
  @>Text: \xn[Janine]Before you leave, as is customary for Fuchsia Gym 
   :    : to hand to its victors, you shall take this Skill with you.
  @>Script: pbReceiveItem(:TM06) # Toxic, Pokemon
@@ -136787,13 +136652,6 @@ List of Event Commands:
    :    : indeed more than worthy of the Marsh Badge.
   @>Text: \me[Badge get]You earned the Marsh Badge!\wtnp[90]
   @>Script: $player.badges[5]=true # Marsh Badge
-  @>Text: \xnb[Sabrina]The Marsh Badge will allow you to use the
-   :    : move Rock Smash outside of battle.
-  @>Text: \xnb[Sabrina]Rock Smash can be used to break certain
-   :    : fragile objects in the field, not just boulders.
-  @>Text: \xna[Sabrina]Of course, a skilled enough Psychic 
-   :    : doesn't need Rock Smash to do that, but it does 
-   :    : serve as a good starting point.
   @>Text: \xna[Sabrina]One last thing! Please, take these as well.
   @>Script: pbReceiveItem(:TM04) # Calm Mind, Pokemon
   :       : pbReceiveItem(:SC04) # Calm Mind, Puppet
@@ -136838,8 +136696,6 @@ List of Event Commands:
   @>Text: \xnb[Sabrina]You are worthy of the badge I oversee, the Marsh Badge.
   @>Text: \me[Badge get]You earned the Marsh Badge!\wtnp[90]
   @>Script: $player.badges[5]=true # Marsh Badge
-  @>Text: \xnb[Sabrina]The Marsh Badge will allow you to use the
-   :    : move Rock Smash outside of battle.
   @>Text: \xnb[Sabrina]Before you go, please take these as well.
   @>Script: pbReceiveItem(:TM04) # Calm Mind, Pokemon
   :       : pbReceiveItem(:SC04) # Calm Mind, Puppet
@@ -136911,13 +136767,6 @@ List of Event Commands:
   :    : indeed more than worthy of the Marsh Badge.
  @>Text: \me[Badge get]You earned the Marsh Badge!\wtnp[90]
  @>Script: $player.badges[5]=true # Marsh Badge
- @>Text: \xnb[Sabrina]The Marsh Badge will allow you to use the
-  :    : move Rock Smash outside of battle.
- @>Text: \xnb[Sabrina]Rock Smash can be used to break certain
-  :    : fragile objects in the field, not just boulders.
- @>Text: \xna[Sabrina]Of course, a skilled enough Psychic 
-  :    : doesn't need Rock Smash to do that, but it does 
-  :    : serve as a good starting point.
  @>Text: \xna[Sabrina]One last thing! Please, take these as well.
  @>Script: pbReceiveItem(:TM04) # Calm Mind, Pokemon
  :       : pbReceiveItem(:SC04) # Calm Mind, Puppet
@@ -137137,13 +136986,6 @@ List of Event Commands:
   :    : indeed more than worthy of the Marsh Badge.
  @>Text: \me[Badge get]You earned the Marsh Badge!\wtnp[90]
  @>Script: $player.badges[5]=true # Marsh Badge
- @>Text: \xnb[Sabrina]The Marsh Badge will allow you to use the
-  :    : move Rock Smash outside of battle.
- @>Text: \xnb[Sabrina]Rock Smash can be used to break certain
-  :    : fragile objects in the field, not just boulders.
- @>Text: \xna[Sabrina]Of course, a skilled enough Psychic 
-  :    : doesn't need Rock Smash to do that, but it does 
-  :    : serve as a good starting point.
  @>Text: \xna[Sabrina]One last thing! Please, take these as well.
  @>Script: pbReceiveItem(:TM04) # Calm Mind, Pokemon
  :       : pbReceiveItem(:SC04) # Calm Mind, Puppet
@@ -141507,8 +141349,6 @@ List of Event Commands:
  :    : you have this spare. Make good use of it!
 @>Script: pbReceiveItem(:TM94)
 :       : pbReceiveItem(:HC06)
-@>Text: If you want to use Rock Smash, you'll need the badge 
- :    : from Saffron City to use it.
 @>Control Self Switch: A =ON
 @>
 
@@ -141527,8 +141367,8 @@ Move Animation
 Trigger: Action Button
 
 List of Event Commands:
-@>Text: If you want to use Rock Smash, you'll need the badge 
- :    : from Saffron City to use it.
+@>Text: There are several rocks present in the volcano that block passages
+ :    : we haven't gone down yet.
 @>
 
 #------------------------------------------------------------------------------
@@ -147429,14 +147269,8 @@ List of Event Commands:
  :    : that sound? Well I have just the thing for you.
 @>Script: pbReceiveItem(:HM02)
 :       : pbReceiveItem(:HC02)
-@>Text: Those machines containc the move Fly, it'll allow your 
+@>Text: Those machines containe the move Fly, it'll allow your 
  :    : party members to transport you across great distances!
-@>Text: All you need is the badge from Vermilion City to use 
- :    : it.
-@>Text: What do you mean that's lame!? Kid I don't make the 
- :    : rules!
-@>Text: I only abide by them! Go find some hang glider if you 
- :    : want to travel fast without a Puppet then!
 @>Control Self Switch: A =ON
 @>
 
@@ -175979,8 +175813,7 @@ Trigger: None
 List of Event Commands:
 @>Script: pbSetPokemonCenter
 @>Text: Hello, and welcome to the Pokémon Center.
-@>Text: We restore your tired partners to full health.
-@>Text: Would you like me to heal them for you?
+ :    : \nShall I heal your weary party members?
 @>Show Choices: Yes, No
 (When Cancel: Choice 2)
 : When [Yes]
