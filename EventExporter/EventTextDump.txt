@@ -14839,6 +14839,9 @@ List of Event Commands:
   :    : Reflected in it, she saw the Moon.
  @>
 : Branch End
+@>Text: ... \pn also found what looked to be an empty bottle with a message
+ :    : in it.
+@>Text: The message reads "\c[1]lunarpurity\c[0]", whatever that means.
 @>
 
 #------------------------------------------------------------------------------
@@ -16005,14 +16008,12 @@ List of Event Commands:
 
 #------------------------------------------------------------------------------
 Event ID: 025
-Event Name: Quest Indicator: Sidequest 1
+Event Name: EV025
 (X,Y): (020,017)
 
 Page #1
 Conditions
 Variable 0117: Nue Sidequest Checker is 1 or above
-
-Graphic: questicon2
 
 Autonomous Movement
 Type: Fixed
@@ -16020,19 +16021,16 @@ Speed: 3: Slow
 Freq: 3: Low
 Options Enabled
 Move Animation
-Stop Animation
-Direction Fix
-Through
-Always on Top
 Trigger: Action Button
 
 List of Event Commands:
-@>Comment: Relevant Sidequest: The Mystery Box
+@>Comment: Event Indicator
+ :       : side_quest
 @>
 
 Page #2
 Conditions
-Variable 0117: Nue Sidequest Checker is 2 or above
+Variable 0117: Nue Sidequest Checker is 3 or above
 
 Autonomous Movement
 Type: Fixed
@@ -42129,7 +42127,7 @@ List of Event Commands:
 #------------------------------------------------------------------------------
 Event ID: 015
 Event Name: EV015
-(X,Y): (062,013)
+(X,Y): (055,013)
 
 Page #1
 Conditions
@@ -42181,7 +42179,7 @@ List of Event Commands:
 #------------------------------------------------------------------------------
 Event ID: 016
 Event Name: Quest Indicator: Main & Sub
-(X,Y): (062,014)
+(X,Y): (084,049)
 
 Page #1
 Conditions
@@ -42266,7 +42264,7 @@ List of Event Commands:
 #------------------------------------------------------------------------------
 Event ID: 017
 Event Name: EV017
-(X,Y): (060,015)
+(X,Y): (075,006)
 
 Page #1
 Conditions
@@ -71552,35 +71550,6 @@ List of Event Commands:
 @>
 
 #------------------------------------------------------------------------------
-Event ID: 010
-Event Name: EV010
-(X,Y): (010,004)
-
-Page #1
-Conditions
-None
-
-Graphic: Object ball
-
-Autonomous Movement
-Type: Fixed
-Speed: 3: Slow
-Freq: 3: Low
-Options Enabled
-Move Animation
-Trigger: Action Button
-
-List of Event Commands:
-@>Script: $game_temp.animated_transition_bg = true
-@>Script: $game_temp.vs_transition_bg = "Leader_Sabrina"
-@>Conditional Branch: Script: TrainerBattle.start(:LEADER_Sabrina_FrLg, "Sabrina", 1+$player.badge_count, :LEADER_Sabrina_HgSs, "Sabrina", 1+$player.badge_count)
- @>
-: Else
- @>
-: Branch End
-@>
-
-#------------------------------------------------------------------------------
 
 #==============================================================================
 Map ID: 217
@@ -74577,6 +74546,8 @@ Move Animation
 Trigger: Action Button
 
 List of Event Commands:
+@>Comment: Event Indicator
+ :       : side_quest
 @>Conditional Branch: Self Switch A == OFF
  @>Text: Hey kiddo, mind lending me a hand?
  @>Text: See, I was supposed to deliver a package to the Seaside Cottage
@@ -74627,6 +74598,8 @@ Move Animation
 Trigger: Action Button
 
 List of Event Commands:
+@>Comment: Event Indicator
+ :       : side_quest
 @>Text: Did you manage to deliver it to the house at the cape yet?
 @>Conditional Branch: Script: $bag.has?(:PACKAGE)
  @>
@@ -74684,127 +74657,6 @@ List of Event Commands:
 @>
 
 #------------------------------------------------------------------------------
-Event ID: 009
-Event Name: Quest Indicator: Sidequest 1
-(X,Y): (014,006)
-
-Page #1
-Conditions
-None
-
-Graphic: questicon2
-
-Autonomous Movement
-Type: Fixed
-Speed: 3: Slow
-Freq: 3: Low
-Options Enabled
-Move Animation
-Stop Animation
-Direction Fix
-Through
-Always on Top
-Trigger: Action Button
-
-List of Event Commands:
-@>Comment: Relevant Sidequest: The Mystery Box
-@>
-
-Page #2
-Conditions
-Variable 0117: Nue Sidequest Checker is 1 or above
-
-Autonomous Movement
-Type: Fixed
-Speed: 3: Slow
-Freq: 3: Low
-Options Enabled
-Move Animation
-Trigger: Action Button
-
-List of Event Commands:
-@>
-
-Page #3
-Conditions
-Variable 0117: Nue Sidequest Checker is 2 or above
-
-Graphic: questicon2
-
-Autonomous Movement
-Type: Fixed
-Speed: 3: Slow
-Freq: 3: Low
-Options Enabled
-Move Animation
-Stop Animation
-Direction Fix
-Through
-Always on Top
-Trigger: Action Button
-
-List of Event Commands:
-@>Comment: Relevant Sidequest: The Mystery Box
-@>
-
-Page #4
-Conditions
-Variable 0117: Nue Sidequest Checker is 3 or above
-
-Autonomous Movement
-Type: Fixed
-Speed: 3: Slow
-Freq: 3: Low
-Options Enabled
-Move Animation
-Trigger: Action Button
-
-List of Event Commands:
-@>
-
-#------------------------------------------------------------------------------
-Event ID: 010
-Event Name: Quest Indicator: Sidequest 2
-(X,Y): (002,005)
-
-Page #1
-Conditions
-Variable 0110: Plot Control Variable is 2 or above
-
-Graphic: questicon2
-
-Autonomous Movement
-Type: Fixed
-Speed: 3: Slow
-Freq: 3: Low
-Options Enabled
-Move Animation
-Stop Animation
-Direction Fix
-Through
-Always on Top
-Trigger: Action Button
-
-List of Event Commands:
-@>Comment: Relevant Sidequest: Cutting Edge
-@>
-
-Page #2
-Conditions
-Self Switch A is ON
-
-Autonomous Movement
-Type: Fixed
-Speed: 3: Slow
-Freq: 3: Low
-Options Enabled
-Move Animation
-Trigger: Action Button
-
-List of Event Commands:
-@>
-
-#------------------------------------------------------------------------------
 Event ID: 011
 Event Name: EV011
 (X,Y): (014,007)
@@ -74824,6 +74676,8 @@ Move Animation
 Trigger: Action Button
 
 List of Event Commands:
+@>Comment: Event Indicator
+ :       : side_quest
 @>Text: Hey, would you mind listening to my plight?
 @>Show Choices: Yes, No
 (When Cancel: Choice 2)
@@ -74870,6 +74724,8 @@ Move Animation
 Trigger: Action Button
 
 List of Event Commands:
+@>Comment: Event Indicator
+ :       : side_quest
 @>Text: Did you go check out what's going on inside my house?
 @>Conditional Branch: Variable [0117: Nue Sidequest Checker] == 2
  @>Wait: 10 frame(s)
@@ -76350,159 +76206,13 @@ List of Event Commands:
 @>
 
 #------------------------------------------------------------------------------
-Event ID: 002
-Event Name: Bill
-(X,Y): (012,003)
-
-Page #1
-Conditions
-None
-
-Graphic: NPC 25
-
-Autonomous Movement
-Type: Fixed
-Speed: 3: Slow
-Freq: 3: Low
-Options Enabled
-Move Animation
-Trigger: Action Button
-
-List of Event Commands:
-@>
-
-Page #2
-Conditions
-Self Switch A is ON
-
-Autonomous Movement
-Type: Fixed
-Speed: 3: Slow
-Freq: 3: Low
-Options Enabled
-Move Animation
-Trigger: Action Button
-
-List of Event Commands:
-@>
-
-#------------------------------------------------------------------------------
-Event ID: 003
-Event Name: EV003
-(X,Y): (000,000)
-
-Page #1
-Conditions
-None
-
-Autonomous Movement
-Type: Fixed
-Speed: 3: Slow
-Freq: 3: Low
-Options Enabled
-Move Animation
-Trigger: Autorun
-
-List of Event Commands:
-@>Set Move Route: Player
- :              : $>Move Up
- :              : $>Move Up
-@>Set Move Route: [Quest Indicator: Main & Sub]
- :              : $>Move Down
- :              : $>Move Down
- :              : $>Move Left
- :              : $>Move Left
- :              : $>Turn Up
- :              : $>Wait: 10 frame(s)
- :              : $>Move Left
- :              : $>Move Left
- :              : $>Move Left
- :              : $>Move Left
- :              : $>Move Left
- :              : $>Move Left
- :              : $>Move Left
- :              : $>Turn Up
- :              : $>Wait: 10 frame(s)
-@>Set Move Route: [Bill]
- :              : $>Move Down
- :              : $>Move Down
- :              : $>Move Left
- :              : $>Move Left
- :              : $>Turn Up
- :              : $>Wait: 10 frame(s)
- :              : $>Move Left
- :              : $>Move Left
- :              : $>Move Left
- :              : $>Move Left
- :              : $>Move Left
- :              : $>Move Left
- :              : $>Move Left
- :              : $>Turn Up
- :              : $>Wait: 10 frame(s)
-@>Wait for Move's Completion
-@>Set Move Route: [Quest Indicator: Main & Sub]
- :              : $>Move Down
- :              : $>Move Down
- :              : $>Move Right
- :              : $>Turn Up
-@>Set Move Route: [Bill]
- :              : $>Through ON
- :              : $>Move Down
- :              : $>Move Down
- :              : $>Move Right
- :              : $>Turn Up
- :              : $>Through OFF
-@>Set Move Route: Player
- :              : $>Turn Left
-@>Wait for Move's Completion
-@>Text: \xn[Bill]Ah, everything is looking good. Now to run some
- :    : more tests...
-@>Control Self Switch: A =ON
-@>Set Move Route: [Bill]
- :              : $>Change Opacity: 0
-@>Script: pbSetSelfSwitch(2,"A",true)
-@>Script: pbSetSelfSwitch(4,"A",true)
-@>
-
-Page #2
-Conditions
-Self Switch A is ON
-
-Autonomous Movement
-Type: Fixed
-Speed: 3: Slow
-Freq: 3: Low
-Options Enabled
-Move Animation
-Trigger: Parallel Process
-
-List of Event Commands:
-@>Set Event Location: [Quest Indicator: Main & Sub],(004,006)
-@>
-
-Page #3
-Conditions
-Self Switch B is ON
-
-Autonomous Movement
-Type: Fixed
-Speed: 3: Slow
-Freq: 3: Low
-Options Enabled
-Move Animation
-Trigger: Action Button
-
-List of Event Commands:
-@>
-
-#------------------------------------------------------------------------------
 Event ID: 004
-Event Name: Bill (2)
+Event Name: Bill
 (X,Y): (004,007)
 
 Page #1
 Conditions
-Self Switch A is ON
+None
 
 Graphic: NPC 25
 
@@ -76512,10 +76222,11 @@ Speed: 3: Slow
 Freq: 3: Low
 Options Enabled
 Move Animation
-Direction Fix
 Trigger: Action Button
 
 List of Event Commands:
+@>Comment: Event Indicator
+ :       : main_quest
 @>Conditional Branch: Player is facing Left
  @>
 : Else
@@ -76526,16 +76237,16 @@ List of Event Commands:
  @>Wait: 8 frame(s)
  @>
 : Branch End
-@>Set Move Route: [Bill (2)]
+@>Set Move Route: [Bill]
  :              : $>Direction Fix OFF
- :              : $>Move toward Player
+ :              : $>Turn toward Player
 @>Text: \xn[Bill]Oh I'm sorry, I didn't hear you come in!
 @>Text: \xn[Bill]My name is Bill, I'm the one who developed
  :    : the Kanto and Johto PC Storage System!
 @>Script: $player.seen_storage_creator=true
 @>Text: \xn[Bill]May I ask why you've come here?
 @>Wait: 20 frame(s)
-@>Show Animation: [Bill (2)], [Exclaim bubble]
+@>Show Animation: [Bill], [Exclaim bubble]
 @>Text: \xn[Bill]The\..\..\.. Sealed Realm, you say?
 @>Text: \xn[Bill]I, hmm...\wt[10] Well, I don't\..\..\..\wtnp[10]
 @>Text: \xn[Bill]That's...\wt[10] a difficult thing to answer!
@@ -76543,11 +76254,9 @@ List of Event Commands:
 @>Text: \xn[Bill]Unfortunately, I don't think I can be of any help here.
 @>Text: \xn[Bill]Sorry about that!
 @>Text: \xn[Bill]To make up for it, I can tell you about my latest project!
-@>Set Move Route: [Bill (2)]
+@>Set Move Route: [Bill]
  :              : $>Turn Up
 @>Set Move Route: Player
- :              : $>Turn Up
-@>Set Move Route: [Bill (2)]
  :              : $>Turn Up
 @>Text: \xn[Bill]You see, I'm working on a new project. When complete, 
  :    : you'll be able to travel across regions near-instantly!
@@ -76562,12 +76271,12 @@ List of Event Commands:
  @>Set Move Route: Player
   :              : $>Turn Left
  @>Wait: 20 frame(s)
- @>Set Move Route: [Bill (2)]
+ @>Set Move Route: [Bill]
   :              : $>Turn toward Player
- @>Show Animation: [Bill (2)], [Question bubble]
+ @>Show Animation: [Bill], [Question bubble]
  @>Text: \xn[Bill]Wait, you say you have a package for me?
  @>Wait: 20 frame(s)
- @>Show Animation: [Bill (2)], [Exclaim bubble]
+ @>Show Animation: [Bill], [Exclaim bubble]
  @>Text: \xn[Bill]Oh, that must be the custom parts I ordered for 
   :    : upgrading the servers for the Storage System!
  @>Script: $bag.remove(:PACKAGE)
@@ -76585,7 +76294,7 @@ List of Event Commands:
 : Branch End
 @>Set Move Route: Player
  :              : $>Turn Left
-@>Set Move Route: [Bill (2)]
+@>Set Move Route: [Bill]
  :              : $>Turn Right
 @>Text: \xn[Bill]Anyway! I'm taking up your time! I'm sorry I couldn't help
  :    : with your inquiry.
@@ -76601,15 +76310,13 @@ List of Event Commands:
 @>Text: \xn[Bill]There you go, you're all set!
 @>Text: \xn[Bill]Safe travels out there, \pn!
 @>Control Variables: [0110: Plot Control Variable] = 3
-@>Script: pbSetSelfSwitch(8,"C",true)
-:       : pbSetSelfSwitch(3,"B",true)
-:       : pbSetSelfSwitch2(71,16,"C",true)
-@>Control Self Switch: B =ON
+@>Script: pbSetSelfSwitch2(71,16,"C",true)
+@>Control Self Switch: A =ON
 @>
 
 Page #2
 Conditions
-Self Switch B is ON
+Self Switch A is ON
 
 Graphic: NPC 25
 
@@ -76628,10 +76335,10 @@ List of Event Commands:
  :    : I'll be sure to let you know.
 @>Conditional Branch: Script: $bag.has?(:PACKAGE)
  @>Wait: 20 frame(s)
- @>Show Animation: [Bill (2)], [Question bubble]
+ @>Show Animation: [Bill], [Question bubble]
  @>Text: \xn[Bill]Wait, you say you have a package for me?
  @>Wait: 20 frame(s)
- @>Show Animation: [Bill (2)], [Exclaim bubble]
+ @>Show Animation: [Bill], [Exclaim bubble]
  @>Text: \xn[Bill]Oh, that must be the custom parts I ordered for 
   :    : upgrading the servers for the Storage System!
  @>Script: $bag.remove(:PACKAGE)
@@ -76679,15 +76386,13 @@ List of Event Commands:
 @>
 
 #------------------------------------------------------------------------------
-Event ID: 008
-Event Name: Quest Indicator: Main & Sub
-(X,Y): (012,002)
+Event ID: 006
+Event Name: EV006
+(X,Y): (000,000)
 
 Page #1
 Conditions
-Self Switch A is ON
-
-Graphic: questicon2
+None
 
 Autonomous Movement
 Type: Fixed
@@ -76695,62 +76400,49 @@ Speed: 3: Slow
 Freq: 3: Low
 Options Enabled
 Move Animation
-Stop Animation
-Direction Fix
-Through
-Always on Top
-Trigger: Action Button
+Trigger: Autorun
 
 List of Event Commands:
+@>Set Event Location: [Bill],(012,003), Up
+@>Set Move Route: Player
+ :              : $>Move Up
+ :              : $>Move Up
+@>Set Move Route: [Bill]
+ :              : $>Move Down
+ :              : $>Move Down
+ :              : $>Move Left
+ :              : $>Move Left
+ :              : $>Turn Up
+ :              : $>Wait: 10 frame(s)
+ :              : $>Move Left
+ :              : $>Move Left
+ :              : $>Move Left
+ :              : $>Move Left
+ :              : $>Move Left
+ :              : $>Move Left
+ :              : $>Move Left
+ :              : $>Turn Up
+ :              : $>Wait: 10 frame(s)
+@>Wait for Move's Completion
+@>Set Move Route: [Bill]
+ :              : $>Through ON
+ :              : $>Move Down
+ :              : $>Move Down
+ :              : $>Move Right
+ :              : $>Turn Up
+ :              : $>Through OFF
+ :              : $>Direction Fix ON
+@>Set Move Route: Player
+ :              : $>Turn Left
+@>Wait for Move's Completion
+@>Text: \xn[Bill]Ah, everything is looking good. Now to run some
+ :    : more tests...
+@>Control Self Switch: A =ON
 @>
 
 Page #2
 Conditions
-Variable 0110: Plot Control Variable is 2 or above
-
-Graphic: questicon2
-
-Autonomous Movement
-Type: Fixed
-Speed: 3: Slow
-Freq: 3: Low
-Options Enabled
-Move Animation
-Stop Animation
-Direction Fix
-Through
-Always on Top
-Trigger: Action Button
-
-List of Event Commands:
-@>
-
-Page #3
-Conditions
-Variable 0110: Plot Control Variable is 2 or above
 Self Switch A is ON
-
-Graphic: questicon3
-
-Autonomous Movement
-Type: Fixed
-Speed: 3: Slow
-Freq: 3: Low
-Options Enabled
-Move Animation
-Stop Animation
-Direction Fix
-Through
-Always on Top
-Trigger: Action Button
-
-List of Event Commands:
-@>
-
-Page #4
-Conditions
-Variable 0110: Plot Control Variable is 3 or above
-Self Switch C is ON
 
 Autonomous Movement
 Type: Fixed
@@ -136564,8 +136256,23 @@ List of Event Commands:
 @>Text: \xnb[Sabrina]Did you enjoy your stay in my personal sanctum? Did
  :    : you develop the skills you needed to take me on? Let's see how
  :    : well you can deal with my psychic powers!
+@>Script: $game_temp.animated_transition_bg = true
+@>Script: $game_temp.vs_transition_bg = "Leader_Sabrina"
+@>Conditional Branch: Script: $DEBUG == true
+ @>Text: \bDEBUG MODE - Should the player fight both Sabrinas?
+ @>Show Choices: Yes, No
+ (When Cancel: Choice 2)
+ : When [Yes]
+  @>Control Switches: [0100: Debug Override] = ON
+  @>
+ : When [No]
+  @>
+ : Branch End
+ @>
+: Branch End
 @>Comment: #-------------------------
-@>Conditional Branch: Script: rand(20) > 15
+@>Conditional Branch: Script: rand(20) > 15 || $game_switches[100] == true
+ @>Control Switches: [0100: Debug Override] = OFF
  @>Control Switches: [0104: Transition Handler] = ON
  @>Control Variables: [0103: Vs. Transition ID] = 3
  @>Call Common Event: Vs. Transition - Badge to Ball Check
@@ -136644,8 +136351,6 @@ List of Event Commands:
   :              : $>Turn Up
  @>Text: \xnb[Sabrina]If you can best us both, you will have proved
   :    : your worth of our badge. Let us show you our powers!
- @>Control Switches: [0104: Transition Handler] = ON
- @>Control Variables: [0103: Vs. Transition ID] = 30
  @>Conditional Branch: Script: !pbCanDoubleBattle?
   @>Script: setBattleRule("1v2")
   @>
@@ -136691,8 +136396,6 @@ List of Event Commands:
  @>
 : Else
  @>Comment: #-------------------------
- @>Script: $game_temp.animated_transition_bg = true
- @>Script: $game_temp.vs_transition_bg = "Leader_Sabrina"
  @>Conditional Branch: Script: TrainerBattle.start(:LEADER_Sabrina, "Sabrina", 1+$player.badge_count)
   @>Text: \xnb[Sabrina]I see... You possess quite remarkable power.
   @>Text: \xnb[Sabrina]You are worthy of the badge I oversee, the Marsh Badge.
@@ -136753,11 +136456,8 @@ List of Event Commands:
 @>Text: \xna[Sabrina]Do you have what it takes to deal with our
  :    : combined psychic might? Fufufu, we'll see!
 @>Text: \xnb[Sabrina]Show us just what you're capable of!
-@>Control Switches: [0104: Transition Handler] = ON
-@>Control Variables: [0103: Vs. Transition ID] = 30
-@>Call Common Event: Vs. Transition - Badge to Ball Check
-@>Control Variables: [0113: Vs. Transition - Badge] = 5
-@>Control Variables: [0114: Vs. Transition - Leader] = 5
+@>Script: $game_temp.animated_transition_bg = true
+@>Script: $game_temp.vs_transition_bg = "Leader_Sabrina"
 @>Conditional Branch: Script: !pbCanDoubleBattle?
  @>Script: setBattleRule("1v2")
  @>
@@ -136894,11 +136594,8 @@ List of Event Commands:
  :    : you've been gone.
 @>Text: \xnb[Sabrina]Allow us to show you the fruits of our
  :    : efforts!
-@>Control Switches: [0104: Transition Handler] = ON
-@>Control Variables: [0103: Vs. Transition ID] = 30
-@>Call Common Event: Vs. Transition - Badge to Ball Check
-@>Control Variables: [0113: Vs. Transition - Badge] = 5
-@>Control Variables: [0114: Vs. Transition - Leader] = 5
+@>Script: $game_temp.animated_transition_bg = true
+@>Script: $game_temp.vs_transition_bg = "Leader_Sabrina"
 @>Conditional Branch: Script: TrainerBattle.start(:LEADER_Sabrina_FrLg, "Sabrina", pbGet(128), :LEADER_Sabrina_HgSs, "Sabrina", pbGet(128))
  @>Text: \xnb[Sabrina]I see... It appears we must continue our training
   :    : further.
@@ -136969,11 +136666,8 @@ List of Event Commands:
 @>Text: \xna[Sabrina]Do you have what it takes to deal with our
  :    : combined psychic might? Fufufu, we'll see!
 @>Text: \xnb[Sabrina]Show us just what you're capable of!
-@>Control Switches: [0104: Transition Handler] = ON
-@>Control Variables: [0103: Vs. Transition ID] = 16
-@>Call Common Event: Vs. Transition - Badge to Ball Check
-@>Control Variables: [0113: Vs. Transition - Badge] = 5
-@>Control Variables: [0114: Vs. Transition - Leader] = 5
+@>Script: $game_temp.animated_transition_bg = true
+@>Script: $game_temp.vs_transition_bg = "Leader_Sabrina"
 @>Conditional Branch: Script: !pbCanDoubleBattle?
  @>Script: setBattleRule("1v2")
  @>
@@ -137072,11 +136766,8 @@ List of Event Commands:
  :    : you've been gone.
 @>Text: \xnb[Sabrina]Allow us to show you the fruits of our
  :    : efforts!
-@>Control Switches: [0104: Transition Handler] = ON
-@>Control Variables: [0103: Vs. Transition ID] = 16
-@>Call Common Event: Vs. Transition - Badge to Ball Check
-@>Control Variables: [0113: Vs. Transition - Badge] = 5
-@>Control Variables: [0114: Vs. Transition - Leader] = 5
+@>Script: $game_temp.animated_transition_bg = true
+@>Script: $game_temp.vs_transition_bg = "Leader_Sabrina"
 @>Conditional Branch: Script: TrainerBattle.start(:LEADER_Sabrina_FrLg, "Sabrina", pbGet(128), :LEADER_Sabrina_HgSs, "Sabrina", pbGet(128))
  @>Text: \xnb[Sabrina]I see... It appears we must continue our training
   :    : further.
@@ -140427,146 +140118,6 @@ List of Event Commands:
  @>Change Screen Color Tone: (-170,0,85,0), @6
  @>
 : Branch End
-@>
-
-#------------------------------------------------------------------------------
-Event ID: 002
-Event Name: Nurse
-(X,Y): (020,024)
-
-Page #1
-Conditions
-None
-
-Graphic: NPC 16
-
-Autonomous Movement
-Type: Fixed
-Speed: 3: Slow
-Freq: 3: Low
-Options Enabled
-Move Animation
-Trigger: Action Button
-
-List of Event Commands:
-@>Script: pbSetPokemonCenter
-@>Text: \rHello, and welcome to the Pokémon Center.
-@>Text: \rWe restore your tired Pokémon to full health.
-@>Text: \rWould you like to rest your Pokémon?
-@>Show Choices: Yes, No
-(When Cancel: Choice 2)
-: When [Yes]
- @>Text: \rOK, I'll take your Pokémon for a few seconds.
- @>Script: $stats.poke_center_count += 1
- @>Recover All: Entire Party
- @>Comment: Nurse turns to face the healing machine.
- @>Set Move Route: This event
-  :              : $>Turn Left
-  :              : $>Wait: 2 frame(s)
- @>Wait for Move's Completion
- @>Comment: Nurse places Poké Balls on the healing machine one at 
-  :       : a time.
- @>Control Variables: [0001: Temp Pokemon Choice] = Party Members
- @>Control Variables: [0006: Poké Center healing ball count] = 0
- @>Label: Place ball
- @>Control Variables: [0006: Poké Center healing ball count] += 1
- @>Play SE: 'Battle ball shake', 80, 100
- @>Wait: 8 frame(s)
- @>Conditional Branch: Variable [0006: Poké Center healing ball count] < Variable [0001: Temp Pokemon Choice]
-  @>Jump to Label: Place ball
-  @>
- : Branch End
- @>Comment: Healing animation and ME jingle.
- @>Set Move Route: [Healing balls]
-  :              : $>Stop Animation ON
- @>Play ME: 'Pkmn healing', 100, 100
- @>Wait: 58 frame(s)
- @>Comment: Poké Balls are removed from healing machine, nurse 
-  :       : turns to face the player.
- @>Control Variables: [0006: Poké Center healing ball count] = 0
- @>Script: get_character(4).pattern = 0
- @>Set Move Route: [Healing balls]
-  :              : $>Stop Animation OFF
- @>Set Move Route: This event
-  :              : $>Wait: 15 frame(s)
-  :              : $>Turn Down
- @>Wait for Move's Completion
- @>Comment: Pokérus check.
- @>Conditional Branch: Script: pbPokerus?
-  @>Text: \rYour Pokémon may be infected by Pokérus.
-  @>Text: \rLittle is known about the Pokérus except that they 
-   :    : are microscopic life-forms that attach to Pokémon.
-  @>Text: \rWhile infected, Pokémon are said to grow 
-   :    : exceptionally well.
-  @>Control Switches: [0002: Seen Pokérus in Poké Center] = ON
-  @>
- : Else
-  @>Text: \rThank you for waiting.
-  @>Text: \rWe've restored your Pokémon to full health.
-  @>Comment: Nurse bows.
-  @>Set Move Route: This event
-   :              : $>Graphic: "NPC 16', 0, 2, 1
-   :              : $>Wait: 10 frame(s)
-   :              : $>Graphic: "NPC 16', 0, 2, 0
-  @>Wait for Move's Completion
-  @>Text: \rWe hope to see you again!
-  @>
- : Branch End
- @>
-: When [No]
- @>Text: \rWe hope to see you again!
- @>
-: Branch End
-@>
-
-Page #2
-Conditions
-Switch 0001: Starting over is ON
-
-Graphic: NPC 16
-
-Autonomous Movement
-Type: Fixed
-Speed: 3: Slow
-Freq: 3: Low
-Options Enabled
-Move Animation
-Trigger: Autorun
-
-List of Event Commands:
-@>Text: \rFirst, you should restore your Pokémon to full 
- :    : health.
-@>Recover All: Entire Party
-@>Set Move Route: This event
- :              : $>Turn Left
- :              : $>Wait: 2 frame(s)
-@>Wait for Move's Completion
-@>Control Variables: [0006: Poké Center healing ball count] = 0
-@>Script: for i in 1..$player.pokemon_count
-:       :   pbSet(6, i)
-:       :   pbSEPlay("Battle ball shake")
-:       :   pbWait(16)
-:       : end
-@>Set Move Route: [Healing balls]
- :              : $>Stop Animation ON
-@>Play ME: 'Pkmn healing', 100, 100
-@>Wait: 58 frame(s)
-@>Control Variables: [0006: Poké Center healing ball count] = 0
-@>Script: get_character(4).pattern = 0
-@>Set Move Route: [Healing balls]
- :              : $>Stop Animation OFF
-@>Set Move Route: This event
- :              : $>Wait: 15 frame(s)
- :              : $>Turn Down
-@>Wait for Move's Completion
-@>Text: \rYour Pokémon have been healed to perfect health.
-@>Set Move Route: This event
- :              : $>Graphic: "NPC 16', 0, 2, 1
- :              : $>Wait: 10 frame(s)
- :              : $>Graphic: "NPC 16', 0, 2, 0
-@>Wait for Move's Completion
-@>Text: \rWe hope you excel!
-@>Control Switches: [0001: Starting over] = OFF
 @>
 
 #------------------------------------------------------------------------------

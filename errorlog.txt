@@ -3020,3 +3020,87 @@ Backtrace:
 999_Main.rb:51:in `loop'
 999_Main.rb:51:in `block in load_scripts_from_folder'
 Main:35:in `eval'
+
+=================
+
+[2026-05-02 15:20:42 -0700]
+[Pokémon Essentials version 21.1]
+
+Script error in event 10 (coords 10,4), map 216 (Pokémon Center)
+Exception: NameError
+Message: uninitialized constant Interpreter::RC
+
+***Full script:
+RC.show("People who can't read won't get this.")
+
+Backtrace:
+(eval):1:in `execute_script'
+003_Interpreter.rb:140:in `eval'
+003_Interpreter.rb:140:in `execute_script'
+004_Interpreter_Commands.rb:1177:in `command_355'
+004_Interpreter_Commands.rb:116:in `execute_command'
+003_Interpreter.rb:132:in `block in update'
+003_Interpreter.rb:86:in `loop'
+003_Interpreter.rb:86:in `update'
+[Advanced Items - Field Moves] 10_Overwrites.rb:34:in `block in update'
+[Advanced Items - Field Moves] 10_Overwrites.rb:33:in `loop'
+
+=================
+
+[2026-05-02 18:34:49 -0700]
+[Pokémon Essentials version 21.1]
+
+Exception: NoMethodError
+Message: undefined method `delta_s' for Graphics:Module
+
+Backtrace:
+[Touhoumon Asteria] 001_Overworld_Weather.rb:18:in `update'
+006_Spriteset_Global.rb:52:in `update'
+002_Scene_Map.rb:158:in `updateSpritesets'
+[Advanced Items - Field Moves] 10_Overwrites.rb:43:in `update'
+002_Scene_Map.rb:238:in `block in main'
+002_Scene_Map.rb:235:in `loop'
+002_Scene_Map.rb:235:in `main'
+999_Main.rb:42:in `mainFunctionDebug'
+999_Main.rb:19:in `block in mainFunction'
+003_Errors.rb:79:in `pbCriticalCode'
+
+=================
+
+[2026-05-02 20:13:36 -0700]
+[Pokémon Essentials version 21.1]
+
+Exception: NoMethodError
+Message: undefined method `delta_s' for Graphics:Module
+
+Backtrace:
+[Touhoumon Asteria] 001_Overworld_Weather.rb:18:in `update'
+006_Spriteset_Global.rb:52:in `update'
+002_Scene_Map.rb:158:in `updateSpritesets'
+[Advanced Items - Field Moves] 10_Overwrites.rb:43:in `update'
+002_Scene_Map.rb:238:in `block in main'
+002_Scene_Map.rb:235:in `loop'
+002_Scene_Map.rb:235:in `main'
+999_Main.rb:42:in `mainFunctionDebug'
+999_Main.rb:19:in `block in mainFunction'
+003_Errors.rb:79:in `pbCriticalCode'
+
+=================
+
+[2026-05-02 20:21:22 -0700]
+[Pokémon Essentials version 21.1]
+
+Exception: NoMethodError
+Message: undefined method `delta_s' for Graphics:Module
+
+Backtrace:
+[Touhoumon Asteria] 001_Overworld_Weather.rb:18:in `update'
+006_Spriteset_Global.rb:52:in `update'
+002_Scene_Map.rb:158:in `updateSpritesets'
+[Advanced Items - Field Moves] 10_Overwrites.rb:43:in `update'
+002_Scene_Map.rb:238:in `block in main'
+002_Scene_Map.rb:235:in `loop'
+002_Scene_Map.rb:235:in `main'
+999_Main.rb:42:in `mainFunctionDebug'
+999_Main.rb:19:in `block in mainFunction'
+003_Errors.rb:79:in `pbCriticalCode'
