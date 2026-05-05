@@ -10228,7 +10228,7 @@ Trigger: Action Button
 
 List of Event Commands:
 @>Conditional Branch: Player is facing Up
- @>Text: Red's House
+ @>Text: \sign[signskin]Red's House
  @>
 : Else
  @>
@@ -10254,7 +10254,7 @@ Trigger: Action Button
 
 List of Event Commands:
 @>Conditional Branch: Player is facing Up
- @>Text: Green's House
+ @>Text: \sign[signskin]Green's House
  @>
 : Else
  @>
@@ -10347,7 +10347,7 @@ Trigger: Action Button
 
 List of Event Commands:
 @>Conditional Branch: Player is facing Up
- @>Text: Blue's House - Available for Rent!
+ @>Text: \sign[signskin]Blue's House - Available for Rent!
  @>
 : Else
  @>
@@ -10368,7 +10368,7 @@ Trigger: Action Button
 
 List of Event Commands:
 @>Conditional Branch: Player is facing Up
- @>Text: Blue's House\nCurrently being rented by Renko Usami and Maribel Hearn
+ @>Text: \sign[signskin]Blue's House\nCurrently being rented by Renko Usami and Maribel Hearn
  @>
 : Else
  @>
@@ -11753,7 +11753,7 @@ Move Animation
 Trigger: Action Button
 
 List of Event Commands:
-@>Text: Regional Uplink Terminal\nWorking to connect the 
+@>Text: \sign[signskin]Regional Uplink Terminal\nWorking to connect the 
  :    : regions of the world 24/7!
 @>
 
@@ -16334,14 +16334,12 @@ List of Event Commands:
 
 #------------------------------------------------------------------------------
 Event ID: 003
-Event Name: Quest Indicator: Main
+Event Name: EV003
 (X,Y): (043,012)
 
 Page #1
 Conditions
 Variable 0110: Plot Control Variable is 4 or above
-
-Graphic: questicon2
 
 Autonomous Movement
 Type: Fixed
@@ -16349,13 +16347,11 @@ Speed: 3: Slow
 Freq: 3: Low
 Options Enabled
 Move Animation
-Stop Animation
-Direction Fix
-Through
-Always on Top
 Trigger: Action Button
 
 List of Event Commands:
+@>Comment: Event Indicator
+ :       : main_quest
 @>
 
 Page #2
@@ -16740,7 +16736,7 @@ Move Animation
 Trigger: Action Button
 
 List of Event Commands:
-@>Text: Vermilion Seaside Hotel
+@>Text: \sign[signskin]Vermilion Seaside Hotel
 @>
 
 #------------------------------------------------------------------------------
@@ -17714,7 +17710,7 @@ Move Animation
 Trigger: Action Button
 
 List of Event Commands:
-@>Text: Lavender Town Radio Tower
+@>Text: \sign[signskin]Lavender Town Radio Tower
 @>
 
 #------------------------------------------------------------------------------
@@ -18757,7 +18753,7 @@ Move Animation
 Trigger: Action Button
 
 List of Event Commands:
-@>Text: Celadon City Department Store
+@>Text: \sign[signskin]Celadon City Department Store
 @>
 
 #------------------------------------------------------------------------------
@@ -18894,7 +18890,7 @@ Move Animation
 Trigger: Action Button
 
 List of Event Commands:
-@>Text: Celadon Condominiums
+@>Text: \sign[signskin]Celadon Condominiums
 @>
 
 #------------------------------------------------------------------------------
@@ -20918,7 +20914,7 @@ Move Animation
 Trigger: Action Button
 
 List of Event Commands:
-@>Text: Mr. Psychic's House
+@>Text: \sign[signskin]Mr. Psychic's House
 @>
 
 #------------------------------------------------------------------------------
@@ -20939,8 +20935,8 @@ Move Animation
 Trigger: Action Button
 
 List of Event Commands:
-@>Text: Facts Time with Asteria Version!
-@>Text: At the time of (re)writing, Saffron and Celadon City have had their 
+@>Text: \sign[signskin]\l[4]Facts Time with Asteria Version!
+ :    : \nAt the time of (re)writing, Saffron and Celadon City have had their 
  :    : designs tampered with the least.
 @>
 
@@ -22122,6 +22118,27 @@ List of Event Commands:
 @>
 
 #------------------------------------------------------------------------------
+Event ID: 033
+Event Name: EV033
+(X,Y): (028,034)
+
+Page #1
+Conditions
+None
+
+Autonomous Movement
+Type: Fixed
+Speed: 3: Slow
+Freq: 3: Low
+Options Enabled
+Move Animation
+Trigger: Action Button
+
+List of Event Commands:
+@>Text: \sign[signskin]Silph Co. Headquarters
+@>
+
+#------------------------------------------------------------------------------
 Event ID: 034
 Event Name: EV034
 (X,Y): (058,059)
@@ -22590,7 +22607,7 @@ Move Animation
 Trigger: Action Button
 
 List of Event Commands:
-@>Text: Fuchsia City Park
+@>Text: \sign[signskin]Fuchsia City Park
 @>
 
 #------------------------------------------------------------------------------
@@ -36474,7 +36491,7 @@ Move Animation
 Trigger: Action Button
 
 List of Event Commands:
-@>Text: Viridian City Trainer Academy Annex\nUsed for 
+@>Text: \sign[signskin]Viridian City Trainer Academy Annex\nUsed for 
  :    : Outdoor Lessons
 @>
 
@@ -36496,7 +36513,7 @@ Move Animation
 Trigger: Action Button
 
 List of Event Commands:
-@>Text: Battle Park
+@>Text: \sign[signskin]Battle Park
 @>
 
 #------------------------------------------------------------------------------
@@ -37826,7 +37843,7 @@ Move Animation
 Trigger: Action Button
 
 List of Event Commands:
-@>Text: Rest House
+@>Text: \sign[signskin]Rest House
 @>
 
 #------------------------------------------------------------------------------
@@ -39193,7 +39210,7 @@ Move Animation
 Trigger: Action Button
 
 List of Event Commands:
-@>Text: Seafoam Islands
+@>Text: \sign[signskin]Seafoam Islands
 @>
 
 #------------------------------------------------------------------------------
@@ -39214,7 +39231,7 @@ Move Animation
 Trigger: Action Button
 
 List of Event Commands:
-@>Text: Seafoam Islands
+@>Text: \sign[signskin]Seafoam Islands
 @>
 
 #------------------------------------------------------------------------------
@@ -42281,6 +42298,32 @@ Trigger: Action Button
 List of Event Commands:
 @>Script: pbSetSelfSwitch2(71,16,"A",true)
 :       : pbSetSelfSwitch2(224,8,"A",true)
+@>
+
+#------------------------------------------------------------------------------
+Event ID: 018
+Event Name: EV018
+(X,Y): (059,015)
+
+Page #1
+Conditions
+None
+
+Autonomous Movement
+Type: Fixed
+Speed: 3: Slow
+Freq: 3: Low
+Options Enabled
+Move Animation
+Trigger: Action Button
+
+List of Event Commands:
+@>Conditional Branch: Player is facing Up
+ @>Text: \sign[signskin]Sea Cottage
+ @>
+: Else
+ @>
+: Branch End
 @>
 
 #------------------------------------------------------------------------------
@@ -54541,7 +54584,7 @@ Move Animation
 Trigger: Action Button
 
 List of Event Commands:
-@>Text: Diglett's Cave Rest House
+@>Text: \sign[signskin]Diglett's Cave Rest House
 @>
 
 #------------------------------------------------------------------------------
@@ -54968,90 +55011,6 @@ List of Event Commands:
 @>
 
 #------------------------------------------------------------------------------
-Event ID: 009
-Event Name: Quest Indicator: Sidequest
-(X,Y): (026,010)
-
-Page #1
-Conditions
-Variable 0139: Kazami SQ is 1 or above
-
-Graphic: questicon2
-
-Autonomous Movement
-Type: Fixed
-Speed: 3: Slow
-Freq: 3: Low
-Options Enabled
-Move Animation
-Stop Animation
-Direction Fix
-Through
-Always on Top
-Trigger: Action Button
-
-List of Event Commands:
-@>Comment: Relevant Sidequest: A Thorny Situation
-@>
-
-Page #2
-Conditions
-Variable 0139: Kazami SQ is 2 or above
-
-Autonomous Movement
-Type: Fixed
-Speed: 3: Slow
-Freq: 3: Low
-Options Enabled
-Move Animation
-Trigger: Action Button
-
-List of Event Commands:
-@>
-
-#------------------------------------------------------------------------------
-Event ID: 010
-Event Name: Quest Indicator: Sidequest
-(X,Y): (027,010)
-
-Page #1
-Conditions
-Variable 0139: Kazami SQ is 1 or above
-
-Graphic: questicon2
-
-Autonomous Movement
-Type: Fixed
-Speed: 3: Slow
-Freq: 3: Low
-Options Enabled
-Move Animation
-Stop Animation
-Direction Fix
-Through
-Always on Top
-Trigger: Action Button
-
-List of Event Commands:
-@>Comment: Relevant Sidequest: A Thorny Situation
-@>
-
-Page #2
-Conditions
-Variable 0139: Kazami SQ is 2 or above
-
-Autonomous Movement
-Type: Fixed
-Speed: 3: Slow
-Freq: 3: Low
-Options Enabled
-Move Animation
-Trigger: Action Button
-
-List of Event Commands:
-@>
-
-#------------------------------------------------------------------------------
 Event ID: 011
 Event Name: door right
 (X,Y): (026,011)
@@ -55077,6 +55036,48 @@ List of Event Commands:
 @>
 
 Page #2
+Conditions
+Variable 0139: Kazami SQ is 1 or above
+
+Autonomous Movement
+Type: Fixed
+Speed: 3: Slow
+Freq: 3: Low
+Options Enabled
+Move Animation
+Trigger: Player Touch
+
+List of Event Commands:
+@>Comment: Event Indicator
+ :       : side_quest
+@>Play SE: 'Door exit', 100, 100
+@>Change Screen Color Tone: (-255,-255,-255,0), @6
+@>Wait: 8 frame(s)
+@>Transfer Player:[186: Hidden Grove], (014,044), Up, No Fade
+@>Change Screen Color Tone: (0,0,0,0), @6
+@>
+
+Page #3
+Conditions
+Variable 0139: Kazami SQ is 2 or above
+
+Autonomous Movement
+Type: Fixed
+Speed: 3: Slow
+Freq: 3: Low
+Options Enabled
+Move Animation
+Trigger: Player Touch
+
+List of Event Commands:
+@>Play SE: 'Door exit', 100, 100
+@>Change Screen Color Tone: (-255,-255,-255,0), @6
+@>Wait: 8 frame(s)
+@>Transfer Player:[186: Hidden Grove], (014,044), Up, No Fade
+@>Change Screen Color Tone: (0,0,0,0), @6
+@>
+
+Page #4
 Conditions
 Switch 0022: s:tsOff?("A") is ON
 
@@ -55126,6 +55127,48 @@ List of Event Commands:
 
 Page #2
 Conditions
+Variable 0139: Kazami SQ is 1 or above
+
+Autonomous Movement
+Type: Fixed
+Speed: 3: Slow
+Freq: 3: Low
+Options Enabled
+Move Animation
+Trigger: Player Touch
+
+List of Event Commands:
+@>Comment: Event Indicator
+ :       : side_quest
+@>Play SE: 'Door exit', 100, 100
+@>Change Screen Color Tone: (-255,-255,-255,0), @6
+@>Wait: 8 frame(s)
+@>Transfer Player:[186: Hidden Grove], (014,044), Up, No Fade
+@>Change Screen Color Tone: (0,0,0,0), @6
+@>
+
+Page #3
+Conditions
+Variable 0139: Kazami SQ is 2 or above
+
+Autonomous Movement
+Type: Fixed
+Speed: 3: Slow
+Freq: 3: Low
+Options Enabled
+Move Animation
+Trigger: Player Touch
+
+List of Event Commands:
+@>Play SE: 'Door exit', 100, 100
+@>Change Screen Color Tone: (-255,-255,-255,0), @6
+@>Wait: 8 frame(s)
+@>Transfer Player:[186: Hidden Grove], (014,044), Up, No Fade
+@>Change Screen Color Tone: (0,0,0,0), @6
+@>
+
+Page #4
+Conditions
 Switch 0022: s:tsOff?("A") is ON
 
 Autonomous Movement
@@ -55164,7 +55207,6 @@ Speed: 3: Slow
 Freq: 3: Low
 Options Enabled
 Move Animation
-Direction Fix
 Trigger: Action Button
 
 List of Event Commands:
@@ -55184,7 +55226,6 @@ Speed: 3: Slow
 Freq: 3: Low
 Options Enabled
 Move Animation
-Direction Fix
 Trigger: Action Button
 
 List of Event Commands:
@@ -55225,7 +55266,6 @@ Speed: 3: Slow
 Freq: 3: Low
 Options Enabled
 Move Animation
-Direction Fix
 Trigger: Action Button
 
 List of Event Commands:
@@ -55247,7 +55287,6 @@ Speed: 3: Slow
 Freq: 3: Low
 Options Enabled
 Move Animation
-Direction Fix
 Trigger: Action Button
 
 List of Event Commands:
@@ -55278,389 +55317,6 @@ Map Name: Hidden Grove
 Tileset: 001: Outside
 Width: 29, Height: 55
 Auto-Change BGM: U-003. A Dream that is more Scarlet than Red
-
-#------------------------------------------------------------------------------
-Event ID: 001
-Event Name: CKazami
-(X,Y): (014,000)
-
-Page #1
-Conditions
-None
-
-Graphic: OW - Puppet_Kazami
-
-Autonomous Movement
-Type: Fixed
-Speed: 3: Slow
-Freq: 3: Low
-Options Enabled
-Move Animation
-Trigger: Action Button
-
-List of Event Commands:
-@>Control Switches: [0106: Prevent Capture Switch] = ON
-@>Control Variables: [0109: Unique Wild Battle] = 1
-@>Script: pbPlayCry(659)
-@>Wait: 20 frame(s)
-@>Script: BattleScripting.setInScript("turnStart0",:VsCKazami_Intro)
-@>Script: BattleScripting.setInScript("lowHPOpp",:VsCKazami_Evolve)
-@>Script: BattleScripting.setInScript("rand0",:VsCKazami_EndureCheck)
-@>Script: setBattleRule("cannotRun")
-@>Script: WildBattle.start(PBSpecies::CKAZAMI,35)
-@>Control Switches: [0106: Prevent Capture Switch] = OFF
-@>Control Variables: [0109: Unique Wild Battle] = 0
-@>
-
-Page #2
-Conditions
-None
-
-Graphic: OW - Puppet_Kazami
-
-Autonomous Movement
-Type: Fixed
-Speed: 3: Slow
-Freq: 3: Low
-Options Enabled
-Move Animation
-Trigger: Action Button
-
-List of Event Commands:
-@>Script: Pokemon.play_cry(:CKAZAMI)
-@>Wait: 20 frame(s)
-@>Script: WildBattle.dx_start([:CKAZAMI, 35], { 
-:       :   :nocapture => true, 
-:       :   :backdrop => ["Forest_Alt", "Forest_Alt"],
-:       :   :outcome => 1,
-:       :   :noflee => true
-:       : }, 
-@>Script: {
-:       :   :gender  => 1,
-:       :   :ability => :OVERGROW,
-:       :   :nature  => :QUIET,
-:       :   :shiny   => false,
-:       :   :moves   => [:VINEWHIP18, :REST18, :SCARYFACE18, :YAWN18]
-:       : }, :VS_CKAZAMI)
-@>Conditional Branch: Variable [0001: Temp Pokemon Choice] == 1
- @>Conditional Branch: Player is facing Up
-  @>Comment: Nothing, because this is where I want them to face
-  @>
- : Else
-  @>Change Screen Color Tone: (-255,-255,-255,0), @6
-  @>Wait: 8 frame(s)
-  @>Set Event Location: [CKazami],(014,017), Down
-  @>Transfer Player:[186: Hidden Grove], (014,018), Up, No Fade
-  @>Change Screen Color Tone: (0,0,0,0), @6
-  @>
- : Branch End
- @>Wait: 8 frame(s)
- @>Text: \xn[Kazami]\se[Cries\KAZAMI_Alt]!!!
- @>Text: \xn[\pn]\b(Now what's it gonna do!?)
- @>Wait: 20 frame(s)
- @>Play SE: 'Battle catch click', 80, 100
- @>Control Self Switch: A =ON
- @>Script: p = Pokemon.new(:KAZAMI,35,$player)
- :       : p.ability = :OVERGROW
- :       : p.learn_move(:HYPERBEAM18)
- :       : p.learn_move(:LEAFBLADE18)
- :       : p.learn_move(:INGRAIN18)
- :       : p.learn_move(:TAUNT18)
- :       : p.record_first_moves
- :       : p.nature = :QUIET
- :       : p.calc_stats
- :       : p.shiny = false
- :       : p.gender = 1
- :       : pbAddPokemonSilent(p)
- @>Text: \me[Battle capture success]The Kazami decided to join you on your adventures!\wtnp[60]
- @>Text: \xn[\pn]Wait, did it just put itself into one of my Pokéballs?
- @>Text: \xn[\pn]But... why?
- @>Change Text Options: Middle, Hide
- @>Text: <i>Because, it saw your strength and decided you would be a worthy 
-  :    : companion.</i>
- @>Text: <i>Strength speaks volumes, afterall!</i>
- @>Change Text Options: Bottom, Show
- @>Show Animation: Player, [Exclaim bubble]
- @>Set Move Route: Player
-  :              : $>Turn Left
-  :              : $>Wait: 15 frame(s)
-  :              : $>Turn Right
-  :              : $>Wait: 15 frame(s)
-  :              : $>Turn Down
-  :              : $>Wait: 15 frame(s)
-  :              : $>Turn Up
-  :              : $>Wait: 15 frame(s)
- @>Text: \xn[\pn]Who said that? Show yourself!
- @>Wait for Move's Completion
- @>Change Text Options: Middle, Hide
- @>Text: <i>Well, if you insist!</i>
- @>Change Text Options: Bottom, Show
- @>Set Event Location: [Yuuka],(014,027)
- @>Scroll Map: Down, 4, 3
- @>Set Move Route: [Yuuka]
-  :              : $>Move Up
-  :              : $>Move Up
-  :              : $>Move Up
-  :              : $>Move Up
- @>Wait for Move's Completion
- @>Set Move Route: Player
-  :              : $>Turn Down
- @>Text: \xn[\pn]\b(She looks exactly like the Kazami puppet I just fought!
-  :    : Is she a Puppet that gained the ability to speak?)
- @>Text: \xn[\pn]Who are you?
- @>Text: \xn[???]I am merely a traveler in this world, nobody you need
-  :    : to be concerned about!
- @>Text: \xn[\pn]\b(Then why do you give off such a terrifying aura...?)
- @>Text: \xn[???]As I was saying, that Puppet witnessed your strength
-  :    : first hand, and decided that joining with you would be a better
-  :    : use of its time than sitting here and terrorizing those humans.
- @>Text: \xn[???]You should feel honored that your strength was 
-  :    : recognized. Do you not?
- @>Text: \xn[\pn]I guess I do... I wonder why it was terrorizing those
-  :    : workers to begin with, then.
- @>Text: \xn[???]For any number of reasons, surely- perhaps they were
-  :    : encroaching on its territory. Or, perhaps it was bored.
- @>Text: \xn[???]You, however, are far more interesting.
- @>Text: \xn[\pn]M-Me? Why's that?
- @>Text: \xn[???]Like I mentioned, you have commendable strength. But,
-  :    : more than that...
- @>Set Move Route: [Yuuka]
-  :              : $>Move Up
-  :              : $>Move Up
- @>Wait for Move's Completion
- @>Wait: 10 frame(s)
- @>Conditional Branch: Variable [0107: Chosen Protag] == 0
-  @>Text: \xn[???]Hmm, yes... You give off a very similar aura to someone 
-   :    : I know... Curious indeed!
-  @>
- : Else
-  @>Text: \xn[???]It's remarkable how similar you two look... Are you perhaps
-   :    : another shikigami of hers, or something... else?
-  @>
- : Branch End
- @>Text: \xn[\pn]I- I'm sorry? Who are you talking about?
- @>Text: \xn[???]Oh, pay it no mind! Just musing to myself.
- @>Text: \xn[???]But if my hunches are correct, I'm sure I'll see you again.
- @>Set Move Route: [Yuuka]
-  :              : $>Move Down
-  :              : $>Move Down
-  :              : $>Move Down
-  :              : $>Move Down
-  :              : $>Move Down
-  :              : $>Move Down
-  :              : $>Move Down
-  :              : $>Move Down
- @>Text: \xn[???]Perhaps when I do, you'll be strong enough to sate my
-  :    : interests~
- @>Text: \xn[\pn]O... Okay?
- @>Wait for Move's Completion
- @>Wait: 15 frame(s)
- @>Scroll Map: Up, 4, 3
- @>Text: \xn[\pn]That was... kinda worrisome.
- @>Text: \xn[\pn]I should just go back to the foreman and inform him that
-  :    : there shouldn't be anymore disturbances. Yeah...
- @>Script: advanceQuestToStage(:Quest111, 2)
- @>Control Variables: [0139: Kazami SQ] = 2
- @>
-: Branch End
-@>
-
-Page #3
-Conditions
-Switch 0107: Kazami Event Switch is ON
-
-Graphic: OW - Puppet_Yuuka
-
-Autonomous Movement
-Type: Fixed
-Speed: 3: Slow
-Freq: 3: Low
-Options Enabled
-Move Animation
-Trigger: Action Button
-
-List of Event Commands:
-@>Control Switches: [0106: Prevent Capture Switch] = ON
-@>Control Variables: [0109: Unique Wild Battle] = 2
-@>Script: pbPlayCry(660)
-@>Wait: 20 frame(s)
-@>Change Battle BGM: 'B-009. Faint Dream ~ Inanimate Dream', 100, 100
-@>Script: TrainerDialogue.set("battleStart","You challenge the wild Kazami to a rematch!")
-@>Script: BattleScripting.setInScript("turnStart0",:VsKazami_Intro)
-@>Script: setBattleRule("cannotRun")
-@>Script: WildBattle.start(PBSpecies::KAZAMI,35)
-@>Control Switches: [0106: Prevent Capture Switch] = OFF
-@>Control Variables: [0109: Unique Wild Battle] = 0
-@>
-
-Page #4
-Conditions
-Switch 0107: Kazami Event Switch is ON
-
-Graphic: OW - Puppet_Yuuka
-
-Autonomous Movement
-Type: Fixed
-Speed: 3: Slow
-Freq: 3: Low
-Options Enabled
-Move Animation
-Trigger: Action Button
-
-List of Event Commands:
-@>Script: Pokemon.play_cry(:KAZAMI)
-@>Wait: 20 frame(s)
-@>Script: WildBattle.dx_start([:KAZAMI, 35], { 
-:       :   :nocapture => true, 
-:       :   :backdrop => ["Forest_Alt1", "Forest_Alt1"],
-:       :   :bgm => "B-009. Faint Dream ~ Inanimate Dream",
-:       :   :outcome => 1,
-:       :   :noflee => true
-:       : },
-@>Script: {
-:       :   :gender  => 1,
-:       :   :ability => :OVERGROW,
-:       :   :nature  => :QUIET,
-:       :   :shiny   => false,
-:       :   :moves   => [:HYPERBEAM18, :LEAFBLADE18, :INGRAIN18, :TAUNT18]
-:       : }, :VS_KAZAMI)
-@>Conditional Branch: Variable [0001: Temp Pokemon Choice] == 1
- @>Conditional Branch: Player is facing Up
-  @>Comment: Nothing, because this is where I want them to face
-  @>
- : Else
-  @>Change Screen Color Tone: (-255,-255,-255,0), @6
-  @>Wait: 8 frame(s)
-  @>Set Event Location: [CKazami],(014,017), Down
-  @>Transfer Player:[186: Hidden Grove], (014,018), Up, No Fade
-  @>Change Screen Color Tone: (0,0,0,0), @6
-  @>
- : Branch End
- @>Wait: 8 frame(s)
- @>Text: \xn[Kazami]\se[Cries\KAZAMI_Alt]!!!
- @>Text: \xn[\pn]\b(Now what's it gonna do!?)
- @>Wait: 20 frame(s)
- @>Play SE: 'Battle catch click', 80, 100
- @>Control Self Switch: A =ON
- @>Script: p = Pokemon.new(:KAZAMI,35,$player)
- :       : p.ability = :OVERGROW
- :       : p.learn_move(:HYPERBEAM18)
- :       : p.learn_move(:LEAFBLADE18)
- :       : p.learn_move(:INGRAIN18)
- :       : p.learn_move(:TAUNT18)
- :       : p.record_first_moves
- :       : p.nature = :QUIET
- :       : p.calc_stats
- :       : p.shiny = false
- :       : p.gender = 1
- :       : pbAddPokemonSilent(p)
- @>Text: \me[Battle capture success]The Kazami decided to join you on your adventures!\wtnp[60]
- @>Text: \xn[\pn]Wait, did it just put itself into one of my Pokéballs?
- @>Text: \xn[\pn]But... why?
- @>Change Text Options: Middle, Hide
- @>Text: <i>Because, it saw your strength and decided you would be a worthy 
-  :    : companion.</i>
- @>Text: <i>Strength speaks volumes, afterall!</i>
- @>Change Text Options: Bottom, Show
- @>Show Animation: Player, [Exclaim bubble]
- @>Set Move Route: Player
-  :              : $>Turn Left
-  :              : $>Wait: 15 frame(s)
-  :              : $>Turn Right
-  :              : $>Wait: 15 frame(s)
-  :              : $>Turn Down
-  :              : $>Wait: 15 frame(s)
-  :              : $>Turn Up
-  :              : $>Wait: 15 frame(s)
- @>Text: \xn[\pn]Who said that? Show yourself!
- @>Wait for Move's Completion
- @>Change Text Options: Middle, Hide
- @>Text: <i>Well, if you insist!</i>
- @>Change Text Options: Bottom, Show
- @>Set Event Location: [Yuuka],(014,027)
- @>Scroll Map: Down, 4, 3
- @>Set Move Route: [Yuuka]
-  :              : $>Move Up
-  :              : $>Move Up
-  :              : $>Move Up
-  :              : $>Move Up
- @>Wait for Move's Completion
- @>Set Move Route: Player
-  :              : $>Turn Down
- @>Text: \xn[\pn]\b(She looks exactly like the Kazami puppet I just fought!
-  :    : Is she a Puppet that gained the ability to speak?)
- @>Text: \xn[\pn]Who are you?
- @>Text: \xn[???]I am merely a traveler in this world, nobody you need
-  :    : to be concerned about!
- @>Text: \xn[\pn]\b(Then why do you give off such a terrifying aura...?)
- @>Text: \xn[???]As I was saying, that Puppet witnessed your strength
-  :    : first hand, and decided that joining with you would be a better
-  :    : use of its time than sitting here and terrorizing those humans.
- @>Text: \xn[???]You should feel honored that your strength was 
-  :    : recognized. Do you not?
- @>Text: \xn[\pn]I guess I do... I wonder why it was terrorizing those
-  :    : workers to begin with, then.
- @>Text: \xn[???]For any number of reasons, surely- perhaps they were
-  :    : encroaching on its territory. Or, perhaps it was bored.
- @>Text: \xn[???]You, however, are far more interesting.
- @>Text: \xn[\pn]M-Me? Why's that?
- @>Text: \xn[???]Like I mentioned, you have commendable strength. But,
-  :    : more than that...
- @>Set Move Route: [Yuuka]
-  :              : $>Move Up
-  :              : $>Move Up
- @>Wait for Move's Completion
- @>Wait: 10 frame(s)
- @>Conditional Branch: Variable [0107: Chosen Protag] == 0
-  @>Text: \xn[???]Hmm, yes... You give off a very similar aura to someone 
-   :    : I know... Curious indeed!
-  @>
- : Else
-  @>Text: \xn[???]It's remarkable how similar you two look... Are you perhaps
-   :    : another shikigami of hers, or something... else?
-  @>
- : Branch End
- @>Text: \xn[\pn]I- I'm sorry? Who are you talking about?
- @>Text: \xn[???]Oh, pay it no mind! Just musing to myself.
- @>Text: \xn[???]But if my hunches are correct, I'm sure I'll see you again.
- @>Set Move Route: [Yuuka]
-  :              : $>Move Down
-  :              : $>Move Down
-  :              : $>Move Down
-  :              : $>Move Down
-  :              : $>Move Down
-  :              : $>Move Down
-  :              : $>Move Down
-  :              : $>Move Down
- @>Text: \xn[???]Perhaps when I do, you'll be strong enough to sate my
-  :    : interests~
- @>Text: \xn[\pn]O... Okay?
- @>Wait for Move's Completion
- @>Wait: 15 frame(s)
- @>Scroll Map: Up, 4, 3
- @>Text: \xn[\pn]That was... kinda worrisome.
- @>Text: \xn[\pn]I should just go back to the foreman and inform him that
-  :    : there shouldn't be anymore disturbances. Yeah...
- @>Script: advanceQuestToStage(:Quest111, 2)
- @>Control Variables: [0139: Kazami SQ] = 2
- @>
-: Branch End
-@>
-
-Page #5
-Conditions
-Self Switch A is ON
-
-Autonomous Movement
-Type: Fixed
-Speed: 3: Slow
-Freq: 3: Low
-Options Enabled
-Move Animation
-Trigger: Action Button
-
-List of Event Commands:
-@>
 
 #------------------------------------------------------------------------------
 Event ID: 002
@@ -55896,20 +55552,24 @@ Trigger: Action Button
 
 List of Event Commands:
 @>Script: Pokemon.play_cry(:CKAZAMI)
-@>Wait: 20 frame(s)
-@>Script: WildBattle.dx_start([:CKAZAMI, 35], { 
-:       :   :nocapture => true, 
-:       :   :backdrop => ["Forest_Alt", "Forest_Alt"],
-:       :   :outcome => 1,
-:       :   :noflee => true
-:       : }, 
-@>Script: {
+@>Wait: 10 frame(s)
+@>Script: setBattleRule("databoxStyle", :Long)
+:       : setBattleRule("disablePokeBalls")
+:       : setBattleRule("backdrop", "Forest_Alt")
+:       : setBattleRule("base", "Forest_Alt")
+:       : setBattleRule("outcome", 1)
+:       : setBattleRule("cannotRun")
+:       : setBattleRule("midbattleScript", :vs_kazami)
+@>Script: setBattleRule("editWildPokemon", {
 :       :   :gender  => 1,
+:       :   :shiny   => false,
+:       :   :moves   => [:VINEWHIP18, :REST18, :SCARYFACE18, :YAWN18],
 :       :   :ability => :OVERGROW,
 :       :   :nature  => :QUIET,
-:       :   :shiny   => false,
-:       :   :moves   => [:VINEWHIP18, :REST18, :SCARYFACE18, :YAWN18]
-:       : }, :VS_CKAZAMI)
+:       :   :hp_level => 2,
+:       :   :immunities => [:OHKO, :SELFKO, :ESCAPE, :TRANSFORM, :INDIRECT]
+:       : })
+:       : WildBattle.start(:CKAZAMI, 35)
 @>Conditional Branch: Variable [0001: Temp Pokemon Choice] == 1
  @>Conditional Branch: Player is facing Up
   @>Comment: Nothing, because this is where I want them to face
@@ -55917,7 +55577,7 @@ List of Event Commands:
  : Else
   @>Change Screen Color Tone: (-255,-255,-255,0), @6
   @>Wait: 8 frame(s)
-  @>Set Event Location: [CKazami],(014,017), Down
+  @>Set Event Location: [],(014,017), Down
   @>Transfer Player:[186: Hidden Grove], (014,018), Up, No Fade
   @>Change Screen Color Tone: (0,0,0,0), @6
   @>
@@ -55943,10 +55603,10 @@ List of Event Commands:
  @>Text: \me[Battle capture success]The Kazami decided to join you on your adventures!\wtnp[60]
  @>Text: \xn[\pn]Wait, did it just put itself into one of my Pokéballs?
  @>Text: \xn[\pn]But... why?
- @>Change Text Options: Middle, Hide
- @>Text: <i>Because, it saw your strength and decided you would be a worthy 
+ @>Change Text Options: Middle, Show
+ @>Text: \w[dark]<i>Because, it saw your strength and decided you would be a worthy 
   :    : companion.</i>
- @>Text: <i>Strength speaks volumes, afterall!</i>
+ @>Text: \w[dark]<i>Strength speaks volumes, afterall!</i>
  @>Change Text Options: Bottom, Show
  @>Show Animation: Player, [Exclaim bubble]
  @>Set Move Route: Player
@@ -55960,8 +55620,8 @@ List of Event Commands:
   :              : $>Wait: 15 frame(s)
  @>Text: \xn[\pn]Who said that? Show yourself!
  @>Wait for Move's Completion
- @>Change Text Options: Middle, Hide
- @>Text: <i>Well, if you insist!</i>
+ @>Change Text Options: Middle, Show
+ @>Text: \w[dark]<i>Well, if you insist!</i>
  @>Change Text Options: Bottom, Show
  @>Set Event Location: [Yuuka],(014,027)
  @>Scroll Map: Down, 4, 3
@@ -56037,7 +55697,7 @@ Page #2
 Conditions
 Switch 0107: Kazami Event Switch is ON
 
-Graphic: OW - Puppet_Yuuka
+Graphic: OW - Puppet_KazamiAlt
 
 Autonomous Movement
 Type: Fixed
@@ -56049,21 +55709,26 @@ Trigger: Action Button
 
 List of Event Commands:
 @>Script: Pokemon.play_cry(:KAZAMI)
-@>Wait: 20 frame(s)
-@>Script: WildBattle.dx_start([:KAZAMI, 35], { 
-:       :   :nocapture => true, 
-:       :   :backdrop => ["Forest_Alt1", "Forest_Alt1"],
-:       :   :bgm => "B-009. Faint Dream ~ Inanimate Dream",
-:       :   :outcome => 1,
-:       :   :noflee => true
-:       : },
-@>Script: {
+@>Wait: 10 frame(s)
+@>Change Battle BGM: 'B-009. Faint Dream ~ Inanimate Dream', 100, 100
+@>Script: setBattleRule("databoxStyle", :Long)
+:       : setBattleRule("disablePokeBalls")
+:       : setBattleRule("backdrop", "Forest_Alt1")
+:       : setBattleRule("base", "Forest_Alt1")
+:       : setBattleRule("outcome", 1)
+:       : setBattleRule("cannotRun")
+:       : setBattleRule("midbattleScript", :vs_kazami)
+@>Script: setBattleRule("editWildPokemon", {
 :       :   :gender  => 1,
+:       :   :shiny   => false,
+:       :   :moves   => [:HYPERBEAM18, :LEAFBLADE18, :INGRAIN18, :TAUNT18],
 :       :   :ability => :OVERGROW,
 :       :   :nature  => :QUIET,
-:       :   :shiny   => false,
-:       :   :moves   => [:HYPERBEAM18, :LEAFBLADE18, :INGRAIN18, :TAUNT18]
-:       : }, :VS_KAZAMI)
+:       :   :hp_level => 2,
+:       :   :immunities => [:OHKO, :SELFKO, :ESCAPE, :TRANSFORM, :INDIRECT]
+:       : })
+:       : WildBattle.start(:KAZAMI, 35)
+@>Wait: 20 frame(s)
 @>Conditional Branch: Variable [0001: Temp Pokemon Choice] == 1
  @>Conditional Branch: Player is facing Up
   @>Comment: Nothing, because this is where I want them to face
@@ -56071,7 +55736,7 @@ List of Event Commands:
  : Else
   @>Change Screen Color Tone: (-255,-255,-255,0), @6
   @>Wait: 8 frame(s)
-  @>Set Event Location: [CKazami],(014,017), Down
+  @>Set Event Location: [],(014,017), Down
   @>Transfer Player:[186: Hidden Grove], (014,018), Up, No Fade
   @>Change Screen Color Tone: (0,0,0,0), @6
   @>
@@ -58250,7 +57915,7 @@ Move Animation
 Trigger: Action Button
 
 List of Event Commands:
-@>Text: Indigo Village ahead
+@>Text: \sign[signskin]Indigo Village ahead
 @>
 
 #------------------------------------------------------------------------------
@@ -58271,7 +57936,7 @@ Move Animation
 Trigger: Action Button
 
 List of Event Commands:
-@>Text: Indigo Village ahead
+@>Text: \sign[signskin]Indigo Village ahead
 @>
 
 #------------------------------------------------------------------------------
@@ -61685,7 +61350,7 @@ Move Animation
 Trigger: Action Button
 
 List of Event Commands:
-@>Text: Diglett's Cave ahead.
+@>Text: \sign[signskin]Diglett's Cave ahead.
 @>
 
 #------------------------------------------------------------------------------
@@ -61739,6 +61404,8 @@ Move Animation
 Trigger: Action Button
 
 List of Event Commands:
+@>Comment: Event Indicator
+ :       : side_quest
 @>Text: Forgive me, I'm not in the mood to talk right now, I have
  :    : a bit of a situation on my hands.
 @>Text: See, I'm the foreman for a project that aims to clear out some extra
@@ -61774,6 +61441,8 @@ Move Animation
 Trigger: Action Button
 
 List of Event Commands:
+@>Comment: Event Indicator
+ :       : side_quest
 @>Text: Any luck back there kid?
 @>Conditional Branch: Variable [0139: Kazami SQ] == 2
  @>Text: Oh, you actually managed to capture it? Well I'll be a Chimchar's
@@ -61820,85 +61489,6 @@ List of Event Commands:
 @>Text: I need to get in contact with my supervisor before we continue
  :    : work out here, but hopefully it shouldn't take long before we have
  :    : a path that bypasses Viridian Forest safely!
-@>
-
-#------------------------------------------------------------------------------
-Event ID: 005
-Event Name: Quest Indicator: Sidequest
-(X,Y): (006,004)
-
-Page #1
-Conditions
-None
-
-Graphic: questicon2
-
-Autonomous Movement
-Type: Fixed
-Speed: 3: Slow
-Freq: 3: Low
-Options Enabled
-Move Animation
-Stop Animation
-Direction Fix
-Through
-Always on Top
-Trigger: Action Button
-
-List of Event Commands:
-@>Comment: Relevant Sidequest: A Thorny Situation
-@>
-
-Page #2
-Conditions
-Variable 0139: Kazami SQ is 1 or above
-
-Autonomous Movement
-Type: Fixed
-Speed: 3: Slow
-Freq: 3: Low
-Options Enabled
-Move Animation
-Trigger: Action Button
-
-List of Event Commands:
-@>
-
-Page #3
-Conditions
-Variable 0139: Kazami SQ is 2 or above
-
-Graphic: questicon2
-
-Autonomous Movement
-Type: Fixed
-Speed: 3: Slow
-Freq: 3: Low
-Options Enabled
-Move Animation
-Stop Animation
-Direction Fix
-Through
-Always on Top
-Trigger: Action Button
-
-List of Event Commands:
-@>Comment: Relevant Sidequest: A Thorny Situation
-@>
-
-Page #4
-Conditions
-Variable 0139: Kazami SQ is 3 or above
-
-Autonomous Movement
-Type: Fixed
-Speed: 3: Slow
-Freq: 3: Low
-Options Enabled
-Move Animation
-Trigger: Action Button
-
-List of Event Commands:
 @>
 
 #------------------------------------------------------------------------------
@@ -76773,6 +76363,8 @@ Move Animation
 Trigger: Action Button
 
 List of Event Commands:
+@>Comment: Event Indicator
+ :       : main_quest
 @>Text: Welcome to Vermilion Seaside Hotel! Are you here to confirm a
  :    : reservation?
 @>Conditional Branch: Variable [0110: Plot Control Variable] == 4
@@ -76903,6 +76495,8 @@ Move Animation
 Trigger: Action Button
 
 List of Event Commands:
+@>Comment: Event Indicator
+ :       : main_quest
 @>Text: Travel to the Fifth Floor?
 @>Show Choices: Yes, No
 (When Cancel: Choice 2)
@@ -76992,6 +76586,8 @@ Move Animation
 Trigger: Action Button
 
 List of Event Commands:
+@>Comment: Event Indicator
+ :       : main_quest
 @>Text: Travel to the Fifth Floor?
 @>Show Choices: Yes, No
 (When Cancel: Choice 2)
@@ -77050,7 +76646,7 @@ Event Name: Stairs up (R-to-L)
 
 Page #1
 Conditions
-None
+Variable 0110: Plot Control Variable is 5 or above
 
 Autonomous Movement
 Type: Fixed
@@ -77061,6 +76657,8 @@ Move Animation
 Trigger: Player Touch
 
 List of Event Commands:
+@>Comment: Event Indicator
+ :       : main_quest
 @>Set Move Route: Player
  :              : $>Through ON
  :              : $>Always on Top ON
@@ -77116,7 +76714,7 @@ Event Name: Stairs up
 
 Page #1
 Conditions
-None
+Variable 0110: Plot Control Variable is 5 or above
 
 Autonomous Movement
 Type: Fixed
@@ -77127,6 +76725,8 @@ Move Animation
 Trigger: Player Touch
 
 List of Event Commands:
+@>Comment: Event Indicator
+ :       : main_quest
 @>Set Move Route: Player
  :              : $>Through ON
  :              : $>Always on Top ON
@@ -77237,211 +76837,6 @@ List of Event Commands:
  @>Change Screen Color Tone: (0,0,0,0), @6
  @>
 : Branch End
-@>
-
-#------------------------------------------------------------------------------
-Event ID: 015
-Event Name: Quest Indicator: Main
-(X,Y): (012,006)
-
-Page #1
-Conditions
-Variable 0110: Plot Control Variable is 4 or above
-
-Graphic: questicon2
-
-Autonomous Movement
-Type: Fixed
-Speed: 3: Slow
-Freq: 3: Low
-Options Enabled
-Move Animation
-Stop Animation
-Direction Fix
-Through
-Always on Top
-Trigger: Action Button
-
-List of Event Commands:
-@>
-
-Page #2
-Conditions
-Variable 0110: Plot Control Variable is 5 or above
-
-Autonomous Movement
-Type: Fixed
-Speed: 3: Slow
-Freq: 3: Low
-Options Enabled
-Move Animation
-Trigger: Action Button
-
-List of Event Commands:
-@>
-
-#------------------------------------------------------------------------------
-Event ID: 016
-Event Name: Quest Indicator: Main
-(X,Y): (003,004)
-
-Page #1
-Conditions
-Variable 0110: Plot Control Variable is 5 or above
-
-Graphic: questicon2
-
-Autonomous Movement
-Type: Fixed
-Speed: 3: Slow
-Freq: 3: Low
-Options Enabled
-Move Animation
-Stop Animation
-Direction Fix
-Through
-Always on Top
-Trigger: Action Button
-
-List of Event Commands:
-@>
-
-Page #2
-Conditions
-Variable 0110: Plot Control Variable is 6 or above
-
-Autonomous Movement
-Type: Fixed
-Speed: 3: Slow
-Freq: 3: Low
-Options Enabled
-Move Animation
-Trigger: Action Button
-
-List of Event Commands:
-@>
-
-#------------------------------------------------------------------------------
-Event ID: 017
-Event Name: Quest Indicator: Main
-(X,Y): (007,004)
-
-Page #1
-Conditions
-Variable 0110: Plot Control Variable is 5 or above
-
-Graphic: questicon2
-
-Autonomous Movement
-Type: Fixed
-Speed: 3: Slow
-Freq: 3: Low
-Options Enabled
-Move Animation
-Stop Animation
-Direction Fix
-Through
-Always on Top
-Trigger: Action Button
-
-List of Event Commands:
-@>
-
-Page #2
-Conditions
-Variable 0110: Plot Control Variable is 6 or above
-
-Autonomous Movement
-Type: Fixed
-Speed: 3: Slow
-Freq: 3: Low
-Options Enabled
-Move Animation
-Trigger: Action Button
-
-List of Event Commands:
-@>
-
-#------------------------------------------------------------------------------
-Event ID: 018
-Event Name: Quest Indicator: Main
-(X,Y): (020,001)
-
-Page #1
-Conditions
-Variable 0110: Plot Control Variable is 5 or above
-
-Graphic: questicon2
-
-Autonomous Movement
-Type: Fixed
-Speed: 3: Slow
-Freq: 3: Low
-Options Enabled
-Move Animation
-Stop Animation
-Direction Fix
-Through
-Always on Top
-Trigger: Action Button
-
-List of Event Commands:
-@>
-
-Page #2
-Conditions
-Variable 0110: Plot Control Variable is 6 or above
-
-Autonomous Movement
-Type: Fixed
-Speed: 3: Slow
-Freq: 3: Low
-Options Enabled
-Move Animation
-Trigger: Action Button
-
-List of Event Commands:
-@>
-
-#------------------------------------------------------------------------------
-Event ID: 019
-Event Name: Quest Indicator: Main
-(X,Y): (025,001)
-
-Page #1
-Conditions
-Variable 0110: Plot Control Variable is 5 or above
-
-Graphic: questicon2
-
-Autonomous Movement
-Type: Fixed
-Speed: 3: Slow
-Freq: 3: Low
-Options Enabled
-Move Animation
-Stop Animation
-Direction Fix
-Through
-Always on Top
-Trigger: Action Button
-
-List of Event Commands:
-@>
-
-Page #2
-Conditions
-Variable 0110: Plot Control Variable is 6 or above
-
-Autonomous Movement
-Type: Fixed
-Speed: 3: Slow
-Freq: 3: Low
-Options Enabled
-Move Animation
-Trigger: Action Button
-
-List of Event Commands:
 @>
 
 #------------------------------------------------------------------------------
@@ -78879,6 +78274,8 @@ Move Animation
 Trigger: Action Button
 
 List of Event Commands:
+@>Comment: Event Indicator
+ :       : main_quest
 @>Memorize BGM/BGS
 @>Play BGM: 'P-012. Girls' Sealing Club', 100, 100
 @>Conditional Branch: Self Switch A == OFF
@@ -78899,8 +78296,9 @@ List of Event Commands:
  @>Comment: --- Yes
  @>Text: \xn[Maribel]Great! Let's go!
  @>Comment: ==================
+ @>Script: $game_temp.vs_transition_bg = "City"
  @>Script: setBattleRule("base", "pink1")
- :       : setBattleRule("backdrop", "indoor2")
+ :       : setBattleRule("backdrop", "interiorA")
  @>Control Switches: [0104: Transition Handler] = ON
  @>Control Variables: [0103: Vs. Transition ID] = 2
  @>Control Variables: [0104: Vs. Transition - Pkmn] = 4
@@ -78931,6 +78329,7 @@ List of Event Commands:
  @>Wait: 20 frame(s)
  @>Script: pbSetSelfSwitch(4,"A",true)
  @>Play BGM: 'W-018. Jubilife City (Night) - Radio Mix', 100, 100
+ @>Control Variables: [0110: Plot Control Variable] = 6
  @>Change Screen Color Tone: (0,0,0,0), @6
  @>Comment: ---- Lengthy Cutscene
  @>Text: \xn[Maribel]While I've been on the road, I've heard tell of a few
@@ -78990,7 +78389,6 @@ List of Event Commands:
   :              : $>Change Opacity: 0
   :              : $>SE: 'Door exit', 100, 100
  @>Wait for Move's Completion
- @>Control Variables: [0110: Plot Control Variable] = 6
  @>Control Self Switch: B =ON
  @>Script: completeQuest(:Quest12)
  :       : activateQuest(:Quest14)
@@ -79024,6 +78422,8 @@ Move Animation
 Trigger: Action Button
 
 List of Event Commands:
+@>Comment: Event Indicator
+ :       : main_quest
 @>Memorize BGM/BGS
 @>Play BGM: 'P-012. Girls' Sealing Club', 100, 100
 @>Conditional Branch: Self Switch A == OFF
@@ -79047,8 +78447,9 @@ List of Event Commands:
  @>Comment: --- Yes
  @>Text: \xn[Renko]Awesome! Don't hold back on me, Mary!
  @>Comment: ==================
+ @>Script: $game_temp.vs_transition_bg = "City"
  @>Script: setBattleRule("base", "pink1")
- :       : setBattleRule("backdrop", "indoor2")
+ :       : setBattleRule("backdrop", "interiorA")
  @>Control Switches: [0104: Transition Handler] = ON
  @>Control Variables: [0103: Vs. Transition ID] = 1
  @>Control Variables: [0104: Vs. Transition - Pkmn] = 4
@@ -79079,6 +78480,7 @@ List of Event Commands:
  @>Transfer Player:[238: Vermilion Seaside Hotel], (009,005), Right
  @>Fade Out BGM: 1 sec.
  @>Wait: 20 frame(s)
+ @>Control Variables: [0110: Plot Control Variable] = 6
  @>Play BGM: 'W-018. Jubilife City (Night) - Radio Mix', 100, 100
  @>Change Screen Color Tone: (0,0,0,0), @6
  @>Comment: ---- Lengthy Cutscene
@@ -79139,7 +78541,6 @@ List of Event Commands:
   :              : $>Change Opacity: 0
   :              : $>SE: 'Door exit', 100, 100
  @>Wait for Move's Completion
- @>Control Variables: [0110: Plot Control Variable] = 6
  @>Control Self Switch: B =ON
  @>Script: completeQuest(:Quest11)
  :       : activateQuest(:Quest13)
@@ -79191,7 +78592,14 @@ Move Animation
 Trigger: Event Touch
 
 List of Event Commands:
-@>Text: I can't leave, I haven't even talked to \v[108] yet!
+@>Conditional Branch: Player is facing Down
+ @>Play SE: 'Door exit', 100, 100
+ @>Change Screen Color Tone: (-255,-255,-255,0), @6
+ @>Wait: 8 frame(s)
+ @>Transfer Player:[227: Vermilion Seaside Hotel], (007,006), Down, No Fade
+ @>Change Screen Color Tone: (0,0,0,0), @6
+ @>
+: Branch End
 @>
 
 Page #2
@@ -105217,6 +104625,8 @@ Move Animation
 Trigger: Action Button
 
 List of Event Commands:
+@>Comment: Event Indicator
+ :       : side_quest
 @>Text: I've been hearing rumors about the Celadon Game Corner.
  :    : You wanna hear about them?
 @>Show Choices: I love juicy rumors!, No, not right now.
@@ -105268,48 +104678,6 @@ Trigger: Action Button
 List of Event Commands:
 @>Text: I've also been hearing rumors about mysterious graves outside
  :    : Lavender Tower. I should investigate those as well!
-@>
-
-#------------------------------------------------------------------------------
-Event ID: 009
-Event Name: Quest Indicator: Sidequest
-(X,Y): (009,006)
-
-Page #1
-Conditions
-None
-
-Graphic: questicon2
-
-Autonomous Movement
-Type: Fixed
-Speed: 3: Slow
-Freq: 3: Low
-Options Enabled
-Move Animation
-Stop Animation
-Direction Fix
-Through
-Always on Top
-Trigger: Action Button
-
-List of Event Commands:
-@>Comment: Relevant Sidequest: Darkness Within Darkness
-@>
-
-Page #2
-Conditions
-Self Switch A is ON
-
-Autonomous Movement
-Type: Fixed
-Speed: 3: Slow
-Freq: 3: Low
-Options Enabled
-Move Animation
-Trigger: Action Button
-
-List of Event Commands:
 @>
 
 #------------------------------------------------------------------------------
@@ -107262,7 +106630,7 @@ Map ID: 278
 Map Name: Celadon Dept. Elevator
 Tileset: 010: Department Store
 Width: 20, Height: 15
-Auto-Change BGM: 027. PokeCenter
+Auto-Change BGM: W-009. Pokemon Mart (Monsekai)
 
 #------------------------------------------------------------------------------
 Event ID: 001
@@ -107347,6 +106715,7 @@ List of Event Commands:
  @>Comment: Choice was cancelled.
  @>
 : Else
+ @>Play SE: 'Elevator moving', 100, 100
  @>Label: Start
  @>Conditional Branch: Variable [0011: Elevator new floor] > Variable [0010: Elevator current floor]
   @>Comment: Go up.
@@ -107442,6 +106811,8 @@ List of Event Commands:
   @>Jump to Label: Start
   @>
  : Branch End
+ @>Stop SE
+ @>Play SE: 'Elevator end', 100, 100
  @>
 : Branch End
 @>
@@ -111741,6 +111112,27 @@ List of Event Commands:
  @>Change Screen Color Tone: (0,0,0,0), @6
  @>
 : Branch End
+@>
+
+#------------------------------------------------------------------------------
+Event ID: 003
+Event Name: HiddenItem
+(X,Y): (011,001)
+
+Page #1
+Conditions
+None
+
+Autonomous Movement
+Type: Fixed
+Speed: 3: Slow
+Freq: 3: Low
+Options Enabled
+Move Animation
+Trigger: Action Button
+
+List of Event Commands:
+@>Script: pbPokeCenterPC
 @>
 
 #------------------------------------------------------------------------------
@@ -119346,13 +118738,13 @@ List of Event Commands:
 @>Text: \xn[Derxwna]I wish I had time to talk with you more, but I don't. I'm 
  :    : in the middle of something. If you need to ask a questions, just 
  :    : wire a message to our official blog!
-@>Text: \xn[Derxwna]Before you go, here. Take this. It's the latest in PC
- :    : Technology.
-@>Script: pbReceiveItem(:POKEMONBOXLINK)
-@>Text: \xn[Derxwna]Bill recently sent out one of his latest inventions for 
- :    : testing purposes, but he accidentally sent one too many to us.
-@>Text: \xn[Derxwna]I'd been meaning to send it back, but it's probably 
- :    : better in your hands.
+@>Text: \xn[Derxwna]Before you go, let me give you something for
+ :    : coming all the way up here.
+@>Text: \xn[Derxwna]See, Bill recently sent out a promotional passcode for
+ :    : the system we set up. It lets you access your PC from anywhere.
+@>Text: \xn[Derxwna]As we don't have any additional need for it, the
+ :    : password is "\c[1]billspride\c[0]".
+@>Text: \xn[Derxwna]Quite simple and easy to remember, eh?
 @>Text: \xn[Derxwna]Anyways, I have to go back to working on my
  :    : latest project, a multi-part story series involving the Omniverse.
 @>Control Self Switch: A =ON
@@ -119724,12 +119116,12 @@ List of Event Commands:
 @>Show Choices: Yes, No
 (When Cancel: Choice 2)
 : When [Yes]
- @>Text: It seems to discuss two projects nade in RPG Maker XP called 
-  :    : "The Mansion of Mystery" and "The Festival of Curses."
- @>Text: As described, they're both short games that take place
-  :    : in Gensokyo, revolving around the same set of protagonists.
- @>Text: Apparently both were made in the span of roughly a month!
-  :    : Wow!
+ @>Text: It seems to discuss a project made in RPG Maker XP:
+  :    : "The Adventures of Ayaka".
+ @>Text: As described, it's a series of short games that take place
+  :    : in Gensokyo, revolving around the same protagonist, Ayaka.
+ @>Text: Apparently two of the episodes were made in the span of 
+  :    : roughly a month for a game jam! Wow!
  @>
 : When [No]
  @>
@@ -120700,6 +120092,7 @@ List of Event Commands:
  @>Comment: Choice was cancelled.
  @>
 : Else
+ @>Play SE: 'Elevator moving', 100, 100
  @>Label: Start
  @>Conditional Branch: Variable [0011: Elevator new floor] > Variable [0010: Elevator current floor]
   @>Comment: Go up.
@@ -120795,6 +120188,7 @@ List of Event Commands:
   @>Jump to Label: Start
   @>
  : Branch End
+ @>Play SE: 'Elevator end', 100, 100
  @>
 : Branch End
 @>
@@ -120872,7 +120266,7 @@ Map ID: 299
 Map Name: Celadon Game Corner
 Tileset: 010: Department Store
 Width: 20, Height: 15
-Auto-Change BGM: W-025. Celadon City
+Auto-Change BGM: W-033. Game Corner
 
 #------------------------------------------------------------------------------
 Event ID: 001
@@ -120903,6 +120297,7 @@ List of Event Commands:
  @>Comment: Choice was cancelled.
  @>
 : Else
+ @>Play SE: 'Elevator moving', 100, 100
  @>Label: Start
  @>Conditional Branch: Variable [0011: Elevator new floor] > Variable [0010: Elevator current floor]
   @>Comment: Go up.
@@ -120998,6 +120393,7 @@ List of Event Commands:
   @>Jump to Label: Start
   @>
  : Branch End
+ @>Play SE: 'Elevator end', 100, 100
  @>
 : Branch End
 @>
@@ -134880,6 +134276,7 @@ List of Event Commands:
  @>Comment: Choice was cancelled.
  @>
 : Else
+ @>Play SE: 'Elevator moving', 100, 100
  @>Label: Start
  @>Conditional Branch: Variable [0011: Elevator new floor] > Variable [0010: Elevator current floor]
   @>Comment: Go up.
@@ -134975,6 +134372,7 @@ List of Event Commands:
   @>Jump to Label: Start
   @>
  : Branch End
+ @>Play SE: 'Elevator moving', 50, 100
  @>
 : Branch End
 @>
@@ -145954,7 +145352,7 @@ Move Animation
 Trigger: Action Button
 
 List of Event Commands:
-@>Text: Cycling Road\nDownhill Slope starts here.
+@>Text: \sign[signskin]Cycling Road\nDownhill Slope starts here.
 @>
 
 #------------------------------------------------------------------------------

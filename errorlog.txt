@@ -3104,3 +3104,717 @@ Backtrace:
 999_Main.rb:42:in `mainFunctionDebug'
 999_Main.rb:19:in `block in mainFunction'
 003_Errors.rb:79:in `pbCriticalCode'
+
+=================
+
+[2026-05-03 15:04:38 -0700]
+[Pokémon Essentials version 21.1]
+
+Exception: ArgumentError
+Message: wrong number of arguments (given 3, expected 1)
+
+Backtrace:
+002_DebugConsole.rb:42:in `echoln'
+[Event Indicators] 001_Script.rb:397:in `pbCheckForActiveIndicator'
+[Event Indicators] 001_Script.rb:462:in `block (2 levels) in <main>'
+[Event Indicators] 001_Script.rb:460:in `each_key'
+[Event Indicators] 001_Script.rb:460:in `block in <main>'
+005_Event_Handlers.rb:89:in `block in trigger'
+005_Event_Handlers.rb:89:in `each_value'
+005_Event_Handlers.rb:89:in `trigger'
+006_Event_HandlerCollections.rb:63:in `trigger'
+007_Spriteset_Map.rb:65:in `initialize'
+
+=================
+
+[2026-05-03 21:22:22 -0700]
+[Pokémon Essentials version 21.1]
+
+Script error in event 9 (coords 14,17), map 186 (Hidden Grove)
+Exception: SyntaxError
+Message: (eval):15: syntax error, unexpected ',', expecting ']'
+... => [:OHKO, :SELFKO, :ESCAPE, , :TRANSFORM, :INDIRECT, :]
+...                              ^
+
+
+***Full script:
+setBattleRule("databoxStyle", :Long)
+setBattleRule("disablePokeBalls")
+setBattleRule("backdrop", "Forest_Alt")
+setBattleRule("base", "Forest_Alt")
+setBattleRule("outcome", 1)
+setBattleRule("cannotRun")
+setBattleRule("midbattleScript", :vs_kazami)
+setBattleRule("editWildPokemon", {
+  :gender  => 1,
+  :shiny   => false,
+  :moves   => [:VINEWHIP18, :REST18, :SCARYFACE18, :YAWN18],
+  :ability => :OVERGROW,
+  :nature  => :QUIET,
+  :hp_level => 2,
+  :immunities => [:OHKO, :SELFKO, :ESCAPE, , :TRANSFORM, :INDIRECT, :]
+})
+WildBattle.start(:CKAZAMI, 35)
+
+=================
+
+[2026-05-03 21:24:57 -0700]
+[Pokémon Essentials version 21.1]
+
+Script error in event 9 (coords 14,17), map 186 (Hidden Grove)
+Exception: SyntaxError
+Message: (eval):15: syntax error, unexpected ']', expecting literal content or terminator or tSTRING_DBEG or tSTRING_DVAR
+...CAPE, :TRANSFORM, :INDIRECT, :]
+...                              ^
+
+
+***Full script:
+setBattleRule("databoxStyle", :Long)
+setBattleRule("disablePokeBalls")
+setBattleRule("backdrop", "Forest_Alt")
+setBattleRule("base", "Forest_Alt")
+setBattleRule("outcome", 1)
+setBattleRule("cannotRun")
+setBattleRule("midbattleScript", :vs_kazami)
+setBattleRule("editWildPokemon", {
+  :gender  => 1,
+  :shiny   => false,
+  :moves   => [:VINEWHIP18, :REST18, :SCARYFACE18, :YAWN18],
+  :ability => :OVERGROW,
+  :nature  => :QUIET,
+  :hp_level => 2,
+  :immunities => [:OHKO, :SELFKO, :ESCAPE, :TRANSFORM, :INDIRECT, :]
+})
+WildBattle.start(:CKAZAMI, 35)
+
+=================
+
+[2026-05-03 21:26:40 -0700]
+[Pokémon Essentials version 21.1]
+
+Exception: NameError
+Message: undefined local variable or method `kazami_has_evolved' for main:Object
+
+Backtrace:
+[Deluxe Battle Kit] 001_HardcodedBattles.rb:196:in `block in <main>'
+[Deluxe Battle Kit] [002] Midbattle Triggers.rb:36:in `trigger'
+[Deluxe Battle Kit] [001] Midbattle Overwrites.rb:218:in `block (2 levels) in pbMidbattleScripting'
+[Deluxe Battle Kit] [001] Midbattle Overwrites.rb:217:in `each'
+[Deluxe Battle Kit] [001] Midbattle Overwrites.rb:217:in `block in pbMidbattleScripting'
+[Deluxe Battle Kit] [001] Midbattle Overwrites.rb:148:in `loop'
+[Deluxe Battle Kit] [001] Midbattle Overwrites.rb:148:in `pbMidbattleScripting'
+[Deluxe Battle Kit] [001] Midbattle Overwrites.rb:111:in `pbDeluxeTriggers'
+[Deluxe Battle Kit] [001] Midbattle Overwrites.rb:461:in `block in pbEndOfRoundPhase'
+[Deluxe Battle Kit] [001] Midbattle Overwrites.rb:460:in `each'
+
+=================
+
+[2026-05-03 21:30:42 -0700]
+[Pokémon Essentials version 21.1]
+
+Exception: NameError
+Message: undefined local variable or method `has_kazami_evolved' for main:Object
+
+Backtrace:
+[Deluxe Battle Kit] 001_HardcodedBattles.rb:196:in `block in <main>'
+[Deluxe Battle Kit] [002] Midbattle Triggers.rb:36:in `trigger'
+[Deluxe Battle Kit] [001] Midbattle Overwrites.rb:218:in `block (2 levels) in pbMidbattleScripting'
+[Deluxe Battle Kit] [001] Midbattle Overwrites.rb:217:in `each'
+[Deluxe Battle Kit] [001] Midbattle Overwrites.rb:217:in `block in pbMidbattleScripting'
+[Deluxe Battle Kit] [001] Midbattle Overwrites.rb:148:in `loop'
+[Deluxe Battle Kit] [001] Midbattle Overwrites.rb:148:in `pbMidbattleScripting'
+[Deluxe Battle Kit] [001] Midbattle Overwrites.rb:111:in `pbDeluxeTriggers'
+[Deluxe Battle Kit] [001] Midbattle Overwrites.rb:461:in `block in pbEndOfRoundPhase'
+[Deluxe Battle Kit] [001] Midbattle Overwrites.rb:460:in `each'
+
+=================
+
+[2026-05-03 21:35:29 -0700]
+[Pokémon Essentials version 21.1]
+
+Exception: NoMethodError
+Message: undefined method `learn_move' for #<Battle::Battler>
+
+Backtrace:
+[Deluxe Battle Kit] 001_HardcodedBattles.rb:227:in `block in <main>'
+[Deluxe Battle Kit] [002] Midbattle Triggers.rb:36:in `trigger'
+[Deluxe Battle Kit] [001] Midbattle Overwrites.rb:218:in `block (2 levels) in pbMidbattleScripting'
+[Deluxe Battle Kit] [001] Midbattle Overwrites.rb:217:in `each'
+[Deluxe Battle Kit] [001] Midbattle Overwrites.rb:217:in `block in pbMidbattleScripting'
+[Deluxe Battle Kit] [001] Midbattle Overwrites.rb:148:in `loop'
+[Deluxe Battle Kit] [001] Midbattle Overwrites.rb:148:in `pbMidbattleScripting'
+[Deluxe Battle Kit] [001] Midbattle Overwrites.rb:111:in `pbDeluxeTriggers'
+[Deluxe Battle Kit] [001] Midbattle Overwrites.rb:461:in `block in pbEndOfRoundPhase'
+[Deluxe Battle Kit] [001] Midbattle Overwrites.rb:460:in `each'
+
+=================
+
+[2026-05-03 21:44:53 -0700]
+[Pokémon Essentials version 21.1]
+
+Exception: NoMethodError
+Message: undefined method `learn_move' for #<Battle::Battler>
+
+Backtrace:
+[Deluxe Battle Kit] 001_HardcodedBattles.rb:227:in `block in <main>'
+[Deluxe Battle Kit] [002] Midbattle Triggers.rb:36:in `trigger'
+[Deluxe Battle Kit] [001] Midbattle Overwrites.rb:218:in `block (2 levels) in pbMidbattleScripting'
+[Deluxe Battle Kit] [001] Midbattle Overwrites.rb:217:in `each'
+[Deluxe Battle Kit] [001] Midbattle Overwrites.rb:217:in `block in pbMidbattleScripting'
+[Deluxe Battle Kit] [001] Midbattle Overwrites.rb:148:in `loop'
+[Deluxe Battle Kit] [001] Midbattle Overwrites.rb:148:in `pbMidbattleScripting'
+[Deluxe Battle Kit] [001] Midbattle Overwrites.rb:111:in `pbDeluxeTriggers'
+[Deluxe Battle Kit] [001] Midbattle Overwrites.rb:461:in `block in pbEndOfRoundPhase'
+[Deluxe Battle Kit] [001] Midbattle Overwrites.rb:460:in `each'
+
+=================
+
+[2026-05-03 22:01:11 -0700]
+[Pokémon Essentials version 21.1]
+
+Exception: NameError
+Message: uninitialized constant Forest_Alt1
+
+Backtrace:
+[Deluxe Battle Kit] 001_HardcodedBattles.rb:145:in `block in <main>'
+[Deluxe Battle Kit] [002] Midbattle Triggers.rb:36:in `trigger'
+[Deluxe Battle Kit] [001] Midbattle Overwrites.rb:218:in `block (2 levels) in pbMidbattleScripting'
+[Deluxe Battle Kit] [001] Midbattle Overwrites.rb:217:in `each'
+[Deluxe Battle Kit] [001] Midbattle Overwrites.rb:217:in `block in pbMidbattleScripting'
+[Deluxe Battle Kit] [001] Midbattle Overwrites.rb:148:in `loop'
+[Deluxe Battle Kit] [001] Midbattle Overwrites.rb:148:in `pbMidbattleScripting'
+[Deluxe Battle Kit] [001] Midbattle Overwrites.rb:111:in `pbDeluxeTriggers'
+[Deluxe Battle Kit] [003] Command Menu Refactor.rb:373:in `block in pbCommandPhase'
+[Deluxe Battle Kit] [003] Command Menu Refactor.rb:370:in `each'
+
+=================
+
+[2026-05-03 22:03:06 -0700]
+[Pokémon Essentials version 21.1]
+
+Exception: NoMethodError
+Message: undefined method `backdrop=' for #<Battle::Scene>
+
+Backtrace:
+[Deluxe Battle Kit] 001_HardcodedBattles.rb:145:in `block in <main>'
+[Deluxe Battle Kit] [002] Midbattle Triggers.rb:36:in `trigger'
+[Deluxe Battle Kit] [001] Midbattle Overwrites.rb:218:in `block (2 levels) in pbMidbattleScripting'
+[Deluxe Battle Kit] [001] Midbattle Overwrites.rb:217:in `each'
+[Deluxe Battle Kit] [001] Midbattle Overwrites.rb:217:in `block in pbMidbattleScripting'
+[Deluxe Battle Kit] [001] Midbattle Overwrites.rb:148:in `loop'
+[Deluxe Battle Kit] [001] Midbattle Overwrites.rb:148:in `pbMidbattleScripting'
+[Deluxe Battle Kit] [001] Midbattle Overwrites.rb:111:in `pbDeluxeTriggers'
+[Deluxe Battle Kit] [003] Command Menu Refactor.rb:373:in `block in pbCommandPhase'
+[Deluxe Battle Kit] [003] Command Menu Refactor.rb:370:in `each'
+
+=================
+
+[2026-05-03 22:04:35 -0700]
+[Pokémon Essentials version 21.1]
+
+Exception: NoMethodError
+Message: undefined method `refresh' for #<Battle::Scene>
+
+Backtrace:
+[Deluxe Battle Kit] 001_HardcodedBattles.rb:146:in `block in <main>'
+[Deluxe Battle Kit] [002] Midbattle Triggers.rb:36:in `trigger'
+[Deluxe Battle Kit] [001] Midbattle Overwrites.rb:218:in `block (2 levels) in pbMidbattleScripting'
+[Deluxe Battle Kit] [001] Midbattle Overwrites.rb:217:in `each'
+[Deluxe Battle Kit] [001] Midbattle Overwrites.rb:217:in `block in pbMidbattleScripting'
+[Deluxe Battle Kit] [001] Midbattle Overwrites.rb:148:in `loop'
+[Deluxe Battle Kit] [001] Midbattle Overwrites.rb:148:in `pbMidbattleScripting'
+[Deluxe Battle Kit] [001] Midbattle Overwrites.rb:111:in `pbDeluxeTriggers'
+[Deluxe Battle Kit] [003] Command Menu Refactor.rb:373:in `block in pbCommandPhase'
+[Deluxe Battle Kit] [003] Command Menu Refactor.rb:370:in `each'
+
+=================
+
+[2026-05-03 22:08:21 -0700]
+[Pokémon Essentials version 21.1]
+
+Exception: NameError
+Message: undefined local variable or method `pbUpdate' for main:Object
+
+Backtrace:
+[Deluxe Battle Kit] 001_HardcodedBattles.rb:147:in `block in <main>'
+[Deluxe Battle Kit] [002] Midbattle Triggers.rb:36:in `trigger'
+[Deluxe Battle Kit] [001] Midbattle Overwrites.rb:218:in `block (2 levels) in pbMidbattleScripting'
+[Deluxe Battle Kit] [001] Midbattle Overwrites.rb:217:in `each'
+[Deluxe Battle Kit] [001] Midbattle Overwrites.rb:217:in `block in pbMidbattleScripting'
+[Deluxe Battle Kit] [001] Midbattle Overwrites.rb:148:in `loop'
+[Deluxe Battle Kit] [001] Midbattle Overwrites.rb:148:in `pbMidbattleScripting'
+[Deluxe Battle Kit] [001] Midbattle Overwrites.rb:111:in `pbDeluxeTriggers'
+[Deluxe Battle Kit] [003] Command Menu Refactor.rb:373:in `block in pbCommandPhase'
+[Deluxe Battle Kit] [003] Command Menu Refactor.rb:370:in `each'
+
+=================
+
+[2026-05-03 22:08:49 -0700]
+[Pokémon Essentials version 21.1]
+
+Exception: NameError
+Message: undefined local variable or method `pbRefreshEverything' for main:Object
+
+Backtrace:
+[Deluxe Battle Kit] 001_HardcodedBattles.rb:147:in `block in <main>'
+[Deluxe Battle Kit] [002] Midbattle Triggers.rb:36:in `trigger'
+[Deluxe Battle Kit] [001] Midbattle Overwrites.rb:218:in `block (2 levels) in pbMidbattleScripting'
+[Deluxe Battle Kit] [001] Midbattle Overwrites.rb:217:in `each'
+[Deluxe Battle Kit] [001] Midbattle Overwrites.rb:217:in `block in pbMidbattleScripting'
+[Deluxe Battle Kit] [001] Midbattle Overwrites.rb:148:in `loop'
+[Deluxe Battle Kit] [001] Midbattle Overwrites.rb:148:in `pbMidbattleScripting'
+[Deluxe Battle Kit] [001] Midbattle Overwrites.rb:111:in `pbDeluxeTriggers'
+[Deluxe Battle Kit] [003] Command Menu Refactor.rb:373:in `block in pbCommandPhase'
+[Deluxe Battle Kit] [003] Command Menu Refactor.rb:370:in `each'
+
+=================
+
+[2026-05-03 23:33:16 -0700]
+[Pokémon Essentials version 21.1]
+
+Exception: NameError
+Message: undefined local variable or method `foe' for main:Object
+
+Backtrace:
+[Deluxe Battle Kit] 002_Kazami.rb:113:in `change_kazamis_attributes'
+[Deluxe Battle Kit] 002_Kazami.rb:104:in `block in <main>'
+[Deluxe Battle Kit] [002] Midbattle Triggers.rb:36:in `trigger'
+[Deluxe Battle Kit] [001] Midbattle Overwrites.rb:218:in `block (2 levels) in pbMidbattleScripting'
+[Deluxe Battle Kit] [001] Midbattle Overwrites.rb:217:in `each'
+[Deluxe Battle Kit] [001] Midbattle Overwrites.rb:217:in `block in pbMidbattleScripting'
+[Deluxe Battle Kit] [001] Midbattle Overwrites.rb:148:in `loop'
+[Deluxe Battle Kit] [001] Midbattle Overwrites.rb:148:in `pbMidbattleScripting'
+[Deluxe Battle Kit] [001] Midbattle Overwrites.rb:111:in `pbDeluxeTriggers'
+[Deluxe Battle Kit] [001] Midbattle Overwrites.rb:461:in `block in pbEndOfRoundPhase'
+
+=================
+
+[2026-05-03 23:35:47 -0700]
+[Pokémon Essentials version 21.1]
+
+Exception: NameError
+Message: undefined local variable or method `battle' for main:Object
+
+Backtrace:
+[Deluxe Battle Kit] 002_Kazami.rb:113:in `change_kazamis_attributes'
+[Deluxe Battle Kit] 002_Kazami.rb:104:in `block in <main>'
+[Deluxe Battle Kit] [002] Midbattle Triggers.rb:36:in `trigger'
+[Deluxe Battle Kit] [001] Midbattle Overwrites.rb:218:in `block (2 levels) in pbMidbattleScripting'
+[Deluxe Battle Kit] [001] Midbattle Overwrites.rb:217:in `each'
+[Deluxe Battle Kit] [001] Midbattle Overwrites.rb:217:in `block in pbMidbattleScripting'
+[Deluxe Battle Kit] [001] Midbattle Overwrites.rb:148:in `loop'
+[Deluxe Battle Kit] [001] Midbattle Overwrites.rb:148:in `pbMidbattleScripting'
+[Deluxe Battle Kit] [001] Midbattle Overwrites.rb:111:in `pbDeluxeTriggers'
+[Deluxe Battle Kit] [001] Midbattle Overwrites.rb:461:in `block in pbEndOfRoundPhase'
+
+=================
+
+[2026-05-04 00:01:04 -0700]
+[Pokémon Essentials version 21.1]
+
+Exception: NameError
+Message: undefined local variable or method `change_kazamis_attributes' for main:Object
+
+Backtrace:
+[Deluxe Battle Kit] 002_Kazami.rb:104:in `block in <main>'
+[Deluxe Battle Kit] [002] Midbattle Triggers.rb:36:in `trigger'
+[Deluxe Battle Kit] [001] Midbattle Overwrites.rb:218:in `block (2 levels) in pbMidbattleScripting'
+[Deluxe Battle Kit] [001] Midbattle Overwrites.rb:217:in `each'
+[Deluxe Battle Kit] [001] Midbattle Overwrites.rb:217:in `block in pbMidbattleScripting'
+[Deluxe Battle Kit] [001] Midbattle Overwrites.rb:148:in `loop'
+[Deluxe Battle Kit] [001] Midbattle Overwrites.rb:148:in `pbMidbattleScripting'
+[Deluxe Battle Kit] [001] Midbattle Overwrites.rb:111:in `pbDeluxeTriggers'
+[Deluxe Battle Kit] [001] Midbattle Overwrites.rb:461:in `block in pbEndOfRoundPhase'
+[Deluxe Battle Kit] [001] Midbattle Overwrites.rb:460:in `each'
+
+=================
+
+[2026-05-04 02:34:51 -0700]
+[Pokémon Essentials version 21.1]
+
+Script error in event 2 (coords 2,3), map 323 (Poké Mart)
+Exception: RuntimeError
+Message: Unknown ID PARLYZHEAL.
+
+***Full script:
+pbPokemonMart([
+:GREATBALL,
+:HYPERPOTION,
+:PARLYZHEAL,
+:FULLHEAL,
+:REVIVE,
+:ESCAPEROPE,
+:MAXREPEL
+])
+
+Backtrace:
+001_GameData.rb:103:in `get'
+[Arcky's Poke Market] 001_PokeMarket_Main.rb:906:in `block in editStockBadgeOrImportant'
+[Arcky's Poke Market] 001_PokeMarket_Main.rb:906:in `delete_if'
+[Arcky's Poke Market] 001_PokeMarket_Main.rb:906:in `editStockBadgeOrImportant'
+[Arcky's Poke Market] 001_PokeMarket_Main.rb:779:in `pbPokemonMart'
+(eval):1:in `execute_script'
+003_Interpreter.rb:140:in `eval'
+003_Interpreter.rb:140:in `execute_script'
+004_Interpreter_Commands.rb:1177:in `command_355'
+004_Interpreter_Commands.rb:116:in `execute_command'
+
+=================
+
+[2026-05-04 13:12:47 -0700]
+[Pokémon Essentials version 21.1]
+
+Exception: RuntimeError
+Message: Undefined species constant name: BAYLEAF.
+Make sure the species is defined in PBS/pokemon.txt.
+File PBS/regional_dexes.txt, line 82
+CHIKORITA,BAYLEAF,MEGANIUM
+
+
+
+Backtrace:
+001_Compiler.rb:880:in `parseSpecies'
+002_Compiler_CompilePBS.rb:611:in `block (3 levels) in compile_regional_dexes'
+002_Compiler_CompilePBS.rb:609:in `each'
+002_Compiler_CompilePBS.rb:609:in `block (2 levels) in compile_regional_dexes'
+001_Compiler.rb:244:in `block (2 levels) in pbCompilerEachPreppedLine'
+001_Compiler.rb:236:in `each_line'
+001_Compiler.rb:236:in `block in pbCompilerEachPreppedLine'
+001_Compiler.rb:233:in `open'
+001_Compiler.rb:233:in `pbCompilerEachPreppedLine'
+002_Compiler_CompilePBS.rb:598:in `block in compile_regional_dexes'
+
+=================
+
+[2026-05-04 13:12:54 -0700]
+[Pokémon Essentials version 21.1]
+
+Exception: RuntimeError
+Message: Unknown exception when compiling.
+
+Backtrace:
+001_Compiler.rb:1114:in `rescue in main'
+001_Compiler.rb:1041:in `main'
+999_Main.rb:36:in `mainFunctionDebug'
+999_Main.rb:19:in `block in mainFunction'
+003_Errors.rb:79:in `pbCriticalCode'
+999_Main.rb:19:in `mainFunction'
+999_Main.rb:52:in `block (2 levels) in load_scripts_from_folder'
+999_Main.rb:51:in `loop'
+999_Main.rb:51:in `block in load_scripts_from_folder'
+Main:35:in `eval'
+
+=================
+
+[2026-05-04 13:13:18 -0700]
+[Pokémon Essentials version 21.1]
+
+Exception: RuntimeError
+Message: Undefined species constant name: QUIILAVA.
+Make sure the species is defined in PBS/pokemon.txt.
+File PBS/regional_dexes.txt, line 83
+CYNDAQUIL,QUIILAVA,TYPHLOSION
+
+
+
+Backtrace:
+001_Compiler.rb:880:in `parseSpecies'
+002_Compiler_CompilePBS.rb:611:in `block (3 levels) in compile_regional_dexes'
+002_Compiler_CompilePBS.rb:609:in `each'
+002_Compiler_CompilePBS.rb:609:in `block (2 levels) in compile_regional_dexes'
+001_Compiler.rb:244:in `block (2 levels) in pbCompilerEachPreppedLine'
+001_Compiler.rb:236:in `each_line'
+001_Compiler.rb:236:in `block in pbCompilerEachPreppedLine'
+001_Compiler.rb:233:in `open'
+001_Compiler.rb:233:in `pbCompilerEachPreppedLine'
+002_Compiler_CompilePBS.rb:598:in `block in compile_regional_dexes'
+
+=================
+
+[2026-05-04 13:13:24 -0700]
+[Pokémon Essentials version 21.1]
+
+Exception: RuntimeError
+Message: Unknown exception when compiling.
+
+Backtrace:
+001_Compiler.rb:1114:in `rescue in main'
+001_Compiler.rb:1041:in `main'
+999_Main.rb:36:in `mainFunctionDebug'
+999_Main.rb:19:in `block in mainFunction'
+003_Errors.rb:79:in `pbCriticalCode'
+999_Main.rb:19:in `mainFunction'
+999_Main.rb:52:in `block (2 levels) in load_scripts_from_folder'
+999_Main.rb:51:in `loop'
+999_Main.rb:51:in `block in load_scripts_from_folder'
+Main:35:in `eval'
+
+=================
+
+[2026-05-04 13:13:41 -0700]
+[Pokémon Essentials version 21.1]
+
+Exception: RuntimeError
+Message: Undefined species constant name: HO-OH.
+Make sure the species is defined in PBS/pokemon.txt.
+File PBS/regional_dexes.txt, line 150
+HO-OH
+
+
+
+Backtrace:
+001_Compiler.rb:880:in `parseSpecies'
+002_Compiler_CompilePBS.rb:611:in `block (3 levels) in compile_regional_dexes'
+002_Compiler_CompilePBS.rb:609:in `each'
+002_Compiler_CompilePBS.rb:609:in `block (2 levels) in compile_regional_dexes'
+001_Compiler.rb:244:in `block (2 levels) in pbCompilerEachPreppedLine'
+001_Compiler.rb:236:in `each_line'
+001_Compiler.rb:236:in `block in pbCompilerEachPreppedLine'
+001_Compiler.rb:233:in `open'
+001_Compiler.rb:233:in `pbCompilerEachPreppedLine'
+002_Compiler_CompilePBS.rb:598:in `block in compile_regional_dexes'
+
+=================
+
+[2026-05-04 13:13:58 -0700]
+[Pokémon Essentials version 21.1]
+
+Exception: RuntimeError
+Message: Unknown exception when compiling.
+
+Backtrace:
+001_Compiler.rb:1114:in `rescue in main'
+001_Compiler.rb:1041:in `main'
+999_Main.rb:36:in `mainFunctionDebug'
+999_Main.rb:19:in `block in mainFunction'
+003_Errors.rb:79:in `pbCriticalCode'
+999_Main.rb:19:in `mainFunction'
+999_Main.rb:52:in `block (2 levels) in load_scripts_from_folder'
+999_Main.rb:51:in `loop'
+999_Main.rb:51:in `block in load_scripts_from_folder'
+Main:35:in `eval'
+
+=================
+
+[2026-05-04 13:14:19 -0700]
+[Pokémon Essentials version 21.1]
+
+Exception: RuntimeError
+Message: Undefined species constant name: TAILOW.
+Make sure the species is defined in PBS/pokemon.txt.
+File PBS/regional_dexes.txt, line 160
+TAILOW,SWELLOW
+
+
+
+Backtrace:
+001_Compiler.rb:880:in `parseSpecies'
+002_Compiler_CompilePBS.rb:611:in `block (3 levels) in compile_regional_dexes'
+002_Compiler_CompilePBS.rb:609:in `each'
+002_Compiler_CompilePBS.rb:609:in `block (2 levels) in compile_regional_dexes'
+001_Compiler.rb:244:in `block (2 levels) in pbCompilerEachPreppedLine'
+001_Compiler.rb:236:in `each_line'
+001_Compiler.rb:236:in `block in pbCompilerEachPreppedLine'
+001_Compiler.rb:233:in `open'
+001_Compiler.rb:233:in `pbCompilerEachPreppedLine'
+002_Compiler_CompilePBS.rb:598:in `block in compile_regional_dexes'
+
+=================
+
+[2026-05-04 13:14:21 -0700]
+[Pokémon Essentials version 21.1]
+
+Exception: RuntimeError
+Message: Unknown exception when compiling.
+
+Backtrace:
+001_Compiler.rb:1114:in `rescue in main'
+001_Compiler.rb:1041:in `main'
+999_Main.rb:36:in `mainFunctionDebug'
+999_Main.rb:19:in `block in mainFunction'
+003_Errors.rb:79:in `pbCriticalCode'
+999_Main.rb:19:in `mainFunction'
+999_Main.rb:52:in `block (2 levels) in load_scripts_from_folder'
+999_Main.rb:51:in `loop'
+999_Main.rb:51:in `block in load_scripts_from_folder'
+Main:35:in `eval'
+
+=================
+
+[2026-05-04 13:14:41 -0700]
+[Pokémon Essentials version 21.1]
+
+Exception: RuntimeError
+Message: Undefined species constant name: DRELOOM.
+Make sure the species is defined in PBS/pokemon.txt.
+File PBS/regional_dexes.txt, line 164
+SHROOMISH,DRELOOM
+
+
+
+Backtrace:
+001_Compiler.rb:880:in `parseSpecies'
+002_Compiler_CompilePBS.rb:611:in `block (3 levels) in compile_regional_dexes'
+002_Compiler_CompilePBS.rb:609:in `each'
+002_Compiler_CompilePBS.rb:609:in `block (2 levels) in compile_regional_dexes'
+001_Compiler.rb:244:in `block (2 levels) in pbCompilerEachPreppedLine'
+001_Compiler.rb:236:in `each_line'
+001_Compiler.rb:236:in `block in pbCompilerEachPreppedLine'
+001_Compiler.rb:233:in `open'
+001_Compiler.rb:233:in `pbCompilerEachPreppedLine'
+002_Compiler_CompilePBS.rb:598:in `block in compile_regional_dexes'
+
+=================
+
+[2026-05-04 13:14:43 -0700]
+[Pokémon Essentials version 21.1]
+
+Exception: RuntimeError
+Message: Unknown exception when compiling.
+
+Backtrace:
+001_Compiler.rb:1114:in `rescue in main'
+001_Compiler.rb:1041:in `main'
+999_Main.rb:36:in `mainFunctionDebug'
+999_Main.rb:19:in `block in mainFunction'
+003_Errors.rb:79:in `pbCriticalCode'
+999_Main.rb:19:in `mainFunction'
+999_Main.rb:52:in `block (2 levels) in load_scripts_from_folder'
+999_Main.rb:51:in `loop'
+999_Main.rb:51:in `block in load_scripts_from_folder'
+Main:35:in `eval'
+
+=================
+
+[2026-05-04 13:15:04 -0700]
+[Pokémon Essentials version 21.1]
+
+Exception: RuntimeError
+Message: Undefined species constant name: AZURIL.
+Make sure the species is defined in PBS/pokemon.txt.
+File PBS/regional_dexes.txt, line 169
+AZURIL
+
+
+
+Backtrace:
+001_Compiler.rb:880:in `parseSpecies'
+002_Compiler_CompilePBS.rb:611:in `block (3 levels) in compile_regional_dexes'
+002_Compiler_CompilePBS.rb:609:in `each'
+002_Compiler_CompilePBS.rb:609:in `block (2 levels) in compile_regional_dexes'
+001_Compiler.rb:244:in `block (2 levels) in pbCompilerEachPreppedLine'
+001_Compiler.rb:236:in `each_line'
+001_Compiler.rb:236:in `block in pbCompilerEachPreppedLine'
+001_Compiler.rb:233:in `open'
+001_Compiler.rb:233:in `pbCompilerEachPreppedLine'
+002_Compiler_CompilePBS.rb:598:in `block in compile_regional_dexes'
+
+=================
+
+[2026-05-04 13:15:06 -0700]
+[Pokémon Essentials version 21.1]
+
+Exception: RuntimeError
+Message: Unknown exception when compiling.
+
+Backtrace:
+001_Compiler.rb:1114:in `rescue in main'
+001_Compiler.rb:1041:in `main'
+999_Main.rb:36:in `mainFunctionDebug'
+999_Main.rb:19:in `block in mainFunction'
+003_Errors.rb:79:in `pbCriticalCode'
+999_Main.rb:19:in `mainFunction'
+999_Main.rb:52:in `block (2 levels) in load_scripts_from_folder'
+999_Main.rb:51:in `loop'
+999_Main.rb:51:in `block in load_scripts_from_folder'
+Main:35:in `eval'
+
+=================
+
+[2026-05-04 13:15:26 -0700]
+[Pokémon Essentials version 21.1]
+
+Exception: RuntimeError
+Message: Undefined species constant name: CHERIM.
+Make sure the species is defined in PBS/pokemon.txt.
+File PBS/regional_dexes.txt, line 241
+CHERUBI,CHERIM
+
+
+
+Backtrace:
+001_Compiler.rb:880:in `parseSpecies'
+002_Compiler_CompilePBS.rb:611:in `block (3 levels) in compile_regional_dexes'
+002_Compiler_CompilePBS.rb:609:in `each'
+002_Compiler_CompilePBS.rb:609:in `block (2 levels) in compile_regional_dexes'
+001_Compiler.rb:244:in `block (2 levels) in pbCompilerEachPreppedLine'
+001_Compiler.rb:236:in `each_line'
+001_Compiler.rb:236:in `block in pbCompilerEachPreppedLine'
+001_Compiler.rb:233:in `open'
+001_Compiler.rb:233:in `pbCompilerEachPreppedLine'
+002_Compiler_CompilePBS.rb:598:in `block in compile_regional_dexes'
+
+=================
+
+[2026-05-04 13:15:28 -0700]
+[Pokémon Essentials version 21.1]
+
+Exception: RuntimeError
+Message: Unknown exception when compiling.
+
+Backtrace:
+001_Compiler.rb:1114:in `rescue in main'
+001_Compiler.rb:1041:in `main'
+999_Main.rb:36:in `mainFunctionDebug'
+999_Main.rb:19:in `block in mainFunction'
+003_Errors.rb:79:in `pbCriticalCode'
+999_Main.rb:19:in `mainFunction'
+999_Main.rb:52:in `block (2 levels) in load_scripts_from_folder'
+999_Main.rb:51:in `loop'
+999_Main.rb:51:in `block in load_scripts_from_folder'
+Main:35:in `eval'
+
+=================
+
+[2026-05-04 13:15:49 -0700]
+[Pokémon Essentials version 21.1]
+
+Exception: RuntimeError
+Message: Undefined species constant name: HOPPOWDON.
+Make sure the species is defined in PBS/pokemon.txt.
+File PBS/regional_dexes.txt, line 260
+HIPPOPOTAS,HOPPOWDON
+
+
+
+Backtrace:
+001_Compiler.rb:880:in `parseSpecies'
+002_Compiler_CompilePBS.rb:611:in `block (3 levels) in compile_regional_dexes'
+002_Compiler_CompilePBS.rb:609:in `each'
+002_Compiler_CompilePBS.rb:609:in `block (2 levels) in compile_regional_dexes'
+001_Compiler.rb:244:in `block (2 levels) in pbCompilerEachPreppedLine'
+001_Compiler.rb:236:in `each_line'
+001_Compiler.rb:236:in `block in pbCompilerEachPreppedLine'
+001_Compiler.rb:233:in `open'
+001_Compiler.rb:233:in `pbCompilerEachPreppedLine'
+002_Compiler_CompilePBS.rb:598:in `block in compile_regional_dexes'
+
+=================
+
+[2026-05-04 13:15:53 -0700]
+[Pokémon Essentials version 21.1]
+
+Exception: RuntimeError
+Message: Unknown exception when compiling.
+
+Backtrace:
+001_Compiler.rb:1114:in `rescue in main'
+001_Compiler.rb:1041:in `main'
+999_Main.rb:36:in `mainFunctionDebug'
+999_Main.rb:19:in `block in mainFunction'
+003_Errors.rb:79:in `pbCriticalCode'
+999_Main.rb:19:in `mainFunction'
+999_Main.rb:52:in `block (2 levels) in load_scripts_from_folder'
+999_Main.rb:51:in `loop'
+999_Main.rb:51:in `block in load_scripts_from_folder'
+Main:35:in `eval'

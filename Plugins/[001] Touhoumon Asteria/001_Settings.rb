@@ -83,6 +83,7 @@ module Settings
   end
   
   HEAL_STORED_POKEMON = true
+  USE_CURRENT_REGION_DEX = false
   def self.pokedex_names
     return [
       [_INTL("Pokémon Pokédex"), 0],

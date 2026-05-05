@@ -5,7 +5,7 @@ module Reincarnation
   COST_AMOUNT         = 1
 
   # Custom Music for the Menu, has to be in BGM/SE folders respectively.
-  CUSTOM_SCENE_BGM    = "U-008. Unexpected Visitor"
+  CUSTOM_SCENE_BGM    = "U-010. Unexpected Visitor"
   CUSTOM_COMPLETE_SE  = "Evo Complete"
 
   # After reincarnation set Pokemon to this level, if nil, will not change level.
