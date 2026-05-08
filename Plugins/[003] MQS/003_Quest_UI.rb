@@ -299,7 +299,7 @@ class QuestList_Scene
     drawFormattedTextEx(@sprites["overlay3"].bitmap,38,236,
       436,"<c2=#{colorQuest("green")}>Quest #{time_text} time:</c2>",@base,@shadow)
     drawFormattedTextEx(@sprites["overlay3"].bitmap,38,Graphics.height-64,
-      436,"<c2=#{colorQuest("red")}>Reward:</c2> #{questReward}",@base,@shadow)
+      436,"<c2=#{colorQuest("red")}>Recommended Level:</c2> #{questReward}",@base,@shadow)
     drawFormattedTextEx(@sprites["overlay3"].bitmap,38,352,
       436,"<c2=#{colorQuest("purple")}>Location:</c2> #{questStageLocation}",@base,@shadow)
     pbDrawTextPositions(@sprites["overlay3"].bitmap,textpos)

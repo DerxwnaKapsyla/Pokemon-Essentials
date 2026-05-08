@@ -387,9 +387,15 @@ class Game_Event < Game_Character
         # end
         if ret
             params = ret[0].split.map { |x| x.match?(/^-?\d+$/) ? x.to_i : x }
+            ret.each do |line|                        # ADDED
+                if line[/^s\:/]                          # ADDED
+                    return nil if !eval($~.post_match)   # ADDED
+                end                                      # ADDED
+            end                                          # ADDED
             text = ""
             ret.each_with_index do |line, i|
                 next if i == 0
+                next if line[/^s\:/]                     # ADDED
                 break if line.nil?
                 text += line
             end
@@ -398,7 +404,7 @@ class Game_Event < Game_Character
         end
         return ret 
     end
-
+	
     alias event_indicator_e_refresh refresh
     def refresh
         event_indicator_e_refresh
@@ -406,7 +412,7 @@ class Game_Event < Game_Character
             $scene.spriteset.refreshEventIndicator(self)
         end
     end
-  
+
     def page_number
         @event.pages.each_with_index do |p, i|
             return i if p == @page
