@@ -82,10 +82,11 @@
         scene.pbForceEndSpeech
 		
 		new_fairy_name = %w[Lucia Astera Olivia][fairy_seen % 3]
+		new_fairy_type = %w[:HELLFAIRY_A HELLFAIRY_B HELLFAIRY_C][fairy_seen % 3]
 		echoln "Swapping in new Hell Fairy: #{new_fairy_name}"
 		
 		show_fairy_intro(scene, battle, fairy_seen)
-		battle.pbAddNewTrainer(:HELLFAIRY, new_fairy_name, pbGet(99))
+		battle.pbAddNewTrainer(new_fairy_type, new_fairy_name, pbGet(99))
 		show_player_reaction(scene, battle, fairy_seen)
 		
 		stop_exp_gain(scene, battle) if fairy_seen == 10

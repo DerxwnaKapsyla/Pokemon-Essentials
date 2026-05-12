@@ -23277,7 +23277,7 @@ List of Event Commands:
 @>Set Move Route: [Nue]
  :              : $>Turn Down
 @>Wait for Move's Completion
-@>Change Screen Color Tone: (0,0,0,0), @4
+@>Change Screen Color Tone: (-102,-102,-102,0), @4
 @>Wait: 10 frame(s)
 @>Set Move Route: Player
  :              : $>Turn Down
@@ -23551,7 +23551,7 @@ List of Event Commands:
 @>Set Move Route: [Nue]
  :              : $>Turn Down
 @>Wait for Move's Completion
-@>Change Screen Color Tone: (0,0,0,0), @4
+@>Change Screen Color Tone: (-102,-102,-102,0), @4
 @>Wait: 10 frame(s)
 @>Set Move Route: Player
  :              : $>Turn Down
@@ -82853,7 +82853,7 @@ Page #1
 Conditions
 None
 
-Graphic: TPDP_NPC 51
+Graphic: TPDP_NPC 52
 
 Autonomous Movement
 Type: Fixed
@@ -82867,7 +82867,7 @@ List of Event Commands:
 @>Script: pbTrainerIntro(:HELLFAIRY)
 @>Script: pbNoticePlayer(get_self)
 @>Text: This crystal powers the barrier guarding Lady Hecatia's Fortress!
-@>Conditional Branch: Script: TrainerBattle.start(:HELLFAIRY, "Eris", pbGet(99))
+@>Conditional Branch: Script: TrainerBattle.start(:HELLFAIRY_B, "Eris", pbGet(99))
  @>Control Self Switch: A =ON
  @>
 : Branch End
@@ -82878,7 +82878,7 @@ Page #2
 Conditions
 Self Switch A is ON
 
-Graphic: TPDP_NPC 51
+Graphic: TPDP_NPC 52
 
 Autonomous Movement
 Type: Fixed
@@ -82916,7 +82916,7 @@ Page #1
 Conditions
 None
 
-Graphic: TPDP_NPC 53
+Graphic: TPDP_NPC 52
 
 Autonomous Movement
 Type: Fixed
@@ -82930,7 +82930,7 @@ List of Event Commands:
 @>Script: pbTrainerIntro(:HELLFAIRY)
 @>Script: pbNoticePlayer(get_self)
 @>Text: Lady Hecatia tasked us to guard these Crystals, stay back!
-@>Conditional Branch: Script: TrainerBattle.start(:HELLFAIRY, "Hypatia", pbGet(99))
+@>Conditional Branch: Script: TrainerBattle.start(:HELLFAIRY_B, "Hypatia", pbGet(99))
  @>Control Self Switch: A =ON
  @>
 : Branch End
@@ -82941,7 +82941,7 @@ Page #2
 Conditions
 Self Switch A is ON
 
-Graphic: TPDP_NPC 53
+Graphic: TPDP_NPC 52
 
 Autonomous Movement
 Type: Fixed
@@ -85023,7 +85023,7 @@ Page #1
 Conditions
 None
 
-Graphic: TPDP_NPC 51
+Graphic: TPDP_NPC 53
 
 Autonomous Movement
 Type: Fixed
@@ -85037,7 +85037,7 @@ List of Event Commands:
 @>Script: pbTrainerIntro(:HELLFAIRY)
 @>Script: pbNoticePlayer(get_self)
 @>Text: You're the Puppet Handler that defeated Clownpiece, aren't you?
-@>Conditional Branch: Script: TrainerBattle.start(:HELLFAIRY, "Aphrodite", pbGet(99))
+@>Conditional Branch: Script: TrainerBattle.start(:HELLFAIRY_A, "Aphrodite", pbGet(99))
  @>Control Self Switch: A =ON
  @>
 : Branch End
@@ -85048,7 +85048,7 @@ Page #2
 Conditions
 Self Switch A is ON
 
-Graphic: TPDP_NPC 51
+Graphic: TPDP_NPC 53
 
 Autonomous Movement
 Type: Fixed
@@ -85101,7 +85101,7 @@ List of Event Commands:
 @>Script: pbTrainerIntro(:HELLFAIRY)
 @>Script: pbNoticePlayer(get_self)
 @>Text: Hell Fairies are way different from normal fairies!
-@>Conditional Branch: Script: TrainerBattle.start(:HELLFAIRY, "Ares", pbGet(99))
+@>Conditional Branch: Script: TrainerBattle.start(:HELLFAIRY_B, "Ares", pbGet(99))
  @>Control Self Switch: A =ON
  @>
 : Branch End
@@ -85165,7 +85165,7 @@ List of Event Commands:
 @>Script: pbNoticePlayer(get_self)
 @>Text: Our Honorable Friend is past this cave! On orders of Lady Hecatia,
  :    : we are not allowed to let anybody through without a fight!
-@>Conditional Branch: Script: TrainerBattle.start(:HELLFAIRY, "Ouranos", pbGet(99))
+@>Conditional Branch: Script: TrainerBattle.start(:HELLFAIRY_A, "Ouranos", pbGet(99))
  @>Control Self Switch: A =ON
  @>
 : Branch End
@@ -98796,7 +98796,7 @@ Page #1
 Conditions
 None
 
-Graphic: TPDP_NPC 52
+Graphic: TPDP_NPC 53
 
 Autonomous Movement
 Type: Fixed
@@ -98811,7 +98811,7 @@ List of Event Commands:
 @>Script: pbNoticePlayer(get_self)
 @>Text: I am Lady Hecatia's strongest soldier! You will not pass here, or
  :    : my name is not Helios!
-@>Conditional Branch: Script: TrainerBattle.start(:HELLFAIRY, "Helia", pbGet(99))
+@>Conditional Branch: Script: TrainerBattle.start(:HELLFAIRY_A, "Helia", pbGet(99))
  @>Text: Very well Human, you may pass! But don't expect my mistress and
   :    : her friend to go easy on you.
  @>Change Screen Color Tone: (-255,-255,-255,0), @8
@@ -98836,7 +98836,6 @@ Move Animation
 Trigger: Action Button
 
 List of Event Commands:
-@>Text: Placeholder
 @>
 
 Page #3
@@ -103017,7 +103016,7 @@ List of Event Commands:
 @>Text: \xn[\pn]\b(Hell Fairies... Can't be much worse than regular
  :    : fairies! Let's do this!)
 @>Change Battle BGM: 'B-034. Battle vs. Trainer (Dreams)', 100, 100
-@>Conditional Branch: Script: TrainerBattle.start(:HELLFAIRY, "Reika", pbGet(99), :HELLFAIRY, "Sienna", pbGet(99))
+@>Conditional Branch: Script: TrainerBattle.start(:HELLFAIRY_C, "Reika", pbGet(99), :HELLFAIRY_C, "Sienna", pbGet(99))
  @>Recover All: Entire Party
  @>Text: \xn[\pn]\b(Okay I was mistaken! These fairies are definitely
   :    : not like those in Gensokyo!)
@@ -103028,7 +103027,7 @@ List of Event Commands:
  @>Text: Kyahahaha! You won't be able to stand up to us all
   :    : forever!
  @>Change Battle BGM: 'B-034. Battle vs. Trainer (Dreams)', 100, 100
- @>Conditional Branch: Script: TrainerBattle.start(:HELLFAIRY, "Clarise", pbGet(99), :HELLFAIRY, "Makiko", pbGet(99))
+ @>Conditional Branch: Script: TrainerBattle.start(:HELLFAIRY_A, "Clarise", pbGet(99), :HELLFAIRY_A, "Makiko", pbGet(99))
   @>Recover All: Entire Party
   @>Text: \xn[\pn]Bring on the next batch! I'll drive you all back!
   @>Text: \xn[???]Kyahahaha! You're an interesting one! I'll take
@@ -103116,7 +103115,7 @@ List of Event Commands:
 @>Script: $game_temp.vs_transition_bg = "Capital"
 :       : $game_temp.vs_name = "Vs. Clownpiece"
 @>Script: setBattleRule("midbattleScript", :vs_clownpiece)
-@>Conditional Branch: Script: TrainerBattle.start(:CLOWNPIECET, "Clownpiece", 10+(pbGet(99) * 10), :HELLFAIRY, "Lucia", pbGet(99))
+@>Conditional Branch: Script: TrainerBattle.start(:CLOWNPIECET, "Clownpiece", 10+(pbGet(99) * 10), :HELLFAIRY_A, "Lucia", pbGet(99))
  @>Show Animation: [Hell Fairy (Twintail) (Bottom)], [Exclaim bubble]
  @>Show Animation: [Hell Fairy (Hat) (Bottom)], [Exclaim bubble]
  @>Show Animation: [Hell Fairy (Twintail) (Bottom)], [Exclaim bubble]
@@ -104957,7 +104956,7 @@ Page #1
 Conditions
 None
 
-Graphic: TPDP_NPC 53
+Graphic: TPDP_NPC 52
 
 Autonomous Movement
 Type: Custom
@@ -104978,7 +104977,7 @@ List of Event Commands:
 @>Script: pbTrainerIntro(:HELLFAIRY)
 @>Script: pbNoticePlayer(get_self)
 @>Text: Once I beat you, I'm gonna set up a secret base here!
-@>Conditional Branch: Script: TrainerBattle.start(:HELLFAIRY, "Hermia", pbGet(99))
+@>Conditional Branch: Script: TrainerBattle.start(:HELLFAIRY_B, "Hermia", pbGet(99))
  @>Control Self Switch: A =ON
  @>
 : Branch End
@@ -104989,7 +104988,7 @@ Page #2
 Conditions
 Self Switch A is ON
 
-Graphic: TPDP_NPC 53
+Graphic: TPDP_NPC 52
 
 Autonomous Movement
 Type: Custom
@@ -105035,7 +105034,7 @@ Page #1
 Conditions
 None
 
-Graphic: TPDP_NPC 52
+Graphic: TPDP_NPC 51
 
 Autonomous Movement
 Type: Custom
@@ -105057,7 +105056,7 @@ List of Event Commands:
 @>Script: pbNoticePlayer(get_self)
 @>Text: Puppets are really cool, how could the Lunarians have made anything
  :    : this cool?
-@>Conditional Branch: Script: TrainerBattle.start(:HELLFAIRY, "Rhea", pbGet(99))
+@>Conditional Branch: Script: TrainerBattle.start(:HELLFAIRY_C, "Rhea", pbGet(99))
  @>Control Self Switch: A =ON
  @>
 : Branch End
@@ -105068,7 +105067,7 @@ Page #2
 Conditions
 Self Switch A is ON
 
-Graphic: TPDP_NPC 52
+Graphic: TPDP_NPC 51
 
 Autonomous Movement
 Type: Custom
@@ -105134,7 +105133,7 @@ List of Event Commands:
 @>Script: pbTrainerIntro(:HELLFAIRY)
 @>Script: pbNoticePlayer(get_self)
 @>Text: I'm gonna impress my partner over there by beating you!
-@>Conditional Branch: Script: TrainerBattle.start(:HELLFAIRY, "Dione", pbGet(99))
+@>Conditional Branch: Script: TrainerBattle.start(:HELLFAIRY_C, "Dione", pbGet(99))
  @>Control Self Switch: A =ON
  @>
 : Branch End
@@ -105190,7 +105189,7 @@ Page #1
 Conditions
 None
 
-Graphic: TPDP_NPC 52
+Graphic: TPDP_NPC 51
 
 Autonomous Movement
 Type: Fixed
@@ -105204,7 +105203,7 @@ List of Event Commands:
 @>Script: pbTrainerIntro(:HELLFAIRY)
 @>Script: pbNoticePlayer(get_self)
 @>Text: I'm gonna impress my partner over there by beating you!
-@>Conditional Branch: Script: TrainerBattle.start(:HELLFAIRY, "Macaria", pbGet(99))
+@>Conditional Branch: Script: TrainerBattle.start(:HELLFAIRY_C, "Macaria", pbGet(99))
  @>Control Self Switch: A =ON
  @>
 : Branch End
@@ -105215,7 +105214,7 @@ Page #2
 Conditions
 Self Switch A is ON
 
-Graphic: TPDP_NPC 52
+Graphic: TPDP_NPC 51
 
 Autonomous Movement
 Type: Fixed
@@ -105272,7 +105271,7 @@ List of Event Commands:
 @>Script: pbNoticePlayer(get_self)
 @>Text: We're gearing up for another raid on the Capital, you won't be
  :    : able to beat us all!
-@>Conditional Branch: Script: TrainerBattle.start(:HELLFAIRY, "Amphitrite", pbGet(99))
+@>Conditional Branch: Script: TrainerBattle.start(:HELLFAIRY_C, "Amphitrite", pbGet(99))
  @>Control Self Switch: A =ON
  @>
 : Branch End
@@ -105325,7 +105324,7 @@ Page #1
 Conditions
 None
 
-Graphic: TPDP_NPC 53
+Graphic: TPDP_NPC 52
 
 Autonomous Movement
 Type: Fixed
@@ -105339,7 +105338,7 @@ List of Event Commands:
 @>Script: pbTrainerIntro(:HELLFAIRY)
 @>Script: pbNoticePlayer(get_self)
 @>Text: Your conquest ends here!
-@>Conditional Branch: Script: TrainerBattle.start(:HELLFAIRY, "Gaia", pbGet(99))
+@>Conditional Branch: Script: TrainerBattle.start(:HELLFAIRY_B, "Gaia", pbGet(99))
  @>Control Self Switch: A =ON
  @>
 : Branch End
@@ -105350,7 +105349,7 @@ Page #2
 Conditions
 Self Switch A is ON
 
-Graphic: TPDP_NPC 53
+Graphic: TPDP_NPC 52
 
 Autonomous Movement
 Type: Fixed

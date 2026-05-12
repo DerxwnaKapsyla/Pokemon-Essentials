@@ -192,7 +192,7 @@ detailed credits, check out the text file named "credits.txt"
 ----------------------------------------------------------------------
 DERX. CONTACT INFORMATION
 ----------------------------------------------------------------------
-I can be reached at my Tumblr or my Twitter account if needed for
+I can be reached at my Tumblr or my Bluesky account if needed for
 anything:
 	* http://derxwnakapsyla.tumblr.com/
 	* https://bsky.app/profile/derxwnakapsyla.bsky.social
@@ -217,5 +217,5 @@ LEGAL INFORMATION
 ----------------------------------------------------------------------
 I do not own Pokemon nor Touhou, and I don't own any of the characters either.
 Pokemon is (c) Gamefreak/Nintendo, Touhou is (c) Team Shanghai Alice.
-I do not own any of the sprites featured in this game, any custom sprites were nabbed
+I do not own any of the sprites featured in this game, any custom sprites were utilized
 from the Japanese Touhou Puppet Play 1.8 hack, or made by other people listed in the credits.
