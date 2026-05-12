@@ -23605,7 +23605,7 @@ Speed: 3: Slow
 Freq: 3: Low
 Options Enabled
 Move Animation
-Trigger: Action Button
+Trigger: Player Touch
 
 List of Event Commands:
 @>Text: Would you like to teleport to the Probability Space Hypervessel?
@@ -24505,6 +24505,9 @@ Move Animation
 Trigger: Autorun
 
 List of Event Commands:
+@>Comment: Event Indicator
+ :       : side_quest
+ :       : s:$game_variables[141] == 3
 @>Conditional Branch: Script: get_self.onEvent?
  @>Change Transparent Flag: Transparency
  @>Set Move Route: This event
@@ -48095,10 +48098,7 @@ List of Event Commands:
  @>Wait for Move's Completion
  @>Text: \xn[Professor Oak]Begin!
  @>Script: setBattleRule("backdrop", "indoor2")
- @>Control Switches: [0104: Transition Handler] = ON
- @>Control Variables: [0103: Vs. Transition ID] = 2
- @>Control Variables: [0104: Vs. Transition - Pkmn] = 6
- @>Control Variables: [0115: Vs. Transition - Background] = 0
+ @>Script: $game_temp.vs_transition_bg = "Basement"
  @>Change Battle BGM: 'B-027. Battle! Vs. Sealng Club Rival - EoA', 70, 100
  @>Conditional Branch: Script: TrainerBattle.start(:SCMary, "Maribel", pbGet(7)+12)
   @>
@@ -48296,10 +48296,7 @@ List of Event Commands:
  @>Wait for Move's Completion
  @>Text: \xn[Professor Oak]Begin!
  @>Script: setBattleRule("backdrop", "indoor2")
- @>Control Switches: [0104: Transition Handler] = ON
- @>Control Variables: [0103: Vs. Transition ID] = 1
- @>Control Variables: [0104: Vs. Transition - Pkmn] = 6
- @>Control Variables: [0115: Vs. Transition - Background] = 0
+ @>Script: $game_temp.vs_transition_bg = "Basement"
  @>Change Battle BGM: 'B-027. Battle! Vs. Sealng Club Rival - EoA', 70, 100
  @>Conditional Branch: Script: TrainerBattle.start(:SCRenko, "Renko", pbGet(7)+12)
   @>
@@ -84457,9 +84454,8 @@ List of Event Commands:
 @>Wait for Move's Completion
 @>Script: Pokemon.play_cry(:AYAKASHI)
 @>Wait: 30 frame(s)
-@>Control Switches: [0104: Transition Handler] = ON
-@>Control Variables: [0103: Vs. Transition ID] = 11
 @>Change Battle BGM: 'B-029. Battle! Vs. Puppets of Myth', 100, 100
+@>Script: $game_temp.vs_transition_bg = "Cave"
 @>Script: setBattleRule("outcome", 2)
 :       : setBattleRule("backdrop", "ayakashi")
 :       : setBattleRule("cannotRun")
@@ -84517,9 +84513,8 @@ List of Event Commands:
 @>Wait for Move's Completion
 @>Script: Pokemon.play_cry(:AYAKASHI)
 @>Wait: 30 frame(s)
-@>Control Switches: [0104: Transition Handler] = ON
-@>Control Variables: [0103: Vs. Transition ID] = 11
 @>Change Battle BGM: 'B-029. Battle! Vs. Puppets of Myth', 100, 100
+@>Script: $game_temp.vs_transition_bg = "Cave"
 @>Script: setBattleRule("outcome", 2)
 :       : setBattleRule("backdrop", "ayakashi")
 :       : setBattleRule("cannotRun")
@@ -91324,9 +91319,6 @@ List of Event Commands:
  :    : suceed in any combat environment, but let's do our best now!
  :    : He will be watching us, after all!
 @>Text: \xn[DLwRuukoto]Prepare for my Master's deserved Retribution!
-@>Control Switches: [0104: Transition Handler] = ON
-@>Control Variables: [0103: Vs. Transition ID] = 10
-@>Control Variables: [0104: Vs. Transition - Pkmn] = 5
 @>Change Battle BGM: 'B-023. Strawberry Crisis', 100, 100
 @>Comment: EndSpeech: Oh my, the Dark Metamorphosis failed!
 @>Conditional Branch: Script: TrainerBattle.start(:HAYWIRE2, "Ruukoto")
@@ -91451,13 +91443,11 @@ List of Event Commands:
  :    : suceed in any combat environment, but let's do our best now!
  :    : He will be watching us, after all!
 @>Text: \xn[DLwRuukoto]Prepare for my Master's deserved Retribution!
-@>Control Switches: [0104: Transition Handler] = ON
-@>Control Variables: [0103: Vs. Transition ID] = 10
-@>Control Variables: [0104: Vs. Transition - Pkmn] = 5
 @>Change Battle BGM: 'B-023. Strawberry Crisis', 100, 100
 @>Comment: EndSpeech: Oh my, the Dark Metamorphosis failed!
 @>Script: setBattleRule("midbattleScript", :vs_dlwruukoto)
 :       : setBattleRule("noMoney") # No Money
+@>Script: $game_temp.vs_transition_bg = "Silph"
 @>Conditional Branch: Script: TrainerBattle.start(:HAYWIRE2, "Ruukoto")
  @>Text: \xn[DLwRuukoto]My word, you even stood up to the Dark 
   :    : Metamorphosis! You are quite the trainer!
@@ -137966,6 +137956,9 @@ Move Animation
 Trigger: Action Button
 
 List of Event Commands:
+@>Comment: Event Indicator
+ :       : side_quest
+ :       : s:$game_variables[141] == 3
 @>Conditional Branch: Variable [0141: Pkmn Mansion Progress] == 3
  @>Text: You're back!
  @>Text: Just in time, too. Apparently all readings are normal again!
@@ -137992,6 +137985,7 @@ List of Event Commands:
   @>Text: It's not my place to comment, but regular bag maintenance 
    :    : is good to keep in mind! Selling off excessive items can yield 
    :    : you a good sum of money!
+  @>Control Variables: [0141: Pkmn Mansion Progress] = 4
   @>
  : Branch End
  @>Control Self Switch: B =ON
@@ -138000,6 +137994,33 @@ List of Event Commands:
  @>Text: Have you investigated the Volcano yet?
  @>
 : Branch End
+@>
+
+Page #3
+Conditions
+Variable 0141: Pkmn Mansion Progress is 4 or above
+
+Graphic: Scientist Alt (Aveontrainer)
+
+Autonomous Movement
+Type: Custom
+Custom Move Route:
+(Repeat Action)
+$>Turn at Random
+
+Speed: 3: Slow
+Freq: 3: Low
+Options Enabled
+Move Animation
+Trigger: Action Button
+
+List of Event Commands:
+@>Text: \pn! Welcome back!
+@>Text: All has been good with the Volcano since you went into there,
+ :    : no abnormalities detected.
+@>Text: I contacted Blaine about this, and he seemed to have no idea
+ :    : what in the mansion could have been causing the disturbance.
+@>Text: Very odd indeed.
 @>
 
 #------------------------------------------------------------------------------
@@ -157618,10 +157639,9 @@ Trigger: Event Touch
 List of Event Commands:
 @>Play SE: 'Teleport', 80, 100
 @>Change Screen Color Tone: (-255,-255,-255,0), @6
-@>Wait: 20 frame(s)
+@>Wait: 8 frame(s)
 @>Transfer Player:[043: Cinnabar Island], (031,042), Down, No Fade
 @>Change Screen Color Tone: (0,0,0,0), @6
-@>Play SE: 'teleporter', 80, 100
 @>
 
 #------------------------------------------------------------------------------
@@ -157639,15 +157659,14 @@ Speed: 3: Slow
 Freq: 3: Low
 Options Enabled
 Move Animation
-Trigger: Event Touch
+Trigger: Player Touch
 
 List of Event Commands:
-@>Play SE: 'Teleport', 80, 100
+@>Play SE: 'teleporter', 60, 100
 @>Change Screen Color Tone: (-255,-255,-255,0), @6
-@>Wait: 20 frame(s)
+@>Wait: 8 frame(s)
 @>Transfer Player:[353: Probability Space Hypervessel], (035,058), Down, No Fade
 @>Change Screen Color Tone: (0,0,0,0), @6
-@>Play SE: 'teleporter', 80, 100
 @>
 
 #------------------------------------------------------------------------------
@@ -159501,7 +159520,7 @@ Trigger: Action Button
 
 List of Event Commands:
 @>Text: It's displaying some sort of message.
-@>Text: \sign[signskin]\l[3]Experiment M0 Containment Status
+@>Text: \sign[signskin]\l[3]Experiment M-Zero Containment Status
  :    : \nGate: Locked
  :    : \nHolding Pod: Sealed
 @>
@@ -159520,7 +159539,7 @@ Trigger: Action Button
 
 List of Event Commands:
 @>Text: It's displaying some sort of message.
-@>Text: \sign[signskin]\l[3]Experiment M0 Containment Status
+@>Text: \sign[signskin]\l[3]Experiment M-Zero Containment Status
  :    : \nGate: \c[2]Unlocked
  :    : \n\c[0]Holding Pod: Sealed
 @>
@@ -159539,7 +159558,7 @@ Trigger: Action Button
 
 List of Event Commands:
 @>Text: It's displaying some sort of message.
-@>Text: \sign[signskin]\l[3]Experiment M0 Containment Status
+@>Text: \sign[signskin]\l[3]Experiment M-Zero Containment Status
  :    : \nGate: \c[2]Unlocked
  :    : \n\c[0]Holding Pod: \c[2]Unsealed
 @>
@@ -159928,25 +159947,30 @@ List of Event Commands:
  :       : $bag.add($bag.pockets[2][5][0],127)
  @>Wait: 40 frame(s)
  @>Control Switches: [0103: Hide AI Lvl in battle] = ON
- @>Script: WildBattle.dx_start([:MEW, 80], { 
- :       :   :nocapture => true, 
- :       :   :canlose => true,
- :       :   :backdrop => ["Factory", "Factory"],
- :       :   :outcome => 1,
- :       :   :noflee => true,
- :       :   :bgm => "W-031. Fires of Hokkai",
- :       :   :victory => :None,
- :       :   :introtext => "Experiment M0 lashes out at you!" 
- :       : }, 
- @>Script: {
+ @>Script: setBattleRule("battleIntroText", "Experiment M-Zero lashes out at you!")
+ :       : setBattleRule("setSlideSprite", "still")
+ :       : setBattleRule("databoxStyle", :Long)
+ :       : setBattleRule("battleBGM", "W-031. Fires of Hokkai")
+ :       : setBattleRule("victoryBGM", "")
+ :       : setBattleRule("canLose")
+ :       : setBattleRule("cannotRun")
+ :       : setBattleRule("disablePokeBalls")
+ :       : setBattleRule("backdrop", "Factory")
+ :       : setBattleRule("base", "Factory")
+ :       : setBattleRule("outcome", 1)
+ @>Script: setBattleRule("editWildPokemon", {
+ :       :   :name => "Experiment M-Zero",
  :       :   :ability => :MOODY,
  :       :   :nature  => :LONELY,
  :       :   :shiny   => false,
  :       :   :moves   => [:SCALD, :SKYATTACK, :PSYSHOCK, :DISCHARGE],
  :       :   :form    => 1,
- :       :   :name    => "M-Zero",
- :       :   :ivs     => 31
- :       : }, :VS_MISSINGNO)
+ :       :   :ivs     => 31,
+ :       :   :immunities => [:ATTRACT, :PPLOSS, :ABILITYREMOVAL, :TRANSFORM, :ESCAPE],
+ :       :   :hp_level => 2
+ :       : })
+ :       : setBattleRule("midbattleScript", :vs_missingno)
+ @>Script: WildBattle.start(:MEW, 80)
  @>Control Switches: [0103: Hide AI Lvl in battle] = OFF
  @>Text: \xn[Yumemi]Look out, \pn! I think it's revving up for one final 
   :    : attack!

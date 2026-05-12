@@ -3975,3 +3975,177 @@ Backtrace:
 003_Interpreter.rb:86:in `update'
 [Advanced Items - Field Moves] 10_Overwrites.rb:34:in `block in update'
 [Advanced Items - Field Moves] 10_Overwrites.rb:33:in `loop'
+
+=================
+
+[2026-05-08 08:29:00 -0700]
+[Pokémon Essentials version 21.1]
+
+Script error in event 9 (coords 31,6), map 356 (Cinnabar Mansion)
+Exception: SyntaxError
+Message: (eval):21: syntax error, unexpected ')', expecting '}'
+
+***Full script:
+setBattleRule("battleIntroText", "Experiment M-Zero lashes out at you!")
+setBattleRule("setSlideSprite", "still")
+setBattleRule("databoxStyle", :Long)
+setBattleRule("battleBGM", "W=031. Fires of Hokkai")
+setBattleRule("victoryBGM", "")
+setBattleRule("canLose")
+setBattleRule("cannotRun")
+setBattleRule("disablePokeBalls")
+setBattleRule("backdrop", "Factory")
+setBattleRule("base", "Factory")
+setBattleRule("outcome", 1)
+setBattleRule("editWildPokemon", {
+  :name => "Experiment M-Zero",
+  :ability => :MOODY,
+  :nature  => :LONELY,
+  :shiny   => false,
+  :moves   => [:SCALD, :SKYATTACK, :PSYSHOCK, :DISCHARGE],
+  :form    => 1,
+  :ivs     => 31,
+  :immunities => [:ATTRACT, :PPLOSS, :ABILITYREMOVAL, :TRANSFORM, :ESCAPE]
+)
+setBattleRule("midbattleScript", :VS_MISSINGNO)
+WildBattle.start(:MEW, 80)
+
+=================
+
+[2026-05-08 08:41:51 -0700]
+[Pokémon Essentials version 21.1]
+
+Exception: NoMethodError
+Message: undefined method `[]' for nil:NilClass
+
+Backtrace:
+[Deluxe Battle Kit] 001_HardcodedBattles.rb:584:in `block in <main>'
+[Deluxe Battle Kit] [002] Midbattle Triggers.rb:36:in `trigger'
+[Deluxe Battle Kit] [001] Midbattle Overwrites.rb:218:in `block (2 levels) in pbMidbattleScripting'
+[Deluxe Battle Kit] [001] Midbattle Overwrites.rb:217:in `each'
+[Deluxe Battle Kit] [001] Midbattle Overwrites.rb:217:in `block in pbMidbattleScripting'
+[Deluxe Battle Kit] [001] Midbattle Overwrites.rb:148:in `loop'
+[Deluxe Battle Kit] [001] Midbattle Overwrites.rb:148:in `pbMidbattleScripting'
+[Deluxe Battle Kit] [001] Midbattle Overwrites.rb:111:in `pbDeluxeTriggers'
+[Deluxe Battle Kit] [001] Midbattle Overwrites.rb:667:in `pbAbilitiesOnFainting'
+003_Battler_ChangeSelf.rb:96:in `pbFaint'
+
+=================
+
+[2026-05-08 08:54:46 -0700]
+[Pokémon Essentials version 21.1]
+
+Exception: NoMethodError
+Message: undefined method `[]' for nil:NilClass
+
+Backtrace:
+[Deluxe Battle Kit] 001_HardcodedBattles.rb:487:in `block in <main>'
+[Deluxe Battle Kit] [002] Midbattle Triggers.rb:36:in `trigger'
+[Deluxe Battle Kit] [001] Midbattle Overwrites.rb:218:in `block (2 levels) in pbMidbattleScripting'
+[Deluxe Battle Kit] [001] Midbattle Overwrites.rb:217:in `each'
+[Deluxe Battle Kit] [001] Midbattle Overwrites.rb:217:in `block in pbMidbattleScripting'
+[Deluxe Battle Kit] [001] Midbattle Overwrites.rb:148:in `loop'
+[Deluxe Battle Kit] [001] Midbattle Overwrites.rb:148:in `pbMidbattleScripting'
+[Deluxe Battle Kit] [001] Midbattle Overwrites.rb:111:in `pbDeluxeTriggers'
+[Deluxe Battle Kit] [001] Midbattle Overwrites.rb:552:in `block in pbEffectsAfterMove'
+[Deluxe Battle Kit] [001] Midbattle Overwrites.rb:551:in `each'
+
+=================
+
+[2026-05-08 08:55:58 -0700]
+[Pokémon Essentials version 21.1]
+
+Exception: NoMethodError
+Message: undefined method `[]' for nil:NilClass
+
+Backtrace:
+[Deluxe Battle Kit] 001_HardcodedBattles.rb:487:in `block in <main>'
+[Deluxe Battle Kit] [002] Midbattle Triggers.rb:36:in `trigger'
+[Deluxe Battle Kit] [001] Midbattle Overwrites.rb:218:in `block (2 levels) in pbMidbattleScripting'
+[Deluxe Battle Kit] [001] Midbattle Overwrites.rb:217:in `each'
+[Deluxe Battle Kit] [001] Midbattle Overwrites.rb:217:in `block in pbMidbattleScripting'
+[Deluxe Battle Kit] [001] Midbattle Overwrites.rb:148:in `loop'
+[Deluxe Battle Kit] [001] Midbattle Overwrites.rb:148:in `pbMidbattleScripting'
+[Deluxe Battle Kit] [001] Midbattle Overwrites.rb:111:in `pbDeluxeTriggers'
+[Deluxe Battle Kit] [001] Midbattle Overwrites.rb:552:in `block in pbEffectsAfterMove'
+[Deluxe Battle Kit] [001] Midbattle Overwrites.rb:551:in `each'
+
+=================
+
+[2026-05-08 08:59:53 -0700]
+[Pokémon Essentials version 21.1]
+
+Exception: NameError
+Message: undefined local variable or method `medi' for main:Object
+
+Backtrace:
+[Deluxe Battle Kit] 001_HardcodedBattles.rb:503:in `block in <main>'
+[Deluxe Battle Kit] [002] Midbattle Triggers.rb:36:in `trigger'
+[Deluxe Battle Kit] [001] Midbattle Overwrites.rb:218:in `block (2 levels) in pbMidbattleScripting'
+[Deluxe Battle Kit] [001] Midbattle Overwrites.rb:217:in `each'
+[Deluxe Battle Kit] [001] Midbattle Overwrites.rb:217:in `block in pbMidbattleScripting'
+[Deluxe Battle Kit] [001] Midbattle Overwrites.rb:148:in `loop'
+[Deluxe Battle Kit] [001] Midbattle Overwrites.rb:148:in `pbMidbattleScripting'
+[Deluxe Battle Kit] [001] Midbattle Overwrites.rb:111:in `pbDeluxeTriggers'
+[Deluxe Battle Kit] [001] Midbattle Overwrites.rb:552:in `block in pbEffectsAfterMove'
+[Deluxe Battle Kit] [001] Midbattle Overwrites.rb:551:in `each'
+
+=================
+
+[2026-05-08 15:22:56 -0700]
+[Pokémon Essentials version 21.1]
+
+Exception: NameError
+Message: undefined local variable or method `pbFlashRefresh' for main:Object
+
+Backtrace:
+[Deluxe Battle Kit] 001_HardcodedBattles.rb:382:in `block in <main>'
+[Deluxe Battle Kit] [002] Midbattle Triggers.rb:36:in `trigger'
+[Deluxe Battle Kit] [001] Midbattle Overwrites.rb:218:in `block (2 levels) in pbMidbattleScripting'
+[Deluxe Battle Kit] [001] Midbattle Overwrites.rb:217:in `each'
+[Deluxe Battle Kit] [001] Midbattle Overwrites.rb:217:in `block in pbMidbattleScripting'
+[Deluxe Battle Kit] [001] Midbattle Overwrites.rb:148:in `loop'
+[Deluxe Battle Kit] [001] Midbattle Overwrites.rb:148:in `pbMidbattleScripting'
+[Deluxe Battle Kit] [001] Midbattle Overwrites.rb:111:in `pbDeluxeTriggers'
+[Deluxe Battle Kit] [001] Midbattle Overwrites.rb:461:in `block in pbEndOfRoundPhase'
+[Deluxe Battle Kit] [001] Midbattle Overwrites.rb:460:in `each'
+
+=================
+
+[2026-05-09 22:05:06 -0700]
+[Pokémon Essentials version 21.1]
+
+Exception: NameError
+Message: undefined local variable or method `move' for main:Object
+
+Backtrace:
+[Deluxe Battle Kit] 004_MarisaOmega.rb:122:in `block in <main>'
+[Deluxe Battle Kit] [002] Midbattle Triggers.rb:36:in `trigger'
+[Deluxe Battle Kit] [001] Midbattle Overwrites.rb:218:in `block (2 levels) in pbMidbattleScripting'
+[Deluxe Battle Kit] [001] Midbattle Overwrites.rb:217:in `each'
+[Deluxe Battle Kit] [001] Midbattle Overwrites.rb:217:in `block in pbMidbattleScripting'
+[Deluxe Battle Kit] [001] Midbattle Overwrites.rb:148:in `loop'
+[Deluxe Battle Kit] [001] Midbattle Overwrites.rb:148:in `pbMidbattleScripting'
+[Deluxe Battle Kit] [001] Midbattle Overwrites.rb:111:in `pbDeluxeTriggers'
+[Deluxe Battle Kit] [001] Midbattle Overwrites.rb:539:in `block in pbEffectsAfterMove'
+[Deluxe Battle Kit] [001] Midbattle Overwrites.rb:538:in `each'
+
+=================
+
+[2026-05-10 03:02:06 -0700]
+[Pokémon Essentials version 21.1]
+
+Exception: NameError
+Message: undefined local variable or method `params' for main:Object
+
+Backtrace:
+[Deluxe Battle Kit] 004_MarisaOmega.rb:125:in `block in <main>'
+[Deluxe Battle Kit] [002] Midbattle Triggers.rb:36:in `trigger'
+[Deluxe Battle Kit] [001] Midbattle Overwrites.rb:218:in `block (2 levels) in pbMidbattleScripting'
+[Deluxe Battle Kit] [001] Midbattle Overwrites.rb:217:in `each'
+[Deluxe Battle Kit] [001] Midbattle Overwrites.rb:217:in `block in pbMidbattleScripting'
+[Deluxe Battle Kit] [001] Midbattle Overwrites.rb:148:in `loop'
+[Deluxe Battle Kit] [001] Midbattle Overwrites.rb:148:in `pbMidbattleScripting'
+[Deluxe Battle Kit] [001] Midbattle Overwrites.rb:111:in `pbDeluxeTriggers'
+[Deluxe Battle Kit] [001] Midbattle Overwrites.rb:539:in `block in pbEffectsAfterMove'
+[Deluxe Battle Kit] [001] Midbattle Overwrites.rb:538:in `each'
