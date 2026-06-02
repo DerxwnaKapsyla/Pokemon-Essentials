@@ -117,6 +117,7 @@ Flags = LampreyBlindness,TMoM,PrismriverManor
 Name = World of Fantasies
 MapPosition = 0,0,0
 BattleBack = starlight
+Flags = Hub
 #-------------------------------
 [020]   # Ending Filler Map (Bad) - 2
 Name = Ruined Western Mansion
@@ -209,12 +210,13 @@ Bicycle = true
 MapPosition = 0,20,8
 SnapEdges = true
 BattleBack = autumn
-Flags = PowerSpot
+Flags = TFoC
 #-------------------------------
 [038]   # Human Village Rest House
 Name = Human Village
 HealingSpot = 37,37,24
 MapPosition = 0,20,8
+Flags = TFoC
 #-------------------------------
 [039]   # Festival Grounds
 Name = Festival Grounds
@@ -223,43 +225,50 @@ Bicycle = true
 MapPosition = 0,20,8
 SnapEdges = true
 BattleBack = autumn
-Flags = Festival
+Flags = Festival, TFoC
 #-------------------------------
 [040]   # Rest House
 Name = Festival Grounds
 HealingSpot = 39,49,17
 MapPosition = 0,20,8
+Flags = Festival, TFoC
 #-------------------------------
 [041]   # Keine's Quiz Hall
 Name = Festival Grounds
 MapPosition = 0,20,8
+Flags = Festival, TFoC
 #-------------------------------
 [042]   # Alice's Puppet Boutique
 Name = Festival Grounds
 MapPosition = 0,20,8
-Flags = Festival
+Flags = Festival, TFoC
 #-------------------------------
 [043]   # Shizuha's Leaf Pile
 Name = Festival Grounds
 MapPosition = 0,20,8
 SnapEdges = true
+Flags = Festival, TFoC
 #-------------------------------
 [044]   # Festival Tournament Arena
 Name = Festival Grounds
 MapPosition = 0,20,8
 BattleBack = autumn_city
+Flags = Festival, TFoC
 #-------------------------------
 [045]   # Village Confrence Room
 Name = Human Village
 MapPosition = 0,20,8
+Flags = TFoC
 #-------------------------------
 [046]   # Village Confrence Room
 Name = Human Village
 MapPosition = 0,20,8
+Flags = TFoC
 #-------------------------------
 [047]   # Ayaka's Room
 Name = Human Village
 MapPosition = 0,20,8
+Flags = TFoC
 #-------------------------------
 [048]   # Misty Lake
 Name = Misty Lake
@@ -268,6 +277,7 @@ Bicycle = true
 Weather = Fog,100
 MapPosition = 0,19,10
 BattleBack = autumn
+Flags = TFoC
 #-------------------------------
 [049]   # Misty Lake
 Name = Misty Lake
@@ -276,6 +286,7 @@ Bicycle = true
 Weather = Fog,100
 MapPosition = 0,13,9
 BattleBack = autumn
+Flags = TFoC
 #-------------------------------
 [050]   # Prismriver Manor (F1)
 Name = Prismriver Manor
@@ -340,6 +351,7 @@ Bicycle = true
 MapPosition = 1,13,8
 BattleBack = autumn
 WildBattleBGM = B-004. Battle vs. Puppet (Forest).ogg
+Flags = TFoC
 #-------------------------------
 [058]   # Great Youkai Forest
 Name = Great Youkai Forest
@@ -348,10 +360,11 @@ Bicycle = true
 MapPosition = 1,13,8
 BattleBack = autumn
 WildBattleBGM = B-004. Battle vs. Puppet (Forest).ogg
+Flags = TFoC
 #-------------------------------
 [059]   # Great Youkai Forest?
 Name = Great Youkai Forest
-Flags = PowerSpot
+Flags = TFoC
 #-------------------------------
 [060]   # Human Village Outskirts
 Name = Human Village Outskirts
@@ -361,12 +374,13 @@ MapPosition = 0,21,8
 SnapEdges = true
 BattleBack = autumn
 WildBattleBGM = B-005. Battle vs. Puppet (Late Game)
+Flags = TFoC
 #-------------------------------
 [061]   # Gensokyo Wilderness
 Name = Gensokyo Wilderness
 MapPosition = 0,21,7
 BattleBack = AltField
-Flags = PowerSpot
+Flags = TFoC
 #-------------------------------
 [062]   # Nameless Hill
 Name = Nameless Hill
@@ -376,6 +390,7 @@ MapPosition = 0,7,13
 SnapEdges = true
 BattleBack = autumn
 WildBattleBGM = B-005. Battle vs. Puppet (Late Game)
+Flags = TFoC
 #-------------------------------
 [063]   # Suzuran Field
 Name = Suzuran Field
@@ -384,13 +399,13 @@ Bicycle = true
 MapPosition = 0,7,13
 BattleBack = suzuran
 WildBattleBGM = B-005. Battle vs. Puppet (Late Game).ogg
-Flags = SuzuranField
+Flags = TFoC,SuzuranField
 #-------------------------------
 [064]   # Suzuran Field
 Name = Suzuran Field
 MapPosition = 0,7,13
 BattleBack = suzuran
-Flags = PowerSpot,SuzuranField
+Flags = TFoC,SuzuranField
 #-------------------------------
 [065]   # Garden of the Sun
 Name = Garden of the Sun
@@ -400,6 +415,7 @@ MapPosition = 0,7,10
 SnapEdges = true
 BattleBack = AltField
 WildBattleBGM = B-005. Battle vs. Puppet (Late Game)
+Flags = TFoC
 #-------------------------------
 [066]   # Fantasy World
 Name = Fantasy World
@@ -408,49 +424,63 @@ Bicycle = true
 MapPosition = 0,0,0
 BattleBack = mugenkan
 WildBattleBGM = B-005. Battle vs. Puppet (Late Game)
+Flags = TFoC
 #-------------------------------
 [067]   # Mugenkan
 Name = Mugenkan
 MapPosition = 0,0,0
+Flags = TFoC
 #-------------------------------
 [068]   # Mugenkan (Back Garden)
 Name = Mugenkan
 MapPosition = 0,0,0
 BattleBack = mugenkan
+Flags = TFoC
 #-------------------------------
 [069]   # Ending Filler Map 1 - Stage 6
 Name = Ending
+Flags = TFoC
 #-------------------------------
 [070]   # Ending Filler Map 1 - EX Stage
 Name = Ending
+Flags = TFoC
 #-------------------------------
 [071]   # Credits - Festival Grounds
 Name = Credits
+Flags = TFoC
 #-------------------------------
 [072]   # Credits - Misty Lake (RWM)
 Name = Credits
+Flags = TFoC
 #-------------------------------
 [073]   # Credits - Great Youkai Forest
 Name = Credits
+Flags = TFoC
 #-------------------------------
 [074]   # Credits - Village Outskirts
 Name = Credits
+Flags = TFoC
 #-------------------------------
 [075]   # Credits - Suzuran Field
 Name = Credits
+Flags = TFoC
 #-------------------------------
 [076]   # Credits - Suzuran Field
 Name = Credits
+Flags = TFoC
 #-------------------------------
 [077]   # Credits - Village
 Name = Credits
+Flags = TFoC
 #-------------------------------
 [078]   # Credits - Group Shot
 Name = Credits
+Flags = TFoC
 #-------------------------------
 [079]   # Shizuha's Leaf Pile
 Name = Shizuha's Leaf Pile
 MapPosition = 0,20,8
+Flags = TFoC
 #-------------------------------
 [080]   # World of Fantasies
 Name = World of Fantasies
@@ -495,6 +525,7 @@ Name = Bamboo Forest of the Lost
 Outdoor = true
 ShowArea = true
 Bicycle = true
+WildBattleBGM = B-004. Battle vs. Puppet (Forest).ogg
 MapPosition = 0,20,4
 BattleBack = forest
 MapSize = 1,11
@@ -504,6 +535,7 @@ Flags = TKoL
 [087]   # Eientei
 Name = Eientei
 ShowArea = true
+WildBattleBGM = B-004. Battle vs. Puppet (Forest).ogg
 MapPosition = 0,20,3
 BattleBack = forest
 Flags = TKoL
@@ -519,6 +551,7 @@ Name = Youkai Mountain
 Outdoor = true
 ShowArea = true
 Bicycle = true
+WildBattleBGM = B-004. Battle vs. Puppet (Forest).ogg
 MapPosition = 0,13,3
 BattleBack = forest
 Environment = ForestGrass
@@ -581,6 +614,8 @@ Name = Mare Marginis
 Outdoor = true
 ShowArea = true
 Bicycle = true
+WildBattleBGM = B-033. Battle vs. Puppet (Dreams)
+TrainerBattleBGM = B-034. Battle vs. Trainer (Dreams).ogg
 MapPosition = 0,0,0
 BattleBack = AltField
 Environment = Space
@@ -591,6 +626,8 @@ Name = Sea of Tranquility
 Outdoor = true
 ShowArea = true
 Bicycle = true
+WildBattleBGM = B-033. Battle vs. Puppet (Dreams)
+TrainerBattleBGM = B-034. Battle vs. Trainer (Dreams).ogg
 MapPosition = 0,0,0
 BattleBack = moon
 Environment = Space
@@ -789,6 +826,8 @@ Flags = TKoL,Moon,ScaleWildEncounterLevels,VRTraining
 [129]   # Mare Tranquillitatis Cave
 Name = Sea of Tranquility
 Bicycle = true
+WildBattleBGM = B-033. Battle vs. Puppet (Dreams)
+TrainerBattleBGM = B-034. Battle vs. Trainer (Dreams).ogg
 MapPosition = 0,0,0
 BattleBack = moon
 Environment = Space
@@ -863,6 +902,7 @@ MapPosition = 0,19,10
 SafariMap = true
 BattleBack = indoor3
 WildBattleBGM = B-045. Ghost Lead
+Flags = Roof,TFoC,PrismriverManor
 #-------------------------------
 [148]   # Roof
 Name = Roof
@@ -870,6 +910,7 @@ Weather = Fog,100
 MapPosition = 0,19,10
 SafariMap = true
 BattleBack = Layla
+Flags = Roof,TFoC,PrismriverManor
 #-------------------------------
 [149]   # Testing Map
 Name = Testing Map
@@ -884,7 +925,7 @@ Name = Demo Map
 Name = Tower of Adventure
 MapPosition = 0,0,0
 BattleBack = elite1
-Flags = BossRush
+Flags = Hub,BossRush
 #-------------------------------
 [153]   # World of Fantasies
 Name = World of Fantasies
@@ -892,4 +933,4 @@ SnapEdges = true
 BattleBack = wof
 WildBattleBGM = B-033. Battle vs. Puppet (Dreams)
 Environment = Fantasia
-Flags = AllEncounters
+Flags = Hub,AllEncounters

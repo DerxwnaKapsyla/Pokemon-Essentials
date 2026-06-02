@@ -22,8 +22,7 @@
 	#-----------------------------------------------------------------
 	when "RoundStartCommand_1_foe"
 	  scene.pbStartSpeech(1)
-      battle.pbDisplayPaused(_INTL("With this Tome of Curses, there's no way you'll be able to beat me!"))
-	  battle.pbDisplayPaused(_INTL("I call upon this Tome of Curses... smite my enemies!"))
+	  battle.pbDisplayPaused(_INTL("Tome of Curses... smite them."))
 	  scene.pbForceEndSpeech
 	  battle.pbAnimation(:GRUDGE, player, player)
 	  player.effects[PBEffects::Curse] = true
@@ -34,8 +33,7 @@
 	#-----------------------------------------------------------------
 	when "RoundStartCommand_2_foe"
 	  scene.pbStartSpeech(1)
-	  battle.pbDisplayPaused(_INTL("I can do a lot more than just bring harm to my foes. Just watch!"))
-	  battle.pbDisplayPaused(_INTL("I call upon this Tome of Curses... bless my allies with power!"))
+	  battle.pbDisplayPaused(_INTL("Tome of Curses... bless my kin."))
 	  scene.pbForceEndSpeech
 	  battle.pbDisplayPaused(_INTL("Medicine uses the Tome of Curses to boost her party's strength!"))
 	  showAnim = true
@@ -53,7 +51,7 @@
 	  next if battle.pbTriggerActivated?("AfterLastSwitchIn_foe")
 	  hp_trigger = false
 	  scene.pbStartSpeech(1)
-	  battle.pbDisplayPaused(_INTL("I call upon this Tome of Curses... bless my allies with power!"))
+	  battle.pbDisplayPaused(_INTL("Tome of Curses... bless my kin."))
 	  scene.pbForceEndSpeech
 	  battle.pbDisplayPaused(_INTL("Medicine uses the Tome of Curses to boost her party's strength!"))
 	  showAnim = true
@@ -63,7 +61,6 @@
 		showAnim = false
 	  end
 	  battle.midbattleVariable = 0
-	  p battle.midbattleVariable
 	#------------------------------------------------------------------------
 	# Random At Turn End: Medicine utilizes the Tome of Curses.
 	# Effects: * Debuff player's party (Stats 25%, Statuses 75%) 65%
@@ -75,9 +72,9 @@
 	  next if $game_variables[118] == 5
 	  if rand(300) <= 100 # Trigger the Tome of Curses
 	    scene.pbStartSpeech(1)
-		battle.pbDisplayPaused(_INTL("I call upon this Tome of Curses..."))
+		battle.pbDisplayPaused(_INTL("Tome of Curses..."))
 	    if rand(100) <= 65 # Debuff Effect
-		battle.pbDisplayPaused(_INTL("...Smite my enemies!"))
+		battle.pbDisplayPaused(_INTL("... smite them."))
 		scene.pbForceEndSpeech
 		battle.pbDisplayPaused(_INTL("Medicine lays a curse upon your party!"))
 		  if rand(100) <= 85 # Non-Rebound Effect
@@ -121,7 +118,6 @@
 			end
 		  else # Rebound Effect
 			$game_variables[117] += 1
-			p $game_variables[117]
 			pbWait(1)
 			battle.pbDisplayPaused(_INTL("...Except, the effect rebounded!"))
 			if rand(100) <= 75 # Status Conditions
@@ -164,19 +160,16 @@
 			end
 		    if $game_variables[117] == 1
 		      scene.pbStartSpeech(1)
-			  battle.pbDisplayPaused(_INTL("No! That wasn't supposed to happen!"))
-			  scene.pbForceEndSpeech
-			  scene.pbStartSpeech(0)
-			  battle.pbDisplayPaused(_INTL("(It's just like Miss Hina said... the effects are rebounding because of her inexperience!)"))
+			  battle.pbDisplayPaused(_INTL("Of course it did."))
 			  scene.pbForceEndSpeech
 		    elsif $game_variables[117] == 2
 			  scene.pbStartSpeech(1)
-			  battle.pbDisplayPaused(_INTL("Grr! Why does this keep happening!?"))
+			  battle.pbDisplayPaused(_INTL("As expected."))
 			  scene.pbForceEndSpeech
 			end
 		  end
 		else # Buff Effect
-		  battle.pbDisplayPaused(_INTL("...Bless my allies with power!"))
+		  battle.pbDisplayPaused(_INTL("... bless my kin."))
 		  scene.pbForceEndSpeech
 		  battle.pbDisplayPaused(_INTL("Medicine boosts the stats of her party!"))
 		  if rand(100) <= 85 # Non-Rebound Effect
@@ -205,7 +198,6 @@
 			end
 		  else # Rebound Effect
 		    $game_variables[117] += 1
-			p $game_variables[117]
 			pbWait(1)
 			battle.pbDisplayPaused(_INTL("...Except, the effect rebounded!"))
 			case rand(3) # Determining Stats to Raise
@@ -233,14 +225,11 @@
 			end
 		    if $game_variables[117] == 1
 		      scene.pbStartSpeech(1)
-			  battle.pbDisplayPaused(_INTL("No! That wasn't supposed to happen!"))
-			  scene.pbForceEndSpeech
-			  scene.pbStartSpeech(0)
-			  battle.pbDisplayPaused(_INTL("(It's just like Miss Hina said... the effects are rebounding because of her inexperience!)"))
+			  battle.pbDisplayPaused(_INTL("Of course it did."))
 			  scene.pbForceEndSpeech
 		    elsif $game_variables[117] == 2
 			  scene.pbStartSpeech(1)
-			  battle.pbDisplayPaused(_INTL("Grr! Why does this keep happening!?"))
+			  battle.pbDisplayPaused(_INTL("As expected."))
 			  scene.pbForceEndSpeech
 			end
 		  end
@@ -253,9 +242,6 @@
 	#-----------------------------------------------------------------
 	when "TargetHPHalf_foe"
 	  next if battle.pbTriggerActivated?("AfterLastSendOut_foe") || battle.midbattleVariable > 0
-	  scene.pbStartSpeech(1)
-	  battle.pbDisplayPaused(_INTL("Try picking on someone your own size!"))
-	  scene.pbForceEndSpeech
 	  battle.pbDisplayPaused(_INTL("Medicine uses the Tome of Curses to boost her party's defenses!"))
 	  showAnim = true
 	  [:DEFENSE, :SPECIAL_DEFENSE].each do |stat|
@@ -264,7 +250,6 @@
 	    showAnim = false
 	  end
 	  battle.midbattleVariable = 1
-	  p battle.midbattleVariable
 	  
 	  
 	#-----------------------------------------------------------------
@@ -273,9 +258,6 @@
 	#-----------------------------------------------------------------
 	when "BattlerFainted_foe"
 	  next if battle.pbTriggerActivated?("AfterLastSendOut_foe")
-	  scene.pbStartSpeech(1)
-	  battle.pbDisplayPaused(_INTL("Grr... Let's see how you feel being weak!"))
-	  scene.pbForceEndSpeech
 	  battle.pbDisplayPaused(_INTL("Medicine lays a curse upon your party!"))
 	  battle.pbAnimation(:GRUDGE, player, player)
 	  showAnim = true
@@ -286,7 +268,6 @@
 	  end
 	  player.effects[PBEffects::Curse]
 	  $game_variables[118] += 1
-	  p $game_variables[118]
 	  
 	#-----------------------------------------------------------------
 	# Final Foe Sendout: Medicine taunts the player and superboosts
@@ -296,7 +277,9 @@
 	#-----------------------------------------------------------------
 	when "AfterLastSendOut_foe"
 	  scene.pbStartSpeech(1)
-	  battle.pbDisplayPaused(_INTL("I will bring an end to this, here and now!"))
+	  battle.pbDisplayPaused(_INTL("You've come this far, but can you truly surpass me?"))
+	  battle.pbDisplayPaused(_INTL("The terror that lays archived in the code?"))
+	  battle.pbDisplayPaused(_INTL("Show me, Champion of Puppetkind!"))
 	  battle.pbDisplayPaused(_INTL("Tome of Curses, grant my allies with unbreakable resolve and power!"))
 	  scene.pbForceEndSpeech
 	  battle.pbAnimation(:HARDEN, medi, medi)
@@ -312,10 +295,7 @@
 	  medi.pbOwnSide.effects[PBEffects::Mist] = 99
 	  medi.damageThreshold = -1
 	  scene.pbStartSpeech(1)
-	  battle.pbDisplayPaused(_INTL("There's no way you'll be able to overcome us now!"))
-	  scene.pbForceEndSpeech
-	  scene.pbStartSpeech(0)
-	  battle.pbDisplayPaused(_INTL("We're just going to have to try... Let's do this, {1}", player.pbThis))
+	  battle.pbDisplayPaused(_INTL("Topple us now! The very power that broke so many before you!"))
 	  scene.pbForceEndSpeech
 	
 	#-----------------------------------------------------------------
@@ -327,8 +307,8 @@
 	when "LastTargetHPLow_foe"
 	  next if $game_switches[131] == true
 	  scene.pbStartSpeech(1)
-	  battle.pbDisplayPaused(_INTL("I can't... I won't let my kindred down!"))
-	  battle.pbDisplayPaused(_INTL("Tome of Curses, bring my foe to their knees!"))
+	  battle.pbDisplayPaused(_INTL("This is where it ends!"))
+	  battle.pbDisplayPaused(_INTL("Tome of Curses, you know what to do!"))
 	  scene.pbForceEndSpeech
 	  battle.pbDisplayPaused(_INTL("Medicine calls upon the Tome of Curses one last time!"))
 	  pbBGMFade(1.0)
@@ -336,18 +316,11 @@
 	  battle.pbDisplayPaused(_INTL("... Nothing happened."))
 	  pbBGMPlay("W-017. Seeds of the Incident")
 	  scene.pbStartSpeech(1)
-	  battle.pbDisplayPaused(_INTL("... Let's try that again!"))
+	  battle.pbDisplayPaused(_INTL("... Oh? Let's try that again."))
 	  battle.pbDisplayPaused(_INTL("Tome of Curses! Bring my foe to their knees!"))
 	  pbWait(2)
-	  battle.pbDisplayPaused(_INTL("Why... Why aren't you working anymore?!"))
-	  scene.pbForceEndSpeech
-	  if $game_variables[117] = 0
-	    scene.pbStartSpeech(0)
-	    battle.pbDisplayPaused(_INTL("(It's just like Miss Hina said... she doesn't have true control over the Tome!)"))
-		scene.pbForceEndSpeech
-		scene.pbStartSpeech(1)
-	  end
-	  battle.pbDisplayPaused(_INTL("I call upon the Tome of Curses! Please, bring my foe to their knees!"))
+	  battle.pbDisplayPaused(_INTL("... This has never happened before. Can it be...?"))
+	  battle.pbDisplayPaused(_INTL("Tome of Curses, react!"))
 	  scene.pbForceEndSpeech
 	  pbWait(2)
 	  battle.pbDisplayPaused(_INTL("The Tome of Curses reacts!"))
@@ -358,12 +331,9 @@
 	  medi.effects[PBEffects::Ingrain] = false
 	  medi.pbOwnSide.effects[PBEffects::AuroraVeil] = 0
 	  medi.pbOwnSide.effects[PBEffects::Mist] = 0
-	  battle.pbDisplayPaused(_INTL("All of the protections surounding Medicine's team disappeared!"))
+	  battle.pbDisplayPaused(_INTL("All of the protections surrounding Medicine's team disappeared!"))
 	  scene.pbStartSpeech(1)
-	  battle.pbDisplayPaused(_INTL("N-No! That wasn't supposed to happen! Why is this happening now!?"))
-	  scene.pbForceEndSpeech
-	  scene.pbStartSpeech(0)
-	  battle.pbDisplayPaused(_INTL("(This is our chance to finish it!)"))
+	  battle.pbDisplayPaused(_INTL("..."))
 	  scene.pbForceEndSpeech
 	  $game_switches[131] = true
 	end

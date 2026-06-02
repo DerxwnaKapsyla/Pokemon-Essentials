@@ -404,7 +404,7 @@ class Battle
 	    battler.pbPoison(nil, _INTL("{1} was poisoned by the cloud of spores!", battler.pbThis))
 	  end
 	  if battler.pbCanFreeze?(nil, false) && effect == 3
-	    battler.pbFreeze(nil, _INTL("{1} was poisoned by the cloud of spores!", battler.pbThis))
+	    battler.pbFreeze(nil, _INTL("{1} was frozen by the cloud of spores!", battler.pbThis))
 	  end
     end
   end

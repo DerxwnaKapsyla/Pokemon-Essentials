@@ -164,33 +164,29 @@ MidbattleHandlers.add(:midbattle_scripts, :vs_meimu_final,
 	  elsif battle.midbattleVariable == 6
 	    next if battle.midbattleVariable != 6
 		pbBGMFade(1.0)
-	    pbWait(1) # May make this be a shorter wait period?
+	    pbWait(2) # May make this be a shorter wait period?
 	    scene.pbStartSpeech(1)
 	    pbSEPlay("Voltorb Flip explosion")
-	    # Have Meimu's graphic change to one where she's sunk to the floor in a weakened state. -- TO DO.
+	    # Play an explosion graphic here. Animation not made yet.
 	    battle.pbDisplayPaused(_INTL("I... I can't..."))
-		battle.pbDisplayPaused(_INTL("I used up everything I had... and I still couldn't do it."))
+	    battle.pbDisplayPaused(_INTL("W-... Why did this have to happen..."))
 	    battle.pbDisplayPaused(_INTL("My existence.... Was it really just a fluke miracle...?"))
 	    scene.pbShowSpeakerWindows("Ayaka", nil)
 	    battle.pbDisplayPaused(_INTL("Meimu..."))
 	    scene.pbShowSpeakerWindows("Meimu", nil)
 	    battle.pbDisplayPaused(_INTL("No, this... Had to be done. I was being selfish... greedy..."))
-	    battle.pbDisplayPaused(_INTL("One life... For the entirety of reality... Isn't really a fair trade, is it...? Hahaha..."))
 	    pbSEPlay("Voltorb Flip explosion")
-	    # Have Meimu's sprite start to fade out here - 75% transparency.
-		scene.pbShowSpeakerWindows("Ayaka", nil)
-	    battle.pbDisplayPaused(_INTL("...You... ...You're fading away."))
-		scene.pbShowSpeakerWindows("Meimu", nil)
-		battle.pbDisplayPaused(_INTL("Hahaha, looks like it's finally happening then..."))
+	    # Play an explosion graphic here. Animation not made yet.
+	    battle.pbDisplayPaused(_INTL("One life... For the entirety of reality... Isn't really a fair trade, is it...? Hahaha..."))
 	    battle.pbDisplayPaused(_INTL("Just, please... Promise that you'll remember me."))
 	    pbSEPlay("Voltorb Flip explosion")
-	    # Have Meimu's sprite continue to fade out here - 50% transparency.
+	    # Play an explosion graphic here. Animation not made yet.
 	    battle.pbDisplayPaused(_INTL("Even if it was for one brief, shining moment... The girl named Meimu..."))
 	    battle.pbDisplayPaused(_INTL("...Born from the dreams of all the Gensokyo's across time and space..."))
-	    battle.pbDisplayPaused(_INTL("Remember... that she lived... Please."))
+	    battle.pbDisplayPaused(_INTL("Remember... that she lived... Please..."))
 	    scene.pbForceEndSpeech
 	    pbSEPlay("Voltorb Flip explosion")
-	    # Have Meimu's sprite continue to fade out here - 25% transparency.
+	    # Play an explosion graphic here. Animation not made yet.
 	    pbSet(142, 8) # Increase The Last Adventure Plot Variable up to 8
 	    $game_switches[96] = true # This stops the music from refreshing
 	    pbWait(2) # Should wait be longer?

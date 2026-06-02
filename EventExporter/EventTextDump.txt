@@ -32282,27 +32282,6 @@ List of Event Commands:
 @>
 
 #------------------------------------------------------------------------------
-Event ID: 026
-Event Name: EV026
-(X,Y): (010,016)
-
-Page #1
-Conditions
-None
-
-Autonomous Movement
-Type: Fixed
-Speed: 3: Slow
-Freq: 3: Low
-Options Enabled
-Move Animation
-Trigger: Action Button
-
-List of Event Commands:
-@>Text: \cnCoin display
-@>
-
-#------------------------------------------------------------------------------
 Event ID: 027
 Event Name: Seija
 (X,Y): (042,033)
@@ -34991,7 +34970,6 @@ List of Event Commands:
   (When Cancel: Choice 2)
   : When [Yes]
    @>Text: Good luck in there!
-   @>Control Switches: [0130: Expert Quiz On] = ON
    @>Script: pbSet(4,2) # Intermediate Difficulty
    :       : pbSet(3,3) # Incorrect Question Count
    @>Script: pbSetSelfSwitch(10,"A",true)
@@ -35007,6 +34985,7 @@ List of Event Commands:
   (When Cancel: Choice 2)
   : When [Yes]
    @>Text: Good luck in there!
+   @>Control Switches: [0130: Expert Quiz On] = ON
    @>Script: pbSet(4,3) # Expert Difficulty
    :       : pbSet(3,2) # Incorrect Question Count
    @>Script: pbSetSelfSwitch(10,"A",true)

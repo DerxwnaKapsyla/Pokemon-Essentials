@@ -155,7 +155,7 @@ def pbBerryMerchant
 	  :ENIGMABERRY,:MICLEBERRY,:CUSTAPBERRY,
 	  :JABOCABERRY,:ROWAPBERRY,
 	  :KEEBERRY,:MARANGABERRY
-    ], useCat: true)
+    ], currency: "bp", useCat: true, cantSell: true)
   else
     pbPokemonMart([
 	  :ORANBERRY,:SITRUSBERRY,

@@ -4,13 +4,13 @@ module MidbattleScripts
   #-----------------------------------------------------------------------------
   # The Mansion of Mystery
   #-----------------------------------------------------------------------------  
-  # Scene: Night Blindness in battle
+  # Scene: Night Blindness in battle - Scrapped
   #		* When Lamprey is not active, all Puppets have -1 Accuracy
   #-----------------------------------------------------------------------------  
   
   
   #-----------------------------------------------------------------------------  
-  # Scene: Super Lamprey
+  # Scene: Super Lamprey - Scrapped
   #		* When the Full Lamprey Dish is consumed, all Puppets have +1 Accuracy
   #-----------------------------------------------------------------------------  
   
@@ -95,7 +95,7 @@ module MidbattleScripts
   #-----------------------------------------------------------------------------
   # The Kingdom of Lunacy
   #-----------------------------------------------------------------------------  
-  # Scene: Vs. Boss Puppet
+  # Scene: Vs. Boss Puppet - Scrapped
   #		* Boss Puppet gains a +2 Omniboost
   #----------------------------------------------------------------------------- 
   

@@ -8,6 +8,18 @@ class Game_Temp
   end
 end
 
+class Battle::Battler
+  alias pbRemoveItem_vanilla pbRemoveItem
+
+  def pbRemoveItem(permanent = true)
+    if permanent && self.item == self.initialItem
+      item_data = GameData::Item.try_get(self.item)
+      permanent = false if item_data&.has_flag?("DoNotConsumeAfterBattle")
+    end
+    pbRemoveItem_vanilla(permanent)
+  end
+end
+
 class Player
   class Pokedex
     def set_owned(species, should_refresh_dexes = true, value = true)
