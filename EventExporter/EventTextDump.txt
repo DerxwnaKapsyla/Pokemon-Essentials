@@ -75344,6 +75344,7 @@ List of Event Commands:
  :       : setPrice(:GOLDENRICESAKE, 14000)
  :       : setPrice(:PUPPETORB2, 600)
  :       : setPrice(:GREATORB2, 1800)
+ :       : setPrice(:INVERSEORB, 2000)
  :       : setPrice(:QUICKCLAW, 1500)
  :       : setPrice(:KINGSROCK, 1500)
  :       : setPrice(:LUCKYEGG, 1500)
@@ -91316,7 +91317,7 @@ List of Event Commands:
 
 #------------------------------------------------------------------------------
 Event ID: 028
-Event Name: HiddenItem:LUMBERRY,5
+Event Name: HiddenItem
 (X,Y): (025,060)
 
 Page #1
@@ -91332,11 +91333,32 @@ Move Animation
 Trigger: Action Button
 
 List of Event Commands:
+@>Conditional Branch: Script: pbItemBall(:LUMBERRY,5)
+ @>Control Self Switch: A =ON
+ @>
+: Else
+ @>
+: Branch End
+@>
+
+Page #2
+Conditions
+Self Switch A is ON
+
+Autonomous Movement
+Type: Fixed
+Speed: 3: Slow
+Freq: 3: Low
+Options Enabled
+Move Animation
+Trigger: Action Button
+
+List of Event Commands:
 @>
 
 #------------------------------------------------------------------------------
 Event ID: 029
-Event Name: HiddenItem:STARFBERRY,5
+Event Name: HiddenItem
 (X,Y): (075,066)
 
 Page #1
@@ -91352,11 +91374,32 @@ Move Animation
 Trigger: Action Button
 
 List of Event Commands:
+@>Conditional Branch: Script: pbItemBall(:STARFBERRY,5)
+ @>Control Self Switch: A =ON
+ @>
+: Else
+ @>
+: Branch End
+@>
+
+Page #2
+Conditions
+Self Switch A is ON
+
+Autonomous Movement
+Type: Fixed
+Speed: 3: Slow
+Freq: 3: Low
+Options Enabled
+Move Animation
+Trigger: Action Button
+
+List of Event Commands:
 @>
 
 #------------------------------------------------------------------------------
 Event ID: 030
-Event Name: HiddenItem:SITRUSBERRY,5
+Event Name: HiddenItem
 (X,Y): (056,027)
 
 Page #1
@@ -91372,6 +91415,55 @@ Move Animation
 Trigger: Action Button
 
 List of Event Commands:
+@>Conditional Branch: Script: pbItemBall(:SITRUSBERRY,5)
+ @>Control Self Switch: A =ON
+ @>
+: Else
+ @>
+: Branch End
+@>
+
+Page #2
+Conditions
+Self Switch A is ON
+
+Autonomous Movement
+Type: Fixed
+Speed: 3: Slow
+Freq: 3: Low
+Options Enabled
+Move Animation
+Trigger: Action Button
+
+List of Event Commands:
+@>
+
+#------------------------------------------------------------------------------
+Event ID: 031
+Event Name: EV031
+(X,Y): (007,014)
+
+Page #1
+Conditions
+None
+
+Graphic: TPDP_NPC 34
+
+Autonomous Movement
+Type: Fixed
+Speed: 3: Slow
+Freq: 3: Low
+Options Enabled
+Move Animation
+Trigger: Action Button
+
+List of Event Commands:
+@>Text: Hey, if you're heading to Reimaden, be careful. 
+ :    : There's been weird anomalies popping up left and 
+ :    : right.
+@>Text: Fortunately I was able to run away from them... They 
+ :    : aren't really Handlers, so there's no rules of 
+ :    : engagement!
 @>
 
 #------------------------------------------------------------------------------
