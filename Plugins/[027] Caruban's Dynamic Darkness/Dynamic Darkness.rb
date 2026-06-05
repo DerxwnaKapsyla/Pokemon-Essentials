@@ -484,7 +484,9 @@ class DarknessSprite < Sprite
     return distance
   end
 
-  alias caruban_update update
+  unless method_defined?(:caruban_update)
+    alias_method :caruban_update, :update
+  end
   def update
     duration = 2  # Seconds
     size = 6      # Max light modifier in pixel

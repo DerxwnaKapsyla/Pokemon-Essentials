@@ -21,7 +21,7 @@ MidbattleHandlers.add(:midbattle_scripts, :vs_meimu,
 
 # This controls where the player is teleported to after the battle scene is erased.
 
-MidbattleHandlers.add(:midbattle_scripts, :vs_meimu_final,
+MidbattleHandlers.add(:midbattle_scripts, :vs_meimu_final_backup,
   proc { |battle, idxBattler, idxTarget, trigger|
     scene       = battle.scene
 	player      = battle.battlers[0]
