@@ -17,8 +17,7 @@ Sections:
 AY01. OFFICIAL DOWNLOAD LINKS
 ----------------------------------------------------------------------
 Links to the official downloads can be found at the following locations:
-	* [Pokecommunity Link]
-	* [Eevee Expo Link]
+	* https://eeveeexpo.com/threads/9534/
 	* https://chaoticinfinitydev.tumblr.com/
 
 As such, if you downloaded this from a website not on this list, 
