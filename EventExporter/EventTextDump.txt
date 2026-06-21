@@ -5534,6 +5534,7 @@ List of Event Commands:
  :    : guys can stay here for now, and I'll come back if I find anything.
 @>Text: \xn[Kota]Alright. Stay safe, \PN. Don't let the vampires get you!
 @>Text: \xn[Shinji]I already said that vampires aren't going to be a problem...
+@>Script: pbSetPokemonCenter
 @>Control Self Switch: A =ON
 @>
 
@@ -6192,6 +6193,7 @@ List of Event Commands:
 : Else
  @>Control Self Switch: A =ON
  @>Script: pbTrainerEnd
+ @>Script: pbSetSelfSwitch(21,"A",true)
  @>Exit Event Processing
  @>
 : Branch End
@@ -6527,11 +6529,26 @@ List of Event Commands:
 #------------------------------------------------------------------------------
 Event ID: 021
 Event Name: Youmu
-(X,Y): (055,060)
+(X,Y): (049,035)
 
 Page #1
 Conditions
 None
+
+Autonomous Movement
+Type: Fixed
+Speed: 3: Slow
+Freq: 3: Low
+Options Enabled
+Move Animation
+Trigger: Action Button
+
+List of Event Commands:
+@>
+
+Page #2
+Conditions
+Self Switch A is ON
 
 Graphic: Person_Youmu
 
@@ -6677,7 +6694,7 @@ List of Event Commands:
 @>Text: \xn[\pn]Well, that's certainly one way to deal with the trees...
 @>
 
-Page #2
+Page #3
 Conditions
 Variable 0107: TMoM Plot Variable is 7 or above
 
@@ -28327,8 +28344,47 @@ Direction Fix
 Trigger: Event Touch
 
 List of Event Commands:
+@>Text: \xn[\pn]I should be heading out to the Human Village Outskirts.
+@>
+
+Page #4
+Conditions
+Switch 0121: Hina Defeated is ON
+Self Switch B is ON
+
+Graphic: Doors_TPDP2
+
+Autonomous Movement
+Type: Fixed
+Speed: 3: Slow
+Freq: 3: Low
+Options Enabled
+Move Animation
+Direction Fix
+Trigger: Event Touch
+
+List of Event Commands:
 @>Text: \xn[\pn]What am I doing coming back here! I need to head to the 
  :    : Nameless Hill!
+@>
+
+Page #5
+Conditions
+Switch 0123: Medicine Beaten is ON
+
+Graphic: Doors_TPDP2
+
+Autonomous Movement
+Type: Fixed
+Speed: 3: Slow
+Freq: 3: Low
+Options Enabled
+Move Animation
+Direction Fix
+Trigger: Event Touch
+
+List of Event Commands:
+@>Text: Hmm... Might not be a good idea to just enter the Hieda's Household without an invitation.
 @>
 
 #------------------------------------------------------------------------------
@@ -29162,6 +29218,7 @@ List of Event Commands:
 @>Text: \xn[\pn]The Harvest Festival is finally here, which means I shouldn't spend too much time in the village.
 @>Text: \xn[\pn]If I remember right, this year the festival grounds were being moved to the northeast part of the village, just past the tavern,
 @>Text: \xn[\pn]I had better head on over, no doubt the others are waiting for me there!
+@>Script: pbSetPokemonCenter
 @>Control Variables: [0116: TFoC Plot Variable] = 1
 @>Control Self Switch: A =ON
 @>
@@ -38451,6 +38508,7 @@ List of Event Commands:
 :       : pbSetSelfSwitch(4,"A",true)
 :       : pbSetSelfSwitch(5,"A",true)
 :       : pbSetSelfSwitch2(39,36,"A",true)
+@>Script: pbSetSelfSwitch2(37,11,"A",true)
 @>Control Switches: [0129: Keine absent from Quiz] = ON
 @>Change Screen Color Tone: (0,0,0,0), @6
 @>
@@ -39009,7 +39067,7 @@ List of Event Commands:
  :    : is resting on your shoulders with this.
 @>Text: \xn[\pn]\b(Yeah, no pressure...)
 @>Control Switches: [0129: Keine absent from Quiz] = OFF
-@>Script: pbSetSelfSwitch2(3,11,"A",true)
+@>Script: pbSetSelfSwitch2(37,11,"B",true)
 @>Control Self Switch: A =ON
 @>Play SE: 'Door exit', 100, 100
 @>Change Screen Color Tone: (-255,-255,-255,0), @6
@@ -63732,7 +63790,7 @@ Move Animation
 Trigger: Parallel Process
 
 List of Event Commands:
-@>Script: $scene = Scene_Credits_TFoC.new
+@>Script: $scene = Scene_Credits.new
 @>Wait: 20 frame(s)
 @>Script: TFoCPostgameScene.new
 @>Script: # pbAllowSpeedup
@@ -117504,6 +117562,75 @@ List of Event Commands:
 @>Wait: 8 frame(s)
 @>Transfer Player:[152: Tower of Adventure], (019,017), Up, No Fade
 @>Change Screen Color Tone: (0,0,0,0), @6
+@>
+
+#------------------------------------------------------------------------------
+Event ID: 007
+Event Name: EV007
+(X,Y): (035,049)
+
+Page #1
+Conditions
+None
+
+Graphic: Person_Meimu2
+
+Autonomous Movement
+Type: Fixed
+Speed: 3: Slow
+Freq: 3: Low
+Options Enabled
+Move Animation
+Trigger: Action Button
+
+List of Event Commands:
+@>Conditional Branch: Switch [0161: Dummy Switch] == ON
+ @>Set Event Location: [EV003],(015,024), Down
+ @>Control Switches: [0161: Dummy Switch] = OFF
+ @>
+: Branch End
+@>Control Switches: [0158: Inverse Battle Active] = OFF
+@>Control Switches: [0159: BBFAR Check] = OFF
+@>Control Switches: [0160: DOE Check] = OFF
+@>Control Switches: [0098: Music Override] = OFF
+@>Control Switches: [0103: Hide AI Level] = ON
+@>Control Switches: [0102: Special Battle Switch] = ON
+@>Control Variables: [0102: Special Battle Variable] = 5
+@>Change Battle BGM: 'B-044. Finale ~ For The End', 100, 100
+@>Script: setBattleRule("backdrop", "meimu")
+:       : setBattleRule("base", "meimu")
+:       : #playSpecialBGM("meimu")
+:       : #setBattleRule("battleBGM", "B-044. Finale ~ For The End.ogg")
+:       : setBattleRule("databoxStyle", :Basic)
+:       : $game_variables[70] = $PokemonSystem.battlescene
+:       : $PokemonSystem.battlescene = 0
+@>Script: setBattleRule("editWildPokemon", {
+:       :   :hp_level => 3,
+:       :   :immunities => [:OHKO, :ITEMREMOVAL, :POISON, :ATTRACT, :PPLOSS, :TYPECHANGE, :ABILITYREMOVAL, :INDIRECT, 
+:       :                   :DISABLE, :SELFKO, :TRANSFORM, :ESCAPE],
+:       :   :gender => 1,
+:       :   :shiny => false,
+:       :   :iv => 31,
+:       :   :ev => 252
+:       : })
+@>Script: setBattleRule("cannotRun")
+:       : setBattleRule("disablePokeBalls")
+:       : setBattleRule("battleIntroText", "This is the end.")
+:       : setBattleRule("victoryBGM", "")
+:       : setBattleRule("midbattleScript", :vs_meimu_final)
+@>Script: #$game_temp.vs_transition_bg = "WorldOfFantasy"
+@>Conditional Branch: Script: WildBattle.start(:MEIMU, 100)
+ @>Script: $PokemonSystem.battlescene = pbGet(70)
+ @>Control Switches: [0103: Hide AI Level] = OFF
+ @>
+: Else
+ @>Script: $PokemonSystem.battlescene = pbGet(70)
+ @>Control Switches: [0103: Hide AI Level] = OFF
+ @>Exit Event Processing
+ @>
+: Branch End
+@>Control Switches: [0103: Hide AI Level] = OFF
+@>Control Self Switch: D =ON
 @>
 
 #------------------------------------------------------------------------------
